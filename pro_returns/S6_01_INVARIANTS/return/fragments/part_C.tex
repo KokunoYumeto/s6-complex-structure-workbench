@@ -1,0 +1,681 @@
+\section{Fr\"olicher, Bott--Chern, Aeppli, and Hermitian metrics}
+\label{sec:partC}
+
+\subsection{C.1. The differentials and their dependence on the Hodge number}
+
+In this section $X$ is the standard marked $(3,4)$ threefold and
+$h=h^{1,2}(X)=1$ by Part A.  We retain $h$ in the formal calculations
+to specify exactly which conclusions depend on its evaluated value.
+Every assertion involving $h$ is valid for every value
+consistent with the Hodge table
+\begin{equation}\label{eq:C-hodge-input}
+\begin{array}{c|rrrr}
+q\backslash p&0&1&2&3\\\hline
+3&0&0&0&1\\
+2&0&h&h+1&1\\
+1&1&h+1&h&0\\
+0&1&0&0&0.
+\end{array}
+\end{equation}
+Thus no conclusion below silently uses $h=1$.  The geometric inputs for
+this part are the structure-sheaf calculation, the vanishing of
+holomorphic forms, and the sphere topology, which give
+\eqref{eq:C-hodge-input}; Statements A1.3 and A3.1 determine $h$.
+We use $d=\partial+\bar\partial$ on complex-valued
+smooth forms and the complex orientation for integration.
+
+\begin{claim}{C1.1}{Proved}{The complete Fr\"olicher differential in terms of $h$}
+For a compact complex threefold with \eqref{eq:C-hodge-input} and the
+complex de Rham cohomology of $S^6$, the Fr\"olicher spectral sequence
+satisfies $E_1\ne E_2=E_\infty$.  Its only nonzero $d_1$ ranks are
+\[
+\rank d_1^{0,1}=1,\quad \rank d_1^{1,1}=h,\quad
+\rank d_1^{1,2}=h,\quad \rank d_1^{2,2}=1.
+\]
+In particular its two middle rows are exact.
+\end{claim}
+\begin{proof}
+Here $E_1^{p,q}=H^q(X,\Omega_X^p)$ and
+$d_r:E_r^{p,q}\longrightarrow E_r^{p+r,q-r+1}$ are complex-linear.
+For $r=2$, any source in the two middle rows has target in one of
+$(2,0),(3,0),(3,1)$ or outside the table, except the source $(0,2)$,
+which is zero.  Sources in row $q=3$ outside $(3,3)$ are zero, and
+$(3,3)$ has no target.  For $r=3$ the only possible targets inside the
+table have sources $(0,2)$ or $(0,3)$, both zero.  For $r>3$ there is
+no arrow inside the table.  A zero term remains zero on subsequent
+pages.  Hence $E_2=E_\infty$.
+
+The filtration on $H^k_{\mathrm{dR}}(X;\C)$ has no nonzero associated
+graded term for $1\le k\le5$.  Every middle term of $E_2$ therefore
+vanishes.  Consequently
+\[
+0\longrightarrow\C\longrightarrow\C^{h+1}
+\longrightarrow\C^h\longrightarrow0,
+\qquad
+0\longrightarrow\C^h\longrightarrow\C^{h+1}
+\longrightarrow\C\longrightarrow0
+\]
+are exact, giving the stated ranks.  The first rank is one, so $E_1$
+cannot equal $E_2$.
+\end{proof}
+
+\begin{claim}{C1.2}{Proved}{A basis on which all first differentials are specified}
+Choose a nonzero $g\in H^{0,1}_{\bar\partial}(X)$, a basis
+$q_1,\ldots,q_h$ of a complement to $\C d_1g$ in
+$H^{1,1}_{\bar\partial}(X)$, a basis $v_1,\ldots,v_h$ of
+$H^{1,2}_{\bar\partial}(X)$, and a class $e$ complementary to the
+image of $d_1:H^{1,2}\to H^{2,2}$.  With
+$a=d_1g$, $c_j=d_1q_j$, $d_j=d_1v_j$, and $t=d_1e$, the first
+differential is
+\[
+g\mapsto a\mapsto0,\quad q_j\mapsto c_j\mapsto0,
+\qquad v_j\mapsto d_j\mapsto0,\quad e\mapsto t\mapsto0.
+\]
+These are bases in the corresponding bidegrees.  If $h=1$ and a
+class $q$ restricts to the invariant fibre class $\eta$ described below,
+we may take $q_1=q$, $v_1=gq$, and $e=q^2$, after scaling $g$ if
+necessary.  Statements A1.3 and A3.2 prove these hypotheses for $X$,
+so this geometric choice applies to the threefold in the question.
+\end{claim}
+\begin{proof}
+The first assertions follow from the injectivity and surjectivity
+proved in C1.1.  For the last assertion write
+$\eta=u\wedge w+6\gamma\wedge\delta$ in the marked integral
+cohomology of a regular fibre.  Its complex-oriented square has
+integral $-12$.  Its product with the $(0,1)$ image of $\gamma$ is
+nonzero: the explicit period calculation in C3.7 gives its nonzero
+pairing with $d\zeta_2$.  Thus $gq$ and $q^2$ have nonzero fibre
+restrictions.  The images under $d_1$ restrict to zero on the fibre,
+because the fibre is a complex torus and its invariant representatives
+are $d$-closed.  Therefore $q$ complements $d_1g$, $gq$ spans the
+one-dimensional $H^{1,2}$, and $q^2$ complements $d_1H^{1,2}$.
+The extension used in this last choice is the actual Leray lift in
+Statement A3.2.  This argument uses that extension; it does not infer
+it from a calculation on the smooth fibre alone.
+\end{proof}
+
+\subsection{C.2. A computation from the two definitions}
+
+\begin{claim}{C2.1}{Proved}{Bott--Chern and Aeppli tables as functions of $h$}
+With
+\[
+H^{p,q}_{BC}=
+\frac{\ker\partial\cap\ker\bar\partial\subset A^{p,q}}
+{\im\partial\bar\partial},\qquad
+H^{p,q}_{A}=
+\frac{\ker\partial\bar\partial\subset A^{p,q}}
+{\im\partial+\im\bar\partial},
+\]
+the complete tables are
+\begin{equation}\label{eq:C-BC-A}
+\begin{array}{c|rrrr}
+q\backslash p&0&1&2&3\\\hline
+3&0&0&1&1\\
+2&0&h&2h&1\\
+1&0&2&h&0\\
+0&1&0&0&0
+\end{array}_{BC}
+\qquad
+\begin{array}{c|rrrr}
+q\backslash p&0&1&2&3\\\hline
+3&0&0&0&1\\
+2&0&h&2&0\\
+1&1&2h&h&0\\
+0&1&1&0&0.
+\end{array}_{A}
+\end{equation}
+In particular, substitution of the value $h=1$ proved in A3.1 gives
+the workbench's numerical tables.  The totals are
+$(1,0,2,2,2,2,1)$ and $(1,2,2,2,2,0,1)$, respectively.
+\end{claim}
+\begin{proof}
+We apply the structure theorem for bounded double complexes over a
+field, \citet[Theorem 3]{Stelzig2021}, to the actual algebraic double
+complex $(A^{\bullet,\bullet}(X),\partial,\bar\partial)$.
+The word bounded refers to the bidegrees, not to the dimensions of the
+spaces of smooth forms, so that theorem applies here.  It gives a
+direct-sum decomposition by isomorphisms of double complexes into
+squares and zigzags.  An odd zigzag has one-dimensional total
+cohomology.  All odd zigzags in intermediate total degree are therefore
+excluded by $b_1=\cdots=b_5=0$.  An odd zigzag of length greater than
+one would have at least two vertices of its cohomological total degree.
+The extreme diagonals $p+q=0$ and $p+q=6$ contain just one bidegree
+each, so the remaining odd zigzags are exactly one dot at $(0,0)$ and
+one at $(3,3)$.
+
+An even zigzag of length $2r$ contributes a nonzero $d_r$ to one of
+the two Fr\"olicher spectral sequences.  C1.1 and complex conjugation
+exclude $r\ge2$ in both sequences.  Thus the remaining summands are
+arrows.  The horizontal arrows, with their multiplicities, are
+\begin{equation}\label{eq:C-arrows}
+\begin{array}{c|c|r}
+\text{source}&\text{target}&\text{multiplicity}\\\hline
+(0,1)&(1,1)&1\\
+(1,1)&(2,1)&h\\
+(1,2)&(2,2)&h\\
+(2,2)&(3,2)&1.
+\end{array}
+\end{equation}
+The vertical arrows are their reflections in $p=q$, with the same
+multiplicities.  The correspondence with spectral-sequence ranks is
+\citet[Proposition 6(1)]{Stelzig2021}; alternatively one computes
+column cohomology on each horizontal arrow directly.
+
+We now evaluate the displayed definitions, rather than use a formula
+for the dimensions.  On an arrow, the source is killed by neither
+the outgoing differential nor its total differential, whereas its
+target is closed under both.  There is no composite
+$\partial\bar\partial$.  Hence the target contributes one dimension
+to Bott--Chern cohomology, and the source contributes one dimension
+to Aeppli cohomology.  On a square, only the top right corner is closed
+under both operators, and it is the image of
+$\partial\bar\partial$ from the bottom left corner.  The other
+three corners of the square are images of $\partial$ or
+$\bar\partial$, while the bottom left corner is not in
+$\ker\partial\bar\partial$.  Thus a square contributes to neither
+cohomology.  A dot contributes once to each.  These computations
+commute with direct sums, including the possibly infinite sum of
+squares.  Counting the sources and targets in \eqref{eq:C-arrows}
+and its reflection gives \eqref{eq:C-BC-A}.
+
+The program \texttt{code/c\_double\_complex.py} performs a separate
+kernel-and-image computation over $\Q$ and a source-and-target
+count.  It includes an acyclic square with its signs, checks
+$\partial\bar\partial+\bar\partial\partial=0$, and verifies the
+two answers for $h=0,1,2,3,4,5$.  Its output is
+\texttt{outputs/c\_double\_complex.txt}.  This is exact linear
+algebra, not a floating-point check and not a determination of $h$.
+\end{proof}
+
+\begin{claim}{C2.2}{Proved}{Comparison with McHugh and Angella}
+The specialization of McHugh's Theorem 6.3, Proposition 6.4, equation
+(7), and Section 7.1 to \eqref{eq:C-hodge-input} agrees with C2.1.
+The corresponding relations and Figure 5 in Angella's Section 4 also
+agree.  No correction to these specific formulas is required.
+\end{claim}
+\begin{proof}
+McHugh's quotient $K^{p,q}$ is zero in intermediate total degrees
+on every arrow and square just used: a closed corner of an arrow is
+the image of the incoming differential and a closed corner of a square
+is in both images.  Thus $k^{p,q}=0$ for $0<p+q<6$.
+Also $E_2^{3,1}=0$ by C1.1 and $H^{1,1}(X;\R)=0$ because
+$H^2(X;\R)=0$.  Reading the formulas in
+\citet[Theorem 6.3, Proposition 6.4, (7), pp. 20--25]{McHugh2018}
+therefore gives
+\[
+h_{BC}^{1,1}=2h^{0,1}=2,\qquad
+h_{BC}^{1,2}=h^{1,2}=h,\qquad
+h_{BC}^{2,2}=-1+(h+1)+h=2h.
+\]
+The remaining entries in his table are precisely the boundary entries
+of \eqref{eq:C-BC-A}.  In
+\citet[Section 4, pp. 13--16]{Angella2018}, the relation
+\[
+h_{BC}^{2,2}=2h_{BC}^{2,1}-2h^{0,1}+2
+\]
+gives $2h$, and the boundary values reduce to those above because
+$h^{2,0}=h^{0,2}=0$.  This comparison concerns exactly the formulas
+used here; it does not certify every assertion in either article.
+\end{proof}
+
+\subsection{C.3. The algebra, line bundles, and metric consequences}
+
+\begin{claim}{C3.1}{Proved}{The real Bott--Chern Chern-class map and a global $G$}
+Let $G$ be a $\bar\partial$-closed smooth $(0,1)$ representative of
+a nonzero $g\in H^1(X,\OO_X)$.  Set
+\[
+\mathsf A=[\partial G]_{BC},\qquad
+\mathsf B=[\bar\partial\bar G]_{BC}.
+\]
+These classes form a complex basis of $H^{1,1}_{BC}(X)$.
+With the exponential $z\mapsto e^{2\pi iz}$ and the Chern convention
+$c_{1,BC}=[iF/(2\pi)]$, the map of real Lie groups is
+\begin{equation}\label{eq:C-Pic-map}
+\Pic(X)=\{\exp(zg):z\in\C\}\longrightarrow H^{1,1}_{BC}(X),
+\qquad \exp(zg)\longmapsto z\mathsf A+\bar z\mathsf B.
+\end{equation}
+It is injective and its image is the real subspace fixed by conjugation.
+
+There is an operator-explicit global representative.  Normalize the
+Fubini--Study form by $\int_{\Pone}\omega_{FS}=1$, put
+$\theta=f^*\omega_{FS}$, choose any smooth Riemannian metric on $X$,
+and let $\mathcal G_d$ be its Green operator for the real de Rham
+Laplacian.  Then
+\begin{equation}\label{eq:C-G-Green}
+\alpha=d^*\mathcal G_d\theta,\qquad G_0=\alpha^{0,1}
+\end{equation}
+satisfy $d\alpha=\theta$, $\bar\partial G_0=0$,
+$[G_0]\ne0$, and $\exp([G_0])=f^*\OO_{\Pone}(1)$.
+\end{claim}
+\begin{proof}
+C1.1 shows that $[\partial G]_{\bar\partial}=d_1g\ne0$.
+The conjugate class $\mathsf B$ is nonzero, and its Dolbeault image
+is zero.  Thus $\mathsf A,\mathsf B$ are independent.  C2.1 gives
+their completeness as a basis.
+
+The exponential sequence and $H^1(X;\Z)=H^2(X;\Z)=0$ identify
+$\Pic(X)$ with $H^1(X,\OO_X)=\C g$, with no period lattice.
+On the smooth trivial line with unit frame $s$, define
+$\bar\partial_zs=-2\pi izG\otimes s$.  This is integrable.
+If $G=\bar\partial\phi_i$ locally, the holomorphic frames
+$e_i=e^{2\pi iz\phi_i}s$ have transition functions
+$e_j=e^{2\pi iz(\phi_j-\phi_i)}e_i$, which represent
+$\exp(zg)$.  The metric-compatible Chern connection is
+\[
+\nabla_z=d-2\pi i(zG+\bar z\bar G),\qquad
+F_z=-2\pi i(z\partial G+\bar z\bar\partial\bar G).
+\]
+This proves \eqref{eq:C-Pic-map}, including its sign.  The basis
+proves injectivity and the assertion about its real image.
+
+The form $\theta$ is closed and exact because $H^2(X;\R)=0$.
+Hodge decomposition, together with $d\theta=0$ and the commutation
+of $d$ with the Green operator, gives $dd^*\mathcal G_d\theta=
+\theta$.  The operator preserves real forms.  Since $d\alpha$ has
+type $(1,1)$, its $(0,2)$ component says
+$\bar\partial G_0=0$.  If $G_0=\bar\partial u$, then
+$\theta=\partial\bar\partial(u-\bar u)$.  A real multiple of
+$\operatorname{Im}u$ would be a global plurisubharmonic function,
+because $\theta$ is semipositive.  The maximum principle on compact
+$X$ makes this function constant.  This contradicts the fact that
+$\theta$ is nonzero over the regular locus of $f$.
+
+Finally \eqref{eq:C-Pic-map} gives
+$c_{1,BC}(\exp([G_0]))=[\theta]=c_{1,BC}(f^*\OO(1))$.
+Injectivity gives the asserted line-bundle equality.  Formula
+\eqref{eq:C-G-Green} is a global formula involving a specified
+elliptic inverse; it is not a finite coordinate formula on the toric
+and cyclic charts, and it depends on the auxiliary metric.
+\end{proof}
+
+\begin{claim}{C3.2}{Proved}{The factor $12$ with a fixed collar orientation}
+Use the marked cohomology class $\gamma$ dual to
+$\hat\gamma$, the clockwise meridians and the lift relation of
+[AC26, Section 7.5], and put
+$p=12l_0-4l_1-3l_2=\pm1$.  Let $g_\gamma$ be the unique coherent
+Leray class whose fibre image is $\gamma^{0,1}$.  Then
+\begin{equation}\label{eq:C-factor12}
+\exp(12g_\gamma)=f^*\OO_{\Pone}(-p).
+\end{equation}
+For the standard data $(l_0,l_1,l_2)=(0,1,-1)$, this is
+$\exp(12g_\gamma)=f^*\OO(1)$.  For the opposite value $p=1$,
+the exponent representing $f^*\OO(1)$ is $-12g_\gamma$.
+\end{claim}
+\begin{proof}
+We include the comparison that fixes the sign.  A degree-one integral
+class $k\gamma$ on a regular fibre extends over the cyclic filling of
+order $m_j$ precisely when the affine generator $\hat g_j$ can be
+assigned an integer value $n_j$ satisfying
+$m_j n_j=k\gamma(v_j)=kl_j$.  Admissibility gives
+$\gcd(l_j,m_j)=1$, so this is precisely $m_j\mid k$.
+At the cusp $\gamma$ extends, as follows from its actual specialization
+to $H^1(W;\Z)$ in [AC26, Theorem B.1 and Proposition 7.12].
+The global monodromy invariants have rank one generated by $\gamma$.
+It follows, by intersection of these three local images in the marked
+local system, that
+$H^0(B,R^1f_*\Z)=12\Z\gamma$.  This recovers the degree-one
+part of [AC26, Proposition 7.26], without identifying the reduced and
+non-reduced fibre: this is topological cohomology, unchanged by
+nilpotents, whereas the coherent comparison uses the full fibre.
+
+Let $U=\bigsqcup_iD_i$ be small discs around the special points and
+let $V$ be their pair-of-pants complement with collars.  Lift
+$12\gamma$ to integral classes $\Theta_i$ on $f^{-1}(D_i)$ and
+$\Theta_V$ on $f^{-1}(V)$.  Existence over $V$ follows from
+$H^2(V;\Z)=0$ and the low-degree Leray sequence; over each disc it
+follows from the local images just computed.  Write
+$a_j=\Theta_V(\hat\rho_j)$.  On the two finite clockwise meridians
+the differences $\Theta_i-\Theta_V$ have periods
+\[
+n_1=4l_1-a_1,\qquad n_2=3l_2-a_2.
+\]
+At the cusp, the specified lift relation
+$\widetilde a_0=t_\mu\hat\rho_2^{-1}\hat\rho_1^{-1}$,
+with $\gamma(\mu)=l_0$, and the null-homotopy of
+$\widetilde a_0$ in the cusp filling give
+$n_0=-12l_0+a_1+a_2$.  Hence
+\begin{equation}\label{eq:C-collar-sum}
+n_0+n_1+n_2=-p.
+\end{equation}
+These are the explicitly oriented boundary evaluations in [AC26,
+Proposition 7.27, pp. 62--63], not an unspecified sign of a spectral
+sequence differential.
+
+Represent the lifts by real closed one-forms.  On a collar their
+difference is the pullback of a real closed base form $b_i$ with
+clockwise period $n_i$, modulo an exact form.  This follows from the
+degree-one Leray sequence over the annulus, since the difference has
+zero fibre restriction and the annulus has no second cohomology.
+Subtract exact terms on smaller collars, extending their primitives
+with cutoffs, so the equality of forms holds wherever a partition of
+unity changes.  For a real base cutoff $\rho_i$ equal to one toward
+$D_i$ and zero toward $V$, the resulting glued real one-form $\alpha$
+on $X$ has
+\[
+d\alpha=f^*\vartheta,\qquad
+\vartheta=\sum_i d\rho_i\wedge b_i.
+\]
+The form $\vartheta$ is a smooth real base two-form; thus
+$\bar\partial\alpha^{0,1}=0$.  Its fibre restriction is the
+$(0,1)$ image of $12\gamma$, so the coherent Leray edge isomorphism
+$H^1(X,\OO_X)\simeq H^0(B,R^1f_*\OO_X)$ identifies
+$[\alpha^{0,1}]=12g_\gamma$.
+
+In a positively oriented polar coordinate $(r,\varphi)$ on $D_i$,
+$b_i=-n_i\,d\varphi/(2\pi)$ modulo an exact form.
+Because $\rho_i$ decreases from one to zero as $r$ increases,
+\[
+\int_{D_i\cap V}d\rho_i\wedge b_i
+=-n_i\int_0^1d\rho_i=n_i.
+\]
+The exact part does not change this integral, since $d\rho_i$ is
+supported inside the collar.  Therefore
+$\int_B\vartheta=-p$ by \eqref{eq:C-collar-sum}.  C3.1 identifies
+the Bott--Chern class of $\exp(12g_\gamma)$ with $[f^*\vartheta]$.
+On $\Pone$ two real $(1,1)$ forms of the same integral differ by
+$i\partial\bar\partial$ of a real function (solve the ordinary
+scalar Laplace equation).  Hence this class is the Chern class of
+$f^*\OO(-p)$, and injectivity in C3.1 proves
+\eqref{eq:C-factor12}.  The program
+\texttt{code/c\_sign\_and\_fibre.py} verifies the integer
+intersection, \eqref{eq:C-collar-sum}, and the collar integral exactly.
+\end{proof}
+
+\begin{claim}{C3.3}{Proved}{The complete Bott--Chern algebra, for every $h$}
+The positive-total-degree ideal $N\subset H^{\bullet,\bullet}_{BC}(X)$
+satisfies
+\[
+H^{\bullet,\bullet}_{BC}(X)=\C\cdot1\oplus N,\qquad N^2=0.
+\]
+Its nonzero bidegrees and dimensions are those of C2.1.  Thus the
+square-zero conclusion is independent of the disputed value of $h$.
+\end{claim}
+\begin{proof}
+Take global $\bar\partial$-closed representatives $G,Q_j,V_j,E$
+of the classes $g,q_j,v_j,e$ of C1.2.  By the arrow computation in
+C2.1, bases for the positive Bott--Chern groups consist of
+\[
+\partial G,\ \bar\partial\bar G;\qquad
+\partial Q_j,\ \bar\partial\bar Q_j;\qquad
+\partial V_j,\ \bar\partial\bar V_j;\qquad
+\partial E,\ \bar\partial\bar E;\qquad \nu,
+\]
+where the pairs have bidegrees $(1,1)$, $(2,1),(1,2)$,
+$(2,2)$, $(3,2),(2,3)$, respectively, and
+$\int_X\nu=1$.  In particular the natural map
+$H^{3,2}_{BC}\to H^{3,2}_{\bar\partial}$ is an isomorphism:
+on its unique horizontal arrow the closed target maps nontrivially
+to column cohomology.
+
+Write $a=\partial G$, $b=\bar\partial\bar G$ and
+$c_j=\partial Q_j$.  The graded Leibniz rule gives
+\[
+\partial\bar\partial(G\wedge\bar G)=-a\wedge b,
+\quad
+\partial\bar\partial(G\wedge\bar Q_j)
+=-a\wedge\bar c_j,
+\quad
+\partial\bar\partial(\bar G\wedge Q_j)=b\wedge c_j.
+\]
+Consequently $\mathsf A\mathsf B=0$,
+$\mathsf A\overline{\mathsf C_j}=0$, and
+$\mathsf B\mathsf C_j=0$.
+
+Let $f^*\OO(1)=\exp(\lambda g)$, where $\lambda\ne0$.
+Its curvature may be chosen to be the pullback of a two-form on $B$,
+whose square vanishes pointwise.  By C3.1,
+$\lambda^2\mathsf A^2+\bar\lambda^2\mathsf B^2=0$.
+The Dolbeault image of $\mathsf B^2$ is zero.  Hence
+$[a^2]_{\bar\partial}=0$.  But
+$a^2=\partial(G\wedge a)$, and C1.1 says that
+$d_1:H^{1,2}\to H^{2,2}$ is injective.  Thus
+$[G\wedge a]_{\bar\partial}=0$.  Choose a smooth $(1,1)$ form
+$\Phi$ satisfying $G\wedge a=\bar\partial\Phi$.  Applying
+$\partial$ proves $a^2=\partial\bar\partial\Phi$.
+Conjugation gives $\mathsf B^2=0$ as well.
+
+To treat $\mathsf A\mathsf C_j$, pair its Dolbeault image with the
+generator $g\in H^{0,1}_{\bar\partial}$.  Since
+$\bar\partial c_j=0$ and $G\wedge a=\bar\partial\Phi$,
+\[
+\int_X a\wedge c_j\wedge G
+=-\int_X\bar\partial(\Phi\wedge c_j)=0.
+\]
+Dolbeault--Serre duality and the isomorphism
+$H^{3,2}_{BC}\to H^{3,2}_{\bar\partial}$ give
+$\mathsf A\mathsf C_j=0$.  Complex conjugation gives
+$\mathsf B\overline{\mathsf C_j}=0$.
+
+Every remaining product whose bidegree lies in $[0,3]^2$ lands in
+$(3,3)$: it is a product of a $(1,1)$ class with a $(2,2)$ class,
+or of a $(2,1)$ class with a $(1,2)$ class.  Each non-top generator
+displayed above is $d$-exact, since its chosen primitive is
+$\bar\partial$-closed, or is the conjugate of such a form.
+The products therefore have integral zero.  Integration is an
+isomorphism $H^{3,3}_{BC}\to\C$ by C2.1 and the class of $\nu$,
+so all these products vanish.  All other products exceed the complex
+dimension in at least one bidegree.  This exhausts the possibilities.
+\end{proof}
+
+\begin{claim}{C3.4}{Proved}{Non-K\"ahler degrees and the precise degreewise statement}
+For $k=0,\ldots,6$ the non-K\"ahler degrees are
+\begin{equation}\label{eq:C-delta}
+(\Delta^k)=(0,2,2+2h,4h,2+2h,2,0).
+\end{equation}
+If $h\ge1$, the two maps
+$\bigoplus_{p+q=k}H^{p,q}_{BC}\to H^k_{\mathrm{dR}}(X;\C)
+\to\bigoplus_{p+q=k}H^{p,q}_A$
+are both isomorphisms exactly for $k=0,6$.
+For the weaker assertion that a $d$-exact pure $d$-closed form of
+degree $k$ is $\partial\bar\partial$-exact, the valid degrees are
+$k=0,1,6$, and also $k=3,4$ if $h=0$.
+\end{claim}
+\begin{proof}
+The totals from C2.1 are
+\[
+(h^k_{BC})=(1,0,2,2h,2h,2,1),\qquad
+(h^k_A)=(1,2,2h,2h,2,0,1).
+\]
+Subtracting twice the Betti numbers gives \eqref{eq:C-delta}.
+On the two endpoint dots both comparison maps are isomorphisms;
+all intermediate de Rham groups vanish.  The first assertion follows
+by inspecting when both outside groups vanish.  The weaker assertion
+is exactly injectivity of the first comparison map.  In intermediate
+degree this is equivalent to vanishing of the Bott--Chern group alone,
+which gives the stated list.  In degree zero there is no nonzero
+exact form, and in degree six integration identifies Bott--Chern and
+de Rham cohomology.  This distinguishes the two meanings of a
+``$\partial\bar\partial$-lemma in a degree''; a vanishing Bott--Chern
+group in degree one does not make $\Delta^1$ vanish.
+\end{proof}
+
+\begin{claim}{C3.5}{Proved}{Metric obstructions that do not require $h$}
+The threefold $X$ admits no balanced, strongly Gauduchon, K\"ahler,
+locally conformally K\"ahler, or Hermitian-symplectic metric.
+\end{claim}
+\begin{proof}
+Let $\theta=f^*\omega_{FS}$.  It is a nonzero semipositive exact
+real $(1,1)$ form.  If $\omega$ were balanced, the real four-form
+$\omega^2$ would be closed and
+$\int_X\theta\wedge\omega^2>0$, because the integrand is positive
+on the regular locus.  Exactness of $\theta$ and Stokes' theorem
+give zero, a contradiction.
+
+More generally, if $\omega$ were strongly Gauduchon, write
+$\partial\omega^2=\bar\partial u$ with $u\in A^{3,1}$.
+The real four-form $\Omega=\omega^2-u-\bar u$ is closed.
+Bidegrees give $\theta\wedge\Omega=\theta\wedge\omega^2$,
+so the same argument applies.  K\"ahler metrics are balanced.
+If $d\omega=\ell\wedge\omega$ with a closed real Lee form
+$\ell$, then $b_1=0$ gives $\ell=dv$, and
+$d(e^{-v}\omega)=0$, excluding locally conformally K\"ahler metrics.
+Finally any symplectic two-form on $X$ is exact because $b_2=0$.
+Its cube has nonzero integral for its symplectic orientation, whereas
+an exact cube has zero integral.  Thus $X$ is not symplectic and in
+particular admits no Hermitian-symplectic metric.
+\end{proof}
+
+\begin{claim}{C3.6}{Known}{Gauduchon metrics with specified Chern--Ricci form}
+There exists a Gauduchon metric on $X$.  More precisely, for every
+Gauduchon metric $\omega_0$ there is another Gauduchon metric
+$\omega$ with $[\omega^2]_A=[\omega_0^2]_A$ and
+\begin{equation}\label{eq:C-Ricci}
+\operatorname{Ric}^{\mathrm{Ch}}(\omega)=\pi f^*\omega_{FS}.
+\end{equation}
+This Ricci form is semipositive and has rank one at regular points
+of $f$.  No Chern--Ricci-flat Hermitian metric exists on $X$.
+\end{claim}
+\begin{proof}
+Gauduchon's conformal theorem
+\citep[Theorem 2, pp. 132--133]{Gauduchon1985} applies to the compact
+connected complex manifold $X$.  In complex dimension three, it
+produces a positive conformal multiple $\omega_0$ of any Hermitian
+form with $\partial\bar\partial\omega_0^2=0$.
+For clarity, its reduction is a scalar elliptic equation: if
+$L\phi$ is a nonzero fixed normalization of
+$\operatorname{tr}_\omega(i\partial\bar\partial\phi)$, then
+$L$ has kernel the constants by the maximum principle and Fredholm
+index zero.  The one-dimensional kernel of $L^*$ has a strictly
+positive generator $u$.  Indeed a sign-changing generator would
+admit a nonzero nonnegative function orthogonal to it, placing such
+a function in $\im L$, contrary to the maximum principle; the strong
+maximum principle then gives strict positivity.  The form
+$u^{1/2}\omega$ is Gauduchon.
+
+The canonical-bundle formula in Part A and $4S_2=f^*(p_2)$ give
+$K_X^2=f^*\OO(-1)$.  Consequently
+$c_{1,BC}(T_X)=\tfrac12[\theta]$ with
+$\theta=f^*\omega_{FS}$.  We use the conventional unnormalized
+Chern--Ricci form $-i\partial\bar\partial\log\det g$,
+which represents $2\pi c_{1,BC}(T_X)$.  Thus the real closed form
+$\pi\theta$ represents its class.  Applying
+\citet[Theorem 1.3]{STW2017} with background $\omega_0$ and prescribed
+form $\pi\theta$ proves \eqref{eq:C-Ricci} and preservation of the
+Aeppli class.  Finally C3.1 shows $[\theta]_{BC}\ne0$.  A metric
+with zero Chern--Ricci form would make $c_{1,BC}(T_X)=0$, which is
+impossible.
+\end{proof}
+
+\begin{claim}{C3.7}{Proved}{The fibre obstruction to SKT and astheno-K\"ahler metrics}
+The threefold $X$ admits no pluriclosed (SKT) metric and no
+astheno-K\"ahler metric.  The geometric input is the value $h=1$
+and the global Dolbeault class $q$ in A3.2, whose restriction to a
+regular fibre is $\eta=u\wedge w+6\gamma\wedge\delta$.
+More generally, it is enough that the real image of
+$H_A^{1,1}(X;\R)\to H_A^{1,1}(F;\R)$ be contained in
+$\R\eta$ for one regular fibre $F$.
+\end{claim}
+\begin{proof}
+We first compute the sign that matters.  Put
+$y=\operatorname{Im}\tau>0$, $m=\operatorname{Im}\mu$, and
+$\Delta=\operatorname{Im}\beta-6m^2/y<0$.
+For the marked period rows
+$\sigma_1=6\mu\gamma+\tau u+w$ and
+$\sigma_2=\beta\gamma+\mu u+\delta$ we have
+$\eta=u\wedge\sigma_1+6\gamma\wedge\sigma_2$.
+This proves that the real class $\eta$ has type $(1,1)$.
+The determinant of the four real period columns, with rows ordered
+as $\operatorname{Re}\zeta_1,\operatorname{Im}\zeta_1,
+\operatorname{Re}\zeta_2,\operatorname{Im}\zeta_2$, is
+$y\Delta<0$.  Since $\eta^2=12\gamma\wedge u\wedge w\wedge\delta$,
+\begin{equation}\label{eq:C-eta-negative}
+\int_{F,\mathrm{or}_{\C}}\eta^2=-12.
+\end{equation}
+Equivalently the invariant representative of $\eta$ has Hermitian
+coefficient matrix
+\[
+\frac1{y\Delta}
+\begin{pmatrix}\operatorname{Im}\beta&-6m\\-6m&6y\end{pmatrix},
+\qquad \det=\frac6{y\Delta}<0,
+\]
+so it has one positive and one negative eigenvalue.  The exact
+symbolic determinant and an exact rational example are checked in
+\texttt{code/c\_sign\_and\_fibre.py} by both eigenvalues and
+diagonal elimination.
+
+The explicit invariant fibre representative of $\gamma^{0,1}$ is
+\[
+\Gamma=\frac{i}{2\Delta}
+\left(d\bar\zeta_2-\frac myd\bar\zeta_1\right).
+\]
+Writing $Q_F$ for the invariant $(1,1)$ representative of $\eta$,
+direct exterior multiplication gives
+\[
+Q_F\wedge\Gamma=
+\frac1{4y\Delta}
+d\zeta_1\wedge d\bar\zeta_1\wedge d\bar\zeta_2,
+\quad
+\int_FQ_F\wedge\Gamma\wedge d\zeta_2=-1.
+\]
+This also proves the nonvanishing used in C1.2.
+
+When $h=1$, C2.1 identifies $H_A^{1,1}(X)$ with the sum of the
+one horizontal source and its vertical conjugate.  A representative
+$Q$ of $q$ is nonzero in the horizontal source, since its fibre
+restriction is nonzero whereas $d_1g$ restricts to zero.  Thus
+$[Q]_A,[\bar Q]_A$ form a basis.  Their restrictions to $F$ both
+equal the real class $\eta$.  The real image of the restriction map
+is therefore $\R\eta$.
+
+If $\omega$ were a pluriclosed positive real $(1,1)$ form, its
+restriction to $F$ would be pluriclosed and positive.  Average this
+restriction under translations of the compact complex torus $F$.
+The average $\omega_{\mathrm{av}}$ is invariant, closed, and
+strictly positive.  Translation preserves the Aeppli class: on a
+torus the $\partial\bar\partial$-lemma identifies Aeppli
+cohomology with the invariant $(p,q)$ forms, so the average is the
+unique invariant representative of that class.  This identification
+can also be checked Fourier mode by Fourier mode: each nonzero mode
+is a Koszul square for two independent type components of its real
+nonzero covector and contributes zero Aeppli cohomology.  Thus
+$[\omega_{\mathrm{av}}]=r\eta$ for some real $r$.
+But positivity gives $\int_F\omega_{\mathrm{av}}^2>0$, whereas
+\eqref{eq:C-eta-negative} gives $-12r^2\le0$, a contradiction.
+In dimension three the astheno-K\"ahler equation
+$\partial\bar\partial\omega^{n-2}=0$ is exactly the SKT equation.
+\end{proof}
+
+\begin{claim}{C3.8}{Open}{A literal global coefficient atlas for the generators}
+The invariant computations and all the metric types named above are
+settled for $X$.  The real restriction map
+\[
+r_b:H_A^{1,1}(X;\R)\longrightarrow H_A^{1,1}(F_b;\R)
+\]
+has image $\R\eta$ by A3.2 and C3.7.  Its source has real dimension
+two and its target has real dimension four.  This concerns
+cohomology classes and does not assert literal equality of arbitrary
+smooth representatives with an invariant fibre form.
+
+The formula \eqref{eq:C-G-Green} supplies a global $G$ after a metric
+choice.  For the standard primitive marking, $G_\gamma=G_0/12$
+represents $g_\gamma$ by C3.2.  There is a precise operator
+construction of $Q$ as well.  Fix a Hermitian metric on $X$ and a
+regular fibre $F$, identify $\eta$ with its real invariant form on
+$F$, and choose an orthonormal basis $e_1,e_2$ of the Dolbeault-harmonic
+$(1,1)$ forms for $\Delta_{\bar\partial}$.  Define
+\[
+\ell(e)=-\frac1{12}\int_F i_F^*e\wedge\eta,\qquad
+Q=\frac{\overline{\ell(e_1)}e_1+
+            \overline{\ell(e_2)}e_2}
+          {|\ell(e_1)|^2+|\ell(e_2)|^2}.
+\]
+The denominator is positive by A3.2 and
+$\int_F\eta^2=-12$.  The expression is independent of the
+orthonormal basis, is $\bar\partial$-closed, and has fibre
+Dolbeault class $\eta$.  Indeed the image of fibre restriction on
+$H^{1,1}_{\bar\partial}(X)$ is $\C\eta$, with kernel
+$\C d_1g$; the displayed functional measures exactly the coefficient
+of $\eta$, and the formula makes that coefficient one.
+
+These two formulas fix global smooth representatives by explicit
+elliptic operators and a finite normalization.  We have not evaluated
+their coefficient functions on a common atlas through the three
+special fibres.  The remaining task is therefore precise: compute
+the harmonic projector and the two displayed restriction integrals
+for one fully specified global Hermitian metric, or construct and
+evaluate a Cech representative and partition-of-unity correction
+with the same restrictions.  No numerical computation of those
+infinite-dimensional elliptic inverses was run.  This is the
+unfulfilled literal-coefficient requirement, not an undecided Hodge
+number, product, or existence of the Leray class.
+\end{claim}
