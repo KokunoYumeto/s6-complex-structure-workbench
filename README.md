@@ -46,6 +46,7 @@ times. The survey of 12 November (`survey_20261112/FINDINGS.md`) gives the statu
 | `codex_workspace/custody/`, `CUSTODY_INDEX.md`, `RELATED_SOURCE_DISPOSITIONS.md` | Records of how the source archives were verified and routed into the workspace | Local Codex workspace |
 | `yang_mills_repository_s6/` | The `s6/` folder of yang-mills-interacting-workbench at commit `dff1de9b`, including the status note of 5 October 2026 (`STATUS_2026-10-05.md`) and the public form of the 30 September consolidation | GitHub |
 | `survey_20261112/` | The survey: `FINDINGS.md`, `READING_NOTES.md`, the fifteen readers' notes and their scratch scripts | Survey of 12 November 2026 |
+| `pro_returns/` | The prompts sent to GPT-6 Astra in ChatGPT Pro mode and what came back, one folder per prompt: `PROMPT.md`, `RETURN_NOTES.md` and the unchanged return in `return/` | Returns of 12 November 2026 onwards |
 | `LEFT_OUT.tsv` | Every file of the sources that is not in this repository, with its size, SHA-256 and the reason | This publication |
 
 Links inside the copied folders keep their original form. Links in `yang_mills_repository_s6/` that point above the
@@ -75,6 +76,8 @@ All dates are 2026. Model names and effort settings are those given in the recor
   [10.5281/zenodo.23003415](https://doi.org/10.5281/zenodo.23003415).
 - **Survey of 12 November (`survey_20261112/`):** Claude Fable 5.2 at effort high, from its own reading and the notes
   of fifteen readers, also Claude Fable 5.2 at effort high. The survey is not a verification.
+- **Returns of the Pro prompts (`pro_returns/`):** GPT-6 Astra (OpenAI, ChatGPT Pro mode), from 12 November; not
+  reviewed by a person. The return notes and their filing: Claude Opus 5.5.
 - **This repository's selection, privacy pass and README:** Claude Opus 5.5.
 
 ## What was left out
@@ -94,8 +97,46 @@ All dates are 2026. Model names and effort settings are those given in the recor
   with the checker beside it) and duplicates.
 
 The prompts for GPT-6 Astra in ChatGPT Pro mode that the survey prepared (six in `FINDINGS.md`, since merged into five:
-`S6_01_INVARIANTS`, `S6_02_FAMILY`, `S6_03_CDP`, `S6_04_MAPS_MANIFOLDS`, `S6_05_ARITHMETIC`) are not in this commit;
-they follow in a later commit.
+`S6_01_INVARIANTS`, `S6_02_FAMILY`, `S6_03_CDP`, `S6_04_MAPS_MANIFOLDS`, `S6_05_ARITHMETIC`) are published with their
+returns in `pro_returns/` as each comes back (see "Returns of the Pro prompts" below); the prompts' background archives (the attached
+sources) are not published.
+
+## Returns of the Pro prompts
+
+### S6_01_INVARIANTS (returned 12 November 2026)
+
+AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode); not reviewed by a person. Folder:
+[`pro_returns/S6_01_INVARIANTS/`](pro_returns/S6_01_INVARIANTS/) (prompt `PROMPT.md`, notes `RETURN_NOTES.md`, the
+return unchanged in `return/`; check it there with `sha256sum -c MANIFEST_SHA256.txt`). The programs were returned by
+the model and have not been run by us. The model rendered pages 5, 62, 63 and 81 of [AC26] and extracted the text of
+pages 62-63 to check the passages it corrects; these four pages are kept in `return/outputs/` and `return/logs/` as
+part of its record.
+
+**What was asked.** An independent derivation of the Hodge diamond of the complex threefold X of [AC26] with the
+decisive scalar evaluated (Part A); the same invariants for the other members of the family (B); Frölicher,
+Bott-Chern and Aeppli cohomology and special metrics (C); the tangent cohomology, the Kuranishi space and every Picard
+twist (D); and the deformations and comb members (E).
+
+**What came back.** A 48-page paper (`return/S6_01_INVARIANTS_paper.pdf`) with 47 numbered statements (41 Proved,
+2 Known, 2 Refuted, 2 Open; `return/S6_01_INVARIANTS_results.csv`), the report `return/S6_01_INVARIANTS_report.md`,
+code, outputs and logs. Fourteen of the sixteen items are finished at outcome (a), C.3 and E.2 are unfinished:
+
+- A.1-A.4: the cotangent direct images; the scalar μ_s(0) = i·4√π/(3^{3/4}Γ(1/4)²), nonzero, computed to 100 digits
+  by two methods; h^{1,2} = h^{2,1} = 1, h^{1,1} = h^{2,2} = 2, independent of c; the cusp-torsion assertions of [AC26]
+  Remarks 1.3 and 9.21 corrected (statement A4.2, Refuted), the workbench's degree-one correction confirmed.
+- B.1-B.3: the same Hodge numbers for all admissible (3,4) twists and all coprime (3k,4l); K_X and the anticanonical
+  ring for each (3k,4l); the universal covers of the members with finite fundamental group have h^{1,1} = h^{2,2} = n+1.
+- C.1-C.2: E₁ ≠ E₂ = E_∞ with the differentials on a named basis; Bott-Chern numbers (1,0,2,2,2,2,1) and Aeppli
+  numbers (1,2,2,2,2,0,1) computed directly.
+- C.3, unfinished: the Bott-Chern algebra, the Picard map, the +12 sign, the non-Kähler degrees and the metric types
+  (no balanced, SKT, astheno-Kähler or Chern-Ricci-flat metric; Gauduchon metrics exist) are proved; evaluated
+  coefficients of the global representatives G, Q are missing.
+- D.1-D.4: h(T_X) = (1,1,1,0); the Kodaira-Spencer map of the family is an isomorphism; the Kuranishi space is a
+  smooth line; the tangent cohomology of every twist T_X ⊗ M, with r = 1 for every nonintegral twist.
+- E.1: small deformations keep the elliptic fibration and algebraic dimension one.
+- E.2, unfinished: for the comb members h(T_{X_m}) = (2m+1, 8m+1, 6m+1, 0) is proved, which refutes the universal
+  bound h⁰(T) ≤ 2 of [AC26] Remarks 1.2/9.26 and of HKP Corollary 1.3 (statement E2.4, Refuted); the Hodge-kernel
+  splitting, the torsion support and the obstruction maps remain open.
 
 ## Changes made for publication
 
