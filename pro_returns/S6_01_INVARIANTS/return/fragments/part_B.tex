@@ -1,0 +1,647 @@
+\section{B. Other logarithmic transformations and finite covers}
+
+\subsection{B.1. Comparison under logarithmic transformation}
+
+\begin{claim}{B1.0}{Proved}{The marked geometric dictionary on the first page}
+The lattice matrix, meridian orientations, line bundle and parameter
+comparison stated on the first page identify the two marked smooth
+families. The ambiguity in $u$ is exactly multiplication by the
+nonzero constant specifying Engel's reference linearization.
+\end{claim}
+\begin{proof}
+First quotient the period presentation by its last three columns,
+using $z=\zeta_1$ and $v=e^{2\pi i\zeta_2}$. The resulting principal
+$\C^*$-bundle over $\C/(\Z+\tau\Z)$ has factors
+\[
+ (z,v)\mapsto(z+1,v),\qquad
+ (z,v)\mapsto(z+\tau,e^{2\pi i\mu}v).
+\]
+For an odd theta function $\vartheta$, the meromorphic function
+$\vartheta(z-\mu)/\vartheta(z)$ has precisely these factors and
+divisor $(\mu)-(0)$. Thus this is the complement of the zero section
+of $L_\mu=\OO(P-O)$, with $P=\mu$ on the elliptic curve. The first
+period column acts by
+$(z,v)\mapsto(z+6\mu,e^{2\pi i\beta}v)$; its inverse covers $-6P$,
+as does Engel's contracting generator. Replacing $\beta^{\rm part}$
+by $\beta^{\rm part}+c$ multiplies this inverse lift by
+$e^{-2\pi i c}$. A change of reference lift multiplies its scale by
+a single constant $\lambda_0\in\C^*$, proving the asserted parameter
+comparison and naming its entire ambiguity.
+
+For the integral markings we apply the displayed matrix $Q$ to
+column lattice vectors. Exact integer multiplication gives
+$\det Q=-1$, $T_0Q=QA_1^{-1}$ and $T_1Q=QA_2^{-1}$, as recorded
+with the matrices in \texttt{b\_dictionary.py}. These inverses are
+required because the source meridians have opposite orientations.
+The product of the meridians gives
+$QM_0Q^{-1}=T_0^{-1}T_\infty^{-1}T_0$ with the stated cusp path.
+Finally $A_jv_j=v_j$, so inversion of an affine deck generator with
+translation $v_j/m_j$ changes that translation to $-v_j/m_j$.
+Applying $Q$ gives $a_0=-Qv_1/3$ and $a_1=-Qv_2/4$.
+This calculation identifies marked lattices and affine deck actions;
+it does not discard integral collar translations as if they were
+equal to zero.
+\end{proof}
+
+\begin{claim}{B1.1}{Proved}{The relative cohomology comparison}
+Fix the period family and cusp filling. Let $X'$ be obtained by any
+admissible translation twists and multiplicities $m_1=3k$, $m_2=4l$,
+where $k,l$ are positive integers. Write $D'=W+S'_1+S'_2$ and
+\[
+E'=\Omega^1_{X'}(\log D')/f'^*\Omega^1_B(\log\Sigma).
+\]
+The identity on the common smooth family induces isomorphisms on $B$
+\[
+R^qf_*\OO_X\simeq R^qf'_*\OO_{X'},\qquad
+R^qf_*E\simeq R^qf'_*E'\quad(0\le q\le2).
+\]
+These isomorphisms identify the logarithmic connecting maps $\kappa_q$.
+They also hold when the cusp collar is changed by an admissible translation.
+\end{claim}
+\begin{proof}
+We construct the comparison at every point. Over $B\setminus\Sigma$
+the two families are identified, and a translation acts trivially on
+$H^q(F,\OO_F)$ and $H^q(F,\Omega^1_F)$ for a complex torus $F$.
+For the second assertion, translation fixes the invariant holomorphic
+one-forms, and the first follows either from invariant Dolbeault forms
+or the exterior algebra $H^\bullet(F,\OO_F)=\bigwedge^\bullet H^1(F,\OO_F)$.
+These are statements about the induced maps on cohomology, including
+their holomorphic variation.
+
+At a point with original order $d=3$ or $4$, let
+$\widetilde f:T\to\Delta_z$ be the smooth proper torus model with
+coarse coordinate $q=z^d$. The new model is its pullback by $z=s^e$,
+where $m=de$, followed by the free cyclic quotient of order $m$.
+Smooth proper base change identifies the higher direct images upstairs
+with the pullbacks of those for $T$. The relative logarithmic cotangent
+bundle upstairs is precisely $\Omega^1_{T/\Delta_z}$ pulled back:
+the base logarithmic direction is killed in the quotient defining $E'$.
+The derivative of a translation contributes only a multiple of $ds$;
+it consequently acts on this quotient as ordinary translation on relative forms.
+
+Average over the cyclic action and choose holomorphic eigenframes.
+If a frame for $H^q(\OO)$ or $H^q(\Omega^1)$ has character
+$\zeta_d^{-a}$, $0\le a<d$, its original invariant extension is
+$z^a\OO_{\Delta_q}$. On the order-$m$ cover its character is
+$\zeta_m^{-ea}$, and its invariant extension is
+$s^{ea}\OO_{\Delta_q}=z^a\OO_{\Delta_q}$.
+Taking invariants is exact in characteristic zero; hence this equality
+is an equality of the extensions inside the common punctured-disc
+bundle, not only an equality of their ranks or degrees. A translation
+twist induces the identity on the cohomology just used and changes none
+of these lattices. This proves the comparison at both finite points,
+including the full nonreduced fibres.
+
+At the cusp the relative logarithmic forms have the global toric frame
+$d\log x_1,d\log x_2$, modulo $d\log q$.
+A toric gluing has the form
+$x_i\mapsto c_i(q)q^{b_i}x_i$ and therefore changes $d\log x_i$ by
+$(q c_i'/c_i+b_i)d\log q$. It induces the identity on the relative
+logarithmic quotient. The structure-sheaf comparison is also the identity
+on the normalization cochain complex. This verifies the cusp extension
+and the assertion about translated collars.
+
+The logarithmic cotangent exact sequences are isomorphic on the smooth
+base, so their connecting maps agree there under these comparisons.
+Their source and target sheaves are locally free by the local calculations
+in Part A and the eigenframe calculation above. A holomorphic map between
+vector bundles on a reduced curve which is zero on a dense open set is
+zero everywhere. Thus the connecting maps agree globally.
+\end{proof}
+
+\begin{claim}{B1.2}{Proved}{All admissible twists have the same Hodge numbers}
+For every family in B1.1 whose cusp is the one-component hexagonal filling,
+the direct images of the absolute cotangent sheaves are
+\[
+\begin{array}{c|ccc}
+ &R^0f'_*&R^1f'_*&R^2f'_*\\\hline
+\Omega^1_{X'}&\OO(-2)&\OO\oplus\OO(-1)^2&\OO\oplus\OO(-1)\\
+\Omega^2_{X'}&\OO(-2)\oplus\OO(-1)&\OO(-2)\oplus\OO(-1)^2&\OO
+\end{array}
+\]
+and $R^qf'_*\OO_{X'}=(\OO,\OO\oplus\OO(-1),\OO(-1))$.
+In particular every admissible $(3,4)$ member with
+$|12l_0-4l_1-3l_2|=1$ has the Hodge diamond of Part A.
+\end{claim}
+\begin{proof}
+B1.1 identifies the logarithmic direct images and their connecting maps.
+In Part A the cokernel of $\kappa_0$ is
+$\C_{p_1}\oplus\C_{p_2}$, and $\kappa_1$ is surjective with kernel
+$\OO\oplus\OO(-1)^2$. These statements therefore hold for $X'$.
+The residue sheaf of its normalized divisor has higher direct images
+\[
+R^0f'_*\OO_{\widetilde D'}=\C_{p_0}\oplus\C_{p_1}\oplus\C_{p_2},
+\quad R^1f'_*\OO_{\widetilde D'}=\C_{p_1}\oplus\C_{p_2},
+\quad R^2=0.
+\]
+Indeed the finite reductions are bielliptic, and the cusp normalization
+is rational. The base logarithmic residue is evaluation with weights
+$(1,m_1,m_2)$; its kernel is $\OO(1)(-\Sigma)=\OO(-2)$.
+On $H^1$ the residue of the invariant class $\gamma^{0,1}$ is
+$m_j\gamma^{0,1}|_{S'_j}\ne0$. The other eigenline has zero residue.
+The local rank-one image of $\kappa_0$ is its kernel, as follows either
+from the residue diagram of Part A or from the eigenframe calculation
+in B1.1. Thus the two finite skyscrapers cancel exactly. This proves
+the first row, with no surviving torsion.
+
+The proper flat map is Gorenstein of relative dimension two. Relative
+duality for $F=\Omega^1_{X'}$, using
+$F^*\otimes\omega_{X'/B}=\Omega^2_{X'}\otimes f'^*\OO(2)$,
+gives the second row because all sheaves in the first row are locally
+free. Coherent Leray on $\Pone$ gives every Hodge number. In particular
+$h^{p,0}=0$ for $p>0$ follows from these direct images and duality,
+so no separate invariance assumption about absolute forms is needed.
+\end{proof}
+
+\subsection{B.2. Higher multiplicities and the anticanonical ring}
+
+\begin{claim}{B2.1}{Proved}{Canonical bundles for all coprime multiplicities}
+Let $X=X_{3k,4l}(u)$ with admissible translation data as in
+\citet[Theorem 1.1 and Proposition 2.3]{ViaclovskyLog2026},
+$\gcd(3k,4l)=1$, and any nonzero $u$ in its construction domain.
+Then
+\[
+K_X=f^*\OO_B(-1)\otimes
+\OO_X\bigl((k-1)S_1+(3l-1)S_2\bigr).
+\]
+Moreover $(h^{0,q})_{q=0}^3=(1,1,0,0)$, $h^{p,0}=0$ for $p>0$,
+and $(h^{1,1},h^{1,2})=(2,1)$ for every such pair.
+Thus these Hodge numbers do not distinguish the multiplicity families.
+\end{claim}
+\begin{proof}
+The cited proposition supplies exactly the free cyclic quotients used
+in B1.1; its Theorem 1.1 supplies the stated sphere topology for its
+admissible choices. B1.2 computes the cohomology, with no use of that
+topological conclusion.
+For the canonical bundle we check the natural evaluation
+$f^*f_*\omega_{X/B}\to\omega_{X/B}$.
+The invariant relative determinant has weights $a_1=2k$ and $a_2=l$
+under the clockwise generators of orders $3k$ and $4l$. The pullback
+of a canonical form is $F(s)\,ds\wedge e$, where the character of
+$ds\wedge e$ is $\zeta_m^{1+a}$. Therefore its invariant coefficients
+are $s^{m-1-a}$ times an invariant function and a nowhere vanishing
+unit. Since the quotient of total spaces is etale, the evaluation
+vanishes to order $m-1-a$ on the reduced fibre downstairs. These orders
+are $k-1$ and $3l-1$. At the cusp the form
+$d\log x_1\wedge d\log x_2\wedge dq$ is a nowhere vanishing canonical
+frame in every smooth toric chart, so no cusp component occurs.
+
+By B1.1 and relative duality,
+$f_*\omega_{X/B}=(R^2f_*\OO_X)^*=\OO(1)$.
+The evaluation divisor just computed therefore gives
+$\omega_{X/B}=f^*\OO(1)\otimes
+\OO((k-1)S_1+(3l-1)S_2)$. Tensoring by $f^*K_B=f^*\OO(-2)$
+proves the formula.
+\end{proof}
+
+\begin{claim}{B2.2}{Proved}{The complete graded anticanonical ring}
+Put $m_1=3k$, $m_2=4l$, and $d=4l+3k-kl$.
+Choose integers $r,s$ with $m_2r+m_1s=1$ and set
+$\mathcal L=\OO_X(rS_1+sS_2)$.
+There is a graded algebra isomorphism
+\[
+\bigoplus_{n\ge0}H^0(X,-nK_X)
+\simeq\bigoplus_{n\ge0}\C[x,y]_{dn},
+\qquad\deg x=m_2,\quad\deg y=m_1,
+\]
+where the right-hand summand is assigned degree $n$.
+For negative weights the polynomial space is zero. Explicitly
+\[
+h^0(X,-nK_X)=
+\max\left\{1+n-\left\lceil\frac{n(k-1)}{3k}\right\rceil
+-\left\lceil\frac{n(3l-1)}{4l}\right\rceil,\,0\right\}.
+\]
+The integer $d$ is nonzero for admissible pairs. If $d<0$ the
+anticanonical ring is $\C$; if $d>0$ it is the indicated weighted
+Veronese ring. For $(k,l)=(1,1)$ it is
+$\C[U,V]$, $\deg U=1$, $\deg V=2$.
+\end{claim}
+\begin{proof}
+The divisor of $f^*(t/(t-1))$ is $m_1S_1-m_2S_2$.
+It follows, retaining this rational function as the comparison, that
+$\mathcal L^{m_2}\simeq\OO(S_1)$,
+$\mathcal L^{m_1}\simeq\OO(S_2)$ and
+$\mathcal L^{m_1m_2}\simeq f^*\OO(1)$.
+B2.1 then gives $-K_X=\mathcal L^d$.
+
+We first establish the required section algebra for every integer
+power of $\mathcal L$. If a meromorphic function represents a section
+of $\OO(aS_1+bS_2)$, it is holomorphic on every regular compact fibre
+and is constant there. It descends to the base on the smooth locus.
+On a cyclic cover $q=s^m$, the finite pole bound gives a Laurent
+expansion bounded below, and invariance leaves only powers divisible
+by $m$. Thus descent extends meromorphically across the finite point,
+with the exact valuation inequality $m\operatorname{ord}_q(h)+a\ge0$.
+The identical argument at the reduced cusp has $m=1$.
+Conversely each base function satisfying these bounds pulls back to
+an allowed section. Consequently, as subsheaves of meromorphic functions,
+\[
+f_*\OO(aS_1+bS_2)=
+\OO_B\left(\left\lfloor a/m_1\right\rfloor p_1+
+\left\lfloor b/m_2\right\rfloor p_2\right).
+\]
+This proves the displayed dimension formula using B2.1 and
+$h^0(\Pone,\OO(e))=\max\{e+1,0\}$.
+
+For the algebra, let $x,y$ be the canonical sections of
+$\OO(S_1),\OO(S_2)$ under the chosen identifications with powers of
+$\mathcal L$. Their powers $x^{m_1},y^{m_2}$ pull back two independent
+sections of $\OO_B(1)$, with zeros at the two distinct points.
+For any integer $j$, choose the unique residues
+$0\le a_0<m_1$, $0\le b_0<m_2$ for which
+$j-m_2a_0-m_1b_0=e m_1m_2$ is integral.
+The valuation formula identifies $H^0(\mathcal L^j)$ with
+$x^{a_0}y^{b_0}H^0(\OO_B(e))$. When $e\ge0$ a basis is
+\[
+x^{a_0+m_1i}y^{b_0+m_2(e-i)},\qquad0\le i\le e;
+\]
+when $e<0$ there are no sections. These are exactly the monomials of
+weighted degree $j$. Their multiplication is ordinary polynomial
+multiplication, proving the algebra assertion in every degree.
+When $k=l=1$, the weight-$6n$ monomials are generated by $y^2$ and
+$x^3$, of regraded degrees $1,2$.
+Finally, $d=0$ would imply $k\mid4l$ and $l\mid3k$; coprimality
+forces $k=l=1$, which instead gives $d=6$.
+\end{proof}
+
+For completeness the requested small pairs give the following exact data.
+Here $r_1,r_2$ are the coefficients in B2.1 and $P_n^-=h^0(-nK_X)$.
+\[
+\begin{array}{c|c|c|c|c|ccc}
+(k,l)&(m_1,m_2)&(r_1,r_2)&(\deg x,\deg y)&d&P^-_1&P^-_2&P^-_3\\\hline
+(1,1)&(3,4)&(0,2)&(4,3)&6&1&2&2\\
+(1,2)&(3,8)&(0,5)&(8,3)&9&1&1&2\\
+(3,1)&(9,4)&(2,2)&(4,9)&10&0&1&1\\
+(1,4)&(3,16)&(0,11)&(16,3)&15&1&1&1\\
+(5,1)&(15,4)&(4,2)&(4,15)&14&0&1&1\\
+(1,5)&(3,20)&(0,14)&(20,3)&18&1&1&1
+\end{array}
+\]
+The program \texttt{b\_families.py} enumerates all coprime pairs with
+$m_1m_2\le60$ and checks the floor formula against exact weighted
+monomial counting for $0\le n\le12$. These checks accompany the
+all-degree proof above.
+
+\subsection{B.3. Finite fundamental groups and universal covers}
+
+\begin{claim}{B3.1}{Proved}{Connected cyclic covers and the cusp comparison}
+For an admissible $(3,4)$ member with
+$n=|12l_0-4l_1-3l_2|>1$, let $\pi:Y\to X$ be the universal
+cover and $g=f\pi$. It is a finite etale holomorphic map of degree $n$.
+Every fibre of $g$ is connected; its finite reductions are bielliptic,
+its multiplicities are $3,4$, and its cusp $W_n$ normalizes to a
+disjoint union of $n$ copies of $\mathrm{dP}_6$.
+The pullback maps induce isomorphisms
+\[
+R^qf_*\OO_X\simeq R^qg_*\OO_Y,\qquad
+R^qf_*E_X\simeq R^qg_*E_Y.
+\]
+\end{claim}
+\begin{proof}
+We first derive the fundamental-group presentation from the fillings.
+The smooth family over the punctured base has zero section, so its
+fundamental group is $\Lambda\rtimes\langle x,y\rangle$, where
+$x,y$ are the clockwise meridians and act by $A_1,A_2$.
+On a finite filling the lifted affine generator has $m_j$th power
+translation by $v_j$: its $m_j$ translations add to $v_j$ because
+$A_jv_j=v_j$. Thus filling the normal disc imposes
+$x^3=t_{v_1}$ and $y^4=t_{v_2}$, with the signs fixed by the
+clockwise convention on the first page.
+
+The toric covering space of the cusp tube is simply connected.
+Indeed its dense torus has cocharacter lattice $\Z^3$; a loop may
+be perturbed into that torus, and the normal discs of the three rays
+$(0,1),(e_1,1),(e_2,1)$ kill a basis of this lattice.
+This argument applies also to the infinite fan, since a compact loop
+and a homotopy meet only finitely many of its locally finite charts.
+The same conclusion holds for the small tube: if a loop in
+$|t_c|<\epsilon$ bounds a disc in the toric space, the torus action
+$(x_1,x_2,t_c)\mapsto(x_1,x_2,a t_c)$ for a sufficiently small
+positive $a$ moves that compact disc into the tube, and the scaling
+homotopy of its boundary stays in the tube.
+The cusp quotient therefore has fundamental group
+$\Lambda/\Lambda_{\rm tor}$, and its toric meridian bounds the
+normal disc at fixed $x_1,x_2$. A translated collar makes this
+meridian $t_\mu y^{-1}x^{-1}$, where $\gamma(\mu)=l_0$.
+Van Kampen consequently kills $\Lambda_{\rm tor}$ and imposes
+$xy=t_\mu$.
+
+The normal closure of $\Lambda_{\rm tor}$ in the fibre lattice is
+$\ker\gamma$: it contains $\hat w,\hat\delta$ and
+$A_1\hat w+\hat w=\hat u$, and all these relations lie in
+$\ker\gamma$. The remaining generator $c$, the image of
+$\hat\gamma$, is central because $\gamma A_j=\gamma$.
+The presentation is thus
+$\langle c,x,y\mid c\text{ central},\ xy=c^{l_0},\
+x^3=c^{l_1},\ y^4=c^{l_2}\rangle$.
+Eliminating $y$ makes it abelian, with relation matrix
+\[
+ \begin{pmatrix}3&-l_1\\4&l_2-4l_0\end{pmatrix},
+ \qquad\det=-p.
+\]
+Its first Smith divisor is one because its entries include three
+and four; hence the group is $\Z/|p|$.
+After imposing $c=1$ the quotient has $x^3=x^4=1$, so it is trivial.
+Thus the image of the regular-fibre lattice, containing $c$, generates
+the entire group $\Z/n$. The same is true of each reduced special
+fibre. At a finite point the cyclic model is a smooth torus family
+over a disc, with a free affine finite-group action. An equivariant
+smooth trivialization, obtained by averaging a horizontal connection,
+contracts the disc to its centre and descends to a deformation
+retraction of the local total space onto $S_j$. Thus the image of
+the regular-fibre lattice in the local fundamental group is contained
+in the image of $\pi_1(S_j)$; the same holds after mapping to
+$\pi_1(X)$. At the cusp $\hat\gamma$ survives in
+$\Lambda/\Lambda_{\rm tor}$. The explicit normal-crossing contraction
+of the tube onto $W$ given in B3.3 identifies their fundamental groups,
+so the same generator is in the image of $\pi_1(W)$.
+The covering-space criterion therefore makes the inverse image of
+every fibre connected. Admissibility gives $3\nmid l_1$ and odd $l_2$,
+so $\gcd(n,12)=1$. The etale cover preserves fibre multiplicities.
+On a finite reduction it cannot kill the nontrivial order-$3$ or
+order-$4$ linear holonomy, since the covering degree is prime to it;
+the resulting finite torus quotient is again bielliptic.
+
+Normalization commutes with the finite etale base change $Y\to X$.
+The pullback of the simply connected normalization $\mathrm{dP}_6$
+is its trivial degree-$n$ cover. The double curves and triple points
+also pull back etale, and their incidence maps are the lifts of the
+original incidence maps. Consequently the dual complex is an actual
+degree-$n$ covering of the original real two-torus, rather than merely
+a cell complex with the same cell counts. It is connected because
+$W_n$ is connected. The normalization resolution for $\OO_{W_n}$
+has acyclic components, double curves and point strata. Its global
+cochain complex is consequently the cellular cochain complex of this
+dual torus, with $n,3n,2n$ cells. Thus its coherent cohomology is
+$(1,2,1)$, and pullback from $W$ is an isomorphism over $\C$:
+on a finite cover of real tori it is induced by a full-rank map of
+their integral first cohomology lattices.
+
+Modulo $d\log q$, the two toric forms $d\log x_i$ are invariant
+under all cusp gluings as computed in B1.1. Hence
+$E_X|_W=\OO_W^2$ and $E_Y|_{W_n}=\OO_{W_n}^2$,
+and the same pullback argument applies to their cohomology.
+Over a regular fibre, an isogeny of complex tori induces isomorphisms
+on $H^q(\OO)$ and $H^q(\Omega^1)$ over $\C$.
+At a finite fibre, make the cyclic base change. The map is an isogeny
+of the smooth torus families and induces isomorphisms of their
+cohomology bundles. Taking the same cyclic invariant eigenspaces
+descends these isomorphisms, including all nilpotent layers of the
+scheme fibre. Grauert base change at the cusp, and this explicit
+calculation at the finite points, prove the asserted bundle maps are
+isomorphisms on all of $B$.
+\end{proof}
+
+\begin{claim}{B3.2}{Proved}{Cotangent direct images and Hodge numbers of the covers}
+Write $T_n=\C_{p_0}^{\,n-1}$. Then
+\[
+\begin{array}{c|ccc}
+ &R^0g_*&R^1g_*&R^2g_*\\\hline
+\Omega^1_Y&\OO(-2)&\OO\oplus\OO(-1)^2\oplus T_n&\OO\oplus\OO(-1)\\
+\Omega^2_Y&\OO(-2)\oplus\OO(-1)&\OO(-2)\oplus\OO(-1)^2&\OO\oplus T_n
+\end{array}
+\]
+The splittings involving $T_n$ are not canonical.
+The only nonzero Hodge numbers of $Y$ are
+\[
+h^{0,0}=h^{0,1}=h^{3,2}=h^{3,3}=1,\quad
+h^{1,2}=h^{2,1}=1,\quad h^{1,1}=h^{2,2}=n+1.
+\]
+The original finite-fundamental-group threefold $X$ itself has the
+same Hodge diamond as the simply connected $(3,4)$ member.
+\end{claim}
+\begin{proof}
+B3.1 identifies the logarithmic cotangent sequence on cohomology,
+and therefore its connecting maps and direct images, with those of
+the original family. The normalized residue sheaf differs only at
+the cusp: its degree-zero cohomology there is now $\C^n$.
+The residue of a base logarithmic form is the diagonal vector
+$(1,\ldots,1)$, since each cusp component has multiplicity one.
+Its cokernel is $T_n$. The degree-one residues at the finite fibres
+cancel the same two skyscrapers as in B1.2. The long exact sequence
+therefore gives
+\[
+0\longrightarrow T_n\longrightarrow R^1g_*\Omega^1_Y
+\longrightarrow\OO\oplus\OO(-1)^2\longrightarrow0
+\]
+and the remaining entries of the first row. The extension splits
+because $\operatorname{Ext}^1(V,T_n)=H^1(V^*\otimes T_n)=0$
+for a vector bundle $V$ on $B$.
+
+For clarity relative duality must now be used in its derived form.
+For a sheaf $F$ locally free on the total space, it gives
+\[
+Rg_*(F^*\otimes\omega_{Y/B})
+\simeq R\mathcal Hom_B(Rg_*F,\OO_B)[-2].
+\]
+For $F=\Omega^1_Y$, the torsion in $R^1g_*F$ contributes
+$\mathcal Ext^1_B(T_n,\OO_B)$ in degree two of the right side.
+This is a length-$(n-1)$ skyscraper at $p_0$. After tensoring by
+$\OO(-2)$ it still has that length. The locally free parts dualize
+in complementary degrees, giving exactly the second row; the
+extension by the locally free quotient splits for the same reason
+as above. Coherent Leray computes the displayed Hodge numbers.
+For $X$ with one-component cusp, B1.2 already applies independently
+of its fundamental group.
+\end{proof}
+
+\begin{claim}{B3.3}{Proved}{Canonical rings and rational topology of the covers}
+For $X$ and $Y$ as above,
+\[
+K_Y=\pi^*K_X=\OO_Y(-2S'_2),\quad
+\bigoplus_{m\ge0}H^0(Y,-mK_Y)=\C[U,V],\quad
+\deg(U,V)=(1,2).
+\]
+The same ring holds for $X$.
+Over $\C$, the Betti numbers of $Y$ are
+$(1,0,n-1,0,n-1,0,1)$; its Fr\"olicher sequence degenerates at $E_2$.
+For every nontrivial character of the deck group, the character
+part of Dolbeault cohomology consists of one class in $(1,1)$ and
+one in $(2,2)$ and no others.
+\end{claim}
+\begin{proof}
+The canonical formula pulls back through an etale map, and
+$4S'_2=g^*p_2$. B3.1 gives $g_*\OO_Y=\OO_B$.
+The valuation argument in B2.2 therefore applies unchanged and proves
+the ring statement with all multiplication maps.
+
+The comparisons of B3.1 are pullback maps and identify the logarithmic
+cohomology bundles with the invariant part; the deck group acts
+trivially on those bundles. At the cusp its action on the $n$
+normalization components is the regular permutation representation.
+The quotient by the diagonal has each nontrivial character once.
+Thus the first-row additional skyscraper in B3.2 has precisely these
+characters, and duality gives the conjugate characters in its
+second-row additional skyscraper. All other cohomology is invariant
+and equal to that of $X$. Coherent Leray now proves the assertion
+about the Dolbeault character spaces.
+
+The de Rham complex and its Fr\"olicher sequence split under the
+idempotents of the finite deck group. A nontrivial character has just
+the two stated Dolbeault entries. No differential can connect them
+or connect either to another nonzero entry, so both survive.
+The invariant summand is the de Rham complex of $X$ by finite
+etale descent and averaging. We compute its rational topology here
+from the actual attachment maps; the integral homology assertion
+of AC26 is not used as an input. In the remainder of this proof
+all homology and cohomology coefficients are $\Q$.
+
+Let $N$ be a small closed cusp tube, $M=\partial N$, and
+$U=X\setminus\operatorname{int}N$. The space $U$ is covered by
+two pieces retracting onto $S_1,S_2$, whose intersection retracts
+onto a regular fibre $F$. The retractions are obtained from the
+equivariant smooth torus trivializations used in B3.1. The maps
+$F\to S_j$ are the central finite covering maps; translation of
+their origins induces the identity on their rational cohomology.
+Finite-cover transfer identifies their pullbacks with the invariant
+subspaces for $A_j$. Put
+\[
+ \psi_1=2u+w+3\delta,\qquad \psi_2=u+w+2\delta,
+ \qquad \eta=u\wedge w+6\gamma\wedge\delta.
+\]
+Direct substitution in $A_1,A_2$ shows that the invariant
+degree-one spaces are $\langle\gamma,\psi_j\rangle$ and the
+invariant degree-two spaces are
+$\langle\gamma\wedge\psi_j,\eta\rangle$.
+Their dimensions are two: the nontrivial eigenvalues of $A_j$ on
+the complementary plane are the inverse primitive third or fourth
+roots, so the exterior-square fixed space has exactly the two
+displayed generators.
+In the transfer-normalized dual homology bases, the two
+Mayer--Vietoris maps are therefore the following actual matrices:
+\[
+ \alpha_1=\begin{pmatrix}
+ 1&0&0&0\\0&2&1&3\\-1&0&0&0\\0&-1&-1&-2
+ \end{pmatrix},\qquad
+ \alpha_2=\begin{pmatrix}
+ 2&1&3&0&0&0\\0&0&6&1&0&0\\
+ -1&-1&-2&0&0&0\\0&0&-6&-1&0&0
+ \end{pmatrix}.
+\]
+The second matrix uses the ordered wedge basis
+$(\hat\gamma\hat u,\hat\gamma\hat w,\hat\gamma\hat\delta,
+\hat u\hat w,\hat u\hat\delta,\hat w\hat\delta)$.
+Both matrices have rank three, and
+$\ker\alpha_1=\Q\nu_0$, with
+$\nu_0=-\hat u-\hat w+\hat\delta$.
+Consequently
+\[
+ H_1(U)=\Q,\qquad
+ 0\longrightarrow\operatorname{coker}\alpha_2=\Q
+ \longrightarrow H_2(U)
+ \xrightarrow{\partial}\Q\nu_0\longrightarrow0.       \tag{B.1}
+\]
+The generator $\Theta\in H^1(U)$ is normalized by
+$\Theta|_F=\gamma$. The finite affine generators have
+$3\bar g_1=l_1c$, $4\bar g_2=l_2c$ in rational homology, where
+$c$ is the image of $\hat\gamma$ and $\Theta(c)=1$.
+For the toric meridian $a_0=t_\mu y^{-1}x^{-1}$ this gives the
+explicit collar value
+\[
+ \Theta(j_*a_0)=l_0-l_1/3-l_2/4=p/12.                 \tag{B.2}
+\]
+
+We justify the comparison with $N$ without assuming a collapse
+theorem from AC26. In each normal-crossing chart
+$t_c=z_1\cdots z_r$, $1\le r\le3$, choose the real vector field
+whose $z_i$ component is
+$-z_i|z_i|^{-2}/\sum_j|z_j|^{-2}$ off the divisor.
+It satisfies $\dot t_c=-t_c$ and has norm at most
+$C|t_c|^{1/r}$. A finite partition of unity preserves the first
+identity and gives a global field with norm at most
+$C'|t_c|^{1/3}$ after shrinking the tube. Extend it by zero on $W$.
+Its flow exists for all positive time, and its tail length is
+bounded by $3C'\epsilon^{1/3}e^{-T/3}$ after time $T$.
+Thus the flow converges uniformly to $W$ and gives a continuous
+strong deformation retraction fixing $W$. The same estimate proves
+continuity at the divisor and at the endpoint of the retraction.
+
+The constant-sheaf normalization resolution of $W$ has strata
+$\mathrm{dP}_6$, three copies of $\Pone$, and two points.
+Its row of degree-zero cohomology is
+\[
+ \Q\xrightarrow{0}\Q^3
+ \xrightarrow{(a,b,c)\mapsto(a-b+c,a-b+c)}\Q^2.
+\]
+The strata have no degree-one cohomology. This resolution therefore
+gives $H_1(N)=H_1(W)=\Q^2$, $H_4(N)=\Q[W]$ and $H_5(N)=0$;
+it also gives $e(W)=6-3\cdot2+2=2$.
+Poincare--Lefschetz duality for the compact smooth manifold with
+boundary $(N,M)$ now shows that $H_1(M)\to H_1(N)$ and
+$H_2(M)\to H_2(N)$ are surjective. For degree one the next
+relative group is $H_1(N,M)=H^5(N)=0$.
+For degree two the map to $H_2(N,M)=H^4(N)$ is the intersection
+pairing with $[W]$, which is zero because $W$ is the divisor of
+the global function $t_c$ on $N$. The Wang sequence for the
+boundary mapping torus, with $\rank(M_0-I)=2$, gives
+$\dim H_1(M)=3$. Its kernel to $H_1(N)$ is exactly
+$\Q a_0$: this meridian is nonzero under projection to the base
+circle and bounds its normal disc in $N$.
+
+We exhibit two classes in
+$K_2=\ker(H_2(M)\to H_2(N))$.
+For $\nu=\hat w,\hat\delta$, let $\xi_\nu$ be the two-torus
+obtained by translating the toric meridian around the angular
+circle $S^1_\nu$. In the chart $t_c=z_0z_1z_2$ corresponding to
+the rays $(0,1),(e_1,1),(e_2,1)$, these are the boundaries of
+$D^2_{z_0}\times S^1_{z_i}$ with the other coordinate fixed
+and the radii chosen so that $|t_c|=\epsilon$ on the boundary.
+They therefore bound in $N$ with the literal toric meridian;
+no choice of an unrecorded collar lift is being made.
+Cutting the meridian into the two arcs of the cover defining
+(B.1), the two cylinders have end circles differing by
+$(I-A_1^{-1})\nu$. With this orientation of the Mayer--Vietoris
+boundary, matrix multiplication gives
+\[
+ \partial j_*\xi_{\hat w}=-\nu_0,\qquad
+ \partial j_*\xi_{\hat\delta}=0.                       \tag{B.3}
+\]
+The affine translation of either endpoint has no effect on its
+homology class, which explains why this boundary formula is the
+same for every translation twist.
+
+Choose $\mathcal A\in H^2(U)$ restricting to $\eta$ on $F$;
+it exists by Mayer--Vietoris because the two transfer-normalized
+classes $\eta$ have equal restrictions. Fibrewise translation by
+$S^1_{\hat\delta}$ defines a global smooth action on $U$:
+$A_j\hat\delta=\hat\delta$, and all affine translations commute
+with this circle. Slant product of its action map with the circle
+defines $\iota:H^2(U)\to H^1(U)$. Naturality on $F$ gives
+$\iota\mathcal A|_F=\iota_{\hat\delta}\eta=-6\gamma$.
+The restriction $H^1(U)\to H^1(F)$ is injective by (B.1), so
+$\iota\mathcal A=-6\Theta$. By the definition of slant product,
+\[
+ \langle\mathcal A,j_*\xi_{\hat\delta}\rangle
+ =\langle\iota\mathcal A,j_*a_0\rangle=-p/2.           \tag{B.4}
+\]
+We may add the class pulled back from $(\Q\nu_0)^*$ under
+the boundary map in (B.1) so that
+$\langle\mathcal A,j_*\xi_{\hat w}\rangle=0$;
+this does not change its restriction to $F$ or (B.4).
+In the coordinates on $H_2(U)$ given by $\partial/\nu_0$ and
+this normalized pairing, the two actual attachment cycles have
+matrix
+\[
+ \bigl[j_*\xi_{\hat w}\ \ j_*\xi_{\hat\delta}\bigr]
+ =\begin{pmatrix}-1&0\\0&-p/2\end{pmatrix}.             \tag{B.5}
+\]
+It is invertible over $\Q$ because admissibility implies
+$p\ne0$. Thus the image of $K_2$ already fills $H_2(U)$.
+Likewise (B.2) says the image of $\ker(H_1(M)\to H_1(N))$
+is nonzero in $H_1(U)$. Using the surjectivity to $N$ just proved,
+Mayer--Vietoris for $X=U\cup N$ now gives $H_1(X)=H_2(X)=0$.
+Every other fibre has Euler number zero, so additivity over the
+three special fibres and the smooth torus bundle gives $e(X)=2$.
+Poincare duality then gives $b_4=b_5=0$ and $b_3=0$.
+This proves the asserted rational homology of $X$ for all admissible
+twists; the only changing determinant in (B.2)--(B.5) is a nonzero
+constant multiple of $p$. The integer matrices and all exterior-power
+identities were checked exactly in \texttt{code/b\_topology.py},
+with output \texttt{outputs/b\_topology.txt}.
+
+Part C's argument using this rational topology and the same Hodge
+table now gives degeneration of the invariant summand at $E_2$.
+Summing it with the nontrivial character spaces proves the Betti
+numbers and the degeneration statement for $Y$. In particular
+$e(Y)=2n$, as also follows from the covering degree.
+\end{proof}
