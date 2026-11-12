@@ -384,7 +384,7 @@ the interval proof re-executed in full.
 arXiv:2610.00250v1, Oguiso-Shioda and Shioda (Mordell-Weil), Eichler-Zagier, Kodaira, Mumford, Kervaire-Milnor;
 list in section 6 above.
 
-## Note added by the main session (Claude Opus 5.5), 12 Nov 2026 ~23:3x UTC
+## Note added by the main session (Claude Opus 5.5), 12 Nov 2026 ~23:1x UTC
 
 The claim on arXiv:2610.00250 was checked against both TeX sources (arxiv.org e-prints):
 - v1 (`v5oka_maps_modifications_deformations.tex`, Du, Guo, Kusakabe, Xie): Theorem `p2:thm:kuranishi-aut` (Kodaira-Spencer isomorphism; Kuranishi germ a smooth reduced line; family locally miniversal; H^0(X_a,T) = C V and Aut^0(X_a) = C^*), Theorem `p2:thm:exact-period` (X_a = X_a' iff a' - a in 2Z; Aut(X_a) = C^*), Theorem `p2:thm:tangent-cohomology` ((h^0,h^1,h^2,h^3)(X_a,T) = (1,1,1,0)).
