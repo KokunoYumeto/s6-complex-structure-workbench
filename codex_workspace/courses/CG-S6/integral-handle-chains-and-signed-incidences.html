@@ -1,0 +1,854 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integral handle chains and every incidence sign</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/integral-handle-chains-and-signed-incidences.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="integral-handle-chains">Integral handle chains and every
+incidence sign</h1>
+<p>Proof companion for CG-S6 lesson 7. GPT-6 Astra (OpenAI), Ultra, 10
+October 2026. New teaching exposition CC0. This chapter proves the exact
+integral chain complex of the original handle filtration, its
+singular-homology comparison, its signed intersection coefficients and
+the complete algebraic changes needed for middle-handle reduction. It
+retains the original matrices alongside every comparison map. The <a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven.</p>
+<h2 id="handle-filtration">1. The original filtration and its relative
+generators</h2>
+<p>Let <span class="math inline">\((C;M_-,M_+)\)</span> be a compact
+smooth <span class="math inline">\(n\)</span>-dimensional cobordism with
+its specified incoming collar and finite ordered handle presentation.
+The <a
+href="relative-morse-functions-and-original-handles.html#relative-morse-attachment">relative
+Morse construction</a> and <a
+href="rearranging-the-original-framed-handles.html#arrangement-interchange">index
+arrangement</a> supply this presentation on the actual cobordism. Denote
+the full presentation diffeomorphism by <span
+class="math inline">\(G\)</span>. All the maps below are carried into
+the original <span class="math inline">\(C\)</span> by its actual
+restrictions.</p>
+<p>Write <span
+class="math inline">\(A_{-1}=M_-\times[0,\epsilon]\)</span>, retaining
+the original positive collar length. Let <span
+class="math inline">\(A_p\)</span> be this collar with the handles of
+indices at most <span class="math inline">\(p\)</span> attached. The
+index-<span class="math inline">\(p\)</span> handles attach disjointly
+to <span class="math inline">\(\partial_+A_{p-1}\)</span>. Their
+original parameter domains and attaching maps are <span
+class="math display">\[
+\begin{aligned}
+H_{p,i}&amp;=D^p_{r_{p,i}}\times D^{n-p}_{s_{p,i}},&amp;
+T_{p,i}&amp;=S^{p-1}_{r_{p,i}}\times D^{n-p}_{s_{p,i}},\\
+\varphi_{p,i}&amp;:T_{p,i}\longrightarrow\partial_+A_{p-1},&amp;
+r_{p,i},s_{p,i}&amp;&gt;0.
+\end{aligned}
+\tag{1.1}
+\]</span> A zero-handle has empty attaching set and its first disk is a
+point. At index <span class="math inline">\(n\)</span> the second disk
+is a point. Retain all original corner comparisons. Orient each core by
+its ordered original <span class="math inline">\(u\)</span>-coordinates.
+These choices require no orientation of <span
+class="math inline">\(C\)</span>. Let <span
+class="math inline">\(m_p\)</span> count the index-<span
+class="math inline">\(p\)</span> handles.</p>
+<p>The actual handle inclusions induce <span class="math display">\[
+\bigoplus_i H_j(H_{p,i},T_{p,i};\mathbb Z)
+\xrightarrow{\ \cong\ }H_j(A_p,A_{p-1};\mathbb Z)
+=
+\begin{cases}
+\displaystyle\bigoplus_i\mathbb Z e_{p,i},&amp;j=p,\\
+0,&amp;j\ne p.
+\end{cases}
+\tag{1.2}
+\]</span> Here <span class="math inline">\(e_{p,i}\)</span> is the image
+of the original oriented core’s relative fundamental class.</p>
+<p>To prove this when <span class="math inline">\(p&gt;0\)</span>, let
+<span class="math inline">\(U\)</span> be the old body together with the
+new-handle portions <span
+class="math inline">\(\|u\|&gt;r_{p,i}/2\)</span>. It is open in the
+attachment quotient: its inverse image on the old body is that whole
+body, and on each new handle it is the indicated open relative annulus.
+The identity on the old body and <span class="math display">\[
+(u,v,t)\longmapsto
+\left(\frac{(1-t)\|u\|+tr_{p,i}}{\|u\|}u,v\right),
+\qquad 0\leq t\leq1,
+\tag{1.3}
+\]</span> on each annulus give a deformation retraction onto <span
+class="math inline">\(A_{p-1}\)</span>. On the attaching set these
+formulas are the identity for every <span
+class="math inline">\(t\)</span>. Continuity follows from the finite
+attachment quotient: it is a closed quotient from a compact space to a
+Hausdorff space, its product with the interval is again a quotient, and
+restriction to this open subset remains quotient.</p>
+<p>The triple sequence identifies <span
+class="math inline">\(H_j(A_p,A_{p-1})\)</span> with <span
+class="math inline">\(H_j(A_p,U)\)</span>. Excision removes the closed
+old body, whose closure is contained in the interior of <span
+class="math inline">\(U\)</span>, leaving the disjoint pairs <span
+class="math display">\[
+\left(
+\{\|u\|&lt;r_{p,i}\}\times D^{n-p}_{s_{p,i}},
+\{r_{p,i}/2&lt;\|u\|&lt;r_{p,i}\}\times D^{n-p}_{s_{p,i}}
+\right).
+\tag{1.4}
+\]</span> Doing the same collar and excision calculation on each <span
+class="math inline">\((H_{p,i},T_{p,i})\)</span> gives exactly (1.4).
+These maps commute with the original inclusions, proving the first
+isomorphism in (1.2).</p>
+<p>On that single handle pair, <span class="math display">\[
+(u,v,t)\longmapsto(u,(1-t)v)
+\tag{1.5}
+\]</span> is a homotopy of pairs onto <span
+class="math inline">\((D^p_{r_{p,i}},S^{p-1}_{r_{p,i}})\)</span>. It
+preserves the attaching subset as a set; it is not claimed to fix every
+attaching point or to extend as an ambient homotopy fixing the old body.
+The disk-pair sequence and sphere homology give <span
+class="math inline">\(\mathbb Z\)</span> in degree <span
+class="math inline">\(p\)</span> and zero elsewhere. At <span
+class="math inline">\(p=1\)</span>, its boundary is the precise class
+<span class="math inline">\([r_{1,i}]-[-r_{1,i}]\)</span>. The generator
+for every <span class="math inline">\(p\)</span> is the original core
+orientation. When <span class="math inline">\(p=0\)</span>, each new
+disk is a disjoint component before subsequent attachment and has <span
+class="math inline">\(H_0=\mathbb Z\)</span>, with higher homology zero
+by contraction. This proves (1.2) at that index too. Carrying the
+calculation by the retained rounding comparisons proves it on the actual
+smooth stages.</p>
+<h2 id="handle-chain-boundary">2. The boundary and the exact homology
+comparison</h2>
+<p>Put <span class="math inline">\(M=M_-\)</span>, included at collar
+parameter zero, and define <span class="math display">\[
+C_p=H_p(A_p,A_{p-1};\mathbb Z),\qquad C_{-1}=0.
+\tag{2.1}
+\]</span> Here the subscripted <span class="math inline">\(C_p\)</span>
+denotes the finite free chain group; <span
+class="math inline">\(C\)</span> remains the cobordism. For <span
+class="math inline">\(p\geq1\)</span> use the actual composite <span
+class="math display">\[
+d_p:
+H_p(A_p,A_{p-1})
+\xrightarrow{\partial}H_{p-1}(A_{p-1},M)
+\xrightarrow{q_{p-1}}H_{p-1}(A_{p-1},A_{p-2}),
+\qquad d_0=0.
+\tag{2.2}
+\]</span> The first map is the connecting map of the triple <span
+class="math inline">\(M\subset A_{p-1}\subset A_p\)</span>; the second
+is the relative quotient map.</p>
+<p>A singular representative <span class="math inline">\(z\)</span> of a
+class in <span class="math inline">\(C_p\)</span> has boundary in the
+preceding stage. Formula (2.2) takes that actual boundary modulo chains
+in <span class="math inline">\(A_{p-2}\)</span>. Its next boundary is
+zero since <span class="math inline">\(\partial^2z=0\)</span>. Changing
+representatives by a boundary or an old-stage chain changes the result
+by exactly a boundary or an earlier-stage chain. Thus <span
+class="math display">\[
+d_{p-1}d_p=0.
+\tag{2.3}
+\]</span> In particular the connecting map uses the singular boundary
+itself, with no extra sign.</p>
+<p>We prove the isomorphism, including its actual map, <span
+class="math display">\[
+H_p(C_*,d)=\ker d_p/\operatorname{im}d_{p+1}
+\xrightarrow{\ \cong\ }H_p(C,M;\mathbb Z).
+\tag{2.4}
+\]</span> The collar retracts onto <span
+class="math inline">\(M\)</span>, so all groups <span
+class="math inline">\(H_j(A_{-1},M)\)</span> vanish. Induction using
+(1.2) and the triple sequence gives <span class="math display">\[
+H_j(A_p,M)=0\qquad(j&gt;p).
+\tag{2.5}
+\]</span> Indeed the adjacent groups <span
+class="math inline">\(H_j(A_{p-1},M)\)</span> and <span
+class="math inline">\(H_j(A_p,A_{p-1})\)</span> both vanish in that
+range.</p>
+<p>Consequently the triple supplies the exact sequence <span
+class="math display">\[
+0\longrightarrow H_p(A_p,M)
+\xrightarrow{j_p}C_p
+\xrightarrow{\partial}H_{p-1}(A_{p-1},M).
+\tag{2.6}
+\]</span> The quotient <span class="math inline">\(q_{p-1}\)</span> is
+injective: its preceding term is <span
+class="math inline">\(H_{p-1}(A_{p-2},M)=0\)</span>. Therefore <span
+class="math inline">\(j_p\)</span> identifies <span
+class="math inline">\(H_p(A_p,M)\)</span> with <span
+class="math inline">\(\ker d_p\)</span>. At <span
+class="math inline">\(p=0\)</span> the same assertion follows directly
+from the collar’s zero relative groups.</p>
+<p>At the next stage the exact sequence is <span class="math display">\[
+C_{p+1}\xrightarrow{\partial}H_p(A_p,M)
+\longrightarrow H_p(A_{p+1},M)\longrightarrow0.
+\tag{2.7}
+\]</span> Under <span class="math inline">\(j_p\)</span>, its first
+arrow is exactly <span class="math inline">\(d_{p+1}\)</span>. Its
+quotient is thus <span class="math inline">\(H_p(C_*,d)\)</span>. Every
+subsequent attachment has index at least <span
+class="math inline">\(p+2\)</span>, so its relative groups in degrees
+<span class="math inline">\(p,p+1\)</span> vanish. The actual inclusions
+of these later stages induce isomorphisms on <span
+class="math inline">\(H_p(-,M)\)</span>. Their composite proves (2.4).
+Explicitly, lift a cycle by the unique inverse of <span
+class="math inline">\(j_p\)</span> onto its image, then apply the
+original inclusion into <span class="math inline">\(C\)</span>. At the
+top use <span class="math inline">\(A_{n+1}=A_n=C\)</span> and <span
+class="math inline">\(C_{n+1}=0\)</span>.</p>
+<p>Every step commutes with maps preserving the filtration and the
+incoming subspace: apply the map to the singular representative before
+taking its boundary or quotient. Hence carrying the presentation by its
+full <span class="math inline">\(G\)</span>, or by a proved full
+cobordism comparison, gives the actual homology map of the original
+cobordism. This proves more than agreement of group ranks.</p>
+<h2 id="handle-signed-incidence">3. The exact signed incidence</h2>
+<p>For <span class="math inline">\(1\leq p\leq n-1\)</span> the lower
+handle’s belt and normal coordinates are <span class="math display">\[
+B_{p,i}=\{0\}\times S^{n-p-1}_{s_{p,i}},
+\qquad (u_1,\ldots,u_p).
+\tag{3.1}
+\]</span> The original rounding comparison is unchanged near this belt.
+Carry these coordinates and their full derivatives along any later
+regular-product comparison. The upper attaching core is the original map
+<span class="math display">\[
+\alpha_{p+1,j}:S^p_{r_{p+1,j}}\longrightarrow\partial_+A_p,
+\tag{3.2}
+\]</span> oriented as the boundary of its ordered core, with the outward
+normal first.</p>
+<p>Arrange transverse intersection with the finitely many belts by a
+supported ambient isotopy, carrying the whole upper attaching tube. This
+follows from the finite chart-parameter construction in the
+belt-complement companion: near possible intersections, full coordinate
+translations span the belt’s normal space; Sard applied to the finite
+parameter family gives transversality. Compactness makes the
+zero-dimensional intersections finite. The ambient isotopy and its
+derivative transport the full framing.</p>
+<p>At <span class="math inline">\(z=\alpha_{p+1,j}(\theta)\in
+B_{p,i}\)</span>, set <span class="math display">\[
+c_{ij}(z)=
+\operatorname{sgn}\det\left(
+D(u\circ\alpha_{p+1,j})_\theta:
+T_\theta S^p_{r_{p+1,j}}\longrightarrow\mathbb R^p\right).
+\tag{3.3}
+\]</span> The domain has the specified boundary orientation; the target
+has the original ordered <span
+class="math inline">\(u\)</span>-orientation. Transversality makes this
+determinant nonzero. In another upper-boundary chart, the expression
+includes the derivative of the full inverse comparison before taking
+<span class="math inline">\(u\)</span>. The exact boundary is <span
+class="math display">\[
+d_{p+1}e_{p+1,j}=\sum_i a_{ij}e_{p,i},
+\qquad
+a_{ij}=\sum_{z\in\alpha_{p+1,j}(S^p)\cap B_{p,i}}c_{ij}(z).
+\tag{3.4}
+\]</span></p>
+<p>To prove this, collapse <span class="math inline">\(A_{p-1}\)</span>
+and all lower handles except <span
+class="math inline">\(H_{p,i}\)</span>, then project that handle’s pair
+by <span class="math inline">\((u,v)\mapsto u\)</span>. This defines the
+continuous map <span class="math display">\[
+q_i:A_p\longrightarrow D^p_{r_{p,i}}/S^{p-1}_{r_{p,i}},
+\qquad q_i(u,v)=[u]\quad\text{on }H_{p,i}.
+\tag{3.5}
+\]</span> It takes the old body and other handles to the collapsed
+boundary point. The definitions agree on every attaching set, so the
+attachment quotient proves continuity. On relative degree-<span
+class="math inline">\(p\)</span> homology it takes <span
+class="math inline">\(e_{p,i}\)</span> to the oriented disk generator
+and all other generators to zero, by (1.2).</p>
+<p>The connecting map takes an upper core’s relative fundamental class
+to its actual oriented attaching sphere, by taking the singular
+boundary. Thus <span class="math inline">\(a_{ij}\)</span> is the degree
+of <span class="math inline">\(q_i\alpha_{p+1,j}\)</span>. Its inverse
+image of the interior point <span class="math inline">\([0]\)</span>
+consists exactly of the belt intersections. The map there is <span
+class="math inline">\(u\)</span>; the rounded seam is away from <span
+class="math inline">\(u=0\)</span>, so contributes no inverse image.</p>
+<p>Choose disjoint small neighborhoods of these finitely many inverse
+images. The inverse function theorem gives local diffeomorphisms with
+the signs (3.3). Compactness outside these neighborhoods permits a
+target neighborhood of <span class="math inline">\([0]\)</span> with no
+other inverse image. Excision in local homology splits the source
+fundamental class into its local classes at those points. Each local map
+contributes its determinant sign. Naturality of the global-to-local
+fundamental-class map identifies the degree with their sum. This proves
+(3.4), without an assumption that every piece of the upper attaching
+sphere already has a special product form.</p>
+<h3 id="oriented-intersections-and-the-original-chart-sign">3.1.
+Oriented intersections and the original chart sign</h3>
+<p>If <span class="math inline">\(C\)</span> is oriented, retain the
+sign <span class="math display">\[
+\varepsilon_{p,i}=\operatorname{sgn}\det D(G|_{H_{p,i}})
+\in\{1,-1\},
+\tag{3.6}
+\]</span> where the determinant compares the original ordered <span
+class="math inline">\((u,v)\)</span>-coordinates with any positively
+oriented target chart. It is constant on the handle and independent of
+the target chart. No original coordinate is reversed to remove it.</p>
+<p>Orient the belt as the outward boundary of the ordered <span
+class="math inline">\(v\)</span>-disk. Let <span
+class="math inline">\(I_{ij}(z)\)</span> be the intersection sign of the
+ordered pair of tangent spaces <span class="math display">\[
+(T_z\alpha_{p+1,j}(S^p),T_zB_{p,i})
+\quad\text{in the boundary-oriented }\partial_+A_p.
+\tag{3.7}
+\]</span> For the outward radial vector <span
+class="math inline">\(\nu_v\)</span> and positive belt frame <span
+class="math inline">\(\beta\)</span>, the frame <span
+class="math inline">\((\nu_v,\beta)\)</span> orients the <span
+class="math inline">\(v\)</span>-disk. Moving <span
+class="math inline">\(\nu_v\)</span> past the <span
+class="math inline">\(p\)</span> original <span
+class="math inline">\(u\)</span>-vectors gives <span
+class="math display">\[
+\operatorname{or}(\partial_+A_p)
+=\varepsilon_{p,i}(-1)^p
+\operatorname{or}(u_1,\ldots,u_p,\beta).
+\tag{3.8}
+\]</span> Subtracting belt-tangent components from the attaching frame
+leaves the normal block in (3.3) and does not change the combined
+determinant. Therefore <span class="math display">\[
+I_{ij}(z)=\varepsilon_{p,i}(-1)^p c_{ij}(z),
+\qquad
+a_{ij}=\varepsilon_{p,i}(-1)^p
+\bigl(\alpha_{p+1,j}(S^p)\mathbin{\bullet}B_{p,i}\bigr).
+\tag{3.9}
+\]</span> In coordinates compatible with the ambient orientation, this
+is exactly the factor <span class="math inline">\((-1)^p\)</span> in
+Durst–Geiges–Kegel’s <span
+class="math inline">\(\partial_{p+1}\)</span>, original-author TeX lines
+363–397. Formula (3.9) retains the additional original chart sign when
+it is present.</p>
+<h3 id="integral-coefficients-without-an-ambient-orientation">3.2.
+Integral coefficients without an ambient orientation</h3>
+<p>Equations (1.2), (2.2) and (3.3) use separate core orientations only.
+Each belt has the global normal frame <span
+class="math inline">\(u\)</span>, whether or not its ambient boundary is
+orientable. Thus (3.4) computes ordinary integral singular homology for
+a nonorientable cobordism too. It does not require a globally oriented
+belt tangent bundle or ambient orientation.</p>
+<p>This extends the coefficient scope of the source’s lines 345–351,
+which restrict its oriented-intersection discussion to integral
+coefficients on oriented manifolds and mod-two coefficients otherwise.
+Its formula is unchanged in its stated setting: (3.3) is the extension,
+and (3.9) proves the comparison.</p>
+<p>For a direct integral example use the disk model of <span
+class="math inline">\(\mathbb RP^2\)</span>, identifying antipodal
+boundary points. Its cells are one each in dimensions zero, one and two.
+The one-cell has both endpoints at the zero-cell, so <span
+class="math inline">\(d_1=0\)</span>. Parametrize the positively
+oriented disk boundary by <span
+class="math inline">\(\theta\in[0,2\pi]\)</span>. The target <span
+class="math inline">\(\mathbb RP^1\)</span> has line-angle coordinate
+modulo <span class="math inline">\(\pi\)</span>, oriented by increasing
+angle; one traversal uses <span class="math inline">\([0,\pi]\)</span>.
+The attaching map is <span
+class="math inline">\(\theta\mapsto\theta\bmod\pi\)</span>, with two
+preimages of any angle and derivative <span
+class="math inline">\(+1\)</span> at both. Therefore its integral
+cellular boundary is <span class="math inline">\(2\)</span>. The
+disk-attachment proof in Sections 1–2, with the second disk factor a
+point, proves the singular-homology comparison for this cell
+presentation as well. Hence <span class="math display">\[
+0\longrightarrow\mathbb Z
+\xrightarrow{\;2\;}\mathbb Z
+\xrightarrow{\;0\;}\mathbb Z\longrightarrow0
+\tag{3.10}
+\]</span> has <span class="math inline">\(H_2=0,\ H_1=\mathbb Z/2,\
+H_0=\mathbb Z\)</span>. The normal-coordinate handle formula gives the
+same ordinary integral homology on an actual handle presentation by
+(2.4). The example retains the torsion that mod-two coefficients alone
+would not determine.</p>
+<figure>
+<img src="assets/handle-incidences-and-chain-comparison.svg"
+alt="The signed incidence and both commuting chain-comparison squares." />
+<figcaption aria-hidden="true">The signed incidence and both commuting
+chain-comparison squares.</figcaption>
+</figure>
+<p>The upper panel is a local tangent schematic, with only one normal
+and one belt direction drawn. The determinant uses all original normal
+coordinates. The lower panel gives the complete maps in (4.2); both
+adjacent differentials change. Full proofs are in Sections 3–4, with the
+human source comparison in Section 7.</p>
+<h2 id="handle-integral-bases">4. Full basis comparisons and integral
+reduction</h2>
+<p>Write chains as column vectors in the ordered original bases <span
+class="math inline">\(e_p=(e_{p,1},\ldots,e_{p,m_p})\)</span>, and let
+<span class="math inline">\(D_p\)</span> be the original differential
+matrix. For a recorded new basis <span class="math display">\[
+e&#39;_p=e_pU_p,\qquad U_p\in GL(m_p,\mathbb Z),
+\tag{4.1}
+\]</span> new coordinates <span class="math inline">\(x&#39;\)</span>
+mean original coordinates <span
+class="math inline">\(x=U_px&#39;\)</span>. Direct substitution gives
+the full chain comparison <span class="math display">\[
+D&#39;_p=U_{p-1}^{-1}D_pU_p,\qquad
+D_pU_p=U_{p-1}D&#39;_p.
+\tag{4.2}
+\]</span> Changing only degree <span class="math inline">\(p\)</span>
+therefore changes both neighbouring matrices: <span
+class="math display">\[
+D&#39;_p=D_pU_p,\qquad D&#39;_{p+1}=U_p^{-1}D_{p+1}.
+\tag{4.3}
+\]</span> For <span class="math inline">\(i\ne j\)</span>, the
+replacement <span class="math inline">\(e&#39;_{p,j}=e_{p,j}+\sigma
+e_{p,i}\)</span>, <span class="math inline">\(\sigma\in\mathbb
+Z\)</span>, is <span class="math display">\[
+U_p=I+\sigma E_{ij},\qquad U_p^{-1}=I-\sigma E_{ij},
+\tag{4.4}
+\]</span> because <span class="math inline">\(E_{ij}^2=0\)</span>. The
+matching subtraction in the next matrix is forced. Retain every original
+<span class="math inline">\(D_p\)</span>, its labels and the complete
+products <span class="math inline">\(U_p\)</span>.</p>
+<p>We prove the integral reduction needed here. For an integer matrix
+<span class="math inline">\(A\)</span>, allow row and column swaps,
+negations, and additions of integer multiples of one row or column to
+another. Each has an explicit integral inverse and determinant <span
+class="math inline">\(1\)</span> or <span
+class="math inline">\(-1\)</span>. Record their products as <span
+class="math inline">\(P\)</span> on the left and <span
+class="math inline">\(Q\)</span> on the right.</p>
+<p>Move a nonzero entry to the first position and make it positive,
+<span class="math inline">\(a&gt;0\)</span>. Divide each entry in its
+column by <span class="math inline">\(a\)</span>, subtracting the
+quotient multiple of the first row. A nonzero remainder, interchanged
+into the first row, strictly decreases the positive pivot. Do the same
+for the first row by column operations. Restart row and column clearing
+whenever a remainder gives a new pivot. Between decreases only finitely
+many entries are cleared. Eventually the first row and column have no
+other nonzero entries.</p>
+<p>If an entry <span class="math inline">\(b\)</span> in the remaining
+block is not divisible by <span class="math inline">\(a\)</span>, add
+its row to the first row. The first entry stays <span
+class="math inline">\(a\)</span>, and the relevant first-row entry
+becomes <span class="math inline">\(b\)</span>. Column division and a
+swap give a smaller positive pivot. Repeat. This can happen only
+finitely often; hence the first diagonal entry eventually divides every
+entry in the remaining block. Repeat the procedure on that smaller
+block. Its operations preserve divisibility by the first diagonal entry.
+Induction gives <span class="math display">\[
+PAQ=\operatorname{diag}(d_1,\ldots,d_\ell,0,\ldots,0),
+\qquad d_i&gt;0,\quad d_i\mid d_{i+1},
+\tag{4.5}
+\]</span> with the original rectangular dimensions and all
+transformations retained. Termination follows from the strictly
+decreasing positive pivot at each restart and then the decreasing block
+size.</p>
+<p>If <span class="math inline">\(A:\mathbb Z^s\to\mathbb Z^r\)</span>
+is onto, the transformed map is onto. It can have no zero target row and
+no diagonal <span class="math inline">\(d_i&gt;1\)</span>: those rows
+would miss respectively every nonzero integer or the integer <span
+class="math inline">\(1\)</span>. Thus <span class="math display">\[
+PAQ=[\,I_r\ \ 0\,],\qquad
+S=Q\begin{pmatrix}I_r\\0\end{pmatrix}P,\qquad
+K=Q\begin{pmatrix}0\\I_{s-r}\end{pmatrix}.
+\tag{4.6}
+\]</span> They satisfy <span class="math display">\[
+AS=I_r,\qquad AK=0,\qquad
+\ker A=K\mathbb Z^{s-r},\qquad
+[\,S\ K\,]
+=Q\begin{pmatrix}P&amp;0\\0&amp;I_{s-r}\end{pmatrix}\in GL(s,\mathbb Z).
+\tag{4.7}
+\]</span> Indeed a vector <span class="math inline">\(Qy\)</span> is in
+the kernel precisely when the first <span
+class="math inline">\(r\)</span> entries of <span
+class="math inline">\(y\)</span> vanish. The displayed block matrix
+proves the final assertion. These are integral maps on the original
+coordinates.</p>
+<p>For <span class="math inline">\(A=D_p\)</span>, the row operation
+<span class="math inline">\(P\)</span> means <span
+class="math inline">\(U_{p-1}=P^{-1}\)</span>, and the column operation
+<span class="math inline">\(Q\)</span> means <span
+class="math inline">\(U_p=Q\)</span>. Formula (4.2) also gives <span
+class="math inline">\(D&#39;_{p-1}=D_{p-1}P^{-1}\)</span> and <span
+class="math inline">\(D&#39;_{p+1}=Q^{-1}D_{p+1}\)</span>. The complete
+complex, including these terms, is the object being compared.</p>
+<h2 id="handle-unit-contraction">5. Removing an algebraic unit with all
+its maps</h2>
+<p>After recorded permutations of the original bases, suppose one
+differential in a finite based integral chain complex is <span
+class="math display">\[
+D_k=\begin{pmatrix}\varepsilon&amp;a\\b&amp;E\end{pmatrix},
+\qquad\varepsilon\in\{1,-1\}.
+\tag{5.1}
+\]</span> Use source coordinates <span
+class="math inline">\((x,y)\in\mathbb Z\oplus V\)</span> and target
+coordinates <span class="math inline">\((z,w)\in\mathbb Z\oplus
+F\)</span>. Retain the entire row <span
+class="math inline">\(a\)</span>, column <span
+class="math inline">\(b\)</span> and matrix <span
+class="math inline">\(E\)</span>. Define <span class="math display">\[
+S_0=E-b\varepsilon^{-1}a,\quad
+U_k=\begin{pmatrix}1&amp;-\varepsilon^{-1}a\\0&amp;I_V\end{pmatrix},
+\quad U_{k-1}=\begin{pmatrix}\varepsilon&amp;0\\b&amp;I_F\end{pmatrix}.
+\tag{5.2}
+\]</span> Their exact inverses are <span class="math display">\[
+U_k^{-1}=\begin{pmatrix}1&amp;\varepsilon^{-1}a\\0&amp;I_V\end{pmatrix},
+\quad U_{k-1}^{-1}=
+\begin{pmatrix}\varepsilon^{-1}&amp;0\\-b\varepsilon^{-1}&amp;I_F\end{pmatrix}.
+\tag{5.3}
+\]</span> Block multiplication gives <span class="math display">\[
+U_{k-1}^{-1}D_kU_k=\begin{pmatrix}1&amp;0\\0&amp;S_0\end{pmatrix}.
+\tag{5.4}
+\]</span> The first new lower basis vector is the actual boundary <span
+class="math inline">\(\varepsilon e+b\)</span> of the first old upper
+vector <span class="math inline">\(u\)</span>. The other new upper
+vectors are <span
+class="math inline">\(v-\varepsilon^{-1}a(v)u\)</span>. Their full
+expressions in original chains are retained.</p>
+<p>The first column of <span class="math inline">\(D&#39;_{k-1}\)</span>
+and the first row of <span class="math inline">\(D&#39;_{k+1}\)</span>
+vanish, by the two equations <span
+class="math inline">\(D&#39;_{k-1}D&#39;_k=0\)</span> and <span
+class="math inline">\(D&#39;_kD&#39;_{k+1}=0\)</span>. Thus the
+transformed complex is the direct sum of <span
+class="math inline">\(\mathbb Z\xrightarrow{1}\mathbb Z\)</span> in
+degrees <span class="math inline">\(k,k-1\)</span> and a complex <span
+class="math inline">\(C&#39;_*\)</span> with differential <span
+class="math inline">\(S_0\)</span> there. All other differentials are
+the remaining blocks of the complete transformed matrices (4.2).</p>
+<p>In original coordinates the projection <span
+class="math inline">\(p:C_*\to C&#39;_*\)</span> and inclusion <span
+class="math inline">\(i:C&#39;_*\to C_*\)</span> are identity elsewhere
+and <span class="math display">\[
+\begin{aligned}
+p_k(x,y)&amp;=y,&amp;i_k(y)&amp;=(-\varepsilon^{-1}ay,y),\\
+p_{k-1}(z,w)&amp;=w-b\varepsilon^{-1}z,&amp;
+i_{k-1}(w)&amp;=(0,w).
+\end{aligned}
+\tag{5.5}
+\]</span> They are chain maps, being the direct-sum projection and
+inclusion carried by (5.2). At the displayed differential this says
+<span class="math display">\[
+p_{k-1}D_k(x,y)
+=bx+Ey-b\varepsilon^{-1}(\varepsilon x+ay)=S_0y,
+\qquad D_ki_k(y)=(0,S_0y).
+\tag{5.6}
+\]</span> Let the degree-one map <span class="math inline">\(h\)</span>
+be zero except for <span class="math display">\[
+h_{k-1}(z,w)=(\varepsilon^{-1}z,0).
+\tag{5.7}
+\]</span> Then <span class="math display">\[
+pi=1,\quad 1-ip=dh+hd,\quad h^2=0,\quad ph=0,\quad hi=0.
+\tag{5.8}
+\]</span> For the middle identity, in degree <span
+class="math inline">\(k\)</span> both sides send <span
+class="math inline">\((x,y)\)</span> to <span
+class="math inline">\((x+\varepsilon^{-1}ay,0)\)</span>; in degree <span
+class="math inline">\(k-1\)</span> they send <span
+class="math inline">\((z,w)\)</span> to <span
+class="math inline">\((z,b\varepsilon^{-1}z)\)</span>. In every other
+degree both vanish. The other assertions follow from (5.5)–(5.7). Thus
+<span class="math inline">\(i,p\)</span> induce inverse homology
+isomorphisms, with the full correction <span
+class="math inline">\(b\varepsilon^{-1}a\)</span> preserved.</p>
+<p>More generally, every finite acyclic complex of finite free abelian
+groups has an explicit integral contraction. Put <span
+class="math inline">\(B_k=\ker d_k=\operatorname{im}d_{k+1}\)</span>.
+These groups are free: applying (4.5) to <span
+class="math inline">\(d_k\)</span> identifies its kernel with the free
+coordinates in its zero columns, since a nonzero integer diagonal entry
+has zero kernel in <span class="math inline">\(\mathbb Z\)</span>. Carry
+that basis back by the recorded <span class="math inline">\(Q\)</span>.
+In these bases the map <span class="math inline">\(d_{k+1}:C_{k+1}\to
+B_k\)</span> is onto, so (4.6) supplies a section <span
+class="math inline">\(t_k:B_k\to C_{k+1}\)</span>. Use zero maps at the
+end zero groups and put <span class="math display">\[
+h_k=t_k(1-t_{k-1}d_k).
+\tag{5.9}
+\]</span> The parenthesized expression lands in <span
+class="math inline">\(B_k\)</span>, because <span
+class="math inline">\(d_kt_{k-1}\)</span> is identity on <span
+class="math inline">\(B_{k-1}\)</span>. Directly, <span
+class="math display">\[
+d_{k+1}h_k=1-t_{k-1}d_k,\qquad
+h_{k-1}d_k=t_{k-1}d_k,
+\tag{5.10}
+\]</span> where the second equation uses <span
+class="math inline">\(d_{k-1}d_k=0\)</span>. Hence <span
+class="math inline">\(dh+hd=1\)</span>. Also <span
+class="math inline">\((1-t_kd_{k+1})t_k=0\)</span>, giving <span
+class="math inline">\(h_{k+1}h_k=0\)</span>. This proves the contraction
+on the original groups. It does not turn an algebraic unit into a unique
+geometric trajectory; realizing the maps geometrically is the next
+step.</p>
+<h2 id="handle-six-seven">6. The two complete receiving
+calculations</h2>
+<p>For the original twice-punctured <span
+class="math inline">\(X\)</span>, lesson 7 proves that both boundary
+inclusions are homotopy equivalences. Hence <span
+class="math inline">\(H_*(C,M_-;\mathbb Z)=0\)</span>. The completed
+low-index removal leaves only indices <span
+class="math inline">\(2,\ldots,n-2\)</span>, preserving <span
+class="math inline">\(C\)</span> and the actual boundary inclusions.
+Formula (2.4) therefore makes its original incidence complex
+acyclic.</p>
+<h3 id="dimension-six">6.1. Dimension six</h3>
+<p>Retain its original groups and matrices: <span
+class="math display">\[
+0\longrightarrow\mathbb Z^t
+\xrightarrow{\,B=D_4\,}\mathbb Z^s
+\xrightarrow{\,A=D_3\,}\mathbb Z^r
+\longrightarrow0.
+\tag{6.1}
+\]</span> Exactness means <span class="math inline">\(AB=0\)</span>,
+<span class="math inline">\(A\)</span> onto, <span
+class="math inline">\(B\)</span> injective and <span
+class="math inline">\(\operatorname{im}B=\ker A\)</span>. Choose the
+integral section <span class="math inline">\(S\)</span> of <span
+class="math inline">\(A\)</span> from (4.6). Then <span
+class="math display">\[
+U_3=[\,S\ B\,]:\mathbb Z^r\oplus\mathbb Z^t
+\xrightarrow{\ \cong\ }\mathbb Z^s,
+\tag{6.2}
+\]</span> because every <span class="math inline">\(x\)</span> has the
+unique expression <span class="math display">\[
+x=S(Ax)+B\,B^{-1}(x-SAx),\qquad
+U_3^{-1}x=(Ax,B^{-1}(x-SAx)).
+\tag{6.3}
+\]</span> The domain of <span class="math inline">\(B^{-1}\)</span> here
+is exactly <span class="math inline">\(\operatorname{im}B=\ker
+A\)</span>. The vector <span class="math inline">\(x-SAx\)</span> lies
+there since <span class="math inline">\(AS=I_r\)</span>; exactness gives
+existence and injectivity gives uniqueness. Thus <span
+class="math inline">\(s=r+t\)</span>, and both maps are integral.
+Applying the retained integer algorithm computes its inverse matrix if
+desired; (6.3) specifies it independently of those choices.</p>
+<p>With <span class="math inline">\(U_2=I_r,\ U_4=I_t\)</span>, the full
+transformed maps are <span class="math display">\[
+AU_3=[\,I_r\ \ 0\,],\qquad
+U_3^{-1}B=\begin{pmatrix}0\\I_t\end{pmatrix}.
+\tag{6.4}
+\]</span> The original-coordinate contraction is <span
+class="math display">\[
+h_2=S,\qquad h_3=B^{-1}(I_s-SA),\qquad h_4=0.
+\tag{6.5}
+\]</span> Substitution gives every identity: <span
+class="math display">\[
+Ah_2=I_r,\qquad Bh_3+h_2A=I_s,\qquad h_3B=I_t.
+\tag{6.6}
+\]</span> These specify the integral changes to realize. An algebraic
+intersection number <span class="math inline">\(1\)</span> is not yet a
+count of exactly one geometric intersection point.</p>
+<h3 id="dimension-seven">6.2. Dimension seven</h3>
+<p>For a simply connected seven-dimensional <span
+class="math inline">\(h\)</span>-cobordism the corresponding original
+acyclic complex is <span class="math display">\[
+0\longrightarrow\mathbb Z^u
+\xrightarrow{\,D=D_5\,}\mathbb Z^t
+\xrightarrow{\,B=D_4\,}\mathbb Z^s
+\xrightarrow{\,A=D_3\,}\mathbb Z^r
+\longrightarrow0.
+\tag{6.7}
+\]</span> Use (4.6) for <span class="math inline">\(S\)</span> and <span
+class="math inline">\(K\)</span>, where <span
+class="math inline">\(AS=I_r\)</span> and <span
+class="math inline">\(K\mathbb Z^{s-r}=\ker A\)</span>. Define <span
+class="math display">\[
+\widetilde B=K^{-1}B:\mathbb Z^t\longrightarrow\mathbb Z^{s-r}.
+\tag{6.8}
+\]</span> The inverse-coordinate map <span
+class="math inline">\(K^{-1}\)</span> has domain <span
+class="math inline">\(\operatorname{im}K\)</span>. This definition is
+valid because <span class="math inline">\(AB=0\)</span>, and the map is
+onto because <span class="math inline">\(\operatorname{im}B=\ker
+A\)</span>. Choose an integral section <span
+class="math inline">\(L\)</span> of <span
+class="math inline">\(\widetilde B\)</span> by (4.6); thus <span
+class="math inline">\(BL=K\)</span>.</p>
+<p>The full comparison matrices are <span class="math display">\[
+U_3=[\,S\ K\,],\qquad U_4=[\,L\ D\,].
+\tag{6.9}
+\]</span> The first is an isomorphism by (4.7). Since <span
+class="math inline">\(\ker\widetilde B=\ker
+B=\operatorname{im}D\)</span> and <span class="math inline">\(D\)</span>
+is injective, the same argument as (6.3) proves <span
+class="math display">\[
+U_4^{-1}y=(\widetilde By,D^{-1}(y-L\widetilde By)).
+\tag{6.10}
+\]</span> Thus <span class="math inline">\(U_4\)</span> is an integral
+isomorphism and <span class="math inline">\(t=(s-r)+u\)</span>. With
+<span class="math inline">\(U_2=I_r,\ U_5=I_u\)</span>, all three
+transformed differentials are <span class="math display">\[
+\begin{aligned}
+AU_3&amp;=[\,I_r\ \ 0\,],\\
+U_3^{-1}BU_4&amp;=\begin{pmatrix}0&amp;0\\I_{s-r}&amp;0\end{pmatrix},\\
+U_4^{-1}D&amp;=\begin{pmatrix}0\\I_u\end{pmatrix}.
+\end{aligned}
+\tag{6.11}
+\]</span> The dimensions of every block are fixed by (6.7) and
+(6.9).</p>
+<p>In the original bases the contraction is <span
+class="math display">\[
+h_2=S,\qquad
+h_3=LK^{-1}(I_s-SA),\qquad
+h_4=D^{-1}(I_t-L\widetilde B),\qquad h_5=0.
+\tag{6.12}
+\]</span> The two inverse-coordinate maps are evaluated only on <span
+class="math inline">\(\ker A\)</span> and <span
+class="math inline">\(\ker B\)</span>, respectively. The identities are
+<span class="math display">\[
+Ah_2=I_r,\quad Bh_3+h_2A=I_s,\quad
+Dh_4+h_3B=I_t,\quad h_4D=I_u.
+\tag{6.13}
+\]</span> For example <span class="math inline">\((I_s-SA)B=B\)</span>
+gives <span class="math inline">\(h_3B=L\widetilde B\)</span>, while
+<span class="math inline">\(Dh_4=I_t-L\widetilde B\)</span>; their sum
+is exactly <span class="math inline">\(I_t\)</span>. The others follow
+by substituting <span class="math inline">\(BL=K,\ \widetilde BL=I,\
+AB=0,\ BD=0\)</span> into (6.12). All the constructions include rank
+zero: empty groups and their unique maps replace the corresponding
+blocks, with no pivot required.</p>
+<h2 id="handle-chain-sources">7. Sources and the next geometric
+calculation</h2>
+<p>The human source read is Sebastian Durst, Hansjörg Geiges and Marc
+Kegel, <a href="https://arxiv.org/abs/1811.09055v1"><em>Handle homology
+of manifolds</em>, arXiv:1811.09055v1</a>, original-author file
+handle-homology.tex, all 987 lines, SHA-256
+<code>4c17e92832270837c5efc26807292fd16697808a8b5e41224be8d12ef0842b5f</code>.
+Its intact source archive has SHA-256
+<code>03aba5b9b2534037965b041580cc83f19354f886e81ce4848f20413abe4578eb</code>.
+The original TeX was read; no PDF was used for that reading.</p>
+<p>Relevant locators are lines 205–307 for the handle arrangement used
+there; 316–403 for orientations and the boundary factor; 407–574 for the
+geometric proof that the boundary squares to zero; 611–750 for slides
+and both adjacent matrices; 754–867 for cancellation and its algebra;
+and 903–940 for duality. Lines 590–603 invoke Cerf’s theorem. Our
+homology comparison does not use that unproved prerequisite: Sections
+1–2 give the direct singular-chain and original-filtration argument.</p>
+<p>The included <a
+href="sources/thom-classes-and-euler-classes.source.txt">Thom and
+Euler source</a>, Sections 1–3, supplies singular chains, relative
+homotopies, subdivision, excision and sphere homology. The included <a
+href="sources/gysin-sequence-and-projective-splitting.source.txt">Gysin
+and projective source</a>, Section 2, supplies the relative
+disk-attachment comparison. Section 1 here proves the actual
+thick-handle comparison, without treating a thick handle as an already
+attached cell. The full original coordinate and rounding maps remain in
+the cited relative-Morse and arrangement companions.</p>
+<p>Equation (3.3) extends the coefficient scope of the human source, and
+(3.9) proves the comparison including the original chart sign. Sections
+4–6 prove the full algebraic transformations and contractions. These are
+teaching derivations; no novelty or independent review is claimed.</p>
+<p>The <a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven. Formula (3.4) gives their signed incidences. The actual framed
+Whitney construction must remove opposite pairs, with its dimensions and
+complement hypotheses proved for each stage, before the resulting unique
+trajectories enter the cancellation proof. The six-dimensional receiving
+complex is (6.1); the seven-dimensional one is (6.7). The linked slide
+proof supplies the geometric operations specified by this algebra; the
+linked Whitney and actual-Morse companions now complete the subsequent
+geometric and trajectory cancellations.</p>
+<h2 id="handle-chain-exercises">8. Two complete calculations</h2>
+<h3
+id="exercise-8.1.-an-acyclic-complex-whose-first-row-has-no-unit">Exercise
+8.1. An acyclic complex whose first row has no unit</h3>
+<p>Retain <span class="math display">\[
+A=\begin{pmatrix}2&amp;3&amp;5\end{pmatrix},\qquad
+B=\begin{pmatrix}-3&amp;-4\\2&amp;1\\0&amp;1\end{pmatrix}.
+\tag{8.1}
+\]</span> Prove exactness of <span class="math inline">\(0\to\mathbb
+Z^2\xrightarrow B\mathbb Z^3\xrightarrow A\mathbb Z\to0\)</span>, and
+give its full comparison and contraction without dividing a column by
+its coefficient.</p>
+<p><strong>Solution.</strong> Put <span class="math display">\[
+S=\begin{pmatrix}-1\\1\\0\end{pmatrix},\quad
+U=[\,S\ B\,]=
+\begin{pmatrix}-1&amp;-3&amp;-4\\1&amp;2&amp;1\\0&amp;0&amp;1\end{pmatrix},\quad
+U^{-1}=\begin{pmatrix}2&amp;3&amp;5\\-1&amp;-1&amp;-3\\0&amp;0&amp;1\end{pmatrix}.
+\tag{8.2}
+\]</span> Multiplication in both orders gives the identity; <span
+class="math inline">\(\det U=1\)</span>. Its first column maps under
+<span class="math inline">\(A\)</span> to <span
+class="math inline">\(1\)</span> and the other two to zero. Those last
+columns are precisely <span class="math inline">\(B\)</span>, so <span
+class="math inline">\(AU=(1,0,0)\)</span> and <span
+class="math inline">\(U^{-1}B\)</span> consists of the last two columns
+of <span class="math inline">\(I_3\)</span>. This proves all three
+exactness assertions.</p>
+<p>The original-coordinate contraction is <span class="math display">\[
+h_2=\begin{pmatrix}-1\\1\\0\end{pmatrix},\qquad
+h_3=\begin{pmatrix}-1&amp;-1&amp;-3\\0&amp;0&amp;1\end{pmatrix}.
+\tag{8.3}
+\]</span> One has <span class="math inline">\(Ah_2=1,\ h_3B=I_2,\
+h_3h_2=0\)</span>, and <span class="math display">\[
+Bh_3=\begin{pmatrix}3&amp;3&amp;5\\-2&amp;-2&amp;-5\\0&amp;0&amp;1\end{pmatrix},
+\qquad
+h_2A=\begin{pmatrix}-2&amp;-3&amp;-5\\2&amp;3&amp;5\\0&amp;0&amp;0\end{pmatrix}.
+\tag{8.4}
+\]</span> Their sum is <span class="math inline">\(I_3\)</span>. The
+original coefficients <span class="math inline">\(2,3,5\)</span> and
+both columns of <span class="math inline">\(B\)</span> are retained. The
+integral combination <span class="math inline">\(3-2=1\)</span>,
+specified by <span class="math inline">\(S\)</span>, gives the section
+despite the absence of a unit entry in <span
+class="math inline">\(A\)</span>.</p>
+<h3
+id="exercise-8.2.-a-negative-pivot-and-every-correction-term">Exercise
+8.2. A negative pivot and every correction term</h3>
+<p>For the two-term differential <span class="math display">\[
+D_k=\begin{pmatrix}-1&amp;2&amp;-3\\4&amp;7&amp;11\\-5&amp;13&amp;17\end{pmatrix},
+\tag{8.5}
+\]</span> compute the retained differential, projection, inclusion,
+homotopy and homology after removing its first algebraic unit.</p>
+<p><strong>Solution.</strong> The original blocks are <span
+class="math display">\[
+\varepsilon=-1,\qquad a=(2,-3),\qquad
+b=\begin{pmatrix}4\\-5\end{pmatrix},\qquad
+E=\begin{pmatrix}7&amp;11\\13&amp;17\end{pmatrix}.
+\tag{8.6}
+\]</span> Therefore <span class="math display">\[
+S_0=E+ba
+=\begin{pmatrix}7&amp;11\\13&amp;17\end{pmatrix}
++\begin{pmatrix}8&amp;-12\\-10&amp;15\end{pmatrix}
+=\begin{pmatrix}15&amp;-1\\3&amp;32\end{pmatrix}.
+\tag{8.7}
+\]</span> The maps in the original coordinates are <span
+class="math display">\[
+\begin{aligned}
+p_k(x,y_1,y_2)&amp;=(y_1,y_2),&amp;
+i_k(y_1,y_2)&amp;=(2y_1-3y_2,y_1,y_2),\\
+p_{k-1}(z,w_1,w_2)&amp;=(w_1+4z,w_2-5z),&amp;
+i_{k-1}(w_1,w_2)&amp;=(0,w_1,w_2),\\
+h_{k-1}(z,w_1,w_2)&amp;=(-z,0,0).
+\end{aligned}
+\tag{8.8}
+\]</span> Substitution in (8.5) verifies both chain-map equations and
+<span class="math inline">\(1-ip=dh+hd\)</span>, including the negative
+pivot sign.</p>
+<p>Swap the two columns of <span class="math inline">\(S_0\)</span>, add
+<span class="math inline">\(32\)</span> times the first row to the
+second, add <span class="math inline">\(15\)</span> times the first
+column to the second, and negate the first row. The successive matrices
+are <span class="math display">\[
+\begin{pmatrix}-1&amp;15\\32&amp;3\end{pmatrix},\quad
+\begin{pmatrix}-1&amp;15\\0&amp;483\end{pmatrix},\quad
+\begin{pmatrix}-1&amp;0\\0&amp;483\end{pmatrix},\quad
+\begin{pmatrix}1&amp;0\\0&amp;483\end{pmatrix}.
+\tag{8.9}
+\]</span> Every operation is integral and invertible. Hence <span
+class="math inline">\(\ker S_0=0\)</span> and <span
+class="math inline">\(\operatorname{coker}S_0=\mathbb Z/483\)</span>. By
+(5.8) the original two-term complex has zero homology in degree <span
+class="math inline">\(k\)</span> and <span class="math inline">\(\mathbb
+Z/483\)</span> in degree <span class="math inline">\(k-1\)</span>.
+Omitting <span class="math inline">\(ba\)</span> would give a different
+determinant and the wrong homology.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

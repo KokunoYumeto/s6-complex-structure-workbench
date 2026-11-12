@@ -1,0 +1,883 @@
+% Complete proof module: Wilson construction and retained-coordinate comparison.
+\section{A cyclic Wilson Leech lattice in the original triality space}
+\label{wcl:sec:construction}
+
+\subsection{The two retained metrics and the octonion convention}
+
+Let $V=\mathbb O_1\oplus\mathbb O_2\oplus\mathbb O_3$ be the original
+ordered octonion space. Retain its metric and cubic
+\[
+\begin{aligned}
+ h_0(x,x)&=N(x_1)+N(x_2)+N(x_3),\\
+ \tau(x_1,x_2,x_3)&=\operatorname{Re}((x_1x_2)x_3),\qquad
+ d(Q_{\mathbb O}(0;x))=2\tau(x_1,x_2,x_3),
+\end{aligned}
+\]
+where
+\[
+ Q_{\mathbb O}(\lambda;x)=
+ \begin{pmatrix}\lambda&x_3&\bar x_2\\
+ \bar x_3&\lambda&x_1\\x_2&\bar x_1&\lambda\end{pmatrix}.
+\]
+Wilson's norm on the same underlying ordered space is
+\[
+ q_{\rm W}(x)=\tfrac12 h_0(x,x).
+\]
+The map
+\begin{equation}
+ \iota:(V,q_{\rm W})\longrightarrow(V,h_0),\qquad
+ \iota(x_1,x_2,x_3)=(x_1/\sqrt2,x_2/\sqrt2,x_3/\sqrt2)
+ \label{wcl:eq:metric-isometry}
+\end{equation}
+is an explicit isometry. Both metrics remain specified. In particular,
+for the original $\lambda$, which is not rescaled,
+\begin{equation}
+ d(Q_{\mathbb O}(\lambda;\iota x))
+ =\lambda^3-\lambda q_{\rm W}(x)+\frac1{\sqrt2}\tau(x_1,x_2,x_3).
+ \label{wcl:eq:cubic-scaling}
+\end{equation}
+Indeed the quadratic coordinates scale by $1/2$, while the trilinear
+term scales by $(1/\sqrt2)^3=1/(2\sqrt2)$ and its original coefficient
+is $2$. Thus the off-diagonal cubic after $\iota$ is
+$1/(2\sqrt2)$ times its value before $\iota$.
+
+For an explicit realization inside the same $\mathbb O$, choose a
+Cayley--Dickson basis
+$(1,\mathsf i,\mathsf j,\mathsf k,\ell,\mathsf i\ell,
+\mathsf j\ell,\mathsf k\ell)$, with
+\[
+ (a+b\ell)(c+d\ell)=(ac-\bar d b)+(da+b\bar c)\ell,\qquad
+ \mathsf i\mathsf j=\mathsf k .
+\]
+Wilson's ordered orthonormal basis is realized by
+\begin{equation}
+ (i_\infty,i_0,i_1,i_2,i_3,i_4,i_5,i_6)
+ =(1,\mathsf i,\mathsf j,\ell,\mathsf k,
+                  \mathsf j\ell,-\mathsf k\ell,\mathsf i\ell).
+ \label{wcl:eq:actual-basis-map}
+\end{equation}
+The seven oriented Fano triples are $(t,t+1,t+3)$ modulo $7$:
+$i_ti_{t+1}=i_{t+3}$, with cyclic products within each triple and
+opposite signs on reversal. To verify \eqref{wcl:eq:actual-basis-map},
+its seven corresponding products, in order $t=0,\ldots,6$, are
+\[
+ \mathsf i\mathsf j=\mathsf k,\quad
+ \mathsf j\ell=\mathsf j\ell,\quad
+ \ell\mathsf k=-\mathsf k\ell,\quad
+ \mathsf k(\mathsf j\ell)=\mathsf i\ell,\quad
+ (\mathsf j\ell)(-\mathsf k\ell)=\mathsf i,\quad
+ (-\mathsf k\ell)(\mathsf i\ell)=\mathsf j,\quad
+ (\mathsf i\ell)\mathsf i=\ell.
+\]
+Alternativity supplies cyclic products on each quaternionic line.
+The seven lines cover all pairs of different imaginary basis units;
+squares are $-1$ and $1$ is the unit. This proves the algebra
+isomorphism on the full multiplication table, hence by bilinearity on
+all octonions. It also preserves conjugation and the norm. No
+conjugation of a coordinate of $Q_{\mathbb O}$ is performed.
+
+\subsection{The explicit eight-dimensional lattice and two sublattices}
+
+In the displayed Wilson basis write $e_0=i_\infty,e_{t+1}=i_t$ and put
+\[
+\begin{aligned}
+ D_8&=\{(z_0,\ldots,z_7)\in\mathbb Z^8:\textstyle\sum z_i\equiv0\pmod2\},\\
+ s&=\tfrac12(-1+i_0+i_1+i_2+i_3+i_4+i_5+i_6),\qquad
+ L_{\rm W}=D_8+\mathbb Zs.
+\end{aligned}
+\]
+This is Wilson's lattice $L$, renamed $L_{\rm W}$ to distinguish it
+from the project's original rank-24 Niemeier lattice. Since $2s\in
+D_8$ and $s\notin D_8$, it is exactly $D_8\cup(s+D_8)$.
+
+\begin{lemma}\label{wcl:lem:e8}
+The lattice $L_{\rm W}$ is even and unimodular, has minimum norm $2$,
+and has the explicit basis
+\[
+ b_1=s,\quad b_j=e_{j-1}-e_j\ (2\le j\le7),\quad b_8=e_6+e_7.
+\]
+Its Gram matrix for the unchanged octonion norm is
+\begin{equation}
+ G_8=
+ \begin{pmatrix}
+ 2&0&0&0&0&0&0&1\\
+ 0&2&-1&0&0&0&0&0\\
+ 0&-1&2&-1&0&0&0&0\\
+ 0&0&-1&2&-1&0&0&0\\
+ 0&0&0&-1&2&-1&0&0\\
+ 0&0&0&0&-1&2&-1&-1\\
+ 0&0&0&0&0&-1&2&0\\
+ 1&0&0&0&0&-1&0&2
+ \end{pmatrix},\qquad \det G_8=1 .
+ \label{wcl:eq:e8-gram}
+\end{equation}
+Its norm-two vectors are precisely the $112$ vectors $\pm e_i\pm e_j$
+with $i<j$ and the $128$ vectors
+$\frac12(\pm e_0\pm\cdots\pm e_7)$ with an odd number of minus signs.
+\end{lemma}
+
+\begin{proof}
+For $z\in D_8$, $N(z)\equiv\sum z_i=0\pmod2$ and
+$h(s,z)=\frac12\sum z_i-z_0\in\mathbb Z$.
+As $N(s)=2$, every norm in $D_8+\mathbb Zs$ is even.
+The covolume of $D_8$ is $2$, and its displayed extension has index
+$2$, so $L_{\rm W}$ has covolume $1$. The integral bilinear form follows
+by polarizing the even norm, and covolume one proves self-duality.
+The columns $b_i$ all belong to $L_{\rm W}$. Their determinant has
+absolute value one: expansion along the first coordinate gives
+$1/2$ times the determinant $2$ of the indicated $D_7$ basis.
+They therefore form a basis. Their scalar products give the displayed
+matrix. Positivity and evenness give minimum at least $2$, and
+$N(b_i)=2$ attains it. Integer vectors of norm two have exactly two
+nonzero entries $\pm1$. Half-integer vectors have norm at least
+$8/4=2$, with equality exactly when all eight entries are $\pm1/2$.
+Their membership in $s+D_8$ is exactly the stated odd-minus parity.
+\end{proof}
+
+Define, with the bars in the positions printed in Wilson,
+\[
+ \mathsf M=L_{\rm W}\bar s,\qquad \mathsf N=L_{\rm W}s .
+\]
+All products are right products. Let $B$ be the basis matrix with
+columns $b_i$. Right multiplication by $s$ in this basis is the
+following integer matrix:
+\begin{equation}
+ S=B^{-1}R_s B=
+ \begin{pmatrix}
+ 3&0&0&0&0&0&0&2\\
+ -2&-1&0&1&-1&1&0&-2\\
+ -4&-1&-1&1&0&0&1&-3\\
+ -6&-1&-1&0&0&1&0&-4\\
+ -8&0&-1&0&-1&1&1&-5\\
+ -10&-1&0&0&-1&0&1&-5\\
+ -5&0&-1&1&-1&0&0&-2\\
+ -7&0&0&0&0&0&0&-4
+ \end{pmatrix}.
+ \label{wcl:eq:S}
+\end{equation}
+This is a direct multiplication-table calculation using
+\eqref{wcl:eq:actual-basis-map}; it can be checked by multiplying each
+column $b_j$ by the displayed $s$. Set $T=-I_8-S$. Since
+$s+\bar s=-1$, $s\bar s=2$, and alternativity allows repeated $s$
+and $\bar s= -1-s$, one has
+\begin{equation}
+ T=B^{-1}R_{\bar s}B,\qquad S+T=-I_8,\qquad ST=TS=2I_8,
+ \qquad S^{\mathsf T}G_8S=T^{\mathsf T}G_8T=2G_8 .
+ \label{wcl:eq:ST-identities}
+\end{equation}
+
+\begin{lemma}\label{wcl:lem:complementary}
+Both $\mathsf M,\mathsf N$ are sublattices of $L_{\rm W}$ of index
+$16$ and minimum norm $4$, and
+\[
+ 2L_{\rm W}\subset\mathsf M,\mathsf N\subset L_{\rm W},\qquad
+ \mathsf M+\mathsf N=L_{\rm W},\qquad
+ \mathsf M\cap\mathsf N=2L_{\rm W}.
+\]
+Their images $\overline{\mathsf M},\overline{\mathsf N}$ in
+$\mathcal E=L_{\rm W}/2L_{\rm W}$ are complementary
+four-dimensional $\mathbb F_2$ subspaces.
+\end{lemma}
+
+\begin{proof}
+The integer matrices $S,T$ give the inclusions in $L_{\rm W}$;
+$ST=2I$ gives the inclusions of $2L_{\rm W}$.
+Norm composition shows that each right multiplication scales all
+squared lengths by $N(s)=N(\bar s)=2$; thus its determinant has
+absolute value $(\sqrt2)^8=16$, proving the indices and minimum norms.
+The identity $S+T=-I$ gives $\mathsf M+\mathsf N=L_{\rm W}$.
+Modulo $2L_{\rm W}$, each image has size $2^8/16=2^4$.
+Their sum is the eight-dimensional space $\mathcal E$, so their
+intersection is zero. This proves the asserted intersection upstairs.
+\end{proof}
+
+\subsection{The binary glue code and its exact generators}
+
+Wilson's original lattice is exactly
+\begin{equation}
+\begin{split}
+ \Lambda_{\rm W}=\{(x,y,z)\in L_{\rm W}^3:\ &
+ x+y,x+z,y+z\in\mathsf M,\quad x+y+z\in\mathsf N\}.
+\end{split}
+ \label{wcl:eq:Wilson-definition}
+\end{equation}
+It carries Wilson's norm $q_{\rm W}$, as printed. Define the lattice
+inside the original triality metric by
+\[
+ \Lambda_{\rm cyc}=\iota(\Lambda_{\rm W})\subset(V,h_0).
+\]
+The simultaneous use of $\mathsf M=L_{\rm W}\bar s$ for pair sums
+and $\mathsf N=L_{\rm W}s$ for the total sum is essential.
+
+Write any class in $\mathcal E$ uniquely as $m+n$, with
+$m\in\overline{\mathsf M}$ and $n\in\overline{\mathsf N}$.
+Then the image of \eqref{wcl:eq:Wilson-definition} in $\mathcal E^3$
+is the explicit binary code
+\begin{equation}
+ \mathcal C=
+ \{(m_1+n,m_2+n,m_1+m_2+n):
+       m_1,m_2\in\overline{\mathsf M},\
+       n\in\overline{\mathsf N}\}.
+ \label{wcl:eq:code}
+\end{equation}
+Indeed the pair conditions say that the three $\mathsf N$ components
+are equal; the total-sum condition says that the sum of the three
+$\mathsf M$ components is zero. This proves both directions of the
+code description. Its dimension is $4+4+4=12$.
+
+For a concrete lift, the first four columns of $S$ and of $T$ are
+bases of their images modulo $2$. The determinant of the eight-column
+matrix $(T_1,T_2,T_3,T_4,S_1,S_2,S_3,S_4)$ is $-7$, so these columns
+are independent modulo $2$; each of the two images already has
+dimension four. Put $m_j=b_j\bar s$, $n_j=b_js$ for $1\le j\le4$.
+A complete set of $36$ integer generators of $\Lambda_{\rm W}$ is
+\begin{equation}
+\begin{gathered}
+ (2b_i,0,0),\ (0,2b_i,0),\ (0,0,2b_i)\quad(1\le i\le8),\\
+ (m_j,m_j,0),\ (m_j,0,m_j),\ (n_j,n_j,n_j)\quad(1\le j\le4).
+\end{gathered}
+ \label{wcl:eq:generators}
+\end{equation}
+These vectors are all in \eqref{wcl:eq:Wilson-definition}.
+Their reductions span precisely \eqref{wcl:eq:code}; the first
+$24$ generate its full kernel $(2L_{\rm W})^3$. This proves that
+they generate the entire lattice, not only a sublattice.
+
+\begin{theorem}\label{wcl:thm:Leech}
+The explicitly generated lattice $\Lambda_{\rm W}$ with $q_{\rm W}$,
+and therefore $\Lambda_{\rm cyc}$ with the unaltered $h_0$, is an
+even unimodular rank-24 lattice of minimum norm $4$. In particular
+it is rootless. This is the actual Wilson Leech construction, through
+the explicit isometry \eqref{wcl:eq:metric-isometry}.
+\end{theorem}
+
+\begin{proof}
+The code proves
+$[L_{\rm W}^3:\Lambda_{\rm W}]=2^{24-12}=2^{12}$.
+Since $L_{\rm W}$ has covolume one for its original octonion metric,
+$\Lambda_{\rm W}$ has covolume $2^{12}$ for $h_0$.
+Changing to the separately recorded metric $q_{\rm W}$ multiplies
+volume in dimension $24$ by $(1/\sqrt2)^{24}=2^{-12}$,
+so its covolume is exactly one.
+
+For every triple of vectors in a real inner product space,
+\[
+ N(x)+N(y)+N(z)
+ =N(x+y)+N(x+z)+N(y+z)-N(x+y+z).
+\]
+For a vector of $\Lambda_{\rm W}$ the four terms on the right
+are norms in $\mathsf M$ or $\mathsf N$, so each is divisible by
+$4$: these are twice norms in the even lattice $L_{\rm W}$.
+It follows that $q_{\rm W}(x,y,z)$ is even. Polarization of these
+even norms gives an integral bilinear form. An integral lattice of
+covolume one equals its dual, proving unimodularity.
+
+If a nonzero vector had $q_{\rm W}=2$, its three coordinate norms
+would sum to $4$. Each nonzero coordinate in $L_{\rm W}$ has norm
+at least $2$, so one coordinate is zero. The other two then lie in
+$\mathsf M$, each of whose nonzero vectors has norm at least $4$.
+At most one can be nonzero. That coordinate also lies in $\mathsf N$
+by the total-sum condition, so it lies in
+$\mathsf M\cap\mathsf N=2L_{\rm W}$ and has norm at least $8$,
+a contradiction. Hence all nonzero norms are at least $4$.
+The vectors $(2b_i,0,0)$ have $q_{\rm W}=4$, so the minimum is
+exactly $4$. The isometry $\iota$ transfers every statement to the
+original metric.
+\end{proof}
+
+\subsection{Cyclic symmetry, the fixed lattice, and exact three-primary glue}
+
+Retain the canonical cycle $c(x,y,z)=(z,x,y)$. Denote the opposite
+cycle used in Wilson coordinates by $c_{\rm W}(x,y,z)=(y,z,x)$.
+Direct substitution gives
+\[
+ c_{\rm W}=c^{-1}=c^2,\qquad c_{\rm W}^2=c,\qquad
+ \langle c_{\rm W}\rangle=\langle c\rangle.
+\]
+Both actions are retained with these directions; no action is renamed
+by silently reversing it.
+The defining three coordinate memberships, three pair conditions,
+and total-sum condition are all unchanged by $c_{\rm W}$; hence both cycles preserve
+$\Lambda_{\rm W}$ and $\Lambda_{\rm cyc}$. They preserve their metrics
+and the original cubic:
+\[
+ \operatorname{Re}((xy)z)=\operatorname{Re}((yz)x).
+\]
+This follows from the octonion adjoint identities
+$h(ab,d)=h(b,\bar a d)=h(a,d\bar b)$, which imply real associativity,
+and $\operatorname{Re}(ab)=\operatorname{Re}(ba)$.
+In the Albert algebra $c_{\rm W}$ is realized by conjugation with the
+\emph{real} permutation matrix for $(1\,3\,2)$.
+It sends the coordinates $(x_1,x_2,x_3)$ to $(x_2,x_3,x_1)$ with no
+conjugations, and permutes the ordered diagonal frame accordingly.
+The inverse real permutation matrix, for $(1\,2\,3)$, realizes the
+canonical $c$ and sends $(x_1,x_2,x_3)$ to $(x_3,x_1,x_2)$.
+Thus the fixed lattices of the two cycles are identical. For the
+retained residue isometry $\mathcal Lr=c\mathcal L$, the opposite
+action satisfies $\mathcal Lr^{-1}=c_{\rm W}\mathcal L$.
+
+\begin{theorem}\label{wcl:thm:fixed-coinvariant}
+Before applying $\iota$, the cyclic fixed lattice and its orthogonal
+complement in $\Lambda_{\rm W}$ are exactly
+\[
+ F=\{(n,n,n):n\in\mathsf N\},\qquad
+ C=\{(m_1,m_2,-m_1-m_2):m_1,m_2\in\mathsf M\}.
+\]
+Their ranks are $8$ and $16$. For the retained Wilson metric, and
+therefore after $\iota$ for the original triality metric, their Gram
+matrices in the displayed bases are
+\begin{equation}
+ G_F=3G_8,\qquad
+ G_C=\begin{pmatrix}2G_8&G_8\\G_8&2G_8\end{pmatrix}.
+ \label{wcl:eq:fixed-coinvariant-grams}
+\end{equation}
+The fixed-lattice basis is $(b_js,b_js,b_js)$, $1\le j\le8$;
+the coinvariant bases are $(b_j\bar s,0,-b_j\bar s)$ and
+$(0,b_j\bar s,-b_j\bar s)$. In particular the fixed lattice has
+minimum norm $6$ and determinant $3^8$.
+The coinvariant lattice has determinant $3^8$, and the map which
+negates its second $L_{\rm W}$ parameter identifies its displayed
+Gram matrix with the usual $A_2\otimes E_8$ Gram matrix.
+\end{theorem}
+
+\begin{proof}
+A fixed triple has the form $(x,x,x)$. Its pair condition holds for
+every $x\in L_{\rm W}$ because $2L_{\rm W}\subset\mathsf M$.
+Its total condition is $3x\in\mathsf N$. As $L_{\rm W}/\mathsf N$
+has exponent two, $3x\in\mathsf N$ is equivalent to $x\in\mathsf N$.
+This proves the first description. Orthogonality to the whole
+diagonal real eight-space says $x+y+z=0$. The pair conditions are
+then exactly $x,y,z\in\mathsf M$, and the total condition is automatic.
+This proves the description of $C$.
+
+Right multiplication by either $s$ or $\bar s$ multiplies the
+octonion metric by $2$. Thus
+\[
+ q_{\rm W}(as,as,as)=3N(a),
+\]
+and
+\[
+ q_{\rm W}(a\bar s,b\bar s,-(a+b)\bar s)
+ =N(a)+N(b)+N(a+b)=2N(a)+2N(b)+2h(a,b).
+\]
+Polarization gives both full Gram matrices. Their determinants are
+\[
+ \det G_F=3^8\det G_8=3^8,\qquad
+ \det G_C=\det\begin{pmatrix}2&1\\1&2\end{pmatrix}^{8}
+ (\det G_8)^2=3^8.
+\]
+Minimum norm $6$ for $F$ follows from the exact
+factor $3$ and the minimum $2$ in $L_{\rm W}$.
+The sign map $b\mapsto-b$ changes both off-diagonal blocks from
+$G_8$ to $-G_8$, proving the stated exact comparison to
+$A_2\otimes E_8$.
+\end{proof}
+
+There is a complete integral comparison, including the glue:
+\begin{equation}
+ 0\longrightarrow F\oplus C\longrightarrow\Lambda_{\rm W}
+ \xrightarrow{\ \Sigma\ }\mathsf N/3\mathsf N
+ \longrightarrow0,\qquad
+ \Sigma(x,y,z)=x+y+z\pmod{3\mathsf N}.
+ \label{wcl:eq:three-primary-exact}
+\end{equation}
+To prove surjectivity, for every $a\in L_{\rm W}$ the explicit vector
+\[
+ v(a)=(as,a,-a)
+\]
+lies in $\Lambda_{\rm W}$ and has sum $as$. Its pair sums are
+$a(s+1)=-a\bar s\in\mathsf M$,
+$a(s-1)=-a\bar s-2a\in\mathsf M$, and $0$;
+its total lies in $\mathsf N$. If a lattice vector has total $3n$,
+subtracting $(n,n,n)\in F$ leaves a vector of $C$. This proves the
+kernel assertion. Thus
+\[
+ \Lambda_{\rm W}/(F\oplus C)\cong\mathsf N/3\mathsf N
+ \cong L_{\rm W}/3L_{\rm W}\cong(\mathbb Z/3)^8,\qquad
+ [\Lambda_{\rm W}:F\oplus C]=3^8.
+\]
+All maps commute with $c_{\rm W}$ and with its inverse $c$; both
+cycles act trivially on the quotient.
+
+The discriminant anti-isometry is also explicit. Use the quadratic
+discriminant convention $q_D(u+D)=h_D(u,u)\pmod{2\mathbb Z}$
+for an even lattice $D$ with its retained metric. The orthogonal
+projections of the lift $v(a)$ are
+\begin{align}
+ f(a)&=\tfrac13(as,as,as),\nonumber\\
+ \gamma(a)&=\left(\tfrac23as,\ a-\tfrac13as,\ -a-\tfrac13as\right).
+ \label{wcl:eq:glue-projections}
+\end{align}
+They belong to $F^*$ and $C^*$, respectively: their pairings with
+$F$ or $C$ are the pairings of the integral vector $v(a)$ with the
+same lattice, because the other projection is orthogonal.
+The classes $f(a)+F$ identify $L_{\rm W}/3L_{\rm W}$ with $F^*/F$.
+If $\gamma(a)\in C$, then $f(a)=v(a)-\gamma(a)\in
+\Lambda_{\rm W}\cap F_{\mathbb R}=F$, so $a\in3L_{\rm W}$.
+Since $C^*/C$ has order $\det G_C=3^8$, the map
+\[
+ f(a)+F\longmapsto\gamma(a)+C
+\]
+is an isomorphism of the two discriminant groups. Its quadratic
+sign is determined without an unspecified convention:
+\[
+ q_F(f(a))=\tfrac13N(a),\qquad
+ q_C(\gamma(a))=q_{\rm W}(v(a))-\tfrac13N(a)
+              =2N(a)-\tfrac13N(a).
+\]
+As $N(a)$ is even, their sum $2N(a)$ is zero modulo $2\mathbb Z$.
+This is the required anti-isometry. Equations
+\eqref{wcl:eq:three-primary-exact} and
+\eqref{wcl:eq:glue-projections} specify the overlattice itself,
+including its actual coset representatives.
+
+\subsection{Finite lattice symmetries and exact cubic tests}
+
+Independent sign changes of the three sectors preserve
+$\Lambda_{\rm W}$. Changing the sign of $x$ changes a pair sum by
+$-2x\in2L_{\rm W}\subset\mathsf M$ and changes the total by
+$-2x\in2L_{\rm W}\subset\mathsf N$. The same argument applies to
+each sector. All six sector permutations preserve the defining
+conditions too. Under signs $(\epsilon_1,\epsilon_2,\epsilon_3)$
+the cubic $\tau$ is multiplied by $\epsilon_1\epsilon_2\epsilon_3$;
+hence exactly the even sign changes in this subgroup preserve it.
+Cyclic permutations preserve $\tau$ as already proved.
+
+The odd permutation $(x,y,z)\mapsto(y,x,z)$ need not preserve it,
+even on the lattice itself. In Wilson's basis put
+\[
+ a=2(1+i_0),\qquad b=2(1+i_1),\qquad d=2(i_2+i_3).
+\]
+Every coordinate belongs to $2L_{\rm W}$, so $(a,b,d)\in
+\Lambda_{\rm W}$. The real part of
+$((1+i_0)(1+i_1))(i_2+i_3)$ is $-1$, because
+$i_0i_1=i_3$ and the $i_3^2$ term is the only real contribution.
+Reversing the first two factors changes this contribution to $+1$.
+Consequently
+\begin{equation}
+ \tau(a,b,d)=-8,\qquad \tau(b,a,d)=8.
+ \label{wcl:eq:transposition-cubic}
+\end{equation}
+After the specified scalar isometry the original determinant cubic
+has values $-4\sqrt2$ and $4\sqrt2$.
+
+The simultaneous Fano-index operations
+\[
+ A:i_t\longmapsto i_{t+1},\qquad
+ B_0:i_t\longmapsto i_{2t},\qquad i_\infty\longmapsto i_\infty
+\]
+are octonion algebra automorphisms, as the defining oriented Fano
+products show. They are orthogonal permutations preserving $D_8$ and
+the odd-minus half coset, and they fix the displayed $s$ and $\bar s$.
+They consequently preserve $\mathsf M,\mathsf N,\Lambda_{\rm W}$.
+Applied simultaneously to all three sectors, they preserve $\tau$.
+They satisfy $A^7=B_0^3=1$ and $B_0AB_0^{-1}=A^2$; their permutations
+are the distinct maps $t\mapsto 2^j t+k$ with $j=0,1,2$ and
+$k\in\mathbb F_7$. Thus they form an explicitly realized
+$C_7\rtimes C_3$ of order $21$.
+
+The even sign changes and the cycle $c_{\rm W}$ form
+$(\mathbb Z/2)^2\rtimes C_3\cong A_4$. They commute with the
+simultaneous Fano operations, and their intersection is trivial:
+a simultaneous Fano operation fixes the real unit in every sector
+and does not permute sectors. Hence an explicit finite group
+\[
+ A_4\times(C_7\rtimes C_3)
+\]
+of order $252$ preserves both the literal lattice and the original
+cubic. This is a proved subgroup; no assertion that it is the full
+cubic stabilizer is needed.
+
+Wilson also gives the lattice symmetries
+\[
+ r_t(x,y,z)=(x,yi_t,zi_t)\qquad(t=0,\ldots,6).
+\]
+For completeness their lattice action can be checked solely from
+the explicit finite matrices above. Let
+$U_t=B^{-1}R_{i_t}B$. The signed permutation multiplication table
+and \eqref{wcl:eq:S} give
+\begin{equation}
+ U_t\in GL_8(\mathbb Z),\qquad
+ T^{-1}(U_t-I_8)\in M_8(\mathbb Z),\qquad
+ \tfrac12(U_t-I_8)T\in M_8(\mathbb Z)
+ \quad(0\le t\le6).
+ \label{wcl:eq:unit-matrix-certificates}
+\end{equation}
+These are finite exact matrix assertions, not assumptions about
+octonionic matrix associativity. The full multiplication rule and
+the exact rational algorithm checking every entry for all seven
+values are included in the accompanying \texttt{check\_wilson.py}.
+Concretely, start with the $64$ products
+$1i_t=i_t1=i_t$, $i_t^2=-1$, and the seven oriented Fano triples,
+form the eight columns $R_{i_t}(e_j)$, conjugate by the explicitly
+displayed $B$, and substitute the integer $T=-I_8-S$.
+For each of the three matrices in \eqref{wcl:eq:unit-matrix-certificates}
+the reduced denominators of every entry are $1$, for each
+$t=0,1,2,3,4,5,6$. Also $\det U_t=1$.
+This is a reproducible $7\cdot3\cdot64$-entry certificate.
+The first condition is also immediate from the signed permutation:
+right multiplication by $i_t$ flips four coordinate signs, preserving
+the odd-minus parity of $L_{\rm W}$.
+
+The second matrix assertion says
+$L_{\rm W}(i_t-1)\subset\mathsf M$, and the third says
+$\mathsf M(i_t-1)\subset2L_{\rm W}$. Thus $x+yi_t$ and $x+zi_t$
+differ from the original pair sums by elements of $\mathsf M$.
+The pair $(y+z)i_t$ remains in $\mathsf M$, and the transformed total
+differs from $x+y+z$ by
+$(y+z)(i_t-1)\in2L_{\rm W}\subset\mathsf N$.
+All defining conditions are preserved. The inverse follows from
+$r_t^2(x,y,z)=(x,-y,-z)$ and the proved sign symmetries.
+Norm composition proves that $r_t$ is an isometry.
+
+Nevertheless none of these seven $r_t$ preserves the original cubic.
+For $a_t=2(1+i_t)$, the triple $(a_t,a_t,a_t)$ lies in
+$(2L_{\rm W})^3\subset\Lambda_{\rm W}$. All products below occur in
+the associative real subalgebra generated by $i_t$, and give
+\[
+ \tau(a_t,a_t,a_t)=8\operatorname{Re}((1+i_t)^3)=-16,
+\]
+whereas $(1+i_t)i_t=-1+i_t$ and
+\[
+ \tau(a_t,a_ti_t,a_ti_t)
+ =8\operatorname{Re}((1+i_t)(-1+i_t)^2)=16.
+\]
+Therefore the original determinant cubic on the isometric lattice
+$\Lambda_{\rm cyc}$ changes from $-8\sqrt2$ to $8\sqrt2$.
+This supplies actual lattice vectors as counterexamples, not only
+ambient real vectors outside the lattice.
+
+\subsection{Exact comparison with coordinate lattices and the marked lane}
+
+The construction has the explicit integral sandwich
+\begin{equation}
+ (\sqrt2L_{\rm W})^3
+ \ \subset\ \Lambda_{\rm cyc}\
+ \subset\ (L_{\rm W}/\sqrt2)^3,
+ \qquad
+ [\Lambda_{\rm cyc}:(\sqrt2L_{\rm W})^3]
+ =[(L_{\rm W}/\sqrt2)^3:\Lambda_{\rm cyc}]=2^{12}.
+ \label{wcl:eq:coordinate-sandwich}
+\end{equation}
+This is \eqref{wcl:eq:code} transported by the exact isometry
+\eqref{wcl:eq:metric-isometry}. The inclusions are literal inclusions
+in the fixed three octonion sectors, and each commutes with both
+$c_{\rm W}$ and the canonical $c=c_{\rm W}^{-1}$.
+Together with the explicit bases, the code, and the three-primary
+glue \eqref{wcl:eq:glue-projections}, it determines actual
+commensurability maps and cosets rather than only an abstract
+isometry class.
+
+Under \eqref{wcl:eq:actual-basis-map}, the single negative column
+takes the Wilson odd-minus half roots to even-minus half roots in
+the current ordered Cayley--Dickson basis. The element $s$ remains
+exactly
+\[
+ s=\tfrac12(-1+\mathsf i+\mathsf j+\mathsf k+\ell
+                     +\mathsf i\ell+\mathsf j\ell-\mathsf k\ell),
+\]
+with coordinate vector $(-1,1,1,1,1,1,1,-1)/2$.
+The signed permutation has determinant $+1$ and all $64$ basis
+products agree, as independently checked in the accompanying code.
+Thus the lattice, its cyclic action, and the triality cubic live
+in one specified multiplication convention.
+
+\subsection{Literal intersections with both retained lattice embeddings}
+\label{wcl:sec:literal-intersections}
+
+Let $U=\operatorname{span}_{\mathbb R}(1,\mathsf i,\mathsf j,\mathsf k)$
+be the first four coordinates in the \emph{current} ordered
+Cayley--Dickson basis, and let
+\[
+ D_4=\{a=(a_0,a_1,a_2,a_3)\in\mathbb Z^4:
+                          a_0+a_1+a_2+a_3\in2\mathbb Z\}\subset U.
+\]
+This quaternionic $D_4$ denotes the displayed four-coordinate lattice;
+the original Niemeier $D$ summand below remains in its original place.
+
+Let $J_{\rm W}$ denote the signed permutation matrix in
+\eqref{wcl:eq:actual-basis-map}. If $U_0:\mathbb R^4\to\mathbb R^8$
+is the coordinate inclusion in the current basis, then
+\begin{equation}
+ S^{-1}B^{-1}J_{\rm W}^{-1}U_0=
+ \begin{pmatrix}
+ 1/2&-1/2&-1/2&-1/2\\
+ -1/2&0&0&1/2\\
+ -1&1/2&0&1/2\\
+ -3/2&1&1/2&1/2\\
+ -2&1&1&1/2\\
+ -5/2&3/2&1&1\\
+ -5/4&3/4&3/4&3/4\\
+ -7/4&3/4&3/4&3/4
+ \end{pmatrix}.
+ \label{wcl:eq:quaternion-membership-matrix}
+\end{equation}
+All matrices on the left have already been explicitly specified.
+Thus the equation is a direct rational multiplication certificate.
+
+\begin{lemma}\label{wcl:lem:quaternion-intersection}
+In this fixed coordinate frame,
+\[
+ \mathsf N\cap U=2D_4 .
+\]
+\end{lemma}
+\begin{proof}
+Since $\mathsf N\subset L_{\rm W}$, an element of $\mathsf N\cap U$
+has integral first four coordinates: the half-integer coset of the
+current $E_8$ description has no zero coordinate among its last four.
+Write those integral coordinates as $k_0,k_1,k_2,k_3$. Membership in
+$\mathsf N$ is exactly integrality of the matrix
+\eqref{wcl:eq:quaternion-membership-matrix} applied to $k$.
+Subtracting its last two rows gives $k_0/2$, so $k_0$ is even.
+The second row then forces $k_3$ even, the third forces $k_1$ even,
+and the fourth forces $k_2$ even. Write $k=2a$.
+The first six rows are now integral. The seventh and eighth rows
+are integral precisely when
+$-5a_0+3a_1+3a_2+3a_3$ is even, equivalently
+$a_0+a_1+a_2+a_3$ is even. Conversely these conditions make all eight
+rows integral. This proves both inclusions with no unstated lattice
+identification.
+\end{proof}
+
+We now retain the original lattices and their actual map $\mathcal L$.
+The original coordinates are $X=(x_{i,j};d_k)$,
+$1\le i\le4$, $0\le j\le5$, $1\le k\le4$, with
+$\sum_jx_{i,j}=0$. The root lattice is
+$R=A_5^{\perp4}\perp D$, with its unchanged Euclidean metric.
+Its index-$72$ overlattice $N$ is the inverse image of the original
+glue
+\[
+ (k_1,k_2,k_3,k_4;y)
+   =\bigl(3u+2(a+b,a+2b,a,b);\,(u_2+u_4,u_3+u_4)\bigr),
+\]
+where $u\in\mathbb F_2^4$ has even weight and $a,b\in\mathbb F_3$;
+the first four entries are modulo $6$. Here $k_i=-6x_{i,0}\pmod6$
+and $y$ is the original $D^\vee/D$ marking, so $d=0$ has $y=00$.
+Retain the original neighbour
+\[
+ \rho_A=(5,3,1,-1,-3,-5)/2,\quad
+ \rho_D=(3,2,1,0),\quad \rho=\rho_A^{\oplus4}\perp\rho_D,
+\]
+\[
+ K=\{X\in N:(\rho,X)\in6\mathbb Z\},\qquad
+ \alpha=(e_0-e_1,0,0,0;0),\qquad
+ \Lambda=K+\mathbb Z(\rho/6-\alpha).
+\]
+Thus $\rho\in N$, $\rho^2=84$, $(\rho,\alpha)=1$.
+Every vector of $N$ or $\Lambda$ has rational original coordinates.
+
+For exact use of the retained isometry, set
+\[
+ \sigma_i=\sum_{j=0}^5(-1)^jx_{i,j},\qquad
+ t_{i,p,j}=x_{i,p+2j}-\frac13\sum_{h=0}^2x_{i,p+2h}.
+\]
+Write $u_0=1,u_1=\mathsf i,u_2=\mathsf j,u_3=\mathsf k$ and retain
+the remaining current Cayley--Dickson basis vectors $u_4,\ldots,u_7$.
+The already specified map has the exact coordinate form
+\[
+ (\mathcal LX)_{j+1,a}=
+ \begin{cases}
+ t_{i,p,j}+\sqrt2\,\sigma_{a+1}/6,&0\le a\le3,\\
+ t_{i,p,j}+\sqrt3\,d_{a-3}/3,&4\le a\le7,
+ \end{cases}
+ \qquad a=2(i-1)+p.
+\]
+The placement of $\sigma_{a+1}$ is retained, including its difference
+from the index $i$ of the residual. No coordinate is reassigned.
+
+\begin{theorem}\label{wcl:thm:literal-intersection}
+The literal intersections in the original metric space are exactly
+\begin{equation}
+ \Lambda_{\rm cyc}\cap\mathcal L(N)
+ =\Lambda_{\rm cyc}\cap\mathcal L(\Lambda)
+ =\mathcal I
+ :=\{\sqrt2(a,a,a):a\in D_4\subset U\}.
+ \label{wcl:eq:literal-common-lattice}
+\end{equation}
+In original Niemeier coordinates the inverse image of this common
+lattice is
+\[
+ \mathcal L^{-1}(\mathcal I)
+ =\{x_{i,j}=(-1)^j a_{i-1},\ d=0:\ a\in D_4\}\subset K.
+\]
+It has rank four, minimum norm $12$, and Gram matrix
+\begin{equation}
+ G_{\mathcal I}=6
+ \begin{pmatrix}
+ 2&-1&0&0\\
+ -1&2&-1&-1\\
+ 0&-1&2&0\\
+ 0&-1&0&2
+ \end{pmatrix},
+ \qquad\det G_{\mathcal I}=4\cdot6^4=5184.
+ \label{wcl:eq:common-gram}
+\end{equation}
+An explicit basis is $\sqrt2(\delta_j,\delta_j,\delta_j)$,
+where
+$\delta_1=(1,-1,0,0)$, $\delta_2=(0,1,-1,0)$,
+$\delta_3=(0,0,1,-1)$, $\delta_4=(0,0,1,1)$.
+\end{theorem}
+
+\begin{proof}
+Each coordinate of $\Lambda_{\rm cyc}$ belongs to
+$\mathbb Q/\sqrt2=\sqrt2\mathbb Q$ in the current frame.
+For a rational original vector $X$, the first four coordinate
+formulas above therefore force $t_{i,p,j}=0$ at the corresponding
+positions, by linear independence of $1,\sqrt2$ over $\mathbb Q$.
+The last four force both $t_{i,p,j}=0$ and $d_{a-3}=0$, by linear
+independence of $1,\sqrt2,\sqrt3$. For the latter independence, a
+relation with nonzero $\sqrt3$ coefficient would place $\sqrt3$ in
+$\mathbb Q(\sqrt2)$; squaring $A+B\sqrt2$ forces $AB=0$ and then
+would make $3$ or $3/2$ a rational square, a contradiction.
+All residuals therefore vanish and $d=0$. The zero fibre sums give
+\[
+ x_{i,j}=(-1)^j\sigma_i/6.
+\]
+
+First let $X\in N$. Its $A_5^\vee$ integral-difference conditions
+are exactly $k_i:=\sigma_i/3\in\mathbb Z$, yielding
+$x_{i,j}=(-1)^jk_i/2$. Their discriminant labels are
+$-3k_i=3k_i\pmod6$. Their three-primary parts are zero, so the
+injectivity of $(a,b)\mapsto(a+b,a+2b,a,b)$ forces $a=b=0$.
+Since $d=0$, the binary condition is
+$u_2+u_4=u_3+u_4=0$ and $\sum u_i=0$. These equations give
+$u_1=u_2=u_3=u_4$. Thus all four $k_i$ have the same parity.
+Conversely these conditions satisfy every original glue requirement.
+The image is the diagonal triple
+\[
+ \mathcal LX=(k/\sqrt2,k/\sqrt2,k/\sqrt2),\qquad k\in U.
+\]
+By the fixed-lattice description of Wilson's construction it
+belongs to $\Lambda_{\rm cyc}$ exactly when $k\in\mathsf N$.
+The previous lemma makes this equivalent to $k=2a$, $a\in D_4$,
+which proves the first intersection equality.
+
+For the second equality, a vector of $\Lambda$ can be written
+$X=n+m\rho/6$ with $n\in N$, $m\in\mathbb Z$.
+The already proved necessary condition $d_X=0$ gives
+$d_n=-m(3,2,1,0)/6\in D^\vee$.
+All coordinates of a vector of $D^\vee$ are integral or all
+half-integral; the fourth coordinate is zero, so all are integral.
+Its third coordinate forces $6\mid m$, and hence $X\in N$.
+In fact $\Lambda\cap N=K$: in
+$k+m(\rho/6-\alpha)\in N$ the pairing with the original root
+$\alpha$ forces $6\mid m$, and
+$(\rho,\rho-6\alpha)=84-6=78\in6\mathbb Z$.
+Thus an intersection vector belongs to $K$.
+For the diagonal-fibre vectors just found,
+\[
+ (\rho,X)=\frac32\sum_{i=1}^4 k_i.
+\]
+Consequently the condition $X\in K$ is $\sum k_i\equiv0\pmod4$.
+Every $k=2a$ with $a\in D_4$ satisfies it, proving equality of
+the two intersections and the displayed inverse image.
+
+Finally
+$h_0(\sqrt2(a,a,a),\sqrt2(b,b,b))=6h(a,b)$.
+The four $\delta_j$ form a basis of $D_4$, since their determinant
+has absolute value two and $D_4$ has index two in $\mathbb Z^4$.
+Their scalar products give \eqref{wcl:eq:common-gram}.
+The least nonzero norm in $D_4$ is two: a norm-one integer vector
+has odd coordinate sum, while $(1,-1,0,0)$ has norm two.
+This proves the exact minimum and determinant.
+\end{proof}
+
+The two slice indices are also literal. Define the common
+four-dimensional real subspace
+$\mathcal U=\{(u,u,u):u\in U\}$. The proof gives
+\[
+ \mathcal L(N)\cap\mathcal U
+ =\{(k,k,k)/\sqrt2:k\in P\},\quad
+ P=2\mathbb Z^4+\mathbb Z(1,1,1,1),
+\]
+\[
+ \mathcal L(\Lambda)\cap\mathcal U
+ =\{(k,k,k)/\sqrt2:k\in P_0\},\quad
+ P_0=\{k\in P:\textstyle\sum k_i\equiv0\pmod4\}
+     =2D_4+\mathbb Z(1,1,1,1).
+\]
+The first proof does not need Wilson membership to obtain these
+slice equations. The lattice $P$ has basis
+$2e_0,2e_1,2e_2,(1,1,1,1)$ and covolume $8$.
+The lattice $2D_4$ has covolume $2^4\cdot2=32$, so
+$[P:2D_4]=4$. The class of $(1,1,1,1)$ has exact order two
+modulo $2D_4$, yielding $[P_0:2D_4]=2$. Therefore
+\[
+ [\mathcal L(N)\cap\mathcal U:\mathcal I]=4,\qquad
+ [\mathcal L(\Lambda)\cap\mathcal U:\mathcal I]=2.
+\]
+The rank-four intersection, strictly below rank $24$, also proves
+that these full lattices are not commensurable \emph{in the retained
+embedding}: a common finite-index subgroup would have full rank.
+Their exact existing relation is the common lattice with the
+explicit embeddings, inverse map, metrics, and indices just proved.
+
+\subsection{The cubic value group on the literal common lattice}
+\label{wcl:sec:common-cubic}
+
+Retain $F(y)=\tau(y_1,y_2,y_3)$, so the Albert off-diagonal
+determinant is $2F$. For $y=\sqrt2(a,a,a)\in\mathcal I$ write
+$a=a_0+\mathbf a$ in the same quaternionic $U$. Since
+$\mathbf a^2=-N(\mathbf a)$ and $a_0$ is real, direct multiplication
+inside this associative subalgebra gives
+\[
+ \operatorname{Re}(a^3)
+ =a_0^3-3a_0N(\mathbf a)=4a_0^3-3a_0N(a).
+\]
+Every scalar and factor is therefore
+\begin{equation}
+ F(\sqrt2(a,a,a))
+ =2\sqrt2\bigl(4a_0^3-3a_0N(a)\bigr).
+ \label{wcl:eq:common-cubic}
+\end{equation}
+For $a\in D_4$, $N(a)$ is even, because
+$N(a)\equiv\sum a_i=0\pmod2$. The integer in parentheses is
+therefore even, so every value belongs to $4\sqrt2\mathbb Z$.
+For the actual lattice vector $a=(1,1,0,0)$ it equals
+$4-3\cdot2=-2$, giving $F=-4\sqrt2$.
+Consequently the \emph{additive subgroup generated by all values}
+is exactly
+\[
+ \bigl\langle F(\mathcal I)\bigr\rangle_{\mathbb Z}
+       =4\sqrt2\mathbb Z,\qquad
+ \bigl\langle d(Q_{\mathbb O}(0;\mathcal I))\bigr\rangle_{\mathbb Z}
+       =8\sqrt2\mathbb Z.
+\]
+This assertion concerns the generated additive groups; it does not
+claim that every element of either group is an individually attained
+cubic value.
+For an explicit distinction, put
+$P(a)=a_0(a_0^2-3(a_1^2+a_2^2+a_3^2))$.
+If $3\mid P(a)$, reduction modulo three forces $3\mid a_0$,
+and substitution $a_0=3b$ gives
+$P(a)=9b(3b^2-a_1^2-a_2^2-a_3^2)$.
+Thus $3\mid P(a)$ implies $9\mid P(a)$.
+The value $P(a)=6$ is impossible, so $F=12\sqrt2$ is not
+attained, although it belongs to the proved additive value group.
+
+
+\subsection{Primary source and exact reproducibility data}
+
+Wilson's octonionic construction is the source of the pair and total
+conditions \cite[Sections~2--4, pp.~2--6]{esn:Wilson2009}. His page~2
+uses the odd-minus lattice $L$ and $R=\bar L$; page~3 gives pair sums
+in $L\bar s$, the total in $Ls$, and the metric equal to one half of
+the sum of octonion norms. The displayed basis map and
+\eqref{wcl:eq:metric-isometry} retain these conjugations and the exact
+scale in the present coordinates. The distinct coordinate change on
+Wilson's page~6 is not substituted for this isometry.
+
+The complete integer-arithmetic program and its output are supplied in the
+following directory (the two displayed lines form one path):
+\begin{quote}\small
+\path{supporting_materials/workbench/evidence/}\\
+\path{lattice_foundation_20260906/wilson/}
+\end{quote}
+The files are \path{check_wilson.py} and \path{EXACT_CHECKS.json}.
+They record the generating-lattice index $4096$, Gram determinant $1$,
+even diagonal, integral cyclic action, the fixed and coinvariant Gram
+matrices, and the index $6561$ of their sum. The same program checks
+all $64$ multiplication-table products for
+\eqref{wcl:eq:actual-basis-map} and the stated exact cubic tests.
+The proofs above establish rootlessness and the global descriptions;
+these conclusions are not inferred from a finite search.

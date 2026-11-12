@@ -1,0 +1,1265 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,array,booktabs,mathrsfs,graphicx}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Hh}{\mathbb H}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\HP}{\mathbb{HP}}
+\newcommand{\Oo}{\mathbb O}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Herm}{\operatorname{Herm}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\Ree}{\operatorname{Re}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\pdet}{\operatorname{pdet}}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\one}{\mathbf 1}
+
+\title{The \texorpdfstring{$4+4+4+1$}{4+4+4+1} Triality Cone and Its Dynamical Closure:\
+Quaternionic Rank-Three Geometry, an Unlocked \texorpdfstring{$S^8$}{S8}, and Explicit Gauge Dynamics}
+\author{Research continuation note}
+\date{4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The previously established complex rank-three Hermitian object has real dimension nine and a Peirce decomposition $4+4+1$.  This note determines what happens when one asks for three four-real-dimensional sectors coupled by an exact order-three symmetry rather than adjoining another mirrored summand.
+
+There are three different, nested answers.  The literal $4+4+4+1$ object is the equal-diagonal slice of the quaternionic Jordan algebra $\Herm_3(\Hh)$:
+\[
+ \cT_{13}=\R\oplus\Hh^3.
+\]
+Its Moore determinant is
+\[
+ \cN_{13}(\lambda;q_1,q_2,q_3)
+ =\lambda^3-\lambda\sum_i|q_i|^2+2\Ree(q_1q_2q_3).
+\]
+The last term is a genuine closed triangle interaction.  The compactified determinant boundary is $S^{12}$, and the cyclic permutation of the three quaternionic edges is exact.  More generally, the equal-diagonal rank-three slices over $\R,\C,\Hh,\Oo$ have compactified boundaries $S^3,S^6,S^{12},S^{24}$.
+
+The thirteen-dimensional slice is not closed under Jordan multiplication or under the unrestricted determinant gradient.  Its Jordan closure is the full fifteen-dimensional algebra $\Herm_3(\Hh)$; fixing trace gives the fourteen-dimensional shape body.  Relative to a chosen complex subalgebra, there is an exact decomposition
+\[
+ \Herm_3(\Hh)\cong\Herm_3(\C)\oplus\C^3,
+ \qquad
+ \det_{\Hh}(A,b)=\det_{\C}A-b^*Ab.
+\]
+Thus the old traceless eight-dimensional carrier embeds linearly in a fourteen-dimensional carrier as
+$\Herm_3^0(\C)\subset\Herm_3^0(\Hh)$, giving a standard $S^8\subset S^{14}$ with six transverse colour-triplet directions.  The quaternionic positive cone projects onto the complex cone with fibres $B^6$, $B^2$, and a point over the rank-three, rank-two, and lower-rank strata.  Its complex rank-one focal manifold $\CP^2$ opens into $\HP^2$; the retained $\SU(3)$ action has quotient interval with endpoint orbits $\CP^2$ and $S^5$.
+
+Using the earlier $A_2$ observation matrix, the full fifteen-dimensional cubic decomposes as a Lorentz vector, two Weyl spinors, one real scalar, and one complex scalar.  Removing the complex scalar gives a second thirteen-dimensional $4+4+4+1$ slice containing the old nine-dimensional object, but the removed scalar is precisely the term that directly mixes the two spinors.  Finally, we construct a globally well-posed triality mechanics, a local $\Sp(1)^3$ triangle gauge theory, and an $\SU(3)$ Yang--Mills--scalar theory on the fourteen/fifteen-dimensional completion.  The latter has an exact first-order vacuum transition whose broken vacuum manifold is $\HP^2$ and whose gauge quotient is the same internal interval.  These are exact classical dynamical theories; no claim about pure quantum Yang--Mills or its mass gap is made.
+\end{abstract}
+
+\tableofcontents
+
+\section{Quaternionic rank-three determinant}
+
+Fix quaternionic units $i,j,k$ with $ij=k$.  For $q\in\Hh$, let $\bar q$ denote quaternionic conjugation and $|q|^2=q\bar q$.  Put
+\begin{equation}\label{eq:general-H3H}
+ Q(a;q)=
+ \begin{pmatrix}
+ a_1&q_3&\bar q_2\\
+ \bar q_3&a_2&q_1\\
+ q_2&\bar q_1&a_3
+ \end{pmatrix},
+ \qquad a_i\in\R,\quad q_i\in\Hh.
+\end{equation}
+We use the explicit Moore determinant
+\begin{equation}\label{eq:Moore}
+ \det_{\Hh}Q
+ =a_1a_2a_3-a_1|q_1|^2-a_2|q_2|^2-a_3|q_3|^2
+  +2\Ree(q_1q_2q_3).
+\end{equation}
+The real part of a triple quaternionic product is cyclic, so the last term is unambiguous under cyclic relabelling.  The positive cone
+\[
+ \Herm_3(\Hh)_{\succeq0}
+\]
+is the cone of quaternionic Hermitian matrices with nonnegative real eigenvalues.
+
+\begin{definition}[Equal-diagonal triality slice]\label{def:T13}
+Set
+\begin{equation}\label{eq:T13}
+ \cT_{13}
+ =\left\{Q(\lambda,\lambda,\lambda;q_1,q_2,q_3):
+ \lambda\in\R,\ q_i\in\Hh\right\}
+ \cong\R\oplus\Hh^3.
+\end{equation}
+Its real dimension is $1+3\cdot4=13$.
+\end{definition}
+
+\begin{theorem}[The forced $4+4+4+1$ cubic]\label{thm:triality-cubic}
+On $\cT_{13}$, the determinant is
+\begin{equation}\label{eq:N13}
+ \boxed{
+ \cN_{13}(\lambda;q_1,q_2,q_3)
+ =\lambda^3-\lambda\bigl(|q_1|^2+|q_2|^2+|q_3|^2\bigr)
+ +2\Ree(q_1q_2q_3).}
+\end{equation}
+It is invariant under the cyclic permutation
+\[
+ (q_1,q_2,q_3)\longmapsto(q_2,q_3,q_1)
+\]
+and under the vertex gauge action
+\begin{equation}\label{eq:vertex-gauge}
+ (s_1,s_2,s_3):
+ \begin{cases}
+ q_1\mapsto s_2q_1s_3^{-1},\\
+ q_2\mapsto s_3q_2s_1^{-1},\\
+ q_3\mapsto s_1q_3s_2^{-1},
+ \end{cases}
+ \qquad s_i\in\Sp(1).
+\end{equation}
+The common central element $(-1,-1,-1)$ acts trivially.  Hence the effective compact gauge group is
+\[
+ K_\triangle=\Sp(1)^3/\{\pm(1,1,1)\}.
+\]
+The three four-dimensional summands are therefore edges of one triangle rather than three independent copies.  Their first joint invariant occurs in the closed product $\Ree(q_1q_2q_3)$.
+\end{theorem}
+
+\begin{proof}
+Substituting $a_1=a_2=a_3=\lambda$ in \eqref{eq:Moore} gives \eqref{eq:N13}.  Under \eqref{eq:vertex-gauge}, the product transforms as
+\[
+ q_1q_2q_3\longmapsto
+ s_2(q_1q_2q_3)s_2^{-1},
+\]
+whose real part is unchanged.  Quaternionic norms are unchanged as well.  Cyclic invariance follows from cyclicity of the real part.
+\end{proof}
+
+\begin{proposition}[Positivity in triality coordinates]\label{prop:T13-positive}
+An element of $\cT_{13}$ is positive semidefinite if and only if
+\begin{equation}\label{eq:T13-PSD}
+ \lambda\geq0,
+ \qquad |q_i|^2\leq\lambda^2\quad(i=1,2,3),
+ \qquad \cN_{13}(\lambda;q_1,q_2,q_3)\geq0.
+\end{equation}
+If $\lambda=0$, these conditions force $q_1=q_2=q_3=0$.
+\end{proposition}
+
+\begin{proof}
+The displayed quantities are exactly the Moore determinants of all principal $1\times1$, $2\times2$, and $3\times3$ submatrices, so they are necessary.  For $\lambda>0$, take the quaternionic Schur complement of the first diagonal entry.  It is a $2\times2$ quaternionic Hermitian matrix whose two diagonal entries are
+$\lambda-|q_3|^2/\lambda$ and $\lambda-|q_2|^2/\lambda$, and whose Moore determinant is $\cN_{13}/\lambda$.  The $2\times2$ positivity criterion therefore proves sufficiency.  The case $\lambda=0$ follows from the three quadratic inequalities.
+\end{proof}
+
+\begin{proposition}[Generic orbit coordinates]\label{prop:generic-orbits}
+On the open set $q_1q_2q_3\neq0$, the $K_\triangle$-orbit is determined by
+\begin{equation}\label{eq:orbit-invariants}
+ r_i=|q_i|>0,
+ \qquad
+ \tau=\Ree(q_1q_2q_3),
+ \qquad
+ -r_1r_2r_3\leq\tau\leq r_1r_2r_3.
+\end{equation}
+Equivalently, write
+\[
+ \tau=r_1r_2r_3\cos\theta,
+ \qquad 0\leq\theta\leq\pi.
+\]
+At fixed $\lambda,r_1,r_2,r_3$, the determinant boundary is the explicit phase equation
+\begin{equation}\label{eq:theta-wall}
+ \cos\theta
+ =\frac{\lambda(r_1^2+r_2^2+r_3^2)-\lambda^3}
+        {2r_1r_2r_3},
+\end{equation}
+whenever the right side lies in $[-1,1]$.
+\end{proposition}
+
+\begin{proof}
+Use \eqref{eq:vertex-gauge} to make $q_1=r_1$ and $q_2=r_2$ positive real.  The residual gauge group is common conjugation by one unit quaternion, acting on $q_3$.  Quaternionic conjugacy classes are determined by norm and real part.  Since
+$q_1q_2q_3=r_1r_2q_3$ in this gauge, \eqref{eq:orbit-invariants} is complete.  Equation \eqref{eq:theta-wall} is \eqref{eq:N13} with determinant zero.
+\end{proof}
+
+\section{The sphere ladder forced by equal-diagonal rank three}
+
+Let $\mathbb A$ be one of the four normed real division algebras
+$\R,\C,\Hh,\Oo$, of real dimension $d=1,2,4,8$.  Let $\cT(\mathbb A)$ be the equal-diagonal slice of the rank-three Hermitian Jordan algebra over $\mathbb A$.  In the octonionic case, the real part of the associator vanishes, so the cubic formula remains well-defined.
+
+\begin{theorem}[Division-algebra boundary ladder]\label{thm:sphere-ladder}
+The real dimension of $\cT(\mathbb A)$ is $1+3d$.  Let
+\[
+ \cC(\mathbb A)=\cT(\mathbb A)\cap\Herm_3(\mathbb A)_{\succeq0}.
+\]
+Then
+\begin{equation}\label{eq:cone-topology}
+ \cC(\mathbb A)^+\cong B^{1+3d},
+ \qquad
+ \bigl(\partial\cC(\mathbb A)\bigr)^+\cong S^{3d}.
+\end{equation}
+Consequently the equal-diagonal ladder is
+\begin{equation}\label{eq:sphere-table}
+\begin{array}{c|c|c|c}
+\mathbb A&\dim_{\R}\mathbb A&\dim_{\R}\cT(\mathbb A)&
+(\partial\cC(\mathbb A))^+\\ \hline
+\R&1&4&S^3\\
+\C&2&7&S^6\\
+\Hh&4&13&S^{12}\\
+\Oo&8&25&S^{24}.
+\end{array}
+\end{equation}
+Every chosen inclusion of division algebras induces a determinant- and positivity-preserving linear inclusion of cones and therefore a based embedding of the displayed compactified boundaries.
+\end{theorem}
+
+\begin{proof}
+A nonzero positive-semidefinite equal-diagonal matrix has $\lambda>0$.  Its intersection with the affine hyperplane $\lambda=1$ is a compact convex body in $\mathbb A^3$: compactness follows from the principal-minor inequalities $|q_i|\leq1$, and the origin of $\mathbb A^3$ is an interior point.  Every compact convex body with nonempty interior is homeomorphic to a closed ball by radial projection from an interior point, with boundary a sphere.  Positive scaling reconstructs the cone.  Thus the cone is homeomorphic to a closed half-space of dimension $1+3d$, and \eqref{eq:cone-topology} follows.  Entrywise algebra inclusions preserve the determinant formula and positivity.
+\end{proof}
+
+\begin{remark}[What the ladder does and does not identify]
+The complex rung supplies a canonical $S^6$ as the compactified determinant boundary of a seven-dimensional real cone.  The quaternionic and octonionic rungs explain the previously recurring dimensions $S^{12}$ and $S^{24}$.  These are exact sphere carriers.  An identification with any separately constructed torus-fibred complex threefold would still require a map preserving its period law and singular fillings.
+\end{remark}
+
+\section{Why the thirteen-dimensional slice generates fifteen dimensions}
+
+Let
+\[
+ \cJ_{15}=\Herm_3(\Hh).
+\]
+This is the rank-three quaternionic Euclidean Jordan algebra
+\cite{JvNW,Gunnells}; as a real vector space it has dimension
+$3+3\cdot4=15$.
+
+\begin{theorem}[Jordan closure]\label{thm:Jordan-closure}
+The smallest Jordan subalgebra of $\cJ_{15}$ containing $\cT_{13}$ is all of $\cJ_{15}$.
+\end{theorem}
+
+\begin{proof}
+The slice $\cT_{13}$ contains the identity and every off-diagonal Hermitian edge matrix.  Let $E_1(q)$ be supported in the $(2,3)$ and $(3,2)$ positions.  For $|q|=1$,
+\[
+ E_1(q)^2=\diag(0,1,1).
+\]
+Likewise the other two edges square to $\diag(1,0,1)$ and $\diag(1,1,0)$.  Their linear combinations give all three diagonal matrix units, for example
+\[
+ E_{11}=\frac12\bigl(\diag(1,0,1)+\diag(1,1,0)-\diag(0,1,1)\bigr).
+\]
+Together with the already present quaternionic off-diagonal entries, these span $\Herm_3(\Hh)$.  Since $X\circ X=X^2$, every square used above belongs to the Jordan closure.
+\end{proof}
+
+Write
+\begin{equation}\label{eq:diagonal-anisotropy}
+ a_i=\lambda+\eta_i,
+ \qquad \eta_1+\eta_2+\eta_3=0.
+\end{equation}
+The two-dimensional vector $\eta$ is the diagonal $A_2$ Cartan anisotropy omitted by the equal-diagonal slice.
+
+\begin{proposition}[Exact anisotropy coupling]\label{prop:anisotropy}
+With $r_i^2=|q_i|^2$, the full quaternionic determinant is
+\begin{align}\label{eq:N15-anisotropy}
+ \det_{\Hh}Q
+ =&\ \cN_{13}(\lambda;q_1,q_2,q_3)
+ -\frac{\lambda}{2}(\eta_1^2+\eta_2^2+\eta_3^2)
+ +\eta_1\eta_2\eta_3\notag\\
+ &-(\eta_1r_1^2+\eta_2r_2^2+\eta_3r_3^2).
+\end{align}
+At $\eta=0$, its derivative in a trace-free diagonal direction $\delta\eta$ is
+\begin{equation}\label{eq:normal-gradient}
+ D_\eta\det[\delta\eta]
+ =-\sum_{i=1}^3r_i^2\delta\eta_i.
+\end{equation}
+The normal gradient vanishes for all $\delta\eta_1+\delta\eta_2+\delta\eta_3=0$ if and only if
+\begin{equation}\label{eq:equal-norm-condition}
+ |q_1|=|q_2|=|q_3|.
+\end{equation}
+Thus the thirteen-dimensional slice is generically not invariant under unrestricted determinant-gradient dynamics.  The two missing real coordinates are sourced precisely by imbalance among the three four-dimensional sectors.
+\end{proposition}
+
+\begin{proof}
+Expand the product $\prod_i(\lambda+\eta_i)$ and use
+\[
+ \eta_1\eta_2+\eta_2\eta_3+\eta_3\eta_1
+ =-\frac12\sum_i\eta_i^2.
+\]
+This gives \eqref{eq:N15-anisotropy}.  Differentiating at zero gives \eqref{eq:normal-gradient}.  A vector is orthogonal to the trace-free plane precisely when its three coordinates are equal.
+\end{proof}
+
+\begin{corollary}[The roles of dimensions thirteen, fourteen, and fifteen]\label{cor:dimensions}
+The three dimensions have distinct exact meanings.
+\begin{enumerate}
+\item $13$: $\cT_{13}=\R\oplus\Hh^3$ is the triality-symmetric ansatz.
+\item $14$: the fixed-trace section
+\[
+ \{Q\in\Herm_3(\Hh)_{\succeq0}:\tr Q=\tau\},\qquad\tau>0,
+\]
+is a compact convex $14$-ball whose boundary is $S^{13}$.  It contains all shape and anisotropy variables but removes overall radial scale.
+\item $15$: $\Herm_3(\Hh)$ is the unconstrained Jordan-closed linear space and its positive cone has compactified determinant boundary $S^{14}$.
+\end{enumerate}
+\end{corollary}
+
+\section{Exact quaternionic enlargement of the old nine-dimensional object}
+
+Fix the complex subalgebra $\C_i=\R\oplus\R i\subset\Hh$.  Every quaternion is uniquely $z+w j$ with $z,w\in\C_i$.
+
+For $A\in\Herm_3(\C_i)$ and $b=(b_1,b_2,b_3)^{\mathsf T}\in\C_i^3$, define
+\begin{equation}\label{eq:Bb}
+ B(b)=
+ \begin{pmatrix}
+ 0&\bar b_3&-\bar b_2\\
+ -\bar b_3&0&\bar b_1\\
+ \bar b_2&-\bar b_1&0
+ \end{pmatrix}
+\end{equation}
+and
+\begin{equation}\label{eq:ThetaAb}
+ \Theta(A,b)=A+B(b)j\in\Herm_3(\Hh).
+\end{equation}
+
+\begin{theorem}[Complex-plus-triplet decomposition]\label{thm:complex-triplet}
+The map
+\[
+ \Theta:\Herm_3(\C_i)\oplus\C_i^3\longrightarrow\Herm_3(\Hh)
+\]
+is a real-linear isomorphism, and
+\begin{equation}\label{eq:pair-determinant}
+ \boxed{
+ \det_{\Hh}\Theta(A,b)=\det_{\C}A-b^*Ab.}
+\end{equation}
+For $U\in\SU(3)$,
+\begin{equation}\label{eq:SU3-pair-action}
+ \Theta(A,b)\longmapsto\Theta(UAU^*,Ub)
+\end{equation}
+is exactly quaternionic congruence by the complex matrix $U$ and preserves the determinant and positive cone.
+\end{theorem}
+
+\begin{proof}
+The skew matrix $B(b)$ records the three components orthogonal to $\C_i$, so uniqueness is immediate.  Write the three quaternionic off-diagonal entries as
+$q_r=z_r+\bar b_rj$.  Expanding \eqref{eq:Moore} with
+\[
+ (z+w j)(z'+w'j)=zz'-w\bar w'+(zw'+w\bar z')j
+\]
+gives \eqref{eq:pair-determinant}; the accompanying symbolic replay performs the full real-coordinate expansion.  The identity
+\[
+ U B(b)U^{\mathsf T}=B(Ub),\qquad\det U=1,
+\]
+proves \eqref{eq:SU3-pair-action}.  Quaternionic unitary congruence preserves positivity.
+\end{proof}
+
+\begin{corollary}[The fourteen-dimensional $S^8$ unlock]\label{cor:S8-unlock}
+Taking traces in \eqref{eq:ThetaAb} gives
+\begin{equation}\label{eq:tracefree-split}
+ \Herm_3^0(\Hh)
+ \cong\Herm_3^0(\C_i)\oplus\C_i^3
+ \cong\R^8\oplus\R^6.
+\end{equation}
+Therefore the one-point compactification of the old traceless carrier embeds as the standard unknotted linear sphere
+\begin{equation}\label{eq:S8-in-S14}
+ \boxed{S^8\hookrightarrow S^{14}.}
+\end{equation}
+Its normal representation is the complex colour triplet $\C^3$.  The inclusion is $\SU(3)$-equivariant under conjugation on the first summand and the fundamental action on the second.
+\end{corollary}
+
+\begin{proof}
+The trace is carried entirely by $A$.  The dimensions are eight and six.  One-point compactification of the linear inclusion $\R^8\subset\R^{14}$ gives \eqref{eq:S8-in-S14}.
+\end{proof}
+
+
+
+\begin{theorem}[Commuting Gram-boundary unlock]\label{thm:boundary-square}
+For $\mathbb A=\C_i$ or $\Hh$, define
+\begin{equation}\label{eq:spectral-floor-A}
+ \Phi_{\mathbb A}:\Herm_3^0(\mathbb A)
+ \longrightarrow\partial\Herm_3(\mathbb A)_{\succeq0},
+ \qquad
+ \Phi_{\mathbb A}(K)=K-\lambda_{\min}(K)I_3.
+\end{equation}
+Then $\Phi_{\mathbb A}$ is a positively homogeneous equivariant homeomorphism
+with inverse
+\begin{equation}\label{eq:spectral-floor-inverse-A}
+ \Psi_{\mathbb A}(Q)=Q-\frac{\tr Q}{3}I_3.
+\end{equation}
+The complex/quaternionic inclusions form the commuting square
+\begin{equation}\label{eq:boundary-commuting-square}
+\begin{array}{ccc}
+ \Herm_3^0(\C_i)&\lhook\joinrel\longrightarrow&\Herm_3^0(\Hh)\\
+ \big\downarrow{\scriptstyle\Phi_{\C_i}}&&
+ \big\downarrow{\scriptstyle\Phi_{\Hh}}\\
+ \partial\Herm_3(\C_i)_{\succeq0}&\lhook\joinrel\longrightarrow&
+ \partial\Herm_3(\Hh)_{\succeq0}.
+\end{array}
+\end{equation}
+After one-point compactification this is the exact boundary embedding
+$S^8\hookrightarrow S^{14}$, not merely a dimension match.
+\end{theorem}
+
+\begin{proof}
+For trace-free $K$, subtracting its least real eigenvalue makes all eigenvalues
+nonnegative and at least one zero.  Conversely, if $Q\succeq0$ is singular,
+then the least eigenvalue of
+$Q-(\tr Q/3)I_3$ is $-\tr Q/3$.  The two formulas are therefore inverse, and
+continuity follows from continuity of ordered quaternionic Hermitian
+eigenvalues.  A complex Hermitian matrix has the same eigenvalues when viewed
+as quaternionic Hermitian, so the square commutes.  Equivariance follows from
+unitary congruence invariance of the spectrum.
+\end{proof}
+
+\begin{theorem}[Minimality of the full-colour unlock]\label{thm:colour-minimality}
+Under the decomposition of \cref{thm:complex-triplet}, the standard complex
+representation $\C^3$ is irreducible as a real $\SU(3)$-representation.
+Consequently:
+\begin{enumerate}
+\item the smallest real $\SU(3)$-invariant linear subspace of
+$\Herm_3^0(\Hh)$ containing $\Herm_3^0(\C_i)$ and one nonzero transverse
+vector is all of
+\[
+ \Herm_3^0(\Hh)=\Herm_3^0(\C_i)\oplus\C_i^3,
+\]
+of real dimension fourteen;
+\item the smallest real $\SU(3)$-invariant linear subspace of
+$\Herm_3(\Hh)$ containing $\Herm_3(\C_i)$ and one nonzero transverse vector
+is all of $\Herm_3(\Hh)$, of real dimension fifteen.
+\end{enumerate}
+In particular, no thirteen-dimensional linear completion of the old
+nine-dimensional object can both add a nonzero quaternionic direction and
+retain full $\SU(3)$ invariance.  Every thirteen-dimensional completion below
+is therefore a specified symmetry reduction, and the inclusions into the
+fourteen- and fifteen-dimensional carriers are the exact morphisms relating
+those objects.
+\end{theorem}
+
+\begin{proof}
+The group $\SU(3)$ acts transitively on the unit sphere in $\C^3$.  Hence a
+nonzero invariant real subspace containing one transverse vector contains its
+entire unit-sphere orbit and therefore spans all of $\C^3$ over $\R$.  The two
+claims now follow from the direct sums in
+\eqref{eq:tracefree-split} and \cref{thm:complex-triplet}.
+\end{proof}
+
+\subsection{The focal \texorpdfstring{$\CP^2$}{CP2} opens into \texorpdfstring{$\HP^2$}{HP2}}
+
+Let
+\[
+ \mathcal P_{\C}
+ =\{P\in\Herm_3(\C_i):P^2=P,\ \tr P=1\},
+ \qquad
+ \mathcal P_{\Hh}
+ =\{P\in\Herm_3(\Hh):P^2=P,\ \tr P=1\}.
+\]
+These are respectively the complex and quaternionic rank-one projector
+manifolds $\CP^2$ and $\HP^2$, with the first included in the second.
+
+\begin{theorem}[\texorpdfstring{$\SU(3)$}{SU(3)} orbit interval on \texorpdfstring{$\HP^2$}{HP2}]\label{thm:HP2-orbits}
+Represent a quaternionic line by a unit vector
+\[
+ v=z+w j\in\Hh^3,
+ \qquad z,w\in\C_i^3,
+ \qquad \|z\|^2+\|w\|^2=1,
+\]
+and put $Z=(z\ w)\in\Mat_{3\times2}(\C_i)$.  The function
+\begin{equation}\label{eq:delta-HP2}
+ \delta([v])=4\det(Z^*Z)
+\end{equation}
+is well defined on $\HP^2$, is $\SU(3)$-invariant, has range
+$[0,1]$, and induces a homeomorphism
+\begin{equation}\label{eq:HP2-quotient}
+ \boxed{\HP^2/\SU(3)\cong[0,1].}
+\end{equation}
+The orbit types are
+\begin{equation}\label{eq:HP2-orbit-types}
+\begin{array}{c|c|c}
+\delta&\text{orbit}&\text{stabilizer in }\SU(3)\\ \hline
+0&\CP^2& S(U(1)\times U(2))\\
+0<\delta<1&\SU(3)/U(1)_{1,-1,0}&
+ U(1)_{1,-1,0}\\
+1&S^5=\SU(3)/\SU(2)&\SU(2).
+\end{array}
+\end{equation}
+Here
+\[
+ U(1)_{1,-1,0}
+ =\{\diag(e^{i\theta},e^{-i\theta},1):\theta\in\R\}.
+\]
+Consequently $\HP^2$ has the explicit double disk-bundle description
+\begin{equation}\label{eq:HP2-double-disk}
+ \boxed{
+ \HP^2
+ \cong
+ \SU(3)\times_{S(U(1)\times U(2))}D^4
+ \ \cup_{\SU(3)/U(1)_{1,-1,0}}\ 
+ \SU(3)\times_{\SU(2)}D^3.}
+\end{equation}
+The old complex focal manifold is exactly the endpoint $\delta=0$.  This
+recovers, in the present Gram coordinates, the standard cohomogeneity-one
+$\SU(3)$ action on $\HP^2$ \cite{Gambioli}.
+\end{theorem}
+
+\begin{proof}
+Right multiplication of $v=z+w j$ by a unit quaternion $a+bj$ sends
+\[
+ (z\ w)\longmapsto
+ (z\ w)
+ \begin{pmatrix}a&b\\-\bar b&\bar a\end{pmatrix},
+\]
+and the displayed matrix lies in $\SU(2)$.  Left $\SU(3)$ multiplication and
+right $\SU(2)$ multiplication commute.  The left $\SU(3)$ orbit of a
+$3\times2$ complex matrix is classified by its Gram matrix $Z^*Z$; the right
+$\SU(2)$ action conjugates that Gram matrix.  Because its trace is one, its
+conjugacy class is determined by its two eigenvalues.  Thus
+$4\det(Z^*Z)\in[0,1]$ is a complete orbit parameter.
+
+For eigenvalues $\lambda_1\geq\lambda_2\geq0$ with sum one, a representative
+is
+\[
+ Z_{\lambda}
+ =\begin{pmatrix}\sqrt{\lambda_1}&0\\
+                  0&\sqrt{\lambda_2}\\0&0\end{pmatrix}.
+\]
+If $\lambda_2=0$, the stabilizer is $S(U(1)\times U(2))$ and the orbit is
+$\CP^2$.  If $\lambda_1>\lambda_2>0$, compatibility with a right $\SU(2)$
+transformation leaves precisely $U(1)_{1,-1,0}$.  If
+$\lambda_1=\lambda_2=1/2$, the stabilizer is the upper-left $\SU(2)$ and the
+orbit is $S^5$.  The normal spheres are
+$S(U(1)\times U(2))/U(1)_{1,-1,0}\cong S^3$ and
+$\SU(2)/U(1)_{1,-1,0}\cong S^2$, which gives
+\eqref{eq:HP2-double-disk}.
+\end{proof}
+
+\begin{proposition}[The orbit coordinate is the transverse triplet norm]\label{prop:delta-b}
+Let $P=vv^*$ be the projector associated with the normalized vector in
+\cref{thm:HP2-orbits}, and write $P=\Theta(A_P,b_P)$.  Then
+\begin{equation}\label{eq:b-pluecker}
+ \boxed{
+ b_P^*b_P
+ =\|z\wedge w\|^2
+ =\det(Z^*Z)
+ =\frac{\delta([v])}{4}.}
+\end{equation}
+For $Q=x(3P-I_3)$, its triplet component is $b_Q=3x b_P$, so
+\begin{equation}\label{eq:b-vacuum-coordinate}
+ \boxed{b_Q^*b_Q=\frac{9x^2}{4}\delta([v]).}
+\end{equation}
+Thus the ordinary $\SU(3)$-invariant quadratic $b^*b$ is an exact coordinate
+along the internal orbit interval.
+\end{proposition}
+
+\begin{proof}
+Writing $v_r=z_r+w_rj$, the coefficient of $j$ in
+$v_r\overline{v_s}$ is $w_rz_s-z_rw_s$.  The three components of $b_P$ are,
+up to the fixed signs in \eqref{eq:Bb}, the three Pluecker coordinates of the
+pair $(z,w)$.  The complex Cauchy--Binet identity gives
+\[
+ \sum_{r<s}|z_rw_s-z_sw_r|^2=\det(Z^*Z).
+\]
+Linearity of $\Theta$ gives the second formula.
+\end{proof}
+
+\begin{proposition}[A boundary path leaving the complex $S^8$]\label{prop:boundary-escape}
+Let $j\perp\C_i$ be the fixed quaternionic unit.  For $t\in\R$, set
+\begin{equation}\label{eq:escape-path}
+ Q_t=
+ \begin{pmatrix}
+ 1&0&0\\
+ 0&1&t j\\
+ 0&-t j&t^2
+ \end{pmatrix}.
+\end{equation}
+Then $Q_t\succeq0$ and $\rank Q_t=2$ for every $t$.  At $t=0$ it lies in the complex rank-defect cone; for $t\neq0$ it leaves $\Herm_3(\C_i)$ while remaining on the quaternionic determinant boundary.
+\end{proposition}
+
+\begin{proof}
+The lower block is $vv^*$ for $v=(1,-tj)^{\mathsf T}$, hence is positive semidefinite of rank one.  The first diagonal entry contributes one further rank.  The off-diagonal entry $tj$ is not in $\C_i$ when $t\neq0$.
+\end{proof}
+
+\subsection{The positive projection and its collapsing fibres}
+
+Let
+\[
+ \pi_{\C}:\Herm_3(\Hh)_{\succeq0}\longrightarrow
+ \Herm_3(\C_i)_{\succeq0},
+ \qquad \pi_{\C}(\Theta(A,b))=A.
+\]
+It is the average of the identity with entrywise conjugation by $i$, so it is positive and $\SU(3)$-equivariant.
+
+\begin{theorem}[Exact fibre topology over the complex cone]\label{thm:positive-fibres}
+The map $\pi_{\C}$ is proper and surjective.  Its fibres are as follows.
+\begin{enumerate}
+\item If $A>0$, then
+\begin{equation}\label{eq:B6-fibre}
+ \pi_{\C}^{-1}(A)
+ =\{\Theta(A,b):b^*Ab\leq\det A\},
+\end{equation}
+a closed real six-ball.  Equality is the rank-two boundary sphere $S^5$.
+\item If $A\succeq0$ has rank two and positive eigenvalues $a_1,a_2$, then
+\begin{equation}\label{eq:B2-fibre}
+ \pi_{\C}^{-1}(A)
+ =\{\Theta(A,b):b\in\ker A,\ |b|^2\leq a_1a_2\},
+\end{equation}
+a closed real two-ball.  Its interior has quaternionic rank two and its boundary has rank one.
+\item If $\rank A\leq1$, the fibre is the single point $b=0$.
+\end{enumerate}
+Thus the full quaternionic boundary maps to the complex cone as an $S^5$-bundle over the interior, a $B^2$-bundle over the generic complex boundary, and a point over the lower-rank locus.  The old $S^8$ is not discarded; it is the $b=0$ complex boundary inside this larger stratified boundary.
+\end{theorem}
+
+\begin{proof}
+For $A>0$, quaternionic congruence by $A^{-1/2}$ transforms $\Theta(A,b)$ into $\Theta(I,\beta)$ with
+\[
+ \beta=(\det A)^{-1/2}A^{1/2}b.
+\]
+An $\SU(3)$ matrix sends $\beta$ to $(r,0,0)$.  The resulting quaternionic Hermitian matrix has eigenvalues $1,1-r,1+r$.  Hence positivity is equivalent to
+$r^2=b^*Ab/\det A\leq1$, proving \eqref{eq:B6-fibre}.
+
+For rank two, diagonalize $A$ unitarily to $\diag(a_1,a_2,0)$.  Positivity of the three $2\times2$ principal submatrices forces the first two components of $b$ to vanish and gives $|b_3|^2\leq a_1a_2$.  Rank one forces all three components to vanish.  Properness follows because $\tr\Theta(A,b)=\tr A$ and a positive-semidefinite matrix has norm bounded by its trace on compact trace ranges.
+\end{proof}
+
+\begin{corollary}[Cone compactifications]\label{cor:cone-compactifications}
+The positive cones and their determinant boundaries satisfy
+\begin{equation}\label{eq:full-cone-balls}
+ \Herm_3(\C_i)_{\succeq0}^{+}\cong B^9,
+ \quad
+ (\partial\Herm_3(\C_i)_{\succeq0})^{+}\cong S^8,
+\end{equation}
+\begin{equation}\label{eq:H-cone-balls}
+ \Herm_3(\Hh)_{\succeq0}^{+}\cong B^{15},
+ \quad
+ (\partial\Herm_3(\Hh)_{\succeq0})^{+}\cong S^{14}.
+\end{equation}
+The inclusion extends to $S^8\hookrightarrow S^{14}$.  The boundary restriction of $\pi_{\C}$ does not land in the old $S^8$, because the new $S^5$ boundary fibres lie over positive-definite $A$.
+\end{corollary}
+
+\section{Two different thirteen-dimensional slices inside the same closure}
+
+The equal-diagonal $\cT_{13}$ is the manifestly triality-symmetric slice.  A second thirteen-dimensional slice is forced if one instead insists on containing the complete old nine-dimensional Hermitian object and adding exactly one four-dimensional Lorentz-spinor sector.  Their relation is through the common fifteen-dimensional closure, not through an identification:
+\begin{equation}\label{eq:two-13-diagram}
+ \begin{array}{ccccc}
+ \cT_{13}\cap\Herm_3(\C_i)=\cT(\C_i)&\lhook\joinrel\longrightarrow&\cT_{13}&\lhook\joinrel\longrightarrow&\Herm_3(\Hh)\\
+ &&&&\rotatebox[origin=c]{90}{$\supset$}\\[-2mm]
+ \Herm_3(\C_i)&\lhook\joinrel\longrightarrow&\cL_{13}&\lhook\joinrel\longrightarrow&\Herm_3(\Hh).
+ \end{array}
+\end{equation}
+The upper intersection has real dimension seven, whereas the lower intersection is the complete old nine-dimensional object.  Thus the upper route preserves manifest three-edge triality and the lower route preserves the entire old carrier.
+
+Retain the earlier matrices
+\begin{equation}\label{eq:P-data}
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},
+ \qquad u=\begin{pmatrix}1\\1\\1\end{pmatrix},
+ \qquad R_P=P^*(PP^*)^{-1},
+ \qquad X=(R_P\;u),
+\end{equation}
+with $\det X=1$.  For $A\in\Herm_3(\C)$ and $b\in\C^3$, define
+\begin{equation}\label{eq:block-pair-coordinates}
+ X^{-1}AX^{-*}=
+ \begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix},
+ \qquad
+ X^*b=\begin{pmatrix}\chi\\\rho\end{pmatrix},
+\end{equation}
+where $G\in\Herm_2(\C)$, $z,\chi\in\C^2$, $\lambda\in\R$, and $\rho\in\C$.
+
+\begin{theorem}[Full $4+4+4+1+2$ cubic]\label{thm:full-block-cubic}
+In the coordinates \eqref{eq:block-pair-coordinates},
+\begin{align}\label{eq:N15-block}
+ \det_{\Hh}\Theta(A,b)
+ =&\ \lambda\det G-z^*\adj(G)z-\chi^*G\chi\notag\\
+ &-2\Ree\bigl(\rho\,\chi^*z\bigr)-\lambda|\rho|^2.
+\end{align}
+For $g\in SL_2(\C)$, put
+\[
+ T_P(g)=X(g\oplus1)X^{-1}.
+\]
+The determinant-preserving action
+\begin{equation}\label{eq:structure-action}
+ A\mapsto T_P(g)AT_P(g)^*,
+ \qquad
+ b\mapsto T_P(g)^{-*}b
+\end{equation}
+becomes
+\begin{equation}\label{eq:block-transform-full}
+ G\mapsto gGg^*,\quad z\mapsto gz,\quad
+ \chi\mapsto g^{-*}\chi,\quad
+ \lambda\mapsto\lambda,\quad\rho\mapsto\rho.
+\end{equation}
+Thus the full fifteen-dimensional space is a Lorentz vector, a left Weyl spinor, a dual Weyl spinor, a real scalar, and a complex scalar:
+\[
+ 15=4+4+4+1+2.
+\]
+\end{theorem}
+
+\begin{proof}
+Because $\det X=1$,
+\[
+ \det A=\lambda\det G-z^*\adj(G)z.
+\]
+Also $b=X^{-*}(\chi,\rho)^{\mathsf T}$, so
+\[
+ b^*Ab=(\chi^*,\bar\rho)
+ \begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}
+ \begin{pmatrix}\chi\\\rho\end{pmatrix}.
+\]
+Expanding and using \eqref{eq:pair-determinant} gives \eqref{eq:N15-block}.  The transformation law follows by conjugating with $X$.
+\end{proof}
+
+\begin{corollary}[Lorentz $4+4+4+1$ slice]\label{cor:L13}
+The condition $\rho=0$, equivalently $u^*b=0$, defines an invariant real thirteen-dimensional subspace
+\begin{equation}\label{eq:L13}
+ \cL_{13}
+ =\{(G,z,\chi,\lambda):G\in\Herm_2(\C),\ z,\chi\in\C^2,\ \lambda\in\R\}
+\end{equation}
+with cubic
+\begin{equation}\label{eq:NL13}
+ \boxed{
+ \cN_{\cL}(G,z,\chi,\lambda)
+ =\lambda\det G-z^*\adj(G)z-\chi^*G\chi.}
+\end{equation}
+It contains the complete old nine-dimensional object as the subspace $\chi=0$.  Its positive cone has one-point compactification $B^{13}$ and compactified determinant boundary $S^{12}$; the old compactified $S^8$ embeds properly in that $S^{12}$.
+\end{corollary}
+
+\begin{remark}[Why the missing two dimensions matter]
+The restriction \eqref{eq:NL13} contains no term linear in both spinors.  In the full cubic, the omitted complex scalar supplies precisely
+\[
+ -2\Ree(\rho\chi^*z).
+\]
+Consequently $\rho\neq0$ permits one spinor to source the other.  The direct continuation of the old $S^8$ therefore becomes fully mixed only in fifteen dimensions; the thirteen-dimensional Lorentz slice is a consistent symmetry reduction, not the complete dynamical closure.
+\end{remark}
+
+\begin{proposition}[The exact order-three matrix]\label{prop:C3}
+Let
+\[
+ \Pi=\begin{pmatrix}0&0&1\\1&0&0\\0&1&0\end{pmatrix}\in\SU(3)
+\]
+be the cyclic colour permutation.  Then
+\begin{equation}\label{eq:C1}
+ P\Pi R_P=
+ C_1:=\begin{pmatrix}-1&-1\\1&0\end{pmatrix},
+ \qquad C_1^3=I_2,
+ \qquad T_P(C_1)=\Pi.
+\end{equation}
+Thus the three-element colour cycle acts on the Lorentz blocks by
+\[
+ G\mapsto C_1GC_1^*,\qquad
+ z\mapsto C_1z,\qquad
+ \chi\mapsto C_1^{-*}\chi,
+\]
+with $\lambda$ and $\rho$ fixed.
+\end{proposition}
+
+\section{A globally well-posed triality mechanics}
+
+Put
+\begin{equation}\label{eq:R2}
+ \mathscr R^2=\lambda^2+|q_1|^2+|q_2|^2+|q_3|^2.
+\end{equation}
+Fix constants
+\[
+ \mu^2\geq0,\qquad \gamma>0,\qquad \kappa\in\R.
+\]
+Define
+\begin{equation}\label{eq:V13}
+ V_{13}
+ =\frac{\mu^2}{2}\mathscr R^2
+ +\frac{\gamma}{4}\mathscr R^4
+ -\kappa\cN_{13}.
+\end{equation}
+
+\begin{theorem}[Nonlinear triality dynamics]\label{thm:triality-dynamics}
+The Lagrangian
+\begin{equation}\label{eq:L13-mechanics}
+ L_{13}
+ =\frac12\dot\lambda^2+\frac12\sum_{i=1}^3|\dot q_i|^2-V_{13}
+\end{equation}
+is invariant under $K_\triangle\rtimes C_3$.  Its equations are
+\begin{align}\label{eq:lambda-eom}
+ \ddot\lambda+(\mu^2+\gamma\mathscr R^2)\lambda
+ -\kappa\left(3\lambda^2-\sum_i|q_i|^2\right)&=0,\\
+ \ddot q_1+(\mu^2+\gamma\mathscr R^2)q_1
+ -2\kappa(\bar q_3\bar q_2-\lambda q_1)&=0,\label{eq:q1-eom}\\
+ \ddot q_2+(\mu^2+\gamma\mathscr R^2)q_2
+ -2\kappa(\bar q_1\bar q_3-\lambda q_2)&=0,\label{eq:q2-eom}\\
+ \ddot q_3+(\mu^2+\gamma\mathscr R^2)q_3
+ -2\kappa(\bar q_2\bar q_1-\lambda q_3)&=0.\label{eq:q3-eom}
+\end{align}
+The energy
+\begin{equation}\label{eq:E13}
+ E_{13}=\frac12\dot\lambda^2+\frac12\sum_i|\dot q_i|^2+V_{13}
+\end{equation}
+is conserved, $V_{13}$ is bounded below and coercive, and every initial condition has a unique solution for all real time.
+\end{theorem}
+
+\begin{proof}
+The invariance follows from \cref{thm:triality-cubic}.  With the Euclidean quaternionic inner product, differentiation of \eqref{eq:N13} gives
+\begin{align*}
+ \nabla_{q_1}\cN_{13}&=2(\bar q_3\bar q_2-\lambda q_1),\\
+ \nabla_{q_2}\cN_{13}&=2(\bar q_1\bar q_3-\lambda q_2),\\
+ \nabla_{q_3}\cN_{13}&=2(\bar q_2\bar q_1-\lambda q_3),
+\end{align*}
+and $\partial_\lambda\cN_{13}=3\lambda^2-\sum_i|q_i|^2$.  This proves the equations and energy conservation.
+
+There is a constant $C$ with $|\cN_{13}|\leq C\mathscr R^3$: use
+$2|q_1q_2q_3|\leq2(\sum_i|q_i|^2/3)^{3/2}$ and the triangle inequality.  Therefore the positive quartic term dominates the cubic term at infinity.  A fixed energy bounds positions and velocities, preventing finite-time escape; standard smooth ODE theory gives global existence and uniqueness.
+\end{proof}
+
+\begin{corollary}[The third sector is dynamically generated]\label{cor:third-generated}
+Suppose at some time $t_0$,
+\[
+ q_3(t_0)=\dot q_3(t_0)=0,
+ \qquad q_1(t_0)q_2(t_0)\neq0,
+ \qquad\kappa\neq0.
+\]
+Then
+\begin{equation}\label{eq:q3-source}
+ \boxed{
+ \ddot q_3(t_0)=2\kappa\,\bar q_2(t_0)\bar q_1(t_0)\neq0.}
+\end{equation}
+Hence a two-edge configuration does not remain a mirrored two-sector system: the closed cubic interaction immediately creates the third four-dimensional sector.
+\end{corollary}
+
+\section{Local gauge-field lifts}
+
+\subsection{A triangle gauge theory with thirteen scalar components}
+
+Let spacetime be four-dimensional Minkowski space.  At three vertices take gauge fields
+$A_\mu^{(r)}\in\operatorname{Im}\Hh\cong\mathfrak{su}(2)$.  Orient $q_1$ from vertex $3$ to $2$, $q_2$ from $1$ to $3$, and $q_3$ from $2$ to $1$, consistently with \eqref{eq:vertex-gauge}.  Define
+\begin{align}\label{eq:covariant-edges}
+ D_\mu q_1&=\partial_\mu q_1+A_\mu^{(2)}q_1-q_1A_\mu^{(3)},\notag\\
+ D_\mu q_2&=\partial_\mu q_2+A_\mu^{(3)}q_2-q_2A_\mu^{(1)},\\
+ D_\mu q_3&=\partial_\mu q_3+A_\mu^{(1)}q_3-q_3A_\mu^{(2)}.\notag
+\end{align}
+
+\begin{theorem}[Power-counting renormalizable classical triangle model]\label{thm:triangle-QFT}
+The density
+\begin{align}\label{eq:triangle-Lagrangian}
+ \mathcal L_\triangle
+ =&-\frac1{4g^2}\sum_{r=1}^3\langle F_{\mu\nu}^{(r)},F^{(r)\mu\nu}\rangle
+ +\frac12\partial_\mu\lambda\partial^\mu\lambda
+ +\frac12\sum_{i=1}^3|D_\mu q_i|^2
+ -V_{13}
+\end{align}
+is invariant under local $\Sp(1)^3/\{\pm1\}$ gauge transformations and the global cyclic permutation of the three vertices.  In four dimensions,
+\[
+ [A_\mu]=[q_i]=[\lambda]=1,
+ \quad[g]=[\gamma]=0,
+ \quad[\mu^2]=2,
+ \quad[\kappa]=1.
+\]
+Every term has engineering dimension four.  Because $\gamma>0$, the scalar potential is bounded below.
+\end{theorem}
+
+\begin{proof}
+The covariant derivatives transform by the same left-right rule as their edge fields.  The loop product $q_1q_2q_3$ transforms by conjugation at one vertex, so its real part is gauge invariant.  The remaining claims follow from the displayed dimensions and the coercivity estimate in \cref{thm:triality-dynamics}.
+\end{proof}
+
+\begin{remark}
+This is a genuine local classical gauge theory with a three-node symmetry and a closed-loop cubic interaction.  Its gauge group is $\SU(2)^3$ modulo a central kernel, not colour $\SU(3)$.
+\end{remark}
+
+\subsection{The \texorpdfstring{$\SU(3)$}{SU(3)}-equivariant fourteen/fifteen-dimensional model}
+
+The decomposition \eqref{eq:pair-determinant} gives a separate colour theory.  Let
+\[
+ \Phi(x)\in\Herm_3^0(\C),
+ \qquad b(x)\in\C^3,
+\]
+so the scalar target is the fourteen-dimensional space in \eqref{eq:tracefree-split}.  Let $\mathcal A_\mu\in\mathfrak{su}(3)$ and
+\[
+ D_\mu\Phi=\partial_\mu\Phi+[\mathcal A_\mu,\Phi],
+ \qquad
+ D_\mu b=\partial_\mu b+\mathcal A_\mu b.
+\]
+Put
+\begin{equation}\label{eq:R14}
+ \mathscr S^2=\tr(\Phi^2)+2b^*b,
+ \qquad
+ \cN_{14}(\Phi,b)=\det\Phi-b^*\Phi b.
+\end{equation}
+
+\begin{theorem}[\texorpdfstring{$\SU(3)$}{SU(3)} dynamical unlock of the \texorpdfstring{$S^8$}{S8} carrier]\label{thm:SU3-dynamics}
+For constants $g_c>0$, $m^2\geq0$, $\Gamma>0$, and $\kappa\in\R$, the Lagrangian density
+\begin{align}\label{eq:SU3-Lagrangian}
+ \mathcal L_{14}
+ =&-\frac1{2g_c^2}\tr(\mathcal F_{\mu\nu}\mathcal F^{\mu\nu})
+ +\frac12\tr(D_\mu\Phi D^\mu\Phi)
+ +(D_\mu b)^*D^\mu b\notag\\
+ &-\frac{m^2}{2}\mathscr S^2
+ -\frac{\Gamma}{4}\mathscr S^4
+ +\kappa\cN_{14}(\Phi,b)
+\end{align}
+is a local, power-counting renormalizable, $\SU(3)$ gauge theory.  The old eight-dimensional field space is the invariant locus $b=0$; its one-point compactification is the embedded $S^8\subset S^{14}$ of \cref{cor:S8-unlock}.
+
+At a constant background $(\Phi_0,0)$, the quadratic operator on the six transverse real modes $b$ has Hermitian mass matrix
+\begin{equation}\label{eq:transverse-mass}
+ \boxed{
+ M_b^2(\Phi_0)
+ =\bigl(m^2+\Gamma\tr(\Phi_0^2)\bigr)I_3+\kappa\Phi_0.}
+\end{equation}
+If $a_1,a_2,a_3$ are the real eigenvalues of $\Phi_0$, the three complex transverse eigenvalues are
+\begin{equation}\label{eq:transverse-eigenvalues}
+ m^2+\Gamma\tr(\Phi_0^2)+\kappa a_i.
+\end{equation}
+A negative value gives an explicit classical transverse instability away from the old $S^8$ sector.
+\end{theorem}
+
+\begin{proof}
+Every term is invariant under
+$\Phi\mapsto U\Phi U^*$, $b\mapsto Ub$, and the determinant identity
+\eqref{eq:pair-determinant}.  All scalar fields have engineering dimension one; the cubic coefficient $\kappa$ has dimension one and the quartic coefficient $\Gamma$ is dimensionless.  The positive quartic term dominates the cubic invariant, so the potential is bounded below.
+
+Expand the potential to second order in $b$ at $b=0$.  The radial terms give
+$\bigl(m^2+\Gamma\tr(\Phi_0^2)\bigr)b^*b$, while
+$-\kappa\cN_{14}$ in the potential contributes $\kappa b^*\Phi_0b$.  Diagonalizing $\Phi_0$ gives \eqref{eq:transverse-eigenvalues}.
+\end{proof}
+
+
+\subsection{Exact vacuum phase diagram and the unlocked internal coordinate}
+
+For $Q=\Theta(\Phi,b)\in\Herm_3^0(\Hh)$ put
+\begin{equation}\label{eq:s-and-n}
+ s(Q)=\tr(Q^2)=\tr(\Phi^2)+2b^*b,
+ \qquad n(Q)=\det_{\Hh}Q=\det\Phi-b^*\Phi b.
+\end{equation}
+The scalar potential in \eqref{eq:SU3-Lagrangian} is
+\begin{equation}\label{eq:V14}
+ V_{14}(Q)=\frac{m^2}{2}s(Q)+\frac{\Gamma}{4}s(Q)^2-\kappa n(Q).
+\end{equation}
+Although only the subgroup $\SU(3)$ is gauged, this potential is invariant
+under the full compact Jordan automorphism group $\Sp(3)$.
+
+\begin{lemma}[Sharp trace-free determinant bound]\label{lem:det-bound}
+For every $Q\in\Herm_3^0(\Hh)$,
+\begin{equation}\label{eq:det-bound}
+ \boxed{54\,n(Q)^2\leq s(Q)^3.}
+\end{equation}
+For $Q\neq0$, equality holds precisely when
+\begin{equation}\label{eq:equality-projector}
+ Q=x(3P-I_3)
+\end{equation}
+for a nonzero $x\in\R$ and a primitive quaternionic projector
+$P\in\mathcal P_{\Hh}\cong\HP^2$.  In that case
+\[
+ s(Q)=6x^2,
+ \qquad n(Q)=2x^3.
+\]
+\end{lemma}
+
+\begin{proof}
+Quaternionic Hermitian spectral theory gives real eigenvalues
+$x_1,x_2,x_3$ with $x_1+x_2+x_3=0$.  At fixed
+$s=x_1^2+x_2^2+x_3^2$, Lagrange multipliers for
+$x_1x_2x_3$ force two eigenvalues to coincide at a nonzero extremum.  Thus the
+extremal spectrum is a permutation of $(2x,-x,-x)$.  Substitution gives
+$n^2=4x^6=s^3/54$.  Equality matrices are exactly the $\Sp(3)$ conjugates of
+$x\diag(2,-1,-1)=x(3E_{11}-I_3)$, which are
+\eqref{eq:equality-projector}.
+\end{proof}
+
+\begin{theorem}[Complete homogeneous vacuum diagram]\label{thm:vacuum-diagram}
+Assume $\Gamma>0$, $m^2\geq0$, and $\kappa\neq0$.  Define
+\begin{equation}\label{eq:critical-mass}
+ m_{\mathrm c}^2=\frac{\kappa^2}{27\Gamma}.
+\end{equation}
+Then the global minima of \eqref{eq:V14} are exactly as follows.
+\begin{enumerate}
+\item If $m^2>m_{\mathrm c}^2$, the unique minimum is $Q=0$.
+\item If $m^2=m_{\mathrm c}^2$, the minima are $Q=0$ together with
+\begin{equation}\label{eq:coexistence-vacua}
+ Q=\frac{\kappa}{9\Gamma}(3P-I_3),
+ \qquad P\in\HP^2.
+\end{equation}
+\item If $0\leq m^2<m_{\mathrm c}^2$, the minimum set is the single
+$\Sp(3)$ orbit
+\begin{equation}\label{eq:broken-vacua}
+ \boxed{
+ \mathcal V_{\min}
+ =\{x_*(3P-I_3):P\in\HP^2\}
+ \cong\HP^2,}
+\end{equation}
+where
+\begin{equation}\label{eq:x-star}
+ x_*
+ =\frac{\kappa+\operatorname{sgn}(\kappa)
+ \sqrt{\kappa^2-24\Gamma m^2}}{12\Gamma}.
+\end{equation}
+\end{enumerate}
+For $\kappa=0$, the origin is the unique global minimum.
+
+At every nonzero minimum, the scalar Hessian with respect to the metric
+$\tr(\delta Q^2)$ has eight zero eigenvalues tangent to $\HP^2$, one
+radial eigenvalue
+\begin{equation}\label{eq:radial-mass}
+ M_{\mathrm{rad}}^2=x_*(12\Gamma x_*-\kappa)>0,
+\end{equation}
+and a fivefold normal eigenvalue
+\begin{equation}\label{eq:five-mass}
+ M_5^2=3\kappa x_*>0.
+\end{equation}
+After gauging $\SU(3)$, the vacuum orbit space is the interval in
+\eqref{eq:HP2-quotient}.  The unbroken gauge groups are respectively
+$S(U(1)\times U(2))$, $U(1)_{1,-1,0}$, and $\SU(2)$ at
+$\delta=0$, $0<\delta<1$, and $\delta=1$.  A generic vacuum therefore has one
+exact gauge-invariant flat internal coordinate.
+\end{theorem}
+
+\begin{proof}
+Let $r=\sqrt{s(Q)}$.  By \cref{lem:det-bound}, minimization at fixed $r$
+chooses
+\[
+ n(Q)=\operatorname{sgn}(\kappa)\frac{r^3}{3\sqrt6},
+\]
+and equality forces \eqref{eq:equality-projector}.  The remaining radial
+problem is
+\[
+ f(r)=\frac{m^2}{2}r^2+\frac{\Gamma}{4}r^4
+      -\frac{|\kappa|}{3\sqrt6}r^3,
+ \qquad r\geq0.
+\]
+Put $a=|\kappa|/\sqrt6$.  Its nonzero stationary points solve
+$\Gamma r^2-ar+m^2=0$.  At such a point,
+\[
+ f(r)=r^3\left(\frac a6-\frac{\Gamma r}{4}\right).
+\]
+The larger stationary point has negative value precisely when
+$m^2<\kappa^2/(27\Gamma)$ and zero value at equality.  Converting
+$r=\sqrt6|x|$ gives \eqref{eq:coexistence-vacua}--\eqref{eq:x-star}.
+
+For the Hessian, fix $P=E_{11}$, so
+$Q_*=x_*\diag(2,-1,-1)$.  Tangent directions to the $\Sp(3)$ orbit have zero
+Hessian by invariance.  The radial calculation gives
+\eqref{eq:radial-mass}.  The remaining five-dimensional normal representation
+is a traceless quaternionic Hermitian $2\times2$ block $B_0$.  To quadratic
+order,
+\[
+ s(Q_*+B_0)=6x_*^2+\tr(B_0^2),
+ \qquad
+ n(Q_*+B_0)=2x_*^3-x_*\tr(B_0^2).
+\]
+Using the stationary equation
+$m^2-\kappa x_*+6\Gamma x_*^2=0$ gives
+\[
+ V_{14}(Q_*+B_0)-V_{14}(Q_*)
+ =\frac12(3\kappa x_*)\tr(B_0^2)+O(\|B_0\|^3),
+\]
+which proves \eqref{eq:five-mass}.  The gauge stabilizers and the interval
+quotient are those of \cref{thm:HP2-orbits}.
+\end{proof}
+
+\begin{corollary}[Exact unlock/relock control]\label{cor:unlock-control}
+On the nonzero vacuum manifold \eqref{eq:broken-vacua}, the additional
+renormalizable $\SU(3)$-invariant perturbation
+\begin{equation}\label{eq:nu-perturbation}
+ \Delta V_\nu=\nu b^*b
+\end{equation}
+restricts exactly to
+\begin{equation}\label{eq:nu-on-vacuum}
+ \boxed{
+ \Delta V_\nu
+ =\frac{9\nu x_*^2}{4}\,\delta.}
+\end{equation}
+Thus, among the formerly degenerate vacua, $\nu>0$ selects the old complex
+endpoint $\CP^2$ at $\delta=0$, $\nu<0$ selects the quaternionic endpoint
+$S^5$ at $\delta=1$, and $\nu=0$ leaves the full internal interval unlocked.
+The exact morphism relating this control parameter to the topology is
+$Q\mapsto b^*b\mapsto\delta$ from
+\eqref{eq:b-vacuum-coordinate}.
+\end{corollary}
+
+\begin{remark}[Why fourteen rather than thirteen for full colour]
+The condition $u^*b=0$ defining the Lorentz slice $\cL_{13}$ chooses one colour line and is not invariant under all of $\SU(3)$.  Full local colour invariance retains the whole triplet $b\in\C^3$, giving fourteen trace-free scalar components or fifteen components when the trace singlet of $A$ is restored.  Thus $13$ is the exact symmetry-reduced $4+4+4+1$ model; $14$ is the minimal linear $\SU(3)$ carrier that unlocks the old $S^8$; and $15$ is the full positive Jordan cone.
+\end{remark}
+
+
+\section{A rigorous finite-lattice quantum dynamics}
+
+The classical colour model can be quantized on a finite spatial lattice without
+replacing the compact link variables by Lie-algebra coordinates.  Let
+$\Lambda=(V,E,\mathcal P)$ be a finite connected oriented lattice with a finite
+set of oriented plaquettes.  Put
+\[
+ \mathcal S_{14}=\Herm_3^0(\C)\oplus\C^3
+\]
+with Euclidean norm
+\[
+ \|(\Phi,b)\|^2=\tr(\Phi^2)+2b^*b,
+\]
+and let
+\[
+ \rho(U)(\Phi,b)=(U\Phi U^*,Ub).
+\]
+The finite configuration manifold is
+\begin{equation}\label{eq:lattice-config}
+ \mathfrak M_\Lambda=\SU(3)^E\times\mathcal S_{14}^{V}.
+\end{equation}
+If $e$ is directed from $s(e)$ to $t(e)$, use the gauge convention
+\begin{equation}\label{eq:lattice-gauge}
+ U_e\longmapsto g_{t(e)}U_eg_{s(e)}^{-1},
+ \qquad Q_v\longmapsto\rho(g_v)Q_v,
+ \qquad g\in\SU(3)^V.
+\end{equation}
+
+Fix positive constants
+\[
+ a_g,a_s,\beta_p,\beta_h>0.
+\]
+For a plaquette $p$, let $U_p$ be its ordered holonomy.  Define the real
+potential
+\begin{align}\label{eq:lattice-potential}
+ W_\Lambda(U,Q)
+ =&\ \beta_p\sum_{p\in\mathcal P}
+       \bigl(3-\Ree\tr U_p\bigr)
+ +\beta_h\sum_{e\in E}
+       \|Q_{t(e)}-\rho(U_e)Q_{s(e)}\|^2\notag\\
+ &+\sum_{v\in V}V_{14}(Q_v).
+\end{align}
+No linearization of $U_e$ and no deletion of the $b$-triplet occurs.
+
+\begin{theorem}[Finite-lattice Hamiltonian and exact Gauss law]\label{thm:lattice-H}
+On
+\begin{equation}\label{eq:lattice-Hilbert}
+ \mathscr H_\Lambda
+ =L^2\!\left(
+ \SU(3)^E\times\mathcal S_{14}^{V},
+ \prod_{e\in E}dU_e\prod_{v\in V}dQ_v
+ \right),
+\end{equation}
+where each $dU_e$ is normalized Haar measure and each $dQ_v$ is Lebesgue
+measure for the displayed Euclidean norm, consider
+\begin{equation}\label{eq:lattice-Hamiltonian}
+ H_\Lambda
+ =-a_g\sum_{e\in E}\Delta_{\SU(3),e}
+  -a_s\sum_{v\in V}\Delta_{\mathcal S,v}
+  +W_\Lambda.
+\end{equation}
+Initially define it on $C_c^\infty(\mathfrak M_\Lambda)$.  Then:
+\begin{enumerate}
+\item $H_\Lambda$ is bounded below and its quadratic form has a canonical
+self-adjoint Friedrichs realization, with
+$C_c^\infty(\mathfrak M_\Lambda)$ as a form core;
+\item its resolvent is compact, so its spectrum is a discrete sequence
+\[
+ E_0<E_1\leq E_2\leq\cdots,\qquad E_n\to\infty;
+\]
+\item the unitary representation $\mathcal U_\Lambda$ induced by
+\eqref{eq:lattice-gauge} commutes with $H_\Lambda$, and the exact Gauss-law
+projection is
+\begin{equation}\label{eq:Gauss-projector}
+ \boxed{
+ P_{\mathrm{phys}}
+ =\int_{\SU(3)^V}\mathcal U_\Lambda(g)\,dg;}
+\end{equation}
+\item the positive ground-state eigenfunction of $H_\Lambda$ is unique and
+lies in
+\[
+ \mathscr H_{\Lambda,\mathrm{phys}}
+ =P_{\mathrm{phys}}\mathscr H_\Lambda;
+\]
+\item the reduced operator
+\begin{equation}\label{eq:Hphys}
+ H_{\Lambda,\mathrm{phys}}
+ =H_\Lambda\big|_{\mathscr H_{\Lambda,\mathrm{phys}}}
+\end{equation}
+has compact resolvent, a one-dimensional ground state, and a strictly positive
+finite-volume excitation gap
+\begin{equation}\label{eq:finite-gap}
+ \boxed{
+ \Delta_\Lambda
+ =\inf\bigl(\Spec(H_{\Lambda,\mathrm{phys}})\setminus\{E_0\}\bigr)-E_0
+ >0.}
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The plaquette and hopping terms are nonnegative.  By the sharp determinant
+bound \eqref{eq:det-bound}, each local potential satisfies
+\[
+ V_{14}(Q)
+ \geq \frac{\Gamma}{4}\|Q\|^4
+       -\frac{|\kappa|}{3\sqrt6}\|Q\|^3,
+\]
+so $W_\Lambda$ is bounded below and tends to $+\infty$ whenever any scalar
+coordinate tends to infinity, uniformly in the compact link variables.  The
+associated semibounded quadratic form is closable; its closure defines the
+Friedrichs extension.
+
+The configuration manifold is a finite product of compact Lie groups and
+Euclidean spaces, and the potential is confining in every Euclidean direction.
+The form-domain embedding into $L^2$ is therefore compact: truncate to a large
+scalar ball, use Rellich compactness on the resulting compact manifold with
+boundary, and use coercivity to make the exterior $L^2$ norm uniformly small.
+This proves compact resolvent.
+
+Every term in \eqref{eq:lattice-Hamiltonian} is invariant under
+\eqref{eq:lattice-gauge}.  Haar averaging therefore gives the orthogonal
+projection \eqref{eq:Gauss-projector}, which strongly commutes with the
+Hamiltonian.  The scalar Schrödinger semigroup on the connected configuration
+manifold is positivity improving.  Hence the lowest eigenvalue is simple and
+has a strictly positive eigenfunction.  Gauge invariance and uniqueness force
+that eigenfunction to be fixed by $\SU(3)^V$.  Restriction to the reducing
+physical subspace preserves compact resolvent and the simple ground state;
+discreteness then gives \eqref{eq:finite-gap}.
+\end{proof}
+
+\begin{remark}[What this quantum theorem decides]
+The Hamiltonian \eqref{eq:lattice-Hamiltonian} is one fixed nonlinear compact-link
+quantum system, rather than a Gaussian Hessian on a Lie-algebra chart.  It has
+an exact Gauss-law projection and retains the fields that unlock the old
+$S^8$.  The theorem gives a positive gap for each fixed finite lattice.  It does
+not assert a uniform lower bound as lattice spacing tends to zero or spatial
+volume tends to infinity.  Those limits define the next operator problem; a
+finite-volume gap alone decides neither confinement nor the pure
+four-dimensional Yang--Mills mass gap.
+\end{remark}
+
+\section{Exact status}
+
+The following objects are now constructed with explicit maps.
+\begin{enumerate}
+\item A thirteen-dimensional triality cone $\cT_{13}$ with a cubic three-edge interaction, cyclic symmetry, compactified boundary $S^{12}$, and globally well-posed nonlinear mechanics.
+\item A division-algebra ladder.  Its equal-diagonal determinant boundaries are $S^3$, $S^6$, $S^{12}$, and $S^{24}$.
+\item The fifteen-dimensional quaternionic Jordan closure, including the two diagonal anisotropy modes generated by Jordan multiplication and determinant dynamics.
+\item A fourteen-dimensional $\SU(3)$ representation
+$\Herm_3^0(\C)\oplus\C^3$ in which the old $S^8$ embeds with six explicit transverse modes; full colour forces dimension fourteen (or fifteen after restoring trace).
+\item A proper positive projection from the quaternionic cone to the complex cone, with exact $B^6/B^2/\mathrm{pt}$ fibres, and a commuting Gram-boundary square $S^8\hookrightarrow S^{14}$.
+\item The cohomogeneity-one topology
+$\HP^2/\SU(3)=[0,1]$, with endpoint orbits $\CP^2$ and $S^5$, together with its double disk-bundle decomposition.
+\item A local $\SU(2)^3$ triangle gauge theory and a local $\SU(3)$ Yang--Mills--scalar theory, including the complete homogeneous vacuum phase diagram, Hessian, unbroken subgroups, and an exact unlock/relock perturbation.
+\item A nonlinear finite-lattice quantum Hamiltonian with compact $\SU(3)$ links, all fourteen scalar modes, product Haar--Lebesgue measure, an exact vertex Gauss-law projection, compact resolvent, a unique physical ground state, and a positive gap on every fixed finite lattice.
+\end{enumerate}
+
+These constructions do not identify the equal-diagonal complex $S^6$ with a separately proposed torus-fibred complex structure on $S^6$.  They also do not construct pure quantum Yang--Mills: both local actions contain scalar fields, and the finite-lattice Hamiltonian has no proved reflection-positive transfer-matrix reconstruction, renormalized continuum limit, infinite-volume limit, or uniform pure-gauge mass gap.
+
+The next exact calculations are now sharply defined.  For the quantum model one must choose a lattice-spacing/volume scaling of all displayed couplings and determine whether $\Delta_\Lambda$ has a nonzero, zero, or divergent limit after vacuum-energy subtraction.  For the geometry one must test whether the toroidal monodromy and filling cocycles reduce to the explicit $\Sp(1)^3
+times C_3$, $\SU(3)$, or $\Sp(3)$ structure groups above.  That test requires the actual overlap matrices and boundary inclusions, not a sphere-dimension match.
+
+\begin{thebibliography}{9}
+\bibitem{JvNW}
+P. Jordan, J. von Neumann, and E. Wigner,
+\emph{On an algebraic generalization of the quantum mechanical formalism},
+Ann. of Math. 35 (1934), 29--64.
+
+\bibitem{Wang}
+W. Wang,
+\emph{The linear algebra in the quaternionic pluripotential theory},
+arXiv:1805.07759.
+
+\bibitem{Gunnells}
+P. E. Gunnells,
+\emph{Exotic matrix models: the Albert algebra and the spin factor},
+arXiv:1808.02853.
+
+\bibitem{Gambioli}
+A. Gambioli,
+\emph{Eight-dimensional $SU(3)$-manifolds of cohomogeneity one},
+arXiv:math/0611796.
+\end{thebibliography}
+
+\end{document}

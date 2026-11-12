@@ -1,0 +1,657 @@
+# Homotopy fibres and the Serre spectral sequence
+
+Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0.
+
+The geometric Thom correspondence turns cobordism into a homotopy problem. This companion proves the homological and homotopy foundations for its rational continuation: filtered chains and convergence, relative compression and CW models, path fibrations and their exact homotopy sequence, the Serre homology spectral sequence, and finite generation in a fibration.
+
+The exact earlier proofs used here are in [Classifying maps](grassmannians-and-classifying-maps.md), [Thom and Euler classes](thom-classes-and-euler-classes.md), [Frame fields and primary obstructions](frame-fields-and-primary-obstructions.md), and [The geometric Thom construction](thom-spaces-and-the-pontryagin-thom-construction.md). Six exercises include complete solutions. This companion supplies prerequisites of assigned lesson13. Its Eilenberg–MacLane calculations, Serre finiteness, rational Hurewicz comparison and rational cobordism conclusions remain for the next continuation.
+
+
+## A. A filtered chain complex and its spectral sequence
+
+The geometric Thom construction has already identified cobordism with a homotopy group. The remaining question is how much of that homotopy group is visible in integral and rational homology. We begin with the algebra that will organize the comparison. All groups in this section are abelian.
+
+Let \((C_*,d)\) be a chain complex concentrated in nonnegative degrees. Give it an increasing filtration by subcomplexes
+\[
+0=F_{-1}C_*\subset F_0C_*\subset F_1C_*\subset\cdots,
+\qquad \bigcup_{p\geq0}F_pC_*=C_*.
+\tag{A.1}
+\]
+Set \(F_pC_*=0\) for every \(p<0\). Exhaustiveness means that each individual chain belongs to some finite filtration level. We do not require the whole chain group \(C_n\) to be contained in \(F_nC_n\). That stronger condition would be inappropriate for a filtration by the skeleta of a base space: an \(n\)-simplex can meet cells of much higher dimension.
+
+For \(r\geq0\), introduce the subgroups
+\[
+\begin{aligned}
+Z_r^{p,n}
+  &=\{x\in F_pC_n:dx\in F_{p-r}C_{n-1}\},\\
+B_r^{p,n}
+  &=F_pC_n\cap d(F_{p+r}C_{n+1}).
+\end{aligned}
+\tag{A.2}
+\]
+Thus \(Z_0^{p,n}=F_pC_n\). For \(r\geq1\), write \(n=p+q\) and define
+\[
+E_r^{p,q}
+ =\frac{Z_r^{p,n}}
+ {Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}}.
+\tag{A.3}
+\]
+Both denominator summands lie in the numerator. For the first, its derivative lies in \(F_{p-r}C_{n-1}\); for the second, its derivative is zero.
+
+**Theorem A.1 — Construction and convergence.** Formula (A.3) has differentials
+\[
+d_r:E_r^{p,q}\longrightarrow E_r^{p-r,q+r-1},
+\qquad d_r[x]=[dx],
+\tag{A.4}
+\]
+with \(d_r^2=0\) and natural identifications
+\[
+E_{r+1}^{p,q}\cong
+\frac{\ker(d_r:E_r^{p,q}\to E_r^{p-r,q+r-1})}
+{\operatorname{im}(d_r:E_r^{p+r,q-r+1}\to E_r^{p,q})}.
+\tag{A.5}
+\]
+The first page is
+\[
+E_1^{p,q}=H_{p+q}(F_pC_*/F_{p-1}C_*).
+\tag{A.6}
+\]
+Suppose additionally that the group in (A.6) is zero for \(q<0\). Then all pages lie in the first quadrant, each bidegree eventually stabilizes, and the stabilized groups satisfy
+\[
+E_\infty^{p,n-p}\cong
+F_pH_n(C_*)/F_{p-1}H_n(C_*),
+\tag{A.7}
+\]
+where
+\[
+F_pH_n(C_*)=
+\operatorname{im}\bigl(H_n(F_pC_*)\to H_n(C_*)\bigr).
+\tag{A.8}
+\]
+In each degree this filtration is finite:
+\[
+0=F_{-1}H_n(C_*)\subset F_0H_n(C_*)\subset\cdots
+\subset F_nH_n(C_*)=H_n(C_*).
+\tag{A.9}
+\]
+A filtration-preserving chain map induces maps on all pages, commuting with the differentials and inducing its homology map on the filtration quotients.
+
+**Proof.** If \(x\in Z_r^{p,n}\), then \(dx\in F_{p-r}C_{n-1}\) is a cycle, so it represents an element of the target in (A.4). If we add \(z\in Z_{r-1}^{p-1,n}\), then
+\[
+dz\in F_{p-r}C_{n-1}\cap d(F_{p-1}C_n)
+      =B_{r-1}^{p-r,n-1}.
+\]
+Thus this addition does not change the target class. Adding a boundary in the other denominator summand does not change the derivative at all. This proves well-definedness, and \(d^2=0\) proves \(d_r^2=0\).
+
+We verify the page transition directly. The condition \(d_r[x]=0\) says
+\[
+dx=w+dv,
+\quad
+w\in Z_{r-1}^{p-r-1,n-1},
+\quad
+v\in F_{p-1}C_n,
+\quad dv\in F_{p-r}C_{n-1}.
+\tag{A.10}
+\]
+The last two conditions put \(v\) in \(Z_{r-1}^{p-1,n}\), so subtracting \(v\) leaves the class \([x]\) unchanged. The new representative \(x-v\) has derivative \(w\in F_{p-r-1}C_{n-1}\), and hence lies in \(Z_{r+1}^{p,n}\). Conversely, every element of \(Z_{r+1}^{p,n}\) has zero \(d_r\)-class, since its derivative is a cycle in \(F_{p-r-1}C_{n-1}\), a subgroup of the lower-filtration denominator of the target.
+
+Among representatives in \(Z_{r+1}^{p,n}\), the old ambiguity is
+\[
+Z_{r+1}^{p,n}\cap
+\bigl(Z_{r-1}^{p-1,n}+B_{r-1}^{p,n}\bigr)
+=Z_r^{p-1,n}+B_{r-1}^{p,n}.
+\tag{A.11}
+\]
+Indeed, if \(x=z+b\) is in the intersection, then \(dz=dx\in F_{p-r-1}C_{n-1}\), so \(z\in Z_r^{p-1,n}\). The reverse inclusion follows from the definitions. The incoming \(d_r\)-images are precisely the classes of
+\[
+B_r^{p,n}=F_pC_n\cap d(F_{p+r}C_{n+1}):
+\]
+an element \(y\in F_{p+r}C_{n+1}\) with \(dy\in F_pC_n\) is exactly an allowed \(Z_r\)-representative at the source. Dividing (A.11) additionally by these incoming images gives
+\[
+\frac{Z_{r+1}^{p,n}}{Z_r^{p-1,n}+B_r^{p,n}},
+\]
+which is (A.3) for \(r+1\). This proves (A.5). At \(r=1\), (A.3) is exactly the cycles modulo boundaries in the quotient complex, proving (A.6).
+
+The first-quadrant hypothesis persists under passage to kernels and quotients. At \((p,q)\), an outgoing differential is zero when \(r>p\), and an incoming differential is zero when \(r>q+1\). Consequently the pages stabilize at this bidegree once \(r>\max\{p,q+1\}\).
+
+For \(r>p\), the numerator \(Z_r^{p,n}\) consists of actual cycles in \(F_pC_n\), and the lower numerator \(Z_{r-1}^{p-1,n}\) consists of actual cycles in \(F_{p-1}C_n\). Exhaustiveness gives
+\[
+\bigcup_{r\geq1}B_{r-1}^{p,n}
+       =F_pC_n\cap d(C_{n+1}).
+\tag{A.12}
+\]
+After the cycle numerators stabilize, the transition maps are the quotient maps as these boundary subgroups increase. Since the pages eventually stabilize too, their stabilized quotient is
+\[
+\frac{\ker d\cap F_pC_n}
+ {(\ker d\cap F_{p-1}C_n)+(F_pC_n\cap dC_{n+1})}.
+\tag{A.13}
+\]
+To identify it, send a cycle in \(F_pC_n\) to its class in \(F_pH_n/F_{p-1}H_n\). Its kernel consists exactly of cycles homologous in \(C_*\) to a cycle in \(F_{p-1}C_n\). Subtracting that lower-filtration cycle leaves a boundary that still lies in \(F_pC_n\). This is precisely the denominator in (A.13), proving (A.7).
+
+Every homology class has a cycle representative in some \(F_pC_n\), by (A.1), so \(\bigcup_pF_pH_n=H_n(C_*)\). For \(p>n\), the corresponding bidegree in (A.7) has negative second index and is zero. Thus \(F_pH_n=F_{p-1}H_n\) for every \(p>n\). Combining stabilization with exhaustiveness proves (A.9).
+
+A filtration-preserving chain map preserves every subgroup in (A.2), so induces (A.4)-compatible maps in (A.3). The representative description of (A.5) proves compatibility with the page transition. Sending cycles to their homology classes in (A.13) proves the final naturality assertion. ∎
+
+The differential \(d_1\) is concrete: a relative cycle in \(F_p/F_{p-1}\) has boundary in \(F_{p-1}\); take that boundary and reduce it modulo \(F_{p-2}\). Thus it is the composite of the connecting map for the first pair and the relative quotient map for the second pair. In a fibration over a CW complex, the next task is to identify this boundary with the cellular boundary of the base, with coefficients in the homology of the fibre. That topological identification is a further proof, not a consequence of the algebra alone.
+
+**Example A.2 — A quotient need not be a direct summand.** Filter the chain complex concentrated in degree one with \(C_1=\mathbb Z/4\) by \(F_0C_1=2(\mathbb Z/4)\), \(F_1C_1=C_1\). Its two nonzero stabilized groups are \(E_\infty^{0,1}=\mathbb Z/2\) and \(E_\infty^{1,0}=\mathbb Z/2\). Nevertheless its homology is \(\mathbb Z/4\). The finite filtration in (A.9) asserts successive quotients, and does not assert an integral splitting.
+
+**Source comparison.** The complete exact-couple construction and the complete main homology-fibration proof were read in Allen Hatcher's author-hosted *Spectral Sequences*, Chapter 1, PDF pages 1–13. The argument above instead defines and checks the cycle and boundary subgroups directly. The subsequent Serre-class discussion on PDF pages 14–17 was also read; its Eilenberg–MacLane and Postnikov prerequisites will be supplied before applying its conclusions. The source is [Hatcher's Chapter 1](https://pi.math.cornell.edu/~hatcher/SSAT/SSch1.pdf). No source text or diagram is reproduced.
+
+## B. Relative compression, CW models and homology
+
+The fibre of a path-space construction need not itself be presented as a CW complex. We will need to replace it by a CW complex without changing its homotopy or homology. This section supplies that replacement and the comparison proof. The spaces below are path connected unless a different condition is stated. No local contractibility is assumed for the target of a CW model.
+
+### B.1. Relative homotopy and the compression criterion
+
+For a pair \(A\subset Y\) with basepoint \(a_0\in A\), define \(\pi_i(Y,A,a_0)\), for \(i\geq1\), using maps
+\[
+(D^i,S^{i-1},s_0)\longrightarrow(Y,A,a_0)
+\tag{B.1}
+\]
+and homotopies through such maps. An equivalent cubical description sends one face \(I^{i-1}\subset\partial I^i\) into \(A\) and all the other faces to \(a_0\). Collapsing the union of the other faces identifies the cube with the disk in (B.1). Concatenation along a coordinate parallel to the distinguished face gives a group for \(i\geq2\). In dimensions \(i\geq3\), two such coordinates are available; the interchange identity for the four subcubes makes the two concatenations agree and commute. The group in dimension two need not be abelian. In dimension one we use a pointed set.
+
+Paths in \(A\) change the basepoint. To construct the change, place a representative in a smaller half-disk whose distinguished boundary point is joined to the old boundary point by the path, and send the collar to that path. Reversing the path undoes the change: the concatenation of a path with its reverse contracts by traversing a progressively shorter initial segment in both directions. The same collar construction for a homotopy of paths shows that the change depends only on their homotopy class relative endpoints. Consequently vanishing at one basepoint is equivalent to vanishing at every basepoint of a path-connected \(A\).
+
+**Lemma B.1 — Compression of a disk.** A map in (B.1) represents zero if and only if it is homotopic, fixing its entire boundary, to a map \(D^i\to A\).
+
+**Proof.** Suppose \(F:D^i\times I\to Y\) is a null-homotopy through maps of pairs: its side and top map into \(A\). An explicit way to move the bottom disk into that side-and-top cap while fixing its rim is as follows. For \(v\in D^i\), set
+\[
+\mu(v)=\min\{2,1/\|v\|\},
+\qquad
+Q(v)=\bigl(\mu(v)v,\mu(v)-1\bigr),
+\tag{B.2}
+\]
+with \(\mu(0)=2\). The map \(Q\) lands on the top when \(\|v\|\leq1/2\) and on the side when \(\|v\|\geq1/2\). It fixes the bottom rim. Since the cylinder is convex,
+\[
+Q_s(v)=\bigl((1-s+s\mu(v))v,\ s(\mu(v)-1)\bigr)
+\tag{B.3}
+\]
+stays in the cylinder for \(0\leq s\leq1\). Thus \(FQ_s\) is the required boundary-fixed homotopy, and its last map has image in \(A\).
+
+Conversely, after such a homotopy, contract the source disk affinely to \(s_0\). The image of this entire contraction lies in \(A\), and \(s_0\) remains fixed. This is an allowed null-homotopy in (B.1). ∎
+
+Restriction to the boundary defines \(\partial:\pi_i(Y,A)\to\pi_{i-1}(A)\). Together with the inclusions it gives the sequence
+\[
+\cdots\longrightarrow\pi_i(A)\longrightarrow\pi_i(Y)
+\longrightarrow\pi_i(Y,A)\xrightarrow{\partial}
+\pi_{i-1}(A)\longrightarrow\pi_{i-1}(Y)\longrightarrow\cdots.
+\tag{B.4}
+\]
+Here and at the pointed-set end, exactness means that the image is the inverse image of the constant class.
+
+We verify the three types of terms. At \(\pi_i(Y)\), a representative becomes zero relatively exactly when Lemma B.1 moves it into \(A\), with its constant boundary retained. Those are precisely the images of \(\pi_i(A)\). At \(\pi_i(Y,A)\), a boundary that is null-homotopic in \(A\) can be capped off using that null-homotopy: insert it in a collar on the boundary disk, reparametrizing that collar to occupy an increasing portion of the original disk. The result has constant boundary and gives an absolute representative in \(\pi_i(Y)\). The insertion is a homotopy through maps of pairs, fixing the distinguished point. Conversely, an absolute representative has constant boundary. At \(\pi_{i-1}(A)\), a sphere that becomes null in \(Y\) bounds a disk in \(Y\); that disk is a relative representative with the given sphere as boundary. Conversely, the boundary of a relative disk bounds that disk in \(Y\). For paths and components the same statements say, respectively, that a path can be moved into \(A\), or that two points of \(A\) are joined in \(Y\). This proves (B.4), including its low-dimensional pointed-set assertions. Composition of representatives also proves naturality of all its maps.
+
+Call \((Y,A)\) \(n\)-connected if every component of \(Y\) meets \(A\), and its relative groups in dimensions \(1,\ldots,n\) vanish at all basepoints in \(A\). This definition includes the component condition when \(n=0\).
+
+### B.2. Compression on a CW complex
+
+**Lemma B.2 — Cellular compression.** Let \((K,L)\) be a CW pair and \(A\subset Y\) a nonempty subspace. Suppose every component of \(Y\) meets \(A\), and \(\pi_i(Y,A,a)=0\) for every dimension \(i\geq1\) of a cell of \(K\setminus L\) and every \(a\in A\). Every map \((K,L)\to(Y,A)\) is homotopic, fixing \(L\), to a map \(K\to A\).
+
+**Proof.** Move the vertices outside \(L\) along paths into \(A\). Suppose the map already sends the previous skeleton into \(A\). On each next characteristic disk, its boundary is in \(A\), and Lemma B.1 gives a boundary-fixed homotopy into \(A\). Apply these homotopies on all cells of that dimension and the constant homotopy on the preceding skeleton and \(L\). They descend under the attaching identifications. The CW homotopy-extension theorem proved in the frame-obstruction chapter, Section E, extends this partial homotopy to the entire complex.
+
+Use the successive time intervals \([1-2^{-i},1-2^{-i-1}]\), starting with \(i=0\) for vertices. On each characteristic disk, the process is stationary after its dimension has been handled. Its extension to time one is therefore continuous on that disk times \(I\). The weak topology and the quotient-product lemma from the classifying-map chapter, Lemma 7.1, imply continuity on \(K\times I\). The final image lies in \(A\) and \(L\) has remained fixed. ∎
+
+We also record exactly how cell dimensions control homotopy. If a CW pair \((Z,C)\) has no cells of \(Z\setminus C\) in dimensions at most \(n\), then it is \(n\)-connected. Indeed, apply the geometric Thom chapter's full cellular approximation theorem to a map of pairs \((D^i,S^{i-1})\to(Z,C)\), \(i\leq n\). First make its boundary cellular inside \(C\), extending that boundary homotopy by homotopy extension; then make its disk map cellular, fixing the new boundary. The disk now maps to \(Z^i\subset C\). All boundary changes were inside \(C\), so its original relative class is zero. Every vertex of \(Z\) belongs to \(C\), and cellular approximation of a point proves the component assertion. By (B.4), adjoining cells of dimension \(d\) preserves \(\pi_i\) for \(i<d-1\) and gives a surjection from the old \(\pi_{d-1}\) onto the new one. This assertion does not require the old complex to have dimension less than \(d\).
+
+### B.3. Why relative connectivity forces homology vanishing
+
+**Lemma B.3.** If \((Y,A)\) is \(n\)-connected, then
+\[
+H_i(Y,A;G)=0\qquad(0\leq i\leq n)
+\tag{B.5}
+\]
+for every abelian coefficient group \(G\).
+
+**Proof.** A relative cycle is a finite chain
+\(z=\sum_\sigma g_\sigma\sigma\), whose boundary is a chain of singular simplices lying in \(A\). Include every face of every simplex occurring in this chain. For each distinct singular simplex in this finite set, use one ordered abstract simplex of its dimension. Identify faces with the abstract simplex labelled by the corresponding singular face, using the order-preserving affine face map. Face identities make these identifications compatible. The resulting finite realization \(K\) is a CW complex: attach its labelled simplices in order of dimension, with the prescribed boundary identifications. Repeated labels on different faces are allowed; every open characteristic simplex remains an individual cell.
+
+Let \(L\) consist of all labelled simplices whose images lie in \(A\). It is a subcomplex because their faces also lie in \(A\). Evaluation of the labelled simplices gives a continuous map \(s:(K,L)\to(Y,A)\). The same coefficients define a relative cycle \(\widetilde z\) on \(K\): the cancellations in its boundary are exactly the cancellations of identical singular-face labels in \(\partial z\). Its image under \(s\) is \(z\).
+
+If \(z\) has degree \(i\leq n\), then \(\dim K\leq i\), so Lemma B.2 compresses \(s\) into \(A\), fixing \(L\). The singular prism formula for a homotopy of pairs shows that \(s_*[\widetilde z]\) equals the class induced by that compressed map. The latter factors through \(H_i(A,A;G)=0\). Hence \([z]=0\). The same construction in degree zero uses only the component condition. ∎
+
+For cohomology the corresponding vanishing through degree \(n\) follows from the integral version of (B.5) and the proved universal-coefficient sequence for the free relative singular complex. We have not invoked a relative Hurewicz isomorphism here; (B.5) follows directly from finite chains and relative compression.
+
+**Theorem B.4 — Weak homotopy equivalence preserves homology.** A map \(f:C\to Y\) between path-connected spaces that induces isomorphisms on all homotopy groups induces isomorphisms
+\[
+f_*:H_i(C;G)\xrightarrow{\cong}H_i(Y;G),
+\qquad
+f^*:H^i(Y;G)\xrightarrow{\cong}H^i(C;G)
+\tag{B.6}
+\]
+for all \(i\) and all abelian groups \(G\).
+
+**Proof.** Form the mapping cylinder
+\[
+M_f=(C\times I)\amalg Y\big/\bigl((c,1)\sim f(c)\bigr).
+\]
+Its copy of \(C=C\times\{0\}\) has the original topology. Pushing the cylinder coordinate toward one, and fixing \(Y\), is a deformation retraction \(M_f\to Y\). It is continuous because the quotient map remains a quotient after product with \(I\), as already proved. Its composition with \(C\hookrightarrow M_f\) is \(f\).
+
+Thus \(C\hookrightarrow M_f\) induces the same homotopy isomorphisms, after the harmless basepoint change along the cylinder segment. Exactness of (B.4) gives \(\pi_i(M_f,C)=0\) in every positive dimension; its component condition also holds. Lemma B.3, for every \(n\), gives \(H_i(M_f,C;G)=0\) for every \(i\). The homology sequence of the pair proves the homology isomorphism in (B.6). For cohomology, first use integral relative vanishing and the universal-coefficient sequence to obtain \(H^i(M_f,C;G)=0\), and then use the cohomology sequence. Compose with the cylinder retraction. ∎
+
+### B.4. Construction and use of a CW model
+
+**Theorem B.5 — CW model.** Every path-connected space \(Y\), with chosen basepoint \(y_0\), admits a based map \(f:C\to Y\) from a CW complex with one vertex that induces isomorphisms on all homotopy groups. It also induces all the homology and cohomology isomorphisms in (B.6). If a path-connected CW complex \(C_0\) with a map \(f_0:C_0\to Y\) is already given, one can obtain such a model by adjoining cells to \(C_0\).
+
+**Proof.** Begin with the single vertex mapping to \(y_0\). Attach a loop for each element of \(\pi_1(Y,y_0)\) and map it by a representative. The resulting map is surjective on \(\pi_1\). Now perform the following step for \(d=2,3,\ldots\).
+
+First attach a \(d\)-cell for every element of the kernel of the current map on \(\pi_{d-1}\). Make its attaching representative cellular by the proved cellular approximation theorem. Its composite into \(Y\) is null-homotopic, so choose a filling to extend the map to that cell. Next attach a \(d\)-cell by the constant boundary map for each element of \(\pi_d(Y)\); its quotient is a sphere, which we map by a representative of that element.
+
+The second group of cells makes the map surjective on \(\pi_d\). A class in the new \(\pi_{d-1}\) is represented by a sphere map that can be moved into the old complex, by the cell-dimension assertion following Lemma B.2. If its image in \(Y\) is zero, its old representative is one of the kernel elements whose filling was attached in the first group. Hence the new map is injective on \(\pi_{d-1}\). Earlier homotopy groups remain unchanged, by the same cell-dimension assertion.
+
+Each attaching map has image in a finite subcomplex, by the compact-subset lemma for CW complexes proved in the classifying-map chapter. Thus these attachments form a closure-finite CW complex with the weak topology. The compatible maps on characteristic disks give a continuous map \(f:C\to Y\). Every sphere map and every sphere homotopy in \(C\) meets only finitely many cells and therefore belongs to a finite stage of the construction. The isomorphisms already established in each fixed degree persist at the limit. This proves the homotopy assertion, and Theorem B.4 proves the homology and cohomology assertions.
+
+For the last assertion, start with \(C_0\). If its map is not surjective on \(\pi_1\), first adjoin the needed loops; then use the same successive steps. No deletion of cells of \(C_0\) is required. ∎
+
+For completeness, such models are unique up to homotopy equivalence in the appropriate sense. If \(f:C\to Y\) and \(f':C'\to Y\) are two models, include \(Y\) into \(M_{f'}\). The map \(C\to M_{f'}\) can be compressed into \(C'\) by Lemma B.2, because \((M_{f'},C')\) has all relative homotopy groups zero. This gives \(h:C\to C'\) with \(f'h\simeq f\). It follows that \(h\) induces homotopy isomorphisms.
+
+A weak homotopy equivalence between CW complexes is a homotopy equivalence. Here is the remaining proof. Replace it by a cellular map through the already proved cellular approximation. Its mapping cylinder is a CW complex, with its domain a subcomplex: a cell \(e^d\) of the domain contributes the cell \(e^d\times(0,1)\) of dimension \(d+1\), with both its ends and all its sides in the preceding skeleta. Its relative homotopy groups vanish by (B.4). Lemma B.2 applied to its identity map therefore gives a deformation retraction onto the domain, fixing that domain. The cylinder's other deformation retraction is onto the codomain. Restricting and composing these retractions gives a homotopy inverse to the map. A homotopy between the original map and the cellular one then gives a homotopy inverse to the original map as well.
+
+We will use CW models of loopspaces and homotopy fibres through Theorems B.4–B.5. These statements supply the needed comparison without assuming that either space is already a CW complex or citing a theorem about its CW homotopy type.
+
+**Source comparison.** The full relative-group sequence and compression proof, the full CW-approximation construction, and the full weak-equivalence homology proof were read in Hatcher, *Algebraic Topology*, printed pages 343–357 (PDF pages 352–366). The independently written disk compression (B.2)–(B.3) replaces the source's geometric cap illustration by an explicit formula. Its finite labelled-simplex argument states the cancellation needed for arbitrary coefficient groups. The exact earlier own proofs used here are the classifying-map chapter's compact-subset and quotient-product lemma, the frame-obstruction chapter's Section E homotopy extension, the singular-chain chapter's prism and universal-coefficient proofs, and the geometric Thom chapter's Section B full cellular approximation.
+
+## C. Path fibrations, transport and homotopy fibres
+
+This section works with continuous maps and the compact-open topology. A **fibration** means a map \(p:E\to B\) with the homotopy lifting property for every parameter space: if \(H:Z\times I\to B\) and \(h_0:Z\to E\) satisfy \(ph_0=H|_{Z\times\{0\}}\), there is a lift \(\widetilde H:Z\times I\to E\) with that initial value. We prove this property for the path-space constructions that will be used below.
+
+### C.1. Topology and an explicit lifting formula
+
+Give \(B^I\), the set of continuous paths, the compact-open topology. Its subbasic open sets have the form
+\[
+[K,U]=\{\gamma\mid\gamma(K)\subset U\},
+\]
+where \(K\subset I\) is compact and \(U\subset B\) is open. Evaluation \(B^I\times I\to B\) is continuous. Indeed, if \(\gamma(t)\in U\), choose a compact interval neighbourhood \(J\) of \(t\), relative to \(I\), with \(\gamma(J)\subset U\). The product \([J,U]\times\operatorname{int}_I J\) maps into \(U\).
+
+A function \(Z\to B^I\) is continuous if and only if its adjoint \(Z\times I\to B\) is continuous. One implication follows from evaluation. For the other, if the adjoint sends \(\{z\}\times K\) into \(U\), cover \(K\) by finitely many product neighbourhoods on which it stays in \(U\). Intersect their neighbourhoods in \(Z\). Every point of this intersection is sent into \([K,U]\). This proves continuity on every compact-open subbasic set. The same argument applies with \(Z\times I\) as parameter space.
+
+For a map \(f:X\to B\), define
+\[
+E_f=\{(x,\gamma)\in X\times B^I\mid\gamma(0)=f(x)\},
+\qquad p_f(x,\gamma)=\gamma(1).
+\tag{C.1}
+\]
+The topology is the subspace topology, and the projection is continuous by evaluation.
+
+**Lemma C.1 — Path-space fibration.** The map \(p_f:E_f\to B\) is a fibration. The inclusion
+\[
+i_f:X\to E_f,\qquad x\mapsto(x,\text{constant path at }f(x))
+\tag{C.2}
+\]
+is a homotopy equivalence, and \(p_fi_f=f\).
+
+**Proof.** Suppose \(H:Z\times I\to B\) and an initial lift \(z\mapsto(a(z),\gamma_z)\) are given. For \(0\leq t\leq1\), put
+\[
+\eta_{z,t}(s)=
+\begin{cases}
+\gamma_z((1+t)s),&0\leq s\leq(1+t)^{-1},\\
+H(z,(1+t)s-1),&(1+t)^{-1}\leq s\leq1.
+\end{cases}
+\tag{C.3}
+\]
+The two formulas agree on their common boundary because \(\gamma_z(1)=H(z,0)\). They are continuous on a finite closed cover of \(Z\times I\times I\), and hence paste continuously. The adjoint criterion proves that \((z,t)\mapsto(a(z),\eta_{z,t})\) is continuous into \(E_f\). Its endpoint is \(H(z,t)\), and at \(t=0\) its path is exactly \(\gamma_z\), with no added pause. It is the required lift.
+
+The homotopy
+\[
+(x,\gamma)\longmapsto\bigl(x,\ s\mapsto\gamma((1-u)s)\bigr),
+\qquad 0\leq u\leq1,
+\tag{C.4}
+\]
+contracts each path to its initial value. The adjoint criterion proves its continuity. It fixes the constant paths and is a deformation retraction onto (C.2). ∎
+
+The **homotopy fibre** of \(f\), at \(b_0\), is
+\[
+F_f=p_f^{-1}(b_0)
+ =\{(x,\gamma)\mid\gamma(0)=f(x),\ \gamma(1)=b_0\}.
+\tag{C.5}
+\]
+For \(X=\{b_0\}\) and \(f(b_0)=b_0\), (C.1) is the based path space \(PB\), with fibre the based loopspace \(\Omega B\). Formula (C.4) contracts \(PB\). A based map \(I^j\to\Omega B\) has adjoint \(I^j\times I\to B\) constant on its entire boundary. The same is true for homotopies. Thus currying gives natural identifications
+\[
+\pi_j(\Omega B)\cong\pi_{j+1}(B)\quad(j\geq1),
+\qquad
+\pi_0(\Omega B)\cong\pi_1(B)
+\tag{C.6}
+\]
+in the latter formula as sets of components and loop classes.
+
+### C.2. Relative lifting and transport
+
+We need lifting with prescribed boundary values as well. A fibration has the homotopy lifting property for a CW pair \((K,L)\), with a given lift on \(K\times\{0\}\cup L\times I\). To see this, proceed over its characteristic disks. The pair
+\[
+\bigl(D^j\times I,\ D^j\times\{0\}\cup S^{j-1}\times I\bigr)
+\]
+is homeomorphic to \((D^j\times I,D^j\times\{0\})\). Here is a direct construction of the required homeomorphism of pairs. Formula (B.2) parametrizes the top-and-side boundary cap homeomorphically by \(D^j\): in its inner half-ball the image is the top disk, and in its outer annulus the radial coordinate is converted monotonically into the side height. Its time-reversal parametrizes the bottom-and-side cap, with its rim on the top rim of the cylinder. Thus both of these caps are explicitly disks. Parametrize the old bottom and the new bottom-and-side cap with matching rim parameters; map their complementary boundary disks in the same way. This gives a boundary homeomorphism taking the bottom disk to the bottom-and-side portion. Identify the convex cylinder with a ball by radial coordinates from an interior point and extend this boundary homeomorphism radially. For \(j=0\) only the initial point is prescribed. The ordinary lifting property, applied after this reparametrization, extends the lift over each cell cylinder. The lifts agree on attaching boundaries, and the weak topology and quotient-product lemma prove continuity on \(K\times I\).
+
+There is a second relative lifting case, with arbitrary parameter space \(Z\), that does not require \(Z\) to be a CW complex. The pair
+\[
+\bigl(I\times I,\ (I\times\{0\})\cup(\partial I\times I)\bigr)
+\]
+is homeomorphic to \((I\times I,I\times\{0\})\). For example, parametrize the square boundary cyclically and use a piecewise linear boundary reparametrization taking one edge to the three-edge arc; extend it radially from the centre. Take its product with \(Z\) and apply the lifting property with parameter \(Z\times I\). Therefore a homotopy on \(Z\times I\times I\) can be lifted with its bottom and its two vertical sides prescribed whenever those lifts agree at their intersections.
+
+For a path \(\alpha:I\to B\), apply the lifting property with parameter \(F_{\alpha(0)}=p^{-1}(\alpha(0))\), initial inclusion into \(E\), and base homotopy \((e,t)\mapsto\alpha(t)\). Its last value defines transport
+\[
+T_\alpha:F_{\alpha(0)}\to F_{\alpha(1)}.
+\tag{C.7}
+\]
+If two lifts were chosen, prescribe them on the vertical sides of the relative square just described, with the inclusion on its bottom. Its top gives a homotopy between the two endpoint maps in \(F_{\alpha(1)}\). If \(\alpha\) is changed by a homotopy relative endpoints, the same square lifting proves that the endpoint transport changes by a homotopy. Thus its homotopy class depends only on the path class.
+
+Lifting the first path and then the second, on the two half-intervals, proves
+\[
+T_{\alpha*\beta}\simeq T_\beta T_\alpha,
+\qquad T_{\text{constant}}\simeq\operatorname{id}.
+\tag{C.8}
+\]
+The second assertion uses the constant lift as one of the choices. A path followed by its reverse contracts relative endpoints: replace it by the path that traverses only the initial portion of length \(1-u\) and then traverses that portion backwards. Hence (C.8) gives
+\[
+T_{\alpha^{-1}}T_\alpha\simeq\operatorname{id},
+\qquad
+T_\alpha T_{\alpha^{-1}}\simeq\operatorname{id}.
+\tag{C.9}
+\]
+Transport is a homotopy equivalence. On homology it defines the coefficient transport and, for loops, the action of the fundamental group of the base.
+
+If \(B\) is simply connected, path classes with fixed endpoints are unique, so all these homology transports are canonically the same once a reference fibre and paths to it are chosen. No action on the fibre homology remains.
+
+### C.3. Pullback and triviality over a disk
+
+The pullback of \(p:E\to B\) by \(g:A\to B\) is
+\[
+g^*E=\{(a,e):g(a)=p(e)\}\longrightarrow A.
+\tag{C.10}
+\]
+It is a fibration: the first coordinate of a lift is its given base homotopy, and the second coordinate is obtained by lifting its composite into \(B\).
+
+If \(g_0,g_1:A\to B\) are joined by \(g_t\), transport in the pullback of \(p\) over \(A\times I\) gives maps \(g_0^*E\to g_1^*E\) and back. In the square lifting proof of (C.8)–(C.9), keep the \(A\)-coordinate of the base fixed. Those homotopies then preserve the projection to \(A\). Consequently the pullbacks are **fibre homotopy equivalent**: their maps and inverse homotopies all preserve that projection.
+
+In particular, for a contractible \(A\), compare the identity of \(A\) with a constant map to \(a_0\). This gives a fibre homotopy equivalence
+\[
+E|_A\simeq_A A\times F_{a_0}.
+\tag{C.11}
+\]
+When \(A=D^j\), the same equivalence restricts over \(S^{j-1}\), since it preserves every basepoint of \(D^j\). It is therefore an equivalence of pairs
+\[
+\bigl(E|_{D^j},E|_{S^{j-1}}\bigr)
+\simeq
+\bigl(D^j\times F,S^{j-1}\times F\bigr).
+\tag{C.12}
+\]
+The product and relative singular-chain equivalences already proved in the Thom-class chapter now give
+\[
+H_{j+q}\bigl(E|_{D^j},E|_{S^{j-1}};G\bigr)
+\cong H_q(F;G).
+\tag{C.13}
+\]
+One way to see the coefficient assertion explicitly is to use the free relative chains of \((D^j,S^{j-1})\). They are chain-homotopy equivalent to \(\mathbb Z\) concentrated in degree \(j\): their only homology is its positive relative generator, and free-chain splittings of cycles and boundaries give the equivalence. Tensoring with the fibre chain complex, then with \(G\), preserves the chain homotopies. The product-chain equivalence yields (C.13). Its sign is fixed by the positive disk generator. Its naturality follows from the chain equivalence and from transport.
+
+### C.4. The long exact sequence
+
+**Theorem C.2 — Homotopy sequence of a fibration.** For a fibration \(p:E\to B\), a point \(e_0\), \(b_0=p(e_0)\), and \(F=p^{-1}(b_0)\), the projection induces natural isomorphisms
+\[
+p_*:\pi_i(E,F,e_0)\xrightarrow{\cong}\pi_i(B,b_0)
+\quad(i\geq2),
+\tag{C.14}
+\]
+and a bijection of the corresponding pointed sets for \(i=1\). Together with Section B's relative sequence, these give
+\[
+\cdots\longrightarrow\pi_i(F)\longrightarrow\pi_i(E)
+\longrightarrow\pi_i(B)\longrightarrow\pi_{i-1}(F)
+\longrightarrow\cdots\longrightarrow\pi_0(E)\longrightarrow\pi_0(B).
+\tag{C.15}
+\]
+At the set-valued end, the maps are restriction and path lifting, with exactness at the distinguished classes.
+
+**Proof.** Use the relative cubical convention from Section B: a map \(I^i\to E\) sends one distinguished boundary face into \(F\) and the union \(J\) of the remaining faces to \(e_0\). Its projection is constant on the whole boundary, hence represents \(\pi_i(B)\).
+
+To lift an arbitrary representative \(g:(I^i,\partial I^i)\to(B,b_0)\), deform \(I^i\) onto \(J\), fixing \(J\). Such a deformation is given by the cylinder retraction onto its top and sides and straight interpolation with the identity. In ball coordinates on \(I^{i-1}\), the retraction is
+\[
+(v,t)\longmapsto
+\bigl(\lambda v,-1+\lambda(t+1)\bigr),
+\quad
+\lambda=\min\{2/(t+1),1/\|v\|\}.
+\tag{C.16}
+\]
+At \(v=0\) ignore the second entry of the minimum. It lands on the top or a side and fixes that union. The straight interpolation stays in the convex cylinder and fixes \(J\). Reverse this deformation and compose with \(g\); it is a base homotopy starting at the constant \(b_0\), fixed on \(J\), and ending at \(g\). Lift it starting at the constant \(e_0\), prescribing the constant lift on \(J\), by relative CW lifting. Its final map has the required relative boundary conditions. This proves surjectivity.
+
+If the projection of a relative representative \(h\) is null-homotopic through based sphere maps, lift that null-homotopy starting at \(h\) and prescribing the constant lift on \(J\). Throughout it, the full boundary remains over \(b_0\), so maps into \(F\); at its end the whole cube maps into \(F\). Hence the original relative class is zero, by Lemma B.1. This proves injectivity at group-valued terms. In dimension one, take a based homotopy between the projections of two relative paths. Prescribe their lifts on the two vertical sides of its square and the constant \(e_0\) on the edge for their distinguished endpoint. These three edges agree at their corners. Relative square lifting, rotated if necessary, fills the square with exactly these prescribed values. Its remaining edge lies over \(b_0\), hence in \(F\). The filling is a homotopy of relative paths between the original two paths, proving injectivity of the pointed-set map as well.
+
+The group operations in (C.14) commute with projection, by concatenation of representatives. Substitute (C.14) into (B.4). The map from \(\pi_i(E)\) to \(\pi_i(B)\) becomes the usual projection, and the connecting map sends a lifted base disk to its boundary in \(F\). This proves (C.15) and naturality. ∎
+
+Applying this to (C.1), whose total space retracts onto \(X\), supplies the homotopy sequence of any map through its homotopy fibre. The CW model of that fibre, from Theorem B.5, has exactly the same homotopy and homology groups by Theorem B.4.
+
+**Example C.3 — Killing a first homotopy group.** Suppose \(X\) is \((r-1)\)-connected, \(r\geq2\), and \(g:X\to K\) induces an isomorphism on \(\pi_r\), while \(\pi_i(K)=0\) for \(i\ne r\). Its homotopy fibre \(F_g\) is \(r\)-connected, and
+\[
+\pi_i(F_g)\xrightarrow{\cong}\pi_i(X)\quad(i>r).
+\tag{C.17}
+\]
+Indeed, in (C.15) the only nonzero target group is \(\pi_r(K)\), and the preceding map \(\pi_r(X)\to\pi_r(K)\) is an isomorphism. Exactness gives both \(\pi_r(F_g)=0\) and \(\pi_{r-1}(F_g)=0\); lower groups and components vanish as well. For \(i>r\), both neighbouring target groups are zero, giving (C.17). This example will construct connected covers after the spaces \(K(A,r)\) and the required map \(g\) have been proved to exist.
+
+**Source comparison.** The complete path-space, transport, pullback, and Postnikov discussion was read in Hatcher, *Algebraic Topology*, printed pages 405–415 (PDF pages 414–424). Formula (C.3) spells out the path concatenation so that the initial lift is exact at time zero. The compact-open adjunction, relative lifting, disk-pair comparison, and projection isomorphism (C.14) have been proved above rather than left as source prerequisites. The full general homotopy-fibre/CW-homotopy-type theorem quoted by the source is not needed: Section B supplies the CW model and its explicit homology comparison.
+
+## D. The homology spectral sequence of a fibration
+
+Let \(p:E\to B\) be a fibration in the sense of Section C. Assume that \(B\) is a path-connected, simply connected CW complex, and that its fibre \(F\) is path connected. Choose a vertex \(b_0\), write \(F=p^{-1}(b_0)\), and orient the cells of \(B\). The coefficients \(G\) below are any abelian group. Simple connectivity is the precise condition that lets us use constant fibre-homology coefficients here; a general base requires its transport local system.
+
+**Theorem D.1 — Serre homology sequence in the needed scope.** There is a first-quadrant homological spectral sequence with
+\[
+E_2^{a,b}=H_a(B;H_b(F;G)),
+\qquad
+d_r:E_r^{a,b}\longrightarrow E_r^{a-r,b+r-1}.
+\tag{D.1}
+\]
+It converges to \(H_{a+b}(E;G)\) in the finite-filtration sense of (A.7)–(A.9). Its construction is natural for maps of fibrations whose map on the CW bases is cellular. Its two edges are the actual maps induced by fibre inclusion and projection:
+\[
+H_n(F;G)\longrightarrow H_n(E;G),
+\qquad
+H_n(E;G)\xrightarrow{p_*}H_n(B;G).
+\tag{D.2}
+\]
+Here \(E_\infty^{0,n}\) is the image of the first map, and \(E_\infty^{n,0}\), as a subgroup of \(E_2^{n,0}=H_n(B;G)\), is the image of the second map.
+
+### D.1. The exhaustive filtration and its relative terms
+
+Put \(E_a=p^{-1}(B^a)\), set \(E_{-1}=\varnothing\), and filter the singular chain complex by
+\[
+F_aC_*(E;G)=C_*(E_a;G).
+\tag{D.3}
+\]
+This is exhaustive. Every singular simplex has compact image, whose projection meets only finitely many cells of \(B\), by the proved compact-subcomplex lemma. Those cells have a finite maximum dimension. Thus the simplex belongs to \(C_*(E_a;G)\) for some \(a\). This argument does not place it in filtration level equal to its own dimension.
+
+For \(a\geq1\), take the open neighbourhood \(N\) of \(B^{a-1}\) consisting of that skeleton and the annuli of radius greater than \(1/3\) in every characteristic \(a\)-disk. Take \(N_0\) with radius greater than \(2/3\) instead. The weak topology makes both sets open. Moreover \(\overline{N_0}\subset N\): the skeleton together with the annuli of radius at least \(2/3\) is a closed set containing \(N_0\), and lies in \(N\). This is checked on every characteristic disk, including the lower-dimensional disks.
+
+Radial expansion of these annuli is a deformation of \(N\) onto \(B^{a-1}\), fixing that skeleton. It is continuous on every characteristic disk and hence on the quotient times \(I\). Lift it to \(p^{-1}(N)\), with initial lift the identity. The endpoint lands in \(E_{a-1}\). On \(E_{a-1}\), the lifted homotopy may move points, but it stays in \(E_{a-1}\) throughout. Thus \(E_{a-1}\hookrightarrow p^{-1}(N)\) is a homotopy equivalence. The sequences of the two pairs give
+\[
+H_*(E_a,E_{a-1};G)
+\cong H_*(E_a,p^{-1}(N);G).
+\tag{D.4}
+\]
+Only a homotopy equivalence of the subspaces is needed for this conclusion; a pointwise fixed lifted deformation has not been assumed.
+
+Excision removes \(p^{-1}(N_0)\) from the right-hand pair. Its closure lies in \(p^{-1}(N)\), because
+\(\overline{p^{-1}(N_0)}\subset p^{-1}(\overline{N_0})\).
+The remaining base is the disjoint union of the closed disk cores of radius \(2/3\). It has the topology of that disjoint union: a union of closed subsets of its disk cores is closed in \(B^a\), by the weak-topology test on characteristic disks. Consequently the remaining total-space pair is a disjoint union of pullback pairs over these cores and their annuli of radii \(1/3<\|v\|\leq2/3\).
+
+Each core is contained in the open cell, where the characteristic map is a homeomorphism. By (C.12), its pullback fibration is fibre homotopy equivalent to a disk times a fibre, preserving the annulus as well. Radially retract the annulus onto the outer sphere and use the pair sequence to replace it by that sphere. Formula (C.13) and transport to the reference fibre therefore give
+\[
+H_{a+b}(E_a,E_{a-1};G)
+\cong\bigoplus_{e^a}H_b(F;G).
+\tag{D.5}
+\]
+At \(a=0\), \(B^0\) is discrete and the same formula follows directly from its disjoint fibres. The direct sum is correct even for infinitely many cells: a singular chain has finite support and, on projection, compact image in only finitely many cells. The chosen orientation of each disk fixes its generator. In the product model the disk comes first, followed by the fibre chain.
+
+Formula (D.5) vanishes when \(b<0\). Theorem A.1 now constructs a first-quadrant sequence converging with the asserted finite filtration. Its first page is (D.5).
+
+### D.2. Identifying the first differential
+
+The differential on the first page is the composite
+\[
+H_{a+b}(E_a,E_{a-1};G)
+\xrightarrow{\partial}H_{a+b-1}(E_{a-1};G)
+\longrightarrow H_{a+b-1}(E_{a-1},E_{a-2};G).
+\tag{D.6}
+\]
+We prove that under (D.5) it is the ordinary cellular boundary of \(B\), with the coefficient group \(H_b(F;G)\).
+
+Pull the fibration back to one characteristic \(a\)-disk. Its fibre homotopy trivialization sends its relative class to the disk generator crossed with a fibre cycle \(z\). The product boundary formula
+\[
+\partial(c\times z)=\partial c\times z+(-1)^a c\times\partial z
+\]
+reduces, since \(z\) is a cycle, to the boundary sphere crossed with \(z\). Thus (D.6) is obtained by applying the lifted attaching map to this sphere class and then excising the \((a-1)\)-cell cores.
+
+For \(a\geq2\), fix a target \((a-1)\)-cell. The attaching sphere has compact image. In a small ball inside that cell, make its map piecewise affine by the localized cutoff-and-mesh construction from the geometric Thom chapter, Lemma B.1; the homotopy is fixed outside a slightly larger ball. Choose a point avoiding the images of all faces of dimension less than \(a-1\), and all affine pieces of deficient rank. These images lie in finitely many proper affine subspaces, so do not fill the ball. The point has finitely many inverse images, each in an invertible affine piece. Compactness lets us choose a still smaller target ball whose inverse image consists exactly of the corresponding disjoint source disks, on each of which the map is a homeomorphism with sign \(+1\) or \(-1\). More explicitly, outside small neighbourhoods of the finitely many inverse images the map has compact image missing the chosen point; shrink the target ball to miss that image and to lie inside every invertible affine chart image.
+
+This is the same signed local-degree computation used in the full sphere-degree proof in the frame-obstruction chapter, Lemma B.1. The sum of these signs is the cellular incidence coefficient: excision evaluates the attaching sphere in the relative group of the target cell, and its positive disk generator reads exactly that sum.
+
+The lifted map over each source disk gives the same coefficient map on fibre homology after transport. To check this without a trivialization assumption across an attaching sphere, trivialize the two pullbacks over the source and target disks. The resulting map is
+\[
+(v,z)\longmapsto\bigl(\varphi(v),\psi_v(z)\bigr).
+\]
+Contracting \(v\) within the source disk homotopes its second coordinate to \(\psi_{v_0}(z)\), while retaining its first coordinate \(\varphi(v)\). This is a homotopy of pairs, since the boundary behaviour is controlled by the unchanged first coordinate. Hence its map on relative product homology is the signed degree of \(\varphi\) times \((\psi_{v_0})_*\).
+
+Naturality of transport follows by applying a map of fibrations to a chosen lift of a path and comparing it with the chosen lift in the other fibration; the relative square proof in Section C supplies the comparison homotopy. It follows that \((\psi_{v_0})_*\), under transport to \(F\), is the identity. Any different choices insert a loop in \(B\), and such a loop is null-homotopic by simple connectivity. Summing the source-disk signs therefore gives the cellular incidence coefficient times \(z\), as required.
+
+For \(a=1\), the boundary of a positively oriented interval is its terminal point minus its initial point. Its two fibre classes are transported along that interval. Under reference-fibre identification they again give exactly the two signed vertex coefficients of the cellular boundary. For \(a=0\) the differential is zero.
+
+We have proved
+\[
+(E_1^{*,b},d_1)
+\cong \bigl(C_*^{\mathrm{cell}}(B;H_b(F;G)),\partial_{\mathrm{cell}}\bigr).
+\tag{D.7}
+\]
+The cellular complex with constant coefficients computes singular homology. Here is the precise earlier proof being used: the frame-obstruction chapter, Lemma G.1, constructs the annular small-chain equivalences equivariantly *before* applying \(\operatorname{Hom}\), and contracts each relative disk complex to its free disk generator. With constant coefficients, tensoring those chain equivalences gives the relative cellular homology groups. The pair sequences then give their cellular boundary complex. Passage to arbitrary-dimensional complexes uses compact singular chains in finite subcomplexes, so involves a direct union and no inverse-limit cohomology issue. Equivalently, applying Theorem A.1 to the skeleta of \(B\) puts the relative groups in the single row \(b=0\), and its first boundary is the cellular boundary just calculated. It consequently collapses at its second page to singular homology. Thus (D.7) proves (D.1).
+
+### D.3. Naturality and the edges
+
+A map of fibrations over a cellular map of bases preserves (D.3), so Section A gives maps of pages and of their limiting filtrations. On (D.5), excision over target cell cores computes its map by the same finite source-disk signed-degree calculation just used. Its coefficient map is the fibre homology map, by naturality of transport. On taking cellular homology, its second-page map is exactly
+\[
+H_a(B;H_b(F;G))\longrightarrow
+H_a(B';H_b(F';G))
+\]
+induced by the base and fibre maps. This proves the stated naturality.
+
+If a based map of CW bases is initially not cellular, the proved cellular approximation makes it cellular while fixing the reference vertex. Lift that base homotopy, with parameter \(E\), into the target fibration starting at the given total-space map. Its endpoint is a map of fibrations over the cellular base map, and its total-space map is homotopic to the original one. Over the fixed reference vertex the lifted homotopy remains inside the target fibre, so the fibre map also retains its homotopy class. This allows the cellular construction to compute the actual induced total-space, base, and fibre homology maps. We need no assertion here that every choice produces literally identical intermediate page representatives.
+
+The filtration level zero on total homology is the image of the reference fibre:
+\[
+F_0H_n(E;G)=\operatorname{im}(H_n(F;G)\to H_n(E;G)).
+\tag{D.8}
+\]
+Indeed \(E_0\) is the disjoint union of the vertex fibres. Transport along a path from a vertex to \(b_0\) is, as a map into \(E\), homotopic to that vertex's inclusion, by its defining lifted path homotopy. Thus every vertex fibre has the same homology image as \(F\). Since \(F_{-1}=0\), (A.7) identifies (D.8) with \(E_\infty^{0,n}\). On the second page \(E_2^{0,n}=H_n(F;G)\); there are no outgoing differentials from its zero column, so the subsequent pages quotient it by incoming images. This is the first edge in (D.2).
+
+For the other edge, apply naturality to the map of fibrations
+\[
+\begin{array}{ccc}
+E&\xrightarrow{p}&B\\
+\downarrow p&&\downarrow\operatorname{id}\\
+B&\xrightarrow{\operatorname{id}}&B .
+\end{array}
+\]
+The identity fibration has point fibre and only its zero row. Its second page and its limiting zero row are \(H_*(B;G)\). Because \(F\) is path connected, \(H_0(F;G)=G\), and the map on the zero row of (D.1) is the identity of \(H_*(B;G)\). No differential enters that row after page two, since its potential source has negative second index. Therefore \(E_\infty^{n,0}\) is a subgroup of \(E_2^{n,0}=H_n(B;G)\).
+
+The projection kills \(F_{n-1}H_n(E;G)\), since its image factors through \(H_n(B^{n-1};G)=0\), by the cellular calculation. On the remaining filtration quotient its map is exactly this subgroup inclusion, by naturality of (A.7). Its image is therefore \(E_\infty^{n,0}\), and its kernel is \(F_{n-1}H_n(E;G)\). This proves the second edge and completes Theorem D.1. ∎
+
+**Source comparison.** The complete main fibration proof was read in Hatcher's author-hosted *Spectral Sequences*, Chapter 1, PDF pages 11–13, together with the earlier filtered/exact-couple construction on pages 1–8 and complete naturality and edge discussion on pages 18–19. The source's disk-pair comparison and signed attaching-map step have been made explicit using Sections B–C and the earlier own localized affine and degree proofs. The present theorem states the simply connected CW-base scope actually needed; neither a general local-coefficient fibration theorem nor a multiplicative cohomology spectral sequence has been silently asserted.
+
+## E. Exercises with complete solutions
+
+**Exercise E.1 — Easy: an acyclic part above the degree filtration.** Let \(C_1=\mathbb Z a\), \(C_0=\mathbb Z b\), \(d(a)=b\), and all other chain groups be zero. Set \(F_pC=0\) for \(p<5\), and \(F_pC=C\) for \(p\geq5\). Verify the first-quadrant condition of Theorem A.1 even though \(C_0\not\subset F_0C_0\). What changes if \(d(a)=2b\)?
+
+**Solution.** The only nonzero associated quotient complex is \(F_5C/F_4C=C\). Its differential is an isomorphism, so its homology is zero. Thus the entire first page is zero, and in particular is in the first quadrant. The total complex is acyclic too. Its high-filtration generators cause no convergence problem because they already cancel in the associated quotient.
+
+For the second differential, the quotient complex has \(H_0=\mathbb Z/2\). It occurs at \((p,q)=(5,-5)\). The first-quadrant hypothesis fails. Indeed \(H_0(C)=\mathbb Z/2\), whereas \(F_0H_0=0\), so the bounded-degree conclusion \(F_0H_0=H_0\) would be false. Exhaustiveness by itself proves neither that conclusion nor the first-quadrant condition.
+
+**Exercise E.2 — Medium: check the compression cap.** Verify every domain and boundary condition in (B.2)–(B.3), including the centre and the joining radius \(1/2\), and explain why its use on a null-homotopy fixes the original boundary.
+
+**Solution.** For \(r=\|v\|\leq1/2\), \(\mu=2\), so \(Q(v)=(2v,1)\) lies on the top disk. For \(1/2\leq r\leq1\), \(\mu=1/r\), so the spatial coordinate is \(v/r\) and the time coordinate is \(1/r-1\in[0,1]\); it lies on the side. At \(r=1/2\) the formulas agree. At the centre the constant value \(\mu=2\) in a neighbourhood proves continuity without a division by zero. At \(r=1\), \(\mu=1\), so \(Q(v)=(v,0)\). The straight segment \(Q_s(v)\) between \((v,0)\) and \(Q(v)\) stays in the convex cylinder and fixes that rim for every \(s\).
+
+If \(F\) is the null-homotopy in Lemma B.1, its side and top have image in \(A\). Thus \(FQ_1\) has image in \(A\), while for every boundary point \(v\) and every \(s\), \(FQ_s(v)=F(v,0)\). It fixes the entire original boundary, not just its distinguished point. The interior bottom is allowed to move; for example \(Q(0)=(0,1)\).
+
+**Exercise E.3 — Medium: two homotopy fibres.** Find the homotopy fibres of the identity \(B\to B\) and of the constant map \(X\to B\) with value \(b_0\). Supply an explicit contraction in the identity case.
+
+**Solution.** In the identity case the point \(x\) is \(\gamma(0)\), so the homotopy fibre is the space of paths ending at \(b_0\). For \(u\in I\), replace \((x,\gamma)\) by
+\[
+\bigl(\gamma(u),\ s\mapsto\gamma(u+(1-u)s)\bigr).
+\]
+It starts at the original point, ends at the constant \(b_0\) path, and fixes that constant path. Its continuity follows from the compact-open adjoint criterion in Section C. Thus this fibre is contractible.
+
+For the constant map, the only path condition is that both endpoints are \(b_0\). Consequently its homotopy fibre is literally \(X\times\Omega B\), with the product topology inherited from \(X\times B^I\). This agrees with the long exact sequence: a constant map does not kill a nonzero homotopy class of \(X\), whereas the identity kills all of them in its homotopy fibre.
+
+**Exercise E.4 — Medium: the integral homology of a looped sphere.** For \(n\geq2\), use the path fibration to determine \(H_j(\Omega S^n;\mathbb Z)\) in every degree. Determine the additive groups, without assuming a product calculation.
+
+**Solution.** The loopspace is path connected by (C.6) and the already proved simple connectivity of \(S^n\). Its path-space total space is contractible by (C.4). Give \(S^n\) its CW structure with a vertex and an \(n\)-cell. With \(A_j=H_j(\Omega S^n;\mathbb Z)\), (D.1) has only two columns:
+\[
+E_2^{0,j}=A_j,\qquad E_2^{n,j}=A_j.
+\]
+The sphere's cellular complex has zero differential and one generator in degrees zero and \(n\), so this coefficient calculation holds for every \(A_j\), with no freeness assumption on it.
+
+The only possible differential is \(d_n\) from \((n,j)\) to \((0,j+n-1)\). All earlier pages agree with page two, and all later pages agree with page \(n+1\). Every entry in column \(n\) must disappear: its total degree is positive and the total space is contractible, while no differential enters it. Every positive-degree entry in column zero must disappear as well, and none has an outgoing differential. Therefore
+\[
+d_n:A_j\xrightarrow{\cong}A_{j+n-1}\quad(j\geq0).
+\]
+Entries \(A_j\) with \(0<j<n-1\) have neither incoming nor outgoing differentials, so they are zero. Path connectivity gives \(A_0=\mathbb Z\). The recurrence now proves
+\[
+H_j(\Omega S^n;\mathbb Z)=
+\begin{cases}
+\mathbb Z,&j\text{ is a nonnegative multiple of }n-1,\\
+0,&\text{otherwise}.
+\end{cases}
+\]
+This determines the groups alone. It does not yet identify a loopspace multiplication or its homology ring.
+
+**Exercise E.5 — Hard: why the fibre transport matters.** Form the mapping torus
+\[
+K=(S^1\times I)/\bigl((x,1)\sim(-x,0)\bigr),
+\]
+writing \(S^1=\mathbb R/\mathbb Z\) additively. Determine the transport on \(H_1(S^1;\mathbb Z)\), compute \(H_1(K;\mathbb Z)\) and \(H_2(K;\mathbb Z)\), and exhibit a contradiction to using constant fibre coefficients without the hypothesis of Theorem D.1.
+
+**Solution.** Projection onto \(I/\partial I=S^1\) is a circle bundle: away from the joined ends it is a product, and across those ends its fibre chart changes by \(x\mapsto-x\). Transport once around its base is this reflection. It acts by \(-1\) on the positive generator of \(H_1(S^1;\mathbb Z)\), by the proved signed degree calculation.
+
+A square presentation gives one vertex, two edges \(a,b\), and one two-cell. The vertical edge \(a\) goes around the base, and the horizontal edge \(b\) goes around the fibre. Traversing the square boundary gives the attaching word \(aba^{-1}b\), after choosing its starting corner. Its cellular boundary is \(0a+2b\). The one-dimensional boundary is zero. The cellular calculation proved in Section D therefore gives
+\[
+H_1(K;\mathbb Z)=\mathbb Z[a]\oplus(\mathbb Z/2)[b],
+\qquad H_2(K;\mathbb Z)=0.
+\]
+If one inserted constant fibre coefficients into (D.1), the supposed second page would have a copy of \(\mathbb Z\) at each of \((0,0),(1,0),(0,1),(1,1)\). Every higher differential would be zero for degree reasons. The entry at \((1,1)\) would then make \(H_2(K;\mathbb Z)=\mathbb Z\), contrary to the calculation. The base is not simply connected and its action on fibre homology is nontrivial; those are exactly the missing hypotheses. Correct coefficients must retain this reflection transport.
+
+**Exercise E.6 — Hard: finite generation in a fibration.** Under Theorem D.1's hypotheses, suppose that any two of \(F,E,B\) have finitely generated integral homology in every degree. Prove that the third has finitely generated integral homology in every degree, including the case where the missing space is the fibre.
+
+**Solution.** We first supply the coefficient algebra. Subgroups of finite-rank free abelian groups are free of finite rank, by the well-ordered basis proof in the Thom-class chapter, Lemma 5.1. A subgroup of a finitely generated abelian group is finitely generated: pull it back along a surjection \(\mathbb Z^m\to A\), apply that finite-rank assertion, and take its image. Quotients are finitely generated by the images of generators. For an extension, take generators of the kernel together with lifts of generators of the quotient. They generate the middle group. Thus subgroups, quotients and extensions preserve finite generation.
+
+For a free chain complex \(C_*\), set \(Z_j=\ker d_j\) and \(D_j=\operatorname{im}d_{j+1}\). These groups are free by that same subgroup theorem. The exact sequence
+\(0\to Z_j\to C_j\to D_{j-1}\to0\)
+splits because its last group is free. Choose a splitting. In these coordinates the differential sends the \(D_{j-1}\)-summand into \(Z_{j-1}\) by inclusion. Tensoring with an abelian group \(A\), and taking cycles modulo boundaries, consequently gives
+\[
+0\longrightarrow H_j(C)\otimes A
+\longrightarrow H_j(C\otimes A)
+\longrightarrow \operatorname{Tor}_1(H_{j-1}(C),A)
+\longrightarrow0.
+\tag{E.1}
+\]
+Here \(\operatorname{Tor}_1(T,A)\) is the kernel of \(D\otimes A\to Z\otimes A\) for a free presentation \(0\to D\to Z\to T\to0\). Independence of that presentation follows directly from free lifts: lift a map on quotient groups to the free groups and then to their kernels. Two such chain lifts differ by a chain homotopy, because their difference on \(Z\) lifts into the other presentation's kernel. Its difference on \(D\) is then forced by the injective kernel inclusion. Tensoring retains that chain homotopy, so the induced kernel map is independent of the lifts. Lifts of the identity in both directions give inverse maps. This proves the presentation independence and naturality used in (E.1). The splittings give a noncanonical splitting of (E.1), but only its exactness will be used.
+
+If \(T,A\) are finitely generated, so are \(T\otimes A\) and \(\operatorname{Tor}_1(T,A)\). The first is generated by tensor products of generators. For the second use a finite-rank presentation \(\mathbb Z^m\to T\); its kernel is finite-rank free, so the displayed kernel after tensoring is a subgroup of a finitely generated group. Applying (E.1) to singular chains proves that
+\[
+H_j(B;A)\text{ is finitely generated whenever }
+H_j(B;\mathbb Z),\ H_{j-1}(B;\mathbb Z),\ A
+\text{ are finitely generated}.
+\tag{E.2}
+\]
+
+Now apply (D.1), with integral coefficients. If the fibre and base homology are finitely generated, (E.2) makes every second-page entry finitely generated. Subsequent entries are subquotients and hence finitely generated. In each total degree there are finitely many final entries; the finite filtration and the extension assertion prove finite generation of \(H_j(E;\mathbb Z)\).
+
+If the fibre and total-space homology are finitely generated, induct on \(j\geq1\) for the base. Its degree-zero homology is \(\mathbb Z\). Suppose the base homology is finitely generated below \(j\). The entry
+\(E_2^{j,0}=H_j(B;\mathbb Z)\)
+has no incoming differential on any page \(r\geq2\). Each outgoing differential lands in
+\[
+E_r^{j-r,r-1},
+\]
+a subquotient of \(H_{j-r}(B;H_{r-1}(F;\mathbb Z))\), which is finitely generated by the induction hypothesis and (E.2). There are only finitely many possible outgoing pages, \(2\leq r\leq j\). Thus each quotient \(E_r^{j,0}/E_{r+1}^{j,0}\) is finitely generated. Its final subgroup \(E_\infty^{j,0}\) is the projection image of \(H_j(E;\mathbb Z)\), by (D.2), so it is finitely generated. Successive finite extensions, working back to page two, prove that \(H_j(B;\mathbb Z)\) is finitely generated.
+
+If the base and total-space homology are finitely generated, induct instead on \(j\geq1\) for the fibre; again its degree-zero homology is \(\mathbb Z\). The entry
+\(E_2^{0,j}=H_j(F;\mathbb Z)\)
+has no outgoing differential. Its possible incoming sources are
+\[
+E_r^{r,j-r+1}\quad(2\leq r\leq j+1).
+\]
+Each is a subquotient of \(H_r(B;H_{j-r+1}(F;\mathbb Z))\), and the fibre degree in this coefficient is less than \(j\). The induction hypothesis and (E.2) therefore make every incoming image finitely generated. Each successive quotient of \(E_2^{0,j}\) has a finitely generated kernel, and its final quotient \(E_\infty^{0,j}\) is a subgroup of \(H_j(E;\mathbb Z)\), by (D.2). Working back through these finitely many extensions proves finite generation of \(H_j(F;\mathbb Z)\). This supplies all three cases. ∎
+
+The last solution is the finite-generation fibration lemma we will use for Eilenberg–MacLane spaces and connected covers. It is a fully proved statement within the simply connected CW-base, path-connected-fibre scope. It does not by itself identify rational homotopy groups or give the rational cohomology of \(K(A,r)\).

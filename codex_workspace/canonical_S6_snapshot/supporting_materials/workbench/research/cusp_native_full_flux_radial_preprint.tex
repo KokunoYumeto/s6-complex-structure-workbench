@@ -1,0 +1,637 @@
+% Standalone-preprint adaptation of cusp_native_full_flux_radial.tex.
+% Canonical source SHA-256: 362E218ADEF6D2E6F7A549B14DE21A4FB2DF9DF42037391A0554B841CF139516.
+% The canonical radial-height symbol T was renamed R consistently; transpose
+% notation was retained exactly.
+
+% Canonical integration of agent_logs/native_direct_integral_complete_canonical_20260903.tex.
+% The fixed and varying fields remain separately typed; R is a multiplication
+% parameter and never a hidden radial derivative.
+
+\subsection{The fixed and varying radial direct integrals}
+\label{cusp-native-full-flux-radial-section}
+
+Choose \(R_1>R_0\) so that the complete deep-tail inequalities in
+\cref{cusp-native-full-flux-deep-tail-window} hold on
+\[
+ I:=(R_1,\infty).
+\]
+Let \(Y=\mathbb R^4/\mathbb Z^4\).  Denote by
+\(\mathscr L_\eta\to Y\) the fixed marked Hermitian line bundle defined
+by the factor of automorphy in
+\cref{cusp-native-full-flux-cocycle}.  The marking diffeomorphism and its
+transported bundle isomorphism are
+\[
+ \Phi_R:Y\longrightarrow F_R,\qquad [y]\longmapsto[P_Ry],
+ \qquad
+ \widehat\Phi_R:\mathscr L_\eta\longrightarrow\mathscr L_{\eta,R}.
+\]
+They are fixed by requiring
+\[
+ \widehat\Phi_R^*\nabla_{\eta,R}
+ =\mathrm d-2\pi i(6y^1\,\mathrm dy^4+y^2\,\mathrm dy^3),
+\]
+so no gauge, metric, lattice, or orientation normalization is hidden in the
+identification.  Put
+\[
+ \mathscr K_R
+ :=L^2(F_R,\mathscr L_{\eta,R};
+       \mathrm d\operatorname{vol}_{g_R}).
+\]
+
+The pullback of the physical volume is
+\begin{equation}
+ \Phi_R^*(\mathrm d\operatorname{vol}_{g_R})
+ =\sqrt{\det(P_R^{\mathsf T}P_R)}\,\mathrm d^4y
+ =D_R\,\mathrm d^4y.
+\label{native-di-volume-pullback}
+\end{equation}
+Put
+\[
+ \mathscr H_*:=L^2(Y,\mathscr L_\eta;\mathrm d^4y),
+ \qquad
+ \mathscr D_*:=H^2(Y;\mathscr L_\eta),
+\]
+where the Sobolev space is defined using any one fixed smooth reference
+metric and connection on the fixed compact bundle.  Define
+\begin{equation}
+ U_R:\mathscr K_R\longrightarrow\mathscr H_*,
+ \qquad
+ U_Rs:=D_R^{1/2}\widehat\Phi_R^*s.
+\label{native-di-marking-unitary}
+\end{equation}
+Then
+\[
+ \|U_Rs\|_{\mathscr H_*}^2
+ =D_R\int_Y|\widehat\Phi_R^*s|^2\,\mathrm d^4y
+ =\|s\|_{\mathscr K_R}^2,
+\]
+and
+\[
+ U_R^{-1}v
+ =D_R^{-1/2}(\widehat\Phi_R^{-1})^*v.
+\]
+Thus \(U_R\) is an onto unitary, not merely an isometric injection.
+
+Transport the fibre operator to the fixed space:
+\begin{equation}
+ A_R:=U_R\Delta_{\eta,R}U_R^{-1},
+ \qquad
+ \operatorname{Dom}(A_R)=\mathscr D_*.
+\label{native-di-fixed-fibre}
+\end{equation}
+Its closed quadratic form is
+\begin{equation}
+ \widetilde{\mathfrak a}_R[v,w]
+ =\int_Y(G_R^{-1})^{jk}
+  \langle\nabla_{\eta,j}v,\nabla_{\eta,k}w\rangle\,\mathrm d^4y,
+ \qquad G_R=P_R^{\mathsf T}P_R.
+\label{native-di-fixed-form}
+\end{equation}
+Here \(\nabla_{\eta,j}\) is the \(\mathrm dy^j\)-component of the fixed
+marked connection displayed above.  The factor \(D_R^{1/2}\) in \(U_R\) is
+constant in \(y\), and it cancels
+the factor \(D_R\) in \eqref{native-di-volume-pullback}; hence no unrecorded
+factor appears in \eqref{native-di-fixed-form}.
+
+\begin{lemma}[Common domain and measurable resolvents]
+\label{native-di-common-domain-lemma}
+For every compact interval \(K\Subset I\), the family
+\[
+ R\longmapsto A_R\in\mathcal B(\mathscr D_*,\mathscr H_*)
+\]
+is norm-continuous, in fact real analytic.  For every
+\(z\in\mathbb C\setminus\mathbb R\), the resolvents
+\((A_R-z)^{-1}\) are locally norm-continuous as operators on
+\(\mathscr H_*\), and hence form a measurable operator field.
+\end{lemma}
+
+\begin{proof}
+On \(K\), the matrices \(G_R^{-1}\) are uniformly positive definite, and
+their entries are real analytic in \(R\).  In fixed local bundle
+trivializations, \eqref{native-di-fixed-form} therefore gives a uniformly
+elliptic second-order expression whose coefficients depend real
+analytically on \(R\).  Elliptic regularity identifies every operator
+domain with the same set \(\mathscr D_*\), and the standard local
+coordinate estimate for a differential operator of order two gives
+norm-continuity in
+\(\mathcal B(\mathscr D_*,\mathscr H_*)\).
+
+Uniform ellipticity on \(K\) gives
+\[
+ \|v\|_{\mathscr D_*}
+ \le C_K\bigl(\|A_Rv\|_{\mathscr H_*}
+                  +\|v\|_{\mathscr H_*}\bigr),
+ \qquad R\in K.
+\]
+For \(v=(A_R-z)^{-1}f\), self-adjointness gives
+\(\|v\|\le|\operatorname{Im}z|^{-1}\|f\|\), while
+\(A_Rv=f+zv\).  Consequently
+\begin{equation}
+ \sup_{R\in K}
+ \|(A_R-z)^{-1}\|_{\mathscr H_*\to\mathscr D_*}<\infty.
+\label{native-di-elliptic-resolvent-bound}
+\end{equation}
+The resolvent identity, with its exact sign, for \(R,S\in K\),
+\[
+ (A_R-z)^{-1}-(A_S-z)^{-1}
+ =-(A_R-z)^{-1}(A_R-A_S)(A_S-z)^{-1},
+\]
+together with \eqref{native-di-elliptic-resolvent-bound}, proves local
+norm-resolvent continuity.  A countable compact exhaustion of \(I\) gives
+measurability on all of \(I\).
+\end{proof}
+
+We now define the varying measurable Hilbert field rather than presuppose
+one.  A section \(R\mapsto s_R\in\mathscr K_R\) is declared measurable
+precisely when
+\[
+ R\longmapsto U_Rs_R\in\mathscr H_*
+\]
+is strongly measurable.  This is the measurable field pulled back from the
+constant separable field \(I\times\mathscr H_*\).  Its direct integral is
+\[
+ \mathscr H_{\mathrm{var}}
+ :=\int_I^\oplus\mathscr K_R\,\mathrm d R.
+\]
+The fixed radial Hilbert space is
+\[
+ \mathscr H_{\mathrm{rad}}
+ :=L^2(I,\mathrm d R;\mathscr H_*).
+\]
+By construction,
+\begin{equation}
+ \mathscr U:=\int_I^\oplus U_R\,\mathrm d R:
+ \mathscr H_{\mathrm{var}}\longrightarrow\mathscr H_{\mathrm{rad}},
+ \qquad
+ (\mathscr Us)(R)=U_Rs_R,
+\label{native-di-direct-integral-unitary}
+\end{equation}
+is an isometry.  It is onto: if
+\(\Psi\in\mathscr H_{\mathrm{rad}}\), then
+\(s_R=U_R^{-1}\Psi(R)\) is measurable by the very definition of the
+varying field and has the same squared norm integral.
+
+On the fixed direct integral, define the maximal multiplication operator
+\begin{equation}
+ (\widetilde{\mathscr M}_\eta\Psi)(R):=A_R\Psi(R)
+\label{native-di-fixed-multiplication}
+\end{equation}
+with the exact domain
+\begin{equation}
+\begin{split}
+ \operatorname{Dom}(\widetilde{\mathscr M}_\eta)
+ :=\{\Psi\in\mathscr H_{\mathrm{rad}}:\;&
+ \Psi(R)\in\mathscr D_*\text{ for almost every }R,\\
+ &R\mapsto A_R\Psi(R)\text{ is strongly measurable},\\
+ &\int_I\|A_R\Psi(R)\|_{\mathscr H_*}^2\,\mathrm d R<\infty\}.
+\end{split}
+\label{native-di-fixed-maximal-domain}
+\end{equation}
+On the varying direct integral, define
+\begin{equation}
+\begin{split}
+ \operatorname{Dom}(\mathscr M_\eta)
+ :=\{s\in\mathscr H_{\mathrm{var}}:\;&
+ s_R\in\operatorname{Dom}(\Delta_{\eta,R})\text{ for almost every }R,\\
+ &R\mapsto U_R\Delta_{\eta,R}s_R
+       \text{ is strongly measurable},\\
+ &\int_I\|\Delta_{\eta,R}s_R\|_{\mathscr K_R}^2\,\mathrm d R<\infty\},
+\end{split}
+\label{native-di-varying-maximal-domain}
+\end{equation}
+and
+\begin{equation}
+ (\mathscr M_\eta s)_R:=\Delta_{\eta,R}s_R
+ \quad\text{for almost every }R.
+\label{native-di-varying-multiplication}
+\end{equation}
+Every expression in \eqref{native-di-fixed-multiplication} and
+\eqref{native-di-varying-multiplication} is now typed on its actual fibre.
+Equations \eqref{native-di-fixed-fibre},
+\eqref{native-di-direct-integral-unitary},
+\eqref{native-di-fixed-maximal-domain}, and
+\eqref{native-di-varying-maximal-domain} give both the domain equality and
+the exact intertwining identity
+\begin{equation}
+ \mathscr U\operatorname{Dom}(\mathscr M_\eta)
+ =\operatorname{Dom}(\widetilde{\mathscr M}_\eta),
+ \qquad
+ \mathscr U\mathscr M_\eta\mathscr U^{-1}
+ =\widetilde{\mathscr M}_\eta.
+\label{native-di-intertwining}
+\end{equation}
+
+\subsubsection{Density and self-adjointness on the maximal domain}
+
+\begin{proposition}[Maximal-domain realization]
+\label{native-di-self-adjoint-proposition}
+The operators \(\widetilde{\mathscr M}_\eta\) and
+\(\mathscr M_\eta\) are densely defined, nonnegative, and self-adjoint on
+the domains \eqref{native-di-fixed-maximal-domain} and
+\eqref{native-di-varying-maximal-domain}, respectively.
+\end{proposition}
+
+\begin{proof}
+For \(\chi\in C_c(I)\) and \(v\in\mathscr D_*\), local continuity of
+\(R\mapsto A_Rv\) makes it bounded on \(\operatorname{supp}\chi\).
+Thus \(\chi v\in\operatorname{Dom}(\widetilde{\mathscr M}_\eta)\).  Since
+\(\mathscr D_*\) is dense in \(\mathscr H_*\), the algebraic tensor product
+\[
+ C_c(I)\mathbin{\odot}\mathscr D_*
+\]
+is dense in \(L^2(I;\mathscr H_*)\).  Hence the fixed operator is densely
+defined.  Fibrewise self-adjointness and Cauchy--Schwarz give, for
+\(\Psi,\Theta\) in its domain,
+\[
+ \langle\widetilde{\mathscr M}_\eta\Psi,\Theta\rangle
+ =\int_I\langle A_R\Psi(R),\Theta(R)\rangle\,\mathrm d R
+ =\langle\Psi,\widetilde{\mathscr M}_\eta\Theta\rangle,
+\]
+so it is symmetric.
+
+Fix \(z\in\mathbb C\setminus\mathbb R\).  For
+\(F\in\mathscr H_{\mathrm{rad}}\), define pointwise
+\begin{equation}
+ (\mathcal R_zF)(R):=(A_R-z)^{-1}F(R).
+\label{native-di-radial-resolvent}
+\end{equation}
+The locally norm-continuous resolvent field, approximation of \(F\) by
+simple functions, and
+\[
+ \|(A_R-z)^{-1}\|_{\mathscr H_*\to\mathscr H_*}
+ \le|\operatorname{Im}z|^{-1}
+\]
+show that \(\mathcal R_zF\) is strongly measurable and
+\begin{equation}
+ \|\mathcal R_zF\|_{\mathscr H_{\mathrm{rad}}}
+ \le|\operatorname{Im}z|^{-1}
+    \|F\|_{\mathscr H_{\mathrm{rad}}}.
+\label{native-di-radial-resolvent-L2}
+\end{equation}
+Pointwise, \((A_R-z)^{-1}F(R)\in\mathscr D_*\).  The exact identity
+\begin{equation}
+ A_R(A_R-z)^{-1}=I+z(A_R-z)^{-1}
+\label{native-di-maximal-domain-identity}
+\end{equation}
+gives the global uniform bound
+\[
+ \|A_R(A_R-z)^{-1}\|
+ \le1+\frac{|z|}{|\operatorname{Im}z|}.
+\]
+The right-hand side of \eqref{native-di-maximal-domain-identity}, applied
+to \(F(R)\), is strongly measurable and square-integrable.  Therefore
+\(\mathcal R_zF\) belongs to the full maximal domain
+\eqref{native-di-fixed-maximal-domain}; this is the domain step that
+pointwise inversion alone does not prove.
+
+Fibrewise identities now yield
+\[
+ (\widetilde{\mathscr M}_\eta-z)\mathcal R_z=I
+ \quad\text{on }\mathscr H_{\mathrm{rad}},
+ \qquad
+ \mathcal R_z(\widetilde{\mathscr M}_\eta-z)=I
+ \quad\text{on }\operatorname{Dom}(\widetilde{\mathscr M}_\eta).
+\]
+In particular, the ranges of
+\(\widetilde{\mathscr M}_\eta-i\) and
+\(\widetilde{\mathscr M}_\eta+i\) are both all of
+\(\mathscr H_{\mathrm{rad}}\).  The range criterion for a densely defined
+symmetric operator proves self-adjointness.  Moreover,
+\[
+ \langle\widetilde{\mathscr M}_\eta\Psi,\Psi\rangle
+ =\int_I\langle A_R\Psi(R),\Psi(R)\rangle\,\mathrm d R\ge0,
+\]
+so it is nonnegative.  The unitary equivalence
+\eqref{native-di-intertwining} transfers density, self-adjointness, and
+nonnegativity to the varying-fibre operator.
+\end{proof}
+
+\subsubsection{Measurable eigenvectors, including at band crossings}
+
+\begin{lemma}[Explicit measurable eigenvector selection]
+\label{native-di-measurable-eigenvector-lemma}
+For every fixed
+\(\mathbf n=(n_+,n_-)\in\mathbb Z_{\ge0}^2\), there is a strongly
+measurable map
+\[
+ I\longrightarrow\mathscr D_*,
+ \qquad R\longmapsto\phi_{\mathbf n}(R),
+\]
+such that
+\begin{equation}
+ \|\phi_{\mathbf n}(R)\|_{\mathscr H_*}=1,
+ \qquad
+ A_R\phi_{\mathbf n}(R)
+ =E_{\mathbf n}(R)\phi_{\mathbf n}(R)
+\label{native-di-measurable-eigenvector}
+\end{equation}
+for every \(R\in I\).  The construction remains valid when
+\(E_{\mathbf n}(R)\) crosses one or more other bands.
+\end{lemma}
+
+\begin{proof}
+Set
+\[
+ C_{\mathbf n,R}:=A_R-E_{\mathbf n}(R),
+ \qquad \operatorname{Dom}(C_{\mathbf n,R})=\mathscr D_*.
+\]
+The band \(E_{\mathbf n}\) is continuous.  The proof of
+Lemma~\ref{native-di-common-domain-lemma}, applied also to the scalar
+shift, shows that
+\((C_{\mathbf n,R}-z)^{-1}\) is a measurable resolvent field for every
+nonreal \(z\).
+
+Let
+\[
+ \mathsf P_{\mathbf n}(R)
+ :=\mathbf 1_{\{0\}}(C_{\mathbf n,R})
+ =\mathbf 1_{\{E_{\mathbf n}(R)\}}(A_R).
+\]
+This singleton projection is not assumed continuous at a crossing.
+Instead, the spectral theorem gives the pointwise strong limit
+\begin{equation}
+ \mathsf P_{\mathbf n}(R)
+ =\operatorname*{s-lim}_{k\to\infty}
+  (I+kC_{\mathbf n,R}^2)^{-1},
+\label{native-di-kernel-projection}
+\end{equation}
+and the exact resolvent formula
+\begin{equation}
+ (I+kC_{\mathbf n,R}^2)^{-1}
+ =\frac1{2i\sqrt{k}}
+ \left[
+ (C_{\mathbf n,R}-i/\sqrt{k})^{-1}
+ -(C_{\mathbf n,R}+i/\sqrt{k})^{-1}
+ \right]
+\label{native-di-kernel-projection-resolvent}
+\end{equation}
+shows that every approximating field is strongly measurable.  Therefore
+\(R\mapsto\mathsf P_{\mathbf n}(R)v\) is strongly measurable for every
+\(v\in\mathscr H_*\).  Proposition
+\ref{cusp-native-full-flux-landau-theorem} says that
+\(\mathsf P_{\mathbf n}(R)\ne0\) for every \(R\), including crossings.
+
+Choose a countable dense sequence \((v_k)_{k\ge1}\) in the separable
+space \(\mathscr H_*\), and define the measurable partition
+\[
+ X_k=
+ \{R:\|\mathsf P_{\mathbf n}(R)v_k\|>0\}
+ \cap
+ \bigcap_{\ell<k}
+ \{R:\|\mathsf P_{\mathbf n}(R)v_\ell\|=0\}.
+\]
+The sets \(X_k\) are pairwise disjoint and cover \(I\): a nonzero bounded
+projection cannot annihilate a dense set.  On \(X_k\), set
+\[
+ \phi_{\mathbf n}(R)
+ =\frac{\mathsf P_{\mathbf n}(R)v_k}
+ {\|\mathsf P_{\mathbf n}(R)v_k\|}.
+\]
+Countable measurable patching gives a strongly measurable unit vector.
+The range of the singleton spectral projection lies in
+\(\operatorname{Dom}(A_R)\) and satisfies
+\((A_R-E_{\mathbf n}(R))\phi_{\mathbf n}(R)=0\), which proves
+\eqref{native-di-measurable-eigenvector}.
+\end{proof}
+
+\subsubsection{Full spectrum and spectral type}
+
+\begin{theorem}[Purely continuous full half-line spectrum]
+\label{native-di-main-theorem}
+For both the fixed-fibre and varying-fibre maximal radial multiplication
+operators,
+\begin{equation}
+\begin{aligned}
+ \sigma(\widetilde{\mathscr M}_\eta)
+ &=\sigma_{\mathrm{ess}}(\widetilde{\mathscr M}_\eta)
+ =\sigma_{\mathrm c}(\widetilde{\mathscr M}_\eta)
+ =[0,\infty),\\
+ \sigma_{\mathrm p}(\widetilde{\mathscr M}_\eta)
+ &=\varnothing,
+ \qquad
+ \ker\widetilde{\mathscr M}_\eta=\{0\},
+\end{aligned}
+\label{native-di-fixed-spectrum-result}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+ \sigma(\mathscr M_\eta)
+ &=\sigma_{\mathrm{ess}}(\mathscr M_\eta)
+ =\sigma_{\mathrm c}(\mathscr M_\eta)
+ =[0,\infty),\\
+ \sigma_{\mathrm p}(\mathscr M_\eta)
+ &=\varnothing,
+ \qquad
+ \ker\mathscr M_\eta=\{0\}.
+\end{aligned}
+\label{native-di-varying-spectrum-result}
+\end{equation}
+Here \(\sigma_{\mathrm{ess}}\) is the Weyl essential spectrum.
+\end{theorem}
+
+\begin{proof}
+It is enough to prove \eqref{native-di-fixed-spectrum-result}, because
+\eqref{native-di-intertwining} is a unitary equivalence.
+Proposition~\ref{native-di-self-adjoint-proposition} and nonnegativity give
+\[
+ \sigma(\widetilde{\mathscr M}_\eta)\subset[0,\infty).
+\]
+
+\paragraph{The zero-energy singular sequence.}
+Let \(a_j=R_1+2j+1\).  Using the measurable normalized ground eigenvector
+from Lemma~\ref{native-di-measurable-eigenvector-lemma}, define
+\[
+ \Psi_j(R)
+ :=\mathbf 1_{[a_j,a_j+1]}(R)\phi_{(0,0)}(R).
+\]
+These vectors have norm one and have pairwise disjoint supports, hence are
+orthonormal and converge weakly to zero.  They belong to the maximal
+domain because
+\[
+ A_R\Psi_j(R)=
+ \mathbf 1_{[a_j,a_j+1]}(R)E_0(R)\phi_{(0,0)}(R)
+\]
+is strongly measurable and square-integrable.  From
+\eqref{cusp-native-full-flux-ground-energy},
+\[
+ \|\widetilde{\mathscr M}_\eta\Psi_j\|^2
+ =\int_{a_j}^{a_j+1}E_0(R)^2\,\mathrm d R
+ =\frac{196\pi^2}{a_j^2}+O(a_j^{-3})
+ \longrightarrow0.
+\]
+Thus \((\Psi_j)\) is a singular Weyl sequence at zero, and
+\[
+ 0\in\sigma_{\mathrm{ess}}(\widetilde{\mathscr M}_\eta).
+\]
+
+\paragraph{Positive energy: escaping crossings before disjoint supports.}
+Fix \(\lambda>0\), and fix once and for all
+\(R_\bullet=R_1+1\in I\).  For \(n\in\mathbb Z_{\ge0}\), retain the
+specific canonical band
+\begin{equation}
+ e_n(R):=E_{(0,n)}(R)
+ =\mathcal B_{R,+}+(2n+1)\mathcal B_{R,-}.
+\label{native-di-crossing-band}
+\end{equation}
+Since \(\mathcal B_{R_\bullet,-}>0\),
+\[
+ e_n(R_\bullet)\longrightarrow\infty
+ \quad(n\to\infty).
+\]
+For each fixed \(n\), equations
+\eqref{cusp-native-full-flux-Bminus-expansion} and
+\eqref{cusp-native-full-flux-Bplus-expansion} give
+\[
+ e_n(R)\longrightarrow0
+ \quad(R\to\infty).
+\]
+Hence, for every sufficiently large \(n\), the intermediate value theorem
+gives at least one crossing parameter \(r_n>R_\bullet\) satisfying
+\begin{equation}
+ e_n(r_n)=\lambda.
+\label{native-di-crossing}
+\end{equation}
+
+We prove explicitly that every such choice of crossing parameters escapes
+to infinity.  Fix \(M>R_\bullet\).  Positivity and continuity give
+\[
+ c_M:=\min_{R\in[R_\bullet,M]}\mathcal B_{R,-}>0.
+\]
+For every \(R\in[R_\bullet,M]\),
+\[
+ e_n(R)\ge(2n+1)c_M.
+\]
+Thus, once \((2n+1)c_M>\lambda\), equation
+\eqref{native-di-crossing} has no solution in
+\([R_\bullet,M]\), and the chosen \(r_n\) must satisfy \(r_n>M\).
+Since \(M\) was arbitrary,
+\begin{equation}
+ r_n\longrightarrow\infty.
+\label{native-di-crossings-escape}
+\end{equation}
+
+Only now, before choosing any support, pass to a subsequence
+\(n_j\to\infty\) such that, with \(r_j:=r_{n_j}\),
+\begin{equation}
+ r_{j+1}>r_j+2.
+\label{native-di-separated-crossings}
+\end{equation}
+Continuity of \(e_{n_j}\) at \(r_j\) permits the subsequent choice of
+\(\varepsilon_j\in(0,\tfrac14)\) such that
+\[
+ J_j:=(r_j-\varepsilon_j,r_j+\varepsilon_j)\Subset I,
+ \qquad
+ \sup_{R\in J_j}|e_{n_j}(R)-\lambda|<\frac1j.
+\]
+The order of construction matters: the separation
+\eqref{native-di-separated-crossings} makes the intervals \(J_j\)
+pairwise disjoint.
+
+Take the measurable normalized eigenvector
+\(\phi_{(0,n_j)}(R)\) from
+Lemma~\ref{native-di-measurable-eigenvector-lemma}; the singleton
+projection used there remains valid if the selected band crosses another
+one inside \(J_j\).  Define
+\begin{equation}
+ \Theta_j(R)
+ :=|J_j|^{-1/2}\mathbf 1_{J_j}(R)\phi_{(0,n_j)}(R).
+\label{native-di-positive-Weyl-sequence}
+\end{equation}
+The sections \(\Theta_j\) have norm one and are orthogonal by disjointness
+of their supports.  They lie in the maximal domain because
+\[
+ A_R\Theta_j(R)
+ =|J_j|^{-1/2}\mathbf 1_{J_j}(R)
+   e_{n_j}(R)\phi_{(0,n_j)}(R)
+\]
+is strongly measurable and square-integrable.  Moreover,
+\[
+ \|(\widetilde{\mathscr M}_\eta-\lambda)\Theta_j\|^2
+ =\frac1{|J_j|}\int_{J_j}
+   |e_{n_j}(R)-\lambda|^2\,\mathrm d R
+ <\frac1{j^2}.
+\]
+Every orthonormal sequence is weakly null, so
+\((\Theta_j)\) is a singular Weyl sequence at \(\lambda\).
+Thus every \(\lambda>0\) belongs to the Weyl essential spectrum.  Together
+with the zero sequence and nonnegativity, this proves
+\begin{equation}
+ \sigma(\widetilde{\mathscr M}_\eta)
+ =\sigma_{\mathrm{ess}}(\widetilde{\mathscr M}_\eta)
+ =[0,\infty).
+\label{native-di-spectrum-essential}
+\end{equation}
+
+\paragraph{Real analyticity, absence of flat bands, and no eigenvalues.}
+Equation \eqref{cusp-native-full-flux-Xi-identity} writes
+\[
+ \Xi_R=\sqrt{S_R^2+24D_R}
+\]
+with a strictly positive real-analytic radicand.  The positive square-root
+function is real analytic on \((0,\infty)\).  Hence
+\(\Xi_R\), \(\mathcal B_{R,+}\), \(\mathcal B_{R,-}\), and every
+\(E_{\mathbf n}(R)\) are real analytic on the connected interval \(I\).
+For each fixed \(\mathbf n\),
+\[
+ E_{\mathbf n}(R)>0\quad(R<\infty),
+ \qquad
+ \lim_{R\to\infty}E_{\mathbf n}(R)=0.
+\]
+It follows that no band is constant: a constant band would have constant
+value equal to its limit zero, contradicting strict positivity at every
+finite \(R\).  This proves the absence of flat bands, rather than assuming
+it.
+
+Fix \(\lambda\in\mathbb R\).  For every \(\mathbf n\), the real-analytic
+function \(E_{\mathbf n}-\lambda\) is not identically zero, so its zero set
+in \(I\) is discrete and has Lebesgue measure zero.  Since
+\(\mathbb Z_{\ge0}^2\) is countable,
+\begin{equation}
+ Z_\lambda
+ :=\{R\in I:\lambda\in\sigma_{\mathrm p}(A_R)\}
+ =\bigcup_{\mathbf n\in\mathbb Z_{\ge0}^2}
+   \{R:E_{\mathbf n}(R)=\lambda\}
+\label{native-di-null-fibre-level-set}
+\end{equation}
+is a null set.
+
+If
+\(\widetilde{\mathscr M}_\eta\Psi=\lambda\Psi\), then
+\((A_R-\lambda)\Psi(R)=0\) for almost every \(R\).  At every point where
+\(\Psi(R)\ne0\), Proposition
+\ref{cusp-native-full-flux-landau-theorem} forces \(R\in Z_\lambda\).
+Thus the essential support of \(\Psi\) is contained in the null set
+\eqref{native-di-null-fibre-level-set}, and \(\Psi=0\).  A self-adjoint
+operator has only real eigenvalues, so
+\[
+ \sigma_{\mathrm p}(\widetilde{\mathscr M}_\eta)=\varnothing,
+ \qquad
+ \ker\widetilde{\mathscr M}_\eta=\{0\}.
+\]
+Self-adjoint operators have empty residual spectrum.  Combining this with
+\eqref{native-di-spectrum-essential} proves that the entire spectrum is
+continuous and gives \eqref{native-di-fixed-spectrum-result}.  Unitary
+equivalence gives \eqref{native-di-varying-spectrum-result}.
+\end{proof}
+
+\subsubsection{Exact interpretive boundary}
+
+\begin{remark}[No radial derivative and no interacting Yang--Mills claim]
+The variable \(R\) in
+\eqref{native-di-fixed-multiplication} and
+\eqref{native-di-varying-multiplication} is a direct-integral parameter.
+Neither operator contains a \(R\)-derivative.  In particular, there is no
+term such as \(-\partial_R^2\), no radial Sobolev condition, no cusp
+boundary condition, and no interaction between distinct \(R\)-fibres.
+This is why characteristic functions of radial intervals legitimately
+occur in the maximal-domain Weyl sequences above.
+
+The theorem is therefore a complete spectral statement for the specified
+auxiliary decomposable family of native full-flux magnetic Laplacians.  It
+does not construct, identify, or determine the spectrum or mass gap of an
+interacting quantum Yang--Mills Hamiltonian, and it makes no
+Osterwalder--Schrader reconstruction claim.
+\end{remark}
+
+

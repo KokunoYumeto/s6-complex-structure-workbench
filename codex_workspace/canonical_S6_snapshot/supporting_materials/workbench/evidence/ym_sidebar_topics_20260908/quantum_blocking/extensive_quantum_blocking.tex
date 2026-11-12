@@ -1,0 +1,1827 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\HH}{\mathscr H}
+\newcommand{\KK}{\mathscr K}
+\newcommand{\LL}{\mathscr L}
+\newcommand{\VV}{\mathscr V}
+\newcommand{\EE}{\mathsf E}
+\newcommand{\PP}{\mathsf P}
+\newcommand{\NN}{\mathcal N}
+\title{Extensive true-vacuum quantum blocking in the full spatial Wilson box\\
+Exact path-product maps, associative memory, and physical spectral channels}
+\author{}
+\date{8 September 2026}
+\begin{document}
+\maketitle
+
+\section{Original objects and the finite interacting operator}
+
+Let $L\geq2$ be an integer. The vertex set is
+$\mathsf V_L=\{-L,-L+1,\ldots,L\}^3$. For each $i\in\{1,2,3\}$,
+the physical edge $e=(n,i)$ goes from $n$ to $n+\mathbf e_i$ when both
+vertices are present. Its variable is $U_i(n)\in\SU(2)$. Inverse traversal
+uses $U_i(n)^{-1}$. Every such edge belongs to $\EE_L$. Every elementary
+face $p=(n;i,j)$, $i<j$, with four vertices in the box belongs to $\PP_L$;
+its ordered holonomy and trace are
+\begin{equation}\label{eq:plaquette}
+ U_p=U_i(n)U_j(n+\mathbf e_i)U_i(n+\mathbf e_j)^{-1}U_j(n)^{-1},
+ \qquad W_p=\tr U_p.
+\end{equation}
+The counts are $N=3(2L)(2L+1)^2$ and $M=3(2L)^2(2L+1)$: fix a
+direction or a face plane and count its initial and transverse coordinates.
+The configuration space is $\mathcal Q=\SU(2)^{\EE_L}$ with product
+Haar probability measure $\lambda$. Put
+\begin{gather}
+ T_a=-i\sigma_a/2,\qquad
+ X_{e,a}f=\left.\frac{d}{dt}f(\ldots,e^{tT_a}U_e,\ldots)\right|_{t=0},
+ \qquad E_e=-\sum_{a=1}^3X_{e,a}^2,\label{eq:fields}\\
+ H=\kappa\sum_{e\in\EE_L}E_e+b\sum_{p\in\PP_L}(2-W_p),\qquad
+ \kappa=\frac{2g^2}{a},\quad b=\frac{1}{2g^2a},\quad
+ \xi=\frac b\kappa=\frac1{4g^4},\quad a,g>0.\label{eq:H}
+\end{gather}
+Here $a$ in $a,g>0$ denotes spatial spacing; the color index in
+\eqref{eq:fields} is summed only when indicated. Haar integration by parts
+makes $X_{e,a}$ skew-adjoint. The Pauli identities give
+$-2\tr(T_aT_b)=\delta_{ab}$ and $-\sum_aT_a^2=3I/4$.
+The original metric $c(A,B)=-\tr(AB)/2$ has orthonormal basis $2T_a$;
+hence $X^c=2X$, $\Delta^c=4\Delta^T$, and the same kinetic term is
+$-(\kappa/4)\sum_e\Delta_e^c$. All faces, including boundary faces
+and faces in every plane, remain in \eqref{eq:H}.
+In particular the exact scalar term $2bM=M/(g^2a)$ is part of $H$.
+
+Gauge transformations are $(h\cdot U)_e=h_{s(e)}^{-1}U_eh_{t(e)}$.
+The form of $H$ on $H^1(\mathcal Q)$ is
+\[
+ q_H(u,v)=\kappa\sum_{e,a}\int\overline{X_{e,a}u}X_{e,a}v\dd\lambda
+        +b\sum_p\int(2-W_p)\overline uv\dd\lambda.
+\]
+It is closed, since the smooth potential is bounded between $0$ and
+$4bM$. Its associated self-adjoint operator has domain $H^2$ by elliptic
+regularity; smooth functions are operator and form cores. Compact Sobolev
+embedding gives compact resolvent. Taking the modulus of a minimizing
+vector does not increase its form: apply the chain rule first to
+$(|u|^2+\epsilon^2)^{1/2}$ and then let $\epsilon$ decrease to zero.
+The resulting nonnegative lowest eigenfunction is smooth by elliptic
+regularity and strictly positive by the elliptic strong maximum principle.
+Write it as $\psi>0$, with $H\psi=E_0\psi$ and $\int\psi^2\dd\lambda=1$.
+This fixes the state norm; none of the physical coefficients is changed.
+
+Set $\rho=\psi^2$, $\mu=\rho\lambda$, and $\HH=L^2(\mu)$.
+Multiplication $\mathcal Uu=\psi u$ is a unitary $\HH\to L^2(\lambda)$,
+with inverse division by $\psi$. The product rule and $H\psi=E_0\psi$ give
+\begin{align}
+ \LL&=\mathcal U^{-1}(H-E_0)\mathcal U
+ =-\kappa\sum_{e,a}\bigl[X_{e,a}^2+(X_{e,a}\log\rho)X_{e,a}\bigr],
+ \label{eq:gs}\\
+ q(u,v)&=\kappa\sum_{e,a}\int\overline{X_{e,a}u}X_{e,a}v\dd\mu,
+ \qquad D(q)=\VV=H^1(\mathcal Q).\label{eq:q}
+\end{align}
+Integration by parts proves the form identity. Multiplication and division
+by the smooth positive $\psi$ preserve every integer Sobolev space, so
+the form and operator domains are respectively $H^1,H^2$.
+If $q(u,u)=0$, all its derivatives vanish and connectedness makes $u$
+constant. This proves uniqueness of $\psi$, and its gauge invariance
+follows because gauge transformations preserve $H$, positivity and norm.
+It also proves that the finite first nonzero eigenvalue $\delta$ of
+$\LL$ is strictly positive. No uniform lower bound for $\delta$ is used
+in the uniform estimates below. Inner products are conjugate-linear in
+their first arguments.
+
+\section{A uniform single-link estimate for the actual vacuum}
+
+This section supplies estimates independent of $L$, with every $b>0$
+allowed. Define the constants
+\begin{equation}\label{eq:uniformconstants}
+ D=16b,\quad d=D/\kappa=16\xi=4/g^4,\quad
+ t_0=\frac{2\log12}{\kappa},\quad
+ R=3e^{Dt_0}=3\,12^{2d},\quad \alpha=R^{-2},
+\end{equation}
+and
+\begin{equation}\label{eq:G}
+ G=R\exp\!\left(\frac d{1+d}\right)
+       \left(1+\frac{2d}{1+d}\right)\sqrt{\frac{1+d}{2}},
+ \qquad C_*=\frac32+2G.
+\end{equation}
+Here $D$ has units of energy and $t_0$ of inverse energy.
+The constants $d,R,\alpha,G,C_*$ are dimensionless and depend on the
+original coupling $g$, but not on the number of links, the blocking
+length, or $a$ separately.
+
+\begin{lemma}\label{lem:singleheat}
+For the single-link heat operator $P_t=e^{-t\kappa E}$, its kernel at
+$t=t_0$ lies between $1/2$ and $3/2$. For every real smooth $f$,
+\begin{equation}\label{eq:reverse}
+ 2\kappa t\sum_a|X_aP_tf|^2
+ \leq P_t(f^2)-(P_tf)^2,\qquad
+ \|\nabla P_tf\|_\infty\leq\frac{\|f\|_\infty}{\sqrt{2\kappa t}}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The spin-$j$ representation has dimension $2j+1$ and Casimir $j(j+1)$
+in \eqref{eq:fields}. One can verify the latter by the eigenvalues
+$m=-j,\ldots,j$ of $iT_3$ and the raising/lowering coefficients
+$\sqrt{(j\mp m)(j\pm m+1)}$; their quadratic sum is $j(j+1)$.
+Peter--Weyl completeness therefore gives the heat kernel
+$p_t(U)=\sum_{j\geq0}(2j+1)e^{-\kappa tj(j+1)}\chi_j(U)$.
+This series is absolutely uniformly convergent for $t>0$, since
+$|\chi_j|\leq2j+1$. Writing $k=2j$, using
+$j(j+1)=k(k+2)/4\geq k/2$ and $(k+1)^2\leq4^k$ for $k\geq1$, gives
+\[
+ |p_{t_0}-1|\leq\sum_{k\geq1}4^k e^{-\kappa t_0k/2}
+ =\sum_{k\geq1}3^{-k}=\frac12.
+\]
+For the gradient assertion, the bi-invariant Casimir commutes with
+each $X_a$: the commutator of its sum of squares with $X_b$ contracts
+antisymmetric Lie structure constants with $X_aX_c+X_cX_a$ and is zero.
+Thus $X_aP_s=P_sX_a$ on smooth functions, and Jensen's inequality gives
+$\Gamma(P_sf)\leq P_s\Gamma(f)$ for $\Gamma(f)=\sum_a|X_af|^2$.
+Differentiate $P_s[(P_{t-s}f)^2]$ and use the product rule:
+\[
+ P_t(f^2)-(P_tf)^2=2\kappa\int_0^tP_s\Gamma(P_{t-s}f)\dd s
+ \geq2\kappa t\Gamma(P_tf).
+\]
+The last inequality applies the preceding gradient contraction with
+input $P_{t-s}f$. The supremum estimate follows because
+$P_t(f^2)\leq\|f\|_\infty^2$. This is the exact single-group version
+of the reverse Poincare inequality \cite[Eq.~(1.7)]{BL}, with the time
+and generator coefficient displayed explicitly.
+\end{proof}
+
+\begin{theorem}\label{thm:localvacuum}
+Fix one physical link $e$ and write all other variables as $y$. For all
+$u,u'\in\SU(2)$ and $y$,
+\begin{equation}\label{eq:ratio}
+ R^{-1}\leq\frac{\psi(u,y)}{\psi(u',y)}\leq R,\qquad
+ \alpha\leq\frac{\rho(u,y)}{\int\rho(v,y)\dd v}\leq\alpha^{-1}.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:scorebound}
+ \left(\sum_a|X_{e,a}\log\psi|^2\right)^{1/2}\leq G,
+ \qquad |\nabla_e\log\rho|\leq2G.
+\end{equation}
+All bounds are uniform in $e$ and $L$ at the fixed positive $a,g$.
+\end{theorem}
+\begin{proof}
+Let $V_e=b\sum_{p\ni e}(2-W_p)$ and let $H_{\neg e}$ contain all
+other kinetic terms and all faces not incident to $e$. There are at
+most four incident faces in the full three-dimensional box, including
+the boundary cases with fewer faces. Therefore $0\leq V_e\leq D$,
+and the exact operator is
+\[
+ H=A_e+V_e,\qquad A_e=\kappa E_e+H_{\neg e},\qquad
+ T_t=e^{-tA_e}=P_t^{(e)}\otimes e^{-tH_{\neg e}}.
+\]
+The two factors of $T_t$ commute because $H_{\neg e}$ is independent
+of $u$. They have positive kernels. The parabolic comparison principle
+with the bounded multiplication $0\leq V_e\leq D$ gives, for $f\geq0$,
+\begin{equation}\label{eq:comparison}
+ e^{-Dt}T_tf\leq e^{-tH}f\leq T_tf.
+\end{equation}
+For example $T_tf$ is a supersolution for
+$\partial_t+A_e+V_e$, while $e^{-Dt}T_tf$ is a subsolution; their
+initial data agree. The maximum principle gives \eqref{eq:comparison}.
+This proves the comparison for this compact group product directly;
+no Euclidean configuration-space identification is needed.
+
+Apply it to $\psi$. At $t_0$, positivity of the other-link kernel and
+Lemma~\ref{lem:singleheat} imply
+\[
+ \frac{(T_{t_0}\psi)(u,y)}{(T_{t_0}\psi)(u',y)}\leq3.
+\]
+Since $e^{-tH}\psi=e^{-tE_0}\psi$, comparison at both $u,u'$ gives
+$\psi(u,y)/\psi(u',y)\leq3e^{Dt_0}=R$.
+Interchanging $u,u'$ proves both sides. Squaring and averaging the
+denominator over $u'$ proves the conditional density bounds.
+The extensive energy $E_0$ cancels from this ratio exactly.
+
+Here is a derivative proof that does not differentiate an unknown
+vacuum estimate. If a positive function $F(u,y)$ satisfies the first
+ratio bound, so does
+$f_t(u)=(e^{-tH_{\neg e}}F(u,\cdot))(y)$ at each fixed $y$, by
+positivity. Hence $\|f_t\|_\infty\leq R\min f_t\leq RP_t f_t(u)$.
+Lemma~\ref{lem:singleheat} yields
+\[
+ |\nabla_e T_t\psi|\leq\frac{R}{\sqrt{2\kappa t}}T_t\psi.
+\]
+The function $(e^{-tH_{\neg e}}(V_e\psi))(u,y)$ is nonnegative and
+bounded above by $D(e^{-tH_{\neg e}}\psi)(u,y)$. Its supremum in $u$
+is consequently at most $DR\min_u(e^{-tH_{\neg e}}\psi)(u,y)$.
+The same heat estimate gives
+\[
+ |\nabla_e T_t(V_e\psi)|\leq\frac{DR}{\sqrt{2\kappa t}}T_t\psi.
+\]
+The exact Duhamel identity on the smooth eigenvector is
+\begin{equation}\label{eq:duhamel}
+ \psi=e^{E_0t}T_t\psi-\int_0^t e^{E_0\tau}T_\tau(V_e\psi)\dd\tau.
+\end{equation}
+It follows either by differentiating $e^{E_0t}T_t\psi$ and using
+$A_e\psi=(E_0-V_e)\psi$, or by the bounded-potential Duhamel formula.
+Comparison gives $e^{E_0\tau}T_\tau\psi\leq e^{D\tau}\psi$.
+The two gradient estimates, whose $\tau^{-1/2}$ singularity is
+integrable, justify differentiation of \eqref{eq:duhamel} and give
+\[
+ \frac{|\nabla_e\psi|}{\psi}
+ \leq R\left[\frac{e^{Dt}}{\sqrt{2\kappa t}}
+       +D\int_0^t\frac{e^{D\tau}}{\sqrt{2\kappa\tau}}\dd\tau\right]
+ \leq\frac{Re^{Dt}(1+2Dt)}{\sqrt{2\kappa t}}.
+\]
+Choose the actual time $t=(\kappa+D)^{-1}$. This last expression is
+exactly $G$ in \eqref{eq:G}. Finally $X\log\rho=2X\log\psi$.
+No gap bound, perturbation disk, or correlation factorization was used.
+\end{proof}
+
+\section{A specified extensive spatial blocking sequence}
+
+Let $m\geq1$ divide $2L$, and put $q_m=2L/m$. Retain as skeleton links
+those direction-$i$ fine edges whose two transverse coordinates lie in
+$-L+m\{0,1,\ldots,q_m\}$. Every longitudinal fine edge on each such
+line is included. Denote this subset by $R_m$ and its complement by $S_m$.
+Its exact count is
+\begin{equation}\label{eq:counts}
+ |R_m|=3(2L)(q_m+1)^2,\qquad
+ |S_m|=3(2L)\bigl[(2L+1)^2-(q_m+1)^2\bigr].
+\end{equation}
+Thus a fixed $m>1$ eliminates an extensive number of links as the box
+increases. If $m\mid n\mid2L$, then $R_n\subset R_m$. In particular
+$m=1,2,4,\ldots,2^k$ gives a repeated blocking sequence whenever $2^k\mid2L$.
+The Hamiltonian still has all $N$ link and $M$ face terms.
+
+The coarse vertices are the points
+$x\in[-L,L]^3$ whose coordinates all lie in $-L+m\mathbb Z$.
+A coarse direction-$i$ edge $\gamma=(x,i)$ is the ordered path of $m$
+fine edges from $x$ to $x+m\mathbf e_i$. The number of coarse edges is
+\[
+ N_m=3q_m(q_m+1)^2,\qquad |R_m|=mN_m.
+\]
+The chains have disjoint physical-edge supports and meet only at coarse
+vertices. Write their variables as $u_{\gamma,1},\ldots,u_{\gamma,m}$
+in positive order, and define
+\begin{equation}\label{eq:path}
+ z_\gamma=u_{\gamma,1}\cdots u_{\gamma,m},\qquad
+ \pi_m:\mathcal Q\longrightarrow\mathcal Q_m:=\SU(2)^{N_m}.
+\end{equation}
+No original coordinate was replaced by a unit coarse spacing: the physical
+coarse spacing is $ma$, while the original coordinates remain $x$.
+
+For every chain put $v_{\gamma,k}=u_{\gamma,k}$ for $k<m$.
+Let $y$ comprise all $v$ and all untouched variables on $S_m$.
+The full typed coordinate map is
+\[
+ \Phi_m:\mathcal Q\longrightarrow\mathcal Y_m\times\mathcal Q_m,
+ \quad U\longmapsto(y,z),\qquad
+ \mathcal Y_m=\SU(2)^{S_m}\times
+                \prod_{\gamma=1}^{N_m}\SU(2)^{m-1}.
+\]
+It is a global smooth bijection. Its inverse
+$\Phi_m^{-1}:\mathcal Y_m\times\mathcal Q_m\to\mathcal Q$ uses
+\[
+ u_{\gamma,m}=(v_{\gamma,1}\cdots v_{\gamma,m-1})^{-1}z_\gamma,
+\]
+and keeps every other variable. Substituting the original ordered
+product cancels its prefix on the left and recovers $u_{\gamma,m}$.
+Conversely multiplying the retained prefix by the displayed last link
+recovers $z_\gamma$. Every $v$ and every $S_m$ coordinate is fixed,
+so both compositions are the identity on their respective full spaces.
+There are $|S_m|+(m-1)N_m=N-N_m$ factors in $\mathcal Y_m$;
+none of those coordinates is omitted from $\Phi_m$.
+Integrating $u_{\gamma,m}$ last,
+left invariance of Haar proves the exact measure identity
+\begin{equation}\label{eq:haarcoordinates}
+ \dd\lambda(U)=\dd\lambda_y(y)\dd\lambda_m(z).
+\end{equation}
+This proves the map and its measure factor, rather than postulating
+independent coarse links in the interacting vacuum.
+
+The complete kinetic operator in these coordinates is as follows.
+Define the prefix and the real
+orthogonal matrix $O_{\gamma,k}$ by
+\[
+ p_{\gamma,k}=v_{\gamma,1}\cdots v_{\gamma,k-1},\qquad
+ p_{\gamma,k}T_a p_{\gamma,k}^{-1}
+   =\sum_b O_{\gamma,k;ba}T_b.
+\]
+Orthogonality follows by applying $-2\tr(AB)$ to both conjugated factors;
+its determinant is $1$ by connectedness. Let $D_{\gamma,b}$ be left
+multiplication differentiation on $z_\gamma$, with the same $T_b$.
+For $k<m$ the transformed fine vector field is
+\[
+ X_{\gamma,k,a}=X_{v_{\gamma,k},a}
+            +\sum_bO_{\gamma,k;ba}D_{\gamma,b};
+\]
+for $k=m$ it is $\sum_bO_{\gamma,m;ba}D_{\gamma,b}$. The prefix
+$p_{\gamma,k}$ does not involve $v_{\gamma,k}$, and no $O$ depends on $z$.
+The full sum of squares is consequently
+\begin{align}\label{eq:fulltensor}
+ \sum_{e,a}X_{e,a}^2
+ ={}&\sum_{e\in S_m,a}X_{e,a}^2
+ +\sum_{\gamma}\left[\sum_{k<m,a}X_{v_{\gamma,k},a}^2
+                      +m\sum_bD_{\gamma,b}^2\right]\nonumber\\
+ &+2\sum_{\gamma,k<m,a,b}O_{\gamma,k;ba}
+                    X_{v_{\gamma,k},a}D_{\gamma,b}.
+\end{align}
+Each square before expansion is the square of the displayed original
+field, so this formula includes all mixed derivatives with their signs
+and coefficients. Every original $W_p$ in \eqref{eq:H} is evaluated at
+the explicit inverse coordinate map. It is not replaced by a coarse face
+trace or truncated to selected words.
+
+Gauge transformations on a chain cancel at its internal vertices and give
+$z_\gamma\mapsto h_x^{-1}z_\gamma h_{x+m\mathbf e_i}$.
+The marginal density on $R_m$ is invariant under the internal gauge
+transformations, by gauge invariance of $\rho$ and Haar substitution on
+$S_m$. A non-coarse skeleton vertex is bivalent in the skeleton. For a
+fixed chain with endpoints fixed, set successively
+$h_{x+k\mathbf e_i}=(u_1\cdots u_k)^{-1}$, $k<m$.
+This sends its first $m-1$ links to the identity and its last to $z_\gamma$.
+Different chain interiors are disjoint, so these choices are simultaneous.
+It follows that this skeleton marginal is a function of $z$ alone.
+This statement concerns the marginal; the full conditional distribution
+of $y$ given $z$ need not factorize.
+
+\section{The actual coarse density, domains, and conditional coupling}
+
+Let $\widetilde\rho_m(y,z)=\rho(U(y,z))$ and define
+\begin{gather}
+ r_m(z)=\int\widetilde\rho_m(y,z)\dd\lambda_y,
+ \quad \mu_m=r_m\lambda_m,\quad
+ p_m(y\mid z)=\widetilde\rho_m(y,z)/r_m(z),\label{eq:coarsedensity}\\
+ \KK_m=L^2(\mu_m),\quad J_m f=f\circ\pi_m,\quad
+ P_m=J_mJ_m^*,\quad Q_m=I-P_m,\nonumber\\
+ (J_m^*u)(z)=\int p_m(y\mid z)u(U(y,z))\dd\lambda_y.\label{eq:J}
+\end{gather}
+In particular the types are $J_m:\KK_m\to\HH$ and
+$J_m^*:\HH\to\KK_m$. Their full coordinate expressions are
+$J_mf(U)=f(z(U))$ and the fibre integral \eqref{eq:J};
+the operator $P_m:\HH\to J_m\KK_m\subset\HH$ is their composition.
+Smoothness and strict positivity follow from compact integration.
+Fubini proves the adjoint formula and $J_m^*J_m=I$; Jensen proves that
+$J_m^*$ is a contraction. Thus $P_m$ is the true-vacuum orthogonal
+projection. All these maps intertwine the stated fine and coarse gauge
+actions. The restriction of the conditional projection onto skeleton
+functions, on the fine invariant Hilbert space, equals this path projection:
+its output is internally gauge invariant, hence depends only on $z$, as
+proved in the preceding section. The exact invariant Hilbert-space
+unitary, its almost-everywhere inverse and the equality of the full
+complementary operator domains are proved in
+Proposition~\ref{prop:physicalbridge}.
+
+For each chain and color set, in the original coordinates,
+\begin{equation}\label{eq:Y}
+ Y_{\gamma,b}=\frac1m\sum_{k=1}^m\sum_a
+                   O_{\gamma,k;ba}X_{\gamma,k,a}.
+\end{equation}
+Then $Y_{\gamma,b}J_mf=J_mD_{\gamma,b}f$.
+Indeed each summand differentiates $z_\gamma$ in the direction
+$\operatorname{Ad}_{p_{\gamma,k}}T_a$, and orthogonality of $O$ gives
+one copy of $D_{\gamma,b}$ per $k$.
+Also $Y_{\gamma,b}$ has zero Haar divergence: every coefficient
+$O_{\gamma,k;ba}$ is independent of its own differentiated fine edge.
+Consequently integration by parts against a coarse smooth test function
+gives the exact derivative identities
+\begin{align}
+ D_{\gamma,b}\log r_m&=J_m^*(Y_{\gamma,b}\log\rho),\label{eq:marginalscore}\\
+ D_{\gamma,b}J_m^*u
+   &=J_m^*(Y_{\gamma,b}u)+J_m^*(\beta_{\gamma,b}u),\label{eq:derivativeJ}\\
+ \beta_{\gamma,b}&=Y_{\gamma,b}\log\rho
+                       -J_mD_{\gamma,b}\log r_m,\qquad J_m^*\beta_{\gamma,b}=0.
+ \label{eq:beta}
+\end{align}
+For example integrate $Y_{\gamma,b}(J_m\varphi\,\rho)$ over the full
+configuration space; its integral is zero. The resulting identity is
+$\int(D_{\gamma,b}\varphi)r_m=-\int\varphi J_m^*(Y_{\gamma,b}\log\rho)r_m$,
+which proves \eqref{eq:marginalscore}. Apply the same calculation to
+$u\rho$ to prove \eqref{eq:derivativeJ}. This also avoids differentiating
+fibre coordinates while holding an incompatible fine coordinate fixed.
+
+Theorem~\ref{thm:localvacuum}, the average in \eqref{eq:Y}, and conditional
+Jensen give
+\begin{equation}\label{eq:coarsescorebound}
+ |Y_\gamma\log\rho|\leq2G,\qquad
+ |D_\gamma\log r_m|\leq2G,\qquad |\beta_\gamma|\leq4G.
+\end{equation}
+Here each absolute value is the Euclidean norm of its three color
+components. The first inequality uses the average of $m$ rotated vectors,
+each with norm at most $2G$; it does not assume independence.
+
+\begin{proposition}\label{prop:forms}
+The exact lifted form and its generator are
+\begin{align}
+ a_m(f,g)&=q(J_mf,J_mg)
+    =\kappa m\sum_{\gamma,b}\int\overline{D_{\gamma,b}f}D_{\gamma,b}g\dd\mu_m,
+       &D(a_m)&=\VV_m=H^1(\mathcal Q_m),\label{eq:am}\\
+ A_m&=-\kappa m\,r_m^{-1}\sum_{\gamma,b}D_{\gamma,b}(r_mD_{\gamma,b}),
+       &D(A_m)&=H^2(\mathcal Q_m).\label{eq:Am}
+\end{align}
+The maps $J_m,J_m^*$ preserve all integer Sobolev spaces, and $P_m,Q_m$
+preserve $\VV$. On $\VV_m$ the full eliminated coupling is
+\begin{equation}\label{eq:Bm}
+ B_mf=-\kappa m\sum_{\gamma,b}\beta_{\gamma,b}J_mD_{\gamma,b}f,
+ \quad J_m^*B_mf=0,\quad \LL J_mf=J_mA_mf+B_mf\quad(f\in H^2).
+\end{equation}
+In particular the retained kinetic coefficient is exactly $\kappa m$.
+\end{proposition}
+\begin{proof}
+The fine derivative of $J_mf$ on edge $(\gamma,k)$ is the orthogonal
+rotation $O_{\gamma,k}^TD_\gamma f$; on $S_m$ it is zero.
+Summing the squared derivatives over the $m$ edges proves \eqref{eq:am}.
+The smooth positive weight gives closedness and the $H^2$ elliptic domain
+of \eqref{eq:Am}. The compact smooth coordinate bijection
+\eqref{eq:haarcoordinates} preserves each integer Sobolev class with
+finite norm bounds, since its derivatives and inverse derivatives are
+bounded. The fibre integral with smooth positive kernel $p_m$ has bounded
+derivatives of every finite order. This proves the Sobolev mapping claims.
+
+There is also a useful explicit first-order estimate. Define
+\[
+ \eta_m=\kappa m\left\|\sum_{\gamma,b}\beta_{\gamma,b}^2\right\|_\infty
+             \leq16\kappa mN_mG^2.
+\]
+Orthogonality of the rotations and Cauchy--Schwarz in the $k$ sum give
+the pointwise inequality
+\[
+ m\sum_{\gamma,b}|Y_{\gamma,b}u|^2
+ \leq\sum_{e\in R_m,a}|X_{e,a}u|^2.
+\]
+Conditional Jensen and \eqref{eq:derivativeJ} consequently give
+\begin{equation}\label{eq:projectionbound}
+ a_m(J_m^*u,J_m^*u)\leq2q(u,u)+2\eta_m\|u\|_\mu^2.
+\end{equation}
+This extends by smooth approximation. The same derivative identities
+show that $J_mf\in H^1$ implies $f\in H^1$, so the retained form space
+has exactly the claimed domain.
+On a lifted smooth $f$, \eqref{eq:fulltensor} gives
+$\sum_{e,a}X_{e,a}^2J_mf=mJ_m\sum_{\gamma,b}D_{\gamma,b}^2f$.
+The drift in \eqref{eq:gs} is
+$-\kappa m\sum_{\gamma,b}(Y_{\gamma,b}\log\rho)J_mD_{\gamma,b}f$.
+Subtract \eqref{eq:Am}, and use \eqref{eq:beta}; this proves
+\eqref{eq:Bm} for smooth $f$. Density gives the stated $H^2$ identity
+and the bounded map $B_m:\VV_m\to Q_m\HH$, with
+\begin{equation}\label{eq:Bbound}
+ \|B_mf\|_\mu^2\leq\eta_m a_m(f,f).
+\end{equation}
+\end{proof}
+
+The full correlation tensor of the induced first-order terms is
+\begin{equation}\label{eq:Fisher}
+ I_{\gamma b,\eta c}(z)=J_m^*(\beta_{\gamma,b}\beta_{\eta,c})(z),\quad
+ \|B_mf\|^2=(\kappa m)^2\int
+ \sum_{\gamma,b,\eta,c}I_{\gamma b,\eta c}
+              \overline{D_{\gamma,b}f}D_{\eta,c}f\dd\mu_m.
+\end{equation}
+Every off-diagonal index is retained. This is the conditional covariance
+of the vectors $Y_{\gamma,b}\log\rho$. It is positive semidefinite
+because its quadratic form is a conditional expectation of a squared
+absolute value. Positivity does not assert that its different entries
+vanish or that it is uniformly diagonal-dominant.
+
+There is an exact Haar-space description of the instantaneous marginal
+operator. Multiplication $f\mapsto\sqrt{r_m}f$ is a unitary
+$\KK_m\to L^2(\lambda_m)$, with inverse
+$v\mapsto v/\sqrt{r_m}$. Both maps preserve $H^1$ and $H^2$,
+since $r_m$ is smooth and strictly positive on the compact group
+product. Direct product differentiation gives
+\begin{equation}\label{eq:marginalpotential}
+ \sqrt{r_m}A_m r_m^{-1/2}
+ =-\kappa m\sum_{\gamma,b}D_{\gamma,b}^2
+       +\kappa m\frac{\sum_{\gamma,b}D_{\gamma,b}^2\sqrt{r_m}}{\sqrt{r_m}}.
+\end{equation}
+The last scalar function equals
+$\kappa m\sum_{\gamma,b}[D_{\gamma,b}^2\log r_m/2
+ +(D_{\gamma,b}\log r_m)^2/4]$.
+It depends on the entire induced density. No equality with a sum of
+one-plaquette Wilson terms is asserted. Moreover \eqref{eq:marginalpotential}
+is only the instantaneous compression; the next section gives the rest
+of the physical operator relation.
+
+\section{Exact memory, resolvent reconstruction, and physical norms}
+
+Set $\HH_{Q_m}=Q_m\HH$ and $\VV_{Q_m}=\VV\cap\HH_{Q_m}$.
+The restriction $c_m(h,k)=q(h,k)$ on $\VV_{Q_m}$ is closed and densely
+defined. Closedness uses the $L^2$-closed subspace, and density follows
+by applying $Q_m$ to smooth approximants, using \eqref{eq:projectionbound}.
+Define its self-adjoint operator $C_m$ by
+\begin{align}\label{eq:Cdomain}
+ D(C_m)=\{h\in\VV_{Q_m}:&\ \exists v\in\HH_{Q_m}\ \text{such that}
+ \ c_m(k,h)=\langle k,v\rangle\ \forall k\in\VV_{Q_m}\},
+ \qquad C_mh=v.
+\end{align}
+For smooth $h\in\HH_{Q_m}$ this is $Q_m\LL h$.
+Every such $h$ is orthogonal to $1=J_m1$, so $C_m\geq\delta I>0$.
+For form-domain arguments no formal compression domain is substituted
+for \eqref{eq:Cdomain}.
+
+For $f,g\in\VV_m$ and $h,k\in\VV_{Q_m}$, integration by parts on a
+smooth core, followed by continuity, gives
+\begin{equation}\label{eq:block}
+ q(J_mf+h,J_mg+k)=a_m(f,g)+\langle B_mf,k\rangle
+                         +\langle h,B_mg\rangle+c_m(h,k).
+\end{equation}
+For smooth $h\in\HH_{Q_m}$ the adjoint coupling is
+\begin{equation}\label{eq:Bstar}
+ B_m^*h=\kappa m\,r_m^{-1}\sum_{\gamma,b}
+           D_{\gamma,b}\bigl(r_mJ_m^*(\beta_{\gamma,b}h)\bigr).
+\end{equation}
+To prove the sign, integrate the negative derivative in \eqref{eq:Bm}
+against $h$ using Haar integration by parts in $z$. Differentiating the
+conditional integral by \eqref{eq:derivativeJ} expands each derivative
+in \eqref{eq:Bstar} into terms with $Yh$, $Y\beta$, $\beta^2h$ and
+$(D\log r_m)\beta h$. All coefficients are smooth and bounded in a fixed
+box, so $B_m^*:\VV_{Q_m}\to\KK_m$ is bounded. Without that regularity
+the adjoint is the bounded dual map $\HH_{Q_m}\to\VV_m^*$.
+
+For $z>0$ define on $\VV_m$ the sesquilinear form
+\begin{equation}\label{eq:schur}
+ s_{m,z}(f,g)=a_m(f,g)+z\langle f,g\rangle
+             -\langle B_mf,(C_m+z)^{-1}B_mg\rangle.
+\end{equation}
+The use of $z$ as a positive spectral shift here is distinct from the
+tuple $z_\gamma$ of coarse link variables. The argument of a resolvent
+always denotes the scalar shift.
+
+\begin{theorem}\label{thm:schur}
+The form $s_{m,z}$ is closed with domain $\VV_m$, and its associated
+operator $S_{m,z}$ satisfies $S_{m,z}\geq zI$. Its exact full resolvent
+and reconstruction maps are
+\begin{align}
+ J_m^*(\LL+z)^{-1}J_m&=S_{m,z}^{-1},\label{eq:resolvent}\\
+ (\LL+z)^{-1}J_mg
+ &=\bigl[J_m-(C_m+z)^{-1}B_m\bigr]S_{m,z}^{-1}g.\label{eq:reconstruction}
+\end{align}
+Every product in these formulas is defined by the displayed form domains.
+\end{theorem}
+\begin{proof}
+Completing the square in \eqref{eq:block} gives
+\begin{align}\label{eq:square}
+ q(J_mf+h,J_mf+h)+z(\|f\|^2+\|h\|^2)
+ =s_{m,z}(f,f)+\|(C_m+z)^{1/2}[h+(C_m+z)^{-1}B_mf]\|^2.
+\end{align}
+Its unique minimizing $h$ is $-(C_m+z)^{-1}B_mf$, which lies in
+$D(C_m)\subset\VV_{Q_m}$. Nonnegativity of $q$ proves
+$s_{m,z}(f,f)\geq z\|f\|^2$. Apply \eqref{eq:projectionbound} to
+$u=J_mf+h$. It gives
+\[
+ a_m(f,f)+\kappa\|f\|^2\leq2q(u,u)+(2\eta_m+\kappa)\|u\|^2
+ \leq K_{m,z}\,[q(u,u)+z\|u\|^2],
+\]
+where $K_{m,z}=\max\{2,(2\eta_m+\kappa)/z\}$ in the form norm with
+reference energy $\kappa$. This constant is dimensionless.
+Taking the minimizing $h$ proves a lower form-norm bound. The upper
+bound $s_{m,z}(f,f)\leq a_m(f,f)+z\|f\|^2$ follows by choosing $h=0$.
+Their equivalence proves closedness. For $v=(\LL+z)^{-1}J_mg$, its
+form-domain decomposition $v=J_mf+h$ is legitimate. Testing the weak
+resolvent equation against $k\in\VV_{Q_m}$ gives
+$h=-(C_m+z)^{-1}B_mf$; testing against $J_mf'$ gives
+$s_{m,z}(f',f)=\langle f',g\rangle$. This proves both identities.
+\end{proof}
+
+The notation in \eqref{eq:schur} is a closed-form implementation of the
+Feshbach--Schur map. The general method and reconstruction are established
+in \cite[Theorem~1.2, Eqs.~(1.10)--(1.16)]{DSS}. That theorem's bounded
+effective operator assumption is not silently applied to our infinite-rank
+projection; the coercivity and domain proof above supplies the needed
+extension for this particular operator.
+
+For smooth initial $f_0$, define
+$K_m(t)=J_m^*e^{-t\LL}J_m$, $f(t)=K_m(t)f_0$.
+The full evolution and \eqref{eq:block} give
+\begin{align}
+ f'(t)&=-A_m f(t)+\int_0^t B_m^*e^{-(t-s)C_m}B_m f(s)\dd s,
+       &f(0)&=f_0,\label{eq:memory}\\
+ K_m(t)&=J_m^*e^{-t\LL}J_m,\qquad
+ \int_0^\infty e^{-zt}K_m(t)\dd t=S_{m,z}^{-1}.\label{eq:laplace}
+\end{align}
+Here is the domain justification and the sign calculation. Smooth initial
+data lie in all powers of the compact elliptic $\LL$. Spectral calculus
+and elliptic regularity keep $v(t)=e^{-t\LL}J_mf_0$, $f(t)=J_m^*v(t)$
+and $h(t)=Q_mv(t)$ smooth, continuously in the required Sobolev norms.
+They satisfy $f'=-A_mf-B_m^*h$, $h'=-B_mf-C_mh$, $h(0)=0$.
+Variation of constants gives
+$h(t)=-\int_0^te^{-(t-s)C_m}B_mf(s)\dd s$.
+Since $\sup_{x\geq0}\sqrt{x}e^{-\tau x}=(2e\tau)^{-1/2}$,
+$e^{-\tau C_m}$ maps $\HH_{Q_m}$ to its form space with norm at most
+$\sqrt\kappa+(2e\tau)^{-1/2}$ when the squared form norm is
+$c_m(h,h)+\kappa\|h\|^2$. The singularity is integrable; the bounded form-space
+map \eqref{eq:Bstar} makes \eqref{eq:memory} a Bochner integral in
+$\KK_m$. The positive sign follows from the two negative cross terms.
+The Laplace identity follows by the spectral theorem and
+Theorem~\ref{thm:schur}. This explicitly realizes projection memory of
+the kind introduced in \cite{Mori}, with this Euclidean generator.
+
+For every smooth $f$, orthogonality of the two components of
+$\LL J_mf$ gives the full second moment
+\begin{equation}\label{eq:second}
+ \|\LL J_mf\|^2=\|A_mf\|^2+\|B_mf\|^2.
+\end{equation}
+Thus $K_m(t)$ is replaced by $e^{-tA_m}$ for all $t$ only when $B_m$
+vanishes: compare their scalar second derivatives at $t=0$ on a smooth
+core. Conversely $B_m=0$ makes \eqref{eq:block} a direct-sum form and
+proves that replacement exactly. We do not make that replacement.
+
+The dependence on energy also records the actual reconstructed norm.
+For fixed $0\ne f\in\VV_m$ with $\mu_m(f)=0$ and scalar $z\geq0$, put
+\begin{equation}\label{eq:dressed}
+ w_z=(C_m+z)^{-1}B_mf,\quad
+ u_z=\psi(J_mf-w_z),\quad d_f=\|f\|^2.
+\end{equation}
+The $z=0$ case exists because $C_m\geq\delta>0$ in every fixed box.
+The vector is in the original form domain, is orthogonal to $\psi$,
+and is gauge invariant when $f$ is. Its exact norm and energy are
+\begin{align}
+ \|u_z\|_\lambda^2&=d_f+\|w_z\|_\mu^2
+                  =\partial_z s_{m,z}(f,f),\label{eq:normderivative}\\
+ \mathfrak q_{H-E_0}[u_z]
+ &=a_m(f,f)-\langle B_mf,w_z\rangle-z\|w_z\|^2
+   =s_{m,z}(f,f)-z\partial_zs_{m,z}(f,f).\label{eq:dressedenergy}
+\end{align}
+To verify these, orthogonality gives the norm; differentiation of the
+bounded resolvent gives $\partial_z(C_m+z)^{-1}=-(C_m+z)^{-2}$.
+Testing $(C_m+z)w_z=B_mf$ against $w_z$ gives
+$c_m(w_z,w_z)=\langle B_mf,w_z\rangle-z\|w_z\|^2$; insert it in
+\eqref{eq:block}. Nonnegativity of $q$ proves the numerator is nonnegative.
+For $B_mf\ne0$ the quotient in \eqref{eq:dressedenergy} divided by
+\eqref{eq:normderivative} is strictly below $a_m(f,f)/d_f$.
+These are energies of actual full-system vectors; no artificial effective
+vacuum norm has replaced their eliminated components.
+
+\section{Associativity of repeated blocking with all prior memory}
+
+Let $m\mid n\mid2L$. A coarse $n$-edge is the ordered concatenation of
+$n/m$ coarse $m$-edges along its line. Let $\pi_{m,n}$ take these products
+and discard the other $m$-coarse edges. Literal ordered multiplication gives
+\begin{equation}\label{eq:tower}
+ \pi_n=\pi_{m,n}\circ\pi_m,\quad J_n=J_m I_{m,n},\quad
+ \mu_n=(\pi_{m,n})_*\mu_m,\quad
+ J_n^*=I_{m,n}^*J_m^*.
+\end{equation}
+Here $I_{m,n}f=f\circ\pi_{m,n}$ is an isometry $\KK_n\to\KK_m$;
+its adjoint is conditional integration using $r_m$, not Haar integration
+in place of that weight. Fubini proves each equality, including the adjoint
+identity. In the full Hilbert space $P_nP_m=P_mP_n=P_n$.
+All maps preserve the relevant Sobolev spaces by the same compact
+path-product coordinate construction. Coefficient composition in the
+instantaneous forms is exactly $\kappa m(n/m)=\kappa n$.
+
+Let $\widehat Q=I-I_{m,n}I_{m,n}^*$ on $\KK_m$. On
+$\widehat Q\KK_m\cap\VV_m$, let $t_{22,z}$ be the restriction of the
+already completed form $s_{m,z}$. Define its other block forms by
+\begin{align*}
+ t_{11,z}(f,g)&=s_{m,z}(I_{m,n}f,I_{m,n}g),\\
+ t_{21,z}(h,f)&=s_{m,z}(h,I_{m,n}f),\\
+ t_{12,z}(f,h)&=s_{m,z}(I_{m,n}f,h).
+\end{align*}
+The operator $T_{22,z}$ associated to $t_{22,z}$ is positive with lower
+bound $z$. Its inverse also acts from its form dual to its form space,
+by the coercive weak equation. In that sense the next eliminated component
+is $h_f=-T_{22,z}^{-1}t_{21,z}(\cdot,f)$, and the next form is
+\begin{equation}\label{eq:recursive}
+ s_{n,z}(f,g)=t_{11,z}(f,g)
+       -t_{12,z}\bigl(f,T_{22,z}^{-1}t_{21,z}(\cdot,g)\bigr).
+\end{equation}
+This notation means substitution of the unique weak solution, so does
+not require multiplying unspecified unbounded compressions.
+
+\begin{theorem}\label{thm:associative}
+Equation \eqref{eq:recursive} equals the direct fine-to-$n$ form
+\eqref{eq:schur}. In particular
+\begin{equation}\label{eq:resolventtower}
+ S_{n,z}^{-1}=I_{m,n}^*S_{m,z}^{-1}I_{m,n}
+            =J_n^*(\LL+z)^{-1}J_n.
+\end{equation}
+No memory generated at an earlier level is lost in the next level.
+\end{theorem}
+\begin{proof}
+For prescribed $f\in\VV_n$, every $u\in\VV$ with $J_n^*u=f$ has a
+unique orthogonal decomposition
+$u=J_n f+J_mh+k$, where $h\in\widehat Q\KK_m\cap\VV_m$ and
+$k\in\HH_{Q_m}\cap\VV$; obtain it by the nested projections in
+\eqref{eq:tower}. Put $v_h=J_m(I_{m,n}f+h)$ to keep both arguments
+of the sesquilinear form explicit. The exact variational identity
+\eqref{eq:square} gives
+\begin{align*}
+ s_{n,z}(f,f)
+ &=\inf_{J_n^*u=f}[q(u,u)+z\|u\|^2]\\
+ &=\inf_h\inf_k[q(v_h+k,v_h+k)+z\|v_h+k\|^2]\\
+ &=\inf_h s_{m,z}(I_{m,n}f+h,I_{m,n}f+h).
+\end{align*}
+The infima have unique minimizers by coercivity and the closed form-space
+constraints. The weak equation for the last minimizer is precisely the
+$T_{22,z}$ equation above. Expanding the last form and polarizing proves
+\eqref{eq:recursive}. Alternatively compress
+\eqref{eq:resolvent} by $I_{m,n}$ and use \eqref{eq:tower}; this proves
+\eqref{eq:resolventtower} directly and confirms the same unique closed
+form. Both arguments include all intermediate eliminated components.
+\end{proof}
+
+To display the generated terms explicitly, write
+$\mathcal M_{m,z}(f,g)=\langle B_mf,(C_m+z)^{-1}B_mg\rangle$.
+Then each of $t_{11,z},t_{12,z},t_{21,z},t_{22,z}$ is the corresponding
+block of $a_m+z\langle\cdot,\cdot\rangle-\mathcal M_{m,z}$.
+In particular the two off-diagonal blocks contain the corresponding
+off-diagonal terms of $-\mathcal M_{m,z}$, and $T_{22,z}$ contains its
+entire diagonal term. Setting these terms to zero would change
+\eqref{eq:recursive}. The exact recursion is independent of the order of
+the specified nested eliminations; it does not reinitialize the dynamics
+at each marginal $A_m$.
+
+\section{A large-block Wilson channel with uniform norm and spectral bounds}
+
+Let $C$ be a closed coarse edge word using each coarse physical edge at
+most once. Its fine path then uses each of its fine physical edges once;
+let $r$ be its number of coarse edges and $\ell=mr$ its number of fine
+edges. For example, every elementary coarse face has $r=4$, fine perimeter
+$\ell=4m$, and physical side length $ma$. Keep its original ordered word,
+with inverses on the negative traversals, and set
+\begin{gather}
+ W_C(z)=\tr\prod_{(\gamma,\epsilon)\in C}z_\gamma^\epsilon,\quad
+ \overline W_C=\mu_m(W_C),\quad r_C=\mu_m(W_C^2),\nonumber\\
+ f_C=W_C-\overline W_C,\quad u_C=\psi J_mf_C,\quad
+ d_C=\|u_C\|_\lambda^2=r_C-(\overline W_C)^2.\label{eq:loop}
+\end{gather}
+SU(2) traces are real. The fine and coarse gauge actions both fix the
+closed trace, so $u_C$ is a physical invariant vector, orthogonal to
+$\psi$. The subtraction is the actual interacting mean.
+
+\begin{lemma}\label{lem:loopmoments}
+For every such loop, at arbitrary positive coupling,
+\begin{equation}\label{eq:loopnorm}
+ \alpha\leq d_C\leq4,\qquad
+ \alpha\leq r_C\leq4-3\alpha.
+\end{equation}
+The exact unnormalized excitation energy and bounds are
+\begin{equation}\label{eq:loopenergy}
+ \mathfrak q_{H-E_0}[u_C]
+   =\kappa\ell\left(1-\frac{r_C}{4}\right),\qquad
+ \frac34\alpha\kappa\ell\leq\mathfrak q_{H-E_0}[u_C]\leq\kappa\ell.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:loopquotient}
+ \frac{3\alpha}{16}\kappa\ell\leq
+ \frac{\mathfrak q_{H-E_0}[u_C]}{d_C}
+ =\kappa\ell\frac{1-r_C/4}{r_C-(\overline W_C)^2}
+ \leq\frac{\kappa\ell}{\alpha}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix any one fine edge used by the loop and condition on all other fine
+variables. The ordered holonomy is $A u^{\pm1}B$ for fixed group matrices
+$A,B$, so its Haar distribution is Haar by invariance and inversion.
+Writing $U=u_0I+i\sum_a u_a\sigma_a$ identifies Haar measure with the
+uniform measure on the unit sphere in $\mathbb R^4$. Its coordinate
+second moments are $1/4$ by sign and permutation symmetry and
+$\sum_{a=0}^3u_a^2=1$. Thus
+$\int W_C\dd u=0$, $\int W_C^2\dd u=1$, and
+$\int(1-W_C^2/4)\dd u=3/4$.
+The conditional density is bounded below by $\alpha$ from
+Theorem~\ref{thm:localvacuum}. Integrating the two nonnegative functions
+$W_C^2$ and $4-W_C^2$ proves the two bounds on $r_C$.
+For every real constant $c$, conditional integration gives
+$\int(W_C-c)^2p(u\mid y)\dd u\geq\alpha\int(W_C-c)^2\dd u
+=\alpha(1+c^2)\geq\alpha$.
+Taking $c$ to be that conditional mean proves conditional variance
+at least $\alpha$. The law of total variance, obtained by expanding
+around the conditional mean and integrating the cross term to zero,
+proves $d_C\geq\alpha$. Since $|W_C|\leq2$, $d_C\leq4$.
+
+For a positive occurrence, a based form of the derivative is
+$\tr(T_aA_C)$ with $A_C\in\SU(2)$ having trace $W_C$; for a negative
+occurrence it is $-\tr(T_aA_C')$. This follows from
+$X_a u^{-1}=-u^{-1}T_a$ and cyclic trace invariance. The Pauli expression
+above gives $\sum_a|\tr(T_aA_C)|^2=1-W_C^2/4$.
+There are exactly $\ell$ used fine edges. Insert this identity in
+\eqref{eq:q}; centering leaves derivatives unchanged. The exact energy
+and its lower and upper bounds follow. Divide using
+$\alpha\leq d_C\leq4$ to obtain \eqref{eq:loopquotient}.
+\end{proof}
+
+These bounds are for the same density used by the block projection.
+For an additional consistency check, that coarse density itself has a
+single-coarse-link conditional lower bound $\alpha$, independent of $m$.
+Indeed change only the last fine edge of a specified chain, holding all
+$y$ and all other coarse links fixed in \eqref{eq:haarcoordinates}.
+Theorem~\ref{thm:localvacuum} bounds the ratio of the two full densities
+by $R^2$. Integrating the same $y$ on both sides bounds the ratio
+$r_m(z_\gamma,z_{\ne\gamma})/r_m(z'_\gamma,z_{\ne\gamma})$ by $R^2$.
+Averaging over $z'_\gamma$ proves the assertion. This exact argument
+does not equate single-link conditional bounds with independence or a
+global Poincare inequality.
+
+\begin{theorem}\label{thm:spectral}
+Define the unnormalized actual full-Hamiltonian spectral measure
+\begin{equation}\label{eq:nu}
+ \mathsf M_C(B)=\langle u_C,\mathbf1_B(H-E_0)u_C\rangle,\qquad
+ \mathsf M_C([0,\infty))=d_C.
+\end{equation}
+No division by $d_C$ is made in this measure. It has no atom at zero.
+Its full first and second moments satisfy
+\begin{gather}
+ \int\omega\dd\mathsf M_C=\kappa\ell(1-r_C/4),\nonumber\\
+ \int\omega^2\dd\mathsf M_C
+ =\|A_mf_C\|^2+\|B_mf_C\|^2
+ \leq C_*^2\kappa^2\ell^2.\label{eq:moments}\\
+ \Omega_C=\frac{3\alpha}{32}\kappa\ell,\qquad
+ c_H=\frac{9\alpha^3}{1024C_*^2}>0,\qquad
+ \boxed{\mathsf M_C([\Omega_C,\infty))\geq c_Hd_C.}\label{eq:highweight}
+\end{gather}
+In particular $c_H$ is independent of the increasing blocking length $m$
+and of total box volume. The full compressed resolvent, including its
+memory, obeys at the scalar shift $z=\kappa\ell$
+\begin{equation}\label{eq:resolventdeficit}
+ z\langle f_C,S_{m,z}^{-1}f_C\rangle
+ \leq d_C\left[1-c_H\frac{3\alpha/32}{1+3\alpha/32}\right].
+\end{equation}
+\end{theorem}
+\begin{proof}
+The state is smooth and orthogonal to the unique vacuum. Spectral
+calculus and \eqref{eq:loopenergy} prove the first moment and the
+absence of a zero atom. Every used edge has fundamental Casimir $3/4$,
+including inverse occurrences, so
+$-\sum_{e,a}X_{e,a}^2W_C=3\ell W_C/4$.
+Combining \eqref{eq:gs} with \eqref{eq:scorebound} and
+$|\nabla_e W_C|\leq1$ gives the pointwise bound
+\[
+ |\LL J_mf_C|=|\LL J_mW_C|
+ \leq\kappa\ell\left(\frac32+2G\right)=\kappa\ell C_*.
+\]
+The second-moment bound follows by integration and
+\eqref{eq:second}. In particular the term $\|B_mf_C\|^2$ has not been
+deleted from this spectral measure.
+
+Put $A=3\alpha/16$. The first moment is at least $A\kappa\ell d_C$
+by \eqref{eq:loopquotient}. With $\Omega_C=A\kappa\ell/2$, its part on
+$[\Omega_C,\infty)$ is at least $A\kappa\ell d_C/2$, since the integral
+over $[0,\Omega_C)$ is at most $\Omega_C d_C$.
+Cauchy--Schwarz against the unnormalized $\mathsf M_C$ gives
+\[
+ (A\kappa\ell d_C/2)^2
+ \leq\left(\int\omega^2\dd\mathsf M_C\right)
+                       \mathsf M_C([\Omega_C,\infty)).
+\]
+Using \eqref{eq:moments} gives the stronger intermediate bound
+$\mathsf M_C([\Omega_C,\infty))\geq A^2d_C^2/(4C_*^2)$.
+Since $d_C\geq\alpha$, this is at least
+$A^2\alpha d_C/(4C_*^2)=c_Hd_C$, with the state mass retained.
+Finally \eqref{eq:resolvent} gives
+$z\langle f_C,S_{m,z}^{-1}f_C\rangle
+=\int z/(\omega+z)\dd\mathsf M_C$.
+On $[\Omega_C,\infty)$ its integrand is at most
+$z/(\Omega_C+z)$, and elsewhere it is at most $1$.
+Its upper bound is therefore
+$d_C-\Omega_C\mathsf M_C([\Omega_C,\infty))/(\Omega_C+z)$.
+Insert \eqref{eq:highweight} and $z=\kappa\ell$ to obtain
+\eqref{eq:resolventdeficit}.
+\end{proof}
+
+The same channel can be dressed by the complete eliminated resolvent
+with a quantitative bound that continues to hold for growing $m$.
+Define
+\begin{equation}\label{eq:tau}
+ \tau_* =\frac{8G}{\sqrt{\alpha c_H}},\qquad
+ z_C=\tau\kappa\ell,\quad\tau\geq\tau_*.
+\end{equation}
+For $f=f_C$ use the full $u_{z_C}$ of \eqref{eq:dressed}, with all
+fine eliminated degrees of freedom in $C_m$.
+\begin{corollary}\label{cor:dressedweight}
+This is a nonzero physical vector with exact norm and energy
+\eqref{eq:normderivative}--\eqref{eq:dressedenergy}. Quantitatively,
+\begin{gather}
+ d_C\leq\|u_{z_C}\|^2\leq d_C+\alpha c_H/4,\nonumber\\
+ \|\mathbf1_{[\Omega_C,\infty)}(H-E_0)u_{z_C}\|^2
+ \geq\frac{c_H}{4+c_H}\|u_{z_C}\|^2,\label{eq:dressedweight}\\
+ \frac{\Omega_Cc_H}{4+c_H}
+ \leq\frac{\mathfrak q_{H-E_0}[u_{z_C}]}{\|u_{z_C}\|^2}
+ \leq\kappa\ell\frac{1-r_C/4}{d_C}.
+\end{gather}
+\end{corollary}
+\begin{proof}
+By \eqref{eq:coarsescorebound}, each used coarse edge contributes at
+most $4G\kappa m$ to the pointwise absolute value of $B_mf_C$;
+there are $r$ such edges and $|D_\gamma W_C|\leq1$.
+Thus $\|B_mf_C\|\leq4G\kappa\ell$.
+Since $C_m\geq0$, its shifted inverse has norm at most $1/z_C$.
+Consequently
+\[
+ \|w_{z_C}\|\leq4G/\tau\leq\tfrac12\sqrt{\alpha c_H}
+                              \leq\tfrac12\sqrt{d_Cc_H}.
+\]
+Orthogonality gives the norm bound. Multiplication by $\psi$ is unitary,
+and an orthogonal spectral projection is contractive. Hence the triangle
+inequality and \eqref{eq:highweight} give
+\[
+ \|\mathbf1_{[\Omega_C,\infty)}(H-E_0)u_{z_C}\|
+ \geq\sqrt{d_Cc_H}-\|w_{z_C}\|
+ \geq\tfrac12\sqrt{d_Cc_H}.
+\]
+The retained norm satisfies
+$\|u_{z_C}\|^2=d_C+\|w_{z_C}\|^2\leq d_C(1+c_H/4)$,
+so the squared lower bound $d_Cc_H/4$ is at least
+$c_H\|u_{z_C}\|^2/(4+c_H)$.
+Integrating $\omega\geq\Omega_C$ over this weight proves the lower
+energy bound; \eqref{eq:dressedenergy} proves the upper bound.
+The large positive shift here is explicitly fixed in \eqref{eq:tau};
+this argument does not assert the same lower bound for the separately
+defined vector minimizing the energy numerator at $z=0$. Its full
+Rayleigh variational problem is calculated in Section~\ref{sec:zero}.
+\end{proof}
+
+
+\section{Zero-shift reconstruction and affine physical states}
+\label{sec:zero}
+
+We now calculate the zero-shift channel without transferring the
+positive-shift estimate by assertion. Gauge invariance is imposed
+throughout this section. Let $\HH^{\rm G}$ be the closed subspace of
+gauge-invariant functions in $\HH$, and let $\KK_m^{\rm G}$ be the
+corresponding coarse subspace. The gauge group is the compact product
+$\SU(2)^{\mathsf V_L}$; its Haar average is an orthogonal projection.
+The intertwining of the path products and the gauge descent of the
+conditional density show that $J_m,J_m^*,P_m,Q_m$ commute with the
+corresponding gauge actions. Consequently $B_m,C_m$ and their
+resolvents preserve these subspaces. All physical vectors below are
+obtained by the same unitary multiplication by $\psi$.
+
+Take $m\geq2$ dividing $2L$. In this section write $C$ for the restriction
+of $C_m$ to $\HH_{Q_m}^{\rm G}$, retaining precisely its form domain
+$\VV_{Q_m}\cap\HH^{\rm G}$. This is a reducing restriction of the
+operator, not a change of interaction. Put
+\[
+ c=\inf\sigma(C),\qquad
+ \delta_{\rm G}=\inf_{\substack{0\ne u\in\VV\cap\HH^{\rm G}\\\mu u=0}}
+                   \frac{q(u,u)}{\|u\|^2}.
+\]
+This complementary physical space is nonzero. For example, the fine
+face at $n=(-L,-L,-L)$ in the first two directions contains the
+direction-2 edge with first coordinate $-L+1$, which is outside $R_m$.
+Varying that edge with every other fine edge fixed leaves every coarse
+product unchanged and changes the fine face trace. Positivity of the
+conditional density implies $Q_mW_p\ne0$, and this function is gauge
+invariant. Compact embedding of the restricted form domain into $L^2$
+gives compact resolvent for $C$: a bounded sequence in its form norm
+is bounded in the original $H^1$ norm. Thus $c$ is an eigenvalue.
+
+\begin{proposition}\label{prop:finitezero}
+With the original number of fine edges $N=3(2L)(2L+1)^2$, define
+\begin{equation}\label{eq:finitegap}
+ \Delta_L=\frac{3\kappa}{4}\alpha^N
+          =\frac{3g^2}{2a}\alpha^{\,3(2L)(2L+1)^2}.
+\end{equation}
+Then $\delta_{\rm G}\geq\delta\geq\Delta_L>0$ and $c\geq\delta_{\rm G}$.
+For mean-zero $f\in\VV_m\cap\KK_m^{\rm G}$, define the linear map
+\begin{equation}\label{eq:Rzero}
+ \mathcal R_m f=J_mf-C^{-1}B_mf,\quad
+ s_{m,0}(f,g)=a_m(f,g)-\langle B_mf,C^{-1}B_mg\rangle.
+\end{equation}
+The form $s_{m,0}$ is closed on the indicated retained form space,
+with
+\begin{equation}\label{eq:zerocoercivity}
+ \Delta_L\|f\|^2\leq s_{m,0}(f,f)\leq a_m(f,f),\qquad
+ a_m(f,f)\leq2(1+\eta_m/\Delta_L)s_{m,0}(f,f).
+\end{equation}
+The map $\mathcal R_m$ takes this space into the original physical
+mean-zero form domain and satisfies $J_m^*\mathcal R_mf=f$.
+For every $h\in\VV_{Q_m}\cap\HH^{\rm G}$,
+\begin{equation}\label{eq:zeroorthogonal}
+ q(\mathcal R_m f,h)=0,\qquad
+ q(\mathcal R_m f,\mathcal R_m g)=s_{m,0}(f,g).
+\end{equation}
+For its associated mean-zero operator $S_{m,0}$, the exact domain map is
+\begin{equation}\label{eq:zerodomain}
+ f\in D(S_{m,0})\ \Longleftrightarrow
+ \mathcal R_m f\in D(\LL),\qquad
+ \LL\mathcal R_m f=J_mS_{m,0}f.
+\end{equation}
+The equivalence in \eqref{eq:zerodomain} is for $f$ already in the
+retained mean-zero form domain.
+\end{proposition}
+\begin{proof}
+Change fine variables one at a time between any two configurations.
+Theorem~\ref{thm:localvacuum} gives
+$\rho_{\max}/\rho_{\min}\leq R^{2N}=\alpha^{-N}$.
+The product Haar Laplacian has first positive eigenvalue $3/4$:
+tensor products of the complete matrix-coefficient bases in
+Lemma~\ref{lem:singleheat} have eigenvalues
+$\sum_e j_e(j_e+1)$, whose least positive value is $3/4$.
+Expanding a smooth function in that basis, and then using $H^1$
+density, gives the Haar Poincare inequality. Hence
+\[
+ \Var_\mu u
+ \leq\rho_{\max}\Var_\lambda u
+ \leq\frac{4\rho_{\max}}3\sum_{e,a}\int|X_{e,a}u|^2\dd\lambda
+ \leq\frac{4\rho_{\max}}{3\kappa\rho_{\min}}q(u,u).
+\]
+The first inequality evaluates the infimum over constants defining
+$\Var_\mu$ at the Haar mean. This proves \eqref{eq:finitegap} for all
+mean-zero functions, and restricting to gauge-invariant functions
+preserves the lower bound. Every complementary physical function has
+zero mean, so $c\geq\delta_{\rm G}$.
+
+The bounded resolvent $C^{-1}$ maps its Hilbert space to $D(C)$ and
+therefore to the form domain. Completing the square at zero gives
+\[
+ q(J_mf+h,J_mf+h)
+ =s_{m,0}(f,f)+c_m(h+C^{-1}B_mf,h+C^{-1}B_mf).
+\]
+The unique minimizer is $\mathcal R_m f$, proving
+\eqref{eq:zeroorthogonal} and the upper bound in
+\eqref{eq:zerocoercivity}. Its mean is zero and its squared norm is
+$\|f\|^2+\|C^{-1}B_mf\|^2$. The already proved full Poincare inequality
+gives the lower bound and
+$\|\mathcal R_m f\|^2\leq s_{m,0}(f,f)/\Delta_L$.
+Apply \eqref{eq:projectionbound} to $\mathcal R_m f$ for the second
+inequality in \eqref{eq:zerocoercivity}. These two-sided form-norm
+bounds prove closedness with exactly the retained $H^1$ domain.
+
+If $f\in D(S_{m,0})$, decompose any physical form test vector as
+$J_mg+h$. Equations \eqref{eq:zeroorthogonal} give
+\[
+ q(J_mg+h,\mathcal R_m f)=s_{m,0}(g,f)
+                       =\langle J_mg+h,J_mS_{m,0}f\rangle .
+\]
+Constants give zero on both sides. This is the defining weak operator
+identity. It also holds against arbitrary, noninvariant test vectors:
+average that test vector over the gauge group, since the operator and
+the vector being tested are invariant. Thus $\mathcal R_m f$ belongs
+to the full $D(\LL)=H^2$ and has the displayed image.
+Conversely if $\mathcal R_m f\in D(\LL)$, tests in the complementary
+space show $Q_m\LL\mathcal R_m f=0$; retained tests then prove
+$f\in D(S_{m,0})$ and the claimed image.
+\end{proof}
+
+The exponential dependence on $N$ in \eqref{eq:finitegap} is explicit.
+It provides a proved finite-box inverse bound, not a volume-uniform gap.
+
+Fix a nonzero, mean-zero, gauge-invariant $f\in\VV_m$. Keep its norm
+unchanged and set
+\[
+ d_f=\|f\|^2,\quad a_f=a_m(f,f),\quad b_f=B_mf,\quad
+ \sigma_f(I)=\|\mathbf1_I(C)b_f\|^2 .
+\]
+This $\sigma_f$ is a finite positive measure on $[c,\infty)$ of total
+mass $\|b_f\|^2$, with no division by that mass. For every real $z>-c$,
+put
+\begin{equation}\label{eq:inversemoments}
+ M_j(z)=\int_{[c,\infty)}(t+z)^{-j}\dd\sigma_f(t),\quad j=1,2,3,
+ \qquad v_z=J_mf-(C+z)^{-1}b_f .
+\end{equation}
+All these moments are finite by $t+z\geq c+z>0$.
+
+\begin{theorem}\label{thm:affine}
+The actual physical state $\psi v_z$ has exact squared norm, excitation
+energy and Rayleigh quotient
+\begin{equation}\label{eq:affinemoments}
+ N_f(z)=d_f+M_2(z),\quad
+ e_f(z)=a_f-M_1(z)-zM_2(z),\quad
+ Q_f(z)=\frac{e_f(z)}{N_f(z)}.
+\end{equation}
+For all $z>-c$,
+\begin{equation}\label{eq:rayleighderivative}
+ Q_f'(z)=\frac{2M_3(z)}{N_f(z)}[z+Q_f(z)].
+\end{equation}
+In particular $Q_f$ is strictly increasing on $[0,\infty)$ whenever
+$b_f\ne0$. Its zero-shift value is strictly smaller than the lifted
+quotient $a_f/d_f$, and some negative shifts give a quotient strictly
+smaller still. Zero shift minimizes the energy numerator at fixed
+retained data, but it does not minimize the physical quotient when
+$b_f\ne0$.
+
+The full affine variational problem, with all physical eliminated
+states allowed, is determined as follows:
+\begin{gather}
+ \chi_f=\inf_{h\in\VV_{Q_m}\cap\HH^{\rm G}}
+           \frac{q(J_mf+h,J_mf+h)}{d_f+\|h\|^2},\nonumber\\
+ F_f(E)=a_f-E d_f-M_1(-E),\qquad 0\leq E<c,\qquad
+ F_f'(E)=-d_f-M_2(-E)<0,\label{eq:affineroot}\\
+ F_f(0)>0,\quad
+ \mathfrak l_f=\lim_{E\uparrow c}F_f(E)\in[-\infty,\infty).\nonumber
+\end{gather}
+If $\mathfrak l_f<0$, there is exactly one root $E_f\in(0,c)$ and
+\begin{gather}
+ \chi_f=E_f,\qquad
+ h_f=-(C-E_f)^{-1}b_f,\qquad
+ \|\psi(J_mf+h_f)\|^2=-F_f'(E_f),\nonumber\\
+ \mathfrak q_{H-E_0}[\psi(J_mf+h_f)]=-E_fF_f'(E_f).
+ \label{eq:affineattain}
+\end{gather}
+This is the unique affine minimizer. If $\mathfrak l_f\geq0$, then
+$\chi_f=c$. In this case $b_f$ is orthogonal to $\ker(C-c)$.
+The value $c$ is attained exactly when $\mathfrak l_f=0$, and all
+minimizers are
+\begin{equation}\label{eq:boundaryattain}
+ h=-(C-c)^\dagger b_f+k,\qquad k\in\ker(C-c).
+\end{equation}
+Here the dagger is the inverse on $\ker(C-c)^\perp$ and zero on the
+kernel. When $\mathfrak l_f>0$, no finite affine vector attains $c$;
+the infimum is approached by $h=t k$, $t\to\infty$, for a nonzero
+$k\in\ker(C-c)$. These alternatives are exhaustive for the actual
+interacting $C$ and $b_f$, including $b_f=0$.
+\end{theorem}
+\begin{proof}
+The spectral theorem identifies $M_1$ with
+$\langle b_f,(C+z)^{-1}b_f\rangle$ and $M_2$ with
+$\|(C+z)^{-1}b_f\|^2$. The orthogonal decomposition of $v_z$ and
+the block form \eqref{eq:block} prove \eqref{eq:affinemoments}
+for negative as well as positive $z$. Differentiating these bounded
+resolvents gives $M_1'=-M_2$, $M_2'=-2M_3$,
+$N_f'=-2M_3$, and $e_f'=2zM_3$. The quotient rule proves
+\eqref{eq:rayleighderivative}. Each $v_z$ is nonzero and mean-zero,
+so $Q_f(z)\geq\delta_{\rm G}>0$.
+For $b_f\ne0$, $M_3>0$ and the derivative is positive at zero
+and at every positive shift. Also
+\[
+ \frac{a_f}{d_f}-Q_f(0)
+ =\frac{M_1(0)+(a_f/d_f)M_2(0)}{d_f+M_2(0)}>0 .
+\]
+Continuity of the derivative at zero proves strict improvement for
+sufficiently small negative shifts. The statement about the numerator
+follows independently from \eqref{eq:zeroorthogonal}; increasing the
+norm is part of the exact quotient calculation.
+
+For $0\leq E<c$, complete the shifted square for arbitrary $h$:
+\begin{equation}\label{eq:affinesquare}
+ q(J_mf+h,J_mf+h)-E(d_f+\|h\|^2)
+ =F_f(E)+\|(C-E)^{1/2}[h+(C-E)^{-1}b_f]\|^2.
+\end{equation}
+No discarded term or approximation enters this identity.
+The sign and derivative statements in \eqref{eq:affineroot} follow
+from Proposition~\ref{prop:finitezero} and the spectral derivative.
+Monotonicity bounds the limit above by $F_f(0)$ and allows the value
+$-\infty$ below. The intermediate value theorem proves the unique
+root when the limit is negative. At this root
+\eqref{eq:affinesquare} bounds every quotient below by $E_f$,
+and equality holds precisely for the stated $h_f$. The norm and
+energy in \eqref{eq:affineattain} follow from
+\eqref{eq:affinemoments} and $F_f(E_f)=0$.
+
+If the limit is nonnegative, $F_f(E)>0$ for every $E<c$.
+Equation \eqref{eq:affinesquare}, followed by $E\uparrow c$,
+bounds every affine quotient below by $c$. A complementary
+eigenvector $k$ of eigenvalue $c$ yields
+\[
+ \frac{a_f+2t\Rea\langle b_f,k\rangle+t^2c\|k\|^2}
+      {d_f+t^2\|k\|^2}\longrightarrow c,
+\]
+proving equality of the infimum. If $b_f$ had a nonzero projection
+on that eigenspace, its contribution to $M_1(-E)$ would diverge as
+$(c-E)^{-1}$, contradicting $\mathfrak l_f\geq0$.
+Compact resolvent isolates $c$ from the rest of $\sigma(C)$, so
+$(C-c)^\dagger$ is bounded on the complementary eigenspaces and
+maps into $D(C)$. Completing the square at $E=c$ now gives
+\[
+ q(J_mf+h,J_mf+h)-c(d_f+\|h\|^2)
+ =\mathfrak l_f+
+ \|(C-c)^{1/2}[h+(C-c)^\dagger b_f]\|^2 .
+\]
+It proves both the attainment criterion and every vector in
+\eqref{eq:boundaryattain}.
+\end{proof}
+
+The scalar root in \eqref{eq:affineroot} solves the affine problem for
+this fixed retained direction. It is not, in general, an eigenvalue of
+the full operator: a full eigenvector also requires the weak equation
+$s_{m,-E}(g,f)=0$ for every retained test direction $g$.
+Here $s_{m,-E}$ denotes the sesquilinear expression
+\eqref{eq:schur} at $z=-E$, restricted to physical retained functions;
+it is well defined on $\VV_m\cap\KK_m^{\rm G}$ because $E<c$.
+Indeed complementary testing gives $h=-(C-E)^{-1}B_mf$, and retained
+testing gives exactly that additional equation. Conversely these
+equations imply the full weak eigenvector equation and its $H^2$
+operator domain. This proves the exact map in both directions, and
+explains precisely which test directions the affine minimization uses.
+The energy-dependent eigenvalue and reconstruction principle agrees
+with \cite[Theorem~1.2 and Corollary~1.3]{DSS}; the affine classification
+and the physical domains above were proved directly.
+
+\begin{corollary}\label{cor:zeroloop}
+For the loop $f=f_C$, the zero-shift state
+$u_0=\psi\mathcal R_m f_C$ obeys the exact identities
+\begin{align}
+ \|u_0\|^2&=d_C+M_2(0),\nonumber\\
+ \mathfrak q_{H-E_0}[u_0]&=\kappa\ell(1-r_C/4)-M_1(0).
+ \label{eq:zeroloopactual}
+\end{align}
+\begin{gather}
+ \alpha\leq d_C\leq\|u_0\|^2
+ \leq d_C+\min\left\{
+       \frac{\kappa\ell(1-r_C/4)}{\Delta_L},
+       \frac{16G^2\kappa^2\ell^2}{\Delta_L^2}\right\},
+ \label{eq:zeroloopnorm}\\
+ \|u_0\|^2\leq4+\frac{4\ell}{3\alpha^N},\nonumber\\
+ \Delta_L\leq
+ \frac{\mathfrak q_{H-E_0}[u_0]}{\|u_0\|^2}
+ \leq\frac{\kappa\ell(1-r_C/4)}{d_C}.\label{eq:zeroloopenergy}
+\end{gather}
+For an elementary coarse face, the last norm bound is
+$4+16m/(3\alpha^N)$, and its energy numerator is exactly
+$8g^2m(1-r_C/4)/a-M_1(0)$. The same $\Delta_L=3g^2\alpha^N/(2a)$
+bounds the quotient below. These bounds are finite and explicit;
+their volume dependence is retained.
+\end{corollary}
+\begin{proof}
+The identities are \eqref{eq:affinemoments} at zero.
+Positivity gives $M_1(0)\leq a_f$, and the spectral inequality
+$t^{-2}\leq c^{-1}t^{-1}$ gives
+$M_2(0)\leq a_f/c\leq a_f/\Delta_L$.
+The other estimate uses $M_2(0)\leq\|B_mf_C\|^2/\Delta_L^2$
+and the already proved $\|B_mf_C\|\leq4G\kappa\ell$.
+Insert $a_f=\kappa\ell(1-r_C/4)\leq\kappa\ell$ and
+$d_C\leq4$. The lower quotient bound is the full Poincare inequality,
+and the upper one follows from the exact numerator and norm.
+Finally use $\ell=4m$ and $\kappa=2g^2/a$.
+\end{proof}
+
+\section{Exact comparison of all physical low-energy states}
+\label{sec:allsoft}
+
+The previous section treated a fixed retained observable. We now give
+a quantitative relation encompassing all physical states, with no
+assumed complementary gap uniform in volume. Define the actual
+zero-shift reconstructed infimum
+\begin{equation}\label{eq:reconstructedgap}
+ \lambda_m^{\rm R}
+ =\inf_{\substack{0\ne f\in\VV_m\cap\KK_m^{\rm G}\\\mu_m f=0}}
+ \frac{s_{m,0}(f,f)}
+      {\|f\|^2+\|C^{-1}B_mf\|^2}.
+\end{equation}
+This denominator is the full physical norm. In every fixed box it is
+positive, and $\lambda_m^{\rm R}\geq\delta_{\rm G}\geq\Delta_L$.
+
+\begin{theorem}\label{thm:gaptransfer}
+For every allowed $L,m,a,g$ with $m\geq2$, the following comparison
+holds with numerical constants independent of all four parameters:
+\begin{equation}\label{eq:harmonicgap}
+ \frac{\lambda_m^{\rm R}c}{\lambda_m^{\rm R}+c}
+ \leq\delta_{\rm G}\leq\min\{\lambda_m^{\rm R},c\},\qquad
+ \frac12\min\{\lambda_m^{\rm R},c\}\leq\delta_{\rm G}.
+\end{equation}
+It has the following explicit state map. For every mean-zero physical
+$u\in\VV$, put
+\begin{equation}\label{eq:softdecomposition}
+ f=J_m^*u,\quad v=\mathcal R_m f,\quad
+ k=u-v=Q_mu+C^{-1}B_mf .
+\end{equation}
+Then $k\in\VV_{Q_m}\cap\HH^{\rm G}$ and
+\begin{equation}\label{eq:softidentities}
+ q(u,u)=s_{m,0}(f,f)+c_m(k,k),\qquad
+ \|u\|^2=\|v\|^2+\|k\|^2+2\Rea\langle v,k\rangle .
+\end{equation}
+At least one of the nonzero components $v,k$ has physical Rayleigh
+quotient at most $2q(u,u)/\|u\|^2$. Conversely each such component is an
+actual admissible physical state under multiplication by $\psi$.
+
+For every sequence of allowed boxes, block lengths, positive spacings
+and couplings, $\delta_{\rm G}$ tends to zero if and only if
+$\min\{\lambda_m^{\rm R},c\}$ tends to zero. Uniform positive lower
+bounds for $\delta_{\rm G}$ are equivalent to simultaneous uniform
+positive lower bounds for these two actual sector infima. These are
+equivalences proved by \eqref{eq:harmonicgap}, not assumed estimates
+for either sector.
+\end{theorem}
+\begin{proof}
+Sobolev preservation of $J_m^*$ and Proposition~\ref{prop:finitezero}
+make all components in \eqref{eq:softdecomposition} well defined in
+their stated form domains. The identity $J_m^*v=f$ puts $k$ in the
+complement. Equation \eqref{eq:zeroorthogonal} gives $q(v,k)=0$,
+which proves the energy identity; the norm identity retains its
+cross term. Cauchy--Schwarz in two scalar components gives
+\[
+ \|u\|\leq\|v\|+\|k\|
+ \leq\sqrt{\frac{q(v,v)}{\lambda_m^{\rm R}}}
+      +\sqrt{\frac{c_m(k,k)}c}
+ \leq\sqrt{\left(\frac1{\lambda_m^{\rm R}}+\frac1c\right)q(u,u)}.
+\]
+Zero components contribute zero. Taking the infimum over $u$ proves
+the first lower bound. The upper bound follows because the full
+variational set contains both the reconstructed vectors and all
+complementary physical vectors. For positive $x,y$,
+$xy/(x+y)\geq\min(x,y)/2$, proving the last bound.
+
+For the explicit factor-two state assertion,
+$\|u\|^2\leq2(\|v\|^2+\|k\|^2)$ and the energy identity show
+\[
+ \min_{\substack{w\in\{v,k\}\\w\ne0}}
+       \frac{q(w,w)}{\|w\|^2}
+ \leq\frac{q(v,v)+q(k,k)}{\|v\|^2+\|k\|^2}
+ \leq2\frac{q(u,u)}{\|u\|^2}.
+\]
+This construction changes no physical coefficient or state norm.
+All assertions about sequences and uniform bounds follow directly
+from the two-sided inequalities for each member of the sequence.
+\end{proof}
+
+This comparison calculates how a putative collective low-energy sector
+must appear under the exact block map: it appears either among the
+full zero-shift reconstructed states, with their eliminated norm
+retained, or among physical states in the complementary sector.
+The decomposition \eqref{eq:softdecomposition} exhibits the vectors
+and controls their energy quotients by the numerical factor two.
+It does not assert which alternative occurs in the interacting
+large-volume limit, or that either one actually becomes soft.
+The fixed-loop high-energy fraction in Theorem~\ref{thm:spectral}
+continues to hold in its full scope. Equations
+\eqref{eq:zeroloopactual}--\eqref{eq:zeroloopenergy} and
+Theorem~\ref{thm:gaptransfer} now supply the proved zero-shift and
+all-state relations without extending that fraction to an unsupported
+family of vectors. For $m=1$, $J_1$ is the identity, $Q_1=B_1=0$,
+and reconstruction is the identity; the physical gap relation is then
+exactly $\lambda_1^{\rm R}=\delta_{\rm G}$ with no complementary sector.
+
+\section{Physical skeleton morphism and uniform complementary inverse}
+\label{sec:uniforminverse}
+
+This section uses the complete fixed-point and physical-resolvent proof
+retained in \nolinkurl{references/LANE_A_ELIMINATION_INPUTS.md},
+Sections 1, 10, 11, 12 and 15. The input concerns the identical open
+box, every original link and face, and the actual positive unit vacuum.
+Here is its exact dictionary. Its $g_{\rm YM}$ is our $g$, its
+$\mathcal E$ is our $E_0$, and its coordinate action
+$\alpha_h(U)_e=h_{s(e)}U_eh_{t(e)}^{-1}$ obeys
+\[
+ (h\cdot U)_e=h_{s(e)}^{-1}U_eh_{t(e)}
+                  =(\alpha_{h^{-1}}U)_e.
+\]
+Thus its Hilbert-space representation
+$\mathsf T_hu=u\circ\alpha_{h^{-1}}$ is exactly
+$\mathsf T_hu(U)=u(h\cdot U)$ here. The identity map on functions
+intertwines these representations, on $L^2$, $H^1$ and $H^2$;
+no assertion that parameter inversion is a group homomorphism is needed.
+The two Hamiltonians and their domains coincide. Uniqueness of the
+positive unit vacuum then proves equality of the two $\psi$, of
+$\rho=\psi^2$, and of the ground energies. The source scalar in its
+(12.7) will be written $c_{\rm vac}=\langle1,\psi\rangle$ here;
+it is not the density constant $\alpha$ in \eqref{eq:finitegap}.
+
+For precision, the proved input is
+\begin{equation}\label{eq:stronggap}
+ \delta_{\rm G}\geq\Delta_{\rm sc}
+ :=3\kappa\left(1-\frac{512}{3}\xi\right)
+ =\kappa(3-512\xi)\geq\frac{287\kappa}{96},
+ \qquad 0<\xi\leq\frac1{49152}.
+\end{equation}
+Its entire proof is retained, not a proposed additional hypothesis.
+The exact source construction maps a collection of nonconstant
+Haar sectors $z_I$ to $\phi=e^{\mathfrak C}1$, where
+$\mathfrak C=\sum_{I\ne\varnothing}|z_I\rangle\langle1_I|
+\otimes I_{I^c}$ is bounded and nilpotent in each finite box.
+The inverse is $e^{-\mathfrak C}$, with both exponentials finite
+polynomials preserving $D(H_0)=H^2$. Its full fixed-point proof gives
+\[
+ \psi=c_{\rm vac}\phi,\quad
+ c_{\rm vac}>0,\quad c_{\rm vac}^2\|\phi\|^2=1,\quad
+ e^{-\mathfrak C}(H-E_0)e^{\mathfrak C}=H_0+\mathcal K,
+ \qquad H_0=\kappa\sum_eE_e.
+\]
+These maps preserve the vacuum scalar and all of $2bM$ in the
+eigenvalue equation. The source proves that every iterate, hence both
+similarities, commutes with every vertex gauge transformation.
+In the orthogonal sector decomposition a physical nonempty support
+has no degree-one vertex: averaging at such a vertex would give both
+the same invariant vector and its zero one-link Haar average.
+Every nonempty surviving support therefore contains at least four
+edges of this open bipartite cubic graph. With the original
+$E_e$ Casimir, $H_0\geq3\kappa$ on the physical nonconstant sectors.
+The complete interaction estimate proved there is
+$\|\mathcal K f\|_{\oplus,1}\leq(512\xi/3)\|H_0f\|_{\oplus,1}$,
+where $\|f\|_{\oplus,1}=\sum_I\|\Pi_If\|$ and
+$\|f\|\leq\|f\|_{\oplus,1}\leq2^{N/2}\|f\|$.
+The retained proof supplies every commutator and counting estimate
+and the contraction on $\|z\|_*\leq1/16$, with constant at most
+$11/36$ in the displayed range. The sector norm equivalence is
+explicitly volume dependent. The physical Neumann resolvent excludes
+every $0<t<3\kappa(1-512\xi/3)$, transfers under the displayed
+domain-preserving similarity, and proves \eqref{eq:stronggap} for the
+original self-adjoint operator. No form positivity of a nonunitary
+similarity or deletion of its norm factors is used.
+
+The retained proof derives numerical constants for the creation method
+of Yarotsky~\cite{Yarotsky}, Section 2, source equations
+\texttt{mmo}, \texttt{c1}, \texttt{vsum}, \texttt{thl},
+\texttt{sumj}. Its physical-space reference is Baez~\cite{Baez},
+the section ``Gauge Theory on a Graph,'' Lemmas 1, 2 and the source
+lemma \texttt{lem2.5}. Baez's link convention
+$A_e\mapsto h_{t(e)}A_eh_{s(e)}^{-1}$ is related to the input's
+$U_e\mapsto h_{s(e)}U_eh_{t(e)}^{-1}$ by the involution
+$\jmath(U)_e=U_e^{-1}$: direct multiplication gives
+$\jmath(\alpha_hU)_e=h_{t(e)}\jmath(U)_eh_{s(e)}^{-1}$.
+The pullback is a Haar-unitary map with itself as inverse,
+preserves $H^1,H^2$ because inversion is a bi-invariant metric
+isometry, and intertwines each $E_e$. The raw Wilson products in
+our Hamiltonian are unchanged. Both original TeX sources are retained.
+
+The source conditional complement retains individual fine links.
+Our complement retains their ordered products. The following proves
+the exact relation, including the Hilbert and operator domains.
+
+\begin{proposition}\label{prop:physicalbridge}
+Let $2\leq m\mid2L$, $s=(U_e)_{e\in S_m}$,
+$r=(U_e)_{e\in R_m}$, and define
+\[
+ \mathcal A_m=\SU(2)^{R_m},\quad
+ \bar\rho_R(r)=\int\rho(s,r)\dd\lambda_{S_m}(s),\quad
+ \mathcal K_R=L^2(\mathcal A_m,\bar\rho_R\lambda_R).
+\]
+Let $J_S:\mathcal K_R\to\HH$ be $J_SF(s,r)=F(r)$, with
+\[
+ (J_S^*u)(r)=\frac{1}{\bar\rho_R(r)}
+                \int\rho(s,r)u(s,r)\dd\lambda_{S_m}(s),
+ \qquad P_S=J_SJ_S^*.
+\]
+Write $\mathcal K_R^{\rm G}$ for invariance under the endpoint action
+of all original vertices. There is a unitary map of physical spaces
+\begin{equation}\label{eq:skeletonunitary}
+ \iota_m:\KK_m^{\rm G}\longrightarrow\mathcal K_R^{\rm G},
+ \qquad (\iota_m f)(r)=f((u_{\gamma,1}\cdots u_{\gamma,m})_\gamma).
+\end{equation}
+Its inverse on arbitrary $L^2$ classes is
+\begin{equation}\label{eq:skeletoninverse}
+ (\iota_m^{-1}F)(z)=\int F(\Theta_m^{-1}(v,z))\dd\lambda_v(v),
+ \quad
+ \Theta_m:\mathcal A_m\longrightarrow
+ \left(\prod_\gamma\SU(2)^{m-1}\right)\times\mathcal Q_m,
+ \quad r\longmapsto(v,z).
+\end{equation}
+The inverse coordinates are $u_{\gamma,k}=v_{\gamma,k}$ for $k<m$
+and $u_{\gamma,m}=(v_{\gamma,1}\cdots v_{\gamma,m-1})^{-1}z_\gamma$.
+Both maps identify the invariant $H^1$ and $H^2$ spaces, and
+\begin{equation}\label{eq:physicalprojections}
+ J_S\iota_m=J_m,
+ \qquad J_S^*|_{\HH^{\rm G}}=\iota_mJ_m^*|_{\HH^{\rm G}},
+ \qquad P_S|_{\HH^{\rm G}}=P_m|_{\HH^{\rm G}}.
+\end{equation}
+Consequently the identity on functions is an isometry from the
+source physical conditional complement for $S=S_m$ onto
+$\HH_{Q_m}^{\rm G}$. It identifies their full form domains,
+their complementary operator domains, their operators and their
+resolvents. In the range \eqref{eq:stronggap},
+\begin{equation}\label{eq:uniformC}
+ C\geq\Delta_{\rm sc} I,\qquad
+ \|C^{-1}\|\leq\Delta_{\rm sc}^{-1}
+                  \leq\frac{96}{287\kappa}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The two inverse coordinate compositions and the Haar identity for
+$\Theta_m$ follow by the exact prefix cancellations already proved
+for $\Phi_m$, with all $S_m$ factors omitted from both sides of
+this particular map. Integrating those factors in the density gives
+\[
+ \bar\rho_R(\Theta_m^{-1}(v,z))=r_m(z),\qquad
+ \bar\rho_R\dd\lambda_R=r_m(z)\dd\lambda_v\dd\lambda_m.
+\]
+To prove the first equality, perform simultaneously the internal
+vertex transformations with fixed coarse endpoints as in Section 3;
+they send $(v,z)$ to $(1,z)$, preserve the marginal by substitution
+on $S_m$, and leave $z$ unchanged. Integrating in $v$ then identifies
+the remaining function with the definition of $r_m$.
+
+There is also an $L^2$ proof of the descent, without evaluation on
+a measure-zero section. For a chain with endpoints fixed, the
+internal gauge action is
+$v'_1=u_1h_1$ and $v'_k=h_{k-1}^{-1}u_kh_k$ for $1<k<m$.
+For fixed input $r$, Haar integration successively over
+$h_1,\ldots,h_{m-1}$ makes the variables $v'_1,\ldots,v'_{m-1}$
+product Haar; the chain product remains $z$. Applying this to every
+disjoint interior shows that the compact internal gauge average on
+$L^2(\bar\rho_R\lambda_R)$ is precisely fibre integration in $v$
+followed by constant lift. Hence every invariant $F$ equals that
+lift almost everywhere. The remaining coarse endpoint action is
+$z_\gamma\mapsto h_x^{-1}z_\gamma h_{x+m\mathbf e_i}$; this proves
+the full coarse invariance of \eqref{eq:skeletoninverse} and the
+fine invariance of \eqref{eq:skeletonunitary}. Substitution proves
+both inverse identities. Moreover
+\[
+ \|\iota_m f\|_{\mathcal K_R}^2
+ =\int |f(z)|^2r_m(z)\dd\lambda_v\dd\lambda_m
+ =\|f\|_{\KK_m}^2.
+\]
+No vector is divided by its mass. Smooth coordinate pullback on
+these compact products preserves each Sobolev order. Differentiating
+under the compact fibre integral and applying Cauchy--Schwarz bounds
+the inverse in $H^1$ and $H^2$. Smooth positive weights give the
+same Sobolev sets in each finite box. Approximation, followed by
+compact gauge averaging, proves the claimed domain identifications.
+
+The first identity in \eqref{eq:physicalprojections} follows from
+the coordinate product. For physical $u$, substitution in the
+conditional integral shows that $J_S^*u$ is invariant under every
+skeleton endpoint action. In $(v,z)$ coordinates it is therefore
+independent of $v$ almost everywhere. Its $v$ integral equals
+$r_m(z)^{-1}\int\rho(s,\Theta_m^{-1}(v,z))
+u(s,\Theta_m^{-1}(v,z))\dd\lambda_{S_m}\dd\lambda_v$,
+which is exactly $J_m^*u$. This proves the second identity and then
+the third. It does not assert equality of the projections on all
+noninvariant vectors.
+
+Thus the two physical complements are the same closed subspace
+of $\HH$, with the same form $q$, including derivatives in every
+fine link. Both have form domain $H^1$ intersected with that space.
+The weak operator-domain rule is, in both presentations,
+\[
+\begin{aligned}
+ D(C)=\bigl\{u\in H^1\cap\HH_{Q_m}^{\rm G}:{}&
+ \text{ there exists }w\in\HH_{Q_m}^{\rm G}\text{ such that}\\
+ &q(v,u)=\langle v,w\rangle
+ \text{ for every }v\in H^1\cap\HH_{Q_m}^{\rm G}\bigr\},\\
+ Cu={}&w.
+\end{aligned}
+\]
+Equality of the tests, inner products and forms proves equality
+of the operators and their resolvents, not merely of their formal
+differential expressions. Finally every vector in the complement
+has $\mu u=0$, and $\mathcal Uu=\psi u$ is physical and perpendicular
+to $\psi$. The already-proved \eqref{eq:stronggap} applied under
+this unchanged unitary gives \eqref{eq:uniformC}.
+\end{proof}
+
+\begin{theorem}\label{thm:uniformzero}
+In the range \eqref{eq:stronggap}, for every mean-zero
+$f\in\VV_m\cap\KK_m^{\rm G}$, put $b_f=B_mf$,
+$d_f=\|f\|^2$, $a_f=a_m(f,f)$ and retain the raw measure
+$\sigma_f(I)=\|1_I(C)b_f\|^2$.
+Then
+\begin{equation}\label{eq:uniformzeroenergy}
+ s_{m,0}(f,f)\geq\Delta_{\rm sc}
+              (d_f+\|C^{-1}b_f\|^2),\qquad
+ \lambda_m^{\rm R}\geq\Delta_{\rm sc},\quad c\geq\Delta_{\rm sc}.
+\end{equation}
+For the unchanged mean-centered simple loop $f_C$, let
+$\ell$ be its fine perimeter and $d_C,r_C$ retain their earlier
+definitions. The physical zero-shift state $u_0=\psi\mathcal R_m f_C$
+has the exact mass and energy
+\begin{align}
+ \|u_0\|^2&=d_C+\int t^{-2}\dd\sigma_{f_C}(t),\label{eq:uniformloopmass}\\
+ \mathfrak q_{H-E_0}[u_0]
+ &=\kappa\ell(1-r_C/4)-\int t^{-1}\dd\sigma_{f_C}(t)
+ \geq\Delta_{\rm sc}\|u_0\|^2.\label{eq:uniformloopenergy}
+\end{align}
+Its quantitative upper mass bound is
+\begin{equation}\label{eq:uniformloopbound}
+ \|u_0\|^2\leq d_C+
+ \min\left\{\frac{\kappa\ell(1-r_C/4)}{\Delta_{\rm sc}},
+             \frac{16G^2\kappa^2\ell^2}{\Delta_{\rm sc}^2}\right\}
+ \leq4+\frac{96\ell}{287}.
+\end{equation}
+For every $z\geq0$, define $w_z=(C+z)^{-1}b_f$,
+$N_f(z)=d_f+\|w_z\|^2$ and
+$e_f(z)=a_f-\int(t+z)^{-1}\dd\sigma_f
+                    -z\int(t+z)^{-2}\dd\sigma_f$.
+These are the full physical mass and excitation energy of
+$\psi(J_mf-w_z)$. The exact differences are
+\begin{align}
+ w_0-w_z&=zC^{-1}(C+z)^{-1}b_f,\label{eq:uniformwdiff}\\
+ e_f(z)-e_f(0)&=\int\frac{z^2}{t(t+z)^2}\dd\sigma_f(t),
+                                                        \label{eq:uniformediff}\\
+ N_f(0)-N_f(z)&=\int\left(\frac1{t^2}-\frac1{(t+z)^2}\right)
+                                      \dd\sigma_f(t),    \label{eq:uniformndiff}\\
+ s_{m,z}(f,f)-s_{m,0}(f,f)-zd_f
+ &=\int\frac{z}{t(t+z)}\dd\sigma_f(t).    \label{eq:uniformmemorydiff}
+\end{align}
+Writing $\theta=z/(\Delta_{\rm sc}+z)$, their estimates are
+\begin{align}
+ \|w_0-w_z\|&\leq\theta\sqrt{a_f/\Delta_{\rm sc}},\nonumber\\
+ 0\leq e_f(z)-e_f(0)&\leq\theta^2a_f,\nonumber\\
+ 0\leq N_f(0)-N_f(z)&\leq
+ \left[1-\left(\frac{\Delta_{\rm sc}}{\Delta_{\rm sc}+z}\right)^2\right]
+ \frac{a_f}{\Delta_{\rm sc}},\nonumber\\
+ 0\leq s_{m,z}(f,f)-s_{m,0}(f,f)-zd_f&\leq\theta a_f.
+                                                        \label{eq:uniformcontinuity}
+\end{align}
+The constants controlling the inverse do not depend on box or block
+size. The displayed $a_f$, $\ell$, $G$, $\kappa$, raw norms and
+spectral measures keep their full dependence.
+\end{theorem}
+
+\begin{proof}
+The map $\mathcal R_m$ and its exact domain and energy identities
+were proved in Proposition~\ref{prop:finitezero}. Its image under
+$\mathcal U$ is physical and perpendicular to $\psi$. Applying
+\eqref{eq:stronggap} proves \eqref{eq:uniformzeroenergy}, including
+the infimum inequality. The previous exact inverse-moment formulas
+give \eqref{eq:uniformloopmass}--\eqref{eq:uniformloopenergy}.
+Positivity of $s_{m,0}$ gives
+$\int t^{-1}\dd\sigma_f\leq a_f$. Since
+$\operatorname{supp}\sigma_f\subset[\Delta_{\rm sc},\infty)$,
+\[
+ \int t^{-2}\dd\sigma_f\leq
+ \min\{a_f/\Delta_{\rm sc},\|b_f\|^2/\Delta_{\rm sc}^2\}.
+\]
+Insert the original loop identities $a_f=\kappa\ell(1-r_C/4)$,
+$\|b_f\|\leq4G\kappa\ell$, $d_C\leq4$, $a_f\leq\kappa\ell$
+and \eqref{eq:stronggap} to prove \eqref{eq:uniformloopbound}.
+
+The resolvent identity proves \eqref{eq:uniformwdiff}. Subtraction
+of the complete energy integrands gives
+$t^{-1}-(t+z)^{-1}-z(t+z)^{-2}=z^2/[t(t+z)^2]$.
+The norm subtraction and the definition of $s_{m,z}$ give the
+remaining exact differences. On the support of the raw measure,
+$z/(t+z)\leq\theta$ and
+$1-[t/(t+z)]^2\leq1-[\Delta_{\rm sc}/(\Delta_{\rm sc}+z)]^2$.
+Apply these inequalities to the corresponding nonnegative
+integrands and use the preceding inverse-moment bounds. Squaring
+\eqref{eq:uniformwdiff} first proves its norm estimate. This proves
+every inequality in \eqref{eq:uniformcontinuity}, with no removal
+of the measure or its total mass $\|B_mf\|^2$.
+\end{proof}
+
+For an elementary coarse face $\ell=4m$, the last mass bound is
+$4+384m/287$, and its physical side length remains $ma$.
+In original parameters the new lower energy scale and range are
+\[
+ \Delta_{\rm sc}=\frac{2g^2}{a}\left(3-\frac{128}{g^4}\right)
+ \geq\frac{287g^2}{48a},\qquad g^4\geq12288.
+\]
+The expectation of $H$ is still $E_0N_f(z)+e_f(z)$.
+This is a statement for the interacting finite boxes, uniform as
+their sizes vary within this explicit coupling range. It takes no
+spatial continuum limit and provides no small-$g$ continuation.
+Every induced score covariance and the full resolvent and time memory
+remain those of Sections 4--6.
+
+
+\section{Original scales and the exact scope of the spectral conclusion}
+
+For an elementary coarse face $\ell=4m$. The actual state has
+\begin{align}
+ \|u_C\|^2&=r_C-(\overline W_C)^2\in[\alpha,4],\label{eq:physicalnorm}\\
+ \mathfrak q_{H-E_0}[u_C]
+ &=\frac{8g^2m}{a}\left(1-\frac{r_C}{4}\right)
+       \in\left[\frac{6\alpha g^2m}{a},\frac{8g^2m}{a}\right],\label{eq:physicalenergy}\\
+ \frac{\mathfrak q_{H-E_0}[u_C]}{\|u_C\|^2}
+ &\in\left[\frac{3\alpha g^2m}{2a},\frac{8g^2m}{a\alpha}\right],
+ \qquad \Omega_C=\frac{3\alpha g^2m}{4a}.\label{eq:physicalquotient}
+\end{align}
+Here
+$\alpha=1/(9\,12^{16/g^4})$, and $G,C_*,c_H$ are the explicit functions
+\eqref{eq:G}, \eqref{eq:highweight} of $d=4/g^4$.
+The physical length is $ma$, so $g^2m/a=g^2(ma)/a^2$ as an exact
+rewriting with no coordinate change. The expectation of the unsubtracted
+Hamiltonian is
+\[
+ \langle u_C,Hu_C\rangle
+ =E_0(r_C-(\overline W_C)^2)
+       +\frac{8g^2m}{a}(1-r_C/4).
+\]
+The same scalar $E_0\|u_{z_C}\|^2$ is added to the dressed excitation
+energy. Also $0\leq E_0\leq2bM$ follows from $H\geq0$ and the constant
+unit Haar trial vector, whose plaquette means vanish. The original
+$2bM$ term has not been omitted from $H$.
+
+The exact instantaneous kinetic term has the two metric expressions
+\[
+ -\kappa m\Delta^T=-(\kappa m/4)\Delta^c,\qquad \kappa m=2g^2m/a.
+\]
+If its coefficient is written solely as
+$2g_m^2/(ma)$, algebra forces $g_m^2=m^2g^2$. This is only the
+coefficient dictionary for this marginal kinetic form. It does not make
+\eqref{eq:marginalpotential} and the energy-dependent memory into the
+original one-plaquette Hamiltonian at a claimed running coupling.
+
+The map from the spatial coarse observable to the quantum theory is
+exactly $f\mapsto\psi J_mf$, followed by \eqref{eq:nu}; the retained
+resolvent is \eqref{eq:resolvent}, and sequential eliminations obey
+\eqref{eq:recursive}. Theorems~\ref{thm:spectral} and
+Corollary~\ref{cor:dressedweight} are statements about that full quantum
+spectral measure, with no omission of generated interactions. For fixed
+$g>0$, these particular large-loop channels retain a positive fraction
+of weight at energies proportional to $g^2m/a$, including the specified
+fully dressed channels. Their unnormalized spectral mass above the
+displayed threshold is bounded below by the stated positive multiple
+of their unchanged squared norm, at every increasing $m$ and fixed $a,g$.
+
+This assertion does not give a lower bound on the support of the whole
+measure: some weight can lie below $\Omega_C$. Nor does a lower bound
+on the quotient of this family bound the infimum over all physical
+states. At variable $g=g(a)$ the constants $\alpha$ and $c_H$ have the
+explicit coupling dependence above and can tend to zero. The calculation
+therefore proves neither a continuum mass gap nor a four-dimensional
+mass-gap counterexample. It supplies an exact extensive block map and
+an all-positive-coupling, volume-independent quantitative channel result;
+Theorem~\ref{thm:gaptransfer} additionally relates every physical
+low-energy state to the zero-shift reconstructed and complementary
+sectors, with parameter-independent comparison constants and explicit
+state maps. Section~\ref{sec:uniforminverse} now supplies the proved
+physical lower bound $\Delta_{\rm sc}=\kappa(3-512\xi)$, uniform
+in box and block size for $0<\xi\leq1/49152$, together with the
+exact skeleton/complement morphism and full-memory zero-shift bounds.
+The all-positive-coupling finite bound \eqref{eq:finitegap} remains
+valid with its displayed volume dependence. Neither the comparison
+nor the exhaustive affine calculation
+in Theorem~\ref{thm:affine} presumes which sector becomes soft or an
+answer for the joint spatial continuum limit.
+
+\section{Primary-source map and reproducibility}
+
+The general Feshbach--Schur construction is attributed to its established
+literature. The locally retained source of Dusson, Sigal and Stamm was
+read at Theorem~1.2, its reconstruction map, and Eqs.~(1.10)--(1.16).
+Their Corollary~1.3 is the energy-dependent fixed-point formulation.
+Its full eigenvalue condition tests all retained directions; the
+scalar affine root \eqref{eq:affineroot} tests the fixed retained
+direction only, as proved after Theorem~\ref{thm:affine}.
+Their operator $H-\lambda$ corresponds here to $\LL+z$, with
+$\lambda=-z$, their complementary inverse to $(C_m+z)^{-1}$, and
+their reconstruction to \eqref{eq:reconstruction}. Their effective
+interaction has the negative sign in \eqref{eq:schur}. The infinite-rank
+form argument and the conditional coefficients are proved in this paper.
+
+Bakry and Ledoux's reverse Poincare estimate is their Eq.~(1.7), with
+$d(t)=2t$ at curvature bound zero, on pp.~686--687. Our single-edge
+Markov generator is $\kappa\Delta^T$ and its carré du champ is
+$\kappa\sum_a(X_af)^2$, giving precisely \eqref{eq:reverse}. Its full
+compact-group proof was included. Simon's locally retained Theorem~1.1
+uses the Euclidean generator $-\Delta/2$ and its Brownian-bridge formula.
+It is a primary reference for positive potential weights, not a theorem
+identifying Euclidean space with this compact configuration product;
+the compact parabolic comparison needed here was proved in
+\eqref{eq:comparison}. Mori's projection-memory method provides the
+historical comparison: its projection is Eq.~(2.13) and its exact
+memory equations are Eqs.~(3.1)--(3.10), pp.~430--431.
+Our evolution uses $-\LL$ on functions with the vacuum inner product;
+Mori's evolution uses a Liouville operator on dynamical variables.
+Equation~\eqref{eq:memory} derives the corresponding Euclidean block
+identity here, including its signs and domains.
+
+The companion exact checker verifies the entire open-box skeleton and
+path counts on several finite boxes, chain disjointness, nested product
+paths, every retained loop orientation, exact Pauli rotations and the
+mixed derivative tensor in explicit noncommuting samples, and exact
+rational Schur associativity and spectral constants.
+The zero-shift checker separately verifies physical norm and quotient
+derivatives, all six interior/boundary and coupled/uncoupled affine
+examples, the complete energy and norm decomposition, and the harmonic
+gap comparison in 81 rational interacting block examples.
+The physical-complement checker additionally verifies noncommuting
+chain gauge actions, their inverse compositions, the exact original
+strong-coupling constants, and the full inverse-moment continuity
+identities and inequalities. These finite checks
+diagnose algebra; they do not stand in for the all-box proofs above or
+compute a substitute vacuum. No Lean run or large parallel job is used.
+
+\input{fabel_propagation_addendum.tex}
+\input{fabel_low_mode_addendum.tex}
+\input{local_energy_band_addendum.tex}
+\input{full_local_spectrum_addendum.tex}
+\input{nonabelian_vertex_addendum.tex}
+\input{interacting_tensor_band_addendum.tex}
+\input{nonabelian_fluid_profile_addendum.tex}
+\input{released_profile_measures_addendum.tex}
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{DSS}
+G.~Dusson, I.~M.~Sigal, and B.~Stamm,
+\emph{The Feshbach--Schur map and perturbation theory},
+in \emph{Partial Differential Equations, Spectral Theory, and Mathematical
+Physics}, EMS Series of Congress Reports (2021), pp.~65--88.
+\href{https://doi.org/10.4171/ECR/18-1/5}{doi:10.4171/ECR/18-1/5};
+\href{https://arxiv.org/abs/2105.02058v1}{arXiv:2105.02058v1},
+Theorem~1.2 and Eqs.~(1.10)--(1.16).
+\bibitem{BL}
+D.~Bakry and M.~Ledoux,
+\emph{A logarithmic Sobolev form of the Li--Yau parabolic inequality},
+Revista Matem\'atica Iberoamericana \textbf{22} (2006), no.~2, 683--702.
+\href{https://doi.org/10.4171/RMI/470}{doi:10.4171/RMI/470},
+Eq.~(1.7) and its proof, pp.~686--687.
+\bibitem{Simon}
+B.~Simon, \emph{A Feynman--Kac Formula for Unbounded Semigroups},
+\href{https://arxiv.org/abs/math-ph/9907022v1}{arXiv:math-ph/9907022v1}
+(1999), Theorem~1.1 and Eqs.~(1.1)--(1.3).
+\bibitem{Mori}
+H.~Mori, \emph{Transport, Collective Motion, and Brownian Motion},
+Progress of Theoretical Physics \textbf{33} (1965), 423--455.
+\href{https://doi.org/10.1143/PTP.33.423}{doi:10.1143/PTP.33.423}.
+\bibitem{KS}
+J.~Kogut and L.~Susskind,
+\emph{Hamiltonian formulation of Wilson's lattice gauge theories},
+Physical Review D \textbf{11} (1975), 395--408.
+\href{https://doi.org/10.1103/PhysRevD.11.395}{doi:10.1103/PhysRevD.11.395}.
+\bibitem{PW}
+F.~Peter and H.~Weyl,
+\emph{Die Vollst\"andigkeit der primitiven Darstellungen einer
+geschlossenen kontinuierlichen Gruppe},
+Mathematische Annalen \textbf{97} (1927), 737--755.
+\href{https://doi.org/10.1007/BF01447892}{doi:10.1007/BF01447892}.
+\bibitem{Yarotsky}
+D.~A.~Yarotsky, \emph{Quasi-particles in weak perturbations of
+non-interacting quantum lattice systems},
+\href{https://arxiv.org/abs/math-ph/0411042v1}{arXiv:math-ph/0411042v1}
+(2004), Section 2.
+\bibitem{Baez}
+J.~C.~Baez, \emph{Spin Network States in Gauge Theory},
+Advances in Mathematics \textbf{117} (1996), 253--272.
+\href{https://doi.org/10.1006/aima.1996.0012}{doi:10.1006/aima.1996.0012};
+\href{https://arxiv.org/abs/gr-qc/9411007v1}{arXiv:gr-qc/9411007v1}.
+\end{thebibliography}
+\end{document}
+
+

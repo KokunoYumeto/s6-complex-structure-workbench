@@ -1,0 +1,1704 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.92in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,array,booktabs,enumitem,mathrsfs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Herm}{\operatorname{Herm}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Dom}{\operatorname{Dom}}
+\newcommand{\Pf}{\operatorname{Pf}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Jp}{\mathcal J_+}
+\newcommand{\Lp}{\mathcal L_+}
+\newcommand{\Np}{\mathcal N_+}
+\newcommand{\Cs}{\mathcal C_{\mathrm{sing}}}
+\newcommand{\Y}{\mathcal Y_3}
+\newcommand{\cH}{\mathscr H}
+\newcommand{\cQ}{\mathscr Q}
+\newcommand{\cS}{\mathscr S}
+\newcommand{\cZ}{\mathscr Z}
+\newcommand{\cF}{\mathscr F}
+\newcommand{\one}{\mathbf 1}
+
+\title{The Exact Lorentz Observation Bridge in the Nine-Dimensional Hermitian Cone}
+\author{Working theorem/proof module}
+\date{4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Fix the audited rank-drop matrix
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix}
+\]
+and its kernel vector $u=(1,1,1)^{\mathsf T}$.  We prove the complete, coefficient-preserving decomposition of the nine-real-dimensional Jordan algebra $\Herm_3(\C)$ selected by this matrix.  The positive observation map $H\mapsto PHP^*$ has an explicit right inverse, complete positive-semidefinite fibres, and zero fibre exactly the ray $\R_{\geq0}uu^*$.  In the unique adapted block coordinates, the cubic determinant is
+\[
+ \lambda\det G-z^*\adj(G)z,
+\]
+so the full nine-dimensional representation is, under an embedded $\operatorname{Spin}^+(1,3)=SL_2(\C)$, one Lorentz vector, one left Weyl spinor, and one real scalar.  The central element $-I_2$ acts trivially on the vector and scalar but by sign on the spinor, so the full action does not factor through $SO^+(1,3)$.
+
+We determine all rank and positivity strata, prove the exact $e_2$ and determinant identities, and audit properness.  The section of the future cone extends to a genuine embedding $B^4\hookrightarrow S^8$, whereas the observation map has no continuous extension $S^8\to B^4$.  We then rewrite the phase-retaining $SU(3)$ quotient in the same coordinates and realize it as the gauge quotient of a colored Weyl-spinor doublet $Z\in\Mat_{3\times2}(\C)$ together with a colored Lorentz scalar $\phi\in\C^3$.  Its gauge invariants are
+\[
+ G=Z^*Z,\qquad z=Z^*\phi,\qquad \lambda=\phi^*\phi,
+ \qquad \omega=\det[Z\ \phi],
+\]
+and satisfy the exact Gram identity above.
+
+Finally, for the retained constant $\alpha>0$, the composite momentum $p(Z)=\alpha Z^*Z$ gives a positive-energy unitary representation of the universal-cover Poincare group on the $SU(3)$-invariant $L^2$ space.  Its unconstrained mass-squared and energy spectra have no positive threshold.  Retaining the full complex determinant coordinate permits a precisely stated constrained sector: fixing $\phi^*\phi=\lambda_0>0$ and $\det[Z\ \phi]=\omega_0\neq0$ forces the sharp mass and energy bounds
+\[
+ \det p\geq\frac{\alpha^2|\omega_0|^2}{\lambda_0},
+ \qquad
+ E_n\geq\frac{c\alpha|\omega_0|}{\sqrt{\lambda_0}}.
+\]
+Both bounds are attained, and every larger mass and energy occurs.  The constrained gauge quotient is explicitly
+$\mathbb H^3\times\mathbb B^4_{\sqrt{\lambda_0}}\cong\R^7$, and its principal $SU(3)$ bundle is smoothly trivial.  Thus the nine-dimensional object supports an exact color--spin--momentum threshold mechanism once two gauge- and Lorentz-invariant constraints are imposed; the same geometry without those constraints is exactly gapless.
+\end{abstract}
+
+\tableofcontents
+
+\section{Fixed matrices and their exact inverse relations}
+
+Retain throughout
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},
+ \qquad
+ u=\begin{pmatrix}1\\1\\1\end{pmatrix},
+ \qquad
+ C=PP^*=\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.
+\]
+Since
+\[
+ C^{-1}=\frac13\begin{pmatrix}2&1\\1&2\end{pmatrix},
+\]
+define
+\[
+ R_P=P^*C^{-1}
+ =\frac13\begin{pmatrix}2&1\\-1&1\\-1&-2\end{pmatrix},
+ \qquad
+ \Pi_u=\frac{uu^*}{3},
+ \qquad
+ X=(R_P\;u).
+\]
+Every star denotes conjugate transpose.  All displayed matrices in this section are real, so star and transpose coincide on them.
+
+\begin{lemma}[The exact adapted frame]\label{lem:frame}
+The matrices above satisfy
+\[
+ PR_P=I_2,\qquad R_PP=I_3-\Pi_u,\qquad
+ u^*R_P=0,\qquad Pu=0,
+\]
+\[
+ \det X=1,
+ \qquad
+ X^{-1}=\begin{pmatrix}P\\u^*/3\end{pmatrix}
+ =\begin{pmatrix}
+ 1&-1&0\\0&1&-1\\1/3&1/3&1/3
+ \end{pmatrix}.
+\]
+In particular,
+\[
+ PX=(I_2\;0),\qquad
+ X^{-1}R_P=\begin{pmatrix}I_2\\0\end{pmatrix},\qquad
+ X^{-1}u=\begin{pmatrix}0\\0\\1\end{pmatrix}.
+\]
+\end{lemma}
+
+\begin{proof}
+The identities $PR_P=I_2$ and $R_PP=P^*C^{-1}P=I_3-\Pi_u$ follow by direct multiplication.  Since every column of $R_P$ has coordinate sum zero, $u^*R_P=0$, while $Pu=0$ is immediate.  Hence
+\[
+ \begin{pmatrix}P\\u^*/3\end{pmatrix}(R_P\;u)
+ =\begin{pmatrix}I_2&0\\0&1\end{pmatrix}.
+\]
+This proves the inverse formula.  Direct expansion of $\det X$ gives $1$.
+\end{proof}
+
+\section{The observation map and all of its positive fibres}
+
+Put
+\[
+ \Jp=\Herm_3(\C)_{\succeq0},
+ \qquad
+ \Lp=\Herm_2(\C)_{\succeq0}.
+\]
+Define
+\[
+ \mathcal O_P:\Herm_3(\C)\longrightarrow\Herm_2(\C),
+ \qquad
+ \mathcal O_P(H)=PHP^*,
+\]
+and
+\[
+ \jmath_P:\Herm_2(\C)\longrightarrow\Herm_3(\C),
+ \qquad
+ \jmath_P(G)=R_PGR_P^*.
+\]
+
+\begin{theorem}[Unique $4+4+1$ block coordinates]\label{thm:block-coordinates}
+Every $H\in\Herm_3(\C)$ has a unique expression
+\[
+ \boxed{
+ H=X\begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}X^*,}
+\]
+where
+\[
+ G\in\Herm_2(\C),\qquad z\in\C^2,\qquad \lambda\in\R.
+\]
+The coordinates are recovered without any normalization by
+\[
+ \boxed{
+ G=PHP^*,\qquad z=\frac13PHu,\qquad
+ \lambda=\frac19u^*Hu.}
+\]
+Equivalently,
+\[
+ H=R_PGR_P^*+R_Pzu^*+uz^*R_P^*+\lambda uu^*.
+\]
+Moreover,
+\[
+ \boxed{\mathcal O_P(H)=G,}
+ \qquad
+ \boxed{\det H=\lambda\det G-z^*\adj(G)z.}
+\]
+\end{theorem}
+
+\begin{proof}
+Set $M=X^{-1}HX^{-*}$.  Since $H$ is Hermitian, $M$ is Hermitian and has a unique block form
+\[
+ M=\begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}.
+\]
+Lemma~\ref{lem:frame} gives the coordinate formulas.  Since $PX=(I_2\;0)$,
+\[
+ PHP^*=(I_2\;0)M\begin{pmatrix}I_2\\0\end{pmatrix}=G.
+\]
+Because $\det X=1$,
+\[
+ \det H=\det M.
+\]
+Direct expansion of the last row and column of the $3\times3$ block matrix gives, as a polynomial identity valid also when $G$ is singular,
+\[
+ \det M=\lambda\det G-z^*\adj(G)z.
+\]
+\end{proof}
+
+\begin{lemma}[Singular Schur complement with no suppressed case]\label{lem:schur}
+Let
+\[
+ M(G,z,\lambda)=\begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}
+\]
+with $G\in\Herm_2(\C)$, $z\in\C^2$, and $\lambda\in\R$.  Then
+\[
+ M(G,z,\lambda)\succeq0
+\]
+if and only if
+\[
+ \boxed{
+ G\succeq0,\qquad z\in\im G,\qquad
+ \lambda\geq z^*G^\dagger z,}
+\]
+where $G^\dagger$ is the Moore--Penrose inverse.  If
+\[
+ \rho=\lambda-z^*G^\dagger z\geq0,
+\]
+then
+\[
+ M=\begin{pmatrix}I_2&0\\z^*G^\dagger&1\end{pmatrix}
+   \begin{pmatrix}G&0\\0&\rho\end{pmatrix}
+   \begin{pmatrix}I_2&G^\dagger z\\0&1\end{pmatrix}
+\]
+and therefore
+\[
+ \rank M=\rank G+\begin{cases}1,&\rho>0,\\0,&\rho=0.\end{cases}
+\]
+\end{lemma}
+
+\begin{proof}
+If $M\succeq0$, then $G\succeq0$.  If $v\in\ker G$, positivity of the restriction to the span of $(v,0)$ and $(0,1)$ forces $v^*z=0$, hence $z\perp\ker G$ and therefore $z\in\im G$.  With this range condition, congruence by
+\[
+ \begin{pmatrix}I_2&-G^\dagger z\\0&1\end{pmatrix}
+\]
+reduces $M$ to $\diag(G,\lambda-z^*G^\dagger z)$.  This proves necessity, sufficiency, the displayed factorization, and the rank formula.
+\end{proof}
+
+\begin{theorem}[Complete fibres of the positive observation]\label{thm:fibres}
+The map
+\[
+ \mathcal O_P:\Jp\longrightarrow\Lp
+\]
+is positive and surjective, and
+\[
+ \boxed{\mathcal O_P\circ\jmath_P=\id_{\Herm_2(\C)}.}
+\]
+For each fixed $G\succeq0$, its complete fibre is
+\[
+ \boxed{
+ \mathcal O_P^{-1}(G)\cap\Jp
+ =\left\{
+ X\begin{pmatrix}
+ G&z\\z^*&z^*G^\dagger z+\rho
+ \end{pmatrix}X^*:
+ z\in\im G,\ \rho\geq0
+ \right\}.}
+\]
+If $r=\rank G$, this fibre is homeomorphic to $\C^r\times[0,\infty)$.  More explicitly:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item if $G>0$, then $z\in\C^2$ is arbitrary and $\lambda\geq z^*G^{-1}z$;
+\item if $G=\mu vv^*$ with $\mu>0$ and $v^*v=1$, then $z=\xi v$ and $\lambda\geq|\xi|^2/\mu$;
+\item if $G=0$, then $z=0$ and $\lambda\geq0$.
+\end{enumerate}
+The zero fibre is exactly
+\[
+ \boxed{
+ \mathcal O_P^{-1}(0)\cap\Jp
+ =\{\lambda uu^*: \lambda\geq0\}.}
+\]
+\end{theorem}
+
+\begin{proof}
+If $H\succeq0$, then $PHP^*\succeq0$, so $\mathcal O_P$ is positive.  Since $PR_P=I_2$,
+\[
+ \mathcal O_P(\jmath_P(G))
+ =PR_PGR_P^*P^*=G.
+\]
+Surjectivity follows.  The fibre formula and its three cases are exactly Lemma~\ref{lem:schur} transported by the invertible congruence $X$.  When $G=0$, that lemma gives $z=0$ and $H=X\diag(0,0,\lambda)X^*=\lambda uu^*$.
+\end{proof}
+
+\section[The embedded spin group and the full 9=4+4+1 representation]{The embedded spin group and the full \texorpdfstring{$9=4+4+1$}{9=4+4+1} representation}
+
+For $g\in SL_2(\C)$, define
+\[
+ \boxed{
+ T_P(g)=R_PgP+\Pi_u
+ =X(g\oplus1)X^{-1}.}
+\]
+
+\begin{theorem}[The exact $SL_2(\C)$ subgroup]\label{thm:spin-embedding}
+The assignment
+\[
+ T_P:SL_2(\C)\longrightarrow SL_3(\C)
+\]
+is an injective homomorphism.  It satisfies
+\[
+ T_P(g)u=u,\qquad u^*T_P(g)=u^*,\qquad
+ PT_P(g)=gP,\qquad T_P(g)R_P=R_Pg.
+\]
+If
+\[
+ H=X\begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}X^*,
+\]
+then
+\[
+ T_P(g)HT_P(g)^*
+ =X\begin{pmatrix}
+ gGg^*&gz\\z^*g^*&\lambda
+ \end{pmatrix}X^*.
+\]
+Consequently,
+\[
+ \boxed{
+ \mathcal O_P(T_P(g)HT_P(g)^*)
+ =g\mathcal O_P(H)g^*.}
+\]
+\end{theorem}
+
+\begin{proof}
+The conjugation formula by $X$ proves multiplicativity, injectivity, and
+\[
+ \det T_P(g)=\det(g\oplus1)=1.
+\]
+All fixed-vector identities follow from $Pu=0$, $u^*R_P=0$, $PR_P=I_2$, and $R_PP=I_3-\Pi_u$.  The block transformation follows by direct congruence with $g\oplus1$, and the equivariance of $\mathcal O_P$ follows either from the block formula or from $PT_P(g)=gP$.
+\end{proof}
+
+Let
+\[
+ \sigma_0=I_2,\qquad
+ \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+ \sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\qquad
+ \sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+Write
+\[
+ G=p^0\sigma_0+p^1\sigma_1+p^2\sigma_2+p^3\sigma_3
+ =\begin{pmatrix}
+ p^0+p^3&p^1-ip^2\\p^1+ip^2&p^0-p^3
+ \end{pmatrix}.
+\]
+Then
+\[
+ \det G=(p^0)^2-(p^1)^2-(p^2)^2-(p^3)^2.
+\]
+The action $G\mapsto gGg^*$ induces the standard double cover
+\[
+ SL_2(\C)\longrightarrow SO^+(1,3),
+\]
+whose kernel is $\{\pm I_2\}$.
+
+\begin{theorem}[Lorentz vector plus Weyl spinor plus scalar]\label{thm:941}
+Under the action in Theorem~\ref{thm:spin-embedding}, the real representation
+\[
+ \Herm_3(\C)
+ \cong\Herm_2(\C)\oplus\C^2\oplus\R
+\]
+is exactly
+\[
+ \boxed{
+ \text{Lorentz vector }(1/2,1/2)
+ \ \oplus\ 
+ \text{left Weyl spinor }(1/2,0)
+ \ \oplus\ 
+ \text{real scalar}.}
+\]
+The dimensions are $4+4+1=9$.  The central element $-I_2$ acts by
+\[
+ (G,z,\lambda)\longmapsto(G,-z,\lambda).
+\]
+Therefore the action on $G$ and $\lambda$ factors through $SO^+(1,3)$, while the action on the full nine-dimensional space does not.
+
+The cubic determinant is the exact invariant
+\[
+ \boxed{
+ N(G,z,\lambda)
+ =\lambda\det G-z^*\adj(G)z.}
+\]
+In Lorentz coordinates,
+\[
+ \adj(G)=p^0\sigma_0-p^1\sigma_1-p^2\sigma_2-p^3\sigma_3.
+\]
+\end{theorem}
+
+\begin{proof}
+The vector and spinor transformation laws were proved in Theorem~\ref{thm:spin-embedding}.  The central action is immediate.  Since $\det g=1$,
+\[
+ \adj(gGg^*)=(g^*)^{-1}\adj(G)g^{-1}.
+\]
+Thus
+\[
+ (gz)^*\adj(gGg^*)(gz)=z^*\adj(G)z,
+\]
+and both terms in $N$ are invariant.  The Pauli-matrix formula for $\adj(G)$ is a direct $2\times2$ calculation.
+\end{proof}
+
+\section{Quadratic pullback, rank map, properness, and compactification}
+
+For a $3\times3$ matrix $K$, put
+\[
+ e_2(K)=\frac12\bigl((\tr K)^2-\tr(K^2)\bigr).
+\]
+
+\begin{theorem}[The two exact determinant relations]\label{thm:det-relations}
+For every $G\in\Herm_2(\C)$,
+\[
+ \boxed{
+ e_2(\jmath_P(G))=\frac13\det G.}
+\]
+For every $\varepsilon\in\R$,
+\[
+ \boxed{
+ \det(uu^*+\varepsilon\jmath_P(G))
+ =\varepsilon^2\det G.}
+\]
+\end{theorem}
+
+\begin{proof}
+Since
+\[
+ R_P^*R_P=C^{-1},\qquad \det(C^{-1})=\frac13,
+\]
+the induced map on second exterior powers gives
+\[
+ e_2(R_PGR_P^*)
+ =\det G\,\det(R_P^*R_P)
+ =\frac13\det G.
+\]
+Equivalently, this is the $2\times2$ Cauchy--Binet identity applied to every principal $2\times2$ minor.
+
+For the cubic identity, Lemma~\ref{lem:frame} gives
+\[
+ uu^*+\varepsilon\jmath_P(G)
+ =X\begin{pmatrix}\varepsilon G&0\\0&1\end{pmatrix}X^*.
+\]
+Taking determinants and using $\det X=1$ yields the claim.
+\end{proof}
+
+Define the future causal and future null cones
+\[
+ \Lp=\{G\in\Herm_2(\C):G\succeq0\},
+ \qquad
+ \Np=\{G\in\Lp:\det G=0\}.
+\]
+Define
+\[
+ \Cs=\{H\in\Herm_3(\C):H\succeq0,\ \det H=0\}.
+\]
+For $\varepsilon>0$, put
+\[
+ a_\varepsilon(G)=uu^*+\varepsilon\jmath_P(G).
+\]
+
+\begin{theorem}[Exact rank and cone map]\label{thm:rank-map}
+The section $\jmath_P$ maps the future cone into the rank-deficient cone, and
+\[
+ \rank\jmath_P(G)=\rank G.
+\]
+The affine map $a_\varepsilon$ is a map of pairs
+\[
+ a_\varepsilon:(\Lp,\Np)\longrightarrow(\Jp,\Cs)
+\]
+with
+\[
+ \rank a_\varepsilon(G)=1+\rank G.
+\]
+Thus:
+\[
+\begin{array}{c|c|c}
+G&\jmath_P(G)&a_\varepsilon(G)\\ \hline
+G>0\text{ (future timelike)}&\rank2\text{ in }\Cs&\rank3\text{ in }\Jp^\circ\\
+G\neq0,\ \det G=0\text{ (future null)}&\rank1\text{ in }\Cs&\rank2\text{ in }\Cs\\
+G=0&0&uu^*\text{ of rank }1.
+\end{array}
+\]
+Moreover,
+\[
+ \det a_\varepsilon(G)=\varepsilon^2\det G.
+\]
+\end{theorem}
+
+\begin{proof}
+In adapted coordinates,
+\[
+ \jmath_P(G)=X\diag(G,0)X^*,
+ \qquad
+ a_\varepsilon(G)=X\diag(\varepsilon G,1)X^*.
+\]
+Positive semidefiniteness and all rank assertions follow from invertible congruence.  The determinant formula is Theorem~\ref{thm:det-relations}.
+\end{proof}
+
+We next state the compactifications without identifying distinct operations.  Let
+\[
+ \mathfrak p=\Herm_3^0(\C)=\{A=A^*: \tr A=0\}.
+\]
+
+\begin{lemma}[Topological models of the rank-three cone]\label{lem:topological-models}
+The maps
+\[
+ \Phi_{\mathrm G}:\mathfrak p\longrightarrow\Cs,
+ \qquad
+ \Phi_{\mathrm G}(A)=A-\lambda_{\min}(A)I_3,
+\]
+and
+\[
+ \Psi_{\mathrm G}:\Cs\longrightarrow\mathfrak p,
+ \qquad
+ \Psi_{\mathrm G}(Q)=Q-\frac{\tr Q}{3}I_3
+\]
+are inverse positively homogeneous homeomorphisms.  Therefore
+\[
+ \Cs\cong\R^8,
+ \qquad
+ \Cs^+\cong S^8.
+\]
+Furthermore,
+\[
+ \Jp\cong\mathfrak p\times[0,\infty),
+ \qquad
+ \Jp^+\cong B^9,
+\]
+with $\Cs^+\cong S^8$ as the boundary of this $B^9$ model.
+\end{lemma}
+
+\begin{proof}
+For $Q\in\Cs$, the least eigenvalue of $Q-\frac{\tr Q}{3}I_3$ is $-\frac{\tr Q}{3}$, so both composites are the identity.  For arbitrary $H\in\Jp$, put
+\[
+ A=H-\frac{\tr H}{3}I_3,
+ \qquad
+ r=\frac{\tr H}{3}+\lambda_{\min}(A)\geq0.
+\]
+Then
+\[
+ H=A+(r-\lambda_{\min}(A))I_3,
+\]
+which gives the stated homeomorphism with inverse.  One-point compactification of $\R^8$ is $S^8$, while that of $\R^8\times[0,\infty)$ is a closed $9$-ball.
+\end{proof}
+
+The future cone $\Lp$ is the closed future cone in $\R^{1,3}$, hence its one-point compactification is a closed four-ball.  Its null cone $\Np$ is homeomorphic to $\R^3$, hence $\Np^+\cong S^3$.
+
+\begin{theorem}[All relevant properness statements]\label{thm:properness}
+The following maps are proper:
+\[
+ \jmath_P:\Lp\longrightarrow\Cs,
+ \qquad
+ a_\varepsilon:\Lp\longrightarrow\Jp,
+ \qquad
+ a_\varepsilon|_{\Np}:\Np\longrightarrow\Cs.
+\]
+Consequently they extend uniquely to
+\[
+ \boxed{\jmath_P^+:B^4\hookrightarrow S^8,}
+\]
+\[
+ \boxed{a_\varepsilon^+:(B^4,S^3)\longrightarrow(B^9,S^8).}
+\]
+The first map is a topological embedding; its interior maps to the rank-two stratum and its boundary $S^3=\Np^+$ maps to the compactified rank-one subcone.
+
+By contrast,
+\[
+ \mathcal O_P:\Jp\longrightarrow\Lp
+\]
+and
+\[
+ \mathcal O_P|_{\Cs}:\Cs\longrightarrow\Lp
+\]
+are not proper.  There is no continuous extension
+\[
+ B^9\longrightarrow B^4
+\]
+or
+\[
+ S^8\longrightarrow B^4
+\]
+whose restriction is $\mathcal O_P$.
+\end{theorem}
+
+\begin{proof}
+Since $\mathcal O_P\jmath_P=\id$, boundedness of the linear map $\mathcal O_P$ implies
+\[
+ \|G\|\leq\|\mathcal O_P\|\,\|\jmath_P(G)\|.
+\]
+Thus $\jmath_P$ sends escaping sequences to escaping sequences and is proper.  Adding the fixed matrix $uu^*$ and multiplying by $\varepsilon>0$ preserves properness.  The restriction to $\Np$ is therefore proper.  Proper injective maps between locally compact Hausdorff spaces are closed embeddings, so the one-point extensions have the asserted properties.
+
+For nonproperness, both sequences
+\[
+ H_n=n uu^*,
+ \qquad
+ K_n=\jmath_P(nI_2)
+\]
+escape every compact subset of $\Cs$ and of $\Jp$, but
+\[
+ \mathcal O_P(H_n)=0,
+ \qquad
+ \mathcal O_P(K_n)=nI_2\longrightarrow\infty.
+\]
+If a continuous extension at the single compactification point existed, the images of these two escaping sequences would have to converge to the same value.  They do not.
+\end{proof}
+
+\section{The phase-retaining quotient in the same block coordinates}
+
+Define
+\[
+ \Y=\{(H,\omega):H\in\Jp,\ |\omega|^2=\det H\}.
+\]
+
+\begin{theorem}[The carrier is $\R^{10}$ and its zero-phase locus is $\R^8$]\label{thm:Ytopology}
+The map
+\[
+ \Theta:\Y\longrightarrow\mathfrak p\times\C,
+ \qquad
+ \Theta(H,\omega)=\left(H-\frac{\tr H}{3}I_3,\omega\right)
+\]
+is a homeomorphism.  Its inverse sends $(A,\omega)$ to
+\[
+ \left(A+\tau(A,|\omega|^2)I_3,\omega\right),
+\]
+where $\tau(A,r)$ is the unique number in
+\[
+ [-\lambda_{\min}(A),\infty)
+\]
+satisfying
+\[
+ \det(A+\tau I_3)=r.
+\]
+Therefore
+\[
+ \boxed{\Y\cong\R^{10},\qquad \Y^+\cong S^{10}.}
+\]
+The inclusion
+\[
+ \iota_0:\Cs\longrightarrow\Y,
+ \qquad
+ \iota_0(H)=(H,0)
+\]
+is proper and, under $\Theta$, is the linear inclusion
+\[
+ \mathfrak p\times\{0\}\subset\mathfrak p\times\C.
+\]
+Hence it extends to the standard unknotted inclusion
+\[
+ \boxed{S^8\hookrightarrow S^{10}.}
+\]
+\end{theorem}
+
+\begin{proof}
+Let $A\in\mathfrak p$ have eigenvalues $a_1\leq a_2\leq a_3$.  On the interval $\tau\geq-a_1$, the function
+\[
+ f_A(\tau)=\prod_{j=1}^3(\tau+a_j)
+\]
+is continuous, starts at zero, tends to infinity, and is strictly increasing after its initial zero.  Thus the required $\tau$ exists uniquely.  Continuous dependence on $(A,r)$ follows from the same monotonicity and a sequential compactness argument.  The two formulas are inverse.  The zero-phase statement reduces to Lemma~\ref{lem:topological-models}.
+\end{proof}
+
+\begin{theorem}[Block form of the phase-retaining quotient]\label{thm:Yblock}
+Under Theorem~\ref{thm:block-coordinates}, $\Y$ is exactly
+\[
+ \boxed{
+ \left\{(G,z,\lambda,\omega):
+ \begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix}\succeq0,
+ \quad
+ |\omega|^2=\lambda\det G-z^*\adj(G)z
+ \right\}.}
+\]
+Equivalently, retaining every singular case,
+\[
+ G\succeq0,\qquad z\in\im G,
+ \qquad \rho=\lambda-z^*G^\dagger z\geq0,
+\]
+and
+\[
+ |\omega|^2=\det G\,\rho.
+\]
+For $G>0$, this is
+\[
+ |\omega|^2=\det G\left(\lambda-z^*G^{-1}z\right).
+\]
+The $SL_2(\C)$ action is
+\[
+ \boxed{
+ g\cdot(G,z,\lambda,\omega)
+ =(gGg^*,gz,\lambda,\omega).}
+\]
+The zero-phase locus is exactly the rank-deficient locus:
+\[
+ \omega=0
+ \quad\Longleftrightarrow\quad
+ \det H=0.
+\]
+\end{theorem}
+
+\begin{proof}
+The determinant equation is Theorem~\ref{thm:block-coordinates}.  Lemma~\ref{lem:schur} supplies the positivity conditions.  If $G$ is singular and $z\in\im G$, then $\adj(G)z=0$, so the formula remains valid with $\det G\rho=0$.  The action follows from Theorem~\ref{thm:spin-embedding}, and it preserves $\omega$ because $\det T_P(g)=1$.
+\end{proof}
+
+\section{A colored Weyl doublet and scalar realize every block exactly}
+
+Let
+\[
+ \cZ=\Mat_{3\times2}(\C),
+ \qquad
+ \phi\in\C^3,
+ \qquad
+ B=[Z\ \phi]\in\Mat_{3\times3}(\C).
+\]
+Let $SU(3)$ act on the left by
+\[
+ U\cdot(Z,\phi)=(UZ,U\phi),
+\]
+and let $SL_2(\C)$ act on the right spinor index by
+\[
+ g\cdot(Z,\phi)=(Zg^*,\phi).
+\]
+The two actions commute.
+
+Define
+\[
+ M(B)=B^*B
+ =\begin{pmatrix}
+ Z^*Z&Z^*\phi\\
+ \phi^*Z&\phi^*\phi
+ \end{pmatrix}
+ =\begin{pmatrix}G&z\\z^*&\lambda\end{pmatrix},
+\]
+\[
+ H_P(B)=XM(B)X^*,
+ \qquad
+ \omega(B)=\det B.
+\]
+
+\begin{theorem}[The full color--spinor--scalar quotient]\label{thm:color-quotient}
+The map
+\[
+ \Gamma_P:\cZ\oplus\C^3\longrightarrow\Y,
+ \qquad
+ \Gamma_P(Z,\phi)=(H_P(B),\omega(B))
+\]
+is a proper surjection whose fibres are exactly the left $SU(3)$ orbits.  Hence
+\[
+ \boxed{(\Mat_{3\times2}(\C)\oplus\C^3)/SU(3)\cong\Y.}
+\]
+Because the quotient map is proper, it extends to one-point compactifications:
+\[
+ \boxed{
+ S^{18}/SU(3)\cong\Y^+\cong S^{10}.}
+\]
+The compactified quotient of the determinant-zero locus is the standard
+binding $S^8\subset S^{10}$.
+Its complete gauge-invariant coordinates are
+\[
+ \boxed{
+ G=Z^*Z,\qquad z=Z^*\phi,
+ \qquad\lambda=\phi^*\phi,
+ \qquad\omega=\epsilon_{abc}Z_{a1}Z_{b2}\phi_c.}
+\]
+They satisfy
+\[
+ \boxed{
+ |\omega|^2=\lambda\det G-z^*\adj(G)z.}
+\]
+Under $g\in SL_2(\C)$,
+\[
+ G\mapsto gGg^*,\qquad z\mapsto gz,
+ \qquad\lambda\mapsto\lambda,
+ \qquad\omega\mapsto\omega,
+\]
+and
+\[
+ H_P(Zg^*,\phi)=T_P(g)H_P(Z,\phi)T_P(g)^*.
+\]
+\end{theorem}
+
+\begin{proof}
+Gauge invariance is immediate.  Since $\det X=1$,
+\[
+ \det H_P(B)=\det(B^*B)=|\det B|^2.
+\]
+Thus the image lies in $\Y$.  Conversely, for $(H,\omega)\in\Y$, set
+\[
+ M=X^{-1}HX^{-*}\succeq0.
+\]
+Choose $B_0=M^{1/2}$.  If $\omega\neq0$, multiply $B_0$ on the left by a unitary matrix whose determinant is $\omega/|\omega|$; if $\omega=0$, take $B=B_0$.  This gives $B^*B=M$ and $\det B=\omega$.
+
+Suppose $B_1^*B_1=B_2^*B_2$ and $\det B_1=\det B_2$.  If the common rank is three, $U=B_2B_1^{-1}$ is unitary and has determinant one.  If the common rank is at most two, the induced isometry from $\im B_1$ to $\im B_2$ extends to $U_0\in U(3)$, and its determinant can be corrected on a nonzero orthogonal complement without changing $B_1$.  Thus $B_2=UB_1$ for some $U\in SU(3)$.
+
+Properness follows because $B\mapsto B^*B$ controls $\|B\|_F^2=\tr(B^*B)$ and $X$ is fixed and invertible.  The transformation law follows from
+\[
+ [Zg^*\ \phi]=B(g^*\oplus1)
+\]
+and $T_P(g)=X(g\oplus1)X^{-1}$.
+\end{proof}
+
+\begin{corollary}[The physical meaning of the five-dimensional fibre]\label{cor:fibre-meaning}
+For a fixed Lorentz vector $G\succeq0$, the complete positive fibre of $\mathcal O_P$ consists of the gauge-invariant Weyl spinor
+\[
+ z=Z^*\phi\in\im G
+\]
+and the scalar norm
+\[
+ \lambda=\phi^*\phi\geq z^*G^\dagger z.
+\]
+For $G>0$ this is exactly four real spinor coordinates and one real scalar coordinate.  No direction of the nine-dimensional cone is discarded.
+\end{corollary}
+
+\section{The exact relation to the toroidal rank drop}
+
+Let $L_3\cong\Z^3$ and $A_F\cong\Z^2$ be the marked angular lattices.  The same integral matrix $P$ defines
+\[
+ P:L_3\twoheadrightarrow A_F,
+ \qquad
+ \ker P=\Z u,
+\]
+and therefore a torus homomorphism
+\[
+ \overline P:L_3\otimes\R/L_3\longrightarrow A_F\otimes\R/A_F,
+ \qquad
+ [x]\longmapsto[Px],
+\]
+with compact kernel
+\[
+ \ker\overline P=(\R u)/(\Z u)\cong S^1.
+\]
+Its complexification is the linear map $P:\C^3\to\C^2$.
+
+\begin{theorem}[The shared kernel is an exact torus/cone bridge]\label{thm:kernel-bridge}
+The marked angular map and the Hermitian observation map are two functorial images of the same $P$.  For every $v\in\C^3$,
+\[
+ \boxed{
+ \mathcal O_P(vv^*)=(Pv)(Pv)^*.}
+\]
+More generally, for every $A\in\Mat_{3\times k}(\C)$,
+\[
+ \boxed{
+ \mathcal O_P(AA^*)=(PA)(PA)^*.}
+\]
+The one-dimensional complex kernel $\C u$ therefore appears as
+\[
+ \ker\overline P=(\R u)/(\Z u)\cong S^1
+\]
+on the angular torus and as
+\[
+ \mathcal O_P^{-1}(0)\cap\Jp=\R_{\geq0}uu^*
+\]
+on the positive Hermitian cone.
+\end{theorem}
+
+\begin{proof}
+Both Gram identities are direct matrix multiplication.  The two kernel statements were proved above.
+\end{proof}
+
+The actual cusp filling data use additional maps.  Retain
+\[
+ Q=\begin{pmatrix}0&-1&1\\1&-1&0\end{pmatrix},
+ \qquad
+ \Phi=P\oplus Q,
+\]
+\[
+ c_3:L_3\oplus\overline L_3\longrightarrow\overline L_3,
+ \qquad c_3(a,b)=b,
+\]
+\[
+ c_F:A_F\oplus B_F\longrightarrow B_F,
+ \qquad c_F(a',b')=b'.
+\]
+The exact filling square is
+\[
+ \boxed{\Phi M_3=M_F\Phi,\qquad c_F\Phi=Qc_3.}
+\]
+Thus $P$ is the angular component of $\Phi$; it is not either filling projection $c_3$ or $c_F$.  The Lorentz observation map is linked to the toroidal construction only through the displayed common matrix $P$ and Theorem~\ref{thm:kernel-bridge}.  No composite denoted $Q\beta$ is used here.  Likewise, no homology map from a total regular locus to a base is inserted into the defect-character calculation: the only maps in the retained filling statement are $\Phi$, $c_3$, $c_F$, and $Q$.
+
+\section{The exact composite momentum and its unconstrained spectrum}
+
+Fix $\alpha>0$.  For $Z\in\cZ$, define
+\[
+ \boxed{p(Z)=\alpha Z^*Z\in\Herm_2(\C)_{\succeq0}.}
+\]
+Write
+\[
+ p(Z)=p^0\sigma_0+p^1\sigma_1+p^2\sigma_2+p^3\sigma_3.
+\]
+Then
+\[
+ p^0=\frac{\alpha}{2}\tr(Z^*Z)\geq0,
+\]
+and define
+\[
+ \boxed{m^2(Z)=\det p(Z).}
+\]
+The symbol $m^2$ has momentum-squared units.  Restoring the speed of light, the physical rest mass is
+\[
+ M_{\mathrm{phys}}(Z)=\frac{\sqrt{m^2(Z)}}{c}.
+\]
+
+\begin{theorem}[The proper color quotient is the full future cone]\label{thm:momentum-quotient}
+The map
+\[
+ p:\Mat_{3\times2}(\C)\longrightarrow\Herm_2(\C)_{\succeq0}
+\]
+is proper and surjective, and its fibres are exactly the left $SU(3)$ orbits.  Therefore
+\[
+ \boxed{
+ \Mat_{3\times2}(\C)/SU(3)
+ \xrightarrow[\ p\ ]{\cong}
+ \Herm_2(\C)_{\succeq0}.}
+\]
+It extends to a quotient map
+\[
+ S^{12}=\Mat_{3\times2}(\C)^+\longrightarrow B^4.
+\]
+Under the Lorentz action $Z\mapsto Zg^*$,
+\[
+ \boxed{p(Zg^*)=gp(Z)g^*.}
+\]
+The mass formula is
+\[
+ \boxed{
+ m^2(Z)=\alpha^2\sum_{1\leq a<b\leq3}
+ |Z_{a1}Z_{b2}-Z_{b1}Z_{a2}|^2.}
+\]
+Its range is the entire interval $[0,\infty)$, and
+\[
+ m^2(Z)=0\quad\Longleftrightarrow\quad\rank Z\leq1.
+\]
+\end{theorem}
+
+\begin{proof}
+Surjectivity follows from the coefficient-preserving representative
+\[
+ Z_p=\alpha^{-1/2}
+ \begin{pmatrix}
+ (p^{1/2})_{11}&(p^{1/2})_{12}\\
+ (p^{1/2})_{21}&(p^{1/2})_{22}\\
+ 0&0
+ \end{pmatrix},
+ \qquad \alpha Z_p^*Z_p=p.
+\]
+If two matrices have the same Gram matrix, the isometry between their column spans extends to a unitary matrix on $\C^3$; because the span has dimension at most two, the determinant can be corrected on its orthogonal complement, producing an element of $SU(3)$.  Properness follows from
+\[
+ \tr p(Z)=\alpha\|Z\|_F^2.
+\]
+The Lorentz covariance is direct.  The mass formula is the $2\times2$ Cauchy--Binet identity.  For
+\[
+ Z_r=r\begin{pmatrix}1&0\\0&1\\0&0\end{pmatrix}
+\]
+one has $m^2(Z_r)=\alpha^2r^4$, proving that every nonnegative value occurs.
+\end{proof}
+
+Let $d^{12}Z$ be ordinary Lebesgue measure on $\cZ\cong\R^{12}$ and define the gauge-invariant Hilbert space
+\[
+ \cH_Z=L^2(\cZ,d^{12}Z)^{SU(3)}.
+\]
+The right $SL_2(\C)$ action has real Jacobian
+\[
+ |\det_\C g|^{2\cdot3}=1,
+\]
+so
+\[
+ (\mathsf U_g\psi)(Z)=\psi\bigl(Z(g^{-1})^*\bigr)
+\]
+is unitary.  Multiplication by $p^\mu(Z)$ defines four strongly commuting self-adjoint operators $\widehat p^\mu$.
+
+For a spacetime translation $a\in\R^{1,3}$, define
+\[
+ (\mathsf T(a)\psi)(Z)
+ =\exp\left(-\frac{i}{\hbar}a_\mu p^\mu(Z)\right)\psi(Z).
+\]
+Then
+\[
+ \mathsf U_g^{-1}\widehat p^\mu\mathsf U_g
+ =\Lambda(g)^\mu{}_{\nu}\widehat p^\nu,
+\]
+and the operators $\mathsf T(a)$ and $\mathsf U_g$ give a unitary positive-energy representation of
+\[
+ \R^{1,3}\rtimes SL_2(\C).
+\]
+
+\begin{theorem}[The exact unconstrained spectral statement]\label{thm:unconstrained-spectrum}
+Let $n$ be a future unit timelike vector and define the observer Hamiltonian
+\[
+ H_n=c\,n_\mu\widehat p^\mu.
+\]
+Let
+\[
+ \widehat M^2=\det\widehat p
+\]
+be multiplication by $m^2(Z)$, with maximal multiplication domains.  Then on $\cH_Z$,
+\[
+ \boxed{
+ \Spec(H_n)=[0,\infty),\qquad
+ \ker H_n=0,}
+\]
+and
+\[
+ \boxed{
+ \Spec(\widehat M^2)=[0,\infty),\qquad
+ \ker\widehat M^2=0.}
+\]
+Both operators have empty point spectrum.  After adjoining a one-dimensional invariant vacuum,
+\[
+ \cH_{\mathrm{vac}}=\C\Omega\oplus\cH_Z,
+\]
+zero is an eigenvalue but there is no positive gap above it.
+
+The same conclusion holds for every continuous dispersion operator
+\[
+ F(\widehat M^2)
+\]
+with $F:[0,\infty)\to[0,\infty)$, $F(0)=0$, and $F$ nonzero arbitrarily close to zero: its excitation spectrum has infimum zero.
+\end{theorem}
+
+\begin{proof}
+The compact gauge quotient identifies invariant measurable functions with measurable functions on the future cone equipped with the pushforward of Lebesgue measure.  This measure has full support.  Therefore the spectrum of each multiplication operator is its full essential range.
+
+For any $E\geq0$, the future cone contains momenta with $c\,n\cdot p=E$ and neighborhoods of such momenta have positive pushforward measure.  Similarly, Theorem~\ref{thm:momentum-quotient} shows that every value of $m^2$ occurs and every neighborhood of it has positive measure.  The level sets of either nonconstant polynomial have Lebesgue measure zero in $\R^{12}$, so there are no eigenvalues.  In particular, the zero sets do not support nonzero $L^2$ vectors.  The statement for $F$ follows from continuity at zero.
+\end{proof}
+
+\begin{corollary}[Free Fock quantization]\label{cor:fock-unconstrained}
+On the symmetric Fock space
+\[
+ \Gamma_s(\cH_Z)
+\]
+the second-quantized Hamiltonian $d\Gamma(H_n)$ is nonnegative, has the Fock vacuum as its kernel, and has no positive spectral gap.
+\end{corollary}
+
+\section{The complex determinant coordinate gives a sharp constrained threshold}
+
+Return to the full configuration $B=[Z\ \phi]$ and its invariants
+\[
+ G=Z^*Z,\qquad z=Z^*\phi,
+ \qquad\lambda=\phi^*\phi,
+ \qquad\omega=\det B.
+\]
+Since $p=\alpha G$ and, for $2\times2$ matrices,
+\[
+ \adj(\alpha G)=\alpha\adj(G),
+\]
+the Gram identity is equivalent, whenever $\lambda>0$, to
+\[
+ \boxed{
+ m^2
+ =\frac{\alpha^2}{\lambda}|\omega|^2
+ +\frac{\alpha}{\lambda}z^*\adj(p)z.}
+\]
+If $p\succeq0$, then $\adj(p)\succeq0$.
+
+\begin{theorem}[The sharp determinant-and-scalar mass bound]\label{thm:mass-bound}
+For every configuration with $\lambda>0$,
+\[
+ \boxed{
+ m^2(Z)\geq\frac{\alpha^2|\omega|^2}{\lambda}.}
+\]
+If $\omega\neq0$, then $G>0$ and equality holds if and only if
+\[
+ z=Z^*\phi=0.
+\]
+Equivalently, equality holds exactly when $\phi$ is Hermitian-orthogonal to both columns of $Z$.
+
+More generally, on any invariant set satisfying
+\[
+ |\omega|\geq\Omega_0>0,
+ \qquad
+ 0<\lambda\leq\Lambda,
+\]
+one has
+\[
+ \boxed{
+ m^2\geq\frac{\alpha^2\Omega_0^2}{\Lambda}.}
+\]
+\end{theorem}
+
+\begin{proof}
+The identity preceding the theorem and positivity of $\adj(p)$ give the bound.  If $\omega\neq0$, then $B$ is invertible, so $M=B^*B>0$ and its principal block $G$ is positive definite.  Thus $\adj(p)>0$, and the second term vanishes exactly when $z=0$.
+\end{proof}
+
+Fix
+\[
+ \lambda_0>0,
+ \qquad
+ \omega_0\in\C^*.
+\]
+Define the exact constrained configuration space
+\[
+ \cS_{\lambda_0,\omega_0}
+ =\{(Z,\phi):\phi^*\phi=\lambda_0,
+ \ \det[Z\ \phi]=\omega_0\}.
+\]
+Since $\omega_0\neq0$, every $B=[Z\ \phi]$ in this set is invertible.  The three-real-component map
+\[
+ (Z,\phi)\longmapsto
+ (\phi^*\phi,\Re\det B,\Im\det B)
+\]
+is a submersion there: varying $Z$ changes $\det B$ arbitrarily while fixing $\phi$, and radial variation of $\phi$ changes $\phi^*\phi$.  Thus $\cS_{\lambda_0,\omega_0}$ is a smooth real $15$-manifold.  The $SU(3)$ action is free, and
+\[
+ \cQ_{\lambda_0,\omega_0}
+ =\cS_{\lambda_0,\omega_0}/SU(3)
+\]
+is a smooth real $7$-manifold carrying the induced $SL_2(\C)$ action.
+
+\begin{theorem}[Global topology of the constrained quotient]\label{thm:constrained-topology}
+The invariant coordinates identify the quotient exactly with
+\[
+ \cQ_{\lambda_0,\omega_0}
+ \cong
+ \left\{(G,z):G>0,\quad
+ z^*\adj(G)z=\lambda_0\det G-|\omega_0|^2\right\}.
+\]
+For such a pair, retain the coordinates
+\[
+ \mu=\sqrt{\det G},\qquad
+ A=\log(\mu^{-1}G)\in\Herm_2^0(\C),
+ \qquad
+ w=G^{-1/2}z\in\C^2.
+\]
+They obey
+\[
+ \|w\|^2=\lambda_0-\frac{|\omega_0|^2}{\mu^2},
+ \qquad
+ \mu=\frac{|\omega_0|}
+ {\sqrt{\lambda_0-\|w\|^2}}.
+\]
+Consequently the map
+\[
+ (G,z)\longmapsto(A,w)
+\]
+is a diffeomorphism
+\[
+ \boxed{
+ \cQ_{\lambda_0,\omega_0}
+ \xrightarrow{\ \cong\ }
+ \Herm_2^0(\C)\times
+ \{w\in\C^2:\|w\|^2<\lambda_0\}.}
+\]
+Its inverse is
+\[
+ \boxed{
+ \mu(w)=\frac{|\omega_0|}
+ {\sqrt{\lambda_0-\|w\|^2}},\qquad
+ G(A,w)=\mu(w)e^A,
+ \qquad
+ z(A,w)=G(A,w)^{1/2}w.}
+\]
+Thus
+\[
+ \cQ_{\lambda_0,\omega_0}
+ \cong \mathbb H^3\times\mathbb B^4_{\sqrt{\lambda_0}}
+ \cong\R^7,
+\]
+where the positive determinant-one Hermitian matrices form the future unit
+hyperboloid $\mathbb H^3$, and $\mathbb B^4_{\sqrt{\lambda_0}}$ is the open
+four-ball of radius $\sqrt{\lambda_0}$.
+
+The free principal bundle
+\[
+ \cS_{\lambda_0,\omega_0}
+ \longrightarrow\cQ_{\lambda_0,\omega_0}
+\]
+is smoothly trivial.  More precisely, if
+\[
+ M(G,z)=\begin{pmatrix}G&z\\z^*&\lambda_0\end{pmatrix},
+ \qquad
+ D_{\omega_0}=\diag\left(\frac{\omega_0}{|\omega_0|},1,1\right),
+\]
+then
+\[
+ s_{\omega_0}(G,z)=D_{\omega_0}M(G,z)^{1/2}
+\]
+is a smooth global section, and
+\[
+ \boxed{
+ \cS_{\lambda_0,\omega_0}
+ \cong SU(3)\times\mathbb H^3\times
+ \mathbb B^4_{\sqrt{\lambda_0}}.}
+\]
+In the $(A,w)$ coordinates the mass is
+\[
+ \boxed{
+ m^2(A,w)=
+ \frac{\alpha^2|\omega_0|^2}
+ {\lambda_0-\|w\|^2}.}
+\]
+The variable $A$ specifies the future unit timelike direction of the momentum,
+while the complete gauge-invariant Weyl-spinor coordinate $w$ controls its
+Lorentz norm.
+\end{theorem}
+
+\begin{proof}
+Because $\omega_0\neq0$, every matrix $B=[Z\ \phi]$ in the constrained
+space is invertible.  Theorem~\ref{thm:color-quotient} therefore identifies
+its gauge orbit with the positive-definite block matrix
+\[
+ M=\begin{pmatrix}G&z\\z^*&\lambda_0\end{pmatrix},
+ \qquad
+ \det M=|\omega_0|^2.
+\]
+The block determinant identity gives the first displayed model of the
+quotient.  Since $G>0$,
+\[
+ z^*\adj(G)z
+ =\det G\,z^*G^{-1}z
+ =\mu^2\|G^{-1/2}z\|^2.
+\]
+Substituting $\det G=\mu^2$ gives the stated relation between $\mu$ and $w$.
+Also $\det(\mu^{-1}G)=1$, so $A=\log(\mu^{-1}G)$ is traceless Hermitian.
+Conversely, the displayed inverse has $\det G=\mu(w)^2$ and
+\[
+ z^*\adj(G)z=\mu(w)^2\|w\|^2,
+\]
+so the block determinant is
+\[
+ \mu(w)^2\bigl(\lambda_0-\|w\|^2\bigr)=|\omega_0|^2.
+\]
+The positive matrix exponential and logarithm are smooth inverse maps between
+$\Herm_2^0(\C)$ and the determinant-one positive Hermitian matrices, proving
+the diffeomorphism.
+
+For the bundle statement, $\det M=|\omega_0|^2$ implies
+$\det M^{1/2}=|\omega_0|$.  Hence
+\[
+ \det\bigl(D_{\omega_0}M^{1/2}\bigr)=\omega_0,
+ \qquad
+ \bigl(D_{\omega_0}M^{1/2}\bigr)^*
+ \bigl(D_{\omega_0}M^{1/2}\bigr)=M.
+\]
+This gives a smooth section of the complete $SU(3)$ orbit map.  Finally,
+$m^2=\alpha^2\det G=\alpha^2\mu(w)^2$, which is the stated formula.
+\end{proof}
+
+\begin{corollary}[Equivariant associated-ball model and orbit space]\label{cor:associated-ball}
+There is an $SL_2(\C)$-equivariant diffeomorphism
+\[
+ \boxed{
+ \cQ_{\lambda_0,\omega_0}
+ \cong
+ SL_2(\C)\times_{SU(2)}
+ \mathbb B^4_{\sqrt{\lambda_0}},}
+\]
+where $SU(2)$ acts on $SL_2(\C)$ on the right and on
+$\mathbb B^4\subset\C^2$ by the fundamental representation.  With the
+convention
+\[
+ (g,w)\sim(gk,k^{-1}w),\qquad k\in SU(2),
+\]
+the map is
+\[
+ \boxed{
+ [g,w]\longmapsto
+ \left(
+ G=\mu(w)gg^*,\quad
+ z=\sqrt{\mu(w)}\,gw
+ \right),
+ \qquad
+ \mu(w)=\frac{|\omega_0|}
+ {\sqrt{\lambda_0-\|w\|^2}}.}
+\]
+The Lorentz action has cohomogeneity one, and its orbit space is the exact
+mass half-line
+\[
+ \boxed{
+ \cQ_{\lambda_0,\omega_0}/SL_2(\C)
+ \cong
+ \left[
+ \frac{\alpha^2|\omega_0|^2}{\lambda_0},\infty
+ \right).}
+\]
+Every strict-interior mass orbit is a free $SL_2(\C)$-torsor and hence, after
+a basepoint choice, is $SL_2(\C)$ itself.  The threshold orbit is the singular
+orbit
+\[
+ SL_2(\C)/SU(2)=\mathbb H^3.
+\]
+\end{corollary}
+
+\begin{proof}
+The displayed formula is unchanged under
+$(g,w)\mapsto(gk,k^{-1}w)$.  It satisfies
+\[
+ \det G=\mu(w)^2,
+ \qquad
+ z^*G^{-1}z=\|w\|^2,
+\]
+and therefore the fixed determinant equation.  Conversely, for a quotient
+point $(G,z)$ set
+\[
+ \mu=\sqrt{\det G},
+ \qquad
+ g=\mu^{-1/2}G^{1/2}\in SL_2(\C),
+ \qquad
+ w=G^{-1/2}z.
+\]
+This recovers the point, with the positive square root giving one
+representative.  More generally, if
+$G=\mu\widetilde g\widetilde g^*$ is another factorization with
+$\widetilde g\in SL_2(\C)$, then $\widetilde g=gk$ for a unique
+$k\in SU(2)$, and the corresponding spinor coordinate is
+$\widetilde w=k^{-1}w$.  Thus all choices differ by exactly the displayed
+associated-bundle equivalence.  The mass formula in
+Theorem~\ref{thm:constrained-topology} is a strictly increasing function of
+$\|w\|$, so it is the complete orbit invariant.  The stabilizer of a nonzero
+$w$ in the fundamental $SU(2)$ action is trivial, whereas the stabilizer at
+$w=0$ is all of $SU(2)$.
+\end{proof}
+
+\begin{corollary}[The momentum projection and its exact collapsing fibres]\label{cor:momentum-fibres}
+The constrained momentum map
+\[
+ p:\cQ_{\lambda_0,\omega_0}\longrightarrow
+ \left\{p>0:\det p\geq
+ \frac{\alpha^2|\omega_0|^2}{\lambda_0}\right\}
+\]
+is proper and surjective.  Over a momentum satisfying the strict inequality,
+its fibre is a three-sphere; over the threshold hypersurface, its fibre is one
+point.  Explicitly, for $G=p/\alpha$ the fibre is
+\[
+ \left\{z\in\C^2:
+ z^*\adj(G)z=\lambda_0\det G-|\omega_0|^2\right\},
+\]
+an ellipsoidal $S^3$ when the right-hand side is positive and $\{0\}$ when it
+vanishes.
+\end{corollary}
+
+\begin{proof}
+The fibre description follows from Theorem~\ref{thm:constrained-topology}.
+Surjectivity is also proved by the explicit representatives in
+Theorem~\ref{thm:constrained-image} below.  If a set of momenta is compact,
+then its corresponding set of positive matrices $G$ is compact and the
+right-hand side of the fibre equation is bounded.  Uniform upper and lower
+eigenvalue bounds for $\adj(G)$ then bound $z$; the closed fibre equation gives
+compactness of the inverse image.  Hence the map is proper.
+\end{proof}
+
+\begin{theorem}[The generic fibre is the massive little group]\label{thm:little-group-fibre}
+Let $p=\alpha G$ lie in the strict interior of the constrained momentum image,
+so
+\[
+ \det p>\frac{\alpha^2|\omega_0|^2}{\lambda_0}.
+\]
+Its spin-cover little group is
+\[
+ K_G=\{g\in SL_2(\C):gGg^*=G\}
+ =G^{1/2}SU(2)G^{-1/2}\cong SU(2).
+\]
+This group acts simply transitively on the fibre of the constrained momentum
+map.  Thus every strict-interior fibre is canonically a $K_G$-torsor and,
+after choosing one point, is diffeomorphic to $SU(2)\cong S^3$.  On the
+threshold hypersurface the fibre is a point fixed by the entire little group.
+
+More explicitly, in the coordinates of
+Theorem~\ref{thm:constrained-topology}, the fibre is
+\[
+ \{w\in\C^2:\|w\|=r\},
+ \qquad
+ r^2=\lambda_0-
+ \frac{\alpha^2|\omega_0|^2}{\det p},
+\]
+and the conjugation $g=G^{1/2}kG^{-1/2}$ gives the fundamental action
+$w\mapsto kw$ of $k\in SU(2)$.  It is free and transitive when $r>0$.
+Consequently the fixed-mass strata are
+\[
+ \boxed{
+ \{m^2=\mathfrak m^2\}\cong
+ \begin{cases}
+ \mathbb H^3\times SU(2),&
+ \mathfrak m^2>\alpha^2|\omega_0|^2/\lambda_0,\\
+ \mathbb H^3,&
+ \mathfrak m^2=\alpha^2|\omega_0|^2/\lambda_0.
+ \end{cases}}
+\]
+With a chosen point in a generic fibre, the induced little-group action on
+$L^2(S^3)$ is the regular representation.  Peter--Weyl therefore gives
+\[
+ L^2(SU(2))
+ \cong
+ \widehat\bigoplus_{j\in\frac12\Z_{\geq0}}
+ V_j\otimes V_j^*,
+\]
+so every integral and half-integral spin occurs, with multiplicity
+$\dim V_j=2j+1$.  The geometry by itself does not select a single spin sector.
+\end{theorem}
+
+\begin{proof}
+The displayed description of $K_G$ follows by writing
+$g=G^{1/2}kG^{-1/2}$; the condition $gGg^*=G$ is then equivalent to
+$kk^*=I_2$, and $\det g=1$ is equivalent to $\det k=1$.  If
+$z=G^{1/2}w$, the transformed spinor is
+\[
+ G^{-1/2}(gz)=kw.
+\]
+For $r>0$, $SU(2)$ acts freely and transitively on the sphere
+$\{w\in\C^2:\|w\|=r\}$: after dividing by $r$, this is the standard simply
+transitive action on the unit three-sphere.  At $r=0$ the fibre is $\{0\}$.
+The fixed-mass descriptions follow from the product coordinates
+$\mathbb H^3\times\mathbb B^4_{\sqrt{\lambda_0}}$ and the exact mass formula.
+The last assertion is the Peter--Weyl decomposition of the regular
+representation of $SU(2)$.
+\end{proof}
+
+\begin{theorem}[Exact image and sharpness]\label{thm:constrained-image}
+On $\cQ_{\lambda_0,\omega_0}$, the mass-squared image is exactly
+\[
+ \boxed{
+ \left[
+ \frac{\alpha^2|\omega_0|^2}{\lambda_0},\infty
+ \right).}
+\]
+The momentum image is exactly
+\[
+ \boxed{
+ \left\{p\in\Herm_2(\C)_{>0}:
+ \det p\geq\frac{\alpha^2|\omega_0|^2}{\lambda_0}
+ \right\}.}
+\]
+For every
+\[
+ d\geq\frac{|\omega_0|^2}{\lambda_0},
+\]
+an explicit representative with $\det G=d$ is obtained by choosing
+\[
+ r=d^{1/4},
+\]
+\[
+ Z_d=
+ \begin{pmatrix}r&0\\0&r\\0&0\end{pmatrix},
+ \qquad
+ \phi_d=
+ \begin{pmatrix}
+ \sqrt{\lambda_0-|\omega_0|^2/d}\\
+ 0\\
+ \omega_0/\sqrt d
+ \end{pmatrix}.
+\]
+It satisfies
+\[
+ \phi_d^*\phi_d=\lambda_0,
+ \qquad
+ \det[Z_d\ \phi_d]=\omega_0,
+ \qquad
+ \det(Z_d^*Z_d)=d.
+\]
+At the lower endpoint, $Z_d^*\phi_d=0$.
+\end{theorem}
+
+\begin{proof}
+The lower bound is Theorem~\ref{thm:mass-bound}.  The displayed representatives prove that every larger determinant occurs.  Their momenta are $\alpha\sqrt d\,I_2$.  For an arbitrary positive-definite $G$ with determinant $d$, set
+\[
+ g=d^{-1/4}G^{1/2}\in SL_2(\C).
+\]
+Then
+\[
+ g(\sqrt d\,I_2)g^*=G.
+\]
+Applying the $SL_2(\C)$ action to the displayed representative preserves $\lambda_0$ and $\omega_0$, proving the full momentum-image statement.
+\end{proof}
+
+\begin{corollary}[The phase-zero binding is larger than the massless locus]\label{cor:binding-massless}
+The exact inclusion is
+\[
+ \{m^2=0\}\subset\{\omega=0\}.
+\]
+It is strict.  Indeed,
+\[
+ Z=\begin{pmatrix}1&0\\0&1\\0&0\end{pmatrix},
+ \qquad
+ \phi=\begin{pmatrix}1\\0\\0\end{pmatrix}
+\]
+gives
+\[
+ \omega=0,
+ \qquad
+ m^2=\alpha^2.
+\]
+Thus the compactified $S^8$ binding is the full rank-loss locus of $B$, not merely the massless locus of the observed momentum.
+\end{corollary}
+
+\begin{proof}
+If $m^2=0$, then $\rank Z\leq1$, so the $3\times3$ matrix $[Z\ \phi]$ has rank at most two and $\omega=0$.  The displayed example proves strictness.
+\end{proof}
+
+\section{A constrained positive-energy model and its exact gap}
+
+Let $x^\mu(\tau)$ be a Minkowski position variable.  Introduce a real multiplier $\rho(\tau)$ and a complex multiplier $\chi(\tau)$.  The first-order constrained action
+\[
+ \boxed{
+ S_{\lambda_0,\omega_0}
+ =\int\left[
+ p_\mu(Z)\dot x^\mu
+ -\rho\bigl(\phi^*\phi-\lambda_0\bigr)
+ -2\Re\!\left(\overline\chi
+ \bigl(\det[Z\ \phi]-\omega_0\bigr)\right)
+ \right]d\tau}
+\]
+is invariant under spacetime translations, global $SL_2(\C)$, and local left $SU(3)$ acting on $(Z,\phi)$.  The multiplier equations impose precisely the two constraints.  The $x$ equation gives $\dot p^\mu=0$.
+
+No unit convention is hidden.  Take the world-line parameter to have unit
+$[\tau]=\mathsf T$.  If $[x]=\mathsf L$, $[p]=\hbar/\mathsf L$, and the entries of $Z$ and $\phi$ have a common unit $\mathsf z$, then
+\[
+ [\alpha]=\frac{\hbar}{\mathsf L\,\mathsf z^2},
+ \qquad
+ [\lambda_0]=\mathsf z^2,
+ \qquad
+ [\omega_0]=\mathsf z^3,
+\]
+while the multipliers have the forced units
+\[
+ [\rho]=\frac{\hbar}{\mathsf T\,\mathsf z^2},
+ \qquad
+ [\chi]=\frac{\hbar}{\mathsf T\,\mathsf z^3}.
+\]
+The lower energy derived below has unit
+\[
+ c\,[\alpha]\,[\omega_0]/\sqrt{[\lambda_0]}
+ =c\hbar/\mathsf L.
+\]
+Every term in the integrand has unit $\hbar/\mathsf T$, so the quantum phase is $\exp(iS/\hbar)$.
+
+The ambient Lebesgue measure is invariant under both groups.  The distributional level-set measure
+\[
+ d\mu_{\lambda_0,\omega_0}
+ =\delta(\phi^*\phi-\lambda_0)
+  \delta(\Re\omega-\Re\omega_0)
+  \delta(\Im\omega-\Im\omega_0)\,d^{18}B
+\]
+is therefore invariant, up to one retained overall positive constant.  Define
+\[
+ \cH_{\lambda_0,\omega_0}
+ =L^2(\cS_{\lambda_0,\omega_0},d\mu_{\lambda_0,\omega_0})^{SU(3)}.
+\]
+The same translation and Lorentz formulas as before give a positive-energy unitary representation.
+
+\begin{theorem}[Exact constrained mass and energy thresholds]\label{thm:energy-gap}
+Let $\widehat M^2$ be multiplication by $\det p$ on
+$\cH_{\lambda_0,\omega_0}$.  Then
+\[
+ \boxed{
+ \Spec(\widehat M^2)
+ =\left[
+ \frac{\alpha^2|\omega_0|^2}{\lambda_0},\infty
+ \right).}
+\]
+For every future unit timelike observer $n$, let
+\[
+ H_n^{(\lambda_0,\omega_0)}
+ =c\,n_\mu\widehat p^\mu.
+\]
+Then
+\[
+ \boxed{
+ \Spec\bigl(H_n^{(\lambda_0,\omega_0)}\bigr)
+ =\left[
+ \frac{c\alpha|\omega_0|}{\sqrt{\lambda_0}},\infty
+ \right).}
+\]
+Both multiplication operators have empty point spectrum.  After adjoining a one-dimensional invariant vacuum,
+\[
+ \widetilde\cH_{\lambda_0,\omega_0}
+ =\C\Omega\oplus\cH_{\lambda_0,\omega_0},
+\]
+the Hamiltonian has the exact positive gap
+\[
+ \boxed{
+ \Delta E
+ =\frac{c\alpha|\omega_0|}{\sqrt{\lambda_0}}.}
+\]
+The symmetric Fock Hamiltonian
+\[
+ d\Gamma\bigl(H_n^{(\lambda_0,\omega_0)}\bigr)
+\]
+has the same vacuum gap.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:constrained-topology} gives the exact mass formula
+\[
+ m^2(A,w)=\frac{\alpha^2|\omega_0|^2}
+ {\lambda_0-\|w\|^2},
+ \qquad \|w\|^2<\lambda_0,
+\]
+so its range is the displayed half-line.  For a future causal momentum and a
+future unit timelike $n$, the Minkowski reverse Cauchy--Schwarz inequality
+gives
+\[
+ n\cdot p\geq\sqrt{\det p}.
+\]
+Theorem~\ref{thm:constrained-image} therefore gives
+\[
+ c\,n\cdot p\geq\frac{c\alpha|\omega_0|}{\sqrt{\lambda_0}}.
+\]
+Equality is attained at the lower-endpoint representative after a Lorentz
+transformation taking its rest direction to $n$.  Every larger energy occurs
+by boosting a momentum on the lowest mass shell.  The invariant level-set
+measure has full support on the constrained manifold, so each multiplication
+spectrum is the closure of its exact range.
+
+In the global coordinates
+$\mathbb H^3\times\mathbb B^4_{\sqrt{\lambda_0}}$, neither the mass function
+nor the observer-energy function is constant on a nonempty open set.  Their
+level sets are proper real-analytic subsets and therefore have zero smooth
+level-set measure.  Hence neither operator has an eigenvalue.  Second
+quantization preserves the lowest one-particle excitation energy.
+\end{proof}
+
+\begin{proposition}[Which constraints are actually needed]\label{prop:needed-constraints}
+Fixing $\omega=\omega_0\neq0$ without controlling $\lambda$ does not give a positive mass threshold.  An explicit sequence is
+\[
+ B_R=\diag\left((\omega_0/R)^{1/2},
+                 (\omega_0/R)^{1/2},R\right),
+ \qquad R\to\infty,
+\]
+for any consistent square-root choice.  Then
+\[
+ \det B_R=\omega_0,
+ \qquad
+ \lambda_R=R^2,
+ \qquad
+ m_R^2=\frac{\alpha^2|\omega_0|^2}{R^2}\longrightarrow0.
+\]
+Likewise, fixing $\lambda=\lambda_0$ while allowing $\omega\to0$ gives no threshold; for example
+\[
+ B_\varepsilon=\diag(\varepsilon,\varepsilon,\sqrt{\lambda_0})
+\]
+has
+\[
+ \lambda=\lambda_0,
+ \qquad
+ \omega=\varepsilon^2\sqrt{\lambda_0},
+ \qquad
+ m^2=\alpha^2\varepsilon^4\longrightarrow0.
+\]
+Thus the positive bound is selected by a lower bound on $|\omega|$ together with an upper bound on $\lambda$, or by the exact equalities used above.
+\end{proposition}
+
+\begin{proposition}[No positive quadratic spinor metric is fully Lorentz invariant]\label{prop:no-positive-kinetic}
+There is no positive-definite Hermitian form $K$ on $\C^2$ satisfying
+\[
+ g^*Kg=K\qquad\text{for every }g\in SL_2(\C).
+\]
+Consequently there is no positive-definite quadratic kinetic term on $Z\in\Mat_{3\times2}(\C)$ that is simultaneously left $SU(3)$ invariant and invariant under the full right $SL_2(\C)$ action.  A positive Schr\"odinger Laplacian on the $Z$ coordinates therefore requires an observer, a compact subgroup, or a constraint/first-order formulation such as the one above.
+\end{proposition}
+
+\begin{proof}
+Take
+\[
+ g_t=\diag(e^t,e^{-t}).
+\]
+If $K=(K_{ij})$ were positive and invariant, then
+\[
+ e^{2t}K_{11}=K_{11}
+\]
+for every $t$, forcing $K_{11}=0$, contradicting positive definiteness.  The statement for three color copies follows by restricting any proposed invariant form to one nonzero color line.
+\end{proof}
+
+\section{Constructed maps, disproved extensions, and the remaining exact seams}
+
+The calculations above settle the following maps completely.
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.28\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}}
+\toprule
+Map & Exact result & Compactified or physical consequence\\
+\midrule
+$\mathcal O_P(H)=PHP^*$ & Surjective positive map with complete fibres in Theorem~\ref{thm:fibres} & No extension $S^8\to B^4$ or $B^9\to B^4$\\
+$\jmath_P(G)=R_PGR_P^*$ & Proper right inverse; timelike/null ranks $2/1$ & Embedding $B^4\hookrightarrow S^8$\\
+$a_\varepsilon(G)=uu^*+\varepsilon\jmath_P(G)$ & Proper map of cone pairs, determinant $\varepsilon^2\det G$ & $(B^4,S^3)\to(B^9,S^8)$\\
+$T_P(g)$ & Exact $SL_2(\C)$ embedding & Full vector $\oplus$ Weyl spinor $\oplus$ scalar action\\
+$\Gamma_P(Z,\phi)$ & Complete $SU(3)$ quotient to $\Y$ & $S^8$ is the $\omega=0$ binding inside $S^{10}$\\
+$p(Z)=\alpha Z^*Z$ & Proper $SU(3)$ quotient to future momentum cone & Unconstrained positive-energy representation is gapless\\
+$p:\cQ_{\lambda_0,\omega_0}\to\Herm_2(\C)_{>0}$ & Proper; $\cQ\cong\mathbb H^3\times\mathbb B^4$; generic fibre $SU(2)$ & Determinant-constrained vacuum gap $c\alpha|\omega_0|/\sqrt{\lambda_0}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three further seams remain distinct.
+
+\paragraph{Toroidal total-space map.}
+The exact common arrow is the marked angular matrix $P$, with torus kernel $(\R u)/(\Z u)$ and cone zero fibre $\R_{\geq0}uu^*$.  The local toric morphism uses the fan map induced by $P$, while the actual filling square also uses $Q$, $c_3$, and $c_F$.  A map from points of the toroidal total space to $\Y$ would require an explicitly chosen Hermitian covariance or Gram datum on those points.  The period lattice and fan alone do not supply such a pointwise matrix.  The strongest constructed bridge is therefore Theorem~\ref{thm:kernel-bridge}, together with the retained filling square; no total-space map is asserted.
+
+\paragraph{Global elliptic stabilization.}
+The cusp and finite monodromy matrices can be block-lifted, but a global analytic total space still requires the actual overlap cocycle at the finite fillings.  The present module neither assumes nor replaces that cocycle.  All Lorentz and physical constructions above live on the exact representation and quotient spaces and do not depend on a global $S^8$ torus fibration.
+
+\paragraph{Interacting gauge field theory.}
+The constrained model above is an exact positive-energy one-particle representation and its free Fock quantization.  Its $SU(3)$ is a compact gauge redundancy on finite-dimensional color variables; it does not contain a spacetime $SU(3)$ connection, curvature, Gauss-law field constraint, local observable net, or interacting Yang--Mills Hamiltonian.  The strongest available construction is therefore the explicit color--spin--momentum quotient and the exact determinant-controlled threshold theorem.  A transfer to interacting Yang--Mills would require a separately defined map from these one-particle or Fock states into a gauge-field Hilbert space with an energy-form intertwining estimate; no such map is used here.
+
+\section{Conclusion}
+
+The nine-dimensional cone selected by the rank-drop matrix $P$ is not merely a four-dimensional Lorentz slice.  It is the full spin representation
+\[
+ \Herm_3(\C)
+ \cong
+ \underbrace{\Herm_2(\C)}_{\text{Lorentz vector}}
+ \oplus
+ \underbrace{\C^2}_{\text{Weyl spinor}}
+ \oplus
+ \underbrace{\R}_{\text{scalar}},
+\]
+with cubic invariant
+\[
+ \lambda\det G-z^*\adj(G)z.
+\]
+The same $P$ that kills the diagonal angular circle also produces the positive observation map whose zero fibre is the corresponding rank-one ray.  The phase-retaining $SU(3)$ quotient realizes every one of these coordinates as a gauge invariant of two colored Weyl components and one colored scalar.  Its full complex determinant coordinate is not cosmetic: with the scalar norm controlled, its nonzero magnitude produces the exact sharp lower mass and energy thresholds proved above.  Removing either control restores a continuum down to zero by explicit sequences.
+
+\end{document}

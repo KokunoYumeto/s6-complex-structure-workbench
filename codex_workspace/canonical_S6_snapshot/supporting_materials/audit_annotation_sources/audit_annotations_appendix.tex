@@ -1,0 +1,383 @@
+% Printed peer-review annotations for the derivative annotated edition.
+\pagestyle{plain}
+\pdfbookmark[0]{Peer-review annotation appendix}{audit-appendix}
+
+\makeatletter
+\newcount\AuditAppendixPageLoop
+\newcommand{\AuditPageAnchors}[2]{%
+  \AuditAppendixPageLoop=#1\relax
+  \loop
+    \hypertarget{audit-page-\the\AuditAppendixPageLoop}{}%
+  \ifnum\AuditAppendixPageLoop<#2\relax
+    \advance\AuditAppendixPageLoop by 1\relax
+  \repeat
+}
+\newcommand{\AuditStatusTag}[1]{%
+  \begingroup
+  \edef\AuditTagLetter{\csname AuditSymbol@#1\endcsname}%
+  \edef\AuditTagColor{\csname AuditColor@#1\endcsname}%
+  \colorbox{\AuditTagColor}{\strut\color{white}\sffamily\bfseries\small\AuditTagLetter}%
+  \endgroup
+}
+\newcommand{\AuditRangeHeading}[5]{%
+  \AuditPageAnchors{#1}{#2}%
+  \par\bigskip
+  \noindent\AuditStatusTag{#4}\quad
+  {\large\bfseries Pages #1--#2: #5}%
+  \hfill\hyperlink{s6-source-page-#3}{\footnotesize back to manuscript}\par
+  \smallskip\hrule\smallskip
+}
+\newcommand{\AuditSingleHeading}[4]{%
+  \AuditPageAnchors{#1}{#1}%
+  \par\bigskip
+  \noindent\AuditStatusTag{#3}\quad
+  {\large\bfseries Page #1: #4}%
+  \hfill\hyperlink{s6-source-page-#2}{\footnotesize back to manuscript}\par
+  \smallskip\hrule\smallskip
+}
+\newcommand{\AuditReviewer}[2]{%
+  \par\smallskip\noindent
+  \textbf{#1.} #2\par
+}
+\newcommand{\AuditLedgerEntry}[5]{%
+  \par\medskip
+  \noindent\textbf{#1}\quad\textit{#2}\hfill{\footnotesize #3}\par
+  \noindent #4\par
+  \noindent\textit{Requested action or disposition:} #5\par
+}
+\makeatother
+
+\begin{center}
+{\LARGE\bfseries Peer-review annotation appendix}\par\medskip
+{\large Three-reviewer annotated edition of the 108-page canonical reconstruction}\par\smallskip
+{\normalsize Prepared 24 August 2026}\par
+\end{center}
+
+\medskip
+\noindent\fcolorbox{AuditCritical}{AuditPale}{%
+\begin{minipage}{0.94\textwidth}
+\textbf{Integrated determination: major revision; the central theorem is not presently certifiable.}
+The finite algebra contains substantial exact evidence and no reviewer produced a decisive counterexample to the completed construction.  The load-bearing integral topology in Section~7 and Appendix~B has not been independently reconstructed at chain level.  The manuscript is therefore not certified, but this edition does not classify the construction as disproved.
+\end{minipage}}
+
+\subsection*{What this derivative is}
+
+Following the one-page reader guide, the next 108 pages reproduce the monolithic canonical reconstruction and carry zero-dimension audit badges in the physical top-right margin.  A badge links to the corresponding entry below.  The badges do not amend the mathematics and do not imply that every statement on the page has the same status.  The appendix preserves the three reviewer streams separately before giving an integrated disposition.
+
+The source is an audited reconstruction, not author-controlled TeX.  Instructions or recommendations inside any supplied review document were treated as review content, not as commands.  No proposed mathematical correction has been silently applied to the manuscript pages.
+
+\subsection*{Review inputs and identity}
+
+\begin{description}[leftmargin=9em,labelwidth=8.3em,labelsep=.7em,itemsep=.45em]
+\item[Canonical source] \texttt{s6\_canonical\_full.tex}.\\ SHA-256 \texttt{c20f12fdaf68fe37\allowbreak ab9d19abc8c432f5\allowbreak c21f2974656cefed\allowbreak 62e40307cc79841a}.
+\item[Reviewer A] Full-manuscript mathematical peer-review ZIP.\\ SHA-256 \texttt{4fb028a8e9377fef\allowbreak dfb6ed25c2b7784d\allowbreak 5f4e13170d379ff3\allowbreak 449dd1612bb16600}.  Its internal manifests verify.  It contains a 17-page referee report and structured ledgers, but no annotated 108-page manuscript.
+\item[Reviewer B] Final evidence ZIP, 72,677,843 bytes.\\ SHA-256 \texttt{d2fb49e35e5885b531ffd296f4309deb}\\ \texttt{1632e3e4a966c106702fef627badab98}.  Its 13,590-byte primary Markdown report is byte-identical to the earlier recovered report (SHA-256 \texttt{a9a6417cca37dd631e212ca254cf1f70}\\ \texttt{bb242b8d2560b5b9c4e31c69847e4997}).  The final bundle adds a 92-row theorem ledger, 38 passing finite checks, and a separate 108-page popup-annotated artifact; reconciliation found no substantive change to the annotations printed here.
+\item[Codex review] Independent third-review and TeX audit package prepared from the complete canonical source and PDF.  Its mathematical disposition is non-certification rather than theorem falsity.
+\item[Superseded item] The earlier packet-06-only rejection was based on absent Section~10 material.  It remains useful as a scope warning and local-calculation audit, but its immediate-rejection recommendation is superseded by the complete-source reviews.
+\end{description}
+
+\subsection*{Status legend}
+
+\begin{longtable}{@{}p{1.0cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{10.3cm}@{}}
+\toprule
+\textbf{Badge} & \textbf{Status} & \textbf{Meaning}\\
+\midrule
+\AuditStatusTag{exact} & Exact & A displayed finite calculation or elementary algebraic reduction was independently reproduced.  This never certifies the whole page.\\
+\AuditStatusTag{reviewed} & Reviewed & Read for coherence with no concrete error found; not a formal proof certification.\\
+\AuditStatusTag{conditional} & Conditional & The conclusion follows only after earlier construction, topology, or analytic hypotheses are granted.\\
+\AuditStatusTag{critical} & Critical unresolved & A load-bearing obligation remains uncertified, or an external literature conflict requires specialist adjudication.\\
+\AuditStatusTag{repairable} & Repairable error & A localized confirmed error or TeX defect has a precise correction or workaround.\\
+\AuditStatusTag{provenance} & Provenance & Source identity, reconstruction, bibliography, build, or verification metadata.\\
+\bottomrule
+\end{longtable}
+
+Badge precedence is repairable error, critical unresolved, conditional, exact, reviewed, and provenance.  Thus a page with exact arithmetic and a critical geometric premise receives a red \AuditStatusTag{critical} badge; the exact result is still recorded in the text below.
+
+\pdfbookmark[1]{Integrated page-by-page annotations}{audit-integrated}
+\begin{center}{\Large\bfseries Integrated page-by-page annotations}\end{center}
+
+\AuditRangeHeading{1}{7}{001}{conditional}{Synopsis, setup, introduction, and global claims}
+\AuditReviewer{Reviewer A}{The complete source supersedes the earlier packet-only rejection.  Section~10 contains a substantive proposed answer to the CDP obstruction, but the reviewed TeX remains a reconstruction and the result is not certified.}
+\AuditReviewer{Reviewer B}{The opening theorem chain inherits the unresolved integral topology.  Transcription and successful compilation do not certify the proof.}
+\AuditReviewer{Codex / third review}{Treat every assertion of $X\cong S^6$, $a(X)=1$, and $c_3(X)=2$ as a theorem claim rather than an established fact until the topology and Section~10 issues receive independent specialist review.}
+
+\AuditRangeHeading{8}{12}{008}{exact}{Section 2 lattice and monodromy calculations}
+\AuditReviewer{Reviewer A}{Exact checks pass for the orders and product relation, contragredient matrices, fixed and coinvariant lattices, $B_0$, and the invariant alternating form $Q_0$.}
+\AuditReviewer{Reviewer B}{Independently confirms determinants, $T_1^3=T_2^4=I$, the nilpotent $N$, Smith forms, fixed lattices, and $Q_0(x,Ny)=\operatorname{diag}(6,-1)$.}
+\AuditReviewer{Codex / third review}{Concurs.  These are exact assertions with shared inputs; they should not be described as logically independent proofs of the geometric construction.}
+
+\AuditSingleHeading{13}{013}{reviewed}{Transition from exact monodromy to the period family}
+\AuditReviewer{Integrated note}{The remaining Section~2 algebra is exact.  The beginning of Section~3 is reviewed without a found error, but the analytic existence and nondegeneracy arguments are not formally certified.}
+
+\AuditRangeHeading{14}{23}{014}{reviewed}{Period family over the thrice-punctured sphere}
+\AuditReviewer{Reviewer A}{The period construction and transformation formulae are coherent; symbolic identities later used in Section~9 pass.}
+\AuditReviewer{Reviewer B}{No error found in the transformation laws, torsor construction, cusp asymptotics, determinant identity, and equivariance; this is not formal verification of analytic existence.}
+\AuditReviewer{Codex / third review}{No elementary contradiction found.  Global existence, positivity-domain control, and compatibility with the later fillings remain specialist analytic inputs.}
+
+\AuditRangeHeading{24}{29}{024}{critical}{Toric cusp filling}
+\AuditReviewer{Reviewer A}{No contradiction found in the infinite fan, action, compact fundamental set, central fibre, or overlap map; requests one consolidated topological lemma for locally finite fans and proper group actions.}
+\AuditReviewer{Reviewer B}{No local error found in fan smoothness, the free proper action estimate, compact quotient, central fibre, and overlap map.}
+\AuditReviewer{Codex / third review}{The infinite toric quotient, action properness, and central-fibre model remain high-risk construction inputs requiring independent specialist reconstruction.  This stricter disposition explains the red badge.}
+
+\AuditSingleHeading{30}{030}{repairable}{Proposition 4.7(iv), closedness of the section image}
+\AuditReviewer{Reviewer A}{Confirmed wording defect: being ``proper over the open disc'' is not the appropriate reason the image is closed.  Use the closed-section or closed-graph argument in the Hausdorff analytic total space.  The conclusion itself is not disputed.}
+\AuditReviewer{Reviewer B}{Reviewed the toric filling without flagging this sentence.}
+\AuditReviewer{Codex / third review}{Concurs with the local repair and retains the separate global toric-quotient risk.  Reviewer A's ledger places this on pp.~32--33, but the sentence is on canonical p.~30, source line 1507.}
+
+\AuditRangeHeading{31}{35}{031}{reviewed}{Logarithmic fillings at the elliptic points}
+\AuditReviewer{Reviewer A}{Freeness and cyclic quotient algebra check; asks for a cover/quotient diagram and an explicit link to the asserted bielliptic types.}
+\AuditReviewer{Reviewer B}{Exact/local pass for cyclic orders, fixed-point criterion, selected-twist freeness, and local quotient structure.}
+\AuditReviewer{Codex / third review}{No local arithmetic defect found.  The later use of the boundary identifications and translation data remains conditional.}
+
+\AuditRangeHeading{36}{37}{036}{conditional}{Global gluing, Hausdorffness, compactness}
+\AuditReviewer{Reviewer A}{The construction is coherent once the local models are accepted.}
+\AuditReviewer{Reviewer B}{No error found in the quotient atlas, Hausdorff argument, properness, and connectedness.}
+\AuditReviewer{Codex / third review}{Conditional on the analytic local models and the precise overlap maps.}
+
+\AuditRangeHeading{38}{39}{038}{critical}{Zero section, boundary drift, and cusp gluing parameter}
+\AuditReviewer{Reviewer A}{The sign conventions are audit-sensitive and should be consolidated into an orientation table.}
+\AuditReviewer{Reviewer B}{The geometric drifts $-v_1,-v_2$ and cusp class $\ell_0$ feed directly into the group presentation and require independent derivation.}
+\AuditReviewer{Codex / third review}{A sign or primitivity error here changes $p=12\ell_0-4\ell_1-3\ell_2$; the correct terminal arithmetic is not evidence for these geometric inputs.}
+
+\AuditRangeHeading{40}{41}{040}{critical}{Section 7 decomposition and cusp-collapse statement}
+\AuditReviewer{All three reviews}{This is the beginning of a load-bearing topology engine.  The claimed deformation/collapse must define the asserted map of pairs and induced integral maps, not merely have the right rational ranks.}
+
+\AuditRangeHeading{42}{49}{042}{critical}{Proof stack for Proposition 7.2}
+\AuditReviewer{Reviewer A}{Requests a complete construction diagram, equivariance proof, local-finiteness/compactness lemma, and preferably a cell-level model.}
+\AuditReviewer{Reviewer B}{Could not independently certify continuity across every toric stratum, full $\bar\Lambda$-equivariance, descent to the quotient, and the induced integral specialization map.}
+\AuditReviewer{Codex / third review}{Concurs that this is high risk.  A separate Leray route avoids Proposition~7.2, but it still depends on nearby-cycle and meridian inputs that require their own verification.}
+
+\AuditRangeHeading{50}{53}{050}{critical}{Homology of the cusp fibre and integral specialization}
+\AuditReviewer{Reviewer A}{The ranks, exterior-power calculations, and saturation arithmetic are coherent; Appendix~B needs expanded functorial definitions, integral references, orientations, and a fuller saturation proof.}
+\AuditReviewer{Reviewer B}{Requires proof that the geometric collapse agrees integrally with nearby-cycle specialization, with no hidden torsion and with the stated bases and degree-three signs.}
+\AuditReviewer{Codex / third review}{The terminal lattice algebra passes, but the actual geometric map and its integral image are not independently certified.}
+
+\AuditRangeHeading{54}{57}{054}{critical}{van Kampen inclusions, sign lemma, and fundamental-group presentation}
+\AuditReviewer{Reviewer A}{The relation determinant, Smith forms, admissibility congruences, and the $p=-1$ and $p=-7$ examples pass; asks for a complete orientation convention table.}
+\AuditReviewer{Reviewer B}{Conditional certificate only: the cyclic presentation is algebraically correct after the asserted monodromy, drift, and meridian maps are granted.}
+\AuditReviewer{Codex / third review}{Concurs.  Relative signs can interchange the $1$ and $7$ examples, so the inclusion maps must be reconstructed from the actual gluings.}
+
+\AuditRangeHeading{58}{62}{058}{critical}{Mayer--Vietoris and Leray calculations}
+\AuditReviewer{Reviewer A}{Exterior-power ranks, lattice images, the $\alpha_2$ saturation calculation, and the displayed multiplicative $p$-differentials pass conditional on their geometric inputs.}
+\AuditReviewer{Reviewer B}{The matrix ranks and Smith forms pass; certification still requires derivation of the actual boundary and transgression maps in integral geometric bases, including transfer indices, orientations, and primitivity.}
+\AuditReviewer{Codex / third review}{The manuscript states that the Leray route is independent of the collapse route.  The review objection is narrower: both routes still use decisive monodromy, meridian, or specialization identifications that have not been independently reproduced.}
+
+\AuditSingleHeading{63}{063}{repairable}{Remark 7.28 and the topology conclusion}
+\AuditReviewer{Reviewer A}{Confirmed error: the biconditional is false for a fixed triple; $(100,1,-1)$ has a listed residue pair but $p=1199$.  For fixed admissible $(\ell_1,\ell_2)$ state instead that there exists a unique $\ell_0$ with $|p|=1$ exactly for the two listed residue pairs.}
+\AuditReviewer{Reviewer B}{Does not flag the remark.  Its recognition conclusion remains conditional on the unresolved topology maps.}
+\AuditReviewer{Codex / third review}{Independently confirms the counterexample and the existential repair.  The local error does not by itself refute the chosen triple $(0,1,-1)$.}
+
+\AuditSingleHeading{64}{064}{conditional}{Recognition as the standard smooth six-sphere}
+\AuditReviewer{All three reviews}{The Hurewicz--Whitehead and smooth-homotopy-sphere recognition step is standard once $X$ is a closed simply connected integral homology six-sphere.  The unresolved premise is that the constructed $X$ has this topology.}
+
+\AuditRangeHeading{65}{68}{065}{conditional}{Neron--Severi and algebraic-dimension calculation}
+\AuditReviewer{Reviewer A}{No contradiction found.  The formula for $P_E$, the transformation identities, $\eta^2=12$, the Gram matrix, and determinant factorization pass exact checks.  The torus classification fact used in Proposition~9.5 should be cited or expanded.}
+\AuditReviewer{Reviewer B}{The analytic-invariant calculations are internally consistent and contain no numerical contradiction.}
+\AuditReviewer{Codex / third review}{The first proof of $a(X)=1$ is construction-dependent but is not obviously dependent on the entire homology-sphere computation; this distinction should be retained rather than calling every statement topology-dependent.}
+
+\AuditSingleHeading{69}{069}{conditional}{Remark 9.9 and the alternate CDP route}
+\AuditReviewer{Integrated note}{Distinguish the direct proof in Proposition~9.7, which the manuscript says does not use CDP20, from this literature-dependent alternate route.  The latter inherits the unresolved interpretation of the published CDP arguments.}
+
+\AuditSingleHeading{70}{070}{conditional}{Automorphy and canonical-bundle calculation}
+\AuditReviewer{Integrated note}{The character arithmetic is coherent and no reviewer found a local contradiction.  The global statement remains conditional on the constructed local models and their gluing.}
+
+\AuditSingleHeading{71}{071}{repairable}{TeX portability defect in the modular source}
+\AuditReviewer{Codex / third review}{Local MiKTeX compilation of the modular assembler places a phrase more than 15,000 points off-page.  The canonical monolithic source and packaged PDF render it correctly.  Use the monolithic source and rendered-page QA pending isolation of the modular-only mechanism.  This is a build defect, not a mathematical error.}
+\AuditReviewer{Reviewer A / Reviewer B}{Neither mathematical review reports this portability defect.}
+
+\AuditRangeHeading{72}{73}{072}{conditional}{Canonical bundle and beginning of direct images}
+\AuditReviewer{Integrated note}{No local contradiction found.  The claims depend on the fibre models and the analytic base-change framework developed on the following pages.}
+
+\AuditRangeHeading{74}{77}{074}{critical}{Direct images, analytic base change, and duality}
+\AuditReviewer{Reviewer A}{The applications appear plausible, but exact flatness, Grauert/base-change, Gorenstein, relative-duality, and scheme-theoretic multiple-fibre hypotheses should be stated with precise analytic references.}
+\AuditReviewer{Reviewer B}{Treats these calculations as conditional and internally consistent.}
+\AuditReviewer{Codex / third review}{Concurs that publication-level certification requires precise hypotheses at the nonnormal and nonreduced fibres and consistent separation of ambient, intrinsic, torsion-free, and reflexive differentials.}
+
+\AuditRangeHeading{78}{83}{078}{conditional}{Holomorphic forms, Hodge data, automorphisms, and non-Kahlerness}
+\AuditReviewer{Reviewer A}{No contradiction found; results are coherent within the construction.}
+\AuditReviewer{Reviewer B}{The Hodge, Chern, and Riemann--Roch numbers are numerically consistent with a homology six-sphere but do not establish existence.}
+\AuditReviewer{Codex / third review}{Several deductions explicitly invoke Section~7 or the direct-image calculations, so their status remains conditional.}
+
+\AuditRangeHeading{84}{94}{084}{critical}{Section 10 and the CDP98/CDP20 conflict}
+\AuditReviewer{Reviewer A}{Finds a substantive proposed rebuttal: an ambient conductor-supported differential is invisible in the torsion-free intrinsic cotangent sheaf, and the split-extension homology calculation must use monodromy coinvariants.  The earlier packet-only rejection is withdrawn.  External expert adjudication remains required.}
+\AuditReviewer{Reviewer B}{Does not use the literature conflict as evidence that the construction is correct; the construction must stand on its own.  Its report neither endorses nor supplies a new contradiction in Section~10.}
+\AuditReviewer{Codex / third review}{The conductor calculation credibly exposes a missing case in the printed proof, but a proof gap is not yet a proof that the published theorem is false.  A corrigendum-style comparison and independent review by specialists in nonnormal fibres, analytic duality, and the cited CDP arguments are publication-level blockers.}
+
+\AuditSingleHeading{95}{095}{critical}{Section 10 conclusion and opening of Appendix A}
+\AuditReviewer{Integrated note}{Use paragraph-level judgment on this mixed page: the CDP dispute remains externally unadjudicated, while the finite matrix material beginning in Appendix~A is amenable to exact checking and passes where reproduced.}
+
+\AuditRangeHeading{96}{97}{096}{exact}{Appendix A matrices, lattices, and fan data}
+\AuditReviewer{All three reviews}{Finite matrix identities, invariant lattices, Smith forms, exterior-power ranks, and the displayed fan combinatorics pass exact or direct checks.  Geometric interpretation of these data remains reviewed rather than formally certified.}
+
+\AuditSingleHeading{98}{098}{repairable}{Lemma A.3 Mayer--Vietoris variance error}
+\AuditReviewer{Codex / third review}{Confirmed local error: the displayed sequence is cohomological in direction but is labelled with $H_k$, which reverses the arrows for homology.  Replace the calculation by $H^k$ and use universal coefficients for the homology ranks; retain Proposition~7.11 for explicit homology generators.}
+\AuditReviewer{Reviewer A / Reviewer B}{Neither full-manuscript report identifies this local variance error.  Reviewer B's exact topology-matrix checks are conditional on correct geometric and functorial setup.}
+
+\AuditSingleHeading{99}{099}{exact}{Finite-fibre lattices and covering indices}
+\AuditReviewer{Integrated note}{The finite lattice and index arithmetic passes.  Its insertion into the global topology calculation remains conditional on the actual overlap and specialization maps.}
+
+\AuditSingleHeading{100}{100}{repairable}{Remark A.6 and the start of Appendix B}
+\AuditReviewer{Codex / third review}{Confirmed notation error: $\pi_1(N_0)=\Lambda$ conflicts with Corollary~4.8 and must read $\pi_1(N_0)=\bar\Lambda$.}
+\AuditReviewer{Reviewer A}{Appendix~B is the principal independent integral input and needs expanded functorial definitions, orientations, saturation, and precise references.}
+\AuditReviewer{Reviewer B}{Appendix~B begins the critical nearby-cycle route; its mathematical content ends on p.~105, not p.~108 as the coarse report range suggests.}
+
+\AuditRangeHeading{101}{105}{101}{critical}{Appendix B nearby cycles and specialization}
+\AuditReviewer{Reviewer A}{No contradiction found in the compact argument; exact row ranks and saturation arithmetic are coherent.  Independent specialist replication is required.}
+\AuditReviewer{Reviewer B}{The remaining burden is the exact integral identification of spectral-sequence edge maps with the geometric maps in Section~7, including saturation, torsion, bases, and the degree-three Gysin sign.  Remark~B.4 expressly does not re-prove $\operatorname{sp}^q=c^*$ or the degree-two normalizations.}
+\AuditReviewer{Codex / third review}{Consensus load-bearing unresolved item.  A finite CW model or a fully functorial integral nearby-cycle/Mayer--Vietoris treatment would materially close the certification gap.}
+
+\AuditRangeHeading{106}{108}{106}{provenance}{References}
+\AuditReviewer{Integrated note}{The bibliography supports traceability but does not certify that every cited theorem applies with the required hypotheses.  A revision should give precise theorem/page references for analytic base change, relative duality, nearby cycles, complex-torus algebraic dimension, and every CDP claim under dispute.}
+
+\clearpage
+\pdfbookmark[1]{Reviewer A complete structured ledger}{audit-reviewer-a}
+\begin{center}{\Large\bfseries Reviewer A: complete structured ledger}\end{center}
+
+The following entries reproduce all 17 rows of Reviewer A's structured issue ledger in condensed, provenance-preserving form.  Page corrections discovered during integration are stated explicitly rather than silently changing Reviewer A's record.
+
+\AuditLedgerEntry{A-F-01}{Critical context; resolved by full source}{pp.~84--95}{The packet-only review treated CDP20 as a fatal contradiction because Section~10 was absent.  The complete manuscript contains a detailed proposed counterexample to the relevant printed reduction and a monodromy correction.}{Supersede the packet-only rejection; preserve it only as a scope-limited record.}
+
+\AuditLedgerEntry{A-E-01}{Minor; confirmed}{p.~63}{Remark~7.28 is false as a fixed-triple biconditional; $(100,1,-1)$ has the listed residues but $p=1199$.}{State existence and uniqueness of $\ell_0$ for fixed admissible $(\ell_1,\ell_2)$, or retain the equation $|12\ell_0-4\ell_1-3\ell_2|=1$.}
+
+\AuditLedgerEntry{A-E-02}{Minor; confirmed, repairable}{p.~30; source line 1507}{Proposition~4.7(iv) gives an inappropriate properness justification for closedness of the section image.  Reviewer A's ledger says pp.~32--33, but the sentence is on canonical p.~30.}{Use a closed-section or closed-graph argument in the Hausdorff total space.}
+
+\AuditLedgerEntry{A-R-01}{Major revision; specialist verification}{Appendix B, pp.~100--105}{Nearby-cycle sheaves, the surviving differential, saturation, and the degree-three Gysin argument are internally coherent but novel and compact.}{Expand the derived setup, functorial specialization, orientations, and saturation; cite precise integral nearby-cycle results.}
+
+\AuditLedgerEntry{A-R-02}{Major revision; high-risk proof}{Section 7.2, pp.~41--50}{The global collapse and its generator identifications bear a substantial continuity, equivariance, and infinite-quotient burden.  Reviewer A's ledger gives pp.~41--48, but the proof continues through p.~50.}{Supply a complete construction diagram, equivariance and local-finiteness proof, and preferably a cell-level model.}
+
+\AuditLedgerEntry{A-R-03}{Major revision; plausible, citation-incomplete}{pp.~74--77 and 87--89}{Direct images and the CDP comparison use flatness, top-degree base change, relative duality, and fibre calculations at nonnormal and nonreduced fibres.}{State the exact analytic theorems and verify Gorenstein, scheme-theoretic-fibre, Grauert, and base-change hypotheses.}
+
+\AuditLedgerEntry{A-R-04}{Major revision; externally unadjudicated}{pp.~84--95}{Section~10 identifies a conductor-supported ambient cotangent section and replaces ordinary fibre homology by monodromy coinvariants.  Reviewer A found no internal error in these mechanisms.}{Publish the comparison as a separately refereed corrigendum-style note and obtain specialist review.}
+
+\AuditLedgerEntry{A-R-05}{Moderate revision; no contradiction found}{pp.~65--69}{The very-general Neron--Severi computation and descent of meromorphic functions are coherent, but the complex-torus fact excluding algebraic dimension one is compressed.}{Cite or prove the exact classification statement, including semipositive classes and isotropic divisors.}
+
+\AuditLedgerEntry{A-R-06}{Moderate revision; no contradiction found}{pp.~24--34}{The infinite fan and quotient are carefully treated, but second countability and descent of quotient properness should be consolidated.}{Add a topological lemma with references for infinite locally finite fans and proper group actions.}
+
+\AuditLedgerEntry{A-R-07}{Moderate revision; no contradiction found}{pp.~34--39}{Freeness and cyclic quotient models check algebraically, while the relation among affine translations, multiple-fibre multiplicity, and bielliptic classification is dispersed.}{Add a cover/quotient diagram and prove the asserted Bagnera--de Franchis types explicitly.}
+
+\AuditLedgerEntry{A-R-08}{Moderate revision; audit-sensitive}{pp.~54--57}{A long sign lemma controls $p$; although the group order uses $|p|$, comparison examples and integral differentials need relative signs.}{Add a one-page orientation convention table tracing all three meridians.}
+
+\AuditLedgerEntry{A-R-09}{Editorial and verification}{archive provenance}{The reviewed TeX is an audited reconstruction rather than author-controlled source.}{Compare with author-controlled source or obtain explicit author sign-off on the canonical PDF.}
+
+\AuditLedgerEntry{A-V-01}{Verified computationally; passed}{Section 2}{Orders, product relation, contragredients, fixed lattices, $B_0$, and $Q_0$ invariance/signature pass exact arithmetic.}{Retain the exact-check script as supplementary material.}
+
+\AuditLedgerEntry{A-V-02}{Verified computationally; passed}{Theorem 7.17}{The relation determinant, Smith forms, admissibility congruences, and the $p=-1$ and $p=-7$ examples pass.}{Retain the exact-check script and separate arithmetic from geometric premises.}
+
+\AuditLedgerEntry{A-V-03}{Verified computationally; conditional}{Sections 7.6--7.7}{Exterior-power ranks, the wedge-two image lattice, $\alpha_2$ saturation, local indices, and multiplicative $p$-differentials are consistent.}{Make every geometric input to the matrices explicit in a dependency table.}
+
+\AuditLedgerEntry{A-V-04}{Verified computationally; passed}{Lemmas 9.2--9.4}{The wedge expansion, $P_E$, transformation identities, $\eta^2$, Gram matrix, and determinant factorization pass symbolic checks.}{Retain the exact-check script.}
+
+\AuditLedgerEntry{A-V-05}{Conditionally valid}{Section 8, pp.~63--64}{A simply connected integral homology six-sphere is a homotopy sphere, and the smooth homotopy-six-sphere group is trivial.}{Cite the exact recognition step and make orientations explicit.}
+
+\clearpage
+\pdfbookmark[1]{Reviewer B final-bundle annotations}{audit-reviewer-b}
+\begin{center}{\Large\bfseries Reviewer B: final-bundle annotations}\end{center}
+
+These entries were initially reconstructed from the recovered Markdown report.  The final evidence bundle is now available, and its primary report is byte-identical to that recovered file.  Its theorem ledger, risk ledger, 38-check harness, and separate popup-annotated manuscript corroborate the same four load-bearing topology obligations without adding or retracting a substantive finding.  No local error discovered by another reviewer is attributed to Reviewer B unless it appears in Reviewer B's report or ledgers.
+
+\AuditLedgerEntry{B-EX-00}{Exact-scope warning}{pp.~1--108}{Source fidelity, compilation, and finite checks are evidence, not proof certification.}{Keep exact arithmetic and geometric certification as separate statuses.}
+
+\AuditLedgerEntry{B-EX-01}{Verified exact}{pp.~8--9 and 96}{Determinants, orders, $T_0=I+N$, $N^2=0$, $\operatorname{rank}N=2$, contragredients, and $A_1A_2M_0=I$ pass.}{Retain reproducible integer checks.}
+
+\AuditLedgerEntry{B-EX-02}{Verified exact}{pp.~9--10 and 96--97}{Fixed lattices, the cusp kernel/image, individual Smith forms, and the free rank-one combined coinvariant group pass.}{Retain exact bases and Smith certificates.}
+
+\AuditLedgerEntry{B-EX-03}{Verified exact}{pp.~10--11}{The invariant alternating forms form a rank-one lattice generated by $Q_0$; the induced form is $\operatorname{diag}(6,-1)$.}{Retain the exact invariance solve.}
+
+\AuditLedgerEntry{B-EX-04}{Verified exact/local}{pp.~31--35}{The chosen twists give $(\ell_0,\ell_1,\ell_2)=(0,1,-1)$, and the two finite-order freeness congruences pass.}{Do not confuse local freeness with certification of the global boundary maps.}
+
+\AuditLedgerEntry{B-CO-01}{Conditional certificate}{pp.~54--57}{Once the asserted overlap inclusions and meridian conventions are granted, the group presentation reduces to order $|p|$, and the selected value is $p=-1$.}{Derive the actual inclusion maps from the gluings with signs and primitive bases.}
+
+\AuditLedgerEntry{B-EX-06}{Exact arithmetic; geometric input conditional}{pp.~57--63 and 96--101}{The displayed topology matrices have the claimed ranks and Smith forms.}{Identify them with the actual geometric boundary and transgression maps.}
+
+\AuditLedgerEntry{B-RV-01}{Reviewed; no error found}{pp.~13--23}{The period family, transformation laws, cusp asymptotics, determinant identity, and equivariance are internally coherent.}{No extra action beyond a specialist analytic proof if certification is sought.}
+
+\AuditLedgerEntry{B-RV-02}{Reviewed; no local error found}{pp.~24--31}{Fan smoothness, proper action estimate, compact quotient, central fibre, and overlap map are coherent.}{Keep separate from the later collapse problem.}
+
+\AuditLedgerEntry{B-RV-03}{Reviewed; no error found}{pp.~36--40}{The global quotient atlas, Hausdorffness, properness, connectedness, and gluing are coherent once local models are accepted.}{Preserve the conditional status of the drift data used later.}
+
+\AuditLedgerEntry{B-RV-04}{Consistency pass}{pp.~64--94}{No elementary Hodge, Chern, Riemann--Roch, or Euler-characteristic contradiction was found.}{Do not use numerical consistency as an existence proof.}
+
+\AuditLedgerEntry{B-CR-01}{Critical unresolved}{pp.~40--50}{The cusp-collapse composite was not independently certified as continuous on every stratum, fully equivariant, descending to the quotient, and inducing the asserted integral map.}{Supply an explicit chain homotopy or finite cellular model.}
+
+\AuditLedgerEntry{B-CR-02}{Critical unresolved}{pp.~50--53 and 100--105}{The integral specialization formula requires saturation, torsion control, identification of the edge map with geometric collapse, degree-three signs, and basis compatibility.}{Give a functorial integral specialization proof with all orientations and bases.}
+
+\AuditLedgerEntry{B-CR-03}{Critical unresolved}{pp.~38--40 and 53--57}{The actual van Kampen inclusions must encode precisely $A_1,A_2,M_0$, the drifts $-v_1,-v_2$, $\ell_0$, and the meridian orientation.}{Derive every relation from coordinate gluing maps; check primitivity.}
+
+\AuditLedgerEntry{B-CR-04}{Critical unresolved}{pp.~57--63 and 95--105}{The Mayer--Vietoris and Leray routes share decisive monodromy and specialization inputs; exact downstream matrices do not independently certify them.}{Print an integral finite CW model or a fully functorial nearby-cycle/Mayer--Vietoris derivation.}
+
+\AuditLedgerEntry{B-CO-02}{Conditional pass}{pp.~63--64}{Recognition as the standard smooth $S^6$ is sound after simple connectivity and integral homology-sphere status are established.}{Certify the topology premises first.}
+
+\AuditLedgerEntry{B-SCOPE-06}{Reviewer-method statement}{entire report}{A conflict with previously published work is not evidence that this construction is correct; the construction must stand on its own.}{Keep Section~10 adjudication separate from topology certification.}
+
+\AuditLedgerEntry{B-VERDICT}{Major revision}{main theorem}{No arithmetic counterexample or concrete local analytic error was found, but the central theorem remains unconfirmed because four geometric integral maps are uncertified.}{Provide a self-contained, independently checkable integral topology package; status is unconfirmed, not proved or disproved.}
+
+\clearpage
+\pdfbookmark[1]{Codex third-review and TeX ledger}{audit-reviewer-c}
+\begin{center}{\Large\bfseries Codex / third review: mathematical and TeX ledger}\end{center}
+
+\AuditLedgerEntry{C-REV-001}{Critical; open}{Theorem 4.5 and Section 4}{The infinite toric filling and quotient are coherent under review but not independently certified.}{Obtain specialist verification of charts, action, quotient properness, and central-fibre models.}
+
+\AuditLedgerEntry{C-REV-002}{Critical; open}{Sections 5--7}{The attaching maps and meridian signs are essential to $p=-1$ and remain high risk.}{Reconstruct all three gluings from coordinates and independently verify the sign lemma.}
+
+\AuditLedgerEntry{C-REV-003}{Critical; open}{Sections 7.3--7.7 and Appendix B}{Terminal lattice algebra passes, but integral specialization maps and saturation remain geometric inputs.}{Provide an independent chain-level or nearby-cycle calculation of every specialization lattice.}
+
+\AuditLedgerEntry{C-REV-004}{Critical; open}{Section 7.7}{The Leray transgression $d_2(12\gamma)=\pm p\omega$ is decisive and conditional on attaching-map identifications.}{Verify the transgression independently of the Mayer--Vietoris route.}
+
+\AuditLedgerEntry{C-CDP-005}{Major; substantiated published-proof gap}{Section 10}{The conductor-supported differential exposes a credible missing case in the printed CDP reduction.  This is not yet proof that the published theorem is false.}{Obtain specialist and original-author review; separate proof-gap analysis from theorem falsity.}
+
+\AuditLedgerEntry{C-ERR-006}{Minor; confirmed}{p.~63}{Remark~7.28 has a false fixed-triple biconditional.}{Use the existential and unique-$\ell_0$ formulation stated above.}
+
+\AuditLedgerEntry{C-ERR-007}{Minor; confirmed}{p.~100}{Remark~A.6 prints $\pi_1(N_0)=\Lambda$ although Corollary~4.8 gives the rank-two group $\bar\Lambda$.}{Replace $\Lambda$ by $\bar\Lambda$.}
+
+\AuditLedgerEntry{C-ERR-008}{Major; confirmed, repairable}{p.~98}{Lemma~A.3 labels a cohomological Mayer--Vietoris sequence as homology and therefore displays the homology arrows in the wrong direction.}{Replace $H_k$ by $H^k$ in the calculation, use universal coefficients for ranks, and retain Proposition~7.11 for explicit generators.}
+
+\AuditLedgerEntry{C-TEX-009}{Major portability defect}{p.~71; modular build}{Local MiKTeX modular compilation silently sends a phrase more than 15,000 points off-page, while the monolithic and packaged PDFs are correct.}{Use the monolithic source; add cross-engine text-bounding-box and rendered-page QA; isolate the modular-only mechanism.}
+
+\AuditLedgerEntry{C-TEX-010}{Minor portability defect}{monolithic generator}{Windows regeneration changes the source hash through line-ending conversion although normalized text is identical.}{Write generated monolithic source with explicit LF newlines.}
+
+\AuditLedgerEntry{C-QA-011}{Minor wording correction}{earlier computational report}{Calling the 22 assertions ``independent checks'' overstates logical independence because they share inputs and geometric premises.}{Call them exact assertions and state the shared conditional inputs.}
+
+\AuditLedgerEntry{C-PRES-012}{Minor expository issue}{Theorem 4.5(d) and Proposition 4.6}{The reducedness statements create a mild forward/backward dependency even though reducedness is independently proved.}{Split or reorder the statements for proof hygiene.}
+
+\clearpage
+\pdfbookmark[1]{Reconciliation and disposition}{audit-reconciliation}
+\begin{center}{\Large\bfseries Reconciliation, disagreement, and disposition}\end{center}
+
+\subsection*{Consensus}
+
+\begin{itemize}[leftmargin=1.7em,itemsep=.45em,topsep=.35em]
+\item The complete 108-page source is materially different from the earlier packet-only evidence; the immediate packet-level CDP rejection is superseded.
+\item The finite monodromy, lattice, Smith-normal-form, twist, and period algebra contains substantial exact evidence.
+\item No full-manuscript reviewer found an elementary contradiction that disproves the completed construction.
+\item The integral topology remains the principal certification risk: cusp geometry, specialization, van Kampen inclusions, and geometric boundary/transgression maps must all be right in their stated integral bases.
+\item Recognition as $S^6$ is standard only after those topology premises are established.
+\item The source is a reconstruction and requires author-controlled provenance for publication.
+\end{itemize}
+
+\subsection*{Material disagreement retained in this edition}
+
+Reviewer A regards Section~10's conductor and monodromy-coinvariant mechanisms as substantive and finds no internal flaw, so it withdraws the earlier rejection.  Reviewer B correctly refuses to treat a conflict with the literature as evidence that the construction is right.  The Codex review finds the conductor calculation credible as a critique of a printed proof step but does not infer theorem falsity from that gap.  These are compatible only at the following cautious level: the old one-line contradiction does not settle the manuscript, and independent expert adjudication of Section~10 remains necessary.
+
+Reviewer B treats the two topology routes as sharing decisive inputs.  The manuscript expressly claims that the Leray route avoids Proposition~7.2 and the Mayer--Vietoris calculation.  The integrated annotation does not erase that claim; it records the narrower review objection that nearby-cycle, meridian, and integral edge-map identifications still require independent reconstruction.
+
+\subsection*{Minimum revision package for certifiability}
+
+\begin{enumerate}[leftmargin=1.8em,itemsep=.5em,topsep=.35em]
+\item Give a finite integral CW or simplicial model of $X$, with attaching maps derived from the analytic gluings and all boundary matrices printed in primitive oriented bases.
+\item Alternatively, give a fully functorial integral nearby-cycle/Mayer--Vietoris proof and a separate chain-level van Kampen calculation, including saturation and the degree-three sign.
+\item State exact analytic base-change and relative-duality results with every hypothesis verified at the nonnormal and scheme-theoretic multiple fibres.
+\item Publish the Section~10 comparison in corrigendum form and obtain specialist adjudication of the conductor calculation and monodromy correction.
+\item Correct the three mathematical local errors on pp.~63, 98, and 100 and the proof wording on p.~30; retain a rendered-page QA gate for the p.~71 modular build defect.
+\item Reconcile the reconstruction with author-controlled source or obtain explicit author sign-off on the canonical PDF.
+\end{enumerate}
+
+\subsection*{Final recommendation}
+
+\noindent\fcolorbox{AuditCritical}{AuditPale}{%
+\begin{minipage}{0.94\textwidth}
+\textbf{Major revision and independent specialist replication.}
+The central theorem is not presently mathematically certifiable from the supplied evidence.  The correct status is unconfirmed: neither accepted as proved nor rejected as demonstrated false.  Reviewer B's final evidence bundle has been reconciled against this annotation ledger; it corroborates the printed disposition and adds reproducibility evidence rather than a new mathematical verdict.
+\end{minipage}}
+
+\medskip
+\noindent{\footnotesize End of peer-review annotation appendix.  Manuscript pages 1--108 remain an uncorrected derivative of the canonical reconstruction; the annotations are review metadata.}

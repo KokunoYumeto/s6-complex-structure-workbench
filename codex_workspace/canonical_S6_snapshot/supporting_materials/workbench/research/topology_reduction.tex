@@ -1,0 +1,1279 @@
+\section{The alternate collapse and Mayer--Vietoris route}
+
+The nearby-cycle/Leray proof in \cref{sec:integral-leray} gives one verified
+route to the topology of $X$.  This section audits the manuscript's independent
+cellular-collapse/Mayer--Vietoris route.  It now closes the entire alternate
+certificate: the equivariant cusp retraction, its primitive integral cellular
+map, equality with analytic nearby-cycle specialization, both geometrically
+realized Mayer--Vietoris stages, and the comparison of their obstruction maps
+with Leray.
+
+We first correct a conflation in the earlier audit.  For any two-set
+decomposition $Y=A\cup B$, our Mayer--Vietoris convention is
+\[
+\Delta_q=(i_{A*},-i_{B*}):
+H_q(A\cap B;\mathbb Z)\longrightarrow
+H_q(A;\mathbb Z)\oplus H_q(B;\mathbb Z).
+\tag{4.1}
+\]
+The manuscript does not identify its printed $\alpha_q$ with a one-shot map
+for three collars.  It uses two stages.  First,
+\[
+X^\circ=X_1\cup X_2,
+\qquad X_1\cap X_2\simeq F,
+\qquad
+\alpha_q=(\pi_{1*},-\pi_{2*}).
+\tag{4.2}
+\]
+Second, it attaches the cusp through
+\[
+X=N'_0\cup X^\circ,
+\qquad N'_0\cap X^\circ=M,
+\qquad
+K_q=\ker\bigl(H_q(M)\to H_q(W)\bigr).
+\tag{4.3}
+\]
+The proof below realizes both stages by actual oriented inclusions and then
+also records the equivalent one-shot degree-one collar matrix.
+
+\subsection{The abstract cusp-retraction lemma}
+
+\begin{proposition}[equivariant topological spine]\label{prop:topological-spine}
+\Verified\ Let $A$ be a contractible manifold with boundary and let
+$A_0\subset\partial A$ be a contractible boundary component.  Let a
+group $\Gamma$ act freely and properly discontinuously on $(A,A_0)$.  Assume
+$Q=A/\Gamma$ and $H=A_0/\Gamma$ are manifolds, $Q$ is compact,
+$H\hookrightarrow Q$ is collared, and the two quotient maps are connected
+coverings with deck group $\Gamma$.  If the inclusion identifies the two
+deck groups by the identity automorphism of $\Gamma$, then
+$H\hookrightarrow Q$ is a strong deformation retract.  The retraction lifts
+uniquely from the identity lift to a $\Gamma$-equivariant strong deformation
+retraction of $A$ onto $A_0$.
+\end{proposition}
+
+\begin{proof}
+Because $A$ and $A_0$ are contractible universal covers,
+$\pi_n(Q)=\pi_n(H)=0$ for $n\ge2$, while
+$\pi_1(Q)\cong\Gamma\cong\pi_1(H)$.  By hypothesis the inclusion induces the
+identity on $\Gamma$, so it is a weak homotopy equivalence.  Manifolds have
+the homotopy type of CW complexes; Whitehead's theorem
+\cite[Theorem~4.5]{Hatcher2002} therefore makes the inclusion a homotopy
+equivalence.
+
+The collar makes $(Q,H)$ an NDR pair, hence the inclusion is a cofibration.
+We record the standard cofibration argument.  Choose a homotopy inverse
+$r_0:Q\to H$.  Since $r_0|_H\simeq\operatorname{id}_H$, the homotopy
+extension property modifies $r_0$ through maps $Q\to H$ to a retraction
+$r$ satisfying $r|_H=\operatorname{id}_H$.  The maps
+$\operatorname{id}_Q$ and $i\circ r$ are homotopic and agree on $H$.
+Applying the homotopy extension property once more makes that homotopy
+stationary on $H$.  It is therefore a strong deformation retraction.
+
+Let $P:A\to Q$ be the covering.  Lift the deformation homotopy from the
+initial lift $\operatorname{id}_A$.  Since the base homotopy fixes $H$ and
+the initial lift fixes $A_0$, uniqueness of path lifting makes the lifted
+homotopy fix $A_0$.  For $\gamma\in\Gamma$, both
+$\widetilde H_t\circ\gamma$ and $\gamma\circ\widetilde H_t$ lift the same
+map and agree at $t=0$; uniqueness gives equality for every $t$.  The lift is
+therefore $\Gamma$-equivariant and ends in $A_0$.
+\end{proof}
+
+\subsection{The candidate-specific equivariant collapse}
+
+We now verify every hypothesis of \cref{prop:topological-spine} in the
+candidate.  Retain the toric threefold $Y$, the compact torus
+\[
+ T_c=(S^1)^3,\qquad T_f=(S^1)^2\times\{1\}\subset T_c,
+\]
+and the free properly discontinuous action
+$\Gamma=\{\Psi_{\bar\lambda}:\bar\lambda\in\bar\Lambda\}$ from
+\cref{thm:candidate-cusp-geometry}.  Put
+\[
+ Y_{\leq\eta}=\{|t|\leq\eta\},\qquad
+ Y_{\geq0}=\overline{(\mathbb R_{>0})^3}\subset Y,\qquad
+ A=(Y_{\leq\eta})_{\geq0},\qquad A_0=(Y_0)_{\geq0}.
+\tag{C.1}
+\]
+For a torus point write $y=\log|x|/\log|t|$.  The period matrix on a
+punctured cusp fibre is
+\[
+ Z_t=sB_0+C(t),\qquad s=\frac{\log t}{2\pi i},\qquad
+ B_t=B_0+\frac{R(t)}{\log|t|},\quad R(t)=-2\pi\operatorname{Im}C(t).
+\tag{C.2}
+\]
+Here $B_0:\bar\Lambda\to\Lambda_{\rm tor}$ is unimodular.
+
+\begin{lemma}[straightening the twist]\label{lem:collapse-straightening}
+\Verified\ For all sufficiently small $\eta>0$ there is a homeomorphism
+$G:Y_{\leq\eta}\to Y_{\leq\eta}$, fixing $Y_0$ pointwise and preserving
+$t$, which conjugates $\Gamma$ to the action $\Gamma^0$ obtained by replacing
+$C(t)$ by $C_0=C(0)$.  It commutes with $T_f$ and, on every smooth quotient
+fibre, induces a real-linear isomorphism which is the identity on the marked
+lattice $\Lambda$.
+\end{lemma}
+
+\begin{proof}
+Shrink $\eta$ until $B_t$ and
+$B_t^0=B_0+R(0)/\log|t|$ are invertible for $0<|t|\leq\eta$.  In logarithmic
+coordinates $\xi=(2\pi i)^{-1}\log x$ define
+\[
+ L_t(\xi)=\xi-(C(t)-C_0)(\operatorname{Im}Z_t)^{-1}
+                         \operatorname{Im}\xi.
+\tag{C.3}
+\]
+Every $\xi$ has the unique expression $\xi=Z_ta+b$, with
+$a,b\in\mathbb R^2$, and then $L_t(\xi)=Z_t^0a+b$.  Thus $L_t$ is invertible,
+fixes $\mathbb R^2$ and its sublattice $\mathbb Z^2$, and sends each deck
+translation $Z_t\bar\lambda$ to $Z_t^0\bar\lambda$.  It therefore descends
+on $Y_t=\mathbb C^2/\mathbb Z^2$ and conjugates the two $\bar\Lambda$-actions.
+In toric coordinates it is
+\[
+ G(x,t)=\bigl(\exp(-2\pi i(C(t)-C_0)B_t^{-1}y)x,t\bigr),
+ \qquad G|_{Y_0}=\operatorname{id}.
+\tag{C.4}
+\]
+It commutes with $T_f$ because $y$ is $T_f$-invariant.
+
+Only continuity at $Y_0$ is nonformal.  Around any $p\in Y_0$, choose one of
+the bounded-position subcharts used in the properness proof of
+\cref{thm:candidate-cusp-geometry}.  On that subchart $y$ stays bounded,
+$B_t^{-1}$ stays bounded, and $C(t)-C_0\to0$.  Hence the torus factor in
+(C.4) tends to $1$.  The same argument applies to the inverse, obtained by
+interchanging $C(t)$ and $C_0$.  Thus $G$ is a homeomorphism.  Because it
+fixes the real lattice and sends the two period columns $Z_t\bar\lambda$ to
+$Z_t^0\bar\lambda$, it induces the identity on the marked $H_1=\Lambda$.
+\end{proof}
+
+Write $c^0_{\bar\lambda}=u_{\bar\lambda}a_{\bar\lambda}$ for its polar
+decomposition, with $u_{\bar\lambda}\in T_f$ and
+$a_{\bar\lambda}=\exp(R(0)\bar\lambda)\in(\mathbb R_{>0})^2$.  Let
+$\Gamma^+$ be the positive action
+\[
+ \Psi^+_{\bar\lambda}=(a_{\bar\lambda},1)\Phi_{\bar\lambda}.
+\tag{C.5}
+\]
+
+\begin{lemma}[positive quotient and honeycomb]\label{lem:positive-collapse}
+\Verified\ The pair $(A,A_0)$ in (C.1) consists of contractible topological
+manifolds, $A_0$ being a boundary component of $A$.  The action $\Gamma^+$ is
+free and properly discontinuous, and
+\[
+ Q^+=A/\Gamma^+,\qquad H=A_0/\Gamma^+
+\tag{C.6}
+\]
+are respectively a compact $3$-manifold with boundary and one of its boundary
+$2$-tori.  The inclusion $H\hookrightarrow Q^+$ is a strong deformation
+retract, and its retraction lifts to a $\Gamma^+$-equivariant strong
+deformation retraction $P$ of $A$ onto $A_0$.
+\end{lemma}
+
+\begin{proof}
+Polar multiplication $m:T_c\times Y_{\geq0}\to Y$ is a closed quotient map:
+in every smooth unimodular toric chart it is the usual map
+$(S^1)^3\times[0,\infty)^3\to\mathbb C^3$, and $T_c$ is compact.  If $q$ is
+in the orbit indexed by a face $C$ of the $A_2$ triangulation, its stabilizer
+is the connected compact subtorus on
+\[
+ N_{\widehat C}=\bigoplus_{v\in V(C)}\mathbb Z(v,1).
+\]
+Unimodularity makes this lattice saturated, and direct intersection with
+$\Lambda_{\rm tor}$ gives
+\[
+ \operatorname{Stab}_{T_c}(q)\cap T_f=
+ \begin{cases}
+  1,&C\text{ is a vertex},\\
+  S^1_{v'-v},&C=\{v,v'\}\text{ is an edge},\\
+  T_f,&C\text{ is a triangle}.
+ \end{cases}
+\tag{C.7}
+\]
+There are no hidden finite components.  The lattices
+$N_{\widehat C}$ and $\Lambda_{\rm tor}$ are saturated, and every face contains
+a vertex $(v,1)$, so
+$N_{\widehat C}+\Lambda_{\rm tor}=N'$.  Thus the displayed intersections are
+the connected subtori attached to their primitive intersection lattices.
+
+In a toric chart the positive set $A$ is
+\[
+ \{(r_0,r_1,r_2)\in[0,\infty)^3:r_0r_1r_2\leq\eta\}.
+\]
+Its corner links are discs, so it is a topological $3$-manifold with boundary
+$A_0\sqcup\{|t|=\eta\}_{>0}$.  Its interior is
+$\mathbb R_y^2\times(0,\eta)$.  Brown's collaring theorem
+\cite{Brown1962} makes the inclusion of the interior a homotopy equivalence;
+therefore $A$ is contractible.
+
+The nonnegative part of each component $E_v\simeq\mathrm{dP}_6$ is its moment
+hexagon.  These hexagons meet along exactly the arcs prescribed by the dual
+honeycomb $\mathcal H$ of the $A_2$ triangulation.  Map the two vertex orbits
+of $\mathcal H$ to the corresponding torus fixed points, choose homeomorphisms
+on representatives of the three edge orbits, and extend the resulting circle
+homeomorphism over one hexagon.  Propagating by $B_0\bar\Lambda$ defines a
+$\Gamma^+$-equivariant continuous bijection
+\[
+ \vartheta:\mathbb R^2\xrightarrow{\sim}A_0,\qquad
+ \vartheta(z+B_0\bar\lambda)=
+ \Psi^+_{\bar\lambda}\vartheta(z).
+\tag{C.8}
+\]
+Local finiteness of the fan makes this bijection proper, hence a homeomorphism.
+Thus $A_0$ is contractible.
+
+The action in (C.5) is the already verified cusp action with constant twist
+$C^+=(2\pi i)^{-1}R(0)$, since
+$e^{2\pi iC^+\bar\lambda}=a_{\bar\lambda}$; hence it is free and properly
+discontinuous.  Properness of its quotient over
+the disc, proved by the same bounded fundamental-domain argument as
+\cref{thm:candidate-cusp-geometry}, makes $Q^+$ compact.  Its two boundary
+components are $H\simeq\mathbb R^2/B_0\bar\Lambda$ and
+$\mathbb R^2/B_\eta^+\bar\Lambda$, both tori.  Since a free properly
+discontinuous action preserves the boundary charts, $Q^+$ is a topological
+$3$-manifold with boundary; Brown's collaring theorem makes
+$H\hookrightarrow Q^+$ collared.  The covers $A\to Q^+$ and
+$A_0\to H$ have the same deck group, and the equivariant inclusion identifies
+that group by the identity.  The result is now
+\cref{prop:topological-spine}.
+\end{proof}
+
+\begin{lemma}[spreading the positive retraction by phases]
+\label{lem:phase-spread-collapse}
+\Verified\ The lifted retraction $P$ of \cref{lem:positive-collapse} spreads
+to a $\Gamma^0$- and $T_c$-equivariant strong deformation retraction of
+$Y_{\leq\eta}$ onto $Y_0$.  Conjugating by $G$ gives a $\Gamma$- and
+$T_f$-equivariant strong deformation retraction, and hence a strong
+deformation retraction
+\[
+ r_s:N'_0=Y_{\leq\eta}/\Gamma\longrightarrow W=Y_0/\Gamma.
+\tag{C.9}
+\]
+\end{lemma}
+
+\begin{proof}
+For $\phi\in T_c$ and $q\in A$ set
+\[
+ R_s(\phi q)=\phi P_s(q).
+\tag{C.10}
+\]
+This is well defined.  On the open orbit and the outer boundary the
+stabilizer is trivial; on $A_0$ the homotopy fixes $q$, so (C.7) causes no
+ambiguity.  It is continuous because its pullback along the closed quotient
+map $m\times\operatorname{id}_{[0,1]}$ is continuous.
+
+The frozen and positive actions satisfy
+\[
+ \Psi^0_{\bar\lambda}(\phi q)=
+ u_{\bar\lambda}\varphi_{\bar\lambda}(\phi)
+ \Psi^+_{\bar\lambda}(q),
+\tag{C.11}
+\]
+where $\varphi_{\bar\lambda}$ is the compact-torus automorphism induced by
+$(z,z_3)\mapsto(z+z_3B_0\bar\lambda,z_3)$.  Equation (C.11) and
+$\Gamma^+$-equivariance of $P$ prove $\Gamma^0$-equivariance of $R$.
+The remaining deformation-retraction identities follow directly from those
+of $P$.  Finally \cref{lem:collapse-straightening} conjugates $R$ to the
+original action and permits descent to (C.9).
+\end{proof}
+
+\begin{proposition}[fixed-fibre cellular collapse]
+\label{prop:verified-cellular-collapse}
+\Verified\ Fix $t_0$ with $0<|t_0|\leq\eta$ and put $F=f^{-1}(t_0)$.  The
+retraction in \cref{lem:phase-spread-collapse} can be chosen so that its end
+map $r:N'_0\to W$ restricts to a cellular collapse $c=r|_F$ with the following
+description.  There is a splitting
+\[
+ F\xrightarrow[\bar G]{\sim}F_{t_0}^0\simeq T_B\times T_f,
+\tag{C.12}
+\]
+where $\bar G$ is the identity on the marking $\Lambda$, and the quotient
+honeycomb $\Theta\subset T_B$ has two vertices and three edges $e_k$.  Over a
+vertex, $c$ collapses all of $T_f$ to a triple point of $W$; over
+$e_k^\circ$ it collapses the primitive circle $S^1_{n_k}$ and maps onto the
+double curve $\bar C_k$; over $T_B\setminus\Theta$ it is injective onto
+$W\setminus D$.
+\end{proposition}
+
+\begin{proof}
+Let $S\subset A$ be the positive slice $|t|=|t_0|$ and put
+\[
+ B_\rho^+=B_0+\frac{R(0)}{\log\rho},\qquad
+ \ell_\rho=B_0(B_\rho^+)^{-1}.
+\]
+The map $y:S\to\mathbb R^2$ identifies the positive action with translations
+$y\mapsto y+B_{|t_0|}^+\bar\lambda$, while $\ell_{|t_0|}$ conjugates these to
+$z\mapsto z+B_0\bar\lambda$.  Define on the frozen fibre
+\[
+ \widetilde c((\phi,\arg t_0)q)=
+ (\phi,\arg t_0)\,
+ \vartheta(\ell_{|t_0|}y(q)),\qquad \phi\in T_f, q\in S.
+\tag{C.13}
+\]
+The stabilizer on $S$ is trivial, so the formula is well defined.  Equations
+(C.8) and (C.11) make it $\Gamma^0$-equivariant, hence it descends to
+$c_\vartheta:F_{t_0}^0\to W$.
+
+Writing
+\[
+ K_{t_0}=\operatorname{Re}C_0+\frac{\arg t_0}{2\pi}B_0,
+\]
+the frozen action on $T_f\times\mathbb R_y^2$ is
+\[
+ \bar\lambda(\phi,y)=
+ (\phi e^{2\pi iK_{t_0}\bar\lambda},
+  y+B_{|t_0|}^+\bar\lambda).
+\]
+The change of variables
+\[
+ \Xi(\phi,y)=
+ (\phi e^{-2\pi iK_{t_0}(B_{|t_0|}^+)^{-1}y},y)
+\tag{C.14}
+\]
+conjugates this to the product action and gives (C.12).  Formula (C.7) now
+proves the asserted cell description, including primitivity of the collapsed
+circle.
+
+It remains to force the end map of an actual strong deformation retraction to
+equal (C.13), rather than merely be homotopic to it.  In the chart
+$\vartheta:\mathbb R^2\to A_0$ put
+\[
+ \widehat a=\vartheta^{-1}P_1.
+\]
+Put $\rho_0=|t_0|$.  If $\rho_0<\eta$, choose a closed positive band
+$\{\rho_-\leq |t|\leq\rho_+\}$, disjoint from $A_0$, with $\rho_0$ in its
+interior.  If $\rho_0=\eta$, instead use the one-sided band
+$\{\rho_-\leq |t|\leq\eta\}$.  Define
+$\widehat b=\ell_{|t|}y$ only on the chosen band.  Wherever they are defined,
+both maps satisfy
+$\widehat a(\Psi^+_{\bar\lambda}q)=\widehat a(q)+B_0\bar\lambda$ and the same
+identity for $\widehat b$.  Choose a continuous tent function $\chi(|t|)$,
+extended by zero off the band, with $\chi(\rho_0)=1$ and vanishing near every
+boundary of the band across which it must be pasted; in the one-sided case no
+vanishing is required at the ambient boundary $|t|=\eta$.  With
+$w(q)=\chi(|t(q)|)$ define
+\[
+ K_u(q)=\vartheta\bigl((1-uw(q))\widehat a(q)
+                         +uw(q)\widehat b(q)\bigr)
+\tag{C.15}
+\]
+inside the band and $K_u=P_1$ outside.  Because the transition action is by
+translations, affine interpolation preserves $\Gamma^+$-equivariance.  The
+weight vanishes near every gluing boundary and near $A_0$, so (C.15) pastes
+continuously, fixes $A_0$, and takes values in $A_0$.
+
+Concatenate the first half of $P$ with $K_u$.  The result $P'$ still satisfies
+all four properties used in \cref{lem:phase-spread-collapse}, and its end map
+on $S$ is exactly $\vartheta\ell_{|t_0|}y$.  Spreading $P'$ by phases and
+conjugating by $G$ therefore yields a strong deformation retraction whose
+restriction to $F$ is
+\[
+ r|_F=c_\vartheta\circ\bar G.
+\]
+This proves the proposition, including continuity across all toric strata.
+\end{proof}
+
+\subsection{The integral collapse map}
+
+Let $D=\bar C_1\cup\bar C_2\cup\bar C_3$ be the double locus.  Choose
+primitive orientations of its three curve classes and of the honeycomb edges
+so that the annulus degrees below have the displayed signs.  These orientations
+are compared with the clockwise collar convention in
+\cref{prop:actual-finite-band-maps,prop:cusp-mv-blocks}.  In
+$\Lambda_{\rm tor}=\mathbb Z\langle\widehat w,\widehat\delta\rangle$ put
+\[
+ n_1=\widehat w,\qquad n_2=\widehat\delta-\widehat w,\qquad
+ n_3=-\widehat\delta,\qquad
+ \nu_k(v)=\det(n_k,v).
+\tag{C.16}
+\]
+
+\begin{proposition}[integral homology of the cellular collapse]
+\label{prop:verified-collapse-homology}
+\Verified\ The map $c_*$ of \cref{prop:verified-cellular-collapse} is
+surjective in every degree, and
+\[
+ 0\longrightarrow\operatorname{im}(\textstyle\bigwedge^qM_0-I)
+ \longrightarrow\textstyle\bigwedge^q\Lambda
+ \xrightarrow{c_*}H_q(W;\mathbb Z)\longrightarrow0
+\tag{C.17}
+\]
+is an exact sequence of free abelian groups.  In the splitting
+$\Lambda=\bar\Lambda\oplus\Lambda_{\rm tor}$,
+\[
+ c_*:\Lambda\to H_1(W)=\bar\Lambda
+\]
+is projection, and in degree two
+\[
+ c_*(\widehat\gamma\widehat u)=[\mathbb T_B],\qquad
+ c_*(\widehat w\widehat\delta)=0,
+\tag{C.18}
+\]
+\[
+ c_*(\beta\otimes v)=
+ \sum_{k=1}^3\nu_k(B_0\beta)\nu_k(v)[\bar C_k].
+\tag{C.19}
+\]
+Equivalently, in the ordered source basis
+\[
+(\widehat\gamma\widehat u,\widehat\gamma\widehat w,
+ \widehat\gamma\widehat\delta,\widehat u\widehat w,
+ \widehat u\widehat\delta,\widehat w\widehat\delta)
+\]
+and target basis
+$([\mathbb T_B],[\bar C_1],[\bar C_2],[\bar C_3])$,
+\[
+[c_*]_2=
+\begin{pmatrix}
+1&0&0&0&0&0\\
+0&0&-1&0&0&0\\
+0&-1&-1&1&1&0\\
+0&0&0&1&0&0
+\end{pmatrix}.
+\tag{C.20}
+\]
+In degree three,
+\[
+ c_*(\widehat\gamma\widehat u\,v)=v
+ \quad(v\in\Lambda_{\rm tor}),
+ \qquad
+ c_*(\beta\,\widehat w\widehat\delta)=0
+ \quad(\beta\in\bar\Lambda),
+\tag{C.21}
+\]
+where the first formula fixes the displayed orientation of $H_3(W)$.
+\end{proposition}
+
+\begin{proof}
+First identify the target integrally.  The normalization
+$\nu:\mathrm{dP}_6\to W$ identifies opposite sides of the anticanonical
+hexagon.  A plumbing neighbourhood of that hexagon descends to a regular
+neighbourhood of $D$.  If $P_0$ is its complement in $\mathrm{dP}_6$, then
+$P_0\simeq(\mathbb C^*)^2\simeq T^2$, and excision followed by Lefschetz
+duality gives
+\[
+ H_k(W,D)\simeq H_k(P_0,\partial P_0)
+ \simeq H^{4-k}(T^2).
+\tag{C.22}
+\]
+The class $[\mathbb T_B]=c_*[T_B\times\{*\}]$ pairs once with a compact
+$T_f$-orbit in $W\setminus D$, so it lifts the generator of $H_2(W,D)$.
+Likewise the cycles $c_*(T_B\times S^1_{\widehat w})$ and
+$c_*(T_B\times S^1_{\widehat\delta})$ pair unimodularly with the two
+coordinate circles in $T_f$.  Thus the boundary maps of the pair vanish and
+\[
+ H_*(W)=(\mathbb Z,\mathbb Z^2,\mathbb Z^4,\mathbb Z^2,\mathbb Z),
+\tag{C.23}
+\]
+with
+$H_2(W)=\mathbb Z\langle[\bar C_1],[\bar C_2],[\bar C_3],
+[\mathbb T_B]\rangle$ and $H_3(W)$ generated by the two cycles in (C.21).
+
+The cell description gives projection in degree one and (C.18).  Give $T_B$
+the CW structure with one open hexagonal $2$-cell and $1$-skeleton $\Theta$.
+A class $\beta\in H_1(T_B)$ has the unique cellular representative
+\[
+ \sum_{k=1}^3\nu_k(B_0\beta)e_k.
+\]
+On $e_k\times S^1_v$, the collapse kills $S^1_{n_k}$ and maps the quotient
+circle to $\bar C_k$ with degree $\nu_k(v)$.  This proves (C.19), without a
+rank inference.  The three choices
+$(B_0\beta,v)=(\widehat w,\widehat w),
+(\widehat\delta,\widehat\delta),(\widehat w,\widehat\delta)$ give coefficient
+vectors
+\[
+ (0,1,1),\qquad(1,1,0),\qquad(0,1,0),
+\]
+whose determinant is a unit.  Hence degree two is surjective.  Formula
+(C.21) follows directly by crossing the base $2$-cell with a primitive fibre
+circle; it proves degree-three surjectivity and records the orientations.
+ In degree four the top-dimensional open stratum
+$(T_B\setminus\Theta)\times T_f$ maps homeomorphically to the open
+$4$-stratum of $W$, so the map is multiplication by a unit after choosing the
+target orientation.  Degree zero is immediate.
+
+Let $h$ be geometric monodromy around the cusp.  Fibre transport in $N'_0$
+is a homotopy from the inclusion of $F$ to its composite with $h$.  Composing
+with $r$ yields $c\simeq c\circ h$, and therefore
+\[
+ \operatorname{im}(\textstyle\bigwedge^qM_0-I)\subseteq\ker c_*.
+\tag{C.24}
+\]
+The inclusion is an equality integrally, not only rationally.  In the ordered
+basis $(\widehat\gamma,\widehat u,\widehat w,\widehat\delta)$, direct exterior
+multiplication gives the primitive image lattices
+\[
+\begin{array}{c|c}
+q&\operatorname{im}(\bigwedge^qM_0-I)\\ \hline
+0,4&0\\
+1&\langle\widehat w,\widehat\delta\rangle\\
+2&\langle\widehat w\widehat\delta,
+          \widehat\gamma\widehat w+\widehat u\widehat\delta\rangle\\
+3&\langle\widehat\gamma\widehat w\widehat\delta,
+          \widehat u\widehat w\widehat\delta\rangle.
+\end{array}
+\tag{C.25}
+\]
+Each displayed subgroup is a direct summand.  Its rank is
+$\binom4q-b_q(W)$ by (C.23), while surjectivity gives the same rank for
+$\ker c_*$.  The quotient $H_q(W)$ is free, so $\ker c_*$ is saturated.
+Two saturated sublattices of the same rank and rational span coincide, proving
+(C.17).
+\end{proof}
+
+\subsection{Comparison with analytic nearby cycles}
+
+\begin{theorem}[collapse equals nearby-cycle specialization]
+\label{thm:collapse-equals-specialization}
+\Verified\ With the radial marking of the punctured cusp family, for every
+$0\leq q\leq4$ one has an equality of integral homomorphisms
+\[
+ \operatorname{sp}^q=i_F^*r^*=c^*:
+ H^q(W;\mathbb Z)\longrightarrow H^q(F;\mathbb Z).
+\tag{C.26}
+\]
+Consequently the cellular calculation gives
+\[
+ \operatorname{im}c^*=(\textstyle\bigwedge^qV)^{T_0}
+\]
+as a saturated lattice.  In particular, the degree-three orientation in the
+cellular computation is the degree-three orientation of intrinsic
+specialization; there is no independent sign or index.
+\end{theorem}
+
+\begin{proof}
+Let $N_\rho=f^{-1}(|t|\leq\rho)\subset N'_0$ and let
+$i_{W,\rho}:W\hookrightarrow N_\rho$ be the central-fibre inclusion.  The
+closed tubes are cofinal among neighbourhoods of $W$: if an open set
+$\mathcal O\subset N'_0$ contains $W$, properness makes
+$f(N'_0\setminus\mathcal O)$ closed and disjoint from $0$, so
+$N_\rho\subset\mathcal O$ for all sufficiently small $\rho$.  For each such
+$\rho$, choose $t_\rho$ on the radial ray through the fixed point $t_0$ whose
+fibre is $F$, with $0<|t_\rho|<\rho$, and write
+$i_{t_\rho}:F_{t_\rho}\hookrightarrow N_\rho$.  Identify
+$H^q(F_{t_\rho};\mathbb Z)$ with $H^q(F;\mathbb Z)$ by parallel transport
+along that ray.  The neighborhood realization of the unit
+$\mathbb Z_W\to\psi_f\mathbb Z$, together with proper base change, identifies
+specialization with
+\[
+ H^q(W;\mathbb Z)
+ \xleftarrow[\sim]{\ \rho_0\ }
+ \varinjlim_{\rho\downarrow0}H^q(N_\rho;\mathbb Z)
+ \xrightarrow{\ \rho_{\rm near}\ }H^q(F;\mathbb Z),
+\tag{C.27}
+\]
+where $\rho_0$ is induced by $i_{W,\rho}^*$ and $\rho_{\rm near}$ is induced
+by the transported maps $i_{t_\rho}^*$.  These restriction maps are compatible
+under shrinking $\rho$.  This is the same analytic integral
+construction used in
+\cref{thm:p0-integral-specialization}; see
+\cite[Definition~4.2.1 and Propositions~4.2.2, 4.2.11]{Dimca2004}.
+
+Applying the construction of \cref{lem:phase-spread-collapse} at radius
+$\rho$ shows that $i_{W,\rho}^*$ is an isomorphism; no compatibility of those
+radius-dependent deformation homotopies is needed.  Let
+$j_\rho:N_\rho\hookrightarrow N'_0$ be inclusion.  The single retraction
+$r:N'_0\to W$ satisfies
+\[
+ i_{W,\rho}^*j_\rho^*r^*
+ =(r\circ j_\rho\circ i_{W,\rho})^*
+ =\operatorname{id}_{H^q(W;\mathbb Z)}.
+\]
+Hence $j_\rho^*r^*$ is the unique inverse of $i_{W,\rho}^*$.  These inverses
+are compatible under shrinking because they are restrictions of the single
+map $r^*:H^q(W;\mathbb Z)\to H^q(N'_0;\mathbb Z)$.  Consequently
+$\rho_0^{-1}(\alpha)$ in (C.27) is represented, for every sufficiently small
+$\rho$, by $j_\rho^*r^*\alpha$.
+
+The restrictions of one class on $N'_0$ to the fibres along the punctured
+radial ray form a section of the Gauss--Manin local system.  Therefore, after
+the parallel-transport identifications used to define $\rho_{\rm near}$,
+$i_{t_\rho}^*j_\rho^*r^*\alpha$ equals $i_F^*r^*\alpha$.  It follows that the
+composite in
+(C.27) is $i_F^*r^*$.  Since $c=r|_F$, functoriality gives
+$i_F^*r^*=(r\circ i_F)^*=c^*$.
+
+Changing the lift of the radial marking composes the target with monodromy.
+By (C.24), $c^*$ lands in the monodromy-invariant lattice, so the equality is
+independent of that harmless choice.  Finally
+\cref{thm:p0-integral-specialization} identifies the common image with the
+full saturated invariant lattice.
+\end{proof}
+
+\begin{test}[resolved cusp-collapse falsifiers]
+\Verified\ The audit tested the failure modes previously attached to C1--C3:
+continuity at every toric stratum, finite stabilizer components, equivariance,
+primitive edge circles, degree-two and degree-three orientations, torsion and
+saturation, and functorial equality with the nearby-cycle unit.  The proofs
+above exclude each one.  This status concerns the cusp collapse only; it does
+not infer the global Mayer--Vietoris matrices.
+\end{test}
+
+\begin{auditrecord}[V1: based van Kampen inclusions]
+\label{record:vankampen}
+\Verified\ The actual overlap coordinate maps, with the zero section as
+base locus and clockwise meridians, show that the
+finite fillings impose $\widehat\rho_j^{m_j}=t_{v_j}$ with the same sign,
+the cusp filling kills $\Lambda_{\rm tor}$ and its toric meridian, and the
+tautological gluing has zero translation drift.  Thus the abstract terminal
+presentation is the actual $\pi_1(X)$.  The deck generators, common clockwise
+convention, zero-section disc, normal closure, boundary inclusion
+$\Lambda\to\Lambda/\Lambda_{\rm tor}$,
+$\widetilde a_0\mapsto1$, and absence of extra whisker drift are proved in
+\cref{prop:geometric-pi1}.
+\end{auditrecord}
+
+\subsection{The actual finite-band Mayer--Vietoris maps}
+
+Fix the ordered orientation
+\[
+H_1(F)=\Lambda=
+\mathbb Z\langle\widehat\gamma,\widehat u,
+                    \widehat w,\widehat\delta\rangle
+\]
+dual to $(\gamma,u,w,\delta)$, use the complex orientations of
+$F,S_1,S_2$, and orient every base meridian clockwise.  Put
+\[
+ \eta_1=2u+w+3\delta,
+ \qquad \eta_2=u+w+2\delta,
+ \qquad q=uw+6\gamma\delta.
+\tag{MV.1}
+\]
+
+\begin{proposition}[actual finite-band maps in primitive bases]
+\label{prop:actual-finite-band-maps}
+\Verified\ In the decomposition $X^\circ=X_1\cup X_2$, the maps denoted
+$\alpha_r$ in the manuscript are the actual Mayer--Vietoris maps
+\[
+ \alpha_r=(\pi_{1*},-\pi_{2*}):
+ H_r(F;\mathbb Z)\longrightarrow
+ H_r(S_1;\mathbb Z)\oplus H_r(S_2;\mathbb Z).
+\tag{MV.2}
+\]
+There is no conjugacy, unrecorded index, or independent orientation sign in
+(MV.2).
+
+Choose primitive bases
+\[
+ H_1(S_1)=\mathbb Z\langle g_1,h_1\rangle,
+ \quad [\widehat\gamma]_1=3g_1,\quad
+ h_1=\pi_{1*}\widehat w,
+\]
+\[
+ H_1(S_2)=\mathbb Z\langle g_2,h_2\rangle,
+ \quad [\widehat\gamma]_2=-4g_2,\quad
+ h_2=\pi_{2*}\widehat w.
+\]
+Then, in the source basis
+$(\widehat\gamma,\widehat u,\widehat w,\widehat\delta)$ and the target
+basis $(g_1,h_1,g_2,h_2)$,
+\[
+ [\alpha_1]=
+ \begin{pmatrix}
+ 3&0&0&0\\
+ 0&2&1&3\\
+ 4&0&0&0\\
+ 0&-1&-1&-2
+ \end{pmatrix}.
+\tag{MV.3}
+\]
+It has Smith form $\operatorname{diag}(1,1,1,0)$ and
+\[
+ \ker\alpha_1=\mathbb Z\nu_0,
+ \qquad
+ \nu_0=-\widehat u-\widehat w+\widehat\delta.
+\tag{MV.4}
+\]
+
+Define cohomology bases $(a_j,b_j)$ by
+\[
+ \pi_1^*a_1=\gamma\eta_1,
+ \qquad \pi_1^*b_1=q-2\gamma\eta_1,
+\]
+\[
+ \pi_2^*a_2=2\gamma\eta_2,
+ \qquad \pi_2^*b_2=q-3\gamma\eta_2,
+\tag{MV.5}
+\]
+and let $(a_j^\sharp,b_j^\sharp)$ be the Kronecker-dual homology bases.
+In the ordered source basis
+\[
+(\widehat\gamma\widehat u,
+ \widehat\gamma\widehat w,
+ \widehat\gamma\widehat\delta,
+ \widehat u\widehat w,
+ \widehat u\widehat\delta,
+ \widehat w\widehat\delta)
+\]
+and target basis
+$(a_1^\sharp,b_1^\sharp,a_2^\sharp,b_2^\sharp)$,
+\[
+ [\alpha_2]=
+ \begin{pmatrix}
+  2& 1& 3& 0&0&0\\
+ -4&-2& 0& 1&0&0\\
+ -2&-2&-4& 0&0&0\\
+  3& 3& 0&-1&0&0
+ \end{pmatrix}.
+\tag{MV.6}
+\]
+This matrix also has Smith form $\operatorname{diag}(1,1,1,0)$; its
+primitive left kernel is
+\[
+ \Phi=(4,2,3,2).
+\tag{MV.7}
+\]
+The class $\mathcal A\in H^2(X^\circ;\mathbb Z)$ represented by $\Phi$
+restricts to $2q$, because
+\[
+ 2q=4\pi_1^*a_1+2\pi_1^*b_1
+    =3\pi_2^*a_2+2\pi_2^*b_2.
+\tag{MV.8}
+\]
+
+If the degree-three bases are Poincar\'e dual to the degree-one cohomology
+bases just fixed, the projection formula makes $[\alpha_3]$ the same matrix
+as (MV.3).  Finally
+\[
+ [\alpha_0]=\binom{1}{-1},
+ \qquad
+ [\alpha_4]=\binom{3}{-4}.
+\tag{MV.9}
+\]
+Every image in (MV.3), (MV.6), and (MV.9) is saturated.
+\end{proposition}
+
+\begin{proof}
+Choose closed discs $D'_1,D'_2$ whose intersection is a contractible band
+disjoint from the three special points.  Over the annular shell between
+$D'_j$ and the smaller filling disc, $f$ is a proper submersion.  An
+Ehresmann connection lifts a base deformation retraction that is stationary
+near the smaller disc; adjoining the identity there gives a deformation
+retraction $X_j\to N_j$.  The verified local radial retraction of
+\cref{lem:finite-filling-stalk-map} keeps the marked flat coordinate $x$
+fixed and sends its endpoint to the orbit $\pi_j(x)\in S_j$.  Since the band
+is contractible, choose its marking by the same radial paths.  The composite
+of the actual band inclusion with $X_j\to N_j\to S_j$ is therefore literally
+$\pi_j$.  The standard chain-level Mayer--Vietoris injection is
+$z\mapsto(i_{1*}z,-i_{2*}z)$
+\cite[\S2.2]{Hatcher2002}, proving (MV.2) with its sign.
+
+The affine fundamental-group presentations of the finite fibres and the
+exact finite pullback lattices of \cref{prop:finite-indices} give the stated
+primitive degree-one bases and (MV.3).  Its $3\times3$ minors include $3$
+and $4$, so their gcd is one; direct elimination gives (MV.4).
+The two bases in (MV.5) are unimodular changes of
+\[
+ \langle\gamma\eta_1,q\rangle,
+ \qquad
+ \langle2\gamma\eta_2,\gamma\eta_2+q\rangle,
+\]
+the exact integral images of $\pi_j^*$ in degree two.  Evaluating them on the
+six source tori gives (MV.6).  Its rank-three minors include $2$ and $-3$,
+so the image is saturated; multiplication verifies (MV.7) and (MV.8).
+
+For degree three, if $x\in H_3(F)$ and $\theta\in H^1(S_j)$, then
+\[
+ \langle\theta,\pi_{j*}x\rangle
+ =\langle\pi_j^*\theta,x\rangle.
+\]
+Thus in the Poincar\'e-dual bases the degree-three matrix equals the
+degree-one matrix.  In degree four, the holomorphic quotient coverings have
+positive degrees $3$ and $4$; the sole minus sign is the Mayer--Vietoris
+minus sign.  This proves (MV.9) and completes the integral certificate.
+\end{proof}
+
+\subsection{The cusp attachment and its primitive blocks}
+
+\begin{proposition}[actual cusp kernels and global blocks]
+\label{prop:cusp-mv-blocks}
+\Verified\ For the second decomposition $X=N'_0\cup X^\circ$, the map
+$H_r(M)\to H_r(W)$ is surjective and
+\[
+ K_1=\mathbb Z[\widetilde a_0],
+ \qquad
+ K_2=\mathbb Z\langle
+       \xi_{\widehat w},\xi_{\widehat\delta}\rangle,
+\tag{MV.10}
+\]
+where
+\[
+ \xi_\nu=a_*([S^1_\nu]\times[\widetilde a_0])
+\]
+uses the oriented fibrewise translation action and the clockwise toric
+meridian.  Both displayed subgroups are primitive.
+
+Let $\zeta$ be the generator of $H_1(X^\circ)$ normalized by
+$\Phi_1(\zeta)=1$.  In the source basis
+$(\widehat\gamma,\widehat u,\widetilde a_0)$ of $H_1(M)$ and target basis
+$(\bar\gamma,\bar u,\zeta)$ of
+$H_1(W)\oplus H_1(X^\circ)$, the actual map
+$(c_*,-j_*)$ is
+\[
+ D_1=
+ \begin{pmatrix}
+ 1&0&0\\
+ 0&1&0\\
+ -12&0&-p
+ \end{pmatrix},
+ \qquad \det D_1=-p.
+\tag{MV.11}
+\]
+
+Orient the connecting map by
+\[
+ \partial(j_*\xi_\nu)=(I-A_2)\nu=(I-A_1^{-1})\nu
+ \quad(\nu\in\Lambda_{\rm tor}).
+\tag{MV.12}
+\]
+Let $e$ be the primitive generator of
+$C_2:=\operatorname{coker}\alpha_2$ with
+$\langle\mathcal A,e\rangle=1$, and put
+$z=j_*\xi_{\widehat w}$.  Then $(e,z)$ is a basis of
+$H_2(X^\circ)$ and
+\[
+ j_*\xi_{\widehat\delta}=-p\,e,
+ \qquad
+ [j_*|_{K_2}]_{(\xi_{\widehat\delta},\xi_{\widehat w})}^{(e,z)}
+ =\begin{pmatrix}-p&0\\0&1\end{pmatrix}.
+\tag{MV.13}
+\]
+After splitting the surjections onto $H_r(W)$, the full degree-one and
+degree-two Mayer--Vietoris maps are integrally equivalent to
+\[
+ I_2\oplus[p],
+ \qquad
+ I_4\oplus
+ \begin{pmatrix}-p&0\\0&1\end{pmatrix},
+\tag{MV.14}
+\]
+respectively.  They are unimodular for the candidate $p=-1$.
+\end{proposition}
+
+\begin{proof}
+The composite $H_r(F)\to H_r(M)\to H_r(W)$ is the verified collapse $c_*$,
+which is surjective by \cref{prop:verified-collapse-homology}; hence the
+second arrow is surjective.  Under the Wang projection, the base class
+$[\widetilde a_0]$ is primitive.  It bounds the explicit zero-section disc
+in the toric filling, proving the first formula in (MV.10).
+
+For $K_2$, use the toric chart $t=z_1z_2z_3$.  The literal solid tori
+\[
+ \{|z_1|\leq\rho,\ |z_2|=r,\ z_3=c\}
+ \quad\hbox{and}\quad
+ \{|z_2|\leq\rho,\ |z_1|=r,\ z_3=c\}
+\]
+have oriented boundaries $\xi_{\widehat w}$ and
+$\xi_{\widehat\delta}$.  Under
+\[
+ H_2(M)\twoheadrightarrow
+ \ker(M_0-I|\Lambda)=\Lambda_{\rm tor},
+\]
+these classes map to $\widehat w$ and $\widehat\delta$.  Their span is
+therefore primitive; the Wang ranks and the verified homology of $W$ show
+that it is all of $K_2$.
+
+The actual meridian calculation gives
+\[
+ j_*\widehat\gamma=12\zeta,
+ \qquad j_*\widehat u=0,
+ \qquad j_*[\widetilde a_0]=p\zeta,
+\]
+while $c_*$ is projection onto
+$\mathbb Z\langle\bar\gamma,\bar u\rangle$.  This is (MV.11).
+Because $A_1A_2=M_0^{-1}$ acts trivially on $\Lambda_{\rm tor}$, the two
+expressions in (MV.12) agree.  Since
+$A_2\widehat w=-\widehat u+\widehat\delta$ and
+$A_2\widehat\delta=\widehat\delta$,
+\[
+ \partial(j_*\xi_{\widehat w})=-\nu_0,
+ \qquad \partial(j_*\xi_{\widehat\delta})=0.
+\tag{MV.15}
+\]
+Thus $z$ is a primitive lift, up to the fixed unit sign, of the generator of
+$\ker\alpha_1$.
+
+It remains to determine the coefficient of $e$.  Normalize contraction by
+\[
+ \iota_v(\theta_1\wedge\cdots\wedge\theta_k)
+ =\sum_r(-1)^{r-1}\theta_r(v)
+   \theta_1\wedge\cdots\widehat{\theta_r}\cdots\wedge\theta_k.
+\]
+The globally free $S^1_{\widehat\delta}$-action and the sweep/slant identity
+give
+\[
+ \langle\mathcal A,j_*\xi_{\widehat\delta}\rangle
+ =\langle\iota_{\widehat\delta}\mathcal A,
+          j_*[\widetilde a_0]\rangle,
+ \qquad
+ \iota_{\widehat\delta}(2q)=-12\gamma.
+\tag{MV.16}
+\]
+Let $\Theta\in H^1(X^\circ)$ be the primitive class restricting to
+$12\gamma$.  Restriction to $F$ is injective, so (MV.16) implies
+$\iota_{\widehat\delta}\mathcal A=-\Theta$.  The based meridian relation
+gives
+\[
+ \Theta(j_*[\widetilde a_0])=p.
+\]
+Hence the left side of (MV.16) is $-p$, which proves (MV.13).  Splitting the
+surjective cusp blocks gives (MV.14).
+\end{proof}
+
+\begin{remark}[one-shot $H_1$ check]
+The preceding two-stage calculation is the manuscript's argument.  There is
+also a useful one-shot check.  Let $U$ be the torus bundle over the
+pair-of-pants core and
+$N=N'_0\sqcup N'_1\sqcup N'_2$.  In the target basis
+\[
+(c,\rho_1,\rho_2;
+ \bar\gamma,\bar u;
+ g_1,h_1;g_2,h_2)
+\]
+and domain basis
+\[
+(\gamma_0,u_0,a_0;
+ \gamma_1,w_1,\rho_1;
+ \gamma_2,w_2,\rho_2),
+\]
+the actual map $(i_{U*},-i_{N*})$ for the candidate is
+\[
+\Delta_1=
+\begin{pmatrix}
+1&0&\ell_0&1&0&0&1&0&0\\
+0&0&-1&0&0&1&0&0&0\\
+0&0&-1&0&0&0&0&0&1\\
+-1&0&0&0&0&0&0&0&0\\
+0&-1&0&0&0&0&0&0&0\\
+0&0&0&-3&0&-1&0&0&0\\
+0&0&0&0&-1&0&0&0&0\\
+0&0&0&0&0&0&4&0&-1\\
+0&0&0&0&0&0&0&-1&0
+\end{pmatrix}.
+\tag{MV.17}
+\]
+For example, $a_0$ maps to
+$\ell_0c-\rho_1-\rho_2$ on the pair-of-pants side and to zero on the cusp
+side; $\gamma_1$ maps to $c$ and $3g_1$, while $\gamma_2$ maps to $c$ and
+$-4g_2$.  Thus every column is an actual primitive collar cycle.  Exact
+elimination gives
+\[
+ \det\Delta_1=1-12\ell_0=-p
+\]
+for $(\ell_1,\ell_2)=(1,-1)$.  At $\ell_0=0$, this determinant is one.
+\end{remark}
+
+\subsection{Exact comparison with the Leray transgressions}
+
+\begin{theorem}[Mayer--Vietoris/Leray comparison]
+\label{thm:mv-leray-comparison}
+\Verified\ With the preceding primitive bases and clockwise meridians, the
+actual Mayer--Vietoris obstruction maps commute with the intrinsic Leray
+transgressions in degrees one, two, and three.  If
+$\omega_{\rm MV}\in H^2(B;\mathbb Z)$ is the generator fixed below, then
+\[
+ d_2^{0,1}(12\gamma)=-p\,\omega_{\rm MV},
+\tag{L.1}
+\]
+\[
+ d_2^{0,2}(2q)=-p\,\omega_{\rm MV}[\delta],
+ \qquad
+ d_2^{0,3}(2\gamma uw)
+   =-p\,\omega_{\rm MV}[\gamma\delta].
+\tag{L.2}
+\]
+For the candidate $p=-1$, all three maps are multiplication by $+1$ in
+these bases.
+\end{theorem}
+
+\begin{proof}
+Let $V$ be the pair-of-pants neighbourhood in the base and let
+$D_i$ be the three special discs.  Order the annuli as
+$(D_1\cap V,D_2\cap V,D_0\cap V)$ and orient their meridians clockwise.
+Define
+\[
+ \omega_{\rm MV}=\partial_B[(1,0,0)].
+\]
+The chain-level Mayer--Vietoris sequence on the base gives
+\[
+ \partial_B(n_1,n_2,n_0)
+ =(n_1+n_2+n_0)\omega_{\rm MV},
+\tag{L.3}
+\]
+because the image of $H^1(V)$ is the sum-zero sublattice.
+
+Choose a lift $\Theta_V$ of $12\gamma$ over the pair of pants and write
+$b_i=\Theta_V(\widehat\rho_i)$.  The finite local lifts have meridian values
+$4\ell_1$ and $3\ell_2$, while the cusp lift vanishes on
+$\widetilde a_0$.  For the general affine cusp regluing used in this
+comparison, let $t_\mu$ denote translation by the class
+$\mu\in\Lambda/\Lambda_{\rm tor}$ and set
+$\ell_0=\gamma(\mu)$.  Thus
+$\Theta_V(t_\mu)=12\ell_0$.  The tautological gluing of the constructed
+candidate has $\mu=0$ and $\ell_0=0$; in that case the following relation
+has no vertical drift.  In general,
+\[
+ \widetilde a_0=t_\mu\widehat\rho_2^{-1}
+                         \widehat\rho_1^{-1},
+\]
+the local-minus-pair-of-pants discrepancy is
+\[
+ \bigl(4\ell_1-b_1,\ 3\ell_2-b_2,\
+ -(12\ell_0-b_1-b_2)\bigr).
+\tag{L.4}
+\]
+Its signed sum is $-p$.  The canonical truncation triangle identifies this
+very cocycle, functorially on the induced total-space cover, with Leray
+$d_2$; this is the construction proved in
+\cref{lem:first-transgression}.  Equations (L.3)--(L.4) prove (L.1).
+
+This is more than equality of the terminal integer.  The transpose of the
+oriented collar map applied to the tuple of local lifts has meridian values
+\[
+ (b_1-4\ell_1,\ b_2-3\ell_2,\
+ 12\ell_0-b_1-b_2),
+\]
+the negative of (L.4).  Consequently the square
+\[
+\begin{CD}
+\mathbb Z\langle12\gamma\rangle
+ @>{d_2^{0,1}}>>
+\mathbb Z\langle\omega_{\rm MV}\rangle\\
+@V{\cong}VV @VV{\cong}V\\
+H^1(X^\circ;\mathbb Z)
+@>{(j_*|_{K_1})^\vee}>>
+K_1^\vee
+\end{CD}
+\tag{L.5}
+\]
+commutes when the left vertical map sends $12\gamma$ to $\Theta$ and the
+right sends $\omega_{\rm MV}$ to $-\widetilde a_0^\vee$.  The lower map is
+multiplication by $p$, while the upper map is multiplication by $-p$.
+
+For degree two, quotient the primitive lift in (MV.15):
+\[
+ \overline K_2=K_2/\mathbb Z\xi_{\widehat w},
+ \qquad C_2=\operatorname{coker}\alpha_2.
+\]
+Equation (MV.13) gives an actual reduced map
+\[
+ \overline j:\overline K_2\longrightarrow C_2,
+ \qquad [\xi_{\widehat\delta}]\longmapsto -p\,e.
+\tag{L.6}
+\]
+Under the primitive identifications
+\[
+ 2q\longmapsto\Phi\in C_2^\vee,
+ \qquad
+ \omega_{\rm MV}[\delta]\longmapsto
+ \xi_{\widehat\delta}^{\,\vee}\in\overline K_2^\vee,
+\]
+the square
+\[
+\begin{CD}
+\mathbb Z\langle2q\rangle
+@>{d_2^{0,2}}>>
+\mathbb Z\langle\omega_{\rm MV}[\delta]\rangle\\
+@V{\cong}VV @VV{\cong}V\\
+C_2^\vee @>{\overline j^{\,\vee}}>> \overline K_2^\vee
+\end{CD}
+\tag{L.7}
+\]
+commutes, and both horizontal maps are multiplication by $-p$.  This proves
+the first formula in (L.2).
+
+The final formula has no new sign choice.  Write
+\[
+ d_2(2q)=r\,\omega_{\rm MV}[\delta],
+ \qquad
+ d_2(2\gamma uw)=s\,\omega_{\rm MV}[\gamma\delta].
+\]
+Using
+\[
+ (12\gamma)(2q)=12(2\gamma uw),
+ \qquad (2q)(2\gamma uw)=0,
+\]
+the derivation rule and the already fixed degree-one sign give
+\[
+ s=2(-p)-r.
+\]
+The identities
+\[
+ \delta\wedge2\gamma uw=-2\operatorname{vol},
+ \qquad
+ 2q\wedge\gamma\delta=2\operatorname{vol}
+\]
+applied to the second product give $r=s$.  Hence $r=s=-p$, proving the
+second formula in (L.2).
+
+Changing every meridian orientation reverses $p$ and
+$\omega_{\rm MV}$ simultaneously.  Reversing the
+$S^1_{\widehat\delta}$ orientation reverses both
+$\xi_{\widehat\delta}$ and its dual coefficient generator.  Thus all
+remaining convention changes are common units and cannot change an index.
+\end{proof}
+
+\begin{test}[resolved global topological falsifiers]
+\Verified\ The actual finite-band maps are (MV.2), their degree-one and
+degree-two images are saturated, the multiple-fibre top class is
+$(3,-4)$, the cusp kernels are literal primitive collar cycles, the reduced
+cusp blocks are (MV.11) and (MV.13), and the comparison is the pair of
+commuting squares (L.5) and (L.7), not a comparison of absolute determinants.
+The former MV1 and L1 failure modes are therefore excluded for the candidate.
+\end{test}
+
+\subsection{Complete recognition theorem}
+
+\begin{lemma}[cohomological closure in dimension six]
+\label{lem:cohomological-closure}
+\Verified\ Let $X$ be a smooth, closed, connected, oriented six-manifold.
+If
+\[
+\pi_1(X)=0,
+\qquad H^2(X;\mathbb Z)=H^3(X;\mathbb Z)=0,
+\tag{4.4}
+\]
+then $H_k(X;\mathbb Z)$ is $\mathbb Z$ for $k=0,6$ and zero for
+$1\le k\le5$.
+\end{lemma}
+
+\begin{proof}
+The Hurewicz map in degree one identifies
+$H_1(X;\mathbb Z)=\pi_1(X)^{\mathrm{ab}}=0$.  The universal coefficient
+sequence
+\[
+0\longrightarrow\operatorname{Ext}(H_1(X),\mathbb Z)
+\longrightarrow H^2(X;\mathbb Z)
+\longrightarrow\operatorname{Hom}(H_2(X),\mathbb Z)
+\longrightarrow0
+\]
+shows that $\operatorname{Hom}(H_2(X),\mathbb Z)=0$, so the finitely
+generated group $H_2(X)$ is torsion.  The next universal coefficient
+sequence contains an injection
+\[
+\operatorname{Ext}(H_2(X),\mathbb Z)
+\hookrightarrow H^3(X;\mathbb Z)=0.
+\]
+For a finitely generated torsion group
+$A=\bigoplus_i\mathbb Z/n_i$, one has
+$\operatorname{Ext}(A,\mathbb Z)=\bigoplus_i\mathbb Z/n_i$; hence
+$H_2(X)=0$.  Poincar\'e duality gives
+\[
+H_3(X)\simeq H^3(X)=0,\quad
+H_4(X)\simeq H^2(X)=0,\quad
+H_5(X)\simeq H^1(X)=0.
+\]
+Finally connectedness and orientation give $H_0(X)=H_6(X)=\mathbb Z$.
+\end{proof}
+
+\begin{theorem}[sphere recognition from the exact inputs]
+\label{thm:sphere-recognition}
+\Verified\ Let $X$ be a smooth, closed, connected six-manifold.  If
+\[
+\pi_1(X)=0,\qquad
+H_k(X;\mathbb Z)\cong
+\begin{cases}
+\mathbb Z,&k=0,6,\\
+0,&1\le k\le5,
+\end{cases}
+\tag{4.5}
+\]
+then $X$ is diffeomorphic to the standard $S^6$.
+\end{theorem}
+
+\begin{proof}
+A closed smooth manifold has the homotopy type of a finite CW complex.
+We first prove successively that $\pi_i(X)=0$ for $1\le i\le5$.
+The case $i=1$ is assumed.  Suppose $2\le n\le5$ and
+$\pi_i(X)=0$ for $i<n$.  Then $X$ is $(n-1)$-connected, so the Hurewicz
+homomorphism
+\[
+h_n:\pi_n(X)\longrightarrow H_n(X;\mathbb Z)
+\]
+is an isomorphism by the Hurewicz theorem
+\cite[Theorem~4.32]{Hatcher2002}.  The target vanishes by (4.5), hence
+$\pi_n(X)=0$.  Induction proves the assertion.
+
+Now $X$ is $5$-connected.  Hurewicz in degree six gives
+$\pi_6(X)\cong H_6(X;\mathbb Z)\cong\mathbb Z$.  Choose a map
+$g:S^6\to X$ whose homotopy class maps to a chosen orientation generator.
+It has degree one.  Hence $g_*$ is an isomorphism in degrees zero and six;
+in every other degree both integral homology groups vanish.  Thus $g$ is an
+integral homology equivalence.  Both spaces are simply connected CW
+complexes, so the homological Whitehead theorem
+\cite[Corollary~4.33]{Hatcher2002} makes $g$ a homotopy equivalence.
+Therefore $X$ is a smooth homotopy $6$-sphere.
+
+Smale's generalized Poincar\'e theorem in dimensions greater than four
+\cite[Theorem~A]{Smale1961} identifies the underlying topological manifold
+with $S^6$.  The smooth endpoint is stated directly by Smale:
+every homotopy $6$-sphere is diffeomorphic to $S^6$
+\cite[Corollary~1.2]{Smale1962}.  Equivalently, smooth homotopy
+$6$-spheres up to oriented $h$-cobordism form $\Theta_6$;
+Kervaire--Milnor's opening table gives $|\Theta_6|=1$, and their following
+remark identifies $h$-cobordism with diffeomorphism in dimension six
+\cite[opening table and following Remark, pp.~504--505]{KervaireMilnor1963}.
+Hence there is no exotic smooth structure in dimension six, and $X$ is
+diffeomorphic to the standard sphere.
+\end{proof}
+
+\begin{corollary}[abstract application theorem]\label{cor:abstract-s6}
+\Verified\ Let $X$ be a smooth, closed, connected, oriented six-manifold.
+Suppose V1 identifies the actual based van Kampen quotient
+with $G(\ell_0,\ell_1,\ell_2)$ of
+\cref{prop:terminal-group}, and suppose an independently constructed
+MV1/L1 comparison proves
+\[
+H^2(X;\mathbb Z)\cong H^3(X;\mathbb Z)
+\cong\mathbb Z/|p|\mathbb Z,
+\qquad p=12\ell_0-4\ell_1-3\ell_2.
+\tag{4.6}
+\]
+If $|p|=1$, then $X\cong_{\mathrm{diff}}S^6$.
+\end{corollary}
+
+\begin{proof}
+For $|p|=1$, 
+\cref{prop:terminal-group} and the assumed geometric identification give
+$\pi_1(X)=0$, while (4.6) gives $H^2(X)=H^3(X)=0$.
+\Cref{lem:cohomological-closure} converts these inputs into the homology
+condition (4.5), and
+\cref{thm:sphere-recognition} gives the claimed diffeomorphism.
+\end{proof}
+
+\begin{corollary}[independent Mayer--Vietoris certificate for the candidate]
+\label{cor:candidate-mv-sphere}
+\Verified\ For the tautological candidate
+$(\ell_0,\ell_1,\ell_2)=(0,1,-1)$, the two-stage geometric
+Mayer--Vietoris calculation gives
+\[
+ H_k(X;\mathbb Z)\cong
+ \begin{cases}
+ \mathbb Z,&k=0,6,\\
+ 0,&1\leq k\leq5.
+ \end{cases}
+\]
+Together with the independently verified based van Kampen calculation, this
+proves $X\cong_{\mathrm{diff}}S^6$ without using the Leray computation of the
+same groups.
+\end{corollary}
+
+\begin{proof}
+Here $p=-1$.  Thus (MV.11) and the reduced block (MV.13) are unimodular.
+The two Mayer--Vietoris sequences give $H_1(X)=H_2(X)=0$ integrally, with no
+torsion hidden by a rank calculation.  The verified collapse homology
+(C.23) gives $e(W)=1-2+4-2+1=2$.  Away from $W$, the map to the punctured
+base is stratified by smooth four-tori and the two bielliptic fibres, all of
+Euler characteristic zero.  Additivity therefore gives $e(X)=e(W)=2$.
+
+Poincar\'e duality and universal coefficients give $H_5(X)=H_4(X)=0$.
+Moreover
+\[
+ H_3(X)\cong H^3(X)\cong\operatorname{Hom}(H_3(X),\mathbb Z),
+\]
+because $H_2(X)=0$; hence $H_3(X)$ is free.  The equality $e(X)=2$ forces
+its rank to be zero.  The based van Kampen result
+\cref{prop:geometric-pi1} gives $\pi_1(X)=1$, and
+\cref{thm:sphere-recognition} completes the proof.
+\end{proof}
+
+Thus C1--C3, V1, MV1, and L1 are all verified for the candidate.  The
+nearby-cycle/Leray route and the collapse/Mayer--Vietoris route are now two
+separate integral certificates for the same sphere-recognition input.

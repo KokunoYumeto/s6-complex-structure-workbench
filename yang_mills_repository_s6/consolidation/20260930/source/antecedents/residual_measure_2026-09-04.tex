@@ -1,0 +1,698 @@
+\section{A measured residual fibre for the marked quaternionic cubic}
+\label{sec:residual-measure}
+
+The measured-fibre integration format in Nolan's \emph{Measured-Bundle
+Projection Framework}, Sections 2.2--3.1,
+\cite{Nolan2025Threads,NolanRepository2025MBPF} suggests applying conditional
+integration to the compact residual fibre of the previously constructed
+nonlinear metric map. This section carries out that application. It retains
+the original fifteen-dimensional matrix, its determinant-one marking, its
+Moore cubic, and all four metric weights. The resulting conditional measure,
+cubic probability law, positive-cone restriction, and weighted moments are
+computed explicitly. The construction uses the earlier metric map with its
+documented provenance; the integration and formulas below are an additional
+application of the cited measured-bundle idea.
+
+\subsection{Original coordinates, cubic, and determinant-one marking}
+
+Fix $\mathbb C=\mathbb R+\mathbb R\mathbf i\subset\mathbb H$,
+$\mathbf j^2=-1$, and $\mathbf ja=\bar a\mathbf j$ for $a\in\mathbb C$.
+Quaternionic conjugate transpose is $*$. Keep the matrices
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},\quad
+ u=\begin{pmatrix}1\\1\\1\end{pmatrix},\quad
+ C=PP^*=\begin{pmatrix}2&-1\\-1&2\end{pmatrix},
+\]
+\[
+ R=P^*C^{-1}=\frac13\begin{pmatrix}2&1\\-1&1\\-1&-2\end{pmatrix},\quad
+ X=(R\;u),\quad
+ X^{-1}=\begin{pmatrix}P\\u^*/3\end{pmatrix},\quad
+ X^*X=\operatorname{diag}(C^{-1},3).
+\]
+Multiplication verifies these identities and $\det_{\mathbb R}X=1$.
+For $H\in J=\operatorname{Herm}_3(\mathbb H)$ write
+\begin{equation}\label{rm:marked-matrix}
+ H=XMX^*,\qquad
+ M=\begin{pmatrix}K&q\\q^*&\lambda\end{pmatrix},\quad
+ K=G+\bar\rho\varepsilon\mathbf j,\quad q=z+w\mathbf j,
+ \quad\varepsilon=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+\end{equation}
+where
+\[
+ G=\begin{pmatrix}a&c\\\bar c&b\end{pmatrix},\quad
+ a,b,\lambda\in\mathbb R,\quad c,\rho\in\mathbb C,\quad
+ z,w\in\mathbb C^2,\quad S=[z,w].
+\]
+Every displayed coordinate is recovered uniquely from $X^{-1}HX^{-*}$;
+the real coordinate count is $4+4+4+2+1=15$.
+
+For quaternionic Hermitian matrices the cubic used throughout is
+\begin{equation}\label{rm:moore-polynomial}
+ N\!\begin{pmatrix}a&v&q_1\\\bar v&b&q_2\\
+ \bar q_1&\bar q_2&\lambda\end{pmatrix}
+ =ab\lambda-\lambda|v|^2-b|q_1|^2-a|q_2|^2
+       +2\operatorname{Re}(\bar q_1vq_2).
+\end{equation}
+This convention retains the cyclic order in the last term.
+The marking satisfies $N(XMX^*)=N(M)$. A verification that does not
+change the marking is as follows. For a quaternionic matrix $A+B\mathbf j$,
+the complex representation
+\[
+ \mathcal R(A+B\mathbf j)
+ =\begin{pmatrix}A&B\\-\bar B&\bar A\end{pmatrix}
+\]
+preserves products and adjoints, by the multiplication rule
+\begin{equation}\label{rm:quaternion-product}
+ (a_0+b_0\mathbf j)(c_0+d_0\mathbf j)
+ =(a_0c_0-b_0\bar d_0)+(a_0d_0+b_0\bar c_0)\mathbf j.
+\end{equation}
+For a Hermitian $2\times2$ quaternionic matrix
+$\left(\begin{smallmatrix}b&v\\\bar v&d\end{smallmatrix}\right)$,
+complex Schur elimination, first for $b\ne0$, gives complex determinant
+$(bd-|v|^2)^2$. Polynomial continuation proves this also for $b=0$.
+Eliminating the first row and column of a Hermitian $3\times3$ matrix
+with $a\ne0$ gives
+\[
+ a\left[(b-|v|^2/a)(\lambda-|q_1|^2/a)
+             -|q_2-\bar vq_1/a|^2\right]=N(M).
+\]
+Expansion verifies the equality with \eqref{rm:moore-polynomial}; the
+terms $|v|^2|q_1|^2/a$ cancel. Applying the preceding complex determinant
+calculation to this Schur complement yields
+$\det_{\mathbb C}\mathcal R(M)=N(M)^2$, again extended by polynomial
+continuation. Now $\det_{\mathbb C}\mathcal R(X)=(\det X)^2=1$, so
+$N(XMX^*)^2=N(M)^2$. In the integral domain of real polynomials in the
+fifteen entries, this forces one of the polynomial factors
+$N(XMX^*)-N(M)$ and $N(XMX^*)+N(M)$ to vanish identically. At $M=I_3$,
+the ordinary real symmetric determinant formula gives
+$N(XX^*)=\det(XX^*)=1=N(I_3)$; the plus factor does not vanish there.
+The minus factor is therefore the zero polynomial, as asserted.
+
+\subsection{The metric map and its entire compact fibre}
+
+Use the fixed Pauli basis
+\[
+ \sigma_0=I_2,\quad \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+ \quad\sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},
+ \quad\sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+ \quad\eta=\operatorname{diag}(1,-1,-1,-1).
+\]
+Thus $Y=y^a\sigma_a$ has determinant $y^T\eta y$, with positive
+definite $Y$ corresponding to the future timelike cone. For invertible
+$S$ define, without discarding its scale,
+\begin{equation}\label{rm:metric-map}
+ \begin{gathered}
+ r=|\det S|,\qquad L_S(Y)=SYS^*/r,\\
+ (d_0,d_1,d_2,d_3)=(r,e^{\operatorname{Re}\rho},
+                         e^{\operatorname{Im}\rho},e^\lambda),\\
+ h=L_S^{-T}\eta\operatorname{diag}(d_0,d_1,d_2,d_3)L_S^{-1}.
+ \end{gathered}
+\end{equation}
+The source domain $\mathcal U$ consists of the matrices
+\eqref{rm:marked-matrix} for which $\det S\ne0$, the four $d_a$ are
+pairwise distinct, and $d_1<d_2<d_3$. Put $\Psi(H)=(G,h)$.
+The target is $\mathcal B=\operatorname{Herm}_2(\mathbb C)\times\mathcal C$,
+where $\mathcal C$ consists of forms whose relative endomorphism
+$B_h=\eta^{-1}h$ has positive distinct eigenvalues and a future oriented,
+positively oriented $\eta$-orthonormal eigenframe, with increasing spatial
+eigenvalue labels. The metric with the opposite signature convention is
+$-h$ with background $-\eta$; its relative endomorphism is exactly the
+same $B_h$. All formulas below therefore apply unchanged to $(G,-h)$
+with that background.
+
+Define
+\[
+ Q_8=\{\pm I_2,\ \pm i\sigma_1,\ \pm i\sigma_2,\ \pm i\sigma_3\},
+ \quad\mathcal R_0=\{I_2,i\sigma_1,i\sigma_2,i\sigma_3\},
+\]
+\begin{equation}\label{rm:compact-group}
+ F=\{e^{i\theta}q_0:q_0\in Q_8,\ \theta\in\mathbb R\}
+   \simeq (U(1)\times Q_8)/\{(1,I_2),(-1,-I_2)\}.
+\end{equation}
+It acts on the original matrices through
+$(G,S,\rho,\lambda)\mapsto(G,SU,\rho,\lambda)$, $U\in F$,
+and then \eqref{rm:marked-matrix}. This is a specified action on $J$,
+with $X$ fixed.
+
+\begin{proposition}\label{rm:fibre}
+The map $\Psi:\mathcal U\to\mathcal B$ is a smooth surjective submersion
+of rank fourteen. Its fibres are exactly the free $F$-orbits. Each orbit
+has four circle components, and local smooth sections of $\Psi$ exist.
+For $y=(G,h)$, let $v_0(y)$ be the unique future unit timelike eigenvector
+of $B_h$, and put $V_0(y)=\sum_{a=0}^3v_0^a(y)\sigma_a$. The functions
+\begin{equation}\label{rm:target-recovery}
+ r=d_0,\quad\rho=\log d_1+i\log d_2,\quad
+ \lambda=\log d_3,\qquad T:=SS^*=rV_0(y)
+\end{equation}
+are independent of the point chosen in the fibre and are smooth on
+$\mathcal B$.
+\end{proposition}
+\begin{proof}
+The determinant and positivity identities
+$\det(SYS^*/r)=\det Y$ and $SYS^*/r>0$ for $Y>0$ show that $L_S$
+preserves $\eta$ and its future cone. The group $GL_2(\mathbb C)$ is
+connected: polar decomposition connects its positive factor to $I_2$
+by a straight positive path, and diagonalizing the unitary factor
+connects its two eigenvalue phases to zero. Continuity then gives
+$\det_{\mathbb R}L_S=1$. Direct multiplication gives $L_{ST}=L_SL_T$.
+If $L_S$ is the identity, evaluating at $I_2$ gives $SS^*=rI_2$;
+the unitary $S/\sqrt r$ commutes with every Hermitian matrix. Commuting
+with $\sigma_3$ and $\sigma_1$ makes it scalar, so the kernel consists
+of the nonzero complex scalars. Its intersection with fixed determinant
+magnitude $r$ is exactly $\{\sqrt r\,e^{i\theta}I_2:\theta\in\mathbb R\}$;
+the scalar phase subgroup acts transitively on this circle.
+
+For completeness every proper future Lorentz frame has a complex spin
+lift. If its future first column is $v$, the matrix
+$V=\sum v^a\sigma_a$ is positive with determinant one. Its positive
+square root $B$ has determinant one and $L_B(I_2)=V$. The remaining
+frame after applying $L_B^{-1}$ fixes the time axis, hence is an
+oriented rotation on the three spatial coordinates. An oriented
+orthogonal $3\times3$ matrix has eigenvalue $1$ (its other nonreal
+eigenvalues pair conjugately, and its determinant is $1$); on the
+orthogonal plane it is a two-dimensional rotation. For its unit axis
+$n$ and oriented angle $t$, direct Pauli multiplication gives the lift
+$\cos(t/2)I_2-i\sin(t/2)n\cdot\sigma$. Multiplying this lift by $B$
+gives the required $SL_2(\mathbb C)$ lift. The kernel there is
+$\{I_2,-I_2\}$ by the scalar calculation and determinant one.
+
+The identity $B_h=L_S\operatorname{diag}(d_a)L_S^{-1}$ proves the
+claimed image inclusion. Conversely choose a frame $L$ and labelled
+eigenvalues for any member of $\mathcal C$, lift $L$ to $g\in
+SL_2(\mathbb C)$ as just proved, and set
+$S=\sqrt{d_0}g$, $\rho=\log d_1+i\log d_2$,
+$\lambda=\log d_3$. These coordinates give precisely the required
+metric and retain $|\det S|=d_0$.
+
+At $S=I_2$, a tangent is uniquely $A+(t+i\theta)I_2$ with
+$\operatorname{tr}A=0$, $t,\theta\in\mathbb R$. The derivative of
+$r$ is $2t$, and that of $L_S$ is $Y\mapsto AY+YA^*$.
+If the latter is zero, evaluating at $I_2$ and then at all Hermitian
+$Y$ makes $A$ scalar skew-Hermitian; its trace makes it zero.
+The six real traceless complex directions therefore map isomorphically
+to the six Lorentz tangent directions, with the phase as the only
+remaining kernel. Translation gives this result at every $S$.
+Writing $D=\operatorname{diag}(d_a)$ and a frame variation as
+$L\exp(tA)$, the transported metric derivative is
+\[
+ L^T(\delta h)L=\eta\delta D+\eta(AD-DA).
+\]
+The four diagonal coordinates vary independently. For $a<b$ the
+off-diagonal coordinate is $\eta_a(d_b-d_a)A_{ab}$, and the six
+factors $d_b-d_a$ are nonzero. This gives ten metric directions plus
+the four independent coordinates of $G$. The inverse function theorem
+on a transverse fourteen-dimensional slice gives local sections and
+openness of $\mathcal C$.
+
+For two points with the same metric the labelled distinct eigenvalues
+fix every $d_a$. The two Lorentz frames differ by a diagonal sign
+matrix $\operatorname{diag}(1,s_1,s_2,s_3)$ with $s_1s_2s_3=1$:
+indeed their quotient commutes with the diagonal simple-spectrum $D$,
+and time orientation fixes the first sign. These four matrices are
+exactly the Lorentz images of $Q_8$, as direct conjugation of the Pauli
+matrices shows. The kernel calculation then gives $S'=Se^{i\theta}q_0$.
+Conversely every such multiplication fixes the metric. Since $S$ is
+invertible the action is free. The group in \eqref{rm:compact-group}
+has four circle components, represented by $\mathcal R_0$.
+Finally $L_S(I_2)=SS^*/r$ is the unique future unit timelike eigenvector
+matrix. Simple eigenvectors vary smoothly locally by the same
+inverse-function calculation, and uniqueness of the future choice
+glues these vectors globally. The labelled eigenvalues and their
+logarithms are smooth for the same reason. This proves
+\eqref{rm:target-recovery}.
+\end{proof}
+
+\subsection{A canonical conditional probability and its exact projection}
+
+For a Borel function $f$ on $F$ the normalized Haar integral is
+\begin{equation}\label{rm:haar}
+ \int_F f(U)\,d\alpha(U)
+ =\frac1{8\pi}\sum_{q_0\in\mathcal R_0}
+                 \int_0^{2\pi}f(e^{i\theta}q_0)\,d\theta.
+\end{equation}
+This formula follows by pushing forward the uniform measure on
+$U(1)\times Q_8$ and pairing $q_0$ with $-q_0$ using the change
+$\theta\mapsto\theta+\pi$. Its total mass is one. Multiplication in
+$F$ permutes the four cosets and translates or changes the chosen
+representative phase, so the displayed integral is both left and right
+invariant. In particular no branch receives an unrecorded multiplicity.
+
+For $y\in\mathcal B$ and any $H_y\in\Psi^{-1}(y)$ define a probability
+measure on $\mathcal U$ by
+\begin{equation}\label{rm:conditional-kernel}
+ \kappa_y(E)=\int_F\mathbf1_E(H_y\cdot U)\,d\alpha(U),\qquad
+ \mathcal A f(y)=\int_{\mathcal U}f(H)\,d\kappa_y(H).
+\end{equation}
+Here $H_y\cdot U$ denotes the action in \eqref{rm:marked-matrix}, not
+ordinary matrix multiplication of $H_y$ by a $2\times2$ matrix.
+If $H_y$ is changed to $H_y\cdot U_0$, left invariance of
+\eqref{rm:haar} leaves \eqref{rm:conditional-kernel} unchanged. Thus
+no global frame or spin lift has been chosen. The kernel is supported
+on the exact fibre. A local section with column $S_y$ gives product
+coordinates $(y,U)\mapsto H_y\cdot U$, whose inverse group coordinate
+is the explicit smooth matrix $U=S_y^{-1}S$. The fibre proposition
+places this inverse in $F$. On these local product coordinates, integration in the
+fixed formula \eqref{rm:haar} makes $y\mapsto\kappa_y(E)$ Borel:
+this follows first for indicators of rectangles in local product
+coordinates, then for all Borel sets by closure under complements and
+countable disjoint unions. A countable cover by such charts exists
+because $\mathcal B$ is an open subset of a finite-dimensional
+Euclidean space. Disjointizing this cover proves the assertion
+globally. The same local formula and compactness of $F$ show that
+$\mathcal A f$ is continuous for continuous $f$; on a small compact
+target neighbourhood the integrand is uniformly continuous on the
+product with $F$.
+
+The kernel also retains the exact Lorentz equivariance of the source
+map. For $g\in SL_2(\mathbb C)$ define
+\[
+ \mathcal T_g(H)=X\operatorname{diag}(g,1)X^{-1}
+           H X^{-*}\operatorname{diag}(g,1)^*X^*,\qquad
+ \ell_g(G,h)=(gGg^*,L_g^{-T}hL_g^{-1}).
+\]
+Since $g\varepsilon g^T=\varepsilon$ and
+$\mathbf jg^*=g^T\mathbf j$, its marked coordinates are exactly
+$(gGg^*,gS,\rho,\lambda)$. Consequently
+$\Psi\mathcal T_g=\ell_g\Psi$ by $L_{gS}=L_gL_S$.
+Left multiplication of $S$ by $g$ commutes with its right
+multiplication by $F$, so \eqref{rm:conditional-kernel} gives
+\begin{equation}\label{rm:kernel-equivariance}
+ (\mathcal T_g)_*\kappa_y=\kappa_{\ell_g y},\qquad
+ \mathcal A(f\circ\mathcal T_g)(y)=\mathcal A f(\ell_g y).
+\end{equation}
+This assertion concerns the explicit conditional kernels. The finite
+coordinate-weighted base measure introduced next is separately
+specified and is not asserted to be Lorentz invariant.
+
+The following cubic calculation will also provide an explicit finite
+base measure for a Hilbert-space realization of this kernel. Define
+\begin{equation}\label{rm:mean-radius-definitions}
+ \Delta=\det G-|\rho|^2,\qquad
+ m(y)=\lambda\Delta-\operatorname{tr}((\operatorname{adj}G)T),
+ \qquad\beta(y)=2|\rho|r,
+\end{equation}
+using the recovered coordinates \eqref{rm:target-recovery}. These are
+smooth real functions and $\beta>0$ everywhere on $\mathcal B$:
+$r>0$, while $\rho=0$ would imply $d_1=d_2=1$, excluded by the domain.
+Here $\operatorname{adj}G=\left(\begin{smallmatrix}b&-c\\-\bar c&a
+\end{smallmatrix}\right)$, with no division by $\det G$.
+
+Choose the actual coordinate vector
+\[
+ \xi(y)=(a,b,\operatorname{Re}c,\operatorname{Im}c,
+                         (h_{ab})_{0\leq a\leq b\leq3})\in\mathbb R^{14}
+\]
+in a fixed lexicographic order of the last ten entries, and define
+\begin{equation}\label{rm:concrete-measures}
+ \begin{gathered}
+ Z=\int_{\mathcal B}\frac{e^{-|\xi(y)|^2}}{1+m(y)^2+\beta(y)^2}\,d^{14}\xi,
+ \\d\mu(y)=Z^{-1}
+ \frac{e^{-|\xi(y)|^2}}{1+m(y)^2+\beta(y)^2}\,d^{14}\xi,\qquad
+ \nu(E)=\int_{\mathcal B}\kappa_y(E)\,d\mu(y).
+ \end{gathered}
+\end{equation}
+These are specified additional probability measures; the original
+matrix and metric have not been rescaled. The constant $Z$ is retained.
+It is positive because $\mathcal B$ is nonempty and open (for example
+$S=\operatorname{diag}(2,1)$ and weights $(2,3,4,5)$ supply a point).
+It is finite because its integrand is bounded by the integrable
+fourteen-dimensional Gaussian. Countable additivity of $\nu$ follows
+from countable additivity of each $\kappa_y$ and monotone convergence;
+$\nu(\mathcal U)=1$. The support property gives
+\begin{equation}\label{rm:pushforward}
+ \Psi_*\nu=\mu,\qquad
+ \int_{\mathcal U} f(H)\,d\nu(H)
+ =\int_{\mathcal B}\left(\int_{\mathcal U}f(H)\,d\kappa_y(H)\right)d\mu(y)
+\end{equation}
+first for indicators, then simple functions, then nonnegative
+functions by monotone convergence, and then absolutely integrable
+functions by taking positive and negative parts.
+
+\begin{proposition}\label{rm:hilbert-projection}
+The operator $\mathcal A:L^2(\mathcal U,\nu)\to L^2(\mathcal B,\mu)$
+has norm one. Pullback $\Psi^*$ is an isometry,
+$\mathcal A\Psi^*=I$, and $\mathcal P=\Psi^*\mathcal A$ is the
+orthogonal projection onto the closed subspace of fibre-constant
+$L^2$ functions. Explicitly,
+\begin{equation}\label{rm:l2-remainder}
+ \|f\|_{L^2(\nu)}^2
+ =\|\mathcal A f\|_{L^2(\mu)}^2
+ +\int_{\mathcal B}\int_{\mathcal U}
+       |f(H)-\mathcal A f(y)|^2\,d\kappa_y(H)\,d\mu(y).
+\end{equation}
+Thus \eqref{rm:conditional-kernel} is a concrete disintegration and
+conditional-expectation map for the measures \eqref{rm:concrete-measures}.
+\end{proposition}
+\begin{proof}
+If $f=0$ $\nu$-almost everywhere, \eqref{rm:pushforward} applied to
+$|f|^2$ gives $\int|f|^2\,d\kappa_y=0$ for $\mu$-almost every $y$.
+The fibre Cauchy--Schwarz inequality then makes $\mathcal A f=0$
+$\mu$-almost everywhere. Thus $\mathcal A$ is well defined on the
+$L^2$ equivalence classes in the statement.
+Cauchy--Schwarz against the probability $\kappa_y$ gives
+$|\mathcal A f(y)|^2\leq\int|f|^2\,d\kappa_y$. Integrating and
+using \eqref{rm:pushforward} proves the contraction; $f=1$ proves norm
+one. The pushforward identity also proves that $\Psi^*$ is an
+isometry. A function $g\circ\Psi$ is constant with value $g(y)$ on
+the support of $\kappa_y$, so $\mathcal A\Psi^*g=g$.
+For bounded $f,g$, \eqref{rm:pushforward} gives
+\[
+ \langle f,\Psi^*g\rangle_{L^2(\nu)}
+ =\langle\mathcal A f,g\rangle_{L^2(\mu)}.
+\]
+Truncation and Cauchy--Schwarz extend this identity to all $L^2$
+functions. Thus $\mathcal A$ is the adjoint of $\Psi^*$ and
+$\mathcal P$ is self-adjoint and idempotent. The image of an isometry
+from the complete space $L^2(\mu)$ is closed, so this is the asserted
+orthogonal projection. Here the fibre-constant subspace means the
+pullback range, with functions identified almost everywhere. A Borel
+function literally constant on fibres descends to a Borel function
+by evaluating on each of the local smooth sections, so this also
+agrees with the pointwise meaning wherever a representative is fixed.
+Alternatively expand the square inside
+\eqref{rm:l2-remainder}; the cross term is
+$2|\mathcal A f(y)|^2$ and the constant term is
+$|\mathcal A f(y)|^2$, proving the formula directly.
+\end{proof}
+
+\subsection{The exact cubic law on all four fibre components}
+
+\begin{theorem}\label{rm:cubic-law}
+For every $H\in\mathcal U$, put $\delta=\det S$. The original cubic is
+\begin{equation}\label{rm:cubic-coordinate-formula}
+ N(H)=\lambda(\det G-|\rho|^2)
+       -\operatorname{tr}((\operatorname{adj}G)SS^*)
+       -2\operatorname{Re}(\rho\det S).
+\end{equation}
+On its entire fibre, with $q_0\in\mathcal R_0$ and $0\leq\theta<2\pi$,
+\begin{equation}\label{rm:cubic-fourier}
+ N(H\cdot(e^{i\theta}q_0))
+   =m(y)-\rho\delta e^{2i\theta}
+          -\overline{\rho\delta}\,e^{-2i\theta},\qquad y=\Psi(H).
+\end{equation}
+All four discrete components have the same cubic distribution. Their
+common, hence full conditional, law is the probability measure
+\begin{equation}\label{rm:arcsine-law}
+ N_*\kappa_y(dt)
+ =\frac{\mathbf1_{(m(y)-\beta(y),m(y)+\beta(y))}(t)}
+        {\pi\sqrt{\beta(y)^2-(t-m(y))^2}}\,dt.
+\end{equation}
+In particular
+\begin{equation}\label{rm:first-two-moments}
+ \mathcal A N=m,\qquad
+ \mathcal A(N^2)=m^2+2|\rho|^2r^2,\qquad
+ \operatorname{Var}_{\kappa_y}(N)=2|\rho|^2r^2=\beta^2/2>0.
+\end{equation}
+For every integer $k\geq0$ the complete moment formula is
+\begin{equation}\label{rm:all-moments}
+ \mathcal A(N^k)(y)=
+ \sum_{j=0}^{\lfloor k/2\rfloor}
+  \binom{k}{2j}\binom{2j}{j}
+       m(y)^{k-2j}|\rho\delta|^{2j}.
+\end{equation}
+The probability law, mean, and variance are target observables although
+$N$ itself is not constant on any regular fibre.
+\end{theorem}
+\begin{proof}
+Write $q_j=z_j+w_j\mathbf j$ and $v=c+\bar\rho\mathbf j$ in
+\eqref{rm:moore-polynomial}. Applying \eqref{rm:quaternion-product}
+twice gives
+\[
+ \operatorname{Re}(\bar q_1vq_2)
+ =\operatorname{Re}\bigl(
+  \bar z_1cz_2+w_1\rho z_2
+        -\bar z_1\bar\rho\bar w_2+w_1\bar c\bar w_2\bigr)
+ =\operatorname{Re}\bigl(c(\bar z_1z_2+\bar w_1w_2)-\rho\delta\bigr).
+\]
+Here taking complex conjugates inside real parts changes the third
+term to $-\operatorname{Re}(\rho z_1w_2)$ and the fourth to
+$\operatorname{Re}(c\bar w_1w_2)$; this fixes both the sign and the
+order of the determinant term. Also $|v|^2=|c|^2+|\rho|^2$ and
+$|q_j|^2=|z_j|^2+|w_j|^2$. Expanding the trace of
+$(\operatorname{adj}G)SS^*$ gives
+\[
+ b(|z_1|^2+|w_1|^2)+a(|z_2|^2+|w_2|^2)
+             -2\operatorname{Re}(c(\bar z_1z_2+\bar w_1w_2)),
+\]
+which proves \eqref{rm:cubic-coordinate-formula}.
+
+Every $q_0\in Q_8$ has complex determinant one and is unitary.
+Consequently $S'=Se^{i\theta}q_0$ has
+$S'S'^*=SS^*$ and $\det S'=e^{2i\theta}\delta$. Substitution proves
+\eqref{rm:cubic-fourier}. The discrete invariance also has an exact
+quaternionic congruence interpretation. Every matrix
+$k=\left(\begin{smallmatrix}\alpha&\gamma\\-\bar\gamma&\bar\alpha
+\end{smallmatrix}\right)\in SU(2)$ corresponds to the unit quaternion
+$t=\alpha+\gamma\mathbf j$. Right multiplication $q\mapsto qt$
+changes $[z,w]$ to $[z,w]k$ by \eqref{rm:quaternion-product}.
+It is the congruence by $\operatorname{diag}(I_2,\bar t)$ on $M$,
+transported through the unchanged $X$. In particular the discrete
+components do not change positivity either.
+
+Set $\rho\delta=|\rho\delta|e^{i\varphi}$. Under the uniform phase,
+$2\theta+\varphi$ modulo $2\pi$ is uniform: splitting its integral
+into two intervals of length $\pi$ proves this by substitution.
+Thus $N$ has the law of $m-\beta\cos t$ for uniform $t$.
+On $(0,\pi)$ this function is increasing with derivative
+$\beta\sin t=\sqrt{\beta^2-(N-m)^2}$; on $(\pi,2\pi)$ it is
+decreasing with the opposite derivative. The two changes of variables
+give \eqref{rm:arcsine-law}, including its normalization. The endpoints
+have probability zero. Integration of the nonzero Fourier modes in
+\eqref{rm:cubic-fourier} gives mean $m$; expanding its square gives
+the constant term $m^2+2|\rho\delta|^2$. For general $k$, the only
+terms surviving integration contain the same number $j$ of the
+$-\rho\delta e^{2i\theta}$ and the conjugate negative-frequency
+factor. Their number is $\binom{k}{2j}\binom{2j}{j}$ and their sign
+is positive, proving \eqref{rm:all-moments}. Finally $\beta>0$ was
+proved after \eqref{rm:mean-radius-definitions}, so every such law
+has strictly positive variance.
+\end{proof}
+
+The concrete measure in \eqref{rm:concrete-measures} makes this cubic
+an actual $L^2(\nu)$ function: \eqref{rm:first-two-moments} and
+\eqref{rm:pushforward} give
+\[
+ \int N^2\,d\nu
+ =Z^{-1}\int_{\mathcal B}
+ \frac{m^2+\beta^2/2}{1+m^2+\beta^2}e^{-|\xi|^2}\,d^{14}\xi<\infty.
+\]
+Thus the Hilbert-space projection statement applies to this specific
+original observable, rather than only to bounded test functions.
+Its nonzero discarded squared norm is exactly
+$\int_{\mathcal B}2|\rho|^2r^2\,d\mu$.
+
+For a fixed real number $c_0$ and retained coefficient $\zeta\geq0$,
+an immediate identity for a cubic penalty is
+\begin{equation}\label{rm:cubic-penalty}
+ \mathcal A\!\left[\frac{\zeta}{2}(N-c_0)^2\right]
+ =\frac{\zeta}{2}(m-c_0)^2+\zeta|\rho|^2r^2.
+\end{equation}
+The last term is exactly the fluctuation contribution. Replacing
+$N$ by its mean before taking its square omits it. This is an identity
+of observables; no equation of motion has been changed or asserted
+to intertwine by this integration.
+
+\subsection{The complete positive-cone restriction and its probability law}
+
+Let $J_{++}$ denote the original positive definite cone in $J$. Define
+the following explicit open subset of the metric target:
+\begin{equation}\label{rm:positive-image}
+ \mathcal B_+=\{y\in\mathcal B:
+        a>0,\ \Delta>0,\ m(y)+\beta(y)>0\}.
+\end{equation}
+
+\begin{theorem}\label{rm:positive-theorem}
+The exact image of $\mathcal U\cap J_{++}$ under $\Psi$ is
+$\mathcal B_+$. For a fixed fibre, all its points are positive definite
+if and only if $a>0$, $\Delta>0$, and $m>\beta$.
+For $a>0$, $\Delta>0$, the Haar probability of positive definiteness is
+\begin{equation}\label{rm:positive-probability}
+ p(y)=
+ \begin{cases}
+  0,&m\leq-\beta,\\
+  1-\pi^{-1}\arccos(m/\beta),&-\beta<m<\beta,\\
+  1,&m\geq\beta.
+ \end{cases}
+\end{equation}
+If $a\leq0$ or $\Delta\leq0$, this probability is zero regardless of
+$m$. At $m=\beta$ the fibre has singular positive semidefinite boundary points of Haar
+measure zero, although $p=1$. On $\mathcal B_+$ the probability kernel
+\begin{equation}\label{rm:positive-kernel}
+ \kappa_y^+(E)=p(y)^{-1}\kappa_y(E\cap J_{++})
+\end{equation}
+is well defined and its cubic law is precisely
+\begin{equation}\label{rm:positive-law}
+ N_*\kappa_y^+(dt)
+ =\frac{\mathbf1_{(0,\infty)\cap(m-\beta,m+\beta)}(t)}
+       {\pi p(y)\sqrt{\beta^2-(t-m)^2}}\,dt.
+\end{equation}
+For $-\beta<m<\beta$ put $\gamma=\arccos(m/\beta)$ and
+$s=\sin\gamma$. Its first two moments and variance are
+\begin{align}
+ \mathbb E_{\kappa_y^+}N
+   &=m+\frac{\beta s}{\pi p},\label{rm:positive-mean}\\
+ \mathbb E_{\kappa_y^+}N^2
+   &=m^2+\frac{\beta^2}{2}
+                    +\frac{3m\beta s}{2\pi p},\label{rm:positive-second}\\
+ \operatorname{Var}_{\kappa_y^+}N
+   &=\frac{\beta^2}{2}-\frac{m\beta s}{2\pi p}
+                     -\frac{\beta^2s^2}{\pi^2p^2}.
+                     \label{rm:positive-variance}
+\end{align}
+For $m\geq\beta$ these quantities equal the unrestricted values
+$m$, $m^2+\beta^2/2$, and $\beta^2/2$, respectively.
+\end{theorem}
+\begin{proof}
+The upper block is
+$K=\left(\begin{smallmatrix}a&v\\\bar v&b\end{smallmatrix}\right)$
+with $v=c+\bar\rho\mathbf j$, so
+$\Delta=ab-|v|^2$. For $a>0$, completion of the square gives
+\[
+ (x_1,x_2)^*K(x_1,x_2)
+ =a|x_1+a^{-1}v x_2|^2+(b-|v|^2/a)|x_2|^2.
+\]
+It follows that $K>0$ if and only if $a>0$ and $\Delta>0$.
+Necessity of $a>0$ follows by testing $(1,0)$, so this covers every
+case. For such $K$ its inverse is exactly
+\[
+ K^{-1}=\Delta^{-1}\begin{pmatrix}b&-v\\-\bar v&a\end{pmatrix},
+\]
+as multiplication verifies, since $a,b$ are real and
+$v\bar v=\bar vv=|v|^2$. For a quaternionic column $x$ and scalar $t$,
+\[
+ (x,t)^*M(x,t)
+  =(x+K^{-1}qt)^*K(x+K^{-1}qt)
+      +(\lambda-q^*K^{-1}q)|t|^2.
+\]
+This proves $M>0$ exactly when $K>0$ and
+$\lambda-q^*K^{-1}q>0$. Expanding the displayed inverse shows
+\[
+ \Delta(\lambda-q^*K^{-1}q)
+ =\lambda\Delta-b|q_1|^2-a|q_2|^2
+                       +2\operatorname{Re}(\bar q_1vq_2)=N(M).
+\]
+Consequently, on every fibre with $a>0,\Delta>0$, positivity is
+equivalent to the scalar condition $N>0$. Congruence by the original
+invertible $X$ preserves positivity because
+$v^*XMX^*v=(X^*v)^*M(X^*v)$ and $X^*$ is bijective.
+
+The phase formula attains every value in $[m-\beta,m+\beta]$.
+There is at least one strictly positive point precisely when
+$m+\beta>0$, and every point is strictly positive precisely when
+$m-\beta>0$. This proves the exact image and full-fibre statements.
+All inequalities in \eqref{rm:positive-image} are strict and involve
+continuous functions, proving openness directly.
+
+With the uniform variable $t$ used in the proof of
+\eqref{rm:arcsine-law}, positivity is $\cos t<m/\beta$.
+For $-\beta<m<\beta$ this means $\gamma<t<2\pi-\gamma$, which
+has probability $1-\gamma/\pi$. The endpoint and outer cases give
+\eqref{rm:positive-probability}. Restricting and dividing the
+arcsine law by this positive mass gives
+\eqref{rm:positive-kernel}--\eqref{rm:positive-law}, including the
+boundary case $m=\beta$ where only zero-probability points are
+removed. The measure is Borel by the kernel property proved above.
+
+Finally direct integrals over this interval give
+\[
+ \frac1{2\pi}\int_\gamma^{2\pi-\gamma}\cos t\,dt
+       =-\frac{s}{\pi},\qquad
+ \frac1{2\pi}\int_\gamma^{2\pi-\gamma}\cos^2t\,dt
+       =\frac p2-\frac{\sin(2\gamma)}{4\pi}.
+\]
+Insert $N=m-\beta\cos t$, divide by $p$, and use
+$\cos\gamma=m/\beta$ and $\sin(2\gamma)=2s m/\beta$.
+This yields \eqref{rm:positive-mean} and
+\eqref{rm:positive-second}. Subtracting the square of the mean
+gives \eqref{rm:positive-variance}. For $m\geq\beta$ the excluded
+phase set has zero probability, so the unrestricted moments apply.
+\end{proof}
+
+This theorem identifies exactly why a positivity restriction cannot
+always retain uniform probability on the entire original fibre.
+The group still determines the unrestricted measure; the chosen state
+space $J_{++}$ requires the explicit restriction
+\eqref{rm:positive-kernel}. Its four discrete components retain equal
+mass because the right $SU(2)$ congruence preserves positivity and the
+phase law is identical on each component.
+
+There are regular fibres crossing the boundary of the positive cone,
+so this distinction occurs in the actual construction. One exact
+choice, avoiding numerical approximations to logarithms, is
+\begin{equation}\label{rm:crossing-example}
+ G=4I_2,\quad S=\operatorname{diag}(2,1),\quad
+ \rho=\frac12+i,\quad\lambda=\frac{80}{59}.
+\end{equation}
+Here $\Delta=16-5/4=59/4$, $T=\operatorname{diag}(4,1)$,
+$m=(80/59)(59/4)-20=0$, and $\beta=2\sqrt5$.
+The weights are $(2,e^{1/2},e,e^{80/59})$.
+They have $d_1<d_2<d_3$ because $1/2<1<80/59$;
+$e^{1/2}<2$ follows from $e<4$, and $2<e$ follows from
+$e=\sum_{n\geq0}1/n!>2$. To check the former bound explicitly,
+$n!\geq2^{n-1}$ for $n\geq2$, with a strict inequality for some $n$,
+so $e<2+\sum_{n\geq2}2^{-(n-1)}=3<4$.
+Thus all four weights are distinct. We have $a>0$ and $\Delta>0$,
+but half of each fibre circle is positive and half negative in the
+Schur complement. On the positive half,
+\[
+ p=\frac12,\qquad
+ \mathbb E N=\frac{4\sqrt5}{\pi},\qquad
+ \operatorname{Var}N=10-\frac{80}{\pi^2}.
+\]
+The matrix at phase zero has $N=-2$ and the one at phase $\theta=\pi/2$
+has $N=2$, by \eqref{rm:cubic-fourier}. These are two explicitly
+retained matrices in the same regular metric fibre with opposite
+positivity status, while the upper block remains positive.
+
+\subsection{An explicit weighted family and the information it retains}
+
+The compact group supplies an invariant conditional probability. A
+different conditional weight is an additional model choice whose
+effect can also be calculated without selecting a frame. For each
+fixed $\epsilon\in[-1,1]$, define the globally specified weight
+\begin{equation}\label{rm:weighted-family}
+ w_\epsilon(H)=1+\epsilon
+       \frac{N(H)-m(\Psi(H))}{\beta(\Psi(H))},\qquad
+ d\kappa_y^{(\epsilon)}(H)=w_\epsilon(H)\,d\kappa_y(H).
+\end{equation}
+Because $|N-m|\leq\beta$ and $\beta>0$ on the regular domain,
+this is a nonnegative Borel weight. Its integral is one by
+\eqref{rm:first-two-moments}, so it gives an actual probability
+kernel with no hidden normalizing constant. It does not depend on
+which representative of the fibre was used to construct $\kappa_y$.
+The centred variable $Z_y=N-m$ has symmetric law, with
+$\mathbb E Z_y=\mathbb E Z_y^3=0$ and
+$\mathbb E Z_y^2=\beta^2/2$. Therefore
+\begin{equation}\label{rm:weighted-moments}
+ \mathbb E_{\kappa_y^{(\epsilon)}}N=m+\frac{\epsilon\beta}{2},
+ \qquad
+ \operatorname{Var}_{\kappa_y^{(\epsilon)}}N
+       =\frac{\beta^2}{2}-\frac{\epsilon^2\beta^2}{4}.
+\end{equation}
+Indeed weighting multiplies each expectation by
+$1+\epsilon Z_y/\beta$; it changes the mean of $Z_y$ to
+$\epsilon\beta/2$ and leaves its second moment equal to
+$\beta^2/2$, which proves both formulas.
+
+For $\epsilon\ne0$ this weight need not be invariant under the scalar
+phase action: the displayed cubic has a nonconstant phase mode.
+It remains a well-defined target-indexed conditional distribution.
+This explicitly distinguishes the compact-group invariant choice
+from a specified weighted choice by their measurable predictions,
+including the mean shift $\epsilon\beta/2$.
+
+The exact map supplied by this construction is thus
+\[
+ J\supset\mathcal U\xrightarrow{\Psi}\mathcal B,
+ \qquad y\longmapsto\kappa_y,
+ \qquad f\longmapsto\mathcal A f,
+ \qquad y\longmapsto N_*\kappa_y.
+\]
+For the original cubic the last map is explicitly
+\eqref{rm:arcsine-law}. It retains the complete conditional cubic
+distribution, including the positive-cone support and fluctuation
+correction \eqref{rm:cubic-penalty}. Strictly positive fibre variance
+proves that no deterministic scalar $n(y)$ recovers $N(H)$ on an
+entire regular fibre. The probability kernel is the exact relation
+that remains: it transports observables by conditional integration,
+and transports the cubic to a fully computed distribution.

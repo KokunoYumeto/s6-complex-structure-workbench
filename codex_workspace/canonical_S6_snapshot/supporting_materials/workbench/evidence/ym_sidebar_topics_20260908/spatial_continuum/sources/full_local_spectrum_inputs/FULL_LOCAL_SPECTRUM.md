@@ -1,0 +1,339 @@
+# The full local-energy spectral measure in the expanding-box limit
+
+Complete current section of the cumulative manuscript, 8 September 2026.
+
+ 
+
+We now retain every transverse mode of the original open box. The observable remains the original weighted electric and magnetic energy, with the original face average. Positive Euclidean time acts by the original excitation semigroup. It is an explicitly recorded operation on the vector; no vector is divided by its norm. The result below constructs a common two-creation spectral representation, including its continuous low-energy tail. The representation is identified explicitly with three colour copies of a transverse free field. This identification is part of the result and does not identify that representation with an interacting four-dimensional Yang--Mills theory.
+
+## All-mode coordinates and the observable to be taken to the limit
+
+Take real $h\in C_c^\infty(\mathbb R^3)$, and put 
+
+$$
+h_e=h(a m(e)),\qquad h_p=\frac14\sum_{e\in\partial p}h_e,\qquad
+ \Xi_{h,g}=(D_h-\langle\psi_g,D_h\psi_g\rangle)\psi_g,
+ \quad A_g=H_g-\mathcal E_g .
+$$
+
+ All original edges and faces occur in $D_h$, even where the weight is zero. In particular, faces adjacent to the support are retained. For $t>0$ define the unchanged, time-filtered state 
+
+$$
+\qquad\text{(149)}
+ y_{h,g}(t)=e^{-tA_g/2}\Xi_{h,g},\qquad
+ C_{g;h,k}(t)=\langle\Xi_{h,g},e^{-tA_g}\Xi_{k,g}\rangle.
+$$
+
+ The inner product is conjugate-linear in the first argument. These vectors are physical and orthogonal to the vacuum, since each operation commutes with the original gauge action and with the vacuum projection.
+
+Write $V_\nu=RO e_\nu$, as in Section 14, for the real transverse edge eigenvectors with counting norm one and $d_1^{\mathsf T}d_1$ eigenvalue $\sigma_\nu^2$. Put $\omega_\nu=\sigma_\nu/a$. The full pair matrix divided by the retained spacing is exactly 
+
+$$
+\begin{aligned}
+ B_{h;\nu\eta}^{L,a}:=\frac{\mathsf R_{h;\nu\eta}}{a}
+ &= \frac{\sum_p h_p(d_1V_\nu)_p(d_1V_\eta)_p}
+                  {a^2\sqrt{\omega_\nu\omega_\eta}}
+       -\sqrt{\omega_\nu\omega_\eta}\sum_e h_e V_\nu(e)V_\eta(e).
+ \qquad\text{(150)}
+\end{aligned}
+$$
+
+ Both terms have been carried from the full original operator; neither is dropped in the limit. Section 14's graph theorem and its exact Fock norm give, at fixed $L,a$, the finite-measure limit as $g\downarrow0$, 
+
+$$
+\qquad\text{(151)}
+ d\nu_{h,0}^{L,a}(\omega)
+ =\frac38\sum_{\nu,\eta}|B_{h;\nu\eta}^{L,a}|^2
+                 \delta_{\omega_\nu+\omega_\eta}(d\omega),
+ \qquad C_{0;h,h}^{L,a}(t)=\int e^{-t\omega}d\nu_{h,0}^{L,a}(\omega).
+$$
+
+ The sum is ordered, so an off-diagonal pair occurs twice. Three colours and the two bosonic contractions give $3\cdot2/4^2=3/8$. Total mass converges at fixed box by strong convergence of the full weighted vacuum vector. Finite spectral projections converge as proved in Section 14. To obtain convergence for a bounded continuous spectral function, first truncate to a finite union of spectral intervals and then use the convergent vector norms to make the remaining mass small. This proves in particular convergence of every expression (149) at fixed $L,a$. No unbounded first moment is inferred from weak convergence alone.
+
+## Exact open-box modes, parity transform, and convergence of the full sum
+
+Here $N=2L+1$ and $\ell=aN$, retaining the distinction between this basis length and the distance between the extreme vertices. For $j=0,\ldots,N-1$ define on vertices 
+
+$$
+v_j(n)=\sqrt{\frac{2-\delta_{j0}}N}
+       \cos\!\left(\frac{\pi j(n+L+1/2)}N\right),
+ \quad s_j=2\sin\frac{\pi j}{2N}.
+$$
+
+ For $j>0$, the edge function is 
+
+$$
+w_j(n)=\frac{v_j(n+1)-v_j(n)}{s_j}
+       =-\sqrt{\frac2N}\sin\!\left(\frac{\pi j(n+L+1)}N\right).
+$$
+
+ There is no $w_0$. Finite geometric sums give $\sum v_jv_k=\delta_{jk}$ and $\sum w_jw_k=\delta_{jk}$ on their respective original vertex and edge ranges. The displayed difference identity gives $d_0v_j=s_jw_j$ and, by transposition, $d_0^{\mathsf T}w_j=s_jv_j$ for $j>0$.
+
+For a triple $\boldsymbol j$, let $I=\{i:j_i>0\}$ and $s=(s_{j_1},s_{j_2},s_{j_3})$, with missing components zero. Each unit vector $\epsilon\in\mathbb R^I$ satisfying $s\cdot\epsilon=0$ gives the exact transverse edge cochain 
+
+$$
+\qquad\text{(152)}
+ V_{\boldsymbol j,\epsilon}(n,i)
+   =\epsilon_i w_{j_i}(n_i)\prod_{d\ne i}v_{j_d}(n_d),
+ \qquad \sigma=|s|.
+$$
+
+ Its curl on the $(i,k)$ face is $(s_{j_i}\epsilon_k-s_{j_k}\epsilon_i)
+w_{j_i}(n_i)w_{j_k}(n_k)\prod_{d\ne i,k}v_{j_d}(n_d)$. The preceding orthogonality and difference identities prove its norm, transversality, and curl eigenvalue. For each triple there are $|I|-1$ such polarizations if $|I|\ge2$, and none otherwise. Decomposing the tensor product complex into these finite frequency blocks proves completeness: each block of one-forms is $\mathbb R^I$, its gradient line is $\mathbb Rs$, and its transverse complement is precisely the one just constructed. This reproduces all $r$ columns of $RO$ up to orthogonal changes inside eigenspaces, which leave (151) unchanged.
+
+### Theorem 16.1.
+
+For any $a\downarrow0$, $\ell=a(2L+1)\longrightarrow\infty$, any real $h\in C_c^\infty(\mathbb R^3)$, and every $t>0$, the complete sum in (151) converges to 
+
+$$
+\qquad\text{(153)}
+ C_h(t)=\frac{3}{4(2\pi)^6}
+ \int_{\mathbb R^3}\int_{\mathbb R^3}
+ |p||q|(1+\widehat p\cdot\widehat q)^2
+ |\widehat h(p+q)|^2 e^{-t(|p|+|q|)}\,dp\,dq,
+ \quad \widehat h(k)=\int e^{-ik\cdot x}h(x)\,dx.
+$$
+
+ The values assigned to unit directions at $p=0$ or $q=0$ do not affect the integral. All positive-time spectral moments converge as well. Real mixed covariances follow by polarization.
+
+### Proof.
+
+We give bounds for the complete sum before passing to any bounded frequency region. Each component of $V$ has modulus at most $2\sqrt2N^{-3/2}$, and each component of $d_1V$ has modulus at most $4N^{-3/2}\sigma$. Only $O_h(a^{-3})$ original edges or faces have nonzero weight once $a\le1$ and the box contains a fixed unit neighbourhood of the support. Consequently 
+
+$$
+\qquad\text{(154)}
+ |B_{h;\nu\eta}^{L,a}|
+       \le K_h\ell^{-3}\sqrt{\omega_\nu\omega_\eta},
+$$
+
+ where $K_h$ is finite and independent of $a,L$. For clarity, one may take a cube $[-R_h,R_h]^3$ containing that neighbourhood, bound its edge and face counts by $6(2R_h/a+3)^3$, use $|h_p|\le\|h\|_\infty$, and insert the component bounds in (150); this gives such a $K_h$ directly. Because $2x/\pi\le\sin x\le x$ on $[0,\pi/2]$, 
+
+$$
+\frac{2|\boldsymbol j|}{\ell}\le\omega_{\boldsymbol j}
+       \le\frac{\pi|\boldsymbol j|}{\ell}.
+$$
+
+ Grouping integer triples in shells $m\le|\boldsymbol j|<m+1$, whose counts are at most $K(m+1)^2$, proves for $\ell\ge1$ and fixed $u>0$ that $\ell^{-3}\sum_\nu\omega_\nu e^{-u\omega_\nu}\le K_u$. Indeed the bound is a constant times $\ell^{-4}\sum_{m\ge1}(m+1)^3e^{-2um/\ell}$; comparison with the integral on each interval $[m,m+1]$ bounds it uniformly for $\ell\ge1$. It follows from (154) that the part with $\omega_\nu+\omega_\eta>R$ is bounded by $K_{h,t}e^{-tR/2}$, uniformly in the regulators. Multiplying by any fixed power of the pair frequency preserves a tail tending to zero, by applying this estimate with a smaller positive time.
+
+The part with $\omega_\nu<\varepsilon$ tends to zero uniformly in the limiting sense needed here: the same shell count gives 
+
+$$
+\limsup_{\ell\to\infty}\ell^{-3}
+       \sum_{\omega_\nu<\varepsilon}\omega_\nu
+       \le K\varepsilon^4.
+$$
+
+ The analogous estimate holds in the other index. In a bounded frequency region, triples having any $j_i=0$ contribute at most $K_R\ell^2$ modes, so their contribution to the paired sum is $O_{h,R}(\ell^{-1})$. Strips of width $\delta$ adjacent to coordinate planes have limiting contribution $O_{h,R}(\delta)$ by counting the allowed integers in that coordinate. These bounds permit us to work first where every momentum coordinate is positive and bounded away from zero, and both total frequencies are bounded above and below.
+
+Set $k_i=\pi j_i/\ell$ and $\beta_i=j_i\bmod2$. At the physical location of its component, (152) is exactly a product of $\cos(k_ix_i+\pi j_i/2)$ and $-\sin(k_ix_i+\pi j_i/2)$, times $\sqrt8N^{-3/2}\epsilon_i$. For fixed bounded frequencies, the lattice frequency vector $s/a$ converges uniformly to $k$. Choose the two polarizations by Gram--Schmidt applied to a fixed coordinate vector and the direction, on a region where these are not parallel. Finitely many such regions cover the retained compact frequency set; alternatively the polarization sum uses directly the matrix $I-kk^{\mathsf T}/|k|^2$. Thus all formulas below are independent of the choice across overlaps.
+
+The elementary exponential transform of the product is 
+
+$$
+\qquad\text{(155)}
+ \ell^{3/2}a^{-3/2}V_{\boldsymbol j,\epsilon}(x)
+   =\chi_{\boldsymbol j}\sum_{\rho\in\{-1,1\}^3}
+       U_{\beta\rho}\,\epsilon^\rho e^{i(\rho k)\cdot x},
+ \quad U_{\beta\rho}=\frac{i}{\sqrt8}e^{i\pi\rho\cdot\beta/2},
+ \quad \epsilon^\rho_i=\rho_i\epsilon_i,
+ \quad \chi_{\boldsymbol j}=(-1)^{\sum_i\lfloor j_i/2\rfloor}.
+$$
+
+ The left side means the vector of component expressions evaluated at a common physical $x$, whose restrictions are the original edge values; no relocation of the original samples is made in the sums. For each pair of signs, summing $e^{i\pi(\rho_i-\rho_i')\beta_i/2}$ over $\beta_i=0,1$ gives two when the signs agree and zero otherwise. Hence $U^*U=UU^*=I_8$. The sign $\chi$ remains in every individual mode and drops out of the squared modulus of its pair coefficient.
+
+Ordinary Riemann sums in physical space now apply uniformly on the retained bounded frequency set. Derivatives of each trigonometric factor and of $h$ are bounded there, so replacing the integral on each spacing-$a$ cell by its original sample has total error at most $K_{h,R}a$. For the magnetic term, the quarter-edge face weight differs from the value at the face centre by at most $a\|\nabla h\|_\infty$, and the exact discrete curl coefficients converge to $ik\times\epsilon$. This proves convergence of both terms in (150), with uniform error $o(1)\ell^{-3}$ per mode pair. There are $O_R(\ell^6)$ pairs, so the squared-sum error tends to zero by the uniform coefficient bound. No derivative or magnetic coefficient is discarded.
+
+For each parity, the momentum grid has step $2\pi/\ell$ in every coordinate. The eight grids can be aligned with one such grid: their coordinate differences are at most $\pi/\ell$, and the preceding compact-set uniform continuity makes the resulting error tend to zero. Thereafter the sum over the two parities of a mode pair is the Hilbert--Schmidt norm under $U\otimes U$ in (155). Its unitarity replaces the two standing-wave parity sums by the two sums over momentum signs. The factor $\ell^{-6}$ in the squared pair coefficient and the two grid densities $(\ell/(2\pi))^3$ leave exactly $(2\pi)^{-6}$. The sign sums cover the whole momentum space, except null coordinate planes already controlled above.
+
+For real unit transverse polarizations $e_r(p),e_s(q)$, the remaining plane-wave pair coefficient, without its Fourier measure factor, is 
+
+$$
+\qquad\text{(156)}
+ -\widehat h(-p-q)\left[
+ \frac{ (p\times e_r(p))\cdot(q\times e_s(q))}{\sqrt{|p||q|}}
+          +\sqrt{|p||q|}\,e_r(p)\cdot e_s(q)\right].
+$$
+
+ The two factors of $i$ in the two curls produce the first minus sign; the electric term supplies the second term with the same minus sign. In particular the bracket vanishes for $q=-p$ with matched polarizations, as required by the exact identity $D_1=H$. For the polarization sum rotate $p$ to the third axis and $q$ to the first--third plane, and put $c=\widehat p\cdot\widehat q$. Take $e_1(p)=(1,0,0)$, $e_2(p)=(0,1,0)$, $e_1(q)=(c,0,-\sqrt{1-c^2})$, $e_2(q)=(0,1,0)$. The bracket divided by $\sqrt{|p||q|}$ is the diagonal matrix $(1+c)I_2$. Thus its squared polarization sum is $2|p||q|(1+c)^2$. Rotational invariance extends this calculation to every direction; its endpoints follow by continuity. Multiplication by $3/8$ proves (153). The previously proved tails justify removal of all cutoffs and also prove every positive-time moment assertion.
+
+## Evaluation of the measure and a common physical state map
+
+### Theorem 16.2.
+
+The locally finite raw measure associated to (153) is absolutely continuous, with 
+
+$$
+\begin{aligned}
+ d\nu_h(\omega)&=\rho_h(\omega)\,d\omega,&
+ \rho_h(\omega)&=\frac{1}{320\pi^5}
+       \int_{|k|\le\omega}|k|^4|\widehat h(k)|^2\,dk,
+       \qquad \omega\ge0,\qquad\text{(157)}\\
+ C_h(t)&=\frac{1}{320\pi^5t}
+       \int_{\mathbb R^3}|k|^4 e^{-t|k|}|\widehat h(k)|^2\,dk .
+       \qquad\text{(158)}
+\end{aligned}
+$$
+
+ For nonzero compact smooth $h$, its support meets every interval $(0,\varepsilon)$ and it has no atom at zero. Its total mass is infinite, but $e^{-t\omega}d\nu_h$ has finite mass and all moments for every $t>0$.
+
+### Proof.
+
+In (153) set $k=p+q$, $r=|p|$, $s=|q|$, $K=|k|$ and $\omega=r+s$. For $K>0$, align $k$ with the third axis. The change of the polar angle of $p$ into $s$ has absolute Jacobian $s/(Kr)$. Integration over the azimuth and over $\delta(\omega-r-s)$ therefore gives the measure $(2\pi/K)rs\,dr$. Set $u=r-s=2r-\omega$. The admissible range is $-K\le u\le K$ precisely when $\omega\ge K$; its boundary has zero measure. The cosine of the angle between $p$ and $q$ satisfies $2rs(1+c)=K^2-u^2$. The complete inner integral is 
+
+$$
+\frac{2\pi}{K}\int \frac{ (K^2-u^2)^2}{4}\,dr
+ = \frac{\pi}{4K}\int_{-K}^K(K^2-u^2)^2\,du
+ = \frac{4\pi K^4}{15}.
+$$
+
+ The set $k=0$ is null in the outer integral, and the expression extends there by zero. Tonelli's theorem applies to the nonnegative integrand. Since $[3/(4(2\pi)^6)](4\pi/15)=1/(320\pi^5)$, this proves (157). Integrating $e^{-t\omega}$ from $K$ to infinity proves (158).
+
+For completeness, compact support gives an everywhere convergent Taylor series for $\widehat h$, by integrating the exponential series on the fixed support. If all Taylor coefficients vanished, this series would give $\widehat h=0$ everywhere and hence $h=0$. One direct proof of the last implication is to convolve $h$ with a Gaussian: the elementary Gaussian Fourier integral and Fubini give a zero convolution for every positive Gaussian width; these Gaussians are an approximate identity, so the convolution tends to $h$. For $h\ne0$ let $m$ be the smallest degree with nonzero homogeneous Taylor polynomial $P_m$. Uniformly on the unit sphere, $\widehat h(r\theta)=r^mP_m(\theta)+O(r^{m+1})$. Consequently 
+
+$$
+\qquad\text{(159)}
+ \rho_h(\omega)=
+ \frac{\int_{S^2}|P_m(\theta)|^2\,d\theta}
+       {320\pi^5(7+2m)}\,\omega^{7+2m}
+       +O(\omega^{8+2m}).
+$$
+
+ Its leading coefficient is positive because a nonzero homogeneous polynomial cannot vanish on the whole sphere. This proves the support assertion. Repeated integration by parts in $h$ makes $\widehat h$ decay faster than every inverse power. Thus $\rho_h(\omega)$ tends as $\omega\to\infty$ to the finite positive constant $(320\pi^5)^{-1}\int |k|^4|\widehat h(k)|^2\,dk$. The raw total mass is therefore infinite. Boundedness of that density proves all the positive-time integrability claims.
+
+We specify the common state space and map, so that convergence of numbers is not substituted for a spectral representation. Let $\mathfrak h$ be the complex Hilbert space of square-integrable transverse vector functions on $\mathbb R^3$, with three colour coordinates and Lebesgue momentum measure. Let $\mathcal F$ be its symmetric Fock space, with vacuum $\Omega$, and let $A_{\rm fr}=d\Gamma(|p|)$. This definition means that on the $n$-particle space the energy multiplies by $|p_1|+\cdots+|p_n|$; the domain consists of vectors for which the corresponding squared weighted norm is summable over $n$. The physical subspace used here is invariant under simultaneous adjoint $\operatorname{SU}(2)$ rotations of the three colours. Orthogonality of those rotations follows from the original trace metric $-2\operatorname{tr}(T_\alpha T_\beta)=\delta_{\alpha\beta}$.
+
+Choose any measurable real transverse polarization basis. Define 
+
+$$
+\begin{aligned}
+ R_h^{rs}(p,q)&=-\frac{\widehat h(-p-q)}{(2\pi)^3}
+ \left[\frac{(p\times e_r(p))\cdot(q\times e_s(q))}{\sqrt{|p||q|}}
+       +\sqrt{|p||q|}\,e_r(p)\cdot e_s(q)\right],\\
+ J_t h&=\frac14\sum_{\alpha=1}^3\sum_{r,s=1}^2
+ \int e^{-t(|p|+|q|)/2}R_h^{rs}(p,q)
+    a^\dagger_{r\alpha}(p)a^\dagger_{s\alpha}(q)\Omega\,dp\,dq.
+ \qquad\text{(160)}
+\end{aligned}
+$$
+
+ The integral is the symmetric two-particle Hilbert-space integral: the convention with creation symbols has norm twice the squared norm of its symmetric kernel. Equivalently its two-particle wave function is $\sqrt2/4$ times that kernel with equal colours. This gives an explicit definition without distributional creation operators. The preceding integral proves that it is well-defined, that it is a colour singlet, and that 
+
+$$
+\|J_t h\|^2=C_h(t),\quad
+ \langle J_t h,A_{\rm fr}^nJ_t h\rangle
+       =\int\omega^n e^{-t\omega}\,d\nu_h(\omega),\quad
+ e^{-sA_{\rm fr}/2}J_t h=J_{t+s}h.
+$$
+
+ The positive density proves injectivity on the real test functions; the same kernel defines a complex-linear injective map on complex test functions, with the Hermitian Fourier modulus in its norm. It intertwines spatial translations: replacing $h(x)$ by $h(x-b)$ multiplies its creation kernel by $e^{i(p+q)\cdot b}$, precisely the specified second-quantized translation on the two momenta. Polarization changes are pointwise orthogonal changes of the one-particle coordinates and induce unitary maps on their symmetric tensor squares, preserving the state and its raw norm.
+
+## One actual positive-coupling sequence for every local profile
+
+Return to the original Hamiltonian, taking $L_j=j^2$, $a_j=1/(100j)$ and $\ell_j=a_j(2L_j+1)$, for $j\ge2$. The following construction strengthens, rather than silently reuses, the coupling selection of Section 15. Enumerate the positive rational times as $t_1,t_2,\ldots$. Keep all the finite inequalities already used there. For each of the finitely many original single-edge weights $\mathbf1_e$ and each $n\le j$, require additionally 
+
+$$
+\qquad\text{(161)}
+ \left|C_{g;\mathbf1_e,\mathbf1_{e'}}(t_n)
+       -C_{0;\mathbf1_e,\mathbf1_{e'}}^{L_j,a_j}(t_n)\right|
+       <\frac{\varepsilon_j}{|\mathsf E_{L_j}|^2}
+ \quad(e,e'\in\mathsf E_{L_j}),\qquad
+ \varepsilon_j=j^{-40}(1+\ell_j)^{-10}.
+$$
+
+ Each centered single-edge vector includes its adjacent quarter-weight faces. At fixed $j$ its convergence was established above; mixed terms follow by the real polarization identity. Hence the finite list holds for every sufficiently small positive $g$. Define $n_j$ as the smallest positive integer for which $g_j=2^{-n_j}<1/j$ satisfies this list and all the earlier finite lists. The well-ordering of the positive integers and fixed-box convergence prove existence. This specifies actual positive couplings in the original model; it does not replace $H_{g_j}$ by its quadratic part.
+
+Linearity in the weights bounds the covariance error at each listed time by $\varepsilon_j\|h\|_\infty\|k\|_\infty$. Theorem 16.1 therefore gives convergence for every real compact smooth profile and every positive rational time on this one sequence. For an arbitrary positive real time, squeeze the diagonal covariance between two rational times: its spectral measure is nonnegative, so it decreases with time. The limiting function (158) is continuous on $(0,\infty)$ by dominated convergence. Taking rational bounds to the specified time proves 
+
+$$
+\qquad\text{(162)}
+ C_{g_j;h,h}(t)\longrightarrow C_h(t),\qquad t>0.
+$$
+
+ Real polarization proves mixed convergence for all times.
+
+For precision this also proves weak convergence of the actual damped raw spectral measures, not just of a few moments. Fix $t>0$ and let $\mu_j(d\omega)=e^{-t\omega}d\nu_{h,g_j}(\omega)$. Their masses converge to $C_h(t)$, and their Laplace transforms at $s>0$ converge to $C_h(t+s)$. The inequality 
+
+$$
+(1-e^{-sR})\mu_j([R,\infty))
+       \le C_{g_j;h,h}(t)-C_{g_j;h,h}(t+s)
+$$
+
+ first with small $s$ and then large $R$ proves tightness, by continuity of $C_h$; finitely many initial measures can be covered separately. On a compact interval, the algebra generated by $e^{-s\omega}$ separates points and contains constants, so its polynomials uniformly approximate continuous functions there. An explicit version follows by setting $z=e^{-\omega}$ and using Bernstein polynomials for the resulting continuous function on $[e^{-R},1]$. Thus the transforms and tightness identify the weak limit uniquely as $e^{-t\omega}d\nu_h$. Applying this assertion at time $t/2$ to the bounded continuous function $\omega^n e^{-t\omega/2}$ proves convergence of every damped moment. In particular the original vectors satisfy 
+
+$$
+\qquad\text{(163)}
+ \|y_{h,g_j}(t)\|^2\longrightarrow C_h(t),\qquad
+ \langle y_{h,g_j}(t),A_{g_j}y_{h,g_j}(t)\rangle
+       \longrightarrow -C_h'(t).
+$$
+
+ They lie in every excitation-power domain since the semigroup multiplier damps all powers. For any finite list of profiles and times, their Gram matrices and their semigroup matrix elements converge to those of the vectors $J_t h$ defined in (160). Indeed the mixed time argument is $(t+s)/2$ plus the intervening positive evolution time, and the mixed covariance follows by polarization. This constructs the common spectral correspondence at the level actually proved. No norm-preserving identification of the entire changing Hilbert spaces, or convergence of products of several local operators, has been asserted.
+
+## Low-energy tail, original raw amplitudes, and curvature concentration
+
+Put $H_h=\int h$. For $H_h\ne0$, equation (159) and the substitution $v=t\omega$ give 
+
+$$
+\qquad\text{(164)}
+ \rho_h(\omega)\sim\frac{H_h^2}{560\pi^4}\omega^7,
+ \quad C_h(t)\sim\frac{9H_h^2}{\pi^4t^8},\quad
+ -C_h'(t)\sim\frac{72H_h^2}{\pi^4t^9},\quad
+ \frac{\langle J_th,A_{\rm fr}J_th\rangle}{\|J_th\|^2}
+       \sim\frac8t.
+$$
+
+ To justify the substitution over the entire integration range, split at a fixed small frequency. On its complement the positive time exponential is exponentially small, while on the first piece the uniform Taylor remainder above is bounded by the next power; the integrals are the elementary gamma integrals $\int_0^\infty v^n e^{-v}dv=n!$, obtained by repeated integration by parts. This also proves that for general nonzero $h$ with first degree $m$, the quotient is $(8+2m)/t+o(t^{-1})$. These are raw amplitudes: the norm tends to zero as time grows. They are nevertheless nonzero at every finite time, with a ratio tending to zero. The positive-coupling convergence in (163) transfers both raw quantities at each fixed time, and a further explicitly selected subsequence transfers this time sequence: take $t=n$ and the least increasing $j_n$ for which both errors are less than $1/n$ times their positive limiting quantities. Existence follows from that equation. Thus actual vectors $y_{h,g_{j_n}}(n)$ also have the quotient $8/n+o(n^{-1})$ when $H_h\ne0$, with their unaltered norms and energies asymptotic to the displayed limits.
+
+The map has a useful exact continuity estimate for concentration. For $h\in C_c^\infty$, $|\widehat h|\le\|h\|_1$ in (158), so 
+
+$$
+\qquad\text{(165)}
+ \|J_t h\|^2\le \frac{9}{\pi^4t^8}\|h\|_1^2.
+$$
+
+ The constant is the integral $4\pi\int_0^\infty K^6e^{-tK}dK/(320\pi^5t)$, with every Fourier factor retained. The same estimate for differences extends $J_t$ uniquely to $L^1(\mathbb R^3)$, by approximation with compact smooth functions. More generally, a finite signed measure defines the kernel (160) by its bounded Fourier transform; the identical estimate with total variation proves existence. Point measures have the exact raw norm given by equality in (165).
+
+For an explicit concentration family let $\rho$ be compact smooth and real, $x_*$ fixed, and $h_\epsilon(x)=A\epsilon^{-\beta}\rho((x-x_*)/\epsilon)$, where all $A,\beta$ are retained. Direct change of variables gives 
+
+$$
+\begin{aligned}
+ \widehat h_\epsilon(k)
+   &=A\epsilon^{3-\beta}e^{-ik\cdot x_*}\widehat\rho(\epsilon k),
+       \\
+ \|J_t h_\epsilon\|^2
+   &= \frac{A^2\epsilon^{6-2\beta}}{320\pi^5t}
+       \int |k|^4e^{-t|k|}|\widehat\rho(\epsilon k)|^2\,dk,
+       \qquad\text{(166)}\\
+ \epsilon^{2\beta-6}\|J_t h_\epsilon\|^2
+   &\longrightarrow \frac{9A^2(\int\rho)^2}{\pi^4t^8}.
+       
+\end{aligned}
+$$
+
+ Dominated convergence uses $|\widehat\rho|\le\|\rho\|_1$. It proves convergence of the correspondingly scaled kernels in the same Fock space, including their energy forms, to the point measure kernel. This is a displayed coordinate and amplitude map, not a deletion of $A$ or a division by the vector norm. For $\int\rho\ne0$, the limiting energy quotient at fixed $t$ is $8/t$ as $\epsilon\downarrow0$, while the raw norm vanishes, stays finite, or diverges according to the exponent $6-2\beta$.
+
+Finally insert an actual regular smooth compact incompressible Navier--Stokes profile from the preceding sections: 
+
+$$
+\qquad\text{(167)}
+ u(s)\longmapsto h_s=\lambda^2|\nabla\times u(s)|^2
+ \longmapsto D_{h_s}\longmapsto\Xi_{h_s,g_j}
+ \longmapsto e^{-tA_{g_j}/2}\Xi_{h_s,g_j}
+ \longleftrightarrow J_t h_s .
+$$
+
+ Every map on the left is an exact coordinate operation on the original objects; the last correspondence is the proved common Gram and spectral limit. For $\lambda\ne0$ and a nonzero profile, $H_{h_s}=\lambda^2\|\nabla\times u(s)\|_2^2>0$, using the compact-support integration identity proved in Section 15. Hence (164) applies with its exact squared coefficient $\lambda^4\|\nabla\times u(s)\|_2^4$, and (165) bounds its raw norm with the same coefficient. To record the spatial scaling explicitly, for any fixed nonzero compact smooth divergence-free $U$, put $u_\epsilon(x)=\epsilon^{-\alpha}U((x-x_*)/\epsilon)$. Its curvature weight has $A=\lambda^2$, $\beta=2\alpha+2$, $\rho=|\nabla\times U|^2$, so 
+
+$$
+\|u_\epsilon\|_2^2=\epsilon^{3-2\alpha}\|U\|_2^2,
+ \quad \|\nabla\times u_\epsilon\|_2^2
+          =\epsilon^{1-2\alpha}\|\nabla\times U\|_2^2,
+ \quad \|J_t h_\epsilon\|^2
+       \sim \frac{9\lambda^4\|\nabla\times U\|_2^4}{\pi^4t^8}
+                    \epsilon^{2-4\alpha}.
+$$
+
+ This is an explicit family of regular profiles; it is not asserted to be the singular profile of the supplied flow. The original spacetime connection and current remain $\mathcal A_i=\lambda u_iT$, $\mathcal A_0=0$ and $j_i=(\lambda/g^2)(\Delta u_i-c^{-2}\partial_s^2u_i)T$. No identification of the fluid time $s$ with the quantum time $t$ has been made. A singular endpoint can be passed through this map only by evaluating its actual Fourier-weighted curvature measures; a pointwise infinity does not specify those measures.
+
+The full spectral correspondence proved here is stronger than the lowest-band correspondence: its limiting measure has nonzero weight at every positive energy scale and a continuous tail at zero. Its Hamiltonian is exactly the explicitly defined $d\Gamma(|p|)$, and its states are the equal-colour transverse two-creation kernels above. Convergence of higher local products and survival of a nonabelian interaction on a continuum scaling trajectory have not been established by this calculation. Those are further calculations in the original counterexample programme; the free spectral correspondence itself is not a disproof of the interacting Yang--Mills mass-gap assertion.
+

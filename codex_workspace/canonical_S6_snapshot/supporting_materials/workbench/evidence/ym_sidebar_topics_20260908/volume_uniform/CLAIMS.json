@@ -1,0 +1,550 @@
+{
+  "schema_version": 1,
+  "topic_id": "YM-VOL-LOCAL-20260908",
+  "proof_file": "VOLUME_UNIFORM_LOCAL_VACUUM_ESTIMATES.md",
+  "status": "ongoing_full_goal_not_complete",
+  "claims": [
+    {
+      "id": "YM-VOL-RESOLVENT-001",
+      "type": "independent_proved_estimate",
+      "loci": [
+        "2.1-2.8",
+        "3.1-3.3",
+        "4.1-4.4"
+      ],
+      "scope": "actual full finite-box vacuum; local bounds uniform in exterior volume",
+      "depends_on": [
+        "original full Hamiltonian (1.2)",
+        "single-link spin spectrum"
+      ],
+      "validation": "standard proof; arithmetic/incidence certificate"
+    },
+    {
+      "id": "YM-VOL-FORMS-002",
+      "type": "independent_proved_estimate",
+      "loci": [
+        "5.3",
+        "6.4-6.6",
+        "7.1-7.6",
+        "8.1-8.2"
+      ],
+      "scope": "all boxes, xi<=1/64, explicit smaller interval for local nonzero quotient",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001"
+      ],
+      "validation": "standard proof; exact constants and native weight sums checked"
+    },
+    {
+      "id": "YM-VOL-SCORE-003",
+      "type": "independent_proved_estimate",
+      "loci": [
+        "10.1-10.5"
+      ],
+      "scope": "every positive xi; sup gradient_e log psi<=2 r_e xi",
+      "depends_on": [
+        "partial Bochner identity",
+        "exact SU2 radius2 metric",
+        "actual vacuum equation"
+      ],
+      "source": "Villani exact indexed edition Chapter14 equation14.28; partial-factor proof derived in note",
+      "validation": "standard analytical proof, not Lean"
+    },
+    {
+      "id": "YM-VOL-COND-004",
+      "type": "independent_proved_estimate_and_domain_map",
+      "loci": [
+        "10.6-10.12"
+      ],
+      "scope": "every positive xi; actual full-form conditional-complement operator; exponent retains sum over S",
+      "depends_on": [
+        "YM-VOL-SCORE-003",
+        "single-factor spectral Poincare bound"
+      ],
+      "validation": "full adjoint/unitary/form-domain proof"
+    },
+    {
+      "id": "YM-VOL-CLUSTER-005",
+      "type": "independent_quantitative_proof_using_sourced_method",
+      "loci": [
+        "11.1-11.18"
+      ],
+      "scope": "all full finite boxes; xi in (0,1/49152]; no finite-dimensional link truncation",
+      "depends_on": [
+        "creation algebra (11.4)-(11.5)",
+        "anchored overlap count (11.13)",
+        "single-link gap3kappa/4"
+      ],
+      "source": "Yarotsky math-ph/0411042v1 Section2; numerical constants derived independently",
+      "constants": {
+        "radius": "1/16",
+        "image_radius": "1/32",
+        "lipschitz": "11/36"
+      },
+      "validation": "full standard proof; exact majorant constants checked"
+    },
+    {
+      "id": "YM-VOL-GAP-006",
+      "type": "independent_quantitative_proof_using_sourced_method",
+      "loci": [
+        "12.1-12.9"
+      ],
+      "scope": "actual full finite-box H, then gauge restriction; g_YM^4>=12288, a>0 retained",
+      "depends_on": [
+        "YM-VOL-CLUSTER-005",
+        "relative perturbation (12.5)",
+        "explicit resolvent (12.6)"
+      ],
+      "bound": "gap >= (3kappa/4)(1-512xi/3) >=287kappa/384",
+      "validation": "standard unbounded-operator and spectral proof; no Lean"
+    },
+    {
+      "id": "YM-VOL-EXTCOV-007",
+      "type": "proved_consequence",
+      "loci": [
+        "12.10-12.14"
+      ],
+      "scope": "PSD covariance upper bound for every real extensive weight, all finite boxes, xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-GAP-006",
+        "YM-VOL-FORMS-002"
+      ],
+      "bound": "C <= (4xi^2+468000xi^3)/(1-512xi/3) Identity",
+      "nonclaims": [
+        "not absolute row summability",
+        "not uniform two-sided asymptotic remainder"
+      ],
+      "validation": "exact spectral-form implication and constants checked"
+    },
+    {
+      "id": "YM-VOL-EXTCOND-008",
+      "type": "proved_consequence_and_exact_map",
+      "loci": [
+        "12.15-12.16"
+      ],
+      "scope": "all nonempty eliminated sets, any size, actual restricted FULL form",
+      "depends_on": [
+        "YM-VOL-GAP-006",
+        "YM-VOL-COND-004"
+      ],
+      "bound": "C_S^rho >=287kappa/384 and inverse norm <=384/(287kappa)",
+      "nonclaims": [
+        "not a claim about an eliminated-directions-only fibre operator"
+      ],
+      "validation": "conditional mean identity, physical unitary map, form closure"
+    },
+    {
+      "id": "YM-VOL-DECAY-009",
+      "type": "independent_quantitative_proof_using_sourced_methods",
+      "loci": [
+        "13.1-13.8"
+      ],
+      "scope": "Original unbounded electric covariance in the full actual vacuum; all boxes; 0<xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-GAP-006",
+        "YM-VOL-SCORE-003",
+        "YM-VOL-RESOLVENT-001"
+      ],
+      "source": "Nachtergaele-Sims 1410.8174v1 Sections2-3 and math-ph/0506030v3 Section3.2; numerical and unbounded-observable proof given here",
+      "bound": "|C_ef|<=1200 xi exp(-d(e,f)/4) for e!=f",
+      "validation": "Full standard strong-evolution, spectral-filter and moment proof; exact arithmetic checks, not Lean"
+    },
+    {
+      "id": "YM-VOL-REMAINDER-010",
+      "type": "proved_absolute_row_and_operator_norm_estimate",
+      "loci": [
+        "14.1-14.6"
+      ],
+      "scope": "Every real electric weight, all boxes, 0<xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-DECAY-009",
+        "YM-VOL-FORMS-002"
+      ],
+      "bound": "sup absolute row and l2 norm of C-xi^2 I^T I/16 <= xi^3 P(log(1/xi)); explicit cubic P in14.3",
+      "nonclaims": [
+        "not an order-xi^4 kernel remainder"
+      ],
+      "validation": "Complete geometric shell and generating-function proof; exact polynomial constants checked"
+    },
+    {
+      "id": "YM-VOL-NATIVE-011",
+      "type": "proved_physical_extensive_state_consequence",
+      "loci": [
+        "14.7-14.10"
+      ],
+      "scope": "Uniform positive covariance denominator and Rayleigh estimate for all nonzero nonnegative weights, including original n2^2; 0<xi<=10^-16",
+      "depends_on": [
+        "YM-VOL-REMAINDER-010",
+        "YM-VOL-FORMS-002"
+      ],
+      "bound": "|N_w/C_w-3kappa|<=kappa(3744000xi+32epsilon_xi); native relative covariance remainder<=8epsilon_xi",
+      "nonclaims": [
+        "does not cover signed leading-kernel Rayleigh minimum",
+        "does not extend original fixed-regulator angle remainder",
+        "not a continuum mass-gap conclusion"
+      ],
+      "validation": "Exact constants, incidence and original native weight sums; full proof in cumulative note"
+    },
+    {
+      "id": "YM-VOL-PHYSGAP-012",
+      "type": "proved_gauge_morphisms_and_quantitative_spectral_estimate",
+      "loci": [
+        "15.1-15.13"
+      ],
+      "scope": "Full open boxes with gauge transformations at every vertex, no external charged representations; xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-CLUSTER-005",
+        "YM-VOL-GAP-006"
+      ],
+      "source": "Baez gr-qc/9411007v1 finite-graph gauge construction; inverse-link convention map and leaf/cycle threshold proved here",
+      "bound": "Physical gap>=3kappa(1-512xi/3)>=287kappa/96; full-space bound287kappa/384 unchanged",
+      "validation": "Complete gauge projection, inverse, domain, cluster-equivariance and Neumann-resolvent proofs; exact constants and finite cycle checks"
+    },
+    {
+      "id": "YM-VOL-SIGNEDMIN-013",
+      "type": "proved_attained_variational_minimum_and_exact_quotient_map",
+      "loci": [
+        "15.18-15.21"
+      ],
+      "scope": "Every full box and all nonzero actual electric states with arbitrary real weights, including coupling-dependent weights; xi<=1/680000",
+      "depends_on": [
+        "YM-VOL-PHYSGAP-012",
+        "YM-VOL-FORMS-002"
+      ],
+      "bound": "3kappa-512kappa xi <= physical gap <= min actual signed-electric quotient <=3kappa+2472000kappa xi",
+      "maps": "V_xi:w->v_w; ker V_xi=ker C; isometric bijection real weight space/ker C -> actual finite-dimensional state image, inverse v_w->[w]",
+      "nonclaims": [
+        "not every individual signed quotient is near3kappa",
+        "not uniform fourth-order kernel asymptotics",
+        "not uniform ker C={0}",
+        "not a continuum conclusion"
+      ],
+      "validation": "Full compactness, Gram-kernel, physical spectral and nonzero single-link proof"
+    },
+    {
+      "id": "YM-VOL-PHYSFORMS-014",
+      "type": "proved_matrix_order_and_reducing_conditional_domain_map",
+      "loci": [
+        "15.14-15.17",
+        "15.22-15.23"
+      ],
+      "scope": "All real extensive weights and every nonempty eliminated set; xi<=1/49152; improved conditional constant only on physical restriction",
+      "depends_on": [
+        "YM-VOL-PHYSGAP-012",
+        "YM-VOL-FORMS-002",
+        "YM-VOL-COND-004"
+      ],
+      "bound": "N>=3kappa(1-512xi/3)C; C<=(xi^2+117000xi^3)/(1-512xi/3)I; physical full-form conditional inverse<=96/(287kappa)",
+      "validation": "Exact spectral-form calculation and endpoint conditional-gauge intertwiners, dense restricted form and original ground-state unitary"
+    },
+    {
+      "id": "YM-VOL-RESIDUAL-015",
+      "type": "proved_exact_local_state_map_and_uniform_remainder",
+      "loci": [
+        "16.1-16.10",
+        "16.17-16.19"
+      ],
+      "scope": "Every original real weight; full actual vacuum; xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003",
+        "YM-VOL-PHYSGAP-012",
+        "parent adjacent-face Casimir calculation"
+      ],
+      "maps": "B_e with h0 B_e=F_e; residual s_e=Qpsi(E_e-xi h_e-xi^2 B_e)psi; on ker I, v_w=xi^2 Qpsi B_w psi+s_w with B_w=S_w",
+      "bound": "Residual energy<=10^14 kappa xi^6 ||w||_2^2 and norm<=6*10^6 xi^3 ||w||_2; exact energy range4",
+      "validation": "Full differential/domain, double-commutator, support and gap-inverse proof; exact constants and bounded-box pair-support checks"
+    },
+    {
+      "id": "YM-VOL-KERNELFORMS-016",
+      "type": "proved_uniform_fourth_order_actual_vacuum_forms",
+      "loci": [
+        "16.11-16.21"
+      ],
+      "scope": "Entire real ker I; all original boxes; xi<=1/49152",
+      "depends_on": [
+        "YM-VOL-RESIDUAL-015",
+        "YM-VOL-DECAY-009",
+        "YM-VOL-RESOLVENT-001"
+      ],
+      "source": "Nachtergaele-Sims 1410.8174v1 Section3 crossing-set proof and math-ph/0506030v3 Section3.2 spectral-filter proof; support constants derived here",
+      "bound": "C_w=(196/13689)xi^4 K_L(w,w)+error<=xi^4 epsilon_C ||w||^2; N_w=(8/117)kappa xi^4 K_L(w,w)+error<=kappa xi^4 epsilon_N ||w||^2; explicit errors16.20 tend to zero uniformly",
+      "nonclaims": [
+        "Not a nonzero fifth Taylor coefficient",
+        "Not a uniform sixth-order remainder"
+      ],
+      "validation": "Complete local marginal, support-dependent LR, Gaussian-filter, shell-sum and energy-form proofs; exact rational constants checked"
+    },
+    {
+      "id": "YM-VOL-KERNELMAP-017",
+      "type": "proved_injective_state_map_and_uniform_kernel_quotient",
+      "loci": [
+        "16.22-16.24"
+      ],
+      "scope": "Every nonzero real weight in ker I, including volume/coupling-dependent weights; xi<=10^-24",
+      "depends_on": [
+        "YM-VOL-KERNELFORMS-016",
+        "YM-VOL-SIGNEDMIN-013"
+      ],
+      "maps": "V_xi restricted to ker I is bijective onto its image; inverse norm<=xi^-2 sqrt(2/d0), d0=196/13689",
+      "bound": "|N_w/C_w-(234/49)kappa|<=kappa(epsilon_N+(234/49)epsilon_C)/(d0-epsilon_C)",
+      "nonclaims": [
+        "Not injectivity on the entire raw edge space on a uniform interval",
+        "Not a spectral eigenvalue identification",
+        "Not a continuum conclusion"
+      ],
+      "validation": "Exact positive rational interval check and full quotient/inverse proof"
+    },
+    {
+      "id": "YM-VOL-FULLWEIGHT-018",
+      "type": "proved_mixed_covariance_and_uniform_full_state_injectivity",
+      "loci": [
+        "17.1-17.15"
+      ],
+      "scope": "All raw real edge weights, all original boxes; covariance xi<=1/49152 and positive lower bound xi<=10^-24",
+      "depends_on": [
+        "YM-VOL-RESIDUAL-015",
+        "YM-VOL-DECAY-009",
+        "YM-VOL-SIGNEDMIN-013"
+      ],
+      "maps": "T_xi:w->(xi Iw/4,xi^2 c), c_pair=((Iw)_p+(Iw)_q)/6-4w_shared/3; explicit left inverse17.4; full physical inverse17.15",
+      "bound": "C(xi)>=(d0/8)xi^4 I, d0=196/13689; physical inverse norm<=xi^-2 sqrt(8/d0), uniformly in L",
+      "validation": "Full mixed Gram, anchor-count, actual covariance and reverse-triangle proofs; exact constants and full-weight inverse tests",
+      "nonclaims": [
+        "No individual spectral eigenvector identification",
+        "No coupling continuation or spatial continuum conclusion"
+      ]
+    },
+    {
+      "id": "YM-VOL-MIXEDRITZ-019",
+      "type": "proved_full_mixed_energy_and_ordered_ritz_comparison",
+      "loci": [
+        "18.1-18.19"
+      ],
+      "scope": "All original real edge weights and the N-dimensional actual electric-state image; energy form for xi<=1/49152 and ordered quotient/Ritz comparison for 0<xi<=10^-24, uniformly in L",
+      "depends_on": [
+        "YM-VOL-FULLWEIGHT-018",
+        "YM-VOL-KERNELFORMS-016",
+        "YM-VOL-DECAY-009"
+      ],
+      "maps": "V_xi, its exact Gram projection P_S=V_xi C^-1 V_xi^*, the compression R_xi, and the full leakage AV_xi=V_xi C^-1 N+L_xi are proved with domains and codomains",
+      "bound": "|w^t N w/(w^t C w)-kappa J_xi(w)/H_xi(w)|<=kappa delta(xi); |lambda_j/kappa-mu_j|<=delta(xi); 3<=mu_j<=234/49; at least N physical excitation eigenvalues are <=kappa(234/49+delta(xi))",
+      "validation": "Exact coefficient energy matrix, mixed actual form bound, finite-dimensional metric min-max proof, physical compact-resolvent restriction and literature route to Lewin Section5.6.1",
+      "nonclaims": [
+        "No individual physical eigenvector identification",
+        "No exact physical multiplicity transfer from the coefficient problem",
+        "No continuum or Millennium conclusion"
+      ]
+    },
+    {
+      "id": "YM-VOL-PERIODSIGN-020",
+      "type": "proved_exact_coordinate_maps_and_retraction",
+      "loci": [
+        "19.1-19.13"
+      ],
+      "scope": "Original period coefficient space with Im(tau_T)!=0; actual matrix inverse for D!=0, rank-three boundary at D=0; no completed-threefold assertion",
+      "depends_on": [
+        "root retained_cusp_nonlinear_bridge.md Section1",
+        "root magnetic_translation_true_vacuum.md Section1"
+      ],
+      "maps": "Delta(original expression)=-D; exact full P, inverse, Euclidean Gram, auxiliary-form linear bijection; collapsing v=(k,-A_T k/M_cov) with k=(L_T,-6m_T)",
+      "bound": "v^t G v=D^2; flux action=2 pi^2 M_cov^2/(g_YM^2 |D|)",
+      "retractions": [
+        "Previous Section19 wrongly identified auxiliary G_eta as actual metric",
+        "Previous assertion that indefinite forms cannot have positive density was false",
+        "Previous negative-vector sign-reversal witness was false"
+      ],
+      "validation": "Complete coordinate proof and 48 exact rational matrix/inverse/sign tests"
+    },
+    {
+      "id": "YM-VOL-NEGCLASS-021",
+      "type": "proved_negative_physical_class_eigenvalue_and_full_hamiltonian_map",
+      "loci": [
+        "19.14-19.22"
+      ],
+      "scope": "Original SU(2) full finite box L>=2 and a,g_YM>0; theta*=arccos(1/4)",
+      "depends_on": [
+        "root magnetic_translation_true_vacuum.md Sections1,2,4",
+        "Baez gr-qc/9411007v1 finite-graph framework"
+      ],
+      "maps": "K_theta*= -I/4 on spin-one 12-loop image F_p=W_p^2-1; dimension d_L=(2L)(2L+1); vacuum-orthogonal dimension>=d_L-1. H Fw=(8 kappa+2bM)Fw-b sum_r W_r Fw with explicit orthogonal leakage.",
+      "bound": "Actual excitation Rayleigh quotient on vacuum-orthogonal image is exactly 8 kappa+2bM-E>=8 kappa; negative K eigenvalue is retained.",
+      "validation": "Full Haar/representation, gauge, orthogonality, parity, domain and Hamiltonian proof; exact class scalar and full-box support tests",
+      "nonclaims": [
+        "No identification of K eigenvalues with Hamiltonian energies",
+        "No Jacobi/Fable attribution without the exact local theorem",
+        "No spatial continuum mass-gap conclusion"
+      ]
+    },
+    {
+      "id": "YM-VOL-FINITEANGLE-022",
+      "type": "proved_all_angle_local_state_and_uniform_extensive_form",
+      "loci": [
+        "20.1-20.14"
+      ],
+      "scope": "Original full SU(2) vacuum. Local norm for xi<=1/64; extensive residual xi<=1/49152; nonzero nonnegative-weight quotient xi<=10^-16. All real link angles.",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003",
+        "YM-VOL-PHYSGAP-012",
+        "YM-VOL-FULLWEIGHT-018",
+        "YM-VOL-MIXEDRITZ-019"
+      ],
+      "maps": "J_e=I-C_e(s_e), t_e=1-cos(s_e), u_e=w_e t_e, z=Iu; U_s(w)=xi Qpsi(sum z_p W_p)psi/3+r_w. Exact diagonal kernel and coordinate inverse on its image.",
+      "bound": "||r_w||<=32000 xi^2 ||u||, q_A[r_w]<=3e9 kappa xi^4 ||u||^2; explicit b_C,b_N and quotient error kappa(b_N+3b_C)/(1-b_C)<kappa/100 for nonzero u>=0.",
+      "validation": "Full multiplier, star resolvent, retained commutator, finite-range energy and covariance/energy proof. Exact rational constants and150 retained-character checks.",
+      "nonclaims": [
+        "Not replacement of native product by sum",
+        "Not nonzero signed-kernel estimate beyond stated scope",
+        "Not continuum or weak-coupling extension"
+      ]
+    },
+    {
+      "id": "YM-VOL-PRODUCTERROR-023",
+      "type": "proved_exact_product_map_and_quantified_bound_limitation",
+      "loci": [
+        "20.15-20.22"
+      ],
+      "scope": "Full original magnetic product; all real angles; xi<=1/49152, norm-comparison interval xi<=10^-16",
+      "depends_on": [
+        "YM-VOL-FINITEANGLE-022",
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003"
+      ],
+      "maps": "K-I+sum J=sum_{j<i} J_i J_j product_{k<j}C_k; original chi=-U_s(1)+centered complete double sum. Exact native face sums retain12 and13 faces.",
+      "bound": "||E_e E_f psi||<=3xi+96xi^2<=4xi for e!=f; product norm error<=64xi sum_{e<f}t_et_f/9. On prescribed L_j=j^2, theta_j=2pi/(10^4j^2D_j), epsilon_prod/j->512 sqrt5 pi^2/(27*10^8).",
+      "validation": "Complete spectral-resolvent/telescoping proof and625 exact product tests including negative C multipliers; native finite-box face counts for L=2..5.",
+      "nonclaims": [
+        "Divergence of an upper bound does not prove divergence of the actual error",
+        "No convergence assertion for original product on prescribed cusp path",
+        "No new diagonal substituted to rescue this estimate"
+      ],
+      "continuation": "YM-VOL-NATIVEPRODUCT-025 closes the full norm remainder and actual denominator on its stated coupling interval; earlier limitations describe those earlier estimates alone."
+    },
+    {
+      "id": "YM-VOL-NEGWEIGHT-024",
+      "type": "proved_exact_negative_product_projection_and_actual_vacuum_weights",
+      "loci": [
+        "21.1-21.14"
+      ],
+      "scope": "Full original SU(2) finite box; every xi>0 and all real link angles. Cusp rates at each fixed positive coupling on the unchanged L_j=j^2 path.",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003",
+        "20.1 exact multiplier inequality",
+        "Baez gr-qc/9411007v1 Section2"
+      ],
+      "maps": "Exact full Peter-Weyl negative-product projector, image, kernel, orthogonal splitting/inverse, odd-sign parity with zero factors retained, actual centered spectral weight and complete Hamiltonian commutator.",
+      "bound": "M2e=(3r_e/2)xi+8r_e^2xi^2; ||Pi_s^- chi_s|| <= (32/9)(6+128xi)xi sqrt(sum t_e^4); limsup j^8 ||Pi^-chi||/(xi||It||/3) <=16(6+128xi)sqrt(10)pi^2/(9*10^8). Negative component O(xi j^-13) at fixed positive xi. Vacuum depletion bound21.8 and exact cusp bound21.13.",
+      "validation": "Full standard proof without a strong-coupling gap assumption. Exact polynomial coefficient check,150 character tests including53 negative,625 product parity/centering tests and full-box fourth-angle counts.",
+      "nonclaims": [
+        "No negative magnetic state is excluded",
+        "Reference coefficient size is not the actual state norm",
+        "No Hamiltonian eigenvalue inferred from magnetic sign",
+        "No claimed closure of the complete product remainder or continuum spectral measure"
+      ],
+      "continuation": "YM-VOL-NATIVEPRODUCT-025 closes the full norm remainder and actual denominator on its stated coupling interval; earlier limitations describe those earlier estimates alone."
+    },
+    {
+      "id": "YM-VOL-NATIVEPRODUCT-025",
+      "type": "proved_complete_original_product_norm_and_native_spectral_probability_comparison",
+      "loci": [
+        "22.1-22.25"
+      ],
+      "scope": "General product and third-moment bound for every xi>0 and all real angles. Native nonzero denominator and TV comparison at fixed0<xi<=10^-16 on the original dyadic cusp.",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003",
+        "YM-VOL-FINITEANGLE-022",
+        "YM-VOL-NEGWEIGHT-024"
+      ],
+      "maps": "Exact polynomial tensor splitting/inverse/kernel; two-band multiplication; complete K-exp(-S) telescope and centered cutoff identity; original finite-angle sum to (2/3)theta^2 v_native; full raw spectral measures and retained mass quotients.",
+      "bound": "||E_e^3 psi||<=64xi(1+22xi+128xi^2). ||chi+U||<=A_s+(2+R/2)d+(R/2+m_s)||U||. On Lambda_j=j^(5/3), epsilon_j<=5000j^(-1/3) beyond original period thresholds; at dyadicj>=max(2,sqrt(max(T0,0)),sqrt(2Cper),20000^3), c_j/2<=||chi||<=3c_j/2. Full TV(mu_chi,mu_native_electric)<=8ThetaE_j->0; finite-angle correction O_xi(j^-5).",
+      "validation": "Complete standard coordinate/spectral/domain proof,306 tensor inverse/equivariance checks,129 Casimir-band checks,65 fourth-character sums,625 full product differences and explicit threshold constants.",
+      "nonclaims": [
+        "No original state is truncated or replaced by the auxiliary exponential",
+        "No cusp sequence or physical scale changed",
+        "No inference about unbounded energy moments from bounded spectral tests",
+        "No continuum construction or Millennium endpoint conclusion"
+      ]
+    },
+    {
+      "id": "YM-VOL-PRODUCTENERGY-026",
+      "type": "proved_full_product_energy_form_and_first_energy_weighted_spectral_comparison",
+      "loci": ["23.1-23.28"],
+      "scope": "Un-divided form bounds for every xi>0 and all link angles. Native probability and derivative comparison at fixed0<xi<=10^-16 on the unchanged dyadic cusp, retaining original kappa_j=200g_YM^2j.",
+      "depends_on": [
+        "YM-VOL-RESOLVENT-001",
+        "YM-VOL-SCORE-003",
+        "YM-VOL-PHYSGAP-012",
+        "YM-VOL-FINITEANGLE-022",
+        "YM-VOL-NATIVEPRODUCT-025"
+      ],
+      "maps": "Sixteen full plaquette bands with input/output electric differences and exact double commutator; full signed product F=K-I+S; form-domain cutoff limit to U-(2/3)theta^2 v_native; both raw measures and exact mass fractions.",
+      "bound": "sqrt(q_A[chi+U])<=sqrt(kappa)c etaF, etaF=64sqrt(xi)(14+128xi)T1+128p(xi)zmax/sqrt(xi). sqrt(q_A[U-Z])<=sqrt(kappa)c etaG, etaG=8p(xi)||I(s^4)||/(sqrt(xi)||It||). eta=etaF+etaG=O_xi(j^-2). TV(mu_chi,mu_v)<=8dC=O_xi(j^-2); energy-weighted TV<=kappa_j(4dN+16AZ^2dC)=O_xi,g(j^-1). Both supports lie above200g_YM^2 gamma_xi j, hence vague limit zero, no weak probability subsequence and nonuniform individual first-energy tails.",
+      "validation": "Complete standard band/domain/double-commutator proof; exact rational full-face telescopes, cutoff jumps, all sixteen shifts and constants. No Lean run.",
+      "nonclaims": [
+        "No negative product factor or plaquette removed",
+        "No probability amplitude substituted into raw state",
+        "Failure of individual first-energy uniform integrability is proved at this fixed coupling, not assumed",
+        "No wider-coupling probability theorem or continuum construction",
+        "No Millennium conclusion from this two-state comparison"
+      ]
+    },
+    {
+      "id": "YM-VOL-LOGTRANSPORT-027",
+      "type": "proved_all_positive_coupling_energy_transport_on_original_logarithmic_path",
+      "loci": ["24.1-24.25"],
+      "scope": "All-positive-coupling un-divided energy bound and raw-measure map. Prescribed g_j²=1/log j with original cusp depth j², original lattice and physical energy. Same bound explicitly tested on g_j²=kappa_*/(200j).",
+      "depends_on": ["YM-VOL-RESOLVENT-001", "YM-VOL-PRODUCTENERGY-026", "YM-VOL-NATIVEPRODUCT-025"],
+      "maps": "L_s=(2/3)sum s_e²E_e and its bounded spectral-cap/domain limit; energy weighting T(rho)=lambda rho, exact kernel C delta0, complete image and inverse fibres; raw Delta=eta_chi-(4/9)theta^4 eta_v, positive-energy projection and retained constant-term time functions.",
+      "bound": "sqrt(q_A[Z_s])<=8sqrt(b)(1+8xi)||I(s²)||/3. a_el=8(1+8xi)R2/sqrt(xi), D_s=kappa eta(2a_el+eta). ||lambda Delta||TV<=c²D_s. On logarithmic path: j²eta/log³j->A*=16384pi²/(3e8); a_el/logj->64; j D_s/log³j->25600A*. Aboveepsilon, ||P(chi+Z)||/c=O(log^(5/2)j/j^(3/2)). On fixedkappa path D_s/j²->kappa_*F_*(256sqrt(alpha_*)+F_*)>0.",
+      "validation": "Complete band, spectral-cap, domain, measure inverse and asymptotic coefficient proofs; exact neighbor/cap, parameter and finite-measure checks. No Lean run.",
+      "nonclaims": [
+        "No weak-coupling gap or covariance denominator assumed",
+        "No cusp depth strengthened or original state replaced",
+        "Coefficient-relative raw error is not total-mass-relative probability error",
+        "Growing upper bound on fixedkappa path does not prove growing actual error",
+        "No limiting nonzero measure, tightness or interacting continuum construction"
+      ]
+    },
+    {
+      "id": "YM-VOL-POLYANTI-028",
+      "type": "proved_polynomial_conditional_anticentration_and_weighted_covariance_lower_bound",
+      "loci": ["25.1-25.30"],
+      "scope": "Actual positive finite-box SU(2) ground-state density, every L>=2 and xi>0; original weighted operator Gamma and unchanged logarithmic path.",
+      "depends_on": ["YM-VOL-SCORE-003", "YM-VOL-PRODUCTENERGY-026"],
+      "maps": "Exact radius-two sphere integration-by-parts map from bounded conditional score to rank-three coordinate variance, scalar plaquette variance, Wilson-gradient lower bound, and the original n_2^2 weighted commutator covariance.",
+      "bound": "sigma(K)=4/(sqrt(K^2+6)+K)^2; r(K)=4/(sqrt(K^2+3)+K)^2; conditional full Wilson gradient >=sigma(16xi), plaquette variance >=r(16xi)sigma(16xi), and ||Q Gamma psi|| >= xi sigma(16xi)(L+1)(2L+1)/(18(6+64xi)). On L=j^2, xi=(log j)^2/4, (log j)^4 j^-4 ||Q Gamma psi|| has liminf >=1/9216; the native Z=(2/3)theta^2 Q Gamma psi has liminf j^8(log j)^4||Z|| >= pi^2/(3456*10^8), and liminf j^16(log j)^8||Z||^2 >= pi^4/(3456^2*10^16).",
+      "validation": "Bounded sphere-constant and trajectory-rate checks in check_volume_uniform_constants.py; analytic integration-by-parts, conditional disintegration, incidence, and commutator proofs are in Section25.",
+      "nonclaims": [
+        "No Hamiltonian spectral gap follows from the covariance lower bound",
+        "No nonzero limiting mass or continuum interacting theory is inferred",
+        "The lower bound is not an asymptotic equality for the covariance",
+        "No near-zero inverse or probability transport through zero is proved"
+      ]
+    },
+    {
+      "id": "YM-VOL-SPECTRALWINDOW-029",
+      "type": "proved_finite_volume_covariance_spectral_window",
+      "loci": ["26.1-26.16"],
+      "scope": "Actual finite-volume SU(2) Hamiltonian, every L>=2 and xi>0; spectral measure of v_Gamma=Q Gamma psi.",
+      "depends_on": ["YM-VOL-POLYANTI-028", "YM-VOL-SCORE-003"],
+      "maps": "Exact commutator map A v_Gamma=-b[W,Gamma]psi, first spectral moment bound, positive-measure Markov tail map, and explicit window R_Gamma=2 Q_Gamma/b_Gamma^2.",
+      "bound": "nu_Gamma([0,R_Gamma])>=b_Gamma(L,xi)^2/2>0, with b_Gamma=xi sigma(16xi)(L+1)(2L+1)/(18(6+64xi)) and Q_Gamma=b S_1,L^2 sqrt(6xi+128xi^2)(6+8 sqrt(8xi)). On the unchanged logarithmic path, liminf (log j)^8 j^-8 b_Gamma(j^2,xi_j)^2>=1/9216^2.",
+      "validation": "Exact finite-volume spectral-measure and commutator proof in Section26; existing arithmetic checker and strict validator retain all constants and tags.",
+      "nonclaims": [
+        "The window endpoint is not uniform in L or the cusp",
+        "No uniform positive spectral gap follows",
+        "No continuum mass or Millennium conclusion follows",
+        "No covariance spectral weight is asserted to lie at zero"
+      ]
+    }
+  ],
+  "unresolved": [
+    "Uniform sixth-order remainder refining the parent's fixed-box even expansion",
+    "Continuation beyond derived coupling range",
+    "Spatial continuum and Millennium conclusions",
+    "Near-zero inverse control and original electric covariance denominator on prescribed logarithmic path; fixed-electric-coefficient transport beyond the present growing bound"
+  ],
+  "validation_boundary": "Exact arithmetic/combinatorial tests are not formal verification of analytic theorems. No novelty beyond the cited general method is claimed."
+}

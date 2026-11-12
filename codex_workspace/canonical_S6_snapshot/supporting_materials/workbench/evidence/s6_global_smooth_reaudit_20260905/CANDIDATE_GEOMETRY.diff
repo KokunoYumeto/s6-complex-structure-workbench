@@ -1,0 +1,279 @@
+--- candidate_geometry_before.tex
++++ candidate_geometry_after.tex
+@@ -560,6 +560,63 @@
+ \(\Delta\)-action and completes the construction of the period family.
+ \end{proof}
+ 
++\begin{proposition}[exact admissible period constants]
++\label{prop:period-exact-admissible-constants}
++Let \(\tau,\mu,\beta^{\mathrm{part}}\) be the cusp-regular functions
++constructed in \cref{prop:period-input-audit}, with all its marked
++coordinates and transformation laws retained.  The descended function
++\[
++ D_{\mathrm{part}}=
++ \operatorname{Im}\beta^{\mathrm{part}}
++ -\frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}
++\]
++has an attained finite maximum \(M\) on
++\(B\setminus\{p_0\}\).  The exact set of constants for which
++\(\beta=\beta^{\mathrm{part}}+c_0\) makes the marked real period map an
++isomorphism at every point is
++\[
++ \{c_0\in\mathbb C:\operatorname{Im}c_0<-M\}.
++\]
++\end{proposition}
++
++\begin{proof}
++The preceding proposition proves continuity on
++\(B\setminus\{p_0\}\), including its elliptic points, and convergence
++\(D_{\mathrm{part}}\to-\infty\) at \(p_0\).  Choose a base point
++\(b_*\).  Outside a compact set containing \(b_*\), the function is
++smaller than \(D_{\mathrm{part}}(b_*)-1\).  Its maximum on that compact
++set is therefore its maximum on the entire base.  A constant shift gives
++\(D=D_{\mathrm{part}}+\operatorname{Im}c_0\), so \(D<0\) everywhere
++exactly for \(\operatorname{Im}c_0<-M\).  At equality, \(D=0\) at a
++maximum point.  For \(\operatorname{Im}c_0>-M\), that point has positive
++\(D\), whereas the cusp still has negative \(D\).  A path toward the
++cusp contains a zero.  Since the exact ordered real determinant is
++\(\operatorname{Im}\tau\,D\), these and only these excluded constants
++make the period matrix singular somewhere.
++\end{proof}
++
++\begin{remark}[the cusp extension is essential]
++For the same \(\tau,\mu,\beta\), the function
++\(\widetilde\beta=\beta+i\,t\circ\pi\) is holomorphic on
++\(\mathfrak h_z\) and satisfies all the same affine transformation laws,
++because \(t\circ\pi\) is invariant.  However,
++\(\widetilde D=D+\operatorname{Re}t\).  On the actual ray \(t=R\to+\infty\),
++\(j(\tau)=1728R\) gives
++\[
++ q=(1728R)^{-1}(1+O(R^{-1})),\qquad
++ D(R)=-\frac{\log(1728R)}{2\pi}
++       +\operatorname{Im}b(0)+o(1),
++ \quad b=\beta+\tau.
++\]
++Consequently \(\widetilde D(R)\to+\infty\), and no additive constant
++makes \(\widetilde D\) negative everywhere.  This function is excluded
++by the actual construction because
++\(\widetilde\beta+\tau=b+i t\) has a cusp pole.  Thus holomorphic
++solvability on the open base alone does not supply the required uniform
++bound; the proved cusp extension supplies it.
++\end{remark}
++
++
+ For the cusp filling, record the local periods explicitly.  Let \(t_c\) be
+ the coordinate vanishing at \(p_0\).  The simple pole of \(j\) gives
+ \[
+@@ -643,6 +700,11 @@
+  \quad
+  \mathcal U_\sigma(S)=\{|z_i|<S\text{ for all }i\}.
+ \]
++We use the restricted charts
++\[
++ \mathcal U_\sigma(S,\epsilon)=\mathcal U_\sigma(S)\cap Y_\epsilon
++\]
++whenever a deck transformation acts on a chart.
+ 
+ \begin{lemma}[toric chart control]
+ \label{lem:toric-chart-control}
+@@ -657,9 +719,17 @@
+  y(p)\in\sigma^{(\log S/|\log|t||)}.
+  \tag{2.5c}
+ \]
++The exact closed-unit-polydisc version is
++\begin{equation}
++ p\in\overline{\mathcal U}_\sigma(1)
++ \quad\Longleftrightarrow\quad
++ \theta_i^\sigma(y(p))\ge0\ (i=0,1,2)
++ \quad\Longleftrightarrow\quad y(p)\in\sigma.
++\label{eq:cusp-closed-chart-identity}
++\end{equation}
+ Every point of \(\{|t|<1\}\subset Y\) belongs to
+ \(\overline{\mathcal U}_\sigma(1)=\{|z_i|\le1\}\) for some \(\sigma\).
+-Consequently the sets \(\mathcal U_\sigma(2)\) cover \(Y_\epsilon\), and
++Consequently the sets \(\mathcal U_\sigma(2,\epsilon)\) cover \(Y_\epsilon\), and
+ every compact subset is contained in the union of finitely many members of
+ this cover.
+ \end{lemma}
+@@ -669,7 +739,9 @@
+ \[
+  \log|z_i(p)|=\log|t(p)|\,\theta_i^\sigma(y(p)).
+ \]
+-Because \(\log|t|<0\), this is exactly (2.5c).
++Because \(\log|t|<0\), this is exactly (2.5c); retaining non-strict
++inequalities proves the closed-unit-polydisc assertion, including triangle
++edges and vertices.
+ 
+ For the boundary assertion let \(p\) lie in the toric orbit
+ \(O_{\widehat P}\) of the cone over a cell \(P\).  In a chart with
+@@ -735,9 +807,29 @@
+  ((v+e_1,1),(v+e_2,1),(v+e_1+e_2,1)).
+ \]
+ Their determinants are respectively \(+1\) and \(-1\), hence have absolute
+-value one.  Every cone is therefore unimodular.  The ordinary pairwise affine-chart
+-separation proof for a toric fan applies without a finiteness hypothesis;
+-countability of the fan gives second countability.  Thus \(Y\) is a
++value one.  Every cone is therefore unimodular.  Here is the pairwise
++affine-chart separation argument, without assuming finiteness of the fan.
++For two cones \(\kappa,\kappa'\), let \(\upsilon=\kappa\cap\kappa'\)
++and \(S_\kappa=\kappa^\vee\cap M'\), where \(M'=\operatorname{Hom}(N',\mathbb Z)\).
++The separation lemma for cones meeting in a common face gives an integral
++character \(m\) nonnegative on \(\kappa\), nonpositive on \(\kappa'\),
++and zero on each exactly along \(\upsilon\)
++\cite[Proposition~3.1.3 and its separation lemma, pp.~106--108]{CoxLittleSchenck2011}.
++For \(a\in S_\upsilon\), choose an integer \(k\ge0\) large enough
++that \(a+km\) is nonnegative on every ray of \(\kappa\).  On the
++common face this already holds; on each other ray \(m\) is positive.
++Then \(a=(a+km)+(-km)\in S_\kappa+S_{\kappa'}\).  The reverse
++inclusion follows by evaluation on \(\upsilon\).  Thus the map
++\[
++ \mathbb C[S_\kappa]\otimes\mathbb C[S_{\kappa'}]
++ \longrightarrow\mathbb C[S_\upsilon],\qquad
++ \chi^a\otimes\chi^b\longmapsto\chi^{a+b}
++\]
++is surjective.  It identifies the gluing graph with a closed algebraic
++subset of the product of these two affine charts, hence with an
++analytically closed subset.  These chart products cover \(Y\times Y\),
++so its diagonal is closed.  Countability of the charts supplies a
++countable topological basis.  Thus \(Y\) is a
+ connected Hausdorff smooth complex threefold with dense torus.
+ 
+ If \(m_0,m_1,m_2\) is the basis dual to the height-one generators, then the
+@@ -774,9 +866,14 @@
+ to a nowhere-vanishing three-form on \(N_0\), proving the intrinsic
+ trivialization (2.6a).  No global threefold has been invoked at this stage.
+ 
+-Write \(R(t)=-2\pi\operatorname{Im}C(t)\), which is bounded because \(C\)
+-is holomorphic at zero.  Choose \(\epsilon\) such that
+-\(|\log\epsilon|>2\|R\|_\infty\).  At a torus point fixed by a nonzero
++Choose a radius \(r>0\) on which the full matrix \(C(t)\) is holomorphic,
++and \(0<r_1<\min(r,1)\).  Put
++\[
++ R(t)=-2\pi\operatorname{Im}C(t),\qquad
++ M=\max_{|t|\le r_1}\|R(t)\|<\infty.
++\]
++Choose \(0<\epsilon<r_1\) with \(|\log\epsilon|>2M\).
++At a torus point fixed by a nonzero
+ \(\bar\lambda\), taking logarithmic absolute values in (2.5) gives
+ \[
+  \log|t|B_0\bar\lambda+R(t)\bar\lambda=0,
+@@ -798,8 +895,9 @@
+ \tag{2.8}
+ \]
+ Put \(\eta_0=\log2/|\log\epsilon|\).  If
+-\(\Psi_{\bar\lambda}\mathcal U_\sigma(2)\) meets
+-\(\mathcal U_{\sigma'}(2)\), the intersection is open and hence contains a
++\(\Psi_{\bar\lambda}\mathcal U_\sigma(2,\epsilon)\) meets
++\(\mathcal U_{\sigma'}(2,\epsilon)\), the intersection is open in
++\(Y_\epsilon\) and hence contains a
+ point of the dense invariant torus.  By \cref{lem:toric-chart-control}, for
+ that point \(p\) and its image \(p'\),
+ \[
+@@ -818,6 +916,15 @@
+ \cref{lem:toric-chart-control}; taking the finite union over all chart pairs
+ proves proper discontinuity.  Freeness and proper discontinuity give a
+ Hausdorff complex-manifold quotient and a holomorphic covering map.
++For completeness the restricted total space is connected: every maximal
++chart intersects it in
++\[
++ \{(z_0,z_1,z_2)\in\mathbb C^3:|z_0z_1z_2|<\epsilon\},
++\]
++a set star shaped about the origin.  These connected open sets meet the
++common connected dense torus
++\((\mathbb C^*)^2\times\{0<|t|<\epsilon\}\).  Their union
++\(Y_\epsilon\), and hence its quotient, is connected.
+ 
+ To prove properness, fix \(\epsilon_1<\epsilon\).  Let \(\mathcal F_0\) be
+ the finite set of triangles meeting the closed Euclidean ball of radius
+@@ -837,8 +944,9 @@
+  =|B_t(u+\bar\lambda)|
+  \le\frac{3}{2\sqrt2}<\sqrt2.
+ \]
+-Choose a triangle containing this point.  Formula (2.5c) with \(S=1\)
+-places the translate in the corresponding
++Choose a triangle containing this logarithmic position.  The closed-unit-
++polydisc identity of \cref{lem:toric-chart-control} places the translate
++in the corresponding
+ \(\overline{\mathcal U}_\sigma(1)\subset K_0\).
+ 
+ If \(p\) lies in the central orbit belonging to a cell \(P\), translate a
+@@ -870,6 +978,43 @@
+ normalization.  The two translation-orbits of triangles give the two triple
+ points, and the three unoriented edge directions give the three double
+ curves.  Irreducibility follows from the finite surjection by \(E_0\).
++
++The actual opposite-side maps retain the entire matrix \(C(0)\).
++For a neighboring vertex
++\(v\in\{\pm e_1,\pm e_2,\pm(e_1-e_2)\}\), put
++\[
++ C_v=E_0\cap E_v,\qquad
++ \bar\lambda_v=B_0v,\qquad
++ \iota_v=\Psi_{B_0v}|_{C_v}:C_v\longrightarrow C_{-v}.
++\]
++Since \(B_0^2v=-v\), this is precisely the translation taking the edge
++\(\{0,v\}\) to \(\{0,-v\}\).  For a primitive row \(a\in\mathbb Z^2\)
++with \(av=0\), use the same character \(w=\chi^{(a,0)}\) on both
++dense edge orbits.  Character pullback gives
++\begin{equation}
++ \iota_v^*w_{-v}=\exp\bigl(2\pi i\,aC(0)B_0v\bigr)w_v,
++ \label{eq:cusp-exact-opposite-edge}
++\end{equation}
++because the exponent of \(t\) is \(-av=0\).  With
++\(\mu_0=\mu(0)\) and \(b_0=b(0)\), the three maps are
++\[
++\begin{array}{c|c|c}
++ v&a&\iota_v^*w_{-v}/w_v\\\hline
++ e_1&(0,1)&e^{-2\pi i\mu_0}\\
++ e_2&(1,0)&e^{12\pi i\mu_0}\\
++ e_1-e_2&(1,1)&e^{-2\pi i(7\mu_0+b_0)}.
++\end{array}
++\]
++For the third entry the full exponent coefficient is
++\[
++ (1,1)C(0)B_0(e_1-e_2)
++ =-6\mu_0-h(0)-(b_0-h(0))-\mu_0=-7\mu_0-b_0.
++\]
++The cancellation of \(h(0)\) occurs in this exact character evaluation;
++no entry was suppressed.  All multipliers are nonzero.  The maps extend
++over both endpoints as restrictions of the ambient biholomorphisms, and
++\(\iota_{-v}\) is the inverse map with reciprocal multiplier in the
++same-character convention.
+ \end{proof}
+ 
+ \begin{proposition}[the cusp punctured-overlap biholomorphism]
+@@ -1055,7 +1200,10 @@
+  \qquad \zeta_j=e^{-2\pi i/m_j}.
+  \tag{2.8b}
+ \]
+-Shrinking gives such a pair.  Put \(D_j=\pi(\Delta_j)\),
++Choose the image of \(s_j\) to be a round disc about zero, shrinking the
++linearizing neighbourhood if necessary.  Rotation invariance and
++translate-disjointness are preserved by this restriction.  Put
++\(D_j=\pi(\Delta_j)\),
+ \(\Delta_j^*=\Delta_j\setminus\{z_j\}\), and choose the base coordinate
+ \(t_j\) by \(t_j\circ\pi=s_j^{m_j}\).  Let
+ \[
+@@ -1351,11 +1499,19 @@
+ 
+ Points over distinct base values have disjoint disc preimages.  Points over
+ one base value lie in a common one of the four Hausdorff charts, so the
+-quotient is Hausdorff.  The local maps to the base agree on overlaps.  Each
+-is proper, for the period-family piece by
++quotient is Hausdorff.  The images of countable bases of the four open
++pieces give second countability.  The local maps to the base agree on
++overlaps.  Moreover \(f^{-1}(D_j)\) is exactly the embedded \(N_j\),
++since every middle-piece point over \(D_j^*\) was identified with its
++unique representative there; similarly \(f^{-1}(B^\circ)=J\).  Each
++of these full restrictions is proper, for the period-family piece by
+ \cref{lem:middle-period-proper} and for the three fillings by their local
+-proper constructions; properness is local on a locally compact Hausdorff base, so the
+-global map is proper.  Since the base is compact, \(X=f^{-1}(B)\) is compact.
++proper constructions.  Explicitly, for compact \(K\subset B\), choose
++finitely many open sets \(V_a\) covering \(K\), with compact closures
++inside members \(U_a\) of this base cover.  Each
++\(K\cap\overline V_a\) is compact in \(U_a\), so its full inverse
++image is compact.  Their finite union is \(f^{-1}(K)\); hence the global
++map is proper.  Since the base is compact, \(X=f^{-1}(B)\) is compact.
+ All four pieces are connected and every local filling meets the central
+ period-family piece, so \(X\) is connected.  The fibre statements follow
+ from \cref{thm:candidate-cusp-geometry,prop:candidate-finite-fillings}; their

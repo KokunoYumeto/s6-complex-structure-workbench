@@ -1,0 +1,533 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Explicit CW models and the first Hurewicz map</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/cw-models-and-the-first-hurewicz-map.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="cw-hurewicz">Explicit CW models and the first Hurewicz map</h1>
+<p>Written by GPT-6 Astra (OpenAI), at Ultra, October 2026; new
+exposition CC0. This companion proves the CW-model and first-Hurewicz
+inputs used in lesson 7. Author self-checks are not independent
+review.</p>
+<p>This chapter constructs the actual homotopy comparisons needed before
+applying the CW argument in lesson 7. It does not replace the original
+threefold by an unspecified complex. It gives the forward and inverse
+maps, then proves the first Hurewicz theorem with the original integer
+fundamental class. The singular-chain, sphere and prism calculations are
+those proved in the included <a
+href="thom-euler-for-lesson11.html">Thom/Euler companion</a>.</p>
+<h2 id="cw-open">1. A CW model for any open Euclidean neighbourhood</h2>
+<p>Let <span class="math inline">\(U\subset\mathbb R^N\)</span> be open.
+For <span class="math inline">\(n\geq1\)</span>, put <span
+class="math inline">\(h_n=2^{-n}\)</span>. Let <span
+class="math inline">\(K_n\)</span> be the union of all closed grid cubes
+of side <span class="math inline">\(h_n\)</span> contained in <span
+class="math inline">\([-n,n]^N\)</span> and satisfying</p>
+<p><span class="math display">\[
+\operatorname{dist}_{\infty}(Q,\mathbb R^N\setminus U)\geq h_n.
+\tag{1.1}
+\]</span></p>
+<p>Include every face of every chosen cube. If the complement is empty,
+its distance is <span class="math inline">\(+\infty\)</span>. Thus <span
+class="math inline">\(K_n\)</span> is a finite cubical complex contained
+in <span class="math inline">\(U\)</span>; empty early stages cause no
+problem.</p>
+<p>Every child cube of an eligible cube is eligible at the next stage.
+Hence <span class="math inline">\(K_n\subset K_{n+1}\)</span>. In
+fact</p>
+<p><span class="math display">\[
+K_n\subset\operatorname{int}K_{n+1},
+\qquad
+\bigcup_n\operatorname{int}K_n=U.
+\tag{1.2}
+\]</span></p>
+<p>For the first assertion, the layer of next-grid cubes immediately
+surrounding an eligible <span class="math inline">\(Q\)</span> is at
+sup-distance at most <span class="math inline">\(h_{n+1}\)</span> from
+<span class="math inline">\(Q\)</span>. Its distance from the complement
+is therefore at least <span
+class="math inline">\(h_n-h_{n+1}=h_{n+1}\)</span>. It lies in the next
+bounding box, so that full surrounding layer is eligible. For the second
+assertion, a point of <span class="math inline">\(U\)</span> has
+positive distance from the complement on a sufficiently small compact
+neighbourhood. Choose the grid fine enough that this neighbourhood’s
+intersecting cubes satisfy (1.1), and the bounding box large enough to
+contain them. It then lies in <span
+class="math inline">\(\operatorname{int}K_n\)</span>.</p>
+<p>Give each <span class="math inline">\(K_n\)</span> its grid-cell
+structure. The inclusion <span class="math inline">\(K_n\hookrightarrow
+K_{n+1}\)</span> is cellular: an old <span
+class="math inline">\(p\)</span>-face is a union of next-grid <span
+class="math inline">\(p\)</span>-faces, and all those faces belong to
+eligible child cubes. Form the actual mapping telescope</p>
+<p><span class="math display">\[
+T=\left(\coprod_{n\geq1}K_n\times[n,n+1]\right)\big/\bigl((x,n+1)_n\sim(x,n+1)_{n+1}\bigr).
+\tag{1.3}
+\]</span></p>
+<p>Here the identification uses the original inclusion of <span
+class="math inline">\(K_n\)</span> into <span
+class="math inline">\(K_{n+1}\)</span>.</p>
+<p>The telescope is a CW complex. On each stage retain the bottom and
+top grid cells and attach a prism for each cell of <span
+class="math inline">\(K_n\)</span>. A <span
+class="math inline">\(p\)</span>-cell’s prism is a <span
+class="math inline">\((p+1)\)</span>-cell; its boundary consists of the
+old cell, its cellular image at the next level, and the already attached
+prisms of its boundary. The image at the next level contains only
+finitely many cells. Attaching in dimension order gives the required
+characteristic maps and closure finiteness. Every bounded height
+interval meets finitely many stages and cells; the resulting CW topology
+agrees with the telescope’s quotient topology.</p>
+<p>More concretely <span class="math inline">\(T\)</span> is the
+following subspace of <span
+class="math inline">\(U\times[1,\infty)\)</span>:</p>
+<p><span class="math display">\[
+T=\bigcup_{n\geq1}K_n\times[n,n+1].
+\tag{1.4}
+\]</span></p>
+<p>The two models agree topologically, not just as sets. On a bounded
+height interval there are finitely many closed compact slabs. Their
+union has exactly the topology obtained by gluing their common closed
+subsets. Such intervals cover the telescope locally, proving the
+assertion. Let <span class="math inline">\(q:T\to U\)</span> be
+projection to the first coordinate.</p>
+<p>We construct a continuous section and homotopy explicitly. For each
+<span class="math inline">\(n\)</span>, choose a smooth function <span
+class="math inline">\(\chi_n:U\to[0,1]\)</span>, equal to one on a
+neighbourhood of <span class="math inline">\(K_n\)</span>, supported in
+<span class="math inline">\(\operatorname{int}K_{n+1}\)</span>. These
+exist by (1.2): cover the compact set <span
+class="math inline">\(K_n\)</span> by finitely many Euclidean balls
+whose larger concentric balls lie in that interior, choose smooth radial
+bumps <span class="math inline">\(b_i\)</span> equal to one on the
+smaller balls, and use <span
+class="math inline">\(1-\prod_i(1-b_i)\)</span>. Take <span
+class="math inline">\(\chi_n=0\)</span> if <span
+class="math inline">\(K_n\)</span> is empty. Define</p>
+<p><span class="math display">\[
+\rho(x)=3+\sum_{n\geq1}(1-\chi_n(x)).
+\tag{1.5}
+\]</span></p>
+<p>This sum is locally finite. On a neighbourhood contained in <span
+class="math inline">\(K_N\)</span>, every term with <span
+class="math inline">\(n\geq N\)</span> is zero. If <span
+class="math inline">\(j\)</span> is the first index for which <span
+class="math inline">\(x\in K_j\)</span>, then <span
+class="math inline">\(\chi_n(x)=0\)</span> for <span
+class="math inline">\(n\leq j-2\)</span>. Hence <span
+class="math inline">\(\rho(x)\geq j+1\)</span> when <span
+class="math inline">\(j\geq2\)</span>, and <span
+class="math inline">\(\rho(x)\geq3\)</span> when <span
+class="math inline">\(j=1\)</span>. In either case <span
+class="math inline">\(x\in K_{\lfloor\rho(x)\rfloor}\)</span>. We
+have</p>
+<p><span class="math display">\[
+s:U\longrightarrow T,\quad s(x)=(x,\rho(x)),\qquad q\,s=1_U.
+\tag{1.6}
+\]</span></p>
+<p>Both maps are continuous in the subspace model (1.4). The
+homotopy</p>
+<p><span class="math display">\[
+H_\tau(x,t)=\bigl(x,(1-\tau)t+\tau\rho(x)\bigr),
+\qquad 0\leq\tau\leq1,
+\tag{1.7}
+\]</span></p>
+<p>stays in <span class="math inline">\(T\)</span>. Indeed the set of
+heights at which a fixed <span class="math inline">\(x\)</span> belongs
+to <span class="math inline">\(T\)</span> is exactly <span
+class="math inline">\([j,\infty)\)</span>, where <span
+class="math inline">\(j\)</span> is its first eligible stage, and both
+endpoint heights lie there. It fixes the section, starts at <span
+class="math inline">\(1_T\)</span> and ends at <span
+class="math inline">\(s q\)</span>. This proves an explicit homotopy
+equivalence <span class="math inline">\(T\simeq U\)</span>.</p>
+<p>No claim that the original manifold has been triangulated is needed.
+The maps (1.6)–(1.7) specify the exact comparison with a CW complex.</p>
+<h2 id="cw-manifolds">2. Keep the original compact manifold and the
+actual punctured cobordism</h2>
+<p>Let <span class="math inline">\(M\)</span> be a compact smooth
+manifold without boundary. Choose finitely many charts <span
+class="math inline">\(x_i:U_i\to\mathbb R^d\)</span>, and smooth
+functions <span class="math inline">\(\phi_i\geq0\)</span> whose
+supports lie inside <span class="math inline">\(U_i\)</span> and whose
+positive sets cover <span class="math inline">\(M\)</span>. Finite
+smooth bump functions and a finite chart cover give this choice. The
+map</p>
+<p><span class="math display">\[
+\iota:M\longrightarrow\mathbb R^{(d+1)k},\qquad
+p\longmapsto\bigl(\phi_i(p),\,\phi_i(p)x_i(p)\bigr)_{i=1}^k
+\tag{2.1}
+\]</span></p>
+<p>extends its blocks by zero off their charts and is smooth. It is
+injective: a positive block recovers both its chart and <span
+class="math inline">\(x_i(p)\)</span> by division. Its derivative is
+injective: if it vanishes on a tangent vector, its first coordinate
+gives <span class="math inline">\(d\phi_i=0\)</span>, and then its
+second gives <span class="math inline">\(\phi_i\,dx_i=0\)</span> for a
+positive block. Compactness and the Hausdorff target make the continuous
+inverse on the image continuous. Thus (2.1) is a smooth embedding.</p>
+<p>Use its Euclidean normal bundle, the orthogonal complement of <span
+class="math inline">\(d\iota(TM)\)</span>. The map</p>
+<p><span class="math display">\[
+\mathcal L(p,v)=\iota(p)+v
+\tag{2.2}
+\]</span></p>
+<p>has invertible derivative at every <span
+class="math inline">\((p,0)\)</span>: the tangent and normal summands
+map to their direct sum in the ambient Euclidean space. The
+inverse-function argument proved in the Morse companion gives a local
+diffeomorphism there. Compactness gives <span
+class="math inline">\(\epsilon&gt;0\)</span> on whose entire normal disk
+bundle it is a local diffeomorphism and injective. For injectivity, if
+no such radius existed, two distinct normal vectors with norms tending
+to zero would have equal images. Compactness gives convergent base
+subsequences; equality of their limits forces the same limiting base.
+The local inverse at that zero vector contradicts the equality for
+sufficiently late terms.</p>
+<p>Its image <span class="math inline">\(U\)</span> is open in Euclidean
+space. Write <span class="math inline">\(\mathcal
+L^{-1}(y)=(p(y),v(y))\)</span>. The maps</p>
+<p><span class="math display">\[
+r(y)=p(y),\qquad
+A_\tau(y)=\mathcal L\bigl(p(y),(1-\tau)v(y)\bigr)
+\tag{2.3}
+\]</span></p>
+<p>give <span class="math inline">\(r\iota=1_M\)</span> and a homotopy
+from <span class="math inline">\(1_U\)</span> to <span
+class="math inline">\(\iota r\)</span>, fixed on <span
+class="math inline">\(\iota(M)\)</span>. All vectors in (2.3) remain
+inside the chosen normal disk bundle.</p>
+<p>Use the telescope and its maps from Section 1 for this actual <span
+class="math inline">\(U\)</span>. Define</p>
+<p><span class="math display">\[
+\alpha=r q:T\longrightarrow M,\qquad
+\beta=s\iota:M\longrightarrow T.
+\tag{2.4}
+\]</span></p>
+<p>Then <span class="math inline">\(\alpha\beta=1_M\)</span>, and <span
+class="math inline">\(\beta\alpha=s\iota r q\)</span> is homotopic first
+to <span class="math inline">\(s q\)</span>, through <span
+class="math inline">\(s A_\tau q\)</span> with the parameter reversed,
+and then to <span class="math inline">\(1_T\)</span> by reversing (1.7).
+This gives the CW homotopy type of the original <span
+class="math inline">\(M\)</span>, with both comparison maps
+exhibited.</p>
+<p>For lesson 7 take <span class="math inline">\(M=X\)</span>, with its
+original two disjoint coordinate disks. Write their given radii as <span
+class="math inline">\(R_0,R_1&gt;0\)</span>, and retain</p>
+<p><span class="math display">\[
+C=X\setminus\bigl(\operatorname{int}D_0\cup\operatorname{int}D_1\bigr).
+\tag{2.5}
+\]</span></p>
+<p>There is also an explicit CW model of this actual compact manifold
+with boundary. Let <span class="math inline">\(W\subset X\)</span> be
+the open set obtained by deleting the two closed concentric coordinate
+disks of radii <span class="math inline">\(R_i/2\)</span>. On the
+annulus in the <span class="math inline">\(i\)</span>-th chart with
+radial coordinate <span class="math inline">\(u&gt;R_i/2\)</span>,
+use</p>
+<p><span class="math display">\[
+u\longmapsto(1-\tau)u+\tau\max(u,R_i),\qquad 0\leq\tau\leq1,
+\tag{2.6}
+\]</span></p>
+<p>and keep the angular coordinate. Set the map equal to the identity
+outside these annuli. At <span class="math inline">\(u=R_i\)</span> the
+formulas agree, and the annuli are disjoint. They give a continuous
+deformation retraction of <span class="math inline">\(W\)</span> onto
+<span class="math inline">\(C\)</span>, fixed on <span
+class="math inline">\(C\)</span>; every intermediate radius stays
+greater than <span class="math inline">\(R_i/2\)</span>.</p>
+<p>Restrict the normal disk bundle in (2.2) to <span
+class="math inline">\(W\)</span>. Its image <span
+class="math inline">\(U_W\)</span> is open in the ambient Euclidean
+space, and its normal contraction retracts it onto <span
+class="math inline">\(W\)</span>. Combining that contraction, (2.6), and
+the telescope construction on <span class="math inline">\(U_W\)</span>
+gives explicit inverse homotopy comparisons between a CW complex and
+<span class="math inline">\(C\)</span>. The radii <span
+class="math inline">\(R_i\)</span> in (2.5) have not been changed: <span
+class="math inline">\(R_i/2\)</span> defines an auxiliary open
+neighbourhood only.</p>
+<h2 id="hurewicz-coherent">3. The cylinder extension and coherent
+simplex contractions</h2>
+<p>For a closed unit disk <span class="math inline">\(D^m\)</span> and
+<span class="math inline">\(I=[0,1]\)</span>, define</p>
+<p><span class="math display">\[
+\lambda(v,t)=\min\left\{\frac{2}{2-t},\frac1{\lVert v\rVert}\right\},
+\qquad
+\mathcal R(v,t)=\bigl(\lambda(v,t)v,\,2+\lambda(v,t)(t-2)\bigr),
+\tag{3.1}
+\]</span></p>
+<p>with the second argument of the minimum interpreted as <span
+class="math inline">\(+\infty\)</span> at <span
+class="math inline">\(v=0\)</span>. The first choice of the minimum puts
+the result on the bottom; the second puts it on the side. Its time
+coordinate lies in <span class="math inline">\([0,t]\)</span>, and its
+radial coordinate has norm at most one. On the bottom and sides <span
+class="math inline">\(\lambda=1\)</span>, so <span
+class="math inline">\(\mathcal R\)</span> fixes them. It is continuous,
+including at <span class="math inline">\(v=0\)</span>, because the
+bounded first term supplies the minimum throughout a sufficiently small
+neighbourhood of that point. Thus (3.1) retracts the cylinder onto its
+bottom and sides.</p>
+<p>A simplex is radially homeomorphic to a disk, from its barycentre, so
+this proves the same extension statement for simplex cylinders. In
+particular a map on the bottom and a compatible homotopy on the boundary
+extend to the cylinder by composition with <span
+class="math inline">\(\mathcal R\)</span>.</p>
+<p>Let <span class="math inline">\(Y\)</span> be path connected with
+basepoint <span class="math inline">\(y_0\)</span>, and suppose <span
+class="math inline">\(q\geq2\)</span> and</p>
+<p><span class="math display">\[
+\pi_i(Y,y_0)=0\qquad(1\leq i&lt;q).
+\tag{3.2}
+\]</span></p>
+<p>For every singular simplex of dimension at most <span
+class="math inline">\(q-1\)</span>, choose a homotopy to the constant
+simplex at <span class="math inline">\(y_0\)</span>, coherently on all
+faces. At vertices, choose paths to <span
+class="math inline">\(y_0\)</span>, with the constant path at <span
+class="math inline">\(y_0\)</span>. Suppose the lower-dimensional
+choices have been made. On the boundary of an <span
+class="math inline">\(i\)</span>-simplex cylinder, prescribe its
+original simplex on the bottom, its constant map on the top, and the
+chosen face homotopies on the sides. They agree on intersections. This
+boundary is an <span class="math inline">\(i\)</span>-sphere; for <span
+class="math inline">\(1\leq i&lt;q\)</span>, (3.2) makes its based class
+zero after transport to <span class="math inline">\(y_0\)</span>. A
+null-homotopy extends it across the cylinder. Choose that extension. For
+a simplex constant at <span class="math inline">\(y_0\)</span>, choose
+the constant extension.</p>
+<p>For every <span class="math inline">\(q\)</span>-simplex <span
+class="math inline">\(\sigma\)</span>, use (3.1) to extend its bottom
+map and these chosen side homotopies. Its top <span
+class="math inline">\(\sigma&#39;\)</span> then has constant boundary.
+The quotient <span
+class="math inline">\(\Delta^q/\partial\Delta^q\)</span>, with the
+original orientation, is <span class="math inline">\(S^q\)</span>. Thus
+the top defines</p>
+<p><span class="math display">\[
+a(\sigma)=[\sigma&#39;]\in\pi_q(Y,y_0).
+\tag{3.3}
+\]</span></p>
+<p>The group is abelian for <span class="math inline">\(q\geq2\)</span>.
+Indeed concatenate cube representatives in either of two coordinate
+directions. The interchange law follows by dividing the square of those
+two coordinates into four rectangles. Both operations have the constant
+map as unit; applying interchange with two of the four entries equal to
+that unit proves that the operations agree and commute. Extend (3.3)
+additively to singular <span
+class="math inline">\(q\)</span>-chains.</p>
+<p>We use the following finite sphere-pinch fact. If a triangulated
+<span class="math inline">\(q\)</span>-sphere has its <span
+class="math inline">\((q-1)\)</span>-skeleton mapped to the basepoint,
+its class is the sum of the classes of its oriented <span
+class="math inline">\(q\)</span>-simplices. Here is a geometric proof.
+On each simplex collapse a collar of its boundary, and concentrate its
+map on a smaller interior disk; radial reparametrization gives a
+homotopy relative to the boundary. There are finitely many disjoint
+supporting disks. Remove the basepoint of the source sphere and use its
+Euclidean chart. For <span class="math inline">\(q\geq2\)</span>, the
+complement of finitely many disjoint small disks is path connected: a
+polygonal path can detour around each disk on its connected boundary.
+Move one sufficiently small support at a time along such a path to a
+prescribed sequence of disjoint slabs. A smooth vector field equal to
+the path’s local translation near the moving support and cut off away
+from the other supports gives this isotopy on each short path segment;
+compactness divides the path into finitely many such segments. Radial
+shrinking and expanding supplies the required small radii. These
+isotopies preserve orientation. The final map is the concatenation of
+the individual disk maps, so its class is their sum, with the original
+simplex-orientation signs. The abelian law just proved removes any
+dependence on the chosen order.</p>
+<h2 id="hurewicz-theorem">4. The first Hurewicz theorem, with inverse
+maps</h2>
+<p>Define</p>
+<p><span class="math display">\[
+h:\pi_q(Y,y_0)\longrightarrow H_q(Y;\mathbb Z),\qquad
+h([f])=f_*[S^q].
+\tag{4.1}
+\]</span></p>
+<p>The prism identity proves homotopy invariance. The two-disk pinch
+sends the sphere’s fundamental class to the sum of the two positive disk
+generators, by their local values and excision. Hence <span
+class="math inline">\(h\)</span> is a homomorphism. It is natural under
+maps of based spaces.</p>
+<p><strong>Theorem 4.1.</strong> Under (3.2), <span
+class="math inline">\(h\)</span> is an isomorphism and <span
+class="math inline">\(\widetilde H_i(Y;\mathbb Z)=0\)</span> for <span
+class="math inline">\(0\leq i&lt;q\)</span>.</p>
+<p><strong>Proof.</strong> Apply the chosen simplex homotopies to the
+<span class="math inline">\(q\)</span>-faces of a singular <span
+class="math inline">\((q+1)\)</span>-simplex <span
+class="math inline">\(\tau\)</span>. They agree on their common faces.
+Formula (3.1) extends their boundary homotopy across <span
+class="math inline">\(\tau\)</span>’s cylinder. At its top, every <span
+class="math inline">\((q-1)\)</span>-face is constant; its boundary
+sphere has class</p>
+<p><span class="math display">\[
+\sum_{i=0}^{q+1}(-1)^i a(d_i\tau)
+\tag{4.2}
+\]</span></p>
+<p>by the proved pinch fact. This sphere bounds the top <span
+class="math inline">\((q+1)\)</span>-simplex, so (4.2) is zero.
+Therefore <span class="math inline">\(a(\partial\tau)=0\)</span>, and
+the additive map (3.3) induces</p>
+<p><span class="math display">\[
+A:H_q(Y;\mathbb Z)\longrightarrow\pi_q(Y,y_0).
+\tag{4.3}
+\]</span></p>
+<p>Triangulate each chosen simplex cylinder by the ordered prism
+triangulation. Its chain boundary is top minus bottom minus the
+corresponding face prisms. On a singular cycle <span
+class="math inline">\(z\)</span>, the face-prism terms cancel exactly:
+the homotopies of repeated singular faces are the same choices, and
+their coefficients are those of <span class="math inline">\(\partial
+z=0\)</span>. The top chain is consequently homologous to <span
+class="math inline">\(z\)</span>.</p>
+<p>For the top maps work in the actual relative chain complex <span
+class="math inline">\(C_*(Y,\{y_0\};\mathbb Z)\)</span>. All constant
+simplices at <span class="math inline">\(y_0\)</span> vanish in this
+quotient. The pair sequence identifies its positive-degree homology with
+<span class="math inline">\(H_*(Y;\mathbb Z)\)</span>: the point has no
+positive homology and its map on <span
+class="math inline">\(H_0\)</span> is an isomorphism. Each top <span
+class="math inline">\(q\)</span>-simplex has constant boundary and
+represents exactly <span class="math inline">\(h(a(\sigma))\)</span>
+under this comparison, since the identity simplex is the positive
+disk-relative generator. Thus the prism argument proves</p>
+<p><span class="math display">\[
+hA([z])=[z].
+\tag{4.4}
+\]</span></p>
+<p>Conversely triangulate the source of a based sphere map <span
+class="math inline">\(f:S^q\to Y\)</span>, taking its basepoint to be a
+vertex and using a common vertex order on each face. The already chosen
+homotopies of its singular lower faces and <span
+class="math inline">\(q\)</span>-simplices fit together into a homotopy
+of the entire sphere, fixing that basepoint. The final lower skeleton is
+constant. Its class is the oriented sum of the <span
+class="math inline">\(a\)</span>-values by the same pinch fact. This is
+precisely <span class="math inline">\(A(h([f]))\)</span>, so</p>
+<p><span class="math display">\[
+Ah([f])=[f].
+\tag{4.5}
+\]</span></p>
+<p>Equations (4.4)–(4.5) prove the isomorphism. If <span
+class="math inline">\(i&lt;q\)</span>, the coherent homotopies take an
+<span class="math inline">\(i\)</span>-cycle entirely to constant
+simplices. The same prism cancellation makes its relative homology class
+zero. This proves positive-degree vanishing below <span
+class="math inline">\(q\)</span>; reduced <span
+class="math inline">\(H_0\)</span> vanishes by path connectivity. ∎</p>
+<p>For completeness, in degree one the Hurewicz map identifies <span
+class="math inline">\(H_1(Y;\mathbb Z)\)</span> with the abelianization
+of <span class="math inline">\(\pi_1(Y,y_0)\)</span>. Choose paths <span
+class="math inline">\(p_y\)</span> from <span
+class="math inline">\(y_0\)</span> to each point <span
+class="math inline">\(y\)</span>. An edge <span
+class="math inline">\(\sigma\)</span> from <span
+class="math inline">\(x\)</span> to <span
+class="math inline">\(y\)</span> determines <span
+class="math inline">\(p_x*\sigma*p_y^{-1}\)</span>. Sum these classes in
+the abelianized group over a cycle. The boundary of each singular
+triangle gives zero, since that triangle fills its edge loop and the
+inserted paths cancel. Changing the chosen paths contributes only
+endpoint terms, which cancel on a cycle. This defines the inverse: a
+based loop returns its original abelianized class, and the inserted
+paths cancel in homology. Both compositions are identities.</p>
+<h2 id="cw-hurewicz-exercises">5. The exact receiving sphere class and
+two exercises</h2>
+<p>Once lesson 7’s integral calculation and lesson 6’s fundamental-group
+calculation have been applied, the original <span
+class="math inline">\(X\)</span> satisfies <span
+class="math inline">\(\pi_1(X)=0\)</span>, <span
+class="math inline">\(H_i(X;\mathbb Z)=0\)</span> for <span
+class="math inline">\(1\leq i\leq5\)</span>, and <span
+class="math inline">\(H_6(X;\mathbb Z)=\mathbb Z[X]\)</span>. Theorem
+4.1 successively gives <span class="math inline">\(\pi_i(X)=0\)</span>
+for <span class="math inline">\(2\leq i\leq5\)</span>, and then the
+actual isomorphism</p>
+<p><span class="math display">\[
+h:\pi_6(X,x_0)\xrightarrow{\;\cong\;}H_6(X;\mathbb Z).
+\tag{5.1}
+\]</span></p>
+<p>Choose a based representative <span class="math inline">\(g:S^6\to
+X\)</span> of <span class="math inline">\(h^{-1}([X])\)</span>. Its
+degree is <span class="math inline">\(+1\)</span>, with <span
+class="math inline">\(g_*[S^6]=[X]\)</span>. This constructs the
+original map used by lesson 7; no equivalence or smooth identification
+is presumed at this stage. The further homotopy-fibre comparison remains
+a separate receiving proof.</p>
+<figure>
+<img id="cw-hurewicz-diagram" src="assets/cw-hurewicz-maps.svg" alt="The actual telescope projection and height section, the normal-neighbourhood retraction and manifold embedding, and the first Hurewicz map selecting the positive sphere class.">
+<figcaption>
+Equations (1.6)–(1.7) and (2.3)–(2.4) give all four maps and both
+inverse homotopies. The lower line is the separate integer Hurewicz
+isomorphism after the vanishing hypotheses have been established for the
+original <span class="math inline">\(X\)</span>, as in (5.1). It
+specifies the actual degree-one map without asserting smooth
+recognition.
+</figcaption>
+</figure>
+<p><strong>Exercise 5.1.</strong> In the telescope construction, prove
+that replacing <span class="math inline">\(\rho\)</span> by another
+continuous function <span class="math inline">\(\rho&#39;\)</span> with
+<span class="math inline">\(x\in K_{\lfloor\rho&#39;(x)\rfloor}\)</span>
+changes the section by a homotopy, and give the homotopy.</p>
+<p><strong>Solution.</strong> If <span
+class="math inline">\(j(x)\)</span> is the first eligible index, every
+allowed height belongs to <span
+class="math inline">\([j(x),\infty)\)</span>. Both <span
+class="math inline">\(\rho(x)\)</span> and <span
+class="math inline">\(\rho&#39;(x)\)</span> lie there. The map <span
+class="math display">\[
+(x,\tau)\longmapsto
+\bigl(x,(1-\tau)\rho(x)+\tau\rho&#39;(x)\bigr)
+\tag{5.2}
+\]</span> therefore stays in the telescope. It is continuous in the
+subspace model (1.4) because both functions are continuous. Projection
+by <span class="math inline">\(q\)</span> remains the identity at every
+time. Thus the change is a homotopy through actual sections, with no
+relabelling of the cubical stages.</p>
+<p><strong>Exercise 5.2.</strong> Replace the orientation class of <span
+class="math inline">\(X\)</span> by <span
+class="math inline">\(-[X]\)</span>, keeping the original orientation of
+<span class="math inline">\(S^6\)</span>. Give the corresponding sphere
+map under (5.1), and compute its degree relative to each target
+orientation.</p>
+<p><strong>Solution.</strong> Let <span class="math inline">\(r:S^6\to
+S^6\)</span> be the restriction of a linear reflection of <span
+class="math inline">\(\mathbb R^7\)</span> whose fixed hyperplane
+contains the chosen sphere basepoint. In an orthonormal basis with that
+basepoint as the last vector, reflect the first coordinate. The map is
+therefore based, and its induced map on the outward-oriented sphere
+fundamental class is multiplication by <span
+class="math inline">\(-1\)</span>, by the determinant-sign and
+boundary-orientation calculation. Naturality of (4.1) gives <span
+class="math display">\[
+h([g\circ r])=(g\circ r)_*[S^6]=-[X].
+\tag{5.3}
+\]</span> Thus <span class="math inline">\(g\circ r\)</span> represents
+<span class="math inline">\(h^{-1}(-[X])\)</span>. It has degree <span
+class="math inline">\(-1\)</span> relative to the original class <span
+class="math inline">\([X]\)</span>, and degree <span
+class="math inline">\(+1\)</span> relative to the newly chosen class
+<span class="math inline">\(-[X]\)</span>. The map <span
+class="math inline">\(g\)</span> and the original formula <span
+class="math inline">\(g_*[S^6]=[X]\)</span> have not been silently
+changed.</p>
+<h2 id="cw-hurewicz-sources">Source use and proof scope</h2>
+<p>The coherent-simplex proof is reconstructed from <em>Frame fields and
+primary obstructions</em>, Section E and Lemma E.1, written by GPT-6.1
+Sol (OpenAI), CC0. Its exact source version and actual reading coverage
+are recorded in the source ledger. The explicit Euclidean-neighbourhood
+telescope and the maps (2.4) are written here to close the manifold-CW
+prerequisite without a triangulation assertion. The compact embedding
+and normal contraction also occur in the included tangent-index
+companion, Sections 4 and 6. These are teaching proofs, without a
+novelty claim.</p>
+<p>The exact checker tests the signed prism identities, both cylinder
+branches, the telescope heights, the original punctured-disk radii, the
+coordinate-recovery derivatives and reflection signs. These finite
+checks supplement the written proofs. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

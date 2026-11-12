@@ -1,0 +1,503 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integral line-bundle descent for the original affine fillings</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/integral-line-bundle-descent-for-the-affine-fillings.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="affine-line-descent">Integral line-bundle descent for the
+original affine fillings</h1>
+<p>CG-S6 · Integral topology companion · Written by GPT-6 Astra
+(OpenAI), at Ultra, October 2026. Independently written exposition: CC0.
+Author self-checks, without independent review.</p>
+<p>This chapter computes the entire degree-two covering image for both
+finite central surfaces in lesson 7. It constructs the actual smooth
+line bundles and lifted affine actions, including their constant phases.
+In the order-four case the construction gives a necessary and sufficient
+parity condition. In particular, the calculation does not need a prior
+assertion about the intersection form’s parity.</p>
+<p>We use the original matrices and translations from <a
+href="CG-S6-06.html#integral-monodromy">lesson
+6, Section 1</a>. The integral marking and all coordinates remain
+unchanged. The human construction being taught is the finite-filling
+construction in Engel’s source, as identified in the course source
+ledger. The explicit bundle-lift proof below is an independently written
+receiving derivation; it is not attributed to that source as a quotation
+or a stated lemma.</p>
+<h2 id="affine-descent-data">1. Keep both affine actions and the entire
+two-form</h2>
+<p>Let <span class="math inline">\(F=\mathbb R^4/\mathbb Z^4\)</span>,
+with the original ordered coordinates <span
+class="math inline">\(x=(x_0,x_1,x_2,x_3)^{\mathsf t}\)</span>, dual to
+<span class="math inline">\((\gamma,u,w,\delta)\)</span>. Put <span
+class="math display">\[
+\begin{gathered}
+A_1=\begin{pmatrix}1&amp;0&amp;0&amp;0\\6&amp;0&amp;1&amp;0\\-6&amp;-1&amp;-1&amp;0\\-2&amp;1&amp;0&amp;1\end{pmatrix},
+\quad
+A_2=\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;0\\-6&amp;1&amp;0&amp;0\\3&amp;0&amp;1&amp;1\end{pmatrix},\\
+m_1=3,\quad m_2=4,\quad
+v_1=(1,2,-4,0)^{\mathsf t},\quad
+v_2=(-1,-3,3,0)^{\mathsf t},\\
+g_j(x)=A_jx+v_j/m_j.
+\end{gathered}
+\tag{1.1}
+\]</span> Thus <span class="math inline">\(A_j^{m_j}=I\)</span>, <span
+class="math inline">\(A_jv_j=v_j\)</span>, and <span
+class="math inline">\(g_j^{m_j}(x)=x+v_j\)</span>. The induced actions
+on <span class="math inline">\(F\)</span> are free, as proved in lessons
+1–3. Their smooth quotients are <span
+class="math inline">\(S_j=F/\langle g_j\rangle\)</span>, with covering
+maps <span class="math inline">\(\pi_j:F\to S_j\)</span>.</p>
+<p>Set <span class="math display">\[
+\eta_1=2u+w+3\delta,\qquad
+\eta_2=u+w+2\delta,\qquad
+h_j=\gamma\eta_j,\qquad q=uw+6\gamma\delta.
+\tag{1.2}
+\]</span> Lesson 7, equations (2.4), gives the entire invariant integral
+lattice in degree two: every invariant class is uniquely <span
+class="math display">\[
+E=a h_j+bq,\qquad a,b\in\mathbb Z.
+\tag{1.3}
+\]</span> Define the following upper-triangular matrices, keeping every
+coefficient of that class: <span class="math display">\[
+C_1=\begin{pmatrix}
+0&amp;2a&amp;a&amp;3a+6b\\0&amp;0&amp;b&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0
+\end{pmatrix},\qquad
+C_2=\begin{pmatrix}
+0&amp;a&amp;a&amp;2a+6b\\0&amp;0&amp;b&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0
+\end{pmatrix}.
+\tag{1.4}
+\]</span> The alternating form has matrix <span
+class="math inline">\(C_j-C_j^{\mathsf t}\)</span>. The two-form itself
+is <span class="math inline">\(\sum_{i&lt;k}(C_j)_{ik}\,dx_i\wedge
+dx_k\)</span>. It is the original <span
+class="math inline">\(E\)</span>, not a rescaled form.</p>
+<p>On <span class="math inline">\(\mathbb R^4\times\mathbb C\)</span>,
+translations act by <span class="math display">\[
+T_\lambda(x,z)=
+\left(x+\lambda,
+\exp\bigl(2\pi i\lambda^{\mathsf t}C_jx\bigr)z\right),
+\qquad \lambda\in\mathbb Z^4.
+\tag{1.5}
+\]</span> Indeed <span class="math inline">\(T_\lambda T_\mu\)</span>
+has an additional phase <span class="math inline">\(\lambda^{\mathsf
+t}C_j\mu\in\mathbb Z\)</span>, so <span class="math inline">\(T_\lambda
+T_\mu=T_{\lambda+\mu}\)</span> exactly. Their quotient is a smooth
+Hermitian line bundle <span class="math inline">\(L_{C_j}\to F\)</span>,
+with metric <span class="math inline">\(|z|^2\)</span>.</p>
+<p>Its first Chern class is precisely (1.3), including the sign.
+Restrict to a positively oriented coordinate two-torus with coordinates
+<span class="math inline">\(x_i,x_k\)</span>, <span
+class="math inline">\(i&lt;k\)</span>. The boundary values of a section
+on its unit square must satisfy <span
+class="math inline">\(z(1,x_k)=\exp(2\pi
+i(C_j)_{ik}x_k)z(0,x_k)\)</span>, whereas the other pair of sides has
+trivial transition in these two coordinates. A nonzero boundary section
+with value one on the other three sides has winding <span
+class="math inline">\(+(C_j)_{ik}\)</span> on the right side, traversed
+in its positive direction. Its obstruction to extension without zeros is
+this positive winding. That is the integral Euler class of the oriented
+underlying two-plane bundle and hence the first Chern class in the
+course convention. The six coordinate two-tori are the integral homology
+basis obtained from the product cell structure. These six evaluations
+give exactly <span class="math inline">\(E\)</span>.</p>
+<p>For completeness, line-bundle classification used here has an
+explicit sheaf proof. Smooth Hermitian line bundles are unit-circle
+transition cocycles on open covers, modulo changes of unit frames;
+gluing constructs the inverse association. The sequence of
+smooth-function sheaves <span class="math display">\[
+0\longrightarrow\mathbb Z\longrightarrow C^\infty(\mathbb R)
+\xrightarrow{\ t\mapsto e^{2\pi it}\ }C^\infty(U(1))
+\longrightarrow0
+\tag{1.6}
+\]</span> is exact on stalks because a unit-circle function has a local
+smooth argument. Here is the complete cover argument needed for the
+present manifolds. Average the Euclidean metric over the finite linear
+group generated by <span class="math inline">\(A_j\)</span>. The full
+affine deck group preserves that metric. Freeness, properness and
+compactness give a positive lower bound on the distance from any point
+to each of its nonidentity deck translates: otherwise move a sequence
+into a compact fundamental set and use properness to fix one of finitely
+many possible translates, then take a limit to obtain a fixed point.
+Choose balls of radius less than one eighth of this bound. Fixing a lift
+of one ball, at most one lift of each other intersecting ball can meet
+it, by the triangle inequality. Thus every nonempty finite intersection
+is a convex intersection of Euclidean balls in that lift. A finite
+subcover is a good cover of <span class="math inline">\(F\)</span> or
+<span class="math inline">\(S_j\)</span>.</p>
+<p>On this cover choose real logarithms of unit transitions on its
+contractible intersections. Their Čech boundary is an integer
+two-cocycle. Real-valued Čech cocycles of positive degree are
+boundaries: a subordinate smooth partition of unity gives the operator
+<span class="math inline">\(c\mapsto\sum_i\chi_i c_{i\cdots}\)</span>,
+and expanding its boundary gives <span class="math inline">\(\delta
+h+h\delta=1\)</span>. Conversely an integer two-cocycle is therefore the
+boundary of a real one-cochain; exponentiating that cochain gives unit
+transition functions. If two resulting integer cocycles differ by an
+integer boundary, subtract that integer cochain from the difference of
+their logarithms. The remaining real one-cocycle is a real boundary by
+the same operator, so exponentiation gives an isomorphism of the glued
+line bundles. This proves both directions of the classification.</p>
+<p>The constant Čech cohomology of this good cover is singular
+cohomology. One direct comparison uses the double complex of singular
+chains on all cover intersections. In its Čech direction the augmented
+row on each small simplex is the augmented simplex on the indices of
+cover members containing it; inserting one such index contracts that
+row. Subdivision makes chains small and its prism homotopy preserves
+their homology classes. In the other direction, contraction of each
+convex intersection leaves only its degree-zero coefficient group. The
+two augmentations therefore identify singular chains with the cover
+nerve up to chain homotopy, by eliminating successive rows or columns in
+each finite total degree. Dualizing these actual contractions gives the
+cohomology comparison over <span class="math inline">\(\mathbb
+Z\)</span>. Thus the integer two-cocycle just constructed is the class
+in <span class="math inline">\(H^2\)</span> asserted above. On an
+oriented two-cell its sign is exactly the boundary winding already
+computed. Every smooth line bundle on <span
+class="math inline">\(F\)</span> with class <span
+class="math inline">\(E\)</span> is consequently isomorphic to <span
+class="math inline">\(L_{C_j}\)</span>, and every class on <span
+class="math inline">\(S_j\)</span> is represented by a smooth line
+bundle. An isomorphism between Hermitian line bundles becomes unitary by
+dividing its fibre multiplier by its positive norm.</p>
+<h2 id="affine-generator-lift">2. Lift the generator without omitting
+its affine translation</h2>
+<p>Put <span class="math inline">\(D_j=A_j^{\mathsf
+t}C_jA_j-C_j\)</span>. Direct multiplication gives symmetric matrices
+<span class="math display">\[
+D_1=\begin{pmatrix}
+-48b&amp;0&amp;-6b&amp;0\\0&amp;0&amp;-b&amp;0\\-6b&amp;-b&amp;-b&amp;0\\0&amp;0&amp;0&amp;0
+\end{pmatrix},\qquad
+D_2=\begin{pmatrix}
+18b&amp;0&amp;6b&amp;0\\0&amp;0&amp;-b&amp;0\\6b&amp;-b&amp;0&amp;0\\0&amp;0&amp;0&amp;0
+\end{pmatrix}.
+\tag{2.1}
+\]</span> Symmetry is also the exact identity <span
+class="math inline">\(A_j^{\mathsf t}(C_j-C_j^{\mathsf
+t})A_j=C_j-C_j^{\mathsf t}\)</span>. For real <span
+class="math inline">\(x\)</span>, define <span class="math display">\[
+Q_j(x)=\sum_i(D_j)_{ii}\frac{x_i(x_i-1)}2
+       +\sum_{i&lt;k}(D_j)_{ik}x_ix_k.
+\tag{2.2}
+\]</span> In the original coordinates these are <span
+class="math display">\[
+\begin{aligned}
+Q_1(x)&amp;=-24b x_0(x_0-1)-6b x_0x_2
+        -b x_1x_2-\frac b2x_2(x_2-1),\\
+Q_2(x)&amp;=9b x_0(x_0-1)+6b x_0x_2-b x_1x_2.
+\end{aligned}
+\tag{2.3}
+\]</span> For every integer vector <span
+class="math inline">\(\lambda\)</span>, <span
+class="math inline">\(Q_j(\lambda)\in\mathbb Z\)</span>, including the
+last half-factor in <span class="math inline">\(Q_1\)</span>. Expanding
+(2.2) gives the exact polarization identity <span
+class="math display">\[
+Q_j(x+\lambda)-Q_j(x)
+=\lambda^{\mathsf t}D_jx+Q_j(\lambda).
+\tag{2.4}
+\]</span></p>
+<p>The affine translation in (1.1) contributes the additional linear
+form <span class="math display">\[
+r_j=\frac1{m_j}A_j^{\mathsf t}C_jv_j,\qquad
+r_1=(-8b,0,-4b/3,0)^{\mathsf t},\quad
+r_2=(0,0,-3b/4,0)^{\mathsf t}.
+\tag{2.5}
+\]</span> Retain it and set <span
+class="math inline">\(R_j(x)=Q_j(x)+r_j^{\mathsf t}x\)</span>. For any
+integer row <span
+class="math inline">\(\ell\in\operatorname{Hom}(\mathbb Z^4,\mathbb
+Z)\)</span> and real constant <span
+class="math inline">\(\beta\)</span>, consider <span
+class="math display">\[
+G_{j,\ell,\beta}(x,z)=
+\left(A_jx+v_j/m_j,
+\exp\bigl(2\pi i(R_j(x)+\ell x+\beta)\bigr)z\right).
+\tag{2.6}
+\]</span> All these maps satisfy the exact equivariance identity <span
+class="math display">\[
+G_{j,\ell,\beta}\,T_\lambda
+=T_{A_j\lambda}\,G_{j,\ell,\beta}.
+\tag{2.7}
+\]</span> To verify it, subtract the phase of the right side from that
+of the left side. The terms depending on <span
+class="math inline">\(x\)</span> are <span class="math display">\[
+\lambda^{\mathsf t}C_jx
++\lambda^{\mathsf t}D_jx
+-(A_j\lambda)^{\mathsf t}C_jA_jx=0.
+\]</span> The translation terms are <span
+class="math inline">\(r_j^{\mathsf t}\lambda-(A_j\lambda)^{\mathsf
+t}C_jv_j/m_j=0\)</span>, by (2.5). What remains is <span
+class="math inline">\(Q_j(\lambda)+\ell\lambda\in\mathbb Z\)</span>, so
+the exponentials agree. This proves (2.7) with the original affine
+action, rather than just its linear part. The map is invertible: invert
+<span class="math inline">\(A_jx+v_j/m_j\)</span> and divide by its unit
+multiplier.</p>
+<p>It remains to impose the actual power relation. Since <span
+class="math inline">\(A_jv_j=v_j\)</span>, the <span
+class="math inline">\(s\)</span>-th point on an orbit is <span
+class="math inline">\(A_j^sx+s v_j/m_j\)</span>. Therefore the full
+defect of <span class="math inline">\(G_{j,0,0}^{m_j}\)</span> relative
+to <span class="math inline">\(T_{v_j}\)</span> is the exponential of
+<span class="math inline">\(2\pi i S_j(x)\)</span>, where <span
+class="math display">\[
+S_j(x)=\sum_{s=0}^{m_j-1}
+R_j\left(A_j^sx+\frac{s}{m_j}v_j\right)
+-v_j^{\mathsf t}C_jx.
+\tag{2.8}
+\]</span> Multiplying the stated matrices and substituting (2.3)–(2.5)
+gives, with all constant terms retained, <span class="math display">\[
+\begin{aligned}
+S_1(x)={}&amp;66b x_0-(2a+4b)x_1-(a+2b)x_2
+                 -(3a+6b)x_3+\frac{58b}{3},\\
+S_2(x)={}&amp;-36b x_0+(a+3b)x_1+(a+3b)x_2
+                 +(2a+6b)x_3+\frac{81b}{8}.
+\end{aligned}
+\tag{2.9}
+\]</span> Write <span
+class="math inline">\(S_j(x)=\kappa_jx+c_j\)</span>. The original norm
+matrices are <span class="math display">\[
+N_1=I+A_1+A_1^2=
+\begin{pmatrix}3&amp;0&amp;0&amp;0\\6&amp;0&amp;0&amp;0\\-12&amp;0&amp;0&amp;0\\0&amp;2&amp;1&amp;3\end{pmatrix},
+\quad
+N_2=I+A_2+A_2^2+A_2^3=
+\begin{pmatrix}4&amp;0&amp;0&amp;0\\12&amp;0&amp;0&amp;0\\-12&amp;0&amp;0&amp;0\\0&amp;2&amp;2&amp;4\end{pmatrix}.
+\tag{2.10}
+\]</span> For (2.6), the complete power defect is <span
+class="math display">\[
+(\kappa_j+\ell N_j)x+c_j
++\frac{m_j-1}{2}\ell v_j+m_j\beta.
+\tag{2.11}
+\]</span> The summand containing <span class="math inline">\(\ell
+v_j\)</span> comes from every original affine shift <span
+class="math inline">\(s v_j/m_j\)</span>; it cannot be omitted.</p>
+<h2 id="affine-descent-criterion">3. Necessity, sufficiency, and the
+exact image lattices</h2>
+<p>We first prove that the integer equation <span
+class="math display">\[
+\ell N_j=-\kappa_j
+\tag{3.1}
+\]</span> is necessary for every descended smooth line bundle, including
+lifts not presented by a polynomial phase.</p>
+<p>Suppose <span class="math inline">\(L\to S_j\)</span> is a smooth
+complex line bundle with <span
+class="math inline">\(\pi_j^*c_1(L)=E\)</span>. Give <span
+class="math inline">\(L\)</span> a Hermitian metric. By Section 1
+identify its pulled-back metric bundle unitarily with <span
+class="math inline">\(L_{C_j}\)</span>. Its canonical deck action is a
+unitary bundle map <span class="math inline">\(G\)</span> over <span
+class="math inline">\(g_j\)</span>, whose <span
+class="math inline">\(m_j\)</span>-th power is the identity on the
+bundle over <span class="math inline">\(F\)</span>. Compare this with
+the already constructed <span class="math inline">\(G_{j,0,0}\)</span>,
+which is also a unitary map over <span
+class="math inline">\(g_j\)</span>. Their fibrewise ratio is a smooth
+function <span class="math inline">\(h:F\to U(1)\)</span>.</p>
+<p>Pull <span class="math inline">\(h\)</span> to <span
+class="math inline">\(\mathbb R^4\)</span>. It has a smooth real
+argument <span class="math inline">\(\psi\)</span>: lift along the
+covering <span class="math inline">\(t\mapsto e^{2\pi it}\)</span>,
+beginning at one point. Path lifting exists by successive local
+arguments; homotopic paths have the same endpoint by subdivision into
+their local lifting charts, and every loop in <span
+class="math inline">\(\mathbb R^4\)</span> contracts by the linear
+contraction. Smoothness follows from the local argument. For <span
+class="math inline">\(\lambda\in\mathbb Z^4\)</span>, <span
+class="math inline">\(\psi(x+\lambda)-\psi(x)\)</span> is an
+integer-valued continuous function of <span
+class="math inline">\(x\)</span>, hence constant. These constants add in
+<span class="math inline">\(\lambda\)</span>, giving one integer row
+<span class="math inline">\(\ell\)</span>. Thus <span
+class="math display">\[
+h([x])=\exp\bigl(2\pi i(\ell x+u(x))\bigr),
+\qquad u(x+\lambda)=u(x).
+\tag{3.2}
+\]</span> The power identity for <span
+class="math inline">\(G=hG_{j,0,0}\)</span> says that <span
+class="math display">\[
+S_j(x)+\sum_{s=0}^{m_j-1}
+\left(\ell\left(A_j^sx+\frac{s}{m_j}v_j\right)
+       +u\left(A_j^sx+\frac{s}{m_j}v_j\right)\right)
+\tag{3.3}
+\]</span> is integer-valued, so is constant on <span
+class="math inline">\(\mathbb R^4\)</span>. Subtract its value at <span
+class="math inline">\(x\)</span> from its value at <span
+class="math inline">\(x+\lambda\)</span>. Every <span
+class="math inline">\(u\)</span>-term cancels by periodicity and
+integrality of <span class="math inline">\(A_j^s\lambda\)</span>. The
+difference is <span class="math inline">\(\kappa_j\lambda+\ell
+N_j\lambda\)</span>. This is zero for every integer <span
+class="math inline">\(\lambda\)</span>, proving (3.1). No phase homotopy
+or rational replacement was used.</p>
+<p>Solve (3.1) in the original ordered rows <span
+class="math inline">\(\ell=(\ell_0,\ell_1,\ell_2,\ell_3)\)</span>. Its
+complete real solution sets are <span class="math display">\[
+\begin{array}{c|cc}
+&amp;\ell_0&amp;\ell_3\\ \hline
+j=1&amp;-22b-2\ell_1+4\ell_2&amp;a+2b\\
+j=2&amp;9b-3\ell_1+3\ell_2&amp;-(a+3b)/2.
+\end{array}
+\tag{3.4}
+\]</span> The two remaining coordinates are free. These statements
+follow directly from each of the four columns in (2.10): in the first
+case the second, third and fourth columns require <span
+class="math inline">\(2\ell_3=2a+4b\)</span>, <span
+class="math inline">\(\ell_3=a+2b\)</span>, <span
+class="math inline">\(3\ell_3=3a+6b\)</span>; its first column gives the
+displayed <span class="math inline">\(\ell_0\)</span>. In the second
+case those three equations are <span
+class="math inline">\(2\ell_3=-a-3b\)</span>, <span
+class="math inline">\(2\ell_3=-a-3b\)</span>, <span
+class="math inline">\(4\ell_3=-2a-6b\)</span>, and the first column
+gives its displayed <span class="math inline">\(\ell_0\)</span>. Thus an
+integer solution always exists for <span
+class="math inline">\(j=1\)</span>, and exists for <span
+class="math inline">\(j=2\)</span> exactly when <span
+class="math inline">\(a+3b\)</span> is even, equivalently <span
+class="math inline">\(a\equiv b\pmod2\)</span>.</p>
+<p>For sufficiency choose the following particular integer rows and
+retain their constant corrections: <span class="math display">\[
+\begin{array}{c|cc}
+&amp;\ell_j&amp;\beta_j\\ \hline
+j=1&amp;(-22b,0,0,a+2b)&amp;8b/9\\
+j=2&amp;(9b,0,0,-(a+3b)/2)&amp;27b/32.
+\end{array}
+\tag{3.5}
+\]</span> The second row is used precisely when <span
+class="math inline">\(a\equiv b\pmod2\)</span>. Equation (3.1) removes
+the entire linear defect. The remaining constants in (2.11) are exactly
+<span class="math display">\[
+\begin{aligned}
+j=1:&amp;\quad \frac{58b}{3}+1\cdot(-22b)+3\cdot\frac{8b}{9}=0,\\
+j=2:&amp;\quad \frac{81b}{8}+\frac32(-9b)+4\cdot\frac{27b}{32}=0.
+\end{aligned}
+\tag{3.6}
+\]</span> Consequently <span
+class="math inline">\(G_{j,\ell_j,\beta_j}^{m_j}=T_{v_j}\)</span> on
+<span class="math inline">\(\mathbb R^4\times\mathbb C\)</span>,
+including its fibre coordinate. On <span
+class="math inline">\(L_{C_j}\to F\)</span> the induced <span
+class="math inline">\(m_j\)</span>-th power is the identity. It gives an
+actual cyclic action lifting the original free action on <span
+class="math inline">\(F\)</span>.</p>
+<p>Its quotient is a smooth line bundle on <span
+class="math inline">\(S_j\)</span>. To see this directly, take a
+sufficiently small open set in <span class="math inline">\(S_j\)</span>
+whose <span class="math inline">\(m_j\)</span> lifts to <span
+class="math inline">\(F\)</span> are disjoint, trivialize the line
+bundle on one lift, and transport that frame to the others by the finite
+action. The quotient of these frames is a local frame on the original
+open set. On overlaps its transition is a smooth nonzero scalar. Pulling
+this quotient bundle back along <span
+class="math inline">\(\pi_j\)</span> recovers <span
+class="math inline">\(L_{C_j}\)</span> via <span
+class="math inline">\((p,[v])\mapsto v_p\)</span>, where <span
+class="math inline">\(v_p\)</span> is the unique representative of the
+orbit in the fibre at <span class="math inline">\(p\)</span>. This is
+the exact comparison, and its first Chern class pulls back to the
+unchanged <span class="math inline">\(E\)</span>.</p>
+<p>We have proved both complete image lattices: <span
+class="math display">\[
+\begin{aligned}
+\pi_1^*H^2(S_1;\mathbb Z)
+&amp;=\mathbb Z h_1\oplus\mathbb Zq,\\
+\pi_2^*H^2(S_2;\mathbb Z)
+&amp;=\{a h_2+bq:a,b\in\mathbb Z,\ a\equiv b\pmod2\}\\
+&amp;=\mathbb Z(2h_2)\oplus\mathbb Z(h_2+q).
+\end{aligned}
+\tag{3.7}
+\]</span> The inclusion of any covering image in the invariant lattice
+follows by deck naturality. The necessity argument applies to its
+representing line bundle by (1.6), and the explicit quotient
+construction proves the reverse inclusion. Thus (3.7) has no missing
+direction. Its original intersection matrix downstairs, in the displayed
+order-four basis, is <span
+class="math inline">\(\begin{pmatrix}0&amp;1\\1&amp;4\end{pmatrix}\)</span>:
+multiply the upstairs matrix <span
+class="math inline">\(\begin{pmatrix}0&amp;2\\2&amp;12\end{pmatrix}\)</span>
+by the basis columns <span
+class="math inline">\(\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}\)</span>
+on both sides and divide its evaluated cup products by the actual
+covering degree four. Evenness follows from this computed matrix. It is
+a consequence of the integral descent calculation.</p>
+<figure>
+<img id="affine-descent-diagram" src="assets/affine-line-descent.svg" alt="The actual lifted affine map commutes with lattice quotient and descends to a finite cyclic action on the line bundle. Its quotient recovers the original upstairs bundle by pullback, exactly when the integral norm equation holds." />
+<figcaption>
+The maps are (1.5), (2.6) and the quotient comparison following (3.6).
+The order-four row condition retains the precise parity obstruction. The
+two constant phases are necessary for the exact powers on the original
+universal cover, as Exercise 4.2 shows.
+</figcaption>
+</figure>
+<h2 id="affine-descent-exercises">4. Two complete exercises</h2>
+<h3
+id="exercise-4.1.-exhibit-the-three-decisive-order-four-classes">Exercise
+4.1. Exhibit the three decisive order-four classes</h3>
+<p>For <span class="math inline">\(E=h_2\)</span>, <span
+class="math inline">\(E=2h_2\)</span>, and <span
+class="math inline">\(E=h_2+q\)</span>, either construct the action
+(2.6) or prove that no descended line bundle can have that pullback
+class.</p>
+<p><strong>Solution.</strong> For <span
+class="math inline">\(h_2\)</span>, <span
+class="math inline">\(a=1,b=0\)</span>, equation (3.4) forces <span
+class="math inline">\(\ell_3=-1/2\)</span>, impossible for an integer
+row. The necessity proof includes every smooth lift, so this is an
+obstruction to descent, not merely a failure of the particular
+polynomial formula.</p>
+<p>For <span class="math inline">\(2h_2\)</span>, <span
+class="math inline">\(a=2,b=0\)</span>, all <span
+class="math inline">\(Q_2\)</span> and <span
+class="math inline">\(r_2\)</span> terms vanish and (3.5) gives <span
+class="math inline">\(\ell=(0,0,0,-1)\)</span>, <span
+class="math inline">\(\beta=0\)</span>. The lifted map is <span
+class="math display">\[
+G(x,z)=\left(A_2x+v_2/4,e^{-2\pi ix_3}z\right).
+\tag{4.1}
+\]</span> The translations still use the complete <span
+class="math inline">\(C_2\)</span> of (1.4) with <span
+class="math inline">\(a=2,b=0\)</span>; they have not become trivial.
+Equations (2.7) and (3.6) prove its equivariance and fourth-power
+relation.</p>
+<p>For <span class="math inline">\(h_2+q\)</span>, <span
+class="math inline">\(a=b=1\)</span>, the original translation matrix
+has first row <span class="math inline">\((0,1,1,8)\)</span> and entry
+<span class="math inline">\(C_{12}=1\)</span>. The exponent in the
+lifted action is exactly <span class="math display">\[
+9x_0(x_0-1)+6x_0x_2-x_1x_2
+-\frac34x_2+9x_0-2x_3+\frac{27}{32}.
+\tag{4.2}
+\]</span> The two <span class="math inline">\(x_0\)</span> contributions
+are displayed with their separate origins in <span
+class="math inline">\(Q_2\)</span> and <span
+class="math inline">\(\ell_2x\)</span>. Substitution in (2.6) gives the
+action. Its full fourth-power defect is <span
+class="math inline">\(81/8-27/2+27/8=0\)</span>. These two descended
+classes are exactly the basis in (3.7).</p>
+<h3
+id="exercise-4.2.-calculate-what-fails-if-the-constant-phase-is-dropped">Exercise
+4.2. Calculate what fails if the constant phase is dropped</h3>
+<p>Use the rows <span class="math inline">\(\ell_j\)</span> of (3.5),
+but put <span class="math inline">\(\beta=0\)</span>, with <span
+class="math inline">\(b=1\)</span>. Compute the two finite-power
+defects.</p>
+<p><strong>Solution.</strong> The linear part is still zero by (3.1).
+The first constant is <span class="math inline">\(58/3-22=-8/3\)</span>,
+and the second is <span class="math inline">\(81/8-27/2=-27/8\)</span>.
+Thus the purported cyclic lifts have powers <span
+class="math display">\[
+G_{1,\ell_1,0}^{3}=e^{-16\pi i/3}T_{v_1},\qquad
+G_{2,\ell_2,0}^{4}=e^{-27\pi i/4}T_{v_2}.
+\tag{4.3}
+\]</span> Neither scalar is one. The constants <span
+class="math inline">\(8/9\)</span> and <span
+class="math inline">\(27/32\)</span> in (3.5), multiplied respectively
+by the actual orders three and four, cancel these defects exactly.
+Passing only to the linear coefficient of the exponent would miss both
+failed power relations.</p>
+<h2 id="affine-descent-sources">Proof scope and checks</h2>
+<p>The proof uses the original matrices, free affine quotients and
+integral marking already proved in lessons 1–3 and 6. It computes the
+degree-two image directly, while lesson 7’s other arguments use their
+own included topological prerequisites and the <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">complete
+smooth-recognition proof</a>. The source and claim ledgers record this
+new receiving derivation and its propagation. Exact polynomial checks
+accompany the translation law, polarization, affine equivariance, full
+finite powers, integer norm conditions, constants and intersection
+matrix. Such checks supplement the arguments about arbitrary bundles and
+their descent; they are not an independent review.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>
