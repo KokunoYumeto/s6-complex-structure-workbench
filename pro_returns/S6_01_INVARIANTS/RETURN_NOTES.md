@@ -21,8 +21,25 @@ are not part of the returned archive and are not listed in its `MANIFEST_SHA256.
 - `S6_01_INVARIANTS_results.csv`: 47 numbered statements, 41 Proved, 2 Known, 2 Refuted (A4.2, E2.4), 2 Open (C3.8,
   E2.3).
 - `code/` (20 Python programs and `requirements.txt`), `outputs/` (their outputs, statement and source records, PDF and visual QA, contact
-  sheets), `logs/` (build and compile logs; two rendered source pages), `README.md`.
+  sheets), `logs/` (build and compile logs), `README.md`.
 - The programs were returned by the model and have not been run by us.
+
+## Left out of this copy
+
+Five of the 116 files are not published here, because they reproduce pages of the original manuscript [AC26], which
+this repository does not republish. The model made them to check the passages it corrects (statements A4.2 and C3.2);
+read those pages in the manuscript itself, at <https://alpo.ge/s6.pdf>.
+
+- `return/outputs/a_AC26_p5.png`: render of PDF page 5.
+- `return/outputs/a_AC26_p81.png`: render of PDF page 81.
+- `return/logs/c_source-062.png`: render of PDF page 62.
+- `return/logs/c_source-063.png`: render of PDF page 63.
+- `return/outputs/c_AC26_pages62_63.txt`: text extract of PDF pages 62-63.
+
+They were published with the return on 12 November 2026 (commit 7ff0684) and removed in the next commit. Their sizes
+and SHA-256 digests are in the repository's `LEFT_OUT.tsv`. The return's own `MANIFEST_SHA256.txt` is kept unchanged
+and still lists them, so `sha256sum -c MANIFEST_SHA256.txt` reports these five as missing; the other 110 entries
+match.
 
 ## Outcome table, one line per item
 
