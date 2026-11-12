@@ -109,8 +109,11 @@ AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode); not reviewed by a person.
 [`pro_returns/S6_01_INVARIANTS/`](pro_returns/S6_01_INVARIANTS/) (prompt `PROMPT.md`, notes `RETURN_NOTES.md`, the
 return unchanged in `return/`; check it there with `sha256sum -c MANIFEST_SHA256.txt`). The programs were returned by
 the model and have not been run by us. The model rendered pages 5, 62, 63 and 81 of [AC26] and extracted the text of
-pages 62-63 to check the passages it corrects; these four pages are kept in `return/outputs/` and `return/logs/` as
-part of its record.
+pages 62-63 to check the passages it corrects. Those five files (`return/outputs/a_AC26_p5.png`, `a_AC26_p81.png`,
+`c_AC26_pages62_63.txt`, `return/logs/c_source-062.png`, `c_source-063.png`) are left out, because they reproduce pages
+of [AC26], which is not republished here; read the pages in the manuscript at <https://alpo.ge/s6.pdf>. They are listed
+in `LEFT_OUT.tsv` and in `RETURN_NOTES.md`. The return's own `MANIFEST_SHA256.txt` still lists them, so the check
+reports these five as missing and the other 110 files as matching.
 
 **What was asked.** An independent derivation of the Hodge diamond of the complex threefold X of [AC26] with the
 decisive scalar evaluated (Part A); the same invariants for the other members of the family (B); Frölicher,
