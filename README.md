@@ -141,6 +141,18 @@ code, outputs and logs. Fourteen of the sixteen items are finished at outcome (a
   bound h⁰(T) ≤ 2 of [AC26] Remarks 1.2/9.26 and of HKP Corollary 1.3 (statement E2.4, Refuted); the Hodge-kernel
   splitting, the torsion support and the obstruction maps remain open.
 
+
+### S6_02_FAMILY (returned 12 November 2026)
+
+AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode); reviewed by Claude Fable 5.2 (Anthropic, effort high), not by a
+person. Folder: [`pro_returns/S6_02_FAMILY/`](pro_returns/S6_02_FAMILY/) (prompt `PROMPT.md`, notes `RETURN_NOTES.md`,
+the return unchanged in `return/` except one page render of [AC26], listed in `LEFT_OUT.tsv`); review in
+[`reviews/S6_02_REVIEW_FABLE/`](reviews/S6_02_REVIEW_FABLE/). The review finds 0 wrong of 55 statements. The
+classification of the (3,4) family up to biholomorphism (c' - c in 2Z), its Kuranishi space and Aut = C^* are known from
+version 1 of arXiv:2610.00250 (Du, Guo, Kusakabe, Xie); new as far as the searches go: the exact domain (radius 216 in
+w), the complete discrete invariants, the correction of Engel's Remark 8.1, the real structures, the closed formula for
+the missing period, the monodromy group and the answer to Klingler's question, and the fibre loci. Open: C.3, E.1, E.2.
+
 ## Changes made for publication
 
 The user's first name was replaced by "user" in every file, including local paths and the contents of compressed
