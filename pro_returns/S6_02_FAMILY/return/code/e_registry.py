@@ -1,0 +1,23 @@
+"""Generate the E statement ledger; no mathematical approximation is used."""
+from pathlib import Path
+import csv
+
+ROOT = Path(__file__).resolve().parents[1]
+FIELDS = ['id','statement','status','where_proved','depends_on','item_of_the_prompt',
+          'findings_of_the_survey_settled (F-numbers)','notes']
+rows = [
+ ('E.1.1','The compact section pushout Q is a reduced complex space with normalization P_S(O+L) and T1=pi*O(1).','Proved','sections/E.tex: E.1.1','B.1.1;B.1.4;E26 Lemma 2.1','E.1','F27 (candidate construction)','This constructs the candidate itself, not a compact smoothing.'),
+ ('E.1.2','The candidate has an explicit proper flat plumbing over every relatively compact finite-base disc, including 0 and 1.','Proved','sections/E.tex: E.1.2','E.1.1;E26 Corollary 2.2','E.1','F27 (away from infinity)','The nonzero-parameter comparison is the actual quotient by the contracting inverse period lift.'),
+ ('E.1.3','At infinity the naive simultaneous germ is xy=uzv; it is flat and its stated projective modification resolves the nonzero-parameter node while changing the central normalization.','Proved','sections/E.tex: E.1.3','E.1.1;E.1.2','E.1','F27 (local obstruction)','An explicit limitation of the unmodified plumbing, not a refutation of all possible fillings.'),
+ ('E.1.4','The constructed candidate Q has pi1=Z, homology (Z,Z,Z^8,Z^7,Z^10,0,Z), and Euler characteristic 12.','Proved','sections/E.tex: E.1.4','E.1.1;B.1.3','E.1','F27 (candidate topology)','Integral primitivity and both Euler calculations are checked in e_degeneration.py.'),
+ ('E.1.5','A compact flat proper filling with central fibre Q requires the unresolved equivariant periodic gluing at xy=uzv.','Open','sections/E.tex: E.1.5','E.1.1;E.1.2;E.1.3;E.1.4','E.1','F27 (partly settled)','Unfinished: retain the prescribed general Mumford small resolution and central normalization under both deck generators; smallest instance is one node lift.'),
+ ('E.2.1','After w=s^6 the two reduced bielliptic surface families admit free-quotient semistable fillings with four and three ruled components and explicitly computed integral topology.','Proved','sections/E.tex: E.2.1','A.1.2;A.4.1','E.2','F22;F27 (reduced surface limits)','The normal characters and nonreduced threefold neighbourhoods are not supplied by this surface construction.'),
+ ('E.2.2','The smooth sphere monodromy is identity on integral cohomology and its mapping class is the explicit clutching map F_2 composed with transport, evaluated by the Eells-Kuiper residue.','Proved','sections/E.tex: E.2.2','A.3.1;B.4.1;Cerf71 Corollary 2;Smale61 Theorem J;EK62 Section 7','E.2','F27 (monodromy reduction)','The residue (p1^2-4 signature)/32 mod28 is not evaluated numerically.'),
+ ('E.2.3','The compact sphere central fibre and its topology remain unconstructed; the exact finite-place and cusp gluing targets and unevaluated monodromy residue are specified.','Open','sections/E.tex: E.2.3','E.1.5;E.2.1;E.2.2','E.2','F27 (partly settled)','Unfinished compact filling; smallest finite-place target is the order-three action on the two-parameter plumbing. E.2.2 meets the explicit-invariant alternative for smooth monodromy.'),
+]
+with (ROOT/'sections/E_results.csv').open('w',newline='',encoding='utf-8') as f:
+    w=csv.writer(f); w.writerow(FIELDS); w.writerows(rows)
+for row in rows:
+    print(row[0],row[2],row[5])
+print('ROWS',len(rows))
+
