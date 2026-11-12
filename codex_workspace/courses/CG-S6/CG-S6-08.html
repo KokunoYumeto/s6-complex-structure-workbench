@@ -1,0 +1,807 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The canonical divisor, its complete graded ring, and the original fibration</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/canonical-divisor-and-intrinsic-fibration.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="cg-s6-08">The canonical divisor, its complete graded ring, and
+the original fibration</h1>
+<p>CG-S6 · Lesson 8</p>
+<p>The threefold carries a particular map <span
+class="math inline">\(f:X\to B=\mathbb P^1\)</span>. In this lesson we
+recover that very map from holomorphic sections of its anticanonical
+bundle. The calculation uses the analytic construction of lessons 3–5.
+It does not require the smooth-sphere recognition at the end of lesson
+7.</p>
+<p>Keep the original coordinate and fibre names: <span
+class="math display">\[
+t(p_1)=0,\qquad t(p_2)=1,\qquad t(p_0)=\infty,\qquad
+f^*(p_1)=3S_1,\qquad f^*(p_2)=4S_2,\qquad f^*(p_0)=W.
+\tag{0.1}
+\]</span> Here <span class="math inline">\(S_1,S_2\)</span> are reduced
+smooth surfaces and <span class="math inline">\(W\)</span> is the
+reduced cusp fibre. A multiple fibre in (0.1) retains its stated
+multiplicity.</p>
+<p>We will prove the actual line-bundle and graded-algebra identities
+<span class="math display">\[
+\begin{gathered}
+\omega_X\simeq\mathcal O_X(-2S_2),\qquad
+\omega_X^{-2}\simeq f^*\mathcal O_B(p_2),\\
+R(X,-K_X):=\bigoplus_{m\geq0}H^0(X,\omega_X^{-m})
+\simeq\mathbb C[U,V],\qquad \deg U=1,\quad\deg V=2.
+\end{gathered}
+\tag{0.2}
+\]</span> The isomorphisms will be specified, including the changes
+caused by different choices of generators. In particular, the degree-two
+pencil recovers <span class="math inline">\(f\)</span> with its multiple
+fibres.</p>
+<h2 id="divisor-conventions">1. Divisors, functions and the evaluation
+map</h2>
+<p>For a Cartier divisor <span class="math inline">\(D\)</span> on a
+complex manifold, define <span class="math display">\[
+\mathcal O_X(D)(U)=
+\{a\in\mathcal M_X(U):\operatorname{div}(a)|_U+D|_U\geq0\}.
+\tag{1.1}
+\]</span> The symbol <span class="math inline">\(\mathcal M_X\)</span>
+denotes meromorphic functions. If <span class="math inline">\(D\)</span>
+has equation <span class="math inline">\(h=0\)</span> with its
+multiplicity included, then <span class="math inline">\(h^{-1}\)</span>
+is a local frame of <span class="math inline">\(\mathcal
+O_X(D)\)</span>. Its distinguished meromorphic section <span
+class="math inline">\(1\)</span> has divisor <span
+class="math inline">\(D\)</span>. For an effective divisor it is
+holomorphic. This convention determines every sign below.</p>
+<p>The canonical bundle <span class="math inline">\(\omega_X\)</span> is
+the line bundle of holomorphic three-forms. Define <span
+class="math display">\[
+\omega_{X/B}=\omega_X\otimes f^*\omega_B^{-1},
+\qquad \mathfrak K=f_*\omega_{X/B}.
+\tag{1.2}
+\]</span> The definition makes sense over all fibres: it is a tensor
+product of line bundles on the smooth threefold. It does not define
+<span class="math inline">\(\omega_{X/B}\)</span> by dividing
+differential forms by <span class="math inline">\(df\)</span> at a
+critical point.</p>
+<p>There is an actual evaluation morphism <span class="math display">\[
+\operatorname{ev}:f^*\mathfrak K\longrightarrow\omega_{X/B}.
+\tag{1.3}
+\]</span> A section of <span class="math inline">\(\mathfrak K\)</span>
+over a base open set is, by definition, a relative canonical section
+over its inverse image; evaluation restricts that section at each point
+of <span class="math inline">\(X\)</span>. We will prove that <span
+class="math inline">\(\mathfrak K\)</span> is a line bundle and
+calculate the zero divisor of (1.3).</p>
+<p><strong>Lemma 1.1.</strong> The original map satisfies <span
+class="math inline">\(f_*\mathcal O_X=\mathcal O_B\)</span>, with the
+equality given by pullback of functions.</p>
+<p><strong>Proof.</strong> A holomorphic function on a connected compact
+complex torus is constant: its absolute value attains a maximum, and the
+maximum principle in coordinate polydiscs makes it locally, hence
+globally, constant. Over a regular base point, a holomorphic section of
+the submersion shows that these constants vary holomorphically. Thus a
+holomorphic function <span class="math inline">\(H\)</span> on <span
+class="math inline">\(f^{-1}(U)\)</span> descends over the regular part
+of <span class="math inline">\(U\)</span>.</p>
+<p>At <span class="math inline">\(p_j\)</span>, pull back to the
+original finite étale total-space cover <span
+class="math inline">\(q_j:J&#39;_j\to N_j\)</span>. The torus family
+<span class="math inline">\(J&#39;_j\to\Delta_j\)</span> has its zero
+section. The value of <span class="math inline">\(q_j^*H\)</span> on
+this section gives a holomorphic function <span
+class="math inline">\(a(s_j)\)</span>; constancy on the torus fibres
+gives equality with its pullback throughout <span
+class="math inline">\(J&#39;_j\)</span>. Quotient invariance gives <span
+class="math display">\[
+a(\zeta_js_j)=a(s_j).
+\tag{1.4}
+\]</span> The power series of <span class="math inline">\(a\)</span>
+therefore has only exponents divisible by <span
+class="math inline">\(m_j\)</span>, where <span
+class="math inline">\(m_1=3,m_2=4\)</span>. It is a convergent power
+series in <span class="math inline">\(t_j=s_j^{m_j}\)</span>, proving
+holomorphic descent at the finite point.</p>
+<p>At the cusp choose a point of the smooth part of <span
+class="math inline">\(W\)</span>. In the original toric chart <span
+class="math inline">\(t_c=z_0z_1z_2\)</span>, a sufficiently small
+neighbourhood of <span class="math inline">\((0,c_1,c_2)\)</span>, with
+<span class="math inline">\(c_1c_2\ne0\)</span>, has the holomorphic
+section <span class="math display">\[
+t_c\longmapsto(t_c/(c_1c_2),c_1,c_2).
+\tag{1.5}
+\]</span> The quotient is locally biholomorphic there, so (1.5) descends
+to <span class="math inline">\(N_0\)</span>. Evaluating <span
+class="math inline">\(H\)</span> on this section extends its base
+function across the cusp. Its pullback agrees with <span
+class="math inline">\(H\)</span> away from the central fibre, and hence
+everywhere by continuity; that open set is dense in each toric chart.
+The same density argument establishes the finite-point equality if it
+was first obtained on punctured fibres. Finally the local descended
+functions agree on overlaps, since <span
+class="math inline">\(f\)</span> is surjective. Pullback is injective
+for the same reason. ∎</p>
+<h2 id="finite-canonical-characters">2. Every determinant character and
+every ramification factor</h2>
+<p>On the marked family let <span class="math display">\[
+e=d\zeta_1\wedge d\zeta_2.
+\tag{2.1}
+\]</span> Here <span class="math inline">\(\zeta_1,\zeta_2\)</span> are
+fibre coordinates. To avoid confusion, the constants denoted <span
+class="math inline">\(\zeta_j\)</span> in a base rotation retain the
+notation of lesson 3: <span class="math display">\[
+\zeta_1=e^{-2\pi i/3},\qquad \zeta_2=e^{-\pi i/2}=-i.
+\tag{2.2}
+\]</span> The context of a differential or of <span
+class="math inline">\(s_j\mapsto\zeta_js_j\)</span> distinguishes the
+two uses.</p>
+<p>The original fibre-linear transformations, obtained by applying the
+unchanged period matrix to the <span class="math inline">\(\widehat
+w,\widehat\delta\)</span> columns, are <span class="math display">\[
+R_{g_1}=
+\begin{pmatrix}\tau(g_1z)-1&amp;0\\ \mu(g_1z)&amp;1\end{pmatrix},
+\qquad
+R_{g_2}=
+\begin{pmatrix}-\tau(g_2z)&amp;0\\ 1-\mu(g_2z)&amp;1\end{pmatrix}.
+\tag{2.3}
+\]</span> Using the full transformation laws of lesson 4 gives <span
+class="math display">\[
+\det R_{g_1}=-1/\tau,\qquad
+\det R_{g_2}=1/\tau,\qquad \det R_{g_0}=1.
+\tag{2.4}
+\]</span> At the finite centres <span
+class="math inline">\(\tau(z_1)=\rho=e^{\pi i/3}\)</span> and <span
+class="math inline">\(\tau(z_2)=i\)</span>, these values are <span
+class="math display">\[
+\rho-1=\zeta_1^2,\qquad -i=\zeta_2.
+\tag{2.5}
+\]</span> Write <span class="math inline">\(a_1=2,a_2=1\)</span> for
+these exact character exponents.</p>
+<p>Over <span class="math inline">\(p_j\)</span>, the covering map of
+bases is <span class="math inline">\(t_j=s_j^{m_j}\)</span>. The
+total-space quotient is étale, although the base map is ramified. On the
+cover the nowhere-zero canonical frame <span
+class="math inline">\(ds_j\wedge e\)</span> transforms by <span
+class="math display">\[
+(g_j^{\log})^*(ds_j\wedge e)=\chi_j(s_j)\,ds_j\wedge e,
+\qquad
+\chi_j(s)=\zeta_j\det R_{g_j}(s).
+\tag{2.6}
+\]</span> The translation part of <span
+class="math inline">\(g_j^{\log}\)</span> contributes terms containing
+<span class="math inline">\(ds_j\)</span> to the pulled-back fibre
+differentials; these disappear after wedging with <span
+class="math inline">\(ds_j\)</span>. Thus (2.6) also includes the
+varying affine translation.</p>
+<p>Iteration gives <span
+class="math inline">\(\prod_{r=0}^{m_j-1}\chi_j(\zeta_j^rs)=1\)</span>.
+On a sufficiently small invariant disc take the holomorphic logarithm
+<span class="math display">\[
+\chi_j(s)=\zeta_j^{1+a_j}\exp(\psi_j(s)),\qquad \psi_j(0)=0.
+\tag{2.7}
+\]</span> The sum <span
+class="math inline">\(\sum_r\psi_j(\zeta_j^rs)\)</span> has exponential
+<span class="math inline">\(1\)</span> and value <span
+class="math inline">\(0\)</span> at the origin. It is therefore
+identically zero. In the series <span
+class="math inline">\(\psi_j(s)=\sum_{n\geq1}c_{jn}s^n\)</span>, every
+coefficient with <span class="math inline">\(m_j\mid n\)</span>
+vanishes.</p>
+<p>Define the actual correcting unit by <span class="math display">\[
+\varphi_j(s)=
+\sum_{\substack{n\geq1\\m_j\nmid n}}
+\frac{c_{jn}}{1-\zeta_j^n}s^n .
+\tag{2.8}
+\]</span> It is holomorphic on the same disc: the finitely many possible
+nonzero denominators have a positive minimum absolute value. Moreover
+<span
+class="math inline">\(\varphi_j(s)-\varphi_j(\zeta_js)=\psi_j(s)\)</span>.
+Put <span class="math inline">\(k_j=m_j-1-a_j\)</span>, so that <span
+class="math display">\[
+k_1=0,\qquad k_2=2.
+\tag{2.9}
+\]</span> Equation (2.8) makes <span class="math display">\[
+\sigma_j=s_j^{k_j}e^{\varphi_j(s_j)}ds_j\wedge e
+\tag{2.10}
+\]</span> invariant. Indeed its total constant character is <span
+class="math inline">\(\zeta_j^{k_j+1+a_j}=\zeta_j^{m_j}=1\)</span>, and
+the nonconstant factors cancel by (2.8). The descended canonical section
+has divisor <span class="math inline">\(k_jS_j\)</span>, because its
+pullback has divisor <span class="math inline">\(k_j\{s_j=0\}\)</span>
+and an étale map preserves local orders. This calculation proves, in
+particular, that the section at <span class="math inline">\(p_2\)</span>
+vanishes to order two.</p>
+<p>Now use the relative frame <span class="math display">\[
+\vartheta_j=(ds_j\wedge e)\otimes(dt_j)^{-1}.
+\tag{2.11}
+\]</span> The last factor is the pulled-back inverse frame of <span
+class="math inline">\(\omega_{D_j}\)</span>. It is nowhere zero as a
+bundle frame, including at <span class="math inline">\(s_j=0\)</span>.
+With <span
+class="math inline">\(\vartheta&#39;_j=e^{\varphi_j}\vartheta_j\)</span>,
+its character is the constant <span
+class="math inline">\(\zeta_j^{1+a_j}\)</span>.</p>
+<p>Every holomorphic coefficient of a relative canonical section on
+<span class="math inline">\(J&#39;_j\)</span> is a function of <span
+class="math inline">\(s_j\)</span>: divide by <span
+class="math inline">\(\vartheta&#39;_j\)</span> and apply the torus
+constancy and zero-section argument of Lemma 1.1. An invariant
+coefficient <span class="math inline">\(F(s)\)</span> must satisfy <span
+class="math display">\[
+F(\zeta_js)\zeta_j^{1+a_j}=F(s).
+\tag{2.12}
+\]</span> Its powers are exactly <span
+class="math inline">\(s^{k_j+m_jn}\)</span>, <span
+class="math inline">\(n\geq0\)</span>. Descent therefore gives the
+precise free module <span class="math display">\[
+\mathfrak K|_{D_j}
+=\mathcal O_{D_j}\cdot s_j^{k_j}\vartheta&#39;_j.
+\tag{2.13}
+\]</span> Over the punctured disc only, the relative-fibre
+identification uses <span
+class="math inline">\(dt_j=m_js_j^{m_j-1}ds_j\)</span> and becomes <span
+class="math display">\[
+s_j^{k_j}\vartheta&#39;_j
+=\frac{e^{\varphi_j(s_j)}}{m_j}s_j^{-a_j}e.
+\tag{2.14}
+\]</span> Both <span class="math inline">\(m_j\)</span> and the
+exponential unit are retained. Equation (2.14) is a comparison over the
+smooth locus; (2.11) and (2.13) give the nonsingular bundle calculation
+at its centre.</p>
+<h2 id="global-hodge-line">3. The cusp and the global Hodge line</h2>
+<p>The original toric cusp has the invariant form <span
+class="math display">\[
+\Omega_0=\frac{dx_1}{x_1}\wedge\frac{dx_2}{x_2}\wedge dt_c.
+\tag{3.1}
+\]</span> Lesson 5 proves, in each unimodular monomial chart, that it is
+a nowhere-zero ordinary three-form. Its chart determinant and the exact
+overlap give <span class="math display">\[
+\Omega_0=(2\pi i)^2dt_c\wedge e.
+\tag{3.2}
+\]</span> Translations preserve (3.1), and the defining integral shears
+have determinant one. It therefore descends to a canonical frame on
+<span class="math inline">\(N_0\)</span>. Dividing by that frame and
+applying Lemma 1.1 shows that <span class="math display">\[
+\mathfrak K|_{D_0}
+=\mathcal O_{D_0}\cdot\bigl((2\pi
+i)^{-2}\Omega_0\otimes(dt_c)^{-1}\bigr).
+\tag{3.3}
+\]</span> On the punctured overlap the displayed generator is exactly
+<span class="math inline">\(e\)</span>. Together with (2.13) and the
+invariant volume form on a smooth torus, this proves local freeness of
+<span class="math inline">\(\mathfrak K\)</span> everywhere.</p>
+<p>We use the function already constructed, with its branch, in lesson
+4: <span class="math display">\[
+\Theta=
+\frac{(E_4\circ\tau)^2h}{\Delta_{\rm mod}\circ\tau},
+\qquad h^2=E_6\circ\tau.
+\tag{3.4}
+\]</span> That lesson proves its full transformation laws <span
+class="math display">\[
+\Theta(g_1z)=-\Theta(z)/\tau(z),\qquad
+\Theta(g_2z)=\Theta(z)/\tau(z),
+\tag{3.5}
+\]</span> its invariance at the cusp, and its orders <span
+class="math inline">\(2,1,-1\)</span> at <span
+class="math inline">\(z_1,z_2,p_0\)</span>. The preceding modular-form
+provider proves that there are no other zeros or poles. The square root
+and its character are fixed by the original finite coordinates, rather
+than chosen again here.</p>
+<p>Consequently <span class="math display">\[
+\mathsf e=\Theta^{-1}e
+\tag{3.6}
+\]</span> is single-valued. To check its precise extensions, put <span
+class="math inline">\(c_j(s_j)=s_j^{-a_j}\Theta(s_j)\)</span>, a
+holomorphic unit. Relative to the finite generator (2.14), (3.6) has
+coefficient <span class="math display">\[
+m_j e^{-\varphi_j(s_j)}c_j(s_j)^{-1}.
+\tag{3.7}
+\]</span> Both sections are invariant, so this coefficient is an
+invariant unit and hence a unit in <span
+class="math inline">\(t_j\)</span>. At the cusp write <span
+class="math inline">\(\Theta=t_c^{-1}c_0(t_c)\)</span>, where <span
+class="math inline">\(c_0\)</span> is a unit. The coefficient of (3.6)
+relative to (3.3) is <span class="math inline">\(t_cc_0^{-1}\)</span>,
+which has a simple zero.</p>
+<p>Thus (3.6) is a holomorphic section of <span
+class="math inline">\(\mathfrak K\)</span> with exact divisor <span
+class="math inline">\(p_0\)</span>. Sending the distinguished divisor
+section to <span class="math inline">\(\mathsf e\)</span> specifies
+<span class="math display">\[
+\mathfrak K\simeq\mathcal O_B(p_0).
+\tag{3.8}
+\]</span></p>
+<h2 id="canonical-divisor">4. The canonical divisor, with the base
+coordinate retained</h2>
+<p><strong>Theorem 4.1.</strong> Evaluation (1.3) has zero divisor <span
+class="math inline">\(2S_2\)</span>. With the choices below, <span
+class="math display">\[
+\omega_X\simeq f^*\mathcal O_B(-p_2)\otimes\mathcal O_X(2S_2)
+\simeq\mathcal O_X(-2S_2),
+\qquad
+\omega_X^{-2}\simeq f^*\mathcal O_B(p_2).
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> On the finite cover, evaluation of the
+generator (2.13) is <span
+class="math inline">\(s_j^{k_j}\vartheta&#39;_j\)</span> in the
+nowhere-zero frame <span
+class="math inline">\(\vartheta&#39;_j\)</span>. It has order <span
+class="math inline">\(k_j\)</span> along <span
+class="math inline">\(\{s_j=0\}\)</span>. Étale descent gives <span
+class="math inline">\(k_jS_j\)</span>. On smooth fibres the volume form
+has no zeros; at the cusp (3.3) evaluates to a frame. These open sets
+cover <span class="math inline">\(X\)</span>, so no further component
+occurs: <span class="math display">\[
+\operatorname{div}(\operatorname{ev})=0S_1+2S_2+0W=2S_2.
+\tag{4.2}
+\]</span> A nonzero map of line bundles <span class="math inline">\(L\to
+M\)</span> with divisor <span class="math inline">\(D\)</span>
+identifies <span class="math inline">\(M=L\otimes\mathcal O(D)\)</span>:
+in local frames the map is a function <span
+class="math inline">\(a\)</span>, and multiplying the local frame <span
+class="math inline">\(a^{-1}\)</span> of <span
+class="math inline">\(\mathcal O(D)\)</span> into its image gives the
+frame of <span class="math inline">\(M\)</span>. Apply this construction
+to (1.3) and then tensor by <span
+class="math inline">\(f^*\omega_B\)</span>: <span
+class="math display">\[
+\omega_X\simeq f^*(\mathfrak K\otimes\omega_B)\otimes\mathcal O_X(2S_2).
+\tag{4.3}
+\]</span></p>
+<p>Specify the rational function and differential <span
+class="math display">\[
+h_B=\frac1{t-1},\qquad
+\eta_B=\frac{dt}{(t-1)^2}.
+\tag{4.4}
+\]</span> At infinity, with <span class="math inline">\(w=1/t\)</span>,
+these are <span class="math inline">\(w/(1-w)\)</span> and <span
+class="math inline">\(-dw/(1-w)^2\)</span>. Hence <span
+class="math display">\[
+\operatorname{div}(h_B)=p_0-p_2,\qquad
+\operatorname{div}(\eta_B)=-2p_2.
+\tag{4.5}
+\]</span> The differential specifies <span
+class="math inline">\(\omega_B\simeq\mathcal O_B(-2p_2)\)</span>. By
+(3.8), the base line in (4.3) is <span class="math inline">\(\mathcal
+O_B(p_0-2p_2)\)</span>. Multiplication by the actual function <span
+class="math inline">\(h_B\)</span> maps it isomorphically to <span
+class="math inline">\(\mathcal O_B(-p_2)\)</span>: under (1.1),
+multiplication by a function of divisor <span
+class="math inline">\(E\)</span> changes <span
+class="math inline">\(D\)</span> to <span
+class="math inline">\(D-E\)</span>.</p>
+<p>Pulling back this specified map and using <span
+class="math inline">\(f^*(p_2)=4S_2\)</span> gives <span
+class="math display">\[
+\omega_X\simeq\mathcal O_X(-4S_2+2S_2)=\mathcal O_X(-2S_2).
+\tag{4.6}
+\]</span> Taking the inverse square gives <span
+class="math inline">\(\mathcal O_X(4S_2)=f^*\mathcal O_B(p_2)\)</span>,
+with its induced identification. ∎</p>
+<p>There are two separate maps in this calculation: the quotient <span
+class="math inline">\(q_j\)</span> is étale and therefore preserves
+divisor orders; the base map <span class="math inline">\(s_j\mapsto
+s_j^{m_j}\)</span> has ramification factor <span
+class="math inline">\(m_js_j^{m_j-1}\)</span>. Equation (2.14) proves
+their exact relation.</p>
+<h2 id="vertical-direct-image">5. Direct images for every positive and
+negative divisor coefficient</h2>
+<p><strong>Theorem 5.1.</strong> For every integer <span
+class="math inline">\(k\)</span>, equality as subsheaves of meromorphic
+functions, via pullback, is <span class="math display">\[
+f_*\mathcal O_X(kS_2)=
+\mathcal O_B\bigl(\lfloor k/4\rfloor p_2\bigr).
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> A section <span
+class="math inline">\(a\)</span> on <span
+class="math inline">\(f^{-1}(U)\)</span> is a meromorphic function with
+<span class="math inline">\(\operatorname{div}(a)+kS_2\geq0\)</span>.
+Away from <span class="math inline">\(S_2\)</span> it is holomorphic.
+Lemma 1.1 therefore gives a unique holomorphic base function on <span
+class="math inline">\(U\setminus\{p_2\}\)</span>.</p>
+<p>Near <span class="math inline">\(p_2\)</span>, pull back to <span
+class="math inline">\(J&#39;_2\)</span>. The function <span
+class="math inline">\(s_2^kq_2^*a\)</span> is holomorphic by its divisor
+bound; this statement also applies when <span
+class="math inline">\(k&lt;0\)</span>, in which case it expresses
+required vanishing of <span class="math inline">\(q_2^*a\)</span>. On
+punctured fibres the coefficient is already constant. The zero section
+gives a holomorphic function <span
+class="math inline">\(H(s_2)\)</span>, and equality with its pullback
+follows on the whole cover by density. Thus <span
+class="math inline">\(q_2^*a=s_2^{-k}H(s_2)\)</span> is a meromorphic
+function of <span class="math inline">\(s_2\)</span> with a Laurent
+series bounded below.</p>
+<p>Its quotient invariance is <span
+class="math inline">\(a(\zeta_2s_2)=a(s_2)\)</span>. Uniqueness of
+Laurent coefficients leaves only powers divisible by four. Consequently
+it equals <span class="math inline">\(b(s_2^4)\)</span>, with <span
+class="math inline">\(b\)</span> meromorphic in <span
+class="math inline">\(t_2\)</span>. The order inequality becomes <span
+class="math display">\[
+4\operatorname{ord}_{p_2}(b)+k\geq0
+\quad\Longleftrightarrow\quad
+\operatorname{ord}_{p_2}(b)\geq-\lfloor k/4\rfloor .
+\tag{5.2}
+\]</span> Conversely any base function with (5.2) pulls back to an
+allowed section. The extension agrees with the function already obtained
+on the punctured base; uniqueness makes these constructions compatible
+with restrictions and overlaps. This proves the sheaf equality. ∎</p>
+<p>For example <span class="math inline">\(k=-1,-2,-3,-4\)</span> all
+require one zero on the base. The value at <span
+class="math inline">\(k=-5\)</span> requires two. Positive <span
+class="math inline">\(k=1,2,3\)</span> permits no base pole; <span
+class="math inline">\(k=4\)</span> permits one. These jumps encode the
+original multiplicity four.</p>
+<p><strong>Corollary 5.2.</strong> For <span
+class="math inline">\(m\geq0\)</span>, <span class="math display">\[
+h^0(X,\omega_X^{-m})=\lfloor m/2\rfloor+1.
+\tag{5.3}
+\]</span> For every <span class="math inline">\(m&gt;0\)</span>, <span
+class="math inline">\(H^0(X,\omega_X^m)=0\)</span>.</p>
+<p><strong>Proof.</strong> By (4.6) and (5.1), the two direct images are
+<span class="math display">\[
+f_*\omega_X^{-m}=\mathcal O_B(\lfloor m/2\rfloor p_2),\qquad
+f_*\omega_X^m=\mathcal O_B(\lfloor-m/2\rfloor p_2).
+\tag{5.4}
+\]</span> For <span class="math inline">\(d\geq0\)</span>, the functions
+<span class="math display">\[
+1,\ (t-1)^{-1},\ldots,(t-1)^{-d}
+\tag{5.5}
+\]</span> are a basis of <span class="math inline">\(H^0(B,\mathcal
+O_B(dp_2))\)</span>. Indeed subtracting the finite principal part of a
+section at <span class="math inline">\(p_2\)</span> leaves a holomorphic
+function on the compact sphere, hence a constant. Independence follows
+from the distinct Laurent orders. For <span
+class="math inline">\(d&lt;0\)</span>, an allowed section is a globally
+holomorphic function with a positive-order zero at <span
+class="math inline">\(p_2\)</span>, hence is zero. Formula (5.4) now
+proves the assertions, including odd positive <span
+class="math inline">\(m\)</span> and all their ceiling signs. ∎</p>
+<h2 id="complete-graded-ring">6. Multiplication in the complete
+anticanonical ring</h2>
+<p>Fix the specific isomorphism <span
+class="math inline">\(\alpha:\omega_X^{-1}\to\mathcal O_X(2S_2)\)</span>
+obtained in Section 4. Let <span class="math inline">\(u\)</span> be the
+section corresponding to the divisor section <span
+class="math inline">\(1\)</span>. Its zero divisor is <span
+class="math inline">\(2S_2\)</span>.</p>
+<p>Write <span class="math inline">\(\sigma_{p_2}=1\)</span> for the
+distinguished section of <span class="math inline">\(\mathcal
+O_B(p_2)\)</span>. Under the induced degree-two isomorphism, <span
+class="math display">\[
+u^2=f^*\sigma_{p_2}.
+\tag{6.1}
+\]</span> Choose <span class="math display">\[
+\ell=\frac A{t-1}+B,\qquad A\in\mathbb C^*,\quad B\in\mathbb C,
+\tag{6.2}
+\]</span> as a second section of that same bundle. Its value at <span
+class="math inline">\(p_2\)</span> in the local frame <span
+class="math inline">\((t-1)^{-1}\)</span> is <span
+class="math inline">\(A\)</span>, so it does not vanish there. Let <span
+class="math inline">\(v\in H^0(X,\omega_X^{-2})\)</span> correspond to
+<span class="math inline">\(f^*\ell\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> The homomorphism <span
+class="math display">\[
+\Phi:\mathbb C[U,V]\longrightarrow R(X,-K_X),\qquad
+U\longmapsto u,\quad V\longmapsto v,\quad \deg U=1,\ \deg V=2
+\tag{6.3}
+\]</span> is an isomorphism of graded <span
+class="math inline">\(\mathbb C\)</span>-algebras.</p>
+<p><strong>Proof.</strong> For <span
+class="math inline">\(m=2r\)</span>, the degree-<span
+class="math inline">\(m\)</span> monomials are <span
+class="math inline">\(U^{2r-2j}V^j\)</span>, <span
+class="math inline">\(0\leq j\leq r\)</span>. Their images correspond to
+<span class="math display">\[
+f^*(\sigma_{p_2}^{\,r-j}\ell^j),\qquad 0\leq j\leq r.
+\tag{6.4}
+\]</span> In the meromorphic-function convention these are the
+polynomials <span class="math inline">\((A/(t-1)+B)^j\)</span>. Their
+coefficient matrix in the ordered basis (5.5) is triangular, with
+diagonal entries <span class="math inline">\(1,A,\ldots,A^r\)</span>,
+all nonzero. They are therefore exactly a basis of the entire section
+space.</p>
+<p>For <span class="math inline">\(m=2r+1\)</span>, the degree-<span
+class="math inline">\(m\)</span> monomials are <span
+class="math inline">\(U^{2r+1-2j}V^j\)</span>. Their images are <span
+class="math inline">\(u\)</span> times (6.4). Multiplication by the
+divisor section gives <span class="math display">\[
+H^0(X,\mathcal O_X(4rS_2))
+\xrightarrow{\ \cdot1\ }
+H^0(X,\mathcal O_X((4r+2)S_2)).
+\tag{6.5}
+\]</span> By (5.1) both sides consist of exactly the same base
+meromorphic functions, with pole order at most <span
+class="math inline">\(r\)</span>. Thus (6.5) is an isomorphism, and
+these odd-degree images are a basis as well.</p>
+<p>The multiplication is preserved by construction, since <span
+class="math inline">\(\Phi\)</span> sends generators to sections and
+takes their actual tensor products. Every homogeneous component maps
+bijectively. An arbitrary polynomial is a finite sum of homogeneous
+polynomials, and the target is a direct sum by degree; a relation would
+give a relation in each of the bases just proved. The kernel is zero and
+every section is in the image. ∎</p>
+<p>The resulting dimensions, multiplication and generator weights are
+all part of the assertion. A list of dimensions alone would not
+establish the absence of relations in (6.3).</p>
+<p>The choices also have exact effects. Replacing <span
+class="math inline">\(\ell\)</span> by <span
+class="math inline">\(a\ell+b\sigma_{p_2}\)</span>, with <span
+class="math inline">\(a\ne0\)</span>, changes <span
+class="math display">\[
+(u,v)\longmapsto(u,av+bu^2).
+\tag{6.6}
+\]</span> Replacing <span class="math inline">\(\alpha\)</span> by <span
+class="math inline">\(c\alpha\)</span>, <span
+class="math inline">\(c\ne0\)</span>, changes the sections corresponding
+to the fixed divisor and base sections by <span class="math display">\[
+(u,v)\longmapsto(c^{-1}u,c^{-2}v).
+\tag{6.7}
+\]</span> These equalities retain both constants and the term <span
+class="math inline">\(bu^2\)</span>.</p>
+<h2 id="intrinsic-fibration">7. Recovering the map and its multiple
+fibres</h2>
+<p><strong>Theorem 7.1.</strong> The complete degree-two linear system
+is base-point-free and defines <span class="math display">\[
+\phi_{|-2K_X|}(x)
+=[u(x)^2:v(x)]
+=[\sigma_{p_2}(f(x)):\ell(f(x))]
+=\beta(f(x)),
+\tag{7.1}
+\]</span> where <span class="math display">\[
+\beta(t)=[t-1:A+B(t-1)].
+\tag{7.2}
+\]</span> The morphism <span class="math inline">\(\beta:B\to\mathbb
+P^1\)</span> is an isomorphism. The degree-one system has the unique
+effective divisor <span class="math inline">\(2S_2\)</span>.</p>
+<p><strong>Proof.</strong> In the frame <span
+class="math inline">\((t-1)^{-1}\)</span>, the sections <span
+class="math inline">\(\sigma_{p_2},\ell\)</span> have coefficients <span
+class="math inline">\(t-1,A+B(t-1)\)</span>. They never vanish
+simultaneously, since the second is <span
+class="math inline">\(A\ne0\)</span> when the first is zero. This
+includes <span class="math inline">\(p_2\)</span>, whose image is <span
+class="math inline">\([0:A]\)</span>. At infinity, using the regular
+frame of <span class="math inline">\(\mathcal O_B(p_2)\)</span>, their
+values are <span class="math inline">\(1,B\)</span>; the image is <span
+class="math inline">\([1:B]\)</span>. Thus the pulled-back pencil also
+has no base point.</p>
+<p>Writing <span class="math inline">\(t=T_0/T_1\)</span>, (7.2) is
+induced by <span class="math display">\[
+\begin{pmatrix}1&amp;-1\\ B&amp;A-B\end{pmatrix}
+\begin{pmatrix}T_0\\T_1\end{pmatrix},
+\qquad \det=A\ne0.
+\tag{7.3}
+\]</span> It is a projective-coordinate isomorphism, with inverse <span
+class="math display">\[
+[Z_0:Z_1]\longmapsto[Z_1+(A-B)Z_0:Z_1-BZ_0].
+\tag{7.4}
+\]</span> Substitution verifies both compositions, with their common
+nonzero scalar <span class="math inline">\(A\)</span> retained in the
+underlying matrices. Equation (7.1) now follows from the very
+definitions (6.1)–(6.2). In degree one Corollary 5.2 gives a
+one-dimensional space, generated by <span
+class="math inline">\(u\)</span>, whose divisor is <span
+class="math inline">\(2S_2\)</span>. ∎</p>
+<p>In particular, the fibre of (7.1) over <span
+class="math inline">\(\beta(p_j)\)</span> is the original
+scheme-theoretic fibre <span class="math inline">\(m_jS_j\)</span>, not
+merely its support. For a local coordinate <span
+class="math inline">\(z\)</span> vanishing at <span
+class="math inline">\(\beta(p_j)\)</span>, the function <span
+class="math inline">\(z\circ\beta\)</span> has a simple zero at <span
+class="math inline">\(p_j\)</span>, because <span
+class="math inline">\(\beta\)</span> is a local isomorphism. Its
+pullback has divisor <span
+class="math inline">\(f^*(p_j)=m_jS_j\)</span>. The same argument
+retains the reduced cusp <span class="math inline">\(W\)</span>.</p>
+<p><strong>Corollary 7.2.</strong> A biholomorphism <span
+class="math inline">\(F:X\to X&#39;\)</span> between two threefolds of
+this construction sends their original fibrations to each other by a
+unique base isomorphism <span class="math inline">\(b:B\to
+B&#39;\)</span>: <span class="math display">\[
+f&#39;\circ F=b\circ f.
+\tag{7.5}
+\]</span> When both bases carry the original labels <span
+class="math inline">\(p_0=\infty,p_1=0,p_2=1\)</span>, this base
+isomorphism fixes all three points and is the identity.</p>
+<p><strong>Proof.</strong> Pullback of differential forms along <span
+class="math inline">\(F\)</span> identifies the canonical line bundles
+and their tensor powers; it gives an isomorphism of the entire graded
+section rings and of the evaluation maps. In degree two it identifies
+the two-dimensional complete systems. Their projective maps therefore
+differ by an invertible projective linear map. Substitute (7.1) for each
+threefold and compose with the two explicit inverses (7.4); this
+constructs <span class="math inline">\(b\)</span> and proves (7.5).
+Uniqueness follows from surjectivity of <span
+class="math inline">\(f\)</span>.</p>
+<p>An isomorphism preserves the scheme-theoretic multiplicity of each
+fibre, since it preserves local orders of functions. It also preserves
+whether the reduced fibre is smooth and normal. The non-normal cusp
+<span class="math inline">\(W\)</span>, the smooth reduced fibre with
+multiplicity three, and the smooth reduced fibre with multiplicity four
+are consequently preserved with their respective labels. Hence <span
+class="math inline">\(b\)</span> fixes <span
+class="math inline">\(\infty,0,1\)</span>. A fractional linear map
+fixing these points has zero translation, zero denominator coefficient
+and multiplier one, so it is the identity. ∎</p>
+<p>This is the intrinsic map needed in the marked comparison of lesson
+9. It is proved directly from canonical sections; no assertion about the
+full meromorphic function field of <span
+class="math inline">\(X\)</span> was required.</p>
+<figure id="canonical-diagram">
+<img src="assets/canonical-ring-fibration.svg"
+class="compact-diagram"
+alt="The original finite characters, evaluation divisor, graded ring and recovered fibration" />
+<figcaption aria-hidden="true">The original finite characters,
+evaluation divisor, graded ring and recovered fibration</figcaption>
+</figure>
+<p>Figure 1. The arrows record the actual deductions in Sections 2–7.
+The last row retains every fibre multiplicity. This is a diagram of maps
+and divisors, not a geometric embedding of the six-manifold. The
+reproducible source is <a href="checks/draw_canonical_ring.py">the
+figure script</a>.</p>
+<h2 id="solved-exercises">8. Four worked exercises</h2>
+<h3
+id="exercise-8.1.-the-coefficient-that-a-ramified-base-conceals">Exercise
+8.1. The coefficient that a ramified base conceals</h3>
+<p>For each <span class="math inline">\((m,a)=(3,2),(4,1)\)</span>,
+solve the invariance condition for a holomorphic coefficient multiplying
+<span class="math inline">\((ds\wedge e)\otimes(dt)^{-1}\)</span>, after
+the unit correction, and determine both its total-space vanishing order
+and its expression over <span class="math inline">\(s\ne0\)</span>.</p>
+<p><strong>Solution.</strong> If <span
+class="math inline">\(F(s)=\sum_{n\geq0}b_ns^n\)</span>, invariance
+requires <span class="math inline">\(b_n(\zeta^{n+1+a}-1)=0\)</span>.
+The least possible exponent is <span
+class="math inline">\(k=m-1-a\)</span>, namely <span
+class="math inline">\(0\)</span> and <span
+class="math inline">\(2\)</span>. Every allowed <span
+class="math inline">\(F\)</span> is <span
+class="math inline">\(s^kH(s^m)\)</span>. The module generator on the
+cover is <span class="math inline">\(s^ke^{\varphi(s)}(ds\wedge
+e)\otimes(dt)^{-1}\)</span>, with divisor <span
+class="math inline">\(k\{s=0\}\)</span>. The total-space quotient is
+étale, so its descended divisor is <span
+class="math inline">\(kS\)</span>. Over <span
+class="math inline">\(s\ne0\)</span>, the unchanged differential <span
+class="math inline">\(dt=ms^{m-1}ds\)</span> gives <span
+class="math display">\[
+\frac{e^{\varphi(s)}}3s^{-2}e
+\quad\hbox{and}\quad
+\frac{e^{\varphi(s)}}4s^{-1}e,
+\tag{8.1}
+\]</span> respectively. The apparent negative powers in (8.1) are
+expressions in the smooth-fibre frame, while the original relative
+bundle frames are (2.11). The exact map (2.14) relates them.</p>
+<h3 id="exercise-8.2.-negative-orders-and-odd-tensor-powers">Exercise
+8.2. Negative orders and odd tensor powers</h3>
+<p>Compute the base divisor in (5.1) for <span
+class="math inline">\(k=-9,-8,\ldots,9\)</span>. Determine the fixed
+divisor of the complete anticanonical system in each positive
+degree.</p>
+<p><strong>Solution.</strong> For the consecutive listed values of <span
+class="math inline">\(k\)</span>, the floor coefficients are <span
+class="math display">\[
+-3,-2,-2,-2,-2,-1,-1,-1,-1,0,0,0,0,1,1,1,1,2,2.
+\tag{8.2}
+\]</span> For degree <span class="math inline">\(2r\)</span>, the
+sections in (6.4) form the pullback of the complete degree-<span
+class="math inline">\(r\)</span> system on the base. At any base point
+at least one such monomial is nonzero: use a nonvanishing member of the
+pair <span class="math inline">\(\sigma_{p_2},\ell\)</span> and raise it
+to the <span class="math inline">\(r\)</span>-th power. Its pullback is
+nonvanishing at every point of that fibre. Thus the even-degree system
+has no fixed divisor or base point.</p>
+<p>For degree <span class="math inline">\(2r+1\)</span>, all sections
+are <span class="math inline">\(u\)</span> times that even system by
+(6.5), so every section vanishes along <span
+class="math inline">\(2S_2\)</span>. After dividing by the specific
+divisor section <span class="math inline">\(u\)</span>, the resulting
+complete system has no base point, by the preceding argument. The fixed
+divisor is therefore exactly <span class="math inline">\(2S_2\)</span>,
+including when <span class="math inline">\(r=0\)</span>. No additional
+component or higher multiplicity can be fixed.</p>
+<h3
+id="exercise-8.3.-hilbert-series-and-all-graded-coordinate-changes">Exercise
+8.3. Hilbert series and all graded coordinate changes</h3>
+<p>Compute the Hilbert series of <span
+class="math inline">\(R(X,-K_X)\)</span>, and determine every graded
+algebra automorphism in the generators <span
+class="math inline">\(U,V\)</span>.</p>
+<p><strong>Solution.</strong> Counting the monomials gives an equality
+of formal power series <span class="math display">\[
+\sum_{m\geq0}(\lfloor m/2\rfloor+1)z^m
+=\sum_{a,b\geq0}z^{a+2b}
+=\frac1{(1-z)(1-z^2)}.
+\tag{8.3}
+\]</span> The degree-one vector space has basis <span
+class="math inline">\(U\)</span>, so any graded automorphism sends <span
+class="math inline">\(U\)</span> to <span
+class="math inline">\(cU\)</span>, <span
+class="math inline">\(c\ne0\)</span>. The degree-two space has basis
+<span class="math inline">\(U^2,V\)</span>. Its quotient by the square
+of degree one is one-dimensional, so <span
+class="math inline">\(V\)</span> must map to <span
+class="math inline">\(aV+bU^2\)</span>, with <span
+class="math inline">\(a\ne0\)</span>. Conversely these assignments
+define an automorphism; its inverse sends <span class="math display">\[
+U\longmapsto c^{-1}U,\qquad
+V\longmapsto a^{-1}V-\frac{b}{ac^2}U^2.
+\tag{8.4}
+\]</span> Substituting into both compositions proves the inverse
+exactly. Thus the complete list is <span class="math inline">\(U\mapsto
+cU,\ V\mapsto aV+bU^2\)</span>, with <span
+class="math inline">\(a,c\in\mathbb C^*\)</span> and <span
+class="math inline">\(b\in\mathbb C\)</span>.</p>
+<h3
+id="exercise-8.4.-every-degree-two-member-with-its-multiplicity">Exercise
+8.4. Every degree-two member with its multiplicity</h3>
+<p>Let <span class="math inline">\(\lambda,\mu\in\mathbb C\)</span> be
+not both zero. Find the entire zero divisor of <span
+class="math inline">\(\lambda u^2+\mu v\)</span>, including its
+exceptional cases.</p>
+<p><strong>Solution.</strong> Its base section is <span
+class="math display">\[
+\lambda\sigma_{p_2}+\mu\ell
+=(\lambda+\mu B)+\frac{\mu A}{t-1}.
+\tag{8.5}
+\]</span> If <span class="math inline">\(\mu=0\)</span>, its zero as a
+section of <span class="math inline">\(\mathcal O_B(p_2)\)</span> is
+<span class="math inline">\(p_2\)</span>; the zero divisor on <span
+class="math inline">\(X\)</span> is <span
+class="math inline">\(4S_2\)</span>. If <span
+class="math inline">\(\mu\ne0\)</span> and <span
+class="math inline">\(\lambda+\mu B=0\)</span>, it is <span
+class="math inline">\(\mu A/(t-1)\)</span>. In the regular frame at
+infinity it has one simple zero there; it is nonzero at <span
+class="math inline">\(p_2\)</span> in the frame <span
+class="math inline">\((t-1)^{-1}\)</span>. Its divisor is <span
+class="math inline">\(p_0\)</span>, and the pulled-back divisor is <span
+class="math inline">\(W\)</span>. In all other cases its unique zero is
+<span class="math display">\[
+t_*=1-\frac{\mu A}{\lambda+\mu B}.
+\tag{8.6}
+\]</span> The zero is simple because the numerator in the local frame is
+a nonconstant linear polynomial. Its divisor on <span
+class="math inline">\(X\)</span> is exactly <span
+class="math inline">\(f^*(t_*)\)</span>: this is <span
+class="math inline">\(3S_1\)</span> when <span
+class="math inline">\(t_*=0\)</span>, and a reduced smooth torus fibre
+when <span class="math inline">\(t_*\notin\{0,1,\infty\}\)</span>. The
+case <span class="math inline">\(t_*=1\)</span> cannot occur here, since
+<span class="math inline">\(\mu A\ne0\)</span>. This lists every member
+and every multiplicity.</p>
+<h2 id="sources">9. Sources and the boundary of this lesson</h2>
+<p>The retained programme proofs are <em>Structure-sheaf direct images
+and uniform non-torsion</em>, equations (9.2)–(9.6), and <em>The
+canonical divisor and the exact anticanonical ring</em>, (CR1)–(CR5).
+Their complete source files are in the <a
+href="https://zenodo.org/records/22678442/files/28_s6_complete_public_project_frozen_2026-09-06.zip">frozen
+public project archive</a>, at the paths ending in analytic_picard.tex
+and analytic_canonical_ring.tex inside
+project/supporting_materials/workbench/research/. The first file was
+read through its entire determinant/Hodge-line argument; the second was
+read completely. The present lesson supplies independently written
+receiving proofs, with the coefficient module, exact base changes and
+every graded multiplication included.</p>
+<p>For the modular functions and their branch data, the direct
+prerequisite is <a
+href="CG-S6-04.html#global-mu">lesson
+4</a>, especially its construction of <span
+class="math inline">\(\Theta\)</span>. Its checked LG-MF providers are
+cited there with fixed public commits. For the free finite covers and
+cusp volume form, the direct prerequisites are <a
+href="CG-S6-03.html">lesson 3</a> and <a
+href="CG-S6-05.html">lesson 5</a>.</p>
+<p>Philip Engel’s <a href="https://arxiv.org/abs/2609.38442v1">Complex
+structures on <span class="math inline">\(S^6\)</span>,
+arXiv:2609.38442v1</a>, original-author source lines 1645–1682,
+discusses the varying parameter and an intrinsic fibration via algebraic
+dimension. The canonical-ring route here is the retained programme
+argument just cited; it does not attribute that argument to Engel. His
+conjectural central limit in those remarks is not proved by this
+lesson.</p>
+<p>The Picard-coordinate expressions <span
+class="math inline">\(\mathcal O_X(S_1)=L_4,\ \mathcal O_X(S_2)=L_3,\
+\omega_X=L_{-6}\)</span> require the separate full analytic Picard
+calculation with its original choice <span
+class="math inline">\(L_{12}=f^*\mathcal O_B(1)\)</span>. The divisor
+and ring proofs in this lesson use their explicit sheaves and do not
+presume that later comparison.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

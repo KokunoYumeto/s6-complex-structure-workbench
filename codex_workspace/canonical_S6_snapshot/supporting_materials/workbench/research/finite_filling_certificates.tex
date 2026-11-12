@@ -1,0 +1,760 @@
+% Complete finite-filling certificates, retaining the original marked periods.
+% Host prerequisites: candidate_geometry.tex, exact_algebra.tex;
+% normal-line comparison: analytic_picard.tex. No package or macro definitions.
+\subsection{Exact product covers, normalization branches, and peripheral kernels of the finite fillings}
+\label{ffcert:sec:finite-fillings}
+
+We retain the actual period functions and finite fillings of
+\cref{prop:period-input-audit,prop:monodromy-certificate,%
+prop:candidate-finite-fillings}. The following explicit product maps
+describe the original central tori and surfaces, not replacements of
+their periods. We also identify the complete varying family as the
+normalization of the actual ramified base change, compute the entire
+peripheral inclusion kernel, and give a smooth trivialization of the
+finite normal line. These calculations use no sphere identification,
+global integral cohomology, or CDP theorem. The separate period and cusp
+constructions retain their own proofs and are not inferred from these
+finite-local calculations.
+
+\subsubsection{The original lattice, periods, and their complex summands}
+
+Use the ordered marked lattice and its dual basis
+\[
+ \Lambda=\mathbb Z\langle\widehat\gamma,\widehat u,
+            \widehat w,\widehat\delta\rangle,
+ \qquad \Lambda^*=\mathbb Z\langle\gamma,u,w,\delta\rangle.
+ \tag{FF1}\label{ffcert:eq:marking}
+\]
+In these original column coordinates the matrices and translations are
+\[
+\begin{gathered}
+ A_1=\begin{pmatrix}1&0&0&0\\6&0&1&0\\-6&-1&-1&0\\-2&1&0&1\end{pmatrix},
+ \qquad
+ A_2=\begin{pmatrix}1&0&0&0\\0&0&-1&0\\-6&1&0&0\\3&0&1&1\end{pmatrix},\\
+ \varepsilon=(1,2,-4,0)^{\mathsf t},\quad
+ \varepsilon'=(1,3,-3,0)^{\mathsf t},\quad
+ v_1=\varepsilon,\quad v_2=-\varepsilon',\quad (m_1,m_2)=(3,4).
+\end{gathered}
+\tag{FF2}\label{ffcert:eq:matrices-translations}
+\]
+They satisfy $A_j^{m_j}=I$, $A_jv_j=v_j$, and
+$\gamma A_j=\gamma$, with $\gamma(v_1)=1$ and $\gamma(v_2)=-1$.
+Retain the entire period matrix
+\[
+ \Pi(z)=\begin{pmatrix}6\mu(z)&\tau(z)&1&0\\
+                         \beta(z)&\mu(z)&0&1\end{pmatrix},
+ \qquad
+ D(z)=\operatorname{Im}\beta(z)
+       -\frac{6(\operatorname{Im}\mu(z))^2}{\operatorname{Im}\tau(z)}<0.
+ \tag{FF3}\label{ffcert:eq:periods}
+\]
+At the original elliptic centres let
+\[
+\begin{gathered}
+ \rho=e^{\pi i/3},\quad \tau(z_1)=\rho,\quad \tau(z_2)=i,
+ \quad \mu_1:=\mu(z_1)=\frac{2-\rho}{3},\quad
+ \mu_2:=\mu(z_2)=\frac{1-i}{2},\\
+ \beta_j=\beta(z_j),\qquad
+ \kappa_1=\beta_1+2\mu_1,\qquad
+ \kappa_2=\beta_2+3\mu_2.
+\end{gathered}
+\tag{FF4}\label{ffcert:eq:central-parameters}
+\]
+Neither $\beta_j$ nor either of its real components is adjusted.
+Since $\operatorname{Im}\mu_1=-\operatorname{Im}\rho/3$ and
+$\operatorname{Im}\mu_2=-1/2$, the exact inequalities are
+\[
+ \operatorname{Im}\kappa_1
+ =\operatorname{Im}\beta_1-\tfrac23\operatorname{Im}\rho=D(z_1)<0,
+ \qquad
+ \operatorname{Im}\kappa_2
+ =\operatorname{Im}\beta_2-\tfrac32=D(z_2)<0.
+ \tag{FF5}\label{ffcert:eq:negative-orientation}
+\]
+Thus $(1,\kappa_j)$ is real-linearly independent with its original
+negative imaginary orientation. No conjugation or positive-imaginary
+replacement is made.
+
+Put $\delta_*:=\widehat\delta$ and define
+\[
+\begin{aligned}
+ e_1&=(0,1,-2,0)^{\mathsf t},&f_1&=(0,0,-3,1)^{\mathsf t},\\
+ e_2&=(0,1,-1,0)^{\mathsf t},&f_2&=(0,0,-2,1)^{\mathsf t}.
+\end{aligned}
+\tag{FF6}\label{ffcert:eq:moving-generators}
+\]
+
+\begin{proposition}[The full fixed and moving integral lattices]
+\label{ffcert:prop:integral-summands}
+The exact fixed and image lattices are
+\[
+\begin{aligned}
+ \Lambda^{A_1}&=\mathbb Z\varepsilon\oplus\mathbb Z\delta_*,&
+ (A_1-I)\Lambda&=\mathbb Ze_1\oplus\mathbb Zf_1,\\
+ \Lambda^{A_2}&=\mathbb Z\varepsilon'\oplus\mathbb Z\delta_*,&
+ (A_2-I)\Lambda&=\mathbb Ze_2\oplus\mathbb Zf_2.
+\end{aligned}
+\tag{FF7}\label{ffcert:eq:integral-summands}
+\]
+The image lattices are saturated, with complete annihilators
+\[
+\begin{gathered}
+ \operatorname{Ann}((A_1-I)\Lambda)
+ =\mathbb Z\gamma\oplus\mathbb Z\psi_1,
+ \quad \psi_1=2u+w+3\delta,\\
+ \operatorname{Ann}((A_2-I)\Lambda)
+ =\mathbb Z\gamma\oplus\mathbb Z\psi_2,
+ \quad \psi_2=u+w+2\delta,\\
+ \det[\varepsilon,\delta_*,e_1,f_1]=-3,
+ \qquad \det[\varepsilon',\delta_*,e_2,f_2]=-2.
+\end{gathered}
+\tag{FF8}\label{ffcert:eq:annihilators-indices}
+\]
+In particular the sum of the fixed and moving lattices is not being
+asserted to be all of $\Lambda$.
+\end{proposition}
+
+\begin{proof}
+Solving $(A_1-I)(a,b,c,d)^{\mathsf t}=0$ gives $b=2a,c=-4a$;
+the second equation gives $b=3a,c=-3a$. In both cases $a,d$ are arbitrary
+integers. The columns of the two image matrices are, in order,
+\[
+ \begin{aligned}
+ A_1-I &: \quad 6e_1-2f_1,\ -e_1+f_1,\ e_1,\ 0,\\
+ A_2-I &: \quad 3f_2,\ -e_2,\ -e_2+f_2,\ 0.
+ \end{aligned}
+ \tag{FF9}\label{ffcert:eq:image-columns}
+\]
+These columns generate precisely the two stated image lattices. The first
+is exactly the set of integer columns satisfying $a=0$ and
+$2b+c+3d=0$: such a column is $be_1+df_1$. The second is exactly
+the set satisfying $a=0$ and $b+c+2d=0$, with the analogous expression
+$be_2+df_2$. They are therefore saturated. Their annihilators are the
+displayed full integer spans: in the first case an annihilating row has
+coefficients $(a,2c,c,3c)$, and in the second $(a,c,c,2c)$.
+Expansion of the two four-by-four determinants gives $-3$ and $-2$.
+\end{proof}
+
+The complex images under the unchanged periods are
+\[
+\begin{aligned}
+ \Pi(z_1)\varepsilon&=(0,\kappa_1),&
+ \Pi(z_2)\varepsilon'&=(0,\kappa_2),&
+ \Pi(z_j)\delta_*&=(0,1),\\
+ \Pi(z_1)e_1&=(\rho-2,-(\rho-2)/3),&
+ \Pi(z_1)f_1&=(-3,1),\\
+ \Pi(z_2)e_2&=(i-1,-(i-1)/2),&
+ \Pi(z_2)f_2&=(-2,1).
+\end{aligned}
+\tag{FF10}\label{ffcert:eq:complex-images}
+\]
+For example the first fixed coordinate vanishes because
+$6(2-\rho)/3+2\rho-4=0$ or $6(1-i)/2+3i-3=0$, respectively.
+The fixed real plane consequently maps onto the complex line
+$\{(0,\xi):\xi\in\mathbb C\}$. The moving real planes map onto
+$\{(\eta,-\eta/3)\}$ and $\{(\eta,-\eta/2)\}$, respectively,
+because their displayed period pairs are real-linearly independent.
+These are complementary complex lines in the original $\mathbb C^2$.
+
+\subsubsection{The exact elliptic-product covers of the central tori and surfaces}
+
+Define the one-dimensional complex tori
+\[
+\begin{gathered}
+ E_j=\mathbb C/(\mathbb Z+\kappa_j\mathbb Z),\\
+ F_1=\mathbb C/(\mathbb Z(\rho-2)+\mathbb Z(-3)),\qquad
+ F_2=\mathbb C/(\mathbb Z(i-1)+\mathbb Z(-2)).
+\end{gathered}
+\tag{FF11}\label{ffcert:eq:elliptic-factors}
+\]
+Each period pair is real-linearly independent. Translation by its rank-two
+lattice is free and properly discontinuous; the image of a closed real
+parallelotope covers the quotient, proving compactness. Thus these are
+smooth elliptic curves with the class of zero distinguished.
+
+\begin{theorem}[Product maps onto the original finite central surfaces]
+\label{ffcert:thm:product-covers}
+The complex-linear maps
+\[
+ L_1(\xi,\eta)=(\eta,\xi-\eta/3),\qquad
+ L_2(\xi,\eta)=(\eta,\xi-\eta/2)
+ \tag{FF12}\label{ffcert:eq:addition-maps}
+\]
+induce surjective local biholomorphic group homomorphisms
+\[
+ \ell_j:E_j\times F_j\longrightarrow
+ A_0^{(j)}:=\mathbb C^2/\Pi(z_j)\Lambda,
+ \quad \ker\ell_1=\langle k_1\rangle,
+ \quad \ker\ell_2=\langle k_2\rangle,
+ \tag{FF13}\label{ffcert:eq:torus-covers}
+\]
+where
+\[
+ k_1=(2/3,\rho),\quad \operatorname{ord}(k_1)=3,
+ \qquad k_2=(1/2,i),\quad \operatorname{ord}(k_2)=2.
+ \tag{FF14}\label{ffcert:eq:kernel-points}
+\]
+The following automorphisms lift the original affine generators:
+\[
+ g^{\mathrm{prod}}_1(\xi,\eta)
+   =(\xi+\kappa_1/3,(\rho-1)\eta),\qquad
+ g^{\mathrm{prod}}_2(\xi,\eta)
+   =(\xi-\kappa_2/4,-i\eta).
+ \tag{FF15}\label{ffcert:eq:product-generators}
+\]
+Writing $k_j$ also for translation by that point, their joint groups
+are $\langle k_1,g^{\mathrm{prod}}_1\rangle\cong C_3\times C_3$
+and $\langle k_2,g^{\mathrm{prod}}_2\rangle\cong C_2\times C_4$.
+They act freely, and the original reduced central surfaces are exactly
+\[
+ S_1=(E_1\times F_1)/\langle k_1,g^{\mathrm{prod}}_1\rangle,
+ \qquad
+ S_2=(E_2\times F_2)/\langle k_2,g^{\mathrm{prod}}_2\rangle.
+ \tag{FF16}\label{ffcert:eq:surface-product-covers}
+\]
+The finite \'etale product-cover degrees are $9$ and $8$.
+\end{theorem}
+
+\begin{proof}
+Each $L_j$ has determinant $-1$ in the displayed product and original
+$(\zeta_1,\zeta_2)$ coordinates. Equation~\eqref{ffcert:eq:complex-images}
+shows that the product period lattice maps exactly to the sum of the
+fixed and moving sublattices inside $\Pi(z_j)\Lambda$.
+Thus $L_j$ induces the stated surjective local biholomorphism, and its
+kernel is identified with
+$\Lambda/(\Lambda^{A_j}+(A_j-I)\Lambda)$, of order $3$ or $2$ by
+\eqref{ffcert:eq:annihilators-indices}. Explicitly,
+\[
+ \widehat u=\tfrac23\delta_*+e_1-\tfrac23f_1,
+ \qquad
+ \widehat u=\tfrac12\delta_*+e_2-\tfrac12f_2.
+ \tag{FF17}\label{ffcert:eq:kernel-lifts}
+\]
+Consequently $L_j(k_j)=\Pi(z_j)\widehat u$. The first kernel point
+has order exactly three, since its fixed coordinate does, and
+$3\rho=3(\rho-2)-2(-3)$ is a moving period. The second has order
+exactly two, since its fixed coordinate does, and
+$2i=2(i-1)-(-2)$ is a moving period. These orders equal the full kernel
+cardinalities, proving the complete kernel assertions.
+
+At the centres the original covariance matrices are
+\[
+ R_1=\begin{pmatrix}\rho-1&0\\(2-\rho)/3&1\end{pmatrix},\qquad
+ R_2=\begin{pmatrix}-i&0\\(1+i)/2&1\end{pmatrix}.
+ \tag{FF18}\label{ffcert:eq:central-covariance}
+\]
+They act by $1$ on the fixed lines and by
+$\rho-1=e^{2\pi i/3}$ or $-i$ on the corresponding moving line.
+Substitution gives the full equality of affine maps on $\mathbb C^2$,
+\[
+ L_jg_j^{\mathrm{prod}}
+   =R_jL_j+\Pi(z_j)v_j/m_j.
+ \tag{FF19}\label{ffcert:eq:product-intertwining}
+\]
+In particular the negative translation $-\kappa_2/4$ is forced by
+$v_2=-\varepsilon'$. It has not been replaced by its opposite.
+
+The moving rotations preserve their exact period lattices. For example,
+using $\rho^2=\rho-1$, their images of the two period generators are
+\[
+\begin{aligned}
+ (\rho-1)(\rho-2)&=-2(\rho-2)+(-3),&
+ (\rho-1)(-3)&=-3(\rho-2)+(-3),\\
+ (-i)(i-1)&=(i-1)-(-2),&
+ (-i)(-2)&=2(i-1)-(-2).
+\end{aligned}
+\tag{FF20}\label{ffcert:eq:moving-rotations}
+\]
+The first matrix in these period bases has columns $(-2,1)$ and
+$(-3,1)$, determinant $1$; the second has columns $(1,-1)$ and
+$(2,-1)$, determinant $1$.
+Equivalently, invariance and invertibility follow by applying the finite
+orders of the rotations to these integral period images.
+The kernel classes are fixed by the moving rotations because
+\[
+ (\rho-1)\rho-\rho=-1-\rho=-(\rho-2)+(-3),\qquad
+ (-i)i-i=1-i=-(i-1).
+ \tag{FF21}\label{ffcert:eq:kernel-rotation}
+\]
+Hence the product automorphism commutes with translation by $k_j$ on
+the product torus. It has exact order $m_j$: its moving rotation has
+that order; its $m_j$-th fixed-coordinate translation is
+$\kappa_1$ or $-\kappa_2$; and no smaller positive multiple of that
+translation is a fixed-coordinate period, since $\kappa_j$ is nonreal.
+
+To prove both the direct-product assertion and freeness of the entire
+joint group, put $(d_1,d_2)=(3,2)$, $(c_1,c_2)=(2/3,1/2)$ and
+$(\epsilon_1,\epsilon_2)=(1,-1)$. A fixed point for $k_j^a
+(g_j^{\mathrm{prod}})^b$, with $0\le a<d_j$ and $0\le b<m_j$,
+would require
+\[
+ ac_j+\epsilon_jb\kappa_j/m_j=n+q\kappa_j,
+ \qquad n,q\in\mathbb Z.
+ \tag{FF22}\label{ffcert:eq:joint-freeness}
+\]
+Imaginary parts give $\epsilon_jb/m_j=q$, hence $b=0$. The real
+equality then gives $ac_j\in\mathbb Z$, hence $a=0$ in its stated
+range. Every nonidentity pair is therefore fixed-point free; in
+particular it is not the identity transformation. This proves the
+claimed joint groups. Quotienting first by $k_j$ and then by the lifted
+affine generator gives exactly the original $S_j$ of
+\cref{prop:candidate-finite-fillings}, by
+\eqref{ffcert:eq:product-intertwining}. The total covering degrees are
+$d_jm_j=9,8$ and the actions are free, so the covers are \'etale.
+\end{proof}
+
+\subsubsection{The varying quotient and its full local analytic coordinates}
+
+Retain the original linearizing coordinate $s_j$ on $\Delta_j$, with
+its actual round-disc radius $r_j>0$, and the original phase
+\[
+ s_j(g_jz)=\zeta_js_j(z),\quad
+ \zeta_j=e^{-2\pi i/m_j},\quad t_j=s_j^{m_j},
+ \qquad |s_j|<r_j,\quad |t_j|<r_j^{m_j}.
+ \tag{FF23}\label{ffcert:eq:disc-and-phase}
+\]
+The radius is not replaced by one. On the universal marked cover the
+holomorphic affine map and the exact period covariance are
+\[
+\begin{gathered}
+ \widehat G_j(z,\zeta)
+  =\bigl(g_jz,R_{g_j}(z)\zeta+\Pi(g_jz)v_j/m_j\bigr),\\
+ R_{g_j}(z)\Pi(z)=\Pi(g_jz)A_j,
+ \qquad t_\lambda(z,\zeta)=(z,\zeta+\Pi(z)\lambda).
+\end{gathered}
+\tag{FF24}\label{ffcert:eq:varying-action}
+\]
+Let $G_j$ denote the induced map of the original varying torus family
+$J'_j=(\Delta_j\times\mathbb C^2)/\Lambda$ and put
+$N_j=J'_j/\langle G_j\rangle$, with quotient map $q_j$.
+The real-analytic marking $\Xi(z,x)=(z,\Pi(z)x)$ converts its powers
+to the exact formulas
+\[
+ \Xi^{-1}\widehat G_j^k\Xi(z,x)
+   =(g_j^kz,A_j^kx+kv_j/m_j),\qquad
+ \widehat G_j^{m_j}=t_{v_j}.
+ \tag{FF25}\label{ffcert:eq:varying-powers}
+\]
+
+\begin{proposition}[Smooth quotient charts and the exact multiplicities]
+\label{ffcert:prop:quotient-charts}
+The map $q_j:J'_j\to N_j$ is a finite \'etale covering of degree
+$m_j$. The quotient is a Hausdorff smooth complex threefold, and its
+proper map $f_j:N_j\to D_j$ has exact scheme fibre $m_jS_j$ at the
+centre. In its local quotient coordinates the transverse map is
+literally $t_j=s_j^{m_j}$.
+\end{proposition}
+
+\begin{proof}
+At $s_j=0$ the freeness is proved in
+\cref{ffcert:thm:product-covers}. Away from zero, a power with
+$0<k<m_j$ has base coordinate multiplied by $\zeta_j^k\ne1$, so
+has no fixed point. Equation~\eqref{ffcert:eq:varying-powers} shows
+that the $m_j$-th power is the original lattice translation, hence is
+the identity on $J'_j$. This gives a free action of exact order $m_j$.
+
+For $y\in J'_j$, its finitely many distinct orbit points can be
+separated by pairwise disjoint coordinate neighbourhoods. Intersecting
+their inverse translates and shrinking gives a coordinate neighbourhood
+$U$ of $y$ with the $G_j^aU$ pairwise disjoint. Then
+$q_j|_U:U\to q_j(U)$ is a biholomorphism. Two distinct finite orbits
+have disjoint saturated neighbourhoods by the same finite separation
+argument. These charts prove the Hausdorff and smooth assertions, and
+the quotient is a finite \'etale covering. They give directly the
+trivial-stabilizer case of the quotient analytic structure in
+\cite[conditions (I)--(II), Theorem~1]{Cartan1954Quotient}; smoothness
+is not inferred from a theorem about arbitrary finite quotients.
+
+At a point of $S_j$, use the quotient chart to retain $s_j$ as a
+transverse coordinate, together with two fibre coordinates. The full
+map is $t_j=s_j^{m_j}$. Thus $S_j$ is a smooth reduced Cartier
+divisor, and its scheme multiplicity is exactly $m_j$.
+
+For compact $C\subset\Delta_j$, the map induced by $\Xi$ from
+$C\times[0,1]^4$ onto the inverse image of $C$ in $J'_j$ is
+continuous and surjective, so that inverse image is compact. The actual
+power map between the discs of radii $r_j$ and $r_j^{m_j}$ is proper:
+the inverse image of a compact target set is closed, bounded, and stays
+strictly inside the radius-$r_j$ disc. For compact $K\subset D_j$,
+the inverse image in $J'_j$ of all roots of its $t_j$-values is
+therefore compact. Its finite quotient image is exactly $f_j^{-1}(K)$,
+proving properness of the full restriction.
+\end{proof}
+
+\subsubsection{Every branch in the normalization of the actual base change}
+
+Let $\Delta_j^{\mathrm{base}}$ be the same radius-$r_j$ disc with
+coordinate $u$, mapped to $D_j$ by $t_j=u^{m_j}$, and form
+\[
+ P_j=N_j\times_{D_j}\Delta_j^{\mathrm{base}},\qquad
+ \nu_j:J'_j\longrightarrow P_j,\quad
+ \nu_j(y)=(q_j(y),s_j(y)).
+ \tag{FF26}\label{ffcert:eq:normalization-map}
+\]
+
+\begin{theorem}[The original varying family is the normalization]
+\label{ffcert:thm:normalization}
+The map $\nu_j$ is exactly the normalization of $P_j$. It is a
+biholomorphism away from $u=0$; at the centre it has all $m_j$ local
+branches prescribed by the original cyclic action. Its central fibre
+is the connected original torus $A_0^{(j)}$, and
+\[
+ \nu_j(G_jy)=(q_j(y),\zeta_js_j(y)).
+ \tag{FF27}\label{ffcert:eq:normalization-deck}
+\]
+Thus the original negative-phase action lifts $u\mapsto\zeta_ju$,
+permutes the local branches cyclically, and has quotient $N_j$.
+\end{theorem}
+
+\begin{proof}
+The definition uses no logarithm choice. If $u\ne0$, the $s_j$-values
+in a covering orbit are exactly the $m_j$ distinct roots of its
+$t_j$-value, so there is exactly one representative with value $u$.
+If $u=0$, all $m_j$ covering points have $s_j=0$. This proves
+surjectivity and describes all fibres. A compact subset of $P_j$
+projects to a compact subset of $N_j$, whose inverse image under
+$q_j$ is compact. Its inverse image under $\nu_j$ is a closed subset
+of that compact set, hence is compact. Thus $\nu_j$ is proper with
+finite fibres. Away from the centre the unique orbit representative
+and quotient charts give the holomorphic inverse.
+
+More precisely, around $n\in S_j$ choose a chart $q_j(U)$ as in
+\cref{ffcert:prop:quotient-charts}, with inherited transverse coordinate
+$s$ and fibre coordinates $z_1,z_2$. The fibre product is locally
+\[
+ s^{m_j}-u^{m_j}
+   =\prod_{a=0}^{m_j-1}(s-e^{2\pi ia/m_j}u)=0.
+ \tag{FF28}\label{ffcert:eq:all-branches}
+\]
+The factors are distinct smooth prime hypersurface factors in the
+regular convergent-power-series ring $\mathbb C\{z_1,z_2,s,u\}$.
+Their product ideal is radical: in this factorial ring, divisibility
+of a power by every distinct prime factor implies divisibility of the
+element by their product. Thus the fibre-product germ is reduced.
+Its total ring of fractions is the product of the branch fraction
+fields. Its integral closure is the product of the regular branch
+rings $\mathbb C\{z_1,z_2,u\}$: adjoining the branch idempotents is
+integral, since each satisfies $e^2-e=0$, and each component is
+integrally closed. This proves the complete local normalization,
+including all central branches.
+
+On $G_j^aU$ the second component of $\nu_j$ is $u=\zeta_j^a s$,
+or equivalently
+\[
+ s=\zeta_j^{-a}u=e^{2\pi ia/m_j}u.
+ \tag{FF29}\label{ffcert:eq:branch-identification}
+\]
+Each of the $m_j$ disjoint covering charts therefore maps
+isomorphically onto exactly one branch of
+\eqref{ffcert:eq:all-branches}; these exhaust the branches. The
+local identifications glue by the specified map $\nu_j$, giving the
+global normalization. The source is the original varying family,
+not an isotrivial product. Restricting its coordinate to zero gives
+its connected torus $A_0^{(j)}$. Equation~\eqref{ffcert:eq:normalization-deck}
+follows directly from $s_j(G_jy)=\zeta_js_j(y)$ and $q_jG_j=q_j$.
+\end{proof}
+
+\subsubsection{Universal covers and the full peripheral inclusion kernel}
+
+\begin{theorem}[Exact finite-filling deck groups and attachment kernel]
+\label{ffcert:thm:peripheral-kernel}
+The universal cover $\Delta_j\times\mathbb C^2\to N_j$ has the
+following complete deck-group presentation:
+\[
+ \Gamma_j=\left\langle\Lambda,\widehat G_j\ \middle|\
+ \begin{array}{l}
+ \Lambda\text{ abelian},\\
+ \widehat G_jt_\lambda\widehat G_j^{-1}=t_{A_j\lambda},\\
+ \widehat G_j^{m_j}=t_{v_j}
+ \end{array}\right\rangle.
+ \tag{FF30}\label{ffcert:eq:full-deck-group}
+\]
+This is also the universal-cover group of $S_j$. On the punctured
+filling the complete group is $\Lambda\rtimes_{A_j}\mathbb Z$,
+with the generator specified below, and the entire inclusion kernel is
+\[
+ \ker\{\pi_1(N_j\setminus S_j)\to\pi_1(N_j)\}
+   =\langle\widetilde G_j^{m_j}t_{-v_j}\rangle
+   \cong\mathbb Z.
+ \tag{FF31}\label{ffcert:eq:whole-kernel}
+\]
+It is a central subgroup, not merely a necessary power relation.
+\end{theorem}
+
+\begin{proof}
+In the real marking the original universal-cover transformations are
+\[
+ t_\lambda(s,x)=(s,x+\lambda),\qquad
+ \widehat G_j(s,x)=(\zeta_js,A_jx+v_j/m_j).
+ \tag{FF32}\label{ffcert:eq:cover-real-action}
+\]
+They satisfy the two relations in
+\eqref{ffcert:eq:full-deck-group} by $A_jv_j=v_j$.
+Moving translations to the left and using the power relation expresses
+every word as $t_\lambda\widehat G_j^k$ with $\lambda\in\Lambda$
+and $0\le k<m_j$. These forms are unique: the base action determines
+$k$, and the remaining translation determines $\lambda$. Therefore
+the abstract presented group acts faithfully and no additional relation
+is implicit.
+
+For $0<k<m_j$, a fixed-point equation would imply, on applying the
+original integral covector $\gamma$ to the real fibre coordinate,
+\[
+ \gamma(\lambda)+k\gamma(v_j)/m_j=0.
+ \tag{FF33}\label{ffcert:eq:cover-freeness}
+\]
+This is impossible because $\gamma(\lambda)$ is integral and
+$\gamma(v_j)=1$ or $-1$. A nonzero translation with $k=0$ has no
+fixed point either. The lattice action is properly discontinuous:
+on compact base sets the real inverses $\Pi(z)^{-1}$ are uniformly
+bounded, leaving finitely many lattice translations that can meet two
+fixed compact sets. The full group is a finite union of lattice cosets,
+so the same property holds for it. Thus the simply connected
+$\Delta_j\times\mathbb C^2$ is the universal cover. Its restriction
+to $s=0$ is the simply connected $\mathbb C^2$ covering $S_j$ with
+the same action and group.
+
+On the punctured disc retain exactly
+\[
+ w=\frac{\log s_j}{2\pi i},\qquad s_j=e^{2\pi iw},\qquad
+ \operatorname{Im}w> -\frac{\log r_j}{2\pi},
+ \qquad
+ \widetilde G_j(w,x)=(w-1/m_j,A_jx+v_j/m_j).
+ \tag{FF34}\label{ffcert:eq:log-cover-action}
+\]
+The displayed half-plane times $\mathbb C^2$, with its pulled-back
+holomorphic coordinates, is simply connected. Along with the lattice
+translations, $\widetilde G_j$ generates its entire punctured deck
+group: the ordinary logarithm deck map is already
+\[
+ Q(w,x)=(w+1,x)=t_{v_j}\widetilde G_j^{-m_j}(w,x).
+ \tag{FF35}\label{ffcert:eq:ordinary-log-deck}
+\]
+There is no finite-power relation for $\widetilde G_j$, since its
+$k$-th power has $w$-displacement $-k/m_j$. Thus the exact normal
+forms are $t_\lambda\widetilde G_j^k$ for unrestricted
+$k\in\mathbb Z$, and the group is precisely the stated semidirect
+product with action $A_j$.
+
+The inclusion sends $t_\lambda$ to $t_\lambda$ and
+$\widetilde G_j$ to $\widehat G_j$. Write $k=qm_j+r$ with
+$0\le r<m_j$. Its image has normal form
+$t_{\lambda+qv_j}\widehat G_j^r$, which is the identity exactly
+when $r=0$ and $\lambda=-qv_j$. This proves
+\eqref{ffcert:eq:whole-kernel} in both directions. Its generator has
+$w$-displacement $-1$, so has infinite order. It commutes with all
+translations because $A_j^{m_j}=I$, and with
+$\widetilde G_j$ because $A_jv_j=v_j$, proving centrality.
+\end{proof}
+
+\subsubsection{The original punctured overlap and integral cohomology pullback}
+
+On the affine punctured model choose a local logarithm and put
+\[
+ \alpha(z)=\frac{\log s_j(z)}{2\pi i},\qquad
+ h_j[z,\zeta]=[z,\zeta+\alpha(z)\Pi(z)v_j].
+ \tag{FF36}\label{ffcert:eq:overlap-map}
+\]
+A branch change adds $n\Pi(z)v_j$, an original lattice period,
+so the map is well-defined and holomorphic on the punctured torus
+quotient; subtraction of the same term gives its inverse. Under the
+clockwise step $s_j\mapsto\zeta_js_j$, the compatible branch is
+$\alpha(g_jz)=\alpha(z)-1/m_j$. The covariance
+\eqref{ffcert:eq:varying-action} and $A_jv_j=v_j$ therefore give
+the exact conjugacy to the original linear lift
+$\widehat G_j^0(z,\zeta)=(g_jz,R_{g_j}(z)\zeta)$:
+\[
+ h_j\widehat G_jh_j^{-1}=\widehat G_j^0.
+ \tag{FF37}\label{ffcert:eq:overlap-conjugacy}
+\]
+Indeed the two translations in $h_j\widehat G_j$ add to
+$\Pi(g_jz)v_j(1/m_j+\alpha(g_jz))
+=\alpha(z)\Pi(g_jz)v_j$, exactly the translation in
+$\widehat G_j^0h_j$.
+
+The corresponding real translation retains the full complex structure:
+\[
+\begin{gathered}
+ J_z=\Pi(z)^{-1}i\Pi(z),\qquad
+ a_j(z)=\operatorname{Re}\alpha(z)v_j
+               +\operatorname{Im}\alpha(z)J_zv_j,\\
+ J_{g_jz}A_j=A_jJ_z,\qquad
+ a_j(g_jz)=A_ja_j(z)-v_j/m_j.
+\end{gathered}
+\tag{FF38}\label{ffcert:eq:real-overlap}
+\]
+This follows by applying $\Pi(z)^{-1}$ to
+$\alpha(z)\Pi(z)v_j$ and then using covariance; complex scalar
+multiplication is not being imposed on the marked real lattice.
+The inverse image of the middle zero section is consequently
+$-a_j(z)$, whose endpoint after one clockwise step is exactly
+$A_j(-a_j(z))+v_j/m_j$. Iterating $m_j$ such steps increases
+this marked endpoint by precisely $v_j$, not by an unspecified
+translated generator. Thus the overlap map realizes the based
+peripheral convention in \eqref{ffcert:eq:whole-kernel}.
+
+The map from the fibre over $z$ to its deck-translated fibre over
+$g_jz$ has marked linear part $A_j$; its inverse has part
+$A_j^{-1}$. The original contragredient convention is
+\[
+ (A_j^{-1})^{\mathsf t}=T_j,
+ \qquad A_j=(T_j^{-1})^{\mathsf t}.
+ \tag{FF39}\label{ffcert:eq:contragredient-direction}
+\]
+These directions keep a based loop distinct from its inverse deck
+map. No matrix or generator is reversed to obtain the attachment relation.
+
+\begin{corollary}[The exact integral first-cohomology covering image]
+\label{ffcert:cor:covering-h1}
+For the original covering $\pi_j:A_0^{(j)}\to S_j$,
+\[
+ H_1(S_j,\mathbb Z)\cong\mathbb Z^2,\qquad
+ \pi_j^*H^1(S_j,\mathbb Z)
+   =\mathbb Z(m_j\gamma)\oplus\mathbb Z\psi_j
+        \subset H^1(A_0^{(j)},\mathbb Z).
+ \tag{FF40}\label{ffcert:eq:integral-h1-image}
+\]
+The index $m_j$ in the invariant covector lattice is retained.
+\end{corollary}
+
+\begin{proof}
+By \cref{ffcert:prop:integral-summands}, the map
+\[
+ \Lambda\longrightarrow\mathbb Z^2,\qquad
+ \lambda\longmapsto(\gamma(\lambda),\psi_j(\lambda))
+ \tag{FF41}\label{ffcert:eq:coinvariant-coordinates}
+\]
+has kernel exactly $(A_j-I)\Lambda$. It is onto:
+$\widehat\gamma$ gives $(1,0)$, and $\widehat w$ for $j=1$,
+or $\widehat u$ for $j=2$, gives $(0,1)$. Thus the full
+coinvariant group is $\mathbb Z^2$. In these coordinates $v_j$
+is $(1,0)$ or $(-1,0)$. Abelianizing
+\eqref{ffcert:eq:full-deck-group} adjoins one generator with relation
+$m_j\widehat G_j=v_j$, eliminating a primitive generator and
+leaving $\mathbb Z^2$. This computes $H_1(S_j,\mathbb Z)$ without
+global topology. A homomorphism from this group to $\mathbb Z$
+restricts on $\Lambda$ to $a\gamma+b\psi_j$ precisely when
+$m_j\mid a$, since it must assign the integer
+$a\gamma(v_j)/m_j$ to $\widehat G_j$. This necessary and sufficient
+condition proves the exact covering pullback.
+\end{proof}
+
+\subsubsection{The finite-to-global analytic gluing interface}
+
+The global construction of \cref{thm:candidate-global-geometry} glues
+complete punctured restrictions of the original middle family and
+the three local fillings. The finite identifications are precisely
+\eqref{ffcert:eq:overlap-map}. The special discs are pairwise disjoint,
+and a middle point over each punctured disc has exactly one
+representative in its filling. Thus an equivalence class meets any
+given summand at most once. Saturations of open subsets are open,
+because the overlap identifications are biholomorphisms, so each summand
+embeds openly and injectively.
+
+Two points at one special base value have representatives in its same
+filling; two points at one ordinary base value have representatives in
+the middle piece. They have disjoint neighbourhoods in that Hausdorff
+open summand, and their images remain disjoint because no equivalence
+class meets that summand twice. Points at distinct base values are
+separated by the base. This proves the gluing's Hausdorff assertion
+using the actual full restrictions, not an unrestricted gluing principle.
+
+In particular $f^{-1}(D_j)$ is the entire corresponding filling:
+every middle point over $D_j^*$ is identified with its unique filling
+representative. Thus the properness in
+\cref{ffcert:prop:quotient-charts} is properness of the full inverse
+image. For a compact base set $K$, finitely many relatively compact
+$V_a$ whose closures lie inside members $U_a$ of the original
+four-piece base cover can be chosen to cover $K$. The compact sets
+$K\cap\overline V_a$ have compact preimages under the corresponding
+full proper restrictions, and these preimages cover exactly
+$f^{-1}(K)$. This is the compact-cover argument for global properness.
+The separate cusp and middle constructions supply their own full
+proper restrictions; the finite-local proof neither replaces those
+constructions nor implies smooth sphere recognition.
+
+\subsubsection{The exact normal character and a smooth trivialization}
+
+\begin{theorem}[Holomorphic normal order and the explicit smooth product]
+\label{ffcert:thm:normal-trivialization}
+Let $\mathcal N_j=N_{S_j/N_j}$, equivalently
+$\mathcal O_X(S_j)|_{S_j}$ after the specified open embedding into
+the original global analytic construction. This line has exact order
+$m_j$ in the holomorphic Picard group, but has the following explicit
+smooth trivialization and hence zero integral first Chern class.
+\end{theorem}
+
+\begin{proof}
+Differentiating the actual transverse coordinate in
+\eqref{ffcert:eq:disc-and-phase} identifies the normal line as the
+quotient of the trivial line over $A_0^{(j)}$ by
+\[
+ (x,n)\longmapsto(A_jx+v_j/m_j,\zeta_j n),
+ \qquad \zeta_j=e^{-2\pi i/m_j}.
+ \tag{FF42}\label{ffcert:eq:normal-action}
+\]
+Here $x$ is the original real marking of the central complex torus;
+the action on the torus and line is holomorphic. A section of its
+$k$-th power therefore pulls back to a function satisfying
+\[
+ h(A_jx+v_j/m_j)=\zeta_j^k h(x).
+ \tag{FF43}\label{ffcert:eq:normal-section-character}
+\]
+The positive exponent follows from the quotient itself: the representative
+$(x,h(x))$ is identified at the image point with
+$(A_jx+v_j/m_j,\zeta_j^kh(x))$, which must equal the representative
+of the section there. The negative exponent would instead describe
+the dual normal line under the declared action.
+
+The $m_j$-th power has the trivial character, so the constant function
+one descends to a nowhere-zero holomorphic section of that power.
+If a power $0<k<m_j$ were holomorphically trivial, its trivializing
+section would pull back to a nowhere-zero holomorphic function on the
+compact connected torus $A_0^{(j)}$. Such a function is constant,
+and \eqref{ffcert:eq:normal-section-character} would force
+$\zeta_j^k=1$, impossible in this range. This proves the exact
+holomorphic order in \cref{lem:finite-normal-order-audit}, with the
+normal tangent character fully specified.
+
+For the smooth trivialization put
+\[
+ \epsilon_j=\gamma(v_j)\in\{1,-1\},\qquad
+ H_j(x)=\exp(-2\pi i\epsilon_j\gamma(x))
+ \quad(x\in\Lambda\otimes\mathbb R).
+ \tag{FF44}\label{ffcert:eq:smooth-normal-section}
+\]
+Integrality of $\gamma(\lambda)$ gives $H_j(x+\lambda)=H_j(x)$,
+so this is a well-defined nowhere-zero smooth function on the actual
+marked central torus. Moreover $\gamma A_j=\gamma$ and
+$\epsilon_j^2=1$ give
+\[
+ \begin{aligned}
+ H_j(A_jx+v_j/m_j)
+ &=\exp(-2\pi i\epsilon_j\gamma(x))
+       \exp(-2\pi i\epsilon_j^2/m_j)\\
+ &=\zeta_jH_j(x).
+ \end{aligned}
+ \tag{FF45}\label{ffcert:eq:smooth-equivariance}
+\]
+It consequently descends to a nowhere-zero section of the actual
+normal line. Explicitly the smooth fibrewise-linear trivialization and
+its inverse are
+\[
+ \begin{aligned}
+ \Theta_j:\mathcal N_j&\longrightarrow S_j\times\mathbb C,
+ & [x,n]&\longmapsto([x],n/H_j(x)),\\
+ \Theta_j^{-1}:S_j\times\mathbb C&\longrightarrow\mathcal N_j,
+ & ([x],z)&\longmapsto[x,zH_j(x)].
+ \end{aligned}
+ \tag{FF46}\label{ffcert:eq:normal-product-isomorphism}
+\]
+Replacing $x$ by a lattice translate leaves both formulas unchanged.
+Replacing $(x,n)$ by
+$(A_jx+v_j/m_j,\zeta_jn)$ also leaves $n/H_j(x)$ unchanged by
+\eqref{ffcert:eq:smooth-equivariance}; the inverse has the same
+equivariance. The two maps are therefore well-defined, smooth, and
+inverse, retaining the original signs for each $j$. Thus
+$c_1(\mathcal N_j)=0$ in integral cohomology while its holomorphic
+order is exactly $m_j$. This conclusion uses only the original affine
+action and integral covector, not the topology of a global $X$.
+\end{proof}

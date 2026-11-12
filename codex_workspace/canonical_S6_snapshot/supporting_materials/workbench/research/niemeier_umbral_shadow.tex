@@ -1,0 +1,706 @@
+% Integration-ready proof module; no canonical file has been edited.
+% Requires amsmath, amssymb, amsthm, and hyperref in a standalone host.
+% All coordinates and quadratic-form conventions are retained explicitly.
+
+\section{The marked Niemeier lattice, its twelve theta indices, and the umbral shadow}
+\label{nus:sec:shadow}
+
+The original objects are
+\[
+ A=\{(x_0,\ldots,x_5)\in\mathbb Z^6:\sum_jx_j=0\},\qquad
+ D=\{d\in\mathbb Z^4:\sum_id_i\equiv0\pmod2\},\qquad
+ R=A^{\perp4}\perp D.
+\]
+The metrics are the displayed Euclidean metrics.  The four copies of $A$
+retain their original fibre order $f_i289^j$ for $0\le j<6$, with fibre
+labels $(00,10,01,11)$.  Their discriminant generator is
+$\lambda=(5,-1,-1,-1,-1,-1)/6$.  The discriminant of $D$ retains
+$10\mapsto v=(1,0,0,0)$, $01\mapsto s=(1,1,1,1)/2$, and
+$11\mapsto c=(-1,1,1,1)/2$.  Consequently the original norm-valued
+quadratic refinement, with codomain $\mathbb Q/2\mathbb Z$, is
+\[
+ q_R(k_1,k_2,k_3,k_4;y)
+ =\frac56\sum_i k_i^2+\mathbf1_{y\ne0}\pmod{2\mathbb Z}.
+\]
+The original glue and Niemeier lattice are
+\[
+ \begin{split}
+ E&=\{u\in\mathbb F_2^4:\sum_i u_i=0\},\qquad
+ \tau(u)=(u_2+u_4,u_3+u_4),\\
+ j(a,b)&=(a+b,a+2b,a,b),\qquad C_3=j(\mathbb F_3^2),\\
+ H&=\{(3u+2j(a,b);\tau(u)):u\in E,\ (a,b)\in\mathbb F_3^2\},\\
+ N&=\{x\in R^\vee:x+R\in H\}.
+ \end{split}
+\]
+Thus $|H|=8\cdot9=72$ and $N/R=H$, with the root system
+$X=A_5^4D_4$ proved in the retained lattice calculation.  In particular,
+no norm-two vectors are introduced by the nonzero glue classes: their
+original minima are four or six.  We use this proved literal root system,
+rather than a rank-only identification, throughout the construction below.
+
+\subsection{The primary prescription and its complete coefficient matrix}
+
+Write $e(t)=\exp(2\pi\mathrm i t)$ and $q=e(\tau)$ for
+$\tau\in\mathbb H$.  Cheng--Duncan--Harvey, arXiv:1307.5793v2,
+Section~3.2 \cite[Sections~3.2--3.3]{esn:CDH2014}, source labels
+\texttt{thetexp}, \texttt{transf\_theta},
+and \texttt{transf\_theta\_2}, use
+\[
+ \theta_{m,r}(\tau,z)
+ =\sum_{k\equiv r\ (2m)}q^{k^2/(4m)}e(kz),
+ \qquad r\in\mathbb Z/(2m).
+\]
+Their Section~3.3, source label \texttt{def:OmegaMatrices}, defines
+\[
+ \Omega_m(n)_{r,s}
+ =\begin{cases}
+ 1,&r+s\equiv0\pmod{2n},\quad r-s\equiv0\pmod{2m/n},\\
+ 0,&\text{otherwise},
+ \end{cases}
+ \qquad n\mid m.
+\]
+Their ADE table, source label \texttt{ADE1}, assigns
+\[
+ \Omega^{A_{m-1}}=\Omega_m(1),\qquad
+ \Omega^{D_{m/2+1}}=\Omega_m(1)+\Omega_m(m/2),
+\]
+and extends by addition over components with the same Coxeter number.
+These are the primary authors' prescribed maps.  The following calculation
+specializes and proves their values in the present marked coordinates; it
+does not assert a new ADE classification.
+
+The six-cycle $e_j\mapsto e_{j+1\bmod6}$ on an $A$ fibre has
+characteristic polynomial $(x^6-1)/(x-1)$ on its augmentation space.
+Its order is six.  In $D$, take the original simple roots
+$\alpha_1=e_1-e_2$, $\alpha_2=e_2-e_3$, $\alpha_3=e_3-e_4$,
+$\alpha_4=e_3+e_4$.  Their reflection product
+$s_{\alpha_1}s_{\alpha_2}s_{\alpha_3}s_{\alpha_4}$ sends
+\[
+ e_1\mapsto e_2,\quad e_2\mapsto e_3,\quad
+ e_3\mapsto-e_1,\quad e_4\mapsto-e_4.
+\]
+It has order six and characteristic polynomial
+\[
+ (x^3+1)(x+1)
+ =(x^2-x+1)(x+1)^2
+ =\frac{(x^2-1)(x^6-1)}{(x-1)(x^3-1)}.
+\]
+Thus the original five components have Coxeter number $h=m=6$, and the
+primary theta prescription has precisely $2h=12$ indices and denominator
+$4h=24$ in its exponents.  The root rank remains $4\cdot5+4=24$;
+the glue index remains $72$.
+
+Put $J=\Omega_6(3)$.  Its two congruences are
+\[
+ r+s\equiv0\pmod6,\qquad r-s\equiv0\pmod4.
+\]
+The simultaneous solutions modulo twelve consist of the single value
+$s\equiv5r\pmod{12}$: this value satisfies both congruences, and the
+difference of any two solutions is divisible by both six and four, hence
+by twelve.  Therefore
+\[
+ \boxed{\Omega^X=5I_{12}+J,\qquad J_{r,s}=\mathbf1_{s\equiv5r\ (12)}.}
+\]
+In the full original index order $0,1,\ldots,11$ this is
+\begingroup
+\csname c@MaxMatrixCols\endcsname=12\relax
+\[
+\Omega^X=\begin{pmatrix}
+6&0&0&0&0&0&0&0&0&0&0&0\\
+0&5&0&0&0&1&0&0&0&0&0&0\\
+0&0&5&0&0&0&0&0&0&0&1&0\\
+0&0&0&6&0&0&0&0&0&0&0&0\\
+0&0&0&0&5&0&0&0&1&0&0&0\\
+0&1&0&0&0&5&0&0&0&0&0&0\\
+0&0&0&0&0&0&6&0&0&0&0&0\\
+0&0&0&0&0&0&0&5&0&0&0&1\\
+0&0&0&0&1&0&0&0&5&0&0&0\\
+0&0&0&0&0&0&0&0&0&6&0&0\\
+0&0&1&0&0&0&0&0&0&0&5&0\\
+0&0&0&0&0&0&0&1&0&0&0&5
+\end{pmatrix}.
+\]
+\endgroup
+The unary series and the actual shadow are
+\[
+ S_{6,r}(\tau)=\frac1{2\pi\mathrm i}
+  \left.\frac{\partial\theta_{6,r}}{\partial z}\right|_{z=0}
+ =\sum_{k\equiv r\ (12)}kq^{k^2/24},
+ \qquad S^X=\Omega^X S_6.
+\]
+All series and their derivatives converge normally on compact subsets of
+their stated domains, by Gaussian decay.  Substitution $k\mapsto-k$
+proves $S_{6,-r}=-S_{6,r}$, so $S_{6,0}=S_{6,6}=0$.
+Let $\mathcal A:\mathbb C^5\to\mathbb C^{12}$ insert zero in positions
+zero and six and put $(\mathcal Au)_{12-r}=-u_r$ for $1\le r\le5$.
+This retains, and explicitly reconstructs, all twelve components.  Then
+\[
+ \Omega^X\mathcal A=\mathcal A M^X,\qquad
+ \boxed{M^X=\begin{pmatrix}
+ 5&0&0&0&1\\0&4&0&0&0\\0&0&6&0&0\\
+ 0&0&0&4&0\\1&0&0&0&5
+ \end{pmatrix}.}
+\]
+Indeed its $(r,s)$ entry is
+$\Omega^X_{r,s}-\Omega^X_{r,12-s}$; direct substitution gives the matrix.
+In particular the fourth A-type multiplicity and the full D-type
+contribution have both been retained.  The diagonal entries
+$(5,4,6,4,5)$ are exactly the Coxeter exponent multiplicities:
+four copies of $(1,2,3,4,5)$ and one copy of $(1,3,3,5)$.
+
+\subsection{Quadratic refinements and the finite theta transformations}
+
+Let $L=\mathbb Z\ell$ with $(\ell,\ell)=12$.  Its dual is
+$L^\vee=\mathbb Z\ell/12$.  Hence
+\[
+ A_L=L^\vee/L=\mathbb Z/12,\qquad
+ q_L(r)=r^2/12\pmod{2\mathbb Z},\qquad
+ Q_L(r)=q_L(r)/2=r^2/24\pmod{\mathbb Z},
+\]
+and the associated bilinear form is $B_L(r,s)=rs/12\pmod{\mathbb Z}$.
+The symbols $q_L$ and $Q_L$ deliberately have different codomains and
+retain the factor two.
+
+Define the unitary Fourier matrices and reflection by
+\[
+ (F_\pm)_{r,s}=12^{-1/2}e(\pm rs/12),\qquad
+ R_{r,s}=\mathbf1_{s\equiv-r\ (12)}.
+\]
+Finite geometric-series summation gives
+\[
+ F_\pm^2=R,\qquad F_-=RF_+=F_+R,\qquad F_+F_-=I.
+\]
+The substitution $k\mapsto k+12$ shows that $e(k^2/24)$ depends only on
+$r=k\bmod12$.  Thus, with
+$D_{r,s}=e(r^2/24)\delta_{r,s}$,
+\[
+ \theta_6(\tau+1,z)=D\theta_6(\tau,z).
+\]
+Poisson summation of the Gaussian gives
+\begin{align*}
+ \theta_6(-1/\tau,z/\tau)
+ &=\sqrt{-\mathrm i\tau}\,e(6z^2/\tau)F_-\theta_6(\tau,z),\\
+ \theta_6(-1/\tau,-z/\tau)
+ &=\sqrt{-\mathrm i\tau}\,e(6z^2/\tau)F_+\theta_6(\tau,z).
+\end{align*}
+Here $\sqrt{-\mathrm i\tau}$ is the holomorphic square root positive
+when $\tau$ is positive imaginary.  For completeness, apply the Fourier
+transform convention $\widehat f(u)=\int_{\mathbb R}f(x)e(-ux)\,dx$
+to $f(x)=\exp(\pi\mathrm i\tau x^2/12+2\pi\mathrm i zx)$.
+Completing the square evaluates its transform; the real positive Gaussian
+integral is obtained by squaring the integral and using polar coordinates,
+and holomorphic continuation gives the expression for $\Im\tau>0$.
+Periodizing $f(r+12x)$, its $n$-th Fourier coefficient is
+$12^{-1}e(nr/12)\widehat f(n/12)$.  Summing these coefficients at zero
+and grouping $n$ by its residue modulo twelve gives the first displayed
+transformation.  Absolute Gaussian convergence justifies the integration,
+grouping, and Fourier evaluation.  Replacing $z$ by $-z$ and using
+$\theta_{6,-r}(\tau,z)=\theta_{6,r}(\tau,-z)$ gives the second.
+The second, with its plus-sign Fourier matrix, is precisely CDH's
+convention; the first uses the usual generator
+$S=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$
+with elliptic argument $z/\tau$.
+
+The matrices carrying the finite multiplier for this first convention are
+\[
+ U(T)=D,\qquad U(S)=e(-1/8)F_-.
+\]
+The square-root weight factor has not been included in $U$.
+Differentiation of the theta transformation at $z=0$ gives
+\[
+ S_6(-1/\tau)=\tau\sqrt{-\mathrm i\tau}F_-S_6(\tau),\qquad
+ S_6(\tau+1)=D S_6(\tau).
+\]
+Equivalently, CDH's reflected convention gives
+$S_6(-1/\tau)=-\tau\sqrt{-\mathrm i\tau}F_+S_6(\tau)$.
+The equality follows from $RS_6=-S_6$.  Thus the unary series has weight
+$3/2$ with the same finite multiplier; theta has weight $1/2$.
+
+The permutation $J$ preserves $Q_L$ because
+$((5r)^2-r^2)/24=r^2\in\mathbb Z$.  Since $5^{-1}=5$ modulo twelve,
+\[
+ (JF_\pm)_{r,s}=12^{-1/2}e(\pm5rs/12)
+ =(F_\pm J)_{r,s}.
+\]
+Therefore $\Omega^X$ commutes with both finite multiplier matrices.
+The shadow transformation follows by applying this proved intertwiner.
+Its component series vanish at infinity since every nonzero summand has
+strictly positive exponent; the modular transformation shows the same
+cuspidal behavior at every cusp of the full modular group.
+
+There is also an exact comparison with the original A5 discriminant,
+without replacing its form.  Reduction
+\[
+ p:\mathbb Z/12\longrightarrow\mathbb Z/6,\qquad p(r)=r\bmod6
+\]
+has kernel $\{0,6\}$ and satisfies
+\[
+ q_A(p(r))=\frac56r^2=10q_L(r)\pmod{2\mathbb Z}.
+\]
+Thus it is a surjective quadratic similitude with precisely multiplier
+ten, and its bilinear forms satisfy the same multiplier relation.
+It is not asserted to be an isometry.  Applying $p$ to four coordinates
+and the identity to the retained $D$ discriminant gives
+\[
+ \widetilde D=(\mathbb Z/12)^4\oplus\mathbb F_2^2
+ \longrightarrow D_R,
+ \qquad (r;y)\longmapsto(p(r_1),\ldots,p(r_4);y).
+\]
+The pullback quadratic refinement is exactly
+$10\sum_iq_L(r_i)+\mathbf1_{y\ne0}$, its radical is
+$\{0,6\}^4\oplus0$, and its quotient by that radical is the original
+$(D_R,q_R)$.  To prove the radical claim, pairing with each coordinate
+generator forces $5r_i/6\in\mathbb Z$, hence $6\mid r_i$; the
+nondegenerate $D$ form forces $y=0$.  The vectors so obtained have
+quadratic value $30$ in each nonzero coordinate, hence zero modulo two.
+The inverse image of the original $H$ has order $16\cdot72=1152$ and
+is isotropic for this pullback form.  This gives the exact relation of the
+theta indices to all original glue coordinates, with the form and
+multiplier specified on both sides.
+
+\subsection{The full Fourier determinant and the retained order-twelve character}
+\label{nus:subsec:determinant}
+
+Let $\chi:\mathrm{SL}_2(\mathbb Z)\to\mathbb Z/12$ be the retained
+marking
+\[
+ \chi(T)=-1,\qquad \chi(S)=3.
+\]
+These values respect the presentation
+$S^4=I$, $(ST)^3=S^2$: in the abelian target the required relations
+are $4\cdot3=0$ and $3(3-1)=2\cdot3$ modulo twelve.
+They therefore define a character, and its value at $T$ makes it onto.
+We now calculate the determinant of the entire twelve-dimensional
+finite theta representation, rather than that of a reduced component
+list.
+
+Put $\zeta=e(1/12)$.  The Vandermonde determinant gives
+\[
+ \det F_+=12^{-6}\prod_{0\le j<k\le11}(\zeta^k-\zeta^j).
+\]
+For every such pair,
+\[
+ \zeta^k-\zeta^j
+ =2\mathrm i\sin\!\left(\frac{\pi(k-j)}{12}\right)
+       \exp\!\left(\frac{\pi\mathrm i(j+k)}{12}\right),
+\]
+whose sine is strictly positive.  There are $\binom{12}{2}=66$ pairs,
+and each index occurs in eleven of them, so
+\[
+ \sum_{j<k}(j+k)=11\sum_{j=0}^{11}j=11\cdot66=726.
+\]
+The phase of the determinant is consequently
+\[
+ \mathrm i^{66}\exp(726\pi\mathrm i/12)=(-1)\mathrm i=-\mathrm i.
+\]
+Its remaining factor is positive.  Unitarity, proved by the finite
+geometric sum above, makes its absolute value one.  It follows exactly
+that
+\[
+ \boxed{\det F_+=-\mathrm i,\qquad\det F_-=\mathrm i.}
+\]
+In particular retaining CDH's reflection changes the Fourier determinant
+by $\det R=(-1)^5=-1$; it cannot be dropped.
+
+The sum of the squares of all twelve indices is
+\[
+ \sum_{r=0}^{11}r^2=\frac{11\cdot12\cdot23}{6}=506.
+\]
+Consequently
+\[
+ \boxed{\det U(T)=e(506/24)=e(1/12),\qquad
+ \det U(S)=e(-12/8)\det F_-=-\mathrm i=e(-3/12).}
+\]
+For an explicit check that the finite matrices have the relevant
+metaplectic relations, let
+$G=\sum_{r=0}^{11}e(r^2/24)$.  Listing the squares modulo twenty-four
+gives
+\[
+ G=1+4e(1/24)+2e(1/6)+2e(3/8)+2e(2/3)+e(1/2).
+\]
+The first and last terms cancel, as do the terms with arguments $1/6$
+and $2/3$.  The elementary sine and cosine values at $\pi/12$ and
+$3\pi/4$ give
+\[
+ 4e(1/24)+2e(3/8)=\sqrt6(1+\mathrm i)
+ =\sqrt{12}\,e(1/8).
+\]
+Completing the square in the finite sum proves
+\[
+ (F_-D)^2=e(1/8)D^{-1}F_-,\qquad
+ (F_-D)^3=e(1/8)R.
+\]
+For the first equality, its $(r,s)$ entry before evaluation is
+$12^{-1}e(s^2/24)\sum_te(t^2/24-t(r+s)/12)$; shifting $t$ by
+$r+s$ produces exactly the stated Gauss sum and matrix entry.
+The second follows by multiplication and $F_-^2=R$.
+It follows that
+\[
+ (U(S)U(T))^3=U(S)^2=-\mathrm iR,\qquad U(S)^4=-I_{12}.
+\]
+Taking determinants kills this metaplectic central sign because the
+dimension twelve is even.  The determinant therefore descends to an
+ordinary character of $\mathrm{SL}_2(\mathbb Z)$.  Its two computed
+generator values, together with generation by $S,T$, prove
+\[
+ \boxed{\det U(\gamma)=e(-\chi(\gamma)/12).}
+\]
+The dual determinant is its inverse and is exactly
+$e(\chi(\gamma)/12)$, with the retained signs $T\mapsto e(-1/12)$,
+$S\mapsto\mathrm i$.
+
+This is a statement about the determinant multiplier, with its domain
+and codomain specified.  It is not a statement that a vector of weight
+$1/2$ has scalar weight one after taking a determinant.  The separate
+Dedekind-eta identities
+\[
+ \eta(\tau+1)=e(1/24)\eta(\tau),\qquad
+ \eta(-1/\tau)=\sqrt{-\mathrm i\tau}\,\eta(\tau)
+\]
+show that $\eta^2$ has weight one and multiplier $\det U$, whereas
+$\eta^{-2}$ has weight minus one and multiplier $(\det U)^{-1}$.
+Indeed $\eta^2(S\tau)=(-\mathrm i)\tau\eta^2(\tau)$ and
+$\eta^{-2}(S\tau)=\mathrm i\tau^{-1}\eta^{-2}(\tau)$.
+The integer-weight factors $(c\tau+d)^{\pm1}$ obey the cocycle identity
+by matrix multiplication, so the two generator formulas prove the
+statements for every $\gamma$.  At $-I$ the character and odd integer
+weight each contribute a minus sign, whose product is one.
+
+\subsection{The residue Fourier map and what the Weyl quotient retains}
+
+The original marking is
+$\kappa(289^j)=j\pmod6$, with the full ordered residue list
+\[
+ (289^j)_{j=0}^5=(1,289,361,169,121,529)\pmod{840}.
+\]
+On the six-dimensional complex coordinate carrier define
+\[
+ E_2:\mathbb C[S_{840}]\longrightarrow\mathbb C[\mathbb Z/12],
+ \qquad E_2(e_{289^j})=e_{2j},
+\]
+and on a separately indexed $\mathbb C^6$ define
+\[
+ B(e_k)=\frac{e_k+e_{k+6}}{\sqrt2},\qquad0\le k<6.
+\]
+Both are injective and preserve the indicated coordinate Hermitian
+products.  Retain the original negative-sign normalized Fourier matrix
+$F_6^-=(6^{-1/2}e(-kj/6))_{k,j}$.  Entry-by-entry calculation gives
+\[
+ \boxed{F_-E_2=B F_6^-.}
+\]
+Indeed the $(r,j)$ entry of the left side is
+$12^{-1/2}e(-rj/6)$, and the right side has the same value, using
+$r\bmod6$.  Thus the original unnormalized sample transform is carried
+into this formula by its exact factor $\sqrt6$.
+Translation $j\mapsto j+1$ intertwines under $E_2$ with translation
+$r\mapsto r+2$ modulo twelve.  This gives a literal Fourier and
+translation map, not an identification of different quadratic forms.
+In particular $Q_L(6)=3/2=1/2\pmod{\mathbb Z}$, so the quotient
+$\mathbb Z/12\to\mathbb Z/6$ does not carry $Q_L$ itself to a
+quadratic form on the quotient.  Its exact multiplier-ten comparison
+with the original A5 form was proved above.
+
+For the original lattice action, $\rho(289)$ is the same six-cycle in
+each of the four $A$ coordinate sets and is the identity on $D$.
+Each coordinate transposition of $A$ is reflection in the corresponding
+root $e_i-e_j$, so the full residue action is in
+$W(R)=W(A)^4\times W(D)$.  It acts trivially on every A discriminant
+because
+$Q_\sigma\lambda-\lambda=e_{\sigma(0)}-e_0\in A$, and it fixes
+the D discriminant.  Consequently
+\[
+ S_{840}\xrightarrow{\rho}O(N)\longrightarrow O(N)/W(R)
+\]
+is the trivial homomorphism.  This proves exactly which residue-group
+action is killed, without discarding its already constructed Fourier map.
+
+The original marked quotient is
+\[
+ G=O(N)/W(R)\cong\mathrm{GL}_2(\mathbb F_3).
+\]
+Here its actual coordinate map uses
+$\ell_1=(1,1)$, $\ell_2=(1,2)$, $\ell_3=(1,0)$,
+$\ell_4=(0,1)$.  For $A\in\mathrm{GL}_2(\mathbb F_3)$ determine
+the unique signs and permutation by
+\[
+ \ell_iA=\varepsilon_i\ell_{p(i)},\qquad
+ (P_pu)_i=u_{p(i)},\qquad B_p\tau(u)=\tau(P_pu).
+\]
+The four row lines exhaust the projective line, so the signs and
+permutation exist uniquely.  The binary equation defines $B_p$ uniquely
+since $\tau$ is onto.  Then $(k;y)\mapsto(\varepsilon_i k_{p(i)};B_py)$
+preserves precisely the original two glue codes, and its ternary
+restriction is $M_gj=jA$.  Conversely a marked glue stabilizer gives this
+same $A$.  Multiplication of these identities proves the group
+isomorphism, with the original row/column convention retained.
+
+To compare its chosen signed lifts with CDH's simple-root permutation
+section, let $Q_{\rm rev}e_j=e_{5-j}$ in an $A$ fibre.  When
+$\varepsilon_i=-1$, replace the representative $-I$ by
+$-Q_{\rm rev}$; their quotient is $Q_{\rm rev}\in W(A)$ and
+$-Q_{\rm rev}(e_j-e_{j+1})=e_{4-j}-e_{5-j}$.
+Thus the resulting map permutes the original simple roots by diagram
+reversal.  When $\varepsilon_i=1$ no change is needed.
+For D, put $\Delta=(\alpha_1\ \alpha_2\ \alpha_3\ \alpha_4)$.
+Associate the original classes $v,s,c$ with outer nodes $1,4,3$,
+respectively; their fundamental weights are
+$e_1$, $(1,1,1,1)/2$, and $(1,1,1,-1)/2$, the last of which differs
+from the retained $c$ by $(1,0,0,-1)\in D$.
+For $B_p$, let $P_{B_p}$ permute these outer nodes exactly as $B_p$
+permutes $v,s,c$ and fix node two.  Then
+\[
+ d_{B_p}=\Delta P_{B_p}\Delta^{-1}
+\]
+is the exact original-coordinate diagram representative.  Its
+orthogonality follows because permuting the outer nodes preserves the
+original Gram matrix.  It preserves $D$, and its action on fundamental
+weights proves its discriminant action is exactly $B_p$.
+Its quotient with the originally chosen D lift has trivial discriminant
+action, hence belongs to the proved Weyl kernel $W(D)$.
+This specifies the actual change of section on every summand.
+
+Define the following four class functions using those retained maps:
+\[
+ a_g=\#\{i:p(i)=i\},\quad
+ b_g=\sum_{p(i)=i}\varepsilon_i,\quad
+ s_g=\operatorname{sgn}(B_p|_{\{v,s,c\}}),\quad
+ c_g=\#\operatorname{Fix}(B_p|_{\{v,s,c\}})-1.
+\]
+The first two are the traces on the four-component permutation and
+signed permutation representations.  The last is the trace on the
+two-dimensional sum-zero subspace of the three outer-node permutation
+representation, and $s_g$ is its sign character.  Thus these are precisely
+CDH's $(\bar\chi^{X_A},\chi^{X_A},\chi^{X_D},\check\chi^{X_D})$;
+the remaining $\bar\chi^{X_D}$ is one because the single D component
+is fixed.  The comparison of sections above proves this identification
+for the actual marked quotient.
+
+CDH Section~5.1 \cite[Section~5.1]{esn:CDH2014} defines the full
+twisted coefficient matrix by
+\[
+ (\Omega_g^{X_A})_{r,s}
+ =\bigl(b_g\mathbf1_{r\ \text{even}}+
+          a_g\mathbf1_{r\ \text{odd}}\bigr)\delta_{r,s},
+\]
+and, for its exceptional $m=6$ D4 case, by
+\[
+ (\Omega_g^{X_D})_{r,s}=
+ \begin{cases}
+ c_g\delta_{r,s},&r\equiv0,3\pmod6,\\
+ \delta_{r,s}+s_gJ_{r,s},&r\equiv1,5\pmod6,\\
+ s_g\delta_{r,s}+s_gJ_{r,s},&r\equiv2,4\pmod6.
+ \end{cases}
+\]
+All deltas in this formula have indices modulo twelve.  The exact maps
+from the marked glue quotient to the prescribed twisted shadows are
+\[
+ g\longmapsto\Omega_g^X=\Omega_g^{X_A}+\Omega_g^{X_D},\qquad
+ S_g^X=\Omega_g^XS_6.
+\]
+They are class-function constructions from traces of representations;
+the assignment $g\mapsto\Omega_g^X$ is not asserted to be a group
+representation.  On the odd five-component presentation the explicit
+matrix is
+\[
+ \boxed{M_g^X=\begin{pmatrix}
+ a_g+1&0&0&0&s_g\\
+ 0&b_g&0&0&0\\
+ 0&0&a_g+c_g&0&0\\
+ 0&0&0&b_g&0\\
+ s_g&0&0&0&a_g+1
+ \end{pmatrix}.}
+\]
+This follows by the same signed component reconstruction $\mathcal A$:
+in rows two and four the two D terms cancel, in row three the contribution
+is $c_g$, and rows one and five pair with one another.
+For reference, all possible character tuples are
+\[
+\begin{array}{c|rrrr|r}
+ [g]&a_g&b_g&s_g&c_g&\text{number of elements}\\\hline
+ 1A&4&4&1&2&1\\
+ 2A&4&-4&1&2&1\\
+ 2B&2&0&-1&0&12\\
+ 4A&0&0&1&2&6\\
+ 3A&1&1&1&-1&8\\
+ 6A&1&-1&1&-1&8\\
+ 8A,8B&0&0&-1&0&12
+\end{array}
+\]
+with the CDH class names of their table
+\texttt{tab:chars:eul:6}.  The formulas apply to each actual $A$, so
+their validity does not depend on a choice of conjugacy-class names.
+The finite checker obtains the table from all $48$ invertible matrices
+over $\mathbb F_3$ and the original row forms.
+
+The distinguished residue action has quotient $g=1$ and therefore
+produces the untwisted shadow, while a product $\rho(r)L_g$ produces
+the same $S_g^X$ for every $r$.  The four-component signed action and
+the D4 triality quotient survive and enter the displayed matrix.  The
+central element $-I\in\mathrm{GL}_2(\mathbb F_3)$, for example,
+changes $b_g$ from four to minus four while fixing $a_g,s_g,c_g$;
+it changes the even-index odd-space entries with exactly that sign.
+
+The already marked composite
+\[
+ \mathrm{SL}_2(\mathbb Z)\xrightarrow{\chi}\mathbb Z/12
+ \longrightarrow\mathbb Z/6\xrightarrow{j\mapsto289^j}S_{840}
+\]
+is onto, has kernel $\chi^{-1}(\{0,6\})$, and sends $T$ to
+$289^5=529$.  Following it by the Weyl quotient kills it, by the
+proved residue calculation.  Following $\chi$ into the dual determinant
+multiplier retains its complete order twelve, by the determinant theorem.
+These are explicit different outgoing morphisms from the same marking,
+including their kernels and signs.
+
+\subsection{The shadow-to-Fricke map with the original scalar seventy-two}
+
+The Coxeter calculation above gives the original formal frame exponent
+\[
+ \pi_X=-5[1]+[2]-[3]+5[6].
+\]
+Let $\mathcal E(\sum a_d[d])=\prod_d\eta(d\tau)^{a_d}$.
+It is a group homomorphism from addition of formal exponents to
+multiplication of nonzero holomorphic functions, by the exponent laws.
+The retained scalar function is
+\[
+ \boxed{T_6(\tau)=\mathcal E(-\pi_X)
+ =\frac{\eta(\tau)^5\eta(3\tau)}
+        {\eta(2\tau)\eta(6\tau)^5}.}
+\]
+The minus sign on $\pi_X$ is essential: $\mathcal E(\pi_X)=T_6^{-1}$.
+
+Here is a direct coefficient map from the actual shadow matrix to this
+eta function.  Its diagonal difference vector is
+$\alpha=(5,4,6,4,5)$, and set $\alpha_0=0$ modulo six.
+Define the Lambert-series map at this marked matrix by
+\[
+ \mathscr L(\Omega^X)(\tau)
+ =1+\sum_{n\ge1}\alpha_{n\bmod6}
+                    \frac{nq^n}{1-q^n}.
+\]
+Convergence is absolute and locally uniform since $|q|<1$ and
+$\alpha$ is bounded.  The coefficient of $q^N$ is exactly
+$\sum_{d\mid N}d\alpha_{d\bmod6}$; thus this specifies every
+coefficient, not only its initial terms.
+For all positive integers $n$ the retained multiplicities satisfy
+\[
+ \alpha_{n\bmod6}
+ =5-\mathbf1_{2\mid n}+\mathbf1_{3\mid n}-5\mathbf1_{6\mid n}.
+\]
+Checking the six residues proves this identity.  The product definition
+$\eta(\tau)=q^{1/24}\prod_{n\ge1}(1-q^n)$ and termwise logarithmic
+differentiation then give
+\[
+ \boxed{f^X:=\mathscr L(\Omega^X)
+ =-q\frac{d}{dq}\log T_6
+ =5\lambda_6+\lambda_2-\lambda_3,}
+\]
+where the original functions on the right are
+\[
+ \lambda_d=q\frac{d}{dq}\log\frac{\eta(d\tau)}{\eta(\tau)}
+ =\frac{d-1}{24}+\sum_{n\ge1}\sigma_1(n)(q^n-dq^{dn}).
+\]
+The constant is
+$[5(6-1)+(2-1)-(3-1)]/24=1$, and the other coefficients agree by
+the six-residue identity.  This proves the shadow-to-eta calculation
+directly for every coefficient.
+
+The precise primary connecting map is CDH
+Section~4.2 \cite[Section~4.2]{esn:CDH2014}:
+\[
+ \sigma^X(\tau,z)=\sum_{r\ (12)}\overline{S_r^X(\tau)}
+                                \theta_{6,r}(\tau,z),\qquad
+ \mathscr S_{1,1}(\sigma^X)=f^X.
+\]
+Its source labels are \texttt{eqn:sigmaX}, \texttt{def:weight2},
+\texttt{weight2:Aseries}, and \texttt{weight2\_EZ}.
+The displayed Lambert map is its explicit specialization at this
+root-system shadow.  It verifies the resulting function independently
+of the general Shimura-lift theorem.  In particular the shadow and the
+retained Fricke function are connected by this complete coefficient map.
+
+The original modular subgroup here is $\Gamma_0(6)$, and
+$[\mathrm{SL}_2(\mathbb Z):\Gamma_0(6)]=12$.  To compute the index,
+reduction modulo six gives
+$\mathrm{SL}_2(\mathbb Z/6)\cong
+\mathrm{SL}_2(\mathbb F_2)\times\mathrm{SL}_2(\mathbb F_3)$ of
+order $6\cdot24=144$.  Reduction is onto: elementary upper and lower
+unipotent matrices generate over each field, and CRT choices of their
+entries realize each factor while acting trivially on the other.
+The upper triangular subgroup modulo six has $\varphi(6)\cdot6=12$
+elements (choose its first unit diagonal entry and its upper-right entry;
+the other diagonal entry is its inverse).  Its inverse image is
+$\Gamma_0(6)$, proving index $144/12=12$.
+This modular-group index and the twelve theta indices have their
+specified constructions; neither replaces the lattice index seventy-two.
+
+Under the exact Fricke transformation $W_6\tau=-1/(6\tau)$,
+the eta inversion formula sends each $\eta(dW_6\tau)$ to
+$\sqrt{-\mathrm i(6/d)\tau}\,\eta((6/d)\tau)$.
+The retained exponent vector at $d=1,2,3,6$ is $(5,-1,1,-5)$;
+its reversed vector is its negative and its exponent sum is zero.
+The $\tau$ factors therefore cancel.  Since each $6/d$ is positive,
+the consistent square-root branch gives the positive scalar
+\[
+ \prod_{d\mid6}(6/d)^{a_d/2}
+ =6^{5/2}3^{-1/2}2^{1/2}=72.
+\]
+Consequently
+\[
+ \boxed{T_6(W_6\tau)=72/T_6(\tau).}
+\]
+For the weight-two slash action of the determinant-six representative,
+\[
+ (f|_2W_6)(\tau)=(6\tau^2)^{-1}f(-1/(6\tau)).
+\]
+Differentiating the last identity and using
+$d(W_6\tau)/d\tau=(6\tau^2)^{-1}$ gives
+\[
+ \boxed{f^X|_2W_6=-f^X.}
+\]
+On the Jacobi side, the primary Eichler--Zagier operator
+$\mathcal W_6(6)$ acts on theta by $\Omega_6(6)=R$.
+This is verified by its defining congruences, $r+s=0\pmod{12}$,
+$r-s=0\pmod2$.  On the odd shadow and on the corresponding
+skew-Jacobi form its eigenvalue is minus one.  The specialized coefficient
+map just proved carries that negative eigenline to the negative Fricke
+eigenline of $f^X$.  This proves an exact equivariant linear comparison
+on these lines; it does not evaluate an $\mathrm{SL}_2(\mathbb Z)$
+character on the determinant-six matrix.
+
+Finally, the original sheet coordinates remain
+\[
+ J_6=T_6+5+72/T_6,\qquad Y_6=T_6-72/T_6.
+\]
+Direct substitution and differentiation prove
+\[
+ J_6(W_6\tau)=J_6(\tau),\quad
+ Y_6(W_6\tau)=-Y_6(\tau),\quad
+ Y_6^2=(J_6-5)^2-288,\quad
+ dJ_6=Y_6\,dT_6/T_6=-2\pi\mathrm iY_6 f^X\,d\tau.
+\]
+Thus the original scalar $72$, the additive shift $5$, the branch
+constant $288$, and the differential factor $-2\pi\mathrm i$ all
+survive the complete shadow-to-sheet calculation.
+
+\subsection{Established scope and reproducibility}
+
+The constructed maps are the ADE coefficient specialization, the exact
+finite-theta intertwiner, the multiplier determinant and its dual, the
+quadratic similitude to the original discriminants, the marked glue-group
+trace prescription, the original six-to-twelve Fourier map, and the
+coefficient-level shadow-to-Fricke map.  Their kernels, weights, signs,
+and constants were specified and proved above.  They establish concrete
+relations even where a direct isometry or an identical group action is
+absent.  They do not construct a new graded moonshine module or a new
+moonshine theorem.  The name ``umbral shadow'' here refers to precisely
+the CDH prescription, with its source provenance retained.
+
+The standard-library program \texttt{check\_shadow.py} uses exact
+arithmetic in $\mathbb Q[z]/(z^8-z^4+1)$ with $z=e(1/24)$.
+It verifies both full and odd matrices, the Fourier determinant by the
+Vandermonde product, the Gauss sum, the character signs, the Fourier
+embedding, all $48$ original-code character records, the first $240$
+Lambert coefficients, and the squared positive Fricke scalar $72^2$.
+The proofs above establish the unbounded identities independently of
+those finite checks.

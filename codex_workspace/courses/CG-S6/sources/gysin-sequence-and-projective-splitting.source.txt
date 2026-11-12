@@ -1,0 +1,321 @@
+# The Gysin sequence and projective splitting
+
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.*
+
+The nonzero vectors of a bundle carry information about its Euler class. The Gysin sequence makes this relationship exact. Applied to the tautological lines, it determines the cohomology rings of real and complex projective spaces. Those calculations then allow us to pull a bundle to a flag space where it splits into lines, without losing any cohomology class of the original base.
+
+Learn first [Thom classes and Euler classes](thom-classes-and-euler-classes.md), whose Sections 1–7 prove the chain, product, coefficient and Thom results used below. We also use the bundle classification and compact-subcomplex lemma of [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md). No higher Stiefel–Whitney or Chern class is assumed here. The complete homotopy and primary-obstruction arguments appear in [Frame fields and primary obstructions](frame-fields-and-primary-obstructions.md), after the full characteristic classes and universal Grassmannian cohomology.
+
+## 1. The exact sequence and its maps
+
+Let \(V\to B\) be a real bundle of positive rank \(r\), with total space \(E\), projection \(\pi\), and nonzero-vector space \(E_0\). The base is Hausdorff. Choose an integral orientation and an abelian coefficient group \(G\), or use \(\mathbf F_2\) without an orientation. In the integral case products with \(e(V)\) mean the action of integral cohomology on cohomology with coefficients \(G\).
+
+**Theorem 1.1 (Gysin sequence).** There is a natural exact sequence
+
+\[
+\cdots\longrightarrow H^{j-r}(B;G)
+\xrightarrow{\,a\mapsto a\smile e(V)\,} H^j(B;G)
+\xrightarrow{\pi_0^*}H^j(E_0;G)
+\xrightarrow{\pi_!}H^{j-r+1}(B;G)
+\xrightarrow{\,\smile e(V)\,}H^{j+1}(B;G)
+\longrightarrow\cdots .
+\]
+
+For the unoriented version every group and the Euler class have mod-two coefficients. Negative-degree groups are zero.
+
+**Proof.** The cohomology sequence of the pair \((E,E_0)\), proved in the preceding chapter, is
+
+\[
+\cdots\to H^j(E,E_0;G)\xrightarrow{J}H^j(E;G)
+\to H^j(E_0;G)\xrightarrow{\delta}H^{j+1}(E,E_0;G)\to\cdots .
+\]
+
+Scalar contraction of the fibres identifies \(H^j(E;G)\) with \(H^j(B;G)\) by \(\pi^*\). The Thom isomorphism identifies \(H^j(E,E_0;G)\) with \(H^{j-r}(B;G)\) by
+\(\Phi(a)=\pi^*a\smile u_V\). The identity \(J(u_V)=\pi^*e(V)\) gives
+
+\[
+J\Phi(a)=\pi^*(a\smile e(V)).
+\]
+
+Make these substitutions in the exact pair sequence. Its remaining map is, by definition,
+\(\pi_!=\Phi^{-1}\delta\). Thus every map and every degree in the displayed sequence is fixed. Naturality follows from naturality of the pair sequence and of the oriented Thom class, or the canonical mod-two Thom class. The integral orientation must be preserved by a bundle isomorphism in this statement. \(\square\)
+
+If a metric is available, \(E_0\) deformation retracts to the unit sphere bundle \(S(V)\): at time \(t\), send \(v\ne0\) to
+\(((1-t)+t/\|v\|)v\). Consequently the same sequence computes \(H^*(S(V))\). A metric is not needed for the sequence on \(E_0\).
+
+The definition also records a useful sign. If \(b\in H^k(B;\mathbb Z)\) and \(y\in H^j(E_0;G)\), then
+
+\[
+\pi_!(\pi_0^*b\smile y)=(-1)^k b\smile\pi_!(y).
+\]
+
+Indeed extend a cocycle for \(y\) to a cochain \(\widetilde y\) on \(E\). The pair connecting class is represented by \(\delta\widetilde y\). For a cocycle \(\pi^*b\), the cup differential formula reads
+\(\delta(\pi^*b\smile\widetilde y)=(-1)^k\pi^*b\smile\delta\widetilde y\).
+Apply \(\Phi^{-1}\). This is the sign for our particular definition \(\pi_!=\Phi^{-1}\delta\); a differently normalized fibre-integration map can move that sign. In mod-two coefficients it disappears.
+
+**Corollary 1.2 (double covers).** For a two-sheeted cover \(p:P\to B\), let \(L_P=(P\times\mathbb R)/((x,t)\sim(\tau x,-t))\), where \(\tau\) exchanges the sheets. Then
+
+\[
+\cdots\to H^{j-1}(B;\mathbf F_2)\xrightarrow{\smile w_1(L_P)}H^j(B;\mathbf F_2)
+\xrightarrow{p^*}H^j(P;\mathbf F_2)
+\xrightarrow{p_!}H^j(B;\mathbf F_2)
+\xrightarrow{\smile w_1(L_P)}H^{j+1}(B;\mathbf F_2)\to\cdots .
+\]
+
+**Proof.** The bundle has a canonical metric \(\|[x,t]\|=|t|\). Its unit sphere is identified with \(P\) by \(x\mapsto[x,1]\); the other unit point is \([x,-1]=[\tau x,1]\). Its mod-two Euler class equals \(w_1(L_P)\), by the real-line normalization already proved. Use Theorem 1.1 with \(r=1\). \(\square\)
+
+For a rank-zero bundle \(E_0\) is empty and \(e=1\). The pair sequence is then simply the identity on the base cohomology; sphere-bundle language for positive rank should not be applied to it.
+
+## 2. Finite cells and the required dimension bound
+
+We will need the fact that a finite CW complex of dimension \(d\) has no singular homology or cohomology above \(d\). Here is the proof, including the relative cell calculation.
+
+Suppose \(X_q\) is obtained from a finite CW complex \(X_{q-1}\) by attaching finitely many \(q\)-disks, \(q>0\). Take the open neighbourhood \(N\) of \(X_{q-1}\) consisting of that subspace together with the outer annuli \(\|x\|>1/2\) in the disks. This set is open in the attachment quotient: its inverse image on each disk is an open collar containing the boundary, and its inverse image on \(X_{q-1}\) is the whole space. Pushing each collar radially to its boundary, and fixing \(X_{q-1}\), retracts \(N\) onto \(X_{q-1}\).
+
+The homotopy is continuous on the quotient. For a finite attachment this follows because the original quotient map is a closed surjection from a compact space to a Hausdorff space; its product with \(I\) is a quotient map. One can also use the quotient-times-interval lemma proved in Section 7 of the classifying-maps chapter. Restricting a quotient map to the inverse image of an open set remains quotient, so the collar homotopy is continuous on \(N\).
+
+The exact chain sequences of a triple give a long exact sequence for \(X_{q-1}\subset N\subset X_q\): divide
+\(0\to C_*(N)/C_*(X_{q-1})\to C_*(X_q)/C_*(X_{q-1})\to C_*(X_q)/C_*(N)\to0\).
+It is degreewise split on singular simplex bases, as are its coefficient and dual sequences. Since the first relative groups vanish by the retraction, replacing \(X_{q-1}\) by \(N\) induces relative homology and cohomology isomorphisms.
+
+Excision now removes the closed subspace \(X_{q-1}\subset\operatorname{int}N\). The remaining pair is the finite disjoint union of
+\((\mathring D^q,\{x:1/2<\|x\|<1\})\). Its first space is contractible and its second retracts to \(S^{q-1}\). The pair exact sequence and the previously proved sphere calculation give
+
+\[
+H_i(X_q,X_{q-1};G)=
+\begin{cases}\displaystyle\bigoplus_{\text{new }q\text{-cells}}G,&i=q,\\0,&i\ne q,\end{cases}
+\]
+
+and the same formula for \(H^i\). There are finitely many components, so the product arising on dual cochains equals the direct sum. For \(q=1\), the reduced \(H_0\) of the two-point sphere gives the stated degree-one group; for the initial zero-skeleton, the groups are directly those of a finite discrete set.
+
+Induction with the pair exact sequences proves the dimension bound. It also shows that the dimension of \(H^d(X;\mathbf F_2)\) is at most the number of top-dimensional cells: the relative top group surjects onto \(H^d(X)\), since \(H^d(X_{d-1})=0\). These conclusions concern singular groups and do not assume a cellular-cohomology theorem.
+
+If all cells have even dimensions, the integral homology is free, with one generator for each cell in its dimension. To check this, attach the \(2q\)-cells. The preceding odd-degree homology is zero, so the boundary from the relative degree-\(2q\) group is zero. There is no old homology in that top degree, so the new group is precisely the free relative group; lower degrees remain unchanged. Repeat over the finitely many dimensions.
+
+## 3. Real and complex projective spaces
+
+Write \(\gamma_{\mathbb R}\) or \(\gamma_{\mathbb C}\) for the tautological line. The finite spaces are compact Hausdorff: they are the rank-one Grassmannians already constructed. Explicit characteristic maps make their dimension bounds transparent. For \(\mathbb F=\mathbb R\) or \(\mathbb C\), attach a disk in \(\mathbb F^q\) to \(\mathbb F P^{q-1}\) by
+
+\[
+z\longmapsto[z\, :\,\sqrt{1-\|z\|^2}],\qquad \|z\|\leq1.
+\]
+
+The boundary map is \(z\mapsto[z:0]\). In the interior, the last coordinate is positive real; each line with last coordinate nonzero has a unique unit representative with this property. Hence the interior maps homeomorphically onto the affine chart with coordinate
+\(z/\sqrt{1-\|z\|^2}\). The map from the attachment quotient is a continuous bijection from a compact space to a Hausdorff space, and is therefore a homeomorphism: images of closed sets are compact and hence closed. Real projective space has one cell in every dimension \(0,\ldots,n\); complex projective space has one cell in every even dimension \(0,2,\ldots,2n\).
+
+The unit vectors of the real tautological line over \(\mathbb RP^n\) are \(S^n\), by \(v\mapsto([v],v)\). The corresponding complex sphere bundle over \(\mathbb CP^n\) is \(S^{2n+1}\). Both identifications are homeomorphisms by their explicit inverse, which forgets the line. Their projections are the usual projectivizations.
+
+**Theorem 3.1.** With \(a=w_1(\gamma_{\mathbb R})\),
+
+\[
+H^*(\mathbb RP^n;\mathbf F_2)=\mathbf F_2[a]/(a^{n+1}),\qquad |a|=1.
+\]
+
+**Proof.** For \(n=0\) the space is a point and \(a=0\). For \(n\geq1\), both \(S^n\) and \(\mathbb RP^n\) are path connected, so the degree-zero pullback in the double-cover Gysin sequence is the identity on \(\mathbf F_2\). Exactness forces the next map \(H^0(S^n)\to H^0(\mathbb RP^n)\) to be zero; it therefore forces multiplication by \(a\) out of \(H^0(\mathbb RP^n)\) to be injective.
+
+If \(1\leq j<n\), the sphere has no positive cohomology in degree \(j\). Its groups adjoining the multiplication-by-\(a\) map show inductively that
+\(H^{j-1}(\mathbb RP^n)\xrightarrow{\smile a}H^j(\mathbb RP^n)\)
+is an isomorphism. For \(j=n>1\), the preceding sphere group \(H^{n-1}(S^n)\) is zero, so the same multiplication remains injective. For \(n=1\), injectivity was the degree-zero argument above. The dimension bound from Section 2 shows that the top cohomology has dimension at most one, because there is one top cell. Thus \(a^n\ne0\) spans it. All groups above \(n\) vanish by that same bound. Each \(a^j\), \(0\leq j\leq n\), spans its group, and these facts prove the ring presentation. \(\square\)
+
+A complex vector space has its canonical real orientation: an ordered complex basis gives the real basis \(v_1,iv_1,\ldots,v_r,iv_r\). Complex changes of basis have real determinant \(|\det_{\mathbb C}A|^2>0\). For the complex tautological line put
+\(x=-e((\gamma_{\mathbb C})_{\mathbb R})\in H^2(\mathbb CP^n;\mathbb Z)\).
+
+**Theorem 3.2.**
+
+\[
+H^*(\mathbb CP^n;\mathbb Z)=\mathbb Z[x]/(x^{n+1}),\qquad |x|=2.
+\]
+
+The sign is normalized so that \(x\) evaluates to one on the complex-oriented projective line \(\mathbb CP^1\).
+
+**Proof of the ring.** Use the oriented rank-two Gysin sequence of the tautological line, whose sphere space is \(S^{2n+1}\). For \(1\leq j\leq2n\), its sphere groups in the required positive degrees vanish. In degree one the target of its degree-zero connecting map is a negative-degree base group, hence zero. Consequently the odd base groups vanish and multiplication by the Euler class gives isomorphisms from degree \(2i\) to \(2i+2\), as long as the latter degree is at most \(2n\). Starting with \(H^0=\mathbb Z\), this proves that \(x^i\) generates every even group in that range. Section 2 gives vanishing above \(2n\), completing the ring proof. It also gives directly that integral homology is \(\mathbb Z\) in these even degrees and zero in the others. \(\square\)
+
+**Proof of the sign.** For a Hermitian complex line \(L\), with the inner product linear in its first argument, the map
+\(w\mapsto(v\mapsto\langle v,w\rangle)\)
+is an anti-complex-linear isomorphism \(L\to L^*\). As a real map on a complex line it reverses orientation: conjugation has matrix \(\operatorname{diag}(1,-1)\). The Euler orientation rule therefore gives
+\(e((L^*)_{\mathbb R})=-e(L_{\mathbb R})\).
+For the finite tautological line the metric is the ambient standard one, so
+\(x=e((\gamma_{\mathbb C}^*)_{\mathbb R})\).
+
+The projective line is a sphere by the stereographic formula
+\([w:1]\mapsto(2\operatorname{Re}w,2\operatorname{Im}w,1-|w|^2)/(1+|w|^2)\),
+with \([1:0]\) sent to the south pole. The complex orientation agrees with the outward orientation: at \(w=0\) the ordered coordinate derivatives are positive multiples of the first two coordinate vectors, and the outward normal is the third; the ordered triple has positive determinant. The inverse projective coordinate at infinity is holomorphic, so this gives the consistent orientation.
+
+The linear functional \(\lambda(z_0,z_1)=z_0\) is a section of \(\gamma_{\mathbb C}^*\). It vanishes at the single line \([0:1]\). In the chart \([w:1]\), evaluating on the local tautological frame \((w,1)\) writes the section as the complex coordinate \(w\). This zero has real derivative the identity and local index \(+1\). Apply the sphere zero formula proved in Section 9 of the Thom/Euler chapter: \(\langle x,[\mathbb CP^1]\rangle=1\). This fixes the sign without invoking higher Chern classes or a general manifold-duality theorem. \(\square\)
+
+The case \(n=1\) is the Hopf projection \(S^3\to S^2=\mathbb CP^1\). Its Euler class is \(-x\). Its Gysin sequence has multiplication by \(-x\) as an isomorphism from \(H^0(S^2)\) to \(H^2(S^2)\), and \(\pi_!:H^3(S^3)\to H^2(S^2)\) is an isomorphism. The other positive base and total groups follow from the sphere calculation. Thus this fibration cannot have a section: its nonzero Euler class already forbids one.
+
+The same classes on the infinite projective spaces satisfy
+
+\[
+H^*(\mathbb RP^\infty;\mathbf F_2)=\mathbf F_2[a],
+\qquad H^*(\mathbb CP^\infty;\mathbb Z)=\mathbb Z[x].
+\]
+
+Here the direct-limit topology is the weak topology of the cells above: a set is closed exactly when its intersections with the finite projective spaces are closed, and finite attachment quotients give the same test on characteristic disks. The compact-subcomplex lemma from Section 7 of the classifying-maps chapter shows that every compact subset lies in a finite projective space. Singular homology therefore is the filtered limit of the finite-stage homology, by the finite-support cycle and boundary argument already used for Thom classes. In each fixed degree the finite-stage groups stabilize: in the complex case this follows from the even-cell relative groups; in the real mod-two case duality over the field and the restriction of the nonzero power \(a^j\) show that the maps on degree-\(j\) homology are isomorphisms once the stage is at least \(j\). The integral universal coefficient sequence has no Ext term for the complex spaces, since their homology is free and zero in odd degrees. It follows that restriction in fixed degree to a sufficiently large finite stage is an isomorphism. The displayed powers restrict to its generators, which proves both infinite ring presentations. This uses no general cohomological inverse-limit assertion.
+
+## 4. Cohomology of a projective bundle
+
+For a rank-\(n\) real or complex bundle \(V\to B\), \(n\geq1\), the **projective bundle** \(p:P(V)\to B\) has fibre the lines in \(V_b\). A bundle chart identifies it with \(U\times\mathbb F P^{n-1}\). Changes of charts act by the induced projective linear maps, so these identifications define a locally trivial Hausdorff space. There is a tautological line \(S\subset p^*V\), whose fibre at \((b,L)\) is \(L\).
+
+In the real case use coefficients \(R=\mathbf F_2\), degree \(d=1\), and
+\(z=w_1(S)=e_{\mathbf F_2}(S)\).
+In the complex case use \(R=\mathbb Z\), degree \(d=2\), and
+\(z=-e(S_{\mathbb R})\).
+Both restrict on a fibre to the generator proved in Section 3.
+
+**Theorem 4.1 (projective-bundle module theorem).** For every Hausdorff base,
+
+\[
+\bigoplus_{i=0}^{n-1}H^{m-di}(B;R)\longrightarrow H^m(P(V);R),
+\qquad (b_i)\longmapsto\sum_{i=0}^{n-1}p^*b_i\smile z^i
+\]
+
+is an isomorphism. It is an isomorphism of graded modules over \(H^*(B;R)\). In the complex case the same formula holds with any abelian group \(G\) in place of the coefficients in the displayed groups, using the integral powers \(z^i\). In particular \(p^*\) is injective in every degree.
+
+This specifies a module structure, not a polynomial-ring presentation: the relation satisfied by \(z^n\) depends on the bundle. That relation will construct the higher characteristic classes later.
+
+**Proof: the product case.** Let \(F=\mathbb F P^{n-1}\). Its homology with the specified coefficients is free, with one generator in each degree \(di\), \(0\leq i<n\), and no others. This follows from Section 3 and field duality in the real case, and from the even-cell calculation in the complex case. Its singular chain complex is chain homotopy equivalent to
+\(\bigoplus_{i=0}^{n-1}R[di]\).
+For \(R=\mathbb Z\), use the splitting construction of Section 6 in the Thom/Euler chapter: cycles, boundaries and free homology split, and the remaining pairs of summands contract. For a field use the identical argument with vector-space splittings. Choose the projection to each \(R[di]\) to be a cocycle for the dual basis element \(z_F^i\); changing the projection by a coboundary changes it by a chain homotopy.
+
+The Alexander–Whitney product equivalence therefore identifies \(C_*(U\times F;R)\), up to chain homotopy, with the finite direct sum of shifted complexes \(C_*(U;R)[di]\). The projection to its \(i\)-th factor is exactly
+\(p_*R_{\operatorname{pr}_F^*z_F^i}\): it evaluates the last \(di\)-face against that cocycle and retains the first face projected to \(U\). We use the unshifted differentials of the preceding chapter. Dualizing gives the displayed cup-product isomorphism on a product, including every \(G\) in the complex case.
+
+**Proof: gluing and arbitrary bases.** Choose cocycles \(c_i\) on \(P(V)\) representing \(z^i\), with \(c_0=1\), and form the chain map
+
+\[
+T:C_m(P(V);R)\longrightarrow
+\bigoplus_{i=0}^{n-1}C_{m-di}(B;R),
+\qquad T_i=p_*R_{c_i}.
+\]
+
+The cap identity proves that each component commutes with the unshifted differentials. A simplex lying over a subspace of \(B\) still maps to a simplex in that subspace. Replacing any \(c_i\) by a cohomologous cocycle changes \(T_i\) by the explicit cap homotopy from Section 4 of the preceding chapter.
+
+On a trivializing open set \(U\), the tautological line is the pullback of the fibre's tautological line. Euler and real-line naturality show that \(z^i\) equals \(\operatorname{pr}_F^*z_F^i\) as a cohomology class there. The preceding cap homotopy therefore identifies the local induced map of \(T\) with the product isomorphism just proved, even if the chosen global cocycles are not themselves product cocycles.
+
+For two open subsets of the base, apply \(T\) to the small-chain Mayer–Vietoris sequences upstairs and to the finite direct sums of the corresponding sequences downstairs. Supports are preserved, so the diagrams commute, including their connecting maps. The homological five lemma proves the isomorphism over a union if it holds over its two pieces and their intersection. Induction over a finite trivializing cover works because the last intersection is covered by fewer charts. It proves that \(T\) is a homology isomorphism for every compact restricted base \(C\subset B\).
+
+Every chain upstairs has compact projected support. The compact-support homology argument therefore proves that the global \(T\) is a homology isomorphism: cycles and bounding chains each occur in some compact restricted bundle, and finite unions make the system filtered. The induced maps for different compact subsets commute with inclusion, because they are restrictions of the same \(T\).
+
+In the complex case apply the natural integral universal coefficient exact sequences to this map of free complexes. The Hom and Ext maps are isomorphisms, and hence so are the cohomology maps with every \(G\). In the real case use field duality. Dualizing a finite direct sum gives a finite direct sum; evaluating a degree-\(m-di\) cochain on \(T_i\) gives exactly \(p^*b_i\smile c_i\). Thus the resulting isomorphism is the one asserted. Associativity of the cup product shows that it respects the module action. Its \(i=0\) summand is \(p^*\), which is consequently injective. \(\square\)
+
+The proof is a projective-bundle form of the Leray–Hirsch argument. Its compact-support passage takes place in homology; it does not infer global integral cohomology by taking an unproved inverse limit.
+
+## 5. Flags and the splitting principle
+
+For a bundle over a paracompact Hausdorff base, the earlier metric theorem gives a Euclidean or Hermitian metric. Its pullbacks have metrics too. Over \(P(V)\), take the orthogonal complement \(Q_1\) of the tautological line \(S_1\), obtaining
+\(p_1^*V=S_1\oplus Q_1\).
+Projectivize the rank-\(n-1\) bundle \(Q_1\), choose its tautological line \(S_2\), and take its orthogonal complement. Continue until the rank-one remainder. This constructs an iterated projective bundle
+\(f:\operatorname{Flag}(V)\to B\) and line bundles \(L_1,\ldots,L_n\) on it with
+
+\[
+f^*V\cong L_1\oplus\cdots\oplus L_n.
+\]
+
+At a point, the lines are ordered and mutually orthogonal in \(V_b\). Equivalently they determine the successive subspaces of a complete flag. Each orthogonal complement is a bundle by the explicit projection theorem of the first chapter. Thus every step is a genuine locally trivial projective bundle, not just a fibrewise decomposition.
+
+**Theorem 5.1 (splitting principle).** For a finite-rank real bundle on a paracompact Hausdorff base, \(f^*:H^*(B;\mathbf F_2)\to H^*(\operatorname{Flag}(V);\mathbf F_2)\) is injective. For a complex bundle the analogous map is injective with integral coefficients and with every abelian coefficient group. The pulled-back bundle splits as the displayed sum of lines. Rank zero and rank one use the identity map.
+
+**Proof.** Each projection in the flag tower induces an injective cohomology map by Theorem 4.1. Their composite is injective. The construction proves the splitting. For rank one there is already a line and no tower is needed; for rank zero the sum is empty. \(\square\)
+
+The flag spaces are again paracompact Hausdorff, so the same principle can be applied to a second bundle over them. Here is the required topological check. A locally trivial bundle with compact fibre \(F\) over a paracompact Hausdorff \(B\) is paracompact. Given an open cover of its total space, trivialize near \(b\). For each point of the compact fibre over \(b\), choose a product neighbourhood \(U_i\times O_i\) lying in one cover member. Finitely many \(O_i\) cover \(F\); intersect their finitely many \(U_i\) to get an open \(U_b\) over which these same finitely many products cover the whole bundle. Choose a locally finite open refinement \(V_\alpha\) of the cover \(\{U_b\}\) of the base. Over each \(V_\alpha\), the finitely many products with those \(O_i\) form a refinement upstairs. It is locally finite, since the \(V_\alpha\) are locally finite and only finitely many sets were chosen over each one. The total space is Hausdorff because points over different base points separate downstairs, and points in the same fibre separate in a bundle chart. Apply this argument at each projective step.
+
+For example, to prove an equality of cohomology classes built naturally from two bundles \(V,W\), first pass to \(\operatorname{Flag}(V)\), then to the flag bundle of the pullback of \(W\). Both bundles split on the resulting space, and the composite pullback remains injective. An equality proved there consequently holds on \(B\). This argument proves injectivity; it does not assert that a splitting already exists on the original base.
+
+## 6. First classes of complex lines
+
+For a complex line define
+\(c_1(L)=e(L_{\mathbb R})\), with the complex orientation. This notation is confined here to lines; the higher Chern classes of arbitrary bundles will be constructed later. The metric and orientation argument from Section 3 gives
+\(c_1(L^*)=-c_1(L)\) on a paracompact Hausdorff base. Complex conjugation also reverses the real orientation of a line, so
+\(c_1(\overline L)=-c_1(L)\).
+
+**Proposition 6.1.** For complex lines \(L,M\) on a paracompact Hausdorff base,
+
+\[
+c_1(L\otimes M)=c_1(L)+c_1(M),
+\qquad c_1(\operatorname{Hom}_{\mathbb C}(L,M))=c_1(M)-c_1(L).
+\]
+
+**Proof.** We first calculate degree two on \(\mathbb CP^\infty\times\mathbb CP^\infty\). The chain product equivalence from the preceding chapter, together with the free even-degree homology calculated in Section 3, gives
+\(H_1=0\) and \(H_2=\mathbb Z\oplus\mathbb Z\). For completeness, the singular chain complex of \(\mathbb CP^\infty\) splits up to chain homotopy as \(\bigoplus_{i\geq0}\mathbb Z[2i]\): the same free-cycle, boundary and homology splitting used in Theorem 4.1 applies, now in every degree. Tensoring its equivalence and homotopies is legitimate in each total degree, where the direct sums contain only finitely many degree pairs. The two degree-two homology generators are exactly the inclusions of the projective line in the two coordinate axes. The universal coefficient theorem therefore shows that a degree-two integral cohomology class is determined by its restrictions to those axes.
+
+Let \(\gamma_1,\gamma_2\) be the pullbacks of the universal tautological line on the two factors. On the first coordinate axis, \(\gamma_1\otimes\gamma_2\) is isomorphic to the first tautological line, since the second is a fixed one-dimensional vector space and hence trivial; on the second axis the roles reverse. These complex-linear isomorphisms preserve the real complex orientation. Naturality of the Euler class and the degree-two detection just proved give
+
+\[
+c_1(\gamma_1\otimes\gamma_2)=c_1(\gamma_1)+c_1(\gamma_2).
+\]
+
+Bundle classification supplies maps \(g,h:B\to\mathbb CP^\infty\) with \(L\cong g^*\gamma\) and \(M\cong h^*\gamma\). Pull the last equality back along \((g,h)\). This proves the tensor formula. The Hom formula follows from \(\operatorname{Hom}(L,M)=L^*\otimes M\) and the dual sign. \(\square\)
+
+For real lines on a Hausdorff base the already proved transport description likewise gives
+\(w_1(L\otimes M)=w_1(L)+w_1(M)\),
+\(w_1(L^*)=w_1(L)\), and hence
+\(w_1(\operatorname{Hom}_{\mathbb R}(L,M))=w_1(L)+w_1(M)\).
+Indeed the fibre signs on every loop multiply under tensor product, are unchanged under the inverse sign, and degree-one singular cohomology is determined by those loop evaluations. These line identities are all that the splitting arguments need before the full class sequences are introduced.
+
+## 7. Examples and exercises with solutions
+
+**Exercise 7.1 (easy).** Determine the degree-zero maps in Corollary 1.2 for the trivial double cover \(P=B\sqcup B\). Identify its first class.
+
+**Solution.** Its associated real line is trivial, so \(w_1=0\). Pullback sends \(a\) to \((a,a)\). The next map sends \((u,v)\) to \(u+v\), with mod-two coefficients. To check this last assertion without assuming a transfer theorem, restrict naturally to each point of \(B\). The cover becomes two points, and its pair sequence is the punctured-line calculation: the connecting map on degree-zero cochains is the difference of their two endpoint values, hence their sum modulo two. Degree-zero cohomology consists of functions on path components, determined by their point values; the same formula holds over \(B\). The sequence in degree zero is therefore
+\(0\to H^0(B)\xrightarrow{a\mapsto(a,a)}H^0(B)\oplus H^0(B)\xrightarrow{(u,v)\mapsto u+v}H^0(B)\to0\).
+
+**Exercise 7.2 (medium).** Compute the integral cohomology ring of the unit tangent bundle of \(S^2\), and identify its total space as \(SO(3)\).
+
+**Solution.** The Thom/Euler chapter proved \(e(TS^2)=2t\), where \(t\) generates \(H^2(S^2;\mathbb Z)\). Its rank-two Gysin sequence gives
+\(H^0(S(TS^2))=\mathbb Z\),
+\(H^1(S(TS^2))=\ker(\mathbb Z\xrightarrow{2}\mathbb Z)=0\),
+\(H^2(S(TS^2))=\operatorname{coker}(\mathbb Z\xrightarrow{2}\mathbb Z)=\mathbb Z/2\),
+and \(H^3(S(TS^2))=\mathbb Z\) by its isomorphism onto \(H^2(S^2)\) under \(\pi_!\). All groups above three vanish because the adjoining base groups do. Products of positive-degree classes vanish for dimensional reasons. If \(u\) is the degree-two class of order two and \(v\) a degree-three generator, the ring can be written
+
+\[
+\mathbb Z[u,v]/(2u,u^2,uv,v^2),\qquad |u|=2,\quad |v|=3.
+\]
+
+A point of the total space is an ordered pair of perpendicular unit vectors \((x,w)\) in \(\mathbb R^3\). Send it to the matrix with columns \((x,w,x\times w)\). Its columns are an oriented orthonormal basis, so it belongs to \(SO(3)\). The inverse takes the first two columns. Both maps are continuous, proving the identification and thereby the stated ring for \(SO(3)\).
+
+**Exercise 7.3 (medium).** On \(B=\mathbb CP^1\), let \(L=\gamma_{\mathbb C}^*\) and \(t=c_1(L)\). Compute the ring of \(P(\varepsilon_{\mathbb C}\oplus L)\). Compare it with that of \(P(\varepsilon_{\mathbb C}^2)\).
+
+**Solution.** Pull \(t\) to the projective bundle and retain its name. For its tautological line \(S\), put \(z=-c_1(S)=c_1(S^*)\). The nonzero inclusion of \(S\) into the pulled-back rank-two bundle is a nowhere-zero section of
+\(\operatorname{Hom}(S,p^*(\varepsilon\oplus L))=S^*\oplus(S^*\otimes p^*L)\).
+Its Euler class is zero. The Euler product and complex-line tensor formula make that Euler class
+\(z(z+t)\). Consequently \(z^2+tz=0\), while \(t^2=0\) on the base. The module theorem says that \(1,z\) are a free basis over \(\mathbb Z[t]/(t^2)\); thus these are all the relations and
+
+\[
+H^*(P(\varepsilon\oplus L);\mathbb Z)
+=\mathbb Z[t,z]/(t^2,z^2+tz),\qquad |t|=|z|=2.
+\]
+
+To justify the assertion about all relations, divide any polynomial by the monic polynomial \(z^2+tz\), obtaining a unique remainder \(a(t)+b(t)z\). This division works over the coefficient ring \(\mathbb Z[t]/(t^2)\) because the leading coefficient is one. The module theorem makes a zero remainder in cohomology equivalent to \(a=b=0\).
+
+For the trivial rank-two bundle the total space is \(\mathbb CP^1\times\mathbb CP^1\), and \(z\) is pulled from its second factor. Hence \(z^2=0\), and its ring is \(\mathbb Z[t,z]/(t^2,z^2)\). Both have the same free module basis \(1,z\) over the base; their displayed multiplication laws differ.
+
+**Exercise 7.4 (medium).** Let \(L=\gamma_{\mathbb C}^*\) over \(\mathbb CP^1\) and let \(L^k\) denote its \(k\)-fold tensor power, using the dual for negative \(k\) and the trivial line for \(k=0\). Compute \(H^*(S(L^k);\mathbb Z)\).
+
+**Solution.** Repeated tensor addition and the dual sign give \(e((L^k)_{\mathbb R})=kt\). For \(k\ne0\), the rank-two Gysin sequence gives \(\mathbb Z\) in degrees zero and three, \(\mathbb Z/k\mathbb Z\) in degree two, and zero in every other degree. All products of positive-degree classes vanish. The degree-two class has order \(|k|\); for \(k=\pm1\) that group is zero. If \(k=0\), the bundle is the product \(\mathbb CP^1\times S^1\). The chain product equivalence and the known sphere classes give the graded ring
+\(\mathbb Z[t,b]/(t^2,b^2)\), with \(|t|=2\), \(|b|=1\); the nonzero product \(tb\) generates degree three. This separate zero case is also visible in the Gysin kernel and cokernel of multiplication by zero.
+
+**Exercise 7.5 (hard).** Pull two positive-rank bundles \(V,W\) to a common flag space where they split into lines \(L_i,M_j\). Express the Euler class of their Hom bundle there, and explain why the expression determines a class on the original base.
+
+**Solution.** For real bundles take mod-two coefficients and put \(x_i=w_1(L_i)\), \(y_j=w_1(M_j)\). The Hom bundle splits into the lines \(L_i^*\otimes M_j\). Their first classes are \(x_i+y_j\), which equal their mod-two Euler classes. The Euler product formula gives
+
+\[
+f^*e_{\mathbf F_2}(\operatorname{Hom}_{\mathbb R}(V,W))
+=\prod_{i,j}(y_j+x_i).
+\]
+
+For complex bundles put \(x_i=c_1(L_i)\), \(y_j=c_1(M_j)\). The analogous line has first class \(y_j-x_i\), so, using the canonical complex orientation,
+
+\[
+f^*e(\operatorname{Hom}_{\mathbb C}(V,W)_{\mathbb R})
+=\prod_{i,j}(y_j-x_i).
+\]
+
+The real ranks of the complex-line summands are even, so reordering them does not change the complex orientation or introduce an Euler-product sign. The common flag space is obtained by the two successive flag towers described in Section 5. Its pullback on the specified cohomology is injective. The displayed formula therefore determines the original Euler class uniquely: any two original classes with this pullback are equal. Existence here is provided by the original Euler class itself, not by an assertion that every polynomial on a flag space descends.
+
+## References
+
+[MS] John Milnor and James Stasheff, *Characteristic Classes*, Princeton University Press, 1974, Section 12. Coverage and scholarly reference for the Gysin sequence and its double-cover application. The complete frame and Euler-primary theorems are proved in the linked companion chapter. No protected text or source exercise set is reproduced.
+
+[H] Allen Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Section 4.D, Theorem 4D.1. Scholarly reference for the Leray–Hirsch theorem. The projective-bundle proof here uses the explicitly established cap maps, finite-cover homological gluing and compact-support passage. No source text is reproduced.

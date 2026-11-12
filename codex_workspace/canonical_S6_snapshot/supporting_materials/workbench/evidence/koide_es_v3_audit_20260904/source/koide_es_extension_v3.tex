@@ -1,0 +1,1704 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{booktabs,array,longtable}
+\usepackage{enumitem}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\allowdisplaybreaks
+\emergencystretch=2em
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Pone}{\mathbb P^1}
+\newcommand{\ES}{\operatorname{ES}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Pf}{\operatorname{Pf}}
+\newcommand{\SNF}{\operatorname{SNF}}
+\newcommand{\Li}{\operatorname{Li}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\mat}[4]{\begin{pmatrix}#1&#2\\#3&#4\end{pmatrix}}
+
+\title{Divisor Channels, Prime Saturation, and Bézout Openings\\
+\large An exact Erdős--Straus--Koide--period-discriminant extension}
+\author{Technical research continuation from the cited canonical workbenches}
+\date{4 September 2026}
+\hypersetup{
+ pdftitle={Divisor Channels, Prime Saturation, and Bezout Openings},
+ pdfauthor={Technical research continuation from the cited canonical workbenches},
+ pdfsubject={Exact Erdos-Straus, Koide, and period-discriminant mathematics}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Starting from the exact marked Erdős--Straus selector already identified with
+an integral terminal-matrix slice of the proposed complex-$S^6$ construction,
+we extend the arithmetic chain in four directions.  First, for every coprime
+odd fixed-denominator shell, not only for prime denominators, we classify all
+oriented reciprocal solutions by divisor channels $\delta\mid n^2$ and prove
+a fixed-point-free complementary-channel involution.  Each channel has an
+explicit terminal relation matrix of determinant $-\delta$, and its channel
+count has an exact finite Fourier expansion over
+$(\Z/R\Z)^\times$.  Second, primitive factor coordinates turn every channel
+into the projective incidence $nr+\delta t\equiv0\pmod R$ and into an integral
+Lorentz similitude of factor $n^2$.  Third, every primitive positive Koide
+null ray supports infinitely many exterior prime certificates in every
+admissible prime progression; the single diagonal ray $[1:1]$ alone captures
+relative density one of the primes in every such progression.  Fourth, a
+chosen Bézout companion opens each rank-one selector ray to an explicit
+nondegenerate determinant-$(-\delta)$ coefficient matrix.  This matrix gives
+a regular ambient period torus, is related to the terminal relation matrix by
+a fully displayed $\GL_2(\Z)$ left--right morphism, and maps by an exact
+orthogonal--homothetic map to the defect-one Koide hyperboloid.  That exact map
+is proved to have no rational image point, so the existing integral defect-one
+counting theorem cannot be silently reinterpreted as an Erdős--Straus count.
+On the diagonal primitive ray, the number of exterior certificates for each
+individual prime is computed exactly from the factorization of $(p+1)/2$.
+\end{abstract}
+
+\paragraph{Source status.}
+The imported prime selector, terminal matrix, Koide determinant map, and
+canonical period convention are taken from the byte-preserving current source
+bundle supplied with this continuation.  Its embedded files verify against
+their recorded SHA-256 values.  The original complex-threefold construction
+is attributed to Levent Alpöge with the disclosed Claude/Fable contribution;
+the separate Erdős--Straus research archive is attributed in its release to
+The Clankers.  No theorem below uses the unverified global identification of
+the constructed threefold with $S^6$.  Only the displayed arithmetic matrices
+and the ambient period convention are used.
+
+\section{Imported prime selector and determinant dictionaries}
+
+Let $p\equiv1\pmod{12}$ be prime.  For
+\begin{equation}\label{eq:R-a-prime}
+ R_j=4j+3,\qquad a_j=\frac{p+R_j}{4},
+ \qquad 0\le j<\frac{p-1}{4},
+\end{equation}
+the two source selector sets are
+\begin{align}
+ \mathcal W_0(p,j)
+ &=\{u\in\Z_{>0}:u\mid a_j^2,\ R_j\mid4u+1\},\label{eq:E-source}\\
+ \mathcal W_1(p,j)
+ &=\{u\in\Z_{>0}:u\mid a_j^2,\ R_j\mid4u+p\}.\label{eq:M-source}
+\end{align}
+They are the exterior and middle channels.  With $\eps\in\{0,1\}$ and
+$u\in\mathcal W_\eps(p,j)$, put
+\begin{equation}\label{eq:source-T}
+ T=\frac{4u+p^\eps}{R_j},\qquad
+ (\ell_0,\ell_1,\ell_2)
+ =\left(\frac{T+1}{4},u-jT,1\right).
+\end{equation}
+Then
+\begin{equation}\label{eq:source-lambda}
+ 12\ell_0-4\ell_1-3\ell_2=p^\eps
+\end{equation}
+and
+\begin{equation}\label{eq:source-shear}
+ \mat{1}{-j}{0}{1}
+ \mat{R_j}{-u}{4}{-T}
+ =
+ \mat{3}{-\ell_1}{4}{1-4\ell_0}.
+\end{equation}
+Thus the selector presentation and the terminal presentation differ by an
+explicit element of $\SL_2(\Z)$.
+
+The rank-one determinant model used below is
+\begin{equation}\label{eq:iota}
+ \iota(H,X,Y)=\mat{H+Y}{X}{X}{H-Y},\qquad
+ \det\iota(H,X,Y)=H^2-X^2-Y^2.
+\end{equation}
+The source orthogonal Koide map $\mathcal F:\R^3\to\R^3$ satisfies
+\begin{equation}\label{eq:koide-orthogonal}
+ Q_K(q)=\frac23(q_1+q_2+q_3)^2-(q_1^2+q_2^2+q_3^2)
+ =H^2-X^2-Y^2,
+\end{equation}
+where
+\begin{equation}\label{eq:F}
+ \begin{pmatrix}H\\X\\Y\end{pmatrix}
+ =
+ \begin{pmatrix}
+ 1/\sqrt3&1/\sqrt3&1/\sqrt3\\
+ 1/\sqrt2&0&-1/\sqrt2\\
+ 1/\sqrt6&-2/\sqrt6&1/\sqrt6
+ \end{pmatrix}
+ \begin{pmatrix}q_1\\q_2\\q_3\end{pmatrix}.
+\end{equation}
+
+Two coefficient dictionaries are retained separately.  The native symmetric
+coefficient matrix is
+\begin{equation}\label{eq:native-G}
+ G(t,m,b)=\mat{2t}{2m}{2m}{b/3},
+\end{equation}
+with
+\begin{equation}\label{eq:L-native}
+ \mathcal L(t,m,b)=\left(t+\frac b6,2m,t-\frac b6\right)=(H,X,Y),
+\end{equation}
+so
+\begin{equation}\label{eq:native-disc}
+ \det G=\frac23(tb-6m^2).
+\end{equation}
+The raw-period dictionary is
+\begin{equation}\label{eq:raw-dict}
+ \mathcal P_K(H,X,Y)=\left(H+Y,\frac X{\sqrt6},H-Y\right)
+ =(T_{\rm raw},M_{\rm raw},B_{\rm raw}),
+\end{equation}
+and
+\begin{equation}\label{eq:raw-disc}
+ T_{\rm raw}B_{\rm raw}-6M_{\rm raw}^2=H^2-X^2-Y^2.
+\end{equation}
+Their exact connecting map is
+\begin{equation}\label{eq:D-map}
+ \mathcal D(t,m,b)=\left(2t,\sqrt{\frac23}\,m,\frac b3\right),
+ \qquad \mathcal P_K=\mathcal D\circ\mathcal L^{-1}.
+\end{equation}
+
+\section{Complete divisor channels for a coprime odd shell}
+
+Fix integers
+\begin{equation}\label{eq:general-shell-hyp}
+ n\equiv1\pmod4,\qquad R\equiv3\pmod4,
+ \qquad 0<R<n,\qquad \gcd(n,R)=1,
+\end{equation}
+and put
+\begin{equation}\label{eq:aN}
+ a=\frac{n+R}{4},\qquad N=na.
+\end{equation}
+Then
+\begin{equation}\label{eq:gcd-general}
+ \gcd(n,a)=\gcd(R,a)=1.
+\end{equation}
+The fixed-first-denominator equation
+\begin{equation}\label{eq:fixed-shell-ES}
+ \frac4n=\frac1a+\frac1y+\frac1z
+\end{equation}
+is equivalent to
+\begin{equation}\label{eq:residual-equation}
+ Ryz=N(y+z)
+\end{equation}
+and to
+\begin{equation}\label{eq:shifted-factorization}
+ (Ry-N)(Rz-N)=N^2.
+\end{equation}
+
+\begin{definition}[oriented divisor channel]\label{def:channel}
+For $\delta\mid n^2$, define
+\begin{equation}\label{eq:channel-set}
+ \mathscr C_\delta(n,R)=
+ \left\{(u,v)\in\Z_{>0}^2:
+ uv=a^2,\quad R\mid4u+\delta\right\}.
+\end{equation}
+For $(\delta,u,v)$ in this set, define
+\begin{equation}\label{eq:d-e-oriented}
+ d=\frac{n^2}{\delta}u,\qquad e=\delta v
+\end{equation}
+and
+\begin{equation}\label{eq:y-z-general}
+ y=\frac{N+d}{R},\qquad z=\frac{N+e}{R}.
+\end{equation}
+The orientation in \eqref{eq:d-e-oriented} is fixed so that, when $n=p$ is
+prime, $\delta=1$ is exactly the source exterior channel
+$d=p^2u$.
+\end{definition}
+
+\begin{theorem}[complete oriented channel decomposition]\label{thm:complete-channel}
+The map
+\begin{equation}\label{eq:channel-map}
+ \bigsqcup_{\delta\mid n^2}\mathscr C_\delta(n,R)
+ \longrightarrow
+ \left\{(y,z)\in\Z_{>0}^2:Ryz=N(y+z)\right\}
+\end{equation}
+given by \eqref{eq:d-e-oriented}--\eqref{eq:y-z-general} is a bijection.
+Its inverse is
+\begin{align}
+ d&=Ry-N,&e&=Rz-N,\label{eq:inverse-de}\\
+ \kappa&=\gcd(d,n^2),&
+ \delta&=\frac{n^2}{\kappa},\label{eq:inverse-delta}\\
+ u&=\frac d\kappa,&v&=\frac e\delta.\label{eq:inverse-uv}
+\end{align}
+Under exchange of the final denominators, the channel coordinates transform
+as
+\begin{equation}\label{eq:complement-involution}
+ (\delta,u,v)\longmapsto
+ \left(\frac{n^2}{\delta},v,u\right).
+\end{equation}
+The involution has no fixed point.  Therefore the number of unordered
+solutions in this fixed shell is
+\begin{equation}\label{eq:unordered-half}
+ \frac12\sum_{\delta\mid n^2}|\mathscr C_\delta(n,R)|.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Suppose first that $(\delta,u,v)$ satisfies \eqref{eq:channel-set}.  Then
+\[
+ de=\frac{n^2}{\delta}u\cdot\delta v=n^2a^2=N^2.
+\]
+To verify the first integrality in \eqref{eq:y-z-general}, multiply its
+numerator by the unit $\delta$ modulo $R$:
+\[
+ \delta(N+d)=\delta na+n^2u
+ =n(\delta a+nu).
+\]
+Because $n\equiv4a\pmod R$, the final parenthesis is congruent to
+$a(\delta+4u)$, hence to zero.  Since $\delta$ is a unit modulo $R$,
+$R\mid N+d$.  For the second numerator,
+\[
+ N+e=na+\delta v\equiv4a^2+\delta v
+ =v(4u+\delta)\equiv0\pmod R.
+\]
+Both numbers are positive, and \eqref{eq:shifted-factorization} proves the
+reciprocal equation.
+
+Conversely, let $(y,z)$ satisfy \eqref{eq:residual-equation}.  Division by
+$z$ and by $y$ shows $d=Ry-N>0$ and $e=Rz-N>0$, while
+\eqref{eq:shifted-factorization} gives $de=n^2a^2$.  Since $\gcd(n,a)=1$,
+the $n$-primary and $a$-primary parts split uniquely.  In particular
+$\kappa=\gcd(d,n^2)$, $\delta=n^2/\kappa$, $u=d/\kappa$, and $v=e/\delta$
+are positive integers with $uv=a^2$.  Finally,
+\[
+ 0\equiv N+e=na+\delta v\equiv4a^2+\delta v
+ =v(4u+\delta)\pmod R.
+\]
+The integer $v$ is a unit modulo $R$, so $R\mid4u+\delta$.  The two
+constructions are literal inverses.
+
+Exchanging $y,z$ exchanges $d,e$ and gives \eqref{eq:complement-involution}.
+A fixed point would require $\delta=n$ and $u=v=a$.  Its channel congruence
+would give
+\[
+ R\mid4a+n=2n+R,
+\]
+so $R\mid2n$.  This contradicts $R>1$, $R$ odd, and $\gcd(R,n)=1$.
+\end{proof}
+
+\begin{corollary}[prime specialization]\label{cor:prime-specialization}
+For $n=p$ prime, the three oriented channel orders are
+\begin{equation}\label{eq:prime-deltas}
+ \delta=1,\quad p,\quad p^2.
+\end{equation}
+The first is the source exterior channel, the second is the source middle
+channel, and the third is the reversed exterior orientation.  Hence
+\begin{equation}\label{eq:prime-count}
+ \#\{\text{unordered solutions in the shell}\}
+ =|\mathcal W_0(p,j)|+\frac12|\mathcal W_1(p,j)|.
+\end{equation}
+\end{corollary}
+
+\begin{example}[the orientation correction]\label{ex:n9}
+Take
+\[
+ n=9,\qquad R=7,\qquad a=4,\qquad \delta=3,
+ \qquad u=1,\qquad v=16.
+\]
+Then
+\[
+ d=\frac{81}{3}\cdot1=27,\qquad e=3\cdot16=48,
+\]
+and
+\[
+ y=\frac{36+27}{7}=9,\qquad z=\frac{36+48}{7}=12.
+\]
+Thus
+\[
+ \frac49=\frac14+\frac19+\frac1{12}.
+\]
+The inverse gives $\gcd(d,81)=27$ and therefore
+$\delta=81/27=3$.  Replacing this by $\gcd(d,81)$ would reverse the channel
+order and would not preserve the source exterior orientation.
+\end{example}
+
+\section{Terminal matrices and the divisor-order spectrum}
+
+For a channel state $(\delta,u,v)$, put
+\begin{equation}\label{eq:Tdelta}
+ T_\delta=\frac{4u+\delta}{R},\qquad
+ j=\frac{R-3}{4},
+\end{equation}
+and define
+\begin{equation}\label{eq:sigdelta}
+ \sigma_\delta=
+ \begin{cases}
+ 1,&\delta\equiv1\pmod4,\\
+ -1,&\delta\equiv3\pmod4.
+ \end{cases}
+\end{equation}
+Because $RT_\delta\equiv\delta\pmod4$ and $R\equiv-1\pmod4$,
+\begin{equation}\label{eq:T-sigma}
+ T_\delta+\sigma_\delta\equiv0\pmod4.
+\end{equation}
+Set
+\begin{equation}\label{eq:ell-general}
+ \ell_2=\sigma_\delta,
+ \qquad
+ \ell_0=\frac{T_\delta+\sigma_\delta}{4},
+ \qquad
+ \ell_1=u-jT_\delta.
+\end{equation}
+
+\begin{theorem}[complete terminal matrix of a divisor channel]\label{thm:terminal-general}
+The coordinates \eqref{eq:ell-general} are integral and satisfy
+\begin{equation}\label{eq:lambda-delta}
+ 12\ell_0-4\ell_1-3\ell_2=\delta.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:general-row-shear}
+ \mat{1}{-j}{0}{1}
+ \mat{R}{-u}{4}{-T_\delta}
+ =
+ \underbrace{\mat{3}{-\ell_1}{4}{\ell_2-4\ell_0}}
+ _{\mathsf R_\delta}
+ =\mat{3}{-\ell_1}{4}{-T_\delta}.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:terminal-snf}
+ \det\mathsf R_\delta=-\delta,
+ \qquad
+ \SNF(\mathsf R_\delta)=\diag(1,\delta).
+\end{equation}
+Finally,
+\begin{equation}\label{eq:ell1mod3}
+ \ell_1\equiv-\delta\pmod3.
+\end{equation}
+Thus the source admissibility $3\nmid\ell_1$ holds exactly when
+$3\nmid\delta$, and $\ell_2$ is always odd.
+\end{theorem}
+
+\begin{proof}
+Only the displayed identities are needed.  Equation \eqref{eq:T-sigma}
+proves $\ell_0\in\Z$.  Since $R=4j+3$,
+\begin{align*}
+ 12\ell_0-4\ell_1-3\ell_2
+ &=3(T_\delta+\sigma_\delta)-4(u-jT_\delta)
+   -3\sigma_\delta\\
+ &=(4j+3)T_\delta-4u=RT_\delta-4u=\delta.
+\end{align*}
+Left multiplication in \eqref{eq:general-row-shear} gives first row
+$(R-4j,-u+jT_\delta)=(3,-\ell_1)$; its second row is unchanged.  Also
+$\ell_2-4\ell_0=-T_\delta$.  The entries $3,4$ have gcd one, so the first
+Smith invariant is one; the determinant gives the second.  Reducing
+$\delta=3T_\delta-4\ell_1$ modulo three proves \eqref{eq:ell1mod3}.
+\end{proof}
+
+\begin{corollary}[complementary terminal orders]\label{cor:terminal-complement}
+The two orientations of one unordered reciprocal solution have terminal
+orders
+\begin{equation}\label{eq:paired-orders}
+ \left\{\delta,\frac{n^2}{\delta}\right\},
+ \qquad
+ \delta\cdot\frac{n^2}{\delta}=n^2.
+\end{equation}
+The unique self-complementary order is $\delta=n$, but the oriented channel
+involution has no fixed state.
+\end{corollary}
+
+\begin{remark}[scope of the terminal homology package]
+The canonical workbench contains a terminal chain calculation which, after
+its displayed geometric inputs are granted, assigns
+\[
+ (H_0,\ldots,H_6)
+ \cong
+ (\Z,\Z/\delta,\Z/\delta,\Z/\delta,\Z/\delta,0,\Z)
+\]
+to a nonzero terminal value $\delta$.  In particular $\delta=1$ is the
+homology-sphere package.  The present theorem supplies its exact arithmetic
+input matrix; it does not independently reprove that every such matrix is
+realized by the global complex-threefold gluing.
+\end{remark}
+
+\section{Signed divisor boxes and exact Fourier counts}
+
+Factor
+\begin{equation}\label{eq:a-factor}
+ a=\prod_{q^e\parallel a}q^e.
+\end{equation}
+Every divisor $u\mid a^2$ has a unique signed exponent vector
+\begin{equation}\label{eq:signed-exponents}
+ u=a\prod_{q^e\parallel a}q^{\beta_q},
+ \qquad -e\le\beta_q\le e.
+\end{equation}
+Since $4a\equiv n\pmod R$, the channel condition becomes
+\begin{equation}\label{eq:signed-channel}
+ \prod_{q^e\parallel a}q^{\beta_q}
+ \equiv-\delta n^{-1}\pmod R.
+\end{equation}
+All terms are units modulo $R$ by \eqref{eq:gcd-general}.
+
+Let
+\[
+ U_R=(\Z/R\Z)^\times,
+ \qquad \widehat U_R=\operatorname{Hom}(U_R,\C^\times),
+\]
+and define
+\begin{equation}\label{eq:Dchi}
+ D_a(\chi)=
+ \prod_{q^e\parallel a}\left(\sum_{\beta=-e}^{e}\chi(q)^\beta\right).
+\end{equation}
+
+\begin{theorem}[exact channel Fourier formula]\label{thm:fourier}
+For every $\delta\mid n^2$,
+\begin{equation}\label{eq:Cdelta-fourier}
+ C_\delta(n,R):=|\mathscr C_\delta(n,R)|
+ =\frac1{\varphi(R)}
+ \sum_{\chi\in\widehat U_R}
+ \overline{\chi(-\delta n^{-1})}\,D_a(\chi).
+\end{equation}
+If $n=\prod_{q^f\parallel n}q^f$, then the number of unordered reciprocal
+solutions in the shell is
+\begin{equation}\label{eq:total-fourier}
+ \boxed{
+ \frac1{2\varphi(R)}
+ \sum_{\chi\in\widehat U_R}
+ \overline{\chi(-n^{-1})}\,D_a(\chi)
+ \prod_{q^f\parallel n}
+ \left(\sum_{j=0}^{2f}\overline{\chi(q)}^{\,j}\right).}
+\end{equation}
+The principal-character contribution is exactly
+\begin{equation}\label{eq:principal-term}
+ \frac{\tau(a^2)\tau(n^2)}{2\varphi(R)}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Character orthogonality on $U_R$ gives, for $x,c\in U_R$,
+\[
+ \1_{x=c}=\frac1{\varphi(R)}
+ \sum_{\chi\in\widehat U_R}\chi(x)\overline{\chi(c)}.
+\]
+Sum this identity over the signed box \eqref{eq:signed-exponents}, with
+$c=-\delta n^{-1}$.  The independent exponent sums factor and give
+\eqref{eq:Cdelta-fourier}.  Summing over $\delta\mid n^2$ gives
+\[
+ \sum_{\delta\mid n^2}\overline{\chi(\delta)}
+ =\prod_{q^f\parallel n}\sum_{j=0}^{2f}\overline{\chi(q)}^{\,j}.
+\]
+The fixed-point-free involution in \cref{thm:complete-channel} divides the
+oriented total by two.  For the principal character,
+$D_a(1)=\tau(a^2)$ and the divisor sum is $\tau(n^2)$.
+\end{proof}
+
+\section{Primitive rays and the exact Lorentz channel action}
+
+\begin{lemma}[canonical primitive factor coordinates]\label{lem:factor-ray}
+For $u,v,a>0$ with $uv=a^2$, there are unique positive integers $r,s,t$ such
+that
+\begin{equation}\label{eq:rst}
+ u=r^2s,\qquad a=rst,\qquad v=st^2,
+ \qquad \gcd(r,t)=1.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Let $g=\gcd(u,a)$ and set
+\[
+ r=\frac ug,\qquad t=\frac ag,\qquad s=\frac gr.
+\]
+Prime valuations in $u\mid a^2$ show $r\mid g$, so $s\in\Z_{>0}$.
+The displayed identities and $\gcd(r,t)=1$ follow immediately.  Conversely,
+$g=rs$, so the construction recovers the same triple and proves uniqueness.
+\end{proof}
+
+Since $n=4rst-R$, one has the exact identity
+\begin{equation}\label{eq:projective-identity}
+ nr+\delta t=t(4r^2s+\delta)-Rr.
+\end{equation}
+Because $r,t$ are units modulo $R$,
+\begin{equation}\label{eq:projective-incidence}
+ \boxed{R\mid4r^2s+\delta
+ \quad\Longleftrightarrow\quad R\mid nr+\delta t.}
+\end{equation}
+Thus the channel is the inverse image of $[1:-1]$ under the exact projective
+map
+\begin{equation}\label{eq:projective-map}
+ \Phi_{n,\delta}:\Pone(\Z/R\Z)\longrightarrow\Pone(\Z/R\Z),
+ \qquad [r:t]\longmapsto[nr:\delta t],
+\end{equation}
+restricted to the affine chart in which both coordinates are units.
+
+The rank-one matrix of the ray is
+\begin{equation}\label{eq:Gamma-ray}
+ \Gamma_{r,s,t}
+ =s\begin{pmatrix}r\\t\end{pmatrix}
+   \begin{pmatrix}r&t\end{pmatrix}
+ =\mat{u}{a}{a}{v}.
+\end{equation}
+The shifted shell matrix is
+\begin{equation}\label{eq:Sigma-channel}
+ \Sigma_{n,\delta}
+ =\mat{(n^2/\delta)u}{na}{na}{\delta v}.
+\end{equation}
+Let
+\begin{equation}\label{eq:Mndelta}
+ M_{n,\delta}=\diag\left(\frac n{\sqrt\delta},\sqrt\delta\right).
+\end{equation}
+Then
+\begin{equation}\label{eq:congruence-action}
+ \boxed{\Sigma_{n,\delta}
+ =M_{n,\delta}\Gamma_{r,s,t}M_{n,\delta}^{\mathsf T}.}
+\end{equation}
+
+\begin{theorem}[integral Lorentz similitude]\label{thm:lorentz}
+Under \eqref{eq:iota}, congruence by $M_{n,\delta}$ is the integral linear map
+\begin{equation}\label{eq:rho}
+ \rho_{n,\delta}=
+ \begin{pmatrix}
+ \dfrac{n^2/\delta+\delta}{2}&0&
+ \dfrac{n^2/\delta-\delta}{2}\\[1ex]
+ 0&n&0\\[1ex]
+ \dfrac{n^2/\delta-\delta}{2}&0&
+ \dfrac{n^2/\delta+\delta}{2}
+ \end{pmatrix}.
+\end{equation}
+Its entries are integers and, with $J_L=\diag(1,-1,-1)$,
+\begin{equation}\label{eq:lorentz-similitude}
+ \rho_{n,\delta}^{\mathsf T}J_L\rho_{n,\delta}=n^2J_L,
+ \qquad
+ \det\rho_{n,\delta}=n^3.
+\end{equation}
+Writing
+\begin{equation}\label{eq:rapidity}
+ \xi_\delta=\log\frac n\delta,
+\end{equation}
+one has
+\begin{equation}\label{eq:boost}
+ \rho_{n,\delta}=n
+ \begin{pmatrix}
+ \cosh\xi_\delta&0&\sinh\xi_\delta\\
+ 0&1&0\\
+ \sinh\xi_\delta&0&\cosh\xi_\delta
+ \end{pmatrix}.
+\end{equation}
+Complementary channels have opposite rapidities, and the middle channel
+$\delta=n$ is the pure dilation $nI_3$.
+\end{theorem}
+
+\begin{proof}
+For a diagonal matrix $\diag(A,B)$, congruence sends
+$H+Y$ to $A^2(H+Y)$, $H-Y$ to $B^2(H-Y)$, and $X$ to $ABX$.
+Substitution of $A=n/\sqrt\delta$, $B=\sqrt\delta$ gives
+\eqref{eq:rho}.  Since $n$ and $\delta$ are odd, both half-sums are integers.
+Direct multiplication gives \eqref{eq:lorentz-similitude}.  Finally,
+\[
+ n\cosh\log(n/\delta)=\frac{n^2/\delta+\delta}{2},\qquad
+ n\sinh\log(n/\delta)=\frac{n^2/\delta-\delta}{2}.
+\]
+Replacing $\delta$ by $n^2/\delta$ negates the logarithm.
+\end{proof}
+
+The affine ray slope $\theta=t/r$ transforms under $M_{n,\delta}$ as
+\begin{equation}\label{eq:slope-transform}
+ \theta\longmapsto\theta_\delta=\frac\delta n\theta.
+\end{equation}
+The channel incidence \eqref{eq:projective-incidence} is exactly
+\begin{equation}\label{eq:universal-middle-incidence}
+ \boxed{\theta_\delta\equiv-1\pmod R.}
+\end{equation}
+Thus every divisor channel is carried by its displayed Lorentz morphism to
+the same affine middle incidence.
+
+\section{Prime saturation on every primitive null ray}
+
+Fix a primitive positive pair $(r,t)$ and an arithmetic progression
+\begin{equation}\label{eq:M-c}
+ 4\mid M,\qquad \gcd(c,M)=1,\qquad c\equiv1\pmod4.
+\end{equation}
+Put
+\begin{equation}\label{eq:A-g}
+ A=4rt,
+ \qquad g=\gcd(A,M),
+ \qquad M'=\frac Mg.
+\end{equation}
+Choose a prime $R$ such that
+\begin{equation}\label{eq:R-choice}
+ R\equiv-c\pmod g,
+ \qquad R\equiv3\pmod4,
+ \qquad \gcd(R,rtM)=1.
+\end{equation}
+The first congruence already implies the second because $4\mid g$ and
+$c\equiv1\pmod4$.  Such primes $R$ exist by Dirichlet's theorem.
+
+Define $s_R\pmod R$ and $s_M\pmod{M'}$ by
+\begin{align}
+ 4r^2s_R&\equiv-1\pmod R,\label{eq:sR}\\
+ \frac Ags_M&\equiv\frac{c+R}{g}\pmod{M'}.
+ \label{eq:sM}
+\end{align}
+All displayed coefficients are units in their respective rings, and
+$\gcd(R,M')=1$.  Let $s_0$ be the unique class modulo $RM'$ satisfying both.
+Put
+\begin{equation}\label{eq:p-progression}
+ p_0=As_0-R,
+ \qquad
+ Q=ARM'=MR\frac Ag.
+\end{equation}
+
+\begin{theorem}[prime saturation of each primitive ray]\label{thm:prime-saturation}
+The residue $p_0\pmod Q$ is reduced.  Every sufficiently large prime
+\begin{equation}\label{eq:p-AP}
+ p\equiv p_0\pmod Q
+\end{equation}
+satisfies $p\equiv c\pmod M$ and has an exterior Erdős--Straus certificate on
+the exact primitive ray $[r:t]$.  Explicitly, write
+\begin{equation}\label{eq:s-from-p}
+ s=\frac{p+R}{4rt},
+ \qquad
+ a=rst,
+ \qquad
+ u=r^2s,
+ \qquad
+ v=st^2.
+\end{equation}
+Then
+\begin{equation}\label{eq:E-ray-incidence}
+ R\mid pr+t,
+ \qquad
+ R\mid4u+1,
+\end{equation}
+and the reciprocal denominators are
+\begin{equation}\label{eq:E-denominators}
+ \boxed{
+ x=rst,
+ \qquad
+ y=prs\,\frac{pr+t}{R},
+ \qquad
+ z=st\,\frac{pr+t}{R}.}
+\end{equation}
+Consequently
+\begin{equation}\label{eq:PNT-ray}
+ \#\{p\le X:p\equiv p_0\pmod Q\}
+ \sim\frac{\Li(X)}{\varphi(Q)}.
+\end{equation}
+Within the primes $p\equiv c\pmod M$, the constructed subfamily has relative
+density
+\begin{equation}\label{eq:relative-density}
+ \frac{\varphi(M)}{\varphi(Q)}>0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The congruences \eqref{eq:sR}--\eqref{eq:sM} imply
+$As_0-R\equiv c\pmod M$ and $4r^2s_0+1\equiv0\pmod R$.
+The modulus in \eqref{eq:p-progression} is exactly the change in $p=As-R$
+when $s$ is increased by $RM'$.  To prove $\gcd(p_0,Q)=1$, note
+\[
+ p_0\equiv-R\pmod A,
+ \qquad
+ p_0\equiv As_R\equiv-tr^{-1}\pmod R,
+ \qquad
+ p_0\equiv c\pmod{M'}.
+\]
+Each right side is a unit in the indicated modulus.  Dirichlet's theorem, or
+the prime number theorem in arithmetic progressions, gives
+\eqref{eq:PNT-ray}.
+
+For such a prime, \eqref{eq:s-from-p} is integral and gives $4a=p+R$ and
+$uv=a^2$.  The first congruence in \eqref{eq:E-ray-incidence} follows from
+\[
+ pr+t=t(4r^2s+1)-Rr.
+\]
+The second is equivalent because $t$ is a unit modulo $R$.  Formula
+\eqref{eq:E-denominators} is the source factor-coordinate reconstruction;
+direct substitution also gives
+$4xyz=p(xy+xz+yz)$.  Dividing the two prime-counting asymptotics for moduli
+$Q$ and $M$ gives \eqref{eq:relative-density}.
+\end{proof}
+
+\begin{corollary}[all $48$ reduced $1\bmod12$ classes modulo $840$]
+For every primitive positive ray $[r:t]$ and every one of the $48$ reduced
+classes
+\begin{equation}\label{eq:48classes}
+ c\pmod{840},\qquad c\equiv1\pmod{12},
+\end{equation}
+there is a reduced prime progression consisting entirely, apart from a finite
+initial segment, of exterior certificates on that ray.
+\end{corollary}
+
+\section{A single Koide ray captures density one of every progression}
+
+The preceding theorem lets $R$ depend on the ray and progression.  On the
+diagonal ray $[1:1]$, a stronger fixed description is available.
+
+Let $p\equiv1\pmod4$ be prime and let $q\equiv3\pmod4$ be a prime divisor of
+$p+1$.  Put
+\begin{equation}\label{eq:diagonal-sk}
+ s=\frac{p+q}{4},\qquad k=\frac{p+1}{q}.
+\end{equation}
+Then $u=a=v=s$ and
+\begin{equation}\label{eq:diagonal-identity}
+ \boxed{
+ \frac4p=\frac1s+\frac1{sk}+\frac1{psk}.}
+\end{equation}
+Indeed,
+\[
+ \frac1s+\frac1{sk}+\frac1{psk}
+ =\frac{pk+p+1}{psk}
+ =\frac{(p+1)(p+q)/q}{p(p+q)(p+1)/(4q)}
+ =\frac4p.
+\]
+Since $qk=p+1\equiv2\pmod4$ and $q\equiv-1\pmod4$, one has
+$k\equiv2\pmod4$.  This is the exterior channel with
+\begin{equation}\label{eq:diagonal-terminal}
+ R=q,
+ \quad j=\frac{q-3}{4},
+ \quad T=k+1,
+ \quad
+ (\ell_0,\ell_1,\ell_2)
+ =\left(\frac{k+2}{4},\frac{3k+2}{4},1\right),
+\end{equation}
+and terminal determinant $-1$.
+
+Fix $M,c$ as in \eqref{eq:M-c}.  For a finite set $\mathcal Q$ of primes
+$q\equiv3\pmod4$ with $q\nmid M$, let $\mathscr P_{\mathcal Q}(M,c)$ denote
+the primes $p\equiv c\pmod M$ for which $q\mid p+1$ for at least one
+$q\in\mathcal Q$.
+
+\begin{theorem}[finite sieve density and density-one diagonal ray]
+\label{thm:density-one-ray}
+The relative density of $\mathscr P_{\mathcal Q}(M,c)$ inside the primes
+$p\equiv c\pmod M$ exists and equals
+\begin{equation}\label{eq:finite-union-density}
+ \boxed{
+ 1-\prod_{q\in\mathcal Q}\frac{q-2}{q-1}.}
+\end{equation}
+As $\mathcal Q$ increases through all primes $q\equiv3\pmod4$, $q\nmid M$,
+the relative density tends to one.  Consequently the exterior certificates
+on the single primitive Koide ray
+\begin{equation}\label{eq:diagonal-ray}
+ [r:t]=[1:1],
+ \qquad
+ \Gamma_s=s\mat{1}{1}{1}{1},
+\end{equation}
+capture relative density one of the primes in every reduced progression
+$c\pmod M$ with $c\equiv1\pmod4$.
+\end{theorem}
+
+\begin{proof}
+Put $Q_{\mathcal Q}=\prod_{q\in\mathcal Q}q$.  Since every $q$ is coprime to
+$M$, the Chinese remainder theorem identifies the reduced residue classes
+modulo $MQ_{\mathcal Q}$ above $c\pmod M$ with the product of the
+$q-1$ unit classes modulo each $q$.  Avoiding $p\equiv-1\pmod q$ leaves
+$q-2$ classes.  The prime number theorem in arithmetic progressions therefore
+gives relative density
+\[
+ \prod_{q\in\mathcal Q}\frac{q-2}{q-1}
+\]
+for the complement, proving \eqref{eq:finite-union-density}.
+
+The sum of reciprocals of primes $q\equiv3\pmod4$ diverges.  Hence
+\[
+ \sum_{q\equiv3(4)}\frac1{q-1}=\infty,
+ \qquad
+ \prod_{q\in\mathcal Q}
+ \left(1-\frac1{q-1}\right)\longrightarrow0.
+\]
+Every prime counted by the union has the explicit certificate
+\eqref{eq:diagonal-identity}; taking larger finite sets shows that the
+relative lower density of the union is at least every quantity in
+\eqref{eq:finite-union-density}, hence is one.
+\end{proof}
+
+\begin{corollary}[a fixed $10\%$ subprogression modulo $9240$]
+Take $M=840$ and $q=11$.  In each reduced class $c\equiv1\pmod{12}$ modulo
+$840$, the simultaneous congruences
+\begin{equation}\label{eq:q11-CRT}
+ p\equiv c\pmod{840},
+ \qquad p\equiv-1\pmod{11}
+\end{equation}
+define one reduced class modulo $9240$.  Its primes have the diagonal-ray
+certificate \eqref{eq:diagonal-identity} and form relative density
+$1/(11-1)=1/10$ inside the class $c\pmod{840}$.
+\end{corollary}
+
+\begin{example}
+For $p=109$ and $q=11$,
+\[
+ s=30,\qquad k=10,
+\]
+so
+\begin{equation}\label{eq:p109}
+ \frac4{109}=\frac1{30}+\frac1{300}+\frac1{32700}.
+\end{equation}
+The terminal triple is $(\ell_0,\ell_1,\ell_2)=(3,8,1)$ and
+\[
+ \mathsf R=\mat{3}{-8}{4}{-11},\qquad \det\mathsf R=-1.
+\]
+\end{example}
+
+\begin{remark}[the unresolved quantifier]
+The theorem proves
+\[
+ \forall\,[r:t]\ \forall\,c\pmod M\quad
+ \text{infinitely many primes in the class have a certificate on the ray},
+\]
+and, on $[1:1]$, a density-one statement.  The Erdős--Straus conjecture asks
+instead
+\[
+ \forall\,p\quad\exists\,[r:t],R\quad\text{a certificate for that particular
+ prime}.
+\]
+A density-zero exceptional set is not removed by \cref{thm:density-one-ray}.
+\end{remark}
+
+
+
+\section{The universal diagonal divisor identity}
+
+Retain the complete coprime odd shell \eqref{eq:general-shell-hyp} and restrict
+to the primitive ray $[r:t]=[1:1]$.  Then $u=a=v=s$ with
+$s=(n+R)/4$.
+
+\begin{proposition}[all diagonal divisor channels]
+\label{prop:all-diagonal-channels}
+For $\delta\mid n^2$, the diagonal ray supports the oriented channel of order
+$\delta$ exactly when
+\begin{equation}\label{eq:general-diagonal-incidence}
+ R\mid n+\delta.
+\end{equation}
+Put
+\begin{equation}\label{eq:general-diagonal-k}
+ k_\delta=\frac{n+\delta}{R}.
+\end{equation}
+Then the corresponding reciprocal decomposition is
+\begin{equation}\label{eq:general-diagonal-decomposition}
+ \boxed{
+ \frac4n
+ =\frac1s+\frac1{s k_\delta}
+  +\frac1{s n k_\delta/\delta},
+ \qquad s=\frac{n+R}{4}.}
+\end{equation}
+The third displayed denominator is an integer.  The terminal coordinates are
+\begin{equation}\label{eq:general-diagonal-terminal}
+ T_\delta=k_\delta+1,
+ \qquad
+ \ell_2=\sigma_\delta,
+ \qquad
+ \ell_0=\frac{k_\delta+1+\sigma_\delta}{4},
+ \qquad
+ \ell_1=\frac{3k_\delta+3-\delta}{4},
+\end{equation}
+and their terminal determinant is $-\delta$.
+
+Under the complementary orientation
+$\delta'=n^2/\delta$, one has
+\begin{equation}\label{eq:general-diagonal-complement-k}
+ k_{\delta'}=\frac n\delta k_\delta,
+\end{equation}
+and the final two denominators in
+\eqref{eq:general-diagonal-decomposition} are exchanged exactly.
+\end{proposition}
+
+\begin{proof}
+On $[1:1]$, equation \eqref{eq:projective-incidence} is
+$R\mid n+\delta$, proving the first assertion.  The channel reconstruction
+\eqref{eq:y-z-general} gives
+\[
+ y=\frac{ns+(n^2/\delta)s}{R}=\frac{snk_\delta}{\delta},
+ \qquad
+ z=\frac{ns+\delta s}{R}=sk_\delta.
+\]
+Their integrality is already part of the complete channel theorem; direct
+addition gives
+\[
+ \frac1s+\frac1{sk_\delta}+\frac{\delta}{snk_\delta}
+ =\frac{nk_\delta+n+\delta}{snk_\delta}
+ =\frac{k_\delta(n+R)}{snk_\delta}=\frac4n.
+\]
+Because $T_\delta=(4s+\delta)/R$, one has
+$T_\delta=k_\delta+1$.  Substitution in \eqref{eq:ell-general} gives
+\eqref{eq:general-diagonal-terminal}; its integrality and determinant are
+those of \cref{thm:terminal-general}.  Finally,
+\[
+ k_{n^2/\delta}
+ =\frac{n+n^2/\delta}{R}
+ =\frac n\delta\frac{n+\delta}{R},
+\]
+and substitution swaps $sk_\delta$ with $snk_\delta/\delta$.
+\end{proof}
+
+\section{Exact multiplicity on the diagonal Koide ray}
+
+Let $p\equiv1\pmod4$ be prime and put
+\begin{equation}\label{eq:diag-m}
+ m_p=\frac{p+1}{2}.
+\end{equation}
+Thus $m_p$ is odd.  Let $\chi_4$ denote the nontrivial real Dirichlet
+character modulo four on odd integers.
+
+\begin{theorem}[complete diagonal-ray certificate count]
+\label{thm:diag-count}
+The map
+\begin{equation}\label{eq:diag-R-map}
+ R\longmapsto
+ \left(
+  x_R,y_R,z_R
+ \right)
+ =\left(
+  \frac{p+R}{4},
+  \frac{p+R}{4}\frac{p+1}{R},
+  p\frac{p+R}{4}\frac{p+1}{R}
+ \right)
+\end{equation}
+is a bijection from
+\begin{equation}\label{eq:diag-R-set}
+ \mathscr R_{\mathrm{diag}}(p)
+ =\{R>0:R\mid m_p,\ R\equiv3\pmod4\}
+\end{equation}
+onto the exterior Erdős--Straus selector states on the exact primitive ray
+$[r:t]=[1:1]$.  Every displayed triple is ordered and satisfies
+\begin{equation}\label{eq:diag-unit-fraction}
+ \frac4p=\frac1{x_R}+\frac1{y_R}+\frac1{z_R}.
+\end{equation}
+The number of these states is
+\begin{equation}\label{eq:diag-count-character}
+ \boxed{
+ \nu_{\mathrm{diag}}(p)
+ =\frac12\left(
+   \tau(m_p)-\sum_{d\mid m_p}\chi_4(d)
+  \right).}
+\end{equation}
+If
+\begin{equation}\label{eq:diag-factorization}
+ m_p=
+ \prod_{q\equiv1(4)}q^{e_q}
+ \prod_{r\equiv3(4)}r^{f_r},
+\end{equation}
+then
+\begin{equation}\label{eq:diag-count-factorized}
+ \boxed{
+ \nu_{\mathrm{diag}}(p)=\frac12\left[
+ \prod_{q\equiv1(4)}(e_q+1)
+ \prod_{r\equiv3(4)}(f_r+1)
+ -
+ \prod_{q\equiv1(4)}(e_q+1)
+ \prod_{r\equiv3(4)}\epsilon(f_r)
+ \right],}
+\end{equation}
+where $\epsilon(f)=1$ for even $f$ and $\epsilon(f)=0$ for odd $f$.
+Consequently
+\begin{equation}\label{eq:diag-exceptional-exact}
+ \boxed{
+ \nu_{\mathrm{diag}}(p)=0
+ \quad\Longleftrightarrow\quad
+ \text{every prime divisor of }(p+1)/2\text{ is }1\pmod4.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+On the ray $[1:1]$, the canonical factor coordinates are
+$u=a=v=s$.  The exterior projective incidence
+\eqref{eq:projective-incidence} becomes $R\mid p+1$, while the shell equation
+$4a=p+R$ gives $s=(p+R)/4$.  Because $R$ is odd, $R\mid p+1$ is equivalent to
+$R\mid m_p$.  Conversely, every divisor in \eqref{eq:diag-R-set} satisfies
+$3\le R\le m_p\le p-2$ and defines one allowed shell marker.  With
+$k_R=(p+1)/R$, the source exterior reconstruction is exactly
+$(x_R,y_R,z_R)=(s,sk_R,psk_R)$, proving the bijection and
+\eqref{eq:diag-unit-fraction}.  Since $k_R\ge2$, the triple is ordered.
+Distinct values of $R$ give distinct first denominators.
+
+For every odd divisor $d$ of $m_p$, the indicator of $d\equiv3\pmod4$ is
+$(1-\chi_4(d))/2$.  Summation gives
+\eqref{eq:diag-count-character}.  Multiplicativity gives
+\[
+ \sum_{d\mid m_p}\chi_4(d)
+ =\prod_{q\equiv1(4)}(e_q+1)
+  \prod_{r\equiv3(4)}\sum_{j=0}^{f_r}(-1)^j,
+\]
+and the last geometric sum is $\epsilon(f_r)$.  This proves
+\eqref{eq:diag-count-factorized}.  The right side vanishes exactly when the
+second prime product in \eqref{eq:diag-factorization} is empty, proving
+\eqref{eq:diag-exceptional-exact}.
+\end{proof}
+
+\begin{corollary}[exact terminal multiplicity]
+For $R\in\mathscr R_{\mathrm{diag}}(p)$ put
+\begin{equation}\label{eq:diag-k}
+ k_R=\frac{p+1}{R}\equiv2\pmod4.
+\end{equation}
+The corresponding terminal coordinates and matrix are
+\begin{equation}\label{eq:diag-terminal-all}
+ (\ell_0,\ell_1,\ell_2)
+ =\left(\frac{k_R+2}{4},\frac{3k_R+2}{4},1\right),
+ \qquad
+ \mathsf R_R=
+ \begin{pmatrix}
+ 3&-(3k_R+2)/4\\
+ 4&-(k_R+1)
+ \end{pmatrix},
+\end{equation}
+with $\det\mathsf R_R=-1$.  These matrices are pairwise distinct as $R$
+varies.  Hence $\nu_{\mathrm{diag}}(p)$ is simultaneously the number of
+ordered diagonal-ray decompositions, diagonal-ray exterior selector states,
+and determinant-$(-1)$ terminal matrices attached to this ray.
+\end{corollary}
+
+\begin{proof}
+The formulas are \eqref{eq:diagonal-terminal} with $q$ replaced by the full
+allowed divisor $R$.  Distinct $R$ give distinct $k_R=(p+1)/R$, and the
+lower-right matrix entry is $-(k_R+1)$.
+\end{proof}
+
+\begin{corollary}[the exact hard residue split]
+Every prime $p\equiv5\pmod8$ has at least one diagonal-ray certificate.  In
+particular every hard prime $p\equiv13\pmod{24}$ is captured by this one ray.
+A hard prime not captured by the ray must satisfy $p\equiv1\pmod{24}$ and
+$(p+1)/2$ must lie in the multiplicative semigroup generated by primes
+congruent to $1$ modulo four.
+\end{corollary}
+
+\begin{proof}
+If $p\equiv5\pmod8$, then $m_p\equiv3\pmod4$, so its prime factorization
+contains a prime congruent to $3$ modulo four.  Apply
+\eqref{eq:diag-exceptional-exact}.  The final assertion follows by combining
+that equivalence with the two possible hard classes modulo $24$.
+\end{proof}
+
+
+\begin{example}[the two diagonal certificates at $p=109$]
+Here $m_p=55=5\cdot11$, and its divisors congruent to $3$ modulo four are
+$11$ and $55$.  Formula \eqref{eq:diag-R-map} gives the two distinct ordered
+solutions
+\[
+ \frac4{109}=\frac1{30}+\frac1{300}+\frac1{32700}
+ =\frac1{41}+\frac1{82}+\frac1{8938}.
+\]
+Their terminal matrices are respectively
+\[
+ \begin{pmatrix}3&-8\\4&-11\end{pmatrix},
+ \qquad
+ \begin{pmatrix}3&-2\\4&-3\end{pmatrix},
+\]
+and both have determinant $-1$.
+\end{example}
+
+\section{Middle-channel rays}
+
+For $n=p$ prime and $\delta=p$, \eqref{eq:projective-incidence} becomes
+\begin{equation}\label{eq:middle-ray-condition}
+ R\mid r+t.
+\end{equation}
+Thus a primitive ray admits a middle channel at precisely the divisors
+\begin{equation}\label{eq:middle-R-set}
+ \mathscr R_M(r,t)=\{R\mid r+t:R\equiv3\pmod4\}.
+\end{equation}
+This set is nonempty exactly when $r+t$ has a prime divisor congruent to
+$3\pmod4$.
+
+For fixed $R\in\mathscr R_M(r,t)$, put $A=4rt$, $g=\gcd(A,M)$ and
+$M'=M/g$.
+
+\begin{theorem}[middle-ray prime progressions]\label{thm:middle-progressions}
+A prescribed prime class $p\equiv c\pmod M$ is compatible with this ray and
+$R$ exactly when
+\begin{equation}\label{eq:middle-compatibility}
+ g\mid c+R.
+\end{equation}
+Under this condition the congruence
+\begin{equation}\label{eq:middle-s-cong}
+ \frac Ags_0\equiv\frac{c+R}{g}\pmod{M'}
+\end{equation}
+has one class modulo $M'$.  Put
+\begin{equation}\label{eq:middle-p0Q}
+ p_0=As_0-R,\qquad Q_M=AM'.
+\end{equation}
+Then $\gcd(p_0,Q_M)=1$, and every sufficiently large prime
+$p\equiv p_0\pmod{Q_M}$ lies in the class $c\pmod M$ and gives
+\begin{equation}\label{eq:middle-denominators}
+ \boxed{
+ x=rst,
+ \qquad
+ y=prs\,\frac{r+t}{R},
+ \qquad
+ z=pst\,\frac{r+t}{R},}
+\end{equation}
+where $s=(p+R)/(4rt)$.  These primes have asymptotic count
+$\Li(X)/\varphi(Q_M)$.
+\end{theorem}
+
+\begin{proof}
+The linear congruence $As\equiv c+R\pmod M$ is solvable exactly under
+\eqref{eq:middle-compatibility}; division by $g$ gives
+\eqref{eq:middle-s-cong}.  Since $R\mid r+t$ and $\gcd(r,t)=1$, one has
+$\gcd(R,rt)=1$, so $\gcd(R,A)=1$.  The residue $p_0$ is a unit modulo $A$
+because $p_0\equiv-R\pmod A$, and it is a unit modulo $M'$ because
+$p_0\equiv c\pmod M$.  Therefore $\gcd(p_0,Q_M)=1$, and the prime number
+theorem in arithmetic progressions applies.  For every such prime,
+$p=4rts-R$ and $R\mid r+t$ give the middle incidence.  Substitution into the
+source factor-coordinate reconstruction gives \eqref{eq:middle-denominators}.
+\end{proof}
+
+Unlike the exterior theorem, the allowed residuals are the finite set
+\eqref{eq:middle-R-set} attached to the ray.
+
+\section{Zariski density on the determinant cone}
+
+Let
+\begin{equation}\label{eq:det-cone}
+ \mathscr C_{\det}=\{(u,a,v)\in\mathbb A^3:uv-a^2=0\}.
+\end{equation}
+Its positive rational projective rays are
+\begin{equation}\label{eq:veronese}
+ [r:t]\longmapsto[r^2:rt:t^2].
+\end{equation}
+
+\begin{theorem}[Zariski density of exterior certificate matrices]
+\label{thm:zariski}
+Fix $M,c$ as in \eqref{eq:M-c}.  The matrices
+\begin{equation}\label{eq:certificate-matrices}
+ \Gamma=s\mat{r^2}{rt}{rt}{t^2}
+\end{equation}
+arising from the exterior prime progressions of
+\cref{thm:prime-saturation}, as $[r:t]$ ranges over primitive positive rays,
+are Zariski dense in $\mathscr C_{\det}$.  Their images are Zariski dense in
+the corresponding native and raw determinant-zero coefficient cones under
+the invertible linear maps \eqref{eq:L-native} and \eqref{eq:raw-dict}.
+\end{theorem}
+
+\begin{proof}
+Let $F(u,a,v)$ vanish on every constructed matrix.  Fix a primitive ray
+$(r,t)$.  The prime-saturation theorem produces infinitely many distinct
+positive contents $s$ on that ray, so
+\[
+ F(sr^2,srt,st^2)=0
+\]
+for infinitely many $s$.  This is a polynomial in $s$ and therefore vanishes
+identically.  Hence every homogeneous component of $F$ vanishes at
+$[r^2:rt:t^2]$.  The positive rational values of $t/r$ are Zariski dense in
+$\Pone$, and the Veronese image \eqref{eq:veronese} is the irreducible
+projective conic underlying \eqref{eq:det-cone}.  Thus every homogeneous
+component vanishes on the cone, and so does $F$.  Invertible linear maps
+preserve Zariski density.
+\end{proof}
+
+\section{Bézout openings of null rays}
+
+The selector matrix \eqref{eq:Gamma-ray} is singular.  The next construction
+adds an exact integral transverse direction instead of declaring the null ray
+to be a regular period point.
+
+Fix a primitive positive vector
+\begin{equation}\label{eq:v-vector}
+ \mathbf v=\begin{pmatrix}r\\t\end{pmatrix}.
+\end{equation}
+A Bézout companion is a vector
+\begin{equation}\label{eq:w-vector}
+ \mathbf w=\begin{pmatrix}x\\y\end{pmatrix},
+ \qquad ry-tx=1.
+\end{equation}
+Then
+\begin{equation}\label{eq:Bvw}
+ B_{\mathbf v,\mathbf w}
+ =\begin{pmatrix}r&x\\t&y\end{pmatrix}\in\SL_2(\Z).
+\end{equation}
+
+\begin{definition}[Bézout opening]\label{def:opening}
+For $\delta>0$, define
+\begin{equation}\label{eq:Aopening}
+ \mathsf A_{\delta,\mathbf w}
+ =\delta\mathbf v\mathbf v^{\mathsf T}
+  -\mathbf w\mathbf w^{\mathsf T}
+ =B_{\mathbf v,\mathbf w}
+  \diag(\delta,-1)
+  B_{\mathbf v,\mathbf w}^{\mathsf T}.
+\end{equation}
+\end{definition}
+
+\begin{theorem}[integral opening and regular ambient period point]
+\label{thm:opening}
+Every opening satisfies
+\begin{equation}\label{eq:opening-det}
+ \det\mathsf A_{\delta,\mathbf w}=-\delta.
+\end{equation}
+The companions are exactly
+$\mathbf w_k=\mathbf w+k\mathbf v$, $k\in\Z$, and
+\begin{equation}\label{eq:opening-torsor}
+ \mathsf A_{\delta,\mathbf w_k}
+ =\mathsf A_{\delta,\mathbf w}
+ -k(\mathbf v\mathbf w^{\mathsf T}
+    +\mathbf w\mathbf v^{\mathsf T})
+ -k^2\mathbf v\mathbf v^{\mathsf T}.
+\end{equation}
+The map $k\mapsto\mathsf A_{\delta,\mathbf w_k}$ is injective.
+
+One may choose the companion so that $|x|\le r/2$.  For that choice,
+\begin{equation}\label{eq:A11positive}
+ (\mathsf A_{\delta,\mathbf w})_{11}
+ =\delta r^2-x^2
+ \ge\left(\delta-\frac14\right)r^2>0.
+\end{equation}
+Write
+\begin{equation}\label{eq:Aentries}
+ \mathsf A_{\delta,\mathbf w}=\mat{A_{11}}{A_{12}}{A_{12}}{A_{22}}.
+\end{equation}
+Then the raw coefficient triple
+\begin{equation}\label{eq:raw-opening}
+ (T_{\rm raw},M_{\rm raw},B_{\rm raw})
+ =\left(A_{11},\frac{A_{12}}{\sqrt6},A_{22}\right)
+\end{equation}
+has
+\begin{equation}\label{eq:raw-opening-disc}
+ T_{\rm raw}B_{\rm raw}-6M_{\rm raw}^2=-\delta,
+ \qquad
+ T_{\rm raw}>0,
+\end{equation}
+and
+\begin{equation}\label{eq:raw-sign}
+ B_{\rm raw}-\frac{6M_{\rm raw}^2}{T_{\rm raw}}
+ =-\frac\delta{A_{11}}<0.
+\end{equation}
+Thus the purely imaginary periods
+\begin{equation}\label{eq:opening-periods}
+ \tau=iA_{11},\qquad
+ \mu=i\frac{A_{12}}{\sqrt6},\qquad
+ \beta=iA_{22}
+\end{equation}
+give
+\begin{equation}\label{eq:opening-ZP}
+ Z_A=i\begin{pmatrix}
+ \sqrt6A_{12}&A_{11}\\
+ A_{22}&A_{12}/\sqrt6
+ \end{pmatrix},\qquad
+ P_A=\begin{pmatrix}
+ 0&0&1&0\\
+ \sqrt6A_{12}&A_{11}&0&0\\
+ 0&0&0&1\\
+ A_{22}&A_{12}/\sqrt6&0&0
+ \end{pmatrix},
+\end{equation}
+with
+\begin{equation}\label{eq:opening-P-det}
+ \det P_A=A_{11}A_{22}-A_{12}^2=-\delta.
+\end{equation}
+Thus they give a full-rank lattice in the canonical ambient period form.  The native
+coefficient triple is
+\begin{equation}\label{eq:native-opening}
+ (t,m,b)=\left(\frac{A_{11}}2,\frac{A_{12}}2,3A_{22}\right),
+\end{equation}
+for which
+\begin{equation}\label{eq:native-opening-disc}
+ tb-6m^2=-\frac32\delta,
+ \qquad G(t,m,b)=\mathsf A_{\delta,\mathbf w}.
+\end{equation}
+The two triples are related exactly by \eqref{eq:D-map}.
+\end{theorem}
+
+\begin{proof}
+Equation \eqref{eq:opening-det} follows from
+$\det B_{\mathbf v,\mathbf w}=1$.  Every other solution of
+$ry-tx=1$ differs by an integral multiple of $(r,t)$, and direct expansion
+gives \eqref{eq:opening-torsor}.  In the basis $(\mathbf v,\mathbf w)$, the
+opening has matrix
+\[
+ \begin{pmatrix}\delta-k^2&-k\\-k&-1\end{pmatrix},
+\]
+so equality for two integers $k$ forces equality of their off-diagonal
+entries.  Shifting the companion chooses a centered representative of $x$
+modulo $r$, proving \eqref{eq:A11positive}.
+
+Equations \eqref{eq:raw-opening-disc} and \eqref{eq:raw-sign} are the
+determinant identity divided by the positive entry $A_{11}$.  In the
+canonical realification of
+$Z=\bigl(\begin{smallmatrix}6\mu&\tau\\\beta&\mu\end{smallmatrix}\bigr)$,
+the real period determinant is exactly the displayed determinant
+\eqref{eq:opening-P-det}, equivalently
+$T_{\rm raw}B_{\rm raw}-6M_{\rm raw}^2=-\delta\ne0$.  Therefore its four
+columns span $\R^4$ and form a lattice.  Substitution into
+\eqref{eq:native-G} gives \eqref{eq:native-opening-disc}; applying
+\eqref{eq:D-map} gives \eqref{eq:raw-opening}.
+\end{proof}
+
+\begin{remark}[exact geometric scope]
+The opening constructs a regular complex two-torus in the ambient canonical
+period domain.  It supplies neither the real parts nor the holomorphic and
+triangle-group equivariance conditions needed to place that point on the
+global period image of the proposed $S^6$ family.  The obstruction is not
+rank: the rank defect has been removed exactly.  The remaining question is
+membership in that particular global period map.
+\end{remark}
+
+\begin{corollary}[opening is constant along a saturated prime ray]
+Fix $(r,t)$, $\delta$, and a Bézout companion.  The matrix
+$\mathsf A_{\delta,\mathbf w}$ is independent of the content $s$, the
+external denominator $n$, and the residual $R$.  Thus every infinite prime
+family produced on the fixed ray by \cref{thm:prime-saturation} maps to one
+fixed regular ambient period point after the opening data are fixed.
+\end{corollary}
+
+\section{Exact left--right morphism to the terminal matrix}
+
+Let $\mathsf R_\delta$ be the terminal matrix in
+\eqref{eq:general-row-shear}.  Define
+\begin{equation}\label{eq:P0Q0}
+ P_0=\mat{-1}{1}{-4}{3},
+ \qquad
+ Q_0=\mat{1}{T_\delta-\ell_1}{0}{1}.
+\end{equation}
+Then
+\begin{equation}\label{eq:terminal-diagonalization}
+ P_0\mathsf R_\delta Q_0=\diag(1,-\delta).
+\end{equation}
+For $B=B_{\mathbf v,\mathbf w}$ and
+$J=\mat{0}{1}{1}{0}$, put
+\begin{equation}\label{eq:LA-RA}
+ L_A=-JB^{-1},\qquad R_A=B^{-\mathsf T}J.
+\end{equation}
+Both are in $\GL_2(\Z)$ and
+\begin{equation}\label{eq:opening-diagonalization}
+ L_A\mathsf A_{\delta,\mathbf w}R_A=\diag(1,-\delta).
+\end{equation}
+
+\begin{theorem}[coordinate-level opening--terminal morphism]
+\label{thm:GL2-morphism}
+The terminal and opened matrices are related by the exact left--right
+identity
+\begin{equation}\label{eq:full-GL2-morphism}
+ \boxed{
+ \mathsf R_\delta
+ =P_0^{-1}L_A\,
+  \mathsf A_{\delta,\mathbf w}\,
+  R_AQ_0^{-1}.}
+\end{equation}
+Every displayed left and right factor belongs to $\GL_2(\Z)$ and has an
+explicit inverse.  Thus the relationship is stronger than equality of
+determinants or Smith invariants.
+\end{theorem}
+
+\begin{proof}
+A direct multiplication gives
+\[
+ P_0\mat{3}{-\ell_1}{4}{-T_\delta}
+ =\mat{1}{\ell_1-T_\delta}{0}{4\ell_1-3T_\delta}
+ =\mat{1}{\ell_1-T_\delta}{0}{-\delta}.
+\]
+Right multiplication by $Q_0$ gives
+\eqref{eq:terminal-diagonalization}.  Equation \eqref{eq:Aopening} gives
+\begin{align*}
+ L_A\mathsf A_{\delta,\mathbf w}R_A
+ &=-JB^{-1}B\diag(\delta,-1)B^{\mathsf T}B^{-\mathsf T}J\\
+ &=-J\diag(\delta,-1)J=\diag(1,-\delta).
+\end{align*}
+Equating the two diagonalizations proves \eqref{eq:full-GL2-morphism}.
+\end{proof}
+
+\begin{example}[the fixed diagonal-ray opening]
+For $\mathbf v=(1,1)^{\mathsf T}$ choose
+$\mathbf w=(0,1)^{\mathsf T}$.  At $\delta=1$,
+\begin{equation}\label{eq:Astar}
+ \mathsf A_*=\mat{1}{1}{1}{0},\qquad \det\mathsf A_*=-1.
+\end{equation}
+The raw period triple is
+\[
+ (T_{\rm raw},M_{\rm raw},B_{\rm raw})
+ =\left(1,\frac1{\sqrt6},0\right).
+\]
+For the density-one family \eqref{eq:diagonal-terminal}, every varying
+terminal matrix is $\GL_2(\Z)$-equivalent through
+\eqref{eq:full-GL2-morphism} to this one fixed ambient opening.
+\end{example}
+
+\section{Exact map to the defect-one Koide shell}
+
+For an opening $A=\mathsf A_{\delta,\mathbf w}$, define its Lorentz coordinate
+vector
+\begin{equation}\label{eq:zA}
+ \mathbf z(A)=
+ \left(
+ \frac{A_{11}+A_{22}}2,
+ A_{12},
+ \frac{A_{11}-A_{22}}2
+ \right)=(H_A,X_A,Y_A).
+\end{equation}
+By construction,
+\begin{equation}\label{eq:QAminusdelta}
+ H_A^2-X_A^2-Y_A^2=\det A=-\delta.
+\end{equation}
+Define the exact homothety and orthogonal inverse
+\begin{equation}\label{eq:defect-map}
+ \mathfrak K_\delta(A)
+ =\mathcal F^{-1}\left(\frac{\mathbf z(A)}{\sqrt{3\delta}}\right).
+\end{equation}
+
+\begin{theorem}[channel opening to the defect-one Koide hyperboloid]
+\label{thm:defect-one-map}
+For every divisor channel order $\delta>0$ and every Bézout opening,
+\begin{equation}\label{eq:QKminus-third}
+ Q_K(\mathfrak K_\delta(A))=-\frac13.
+\end{equation}
+Equivalently, with
+\begin{equation}\label{eq:Delta}
+ \Delta(q)=4(q_1q_2+q_1q_3+q_2q_3)-(q_1^2+q_2^2+q_3^2)=3Q_K(q),
+\end{equation}
+one has
+\begin{equation}\label{eq:Deltaminus1}
+ \boxed{\Delta(\mathfrak K_\delta(A))=-1.}
+\end{equation}
+The map is defined over
+$\Q(\sqrt2,\sqrt3,\sqrt\delta)$ for integral $A$.  It need not land in the
+integral defect-one shell.
+\end{theorem}
+
+\begin{proof}
+The map $\mathcal F$ is orthogonal and identifies $Q_K$ with the Lorentz form.
+Equations \eqref{eq:QAminusdelta} and \eqref{eq:defect-map} therefore give
+\[
+ Q_K(\mathfrak K_\delta(A))
+ =\frac{-\delta}{3\delta}=-\frac13.
+\]
+The identity $\Delta=3Q_K$ gives \eqref{eq:Deltaminus1}.  The displayed
+radicals in $\mathcal F^{-1}$ and in the homothety give the stated field.
+\end{proof}
+
+
+\begin{theorem}[exact rational nonintersection of the orthogonal defect map]
+\label{thm:defect-map-no-rational-points}
+Let $\delta\in\mathbb Q_{>0}$ and let
+$A\in\operatorname{Sym}_2(\mathbb Q)$ satisfy $\det A=-\delta$.  Then
+\begin{equation}\label{eq:no-rational-image}
+ \boxed{\mathfrak K_\delta(A)\notin\mathbb Q^3.}
+\end{equation}
+Consequently the image of the integral Bézout openings under the exact map
+\eqref{eq:defect-map} is disjoint from the integral defect-one shell, not
+merely unproved to lie in it.
+\end{theorem}
+
+\begin{proof}
+Write $\mathbf z(A)=(H_A,X_A,Y_A)$ and suppose
+$q=\mathfrak K_\delta(A)=(q_1,q_2,q_3)$ were rational.  Put
+\begin{equation}\label{eq:SUV}
+ S=q_1+q_2+q_3,
+ \qquad U=q_1-q_3,
+ \qquad V=q_1+q_3-2q_2.
+\end{equation}
+Applying the exact orthogonal map \eqref{eq:F} to
+$q=\mathcal F^{-1}(\mathbf z(A)/\sqrt{3\delta})$ gives
+\begin{equation}\label{eq:rationality-relations}
+ H_A=\sqrt\delta\,S,
+ \qquad
+ X_A=\sqrt{\frac{3\delta}{2}}\,U,
+ \qquad
+ Y_A=\sqrt{\frac\delta2}\,V.
+\end{equation}
+All six quantities $H_A,X_A,Y_A,S,U,V$ are rational.
+
+If two among $H_A,X_A,Y_A$ are nonzero, division of the corresponding two
+relations in \eqref{eq:rationality-relations} would make one of
+$\sqrt{3/2}$, $1/\sqrt2$, or $\sqrt3$ rational.  Hence at most one of
+$H_A,X_A,Y_A$ is nonzero.  The case in which only $H_A$ is nonzero is
+impossible because
+$H_A^2-X_A^2-Y_A^2=-\delta<0$.  If only $X_A$ is nonzero, then
+$X_A^2=\delta$ and the second relation gives $U^2=2/3$, impossible for
+$U\in\mathbb Q$.  If only $Y_A$ is nonzero, then $Y_A^2=\delta$ and the
+third relation gives $V^2=2$, again impossible over $\mathbb Q$.  The zero
+triple contradicts $\det A=-\delta$.  Thus no rational $q$ exists.
+\end{proof}
+
+\begin{remark}[exact separation from the counted integral orbit]
+The map \eqref{eq:defect-map} proves equality of the quadratic level
+$\Delta=-1$ and produces a real algebraic point for every opening.  Theorem
+\ref{thm:defect-map-no-rational-points} proves that this particular map has
+empty intersection with $\mathbb Q^3$, hence with the integral chamber counted
+in the Koide defect-one theorem.  Any arithmetic transfer to that counted
+orbit requires a different, explicitly constructed morphism.
+\end{remark}
+
+\begin{remark}[why the existing count does not transfer]
+The current Koide arithmetic workbench counts integral points on a particular
+reduced chamber of $\Delta=-1$ and proves a linear asymptotic there.  The map
+\eqref{eq:defect-map} produces exact algebraic points and, by
+\cref{thm:defect-map-no-rational-points}, none of them is rational.  Therefore
+the proved integral counting constant is not a count of Erdős--Straus selector
+states.  What is transferred is the
+quadratic level and the complete coordinate map, not integrality or chamber
+membership.
+\end{remark}
+
+\section{Faithful certificates and exact inverse data}
+
+An oriented divisor channel determines the pair
+\begin{equation}\label{eq:double-cert}
+ \mathfrak C(n,R,\delta,u,v)
+ =\left(
+ \Gamma=\mat{u}{a}{a}{v},
+ \quad
+ \mathsf R_\delta=\mat{3}{-\ell_1}{4}{-T_\delta}
+ \right).
+\end{equation}
+The two determinant equations are
+\begin{equation}\label{eq:two-dets}
+ \det\Gamma=0,
+ \qquad
+ \det\mathsf R_\delta=-\delta,
+\end{equation}
+and the coupling equations are
+\begin{equation}\label{eq:coupling}
+ 4a=n+R,
+ \qquad
+ RT_\delta=4u+\delta,
+ \qquad
+ uv=a^2.
+\end{equation}
+
+\begin{theorem}[faithfulness of the double certificate]
+\label{thm:faithful}
+The map from marked oriented channel states to the pair
+\eqref{eq:double-cert} is injective.  The inverse is
+\begin{align}
+ u&=\Gamma_{11},&a&=\Gamma_{12},&v&=\Gamma_{22},\label{eq:inverse-Gamma}\\
+ T_\delta&=-(\mathsf R_\delta)_{22},&
+ \ell_1&=-(\mathsf R_\delta)_{12},\label{eq:inverse-R}\\
+ j&=\frac{u-\ell_1}{T_\delta},&
+ R&=4j+3,\label{eq:inverse-j}\\
+ n&=4a-R,&
+ \delta&=-\det\mathsf R_\delta.\label{eq:inverse-n-delta}
+\end{align}
+The terminal matrix alone is not faithful; the rank-one matrix restores the
+external denominator, shell marker, divisor support, and channel orientation.
+\end{theorem}
+
+\begin{proof}
+Equations \eqref{eq:inverse-Gamma} and \eqref{eq:inverse-R} read off matrix
+entries.  The definition $\ell_1=u-jT_\delta$ gives
+\eqref{eq:inverse-j}; then \eqref{eq:aN} and
+\eqref{eq:terminal-snf} give \eqref{eq:inverse-n-delta}.  Substitution
+reconstructs every original coordinate.
+\end{proof}
+
+\section{Exact consequences and remaining boundary}
+
+The proved chain is
+\begin{equation}\label{eq:full-chain}
+ \boxed{
+ \begin{gathered}
+ \text{oriented fixed-shell reciprocal state}
+ \longleftrightarrow
+ (\delta,u,v),\\
+ (\delta,u,v)
+ \longmapsto
+ \left(\Gamma,\mathsf R_\delta\right),\\
+ \Gamma\longmapsto[\mathbf v],
+ \qquad
+ ([\mathbf v],\delta,\mathbf w)
+ \longmapsto\mathsf A_{\delta,\mathbf w},\\
+ \mathsf A_{\delta,\mathbf w}
+ \xrightarrow{\ \GL_2(\Z)\times\GL_2(\Z)\ }
+ \mathsf R_\delta,\\
+ \mathsf A_{\delta,\mathbf w}
+ \longmapsto
+ \text{regular ambient period point},\\
+ \mathsf A_{\delta,\mathbf w}
+ \xrightarrow{\ \mathfrak K_\delta\ }
+ \{\Delta=-1\}.
+ \end{gathered}}
+\end{equation}
+Every arrow has been displayed in coordinates and supplied with its inverse
+when it is bijective.
+
+The following statements are exact consequences.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The prime two-channel selector is the specialization of a complete
+$\delta\mid n^2$ channel theory.
+\item Complementary denominator orientations correspond to reciprocal
+terminal orders whose product is $n^2$, and to opposite Lorentz rapidities.
+\item Every primitive positive determinant-null ray supports infinitely many
+exterior prime certificates in every admissible prime progression.
+\item One ray, $[1:1]$, supports relative density one of those primes; its
+certificate multiplicity for each individual prime is exactly the divisor
+count in \eqref{eq:diag-count-character}, and it carries a fixed
+determinant-$(-1)$ ambient opening.
+\item Every channel ray has infinitely many Bézout openings of determinant
+$-\delta$, and each opening is connected to its terminal matrix by the exact
+left--right identity \eqref{eq:full-GL2-morphism}.
+\item Every opening maps to the real defect-one Koide hyperboloid, but the exact
+orthogonal--homothetic image is disjoint from $\mathbb Q^3$; no integral point
+count is transferred by this morphism.
+\end{enumerate}
+
+The Erdős--Straus conjecture remains the surjectivity statement in the other
+quantifier direction: every prime must lie in at least one selector fibre.
+Neither density one, Zariski density, nor infinite saturation of every fixed
+ray rules out a density-zero set of primes missed by all rays.
+
+\section*{Computational receipt}
+
+The accompanying exact-arithmetic verifier checks:
+\begin{itemize}
+\item the channel bijection and fixed-point-free complement in $665$ coprime
+shells with $n\le161$;
+\item $1430$ oriented channel states and $512$ explicit
+opening--terminal $\GL_2(\Z)$ morphisms;
+\item the prime specialization in $9137$ shells for primes $p<1000$;
+\item $57$ character-sum channel counts;
+\item $192$ primitive-ray/congruence-class progressions and explicit prime
+certificates in all $48$ reduced classes $c\equiv1\pmod{12}$ modulo $840$ on
+the diagonal ray;
+\item $30$ Bézout-opening torsors with eleven consecutive companion shifts
+each;
+\item the complete diagonal-ray divisor count for every prime $p<5000$ with
+$p\equiv1\pmod4$, including the exact terminal matrix multiplicity.
+\end{itemize}
+These checks are bounded receipts for the displayed identities.  The proofs
+above establish the unbounded statements.
+
+\begin{thebibliography}{99}
+\bibitem{AlpogeFable2026}
+L. Alpöge, with disclosed Claude/Fable contribution,
+\emph{The $(3,4,\infty)$ modular family of $2$-tori, completed at its three
+special points, is a complex structure on $S^6$}, 2026; also circulated as
+\emph{A compact complex threefold fibred by tori over the projective line,
+and the six-sphere}.  Citable research record:
+\url{https://doi.org/10.5281/zenodo.22238779}.
+
+\bibitem{ClankersES2026}
+The Clankers,
+\emph{Erdős--Straus Project Archive: Residual Divisor Shells, Quotient
+Surpluses, and Finite Verification}, version 2026.08.31.1, Zenodo (2026),
+\url{https://doi.org/10.5281/zenodo.22209908}.
+
+\bibitem{ErdosStraus1948}
+P. Erdős and E. G. Straus,
+problem on the decomposition of $4/n$ into three unit fractions, 1948.
+
+\bibitem{Koide1983}
+Y. Koide,
+\emph{New view of quark and lepton mass hierarchy},
+Physical Review D \textbf{28} (1983), 252--254,
+\url{https://doi.org/10.1103/PhysRevD.28.252}.
+
+\bibitem{Kocik2012}
+J. Kocik,
+\emph{The Koide lepton mass formula and geometry of circles},
+arXiv:1201.2067 (2012).
+
+\bibitem{Davenport}
+H. Davenport,
+\emph{Multiplicative Number Theory}, 3rd ed., revised by H. L. Montgomery,
+Springer, 2000.
+\end{thebibliography}
+
+\end{document}

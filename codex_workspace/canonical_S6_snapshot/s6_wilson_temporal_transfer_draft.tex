@@ -1,0 +1,670 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\dd}{\,\mathrm d}
+\title{Exact SU(2) Wilson transfer operator and the finite-spatial-lattice time limit}
+\author{}
+\date{8 September 2026}
+\begin{document}
+\maketitle
+
+\section{Retained action, coefficients, and conventions}
+
+Fix $a>0$ and $g_{\rm YM}>0$. The spatial regulator is a fixed finite
+oriented cubical graph with vertices $\mathsf V$, physical spatial edges
+$\mathsf E$, and the full set $\mathsf P_s$ of its geometric spatial
+plaquettes, each included once, with $|\mathsf E|\geq1$.
+Open spatial boundary conditions or a
+fixed periodic spatial lattice are both allowed. Reverse traversal uses
+$U_e^{-1}$, not a second independent link. Write $N=|\mathsf E|$ and
+\[
+ \mathcal Q=\SU(2)^{\mathsf E},\qquad
+ \mathcal H=L^2(\mathcal Q,\lambda),\qquad
+ d\lambda=\prod_{e\in\mathsf E}dU_e,
+\]
+with probability Haar on each link. The spatial graph, $a$, and
+$g_{\rm YM}$ stay fixed in every limit in this paper.
+
+The original invariant Lie metric and continuum action are
+\begin{equation}\label{eq:original-action}
+ c(X,Y)=-\frac12\tr(XY),\qquad
+ S(\mathscr A)=\frac1{2g_{\rm YM}^2}
+ \int\sum_{\mu<\nu}c(F_{\mu\nu},F_{\mu\nu})\,d^4x.
+\end{equation}
+For time spacing $\epsilon>0$, retain exactly
+\begin{equation}\label{eq:anisotropic}
+ b_t(\epsilon)=\frac{a}{2g_{\rm YM}^2\epsilon},\qquad
+ b_s(\epsilon)=\frac{\epsilon}{2g_{\rm YM}^2a}.
+\end{equation}
+For the frozen-curvature holonomy $e^{\delta F}$,
+$2-\Rea\tr e^{\delta F}=\delta^2c(F,F)+O_F(\delta^4)$ on
+$\mathfrak{su}(2)$, by the exponential series, tracelessness and the
+paired eigenvalues of $F$. The exact coefficient checks are
+\[
+ \frac{b_t(a\epsilon)^2}{a^3\epsilon}
+ =\frac1{2g_{\rm YM}^2},\qquad
+ \frac{b_sa^4}{a^3\epsilon}=\frac1{2g_{\rm YM}^2}.
+\]
+These equalities record the prescribed classical action convention.
+The transfer calculation below uses the full compact plaquette action,
+not a curvature truncation, and proves no spatial continuum limit.
+
+Choose $T_1,T_2,T_3\in\mathfrak{su}(2)$ with
+$-2\tr(T_aT_b)=\delta_{ab}$, for example $T_a=i\sigma_a/2$ with the
+Pauli matrices. Define
+\[
+ X_{e,a}f(U)=\left.\frac d{dt}\right|_{0}
+ f(\ldots,e^{tT_a}U_e,\ldots),\qquad
+ \Delta_e^T=\sum_{a=1}^3X_{e,a}^2.
+\]
+In the original metric, $c(T_a,T_b)=\delta_{ab}/4$, so the
+$c$-orthonormal basis is $S_a=2T_a$, and
+\begin{equation}\label{eq:metricdictionary}
+ X^c_{e,a}=2X_{e,a},\qquad \Delta_e^c=4\Delta_e^T.
+\end{equation}
+The probability Haar convention changes no operator coefficient. If
+$d\operatorname{vol}_c=\mathcal V_c d\lambda$ on this compact product,
+$f\mapsto\sqrt{\mathcal V_c}f$ is the exact unitary change from
+$L^2(d\operatorname{vol}_c)$ to $L^2(d\lambda)$ and intertwines the same
+differential operators.
+
+The original inverse-transport gauge law and the convention used in the
+companion Hamiltonian derivation are related at the configuration level by
+\begin{equation}\label{eq:gaugedictionary}
+ (\beta_hU)_e=h_{s(e)}^{-1}U_eh_{t(e)},\qquad
+ (\alpha_gU)_e=g_{s(e)}U_eg_{t(e)}^{-1},\qquad
+ \alpha_gU=\beta_hU\ \text{when }g_v=h_v^{-1}\text{ for every }v.
+\end{equation}
+Inversion preserves Haar, so their vertex gauge averages are the same
+operator. No link variable is inverted by this dictionary; only the
+parameter describing the same vertex change is replaced by its inverse.
+
+\section{The exact single-link character multiplier}
+
+For $b>0$, let
+\begin{equation}\label{eq:kernel}
+ Z(b)=\int_{\SU(2)}e^{b\Rea\tr U}dU,\qquad
+ k_b(U)=\frac{e^{b\Rea\tr U}}{Z(b)},\qquad
+ (\mathcal K_b f)(U')=\int k_b(U'U^{-1})f(U)dU.
+\end{equation}
+Every $U\in\SU(2)$ has eigenvalues $e^{i\theta},e^{-i\theta}$ with
+$0\leq\theta\leq\pi$. Probability Haar integration of a class function is
+\[
+ \int f(U)dU=\frac2\pi\int_0^\pi f(\theta)\sin^2\theta\,d\theta.
+\]
+For example, write $U=w_0I+i\sum_{a=1}^3w_a\sigma_a$ on the unit
+three-sphere. Slicing at $w_0=\cos\theta$ gives density
+$(2/\pi)\sqrt{1-w_0^2}dw_0$, which is the displayed formula.
+
+Define the integer-order modified Bessel functions by their entire series
+\begin{equation}\label{eq:Besselseries}
+ I_d(2b)=\sum_{r=0}^{\infty}\frac{b^{2r+d}}{r!(r+d)!},
+ \qquad d\in\mathbb Z_{\geq0}.
+\end{equation}
+They also satisfy
+\begin{equation}\label{eq:Besselintegral}
+ I_d(2b)=\frac1\pi\int_0^\pi e^{2b\cos\theta}\cos(d\theta)\,d\theta.
+\end{equation}
+To prove this, multiply the uniformly absolutely convergent series for
+$e^{bz}$ and $e^{b/z}$ on $|z|=1$. The coefficient of $z^d$ is
+\eqref{eq:Besselseries}, and Fourier orthogonality gives
+\eqref{eq:Besselintegral}. For $d\geq1$, integration of the derivative
+of $e^{2b\cos\theta}\sin(d\theta)$ over $[0,\pi]$ gives
+\begin{equation}\label{eq:recurrence}
+ I_{d-1}(2b)-I_{d+1}(2b)=\frac db I_d(2b).
+\end{equation}
+The endpoint term is zero, and
+$2\sin\theta\sin(d\theta)=\cos((d-1)\theta)-\cos((d+1)\theta)$
+fixes every coefficient in this recurrence.
+
+The spin-$j$ irreducible representation has $j\in\frac12\mathbb Z_{\geq0}$,
+dimension $d=2j+1$, and character
+\[
+ \chi_j(\theta)=\sum_{r=0}^{d-1}e^{i(d-1-2r)\theta}
+ =\frac{\sin(d\theta)}{\sin\theta}.
+\]
+The finite sum is the character of the $(d-1)$st symmetric power of the
+defining representation; its equality with the sine quotient is the
+finite geometric-series identity, including endpoint values by
+continuity. These are all irreducibles of $\SU(2)$, and their matrix
+coefficients are complete by Peter--Weyl \cite{PeterWeyl}.
+
+\begin{theorem}\label{thm:multiplier}
+The exact normalization and the exact spin-$j$ multiplier of
+\eqref{eq:kernel} are
+\begin{equation}\label{eq:multiplier}
+ Z(b)=\frac{I_1(2b)}b,\qquad
+ \mathcal K_bD^j_{rs}=m_j(b)D^j_{rs},\qquad
+ m_j(b)=\frac{I_{2j+1}(2b)}{I_1(2b)}.
+\end{equation}
+For every $j$ and $b>0$, $0<m_j(b)\leq1$, and $m_0(b)=1$.
+The operator $\mathcal K_b$ is a positive self-adjoint contraction,
+is injective, and is trace class.
+\end{theorem}
+\begin{proof}
+The exact unnormalized character integral is
+\begin{align*}
+ \int e^{b\Rea\tr U}\chi_j(U)dU
+ &=\frac2\pi\int_0^\pi e^{2b\cos\theta}
+                      \sin\theta\sin(d\theta)d\theta\\
+ &=I_{d-1}(2b)-I_{d+1}(2b)=\frac dbI_d(2b).
+\end{align*}
+Set $d=1$ to obtain $Z(b)$. Since $k_b$ is central, the matrix
+$\int k_b(W)D^j(W^{-1})dW$ commutes with the representation and hence
+is scalar. Its trace divided by $d$ is
+$(dZ(b))^{-1}\int e^{b\Rea\tr W}\chi_j(W)dW=I_d/I_1$.
+The substitution $U=W^{-1}U'$ in \eqref{eq:kernel} proves the asserted
+matrix-coefficient eigenvalue. In particular the dimension factor in
+the character integral is exactly canceled by division by $d$; no
+dimension factor remains in the multiplier.
+
+All terms in \eqref{eq:Besselseries} are positive for $b>0$, which
+proves $m_j>0$. The integral expression for the normalized multiplier
+and $|\chi_j(U)|\leq d$ prove $|m_j|\leq1$. The matrix coefficients
+form an orthogonal complete basis, so these real positive eigenvalues
+prove positivity, self-adjointness, contraction, and injectivity.
+For fixed $b$, \eqref{eq:Besselseries} gives
+$I_d(2b)\leq b^de^{b^2}/d!$, since $(r+d)!\geq d!$.
+Thus
+\[
+ \tr\mathcal K_b=\sum_{d=1}^{\infty}d^2\frac{I_d(2b)}{I_1(2b)}<\infty,
+\]
+where the multiplicity is exactly $d^2$. The factorial majorant proves
+the convergence and hence trace-classness.
+\end{proof}
+
+\section{Controlled small-time derivative of the full compact kernel}
+
+\begin{lemma}\label{lem:asymptotic}
+For each fixed spin $j$,
+\begin{equation}\label{eq:large-b}
+ m_j(b)=1-\frac{j(j+1)}b+O_j(b^{-2})\qquad(b\longrightarrow\infty).
+\end{equation}
+The estimate is proved from the exact compact integral and does not
+replace that integral by a different finite-$b$ kernel.
+\end{lemma}
+\begin{proof}
+Set $y=1-\cos\theta\in[0,2]$. Under the probability density $k_b dU$,
+the density of $y$ is proportional to
+$e^{-2by}y^{1/2}(2-y)^{1/2}dy$. Write
+\[
+ J_q(b)=\int_0^2e^{-2by}y^{q+1/2}(2-y)^{1/2}dy,
+ \qquad q=0,1,2.
+\]
+On $[0,1]$, Taylor's theorem with a bounded second derivative gives
+$\sqrt{2-y}=\sqrt2(1-y/4)+R(y)$, with $|R(y)|\leq C y^2$.
+The part on $[1,2]$ is bounded by a constant times $e^{-2b}$.
+The tails when extending the two leading integrals to $[0,\infty)$
+have the same exponentially small order times a polynomial in $b$.
+Finally, the error integral over $[0,1]$ is bounded by
+$C\int_0^\infty e^{-2by}y^{q+5/2}dy$.
+Using the exact substitution $z=2by$ in these gamma integrals gives
+\begin{equation}\label{eq:J-expansion}
+ J_q(b)=\frac{\sqrt2\,\Gamma(q+3/2)}{(2b)^{q+3/2}}
+ \left[1-\frac{q+3/2}{8b}+O_q(b^{-2})\right].
+\end{equation}
+Every error assertion follows from the displayed remainder bound and
+the exponentially small tail; none extends a finite-$b$ probability
+measure by declaration. Since $J_0>0$, division gives
+\[
+ \mathbb E_b[y]=\frac{J_1}{J_0}=\frac3{4b}+O(b^{-2}),\qquad
+ \mathbb E_b[y^2]=\frac{J_2}{J_0}=\frac{15}{16b^2}+O(b^{-3}).
+\]
+The character $\chi_j$ is the polynomial $U_{d-1}(\cos\theta)$, where
+$U_0(x)=1$, $U_1(x)=2x$, and
+$U_{r+1}(x)=2xU_r(x)-U_{r-1}(x)$. Induction at $x=1$ gives
+\[
+ U_{d-1}(1)=d,\qquad U'_{d-1}(1)=\frac{d(d^2-1)}3.
+\]
+For the derivative formula, differentiate the recurrence; the induction
+step is
+$U'_{r+1}(1)=2(r+1)+2U'_r(1)-U'_{r-1}(1)$, which the displayed
+cubic expression satisfies with its initial values. Polynomial Taylor
+expansion on the whole compact interval $y\in[0,2]$ therefore yields
+\[
+ \frac{\chi_j(\theta)}d
+ =1-\frac{d^2-1}{3}y+R_j(y),\qquad |R_j(y)|\leq C_jy^2.
+\]
+Its exact $\mathbb E_b$ average is $m_j(b)$. Substitute the two moment
+estimates and use $(d^2-1)/4=j(j+1)$ to prove \eqref{eq:large-b}.
+\end{proof}
+
+Substitution of the retained $b_t$ gives the exact infinitesimal
+coefficient
+\begin{equation}\label{eq:epsilonmultiplier}
+ m_j(b_t(\epsilon))
+ =1-\epsilon\frac{2g_{\rm YM}^2}{a}j(j+1)+O_j(\epsilon^2).
+\end{equation}
+For the chosen basis, $-\Delta^T$ has eigenvalue $j(j+1)$ on spin $j$.
+Indeed take the displayed Pauli basis and put $J_a=-i\,dD^j(T_a)$.
+Its anti-Hermitian generators satisfy $[T_a,T_b]=-\varepsilon_{abc}T_c$,
+so the Hermitian generators satisfy $[J_a,J_b]=i\varepsilon_{abc}J_c$.
+Let $J_\pm=J_1\pm iJ_2$. Directly from these commutators,
+$[J_3,J_\pm]=\pm J_\pm$ and
+$\sum_aJ_a^2=J_-J_++J_3^2+J_3$. On the highest vector
+$e_1^{\otimes 2j}$ of the symmetric power, $J_3$ has eigenvalue $j$
+and $J_+$ is zero, so the sum of squares has value $j(j+1)$.
+Expanding its commutator with each $J_a$ shows it commutes with all
+three; irreducibility therefore extends this value to the whole
+representation. An orthogonal change to any other specified
+orthonormal $T$ basis leaves the sum of squares unchanged.
+For $j=1/2$, it is explicitly
+$-\sum_aT_a^2=3I/4$, fixing the absolute scale. Thus
+\eqref{eq:epsilonmultiplier} has precisely the $\Delta^T$ convention,
+and \eqref{eq:metricdictionary} supplies the other metric.
+
+On the full finite edge product define
+\begin{equation}\label{eq:freeproduct}
+ (K_\epsilon f)(U')=
+ \int_{\mathcal Q}\prod_{e\in\mathsf E}
+ k_{b_t(\epsilon)}(U'_eU_e^{-1})f(U)d\lambda(U),
+ \qquad
+ H_0=-\frac{2g_{\rm YM}^2}{a}\sum_e\Delta_e^T.
+\end{equation}
+A product matrix coefficient with spins $\boldsymbol j=(j_e)$ has
+$K_\epsilon$ eigenvalue $\prod_em_{j_e}(b_t(\epsilon))$ and
+$H_0$ eigenvalue $(2g_{\rm YM}^2/a)\sum_ej_e(j_e+1)$.
+For every finite linear combination $f$ of such coefficients,
+\begin{equation}\label{eq:corederivative}
+ \lim_{\epsilon\downarrow0}\frac{K_\epsilon f-f}{\epsilon}=-H_0f.
+\end{equation}
+This follows by the finite product expansion of
+\eqref{eq:epsilonmultiplier}, not by an assertion uniform over arbitrary
+spins. Contraction and density then imply $K_\epsilon f\to f$ for every
+$f\in\mathcal H$: approximate $f$ by a fixed finite combination and
+bound the two approximation errors by its distance from $f$.
+
+\section{Exact magnetic factor and temporal-link Gauss integration}
+
+For the ordered spatial plaquette holonomy $U_p$, set
+\begin{equation}\label{eq:magnetic}
+ V(U)=\frac1{2g_{\rm YM}^2a}
+        \sum_{p\in\mathsf P_s}(2-\Rea\tr U_p),\qquad
+ M_\epsilon f(U)=e^{-\epsilon V(U)/2}f(U).
+\end{equation}
+Every magnetic plaquette is present in this sum. It is a bounded
+nonnegative real smooth multiplication operator, with
+$0\leq V\leq2|\mathsf P_s|/(g_{\rm YM}^2a)$.
+In particular $\epsilon V=b_s\sum_p(2-\Rea\tr U_p)$ exactly.
+
+Define the vertex gauge average
+\begin{equation}\label{eq:Gauss}
+ (P_Gf)(U)=\int_{\SU(2)^{\mathsf V}}f(\alpha_gU)\prod_vdg_v.
+\end{equation}
+Every pullback in the integrand is unitary. Haar inversion proves
+$P_G^*=P_G$, Haar invariance in two successive integrals proves
+$P_G^2=P_G$, and another left translation of the integration variable
+shows that the range consists exactly of the invariant functions.
+Thus $P_G$ is the orthogonal projection onto
+$\mathcal H_{\rm inv}$. Equation \eqref{eq:gaugedictionary} proves that
+it is also the original-$h$ Gauss average. Gauge invariance of spatial
+Wilson traces proves $M_\epsilon P_G=P_GM_\epsilon$.
+The identity
+\[
+ (\alpha_gU')_e(\alpha_gU)_e^{-1}
+ =g_{s(e)}U'_eU_e^{-1}g_{s(e)}^{-1}
+\]
+and centrality of $k_b$ prove that $K_\epsilon$ commutes with $P_G$.
+
+To compute the temporal integral, write $U$ and $U'$ for two adjacent
+spatial slices and $q_v$ for the temporal link at vertex $v$ from the
+first slice to the second. In the original inverse-transport convention,
+the oriented temporal plaquette associated to edge $e:s\to t$ is
+\begin{equation}\label{eq:temporalplaquette}
+ P_e(U',q,U)=U_eq_t(U'_e)^{-1}q_s^{-1}.
+\end{equation}
+Its inverse is $q_sU'_eq_t^{-1}U_e^{-1}$, and $\Rea\tr A^{-1}=
+\Rea\tr A$ for a unitary matrix. Hence
+\begin{equation}\label{eq:temporal-conjugacy}
+ \Rea\tr P_e=\Rea\tr[(\alpha_qU')_eU_e^{-1}].
+\end{equation}
+This equality includes every temporal vertex variable; it makes no
+global temporal gauge-fixing assumption. Under independent original
+vertex changes $h^{(0)}$ and $h^{(1)}$ on the two slices,
+\[
+ U_e\mapsto(h_s^{(0)})^{-1}U_eh_t^{(0)},\quad
+ U'_e\mapsto(h_s^{(1)})^{-1}U'_eh_t^{(1)},\quad
+ q_v\mapsto(h_v^{(0)})^{-1}q_vh_v^{(1)}.
+\]
+Multiplication in \eqref{eq:temporalplaquette} cancels the intermediate
+factors and gives $P_e\mapsto(h_s^{(0)})^{-1}P_eh_s^{(0)}$.
+This verifies directly its original gauge law.
+
+Define the raw two-slice Wilson kernel, with symmetric magnetic endpoint
+weights, by
+\begin{equation}\label{eq:rawkernel}
+ \mathcal T_\epsilon^{\rm raw}(U',U)
+ =e^{-\epsilon V(U')/2}e^{-\epsilon V(U)/2}
+ \int\exp\!\left[-b_t\sum_e(2-\Rea\tr P_e(U',q,U))\right]\prod_vdq_v.
+\end{equation}
+The integral is over the whole non-Abelian group at every temporal
+vertex. With
+\begin{equation}\label{eq:scalar}
+ c_\epsilon=[e^{-2b_t}Z(b_t)]^N,\qquad
+ F_\epsilon=M_\epsilon K_\epsilon M_\epsilon,
+\end{equation}
+equations \eqref{eq:kernel} and \eqref{eq:temporal-conjugacy} give the
+exact operator identity
+\begin{equation}\label{eq:fulltransfer}
+ \mathcal T_\epsilon^{\rm raw}
+ =c_\epsilon M_\epsilon P_GK_\epsilon M_\epsilon
+ =c_\epsilon F_\epsilon P_G
+ =c_\epsilon P_GF_\epsilon.
+\end{equation}
+In particular the normalized transfer is $F_\epsilon$ on
+$\mathcal H_{\rm inv}$ and $F_\epsilon P_G$ on $\mathcal H$.
+The operator $F_\epsilon$ is positive, self-adjoint, injective and a
+contraction because $K_\epsilon$ has those properties and
+$M_\epsilon$ is positive, bounded, and invertible. Injectivity follows
+from
+$\langle f,F_\epsilon f\rangle=
+\langle M_\epsilon f,K_\epsilon M_\epsilon f\rangle$ and the strictly
+positive eigenvalues of $K_\epsilon$. All these statements remain
+valid after restriction to the invariant subspace.
+
+For several adjacent slices, the two half magnetic factors at each
+interior slice multiply to $e^{-\epsilon V}$. On an open time interval
+the two boundary slices carry half weights; on a periodic time lattice
+all slices have their full weight. Fubini's theorem therefore identifies
+the exact product of \eqref{eq:rawkernel} with the full anisotropic
+Wilson integral, retaining all temporal and spatial plaquettes. In the
+periodic case with $m$ time steps the exact partition identity is
+\begin{equation}\label{eq:partition}
+ Z_{\rm Wilson}^{(m)}
+ =c_\epsilon^m\tr_{\mathcal H}(F_\epsilon^mP_G)
+ =c_\epsilon^m\tr_{\mathcal H_{\rm inv}}(F_\epsilon^m).
+\end{equation}
+The traces are well defined: the proof of Theorem \ref{thm:multiplier}
+gives a trace-class single-link operator, a finite tensor product is
+trace class, and multiplication by bounded operators and $P_G$ preserves
+that property. The integral and trace equality can also be checked by
+successively integrating its positive continuous compact kernels.
+Equation \eqref{eq:partition} is an exact finite-$\epsilon$ identity;
+the strong convergence below alone is not used to assert trace-norm
+convergence of these partition functions.
+
+The Wilson constant and the normalization are explicitly retained as the
+common energy shift
+\begin{equation}\label{eq:shift}
+ E_{\rm scalar}(\epsilon)
+ =-\frac1\epsilon\log c_\epsilon
+ =\frac N\epsilon\bigl[2b_t-\log Z(b_t)\bigr].
+\end{equation}
+In particular $0<c_\epsilon<1$, because
+$e^{-2b}Z(b)=\int e^{-b(2-\Rea\tr U)}dU$ is a strictly positive average
+of a function at most one and strictly below one on a set of positive
+Haar measure. From the proved $J_0$ expansion,
+\[
+ e^{-2b}Z(b)=\frac1{2\sqrt\pi\,b^{3/2}}
+             \left[1-\frac3{16b}+O(b^{-2})\right].
+\]
+Thus the shift is not finite as $\epsilon\downarrow0$; it is a known
+scalar that affects all energies equally. The exact relation
+\eqref{eq:fulltransfer}, rather than an unrecorded removal of constants,
+specifies which operator has the finite time limit.
+
+\section{The actual core and the strong time-continuum limit}
+
+Let $\mathscr D$ be the finite linear span of product matrix coefficients
+of all edge representations, and let $\mathscr D_{\rm inv}=P_G\mathscr D$.
+Peter--Weyl completeness makes $\mathscr D$ dense in $\mathcal H$ and
+$\mathscr D_{\rm inv}$ dense in $\mathcal H_{\rm inv}$. The gauge action
+mixes only matrix coefficients with the same finite list of edge spins,
+so $P_G\mathscr D\subset\mathscr D$. The diagonal positive operator $H_0$
+in \eqref{eq:freeproduct} is self-adjoint on
+\[
+ D(H_0)=\left\{f:\sum_{\boldsymbol j,\boldsymbol r,\boldsymbol s}
+ \left(\frac{2g_{\rm YM}^2}{a}\sum_ej_e(j_e+1)\right)^2
+ |f_{\boldsymbol j,\boldsymbol r,\boldsymbol s}|^2<\infty\right\},
+\]
+where coefficients use an orthonormal matrix-coefficient basis.
+Finite spectral truncation proves that $\mathscr D$ is an operator core:
+both $f$ and $H_0f$ are approximated by the same finite sums. The
+projection $P_G$ commutes with $H_0$, so applying it to these graph-norm
+approximations proves the invariant core assertion as well.
+
+Since $V$ in \eqref{eq:magnetic} is bounded and real, the operator
+\begin{equation}\label{eq:resultH}
+ H=H_0+V
+ =-\frac{2g_{\rm YM}^2}{a}\sum_e\Delta_e^T
+ +\frac1{2g_{\rm YM}^2a}\sum_{p\in\mathsf P_s}(2-\Rea\tr U_p)
+\end{equation}
+is self-adjoint and nonnegative on $D(H_0)$. Bounded perturbation does
+not change the core, since the graph norms of $H_0$ and $H_0+V$ are
+equivalent by the two inequalities
+$\|Hf\|\leq\|H_0f\|+\|V\|\|f\|$ and its converse. All gauge
+invariance statements persist. The original-metric expression is exactly
+\begin{equation}\label{eq:resultHc}
+ H=-\frac{g_{\rm YM}^2}{2a}\sum_e\Delta_e^c
+ +\frac1{2g_{\rm YM}^2a}\sum_{p\in\mathsf P_s}(2-\Rea\tr U_p).
+\end{equation}
+No conventional redefinition of $g_{\rm YM}$ was used to obtain either
+expression.
+
+For $f\in\mathscr D$, use the exact algebraic decomposition
+\[
+ (F_\epsilon-I)f=(M_\epsilon-I)f
+    +M_\epsilon(K_\epsilon-I)f
+    +M_\epsilon K_\epsilon(M_\epsilon-I)f.
+\]
+Boundedness of $V$ gives
+$(M_\epsilon-I)/\epsilon\to-V/2$ in operator norm. Equation
+\eqref{eq:corederivative}, the strong convergence $K_\epsilon\to I$,
+and the contraction bounds therefore prove
+\begin{equation}\label{eq:Fderivative}
+ \frac{F_\epsilon f-f}{\epsilon}\longrightarrow-Hf
+ \quad\text{for every }f\in\mathscr D,
+\end{equation}
+and in particular for every $f\in\mathscr D_{\rm inv}$. The magnetic
+operator need not commute with the kinetic operator for this argument.
+
+\begin{theorem}\label{thm:stronglimit}
+For every fixed $t>0$ and every $f\in\mathcal H$,
+\begin{equation}\label{eq:stronglimit}
+ F_{t/m}^{\,m}f\longrightarrow e^{-tH}f
+ \qquad(m\longrightarrow\infty).
+\end{equation}
+Consequently the exact normalized Wilson transfer obeys
+\begin{equation}\label{eq:projectedlimit}
+ \left(c_{t/m}^{-1}\mathcal T_{t/m}^{\rm raw}\right)^mf
+ =F_{t/m}^{\,m}P_Gf\longrightarrow e^{-tH}P_Gf.
+\end{equation}
+On $\mathcal H_{\rm inv}$ the limit is the strongly continuous
+semigroup $e^{-tH}$, with generator \eqref{eq:resultH} or equivalently
+\eqref{eq:resultHc}. At $t=0$ its identity is $I$ on that subspace;
+on the unrestricted space the projected family has value $P_G$.
+\end{theorem}
+\begin{proof}
+We give the positive-contraction specialization of the product-formula
+argument directly; the general framework is Chernoff's theorem
+\cite{Chernoff}. Put
+$A_\epsilon=(I-F_\epsilon)/\epsilon$. It is bounded, self-adjoint and
+nonnegative, and \eqref{eq:Fderivative} gives
+$A_\epsilon f\to Hf$ on the operator core $\mathscr D$.
+For any $\lambda_0>0$ and $f\in\mathscr D$,
+\begin{equation}\label{eq:resolventidentity}
+ (\lambda_0+A_\epsilon)^{-1}(\lambda_0+H)f-f
+ =(\lambda_0+A_\epsilon)^{-1}(H-A_\epsilon)f\longrightarrow0.
+\end{equation}
+The resolvents have norms at most $1/\lambda_0$. Moreover
+$(\lambda_0+H)\mathscr D$ is dense: for arbitrary $u$, apply a
+graph-norm approximation from $\mathscr D$ to
+$f=(\lambda_0+H)^{-1}u$. Thus the uniform bound extends
+\eqref{eq:resolventidentity} to all vectors and proves
+$(\lambda_0+A_\epsilon)^{-1}\to(\lambda_0+H)^{-1}$ strongly.
+
+For completeness this implies $e^{-tA_\epsilon}\to e^{-tH}$ strongly
+for each fixed $t>0$ without any estimate of an unknown spectrum.
+Set $R_\epsilon=(\lambda_0+A_\epsilon)^{-1}$ and
+$R=(\lambda_0+H)^{-1}$. On $[0,1/\lambda_0]$ define the continuous
+function
+\[
+ h_t(y)=\begin{cases}\exp[-t(y^{-1}-\lambda_0)],&y>0,\\0,&y=0.
+ \end{cases}
+\]
+Uniform polynomial approximation on this interval and strong convergence
+of every polynomial in the uniformly bounded $R_\epsilon$ prove
+$h_t(R_\epsilon)\to h_t(R)$ strongly. The spectral calculus identifies
+these two operators with the desired semigroups.
+
+It remains to compare powers with this exponential. For integer $m\geq1$
+and $0\leq x\leq1$,
+\begin{equation}\label{eq:scalarpower}
+ 0\leq e^{-mx}-(1-x)^m\leq\frac1m.
+\end{equation}
+For $x\leq1/2$, the integral identity
+$-\log(1-x)-x=\int_0^x u/(1-u)du\leq x^2$ gives
+\[
+ e^{-mx}-(1-x)^m
+ \leq mx^2e^{-mx}\leq\frac4{e^2m}<\frac1m.
+\]
+For $x\geq1/2$ the difference is at most $e^{-m/2}\leq2/(em)<1/m$;
+the last inequality follows by maximizing $s e^{-s/2}$ for $s>0$.
+The endpoint $x=1$ also satisfies the bound. Spectral calculus with
+$x=I-F_\epsilon=\epsilon A_\epsilon$ now yields
+\[
+ \|F_\epsilon^m-e^{-m\epsilon A_\epsilon}\|\leq1/m.
+\]
+Take $\epsilon=t/m$ and combine with the established strong convergence
+of $e^{-tA_{t/m}}$. This proves \eqref{eq:stronglimit}.
+Finally \eqref{eq:fulltransfer}, $P_G^2=P_G$, and commutation with
+$F_\epsilon$ prove \eqref{eq:projectedlimit}. The same reasoning
+applies directly on the verified invariant core.
+\end{proof}
+
+\section{Effective Hamiltonians and the exact finite-vacuum bridge}
+
+On $\mathcal H_{\rm inv}$, positivity and injectivity allow the
+self-adjoint functional-calculus definition
+\begin{equation}\label{eq:effectiveH}
+ H_\epsilon=-\epsilon^{-1}\log(F_\epsilon|_{\mathcal H_{\rm inv}}),
+ \qquad
+ H_\epsilon^{\rm raw}=E_{\rm scalar}(\epsilon)I+H_\epsilon.
+\end{equation}
+Zero is not an eigenvalue of $F_\epsilon$, so the logarithm is densely
+defined even though zero is a spectral accumulation point. The operator
+$H_\epsilon$ is nonnegative. Equation \eqref{eq:effectiveH} is the exact
+scalar-energy dictionary, and the raw and normalized effective operators
+have identical energy differences and eigenvectors at each $\epsilon$.
+
+They satisfy $H_\epsilon\to H|_{\mathcal H_{\rm inv}}$ in the strong
+resolvent sense. Here is a direct consequence of the proof already given,
+which also covers arbitrary $\epsilon\downarrow0$ rather than only
+$t/m$. Fix $t>0$ and set $m_\epsilon=\lfloor t/\epsilon\rfloor$ and
+$t_\epsilon=m_\epsilon\epsilon$. The power comparison gives
+$\|F_\epsilon^{m_\epsilon}-e^{-t_\epsilon A_\epsilon}\|
+\leq1/m_\epsilon$. For $t_\epsilon\geq t/2$, the scalar mean-value
+bound yields
+\[
+ \sup_{x\geq0}|e^{-t_\epsilon x}-e^{-tx}|
+ \leq|t-t_\epsilon|\sup_{x\geq0}xe^{-(t/2)x}
+ \leq\frac{2\epsilon}{et}\longrightarrow0.
+\]
+Thus $F_\epsilon^{m_\epsilon}\to e^{-tH}$ strongly. If
+$t/\epsilon=m_\epsilon+\delta$ with $0\leq\delta<1$, then for
+$0\leq z\leq1$,
+\[
+ 0\leq z^{m_\epsilon}-z^{m_\epsilon+\delta}
+ \leq z^{m_\epsilon}(1-z)
+ \leq\frac1{m_\epsilon+1}.
+\]
+The middle inequality uses $z^\delta\geq z$, and the last follows by
+maximizing $z^m(1-z)$. Applying spectral calculus gives
+$e^{-tH_\epsilon}=F_\epsilon^{t/\epsilon}\to e^{-tH}$ strongly.
+For any $\lambda_0>0$ the resolvent identity
+\[
+ (\lambda_0+H_\epsilon)^{-1}f
+ =\int_0^\infty e^{-\lambda_0t}e^{-tH_\epsilon}f\,dt
+\]
+and the uniform contraction bound permit dominated convergence in norm,
+proving the asserted strong resolvent convergence.
+
+The resulting Hamiltonian is precisely the finite interacting one in
+the companion derivation, with the explicit substitution
+\begin{equation}\label{eq:companiondictionary}
+ n=2,\qquad \kappa_e=\frac{2g_{\rm YM}^2}{a},\qquad
+ b_p^{\rm Hamiltonian}=\frac1{2g_{\rm YM}^2a}
+                       =\frac{b_s(\epsilon)}\epsilon.
+\end{equation}
+All magnetic interactions survive this limit. This yields a concrete
+state-space and operator map from the finite anisotropic Wilson integral
+to the vacuum-weighted finite-lattice identities; it does not identify
+the interacting vacuum with Haar measure.
+
+For example, let $\psi_0>0$ be the normalized exact ground state of
+\eqref{eq:resultH}, $E_0$ its eigenvalue, and $d\mu=\psi_0^2d\lambda$.
+The finite compact elliptic Hamiltonian has this unique ground state
+by the positivity and compact-resolvent argument in the companion
+paper. For any nonzero smooth gauge-invariant $F$ with $\mu(F)=0$, put
+$u=\psi_0F$ and $D=\|u\|^2>0$. The exact ground-state product rule gives
+\begin{equation}\label{eq:vacuumform}
+ \langle u,(H-E_0)u\rangle
+ =\frac{2g_{\rm YM}^2}{a}\sum_{e,a}\int|X_{e,a}F|^2d\mu.
+\end{equation}
+To see the cancellation, expand
+$X^2(\psi_0F)=\psi_0X^2F+2(X\psi_0)XF+F X^2\psi_0$,
+subtract $F(H-E_0)\psi_0=0$, and integrate each Haar-skew derivative
+by parts. The remaining integral is exactly \eqref{eq:vacuumform}.
+Thus no component of $V$ was omitted in passing to that form.
+
+The strong transfer limit proves the concrete correlation identity
+\begin{equation}\label{eq:correlation}
+ \lim_{m\to\infty}
+ \frac{\langle u,F_{t/m}^{\,m}u\rangle}
+      {\langle\psi_0,F_{t/m}^{\,m}\psi_0\rangle}
+ =\langle u,e^{-t(H-E_0)}u\rangle
+ =D\int_{[0,\infty)}e^{-t\omega}d\nu_F(\omega),
+\end{equation}
+where $\nu_F(A)=D^{-1}\langle u,\mathbf1_A(H-E_0)u\rangle$.
+The denominator converges to $e^{-tE_0}>0$. The raw scalar
+$c_{t/m}^m$ cancels exactly if both numerator and denominator are
+written using the raw transfer. The state $\psi_0$ in
+\eqref{eq:correlation} is the actual limiting finite-lattice vacuum,
+not a constant trial state. The spectral theorem and
+\eqref{eq:vacuumform} give its first moment
+\[
+ \int\omega\,d\nu_F(\omega)
+ =\frac{(2g_{\rm YM}^2/a)\sum_{e,a}\mu(|X_{e,a}F|^2)}{\mu(|F|^2)}.
+\]
+These are fixed-spatial-regulator statements. Strong time convergence
+alone does not supply a spatial continuum vacuum, a limiting spectral
+gap, or a gapless interacting four-dimensional quantum theory.
+
+\section{Exact checks and provenance}
+
+The companion script \texttt{check\_temporal\_coefficients.py} completed
+237 exact scalar assertions plus exact matrix-entry checks. It verifies
+the two anisotropic action coefficients, Bessel recurrence coefficients
+through bounded formal orders, the character derivatives for dimensions
+1 through 9, the resulting spin coefficients, the SU(2) metric and
+Casimir constants, a noncommuting temporal-plaquette example and its
+original gauge law, the $g=h^{-1}$ dictionary, and the magnetic endpoint
+weights. The all-spin and operator convergence proofs are the analytic
+arguments above; they are not inferred from finitely many checked spins.
+No numerical integration, spatial continuum calculation, or approximate
+vacuum was used.
+
+\begin{thebibliography}{9}
+\bibitem{PeterWeyl}
+F. Peter and H. Weyl, \emph{Die Vollst\"andigkeit der primitiven
+Darstellungen einer geschlossenen kontinuierlichen Gruppe},
+Mathematische Annalen \textbf{97} (1927), 737--755,
+\href{https://doi.org/10.1007/BF01447892}{doi:10.1007/BF01447892}.
+
+\bibitem{Chernoff}
+P. R. Chernoff, \emph{Note on product formulas for operator semigroups},
+Journal of Functional Analysis \textbf{2} (1968), 238--242,
+\href{https://doi.org/10.1016/0022-1236(68)90020-7}
+{doi:10.1016/0022-1236(68)90020-7}.
+The positive self-adjoint contraction specialization needed here is
+proved directly in Theorem \ref{thm:stronglimit}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,2440 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=30mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Cubical Holonomy, Explicit SU(2) Flux, and a Finite Gaussian Cusp Limit},
+  pdfauthor={Working draft}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+\setlist{itemsep=2pt,topsep=4pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.025}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Compact-link flux and finite Gaussian cusp limit}
+\fancyhead[R]{Working draft}
+\fancyfoot[C]{\thepage}
+
+\title{\bfseries Cubical Holonomy, Explicit \(\mathrm{SU}(2)\) Flux,\\
+and a Finite Gaussian Cusp Limit}
+\author{Working draft}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a self-contained finite construction on a family of flat four-tori
+whose period matrices enter a controlled radial cusp.  Two integers are kept
+independent: \(M_{\mathrm{cov}}\), which changes the covering lattice, and
+\(N_{\mathrm{mesh}}\), which refines a transported cubical decomposition.
+We identify the cubical vertices exactly with the finite torsion subgroup,
+type the continuum-to-link holonomy map and its gauge covariance, and exhibit
+a periodic diagonal \(\mathrm{SU}(2)\) flux.  Its logarithmic action is
+\(2\pi^2M_{\mathrm{cov}}^2/(g_{\mathrm{YM}}^2D_T)\), while an explicitly
+defined continuum-matched \((1,2)\)-sector Wilson functional has the same
+mesh limit.  On the native fibre, a distinct smooth integral-flux
+\(\mathrm{SU}(2)\) connection has the same numerical action but an exact
+background-gauge Jacobi eigenvalue \(-4\pi/D_T\), so it is a classical saddle
+rather than a vacuum; no equality with the displayed link holonomies is
+asserted.  The scalar Laplacian on every cover has an exact character
+spectrum; its deck-invariant sector is identified explicitly, and the cover
+momentum lattices become dense when both cusp and cover parameters diverge.
+A finite Coulomb-reduced cochain complex yields an exact Fourier spectrum and
+a positive Gaussian oscillator gap at every fixed triple
+\((T,M_{\mathrm{cov}},N_{\mathrm{mesh}})\).  Along
+\(T_j=j^2\), \(M_{\mathrm{cov},j}=j\), and
+\(N_{\mathrm{mesh},j}=j^3\), the cover tori converge pointed locally
+isometrically to \(\mathbb R^4\), the mesh resolves the cover geometry, and
+both the Gaussian gap and the flux action tend to zero.  The direct integral
+of the mean-zero native scalar Laplacians over the radial parameter is a
+specified self-adjoint operator with trivial kernel and zero in its essential
+spectrum.  These statements
+concern a finite quadratic oscillator and one explicitly normalized
+compact-link sector.  On the native torus \(M_{\mathrm{cov}}=1\), we also
+identify the exact reduced continuum Yang--Mills Hessian gap and the exact
+finite gap in every mesh regime.  Finally, explicit gauge-invariant
+probability measures show that the link kinematics and the displayed magnetic
+configuration determine no Wilson-loop area law, while bounded self-adjoint
+countermodels show that entanglement and a gapped Gaussian subspace determine
+no full spectral gap.  We state and prove the full-form-domain coercive
+comparison that would transfer an auxiliary gap to a physical Hamiltonian.
+No such comparison is constructed here, so these results do not identify the
+oscillator with a nonlinear, gauge-invariant compact-link Yang--Mills
+Hamiltonian and do not constitute a physical mass-gap claim.
+\end{abstract}
+
+\medskip
+\noindent\fcolorbox{black!55}{black!3}{%
+\begin{minipage}{0.94\linewidth}
+\textbf{Status and scope.}
+This is a standalone mathematical draft of exact finite geometric,
+compact-link, and Gaussian statements.  All period hypotheses and
+normalizations used below are stated explicitly.  No continuum quantum field
+theory is constructed; no transfer matrix, nonlinear Gauss-law Hamiltonian,
+renormalized limit, or Osterwalder--Schrader reconstruction is asserted.
+Consequently the Gaussian spectral gap proved here is not the spectral gap of
+physical four-dimensional compact-link Yang--Mills theory.
+\end{minipage}}
+
+\section{Introduction and exact standing assumptions}
+
+The purpose of this note is to separate, and then connect by explicit maps,
+three finite constructions associated with a degenerating family of flat
+four-tori.  The first is geometric: a cover is equipped with the cubical
+decomposition transported from a coordinate torus.  The second is genuinely
+compact-link: continuum connections produce group-valued edge holonomies,
+and an explicit periodic \(\mathrm{SU}(2)\) flux has a computable plaquette
+action.  The third is linear and Gaussian: a finite cochain complex on the
+same mesh produces a positive Coulomb-restricted Hessian and a finite
+harmonic oscillator.
+
+The separation of parameters is essential.  The cover index
+\(M_{\mathrm{cov}}\) multiplies two period vectors and changes the global
+flat torus.  The mesh integer \(N_{\mathrm{mesh}}\) subdivides a fixed
+coordinate torus and changes only its cubical resolution.  They are never
+identified.  Only in the final diagonal sequence are both chosen as
+functions of a third integer \(j\).
+
+The period matrix and radial cusp specialization used below are taken from
+\cite{AlpogeS6_2026}.  We restate every input needed here so that the proofs
+depend only on the explicit regular-fibre matrix and the quantified radial
+bounds below; neither the claimed compactification nor the claimed
+identification of its total space with \(S^6\) is used.  Every cover below is
+a fibrewise cover of the displayed regular flat torus.  No finite cover of a
+compactified total space is asserted here.
+
+Fix \(T_0>0\).  For every \(T\geq T_0\), let
+\(\tau_T,\mu_T,\beta_T\in\mathbb C\), and put
+\[
+ L_T=\operatorname{Im}\tau_T,\qquad
+ m_T=\operatorname{Im}\mu_T,\qquad
+ q_T=-\operatorname{Im}\beta_T,\qquad
+ D_T=L_Tq_T+6m_T^2.
+\]
+The standing period assumptions are the following exact quantified
+requirements: \(D_T>0\) for every \(T\geq T_0\), and there is a constant
+\(C_{\mathrm{per}}<\infty\), independent of \(T\), such that
+\begin{equation}
+ \label{exact-standing-period-assumptions}
+ \begin{aligned}
+ |L_T-T|&\leq C_{\mathrm{per}},&
+ |q_T-T|&\leq C_{\mathrm{per}},&
+ |m_T|&\leq C_{\mathrm{per}},\\
+ |\operatorname{Re}\tau_T|&\leq C_{\mathrm{per}},&
+ |\operatorname{Re}\mu_T|&\leq C_{\mathrm{per}},&
+ |\operatorname{Re}\beta_T|&\leq C_{\mathrm{per}}.
+ \end{aligned}
+\end{equation}
+Thus every \(O(1)\) below is uniform for \(T\geq T_0\), with a bound
+depending only on the fixed period family.  We use the Euclidean metric on
+\(\mathbb R^4\) and the induced quotient metrics.  The gauge coupling
+\(g_{\mathrm{YM}}>0\) is fixed.
+
+The ordered plaquette and real-trace structure used below is the classical
+Wilson construction \cite{Wilson_1974}.  Transfer-matrix and reflection
+positivity results such as \cite{Luscher_1977,MenottiPelissetto_1987} require
+additional time/reflection structure, while Euclidean reconstruction
+requires the axiomatic input of
+\cite{OsterwalderSchrader_1973,OsterwalderSchrader_1975}.  These references
+motivate the sharp boundary drawn in the last section; none is used to
+replace a proof of the finite claims.
+
+\subsection*{Results at a glance}
+
+Starting from the exact period matrix in
+\eqref{cusp-link-period-matrix}, we prove:
+
+\begin{enumerate}
+\item the scalar Laplacian on the cover has a complete character spectrum,
+its deck-invariant Fourier sector is exact, and its momentum lattice has an
+explicit covering-radius bound;
+\item the transported cubulation covers the entire cover torus, and its
+vertices are exactly, but only, the \(N_{\mathrm{mesh}}\)-torsion points;
+\item continuum holonomy defines a typed gauge-equivariant map to link
+variables, with the endpoint inverses fixed by the stated ODE convention;
+\item an explicit periodic diagonal \(\mathrm{SU}(2)\) flux has constant
+\((1,2)\)-plaquette and exact logarithmic and Wilson-sector actions;
+\item on the native fibre, a separately constructed smooth integral-flux
+connection has the same numerical action and a completely typed
+background-gauge Jacobi operator with an explicit eigenvalue
+\(-4\pi/D_T\); it is therefore a classical saddle, not a gapped vacuum;
+\item the Coulomb-reduced finite Hessian has an exact Fourier spectrum, so
+its Gaussian quantization has a unique ground state and explicit gap;
+\item on the native torus, the reduced continuum Hessian and the finite
+Hessian have exact first eigenvalues and multiplicities for every mesh size;
+\item the direct integral of the native mean-zero scalar Laplacians over the
+radial parameter has trivial kernel but zero in its essential spectrum;
+\item one diagonal limit simultaneously decompactifies the cover, resolves
+its mesh, and drives the finite Gaussian gap and flux action to zero; and
+\item the exponential map is only a local chart, with an exact
+\(N_{\mathrm{mesh}}^{-2}\) Hessian scaling, and supplies no global unitary
+identification with compact-link gauge theory;
+\item gauge-invariant pure-gauge and product-Haar states on the same link
+configuration space give incompatible Wilson-loop expectations, so neither
+the kinematics nor the displayed flux selects a confinement law; and
+\item entanglement is not a spectral sector, entangled eigenvalues can
+accumulate at zero, and an embedded gapped Gaussian range can coexist with a
+gapless orthogonal channel; a physical gap transfer requires a comparison on
+the entire physical excitation form domain.
+\end{enumerate}
+
+\section{Cubical holonomy and finite gauge systems}
+\label{cusp-link-section}
+
+This section records three constructions on the regular cusp fibres while
+keeping two independent integers separate throughout:
+\(M_{\mathrm{cov}}\) is the index used to enlarge two periods of a fibre,
+whereas \(N_{\mathrm{mesh}}\) is the number of cubical subdivisions in each
+coordinate direction.  In particular, no mesh refinement is identified with
+a change of covering space.
+
+Let
+\begin{equation}
+ P_T=
+ \begin{pmatrix}
+  6\operatorname{Re}\mu_T&\operatorname{Re}\tau_T&1&0\\
+  6\operatorname{Im}\mu_T&\operatorname{Im}\tau_T&0&0\\
+  \operatorname{Re}\beta_T&\operatorname{Re}\mu_T&0&1\\
+  \operatorname{Im}\beta_T&\operatorname{Im}\mu_T&0&0
+ \end{pmatrix},
+ \qquad
+ F_T=\mathbb R^4/P_T\mathbb Z^4.
+ \label{cusp-link-period-matrix}
+\end{equation}
+Write
+\begin{equation}
+ L_T=\operatorname{Im}\tau_T,
+ \qquad m_T=\operatorname{Im}\mu_T,
+ \qquad q_T=-\operatorname{Im}\beta_T,
+ \qquad D_T=L_Tq_T+6m_T^2>0.
+ \label{cusp-link-radial-data}
+\end{equation}
+Expanding the determinant along the last two columns gives
+\[
+ \det P_T=L_T\operatorname{Im}\beta_T-6m_T^2=-D_T.
+\]
+Along the positive radial cusp the source data give
+\begin{equation}
+ L_T=T+O(1),\qquad q_T=T+O(1),\qquad m_T=O(1),
+ \label{cusp-link-cusp-asymptotics}
+\end{equation}
+and all three real parts occurring in \eqref{cusp-link-period-matrix} are
+bounded.  Equivalently, after ordering physical coordinates as
+\((x_1,x_3;x_2,x_4)\), define the upper block
+\[
+ A_T=
+ \begin{pmatrix}
+  6\operatorname{Re}\mu_T&\operatorname{Re}\tau_T\\
+  \operatorname{Re}\beta_T&\operatorname{Re}\mu_T
+ \end{pmatrix}.
+\]
+The first two columns then have block form
+\begin{equation}
+ \binom{A_T}{B_T},\qquad
+ B_T=
+ \begin{pmatrix}6m_T&L_T\\-q_T&m_T\end{pmatrix}
+ =T\begin{pmatrix}0&1\\-1&0\end{pmatrix}+C_T,
+ \qquad \sup_T\lVert C_T\rVert_{\mathrm{op}}<\infty.
+ \label{cusp-link-block-form}
+\end{equation}
+
+For \(M_{\mathrm{cov}}\geq1\), put
+\begin{equation}
+ S_{M_{\mathrm{cov}}}
+ =\operatorname{diag}(1,1,M_{\mathrm{cov}},M_{\mathrm{cov}}),
+ \qquad
+ P_{T,M_{\mathrm{cov}}}=P_TS_{M_{\mathrm{cov}}},
+ \label{cusp-link-cover-matrix}
+\end{equation}
+and define the degree-\(M_{\mathrm{cov}}^2\) cover
+\begin{equation}
+ \widetilde F_{T,M_{\mathrm{cov}}}
+ =\mathbb R^4/P_{T,M_{\mathrm{cov}}}\mathbb Z^4
+ \longrightarrow F_T.
+ \label{cusp-link-cover-torus}
+\end{equation}
+Indeed,
+\(S_{M_{\mathrm{cov}}}\mathbb Z^4\subset\mathbb Z^4\) and
+\[
+ \mathbb Z^4/S_{M_{\mathrm{cov}}}\mathbb Z^4
+ \cong(\mathbb Z/M_{\mathrm{cov}}\mathbb Z)^2,
+\]
+so the identity on \(\mathbb R^4\) induces the asserted cover and its deck
+group has order \(M_{\mathrm{cov}}^2\).
+Its Euclidean quotient metric, written on the coordinate torus
+\(\mathbb R^4/\mathbb Z^4\), has Gram matrix and covolume
+\begin{equation}
+ G_{T,M_{\mathrm{cov}}}
+ =P_{T,M_{\mathrm{cov}}}^{\mathsf T}P_{T,M_{\mathrm{cov}}},
+ \qquad
+ \mathcal D_{T,M_{\mathrm{cov}}}
+ =\sqrt{\det G_{T,M_{\mathrm{cov}}}}
+ =M_{\mathrm{cov}}^2D_T.
+ \label{cusp-link-cover-metric}
+\end{equation}
+
+\subsection{Scalar characters and exact cover momentum sectors}
+
+Equip \(\widetilde F_{T,M_{\mathrm{cov}}}\) with normalized Haar measure
+\begin{equation}
+ \mathrm d\nu_{T,M_{\mathrm{cov}}}
+ =\mathcal D_{T,M_{\mathrm{cov}}}^{-1}\,
+   \mathrm d\operatorname{vol}_{\widetilde F_{T,M_{\mathrm{cov}}}}.
+ \label{cusp-link-normalized-cover-measure}
+\end{equation}
+Let \(\widetilde\Delta_{T,M_{\mathrm{cov}}}\) be the nonnegative
+self-adjoint scalar Laplacian obtained from the closed form
+\begin{equation}
+ \widetilde{\mathfrak q}_{T,M_{\mathrm{cov}}}[f]
+ =\int_{\widetilde F_{T,M_{\mathrm{cov}}}}|\mathrm df|^2\,
+       \mathrm d\nu_{T,M_{\mathrm{cov}}},
+ \qquad
+ \operatorname{Dom}(\widetilde{\mathfrak q}_{T,M_{\mathrm{cov}}})=H^1,
+ \label{cusp-link-cover-dirichlet-form}
+\end{equation}
+whose operator domain is \(H^2(\widetilde F_{T,M_{\mathrm{cov}}})\).
+
+\begin{theorem}[Cover spectrum, invariant sector, and momentum density]
+\label{cusp-link-cover-spectrum}
+The functions
+\begin{equation}
+ \widetilde\chi_{T,M_{\mathrm{cov}},k}([x])
+ =\exp\!\left(
+   2\pi i\left\langle
+    P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}k,x
+   \right\rangle\right),
+ \qquad k\in\mathbb Z^4,
+ \label{cusp-link-cover-characters}
+\end{equation}
+form a complete orthonormal basis, and
+\begin{equation}
+ \widetilde\Delta_{T,M_{\mathrm{cov}}}
+ \widetilde\chi_{T,M_{\mathrm{cov}},k}
+ =4\pi^2
+  \left|P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}k\right|^2
+  \widetilde\chi_{T,M_{\mathrm{cov}},k}.
+ \label{cusp-link-cover-scalar-eigenvalue}
+\end{equation}
+If \(c_{T,M_{\mathrm{cov}}}:\widetilde F_{T,M_{\mathrm{cov}}}\to F_T\)
+is the covering map and
+\(\chi_{T,\ell}([x])=\exp(2\pi i\langle P_T^{-\mathsf T}\ell,x\rangle)\),
+then
+\begin{equation}
+ c_{T,M_{\mathrm{cov}}}^*\chi_{T,\ell}
+ =\widetilde\chi_{T,M_{\mathrm{cov}},S_{M_{\mathrm{cov}}}\ell}.
+ \label{cusp-link-cover-character-pullback}
+\end{equation}
+Consequently, the deck-invariant sector is exactly
+\begin{equation}
+ k\in S_{M_{\mathrm{cov}}}\mathbb Z^4
+ \quad\Longleftrightarrow\quad
+ k_3\equiv k_4\equiv0\pmod {M_{\mathrm{cov}}}.
+ \label{cusp-link-cover-deck-sector}
+\end{equation}
+There is a constant \(C_{\mathrm{mom}}\), independent of all sufficiently
+large \(T\) and all \(M_{\mathrm{cov}}\ge1\), such that
+\begin{equation}
+ \sup_{p\in\mathbb R^4}\operatorname{dist}\!\left(
+  p,P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}\mathbb Z^4
+ \right)
+ \le C_{\mathrm{mom}}\left(\frac1T+\frac1{M_{\mathrm{cov}}}\right).
+ \label{cusp-link-cover-momentum-radius}
+\end{equation}
+Thus, whenever \(T_j,M_{\mathrm{cov},j}\to\infty\), these momentum lattices
+become locally dense in \(\mathbb R^4\), and every \(E\ge0\) is a limit of
+eigenvalues in \eqref{cusp-link-cover-scalar-eigenvalue}.
+\end{theorem}
+
+\begin{proof}
+The dual lattice of
+\(P_TS_{M_{\mathrm{cov}}}\mathbb Z^4\) is
+\begin{equation}
+ (P_TS_{M_{\mathrm{cov}}})^{-\mathsf T}\mathbb Z^4
+ =P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}\mathbb Z^4.
+ \label{cusp-link-cover-dual-lattice}
+\end{equation}
+A character of \(\mathbb R^4\) descends to the quotient precisely when its
+frequency lies in this dual lattice.  Fourier theory for the compact abelian
+group, normalized by \eqref{cusp-link-normalized-cover-measure}, gives the
+complete orthonormal basis \eqref{cusp-link-cover-characters}; applying the
+positive Euclidean Laplacian proves
+\eqref{cusp-link-cover-scalar-eigenvalue}.  Substituting
+\(k=S_{M_{\mathrm{cov}}}\ell\) proves
+\eqref{cusp-link-cover-character-pullback}.  A cover character descends
+exactly when it is deck invariant, so
+\eqref{cusp-link-cover-character-pullback} and Fourier completeness prove
+\eqref{cusp-link-cover-deck-sector}.
+
+For the quantitative assertion, abbreviate
+\[
+ \alpha_T=\operatorname{Re}\mu_T,\qquad
+ \eta_T=\operatorname{Re}\tau_T,\qquad
+ c_T=\operatorname{Re}\beta_T,\qquad M=M_{\mathrm{cov}}.
+\]
+Solving \(P_T^{\mathsf T}x=e_j\) gives the four columns
+\begin{align*}
+ b_1&=\left(0,\frac{m_T}{D_T},0,-\frac{L_T}{D_T}\right),\\
+ b_2&=\left(0,\frac{q_T}{D_T},0,\frac{6m_T}{D_T}\right),\\
+ b_3&=\frac1M\left(
+ 1,\frac{-6m_T\alpha_T-q_T\eta_T}{D_T},0,
+ \frac{6(L_T\alpha_T-m_T\eta_T)}{D_T}\right),\\
+ b_4&=\frac1M\left(
+ 0,\frac{-m_Tc_T-q_T\alpha_T}{D_T},1,
+ \frac{L_Tc_T-6m_T\alpha_T}{D_T}\right)
+\end{align*}
+of \(P_T^{-\mathsf T}S_M^{-1}\).  The standing bounds imply
+\(D_T\asymp T^2\) and hence, for a uniform \(C_0\),
+\[
+ |b_1|+|b_2|\le \frac{C_0}{T},
+ \qquad |b_3|+|b_4|\le \frac{C_0}{M}.
+\]
+Write any \(p\in\mathbb R^4\) uniquely as \(p=\sum_jt_jb_j\), and choose
+\(n_j\in\mathbb Z\) with \(|t_j-n_j|\le\tfrac12\).  Then
+\[
+ \left|p-\sum_jn_jb_j\right|
+ \le\frac12\sum_j|b_j|
+ \le\frac{C_0}{2}\left(\frac1T+\frac1M\right),
+\]
+which proves \eqref{cusp-link-cover-momentum-radius}.  If \(E>0\), choose
+\(p\) with \(4\pi^2|p|^2=E\) and approximate it by the cover momentum
+lattice; continuity gives eigenvalues tending to \(E\).  For \(E=0\), the
+index \(k=(1,0,0,0)^{\mathsf T}\) has momentum norm \(O(T^{-1})\).
+\end{proof}
+
+\begin{remark}[Fibrewise scope]
+Theorem~\ref{cusp-link-cover-spectrum} is entirely fibrewise.  It does not
+assert that these covers assemble compatibly with monodromy over a punctured
+base or extend across a singular fibre.
+\end{remark}
+
+\begin{proposition}[Native and expanding-cover pointed limits]
+\label{cusp-link-pointed-limits}
+Let
+\[
+ \mathbb T^2_{\mathrm{re}}
+ = (\mathbb Re_1\oplus\mathbb Re_3)/
+   (\mathbb Ze_1\oplus\mathbb Ze_3).
+\]
+Then the pointed native tori satisfy
+\begin{equation}
+ (F_T,0)\longrightarrow
+ (\mathbb T^2_{\mathrm{re}}\times
+   (\mathbb Re_2\oplus\mathbb Re_4),(0,0))
+ \cong(\mathbb T^2\times\mathbb R^2,(0,0)),
+ \label{cusp-link-native-pointed-limit}
+\end{equation}
+in pointed smooth topology: each fixed-radius ball is eventually exactly
+isometric to the corresponding ball in the limit.  There are constants
+\(C,C'>0\) such that, for all sufficiently large \(T\) and every
+\(M\ge1\),
+\begin{equation}
+ \min\{T-C,M\}
+ \le\operatorname{sys}(\widetilde F_{T,M})
+ \le\min\{T+C',M\}.
+ \label{cusp-link-cover-systole-two-sided}
+\end{equation}
+Consequently, for every integer-valued \(M(T)\to\infty\),
+\begin{equation}
+ (\widetilde F_{T,M(T)},0)\longrightarrow(\mathbb R^4,0)
+ \label{cusp-link-cover-pointed-limit}
+\end{equation}
+with the same exact fixed-ball property.  In particular, the native and
+expanding-cover unscaled pointed limits are different.
+\end{proposition}
+
+\begin{proof}
+The period lattice of \(F_T\) is generated by the first two columns of
+\(P_T\), denoted \(v_{\gamma,T},v_{u,T}\), together with \(e_1,e_3\).
+First quotient by \(\mathbb Ze_1\oplus\mathbb Ze_3\).  The projection of
+\(av_{\gamma,T}+bv_{u,T}\) to the noncompact
+\((e_2,e_4)\)-plane is
+\[
+ B_T\binom ab
+ =\left(T\begin{pmatrix}0&1\\-1&0\end{pmatrix}+C_T\right)\binom ab.
+\]
+With \(C=\sup_T\|C_T\|_{\mathrm{op}}\), its norm is at least
+\((T-C)\sqrt{a^2+b^2}\).  Hence the remaining nontrivial quotient
+translations eventually displace every point by more than \(4R\).  The
+quotient map is then injective and distance-preserving on the radius-\(R\)
+ball, proving \eqref{cusp-link-native-pointed-limit}.
+
+Every nonzero vector in the cover lattice has the form
+\[
+ av_{\gamma,T}+bv_{u,T}+M(pe_1+qe_3),
+ \qquad a,b,p,q\in\mathbb Z.
+\]
+If \((a,b)\ne(0,0)\), its noncompact-plane projection has norm at least
+\(T-C\); if \((a,b)=(0,0)\), its norm is at least \(M\).  This gives the
+lower bound in \eqref{cusp-link-cover-systole-two-sided}.  The vector
+\(Me_1\) has length \(M\), while either long generator has length at most
+\(T+C'\) for a uniform \(C'\), proving the upper bound.  If both \(T\) and
+\(M(T)\) diverge, the systole diverges.  Once it exceeds \(4R\), the universal
+covering map identifies the radius-\(R\) balls isometrically, proving
+\eqref{cusp-link-cover-pointed-limit}.
+\end{proof}
+
+\subsection{The transported cubical subdivision and continuum holonomy}
+
+Fix an integer \(N_{\mathrm{mesh}}\geq2\), and let
+\(K_{N_{\mathrm{mesh}}}\) be the standard cubical subdivision of
+\(\mathbb R^4/\mathbb Z^4\) obtained by dividing every coordinate circle
+into \(N_{\mathrm{mesh}}\) equal intervals.  Its vertex set and positively
+oriented coordinate edges are
+\begin{equation}
+ V_{N_{\mathrm{mesh}}}
+ =(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4,
+ \qquad
+ E_{N_{\mathrm{mesh}}}
+ =V_{N_{\mathrm{mesh}}}\times\{1,2,3,4\}.
+ \label{cusp-link-cubical-sets}
+\end{equation}
+Here and below, \(\mathbf e_1,\ldots,\mathbf e_4\) denotes the standard
+basis of \(\mathbb R^4\), reduced modulo \(N_{\mathrm{mesh}}\) when used to
+translate an element of \(V_{N_{\mathrm{mesh}}}\).
+
+\begin{proposition}[Exact cubical realization and the torsion vertices]
+\label{cusp-link-cubical-realization}
+The linear map \(P_{T,M_{\mathrm{cov}}}\) induces a diffeomorphism
+\begin{equation}
+ \Phi_{T,M_{\mathrm{cov}}}:\mathbb R^4/\mathbb Z^4
+ \longrightarrow\widetilde F_{T,M_{\mathrm{cov}}},
+ \qquad [y]\longmapsto[P_{T,M_{\mathrm{cov}}}y].
+ \label{cusp-link-coordinate-diffeomorphism}
+\end{equation}
+Transporting \(K_{N_{\mathrm{mesh}}}\) by this diffeomorphism gives an
+honest cubical cell decomposition of the whole torus.  On vertices its
+restriction is the bijection
+\begin{equation}
+ \begin{aligned}
+ \iota_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}:\quad
+ &(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4
+ \xrightarrow{\ \cong\ }
+ \widetilde F_{T,M_{\mathrm{cov}}}[N_{\mathrm{mesh}}],\\
+ &[n]\longmapsto
+ \left[\frac1{N_{\mathrm{mesh}}}P_{T,M_{\mathrm{cov}}}n\right].
+ \end{aligned}
+ \label{cusp-link-torsion-bijection}
+\end{equation}
+Here the codomain is the finite \(N_{\mathrm{mesh}}\)-torsion subgroup,
+not the entire torus.  The coordinate edge \((n,j)\) is the path
+\begin{equation}
+ \gamma_{n,j}(t)=
+ \left[
+  \frac1{N_{\mathrm{mesh}}}
+  P_{T,M_{\mathrm{cov}}}(n+t\mathbf e_j)
+ \right],
+ \qquad 0\leq t\leq1.
+ \label{cusp-link-coordinate-edge}
+\end{equation}
+More generally, for an ordered subset
+\(I=\{i_1,\ldots,i_p\}\subset\{1,2,3,4\}\), the corresponding closed
+\(p\)-cell is parametrized by
+\begin{equation}
+ c_{n,I}(t_1,\ldots,t_p)=
+ \left[
+  \frac1{N_{\mathrm{mesh}}}P_{T,M_{\mathrm{cov}}}
+  \left(n+\sum_{a=1}^pt_a\mathbf e_{i_a}\right)
+ \right],
+ \qquad (t_1,\ldots,t_p)\in[0,1]^p.
+ \label{cusp-link-general-cell}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+If \(y-y'\in\mathbb Z^4\), then
+\(P_{T,M_{\mathrm{cov}}}(y-y')\) belongs to the quotient lattice, so
+\eqref{cusp-link-coordinate-diffeomorphism} is well defined.  The matrix
+\(P_{T,M_{\mathrm{cov}}}\) is invertible, and its inverse induces the
+inverse map on the two quotients.  Hence it is a diffeomorphism and carries
+every open cell of the standard subdivision diffeomorphically onto an open
+cell of the target.
+
+Every point displayed in \eqref{cusp-link-torsion-bijection} is killed by
+\(N_{\mathrm{mesh}}\).  If it is zero, then
+\[
+ \frac{P_{T,M_{\mathrm{cov}}}n}{N_{\mathrm{mesh}}}
+ \in P_{T,M_{\mathrm{cov}}}\mathbb Z^4.
+\]
+Invertibility gives
+\(n\in N_{\mathrm{mesh}}\mathbb Z^4\), proving injectivity.  Conversely,
+if \([x]\) is killed by \(N_{\mathrm{mesh}}\), choose a lift
+\(x\in\mathbb R^4\).  There is \(n\in\mathbb Z^4\) such that
+\(N_{\mathrm{mesh}}x=P_{T,M_{\mathrm{cov}}}n\), and therefore
+\([x]=[P_{T,M_{\mathrm{cov}}}n/N_{\mathrm{mesh}}]\).  This proves
+surjectivity.  Formula \eqref{cusp-link-coordinate-edge} is simply the
+transport of the corresponding coordinate edge; at a wrap-around endpoint
+the extra vector \(P_{T,M_{\mathrm{cov}}}\mathbf e_j\) is a period.
+\end{proof}
+
+Let \(G\) be a compact matrix Lie group and use the trivial principal bundle over
+\(\widetilde F_{T,M_{\mathrm{cov}}}\).  A connection is represented by
+\(A\in\Omega^1(\widetilde F_{T,M_{\mathrm{cov}}};\mathfrak g)\).  For an
+oriented path \(\gamma\), define \(U_A(\gamma)\) by
+\begin{equation}
+ \frac{dU}{dt}=-A_{\gamma(t)}(\dot\gamma(t))U(t),
+ \qquad U(0)=1,
+ \qquad U_A(\gamma)=U(1).
+ \label{cusp-link-parallel-transport-ode}
+\end{equation}
+
+\begin{proposition}[Typed continuum-to-link holonomy map]
+\label{cusp-link-holonomy-map}
+The formula
+\begin{equation}
+ \operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(A)_{n,j}
+ =U_A(\gamma_{n,j})
+ \label{cusp-link-holonomy-definition}
+\end{equation}
+defines a map
+\begin{equation}
+ \operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}:
+ \Omega^1(\widetilde F_{T,M_{\mathrm{cov}}};\mathfrak g)
+ \longrightarrow G^{E_{N_{\mathrm{mesh}}}}.
+ \label{cusp-link-holonomy-typed}
+\end{equation}
+For the convention
+\begin{equation}
+ A^g=g^{-1}Ag+g^{-1}dg,
+ \qquad
+ g\in C^\infty(\widetilde F_{T,M_{\mathrm{cov}}},G),
+ \label{cusp-link-gauge-convention}
+\end{equation}
+it is equivariant for evaluation of \(g\) at the vertices:
+\begin{equation}
+ \operatorname{Hol}(A^g)_{n,j}
+ =g(\gamma_{n,j}(1))^{-1}
+  \operatorname{Hol}(A)_{n,j}
+  g(\gamma_{n,j}(0)).
+ \label{cusp-link-holonomy-equivariance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The smooth matrix ODE \eqref{cusp-link-parallel-transport-ode} has a unique
+solution on every edge, which proves that \eqref{cusp-link-holonomy-typed}
+is defined.  Let \(U\) solve that ODE for \(A\), set
+\(g_t=g(\gamma_{n,j}(t))\), and put
+\(V(t)=g_t^{-1}U(t)g_0\).  Direct differentiation gives
+\[
+ V'(t)=-\bigl(g_t^{-1}A(\dot\gamma_{n,j})g_t
+                 +g_t^{-1}g_t'\bigr)V(t),
+ \qquad V(0)=1.
+\]
+This is exactly the parallel-transport equation for \(A^g\).  Uniqueness
+and evaluation at \(t=1\) prove \eqref{cusp-link-holonomy-equivariance}.
+Notice that the endpoint inverse in this formula is forced by the joint
+conventions \eqref{cusp-link-parallel-transport-ode} and
+\eqref{cusp-link-gauge-convention}.
+\end{proof}
+
+\subsection{An explicit compact-link \texorpdfstring{\(\mathrm{SU}(2)\)}{SU(2)} flux}
+
+The ordered plaquette convention used below is most naturally written for
+the inverse-transport link variable
+\begin{equation}
+ \mathcal U(A)_{n,j}
+ =\operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(A)_{n,j}^{-1}.
+ \label{cusp-link-inverse-transport-variable}
+\end{equation}
+Equation \eqref{cusp-link-holonomy-equivariance} then becomes
+\begin{equation}
+ \mathcal U(A^g)_{n,j}
+ =g(\gamma_{n,j}(0))^{-1}\mathcal U(A)_{n,j}g(\gamma_{n,j}(1)).
+ \label{cusp-link-inverse-transport-gauge-law}
+\end{equation}
+Thus the product in \eqref{cusp-link-plaquette-convention} transforms by
+conjugation at its base vertex.  The symbols \(U_j(n)\) in the remainder of
+this subsection use this inverse-transport convention.
+
+Use
+\begin{equation}
+ \mathfrak{su}(2)=\{X\in M_2(\mathbb C):X^*=-X,\ \operatorname{tr}X=0\},
+ \qquad
+ \langle X,Y\rangle_{\mathfrak{su}(2)}
+ =-\frac12\operatorname{tr}(XY),
+ \label{cusp-link-su2-inner-product}
+\end{equation}
+on real elements, and fix
+\begin{equation}
+ H_{\mathrm{link}}=\begin{pmatrix}i&0\\0&-i\end{pmatrix},
+ \qquad
+ \lVert H_{\mathrm{link}}\rVert^2=1,
+ \qquad \exp(2\pi H_{\mathrm{link}})=1.
+ \label{cusp-link-flux-generator}
+\end{equation}
+Write \(N=N_{\mathrm{mesh}}\) temporarily inside the next displayed link
+formulas, and represent \(n_1,n_2\) by integers in
+\(\{0,\ldots,N-1\}\).
+
+The link field constructed next is an abstract compact-link configuration.
+It is not asserted to lie in the image of the smooth-connection holonomy map
+\eqref{cusp-link-holonomy-typed}.
+
+\begin{theorem}[A periodic compact-link flux and its exact action]
+\label{cusp-link-flux-theorem}
+On the oriented edges of \(K_N\), define
+\begin{align}
+ U_1(n)&=\exp\left(-\frac{2\pi n_2}{N^2}H_{\mathrm{link}}\right),
+ \label{cusp-link-flux-u1}\\
+ U_2(n)&=
+ \begin{cases}
+  1,&0\leq n_2\leq N-2,\\[1mm]
+  \exp(2\pi n_1H_{\mathrm{link}}/N),&n_2=N-1,
+ \end{cases}
+ \label{cusp-link-flux-u2}\\
+ U_3(n)&=U_4(n)=1.
+ \label{cusp-link-flux-u34}
+\end{align}
+For
+\begin{equation}
+ U_{ij}(n)=U_i(n)U_j(n+\mathbf e_i)
+            U_i(n+\mathbf e_j)^{-1}U_j(n)^{-1},
+ \label{cusp-link-plaquette-convention}
+\end{equation}
+one has
+\begin{equation}
+ \begin{aligned}
+ U_{12}(n)&=\exp(2\pi H_{\mathrm{link}}/N^2)
+ &&\text{for every }n,\\
+ U_{ij}(n)&=1
+ &&\text{for }1\leq i<j\leq4,\quad(i,j)\neq(1,2).
+ \end{aligned}
+ \label{cusp-link-plaquette-values}
+\end{equation}
+
+Let \(\operatorname{Log}\) be the principal logarithm on the displayed
+plaquette.  It is unambiguous because \(0<2\pi/N^2\leq\pi/2\).  Define
+the logarithmic curvature two-form and its metric-weighted action by
+\begin{align}
+ \mathcal F_N^{\log}(n)
+ &=N^2\operatorname{Log}(U_{12}(n))\,dy^1\wedge dy^2,
+ \label{cusp-link-log-curvature}\\
+ S^{\log}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{\mathcal D_{T,M_{\mathrm{cov}}}}{2g_{\mathrm{YM}}^2N^4}
+   \sum_{n\in V_N}
+   \lVert\mathcal F_N^{\log}(n)\rVert^2_{
+       G_{T,M_{\mathrm{cov}}}^{-1}\otimes\mathfrak{su}(2)}.
+ \label{cusp-link-log-action}
+\end{align}
+Then
+\begin{equation}
+ \mathcal F_N^{\log}(n)=2\pi H_{\mathrm{link}}\,dy^1\wedge dy^2,
+ \qquad
+ S^{\log}_{T,M_{\mathrm{cov}},N}(U)
+ =\frac{2\pi^2M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}.
+ \label{cusp-link-log-action-value}
+\end{equation}
+In particular, the native-fibre value \(M_{\mathrm{cov}}=1\) is
+\(2\pi^2/(g_{\mathrm{YM}}^2D_T)\), independently of the mesh.
+
+There is no canonical scalar Wilson action for a general nonorthogonal
+metric obtained merely by assigning independent character weights to all
+coordinate plaquettes.  For this configuration, however, the exact
+continuum-matched \((1,2)\)-sector Wilson functional is unambiguous if it is
+defined explicitly by the following formula.  Its ordered plaquette
+holonomy and real trace are the Wilson lattice-action construction
+\cite{Wilson_1974}; the metric coefficient and normalization here are the
+present definition, and their consequences are proved below rather than
+imported from that source:
+\begin{equation}
+ S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ =\frac{\mathcal D_{T,M_{\mathrm{cov}}}\kappa^{12}_{T,M_{\mathrm{cov}}}}
+        {2g_{\mathrm{YM}}^2}
+   \sum_{n\in V_N}
+   \left(2-\operatorname{Re}\operatorname{tr}U_{12}(n)\right),
+ \label{cusp-link-wilson-sector-definition}
+\end{equation}
+where
+\begin{equation}
+ \kappa^{12}_{T,M_{\mathrm{cov}}}
+ =(G_{T,M_{\mathrm{cov}}}^{-1})_{11}
+  (G_{T,M_{\mathrm{cov}}}^{-1})_{22}
+ -(G_{T,M_{\mathrm{cov}}}^{-1})_{12}^2
+ =D_T^{-2}.
+ \label{cusp-link-two-form-minor}
+\end{equation}
+Its exact value and continuum-mesh limit are
+\begin{align}
+ S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{M_{\mathrm{cov}}^2N^4}{2g_{\mathrm{YM}}^2D_T}
+   \left(2-2\cos\frac{2\pi}{N^2}\right),
+ \label{cusp-link-wilson-sector-value}\\
+ &=\frac{M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}
+   \left(
+    2\pi^2-\frac{2\pi^4}{3N^4}
+    +\frac{4\pi^6}{45N^8}+O(N^{-12})
+   \right),
+ \label{cusp-link-wilson-sector-expansion}\\
+ \lim_{N\to\infty}S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{2\pi^2M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}.
+ \label{cusp-link-wilson-sector-limit}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+All links lie in the same diagonal circle subgroup, so they commute.  If
+\(0\leq n_2\leq N-2\), the two \(U_2\)-terms in
+\eqref{cusp-link-plaquette-convention} are trivial and
+\[
+ U_{12}(n)=
+ \exp(-2\pi n_2H_{\mathrm{link}}/N^2)
+ \exp(2\pi(n_2+1)H_{\mathrm{link}}/N^2)
+ =\exp(2\pi H_{\mathrm{link}}/N^2).
+\]
+If \(n_2=N-1\), then \(U_1(n+\mathbf e_2)=1\).  Moreover,
+\[
+ U_2(n+\mathbf e_1)U_2(n)^{-1}=\exp(2\pi H_{\mathrm{link}}/N).
+\]
+For \(n_1=N-1\), the exponent computed with representatives differs from
+\(2\pi H_{\mathrm{link}}/N\) by \(-2\pi H_{\mathrm{link}}\), whose exponential is one; hence the formula
+also holds across that wrap boundary.  It follows that
+\[
+ U_{12}(n)=
+ \exp\left(-\frac{2\pi(N-1)}{N^2}H_{\mathrm{link}}\right)
+ \exp\left(\frac{2\pi}{N}H_{\mathrm{link}}\right)
+ =\exp(2\pi H_{\mathrm{link}}/N^2).
+\]
+The functions \(U_1,U_2\) are independent of \(n_3,n_4\), and
+\(U_3=U_4=1\), proving every remaining assertion in
+\eqref{cusp-link-plaquette-values}.  Reversing the orientation gives
+\(U_{21}(n)=U_{12}(n)^{-1}\); it is not an additional trivial plaquette.
+
+The lower-right \(2\times2\) principal block of the cover Gram matrix is
+\(M_{\mathrm{cov}}^2I_2\).  Jacobi's
+complementary-minor identity therefore gives
+\[
+ \kappa^{12}_{T,M_{\mathrm{cov}}}
+ =\frac{\det(M_{\mathrm{cov}}^2I_2)}
+        {\det G_{T,M_{\mathrm{cov}}}}
+ =\frac{M_{\mathrm{cov}}^4}{M_{\mathrm{cov}}^4D_T^2}
+ =D_T^{-2},
+\]
+which proves \eqref{cusp-link-two-form-minor}.  By
+\eqref{cusp-link-flux-generator} and the principal-log choice,
+\(N^2\operatorname{Log}U_{12}=2\pi H_{\mathrm{link}}\).  Hence every one of the \(N^4\)
+summands in \eqref{cusp-link-log-action} equals
+\(4\pi^2D_T^{-2}\).  Substitution of
+\(\mathcal D_{T,M_{\mathrm{cov}}}=M_{\mathrm{cov}}^2D_T\) proves
+\eqref{cusp-link-log-action-value}.
+
+Finally, \(H_{\mathrm{link}}\) has eigenvalues \(\pm i\), so
+\[
+ \operatorname{Re}\operatorname{tr}\exp(2\pi H_{\mathrm{link}}/N^2)
+ =2\cos(2\pi/N^2).
+\]
+There are \(N^4\) equal plaquettes.  Substitution proves
+\eqref{cusp-link-wilson-sector-value}.  Applying
+\[
+ 1-\cos x=\frac{x^2}{2}-\frac{x^4}{24}
+           +\frac{x^6}{720}+O(x^8)
+\]
+with \(x=2\pi/N^2\) proves
+\eqref{cusp-link-wilson-sector-expansion} and
+\eqref{cusp-link-wilson-sector-limit}.
+\end{proof}
+
+\subsection{A distinct smooth native magnetic saddle}
+\label{cusp-link-smooth-magnetic-saddle-section}
+
+The compact-link field above was defined directly on edges.  We now construct
+a smooth integral-flux connection on the native torus \(F_T\).  Its action
+equals the native value in \eqref{cusp-link-log-action-value}, but equality of
+two real numbers is not an identification of connections: no claim is made
+that the links \eqref{cusp-link-flux-u1}--\eqref{cusp-link-flux-u34} are the
+holonomies of the connection below.
+
+Use the physical coordinate order \(x=(x_1,y_1,x_2,y_2)^{\mathsf T}\), put
+\(u=P_T^{-1}x\), and define the integral coframe
+\begin{equation}
+ \theta_T^j=du_j=(P_T^{-\mathsf T}\mathbf e_j)^{\mathsf T}dx.
+ \label{cusp-link-magnetic-integral-coframe}
+\end{equation}
+For the marked cycle \(s\mapsto[x+sP_T\mathbf e_k]\), one has
+\(\int\theta_T^j=\delta_{jk}\).  Direct solution of
+\(P_T^{\mathsf T}\xi=\mathbf e_1,\mathbf e_2\), without replacing the skew
+lattice by a rectangle, gives
+\begin{equation}
+ \theta_T^1=\frac{m_T}{D_T}\,dy_1-\frac{L_T}{D_T}\,dy_2,
+ \qquad
+ \theta_T^2=\frac{q_T}{D_T}\,dy_1+\frac{6m_T}{D_T}\,dy_2.
+ \label{cusp-link-magnetic-first-coframe}
+\end{equation}
+Consequently,
+\begin{equation}
+ \theta_T^1\wedge\theta_T^2
+ =\frac1{D_T}\,dy_1\wedge dy_2,
+ \qquad
+ |\theta_T^1\wedge\theta_T^2|^2=D_T^{-2}.
+ \label{cusp-link-magnetic-wedge}
+\end{equation}
+Indeed, the wedge coefficient is
+\((6m_T^2+L_Tq_T)/D_T^2=D_T^{-1}\), and \(dy_1,dy_2\)
+are orthonormal for the fixed Euclidean quotient metric.
+
+For \(n\in\mathbb Z^4\), set
+\begin{equation}
+ j_n(u)=\exp(-2\pi i n_1u_2).
+ \label{cusp-link-magnetic-factor}
+\end{equation}
+The identity
+\[
+ j_m(u+n)j_n(u)=j_{m+n}(u)e^{-2\pi i m_1n_2}=j_{m+n}(u)
+\]
+shows that
+\begin{equation}
+ \mathscr L_T=(\mathbb R^4\times\mathbb C)/\mathbb Z^4,
+ \qquad n\cdot(u,z)=(u+n,j_n(u)z),
+ \label{cusp-link-magnetic-line}
+\end{equation}
+is a Hermitian line bundle on \(F_T\).  On its pullback, the unitary
+connection
+\begin{equation}
+ \widetilde\nabla^{\mathscr L_T}=d+2\pi i u_1\,du_2
+ \label{cusp-link-magnetic-line-connection}
+\end{equation}
+descends.  In fact, for \(\mathcal A=2\pi i u_1du_2\),
+\[
+ \mathcal A(u+n)=\mathcal A(u)+2\pi i n_1du_2,
+ \qquad j_n^{-1}dj_n=-2\pi i n_1du_2,
+\]
+which is exactly the descent identity.  Its curvature is
+\begin{equation}
+ F_{\mathscr L_T}=2\pi i\,du_1\wedge du_2
+ =2\pi i\,\theta_T^1\wedge\theta_T^2.
+ \label{cusp-link-magnetic-line-curvature}
+\end{equation}
+
+Let \(\mathscr E_T=\mathscr L_T\oplus\mathscr L_T^{-1}\).  Its transition
+matrices are
+\[
+ G_n(u)=\begin{pmatrix}j_n(u)&0\\0&j_n(u)^{-1}\end{pmatrix}
+ \in\mathrm{SU}(2),
+\]
+so evaluation supplies a parallel determinant trivialization.  Fix the same
+normalization as in \eqref{cusp-link-su2-inner-product}, and write
+\begin{equation}
+ H_{\mathrm{mag}}=\begin{pmatrix}i&0\\0&-i\end{pmatrix},
+ \qquad |H_{\mathrm{mag}}|^2=1.
+ \label{cusp-link-magnetic-generator}
+\end{equation}
+The direct-sum connection has the lifted expression
+\begin{equation}
+ \nabla^T=d+2\pi u_1\,du_2\,H_{\mathrm{mag}},
+ \qquad
+ F_{\nabla^T}
+ =2\pi H_{\mathrm{mag}}\theta_T^1\wedge\theta_T^2
+ =\frac{2\pi}{D_T}H_{\mathrm{mag}}\,dy_1\wedge dy_2.
+ \label{cusp-link-magnetic-su2-connection}
+\end{equation}
+
+\begin{proposition}[Smooth critical connection and exact action]
+\label{cusp-link-magnetic-critical-action}
+The connection \(\nabla^T\) is non-flat and satisfies
+\(d_{\nabla^T}^*F_{\nabla^T}=0\).  For
+\begin{equation}
+ \operatorname{YM}_T(\nabla)
+ =\frac1{2g_{\mathrm{YM}}^2}
+   \int_{F_T}|F_\nabla|^2\,d\operatorname{vol}_{F_T},
+ \label{cusp-link-magnetic-ym-normalization}
+\end{equation}
+one has
+\begin{equation}
+ \operatorname{YM}_T(\nabla^T)
+ =\frac{2\pi^2}{g_{\mathrm{YM}}^2D_T}
+ =\frac{2\pi^2}{g_{\mathrm{YM}}^2T^2}
+   \bigl(1+O(T^{-1})\bigr).
+ \label{cusp-link-magnetic-action}
+\end{equation}
+This is exactly the \(M_{\mathrm{cov}}=1\) value of
+\eqref{cusp-link-log-action-value}.
+\end{proposition}
+
+\begin{proof}
+The transition matrices commute with \(H_{\mathrm{mag}}\), so this diagonal
+endomorphism is a global parallel section of
+\(\operatorname{ad}\mathscr E_T\).  The coframe is parallel for the flat
+metric.  Hence \(\nabla^TF_{\nabla^T}=0\), which implies the Yang--Mills
+equation.  The curvature is nonzero because \(D_T>0\).  By
+\eqref{cusp-link-magnetic-wedge}, \eqref{cusp-link-cover-metric} at
+\(M_{\mathrm{cov}}=1\), and \(|H_{\mathrm{mag}}|=1\),
+\[
+ \int_{F_T}|F_{\nabla^T}|^2\,d\operatorname{vol}_{F_T}
+ =4\pi^2D_TD_T^{-2}=\frac{4\pi^2}{D_T}.
+\]
+This proves the exact action.  The asymptotic follows from
+\(D_T=T^2+O(T)\), which is a consequence of
+\eqref{exact-standing-period-assumptions}.
+\end{proof}
+
+We next specify the background-gauge Jacobi operator, including every closed
+domain used below.  Let
+\[
+ \mathscr H_T^{\mathrm{ad},p}
+ =L^2\Omega^p(F_T;\operatorname{ad}\mathscr E_T),
+ \qquad p=0,1,
+\]
+and complexify these real Hilbert spaces for the resolvent argument.  All
+operators commute with the real structure.  Define the maximal distributional
+codifferential by
+\begin{align}
+ \operatorname{Dom}(\delta_T^{\max})
+ =\{a\in\mathscr H_T^{\mathrm{ad},1}:{}&\text{ there is }u\in
+ \mathscr H_T^{\mathrm{ad},0}\text{ such that}\\[-1mm]
+ &\langle a,d_{\nabla^T}\phi\rangle_{L^2}
+ =\langle u,\phi\rangle_{L^2}
+ \text{ for all }\phi\in
+ C^\infty(F_T;\operatorname{ad}\mathscr E_T)\},
+ \label{cusp-link-magnetic-max-codiff-domain}\\
+ \delta_T^{\max}a={}&u.\notag
+\end{align}
+Density of the test space makes \(u\) unique.  Passing to the limit in the
+testing identity proves that \(\delta_T^{\max}\) is closed.  Therefore
+\begin{equation}
+ \mathscr S_T=\ker\delta_T^{\max}
+ \label{cusp-link-magnetic-coulomb-slice}
+\end{equation}
+is a closed background Coulomb slice.
+
+The closed scalar form
+\[
+ q_T^{(0)}[\phi,\psi]
+ =\langle d_{\nabla^T}\phi,d_{\nabla^T}\psi\rangle_{L^2},
+ \qquad
+ \operatorname{Dom}(q_T^{(0)})
+ =H^1\Omega^0(F_T;\operatorname{ad}\mathscr E_T),
+\]
+has the nonnegative Friedrichs operator
+\begin{equation}
+ \Delta_{\nabla^T}^{(0)}=d_{\nabla^T}^*d_{\nabla^T},
+ \qquad
+ \operatorname{Dom}(\Delta_{\nabla^T}^{(0)})
+ =H^2\Omega^0(F_T;\operatorname{ad}\mathscr E_T).
+ \label{cusp-link-magnetic-scalar-domain}
+\end{equation}
+The \(H^2\) equality is elliptic regularity on the compact flat torus.
+
+In a constant oriented orthonormal frame \((e_\mu)_{\mu=1}^4\), write
+\(F_{\nu\mu}=F_{\nabla^T}(e_\nu,e_\mu)\), and define
+\[
+ (V_Ta)_\nu=-2\sum_{\mu=1}^4[F_{\nu\mu},a_\mu].
+\]
+Antisymmetry of \(F_{\mu\nu}\) and skew-adjointness of
+\(\operatorname{ad}(F_{\nu\mu})\) show that \(V_T\) is symmetric.  It is a
+bounded bundle endomorphism.  Hence
+\begin{align}
+ \mathfrak j_T^{\mathrm{gf}}[a,b]
+ &=\langle\nabla^Ta,\nabla^Tb\rangle_{L^2}
+   +\langle V_Ta,b\rangle_{L^2},
+ \label{cusp-link-magnetic-jacobi-form}\\
+ \operatorname{Dom}(\mathfrak j_T^{\mathrm{gf}})
+ &=H^1\Omega^1(F_T;\operatorname{ad}\mathscr E_T)\notag
+\end{align}
+is closed and lower bounded.  Its self-adjoint operator
+\(\mathcal J_T^{\mathrm{gf}}\) has
+\begin{align}
+ \operatorname{Dom}(\mathcal J_T^{\mathrm{gf}})
+ &=H^2\Omega^1(F_T;\operatorname{ad}\mathscr E_T),
+ \label{cusp-link-magnetic-full-jacobi-domain}\\
+ (\mathcal J_T^{\mathrm{gf}}a)_\nu
+ &=-\sum_{\mu=1}^4\nabla_{e_\mu}\nabla_{e_\mu}a_\nu
+   -2\sum_{\mu=1}^4[F_{\nu\mu},a_\mu].
+ \label{cusp-link-magnetic-jacobi-expression}
+\end{align}
+
+\begin{proposition}[The Coulomb slice is reducing]
+\label{cusp-link-magnetic-reduction}
+For every \(z\in\mathbb C\setminus\mathbb R\) and
+\(f\in\operatorname{Dom}(\delta_T^{\max})\),
+\begin{equation}
+ \delta_T^{\max}(\mathcal J_T^{\mathrm{gf}}-z)^{-1}f
+ =(\Delta_{\nabla^T}^{(0)}-z)^{-1}\delta_T^{\max}f.
+ \label{cusp-link-magnetic-resolvent-intertwining}
+\end{equation}
+Thus \(\mathscr S_T\) reduces \(\mathcal J_T^{\mathrm{gf}}\), and its
+self-adjoint part \(\mathcal J_T\) has the exact operator and form domains
+\begin{equation}
+ \begin{aligned}
+ \mathcal J_T&=\mathcal J_T^{\mathrm{gf}}|_{\mathscr S_T},\\
+ \operatorname{Dom}(\mathcal J_T)
+ &=H^2\Omega^1(F_T;\operatorname{ad}\mathscr E_T)\cap\mathscr S_T,\\
+ \operatorname{Dom}(\mathfrak j_T)
+ &=H^1\Omega^1(F_T;\operatorname{ad}\mathscr E_T)\cap\mathscr S_T.
+ \end{aligned}
+ \label{cusp-link-magnetic-reduced-domains}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Write \(\nabla_\mu=\nabla^T_{e_\mu}\).  For a smooth adjoint-valued scalar
+\(\phi\), the commutator
+\([\nabla_\mu,\nabla_\nu]\phi=[F_{\mu\nu},\phi]\), with both curvature
+terms retained, gives
+\begin{align*}
+ &\bigl(\mathcal J_T^{\mathrm{gf}}d_{\nabla^T}\phi
+       -d_{\nabla^T}\Delta_{\nabla^T}^{(0)}\phi\bigr)_\nu\\
+ &\quad=-\nabla_\mu\nabla_\mu\nabla_\nu\phi
+        +\nabla_\nu\nabla_\mu\nabla_\mu\phi
+        -2[F_{\nu\mu},\nabla_\mu\phi]\\
+ &\quad=-[\nabla_\mu F_{\mu\nu},\phi]=0,
+\end{align*}
+where the last equality is the Yang--Mills equation from
+Proposition~\ref{cusp-link-magnetic-critical-action}.  Formal adjunction gives
+\[
+ d_{\nabla^T}^*\mathcal J_T^{\mathrm{gf}}
+ =\Delta_{\nabla^T}^{(0)}d_{\nabla^T}^*
+\]
+on smooth one-forms.
+
+Fix \(z\notin\mathbb R\), let
+\(f\in\operatorname{Dom}(\delta_T^{\max})\), and put
+\(u=(\mathcal J_T^{\mathrm{gf}}-z)^{-1}f\).  The full operator domain gives
+\(u\in H^2\), so \(\delta_T^{\max}u\in H^1\).  The distributional extension
+of the adjoint identity gives
+\[
+ (\Delta_{\nabla^T}^{(0)}-z)\delta_T^{\max}u
+ =\delta_T^{\max}f.
+\]
+The right side lies in \(L^2\); elliptic regularity upgrades
+\(\delta_T^{\max}u\) to \(H^2\).  Applying the scalar resolvent proves
+\eqref{cusp-link-magnetic-resolvent-intertwining}.  It follows that the
+resolvents at \(z\) and \(\overline z\) preserve \(\mathscr S_T\).  By
+self-adjointness they also preserve its orthogonal complement, which is the
+reducing property.  The part of a self-adjoint operator on a reducing
+subspace is self-adjoint, and intersection with the full operator domain gives
+the second line of \eqref{cusp-link-magnetic-reduced-domains}.  The reducing
+projection commutes with the form functional calculus, giving the stated form
+domain.
+\end{proof}
+
+\begin{theorem}[Exact charged Landau negative mode]
+\label{cusp-link-magnetic-negative-mode}
+There is a smooth real \(a\in\mathscr S_T\) satisfying
+\begin{equation}
+ \|a\|_{L^2}=1,
+ \qquad
+ \mathcal J_Ta=-\frac{4\pi}{D_T}a,
+ \qquad
+ \operatorname{YM}_T''|_{\nabla^T}(a,a)
+ =-\frac{4\pi}{g_{\mathrm{YM}}^2D_T}.
+ \label{cusp-link-magnetic-negative-eigenvalue}
+\end{equation}
+In particular, the non-flat smooth critical connection is a classical saddle
+for every finite \(T\), not a gapped local vacuum.
+\end{theorem}
+
+\begin{proof}
+On the charge-two root line \(\mathscr L_T^2\), put
+\[
+ \mathcal D_1=\partial_{u_1},
+ \qquad
+ \mathcal D_2=\partial_{u_2}+4\pi i u_1,
+\]
+and define
+\begin{equation}
+ \zeta_T=\frac{q_T-6im_T}{m_T+iL_T},
+ \qquad
+ v_T=-\operatorname{Im}\zeta_T
+ =\frac{D_T}{m_T^2+L_T^2}>0.
+ \label{cusp-link-magnetic-theta-parameter}
+\end{equation}
+The sign is exact because
+\[
+ \operatorname{Im}\bigl((q_T-6im_T)(m_T-iL_T)\bigr)=-D_T.
+\]
+The theta series
+\begin{equation}
+ \Theta_T(u_1,u_2)
+ =\sum_{\ell\in\mathbb Z}
+ \exp\!\left(-2\pi i\zeta_T(\ell+u_1)^2+4\pi i\ell u_2\right)
+ \label{cusp-link-magnetic-theta-series}
+\end{equation}
+converges normally with all derivatives: the absolute value of its
+\(\ell\)-th term is \(e^{-2\pi v_T(\ell+u_1)^2}\).  Reindexing gives
+\begin{equation}
+ \Theta_T(u_1+1,u_2)=e^{-4\pi iu_2}\Theta_T(u_1,u_2),
+ \qquad
+ \Theta_T(u_1,u_2+1)=\Theta_T(u_1,u_2).
+ \label{cusp-link-magnetic-theta-automorphy}
+\end{equation}
+These are precisely the factors \(j_n^2\), so \(\Theta_T\) is a smooth
+section of \(\mathscr L_T^2\), independent of \(u_3,u_4\).  Termwise
+differentiation gives
+\begin{equation}
+ (\mathcal D_1+\zeta_T\mathcal D_2)\Theta_T=0.
+ \label{cusp-link-magnetic-marked-annihilator}
+\end{equation}
+
+The inverse transpose of the exact \((y_1,y_2)\)-period block in
+\eqref{cusp-link-block-form} gives the physical covariant derivatives
+\begin{equation}
+ \nabla_{y_1}^+
+ =\frac{m_T\mathcal D_1+q_T\mathcal D_2}{D_T},
+ \qquad
+ \nabla_{y_2}^+
+ =\frac{-L_T\mathcal D_1+6m_T\mathcal D_2}{D_T}.
+ \label{cusp-link-magnetic-physical-derivatives}
+\end{equation}
+Therefore
+\begin{equation}
+ \nabla_{y_1}^+-i\nabla_{y_2}^+
+ =\frac{m_T+iL_T}{D_T}
+  (\mathcal D_1+\zeta_T\mathcal D_2),
+ \label{cusp-link-magnetic-physical-annihilator}
+\end{equation}
+and it kills \(\Theta_T\).  Orthogonality of the \(u_2\)-Fourier modes gives
+\[
+ \int_0^1\!\int_0^1|\Theta_T|^2\,du_1du_2
+ =\sum_{\ell\in\mathbb Z}\int_0^1
+   e^{-4\pi v_T(\ell+u_1)^2}\,du_1
+ =\frac1{2\sqrt{v_T}}.
+\]
+Set
+\begin{equation}
+ \phi_T=\left(\frac{2\sqrt{v_T}}{D_T}\right)^{1/2}\Theta_T.
+ \label{cusp-link-magnetic-normalized-theta}
+\end{equation}
+Since the marked-coordinate volume element is \(D_Td^4u\), this section has
+unit \(L^2(F_T)\)-norm.  Its covariant derivatives in the \(x_1,x_2\)
+directions vanish.  Furthermore,
+\([\mathcal D_1,\mathcal D_2]=4\pi i\) and
+\eqref{cusp-link-magnetic-physical-derivatives} imply
+\[
+ [\nabla_{y_1}^+,\nabla_{y_2}^+]=\frac{4\pi i}{D_T}.
+\]
+Writing \(\kappa_T=4\pi/D_T\), direct multiplication yields
+\[
+ (\nabla_{y_1}^+-i\nabla_{y_2}^+)^*
+ (\nabla_{y_1}^+-i\nabla_{y_2}^+)
+ =-\bigl((\nabla_{y_1}^+)^2+(\nabla_{y_2}^+)^2\bigr)-\kappa_T.
+\]
+Hence
+\begin{equation}
+ (\nabla_{y_1}^+-i\nabla_{y_2}^+)\phi_T=0,
+ \qquad
+ -\bigl((\nabla_{y_1}^+)^2+(\nabla_{y_2}^+)^2\bigr)\phi_T
+ =\kappa_T\phi_T.
+ \label{cusp-link-magnetic-ground-equation}
+\end{equation}
+
+In \(\mathfrak{sl}_2(\mathbb C)\), set
+\[
+ X_+=\begin{pmatrix}0&1\\0&0\end{pmatrix},
+ \qquad
+ X_-=\begin{pmatrix}0&0\\1&0\end{pmatrix}.
+\]
+Then \([H_{\mathrm{mag}},X_+]=2iX_+\), and the \(X_+\)-root line of
+\(\operatorname{ad}\mathscr E_T\otimes\mathbb C\) is
+\(\mathscr L_T^2\).  Thus
+\[
+ a^+=\phi_TX_+(dy_1-i\,dy_2)
+\]
+is a global complexified adjoint-valued one-form.  The first equation in
+\eqref{cusp-link-magnetic-ground-equation} gives
+\(d_{\nabla^T}^*a^+=0\).
+
+Put \(\mathcal B_T=2\pi/D_T\), so that
+\(\kappa_T=2\mathcal B_T\) and
+\(F_{y_1y_2}=\mathcal B_TH_{\mathrm{mag}}\).  The two nonzero components are
+\(a_{y_1}^+=\phi_TX_+\) and \(a_{y_2}^+=-i\phi_TX_+\).  Substitution in
+\eqref{cusp-link-magnetic-jacobi-expression}, retaining the root charge two,
+gives
+\begin{align*}
+ (\mathcal J_Ta^+)_{y_1}
+ &=\kappa_T\phi_TX_+
+   -2[\mathcal B_TH_{\mathrm{mag}},-i\phi_TX_+]
+  =-\kappa_T\phi_TX_+,\\
+ (\mathcal J_Ta^+)_{y_2}
+ &=-i\kappa_T\phi_TX_+
+   -2[-\mathcal B_TH_{\mathrm{mag}},\phi_TX_+]
+  =i\kappa_T\phi_TX_+.
+\end{align*}
+Thus \(\mathcal J_Ta^+=-\kappa_Ta^+\).  For completeness, the coefficient
+\(-2\) in \eqref{cusp-link-magnetic-jacobi-expression} follows by expanding
+\(F_{\nabla^T+ta}=F_{\nabla^T}+t\,d_{\nabla^T}a+
+\tfrac12t^2[a\wedge a]\), integrating the quadratic term by parts on the
+background slice, and using the flat-base Weitzenbock identity: the Hodge
+Laplacian and the curvature part of the second variation each contribute
+\(-[F_{\nu\mu},a_\mu]\).
+
+Finally take the real anti-Hermitian form
+\begin{equation}
+ a=\frac1{\sqrt2}\left(
+   \phi_TX_+(dy_1-i\,dy_2)
+   -\overline{\phi_T}X_-(dy_1+i\,dy_2)\right).
+ \label{cusp-link-magnetic-real-mode}
+\end{equation}
+For \(X(z)=zX_+-\overline zX_-\), the fixed inner product gives
+\(-\tfrac12\operatorname{Tr}(X(z)^2)=|z|^2\).  Therefore
+\(|a|^2=|\phi_T|^2\), so \(\|a\|_{L^2}=1\).  Hermitian adjunction preserves
+the Coulomb equation and the real Jacobi operator; hence
+\(\mathcal J_Ta=-\kappa_Ta\).  On the background slice,
+\[
+ \operatorname{YM}_T''|_{\nabla^T}(a,a)
+ =g_{\mathrm{YM}}^{-2}\langle a,\mathcal J_Ta\rangle_{L^2},
+\]
+which proves every identity in
+\eqref{cusp-link-magnetic-negative-eigenvalue}.
+\end{proof}
+
+\subsection{Finite Gaussian quantization with independent cover and mesh}
+
+Let
+\begin{equation}
+ \vartheta^j_{T,M_{\mathrm{cov}}}
+ =P_{T,M_{\mathrm{cov}}}^{-\mathsf T}\mathbf e_j
+ \in(\mathbb R^4)^*,
+ \qquad 1\leq j\leq4.
+ \label{cusp-link-physical-coframe}
+\end{equation}
+For \(0\leq p\leq4\), define the real finite cochain spaces
+\begin{equation}
+ C^p_{N_{\mathrm{mesh}}}(T,M_{\mathrm{cov}})
+ =\operatorname{Map}\left(
+ V_{N_{\mathrm{mesh}}},
+ \bigwedge^p(\mathbb R^4)^*\otimes\mathfrak{su}(2)
+ \right).
+ \label{cusp-link-cochain-spaces}
+\end{equation}
+The exterior powers carry the metric induced by the physical coframe
+\eqref{cusp-link-physical-coframe}; explicitly, for increasing multi-indices
+\(I=(i_1,\ldots,i_p)\) and \(J=(j_1,\ldots,j_p)\),
+\begin{equation}
+ \left\langle
+  \vartheta^{i_1}\wedge\cdots\wedge\vartheta^{i_p},
+  \vartheta^{j_1}\wedge\cdots\wedge\vartheta^{j_p}
+ \right\rangle
+ =
+ \det\left((G_{T,M_{\mathrm{cov}}}^{-1})_{i_a j_b}\right)_{a,b=1}^p.
+ \label{cusp-link-exterior-metric}
+\end{equation}
+Together with \eqref{cusp-link-su2-inner-product}, this defines the
+pointwise tensor-product metric.  The cochain inner product is
+\begin{equation}
+ \langle a,b\rangle_p
+ =\frac{\mathcal D_{T,M_{\mathrm{cov}}}}{N_{\mathrm{mesh}}^4}
+   \sum_{n\in V_{N_{\mathrm{mesh}}}}
+   \langle a(n),b(n)\rangle.
+ \label{cusp-link-cochain-inner-product}
+\end{equation}
+The symbol \((\vartheta^j)^\sharp\) denotes metric duality for this physical
+cotangent metric, and \(\varepsilon(\vartheta^j)\) denotes left exterior
+multiplication by \(\vartheta^j\).  Let
+\(\mathsf T_j a(n)=a(n+\mathbf e_j)\), set
+\begin{equation}
+ D^+_{N_{\mathrm{mesh}},j}
+ =N_{\mathrm{mesh}}(\mathsf T_j-1),
+ \qquad
+ D^-_{N_{\mathrm{mesh}},j}a(n)
+ =N_{\mathrm{mesh}}(a(n)-a(n-\mathbf e_j)),
+ \label{cusp-link-differences}
+\end{equation}
+and define
+\begin{equation}
+ d_{N_{\mathrm{mesh}}}a
+ =\sum_{j=1}^4
+  \varepsilon(\vartheta^j_{T,M_{\mathrm{cov}}})
+  D^+_{N_{\mathrm{mesh}},j}a.
+ \label{cusp-link-finite-exterior-derivative}
+\end{equation}
+The commuting differences and anticommuting exterior multiplications give
+\(d_{N_{\mathrm{mesh}}}^2=0\).  Its adjoint is
+\begin{equation}
+ d_{N_{\mathrm{mesh}}}^*
+ =-\sum_{j=1}^4
+  \iota_{(\vartheta^j_{T,M_{\mathrm{cov}}})^\sharp}
+  D^-_{N_{\mathrm{mesh}},j}.
+ \label{cusp-link-finite-adjoint}
+\end{equation}
+Define the real reduced Coulomb space
+\begin{align}
+ \mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ &=
+ \ker(d_{N_{\mathrm{mesh}}}^*:C^1\to C^0)
+ \cap
+ \left(\ker\Delta^{(1)}_{N_{\mathrm{mesh}}}\right)^\perp,
+ \label{cusp-link-reduced-coulomb-space}\\
+ \Delta^{(1)}_{N_{\mathrm{mesh}}}
+ &=d_{N_{\mathrm{mesh}}}d_{N_{\mathrm{mesh}}}^*
+ +d_{N_{\mathrm{mesh}}}^*d_{N_{\mathrm{mesh}}}.
+ \label{cusp-link-finite-hodge-laplacian}
+\end{align}
+On this finite-dimensional space put
+\begin{equation}
+ \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =g_{\mathrm{YM}}^{-2}d_{N_{\mathrm{mesh}}}^*
+                         d_{N_{\mathrm{mesh}}}.
+ \label{cusp-link-finite-hessian}
+\end{equation}
+
+\begin{proposition}[Exact finite Hessian spectrum]
+\label{cusp-link-finite-spectrum}
+For
+\begin{equation}
+ \mathfrak d_{N_{\mathrm{mesh}}}(k)_j
+ =N_{\mathrm{mesh}}
+  \left(e^{2\pi i k_j/N_{\mathrm{mesh}}}-1\right),
+ \qquad
+ k\in(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4,
+ \label{cusp-link-fourier-symbol}
+\end{equation}
+In the Fourier formulas, \(\lVert\,\cdot\,\rVert\) on the complexified physical
+cotangent space denotes the Hermitian extension of the Euclidean norm.  The
+positive spectrum of \(\mathcal L\) is obtained from
+\begin{equation}
+ \lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(k)
+ =\frac1{g_{\mathrm{YM}}^2}
+  \left\lVert
+   P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}
+   \mathfrak d_{N_{\mathrm{mesh}}}(k)
+  \right\rVert^2,
+ \qquad k\neq0.
+ \label{cusp-link-finite-mode-eigenvalue}
+\end{equation}
+Each complex Fourier fibre has transverse multiplicity
+\(3\dim\mathfrak{su}(2)=9\).  In particular,
+\begin{equation}
+ \lambda_{\min}(\mathcal L)
+ =\min_{k\neq0}\lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(k)>0.
+ \label{cusp-link-finite-minimum}
+\end{equation}
+For \(\mathbf e_1=(1,0,0,0)^{\mathsf T}\), the exact mode value is
+\begin{equation}
+ \lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(\mathbf e_1)
+ =\frac{4N_{\mathrm{mesh}}^2
+              \sin^2(\pi/N_{\mathrm{mesh}})}{g_{\mathrm{YM}}^2}
+  \frac{L_T^2+m_T^2}{D_T^2};
+ \label{cusp-link-cover-soft-mode}
+\end{equation}
+it is independent of \(M_{\mathrm{cov}}\).
+\end{proposition}
+
+\begin{proof}
+Translation is unitary for \eqref{cusp-link-cochain-inner-product}, so
+\((D_j^+)^*=-D_j^-\).  Exterior multiplication by \(\vartheta^j\) has
+adjoint contraction by \((\vartheta^j)^\sharp\), proving
+\eqref{cusp-link-finite-adjoint}.  On the Fourier character
+\(\chi_k(n)=e^{2\pi i k\cdot n/N_{\mathrm{mesh}}}\), the derivative symbol
+is exterior multiplication by
+\[
+ \zeta(k)=P_{T,M_{\mathrm{cov}}}^{-\mathsf T}
+           \mathfrak d_{N_{\mathrm{mesh}}}(k)
+ =P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}
+           \mathfrak d_{N_{\mathrm{mesh}}}(k).
+\]
+The Hermitian exterior-algebra identity
+\[
+ \iota_{\overline\zeta^\sharp}\varepsilon(\zeta)
+ +\varepsilon(\zeta)\iota_{\overline\zeta^\sharp}
+ =\lVert\zeta\rVert^2\operatorname{id}
+\]
+shows that on the Coulomb polarization
+\(\ker\iota_{\overline\zeta^\sharp}\subset(\mathbb C^4)^*\), the operator
+\(d^*d\) is multiplication by \(\lVert\zeta\rVert^2\).  For \(k\neq0\),
+\(\mathfrak d_{N_{\mathrm{mesh}}}(k)\neq0\), so invertibility of
+\(P_{T,M_{\mathrm{cov}}}\) gives
+\(\zeta(k)\neq0\).  The contraction has rank one, and its kernel has
+dimension three.  The zero Fourier fibre consists exactly of constant
+harmonic cochains and was removed in
+\eqref{cusp-link-reduced-coulomb-space}.  Fourier completeness now proves
+\eqref{cusp-link-finite-mode-eigenvalue}--\eqref{cusp-link-finite-minimum}.
+
+For \(k=\mathbf e_1\), the only nonzero component of
+\(\mathfrak d_{N_{\mathrm{mesh}}}(k)\) has modulus
+\[
+ 2N_{\mathrm{mesh}}\sin(\pi/N_{\mathrm{mesh}}),
+\]
+and
+\(S_{M_{\mathrm{cov}}}^{-1}\mathbf e_1=\mathbf e_1\).  Solving
+\(P_T^{\mathsf T}\xi=\mathbf e_1\), or directly inverting the lower
+\(2\times2\) block in \eqref{cusp-link-period-matrix}, gives
+\[
+ \lVert P_T^{-\mathsf T}\mathbf e_1\rVert^2
+ =\frac{L_T^2+m_T^2}{D_T^2}.
+\]
+Substitution proves \eqref{cusp-link-cover-soft-mode}.
+\end{proof}
+
+\subsection{Native continuum comparison and the exact all-mesh gap}
+
+The cover formula \eqref{cusp-link-finite-minimum} is already exact for every
+\(M_{\mathrm{cov}}\).  On the native torus, meaning
+\(M_{\mathrm{cov}}=1\), its minimum can be evaluated completely and compared
+with the continuum Yang--Mills Hessian.  Let \(A_0\) be the product connection
+on \(F_T\times\mathrm{SU}(2)\), and normalize
+\begin{equation}
+ \operatorname{YM}_T(A)
+ =\frac1{2g_{\mathrm{YM}}^2}
+   \int_{F_T}|F_A|^2\,\mathrm d\operatorname{vol}_{F_T}.
+ \label{cusp-link-native-ym}
+\end{equation}
+On one-forms let \(\mathrm d_1\) be the maximal closed exterior derivative
+\[
+ \mathrm d_1:L^2\Omega^1(F_T;\mathfrak{su}(2))
+ \longrightarrow L^2\Omega^2(F_T;\mathfrak{su}(2)),
+\]
+with domain
+\begin{equation}
+ \operatorname{Dom}(\mathrm d_1)
+ =\{a\in L^2\Omega^1:\mathrm da\in L^2\Omega^2
+       \text{ distributionally}\}.
+ \label{cusp-link-native-maximal-d}
+\end{equation}
+
+\begin{proposition}[Exact native continuum Hessian and Coulomb spectrum]
+\label{cusp-link-native-continuum-hessian}
+For smooth one-forms \(a,b\),
+\begin{equation}
+ \operatorname{Hess}_{A_0}\operatorname{YM}_T(a,b)
+ =g_{\mathrm{YM}}^{-2}\langle\mathrm da,\mathrm db\rangle_{L^2}.
+ \label{cusp-link-native-hessian-formula}
+\end{equation}
+The associated closed form and nonnegative self-adjoint operator are
+\begin{align}
+ \mathfrak l_T[a]&=g_{\mathrm{YM}}^{-2}\|\mathrm d_1a\|_{L^2}^2,
+ &\operatorname{Dom}(\mathfrak l_T)&=\operatorname{Dom}(\mathrm d_1),
+ \label{cusp-link-native-closed-form}\\
+ \mathcal L_T^{\mathrm{cont}}
+ &=g_{\mathrm{YM}}^{-2}\mathrm d_1^*\mathrm d_1,
+ &\operatorname{Dom}(\mathcal L_T^{\mathrm{cont}})
+ &=\{a\in\operatorname{Dom}(\mathrm d_1):
+      \mathrm d_1a\in\operatorname{Dom}(\mathrm d_1^*)\}.
+ \label{cusp-link-native-continuum-operator}
+\end{align}
+The reduced Coulomb space is the closed subspace
+\begin{equation}
+ \mathscr C_T^{\mathrm{cont}}
+ =\{a\in L^2\Omega^1(F_T;\mathfrak{su}(2)):
+      \mathrm d^*a=0\ \text{distributionally},\quad
+      a\perp\mathcal H^1(F_T;\mathfrak{su}(2))\}.
+ \label{cusp-link-native-continuum-coulomb}
+\end{equation}
+It reduces \(\mathcal L_T^{\mathrm{cont}}\).  The restricted form domain is
+\(H^1\Omega^1\cap\mathscr C_T^{\mathrm{cont}}\), and the restricted operator
+domain is \(H^2\Omega^1\cap\mathscr C_T^{\mathrm{cont}}\).
+
+For \(k\in\mathbb Z^4\setminus\{0\}\), the character
+\(\chi_{T,k}([x])=\exp(2\pi i\langle P_T^{-\mathsf T}k,x\rangle)\)
+has Coulomb polarization
+\begin{equation}
+ \ker\iota_{(P_T^{-\mathsf T}k)^\sharp}
+ \otimes\mathfrak{su}(2)_{\mathbb C}
+ \label{cusp-link-native-continuum-polarization}
+\end{equation}
+of complex dimension nine, and the operator eigenvalue on that fibre is
+\begin{equation}
+ \lambda_T^{\mathrm{cont}}(k)
+ =\frac{4\pi^2}{g_{\mathrm{YM}}^2}|P_T^{-\mathsf T}k|^2.
+ \label{cusp-link-native-continuum-eigenvalue}
+\end{equation}
+For all sufficiently large \(T\), put
+\begin{equation}
+ a_{\gamma,T}=\frac{L_T^2+m_T^2}{D_T^2},
+ \qquad
+ a_{u,T}=\frac{q_T^2+36m_T^2}{D_T^2},
+ \qquad
+ I_T=\{j\in\{\gamma,u\}:a_{j,T}=\min(a_{\gamma,T},a_{u,T})\}.
+ \label{cusp-link-native-short-data}
+\end{equation}
+Then the first reduced continuum eigenvalue and its real multiplicity are
+\begin{equation}
+ \gamma_T^{\mathrm{cont}}
+ =\frac{4\pi^2}{g_{\mathrm{YM}}^2}
+   \min\{a_{\gamma,T},a_{u,T}\},
+ \qquad
+ \operatorname{mult}_{\mathbb R}(\gamma_T^{\mathrm{cont}})=18\,\#I_T.
+ \label{cusp-link-native-continuum-gap}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+With \(F_{A_0+a}=\mathrm da+\tfrac12[a\wedge a]\), the coefficient of
+\(st\) in \(|F_{A_0+sa+tb}|^2\) is
+\(2\langle\mathrm da,\mathrm db\rangle\), which proves
+\eqref{cusp-link-native-hessian-formula}.  The maximal distributional
+derivative is closed and densely defined.  The first representation theorem
+for its graph-norm square therefore gives
+\eqref{cusp-link-native-closed-form}--\eqref{cusp-link-native-continuum-operator}
+with exactly the displayed domains.
+
+On the flat torus the Fourier identities are
+\begin{align*}
+ \mathrm d(\chi_{T,k}\alpha)
+ &=2\pi i\chi_{T,k}\varepsilon(\xi_{T,k})\alpha,\\
+ \mathrm d^*(\chi_{T,k}\alpha)
+ &=-2\pi i\chi_{T,k}\iota_{\xi_{T,k}^\sharp}\alpha,\\
+ \mathrm d^*\mathrm d(\chi_{T,k}\alpha)
+ &=4\pi^2\chi_{T,k}
+   \bigl(|\xi_{T,k}|^2\alpha
+   -\varepsilon(\xi_{T,k})\iota_{\xi_{T,k}^\sharp}\alpha\bigr),
+ \qquad \xi_{T,k}=P_T^{-\mathsf T}k.
+\end{align*}
+They show directly that \(\mathscr C_T^{\mathrm{cont}}\) reduces the operator.
+They also identify its form and operator domains respectively with
+\(H^1\cap\mathscr C_T^{\mathrm{cont}}\) and
+\(H^2\cap\mathscr C_T^{\mathrm{cont}}\).  For \(k\ne0\), contraction by
+\(\xi_{T,k}^\sharp\) has rank one on the four-dimensional complexified
+cotangent space.  Its kernel therefore has dimension three; tensoring with
+\(\mathfrak{su}(2)_{\mathbb C}\) gives dimension nine, and the last displayed
+identity proves \eqref{cusp-link-native-continuum-eigenvalue}.  The zero mode
+is precisely the constant harmonic sector removed in
+\eqref{cusp-link-native-continuum-coulomb}.
+
+It remains to identify the shortest nonzero dual vectors.  Write
+\(k=(r,s,n_1,n_2)^{\mathsf T}\).  Solving \(P_T^{\mathsf T}x=k\), the third
+and fourth equations give \(x_1=n_1\), \(x_3=n_2\).  Thus
+\(|P_T^{-\mathsf T}k|\ge1\) when \((n_1,n_2)\ne(0,0)\).  When those two
+indices vanish,
+\begin{equation}
+ P_T^{-\mathsf T}(r,s,0,0)^{\mathsf T}
+ =\left(0,\frac{m_Tr+q_Ts}{D_T},0,
+           \frac{-L_Tr+6m_Ts}{D_T}\right).
+ \label{cusp-link-native-soft-plane}
+\end{equation}
+The scaled two-dimensional matrix in this expression satisfies
+\[
+ \frac{T}{D_T}
+ \begin{pmatrix}m_T&q_T\\-L_T&6m_T\end{pmatrix}
+ =\begin{pmatrix}0&1\\-1&0\end{pmatrix}+O_{\mathrm{op}}(T^{-1}).
+\]
+Hence, uniformly in real \((r,s)\),
+\[
+ (1-C/T)\sqrt{r^2+s^2}
+ \le T|P_T^{-\mathsf T}(r,s,0,0)^{\mathsf T}|
+ \le(1+C/T)\sqrt{r^2+s^2}.
+\]
+For large \(T\), every integer pair of squared norm at least two is longer
+than each unit pair, while every mode with \((n_1,n_2)\ne0\) has length at
+least one.  The only possible shortest vectors are therefore the two signed
+pairs with indices \(\pm(1,0,0,0)\) and \(\pm(0,1,0,0)\).  Their squared
+lengths, read from \eqref{cusp-link-native-soft-plane}, are precisely
+\(a_{\gamma,T}\) and \(a_{u,T}\).  Each signed pair contributes eighteen
+real dimensions, proving \eqref{cusp-link-native-continuum-gap}.
+\end{proof}
+
+Set
+\begin{equation}
+ \rho_N=4N^2\sin^2(\pi/N),\qquad
+ \eta_N=\begin{cases}1,&N=2,\\2,&N>2.\end{cases}
+ \label{cusp-link-native-rho-eta}
+\end{equation}
+
+\begin{theorem}[Exact native finite gap in every mesh regime]
+\label{cusp-link-native-finite-gap}
+There is \(T_1\), independent of \(N\ge2\), such that for \(T\ge T_1\),
+the first eigenvalue of
+\(\mathcal L_{T,1,N}\) on \(\mathscr C_{T,1,N}\) is
+\begin{equation}
+ \gamma_{N,T}^{\mathrm{fin}}
+ =\frac{\rho_N}{g_{\mathrm{YM}}^2}
+   \min\{a_{\gamma,T},a_{u,T}\}
+ =\frac{\rho_N}{4\pi^2}\gamma_T^{\mathrm{cont}}.
+ \label{cusp-link-native-finite-gap-exact}
+\end{equation}
+Its real multiplicity is exactly
+\begin{equation}
+ \operatorname{mult}_{\mathbb R}(\gamma_{N,T}^{\mathrm{fin}})
+ =9\eta_N\,\#I_T.
+ \label{cusp-link-native-finite-gap-multiplicity}
+\end{equation}
+Uniformly for every integer-valued choice \(N(T)\ge2\), there are constants
+\(0<c<C<\infty\) such that
+\begin{equation}
+ \frac{c}{T^2}\le\gamma_{N(T),T}^{\mathrm{fin}}
+ \le\frac{C}{T^2}
+ \label{cusp-link-native-finite-gap-uniform}
+\end{equation}
+for all large \(T\).  If \(N(T)\to\infty\), then
+\begin{equation}
+ \gamma_{N(T),T}^{\mathrm{fin}}
+ =\frac{4\pi^2}{g_{\mathrm{YM}}^2T^2}
+   \left(1+O(T^{-1})+O(N(T)^{-2})\right).
+ \label{cusp-link-native-finite-gap-refined}
+\end{equation}
+The largest physical edge in the native cubulation is
+\begin{equation}
+ \max_{1\le j\le4}\frac{|P_T\mathbf e_j|}{N(T)}
+ =\frac{T}{N(T)}(1+O(T^{-1})),
+ \label{cusp-link-native-mesh-size}
+\end{equation}
+so this varying continuum torus is resolved exactly when
+\(N(T)/T\to\infty\).  This geometric condition is not needed for the
+algebraic gap bounds above.
+\end{theorem}
+
+\begin{proof}
+Put \(\sigma_N=2N\sin(\pi/N)\), so \(\rho_N=\sigma_N^2\).  The least
+nonzero modulus of a component of \(\mathfrak d_N(k)\) is \(\sigma_N\),
+attained exactly at frequency \(\pm1\), with the two signs equal when
+\(N=2\).  If \(\mathfrak d_N(k)\) is supported in its first two components
+but \(k\notin\{\pm\mathbf e_1,\pm\mathbf e_2\}\), then
+\begin{equation}
+ |\mathfrak d_N(k)_1|^2+|\mathfrak d_N(k)_2|^2\ge2\sigma_N^2.
+ \label{cusp-link-native-next-frequency}
+\end{equation}
+Indeed, either both components are nonzero, or the single nonzero frequency
+is not \(\pm1\); in the latter case
+\(\sin(2\pi/N)/\sin(\pi/N)=2\cos(\pi/N)\ge\sqrt2\) for \(N\ge4\), and
+\(N=2,3\) are immediate.
+
+On the first two components, \eqref{cusp-link-native-soft-plane} and the
+uniform singular-value estimate in its proof show that the factor
+\(\sqrt2\) in \eqref{cusp-link-native-next-frequency} separates every other
+frequency from the two coordinate frequencies, uniformly in \(N\), once
+\(T\) is large.  For a general complex vector \(z\in\mathbb C^4\), the
+third and fourth equations in \(P_T^{\mathsf T}x=z\) give
+\(x_1=z_3\), \(x_3=z_4\).  Thus any finite frequency with nonzero third or
+fourth component satisfies
+\[
+ |P_T^{-\mathsf T}\mathfrak d_N(k)|^2
+ \ge|\mathfrak d_N(k)_3|^2+|\mathfrak d_N(k)_4|^2
+ \ge\sigma_N^2,
+\]
+whereas either coordinate candidate is \(O(\sigma_N^2/T^2)\).  Therefore the
+only minimizers are the signed coordinate pairs selected by \(I_T\).
+The exact mode formula \eqref{cusp-link-finite-mode-eigenvalue} gives
+\eqref{cusp-link-native-finite-gap-exact}.  A signed complex Fourier fibre has
+dimension nine; reality pairs the two signs when \(N>2\), while they coincide
+when \(N=2\).  This proves
+\eqref{cusp-link-native-finite-gap-multiplicity}.
+
+Finally, the standing assumptions give
+\(a_{\gamma,T}=T^{-2}(1+O(T^{-1}))\) and
+\(a_{u,T}=T^{-2}(1+O(T^{-1}))\).  The elementary sine bounds yield
+\(16\le\rho_N\le4\pi^2\), proving
+\eqref{cusp-link-native-finite-gap-uniform}.  When \(N(T)\to\infty\),
+\(\rho_{N(T)}=4\pi^2(1+O(N(T)^{-2}))\), which proves
+\eqref{cusp-link-native-finite-gap-refined}.  The first two columns of
+\(P_T\) have norm \(T(1+O(T^{-1}))\), while its last two columns have norm
+one.  Division by \(N(T)\) proves \eqref{cusp-link-native-mesh-size} and the
+final assertion.
+\end{proof}
+
+\begin{remark}[Limits of the comparison]
+\label{cusp-link-native-comparison-scope}
+The exact minimum in Theorem~\ref{cusp-link-native-finite-gap} is a statement
+only for \(M_{\mathrm{cov}}=1\).  For a nontrivial cover,
+\(S_{M_{\mathrm{cov}}}^{-1}\) creates additional frequency scales, so the
+general statement remains the exact minimization
+\eqref{cusp-link-finite-minimum} together with proved mode bounds such as
+\eqref{cusp-link-cover-soft-mode}.  Moreover,
+\(\mathcal L_T^{\mathrm{cont}}\) is a classical Hessian operator; no
+quantization or unitary identification with the finite Gaussian Hilbert space
+is contained in Proposition~\ref{cusp-link-native-continuum-hessian}.
+\end{remark}
+
+Let \(da\) denote Lebesgue measure on
+\(\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}\) induced by
+\eqref{cusp-link-cochain-inner-product} and define
+\begin{equation}
+ \mathcal H^{\mathrm{Gauss}}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =L^2(\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}},da).
+ \label{cusp-link-gaussian-hilbert-space}
+\end{equation}
+Put
+\(r=\dim_{\mathbb R}\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}\).
+In any orthonormal linear coordinates \((x_1,\ldots,x_r)\) for the inner
+product induced by \eqref{cusp-link-cochain-inner-product}, define
+\begin{equation}
+ \Delta_{\mathscr C}=\sum_{s=1}^r\frac{\partial^2}{\partial x_s^2}.
+ \label{cusp-link-coulomb-laplacian}
+\end{equation}
+This definition is independent of the chosen orthonormal coordinates.
+
+\begin{theorem}[Finite Gaussian oscillator and a resolved cusp sequence]
+\label{cusp-link-gaussian-theorem}
+On the initial domain
+\(C_c^\infty(\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}};\mathbb C)\),
+consider the symmetric quadratic differential operator
+\begin{equation}
+ \widehat H^{\mathrm{Gauss}}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =-\frac12\Delta_{\mathscr C}
+  +\frac12\langle a,
+     \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}a\rangle
+ \label{cusp-link-gaussian-hamiltonian}
+\end{equation}
+where the second summand denotes multiplication by the displayed quadratic
+function of \(a\).
+Its Friedrichs realization on \eqref{cusp-link-gaussian-hilbert-space} has a
+unique Gaussian ground state and spectral gap
+\begin{equation}
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ =\sqrt{\lambda_{\min}(
+   \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}})}.
+ \label{cusp-link-gaussian-gap}
+\end{equation}
+Consequently,
+\begin{equation}
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ \leq
+ \frac{2N_{\mathrm{mesh}}\sin(\pi/N_{\mathrm{mesh}})}{g_{\mathrm{YM}}}
+ \frac{\sqrt{L_T^2+m_T^2}}{D_T}.
+ \label{cusp-link-gaussian-gap-bound}
+\end{equation}
+For \(M_{\mathrm{cov}}=1\) and all sufficiently large \(T\), the exact
+native formula is
+\begin{equation}
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}}_{T,1,N_{\mathrm{mesh}}})
+ =\frac{2N_{\mathrm{mesh}}\sin(\pi/N_{\mathrm{mesh}})}{g_{\mathrm{YM}}}
+  \sqrt{\min\{a_{\gamma,T},a_{u,T}\}}.
+ \label{cusp-link-native-gaussian-gap}
+\end{equation}
+The complex dimension of the first-excited eigenspace is
+\(9\eta_{N_{\mathrm{mesh}}}\#I_T\).  Uniformly for every
+\(N_{\mathrm{mesh}}(T)\ge2\), this gap is comparable to \(T^{-1}\); if
+\(N_{\mathrm{mesh}}(T)\to\infty\), it equals
+\begin{equation}
+ \frac{2\pi}{g_{\mathrm{YM}}T}
+ \left(1+O(T^{-1})+O(N_{\mathrm{mesh}}(T)^{-2})\right).
+ \label{cusp-link-native-gaussian-gap-asymptotic}
+\end{equation}
+
+There is an explicit diagonal sequence for which the cover geometry tends locally to
+\(\mathbb R^4\), the cubical mesh resolves that geometry, and the Gaussian
+gap tends to zero.  Explicitly, for integers \(j\to\infty\), take
+\begin{equation}
+ T_j=j^2,\qquad M_{\mathrm{cov},j}=j,\qquad
+ N_{\mathrm{mesh},j}=j^3.
+ \label{cusp-link-diagonal-sequence}
+\end{equation}
+Then
+\begin{equation}
+ \begin{aligned}
+ \operatorname{sys}(\widetilde F_{T_j,M_{\mathrm{cov},j}})
+ &\longrightarrow\infty,\\
+ \max_r
+ \frac{\lVert P_{T_j,M_{\mathrm{cov},j}}\mathbf e_r\rVert}
+      {N_{\mathrm{mesh},j}}
+ &\longrightarrow0,\\
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ &\longrightarrow0,\\
+ S^{\log}_{T_j,M_{\mathrm{cov},j},N_{\mathrm{mesh},j}}(U)
+ &\longrightarrow0.
+ \end{aligned}
+ \label{cusp-link-diagonal-conclusions}
+\end{equation}
+Thus the pointed cover tori converge locally isometrically to \(\mathbb R^4\)
+while their finite linearized Gaussian systems are simultaneously refined.
+\end{theorem}
+
+\begin{proof}
+The real finite-dimensional operator \(\mathcal L\) is positive definite on
+the reduced Coulomb space.  Choose an orthonormal eigenbasis with eigenvalues
+\(0<\lambda_1\leq\cdots\leq\lambda_r\).  In the resulting coordinates,
+\eqref{cusp-link-gaussian-hamiltonian} is the tensor sum
+\[
+ \sum_{s=1}^r
+ \left(-\frac12\frac{\partial^2}{\partial x_s^2}
+       +\frac12\lambda_sx_s^2\right).
+\]
+The normalized Hermite basis has eigenvalues
+\(\sum_s(n_s+\tfrac12)\sqrt{\lambda_s}\), with
+\(n_s\in\mathbb Z_{\geq0}\).  The all-zero multi-index is the unique ground
+state, and the smallest possible positive excitation is
+\(\sqrt{\lambda_1}\).  This proves \eqref{cusp-link-gaussian-gap}; applying
+the minimum to the explicit \(\mathbf e_1\)-mode in
+\eqref{cusp-link-cover-soft-mode} proves
+\eqref{cusp-link-gaussian-gap-bound}.  When \(M_{\mathrm{cov}}=1\),
+Theorem~\ref{cusp-link-native-finite-gap} evaluates \(\lambda_1\) and its
+real eigenspace exactly.  Taking its positive square root proves
+\eqref{cusp-link-native-gaussian-gap}; the same operation on
+\eqref{cusp-link-native-finite-gap-uniform} and
+\eqref{cusp-link-native-finite-gap-refined} gives the stated comparison and
+\eqref{cusp-link-native-gaussian-gap-asymptotic}.
+
+Since \(T_j,M_{\mathrm{cov},j}\to\infty\),
+Proposition~\ref{cusp-link-pointed-limits} proves both the systole conclusion
+and the pointed local-isometric \(\mathbb R^4\) limit.
+
+The first two columns of \(P_T\) have norm \(O(T)\), while the last two
+columns of \(P_{T,M_{\mathrm{cov}}}\) have norm exactly
+\(M_{\mathrm{cov}}\).  Therefore the largest physical edge in the
+\(N_{\mathrm{mesh}}\)-subdivision has length
+\(O(\max\{T,M_{\mathrm{cov}}\}/N_{\mathrm{mesh}})\), which is \(O(j^{-1})\)
+for \eqref{cusp-link-diagonal-sequence}.  Finally,
+\eqref{cusp-link-cusp-asymptotics} gives
+\(\sqrt{L_T^2+m_T^2}/D_T=T^{-1}(1+O(T^{-1}))\), while
+\(2N\sin(\pi/N)\leq2\pi\).  The right-hand side of
+\eqref{cusp-link-gaussian-gap-bound} is therefore \(O(j^{-2})\).
+Moreover, \eqref{cusp-link-log-action-value} is \(O(j^{-2})\), since
+\(M_{\mathrm{cov},j}^2/D_{T_j}=j^2/(j^4+O(j^2))\).
+This proves every assertion in \eqref{cusp-link-diagonal-conclusions}.
+\end{proof}
+
+\subsection{A gapless auxiliary direct-integral operator}
+\label{cusp-link-auxiliary-direct-integral}
+
+The closing of the native scalar eigenvalues can be attached to one operator
+without identifying that operator with a physical Hamiltonian.  Use the
+coordinate diffeomorphism \([y]\mapsto[P_Ty]\) from
+\eqref{cusp-link-coordinate-diffeomorphism}; normalized Haar measure on
+\(F_T\) pulls back to normalized Lebesgue measure \(dy\) on
+\(\mathbb T^4=\mathbb R^4/\mathbb Z^4\).  For
+\(k\in\mathbb Z^4\setminus\{0\}\), put
+\[
+ e_k(y)=e^{2\pi i k\cdot y},
+ \qquad
+ \lambda_k(T)=4\pi^2|P_T^{-\mathsf T}k|^2.
+\]
+Fix \(T_1\ge T_0\) sufficiently large for the estimates following
+\eqref{cusp-link-native-soft-plane}, and define
+\begin{align}
+ \mathscr H_{\mathrm{aux}}
+ &=L^2\!\left([T_1,\infty),dT;
+       L^2_0(\mathbb T^4,dy)\right)
+ \cong\bigoplus_{k\in\mathbb Z^4\setminus\{0\}}
+       L^2([T_1,\infty),dT),
+ \label{cusp-link-auxiliary-Hilbert-space}\\
+ (\mathscr L_{\mathrm{aux}}u)_k(T)
+ &=\lambda_k(T)u_k(T),
+ \label{cusp-link-auxiliary-operator}\\
+ \operatorname{Dom}(\mathscr L_{\mathrm{aux}})
+ &=\left\{u\in\mathscr H_{\mathrm{aux}}:
+   \sum_{k\ne0}\int_{T_1}^{\infty}
+   \lambda_k(T)^2|u_k(T)|^2\,dT<\infty\right\}.
+ \label{cusp-link-auxiliary-domain}
+\end{align}
+Here \(L^2_0\) is the orthogonal complement of the constants.  Thus
+\(\mathscr L_{\mathrm{aux}}\) is, by definition, the direct integral of the
+mean-zero scalar Laplacians on the native fibres, expressed on a fixed
+Hilbert space.
+
+\begin{theorem}[Exact zero essential threshold]
+\label{cusp-link-auxiliary-gapless-theorem}
+The operator \(\mathscr L_{\mathrm{aux}}\) is nonnegative and self-adjoint on
+the domain \eqref{cusp-link-auxiliary-domain}.  Its kernel is zero, but
+\begin{equation}
+ 0\in\operatorname{Spec}_{\mathrm{ess}}(\mathscr L_{\mathrm{aux}}).
+ \label{cusp-link-auxiliary-essential-zero}
+\end{equation}
+It therefore has no positive spectral threshold above zero.
+\end{theorem}
+
+\begin{proof}
+For each \(k\ne0\), \(\lambda_k\) is a positive continuous real function.
+Multiplication by \(\lambda_k\) on
+\[
+ \{v\in L^2([T_1,\infty)):\lambda_kv\in L^2([T_1,\infty))\}
+\]
+is nonnegative and self-adjoint: testing the adjoint against bounded compactly
+supported functions forces \(\lambda_kv\in L^2\), and the adjoint acts by the
+same real multiplier.  The orthogonal sum of these multiplication operators
+has exactly the domain \eqref{cusp-link-auxiliary-domain}, proving
+self-adjointness.  Strict positivity of every \(\lambda_k(T)\) proves that the
+kernel is zero.
+
+Take \(k_0=(1,0,0,0)\).  Formula
+\eqref{cusp-link-native-soft-plane} and the standing cusp bounds give
+\begin{equation}
+ \lambda_{k_0}(T)
+ =4\pi^2\frac{L_T^2+m_T^2}{D_T^2}
+ =\frac{4\pi^2}{T^2}\bigl(1+O(T^{-1})\bigr).
+ \label{cusp-link-auxiliary-soft-eigenvalue}
+\end{equation}
+For integers \(n>T_1\), let \(u^{(n)}\) have only its \(k_0\)-component
+nonzero, with
+\[
+ u^{(n)}_{k_0}(T)=\mathbf1_{[n,n+1]}(T).
+\]
+The \(u^{(n)}\) are orthonormal members of
+\(\operatorname{Dom}(\mathscr L_{\mathrm{aux}})\), converge weakly to zero,
+and satisfy
+\[
+ \|\mathscr L_{\mathrm{aux}}u^{(n)}\|^2
+ =\int_n^{n+1}\lambda_{k_0}(T)^2\,dT
+ \le\sup_{T\in[n,n+1]}\lambda_{k_0}(T)^2
+ \longrightarrow0.
+\]
+This is a Weyl singular sequence at zero.  Because the kernel is zero, it
+places zero in the essential rather than discrete spectrum, proving
+\eqref{cusp-link-auxiliary-essential-zero}.
+\end{proof}
+
+This theorem concerns an auxiliary scalar direct integral whose base measure
+is \(dT\).  It is neither the finite Gaussian oscillator nor a Yang--Mills
+Hamiltonian, and it supplies no map between their Hilbert spaces.
+
+\subsection{The exponential map and the exact physical boundary}
+
+Let \(C^1=C^1_{N_{\mathrm{mesh}}}(T,M_{\mathrm{cov}})\), regarded only as a
+finite-dimensional Lie-algebra cochain space, and define componentwise
+\begin{equation}
+ \operatorname{Exp}_{N_{\mathrm{mesh}}}:C^1
+ \longrightarrow\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},
+ \qquad
+ a\longmapsto\left(\exp(a_e/N_{\mathrm{mesh}})\right)_e.
+ \label{cusp-link-exponential-map}
+\end{equation}
+Here, if
+\(a(n)=\sum_{j=1}^4\vartheta^j_{T,M_{\mathrm{cov}}}\otimes a_j(n)\),
+then \(a_e=a_j(n)\) for the oriented edge \(e=(n,j)\).
+
+\begin{proposition}[Local chart, not a global embedding]
+\label{cusp-link-exponential-local-only}
+The map \eqref{cusp-link-exponential-map} is smooth and a local
+diffeomorphism at zero, but it is not globally injective.  Under left
+trivialization of every tangent space at the identity,
+\begin{equation}
+ D\operatorname{Exp}_{N_{\mathrm{mesh}}}(0)\,a
+ =N_{\mathrm{mesh}}^{-1}a.
+ \label{cusp-link-exponential-derivative}
+\end{equation}
+If
+\(S_W:\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}}\to\mathbb R\) is any smooth
+compact-link action for which the identity configuration
+\(\mathbf1=(1)_{e\in E_{N_{\mathrm{mesh}}}}\) is critical, then
+\begin{equation}
+ D^2(S_W\circ\operatorname{Exp}_{N_{\mathrm{mesh}}})_0[a,b]
+ =N_{\mathrm{mesh}}^{-2}
+  D^2(S_W)_{\mathbf1}[a,b]
+ \label{cusp-link-exponential-hessian-scaling}
+\end{equation}
+under the same tangent identification.  Thus, for a prescribed cochain
+quadratic form \(Q\),
+\[
+ D^2(S_W\circ\operatorname{Exp}_{N_{\mathrm{mesh}}})_0=Q
+\]
+holds exactly when
+\[
+ D^2(S_W)_{\mathbf1}=N_{\mathrm{mesh}}^2Q
+\]
+under the coefficient identification.  Both this scaling and the tensor
+structure must be verified for the chosen compact-link action; neither
+follows from the exponential map alone.
+\end{proposition}
+
+\begin{proof}
+For the Lie-group exponential, \(D\exp_0\) is the identity.  Applying the
+chain rule to \(a_e\mapsto a_e/N_{\mathrm{mesh}}\) gives
+\eqref{cusp-link-exponential-derivative}, which is invertible, so the inverse
+function theorem gives a local diffeomorphism.  It is not globally
+injective: a cochain which is zero on every edge except one, where it equals
+\(2\pi N_{\mathrm{mesh}}H_{\mathrm{link}}\), has the same image as the zero cochain by
+\eqref{cusp-link-flux-generator}.  Finally, the second-derivative chain rule
+contains a term involving \(DS_W(\mathbf1)\), which vanishes by criticality;
+the two remaining first derivatives of \(\operatorname{Exp}\) each supply
+the factor \(N_{\mathrm{mesh}}^{-1}\).  This proves
+\eqref{cusp-link-exponential-hessian-scaling}.
+\end{proof}
+
+The Gaussian Hilbert space in \eqref{cusp-link-gaussian-hilbert-space} is
+not the compact-link Yang--Mills Hilbert space.  At this finite lattice, the
+latter kinematic and gauge-invariant spaces would be
+\begin{equation}
+ \mathcal H^{\mathrm{link}}_{N_{\mathrm{mesh}}}
+ =L^2(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},dU),
+ \qquad
+ \mathcal H^{\mathrm{inv}}_{N_{\mathrm{mesh}}}
+ =\left(\mathcal H^{\mathrm{link}}_{N_{\mathrm{mesh}}}\right)^{
+    \mathrm{SU}(2)^{V_{N_{\mathrm{mesh}}}}},
+ \label{cusp-link-physical-hilbert-space}
+\end{equation}
+where \(dU\) is product normalized Haar measure and the superscript denotes
+the nonlinear vertex-gauge action.  Here ``gauge-invariant'' refers only to
+the link-configuration space of this four-dimensional cell complex.  Without
+a chosen time direction or transfer matrix, it is not asserted to be a
+canonical Hamiltonian physical Hilbert space.  L\"uscher's construction of
+a selfadjoint, strictly positive transfer matrix
+\cite{Luscher_1977} and Menotti--Pelissetto's reflection-positivity theorem
+for the Wilson action \cite{MenottiPelissetto_1987} concern the standard
+Wilson lattice setting after the requisite reflection/time structure has
+been fixed; they do not supply those omitted choices for the nonorthogonal
+sector functional \eqref{cusp-link-wilson-sector-definition}.  The
+Osterwalder--Schrader reconstruction boundary is likewise the one stated in
+the primary Euclidean axioms papers
+\cite{OsterwalderSchrader_1973,OsterwalderSchrader_1975}, not a consequence of
+a finite Gaussian oscillator calculation.  The differences are
+structural:
+\begin{enumerate}
+\item \(\mathcal H^{\mathrm{Gauss}}\) is an \(L^2\)-space on a noncompact
+linear Coulomb slice with Lebesgue measure; \(\mathcal H^{\mathrm{inv}}\)
+is a gauge-invariant subspace of an \(L^2\)-space on compact link variables
+with Haar measure.
+\item The local exponential map is neither a global coordinate chart nor a
+measure-preserving bijection.  No unitary map between the two displayed
+Hilbert spaces has been constructed.
+\item A link configuration \(U\) determines the Dirac distribution
+\(\delta_U\), but
+\begin{equation}
+ \delta_U\in\mathcal D'(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}}),
+ \qquad
+ \delta_U\notin L^2(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},dU).
+ \label{cusp-link-dirac-not-l2}
+\end{equation}
+Indeed, product Haar measure is nonatomic, so a point mass is singular with
+respect to it and has no square-integrable density.
+\item No nonlinear compact-link Hamiltonian, Gauss-law spectral problem,
+time direction, reflection-positive transfer matrix, renormalized-scale
+limit, or Osterwalder--Schrader reconstruction is supplied here.
+\end{enumerate}
+Accordingly, \eqref{cusp-link-gaussian-gap} is an exact theorem about the
+finite quadratic oscillator defined by the Coulomb-restricted operator
+\(g_{\mathrm{YM}}^{-2}d^*d\).  It is not an eigenvalue statement about a
+nonperturbative physical Yang--Mills
+Hamiltonian, and the small classical action in
+\eqref{cusp-link-log-action-value} is not by itself a physical-state Rayleigh
+quotient.  Similarly, \(\widetilde\Delta_{T,M_{\mathrm{cov}}}\) is a scalar
+geometric Laplacian and \(\mathcal L_T^{\mathrm{cont}}\) is a classical
+Yang--Mills Hessian at the product connection.  No common direct-integral
+operator, physical Hamiltonian, or map from either of those operators to the
+ compact-link Hilbert space is asserted.
+
+\subsection{Wilson-loop states, entanglement, and the exact coercive bridge}
+\label{cusp-link-spectral-logic}
+
+The preceding distinction can be made by exact countermodels, rather than by
+terminology.  Put
+\[
+ \mathscr X_N=\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},
+ \qquad
+ \mathscr G_N=\mathrm{SU}(2)^{V_{N_{\mathrm{mesh}}}},
+\]
+and use the vertex-gauge action compatible with
+\eqref{cusp-link-inverse-transport-gauge-law}:
+\begin{equation}
+ (g\cdot U)_{n,j}
+ =g(n)^{-1}U_{n,j}g(n+\mathbf e_j).
+ \label{cusp-link-vertex-gauge-action}
+\end{equation}
+If \(C=(e_1^{\varepsilon_1},\ldots,e_r^{\varepsilon_r})\) is an oriented
+closed edge path, with \(\varepsilon_k\in\{1,-1\}\), let
+\begin{equation}
+ W_C(U)=\frac12\operatorname{Re}\operatorname{tr}
+ \left(U_{e_1}^{\varepsilon_1}\cdots U_{e_r}^{\varepsilon_r}\right).
+ \label{cusp-link-wilson-loop-observable}
+\end{equation}
+Here an edge with exponent \(-1\) is traversed opposite to its chosen
+orientation.  Under \eqref{cusp-link-vertex-gauge-action}, the ordered product
+around \(C\) is conjugated at its base vertex, so \(W_C\) is gauge invariant.
+A \emph{Euclidean link state} in this paragraph means a
+\(\mathscr G_N\)-invariant Borel probability measure on \(\mathscr X_N\).
+This is deliberately not called a Hamiltonian state: no time direction or
+transfer matrix has been chosen.
+
+\begin{proposition}[Link kinematics and one magnetic field select no area law]
+\label{cusp-link-no-area-law-from-kinematics}
+There are \(\mathscr G_N\)-invariant Borel probability measures
+\(\mu_{\mathrm{pg}}\) and \(\mu_{\mathrm H}\) on the same configuration
+space \(\mathscr X_N\) such that
+\begin{align}
+ \int_{\mathscr X_N}W_C\,d\mu_{\mathrm{pg}}&=1
+ &&\text{for every closed edge path }C,
+ \label{cusp-link-pure-gauge-wilson}\\
+ \int_{\mathscr X_N}W_C\,d\mu_{\mathrm H}&=0
+ &&\text{if some unoriented edge occurs exactly once in }C.
+ \label{cusp-link-haar-wilson}
+\end{align}
+Consequently, for each \(0\le t\le1\), the invariant state
+\(\mu_t=t\mu_{\mathrm{pg}}+(1-t)\mu_{\mathrm H}\) has expectation \(t\)
+for every path covered by the second line.  Thus the configuration space,
+gauge action, and existence of the explicit flux in
+Theorem~\ref{cusp-link-flux-theorem} do not determine Wilson-loop decay or a
+string tension.
+\end{proposition}
+
+\begin{proof}
+Let \(dg_V\) be normalized product Haar measure on \(\mathscr G_N\), and let
+\(\mu_{\mathrm{pg}}\) be its push-forward under
+\[
+ \mathscr G_N\longrightarrow\mathscr X_N,
+ \qquad
+ g\longmapsto g\cdot\mathbf1.
+\]
+Bi-invariance of \(dg_V\) makes this push-forward gauge invariant: applying a
+fixed gauge transformation replaces \(g\) by its pointwise right translate.
+Along a
+positively oriented edge \(v\to w\), the corresponding link is
+\(g(v)^{-1}g(w)\); the inverse occurs for the opposite orientation.  The
+factors telescope around every closed path, giving the identity matrix and
+proving \eqref{cusp-link-pure-gauge-wilson}.
+
+Let \(\mu_{\mathrm H}\) be normalized product Haar measure on
+\(\mathscr X_N\).  Every fixed gauge transformation acts on each link by a
+left and a right translation, so bi-invariance of Haar measure proves gauge
+invariance.  Suppose an unoriented edge \(e\) occurs exactly once in \(C\).
+After conditioning on all other links, the matrix inside the trace in
+\eqref{cusp-link-wilson-loop-observable} is of the form \(AU_eB\) or
+\(AU_e^{-1}B\), with \(A,B\) fixed.  In the defining representation,
+\[
+ \int_{\mathrm{SU}(2)}U\,dU=0,
+ \qquad
+ \int_{\mathrm{SU}(2)}U^{-1}\,dU=0:
+\]
+left translation by the central element \(-I\) changes either integral to its
+negative.  Fubini's theorem proves \eqref{cusp-link-haar-wilson}.  Linearity of
+integration gives the assertion for \(\mu_t\).  All these measures exist
+independently of the singled-out point of \(\mathscr X_N\) defined in
+\eqref{cusp-link-flux-u1}--\eqref{cusp-link-flux-u34}.
+\end{proof}
+
+The word \emph{entangled} also requires a specified tensor product.  For
+complex Hilbert spaces \(\mathfrak h_A,\mathfrak h_B\) of dimension at least
+two, a nonzero vector of \(\mathfrak h_A\otimes\mathfrak h_B\) is a product
+vector if it equals \(a\otimes b\); otherwise it is entangled.
+
+\begin{proposition}[Entanglement is neither a sector nor an energy floor]
+\label{cusp-link-entanglement-no-gap}
+The entangled vectors, together with zero, do not form a linear subspace.
+They are norm dense and have dense linear span, so no orthogonal projection
+has precisely the entangled vectors as its range.  Moreover:
+\begin{enumerate}
+\item on \(\mathbb C^2\otimes\mathbb C^2\), the bounded nonnegative
+self-adjoint operator
+\[
+ H_B=I-|\Omega_B\rangle\langle\Omega_B|,
+ \qquad
+ \Omega_B=2^{-1/2}(|00\rangle+|11\rangle),
+\]
+with domain the whole tensor product, has the entangled vector \(\Omega_B\)
+as its unique zero-energy ground state and has gap one;
+\item there is a bounded nonnegative self-adjoint operator, again with full
+domain, which has a unique entangled zero-energy ground state and entangled
+positive-energy eigenvectors whose eigenvalues converge to zero.
+\end{enumerate}
+Hence a statement that some degrees of freedom must be entangled supplies
+neither a positive energy nor a positive spectral gap.
+\end{proposition}
+
+\begin{proof}
+Choose orthonormal \(e_0,e_1\in\mathfrak h_A\) and
+\(f_0,f_1\in\mathfrak h_B\).  The Bell vectors
+\[
+ \Psi_\pm=2^{-1/2}(e_0\otimes f_0\pm e_1\otimes f_1)
+\]
+have coefficient-matrix rank two and are entangled, whereas their sum is the
+product vector \(\sqrt2\,e_0\otimes f_0\).  Thus the set is not linear.  Any
+product vector \(a\otimes b\) is the norm limit, as \(\varepsilon\to0\), of
+\(a\otimes b+\varepsilon a'\otimes b'\), where \(a'\perp a\) and
+\(b'\perp b\); for \(\varepsilon\ne0\) the latter has coefficient rank two.
+This proves density.  Also
+\[
+ a\otimes b=\frac12\bigl[(a\otimes b+a'\otimes b')
+                         +(a\otimes b-a'\otimes b')\bigr],
+\]
+so product vectors, which span a dense subspace, lie in the span of entangled
+vectors.  A projection range is a closed linear subspace.
+
+For the first operator assertion, the rank-one term is the orthogonal
+projection onto the Bell line.  Hence \(H_B\) has spectrum \(\{0,1\}\) and
+kernel \(\mathbb C\Omega_B\).
+
+For the second, take
+\(\mathfrak h_A=\mathfrak h_B=\ell^2(\mathbb N_0)\), with orthonormal bases
+\((e_j)\) and \((f_j)\), and set
+\[
+ \Omega=2^{-1/2}(e_0\otimes f_0+e_1\otimes f_1),
+ \qquad
+ \Phi_n=2^{-1/2}(e_{2n}\otimes f_{2n+1}
+                         +e_{2n+1}\otimes f_{2n})\quad(n\ge1).
+\]
+These vectors are orthonormal.  Define \(H\), on the whole tensor product, by
+\begin{equation}
+ H\Omega=0,
+ \qquad H\Phi_n=n^{-1}\Phi_n,
+ \qquad H=I\quad\text{on }
+ \{\Omega,\Phi_1,\Phi_2,\ldots\}^{\perp}.
+ \label{cusp-link-entangled-gapless-operator}
+\end{equation}
+This real diagonal prescription defines a bounded nonnegative self-adjoint
+operator.  Only \(\Omega\) has eigenvalue zero.  Each \(\Phi_n\) is entangled
+and has eigenvalue \(1/n\), which tends to zero.  More strongly, every
+nonzero vector in
+\(\overline{\operatorname{span}}\{\Phi_n:n\ge1\}\) is entangled: its
+coefficient operator has a nonzero rank-two block
+\(2^{-1/2}c_n\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\)
+for some \(n\).
+\end{proof}
+
+The same logical obstruction occurs even without a tensor factorization.
+On \(\ell^2(\mathbb N_0)\), let the Gaussian number operator be
+\(N|n\rangle=n|n\rangle\) on
+\(\operatorname{Dom}(N)=\{(c_n):\sum n^2|c_n|^2<\infty\}\).  It has gap one.
+The bounded nonnegative self-adjoint operator \(F(N)\), defined on the whole
+space by
+\begin{equation}
+ F(N)|0\rangle=0,
+ \qquad F(N)|1\rangle=|1\rangle,
+ \qquad F(N)|n\rangle=n^{-1}|n\rangle\quad(n\ge2),
+ \label{cusp-link-same-one-particle-gapless-completion}
+\end{equation}
+agrees with \(N\) on the vacuum and the entire one-particle sector, yet has
+unique vacuum and zero excitation gap.  This follows directly from the
+displayed eigenvalues.  Thus even exact vacuum and one-particle Gaussian data
+do not determine a nonlinear completion.
+
+We finally record the positive statement that identifies the missing map.
+Let \(A_{\mathrm{phys}}\) be a lower-semibounded self-adjoint operator on a
+Hilbert space \(\mathcal H_{\mathrm{phys}}\), with ground energy \(E_0\),
+nonzero ground projection
+\[
+ P_0=\mathbf1_{\{E_0\}}(A_{\mathrm{phys}}),
+ \qquad
+ \mathcal H_{\mathrm{exc}}=(I-P_0)\mathcal H_{\mathrm{phys}},
+\]
+closed form \(\mathfrak a_{\mathrm{phys}}\), and form domain
+\(\mathcal Q(A_{\mathrm{phys}})\).  Let \(B\ge0\) be an auxiliary
+self-adjoint operator with closed form \(\mathfrak b\), form domain
+\(\mathcal Q(B)\), and \(\mathfrak b[v]\ge\gamma\|v\|^2\) for some
+\(\gamma>0\).
+
+\begin{theorem}[Full-domain coercive gap transfer]
+\label{cusp-link-full-domain-gap-transfer}
+Suppose a linear map
+\[
+ R:\mathcal Q(A_{\mathrm{phys}})\cap\mathcal H_{\mathrm{exc}}
+   \longrightarrow\mathcal Q(B)
+\]
+is defined on the entire physical excitation form domain and, for constants
+\(c,C>0\), satisfies
+\begin{equation}
+ \|Ru\|\ge c\|u\|,
+ \qquad
+ \mathfrak b[Ru]\le
+ C\bigl(\mathfrak a_{\mathrm{phys}}[u]-E_0\|u\|^2\bigr).
+ \label{cusp-link-full-domain-comparison}
+\end{equation}
+Then
+\begin{equation}
+ \inf\operatorname{Spec}
+ \left(A_{\mathrm{phys}}|_{\mathcal H_{\mathrm{exc}}}\right)-E_0
+ \ge\frac{\gamma c^2}{C}>0.
+ \label{cusp-link-transferred-gap}
+\end{equation}
+By contrast, an isometric intertwining of \(B\) with only one reducing
+subspace of \(A_{\mathrm{phys}}\) does not imply a full gap.
+\end{theorem}
+
+\begin{proof}
+For every \(u\) in the stated physical form domain,
+\[
+ C\bigl(\mathfrak a_{\mathrm{phys}}[u]-E_0\|u\|^2\bigr)
+ \ge\mathfrak b[Ru]
+ \ge\gamma\|Ru\|^2
+ \ge\gamma c^2\|u\|^2.
+\]
+The ground spectral projection reduces \(A_{\mathrm{phys}}\).  The spectral
+theorem, applied to its excitation part, identifies the infimum of the
+Rayleigh quotient of the shifted closed form with the left-hand side of
+\eqref{cusp-link-transferred-gap}, proving the bound.
+
+For the final assertion, take \(B=I\) on \(\mathbb C\), and on
+\[
+ \mathcal H=\mathbb C\Omega\oplus\mathbb C\oplus L^2((0,1),dx)
+\]
+take the bounded nonnegative self-adjoint operator
+\[
+ A=0\oplus I\oplus M_x,
+\]
+where \((M_xf)(x)=xf(x)\).  The isometry
+\(Jz=0\oplus z\oplus0\) obeys \(AJ=JB\), and its range is reducing and
+gapped.  Nevertheless \(A\) has unique vacuum \(\Omega\), while normalized
+functions supported in \((0,1/n)\) have Rayleigh quotient at most \(1/n\).
+Thus the full excitation gap is zero.
+\end{proof}
+
+In the present paper, the auxiliary Gaussian oscillator is explicit, but no
+map \(R\) satisfying \eqref{cusp-link-full-domain-comparison} from a physical
+compact-link excitation form domain has been constructed.  Moreover, its own
+gap tends to zero along \eqref{cusp-link-diagonal-sequence}; hence it cannot
+provide a uniform positive \(\gamma\) on that sequence.  The Hilbert space
+\eqref{cusp-link-physical-hilbert-space} also contains link variables only:
+no fundamental-matter Hilbert factor, pair-creation operator, hopping term,
+or matter mass term has been defined.  String breaking by dynamical matter is
+therefore not an observable or spectral process typed by this model.
+
+\section{Conclusion}
+
+The constructions above give an exact compatibility diagram at the level
+that has actually been proved:
+\begin{align*}
+ \{\text{smooth connections on }\widetilde F_{T,M_{\mathrm{cov}}}\}
+ &\xrightarrow{\ \operatorname{Hol}\ }
+ \mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},\\
+ \mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ &\xrightarrow[\text{locally}]{\ \operatorname{Exp}_{N_{\mathrm{mesh}}}\ }
+ \mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}}.
+\end{align*}
+The first arrow is globally defined but is not claimed to be surjective.
+The second is a local coordinate map at zero, not a global embedding and not
+a measure-preserving identification.  On the compact-link side, the
+ periodic flux and both displayed action values are exact.  On the linear
+ side, the scalar cover spectrum, deck-invariant sector, continuum native
+ Hessian spectrum, finite Fourier eigenvalues, and oscillator gap are exact.
+ On the distinct smooth native side, the unit-flux line bundle, the reducible
+ \(\mathrm{SU}(2)\) Yang--Mills critical connection, and its action
+ \(2\pi^2/(g_{\mathrm{YM}}^2D_T)\) are exact; the explicit charge-two theta
+ section produces the reduced Jacobi eigenvalue \(-4\pi/D_T\).  Thus that
+ smooth magnetic representative is a saddle at every finite \(T\), and its
+ numerical action agreement with the native link field does not identify the
+ two configurations.
+ The native scalar direct integral is also an exact self-adjoint operator with
+trivial kernel and zero in its essential spectrum.
+The native torus tends pointedly to \(\mathbb T^2\times\mathbb R^2\), whereas
+every sequence with \(T_j\to\infty\) and
+\(M_{\mathrm{cov},j}\to\infty\) tends pointedly to \(\mathbb R^4\).  Along the
+explicit diagonal sequence, the cover systole diverges, physical mesh edges
+shrink, and the Gaussian gap and logarithmic action vanish.
+
+The same link kinematics admits gauge-invariant Euclidean states whose simple
+Wilson-loop expectations are respectively one, zero, or any prescribed
+constant between them.  The magnetic configuration therefore selects no
+confinement law.  Likewise, entanglement does not define a spectral subspace
+and imposes no energy floor, while exact agreement with one gapped Gaussian
+range leaves open a gapless orthogonal channel.  Theorem~\ref{cusp-link-full-domain-gap-transfer}
+isolates the sufficient missing datum: a norm-nondegenerate energy comparison
+defined on the entire physical excitation form domain.
+
+Nothing in this diagram identifies the finite Gaussian Hilbert space with a
+physical gauge-invariant compact-link Hilbert space.  In particular, the
+vanishing upper bound for the Gaussian gap is a theorem about the explicitly
+defined quadratic model, not a conclusion about the spectrum of a
+nonperturbative Yang--Mills Hamiltonian.  This non-identification is part of
+the mathematical result, not a deferred step.
+
+\paragraph{Provenance.}
+The compact-link core was extracted from the canonical consolidated
+workbench source \texttt{cusp\_compact\_link\_gaussian.tex}.  The fibrewise
+cover spectrum and pointed-limit results, and the native continuum and finite
+Coulomb comparisons, were synchronized from the proved workbench sources
+ \texttt{cusp\_spectral\_geometry.tex} and
+ \texttt{cusp\_gauge\_operators.tex} and restated here with their required
+ definitions and proofs.  The smooth integral-flux construction, closed
+ background-gauge domains, and charged negative mode were synchronized from
+ \texttt{cusp\_su2\_magnetic.tex}; they are restated here rather than invoked
+ as an external lemma.  The operator-theoretic countermodels and coercive
+comparison in \S\ref{cusp-link-spectral-logic} were cross-checked against the
+internal exact audit module
+\path{agent_logs/nested_sector_gap_theorem_20260903.tex} and are
+reproved here.  The workbench sources themselves are not modified.
+
+\begingroup
+\small
+\bibliographystyle{plain}
+\bibliography{references}
+\endgroup
+
+\end{document}

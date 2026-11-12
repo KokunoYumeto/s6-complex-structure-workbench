@@ -1,0 +1,902 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smooth duality and finite twist complexes</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/smooth-duality-and-finite-twist-complexes.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="smooth-duality-provider">Smooth duality and finite complexes for
+the original line-bundle twists</h1>
+<p>Written by GPT-6 Astra (OpenAI), at Ultra, October 2026. New
+exposition and proofs: CC0. This chapter supplies the compact Hermitian
+Hodge and smooth Serre-duality arguments used in lesson 10, and
+constructs the finite complexes for its explicit family of line-bundle
+twists. The construction keeps the original Dolbeault operators, all
+zero-order terms, the volume form, and the homotopy signs. No Kähler
+metric is assumed.</p>
+<p>The local Dolbeault comparison is also developed in the CC0 chapter
+<em>The Dolbeault complex</em>, written by Claude Opus 5.5 (Anthropic),
+October 2026. Its complete source was read. For the finite-complex
+construction, the human reference is <a
+href="https://arxiv.org/abs/math/0403266v1">Marius Crainic, <em>On the
+perturbation lemma, and deformations</em>, arXiv math/0403266v1,
+Sections 2–3</a>. We read its original-author TeX, retain the archive,
+and prove the exact comparison of homotopy conventions below. No claim
+is made that the general proper analytic direct-image theorem follows
+merely from a finite complex for twists on a fixed manifold.</p>
+<h2 id="dolbeault-resolution">1. The actual complex and its local
+resolution</h2>
+<p>Let <span class="math inline">\(Y\)</span> be a compact complex
+manifold of complex dimension <span class="math inline">\(n\)</span>,
+without boundary, and <span class="math inline">\(E\)</span> a
+holomorphic vector bundle. Choose a smooth Hermitian metric on <span
+class="math inline">\(E\)</span> and a real Riemannian metric <span
+class="math inline">\(g\)</span> on <span
+class="math inline">\(Y\)</span> for which <span
+class="math inline">\(J\)</span> is orthogonal. Such choices exist: on a
+finite coordinate cover take positive local metrics and combine them
+with a smooth partition of unity; replace any real metric by <span
+class="math inline">\((g_0(U,V)+g_0(JU,JV))/2\)</span>. The orientation
+is the actual complex orientation. Write <span
+class="math inline">\(dV_g\)</span> for its volume form. Every inner
+product below is linear in its first argument.</p>
+<p>Put</p>
+<p><span class="math display">\[
+A^q_E=C^\infty(Y,\Lambda^{0,q}T^*Y\otimes E),\qquad
+d_E=\bar\partial_E:A^q_E\longrightarrow A^{q+1}_E.
+\tag{1.1}
+\]</span></p>
+<p>In a holomorphic frame <span class="math inline">\(d_E\)</span>
+differentiates the coefficients by <span
+class="math inline">\(\sum_jd\bar z_j\,\partial/\partial\bar
+z_j\)</span>. Holomorphic transition matrices make this
+frame-independent, and commutation of the scalar derivatives gives <span
+class="math inline">\(d_E^2=0\)</span>. The metrics give the pointwise
+and integrated inner products, the latter <span
+class="math inline">\((u,v)=\int_Y\langle u,v\rangle dV_g\)</span>.
+Integration by parts defines the formal adjoint <span
+class="math inline">\(d_E^*\)</span>. It is a first-order differential
+operator; the derivatives of the metric, volume density and frame
+transition enter its zero-order coefficients and are retained
+throughout.</p>
+<p>We first justify why the cohomology of (1.1) is the sheaf cohomology
+of holomorphic sections. The scalar local solution in one variable
+is</p>
+<p><span class="math display">\[
+(Tg)(z,w)=-\frac1\pi\int_{\mathbb
+C}\frac{g(\zeta,w)}{\zeta-z}\,dA(\zeta),\qquad
+\frac{\partial Tg}{\partial\bar z}=g,
+\tag{1.2}
+\]</span></p>
+<p>for smooth <span class="math inline">\(g\)</span> with locally
+uniform compact support in the integration variable. The kernel is
+locally integrable. Substitute <span
+class="math inline">\(\zeta=z+\eta\)</span> to take all parameter and
+<span class="math inline">\(z\)</span> derivatives on the smooth
+numerator. The derivative identity follows from Stokes on a disc with a
+small disc about <span class="math inline">\(z\)</span> removed: the
+outer boundary term vanishes for compactly supported <span
+class="math inline">\(g\)</span>, while the positively oriented small
+circle integral <span class="math inline">\((2\pi i)^{-1}\int
+g(\zeta)/(\zeta-z)\,d\zeta\)</span> tends to <span
+class="math inline">\(g(z)\)</span>. Since <span
+class="math inline">\(d\bar\zeta\wedge d\zeta=2i\,dA\)</span>, the
+remaining integral is exactly the derivative in (1.2), including its
+sign and <span class="math inline">\(\pi\)</span>. The same integral
+preserves holomorphic dependence on further parameters.</p>
+<p>Here is the full local induction. On a polydisc, suppose a closed
+positive-degree form involves only <span class="math inline">\(d\bar
+z_1,\ldots,d\bar z_k\)</span>, and write it as <span
+class="math inline">\(d\bar z_k\wedge a+b\)</span>, with <span
+class="math inline">\(a,b\)</span> involving only the first <span
+class="math inline">\(k-1\)</span> differentials. Closedness makes their
+coefficients holomorphic in the later variables <span
+class="math inline">\(z_{k+1},\ldots,z_n\)</span>. Multiply the
+coefficients of <span class="math inline">\(a\)</span> by a cutoff in
+<span class="math inline">\(z_k\)</span> that equals one on a smaller
+disc, and apply (1.2) in <span class="math inline">\(z_k\)</span>. The
+resulting form <span class="math inline">\(v\)</span> satisfies <span
+class="math inline">\(\bar\partial v=d\bar z_k\wedge a+\)</span> terms
+in the first <span class="math inline">\(k-1\)</span> differentials.
+Thus the original form minus <span class="math inline">\(\bar\partial
+v\)</span> is still closed and has one fewer permitted differential.
+Induction, on successively smaller polydiscs, ends with zero when <span
+class="math inline">\(k=0\)</span>. Adding the constructed primitives
+gives a primitive near the original point. Apply the same argument in a
+holomorphic bundle frame. In degree zero the kernel consists exactly of
+holomorphic sections, by the one-variable Cauchy formula successively in
+each coordinate. This proves exactness of the Dolbeault resolution on
+stalks.</p>
+<p>The smooth-form sheaves in that resolution are acyclic. Explicitly,
+on a locally finite cover with subordinate smooth weights <span
+class="math inline">\(\chi_i\)</span>, the Čech homotopy is</p>
+<p><span class="math display">\[
+(hc)_{i_0\ldots i_{k-1}}=\sum_i\chi_i c_{i,i_0\ldots i_{k-1}},\qquad
+k&gt;0.
+\tag{1.3}
+\]</span></p>
+<p>Terms extend by zero outside their indicated overlap because <span
+class="math inline">\(\operatorname{supp}\chi_i\)</span> lies inside its
+cover member. The sums are locally finite. Expanding the alternating
+Čech differential cancels all terms except <span
+class="math inline">\((\sum_i\chi_i)c=c\)</span>, so <span
+class="math inline">\(\delta h+h\delta=1\)</span>. The same calculation
+applies on every open subset. It gives the usual acyclic resolution
+comparison: form the cover-resolution double complex, augment in either
+direction, and use the contraction in the Čech direction and the
+stalkwise exact resolution in the other direction. Any finite
+total-degree cocycle is moved, by subtracting total boundaries
+successively, into the augmented edge; the same process on a bounding
+cochain proves injectivity. Passing to refinements makes the stalkwise
+local primitives available on the overlaps involved. Hence both
+augmented edge complexes have the same cohomology. Equivalently, this is
+the acyclic-resolution definition of the derived sheaf cohomology. We
+obtain</p>
+<p><span class="math display">\[
+H^q(Y,\mathcal O(E))=\ker(d_E:A^q_E\to A^{q+1}_E)/d_EA^{q-1}_E.
+\tag{1.4}
+\]</span></p>
+<p>The definition has no negative-degree terms and none above <span
+class="math inline">\(n\)</span>.</p>
+<h2 id="compact-elliptic-estimates">2. The elliptic estimates, with
+their weak-domain argument</h2>
+<p>On all degrees together set</p>
+<p><span class="math display">\[
+D_E=d_E+d_E^*,\qquad \Delta_E=D_E^2=d_Ed_E^*+d_E^*d_E.
+\tag{2.1}
+\]</span></p>
+<p>For a real cotangent vector <span class="math inline">\(\xi\)</span>,
+let <span class="math inline">\(\xi^{0,1}=(\xi+iJ^*\xi)/2\)</span>; the
+convention is <span class="math inline">\((J^*\xi)(v)=\xi(Jv)\)</span>.
+Denote exterior multiplication by <span
+class="math inline">\(\varepsilon\)</span> and its metric adjoint by
+<span class="math inline">\(\iota\)</span>. The principal symbol
+convention replaces <span class="math inline">\(\partial/\partial
+x_j\)</span> by <span class="math inline">\(i\xi_j\)</span>. Thus</p>
+<p><span class="math display">\[
+\sigma(D_E)(\xi)=i\bigl(\varepsilon(\xi^{0,1})-\iota(\xi^{0,1})\bigr),\qquad
+\sigma(D_E)(\xi)^2=|\xi^{0,1}|^2I=\frac{|\xi|_g^2}{2}I.
+\tag{2.2}
+\]</span></p>
+<p>To check the middle equality, choose a unitary coframe whose first
+vector is a positive multiple of <span
+class="math inline">\(\xi^{0,1}\)</span>. On a wedge monomial, creation
+followed by contraction, plus contraction followed by creation, is
+multiplication by <span class="math inline">\(|\xi^{0,1}|^2\)</span>;
+creation and contraction each square to zero. Finally <span
+class="math inline">\(\xi\)</span> and <span
+class="math inline">\(J^*\xi\)</span> are orthogonal real covectors of
+the same norm, so the stated factor is exactly <span
+class="math inline">\(1/2\)</span>. In particular the symbol is
+invertible for every nonzero real <span
+class="math inline">\(\xi\)</span>.</p>
+<p>Use finitely many charts and bundle frames, with smooth cutoffs
+supported in their interiors, to define integer Sobolev norms by the
+local derivatives through order <span class="math inline">\(s\)</span>.
+Changing these finite choices gives equivalent norms by the product and
+chain rules and boundedness of the transition derivatives on their
+compact supports. Smooth sections are dense by local convolution
+followed by the cutoffs. Locally one may embed a supporting cube into a
+<span class="math inline">\(2\pi\)</span>-periodic cube. Its Fourier
+norm is</p>
+<p><span class="math display">\[
+\|u\|_{H^s}^2=(2\pi)^m\sum_{k\in\mathbb Z^m}(1+|k|^2)^s|\widehat
+u(k)|^2,\qquad m=2n,
+\tag{2.3}
+\]</span></p>
+<p>with <span class="math inline">\(\widehat u(k)=(2\pi)^{-m}\int
+e^{-ik\cdot x}u(x)\,dx\)</span>. This is equivalent to the derivative
+norm by expansion of <span class="math inline">\((1+|k|^2)^s\)</span>
+and Parseval. All estimates use the original full coordinate
+operator</p>
+<p><span class="math display">\[
+D_E=\sum_{j=1}^m A_j(x)\partial_j+B(x).
+\tag{2.4}
+\]</span></p>
+<p>Freezing its principal coefficients at a point and applying (2.2)
+mode by mode gives <span class="math inline">\(\|u\|_{H^1}\le
+C(\|D_0u\|_{L^2}+\|u\|_{L^2})\)</span> for sections supported in the
+cube. Shrink the cube so that <span
+class="math inline">\(\sup\|A_j(x)-A_j(x_0)\|\)</span> is small enough
+to absorb its contribution <span
+class="math inline">\(C\sum_j\|(A_j-A_j(x_0))\partial_ju\|\)</span> into
+the left side. The full <span class="math inline">\(B(x)u\)</span>
+remains bounded by <span class="math inline">\(\sup\|B\|\|u\|\)</span>.
+The coordinate volume density and fibre metric are uniformly comparable
+to their fixed values; this only changes the positive estimate
+constants. A finite subordinate partition and the exact commutator <span
+class="math inline">\([D_E,\chi]=\sum_jA_j\partial_j\chi\)</span> give
+the global estimate</p>
+<p><span class="math display">\[
+\|u\|_{H^1}\le C\bigl(\|D_Eu\|_{L^2}+\|u\|_{L^2}\bigr).
+\tag{2.5}
+\]</span></p>
+<p>This also applies to weak solutions, as follows. Suppose <span
+class="math inline">\(u\in L^2\)</span> and <span
+class="math inline">\(D_Eu\in L^2\)</span> as a distribution. Localize
+in a chart and mollify by <span
+class="math inline">\(\rho_\epsilon\)</span>. For the principal part the
+commutator is exactly</p>
+<p><span class="math display">\[
+\begin{aligned}
+\bigl[D_E,\rho_\epsilon*\bigr]u(x)
+={}&amp;\sum_j\int(A_j(x)-A_j(y))\partial_j\rho_\epsilon(x-y)u(y)\,dy\\
+&amp;+\sum_j\int\rho_\epsilon(x-y)(\partial_jA_j)(y)u(y)\,dy\\
+&amp;+\int\rho_\epsilon(x-y)(B(x)-B(y))u(y)\,dy.
+\end{aligned}
+\tag{2.6}
+\]</span></p>
+<p>It follows by integrating the distributional derivative of <span
+class="math inline">\(u\)</span> by parts in <span
+class="math inline">\(y\)</span>. Smooth coefficients on the compact
+chart have a fixed Lipschitz bound. The integral <span
+class="math inline">\(\int|z||\nabla\rho_\epsilon(z)|\,dz\)</span> is
+independent of <span class="math inline">\(\epsilon\)</span>, and <span
+class="math inline">\(\|\rho_\epsilon\|_1=1\)</span>. The convolution
+inequality <span
+class="math inline">\(\|k*u\|_2\le\|k\|_1\|u\|_2\)</span>, obtained by
+integrating translations of <span class="math inline">\(u\)</span>,
+bounds (2.6) uniformly in <span class="math inline">\(L^2\)</span>.
+Apply (2.5) to the mollifications on a smaller chart. Their <span
+class="math inline">\(H^1\)</span> norms are uniformly bounded. A weakly
+convergent subsequence in this Hilbert space has the original <span
+class="math inline">\(L^2\)</span> limit <span
+class="math inline">\(u\)</span>, proving <span
+class="math inline">\(u\in H^1\)</span>. A finite cover proves the
+global assertion.</p>
+<p>Differentiating (2.4) proves the higher statement without losing
+derivatives. If <span class="math inline">\(u\in H^s\)</span> and <span
+class="math inline">\(D_Eu\in H^s\)</span>, the equation for <span
+class="math inline">\(\partial^\alpha u\)</span>, <span
+class="math inline">\(|\alpha|=s\)</span>, has right side <span
+class="math inline">\(\partial^\alpha D_Eu\)</span> minus terms</p>
+<p><span class="math display">\[
+\sum_{j}\sum_{0&lt;\beta\le\alpha}\binom\alpha\beta
+(\partial^\beta A_j)\partial^{\alpha-\beta+e_j}u
+\; +\!\sum_{0&lt;\beta\le\alpha}\binom\alpha\beta
+(\partial^\beta B)\partial^{\alpha-\beta}u,
+\tag{2.7}
+\]</span></p>
+<p>The <span class="math inline">\(\beta=0\)</span> principal and
+zero-order terms remain in the full left operator <span
+class="math inline">\(D_E\partial^\alpha u\)</span>. Every displayed
+right-hand term involves at most <span class="math inline">\(s\)</span>
+derivatives of <span class="math inline">\(u\)</span>. Coefficient
+derivatives are bounded, so these terms lie in <span
+class="math inline">\(L^2\)</span>. The weak result above makes <span
+class="math inline">\(\partial^\alpha u\in H^1\)</span>. Induction
+gives, with every original lower-order term retained,</p>
+<p><span class="math display">\[
+D_Eu\in H^s,\ u\in L^2\quad\Longrightarrow\quad
+u\in H^{s+1},\qquad
+\|u\|_{H^{s+1}}\le C_s(\|D_Eu\|_{H^s}+\|u\|_{L^2}).
+\tag{2.8}
+\]</span></p>
+<p>The cutoffs contribute only already-controlled lower derivatives at
+each step. Fourier Cauchy–Schwarz in (2.3) also proves <span
+class="math inline">\(H^s\subset C^k\)</span> whenever <span
+class="math inline">\(s&gt;k+m/2\)</span>: the sum of <span
+class="math inline">\((1+|k|^2)^{k-s}\)</span> converges. Thus
+membership in every integer Sobolev space implies smoothness.</p>
+<p>Finally <span class="math inline">\(H^1\hookrightarrow L^2\)</span>
+is compact. In each of the finitely many periodic cubes, the squared
+<span class="math inline">\(L^2\)</span> norm of modes <span
+class="math inline">\(|k|&gt;N\)</span> is at most <span
+class="math inline">\((1+N^2)^{-1}\|u\|_{H^1}^2\)</span>. The finitely
+many modes <span class="math inline">\(|k|\le N\)</span> have a
+convergent subsequence for any bounded sequence. Choose subsequences
+successively for increasing <span class="math inline">\(N\)</span>, then
+a diagonal subsequence. The uniform tail bound makes it Cauchy in <span
+class="math inline">\(L^2\)</span>. Apply this on the finite list of
+charts and sum the localized sections to obtain global compactness.</p>
+<h2 id="hodge-contraction">3. Construct the compact resolvent and the
+Hodge homotopy</h2>
+<p>The domain of the closed operator <span
+class="math inline">\(D_E\)</span> on <span
+class="math inline">\(L^2\)</span> is exactly <span
+class="math inline">\(H^1\)</span>. Indeed (2.5) and smooth density show
+that its graph closure on smooth sections has that domain; the weak
+result proves that any <span class="math inline">\(L^2\)</span> section
+with distributional <span class="math inline">\(D_Eu\in L^2\)</span> is
+already in that domain. Formal self-adjointness therefore gives actual
+self-adjointness, since the adjoint domain is characterized by that same
+distributional condition.</p>
+<p>For <span class="math inline">\(u\in H^1\)</span>, integration by
+parts gives the exact identity</p>
+<p><span class="math display">\[
+\|(D_E\pm i)u\|^2=\|D_Eu\|^2+\|u\|^2.
+\tag{3.1}
+\]</span></p>
+<p>The mixed terms cancel because <span
+class="math inline">\((D_Eu,u)\)</span> is real. Together with (2.5),
+this makes <span class="math inline">\(D_E\pm i:H^1\to L^2\)</span>
+injective with closed range and bounded inverse on its range. A vector
+perpendicular to that range satisfies <span
+class="math inline">\((D_E\mp i)v=0\)</span> distributionally. The weak
+regularity result puts it in <span class="math inline">\(H^1\)</span>,
+and (3.1) makes it zero. Thus the range is all of <span
+class="math inline">\(L^2\)</span>. Define</p>
+<p><span class="math display">\[
+R_\pm=(D_E\pm i)^{-1},\qquad
+K=R_-R_+=R_+R_-=(1+D_E^2)^{-1}.
+\tag{3.2}
+\]</span></p>
+<p>The resolvent identity <span
+class="math inline">\(R_--R_+=2iR_-R_+=2iR_+R_-\)</span> verifies their
+commutation on all of <span class="math inline">\(L^2\)</span>. Their
+adjoints satisfy <span class="math inline">\(R_+^*=R_-\)</span>, so
+<span class="math inline">\(K=R_+^*R_+\)</span> is positive and
+self-adjoint. It is injective, has dense range, and has norm at most one
+by (3.1). Each resolvent maps <span class="math inline">\(L^2\)</span>
+boundedly into <span class="math inline">\(H^1\)</span>, so compactness
+just proved makes it compact on <span
+class="math inline">\(L^2\)</span>. Formula (2.8) shows more generally
+that <span class="math inline">\(R_\pm:H^s\to H^{s+1}\)</span>.
+Consequently <span class="math inline">\(K:H^s\to H^{s+2}\)</span>,
+boundedly.</p>
+<p>For completeness, a positive compact self-adjoint injective operator
+on this Hilbert space has an orthonormal basis of eigenvectors with
+positive eigenvalues of finite multiplicity, tending to zero if there
+are infinitely many. Here is the needed proof. On any invariant
+orthogonal complement set <span
+class="math inline">\(\lambda=\sup_{\|v\|=1}(Kv,v)\)</span>. Positivity
+and the quadratic Cauchy–Schwarz inequality give <span
+class="math inline">\(\|Kv\|^2\le\lambda(Kv,v)\)</span>, so <span
+class="math inline">\(\lambda=\|K\|\)</span>. A maximizing sequence has
+a weakly convergent subsequence (expand in a countable orthonormal basis
+and take a diagonal subsequence of the bounded coefficients).
+Compactness makes its images converge strongly, so the quadratic values
+converge to the value at the weak limit. If <span
+class="math inline">\(\lambda&gt;0\)</span>, this limit has norm one: a
+smaller norm would contradict the defining supremum after division by
+its norm. Differentiating the quadratic quotient along each real and
+imaginary direction gives <span class="math inline">\(Kv=\lambda
+v\)</span>. Take its eigenspace and repeat on the orthogonal complement.
+Each positive eigenspace is finite-dimensional, since infinitely many
+orthonormal eigenvectors with eigenvalue bounded below would have images
+with no convergent subsequence. For the same reason the successive
+eigenvalues tend to zero. If the closed span of the obtained
+eigenvectors had nonzero orthogonal complement on which <span
+class="math inline">\(K\)</span> were nonzero, the maximizing argument
+would find another positive eigenvalue there. On the remaining
+complement <span class="math inline">\(K\)</span> is zero; injectivity
+makes that complement zero. This proves the assertion.</p>
+<p>Apply this to (3.2). Its eigenvectors are smooth: <span
+class="math inline">\(u=\lambda^{-1}Ku\)</span> gains two Sobolev
+derivatives at each iteration. They are eigenvectors of <span
+class="math inline">\(\Delta_E\)</span> with eigenvalues <span
+class="math inline">\(\mu=\lambda^{-1}-1\ge0\)</span>. The zero
+eigenspace is finite-dimensional and all other <span
+class="math inline">\(\mu\)</span>’s have a positive lower bound. Indeed
+the only possible accumulation point of positive <span
+class="math inline">\(\lambda\)</span>’s is zero, not one. Let <span
+class="math inline">\(H\)</span> be the orthogonal projection onto that
+zero eigenspace, and define <span class="math inline">\(G\)</span> by
+multiplication by <span class="math inline">\(\mu^{-1}\)</span> on each
+positive eigenspace and by zero on the zero eigenspace. It is bounded on
+<span class="math inline">\(L^2\)</span> and satisfies</p>
+<p><span class="math display">\[
+\Delta_EG=G\Delta_E=1-H,
+\qquad HG=GH=0.
+\tag{3.3}
+\]</span></p>
+<p>It maps <span class="math inline">\(H^s\)</span> to <span
+class="math inline">\(H^{s+2}\)</span>: the identity <span
+class="math inline">\(G=K(1-H)+KG\)</span>, first on eigenvectors and
+then by density, gives the assertion for <span
+class="math inline">\(s=0\)</span>; repeat it with (2.8) and the smooth
+finite-rank operator <span class="math inline">\(H\)</span>. All
+projections and operators respect the form degree because <span
+class="math inline">\(\Delta_E\)</span> does and the resolvent of <span
+class="math inline">\(1+\Delta_E\)</span> is unique.</p>
+<p>A harmonic form satisfies</p>
+<p><span class="math display">\[
+0=(\Delta_Eu,u)=\|d_Eu\|^2+\|d_E^*u\|^2,
+\tag{3.4}
+\]</span></p>
+<p>so both terms vanish. The identities <span
+class="math inline">\(d_E\Delta_E=\Delta_Ed_E\)</span> and <span
+class="math inline">\(d_E^*\Delta_E=\Delta_Ed_E^*\)</span> follow by
+expansion from <span class="math inline">\(d_E^2=(d_E^*)^2=0\)</span>.
+On smooth forms they imply <span
+class="math inline">\(d_EG=Gd_E\)</span> and <span
+class="math inline">\(d_E^*G=Gd_E^*\)</span>: apply <span
+class="math inline">\(\Delta_E\)</span> to their difference using (3.3),
+observe that the difference is harmonic, and observe that it is
+perpendicular to every harmonic form by (3.4). Thus define the
+degree-minus-one operator</p>
+<p><span class="math display">\[
+h=d_E^*G,
+\qquad d_Eh+hd_E=1-H,
+\qquad h^2=0,
+\qquad hH=Hh=0.
+\tag{3.5}
+\]</span></p>
+<p>The operator <span class="math inline">\(h:L^2\to H^1\)</span> is
+bounded and maps smooth forms to smooth forms. Every closed smooth form
+<span class="math inline">\(u\)</span> equals <span
+class="math inline">\(Hu+d_Ehu\)</span> by (3.5). A harmonic form which
+is exact is zero, since <span
+class="math inline">\((d_Ev,u)=(v,d_E^*u)=0\)</span>. Consequently (1.4)
+is represented uniquely by the finite-dimensional harmonic space in its
+degree. This proves the compact Hermitian Hodge theorem required here,
+together with its actual contraction maps.</p>
+<p>The operator in lesson 10, equation (11.2), is <span
+class="math inline">\(\sqrt2D_E\)</span>. Its square is <span
+class="math inline">\(2\Delta_E\)</span>, and the square of its
+principal symbol is <span class="math inline">\(|\xi|_g^2I\)</span> by
+(2.2). Multiplication by <span class="math inline">\(\sqrt2\)</span> on
+the target is a bounded invertible map, so it identifies its kernel and
+cokernel with those of <span class="math inline">\(D_E\)</span> in the
+same even and odd degrees. Thus the Hodge and Fredholm conclusions apply
+to that exact operator with its original factor retained.</p>
+<h2 id="smooth-serre-pairing">4. The full Serre pairing and its
+signs</h2>
+<p>Put <span class="math inline">\(F=E^*\otimes K_Y\)</span>, where
+<span class="math inline">\(K_Y=\Lambda^{n,0}T^*Y\)</span>. There is an
+explicit map from an <span class="math inline">\(F\)</span>-valued <span
+class="math inline">\((0,r)\)</span>-form to an <span
+class="math inline">\(E^*\)</span>-valued <span
+class="math inline">\((n,r)\)</span>-form: in the order we use, it sends
+<span class="math inline">\(\eta\otimes(e^*\otimes\kappa)\)</span> to
+<span class="math inline">\(\eta\wedge\kappa\otimes e^*\)</span>. The
+antiholomorphic form occurs before the canonical form. With this order
+the map commutes with the Dolbeault differential, because a holomorphic
+local canonical frame has <span
+class="math inline">\(\bar\partial\kappa=0\)</span>. For <span
+class="math inline">\(\alpha\in A_E^q\)</span>, <span
+class="math inline">\(\beta\in A_F^{n-q}\)</span>, define</p>
+<p><span class="math display">\[
+B_q(\alpha,\beta)=\int_Y\operatorname{ev}(\alpha\wedge\beta),
+\tag{4.1}
+\]</span></p>
+<p>using exactly that embedding and exterior order. The integrand is a
+top <span class="math inline">\((n,n)\)</span>-form. Stokes gives, for
+<span class="math inline">\(\beta\in A_F^{n-q-1}\)</span>,</p>
+<p><span class="math display">\[
+B_{q+1}(d_E\alpha,\beta)=(-1)^{q+1}B_q(\alpha,d_F\beta).
+\tag{4.2}
+\]</span></p>
+<p>Indeed the integral of <span
+class="math inline">\(\bar\partial\operatorname{ev}(\alpha\wedge\beta)\)</span>
+is zero, and its two summands have signs one and <span
+class="math inline">\((-1)^q\)</span>. Its <span
+class="math inline">\(\partial\)</span>-derivative is zero by type, so
+ordinary Stokes applies. This proves that (4.1) descends to cohomology
+in complementary degrees. If instead one puts the canonical <span
+class="math inline">\(n\)</span>-form first in the embedding of an <span
+class="math inline">\(F\)</span>-valued <span
+class="math inline">\((0,r)\)</span>-form, the embedding differs by
+<span class="math inline">\((-1)^{nr}\)</span>; the pairing and the
+differential comparison acquire precisely that factor. This states the
+comparison of the two orders explicitly.</p>
+<p>Use the metrics induced on <span class="math inline">\(F\)</span>.
+There is a unique conjugate-linear isometry</p>
+<p><span class="math display">\[
+S_q:A_E^q\longrightarrow A_F^{n-q}
+\quad\hbox{such that}\quad
+\operatorname{ev}(\alpha\wedge S_q\gamma)=\langle\alpha,\gamma\rangle
+dV_g.
+\tag{4.3}
+\]</span></p>
+<p>Here is its complete local formula, including the volume phase.
+Choose a positively oriented real orthonormal coframe <span
+class="math inline">\(dx_j,dy_j\)</span> at the point with <span
+class="math inline">\(J\partial_{x_j}=\partial_{y_j}\)</span>, and put
+<span class="math inline">\(\theta^j=(dx_j+i\,dy_j)/\sqrt2\)</span>, a
+unitary <span class="math inline">\((1,0)\)</span>-coframe. Put <span
+class="math inline">\(\kappa=\theta^1\wedge\cdots\wedge\theta^n\)</span>,
+and choose a unitary frame <span class="math inline">\(e_a\)</span> of
+<span class="math inline">\(E\)</span>. If <span
+class="math inline">\(I\)</span> is increasing of size <span
+class="math inline">\(q\)</span>, let <span
+class="math inline">\(\epsilon(I,I^c)\)</span> be the sign of the
+concatenation <span class="math inline">\((I,I^c)\)</span>. Then</p>
+<p><span class="math display">\[
+S_q(\bar\theta^I\otimes e_a)=c_n\epsilon(I,I^c)\,
+\bar\theta^{I^c}\otimes(e^a\otimes\kappa),\qquad
+c_n=(-1)^{n(n-1)/2}i^{-n}.
+\tag{4.4}
+\]</span></p>
+<p>Extend this formula conjugate-linearly to the coefficients. In
+fact</p>
+<p><span class="math display">\[
+\bar\theta^1\wedge\cdots\wedge\bar\theta^n\wedge\kappa
+=(-1)^{n(n-1)/2}i^n dV_g.
+\tag{4.5}
+\]</span></p>
+<p>Pairing each <span class="math inline">\(\bar\theta^j\)</span> with
+<span class="math inline">\(\theta^j\)</span> costs <span
+class="math inline">\(n(n-1)/2\)</span> transpositions, and <span
+class="math inline">\(\bar\theta^j\wedge\theta^j=i\,dx_j\wedge
+dy_j\)</span>, which proves (4.5). Equations (4.4)–(4.5) prove (4.3),
+since the two copies of <span
+class="math inline">\(\epsilon(I,I^c)\)</span> multiply to one. The
+frames are orthonormal and <span class="math inline">\(|c_n|=1\)</span>,
+so this is an isometry. Uniqueness in (4.3) makes it independent of the
+local coframe and hence a global smooth bundle map.</p>
+<p>Applying (4.2) and (4.3) to a test form and using the definition of
+the formal adjoint gives the exact operator identities</p>
+<p><span class="math display">\[
+d_FS_q=(-1)^qS_{q-1}d_E^*,\qquad
+d_F^*S_q=(-1)^{q+1}S_{q+1}d_E,
+\qquad
+\Delta_FS_q=S_q\Delta_E.
+\tag{4.6}
+\]</span></p>
+<p>For the first identity write <span
+class="math inline">\(\beta=S_q\gamma\)</span> in (4.2) with <span
+class="math inline">\(\alpha\)</span> of degree <span
+class="math inline">\(q-1\)</span>. The equality of its two integrated
+inner products for every test <span
+class="math inline">\(\alpha\)</span> gives the assertion. For the
+second, pair <span class="math inline">\(d_FS_{q+1}\gamma\)</span> with
+<span class="math inline">\(S_q\alpha\)</span>. The first identity and
+the antiunitary identity <span
+class="math inline">\((S_qu,S_qv)_F=(v,u)_E\)</span> convert this to
+<span class="math inline">\((-1)^{q+1}(d_E\alpha,\gamma)_E\)</span>,
+which is the pairing of <span
+class="math inline">\(S_{q+1}\gamma\)</span> with <span
+class="math inline">\((-1)^{q+1}S_{q+1}d_E\alpha\)</span>. This proves
+the adjoint identity. Applying the two identities successively makes
+both signs in each summand of the Laplacian cancel, proving the
+third.</p>
+<p>Thus <span class="math inline">\(S_q\)</span> identifies the two
+harmonic spaces conjugate-linearly. If <span
+class="math inline">\(u\ne0\)</span> is harmonic, then <span
+class="math inline">\(B_q(u,S_qu)=\|u\|^2&gt;0\)</span>. Every
+cohomology class has its unique harmonic representative by Section 3, so
+(4.1) is nondegenerate in both arguments. The spaces are
+finite-dimensional, and therefore the integration pairing induces the
+perfect duality</p>
+<p><span class="math display">\[
+H^q(Y,\mathcal O(E))^\vee\cong
+H^{n-q}(Y,\mathcal O(E^*\otimes K_Y)).
+\tag{4.7}
+\]</span></p>
+<p>This is the actual pairing, not only an equality of dimensions.
+Evaluation makes it natural in bundle homomorphisms. The metrics
+supplied the proof of nondegeneracy, while the pairing (4.1) itself does
+not depend on their choice. It is exactly the smooth input used for the
+two-term Cartier resolution in lesson 10, Section 10.1. It also applies
+to the curve duality used there in Section 11.4.</p>
+<h2 id="finite-twist-complex">5. Construct finite complexes for the full
+twist family</h2>
+<p>Fix <span class="math inline">\(Y\)</span> and a holomorphic bundle
+<span class="math inline">\(V\)</span>. Let <span
+class="math inline">\(b_1,\ldots,b_N\)</span> be closed smooth scalar
+<span class="math inline">\((0,1)\)</span>-forms representing the
+additive classes in the original exponential family. On its unchanged
+smooth bundle keep the original parameter coordinates and their full
+exponential factor:</p>
+<p><span class="math display">\[
+d_z=d_0+\delta(z),\qquad
+\delta(z)=2\pi i\sum_{j=1}^N z_j b_j\wedge(-),\qquad z\in\mathbb C^N,
+\tag{5.1}
+\]</span></p>
+<p>where <span class="math inline">\(d_0=\bar\partial_V\)</span>. Since
+each <span class="math inline">\(b_j\)</span> is closed and the exterior
+square of a scalar one-form is zero, <span
+class="math inline">\(d_0\delta+\delta d_0=0\)</span>, <span
+class="math inline">\(\delta^2=0\)</span>, and <span
+class="math inline">\(d_z^2=0\)</span>. For the additive Čech cocycles
+<span class="math inline">\(a_{ik}^{(j)}\)</span> of lesson 10, choose a
+subordinate partition <span class="math inline">\(\rho_\ell\)</span> and
+put <span class="math inline">\(f_{ij}=\sum_\ell\rho_\ell a_{\ell
+i}^{(j)}\)</span>, extending the supported terms by zero. The cocycle
+identity gives <span
+class="math inline">\(f_{kj}-f_{ij}=a_{ik}^{(j)}\)</span>. Consequently
+<span class="math inline">\(\bar\partial f_{ij}\)</span> is independent
+of the chart index <span class="math inline">\(i\)</span>; take this
+global closed form as <span class="math inline">\(b_j\)</span>. The
+nonzero local frame <span class="math inline">\(s_i=\exp(-2\pi i\sum_j
+z_j f_{ij})\)</span> is annihilated by the scalar twisted operator. Its
+exact transition ratio is</p>
+<p><span class="math display">\[
+\frac{s_i}{s_k}=\exp\!\left(2\pi i\sum_j z_j(f_{kj}-f_{ij})\right)
+=\exp\!\left(2\pi i\sum_j z_j a_{ik}^{(j)}\right),
+\tag{5.2}
+\]</span></p>
+<p>holomorphic in the original coordinate and in every parameter. This
+is the actual line bundle on <span class="math inline">\(Y\times\mathbb
+C^N\)</span> with exactly the transition functions of lesson 10,
+equation (11.10); it retains <span class="math inline">\(2\pi
+i\)</span>, the original cocycles, and the original parameter
+coordinates. Its additive Dolbeault representatives are the <span
+class="math inline">\(b_j\)</span> just constructed. Tensoring with a
+fixed line bundle treats any translated component. Around any <span
+class="math inline">\(z_0\)</span>, (5.1) is exactly <span
+class="math inline">\(d_{z_0}+\delta(z-z_0)\)</span>, with the same
+factor <span class="math inline">\(2\pi i\)</span>; this identity
+retains every original operator and bundle.</p>
+<p>At that fixed centre let <span class="math inline">\(\mathcal
+H=\bigoplus_q\mathcal H^q\)</span> be the finite-dimensional harmonic
+space. Denote its inclusion by <span class="math inline">\(i\)</span>,
+orthogonal projection by <span class="math inline">\(p\)</span>, and
+keep the contraction <span class="math inline">\(h\)</span> of (3.5).
+Its exact relations are</p>
+<p><span class="math display">\[
+pi=1,\quad di=0,\quad pd=0,\quad dh+hd=1-ip,
+\quad hi=0,\quad ph=0,\quad h^2=0.
+\tag{5.3}
+\]</span></p>
+<p>Here <span class="math inline">\(d=d_{z_0}\)</span> on the original
+smooth-form complex. Multiplication by <span
+class="math inline">\(\delta(z-z_0)\)</span> is bounded on <span
+class="math inline">\(L^2\)</span>, with norm at most <span
+class="math inline">\(2\pi\sum_j|z_j-z_{0j}|\sup_Y|b_j|\)</span>. The
+operator <span class="math inline">\(h\)</span> is bounded on <span
+class="math inline">\(L^2\)</span> and gains one Sobolev derivative. On
+the explicit open neighbourhood where <span
+class="math inline">\(2\pi\|h\|\sum_j|z_j-z_{0j}|\sup_Y|b_j|&lt;1\)</span>,
+we have <span class="math inline">\(\|\delta h\|&lt;1\)</span>, so the
+following series converges in operator norm and is holomorphic in the
+parameters:</p>
+<p><span class="math display">\[
+T=(1+\delta h)^{-1}\delta
+=\delta(1+h\delta)^{-1}
+=\sum_{k=0}^{\infty}(-\delta h)^k\delta.
+\tag{5.4}
+\]</span></p>
+<p>The equality of the two inverses follows by multiplying <span
+class="math inline">\((1+\delta h)\delta=\delta(1+h\delta)\)</span>. All
+operators preserve smooth forms: if <span
+class="math inline">\(v\)</span> is smooth and <span
+class="math inline">\(u=(1+h\delta)^{-1}v\)</span>, then <span
+class="math inline">\(u=v-h\delta u\)</span> starts in <span
+class="math inline">\(L^2\)</span> and gains a Sobolev derivative
+successively, so is smooth. The analogous assertion for <span
+class="math inline">\(T\)</span> follows from either expression in
+(5.4). Define</p>
+<p><span class="math display">\[
+\begin{gathered}
+D=pTi:\mathcal H^q\longrightarrow\mathcal H^{q+1},\qquad
+i&#39;=i-hTi,\qquad p&#39;=p-pTh,\qquad h&#39;=h-hTh.
+\end{gathered}
+\tag{5.5}
+\]</span></p>
+<p>These are explicit holomorphic matrices or operators on the parameter
+neighbourhood. We now prove every chain identity. The definition gives
+<span class="math inline">\(T=\delta-\delta hT=\delta-Th\delta\)</span>.
+More importantly,</p>
+<p><span class="math display">\[
+dT+Td+TipT=0.
+\tag{5.6}
+\]</span></p>
+<p>Multiply its left side by <span class="math inline">\(1+\delta
+h\)</span> on the left and <span
+class="math inline">\(1+h\delta\)</span> on the right. Using the two
+inverse identities in (5.4), the result is</p>
+<p><span class="math display">\[
+(1+\delta h)d\delta+\delta d(1+h\delta)+\delta ip\delta
+=d\delta+\delta d+\delta(hd+dh+ip)\delta
+=d\delta+\delta d+\delta^2=0.
+\tag{5.7}
+\]</span></p>
+<p>The factors are invertible, proving (5.6). Apply <span
+class="math inline">\(p\)</span> on the left and <span
+class="math inline">\(i\)</span> on the right to get <span
+class="math inline">\(D^2=0\)</span>. Next</p>
+<p><span class="math display">\[
+\begin{aligned}
+(d+\delta)i&#39;&amp;=(\delta-\delta hT)i-dhTi
+=(1-dh)Ti=(ip+hd)Ti=i&#39;D,\\
+p&#39;(d+\delta)&amp;=pT(1-hd)=pT(ip+dh)=Dp&#39;.
+\end{aligned}
+\tag{5.8}
+\]</span></p>
+<p>For the last step in the first line use <span
+class="math inline">\(dTi=-TiD\)</span>, and in the second use <span
+class="math inline">\(pTd=-DpT\)</span>, both direct consequences of
+(5.6) and (5.3). The side relations in (5.3) give <span
+class="math inline">\(p&#39;i&#39;=1\)</span> and <span
+class="math inline">\((h&#39;)^2=0\)</span> by expansion. Finally the
+full homotopy calculation is</p>
+<p><span class="math display">\[
+\begin{aligned}
+(d+\delta)h&#39;+h&#39;(d+\delta)
+&amp;=1-ip+Th+hT-dhTh-hThd\\
+&amp;=1-ip+(ip+hd)Th+hT(ip+dh)\\
+&amp;=1-ip+ipTh+hTip+h(dT+Td)h\\
+&amp;=1-ip+ipTh+hTip-hTipTh\\
+&amp;=1-i&#39;p&#39;.
+\end{aligned}
+\tag{5.9}
+\]</span></p>
+<p>The first line uses <span class="math inline">\(\delta h-\delta
+hTh=Th\)</span> and <span
+class="math inline">\(h\delta-hTh\delta=hT\)</span>. Thus every equality
+is an equality of actual operators on smooth forms; norm convergence and
+the preceding regularity argument justify their domains. Equations
+(5.8)–(5.9) prove a chain homotopy equivalence between the Dolbeault
+complex of the original twist and the bounded finite-dimensional complex
+<span class="math inline">\((\mathcal H,D(z))\)</span>. In particular
+its cohomology is precisely the holomorphic cohomology in (1.4).</p>
+<p>The exact source convention comparison is <span
+class="math inline">\(h_{\mathrm{Crainic}}=-h\)</span>, <span
+class="math inline">\(A_{\mathrm{Crainic}}=T\)</span>, and <span
+class="math inline">\(b=d\)</span>. Crainic writes <span
+class="math inline">\(ip=1+bh_{\mathrm{Crainic}}+h_{\mathrm{Crainic}}b\)</span>;
+substitution gives (5.3). His perturbed maps become exactly (5.5), with
+<span class="math inline">\(h&#39;_{\mathrm{Crainic}}=-h&#39;\)</span>.
+The source’s proof also contains the printed identity <span
+class="math inline">\(A(1-h_{\mathrm{Crainic}}\delta)=1\)</span>; the
+exact identity from its definition is <span
+class="math inline">\(A(1-h_{\mathrm{Crainic}}\delta)=\delta\)</span>.
+Equation (5.4) proves the corrected identity without cancelling or
+changing any operator. The full receiving proof (5.6)–(5.9) does not
+depend on that printed error.</p>
+<figure id="finite-twist-diagram">
+<img src="assets/finite-twist-complex.svg"
+style="min-width:900px;max-width:none;width:900px"
+alt="The actual harmonic contraction and its perturbed chain maps. Both squares commute; the homotopy preserves the original family and its full exponential factor. The harmonic spaces are those at the chosen centre, while their differential varies holomorphically. Proof: (5.3)–(5.9). Human source: Crainic, Section2, with the exact homotopy-sign comparison proved above." />
+<figcaption aria-hidden="true">The actual harmonic contraction and its
+perturbed chain maps. Both squares commute; the homotopy preserves the
+original family and its full exponential factor. The harmonic spaces are
+those at the chosen centre, while their differential varies
+holomorphically. Proof: (5.3)–(5.9). Human source: Crainic, Section2,
+with the exact homotopy-sign comparison proved above.</figcaption>
+</figure>
+<h2 id="analytic-jump-loci">6. Cohomology jumps in precisely the
+required family</h2>
+<p>Choose bases of the finite spaces <span
+class="math inline">\(\mathcal H^q\)</span>, of dimensions <span
+class="math inline">\(m_q\)</span>. Each <span
+class="math inline">\(D^q(z)\)</span> is a finite matrix of holomorphic
+functions, and <span class="math inline">\(D^{q+1}(z)D^q(z)=0\)</span>.
+Therefore</p>
+<p><span class="math display">\[
+h^q(Y,V\otimes L(z))
+=m_q-\operatorname{rank}D^q(z)-\operatorname{rank}D^{q-1}(z).
+\tag{6.1}
+\]</span></p>
+<p>For an integer <span class="math inline">\(k\)</span>, the locus
+where this is at least <span class="math inline">\(k\)</span> is the
+finite union, over <span class="math inline">\(r+s\le m_q-k\)</span>, of
+the intersections</p>
+<p><span class="math display">\[
+\{\operatorname{rank}D^q\le r\}\cap
+\{\operatorname{rank}D^{q-1}\le s\}.
+\tag{6.2}
+\]</span></p>
+<p>Each set is defined by all minors of the indicated next size, so is
+closed analytic. Their finite union is analytic as well: products of the
+two finite systems of defining functions cut out the union of two zero
+loci; iterate this construction. Degrees outside <span
+class="math inline">\(0,\ldots,n\)</span> have zero cohomology by (1.4).
+Thus every jump locus in (6.1) is closed analytic, and its complement
+for <span class="math inline">\(k=1\)</span> is open. On a connected
+parameter domain, a proper closed analytic subset has empty interior: a
+defining holomorphic function that vanishes on a nonempty open subset
+vanishes identically on its connected chart by its power series, and
+overlapping charts continue the conclusion. Hence the existence of one
+parameter with zero cohomology makes the vanishing locus dense and open.
+This is precisely the generic-endpoint step in lesson 10, Section 11.3,
+proved for its full exponential twist family.</p>
+<p>The construction proves the finite complex and its actual chain maps.
+For the map with singular fibres in lesson 10, Section 10.3, the <a
+href="proper-base-change-over-a-curve.html">graph-resolution chapter</a>
+constructs the precise further comparison: it resolves the graph on the
+fixed compact total space and applies this same contraction argument to
+the resulting two-term elliptic cone. Its parameter Cauchy proof
+identifies the finite complex with the direct image and its full-fibre
+restriction. The smooth duality map (4.7) supplies both the
+Cartier-duality input in lesson10 and the graph cone’s top-degree
+vanishing.</p>
+<h2 id="duality-exercises">7. Two complete calculations of the receiving
+maps</h2>
+<h3
+id="exercise-1.-retain-the-denominator-and-the-entire-jump-ideal">Exercise
+1. Retain the denominator and the entire jump ideal</h3>
+<p>Consider the two-term complex <span class="math inline">\(\mathbb
+C^2\xrightarrow{M_a}\mathbb C^2\)</span> in degrees zero and one,
+where</p>
+<p><span class="math display">\[
+M_a=\begin{pmatrix}ac&amp;ad\\ae&amp;1+af\end{pmatrix},\qquad
+a,c,d,e,f\in\mathbb C,
+\tag{7.1}
+\]</span></p>
+<p>and <span class="math inline">\(c,d,e,f\)</span> are fixed while
+<span class="math inline">\(a\)</span> varies near zero. Compute its
+finite harmonic reduction using the differential <span
+class="math inline">\(M_0\)</span> at zero, including all four chain
+maps, the contraction, and the equation of its nonvanishing cohomology
+locus.</p>
+<p><strong>Solution.</strong> At zero both harmonic spaces are the first
+coordinate line. The contraction in degree one sends <span
+class="math inline">\((y_0,y_1)\)</span> to <span
+class="math inline">\((0,y_1)\)</span>. On the exact domain <span
+class="math inline">\(1+af\ne0\)</span>, (5.4)–(5.5) give the one-by-one
+effective differential</p>
+<p><span class="math display">\[
+D(a)=ac-\frac{a^2de}{1+af}
+=\frac{a\bigl(c+a(cf-de)\bigr)}{1+af}.
+\tag{7.2}
+\]</span></p>
+<p>The full chain maps, in their specified degrees, are</p>
+<p><span class="math display">\[
+\begin{gathered}
+i&#39;^0(x)=\left(x,-\frac{ae}{1+af}x\right),\qquad i&#39;^1(y)=(y,0),\\
+p&#39;^0(x_0,x_1)=x_0,\qquad
+p&#39;^1(y_0,y_1)=y_0-\frac{ad}{1+af}y_1,\\
+h&#39;^1(y_0,y_1)=\left(0,\frac{y_1}{1+af}\right).
+\end{gathered}
+\tag{7.3}
+\]</span></p>
+<p>Direct multiplication gives <span
+class="math inline">\(M_ai&#39;^0=i&#39;^1D\)</span>, <span
+class="math inline">\(p&#39;^1M_a=Dp&#39;^0\)</span>, and <span
+class="math inline">\(p&#39;^ji&#39;^j=1\)</span> in each degree. It
+also gives <span
+class="math inline">\(h&#39;^1M_a=1-i&#39;^0p&#39;^0\)</span> and <span
+class="math inline">\(M_ah&#39;^1=1-i&#39;^1p&#39;^1\)</span>. Thus
+every map and denominator in the reduction is necessary to these
+identities. The two cohomology groups both have dimension one precisely
+where</p>
+<p><span class="math display">\[
+a\bigl(c+a(cf-de)\bigr)=0,
+\tag{7.4}
+\]</span></p>
+<p>and are both zero otherwise, on the stated domain. The effective
+differential determines the full local determinantal ideal generated by
+(7.2); since <span class="math inline">\(1+af\)</span> is a unit on this
+domain, this ideal equals that generated by the numerator in (7.4). If
+<span class="math inline">\(c=0\)</span> and <span
+class="math inline">\(de\ne0\)</span>, it is the ideal <span
+class="math inline">\((a^2)\)</span>, retaining its double zero although
+the underlying set has just the point zero. If <span
+class="math inline">\(c=0\)</span> and <span
+class="math inline">\(de=0\)</span>, the differential is identically
+zero and both cohomology groups have dimension one throughout the
+domain. These cases demonstrate why neither the denominator’s domain nor
+the numerator’s multiplicity may be discarded.</p>
+<h3 id="exercise-2.-keep-the-dimension-three-volume-phase">Exercise 2.
+Keep the dimension-three volume phase</h3>
+<p>For a unitary coframe and frame of <span
+class="math inline">\(E\)</span> as in (4.4), calculate <span
+class="math inline">\(S_1(\bar\theta^2\otimes e_a)\)</span> in complex
+dimension three and verify the pointwise pairing and both adjoint
+signs.</p>
+<p><strong>Solution.</strong> Here <span
+class="math inline">\(c_3=(-1)^3i^{-3}=-i\)</span>, and the
+concatenation <span class="math inline">\((2,1,3)\)</span> has sign
+<span class="math inline">\(-1\)</span>. Thus</p>
+<p><span class="math display">\[
+S_1(\bar\theta^2\otimes e_a)
+=i\,\bar\theta^1\wedge\bar\theta^3\otimes(e^a\otimes\kappa).
+\tag{7.5}
+\]</span></p>
+<p>Wedge with <span class="math inline">\(\bar\theta^2\)</span> on the
+left gives <span
+class="math inline">\(-i\,\bar\theta^1\wedge\bar\theta^2\wedge\bar\theta^3\wedge\kappa\)</span>.
+Formula (4.5) says the latter ordered six-form without <span
+class="math inline">\(-i\)</span> equals <span
+class="math inline">\(i\,dV_g\)</span>, so the product is exactly <span
+class="math inline">\(dV_g\)</span>. In degree one, (4.6) reads</p>
+<p><span class="math display">\[
+d_FS_1=-S_0d_E^*,\qquad d_F^*S_1=S_2d_E.
+\tag{7.6}
+\]</span></p>
+<p>Both signs follow from (4.2) in the declared
+antiholomorphic-before-canonical order; changing that order requires its
+factor <span class="math inline">\((-1)^{3r}\)</span>. The calculation
+is pointwise in arbitrary Hermitian metrics. Their derivatives still
+occur in the actual adjoints, so a pointwise orthonormal coframe has not
+removed the lower-order terms from the operator proof.</p>
+<h2 id="duality-sources">Source coverage and verification</h2>
+<p>The historical human reference for the duality theorem is <a
+href="https://link.springer.com/article/10.1007/BF02564268">Jean-Pierre
+Serre, <em>Un théorème de dualité</em>, Commentarii Mathematici
+Helvetici 29 (1955), 9–26</a>. Its publisher metadata was checked.
+Original-author TeX was not available in the checked disk index and
+publisher route; the original paper was not read for this derivation.
+Sections1–4 above are a complete written proof of the smooth
+compact-manifold result, using the stated local Dolbeault comparison and
+the supplied operator estimates.</p>
+<p>Crainic’s original-author TeX was read through the main perturbation
+proof and its special deformation-retract consequences, source
+lines1–342 of arXiv math/0403266v1. The remaining applications in that
+paper have not been fully read. Equations (5.4)–(5.9) prove the exact
+receiving argument and its homotopy-sign comparison, including the
+corrected right-resolvent identity. The local source ledger retains the
+downloaded archive and exact hashes. No original protected paper text is
+reproduced here.</p>
+<p>The exact checker tests the volume and adjoint signs in dimensions1–6
+and the full arbitrary two-by-two model in Exercise1, including its
+Schur denominator and every contraction identity. These finite checks
+supplement the functional-analytic proof. They do not constitute
+independent review or a numerical test of the analytic estimates.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

@@ -1,0 +1,1596 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From the original stable framing to the collapse map</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/framed-manifolds-and-the-pontryagin-thom-map.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="from-the-original-stable-framing-to-the-collapse-map">From the
+original stable framing to the collapse map</h1>
+<p>Proof companion for CG-S6 lesson 7. Written by GPT-6 Astra (OpenAI),
+at Ultra, 10 October 2026. New exposition CC0. Ten sections prove the
+full original framing and collapse construction, both bordism/homotopy
+directions and their inverse comparisons, suspension and stable
+bounding, the exact original complex tangent-framing homotopy, and two
+complete worked exercises. The stable degree-six class and the
+subsequent surgery calculation are proved in the included receiving
+companions, culminating in the <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a>. No independent review or novelty
+claim.</p>
+<p>The receiving manifold is the original compact smooth six-manifold
+<span class="math inline">\(X\)</span> of lesson 7. The included
+stable-framing proof supplies a specified isomorphism <span
+class="math display">\[
+\tau:TX\oplus\mathbf1_{\mathbb R}\longrightarrow
+                  X\times\mathbb R^7.
+\tag{1.1}
+\]</span> Keep this map and its inverse, rather than replacing them by a
+frame chosen without reference to the construction. The following
+formulas also cover a compact smooth <span
+class="math inline">\(n\)</span>-manifold <span
+class="math inline">\(M\)</span> without boundary, with a specified
+isomorphism <span class="math display">\[
+\tau:TM\oplus\mathbf1_{\mathbb R}^{\,k}
+            \longrightarrow M\times\mathbb R^{n+k}.
+\tag{1.2}
+\]</span> They will be applied with <span
+class="math inline">\(M=X,n=6,k=1\)</span>.</p>
+<p><a id="pt-original-embedding"></a></p>
+<h2 id="an-embedding-retaining-the-original-charts">1. An embedding
+retaining the original charts</h2>
+<p>Choose finitely many original coordinate charts <span
+class="math inline">\((U_i,\psi_i)\)</span>, compact subsets <span
+class="math inline">\(K_i\subset U_i\)</span> whose interiors cover
+<span class="math inline">\(M\)</span>, and smooth functions <span
+class="math inline">\(\chi_i\)</span> supported in <span
+class="math inline">\(U_i\)</span> and equal to one on a neighborhood of
+<span class="math inline">\(K_i\)</span>. Such functions are obtained
+from the positive smooth cutoff on two nested coordinate balls and a
+finite refinement of the compact cover. Extend both <span
+class="math inline">\(\chi_i\)</span> and <span
+class="math inline">\(\chi_i\psi_i\)</span> by zero outside <span
+class="math inline">\(U_i\)</span>; their supports lie in compact
+subsets of <span class="math inline">\(U_i\)</span>, so these extensions
+are smooth. Let the number of charts be <span
+class="math inline">\(L\)</span> and put <span
+class="math inline">\(N=(n+1)L\)</span>. Define the actual map <span
+class="math display">\[
+j:M\longrightarrow\mathbb R^N,\qquad
+j(m)=\bigl(\chi_i(m),\,\chi_i(m)\psi_i(m)\bigr)_{i=1}^{L}.
+\tag{1.3}
+\]</span> Its full derivative is <span class="math display">\[
+Dj_m(v)=
+\bigl(d\chi_i(v),\,
+       d\chi_i(v)\psi_i(m)+\chi_i(m)D\psi_i(v)\bigr)_{i=1}^{L}.
+\tag{1.4}
+\]</span> For each <span class="math inline">\(m\)</span>, some <span
+class="math inline">\(\chi_i\)</span> is identically one near <span
+class="math inline">\(m\)</span>. The corresponding coordinate block of
+(1.4) is <span class="math inline">\(D\psi_i\)</span>, which is
+injective. Thus <span class="math inline">\(j\)</span> is an immersion.
+If <span class="math inline">\(j(m)=j(m&#39;)\)</span>, choose such an
+<span class="math inline">\(i\)</span>. Equality of the first component
+gives <span class="math inline">\(\chi_i(m&#39;)=1\)</span>, so both
+points are in <span class="math inline">\(U_i\)</span>. Equality of the
+remaining block gives <span
+class="math inline">\(\psi_i(m)=\psi_i(m&#39;)\)</span>, hence <span
+class="math inline">\(m=m&#39;\)</span>. The continuous injection <span
+class="math inline">\(j\)</span> from compact <span
+class="math inline">\(M\)</span> to the Hausdorff space <span
+class="math inline">\(\mathbb R^N\)</span> is a homeomorphism onto its
+image. Together with the immersion property this proves that (1.3) is a
+smooth embedding.</p>
+<p>Use the standard ambient Euclidean inner product solely to define the
+normal subbundle <span class="math display">\[
+\nu_m=\{y\in\mathbb R^N:\langle y,Dj_m(v)\rangle=0
+                                  \text{ for every }v\in T_mM\}.
+\tag{1.5}
+\]</span> In any one of the original coordinates write <span
+class="math inline">\(J\)</span> for the <span
+class="math inline">\(N\)</span>-by-<span
+class="math inline">\(n\)</span> matrix of (1.4), and put <span
+class="math display">\[
+H=J^{\mathsf T}J,\qquad
+P_\nu=I_N-JH^{-1}J^{\mathsf T}.
+\tag{1.6}
+\]</span> The matrix <span class="math inline">\(H\)</span> is positive
+definite because <span class="math inline">\(J\)</span> has full column
+rank. Direct multiplication shows <span class="math display">\[
+P_\nu^{\,2}=P_\nu,\qquad
+P_\nu J=0,\qquad
+P_\nu^{\mathsf T}=P_\nu.
+\tag{1.7}
+\]</span> Thus (1.6) is the actual orthogonal projection onto (1.5).</p>
+<p>The projection is independent of the chosen coordinate
+representation. Under the change <span class="math inline">\(J\mapsto
+JA\)</span> with <span class="math inline">\(A\)</span> invertible, its
+entire product becomes <span class="math display">\[
+JA\bigl(A^{\mathsf T}HA\bigr)^{-1}A^{\mathsf T}J^{\mathsf T}
+       =JH^{-1}J^{\mathsf T}.
+\tag{1.8}
+\]</span> Every coordinate matrix <span class="math inline">\(A\)</span>
+has been retained in this comparison. Any other original metric on <span
+class="math inline">\(M\)</span> continues to exist as its original
+matrix; (1.6) defines the particular ambient projection used in the
+construction and makes no identification of that metric with <span
+class="math inline">\(H\)</span>.</p>
+<p><a id="pt-stable-normal-frame"></a></p>
+<h2 id="the-exact-map-from-the-tangent-framing-to-a-normal-framing">2.
+The exact map from the tangent framing to a normal framing</h2>
+<p>Stabilize the embedding by the specified zero inclusion <span
+class="math display">\[
+j&#39;:M\longrightarrow\mathbb R^{N+n+k},\qquad j&#39;(m)=(j(m),0).
+\tag{2.1}
+\]</span> Its actual normal bundle is <span
+class="math inline">\(\nu\oplus\mathbf1_{\mathbb R}^{\,n+k}\)</span>.
+Its rank is <span class="math display">\[
+r=(N-n)+(n+k)=N+k.
+\tag{2.2}
+\]</span> For <span class="math inline">\(y\in\nu_m\)</span> and <span
+class="math inline">\(u\in\mathbb R^{n+k}\)</span>, write <span
+class="math display">\[
+(v,b)=\tau_m^{-1}(u)\in T_mM\oplus\mathbb R^k.
+\tag{2.3}
+\]</span> Define <span class="math display">\[
+\begin{aligned}
+\alpha_m:\nu_m\oplus\mathbb R^{n+k}&amp;\longrightarrow
+                                 \mathbb R^N\oplus\mathbb R^k,\\
+\alpha_m(y,u)&amp;=(y+Jv,b).
+\end{aligned}
+\tag{2.4}
+\]</span> This is a bundle isomorphism. Its full inverse, with domain
+<span class="math inline">\((a,b)\in\mathbb R^N\oplus\mathbb
+R^k\)</span>, is <span class="math display">\[
+\alpha_m^{-1}(a,b)
+    =\left(P_\nu a,\,
+       \tau_m\bigl(H^{-1}J^{\mathsf T}a,b\bigr)\right).
+\tag{2.5}
+\]</span> Indeed <span class="math inline">\(P_\nu a+JH^{-1}J^{\mathsf
+T}a=a\)</span>, so (2.4) after (2.5) is the identity. Conversely <span
+class="math inline">\(J^{\mathsf T}y=0\)</span> for <span
+class="math inline">\(y\in\nu_m\)</span>, whence applying (2.5) to (2.4)
+gives <span class="math display">\[
+P_\nu(y+Jv)=y,\qquad
+H^{-1}J^{\mathsf T}(y+Jv)=v,\qquad
+\tau_m(v,b)=u.
+\tag{2.6}
+\]</span> This proves the other composite exactly. Equations (1.8) and
+the coordinate transformation rule for <span
+class="math inline">\(\tau_m\)</span> prove that (2.4)–(2.5) agree on
+overlapping original charts.</p>
+<p>For each standard coordinate vector <span
+class="math inline">\(e_\ell\)</span> of <span
+class="math inline">\(\mathbb R^r=\mathbb R^N\oplus\mathbb R^k\)</span>,
+let <span class="math display">\[
+E_\ell(m)=\alpha_m^{-1}(e_\ell)
+       \in\nu_m\oplus\mathbb R^{n+k}
+       \subset\mathbb R^{N+n+k},\qquad 1\leq\ell\leq r.
+\tag{2.7}
+\]</span> These are the ordered original normal-frame vectors produced
+by the tangent framing. Write <span class="math inline">\(E\)</span> for
+their ambient matrix and retain its entire Gram matrix <span
+class="math display">\[
+G(m)=E(m)^{\mathsf T}E(m).
+\tag{2.8}
+\]</span> It is positive definite. There is no orthonormal-frame
+substitution in (2.7).</p>
+<p>The orientation sign can also be read without dropping the
+permutation. Give <span class="math inline">\(\nu\)</span> the
+orientation for which <span class="math inline">\(TM\)</span> followed
+by <span class="math inline">\(\nu\)</span> has the ambient orientation.
+If <span class="math inline">\(\tau\)</span> preserves the specified
+orientation of <span class="math inline">\(TM\oplus\mathbb R^k\)</span>,
+then the determinant sign of (2.4), from the ordered domain <span
+class="math inline">\(\nu,\,\mathbb R^{n+k}\)</span> to the ordered
+target <span class="math inline">\(\mathbb R^N,\,\mathbb R^k\)</span>,
+is <span class="math display">\[
+(-1)^{n(N-n)}.
+\tag{2.9}
+\]</span> To verify this, use (2.3) to write the domain order as <span
+class="math inline">\(\nu,TM,\mathbb R^k\)</span>. The target order is
+<span class="math inline">\(TM,\nu,\mathbb R^k\)</span>. Moving the
+<span class="math inline">\(n\)</span> tangent vectors past the <span
+class="math inline">\(N-n\)</span> normal vectors gives exactly (2.9);
+the other two maps preserve the stated orientations. If the determinant
+sign of <span class="math inline">\(\tau\)</span> is negative, multiply
+(2.9) by that sign. For <span class="math inline">\(n=6\)</span>, the
+permutation factor is <span class="math inline">\(+1\)</span> for every
+original <span class="math inline">\(N\)</span>. For lesson 7, (2.1) has
+ambient dimension <span class="math inline">\(N+7\)</span> and the
+ordered normal frame has rank <span
+class="math inline">\(r=N+1\)</span>.</p>
+<p><a id="pt-full-tube-and-collapse"></a></p>
+<h2 id="the-original-radius-tube-and-its-smooth-collapse">3. The
+original-radius tube and its smooth collapse</h2>
+<p>For a positive number <span class="math inline">\(\epsilon\)</span>,
+retain the actual ellipsoidal fiber condition <span
+class="math display">\[
+\mathcal U_\epsilon=
+\{(m,A)\in M\times\mathbb R^r:
+                 \rho(m,A)=A^{\mathsf T}G(m)A&lt;\epsilon^2\}.
+\tag{3.1}
+\]</span> Define <span class="math display">\[
+\Gamma(m,A)=j&#39;(m)+E(m)A.
+\tag{3.2}
+\]</span> Its full derivative is <span class="math display">\[
+D\Gamma_{(m,A)}(v,B)
+   =Dj&#39;_m(v)+(DE_m[v])A+E(m)B.
+\tag{3.3}
+\]</span> At <span class="math inline">\(A=0\)</span>, the first and
+last blocks are complementary tangent and normal subspaces. In original
+tangent coordinates the full inverse at the zero section is <span
+class="math display">\[
+V\longmapsto
+\left(H^{-1}(J&#39;)^{\mathsf T}V,\,
+              G^{-1}E^{\mathsf T}V\right),
+\qquad J&#39;=\begin{pmatrix}J\\0\end{pmatrix}.
+\tag{3.4}
+\]</span> The cross-products <span
+class="math inline">\((J&#39;)^{\mathsf T}E\)</span> are zero and the
+two diagonal Gram matrices are <span class="math inline">\(H\)</span>
+and <span class="math inline">\(G\)</span>, proving (3.4). Away from the
+zero section the full matrix is <span class="math display">\[
+\bigl[J&#39;_1+(DE[\partial_1])A,\ldots,
+           J&#39;_n+(DE[\partial_n])A,\ E\bigr],
+\tag{3.5}
+\]</span> where the first block means the <span
+class="math inline">\(n\)</span> columns specified separately in (3.3).
+Its inverse is the inverse of this entire matrix, including all <span
+class="math inline">\(DE\)</span> terms.</p>
+<p>There is a single positive tube bound for which <span
+class="math inline">\(\Gamma\)</span> is a diffeomorphism onto its open
+image. First, compactness and the invertible zero-section derivative
+give a neighborhood of the entire zero section on which the derivative
+is invertible. The least eigenvalue of <span
+class="math inline">\(G\)</span> has a positive lower bound, so a
+sufficiently small normal-radius bound places the whole tube in that
+neighborhood. If global injectivity failed for every such bound, choose
+distinct pairs <span
+class="math inline">\((m_j,A_j),(m&#39;_j,A&#39;_j)\)</span> with equal
+images and both original normal lengths tending to zero. Compactness
+gives a subsequence with limits <span
+class="math inline">\(m,m&#39;\)</span>. Equality of images then implies
+<span class="math inline">\(j&#39;(m)=j&#39;(m&#39;)\)</span>, hence
+<span class="math inline">\(m=m&#39;\)</span>. Both pairs converge to
+<span class="math inline">\((m,0)\)</span>, contradicting the local
+inverse-function theorem there. Thus a sufficiently small single bound
+gives injectivity. A bijective local diffeomorphism onto its image has
+the smooth local inverses as its global inverse. Choose the retained
+<span class="math inline">\(\epsilon\)</span> so that <span
+class="math inline">\(2\epsilon\)</span> is less than this proved bound.
+Then <span class="math inline">\(\Gamma\)</span> is a diffeomorphism on
+the larger tube <span class="math inline">\(\mathcal
+U_{2\epsilon}\)</span> as well as on (3.1). These larger-tube
+coordinates remain valid across the actual collapse boundary <span
+class="math inline">\(\rho=\epsilon^2\)</span>.</p>
+<p>Regard <span class="math inline">\(S^{N+n+k}\)</span> as the
+one-point compactification of the actual ambient coordinate space in
+(2.1). Write <span class="math inline">\(\infty\)</span> for the added
+basepoint. In the target unit sphere <span
+class="math inline">\(S^r\subset\mathbb R^{r+1}\)</span>, retain the two
+specified points <span class="math display">\[
+q_-=(0,-1),\qquad q_+=(0,1)
+\tag{3.6}
+\]</span> and the exact inverse stereographic coordinate map <span
+class="math display">\[
+\sigma(Z)=
+\left(\frac{2Z}{1+Z^{\mathsf T}Z},
+       \frac{Z^{\mathsf T}Z-1}{1+Z^{\mathsf T}Z}\right).
+\tag{3.7}
+\]</span> For <span class="math inline">\(\rho&lt;\epsilon^2\)</span>,
+put <span class="math display">\[
+\lambda(\rho)=\exp\!\left(\frac{\rho}{\epsilon^2-\rho}\right),
+\qquad Z(m,A)=\lambda(\rho(m,A))A.
+\tag{3.8}
+\]</span> The collapse map with all its original fiber data is <span
+class="math display">\[
+\mathcal P:S^{N+n+k}\longrightarrow S^r,\qquad
+\mathcal P(\Gamma(m,A))=\sigma(Z(m,A)),\qquad
+\mathcal P=q_+\ \hbox{outside }\Gamma(\mathcal U_\epsilon).
+\tag{3.9}
+\]</span> In particular <span class="math inline">\(\mathcal
+P(\infty)=q_+\)</span>. This is a smooth based map.</p>
+<p>Here are the boundary and regular-value verifications. In the target
+chart centered at <span class="math inline">\(q_+\)</span>, (3.7) has
+coordinate <span class="math display">\[
+\frac{Z}{Z^{\mathsf T}Z}
+  =\exp\!\left(-\frac{\rho}{\epsilon^2-\rho}\right)
+                   \frac{A}{A^{\mathsf T}A}.
+\tag{3.10}
+\]</span> Near the tube boundary <span
+class="math inline">\(\rho=\epsilon^2\)</span>, the vector <span
+class="math inline">\(A\)</span> is bounded away from zero, since the
+largest eigenvalue of <span class="math inline">\(G\)</span> is
+uniformly bounded above. The exponential in (3.10) is <span
+class="math display">\[
+\exp(1)\exp\!\left(-\frac{\epsilon^2}{\epsilon^2-\rho}\right).
+\tag{3.11}
+\]</span> Every derivative of (3.11) is a finite sum of a polynomial in
+<span class="math inline">\((\epsilon^2-\rho)^{-1}\)</span>, derivatives
+of <span class="math inline">\(\rho\)</span>, and the same exponentially
+decaying factor. It tends to zero faster than every power of <span
+class="math inline">\(\epsilon^2-\rho\)</span>. Multiplication by the
+smooth bounded local derivatives of <span
+class="math inline">\(A/(A^{\mathsf T}A)\)</span> therefore gives a
+smooth zero extension of (3.10) across the boundary. The map is constant
+on a neighborhood of the ambient basepoint because the closed tube is
+contained in a bounded set. These facts prove smoothness of (3.9)
+everywhere.</p>
+<p>The full differential inside the tube is retained as follows: <span
+class="math display">\[
+\begin{aligned}
+d\rho&amp;=2A^{\mathsf T}G\,dA+A^{\mathsf T}(dG)A,\\
+dZ&amp;=\lambda(\rho)\left(dA+
+               \frac{\epsilon^2}{(\epsilon^2-\rho)^2}A\,d\rho\right),\\
+D\sigma_Z(B)&amp;=
+\left(\frac{2B}{1+Z^{\mathsf T}Z}
+      -\frac{4Z(Z^{\mathsf T}B)}{(1+Z^{\mathsf T}Z)^2},
+       \frac{4Z^{\mathsf T}B}{(1+Z^{\mathsf T}Z)^2}\right),\\
+D\mathcal P&amp;=D\sigma_Z\circ DZ\circ(D\Gamma)^{-1}.
+\end{aligned}
+\tag{3.12}
+\]</span> Thus the original Gram matrix, its derivatives, the original
+tube radius and every off-zero derivative of <span
+class="math inline">\(E\)</span> remain present.</p>
+<p>The inverse image of <span class="math inline">\(q_-\)</span> is
+exactly <span class="math inline">\(j&#39;(M)\)</span>: inside the tube,
+(3.7) equals <span class="math inline">\(q_-\)</span> exactly when <span
+class="math inline">\(Z=0\)</span>, equivalently <span
+class="math inline">\(A=0\)</span>; outside the tube its value is the
+different point <span class="math inline">\(q_+\)</span>. At the zero
+section, <span class="math inline">\(\lambda(0)=1\)</span> and <span
+class="math inline">\(dZ=dA\)</span>. In the target chart <span
+class="math display">\[
+\kappa_-(Y,t)=\frac{Y}{1-t},
+\tag{3.13}
+\]</span> we have <span
+class="math inline">\(\kappa_-\sigma(Z)=Z\)</span>. Therefore <span
+class="math display">\[
+D(\kappa_-\mathcal P)_{j&#39;(m)}E_\ell(m)=e_\ell,\qquad
+\ker D(\kappa_-\mathcal P)_{j&#39;(m)}=Dj&#39;_m(T_mM).
+\tag{3.14}
+\]</span> This proves that <span class="math inline">\(q_-\)</span> is a
+regular value and that its ordered inverse-image normal framing is
+exactly (2.7). In the ambient target tangent coordinates the derivative
+is <span class="math inline">\(2e_\ell\)</span>, since <span
+class="math inline">\(D\sigma_0(B)=(2B,0)\)</span>; the target frame
+used by (3.13) is correspondingly <span
+class="math inline">\((2e_\ell,0)\)</span>. The factor two has not been
+removed.</p>
+<p>For an explicit comparison with the usual boundary orientation on the
+target unit sphere, put its outward normal first. At the south pole the
+determinant of that ordered ambient frame is <span
+class="math display">\[
+\det\bigl[q_-,(2e_1,0),\ldots,(2e_r,0)\bigr]
+                       =(-1)^{r+1}2^r.
+\tag{3.15}
+\]</span> The last-coordinate vector moves past all <span
+class="math inline">\(r\)</span> tangent vectors and has its own
+negative sign, which proves the formula. Thus the target coordinate
+frame used throughout has sign <span
+class="math inline">\((-1)^{r+1}\)</span> relative to that boundary
+orientation. All inverse-image frames here use the specified <span
+class="math inline">\(\kappa_-\)</span> coordinate frame; (3.15) is the
+exact orientation conversion whenever the outward-normal-first sphere
+convention is invoked.</p>
+<p>These constructions give the required exact map from the original
+stable tangent framing to a smooth sphere map with its prescribed
+regular framed inverse image.</p>
+<p><a id="pt-bordism-to-homotopy"></a></p>
+<h2 id="an-actual-framed-bordism-gives-an-actual-based-homotopy">4. An
+actual framed bordism gives an actual based homotopy</h2>
+<p>Fix <span class="math inline">\(D=n+r\)</span>. An embedded framed
+bordism for the present construction consists of a compact smooth <span
+class="math inline">\((n+1)\)</span>-manifold <span
+class="math display">\[
+W\subset\mathbb R^D\times[0,1]
+\tag{4.1}
+\]</span> with a specified ordered normal frame <span
+class="math inline">\(E_W\)</span> of rank <span
+class="math inline">\(r\)</span>, and specified product collars at both
+ends. In those collars its embedding and frame are exactly <span
+class="math display">\[
+(m,t)\longmapsto(j_i(m),t),\qquad
+E_W(m,t)=\begin{pmatrix}E_i(m)\\0\end{pmatrix},
+\quad i=0,1.
+\tag{4.2}
+\]</span> There are no other intersections with the boundary of the
+cylinder. Each <span class="math inline">\(j_i\)</span> is an embedding
+of the corresponding compact <span
+class="math inline">\(n\)</span>-manifold, and <span
+class="math inline">\(E_i\)</span> is its original ordered normal
+frame.</p>
+<p>The smooth tube proof of Section 3 applies to <span
+class="math inline">\(W\)</span>, with the boundary handled by the exact
+product coordinates (4.2). In particular, there is an actual tube <span
+class="math display">\[
+\Gamma_W(w,A)=w+E_W(w)A,\qquad
+\rho_W(w,A)=A^{\mathsf T}G_W(w)A,\qquad
+G_W=E_W^{\mathsf T}E_W,
+\tag{4.3}
+\]</span> that is injective with invertible derivative on a fixed
+larger-radius neighborhood. It can be chosen inside <span
+class="math inline">\(\mathbb R^D\times[0,1]\)</span>. To check the
+latter point, choose smaller product collars first. In these collars the
+last component of <span class="math inline">\(E_W\)</span> is zero, so
+the normal displacement leaves <span class="math inline">\(t\)</span>
+unchanged. The rest of <span class="math inline">\(W\)</span> is compact
+and has positive distance from both boundary hyperplanes. Choose the
+normal-radius bound smaller than that distance. The displacement has
+Euclidean length <span class="math inline">\(\sqrt{\rho_W}\)</span>, so
+it cannot cross either boundary there.</p>
+<p>Choose one positive <span class="math inline">\(\epsilon\)</span>
+strictly inside that tube bound, retaining a larger valid tube of radius
+<span class="math inline">\(2\epsilon\)</span>. Replace <span
+class="math inline">\((\Gamma,\rho)\)</span> by <span
+class="math inline">\((\Gamma_W,\rho_W)\)</span> in (3.8)–(3.10), and
+set the map equal to <span class="math inline">\(q_+\)</span> outside
+the smaller tube. This gives a smooth map on the original cylinder <span
+class="math display">\[
+\mathcal P_W:\mathbb R^D\times[0,1]\longrightarrow S^r.
+\tag{4.4}
+\]</span> The flatness calculation (3.10)–(3.11) proves its smoothness
+across the tube boundary; the larger tube gives the actual boundary
+coordinates required by that calculation.</p>
+<p>Since <span class="math inline">\(W\)</span> is compact, the
+projection of the closed tube to <span class="math inline">\(\mathbb
+R^D\)</span> is bounded. Consequently (4.4) is equal to <span
+class="math inline">\(q_+\)</span> outside a single compact set in the
+spatial variables, uniformly for all <span
+class="math inline">\(t\)</span>. It therefore extends to a based
+homotopy <span class="math display">\[
+\mathcal H:S^D\times[0,1]\longrightarrow S^r,\qquad
+\mathcal H(\infty,t)=q_+.
+\tag{4.5}
+\]</span> The endpoint restrictions are exactly the collapse maps for
+<span class="math inline">\((j_0,E_0)\)</span> and <span
+class="math inline">\((j_1,E_1)\)</span> with the same displayed radius
+<span class="math inline">\(\epsilon\)</span>, because (4.2) identifies
+all their tube coordinates and Gram matrices.</p>
+<p>If the originally specified endpoint maps have radii <span
+class="math inline">\(\epsilon_0,\epsilon_1\)</span>, first choose the
+common <span class="math inline">\(\epsilon\)</span> with <span
+class="math display">\[
+0&lt;\epsilon\leq\min(\epsilon_0,\epsilon_1).
+\tag{4.6}
+\]</span> For each endpoint, interpolate from <span
+class="math inline">\(\epsilon_i\)</span> to <span
+class="math inline">\(\epsilon\)</span> inside the interval between
+those two actual positive values, using a smooth parameter function
+constant near its endpoints. Every tube used is contained in the
+original valid endpoint tube, since its radius is at most <span
+class="math inline">\(\epsilon_i\)</span>. Formula (3.9) with this
+varying radius is jointly smooth by the same flatness argument and gives
+a based homotopy of endpoint collapse maps. Its full interior derivative
+includes the extra radius term: <span class="math display">\[
+dZ=\lambda(\rho)\left[
+dA+
+A\left(
+\frac{\epsilon^2}{(\epsilon^2-\rho)^2}\,d\rho
+-\frac{2\epsilon\rho}{(\epsilon^2-\rho)^2}\,d\epsilon
+\right)\right].
+\tag{4.7}
+\]</span> Here <span class="math inline">\(\epsilon\)</span> denotes the
+actual varying radius at that parameter value, and <span
+class="math inline">\(d\rho\)</span> is the entire expression in (3.12).
+Thus neither original endpoint radius has been replaced without its
+explicit comparison. Concatenate these two endpoint-radius homotopies
+with (4.5), using parameter functions constant near the concatenation
+points. This gives a smooth based homotopy between the originally
+specified endpoint maps.</p>
+<p>For orientation, orient the ambient cylinder by <span
+class="math display">\[
+dt\wedge dx_1\wedge\cdots\wedge dx_D
+   =(-1)^D\,dx_1\wedge\cdots\wedge dx_D\wedge dt.
+\tag{4.8}
+\]</span> The sign in this comparison retains the displayed
+spatial-then-time coordinates of (4.1). Orient a regular inverse image
+by placing its tangent vectors before the specified target normal-frame
+vectors. Near an end, the order <span
+class="math inline">\((\partial_t,TM_i,E_i)\)</span> agrees with (4.8)
+when <span class="math inline">\((TM_i,E_i)\)</span> has the original
+spatial orientation. Thus <span class="math inline">\(W\)</span> has
+orientation <span class="math inline">\(dt\)</span> followed by the
+original orientation of <span class="math inline">\(M_i\)</span> on each
+collar. The outward-normal-first boundary convention consequently gives
+<span class="math display">\[
+\partial W=(-M_0)\ \sqcup\ M_1.
+\tag{4.9}
+\]</span> At <span class="math inline">\(t=0\)</span>, the outward
+normal is <span class="math inline">\(-\partial_t\)</span>, giving the
+first sign; at <span class="math inline">\(t=1\)</span>, it is <span
+class="math inline">\(+\partial_t\)</span>, giving the second. The
+regular-value calculation (3.14) on the whole tube also shows that the
+inverse-image normal frame of (4.4) is exactly <span
+class="math inline">\(E_W\)</span>, including the target tangent factor
+two. This completes the direction from the given embedded framed bordism
+to the given based sphere homotopy.</p>
+<p>The reverse construction follows. The endpoint germs in (4.2),
+including their full normal frames, will be retained.</p>
+<p><a id="pt-relative-regular-value"></a></p>
+<h2 id="the-relative-regular-value-construction-and-its-exact-frame">5.
+The relative regular-value construction and its exact frame</h2>
+<p>Let <span class="math inline">\(D=n+r\)</span>, with <span
+class="math inline">\(r\geq1\)</span>. A based map here sends the
+specified <span class="math inline">\(\infty\in S^D=(\mathbb
+R^D)^+\)</span> to the specified <span class="math inline">\(q_+\in
+S^r\)</span>. We first justify passage between continuous homotopies and
+smooth maps that are constant near the basepoint.</p>
+<p>For a continuous based homotopy <span
+class="math inline">\(F:S^D\times[0,1]\to S^r\)</span>, compactness of
+its basepoint line gives one neighborhood <span
+class="math inline">\(U\)</span> of <span
+class="math inline">\(\infty\)</span> whose entire image is in the
+target chart <span class="math display">\[
+\kappa_+(Y,t)=\frac{Y}{1+t}.
+\tag{5.1}
+\]</span> Choose a smooth spatial cutoff <span
+class="math inline">\(\chi\)</span> equal to zero on a smaller
+neighborhood of <span class="math inline">\(\infty\)</span> and equal to
+one outside <span class="math inline">\(U\)</span>. Within <span
+class="math inline">\(U\)</span>, replace the original coordinate <span
+class="math inline">\(w=\kappa_+F\)</span> by <span
+class="math display">\[
+w_s=\bigl(1-s+s\chi\bigr)w,\qquad 0\leq s\leq1.
+\tag{5.2}
+\]</span> Outside <span class="math inline">\(U\)</span> retain <span
+class="math inline">\(F\)</span>. These maps agree wherever <span
+class="math inline">\(\chi=1\)</span>, give a continuous based homotopy,
+and at <span class="math inline">\(s=1\)</span> are constant on a whole
+spatial neighborhood of the basepoint. The target chart is all of <span
+class="math inline">\(\mathbb R^r\)</span>, so no coordinate-domain
+condition is lost by this multiplication. If the original endpoint maps
+are already constant on basepoint neighborhoods, choose <span
+class="math inline">\(U\)</span> inside both of those neighborhoods.
+Then (5.2) leaves both endpoint maps fixed. For smooth input the full
+coordinate derivative is <span class="math display">\[
+dw_s=(1-s+s\chi)\,dw+
+            w\bigl(s\,d\chi+(\chi-1)\,ds\bigr).
+\tag{5.3}
+\]</span></p>
+<p>Reparametrize the original homotopy parameter by a smooth function
+that is zero near zero and one near one. The endpoint maps then occupy
+exact product collars. Smooth approximation relative these collars and
+the constant basepoint neighborhood has the following direct
+construction. Regard the target sphere as its original unit sphere in
+<span class="math inline">\(\mathbb R^{r+1}\)</span>. On the compact
+source choose a finite cover on which the oscillation of <span
+class="math inline">\(F\)</span> is less than <span
+class="math inline">\(\eta\)</span>, a subordinate smooth partition
+<span class="math inline">\(\psi_i\)</span>, and points <span
+class="math inline">\(p_i\)</span> in those sets. The Euclidean-valued
+map <span class="math inline">\(F_0=\sum_i\psi_i F(p_i)\)</span> is
+smooth and satisfies <span
+class="math inline">\(\|F_0-F\|&lt;\eta\)</span>. A cutoff <span
+class="math inline">\(\zeta\)</span>, equal to one on the prescribed
+smaller collars and supported where <span
+class="math inline">\(F\)</span> is already smooth, gives <span
+class="math display">\[
+\widetilde F=\zeta F+(1-\zeta)F_0,\qquad
+F^{\mathrm{sm}}=\frac{\widetilde F}
+                       {\sqrt{\widetilde F^{\mathsf T}\widetilde F}}.
+\tag{5.4}
+\]</span> Take <span class="math inline">\(\eta&lt;1/2\)</span>. Every
+vector on the straight segment from <span
+class="math inline">\(F\)</span> to <span
+class="math inline">\(\widetilde F\)</span> then has length at least
+<span class="math inline">\(1-\eta&gt;0\)</span>. Applying the displayed
+radial retraction to that whole segment gives the required relative
+homotopy. Its derivative at a nonzero vector <span
+class="math inline">\(v\)</span>, applied to <span
+class="math inline">\(b\)</span>, is <span class="math display">\[
+D\mathfrak r_v(b)=\frac{b}{\sqrt{v^{\mathsf T}v}}
+       -\frac{v(v^{\mathsf T}b)}{(v^{\mathsf T}v)^{3/2}}.
+\tag{5.5}
+\]</span> The construction works on boundary charts as well, since
+smooth partitions on a manifold with boundary can be obtained by
+restricting partitions on its doubled collar charts. Thus smooth based
+representatives constant near <span
+class="math inline">\(\infty\)</span>, and smooth based homotopies
+constant on endpoint collars, calculate the original continuous based
+homotopy classes. The norm factors in (5.4)–(5.5) belong to the explicit
+retraction; no original sphere radius or input map is silently
+replaced.</p>
+<p>We now arrange regularity at the <em>specified</em> point <span
+class="math inline">\(q_-\)</span>. This keeps the target point and its
+frame, rather than substituting a nearby regular value. The following
+argument applies either to a single smooth map on <span
+class="math inline">\(S^D\)</span> or to a smooth homotopy on <span
+class="math inline">\(S^D\times[0,1]\)</span>. In the latter case
+suppose that <span class="math inline">\(q_-\)</span> is already regular
+for the two endpoint maps, which are constant in their time collars.</p>
+<p>On the open set where <span class="math inline">\(F\ne q_+\)</span>,
+put <span class="math inline">\(Q=\kappa_-F\)</span>. Choose a smooth
+target cutoff <span class="math inline">\(\psi(Q)\)</span> with compact
+support, equal to one near <span class="math inline">\(Q=0\)</span>.
+Choose a smooth source cutoff <span
+class="math inline">\(\beta\)</span>, zero on the prescribed endpoint
+and basepoint neighborhoods and positive at every other possible
+nonregular inverse image of <span class="math inline">\(q_-\)</span>. It
+may be chosen zero only in slightly smaller fixed collars and the
+basepoint neighborhood; on their transition regions the original
+endpoint regularity or the absence of <span
+class="math inline">\(q_-\)</span> already holds. For <span
+class="math inline">\(a\)</span> in a sufficiently small open ball in
+<span class="math inline">\(\mathbb R^r\)</span>, set <span
+class="math display">\[
+Q_a(p)=Q(p)+\beta(p)\psi(Q(p))a,\qquad
+F_a(p)=\sigma(Q_a(p)).
+\tag{5.6}
+\]</span> Outside the support of the target cutoff use <span
+class="math inline">\(F_a=F\)</span>. Compact support in the target
+coordinate chart proves smooth pasting across its excluded point <span
+class="math inline">\(q_+\)</span>. The same formula with <span
+class="math inline">\(sa\)</span> gives a homotopy fixed on all the
+prescribed neighborhoods. The full derivative is <span
+class="math display">\[
+dQ_a=
+\bigl[I_r+\beta\,a\otimes D\psi_Q\bigr]\,dQ
+       +\psi(Q)\,a\,d\beta+\beta\psi(Q)\,da.
+\tag{5.7}
+\]</span></p>
+<p>At a zero of <span class="math inline">\(Q_a\)</span>, either <span
+class="math inline">\(\beta\psi(Q)\ne0\)</span>, in which case the
+parameter derivative in (5.7) is onto, or <span
+class="math inline">\(\beta\psi(Q)=0\)</span>. In the second case <span
+class="math inline">\(Q_a=Q=0\)</span>, hence <span
+class="math inline">\(\psi(Q)=1\)</span>, and <span
+class="math inline">\(\beta=0\)</span>. Here the original map is regular
+and <span class="math inline">\(d\beta=0\)</span>, since the nonnegative
+smooth <span class="math inline">\(\beta\)</span> is zero there. Thus
+the source derivative is onto. The universal zero set of (5.6) is
+consequently a smooth manifold. Apply Sard’s theorem to its projection
+to the parameter ball. A parameter outside the critical values gives a
+regular inverse image for <span class="math inline">\(F_a\)</span>. To
+see the exact linear implication, its tangent space is <span
+class="math display">\[
+\{(v,b):D_pQ_a(v)+\beta\psi(Q)b=0\}.
+\tag{5.8}
+\]</span> If the parameter projection from (5.8) is onto, subtracting a
+tangent lift of each parameter vector from an arbitrary universal lift
+proves that <span class="math inline">\(D_pQ_a\)</span> is onto.
+Conversely, if <span class="math inline">\(D_pQ_a\)</span> is onto, it
+solves (5.8) for every <span class="math inline">\(b\)</span>, proving
+that projection is onto. The already fixed boundary collars require no
+perturbation. A countable interior chart cover suffices for Sard; there
+are only the two boundary strata, on which regularity was retained. This
+proves the asserted relative regularity. The use of Sard is the same
+foundational smooth-analysis input as in the included relative Morse
+proof, Section 1; the parameter and endpoint comparisons here are proved
+explicitly.</p>
+<p>Let first <span class="math inline">\(F:S^D\to S^r\)</span> be one
+such transverse map. Its inverse image <span class="math display">\[
+M_F=F^{-1}(q_-)\subset\mathbb R^D
+\tag{5.9}
+\]</span> is a compact smooth <span
+class="math inline">\(n\)</span>-manifold. Compactness follows in <span
+class="math inline">\(S^D\)</span>, and the inverse image is disjoint
+from a whole basepoint neighborhood. At <span class="math inline">\(x\in
+M_F\)</span>, retain the actual <span
+class="math inline">\(r\)</span>-by-<span
+class="math inline">\(D\)</span> matrix <span class="math display">\[
+L_x=D(\kappa_-F)_x.
+\tag{5.10}
+\]</span> It has full row rank. The ordered inverse-image normal frame
+is the matrix <span class="math display">\[
+E_F=L^{\mathsf T}(LL^{\mathsf T})^{-1}.
+\tag{5.11}
+\]</span> Indeed <span class="math inline">\(LE_F=I_r\)</span>, every
+column lies in <span class="math inline">\((\ker L)^\perp\)</span>, and
+that orthogonal complement has dimension <span
+class="math inline">\(r\)</span>. Hence (5.11) is exactly the inverse of
+<span class="math inline">\(L\)</span> on the Euclidean normal bundle.
+Its full Gram matrix and the normal projection are <span
+class="math display">\[
+G_F=E_F^{\mathsf T}E_F=(LL^{\mathsf T})^{-1},
+\qquad
+P_F=E_FL=L^{\mathsf T}(LL^{\mathsf T})^{-1}L.
+\tag{5.12}
+\]</span> Matrix multiplication gives <span
+class="math inline">\(P_F^2=P_F=P_F^{\mathsf T}\)</span>. Smoothness
+follows from the everywhere invertible <span
+class="math inline">\(LL^{\mathsf T}\)</span>. In the target’s ambient
+tangent coordinates the original frame is <span
+class="math inline">\((2e_\ell,0)\)</span>, so <span
+class="math inline">\(DF(E_{F,\ell})=(2e_\ell,0)\)</span>, retaining the
+factor in Section 3.</p>
+<p>For a transverse homotopy <span class="math inline">\(\mathcal
+H\)</span>, the same construction gives <span class="math display">\[
+W=\mathcal H^{-1}(q_-)\subset\mathbb R^D\times[0,1],
+\qquad
+L_W=\bigl[D_x(\kappa_-\mathcal H)\ \
+                    \partial_t(\kappa_-\mathcal H)\bigr],
+\qquad
+E_W=L_W^{\mathsf T}(L_WL_W^{\mathsf T})^{-1}.
+\tag{5.13}
+\]</span> The compactness argument is uniform along the entire basepoint
+line. On each endpoint collar the last column of <span
+class="math inline">\(L_W\)</span> is zero, so (5.13) is exactly <span
+class="math inline">\((E_{F_i},0)^{\mathsf T}\)</span>. Its inverse
+image is exactly <span
+class="math inline">\(M_{F_i}\times[0,\delta_i)\)</span>, or the
+corresponding upper collar. Thus <span class="math inline">\(W\)</span>
+has precisely the product collars (4.2), and the orientation computation
+(4.8)–(4.9) applies without any new sign choice.</p>
+<p>In particular, if the endpoints are the original collapse maps of
+Section 3, their recovered endpoint frames are the original <span
+class="math inline">\(E_i\)</span>: both (5.11) and <span
+class="math inline">\(E_i\)</span> lie in the normal bundle and are
+right inverses to the same <span class="math inline">\(L_i\)</span>,
+whose restriction to that bundle is an isomorphism. This proves equality
+of the matrices, not only equality up to a change of frame. A based
+homotopy between the original collapse maps therefore gives an actual
+embedded framed bordism with exactly those endpoint frames.</p>
+<p><a id="pt-inverse-tube-comparison"></a></p>
+<h2
+id="a-transverse-map-is-homotopic-to-the-collapse-of-its-own-inverse-image">6.
+A transverse map is homotopic to the collapse of its own inverse
+image</h2>
+<p>Keep the actual <span class="math inline">\(F,M_F,E_F,G_F\)</span> of
+Section 5; write them <span class="math inline">\(F,M,E,G\)</span>
+within this section. Choose an original valid linear tube <span
+class="math display">\[
+\Gamma(m,A)=j(m)+E(m)A
+\tag{6.1}
+\]</span> as in Section 3, where now <span
+class="math inline">\(j\)</span> is the actual inclusion of <span
+class="math inline">\(M=F^{-1}(q_-)\)</span> in <span
+class="math inline">\(\mathbb R^D\)</span>. Retain any specified
+collapse radius <span class="math inline">\(\epsilon\)</span> with a
+larger valid tube. We construct a homotopy to that particular
+collapse.</p>
+<p>Near the zero section define the full coordinate function <span
+class="math display">\[
+\Phi(m,A)=\kappa_-F(\Gamma(m,A)).
+\tag{6.2}
+\]</span> It satisfies <span class="math inline">\(\Phi(m,0)=0\)</span>,
+<span class="math inline">\(D_A\Phi(m,0)=I_r\)</span>, and <span
+class="math inline">\(D_m\Phi(m,0)=0\)</span>. Compactness permits a
+single <span class="math inline">\(b&gt;0\)</span> such that (6.2) is
+defined for <span class="math inline">\(\|A\|&lt;2b\)</span> and <span
+class="math display">\[
+\|D_A\Phi(m,A)-I_r\|&lt;\tfrac12
+       \quad\hbox{for every }m,\ \|A\|\leq b.
+\tag{6.3}
+\]</span> In particular <span
+class="math inline">\(\|\Phi(m,A)-A\|\leq\|A\|/2\)</span>. For each
+<span class="math inline">\(\|z\|&lt;b/2\)</span>, the iteration of
+<span class="math display">\[
+A\longmapsto z-\bigl(\Phi(m,A)-A\bigr)
+\tag{6.4}
+\]</span> maps the closed ball <span class="math inline">\(\|A\|\leq
+b\)</span> to itself and is a contraction with ratio less than <span
+class="math inline">\(1/2\)</span>. Its geometric difference estimate
+proves existence and uniqueness of a fixed point <span
+class="math inline">\(a(m,z)\)</span>, with <span
+class="math inline">\(\|a(m,z)\|\leq2\|z\|&lt;b\)</span>. The inverse
+function theorem then proves smooth dependence on <span
+class="math inline">\(m,z\)</span>. On overlapping original charts these
+solutions agree by uniqueness. Their exact derivatives are <span
+class="math display">\[
+D_za=(D_A\Phi)^{-1},\qquad
+D_ma=-(D_A\Phi)^{-1}D_m\Phi,
+\tag{6.5}
+\]</span> evaluated at <span class="math inline">\((m,a(m,z))\)</span>.
+Define <span class="math display">\[
+T(m,z)=\Gamma(m,a(m,z)).
+\tag{6.6}
+\]</span> This is an actual tube with <span
+class="math inline">\(F(T(m,z))=\sigma(z)\)</span>, <span
+class="math inline">\(T(m,0)=j(m)\)</span>, <span
+class="math inline">\(D_zT(m,0)=E(m)\)</span>. Its full derivative,
+before restricting to the zero section, is <span class="math display">\[
+DT(v,B)=Jv+(DE[v])a+
+             E(D_A\Phi)^{-1}\bigl(B-D_m\Phi(v)\bigr).
+\tag{6.7}
+\]</span> No derivative of the original frame or of <span
+class="math inline">\(F\)</span> is discarded.</p>
+<p>For a sufficiently small <span
+class="math inline">\(\delta&gt;0\)</span>, the <em>entire</em> inverse
+image of the target ball <span
+class="math inline">\(\sigma(B_\delta^r)\)</span> is <span
+class="math inline">\(T(M\times B_\delta^r)\)</span>. To prove the
+assertion globally, take the complement in the compact sphere <span
+class="math inline">\(S^D\)</span> of <span
+class="math inline">\(\Gamma(M\times B_{b/2}^r)\)</span>. It is compact
+and contains no inverse image of <span
+class="math inline">\(q_-\)</span>. Its image under <span
+class="math inline">\(F\)</span> therefore has a positive distance from
+<span class="math inline">\(q_-\)</span>. Choose <span
+class="math inline">\(\delta&lt;b/4\)</span> so that the closure of
+<span class="math inline">\(\sigma(B_\delta^r)\)</span> misses that
+image. Every inverse image then has <span
+class="math inline">\(\|A\|&lt;b/2\)</span>, and the uniqueness in (6.4)
+identifies it with (6.6). Conversely every point of (6.6) has the
+required image by its defining equation. This proves both inclusions,
+including exclusion of extra components.</p>
+<p>Here is an explicit target homotopy that discards only values outside
+that ball and retains the derivative at <span
+class="math inline">\(q_-\)</span>. Parameterize the original unit
+target sphere by <span class="math display">\[
+(Y,t)=(\sin\theta\,u,-\cos\theta),\quad
+       0\leq\theta\leq\pi,\quad u\in S^{r-1},\qquad
+z=\tan(\theta/2)u.
+\tag{6.8}
+\]</span> At the two poles the value is independent of <span
+class="math inline">\(u\)</span>. Set <span
+class="math inline">\(\theta_\delta=2\arctan\delta\)</span>, and define
+<span class="math display">\[
+B_\delta(\theta)=
+\begin{cases}
+2\arctan\!\left[
+\tan(\theta/2)
+\exp\!\left(\dfrac{\tan^2(\theta/2)}
+                   {\delta^2-\tan^2(\theta/2)}\right)\right],
+                                  &amp;0\leq\theta&lt;\theta_\delta,\\
+\pi,                            &amp;\theta_\delta\leq\theta\leq\pi.
+\end{cases}
+\tag{6.9}
+\]</span> The difference <span
+class="math inline">\(\pi-B_\delta\)</span> is smooth and flat at <span
+class="math inline">\(\theta_\delta\)</span>: use <span
+class="math inline">\(\pi-2\arctan v=2\arctan(v^{-1})\)</span> for <span
+class="math inline">\(v&gt;0\)</span> and the exponential estimate
+(3.11). Near zero <span class="math inline">\(B_\delta\)</span> is a
+smooth odd function of <span class="math inline">\(\theta\)</span>, with
+derivative one; near <span class="math inline">\(\pi\)</span> it is
+constant. Thus <span class="math display">\[
+\theta_s=(1-s)\theta+sB_\delta(\theta),\qquad
+c_s(\sin\theta\,u,-\cos\theta)
+                =(\sin\theta_s\,u,-\cos\theta_s)
+\tag{6.10}
+\]</span> defines a jointly smooth based homotopy, including both poles.
+More explicitly near zero, <span
+class="math inline">\(\sin\theta_s/\sin\theta\)</span> is a smooth
+function of <span class="math inline">\(\theta^2\)</span>, and <span
+class="math inline">\(\cos\theta_s\)</span> is smooth in <span
+class="math inline">\(\theta^2\)</span>; near the other pole use <span
+class="math inline">\(v=\pi-\theta\)</span> and <span
+class="math inline">\(\pi-\theta_s=(1-s)v\)</span>. These expressions
+prove smoothness in the original Cartesian sphere charts, also for <span
+class="math inline">\(r=1\)</span>.</p>
+<p>We have <span class="math inline">\(c_0=1\)</span>, and in the chart
+(3.13), <span class="math display">\[
+c_1(\sigma(z))=
+\begin{cases}
+\sigma\!\left(\exp\!\left(\dfrac{z^{\mathsf T}z}
+                                  {\delta^2-z^{\mathsf
+T}z}\right)z\right),
+                                           &amp;\|z\|&lt;\delta,\\
+q_+,                                      &amp;\|z\|\geq\delta.
+\end{cases}
+\tag{6.11}
+\]</span> At every time, the only inverse image of <span
+class="math inline">\(q_-\)</span> under <span
+class="math inline">\(c_s\)</span> is <span
+class="math inline">\(q_-\)</span>, and its derivative in the original
+<span class="math inline">\(z\)</span>-coordinates is <span
+class="math inline">\(I_r\)</span>. Consequently <span
+class="math inline">\(c_sF\)</span> keeps the exact inverse-image frame
+<span class="math inline">\(E\)</span>. At <span
+class="math inline">\(s=1\)</span>, (6.11) and the proved global
+inverse-image equality show that <span
+class="math inline">\(c_1F\)</span> is precisely the collapse
+constructed in the curved tube <span class="math inline">\(T\)</span>
+with the displayed coordinate radius <span
+class="math inline">\(\delta\)</span>.</p>
+<p>Next compare that tube to the original linear tube, retaining the
+frame throughout. In the actual ambient coordinate space define <span
+class="math display">\[
+T_s(m,z)=(1-s)T(m,z)+s\Gamma(m,z),\quad 0\leq s\leq1.
+\tag{6.12}
+\]</span> At <span class="math inline">\(z=0\)</span> its value is <span
+class="math inline">\(j(m)\)</span> and its derivative is <span
+class="math inline">\([J,E]\)</span>, independently of <span
+class="math inline">\(s\)</span>. These matrices are invertible.
+Compactness of <span class="math inline">\(M\times[0,1]\)</span>, the
+local inverse function theorem with parameter, and the
+collision-sequence argument of Section 3 give one radius on which
+<em>every</em> <span class="math inline">\(T_s\)</span> is a tube. In
+that last argument a putative sequence of collisions also has a
+convergent parameter subsequence <span class="math inline">\(s_\nu\to
+s_*\)</span>; the parameter-dependent local inverse at <span
+class="math inline">\((m,0,s_*)\)</span> contradicts the collisions.
+Reduce <span class="math inline">\(\delta\)</span>, if needed, so that
+all <span class="math inline">\(T_s\)</span> are valid on <span
+class="math inline">\(M\times B_{2\delta}^r\)</span>. This reduction is
+made before (6.9) is used. Formula (6.11) in the coordinates <span
+class="math inline">\(T_s\)</span>, extended by <span
+class="math inline">\(q_+\)</span>, is now a smooth based homotopy of
+collapse maps. Smoothness with parameter at its boundary follows from
+the larger tubes and the same flat exponential. Its full tube
+differential is <span class="math display">\[
+dT_s=(1-s)\,DT+s\,D\Gamma+(\Gamma-T)\,ds.
+\tag{6.13}
+\]</span> Every endpoint and every frame derivative in (6.7), (6.13)
+remains part of this comparison.</p>
+<p>Finally compare the coordinate ball to the original ellipsoid. Make
+the preceding <span class="math inline">\(\delta\)</span> still smaller
+so that <span class="math display">\[
+\delta^2\max_{m\in M}\lambda_{\max}(G(m))\leq\epsilon^2.
+\tag{6.14}
+\]</span> In the fixed original tube (6.1), put <span
+class="math display">\[
+B_s(m)=(1-s)\frac{I_r}{\delta^2}
+                         +s\frac{G(m)}{\epsilon^2},
+\qquad q_s(m,A)=A^{\mathsf T}B_s(m)A.
+\tag{6.15}
+\]</span> Every <span class="math inline">\(B_s\)</span> is positive
+definite. Condition (6.14) implies <span class="math inline">\(B_s\geq
+G/\epsilon^2\)</span>, so <span class="math inline">\(q_s&lt;1\)</span>
+stays inside the original valid <span
+class="math inline">\(\epsilon\)</span>-tube. Use <span
+class="math display">\[
+Z_s=\exp\!\left(\frac{q_s}{1-q_s}\right)A
+       \quad(q_s&lt;1),\qquad \mathcal P_s=q_+\quad(q_s\geq1),
+\tag{6.16}
+\]</span> with <span class="math inline">\(\mathcal
+P_s(\Gamma(m,A))=\sigma(Z_s)\)</span> on the first region. This is
+jointly smooth by flatness, with uniform positive eigenvalue bounds for
+<span class="math inline">\(B_s\)</span>. It begins at the linear
+coordinate-ball collapse and ends at exactly (3.8)–(3.9) with the
+original <span class="math inline">\(G,\epsilon\)</span>. The complete
+differentials are <span class="math display">\[
+\begin{aligned}
+dq_s&amp;=2A^{\mathsf T}B_s\,dA+A^{\mathsf T}(dB_s)A,\\
+dB_s&amp;=\frac{s}{\epsilon^2}\,dG+
+             \left(\frac{G}{\epsilon^2}
+                         -\frac{I_r}{\delta^2}\right)ds,\\
+dZ_s&amp;=\exp\!\left(\frac{q_s}{1-q_s}\right)
+               \left(dA+\frac{A\,dq_s}{(1-q_s)^2}\right).
+\end{aligned}
+\tag{6.17}
+\]</span> The original <span
+class="math inline">\(\epsilon,\delta\)</span> are fixed in this
+interpolation; their separate radius variation, when required, is
+exactly (4.7). Equations (6.15)–(6.17) are the proved comparison between
+the two fiber domains and their full formulas.</p>
+<p>Concatenate (6.10), (6.12) and (6.16), using smooth parameter
+functions constant near the joins. This proves that the original
+transverse map <span class="math inline">\(F\)</span> is based homotopic
+to the collapse of its own actual framed inverse image, with its
+originally specified linear tube and radius.</p>
+<p>If <span class="math inline">\(M\)</span> is empty, compactness gives
+a target ball about <span class="math inline">\(q_-\)</span> missed by
+all of <span class="math inline">\(F\)</span>. Then (6.10) makes <span
+class="math inline">\(F\)</span> constant at <span
+class="math inline">\(q_+\)</span>, and the collapse of the empty
+manifold is that same constant map. This includes the empty case of the
+inverse assertion.</p>
+<p><a id="pt-bijection"></a></p>
+<h2
+id="the-two-constructions-are-inverse-in-each-stated-ambient-dimension">7.
+The two constructions are inverse in each stated ambient dimension</h2>
+<p>Let <span class="math inline">\(\mathcal B_{n,r}\)</span> denote the
+set of compact smooth <span
+class="math inline">\(n\)</span>-submanifolds without boundary in <span
+class="math inline">\(\mathbb R^{n+r}\)</span>, each with an ordered
+Euclidean normal frame of rank <span class="math inline">\(r\)</span>,
+modulo the embedded framed bordisms of (4.1)–(4.2). Reparametrizing
+product collars allows smooth concatenation of two bordisms; the
+constant cylinder supplies reflexivity. Reversing the height parameter
+and transporting its full normal vectors by <span
+class="math inline">\((x,t)\mapsto(x,1-t)\)</span> supplies symmetry.
+Thus this is an equivalence relation. The induced boundary orientation
+is always the one calculated in (4.8)–(4.9).</p>
+<p>The collapse construction and the regular-inverse-image construction
+give mutually inverse maps <span class="math display">\[
+\mathcal B_{n,r}\ \underset{\mathcal R}{\overset{\mathcal
+P}{\rightleftarrows}}\
+                  [S^{n+r},S^r]_* ,\qquad r\geq1.
+\tag{7.1}
+\]</span> Here the bracket denotes continuous based homotopy classes
+with the specified basepoints, and the normal frame in <span
+class="math inline">\(\mathcal R\)</span> is exactly (5.11). We verify
+every choice and composite.</p>
+<p>For <span class="math inline">\(\mathcal P\)</span>, two valid
+collapse radii give homotopic maps by (4.7). A framed bordism gives a
+based homotopy by Section 4. The linear tube is determined by the given
+embedding and full normal frame; the construction makes no additional
+choice of orthonormal frame. Hence <span class="math inline">\(\mathcal
+P\)</span> is well-defined.</p>
+<p>For <span class="math inline">\(\mathcal R\)</span>, equations
+(5.1)–(5.8) give a smooth transverse representative of any based class.
+Two such representatives of one class have a continuous based homotopy.
+Apply (5.2)–(5.5) relative its smooth endpoint collars, and then
+(5.6)–(5.8) relative those collars. The inverse image (5.13) is an
+embedded framed bordism with precisely their frames (5.11). Thus both
+approximation and transverse-parameter choices give the same element of
+<span class="math inline">\(\mathcal B_{n,r}\)</span>, and <span
+class="math inline">\(\mathcal R\)</span> is well-defined.</p>
+<p>The composite <span class="math inline">\(\mathcal R\mathcal
+P\)</span> recovers the original submanifold as a set and as an embedded
+smooth manifold, and recovers every original frame vector by (3.14) and
+the uniqueness after (5.13). Therefore this composite is the identity.
+The other composite is the identity by the three explicit homotopies of
+Section 6. This proves (7.1).</p>
+<p>The based null-homotopy case will be used directly later. If the
+collapse of a particular original <span
+class="math inline">\((M,E)\)</span> is null-homotopic, Section 5
+applied to a homotopy to the constant <span
+class="math inline">\(q_+\)</span> map gives a compact embedded <span
+class="math inline">\((n+1)\)</span>-manifold with one boundary
+component, whose normal frame extends exactly <span
+class="math inline">\(E\)</span>. Conversely such a framed bounding
+manifold gives a null-homotopy by Section 4 with an empty upper
+endpoint. This statement retains the original boundary embedding, collar
+and frame; it does not infer a bounding manifold merely from stable
+parallelizability.</p>
+<p><a id="pt-stabilization-and-original-framing"></a></p>
+<h2
+id="suspension-stable-bounding-and-the-original-complex-tangent-framing">8.
+Suspension, stable bounding and the original complex tangent
+framing</h2>
+<p>We specify the suspension coordinates before identifying its inverse
+image. The one-point compactification of a product has the exact based
+homeomorphism <span class="math display">\[
+(\mathbb R^D\times\mathbb R)^+
+       \longrightarrow(\mathbb R^D)^+\wedge\mathbb R^+.
+\tag{8.1}
+\]</span> It takes each finite <span
+class="math inline">\((x,u)\)</span> to its two classes and takes the
+added point to the collapsed wedge. The quotient of the compact product
+on the right by its closed wedge is compact Hausdorff; its complement is
+exactly <span class="math inline">\(\mathbb R^D\times\mathbb R\)</span>.
+The displayed bijection is continuous, including the added point because
+complements of neighborhoods there are compact subsets of that
+complement. This proves (8.1) as a homeomorphism. The order of the new
+coordinate is spatial <span class="math inline">\(x\)</span>, then <span
+class="math inline">\(u\)</span>.</p>
+<p>Identify the target <span class="math inline">\((\mathbb
+R^r)^+\)</span> with the original unit <span
+class="math inline">\(S^r\)</span> by <span
+class="math inline">\(\sigma\)</span>. For a based map <span
+class="math inline">\(F\)</span>, its reduced suspension, in (8.1), is
+represented by <span class="math display">\[
+\widehat{\Sigma F}(x,u)=
+\begin{cases}
+\sigma_{r+1}\bigl(Q(x),u\bigr),&amp;
+          F(x)\ne q_+,\quad Q=\kappa_-F,\\
+q_+,&amp;F(x)=q_+,
+\end{cases}
+\qquad
+\widehat{\Sigma F}(\infty)=q_+.
+\tag{8.2}
+\]</span> Here <span class="math inline">\(\sigma_{r+1}\)</span> is the
+full formula (3.7) in <span class="math inline">\(r+1\)</span>
+coordinates; in particular its denominator is <span
+class="math inline">\(1+Q^{\mathsf T}Q+u^2\)</span>. Formula (8.2) is
+the smash of the given <span class="math inline">\(F\)</span> and the
+identity of <span class="math inline">\(\mathbb R^+\)</span>, so it
+represents the original suspension homomorphism, with no coordinate
+permutation.</p>
+<p>It is also useful to check continuity and finite-coordinate
+smoothness directly. As <span class="math inline">\(F(x)\to q_+\)</span>
+through the other chart, <span
+class="math inline">\(\|Q\|\to\infty\)</span>. As <span
+class="math inline">\(|u|\to\infty\)</span>, the last coordinate already
+forces <span class="math inline">\(\|(Q,u)\|\to\infty\)</span>. For any
+fixed bound on <span class="math inline">\(\|Q\|\)</span>, its possible
+source points form a compact set away from the based point, since <span
+class="math inline">\(F(\infty)=q_+\)</span>. These observations prove
+continuity at the collapsed points and at infinity. Near a finite point
+with <span class="math inline">\(F(x)=q_+\)</span>, use the actual <span
+class="math inline">\(w=\kappa_+F(x)\)</span>. The target north-chart
+coordinate of (8.2) is exactly <span class="math display">\[
+\left(\frac{w}{1+u^2w^{\mathsf T}w},
+       \frac{u\,w^{\mathsf T}w}{1+u^2w^{\mathsf T}w}\right).
+\tag{8.3}
+\]</span> The denominator is at least one. This proves smoothness across
+<span class="math inline">\(w=0\)</span>. For example with <span
+class="math inline">\(v=w^{\mathsf T}w\)</span>, <span
+class="math inline">\(a=1+u^2v\)</span>, the full differential is <span
+class="math display">\[
+dv=2w^{\mathsf T}dw,\quad da=2uv\,du+u^2\,dv,\quad
+d(8.3)=
+\left(\frac{dw}{a}-\frac{w\,da}{a^2},
+       \frac{v\,du+u\,dv}{a}-\frac{uv\,da}{a^2}\right).
+\tag{8.4}
+\]</span> At the source point at infinity only continuity is required
+for the suspension class. The relative procedure (5.2)–(5.5) makes a
+smooth representative constant near that point while leaving the whole
+regular-inverse-image neighborhood unchanged.</p>
+<p>For transverse <span class="math inline">\(F\)</span>, the inverse
+image of the target’s specified south pole under (8.2) is exactly <span
+class="math inline">\(M_F\times\{0\}\)</span>. In its target south
+coordinates the derivative is <span class="math display">\[
+\begin{pmatrix}L&amp;0\\0&amp;1\end{pmatrix}.
+\tag{8.5}
+\]</span> Consequently the recovered original normal frame, Gram matrix
+and linear-tube squared length are <span class="math display">\[
+E^+=
+\begin{pmatrix}E&amp;0\\0&amp;1\end{pmatrix},\qquad
+G^+=\begin{pmatrix}G&amp;0\\0&amp;1\end{pmatrix},\qquad
+\rho^+(m,A,u)=A^{\mathsf T}G(m)A+u^2.
+\tag{8.6}
+\]</span> This keeps the old <span class="math inline">\(G\)</span> and
+appends the specified unit coordinate. The ambient tangent target factor
+is again two for every coordinate. The frame order is <span
+class="math inline">\(E_1,\ldots,E_r,e_u\)</span>; the source
+orientation order is the old spatial orientation followed by <span
+class="math inline">\(u\)</span>, so no permutation sign occurs here.
+Applying Section 6 to the smoothed (8.2) proves that it is homotopic to
+the collapse with this exact frame and any specified valid radius. In
+particular (7.1) commutes with suspension and the geometric operation
+(8.6).</p>
+<p>Define the stable group in degree <span
+class="math inline">\(n\geq0\)</span> by the directed limit <span
+class="math display">\[
+\pi_n^{\,S}=\underset{r\longrightarrow\infty}{\operatorname{colim}}\,
+                   \pi_{n+r}(S^r),
+\tag{8.7}
+\]</span> where the transition maps are precisely (8.2). One may begin
+with <span class="math inline">\(r\geq2\)</span>, where the homotopy
+groups in this limit are abelian; dropping finitely many initial terms
+changes no directed limit. We use no stable-range theorem to replace
+this limit by a particular finite term. A class represented at rank
+<span class="math inline">\(r\)</span> equals zero in (8.7) exactly when
+its image after some finite number <span
+class="math inline">\(s\geq0\)</span> of these transitions is zero. This
+follows from the definition of the directed-limit equivalence:
+representatives <span class="math inline">\(a_r,b_t\)</span> are
+equivalent precisely when their images agree at some common finite
+stage. The usual group law is compatible with these transitions because
+the two hemispheres defining addition suspend to the corresponding two
+pieces of the suspended source; the common boundary still maps to the
+basepoint.</p>
+<p>Combining that definition with (7.1), (8.5) and (8.6) proves the
+exact geometric assertion needed here: <span class="math display">\[
+\begin{gathered}
+\bigl[\mathcal P(M,E)\bigr]=0\text{ in }\pi_n^{\,S}
+\\
+\Longleftrightarrow
+\\
+(M\times\{0\},E\oplus I_s)
+\text{ bounds an embedded framed manifold}
+\\
+\text{for some finite }s.
+\end{gathered}
+\tag{8.8}
+\]</span> The ambient boundary space on the right is <span
+class="math inline">\(\mathbb R^{n+r+s}\)</span>, and the bounding
+manifold lies in its product with <span
+class="math inline">\([0,1]\)</span>, with the original <span
+class="math inline">\(M\)</span> at height zero and an empty upper
+boundary. Thus the notation <span
+class="math inline">\(M\times\{0\}\)</span> in (8.8) uses exactly <span
+class="math inline">\(s\)</span> appended zero coordinates. Both
+directions are actual constructions: suspend, use Section 5 on a
+null-homotopy, or collapse the bounding manifold and use Section 4. No
+existence of a stable null-homotopy is asserted by (8.8) without its
+calculation.</p>
+<p>We finally prove the comparison back to the original tangent framing
+for the particular complex manifold in lesson 7. First record this
+comparison for arbitrary data (1.2). The normal frame <span
+class="math inline">\(E\)</span> of (2.7) gives a stable tangent framing
+<span class="math display">\[
+\begin{aligned}
+\tau_E:T_mM\oplus\mathbb R^N\oplus\mathbb R^k
+       &amp;\longrightarrow \mathbb R^N\oplus\mathbb R^{n+k},\\
+\tau_E(v,a,b)&amp;=
+\left(Jv+P_\nu a,\
+             \tau\bigl(H^{-1}J^{\mathsf T}a,b\bigr)\right).
+\end{aligned}
+\tag{8.9}
+\]</span> This is the full tangent-plus-normal map <span
+class="math inline">\(Dj&#39;(v)+E(a,b)\)</span>, using (2.5). Define
+also the specified stabilization of the original framing <span
+class="math display">\[
+\tau_{\mathrm{st}}(v,a,b)=(a,\tau(v,b)).
+\tag{8.10}
+\]</span> The coordinate orders in these two formulas agree. Put <span
+class="math inline">\(Q=H^{-1}J^{\mathsf T}\)</span>, so <span
+class="math inline">\(QJ=I\)</span>, <span
+class="math inline">\(QP_\nu=0\)</span>, and <span
+class="math inline">\(P_\nu+JQ=I_N\)</span>. The exact comparison is
+<span class="math display">\[
+S_m(v,a,b)=(Qa,\ P_\nu a+Jv,\ b),\qquad
+S_m^2=I,\qquad
+\tau_E=\tau_{\mathrm{st}}S_m.
+\tag{8.11}
+\]</span> Each equality follows by substituting these three matrix
+identities. Relative to the decomposition <span
+class="math inline">\(a=P_\nu a+JQa\)</span>, the map <span
+class="math inline">\(S_m\)</span> exchanges the two <span
+class="math inline">\(n\)</span>-dimensional tangent summands and fixes
+every other summand. Its determinant sign is therefore <span
+class="math inline">\((-1)^n\)</span>. In general an orientation
+calculation alone would not make this bundle automorphism homotopic to
+the identity.</p>
+<p>For the original <span class="math inline">\(M=X\)</span>, retain its
+original almost-complex tangent operator <span
+class="math inline">\(\mathcal J\)</span>, with <span
+class="math inline">\(\mathcal J^2=-I\)</span>. It is provided by the
+original complex charts, independently of the later smooth-sphere
+recognition. This gives the following explicit homotopy, which proves
+the additional comparison we actually need. For <span
+class="math inline">\(0\leq t\leq1\)</span>, put <span
+class="math inline">\(\theta=\pi t/2\)</span>, <span
+class="math inline">\(\varphi=\pi t\)</span>, <span
+class="math inline">\(u=Qa\)</span>, <span class="math inline">\(y=P_\nu
+a\)</span>, and set <span class="math display">\[
+\begin{aligned}
+C_\varphi&amp;=\cos\varphi\,I+\sin\varphi\,\mathcal J,\qquad
+       C_\varphi^{-1}=\cos\varphi\,I-\sin\varphi\,\mathcal J,\\
+v_t&amp;=\cos\theta\,v+\sin\theta\,u,\\
+a_t&amp;=y+J C_\varphi(-\sin\theta\,v+\cos\theta\,u),\\
+S_{m,t}(v,a,b)&amp;=(v_t,a_t,b).
+\end{aligned}
+\tag{8.12}
+\]</span> Multiplication gives the displayed inverse of <span
+class="math inline">\(C_\varphi\)</span>, since <span
+class="math inline">\(\mathcal J^2=-I\)</span>. The rotation on the
+ordered pair <span class="math inline">\((v,u)\)</span>, then <span
+class="math inline">\(C_\varphi\)</span> on its second component, then
+the original splitting <span class="math inline">\(a=y+Ju\)</span>, are
+all isomorphisms. Thus every <span
+class="math inline">\(S_{m,t}\)</span> is invertible. At <span
+class="math inline">\(t=0\)</span> it is the identity; at <span
+class="math inline">\(t=1\)</span>, <span
+class="math inline">\(v_t=u\)</span> and <span
+class="math inline">\(C_\pi(-v)=v\)</span>, so it is exactly (8.11). All
+coefficients are smooth in <span class="math inline">\(m,t\)</span>, and
+the original <span class="math inline">\(J,H,\mathcal J\)</span> make
+the formula agree in overlapping original charts. We have proved the
+actual framing homotopy <span class="math display">\[
+\tau_{\mathrm{st}}S_{m,t}:\quad
+                  \tau_{\mathrm{st}}\simeq\tau_E.
+\tag{8.13}
+\]</span> This comparison uses the original almost-complex structure at
+an explicit point in the proof. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-general-stable-framing">general
+stable tangent-frame comparison</a> now proves the same endpoint
+homotopy for every stably framed six-manifold, after at most one further
+specified identity coordinate. It uses the original stable frame on the
+even-rank bundle, constructs its full rotation and cancels the auxiliary
+minus signs with a second explicit rotation. Its equations (7.9)–(7.19)
+retain this chapter’s original J, H, Q, normal projection and both
+framing maps. That independent bundle calculation supplies the full
+tangent-framed bordism use of the normal-framed bijection; the original
+complex-specific homotopy (8.12) remains unchanged. For example the full
+variation of its extra factor is <span class="math display">\[
+dC_\varphi=
+(-\sin\varphi\,I+\cos\varphi\,\mathcal J)\,d\varphi
+                                      +\sin\varphi\,d\mathcal J,
+\tag{8.14}
+\]</span> and the derivative of <span
+class="math inline">\(a_t=y+JC_\varphi(-\sin\theta v+\cos\theta
+u)\)</span> includes <span class="math inline">\(dy\)</span>, <span
+class="math inline">\(dJ\)</span>, (8.14), and the full derivative of
+the last parenthesis. Thus the varying original complex operator is
+retained, not treated as a constant matrix.</p>
+<p>For completeness, a normal-framed bounding manifold obtained in (8.8)
+has an actual stable tangent framing. If <span
+class="math inline">\(K\)</span> is a matrix of its tangent inclusion in
+the ambient <span class="math inline">\(\mathbb R^{n+r+s}\times\mathbb
+R\)</span>, and <span class="math inline">\(E_W\)</span> its normal
+frame, the isomorphism and its inverse are <span class="math display">\[
+(v,A)\longmapsto Kv+E_WA,\qquad
+z\longmapsto
+\left((K^{\mathsf T}K)^{-1}K^{\mathsf T}z,\
+       (E_W^{\mathsf T}E_W)^{-1}E_W^{\mathsf T}z\right).
+\tag{8.15}
+\]</span> Here <span class="math inline">\(K^{\mathsf T}E_W=0\)</span>,
+so direct multiplication proves both composites. The formulas are
+independent of tangent chart choices by the same calculation as
+(1.8).</p>
+<p>On its product boundary collar, write a tangent vector as <span
+class="math inline">\(v+a\,\partial_t\)</span>. Formula (8.15) becomes
+<span class="math display">\[
+(v+a\,\partial_t,A)\longmapsto
+                         \bigl(Dj(v)+(E\oplus I_s)A,\ a\bigr).
+\tag{8.16}
+\]</span> The spatial-then-time order is shown explicitly. Reordering it
+to time-first multiplies the orientation by <span
+class="math inline">\((-1)^{n+r+s}\)</span>, exactly as in (4.8). The
+lower boundary orientation is <span class="math inline">\(-M\)</span> as
+a cobordism from <span class="math inline">\(M\)</span> to the empty
+manifold; forgetting that incoming-versus-outgoing convention leaves the
+specified underlying framed boundary identification unchanged. Equation
+(8.16) restricts to <span class="math inline">\(\tau_E\)</span> with the
+<span class="math inline">\(s\)</span> added factors and the displayed
+collar line. Reverse the parameter in (8.13), make it constant near both
+ends, and use it on a smaller collar. This changes the boundary framing
+to the specified stabilization (8.10) of the original <span
+class="math inline">\(\tau\)</span>, while retaining the framing on the
+rest of the bounding manifold. At the outer seam it equals the old frame
+on a whole neighborhood, so it pastes smoothly. The same argument
+applies after every appended identity factor.</p>
+<p>Consequently the framed bounding construction, when the stable class
+of the actual collapse has been proved zero, receives the original
+complex six-manifold and its original stable tangent framing. Its input
+is not merely an abstract manifold with an unspecified stable
+trivialization.</p>
+<p><a id="pt-worked-exercises"></a></p>
+<h2 id="two-complete-worked-exercises">9. Two complete worked
+exercises</h2>
+<h3 id="exercise-9.1.-a-sheared-original-frame-on-a-circle">Exercise
+9.1. A sheared original frame on a circle</h3>
+<p>Fix <span class="math inline">\(a,b,d&gt;0\)</span> and <span
+class="math inline">\(c\in\mathbb R\)</span>. Embed the original circle
+by <span
+class="math inline">\(j(\theta)=(a\cos\theta,a\sin\theta,0)\)</span>,
+and prescribe the ordered normal frame <span class="math display">\[
+E_1=(b\cos\theta,b\sin\theta,0),\qquad
+E_2=(c\cos\theta,c\sin\theta,d).
+\tag{9.1}
+\]</span> Compute the complete tube, its inverse, the inverse-image
+framing matrix, the Gram condition and the orientation. Determine the
+collapse derivative and a valid original radius.</p>
+<p><strong>Solution.</strong> Write <span
+class="math inline">\(R=a+bA_1+cA_2\)</span>. The actual tube is <span
+class="math display">\[
+\Gamma(\theta,A_1,A_2)
+       =(R\cos\theta,R\sin\theta,dA_2),\qquad
+G=\begin{pmatrix}b^2&amp;bc\\bc&amp;c^2+d^2\end{pmatrix}.
+\tag{9.2}
+\]</span> Its original squared normal length is <span
+class="math display">\[
+\rho=b^2A_1^2+2bcA_1A_2+(c^2+d^2)A_2^2
+                   =(bA_1+cA_2)^2+d^2A_2^2.
+\tag{9.3}
+\]</span> In particular <span class="math inline">\(G\)</span> is
+positive definite: its first principal minor is <span
+class="math inline">\(b^2&gt;0\)</span>, and its determinant is <span
+class="math inline">\(b^2d^2&gt;0\)</span>. The mixed term is present
+whenever <span class="math inline">\(c\ne0\)</span>.</p>
+<p>Choose <span class="math inline">\(0&lt;\epsilon&lt;a/2\)</span>. On
+<span class="math inline">\(\rho&lt;(2\epsilon)^2\)</span>, we have
+<span class="math inline">\(|bA_1+cA_2|&lt;2\epsilon&lt;a\)</span>, so
+<span class="math inline">\(R&gt;0\)</span>. For an image point <span
+class="math inline">\((x,y,z)\)</span>, the inverse coordinates are
+<span class="math display">\[
+\begin{aligned}
+R&amp;=\sqrt{x^2+y^2},\qquad
+(\cos\theta,\sin\theta)=(x/R,y/R),\\
+A_2&amp;=z/d,\qquad
+A_1=\frac{R-a-cz/d}{b}.
+\end{aligned}
+\tag{9.4}
+\]</span> The angular statement is a smooth circle-valued inverse, with
+the usual local angular charts where a single real angle is needed.
+Substitution of (9.4) into (9.2) and the reverse substitution both give
+the identity. Thus this is an actual tube on the larger radius required
+in Section 3. The original <span class="math inline">\(\rho\)</span>
+becomes <span class="math inline">\((R-a)^2+z^2\)</span> <em>under the
+displayed map</em>; (9.3) remains its complete expression in the given
+frame coordinates.</p>
+<p>Differentiate (9.4) on the zero section. The two rows of the
+inverse-image matrix are <span class="math display">\[
+L=
+\begin{pmatrix}
+  \cos\theta/b&amp;\sin\theta/b&amp;-c/(bd)\\
+  0&amp;0&amp;1/d
+\end{pmatrix},
+\qquad
+LL^{\mathsf T}=
+\begin{pmatrix}
+(c^2+d^2)/(b^2d^2)&amp;-c/(bd^2)\\
+-c/(bd^2)&amp;1/d^2
+\end{pmatrix}=G^{-1}.
+\tag{9.5}
+\]</span> Matrix multiplication gives <span
+class="math inline">\(LE=I_2\)</span> and <span
+class="math inline">\(L(-a\sin\theta,a\cos\theta,0)^{\mathsf
+T}=0\)</span>. The columns of <span class="math inline">\(E\)</span> are
+perpendicular to that tangent. Therefore <span
+class="math inline">\(L^{\mathsf T}(LL^{\mathsf T})^{-1}=E\)</span>,
+recovering exactly the two vectors in (9.1), including <span
+class="math inline">\(b,c,d\)</span>.</p>
+<p>The full tube derivative has columns <span class="math display">\[
+\left[
+\begin{pmatrix}-R\sin\theta\\R\cos\theta\\0\end{pmatrix},
+\begin{pmatrix}b\cos\theta\\b\sin\theta\\0\end{pmatrix},
+\begin{pmatrix}c\cos\theta\\c\sin\theta\\d\end{pmatrix}
+\right],
+\qquad \det D\Gamma=-Rbd.
+\tag{9.6}
+\]</span> It is invertible on the whole stated tube. At the zero section
+the determinant is <span class="math inline">\(-abd&lt;0\)</span>.
+Consequently the inverse-image orientation defined by tangent-then-<span
+class="math inline">\((E_1,E_2)\)</span> is the <em>negative</em> of
+increasing <span class="math inline">\(\theta\)</span>. This sign is
+part of the framed example.</p>
+<p>On <span class="math inline">\(\rho&lt;\epsilon^2\)</span>, put <span
+class="math inline">\(\lambda=\exp(\rho/(\epsilon^2-\rho))\)</span>. The
+actual target map is <span class="math display">\[
+\mathcal P(\Gamma)=
+\left(
+\frac{2\lambda A_1}{1+\lambda^2(A_1^2+A_2^2)},
+\frac{2\lambda A_2}{1+\lambda^2(A_1^2+A_2^2)},
+\frac{\lambda^2(A_1^2+A_2^2)-1}
+      {1+\lambda^2(A_1^2+A_2^2)}
+\right).
+\tag{9.7}
+\]</span> Outside that tube it is <span
+class="math inline">\(q_+\)</span>. At <span
+class="math inline">\(A=0\)</span>, its derivative on an ambient source
+vector <span class="math inline">\(v\)</span> is <span
+class="math display">\[
+D\mathcal P(v)=\bigl(2(Lv)_1,2(Lv)_2,0\bigr).
+\tag{9.8}
+\]</span> Equations (9.5), (9.8) give <span
+class="math inline">\(D\mathcal P(E_1)=(2,0,0)\)</span> and <span
+class="math inline">\(D\mathcal P(E_2)=(0,2,0)\)</span>. Along the
+entire boundary <span class="math inline">\(\rho=\epsilon^2\)</span>,
+formula (3.10) proves the smooth extension to <span
+class="math inline">\(q_+\)</span>. No factor of the sheared frame, its
+mixed Gram term, or the target tangent factor two is lost.</p>
+<h3
+id="exercise-9.2.-the-tangent-framing-comparison-with-nonorthogonal-matrices">Exercise
+9.2. The tangent-framing comparison with nonorthogonal matrices</h3>
+<p>At one tangent fiber retain the coordinate matrices <span
+class="math display">\[
+J=\begin{pmatrix}2&amp;0\\0&amp;3\\1&amp;1\end{pmatrix},\qquad
+\tau=\begin{pmatrix}2&amp;1&amp;0\\0&amp;3&amp;1\\1&amp;0&amp;2\end{pmatrix},
+\qquad
+\mathcal J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\tag{9.9}
+\]</span> Here <span class="math inline">\(n=2,N=3,k=1\)</span>; the
+last input of <span class="math inline">\(\tau\)</span> is the original
+stable line. Calculate the complete <span
+class="math inline">\(E,G\)</span>, prove (8.11), and give the
+derivative of the homotopy (8.12) in its parameter with the fiber held
+fixed.</p>
+<p><strong>Solution.</strong> Direct products give <span
+class="math display">\[
+\begin{gathered}
+H=\begin{pmatrix}5&amp;1\\1&amp;10\end{pmatrix},\quad
+H^{-1}=\frac1{49}\begin{pmatrix}10&amp;-1\\-1&amp;5\end{pmatrix},\\
+Q=\frac1{49}\begin{pmatrix}20&amp;-3&amp;9\\-2&amp;15&amp;4\end{pmatrix},\qquad
+P_\nu=\frac1{49}\begin{pmatrix}9&amp;6&amp;-18\\6&amp;4&amp;-12\\-18&amp;-12&amp;36\end{pmatrix}.
+\end{gathered}
+\tag{9.10}
+\]</span> For instance <span class="math inline">\(P_\nu=vv^{\mathsf
+T}/49\)</span> with <span class="math inline">\(v=(-3,-2,6)^{\mathsf
+T}\)</span>, where <span class="math inline">\(v^{\mathsf
+T}v=49\)</span> and <span class="math inline">\(J^{\mathsf
+T}v=0\)</span>. Hence <span
+class="math inline">\(P_\nu^2=P_\nu\)</span>, <span
+class="math inline">\(P_\nu J=0\)</span>, and the displayed <span
+class="math inline">\(Q\)</span> has <span
+class="math inline">\(QJ=I_2\)</span>, <span
+class="math inline">\(QP_\nu=0\)</span>, <span
+class="math inline">\(JQ+P_\nu=I_3\)</span>.</p>
+<p>Equation (2.5), retaining <span class="math inline">\(\tau\)</span>
+and its stable column, gives <span class="math display">\[
+E=\frac1{49}
+\begin{pmatrix}
+9&amp;6&amp;-18&amp;0\\
+6&amp;4&amp;-12&amp;0\\
+-18&amp;-12&amp;36&amp;0\\
+38&amp;9&amp;22&amp;0\\
+-6&amp;45&amp;12&amp;49\\
+20&amp;-3&amp;9&amp;98
+\end{pmatrix},\qquad
+G=\frac1{2401}
+\begin{pmatrix}
+2321&amp;306&amp;62&amp;1666\\
+306&amp;2311&amp;123&amp;1911\\
+62&amp;123&amp;2473&amp;1470\\
+1666&amp;1911&amp;1470&amp;12005
+\end{pmatrix}.
+\tag{9.11}
+\]</span> The second matrix is the product <span
+class="math inline">\(E^{\mathsf T}E\)</span>, with every off-diagonal
+entry retained. Its determinant is <span
+class="math inline">\(169/49&gt;0\)</span>. More directly, <span
+class="math inline">\(\det\tau=13\ne0\)</span>, and the exact inverse in
+(2.4) shows that <span class="math inline">\(E\)</span> has full column
+rank; hence <span class="math inline">\(A^{\mathsf
+T}GA=\|EA\|^2&gt;0\)</span> for <span
+class="math inline">\(A\ne0\)</span>. This proves positive definiteness
+without mistaking a positive determinant alone for that property.</p>
+<p>The matrix of <span class="math inline">\(S\)</span>, in the original
+order <span class="math inline">\(v\in\mathbb R^2,a\in\mathbb
+R^3,b\in\mathbb R\)</span>, is <span class="math display">\[
+S=\begin{pmatrix}
+0_{2\times2}&amp;Q&amp;0\\
+J&amp;P_\nu&amp;0\\
+0&amp;0&amp;1
+\end{pmatrix}.
+\tag{9.12}
+\]</span> Squaring gives diagonal blocks <span
+class="math inline">\(QJ=I_2\)</span>, <span
+class="math inline">\(JQ+P_\nu^2=I_3\)</span>, <span
+class="math inline">\(1\)</span>, and off-diagonal blocks <span
+class="math inline">\(QP_\nu=0,P_\nu J=0\)</span>. Thus <span
+class="math inline">\(S^2=I_6\)</span>. Applying <span
+class="math inline">\(\tau_{\mathrm{st}}\)</span> gives <span
+class="math display">\[
+\tau_{\mathrm{st}}S(v,a,b)
+       =(P_\nu a+Jv,\tau(Qa,b))=\tau_E(v,a,b).
+\tag{9.13}
+\]</span> The exchange of two two-dimensional summands has sign <span
+class="math inline">\((-1)^2=+1\)</span>; the formula (8.12), using the
+actual <span class="math inline">\(\mathcal J\)</span> in (9.9), proves
+the stronger assertion that <span class="math inline">\(S\)</span> is
+connected to the identity through the displayed invertible matrices.</p>
+<p>For its derivative write <span class="math display">\[
+U=\cos\theta\,v+\sin\theta\,u,\qquad
+V=-\sin\theta\,v+\cos\theta\,u,\qquad u=Qa.
+\tag{9.14}
+\]</span> Since <span class="math inline">\(\theta&#39;=\pi/2\)</span>,
+<span class="math inline">\(\varphi&#39;=\pi\)</span>, we have <span
+class="math display">\[
+U&#39;=\tfrac\pi2 V,\qquad V&#39;=-\tfrac\pi2 U,\qquad
+C_\varphi&#39;=\pi\mathcal J C_\varphi.
+\tag{9.15}
+\]</span> The last equality follows by multiplying <span
+class="math inline">\(\mathcal J(\cos\varphi I+\sin\varphi\mathcal
+J)\)</span> and using <span class="math inline">\(\mathcal
+J^2=-I\)</span>. The full parameter derivative at this fixed fiber is
+therefore <span class="math display">\[
+\frac{d}{dt}S_{m,t}(v,a,b)=
+\left(\tfrac\pi2 V,\
+   J\left[\pi\mathcal J C_\varphi V
+                      -\tfrac\pi2 C_\varphi U\right],\
+   0\right).
+\tag{9.16}
+\]</span> If the basepoint <span class="math inline">\(m\)</span> varies
+too, the additional <span class="math inline">\(dJ,dQ,dP_\nu,d\mathcal
+J\)</span> terms are exactly those of (8.12), (8.14); (9.16) asserts
+only the specified parameter derivative. The original coordinate
+matrices in (9.9) need not be orthogonal for any of these
+identities.</p>
+<figure>
+<img src="assets/pontryagin-thom-original-frame.svg" alt="The original sheared-frame ellipsoid, its exact meridian collapse on the unit target sphere, and the three explicit inverse homotopies." />
+</figure>
+<p>The figure uses the original frame of Exercise 9.1 with the displayed
+constants. The left panel shows its actual Gram ellipsoid; the right is
+the target slice with second coordinate zero. The three marked ray
+parameters give numerical samples of the exact formula (9.7). The lower
+row records the proved maps (6.9)–(6.17), including the original Gram
+matrix and final radius. The target tangent factor two remains visible.
+These samples illustrate the exact proof and do not replace it.</p>
+<p><a id="pt-sources-and-scope"></a></p>
+<h2 id="sources-proof-scope-and-the-receiving-lesson">10. Sources, proof
+scope and the receiving lesson</h2>
+<p>The original manifold and its complex tangent operator are those of
+<a href="CG-S6-05.html">the construction in lesson
+5</a>. The actual stable tangent isomorphism is supplied by <a
+href="spin-six-and-the-framing-comparison.html">the SpinSix and framing
+companion</a>. Sections 1–8 above prove its full receiving normal-frame
+and Pontryagin–Thom comparison. The relative finite-parameter argument
+uses the same foundational Sard theorem as <a
+href="relative-morse-functions-and-original-handles.html#relative-morse-existence">the
+relative Morse companion, Section 1</a>; the smoothing, tube, normal
+inverse and target homotopies required here have been written out.
+Inverse-function, partition-of-unity and finite-dimensional
+smooth-analysis results have their usual hypotheses verified where they
+are used.</p>
+<p>The relevant human-source context was read in the original-author TeX
+of Françoise Michel and Claude Weber, <a
+href="https://arxiv.org/abs/1409.0704v1"><em>Michel Kervaire work on
+knots in higher dimensions</em>, arXiv:1409.0704v1</a>, Section 3.2,
+especially author-source lines 535–539. That passage describes the
+Pontryagin construction from a chosen normal trivialization and the
+subsequent surgery question; it does not provide the full proof of the
+correspondence used here. The retained original archive and exact
+reading coverage are in the private source-use ledger. The proof above
+is an independently written teaching derivation, not a transcription of
+a proof absent from that passage. No additional human work is claimed to
+have been read, and no PDF was used.</p>
+<p>In particular, (8.11) records the entire tangent-framing comparison
+automorphism. Its determinant sign alone would not settle its homotopy
+class. The explicit use of the original complex operator in (8.12)
+proves the needed homotopy for the receiving manifold, with no claim
+that this argument applies to every stably framed manifold lacking such
+an operator. The finite-codimension correspondence (7.1) and suspension
+comparison do apply to the general normal-framed objects stated
+there.</p>
+<p>The separate <a
+href="the-degree-six-milnor-cobar-calculation.html">degree-six cobar
+calculation</a> is an algebraic proof with its own exact hypotheses. The
+actual cooperation comparisons and complete separated convergence are
+proved in their included companions. The <a
+href="the-original-integral-stable-group-and-its-completion-maps.html#integral-degree-six-answer">original
+integral comparison</a> proves the full integral sixth stable sphere
+group and its original unit map. The <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> constructs the full quadratic invariant,
+proves framed bordism invariance and gives value zero for the original
+framed homotopy six-sphere, with an actual framed nullbordism. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map. The present chapter supplies
+the full geometric correspondence used by that receiving invariant; the
+latter has its own complete argument. It makes no novelty,
+independent-review or exhaustive-literature claim.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

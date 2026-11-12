@@ -1,0 +1,790 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{microtype}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=MidnightBlue,citecolor=MidnightBlue,urlcolor=MidnightBlue,
+ pdftitle={Quaternionic Gaussian fibres and exact information loss},
+ pdfauthor={Local mathematical contribution; prepared with OpenAI Codex}}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\PP}{\mathcal P}
+\newcommand{\Herm}{\operatorname{Herm}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\KL}{\operatorname{D}_{\mathrm{KL}}}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\FI}{\mathcal I}
+\newcommand{\Ntwo}{\Delta}
+\newcommand{\rtr}{\tau}
+\newcommand{\invstar}{^{-\!*}}
+
+\title{Quaternionic Gaussian fibres\\and exact information loss\\[4pt]
+\large A constructive measured-bundle example in the original difference coordinates}
+\author{Local mathematical contribution\\\small Prepared with OpenAI Codex; not a Nolan-authored manuscript}
+\date{4 September 2026 \quad---\quad local review draft}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+For the full fifteen-dimensional cone of positive quaternionic Hermitian
+three-by-three matrices, we retain the finite Gaussian measure as well as its
+normalized law. Its mass recovers the Moore cubic and its precision-parameter
+Fisher metric recovers twice the Hessian of the negative logarithm of that cubic.
+For the specific observation $(q_1-q_2,q_2-q_3)$, we prove an explicit
+disintegration, including the surface-volume factor on the four-dimensional
+affine fibres. The same coordinates yield a closed formula for lost relative
+entropy, a complete equality class, and an orthogonal decomposition of all
+fifteen Fisher directions into six observed and nine conditional directions.
+Every normalization and coordinate change is proved below. These are classical
+Gaussian mechanisms worked out as a source-inspired, reproducible example;
+no historical novelty or physical field-equation claim is made.
+\end{abstract}
+
+\section{Source motivation and precise scope}\label{sec:source}
+
+The measured-fibre viewpoint motivating this note is explicitly credited to
+Nolan's paper~\cite{Nolan2025Threads}, with his preferred citation:
+\begin{quote}
+Nolan, Michael J. (2025). \emph{Threads as Fiber Density, and Holographic
+Cosmology}. GitHub.
+\end{quote}
+Its Definition 2.1 uses a
+base-dependent weight multiplying a base measure and a fixed fibre measure;
+its weighted projection integrates over that measured total space. The
+repository's projection manuscript explicitly proposes Fisher information
+and covariance as possible geometric data in its speculative outlook,
+Section 9(a)~\cite{NolanRepository2025Projection}. The measured-bundle
+framework document presents the broader construction~\cite{NolanRepository2025MBPF}.
+We supply a finite-dimensional example in which the weight, conditional law,
+Fisher metric and information contraction can all be calculated exactly.
+The parameter-dependent trivialization in Section~\ref{sec:disintegration}
+exhibits the precise relation to the fixed-fibre product ansatz.
+
+Our Gaussian family is an additional construction, not a claim that those
+sources already contain a quaternionic determinant theorem. The source
+lineage also includes later anonymously or pseudonymously bylined papers;
+we neither use their stochastic or field-theoretic assertions here nor
+reassign their bylines to Nolan. The original difference map and marking
+used below come from the local quaternionic determining-algebra work,
+not from Nolan's PDFs.
+
+Gaussian Fisher geometry and exponential-family Hessian formulas are
+standard; see, for example, Nielsen~\cite[Section 2]{Nielsen2023Gaussian}
+and Erdmenger, Grosvenor and Jefferson~\cite[Sections 2--2.2]{EGJ2020}.
+Our proofs do not assume those formulas. In particular, the metric below is
+on the \emph{precision parameters} $H$, not on a location parameter with fixed
+covariance, and not on physical spacetime. The new follow-through relative
+to the accompanying local bridge is the explicit conditional law and the
+sharp KL and Fisher loss under the unchanged observation $P$.
+
+\section{Quaternionic conventions and the original cubic}\label{sec:algebra}
+
+Write $a=a_0+a_1i+a_2j+a_3k\in\HH$, with
+$i^2=j^2=k^2=ijk=-1$. Columns form right quaternionic modules; matrices
+act on the left. A star denotes conjugate transpose. Lebesgue measure
+on $\HH^n$ means the product of its specified $4n$ real coordinate measures.
+For a square matrix put $\rtr(A)=\Rea\tr(A)$.
+The identity $\Rea(ab)=\Rea(ba)$ follows by expanding real and imaginary
+parts. Summing entries proves $\rtr(AB)=\rtr(BA)$, also for rectangular
+compatible matrices, hence cyclicity for longer products. Quaternionic
+traces without their real part are not used cyclically.
+
+Let $\PP_n=\{H\in\Herm_n(\HH):q^*Hq>0\text{ for }q\ne0\}$.
+The quadratic form is real because it equals its conjugate. We retain
+the full cone $\PP_3$, with three real diagonal and twelve real
+off-diagonal coordinates. For
+\begin{equation}\label{eq:cubic}
+H=\begin{pmatrix}a&v&r\\\bar v&b&s\\\bar r&\bar s&d\end{pmatrix},
+\qquad
+N(H)=abd-d|v|^2-b|r|^2-a|s|^2+2\Rea(\bar r v s).
+\end{equation}
+In rank two use
+$\Ntwo\bigl(\begin{smallmatrix}a&v\\\bar v&b\end{smallmatrix}\bigr)=ab-|v|^2$;
+in rank one use $N_1(c)=c$. We also write $N_2=\Ntwo$ and $N_3=N$.
+
+The original complex-plus-triplet coordinates are retained by fixing
+$\mathbb C=\RR+\RR i\subset\HH$ and setting
+\begin{equation}\label{eq:theta}
+B(b)=\begin{pmatrix}0&\bar b_3&-\bar b_2\\-\bar b_3&0&\bar b_1\\
+\bar b_2&-\bar b_1&0\end{pmatrix},\qquad
+\Theta(A,b)=A+B(b)j,
+\end{equation}
+for $A\in\Herm_3(\mathbb C)$ and $b\in\mathbb C^3$.
+The identity
+\[
+(a+bj)(c+dj)=ac-b\bar d+(ad+b\bar c)j
+\]
+implies $(A+Bj)^*=A^*-B^Tj$. Thus $\Theta$ is a real-linear
+bijection onto $\Herm_3(\HH)$: extract the complex matrix part $A$
+and the skew matrix $B$, then recover
+$b=(\overline{B_{23}},\overline{B_{31}},\overline{B_{12}})^T$.
+In these same coordinates the cubic is exactly
+\begin{equation}\label{eq:paircubic}
+N(\Theta(A,b))=\det_{\mathbb C}A-b^*Ab.
+\end{equation}
+For an explicit check, write $A_{23}=z_1$, $A_{31}=z_2$,
+$A_{12}=z_3$. The corresponding quaternionic entries are
+$h_{23}=z_1+\bar b_1j$, $h_{31}=z_2+\bar b_2j$,
+$h_{12}=z_3+\bar b_3j$. The complex part of their product in that order is
+\[
+z_1z_2z_3-\bar b_1b_2z_3-z_1\bar b_2b_3-\bar b_1\bar z_2b_3.
+\]
+Its real part agrees with the real triple term in \eqref{eq:cubic}
+by real cyclicity. Together with
+$|z_i+\bar b_ij|^2=|z_i|^2+|b_i|^2$, its $b$ terms are
+\[
+-a|b_1|^2-b_{\rm diag}|b_2|^2-d|b_3|^2
+-2\Rea(\bar b_1z_3b_2+\bar b_2z_1b_3+\bar b_1\bar z_2b_3),
+\]
+where $b_{\rm diag}=A_{22}$ distinguishes the diagonal entry from the
+triplet $b$. These are exactly $-b^*Ab$; the remaining terms are
+$\det A$. This proves \eqref{eq:paircubic} without changing coordinates
+or requiring the matrices to commute.
+
+\begin{lemma}[Spectral and real determinant identities]\label{lem:spectral}
+Every quaternionic Hermitian matrix is unitarily diagonalizable with real
+eigenvalues. On $\PP_n$, $n\le3$, $N_n(H)$ is the positive product of those
+eigenvalues. If $\mathscr L(H)$ is its real left-multiplication matrix, then
+\begin{equation}\label{eq:realification}
+\det_{\RR}\mathscr L(H)=N_n(H)^4,
+\qquad \tr_{\RR}\mathscr L(A)=4\rtr(A).
+\end{equation}
+\end{lemma}
+\begin{proof}
+The real continuous Rayleigh function $q^*Hq$ has a maximum on the real
+unit sphere. At a maximizer $e$, differentiating subject to $e^*e=1$
+gives $\Rea(w^*(He-\lambda e))=0$ for every $w\in\HH^n$ and some
+real $\lambda$. Taking $w=He-\lambda e$ proves $He=e\lambda$.
+The quaternionic orthogonal complement $e^*w=0$ is invariant, since
+$e^*Hw=(He)^*w=\lambda e^*w$. Quaternionic Gram--Schmidt followed by
+induction gives an orthonormal eigenbasis. Positivity is therefore exactly
+positivity of all eigenvalues.
+
+For rank three direct multiplication gives
+\begin{align*}
+\rtr(H^2)&=a^2+b^2+d^2+2(|v|^2+|r|^2+|s|^2),\\
+\rtr(H^3)&=a^3+b^3+d^3+3(a+b)|v|^2+3(a+d)|r|^2\\
+&\hspace{16mm}+3(b+d)|s|^2+6\Rea(\bar r v s).
+\end{align*}
+Substitution into
+\[
+\frac{\rtr(H)^3-3\rtr(H)\rtr(H^2)+2\rtr(H^3)}6
+\]
+gives exactly \eqref{eq:cubic}. Cyclicity makes this expression invariant
+under unitary conjugation; on a real diagonal it is the product of the
+three entries. The analogous identity
+$N_2(H)=(\rtr(H)^2-\rtr(H^2))/2$ proves the rank-two assertion.
+
+Explicitly, left multiplication by $a$ has matrix
+\[
+L(a)=\begin{pmatrix}
+a_0&-a_1&-a_2&-a_3\\
+a_1&a_0&-a_3&a_2\\
+a_2&a_3&a_0&-a_1\\
+a_3&-a_2&a_1&a_0
+\end{pmatrix}.
+\]
+Replace each entry of a quaternionic matrix by this block to obtain
+$\mathscr L$. Associativity and conjugation give
+$\mathscr L(AB)=\mathscr L(A)\mathscr L(B)$ and
+$\mathscr L(A^*)=\mathscr L(A)^T$. Its real trace is $4\rtr(A)$.
+A unitary quaternionic matrix becomes orthogonal, and a Hermitian
+eigenvalue becomes four identical real eigenvalues. This proves
+\eqref{eq:realification}.
+\end{proof}
+
+For $H>0$ its real positive powers are defined by the proved spectral
+decomposition: if $H=U\diag(\lambda_j)U^*$, set
+$H^a=U\diag(\lambda_j^a)U^*$ for real $a$.
+This is independent of the eigenbasis, since $\lambda^a$ acts as a
+real scalar on each eigenspace. In particular $H^{1/2}$ and $H^{-1/2}$
+exist and are mutually inverse positive Hermitian matrices.
+
+\begin{lemma}[Differential of the cubic]\label{lem:differential}
+For $H\in\PP_n$ and Hermitian tangents $K,L$,
+\begin{align}
+D\log N_n(H)[K]&=\rtr(H^{-1}K),\label{eq:dlog}\\
+D^2(-\log N_n)(H)[K,L]&=\rtr(H^{-1}KH^{-1}L).\label{eq:hessian}
+\end{align}
+The last expression is a positive-definite symmetric bilinear form.
+\end{lemma}
+\begin{proof}
+For a real matrix $M$, the Leibniz determinant expansion gives
+$\det(I+tM)=1+t\tr(M)+O(t^2)$. Factoring an invertible matrix
+therefore gives $D\log\det(A)[B]=\tr(A^{-1}B)$ on positive definite
+matrices. Apply this to $\log N_n=\tfrac14\log\det_{\RR}\mathscr L(H)$.
+Differentiating $H^{-1}H=I$ gives
+$D(H^{-1})[L]=-H^{-1}LH^{-1}$, proving \eqref{eq:hessian}.
+Real cyclicity gives symmetry. With $T=H^{-1/2}KH^{-1/2}$,
+the value at $(K,K)$ is $\rtr(T^2)$, the sum of squared real eigenvalues
+of $T$. It is strictly positive for $K\ne0$.
+\end{proof}
+
+\section{Finite Gaussian mass, moments and Fisher metric}\label{sec:gaussian}
+
+\begin{definition}
+For $H\in\PP_n$, $n\le3$, define the finite measure and probability law
+\begin{equation}\label{eq:family}
+\mu_H(\mathrm dq)=e^{-q^*Hq}\mathrm d^{4n}q,
+\qquad Z_n(H)=\int\mathrm d\mu_H,
+\qquad p_H=Z_n(H)^{-1}\mu_H.
+\end{equation}
+Expectations with subscript $H$ refer to $p_H$. Density and probability
+measure will both be denoted $p_H$ when the integration variable is clear.
+\end{definition}
+
+\begin{theorem}[Exact mass and precision geometry]\label{thm:gaussian}
+With the unchanged coordinate measure of \eqref{eq:family},
+\begin{align}
+Z_n(H)&=\frac{\pi^{2n}}{N_n(H)^2}, &
+\EE_H[qq^*]&=2H^{-1},\label{eq:massmom}\\
+\EE_H[q^*Kq]&=2\rtr(H^{-1}K), &
+\Cov_H(q^*Kq,q^*Lq)&=2\rtr(H^{-1}KH^{-1}L).\label{eq:quadmom}
+\end{align}
+The score in direction $K$ and Fisher metric are
+\begin{align}
+s_{H,K}(q)&=2\rtr(H^{-1}K)-q^*Kq,\label{eq:score}\\
+\FI_H(K,L)&=\EE_H[s_{H,K}s_{H,L}]
+=2\rtr(H^{-1}KH^{-1}L)
+=2D^2(-\log N_n)[K,L].\label{eq:fisher}
+\end{align}
+In particular, the family is injectively parametrized by $H$.
+\end{theorem}
+\begin{proof}
+The one-dimensional Gaussian integral is $\sqrt\pi$: square it, use
+polar coordinates in $\RR^2$, and evaluate
+$2\pi\int_0^\infty re^{-r^2}\dd r=\pi$.
+Consequently $\int_{\HH}e^{-c|w|^2}\mathrm d^4w=\pi^2/c^2$ for $c>0$.
+Diagonalize $H$ by Lemma~\ref{lem:spectral}. Its unitary coordinate
+change has absolute real Jacobian one, so multiplying these rank-one
+integrals proves the mass formula.
+
+In diagonal coordinates all $4n$ real coordinates are independent,
+centered, and each of the four coordinates at eigenvalue $\lambda$
+has variance $1/(2\lambda)$. For this last constant, integration by parts
+of $(xe^{-\lambda x^2})'$ gives
+$\int x^2e^{-\lambda x^2}\dd x=(2\lambda)^{-1}\int e^{-\lambda x^2}\dd x$;
+the boundary term vanishes at both infinities. Thus the quaternionic matrix second moment
+is diagonal with entries $2/\lambda$. Conjugation back proves
+$\EE_H[qq^*]=2H^{-1}$ and real cyclicity proves the first quadratic moment.
+
+To justify all differentiations, choose a neighborhood of $H$ on which
+$q^*H'q\ge\epsilon|q|^2$ for some $\epsilon>0$. Each derivative of
+the integrand of fixed finite order is bounded by a constant times
+a polynomial in $|q|$ times $e^{-\epsilon|q|^2}$, which is integrable
+by radial integration. Dominated differentiation is therefore valid.
+Differentiating $\log Z_n$ once gives $-\EE_H[q^*Kq]$ and twice gives
+the covariance in \eqref{eq:quadmom}. Since
+$\log Z_n=2n\log\pi-2\log N_n$, Lemma~\ref{lem:differential}
+gives the displayed covariance and Fisher formulas. Differentiation of
+the normalized density gives \eqref{eq:score}. Finally,
+$H=2(\EE_H[qq^*])^{-1}$ proves injectivity.
+\end{proof}
+
+For rank three the finite mass is retained, not discarded by normalization:
+\begin{equation}\label{eq:massscaling}
+N(H)=\frac{\pi^3}{\sqrt{Z_3(H)}},\qquad
+Z_3(rH)=r^{-6}Z_3(H)\quad(r>0).
+\end{equation}
+The second formula follows either from the degree-three cubic or from
+$q\mapsto r^{-1/2}q$, whose twelve-dimensional Jacobian is $r^{-6}$.
+The same map pushes $p_H$ to $p_{rH}$.
+The determinant-one hypersurface is exactly the mass-$\pi^6$ hypersurface.
+
+\begin{proposition}[Quadratic tilt and its full domain]\label{prop:tilt}
+For every Hermitian $K$,
+\begin{equation}\label{eq:tilt}
+\EE_H e^{q^*Kq}=
+\left(\frac{N_n(H)}{N_n(H-K)}\right)^2
+\quad\text{if }H-K>0.
+\end{equation}
+The expectation is infinite otherwise. In the finite case, normalizing
+the tilted measure gives exactly $p_{H-K}$.
+\end{proposition}
+\begin{proof}
+Multiplication of densities leaves $e^{-q^*(H-K)q}/Z_n(H)$.
+If $H-K>0$, Theorem~\ref{thm:gaussian} gives its mass and normalized law.
+Otherwise the spectral lemma gives a zero or negative real eigenvalue.
+In its corresponding real coordinate the integrand is constant or grows
+as $e^{a x^2}$ with $a>0$. Integration in that coordinate diverges;
+Tonelli's theorem applies because the integrand is nonnegative.
+\end{proof}
+
+\section{The exact difference observation and disintegration}\label{sec:disintegration}
+
+Keep the original real matrices, acting on quaternionic columns,
+\begin{align}
+P&=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},&
+u&=\begin{pmatrix}1\\1\\1\end{pmatrix},&
+C=PP^*&=\begin{pmatrix}2&-1\\-1&2\end{pmatrix},\label{eq:PU}\\
+C^{-1}&=\frac13\begin{pmatrix}2&1\\1&2\end{pmatrix},&
+R=P^*C^{-1}&=\frac13\begin{pmatrix}2&1\\-1&1\\-1&-2\end{pmatrix},&
+X&=(R\ u).\label{eq:RX}
+\end{align}
+Direct multiplication gives $PR=I_2$, $Pu=0$, $u^*R=0$, $u^*u=3$,
+and hence
+\begin{equation}\label{eq:coordinates}
+X^{-1}=\begin{pmatrix}P\\u^*/3\end{pmatrix},\quad
+z=\binom yt=X^{-1}q,\quad y=Pq,\quad t=u^*q/3,\quad q=Ry+ut.
+\end{equation}
+Expansion of the real three-by-three determinant gives $\det X=1$.
+As a real map on twelve coordinates its determinant is $(\det X)^4=1$;
+therefore $\mathrm d^{12}q=\mathrm d^8y\,\mathrm d^4t$.
+
+For $H\in\PP_3$ write
+\begin{equation}\label{eq:schur}
+B_H=X^*HX=\begin{pmatrix}A_H&b_H\\b_H^*&c_H\end{pmatrix},\quad
+\ell_H=c_H^{-1}b_H^*,\quad
+S_H=A_H-c_H\ell_H^*\ell_H.
+\end{equation}
+Here $c_H=u^*Hu>0$ is real, $\ell_H$ is a quaternionic row with two
+entries, and $S_H\in\PP_2$. Indeed, keeping the order of quaternionic
+products, completion of the square gives
+\begin{equation}\label{eq:square}
+q^*Hq=y^*S_Hy+c_H|t+\ell_Hy|^2.
+\end{equation}
+Setting $t=-\ell_Hy$ proves positivity of $S_H$. Conversely, every
+$(S,c,\ell)\in\PP_2\times(0,\infty)\times\HH^{1\times2}$ gives
+\begin{equation}\label{eq:inverseparam}
+B=\begin{pmatrix}S+c\ell^*\ell&c\ell^*\\c\ell&c\end{pmatrix},
+\qquad H=X\invstar B X^{-1}\in\PP_3.
+\end{equation}
+The displayed forward and inverse maps are smooth and inverse to one another.
+They are global coordinates of real dimensions $6+1+8=15$; none of
+the original parameters has been removed.
+
+\begin{theorem}[Measured fibres, with all volume constants]\label{thm:disintegration}
+For the coordinates \eqref{eq:schur},
+\begin{align}
+N(H)&=c_H\Ntwo(S_H),\label{eq:detfactor}\\
+P_*\mu_H(\mathrm dy)&=\lambda_H(y)\mathrm d^8y,
+&\lambda_H(y)&=\frac{\pi^2}{c_H^2}e^{-y^*S_Hy},\label{eq:weightedmarginal}\\
+P_*p_H&=p_{S_H},&
+p_{S_H}(y)&=\frac{\Ntwo(S_H)^2}{\pi^4}e^{-y^*S_Hy}.
+\label{eq:marginal}
+\end{align}
+The conditional probability in the $t$ coordinate is
+\begin{equation}\label{eq:conditional}
+\kappa_H(y,\mathrm dt)=k_H(t\mid y)\mathrm d^4t,
+\qquad k_H(t\mid y)=\frac{c_H^2}{\pi^2}e^{-c_H|t+\ell_Hy|^2}.
+\end{equation}
+Thus for every nonnegative Borel $f$, and also every absolutely
+$\mu_H$-integrable $f$,
+\begin{equation}\label{eq:disintegration}
+\int f(q)\dd\mu_H(q)
+=\int_{\HH^2}\lambda_H(y)
+ \left[\int_{\HH}f(Ry+ut)\,\kappa_H(y,\mathrm dt)\right]\mathrm d^8y.
+\end{equation}
+On the actual fibre $P^{-1}(y)$ the Euclidean surface measure is
+$\mathrm d\mathcal H_y^4=9\mathrm d^4t$. Relative to it the conditional
+density is $k_H(t\mid y)/9$.
+\end{theorem}
+\begin{proof}
+The rank-one Gaussian integral in $t+\ell_Hy$ equals $\pi^2/c_H^2$,
+which proves \eqref{eq:weightedmarginal}. Integrating in $y$ gives
+$Z_3(H)=\pi^6/(c_H^2\Ntwo(S_H)^2)$. Comparison with
+\eqref{eq:massmom}, and positivity of all factors, proves
+\eqref{eq:detfactor}. This also proves \eqref{eq:marginal} after
+normalizing by $Z_3(H)$. The density \eqref{eq:conditional} has mass one
+by translation and the same rank-one integral. Multiplication of
+\eqref{eq:weightedmarginal} and \eqref{eq:conditional} returns exactly
+the exponential in \eqref{eq:square}. The coordinate Jacobian and
+Tonelli/Fubini therefore prove \eqref{eq:disintegration} with no implicit
+disintegration assumption.
+
+The tangent map of $t\mapsto Ry+ut$ sends each real coordinate vector
+to three identical copies. Its real Gram matrix is $3I_4$, so the
+four-dimensional surface Jacobian is $\sqrt{\det(3I_4)}=9$.
+Equivalently the real observation matrix $P_{\RR}$ satisfies
+\[
+\sqrt{\det_{\RR}(P_{\RR}P_{\RR}^T)}
+=\sqrt{\det(C\otimes I_4)}=\det(C)^2=9.
+\]
+Thus $\mathrm d^{12}q=\tfrac19\mathrm d^8y\,\mathrm d\mathcal H_y^4$
+and the asserted conditional density follows.
+\end{proof}
+
+\begin{proposition}[Conditional moments and the fixed-fibre presentation]\label{prop:conditionalmom}
+Let $m_H(y)=(R-u\ell_H)y$. Then
+\begin{align}
+S_H^{-1}&=PH^{-1}P^*, &
+\EE_H[yy^*]&=2S_H^{-1},\label{eq:marginalcov}\\
+m_H(y)&=H^{-1}P^*S_Hy, &
+\EE_H[q\mid y]&=m_H(y),\label{eq:condmean}\\
+\EE_H[t\mid y]&=-\ell_Hy,&
+\EE_H[|t+\ell_Hy|^2\mid y]&=2/c_H,\label{eq:tmom}\\
+\EE_H[(q-m_H(y))(q-m_H(y))^*\mid y]&=\frac2{c_H}uu^*.
+\label{eq:condcov}
+\end{align}
+The coordinate $\eta=\sqrt{c_H}(t+\ell_Hy)$ is independent of $y$
+under $p_H$, with fixed density $\pi^{-2}e^{-|\eta|^2}\mathrm d^4\eta$.
+In these coordinates the finite measure is exactly
+\begin{equation}\label{eq:fixedfibre}
+\mathrm d\mu_H
+=\lambda_H(y)\mathrm d^8y\,
+ \bigl(\pi^{-2}e^{-|\eta|^2}\mathrm d^4\eta\bigr).
+\end{equation}
+\end{proposition}
+\begin{proof}
+The factorization
+\[
+B_H=\begin{pmatrix}I&\ell_H^*\\0&1\end{pmatrix}
+\begin{pmatrix}S_H&0\\0&c_H\end{pmatrix}
+\begin{pmatrix}I&0\\\ell_H&1\end{pmatrix}
+\]
+gives the full inverse
+\[
+B_H^{-1}=\begin{pmatrix}
+S_H^{-1}&-S_H^{-1}\ell_H^*\\
+-\ell_HS_H^{-1}&c_H^{-1}+\ell_HS_H^{-1}\ell_H^*
+\end{pmatrix}.
+\]
+Since $H^{-1}=XB_H^{-1}X^*$ and $PX=(I\ 0)$, its upper projected
+block is $S_H^{-1}$. Also
+$H^{-1}P^*S_H=X\binom I{-\ell_H}=R-u\ell_H$.
+The marginal covariance follows from Theorem~\ref{thm:gaussian} in
+rank two. The centered conditional quaternion $w=t+\ell_Hy$ has
+four independent real coordinates of variance $1/(2c_H)$; it has mean
+zero and $\EE|w|^2=2/c_H$. This proves all conditional moments,
+including \eqref{eq:condcov} because $q-m_H(y)=uw$.
+Finally $\mathrm d^4\eta=c_H^2\mathrm d^4t$. Substitution in
+the joint density gives \eqref{eq:fixedfibre}, and after normalization
+it is the product of $p_{S_H}$ and the fixed $\eta$ density.
+\end{proof}
+
+Formula \eqref{eq:fixedfibre} is the promised exact morphism to the
+weighted fixed-fibre form motivating the construction
+\cite{Nolan2025Threads,NolanRepository2025MBPF}. The base density is
+$\lambda_H$, while the normalization and conditional shape have not been
+confused. On an affine fibre the surface-density measure
+$e^{-q^*Hq}\mathrm d\mathcal H_y^4$ has mass $9\lambda_H(y)$.
+It is \emph{not} the literal restriction of the twelve-dimensional
+measure $\mu_H$ to that four-plane: that restriction is zero, since
+the plane has twelve-dimensional Lebesgue measure zero. The conditional
+law can equivalently be written on the plane as
+\begin{equation}\label{eq:surfacedensity}
+\frac{c_H^2}{9\pi^2}
+\exp\!\left(-\frac{c_H}{3}|q-m_H(y)|^2\right)
+\mathrm d\mathcal H_y^4(q),
+\end{equation}
+because $|uw|^2=3|w|^2$.
+
+\section{Relative entropy and the sharp equality class}\label{sec:KL}
+
+For positive densities set $\KL(p\|r)=\int p\log(p/r)$.
+All log-density ratios below are a constant plus a quadratic polynomial,
+so their absolute integrability follows from Theorem~\ref{thm:gaussian}.
+
+\begin{proposition}[Quaternionic Gaussian relative entropy]\label{prop:KL}
+For $H,G\in\PP_n$, $n\le3$,
+\begin{equation}\label{eq:KL}
+\KL(p_H\|p_G)
+=2\left[\rtr(GH^{-1})-n-\log\frac{N_n(G)}{N_n(H)}\right]
+=2\sum_{j=1}^n(\lambda_j-1-\log\lambda_j),
+\end{equation}
+where $\lambda_j>0$ are the eigenvalues of $H^{-1/2}GH^{-1/2}$.
+It is nonnegative, with equality exactly when $G=H$.
+\end{proposition}
+\begin{proof}
+The log-density ratio is
+$2\log(N_n(H)/N_n(G))+q^*(G-H)q$.
+Taking expectation gives the first equality. Real cyclicity gives
+$\rtr(GH^{-1})=\sum_j\lambda_j$.
+For the determinant term, multiplicativity of real determinants and
+\eqref{eq:realification} give
+\[
+N_n(H^{-1/2}GH^{-1/2})^4=N_n(H)^{-4}N_n(G)^4.
+\]
+Positive fourth roots and Lemma~\ref{lem:spectral} give
+$\prod_j\lambda_j=N_n(G)/N_n(H)$, proving the second equality.
+The scalar function $x-1-\log x$ decreases to zero on $(0,1]$ and
+increases from zero on $[1,\infty)$, since its derivative is $1-1/x$.
+Hence equality forces every $\lambda_j=1$; the Hermitian spectral
+decomposition then gives $H^{-1/2}GH^{-1/2}=I$ and $G=H$.
+\end{proof}
+
+\begin{theorem}[Exact KL loss and all equality cases]\label{thm:KLloss}
+For the fixed observation $P$ of \eqref{eq:PU}, set
+$\delta\ell=\ell_G-\ell_H$. Then
+\begin{align}
+\KL(p_H\|p_G)
+={}&\KL(p_{S_H}\|p_{S_G})
+ +2\left[\frac{c_G}{c_H}-1-\log\frac{c_G}{c_H}\right]
+ +2c_G\delta\ell S_H^{-1}\delta\ell^*.
+\label{eq:KLloss}
+\end{align}
+Thus relative entropy cannot increase under $P$. Equality holds if and
+only if each of the following equivalent conditions holds:
+\begin{align}
+&c_G=c_H\quad\text{and}\quad\ell_G=\ell_H;\label{eq:equalitycl}\\
+&(G-H)u=0;\label{eq:equalityu}\\
+&G-H=P^*TP\quad\text{for a unique }T\in\Herm_2(\HH).
+\label{eq:equalityT}
+\end{align}
+In this case $T=S_G-S_H=R^*(G-H)R$. The exact equality class through
+$H$ is
+\begin{equation}\label{eq:affineslice}
+\bigl(H+P^*\Herm_2(\HH)P\bigr)\cap\PP_3.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The joint probability density is $p_{S_H}(y)k_H(t\mid y)$.
+Split the logarithm of its ratio to the corresponding $G$ density
+into marginal and conditional logarithms and use Fubini. Under the
+$H$ conditional law, $w=t+\ell_Hy$ has mean zero and
+$\EE[|w|^2\mid y]=2/c_H$. Therefore
+\begin{align*}
+\int k_H(t\mid y)\log\frac{k_H(t\mid y)}{k_G(t\mid y)}\mathrm d^4t
+&=2\log\frac{c_H}{c_G}
+ +\EE[-c_H|w|^2+c_G|w+\delta\ell y|^2\mid y]\\
+&=2\left[\frac{c_G}{c_H}-1-\log\frac{c_G}{c_H}\right]
+ +c_G|\delta\ell y|^2.
+\end{align*}
+The cross term vanishes by the centered conditional mean. Moreover,
+\[
+\EE_H|\delta\ell y|^2
+=\delta\ell\,\EE_H[yy^*]\,\delta\ell^*
+=2\delta\ell S_H^{-1}\delta\ell^*.
+\]
+This proves \eqref{eq:KLloss}. The scalar term is nonnegative by the
+same one-variable inequality as in Proposition~\ref{prop:KL}; the
+last term is nonnegative because $S_H^{-1}>0$. Their simultaneous
+vanishing is exactly \eqref{eq:equalitycl}.
+
+For the linear characterization put $E=G-H$. The last column of
+$X^*EX$ is $X^*Eu$; since $X$ is invertible it vanishes exactly when
+$Eu=0$. Hermitian symmetry then also kills the last row. Thus
+$Eu=0$ is equivalent to
+$X^*EX=\diag(T,0)$ for some $T\in\Herm_2(\HH)$.
+Transforming back by \eqref{eq:coordinates} gives $E=P^*TP$.
+Multiplication by $R^*$ and $R$ proves uniqueness and
+$T=R^*ER$. The same zero last row and column say $b_G=b_H$ and
+$c_G=c_H$, which is equivalent to \eqref{eq:equalitycl}; in that case
+the top Schur blocks differ by $T=S_G-S_H$. This proves every
+equivalence and \eqref{eq:affineslice}.
+\end{proof}
+
+The marginal term in \eqref{eq:KLloss} is explicitly
+\[
+2\left[\rtr(S_GS_H^{-1})-2-
+\log\frac{\Ntwo(S_G)}{\Ntwo(S_H)}\right].
+\]
+Within the slice \eqref{eq:affineslice}, the conditional kernel
+\eqref{eq:conditional} is independent of the varying parameter $T$.
+Consequently $Pq$ is sufficient for that family in the concrete sense
+that the same conditional kernel reconstructs every full law from its
+marginal. Conversely, any family containing $H$ whose pairwise KL loss
+under $P$ vanishes lies in this slice, by Theorem~\ref{thm:KLloss}.
+This is a maximal exact equality family, not a sufficiency assertion
+for the whole fifteen-dimensional model.
+
+\section{The full Fisher split and infinitesimal equality}\label{sec:fishersplit}
+
+For a tangent $K\in\Herm_3(\HH)$ write dots for derivatives of
+\eqref{eq:schur} along $H+\varepsilon K$ at $\varepsilon=0$.
+If $X^*KX=\bigl(\begin{smallmatrix}\dot A&\dot b\\\dot b^*&\dot c\end{smallmatrix}\bigr)$,
+the exact coordinate derivatives are
+\begin{equation}\label{eq:tangents}
+\dot\ell=\frac{\dot b^*-\dot c\ell}{c},\qquad
+\dot S=\dot A-\dot c\ell^*\ell
+ -c\dot\ell^*\ell-c\ell^*\dot\ell.
+\end{equation}
+Unadorned $S,c,\ell$ in this section denote the coordinates of $H$.
+
+\begin{theorem}[Six observed and nine conditional directions]\label{thm:Fisherloss}
+For tangents $K,L$ with coordinate derivatives
+$(\dot S_K,\dot c_K,\dot\ell_K)$ and
+$(\dot S_L,\dot c_L,\dot\ell_L)$,
+\begin{align}
+\FI_H(K,L)={}&2\rtr(S^{-1}\dot S_K S^{-1}\dot S_L)
+ +\frac{2\dot c_K\dot c_L}{c^2}
+ +4c\Rea(\dot\ell_K S^{-1}\dot\ell_L^*).
+\label{eq:fishersplit}
+\end{align}
+The first term is the Fisher metric of the observed family $p_S$.
+The remaining terms are the exact information lost by observing $Pq$.
+In particular,
+\begin{equation}\label{eq:fisherloss}
+\FI_H(K,K)-\FI_S(\dot S_K,\dot S_K)
+=2(\dot c_K/c)^2+4c\dot\ell_K S^{-1}\dot\ell_K^*\ge0.
+\end{equation}
+Equality holds exactly when
+\begin{equation}\label{eq:fisherzero}
+\dot c_K=0,\quad\dot\ell_K=0
+\quad\Longleftrightarrow\quad Ku=0
+\quad\Longleftrightarrow\quad K=P^*\dot S_KP.
+\end{equation}
+\end{theorem}
+\begin{proof}
+At the fixed base point set
+$Q=\bigl(\begin{smallmatrix}I&0\\-\ell&1\end{smallmatrix}\bigr)$.
+Direct block multiplication using \eqref{eq:tangents} gives
+\begin{equation}\label{eq:whitenedblocks}
+Q^*B_HQ=\begin{pmatrix}S&0\\0&c\end{pmatrix}=F,
+\qquad
+Q^*(X^*KX)Q
+=\begin{pmatrix}\dot S_K&c\dot\ell_K^*\\c\dot\ell_K&\dot c_K\end{pmatrix}=M_K.
+\end{equation}
+Here $Q$ is evaluated at $H$; we are transforming tangents at that
+point, not differentiating $Q$ a second time. Congruence by an invertible
+matrix preserves $\rtr(H^{-1}KH^{-1}L)$, as is verified by substituting
+the inverse of the congruence and cancelling adjacent factors under
+the real cyclic trace. Thus \eqref{eq:fisher} equals
+$2\rtr(F^{-1}M_KF^{-1}M_L)$.
+The two diagonal blocks in this product contribute
+\[
+\rtr(S^{-1}\dot S_KS^{-1}\dot S_L)
++\dot c_K\dot c_L/c^2
++c\Rea(\dot\ell_LS^{-1}\dot\ell_K^*)
++c\Rea(\dot\ell_KS^{-1}\dot\ell_L^*).
+\]
+The last two real scalars agree by conjugation. This proves
+\eqref{eq:fishersplit}. The rank-two case of Theorem~\ref{thm:gaussian}
+identifies the marginal term. Positivity of $S^{-1}$ proves the
+inequality and forces $\dot c=\dot\ell=0$ at equality.
+By \eqref{eq:tangents} these two conditions are exactly $\dot c=\dot b=0$,
+or vanishing of the last column of $X^*KX$. The same argument as in
+Theorem~\ref{thm:KLloss} gives $Ku=0$ and
+$K=P^*\dot S P$, completing all equivalences.
+\end{proof}
+
+Because \eqref{eq:inverseparam} is a global coordinate chart, the
+$S$ directions have real dimension six and the $(c,\ell)$ directions
+have dimensions one and eight. Formula \eqref{eq:fishersplit} says these
+three coordinate subspaces are mutually orthogonal at every point.
+It does not assert that the metric is a product of three constant
+metrics: the $\ell$ block depends on both $S$ and $c$.
+The link to finite loss is also exact to second order:
+\begin{equation}\label{eq:localKL}
+\KL(p_H\|p_{H+\varepsilon K})
+=\tfrac12\varepsilon^2\FI_H(K,K)+O(\varepsilon^3).
+\end{equation}
+Indeed \eqref{eq:dlog} cancels the linear term in \eqref{eq:KL};
+\eqref{eq:hessian} supplies the quadratic term, while smoothness of
+$\log N$ on the positive cone gives the Taylor remainder. Expanding
+\eqref{eq:KLloss} yields the same residual quadratic form as
+\eqref{eq:fisherloss}, with the factor $1/2$ in \eqref{eq:localKL}.
+
+\section{Marking, vacuum and gauge transport}\label{sec:gauge}
+
+The observation coordinates $z=X^{-1}q$ must not be confused with the
+original latent marking. Retain the latter exactly as
+\begin{equation}\label{eq:marking}
+D=X^*X=\diag(C^{-1},3),\quad
+\Psi=X^{-1}HX\invstar,\quad
+\xi=X^*q=Dz.
+\end{equation}
+Consequently $H=X\Psi X^*$, $q^*Hq=\xi^*\Psi\xi$, and
+\begin{equation}\label{eq:Bpsi}
+B_H=D\Psi D.
+\end{equation}
+These identities follow by direct substitution and preserve both the
+quadratic form and the coordinate measure: $\det X=1$ also gives
+$\mathrm d^{12}\xi=\mathrm d^{12}q$.
+It follows from Theorem~\ref{thm:gaussian} that
+$\EE_H[\xi\xi^*]=2\Psi^{-1}$.
+At the unchanged scalar vacuum $H=vI_3$, $v>0$, the entire dictionary is
+\begin{equation}\label{eq:vacuum}
+\begin{gathered}
+\Psi=vD^{-1},\qquad B_H=vD,\qquad
+S_H=vC^{-1},\quad c_H=3v,\quad\ell_H=0,\\
+\EE_H[yy^*]=2C/v,\qquad
+\EE_H|t|^2=2/(3v),\qquad
+\EE_H[\xi\xi^*]=2D/v.
+\end{gathered}
+\end{equation}
+
+\begin{proposition}[Fixed marking and co-transported observation]\label{prop:gauge}
+Let $U\in\Sp(3)=\{U:U^*U=I\}$, $q_U=Uq$ and $H_U=UHU^*$.
+Then $\mu_{H_U}=U_*\mu_H$ and $p_{H_U}=U_*p_H$.
+With $X$ fixed, put $U'=X^{-1}UX$. The marked transformations are
+\begin{equation}\label{eq:fixedgauge}
+\Psi_U=U'\Psi U'^*,\qquad
+\xi_U=(U'^*)^{-1}\xi,\qquad U'^*DU'=D.
+\end{equation}
+If instead the observation and its splitting are co-transported by
+\begin{equation}\label{eq:transport}
+P_U=PU^*,\qquad R_U=UR,\qquad u_U=Uu,\qquad X_U=UX,
+\end{equation}
+then $y_U=y$, $t_U=t$, $z_U=z$, $D_U=D$, $\xi_U=\xi$,
+$\Psi_U=\Psi$, and $B_{H_U}=B_H$, where every marked expression now
+uses $X_U$. All the conditional and information identities are
+unchanged under this simultaneous transport.
+\end{proposition}
+\begin{proof}
+Unitarity gives $q_U^*H_Uq_U=q^*Hq$ and a real orthogonal Jacobian of
+absolute value one. Thus it pushes both measures as asserted.
+For fixed $X$, insert $H_U$ into $X^{-1}H_UX\invstar$ to obtain the
+first formula of \eqref{eq:fixedgauge}. Also
+\[
+X^*Uq=X^*UX\invstar\xi=(U'^*)^{-1}\xi,
+\]
+where $U^{-1}=U^*$. Substitution of $D=X^*X$ proves
+$U'^*DU'=D$. In particular, the marked quadratic form is invariant
+under the congruence/contragredient pair in \eqref{eq:fixedgauge}.
+
+For co-transport, $P_Uq_U=Pq$, $u_U^*q_U/3=u^*q/3$ and
+$X_U^{-1}q_U=X^{-1}q$. Likewise
+$X_U^*q_U=X^*q$, $X_U^*X_U=D$,
+$X_U^{-1}H_UX_U\invstar=\Psi$, and
+$X_U^*H_UX_U=B_H$. Each coordinate and law is therefore identical.
+The real absolute Jacobian of $X_U$ remains one since that of $U$ is one.
+\end{proof}
+
+For clarity, a \emph{fixed} $P$ is not invariant under all of $\Sp(3)$.
+Take $H=\diag(1,2,3)$ and let $U$ interchange the first two coordinate
+vectors. Direct inversion and multiplication give
+\begin{equation}\label{eq:fixedcounterexample}
+PH^{-1}P^*=\begin{pmatrix}3/2&-1/2\\-1/2&5/6\end{pmatrix},\qquad
+PH_U^{-1}P^*=\begin{pmatrix}3/2&-1\\-1&4/3\end{pmatrix}.
+\end{equation}
+The projected covariances, twice these matrices, differ. The
+co-transport \eqref{eq:transport}, not an unproved invariance of the
+fixed observation, is the exact equivariant statement.
+
+\section{Reproducibility and contribution boundary}\label{sec:verification}
+
+The accompanying exact-arithmetic program
+\texttt{verification/check\_gaussian\_projection.py} implements quaternionic
+left multiplication independently in real blocks. It checks the displayed
+coordinate maps, cubic/determinant relation, Schur inverse and conditional
+covariance identities, all fifteen real Hermitian tangent coordinates
+and all 225 bilinear Fisher pairings, the algebraic parts of the KL
+chain rule, its equality subspace, and the noninvariant fixed-$P$ example.
+The report identifies the exact rational test points used. Finite tests
+are executable error checks, not proofs of the universally quantified
+theorems; the proofs are the preceding text. Build and execution
+instructions are supplied with the source.
+
+The proposed contribution is a mathematical example for the measured-bundle
+framework, with Nolan's density paper cited in both the source motivation
+and the fixed-fibre construction. It neither establishes source claims
+about stationarity or helicity nor modifies the separate local scalar or
+Yang--Mills actions. No quantum mass gap, physical dynamics, or historical
+priority is inferred from the Fisher metric. A prospective upstream
+submission should retain the proofs, verification, original coordinate
+dictionary and attribution together.
+
+\input{bibliography.tex}
+\end{document}

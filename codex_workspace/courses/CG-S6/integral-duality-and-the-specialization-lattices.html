@@ -1,0 +1,648 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integral duality and the complete specialization lattices</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/integral-duality-and-the-specialization-lattices.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="integral-duality">Integral duality and the complete
+specialization lattices</h1>
+<p>Written by GPT-6 Astra (OpenAI), at Ultra, October 2026.
+Independently written exposition: CC0. Author self-checks are not
+independent review.</p>
+<p>Lesson 7 uses integral Poincaré duality twice: to exclude torsion on
+the two finite central surfaces, and to determine the indices of their
+covering images. This chapter proves the required duality map, including
+its support and sign conventions, and derives a stronger description of
+the degree-three images. Throughout, the original matrices, covering
+degrees and ordered classes of <a
+href="CG-S6-07.html">lesson 7</a> are
+retained.</p>
+<p>The singular-chain definitions, subdivision, small-chain equivalence,
+pair and Mayer–Vietoris sequences, products and universal coefficient
+theorem are proved in the included <a
+href="thom-euler-for-lesson11.html">Thom/Euler companion</a>, Sections
+1–6. The compact-support proof is reconstructed from Sections 1–2 of the
+CC0 chapter <em>Manifold duality, the diagonal and Wu classes</em>,
+written by GPT-6.1 Sol (OpenAI), with its exact source version recorded
+in the course ledger. We supply the compact-set orientation argument as
+well, so the receiving proof does not require an unread orientation
+reference.</p>
+<h2 id="duality-orientation">1. The integer orientation class on every
+compact support</h2>
+<p>Let <span class="math inline">\(M\)</span> be a smooth oriented <span
+class="math inline">\(n\)</span>-manifold without boundary, Hausdorff
+and second countable. Its orientation assigns a positive generator</p>
+<p><span class="math display">\[
+\mu_x\in H_n(M,M\setminus\{x\};\mathbb Z)
+\tag{1.1}
+\]</span></p>
+<p>at each point. These generators are compatible in an oriented chart.
+To check independence of that chart, write an orientation-preserving
+transition near a point as <span
+class="math inline">\(F(x)=Ax+o(|x|)\)</span>, after translating its
+source and target point to zero. For some <span
+class="math inline">\(c&gt;0\)</span>, <span
+class="math inline">\(|Ax|\geq c|x|\)</span>. On a sufficiently small
+sphere the straight homotopy from <span class="math inline">\(F\)</span>
+to <span class="math inline">\(A\)</span> avoids zero. The induced local
+map is therefore the map of <span class="math inline">\(A\)</span>,
+which is <span class="math inline">\(+1\)</span>: the determinant-sign
+calculation by positive linear paths and one coordinate reflection is
+proved in the Thom/Euler companion, Section 6.</p>
+<p><strong>Lemma 1.1.</strong> For every compact <span
+class="math inline">\(K\subset M\)</span>, there is a unique class</p>
+<p><span class="math display">\[
+\mu_K\in H_n(M,M\setminus K;\mathbb Z)
+\tag{1.2}
+\]</span></p>
+<p>whose image at each <span class="math inline">\(x\in K\)</span> is
+<span class="math inline">\(\mu_x\)</span>. A class in this top relative
+group is determined by its point values. The relative groups vanish in
+degrees greater than <span class="math inline">\(n\)</span>. If <span
+class="math inline">\(K\subset L\)</span>, restriction sends <span
+class="math inline">\(\mu_L\)</span> to <span
+class="math inline">\(\mu_K\)</span>.</p>
+<p><strong>Proof.</strong> First take <span
+class="math inline">\(K\)</span> compact and convex in an oriented chart
+identified with <span class="math inline">\(\mathbb R^n\)</span>, with
+<span class="math inline">\(n&gt;0\)</span>. Choose <span
+class="math inline">\(c\in K\)</span> and a sphere about <span
+class="math inline">\(c\)</span> enclosing <span
+class="math inline">\(K\)</span> strictly. The complement of <span
+class="math inline">\(K\)</span> retracts radially to this sphere. For a
+point inside the sphere, radial expansion remains outside <span
+class="math inline">\(K\)</span>, since the intersection of <span
+class="math inline">\(K\)</span> with its ray is an interval starting at
+<span class="math inline">\(c\)</span>. For a point outside the sphere,
+contraction down to the sphere remains outside <span
+class="math inline">\(K\)</span> because the sphere encloses <span
+class="math inline">\(K\)</span>. These radial paths give a continuous
+deformation fixing the sphere. The pair sequence and the sphere
+calculation give <span class="math inline">\(\mathbb Z\)</span> in
+degree <span class="math inline">\(n\)</span> and zero above it. The
+boundary of the large positive ball represents the same positive local
+generator about every point of <span class="math inline">\(K\)</span>,
+by excision and the determinant-sign convention. It supplies (1.2).</p>
+<p>For compact sets <span class="math inline">\(K,L\)</span>, the
+relative Mayer–Vietoris segment is</p>
+<p><span class="math display">\[
+H_{n+1}(M,M\setminus(K\cap L))
+\longrightarrow H_n(M,M\setminus(K\cup L))
+\longrightarrow
+H_n(M,M\setminus K)\oplus H_n(M,M\setminus L)
+\longrightarrow H_n(M,M\setminus(K\cap L)).
+\tag{1.3}
+\]</span></p>
+<p>The last map is the difference of restrictions. If the first group is
+zero, the middle restriction map is injective. Matching local positive
+classes therefore glue uniquely. The same sequence in larger degrees
+proves vanishing there. Induct over finite unions of convex compact
+sets: an intersection with the last convex piece is a union of fewer
+convex compact sets, so both assertions needed for the induction already
+hold. This also proves detection by point values.</p>
+<p>Now let <span class="math inline">\(K\)</span> be any compact subset
+of a chart. A finite chain representing a relative cycle has its
+boundary disjoint from <span class="math inline">\(K\)</span>. Choose
+finitely many small closed balls centred at points of <span
+class="math inline">\(K\)</span> whose interiors cover <span
+class="math inline">\(K\)</span> and whose union <span
+class="math inline">\(L\)</span> avoids this boundary. The chain also
+represents a class relative to <span class="math inline">\(L\)</span>.
+Vanishing above <span class="math inline">\(n\)</span> follows from the
+finite-union case and then restriction. If a top class has zero point
+values on <span class="math inline">\(K\)</span>, its class on each
+chosen ball is zero, since restriction to the ball’s centre is an
+isomorphism. Detection on their union makes its class on <span
+class="math inline">\(L\)</span>, and hence on <span
+class="math inline">\(K\)</span>, zero. A larger ball in the chart’s
+<span class="math inline">\(\mathbb R^n\)</span> coordinates supplies
+the positive class on <span class="math inline">\(K\)</span>.</p>
+<p>Finally cover an arbitrary compact <span
+class="math inline">\(K\subset M\)</span> by finitely many smaller chart
+neighbourhoods with compact closures in their charts. Their
+intersections with <span class="math inline">\(K\)</span> decompose
+<span class="math inline">\(K\)</span> into compact chart pieces. When
+the last piece is added, its intersection with the preceding union is
+itself a compact subset of that last chart. The preceding paragraph and
+(1.3) therefore prove the induction, without any convexity assumption
+across different charts. Uniqueness gives compatibility under
+restriction. In dimension zero a compact set is finite and its relative
+group is the direct sum of its point copies of <span
+class="math inline">\(\mathbb Z\)</span>; the same assertions follow
+directly. ∎</p>
+<p>For closed <span class="math inline">\(M\)</span>, take <span
+class="math inline">\(K=M\)</span>. Then <span
+class="math inline">\([M]=\mu_M\in H_n(M;\mathbb Z)\)</span> is the
+actual oriented fundamental class. No triangulation or finiteness
+assertion about the homology was needed to construct it.</p>
+<h2 id="duality-cap">2. The cap map and its exact gluing sign</h2>
+<p>Write <span class="math inline">\(C^r(M,A;\mathbb Z)\)</span> for
+integer singular cochains that vanish on simplices in <span
+class="math inline">\(A\)</span>. Define</p>
+<p><span class="math display">\[
+C_c^r(M;\mathbb Z)=
+\bigcup_{K\subset M\ {\rm compact}} C^r(M,M\setminus K;\mathbb Z).
+\tag{2.1}
+\]</span></p>
+<p>A cochain in (2.1) vanishes on every simplex contained in the
+complement of its support set. It need not vanish on every simplex of
+large diameter. Coboundary preserves (2.1). A cocycle and a cochain
+witnessing its being a coboundary each occur at a compact stage; their
+union is another compact stage. Thus</p>
+<p><span class="math display">\[
+H_c^r(M;\mathbb Z)
+=\underset{K}{\operatorname{colim}}H^r(M,M\setminus K;\mathbb Z).
+\tag{2.2}
+\]</span></p>
+<p>For an open inclusion, excision identifies the relative groups at
+supports lying inside the smaller open set. This gives extension of
+supports on compact-support cohomology. If <span
+class="math inline">\(M\)</span> is compact, <span
+class="math inline">\(M\)</span> itself is the largest support, and
+<span class="math inline">\(H_c^r(M)=H^r(M)\)</span>.</p>
+<p>Use the right cap operator of the included Thom/Euler companion:</p>
+<p><span class="math display">\[
+R_a\sigma=a(\sigma[m-r,\ldots,m])\,\sigma[0,\ldots,m-r],
+\qquad a\in C^r(M;\mathbb Z),\quad \dim\sigma=m.
+\tag{2.3}
+\]</span></p>
+<p>It is zero for <span class="math inline">\(m&lt;r\)</span>. Expanding
+the alternating simplex boundary gives</p>
+<p><span class="math display">\[
+\partial R_a c=R_a\partial c+(-1)^{m-r}R_{\delta a}c.
+\tag{2.4}
+\]</span></p>
+<p>Faces before the cut provide the first term. Faces after the cut
+provide the coboundary term, with the displayed sign. The common cut
+terms cancel. In particular the differential remains the original chain
+differential; no suspension sign is absorbed into its definition.</p>
+<p>If <span class="math inline">\(a\)</span> is a cocycle supported on
+<span class="math inline">\(K\)</span>, and <span
+class="math inline">\(c\)</span> represents <span
+class="math inline">\(\mu_K\)</span>, then <span
+class="math inline">\(R_a\partial c=0\)</span> because every simplex of
+<span class="math inline">\(\partial c\)</span> lies outside <span
+class="math inline">\(K\)</span>. Equation (2.4) proves that <span
+class="math inline">\(R_a c\)</span> is an absolute cycle. Changing
+<span class="math inline">\(c\)</span> by an outside chain gives zero,
+and changing it by a relative boundary gives an absolute boundary. If
+<span class="math inline">\(a=\delta b\)</span> with <span
+class="math inline">\(b\)</span> supported on <span
+class="math inline">\(K\)</span>, applying (2.4) to <span
+class="math inline">\(b\)</span> gives</p>
+<p><span class="math display">\[
+R_{\delta b}c=(-1)^{n-r+1}\partial R_b c.
+\tag{2.5}
+\]</span></p>
+<p>Thus the construction descends to cohomology and is independent of
+enlarging the support, by Lemma 1.1. It defines</p>
+<p><span class="math display">\[
+D_M^r:H_c^r(M;\mathbb Z)\longrightarrow H_{n-r}(M;\mathbb Z),
+\qquad [a]\longmapsto [R_a\mu_K].
+\tag{2.6}
+\]</span></p>
+<p>It is natural for open inclusions, extension of supports and the
+ordinary homology map. For closed <span
+class="math inline">\(M\)</span>, the defining front/back formula
+gives</p>
+<p><span class="math display">\[
+\langle b,D_M^r(a)\rangle
+=\langle b\smile a,[M]\rangle,\qquad |b|=n-r.
+\tag{2.7}
+\]</span></p>
+<p>The order <span class="math inline">\(b\smile a\)</span> in (2.7) is
+part of the convention.</p>
+<p><strong>Lemma 2.1.</strong> For an open cover <span
+class="math inline">\(M=U\cup V\)</span>, the maps (2.6) identify
+compact-support cohomology Mayer–Vietoris with ordinary homology
+Mayer–Vietoris, reversing degrees. With the middle vertical maps <span
+class="math inline">\((D_U,-D_V)\)</span>, the squares at the inclusion
+maps commute. The connecting square starting in compact-support degree
+<span class="math inline">\(r\)</span> has sign <span
+class="math inline">\((-1)^{n-r}\)</span>.</p>
+<p><strong>Proof.</strong> For compact <span
+class="math inline">\(K\subset U,L\subset V\)</span>, put <span
+class="math inline">\(A=M\setminus K,B=M\setminus L\)</span>. The
+degreewise split exact sequence is</p>
+<p><span class="math display">\[
+0\longrightarrow C^*(M,C_*(A)+C_*(B))
+\longrightarrow C^*(M,A)\oplus C^*(M,B)
+\xrightarrow{(a,b)\mapsto a-b}C^*(M,A\cap B)
+\longrightarrow0.
+\tag{2.8}
+\]</span></p>
+<p>The first notation means cochains vanishing on both indicated chain
+groups. To split the last map degreewise, assign a simplex’s value to
+the first cochain when that simplex is not contained in <span
+class="math inline">\(A\)</span>; otherwise assign its negative to the
+second. A simplex contained in both <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> has value zero. The splitting need not
+commute with coboundary. Since <span class="math inline">\(A,B\)</span>
+are open, the small-chain equivalence identifies the first term with
+cochains of <span class="math inline">\((M,A\cup B)\)</span> on
+cohomology. Sequence (2.8) consequently gives the four supports <span
+class="math inline">\(K\cap L,K,L,K\cup L\)</span>.</p>
+<p>Here is the connecting-map calculation. After sufficiently fine
+subdivision, write a representative of <span
+class="math inline">\(\mu_{K\cup L}\)</span> as <span
+class="math inline">\(\alpha=x+y+z\)</span>, with the three chains
+supported respectively in <span class="math inline">\(U\setminus L,U\cap
+V,V\setminus K\)</span>. These three open sets cover <span
+class="math inline">\(M\)</span>: a point of <span
+class="math inline">\(K\)</span> lies in <span
+class="math inline">\(U\)</span>, and a point of <span
+class="math inline">\(L\)</span> lies in <span
+class="math inline">\(V\)</span>. The chains <span
+class="math inline">\(x+y\)</span> and <span
+class="math inline">\(y\)</span> represent <span
+class="math inline">\(\mu_K\)</span> and <span
+class="math inline">\(\mu_{K\cap L}\)</span>, respectively. Their
+boundaries are outside the corresponding compact sets, and their local
+values are the prescribed ones; Lemma 1.1 identifies their classes.</p>
+<p>Let <span class="math inline">\(\phi=\phi_A-\phi_B\)</span> be a
+cocycle supported on <span class="math inline">\(K\cup L\)</span>, split
+by (2.8). Its connecting cocycle is <span
+class="math inline">\(\delta\phi_A=\delta\phi_B\)</span>. In the
+small-chain model it has support <span class="math inline">\(K\cap
+L\)</span>. Decompose the cycle <span
+class="math inline">\(R_\phi\alpha\)</span> into its <span
+class="math inline">\(U\)</span> part <span class="math inline">\(R_\phi
+x\)</span> and <span class="math inline">\(V\)</span> part <span
+class="math inline">\(R_\phi(y+z)\)</span>. The homological connecting
+cycle is</p>
+<p><span class="math display">\[
+\partial R_\phi x
+=R_{\phi_A}\partial x
+=-R_{\phi_A}\partial y.
+\tag{2.9}
+\]</span></p>
+<p>The first equality uses <span
+class="math inline">\(\delta\phi=0\)</span> and the fact that <span
+class="math inline">\(\phi_B\)</span> vanishes on <span
+class="math inline">\(x\)</span>. The second uses <span
+class="math inline">\(R_{\phi_A}\partial(x+y)=0\)</span>, since this
+boundary is outside <span class="math inline">\(K\)</span>. On the other
+route, equation (2.4), applied to <span
+class="math inline">\(y\)</span>, gives modulo boundaries in <span
+class="math inline">\(U\cap V\)</span></p>
+<p><span class="math display">\[
+R_{\delta\phi_A}y
+=(-1)^{n-r+1}R_{\phi_A}\partial y.
+\tag{2.10}
+\]</span></p>
+<p>Equations (2.9)–(2.10) yield exactly <span
+class="math inline">\((-1)^{n-r}\)</span>. A single sufficiently fine
+subdivision makes all the stated small-chain choices simultaneously; its
+proved chain homotopy preserves the original classes.</p>
+<p>Pass to the filtered limit over <span
+class="math inline">\(K,L\)</span>. Compact subsets of <span
+class="math inline">\(U\cap V\)</span> occur as such intersections, and
+compact subsets of <span class="math inline">\(M\)</span> lie in such
+unions by finite compact shrinkings of the cover. Filtered limits
+preserve exactness: a zero image becomes zero at a later stage, where
+exactness supplies its preimage. This proves the required Mayer–Vietoris
+diagram. The inclusion squares follow from the compatibility of the
+compact-set fundamental classes. ∎</p>
+<h2 id="duality-theorem">3. Integral Poincaré duality, finiteness and
+the full pairing</h2>
+<p><strong>Theorem 3.1.</strong> The map <span
+class="math inline">\(D_M^r\)</span> in (2.6) is an isomorphism for
+every <span class="math inline">\(r\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math inline">\(\mathbb
+R^n\)</span>, closed balls are cofinal supports. The relative sphere
+calculation gives compact-support cohomology <span
+class="math inline">\(\mathbb Z\)</span> in degree <span
+class="math inline">\(n\)</span>, zero otherwise. Cap with the positive
+relative generator sends its evaluation cocycle to a zero-cycle of
+augmentation one. Thus (2.6) identifies its degree-<span
+class="math inline">\(n\)</span> generator with the positive generator
+of <span class="math inline">\(H_0(\mathbb R^n;\mathbb Z)\)</span>. It
+is an isomorphism in all degrees. The same holds on any oriented open
+set homeomorphic to <span class="math inline">\(\mathbb
+R^n\)</span>.</p>
+<p>If duality holds on <span class="math inline">\(U,V,U\cap V\)</span>,
+Lemma 2.1 and the exact sequences prove it on <span
+class="math inline">\(U\cup V\)</span>. More explicitly, insert the
+signs from that lemma into the five consecutive vertical maps. They
+remain isomorphisms except possibly the central map, and a diagram chase
+proves both its injectivity and surjectivity. No factor other than <span
+class="math inline">\(+1\)</span> or <span
+class="math inline">\(-1\)</span> is introduced.</p>
+<p>If <span class="math inline">\(U_1\subset U_2\subset\cdots\)</span>
+exhausts <span class="math inline">\(M\)</span>, a compact support lies
+in some <span class="math inline">\(U_i\)</span>. Every singular cycle
+or bounding chain is a finite sum of simplices, hence also lies in some
+<span class="math inline">\(U_i\)</span>. Both sides of (2.6) are
+therefore filtered direct limits of the corresponding groups on <span
+class="math inline">\(U_i\)</span>, and duality passes to their
+union.</p>
+<p>Any open subset of <span class="math inline">\(\mathbb R^n\)</span>
+is a countable union of balls with closures inside it. A nonempty finite
+intersection of these balls is homeomorphic to <span
+class="math inline">\(\mathbb R^n\)</span>. Indeed fix <span
+class="math inline">\(c\)</span> in the intersection. The positive
+distance from <span class="math inline">\(c\)</span> to the boundary of
+the <span class="math inline">\(i\)</span>-th ball in direction <span
+class="math inline">\(\theta\)</span> is the positive root <span
+class="math inline">\(R_i(\theta)\)</span> of</p>
+<p><span class="math display">\[
+|c+t\theta-c_i|^2=r_i^2.
+\tag{3.1}
+\]</span></p>
+<p>The quadratic formula makes each root continuous and positive. Their
+finite minimum <span class="math inline">\(R(\theta)\)</span> has the
+same properties. The radial map</p>
+<p><span class="math display">\[
+c+t\theta\longmapsto\frac{t}{R(\theta)-t}\theta,\qquad
+s\theta\longmapsto c+\frac{sR(\theta)}{1+s}\theta
+\tag{3.2}
+\]</span></p>
+<p>gives continuous inverse maps, including at the centre. Induction
+over finite unions of balls uses the same induction for intersections
+with the last ball; then the exhaustion argument proves duality on every
+open subset of <span class="math inline">\(\mathbb R^n\)</span>. Finally
+cover <span class="math inline">\(M\)</span> by countably many oriented
+charts. The intersection of a preceding finite union with the next chart
+is an open subset of that chart, whose duality has just been proved.
+Finite-union induction and exhaustion prove the theorem. Empty spaces
+and zero-dimensional manifolds follow directly from point coefficients.
+∎</p>
+<p><strong>Corollary 3.2.</strong> A closed oriented manifold has
+finitely generated integer homology and cohomology, zero above its
+dimension. The pairing</p>
+<p><span class="math display">\[
+\frac{H^r(M;\mathbb Z)}{\operatorname{Tor}}
+\times
+\frac{H^{n-r}(M;\mathbb Z)}{\operatorname{Tor}}
+\longrightarrow\mathbb Z,\qquad
+(a,b)\longmapsto\langle a\smile b,[M]\rangle
+\tag{3.3}
+\]</span></p>
+<p>is unimodular. The corresponding homology/cohomology comparisons
+retain every torsion group in the universal coefficient exact
+sequence.</p>
+<p><strong>Proof.</strong> Represent <span
+class="math inline">\([M]\)</span> by a finite singular cycle <span
+class="math inline">\(c\)</span>. Every <span class="math inline">\(R_a
+c\)</span> lies in the finite-rank free chain subgroup generated by the
+relevant front faces of these finitely many simplices. Its subgroup of
+cycles is finitely generated: it is a subgroup of a finite-rank free
+abelian group. By Theorem 3.1 its classes generate all of <span
+class="math inline">\(H_{n-r}(M;\mathbb Z)\)</span>. Homology is
+therefore a quotient of a finitely generated group. Negative
+compact-support cohomological degrees are zero, so duality also gives
+vanishing above <span class="math inline">\(n\)</span>. The proved
+universal coefficient sequence</p>
+<p><span class="math display">\[
+0\longrightarrow \operatorname{Ext}(H_{r-1}(M),\mathbb Z)
+\longrightarrow H^r(M;\mathbb Z)
+\xrightarrow{\rm ev}\operatorname{Hom}(H_r(M),\mathbb Z)
+\longrightarrow0
+\tag{3.4}
+\]</span></p>
+<p>then gives cohomological finite generation and the same vanishing. At
+the only additional possible degree <span
+class="math inline">\(n+1\)</span>, its Ext term is zero because duality
+identifies <span class="math inline">\(H_n(M)\)</span> with the free
+group <span class="math inline">\(H^0(M)\)</span>.</p>
+<p>For a finite cyclic group, the presentation <span
+class="math inline">\(0\to\mathbb Z\xrightarrow{q}\mathbb Z\to\mathbb
+Z/q\to0\)</span> gives <span
+class="math inline">\(\operatorname{Ext}(\mathbb Z/q,\mathbb Z)=\mathbb
+Z/q\)</span>. Free summands have zero Ext. Thus the left group of (3.4)
+is exactly the torsion subgroup of the middle group: it is finite, and
+the quotient is free. Quotienting (3.4) by that subgroup gives an
+isomorphism onto the full integer dual of <span
+class="math inline">\(H_r(M)/\operatorname{Tor}\)</span>. Composing this
+with <span class="math inline">\(D_M^{n-r}\)</span> and using (2.7)
+proves that the map from the first factor of (3.3) to the integer dual
+of the second is an isomorphism. Its matrix in any integral bases has
+determinant <span class="math inline">\(+1\)</span> or <span
+class="math inline">\(-1\)</span>. This proves unimodularity without
+discarding the torsion in (3.4). ∎</p>
+<p>In particular, on a closed oriented four-manifold with <span
+class="math inline">\(H_1=\mathbb Z^2\)</span>, duality gives <span
+class="math inline">\(H^3=H_1=\mathbb Z^2\)</span>. The finite group
+<span class="math inline">\(\operatorname{Ext}(H_2,\mathbb Z)\)</span>
+injects into this free group by (3.4), so it is zero. Hence <span
+class="math inline">\(H_2\)</span> is torsion-free. This is the precise
+argument used for each original <span
+class="math inline">\(S_j\)</span>; its finite generation is now proved
+as well.</p>
+<h2 id="duality-covering">4. A full dual-lattice test for the actual
+covering image</h2>
+<p>Let <span class="math inline">\(\pi:F\to S\)</span> be a connected
+regular covering of degree <span class="math inline">\(m\)</span> of
+closed oriented <span class="math inline">\(n\)</span>-manifolds,
+preserving orientation, with deck group <span
+class="math inline">\(G\)</span>. Assume the integer cohomology in the
+two degrees under discussion is torsion-free on both manifolds. This is
+the situation of lesson 7 after Proposition 1.1. Put</p>
+<p><span class="math display">\[
+V^r=H^r(F;\mathbb Z)^G,\qquad L^r=\pi^*H^r(S;\mathbb Z).
+\tag{4.1}
+\]</span></p>
+<p>We retain the covering degree in the following exact formula:</p>
+<p><span class="math display">\[
+L^r=
+\left\{x\in V^r:
+\langle x\smile y,[F]\rangle\in m\mathbb Z
+\text{ for every }y\in L^{n-r}\right\}.
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> For each singular simplex downstairs, sum all
+its <span class="math inline">\(m\)</span> lifts. A simplex lifts after
+the image of one vertex is specified, by path lifting and the simplex’s
+contractibility. The lifts of its faces are precisely the corresponding
+face lifts, so this sum is a chain map. Evaluating an upstairs cochain
+on this sum defines the cohomological transfer <span
+class="math inline">\(\operatorname{tr}\)</span>. The two chain-level
+counting identities give</p>
+<p><span class="math display">\[
+\operatorname{tr}\pi^*=m\,1,\qquad
+\pi^*\operatorname{tr}=\sum_{g\in G}g^*.
+\tag{4.3}
+\]</span></p>
+<p>The second follows because, over a simplex already lifted to <span
+class="math inline">\(F\)</span>, its other lifts are exactly its deck
+translates. Therefore <span class="math inline">\(\pi^*\)</span> is
+injective on the torsion-free groups, and over <span
+class="math inline">\(\mathbb Q\)</span> it identifies <span
+class="math inline">\(H^r(S;\mathbb Q)\)</span> with the invariant
+subspace, with inverse <span
+class="math inline">\(m^{-1}\operatorname{tr}\)</span>. This rational
+inverse is used to test integrality; it does not replace (4.1).</p>
+<p>The pushed-forward orientation class is</p>
+<p><span class="math display">\[
+\pi_*[F]=m[S].
+\tag{4.4}
+\]</span></p>
+<p>At any point downstairs, excision gives one local relative class for
+each of its <span class="math inline">\(m\)</span> preimages. Each has
+positive local degree, so its pushforward is the positive local
+generator. Their sum is <span class="math inline">\(m\)</span> times
+that generator. Lemma 1.1 detects the global equality (4.4). Naturality
+of cup product and evaluation consequently gives</p>
+<p><span class="math display">\[
+\langle\pi^*a\smile\pi^*b,[F]\rangle
+=m\langle a\smile b,[S]\rangle.
+\tag{4.5}
+\]</span></p>
+<p>This proves necessity in (4.2). Conversely take <span
+class="math inline">\(x\)</span> in its right side and put <span
+class="math inline">\(\alpha=m^{-1}\operatorname{tr}(x)\in H^r(S;\mathbb
+Q)\)</span>. Equations (4.3)–(4.5) show that</p>
+<p><span class="math display">\[
+\langle\alpha\smile b,[S]\rangle
+=\frac1m\langle x\smile\pi^*b,[F]\rangle\in\mathbb Z
+\quad\text{for every } b\in H^{n-r}(S;\mathbb Z).
+\tag{4.6}
+\]</span></p>
+<p>The unimodular integer pairing in Corollary 3.2 supplies an integer
+class <span class="math inline">\(a\in H^r(S;\mathbb Z)\)</span> with
+these evaluations. Rational nondegeneracy then gives <span
+class="math inline">\(a=\alpha\)</span> in rational cohomology. Thus
+<span class="math inline">\(\pi^*a=x\)</span> rationally; both are in
+the torsion-free group <span class="math inline">\(H^r(F;\mathbb
+Z)\)</span>, so equality is integral. This proves sufficiency and (4.2).
+∎</p>
+<p>Apply this to the exact degree-three invariant bases in lesson 7:</p>
+<p><span class="math display">\[
+\begin{aligned}
+b&amp;=\gamma uw,\\
+c_1&amp;=uw\delta-4\gamma u\delta-2\gamma w\delta,\\
+c_2&amp;=uw\delta-3\gamma u\delta-3\gamma w\delta,\\
+\eta_1&amp;=2u+w+3\delta,\qquad
+\eta_2=u+w+2\delta,
+\end{aligned}
+\tag{4.7}
+\]</span></p>
+<p>with orientation <span
+class="math inline">\(\operatorname{vol}=\gamma uw\delta\)</span>. The
+original degree-one images are <span
+class="math inline">\(L_1^1=\langle3\gamma,\eta_1\rangle\)</span> and
+<span class="math inline">\(L_2^1=\langle4\gamma,\eta_2\rangle\)</span>.
+For an arbitrary invariant class <span
+class="math inline">\(x=rb+sc_j\)</span>, exterior multiplication in the
+original order gives</p>
+<p><span class="math display">\[
+\begin{array}{c|cc}
+&amp;\langle m_j\gamma\smile x,[F]\rangle
+&amp;\langle\eta_j\smile x,[F]\rangle\\ \hline
+j=1&amp;3s&amp;-3r\\
+j=2&amp;4s&amp;-2r.
+\end{array}
+\tag{4.8}
+\]</span></p>
+<p>Changing the order to <span class="math inline">\(x\smile y\)</span>
+introduces <span class="math inline">\((-1)^{3\cdot1}=-1\)</span>, which
+preserves divisibility and is not omitted from the cup convention.
+Formula (4.2) now proves the entire lattices</p>
+<p><span class="math display">\[
+L_1^3=\mathbb Z b\oplus\mathbb Z c_1,\qquad
+L_2^3=\mathbb Z(2b)\oplus\mathbb Z c_2.
+\tag{4.9}
+\]</span></p>
+<p>Thus the degree-three assertion is stronger than its index and a
+named missing coset: both original generators of the second image are
+specified. In the displayed image bases, (4.8) gives the upstairs
+pairings</p>
+<p><span class="math display">\[
+\begin{pmatrix}0&amp;3\\-3&amp;0\end{pmatrix},
+\qquad
+\begin{pmatrix}0&amp;4\\-4&amp;0\end{pmatrix}.
+\tag{4.10}
+\]</span></p>
+<p>Division by the respective actual covering degrees <span
+class="math inline">\(3\)</span> and <span
+class="math inline">\(4\)</span> in (4.5) yields the downstairs matrix
+<span
+class="math inline">\(\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}\)</span>
+in each case. The original classes and degree factors have all remained
+present.</p>
+<figure>
+<img id="integral-duality-diagram" src="assets/integral-duality-lattices.svg" alt="The original finite covering pullback, its degree-scaled cup pairing and the full integer dual-lattice criterion, followed by both computed degree-three lattices.">
+<figcaption>
+Equations (4.3)–(4.6) prove the covering comparison, with the original
+factor <span class="math inline">\(m\)</span>. Equations (4.7)–(4.10)
+then determine every degree-three image generator for both finite
+fillings. The diagram shows induced cohomology maps and pairings, not
+maps of points between the manifolds.
+</figcaption>
+</figure>
+<h2 id="duality-exercises">5. Two complete exercises</h2>
+<p><strong>Exercise 5.1.</strong> A closed connected oriented
+four-manifold has <span class="math inline">\(H_1=\mathbb Z^2\)</span>
+and Euler characteristic zero. Derive all its integer homology and
+cohomology groups. Explain precisely why rational duality alone would
+leave a gap.</p>
+<p><strong>Solution.</strong> Connectedness and orientation give <span
+class="math inline">\(H_0=H_4=\mathbb Z\)</span>. The universal
+coefficient theorem in degree one has zero Ext term because <span
+class="math inline">\(H_0\)</span> is free; hence <span
+class="math inline">\(H^1=\operatorname{Hom}(H_1,\mathbb Z)=\mathbb
+Z^2\)</span>. Integral duality gives <span
+class="math inline">\(H_3=H^1=\mathbb Z^2\)</span> and <span
+class="math inline">\(H^3=H_1=\mathbb Z^2\)</span>. The torsion subgroup
+of <span class="math inline">\(H^3\)</span> is <span
+class="math inline">\(\operatorname{Ext}(H_2,\mathbb Z)\)</span>, by
+(3.4). It is zero, so every finite cyclic summand of <span
+class="math inline">\(H_2\)</span> is excluded. Finite generation,
+proved in Corollary 3.2, now implies <span
+class="math inline">\(H_2=\mathbb Z^{b_2}\)</span>. The original Euler
+equation</p>
+<p><span class="math display">\[
+0=1-2+b_2-2+1
+\tag{5.1}
+\]</span></p>
+<p>gives <span class="math inline">\(b_2=2\)</span>. All groups are
+therefore free with ranks <span
+class="math inline">\((1,2,2,2,1)\)</span>; applying (3.4) gives those
+same ranks for cohomology. A rational argument would determine only
+ranks and would not rule out finite summands in <span
+class="math inline">\(H_2\)</span>. The actual injection of that Ext
+group into the torsion-free integral <span
+class="math inline">\(H^3\)</span> is the missing step.</p>
+<p><strong>Exercise 5.2.</strong> For the original order-four covering,
+determine whether <span class="math inline">\(b\)</span>, <span
+class="math inline">\(2b\)</span>, <span
+class="math inline">\(c_2\)</span>, and <span
+class="math inline">\(3b+2c_2\)</span> descend in degree three. Give
+their exact downstairs evaluations against the classes whose pullbacks
+are <span class="math inline">\(4\gamma,\eta_2\)</span>.</p>
+<p><strong>Solution.</strong> Equation (4.8) gives the ordered upstairs
+evaluations</p>
+<p><span class="math display">\[
+\begin{array}{c|rrrr}
+x&amp;b&amp;2b&amp;c_2&amp;3b+2c_2\\ \hline
+\langle4\gamma\smile x,[F]\rangle&amp;0&amp;0&amp;4&amp;8\\
+\langle\eta_2\smile x,[F]\rangle&amp;-2&amp;-4&amp;0&amp;-6.
+\end{array}
+\tag{5.2}
+\]</span></p>
+<p>The first and fourth columns fail divisibility by <span
+class="math inline">\(4\)</span>. Those two classes cannot descend. The
+second and third satisfy the full test (4.2), so they do descend; this
+is a sufficiency conclusion, not merely a necessary condition. Their
+downstairs evaluation columns are respectively <span
+class="math inline">\((0,-1)^{\mathsf t}\)</span> and <span
+class="math inline">\((1,0)^{\mathsf t}\)</span>. They form the
+unimodular basis pairing of (4.10). Every descended class is a unique
+integer combination of these two, since (4.9) computes the entire image
+and pullback is injective.</p>
+<h2 id="duality-sources">Proof provenance and receiving lesson
+scope</h2>
+<p>The compact-support proof is reconstructed from the cited CC0
+manifold-duality chapter, Sections 1–2; the compact-set orientation
+proof also appears in the retained CC0 <em>Chern classes and the
+integral universal ring</em>, Lemma 5.1. Their author is GPT-6.1 Sol
+(OpenAI). The included Thom/Euler companion supplies the exact
+singular-chain prerequisites used here. Those source texts cite the
+classical human treatments of Poincaré duality by Hatcher and of
+characteristic classes by Milnor–Stasheff; those protected books are not
+reported as read in this increment. This chapter does not claim a new
+duality theorem.</p>
+<p>The exact scripts check the simplex cap signs and the original
+exterior products and divisibility calculations. These finite checks
+supplement the written proofs and do not certify the general topological
+arguments. The full degree-three image formula (4.9) is propagated into
+lesson 7. The included CW, path-fibre and handle companions supply the
+receiving topology; the <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">complete
+smooth-recognition proof</a> supplies the sphere-group calculation.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

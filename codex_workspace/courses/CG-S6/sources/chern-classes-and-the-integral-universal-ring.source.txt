@@ -1,0 +1,278 @@
+# Chern classes and the integral universal ring
+
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.*
+
+Chern classes record the integral characteristic data of a complex bundle. Their first class is the Euler class of a complex line; their highest class is the Euler class of the entire underlying real bundle. We construct the intervening classes, prove the sum and conjugation rules, compute the integral cohomology of the universal complex Grassmannian, and calculate the tangent classes of complex projective space.
+
+The [Thom/Euler chapter](DG-CHAR-06.html) and [Gysin/projective chapter](DG-CHAR-08.html) supply full proofs of the required exact sequences, integral product and coefficient theorems, projective module theorem and flag splitting. The [Schubert chapter](DG-CHAR-04.html) supplies the compact-limit topology, symmetric-polynomial theorem and integral even-cell homology. We use the full complex bundle classification from the [Grassmannian chapter](DG-CHAR-03.html). A base is Hausdorff. The construction and conjugation rule below work on every such base; statements using metrics and universal classification specify a paracompact Hausdorff base. No de Rham argument replaces an integral proof.
+
+## 1. A metric-free construction by deleting the zero vector
+
+For a complex vector space with basis \(v_1,\ldots,v_r\), orient its underlying real space by
+\((v_1,iv_1,\ldots,v_r,iv_r)\).
+A change of complex basis has real determinant \(|\det_{\mathbb C}A|^2>0\). One way to verify the determinant formula is to complexify its real matrix and change coordinates from real and imaginary parts to \((z,\overline z)\); it becomes \(\operatorname {diag}(A,\overline A)\). Thus the orientation is independent of basis and gives every complex bundle \(V\) a canonical real orientation. Ordered complex direct sums have the ordered real sum orientation. Write \(V_{\mathbb R}\) for this oriented real bundle.
+
+For positive rank let \(E_0(V)\) be its total space with the zero section removed, and let \(\pi:E_0(V)\to B\). There is a tautological nowhere-zero vector \(v\) in \(\pi^*V\); its span is a trivial complex line. Form the quotient complex bundle
+\[
+Q_V=\pi^*V/\mathbb C v,
+\]
+of rank \(r-1\). This quotient requires no metric: locally a nonzero coordinate of \(v\) permits solving for that coordinate, giving a continuous quotient frame and invertible changes of frame.
+
+The integral Gysin sequence of the real oriented rank-\(2r\) bundle gives
+\[
+\pi^*:H^q(B;\mathbb Z)\xrightarrow{\ \cong\ }H^q(E_0(V);\mathbb Z)
+\quad\text{for }q<2r-1.
+\tag{1.1}
+\]
+The adjacent groups are the base groups in degrees \(q-2r\) and \(q-2r+1\), both negative and hence zero. Define classes inductively in rank by
+\[
+c_0(V)=1,\qquad c_r(V)=e(V_{\mathbb R}),\qquad
+c_i(V)=(\pi^*)^{-1}c_i(Q_V)\ (0<i<r),\qquad c_i(V)=0\ (i>r).
+\tag{1.2}
+\]
+In rank zero use just \(c_0=1\) and all higher classes zero. Equation (1.1) applies to \(q=2i\) whenever \(i<r\), so (1.2) is well-defined. In particular \(c_i(V)\in H^{2i}(B;\mathbb Z)\). For a line this agrees with the previously proved definition \(c_1(L)=e(L_{\mathbb R})\).
+
+**Proposition 1.1.** These classes are natural under pullbacks and complex bundle isomorphisms. They satisfy \(c(V\oplus\varepsilon_{\mathbb C}^k)=c(V)\).
+
+**Proof.** A pullback bundle map gives a commutative square of deleted total spaces, takes the tautological vector to the corresponding vector and identifies their quotient bundles. Induction makes the quotient classes natural. The two pullback isomorphisms (1.1) and the commutative square therefore give naturality of every lower class. The top class is natural by Euler naturality; the canonical complex orientations are preserved.
+
+For stability it suffices to add one trivial complex line. On the deleted total space of \(V\oplus\varepsilon^1_{\mathbb C}\), the section \(s(b)=(0,1)\) has quotient bundle \(s^*Q=V\). Pulling the identity \(\pi^*c_i(V\oplus\varepsilon^1)=c_i(Q)\) back along \(s\) gives \(c_i(V\oplus\varepsilon^1)=c_i(V)\) for every \(i<r+1\), since \(\pi s=\operatorname{id}\). Its top class is zero by the nowhere-zero section and Euler vanishing. Higher classes are zero by definition. Iterate. ∎
+
+The total class is \(c(V)=1+c_1(V)+\cdots+c_r(V)\). It has an inverse in the completed graded cohomology ring: solving the coefficient of cohomological degree \(2m\) gives the recursion
+\(d_m=-\sum_{i=1}^m c_i d_{m-i}\), \(d_0=1\).
+Only finite sums occur in each degree. No finite polynomial inverse is asserted on a base with unbounded cohomology.
+
+## 2. The projective relation and the Whitney formula
+
+We now assume that \(B\) is paracompact Hausdorff. The earlier metric theorem supplies a Hermitian metric and the flag tower with injective integral pullback. Its successive lines split the pulled-back bundle as an actual direct sum. The first line classes satisfy
+\(c_1(L\otimes M)=c_1(L)+c_1(M)\) and \(c_1(L^*)=-c_1(L)\), with complete proofs in Section6 of the Gysin/projective chapter.
+
+Temporarily define an auxiliary sequence \(C_i(V)\) for positive rank by the unique projective relation
+\[
+z^r+p^*C_1(V)z^{r-1}+\cdots+p^*C_r(V)=0,
+\qquad z=-c_1(S),\quad p:P(V)\to B,
+\tag{2.1}
+\]
+where \(S\) is its tautological complex line. The projective module theorem says that \(1,z,\ldots,z^{r-1}\) are a basis over base cohomology. Expressing \(-z^r\) in that basis gives existence and uniqueness of every coefficient. Grading gives \(C_i\in H^{2i}(B;\mathbb Z)\). Set \(C_0=1\); classes above rank are zero. For a line (2.1) gives \(C_1=c_1\). Pullback of (2.1), and uniqueness of the relation on the pulled-back projective bundle, prove naturality of the auxiliary sequence.
+
+**Lemma 2.1.** If a flag pullback splits \(V\) as \(L_1\oplus\cdots\oplus L_r\), and \(t_j=c_1(L_j)\), then
+\[
+C_i(V)\big|_{\operatorname {Flag}(V)}=e_i(t_1,\ldots,t_r).
+\tag{2.2}
+\]
+
+**Proof.** Work on the projective bundle of this split bundle. The bundle
+\(\operatorname {Hom}_{\mathbb C}(S,p^*V)\)
+has a nowhere-zero section, the inclusion of the tautological line. Its top Euler class is zero. It splits as the sum of lines \(S^*\otimes p^*L_j\); the ordered complex orientations and the Euler product rule give
+\[
+0=\prod_{j=1}^r\bigl(z+p^*t_j\bigr).
+\]
+Expanding this monic relation and using uniqueness of its coefficients proves (2.2). ∎
+
+The flag pullback is injective. On it, the highest elementary symmetric class equals the Euler product \(\prod_j e((L_j)_{\mathbb R})\). Thus
+\[
+C_r(V)=e(V_{\mathbb R}).
+\tag{2.3}
+\]
+Passing to successive flags of two bundles gives an injective common pullback on which both split. Formula (2.2) then gives
+\[
+C(V\oplus W)=C(V)C(W),\qquad C(\varepsilon^k_{\mathbb C})=1.
+\tag{2.4}
+\]
+These equalities descend by injectivity. In particular the auxiliary classes are stable.
+
+**Theorem 2.2.** On every paracompact Hausdorff base the auxiliary classes equal (1.2). Consequently
+\[
+c(V\oplus W)=c(V)c(W),\qquad
+c_i(V)\big|_{\operatorname {Flag}(V)}=e_i(t_1,\ldots,t_r),
+\tag{2.5}
+\]
+and (2.1) is the projective relation for the Chern classes themselves.
+
+**Proof.** We first verify that induction can be applied on the deleted total space. The unit sphere bundle \(S(V)\) is a compact-fibre bundle over \(B\) and hence paracompact Hausdorff, by the explicit refinement proof in the Gysin/projective chapter. Radial normalization identifies \(E_0(V)\) with \(S(V)\times(0,\infty)\). The latter is paracompact: cover the interval by relatively compact open intervals with locally finite closures; on each compact interval, the compact-fibre refinement proof applies to the product. Refine a given cover over slightly larger compact intervals and restrict those refinements to the smaller open intervals. Their union is locally finite because the interval cover is locally finite. This proves the required assertion directly. Rank one and the empty deleted bundle in rank zero cause no difficulty.
+
+A metric identifies the quotient \(Q_V\) with the orthogonal complement of the tautological vector. Thus
+\(\pi^*V=\varepsilon^1_{\mathbb C}\oplus Q_V\).
+By (2.4), \(\pi^*C_i(V)=C_i(Q_V)\). Induction identifies the right side with \(c_i(Q_V)\). For \(i<r\), the isomorphism (1.1) then identifies \(C_i(V)\) with (1.2). For \(i=r\), use (2.3). This completes the induction. It also shows that the auxiliary construction is independent of the chosen Hermitian metric. ∎
+
+**Corollary 2.3.** On a paracompact Hausdorff base,
+\[
+c_1(V)=c_1(\det_{\mathbb C}V),\qquad
+\rho_2c_i(V)=w_{2i}(V_{\mathbb R}),\qquad
+w_{2i+1}(V_{\mathbb R})=0.
+\tag{2.6}
+\]
+
+**Proof.** On the flag space the determinant is \(L_1\otimes\cdots\otimes L_r\), whose first class is \(\sum t_j=e_1(t)\). Integral injectivity gives the first identity. A complex line's underlying plane has \(w_1=0\) and \(w_2=\rho_2c_1\), as proved in the squares chapter. The Whitney formulas on the split real bundle show that its total class is \(\prod(1+\rho_2t_j)\), with no odd components. The flag pullback is also injective with mod-two coefficients, so these equalities descend. ∎
+
+The same flag argument proves uniqueness of natural classes satisfying the rank axiom, the Whitney formula and the specified complex-line normalization on paracompact Hausdorff bases. Their pullbacks must be the elementary symmetric polynomials in the line classes, and injectivity determines them downstairs. Integral injectivity, rather than evaluation on integral cycles alone, is essential when the base has torsion.
+
+## 3. The full flag space and integral universal cohomology
+
+Let \(BU(r)=G_r(\mathbb C^\infty)\), with its weak topology, and let \(\gamma_r\) be its universal bundle. For \(r=0\) the space is a point. For positive \(r\), write \(F_r\) for the space of complete flags
+\(0\subset V_1\subset\cdots\subset V_r\subset\mathbb C^\infty\),
+where \(\dim_{\mathbb C}V_j=j\). Its projection \(\pi:F_r\to BU(r)\) forgets the proper subspaces. The orthogonal lines are \(L_j=V_j\cap V_{j-1}^\perp\). These are the lines in the projective flag tower of \(\gamma_r\), so \(\pi^*\) is injective.
+
+Here the tower topology equals the direct limit of the finite flag spaces \(F_r(\mathbb C^N)\). To check this, a bundle chart has the form \(U\times F\), with compact finite flag fibre \(F\). The compact-product direct-limit lemma identifies the topology of \(BU(r)\times F\) by its finite base stages; restricting to the open subset \(U\times F\) gives the same test. The tower's restriction over the finite Grassmannian is exactly the finite flag bundle, with its compact topology. These chart tests prove the assertion. The finite stages are compact Hausdorff and nested by closed embeddings. The compact-limit and paracompactness lemmas in the Schubert chapter therefore apply to \(F_r\), as well as to \(BU(r)\) and finite products of \(\mathbb {CP}^\infty\).
+
+**Lemma 3.1.** There is a homotopy equivalence
+\[
+g:F_r\longrightarrow T_r=(\mathbb {CP}^\infty)^r,
+\qquad g(V_\bullet)=(L_1,\ldots,L_r).
+\tag{3.1}
+\]
+It takes the ordered line classes on the flag space to the classes of the universal lines on the respective factors.
+
+**Proof.** Put the \(j\)-th copy of \(\mathbb C^\infty\) into coordinate positions \(r(i-1)+j\), and denote the resulting isometry by \(Q_j\). The images for distinct \(j\) are orthogonal. Sending \((L_1,\ldots,L_r)\) to the flag of partial sums \(\bigoplus_{j\leq k}Q_jL_j\) defines \(s:T_r\to F_r\). Both \(g\) and \(s\) are continuous on every finite stage, and their product-domain continuity follows from the proved compact-product topology.
+
+The composite \(gs\) sends each line to \(Q_jL_j\). It is homotopic to the identity: the straight operators \((1-t)I+tQ_j\) are injective on finite-support vectors. For \(r\geq2\), the last nonzero input coordinate \(m\) gives a strictly higher output coordinate \(r(m-1)+j\), except for \(m=j=1\), when the operator fixes that coordinate. For \(r=1\), the operator is the identity. Applying these operators to each line gives the required homotopy, with continuity on finite stages and their compact interval products.
+
+For \(sg\), use the tautological rank-\(r\) bundle on \(F_r\). It has two continuous injections into \(\mathbb C^\infty\):
+\[
+J_0(v)=v,\qquad J_1(v)=\sum_{j=1}^r Q_jP_jv,
+\]
+where \(P_j\) is orthogonal projection onto \(L_j\). The second is an injection by its orthogonal disjoint images. The embedding homotopy already proved in Theorem4.1 of the classification chapter joins these injections: move \(J_0\) to its even-coordinate copy by the injective straight shift; rotate that copy to the odd-coordinate copy of \(J_1\) by
+\(\cos(\pi t/2)S_eJ_0+\sin(\pi t/2)S_oJ_1\);
+then reverse the injective straight shift of \(J_1\). Disjoint supports prove injectivity during the rotation. At every time the images of the nested subspaces \(V_k\) form a flag. At the endpoints these flags are the original flag and \(sg\) of it. Every finite flag stage and its compact parameter interval map into a finite stage, so the same topology lemma proves joint continuity. Finally \(g\) sends each ordered line bundle to the tautological line of its factor by a fibrewise identity. ∎
+
+We need the integral product ring of \(T_r\), including an integral basis, rather than a comparison of ranks over a field. The earlier projective calculation gives \(H_*(\mathbb {CP}^\infty;\mathbb Z)=\mathbb Z\) in nonnegative even degrees and zero otherwise; all its groups are free. Its free singular chain complex splits as these homology groups with zero differential plus contracting pairs: boundaries are free subgroups of free groups, cycles split over free homology, and chain groups split over the free boundaries in the next lower degree. These are precisely the splittings proved in the Thom/Euler chapter. Tensoring these chain equivalences and using its fully proved chain-product equivalence gives the homology of \(T_r\) as the tensor product of the graded groups. In each total degree the number of degree-tuples is finite. The integral universal-coefficient theorem has no Ext term, and the external products of the projective generators are the dual integral basis. Hence
+\[
+H^*(T_r;\mathbb Z)=\mathbb Z[t_1,\ldots,t_r],\qquad |t_j|=2.
+\tag{3.2}
+\]
+Here \(t_j=c_1(\gamma_j)\), so it is the negative of the positive hyperplane generator on that factor. This sign changes a basis by units and does not affect the ring presentation. This proof uses free chain splittings and actual integral bases; no general inverse-limit cohomology assertion occurs.
+
+**Theorem 3.2.**
+\[
+H^*(BU(r);\mathbb Z)=\mathbb Z[c_1(\gamma_r),\ldots,c_r(\gamma_r)],\qquad |c_i|=2i.
+\tag{3.3}
+\]
+Under the injective flag pullback, its image is exactly the symmetric polynomials in (3.2), and \(c_i\) maps to \(e_i(t_1,\ldots,t_r)\).
+
+**Proof.** Permuting the ordered orthogonal lines is a continuous self-map of \(F_r\) covering the identity on \(BU(r)\). It permutes their first classes. Therefore every class in the image of \(\pi^*\) corresponds, through (3.1), to a polynomial invariant under every permutation. By (2.5), the image of \(c_i\) is the elementary symmetric polynomial \(e_i\). The full symmetric-polynomial theorem proved in the Schubert chapter, valid over \(\mathbb Z\), says that these polynomials are algebraically independent and generate every invariant polynomial. Thus the image contains all invariants and is contained in the invariants. Since \(\pi^*\) is injective, this gives (3.3) and independence. The rank-zero case is the coefficient ring. ∎
+
+The even Schubert cells independently give the free additive groups, with their partition counts. A rank comparison alone would not prove (3.3) over \(\mathbb Z\): a subgroup of the same rank may have a nontrivial finite index. The flag equivalence and integral symmetric-polynomial argument determine the image itself, resolving that issue.
+
+## 4. Conjugation, duals and tensoring by a line
+
+The conjugate bundle \(\overline V\) has the same real bundle with scalar multiplication \(\lambda\cdot_{\overline V}v=\overline\lambda\cdot_Vv\). Its real complex orientation differs by \((-1)^r\), because each \(iv_j\) in the oriented basis is replaced by \(-iv_j\). Euler orientation reversal gives
+\(c_r(\overline V)=(-1)^r c_r(V)\).
+The deleted total spaces are the same real space, and their quotient bundles satisfy
+\(Q_{\overline V}=\overline{Q_V}\).
+Induction and the isomorphism (1.1) give, for every Hausdorff base,
+\[
+c_i(\overline V)=(-1)^i c_i(V).
+\tag{4.1}
+\]
+
+On a paracompact Hausdorff base a Hermitian metric, linear in its first variable, gives a complex-linear isomorphism
+\[
+\overline V\longrightarrow V^*,\qquad
+\overline v\longmapsto\bigl(w\mapsto\langle w,v\rangle\bigr).
+\]
+The scalar convention makes this linear: replacing \(v\) by \(\overline\lambda v\) multiplies the functional by \(\lambda\). It is a fibrewise isomorphism by nondegeneracy and depends continuously on the base. Thus \(c_i(V^*)=(-1)^ic_i(V)\).
+
+For a paracompact Hausdorff base, let \(L\) be a line with \(\ell=c_1(L)\). A flag splits \(V\otimes L\) into lines with first classes \(t_j+\ell\). For \(0\leq k\leq r\), expanding their elementary symmetric polynomials and descending by integral injectivity yields
+\[
+c_k(V\otimes L)=\sum_{i=0}^k
+\binom{r-i}{k-i}c_i(V)\ell^{k-i}.
+\tag{4.2}
+\]
+For each chosen product of \(i\) distinct roots, the other \(k-i\) factors \(\ell\) can be chosen from the remaining \(r-i\) roots in exactly the displayed number of ways. This proves the coefficient rather than treating the roots as actual classes on the original base.
+
+## 5. Projective tangent classes and their integral evaluation
+
+The graph charts of a complex Grassmannian are complex analytic: a change of graph chart is a matrix fractional-linear expression, whose inverse-matrix entries are ratios of polynomials with nonzero denominator on the overlap. Their derivatives are complex linear. In particular \(\mathbb {CP}^n\) has its usual complex manifold structure and hence its real complex orientation. Write
+\[
+x=-c_1(\gamma)=c_1(\gamma^*),\qquad
+H^*(\mathbb {CP}^n;\mathbb Z)=\mathbb Z[x]/(x^{n+1}).
+\]
+The sign on the projective line agrees with the positive complex-coordinate zero of a section of \(\gamma^*\), as already checked in the Gysin/projective chapter.
+
+As in the real tangent calculation, differentiation of a curve of complex lines identifies its complex tangent bundle with
+\(\operatorname {Hom}_{\mathbb C}(\gamma,\gamma^\perp)\).
+In graph coordinates a velocity is exactly the complex linear map defining the velocity of its graph. The scalar identity gives a trivial complex line in \(\operatorname {Hom}(\gamma,\gamma)\). Thus
+\[
+T\mathbb {CP}^n\oplus\varepsilon^1_{\mathbb C}
+\cong\operatorname {Hom}(\gamma,\varepsilon^{n+1}_{\mathbb C})
+\cong(n+1)\gamma^*.
+\]
+Stability and the Whitney formula prove
+\[
+c(T\mathbb {CP}^n)=(1+x)^{n+1},\qquad
+c_i(T\mathbb {CP}^n)=\binom{n+1}{i}x^i\quad(0\leq i\leq n).
+\tag{5.1}
+\]
+
+To evaluate its top class integrally we supply the oriented version of the fundamental-class construction. The mod-two proof was given in Section4 of the [projective tangent chapter](DG-CHAR-02.html); here the signs and orientations are part of the assertion.
+
+**Lemma 5.1.** Let \(M^d\) be an oriented smooth manifold without boundary. For each compact \(K\subset M\) there is a unique class \(\mu_K\in H_d(M,M-K;\mathbb Z)\) having the positive local generator at every point of \(K\); restriction to points detects top-degree classes, and the relative groups vanish in degrees greater than \(d\). If \(M\) is closed this gives \([M]\in H_d(M;\mathbb Z)\). For an oriented compact \(W\) with boundary, the relative fundamental class satisfies \(\partial[W,\partial W]=[\partial W]\), with the outward-normal-first boundary orientation.
+
+**Proof.** The chosen tangent orientation gives compatible local generators. To verify this directly, express a coordinate transition near a point as its invertible derivative plus a remainder of size \(o(|x|)\). On a sufficiently small sphere the straight homotopy to that derivative avoids zero, since \(|Ax|\geq c|x|\) for some \(c>0\). The induced local homology map therefore has the derivative's sign. The determinant-sign action on the local integer generator was proved in the Thom/Euler chapter by paths in the positive linear group and a coordinate reflection. Orientation-preserving changes of chart consequently give the same positive generator.
+
+In one oriented chart, for a compact convex set the radial complement deformation proved in the projective tangent chapter identifies its relative homology with the local homology of a point. Over \(\mathbb Z\) this is \(\mathbb Z\) in degree \(d\) and zero in other degrees; choose the generator compatible with the chart orientation. For two compact sets the relative Mayer–Vietoris segment injects the union's top group into the direct sum of their top groups, because the preceding intersection group in degree \(d+1\) is zero. The last map is the difference of restrictions, so matching positive classes lift; the injection gives uniqueness. This proves the assertion for finite unions of convex sets by induction on the number of pieces, applying the same induction to their intersections.
+
+For an arbitrary compact set in a chart, a finite relative chain has boundary of compact support separated from that set. Enlarge the set to a finite union of closed balls centered in it, avoiding that boundary. The chain then represents a class relative to the enlarged set. Classes above degree \(d\) vanish there and hence on the original set. A top class with zero point values restricts to zero on each chosen ball, by the isomorphism at its center; union detection makes it zero. A larger ball containing the compact set supplies the prescribed positive class. Finally decompose any compact set into finitely many compact chart pieces, using smaller chart neighbourhoods with closures inside their charts, and use the same Mayer–Vietoris induction. This establishes all compact-set assertions, with integer signs included.
+
+For a compact manifold with boundary, use the explicit collar already proved and the pair/excision isomorphism to homology relative to a compact interior set. The interior orientation supplies its class by the preceding argument; local constancy propagates it over every interior component, and compact-set detection gives uniqueness. The local boundary-box triple square from Lemma4.3 of the projective tangent chapter still commutes over \(\mathbb Z\). Its sign can be read explicitly: write the box with inward height \(t\) first and bottom coordinates following it. If the bottom coordinates have the outward-normal-first boundary orientation, the ambient orientation is the negative of \(dt\) followed by those coordinates. A representative is thus \(-[0,1]\times c_D\), where \(c_D\) is the positive disk chain. The product boundary has bottom term \(+c_D\); the top and side terms vanish in the relative bottom group. Thus the boundary class has the positive local value on every boundary chart, and detection on the boundary gives the stated identity. ∎
+
+**Lemma 5.2.** Suppose an oriented real rank-\(d\) bundle over a closed oriented \(d\)-manifold has a section with finitely many isolated zeros. Its Euler number is the sum of its local degrees. A zero with invertible derivative contributes the sign of that derivative's real determinant.
+
+**Proof.** The section is a map of pairs \((M,M-Z)\to(E,E_0)\). Pull back the Thom class. Excision on disjoint small coordinate disks identifies its degree-\(d\) class with the sum of its local classes, whose coefficients are the local degrees by definition of the fibre Thom generator. Forgetting the relative condition gives the Euler class, since the section is homotopic to the zero section. The class \([M]\) maps to the positive generator on each of these disks by Lemma5.1, so naturality of evaluation gives the sum formula. At a nondegenerate zero, the straight homotopy of its local expression to its derivative avoids zero on a sufficiently small sphere by the same remainder bound used above. The local degree is the determinant sign, using the proved linear-action computation. ∎
+
+Apply this to the bundle \((\gamma^*)^{\oplus n}\) over \(\mathbb {CP}^n\). The coordinate functionals \(z_1,\ldots,z_n\) on \(\mathbb C^{n+1}\), restricted to each tautological line, are sections of \(\gamma^*\). Their common zero is the single point \([1:0:\cdots:0]\). In the chart with local tautological frame \((1,u_1,\ldots,u_n)\), the combined section has coordinates \((u_1,\ldots,u_n)\); its derivative is the complex identity, whose real determinant is \(+1\). The Euler product gives its top class \(x^n\), so Lemma5.2 proves
+\[
+\langle x^n,[\mathbb {CP}^n]\rangle=1.
+\tag{5.2}
+\]
+For \(n=0\) this is the positive class of a point and the empty product. Therefore (5.1) gives
+\[
+\left\langle c_n(T\mathbb {CP}^n),[\mathbb {CP}^n]\right\rangle=n+1.
+\tag{5.3}
+\]
+The even cells independently give \(\chi(\mathbb {CP}^n)=n+1\), so these calculations agree with the Euler-characteristic formula that will later be proved for all closed oriented manifolds.
+
+In particular \(c_1(\gamma|_{\mathbb {CP}^1})=-x\), while \(c_1(T\mathbb {CP}^1)=2x\). On the projective plane,
+\[
+c(T\mathbb {CP}^2)=1+3x+3x^2,
+\qquad \left\langle c_2,[\mathbb {CP}^2]\right\rangle=3.
+\]
+Conjugating this tangent bundle changes its first class to \(-3x\) and keeps its second class \(3x^2\), on the same underlying base with the same evaluation orientation. Consequently these two complex bundles are not isomorphic: their first classes differ in the torsion-free group \(H^2(\mathbb {CP}^2;\mathbb Z)\).
+
+## 6. Exercises with solutions
+
+**Exercise 6.1 — Easy.** Compute all Chern classes of \(T\mathbb {CP}^2\), evaluate the top class and compare with the cell Euler characteristic.
+
+**Solution.** Tangent stabilization gives \(c=(1+x)^3=1+3x+3x^2\) in \(\mathbb Z[x]/(x^3)\). Lemma5.2 applied to the two coordinate-function sections of \((\gamma^*)^{\oplus2}\) gives \(\langle x^2,[\mathbb {CP}^2]\rangle=1\). Hence the top number is three. There is one cell in each of real dimensions zero, two and four, so the alternating cell count is also three. The underlying tangent bundle has \(w=1+\rho_2x+(\rho_2x)^2\) by (2.6).
+
+**Exercise 6.2 — Medium.** Prove the Whitney formula for complex bundles over a paracompact Hausdorff base, preserving possible torsion.
+
+**Solution.** Construct the unique projective coefficients (2.1). Over a flag tower the Euler class of \(\operatorname {Hom}(S,p^*V)\) vanishes because the tautological inclusion is a nowhere-zero section. Its line summands have first classes \(z+t_j\), proving that the projective coefficients pull back to the elementary symmetric polynomials. A successive flag tower for two bundles has injective integral pullback and splits both. The product \(\prod(1+t_j)\prod(1+u_k)\) is exactly the total elementary symmetric class of their direct sum, so the auxiliary classes obey Whitney. The comparison induction in Theorem2.2 identifies them with the metric-free Gysin construction. Integral injectivity descends the equality, including every torsion component; no rationalization or cycle-only detection is used.
+
+**Exercise 6.3 — Medium.** Prove the conjugation rule without assuming a metric or a paracompact base. Deduce the dual rule when a Hermitian metric is available, and explain \(T\mathbb {CP}^1\not\cong\overline{T\mathbb {CP}^1}\).
+
+**Solution.** In rank \(r\), replacing every \(iv_j\) by \(-iv_j\) multiplies the oriented Thom and Euler classes by \((-1)^r\). The deleted total spaces agree, and their quotient bundles are conjugates. Inducting in rank and using the injectivity of (1.1) in every lower even degree gives \(c_i(\overline V)=(-1)^ic_i(V)\). The Hermitian map \(\overline v\mapsto\langle -,v\rangle\) identifies the conjugate with the complex dual, giving its rule. The two projective-line tangent first classes are \(2x\) and \(-2x\), which differ because \(H^2(\mathbb {CP}^1;\mathbb Z)\cong\mathbb Z\).
+
+**Exercise 6.4 — Hard.** Prove the universal integral ring theorem through flags, and identify the degree-eight additive basis of \(H^*(BU(2);\mathbb Z)\).
+
+**Solution.** The ordered-line map from the flag space to \((\mathbb {CP}^\infty)^r\) has an inverse up to homotopy given by placing the lines in disjoint coordinate blocks. The explicit injection homotopy of Lemma3.1 respects all nested subspaces and proves the other composite homotopic to the identity. The product ring is the integral polynomial ring on the line classes by free-chain splitting, products and integral UCT. Projective module injectivity embeds \(H^*(BU(r);\mathbb Z)\) into this ring. Permutation of the ordered lines covers the identity downstairs, so its image consists of symmetric polynomials. The Chern classes pull back to the elementary symmetric polynomials, and the proved integral symmetric-polynomial theorem makes these exactly all symmetric polynomials, with no relations. This proves the entire ring theorem. For \(r=2\), degree eight has the three basis elements \(c_1^4,c_1^2c_2,c_2^2\), since \(2a+4b=8\) has exactly the three solutions \((a,b)=(4,0),(2,1),(0,2)\).
+
+**Exercise 6.5 — Medium.** On \(\mathbb {CP}^2\), let \(V=\gamma^*\oplus\gamma^*\). Compute its classes, then those of \(V\otimes\gamma\), using (4.2).
+
+**Solution.** Whitney gives \(c(V)=(1+x)^2=1+2x+x^2\). With \(r=2\) and \(\ell=-x\),
+\[
+c_1(V\otimes\gamma)=2x+2(-x)=0,
+\qquad c_2(V\otimes\gamma)=x^2+(2x)(-x)+(-x)^2=0.
+\]
+Indeed \(\gamma^*\otimes\gamma\) is canonically trivial by evaluation, so the tensor bundle is a sum of two trivial lines. This checks both the coefficient and the sign in the general formula.
+
+**Exercise 6.6 — Hard.** Determine an integral basis of \(H^4(G_2(\mathbb C^4);\mathbb Z)\) by restricting universal Chern classes.
+
+**Solution.** The complex Schubert cells are indexed by partitions with at most two rows, each at most two, and have real dimension twice their size. The infinite Grassmannian has the same cells through real dimension four: the first excluded row length is three, of real dimension six. The natural even cellular chain inclusion is therefore an isomorphism in homology through degree four; its groups are free and its differentials zero. The integral UCT gives an isomorphism on degree-four cohomology. The universal ring has the integral degree-four basis \(c_1^2,c_2\), so their restrictions are the desired basis. This is a bounded-degree conclusion; no finite Grassmannian ring presentation was inferred from the cell count alone.
+
+## Sources and scope
+
+The coverage corresponds to Milnor and Stasheff, *Characteristic Classes* (1974), Sections13–14, especially Theorem14.5, Lemma14.9, Theorem14.10 and the Whitney formula. Full immediate source proofs in Section14 were consulted privately. The proof here constructs the integral universal ring through a complete flag equivalence and symmetric polynomials, rather than using a cohomological limit claim or a rank comparison. The oriented compact-set and boundary fundamental-class proof develops the previously checked local-homology argument of Hatcher, *Algebraic Topology* (2002), Section3.3, with its signs and local boundary computation made explicit. These copyrighted works are scholarly references; their wording and figures are not reproduced. This chapter's prose, proofs, computations and solved exercises are independently authored.
+
+The metric-free definition, naturality, stability and conjugation work on every Hausdorff base. The Whitney formula, splitting calculations, integral universal classification and tensor formula here are proved on paracompact Hausdorff bases. This chapter includes no claim that rational characteristic forms recover torsion. The full seventeen-lesson course remains in progress; the recorded check is by the writing AI itself, with independent review separate.
+

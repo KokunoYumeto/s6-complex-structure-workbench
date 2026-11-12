@@ -1,0 +1,828 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The six-dimensional bundle comparison and stable framing</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/spin-six-and-the-framing-comparison.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="spin-six-provider">The six-dimensional bundle comparison and the
+stable framing</h1>
+<p>CG-S6 · Smooth recognition companion · Written by GPT-6 Astra
+(OpenAI), at Ultra, October 2026. Independently written exposition: CC0.
+This chapter is included with author self-checks. No independent review
+is claimed.</p>
+<p>We prove the following receiving result for lesson 7: for every
+oriented smooth homotopy six-sphere <span
+class="math inline">\(\Sigma\)</span>, the original rank-seven bundle
+<span class="math inline">\(T\Sigma\oplus\mathbf1_{\mathbb R}\)</span>
+is trivial. We retain the extra real line. The original tangent bundle
+has Euler number two and is not trivial. A stable framing is also not a
+framed null-cobordism; producing the latter is a further step in smooth
+sphere recognition.</p>
+<p>The proof uses the polynomial loop reduction already proved in <a
+href="CG-S6-11.html#sphere-classification">lesson
+11, Sections 10.1–10.2</a>, and supplies its injectivity argument for
+the compact bases actually needed here. We then construct the full map
+<span class="math inline">\(SU(4)\to SO(6)\)</span>, compute its Euler
+class, and use the actual frame fibration <span
+class="math inline">\(SO(6)\to SO(7)\to S^6\)</span>. The human context
+is Françoise Michel and Claude Weber, <a
+href="https://arxiv.org/abs/1409.0704v1"><em>Michel Kervaire work on
+knots in higher dimensions</em>, arXiv:1409.0704v1</a>, Sections 2–3.
+Those original-author TeX sections were read; their statements of stable
+parallelizability, surgery and stable groups are not used as substitutes
+for the receiving proofs below.</p>
+<h2 id="framing-family-index">1. A family index for the actual
+loops</h2>
+<p>Let <span class="math inline">\(Y\)</span> be a compact space and
+let</p>
+<p><span class="math display">\[
+g:Y\times\mathbb T\longrightarrow GL_r(\mathbb C),
+\qquad g(y,1)=I_r.
+\tag{1.1}
+\]</span></p>
+<p>Use increasing <span class="math inline">\(t\)</span> in <span
+class="math inline">\(z=e^{2\pi it}\)</span> for the circle direction.
+Let <span class="math inline">\(H^2\subset L^2(\mathbb T)\)</span> be
+the closed span of <span class="math inline">\(1,z,z^2,\ldots\)</span>,
+and let <span class="math inline">\(P\)</span> be its orthogonal
+projection. Define</p>
+<p><span class="math display">\[
+T_{g_y}=P M_{g_y}|_{H^2\otimes\mathbb C^r}.
+\tag{1.2}
+\]</span></p>
+<p>The family is continuous in operator norm, since <span
+class="math inline">\(\|T_a-T_b\|\leq\|a-b\|_\infty\)</span>. For
+Laurent polynomial symbols, direct multiplication of the unilateral
+shift and its adjoint shows that <span
+class="math inline">\(T_aT_b-T_{ab}\)</span> has finite rank: all
+differences occur among finitely many initial Fourier modes. Uniform
+approximation of continuous symbols by their Fejér polynomials, with the
+operator bound just given, shows that this difference is compact for
+continuous matrix symbols. Therefore</p>
+<p><span class="math display">\[
+T_gT_{g^{-1}}-I\quad\hbox{and}\quad
+T_{g^{-1}}T_g-I
+\tag{1.3}
+\]</span></p>
+<p>are compact, continuously in the parameter.</p>
+<p>Here are the Fredholm and family-index facts needed to use (1.3).
+Suppose a bounded operator <span class="math inline">\(A:H\to H\)</span>
+has a bounded two-sided inverse modulo compact operators. Its kernel is
+finite dimensional: an infinite orthonormal sequence there would
+contradict compactness in <span class="math inline">\(BA-I\)</span>. The
+same argument applied to the adjoint gives finite-dimensional cokernel
+once closed range is proved. On the orthogonal complement of its kernel,
+<span class="math inline">\(A\)</span> is bounded below. Otherwise
+choose unit vectors <span class="math inline">\(v_j\perp\ker A\)</span>
+with <span class="math inline">\(Av_j\to0\)</span>. The equation <span
+class="math inline">\(BA=I+K\)</span> and compactness of <span
+class="math inline">\(K\)</span> give a convergent subsequence of <span
+class="math inline">\(v_j\)</span>, whose unit limit lies both in the
+kernel and its orthogonal complement, a contradiction. This lower bound
+proves closed range, and the adjoint argument completes the Fredholm
+assertion.</p>
+<p>For a continuous Fredholm family <span
+class="math inline">\(A_y\)</span>, choose a finite-dimensional subspace
+<span class="math inline">\(E\subset H\)</span> for which</p>
+<p><span class="math display">\[
+\widetilde A_y:H\oplus E\longrightarrow H,
+\qquad (v,e)\longmapsto A_yv+e
+\tag{1.4}
+\]</span></p>
+<p>is onto for every <span class="math inline">\(y\)</span>. Such a
+space exists. At each point take a complement of the range; surjectivity
+persists on a neighbourhood because a right inverse persists by a
+Neumann series. Finitely many of these neighbourhoods cover <span
+class="math inline">\(Y\)</span>; the sum of their finite-dimensional
+complements works everywhere.</p>
+<p>The kernels of (1.4) form a finite-rank vector bundle. To see the
+local construction, fix a bounded right inverse <span
+class="math inline">\(R_0\)</span> at <span
+class="math inline">\(y_0\)</span>. Near <span
+class="math inline">\(y_0\)</span>, set</p>
+<p><span class="math display">\[
+R_y=R_0\bigl(I+(\widetilde A_y-\widetilde A_{y_0})R_0\bigr)^{-1},
+\qquad P_y=I-R_y\widetilde A_y.
+\tag{1.5}
+\]</span></p>
+<p>Then <span class="math inline">\(\widetilde A_yR_y=I\)</span>, <span
+class="math inline">\(P_y^2=P_y\)</span>, and the image of <span
+class="math inline">\(P_y\)</span> is precisely the kernel. The
+projections here may be oblique. For two sufficiently close finite-rank
+idempotents <span class="math inline">\(P,Q\)</span>, the restrictions
+of <span class="math inline">\(Q\)</span> to <span
+class="math inline">\(\operatorname{im}P\)</span> and of <span
+class="math inline">\(P\)</span> to <span
+class="math inline">\(\operatorname{im}Q\)</span> are injective, by the
+estimate <span class="math inline">\(\|Qv-v\|&lt;\|v\|\)</span> on <span
+class="math inline">\(\operatorname{im}P\)</span>, and its reverse. Thus
+their finite ranks agree, and these restrictions supply continuous local
+trivializations.</p>
+<p>Define</p>
+<p><span class="math display">\[
+\operatorname{Ind}(A)=[\ker\widetilde A]-[Y\times E]\in K^0(Y).
+\tag{1.6}
+\]</span></p>
+<p>This does not depend on <span class="math inline">\(E\)</span>. If
+<span class="math inline">\(E\subset E&#39;\)</span>, projecting the
+added coordinate modulo <span class="math inline">\(E\)</span> gives the
+exact bundle sequence</p>
+<p><span class="math display">\[
+0\longrightarrow\ker\widetilde A_E
+\longrightarrow\ker\widetilde A_{E&#39;}
+\longrightarrow Y\times(E&#39;/E)\longrightarrow0.
+\tag{1.7}
+\]</span></p>
+<p>It is onto because (1.4) with <span class="math inline">\(E\)</span>
+is onto; a lift of any extra coordinate can be corrected using that
+surjection. Hermitian orthogonal complements split this finite-rank
+sequence. Subtracting the dimensions in (1.6) proves independence for
+nested choices, and a common containing subspace proves it for arbitrary
+choices. The construction on <span
+class="math inline">\(Y\times[0,1]\)</span> proves homotopy invariance,
+using the explicit close-projection bundle comparison of lesson 11.
+Direct sums add the index, and an invertible family has zero index, by
+taking <span class="math inline">\(E=0\)</span>.</p>
+<p>For a projection <span class="math inline">\(e(y)\in M_N(\mathbb
+C)\)</span>, let <span class="math inline">\(E_e\)</span> be its image
+bundle. The actual positive loop and its Toeplitz operator are</p>
+<p><span class="math display">\[
+f_e(z)=ze+I-e,
+\qquad T_{f_e}=S\otimes e+I\otimes(I-e).
+\tag{1.8}
+\]</span></p>
+<p>This operator has zero kernel. Its cokernel is exactly the constant
+Fourier mode with coefficient in <span
+class="math inline">\(E_e\)</span>. One can use <span
+class="math inline">\(E=\mathbb C^N\)</span> in the constant mode in
+(1.4): its kernel is isomorphic to <span
+class="math inline">\(E_e^\perp\)</span>, by <span
+class="math inline">\(c\mapsto(-c,c)\)</span> on the complementary
+constant mode. Therefore (1.6) gives the full signed formula</p>
+<p><span class="math display">\[
+\operatorname{Ind}(T_{f_e})
+=[E_e^\perp]-[\mathbf1^N]=-[E_e].
+\tag{1.9}
+\]</span></p>
+<p>The sign is tied to the positive circle direction and the unilateral
+shift with cokernel its constant mode. Neither the direction nor the
+index has been reversed.</p>
+<h2 id="framing-loop-periodicity">2. The needed two-step loop
+periodicity</h2>
+<p>Let <span class="math inline">\(\mathcal L(Y)\)</span> be stable
+homotopy classes of the families (1.1), with identity blocks allowed.
+Direct sum is its operation. Pointwise multiplication gives the same
+operation by the explicit rotation homotopy in lesson 11, equation
+(10.2); a loop and its pointwise inverse therefore sum to zero. In
+particular <span class="math inline">\(\mathcal L(Y)\)</span> is a
+group. A projection family defines a homomorphism</p>
+<p><span class="math display">\[
+\beta_Y:K^0(Y)\longrightarrow\mathcal L(Y),
+\qquad [E_e]\longmapsto[f_e].
+\tag{2.1}
+\]</span></p>
+<p>To check independence of the embedding of a bundle, embed two copies
+into their common direct sum and move one to the other by the isometry
+<span
+class="math inline">\(v\mapsto(\cos\theta\,j_0v,\sin\theta\,j_1v)\)</span>.
+Its range projection gives a projection homotopy, and hence the loop
+homotopy. An isomorphism between bundles can first be made unitary by
+its positive polar factor, so the same argument applies. Stable bundle
+isomorphisms and group completion now establish (2.1).</p>
+<p>Surjectivity is exactly the finite polynomial reduction already
+proved in lesson 11. Its data are retained: a Laurent approximation
+<span class="math inline">\(g_0\)</span> of size <span
+class="math inline">\(r\)</span>, a nonnegative exponent <span
+class="math inline">\(a\)</span>, the polynomial <span
+class="math inline">\(f=z^ag_0\)</span>, its full block linearization,
+and the spectral projection <span class="math inline">\(e\)</span> for
+the part of the matrix spectrum to the right of <span
+class="math inline">\(\operatorname{Re}\lambda=1/2\)</span>. The proved
+homotopies give</p>
+<p><span class="math display">\[
+[g]=[f_e]-ar[z]
+=\beta_Y\bigl([E_e]-ar[\mathbf1]\bigr).
+\tag{2.2}
+\]</span></p>
+<p>All homotopies remain based at <span
+class="math inline">\(z=1\)</span>. The finite polynomial proof,
+including the elementary inverse matrices and the contour integral for
+<span class="math inline">\(e\)</span>, is included in that lesson;
+(2.2) uses its loop conclusion before passing to any clutched
+bundle.</p>
+<p>The family index proves injectivity. It is defined for every loop by
+(1.2)–(1.6), is invariant under stable loop homotopy, and is additive
+under block sum. Equation (1.9) gives</p>
+<p><span class="math display">\[
+-\operatorname{Ind}\circ\beta_Y
+=\operatorname{id}_{K^0(Y)}.
+\tag{2.3}
+\]</span></p>
+<p>Thus <span class="math inline">\(\beta_Y\)</span> is an isomorphism,
+with inverse the negative of the family index. This proves the required
+periodicity with both inverse maps specified. It does not import a
+general periodicity theorem for arbitrary coefficient algebras.</p>
+<p>For completeness, apply this result to spheres while retaining the
+basepoint condition. Polar decomposition deforms <span
+class="math inline">\(GL_r(\mathbb C)\)</span> to <span
+class="math inline">\(U(r)\)</span> through <span
+class="math inline">\(g(g^*g)^{-s/2}\)</span>, fixing the identity.
+Write <span class="math inline">\(\pi_j(U)\)</span> for the direct limit
+of <span class="math inline">\(\pi_j(U(r))\)</span> under identity-block
+inclusions. The kernel of evaluation at a chosen point in <span
+class="math inline">\(K^0(S^m)\)</span> is <span
+class="math inline">\(\widetilde K^0(S^m)\)</span>. Under (2.1), its
+counterpart consists of loop families whose loop at that point is
+null-homotopic. Multiplication by the inverse of that loop makes the
+family equal to the identity there, without changing its class. Any
+homotopy can be made based in the sphere variable by the same
+multiplication at each time. Hence</p>
+<p><span class="math display">\[
+\widetilde K^0(S^m)\simeq\pi_m(\Omega U)
+\simeq\pi_{m+1}(U).
+\tag{2.4}
+\]</span></p>
+<p>The second map is the actual adjunction: a based map <span
+class="math inline">\(S^m\to\Omega U(r)\)</span> is a map on <span
+class="math inline">\(S^m\times[0,1]\)</span> constant on <span
+class="math inline">\(S^m\times\{0,1\}\cup\{*\}\times[0,1]\)</span>,
+hence a map on <span class="math inline">\(S^m\wedge
+S^1=S^{m+1}\)</span>. The construction and its inverse also carry
+homotopies.</p>
+<p>Clutching over the two hemispheres gives, for <span
+class="math inline">\(m\geq2\)</span>,</p>
+<p><span class="math display">\[
+\widetilde K^0(S^m)\simeq\pi_{m-1}(U).
+\tag{2.5}
+\]</span></p>
+<p>Here is the classification argument used in (2.5). The hemisphere
+bundles are trivial by contraction and the bundle homotopy argument of
+lesson 11. Their transition is a map on <span
+class="math inline">\(S^{m-1}\)</span>. Changing a hemisphere frame
+multiplies it on one side by a map extending to a disk, whose boundary
+restriction is null-homotopic. Conversely a homotopy of transition maps
+glues a bundle over the sphere times an interval and therefore gives
+isomorphic endpoint bundles. A stable equality in the bundle group can
+be made an isomorphism after adding a trivial bundle: add a complement
+of the common extra bundle. Consequently stable transition classes give
+precisely the reduced bundle group. Block sum agrees with its group
+operation; the rotation formula again identifies it with the
+homotopy-group operation. These constructions prove both directions of
+(2.5).</p>
+<p>Combining (2.4) and (2.5) for <span
+class="math inline">\(m=2,4\)</span> gives</p>
+<p><span class="math display">\[
+\pi_1(U)\simeq\pi_3(U)\simeq\pi_5(U).
+\tag{2.6}
+\]</span></p>
+<p>The first group is <span class="math inline">\(\mathbb Z\)</span>,
+with its positive winding convention. Indeed <span
+class="math inline">\(U(1)=\mathbb T\)</span> has fundamental group
+<span class="math inline">\(\mathbb Z\)</span>, by lifting a loop
+through <span class="math inline">\(t\mapsto e^{2\pi it}\)</span>. The
+map <span class="math inline">\(U(r+1)\to S^{2r+1}\)</span> taking the
+first column has fibre <span class="math inline">\(U(r)\)</span>. It is
+locally trivial: near a chosen unit vector, project the remaining fixed
+basis vectors to its orthogonal complement and perform Gram–Schmidt.
+These local frames give local sections and the bundle product charts.
+Homotopies lift by subdividing their parameter interval into these
+product charts. The usual disk-lifting argument then gives its exact
+homotopy sequence. Since <span
+class="math inline">\(\pi_1(S^{2r+1})=\pi_2(S^{2r+1})=0\)</span>, its
+inclusions preserve <span class="math inline">\(\pi_1\)</span>.</p>
+<p>The lower sphere-group vanishing used here has a direct proof.
+Approximate a continuous map <span class="math inline">\(S^j\to
+S^d\)</span>, <span class="math inline">\(j&lt;d\)</span>, uniformly by
+a smooth map into <span class="math inline">\(\mathbb R^{d+1}\)</span>
+using local convolution and a partition of unity, then project radially
+to <span class="math inline">\(S^d\)</span>. A sufficiently close
+approximation stays homotopic to the original through normalized
+straight segments. The smooth map has bounded derivative on finitely
+many compact coordinate pieces. Subdivide each piece into cubes of side
+<span class="math inline">\(\epsilon\)</span>; there are <span
+class="math inline">\(O(\epsilon^{-j})\)</span> cubes, and each image
+lies in a ball of radius <span
+class="math inline">\(O(\epsilon)\)</span>. Their total <span
+class="math inline">\(d\)</span>-dimensional volume is <span
+class="math inline">\(O(\epsilon^{d-j})\)</span>, tending to zero. Thus
+the image misses a point of <span class="math inline">\(S^d\)</span>.
+Stereographic coordinates on its complement contract the map to its
+basepoint. The approximation homotopy can be made based by composing at
+each time with a small rotation sending its moving basepoint back to the
+original one; such rotations exist continuously in a neighbourhood by
+the same local frame construction. This proves the stated vanishing, and
+the other lower sphere-group vanishings used below.</p>
+<p>The same exact sequence shows <span
+class="math inline">\(\pi_5(U(4))\to\pi_5(U)\)</span> is an isomorphism:
+the adjacent sphere groups are <span
+class="math inline">\(\pi_6(S^{2r+1})\)</span> and <span
+class="math inline">\(\pi_5(S^{2r+1})\)</span>, zero for every <span
+class="math inline">\(r\geq4\)</span>. Thus</p>
+<p><span class="math display">\[
+\pi_5(U(4))\simeq\mathbb Z.
+\tag{2.7}
+\]</span></p>
+<p>The exactness being used can also be checked directly. In a locally
+trivial bundle <span class="math inline">\(F\to E\to B\)</span>, a map
+<span class="math inline">\(S^j\to E\)</span> whose projected class is
+zero can be deformed into <span class="math inline">\(F\)</span>: lift a
+null-homotopy of its projection, starting at the given map. If a map
+<span class="math inline">\(S^j\to F\)</span> bounds a disk in <span
+class="math inline">\(E\)</span>, projection of that disk, constant on
+its boundary, gives a based <span class="math inline">\(S^{j+1}\to
+B\)</span>. If this latter class is zero, lift a null-homotopy relative
+to the disk boundary to deform the filling disk into <span
+class="math inline">\(F\)</span>. This proves the isomorphism assertion
+when the two indicated base groups vanish. The required relative lifting
+is available for these frame bundles explicitly: use the orthogonal
+complement to the vertical tangent spaces as a connection and lift a
+smooth homotopy by its horizontal ordinary differential equation. The
+fibres are compact, so the lift exists throughout the bounded time
+interval; on a boundary where the homotopy is constant its horizontal
+velocity is zero. Continuous maps and homotopies represent the same
+classes as smooth ones here. Local convolution and matrix projection to
+the unitary or orthogonal group give smooth approximations; collar the
+already smooth prescribed boundary data first and leave that collar
+fixed. Uniformly close approximations are homotopic in their coordinate
+neighbourhoods, also relative to that collar. Thus the smooth lifting
+calculation establishes the assertions for the original homotopy
+groups.</p>
+<p>Finally the determinant bundle <span class="math inline">\(SU(4)\to
+U(4)\to\mathbb T\)</span> has a section <span
+class="math inline">\(z\mapsto\operatorname{diag}(z,1,1,1)\)</span> and
+is locally trivial. The groups <span class="math inline">\(\pi_5(\mathbb
+T)\)</span> and <span class="math inline">\(\pi_6(\mathbb T)\)</span>
+vanish by lifting spheres to its contractible covering line. Its exact
+homotopy sequence therefore gives</p>
+<p><span class="math display">\[
+\pi_5(SU(4))\xrightarrow{\ \simeq\ }\pi_5(U(4))\simeq\mathbb Z.
+\tag{2.8}
+\]</span></p>
+<h2 id="framing-su4-so6">3. The actual representation on six real
+coordinates</h2>
+<p>Let <span class="math inline">\(E_0=\mathbb C^4\)</span>, with its
+standard Hermitian metric and volume <span
+class="math inline">\(e_1\wedge e_2\wedge e_3\wedge e_4\)</span>. On
+<span class="math inline">\(\Lambda^2E_0\)</span>, put <span
+class="math inline">\(e_{ij}=e_i\wedge e_j\)</span> and define an
+antilinear operator <span class="math inline">\(\tau\)</span> by</p>
+<p><span class="math display">\[
+\tau e_{12}=e_{34},\quad
+\tau e_{13}=-e_{24},\quad
+\tau e_{14}=e_{23},\quad
+\tau^2=I.
+\tag{3.1}
+\]</span></p>
+<p>Equivalently, with the Hermitian inner product linear in its first
+variable,</p>
+<p><span class="math display">\[
+\xi\wedge\eta=\langle\xi,\tau\eta\rangle\,
+e_1\wedge e_2\wedge e_3\wedge e_4.
+\tag{3.2}
+\]</span></p>
+<p>This identity verifies the signs and determines <span
+class="math inline">\(\tau\)</span> uniquely. Every element of <span
+class="math inline">\(SU(4)\)</span> preserves both the Hermitian
+product and the volume, so (3.2) proves that its exterior-square action
+commutes with <span class="math inline">\(\tau\)</span>. The fixed
+subspace <span class="math inline">\(V_0\)</span> is a six-dimensional
+real inner-product space. Its explicit positive orthonormal basis is</p>
+<p><span class="math display">\[
+\begin{aligned}
+a_1&amp;=(e_{12}+e_{34})/\sqrt2,&amp;
+b_1&amp;=i(e_{12}-e_{34})/\sqrt2,\\
+a_2&amp;=(e_{13}-e_{24})/\sqrt2,&amp;
+b_2&amp;=i(e_{13}+e_{24})/\sqrt2,\\
+a_3&amp;=(e_{14}+e_{23})/\sqrt2,&amp;
+b_3&amp;=i(e_{14}-e_{23})/\sqrt2.
+\end{aligned}
+\tag{3.3}
+\]</span></p>
+<p>Its orientation is the displayed order <span
+class="math inline">\((a_1,b_1,a_2,b_2,a_3,b_3)\)</span>. Restriction of
+the exterior square defines</p>
+<p><span class="math display">\[
+\rho:SU(4)\longrightarrow SO(V_0)\simeq SO(6).
+\tag{3.4}
+\]</span></p>
+<p>To check the target orientation, <span
+class="math inline">\(SU(4)\)</span> is path connected. Diagonalize a
+unitary matrix and choose its four eigenvalue angles with sum zero by
+changing one angle by the required multiple of <span
+class="math inline">\(2\pi\)</span>; multiplying all angles by a common
+path parameter stays in determinant one and joins it to the identity.
+Hence the determinant of its real action, which has values <span
+class="math inline">\(\pm1\)</span>, is always positive.</p>
+<p>The kernel of (3.4) is exactly <span
+class="math inline">\(\{I,-I\}\)</span>. If its real action is the
+identity, its complexification is the identity on <span
+class="math inline">\(\Lambda^2E_0\)</span>. For unitary eigenvalues
+<span class="math inline">\(\lambda_1,\ldots,\lambda_4\)</span>, this
+says <span class="math inline">\(\lambda_i\lambda_j=1\)</span> for every
+distinct pair. Comparing pairs makes all eigenvalues equal, and their
+square is one. Unitary diagonalization then makes the original matrix
+<span class="math inline">\(I\)</span> or <span
+class="math inline">\(-I\)</span>; both are indeed in the kernel.</p>
+<p>The differential has zero kernel, since a vector in it would
+exponentiate to a one-parameter subgroup in that finite kernel. Both
+groups have real dimension fifteen. Thus <span
+class="math inline">\(\rho\)</span> is a local diffeomorphism, with open
+image. Its image is closed by compactness. The group <span
+class="math inline">\(SO(6)\)</span> is connected: successive oriented
+rotations in coordinate two-planes reduce any oriented orthogonal matrix
+to the identity, retaining determinant one at each step. Therefore the
+image is all of <span class="math inline">\(SO(6)\)</span>, and <span
+class="math inline">\(\rho\)</span> is a two-sheeted covering
+homomorphism. In particular lifting spheres and their homotopies
+gives</p>
+<p><span class="math display">\[
+\rho_*:\pi_j(SU(4))\xrightarrow{\ \simeq\ }\pi_j(SO(6))
+\quad(j\geq2).
+\tag{3.5}
+\]</span></p>
+<p>Indeed <span class="math inline">\(S^j\)</span> is simply connected
+in these degrees, so a map lifts uniquely after choosing its value at
+one point. A based homotopy lifts with that same choice. This proves
+both surjectivity and injectivity, rather than merely identifying the
+two Lie algebras.</p>
+<h2 id="framing-euler-comparison">4. Euler class, including all three
+weights and their sign</h2>
+<p>Let <span class="math inline">\(E\)</span> be a Hermitian rank-four
+bundle with a specified unit determinant section. Apply (3.1)–(3.4) in
+its determinant-one frames to obtain the real oriented rank-six
+bundle</p>
+<p><span class="math display">\[
+V=(\Lambda^2E)^\tau.
+\tag{4.1}
+\]</span></p>
+<p>The basis convention (3.3) fixes its orientation. We claim the exact
+identity</p>
+<p><span class="math display">\[
+e(V)=c_3(E).
+\tag{4.2}
+\]</span></p>
+<p>Pull back to the full complex flag bundle of <span
+class="math inline">\(E\)</span>. Its pullback on integral cohomology is
+injective by the included projective splitting provider. There <span
+class="math inline">\(E=L_1\oplus L_2\oplus L_3\oplus L_4\)</span>, with
+<span class="math inline">\(x_i=c_1(L_i)\)</span> and <span
+class="math inline">\(x_1+x_2+x_3+x_4=0\)</span>. The antilinear pairing
+couples <span class="math inline">\(L_1L_2\)</span> with <span
+class="math inline">\(L_3L_4\)</span>, <span
+class="math inline">\(L_1L_3\)</span> with <span
+class="math inline">\(L_2L_4\)</span> with the negative sign in (3.1),
+and <span class="math inline">\(L_1L_4\)</span> with <span
+class="math inline">\(L_2L_3\)</span>.</p>
+<p>For a unit vector <span class="math inline">\(p\)</span> in one of
+the first three lines, the fixed vectors in its paired sum are</p>
+<p><span class="math display">\[
+\frac{\alpha p+\overline\alpha\tau p}{\sqrt2},
+\qquad \alpha\in\mathbb C.
+\tag{4.3}
+\]</span></p>
+<p>This is an isometric real-linear identification with that complex
+line. If its phase is <span class="math inline">\(e^{i\theta}\)</span>,
+its real action in the corresponding <span
+class="math inline">\((a,b)\)</span>-basis is</p>
+<p><span class="math display">\[
+\begin{pmatrix}\cos\theta&amp;-\sin\theta\\
+\sin\theta&amp;\cos\theta\end{pmatrix}.
+\tag{4.4}
+\]</span></p>
+<p>Thus its positive Euler class is the first Chern class of that line,
+with no sign reversal. Multiplicativity of the Euler class for an
+ordered sum, proved by the product of the fibre Thom classes, gives</p>
+<p><span class="math display">\[
+e(V)=(x_1+x_2)(x_1+x_3)(x_1+x_4).
+\tag{4.5}
+\]</span></p>
+<p>Before imposing the determinant equation, the entire polynomial
+is</p>
+<p><span class="math display">\[
+\begin{aligned}
+(x_1+x_2)(x_1+x_3)(x_1+x_4)
+&amp;=x_1^3+x_1^2(x_2+x_3+x_4)\\
+&amp;\quad+x_1(x_2x_3+x_2x_4+x_3x_4)+x_2x_3x_4\\
+&amp;=x_1^2c_1(E)+c_3(E).
+\end{aligned}
+\tag{4.6}
+\]</span></p>
+<p>The specified determinant section makes the first term zero.
+Injection from the flag bundle proves (4.2) integrally on the original
+base.</p>
+<p>Every oriented real rank-six bundle over <span
+class="math inline">\(S^6\)</span> arises in this way. Its transition on
+the equatorial <span class="math inline">\(S^5\)</span> is a map to
+<span class="math inline">\(SO(6)\)</span>. Lift it through (3.4),
+possible since <span class="math inline">\(S^5\)</span> is simply
+connected, and clutch a rank-four determinant-one bundle using that
+lift. Applying <span class="math inline">\(\rho\)</span> to its
+transition returns the original transition, so it gives an actual
+isomorphism with the original real bundle.</p>
+<p>The characteristic-number map on clutching classes is additive. One
+description of addition in <span
+class="math inline">\(\pi_5(SO(6))\)</span> uses a pinch map <span
+class="math inline">\(S^5\to S^5\vee S^5\)</span>. Suspending the two
+hemisphere descriptions gives the corresponding pinch of <span
+class="math inline">\(S^6\)</span>; pulling back a bundle on the two
+wedge summands realizes that sum. The positive fundamental class maps to
+the sum of the two positive fundamental classes. Naturality of the Euler
+class therefore adds its two evaluations. The same argument applies to
+<span class="math inline">\(c_3\)</span> on the lifted transition
+classes.</p>
+<p>By (2.8) and (3.5), the group of these real clutching classes is
+infinite cyclic. Lesson 11, equation (10.15) with <span
+class="math inline">\(n=3\)</span>, proves that <span
+class="math inline">\(c_3(E)[S^6]\)</span> is even for every complex
+bundle <span class="math inline">\(E\)</span> on this sphere. Equations
+(4.2)–(4.6) therefore make every Euler number even.</p>
+<p>The tangent bundle of the outward-oriented standard sphere has Euler
+number exactly two. An explicit section is <span
+class="math inline">\(s_a(p)=a-\langle a,p\rangle p\)</span>, where
+<span class="math inline">\(|a|=1\)</span>. Its zeros are <span
+class="math inline">\(p=a,-a\)</span>, with derivatives <span
+class="math inline">\(-I,+I\)</span> on six-dimensional tangent spaces.
+Both have positive determinant, and the proved Thom zero-count formula
+gives the two positive contributions. Consequently the Euler
+homomorphism on this cyclic group is nonzero and has image containing
+two. Its image is contained in <span class="math inline">\(2\mathbb
+Z\)</span>, so that image is exactly <span
+class="math inline">\(2\mathbb Z\)</span>. A nonzero homomorphism from
+<span class="math inline">\(\mathbb Z\)</span> to <span
+class="math inline">\(\mathbb Z\)</span> has zero kernel. We have
+proved</p>
+<p><span class="math display">\[
+\pi_5(SO(6))\xrightarrow{\ [g]\mapsto
+\frac12\langle e(V_g),[S^6]\rangle\ }\mathbb Z
+\quad\text{is an isomorphism},
+\tag{4.7}
+\]</span></p>
+<p>and the actual tangent clutching class maps to <span
+class="math inline">\(+1\)</span>. Its lifted determinant-one rank-four
+bundle has <span class="math inline">\(c_3=2u\)</span>, with <span
+class="math inline">\(u\)</span> the positive generator. The factors
+two, the three paired weights and the choice of real orientation have
+all been retained.</p>
+<h2 id="framing-so7">5. The actual frame fibration kills the stabilized
+class</h2>
+<p>Take the first-column map</p>
+<p><span class="math display">\[
+SO(7)\longrightarrow S^6,
+\qquad A\longmapsto Ae_1.
+\tag{5.1}
+\]</span></p>
+<p>Its fibre over <span class="math inline">\(e_1\)</span> is <span
+class="math inline">\(\operatorname{diag}(1,SO(6))\)</span>. Projection
+and Gram–Schmidt, followed by the orientation choice, give local
+sections, exactly as for the unitary fibration in Section 2. The
+associated rank-six bundle is the actual outward-oriented tangent
+bundle:</p>
+<p><span class="math display">\[
+[A,v]\longmapsto
+\bigl(Ae_1;A(0,v)\bigr)\in TS^6.
+\tag{5.2}
+\]</span></p>
+<p>The first column is the outward normal, and the remaining six columns
+give the positive tangent orientation because <span
+class="math inline">\(\det A=1\)</span>. Thus (5.2) also specifies the
+orientation comparison.</p>
+<p>The relevant part of the homotopy sequence is</p>
+<p><span class="math display">\[
+\pi_6(S^6)\xrightarrow{\partial}\pi_5(SO(6))
+\longrightarrow\pi_5(SO(7))
+\longrightarrow\pi_5(S^6)=0.
+\tag{5.3}
+\]</span></p>
+<p>The connecting map applied to the identity of <span
+class="math inline">\(S^6\)</span> is the transition between two lifted
+hemisphere sections of (5.1). By (5.2), this is precisely the tangent
+clutching class, up to the sign determined by the order of those two
+sections. Fix the order so that the transition sends southern
+coordinates to northern coordinates; this gives the same clutching
+convention as (4.7). Reversing both conventions would invert that class
+and would still leave the image unchanged. Since the class has Euler
+number two, (4.7) says it generates all of <span
+class="math inline">\(\pi_5(SO(6))\)</span>. Exactness of (5.3) now
+proves</p>
+<p><span class="math display">\[
+\pi_5(SO(7))=0.
+\tag{5.4}
+\]</span></p>
+<p>In particular every oriented rank-seven bundle over <span
+class="math inline">\(S^6\)</span> is trivial. This is an unstabilized
+rank-seven assertion: use its hemisphere transition in <span
+class="math inline">\(SO(7)\)</span>; a null-homotopy from (5.4) extends
+that transition over a disk, and changing that hemisphere frame by the
+extension makes the transition the identity. No passage to an
+unspecified larger rank is needed.</p>
+<h2 id="framing-original-sphere">6. Apply the comparison to the original
+homotopy sphere</h2>
+<p>Let <span class="math inline">\(g:S^6\to\Sigma\)</span> be the
+positive-degree homotopy equivalence constructed in lesson 7, and let
+<span class="math inline">\(h:\Sigma\to S^6\)</span> be its homotopy
+inverse. The bundle</p>
+<p><span class="math display">\[
+g^*(T\Sigma\oplus\mathbf1_{\mathbb R})
+\tag{6.1}
+\]</span></p>
+<p>is an oriented rank-seven bundle over <span
+class="math inline">\(S^6\)</span>, so Section 5 gives a trivialization.
+Pull it back along <span class="math inline">\(h\)</span>. The homotopy
+<span class="math inline">\(g\circ
+h\simeq\operatorname{id}_\Sigma\)</span> and the finite close-projection
+construction of lesson 11 identify the resulting pullback bundle with
+the actual <span class="math inline">\(T\Sigma\oplus\mathbf1_{\mathbb
+R}\)</span>. Thus it is continuously trivial.</p>
+<p>It is smoothly trivial as well. In finitely many local smooth bundle
+frames, approximate the components of its seven continuous global frame
+sections uniformly by smooth functions, and combine them with a smooth
+partition of unity. Compactness gives a positive lower bound on the
+least singular value of the original frame map. An approximation closer
+than that bound preserves pointwise linear independence and the
+orientation sign. The resulting smooth sections are a smooth frame. If
+desired, Gram–Schmidt makes it orthonormal without changing its
+orientation. Denote the resulting frame isomorphism by</p>
+<p><span class="math display">\[
+\mathcal F:\Sigma\times\mathbb R^7
+\xrightarrow{\ \simeq\ }T\Sigma\oplus\mathbf1_{\mathbb R}.
+\tag{6.2}
+\]</span></p>
+<p>Its inverse assigns to an actual pair <span
+class="math inline">\((v,a)\in T_p\Sigma\oplus\mathbb R\)</span> its
+seven coordinates in that frame. Hence the added line, the domain and
+the codomain are explicit. The argument has not asserted a
+trivialization of <span class="math inline">\(T\Sigma\)</span> alone:
+its Euler number is <span class="math inline">\(\chi(\Sigma)=2\)</span>,
+by the <a
+href="tangent-index-with-torsion-line-bundles.html#tangent-characteristic-comparison">signed
+diagonal calculation</a> in the index companion. That Euler calculation
+uses the oriented real tangent bundle, its tubular diagonal and
+complementary-degree pairing, and applies to any closed oriented
+six-manifold; no complex structure on <span
+class="math inline">\(\Sigma\)</span> is required. Its sphere homology
+makes its Euler characteristic two. A trivial positive-rank bundle has a
+nowhere-zero section and zero Euler class, so that original tangent
+bundle is nontrivial.</p>
+<p>The local sphere-recognition calculation has therefore reached an
+actual stable framing of the original manifold. The <a
+href="framed-manifolds-and-the-pontryagin-thom-map.html#pt-stabilization-and-original-framing">original-frame
+Pontryagin–Thom companion</a> now constructs its exact normal framing,
+proves both bordism/homotopy comparisons and suspension, and uses the
+original complex tangent operator to prove the full framing homotopy
+back to the map constructed here. The framed bordism class requires the
+additional geometric invariant proved in the linked chapter below.
+Neither (6.2) nor the fact that <span
+class="math inline">\(H_3(\Sigma)=0\)</span> is by itself that
+calculation. The <a
+href="the-original-integral-stable-group-and-its-completion-maps.html#integral-degree-six-answer">original
+integral comparison</a> now proves the entire integral sixth stable
+sphere group and its original completion map. The <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> constructs the full quadratic invariant,
+proves framed bordism invariance and gives value zero for the original
+framed homotopy six-sphere, with an actual framed nullbordism. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map.</p>
+<p>There is a stronger comparison already proved by the same
+calculation. The positive degree of the original <span
+class="math inline">\(g\)</span> gives <span
+class="math inline">\(\langle e(g^*T\Sigma),[S^6]\rangle=2\)</span>.
+Equation (4.7) therefore identifies its actual oriented rank-six
+clutching class with that of <span class="math inline">\(TS^6\)</span>.
+The clutching classification supplies an oriented bundle isomorphism</p>
+<p><span class="math display">\[
+B:g^*T\Sigma\xrightarrow{\ \simeq\ }TS^6.
+\tag{6.3}
+\]</span></p>
+<p>It is a bundle comparison covering the identity on <span
+class="math inline">\(S^6\)</span>, not an assertion that the
+differential of the homotopy equivalence is invertible. Choose metrics
+and use the positive polar factor to make <span
+class="math inline">\(B\)</span> fibrewise isometric if desired. The
+full stable trivialization of this pullback is then</p>
+<p><span class="math display">\[
+\begin{aligned}
+(p;v,a)&amp;\longmapsto(p;B_pv+ap),\\
+(p;w)&amp;\longmapsto
+\bigl(p;B_p^{-1}(w-\langle w,p\rangle p),\langle w,p\rangle\bigr).
+\end{aligned}
+\tag{6.4}
+\]</span></p>
+<p>The two formulas are inverse because <span
+class="math inline">\(|p|^2=1\)</span> and <span
+class="math inline">\(B_pv\perp p\)</span>. Pullback along <span
+class="math inline">\(h\)</span> and the same homotopy bundle comparison
+recover a framing of the original <span
+class="math inline">\(T\Sigma\oplus\mathbf1_{\mathbb R}\)</span>. Thus
+the conclusion retains a proved tangent-bundle correspondence as well as
+the stabilized one.</p>
+<figure>
+<img id="spin-six-diagram" src="assets/spin-six-framing.svg" alt="The SU(4) to SO(6) representation preserves the full Euler and third Chern number, while the inclusion into SO(7) kills the tangent clutching generator; the original tangent comparison gives the explicit stable framing." />
+<figcaption>
+The actual homomorphisms in (3.4), (4.7) and (5.3), followed by the
+original bundle comparison (6.3)–(6.4). The vertical dotted markers mean
+applying the fifth homotopy-group functor. The displayed characteristic
+number two belongs to the positive tangent clutching class. The zero at
+rank seven is proved by that generator in the frame fibration. It does
+not set the rank-six Euler class to zero.
+</figcaption>
+</figure>
+<h2 id="framing-exercises">7. Two worked exercises</h2>
+<h3
+id="exercise-7.1.-why-the-determinant-contribution-must-be-retained">Exercise
+7.1. Why the determinant contribution must be retained</h3>
+<p>On <span class="math inline">\(\mathbb{CP}^3\)</span>, let <span
+class="math inline">\(u\)</span> be the positive degree-two generator
+and let <span class="math inline">\(E=\mathcal O(1)\oplus\mathcal
+O(2)\oplus\mathcal O(3)\oplus\mathcal O(4)\)</span>. Compute both sides
+of the full polynomial identity (4.6). Determine whether the
+determinant-one construction (4.1) applies to this <span
+class="math inline">\(E\)</span>.</p>
+<p><strong>Solution.</strong> The roots are <span
+class="math inline">\(u,2u,3u,4u\)</span>, so</p>
+<p><span class="math display">\[
+c_1(E)=10u,\qquad
+c_3(E)=(6+8+12+24)u^3=50u^3.
+\tag{7.1}
+\]</span></p>
+<p>The displayed three weights give <span
+class="math inline">\((u+2u)(u+3u)(u+4u)=60u^3\)</span>. Their
+difference from <span class="math inline">\(c_3(E)\)</span> is <span
+class="math inline">\(10u^3=x_1^2c_1(E)\)</span>, exactly the term in
+(4.6). The determinant has nonzero first Chern class <span
+class="math inline">\(10u\)</span>, so it has no nowhere-zero
+determinant section; such a section would identify it with a trivial
+line and make its first Chern class zero. Thus the <span
+class="math inline">\(SU(4)\)</span> construction does not apply to this
+bundle. The number <span class="math inline">\(60\)</span> here is the
+product of three chosen weights; it has not been declared the Euler
+number of a globally defined fixed real bundle. This example verifies
+the role of the determinant data in (3.2) and (4.2).</p>
+<h3
+id="exercise-7.2.-compare-the-spinor-bundle-with-its-real-exterior-square-representation">Exercise
+7.2. Compare the spinor bundle with its real exterior-square
+representation</h3>
+<p>Let <span class="math inline">\(E\)</span> be the determinant-one
+rank-four bundle over <span class="math inline">\(S^6\)</span> obtained
+by lifting the tangent transition in Section 4, so <span
+class="math inline">\(c_3(E)=2u\)</span>. Calculate its full Chern
+character and that of <span class="math inline">\(\Lambda^2E\)</span>.
+Compare them with the exact stable trivialization of the associated real
+bundle <span class="math inline">\(V=TS^6\)</span>.</p>
+<p><strong>Solution.</strong> On <span
+class="math inline">\(S^6\)</span>, the lower classes <span
+class="math inline">\(c_1,c_2\)</span> are zero by the integral
+cohomology of the sphere. Newton’s identity, with its factorial
+retained, gives</p>
+<p><span class="math display">\[
+\operatorname{ch}(E)=4+\tfrac12c_3(E)=4+u.
+\tag{7.2}
+\]</span></p>
+<p>In particular <span class="math inline">\(E\)</span> is not stably
+trivial as a complex bundle. For the exterior square, do not infer its
+character from (7.2) by dropping the exterior operation. Use its six
+original roots <span class="math inline">\(x_i+x_j\)</span>, <span
+class="math inline">\(i&lt;j\)</span>. Before the determinant condition
+is imposed, their degree-one, degree-two and degree-three character
+terms are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\operatorname{ch}_1(\Lambda^2E)&amp;=3c_1,\\
+\operatorname{ch}_2(\Lambda^2E)&amp;=\tfrac32c_1^2-2c_2,\\
+\operatorname{ch}_3(\Lambda^2E)
+&amp;=\frac16\left\{3\sum_i x_i^3+
+3\sum_{i\ne j}x_i^2x_j\right\}\\
+&amp;=\tfrac12c_1\sum_i x_i^2
+=\tfrac12c_1(c_1^2-2c_2).
+\end{aligned}
+\tag{7.3}
+\]</span></p>
+<p>For example, the factor three on <span class="math inline">\(\sum_i
+x_i^3\)</span> counts the three partners of each root among the six
+unordered pairs. The mixed sum is <span class="math inline">\(c_1\sum_i
+x_i^2-\sum_i x_i^3\)</span>, which cancels those cubic terms with their
+displayed coefficients. On this sphere all positive-degree terms in
+(7.3) vanish, and there are no cohomology degrees above six. Hence</p>
+<p><span class="math display">\[
+\operatorname{ch}(\Lambda^2E)=6.
+\tag{7.4}
+\]</span></p>
+<p>The actual bundle map <span class="math inline">\(V\otimes_{\mathbb
+R}\mathbb C\to\Lambda^2E\)</span> sends <span
+class="math inline">\(v\otimes z\)</span> to <span
+class="math inline">\(zv\)</span>. It is an isomorphism: for any <span
+class="math inline">\(\xi\)</span>, its inverse is</p>
+<p><span class="math display">\[
+\xi\longmapsto
+\frac{\xi+\tau\xi}{2}\otimes1+
+\frac{\xi-\tau\xi}{2i}\otimes i.
+\tag{7.5}
+\]</span></p>
+<p>Both first factors are fixed by the antilinear <span
+class="math inline">\(\tau\)</span>, and multiplication verifies the
+inverse. Complexifying (6.4) gives the actual stable trivialization of
+<span class="math inline">\((\Lambda^2E)\oplus\mathbf1_{\mathbb
+C}\)</span>. Nevertheless <span class="math inline">\(e(V)=2u\)</span>,
+by (4.2), and <span
+class="math inline">\(\operatorname{ch}(E)=4+u\)</span>, by (7.2). The
+exterior-square representation, complexification and stabilization are
+three specified maps with these different effects on the retained
+characteristic data.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

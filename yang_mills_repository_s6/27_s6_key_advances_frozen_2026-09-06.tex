@@ -1,0 +1,325 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,mathtools,booktabs,microtype}
+\usepackage[margin=22mm]{geometry}
+\usepackage{xcolor,fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\hypersetup{pdftitle={Exact maps and analytic certificates: key advances},pdfauthor={KokunoYumeto; AI-assisted research record},pdfsubject={Results-first companion, 6 September 2026}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Exact maps and analytic certificates}
+\fancyhead[R]{\small 6 September 2026}
+\fancyfoot[L]{\small Advances companion; full proofs in the project archive}
+\fancyfoot[R]{\thepage}
+\newcommand{\Z}{\mathbb Z}\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}\newcommand{\OO}{\mathcal O}
+\newcommand{\VV}{\mathcal V_F}\newcommand{\Le}{\Lambda_{\mathrm L}}
+\newcommand{\proofloc}[1]{\par\smallskip{\small\textit{Full proof:} #1}\par}
+\begin{document}
+\thispagestyle{plain}
+{\LARGE\bfseries Exact maps and analytic certificates\par}
+{\large Key advances in the continuing reconstruction\par}
+6 September 2026\quad\textbar\quad AI-assisted mathematical research record
+
+The starting point is the claimed complex-threefold construction on $S^6$
+circulated by Levent Alp\"oge with Fable. The continuing audit has produced
+explicit results about its analytic fibration and about the marked
+Niemeier--Leech--triality constructions investigated alongside it.
+This companion gives the actual formulas and proof locations for a selection
+of those advances. It does not replace the complete arguments.
+
+\section*{1. The anticanonical ring recovers the fibration}
+Let $f:X\to B=\mathbb P^1$ denote the analytic construction with its original
+periods and fillings. Its finite reduced fibres $S_1,S_2$ and base coordinate
+$t$ satisfy
+\[
+ f^*(p_1)=3S_1,\qquad f^*(p_2)=4S_2,\qquad
+ t(p_1)=0,\quad t(p_2)=1,\quad t(p_0)=\infty.
+\]
+The evaluation $f^*f_*\omega_{X/B}\to\omega_{X/B}$ has zero divisor
+\emph{exactly} $2S_2$. The resulting identities are
+\[
+ \omega_X\simeq\OO_X(-2S_2),\qquad
+ \omega_X^{-2}\simeq f^*\OO_B(p_2),
+\]
+\[
+ f_*\OO_X(kS_2)=\OO_B\bigl(\lfloor k/4\rfloor p_2\bigr)
+ \qquad(k\in\Z).
+\]
+The last equality is equality of subsheaves of meromorphic functions:
+on the original cover $t_2=s_2^4$, an invariant Laurent series contains
+only powers divisible by four. The pole condition is precisely
+$4\operatorname{ord}_{p_2}(b)+k\geq0$.
+
+Consequently the \emph{full graded algebra}, not merely its dimensions, is
+\[
+ \bigoplus_{m\geq0}H^0(X,\omega_X^{-m})\simeq\C[U,V],
+ \qquad \deg U=1,\quad\deg V=2.
+\]
+Here $U\mapsto u$ with $\operatorname{div}(u)=2S_2$, and
+$V\mapsto v=f^*\ell$ under the specified degree-two identification,
+where $\ell\in H^0(B,\OO_B(p_2))$ is nonzero at $p_2$.
+In degree $m$, the basis is
+$u^{m-2j}v^j$ for $0\leq j\leq\lfloor m/2\rfloor$.
+Writing $\ell=A/(t-1)+B'$ with $A\ne0$, the complete degree-two map is
+\[
+ x\longmapsto [t(f(x))-1:A+B'(t(f(x))-1)].
+\]
+Thus the fibration is recovered intrinsically from $X$, up to this explicitly
+retained projective-coordinate choice. This is what makes it possible to test
+a deformation of the whole threefold, rather than just a marked torus fibre.
+\proofloc{\emph{Complete current workbench}, Theorem 53.17, pp.~699--700;
+source \texttt{analytic\_canonical\_ring.tex}, equations CR1--CR5.}
+
+\newpage
+\section*{2. The original period constant gives a nonzero deformation}
+Keep the cusp-regular period solution $\beta^{\rm part}$ and put
+\[
+ \beta_c=\beta^{\rm part}+c,\qquad
+ D_{\rm part}=\operatorname{Im}\beta^{\rm part}
+       -\frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau},
+ \qquad M=\max_{B\setminus\{p_0\}}D_{\rm part}.
+\]
+On every open disc $Q$ whose closure lies in
+$\{c\in\C:\operatorname{Im}c<-M\}$, the original charts and gluing maps
+give a proper holomorphic submersion $\mathcal X_Q\to Q$ with fibres $X_c$.
+The construction retains all three critical values $0,1,\infty$.
+
+At a fixed lifted regular base point, fix $c_*\in Q$ and write
+\[
+ T=\operatorname{Im}\tau>0,\quad m=\operatorname{Im}\mu,\quad
+ D=\operatorname{Im}\beta_{c_*}-6m^2/T<0,\quad
+ P=\begin{pmatrix}0&0\\-m/T&1\end{pmatrix},\quad\delta=c-c_*.
+\]
+The unchanged ordered period matrix is
+\[
+ \Pi_c=\begin{pmatrix}6\mu&\tau&1&0\\\beta_c&\mu&0&1\end{pmatrix},
+ \qquad \Pi_c:\R^4\longrightarrow\C^2.
+\]
+Its inverse below is real-linear. The exact marked map between the two period lattices is
+\[
+ w=\left(I+\frac{\delta}{2iD}P\right)\zeta
+            -\frac{\delta}{2iD}P\overline\zeta,
+ \qquad \det_{\R}(\Pi_c\Pi_{c_*}^{-1})
+       =\frac{D+\operatorname{Im}\delta}{D}>0.
+\]
+In the convention that the transported $(0,1)$ fields are
+$\partial_{\bar\zeta_k}+\sum_j\nu^j_k\partial_{\zeta_j}$,
+\[
+ \nu_\delta=\frac{\delta}{2iD+\delta}P.
+\]
+With the connecting-class convention $\mathrm{KS}(\partial_c)=[\bar\partial h]$,
+the regular-fibre Kodaira--Spencer class is
+\[
+ -\left[\frac{1}{2iD}\partial_{\zeta_2}\otimes
+       \left(d\bar\zeta_2-\frac mT d\bar\zeta_1\right)\right]\ne0.
+\]
+Its constant nonzero coefficient cannot be a derivative of a periodic
+coefficient: integrating such a derivative over the torus gives zero.
+
+The additional \emph{global} step is essential. Over
+$A=\C[\epsilon]/(\epsilon^2)$, the intrinsic degree-two anticanonical
+sections form a free $A$-module of rank two. A first-order trivialization of
+$X_c$ reducing to the identity at $c_*$ would identify the fibrations through an element of
+$\mathrm{PGL}_2(A)$. The actual critical schemes fix the three constant
+sections $0,1,\infty$, forcing that element to be the identity. Restriction
+to a regular fibre then contradicts the displayed nonzero class. Hence
+\[
+ \mathrm{KS}_{X_{c_*}}(\partial_c)\ne0\quad\hbox{in }H^1(X_{c_*},T_{X_{c_*}}).
+\]
+This does not assert that every two parameters give nonisomorphic unmarked
+manifolds, or that the family exhausts all deformations.
+\proofloc{Workbench, Theorem 53.18, pp.~701--705;
+\texttt{period\_parameter\_deformation.tex}, PD1--PD18.}
+
+\newpage
+\section*{3. Finite fillings: explicit covers and the full attachment kernel}
+At the two original finite centres retain
+\[
+ \rho=e^{\pi i/3},\quad \mu_1=(2-\rho)/3,\quad\mu_2=(1-i)/2,
+ \qquad\kappa_1=\beta_1+2\mu_1,\quad\kappa_2=\beta_2+3\mu_2,
+\]
+with $\operatorname{Im}\kappa_j<0$. Set
+\[
+ \begin{gathered}
+ E_j=\C/(\Z+\kappa_j\Z),\\
+ F_1=\C/(\Z(\rho-2)+\Z(-3)),\qquad
+ F_2=\C/(\Z(i-1)+\Z(-2)).
+ \end{gathered}
+\]
+The maps from $E_j\times F_j$ to the original central torus are induced by
+\[
+ L_1(\xi,\eta)=(\eta,\xi-\eta/3),\qquad
+ L_2(\xi,\eta)=(\eta,\xi-\eta/2).
+\]
+Their kernels are generated respectively by $(2/3,\rho)$ and $(1/2,i)$,
+of orders three and two. The lifted affine generators are
+\[
+ g_1(\xi,\eta)=(\xi+\kappa_1/3,(\rho-1)\eta),\qquad
+ g_2(\xi,\eta)=(\xi-\kappa_2/4,-i\eta).
+\]
+Together with the kernel translations they act freely, giving product
+covers of the central surfaces of degrees nine and eight. The varying
+cover is identified with the normalization of the \emph{actual} ramified
+base change, including every branch of $s_j^{m_j}=u^{m_j}$.
+
+Let $\Lambda$ now denote the original rank-four fibre lattice, and let
+$A_j,v_j,m_j$ be its finite linear monodromy, translation vector and order,
+with $(m_1,m_2)=(3,4)$ and $A_jv_j=v_j$.
+The complete deck-group presentation and attachment kernel are
+\[
+ \Gamma_j=\langle\Lambda,G_j\mid
+ G_jt_\lambda G_j^{-1}=t_{A_j\lambda},\ G_j^{m_j}=t_{v_j}\rangle,
+\]
+\[
+ \ker\bigl(\Lambda\rtimes_{A_j}\Z\longrightarrow\Gamma_j\bigr)
+   =\langle\widetilde G_j^{m_j}t_{-v_j}\rangle\simeq\Z,
+\]
+and this kernel is central. The computation determines the entire kernel,
+not merely a relation that lies in it.
+
+Finally let $\gamma\in\Lambda^*$ be the retained invariant coordinate,
+$\varepsilon_j=\gamma(v_j)\in\{1,-1\}$ and
+$\zeta_j=e^{-2\pi i/m_j}$. The normal line $N_{S_j/N_j}$ has exact
+holomorphic order $m_j$, but the explicit nonzero smooth section is
+\[
+ H_j(x)=\exp(-2\pi i\varepsilon_j\gamma(x)),\qquad
+ H_j(A_jx+v_j/m_j)=\zeta_jH_j(x).
+\]
+The smooth trivialization is
+$[x,n]\mapsto([x],n/H_j(x))$, with inverse
+$([x],z)\mapsto[x,zH_j(x)]$.
+\proofloc{Workbench, Theorems 53.4, 53.6, 53.7 and 53.9,
+pp.~684--690; \texttt{finite\_filling\_certificates.tex}, FF1--FF46.}
+
+\newpage
+\section*{4. Niemeier--Leech transport retains the cubic arithmetic}
+Start with the marked root lattice $R=A_5^{\perp4}\perp D_4$ and its
+Niemeier overlattice $N$, with $[N:R]=72$. Its rank is $24$;
+$72$ is the glue index, not a dimension.
+For its original Weyl vector $\rho_N$ and retained root $\alpha$, put
+\[
+ K=\{x\in N:(\rho_N,x)\equiv0\pmod6\},\qquad
+ \Le=K+\Z(\rho_N/6-\alpha).
+\]
+Then $N\cap\Le=K$ and $[N:K]=[\Le:K]=6$. The residue
+order-three action cycles three such neighbours. Their common pairwise
+intersection $J$ has determinant $81$ and index $9$ in each neighbour.
+The fourth extension $M$, fixed by this action, has root system $A_2^{12}$
+and $72$ roots. These are explicit integral constructions, retaining the
+original residue marking and glue generators.
+
+Use the fixed real isometry $\mathcal L$ to $\mathbb O^3$ with the original
+Cayley frame $(1,i,j,k,\ell,i\ell,j\ell,k\ell)$. Put
+\[
+ \tau(q)=\operatorname{Re}((q_1q_2)q_3),\qquad
+ F=\tau\circ\mathcal L,\qquad
+ \VV(\mathcal A)=\langle F(x):x\in\mathcal A\rangle_{\Z}.
+\]
+For a lattice $\mathcal A$, this defines an \emph{additive group generated by values};
+it does not identify the nonlinear image $F(\mathcal A)$ with that group.
+For the retained cubic, the complete calculation gives
+\[
+\begin{aligned}
+ \VV(N)&=\tfrac1{27}\Z\oplus\tfrac{\sqrt2}{54}\Z
+                         \oplus\tfrac{\sqrt3}{18}\Z,\\
+ \VV(J)=\VV(M)&=\tfrac1{27}\Z\oplus\tfrac{\sqrt2}{216}\Z
+                         \oplus\tfrac{\sqrt3}{18}\Z,\\
+ \VV(\Le)&=\tfrac1{27}\Z\oplus\tfrac{\sqrt2}{216}\Z
+                         \oplus\tfrac{\sqrt3}{54}\Z.
+\end{aligned}
+\]
+In the displayed ordered generators the two group inclusions have matrices
+\[
+ \VV(N)\hookrightarrow\VV(J):\ \operatorname{diag}(1,4,1),\qquad
+ \VV(J)\hookrightarrow\VV(\Le):\ \operatorname{diag}(1,1,3).
+\]
+Their quotients are $\Z/4\Z$ and $\Z/3\Z$; the total quotient is
+$\Z/12\Z$. These are inclusions of \emph{value groups}, not a claim that
+$N\subset\Le$. The proof gives both integral containment and reverse
+generator certificates using complete cubic polarization.
+
+For the same embedding into the Albert algebra, the equal-diagonal
+determinant is
+\[
+ \det Q_{\mathbb O}(\lambda;\mathcal Ly)
+       =\lambda^3-\lambda(y,y)+2F(y).
+\]
+The coefficient $2$ remains part of the map. Beyond the lattice, with
+$E(q)=Q_{\mathbb O}(0;q)$, the spectral graph
+\[
+ q\longmapsto Q_{\mathbb O}(-\lambda_{\min}(E(q));q)
+\]
+maps
+onto the equal-diagonal positive-semidefinite determinant boundary,
+with inverse given by its ordered off-diagonal coordinates. The associated
+Peirce products retain their coefficient $1/2$.
+\proofloc{\emph{Higher torus wrapping and the octonionic 24-dimensional
+continuation}, Sections 9--11, pp.~106--125; spectral graph Theorem 5.12,
+p.~34. Source labels: \texttt{nca:sec:cubic-arithmetic},
+\texttt{esrf:sec:fixed-neighbor}, \texttt{jmv:sec:JM-extension}.}
+
+\newpage
+\section*{5. A literal common lattice in the original triality space}
+Wilson's octonionic Leech construction is an established input, not a new
+construction claimed here. Retain its norm
+$q_W(x)=\tfrac12\sum_{j=1}^3|x_j|^2$ and the isometry
+$\iota(x)=x/\sqrt2$ into the Euclidean norm $\sum|q_j|^2$.
+Write $\Lambda_{\rm cyc}=\iota(\Lambda_W)$.
+The new comparison computes both literal intersections:
+\[
+ \Lambda_{\rm cyc}\cap\mathcal L(N)
+ =\Lambda_{\rm cyc}\cap\mathcal L(\Le)
+ =\mathcal I
+ =\{\sqrt2(a,a,a):a\in D_4\},
+\]
+where here $D_4=\{a\in\Z^4:\sum_{i=0}^3a_i\equiv0\pmod2\}$ lies
+in the \emph{first four original Cayley coordinates}. The Gram matrix,
+determinant and minimum squared norm of $\mathcal I$ are
+\[
+ 6G_{D_4},\qquad 5184,\qquad 12.
+\]
+The cubic on this common lattice is explicit:
+\[
+ \tau(\sqrt2(a,a,a))
+ =2\sqrt2\,\underbrace{a_0\bigl(a_0^2-3(a_1^2+a_2^2+a_3^2)\bigr)}_{P(a)}.
+\]
+The generated group is $4\sqrt2\Z$, but $12\sqrt2$ is not attained.
+Indeed $P(a)\equiv a_0^3\pmod3$, so $3\mid P(a)$ forces $3\mid a_0$;
+substitution then gives $9\mid P(a)$. The required value $P(a)=6$ is impossible.
+This gives a concrete arithmetic distinction between a group of values
+and individual values, while retaining their exact common embedding.
+\proofloc{Higher-rung paper, Section 12, pp.~125--135;
+\texttt{es\_niemeier\_wilson\_cyclic.tex}.
+Primary input: R.~A.~Wilson, \emph{Octonions and the Leech lattice},
+J.~Algebra \textbf{322} (2009), 2186--2190,
+\href{https://doi.org/10.1016/j.jalgebra.2009.03.021}{published paper};
+\href{https://webspace.maths.qmul.ac.uk/r.a.wilson/pubs_files/octoLeech1rev.pdf}{author version},
+Sections 2--4.}
+
+\section*{Reading the release}
+The \emph{complete higher-rung paper} contains the triality and lattice
+proofs. The \emph{complete current workbench} also contains the analytic
+ring, deformation and finite-filling arguments. Printed page numbers above
+refer to the 6 September copies (138 and 782 pages respectively).
+
+The separately labelled \emph{complete-project calculations and provenance
+ZIP} retains the full TeX, exact checkers and results, mathematical datasets,
+standalone papers and mathematical history, including work not selected for
+this front. The older published files remain unchanged as dated records.
+All proof-source filenames above lie under
+\texttt{project/supporting\_materials/workbench/research/} in that archive.
+
+These advances do not by themselves certify every global step in the
+$S^6$ claim or establish a counterexample to CDP20. No interacting
+quantum-field-theory mass-gap conclusion follows from the displayed lattice
+maps. The complete workbench retains the arguments and their dependencies
+for further checking; this is an AI-assisted research record, not independent
+expert adjudication or Lean formalization.
+
+\href{https://doi.org/10.5281/zenodo.22235523}{Release family and full inventory}
+\quad\textbar\quad
+\href{https://www.overleaf.com/read/rtmyqxyrzprn#fa24eb}{Continuing readable workspace}
+\end{document}

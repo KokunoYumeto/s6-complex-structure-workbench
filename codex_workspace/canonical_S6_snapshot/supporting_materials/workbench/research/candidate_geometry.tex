@@ -1,0 +1,1581 @@
+\section{The analytic threefold constructed in the candidate}
+\label{sec:candidate-geometry}
+
+This section audits the construction itself.  It does not infer existence
+from the later topology.  The period family, the three local fillings, and
+the gluing are proved in that order.  The notation is the candidate's:
+\(B\simeq\mathbb P^1\),
+\(B^\circ=B\setminus\{p_0,p_1,p_2\}\), and the local monodromy orders at
+\(p_1,p_2\) are \(m_1=3,m_2=4\).
+
+\subsection{The period family}
+
+Let \(\Delta\simeq(\mathbb Z/3)*(\mathbb Z/4)\) be the orientation-preserving
+\((3,4,\infty)\)-triangle group acting on a simply connected Riemann surface
+\(\mathfrak h_z\), with elliptic generators \(g_1,g_2\) and
+\(g_0=(g_1g_2)^{-1}\).  Let \(t\) be the affine coordinate on
+\(B\) with values \(0,1,\infty\) at \(p_1,p_2,p_0\), respectively.
+Write
+\[
+ \pi:\mathfrak h_z\longrightarrow B\setminus\{p_0\}
+\]
+for the orbifold quotient map; its stabilizers at chosen lifts
+\(z_j\in\pi^{-1}(p_j)\) are \(\langle g_j\rangle\).  Let
+\(\rho_V:\Delta\to\operatorname{GL}(V)\) be the printed representation,
+\(\rho_V(g_j)=T_j\), and put
+\[
+ M_g:=\rho_V(g)^{\mathsf t},\qquad A_g:=M_g^{-1}.
+\]
+Thus \(M_{gh}=M_hM_g\), \(A_{g_j}=A_j\), and
+\(A_{g_0}=M_0\) in the notation of \cref{prop:monodromy-certificate}.
+
+\begin{lemma}[simultaneous elliptic-orientation normalization]
+\label{lem:triangle-generator-orientations}
+\Verified\ The generators may, and henceforth do, satisfy
+\begin{equation}
+ g_1'(z_1)=e^{-2\pi i/3},\qquad
+ g_2'(z_2)=e^{-2\pi i/4}=-i,
+\label{eq:triangle-generator-derivatives}
+\end{equation}
+while \(g_0=(g_1g_2)^{-1}\) remains parabolic.  More precisely, the Cayley
+coordinates
+\begin{equation}
+ s_j(z)=\frac{z-z_j}{z-\bar z_j}
+\label{eq:triangle-cayley-coordinates}
+\end{equation}
+obey
+\begin{equation}
+ s_1\circ g_1=e^{-2\pi i/3}s_1,
+ \qquad
+ s_2\circ g_2=-is_2.
+\label{eq:triangle-linearizing-identities}
+\end{equation}
+The two signs in \cref{eq:triangle-generator-derivatives} are a simultaneous
+orientation choice; they are not obtained by shrinking a coordinate disc.
+\end{lemma}
+
+\begin{proof}
+Realize \(\Delta\) as the orientation-preserving subgroup of the reflection
+group of a hyperbolic triangle with counterclockwise vertices \(A,B,C\),
+angles \(\pi/3,\pi/4,0\), and opposite sides \(a,b,c\), respectively.  Let
+\(\sigma_a,\sigma_b,\sigma_c\) denote reflection in those sides and put
+\[
+ x=\sigma_b\sigma_c,\qquad
+ y=\sigma_c\sigma_a,\qquad
+ z=\sigma_a\sigma_b.
+\]
+The product of reflections in two oriented geodesics meeting at angle
+\(\theta\) is the rotation through \(2\theta\).  Hence \(x\) is the
+counterclockwise rotation about \(A\) through \(2\pi/3\), \(y\) is the
+counterclockwise rotation about \(B\) through \(\pi/2\), and \(z\) is
+parabolic at the ideal vertex \(C\); this is the standard triangle-group
+construction \cite[Chapters~7 and~10]{Beardon1983}.  Moreover
+\[
+ xyz=\sigma_b\sigma_c\sigma_c\sigma_a\sigma_a\sigma_b=1.
+\]
+Set
+\[
+ z_1=A,\qquad z_2=B,\qquad g_1=x^{-1},\qquad g_2=y^{-1}.
+\]
+Both finite rotations are thereby reversed, so their complex derivatives at
+their fixed points are exactly those in
+\cref{eq:triangle-generator-derivatives}.  Since
+\(g_2g_1=y^{-1}x^{-1}=z\), one also has
+\[
+ g_1g_2=g_1zg_1^{-1};
+\]
+thus \(g_1g_2\), and therefore \(g_0=(g_1g_2)^{-1}\), is parabolic.
+
+This simultaneous reversal is forced once the orientation of \(g_1\) and
+the cusp conjugacy class are fixed.  Indeed, in
+\(\langle x\rangle*\langle y\rangle\simeq C_3*C_4\) every parabolic element
+is conjugate to a nonzero power of the primitive cusp word
+\(z=y^{-1}x^{-1}=y^3x^2\).  The two mixed choices would instead give
+\[
+ (x^{-1}y)^{-1}=y^{-1}x=y^3x,
+ \qquad
+ (xy^{-1})^{-1}=yx^{-1}=yx^2.
+\]
+Both words are cyclically reduced of length two.  A nontrivial power
+\(z^n\) has cyclically reduced length \(2|n|\); hence a mixed word could be
+parabolic only for \(|n|=1\).  But neither \(y^3x\) nor \(yx^2\) is a cyclic
+permutation of \(y^3x^2\) or its inverse \(xy\).  Thus neither mixed choice
+is parabolic.  The derivative selected at \(z_1\) consequently fixes the
+derivative at \(z_2\) as well.
+
+Finally, for an elliptic M\"obius transformation \(g\) fixing
+\(z_0\in\mathfrak h_z\), the Cayley map
+\(s=(z-z_0)/(z-\bar z_0)\) conjugates \(g\) to a disc automorphism fixing
+zero.  Such an automorphism is \(s\mapsto g'(z_0)s\).  Applying this to
+\(g_1,g_2\) proves \cref{eq:triangle-linearizing-identities}.
+\end{proof}
+
+\begin{proposition}[existence and non-degeneracy of the period matrix]
+\label{prop:period-input-audit}
+\Verified\ There are holomorphic functions
+\[
+ \tau:\mathfrak h_z\to\mathfrak h,
+ \qquad \mu,\beta:\mathfrak h_z\to\mathbb C
+\]
+satisfying
+\[
+\begin{array}{lll}
+\tau\circ g_0=\tau-1,&\mu\circ g_0=\mu,&\beta\circ g_0=\beta+1,\\
+\tau\circ g_2=-1/\tau,&\mu\circ g_2=1+\mu/\tau,
+ &\beta\circ g_2=\beta-3-6\mu^2/\tau,
+\end{array}
+\tag{2.1}
+\]
+and the corresponding order-three transformation laws obtained from
+\(\tau\circ g_1=(\tau-1)/\tau\).  They may be chosen so that
+\[
+ \operatorname{Im}\tau>0,
+ \qquad
+ D:=\operatorname{Im}\beta-
+ \frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}<0.
+\tag{2.2}
+\]
+Consequently
+\[
+ \Pi=[Z\mid I_2],\qquad
+ Z=\begin{pmatrix}6\mu&\tau\\ \beta&\mu\end{pmatrix}
+\tag{2.3}
+\]
+maps the marked rank-four lattice \(\Lambda\) isomorphically onto a lattice
+in \(\mathbb C^2\) at every point.  The quotients
+\(\mathbb C^2/\Pi(z)\Lambda\) form a holomorphic family of compact
+two-dimensional complex tori over \(\mathfrak h_z\), equivariant for
+\(\Delta\).
+\end{proposition}
+
+\begin{proof}
+Normalize the modular function by
+\(j(q)=q^{-1}(1+O(q))\) and put
+\(J_B=1728(t\circ\pi)\); the modular facts used here are collected in
+\cite[Chapter~VII]{Serre1973}.  Put
+\[
+ \mathfrak h_z^\dagger=
+ \mathfrak h_z\setminus J_B^{-1}\{0,1728\},\qquad
+ \mathfrak h_\tau^\dagger=
+ \mathfrak h\setminus j^{-1}\{0,1728\}.
+\]
+Away from the deleted sets, the classical modular map
+\(j:\mathfrak h_\tau^\dagger\to\mathbb C\setminus\{0,1728\}\) is an
+unramified covering with deck group
+\(\operatorname{PSL}_2(\mathbb Z)\).  The deleted set in
+\(\mathfrak h_z\) is locally finite.  Since \(\mathfrak h_z\) is simply
+connected, \(\pi_1(\mathfrak h_z^\dagger)\) is normally generated by small
+positive meridians about its points.  At a translate of \(z_1\), \(J_B\)
+has local degree three over \(0\); the corresponding meridian therefore has
+deck image equal to the third power of the order-three modular generator.
+At a translate of \(z_2\), \(J_B\) has local degree four over \(1728\); its
+meridian has deck image equal to the fourth power of the order-two modular
+generator.  Both images are the identity.  The covering-space lifting
+criterion gives a global lift \(\tau\) with \(j(\tau)=J_B\).
+
+Near a deleted point, compose the lift with a biholomorphism
+\(\chi:\mathfrak h\to\mathbb D\).  The bounded map \(\chi\circ\tau\)
+extends by the removable-singularity theorem.  Its value at the puncture has
+modulus strictly less than one: equality would give an interior maximum and
+force \(\chi\circ\tau\) to be constant, although its punctured values lie in
+ \(\mathbb D\).  Thus the extension still lands in \(\mathfrak h\).
+
+Because \(J_B\) is \(\Delta\)-invariant, \(\tau\circ g\) and \(\tau\) are
+lifts of the same map through the Galois covering \(j\) on the punctured
+surface.  Hence there is a unique deck transformation
+\(\varphi(g)\in\operatorname{PSL}_2(\mathbb Z)\) such that
+\begin{equation}
+ \tau\circ g=\varphi(g)\circ\tau.
+\label{eq:period-deck-homomorphism}
+\end{equation}
+The identity extends across the deleted points.  Uniqueness and
+\((\tau\circ g)\circ h=\tau\circ(gh)\) give
+\(\varphi(gh)=\varphi(g)\varphi(h)\), so \(\varphi\) is a homomorphism.
+
+Normalize \(\tau(z_1)=\rho=e^{\pi i/3}\).  The local cubic expansion of
+\(j\) at \(\rho\), together with the local degree three of \(J_B\), gives a
+simple zero of \(\tau-\rho\) at \(z_1\).  At \(z_2\), choose
+\(\gamma\in\operatorname{PSL}_2(\mathbb Z)\) with
+\(\tau(z_2)=\gamma(i)\).  The local quadratic expansion of
+\(j\circ\gamma\) at \(i\), together with the local degree four of \(J_B\),
+ gives a double zero of \(\gamma^{-1}\tau-i\) at \(z_2\).  At \(z_1\),
+ differentiating \cref{eq:period-deck-homomorphism} and using the simple
+ zero gives
+ \[
+  \varphi(g_1)'(\rho)=g_1'(z_1)=e^{-2\pi i/3}.
+ \]
+ The stabilizer of \(\rho\) is generated by
+ \(S_1(\tau)=(\tau-1)/\tau\), whose derivative at \(\rho\) is
+ \(e^{-2\pi i/3}\); hence \(\varphi(g_1)=S_1\), rather than \(S_1^{-1}\).
+ The order-four generator cannot have trivial modular image:
+otherwise the invariant local power series \(\gamma^{-1}\tau-i\) would have
+order divisible by four, contrary to its order two.  Its modular image
+ therefore has order two.  If \(P=\varphi(g_0)\), the exact relation
+ \(g_1g_2g_0=1\) gives
+ \begin{equation}
+  \varphi(g_2)=S_1^{-1}P^{-1}.
+ \label{eq:period-second-generator-from-cusp}
+ \end{equation}
+
+It remains to determine the cusp image.  Choose a punctured cusp disc
+\(D_0^*\subset B\) and a component
+\[
+ U_0\subset\pi^{-1}(D_0^*)
+\]
+stabilized by \(\langle g_0\rangle\).  Choose \(R\) and shrink \(D_0^*\) so
+that \(\tau(U_0)\) lies in a single component
+\[
+ K\subset j^{-1}(\{|w|>R\}).
+\]
+Put \(P=\varphi(g_0)\).  Since \(g_0U_0=U_0\),
+\[
+ P\tau(U_0)=\tau(g_0U_0)=\tau(U_0).
+\]
+Hence \(P(K)=K\): the two components \(K\) and \(P(K)\) intersect in the
+nonempty set \(\tau(U_0)\).  Let \(c\) be the rational boundary cusp of
+\(K\), choose
+\(\gamma_0\in\operatorname{PSL}_2(\mathbb Z)\) with
+\(\gamma_0(\infty)=c\), and set
+\[
+ \tau'=\gamma_0^{-1}\tau|_{U_0},\qquad
+ P'=\gamma_0^{-1}P\gamma_0.
+\]
+Then
+\[
+ \tau'\circ g_0=P'\circ\tau',
+\]
+and \(P'\) preserves \(K'=\gamma_0^{-1}K\), whose boundary cusp is
+\(\infty\).
+
+Suppose \(P'=1\).  Then \(\tau'\) is \(g_0\)-invariant and descends to a
+holomorphic map \(\bar\tau':D_0^*\to\mathfrak h\).  Put
+\[
+ q'=\exp(2\pi i\bar\tau').
+\]
+After increasing \(R\), the \(q\)-expansion is valid on \(K'\), and
+\(0<|q'|<1\).  Thus \(q'\) extends holomorphically across the puncture.
+If \(|q'(0)|=1\), the maximum-modulus principle makes \(q'\), hence
+\(J_B\), constant.  If \(q'(0)\ne0\), the expansion
+\(j(q')=(q')^{-1}(1+O(q'))\) makes \(J_B\) bounded, contrary to its pole.
+Therefore \(q'(0)=0\).  But a holomorphic zero has positive winding on a
+small positive circle, while \(q'\) has the single-valued holomorphic
+logarithm \(2\pi i\bar\tau'\) on \(D_0^*\), so its winding is zero.  This
+contradiction proves \(P'\ne1\).  Since \(P'\) preserves the selected cusp
+component \(K'\), it is parabolic; hence the original \(P\) is a nontrivial
+parabolic.
+
+We now discard the auxiliary conjugation by \(\gamma_0\) and return to the
+original normalization
+\[
+ \tau(z_1)=\rho,\qquad \varphi(g_1)=S_1.
+\]
+Choose the trace-\(+2\) lift
+\(\widetilde P\in\operatorname{SL}_2(\mathbb Z)\) of \(P\).  For a
+primitive fixed vector \((p,r)^{\mathsf t}\), it has the unique form
+\[
+ \widetilde P
+ =I+k\begin{pmatrix}-pr&p^2\\-r^2&pr\end{pmatrix},
+ \qquad p,r\in\mathbb Z,\quad \gcd(p,r)=1,\quad k\ne0.
+\]
+With
+\[
+ \widetilde S_1=\begin{pmatrix}1&-1\\1&0\end{pmatrix},
+\]
+one has
+\[
+ \operatorname{tr}(\widetilde S_1^{-1}\widetilde P^{-1})
+ =1+k(p^2-pr+r^2).
+\]
+Since \(S_1^{-1}P^{-1}=\varphi(g_2)\) has projective order two, this trace
+is zero.  Hence
+\[
+ -k(p^2-pr+r^2)=1,
+\]
+so \(k=-1\) and \(p^2-pr+r^2=1\).  Modulo simultaneous sign, the three
+solutions are cycled transitively by \(S_1\).  Conjugating the entire deck
+representation by a suitable power of \(S_1\), which fixes \(\rho\) and
+leaves \(S_1\) unchanged, therefore gives
+\[
+ P(w)=w-1,\qquad \varphi(g_2)(w)=-\frac1w.
+\]
+Rename the resulting period map \(\tau\).  Since \(z_2\) is fixed by the
+order-four generator, the new normalization has \(\tau(z_2)=i\), and the
+preceding local ramification calculation says exactly that \(\tau-i\) has
+order two at \(z_2\).  Let \(t_c\) vanish at \(p_0\) and define anew
+\[
+ q=e^{2\pi i\tau}.
+\]
+Since \(\tau\circ g_0=\tau-1\), \(q\) descends to \(D_0^*\).  The simple
+pole of \(J_B=j(\tau)\) gives
+\[
+ q=t_cu_1(t_c),\qquad u_1(0)\ne0.
+\]
+
+Writing
+\[
+ S_1(w)=\frac{w-1}{w},\qquad S(w)=-\frac1w,
+ \qquad P(w)=w-1,
+\]
+the normalized deck certificate is therefore
+\begin{equation}
+ \varphi(g_1)=S_1,\qquad
+ \varphi(g_2)=S,\qquad
+ \varphi(g_0)=P,\qquad
+ S_1SP=1
+ \quad\text{in }\operatorname{PSL}_2(\mathbb Z).
+\label{eq:period-deck-certificate}
+\end{equation}
+Differentiation at \(z_1\), where \(\tau-\rho\) has order one, gives
+\(g_1'(z_1)=S_1'(\rho)=\rho^{-2}=e^{-2\pi i/3}\).  At \(z_2\), comparison
+of the quadratic leading terms gives only
+\[
+ \bigl(g_2'(z_2)\bigr)^2=S'(i)=-1.
+\]
+The choice \(g_2'(z_2)=-i\), rather than \(+i\), is supplied by the
+simultaneous parabolic normalization in
+\cref{lem:triangle-generator-orientations}; it does not follow from the
+quadratic ramification calculation alone.
+
+We now solve the two affine cocycle problems, including the orbifold and
+cusp regularity which the abbreviated argument had suppressed.  Define
+\(\widetilde\jmath:\Delta\times\mathfrak h_z\to\mathbb C^*\) on the
+generators by
+\[
+ \widetilde\jmath(g_1,z)=-\tau(z),\qquad
+ \widetilde\jmath(g_2,z)=\tau(z),
+\]
+and extend it by
+\(\widetilde\jmath(gh,z)=\widetilde\jmath(g,hz)
+\widetilde\jmath(h,z)\).  This is well defined: the products around the
+two finite cyclic subgroups are
+\[
+ (-1)^3\tau\frac{\tau-1}{\tau}\frac{-1}{\tau-1}=1,
+ \qquad
+ \tau\left(-\frac1\tau\right)\tau\left(-\frac1\tau\right)=1.
+\]
+Moreover \(\widetilde\jmath(g_0,\cdot)=1\).
+
+For an open \(U\subset B\), set
+\(\widetilde U=\pi^{-1}(U\setminus\{p_0\})\).  Define
+\[
+ \mathcal L(U)=\left\{\nu\in\mathcal O(\widetilde U):
+ \nu\circ g=\nu/\widetilde\jmath(g,\cdot)\quad(g\in\Delta)\right\}
+\]
+and let \(\mathcal M(U)\) be the holomorphic functions on
+\(\widetilde U\) satisfying
+\[
+ \mu\circ g_1=\frac{1-\mu}{\tau},\qquad
+ \mu\circ g_2=1+\frac\mu\tau.
+ \tag{2.1a}
+\]
+If \(p_0\in U\), both definitions additionally require that the restriction
+to the distinguished \(\langle g_0\rangle\)-invariant cusp component,
+viewed as a function of \(t_c\), extend holomorphically across \(t_c=0\).
+Because \(\widetilde\jmath(g_0)=1\) and \(\mu\circ g_0=\mu\), this
+requirement is meaningful and is stable under restriction.  Thus
+\(\mathcal L\) is a line sheaf and \(\mathcal M\), if locally nonempty, is
+an affine \(\mathcal L\)-torsor.
+
+Local nonemptiness is explicit.  Over an ordinary small disc, prescribe
+\(\mu=0\) on one sheet and extend using (2.1a).  At the cusp prescribe
+\(\mu=0\) on the distinguished component.  At the elliptic points use
+\[
+ \mu_1=\frac{2-\tau}{3}\quad\hbox{on }\Delta_1,
+ \qquad
+ \mu_2=\frac{1-\tau}{2}\quad\hbox{on }\Delta_2.
+ \tag{2.1b}
+\]
+Indeed
+\[
+ \mu_1\circ g_1=\frac{\tau+1}{3\tau}
+ =\frac{1-\mu_1}{\tau},
+ \qquad
+ \mu_2\circ g_2=\frac{\tau+1}{2\tau}
+ =1+\frac{\mu_2}{\tau}.
+\]
+The cyclic products above, or direct iteration of (2.1a), show that these
+prescriptions close after three and four steps.
+
+To identify \(\mathcal L\), use that \(E_6\) has a simple zero at the
+order-two elliptic orbit and no other zero in \(\mathfrak h\).  Since
+\(\tau-i\) has order two at every translate of \(z_2\), the function
+\(E_6\circ\tau\) has only even-order zeros on the simply connected surface
+\(\mathfrak h_z\).  Fix a holomorphic square root \(h\),
+\(h^2=E_6\circ\tau\), and put
+\[
+ \Theta=\frac{(E_4\circ\tau)^2h}{\Delta_{\rm mod}\circ\tau}.
+\]
+For \(j=1,2\), the quotient
+\(h(g_jz)/(\tau(z)^3h(z))\) has square one away from its removable zero
+set, hence is a constant sign.  At \(z_1\), \(h(z_1)\ne0\) and
+\(\rho^3=-1\), so the sign for \(g_1\) is \(-1\).  At \(z_2\), choose the
+linearizing coordinate with \(s_2\circ g_2=-is_2\).  The function \(h\) has
+a simple zero there, and therefore
+\(h(g_2z)/h(z)\to-i=i^3\); the sign for \(g_2\) is \(+1\).  The modular
+transformation formulae
+\[
+ E_4(\gamma\tau)=(c\tau+d)^4E_4(\tau),\quad
+ E_6(\gamma\tau)=(c\tau+d)^6E_6(\tau),\quad
+ \Delta_{\rm mod}(\gamma\tau)=(c\tau+d)^{12}\Delta_{\rm mod}(\tau)
+\]
+now give the exact identities
+\[
+ \Theta\circ g_1=-\Theta/\tau,\qquad
+ \Theta\circ g_2=\Theta/\tau.
+ \tag{2.1e}
+\]
+These are precisely the automorphy laws defining \(\mathcal L\).  Since
+\(E_4\) has a simple zero at \(\rho\), whereas \(E_6\) has a simple zero
+at \(i\), the orders of \(\Theta\) at \(z_1,z_2\) are respectively two
+and one.  At the distinguished cusp, \(E_4,E_6\) are units and
+\(\Delta_{\rm mod}=q\cdot(\text{unit})\), with
+\(q=t_c\cdot(\text{unit})\), so
+\(\Theta=t_c^{-1}\cdot(\text{unit})\).
+Taking the stabilizer orders into account, division by \(\Theta\) identifies
+the ordinary and elliptic stalks with \(\mathcal O_B\), while the cusp stalk
+is \(\mathfrak m_{p_0}\Theta\).  Hence
+\[
+ \mathcal L\simeq\mathcal O_B(-p_0)\simeq\mathcal O_{\mathbb P^1}(-1).
+\]
+Consequently \(H^1(B,\mathcal L)=H^0(B,\mathcal L)=0\): the locally
+nonempty torsor \(\mathcal M\) has a unique global section.  Evaluating at
+the fixed points gives
+\[
+ \mu(z_1)=\frac{2-\rho}{3},\qquad
+ \mu(z_2)=\frac{1-i}{2},
+\]
+and the cusp condition says precisely that its invariant branch extends
+holomorphically.
+
+For the second affine problem put
+\[
+ \phi_1=2-\frac{6(1-\mu)^2}{\tau},\qquad
+ \phi_2=-3-\frac{6\mu^2}{\tau}.
+\]
+Substitution around the finite orbits gives
+\[
+ \sum_{k=0}^{2}\phi_1\circ g_1^k=0,
+ \qquad
+ \sum_{k=0}^{3}\phi_2\circ g_2^k=0.
+ \tag{2.1c}
+\]
+For example, the three summands in the first identity are
+\[
+2-\frac{6(1-\mu)^2}{\tau},\quad
+2-\frac{6(\tau-1+\mu)^2}{\tau(\tau-1)},\quad
+2+\frac{6\mu^2}{\tau-1},
+\]
+ Putting them over the common denominator \(\tau(\tau-1)\), the three
+ constant terms contribute \(6\tau(\tau-1)\), while the remaining terms
+ contribute \(-6\tau(\tau-1)\); hence the total numerator is zero.  For the
+ order-four identity the
+bracket after extracting \(6/\tau\) is \(2\tau\), cancelling \(-12\).
+
+Define \(\mathcal B(U)\) to consist of holomorphic \(\beta\) on
+\(\widetilde U\) with
+\(\beta\circ g_j-\beta=\phi_j\); at the cusp require
+\(b=\beta+\tau\) to extend holomorphically in \(t_c\).  Differences of
+sections are ordinary holomorphic functions on \(U\), so
+\(\mathcal B\) is a pseudo-torsor under \(\mathcal O_B\).  It is locally
+nonempty: prescribe \(\beta=0\) on one ordinary sheet; prescribe
+\(\beta=-\tau\) on the distinguished cusp component; and at \(p_j\) use
+\[
+ \beta_j=\frac1{m_j}\sum_{k=0}^{m_j-1}
+ k\,(\phi_j\circ g_j^k).
+ \tag{2.1d}
+\]
+Equation (2.1c) makes the last expression telescope to
+\(\beta_j\circ g_j-\beta_j=\phi_j\).  Therefore \(\mathcal B\) is an
+\(\mathcal O_B\)-torsor.  Since \(H^1(B,\mathcal O_B)=0\), it has global
+sections, and any two differ by a constant; by construction
+\(b=\beta+\tau\) is invariant and holomorphic at the cusp.
+
+The real determinant is
+\[
+ \det_{\mathbb R}\Pi=-\det\operatorname{Im}Z
+ =\operatorname{Im}\tau\,D.
+\tag{2.4}
+\]
+For completeness, the equivariance can be checked before any quotient is
+taken.  Regard the rows of \(\Pi\) as the two covectors
+\[
+ \sigma_1=6\mu\gamma+\tau u+w,
+ \qquad
+ \sigma_2=\beta\gamma+\mu u+\delta
+ \quad\text{in }V\otimes\mathbb C.
+ \tag{2.3a}
+\]
+Multiplication by the printed matrices gives
+\[
+\begin{aligned}
+T_1\sigma_1&=(6\mu-6)\gamma+(1-\tau)u-\tau w,\\
+T_1\sigma_2&=(\beta+2)\gamma+(1-\mu)u+(1-\mu)w+\delta,\\
+T_2\sigma_1&=(6\mu+6\tau)\gamma-u+\tau w,\\
+T_2\sigma_2&=(\beta+6\mu-3)\gamma+u+\mu w+\delta.
+\end{aligned}
+\tag{2.3b}
+\]
+Using the four affine transformation laws in (2.1a)--(2.1d), coefficient
+comparison in (2.3b) yields
+\[
+\begin{aligned}
+ \sigma_1\circ g_1&=-\tau^{-1}T_1\sigma_1,
+ &\sigma_2\circ g_1&=T_1\sigma_2+(1-\mu)\tau^{-1}T_1\sigma_1,\\
+ \sigma_1\circ g_2&=\tau^{-1}T_2\sigma_1,
+ &\sigma_2\circ g_2&=T_2\sigma_2-\mu\tau^{-1}T_2\sigma_1.
+\end{aligned}
+\tag{2.3c}
+\]
+For instance, dividing the first line of (2.3b) by \(-\tau\) gives the
+coefficients \(6(1-\mu)/\tau\), \((\tau-1)/\tau\), and \(1\), exactly
+those of \(\sigma_1(g_1z)\); subtracting \((1-\mu)\) times that normalized
+row from \(T_1\sigma_2\) gives \(\sigma_2(g_1z)\).  The two \(g_2\)
+identities follow by the same coefficient check.  Thus, with
+\[
+R_{g_1}=\begin{pmatrix}-1/\tau&0\\(1-\mu)/\tau&1\end{pmatrix},
+\qquad
+R_{g_2}=\begin{pmatrix}1/\tau&0\\-\mu/\tau&1\end{pmatrix},
+\]
+pairing (2.3c) with \(\lambda\in\Lambda\) gives
+\[
+ \Pi(gz)=R_g(z)\Pi(z)M_g.
+ \tag{2.3d}
+\]
+Since \(M_{gh}=M_hM_g\), uniqueness of the left factor gives
+\(R_{gh}(z)=R_g(hz)R_h(z)\); hence these formulae define an action, not
+merely generator-wise maps.  Taking real determinants in (2.3d), using
+\(\det M_g=1\) and
+\(\operatorname{Im}\tau(g_jz)=\operatorname{Im}\tau/|\tau|^2\), shows
+\(D(gz)=D(z)\).  At the cusp,
+\[
+ D=\operatorname{Im}b-\operatorname{Im}\tau-
+ \frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}
+ \longrightarrow-\infty.
+\]
+The descended function is bounded above on the complement of a cusp
+neighbourhood.  Replacing \(\beta\) by \(\beta+c_0\) adds
+\(\operatorname{Im}c_0\) to \(D\), so a sufficiently negative imaginary
+constant makes (2.2) hold globally.  Equation (2.4) then makes \(\Pi\) a real
+isomorphism everywhere.  The equivariance identity supplies the claimed
+\(\Delta\)-action and completes the construction of the period family.
+\end{proof}
+
+\begin{proposition}[exact admissible period constants]
+\label{prop:period-exact-admissible-constants}
+Let \(\tau,\mu,\beta^{\mathrm{part}}\) be the cusp-regular functions
+constructed in \cref{prop:period-input-audit}, with all its marked
+coordinates and transformation laws retained.  The descended function
+\[
+ D_{\mathrm{part}}=
+ \operatorname{Im}\beta^{\mathrm{part}}
+ -\frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}
+\]
+has an attained finite maximum \(M\) on
+\(B\setminus\{p_0\}\).  The exact set of constants for which
+\(\beta=\beta^{\mathrm{part}}+c_0\) makes the marked real period map an
+isomorphism at every point is
+\[
+ \{c_0\in\mathbb C:\operatorname{Im}c_0<-M\}.
+\]
+\end{proposition}
+
+\begin{proof}
+The preceding proposition proves continuity on
+\(B\setminus\{p_0\}\), including its elliptic points, and convergence
+\(D_{\mathrm{part}}\to-\infty\) at \(p_0\).  Choose a base point
+\(b_*\).  Outside a compact set containing \(b_*\), the function is
+smaller than \(D_{\mathrm{part}}(b_*)-1\).  Its maximum on that compact
+set is therefore its maximum on the entire base.  A constant shift gives
+\(D=D_{\mathrm{part}}+\operatorname{Im}c_0\), so \(D<0\) everywhere
+exactly for \(\operatorname{Im}c_0<-M\).  At equality, \(D=0\) at a
+maximum point.  For \(\operatorname{Im}c_0>-M\), that point has positive
+\(D\), whereas the cusp still has negative \(D\).  A path toward the
+cusp contains a zero.  Since the exact ordered real determinant is
+\(\operatorname{Im}\tau\,D\), these and only these excluded constants
+make the period matrix singular somewhere.
+\end{proof}
+
+\begin{remark}[the cusp extension is essential]
+For the same \(\tau,\mu,\beta\), the function
+\(\widetilde\beta=\beta+i\,t\circ\pi\) is holomorphic on
+\(\mathfrak h_z\) and satisfies all the same affine transformation laws,
+because \(t\circ\pi\) is invariant.  However,
+\(\widetilde D=D+\operatorname{Re}t\).  On the actual ray \(t=R\to+\infty\),
+\(j(\tau)=1728R\) gives
+\[
+ q=(1728R)^{-1}(1+O(R^{-1})),\qquad
+ D(R)=-\frac{\log(1728R)}{2\pi}
+       +\operatorname{Im}b(0)+o(1),
+ \quad b=\beta+\tau.
+\]
+Consequently \(\widetilde D(R)\to+\infty\), and no additive constant
+makes \(\widetilde D\) negative everywhere.  This function is excluded
+by the actual construction because
+\(\widetilde\beta+\tau=b+i t\) has a cusp pole.  Thus holomorphic
+solvability on the open base alone does not supply the required uniform
+bound; the proved cusp extension supplies it.
+\end{remark}
+
+
+For the cusp filling, record the local periods explicitly.  Let \(t_c\) be
+the coordinate vanishing at \(p_0\).  The simple pole of \(j\) gives
+\[
+ q=e^{2\pi i\tau}=t_cu_1(t_c),\qquad u_1(0)\ne0.
+\]
+After choosing a logarithm of \(u_1\), put
+\[
+ h=(2\pi i)^{-1}\log u_1,\qquad s=\tau-h,
+ \qquad b=\beta+\tau.
+\]
+Then \(e^{2\pi is}=t_c\), \(s\circ g_0=s-1\), and \(\mu,b,h\) are
+holomorphic functions of \(t_c\) at the origin.  Consequently
+\[
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ Z=sB_0+C(t_c),\qquad
+ C(t_c)=
+ \begin{pmatrix}
+ 6\mu(t_c)&h(t_c)\\
+ b(t_c)-h(t_c)&\mu(t_c)
+ \end{pmatrix},
+ \tag{2.5a}
+\]
+and \(C\) is holomorphic on a full cusp disc.  In particular, for
+\(\bar\lambda\in\bar\Lambda\simeq\mathbb Z^2\),
+\[
+ \exp(2\pi iZ\bar\lambda)
+ =t_c^{B_0\bar\lambda}c_{\bar\lambda}(t_c),
+ \qquad
+ c_{\bar\lambda}(t_c)=\exp(2\pi iC(t_c)\bar\lambda).
+ \tag{2.5b}
+\]
+
+\subsection{The toric filling at the cusp}
+
+Let \(\mathcal T_{A_2}\) be the translation-invariant triangulation of
+\(\mathbb R^2\) by the two triangles
+\(\{v,v+e_1,v+e_2\}\) and
+\(\{v+e_1,v+e_2,v+e_1+e_2\}\).  In
+\(N'=\mathbb Z^2\oplus\mathbb Z\), take the cones over all cells at height
+one, and denote the associated toric threefold by \(Y\).
+We use the standard orbit--cone and affine-chart constructions of
+\cite[Chapters~1 and~3]{Fulton1993}; all nonstandard assertions caused by
+the infinite fan are proved directly below.
+
+For \(\bar\lambda\in\bar\Lambda\), define the integral linear map
+\[
+ \varphi_{\bar\lambda}(y,y_3)
+ =(y+y_3B_0\bar\lambda,y_3).
+\]
+On the height-one slice this is translation by
+\(B_0\bar\lambda\in\mathbb Z^2\), so it preserves the triangulation and
+maps the cone over a cell \(P\) to the cone over
+\(P+B_0\bar\lambda\).  It therefore induces a toric automorphism
+\(\Phi_{\bar\lambda}\) of \(Y\), satisfying
+\[
+ \Phi_{\bar\lambda}(x,t)
+ =(t^{B_0\bar\lambda}x,t)
+\]
+on the dense torus.  Because \(t\) and \(C(t)\) are holomorphic on the
+full cusp model, multiplication by
+\((c_{\bar\lambda}(t),1)\in(\mathbb C^*)^3\) defines a biholomorphism on
+all of \(Y_\epsilon\).  Set
+\[
+ \Psi_{\bar\lambda}(p)
+ =(c_{\bar\lambda}(t(p)),1)\cdot\Phi_{\bar\lambda}(p).
+\]
+The maps \(\Phi_{\bar\lambda}\) fix the first two cocharacter directions
+and preserve \(t\), so they commute with this torus multiplication.  The
+linearity of \(C(t)\bar\lambda\) gives
+\(c_{\bar\lambda}c_{\bar\mu}=c_{\bar\lambda+\bar\mu}\); hence
+\(\Psi_{\bar\lambda}\Psi_{\bar\mu}
+=\Psi_{\bar\lambda+\bar\mu}\).  This proves, before taking any quotient,
+both the holomorphic extension and the action law used below.
+
+For a triangle \(\sigma=\{v_0,v_1,v_2\}\), let
+\(\theta_i^\sigma\) be its barycentric coordinates and let
+\(z_i=\chi^{m_i}\) be the coordinates dual to
+\((v_i,1)\).  Set
+\[
+ \sigma^{(\eta)}=\{y:\theta_i^\sigma(y)>-\eta\text{ for }i=0,1,2\},
+ \quad
+ \mathcal U_\sigma(S)=\{|z_i|<S\text{ for all }i\}.
+\]
+We use the restricted charts
+\[
+ \mathcal U_\sigma(S,\epsilon)=\mathcal U_\sigma(S)\cap Y_\epsilon
+\]
+whenever a deck transformation acts on a chart.
+
+\begin{lemma}[toric chart control]
+\label{lem:toric-chart-control}
+For a torus point \(p=(x,t)\) with \(0<|t|<1\), put
+\[
+ y(p)=\frac{(\log|x_1|,\log|x_2|)}{\log|t|}.
+\]
+Then
+\[
+ p\in\mathcal U_\sigma(S)
+ \quad\Longleftrightarrow\quad
+ y(p)\in\sigma^{(\log S/|\log|t||)}.
+ \tag{2.5c}
+\]
+The exact closed-unit-polydisc version is
+\begin{equation}
+ p\in\overline{\mathcal U}_\sigma(1)
+ \quad\Longleftrightarrow\quad
+ \theta_i^\sigma(y(p))\ge0\ (i=0,1,2)
+ \quad\Longleftrightarrow\quad y(p)\in\sigma.
+\label{eq:cusp-closed-chart-identity}
+\end{equation}
+Every point of \(\{|t|<1\}\subset Y\) belongs to
+\(\overline{\mathcal U}_\sigma(1)=\{|z_i|\le1\}\) for some \(\sigma\).
+Consequently the sets \(\mathcal U_\sigma(2,\epsilon)\) cover \(Y_\epsilon\), and
+every compact subset is contained in the union of finitely many members of
+this cover.
+\end{lemma}
+
+\begin{proof}
+Since \((y,1)=\sum_i\theta_i^\sigma(y)(v_i,1)\), duality gives
+\[
+ \log|z_i(p)|=\log|t(p)|\,\theta_i^\sigma(y(p)).
+\]
+Because \(\log|t|<0\), this is exactly (2.5c); retaining non-strict
+inequalities proves the closed-unit-polydisc assertion, including triangle
+edges and vertices.
+
+For the boundary assertion let \(p\) lie in the toric orbit
+\(O_{\widehat P}\) of the cone over a cell \(P\).  In a chart with
+\(\sigma\supseteq P\), the coordinates corresponding to vertices of
+\(P\) vanish.  On the quotient lattice
+\(N'/(N'\cap\operatorname{span}\widehat P)\), the remaining coordinates
+are the characters dual to the image cone \(\bar\sigma\).  Hence
+\(p\in\overline{\mathcal U}_\sigma(1)\) exactly when
+\(-\operatorname{Log}_{\widehat P}(p)\in\bar\sigma\).
+The cones \(\bar\sigma\), for triangles \(\sigma\supseteq P\), cover the
+quotient real vector space: lift a vector \(n\), choose a relative interior
+point \(p_0\in P\times\{1\}\), and for sufficiently small \(u>0\) place
+the height-one rescaling of \(p_0+un\) in a triangle of the locally finite
+triangulation.  That triangle contains \(P\), and its quotient cone contains
+\(n\).  This proves the asserted cover.  Compactness then supplies a finite
+subcover.
+\end{proof}
+
+\begin{theorem}[the cusp quotient and its central fibre]
+\label{thm:candidate-cusp-geometry}
+\Verified\ For the period functions and holomorphic cusp matrix \(C(t)\)
+constructed above, and sufficiently small \(\epsilon>0\), the maps
+\[
+ \Psi_{\bar\lambda}(x,t)=
+ \bigl(c_{\bar\lambda}(t)t^{B_0\bar\lambda}x,t\bigr),
+ \qquad
+ c_{\bar\lambda}(t)=\exp(2\pi iC(t)\bar\lambda),
+\tag{2.5}
+\]
+extend to a free properly discontinuous action of
+\(\bar\Lambda\simeq\mathbb Z^2\) on
+\(Y_\epsilon=\{|t|<\epsilon\}\).  The quotient
+\[
+ f_0:N_0=Y_\epsilon/\bar\Lambda\longrightarrow\Delta_\epsilon
+\]
+is a proper holomorphic map from a connected smooth complex threefold.
+Its nonzero fibres are the tori of \cref{prop:period-input-audit}.  Its full
+scheme-theoretic central fibre \(W\) is reduced and has local equations
+\[
+ z_0,\qquad z_0z_1,\qquad z_0z_1z_2.
+\tag{2.6}
+\]
+The surface \(W\) is irreducible and nonnormal.  Its normalization is
+\(\nu:E_0\simeq\mathrm{dP}_6\to W\), obtained by identifying opposite sides
+of the toric hexagon; its double locus consists of three rational curves
+through exactly two triple points.  Thus \(W\) is a normal-crossings surface,
+but it is not a simple-normal-crossings divisor.  Moreover
+\[
+ \omega_{N_0}\simeq\mathcal O_{N_0}.
+\tag{2.6a}
+\]
+\end{theorem}
+
+\begin{proof}
+For a bounded cell \(P\), the cone over \(P\times\{1\}\) is strongly
+convex, and two such cones meet in the cone over the common face of the two
+cells.  The locally finite triangulation therefore defines a countable
+rational fan with support
+\((\mathbb R^2\times\mathbb R_{>0})\cup\{0\}\).  For the determinant
+calculation, order the height-one generators of the two kinds as
+\[
+ ((v,1),(v+e_1,1),(v+e_2,1)),\qquad
+ ((v+e_1,1),(v+e_2,1),(v+e_1+e_2,1)).
+\]
+Their determinants are respectively \(+1\) and \(-1\), hence have absolute
+value one.  Every cone is therefore unimodular.  Here is the pairwise
+affine-chart separation argument, without assuming finiteness of the fan.
+For two cones \(\kappa,\kappa'\), let \(\upsilon=\kappa\cap\kappa'\)
+and \(S_\kappa=\kappa^\vee\cap M'\), where \(M'=\operatorname{Hom}(N',\mathbb Z)\).
+The separation lemma for cones meeting in a common face gives an integral
+character \(m\) nonnegative on \(\kappa\), nonpositive on \(\kappa'\),
+and zero on each exactly along \(\upsilon\)
+\cite[Proposition~3.1.3 and its separation lemma, pp.~106--108]{CoxLittleSchenck2011}.
+For \(a\in S_\upsilon\), choose an integer \(k\ge0\) large enough
+that \(a+km\) is nonnegative on every ray of \(\kappa\).  On the
+common face this already holds; on each other ray \(m\) is positive.
+Then \(a=(a+km)+(-km)\in S_\kappa+S_{\kappa'}\).  The reverse
+inclusion follows by evaluation on \(\upsilon\).  Thus the map
+\[
+ \mathbb C[S_\kappa]\otimes\mathbb C[S_{\kappa'}]
+ \longrightarrow\mathbb C[S_\upsilon],\qquad
+ \chi^a\otimes\chi^b\longmapsto\chi^{a+b}
+\]
+is surjective.  It identifies the gluing graph with a closed algebraic
+subset of the product of these two affine charts, hence with an
+analytically closed subset.  These chart products cover \(Y\times Y\),
+so its diagonal is closed.  Countability of the charts supplies a
+countable topological basis.  Thus \(Y\) is a
+connected Hausdorff smooth complex threefold with dense torus.
+
+If \(m_0,m_1,m_2\) is the basis dual to the height-one generators, then the
+corresponding affine chart is \(\mathbb C^3\), with coordinates
+\(z_i=\chi^{m_i}\), and
+\[
+ t=z_0z_1z_2.
+\tag{2.7}
+\]
+Since every primitive ray generator has height one, the divisor of \(t\) is
+\(\sum_vE_v\), all with multiplicity one.  Equation (2.7) proves that the
+scheme-theoretic fibre \(t^{-1}(0)\) is reduced and normal crossings.
+The star of a height-one vertex has rays
+\(e_1,e_2,e_2-e_1,-e_1,-e_2,e_1-e_2\), the complete smooth hexagonal fan;
+hence every irreducible component \(E_v\) is \(\mathrm{dP}_6\).
+
+The local canonical trivialization is also intrinsic to this toric model.
+On the dense torus put
+\[
+ \Omega=\frac{dx_1\wedge dx_2\wedge dt}{x_1x_2}.
+\]
+If \((z_0,z_1,z_2)\) is a unimodular toric chart, then
+\[
+ \bigwedge_i\frac{dz_i}{z_i}
+ =\pm\frac{dx_1}{x_1}\wedge\frac{dx_2}{x_2}\wedge\frac{dt}{t},
+ \qquad t=z_0z_1z_2,
+\]
+and therefore \(\Omega=\pm dz_0\wedge dz_1\wedge dz_2\).  It extends
+holomorphically and nowhere vanishingly across every boundary chart.
+For a deck transformation \(\Psi_{\bar\lambda}\), formula (2.5) gives
+\(\Psi_{\bar\lambda}^*(dx_i/x_i)=dx_i/x_i+\alpha_i(t)dt\) and
+\(\Psi_{\bar\lambda}^*dt=dt\); every additional term in the pullback of
+\(\Omega\) contains \(dt\) twice.  Hence \(\Omega\) is invariant and descends
+to a nowhere-vanishing three-form on \(N_0\), proving the intrinsic
+trivialization (2.6a).  No global threefold has been invoked at this stage.
+
+Choose a radius \(r>0\) on which the full matrix \(C(t)\) is holomorphic,
+and \(0<r_1<\min(r,1)\).  Put
+\[
+ R(t)=-2\pi\operatorname{Im}C(t),\qquad
+ M=\max_{|t|\le r_1}\|R(t)\|<\infty.
+\]
+Choose \(0<\epsilon<r_1\) with \(|\log\epsilon|>2M\).
+At a torus point fixed by a nonzero
+\(\bar\lambda\), taking logarithmic absolute values in (2.5) gives
+\[
+ \log|t|B_0\bar\lambda+R(t)\bar\lambda=0,
+\]
+impossible because \(|B_0\bar\lambda|=|\bar\lambda|\) and the first term
+has more than twice the norm of the second.  On \(t=0\), a cell is translated
+by \(B_0\bar\lambda\ne0\); a bounded cell cannot be fixed by a nonzero
+translation.  Thus the action is free.
+
+For proper discontinuity put
+\[
+ B_t=B_0+\frac{R(t)}{\log|t|}.
+\]
+Then \(\|B_t-B_0\|\le1/2\), so
+\(|B_t\bar\lambda|\ge|\bar\lambda|/2\).  In logarithmic position
+coordinates, (2.5) is
+\[
+ y(\Psi_{\bar\lambda}p)=y(p)+B_t\bar\lambda.
+\tag{2.8}
+\]
+Put \(\eta_0=\log2/|\log\epsilon|\).  If
+\(\Psi_{\bar\lambda}\mathcal U_\sigma(2,\epsilon)\) meets
+\(\mathcal U_{\sigma'}(2,\epsilon)\), the intersection is open in
+\(Y_\epsilon\) and hence contains a
+point of the dense invariant torus.  By \cref{lem:toric-chart-control}, for
+that point \(p\) and its image \(p'\),
+\[
+ y(p)\in\sigma^{(\eta_0)},\qquad
+ y(p')\in{\sigma'}^{(\eta_0)}.
+\]
+Both thickenings are bounded, so (2.8) gives
+\[
+ \frac12|\bar\lambda|
+ \le |B_t\bar\lambda|
+ =|y(p')-y(p)|
+ \le \sup_{a\in{\sigma'}^{(\eta_0)},\,b\in\sigma^{(\eta_0)}}|a-b|.
+\]
+Thus only finitely many \(\bar\lambda\) can make this fixed pair of charts
+meet.  A compact set is contained in finitely many of the charts from
+\cref{lem:toric-chart-control}; taking the finite union over all chart pairs
+proves proper discontinuity.  Freeness and proper discontinuity give a
+Hausdorff complex-manifold quotient and a holomorphic covering map.
+For completeness the restricted total space is connected: every maximal
+chart intersects it in
+\[
+ \{(z_0,z_1,z_2)\in\mathbb C^3:|z_0z_1z_2|<\epsilon\},
+\]
+a set star shaped about the origin.  These connected open sets meet the
+common connected dense torus
+\((\mathbb C^*)^2\times\{0<|t|<\epsilon\}\).  Their union
+\(Y_\epsilon\), and hence its quotient, is connected.
+
+To prove properness, fix \(\epsilon_1<\epsilon\).  Let \(\mathcal F_0\) be
+the finite set of triangles meeting the closed Euclidean ball of radius
+\(\sqrt2\), and put
+\[
+ K_0=\bigcup_{\sigma\in\mathcal F_0}
+ \left(\overline{\mathcal U}_\sigma(1)
+ \cap\{|t|\le\epsilon_1\}\right).
+\]
+This is compact.  For a torus point \(p\) with
+\(0<|t(p)|\le\epsilon_1\), put \(u=B_{t(p)}^{-1}y(p)\) and choose
+\(\bar\lambda\in\mathbb Z^2\) with
+\(|u+\bar\lambda|_\infty\le1/2\).  Since
+\(\|B_t\|\le3/2\), equation (2.8) gives
+\[
+ |y(\Psi_{\bar\lambda}p)|
+ =|B_t(u+\bar\lambda)|
+ \le\frac{3}{2\sqrt2}<\sqrt2.
+\]
+Choose a triangle containing this logarithmic position.  The closed-unit-
+polydisc identity of \cref{lem:toric-chart-control} places the translate
+in the corresponding
+\(\overline{\mathcal U}_\sigma(1)\subset K_0\).
+
+For the central representatives, we prove the needed closed-polydisc
+cover explicitly.  Denote the two ordered triangles at \(v\) by
+\[
+ L_v=(v,v+e_1,v+e_2),\qquad
+ U_v=(v+e_1,v+e_2,v+e_1+e_2).
+\]
+On the dense orbit of \(E_0\), the characters \((1,0,0)\) and
+\((0,1,0)\) give the original coordinates \(x_1,x_2\).  The coordinate
+dual to \((0,0,1)\) vanishes there; the other two dual characters have
+last exponent zero.  Pairing with the ordered height-one generators gives
+the following restrictions of the chart coordinates.  Write
+\(a=\log|x_1|\), \(b=\log|x_2|\) on this dense orbit.
+\[
+\begin{array}{c|c|c}
+ \sigma&(z_0,z_1,z_2)|_{E_0^{\rm tor}}&|z_i|\le1\ (i=0,1,2)\\\hline
+ L_0&(0,x_1,x_2)&a\le0,\ b\le0\\
+ L_{-e_1}&((x_1x_2)^{-1},0,x_2)&a+b\ge0,\ b\le0\\
+ L_{-e_2}&((x_1x_2)^{-1},x_1,0)&a+b\ge0,\ a\le0\\
+ U_{-e_1}&(0,x_1^{-1},x_1x_2)&a\ge0,\ a+b\le0\\
+ U_{-e_2}&(x_2^{-1},0,x_1x_2)&b\ge0,\ a+b\le0\\
+ U_{-e_1-e_2}&(x_2^{-1},x_1^{-1},0)&a\ge0,\ b\ge0.
+\end{array}
+\]
+The six regions cover \(\mathbb R^2\): the first and last cover equal
+signs; for \(a\ge0\ge b\), the sign of \(a+b\) selects the second or
+fourth; for \(b\ge0\ge a\), it selects the third or fifth.  Equalities
+are retained throughout.  Each corresponding coordinate plane meets
+\(\overline{\mathcal U}_\sigma(1)\) in a compact closed bidisc
+\(Q_\sigma\subset E_0\).  Their finite union is compact and hence closed
+in the already Hausdorff \(Y\).  It contains \(E_0^{\rm tor}\), so it
+contains its closure \(E_0\); the reverse inclusion follows from
+\(Q_\sigma\subset E_0\).  Consequently
+\[
+ E_0=\bigcup_{\sigma\ni0}Q_\sigma.
+\]
+This proves the closed-polydisc cover at every boundary point as well as
+on the dense orbit, without presupposing compactness of \(E_0\).
+
+Now let \(p\) lie in the central orbit belonging to a cell \(P\), choose
+a vertex \(v\in P\), and set \(\bar\lambda=B_0v\).  The exact map
+\(\Psi_{B_0v}\) translates the cell to \(P-v\), because \(B_0^2v=-v\),
+and retains the full torus multiplier
+\[
+ c_{B_0v}(0)=\exp\bigl(2\pi iC(0)B_0v\bigr).
+\]
+This nonzero multiplier preserves the orbit label, so the actual
+translated point belongs to \(E_0\).  The proved cover applies to it
+regardless of the multiplier's modulus or argument.  Each of the six
+triangles contains zero and therefore belongs to \(\mathcal F_0\), so
+the translate lies in \(K_0\).  Together with the nonzero-fibre
+representatives above, this proves that the image of \(K_0\) in the
+quotient is exactly \(f_0^{-1}(\{|t|\le\epsilon_1\})\), which is compact.
+Every compact subset of the open base disc is closed in one such closed
+subdisc; its inverse image is therefore closed in that compact Hausdorff
+inverse image.  Thus \(f_0\) is proper.
+
+For \(t\ne0\), choose \(s\) with \(e^{2\pi is}=t\).  The multiplier in
+(2.5) is \(\exp(2\pi iZ(s)\bar\lambda)\), so exponentiation identifies the
+fibre with
+\[
+ \mathbb C^2/(\mathbb Z^2+Z(s)\mathbb Z^2).
+\]
+It is compact because \(\operatorname{Im}Z(s)\) is invertible by (2.2).
+
+The quotient map is a local biholomorphism; therefore the local equation
+(2.7), its multiplicity one, and reducedness descend to \(W\).  Every cell
+has a vertex, and \(B_0\bar\Lambda=\mathbb Z^2\) acts simply transitively on
+vertices, so every orbit in the central fibre meets \(E_0\).  Thus
+\(E_0\to W\) is surjective.  Two interior points cannot be identified; on
+the boundary, precisely opposite edges and the corresponding hexagon
+vertices are identified.  The fibres have at most three points.  Since
+\(E_0\) is compact, the map is finite; since it is generically injective
+from a smooth irreducible surface to the reduced surface \(W\), it is the
+normalization.  The two translation-orbits of triangles give the two triple
+points, and the three unoriented edge directions give the three double
+curves.  Irreducibility follows from the finite surjection by \(E_0\).
+
+The actual opposite-side maps retain the entire matrix \(C(0)\).
+For a neighboring vertex
+\(v\in\{\pm e_1,\pm e_2,\pm(e_1-e_2)\}\), put
+\[
+ C_v=E_0\cap E_v,\qquad
+ \bar\lambda_v=B_0v,\qquad
+ \iota_v=\Psi_{B_0v}|_{C_v}:C_v\longrightarrow C_{-v}.
+\]
+Since \(B_0^2v=-v\), this is precisely the translation taking the edge
+\(\{0,v\}\) to \(\{0,-v\}\).  For a primitive row \(a\in\mathbb Z^2\)
+with \(av=0\), use the same character \(w=\chi^{(a,0)}\) on both
+dense edge orbits.  Character pullback gives
+\begin{equation}
+ \iota_v^*w_{-v}=\exp\bigl(2\pi i\,aC(0)B_0v\bigr)w_v,
+ \label{eq:cusp-exact-opposite-edge}
+\end{equation}
+because the exponent of \(t\) is \(-av=0\).  With
+\(\mu_0=\mu(0)\) and \(b_0=b(0)\), the three maps are
+\[
+\begin{array}{c|c|c}
+ v&a&\iota_v^*w_{-v}/w_v\\\hline
+ e_1&(0,1)&e^{-2\pi i\mu_0}\\
+ e_2&(1,0)&e^{12\pi i\mu_0}\\
+ e_1-e_2&(1,1)&e^{-2\pi i(7\mu_0+b_0)}.
+\end{array}
+\]
+For the third entry the full exponent coefficient is
+\[
+ (1,1)C(0)B_0(e_1-e_2)
+ =-6\mu_0-h(0)-(b_0-h(0))-\mu_0=-7\mu_0-b_0.
+\]
+The cancellation of \(h(0)\) occurs in this exact character evaluation;
+no entry was suppressed.  All multipliers are nonzero.  The maps extend
+over both endpoints as restrictions of the ambient biholomorphisms, and
+\(\iota_{-v}\) is the inverse map with reciprocal multiplier in the
+same-character convention.
+\end{proof}
+
+\begin{proposition}[the cusp punctured-overlap biholomorphism]
+\label{prop:candidate-cusp-overlap}
+\Verified\ Let \(D_0^*=\{0<|t_c|<\epsilon\}\), and shrink it if necessary
+so that its inverse image has a distinguished component \(U_0\) stabilized
+exactly by \(\langle g_0\rangle\).  Exponentiation induces a
+fibre-preserving biholomorphism
+\[
+ J|_{D_0^*}\xrightarrow{\ \sim\ }
+ N_0|_{D_0^*}=N_0\setminus W.
+\tag{2.8i}
+\]
+On the covering space it is given by
+\[
+ \mathcal E:U_0\times\mathbb C^2\longrightarrow
+             (\mathbb C^*)^2\times D_0^*,
+ \qquad
+ \mathcal E(z,\zeta_1,\zeta_2)
+ =\bigl(e^{2\pi i\zeta_1},e^{2\pi i\zeta_2},e^{2\pi is(z)}\bigr).
+\tag{2.8ii}
+\]
+\end{proposition}
+
+\begin{proof}
+First identify every deck transformation.  From
+\(s\circ g_0=s-1\), the equality
+\(t_c\circ\pi=e^{2\pi is}\), and the fact that \(t_c\) is a base
+coordinate, \(ds\) never vanishes on \(U_0\).  Thus \(s\) is a local
+biholomorphism to the logarithmic cover of \(D_0^*\).  The restriction
+\(U_0\to D_0^*\) is a connected regular cover with deck group
+\(\langle g_0\rangle\simeq\mathbb Z\).  Under the classification of connected
+covers of the punctured disc, it corresponds to a subgroup of
+\(\pi_1(D_0^*)\simeq\mathbb Z\); because its deck group is infinite, that
+subgroup is zero.  Hence \(U_0\) is the universal cover.  The logarithmic
+cover is universal as well, and its deck generator acts by
+\(s\mapsto s-1\).  Therefore \(s\) is an equivariant biholomorphism onto that
+logarithmic cover.
+
+The cusp transformation laws give
+\[
+ \Pi(g_0z)=[Z(s-1)\mid I_2]=[Z(s)-B_0\mid I_2].
+\]
+In the same block decomposition, the explicit matrix in
+\cref{prop:monodromy-certificate} gives
+\[
+ M_{g_0}=M_0^{-1}
+ =\begin{pmatrix}I_2&0\\-B_0&I_2\end{pmatrix}.
+\]
+Consequently
+\[
+ \Pi(g_0z)=\Pi(z)M_{g_0}.
+\]
+Comparison with (2.3d) and real invertibility of \(\Pi(g_0z)\) yields
+\(R_{g_0}=I_2\).  To make the crossed action explicit, for
+\(\lambda\in\Lambda\) and \(g\in\Delta\) put
+\[
+ T_\lambda(z,\zeta)=(z,\zeta+\Pi(z)\lambda),
+ \qquad
+ \widetilde g(z,\zeta)=(gz,R_g(z)\zeta).
+\]
+Equation (2.3d), together with \(A_g=M_g^{-1}\), gives
+\[
+\begin{aligned}
+ \widetilde gT_\lambda(z,\zeta)
+ &=\bigl(gz,R_g(z)\zeta+R_g(z)\Pi(z)\lambda\bigr)\\
+ &=\bigl(gz,R_g(z)\zeta+\Pi(gz)A_g\lambda\bigr)
+  =T_{A_g\lambda}\widetilde g(z,\zeta).
+\end{aligned}
+\]
+Thus
+\[
+ \widetilde gT_\lambda=T_{A_g\lambda}\widetilde g.
+\tag{2.8ii-a}
+\]
+At the cusp \(A_{g_0}=M_0\), so
+\[
+ \widetilde g_0(z,\zeta)=(g_0z,\zeta),
+ \qquad
+ \widetilde g_0T_\lambda=T_{M_0\lambda}\widetilde g_0.
+\tag{2.8ii-b}
+\]
+In particular \(\mathcal E\) is invariant under \(\widetilde g_0\).
+
+Let
+\(\Lambda_{\rm tor}=\mathbb Z\widehat w\oplus
+\mathbb Z\widehat\delta\).  By \cref{thm:cusp-lattices},
+\[
+ \Lambda_{\rm tor}=\ker(M_0-I)=\operatorname{im}(M_0-I).
+\tag{2.8ii-c}
+\]
+Put
+\[
+ \mathcal G_0=\langle T_\lambda,\widetilde g_0:\lambda\in\Lambda\rangle
+ \simeq\Lambda\rtimes_{M_0}\langle\widetilde g_0\rangle.
+\]
+Since \(M_0\) fixes \(\Lambda_{\rm tor}\) pointwise, (2.8ii-b) shows that
+\[
+ H:=\{T_\nu\widetilde g_0^{\,n}:
+          \nu\in\Lambda_{\rm tor},\ n\in\mathbb Z\}
+ \simeq\Lambda_{\rm tor}\times\langle\widetilde g_0\rangle.
+\tag{2.8ii-d}
+\]
+Moreover, for \(\lambda\in\Lambda\) and
+\(\nu\in\Lambda_{\rm tor}\),
+\[
+ \widetilde g_0T_\nu\widetilde g_0^{-1}=T_\nu,
+ \qquad
+ T_\lambda T_\nu T_\lambda^{-1}=T_\nu,
+ \qquad
+ T_\lambda\widetilde g_0T_\lambda^{-1}
+ =T_{(I-M_0)\lambda}\widetilde g_0\in H.
+\tag{2.8ii-e}
+\]
+These generator conjugations prove that \(H\triangleleft\mathcal G_0\).
+Translation by \(\Lambda_{\rm tor}\) adds an integral vector to \(\zeta\),
+so it lies in the deck group of \(\mathcal E\).
+Conversely, if two points have the same image under \(\mathcal E\), their
+\(s\)-coordinates differ by an integer and their \(\zeta\)-coordinates by
+an element of \(\mathbb Z^2\).  Equivariance and injectivity of the
+logarithmic coordinate then show that they differ by a unique element of \(H\).
+Thus \(\mathcal E\) identifies
+\((U_0\times\mathbb C^2)/H\) with
+\((\mathbb C^*)^2\times D_0^*\).
+
+It remains to identify the residual action.  Write
+\(\bar\Lambda=\Lambda/\Lambda_{\rm tor}\), and let \(\lambda\) be any lift
+of \(\bar\lambda\).  In the period basis, translation by \(\lambda\) adds
+\(Z(s)\bar\lambda\) to \(\zeta\), up to an integral vector killed by
+exponentiation.  Therefore (2.5b) gives
+\[
+ \mathcal E(z,\zeta+\Pi(z)\lambda)
+ =\bigl(c_{\bar\lambda}(t_c)t_c^{B_0\bar\lambda}x,t_c\bigr)
+ =\Psi_{\bar\lambda}\bigl(\mathcal E(z,\zeta)\bigr).
+\tag{2.8iii}
+\]
+This is independent of the chosen lift.  Moreover \(M_0\) is the identity
+on \(\bar\Lambda\), by (2.8ii-c).  The crossed multiplication law is
+\[
+ (T_\lambda\widetilde g_0^{\,n})
+ (T_\mu\widetilde g_0^{\,m})
+ =T_{\lambda+M_0^n\mu}\widetilde g_0^{\,n+m}.
+\]
+It follows that
+\[
+ \vartheta:\mathcal G_0\longrightarrow\bar\Lambda,
+ \qquad
+ \vartheta(T_\lambda\widetilde g_0^{\,n})=\bar\lambda,
+\]
+is a surjective homomorphism with kernel \(H\).  Hence
+\(\mathcal G_0/H\simeq\bar\Lambda\), and (2.8iii) identifies this residual
+action with the displayed \(\Psi_{\bar\lambda}\)-action.  Dividing by it
+gives
+\[
+ (U_0\times\mathbb C^2)/\mathcal G_0
+ \simeq
+ ((\mathbb C^*)^2\times D_0^*)/\bar\Lambda.
+\]
+The left side is \(J|_{D_0^*}\), while the right side is
+\(N_0|_{D_0^*}\) because \(t^{-1}(\mathbb C^*)\) is the dense torus of
+\(Y\).  This proves (2.8i), including holomorphicity of the inverse.
+\end{proof}
+
+\subsection{The finite logarithmic fillings and the global gluing}
+
+Set
+\[
+ \varepsilon=\widehat\gamma+2\widehat u-4\widehat w,
+ \qquad
+ \varepsilon'=\widehat\gamma+3\widehat u-3\widehat w.
+ \tag{2.8a}
+\]
+Direct multiplication by the matrices in
+\cref{prop:monodromy-certificate} gives
+\(A_1\varepsilon=\varepsilon\) and
+\(A_2\varepsilon'=\varepsilon'\).
+
+A \emph{linearizing pair} \((\Delta_j,s_j)\) consists of a simply connected
+\(g_j\)-invariant neighbourhood of \(z_j\), disjoint from all its translates
+outside \(\langle g_j\rangle\), and an injective coordinate satisfying
+\[
+ s_j(z_j)=0,\qquad s_j\circ g_j=\zeta_js_j,
+ \qquad \zeta_j=e^{-2\pi i/m_j}.
+ \tag{2.8b}
+\]
+Choose the image of \(s_j\) to be a round disc about zero, shrinking the
+linearizing neighbourhood if necessary.  Rotation invariance and
+translate-disjointness are preserved by this restriction.  Put
+\(D_j=\pi(\Delta_j)\),
+\(\Delta_j^*=\Delta_j\setminus\{z_j\}\), and choose the base coordinate
+\(t_j\) by \(t_j\circ\pi=s_j^{m_j}\).  Let
+\[
+ \mathcal T=(\mathfrak h_z\times\mathbb C^2)/\Lambda,
+ \qquad
+ \mathfrak h_z^\circ=\mathfrak h_z\setminus
+ (\Delta z_1\cup\Delta z_2),
+ \qquad
+ J=(\mathcal T|_{\mathfrak h_z^\circ})/\Delta
+ \]
+\[
+ J'_j=\mathcal T|_{\Delta_j},
+ \qquad
+ A_0^{(j)}=\mathbb C^2/\Pi(z_j)\Lambda.
+ \tag{2.8c}
+\]
+
+\begin{lemma}[the middle period quotient is proper]
+\label{lem:middle-period-proper}
+The induced \(\Delta\)-action on
+\(\mathcal T|_{\mathfrak h_z^\circ}\) is free and properly discontinuous.
+Consequently \(J\) is a Hausdorff complex manifold and its natural map
+\[
+ J\longrightarrow B_{\rm mid}:=\mathfrak h_z^\circ/\Delta
+\]
+is a proper holomorphic submersion with compact torus fibres.
+\end{lemma}
+
+\begin{proof}
+The deleted translates contain every elliptic fixed point, so the
+\(\Delta\)-action on \(\mathfrak h_z^\circ\) is free; it is properly
+discontinuous because it is the restriction of the Fuchsian action.  The
+action on \(\mathcal T\) projects equivariantly to this base action.  Hence
+an element fixing a point of \(\mathcal T|_{\mathfrak h_z^\circ}\) fixes
+its base point and is the identity.  If \(K_1,K_2\) are compact subsets of
+the total space and \(gK_1\cap K_2\ne\varnothing\), then
+\(g\,\operatorname{pr}(K_1)\cap\operatorname{pr}(K_2)\ne\varnothing\).
+Base proper discontinuity leaves only finitely many such \(g\), proving
+proper discontinuity upstairs and hence the Hausdorff manifold assertion.
+
+For properness, take a simply connected open set \(U\Subset B_{\rm mid}\)
+evenly covered by \(\mathfrak h_z^\circ\), and one lift \(\widetilde U\).
+The quotient over \(U\) is identified with
+\(\mathcal T|_{\widetilde U}\).  Before quotienting, projection is a
+holomorphic submersion, and the quotient maps are local biholomorphisms;
+hence the displayed map is a holomorphic submersion.  The flat real-analytic trivialization
+\[
+ \widetilde U\times(\Lambda\otimes\mathbb R)/\Lambda
+ \longrightarrow\mathcal T|_{\widetilde U},\qquad
+ (z,x+\Lambda)\longmapsto[z,\Pi(z)x]
+\]
+shows this properness explicitly: if \(C\subset U\) is compact, its chosen
+lift \(\widetilde C\subset\widetilde U\) is compact and the inverse image of
+\(C\) is homeomorphic to
+\(\widetilde C\times(\Lambda\otimes\mathbb R)/\Lambda\), hence compact.
+Thus the map is proper over \(U\).  Properness is local on the target, so
+the displayed map is proper.
+\end{proof}
+
+For \(b\in\Lambda\otimes\mathbb R\), define the varying holomorphic lift
+\[
+ \widetilde g_j^{b}(z,\zeta)=
+ \bigl(g_jz,R_{g_j}(z)\zeta+\Pi(g_jz)b\bigr).
+ \tag{2.8d}
+\]
+Equation (2.3d) says
+\[
+ R_{g_j}(z)\Pi(z)=\Pi(g_jz)A_j,
+ \tag{2.8e}
+\]
+so (2.8d) normalizes the lattice action and descends to \(J'_j\).  In the
+flat real-analytic coordinates
+\[
+ \Xi(z,x+\Lambda)=[z,\Pi(z)x]
+\]
+one has, with \(\Sigma_k=I+A_j+\cdots+A_j^{k-1}\),
+\[
+ \Xi^{-1}(\widetilde g_j^{b})^k\Xi(z,x)
+ =\bigl(g_j^kz,A_j^kx+\Sigma_kb\bigr).
+ \tag{2.8f}
+\]
+We call \(\widetilde g_j^{0}\) the linear lift and, for
+\(v\in\Lambda^{A_j}\), call
+\(\widetilde g_j^{\log}:=\widetilde g_j^{v/m_j}\) the logarithmic lift.
+
+\begin{proposition}[finite fillings]
+\label{prop:candidate-finite-fillings}
+\Verified\ Let \(A_j\) be the two finite monodromies and choose
+\[
+ v_1=\varepsilon,\qquad v_2=-\varepsilon',
+ \qquad \gamma(v_1)=1,\quad\gamma(v_2)=-1.
+\]
+On the local torus family over a linearizing disc \(\Delta_j\), the affine
+map
+\[
+ (z,x)\longmapsto(g_jz,A_jx+v_j/m_j)
+\tag{2.9}
+\]
+generates a free action of order \(m_j\).  The quotient
+\(f_j:N_j\to D_j\) is a smooth complex threefold with
+\[
+ f_j^*(p_j)=m_jS_j,\qquad
+ S_j=A_0^{(j)}/\langle x\mapsto A_jx+v_j/m_j\rangle.
+\tag{2.10}
+\]
+Over the punctured disc it is biholomorphic to the original period family.
+\end{proposition}
+
+\begin{proof}
+First prove freeness on the actual local family.  For a finite-order
+integral map \(A\), the affine self-map \(x\mapsto Ax+b\) of
+\((\Lambda\otimes\mathbb R)/\Lambda\) has a fixed point exactly when
+\[
+ \varphi(b)\in\mathbb Z
+ \quad\text{for every }\varphi\in\operatorname{Hom}(\Lambda,\mathbb Z)
+ \text{ with }\varphi\circ A=\varphi.
+ \tag{2.9a}
+\]
+Necessity is immediate.  Conversely, the averaging projector
+\(p=m^{-1}\sum_{r=0}^{m-1}A^r\) has image \(\ker(A-I)_{\mathbb R}\) and
+kernel \(\operatorname{im}(A-I)_{\mathbb R}\); the dual lattice of
+\(p(\Lambda)\) is exactly the invariant integral covector lattice.  Thus
+(2.9a) puts \(pb\) in \(p(\Lambda)\), and
+\(b\in(A-I)(\Lambda\otimes\mathbb R)+\Lambda\), which supplies a fixed
+point.
+
+The exact matrix calculation gives
+\[
+ V^{T_1^k}=\langle\gamma,\psi_1\rangle,
+ \quad \psi_1=2u+w+3\delta \quad(k=1,2),
+\]
+and
+\[
+ V^{T_2^k}=\langle\gamma,\psi_2\rangle,
+ \quad \psi_2=u+w+2\delta \quad(k=1,2,3).
+ \tag{2.9b}
+\]
+For \(v_1=\varepsilon\) and \(v_2=-\varepsilon'\),
+\[
+ \gamma(v_1)=1,\quad\psi_1(v_1)=0,
+ \qquad
+ \gamma(v_2)=-1,\quad\psi_2(v_2)=0.
+ \tag{2.9c}
+\]
+Because \(A_jv_j=v_j\), formula (2.8f) shows that the \(k\)-th power of
+the logarithmic lift has translation \(kv_j/m_j\).  For \(j=1\), (2.9a)
+fails for \(k=1,2\) already on \(\gamma\), since \(k/3\notin\mathbb Z\).
+For \(j=2\), it fails for \(k=1,2,3\), since \(-k/4\notin\mathbb Z\).
+Away from \(z_j\), the base map \(g_j^k\) has no fixed point in
+\(\Delta_j\).  Hence every nonidentity power is fixed-point free on
+\(J'_j\).  At \(k=m_j\), (2.8f) is translation by
+\(v_j\in\Lambda\), hence the identity; the order is exactly \(m_j\)
+because the map covers \(g_j\).
+
+It follows that
+\[
+ N_j=J'_j/\langle\widetilde g_j^{\log}\rangle
+\]
+is a smooth complex threefold and the quotient map is finite \'etale of
+degree \(m_j\).  The function \(s_j^{m_j}=t_j\circ\pi\) is invariant and
+descends to \(f_j:N_j\to D_j\).  The projection
+\(J'_j\to\Delta_j\) is proper: over a compact subset, the image of the
+compact set obtained by letting \(x\) range over a fixed unit
+parallelotope in \(\Lambda\otimes\mathbb R\) is the whole inverse image.
+Together with finiteness of \(\Delta_j\to D_j\) and of the quotient, this
+proves properness of \(f_j\).  Pulling the divisor of \(t_j\) back through
+the etale quotient gives the divisor of \(s_j^{m_j}\), namely \(m_j\)
+times the reduced central torus.  This proves (2.10).
+
+It remains to identify the punctured filling with the original family and
+to check that no logarithm branch has entered the answer.  On a simply
+connected \(U\subset\Delta_j^*\), choose a branch \(\ell\) of
+\(\log s_j\) and put
+\[
+ \sigma_j^\ell(z)=\frac{\ell(z)}{2\pi i}\Pi(z)v_j.
+ \tag{2.9d}
+\]
+Changing \(\ell\) by \(2\pi in\) changes (2.9d) by the lattice vector
+\(n\Pi(z)v_j\).  The classes therefore glue to a branch-independent
+holomorphic section \(\sigma_j\) of \(J'_j|_{\Delta_j^*}\); translation by
+that section defines a biholomorphism \(h_j\).
+
+For the conjugacy, use \(\ell\) on \(U\) and on \(g_jU\) use the branch
+\[
+ \ell'(w)=\ell(g_j^{-1}w)-\frac{2\pi i}{m_j}.
+\]
+This is a logarithm of \(s_j(w)\) because
+\(s_j\circ g_j=e^{-2\pi i/m_j}s_j\).  For \(z\in U\), equation (2.8e)
+and \(A_jv_j=v_j\) give
+\[
+\begin{aligned}
+ \widetilde g_j^{\log}h_j^{-1}[z,\zeta]
+  =\Bigl[g_jz,R_{g_j}(z)\zeta
+  -\Bigl(\frac{\ell(z)}{2\pi i}-\frac1{m_j}\Bigr)
+    \Pi(g_jz)v_j\Bigr].
+\end{aligned}
+\]
+But
+\[
+ \frac{\ell'(g_jz)}{2\pi i}
+ =\frac{\ell(z)}{2\pi i}-\frac1{m_j},
+\]
+so applying \(h_j\) cancels the displayed translation and proves the
+global identity
+\[
+ h_j\widetilde g_j^{\log}h_j^{-1}=\widetilde g_j^{0}.
+ \tag{2.9e}
+\]
+Finally, by the stabilizer and translate conditions in (2.8b),
+\[
+ J|_{D_j^*}
+ =\bigl(J'_j|_{\Delta_j^*}\bigr)/
+   \langle\widetilde g_j^{0}\rangle.
+\]
+Thus (2.9e) descends to the asserted punctured-disc biholomorphism.
+\end{proof}
+
+\begin{lemma}[radial retraction and the finite-fibre stalk map]
+\label{lem:finite-filling-stalk-map}
+\Verified\ Under \cref{prop:candidate-finite-fillings}, the finite local
+model \(N_j\) strongly deformation retracts onto its reduced central fibre
+\(S_j\).  After identifying a nearby fibre with the marked real torus
+\(A_s=(\Lambda\otimes\mathbb R)/\Lambda\) by the flat coordinates
+\(\Xi\), the specialization map
+\[
+ H^r(S_j;\mathbb Z)\longrightarrow H^r(A_s;\mathbb Z)
+\]
+is the pullback \(\pi_j^*\) of the quotient covering
+\[
+ \pi_j:A_0^{(j)}\longrightarrow
+ S_j=A_0^{(j)}/\langle x\mapsto A_jx+v_j/m_j\rangle .
+\]
+\end{lemma}
+
+\begin{proof}
+Use the linearizing coordinate to define the radial contraction
+\(r_u:\Delta_j\to\Delta_j\) by
+\[
+ s_j(r_u(z))=(1-u)s_j(z),\qquad 0\le u\le1.
+\]
+Because \(s_j\circ g_j=\zeta_js_j\), this contraction commutes with
+\(g_j\).  In the global real-analytic marking
+\[
+ \Xi(z,x+\Lambda)=[z,\Pi(z)x],
+\]
+put
+\[
+ H_u\bigl(\Xi(z,x+\Lambda)\bigr)
+   =\Xi(r_u(z),x+\Lambda).
+\]
+Formula (2.8f) shows directly that \(H_u\) commutes with the logarithmic
+lift: it keeps \(x\) fixed while both composites send it to
+\(A_jx+v_j/m_j\).  Hence \(H_u\) descends to a strong deformation
+retraction of \(N_j\) onto \(S_j\).
+
+Fix \(t_j\ne0\) and one root \(s\) with \(s^{m_j}=t_j\).  Every orbit of
+the logarithmic lift meets the fibre over \(s\) exactly once, so that fibre
+maps isomorphically onto \(f_j^{-1}(t_j)\).  Following the descended radial
+retraction sends the marked point \(x\in A_s\) to the orbit of the same
+\(x\) in the central torus, namely \(\pi_j(x)\).  The induced map from
+central-fibre cohomology to nearby-fibre cohomology is therefore exactly
+\(\pi_j^*\), with no unrecorded conjugacy or index.
+\end{proof}
+
+\begin{theorem}[global analytic construction]
+\label{thm:candidate-global-geometry}
+\Verified\ Gluing the period family over \(B^\circ\) to
+\(N_0,N_1,N_2\) by the preceding punctured-disc biholomorphisms produces a
+connected compact Hausdorff complex threefold \(X\) and a proper surjective
+holomorphic map
+\[
+ f:X\longrightarrow B\simeq\mathbb P^1
+\]
+with connected fibres.  The fibre over \(p_0\) is exactly the reduced
+nonnormal surface \(W\) of \cref{thm:candidate-cusp-geometry}; those over
+\(p_1,p_2\) have scheme multiplicities three and four.  The open embedding
+\(N_0\hookrightarrow X\) identifies canonical bundles, so
+\begin{equation}
+ \omega_X|_{N_0}\simeq\omega_{N_0}\simeq\mathcal O_{N_0}.
+\label{eq:candidate-global-canonical-on-cusp}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Take the disjoint union of the four manifolds and identify the two copies of
+each punctured-disc restriction by the displayed biholomorphism.  The special
+discs are pairwise disjoint, so every nonsingleton equivalence class has two
+points and meets each summand at most once.  The saturation of an open set is
+the union of that set with its images under finitely many overlap
+biholomorphisms, hence is open.  Each summand therefore embeds openly in the
+quotient, and the only transition maps are biholomorphisms.  This gives a
+complex threefold.
+
+Points over distinct base values have disjoint disc preimages.  Points over
+one base value lie in a common one of the four Hausdorff charts, so the
+quotient is Hausdorff.  The images of countable bases of the four open
+pieces give second countability.  The local maps to the base agree on
+overlaps.  Moreover \(f^{-1}(D_j)\) is exactly the embedded \(N_j\),
+since every middle-piece point over \(D_j^*\) was identified with its
+unique representative there; similarly \(f^{-1}(B^\circ)=J\).  Each
+of these full restrictions is proper, for the period-family piece by
+\cref{lem:middle-period-proper} and for the three fillings by their local
+proper constructions.  Explicitly, for compact \(K\subset B\), choose
+finitely many open sets \(V_a\) covering \(K\), with compact closures
+inside members \(U_a\) of this base cover.  Each
+\(K\cap\overline V_a\) is compact in \(U_a\), so its full inverse
+image is compact.  Their finite union is \(f^{-1}(K)\); hence the global
+map is proper.  Since the base is compact, \(X=f^{-1}(B)\) is compact.
+All four pieces are connected and every local filling meets the central
+period-family piece, so \(X\) is connected.  The fibre statements follow
+from \cref{thm:candidate-cusp-geometry,prop:candidate-finite-fillings}; their
+fibres are connected, and surjectivity follows.
+Because each summand embeds openly in the quotient, the restriction of the
+intrinsic canonical bundle \(\omega_X\) to the open summand \(N_0\) is
+\(\omega_{N_0}\).  Equation~(2.6a) proves
+\cref{eq:candidate-global-canonical-on-cusp}.
+\end{proof}
+
+\paragraph{What has and has not been discharged.}
+The formulas above reconstruct the period functions, both finite fillings,
+the toric cusp quotient, and all three punctured-overlap biholomorphisms.
+Thus \cref{thm:candidate-cusp-geometry,thm:candidate-global-geometry}
+discharge existence, smoothness, properness,
+the full central-fibre equation, and the normalization assertions formerly
+labelled (H1)--(H3) in \cref{thm:candidate-conductor}.  This promotion is
+local to the analytic construction: no collapse, Leray transgression, or
+Mayer--Vietoris computation is used here.  Integral cohomology and sphere
+recognition remain separate below.

@@ -1,0 +1,809 @@
+\section{Period-coordinate Dolbeault classes and the Bott--Chern algebra}
+\label{sec:bcpr-product-structure}
+
+\subsection{Fixed input and conventions}
+
+Let $f\colon X\to B=\mathbb P^1$ be the compact complex threefold of
+\cref{thm:candidate-global-geometry}.  We use
+$d=\partial+\bar\partial$ and, following
+\cite[\S1.a]{Schweitzer2007},
+\begin{equation}
+ H^{p,q}_{BC}(X)=
+ \frac{\ker\partial\cap\ker\bar\partial
+       \subset\mathcal A^{p,q}(X)}
+      {\operatorname{im}(\partial\bar\partial)}.
+\label{eq:bcpr-bc-definition}
+\end{equation}
+The natural map to Dolbeault cohomology is denoted
+\begin{equation}
+ \pi_{\bar\partial}^{p,q}\colon H^{p,q}_{BC}(X)
+ \longrightarrow H^{p,q}_{\bar\partial}(X).
+\label{eq:bcpr-dolbeault-map}
+\end{equation}
+Exterior multiplication makes the direct sum of the Bott--Chern groups a
+bigraded algebra, and complex conjugation interchanges bidegrees $(p,q)$
+and $(q,p)$ \cite[\S1.a]{Schweitzer2007}.
+
+By \cref{cor:exact-hodge-diamond}, the two nonzero rows of the
+Fr\"olicher differential are the exact complexes
+\begin{equation}
+ 0\longrightarrow H^{0,1}_{\bar\partial}(X)
+ \xrightarrow{d_1}H^{1,1}_{\bar\partial}(X)
+ \xrightarrow{d_1}H^{2,1}_{\bar\partial}(X)
+ \longrightarrow0,
+\label{eq:bcpr-hodge-row-one}
+\end{equation}
+\begin{equation}
+ 0\longrightarrow H^{1,2}_{\bar\partial}(X)
+ \xrightarrow{d_1}H^{2,2}_{\bar\partial}(X)
+ \xrightarrow{d_1}H^{3,2}_{\bar\partial}(X)
+ \longrightarrow0,
+\label{eq:bcpr-hodge-row-two}
+\end{equation}
+and each row has dimensions $1,2,1$.  The exact Bott--Chern calculation
+of \cref{thm:exact-bott-chern-aeppli}, obtained from the compact-threefold
+formulae of \cite{McHugh2019}, gives
+\begin{equation}
+\begin{array}{c|cccccccc}
+(p,q)&(0,0)&(1,1)&(2,1)&(1,2)&(2,2)&(3,2)&(2,3)&(3,3)\\ \hline
+h^{p,q}_{BC}&1&2&1&1&2&1&1&1.
+\end{array}
+\label{eq:bcpr-nonzero-dimensions}
+\end{equation}
+All other Bott--Chern groups vanish.  By
+\cref{cor:candidate-sphere}, $b_k(X)=0$ for $1\leq k\leq5$.
+
+On a marked smooth fibre retain the integral basis
+\[
+ V=\mathbb Z\langle\gamma,u,w,\delta\rangle
+\]
+without renaming its element $u$, and put
+\begin{equation}
+ \eta=u\wedge w+6\gamma\wedge\delta,
+ \qquad
+ \eta^2=12\gamma\wedge u\wedge w\wedge\delta.
+\label{eq:bcpr-eta-square}
+\end{equation}
+The holomorphic Hodge rows supplied by
+\cref{prop:period-input-audit,prop:very-general-torus-audit} are
+\begin{equation}
+ \sigma_1=6\mu\gamma+\tau u+w,
+ \qquad
+ \sigma_2=\beta\gamma+\mu u+\delta.
+\label{eq:bcpr-period-rows}
+\end{equation}
+Thus no global Dolbeault or Bott--Chern generator below is denoted by
+$u$ or $x$; those letters remain reserved for the printed fibre basis and
+for local real linear functions.
+
+\subsection{Exact fibre representatives}
+
+Write
+\begin{equation}
+ y=\operatorname{Im}\tau,
+ \qquad m=\operatorname{Im}\mu,
+ \qquad r=\operatorname{Im}\beta,
+ \qquad \Delta=r-\frac{6m^2}{y}<0.
+\label{eq:bcpr-delta}
+\end{equation}
+The four marked lattice columns in the fibre coordinate
+$\zeta=(\zeta_1,\zeta_2)$ are
+\begin{equation}
+ (6\mu,\beta),\quad(\tau,\mu),\quad(1,0),\quad(0,1),
+\label{eq:bcpr-lattice-columns}
+\end{equation}
+in the order $\widehat\gamma,\widehat u,\widehat w,
+\widehat\delta$.  On the universal cover of a marked fibre define the
+real linear functions
+\begin{equation}
+ x_\gamma=
+ \frac{y\,\operatorname{Im}\zeta_2-m\,\operatorname{Im}\zeta_1}
+      {y\Delta},
+ \qquad
+ x_u=
+ \frac{r\,\operatorname{Im}\zeta_1-6m\,\operatorname{Im}\zeta_2}
+      {y\Delta}.
+\label{eq:bcpr-real-linear-functions}
+\end{equation}
+For the first two columns in \cref{eq:bcpr-lattice-columns}, the numerators
+of the changes in $x_\gamma$ are respectively
+$yr-6m^2=y\Delta$ and $ym-my=0$, while the numerators of the changes in
+$x_u$ are $6rm-6mr=0$ and $ry-6m^2=y\Delta$.  The last two columns are
+real and change neither imaginary part.  Hence
+\[
+ \bigl(\Delta_{\widehat\gamma}x_\gamma,
+       \Delta_{\widehat u}x_\gamma,
+       \Delta_{\widehat w}x_\gamma,
+       \Delta_{\widehat\delta}x_\gamma\bigr)=(1,0,0,0),
+\]
+\begin{equation}
+ \bigl(\Delta_{\widehat\gamma}x_u,
+       \Delta_{\widehat u}x_u,
+       \Delta_{\widehat w}x_u,
+       \Delta_{\widehat\delta}x_u\bigr)=(0,1,0,0).
+\label{eq:bcpr-linear-function-increments}
+\end{equation}
+Their differentials, although not the functions themselves, therefore
+descend to the fibre.  Their $(0,1)$ parts are
+\begin{equation}
+ \Gamma:=\bar\partial_Fx_\gamma
+ =\frac{i}{2\Delta}
+ \left(d\bar\zeta_2-\frac{m}{y}d\bar\zeta_1\right),
+\label{eq:bcpr-gamma-form}
+\end{equation}
+\begin{equation}
+ U:=\bar\partial_Fx_u
+ =\frac{i}{2y\Delta}
+ \left(r\,d\bar\zeta_1-6m\,d\bar\zeta_2\right).
+\label{eq:bcpr-u-form}
+\end{equation}
+They represent respectively the $(0,1)$ images of the integral classes
+$\gamma$ and $u$.
+
+The identity
+\begin{equation}
+ \eta=u\wedge\sigma_1+6\gamma\wedge\sigma_2
+     =-\sigma_1\wedge u-6\sigma_2\wedge\gamma
+\label{eq:bcpr-eta-decomposition}
+\end{equation}
+holds in $\bigwedge^2V_{\mathbb C}$.  Since $\eta$ is of type $(1,1)$
+on every marked fibre, \cref{eq:bcpr-eta-decomposition} gives its exact
+Dolbeault representative
+\begin{equation}
+ Q_F=-d\zeta_1\wedge U-6d\zeta_2\wedge\Gamma.
+\label{eq:bcpr-q-fibre}
+\end{equation}
+Equivalently, with the Appell--Humbert convention
+$\eta=(2i)^{-1}\sum(H_\eta)_{ab}\sigma_a\wedge\bar\sigma_b$, the matrix
+calculation in the proof of \cref{prop:very-general-torus-audit} gives
+\begin{equation}
+ H_\eta=\frac1{y\Delta}
+ \begin{pmatrix}r&-6m\\-6m&6y\end{pmatrix},
+\label{eq:bcpr-appell-humbert-matrix}
+\end{equation}
+and therefore
+\begin{equation}
+ Q_F=\frac1{2iy\Delta}\Bigl(
+ r\,d\zeta_1\wedge d\bar\zeta_1
+ -6m\,d\zeta_1\wedge d\bar\zeta_2
+ -6m\,d\zeta_2\wedge d\bar\zeta_1
+ +6y\,d\zeta_2\wedge d\bar\zeta_2\Bigr).
+\label{eq:bcpr-q-fibre-expanded}
+\end{equation}
+Direct exterior multiplication, with holomorphic differentials ordered
+before antiholomorphic differentials, gives
+\begin{equation}
+ Q_F\wedge\Gamma
+ =\frac1{4y\Delta}
+ d\zeta_1\wedge d\bar\zeta_1\wedge d\bar\zeta_2\neq0,
+\label{eq:bcpr-q-gamma-product}
+\end{equation}
+\begin{equation}
+ Q_F^2
+ =\frac3{y\Delta}
+ d\zeta_1\wedge d\zeta_2\wedge
+ d\bar\zeta_1\wedge d\bar\zeta_2\neq0.
+\label{eq:bcpr-q-square}
+\end{equation}
+Indeed,
+$\det H_\eta=(6ry-36m^2)/(y^2\Delta^2)=6/(y\Delta)$,
+and the coefficient in \cref{eq:bcpr-q-square} is
+$\tfrac12\det H_\eta$ in the displayed ordering.  The identities
+\Cref{eq:bcpr-q-gamma-product,eq:bcpr-q-square} will be used only in
+fibre cohomology.
+
+\subsection{Extension of the two Dolbeault inputs}
+
+\begin{lemma}[the degree-one input]
+\label{lem:bcpr-degree-one-input}
+\Verified\ There is a distinguished class
+$\mathfrak g\in H^{0,1}_{\bar\partial}(X)$ whose restriction to every
+smooth marked fibre is represented by $\Gamma$.
+\end{lemma}
+
+\begin{proof}
+By \cref{thm:structure-direct-images-audit}, the monodromy-invariant
+integral class $\gamma$ maps to the nowhere-zero holomorphic section
+$\gamma^{0,1}$ of
+$R^1f_*\mathcal O_X\simeq\mathcal O\oplus\mathcal O(-1)$.  Coherent
+Leray gives
+\[
+ H^1(X,\mathcal O_X)=H^0(B,R^1f_*\mathcal O_X)
+ =\mathbb C\gamma^{0,1}.
+\]
+Let $\mathfrak g$ be the class mapping to $\gamma^{0,1}$.
+\Cref{eq:bcpr-gamma-form} is the exact period-coordinate
+representative of its fibre restriction.  This is the distinguished
+coordinate of \cref{cor:picard-line-audit} before any analytic rescaling.
+\end{proof}
+
+\begin{lemma}[extension of the invariant $(1,1)$ class]
+\label{lem:bcpr-eta-extension}
+\Verified\ The fibre class $\eta$ extends to a nonzero holomorphic section
+\begin{equation}
+ \boldsymbol\eta\in
+ H^0\bigl(B,R^1f_*\Omega_X^1\bigr).
+\label{eq:bcpr-eta-global-section}
+\end{equation}
+Consequently there is a class
+$\mathfrak q\in H^{1,1}_{\bar\partial}(X)$ whose coherent-Leray edge
+value is $\boldsymbol\eta$.  For every smooth fibre inclusion
+$i_b\colon F_b\to X$,
+\begin{equation}
+ i_b^*\mathfrak q=[Q_F]_{\bar\partial}
+ \in H^{1,1}_{\bar\partial}(F_b).
+\label{eq:bcpr-q-restriction}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Over the smooth marked locus, $\eta$ is flat, monodromy invariant, and of
+type $(1,1)$ identically.  Equation
+\Cref{eq:bcpr-eta-decomposition} identifies the corresponding holomorphic
+section of the relative group as
+\begin{equation}
+ -\sigma_1\wedge u^{0,1}-6\sigma_2\wedge\gamma^{0,1}.
+\label{eq:bcpr-relative-eta-section}
+\end{equation}
+
+At a finite filling write $t=s^M$, with $(M,a)=(3,2)$ or $(4,1)$.
+The covering family is smooth at $s=0$, and
+\cref{eq:bcpr-eta-decomposition} holds identically there, so
+\cref{eq:bcpr-relative-eta-section} remains holomorphic.  It is invariant
+under the cyclic action.  In equivariant frames $e_0,e_1$ for the relative
+cotangent and $b_0,b_1$ for $R^1\mathcal O$, the actual invariant
+$\mathbb C\{t\}$-basis from
+\cref{prop:log-relative-direct-images} is
+\begin{equation}
+ e_0b_0,\quad s^ae_0b_1,\quad
+ s^{M-a}e_1b_0,\quad e_1b_1.
+\label{eq:bcpr-finite-invariant-basis}
+\end{equation}
+Exactness of cyclic invariants in characteristic zero therefore makes
+\cref{eq:bcpr-relative-eta-section} a holomorphic descended section at
+both finite points.
+
+At the cusp, $\gamma$ and $u$ extend as sections of $R^1f_*\mathbb C$,
+and their $(0,1)$ images form a basis of $H^1(W,\mathcal O_W)$ by
+\cref{thm:structure-direct-images-audit}.  On the dense torus,
+\[
+ \sigma_i=d\zeta_i=(2\pi i)^{-1}d\log x_i.
+\]
+The classes of these logarithmic forms extend in the relative logarithmic
+sheaf as
+\begin{equation}
+ \mathcal E|_{N_0}
+ =\mathcal O_{N_0}[d\log x_1]\oplus
+  \mathcal O_{N_0}[d\log x_2]
+\label{eq:bcpr-cusp-log-basis}
+\end{equation}
+by \cref{prop:log-relative-direct-images}.  A cusp quotient shear changes
+$d\log x_i$ only by a holomorphic multiple of $d\log t$, which is zero in
+the relative logarithmic sheaf.  Thus
+\cref{eq:bcpr-relative-eta-section} also extends holomorphically through
+the cusp.  This concerns classes in the relative logarithmic sheaf; it
+does not assert that the $d\log x_i$ are global ordinary one-forms on $X$.
+
+The Gauss--Manin/Kodaira--Spencer map
+\[
+ \kappa_1\colon R^1f_*\mathcal E\longrightarrow
+ \Omega_B^1(\log\Sigma)\otimes R^2f_*\mathcal O_X
+\]
+annihilates \cref{eq:bcpr-relative-eta-section} on the smooth locus: a
+flat class which remains of type $(1,1)$ has zero $(0,2)$ Higgs component.
+Both the section and $\kappa_1$ extend holomorphically, so the identity
+theorem gives $\kappa_1(\boldsymbol\eta)=0$ on $B$.  The ordinary-cotangent
+calculation in
+\cref{prop:log-ks-divisor,prop:absolute-cotangent-direct-images,thm:h12-scalar}
+identifies
+\begin{equation}
+ R^1f_*\Omega_X^1=\ker\kappa_1=:\mathcal K,
+ \qquad
+ \mathcal K\simeq\mathcal O\oplus\mathcal O(-1)^{\oplus2}.
+\label{eq:bcpr-cotangent-kernel}
+\end{equation}
+This proves \cref{eq:bcpr-eta-global-section}.  Its value on every smooth
+fibre is nonzero in Dolbeault cohomology, not merely as a differential form:
+by \cref{eq:bcpr-eta-square} its square is the integral top class
+$12\gamma\wedge u\wedge w\wedge\delta$, and therefore
+\begin{equation}
+ \int_{(F_b,\mathrm{or}_{\rm mark})}Q_F^2=12,
+ \qquad
+ \int_{(F_b,\mathrm{or}_{\mathbb C})}Q_F^2=-12
+\qquad(b\in B^\circ),
+\label{eq:bcpr-q-square-integral}
+\end{equation}
+where $\mathrm{or}_{\rm mark}$ is the orientation determined by
+$(\gamma,u,w,\delta)$ and $\mathrm{or}_{\mathbb C}$ is the complex
+orientation.  They are opposite because the determinant of the four marked
+lattice columns in real coordinates is $y\Delta<0$.  Thus
+$[Q_F]_{\bar\partial}\ne0$, so the holomorphic
+section $\boldsymbol\eta$ is nonzero.  Explicitly, if
+$Q_F=\bar\partial_F\alpha$ for a $(1,0)$-form $\alpha$, then
+$Q_F^2=\bar\partial_F(\alpha\wedge Q_F)$; integration and Stokes' theorem
+would contradict \cref{eq:bcpr-q-square-integral}.  Here
+$\alpha\wedge Q_F$ has bidegree $(2,1)$, so its $\partial_F$ is zero in
+complex dimension two and the displayed $\bar\partial_F$-boundary is also a
+$d$-boundary.
+
+Finally, coherent Leray over the curve gives the exact edge sequence
+\begin{equation}
+ 0\longrightarrow H^1(B,f_*\Omega_X^1)
+ \longrightarrow H^1(X,\Omega_X^1)
+ \longrightarrow H^0(B,R^1f_*\Omega_X^1)
+ \longrightarrow0,
+\label{eq:bcpr-cotangent-edge}
+\end{equation}
+where $f_*\Omega_X^1\simeq\mathcal O(-2)$ by
+\cref{prop:absolute-cotangent-direct-images}.  Choose $\mathfrak q$ over
+$\boldsymbol\eta$.  Base change on a smooth fibre gives
+\cref{eq:bcpr-q-restriction}.  Any two choices differ by the
+one-dimensional left term in \cref{eq:bcpr-cotangent-edge}.  That term
+restricts to zero on every smooth fibre.  The nonzero class
+$d_1\mathfrak g$ also restricts to zero, because its restriction is
+$[\partial_F\Gamma]_{\bar\partial}=0$; since
+$H^1(B,\mathcal O(-2))$ is one-dimensional, the left term is exactly
+$\operatorname{im}(d_1\colon H^{0,1}_{\bar\partial}\to
+H^{1,1}_{\bar\partial})$.
+\end{proof}
+
+\begin{remark}[what is and is not explicit]
+\label{rem:bcpr-literal-gauge}
+Choose global $\bar\partial$-closed forms
+\begin{equation}
+ G\in\mathcal A^{0,1}(X),\qquad
+ Q\in\mathcal A^{1,1}(X)
+\label{eq:bcpr-global-representatives}
+\end{equation}
+representing $\mathfrak g$ and $\mathfrak q$.
+\Cref{eq:bcpr-q-restriction} says that
+$i_b^*[Q]_{\bar\partial}$ is the Dolbeault class of the explicit
+translation-invariant
+form displayed in \cref{eq:bcpr-q-fibre-expanded}; it does not say that an arbitrary
+representative $Q$ restricts literally to that form.  A literal global
+coefficient formula would require additional $C^\infty$ gauge choices and
+horizontal correction forms on the disc--pair-of-pants cover, compatible
+with the two affine cyclic conjugacies and the toric cusp.  Those choices
+are not part of the canonical data.  No such literal gauge is needed for
+the class and product calculations below.
+\end{remark}
+
+\subsection{The factor \texorpdfstring{$12$}{12} and the Bott--Chern first Chern class}
+
+Let
+\[
+ \exp\colon H^1(X,\mathcal O_X)\longrightarrow\operatorname{Pic}(X)
+\]
+be induced by $z\mapsto e^{2\pi iz}$.  By
+\cref{prop:leray-e2},
+\begin{equation}
+ H^0(B,R^1f_*\mathbb Z)=\mathbb Z(12\gamma).
+\label{eq:bcpr-global-integral-line}
+\end{equation}
+The exponential--Leray comparison gives a line bundle $M$ on $B$ such
+that
+\begin{equation}
+ \exp(12\mathfrak g)=f^*M,
+ \qquad c_1(M)=d_2(12\gamma).
+\label{eq:bcpr-exponential-transgression}
+\end{equation}
+For completeness, the first assertion follows because
+\cref{eq:bcpr-global-integral-line} says that the restriction of
+$12\mathfrak g$ to every fibre lies in the image of integral cohomology
+and hence exponentiates to the trivial bundle.  The low-degree Leray
+sequence for $\mathcal O^*$ then makes the resulting bundle a pullback.
+On a disc--pair-of-pants cover of $B$, choose local integral lifts of
+$12\gamma$.  Their differences on the annular overlaps form a Cech
+one-cochain, and its Cech coboundary is simultaneously the two-cocycle
+defining the Leray transgression and the two-cocycle of logarithms defining
+$c_1(M)$.  This proves the second assertion with the same sign convention;
+it is the exponential-sequence version of the local-lift calculation in
+the proof of \cref{lem:first-transgression}.
+
+Orient the generator $\omega\in H^2(B;\mathbb Z)$ by
+\begin{equation}
+ \omega=c_1(\mathcal O_B(1)).
+\label{eq:bcpr-base-orientation}
+\end{equation}
+Then \cref{lem:first-transgression} and
+\cref{eq:bcpr-exponential-transgression} give
+\begin{equation}
+ \exp(12\mathfrak g)=f^*\mathcal O_B(1).
+\label{eq:bcpr-factor-twelve}
+\end{equation}
+If the opposite orientation is used for the primitive generator in
+\cref{lem:first-transgression}, the corresponding statement is
+$\exp(-12\mathfrak g)=f^*\mathcal O_B(1)$.  Thus the canonical integral
+data fixes the absolute factor $12$, while its sign is the orientation
+choice fixed in \cref{eq:bcpr-base-orientation}.
+
+Put
+\begin{equation}
+ a=\partial G,
+ \qquad a^\dagger=\bar\partial\bar G,
+ \qquad
+ \mathsf A=[a]_{BC},
+ \qquad \mathsf B=[a^\dagger]_{BC}.
+\label{eq:bcpr-a-b-definitions}
+\end{equation}
+Both forms are $d$-closed.  We now compute their Chern-class normalization
+without choosing local metric weights.  For $z\in\mathbb C$, equip the
+smooth trivial line with a global frame $s$ and the holomorphic structure
+\begin{equation}
+ \bar\partial_zs=-2\pi i zG\otimes s.
+\label{eq:bcpr-holomorphic-structure}
+\end{equation}
+It is integrable because $\bar\partial G=0$.  If
+$G=\bar\partial\phi_i$ on a good cover, then
+$e_i=e^{2\pi iz\phi_i}s$ is $\bar\partial_z$-holomorphic and
+\[
+ e_j=e^{2\pi iz(\phi_j-\phi_i)}e_i.
+\]
+The holomorphic cocycle $\phi_j-\phi_i$ represents $\mathfrak g$ under
+the Cech--Dolbeault comparison, so
+\cref{eq:bcpr-holomorphic-structure} is precisely the line bundle
+$\exp(z\mathfrak g)$ for the displayed exponential convention.
+
+Give $s$ unit length.  The unit-metric Chern connection is
+\begin{equation}
+ \nabla_z=d-2\pi i\bigl(zG+\bar z\,\bar G\bigr).
+\label{eq:bcpr-unit-chern-connection}
+\end{equation}
+Indeed, its $(0,1)$ part is
+\cref{eq:bcpr-holomorphic-structure}, and its connection one-form is
+purely imaginary, so it is metric compatible; uniqueness identifies it
+with the Chern connection.  Since $\bar\partial G=0$ and
+$\partial\bar G=0$, its curvature is the global $(1,1)$ form
+\begin{equation}
+ F_{\nabla_z}
+ =-2\pi i\bigl(z\,\partial G+
+                 \bar z\,\bar\partial\bar G\bigr)
+ =-2\pi i\bigl(za+\bar z\,a^\dagger\bigr).
+\label{eq:bcpr-unit-chern-curvature}
+\end{equation}
+With the Bott--Chern convention
+\begin{equation}
+ c_{1,BC}(L,h)=
+ \left[\frac{i}{2\pi}F_{\nabla^h}\right]_{BC}
+\label{eq:bcpr-chern-convention}
+\end{equation}
+of \cite[\S8.a]{Schweitzer2007},
+\cref{eq:bcpr-unit-chern-curvature} gives, for every $z\in\mathbb C$,
+\begin{equation}
+ c_{1,BC}\bigl(\exp(z\mathfrak g)\bigr)
+ =z\mathsf A+\bar z\,\mathsf B.
+\label{eq:bcpr-chern-exp-identity}
+\end{equation}
+Consequently, if $\varepsilon=1$ for the orientation fixed by
+\cref{eq:bcpr-base-orientation} and $\varepsilon=-1$ for its opposite,
+then
+\begin{equation}
+ c_{1,BC}\bigl(f^*\mathcal O_B(1)\bigr)
+ =12\varepsilon\bigl(\mathsf A+\mathsf B\bigr).
+\label{eq:bcpr-c1-pullback}
+\end{equation}
+This is the convention-consistent form of the factor-$12$ identity; no
+analytic rescaling of the Picard coordinate changes its integral content.
+
+\subsection{All Bott--Chern generators}
+
+Using \cref{eq:bcpr-global-representatives}, define the following
+$d$-closed forms and their classes:
+\begin{equation}
+\begin{array}{c|c|c}
+\text{class}&\text{representative}&\text{bidegree}\\ \hline
+\mathsf A&a=\partial G&(1,1)\\
+\mathsf B&a^\dagger=\bar\partial\bar G&(1,1)\\
+\mathsf C&c=\partial Q&(2,1)\\
+\overline{\mathsf C}&c^\dagger=\bar\partial\bar Q&(1,2)\\
+\mathsf D&d_0=\partial(G\wedge Q)&(2,2)\\
+\overline{\mathsf D}&d_0^\dagger=
+ \bar\partial(\bar G\wedge\bar Q)&(2,2)\\
+\mathsf E&e=\partial(Q^2)&(3,2)\\
+\overline{\mathsf E}&e^\dagger=\bar\partial(\bar Q^2)&(2,3)\\
+\mathsf T&\nu,\quad\int_X\nu=1&(3,3).
+\end{array}
+\label{eq:bcpr-generators}
+\end{equation}
+Here $\nu$ is any smooth positive top-degree form divided by its integral.
+The chosen $Q$ cannot be real: its fibre class is real, but the proof below
+shows that $\partial Q$ is nonzero globally, whereas a real
+$\bar\partial$-closed $Q$ would also be $\partial$-closed.
+
+\begin{proposition}[nonvanishing and bases]
+\label{prop:bcpr-generators-are-bases}
+\Verified\ Together with the unit $\mathbf1\in H^{0,0}_{BC}(X)$, the entries
+in \cref{eq:bcpr-generators} give bases of all the nonzero Bott--Chern groups
+in \cref{eq:bcpr-nonzero-dimensions}:
+$\mathsf A,\mathsf B$ form the basis in bidegree $(1,1)$ and
+$\mathsf D,\overline{\mathsf D}$ form the basis in bidegree $(2,2)$;
+each other listed bidegree is one-dimensional and is generated by its
+displayed class.
+\end{proposition}
+
+\begin{proof}
+Because $X$ is compact and connected, a smooth function annihilated by both
+$\partial$ and $\bar\partial$ is constant.  There is no
+$\partial\bar\partial$ image in bidegree $(0,0)$, so
+$\mathbf1:=[1]_{BC}$ generates
+$H^{0,0}_{BC}(X)=\mathbb C\mathbf1$.
+
+The Dolbeault image of $\mathsf A$ is
+$d_1\mathfrak g\neq0$ by injectivity in
+\cref{eq:bcpr-hodge-row-one}.  Thus $\partial G$ is a nonzero
+Bott--Chern class.  The Dolbeault image of $\mathsf B$ is zero because
+$a^\dagger=\bar\partial\bar G$, while
+$\mathsf B=\overline{\mathsf A}\neq0$.  Hence
+$\mathsf A,\mathsf B$ are independent, and
+\cref{eq:bcpr-nonzero-dimensions} makes them a basis.
+
+The classes $d_1\mathfrak g$ and $\mathfrak q$ are independent in
+$H^{1,1}_{\bar\partial}(X)$: the first restricts to zero on every smooth
+torus fibre, while the second restricts to the nonzero class
+by \cref{eq:bcpr-q-restriction,eq:bcpr-q-square-integral}.  Exactness of
+\cref{eq:bcpr-hodge-row-one} therefore gives
+\begin{equation}
+ d_1\mathfrak q=[\partial Q]_{\bar\partial}\neq0.
+\label{eq:bcpr-c-nonzero}
+\end{equation}
+Thus $\mathsf C\neq0$, and conjugation gives
+$\overline{\mathsf C}\neq0$.
+
+Set
+\begin{equation}
+ v=[G\wedge Q]_{\bar\partial}
+ \in H^{1,2}_{\bar\partial}(X).
+\label{eq:bcpr-v-class}
+\end{equation}
+Its fibre restriction is the class represented by
+$\Gamma\wedge Q_F$.  This class is nonzero, rather than merely represented
+by a nonzero invariant form: wedging with the holomorphic one-form
+$d\zeta_2$ and using \cref{eq:bcpr-q-gamma-product} gives
+\begin{equation}
+ \int_{F_b}Q_F\wedge\Gamma\wedge d\zeta_2
+ =\frac1{4y\Delta}
+   \int_{F_b}d\zeta_1\wedge d\zeta_2\wedge
+                    d\bar\zeta_1\wedge d\bar\zeta_2
+ =-1
+\label{eq:bcpr-q-gamma-serre-pairing}
+\end{equation}
+for the complex orientation: the middle integral equals
+$-4y\Delta>0$.  Thus the displayed constant top form has nonzero integral.
+Dolbeault--Serre duality on $F_b$ therefore gives
+$[\Gamma\wedge Q_F]_{\bar\partial}\ne0$.  Equivalently, if
+$Q_F\wedge\Gamma=\bar\partial_F\Psi$ with $\Psi$ of bidegree $(1,1)$,
+then, since $\bar\partial_Fd\zeta_2=0$,
+\[
+ Q_F\wedge\Gamma\wedge d\zeta_2
+ =\bar\partial_F(\Psi\wedge d\zeta_2),
+\]
+and Stokes' theorem would make the integral in
+\cref{eq:bcpr-q-gamma-serre-pairing} zero.  Here
+$Q_F\wedge\Gamma$ has bidegree $(1,2)$,
+$d\zeta_2$ has bidegree $(1,0)$, and
+$\Psi\wedge d\zeta_2$ has bidegree $(2,1)$; its $\partial_F$ is zero in
+complex dimension two, so the displayed $\bar\partial_F$-boundary is a
+$d$-boundary.  Thus $v\neq0$, and it spans
+$H^{1,2}_{\bar\partial}(X)$.  Injectivity in
+\cref{eq:bcpr-hodge-row-two} gives
+\begin{equation}
+ d_1v=[\partial(G\wedge Q)]_{\bar\partial}\neq0.
+\label{eq:bcpr-d-nonzero}
+\end{equation}
+Hence $\mathsf D\neq0$, and conjugation gives
+$\overline{\mathsf D}\neq0$.  The latter has zero Dolbeault image because
+its representative is $\bar\partial$-exact, so it is independent of
+$\mathsf D$; \cref{eq:bcpr-nonzero-dimensions} gives the asserted
+$(2,2)$ basis.
+
+The class $[Q^2]_{\bar\partial}$ has nonzero fibre restriction by
+\cref{eq:bcpr-q-square-integral}.  Since $v$ spans
+$H^{1,2}_{\bar\partial}(X)$, the image of $d_1$ is spanned by $d_1v$.
+On a smooth fibre,
+\[
+ i_b^*(d_1v)
+ =d_1[\Gamma\wedge Q_F]_{\bar\partial}
+ =[\partial_F(\Gamma\wedge Q_F)]_{\bar\partial}=0,
+\]
+because $\Gamma$ and $Q_F$ have constant fibre coefficients.  Thus every
+class in $\operatorname{im}(d_1\colon H^{1,2}_{\bar\partial}\to
+H^{2,2}_{\bar\partial})$ restricts to zero.
+Therefore $[Q^2]_{\bar\partial}$ is independent of $d_1v$.  Exactness of
+\cref{eq:bcpr-hodge-row-two} yields
+\begin{equation}
+ d_1[Q^2]_{\bar\partial}
+ =[\partial(Q^2)]_{\bar\partial}\neq0.
+\label{eq:bcpr-e-nonzero}
+\end{equation}
+Hence $\mathsf E\neq0$, and conjugation gives
+$\overline{\mathsf E}\neq0$.  Finally, $\int_X\nu=1$ proves
+$\mathsf T\neq0$.  The dimensions in
+\cref{eq:bcpr-nonzero-dimensions} complete the proof.
+\end{proof}
+
+\subsection{Every Bott--Chern product}
+
+\begin{theorem}[square-zero positive ideal]
+\label{thm:bcpr-square-zero-algebra}
+\Verified\ Let $N\subset H^{*,*}_{BC}(X)$ be the span of the nine positive-degree
+generators in \cref{eq:bcpr-generators}.  Then
+\begin{equation}
+ H^{*,*}_{BC}(X)=\mathbb C\mathbf1\oplus N,
+ \qquad N^2=0.
+\label{eq:bcpr-algebra}
+\end{equation}
+Equivalently, every product of two positive-degree Bott--Chern classes is
+zero.
+\end{theorem}
+
+\begin{proof}
+We first calculate the products landing below top degree.  Since
+$\bar\partial G=\bar\partial Q=0$ and, after conjugation,
+$\partial\bar G=\partial\bar Q=0$, the graded Leibniz rule gives the exact
+identities
+\begin{equation}
+ \partial\bar\partial(G\wedge\bar G)
+ =-a\wedge a^\dagger,
+\label{eq:bcpr-product-ab}
+\end{equation}
+\begin{equation}
+ \partial\bar\partial(G\wedge\bar Q)
+ =-a\wedge c^\dagger,
+ \qquad
+ \partial\bar\partial(\bar G\wedge Q)
+ =a^\dagger\wedge c.
+\label{eq:bcpr-product-acbar-bc}
+\end{equation}
+Consequently
+\begin{equation}
+ \mathsf A\mathsf B=0,\qquad
+ \mathsf A\overline{\mathsf C}=0,\qquad
+ \mathsf B\mathsf C=0.
+\label{eq:bcpr-first-zero-products}
+\end{equation}
+
+Choose the pullback Fubini--Study metric on
+$f^*\mathcal O_B(1)$.  Its Chern form is the pullback of a $(1,1)$ form on
+the curve $B$, so its square vanishes pointwise.  Squaring
+\cref{eq:bcpr-c1-pullback} and using
+\cref{eq:bcpr-first-zero-products} gives
+\begin{equation}
+ \mathsf A^2+\mathsf B^2=0.
+\label{eq:bcpr-sum-of-squares}
+\end{equation}
+\Cref{eq:bcpr-sum-of-squares} alone does not separate the two
+squares.  Apply $\pi_{\bar\partial}^{2,2}$.  The class
+$\mathsf B^2$ has zero Dolbeault image because
+\begin{equation}
+ (a^\dagger)^2
+ =\bar\partial(\bar G\wedge a^\dagger).
+\label{eq:bcpr-b-square-dolbeault-zero}
+\end{equation}
+It follows from \cref{eq:bcpr-sum-of-squares} that
+$[a^2]_{\bar\partial}=0$.  On the other hand,
+\begin{equation}
+ [a^2]_{\bar\partial}
+ =d_1[G\wedge a]_{\bar\partial},
+ \qquad
+ \partial(G\wedge a)=a^2.
+\label{eq:bcpr-a-square-d1}
+\end{equation}
+The first arrow in \cref{eq:bcpr-hodge-row-two} is injective, so
+\cref{eq:bcpr-a-square-d1} implies
+$[G\wedge a]_{\bar\partial}=0$.  There is therefore a form
+$\Phi\in\mathcal A^{1,1}(X)$ such that
+\begin{equation}
+ G\wedge a=\bar\partial\Phi.
+\label{eq:bcpr-phi-primitive}
+\end{equation}
+Applying $\partial$ gives
+\begin{equation}
+ a^2=\partial\bar\partial\Phi,
+\label{eq:bcpr-a-square-bc-zero}
+\end{equation}
+and hence $\mathsf A^2=0$.  Conjugation gives
+$\mathsf B^2=0$.
+
+It remains among the products below top bidegree to prove
+$\mathsf A\mathsf C=0$; its conjugate will give
+$\mathsf B\overline{\mathsf C}=0$.  First, the natural map
+\begin{equation}
+ \pi_{\bar\partial}^{3,2}\colon H^{3,2}_{BC}(X)
+ \longrightarrow H^{3,2}_{\bar\partial}(X)
+\label{eq:bcpr-bc-to-dolbeault-32}
+\end{equation}
+is an isomorphism.  Indeed, both spaces have dimension one by
+\cref{eq:bcpr-nonzero-dimensions,cor:exact-hodge-diamond}, and
+\cref{eq:bcpr-e-nonzero} says that $\mathsf E$ has nonzero image.
+Pair $\pi_{\bar\partial}^{3,2}(\mathsf A\mathsf C)$ with the generator
+$[G]_{\bar\partial}\in H^{0,1}_{\bar\partial}(X)$.  By
+\cref{eq:bcpr-phi-primitive}, $\bar\partial c=0$, and Stokes' theorem,
+\begin{equation}
+ \int_Xa\wedge c\wedge G
+ =-\int_XG\wedge a\wedge c
+ =-\int_X\bar\partial\Phi\wedge c
+ =-\int_X\bar\partial(\Phi\wedge c)=0.
+\label{eq:bcpr-serre-pairing-zero}
+\end{equation}
+Dolbeault--Serre duality makes
+\begin{equation}
+ H^{3,2}_{\bar\partial}(X)\times
+ H^{0,1}_{\bar\partial}(X)\longrightarrow\mathbb C,
+ \qquad
+ ([\alpha],[\rho])\longmapsto\int_X\alpha\wedge\rho,
+\label{eq:bcpr-serre-pairing}
+\end{equation}
+a perfect pairing.  Since
+$H^{0,1}_{\bar\partial}(X)=\mathbb C[G]_{\bar\partial}$,
+\cref{eq:bcpr-serre-pairing-zero} implies
+$\pi_{\bar\partial}^{3,2}(\mathsf A\mathsf C)=0$; injectivity in
+\cref{eq:bcpr-bc-to-dolbeault-32} gives
+\begin{equation}
+ \mathsf A\mathsf C=0,
+ \qquad
+ \mathsf B\overline{\mathsf C}=0.
+\label{eq:bcpr-second-zero-products}
+\end{equation}
+This step uses Dolbeault--Serre duality together with the independently
+proved injectivity of \cref{eq:bcpr-bc-to-dolbeault-32}.  The
+Bott--Chern--Aeppli pairing of
+\cite[\S2.c]{Schweitzer2007} by itself would supply a perfect pairing but
+would not annihilate this product.
+
+The only products not yet considered which can have bidegree at most
+$(3,3)$ are
+\begin{equation}
+ \mathsf A\mathsf D,\quad
+ \mathsf A\overline{\mathsf D},\quad
+ \mathsf B\mathsf D,\quad
+ \mathsf B\overline{\mathsf D},\quad
+ \mathsf C\overline{\mathsf C},
+\label{eq:bcpr-top-products}
+\end{equation}
+all of bidegree $(3,3)$.  Every non-top generator in
+\cref{eq:bcpr-generators} is de Rham exact:
+\begin{equation}
+\begin{gathered}
+ a=dG,\qquad a^\dagger=d\bar G,\qquad
+ c=dQ,\qquad c^\dagger=d\bar Q,\\
+ d_0=d(G\wedge Q),\qquad
+ d_0^\dagger=d(\bar G\wedge\bar Q),\qquad
+ e=d(Q^2),\qquad e^\dagger=d(\bar Q^2).
+\end{gathered}
+\label{eq:bcpr-de-rham-primitives}
+\end{equation}
+Each factor paired with an exact factor is $d$-closed, so every product in
+\cref{eq:bcpr-top-products} is $d$-exact and has integral zero.  Integration
+induces an isomorphism
+\begin{equation}
+ H^{3,3}_{BC}(X)\xrightarrow{\ \int_X\ }\mathbb C.
+\label{eq:bcpr-top-integration}
+\end{equation}
+It is well defined by Stokes' theorem, the source has dimension one by
+\cref{eq:bcpr-nonzero-dimensions}, and it is nonzero on $\mathsf T$.
+Therefore all five products in \cref{eq:bcpr-top-products} vanish in
+Bott--Chern cohomology.
+
+All other products of positive-degree generators have $p>3$ or $q>3$ and
+vanish already as differential forms.
+\Cref{eq:bcpr-first-zero-products,eq:bcpr-a-square-bc-zero,eq:bcpr-second-zero-products,eq:bcpr-top-products,eq:bcpr-top-integration}
+exhaust every possible positive-degree product
+and prove \cref{eq:bcpr-algebra}.
+\end{proof}
+
+\begin{remark}[literal global gauge boundary]
+\label{rem:bcpr-global-gauge-boundary}
+The Bott--Chern algebra \cref{eq:bcpr-algebra} and the fibre-coordinate
+restrictions displayed in
+\cref{eq:bcpr-gamma-form,eq:bcpr-u-form,eq:bcpr-q-fibre,eq:bcpr-q-fibre-expanded,eq:bcpr-q-gamma-product,eq:bcpr-q-square}
+are complete.  The canonical data do not select a preferred literal global
+coefficient atlas for the smooth forms $G$ and $Q$.  Such an atlas would
+require explicit smooth local trivializations and horizontal correction
+functions through both finite affine fillings and the cusp.  After fixing
+$\mathfrak g$ and one coherent-Leray lift $\mathfrak q$, changing those
+smooth gauges changes $G$ and $Q$ by Dolbeault coboundaries but changes
+none of the cohomology classes, nonvanishing arguments, or products proved
+above.  This is a limitation only on a preferred global coefficient
+presentation, not on the representatives as cohomology classes or on the
+Bott--Chern algebra.
+\end{remark}

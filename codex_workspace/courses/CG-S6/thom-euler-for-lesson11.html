@@ -1,0 +1,849 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thom classes and Euler numbers for lesson 11</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/thom-euler-for-lesson11.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="thom-euler-provider">Thom classes and Euler numbers for lesson
+11</h1>
+<p>This provider retains Sections 1–8 and the sphere part of Section 9
+of <em>Thom classes and Euler classes</em>, written by GPT-6.1 Sol
+(OpenAI), at Ultra, October 2026, under CC0. GPT-6 Astra (OpenAI), at
+Ultra, selected these complete arguments, supplied the compact
+Lebesgue-number argument in Section 2, and removed the unused real-line
+classification and its dependent exercises. The <a
+href="sources/thom-classes-and-euler-classes.source.txt">unaltered
+source</a> and its SHA256 are included in the edition provenance. Review
+here is by the writing AI, without a claim of independent
+certification.</p>
+<p>Use the definition of a vector bundle and the actual
+finite-dimensional embeddings and orthogonal projections proved in <a
+href="CG-S6-11.html#sphere-classification">lesson 11, Section
+10.1</a>. The chain arguments needed below are supplied in full. This
+provider supplies the integral orientation, product and isolated-zero
+maps used in lesson 11; it does not need bundle classification by an
+infinite Grassmannian.</p>
+<h2 id="chains-pairs-and-homotopies">1. Chains, pairs and
+homotopies</h2>
+<p>Let <span class="math inline">\(C_m(X)\)</span> be the free abelian
+group on the continuous maps <span
+class="math inline">\(\sigma:\Delta^m\to X\)</span>, with <span
+class="math inline">\(C_m=0\)</span> for <span
+class="math inline">\(m&lt;0\)</span>. Write <span
+class="math inline">\(\sigma[i_0,\ldots,i_k]\)</span> for its
+restriction to the indicated ordered face. The differential is</p>
+<p><span class="math display">\[
+\partial\sigma=\sum_{i=0}^m(-1)^i\sigma[0,\ldots,\widehat i,\ldots,m].
+\]</span></p>
+<p>Each twice-deleted face appears with opposite signs in <span
+class="math inline">\(\partial^2\sigma\)</span>, so <span
+class="math inline">\(\partial^2=0\)</span>. Homology is <span
+class="math inline">\(H_m=\ker\partial/\operatorname{im}\partial\)</span>.
+For <span class="math inline">\(A\subset X\)</span>, the relative
+complex is <span class="math inline">\(C_*(X,A)=C_*(X)/C_*(A)\)</span>.
+It is free on the simplices not entirely contained in <span
+class="math inline">\(A\)</span>. With an abelian coefficient group
+<span class="math inline">\(G\)</span>, use <span
+class="math inline">\(C_*(X,A)\otimes G\)</span> for homology and <span
+class="math inline">\(\operatorname{Hom}(C_*(X,A),G)\)</span> for
+cohomology; its coboundary is <span class="math inline">\(\delta
+a=a\partial\)</span>. Maps of pairs induce the evident chain maps and
+contravariant cochain maps.</p>
+<p><strong>Lemma 1.1 (homotopy invariance).</strong> Homotopic maps of
+pairs induce the same homology and cohomology maps, with every
+coefficient group.</p>
+<p><strong>Proof.</strong> For a homotopy <span
+class="math inline">\(H:X\times I\to Y\)</span>, triangulate <span
+class="math inline">\(\Delta^m\times I\)</span> into the <span
+class="math inline">\(m+1\)</span> ordered simplices</p>
+<p><span class="math display">\[
+[(v_0,0),\ldots,(v_i,0),(v_i,1),\ldots,(v_m,1)],
+\qquad 0\leq i\leq m.
+\]</span></p>
+<p>Apply <span class="math inline">\(H(\sigma(-),-)\)</span> to their
+sum with coefficients <span class="math inline">\((-1)^i\)</span>,
+defining <span class="math inline">\(P\sigma\)</span>. Adjacent internal
+faces cancel. The bottom and top faces remain with signs minus and plus,
+and the side faces are <span
+class="math inline">\(-P\partial\sigma\)</span>. Hence <span
+class="math inline">\(\partial P+P\partial=H_{1*}-H_{0*}\)</span>. If
+<span class="math inline">\(H(A\times I)\subset B\)</span>, this formula
+descends to relative chains. Tensoring the homotopy, or precomposing
+cochains with it, proves the assertion. <span
+class="math inline">\(\square\)</span></p>
+<p>The point complex has one generator in every nonnegative degree; its
+differential is zero in odd degrees and the identity in positive even
+degrees. Therefore a point has homology <span
+class="math inline">\(\mathbb Z\)</span> in degree zero and zero
+elsewhere. By Lemma 1.1 the same is true of a contractible space.
+Moreover <span class="math inline">\(H_0(X)\)</span> is free on the path
+components: the boundary of a path equates its two endpoints, and these
+are exactly the relations imposed by paths.</p>
+<h2 id="making-singular-chains-small">2. Making singular chains
+small</h2>
+<p>For an open cover <span class="math inline">\(\mathcal U\)</span> of
+<span class="math inline">\(X\)</span>, let <span
+class="math inline">\(C_*^{\mathcal U}(X)\)</span> be generated by
+simplices whose image lies in one cover member. Local arguments require
+the inclusion of these chains to be a chain homotopy equivalence, rather
+than just an intuitive subdivision picture.</p>
+<p><strong>Lemma 2.1 (small-chain lemma).</strong> There is a chain map
+<span class="math inline">\(\rho:C_*(X)\to C_*^{\mathcal U}(X)\)</span>
+and a homotopy <span class="math inline">\(D\)</span> with</p>
+<p><span class="math display">\[
+\rho\iota=1,\qquad 1-\iota\rho=\partial D+D\partial.
+\]</span></p>
+<p>Both preserve every subspace of <span
+class="math inline">\(X\)</span>, so the assertion also holds for
+relative complexes.</p>
+<p><strong>Proof.</strong> First construct subdivision <span
+class="math inline">\(S\)</span> on the affine chains in each standard
+simplex. If <span class="math inline">\(b\)</span> is its barycentre,
+define <span class="math inline">\(S\sigma=b*(S\partial\sigma)\)</span>
+inductively, starting with vertices. Here the affine cone with apex
+first satisfies <span class="math inline">\(\partial(b*c)=c-b*(\partial
+c)\)</span> for a positive-dimensional cycle, and the corresponding
+reduced formula for dimension zero. It follows inductively that <span
+class="math inline">\(\partial S=S\partial\)</span>. Composing these
+affine subdivisions with a singular simplex defines a natural chain map
+on singular chains.</p>
+<p>Construct a subdivision homotopy <span
+class="math inline">\(T\)</span> by induction too. On an <span
+class="math inline">\(m\)</span>-simplex, the chain <span
+class="math inline">\(z=\sigma-S\sigma-T\partial\sigma\)</span> is a
+cycle by the already established lower-dimensional identity. It has
+augmentation zero when relevant. Cone it to the barycentre and set <span
+class="math inline">\(T\sigma=b*z\)</span>. Then <span
+class="math inline">\(\partial T+T\partial=1-S\)</span>. All chains
+constructed remain inside the original simplex image. Thus subdivision
+and its homotopy preserve small chains and chains in any subspace.</p>
+<p>A barycentric subsimplex has vertices that are barycentres of nested
+faces. If a face of size <span class="math inline">\(\ell\)</span> lies
+in one of size <span class="math inline">\(k\)</span>, their barycentre
+difference has norm at most <span
+class="math inline">\((k-\ell)/k\)</span> times the old diameter, at
+most <span class="math inline">\(m/(m+1)\)</span> times it. The diameter
+of a Euclidean simplex is the maximum of its vertex distances. Iteration
+therefore makes the mesh tend to zero. For the inverse-image open cover
+of the compact standard simplex, choose at each point a ball whose
+doubled ball lies in one cover member. Finitely many of the smaller
+balls cover the simplex; the minimum of their radii is positive. Every
+subset of smaller diameter, by choosing one of its points in a smaller
+ball, lies in the corresponding doubled ball. This is the required
+Lebesgue number. Every singular simplex, and every finite chain, becomes
+small after sufficiently many subdivisions.</p>
+<p>Put <span class="math inline">\(T_N=\sum_{j=0}^{N-1}S^jT\)</span>;
+then <span class="math inline">\(\partial
+T_N+T_N\partial=1-S^N\)</span>. Now construct <span
+class="math inline">\(\rho,D\)</span> inductively on the basis of
+singular simplices. Given their values on the boundary of <span
+class="math inline">\(\sigma\)</span>, put <span
+class="math inline">\(z=\sigma-D\partial\sigma\)</span>, so <span
+class="math inline">\(\partial z=\rho\partial\sigma\)</span> is small.
+Choose <span class="math inline">\(N\)</span> such that <span
+class="math inline">\(S^Nz\)</span> is small and define</p>
+<p><span class="math display">\[
+\rho\sigma=S^Nz+T_N(\rho\partial\sigma),
+\qquad D\sigma=T_Nz.
+\]</span></p>
+<p>The second term of <span class="math inline">\(\rho\sigma\)</span> is
+small because <span class="math inline">\(T_N\)</span> preserves
+smallness. The displayed identities give <span
+class="math inline">\(\partial\rho\sigma=\rho\partial\sigma\)</span> and
+<span class="math inline">\(\sigma-\rho\sigma=\partial
+D\sigma+D\partial\sigma\)</span>. If <span
+class="math inline">\(\sigma\)</span> is already small, its faces have
+<span class="math inline">\(D=0\)</span> by induction; choose <span
+class="math inline">\(N=0\)</span>, obtaining <span
+class="math inline">\(\rho\sigma=\sigma\)</span>, <span
+class="math inline">\(D\sigma=0\)</span>. Every operation remains in the
+original image, which proves the subspace assertion. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (excision).</strong> If <span
+class="math inline">\(Z\subset A\subset X\)</span> and <span
+class="math inline">\(\overline Z\subset\operatorname{int}_X A\)</span>,
+the inclusion <span class="math inline">\((X\setminus Z,A\setminus
+Z)\to(X,A)\)</span> induces homology and cohomology isomorphisms with
+every coefficient group.</p>
+<p><strong>Proof.</strong> Use the open cover <span
+class="math inline">\(\operatorname{int}A, X\setminus\overline
+Z\)</span> of <span class="math inline">\(X\)</span>. After quotienting
+small chains by those in <span class="math inline">\(A\)</span>, the
+first summand disappears and the quotient is <span
+class="math inline">\(C_*(X\setminus\overline Z,A\setminus\overline
+Z)\)</span>. The restricted cover of <span
+class="math inline">\(X\setminus Z\)</span> gives the very same
+quotient: its first member is <span
+class="math inline">\((\operatorname{int}A)\setminus Z\)</span>, whose
+chains again disappear. Lemma 2.1 identifies both ordinary relative
+complexes with these quotients up to chain homotopy. Tensor and dualize
+the equivalences. <span class="math inline">\(\square\)</span></p>
+<h2 id="exact-sequences-and-local-gluing">3. Exact sequences and local
+gluing</h2>
+<p>A degreewise exact sequence of complexes <span
+class="math inline">\(0\to K\to L\to M\to0\)</span> has a long exact
+sequence in homology. Its connecting map sends a cycle <span
+class="math inline">\(m\)</span> to the class of <span
+class="math inline">\(\partial\ell\)</span> in <span
+class="math inline">\(K\)</span>, where <span
+class="math inline">\(\ell\)</span> lifts <span
+class="math inline">\(m\)</span>. Changing the lift changes this by a
+boundary; changing the cycle by a boundary does likewise. Exactness
+follows directly: a cycle of <span class="math inline">\(L\)</span> maps
+to a boundary of <span class="math inline">\(M\)</span> exactly when,
+after subtracting the boundary of a lift, it lies in <span
+class="math inline">\(K\)</span>; a cycle of <span
+class="math inline">\(M\)</span> has zero connecting class exactly when
+its lift can be corrected by a chain in <span
+class="math inline">\(K\)</span> to a cycle of <span
+class="math inline">\(L\)</span>; a cycle of <span
+class="math inline">\(K\)</span> becomes a boundary in <span
+class="math inline">\(L\)</span> exactly when it is the connecting image
+of the projected bounding chain. These three arguments prove exactness
+at all the repeating positions. The same lifting argument, with <span
+class="math inline">\(\delta\)</span>, proves the cohomological version
+and its naturality.</p>
+<p>The pair sequence comes from <span class="math inline">\(0\to
+C_*(A)\to C_*(X)\to C_*(X,A)\to0\)</span>. It is degreewise split on the
+simplex bases, so it stays exact after tensoring or dualizing.</p>
+<p>For an open cover <span class="math inline">\(X=U\cup V\)</span>, the
+sequence</p>
+<p><span class="math display">\[
+0\to C_*(U\cap V)\xrightarrow{c\mapsto(c,-c)}
+C_*(U)\oplus C_*(V)\xrightarrow{(a,b)\mapsto a+b}
+C_*^{\{U,V\}}(X)\to0
+\]</span></p>
+<p>is degreewise split exact: each simplex belongs to <span
+class="math inline">\(U\)</span>, to <span
+class="math inline">\(V\)</span>, or to both. Lemma 2.1 replaces the
+last complex by <span class="math inline">\(C_*(X)\)</span>. We obtain
+the <strong>Mayer–Vietoris sequences</strong>. For cohomology the
+middle-to-intersection map is the difference of restrictions. Dividing
+throughout by the corresponding chains in a subspace <span
+class="math inline">\(A\)</span> gives the relative sequences for <span
+class="math inline">\((X,A)\)</span>, with pieces <span
+class="math inline">\((U,U\cap A)\)</span>, <span
+class="math inline">\((V,V\cap A)\)</span> and <span
+class="math inline">\((U\cap V,U\cap V\cap A)\)</span>. Splitting is
+again obtained on the simplices outside <span
+class="math inline">\(A\)</span>.</p>
+<p>We will use the following precise form of the five lemma. In a
+commutative diagram of exact five-term sequences, if maps at positions
+one, two, four and five are isomorphisms, the middle map is an
+isomorphism. For injectivity, an element with zero image maps to zero at
+position four, so comes from position two; lift its image-zero condition
+through position one and use the isomorphisms there to correct its
+preimage to zero. For surjectivity, map a target middle element to
+position four; lift there, note its image at position five vanishes, and
+lift back to a source middle element. Their difference lies in the image
+of position two, whose isomorphism provides the required correction.
+This proves the lemma and applies equally to homology and cohomology
+segments.</p>
+<p>For example, cover <span class="math inline">\(S^m\)</span>, <span
+class="math inline">\(m\geq1\)</span>, by slightly enlarged hemispheres.
+Each is contractible, and their intersection retracts to <span
+class="math inline">\(S^{m-1}\)</span>. The reduced Mayer–Vietoris
+sequence gives <span class="math inline">\(\widetilde
+H_j(S^m;G)\cong\widetilde H_{j-1}(S^{m-1};G)\)</span>. Starting with two
+points, this yields <span class="math inline">\(\widetilde
+H_m(S^m;G)=G\)</span> and zero in other degrees; the same argument gives
+reduced cohomology. The generator obtained by orienting the two
+hemispheres compatibly is the fundamental class of the oriented sphere.
+Concretely triangulate it as the boundary of an <span
+class="math inline">\(m+1\)</span>-simplex, radially projected from an
+interior point. Each ray meets the boundary once, and its intersection
+distance is continuous face by face, so this is a homeomorphism. The
+alternating sum of oriented faces is a cycle because shared faces
+cancel. Its image at a point inside one face is the positive local disk
+generator by excision. Since the sphere homology group in degree <span
+class="math inline">\(m\)</span> is infinite cyclic, that value one
+proves the cycle is a generator. To verify the same local value at any
+point, choose a different centre or a rotated simplex whose face
+interior contains that point; the radial projections are related through
+orientation-preserving rotations, which are homotopic to the identity by
+the plane-rotation argument of Section 6. This gives the fundamental
+class <span class="math inline">\([S^m]\)</span>, with local value one
+in every oriented chart.</p>
+<h2 id="products-signs-and-evaluation-on-fibres">4. Products, signs and
+evaluation on fibres</h2>
+<p>For cochains of degrees <span class="math inline">\(p,q\)</span> with
+values in a commutative ring <span class="math inline">\(R\)</span>,
+define the Alexander–Whitney cup product by</p>
+<p><span class="math display">\[
+(a\smile b)(\sigma)=a(\sigma[0,\ldots,p])
+b(\sigma[p,\ldots,p+q]).
+\]</span></p>
+<p>Expanding boundaries, terms deleting vertices strictly before the
+joining vertex give <span class="math inline">\(\delta a\smile
+b\)</span>, those after it give <span class="math inline">\((-1)^p
+a\smile\delta b\)</span>, and the two joining terms cancel. Thus</p>
+<p><span class="math display">\[
+\delta(a\smile b)=\delta a\smile b+(-1)^p a\smile\delta b.
+\]</span></p>
+<p>The formula is natural, is associative (the three face intervals are
+identical in either parenthesization), and has the constant zero-cochain
+<span class="math inline">\(1\)</span> as unit. It descends to
+cohomology. An absolute class can multiply a relative class for every
+pair; cochains on the subspace vanish in the relative factor.</p>
+<p>We supply the chain comparison that explains external products and
+graded commutativity. On the total tensor complex use <span
+class="math inline">\(\partial(c\otimes d)=\partial c\otimes
+d+(-1)^{\deg c}c\otimes\partial d\)</span>. Define</p>
+<p><span class="math display">\[
+A\sigma=\sum_{p+q=m}\sigma_X[0,\ldots,p]\otimes\sigma_Y[p,\ldots,m],
+\qquad \sigma:\Delta^m\to X\times Y.
+\]</span></p>
+<p>Conversely define <span class="math inline">\(S(c\otimes d)\)</span>
+by triangulating <span
+class="math inline">\(\Delta^p\times\Delta^q\)</span> along all lattice
+paths from <span class="math inline">\((0,0)\)</span> to <span
+class="math inline">\((p,q)\)</span>. Give a path the sign of the
+permutation of its horizontal and vertical steps relative to all
+horizontal steps followed by all vertical steps. Compose its affine
+simplex with <span class="math inline">\((c,d)\)</span>. Internal faces
+from paths interchanging adjacent unlike steps cancel; boundary faces
+give precisely <span class="math inline">\(\partial c\otimes d+(-1)^p
+c\otimes\partial d\)</span>. For <span class="math inline">\(A\)</span>,
+deleting a nonjoining vertex gives the matching tensor boundary and
+joining-vertex terms telescope. Hence both maps are chain maps,
+preserving augmentation.</p>
+<p><strong>Lemma 4.1 (product chain equivalence).</strong> These two
+maps are inverse up to natural chain homotopies. The homotopies preserve
+products of subspaces.</p>
+<p><strong>Proof.</strong> Here is an explicit inductive construction of
+the needed homotopies. Chains in a convex set have a contraction to any
+fixed vertex: cone each singular simplex to that vertex by linear
+interpolation. The cone boundary identity gives <span
+class="math inline">\(\partial K+K\partial=1-i\epsilon\)</span>, where
+<span class="math inline">\(\epsilon\)</span> is augmentation and <span
+class="math inline">\(i\)</span> inserts the vertex. Tensoring two such
+contractions gives a contraction of their tensor complex to <span
+class="math inline">\(\mathbb Z\)</span>: the homotopy is <span
+class="math inline">\(K\otimes1+(i\epsilon)\otimes L\)</span>, with the
+tensor sign <span class="math inline">\((-1)^{\deg c}\)</span> in the
+second term. The first identity and then the second verify this formula;
+its boundary sum is <span
+class="math inline">\(1-(i\epsilon)\otimes(j\epsilon)\)</span>.</p>
+<p>For <span class="math inline">\(1-SA\)</span>, assume a homotopy
+<span class="math inline">\(h\)</span> is already defined on
+lower-dimensional simplices. On the universal diagonal simplex <span
+class="math inline">\(\Delta^m\to\Delta^m\times\Delta^m\)</span>, form
+<span class="math inline">\(z=(1-SA)\sigma-h\partial\sigma\)</span>. It
+is an augmented cycle. Cone <span class="math inline">\(z\)</span> in
+the convex product to fill it. For an arbitrary <span
+class="math inline">\(\sigma\)</span>, push this filling forward by
+<span class="math inline">\(\sigma_X\times\sigma_Y\)</span>. This
+defines <span class="math inline">\(h\)</span> naturally and gives <span
+class="math inline">\(\partial h+h\partial=1-SA\)</span>.</p>
+<p>For <span class="math inline">\(1-AS\)</span>, repeat on a universal
+tensor generator <span
+class="math inline">\(1_{\Delta^p}\otimes1_{\Delta^q}\)</span>. The
+residual cycle is filled by the tensor contraction just constructed,
+then pushed forward by the two singular simplices. Induction on <span
+class="math inline">\(p+q\)</span> gives the other homotopy. If either
+simplex lies in a subspace, every filling still maps into the
+corresponding product subspace. <span
+class="math inline">\(\square\)</span></p>
+<p>The same induction compares <span class="math inline">\(A\)</span>
+with the map obtained by swapping the two coordinates and then applying
+<span class="math inline">\(A\)</span> and the signed tensor swap <span
+class="math inline">\(c_p\otimes d_q\mapsto(-1)^{pq}d_q\otimes
+c_p\)</span>. They agree on augmentation, and the tensor contraction
+fills the residual cycles exactly as in Lemma 4.1. Evaluate <span
+class="math inline">\(a\otimes b\)</span> on this homotopy after the
+diagonal <span class="math inline">\(X\to X\times X\)</span>. For
+cocycles the resulting difference is a coboundary. Therefore</p>
+<p><span class="math display">\[
+[a]\smile[b]=(-1)^{pq}[b]\smile[a].
+\]</span></p>
+<p>No assertion of cochain commutativity was used.</p>
+<p>The equivalence also descends to <span
+class="math inline">\(C_*(X,A)\otimes C_*(Y,B)\)</span> and the product
+complex modulo <span class="math inline">\(C_*(A\times Y)+C_*(X\times
+B)\)</span>. When <span class="math inline">\(A,B\)</span> are open,
+small chains in their union identify this quotient up to chain homotopy
+with <span class="math inline">\(C_*(X\times Y,A\times Y\cup X\times
+B)\)</span>. If one subspace is empty the assertion holds for the other
+subspace without openness. For classes, define the external product by
+<span class="math inline">\(a\times
+b=\operatorname{pr}_1^*a\smile\operatorname{pr}_2^*b\)</span>; its
+cochain formula is evaluation of <span class="math inline">\(a\otimes
+b\)</span> on <span class="math inline">\(A\)</span>. This defines
+external products on all pairs used here. Cup products of two relative
+classes likewise take values relative to their union when its two
+subspaces are open, by the same small-chain comparison.</p>
+<p>For an integral relative cocycle <span
+class="math inline">\(u\)</span> of degree <span
+class="math inline">\(r\)</span>, define a right cap operator on an
+<span class="math inline">\(m\)</span>-simplex, <span
+class="math inline">\(m\geq r\)</span>, by</p>
+<p><span class="math display">\[
+R_u\sigma=u(\sigma[m-r,\ldots,m])\,\sigma[0,\ldots,m-r],
+\]</span></p>
+<p>and set it to zero when <span class="math inline">\(m&lt;r\)</span>.
+Boundary expansion and <span class="math inline">\(\delta u=0\)</span>
+give <span class="math inline">\(\partial R_u=R_u\partial\)</span>; the
+faces at the cut cancel by the cocycle equation on the last <span
+class="math inline">\(r+1\)</span> vertices. Thus it is a degree-<span
+class="math inline">\(-r\)</span> map commuting with the unshifted
+differentials. If <span class="math inline">\(u\)</span> vanishes on a
+subspace, this map descends from relative chains to absolute chains. For
+a cocycle <span class="math inline">\(a\)</span> of degree <span
+class="math inline">\(m-r\)</span>, its defining identity is</p>
+<p><span class="math display">\[
+a(R_u\sigma)=(a\smile u)(\sigma).
+\]</span></p>
+<p>We use this convention throughout. Reindexing chain groups here keeps
+their differential unchanged; it is not the alternative signed
+convention for suspended chain complexes. Replacing <span
+class="math inline">\(u\)</span> by <span class="math inline">\(u+\delta
+v\)</span> changes the cap map by a homotopy: on <span
+class="math inline">\(C_m\)</span> set <span
+class="math inline">\(h=(-1)^{m-r+1}R_v\)</span>. The cup-product
+differential identity gives <span class="math inline">\(\partial
+h+h\partial=R_{\delta v}\)</span>. Products and this cap identity also
+make sense with an abelian coefficient group in the first factor and an
+integral cochain in the second, using integer multiplication on the
+group.</p>
+<h2 id="coefficient-groups-without-a-compactness-shortcut">5.
+Coefficient groups without a compactness shortcut</h2>
+<p>To pass from local integral fibre generators to a global class, we
+need one coefficient theorem. We prove it rather than assuming that
+integral cohomology commutes with inverse limits of compact subsets; in
+general it does not.</p>
+<p><strong>Lemma 5.1.</strong> Every subgroup of a free abelian group is
+free.</p>
+<p><strong>Proof.</strong> Well-order a basis of <span
+class="math inline">\(F\)</span>. Let <span
+class="math inline">\(F_\alpha\)</span> be generated by the basis
+elements preceding <span class="math inline">\(\alpha\)</span>, and put
+<span class="math inline">\(J_\alpha=J\cap F_\alpha\)</span> for the
+subgroup <span class="math inline">\(J\)</span>. At a successor stage,
+<span class="math inline">\(J_{\alpha+1}/J_\alpha\)</span> embeds in
+<span class="math inline">\(F_{\alpha+1}/F_\alpha=\mathbb Z\)</span>. It
+is either zero or generated by a least positive integer; in the latter
+case choose a lift in <span class="math inline">\(J_{\alpha+1}\)</span>.
+At a limit stage take the union. These chosen lifts form a basis:
+subtracting a multiple of the lift at the last nonzero coordinate
+reduces that last coordinate, and induction in the well-order gives
+spanning; the last nonzero coordinate also proves independence. All
+elements have finite support, and no infinite strictly decreasing
+sequence of ordinals occurs. <span
+class="math inline">\(\square\)</span></p>
+<p>For an abelian group <span class="math inline">\(M\)</span>, choose a
+free presentation <span class="math inline">\(0\to J\to F\to
+M\to0\)</span> and define <span
+class="math inline">\(\operatorname{Ext}(M,G)=\operatorname{coker}(\operatorname{Hom}(F,G)\to\operatorname{Hom}(J,G))\)</span>.
+This group does not depend on the presentation. Indeed a map between the
+quotient groups lifts to a map of the free groups by choosing preimages
+of their basis elements, and carries kernels to kernels. Two lifts
+differ by a map into the target kernel; precomposition by that
+difference becomes a restriction from the target free group and hence
+vanishes in the cokernel. Lifts of identity maps between two
+presentations therefore induce inverse cokernel maps. This also proves
+functoriality.</p>
+<p><strong>Theorem 5.2 (universal coefficient exact sequence).</strong>
+For a free abelian chain complex <span class="math inline">\(K\)</span>
+there is a natural exact sequence</p>
+<p><span class="math display">\[
+0\to\operatorname{Ext}(H_{m-1}(K),G)
+\to H^m(\operatorname{Hom}(K,G))
+\to\operatorname{Hom}(H_m(K),G)\to0.
+\]</span></p>
+<p>The last map evaluates a cocycle on cycles. In particular it is an
+isomorphism if <span class="math inline">\(H_{m-1}(K)=0\)</span>.</p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(Z_m=\ker\partial\)</span> and <span
+class="math inline">\(B_m=\operatorname{im}\partial\)</span>. These
+groups are free by Lemma 5.1. The surjection <span
+class="math inline">\(K_m\to B_{m-1}\)</span> splits because <span
+class="math inline">\(B_{m-1}\)</span> is free, so <span
+class="math inline">\(K_m=Z_m\oplus L_m\)</span>. A homomorphism <span
+class="math inline">\(H_m=Z_m/B_m\to G\)</span> extends to <span
+class="math inline">\(K_m\)</span> by zero on <span
+class="math inline">\(L_m\)</span> and is a cocycle. This proves
+surjectivity of the evaluation map.</p>
+<p>A cocycle in its kernel vanishes on <span
+class="math inline">\(Z_m\)</span>, so it factors through <span
+class="math inline">\(K_m/Z_m=B_{m-1}\)</span>. Two such cochains differ
+by a coboundary exactly when their maps on <span
+class="math inline">\(B_{m-1}\)</span> differ by the restriction of a
+map on <span class="math inline">\(K_{m-1}\)</span>, equivalently of a
+map on <span class="math inline">\(Z_{m-1}\)</span>, since that summand
+splits too. Their quotient is the cokernel for the free presentation
+<span class="math inline">\(0\to B_{m-1}\to Z_{m-1}\to
+H_{m-1}\to0\)</span>. This identifies the kernel with the stated Ext
+group. Evaluation, factorization and the presentation comparison above
+commute with chain maps, so the sequence is natural; the chosen
+splittings are used only to prove surjectivity. <span
+class="math inline">\(\square\)</span></p>
+<p>Over a field <span class="math inline">\(k\)</span>, the
+corresponding statement reduces to <span
+class="math inline">\(H^m(\operatorname{Hom}_k(K,k))=\operatorname{Hom}_k(H_m(K),k)\)</span>.
+The same splitting proof applies to vector spaces, and every linear map
+from a subspace extends by choosing a basis, so there is no Ext term.
+These statements apply to the singular relative complexes defined in
+Section 1.</p>
+<h2 id="the-relative-generator-in-a-vector-space">6. The relative
+generator in a vector space</h2>
+<p>The pair <span class="math inline">\((\mathbb R,\mathbb
+R\setminus0)\)</span> has homology <span class="math inline">\(\mathbb
+Z\)</span> in degree one and zero elsewhere. Indeed the two components
+of the punctured line and the contractibility of the line, together with
+the pair sequence, identify <span class="math inline">\(H_1\)</span>
+with the kernel of <span class="math inline">\(\mathbb Z\oplus\mathbb
+Z\to\mathbb Z\)</span>, <span class="math inline">\((a,b)\mapsto
+a+b\)</span>. The positively directed interval from <span
+class="math inline">\(-1\)</span> to <span
+class="math inline">\(1\)</span> represents the generator whose boundary
+is the positive point minus the negative point.</p>
+<p>A free chain complex with this homology is chain homotopy equivalent
+to <span class="math inline">\(\mathbb Z\)</span> concentrated in degree
+one. Here is the required algebra. Split <span
+class="math inline">\(K_m\to B_{m-1}\)</span> by freeness, as in Theorem
+5.2, and split <span class="math inline">\(Z_m\to H_m\)</span>, since
+these homology groups are free. Then <span
+class="math inline">\(K_m=B_m\oplus H_m\oplus L_m\)</span>, with <span
+class="math inline">\(\partial:L_m\to B_{m-1}\)</span> an isomorphism.
+Projection to <span class="math inline">\(H_*\)</span> and its inclusion
+are inverse up to the homotopy sending <span
+class="math inline">\(B_m\)</span> to its inverse image in <span
+class="math inline">\(L_{m+1}\)</span> and vanishing on the other
+summands. This proves the assertion, including a cocycle <span
+class="math inline">\(u_1\)</span> evaluating to one on the chosen
+interval.</p>
+<p>Apply Lemma 4.1 repeatedly to the product of <span
+class="math inline">\(r\)</span> punctured-line pairs. Their exceptional
+union is exactly <span class="math inline">\(\mathbb
+R^r\setminus0\)</span>; all of its factor subspaces are open. The
+relative complex is therefore chain homotopy equivalent to <span
+class="math inline">\(\mathbb Z\)</span> concentrated in degree <span
+class="math inline">\(r\)</span>. Its positive generator is the product
+of the <span class="math inline">\(r\)</span> positive intervals, with
+coordinate axes in their listed order. Write <span
+class="math inline">\(u_r\)</span> for its dual integral class. In
+particular the relative cohomology is <span
+class="math inline">\(G\)</span> in degree <span
+class="math inline">\(r\)</span> and zero otherwise for every abelian
+group <span class="math inline">\(G\)</span>.</p>
+<p>An invertible real linear map acts on this generator by the sign of
+its determinant. To verify the sign, Gram–Schmidt writes a
+positive-determinant matrix as <span class="math inline">\(QR\)</span>,
+with <span class="math inline">\(Q\in SO(r)\)</span> and <span
+class="math inline">\(R\)</span> triangular with positive diagonal.
+Interpolating <span class="math inline">\(R\)</span> to the identity
+stays invertible. A rotation in the plane spanned by a unit vector and
+the first coordinate vector takes that vector to the coordinate vector;
+for its antipode use a half-turn in a coordinate plane. This reduces an
+element of <span class="math inline">\(SO(r)\)</span> to an element of
+<span class="math inline">\(SO(r-1)\)</span>, and induction gives a path
+to the identity. The cases <span class="math inline">\(r=1\)</span> and
+<span class="math inline">\(SO(1)=\{1\}\)</span> start the argument. A
+reflection in one coordinate exchanges the two components in the
+punctured-line calculation and acts by <span
+class="math inline">\(-1\)</span>. Every negative-determinant matrix is
+the product of a positive-determinant one and this reflection. Homotopy
+invariance proves the claim.</p>
+<p>Thus an orientation determines an integral generator <span
+class="math inline">\(u_V\)</span> for each fibre vector space <span
+class="math inline">\(V\)</span>. Modulo two the determinant sign
+disappears, giving a canonical generator without an orientation.</p>
+<p><strong>Proposition 6.1 (trivial Thom isomorphism).</strong> For
+every space <span class="math inline">\(B\)</span>, the class pulled
+back from <span class="math inline">\(u_r\)</span> gives
+isomorphisms</p>
+<p><span class="math display">\[
+H^j(B;G)\longrightarrow
+H^{j+r}(B\times\mathbb R^r,B\times(\mathbb R^r\setminus0);G),
+\qquad a\longmapsto\pi^*a\smile u_r.
+\]</span></p>
+<p>The corresponding homology map <span
+class="math inline">\(\pi_*R_{u_r}\)</span> is an isomorphism too. The
+same assertions hold with the mod-two fibre class and <span
+class="math inline">\(\mathbf F_2\)</span> coefficients.</p>
+<p><strong>Proof.</strong> The relative product chain equivalence
+identifies the source relative complex with <span
+class="math inline">\(C_*(B)\otimes C_*(\mathbb R^r,\mathbb
+R^r\setminus0)\)</span>. Replace the second factor by its chain homotopy
+equivalent <span class="math inline">\(\mathbb Z[r]\)</span>. Tensoring
+the equivalence and its homotopy is legitimate for these free complexes;
+the graded tensor differential verifies the homotopy formula. On the
+original relative complex the projection to this shifted base complex is
+<span class="math inline">\((1\otimes u_r)A\)</span>. In degree <span
+class="math inline">\(j+r\)</span> it evaluates <span
+class="math inline">\(u_r\)</span> on the last <span
+class="math inline">\(r\)</span> vertices and retains the first <span
+class="math inline">\(j+1\)</span> vertices projected to <span
+class="math inline">\(B\)</span>. It is exactly <span
+class="math inline">\(\pi_*R_{u_r}\)</span>. Dualizing with values in
+<span class="math inline">\(G\)</span> gives the displayed cup-product
+formula. This proves both isomorphisms and also proves that the fibre
+value one characterizes the trivial-bundle Thom class uniquely. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="a-global-thom-class-including-integral-coefficients">7. A global
+Thom class, including integral coefficients</h2>
+<p>Let <span class="math inline">\(\pi:E\to B\)</span> be a real
+rank-<span class="math inline">\(r\)</span> bundle, <span
+class="math inline">\(r&gt;0\)</span>, over a Hausdorff base. Write
+<span class="math inline">\(E_0=E\setminus\text{zero section}\)</span>,
+an open subset. We use either integral coefficients with a chosen
+orientation, or <span class="math inline">\(\mathbf F_2\)</span> without
+one. These alternatives will be called the chosen coefficients. In the
+integral case an orientation means continuous choices of oriented local
+frames; the preceding section explains the corresponding fibre
+generators.</p>
+<p><strong>Theorem 7.1 (Thom isomorphism).</strong> There is a unique
+class <span class="math inline">\(u_E\in H^r(E,E_0)\)</span> whose
+restriction to every fibre pair is its chosen generator. The groups
+<span class="math inline">\(H^i(E,E_0)\)</span> vanish for <span
+class="math inline">\(i&lt;r\)</span>. Multiplication gives an
+isomorphism</p>
+<p><span class="math display">\[
+\Phi_E:H^j(B)\xrightarrow{\cong}H^{j+r}(E,E_0),
+\qquad a\longmapsto\pi^*a\smile u_E.
+\]</span></p>
+<p>The homology map <span
+class="math inline">\(\pi_*R_{u_E}:H_{j+r}(E,E_0)\to H_j(B)\)</span> is
+also an isomorphism. In the oriented integral case the cohomology
+isomorphism holds with any abelian coefficient group <span
+class="math inline">\(G\)</span>, multiplying by the integral class
+<span class="math inline">\(u_E\)</span>.</p>
+<p><strong>Proof: finite covers.</strong> A bundle trivial on one open
+set satisfies all assertions by Proposition 6.1. Suppose they hold over
+<span class="math inline">\(U,V,U\cap V\)</span>. The two degree-<span
+class="math inline">\(r\)</span> Thom classes agree on the intersection,
+because they have the same fibre values. Relative Mayer–Vietoris gives a
+common class on <span class="math inline">\(U\cup V\)</span>, uniquely
+since <span class="math inline">\(H^{r-1}(E_{U\cap V},(E_{U\cap
+V})_0)=0\)</span>. It still has the required fibre values.</p>
+<p>Right multiplication by this class maps the base cohomological
+Mayer–Vietoris sequence to the relative total-space sequence. It
+commutes with coboundaries and restrictions by the cup differential
+formula, hence with the connecting maps from Section 3. The five lemma
+proves the cohomological isomorphism in every degree, including
+vanishing below <span class="math inline">\(r\)</span>. For integral
+orientation, the same diagram works with every group <span
+class="math inline">\(G\)</span>, multiplying on the right by the
+integral class.</p>
+<p>On homology use small chains for the two inverse-image open sets. The
+operator <span class="math inline">\(\pi_*R_u\)</span> takes a simplex
+supported above <span class="math inline">\(U\)</span> to a simplex in
+<span class="math inline">\(U\)</span>, and likewise for <span
+class="math inline">\(V\)</span> and their intersection. It commutes
+with boundaries, so it defines a map of their split exact chain
+sequences and their connecting maps. The homological five lemma gives
+the asserted isomorphism. Its induced map is independent of the cocycle
+representing <span class="math inline">\(u\)</span>, by the cap homotopy
+of Section 4.</p>
+<p>Induction proves these statements for any finite trivializing cover.
+At the inductive step, the intersection of the last chart with the union
+of the earlier charts has a cover by fewer trivializing sets, so its
+assertion is already available. No infinite-cover induction has been
+assumed.</p>
+<p><strong>Proof: passage to arbitrary bases.</strong> For each compact
+subset <span class="math inline">\(C\subset B\)</span>, the restricted
+bundle has a finite trivializing cover. Denote its Thom class by <span
+class="math inline">\(u_C\)</span>. If <span
+class="math inline">\(C\subset D\)</span>, uniqueness shows that <span
+class="math inline">\(u_D\)</span> restricts to <span
+class="math inline">\(u_C\)</span>.</p>
+<p>Every singular chain in <span class="math inline">\(E\)</span>
+projects to a compact subset of <span class="math inline">\(B\)</span>.
+The same holds for a finite collection of chains, including chains that
+witness a boundary. Consequently</p>
+<p><span class="math display">\[
+H_m(E,E_0)=\mathop{\mathrm{colim}}_{\substack{C\subset B\\ C\text{
+compact}}}
+H_m(E_C,(E_C)_0),
+\qquad
+H_j(B)=\mathop{\mathrm{colim}}_C H_j(C).
+\]</span></p>
+<p>For surjectivity a representing cycle has compact projected support;
+for injectivity a bounding chain has compact projected support too.
+Finite unions of compact subsets are compact, so these are filtered
+limits. This argument is valid for integral homology and for field
+homology.</p>
+<p>The compatible maps <span class="math inline">\(\pi_*R_{u_C}\)</span>
+therefore give isomorphisms <span
+class="math inline">\(T_j:H_{j+r}(E,E_0)\to H_j(B)\)</span>. In
+particular <span class="math inline">\(H_{r-1}(E,E_0)=0\)</span>, and
+<span class="math inline">\(T_0\)</span> identifies <span
+class="math inline">\(H_r(E,E_0)\)</span> with <span
+class="math inline">\(H_0(B)\)</span>. Positive fibre generators map to
+their component generators under <span
+class="math inline">\(T_0\)</span>. In the integral case compose <span
+class="math inline">\(T_0\)</span> with the homomorphism <span
+class="math inline">\(H_0(B)\to\mathbb Z\)</span> sending every
+component generator to one. Theorem 5.2 identifies this functional with
+a unique class <span class="math inline">\(u_E\in H^r(E,E_0;\mathbb
+Z)\)</span>. In the mod-two case use the field version of that theorem
+and the analogous functional with values in <span
+class="math inline">\(\mathbf F_2\)</span>.</p>
+<p>On every compact <span class="math inline">\(C\)</span>, this class
+restricts to <span class="math inline">\(u_C\)</span>: their evaluation
+functionals agree, and the degree-<span class="math inline">\(r\)</span>
+evaluation maps there are isomorphisms. Thus <span
+class="math inline">\(u_E\)</span> has exactly the desired fibre values.
+Those values also characterize its evaluation functional, since the
+fibre generators generate <span
+class="math inline">\(H_r(E,E_0)\)</span> by its identification with
+<span class="math inline">\(H_0(B)\)</span>. This proves global
+uniqueness.</p>
+<p>The global cap map is now <span class="math inline">\(T_j\)</span>,
+because its restriction to each compact projected support is the already
+constructed cap map. It is therefore an isomorphism. Apply the natural
+universal coefficient exact sequences to this map of free complexes,
+reindexed by <span class="math inline">\(r\)</span>. It gives
+isomorphisms on the Hom and Ext terms because it is an isomorphism on
+homology. Exactness, or the five lemma with zero end terms, then gives
+an isomorphism on cohomology with every group <span
+class="math inline">\(G\)</span> in the oriented case. By the cap
+evaluation identity this dual map is precisely <span
+class="math inline">\(a\mapsto\pi^*a\smile u_E\)</span>. In the mod-two
+case field duality gives the same conclusion with <span
+class="math inline">\(\mathbf F_2\)</span>. This also proves the stated
+low-degree vanishing. <span class="math inline">\(\square\)</span></p>
+<p>For rank zero, <span class="math inline">\(E=B\)</span>, <span
+class="math inline">\(E_0=\varnothing\)</span>, and <span
+class="math inline">\(u_E=1\)</span>; the theorem is the identity map.
+No paracompactness or CW assumption was needed in Theorem 7.1. Those
+hypotheses will be useful for metrics and obstruction theory, but the
+compact-support chain argument already proves this theorem on every
+Hausdorff base.</p>
+<p>The zero section <span class="math inline">\(z:B\to E\)</span> and
+<span class="math inline">\(\pi\)</span> are homotopy inverses: <span
+class="math inline">\((b,v,t)\mapsto(b,tv)\)</span> contracts each
+fibre. Thus the theorem can equivalently be stated as the isomorphism
+<span class="math inline">\(H^j(E)\to H^{j+r}(E,E_0)\)</span>, given by
+multiplication by <span class="math inline">\(u_E\)</span>.</p>
+<h2 id="euler-classes-and-their-product-rule">8. Euler classes and their
+product rule</h2>
+<p>Let <span class="math inline">\(j:H^r(E,E_0)\to H^r(E)\)</span>
+forget the relative condition. Define</p>
+<p><span class="math display">\[
+e(E)=z^*j(u_E).
+\]</span></p>
+<p>With integral coefficients this is the <strong>Euler class</strong>
+of an oriented bundle. With <span class="math inline">\(\mathbf
+F_2\)</span> coefficients it is defined for every real bundle.
+Naturality of the Thom class is immediate from its uniqueness, with the
+following precise assumptions: a fibrewise linear isomorphism over a
+base map pulls the Thom class back to the Thom class, preserving the
+chosen orientation in the integral case. It induces a map of the
+nonzero-vector pairs. Consequently Euler classes are natural for
+pullbacks and oriented bundle isomorphisms.</p>
+<p>The homotopy inverses above imply <span
+class="math inline">\(j(u_E)=\pi^*e(E)\)</span>. Therefore</p>
+<p><span class="math display">\[
+u_E\smile u_E=\pi^*e(E)\smile u_E,
+\qquad \Phi_E^{-1}(u_E\smile u_E)=e(E).
+\]</span></p>
+<p>In this formula the first relative factor can be forgotten before
+multiplying: both versions use the same cocycle on the same front face,
+so they agree.</p>
+<p>Reversing the orientation replaces every fibre generator by its
+negative, hence replaces both the Thom class and the Euler class by
+their negatives. The automorphism <span
+class="math inline">\(v\mapsto-v\)</span> has determinant <span
+class="math inline">\((-1)^r\)</span> and fixes the zero section. For
+odd <span class="math inline">\(r\)</span>, pulling back by it yields
+<span class="math inline">\(e(E)=-e(E)\)</span>, so <span
+class="math inline">\(2e(E)=0\)</span>. This proves only the two-torsion
+assertion; it does not allow dropping torsion in an arbitrary base
+cohomology group.</p>
+<p><strong>Proposition 8.1.</strong> If a positive-rank oriented bundle
+has a nowhere-zero section, its Euler class is zero. The same conclusion
+holds for the mod-two Euler class without orientation.</p>
+<p><strong>Proof.</strong> A section <span class="math inline">\(s:B\to
+E_0\)</span> has zero pullback of <span
+class="math inline">\(j(u_E)\)</span>, because that class restricts to
+zero on <span class="math inline">\(E_0\)</span>. The sections <span
+class="math inline">\(s\)</span> and <span
+class="math inline">\(z\)</span> are homotopic as maps into <span
+class="math inline">\(E\)</span> by scalar multiplication along each
+fibre. Lemma 1.1 gives <span
+class="math inline">\(e(E)=z^*j(u_E)=s^*j(u_E)=0\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 8.2 (Whitney product).</strong> If <span
+class="math inline">\(E,F\)</span> are oriented bundles on one base,
+orient <span class="math inline">\(E\oplus F\)</span> by an oriented
+basis of <span class="math inline">\(E\)</span> followed by one of <span
+class="math inline">\(F\)</span>. Then</p>
+<p><span class="math display">\[
+e(E\oplus F)=e(E)\smile e(F).
+\]</span></p>
+<p>The same formula holds modulo two without orientations.</p>
+<p><strong>Proof.</strong> First use the external product bundle over
+<span class="math inline">\(B\times C\)</span>. Its nonzero set is <span
+class="math inline">\(E_0\times F\cup E\times F_0\)</span>, a union of
+open subspaces. The external product <span
+class="math inline">\(u_E\times u_F\)</span> is defined by Section 4 and
+restricts to the positive generator on each ordered product fibre, by
+the product calculation of Section 6. Uniqueness identifies it with
+<span class="math inline">\(u_{E\times F}\)</span>. Pull back to the
+product zero section to obtain <span class="math inline">\(e(E\times
+F)=e(E)\times e(F)\)</span>. For a common base, pull back along its
+diagonal. The pullback bundle is <span class="math inline">\(E\oplus
+F\)</span>, and diagonal pullback of the external product is the cup
+product by the defining Alexander–Whitney formula. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="zeros-on-spheres">9. Zeros on spheres</h2>
+<p>Here is the local calculation that turns an Euler class into a
+number. Let a rank-<span class="math inline">\(r\)</span> bundle on an
+oriented sphere <span class="math inline">\(S^r\)</span> have a section
+with finitely many isolated zeros. For mod-two coefficients no bundle
+orientation is needed. The section is a map of pairs <span
+class="math inline">\((S^r,S^r\setminus Z)\to(E,E_0)\)</span>. Choose
+disjoint small disks around the zeros. Excision identifies the
+degree-<span class="math inline">\(r\)</span> relative group with the
+direct sum of their local groups. Its pulled-back Thom class has an
+integer local value in the oriented case, and a mod-two value in the
+other case. Forgetting the relative condition gives the ordinary Euler
+class, since the section is homotopic to zero. The fundamental cycle
+maps to the positive local disk generators, so</p>
+<p><span class="math display">\[
+\langle e(E),[S^r]\rangle=\sum_{x\in Z}\operatorname{ind}_x(s).
+\]</span></p>
+<p>This equality follows from the relative evaluation pairing and
+excision, and has only been asserted here for the spheres whose
+fundamental cycles were proved in Section 3.</p>
+<p>If a smooth zero is nondegenerate, write the section in an oriented
+chart and bundle frame as <span
+class="math inline">\(f(y)=Ay+o(\|y\|)\)</span>, with <span
+class="math inline">\(A\)</span> invertible. On a sufficiently small
+disk the error has norm less than half the least singular value of <span
+class="math inline">\(A\)</span> times <span
+class="math inline">\(\|y\|\)</span>. The straight homotopy from <span
+class="math inline">\(f\)</span> to <span
+class="math inline">\(Ay\)</span> stays nonzero off the origin, so it is
+a homotopy of the local pairs. The determinant calculation of Section 6
+gives <span
+class="math inline">\(\operatorname{ind}_x(s)=\operatorname{sign}\det
+A\)</span>, or one modulo two.</p>
+<p>For the unit sphere in <span class="math inline">\(\mathbb
+R^{r+1}\)</span>, the tangent section <span
+class="math inline">\(s(x)=e_{r+1}-x_{r+1}x\)</span> has zeros exactly
+at the north and south poles. Its tangent derivatives there are <span
+class="math inline">\(-I\)</span> and <span
+class="math inline">\(+I\)</span>, respectively. Therefore</p>
+<p><span class="math display">\[
+\langle e(TS^r),[S^r]\rangle=(-1)^r+1.
+\]</span></p>
+<p>For <span class="math inline">\(S^2\)</span>, this says <span
+class="math inline">\(e(TS^2)=2a\)</span>, where <span
+class="math inline">\(a\)</span> evaluates to one on the outward
+oriented sphere. A nowhere-zero tangent field would contradict
+Proposition 8.1. For odd spheres the value is zero; an explicit field is
+<span class="math inline">\(Jx\)</span>, where <span
+class="math inline">\(J\)</span> is the standard complex structure on
+the even-dimensional ambient space. It is perpendicular to <span
+class="math inline">\(x\)</span> and has length one. The value <span
+class="math inline">\(1+(-1)^r\)</span> also equals the Euler
+characteristic computed from the sphere homology in Section 3.</p>
+<h2 id="human-references-and-receiving-calculation">Human references and
+receiving calculation</h2>
+<p>John Milnor and James Stasheff, <a
+href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnstas.pdf"><em>Characteristic
+Classes</em></a> (Princeton University Press, 1974), Sections 8–10 and
+Appendix A, are the human reference for Thom and Euler classes. The
+prose and proofs retained here are the CC0 source author’s
+reconstruction; no protected book text is reproduced. The receiving
+calculations are the tautological-line sign and the two tangent zeros in
+lesson 11, Sections 10.3 and 10.5. The <a
+href="projective-splitting-for-lesson11.html">next provider</a> constructs
+the exact integral flag map.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

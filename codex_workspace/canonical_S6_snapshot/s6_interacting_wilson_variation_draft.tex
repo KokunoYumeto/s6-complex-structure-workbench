@@ -1,0 +1,859 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Ima}{\operatorname{Im}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\dd}{\,\mathrm d}
+\title{Exact vacuum-weighted Wilson-loop variation on a finite interacting lattice}
+\author{}
+\date{8 September 2026}
+\begin{document}
+\maketitle
+
+\section{Objects, orientations, and both Lie metrics}
+
+Fix an integer $n\geq2$, a finite oriented graph with vertex set $\mathsf V$
+and one chosen orientation for every physical edge in a nonempty edge set
+$\mathsf E$, and a finite list $\mathsf P$ of oriented closed plaquette words.
+Write $N=|\mathsf E|$. Reverse traversal of $e$ uses $U_e^{-1}$, not a new
+independent link. The configuration manifold and its probability Haar measure
+are
+\[
+ \mathcal Q=\SU(n)^{\mathsf E},\qquad
+ d\lambda(U)=\prod_{e\in\mathsf E}dU_e,\qquad \lambda(\mathcal Q)=1.
+\]
+For a word $C=((e_1,\varepsilon_1),\ldots,(e_\ell,\varepsilon_\ell))$
+with $\varepsilon_j\in\{1,-1\}$, define, in the written order,
+\[
+ H_C(U)=U_{e_1}^{\varepsilon_1}\cdots U_{e_\ell}^{\varepsilon_\ell},
+ \qquad W_C(U)=\tr H_C(U).
+\]
+A simple edge loop here means a nonempty closed word using each physical edge
+at most once. Vertices may be repeated; all statements below needing simplicity
+need precisely the absence of repeated physical edges. Ordinary simple
+plaquettes and primitive winding loops on a sufficiently large periodic
+hypercubic lattice satisfy this definition. If a small periodic lattice makes
+one plaquette repeat an edge, use the repeated-occurrence formula below.
+
+Choose an anti-Hermitian traceless basis $T_a$, $1\leq a\leq n^2-1$, with
+\[
+ -2\tr(T_aT_b)=\delta_{ab}.
+\]
+The derivatives requested in this calculation are exactly
+\[
+ X_{e,a}f(U)=\left.\frac d{dt}\right|_{t=0}
+ f(\ldots,e^{tT_a}U_e,\ldots),\qquad
+ \Delta_e^T=\sum_aX_{e,a}^2.
+\]
+In this convention $X_{e,a}$ is skew-adjoint in $L^2(\lambda)$. Indeed,
+left invariance of Haar gives
+\[
+ \int f(e^{tT_a}U_e)g(U_e)dU_e
+ =\int f(U_e)g(e^{-tT_a}U_e)dU_e;
+\]
+differentiation proves the assertion,
+with the complex conjugate placed on the first argument when appropriate.
+
+There are two retained Lie metrics, related by an explicit dictionary:
+\begin{align}
+ g_T(A,B)&=-2\tr(AB),&
+ c(A,B)&=-\tfrac12\tr(AB)=\tfrac14g_T(A,B),\label{eq:metrics}\\
+ c(T_a,T_b)&=\tfrac14\delta_{ab},&
+ S_a&=2T_a,& c(S_a,S_b)&=\delta_{ab},\nonumber\\
+ X^c_{e,a}&=2X_{e,a},&
+ \Delta_e^c&=4\Delta_e^T.\label{eq:metric-laplace}
+\end{align}
+Thus a Casimir eigenvalue measured with $c$ is four times its $g_T$ value.
+The Hamiltonian in this paper is the specified operator
+\begin{equation}\label{eq:H}
+ H=-\sum_{e\in\mathsf E}\kappa_e\Delta_e^T+V,
+ \quad
+ V(U)=\sum_{p\in\mathsf P}b_p\bigl(n-\Rea W_p(U)\bigr),
+ \quad \kappa_e>0,\ b_p>0.
+\end{equation}
+In the original cusp metric it is identically
+$H=-\sum_e(\kappa_e/4)\Delta_e^c+V$.
+Keeping the coefficient $\kappa_e$ in front of $\Delta_e^c$ would instead
+multiply the kinetic operator by four and would define a different
+Hamiltonian. No such replacement is made here. The inequalities
+$|\tr U|\leq n$ for $U\in\SU(n)$ and
+\begin{equation}\label{eq:Vbounds}
+ 0\leq V\leq M,\qquad
+ M=2nB,\qquad B=\sum_{p\in\mathsf P}b_p,
+\end{equation}
+retain every plaquette term. The trace bound follows by summing the $n$
+unit-modulus eigenvalues. The constant $2nB$ is a valid bound; no assertion
+that all plaquettes attain their separate maxima simultaneously is needed.
+
+The probability Haar convention also has an exact volume dictionary.
+On the compact configuration manifold, whose real dimension is
+$d=N(n^2-1)$, \eqref{eq:metrics} gives
+$d\operatorname{vol}_c=2^{-d}d\operatorname{vol}_{g_T}$.
+If $\mathcal V_c=\operatorname{vol}_c(\mathcal Q)$ and
+$\mathcal V_T=\operatorname{vol}_{g_T}(\mathcal Q)$, then
+\[
+ d\lambda=\mathcal V_c^{-1}d\operatorname{vol}_c
+         =\mathcal V_T^{-1}d\operatorname{vol}_{g_T},\qquad
+ \mathcal V_c=2^{-d}\mathcal V_T.
+\]
+The map $f\mapsto\sqrt{\mathcal V_c}\,f$ is unitary from
+$L^2(d\operatorname{vol}_c)$ to $L^2(d\lambda)$ and intertwines the same
+differential Hamiltonian. A ground state normalized in the former
+space is therefore taken to $\psi_0=\sqrt{\mathcal V_c}\,\psi_c$, so
+$\psi_0^2d\lambda=\psi_c^2d\operatorname{vol}_c$ exactly. These are
+volume identities on the compact group product only; they do not
+identify a noncompact cusp measure with Haar measure.
+
+Gauge transformations are
+$(g\cdot U)_e=g_{s(e)}U_eg_{t(e)}^{-1}$ for
+$g\in\SU(n)^{\mathsf V}$. Along a closed word all adjacent factors cancel,
+so $H_C$ changes by conjugation at its base vertex and $W_C$ is invariant.
+Haar measure, each $\Delta_e^T$, and $V$ are gauge invariant. The physically
+restricted finite Hilbert space is therefore the closed invariant subspace
+$\mathcal H_{\rm inv}\subset L^2(\mathcal Q,\lambda)$, and $H$ preserves it.
+
+\section{Fierz identities with the stated normalization}
+
+\begin{lemma}\label{lem:Fierz}
+For arbitrary complex $n\times n$ matrices $A,B$,
+\begin{align}
+ \sum_a(T_a)_{ij}(T_a)_{kl}
+ &=-\frac12\left(\delta_{il}\delta_{jk}
+                  -\frac1n\delta_{ij}\delta_{kl}\right),\label{eq:Fierz}\\
+ \sum_a\tr(T_aA)\tr(T_aB)
+ &=-\frac12\left(\tr(AB)-\frac1n\tr A\tr B\right),\label{eq:bilinear}\\
+ \sum_a\tr(T_aA)\overline{\tr(T_aB)}
+ &=\frac12\left(\tr(AB^\dagger)
+       -\frac1n\tr A\,\overline{\tr B}\right),\label{eq:sesquilinear}\\
+ \sum_aT_a^2&=-C_FI_n,\qquad C_F=\frac{n^2-1}{2n}.\label{eq:fundcasimir}
+\end{align}
+In particular, for $A\in\SU(n)$,
+\begin{equation}\label{eq:singlecontraction}
+ \sum_a|\tr(T_aA)|^2=\frac{n^2-|\tr A|^2}{2n}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The matrices $Q_0=I_n/\sqrt n$ and $Q_a=i\sqrt2T_a$ form an orthonormal
+basis of the real vector space of Hermitian matrices for the scalar product
+$\tr(QR)$. Their complex linear span is all complex matrices. Expanding an
+arbitrary matrix $D$ gives
+$D=\sum_{\alpha=0}^{n^2-1}Q_\alpha\tr(Q_\alpha D)$.
+Taking the coefficient of $D_{lk}$ in entry $ij$ proves
+$\sum_\alpha(Q_\alpha)_{ij}(Q_\alpha)_{kl}=\delta_{il}\delta_{jk}$.
+Subtract the $Q_0$ term and use $(i\sqrt2)^2=-2$ to obtain
+\eqref{eq:Fierz}. Contract it with $A_{ji}B_{lk}$ to get
+\eqref{eq:bilinear}. Anti-Hermiticity gives
+$\overline{\tr(T_aB)}=-\tr(T_aB^\dagger)$; this proves
+\eqref{eq:sesquilinear}. Put $k=j$ in \eqref{eq:Fierz} and sum $j$ to
+obtain \eqref{eq:fundcasimir}. Finally $AA^\dagger=I_n$ gives
+\eqref{eq:singlecontraction}.
+\end{proof}
+
+\section{Every edge orientation and the exact overlap morphism}
+
+Fix one occurrence of physical edge $e$ in $C$ and write the ordered word
+as $P U_e^{\varepsilon}Q$, where $P$ and $Q$ are the products before and
+after that occurrence. Cyclic trace invariance gives the following
+matrices based at the original source $s(e)$:
+\begin{equation}\label{eq:based}
+ A_{C,e,r}=
+ \begin{cases}
+ U_eQP,&\varepsilon=+1,\\
+ QPU_e^{-1},&\varepsilon=-1.
+ \end{cases}
+\end{equation}
+The occurrence index $r$ is suppressed when there is only one occurrence.
+Each $A_{C,e,r}$ lies in $\SU(n)$, has trace $W_C$, and transforms by
+conjugation with $g_{s(e)}$ under a gauge transformation. These statements
+follow either by multiplying the factors or by following the cyclically
+based closed path at $s(e)$.
+
+The derivative of an inverse is
+$X_{e,a}U_e^{-1}=-U_e^{-1}T_a$, since
+$(e^{tT_a}U_e)^{-1}=U_e^{-1}e^{-tT_a}$. Consequently
+\begin{align}
+ X_{e,a}\tr(PU_eQ)&=\tr(PT_aU_eQ)=\tr(T_aU_eQP),\nonumber\\
+ X_{e,a}\tr(PU_e^{-1}Q)&=-\tr(PU_e^{-1}T_aQ)
+ =-\tr(T_aQPU_e^{-1}).\label{eq:orientations}
+\end{align}
+For an arbitrary closed word the product rule now gives
+\begin{equation}\label{eq:repeatedderivative}
+ X_{e,a}W_C=\sum_{r:e_r=e}\varepsilon_r\tr(T_aA_{C,e,r}).
+\end{equation}
+All factors in \eqref{eq:based} are evaluated at the original configuration;
+there is no independent-link approximation in this formula.
+
+For two words define the edgewise sesquilinear and bilinear contractions
+by
+\[
+ \Gamma_e(F,G)=\sum_a(X_{e,a}F)\overline{X_{e,a}G},\qquad
+ \Gamma_e^{\rm bil}(F,G)=\sum_a(X_{e,a}F)(X_{e,a}G).
+\]
+Lemma \ref{lem:Fierz} proves, occurrence by occurrence,
+\begin{align}
+\Gamma_e(W_C,W_D)
+ &=\frac12\sum_{r:e_r=e}\sum_{s:d_s=e}\varepsilon_r\eta_s
+ \left[\tr(A_{C,e,r}A_{D,e,s}^{\dagger})
+       -\frac1nW_C\overline{W_D}\right],\label{eq:overlap-general}\\
+\Gamma_e^{\rm bil}(W_C,W_D)
+ &=-\frac12\sum_{r:e_r=e}\sum_{s:d_s=e}\varepsilon_r\eta_s
+ \left[\tr(A_{C,e,r}A_{D,e,s})-\frac1nW_CW_D\right].
+ \label{eq:overlap-bil-general}
+\end{align}
+These identities construct the exact relation between the two loop
+variations: $A_{C,e,r}A_{D,e,s}^{-1}$ is the concatenation of the first
+based loop and the inverse of the second, and its trace is gauge invariant.
+The nonconjugated contraction concatenates the two based loops directly.
+An edge not occurring in both words contributes zero.
+
+For simple edge loops, a common edge contributes exactly
+\begin{align}
+\Gamma_e(W_C,W_D)
+ &=\frac{\varepsilon_{Ce}\varepsilon_{De}}2
+   \left[\tr(A_{Ce}A_{De}^{\dagger})
+                    -\frac1nW_C\overline{W_D}\right],\label{eq:overlap-simple}\\
+\Gamma_e^{\rm bil}(W_C,W_D)
+ &=-\frac{\varepsilon_{Ce}\varepsilon_{De}}2
+   \left[\tr(A_{Ce}A_{De})-\frac1nW_CW_D\right].\nonumber
+\end{align}
+In particular, for every used edge of a simple loop,
+\begin{equation}\label{eq:simpleenergy}
+ \Gamma_e(W_C,W_C)=\frac{n^2-|W_C|^2}{2n},\qquad
+ \sum_aX_{e,a}^2W_C=-C_FW_C.
+\end{equation}
+The second equality follows directly from \eqref{eq:orientations} and
+\eqref{eq:fundcasimir}; in negative orientation the two derivative signs
+cancel. Both equalities are zero on unused edges. Define
+$K_C=\sum_{e\in C}\kappa_e$. Then the full pointwise energy is
+\begin{equation}\label{eq:simplefullenergy}
+ \Gamma_\kappa(W_C,W_C):=\sum_e\kappa_e\Gamma_e(W_C,W_C)
+       =\frac{K_C}{2n}(n^2-|W_C|^2).
+\end{equation}
+
+For later real plaquette observables the exact companion identity is
+\begin{equation}\label{eq:realenergy}
+ \Gamma_\kappa(\Rea W_C,\Rea W_C)
+ =\frac{K_C}{4}\left[n-\Rea\tr(H_C^2)
+                           -\frac2n(\Ima W_C)^2\right].
+\end{equation}
+To prove it, use $(\Rea z)^2=(|z|^2+\Rea z^2)/2$ in the derivative
+sum, apply both contractions in Lemma \ref{lem:Fierz}, and observe
+$\tr(A_{Ce}^2)=\tr(H_C^2)$ because cyclic rotations of invertible factors
+are conjugate matrices. Thus the right side is nonnegative despite its
+written difference of terms. The same energy holds for $n-\Rea W_C$.
+Measured using $X^c=2X$, every $\Gamma_e$ in this section is multiplied
+by four; pairing it with kinetic coefficient $\kappa_e/4$ recovers
+exactly \eqref{eq:simplefullenergy} and \eqref{eq:realenergy}.
+
+\section{Existence, exact ground-state transform, and orthogonality}
+
+The domain of the nonnegative quadratic form of $H$ is the first Sobolev
+space on $\mathcal Q$, with the equivalent norm given by the finitely many
+fields $X_{e,a}$. Its form is
+\[
+ q_H(u,v)=\sum_{e,a}\kappa_e\int\overline{X_{e,a}u}X_{e,a}v\,d\lambda
+                   +\int V\overline uv\,d\lambda.
+\]
+We use the self-adjoint operator associated to this closed form.
+
+\begin{lemma}\label{lem:ground}
+$H$ has a unique normalized strictly positive ground eigenfunction
+$\psi_0\in C^\infty(\mathcal Q)$, with $H\psi_0=E_0\psi_0$ and
+$\int\psi_0^2d\lambda=1$. It is gauge invariant. In particular the bottom
+eigenvalue of the gauge-invariant restriction is the same $E_0$.
+\end{lemma}
+\begin{proof}
+The free positive operator $H_0=-\sum_e\kappa_e\Delta_e^T$ has a complete
+matrix-coefficient eigenbasis by the compact-group Peter--Weyl theorem
+\cite{PeterWeyl}; its finite-multiplicity eigenvalues tend to infinity.
+The latter fact also follows from the explicit weights and bounds proved
+in Section \ref{sec:heat}. Its resolvent is compact. Bounded real
+multiplication by $V$ preserves self-adjointness and compact resolvent:
+for sufficiently negative $z$, the identity
+$(H-z)^{-1}=(H_0-z)^{-1}[I+V(H_0-z)^{-1}]^{-1}$ proves compactness by a
+convergent Neumann series. Hence the bottom of the spectrum is an
+eigenvalue. The inequality $|X|u||\leq|Xu|$ almost everywhere (obtain it
+first for $\sqrt{|u|^2+\epsilon^2}$ and then let $\epsilon\downarrow0$)
+shows that the modulus of a minimizing eigenfunction is also minimizing.
+Choose a nonnegative normalized one. The elliptic equation
+$H_0\psi_0=(E_0-V)\psi_0$ and local elliptic regularity, iterated with
+smooth $V$, give $\psi_0\in C^\infty$.
+
+For completeness, positivity needs no assumption about an unknown vacuum.
+The parabolic comparison inequality proved in Section \ref{sec:heat} is
+$e^{-tH}f\geq e^{-Mt}e^{-tH_0}f$ for $f\geq0$.
+At the explicit time $t_*$ in that section the kernel of $e^{-t_*H_0}$
+is at least $2^{-N}$. Thus
+$\psi_0(U)\geq e^{(E_0-M)t_*}2^{-N}\int\psi_0d\lambda>0$.
+The next theorem, whose calculation uses only this already established
+positivity and the eigenvalue equation, proves uniqueness: if $u$ is
+another ground eigenfunction, put $f=u/\psi_0$ in its identity. The
+result is $\int\psi_0^2\sum_{e,a}\kappa_e|X_{e,a}f|^2d\lambda=0$.
+The fields span each tangent space and $\mathcal Q$ is connected, so
+$f$ is constant. Gauge transformations preserve $H$, positivity and
+normalization, and consequently fix $\psi_0$ by this uniqueness.
+\end{proof}
+
+Set
+\begin{equation}\label{eq:vacuummeasure}
+ d\mu=\rho\,d\lambda,\qquad \rho=\psi_0^2,
+ \qquad \mu(F)=\int F\,d\mu.
+\end{equation}
+This measure is determined by the interacting Hamiltonian
+\eqref{eq:H}; no other measure is substituted for it below.
+Multiplication $\mathcal U f=\psi_0 f$ is a unitary map from
+$L^2(\mu)$ onto $L^2(\lambda)$, since
+$\|\mathcal U f\|_\lambda^2=\int|f|^2d\mu$, and division by the positive
+$\psi_0$ is its inverse. It also maps the respective gauge-invariant
+subspaces onto one another.
+
+\begin{theorem}\label{thm:ground-transform}
+For all smooth complex $f,g$,
+\begin{align}
+ Lg:=\mathcal U^{-1}(H-E_0)\mathcal Ug
+ &=-\sum_{e,a}\kappa_e
+       \bigl[X_{e,a}^2g+2(X_{e,a}\log\psi_0)X_{e,a}g\bigr]
+       \label{eq:groundop}\\
+ &=-\rho^{-1}\sum_{e,a}\kappa_e X_{e,a}(\rho X_{e,a}g),\nonumber\\
+ \langle\psi_0f,(H-E_0)\psi_0g\rangle_\lambda
+ &=\sum_{e,a}\kappa_e\int\overline{X_{e,a}f}X_{e,a}g\,d\mu.
+ \label{eq:groundform}
+\end{align}
+The identities extend to the corresponding closed form domains. For any
+nonconstant smooth $F$, the vector
+$u_F=\psi_0(F-\mu(F))$ is orthogonal to $\psi_0$, and
+\begin{equation}\label{eq:Rayleigh-general}
+ \frac{\langle u_F,(H-E_0)u_F\rangle}{\|u_F\|^2}
+ =\frac{\mu(\Gamma_\kappa(F,F))}
+        {\mu(|F|^2)-|\mu(F)|^2}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The product rule gives
+$X^2(\psi_0g)=\psi_0X^2g+2(X\psi_0)Xg+gX^2\psi_0$ for each $X$.
+Subtracting $g(H-E_0)\psi_0=0$ from $(H-E_0)(\psi_0g)$ proves
+\eqref{eq:groundop}; its divergence form uses $X\rho=2\psi_0X\psi_0$.
+Multiply by $\rho\overline f$ and integrate. The skew-adjointness of
+$X$ with respect to $\lambda$, proved above, gives
+$-\int\overline f X(\rho Xg)d\lambda
+=\int\rho\overline{Xf}Xg d\lambda$. Summing proves
+\eqref{eq:groundform}. On a compact manifold multiplication and division
+by the smooth positive $\psi_0$ are bounded on the first Sobolev space,
+so smooth approximation proves the form extension. Finally
+$\langle\psi_0,u_F\rangle=\mu(F)-\mu(F)=0$,
+$\|u_F\|^2=\mu(|F|^2)-|\mu(F)|^2$, and subtracting a constant leaves
+all derivatives unchanged. The variance is strictly positive because
+$F$ is nonconstant and $\rho>0$ everywhere. These observations prove
+\eqref{eq:Rayleigh-general}.
+\end{proof}
+
+In particular, put $m_C=\mu(W_C)$ and $r_C=\mu(|W_C|^2)$. For a simple
+edge loop the exact answer is
+\begin{equation}\label{eq:Rayleigh-loop}
+ Q_C=\frac{K_C}{2n}\,
+       \frac{n^2-r_C}{r_C-|m_C|^2}.
+\end{equation}
+The potential disappears from the displayed Dirichlet integrand because
+the exact ground-state equation was used. It remains in $\rho$, $m_C$,
+and $r_C$, as well as in the drift term in \eqref{eq:groundop}. Thus
+this identity does not set $V$ or any $b_p$ to zero.
+
+\section{Center symmetry, exact selection rules, and character limits}
+
+Assign a central element $z_e\in Z(\SU(n))$ to each physical edge, subject
+to
+\begin{equation}\label{eq:centercondition}
+ \prod_{r\in p}z_{e_r}^{\varepsilon_r}=1
+ \quad\hbox{for every retained plaquette }p.
+\end{equation}
+Define $\sigma_z(U)_e=z_eU_e$. This is a Haar-preserving diffeomorphism,
+commutes with the edge derivatives, and preserves every plaquette
+holonomy because the factors $z_e$ are central and obey
+\eqref{eq:centercondition}. It therefore preserves $H$ and, by uniqueness
+and positivity, $\psi_0$ and $\mu$. For every closed word,
+\[
+ W_C(\sigma_z U)=\zeta_C W_C(U),\qquad
+ \zeta_C=\prod_{r\in C}z_{e_r}^{\varepsilon_r}.
+\]
+Integration proves the exact selection rules
+\begin{equation}\label{eq:selection}
+ \mu(W_C)=0\quad\hbox{if }\zeta_C\ne1,
+ \qquad
+ \mu(W_C\overline{W_D})=0\quad\hbox{if }\zeta_C\overline{\zeta_D}\ne1.
+\end{equation}
+For powers and products the same proof applies with their product charge.
+
+On a periodic hypercubic lattice, multiply the links in one coordinate
+direction crossing one fixed periodic cut by $z\in Z(\SU(n))$, and
+leave the other links unchanged. Each oriented plaquette crosses that
+cut with total signed count zero, which verifies
+\eqref{eq:centercondition} directly. A loop with integer winding $q$
+in that direction acquires $z^q$. A primitive single winding has a
+nontrivial charge for a nonidentity suitable $z$, and therefore $m_C=0$.
+A loop whose winding in every direction is divisible by $n$ does not
+obtain a zero mean from this argument. Contractible plaquettes are
+center neutral; their means must be retained.
+
+For a charged simple loop the quotient becomes
+\begin{equation}\label{eq:chargedquotient}
+ Q_C=\frac{K_C}{2n}\left(\frac{n^2}{r_C}-1\right),
+ \qquad 0<r_C<n^2.
+\end{equation}
+The strict inequalities follow from $\rho>0$ and the fact that the
+holonomy map of a simple loop has image all of $\SU(n)$: fix the other
+edges and vary any one used edge. Some images have trace zero and
+others have trace $n$, and neighborhoods of both have positive Haar
+measure. In particular center symmetry does not set $r_C$ equal to one.
+
+\begin{lemma}\label{lem:Haar-loop}
+For every simple edge loop,
+\[
+ \int W_Cd\lambda=0,\quad
+ \int|W_C|^2d\lambda=1,\quad
+ \int(n^2-|W_C|^2)d\lambda=n^2-1.
+\]
+\end{lemma}
+\begin{proof}
+Condition on every edge except one appearing once. Its loop holonomy
+is $A U_e^{\pm1}B$ for fixed group matrices $A,B$, and is Haar distributed
+by left and right invariance and invariance under inversion. It suffices
+to integrate over one Haar matrix $U$. Its mean trace is zero since
+$U\mapsto zU$ preserves Haar for a nonidentity central $z$.
+For arbitrary $D$, the matrix $\int UDU^\dagger dU$ commutes with every
+$\SU(n)$ matrix by invariance, and so is $(\tr D)I_n/n$.
+To see the scalar conclusion without an additional representation
+assumption, commuting with diagonal unitary matrices kills the
+off-diagonal entries and commuting with determinant-one unitary changes
+of coordinate axes makes all diagonal entries equal. Set $D=E_{jl}$
+and compare entries to get
+$\int U_{ij}\overline{U_{kl}}dU=\delta_{ik}\delta_{jl}/n$.
+Taking $j=i$, $l=k$ and summing $i,k$ gives $\int|\tr U|^2dU=1$.
+The last asserted integral follows by subtraction.
+\end{proof}
+
+There is also an exact character map that retains the second moment.
+The conjugation action $A\mapsto UAU^{-1}$ on $\operatorname{End}(\mathbb C^n)$
+has trace $\tr U\tr U^{-1}=|\tr U|^2$. The invariant decomposition into
+scalar and traceless matrices has characters $1$ and $\chi_{\rm ad}$.
+Consequently
+\begin{equation}\label{eq:adjointmoment}
+ |\tr U|^2=1+\chi_{\rm ad}(U),\quad
+ r_C=1+\mu(\chi_{\rm ad}(H_C)),\quad
+ -1\leq\chi_{\rm ad}(U)\leq n^2-1.
+\end{equation}
+This derivation proves the equality and both bounds directly; the adjoint
+character is center neutral, so \eqref{eq:selection} imposes no zero
+expectation on it.
+
+\begin{proposition}\label{prop:symmetryinsufficient}
+Center and gauge invariance, positivity of a smooth density, and the
+pointwise character bounds alone imply no strictly positive uniform
+lower bound on $r_C$ and no upper bound strictly smaller than $n^2$.
+This assertion concerns those premises alone, not the narrower family
+of ground states of \eqref{eq:H}.
+\end{proposition}
+\begin{proof}
+Let $h(U)=|W_C(U)|^2$. Its range includes $0$ and $n^2$.
+For an explicit trace-zero matrix take
+$\zeta=e^{2\pi i/n}$ and
+$A=\alpha\operatorname{diag}(1,\zeta,\ldots,\zeta^{n-1})$ with
+$\alpha=e^{-\pi i(n-1)/n}$. The geometric sum is zero and
+$\det A=\alpha^n\zeta^{n(n-1)/2}=1$. Choose one edge to realize $A$
+as holonomy; identity holonomy realizes $n^2$.
+For each $s>0$, the densities
+\[
+ \rho_s^- =\frac{e^{-sh}}{\int e^{-sh}d\lambda},\qquad
+ \rho_s^+ =\frac{e^{sh}}{\int e^{sh}d\lambda}
+\]
+are smooth, strictly positive, gauge invariant, and invariant under
+every center transformation of the stated type. For $\epsilon>0$, the
+set $h<\epsilon/2$ is nonempty open and has Haar measure $a_\epsilon>0$.
+Its contribution to the first denominator is at least
+$a_\epsilon e^{-s\epsilon/2}$, whereas the numerator mass of $h\geq\epsilon$
+is at most $e^{-s\epsilon}$. Thus this latter probability tends to zero
+and $\int h\rho_s^-d\lambda\to0$ by boundedness. Apply the same argument
+to $n^2-h$ for $\rho_s^+$ to obtain $\int h\rho_s^+d\lambda\to n^2$.
+For a nontrivially charged loop, both measures also have zero loop mean
+by the selection-rule proof. No claim is made that these constructed
+densities arise from positive Wilson plaquette coefficients in
+\eqref{eq:H}; their role is to prove exactly the asserted insufficiency
+of symmetry and character bounds alone.
+\end{proof}
+
+\section{Explicit all-coupling finite-volume estimates}\label{sec:heat}
+
+The full Hamiltonian supplies more information than those symmetry
+premises. The following bounds use it and hold for arbitrary positive
+values of all retained couplings. Define
+\begin{equation}\label{eq:constants}
+ \kappa_* =\min_{e\in\mathsf E}\kappa_e,
+ \quad D=n^2-2,
+ \quad t_* =\frac{2(D\log2+\log3)}{(n-1)\kappa_*},
+ \quad a_* =3^{-2N}e^{-2Mt_*}=3^{-2N}e^{-4nBt_*}.
+\end{equation}
+These constants are dimensionally consistent: $t_*$ is inverse energy,
+$M$ is energy, and $a_*$ is dimensionless. They are estimates, not a
+claim of optimal constants.
+
+\begin{lemma}\label{lem:heat}
+The integral kernel of $P_t=e^{-tH_0}$ satisfies
+\begin{equation}\label{eq:kernelbounds}
+ 2^{-N}\leq p_{t_*}(U,V)\leq(3/2)^N
+ \qquad\hbox{for all }U,V\in\mathcal Q.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We give the representation constants to fix the heat time and Lie
+metric exactly. The irreducibles of $\SU(n)$ are indexed by
+$m=(m_1,\ldots,m_{n-1})\in\mathbb Z_{\geq0}^{n-1}$, with
+$\lambda_m=\sum_i m_i\omega_i$. In the usual Euclidean root space
+$\{x\in\mathbb R^n:\sum x_i=0\}$ with roots $e_i-e_j$ of squared
+length two, set
+\[
+ \omega_i=\sum_{j=1}^i e_j-\frac in\sum_{j=1}^n e_j,
+ \quad \rho_{\rm rt}=\sum_{i=1}^{n-1}\omega_i.
+\]
+The dimension and the $g_T$-Casimir eigenvalue are
+\begin{align}
+ d_m&=\prod_{1\leq i<j\leq n}
+       \frac{\sum_{q=i}^{j-1}m_q+j-i}{j-i},\label{eq:dim}\\
+ C_m&=\frac12(\lambda_m,\lambda_m+2\rho_{\rm rt}).\label{eq:casimir}
+\end{align}
+These standard representation identities can be read in row coordinates
+in \cite{PolychronakosSfetsos}. To spell out the dictionary and constants,
+put $\ell_i=\sum_{q=i}^{n-1}m_q$, $\ell_n=0$, and $L=\sum_i\ell_i$.
+The highest weight has coordinates $\ell_i-L/n$, and
+$2\rho_{{\rm rt},i}=n+1-2i$. Thus \eqref{eq:casimir} says explicitly
+\[
+ C_m=\frac12\left[\sum_{i=1}^n\ell_i(\ell_i+n+1-2i)-\frac{L^2}{n}\right].
+\]
+The dimension formula follows from the character alternant
+$\det(z_i^{\ell_j+n-j})/\det(z_i^{n-j})$ by letting all $z_i$ tend to
+one: the first nonzero alternant terms are the two Vandermonde
+determinants in $\ell_j+n-j$ and $n-j$, whose ratio is
+\eqref{eq:dim}. The Casimir formula follows by applying the Cartan and
+root decomposition of the quadratic Casimir to a highest weight
+vector: the Cartan term gives $(\lambda_m,\lambda_m)$, and commuting
+each positive-root raising operator past its lowering operator gives
+$2(\lambda_m,\rho_{\rm rt})$; the factor $1/2$ is fixed by
+\eqref{eq:fundcasimir}. Hence the metric normalization is the one used
+in \eqref{eq:H}, rather than an unspecified heat-kernel convention.
+
+Write $k=\sum_i m_i$. Direct scalar multiplication gives
+$(\omega_i,\rho_{\rm rt})=i(n-i)/2$. Since
+$(\lambda_m,\lambda_m)\geq0$ and $i(n-i)\geq n-1$,
+\[
+ C_m\geq\frac{n-1}{2}k,\qquad
+ d_m\leq(k+1)^{n(n-1)/2}.
+\]
+The number of $m$ with this sum $k$ is
+$\binom{k+n-2}{n-2}\leq(k+1)^{n-2}$: the first $n-2$ entries determine
+the last, and each has at most $k+1$ choices. This also covers $n=2$.
+
+Peter--Weyl orthogonality and the Casimir action give the single-edge
+heat kernel
+\[
+ q_s(g)=\sum_m d_m e^{-sC_m}\chi_m(g).
+\]
+Indeed convolution by $d_m\chi_m$ projects onto the matrix coefficients
+of the corresponding irreducible (with the inverse in the kernel
+argument if needed), and the heat operator multiplies that subspace by
+$e^{-sC_m}$. The series is absolutely uniformly convergent for every
+$s>0$: a unitary representation has $|\chi_m(g)|\leq d_m$, and the
+above bounds majorize the nonconstant terms by a polynomial in $k$
+times $e^{-s(n-1)k/2}$. This also proves finite eigenvalue multiplicities
+and divergence of the eigenvalues used in Lemma \ref{lem:ground}.
+The constant representation contributes one. For edge $e$ and time $t$,
+\begin{align*}
+ |q_{\kappa_et}(g)-1|
+ &\leq\sum_{k\geq1}(k+1)^D e^{-\kappa_et(n-1)k/2}\\
+ &\leq\sum_{k\geq1}\left(2^D e^{-\kappa_et(n-1)/2}\right)^k.
+\end{align*}
+The second inequality uses $k+1\leq2^k$ for integer $k\geq1$, proved
+by induction. At $t=t_*$ the ratio is at most $1/3$, so the sum is at
+most $1/2$. Thus $1/2\leq q_{\kappa_et_*}\leq3/2$. The free generator
+is the sum of commuting edge generators on the product space, so its
+kernel is the product of these $N$ kernels. This proves
+\eqref{eq:kernelbounds}.
+\end{proof}
+
+\begin{lemma}\label{lem:comparison}
+For every continuous $f\geq0$ and $t\geq0$,
+\begin{equation}\label{eq:semigroupcomparison}
+ e^{-Mt}P_tf\leq e^{-tH}f\leq P_tf.
+\end{equation}
+Consequently the exact vacuum satisfies
+\begin{equation}\label{eq:densitybounds}
+ \frac{\max\psi_0}{\min\psi_0}\leq3^Ne^{Mt_*},\qquad
+ \frac{\min\rho}{\max\rho}\geq a_*,\qquad
+ a_*\leq\rho(U)\leq a_*^{-1}\quad(U\in\mathcal Q).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Write $\mathcal A=\sum_e\kappa_e\Delta_e^T$, so
+$P_t=e^{t\mathcal A}$. The parabolic maximum principle on this compact
+manifold says that a solution of
+$(\partial_t-\mathcal A+V)u\geq0$ with nonnegative initial data is
+nonnegative when $V\geq0$. One direct proof replaces $u$ by
+$e^{-ct}u+\epsilon$ with $c>0$, considers a first negative minimum,
+and uses that $\partial_tu\leq0$, $\mathcal Au\geq0$ at that point;
+the positive zero-order coefficient makes the differential inequality
+impossible. Letting $\epsilon\downarrow0$ proves the result. Smooth
+approximation covers continuous initial data.
+Apply this principle first to $u=e^{-tH}f$ to get $u\geq0$.
+The free solution $v=P_tf$ is also nonnegative by the same argument
+with $V=0$. Now
+$(\partial_t-\mathcal A+V)v=Vv\geq0$, so $v-u\geq0$.
+For $w=e^{-Mt}v$ the corresponding expression is
+$(V-M)w\leq0$, so $u-w\geq0$. This proves
+\eqref{eq:semigroupcomparison} with no approximation of $V$.
+
+Apply it to $f=\psi_0$ and use
+$e^{-tH}\psi_0=e^{-tE_0}\psi_0$. At time $t_*$, letting
+$I_0=\int\psi_0d\lambda>0$, Lemma \ref{lem:heat} gives
+\[
+ e^{(E_0-M)t_*}2^{-N}I_0
+ \leq\psi_0(U)\leq e^{E_0t_*}(3/2)^NI_0.
+\]
+Take the ratio of upper to lower bounds and square to obtain the first
+two assertions in \eqref{eq:densitybounds}. Since $\int\rho d\lambda=1$,
+$\min\rho\leq1\leq\max\rho$. The ratio bound then gives
+$\min\rho\geq a_*\max\rho\geq a_*$ and
+$\max\rho\leq\min\rho/a_*\leq a_*^{-1}$, as required.
+\end{proof}
+
+\begin{theorem}\label{thm:finite-bounds}
+For every simple edge loop,
+\begin{equation}\label{eq:momentbounds}
+ a_*\leq r_C\leq n^2-a_*(n^2-1),\qquad
+ a_*(n^2-1)\leq n^2-r_C\leq n^2-a_*.
+\end{equation}
+For every such loop carrying a nontrivial center charge,
+\begin{equation}\label{eq:quotientbounds}
+ \frac{K_C}{2n}\frac{a_*(n^2-1)}{n^2-a_*(n^2-1)}
+ \leq Q_C\leq
+ \frac{K_C}{2n}\frac{n^2-a_*}{a_*}.
+\end{equation}
+The full finite-lattice spectral gap, and also its gauge-invariant
+restriction above the unique vacuum, obey the genuine lower bound
+\begin{equation}\label{eq:gapbound}
+ \operatorname{gap}(H)\geq a_*\kappa_*\frac{n^2-1}{2n}>0.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The density inequality $\rho\geq a_*$ and Lemma \ref{lem:Haar-loop}
+give $r_C\geq a_*$ and
+$n^2-r_C\geq a_*(n^2-1)$ by integrating the two nonnegative functions.
+These prove all of \eqref{eq:momentbounds}. For a charged loop the
+function $r\mapsto(n^2-r)/r$ is strictly decreasing for $r>0$;
+substitute the two endpoints into \eqref{eq:chargedquotient} to get
+\eqref{eq:quotientbounds}.
+
+For \eqref{eq:gapbound}, first the exact free-product gap is
+$g_0=\kappa_*C_F$. To verify the least nonzero single-edge Casimir,
+compute
+$(\omega_i,\omega_j)=\min(i,j)-ij/n>0$ for $1\leq i,j\leq n-1$.
+If $m_i\geq1$, all coefficients in
+$C(\lambda_m)-C(\omega_i)$ are nonnegative in the expansion in
+fundamental weights. Hence
+\[
+ C_m\geq C(\omega_i)
+ =\frac{i(n-i)(n+1)}{2n}\geq\frac{n^2-1}{2n}.
+\]
+Equality occurs for a fundamental or antifundamental representation.
+On the product space each nonconstant matrix coefficient has at least
+one such nonzero edge term; taking a fundamental coefficient on an
+edge with $\kappa_e=\kappa_*$ realizes $g_0$. Peter--Weyl expansion
+therefore proves the free Poincare inequality
+$\mathcal E_\lambda(f,f)\geq g_0\Var_\lambda(f)$.
+For any complex $f$, the variational identity
+$\Var_\mu(f)=\min_{c\in\mathbb C}\int|f-c|^2d\mu$ gives
+\[
+ \Var_\mu(f)\leq(\max\rho)\Var_\lambda(f),\qquad
+ \mathcal E_\mu(f,f)\geq(\min\rho)\mathcal E_\lambda(f,f).
+\]
+Consequently
+$\mathcal E_\mu(f,f)\geq[(\min\rho)/(\max\rho)]g_0\Var_\mu(f)
+\geq a_*g_0\Var_\mu(f)$.
+The exact unitary ground-state transform identifies this weighted
+Poincare infimum with the spectral gap of $H$. Restricting the infimum
+to gauge-invariant functions can only increase it, and the ground
+state belongs to that subspace by Lemma \ref{lem:ground}.
+\end{proof}
+
+The quotient bounds and the spectral bound have different logical
+roles: the upper bound on any one orthogonal trial quotient is an upper
+bound on the spectral gap, while a lower bound on that one quotient
+alone is not. Equation \eqref{eq:gapbound} is valid because its proof
+covers every form-domain vector. All constants in
+\eqref{eq:constants} retain volume and coupling dependence. For example,
+$a_*$ decreases exponentially in $N$ even with $B$ fixed, and also
+decreases with $Bt_*$. Thus none of these inequalities asserts a
+strictly positive lower bound after removing a cutoff or taking
+infinite volume, and none proves that the limiting gap vanishes.
+
+For a normalization check only, if $V$ is identically zero then
+$\psi_0=1$, $r_C=1$, and $m_C=0$ for a simple loop, yielding
+$Q_C=K_CC_F$. This is an exact special case of the formula, not a
+replacement for the positive-coupling vacuum. The stated interacting
+results above apply with all $b_p>0$.
+
+\section{Disjoint parallel plaquettes, covariance Fourier sums, and spectral weight}
+
+Let $p_j$, $j=0,\ldots,m-1$, be simple plaquettes whose physical-edge
+supports are pairwise disjoint. Define
+\[
+ W_j=W_{p_j},\quad f_j=W_j-\mu(W_j),\quad
+ c_j(k)=e^{ikj},\quad F_k=\sum_{j=0}^{m-1}c_j(k)f_j.
+\]
+The mean subtraction is necessary for center-neutral plaquettes. It
+gives $\mu(F_k)=0$ for every real $k$ without any translation assumption.
+For each edge at most one $f_j$ has a nonzero derivative, so pointwise
+\begin{equation}\label{eq:disjointnumerator}
+ \Gamma_\kappa(F_k,F_k)
+ =\sum_j|c_j(k)|^2\Gamma_\kappa(W_j,W_j)
+ =\sum_j\frac{K_j}{2n}(n^2-|W_j|^2),
+ \quad K_j=\sum_{e\in p_j}\kappa_e.
+\end{equation}
+In particular its exact vacuum expectation is independent of $k$:
+\begin{equation}\label{eq:Ek}
+ E_k:=\mu(\Gamma_\kappa(F_k,F_k))
+      =\sum_j\frac{K_j}{2n}(n^2-r_j),\qquad r_j=\mu(|W_j|^2).
+\end{equation}
+Edge disjointness says nothing about statistical independence in
+$\mu$. The full variance is
+\begin{equation}\label{eq:Dk}
+ D_k:=\mu(|F_k|^2)
+ =\sum_{j,l=0}^{m-1}e^{ik(j-l)}C_{jl},\qquad
+ C_{jl}=\mu\bigl[(W_j-\mu W_j)\overline{(W_l-\mu W_l)}\bigr].
+\end{equation}
+All plaquette interactions, including plaquettes meeting more than one
+of these supports or connecting them indirectly, remain in $C_{jl}$.
+The covariance matrix is Hermitian positive semidefinite because its
+quadratic form is the displayed squared $L^2(\mu)$ norm.
+In fact $D_k>0$: if $F_k$ were constant, varying an edge unique to $p_j$
+would force $W_j$ to be constant, which it is not. Positivity of $\rho$
+then gives strictly positive variance. The exact quotient is
+\begin{equation}\label{eq:disjointquotient}
+ Q_k=\frac{E_k}{D_k}.
+\end{equation}
+
+Suppose now the specified finite lattice and its full lists of couplings
+are invariant under a translation $\tau$ of order $m$ taking $p_j$ to
+$p_{j+1}$ cyclically with their chosen orientations. Such a translation
+preserves $H$ and Haar measure and therefore $\psi_0$ and $\mu$ by the
+same uniqueness argument as for gauge transformations. There are then
+constants $K_j=K$, $r_j=r$ and a cyclic covariance
+\[
+ C(d)=\mu(f_{l+d}\overline{f_l}),\qquad d\in\mathbb Z/m\mathbb Z,
+\]
+independent of $l$. For the allowed cyclic wave numbers
+$k=2\pi q/m$, $q\in\{0,\ldots,m-1\}$, set
+$\widehat C(k)=\sum_{d=0}^{m-1}e^{ikd}C(d)$. Regrouping the full
+double sum in \eqref{eq:Dk}, with $j=l+d$, proves
+\begin{equation}\label{eq:Fourierquotient}
+ D_k=m\widehat C(k),\qquad
+ E_k=m\frac{K}{2n}(n^2-r),\qquad
+ Q_k=\frac{K(n^2-r)}{2n\widehat C(k)}.
+\end{equation}
+Here $\widehat C(k)$ is real and strictly positive because it equals
+$D_k/m$; $C(-d)=\overline{C(d)}$ also proves reality directly.
+There is no algebraic $k^2$ factor in this numerator. Obtaining a
+small quotient in this family requires the actual interacting ratio
+on the right of \eqref{eq:Fourierquotient} to become small. An assertion
+that all covariances vanish, or that the denominator has prescribed
+small-$k$ behavior, is not contained in edge disjointness.
+
+For real plaquette energy observables $A_j=n-\Rea W_j$, replace $f_j$
+by $A_j-\mu A_j$ and use the same coefficients. All support and covariance
+arguments remain exact, but the local numerator is
+\begin{equation}\label{eq:real-localnumerator}
+ e_j^{\rm real}
+ =\frac{K_j}{4}\left[n-\mu\bigl(\Rea\tr(H_{p_j}^2)\bigr)
+                       -\frac2n\mu\bigl((\Ima W_j)^2\bigr)\right]
+\end{equation}
+by \eqref{eq:realenergy}. Thus under the same cyclic invariance
+$Q_k=e^{\rm real}/\widehat C_A(k)$ with $\widehat C_A$ the full covariance
+transform of $A_j$. Replacing this local numerator by the complex
+Wilson numerator would lose terms unless equality is proved in the
+particular group and observable.
+
+Finally let $\mathsf P_{H-E_0}(\cdot)$ be the spectral projection measure
+of the nonnegative self-adjoint operator $H-E_0$ on the invariant
+Hilbert space. The normalized state and its scalar spectral probability
+measure are
+\begin{equation}\label{eq:spectralmeasure}
+ v_k=\frac{\psi_0F_k}{\sqrt{D_k}},\qquad
+ \nu_k(A)=\langle v_k,\mathsf P_{H-E_0}(A)v_k\rangle.
+\end{equation}
+The orthogonality $\langle\psi_0,v_k\rangle=0$ and uniqueness of the
+vacuum imply $\nu_k(\{0\})=0$. The spectral theorem and the ground-state
+identity prove the exact interacting first moment
+\begin{equation}\label{eq:firstmoment}
+ \int_{[0,\infty)}\omega\,d\nu_k(\omega)=Q_k=\frac{E_k}{D_k}.
+\end{equation}
+For every $\epsilon>0$, integrating
+$\epsilon\mathbf 1_{[\epsilon,\infty)}(\omega)\leq\omega$ gives
+\[
+ \nu_k([\epsilon,\infty))\leq Q_k/\epsilon.
+\]
+This is the exact connection between the computed variation and
+low-energy spectral weight. It makes no unproved assertion about
+$\widehat C(k)$, a continuum Hamiltonian, an infinite-volume vacuum,
+or convergence of the measures $\nu_k$.
+
+\section{Verification and scope}
+
+The companion script \texttt{check\_wilson\_exact.py} uses exact SymPy
+arithmetic. On 8 September 2026 it completed with 1,012 exact scalar
+assertions, together with exact matrix-entry assertions. It verifies
+the basis, Fierz and Casimir constants for $\SU(2)$, $\SU(3)$, $\SU(4)$;
+the factor-four metric dictionary; explicit noncommuting $\SU(3)$
+positive and negative edge variations and their cross contractions;
+real trace energy; a repeated physical edge with opposite signs;
+and the one-coordinate product-rule identity underlying
+\eqref{eq:groundform}. The proofs above are for all $n\geq2$ and are
+not inferred from those finite checks. The script does not compute
+$\psi_0$, the interacting covariance matrix, or a continuum spectrum.
+
+All main identities here concern the exact finite interacting
+Hamiltonian \eqref{eq:H}. They give explicit trial vectors and their
+exact relation to its spectral measure, as well as a positive but
+nonuniform finite-volume spectral bound. These proved relations can
+be carried into a separate continuum or geometric construction only
+through a proved state-space and operator map with controlled limits;
+no such map is claimed to be established by the present finite-lattice
+calculation.
+
+\begin{thebibliography}{9}
+\bibitem{PeterWeyl}
+F. Peter and H. Weyl,
+\emph{Die Vollst\"andigkeit der primitiven Darstellungen einer
+geschlossenen kontinuierlichen Gruppe},
+Mathematische Annalen \textbf{97} (1927), 737--755.
+\href{https://doi.org/10.1007/BF01447892}{doi:10.1007/BF01447892}.
+This is the foundational compact-group completeness theorem used to
+identify the complete free spectral resolution.
+
+\bibitem{PolychronakosSfetsos}
+A. P. Polychronakos and K. Sfetsos,
+\emph{Composing arbitrarily many $SU(N)$ fundamentals},
+Nuclear Physics B \textbf{994} (2023), 116314,
+\href{https://arxiv.org/abs/2305.19345}{arXiv:2305.19345}.
+The row/weight dictionary and dimension/Casimir expressions are given
+in Sections 2 and 4, including equation (4.30). Our symbol $n$ is that
+paper's $N$; the derivations and all bounds used here retain the
+specified anti-Hermitian basis convention.
+\end{thebibliography}
+\end{document}

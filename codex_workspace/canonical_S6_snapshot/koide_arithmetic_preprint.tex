@@ -1,0 +1,410 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{natbib}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.52em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{test}[theorem]{Open problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Nm}{\operatorname{Nm}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Open}{\textbf{OPEN.}\ }
+
+\title{The Koide Quadratic Cone as a Lorentzian Determinant\\
+\large Vieta dynamics and a ternary defect-one counting problem}
+\author{}
+\date{Specialist-verification draft, 4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Writing the charged-lepton Koide relation in square-root mass coordinates produces a quadratic cone of signature $(1,2)$.  We give an explicit orthogonal identification of this cone with the determinant-zero locus in $\operatorname{Sym}_2(\R)$.  In the exact period convention $\Pi=[Z\mid I_2]$, $Z=\left(\begin{smallmatrix}6\mu&\tau\\ \beta&\mu\end{smallmatrix}\right)$, used in a recent proposed complex-torus construction on $S^6$, the same map identifies the Koide cone with the zero-discriminant locus in the ambient imaginary-coefficient space.  This coefficient-space calculation neither assumes nor establishes the claimed global construction.  The arithmetic part is independent of it.  For
+\[
+ \Delta(x,y,z)=4(xy+xz+yz)-(x^2+y^2+z^2),
+\]
+we study ordered positive solutions of $\Delta=-1$ reduced by the Vieta wall $z\geq4(x+y)$.  An exact integral change of variables identifies them with a chamber on
+\[
+ a^2-3q^2-18n^2=-2,
+ \qquad z=4a+17n.
+\]
+The three Vieta substitutions are integral reflections of the Lorentzian
+form $\Delta$; on unordered positive solutions they form a forest in which
+every component has one reduced root.  The two boundary faces of the ternary
+chamber are completely described by negative-Pell recurrences and converge
+to the two null directions bounding the archimedean sector.
+The local densities, the archimedean chamber factor, the Gorodnik--Oh--Shah
+sector hypotheses, and the normalization against Borovoi's Tamagawa measure
+are all made explicit.  A $2$-adic sign-reversing, measure-preserving
+bijection proves that Borovoi's adelic coefficient is one, yielding the
+unconditional explicit main term.  An exact HNF parametrization by ideals of
+$\mathbb Z[\sqrt3]$, unique unit-orbit descent, and a sharp floor formula
+identify every counted point with multiplicity one.  Direct verification of
+Benoist--Oh effective well-roundedness then gives
+$R(X)=C_0X+O(X^{1-\eta})$ for some unspecified $\eta>0$.  The same shell is
+identified exactly with a finite union of primitive hyperbolic conjugacy
+classes in a cocompact quaternionic lattice, but its standard radial height
+is $7a+15\sqrt2\,n$, not the sharp height $4a+17n$.  Exact enumeration through
+height $10^8$ gives $R(10^8)=3{,}536{,}002$.  The primary-source audit finds
+no theorem proving the pointwise square-root discrepancy for the exact
+five-wall cutoff; that stronger estimate remains open.
+\end{abstract}
+
+\paragraph{Status.}
+This is a mathematical draft for independent checking.  It makes no claim that the Koide relation is a law of particle physics, no claim about the existence of the proposed complex structure on $S^6$, and no Yang--Mills claim.  The exact algebraic identities, parametrization, theorem audit, and bounded census are stated with their verification data in the canonical source modules included below.
+
+\section{The Koide form and its Lorentzian model}
+
+For a triple of nonnegative masses $m_1,m_2,m_3$, put $r_i=\sqrt{m_i}$.  The Koide relation may be written
+\begin{equation}\label{eq:koide-relation}
+ m_1+m_2+m_3=\frac23\left(\sqrt{m_1}+\sqrt{m_2}+\sqrt{m_3}\right)^2,
+\end{equation}
+which was introduced in the charged-lepton context by \citet{Koide_1983}.  The circle interpretation of \citet{Kocik_2012} supplies a separate Euclidean realization.  Here the relevant object is the homogeneous quadratic form
+\begin{equation}\label{eq:QK}
+ Q_K(r_1,r_2,r_3)
+ :=\frac23(r_1+r_2+r_3)^2-(r_1^2+r_2^2+r_3^2).
+\end{equation}
+Thus \eqref{eq:koide-relation} is $Q_K(r)=0$.
+
+Define the orthogonal Fourier coordinates
+\begin{equation}\label{eq:Fourier}
+ \mathcal F(r_1,r_2,r_3)
+ =\left(
+ \frac{r_1+r_2+r_3}{\sqrt3},
+ \frac{r_1-r_3}{\sqrt2},
+ \frac{r_1+r_3-2r_2}{\sqrt6}
+ \right)=:(h,x,y),
+\end{equation}
+and the symmetric-matrix embedding
+\begin{equation}\label{eq:iota}
+ \iota(h,x,y)=
+ \begin{pmatrix}h+y&x\\x&h-y\end{pmatrix}.
+\end{equation}
+
+\begin{theorem}[Orthogonal determinant model]\label{thm:orthogonal-model}
+The map $\mathcal F$ is orthogonal and
+\begin{equation}\label{eq:lorentz-identity}
+ Q_K(r)=h^2-x^2-y^2=\det\iota(h,x,y).
+\end{equation}
+Its inverse is
+\begin{align}
+ r_1&=\frac h{\sqrt3}+\frac x{\sqrt2}+\frac y{\sqrt6},\label{eq:F-inv1}\\
+ r_2&=\frac h{\sqrt3}-\frac{2y}{\sqrt6},\label{eq:F-inv2}\\
+ r_3&=\frac h{\sqrt3}-\frac x{\sqrt2}+\frac y{\sqrt6}.\label{eq:F-inv3}
+\end{align}
+For $r\in\R_{\geq0}^3\setminus\{0\}$, the Koide equation is equivalent to the assertion that $\iota(\mathcal F(r))$ is positive semidefinite of rank one.  Equivalently, the Euclidean angle between $r$ and $(1,1,1)/\sqrt3$ is $\pi/4$.
+\end{theorem}
+
+\begin{proof}
+The three rows of the matrix in \eqref{eq:Fourier} form an orthonormal basis.  Hence
+\[
+ r_1^2+r_2^2+r_3^2=h^2+x^2+y^2,
+ \qquad (r_1+r_2+r_3)^2=3h^2,
+\]
+and substitution in \eqref{eq:QK} gives \eqref{eq:lorentz-identity}.  Transposition of the orthogonal matrix gives \eqref{eq:F-inv1}--\eqref{eq:F-inv3}.  If $r\in\R_{\geq0}^3\setminus\{0\}$, then $h>0$.  On the null cone, $h^2=x^2+y^2$, so $\iota$ has trace $2h>0$, determinant zero, and eigenvalues $2h,0$.  Finally,
+\[
+ \cos\angle\left(r,\frac{(1,1,1)}{\sqrt3}\right)
+ =\frac{h}{\sqrt{h^2+x^2+y^2}}=\frac1{\sqrt2}.
+\]
+All implications reverse.
+\end{proof}
+
+\begin{corollary}[Exact phase sector]
+\label{cor:exact-phase-sector}
+Let $r\in\R^3$ satisfy $Q_K(r)=0$, and suppose that the first Fourier
+coordinate in \eqref{eq:Fourier} satisfies $h>0$.  There is a unique
+$\theta\in\R/(2\pi\Z)$ such that
+\begin{align}
+ r_1&=\frac h{\sqrt3}
+ \left(1+\sqrt2\cos\left(\theta-\frac\pi6\right)\right),
+ \label{eq:phase-r1}\\
+ r_2&=\frac h{\sqrt3}
+ \left(1+\sqrt2\cos\left(\theta+\frac\pi2\right)\right),
+ \label{eq:phase-r2}\\
+ r_3&=\frac h{\sqrt3}
+ \left(1+\sqrt2\cos\left(\theta-\frac{5\pi}6\right)\right).
+ \label{eq:phase-r3}
+\end{align}
+Moreover, $r_1,r_2,r_3\geq0$ if and only if
+\begin{equation}
+ \theta\in
+ \left[\frac\pi{12},\frac\pi4\right]
+ \cup\left[\frac{3\pi}4,\frac{11\pi}{12}\right]
+ \cup\left[\frac{17\pi}{12},\frac{19\pi}{12}\right]
+ \pmod {2\pi}.
+ \label{eq:nonnegative-phase-arcs}
+\end{equation}
+At each endpoint exactly one coordinate vanishes, and the ratio of the two
+nonzero coordinates is $2+\sqrt3$ or $(2+\sqrt3)^{-1}=2-\sqrt3$.
+\end{corollary}
+
+\begin{proof}
+The null equation and $h>0$ give
+$x=h\cos\theta$, $y=h\sin\theta$ for a unique
+$\theta\in\R/(2\pi\Z)$.  Substitution in
+\eqref{eq:F-inv1}--\eqref{eq:F-inv3}, followed by the three elementary
+angle-addition identities, gives
+\eqref{eq:phase-r1}--\eqref{eq:phase-r3}.
+
+The inequality $1+\sqrt2\cos\phi\geq0$ fails precisely for
+$3\pi/4<\phi<5\pi/4$ modulo $2\pi$.  Applied to the three phases in
+\eqref{eq:phase-r1}--\eqref{eq:phase-r3}, the three excluded open arcs are
+\[
+ \left(\frac{11\pi}{12},\frac{17\pi}{12}\right),\qquad
+ \left(\frac\pi4,\frac{3\pi}4\right),\qquad
+ \left(\frac{19\pi}{12},2\pi\right)
+ \cup\left(0,\frac\pi{12}\right).
+\]
+Their complement is exactly \eqref{eq:nonnegative-phase-arcs}.  If, for
+example, $r_3=0$, the unchanged equation $Q_K(r)=0$ becomes
+\[
+ r_1^2-4r_1r_2+r_2^2=0,
+\]
+so $r_1/r_2=2\pm\sqrt3$.  Cyclic symmetry proves the assertion at every
+endpoint.
+\end{proof}
+
+\subsection{The canonical period discriminant as an ambient model}
+
+The recent online manuscript \citet{AlpogeS6_2026} uses period functions
+$\tau,\mu,\beta$ and the exact convention
+\begin{equation}\label{eq:canonical-complex-period}
+ Z=\begin{pmatrix}6\mu&\tau\\ \beta&\mu\end{pmatrix},
+ \qquad \Pi=[Z\mid I_2].
+\end{equation}
+Write
+\[
+ t=\operatorname{Im}\tau,\qquad
+ m=\operatorname{Im}\mu,\qquad
+ \varrho=\operatorname{Im}\beta.
+\]
+Relative to the period-lattice basis
+$(\widehat\gamma,\widehat u,\widehat w,\widehat\delta)$ and the interleaved
+real codomain order
+$(\operatorname{Re}z_1,\operatorname{Im}z_1,
+  \operatorname{Re}z_2,\operatorname{Im}z_2)$,
+the realification of \eqref{eq:canonical-complex-period} is
+\begin{equation}\label{eq:canonical-real-period}
+ P(\tau,\mu,\beta)=
+ \begin{pmatrix}
+  6\operatorname{Re}\mu&\operatorname{Re}\tau&1&0\\
+  6m&t&0&0\\
+  \operatorname{Re}\beta&\operatorname{Re}\mu&0&1\\
+  \varrho&m&0&0
+ \end{pmatrix}.
+\end{equation}
+For comparison with the Lorentz cone, define the auxiliary symmetric
+coefficient matrix
+\begin{equation}\label{eq:symmetric-coefficient-matrix}
+ S(t,m,\varrho)
+ :=\begin{pmatrix}t&\sqrt6\,m\\ \sqrt6\,m&\varrho\end{pmatrix}.
+\end{equation}
+The matrix $S$ represents the same quadratic discriminant, but it is not the
+canonical $4\times4$ real period matrix $P$.
+
+\begin{proposition}[Exact canonical coefficient dictionary]
+\label{prop:S6-dictionary}
+The real-linear map
+\begin{equation}\label{eq:coefficient-map}
+ \mathcal K(h,x,y)
+ =\left(h+y,\frac{x}{\sqrt6},h-y\right)=(t,m,\varrho)
+\end{equation}
+is an isomorphism from $\R^3$ to the ambient imaginary-coefficient space,
+with inverse
+\begin{equation}\label{eq:coefficient-map-inverse}
+ \mathcal K^{-1}(t,m,\varrho)
+ =\left(\frac{t+\varrho}{2},\sqrt6\,m,
+        \frac{t-\varrho}{2}\right).
+\end{equation}
+For every choice of the real parts of $\tau,\mu,\beta$,
+\begin{equation}\label{eq:canonical-discriminant}
+ \det P(\tau,\mu,\beta)
+ =\det S(t,m,\varrho)
+ =t\varrho-6m^2
+ =-\det\operatorname{Im}Z.
+\end{equation}
+Consequently, if $(t,m,\varrho)=\mathcal K(\mathcal F(r))$, then
+\begin{equation}\label{eq:period-koide-identity}
+ \det P(\tau,\mu,\beta)
+ =\det S\bigl(\mathcal K(\mathcal F(r))\bigr)
+ =Q_K(r).
+\end{equation}
+For $r\in\R_{\geq0}^3\setminus\{0\}$ on the Koide cone, the symmetric
+matrix $S\bigl(\mathcal K(\mathcal F(r))\bigr)=\iota(\mathcal F(r))$ is
+positive semidefinite of rank one.
+\end{proposition}
+
+\begin{proof}
+Adding and subtracting the first and third entries of
+\eqref{eq:coefficient-map}, and multiplying the second by $\sqrt6$, gives
+\eqref{eq:coefficient-map-inverse}.  Expanding
+\eqref{eq:canonical-real-period} along its last two columns gives
+\[
+ \det P
+ =-\det\begin{pmatrix}6m&t\\ \varrho&m\end{pmatrix}
+ =t\varrho-6m^2.
+\]
+The same expression is the determinant of
+\eqref{eq:symmetric-coefficient-matrix}, and substitution from
+\eqref{eq:coefficient-map} gives
+\[
+ (h+y)(h-y)-6\left(\frac{x}{\sqrt6}\right)^2
+ =h^2-x^2-y^2=Q_K(r).
+\]
+The final assertion is Theorem~\ref{thm:orthogonal-model} with
+$S\bigl(\mathcal K(h,x,y)\bigr)=\iota(h,x,y)$.
+\end{proof}
+
+\begin{corollary}[Rank-one square parametrization]
+\label{cor:rank-one-square}
+The map $\mathcal K$ identifies the future Lorentz null cone
+$\{h^2=x^2+y^2,\ h>0\}$ with the nonzero positive-semidefinite rank-one
+locus in $\operatorname{Sym}_2(\R)$.  Equivalently, every point of that
+coefficient locus has the form
+\begin{equation}
+ (t,m,\varrho)=
+ \left(u^2,\frac{uv}{\sqrt6},v^2\right),
+ \qquad (u,v)\in\R^2\setminus\{(0,0)\},
+ \label{eq:rank-one-square-coefficients}
+\end{equation}
+and $(u,v)$ is unique up to simultaneous sign.  Under the inverse
+coefficient map,
+\begin{equation}
+ (h,x,y)=
+ \left(\frac{u^2+v^2}{2},uv,\frac{u^2-v^2}{2}\right).
+ \label{eq:rank-one-square-lorentz}
+\end{equation}
+The sublocus arising from nonnegative $r_i$ is exactly the phase sector in
+Corollary~\ref{cor:exact-phase-sector}; positive semidefiniteness alone does
+not impose the three mass-coordinate inequalities.
+\end{corollary}
+
+\begin{proof}
+A nonzero real symmetric matrix is positive semidefinite of rank one if and
+only if it is $ww^{\mathsf T}$ for a nonzero column $w=(u,v)^{\mathsf T}$;
+the factor $w$ is unique up to $w\mapsto-w$.  Comparing
+$ww^{\mathsf T}$ with \eqref{eq:symmetric-coefficient-matrix} gives
+\eqref{eq:rank-one-square-coefficients}, and
+\eqref{eq:coefficient-map-inverse} gives
+\eqref{eq:rank-one-square-lorentz}.  Conversely the latter triple has
+$h>0$ and $h^2-x^2-y^2=0$.  The final statement follows from
+Corollary~\ref{cor:exact-phase-sector}.
+\end{proof}
+
+\begin{corollary}[The Koide cone is not a family of regular tori]
+\label{cor:ambient-only}
+The identification in Proposition~\ref{prop:S6-dictionary} is only a
+real-linear identification of ambient coefficient spaces and their quadratic
+discriminants.  It supplies neither the real parts of the periods nor the
+holomorphic and equivariance conditions of the proposed period family.  At
+every point of the Koide cone, every matrix of the canonical form
+\eqref{eq:canonical-real-period} with coefficient triple
+\eqref{eq:coefficient-map} has determinant zero.  Its columns therefore do
+not span $\R^4$, do not generate a full lattice, and do not define a regular
+compact complex two-torus.
+\end{corollary}
+
+\begin{remark}[Separation from the positive radial cusp]
+The audited period calculation associated with \citet{AlpogeS6_2026}
+records holomorphic cusp germs $\mu,h_{\mathrm{per}},b$ at $t_c=0$, with
+$s=iT$, $\tau=h_{\mathrm{per}}+s$, and $b=\beta+\tau$ on the positive
+radial specialization $t_c=e^{-2\pi T}$.  Write
+\[
+ \mu_T=\alpha_T+i m_T,\qquad
+ h_{\mathrm{per},T}=\eta_T+i H_T,\qquad
+ b_T=\xi_T+i B_T,
+\]
+and set
+\[
+ c_T=\xi_T-\eta_T,\qquad
+ L_T=T+H_T,\qquad q_T=L_T-B_T,\qquad
+ D_T=L_Tq_T+6m_T^2.
+\]
+Then the imaginary-coefficient triple is exactly
+\begin{equation}\label{eq:radial-coefficient-triple}
+ (\operatorname{Im}\tau_T,\operatorname{Im}\mu_T,
+   \operatorname{Im}\beta_T)=(L_T,m_T,-q_T).
+\end{equation}
+Its exact realification is
+\begin{equation}\label{eq:radial-real-period}
+ P_T=
+ \begin{pmatrix}
+  6\alpha_T&\eta_T&1&0\\
+  6m_T&L_T&0&0\\
+  c_T&\alpha_T&0&1\\
+  -q_T&m_T&0&0
+ \end{pmatrix},
+ \qquad \det P_T=-D_T.
+\end{equation}
+Indeed, \eqref{eq:canonical-discriminant} and
+\eqref{eq:radial-coefficient-triple} give
+\[
+ \det P_T=L_T(-q_T)-6m_T^2=-D_T.
+\]
+If
+$m=\operatorname{Im}\mu(0)$, $H=\operatorname{Im}h_{\mathrm{per}}(0)$, and
+$B=\operatorname{Im}b(0)$, then
+\[
+ m_T=m+O(e^{-2\pi T}),\quad
+ H_T=H+O(e^{-2\pi T}),\quad
+ B_T=B+O(e^{-2\pi T}).
+\]
+Direct multiplication, without suppressing the constant term, gives
+\begin{equation}\label{eq:radial-determinant-asymptotic}
+ D_T=T^2+(2H-B)T+H(H-B)+6m^2+O(Te^{-2\pi T}),
+ \qquad \det P_T\sim-T^2.
+\end{equation}
+In particular $D_T>0$ for all sufficiently large $T$, so these radial
+matrices are invertible and lie strictly off the Koide discriminant
+hypersurface $\{\det P=0\}$; their period-lattice covolume is then $D_T$.
+More precisely, their auxiliary symmetric matrix is
+\[
+ S_T=\begin{pmatrix}L_T&\sqrt6\,m_T\\
+                     \sqrt6\,m_T&-q_T\end{pmatrix},
+ \qquad \det S_T=-D_T<0,
+\]
+and therefore has signature $(1,1)$ for all sufficiently large $T$.  This
+is different not merely from the zero determinant on the Koide locus but
+also from its positive-semidefinite rank-one sign chamber.
+This exact separation uses the recorded cusp formulas only; it is not an
+independent proof of the proposed global $S^6$ construction.
+\end{remark}
+
+\input{supporting_materials/workbench/research/koide_counting_repair}
+
+\section{Interpretation and limits}
+
+Five logically distinct facts should not be merged.  First, the Koide equation is a null-cone equation and has an exact determinant and phase model.  Second, the defect-one integral shell admits Lorentzian reflection dynamics, unique reduced roots, exact ternary coordinates, and explicit Pell families on its chamber faces.  Third, its HNF ideal data and positive-unit powers give an exact parametrization, inverse, multiplicity-one statement, sharp floor formula, and shifted Hecke-phase identity.  Fourth, homogeneous dynamics and arithmetic invariant measures give the explicit main coefficient, while direct effective well-roundedness and Benoist--Oh give an unspecified power saving.  Fifth, the exact quaternion shell bijection produces finitely many primitive hyperbolic conjugacy classes, but the radial Huber height is not the unchanged Koide height.  The smooth radial $39/64$ and sharp radial $2/3$ theorems therefore do not prove the open pointwise five-wall square-root estimate.  None of these statements explains why measured charged-lepton masses should obey the Koide relation.
+
+The $S^6$ occurrence is still weaker: Proposition~\ref{prop:S6-dictionary} identifies coefficient spaces, not global moduli.  Corollary~\ref{cor:ambient-only} shows that a point of the Koide cone gives a singular real period matrix for every choice of real parts, whereas \eqref{eq:radial-determinant-asymptotic} places the recorded positive radial cusp matrices on the nonzero-determinant side for all sufficiently large $T$.  The full Koide cone is the discriminant hypersurface of the ambient coefficient model; its nonnegative-mass image lies in the rank-one boundary of the positive-semidefinite cone.  Neither is a family of smooth fibres supplied by the manuscript.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

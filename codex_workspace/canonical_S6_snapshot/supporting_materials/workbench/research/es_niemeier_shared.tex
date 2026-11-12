@@ -1,0 +1,1878 @@
+% Shared mathematical module. Input exactly once in each host document.
+% No document class, package loads, macros, or theorem environments are defined.
+% Requirements and bibliography entries: INTEGRATION_MAP.md.
+% Source locators and snapshot provenance: ES_NIEMEIER_PROVENANCE.md.
+% All labels and citation keys introduced here use the esn: namespace.
+
+\section{The modulo-840 lattice, triality, and exact shell maps}
+\label{esn:sec:shared}
+
+This section constructs the original modulo-$840$ lattice $N$ with
+root system $A_5^4D_4$, its full integral isometry group, and the exact
+maps from denominator shells and finite prime samples to the retained
+residue coordinates. The original data and source labels are recorded in
+\cite{esn:Provenance}. The shared continuation proves the index-six Leech
+neighbour $\Lambda$ and the marked isometry $\mathcal L$ into the three
+octonion sectors. In the specified Cayley frame, put
+$\tau(q)=\operatorname{Re}((q_1q_2)q_3)$ and $F=\tau\circ\mathcal L$;
+the Albert determinant is $\lambda^3-\lambda(y,y)+2F(y)$.
+The value-generated groups have quotient
+$\mathcal V_F(\Lambda)/\mathcal V_F(N)\cong\mathbb Z/12$
+(Theorem~\ref{nca:thm:value-modules}). The three residue-cycled neighbours
+meet in $J$, with determinant $81$ and index $9$ in each; the fixed
+fourth extension has exactly $72$ roots of type $A_2^{12}$
+(Theorems~\ref{esrf:thm:common-J} and~\ref{esrf:thm:fourth-extension}).
+The common lattice and this fourth extension have the exact same
+value-generated group
+$\frac1{27}\mathbb Z\oplus\frac{\sqrt2}{216}\mathbb Z
+\oplus\frac{\sqrt3}{18}\mathbb Z$.
+The inclusions from $\mathcal V_F(N)$ and into $\mathcal V_F(\Lambda)$
+have matrices $\operatorname{diag}(1,4,1)$ and
+$\operatorname{diag}(1,1,3)$ and quotients $\mathbb Z/4$, $\mathbb Z/3$
+(Theorems~\ref{jmv:thm:JM-values} and~\ref{jmv:thm:chain}).
+Wilson's construction \cite{esn:Wilson2009} is realized with both metrics
+and the direction $c_{\rm W}=c^{-1}$ retained. Its fixed Gram matrix is
+$3G_{E_8}$, its complement is explicitly isometric to $A_2\otimes E_8$,
+and the index is $3^8$, with quotient $\mathbb F_3^8$. Its literal
+intersections with $\mathcal L(N)$ and $\mathcal L(\Lambda)$ are the
+same rank-four lattice of Gram matrix $6G_{D_4}$, minimum squared norm
+$12$ and value-generated subgroup $4\sqrt2\mathbb Z$ for $\tau$
+($8\sqrt2\mathbb Z$ for $2\tau$). This is not the actual image:
+$12\sqrt2$ is not attained by $\tau$ on that intersection.
+All coordinates, multiplication conventions, domain lattices and maps
+are specified in the complete proofs below.
+
+\subsection{The finite multiplicative carrier and its four fibres}
+\label{esn:subsec:residues}
+
+For an odd prime \(q\) and a unit \(r\) modulo \(q\), write
+\(\left(\frac rq\right)=1\) when \(r\) is a square modulo \(q\),
+and \(-1\) otherwise.  Let
+\begin{equation}
+ \begin{split}
+ V_{840}&=\{r\in(\mathbb Z/840\mathbb Z)^\times:
+                                      r\equiv1\pmod {24}\},\\
+ \beta(r)&=\left(\frac{1-\left(\frac r5\right)}2,
+                  \frac{1-\left(\frac r7\right)}2\right)
+                          \in\mathbb F_2^2,\\
+ S_{840}&=\ker\beta,\qquad F_\eta=\beta^{-1}(\eta)
+                                      \quad(\eta\in\mathbb F_2^2).
+ \end{split}
+ \label{esn:eq:residue-carrier}
+\end{equation}
+Multiplication is used in \(V_{840}\) and addition in \(\mathbb F_2^2\).
+
+\begin{theorem}[The marked cyclic fibre]
+\label{esn:thm:cyclic-fibre}
+The map \(\beta\) is an onto group homomorphism, each \(F_\eta\) has
+six elements, and
+\begin{equation}
+ \begin{split}
+ S_{840}&=\{1,121,169,289,361,529\}=\langle289\rangle,\\
+ (289^j)_{j=0}^5&=(1,289,361,169,121,529)\pmod {840}.
+ \end{split}
+ \label{esn:eq:ordered-fibre}
+\end{equation}
+Each fibre is a torsor under multiplication by \(S_{840}\).  In
+particular the marking
+\begin{equation}
+ \kappa:S_{840}\xrightarrow{\ \cong\ }\mathbb Z/6\mathbb Z,
+ \qquad r=289^{\kappa(r)}\pmod {840},
+ \label{esn:eq:kappa}
+\end{equation}
+is an isomorphism of groups.
+\end{theorem}
+
+\begin{proof}
+The Chinese remainder map modulo \(24,5,7\), whose moduli are pairwise
+coprime, identifies \(V_{840}\) with
+\((\mathbb Z/5)^\times\times(\mathbb Z/7)^\times\).  The powers of
+\(2\) modulo \(5\) are \(1,2,4,3\), and the powers of \(3\) modulo
+\(7\) are \(1,3,2,6,4,5\); these prove the respective cyclic orders
+four and six.  In a cyclic group of either even order, the squares are
+exactly the even powers.  Therefore each Legendre character is the
+homomorphism recording exponent parity and is onto.  Their product is
+onto \(\mathbb F_2^2\).  Its kernel has
+\((4/2)(6/2)=6\) elements and every fibre has that same cardinality.
+
+Successive multiplication of the six displayed residues by \(289\)
+gives the next entry and then returns from \(529\) to \(1\).
+They are distinct.  Moreover \(289\equiv1\pmod {24}\),
+\(289\equiv4\pmod5\), and \(289\equiv2\pmod7\), so it belongs to
+the simultaneous square kernel.  Its six powers therefore exhaust that
+kernel.  If \(r,s\in F_\eta\), then \(sr^{-1}\in S_{840}\) and
+\(s=(sr^{-1})r\), uniquely.  This proves the torsor assertion and all
+claims about \(\kappa\).
+\end{proof}
+
+Fix the coordinate order
+\[
+ (\eta_1,\eta_2,\eta_3,\eta_4)=(00,10,01,11)
+\]
+and choose one origin \(f_i\in F_{\eta_i}\) in each fibre, with
+\(f_1=1\).  The six ordered elements of its fibre are
+\(f_i289^j\), \(0\le j\le5\).  These origins are part of the
+coordinate identifications used below; no selection of them is inferred
+from an individual denominator certificate.
+
+\subsection{The root lattice and its exact discriminant form}
+\label{esn:subsec:root-and-discriminant}
+
+For a finite set \(F\), give the free abelian group
+\(\mathbb Z[F]=\bigoplus_{r\in F}\mathbb Ze_r\) the metric
+\((e_r,e_s)=1\) for \(r=s\) and zero otherwise.  Put
+\[
+ A(F)=\left\{\sum_{r\in F}n_re_r:\sum_{r\in F}n_r=0\right\}.
+\]
+The ordered fibre coordinates identify each \(A(F_{\eta_i})\)
+isometrically with
+\[
+ A=\{(n_0,\ldots,n_5)\in\mathbb Z^6:\textstyle\sum_j n_j=0\}.
+\]
+In a separate Euclidean space with orthonormal basis
+\(e_1,e_2,e_3,e_4\), define
+\begin{equation}
+ D=\{x\in\mathbb Z^4:x_1+x_2+x_3+x_4\equiv0\pmod2\},
+ \qquad R_{\mathrm{ES}}=
+       \left(\bigoplus_{i=1}^4 A(F_{\eta_i})\right)\mathbin{\perp}D.
+ \label{esn:eq:root-lattice}
+\end{equation}
+All five summands are orthogonal with precisely their displayed metrics.
+The symbol \(R_{\mathrm{ES}}\) denotes this lattice; the unadorned
+\(R\) later used for an integer shell modulus has a different declared
+domain.
+
+For a full integral lattice \(L\) in its real span, let
+\[
+ L^\vee=\{x:(x,L)\subset\mathbb Z\},\qquad D_L=L^\vee/L.
+\]
+If \(L\) is even integral, its discriminant quadratic form is
+\(q_L(x+L)=(x,x)\pmod {2\mathbb Z}\).  This is well-defined because
+replacing \(x\) by \(x+\ell\) changes its squared norm by
+\(2(x,\ell)+(\ell,\ell)\in2\mathbb Z\).
+
+\begin{theorem}[Root metric and marked discriminant]
+\label{esn:thm:root-discriminant}
+The lattice \(R_{\mathrm{ES}}\) is even integral of rank 24 and has
+Gram matrix
+\[
+ G_{R_{\mathrm{ES}}}=G_A^{\oplus4}\oplus G_D,
+\]
+where
+\[
+ G_A=\begin{pmatrix}
+ 2&-1&0&0&0\\-1&2&-1&0&0\\0&-1&2&-1&0\\
+ 0&0&-1&2&-1\\0&0&0&-1&2
+ \end{pmatrix},\qquad
+ G_D=\begin{pmatrix}
+ 2&-1&0&0\\-1&2&-1&-1\\0&-1&2&0\\0&-1&0&2
+ \end{pmatrix}.
+\]
+Their determinants are 6 and 4, respectively, and
+\(\det R_{\mathrm{ES}}=6^4\cdot4=5184\).
+
+In each identified \(A\) summand use
+\(\lambda=(5,-1,-1,-1,-1,-1)/6\) as the discriminant generator.
+For \(D\), use the representatives
+\begin{equation}
+ v=(1,0,0,0),\qquad s=\tfrac12(1,1,1,1),\qquad
+ c=\tfrac12(-1,1,1,1)
+ \label{esn:eq:d4-representatives}
+\end{equation}
+and the exact marking \(10\mapsto v+D\), \(01\mapsto s+D\),
+\(11\mapsto c+D\).  Then
+\begin{equation}
+ \begin{split}
+ D_{R_{\mathrm{ES}}}&=(\mathbb Z/6\mathbb Z)^4\oplus\mathbb F_2^2,\\
+ q_{R_{\mathrm{ES}}}(x_1,x_2,x_3,x_4;y)
+   &=\frac56\sum_{i=1}^4x_i^2+\mathbf1_{y\ne0}
+                                              \pmod {2\mathbb Z}.
+ \end{split}
+ \label{esn:eq:full-discriminant}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For a six-element ordered fibre the five differences
+\(e_j-e_{j+1}\), \(0\le j\le4\), form a basis of its augmentation
+lattice: the coefficients of a zero-sum vector in this basis are its
+first five successive partial sums.  Dot products give \(G_A\).
+The determinant \(d_n\) of the analogous tridiagonal \(n\)-by-\(n\)
+matrix satisfies \(d_n=2d_{n-1}-d_{n-2}\), \(d_0=1,d_1=2\), by
+first-row expansion; induction gives \(d_n=n+1\).
+The four vectors
+\(e_1-e_2,e_2-e_3,e_3-e_4,e_3+e_4\) lie in \(D\) and their
+coordinate determinant has absolute value 2.  Their integer span
+therefore has index 2 in \(\mathbb Z^4\).  The parity homomorphism
+\(\mathbb Z^4\to\mathbb F_2\), \(x\mapsto\sum x_i\pmod2\), is
+onto and has kernel \(D\), so this span equals \(D\).
+Their dot products give \(G_D\), whose determinant is the square of
+the coordinate determinant, namely 4.  Integer coordinates make all
+pairings integral.  In either lattice the squared norm is congruent
+modulo two to the coordinate sum, hence is even.  Rank and determinant
+now follow from the orthogonal direct sum.
+
+The vector \(\lambda\) has sum zero and integral pairing with each
+augmentation root.  Its norm is \(5/6\), and \(k\lambda\in A\)
+holds exactly when \(6\) divides \(k\).  Thus it has exact order six
+in \(D_A\).  In an integral basis of an integral lattice with Gram
+matrix \(G\), the dual coordinates are \(G^{-1}\mathbb Z^n\);
+therefore \(|L^\vee/L|=|\det G|\).  Since \(|D_A|=6\), this
+element generates the full discriminant group and gives its stated form.
+
+A vector pairing integrally with all \(e_i-e_j\) has common
+fractional parts in its four coordinates.  Pairing also with
+\(e_i+e_j\) forces this common fractional part to be either zero or
+one half.  Conversely every entirely integral or entirely half-integral
+vector pairs integrally with every root of \(D\).  There are two
+integer classes according to sum parity, and two half-integer classes
+according to the parity of their difference from \(s\).  The four
+representatives \(0,v,s,c\) are therefore all the classes, and their
+squared norms are \(0,1,1,1\).  Their addition is as marked because
+\(v+s-c=(2,0,0,0)\in D\).  The dual and quadratic form of an
+orthogonal sum are the direct sums of those of its summands, which proves
+\eqref{esn:eq:full-discriminant}.
+\end{proof}
+
+\subsection{The index-72 glue and all glue-class minima}
+\label{esn:subsec:glue}
+
+Define the binary and ternary codes
+\begin{equation}
+ \begin{split}
+ C_2&=\operatorname{span}_{\mathbb F_2}
+       \{(1111;00),(1100;10),(1010;01)\},\\
+ C_3&=\operatorname{span}_{\mathbb F_3}
+       \{z_1=(1,1,1,0),\ z_2=(1,2,0,1)\}.
+ \end{split}
+ \label{esn:eq:codes}
+\end{equation}
+The semicolon distinguishes the four binary A5 coordinates from the
+two D4 discriminant coordinates.  Let
+\begin{equation}
+ \begin{split}
+ \mathcal H&=\{(3u+2z;y):(u;y)\in C_2, z\in C_3\}
+                                  \subset D_{R_{\mathrm{ES}}},\\
+ N&=\{x\in R_{\mathrm{ES}}^\vee:
+                                x+R_{\mathrm{ES}}\in\mathcal H\}.
+ \end{split}
+ \label{esn:eq:glue-and-overlattice}
+\end{equation}
+Here \(3u+2z\) is computed coordinatewise modulo six using the
+integer representatives of \(u\) and \(z\).
+
+\begin{theorem}[Even unimodular completion with exactly 144 roots]
+\label{esn:thm:niemeier}
+The subgroup \(\mathcal H\) is isotropic of order 72.  Its inverse
+image \(N\) is a positive-definite even unimodular lattice of rank 24,
+with \([N:R_{\mathrm{ES}}]=72\).  Among the 71 nonzero glue classes,
+46 have minimum squared norm 4 and 25 have minimum squared norm 6.
+The roots of \(N\) are exactly those of \(R_{\mathrm{ES}}\), with
+root system \(A_5^4D_4\): 30 roots in each A5 summand and 24 in D4.
+\end{theorem}
+
+\begin{proof}
+The binary generators are independent, hence give eight words.  Listing
+their sums shows that the seven nonzero words comprise one word
+\((1111;00)\) and six words whose first part has weight two and whose
+second part is nonzero.  A ternary word is
+\[
+ az_1+bz_2=(a+b,a+2b,a,b).
+\]
+Its last two coordinates prove injectivity of the parameter pair
+\((a,b)\), so there are nine words.  If \(a=0\ne b\) the third
+coordinate alone vanishes; if \(b=0\ne a\) the fourth alone vanishes;
+and if both are nonzero exactly one of \(a+b,a+2b\) vanishes.
+Thus every nonzero word has weight three, and each of the four
+coordinates is the unique vanishing coordinate for two words.
+
+The map \((u_i,z_i)\mapsto3u_i+2z_i\pmod6\) is bijective:
+reduction modulo two recovers \(u_i\), and reduction modulo three
+recovers \(2z_i\), from which multiplication by 2 recovers \(z_i\).
+It is a homomorphism of additive groups, since changing binary or
+ternary representatives by their moduli changes \(3u_i+2z_i\) by a
+multiple of six.  Its product with the retained binary \(y\)-coordinate
+therefore maps \(C_2\times C_3\) injectively onto the subgroup
+\(\mathcal H\).  It follows that \(|\mathcal H|=8\cdot9=72\).  For
+\(u_i\in\{0,1\}\) and \(z_i\in\{0,1,2\}\),
+\[
+ \frac56(3u_i+2z_i)^2
+ =\frac{15}{2}u_i+10u_iz_i+\frac{10}{3}z_i^2
+ \equiv\frac32u_i+\frac43z_i^2\pmod {2\mathbb Z}.
+\]
+The cross-term is even; a nonzero \(z_i\) has square 1 or 4, whose
+contributions in the last expression differ by 4.  The binary
+contribution including D4 is therefore zero, 6, or \(3+1=4\), and
+the ternary contribution is zero or \((4/3)3=4\) modulo
+\(2\mathbb Z\).  This proves isotropy.
+
+The inverse image is a lattice because it is a subgroup between the
+full lattices \(R_{\mathrm{ES}}\) and \(R_{\mathrm{ES}}^\vee\).
+Isotropy gives \((x,x)\in2\mathbb Z\) for every \(x\in N\), and
+\[
+ (x,y)=\frac{(x+y,x+y)-(x,x)-(y,y)}2\in\mathbb Z
+                                    \qquad(x,y\in N).
+\]
+Thus it is even integral.  Its index is \(|\mathcal H|=72\).
+For a finite-index inclusion of equal-rank lattices, the covolume
+changes by that index, and the Gram determinant is the square of the
+covolume in orthonormal coordinates.  Hence
+\[
+ \det N=\frac{6^4\cdot4}{72^2}=1.
+\]
+The dual-index formula proved above implies \(N=N^\vee\).
+Its rank and positive definiteness are inherited from the unchanged real
+span and metric.
+
+For \(0\le k\le5\), every vector in the A5 class \(k\lambda+A\)
+has the form
+\[
+ m-\frac{k}{6}(1,1,1,1,1,1),\qquad
+ m\in\mathbb Z^6,\quad\sum m_i=k.
+\]
+Its squared norm is \(\sum m_i^2-k^2/6\).  Since
+\(m_i^2\ge m_i\) for every integer \(m_i\), the minimum is at least
+\(k-k^2/6\).  It is attained by choosing exactly \(k\) of the six
+entries equal to one and the others zero.  Thus
+\begin{equation}
+ \mu_A(k)=\frac{k(6-k)}6.
+ \label{esn:eq:a5-coset-minimum}
+\end{equation}
+Every nonzero integral D4 class has minimum one, attained by \(v\);
+every half-integral vector has norm at least
+\(4(1/2)^2=1\), attained by \(s,c\) in their respective classes.
+The four A5 minima and the D4 minimum add and are simultaneously attained
+because the metric is an orthogonal sum.
+
+For a coordinate with \(k_i=3u_i+2z_i\pmod6\), its minimum
+contribution is 0 for \((u_i,z_i)=(0,0)\), \(3/2\) for
+\((1,0)\), \(4/3\) for \((0,z_i\ne0)\), and \(5/6\) for
+\((1,z_i\ne0)\).  The complete nonzero case table is
+\begin{equation}
+\begin{array}{c|c|c|r|l}
+ \operatorname{wt}(u)&\operatorname{wt}(z)&
+ |\operatorname{supp}(u)\cap\operatorname{supp}(z)|&
+ \text{classes}&\text{minimum squared norm}\\\hline
+ 2&0&0&6&2(3/2)+1=4\\
+ 4&0&0&1&4(3/2)=6\\
+ 0&3&0&8&3(4/3)=4\\
+ 2&3&1&24&(3/2)+2(4/3)+(5/6)+1=6\\
+ 2&3&2&24&(4/3)+2(5/6)+1=4\\
+ 4&3&3&8&(3/2)+3(5/6)=4.
+\end{array}
+ \label{esn:eq:glue-minimum-table}
+\end{equation}
+For each of the six weight-two binary words, four nonzero ternary
+words omit a coordinate inside its support, and four omit a coordinate
+outside.  This proves the two counts \(6\cdot4=24\); all other counts
+follow from the enumerated binary and ternary words.  Thus the total
+number at minimum 4 is \(6+8+24+8=46\), and the total at minimum 6 is
+\(1+24=25\).  Their sum is 71, leaving exactly the zero glue class.
+
+No nonzero glue class can contain a norm-two vector.  In the zero
+class, an A5 norm-two vector has exactly one coordinate 1 and another
+\(-1\), so is \(e_i-e_j\), with \(6\cdot5=30\) possibilities.
+A D4 norm-two vector has exactly two coordinates of absolute value one,
+so is \(\pm e_i\pm e_j\), with \(4\binom42=24\) possibilities.
+An orthogonal sum of two nonzero root-lattice vectors has norm at least
+4 because each summand is positive even.  These are therefore all
+\(4\cdot30+24=144\) roots of \(N\).
+\end{proof}
+
+A Niemeier lattice means a positive-definite even unimodular lattice of
+rank 24.  The theorem constructs one with root system \(A_5^4D_4\)
+directly.  Its root type appears with lambency 6 in the primary umbral
+table \cite[Table~3, p.~21]{esn:CDH2014}.  This table reference is not
+needed to prove the inverse-image construction or any minimum above.
+
+For comparison with the earlier labeled glue presentation in the source
+\cite{esn:ESMain2026,esn:Provenance}, put
+\[
+ h_1=(1,3,1,1;00),\qquad h_2=(1,4,2,3;11),\qquad
+ h_3=(3,0,3,0;01),
+\]
+and let \(\mathcal H_{\mathrm{old}}\) be their subgroup.  The exact
+transport is
+\begin{equation}
+ P(x_1,x_2,x_3,x_4;y)=(x_3,x_4,x_1,x_2;y),\qquad
+ P(\mathcal H_{\mathrm{old}})=\mathcal H.
+ \label{esn:eq:old-code-transporter}
+\end{equation}
+Indeed, if \(rh_1+th_2+wh_3=0\) with \(r,t\in\mathbb Z/6\)
+and \(w\in\mathbb Z/2\), the final two coordinates imply that \(t\)
+is even and \(w=0\).  The first and third coordinates then give
+\(r+t=0\) and \(r+2t=0\) modulo six, whence \(t=r=0\).
+Thus \(|\mathcal H_{\mathrm{old}}|=6\cdot6\cdot2=72\).  Directly,
+\[
+\begin{split}
+ P(h_1)&=3(1111;00)+2(2,2,2,0;00),\\
+ P(h_2)&=3(0110;11)+2(1,0,2,2;00),\\
+ P(h_3)&=3(1010;01).
+\end{split}
+\]
+The displayed ternary parts are \(2z_1\) and \(2z_1+2z_2\).
+Consequently \(P(\mathcal H_{\mathrm{old}})\subset\mathcal H\),
+and the equal orders prove equality.  This transporter is realized by
+the corresponding isometry permuting the full identified A5 summands.
+
+\subsection{The common D4 root lattice, shortest weights, and triality}
+\label{esn:subsec:d4-flag}
+
+Use orthonormal coordinates \(\varepsilon_1,\ldots,\varepsilon_4\)
+for the ordinary F4 root realization.  Its long roots and the three
+parts of its short roots are
+\begin{equation}
+\begin{split}
+ \Phi_D&=\{\pm\varepsilon_i\pm\varepsilon_j:1\le i<j\le4\},\\
+ \mathcal V&=\{\pm\varepsilon_i:1\le i\le4\},\\
+ \mathcal S_\pm&=
+ \left\{\frac12\sum_{i=1}^4\delta_i\varepsilon_i:
+          \delta_i\in\{1,-1\},\ \prod_i\delta_i=\pm1\right\},\\
+ \Phi_F&=\Phi_D\cup\mathcal V\cup\mathcal S_+\cup\mathcal S_-.
+\end{split}
+ \label{esn:eq:root-weight-sets}
+\end{equation}
+For a nonzero vector \(a\), reflection means the exact map
+\(s_a(x)=x-2(x,a)a/(a,a)\).  Write \(W_D\) and \(W_F\) for the
+groups generated by the reflections in \(\Phi_D\) and \(\Phi_F\),
+respectively.
+
+\begin{theorem}[Integral D4 and the marked triality quotient]
+\label{esn:thm:d4-f4-triality}
+The map
+\begin{equation}
+ \iota_D:D\longrightarrow\mathbb Z\langle\Phi_D\rangle,
+ \qquad(x_1,x_2,x_3,x_4)\longmapsto
+                         \sum_{i=1}^4x_i\varepsilon_i
+ \label{esn:eq:d4-isometry}
+\end{equation}
+is an integral isometry onto the long-root lattice.  It extends to duals
+and discriminant forms, sending the shortest-vector sets of the marked
+classes \(v,s,c\) respectively to
+\(\mathcal V,\mathcal S_+,\mathcal S_-\).
+
+The two matrices
+\begin{equation}
+ R_D=\operatorname{diag}(-1,1,1,1),\qquad
+ H_D=\frac12\begin{pmatrix}
+ 1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1
+ \end{pmatrix}
+ \label{esn:eq:d4-triality-matrices}
+\end{equation}
+are the short-root reflections \(s_{\varepsilon_1}\) and \(s_c\),
+where \(c=(-1,1,1,1)/2\) is read in the \(\varepsilon\) coordinates.
+They induce \((s\ c)\) and \((v\ s)\) on the three nonzero
+discriminant classes.  There is a split exact sequence
+\begin{equation}
+ 1\longrightarrow W_D\longrightarrow W_F
+   \longrightarrow S_3\longrightarrow1,
+ \qquad W_D\cong\{\text{even signed permutations of four coordinates}\},
+ \label{esn:eq:weyl-triality-sequence}
+\end{equation}
+whose displayed section is \(\langle R_D,H_D\rangle\cong S_3\).
+In particular \(|W_D|=192\) and \(|W_F|=1152\).
+\end{theorem}
+
+\begin{proof}
+The four D4 basis vectors in Theorem~\ref{esn:thm:root-discriminant}
+are among \(\Phi_D\), and every vector of \(\Phi_D\) has even
+coordinate sum.  Thus the displayed identity of coordinates has exactly
+the stated image, preserves the metric, and extends to duals by the
+integer-pairing definition.  In a nonzero integral dual class, norm one
+forces one coordinate \(\pm1\) and all others zero.  In a
+half-integral class, norm one forces all four coordinates to be
+\(\pm1/2\).  The difference from \(s\) has even coordinate sum
+exactly when the number of negative signs is even.  This proves the
+three shortest-vector identifications with the stated marking.
+
+The reflection identity for \(R_D\) is immediate, and
+\(H_D=I-2cc^T\) follows by multiplying the four coordinates of \(c\).
+Both are orthogonal involutions.  The first preserves the parity of an
+integer coordinate sum.  For \(x\in D\), the four coordinates of
+\(H_Dx\) are integers because each numerator is congruent to
+\(\sum x_i\) modulo two, and their sum is \(2x_1\).  Thus both
+preserve \(D\).  Their effects on the representatives show that
+\(R_D\) fixes the class \(v\) and exchanges \(s,c\), whereas
+\(H_Dv=s\), \(H_Ds=v\), and \(H_Dc=-c\equiv c\pmod D\).
+They therefore preserve all of \(\Phi_F\) by the shortest-vector
+description.  On the plane with ordered basis \(\varepsilon_1,c\),
+their product has matrix
+\[
+ \begin{pmatrix}0&-1\\1&-1\end{pmatrix},
+\]
+whose cube is the identity, while both reflections fix the orthogonal
+complement.  Consequently \(R_D^2=H_D^2=(R_DH_D)^3=1\).
+Every word in two such involutions reduces to
+\((R_DH_D)^k\) or \((R_DH_D)^kR_D\), \(0\le k\le2\).
+Their discriminant permutations are the six elements of \(S_3\),
+so these six words are distinct and give the stated section.
+
+Reflection in \(\varepsilon_i-\varepsilon_j\) swaps coordinates
+\(i,j\).  Reflection in \(\varepsilon_i+\varepsilon_j\) swaps them
+and changes both signs.  Hence the long-root reflections generate every
+permutation and every even sign change, and each long-root reflection
+is of this form.  This proves the assertion about \(W_D\) and its
+order \(2^3\cdot4!=192\).  Such a reflection acts trivially on
+\(D^\vee/D\): for a root \(a\) of squared norm two,
+\(s_a(x)-x=-(x,a)a\in D\) for all \(x\in D^\vee\).
+
+Let \(K=\langle W_D,R_D,H_D\rangle\).  Each of its generators
+preserves the long roots, so \(W_D\) is normal in \(K\) by
+\(g s_a g^{-1}=s_{ga}\).  The even signed permutations act
+transitively on each of \(\mathcal V,\mathcal S_+,\mathcal S_-\),
+and the displayed section permutes these three sets transitively.
+Thus every short root is \(g\varepsilon_1\) for some \(g\in K\),
+and its reflection \(gR_Dg^{-1}\) belongs to \(K\).  All generators
+of \(W_F\) therefore belong to \(K\); the reverse inclusion follows
+from their definitions, proving \(W_F=K\).
+An element in the kernel of its permutation action on the three short
+sets preserves \(\mathcal V\), so it is a signed permutation matrix.
+Preservation of \(\mathcal S_+\) forces an even number of sign
+changes, so the kernel is \(W_D\).  This proves exactness, splitting,
+and the order \(6\cdot192=1152\).
+\end{proof}
+
+\paragraph{The exact geometric datum and weight marking.}
+Let \(\mathbb O\) denote the real normed octonion algebra and let
+\(J=\mathfrak h_3(\mathbb O)\) be the real vector space of Hermitian
+three-by-three matrices, with Jordan product
+\(a\circ b=(ab+ba)/2\).  Define
+\[
+ \mathbb O\mathbb P^2=\{a\in J:a^2=a,\ \operatorname{tr}a=1\},
+ \qquad
+ \operatorname{Fl}(\mathbb O)=
+ \{(a,b)\in(\mathbb O\mathbb P^2)^2:
+                                 \operatorname{Re}\operatorname{tr}(ab)=0\}.
+\]
+For the compact group \(F_4=\operatorname{Aut}_{\mathbb R}(J,\circ)\),
+Mare and Willems prove the homogeneous identification
+\(\operatorname{Fl}(\mathbb O)=F_4/\operatorname{Spin}(8)\) and
+identify its tangent representation as
+\(V_8\oplus S_8^+\oplus S_8^-\)
+\cite[Definition~2.2, Proposition~2.4, Proposition~2.7, and
+pp.~491--492]{esn:MareWillems2013}.  These are the prior geometric
+results used here.  With their torus coordinate forms \(L_i\), their
+equations (5.4)--(5.6) assign the vector, positive half-spin, and negative
+half-spin weights respectively the patterns
+\(\pm L_i\), even half-sign sums, and odd half-sign sums
+\cite[pp.~510--511]{esn:MareWillems2013}.
+The coordinate map \(L_i\mapsto\varepsilon_i\) retains that sign
+marking and identifies these three weight sets with those of
+\eqref{esn:eq:root-weight-sets}.
+
+For completeness the half-spin weight patterns admit the following
+direct calculation.  In the complex exterior algebra
+\(\Lambda^*\mathbb C^4\), let \(a_i\) be exterior multiplication
+by the \(i\)-th basis vector and \(b_i\) contraction by its dual.
+On a basis wedge, insertion and deletion give
+\[
+ a_ia_j+a_ja_i=b_ib_j+b_jb_i=0,\qquad
+ a_ib_j+b_ja_i=\delta_{ij}I.
+\]
+Thus \(C_i=a_i+b_i\) and \(D_i=\mathrm i(b_i-a_i)\) square to
+one and mutually anticommute for distinct Clifford generators.
+Writing \(N_i=a_ib_i\), direct multiplication gives
+\[
+ \tfrac12 C_iD_i=\mathrm i(N_i-\tfrac12 I).
+\]
+The four commuting infinitesimal torus operators therefore have weights
+\(\sum_i(\mathbf1_{i\in I}-1/2)\varepsilon_i\) on the basis
+wedge indexed by \(I\subset\{1,2,3,4\}\).  The even exterior
+part has an even number of negative signs, and the odd part has an odd
+number.  There are eight one-dimensional weight spaces in each part.
+For the vector representation the four real coordinate planes
+complexify into their two rotation eigenspaces, with weights
+\(\varepsilon_i,-\varepsilon_i\).  This proves the displayed
+weight formulas directly in the stated marking.
+
+The map proved here is consequently the actual chain
+\[
+ D\xrightarrow{\ \iota_D\ }\mathbb Z\langle\Phi_D\rangle,
+ \qquad
+ \{v,s,c\}\longleftrightarrow
+       \{\mathcal V,\mathcal S_+,\mathcal S_-\}
+       =\{\operatorname{wt}(V_8),
+          \operatorname{wt}(S_8^+),\operatorname{wt}(S_8^-)\}.
+\]
+The same \(S_3\) acts through the explicitly proved permutations of
+these three sets.  The companion higher-rung treatment records the
+geometric datum and root-coordinate comparison at the respective labels
+\begin{center}
+\texttt{h24:thm:octonionic-triality}\\
+\texttt{h24:prop:two-Coxeter-systems}.
+\end{center}
+The exact source pointers and passages are included in
+\cite{esn:Provenance}.  The integral metric map
+in this section is the map on D4 and its dual.  The definitions make no
+map from the whole rank-24 lattice \(N\) into the flag tangent space.
+
+\subsection{The full indicated glue stabilizer and its triality quotient}
+\label{esn:subsec:glue-gl2-triality}
+
+All vector spaces over finite fields in this subsection retain their displayed
+bases.  Write
+\[
+ j:\mathbb F_3^2\longrightarrow\mathbb F_3^4,
+ \qquad j(a,b)=(a+b,a+2b,a,b),
+ \qquad C_3=j(\mathbb F_3^2).
+\]
+The four row forms defining this injection are
+\[
+ \ell_1=(1,1),\quad \ell_2=(1,2),\quad
+ \ell_3=(1,0),\quad \ell_4=(0,1).
+\]
+They represent all four one-dimensional subspaces of the dual of
+\(\mathbb F_3^2\).  Indeed each nonzero row has either first coordinate zero,
+in which case its line is represented by \(\ell_4\), or a unique scalar
+multiple with first coordinate one, namely one of
+\((1,0),(1,1),(1,2)\).
+
+Let \(E\subset\mathbb F_2^4\) be the even-weight subspace and define
+\[
+ \tau:E\longrightarrow\mathbb F_2^2,
+ \qquad \tau(u_1,u_2,u_3,u_4)
+       =(u_2+u_4,u_3+u_4).
+\]
+The binary code in the index-72 glue is exactly
+\[
+ C_2=\{(u,\tau(u)):u\in E\}.
+\]
+To verify this, the independent vectors
+\(1111,1100,1010\) form a basis of the three-dimensional space \(E\),
+and their images under \(\tau\) are respectively
+\(00,10,01\).  These are precisely the three stated binary code generators.
+In particular \(\tau\) is onto and
+\[
+ \ker\tau=\langle1111\rangle.
+\]
+Explicitly, \(\tau(u)=0\) gives \(u_2=u_3=u_4\), and the even-weight
+equation then gives \(u_1=u_4\).
+
+For a permutation \(p\) of \(\{1,2,3,4\}\), use the coordinate convention
+\[
+ (P_pu)_i=u_{p(i)}.
+\]
+The permutation preserves \(E\) and \(\langle1111\rangle\), so it induces
+a unique invertible map \(B_p\) satisfying
+\begin{equation}
+ B_p\tau(u)=\tau(P_pu)\qquad(u\in E).
+ \label{esn:eq:binary-permutation-map}
+\end{equation}
+For an entirely explicit formula, the two columns of \(B_p\) are
+\(\tau(P_p(1100))\) and \(\tau(P_p(1010))\).
+The convention implies \(P_pP_q=P_{q\circ p}\).  Accordingly
+\(B_pB_q=B_{q\circ p}\); no reversal is suppressed in what follows.
+
+The subgroup of \eqref{esn:eq:glue-and-overlattice} can therefore be written
+\[
+ \mathcal H=
+ \{(3u+2z;\tau(u)):u\in E,\ z\in C_3\}
+ \subset(\mathbb Z/6)^4\oplus\mathbb F_2^2.
+\]
+Let \(G\) be its stabilizer among the transformations
+\[
+ g=(\varepsilon,p,B),\qquad
+ (x;y)\longmapsto
+ \bigl((\varepsilon_i x_{p(i)})_{i=1}^4;By\bigr),
+\]
+where \(\varepsilon_i\in\{1,-1\}\), \(p\in S_4\), and
+\(B\in GL_2(\mathbb F_2)\).  Denote the signed permutation matrix on the
+first four coordinates by \(M_g\).
+
+\begin{theorem}[An explicit isomorphism to \(GL_2(\mathbb F_3)\)]
+\label{esn:thm:glue-gl2}
+Restriction to the ternary code gives an isomorphism
+\[
+ \Theta:G\xrightarrow{\ \cong\ }GL_2(\mathbb F_3),
+ \qquad M_gj=j\Theta(g).
+\]
+For every \(A\in GL_2(\mathbb F_3)\), its inverse image is specified
+uniquely by
+\begin{equation}
+ \ell_iA=\varepsilon_i\ell_{p(i)}\quad(1\le i\le4),
+ \qquad B=B_p.
+ \label{esn:eq:inverse-gl2-glue-map}
+\end{equation}
+In particular \(|G|=48\).
+\end{theorem}
+
+\begin{proof}
+The elements of \(\mathcal H\) of order dividing two are precisely
+\((3u;\tau(u))\), and those of order dividing three are precisely
+\((2z;0)\).  Every indicated ambient transformation preserves these primary
+parts, so an element of \(G\) satisfies \(M_gC_3=C_3\).  The injection
+\(j\) therefore yields one and only one \(\Theta(g)\in GL_2(\mathbb F_3)\).
+The binary part is preserved exactly when
+\(B\tau(u)=\tau(P_pu)\), because all signs become one modulo two.
+Surjectivity of \(\tau\) forces \(B=B_p\).
+
+If \(\Theta(g)=I\), the equality \(M_gj=j\) implies
+\(\varepsilon_i\ell_{p(i)}=\ell_i\) for every \(i\).
+The four row lines are distinct, so \(p(i)=i\).  Since each \(\ell_i\)
+is nonzero and \(1\ne-1\) in \(\mathbb F_3\), also
+\(\varepsilon_i=1\) for every \(i\).  It follows that \(B_p=I\) and
+\(g=1\).  Thus \(\Theta\) is injective.
+
+Conversely fix \(A\in GL_2(\mathbb F_3)\).  The rows \(\ell_iA\) are
+nonzero and belong to four distinct row lines.  Since the \(\ell_i\)
+represent every row line, each \(\ell_iA\) has a unique expression
+\(\varepsilon_i\ell_{p(i)}\), where the nonzero scalar in \(\mathbb F_3\)
+is represented by the exact integer sign \(\varepsilon_i=1\) or \(-1\).
+Distinctness of the row lines makes \(p\) a permutation.
+The resulting signed permutation satisfies \(M_gj=jA\), hence preserves
+\(C_3\).  Choosing \(B=B_p\) preserves \(C_2\) as proved above, hence
+preserves \(\mathcal H\).  This constructs an element of \(G\) mapping
+to \(A\), proving surjectivity and the stated inverse formula.
+
+Finally
+\[
+ M_{gh}j=M_gM_hj=M_gj\Theta(h)
+ =j\Theta(g)\Theta(h),
+\]
+so \(\Theta(gh)=\Theta(g)\Theta(h)\).
+An invertible \(2\)-by-\(2\) matrix over \(\mathbb F_3\) has eight
+choices for its first nonzero column and six choices for its second column
+outside the span of the first.  Thus its group order is \(8\cdot6=48\).
+\end{proof}
+
+The map to the permutation of the four component labels is more precisely
+\(g\mapsto p^{-1}\), because a vector supported on component \(k\) is
+sent to component \(p^{-1}(k)\).  Its kernel under \(\Theta\) is
+\(\{I,-I\}\).  In fact a matrix preserving all four row lines is diagonal
+by preservation of \(\ell_3\) and \(\ell_4\), and its diagonal entries
+are equal by preservation of \(\ell_1\).  Conversely scalar matrices
+preserve all four lines.  Therefore the component permutation image has
+order \(48/2=24\), so is all \(S_4\), with
+\[
+ G/\Theta^{-1}(\{\pm I\})
+       \xrightarrow{\ \overline\Theta\ }PGL_2(\mathbb F_3)\cong S_4.
+\]
+The center of \(GL_2(\mathbb F_3)\) is exactly \(\{\pm I\}\): a
+central matrix commutes with \(\operatorname{diag}(1,-1)\), forcing its
+off-diagonal entries to vanish, and commuting with
+\(\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\) forces
+the diagonal entries to agree.
+
+\begin{theorem}[The exact triality quotient and its quaternion kernel]
+\label{esn:thm:triality-q8}
+The projection \(\pi:G\to GL_2(\mathbb F_2)\),
+\((\varepsilon,p,B)\mapsto B\), is onto, and under \(\Theta\) its
+kernel is the quaternion subgroup generated by
+\[
+ I_q=\begin{pmatrix}0&1\\2&0\end{pmatrix},
+ \qquad J_q=\begin{pmatrix}1&1\\1&2\end{pmatrix}.
+\]
+There is a split exact sequence
+\[
+ 1\longrightarrow Q_8\longrightarrow GL_2(\mathbb F_3)
+ \xrightarrow{\ \pi\Theta^{-1}\ }GL_2(\mathbb F_2)
+ \longrightarrow1.
+\]
+The splitting is the subgroup generated by
+\[
+ A_R=\begin{pmatrix}1&0\\0&2\end{pmatrix},
+ \qquad A_H=\begin{pmatrix}1&2\\0&2\end{pmatrix}.
+\]
+It identifies \(GL_2(\mathbb F_3)\) with \(Q_8\rtimes S_3\) for the
+conjugation action of this displayed subgroup on this displayed \(Q_8\).
+\end{theorem}
+
+\begin{proof}
+The nonzero elements of \(E/\langle1111\rangle\) are represented by
+the complementary pairs of two-element subsets
+\[
+ \{12\mid34\},\qquad\{13\mid24\},\qquad\{14\mid23\},
+\]
+marked respectively by \(10,01,11\) via \(\tau\).
+Thus \(B_p\) is exactly the permutation action on these three
+partitions, expressed in the displayed binary marking.
+
+Using \eqref{esn:eq:inverse-gl2-glue-map} gives
+\[
+ M(A_R)x=(x_2,x_1,x_3,-x_4),\quad
+ B_R=\begin{pmatrix}1&1\\0&1\end{pmatrix},
+\]
+\[
+ M(A_H)x=(x_1,x_3,x_2,-x_4),\quad
+ B_H=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+These binary matrices act respectively as the transpositions
+\((01\ 11)\) and \((10\ 01)\), so they generate all permutations of
+the three nonzero binary vectors.  There are
+\((4-1)(4-2)=6\) invertible binary matrices; a matrix fixing all nonzero
+vectors fixes the basis.  Hence this permutation action identifies
+\(GL_2(\mathbb F_2)\) with \(S_3\) and proves surjectivity of \(\pi\).
+Its kernel therefore has order eight.
+
+For \(I_q\) the row rule gives
+\[
+ p=(2,1,4,3),\qquad\varepsilon=(-1,1,1,-1),
+\]
+and for \(J_q\) it gives
+\[
+ p=(3,4,1,2),\qquad\varepsilon=(-1,-1,1,1).
+\]
+Both permutations fix each of the three displayed complementary
+partitions, so both matrices lie in the kernel.  Direct matrix
+multiplication over \(\mathbb F_3\) gives
+\[
+ I_q^2=J_q^2=-I,\qquad I_qJ_q=-J_qI_q,
+ \qquad I_qJ_q=\begin{pmatrix}1&2\\2&2\end{pmatrix}.
+\]
+The eight matrices
+\(I,-I,\pm I_q,\pm J_q,\pm I_qJ_q\) are pairwise distinct by their
+displayed entries.  The relations show this set is a group: powers reduce
+using \(I_q^2=J_q^2=-I\), and factors can be reordered using
+\(J_qI_q=-I_qJ_q\).  These relations identify it with the quaternion
+group \(Q_8\).  Since the kernel has order eight, this is the whole kernel.
+
+The matrices \(A_R,A_H\) satisfy
+\[
+ A_R^2=A_H^2=I,\qquad
+ A_RA_H=\begin{pmatrix}1&2\\0&1\end{pmatrix},\qquad
+ (A_RA_H)^3=I.
+\]
+Every word in the two involutions reduces to one of
+\((A_RA_H)^k\) or \((A_RA_H)^kA_R\), \(k=0,1,2\), by alternation
+and the cubic relation.  Their images under \(\pi\) are the six distinct
+permutations generated by \(B_R,B_H\).  Hence the subgroup has exactly
+six elements and maps isomorphically onto \(GL_2(\mathbb F_2)\).
+This gives the splitting.  For any \(g\), the unique splitting element
+with image \(\pi(g)\) leaves \(g\) times its inverse in the kernel;
+the intersection of kernel and splitting is trivial.  Multiplication
+therefore realizes the asserted semidirect product with the indicated
+conjugation action.
+\end{proof}
+
+The matrices in the kernel have an additional marked interpretation:
+their projective component permutations are the four permutations
+\(1,(12)(34),(13)(24),(14)(23)\).  Each fixes all three partitions, and
+these are exactly the kernel of the onto action \(S_4\to S_3\), whose
+kernel has order \(24/6=4\).  Thus the preceding exact sequence is the
+precise map from the order-48 ternary-code symmetry to the three
+\(D_4\) discriminant classes.
+
+\begin{theorem}[A faithful action on the actual index-72 lattice]
+\label{esn:thm:gl2-full-lattice-lift}
+Fix the four identifications of the \(A_5\) coordinate lattices used in
+the glue presentation, and the discriminant marking
+\(10\mapsto v,01\mapsto s,11\mapsto c\) of \(D_4\).
+The group \(G\cong GL_2(\mathbb F_3)\) has a faithful action by integral
+isometries of the index-72 overlattice.  Write
+\(\varphi_i:A\longrightarrow A(F_{\eta_i})\) for the restriction of
+the fixed free-coordinate isometry \(e_j\mapsto e_{f_i289^j}\).
+For \(X_i\in A(F_{\eta_i})\), the \(i\)-th output component is exactly
+\(\varepsilon_i\varphi_i\varphi_{p(i)}^{-1}X_{p(i)}\).
+In the identified \(A\) coordinates this is the action
+\[
+ L_g(X_1,X_2,X_3,X_4;d)
+ =\bigl(\varepsilon_1X_{p(1)},\ldots,
+        \varepsilon_4X_{p(4)};\delta(B)d\bigr),
+\]
+where \(\delta:GL_2(\mathbb F_2)\to O(D_4)\) is the section given by
+\[
+ \delta(B_R)=R_D=\operatorname{diag}(-1,1,1,1),\qquad
+ \delta(B_H)=H_D=\frac12
+ \begin{pmatrix}
+ 1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1
+ \end{pmatrix}.
+\]
+Under \(\Theta\), the two displayed full triality lifts are exactly
+\(A_R\) and \(A_H\).
+\end{theorem}
+
+\begin{proof}
+The four identified \(A_5\) summands carry the same Euclidean metric,
+so the displayed signed permutation is a root-lattice isometry.  The
+matrices \(R_D,H_D\) preserve \(D_4\): \(R_D\) negates one integral
+coordinate and preserves parity of the sum; for \(x\in D_4\), each
+coordinate of \(H_Dx\) is integral because its numerator has the same
+parity as \(\sum x_i\), and the coordinate sum of \(H_Dx\) is \(2x_1\).
+Both matrices are orthogonal involutions by multiplication.
+Furthermore \(R_D=s_{e_1}\), \(H_D=s_c\), with
+\(c=(-1,1,1,1)/2\), and \((e_1,c)=-1/2\).
+On the plane with basis \(e_1,c\), their product has matrix
+\(\left(\begin{smallmatrix}0&-1\\1&-1\end{smallmatrix}\right)\)
+and has cube the identity; both reflections fix the orthogonal
+complement pointwise.  The discriminant actions are the two distinct
+transpositions \(B_R,B_H\).  The same word reduction as in the preceding
+proof therefore shows that \(\langle R_D,H_D\rangle\) has exactly six
+elements and that its discriminant action is an isomorphism onto
+\(GL_2(\mathbb F_2)\).  Its inverse is the homomorphism \(\delta\).
+
+Thus \(g\mapsto L_g\) is a homomorphism of root-lattice isometries.
+It extends to the dual lattice because an isometry preserves the
+integer-pairing condition defining the dual.  Its discriminant action is
+the specified \((\varepsilon,p,B)\), which preserves \(\mathcal H\).
+Consequently it preserves the inverse image
+\[
+ N=\{x\in R_{\mathrm{ES}}^\vee:
+                  x+R_{\mathrm{ES}}\in\mathcal H\}.
+\]
+It is therefore an integral isometry of \(N\).
+If \(L_g\) is the identity on \(N\), it is the identity on the full
+real span, because \(N\) contains the full-rank lattice
+\(R_{\mathrm{ES}}\).  It is therefore also the identity on
+\(R_{\mathrm{ES}}^\vee/R_{\mathrm{ES}}\), in particular on the ternary
+code.  Hence \(\Theta(g)=I\), and injectivity of \(\Theta\) gives \(g=1\).
+This proves faithfulness.
+The exact formulas for \(A_R,A_H\) were established above, so their
+lifts are the stated full triality transformations.
+\end{proof}
+
+This constructs an explicit finite subgroup of \(O(N)\), including its
+action on all five root summands and on their glue, and its exact
+\(D_4\)-triality quotient.  The group and its projective quotient agree
+with the \(A_5^4D_4\) row of \cite[Table~3, p.~21]{esn:CDH2014};
+the isomorphisms here have been proved by their actual code actions.
+
+For clarity, the two full triality elements, denoted
+\(\widehat R=L_{\Theta^{-1}(A_R)}\) and
+\(\widehat H=L_{\Theta^{-1}(A_H)}\), act in the fixed coordinates by
+\[
+\begin{split}
+ \widehat R(X_1,X_2,X_3,X_4;d)
+     &=(X_2,X_1,X_3,-X_4;R_Dd),\\
+ \widehat H(X_1,X_2,X_3,X_4;d)
+     &=(X_1,X_3,X_2,-X_4;H_Dd).
+\end{split}
+\]
+Their squares and the cube of their product are the identity on the
+entire lattice, by the proved faithful group homomorphism.
+The product on the first three A5 summands is the indicated
+three-cycle; its two negations on the fourth summand cancel.
+
+\subsection{The exact reduced-shell divisor bijection}
+\label{esn:subsec:shells}
+
+Let \(p\) be a positive prime with \(p\equiv1\pmod {24}\), and
+let the positive integer shell \(R\) satisfy \(R\equiv3\pmod4\).
+Retain
+\begin{equation}
+ a=a_R(p)=\frac{p+R}{4},\qquad
+ N_{\mathrm{sh}}=pa,\qquad g=\gcd(R,N_{\mathrm{sh}}),\qquad
+ R_0=\frac Rg,\quad N_0=\frac{N_{\mathrm{sh}}}{g}.
+ \label{esn:eq:shell-data}
+\end{equation}
+The integer \(N_{\mathrm{sh}}\) is the source's scalar \(N=pa\);
+the subscript distinguishes it from the lattice \(N\) without changing
+either object.  In particular \(a,R_0,N_0\) are positive integers,
+\(\gcd(R_0,N_0)=1\), and the prescribed first denominator equation is
+\begin{equation}
+ \frac4p-\frac1a=\frac{4a-p}{pa}
+       =\frac{R}{N_{\mathrm{sh}}}=\frac{R_0}{N_0}
+       =\frac1b+\frac1c.
+ \label{esn:eq:fixed-shell-equation}
+\end{equation}
+Here \(b,c\) are positive integer denominators, and their order is
+initially retained.  Define the finite set
+\[
+ \mathcal D_{R,p}=
+ \{d\in\mathbb Z_{>0}:d\mid N_0^2,
+                             \ d\equiv-N_0\pmod {R_0}\},
+ \qquad A_R(p)=|\mathcal D_{R,p}|.
+\]
+
+\begin{theorem}[Certificates, ordered pairs, and complementary pairs]
+\label{esn:thm:shell-bijection}
+There is an exact bijection
+\begin{equation}
+ \begin{split}
+ \mathcal D_{R,p}&\longrightarrow
+  \{(b,c)\in\mathbb Z_{>0}^2:
+                    4/p=1/a+1/b+1/c\},\\
+ d&\longmapsto
+ \left(\frac{N_0+d}{R_0},
+       \frac{N_0+N_0^2/d}{R_0}\right),
+ \end{split}
+ \label{esn:eq:shell-bijection}
+\end{equation}
+with inverse \(d=R_0b-N_0\).  The involution \(d\mapsto N_0^2/d\)
+corresponds exactly to \((b,c)\mapsto(c,b)\).  Consequently the
+number of unordered pairs of remaining denominators is
+\begin{equation}
+ U_R(p)=\frac{A_R(p)+\delta_{R,p}}2,
+ \qquad
+ \delta_{R,p}=\begin{cases}1,&R_0\mid2,\\0,&R_0\nmid2.\end{cases}
+ \label{esn:eq:unordered-count}
+\end{equation}
+The unique possible fixed certificate is \(d=N_0\), giving
+\(b=c=2N_0/R_0\).
+\end{theorem}
+
+\begin{proof}
+For a positive solution of \eqref{esn:eq:fixed-shell-equation},
+\(R_0b/N_0=1+b/c>1\), so \(d=R_0b-N_0>0\); likewise
+\(e=R_0c-N_0>0\).  Multiplying the fraction equation by
+\(N_0bc\) gives \(R_0bc=N_0(b+c)\), and therefore
+\[
+ (R_0b-N_0)(R_0c-N_0)=N_0^2.
+\]
+Thus \(d\mid N_0^2\), \(d\equiv-N_0\pmod {R_0}\), and
+\(e=N_0^2/d\).
+
+Conversely, let \(d\in\mathcal D_{R,p}\) and \(e=N_0^2/d\).
+For \(R_0>1\), the coprimality \(\gcd(R_0,N_0)=1\) makes
+\(d\equiv-N_0\) a unit, and hence
+\[
+ e\equiv N_0^2(-N_0)^{-1}\equiv-N_0\pmod {R_0}.
+\]
+For \(R_0=1\), this congruence is vacuous and holds automatically.
+Thus both expressions in \eqref{esn:eq:shell-bijection} are positive
+integers.  Substitution into \((R_0b-N_0)(R_0c-N_0)=N_0^2\)
+and expansion give the original fraction equation.  Each construction
+recovers exactly \(d=R_0b-N_0\) and \(e=R_0c-N_0\), so they
+are inverse, proving the bijection and the involution statement.
+
+For a positive divisor, \(d=N_0^2/d\) holds exactly when
+\(d=N_0\).  This divisor is a certificate exactly when
+\(N_0\equiv-N_0\pmod {R_0}\), that is, \(R_0\mid2N_0\).
+Coprimality makes this equivalent to \(R_0\mid2\).
+Every other orbit contains two certificates, so counting the fixed
+orbits and the two-element orbits gives
+\(U_R(p)=\delta_{R,p}+(A_R(p)-\delta_{R,p})/2\), exactly
+\eqref{esn:eq:unordered-count}.
+\end{proof}
+
+Factor the exact integer \(N_0\) as
+\(N_0=\prod_{j=1}^{m}q_j^{e_j}\), with distinct positive primes
+\(q_j\) and positive exponents \(e_j\), and define
+\begin{equation}
+ \begin{split}
+ B(N_0)&=\prod_{j=1}^{m}\{-e_j,-e_j+1,\ldots,e_j\},\\
+ \lambda_{R_0,N_0}:B(N_0)&\longrightarrow(\mathbb Z/R_0\mathbb Z)^\times,
+ \qquad
+ \lambda_{R_0,N_0}(\beta)=\prod_{j=1}^{m}q_j^{\beta_j}\pmod {R_0}.
+ \end{split}
+ \label{esn:eq:exponent-box}
+\end{equation}
+The group for modulus one is taken to be the one-element group, so that
+the same notation also expresses the vacuous congruence in that case.
+For \(R_0>1\), every \(q_j\) is a unit by coprimality, so all
+negative powers in this formula are defined.
+
+\begin{theorem}[The exact exponent-box map and the two raw channels]
+\label{esn:thm:raw-channels}
+The map
+\begin{equation}
+ \beta\longmapsto d=\prod_{j=1}^{m}q_j^{e_j+\beta_j}
+ \label{esn:eq:exponent-to-divisor}
+\end{equation}
+bijects \(\lambda_{R_0,N_0}^{-1}(-1)\) with
+\(\mathcal D_{R,p}\).  It retains each valuation and both original
+integers \(R_0,N_0\).
+
+In addition, suppose \(\gcd(R,pa)=1\) and \(p\nmid a\).
+Write
+\[
+ a=\prod_{j=1}^{s}q_j^{e_j},\qquad
+ B(a)=\prod_{j=1}^{s}\{-e_j,\ldots,e_j\},
+\]
+and define, for each unit
+\(t\) modulo \(R\),
+\[
+ c_R(a;t)=\#\left\{\beta\in B(a):
+                                 \prod_j q_j^{\beta_j}\equiv t\pmod R\right\}.
+\]
+Then the number of raw divisor certificates, equivalently ordered
+denominator pairs, is
+\begin{equation}
+ A_R(p)=c_R(a;-1)+2c_R(a;-p^{-1}).
+ \label{esn:eq:two-raw-channels}
+\end{equation}
+Its complementary-divisor quotient is the count in
+\eqref{esn:eq:unordered-count}, with \(R_0=R\) under these additional
+coprimality hypotheses.
+\end{theorem}
+
+\begin{proof}
+A divisor of \(N_0^2\) has one and only one exponent vector
+\(\alpha_j\in\{0,\ldots,2e_j\}\).  The exact change
+\(\beta_j=\alpha_j-e_j\) gives the entire displayed box and
+\(dN_0^{-1}\equiv\prod_jq_j^{\beta_j}\pmod {R_0}\).
+Multiplication of \(d\equiv-N_0\) by the unit \(N_0^{-1}\)
+gives precisely the target \(-1\); modulo one both statements are
+vacuous.  This proves the first bijection and its inverse.
+
+Under the additional hypotheses, \(R_0=R\), \(N_0=pa\), and
+the exponent of \(p\) in \(pa\) is exactly one.  Every positive integer
+divisor \(d\) of \(p^2a^2\) therefore has exactly one valuation-index
+representation
+\[
+ d=p^{t+1}\prod_jq_j^{e_j+\beta_j},\qquad
+ (t,\beta)\in\{-1,0,1\}\times B(a).
+\]
+After division by \(pa\), its unit-group residue is
+\[
+ d(pa)^{-1}\equiv p^t\prod_jq_j^{\beta_j}\pmod R.
+\]
+Distinct valuation-index pairs may have the same unit-group residue;
+they remain distinct integer divisors in the count.
+The three conditions for this to equal \(-1\) are
+\[
+\begin{array}{c|c}
+ t&\prod_jq_j^{\beta_j}\pmod R\\\hline
+ -1&-p\\0&-1\\1&-p^{-1}.
+\end{array}
+\]
+The negation \(\beta\mapsto-\beta\) is a bijection of \(B(a)\)
+and inverts the unit-group value, so it bijects the fibres at
+\(-p\) and \(-p^{-1}\).  Summing the sizes of these three disjoint
+raw exponent classes proves \eqref{esn:eq:two-raw-channels}.  The
+complementary divisor sends \((t,\beta)\) to \((-t,-\beta)\),
+so identifying it changes the raw count as proved in
+Theorem~\ref{esn:thm:shell-bijection}; it does not leave the factor
+two in \eqref{esn:eq:two-raw-channels} unchanged.
+\end{proof}
+
+This counting convention corrects the wording attached to the source's
+two-channel formula: the displayed sum is a raw count, whereas a count
+after identifying complementary divisors is \eqref{esn:eq:unordered-count}.
+The exact source locator and formula are retained in
+\cite{esn:Residual2026,esn:Provenance}.
+
+\subsection{A fixed-shell count does not descend to the residue fibre}
+\label{esn:subsec:non-descent}
+
+\begin{theorem}[Two primes in the same residue with different shell counts]
+\label{esn:thm:non-descent}
+The two primes \(2521\) and \(3361\) both reduce to \(1\in S_{840}\),
+but for the same shell \(R=3\) their raw and unordered counts are
+\begin{equation}
+ A_3(2521)=0,\qquad A_3(3361)=6,
+ \qquad U_3(2521)=0,\quad U_3(3361)=3.
+ \label{esn:eq:non-descent-counts}
+\end{equation}
+One actual denominator certificate in the second case is
+\begin{equation}
+ \frac4{3361}=\frac1{841}+\frac1{974690}+\frac1{28266010}.
+ \label{esn:eq:explicit-denominator-example}
+\end{equation}
+Thus the raw count, its unordered quotient, and the indicator of
+completion of this fixed shell each fail to factor through prime
+reduction modulo 840.
+\end{theorem}
+
+\begin{proof}
+The residue equations are the literal equalities
+\(2521=3\cdot840+1\) and \(3361=4\cdot840+1\).
+For an explicit finite primality verification, the primes at most 57,
+in increasing order, are
+\[
+ \mathcal P=(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53).
+\]
+The remainders against its first 15 entries for \(2521\), all 16
+entries for \(3361\), and its first nine entries for \(631\), are
+respectively
+\[
+\begin{split}
+ &(1,1,1,1,2,12,5,13,14,27,10,5,20,27,30),\\
+ &(1,1,1,1,6,7,12,17,3,26,13,31,40,7,24,22),\\
+ &(1,1,1,1,4,7,2,4,10).
+\end{split}
+\]
+All are nonzero, and the respective integer square roots are 50, 57,
+and 25.  The prime 29 has remainders \(1,2,4\) against \(2,3,5\),
+the primes at most its integer square root 5.
+Every composite positive integer greater than one has a prime divisor
+at most its square root: in a factorization into two factors greater
+than one, the smaller factor is at most the square root and has a prime
+divisor no larger than itself.  These nonzero remainder lists therefore
+prove each stated primality.
+
+For \(R=3\),
+\[
+ a_3(2521)=631,\qquad a_3(3361)=841=29^2.
+\]
+Both primes are 1 modulo three; also \(631\equiv1\pmod3\) and
+\(841\equiv1\pmod3\).  Thus \(\gcd(3,pa)=1\) in both cases.
+Both \(a\) values are smaller than their respective primes, so
+\(p\nmid a\).  Every additional hypothesis of
+Theorem~\ref{esn:thm:raw-channels} is now verified.
+The two targets \(-1\) and \(-p^{-1}\) coincide modulo three.
+
+For \(a=631\), all exponents \(-1,0,1\) give residue one, so
+the target \(-1\) has count zero.  For \(a=29^2\), among the five
+exponents \(-2,-1,0,1,2\), exactly \(-1,1\) give \(-1\) modulo
+three because \(29\equiv-1\pmod3\).  Both target counts are
+therefore 2 and the raw count is \(2+2\cdot2=6\).  Here
+\(R_0=3\nmid2\), so both unordered counts are half the corresponding
+raw counts.  This proves \eqref{esn:eq:non-descent-counts}.
+
+For the second prime, retain
+\[
+ N_{\mathrm{sh}}=3361\cdot841=2826601,
+ \qquad d=3361\cdot29=97469,
+ \qquad \frac{N_{\mathrm{sh}}^2}{d}=3361\cdot29^3=81971429.
+\]
+Then
+\[
+ \frac{N_{\mathrm{sh}}+d}{3}=974690,
+ \qquad
+ \frac{N_{\mathrm{sh}}+N_{\mathrm{sh}}^2/d}{3}=28266010.
+\]
+The bijection of Theorem~\ref{esn:thm:shell-bijection} now proves
+\eqref{esn:eq:explicit-denominator-example}.  The first prime has
+no completion with this prescribed first denominator by its zero
+certificate count.  Two arguments with the same residue and unequal
+function values cannot be the pullback of a single residue function:
+if \(f(p)=h(p\bmod840)\), equality of the residues forces equality
+of the values.  Applying this observation to the three displayed
+functions proves the claimed failures of factorization.
+\end{proof}
+
+\subsection{An actual residue cocycle and a retained-sample Fourier map}
+\label{esn:subsec:cocycle-fourier}
+
+For \(r\in S_{840}\), multiplication by \(r\) permutes each fibre.
+Let \(\rho(r)\) act by
+\begin{equation}
+ \rho(r)e_s=e_{rs}\quad(s\in V_{840}),\qquad
+ \rho(r)|_D=I,
+ \qquad b(r)=e_r-e_1\in A(S_{840})\subset N.
+ \label{esn:eq:residue-action-cocycle}
+\end{equation}
+The two free coordinates in \(b(r)\) belong to the principal fibre.
+
+\begin{theorem}[The full-lattice residue action and its exact cocycle]
+\label{esn:thm:residue-cocycle}
+The permutations \(\rho(r)\) extend to a faithful homomorphism
+\(\rho:S_{840}\to O(N)\).  The map \(b:S_{840}\to N\) satisfies
+\begin{equation}
+ b(rs)=b(r)+\rho(r)b(s)\qquad(r,s\in S_{840}),
+ \qquad b(1)=0,\qquad (b(r),b(r))=2\quad(r\ne1).
+ \label{esn:eq:cocycle-identity}
+\end{equation}
+Thus reduction of any prime into \(S_{840}\), followed by \(b\),
+is an explicit lattice-valued map on that prime domain.
+\end{theorem}
+
+\begin{proof}
+Multiplication permutes the orthonormal free coordinates, preserves
+their augmentation kernels, and obeys \(\rho(r)\rho(s)=\rho(rs)\).
+On the \(i\)-th fibre its dual discriminant generator is
+\[
+ \lambda_i=e_{f_i}-\frac16\sum_{t\in F_{\eta_i}}e_t.
+\]
+Its image differs from it by
+\(e_{rf_i}-e_{f_i}\in A(F_{\eta_i})\).  Hence \(\rho(r)\)
+acts trivially on the entire A5 discriminant group, since
+\(\lambda_i\) generates it.  It fixes D and therefore the whole
+discriminant group, in particular \(\mathcal H\).
+It follows from the inverse-image definition that it preserves \(N\).
+If \(\rho(r)\) were the identity, applying it to
+\(e_1-e_{289}\) would give
+\(e_r-e_{289r}=e_1-e_{289}\).  Since \(289\ne1\), the
+positive coordinate on the left is exactly \(r\), so comparison of
+free-coordinate coefficients forces \(r=1\).  This proves faithfulness.
+
+Finally
+\[
+ b(r)+\rho(r)b(s)
+   =(e_r-e_1)+(e_{rs}-e_r)=e_{rs}-e_1=b(rs).
+\]
+For \(r\ne1\), the two basis vectors in the difference are
+orthogonal unit vectors, giving squared norm two.  The stated prime map
+is the composition \(p\mapsto p\bmod840\mapsto b(p\bmod840)\),
+whose domains have all been specified.
+\end{proof}
+
+Fix a positive shell \(R\equiv3\pmod4\), and let \(P\) be any
+finite set of positive primes whose reduction lies in \(S_{840}\).
+For every \(p\in P\), use its actual count \(A_R(p)\) defined by
+the reduced divisor set, including the full data of
+\eqref{esn:eq:shell-data}.  Define
+\begin{equation}
+ \begin{split}
+ w_{R,P}(r)&=\sum_{\substack{p\in P\\p\equiv r\ (840)}}A_R(p),\\
+ \widehat w_{R,P}(k)&=
+       \sum_{r\in S_{840}}w_{R,P}(r)
+                     \exp\left(-\frac{2\pi\mathrm i k\kappa(r)}6\right),
+             \qquad k\in\mathbb Z/6\mathbb Z.
+ \end{split}
+ \label{esn:eq:sample-pushforward}
+\end{equation}
+This is the pushforward along prime reduction, followed by the finite
+Fourier transform with the already fixed generator 289.
+
+\begin{theorem}[Inversion and an integral augmentation-valued count map]
+\label{esn:thm:sample-fourier}
+The function \(w_{R,P}\) is recovered by
+\begin{equation}
+ w_{R,P}(r)=\frac16\sum_{k=0}^5\widehat w_{R,P}(k)
+                      \exp\left(\frac{2\pi\mathrm i k\kappa(r)}6\right).
+ \label{esn:eq:fourier-inverse}
+\end{equation}
+Let \(u=\sum_{r\in S_{840}}e_r\),
+\(W_{R,P}=\sum_rw_{R,P}(r)e_r\), and
+\(M_{R,P}=\sum_rw_{R,P}(r)=\widehat w_{R,P}(0)\).
+Then
+\begin{equation}
+ Q_{R,P}=6W_{R,P}-M_{R,P}u\in A(S_{840})\subset N
+ \label{esn:eq:integral-count-augmentation}
+\end{equation}
+is a well-defined integral lattice-valued count map.  Put
+\(\zeta_6=e^{2\pi\mathrm i/6}\) and
+\[
+ f_k=\sum_{j=0}^5\zeta_6^{kj}e_{289^j}\qquad(0\le k\le5).
+\]
+The five vectors \(f_1,\ldots,f_5\) form a basis of
+\(A(S_{840})\otimes\mathbb C\), with
+\begin{equation}
+ \rho(289)f_k=\zeta_6^{-k}f_k,\qquad
+ Q_{R,P}=\sum_{k=1}^5\widehat w_{R,P}(k)f_k.
+ \label{esn:eq:fourier-augmentation-eigenvectors}
+\end{equation}
+Both the prime sample \(P\) and the shell \(R\) are retained in the
+domain of these maps.
+\end{theorem}
+
+\begin{proof}
+For an integer \(m\), the sum
+\(\sum_{k=0}^5\zeta_6^{km}\) equals 6 if \(6\mid m\).
+Otherwise it is the geometric sum
+\((1-\zeta_6^{6m})/(1-\zeta_6^m)=0\).
+Substituting \eqref{esn:eq:sample-pushforward} into the right side
+of \eqref{esn:eq:fourier-inverse} therefore gives
+\[
+ \sum_{s\in S_{840}}w_{R,P}(s)
+       \frac16\sum_{k=0}^5
+              \zeta_6^{k(\kappa(r)-\kappa(s))}=w_{R,P}(r),
+\]
+because \(\kappa\) is bijective.  This proves inversion.
+
+The coefficient sum of \(6W_{R,P}-M_{R,P}u\) is
+\(6M_{R,P}-6M_{R,P}=0\), and its coefficients are integers, so
+it belongs to the exact augmentation lattice.  The same geometric sum
+shows that \(f_k\) has coefficient sum zero for \(1\le k\le5\)
+and \(f_0=u\).  Moreover the six \(f_k\) are independent: the
+coefficient Fourier transform of \(f_k\) is six in coordinate \(k\)
+and zero in all other coordinates, by that same identity.  Since the
+augmentation space has dimension five, its five nonzero-frequency
+vectors form a basis.  Replacing \(j\) by \(j+1\) in
+\(\rho(289)f_k\) gives the multiplier \(\zeta_6^{-k}\), including
+its displayed sign.
+
+Inversion in each free coordinate gives
+\(W_{R,P}=(1/6)\sum_{k=0}^5\widehat w_{R,P}(k)f_k\).
+Multiplication by 6 and subtraction of
+\(M_{R,P}u=\widehat w_{R,P}(0)f_0\) prove the second identity
+in \eqref{esn:eq:fourier-augmentation-eigenvectors}.
+All sums were taken over the specified finite set \(P\) and its
+residue image.  The transform therefore recovers these aggregate counts;
+it makes no identification between the separate counts of distinct
+primes with the same residue.  Their possible inequality is proved in
+Theorem~\ref{esn:thm:non-descent}.
+\end{proof}
+
+% Input after esn:thm:gl2-full-lattice-lift and before the shell subsection.
+% This fragment introduces no packages, macros, or theorem environments.
+% New labels have prefix esn:fa:.  Its residue corollary uses the formula
+% defining rho, which is restated here so placement before that formula is safe.
+
+\subsection{The entire lattice automorphism group and its Weyl quotient}
+\label{esn:fa:subsec:full-automorphisms}
+
+Cheng, Duncan and Harvey define the umbral group as the quotient of
+the Niemeier lattice automorphism group by its root-reflection subgroup;
+their Table~3 identifies this quotient as \(GL_2(3)\) for
+\(A_5^4D_4\) \cite[Section~2.4 and Table~3]{esn:CDH2014}.
+The argument here proves that identification in the present residue,
+metric, discriminant and glue coordinates, and locates the arithmetic
+six-cycle in the full group. It does not claim the abstract group as new.
+The displayed complement is the particular lift already constructed here;
+no equality of its representation with a simple-root-preserving section
+is assumed.
+
+Retain the exact lattice \(N\), the root lattice \(R_{\mathrm{ES}}\),
+the four fibre identifications \(\varphi_i\), the discriminant marking,
+the glue subgroup \(\mathcal H\), and the lift \(g\mapsto L_g\)
+constructed above.  For a lattice \(K\) in a Euclidean space, \(O(K)\)
+means the group of real linear isometries of its real span that map
+\(K\) onto itself.  For the present root lattice define
+\[
+ W(R_{\mathrm{ES}})
+ =\langle s_\alpha:\alpha\in R_{\mathrm{ES}},\ (\alpha,\alpha)=2\rangle,
+ \qquad s_\alpha(x)=x-(x,\alpha)\alpha.
+\]
+All actions below retain the previously fixed six-coordinate order in
+each \(A_5\) summand and the marking \(10\mapsto v\),
+\(01\mapsto s\), \(11\mapsto c\) in \(D^\vee/D\).
+
+\begin{theorem}[All isometries of the displayed \(A_5\) lattice]
+\label{esn:fa:thm:a5-automorphisms}
+Let \(A=\{x\in\mathbb Z^6:\sum_{j=0}^5x_j=0\}\) with its displayed
+Euclidean metric, and for a permutation \(\sigma\) of
+\(\{0,1,2,3,4,5\}\) let \(Q_\sigma e_j=e_{\sigma(j)}\).
+Every element of \(O(A)\) has exactly one expression
+\(\epsilon Q_\sigma|_{\mathbb R A}\), where
+\(\epsilon\in\{1,-1\}\).  Thus
+\[
+ O(A)=\langle Q_\sigma|_{\mathbb R A}:\sigma\in S_6\rangle
+                  \times\{I,-I\},
+ \qquad W(A)=\langle Q_\sigma|_{\mathbb R A}:\sigma\in S_6\rangle
+                  \cong S_6.
+\]
+On the marked discriminant group
+\(D_A=(\mathbb Z/6)\lambda\),
+\(\lambda=e_0-\frac16\sum_{j=0}^5e_j\), this isometry acts by
+\(k\lambda+A\mapsto\epsilon k\lambda+A\).  The kernel of this
+discriminant action is exactly \(W(A)\).
+\end{theorem}
+
+\begin{proof}
+The norm-two vectors are precisely
+\(\alpha_{ij}=e_i-e_j\) for \(i\ne j\).  For two distinct such roots,
+\[
+ (\alpha_{ij},\alpha_{kl})
+       =\delta_{ik}-\delta_{il}-\delta_{jk}+\delta_{jl}.
+\]
+Their inner product is one exactly when they have the same first index
+or the same second index.  Indeed equality of first indices, with
+distinct second indices, makes the displayed expression one; equality
+of second indices, with distinct first indices, does the same.  If both
+positive Kronecker terms vanish the expression is nonpositive, and if
+both are one then the roots are equal, the excluded case.
+
+Put
+\[
+ C_i=\{\alpha_{ij}:j\ne i\},\qquad
+ -C_i=\{\alpha_{ji}:j\ne i\}\qquad(0\le i\le5).
+\]
+These twelve sets are exactly the maximal sets of roots in which every
+two distinct members have inner product one.  To prove this, a singleton
+can be enlarged by keeping its first index and choosing a third index,
+so a maximal such set contains a pair.  If the pair is
+\(\alpha_{ij},\alpha_{ik}\), with \(j\ne k\), a further root
+\(\alpha_{lm}\) has inner product one with both only if
+\[
+ (l=i\ \text{or}\ m=j)\quad\text{and}\quad
+ (l=i\ \text{or}\ m=k).
+\]
+Since \(j\ne k\), these conditions force \(l=i\).  Thus the whole
+set is contained in \(C_i\), and maximality makes it equal to \(C_i\).
+For a pair with common second index the same argument, after negating
+both roots and every possible further member, gives \(-C_i\).
+Each \(C_i\) and \(-C_i\) has five roots and is maximal by this argument.
+
+Form a graph whose vertices are these twelve maximal sets, with an edge
+when the two sets have nonempty intersection.  Its intersections are
+exactly
+\[
+ C_i\cap C_j=(-C_i)\cap(-C_j)=\varnothing\quad(i\ne j),
+ \qquad
+ C_i\cap(-C_j)=
+ \begin{cases}\{\alpha_{ij}\},&i\ne j,\\
+               \varnothing,&i=j.
+ \end{cases}
+\]
+Consequently it is the bipartite graph on the two displayed six-element
+families with every cross-edge except the six pairs \((C_i,-C_i)\).
+It is connected: two distinct vertices on the same side have a common
+neighbor indexed by any index different from both; vertices on opposite
+sides with different indices are adjacent; and \(C_i\) and \(-C_i\)
+are joined by the path
+\(C_i,-C_j,C_k,-C_i\) for distinct \(i,j,k\).
+A connected bipartite graph has only two choices for its ordered
+bipartition, because the side of a fixed vertex determines the side of
+each other vertex along any connecting path.  Hence an isometry of
+\(A\), which permutes roots and preserves their inner products and set
+intersections, either preserves both displayed families or exchanges them.
+
+In the first case write
+\(C_i\mapsto C_{\sigma(i)}\) and
+\(-C_i\mapsto-C_{\tau(i)}\).
+The unique opposite-family vertex not adjacent to \(C_i\) is \(-C_i\).
+Preservation of that missing edge forces \(\tau(i)=\sigma(i)\)
+for each \(i\).  The singleton intersection formula then gives
+\(\alpha_{ij}\mapsto\alpha_{\sigma(i)\sigma(j)}\).
+In the case exchanging the families, composition with \(-I\) reduces
+to the first case, so the root action is
+\(\alpha_{ij}\mapsto-\alpha_{\sigma(i)\sigma(j)}\).
+The roots \(e_j-e_5\), \(0\le j\le4\), span \(\mathbb R A\),
+so the root action determines the whole linear isometry.  These cases
+give precisely the asserted expressions.
+
+The permutation \(\sigma\) is determined by the permutation of the
+six vertices \(C_i\), after the sign is determined by whether the two
+families are preserved or exchanged.  Thus the expression is unique.
+Every \(Q_\sigma\) and \(-I\) preserves \(A\), and \(-I\)
+commutes with every linear map; uniqueness proves the direct product.
+Reflection in \(e_i-e_j\) interchanges free coordinates \(i,j\)
+and fixes the others, as follows on substituting this root in
+\(x\mapsto x-(x,e_i-e_j)(e_i-e_j)\).
+Every permutation is a product of transpositions: each cycle
+\((i_1\ i_2\ \cdots\ i_m)\) is
+\((i_1\ i_m)(i_1\ i_{m-1})\cdots(i_1\ i_2)\).
+These reflections therefore generate precisely the displayed \(S_6\).
+Finally
+\[
+ Q_\sigma\lambda-\lambda=e_{\sigma(0)}-e_0\in A.
+\]
+Thus the discriminant action is the stated sign.  Since \(\lambda+A\)
+has exact order six, its negative is distinct from itself; the action
+is trivial exactly when \(\epsilon=1\).
+\end{proof}
+
+\begin{theorem}[All isometries of the displayed \(D_4\) lattice]
+\label{esn:fa:thm:d4-automorphisms}
+For the exact lattice
+\(D=\{x\in\mathbb Z^4:\sum_i x_i\equiv0\pmod2\}\),
+the action on its marked discriminant group gives the split exact sequence
+\[
+ 1\longrightarrow W_D\longrightarrow O(D)
+   \xrightarrow{\ d_D\ }GL_2(\mathbb F_2)\longrightarrow1,
+ \qquad
+ O(D)=W_D\rtimes\delta(GL_2(\mathbb F_2)).
+\]
+Here \(W_D\) consists of all signed coordinate permutations with an even
+number of minus signs, and \(\delta\) is exactly the section generated
+by the earlier matrices \(R_D,H_D\).  In particular \(O(D)=W_F\)
+in the root and weight coordinates of
+Theorem~\ref{esn:thm:d4-f4-triality}.
+\end{theorem}
+
+\begin{proof}
+Every isometry of \(D\) preserves its dual: if \(T\in O(D)\),
+\(x\in D^\vee\), and \(a\in D\), then
+\((Tx,a)=(x,T^{-1}a)\in\mathbb Z\).
+It therefore induces an additive automorphism of
+\(D^\vee/D\cong\mathbb F_2^2\), giving the homomorphism \(d_D\).
+The three nonzero classes have the exact norm-one representative sets
+\[
+ \begin{aligned}
+ \mathcal V&=\{\pm e_i:1\le i\le4\},\\
+ \mathcal S_+&=\{\tfrac12\textstyle\sum_i\delta_i e_i:
+                                      \prod_i\delta_i=1\},\\
+ \mathcal S_-&=\{\tfrac12\textstyle\sum_i\delta_i e_i:
+                                      \prod_i\delta_i=-1\},
+ \qquad \delta_i\in\{1,-1\}.
+ \end{aligned}
+\]
+in the respective marked classes \(v,s,c\).
+For the integral nonzero class, norm one forces exactly one coordinate
+\(\pm1\).  A half-integral vector has norm at least
+\(4(1/2)^2=1\), with equality exactly when every coordinate is
+\(\pm1/2\).  The difference of such a vector from
+\(s=(1,1,1,1)/2\) has one coordinate \(-1\) per minus sign,
+so it belongs to \(D\) exactly when their number is even.
+This proves the three sets and their marking directly.
+
+If \(d_D(T)=I\), then \(T\) preserves \(\mathcal V\).
+The vectors \(Te_i\) are orthonormal members of \(\mathcal V\),
+so \(Te_i=\delta_i e_{\sigma(i)}\) for a permutation \(\sigma\)
+of four indices and signs \(\delta_i\).  Preservation of
+\(\mathcal S_+\) forces \(Ts\in\mathcal S_+\), hence
+\(\prod_i\delta_i=1\).  Thus the kernel consists only of even
+signed permutations.
+
+Conversely, reflection in \(e_i-e_j\) interchanges coordinates
+\(i,j\), and reflection in \(e_i+e_j\) interchanges them and
+negates both.  Their composition produces a sign change in exactly
+those two coordinates.  Any even set of sign changes is a product of
+such disjoint pairs, and transpositions generate all permutations.
+The root reflections therefore generate every even signed permutation,
+and each root reflection is itself such a matrix.  If
+\(\alpha\in D\) has norm two and \(x\in D^\vee\), then
+\(s_\alpha x-x=-(x,\alpha)\alpha\in D\).  Every root reflection
+acts trivially on the discriminant group.  This proves
+\(\ker d_D=W_D\) in both directions.
+
+For completeness the section has the original exact matrices
+\[
+ R_D=\operatorname{diag}(-1,1,1,1),\qquad
+ H_D=\frac12
+ \begin{pmatrix}
+ 1&1&1&1\\1&1&-1&-1\\1&-1&1&-1\\1&-1&-1&1
+ \end{pmatrix}.
+\]
+They preserve \(D\), are orthogonal involutions, and act on
+\((v,s,c)\) by \((s\ c)\) and \((v\ s)\), respectively,
+as calculated in Theorem~\ref{esn:thm:d4-f4-triality}.
+Their binary matrices in the retained marking are
+\[
+ B_R=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+ B_H=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+The same earlier coordinate calculation gives
+\(R_D^2=H_D^2=(R_DH_D)^3=I\); thus their subgroup has at most six
+elements, by reducing words to \((R_DH_D)^k\) or
+\((R_DH_D)^kR_D\), \(k=0,1,2\).
+The induced two transpositions generate the six permutations of the
+three nonzero binary vectors.  There are exactly six invertible binary
+matrices, by the \(3\cdot2\) choices of their independent columns,
+and their action on the three nonzero vectors is faithful.  Hence the
+six words have distinct discriminant actions, and the restriction of
+\(d_D\) to \(\langle R_D,H_D\rangle\) is an isomorphism onto
+\(GL_2(\mathbb F_2)\).  Its inverse is the specified \(\delta\).
+For every \(T\in O(D)\),
+\(T\delta(d_D(T))^{-1}\in\ker d_D=W_D\).
+The two factors intersect trivially because \(d_D\delta=I\).
+This proves the asserted splitting and exhausts \(O(D)\).
+The earlier theorem proved
+\(W_F=\langle W_D,R_D,H_D\rangle\), so it also proves the last equality.
+\end{proof}
+
+\begin{theorem}[The exact full automorphism quotient of \(N\)]
+\label{esn:fa:thm:full-quotient}
+Every isometry of \(N\) has a unique factorization
+\[
+ T=wL_g,\qquad w\in W(R_{\mathrm{ES}}),\quad g\in G.
+\]
+The Weyl group is normal, and the induced discriminant action gives
+the split exact sequence and the indicated isomorphisms
+\begin{equation}
+ \begin{split}
+ 1&\longrightarrow W(R_{\mathrm{ES}})
+   \longrightarrow O(N)\xrightarrow{\ d_{\mathrm{ES}}\ }G
+   \longrightarrow1,\\
+ O(N)&=W(R_{\mathrm{ES}})\rtimes L(G),\\
+ L(G)&\xrightarrow{\ \cong\ }O(N)/W(R_{\mathrm{ES}})
+               \cong G\xrightarrow{\ \Theta\ }GL_2(\mathbb F_3),\\
+ W(R_{\mathrm{ES}})&\cong S_6^4\times W_D,
+ \qquad |O(N)|=48\cdot(6!)^4\cdot(2^3\cdot4!).
+ \end{split}
+ \label{esn:fa:eq:full-group}
+\end{equation}
+In identified coordinates, if
+\(w=(Q_{\sigma_1},Q_{\sigma_2},Q_{\sigma_3},Q_{\sigma_4};w_D)\)
+and \(g=(\varepsilon,p,B)\), the exact semidirect-product action is
+\begin{equation}
+ L_gwL_g^{-1}
+   =\bigl(Q_{\sigma_{p(1)}},Q_{\sigma_{p(2)}},
+          Q_{\sigma_{p(3)}},Q_{\sigma_{p(4)}};
+          \delta(B)w_D\delta(B)^{-1}\bigr).
+ \label{esn:fa:eq:weyl-conjugation}
+\end{equation}
+In the original fibre coordinates the \(i\)-th permutation factor
+on the right means
+\(\varphi_iQ_{\sigma_{p(i)}}\varphi_i^{-1}\).
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{esn:thm:niemeier} proves that the norm-two vectors of \(N\)
+are exactly the 144 roots of its five original orthogonal summands.
+Join two distinct roots by an edge when their inner product is nonzero.
+The five summands are exactly the connected components of this graph.
+There are no edges between different summands by orthogonality.
+Within an \(A_5\) summand, the simple roots
+\(e_0-e_1,e_1-e_2,e_2-e_3,e_3-e_4,e_4-e_5\)
+have consecutive inner product \(-1\), forming a connected graph,
+and span its real space.  Every root not already among them has nonzero
+inner product with at least one of them; otherwise it is orthogonal
+to its entire real space and has norm zero, contrary to norm two.
+Thus its whole root graph is connected.  In \(D\), the four roots
+\[
+ e_1-e_2,\quad e_2-e_3,\quad e_3-e_4,\quad e_3+e_4
+\]
+span \(\mathbb R D\), and the second has inner product \(-1\)
+with each of the other three.  The same spanning argument proves
+connectedness of the \(D_4\) root graph.
+
+An element \(T\in O(N)\) permutes the norm-two vectors and preserves
+these edges, hence permutes their connected components.  Their
+cardinalities are \(30,30,30,30,24\), so \(T\) preserves the
+\(D_4\) component and permutes the four \(A_5\) components.
+The roots generate each original lattice summand: the five and four
+displayed simple roots are their integral bases by
+Theorem~\ref{esn:thm:root-discriminant}.
+Consequently \(T\) preserves their integer span
+\(R_{\mathrm{ES}}\).  The same component argument applies to every
+element of \(O(R_{\mathrm{ES}})\), since its norm-two vectors are
+the same 144 roots.  It follows that every such element has, in the
+fixed identified coordinates, the form
+\begin{equation}
+ T(X_1,X_2,X_3,X_4;d)
+    =\bigl(\varepsilon_iQ_{\sigma_i}X_{p(i)}\bigr)_{i=1}^4
+                                  \mathbin{;}T_Dd,
+ \label{esn:fa:eq:all-root-isometries}
+\end{equation}
+where \(p\in S_4\), \(\varepsilon_i\in\{1,-1\}\),
+\(\sigma_i\in S_6\), and \(T_D\in O(D)\).
+This follows by transporting each isometry from its input \(A_5\)
+summand to its output summand using the fixed \(\varphi_i\), then
+applying Theorem~\ref{esn:fa:thm:a5-automorphisms}.
+All choices in \eqref{esn:fa:eq:all-root-isometries} are unique.
+The convention is precisely the earlier convention: a vector supported
+on component \(k\) is sent to component \(p^{-1}(k)\).
+
+Let \(\mathcal A_{\mathrm{ES}}\) be the group of transformations
+of the exact discriminant group
+\((\mathbb Z/6)^4\oplus\mathbb F_2^2\) given by
+\[
+ (x;y)\longmapsto
+        \bigl((\varepsilon_i x_{p(i)})_{i=1}^4;By\bigr),
+ \qquad \varepsilon_i\in\{1,-1\},\quad p\in S_4,
+                 \quad B\in GL_2(\mathbb F_2).
+\]
+Each tuple gives a distinct transformation: the image of the order-six
+generator in each individual summand determines its output summand
+and its sign, and the images of the two binary basis vectors determine
+\(B\).  The discriminant action of
+\eqref{esn:fa:eq:all-root-isometries}, calculated by the two preceding
+theorems, is exactly this tuple with \(B=d_D(T_D)\).
+This defines a homomorphism
+\[
+ d_{\mathrm{ES}}:O(R_{\mathrm{ES}})\longrightarrow
+                                      \mathcal A_{\mathrm{ES}}.
+\]
+It is a homomorphism because extending an isometry to the dual and then
+passing to the quotient commutes with composition.  In particular the
+component permutation rule remains
+\(P_pP_q=P_{q\circ p}\); there is no change of the earlier convention.
+
+This homomorphism is onto.  Given any tuple
+\(a=(\varepsilon,p,B)\in\mathcal A_{\mathrm{ES}}\), define
+\[
+ \widetilde L_a(X_1,X_2,X_3,X_4;d)
+   =\bigl(\varepsilon_iX_{p(i)}\bigr)_{i=1}^4
+                                     \mathbin{;}\delta(B)d.
+\]
+It is a root-lattice isometry and has discriminant action \(a\).
+The map \(a\mapsto\widetilde L_a\) is a homomorphism: if
+\(a=(\varepsilon,p,B)\) and \(a'=(\varepsilon',q,B')\),
+its composite has \(i\)-th output
+\(\varepsilon_i\varepsilon'_{p(i)}X_{q(p(i))}\)
+and \(D\)-component \(\delta(B)\delta(B')d=\delta(BB')d\),
+which are exactly the tuple product in the stated convention.
+
+The kernel of \(d_{\mathrm{ES}}\) consists exactly of the tuples
+in \eqref{esn:fa:eq:all-root-isometries} with
+\(p=1\), every \(\varepsilon_i=1\), and \(T_D\in W_D\).
+It is therefore the direct product \(S_6^4\times W_D\).
+Every root reflection acts on its own orthogonal summand and fixes
+the other four pointwise, and the preceding two theorems identify the
+groups generated inside those summands.  Hence this direct product
+is exactly \(W(R_{\mathrm{ES}})\).
+
+Every root reflection also preserves \(N\).  Indeed \(\alpha\in N\)
+and integrality of \(N\) give
+\(s_\alpha x=x-(x,\alpha)\alpha\in N\) for every \(x\in N\).
+The reflection is an involution, so inclusion is equality.
+Thus \(W(R_{\mathrm{ES}})\subset O(N)\).
+It is normal there, since for \(T\in O(N)\)
+\[
+ Ts_\alpha T^{-1}(x)
+   =x-(x,T\alpha)T\alpha=s_{T\alpha}(x),
+\]
+and \(T\alpha\) is again a norm-two root.
+
+It remains to impose the actual glue, which completely determines the
+remaining isometries.  For \(T\in O(R_{\mathrm{ES}})\) and
+\(x\in R_{\mathrm{ES}}^\vee\), the inverse-image definition gives
+\[
+ Tx\in N
+ \quad\Longleftrightarrow\quad
+ d_{\mathrm{ES}}(T)(x+R_{\mathrm{ES}})\in\mathcal H.
+\]
+Consequently \(T(N)=N\) if and only if
+\(d_{\mathrm{ES}}(T)(\mathcal H)=\mathcal H\).
+For the forward implication, represent each class of \(\mathcal H\)
+by a vector of \(N\) and apply both \(T\) and \(T^{-1}\).
+For the reverse implication, the displayed equivalence applies to
+\(T\) and \(T^{-1}\) because the action on \(\mathcal H\) is
+bijective.  The group preserving \(\mathcal H\) inside precisely
+\(\mathcal A_{\mathrm{ES}}\) is the group \(G\) of
+Theorem~\ref{esn:thm:glue-gl2}, proved there to be exactly
+\(GL_2(\mathbb F_3)\) through the code map \(\Theta\).
+We have therefore proved the equality of subgroups
+\[
+ O(N)=d_{\mathrm{ES}}^{-1}(G)
+                          \quad\text{inside }O(R_{\mathrm{ES}}).
+\]
+The section \(\widetilde L\) restricts on \(G\) to the already
+specified lift \(L\).  This proves surjectivity of the restricted
+map \(d_{\mathrm{ES}}:O(N)\to G\), with exactly the asserted kernel.
+For \(T\in O(N)\), set \(g=d_{\mathrm{ES}}(T)\).
+Then \(w=TL_g^{-1}\) lies in the kernel and \(T=wL_g\).
+If \(wL_g=w'L_{g'}\), applying \(d_{\mathrm{ES}}\) gives
+\(g=g'\), then cancellation gives \(w=w'\).
+In particular \(L(G)\cap W(R_{\mathrm{ES}})=\{I\}\).
+Normality and this unique factorization prove the semidirect product
+and the quotient isomorphism, including its surjectivity.
+The four \(S_6\) factors have order \((6!)^4\);
+\(W_D\) has \(2^3\) sign choices and \(4!\) permutation choices,
+and \(|G|=48\).  Unique factorization proves the displayed order.
+
+Finally put \(Z=L_g^{-1}X\).  From the \(i\)-th output equation
+\(X_i=\varepsilon_iZ_{p(i)}\) follows
+\(Z_{p(i)}=\varepsilon_iX_i\), with each vector read in the fixed
+identified \(A\) coordinates.  Therefore the \(i\)-th output of
+\(L_gwL_g^{-1}X\) is
+\[
+ \varepsilon_iQ_{\sigma_{p(i)}}Z_{p(i)}
+   =\varepsilon_iQ_{\sigma_{p(i)}}\varepsilon_iX_i
+   =Q_{\sigma_{p(i)}}X_i.
+\]
+The \(D\)-component is
+\(\delta(B)w_D\delta(B)^{-1}d\).
+It belongs to \(W_D\) by normality of \(\ker d_D\).
+These are exactly the components of
+\eqref{esn:fa:eq:weyl-conjugation}, proving the asserted action with
+all signs and component indices retained.
+\end{proof}
+
+\begin{theorem}[The residue six-cycle in the full automorphism group]
+\label{esn:fa:thm:residue-weyl}
+For \(r\in S_{840}=\langle289\rangle\), let
+\(\rho(r)e_s=e_{rs}\) on each of the four fibres and
+\(\rho(r)|_D=I\), with the exact fibre action used in
+\eqref{esn:eq:residue-action-cocycle}.
+Then
+\begin{equation}
+ \rho(S_{840})\subset W(R_{\mathrm{ES}}),\qquad
+ d_{\mathrm{ES}}(\rho(r))=1,\qquad
+ L_g\rho(r)L_g^{-1}=\rho(r)
+       \quad(g\in G,\ r\in S_{840}).
+ \label{esn:fa:eq:residue-position}
+\end{equation}
+In particular the map
+\[
+ S_{840}\times G\longrightarrow O(N),\qquad(r,g)\longmapsto\rho(r)L_g
+\]
+is an injective homomorphism with image of order \(6\cdot48=288\),
+isomorphic to \(C_6\times GL_2(\mathbb F_3)\).
+\end{theorem}
+
+\begin{proof}
+Put \(C e_j=e_{j+1\bmod6}\) on the free six-coordinate space and
+restrict it to \(\mathbb R A\).  If
+\(r=289^m\), with \(m\in\{0,1,2,3,4,5\}\), the exact fibre
+identification gives
+\[
+ \rho(r)e_{f_i289^j}=e_{f_i289^{j+m}},\qquad
+ \rho(r)|_{A(F_{\eta_i})}=\varphi_iC^m\varphi_i^{-1}.
+\]
+Thus in all four identified summands \(\rho(r)\) is the same
+coordinate permutation \(C^m\), and it is the identity on \(D\).
+Theorem~\ref{esn:fa:thm:a5-automorphisms} puts it in the corresponding
+product of Weyl groups, giving the first two assertions.
+Each sign \(\varepsilon_i I\) commutes with \(C^m\), and the
+same operator \(C^m\) occurs in every component.  Directly the
+\(i\)-th outputs of \(L_g\rho(r)\) and \(\rho(r)L_g\) are
+respectively
+\(\varepsilon_iC^mX_{p(i)}\) and
+\(C^m\varepsilon_iX_{p(i)}\), which agree; the \(D\)-outputs
+also agree since \(\rho(r)|_D=I\).
+This proves the conjugation identity without changing the chosen origins.
+
+The six restrictions \(C^m|_{\mathbb R A}\) are distinct: if
+\(C^m(e_0-e_1)=e_0-e_1\), comparison of the unique coordinate with
+coefficient \(+1\) gives \(m=0\pmod6\).
+Thus \(\rho\) is faithful.  Commutation makes the displayed product
+map a homomorphism.  If \(\rho(r)L_g=I\), then
+\(L_g=\rho(r)^{-1}\) lies in
+\(L(G)\cap W(R_{\mathrm{ES}})=\{I\}\).
+Faithfulness of both factors gives \(r=1\) and \(g=1\).
+This proves injectivity and the exact image order.
+\end{proof}
+
+\input{supporting_materials/workbench/research/es_niemeier_leech.tex}
+\input{supporting_materials/workbench/research/es_niemeier_triality_bridge.tex}
+\input{supporting_materials/workbench/research/es_niemeier_cubic_arithmetic.tex}
+\input{supporting_materials/workbench/research/es_niemeier_residue_fixed_neighbor.tex}
+\input{supporting_materials/workbench/research/es_niemeier_JM_cubic_extension.tex}
+\input{supporting_materials/workbench/research/es_niemeier_wilson_cyclic.tex}
+
+\input{supporting_materials/workbench/research/common_d4_image.tex}
+\input{supporting_materials/workbench/research/niemeier_umbral_shadow.tex}

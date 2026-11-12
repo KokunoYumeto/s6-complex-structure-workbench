@@ -1,0 +1,8436 @@
+---
+title: "The retained cusp, spatial refinement, and the spectral measure of the actual magnetic vacuum translation"
+date: "8 September 2026"
+geometry: margin=1in
+fontsize: 11pt
+header-includes:
+  - \usepackage{mathrsfs}
+---
+
+## 1. Objects and scope of the calculation
+
+We calculate simultaneous geometric and coupling sequences in the original full spatial SU(2) theory. The first retains an arbitrary fixed positive coupling. For that sequence we prove an explicit vanishing bound for the actual, unmodified, centered magnetic state. The second retains a strictly positive, explicitly varying coupling at every regulator. For the second sequence we prove convergence of the entire excitation spectral probability after recording its energy dilation, escape of that probability from every bounded physical energy interval, convergence of configuration measures under exact refinement maps, and a failure of strong continuity for the resulting unscaled temporal correlations. The estimates use the actual vacuum at every regulator. In particular, a constant function is used as a comparison vector in inequalities, never as a replacement vacuum.
+
+These results do not construct a four-dimensional interacting continuum counterexample. The vanishing bound alone does not determine the fixed-coupling spectral probability after division by its actual nonzero squared norm. Sections 9--11 continue the calculation: a volume-uniform gap proves full magnetic spectral escape on an explicit fixed-coupling interval; an all-positive-coupling argument proves loss of high-energy mass and failure of direct strongly continuous dynamics for fixed physical Wilson states; explicit decreasing-coupling trajectories retain their full coefficients. Sections 12--13 derive actual weak-coupling energy and magnetic-state bounds and construct a further exact pure-gauge vacuum configuration limit. Sections 14--16 prove explicit nonzero covariance and native-mass lower bounds, then construct a corrected cusp on which the entire native physical spectral probability approaches the actual electric covariance probability in total variation on two decreasing-coupling paths. The second sequence provides a proved obstruction to the specific small-interaction-relative-to-the-total-electric-operator route, with an exact map to its limiting configuration measure. Sections 17--18 then prove the actual weighted-electric graph limit, compute its full physical pair spectrum, and construct a selected weak-coupling diagonal on which the finite gaps close while the corrected native probability escapes finite energies. All constants in the Hamiltonian, including the scalar Wilson constant, remain displayed.
+
+Section 26 proves a further original-state result without changing the cusp depth: nonlinear separation of the full plaquette potential, arbitrary potential moments on the actual physical finite-energy space, and a polynomial raw-norm lower bound give native finite-energy probability smaller than every coupling power at fixed nonzero angle and box. A common actual coupling sequence retains \(T_j=j^2\) and all earlier convergence tests. Its native probability escapes, and becomes maximally separated in total variation from its electric covariance probability; their raw vectors become orthogonal after their explicitly recorded norm ratios. The actual relative angular Taylor remainder tends to one on that sequence. These are results for the stated sequence, with the prescribed paths left open.
+
+
+For an integer \(L\ge2\), the spatial vertices are \(\{-L,\ldots,L\}^3\). We retain every positive edge whose two endpoints lie in the box and every elementary face. Let
+\[
+ N_L=3(2L)(2L+1)^2,
+ \qquad M_L=3(2L)^2(2L+1)=12L^2(2L+1).
+\]
+The configuration space is \(Q_L=SU(2)^{N_L}\), with product Haar probability \(\lambda_L\). Reverse traversal means the inverse of the same link. A face is traversed as
+\[
+ U_p=U_i(n)U_j(n+e_i)U_i(n+e_j)^{-1}U_j(n)^{-1},
+ \qquad W_p=\operatorname{tr}U_p,\quad i<j.
+\]
+With \(T_a=-i\sigma_a/2\), let \(X_{e,a}\) be differentiation under left multiplication by \(\exp(tT_a)\), and set
+\[
+ E_e=-\sum_{a=1}^3X_{e,a}^2,\quad H_0=\sum_eE_e,
+ \quad \mathcal W=\sum_pW_p,
+\]
+\[
+ H_{L,a,g}=\kappa H_0+b\sum_p(2-W_p)
+ =\kappa(H_0-\xi\mathcal W)+2bM_L I,
+\quad \kappa=\frac{2g^2}{a},\quad b=\frac1{2g^2a},\quad
+ \xi=\frac1{4g^4}.
+\tag{1}
+\]
+The physical Lie metric is \(c(X,Y)=-\operatorname{tr}(XY)/2\), so \(\Delta^c=4\Delta^T\). Equation (1) is therefore also the Hamiltonian with electric part \(-g^2(2a)^{-1}\sum_e\Delta_e^c\). The positive real numbers \(a,g\) have not been absorbed into any new metric.
+
+The vertex group acts by \(U_e\mapsto g_{s(e)}U_eg_{t(e)}^{-1}\). Its Haar average \(\Pi_L\) is an orthogonal projection because Haar measure is invariant under inversion and multiplication. The operator \(H\) commutes with it: left and right multiplication preserve each link Laplacian, and each face word is conjugated at its base vertex. Its range is denoted \(\mathcal H_L^{\mathrm{inv}}\).
+
+The operator \(H_0\) is the product compact-group Laplacian, with operator domain \(H^2(Q_L)\) and form domain \(H^1(Q_L)\). The potential is smooth, bounded and real, with \(0\le b\sum_p(2-W_p)\le4bM_L\). Hence \(H\) has the same domains and compact resolvent. A ground minimizer can be made nonnegative by the gradient inequality for its absolute value; the smooth approximants \((|f|^2+\varepsilon^2)^{1/2}\) justify that inequality at zeros. Elliptic regularity and the strong maximum principle give a smooth strictly positive ground vector \(\psi\), with \(\int\psi^2d\lambda_L=1\). For smooth \(F\), the product rule and Haar integration by parts give
+\[
+ \langle\psi F,(H-E)\psi F\rangle
+ =\kappa\sum_{e,a}\int\psi^2|X_{e,a}F|^2d\lambda_L.
+\tag{2}
+\]
+If another ground vector existed, its quotient by \(\psi\) would have every derivative zero by (2), and thus would be constant on connected \(Q_L\). This proves simplicity. Gauge transformations preserve positivity and the chosen norm, so \(\Pi_L\psi=\psi\). All quotients by \(\psi\) below are valid on the finite compact manifold, where \(\psi\) has a positive minimum.
+
+## 2. Original cusp and the complete physical dictionary
+
+The canonical cusp supplies holomorphic functions \(\mu(t_c),h(t_c),b_{\mathrm{per}}(t_c)\), with the exact period identity
+\[
+ Z(s)=s\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+ +\begin{pmatrix}6\mu&h\\b_{\mathrm{per}}-h&\mu\end{pmatrix},
+ \qquad t_c=e^{2\pi i s}.
+\]
+The notation \(b_{\mathrm{per}}\) records the canonical period function called \(b\) in the cusp source; it is distinct from the Hamiltonian coefficient in (1). On \(s=iT\), write
+\[
+ \mu_T=\alpha_T+im_T,\quad h_T=\eta_T+iH_T,
+ \quad b_{\mathrm{per},T}=\zeta_T+iB_T^{\mathrm{per}},
+\]
+\[
+ L_T=T+H_T,\quad q_T=L_T-B_T^{\mathrm{per}},\quad
+ c_T=\zeta_T-\eta_T,\quad D_T=L_Tq_T+6m_T^2>0.
+\]
+In original real coordinate order \((x_1,x_2,x_3,x_4)=(\operatorname{Re}z_1,\operatorname{Im}z_1,\operatorname{Re}z_2,\operatorname{Im}z_2)\), the exact matrix is
+\[
+ P_T=\begin{pmatrix}
+ 6\alpha_T&\eta_T&1&0\\6m_T&L_T&0&0\\
+ c_T&\alpha_T&0&1\\-q_T&m_T&0&0
+ \end{pmatrix},\qquad \det P_T=-D_T.
+\tag{3}
+\]
+Every bounded period correction remains in this matrix. Holomorphy gives convergence of its bounded entries with errors \(O(e^{-2\pi T})\). In particular, with
+\[
+ A_T=\begin{pmatrix}6\alpha_T&\eta_T\\c_T&\alpha_T\end{pmatrix},
+ \quad B_T=\begin{pmatrix}6m_T&L_T\\-q_T&m_T\end{pmatrix}
+ =TJ+C_T,\quad J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+\]
+there is a finite \(C=\sup_{T\ge T_0}\|C_T\|\), after restricting to the specified cusp ray. Thus
+\[
+ D_T\ge(T-C)^2\quad(T>C),\qquad D_T=T^2+O(T).
+\tag{4}
+\]
+For the first inequality, \(|B_Tv|\ge(T-C)|v|\) bounds both singular values from below; their product is the positive determinant \(D_T\). The second follows by multiplying the retained expressions for \(L_T,q_T,m_T\).
+
+For a cover integer \(M_{\mathrm{cov}}\), set \(S_M=\operatorname{diag}(1,1,M_{\mathrm{cov}},M_{\mathrm{cov}})\). The torus covering is induced by
+\[
+ P_TS_M\mathbb Z^4\subset P_T\mathbb Z^4.
+\]
+It has fibre degree \(M_{\mathrm{cov}}^2\), determinant \(-M_{\mathrm{cov}}^2D_T\), metric \(G=(P_TS_M)^{\mathsf T}P_TS_M\), and positive volume density \(M_{\mathrm{cov}}^2D_T\). In the recorded permutation \((x_1,x_3;x_2,x_4)\), its period matrix and inverse are
+\[
+ Q=\begin{pmatrix}A_T&M_{\mathrm{cov}}I_2\\B_T&0\end{pmatrix},
+ \quad Q^{-1}=\begin{pmatrix}0&B_T^{-1}\\
+ M_{\mathrm{cov}}^{-1}I_2&-M_{\mathrm{cov}}^{-1}A_TB_T^{-1}\end{pmatrix},
+ \quad B_T^{-1}=D_T^{-1}\begin{pmatrix}m_T&-L_T\\q_T&6m_T\end{pmatrix}.
+\tag{5}
+\]
+Multiplication verifies both inverse identities. The permutation in (5) has determinant \(-1\); it records coordinates and does not alter the determinant of (3). Formula (5) retains the complete inverse metric as \(Q^{-1}Q^{-\mathsf T}\).
+
+The original marked monodromy is
+\[
+ M_0=I+R_0,\qquad
+ R_0=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&1&0&0\\-1&0&0&0\end{pmatrix}.
+\]
+Indeed it sends \(\widehat\gamma\) to \(\widehat\gamma-\widehat\delta\), \(\widehat u\) to \(\widehat u+\widehat w\), and fixes \(\widehat w,\widehat\delta\). Direct multiplication gives
+\[
+ R_0^2=0,\qquad S_M^{-1}M_0^{M_{\mathrm{cov}}}S_M=M_0.
+\tag{6}
+\]
+Thus the degree-\(M_{\mathrm{cov}}^2\) fibre cover descends after the base change \(t_c=v^{M_{\mathrm{cov}}}\). The proof is that continuation around \(v=0\) acts on the original lattice by \(M_0^{M_{\mathrm{cov}}}\), which (6) carries to an integral automorphism in the cover basis. No cover of the entire original base or completed compact threefold is required here.
+
+A nonzero covered period, in (5)'s order, is \((A_Tn+M_{\mathrm{cov}}z,B_Tn)\), for \(n,z\in\mathbb Z^2\). If \(n\ne0\), its length is at least \(T-C\); if \(n=0\), its length is at least \(M_{\mathrm{cov}}\). Therefore
+\[
+ \operatorname{sys}\ge\min(T-C,M_{\mathrm{cov}}).
+\tag{7}
+\]
+When this bound exceeds \(4R\), the radius-\(R\) Euclidean ball is mapped isometrically to the torus: for two points in that ball and a nonzero period \(\lambda\), \(|x-y+\lambda|\ge|\lambda|-2R>2R\ge|x-y|\).
+
+The physical time and spatial coordinates used for the Hamiltonian are
+\[
+ (y_0,y_1,y_2,y_3)=(x_3,x_2,x_4,x_1).
+\tag{8}
+\]
+This permutation has determinant \(+1\) and preserves the exact Euclidean metric. The physical magnetic plane is \((y_1,y_2)\). From (5),
+\[
+ u_1=D_T^{-1}(m_Ty_1-L_Ty_2),\quad
+ u_2=D_T^{-1}(q_Ty_1+6m_Ty_2),\quad
+ du_1\wedge du_2=D_T^{-1}dy_1\wedge dy_2.
+\]
+The original bundle connection \(d+2\pi u_1H_cdu_2\), with \(H_c=i\sigma_3=-2T_3\), therefore has the local expression
+\[
+ A_{\mathrm{orig}}=\frac{2\pi H_c}{D_T^2}
+ (m_Ty_1-L_Ty_2)(q_Tdy_1+6m_Tdy_2).
+\]
+Put
+\[
+ f_T(y)=\frac{2\pi}{D_T^2}
+ \left(\frac{m_Tq_T}{2}y_1^2-L_Tq_Ty_1y_2-3m_TL_Ty_2^2\right).
+\]
+Differentiation, with all signs retained, proves
+\[
+ A_{\mathrm{orig}}=\frac{2\pi}{D_T}H_cy_1dy_2+H_cdf_T.
+\]
+The two gauge maps \(\exp(-H_cf_T)\) and \(\exp(-2\pi H_cy_1y_2/D_T)\), under \(A^h=h^{-1}Ah+h^{-1}dh\), give exactly
+\[
+ A_1=-\frac{2\pi}{D_T}H_cy_2dy_1,\qquad
+ F_{12}=\frac{2\pi}{D_T}H_c.
+\tag{9}
+\]
+The original transitions are \(\exp(-2\pi k_1u_2H_c)\); on a nonwrapping embedded ball they are represented by the displayed local frames. The flat reference is chosen as the identity transport in the final frame. Subsequent frame changes act on the reference and magnetic transport simultaneously. For any such pair \(M_e,R_e\), their relative transport \(h_e=M_eR_e^{-1}\) changes by conjugation at the source, proving covariance of the translated state under changes of vertex frames.
+
+The inverse transport of (9) on the edge from \(an\) to \(a(n+e_i)\) is
+\[
+ h_1(n)=\exp(-\theta n_2H_c),\quad h_2(n)=h_3(n)=I,
+ \qquad \theta=\frac{2\pi a^2}{D_T}.
+\tag{10}
+\]
+Integration is exact because the coefficients commute along the edge. The face word is \(\exp(\theta H_c)\) in the 12 plane and identity in the other two planes.
+
+For general connections, the map to the period coordinates is the usual exact pullback: \(\widetilde A_i=\sum_\alpha(P_TS_M)_{\alpha i}A_\alpha(P_TS_My)\), and \(\widetilde F\) is its exterior-square pullback. The chain rule preserves \(dA\), and bilinearity preserves every term of \(A\wedge A\). Its action is
+\[
+ \frac{M_{\mathrm{cov}}^2D_T}{2g^2}
+ \int_{[0,1)^4}\sum_{i<j,\,k<l}
+ \bigl[(G^{-1})_{ik}(G^{-1})_{jl}-(G^{-1})_{il}(G^{-1})_{jk}\bigr]
+ c(\widetilde F_{ij},\widetilde F_{kl})\,d^4y.
+\tag{11}
+\]
+This follows by the Jacobian formula for volume and the Gram determinant for two covectors. It includes all mixed terms. Pullback carries the parallel-transport differential equation to the identical equation on each path; uniqueness gives the holonomy map, including for noncommuting fields. On the embedded balls in (7), this pullback is a local isometry and preserves the full action of every compactly supported connection, extended by zero through a collar. Thus no nonlinear interaction is lost in passing to a physical cubical patch.
+
+### 2.1 A simultaneous geometric exhaustion in unchanged physical units
+
+Let \(j=2^r\), for integers \(r\) sufficiently large, and set
+\[
+ T_j=j^2,\quad t_{c,j}=e^{-2\pi j^2},\quad
+ M_{\mathrm{cov},j}=j,\quad v_j=e^{-2\pi j},
+\]
+\[
+ a_j=\frac1{100j},\quad L_j=j^2,\quad
+ \ell_j=2a_jL_j=\frac j{50},\quad
+ D_j=L_{j^2}q_{j^2}+6m_{j^2}^2,\quad
+ \theta_j=\frac{2\pi}{10^4j^2D_j}.
+\tag{12}
+\]
+Here subscripts on \(L_{j^2},q_{j^2},m_{j^2}\) denote the cusp functions, whereas \(L_j=j^2\) on the preceding line is the integer half-width of the spatial graph. In particular \(D_j\) is never replaced by \(j^4\). The exact identity \(v_j^j=t_{c,j}\) and (6) prove monodromy compatibility. The fibre degree is \(j^2\) and the base-change degree is \(j\).
+
+The four-dimensional box \(|y_\mu|\le j/100\), with time coordinate (8), has radius \(R_j=j/50\). For \(j^2-C\ge j\), (7) gives \(\operatorname{sys}\ge j>8R_j\). Hence the spatial box at \(y_0=0\), the growing time interval, and a collar all embed in the actual covered cusp. The mesh tends to zero while the physical box tends to all of \(\mathbb R^3\), and the time interval tends to \(\mathbb R\).
+
+The fixed physical reference length is the length \(\ell_*\) of the original real period vector \(e_1\) in (3). Its value in the original Euclidean metric is exactly 1. We use its reciprocal \(E_*=\ell_*^{-1}\) as a reference inverse length for energies. Neither \(\ell_*\), the metric, nor time (8) varies with \(j\). Thus \(a_j/\ell_*=1/(100j)\), the reference momentum \(p_*=2\pi/\ell_*\) stays fixed, and the finite energy interval \([0,\Omega E_*]\) means the same physical interval at every regulator. These are reference units, not an assertion that the quantum theory has a particle of mass \(E_*\).
+
+The exact reciprocal-vector approximation can also retain this momentum. For a physical covector \(p\), choose each integer component of \(k_j\) by rounding \((P_{j^2}S_j)^{\mathsf T}p/(2\pi)\). Then
+\[
+ p_j=2\pi(P_{j^2}S_j)^{-\mathsf T}k_j,\qquad
+ |p_j-p|\le\pi\sum_{i=1}^4|(P_{j^2}S_j)^{-\mathsf T}e_i|.
+\]
+Formula (5) bounds the right side by a constant times \(j^{-2}+j^{-1}\), with the original \(A_T,B_T\) retained. This proves that fixed physical spatial or temporal momenta are geometrically resolvable. It is not a dispersion relation for the interacting Hamiltonian.
+
+The magnetic field itself supplies another exact physical length and inverse length,
+\[
+ \ell_{B,j}=\sqrt{\frac{D_j}{2\pi}},\qquad
+ E_{B,j}=\ell_{B,j}^{-1}=\sqrt{\frac{2\pi}{D_j}}.
+\]
+They are defined by the retained curvature norm in (9), so
+\[
+ \frac{a_j}{\ell_{B,j}}=\sqrt{\theta_j},\qquad
+ \frac{\ell_j}{\ell_{B,j}}=\frac{j\sqrt{2\pi}}{50\sqrt{D_j}}
+ \sim\frac{\sqrt{2\pi}}{50j},\qquad
+ E_{B,j}\sim\frac{\sqrt{2\pi}}{j^2}.
+\]
+Thus the box exhausts physical space while remaining small relative to the growing magnetic length. The flux through its full magnetic square is exactly \(2\pi\ell_j^2/D_j\), which tends to zero. These equations identify the geometric soft scale without equating it to a quantum excitation energy. Every finite cover with its pullback metric preserves the local value \(2\pi/D_j\) of the curvature, since its differential is a local isometry. Consequently no choice of cover degree can hold this original nonzero magnetic scale fixed while \(T_j\to\infty\). A varying unit of length would have the additional metric and energy effects calculated in (61); it cannot be silently used to keep this field scale constant.
+
+## 3. Exact spectral measure and a bound at every positive coupling
+
+Let \((T_hF)(U)=F((h_e^{-1}U_e)_e)\). Haar invariance makes this a unitary operator; its electric commutator is zero by bi-invariance. Set
+\[
+ c_\theta=\langle\psi,T_h\psi\rangle,
+ \quad \chi_\theta=\Pi_LT_h\psi-c_\theta\psi,
+ \quad d_\theta=\|\chi_\theta\|^2.
+\tag{13}
+\]
+The positive overlap is real, and \(\chi_\theta\) is invariant and orthogonal to \(\psi\). The full magnetic translation has at most one nonidentity translated edge at each source vertex. Conjugating it by gauge transformations therefore gives an independent conjugacy average on each such link. On invariant inputs,
+\[
+ \Pi_LT_h\Pi_L=K_\theta\Pi_L,\qquad
+ K_\theta=\prod_{e=(n,1)}C_{e,\theta n_2}.
+\tag{14}
+\]
+Here \(C_{e,s}\) averages the left translations by the conjugacy class of \(\exp(sH_c)\). Schur's lemma applied to spin \(q\) gives the real multiplier
+\[
+ c_q(s)=\frac1{2q+1}\sum_{m=-q}^q e^{2ims}
+ =\frac{\sin((2q+1)s)}{(2q+1)\sin s},\qquad q\in\tfrac12\mathbb Z_{\ge0}.
+\tag{15}
+\]
+The finite sum defines the value when \(\sin s=0\). Inversion preserves the conjugacy class, so each \(C\) and their commuting product are self-adjoint contractions. They preserve constants and Haar integrals, and commute with every \(E_e\) and with \(\Pi_L\). Equations (13)-(14) thus give the exact state \(\chi_\theta=(K_\theta-c_\theta)\psi\), with no angular expansion.
+
+Write \(h_{L,\xi}=H_0-\xi\mathcal W\), let \(e_{L,\xi}\) be its ground energy, and define \(A_{L,\xi}=h_{L,\xi}-e_{L,\xi}\). Then
+\[
+ E=\kappa e_{L,\xi}+2bM_L,\qquad H-E=\kappa A_{L,\xi}.
+\tag{16}
+\]
+The same \(\psi\), \(\chi_\theta\), and \(d_\theta\) appear on both sides. For \(d_\theta>0\), the two spectral probabilities are
+\[
+ \rho_{L,\xi,\theta}(B)=d_\theta^{-1}
+ \langle\chi_\theta,\mathbf1_B(A_{L,\xi})\chi_\theta\rangle,
+\]
+\[
+ \nu_{L,a,g,\theta}(B)=d_\theta^{-1}
+ \langle\chi_\theta,\mathbf1_B(H-E)\chi_\theta\rangle
+ =\rho_{L,\xi,\theta}(\kappa^{-1}B).
+\tag{17}
+\]
+This is the exact pushforward by \(\lambda\mapsto\kappa\lambda\). It follows first for spectral intervals from the spectral resolution of a scalar multiple, then for all Borel sets by countable additivity. The finite measure before division is \(d_\theta\nu\); the state and its amplitude have not been changed. In particular
+\[
+ \langle\chi_\theta,e^{-t(H-E)}\chi_\theta\rangle
+ =d_\theta\int e^{-t\kappa\lambda}d\rho(\lambda).
+\tag{18}
+\]
+
+### 3.1 An all-angle operator inequality
+
+Put \(\Gamma=\sum_{e=(n,1)}n_2^2E_e\) and \(J_\theta=K_\theta-I\). On a joint spin block, (15) and \(1-\cos x\le x^2/2\) give
+\[
+ |1-c_q(s)|=1-c_q(s)
+ \le\frac{2s^2}{2q+1}\sum_{m=-q}^qm^2
+ =\frac23s^2q(q+1).
+\]
+The last finite-sum formula follows by pairing the weights and summing consecutive squares, also for half-integral \(q\). For real numbers \(|z_i|\le1\), telescoping the product gives \(|1-\prod_i z_i|\le\sum_i|1-z_i|\). Therefore, on every joint spin block,
+\[
+ |1-k(\theta)|\le\frac23\theta^2\sum_{e=(n,1)}n_2^2q_e(q_e+1).
+\]
+Parseval's identity and completeness of the joint matrix coefficients prove, for every \(F\in D(H_0)\),
+\[
+ \|J_\theta F\|\le\frac23\theta^2\|\Gamma F\|
+ \le\frac23\theta^2L^2\|H_0F\|.
+\tag{19}
+\]
+The second inequality follows on the same joint blocks from \(0\le\Gamma\le L^2H_0\); these are simultaneously diagonal positive operators. This is a graph-domain estimate, not a bounded-operator Taylor expansion.
+
+The constant trial vector has zero electric energy and \(\int W_p=0\), so \(0\le E/\kappa\le2\xi M_L\). The eigen-equation, with \(0\le\sum_p(2-W_p)\le4M_L\), consequently gives
+\[
+ \|H_0\psi\|
+ =\|[E/\kappa-\xi\sum_p(2-W_p)]\psi\|
+ \le4\xi M_L.
+\tag{20}
+\]
+Centering is an orthogonal projection off \(\psi\), so (19)-(20) imply the all-coupling estimate
+\[
+ \boxed{\quad\|\chi_\theta\|\le\frac83\theta^2L^2\xi M_L.\quad}
+\tag{21}
+\]
+This estimate concerns the full interacting vacuum and is valid without any restriction on \(\xi M_L\).
+
+For the fixed-coupling version of (12), set \(g_j=g_0>0\), hence \(\xi_0=1/(4g_0^4)\), \(\kappa_j=200g_0^2j\), and \(b_j=50j/g_0^2\). Once \(j^2\ge2C\), (4) yields \(D_j\ge j^4/4\). Since \(M_{L_j}\le36j^6\), direct substitution in (21) gives
+\[
+ \boxed{\quad\|\chi_j\|\le
+ \frac{6144\pi^2\xi_0}{10^8}\,j^{-2},\qquad
+ d_j\le\left(\frac{6144\pi^2\xi_0}{10^8}\right)^2j^{-4}.\quad}
+\tag{22}
+\]
+In deriving this bound, the exact angle satisfies \(\theta_j^2L_j^2=4\pi^2/(10^8D_j^2)\); the determinant estimate is applied only afterwards. Thus every unscaled excitation spectral measure \(d_j\nu_j\) converges to the zero measure in total mass. Division by \(d_j\) in (17) prevents this fact from deciding \(\nu_j\).
+
+For completeness, the uncentered projected vectors also converge to their respective vacua. Indeed \(|c_j-1|\le\|J_{\theta_j}\psi_j\|\), and (19)-(20) give exactly the same right side as (22). If \(F_j=K_{\theta_j}\psi_j\), then for each multiplication observable \(f\) with \(\|f\|_\infty\le1\),
+\[
+ \left|\int f(F_j^2-\psi_j^2)d\lambda_j\right|
+ \le\|F_j-\psi_j\|(\|F_j\|+\|\psi_j\|)
+ \le2\|J_{\theta_j}\psi_j\|.
+\tag{23}
+\]
+Here \(F_j^2d\lambda_j\) is the actual finite measure of mass \(\|F_j\|^2\), which tends to 1; no mass convention has been changed.
+
+## 4. A volume-explicit estimate for the whole excitation measure
+
+We now prove a relative estimate that remains useful as both the angle and the volume vary. Its constants do not divide by an unspecified small angular remainder.
+
+### 4.1 The exact first physical electric eigenvalue
+
+On one link, spin \(q\) has \(E_e\) eigenvalue \(q(q+1)\); for the fundamental representation this is \(3/4\), obtained directly from \(-\sum_aT_a^2=3I/4\). At a vertex, a gauge invariant tensor involving exactly one nontrivial incident representation is impossible: that irreducible representation has no fixed vector. Hence the support graph of nonzero edge spins in any nonconstant gauge invariant joint-spin block has no vertex of degree one. Any nonempty finite graph with this property contains a cycle, as follows by following edges without immediately reversing and stopping at the first repeated vertex. The open cubical graph is simple and bipartite and has no triangular cycles, so a cycle has at least four edges. Consequently its electric sum is at least \(4(3/4)=3\). Equality is attained by the fundamental trace around any elementary square, whose four links have spin \(1/2\).
+
+Peter--Weyl decomposition and vertex averaging preserve each finite joint-spin block and give a complete invariant basis. The preceding argument therefore proves the form inequality
+\[
+ H_0\big|_{\mathcal H_L^{\mathrm{inv}}\ominus\mathbb C1}\ge3I.
+\tag{24}
+\]
+The constant is an exact physical-sector gap for the comparison operator \(H_0\), not an assumed gap for \(H\).
+
+For distinct elementary faces, integrating a link occurring in just one trace gives zero, since multiplication of that link by \(-I\) changes the sign. Two distinct elementary squares have distinct four-edge supports. A single face product is Haar, and the trace has second moment 1: in the unit-quaternion model the scalar coordinate has second moment \(1/4\). Hence
+\[
+ \int W_p=0,\quad\langle W_p,W_q\rangle=\delta_{pq},
+ \quad H_0W_p=3W_p,\quad\|\mathcal W\|_2=\sqrt{M_L},
+ \quad\|\mathcal W\|_\infty=2M_L.
+\tag{25}
+\]
+The last equality is attained at the identity configuration and holds for the essential supremum by continuity and positive Haar measure of neighborhoods.
+
+The upper endpoint \(4bM_L\) of the full potential is attained as well. Define central links \(z_i(n)=(-1)^{\sum_{k<i}n_k}I\). On a face \(i<j\), shifting in direction \(i\) changes the sign of \(z_j\), while shifting in direction \(j\) does not change \(z_i\). The product of the four central signs is therefore \(-I\). Every face trace is \(-2\), so the potential equals \(4bM_L\). Continuity again identifies this maximum with the multiplication-operator norm. This proves the norm assertion used in (39) without dropping any face.
+
+Since \(h_{L,\xi}=H_0-\xi\mathcal W\), its ground eigenvalue satisfies \(-2\xi M_L\le e\le0\). The min-max principle and (24)-(25) give the first eigenvalue above its ground at least \(3-2\xi M_L\), before subtraction of \(e\). Since \(e\le0\),
+\[
+ \boxed{\quad A_{L,\xi}\big|_{\psi^\perp\cap\mathcal H_L^{\mathrm{inv}}}
+ \ge(3-2\xi M_L)I.\quad}
+\tag{26}
+\]
+This lower bound is useful when its right side is positive. It is valid for the entire invariant excitation space, independently of the chosen magnetic state.
+
+### 4.2 A controlled comparison with the actual vacuum
+
+Write \(\psi=s1+\zeta\), with \(s=\int\psi>0\), \(\int\zeta=0\), and \(s^2+\|\zeta\|^2=1\). Let \(Q\) be the projection off the constant function. Put \(\varepsilon=\xi M_L\), and suppose for the bounds in this subsection that \(0<\varepsilon\le1/2\). The exact eigen-equation projected by \(Q\) is
+\[
+ (H_0-e)\zeta=\xi s\mathcal W+\xi Q\mathcal W\zeta.
+\]
+By (24), \(\|(H_0-e)^{-1}Q\|\le1/(3-e)\). Applying (25), rearranging, and using \(s\le1,e\le0\) proves
+\[
+ \|\zeta\|\le\frac{\xi\sqrt{M_L}}{3-2\varepsilon}
+ \le\frac{\xi\sqrt{M_L}}2.
+\tag{27}
+\]
+Set \(A=\mathcal W/3\) and retain the exact remainder \(r=\psi-1-\xi A\). The same equation gives
+\[
+ H_0r=\xi(s-1)\mathcal W+e\zeta+\xi Q\mathcal W\zeta.
+\]
+Since \(1-s=\|\zeta\|^2/(1+s)\le\|\zeta\|^2\), \(|e|\le2\varepsilon\), and \(\xi\le1\), equation (27) yields
+\[
+ \boxed{\quad\|H_0r\|\le
+ \frac{\xi^3M_L^{3/2}}4+2\xi^2M_L^{3/2}
+ \le\frac94\xi^2M_L^{3/2}.\quad}
+\tag{28}
+\]
+No convergence of a perturbation series, no unknown Sobolev constant, and no approximation of the true probability density are used in (27)-(28).
+
+Define the explicit finite vector
+\[
+ V_\theta=J_\theta A=\frac13\sum_p(\alpha_p(\theta)-1)W_p.
+\tag{29}
+\]
+The coefficients follow from (14)-(15) on the fundamental representation of the two direction-1 edges of each face:
+\[
+ \alpha_{n;12}=\cos(n_2\theta)\cos((n_2+1)\theta),\quad
+ \alpha_{n;13}=\cos^2(n_2\theta),\quad\alpha_{n;23}=1.
+\tag{30}
+\]
+The two translated edges of such a face have distinct source vertices, which justifies the product of the two averages in this particular background. Thus
+\[
+ \|V_\theta\|^2=\mathcal D_L(\theta)/9,\quad
+ H_0V_\theta=3V_\theta,\quad\int V_\theta=0,
+\]
+\[
+ \mathcal D_L(\theta)=2L(2L+1)\sum_{m=-L}^{L-1}
+ [1-\cos(m\theta)\cos((m+1)\theta)]^2
+ +4L^2\sum_{m=-L}^{L}\sin^4(m\theta).
+\tag{31}
+\]
+
+The actual centered state is nonzero for every \(b>0\) and \(\theta\notin2\pi\mathbb Z\), without a small-coupling restriction. To prove this, suppose \(\chi_\theta=0\). Haar integration in \(K_\theta\psi=c_\theta\psi\) gives \(c_\theta=1\), since \(\int\psi>0\) and \(K_\theta\) preserves that integral. Unitarity then gives \(\|T_h\psi-\psi\|^2=2-2c_\theta=0\). Apply \(T_h\) to the exact eigen-equation, use its electric commutation, and subtract the original equation. The result is \(b(T_h\mathcal W-\mathcal W)\psi=0\). Strict positivity and smoothness imply \(T_h\mathcal W=\mathcal W\) pointwise. Its gauge average, (30), and the orthogonality (25) imply \(\alpha_p=1\) for every face. A 12 face based at \(n_2=0\) exists and has \(\alpha_p=\cos\theta\), so \(\theta\in2\pi\mathbb Z\). Conversely, at these angles every link (10) is identity and \(\chi_\theta=0\). This proves the exact zero set and, in particular, legitimizes (17) on both sequences (12) for all sufficiently large indices.
+
+We need a lower estimate with a completely displayed domain. Let \(r_m=m^2+m+1/2\). The elementary inequality
+\[
+ 0\le t^2/2-(1-\cos t)\le t^4/24
+\]
+follows from \(|\sin(t/2)|\le|t/2|\) and the Taylor integral remainder. Applying it to \(x+y\) and \(x-y\) gives, for \(u=1-\cos x\cos y\), \(q=(x^2+y^2)/2\),
+\[
+ 0\le u\le q,\quad 0\le q-u\le q^2/3,
+ \quad0\le q^2-u^2\le2q^3/3.
+\]
+The same last estimate holds for \(u=\sin^2x,q=x^2\). Substitution into (31) gives
+\[
+ \mathcal D_L(\theta)\ge\mathcal A_L\theta^4-16L^9\theta^6,
+\]
+\[
+ \mathcal A_L=
+ \frac{L^2(2L+1)}{15}(24L^4+24L^3+8L^2-4L+3)
+ \ge\frac{16}{5}L^7.
+\tag{32}
+\]
+For the exact polynomial, expand \(r_m^2\), sum, and use
+\[
+ \sum_{m=-L}^{L-1}r_m^2=\frac{L(4L^4+1)}{10},\qquad
+ \sum_{m=-L}^Lm^4=\frac{L(L+1)(2L+1)(3L^2+3L-1)}{15}.
+\]
+Each identity is verified at \(L=1\); subtracting its value at \(L\) from that at \(L+1\) gives exactly the two new endpoint summands, proving it for every integer. The error coefficient is bounded by
+\((2/3)[2L(2L+1)(2L)L^6+4L^2(2L+1)L^6]\le16L^9\), because \(r_m\le L^2\). Expansion of \(\mathcal A_L\) gives \((16/5)L^7+(24/5)L^6+(8/3)L^5+(2/15)L^3+(1/5)L^2\), proving its lower bound.
+
+Consequently, whenever \(0<\theta^2L^2\le1/10\),
+\[
+ \|V_\theta\|\ge\frac13\theta^2L^{7/2}>0.
+\tag{33}
+\]
+Combining (19),(28),(33), and \(M_L\le36L^3\) gives
+\[
+ B_\theta:=\|J_\theta\psi-\xi V_\theta\|
+ \le\frac32\theta^2L^2\xi^2M_L^{3/2},
+ \qquad\frac{B_\theta}{\xi\|V_\theta\|}\le27\varepsilon.
+\tag{34}
+\]
+Since \(J_\theta\) preserves Haar integrals and annihilates 1,
+\[
+ c_\theta-1=\langle\zeta,J_\theta\psi\rangle.
+\]
+Thus (13) and (34) give
+\[
+ \|\chi_\theta-\xi V_\theta\|
+ \le B_\theta+\|\zeta\|(\xi\|V_\theta\|+B_\theta).
+\]
+For \(\varepsilon\le1/2\), (27) implies \(\|\zeta\|\le\varepsilon/2\le1/4\). We have proved the explicit relative estimate
+\[
+ \boxed{\quad
+ \|\chi_\theta-\xi V_\theta\|\le
+ 40\varepsilon\,\xi\|V_\theta\|,
+ \qquad 0<\varepsilon\le\tfrac12,
+ \quad0<\theta^2L^2\le\tfrac1{10}.
+ \quad}
+\tag{35}
+\]
+The constant follows from \((1+1/4)27+1/2=137/4<40\). In particular, when \(40\varepsilon<1\), the actual state is nonzero and
+\[
+ (1-40\varepsilon)^2\frac{\xi^2\mathcal D_L(\theta)}9
+ \le d_\theta\le
+ (1+40\varepsilon)^2\frac{\xi^2\mathcal D_L(\theta)}9.
+\tag{36}
+\]
+This is a simultaneous bound, not an iterated fixed-volume coefficient.
+
+### 4.3 Concentration of the full excitation probability
+
+For \(\delta>0\), let \(P_\delta\) be the spectral projection of \(A_{L,\xi}\) on \(\{\lambda:|\lambda-3|>\delta\}\). From (25),(29),
+\[
+ \|(A_{L,\xi}-3)V_\theta\|
+ =\|(-\xi\mathcal W-e)V_\theta\|
+ \le4\varepsilon\|V_\theta\|.
+\]
+The spectral theorem gives \(\|P_\delta V_\theta\|\le(4\varepsilon/\delta)\|V_\theta\|\). Equation (35) bounds its actual-state counterpart by
+\[
+ \|P_\delta\chi_\theta\|
+ \le(40+4/\delta)\varepsilon\xi\|V_\theta\|.
+\]
+When \(\varepsilon\le1/100\), (36) makes \(\|\chi_\theta\|\ge(1-40\varepsilon)\xi\|V_\theta\|\ge\tfrac12\xi\|V_\theta\|\). Hence
+\[
+ \boxed{\quad
+ \rho_{L,\xi,\theta}(\{\lambda:|\lambda-3|>\delta\})
+ \le(80+8/\delta)^2\varepsilon^2.
+ \quad}
+\tag{37}
+\]
+This estimate treats all spectral channels of the interacting operator. It imposes no cutoff on edge spins and discards none of the off-diagonal Wilson matrix elements.
+
+## 5. Explicit joint sequence and its physical spectral consequences
+
+Keep all geometric data (12), and define the second coupling sequence by
+\[
+ M_j:=M_{L_j}=12j^4(2j^2+1),\qquad
+ \xi_j=\frac1{j^2M_j},\qquad
+ g_j^4=\frac{j^2M_j}{4},\qquad
+ g_j^2=\frac j2\sqrt{M_j}.
+\tag{38}
+\]
+Every \(g_j\) is strictly positive and finite. Its actual Hamiltonian coefficients are
+\[
+ \kappa_j=100j^2\sqrt{M_j},\qquad
+ b_j=\frac{100}{\sqrt{M_j}},\qquad
+ 2b_jM_j=200\sqrt{M_j},\qquad
+ \xi_jM_j=j^{-2}.
+\tag{39}
+\]
+In particular the complete magnetic potential still has norm \(4b_jM_j=400\sqrt{M_j}\), which diverges. It was not removed from the physical operator; the norm of its nonscalar part relative to \(\kappa_j\) is \(2/j^2\).
+
+The angular condition of (35) holds for all sufficiently large \(j\), because
+\[
+ \theta_j^2L_j^2=\frac{4\pi^2}{10^8D_j^2}\longrightarrow0.
+\]
+For \(j\ge10\) satisfying that condition, (36)-(37) apply to the actual \(\psi_j\) and \(\chi_j\). They prove
+\[
+ \rho_j\Longrightarrow\delta_3,\qquad
+ \rho_j(|\lambda-3|>\delta)\le(80+8/\delta)^2j^{-4}.
+\tag{40}
+\]
+For a bounded continuous test function, continuity near 3 and the tail bound in (40) prove weak convergence by splitting its integral into \(|\lambda-3|\le\delta\) and its complement. The same estimate proves tightness of these probabilities in the recorded variable \(\lambda=\omega/\kappa_j\).
+
+The physical probabilities have a different computed behavior. Equations (17),(26),(39) give
+\[
+ \operatorname{supp}\nu_j\subset
+ [\kappa_j(3-2/j^2),\infty),\qquad
+ \kappa_j\sim100\sqrt{24}\,j^5.
+\tag{41}
+\]
+For every fixed finite physical \(\Omega\), therefore,
+\[
+ \boxed{\quad \nu_j([0,\Omega])=0\quad\hbox{for all sufficiently large }j.\quad}
+\tag{42}
+\]
+No subsequence of \(\nu_j\) is tight on \([0,\infty)\): every compact subset is bounded and eventually has zero mass. The measures converge vaguely to zero against continuous compactly supported functions, while each retains total mass 1. This is spectral escape, not a zero-energy limit.
+
+The original state amplitude has a simultaneous limit as well. Equations (31)-(32), with \(L_j=j^2\), \(D_j=j^4+O(j^2)\), and (12), give
+\[
+ j^{10}\mathcal D_{L_j}(\theta_j)
+ \longrightarrow\frac{16}{5}\left(\frac{2\pi}{10^4}\right)^4.
+\]
+Indeed the degree-seven term of \(\mathcal A_{j^2}\) times \(\theta_j^4\) has this limit, and the error in (32), after multiplication by \(j^{10}\), is bounded by \(16j^{28}\theta_j^6=O(j^{-8})\). Since \(j^8\xi_j\to1/24\), the relative bounds (36) prove the genuine joint limit
+\[
+ \boxed{\quad
+ j^{26}d_j\longrightarrow
+ \frac1{1620}\left(\frac{2\pi}{10^4}\right)^4.
+ \quad}
+\tag{43}
+\]
+The raw measure remains \(d_j\nu_j\). Equations (41)-(43) display both its vanishing amplitude and its energy escape without exchanging the two limits.
+
+The physical time scale in (18) is also explicit. For every fixed \(t>0\),
+\[
+ 0\le d_j^{-1}\langle\chi_j,e^{-t(H_j-E_j)}\chi_j\rangle
+ \le e^{-t\kappa_j(3-2/j^2)}\longrightarrow0.
+\tag{44}
+\]
+At the varying physical time \(t_j=s/\kappa_j\), with \(s\ge0\) fixed, (18),(40) instead give
+\[
+ d_j^{-1}\langle\chi_j,e^{-(s/\kappa_j)(H_j-E_j)}\chi_j\rangle
+ \longrightarrow e^{-3s}.
+\tag{45}
+\]
+The test function \(e^{-s\lambda}\) is bounded and continuous, so (45) follows directly from the full spectral convergence. Time \(s\) is the explicitly dilated time; \(t_j\) tends to zero in the physical coordinate (8). Holding \(\kappa_j\) at a fixed positive \(\kappa_*\) while keeping the coupling (38) would require
+\[
+ a_j=\frac{2g_j^2}{\kappa_*}=\frac{j\sqrt{M_j}}{\kappa_*},
+\]
+which diverges. Conversely, holding \(\kappa_*\) with \(a_j\downarrow0\) forces \(g_j^2=\kappa_*a_j/2\) and
+\[
+ \xi_jM_j=\frac{M_j}{\kappa_*^2a_j^2}\longrightarrow\infty.
+\tag{46}
+\]
+Thus the controlled sequence (38) cannot be corrected into a fixed electric energy scale by retaining its coupling and also refining the mesh.
+
+A broader precise obstruction follows directly from (26). On any sequence with \(a_j\downarrow0\) and \(0<\xi_jM_j\le\eta<3/2\), the original dictionary gives
+\[
+ \kappa_j=\frac1{a_j\sqrt{\xi_j}}
+ \ge\frac{\sqrt{M_j}}{a_j\sqrt\eta},
+\quad \operatorname{gap}(H_j)\ge
+ \frac{(3-2\eta)\sqrt{M_j}}{a_j\sqrt\eta}\longrightarrow\infty.
+\tag{47}
+\]
+Every vacuum-orthogonal invariant spectral probability then escapes bounded physical energies, not only the magnetic one. This statement has the displayed coupling-volume domain. A fixed positive coupling on the growing box has \(\xi_jM_j\to\infty\) and is outside that domain. Equation (47) makes no assertion of spectral escape there. The independent volume-uniform proof in Section 9 establishes escape on the fixed interval \(g^4\ge12288\), without this total-volume restriction.
+
+## 6. Exact refinement maps, measures, and their limits
+
+### 6.1 Configuration, gauge, field and electric-operator maps
+
+Because \(j\) is dyadic, every edge of the graph in (12) at \(j\) is the concatenation of two fine edges at \(2j\); the old physical box is contained in the new one. Define
+\[
+ p_{j,2j}:Q_{L_{2j}}\longrightarrow Q_{L_j},\qquad
+ (p_{j,2j}U)_{(n,i)}=U_i(2n)U_i(2n+e_i).
+\tag{48}
+\]
+It ignores all other fine links. Concatenations for distinct coarse edges use disjoint fine edges. The map is continuous and surjective: assign the first link in each pair the desired coarse value and the second identity, then assign unused links identity. This gives a continuous section in the fixed frames. Fine vertex gauge transformations cancel at the intermediate vertex, leaving exactly the coarse endpoint action. Thus (48) induces a map of gauge quotients as well. Associativity proves \(p_{j,4j}=p_{j,2j}p_{2j,4j}\).
+
+For each pair, the variable change
+\[
+ (U^{(1)},U^{(2)})\longleftrightarrow
+ (W=U^{(1)}U^{(2)},Z=U^{(1)}),\qquad
+ U^{(2)}=Z^{-1}W
+\tag{49}
+\]
+is a diffeomorphism preserving product Haar measure. To prove the measure assertion, integrate first over \(U^{(2)}\) at fixed \(Z\) and use left invariance. Applying (49) to each disjoint pair proves
+\[
+ (p_{j,2j})_*\lambda_{2j}=\lambda_j.
+\tag{50}
+\]
+Thus pullback is an exact Haar-Hilbert-space isometry and an algebra homomorphism, preserving complex conjugation and the sup norm. Inverse parallel transport along two consecutive segments multiplies in the order in (48), so every smooth connection's link assignment obeys this same map, with its full non-Abelian path ordering.
+
+For smooth \(f\) on the coarse configuration, each of the two fine edge Casimirs differentiating \(f(U^{(1)}U^{(2)})\) gives the coarse Casimir. For the first edge this is direct left differentiation. For the second, differentiation is conjugated by \(U^{(1)}\); the orthogonality of its adjoint action preserves the sum of three squares. All unused-edge derivatives annihilate the pullback. Consequently
+\[
+ H_{0,2j}p_{j,2j}^*f=2p_{j,2j}^*H_{0,j}f.
+\tag{51}
+\]
+For the full Hamiltonians the exact defect, with \(V_j=b_j\sum_p(2-W_p)\), is
+\[
+ H_{2j}p^*f-p^*H_jf
+ =(2\kappa_{2j}-\kappa_j)p^*H_{0,j}f
+ +(V_{2j}-p^*V_j)p^*f.
+\tag{52}
+\]
+The fine potential and the coarse face word in the second term are both retained; (52) is not set to zero. Smooth cylinders are within both operator domains, so it is an equality of Hilbert-space vectors on the displayed domain.
+
+The changing cusp determinant also appears in the background map. On a coarse direction-1 edge, the product of the two fine background links equals
+\[
+ \exp\left(-\frac{2\pi a_j^2}{D_{2j}}n_2H_c\right).
+\]
+The original coarse background instead has \(D_j\) in the denominator. Their exact relative factor is
+\[
+ \exp\left[-2\pi a_j^2n_2
+ \left(\frac1{D_{2j}}-\frac1{D_j}\right)H_c\right].
+\tag{53}
+\]
+Even for a fixed determinant, arbitrary quantum links cannot be translated and then blocked by merely multiplying the background translations. For two fine links the actual translated product is
+\[
+ (h_1^{-1}U_1)(h_2^{-1}U_2)
+ =h_1^{-1}(U_1h_2^{-1}U_1^{-1})(U_1U_2).
+\tag{54}
+\]
+The effective left insertion is therefore \(h_1^{-1}\operatorname{Ad}_{U_1}(h_2^{-1})\), with its exact dependence on the integrated link. Formula (54) is the morphism between the two presentations; no independence of that conjugation is assumed.
+
+### 6.2 The exact vacuum and translated-state measure maps
+
+Let \(d\mu_{2j}=\psi_{2j}^2d\lambda_{2j}\). In the coordinates (49), collect all split-link \(Z\)'s and all unused links into \(Z_{\mathrm{all}}\). Write \(\Phi(W,Z_{\mathrm{all}})\) for the inverse change of variables. The exact marginal density is
+\[
+ r_j^{(2j)}(W)=\int
+ \psi_{2j}(\Phi(W,Z_{\mathrm{all}}))^2dZ_{\mathrm{all}},
+ \qquad (p_{j,2j})_*\mu_{2j}=r_j^{(2j)}d\lambda_j.
+\tag{55}
+\]
+This is positive and smooth on the compact coarse configuration, by differentiation under the finite compact integral. It is gauge invariant by (48) and invariance of \(\mu_{2j}\). Equation (55) does not identify \(r_j^{(2j)}\) with \(\psi_j^2\).
+
+For the exact centered state write \(f_{2j}=\chi_{2j}/\psi_{2j}\), retaining its amplitude. Its pushed-forward finite measure is
+\[
+ (p_{j,2j})_*(|\chi_{2j}|^2d\lambda_{2j})
+ =r_j^{(2j)}(W)
+ \left[\frac{\int |f_{2j}(\Phi)|^2\psi_{2j}(\Phi)^2dZ_{\mathrm{all}}}
+ {r_j^{(2j)}(W)}\right]d\lambda_j(W).
+\tag{56}
+\]
+The conditional mean
+\[
+ \bar f_j(W)=\frac{\int f_{2j}(\Phi)\psi_{2j}(\Phi)^2dZ_{\mathrm{all}}}
+ {r_j^{(2j)}(W)}
+\]
+defines the orthogonal projection of \(f_{2j}\) onto coarse observables in \(L^2(\mu_{2j})\). Indeed subtracting its pullback has zero inner product with every coarse function, directly by Fubini. Its exact norm decomposition is
+\[
+ \|\chi_{2j}\|^2
+ =\int |\bar f_j|^2r_j^{(2j)}d\lambda_j
+ +\int|f_{2j}-p^*\bar f_j|^2d\mu_{2j}.
+\tag{57}
+\]
+The second term is retained. Equations (54)-(57) give explicit maps of quantum link variables, measures and gauge-invariant states through refinement, including the interaction-dependent conditional law. They do not require a proposed continuum vacuum.
+
+### 6.3 Actual configuration compactness at fixed coupling
+
+Let \(\mathcal Q_\infty\) be the inverse limit of the countable compact spaces \(Q_{L_j}\) under (48). It is a closed subset of their compact metrizable product, since each equality \(p_{j,2j}U_{2j}=U_j\) is closed; hence it is compact and metrizable. Surjectivity of the coordinate maps follows by successively using the section after (48). Cylindrical continuous functions form a unital self-adjoint algebra separating its points; the Stone--Weierstrass theorem makes them uniformly dense in \(C(\mathcal Q_\infty)\).
+
+For either actual sequence of vacua, and any fixed coarse index \(k\), the pushforwards \((p_{k,j})_*\mu_j\), \(j\ge k\), are probability measures on compact \(Q_{L_k}\). Their weak sequential compactness follows by taking a countable uniformly dense set of continuous functions, choosing a diagonal subsequence of their bounded integrals, and extending the limiting positive functional by uniform continuity; the Riesz representation theorem supplies the limiting probability. Diagonalize once more over the countably many \(k\). The resulting probabilities \(\mu_k^\infty\) are consistent, since
+\[
+ (p_{k,l})_* (p_{l,j})_*\mu_j=(p_{k,j})_*\mu_j
+\]
+at every finite regulator, and continuous pullback permits passage to the weak limit. They define a positive functional on the cylindrical algebra; the same density and Riesz argument give a unique probability \(\mu^\infty\) on \(\mathcal Q_\infty\) with these marginals. Gauge invariance passes to this limit. This proves actual subsequential configuration compactness for the fixed-coupling vacua. It is a compact topology of holonomies on the displayed dyadic path family, not a claimed topology of distributional curvature or convergence of Hamiltonians.
+
+Equation (23) shows that the uncentered projected magnetic finite measures have exactly the same subsequential limits as their corresponding vacua on these cylinders. Their centered finite measures have total mass tending to zero by (22). These are proved convergence statements at fixed positive coupling, while these configuration estimates alone do not control the probability obtained from the centered state after division by \(d_j\). Section 9 proves its escape on a fixed strong-coupling interval.
+
+### 6.4 The explicit configuration limit of (38)
+
+For the controlled sequence, (27) gives
+\[
+ \|\psi_j-1\|^2=2(1-s_j)\le2\|\zeta_j\|^2,
+ \quad\|\psi_j-1\|\le\frac{\sqrt2}{2}\xi_j\sqrt{M_j}.
+\]
+For the total variation convention
+\(\|\mu-\lambda\|_{\mathrm{var}}=\sup_{\|f\|_\infty\le1}|\mu(f)-\lambda(f)|\), Cauchy--Schwarz therefore proves
+\[
+ \|\mu_j-\lambda_j\|_{\mathrm{var}}
+ \le\int|\psi_j^2-1|d\lambda_j
+ \le2\|\psi_j-1\|
+ \le\sqrt2\xi_j\sqrt{M_j}=\frac{\sqrt2}{j^2\sqrt{M_j}}.
+\tag{58}
+\]
+Pushforward cannot increase this norm, because composition preserves the bound on a test function. Equations (50),(58) give, for every fixed \(k\),
+\[
+ \|(p_{k,j})_*\mu_j-\lambda_k\|_{\mathrm{var}}
+ \le\frac{\sqrt2}{j^2\sqrt{M_j}}\longrightarrow0.
+\tag{59}
+\]
+Thus the whole sequence, not only a subsequence, converges on all cylinders to the projective Haar probability. Existence and uniqueness follow from the construction in the preceding subsection and the exact consistency (50). This is the restriction of the projective Haar generalized-connection construction to the present countable cubical path family. The measure is a computed limit of the actual interacting vacua in (38); no equality between a finite \(\psi_j\) and the constant vector is asserted.
+
+## 7. The computed temporal obstruction and an exact change of scales
+
+Take a fixed elementary square of one coarse graph, and let \(W\) be its trace as a cylinder observable on every refinement. Haar integration on that graph gives \(\lambda(W)=0\) and \(\lambda(W^2)=1\), by the four-edge argument in (25). Equation (59) proves
+\[
+ \mu_j(W)\longrightarrow0,\qquad
+ v_j:=\|(W-\mu_j(W))\psi_j\|^2\longrightarrow1.
+\]
+Let
+\[
+ C_j(t)=\langle(W-\mu_j(W))\psi_j,
+ e^{-t(H_j-E_j)}(W-\mu_j(W))\psi_j\rangle.
+\]
+The vector is invariant and orthogonal to the actual vacuum. Applying (26),(39) to it proves
+\[
+ 0\le C_j(t)\le v_j e^{-t\kappa_j(3-2/j^2)}.
+\]
+Hence the pointwise limiting function satisfies
+\[
+ C(0)=1,\qquad C(t)=0\quad(t>0).
+\tag{60}
+\]
+There is no Hilbert-space vector \(v\) of squared norm 1 and nonnegative self-adjoint operator \(A\) whose strongly continuous semigroup has \(C(t)=\langle v,e^{-tA}v\rangle\). In fact spectral calculus and dominated convergence give \(\|e^{-tA}v-v\|^2=\int|e^{-t\omega}-1|^2d\langle v,\mathbf1_{d\omega}(A)v\rangle\to0\), forcing \(C(t)\to1\) as \(t\downarrow0\). This contradicts (60). Thus the direct configuration limit in (59), with these fixed physical Wilson observables and unscaled time, does not reconstruct such an evolution.
+
+This is a specific dynamical obstruction in addition to spectral escape. It does not forbid other coupling trajectories or differently constructed observables. The exact comparison between them is (17), (46), (52), and (54)-(57), rather than a declaration that different presentations have no relation.
+
+For an actual uniform spatial dilation \(x'=sx\) of the same finite graph, retaining its link variables and \(g\), the pulled connection is \(A'(x')=s^{-1}A(x'/s)\); its curvature is \(s^{-2}F(x'/s)\), including the commutator, since both differentiated and bracket terms acquire \(s^{-2}\). The dilated metric volume is \(s^4dx\), so the four-dimensional action (11) is unchanged. The lattice dictionary gives
+\[
+ a'=sa,\quad\kappa'=\kappa/s,\quad b'=b/s,
+ \quad H'=H/s,\quad E'=E/s,\quad
+ \nu'(B)=\nu(sB).
+\tag{61}
+\]
+These are identities on the same finite configuration Hilbert space. If the time coordinate is also dilated by \(s\), then \(t'(H'-E')=t(H-E)\). Thus changes of coordinate scale have an exact spectral dictionary; none of (40)-(45) is a spectral disproof obtained by concealing such a dilation. In (12), the original physical metric and \(\ell_*\) stay fixed throughout.
+
+## 8. Relation to temporal transfer and continuum literature
+
+The retained finite-spatial-regulator temporal Wilson coefficients are
+\[
+ b_t(\epsilon)=\frac{a}{2g^2\epsilon},\quad
+ b_s(\epsilon)=\frac{\epsilon}{2g^2a},\quad
+ Z(b_t)=\frac{I_1(2b_t)}{b_t}.
+\]
+The exact temporal-link integral is
+\[
+ \mathcal T_\epsilon^{\mathrm{raw}}
+ =[e^{-2b_t}Z(b_t)]^{N_L}
+ M_\epsilon K_\epsilon M_\epsilon\Pi_L,
+ \quad M_\epsilon=e^{-\epsilon V/2},
+\]
+where the single-edge multiplier of \(K_\epsilon\) is \(I_{2q+1}(2b_t)/I_1(2b_t)\).
+
+The companion temporal-transfer proof, retained in the sources directory, proves its strong power limit to \(e^{-tH}\Pi_L\), with the scalar energy shift \(N_L[2b_t-\log Z(b_t)]/\epsilon\) retained. Its correlation-ratio identity applies directly to (18) and to \(C_j(t)\): at each fixed \(j\), the raw scalar cancels exactly between numerator and vacuum denominator. Thus all spectral statements here are statements about the actual temporal-limit Hamiltonian of that full finite Wilson system. No uniform-in-\(j\) error bound for replacing \(H_j\) by a simultaneous finite-time-step transfer is used or asserted.
+
+The literature comparison is tied to the proved maps above:
+
+- K. Osterwalder and E. Seiler, *Gauge field theories on a lattice*, Annals of Physics **110** (1978), 440-471, [doi:10.1016/0003-4916(78)90039-8](https://doi.org/10.1016/0003-4916(78)90039-8), establish transfer positivity and strongly coupled infinite-volume lattice results. Their lattice transfer framework supports comparison with the finite temporal operator just displayed; it does not identify a single-time Wilson density with the Hamiltonian density \(\psi_j^2\) in (55).
+
+- A. Ashtekar and J. Lewandowski, *Projective techniques and functional integration for gauge theories*, Journal of Mathematical Physics **36** (1995), 2170-2191, [doi:10.1063/1.531037](https://doi.org/10.1063/1.531037), [arXiv:gr-qc/9411046](https://arxiv.org/abs/gr-qc/9411046), Theorem 2 and Sections 2.3, 3.3, give the compact projective-measure framework. The precise hypotheses here are continuous surjective maps (48), their composition identity, and consistent limiting probabilities proved after (57). The finite vacuum measures are not presumed consistent. Our countable cubical construction is proved directly, and (59)-(60) calculate both its limiting measure and its temporal limitation. Their source TeX is retained under `sources/Ashtekar_Lewandowski_1994`.
+
+- S. Chatterjee, *Yang-Mills for probabilists*, in *Probability and Analysis in Interacting Physical Systems*, Springer Proceedings in Mathematics and Statistics **283** (2019), 1-16, [doi:10.1007/978-3-030-15338-0_1](https://doi.org/10.1007/978-3-030-15338-0_1), [arXiv:1803.01950](https://arxiv.org/abs/1803.01950), Sections 3 and 6-7, distinguishes finite Wilson measures and the scaling of loop observables needed for a continuum limit. His lattice action \(S_\Lambda=\sum_p\operatorname{Re}\operatorname{Tr}(I-U_p)\) is exactly \(\sum_p(2-W_p)\) for SU(2). Therefore his coefficient \(\beta\) equals \(b_t\) on our temporal faces and \(b_s\) on spatial faces of the anisotropic finite integral; it is not the Hamiltonian \(b=b_s/\epsilon\). This coefficient dictionary is exact and prevents substituting a fixed isotropic Wilson parameter for (38)-(39). Source TeX is retained under `sources/Chatterjee_2018`.
+
+The local primary corpus `Tong_Gauge_Theory_20260904/gt.txt` was also consulted for the lattice Hamiltonian and continuum discussion; it supplies context rather than a vacuum estimate used in any proof here. Every spectral estimate in Sections 3-7 is proved above with the original finite operator and original coefficients.
+
+A current primary construction can be compared by an exact density map. S. Chatterjee, *A scaling limit of SU(2) lattice Yang-Mills-Higgs theory*, [arXiv:2401.10507v2](https://arxiv.org/abs/2401.10507v2), Theorem 3.2, treats the unitary-gauge stereographic field \(\sqrt2\sigma_3(\tau(U_e))/g_H\). With \(\alpha\to\infty\), \(g_H\to0\), \(\alpha g_H=c\epsilon\), and \(g_H=O(\epsilon^{50d})\), its specified spatially dilated distributional fields converge to three independent Proca fields of mass \(c/\sqrt2\). Its equation (5.2) gives \(\|I-U\|_{\mathrm{HS}}^2=4-2\operatorname{Re}\operatorname{tr}U\). Therefore, on any one fixed finite graph, its gauge-fixed density (3.3) is related to the pure isotropic Wilson probability with coefficient \(\beta=1/g_H^2\) by the exact Radon-Nikodym derivative
+\[
+ \frac{d\mu_H}{d\mu_W}(U)
+ =\frac{\exp[-(\alpha^2/2)\sum_e(2-\operatorname{tr}U_e)]}
+ {\mu_W(\exp[-(\alpha^2/2)\sum_e(2-\operatorname{tr}U_e)])}.
+\]
+This follows simply by dividing the two positive densities and integrating to determine the denominator. The numerator is nonconstant for \(\alpha>0\), since varying one link with all others fixed changes its trace. It retains the added Higgs-induced interaction explicitly. The correspondence does not remove that term or provide the missing pure-vacuum estimate in (17). The retained source TeX records the theorem's boundary conditions, observable map and full hypotheses.
+
+## 9. A volume-uniform gap and the fixed-coupling magnetic sequence
+
+The comparison (47) required a small total interaction \(\xi M_L\). We now prove a different estimate with no volume factor in its coupling range:
+\[
+ 0<\xi\le\frac1{49152},\qquad
+ (H-E)|_{\psi^\perp}\ge
+ \frac{3\kappa}{4}\left(1-\frac{512\xi}{3}\right)I
+ \ge\frac{287\kappa}{384}I .
+ \tag{62}
+\]
+The perpendicular complement here is in the full link Hilbert space; hence the inequality also holds for the gauge-invariant centered magnetic state. The proof below retains the infinite-dimensional link spaces. It develops the creation-coordinate argument of D. A. Yarotsky, *Quasi-particles in weak perturbations of non-interacting quantum lattice systems*, [arXiv:math-ph/0411042v1](https://arxiv.org/abs/math-ph/0411042v1), Section 2, with all numerical constants calculated for the present four-link interactions. The complete source TeX is retained. The companion volume-uniform calculation first supplied these explicit constants; we give the proof here to make the continuum consequence independently readable.
+
+### 9.1 Exact creation coordinates and the interacting eigenvector
+
+In this section write \(\mathbb H_0=\kappa H_0\), where \(H_0\) remains the operator in (1). Put
+\[
+ V_p=-bW_p,\quad J=2b,\quad s=4,\quad d_{\rm inc}=4,\quad
+ \gamma_*=\frac{3\kappa}{4}.
+\]
+Thus \(H=\mathbb H_0+2bM_L+\sum_pV_p\), \(\|V_p\|\le J\), every support has \(s\) distinct links and every link meets at most \(d_{\rm inc}\) supports. None of these definitions changes a physical coefficient.
+
+Let \(\Omega=1\). For \(I\subset\mathsf E_L\), let \(\mathcal H'_I\) be the tensor product of the mean-zero single-link spaces on \(I\), with the empty product \(\mathbb C\). The orthogonal sector projection \(\mathsf P_I\) applies the mean-zero projection on \(I\) and the constant projection on \(I^c\). Then
+\[
+ \mathcal H_L=\bigoplus_{I\subset\mathsf E_L}\mathcal H'_I,\qquad
+ \mathbb H_I=\kappa\sum_{e\in I}E_e,\qquad
+ \mathbb H_I\ge\gamma_*|I|,\qquad
+ \|\mathbb H_I^{-1}\|\le(\gamma_*|I|)^{-1}\quad(I\ne\varnothing).
+ \tag{63}
+\]
+The isomorphism inserts constants in \(I^c\), and its inverse is the family of the displayed projections. Parseval proves both inverse identities. The lower bound follows because each nonconstant factor has a nonzero spin and single-link energy at least \(3\kappa/4\).
+
+For \(z_I\in\mathcal H'_I\), define
+\[
+ \widehat z_I=|z_I\rangle\langle1_I|\otimes I_{I^c}.
+\]
+It is bounded of norm \(\|z_I\|\). Integrating a common link shows that
+\[
+ \widehat z_I\widehat y_K=0\quad(I\cap K\ne\varnothing),
+ \qquad
+ \widehat z_I\widehat y_K=\widehat{z_I\otimes y_K}
+       \quad(I\cap K=\varnothing).
+ \tag{64}
+\]
+For entangled vectors this follows by approximating them with finite sums of elementary tensors; the defining operators converge in norm. In particular all creation operators commute, and any product of more than \(N_L\) nonempty creation operators vanishes.
+
+Use the finite graph whose vertices are physical links and whose adjacency means sharing a face. For nonempty \(I\), let \(t(I)\) be the minimum number of edges in a connected subgraph containing \(I\), allowing additional vertices, and put \(w(I)=2^{t(I)+1}\). This graph is connected. A face support forms a four-vertex clique and has \(w(p)=16\). Inclusion is monotone. Joining minimizing connected subgraphs to a tree on a face proves
+\[
+ w\left(p\cup\bigcup_{j=1}^n I_j\right)
+ \le16\prod_{j=1}^n w(I_j)\quad\hbox{when every }I_j\cap p\ne\varnothing.
+ \tag{65}
+\]
+Indeed their connected union has at most \(3+\sum_jt(I_j)\) edges; the extra factors \(2^n\) on the right only increase the upper bound.
+
+Consider the complete space of collections \(z_I\in D(\mathbb H_I)\), \(I\ne\varnothing\), with
+\[
+ \|z\|_*=\max_x\sum_{I\ni x}
+       w(I)\frac{\|\mathbb H_Iz_I\|}{\gamma_*}.
+ \tag{66}
+\]
+Completeness follows from (63) and the finite number of sectors. If \(a_I=w(I)\|z_I\|\) and \(R=\|z\|_*\), then
+\[
+ \sup_x\sum_{I\ni x}|I|a_I\le R,\qquad
+ \sum_{I:I\cap p\ne\varnothing}a_I\le sR .
+\]
+Set \(\mathscr C(z)=\sum_{I\ne\varnothing}\widehat z_I\). At each finite volume it is bounded and nilpotent, so \(e^{\mathscr C}\) and \(e^{-\mathscr C}\) are mutually inverse finite polynomials. On \(D(\mathbb H_0)\),
+\[
+ [\mathbb H_0,\widehat z_I]=\widehat{\mathbb H_Iz_I},
+ \qquad
+ e^{-\mathscr C}\mathbb H_0e^{\mathscr C}
+       =\mathbb H_0+\sum_I\widehat{\mathbb H_Iz_I}.
+ \tag{67}
+\]
+The first identity holds on finite spectral tensors: exterior energies commute and the local energy annihilates the constant bra. Its bounded right side proves extension to the graph domain, and preservation of that domain by both exponentials. The second commutator vanishes by (64), proving the second identity exactly.
+
+The nonempty components of the eigen-equation are the fixed-point equation
+\[
+ \mathcal F(z)_I=-\mathbb H_I^{-1}\mathsf P_I
+       e^{-\mathscr C(z)}\left(\sum_pV_p\right)e^{\mathscr C(z)}\Omega .
+ \tag{68}
+\]
+The inverse in (63) places every output in its stated domain. We calculate the contraction instead of postulating a convergent expansion.
+
+For one \(p\), expand its conjugation in nested commutators with \(\mathscr C\). A creation index disjoint from \(p\) contributes zero since it commutes with both \(V_p\) and all other creation operators. A commutator of degree \(n\) has \(2^n\) ordered words. On either side of \(V_p\), supports in a nonzero word are disjoint by (64); at most four of them can meet \(p\). Thus the exact expansion ends at degree eight.
+
+Outside \(p\), the potential acts as identity. If two creation supports share an outside link, the constant bra and mean-zero projection annihilate that word. Otherwise its excited outside set is fixed to be \((\bigcup_jI_j)\setminus p\). Only the subsets of the four inside links vary. There are at most \(16\) orthogonal output sectors. Consequently Cauchy--Schwarz gives, for each word,
+\[
+ \sum_K\|\mathsf P_K(\text{word})\Omega\|
+       \le4J\prod_{j=1}^n\|z_{I_j}\| .
+ \tag{69}
+\]
+All arguments use projections, so remain valid for entangled vectors by the norm approximation establishing (64).
+
+For an anchor \(x\) in a nonempty output \(K\), either \(x\in p\) or \(x\in I_j\) for some \(j\). In the first case there are at most \(d_{\rm inc}\) faces and the index sums contribute \((sR)^n\). In the second choose \(j\) and \(I_j\ni x\); at most \(d_{\rm inc}|I_j|\) faces meet it, and the factor \(|I_j|\) is absorbed by (66). The two upper bounds are
+\(d_{\rm inc}(sR)^n\) and \(nd_{\rm inc}R(sR)^{n-1}\), with the second zero at \(n=0\). Combining (65), (68) and (69), cancelling \(\mathbb H_I\) against its inverse, proves
+\[
+ \|\mathcal F(z)\|_*
+ \le\frac{2048}{3}\xi(1+2R)e^{8R}.
+\]
+Replacing one input at a time in each multilinear word gives the Lipschitz bound on the radius-\(R\) ball:
+\[
+ \|\mathcal F(z)-\mathcal F(y)\|_*
+ \le\frac{2048}{3}\xi(10+16R)e^{8R}\|z-y\|_* .
+ \tag{70}
+\]
+For the second inequality, the degree-\(n\) positive majorant acquires the factor \(nR^{n-1}\) in place of \(R^n\). Differentiation of the preceding positive majorant gives precisely \(10+16R\). This counts anchors in the differing position as well as the other positions.
+
+Take \(R_*=1/16\). The geometric-series comparison \(e^{1/2}<2\) proves, throughout the range of (62),
+\[
+ \|\mathcal F(z)\|_*\le1536\xi\le1/32,\qquad
+ \operatorname{Lip}(\mathcal F)\le(45056/3)\xi\le11/36.
+ \tag{71}
+\]
+Iteration from zero therefore converges: successive differences are bounded by a geometric series, and completeness and (70) give the fixed-point equation and uniqueness in the ball. Conjugation commutes with every factor of (68), so the solution and its eigenvalue are real. Equations (67)--(68) yield
+\[
+ \phi=e^{\mathscr C(z)}\Omega,\qquad H\phi=\varepsilon\phi,\qquad
+ \varepsilon=2bM_L+
+ \mathsf P_\varnothing e^{-\mathscr C(z)}
+       \left(\sum_pV_p\right)e^{\mathscr C(z)}\Omega .
+ \tag{72}
+\]
+Every nonempty creation product has zero Haar mean, so
+\(\langle\Omega,\phi\rangle=1\). The scalar \(2bM_L\) has remained in the eigenvalue.
+
+### 9.2 Resolvent exclusion in the full domain
+
+Fix the constructed \(z\). Define
+\[
+ \widetilde H=e^{-\mathscr C}(H-\varepsilon)e^{\mathscr C}
+       =\mathbb H_0+\mathscr K,\qquad \widetilde H\Omega=0 .
+\]
+This is a bounded similarity preserving \(D(\mathbb H_0)\); it is not asserted unitary. Equip the same finite-volume space with the equivalent sector norm
+\[
+ \|f\|_{\oplus,1}=\sum_I\|\mathsf P_If\|,\qquad
+ \|f\|\le\|f\|_{\oplus,1}\le2^{N_L/2}\|f\| .
+\]
+For \(u_I\in D(\mathbb H_I)\), commute the similarity with \(\widehat u_I\), use \(\widetilde H\Omega=0\), and subtract the \(\mathbb H_Iu_I\) term to get
+\[
+ \mathscr K\widehat u_I\Omega
+ =e^{-\mathscr C}\left[\sum_pV_p,\widehat u_I\right]
+       e^{\mathscr C}\Omega .
+\]
+Only the at most \(d_{\rm inc}|I|\) faces meeting \(I\) contribute. In the conjugation expansion the same outside-face sector argument proving (69) applies, now including the additional creation support \(I\). The commutator adds two words. Since
+\(\sum_{K:K\cap p\ne\varnothing}\|z_K\|\le sR_*\), it follows that
+\[
+ \|\mathscr K\widehat u_I\Omega\|_{\oplus,1}
+ \le8Jd_{\rm inc}|I|e^{8R_*}\|u_I\| .
+\]
+Sum over \(I\), use (63), and use \(e^{1/2}<2\). This proves
+\[
+ \|\mathscr Kf\|_{\oplus,1}
+ \le c_\xi\|\mathbb H_0f\|_{\oplus,1},\qquad
+ c_\xi=\frac{512\xi}{3}\le\frac1{288},
+ \quad f\in D(\mathbb H_0).
+ \tag{73}
+\]
+The empty component gives zero. The estimates first hold on finite spectral tensors and extend by graph closure.
+
+For real \(t<0\), (73) gives
+\(\|\mathscr K(\mathbb H_0-t)^{-1}\|_{\oplus,1}\le c_\xi<1\).
+For \(0<t<(1-c_\xi)\gamma_*\), it gives
+\[
+ \|\mathscr K(\mathbb H_0-t)^{-1}\|_{\oplus,1}
+ \le\frac{c_\xi\gamma_*}{\gamma_*-t}<1 .
+ \tag{74}
+\]
+Indeed \(\lambda/(\lambda-t)\) on \(\lambda\ge\gamma_*\) has this supremum; the empty sector is annihilated by \(\mathscr K\). The Neumann inverse followed by \((\mathbb H_0-t)^{-1}\) is a bounded inverse of \(\widetilde H-t\), with image in its graph domain. Norm equivalence makes it a bounded Hilbert-space inverse at each finite volume. No uniform estimate on the equivalence constant is used in excluding the real intervals. The bounded similarity transfers these intervals to the resolvent of \(H-\varepsilon\). Since \(H\) is self-adjoint and \(\varepsilon\) is a real eigenvalue, the exclusion of all \(t<0\) proves \(\varepsilon=E\). Ground-state simplicity from Section 1 identifies the unchanged physical vacuum:
+\[
+ \psi=\langle\Omega,\psi\rangle e^{\mathscr C}\Omega,\qquad
+ \langle\Omega,\psi\rangle>0,\qquad
+ \langle\Omega,\psi\rangle^2\|e^{\mathscr C}\Omega\|^2=1 .
+ \tag{75}
+\]
+The positive real interval excluded in (74), and the spectral theorem, now prove (62).
+
+### 9.3 Consequence for the original fixed-coupling cusp state
+
+The range in original coefficients is \(g^4\ge12288\). Retain exactly the geometry (12), \(D_j\), the state \(\chi_j\), and a fixed \(g=g_0\) in that range. For all sufficiently large \(j\), its angle is nonzero and not a multiple of \(2\pi\), so Section 3 proves \(d_j>0\). Equation (62) gives
+\[
+ \operatorname{supp}\nu_j\subset[\Delta_j,\infty),\qquad
+ \Delta_j=
+ \left(150g_0^2-\frac{6400}{g_0^2}\right)j
+ \ge\frac{7175}{48}g_0^2j .
+ \tag{76}
+\]
+Thus \(\nu_j([0,\Omega])=0\) eventually for every fixed finite physical \(\Omega\), and
+\(\langle\chi_j,e^{-t(H_j-E_j)}\chi_j\rangle/d_j
+ \le e^{-t\Delta_j}\) for all \(t\ge0\).
+This is a conclusion about the actual centered magnetic spectral probability, despite the vanishing \(d_j\). It extends beyond (47), since now \(\xi_0M_j\) tends to infinity.
+
+More generally every \(a_j\to0\) trajectory that stays in \(g_j^4\ge12288\) has
+\(\Delta_j\ge287g_j^2/(192a_j)\to\infty\).
+All vacuum-orthogonal vectors have the corresponding spectral exclusion. Finite positive energy filters, refinements, and choices of centering cannot create spectral weight below this support for those same physical operators. This result concerns the displayed strong-coupling interval. Section 10 gives a different all-positive-coupling conclusion for specified loop states.
+
+## 10. Fixed physical loop states at every positive coupling
+
+### 10.1 A local density bound from the nonlinear vacuum equation
+
+Write \(u=\log\psi\) and \(\rho=\psi^2\) for the same vacuum. In the link metric with orthonormal \(T_a\), \(SU(2)\) is the round three-sphere of radius 2: in quaternion coordinates \(T_a\) has Euclidean length \(1/2\), and left multiplication preserves the quaternion metric. Its Ricci tensor is one half its metric and its diameter is \(2\pi\). These factors preserve \(\Delta^c=4\Delta^T\).
+
+Let \(\Delta=\sum_e\Delta_e=-H_0\) and \(V=b\sum_p(2-W_p)\). Dividing the full equation by its positive vacuum gives
+\[
+ \Delta u+|\nabla u|^2=(V-E)/\kappa .
+\]
+For \(w_e=|\nabla_eu|^2\), differentiation on the product manifold gives the partial Bochner identity
+\[
+ (\Delta+2\nabla u\cdot\nabla)w_e
+ =2\sum_f|\nabla_f\nabla_eu|_{\rm HS}^2+w_e
+   +\frac2\kappa\langle\nabla_eu,\nabla_eV\rangle .
+ \tag{77}
+\]
+For completeness, differentiate the three squared gradient components in orthonormal geodesic frames. The product Laplacian produces the first Hessian sum and
+\(2\langle\nabla_eu,\nabla_e\Delta u\rangle\).
+Commuting the two factor-\(e\) derivatives adds
+\(2\operatorname{Ric}_e(\nabla_eu,\nabla_eu)=w_e\); mixed factors have zero curvature. Substituting the differentiated vacuum equation produces a term
+\(-4\nabla^2u(\nabla u,\nabla_eu)\), which cancels exactly with the drift of \(w_e\). This proves (77), retaining every mixed Hessian.
+
+If \(r_e\le4\) is the actual number of faces incident to \(e\), then
+\(|\nabla_eV|\le br_e\).
+To verify its unit constant, write a face word as \(AUB\) or \(AU^{-1}B\). Bi-invariance and inversion reduce its trace derivative to that of \(2u_0\) on the radius-2 sphere, whose squared gradient is \(1-u_0^2\le1\).
+At a global maximum of \(w_e\) on the compact full product, its gradient is zero and its Laplacian nonpositive. Equation (77) gives
+\(0\ge w_e-2r_e\xi\sqrt{w_e}\), and hence
+\[
+ \|\nabla_e\log\psi\|_\infty\le2r_e\xi,\qquad
+ \|\nabla_e\log\rho\|_\infty\le4r_e\xi .
+ \tag{78}
+\]
+This is valid at all \(g>0\) and every volume, with no expansion in \(\xi\).
+
+For an exterior configuration \(y\), let
+\[
+ p_e(U\mid y)=\frac{\rho(U,y)}{\int\rho(U',y)\,dU'},\qquad
+ \alpha(g)=e^{-32\pi\xi}=e^{-8\pi/g^4}.
+\]
+The geodesic diameter and (78) bound the oscillation of \(\log p_e\) by \(8\pi r_e\xi\). Since its integral is 1, its minimum and maximum straddle 1; the ratio estimate therefore proves
+\[
+ e^{-8\pi r_e\xi}\le p_e(U\mid y)
+       \le e^{8\pi r_e\xi},\qquad
+ \alpha(g)\le p_e(U\mid y)\le\alpha(g)^{-1}.
+ \tag{79}
+\]
+These are the actual conditional densities; correlations among other links are unchanged.
+
+### 10.2 Raw spectral mass of a simple loop
+
+Let \(C\) be a closed lattice path with \(\ell\) distinct physical edges, each traversed once, and let \(W_C=\operatorname{tr}U_C\) with its full ordered product and inverse orientations. Define
+\[
+ m_C=\mu(W_C),\quad
+ v_C=\psi(W_C-m_C),\quad d_C=\|v_C\|^2,\quad
+ \eta_C(B)=\langle v_C,\mathbf1_B(H-E)v_C\rangle,\quad
+ \nu_C=\eta_C/d_C .
+\]
+The loop is gauge invariant. On any one of its edges, at fixed exterior links, the change of variable from that link to \(U_C\) preserves Haar, including for inverse traversal. Haar on \(SU(2)\) has \(\int\operatorname{tr}U=0\) and \(\int(\operatorname{tr}U)^2=1\). One can calculate these directly from \(U=u_0I+i\mathbf u\cdot\sigma\): symmetry gives \(\int u_0=0\), \(\int u_0^2=1/4\). Consequently, for every real \(c\),
+\[
+ \int(W_C-c)^2p_e\,dU_e\ge\alpha(1+c^2).
+\]
+The conditional variance is at least \(\alpha\). The identity of total variance, obtained by subtracting and adding the conditional mean and integrating the zero cross term, now gives \(d_C\ge\alpha\). Also \(d_C\le4\) because \(|W_C|\le2\). In the same conditional integral,
+\(\int(1-W_C^2/4)\,dU_e=3/4\).
+Thus the ground-state form (2) and the link trace derivative calculation give exactly
+\[
+ d_C\in[\alpha,4],\qquad
+ A_{1,C}:=\int\omega\,d\eta_C(\omega)
+ =\kappa\ell\left(1-\frac{\mu(W_C^2)}4\right)
+ \ge\frac{3\alpha}{4}\kappa\ell .
+ \tag{80}
+\]
+There are no cross-link derivatives in this form, and each of the \(\ell\) distinct links contributes the same squared gradient \(1-W_C^2/4\).
+
+Multiplication by \(\psi\) is the exact unitary from \(L^2(\mu)\) to \(L^2(\lambda_L)\). Under it,
+\[
+ \mathscr L=\psi^{-1}(H-E)\psi
+       =-\kappa(\Delta+2\nabla u\cdot\nabla).
+\]
+The operator acts on the same \(H^2\) domain, since the finite-volume positive smooth \(\psi\) and its inverse preserve Sobolev spaces. Since
+\(-\Delta W_C=(3\ell/4)W_C\), (78) implies the pointwise bound
+\[
+ |\mathscr L W_C|\le\kappa\ell B(g),\qquad
+ B(g)=\frac32+16\xi=\frac32+\frac4{g^4}.
+\]
+Every reverse traversal gives the same Casimir by inversion invariance. The derivative contribution is bounded by
+\(2\sum_{e\in C}(2r_e\xi)|\nabla_eW_C|\le16\xi\ell\).
+The full second spectral moment is therefore bounded by
+\[
+ A_{2,C}:=\int\omega^2\,d\eta_C(\omega)
+       =\|\mathscr L W_C\|_{L^2(\mu)}^2
+       \le B(g)^2\kappa^2\ell^2 .
+ \tag{81}
+\]
+
+Put
+\[
+ R_C=\frac{3\alpha(g)}{32}\kappa\ell,\qquad
+ c_{\rm raw}(g)=\frac{9\alpha(g)^2}{64B(g)^2},\qquad
+ c_{\rm prob}(g)=\frac{9\alpha(g)^2}{256B(g)^2}.
+\]
+Then the full spectral measure, with no discarded channels, satisfies
+\[
+ \eta_C([R_C,\infty))\ge c_{\rm raw}(g),\qquad
+ \nu_C([R_C,\infty))\ge c_{\rm prob}(g)>0 .
+ \tag{82}
+\]
+Indeed split the first moment below and above \(R_C\). Cauchy--Schwarz for the second piece gives
+\[
+ A_{1,C}\le R_Cd_C+
+    \sqrt{A_{2,C}\eta_C([R_C,\infty))}.
+\]
+Equations (80)--(81) and \(d_C\le4\) show
+\(A_{1,C}-R_Cd_C\ge3\alpha\kappa\ell/8\).
+Squaring proves the raw bound in (82), and division by \(d_C\le4\) proves its probability version. Keeping the raw norm in this calculation avoids an unnecessary third power of the conditional-density constant.
+
+### 10.3 Exact spatial refinement and failure of energy tightness
+
+Fix a square of one coarse graph \(Q_{L_k}\), of physical side \(s=a_k>0\). For each subsequent dyadic \(j\), the map \(p_{k,j}\) in Section 6 sends its four coarse edges to chains of \(m_j=a_k/a_j=j/k\) fine edges. Thus \(W_j=p_{k,j}^*W\) is the same physical Wilson observable and
+\[
+ \ell_j=4m_j=\frac{4s}{a_j},\qquad
+ R_j=\frac{3\alpha(g_j)g_j^2s}{4a_j^2}.
+ \tag{83}
+\]
+This follows from the exact ordered edge products; no conditional vacuum is substituted. Its state is precisely
+\(v_j=\psi_j(W_j-\mu_j(W_j))\), and its raw measure is that in (82).
+
+At fixed \(g_0>0\), \(R_j\) tends to infinity and (82) retains a positive raw mass \(c_{\rm raw}(g_0)\) and probability mass \(c_{\rm prob}(g_0)\) above \(R_j\). Hence neither family of these measures is tight in physical energy. This proves loss of a positive spectral fraction; it does not prove that the entire loop probability escapes, or that its low-energy part is zero outside the range of Section 9.
+
+The same statement holds uniformly on any subsequence with \(g_j\ge g_{\min}>0\). In fact \(\alpha(g_j)\ge\alpha(g_{\min})\), \(B(g_j)\le B(g_{\min})\), and \(g_j^2\ge g_{\min}^2\). Equations (82)--(83) then give uniform positive mass beyond a threshold diverging as \(a_j^{-2}\). It follows that tightness for this family of unchanged fixed physical Wilson states along a full \(a_j\to0\) sequence requires
+\[
+ g_j\longrightarrow0.
+ \tag{84}
+\]
+This is a proved necessary coupling consequence for the displayed observables. It is not a sufficiency claim or a theorem about every possible renormalized observable.
+
+There is also a direct dynamical consequence for the configuration limits already constructed. Along a subsequence in Section 6.3, continuity of \(W\) and \(W^2\) on \(Q_{L_k}\) gives \(d_j\to d_\infty\ge\alpha(g_0)\). For every fixed physical \(t>0\), spectral calculus and (82) give
+\[
+ \langle v_j,e^{-t(H_j-E_j)}v_j\rangle
+ \le d_j-c_{\rm raw}(g_0)(1-e^{-tR_j}).
+ \tag{85}
+\]
+There is an actual subsequence on which the correlations converge for every \(t>0\), and its lost spectral mass has an exact representation. Use the unchanged reference length \(\ell_*=1\) from Section 2.1 to define the dimensionless variable \(x=\exp(-\ell_*\omega)\). Let \(\zeta_j\) be the pushforward of the raw measure \(\eta_j\) onto \((0,1]\), regarded as a finite measure on compact \([0,1]\). Its total mass is \(d_j\le4\). The countable-test-function and Riesz argument used in Section 6.3 gives a weakly convergent further subsequence \(\zeta_j\to\zeta_\infty\), of total mass \(d_\infty\).
+
+For each fixed \(0<\delta<1\), eventually \(e^{-\ell_*R_j}<\delta\), so (82) gives \(\zeta_j([0,\delta])\ge c_{\rm raw}(g_0)\). The closed-set weak-convergence inequality yields \(\zeta_\infty([0,\delta])\ge c_{\rm raw}(g_0)\). One can derive that inequality by decreasing continuous functions bounded by 1 to the indicator of the closed interval and then using dominated convergence. Letting \(\delta\downarrow0\) proves
+\[
+ m_\infty:=\zeta_\infty(\{0\})\ge c_{\rm raw}(g_0)>0.
+ \tag{85a}
+\]
+The point \(x=0\) represents infinite physical energy. For every \(t>0\), the function \(x^{t/\ell_*}\), defined to be zero at \(x=0\), is continuous on the whole compact interval. The same subsequence therefore has the exact correlation limit
+\[
+ C(t)=\int_{[0,1]}x^{t/\ell_*}\,d\zeta_\infty(x)\quad(t>0),
+ \qquad C(0)=d_\infty,\qquad
+ C(0+)=d_\infty-m_\infty .
+ \tag{85b}
+\]
+The last identity follows by dominated convergence on \((0,1]\). Thus its positive-time limit loses at least \(c_{\rm raw}(g_0)\) of the original squared state norm at time zero.
+
+The exact Hilbert-space map recording this loss is
+\[
+ L^2(\zeta_\infty)
+ =L^2(\zeta_\infty|_{(0,1]})\oplus L^2(m_\infty\delta_0),
+ \qquad P_{\rm fin}f=\mathbf1_{(0,1]}f .
+ \tag{85c}
+\]
+On the first summand define \(A_{\rm fin}\) by multiplication by
+\(-\ell_*^{-1}\log x\), with domain consisting exactly of the functions for which that product is square integrable. Bounded-energy truncations show the domain is dense. Multiplication by
+\((-\ell_*^{-1}\log x-z)^{-1}\) is a bounded inverse for every nonreal \(z\), with image in the stated domain; symmetry and these resolvents prove self-adjointness. Its nonnegative semigroup is multiplication by \(x^{t/\ell_*}\), and dominated convergence proves strong continuity. Its constant vector has squared norm \(d_\infty-m_\infty\) and reproduces \(C(t)\) for \(t>0\).
+
+On the whole space (85c), the exact limiting operators are
+\(T_t=e^{-tA_{\rm fin}}\oplus0\) for \(t>0\) and \(T_0=I\).
+They obey the semigroup law, but \(T_t\) tends strongly to \(P_{\rm fin}\), not to \(I\), as \(t\downarrow0\). The original constant vector has squared norm \(d_\infty\), and its lost component has squared norm exactly \(m_\infty\). Consequently no strongly continuous nonnegative self-adjoint semigroup with that original squared norm can reproduce (85b). This gives the precise projection and residual scalar spectral dynamics associated with the obstruction. It does not construct the interacting spatial observable algebra from one loop's scalar spectral measure. The configuration limit has nowhere been identified with Haar.
+
+### 10.4 Shrinking loops and the retained field map
+
+For any elementary face, integrating one of its links and using (79) gives
+\[
+ \mu(W_p\le0)\ge\frac{\alpha(g)}2,\qquad
+ \mu\bigl(\|I-U_p\|_{\rm HS}^2\bigr)\ge4\alpha(g).
+ \tag{86}
+\]
+The Haar probability of \(\operatorname{tr}U\le0\) is \(1/2\), by the measure-preserving map \(U\mapsto-U\). Also
+\(\|I-U\|_{\rm HS}^2=4-2\operatorname{tr}U\), whose Haar mean is 4. These prove both inequalities. The expressions are invariant under the conjugation of the based holonomy, so the statements descend to the original gauge quotient.
+
+For comparison, the original cusp background on a magnetic elementary face has
+\[
+ \|I-U_p^{\rm bg}\|_{\rm HS}^2
+       =4-4\cos\theta_j\le2\theta_j^2\longrightarrow0 .
+ \tag{87}
+\]
+Its value follows directly from the retained links \(h_i\) and is unchanged by conjugation or the sign of the face orientation. This exact comparison explains why the smooth background limit does not itself determine the fluctuation law of the actual vacuum. At a fixed positive coupling the elementary quantum holonomy fails to approach identity in probability: on \(W_p\le0\) its squared distance is at least 4 and that event has uniformly positive probability.
+
+The continuum consequence has precisely this scope. A topology or reconstruction that requires these unmodified shrinking holonomies to converge to identity cannot realize that fixed-coupling sequence. A distributional field reconstruction need not impose that pointwise property. Equations (79), (83), (85) and (87) give the actual measure, refinement, spectral and field maps; no general nonrelationship or universal continuum impossibility is inferred.
+
+## 11. Explicit coupling continuations outside the proved exclusions
+
+The deductions (76) and (84) give concrete information for the next interacting calculation. They do not fix a continuum coupling trajectory by an unproved renormalization rule. For example retain the entire geometry (12), take \(j\ge2\) dyadic, and choose the strictly positive coupling
+\[
+ g_j^2=\frac1{\log j},\quad
+ \xi_j=\frac{(\log j)^2}{4},\quad
+ \kappa_j=\frac{200j}{\log j},\quad
+ b_j=50j\log j,\quad
+ 2b_jM_j=100jM_j\log j .
+ \tag{88}
+\]
+All plaquettes and the unchanged physical reference length remain present. The calculation (22), which is uniform in \(\xi\) before specialization, now gives
+\[
+ \|\chi_j\|\le
+ \frac{1536\pi^2}{10^8}\frac{(\log j)^2}{j^2},\qquad
+ d_j\le\left(\frac{1536\pi^2}{10^8}\right)^2
+             \frac{(\log j)^4}{j^4}.
+ \tag{89}
+\]
+The nonzero-state proof still applies. Thus the exact configuration-compactness and uncentered-state comparison argument in Section 6.3 applies to this trajectory too: it needs compact configurations, gauge invariance and the vanishing norm just proved, not a constant coupling. The centered finite measures have zero total-mass limit. Their spectral probabilities remain the exact pushforward (17) and are not determined by (89).
+
+For this trajectory the constants in the all-coupling loop result are explicitly
+\[
+ \alpha_j=e^{-8\pi(\log j)^2},\quad B_j=\frac32+4(\log j)^2,\quad
+ R_j=\frac{7500s\,j^2}{\log j}e^{-8\pi(\log j)^2}\longrightarrow0 .
+ \tag{90}
+\]
+The lower masses in (82) tend to zero as well. Thus that proved estimate does not exclude tightness on (88). It does not establish it either. The cluster-gap range is eventually violated and \(\xi_jM_j\) diverges, so neither earlier whole-spectrum exclusion applies.
+
+A different exact coefficient choice keeps the original electric coefficient equal to a fixed physical inverse length \(\kappa_*>0\):
+\[
+ g_j^2=\frac{\kappa_*}{200j},\quad
+ \xi_j=\frac{10000j^2}{\kappa_*^2},\quad
+ \kappa_j=\kappa_*,\quad
+ b_j=\frac{10000j^2}{\kappa_*},\quad
+ 2b_jM_j=\frac{20000j^2M_j}{\kappa_*}.
+ \tag{91}
+\]
+This changes the coupling, with the full magnetic term displayed; it is not the coordinate dilation (61). Substitution in the same all-angle state bound gives only
+\[
+ \|\chi_j\|\le\frac{6144\pi^2}{10000\kappa_*^2}.
+ \tag{92}
+\]
+This constant upper bound alone gives no vanishing conclusion or limiting Hamiltonian. The independent full-vacuum moment calculation in Section 12 proves the stronger vanishing estimate (104) for this same trajectory. The next target is a spectral estimate for the actual interacting states along a coupling trajectory outside (76), such as (88) or (91), with its full limiting dynamics constructed. None of the unknown convergence statements has been installed as an assumption.
+
+
+
+## 12. A weak-coupling variational bound for the actual vacuum
+
+### 12.1 Exact compact-group comparison with every physical coefficient retained
+
+Write \(N=N_L\), \(M=M_L\), and \(r=N/M=1+1/(2L)\). These counts retain every boundary link and face. In quaternion coordinates
+\(U=xI+i\sum_{\alpha=1}^3y_\alpha\sigma_\alpha\), the Haar marginal of \(x\in[-1,1]\) is
+\[
+ d\lambda_x=\frac2\pi(1-x^2)^{1/2}\,dx,\qquad
+ \operatorname{tr}U=2x.
+ \tag{93}
+\]
+To calculate this marginal, parameterize the unit three-sphere by
+\((\cos\varphi,\sin\varphi\,\mathbf n)\), with \(\mathbf n\in S^2\) and
+\(0\le\varphi\le\pi\). Its area element is
+\(\sin^2\varphi\,d\varphi\,dS^2\). The substitution \(x=\cos\varphi\), followed by the integral \(\int_{-1}^1\sqrt{1-x^2}\,dx=\pi/2\), gives (93). The radius-2 link metric multiplies total area by the constant eight, which cancels from this same Haar probability convention; it remains in the derivatives below.
+
+For \(t>0\), define the exact integral and unit trial factor
+\[
+ Z_t=\int_{SU(2)}e^{2tx}\,d\lambda,\qquad
+ f_t(U)=Z_t^{-1/2}e^{tx},\qquad
+ q_t=Z_t^{-1}\int x e^{2tx}\,d\lambda .
+ \tag{94}
+\]
+This is a comparison vector, not the physical vacuum. The scalar \(Z_t\) is retained. Pairing \(x\) with \(-x\) shows \(0<q_t<1\), since the positive-\(x\) contribution to the numerator is \(2x\sinh(2tx)>0\).
+
+There is the following elementary integral bound, with no large-\(t\) asymptotics:
+\[
+ 0<1-q_t\le\frac{3}{4t}.
+ \tag{95}
+\]
+Put \(z=1-x\). Its tilted Haar density is proportional to
+\(e^{-2tz}z^{1/2}\sqrt{2-z}\,\mathbf1_{[0,2]}(z)\).
+On \([0,\infty)\), let \(\gamma_t\) have density proportional to
+\(e^{-2tz}z^{1/2}\); integration by parts of
+\(z^{3/2}e^{-2tz}\) gives its mean \(3/(4t)\).
+The factor \(w(z)=\sqrt{2-z}\mathbf1_{[0,2]}(z)\) is nonnegative and decreasing. For two independent variables \(z,z'\) of law \(\gamma_t\),
+\[
+ 2\left(\int zw\,d\gamma_t-\int z\,d\gamma_t\int w\,d\gamma_t\right)
+ =\iint(z-z')(w(z)-w(z'))\,d\gamma_t(z)d\gamma_t(z')\le0 .
+\]
+Division by the positive mean of \(w\) gives (95). The integrations are absolutely convergent; the boundary term in the displayed integration by parts vanishes at zero and infinity.
+
+The metric in Section 10 gives
+\[
+ |\nabla x|^2=(1-x^2)/4,\qquad \Delta x=-3x/4 .
+\]
+The first follows from the radius-2 sphere, and the second also follows by tracing \(\sum_\alpha T_\alpha^2U=-3U/4\). Integrating
+\(\operatorname{div}(e^{2tx}\nabla x)\) over the compact group gives
+\[
+ \frac{t}{2}\langle1-x^2\rangle_t=\frac34q_t,\qquad
+ \langle f_t,E_e f_t\rangle=\frac{t^2}{4}\langle1-x^2\rangle_t
+ =\frac{3tq_t}{8}\le\frac{3t}{8}.
+ \tag{96}
+\]
+Here \(\langle\cdot\rangle_t\) uses precisely \(f_t^2d\lambda\).
+
+Let \(F_t(U)=\prod_{e\in\mathsf E_L}f_t(U_e)\). Its norm is 1. Under its product density, conjugation invariance and symmetry in \(\mathbf y\) give \(\langle U_e\rangle_t=q_t I\) and
+\(\langle U_e^{-1}\rangle_t=q_t I\). Entrywise integration of the ordered four-link product therefore gives, with its original orientations,
+\[
+ \langle F_t,W_pF_t\rangle=2q_t^4,\qquad
+ 2-2q_t^4=2(1-q_t)(1+q_t+q_t^2+q_t^3)\le\frac6t .
+ \tag{97}
+\]
+Independence is used only in this explicit comparison vector.
+
+The exact trial energy and its bound are
+\[
+ \mathfrak q_H[F_t]
+ =\frac{3\kappa Ntq_t}{8}+2bM(1-q_t^4)
+ \le\frac{3\kappa N}{8}t+\frac{6bM}{t}.
+ \tag{98}
+\]
+Every scalar and every face in \(V=b\sum_p(2-W_p)\) remains here. The physical vacuum from Section 1 is the full ground state and is gauge invariant, so the variational principle directly gives \(E\le\mathfrak q_H[F_t]\). One can also make the comparison gauge invariant without changing the potential integral. Define
+\[
+ \bar\rho_t(U)=\int_{\mathcal G_L}F_t(h\cdot U)^2\,dh,\qquad
+ \bar F_t(U)=\sqrt{\bar\rho_t(U)}.
+\]
+This is a smooth positive gauge-invariant unit vector. Differentiating under the compact integral and applying Cauchy--Schwarz yields
+\[
+ |\nabla_e\bar F_t|^2
+ =\frac{|\int F_t(h\cdot U)\nabla_e(F_t(h\cdot U))\,dh|^2}
+       {\int F_t(h\cdot U)^2\,dh}
+ \le\int|\nabla_e(F_t(h\cdot U))|^2\,dh.
+\]
+Gauge transformations act by link isometries, and the potential is gauge invariant. Haar integration proves
+\(\mathfrak q_H[\bar F_t]\le\mathfrak q_H[F_t]\).
+This supplies the exact gauge map for the comparison; neither vector is substituted for \(\psi\).
+
+The choice \(t=4\sqrt{bM/(\kappa N)}=2/(g^2\sqrt r)>0\) makes the two terms in the upper bound (98) equal. Since \(\kappa b=a^{-2}\), and since the constant comparison vector gives \(E\le2bM\), we obtain
+\[
+ \begin{gathered}
+ 0\le E\le\mathcal B_{L,a,g}
+ :=\min\left\{2bM,\frac{3\sqrt{NM}}{a}\right\},
+ \\
+ \frac1M\sum_p\mu(2-W_p)
+ \le\min\{2,6\sqrt r\,g^2\}
+ \le\min\{2,3\sqrt5\,g^2\}.
+ \end{gathered}
+ \tag{99}
+\]
+The expectation bound follows from
+\(b\sum_p\mu(2-W_p)=\mu(V)\le E\). The last inequality uses
+\(1<r\le5/4\), valid for every \(L\ge2\). Thus the full actual vacuum has an explicitly controlled mean plaquette defect at decreasing coupling. This is an average over the actual faces; no translation invariance of the open box is assumed.
+
+### 12.2 An improved full electric second moment
+
+The operator equation still reads \(\kappa H_0\psi=(E-V)\psi\). Positivity and the full potential bound give
+\[
+ 0\le\mu(V)\le E\le2bM,\qquad
+ \mu(V^2)\le4bM\mu(V).
+\]
+Consequently the exact second moment satisfies
+\[
+ \begin{split}
+ \kappa^2\|H_0\psi\|^2
+ &=E^2-2E\mu(V)+\mu(V^2)\\
+ &\le E^2+(4bM-2E)\mu(V)\\
+ &\le4bME-E^2\\
+ &\le4bM\mathcal B_{L,a,g}-\mathcal B_{L,a,g}^2 .
+ \end{split}
+ \tag{100}
+\]
+The coefficient \(4bM-2E\) is nonnegative, which justifies the third line. The function \(x\mapsto4bMx-x^2\) increases on \([0,2bM]\), which justifies the last line using (99). All vectors lie in the same \(H^2\) domain; these equalities and inequalities concern the unchanged eigenvector.
+
+For an additional explicit upper bound, retain (100) and then bound it above by \(4bM(3\sqrt{NM}/a)\). The original coefficients give
+\[
+ \|H_0\psi\|
+ \le\frac{\sqrt{4bM\mathcal B_{L,a,g}-\mathcal B_{L,a,g}^2}}{\kappa}
+ \le\frac{M}{g^3}\sqrt{\frac32}\,r^{1/4}.
+ \tag{101}
+\]
+Combining this with the exact central-convolution graph estimate (19) and orthogonal centering yields
+\[
+ \|\chi_\theta\|
+ \le\frac{2\theta^2L^2}{3\kappa}
+       \sqrt{4bM\mathcal B_{L,a,g}-\mathcal B_{L,a,g}^2}
+ \le\frac23\theta^2L^2\frac{M}{g^3}
+       \sqrt{\frac32}\,r^{1/4}.
+ \tag{102}
+\]
+No expansion in \(g\), \(\theta\), or total volume has been inserted. The earlier all-angle bound remains valid independently.
+
+On the original geometric sequence (12), retain \(D_j\) in \(\theta_j\) and then use
+\(D_j\ge j^4/4\), \(M_j\le36j^6\), and \(r_j\le5/4\). This proves
+\[
+ \|\chi_j\|\le C_0\,g_j^{-3}j^{-2},\qquad
+ C_0=\frac{768\pi^2\sqrt{3\sqrt5}}{10^8}.
+ \tag{103}
+\]
+For \(g_j^2=1/\log j\), it gives
+\(\|\chi_j\|\le C_0(\log j)^{3/2}j^{-2}\), strengthening (89).
+For the fixed physical electric coefficient trajectory (91), it gives the new vanishing estimate
+\[
+ \|\chi_j\|\le
+ \frac{48\pi^2\sqrt{6\sqrt5}}{3125\,\kappa_*^{3/2}}j^{-1/2},
+ \qquad
+ d_j\le\frac{13824\sqrt5\,\pi^4}
+ {9765625\,\kappa_*^3}j^{-1}.
+ \tag{104}
+\]
+The original state remains nonzero at each sufficiently large finite \(j\). The bound is on its raw squared norm; it does not assert a limit for the probability after division by \(d_j\).
+
+More generally, (103) proves this vanishing for every positive coupling sequence satisfying \(g_j^3j^2\to\infty\). The exact compact-configuration argument in Section 6.3 therefore applies both to (88) and to (91). The actual vacuum cylinder measures have consistent subsequential limits, the uncentered projected magnetic measures have the same limits, and the centered finite measures have total mass tending to zero. The proof of the uncentered statement is exactly (23), applied to the improved bound on \(\|(K_{\theta_j}-I)\psi_j\|\) from (102), before centering. No identification of the limiting Hamiltonian is required for or inferred from these measure statements.
+
+## 13. Exact plaquette-to-loop maps and an explicit flat configuration limit
+
+### 13.1 Ordered non-Abelian rectangular filling
+
+Let \(C\) be the oriented boundary of an \(m\)-by-\(m\) planar square of fine faces, based at a specified corner. Its original ordered holonomy has an exact factorization
+\[
+ U_C=\prod_{\nu=1}^{m^2}
+       A_\nu U_{p_\nu}^{\varepsilon_\nu}A_\nu^{-1},
+ \qquad \varepsilon_\nu\in\{1,-1\},
+ \tag{105}
+\]
+for a definite ordering of the faces and connecting path holonomies \(A_\nu\). Each face occurs once; all conjugating products depend on the actual link variables.
+
+Here is a constructive proof and specification of the factors. First take the boundary base at the lower left corner and the positive orientation in the chosen coordinate plane. Starting with the lower left face, attach the remaining faces from left to right in the first row, then from left to right in each successive row. Every added face meets the existing boundary in a connected path of one or two edges, and the accumulated union is a disk containing this base corner. If its current boundary word is \(AqB\), with \(q\) the shared boundary segment, and the new boundary replaces that segment by \(r\), then
+\[
+ (ArB)(AqB)^{-1}=A(rq^{-1})A^{-1}.
+\]
+The word \(rq^{-1}\) is the boundary of precisely the added face. Moving its starting vertex to the source convention of Section 1 is a cyclic conjugation, absorbed into \(A_\nu\); reversing its orientation gives \(\varepsilon_\nu=-1\). This defines the next factor with no Abelian rearrangement. Starting from the first face, induction gives (105), with the new factor multiplied on the left at each step, equivalently with the displayed product in reverse attachment order. For a different specified corner, write the full boundary as \(PQ\), where \(P\) ends at that corner. The boundary based there is \(QP=P^{-1}(PQ)P\), so conjugate every completed factor by \(P^{-1}\). Reversing the full boundary inverts the product, reverses its factor order and changes each sign \(\varepsilon_\nu\). This algorithm fixes every word for the original base and orientations.
+
+Unitary invariance of the Hilbert--Schmidt norm, the identity
+\(I-XY=(I-X)+X(I-Y)\), and then Cauchy--Schwarz imply the deterministic estimates
+\[
+ \|I-U_C\|_{\rm HS}
+ \le\sum_{\nu=1}^{m^2}\|I-U_{p_\nu}\|_{\rm HS},\qquad
+ \|I-U_C\|_{\rm HS}^2
+ \le2m^2\sum_{\nu=1}^{m^2}(2-W_{p_\nu}).
+ \tag{106}
+\]
+The norm of \(I-U_p^{-1}\) equals that of \(I-U_p\). These facts justify the estimates for every orientation, with all quantum conjugations in (105) retained.
+
+Applying (99) to the actual vacuum, and using positivity to bound this subset by the sum over all faces, gives
+\[
+ \mu(\|I-U_C\|_{\rm HS}^2)
+ \le12m^2g^2\sqrt{NM}.
+ \tag{107}
+\]
+This global upper bound uses no independence and no translation symmetry of the vacuum. The deterministic subset estimate (106) remains available when sharper local expectations are known.
+
+### 13.2 A full sequence of exact vacuum cylinder limits
+
+Retain (12), and take the strictly positive coupling sequence
+\[
+ g_j^2=j^{-10},\qquad
+ \xi_j=j^{20}/4,\qquad
+ \kappa_j=200j^{-9},\qquad
+ b_j=50j^{11},\qquad
+ 2b_jM_j=100j^{11}M_j .
+ \tag{108}
+\]
+This changes the coupling and retains the original metric and all interactions. The vanishing of \(\kappa_j\) does not remove its electric operator from any finite Hamiltonian, and no inference about an excitation energy is made from that coefficient alone.
+
+Fix one coarse index \(k\), and push the actual vacuum \(\mu_j\) to \(Q_{L_k}\) by the exact map \(p_{k,j}\). Every coarse elementary square has \(m_j=j/k\) links per side on the fine graph. Since
+\(\sqrt{N_jM_j}=\sqrt{r_j}M_j\le18\sqrt5\,j^6\), (107) gives
+\[
+ \int\|I-U_p\|_{\rm HS}^2\,d(p_{k,j})_*\mu_j
+ \le\frac{216\sqrt5}{k^2}\,g_j^2j^8
+ =\frac{216\sqrt5}{k^2}\,j^{-2}.
+ \tag{109}
+\]
+All \(M_{L_k}\) coarse faces are fixed in number when \(k\) is fixed. Their summed defect therefore tends to zero in mean and probability. More generally the same conclusion holds for any coupling sequence with \(g_j^2j^8\to0\).
+
+Let
+\[
+ \mathcal F_k=\{U\in Q_{L_k}: U_p=I
+                     \text{ for every coarse elementary face }p\}.
+\]
+It is a compact subset. We identify it and its gauge-invariant probability exactly. Let \(o=(-L_k,-L_k,-L_k)\). For each coarse vertex \(n\), choose the canonical path from \(o\) to \(n\) that first increases coordinate 1, then coordinate 2, then coordinate 3, and write its holonomy as \(q_n\), with \(q_o=I\). Flatness of each elementary square gives
+\[
+ U_i(n)U_h(n+e_i)=U_h(n)U_i(n+e_h)
+\]
+whenever the square is present, including the inverse form for backward steps. Moving the last step of a canonical path past the coordinate-3 and coordinate-2 segments one elementary square at a time proves
+\(q_nU_i(n)=q_{n+e_i}\) for each edge. All these paths remain in the original open box. Consequently
+\[
+ U_e=q_{s(e)}^{-1}q_{t(e)},\qquad
+ \mathfrak f_k:
+ \prod_{n\ne o}SU(2)\longrightarrow\mathcal F_k,\quad
+ (q_n)\longmapsto(q_{s(e)}^{-1}q_{t(e)})_e
+ \tag{110}
+\]
+is a continuous bijection whose inverse is the stated canonical path product. Products telescope, proving both inverse identities. In particular \(\mathcal F_k\) is exactly the gauge orbit of the identity configuration, and its gauge quotient is one point.
+
+Push independent Haar variables \(q_n\), \(n\ne o\), through (110); call the resulting probability \(\sigma_k\). It is invariant under the full original vertex gauge action. Indeed \(U_e\mapsto h_{s(e)}U_eh_{t(e)}^{-1}\) corresponds to
+\(q_n\mapsto h_o q_nh_n^{-1}\); it preserves the independent Haar law and keeps \(q_o=I\). Moreover it is the unique invariant probability on \(\mathcal F_k\). For any continuous \(F\), its gauge average
+\(\int F(h\cdot U)\,dh\) has the same value for every \(U\) in this transitive orbit, by Haar invariance. Integration against any invariant probability gives that value, which is also its integral under \(\sigma_k\). Continuous functions determine measures.
+
+Compactness gives weakly convergent subsequences of \((p_{k,j})_*\mu_j\). Equation (109) and continuity of the nonnegative summed face defect force every such limit to have support in \(\mathcal F_k\). Gauge invariance passes to the limit because the finite action and its pullback on continuous functions commute with the finite measures. Uniqueness just proved forces every subsequential limit to equal \(\sigma_k\). If the full sequence did not converge, a continuous test function and a subsequence of separated integrals would have a weakly convergent further subsequence, a contradiction. Thus the full sequence satisfies
+\[
+ (p_{k,j})_*\mu_j\Longrightarrow\sigma_k
+ \quad\text{for every fixed }k
+ \quad\text{whenever }g_j^2j^8\to0 .
+ \tag{111}
+\]
+
+The measures \(\sigma_k\) are consistent under refinement. A fine product of links in (110) telescopes exactly to \(q_s^{-1}q_t\). For strict refinement \(k'>k\), the retained vertices in fine indices are \((k'/k)n\), with coordinates bounded by \(kk'<(k')^2\). Thus none is the fixed fine root \((-(k')^2,-(k')^2,-(k')^2)\), and their \(q\) variables are all independent Haar. Rebase at the coarse root \(o'\) by replacing \(q_n\) with \(q_{o'}^{-1}q_n\). Conditional on \(q_{o'}\), the other retained variables are independent Haar, so the rebased variables have exactly the law defining \(\sigma_k\). For \(k'=k\) the map is the identity. This proves \((p_{k,k'})_*\sigma_{k'}=\sigma_k\). The compact inverse-limit construction of Section 6.3 consequently gives their unique consistent probability \(\sigma_\infty\), supported on the compatible pure-gauge configurations. This is an explicit quantum-vacuum configuration limit of the interacting finite Hamiltonians, with its parameter trajectory, gauge map and entire limiting cylinder measure proved.
+
+For every gauge-invariant continuous cylinder \(F\), its value on the flat orbit is exactly \(F(I)\). Equation (111) therefore yields
+\[
+ \mu_j(F)\to F(I),\qquad
+ \|\psi_j(F-\mu_j(F))\|^2
+ =\mu_j(|F|^2)-|\mu_j(F)|^2\longrightarrow0 .
+ \tag{112}
+\]
+In particular every fixed physical Wilson square has limiting mean 2 and variance zero. This differs from the projective-Haar limit (59), whose corresponding mean is 0 and variance 1; both limits and their exact refinement maps have now been constructed. On the gauge quotient the limit (111) has only constant cylinder observables. It does not provide the nonzero interacting state required by the research target. Quantitative control of rescaled curvature observables and the native magnetic spectral probability remains a separate calculation; neither follows from weak convergence of these bounded holonomies.
+
+The shrinking curvature background (87) and the limiting quantum holonomies now both approach the flat configuration on this particular trajectory, with their exact quantitative bounds (87) and (109). This relation uses the full quantum measure rather than replacing it by the deterministic background. On (108) the all-angle magnetic bound (103) does not tend to zero, so (111)--(112) make no claim that the centered native translated state's spectral probability or its uncentered measure has the same limit.
+
+
+
+## 14. Quantitative covariance and magnetic mass at every positive coupling
+
+### 14.1 Objects, domains and the local score estimate
+
+For the complete open box with vertices \(\{-L,\ldots,L\}^3\), \(L\ge2\), retain
+\[
+ N=3(2L)(2L+1)^2,\qquad M=12L^2(2L+1),
+ \qquad H_0=\sum_eE_e,\quad E_e=-\sum_aX_{e,a}^2,
+\]
+\[
+ \mathcal W=\sum_p W_p,\qquad
+ H=\kappa(H_0-\xi\mathcal W)+2bMI,
+ \quad \kappa=\frac{2g^2}{a},\quad b=\frac1{2g^2a},
+ \quad \xi=\frac b\kappa=\frac1{4g^4}>0.
+\]
+The positive unit vacuum is the same \(\psi\) at every occurrence. Write
+\[
+ (H_0-\xi\mathcal W)\psi=e\psi,\quad
+ E=\kappa e+2bM,\quad d\mu=\psi^2d\lambda,
+ \quad u=\log\psi.
+\]
+Every function and operator in the commutators below is smooth on the finite product of compact groups when applied to \(\psi\). Thus all displayed commutators and integrations by parts are defined without an unbounded-operator domain inference.
+
+Let \(r_e\) be the exact number of incident faces. It satisfies \(2\le r_e\le4\), including boundary edges. In the metric whose orthonormal basis is \(T_a=-i\sigma_a/2\), the group is the radius-2 sphere, with diameter \(2\pi\). The full-vacuum partial Bochner identity in Section 10 proves
+\[
+ \lVert\nabla_eu\rVert_\infty\le2r_e\xi,
+ \qquad
+ \lVert\nabla_e\log\psi^2\rVert_\infty\le4r_e\xi.
+ \tag{113}
+\]
+For the actual conditional density of link \(f\), at arbitrary fixed exterior links, this gives
+\[
+ p_f(U_f\mid U_{f^c})\ge e^{-8\pi r_f\xi}
+ \ge\alpha,\qquad \alpha=e^{-32\pi\xi}.
+ \tag{114}
+\]
+Indeed, the logarithmic oscillation is at most \(8\pi r_f\xi\), and the conditional density integrates to one. The same proof gives, for any finite edge set \(S\),
+\[
+ p_S(U_S\mid U_{S^c})\ge
+ \exp\!\left[-8\pi\xi\sum_{f\in S}r_f\right].
+ \tag{115}
+\]
+For (115), join configurations by changing their links one at a time, apply (113) to each segment, then use the normalization of that particular conditional density. No conditional product measure is asserted.
+
+The original weighted electric operator is
+\[
+ \Gamma=\sum_{e=(n,1)}n_2^2E_e.
+ \tag{116}
+\]
+In particular, links at \(n_2=0\) have weight zero; they are still present in \(H_0\), \(\mathcal W\), \(\psi\) and every expectation below.
+
+### 14.2 A local lower bound for the full Wilson gradient
+
+Fix an edge \(e\), and choose an incident elementary face \(p\). Let \(f\) be the other edge of \(p\) parallel to \(e\). This edge exists for every incident face, even at the boundary. Among the faces incident to \(e\), only \(p\) contains \(f\): the direction and sign of the displacement from \(e\) to \(f\) determine that face uniquely.
+
+Fix all links other than \(f\), including \(U_e\), and write
+\[
+ \nabla_e\mathcal W=B+\nabla_eW_p,
+ \qquad B=\sum_{q\ni e,\ q\ne p}\nabla_eW_q.
+\]
+The vector \(B\) is independent of \(U_f\). The oriented plaquette word contains \(U_f\) or its inverse exactly once. The change from that variable to the full plaquette product preserves Haar, including inverse traversal. Therefore
+\[
+ \int \nabla_eW_p\,dU_f=0,\qquad
+ \int |\nabla_eW_p|^2dU_f=\frac34.
+ \tag{117}
+\]
+For the first equality, differentiate the zero Haar mean of the fundamental trace. For the second, bi-invariance and inversion give the exact pointwise identity
+\[
+ |\nabla_eW_p|^2=1-\frac{W_p^2}{4},
+\]
+and the Haar second moment of the fundamental trace is one. Equivalently, for \(U=u_0I+i\mathbf u\cdot\sigma\), the trace is \(2u_0\), and uniform measure on the unit three-sphere has \(\int u_0^2=1/4\).
+
+Applying (114) to the nonnegative squared norm and retaining its cross term until Haar integration gives
+\[
+ \int |\nabla_e\mathcal W|^2 p_f\,dU_f
+ \ge e^{-8\pi r_f\xi}
+       \int|B+\nabla_eW_p|^2dU_f
+ =e^{-8\pi r_f\xi}\left(|B|^2+\frac34\right).
+\]
+The exterior is then integrated against its actual marginal. Hence
+\[
+ \mu(|\nabla_e\mathcal W|^2)
+ \ge\frac34 e^{-8\pi r_f\xi}\ge\frac34\alpha.
+ \tag{118}
+\]
+There is no cancellation assumption about the other plaquettes. They remain in \(B\), and its squared norm has nonnegative sign after the exact integral.
+
+For a sharper finite-box value define
+\[
+ a_e=\max_{p\ni e}\exp[-8\pi r_{f(e,p)}\xi].
+\]
+The same result is valid with \(\alpha\) replaced by \(a_e\), separately for each edge. In particular,
+\[
+ S_\Gamma:=\mu\!\left(\sum_{e=(n,1)}n_2^2
+                     |\nabla_e\mathcal W|^2\right)
+ \ge\frac34\sum_{e=(n,1)}n_2^2a_e
+ \ge\frac34\alpha\,\mathscr S_L,
+ \tag{119}
+\]
+where the exact weighted edge count is
+\[
+ \begin{split}
+ \mathscr S_L
+ &= (2L)(2L+1)\sum_{m=-L}^Lm^2\\
+ &=\frac23L^2(L+1)(2L+1)^2,\qquad
+ \frac{\mathscr S_L}{M}=\frac{(L+1)(2L+1)}{18}.
+ \end{split}
+ \tag{120}
+\]
+
+### 14.3 A commutator lower bound for the actual electric covariance
+
+Use a new symbol for the skew operator, to keep it distinct from the nonnegative excitation operator \(A_{L,\xi}\) in Section 3:
+\[
+ \mathscr B=[H_0,\mathcal W]
+ =3\mathcal W-2\sum_e\nabla_e\mathcal W\cdot\nabla_e.
+ \tag{121}
+\]
+The coefficient three is exact because every elementary trace has four spin-\(1/2\) links, each of Casimir \(3/4\), so \(H_0W_p=3W_p\). Haar integration by parts gives \(\mathscr B^*=-\mathscr B\) on smooth functions. All relevant vectors are real, so \(\langle\psi,\mathscr B\psi\rangle=0\).
+
+The separate link Casimirs commute, hence \([\Gamma,H_0]=0\). The Jacobi identity and the actual eigen-equation imply
+\[
+ \begin{split}
+ \langle\psi,[\Gamma,\mathscr B]\psi\rangle
+ &=\langle\psi,[H_0,[\Gamma,\mathcal W]]\psi\rangle\\
+ &=\xi\langle\psi,[\mathcal W,[\Gamma,\mathcal W]]\psi\rangle
+ =2\xi S_\Gamma.
+ \end{split}
+ \tag{122}
+\]
+To check the middle equality directly, substitute
+\(H_0\psi=(e+\xi\mathcal W)\psi\) in the two outer matrix elements; the scalar \(e\) cancels. To check the final equality, apply the product rule to any smooth \(F\):
+\[
+ [\Gamma,\mathcal W]F=(\Gamma\mathcal W)F
+       -2\sum_{e=(n,1)}n_2^2\nabla_e\mathcal W\cdot\nabla_eF,
+\]
+\[
+ [\mathcal W,[\Gamma,\mathcal W]]F
+       =2\sum_{e=(n,1)}n_2^2|\nabla_e\mathcal W|^2F.
+\]
+This calculation retains all nonlinear Wilson contributions and all cross terms inside each full gradient \(\nabla_e\mathcal W\).
+
+Write
+\[
+ \gamma=\langle\psi,\Gamma\psi\rangle,
+ \qquad v_\Gamma=(\Gamma-\gamma)\psi.
+\]
+The adjoint identities turn the left side of (122) into
+\(2\operatorname{Re}\langle v_\Gamma,\mathscr B\psi\rangle\).
+Thus
+\[
+ \boxed{\quad
+ \lVert v_\Gamma\rVert\ge
+ \frac{\xi S_\Gamma}{\lVert\mathscr B\psi\rVert}.
+ \quad}
+ \tag{123}
+\]
+Its denominator cannot vanish: otherwise (122) would contradict \(S_\Gamma>0\), already proved in (119). The following explicit upper bounds remove that denominator from the numerical estimate.
+
+Let
+\[
+ R_2=\sum_er_e^2=384L^3+48L^2-24L\le16M.
+ \tag{124}
+\]
+For this count, set \(r(m)=1\) at \(m=\pm L\) and \(r(m)=2\) otherwise. For a direction-one edge, \(r_e=r(n_2)+r(n_3)\). Use
+\(\sum r(m)=4L\), \(\sum r(m)^2=8L-2\), sum
+\((r(n_2)+r(n_3))^2\), multiply by \(2L\), and then by three orientations. This gives exactly (124).
+
+The derivative norm of a single trace is at most one, so \(|\nabla_e\mathcal W|\le r_e\). Equation (113), followed by the triangle inequality in (121), gives
+\[
+ \lVert\mathscr B\psi\rVert
+ \le6M+4\xi R_2\le M(6+64\xi).
+ \tag{125}
+\]
+Consequently, at every \(\xi>0\) and every \(L\ge2\),
+\[
+ \boxed{\quad
+ \lVert(\Gamma-\langle\Gamma\rangle_\psi)\psi\rVert
+ \ge
+ \frac{\xi e^{-32\pi\xi}(L+1)(2L+1)}
+      {24(6+64\xi)} >0.
+ \quad}
+ \tag{126}
+\]
+The exponent in this estimate is local in \(\xi\); it does not contain \(M\). No substitute vacuum or assumption about the spatial correlation length was used.
+
+One can keep a stronger denominator if useful. Put
+\(\mathcal E_0=\langle\psi,H_0\psi\rangle\).
+Cauchy--Schwarz pointwise in the full product tangent space, then in \(L^2\), gives
+\[
+ \lVert\mathscr B\psi\rVert
+ \le6M+2\sqrt{R_2\mathcal E_0}.
+ \tag{127}
+\]
+Both (125) and (127) concern the same skew operator acting on the same vacuum. With physical units restored, \([H,\mathcal W]=\kappa\mathscr B\), so
+\[
+ \lVert[H,\mathcal W]\psi\rVert
+ \le\kappa(6M+4\xi R_2),
+ \qquad
+ \lVert[H,\mathcal W]\psi\rVert
+ \le\kappa(6M+2\sqrt{R_2\mathcal E_0}).
+ \tag{128}
+\]
+The constant \(2bM\) commutes with \(\mathcal W\); it is retained in \(H\) and in the expression for \(E\).
+
+### 14.4 An exact all-angle lower bound for the magnetic state
+
+Retain
+\[
+ K_\theta=\prod_{e=(n,1)}C_{e,\theta n_2},\quad
+ c_\theta=\langle\psi,K_\theta\psi\rangle,
+ \quad\chi_\theta=(K_\theta-c_\theta)\psi,
+ \quad d_\theta=\lVert\chi_\theta\rVert^2.
+\]
+By Section 3, \(K_\theta\) is a self-adjoint Markov contraction commuting with \(H_0\). Denote its Markov kernel by \(P_\theta(U,dV)\); independently on each direction-one link, \(V_e=k_e^{-1}U_e\), where \(k_e\) is uniformly conjugate to \(\exp(\theta n_2H_c)\). Other links are unchanged. Symmetry means \(\lambda(dU)P_\theta(U,dV)\) is invariant under swapping \(U,V\).
+
+Define the exact positive quantity
+\[
+ I_\theta=\int\lambda(dU)P_\theta(U,dV)\,
+       \psi(U)\psi(V)
+       (\mathcal W(U)-\mathcal W(V))^2.
+ \tag{129}
+\]
+The same Jacobi calculation as above, now with \(K_\theta\), proves
+\[
+ \begin{split}
+ \langle\psi,[K_\theta,\mathscr B]\psi\rangle
+ &=\xi\langle\psi,[\mathcal W,[K_\theta,\mathcal W]]\psi\rangle\\
+ &=-\xi I_\theta.
+ \end{split}
+ \tag{130}
+\]
+Indeed the kernel of the nested multiplication commutator is
+\(-[\mathcal W(U)-\mathcal W(V)]^2P_\theta(U,dV)\).
+Since \(\langle\psi,\mathscr B\psi\rangle=0\), Cauchy--Schwarz yields the exact all-angle comparison
+\[
+ \boxed{\qquad
+ \lVert\chi_\theta\rVert\ge
+ \frac{\xi I_\theta}{2\lVert\mathscr B\psi\rVert}.
+ \qquad}
+ \tag{131}
+\]
+
+Here is a fully explicit lower bound for (129) which avoids the global Haar overlap of \(\psi\). For \(s\in\mathbb R\), define
+\[
+ \delta(s)=\min_{m\in\mathbb Z}|s-2\pi m|\in[0,\pi].
+\]
+In the preserved radius-2 metric, left translation by a conjugate of \(\exp(sH_c)\) moves a point by geodesic distance \(2\delta(s)\). By (113), changing the translated links one at a time gives
+\[
+ \psi(V)\ge e^{-\mathscr R_\theta}\psi(U),\qquad
+ \mathscr R_\theta=4\xi\sum_{e=(n,1)}r_e\delta(\theta n_2).
+ \tag{132}
+\]
+This formula keeps the original link angles, including all resonances. A convenient weaker bound is
+\[
+ \mathscr R_\theta
+ \le4\xi|\theta|\sum_{e=(n,1)}r_e|n_2|
+ =16\xi|\theta|L^3(4L+3).
+ \tag{133}
+\]
+For the count in (133),
+\(\sum|m|=L(L+1)\),
+\(\sum r(m)|m|=2L^2\), and \(\sum r(m)=4L\), so the weighted incidence sum is
+\(2L[(2L+1)2L^2+4L^2(L+1)]
+ =4L^3(4L+3)\).
+
+Choose any elementary face \(p\), and let \(S_p\) be its four physical links and \(R_p=\sum_{f\in S_p}r_f\le16\). At fixed exterior and fixed conjugating variables in the kernel, Haar integration in \(S_p\) makes the function
+\(W_p(U)-W_p(V)\) orthogonal to every other face difference. To prove this, two different elementary faces share at most one physical edge. There is therefore an edge of \(p\) absent from the other face. The fundamental trace has zero integral in that edge, and its translated trace has the same zero integral. Each term from the other face is independent of that edge. This proves each cross-term vanishes; the square of the sum of all other face differences remains nonnegative.
+
+It follows, after the kernel average, that
+\[
+ \int dU_{S_p}\,dP_\theta\,
+    (\mathcal W(U)-\mathcal W(V))^2
+ \ge 2(1-\alpha_p(\theta)),
+ \tag{134}
+\]
+where the exact multiplier of \(K_\theta\) on \(W_p\) is
+\[
+ \alpha_p(\theta)=
+ \begin{cases}
+ \cos(\theta n_2)\cos(\theta(n_2+1)),&p\text{ has type }12,\\
+ \cos^2(\theta n_2),&p\text{ has type }13,\\
+ 1,&p\text{ has type }23.
+ \end{cases}
+\]
+For (134), both face-trace squares have Haar integral one. Their cross term, after the independent conjugacy average, is \(\langle W_p,K_\theta W_p\rangle=\alpha_p\); this also proves that the bound is independent of the fixed exterior.
+
+Apply (115) to the nonnegative integrand in (134), and then integrate the true exterior marginal. Combining with (132) gives
+\[
+ I_\theta\ge
+ 2e^{-\mathscr R_\theta-8\pi\xi R_p}
+       (1-\alpha_p(\theta)).
+ \tag{135}
+\]
+Thus every selected face furnishes the all-positive-coupling, all-angle bound
+\[
+ \boxed{\quad
+ d_\theta\ge
+ \left[
+ \frac{\xi e^{-\mathscr R_\theta-8\pi\xi R_p}
+              (1-\alpha_p(\theta))}
+      {6M+4\xi R_2}
+ \right]^2.
+ \quad}
+ \tag{136}
+\]
+The denominator can instead be the sharper expression in (127), with any proved upper bound for \(\mathcal E_0\). A type-12 face based at \(n_2=0\) has \(1-\alpha_p=1-\cos\theta\), strictly positive precisely when \(\theta\notin2\pi\mathbb Z\). One can also choose the definite corner face of type 12 based at \((-L,-L,-L)\). Its four incidence numbers are \(2,3,3,2\), so \(R_p=10\), while
+\[
+ \alpha_p=\cos(L\theta)\cos((L-1)\theta)
+ \le\frac{1+\cos\theta}{2}.
+\]
+Thus a single fully explicit choice in (136) gives
+\[
+ d_\theta\ge
+ \left[
+ \frac{\xi e^{-\mathscr R_\theta-80\pi\xi}
+       [1-\cos(L\theta)\cos((L-1)\theta)]}
+      {6M+4\xi R_2}
+ \right]^2
+ \ge
+ \left[
+ \frac{\xi e^{-\mathscr R_\theta-80\pi\xi}(1-\cos\theta)}
+      {2(6M+4\xi R_2)}
+ \right]^2.
+ \tag{137}
+\]
+Therefore (136) is a quantitative version of the exact nonzero-state theorem, valid also on the original cusp sequence; it retains its actual transport penalty rather than declaring it uniform. Choosing a test face never removes any other face from the theory.
+
+
+## 15. Relative comparison of the full physical spectral probabilities
+
+### 15.1 Exact joint spin calculation at every angle
+
+Let \(L\ge2\), let \(Q_L=SU(2)^{N_L}\) with product Haar probability, and
+retain \(T_a=-i\sigma_a/2\), \(E_e=-\sum_aX_{e,a}^2\) and
+
+\[
+ H_0=\sum_eE_e,\qquad
+ \Gamma=\sum_{e=(n,1)}n_2^2E_e.
+\]
+
+The sum defining \(H_0\) includes every edge; the displayed weighted sum
+defining \(\Gamma\) includes every edge in direction 1, with its original
+integer coordinate \(n_2\), including those with zero weight. Write
+
+\[
+ K_\theta=\prod_{e=(n,1)}C_{e,\theta n_2},\qquad
+ c_q(s)=\frac1{2q+1}\sum_{m=-q}^{q}e^{2ims},
+ \quad q\in\tfrac12\mathbb Z_{\ge0}.
+\]
+
+The finite sum is the definition at all angles, including \(s\in\pi\mathbb Z\).
+On a joint spin block, put
+
+\[
+ \lambda_e=q_e(q_e+1),\qquad w_e=n_2^2,\qquad
+ \gamma=\sum_{e=(n,1)}w_e\lambda_e.
+\]
+
+For this calculation only, give each translated edge an independent random
+variable \(m_e\) uniformly distributed on its exact spin weights
+
+\[
+ \{-q_e,-q_e+1,\ldots,q_e\}.
+\]
+
+These finite auxiliary random variables express the exact central
+multiplier; they do not change the quantum state or the Haar convention.
+The signed integer coordinate remains in
+
+\[
+ Y=2\sum_{e=(n,1)}n_2m_e.
+\]
+
+Independence, symmetry and the finite-product identity give
+
+\[
+ k(\theta)=\prod_ec_{q_e}(\theta n_2)
+ =\mathbb E e^{i\theta Y}=\mathbb E\cos(\theta Y).
+\tag{138}
+\]
+
+The exact moments of each weight variable are
+
+\[
+ \mathbb E m_e=\mathbb E m_e^3=0,\qquad
+ \mathbb E m_e^2=\frac{\lambda_e}{3},\qquad
+ \mathbb E m_e^4=\frac{\lambda_e(3\lambda_e-1)}{15}.
+\tag{139}
+\]
+
+For an explicit verification at integral and half-integral spin, set
+
+\[
+ d=2q\in\mathbb Z_{\ge0},\qquad m=k-d/2,
+ \quad k=0,\ldots,d.
+\]
+
+Expanding \((k-d/2)^2\) and \((k-d/2)^4\), then using
+
+\[
+ \sum_{k=0}^dk=\frac{d(d+1)}2,\quad
+ \sum_{k=0}^dk^2=\frac{d(d+1)(2d+1)}6,\quad
+ \sum_{k=0}^dk^3=\frac{d^2(d+1)^2}4,
+\]
+
+\[
+ \sum_{k=0}^dk^4
+ =\frac{d(d+1)(2d+1)(3d^2+3d-1)}{30},
+\]
+
+gives (139) after division by \(d+1\), with
+
+\[
+ \lambda=q(q+1)=\frac{d(d+2)}4.
+\]
+
+The consecutive-power sum identities hold at \(d=0\); subtracting their
+right sides at \(d\) and \(d-1\) gives \(d,d^2,d^3,d^4\), respectively,
+which proves them by induction. Symmetry gives the two odd moments.
+
+Thus the entire joint second and fourth moments are
+
+\[
+ \mathbb E Y^2=\frac43\gamma,
+\]
+
+\[
+ \begin{aligned}
+ \mathbb E Y^4
+ &=16\left[
+ \sum_ew_e^2\frac{\lambda_e(3\lambda_e-1)}{15}
+ +6\sum_{e<f}w_ew_f\frac{\lambda_e\lambda_f}{9}
+ \right]\\
+ &=\frac{16}{3}\gamma^2
+ -\frac{32}{15}\sum_ew_e^2\lambda_e^2
+ -\frac{16}{15}\sum_ew_e^2\lambda_e
+ \le\frac{16}{3}\gamma^2.
+ \end{aligned}
+\tag{140}
+\]
+
+No cross term has been omitted: terms having an odd multiplicity vanish
+by (139), and each unordered pair of distinct edges has precisely six
+placements in the fourth power. The signed coordinates produce exactly
+
+\[
+ n_2^4=w_e^2,\qquad n_2^2(n'_2)^2=w_ew_f
+\]
+
+in the surviving terms.
+
+For all real \(x\),
+
+\[
+ 0\le\cos x-1+\frac{x^2}{2}\le\frac{x^4}{24}.
+\tag{141}
+\]
+
+Indeed \(1-\cos x\le x^2/2\), because for \(x\ge0\) one has
+
+\[
+ 1-\cos x=\int_0^x\sin t\,dt\le\int_0^xt\,dt,
+\]
+
+and both sides are even. The function on the middle of (141) has value and
+first derivative zero at zero and second derivative \(1-\cos x\), which
+lies between zero and \(x^2/2\). Integrating these bounds twice for
+
+\[
+ x\ge0
+\]
+
+gives (141), and evenness gives the other half-line.
+
+Combining (138)--(141) proves on every joint spin block, for every real
+
+\[
+ \theta\in\mathbb R,
+\]
+
+the exact scalar bounds
+
+\[
+ 0\le k(\theta)-1+\frac23\theta^2\gamma
+ \le\frac{\theta^4}{24}\mathbb E Y^4
+ \le\frac29\theta^4\gamma^2.
+\tag{142}
+\]
+
+The full product matrix coefficients give an orthogonal Hilbert sum of
+these joint spin blocks, with their complete multiplicities. For
+
+\[
+ F\in D(\Gamma^2),
+\]
+
+square (142), multiply by the squared norm of the corresponding block
+coefficient, and sum over all blocks. Parseval's identity yields
+
+\[
+ \boxed{
+ \left\|\left(K_\theta-I+\frac23\theta^2\Gamma\right)F\right\|
+ \le\frac29\theta^4\|\Gamma^2F\|.}
+\tag{143}
+\]
+
+This is an inequality on the stated graph domain. Every block is included;
+there is no finite spin truncation and no assertion of a bounded-operator
+Taylor expansion. Since the exact eigenvalues satisfy
+
+\[
+ 0\le\gamma\le L^2\sum_e\lambda_e,
+\]
+
+one also has, for \(F\in D(H_0^2)\),
+
+\[
+ \|\Gamma^2F\|\le L^4\|H_0^2F\|.
+\tag{144}
+\]
+
+### 15.2 Fourth electric moment of the actual vacuum
+
+Retain the full physical Hamiltonian and scalar Wilson term:
+
+\[
+ H=\kappa H_0+b\sum_p(2-W_p),\qquad
+ \kappa=\frac{2g^2}{a},\quad b=\frac1{2g^2a},\quad
+ \xi=\frac b\kappa=\frac1{4g^4}.
+\]
+
+Let \(\psi>0\) be its actual smooth ground vector with
+
+\[
+ \|\psi\|=1,\qquad H\psi=E\psi.
+\]
+
+Define only the exact displayed quantities
+
+\[
+ e_0=\frac E\kappa,\qquad
+ v=\xi\sum_p(2-W_p)=2\xi M_L-\xi\mathcal W.
+\]
+
+In particular \(e_0\) is not the shifted energy \(e_{L,\xi}\): the relation
+is \(e_0=e_{L,\xi}+2\xi M_L\). The vacuum equation is
+
+\[
+ H_0\psi=(e_0-v)\psi.
+\tag{145}
+\]
+
+Every face has four distinct link occurrences on this open cubic box, and
+each occurrence carries fundamental spin \(1/2\). The exact link Casimir
+is \(3/4\), hence
+
+\[
+ H_0W_p=3W_p,\qquad H_0v=-3\xi\mathcal W.
+\tag{146}
+\]
+
+The product formula for \(H_0=-\Delta\) is
+
+\[
+ H_0(f\psi)=fH_0\psi+(H_0f)\psi
+             -2\sum_{e,a}(X_{e,a}f)(X_{e,a}\psi).
+\]
+
+Apply it to \(f=e_0-v\), use (145)--(146), and retain all derivatives to get
+
+\[
+ \boxed{H_0^2\psi=(e_0-v)^2\psi
+          +3\xi\mathcal W\psi
+          +2\sum_{e,a}(X_{e,a}v)(X_{e,a}\psi).}
+\tag{147}
+\]
+
+Smoothness on the finite compact product makes every term and every
+operator domain in (147) legitimate.
+
+The constant trial vector gives \(E\le2bM_L\), because its electric energy
+is zero and the Haar mean of each fundamental face trace is zero.
+The latter follows by integrating one of the four distinct links. Also
+the original potential is nonnegative and bounded by \(4bM_L\). Therefore
+
+\[
+ 0\le e_0\le2\xi M_L,\qquad
+ 0\le v\le4\xi M_L,\qquad
+ |e_0-v|\le4\xi M_L.
+\tag{148}
+\]
+
+For completeness, if a face is written with a particular link as
+
+\[
+ AUB\quad\hbox{or}\quad AU^{-1}B,
+\]
+
+bi-invariance and inversion show that the squared norm of its derivative
+in that link equals the squared gradient norm of the trace on \(SU(2)\).
+Write \(U=u_0I+i\mathbf u\cdot\boldsymbol\sigma\). Direct differentiation
+under \(\exp(tT_a)U\) gives \(X_a\operatorname{tr}U=u_a\), and hence
+
+\[
+ \sum_a|X_a\operatorname{tr}U|^2
+ =\sum_au_a^2=1-u_0^2\le1.
+\]
+
+Thus if \(r_e\le4\) is the actual number of incident faces,
+
+\[
+ |\nabla_ev|\le\xi r_e\le4\xi,
+ \qquad \||\nabla v|\|_\infty\le4\xi\sqrt{N_L}.
+\tag{149}
+\]
+
+Haar integration by parts and (145) give
+
+\[
+ \int|\nabla\psi|^2d\lambda_L
+ =\langle\psi,H_0\psi\rangle
+ =e_0-\int v\psi^2d\lambda_L
+ \le2\xi M_L.
+\tag{150}
+\]
+
+Pointwise Cauchy--Schwarz in the complete \((e,a)\) index, followed by
+(149)--(150), therefore proves
+
+\[
+ \left\|2\sum_{e,a}(X_{e,a}v)(X_{e,a}\psi)\right\|
+ \le8\sqrt2\,\xi^{3/2}\sqrt{N_LM_L}.
+\tag{151}
+\]
+
+No mixed electric contribution has been removed. The first two terms of
+(147) have norms at most \(16(\xi M_L)^2\) and \(6\xi M_L\). Consequently
+
+\[
+ \|H_0^2\psi\|
+ \le16(\xi M_L)^2+6\xi M_L
+      +8\sqrt2\,\xi^{3/2}\sqrt{N_LM_L}.
+\tag{152}
+\]
+
+Now retain the exact finite-box counts
+
+\[
+ N_L=3(2L)(2L+1)^2,\qquad M_L=12L^2(2L+1),
+\]
+
+so that \(N_L/M_L=1+1/(2L)\le5/4\). For \(\xi\ge1\), \(L\ge2\),
+one has \(\xi M_L\ge1\) and \(\sqrt\xi M_L\ge1\). Thus (152) gives
+
+\[
+ \boxed{
+ \|H_0^2\psi\|
+ \le(22+4\sqrt{10})(\xi M_L)^2
+ <35(\xi M_L)^2.}
+\tag{153}
+\]
+
+The last strict numerical inequality follows from \(4\sqrt{10}<13\),
+equivalently \(160<169\).
+
+There is also a slightly stronger optional bound with the same hypotheses.
+Because every face has four incident edges,
+
+\[
+ \sum_er_e=4M_L,\qquad \sum_er_e^2\le4\sum_er_e=16M_L.
+\]
+
+Using the first inequality in (149) with this sum replaces the last term
+of (152) by \(8\sqrt2\,\xi^{3/2}M_L\), and proves
+
+\[
+ \|H_0^2\psi\|\le(22+8\sqrt2)(\xi M_L)^2.
+\tag{154}
+\]
+
+Both bounds concern the same actual vacuum, with its full magnetic
+interaction and original physical coefficients.
+
+#### 15.2.1 Improved exponent using the proved weak-coupling energy estimate
+
+We next prove the stronger bound
+
+\[
+ B_2=15\xi^{7/4}M_L^2\qquad(\xi\ge1,\ L\ge2).
+\]
+
+This follows from the exact vacuum equation (147) and the already proved
+variational energy and electric second-moment estimates (99)--(101) above. Here is the complete passage between those quantities.
+Write \(r=N_L/M_L\), retaining its exact value \(1+1/(2L)\). The proved
+energy inequality gives
+
+\[
+ e_0=\frac E\kappa
+ \le\frac{3\sqrt{N_LM_L}/a}{2g^2/a}
+ =3\sqrt{N_LM_L}\sqrt\xi.
+\tag{155}
+\]
+
+Moreover, without discarding the exact moment identity,
+
+\[
+ \begin{aligned}
+ \|H_0\psi\|^2
+ &=e_0^2-2e_0\mu(v)+\mu(v^2)\\
+ &\le e_0^2+(4\xi M_L-2e_0)\mu(v)\\
+ &\le4\xi M_Le_0-e_0^2
+ \le4\xi M_Le_0,
+ \end{aligned}
+\]
+
+where \(\mu(v)\le e_0\), \(\mu(v^2)\le4\xi M_L\mu(v)\), and
+
+\[
+ 4\xi M_L-2e_0\ge0
+\]
+
+follow from (148) and the nonnegative electric form. Substitute (155) to
+obtain
+
+\[
+ \|H_0\psi\|\le2\sqrt3\,r^{1/4}\xi^{3/4}M_L.
+\tag{156}
+\]
+
+The first term of (147) can now be bounded through (145) itself:
+
+\[
+ \|(e_0-v)^2\psi\|
+ \le\|e_0-v\|_\infty\|(e_0-v)\psi\|
+ \le8\sqrt3\,r^{1/4}\xi^{7/4}M_L^2.
+\]
+
+The second term remains \(6\xi M_L\). For the third, retain the full
+incidence count from (154), so
+
+\[
+ \||\nabla v|\|_\infty\le4\xi\sqrt{M_L},\qquad
+ \||\nabla\psi|\|_2\le\sqrt{e_0}
+ \le\sqrt3\,r^{1/4}\xi^{1/4}\sqrt{M_L}.
+\]
+
+Therefore (147) gives, with the explicit coefficient
+
+\[
+ A_r=8\sqrt3\,r^{1/4},
+\]
+
+the full upper bound
+
+\[
+ \boxed{\|H_0^2\psi\|
+ \le A_r\xi^{7/4}M_L^2+6\xi M_L+A_r\xi^{5/4}M_L.}
+\tag{157}
+\]
+
+For \(L\ge2\), \(M_L\ge M_2=240\) and \(r\le5/4\). The exact rational
+comparisons
+
+\[
+ \sqrt3\le\frac74,\qquad
+ r^{1/4}\le\frac{17}{16}
+\]
+
+follow respectively from \(3\le49/16\) and
+
+\[
+ \frac54=\frac{81920}{65536}
+ <\frac{83521}{65536}=\left(\frac{17}{16}\right)^4.
+\]
+
+Thus \(A_r\le119/8\). Divide the right side of (157) by the positive
+quantity \(\xi^{7/4}M_L^2\); for \(\xi\ge1\) its ratio is at most
+
+\[
+ A_r+\frac{6}{\xi^{3/4}M_L}
+       +\frac{A_r}{\xi^{1/2}M_L}
+ \le\frac{119}{8}+\frac{6+119/8}{240}
+ =\frac{28727}{1920}<15.
+\]
+
+This proves the stronger explicit result
+
+\[
+ \boxed{\|H_0^2\psi\|\le15\xi^{7/4}M_L^2
+ \qquad(\xi\ge1,\ L\ge2).}
+\tag{158}
+\]
+
+The strict gap to the last integer constant is \(73/1920\). All earlier
+all-angle and relative-state estimates therefore remain valid with this
+improved \(B_2\). No replacement ground vector or weak-coupling expansion
+has been used.
+
+### 15.3 Exact centering and relative error
+
+Let
+
+\[
+ P_\psi^\perp=I-|\psi\rangle\langle\psi|,\qquad
+ v_\Gamma=P_\psi^\perp\Gamma\psi,
+ \qquad\sigma_\Gamma=\|v_\Gamma\|,
+\]
+
+\[
+ c_\theta=\langle\psi,K_\theta\psi\rangle,\qquad
+ \chi_\theta=(K_\theta-c_\theta)\psi,
+ \qquad d_\theta=\|\chi_\theta\|^2.
+\]
+
+In fact \(\sigma_\Gamma>0\) for every \(\xi>0\), \(L\ge2\). To prove this,
+suppose \(v_\Gamma=0\). Then \(\Gamma\psi=A\psi\), where
+
+\[
+ A=\langle\psi,\Gamma\psi\rangle\ge0.
+\]
+
+Haar integration of \(\Gamma\psi\) is zero, whereas
+
+\[
+ \int\psi\,d\lambda_L>0.
+\]
+
+It follows that \(A=0\). The quadratic form of \(\Gamma\) is a sum of
+
+\[
+ n_2^2\sum_a\|X_{e,a}\psi\|^2,
+\]
+
+so \(\psi\) is independent of each direction-1 link with \(n_2\ne0\).
+Choose such a link \(e\) incident to at least one face, which exists in
+the stated box. The function \(H_0\psi\) is also independent of \(U_e\):
+all other link derivatives preserve this independence and the \(e\)-link
+derivatives vanish. Equation (145), positivity of \(\psi\), and its
+independence of \(U_e\) imply that \(v\) is independent of \(U_e\).
+But when all other links are the identity, every incident face word is
+
+\[
+ U_e\quad\hbox{or}\quad U_e^{-1},
+\]
+
+and every nonincident face word is the identity. Hence exactly
+
+\[
+ v(U_e,I_{\ne e})=\xi r_e(2-\operatorname{tr}U_e),
+\]
+
+which is nonconstant since \(\xi r_e>0\). This contradiction proves
+
+\[
+ \sigma_\Gamma>0.
+\tag{159}
+\]
+
+Write \(R_\theta=K_\theta-I+(2/3)\theta^2\Gamma\). Exact centering yields
+
+\[
+ \boxed{\chi_\theta=-\frac23\theta^2v_\Gamma
+                   +P_\psi^\perp R_\theta\psi.}
+\tag{160}
+\]
+
+For any proved upper bound \(B_2\ge\|H_0^2\psi\|\), (143)--(144) imply
+
+\[
+ \left\|\chi_\theta+\frac23\theta^2v_\Gamma\right\|
+ \le\frac29\theta^4L^4B_2.
+\tag{161}
+\]
+
+Here \(B_2\) can be taken to be the explicit right side of (152) at every
+positive \(\xi\), or the improved \(15\xi^{7/4}M_L^2\) from (158), or the
+earlier \(35(\xi M_L)^2\), on the completely verified range
+
+\[
+ \xi\ge1,\qquad L\ge2.
+\]
+
+For \(\theta\ne0\), define the displayed scalar bound
+
+\[
+ \eta=\frac{\theta^2L^4B_2}{3\sigma_\Gamma},\qquad
+ t_\theta=\frac23\theta^2\sigma_\Gamma.
+\tag{162}
+\]
+
+Thus the actual relative vector error is at most \(\eta\):
+
+\[
+ \left\|\chi_\theta+\frac23\theta^2v_\Gamma\right\|
+ \le\eta t_\theta.
+\tag{163}
+\]
+
+The raw state and its raw squared norm remain unchanged. In particular,
+
+\[
+ \max(0,1-\eta)^2\frac49\theta^4\sigma_\Gamma^2
+ \le d_\theta
+ \le(1+\eta)^2\frac49\theta^4\sigma_\Gamma^2.
+\tag{164}
+\]
+
+When the explicit bound \(\eta<1\), (164) alone proves that the actual
+translated state is nonzero. The exact all-angle zero set from Section 4
+above is \(\theta\in2\pi\mathbb Z\); on its complement the
+spectral probability below exists regardless of the size of \(\eta\).
+
+### 15.4 Full physical spectral probability and raw finite measures
+
+Set \(A=H-E\), with the exact physical coefficient and scalar shift in the
+preceding sections. Its spectral projections are denoted
+
+\[
+ P(B)=\mathbf1_B(H-E),\qquad B\subset\mathbb R\text{ Borel}.
+\]
+
+On \(\theta\notin2\pi\mathbb Z\), define the two actual spectral
+probabilities by their displayed raw denominators:
+
+\[
+ \nu_\theta(B)=\frac{\langle\chi_\theta,P(B)\chi_\theta\rangle}{d_\theta},
+ \qquad
+ \zeta_\Gamma(B)=\frac{\langle v_\Gamma,P(B)v_\Gamma\rangle}
+                          {\sigma_\Gamma^2}.
+\tag{165}
+\]
+
+Both vectors are orthogonal to the same actual vacuum. No spectral
+projection onto a finite spin subspace or finite energy window has been
+used in their construction.
+
+Here is a direct finite-rank argument proving the following quantitative bound. Let
+
+\[
+ x=\chi_\theta,\qquad y=-\frac23\theta^2v_\Gamma,
+ \qquad r=\|x\|,\qquad t=\|y\|=t_\theta.
+\]
+
+For this proof only, use the unit directions \(u=x/r\) and \(w=y/t\) in
+the same Hilbert space; they are not replacement physical states. Since
+
+\[
+ (I-|u\rangle\langle u|)x=0,
+\]
+
+(163) gives
+
+\[
+ \sqrt{1-|\langle u,w\rangle|^2}
+ =\|(I-|u\rangle\langle u|)w\|
+ \le\frac{\|y-x\|}{t}\le\eta.
+\tag{166}
+\]
+
+Let \(s=\sqrt{1-|\langle u,w\rangle|^2}\), so \(0\le s\le\min(1,\eta)\).
+The self-adjoint finite-rank operator
+
+\[
+ D=|u\rangle\langle u|-|w\rangle\langle w|
+\]
+
+vanishes on the orthogonal complement of their span and has trace zero.
+Direct multiplication gives
+
+\[
+ \operatorname{Tr}D^2=2(1-|\langle u,w\rangle|^2)=2s^2.
+\]
+
+If \(s=0\), then \(D=0\). Otherwise its two eigenvalues are \(s,-s\),
+because their sum is zero and the sum of their squares is \(2s^2\).
+For associated orthonormal eigenvectors \(e_+,e_-\), any projection \(P\)
+therefore satisfies
+
+\[
+ |\operatorname{Tr}(DP)|
+ =s\,|\langle e_+,Pe_+\rangle-\langle e_-,Pe_-\rangle|
+ \le s,
+\]
+
+because the two expectations lie in \([0,1]\). Apply this to every full
+spectral projection \(P(B)\) to obtain
+
+\[
+ \boxed{\sup_{B\text{ Borel}}|\nu_\theta(B)-\zeta_\Gamma(B)|
+         \le\min(1,\eta).}
+\tag{167}
+\]
+
+To remove any convention ambiguity, define the total variation mass norm
+of a finite real signed measure \(m\) by
+
+\[
+ \|m\|_{\mathrm{TV},1}
+ =\sup_{f\text{ real Borel},\,|f|\le1}\left|\int f\,dm\right|.
+\]
+
+The same two-eigenvalue calculation with the self-adjoint contraction
+
+\[
+ f(H-E)
+\]
+
+gives
+
+\[
+ \boxed{\|\nu_\theta-\zeta_\Gamma\|_{\mathrm{TV},1}
+ \le2\min(1,\eta).}
+\tag{168}
+\]
+
+The probability-distance convention is the supremum over Borel sets in
+(167), which is one half this mass norm. 
+
+The corresponding raw finite measures retain their exact masses. Put
+
+\[
+ m_\theta(B)=\langle\chi_\theta,P(B)\chi_\theta\rangle
+            =d_\theta\nu_\theta(B),
+\]
+
+\[
+ m_{\Gamma,\theta}(B)
+ =\frac49\theta^4\langle v_\Gamma,P(B)v_\Gamma\rangle
+ =\frac49\theta^4\sigma_\Gamma^2\zeta_\Gamma(B).
+\tag{169}
+\]
+
+For every bounded operator \(F\) of norm at most one,
+
+\[
+ \begin{aligned}
+ |\langle x,Fx\rangle-\langle y,Fy\rangle|
+ &\le\|x-y\|(\|x\|+\|y\|)\\
+ &\le\eta(2+\eta)t_\theta^2.
+ \end{aligned}
+\]
+
+Consequently, applying this to the same real bounded spectral functions,
+
+\[
+ \boxed{\|m_\theta-m_{\Gamma,\theta}\|_{\mathrm{TV},1}
+ \le\eta(2+\eta)\frac49\theta^4\sigma_\Gamma^2.}
+\tag{170}
+\]
+
+Taking \(F=I\) gives the corresponding raw mass error; (164) gives the
+sharper two-sided mass statement. The same physical spectral operators
+appear throughout. Thus no vanishing raw mass has been silently removed.
+
+For example, \(e^{-t(H-E)}\) for \(t\ge0\) is a contraction because the
+actual excitation operator is nonnegative. Equation (168) applies to its
+bounded spectral function at every physical time, while (170) applies to
+the unscaled matrix elements. Neither estimate by itself bounds an
+unbounded energy moment or proves low-energy weight: those require
+further information about the same exact electric covariance state
+
+\[
+ v_\Gamma=(\Gamma-\langle\psi,\Gamma\psi\rangle)\psi.
+\]
+
+
+## 16. An explicit cusp giving vanishing relative spectral error
+
+### 16.1 A bound with all finite parameters displayed
+
+Write \(M=M_L\) only within this subsection. At every \(L\ge2\) and
+\(\xi\ge1\), the preceding lower covariance bound and fourth electric
+moment give the two explicit quantities
+\[
+ s_{L,\xi}:=
+ \frac{\xi e^{-32\pi\xi}(L+1)(2L+1)}{24(6+64\xi)}
+ \le\sigma_\Gamma,
+ \qquad B_{2,L,\xi}:=15\xi^{7/4}M^2\ge\|H_0^2\psi\|.
+ \tag{171}
+\]
+In particular their quotient contains no unspecified lower variance.
+For the actual angle \(\theta=2\pi a^2/D_T\), the relative error in
+Section 15 is bounded by
+\[
+ \begin{split}
+ \eta_{L,a,g,T}
+ &:=\frac{\theta^2L^4B_{2,L,\xi}}{3\sigma_\Gamma}
+ \le\bar\eta_{L,a,g,T},\\
+ \bar\eta_{L,a,g,T}
+ &:=\frac{120\theta^2L^4\xi^{3/4}M^2(6+64\xi)}
+ {e^{-32\pi\xi}(L+1)(2L+1)} .
+ \end{split}
+ \tag{172}
+\]
+This is an inequality for the complete actual eigenvector of (1). The
+factor \(e^{-32\pi\xi}\) was obtained by integration in one physical link,
+with the full exterior marginal retained. It has no volume in its exponent.
+
+### 16.2 The retained periods on a corrected simultaneous sequence
+
+Keep the same dyadic integers \(j\), spatial boxes, mesh, cover degree,
+coordinate permutation, physical reference length and physical time as in
+(12). For either of the positive coupling trajectories specified below,
+set
+\[
+ \begin{gathered}
+ L_j=j^2,\qquad a_j=\frac1{100j},\qquad
+ M_j=12j^4(2j^2+1),\qquad M_{\mathrm{cov},j}=j,\\
+ \widetilde T_j=2C+j^4e^{8\pi\xi_j},\qquad
+ \widetilde v_j=e^{-2\pi\widetilde T_j/j},\qquad
+ \widetilde t_{c,j}=e^{-2\pi\widetilde T_j},\\
+ \widetilde D_j=L_{\widetilde T_j}q_{\widetilde T_j}
+                    +6m_{\widetilde T_j}^{\,2},\qquad
+ \widetilde\theta_j=\frac{2\pi}{10^4j^2\widetilde D_j}.
+ \end{gathered}
+ \tag{173}
+\]
+Here \(C\ge0\) is exactly the fixed period-correction bound in (4).
+Restrict to the tail where \(\widetilde T_j\ge T_0\), as required for that
+original cusp chart. This tail exists since \(\widetilde T_j\ge j^4\).
+Every original real period in \(P_{\widetilde T_j}\), including
+\(\alpha_{\widetilde T_j},\eta_{\widetilde T_j},c_{\widetilde T_j}\), is
+retained. The cover still has determinant \(-j^2\widetilde D_j\), positive
+volume density \(j^2\widetilde D_j\), and its exact pullback metric.
+Equation (6) applies with the same \(S_j\); the identity
+\(\widetilde v_j^{\,j}=\widetilde t_{c,j}\) proves the required base change.
+
+The lower period bound now gives
+\[
+ \begin{gathered}
+ \widetilde T_j-C=C+j^4e^{8\pi\xi_j}
+                       \ge j^4e^{8\pi\xi_j},\\
+ \widetilde D_j\ge j^8e^{16\pi\xi_j},\qquad
+ \widetilde\theta_j^{\,2}
+ \le\frac{4\pi^2e^{-32\pi\xi_j}}{10^8j^{20}},\qquad
+ \operatorname{sys}\ge\min(j,\widetilde T_j-C)=j.
+ \end{gathered}
+ \tag{174}
+\]
+For the last equality \(j\ge2\) suffices. Thus the same four-dimensional
+box \(|y_\mu|\le j/100\), radius \(j/50\), and a collar embed isometrically.
+The original physical side length remains \(j/50\), while the reference
+length \(\ell_*=1\), reference energy \(E_*=1/\ell_*\), and time \(y_0\)
+are unchanged. No geometric bound here is a quantum dispersion relation.
+
+There is an exact map between the two local presentations. In the
+original real coordinate order, let
+\[
+ \mathcal P_j=P_{j^2}S_j,\qquad
+ \widetilde{\mathcal P}_j=P_{\widetilde T_j}S_j,
+ \qquad
+ F_j^{\mathrm{chart}}: u\longmapsto
+             \widetilde{\mathcal P}_j^{-1}\mathcal P_j u.
+ \tag{175}
+\]
+The domain and codomain are the lifts of the same embedded physical box
+to the two period-coordinate charts, using its nonwrapping trivializations.
+Both inverses are obtained from (5) by restoring its recorded row
+permutation. Explicitly, let \(\mathscr P(x_1,x_2,x_3,x_4)
+=(x_1,x_3,x_2,x_4)\); then \(Q_T=\mathscr P P_TS_j\) and
+\((P_TS_j)^{-1}=Q_T^{-1}\mathscr P\), evaluated at each retained period.
+For this comparison keep the old tail \(j^2\ge T_0\), \(j^2-C\ge j\)
+from (12), so both local charts contain the stated physical box and collar.
+On these domains,
+\[
+ \widetilde{\mathcal P}_j F_j^{\mathrm{chart}}(u)=\mathcal P_j u,
+ \qquad
+ (F_j^{\mathrm{chart}})^*
+  (\widetilde{\mathcal P}_j^{\mathsf T}\widetilde{\mathcal P}_j)
+  =\mathcal P_j^{\mathsf T}\mathcal P_j,
+ \qquad
+ \det DF_j^{\mathrm{chart}}=D_j/\widetilde D_j>0 .
+ \tag{176}
+\]
+Matrix multiplication proves the first two identities, and the two
+original negative determinants prove the third. The pullback acts on
+one-forms by \(DF_j^{\mathsf T}\) and on their curvature by its exterior
+square. The chain rule gives \(d(F_j^*A)=F_j^*(dA)\); matrix multiplication
+of the coefficient functions gives
+\((F_j^*A)\wedge(F_j^*A)=F_j^*(A\wedge A)\). Hence the entire local
+nonlinear connection and action map is retained. The map is asserted
+on the displayed local charts; no descent of this real linear matrix
+to an isometry between the entire differently sized tori is needed.
+
+In the final magnetic frames of (9), the two backgrounds are related by
+the exact local formula
+\[
+ \begin{split}
+ \widetilde A_1-A_1
+ &=-2\pi\left(\frac1{\widetilde D_j}-\frac1{D_j}\right)
+                       H_cy_2\,dy_1,\\
+ \widetilde h_1(n)h_1(n)^{-1}
+ &=\exp\left[-2\pi a_j^2 n_2
+       \left(\frac1{\widetilde D_j}-\frac1{D_j}\right)H_c\right],
+ \qquad \widetilde h_2=\widetilde h_3=h_2=h_3=I.
+ \end{split}
+ \tag{177}
+\]
+Both connections are obtained from their original bundle connection by
+the explicitly proved gauge maps in Section 2, evaluated at the respective
+periods. Their flat references are the identity in those same final frames.
+The exponentials in (177) commute because their generator is the retained
+\(H_c=i\sigma_3=-2T_3\). This proves the displayed relation without any
+replacement of the original connection or its sign.
+
+The physical link endpoints and their inverse traversals are identical in
+the two boxes. Their identification therefore induces the identity map on
+\(Q_{L_j}\), its Haar measure, vertex gauge action, electric operators and
+all ordered Wilson words. The complete finite Hamiltonian (1) is the same
+operator for the two angles, since \(a_j,L_j,g_j\) are unchanged. Its
+unique actual vacuum and energy \(\psi_j,E_j\) consequently coincide.
+Only the chosen background transport, and thus the actual translated
+vector, changes. This establishes the exact relation between the two
+presentations used in the spectral comparison.
+
+For completeness their raw vectors also obey a direct comparison. In
+the joint weight representation of Section 15,
+\[
+ |\cos(\theta Y)-\cos(\phi Y)|
+ \le\tfrac12|\theta^2-\phi^2|Y^2
+ \quad(\theta,\phi\ge0).
+\]
+Indeed the function \(s\mapsto\cos(Y\sqrt s)\) on \(s\ge0\) has derivative
+of absolute value at most \(Y^2/2\), with the same bound at zero by its
+limit. Integrate that derivative between \(\phi^2\) and \(\theta^2\).
+Averaging, using \(\mathbb E Y^2=4\gamma/3\), and then applying Parseval
+and the same orthogonal centering proves
+\[
+ \|\widetilde\chi_j-\chi_j\|
+ \le\frac23|\widetilde\theta_j^{\,2}-\theta_j^2|
+                                      \|\Gamma_j\psi_j\|.
+ \tag{178}
+\]
+This raw estimate does not by itself compare the old and new probabilities
+after their different squared norms are used. The relative spectral
+comparison below concerns the corrected angle and its own actual norm.
+
+The corrected background retains its exact magnetic length
+\[
+ \widetilde\ell_{B,j}=\sqrt{\widetilde D_j/(2\pi)},\qquad
+ \widetilde E_{B,j}=\sqrt{2\pi/\widetilde D_j},\qquad
+ \widetilde\ell_{B,j}\sim\widetilde T_j/\sqrt{2\pi}.
+ \tag{179}
+\]
+The last relation follows by applying (4) along (173). In particular
+this length diverges while its inverse tends to zero; it has not been
+identified with an excitation mass. For any fixed physical covector the
+rounding map of Section 2.1 uses \(\widetilde{\mathcal P}_j\) and gives
+error bounded by a constant times \(j^{-1}+\widetilde T_j^{-1}\).
+To see this directly in (5), its four inverse blocks have norms
+\(0\), at most \((\widetilde T_j-C)^{-1}\), \(j^{-1}\), and at most
+\(j^{-1}\|A_{\widetilde T_j}\|(\widetilde T_j-C)^{-1}\), respectively.
+The real correction matrix \(A_T\) is bounded on the cusp ray.
+The same componentwise rounding proof therefore retains the fixed
+physical momentum and energy reference.
+
+### 16.3 Explicit error rates on both decreasing-coupling paths
+
+Substitute the exact face count and (174) in (172). Every factor is
+positive, so the inequality gives
+\[
+ \begin{split}
+ \bar\eta_j
+ &\le\frac{69120\pi^2}{10^8}\,
+       \xi_j^{3/4}(6+64\xi_j)j^{-4}
+       \frac{2j^2+1}{j^2+1}\\
+ &\le A_{\mathrm{rel}}\,
+       \xi_j^{3/4}(6+64\xi_j)j^{-4},\qquad
+ A_{\mathrm{rel}}:=\frac{138240\pi^2}{10^8}.
+ \end{split}
+ \tag{180}
+\]
+Here the intermediate multiplication is
+\(120\cdot4\cdot144=69120\): \(L_j^4=j^8\),
+\(M_j^2=144j^8(2j^2+1)^2\), and the denominator is
+\((j^2+1)(2j^2+1)\). Thus no asymptotic replacement of the face count is
+required. The second line follows from \(2j^2+1<2(j^2+1)\).
+
+First retain the logarithmic path of (88), with its entire physical
+dictionary
+\[
+ g_j^2=\frac1{\log j},\quad
+ \xi_j=\frac{(\log j)^2}{4},\quad
+ \kappa_j=\frac{200j}{\log j},\quad b_j=50j\log j,
+ \quad 2b_jM_j=100j(\log j)M_j .
+ \tag{181}
+\]
+For the dyadic tail where \(\log j\ge2\), the hypotheses \(\xi_j\ge1\)
+hold. Equations (173) and (180) give, explicitly,
+\[
+ \widetilde T_j=2C+j^4e^{2\pi(\log j)^2},\qquad
+ \bar\eta_j\le\frac{A_{\mathrm{rel}}}{2\sqrt2}
+ \left[6(\log j)^{3/2}+16(\log j)^{7/2}\right]j^{-4}
+ \longrightarrow0.
+ \tag{182}
+\]
+For the convergence, put \(x=\log j\). For any integer \(n>7/2\), the
+exponential series gives \(e^{4x}\ge(4x)^n/n!\) for \(x>0\), and hence
+\(x^{7/2}e^{-4x}\le n!4^{-n}x^{7/2-n}\to0\); the smaller power follows
+by the same argument.
+
+Second fix the original physical electric coefficient \(\kappa_*>0\)
+and retain the path (91), namely
+\[
+ g_j^2=\frac{\kappa_*}{200j},\quad
+ \xi_j=\frac{10000j^2}{\kappa_*^2},\quad
+ \kappa_j=\kappa_*,\quad b_j=\frac{10000j^2}{\kappa_*},
+ \quad 2b_jM_j=\frac{20000j^2M_j}{\kappa_*}.
+ \tag{183}
+\]
+For the dyadic tail \(j\ge\kappa_*/100\), \(\xi_j\ge1\). Then
+\[
+ \begin{gathered}
+ \widetilde T_j=2C+j^4e^{80000\pi j^2/\kappa_*^2},\\
+ \bar\eta_j\le A_{\mathrm{rel}}
+ \left[\frac{6000}{\kappa_*^{3/2}}j^{-5/2}
+       +\frac{640000000}{\kappa_*^{7/2}}j^{-1/2}\right]
+ \longrightarrow0 .
+ \end{gathered}
+ \tag{184}
+\]
+Both constants follow by inserting
+\(\xi_j^{3/4}=1000j^{3/2}/\kappa_*^{3/2}\) into (180). Every finite
+magnetic interaction and the full scalar Wilson term remain in (183).
+The convergence is an ordinary limit of the two displayed negative powers.
+
+### 16.4 Full spectral consequences with the raw amplitudes retained
+
+For either path, let
+\[
+ \begin{gathered}
+ \widetilde\chi_j=(K_{\widetilde\theta_j}
+     -\langle\psi_j,K_{\widetilde\theta_j}\psi_j\rangle)\psi_j,
+ \qquad \widetilde d_j=\|\widetilde\chi_j\|^2,\\
+ v_{\Gamma,j}=(\Gamma_j-\langle\psi_j,\Gamma_j\psi_j\rangle)\psi_j,
+ \qquad \sigma_{\Gamma,j}=\|v_{\Gamma,j}\|,\qquad
+ P_j(B)=\mathbf1_B(H_j-E_j),\\
+ \widetilde\nu_j(B)=
+   \frac{\langle\widetilde\chi_j,P_j(B)\widetilde\chi_j\rangle}
+        {\widetilde d_j},\qquad
+ \zeta_{\Gamma,j}(B)=
+   \frac{\langle v_{\Gamma,j},P_j(B)v_{\Gamma,j}\rangle}
+        {\sigma_{\Gamma,j}^2}.
+ \end{gathered}
+ \tag{185}
+\]
+The projections use the complete original physical operator. Equation
+(174) gives \(0<\widetilde\theta_j<2\pi\) on the specified tail, and
+Section 14 gives \(\sigma_{\Gamma,j}>0\) and \(\widetilde d_j>0\).
+Thus both probabilities exist at every index considered. Equations
+(180)--(184) give a further tail on which \(\bar\eta_j<1\), and the
+proved raw mass and probability estimates are
+\[
+ \begin{gathered}
+ (1-\bar\eta_j)^2\frac49\widetilde\theta_j^{\,4}
+       \sigma_{\Gamma,j}^{\,2}
+ \le\widetilde d_j\le
+ (1+\bar\eta_j)^2\frac49\widetilde\theta_j^{\,4}
+       \sigma_{\Gamma,j}^{\,2},\\
+ \widetilde d_j\ge
+ (1-\bar\eta_j)^2\frac49\widetilde\theta_j^{\,4}s_{L_j,\xi_j}^{\,2},\\
+ \sup_{B\text{ Borel}}|\widetilde\nu_j(B)-\zeta_{\Gamma,j}(B)|
+       \le\min(1,\bar\eta_j)\longrightarrow0,\\
+ \|\widetilde\nu_j-\zeta_{\Gamma,j}\|_{\mathrm{TV},1}
+       \le2\min(1,\bar\eta_j)\longrightarrow0.
+ \end{gathered}
+ \tag{186}
+\]
+For the first line the function \((1-x)^2\) decreases on \([0,1]\),
+and \((1+x)^2\) increases there; substitute \(\eta_j\le\bar\eta_j<1\)
+in Section 15. The second line then uses (171). The last two lines
+use the same comparison on the full Hilbert space, with no energy or
+spin truncation.
+
+The corresponding raw measures satisfy, in the explicitly defined mass
+norm of Section 15,
+\[
+ \left\|\widetilde d_j\widetilde\nu_j
+ -\frac49\widetilde\theta_j^{\,4}\sigma_{\Gamma,j}^{\,2}
+                 \zeta_{\Gamma,j}\right\|_{\mathrm{TV},1}
+ \le\bar\eta_j(2+\bar\eta_j)
+       \frac49\widetilde\theta_j^{\,4}\sigma_{\Gamma,j}^{\,2}.
+ \tag{187}
+\]
+The polynomial \(x(2+x)\) increases for \(x\ge0\), so (187) follows
+directly from the raw comparison in Section 15. This displays exactly
+what division by the shrinking squared norms does to the two measures.
+
+These estimates also give actual vanishing of the corrected raw norm.
+From (101), \(\sigma_{\Gamma,j}\le\|\Gamma_j\psi_j\|
+\le L_j^2\|H_0\psi_j\|\), and \(r_j\le5/4\), \(M_j\le36j^6\),
+equations (174) and (186) imply on \(\bar\eta_j<1\) that
+\[
+ \|\widetilde\chi_j\|
+ \le\frac{384\sqrt3(5/4)^{1/4}\pi^2}{10^8}
+          \xi_j^{3/4}e^{-32\pi\xi_j}j^{-10}
+ \longrightarrow0 .
+ \tag{188}
+\]
+Indeed \(\|\widetilde\chi_j\|\le(4/3)\widetilde\theta_j^2
+\sigma_{\Gamma,j}\), and the preceding estimates multiply to the stated
+constant. For \(x\ge1\), \(x^{3/4}\le x\) and
+\(e^{32\pi x}\ge32\pi x\), so \(x^{3/4}e^{-32\pi x}\le1/(32\pi)\);
+this proves the limit in (188) without discarding its original amplitude.
+
+For every fixed physical energy \(\Omega>0\), (186) proves
+\[
+ \big|\widetilde\nu_j([0,\Omega E_*])
+              -\zeta_{\Gamma,j}([0,\Omega E_*])\big|\longrightarrow0.
+ \tag{189}
+\]
+It follows that their lower and upper limiting weights on this interval
+are equal, because two bounded real sequences whose difference tends to
+zero have identical liminf and limsup. In particular a positive lower
+limiting weight for either displayed sequence is equivalent to one for
+the other; this is a proved relation, not an assumed positive weight.
+
+The two families are tight on the unchanged physical half-line
+$[0,\infty)$ simultaneously. To prove this assertion, suppose one
+family is tight and fix \(\varepsilon>0\). Its tail beyond a sufficiently
+large \(R\) has mass below \(\varepsilon/2\) at every index. Choose \(J\)
+so that \(\bar\eta_j<\varepsilon/2\) for \(j\ge J\). Equation (186)
+bounds the other family's tail by \(\varepsilon\) for these indices.
+For the finitely many earlier probability measures, continuity from
+above gives tails tending to zero as \(R\to\infty\); increasing \(R\)
+handles all of them. The reverse implication uses the same symmetric
+estimate. Moreover, along any subsequence, weak convergence of either
+probability to a probability on $[0,\infty)$ implies weak convergence
+of the other to the same limit: apply the mass-norm estimate to each
+bounded continuous test function divided by its supremum norm.
+
+For every \(t\ge0\), the function \(e^{-t\omega}\) is a bounded spectral
+function of the same \(H_j-E_j\). Equations (186)--(187) therefore also
+compare its probability integrals and its raw matrix elements, with
+errors uniform in this physical time parameter. This argument does not
+apply to unbounded energy powers, and it does not determine the spectral
+probability of \(v_{\Gamma,j}\). Establishing its finite-energy mass and
+dynamical continuum is the remaining calculation. The comparison (186)
+already proves the exact link to the original native magnetic states on
+the corrected cusp without assuming either of those conclusions.
+
+
+## 17. Strong graph convergence of the actual weighted electric state
+
+Throughout this section fix the original integer \(L\ge2\) and physical
+spacing \(a>0\), before sending the strictly positive \(g\) to zero.
+The complete companion proofs are retained in
+sources/weak_coupling_state_inputs: the finite-box physical eigenvalue
+proof, the actual vacuum and spectral-projection proof, and the
+electric-state graph proof. The coordinate definitions and derivative
+passage needed here are given explicitly below. The fixed-box constants
+are not asserted uniform in volume.
+
+### 17.1 Original operator, exact quotient, and graph domain
+
+Let \(\mathsf E,\mathsf P\) be every positive edge and every elementary
+oriented face in the box \(\{-L,\ldots,L\}^3\). Write
+
+\[
+ N=3(2L)(2L+1)^2,\qquad M=12L^2(2L+1).
+\]
+
+The original product Haar probability space is
+\(Q_L=SU(2)^N\). With \(T_\alpha=-i\sigma_\alpha/2\), define
+
+\[
+ X_{e,\alpha}F(U)
+ =\left.\frac{d}{dt}F(\ldots,e^{tT_\alpha}U_e,\ldots)\right|_{t=0},
+ \quad E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2,\quad H_0=\sum_eE_e.
+\]
+
+For each face use its original oriented word and write
+
+\[
+ W_p=\operatorname{tr}U_p,\qquad
+ W=\sum_{p\in\mathsf P}(2-W_p).
+\]
+
+The full physical operator and its exact constant multiple are
+
+\[
+ H_g=\frac{2g^2}{a}H_0+\frac{W}{2g^2a},\qquad
+ P_g=\frac a2H_g=g^2H_0+\frac{W}{4g^2}.
+\tag{190}
+\]
+
+Thus the scalar term \(2bM\), \(b=1/(2g^2a)\), remains in \(H_g\).
+Let \(\psi_g>0\) be its actual unit vacuum, with physical energy \(E_g\).
+Put
+
+\[
+ P_g\psi_g=\epsilon_g\psi_g,\qquad
+ \epsilon_g=\frac a2E_g,\qquad
+ 0\le\epsilon_g\le\epsilon_*:=\frac32\sqrt{NM}.
+\tag{191}
+\]
+
+The last inequality is the already proved actual-vacuum variational bound;
+it holds with the full Wilson potential. The vacuum is smooth on the
+finite compact product, invariant under every vertex gauge transformation,
+and its norm is exactly one.
+
+Retain the weighted operator
+
+\[
+ w_e=
+ \begin{cases}
+ n_2^2,&e=(n,1),\\
+ 0,&e\text{ is in direction }2\text{ or }3,
+ \end{cases}
+ \qquad
+ \Gamma=\sum_ew_eE_e.
+\tag{192}
+\]
+
+All original edges, including those of zero weight, remain in \(H_0,W\)
+and \(\psi_g\). The commuting nonnegative operators \(E_e\) have the
+complete product matrix-coefficient decomposition with eigenvalues
+\(q_e(q_e+1)\). On every joint block,
+
+\[
+ 0\le\sum_ew_eq_e(q_e+1)\le L^2\sum_eq_e(q_e+1).
+\]
+
+Squaring and applying Parseval to the entire Hilbert sum proves
+
+\[
+ \|\Gamma F\|\le L^2\|H_0F\|,\qquad F\in D(H_0).
+\tag{193}
+\]
+
+There is no spin truncation in (193). Each \(E_e\) commutes with the vertex
+gauge action, so the same statement holds on the exact invariant
+subspaces.
+
+The maximal tree is rooted at \(o=(-L,-L,-L)\); the parent of a nonroot
+vertex decreases the first coordinate, in order \(1,2,3\), that exceeds
+\(-L\). Denote its ordered tree holonomies by \(t_v\), and its chords by
+\(\mathcal C\), of cardinality
+
+\[
+ r=N-(2L+1)^3+1=2(2L)^3+3(2L)^2.
+\]
+
+The exact chord coordinates and inverse are
+
+\[
+ Z_c=t_{s(c)}U_ct_{t(c)}^{-1},\qquad
+ U_c=t_{s(c)}^{-1}Z_ct_{t(c)}.
+\tag{194}
+\]
+
+Tree links are retained as independent variables in the inverse. For
+fixed tree links, each chord change is a left and right Haar translation;
+Fubini proves exact product Haar preservation. Based gauge averaging
+eliminates the tree variables. The remaining physical condition is
+simultaneous conjugation of all chords by the root gauge element.
+
+Let \(\iota F(U)=F(Z(U))\). The map \(\iota\) is an isometry from chord
+Haar \(L^2\) onto the based-invariant subspace, by the exact product-Haar and compact-gauge averaging proof in the retained finite-box companion.
+We identify a based-invariant function with its chord representative
+only through this isometry. In particular no value of an \(L^2\) class
+on a Haar-null tree slice is used.
+
+For the path-incidence numbers \(\varepsilon(v,e)\in\{0,1\}\), the exact
+chord fields are
+
+\[
+ \mathcal X_{e,\alpha}=
+ \begin{cases}
+ L_{e,\alpha},&e\in\mathcal C,\\
+ \displaystyle\sum_{c\in\mathcal C}
+ [\varepsilon(s(c),e)L_{c,\alpha}
+       -\varepsilon(t(c),e)R_{c,\alpha}],&e\text{ in the tree}.
+ \end{cases}
+\tag{195}
+\]
+
+Here \(L_{c,\alpha}\) and \(R_{c,\alpha}\) differentiate left and right
+multiplication of \(Z_c\) by \(e^{tT_\alpha}\). They are divergence-free
+for product Haar. Differentiation of (194), followed by invariance of the
+sum over the three generator components under the adjoint rotations,
+intertwines the original edge forms with
+
+\[
+ H_0^{\mathrm q}=-\sum_{e,\alpha}\mathcal X_{e,\alpha}^2,\qquad
+ \Gamma^{\mathrm q}=-\sum_{e,\alpha}w_e\mathcal X_{e,\alpha}^2.
+\tag{196}
+\]
+
+The same argument works with the weights because each weight multiplies
+the complete three-component sum at that edge. Integration against the
+exact product Haar measure makes (196) the represented operators of these
+forms. Chord fields alone span the tangent space, hence the full kinetic
+operator is elliptic, with domain \(H^2\) on the compact chord manifold.
+All compactly supported comparison vectors below belong to this domain. Formula (193) transfers
+through \(\iota\) without changing its constant.
+
+### 17.2 Exact Haar/logarithm/dilation map and local operators
+
+Outside the Haar-null set where some chord equals \(-I\), write uniquely
+
+\[
+ Z_c=\exp(y_c^\alpha T_\alpha),\qquad |y_c|<2\pi.
+\]
+
+The exact Haar density and rescaled domain are
+
+\[
+ \mathcal J(y)=(16\pi^2)^{-r}
+       \prod_c\left[\frac{\sin(|y_c|/2)}{|y_c|/2}\right]^2,
+ \quad \Omega_g=\{x:|x_c|<2\pi/g\ \forall c\}.
+\]
+
+The isometry into Euclidean \(L^2\) is
+
+\[
+ (\mathcal B_gF)(x)=
+ \begin{cases}
+ g^{3r/2}\mathcal J(gx)^{1/2}F(\exp(gx)),&x\in\Omega_g,\\
+ 0,&x\notin\Omega_g.
+ \end{cases}
+\tag{197}
+\]
+
+Its image is exactly the closed subspace supported in \(\Omega_g\);
+its adjoint is zero on the orthogonal complement of that subspace.
+Its angular rotation action is the exact residual physical action.
+The power of \(g\), the Haar factor, and the zero extension are all
+retained.
+
+Write \(\mathcal X_{e,\alpha}=a_{e,\alpha}^i(y)\partial_{y_i}\)
+on the chart, with \(i=(c,\beta)\). These are the full smooth
+coefficients of (195). On every fixed Euclidean ball contained in
+\(\Omega_g\), define the exact first-order operators
+
+\[
+ \mathcal D_{g,e,\alpha}
+ =a_{e,\alpha}^i(gx)
+   \left[\partial_{x_i}
+        -\frac g2(\partial_{y_i}\log\mathcal J)(gx)\right].
+\tag{198}
+\]
+
+Direct differentiation of the inverse of (197) proves
+
+\[
+ \mathcal B_g(g\mathcal X_{e,\alpha})\mathcal B_g^*
+ =\mathcal D_{g,e,\alpha}.
+\]
+
+The identity is local on compactly supported chart functions and on the
+restriction of the smooth vacuum. It makes no assertion of regularity
+of the zero extension across \(\partial\Omega_g\).
+
+The exact local second-order operators are
+
+\[
+ K_g=-\sum_{e,\alpha}\mathcal D_{g,e,\alpha}^2,\qquad
+ G_g=-\sum_{e,\alpha}w_e\mathcal D_{g,e,\alpha}^2,\qquad
+ V_g(x)=\frac{W(gx)}{4g^2}.
+\tag{199}
+\]
+
+In particular \(K_g\) is the local conjugate of \(g^2H_0^{\mathrm q}\),
+and \(G_g\) is the local conjugate of \(g^2\Gamma^{\mathrm q}\).
+
+Retain the additive tree map \(T:\mathbb R^{\mathsf E}\to
+\mathbb R^{\mathcal C}\),
+
+\[
+ (Tz)_c=p_{s(c)}(z)+z_c-p_{t(c)}(z),
+ \quad G=TT^*,\quad C=d_1j,\quad
+ G_w=T\operatorname{diag}(w_e)T^*.
+\tag{200}
+\]
+
+Here \(p_v\) is the original additive tree-path integral and \(j\)
+inserts chord entries with zero tree entries. The exact tangent map of
+(194) is \(T\) in each color component. Consequently the coefficient
+limits on every fixed ball are
+
+\[
+ K_g\longrightarrow K_0
+ =-\sum_{\alpha,c,d}G_{cd}
+       \partial_{x_c^\alpha}\partial_{x_d^\alpha},
+ \qquad
+ G_g\longrightarrow\Gamma_{\mathrm{osc}}
+ =-\sum_{\alpha,c,d}(G_w)_{cd}
+       \partial_{x_c^\alpha}\partial_{x_d^\alpha}.
+\tag{201}
+\]
+
+Convergence here means all coefficients required in these second-order
+differential expressions converge uniformly on the fixed ball. It
+follows by differentiating the smooth coefficients at \(gx\), with the
+factor \(g\) on their spatial derivatives, and retaining the density
+term in (198). In particular that density term tends to zero; it was not
+omitted before taking the limit.
+
+The original full word expansion, with its proved Taylor remainder, is
+
+\[
+ W(y)=\frac14\sum_\alpha\|Cy^\alpha\|^2+O_L(|y|^3).
+\]
+
+Its smooth differentiated version gives
+
+\[
+ V_g\longrightarrow V_0=\frac1{16}\sum_\alpha\|Cx^\alpha\|^2
+\tag{202}
+\]
+
+uniformly with every fixed number of derivatives on each fixed ball.
+This is a statement about the exact potential there, not replacement of
+the potential outside the ball.
+
+The complete retained companion proofs establish
+
+\[
+ f_g:=\mathcal B_g\psi_g\longrightarrow\Phi_0
+       \quad\hbox{strongly in }L^2(\mathbb R^{3r}),\qquad
+ \epsilon_g\longrightarrow
+       \epsilon_0=\frac34\sum_{\nu=1}^r\sigma_\nu.
+\tag{203}
+\]
+
+Here \(\Phi_0\) is the actual limiting positive direction selected by the
+positive finite-coupling vacua:
+
+\[
+ \Phi_0(x)=(\det S)^{3/4}(4\pi)^{-3r/4}
+      \exp\left[-\frac18\sum_\alpha(x^\alpha)^TSx^\alpha\right],
+\]
+
+\[
+ S=G^{-1/2}(G^{1/2}C^*CG^{1/2})^{1/2}G^{-1/2}.
+\tag{204}
+\]
+
+The positive matrices and every scalar are as in the inputs. The source
+proves \((K_0+V_0)\Phi_0=\epsilon_0\Phi_0\) and unit norm, using the
+actual vacuum equation and compactness. We use (203), not a trial-state
+identification, as the starting vector convergence.
+
+
+### 17.3. Exact original operator and potential-gradient inequality
+
+Use the finite-box definitions and exact coordinate maps of the companion
+manuscripts *The original finite-box SU(2) Hamiltonian at small positive
+coupling* and *Actual weak-coupling vacuum, observable and spectral maps*.
+In particular
+\[
+ \begin{gathered}
+ H=\kappa H_0+bW,\quad H_0=\sum_eE_e,\qquad
+ \kappa=2g^2/a,\quad b=1/(2g^2a),\\
+ W=\sum_p w_p,\quad w_p=2-\operatorname{tr}U_p,\qquad
+ E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2.
+ \end{gathered}                                            \tag{205}
+\]
+The anti-Hermitian generators are \(T_\alpha=-i\sigma_\alpha/2\).
+All positive contained links and all contained faces are included. The
+strictly positive unit vacuum is \(\psi\), with actual energy
+\(\mathcal E\), so \(H\psi=\mathcal E\psi\). The scalar
+\(2b|P|\) is part of bW and is not removed in this equation.
+
+For any face p and any of its four links e,
+\[
+ \sum_\alpha|X_{e,\alpha}w_p|^2=w_p-w_p^2/4\le w_p.       \tag{206}
+\]
+To check every factor, hold the other links fixed. Its oriented face word
+is a Haar translate of U_e or U_e^{-1}; conjugations rotate the three
+generators orthogonally. Write the resulting SU(2) element as
+\(u_0I+i\boldsymbol u\cdot\boldsymbol\sigma\), with
+\(u_0^2+|\boldsymbol u|^2=1\). Its trace is 2u_0, and
+\(\operatorname{tr}(T_\alpha U)=u_\alpha\).
+The three squared derivatives sum to \(|\boldsymbol u|^2\).
+Since \(w_p=2-2u_0\), this is exactly (206). The inverse-link case
+has the same sum by inversion and bi-invariance, not a changed orientation.
+
+Let \(r_e\) be the actual number of faces incident to e; on this open
+box \(r_e\le4\), including every boundary edge. Cauchy--Schwarz in
+that finite incident set, followed by summation in e, gives
+\[
+ \sum_{e,\alpha}|X_{e,\alpha}W|^2
+  \le\sum_e r_e\sum_{p\ni e}\sum_\alpha|X_{e,\alpha}w_p|^2
+  \le16W.                                                   \tag{207}
+\]
+Thus the constant 16 is independent of the box; W itself still contains
+every face. In particular this is not a local replacement potential.
+
+### 17.4. All potential moments from the actual vacuum equation
+
+Write \(M_k=\int W^k\psi^2\,dU\), with \(M_0=1\).
+For every integer k>=1,
+\[
+ \boxed{bM_{k+1}\le\mathcal E M_k+4\kappa k^2M_{k-1},
+ \qquad M_1\le\mathcal E/b.}                              \tag{208}
+\]
+Here is a proof that retains the derivative terms. The exact ground-state
+identity for a real smooth f is
+\[
+ q_H[f\psi]-\mathcal E\|f\psi\|^2
+   =\kappa\int\psi^2\sum_{e,\alpha}|X_{e,\alpha}f|^2dU.
+                                                               \tag{209}
+\]
+It follows by differentiating the product twice in (205), integrating with
+the original Haar measure, and substituting the full eigen-equation.
+The kinetic term of \(q_H[f\psi]\) is nonnegative. For k>=2 take
+\(f=W^{k/2}\), or its smooth positive regularization if needed.
+Equation (207) bounds the right side by
+\(4\kappa k^2M_{k-1}\); the left side is at least
+\(bM_{k+1}-\mathcal E M_k\), proving (208).
+For k=1 use \(f=(W+\epsilon)^{1/2}\). Its squared gradient is
+at most \(4W/(W+\epsilon)\le4\). In (209) the lower bound is
+\(b(M_2+\epsilon M_1)-\mathcal E(M_1+\epsilon)\).
+Letting epsilon decrease to zero proves the same formula for k=1.
+For higher odd k the identical regularization and dominated convergence
+on the compact group justify all powers. The bound for M1 follows
+directly from \(bW\le H\) in quadratic forms on \(\psi\).
+
+The proved variational bound (99) supplies the explicit constant
+\(K=3\sqrt{NM}/a\), with \(\mathcal E\le K\) at every positive \(g\).
+The same energy is denoted \(E_g\) above; here \(\mathcal E=E_g\).
+This constant is retained with its full box dependence. Substituting the original coefficients
+into (208) gives the exact scaled recursion
+\[
+ \frac{M_{k+1}}{g^{2k+2}}
+ \le 2aK\frac{M_k}{g^{2k}}+
+                 16k^2\frac{M_{k-1}}{g^{2k-2}}.             \tag{210}
+\]
+Define explicitly \(B_0=1\), \(B_1=2aK\), and
+\(B_{k+1}=2aK B_k+16k^2 B_{k-1}\). Induction proves
+\(M_k\le B_k g^{2k}\) for every fixed k. The recursion keeps the
+full vacuum energy estimate and every original g,a factor. For example,
+\(B_2=(2aK)^2+16\) and
+\(B_3=(2aK)^3+80(2aK)\). Only fixed-box boundedness of K is used.
+
+### 17.5. Potential-weighted strong convergence and the total electric graph
+
+Retain the exact full-measure map \(\mathcal B_g\), matrices T,G,C,
+and Gaussian \(\Phi_0\) from the preceding exact coordinate construction. Put
+\[
+ V_2(x)=\tfrac14\sum_\alpha\|Cx^\alpha\|^2,
+ \qquad D=-\sum_{\alpha,c,d}G_{cd}
+                         \partial_{x_c^\alpha}\partial_{x_d^\alpha}.
+                                                               \tag{211}
+\]
+The retained actual-state proof establishes \(\mathcal B_g\psi\to\Phi_0\) strongly.
+We strengthen it to
+\[
+ \mathcal B_g\bigl((W/g^2)\psi\bigr)\to V_2\Phi_0,
+ \qquad
+ \mathcal B_g(g^2H_0\psi)\to D\Phi_0
+                \quad\hbox{strongly in }L^2.                \tag{212}
+\]
+The first convergence is local by the exact Taylor limit \(W(gx)/g^2\to V_2\)
+and the strong vacuum convergence. To prove that no weighted tail is
+lost, choose the same fixed radius \(\rho\) as in the companion:
+\(W(y)\ge c|y|^2\) inside it and \(W\ge c_\rho\) outside it.
+On the subset \(|x|>R\) with \(|gx|<\rho\), the variable \(W/g^2\)
+is at least \(cR^2\). Outside the \(\rho\) neighborhood it is at
+least \(c_\rho/g^2\). Therefore (210) at \(k=3\) gives
+\[
+ \int_{|x|>R}|\mathcal B_g((W/g^2)\psi)|^2dx
+  \le \frac{B_3}{cR^2}+\frac{g^2B_3}{c_\rho}.             \tag{213}
+\]
+The limiting polynomial times Gaussian has an integrable squared tail.
+Let R tend to infinity after the local convergence to obtain the first
+part of (212).
+
+For the second, the actual eigen-equation gives the exact identity
+\[
+ g^2H_0\psi=\frac{a\mathcal E}{2}\psi-\frac{W}{4g^2}\psi.
+                                                               \tag{214}
+\]
+The first limit in (212) and \(\mathcal E\to\mu_0\) show that its
+image tends to \((a\mu_0/2-V_2/4)\Phi_0\). The exact oscillator
+equation \([(2/a)D+V_2/(2a)]\Phi_0=\mu_0\Phi_0\) identifies
+this as \(D\Phi_0\). This proves (212) from full potential moments, not merely
+from convergence in L2 of the vacuum.
+
+### 17.6. Every retained electric weight and its graph limit
+
+For any fixed real edge weights w define
+\[
+ \Gamma_w=\sum_e w_eE_e,\qquad
+ G_w=T\operatorname{diag}(w)T^*,\qquad
+ D_w=-\sum_{\alpha,c,d}(G_w)_{cd}
+                        \partial_{x_c^\alpha}\partial_{x_d^\alpha}.
+                                                               \tag{215}
+\]
+No positivity of w is needed. The electric operators on distinct links
+strongly commute by their product-group spectral decomposition. Their
+eigenvalues are nonnegative, so on \(\operatorname{Dom}H_0\)
+\[
+ \|\Gamma_w F\|\le\|w\|_\infty\|H_0F\|.                \tag{216}
+\]
+Their individual Casimir spectra and all signs of w remain in this
+inequality. Restriction to the physical space is valid because every
+E_e commutes with the full vertex gauge projection.
+
+We claim the actual graph limit
+\[
+ \boxed{\mathcal B_g(g^2\Gamma_w\psi)\longrightarrow D_w\Phi_0.}
+                                                               \tag{217}
+\]
+For a smooth invariant compactly supported u(x), its reciprocal map
+\(\mathcal B_g^*u\) is a smooth physical function supported in the
+logarithm chart for all sufficiently small g. Differentiating the exact
+tree fields and density gives
+\[
+ \mathcal B_g(g^2H_0\mathcal B_g^*u)\to Du,
+ \qquad
+ \mathcal B_g(g^2\Gamma_w\mathcal B_g^*u)\to D_wu          \tag{218}
+\]
+strongly, since every coefficient and derivative converges uniformly on
+the fixed compact support. In detail the principal coefficients of gX_e
+are its derivative columns of T at y=0; derivatives of these coefficients
+and of the Haar density each carry an extra factor g. Summing their
+exact squared fields gives G and Gw. The lower-order terms tend to zero
+on this compact support, not by deletion from the original operator.
+
+Choose smooth invariant radial cutoffs \(u_R=\chi_R\Phi_0\). Their Gaussian decay
+gives \(u_R\to\Phi_0\) in the graph norms of both constant-coefficient
+operators D and Dw. The first limit in (218), combined with the total electric graph limit (212), shows
+\[
+ \lim_{g\to0}\|g^2H_0(\psi-\mathcal B_g^*u_R)\|
+        =\|D(\Phi_0-u_R)\|.                                \tag{219}
+\]
+Apply (216) to the difference, then use the second limit in (218).
+The limsup error in (217) is at most
+\(\|w\|_\infty\|D(\Phi_0-u_R)\|+
+\|D_w(u_R-\Phi_0)\|\), which tends to zero as R grows. This proves
+(217). Every limit here fixes L,a,w before g tends to zero.
+
+Inner products with the strongly converging unit vacua now prove
+\[
+ g^2\langle\Gamma_w\rangle_\psi\to
+          \langle\Phi_0,D_w\Phi_0\rangle,
+\quad
+ \mathcal B_g\bigl(g^2(\Gamma_w-\langle\Gamma_w\rangle)\psi\bigr)
+     \to V_w:=(D_w-\langle D_w\rangle)\Phi_0.              \tag{220}
+\]
+This is the raw actual covariance-state map whose derivative control
+was not supplied by the strong vacuum convergence (203) alone.
+
+
+
+### 17.7 Full physical spectral projections and the finite-box scope
+
+The actual-state companion uses the same \(\mathcal B_g\), with its
+adjoint zero outside \(\Omega_g\), and proves convergence in operator
+norm of every finite physical spectral projection whose endpoints
+avoid the oscillator spectrum. Its proof can be recalled directly
+from the maps above. A family of actual eigenvectors of bounded
+absolute energy has rescaled potential tails bounded by a constant
+times \(R^{-2}+g^2\): the full potential is bounded below by
+\(c|y|^2\) in a fixed small identity chart, and by a positive constant
+outside it. On each fixed rescaled ball the full elliptic form and
+the retained density bound the local \(H^1\) norm. Rellich compactness
+there and the tail bound give strong global \(L^2\) subsequences.
+For finitely many vectors their inner products persist.
+
+Test an actual eigen-equation against the inverse image of a smooth
+compactly supported physical function. All local coefficients and
+their required derivatives converge under the exact map above;
+weak local \(H^1\) convergence and strong local \(L^2\) convergence
+therefore identify every subsequential limit with the corresponding
+oscillator eigenvector. The eigenvalue convergence, with multiplicity,
+is proved by the full localization and min--max argument in the
+retained finite-box source. It gives equal finite ranks below every
+chosen cutoff for sufficiently small \(g\). Thus a converging
+orthonormal eigenbasis of the actual finite spectral range gives a
+complete orthonormal basis of the limiting spectral range.
+The finite sums of their rank-one projections converge in operator
+norm. Every subsequence has the same projection limit, proving the
+full-family conclusion. Subtracting the actual convergent ground
+energy yields the same assertion for excitation projections.
+
+In particular the fixed-box physical gap tends to
+\[
+ \Delta_{\mathrm{osc}}(L,a)=
+     \frac{4\sqrt2}{a}\sin\frac{\pi}{4L+2}.
+\]
+The full frequency calculation, including the open boundary
+conditions, is also spelled out in (236) below. Its smallest positive
+frequency is \(\sqrt8\sin[\pi/(4L+2)]\). Residual simultaneous color
+rotation has no invariant one-quantum vector. Any physical excitation
+therefore has at least two quanta, and an invariant contraction of
+two creators in a lowest mode achieves exactly twice that frequency
+divided by \(a\). This proves the displayed comparison gap from the
+original residual gauge constraint. Its convergence as an actual
+finite-box gap uses the just-stated full physical eigenvalue theorem.
+Neither that convergence nor the strong graph limit above specifies
+an error uniform in a simultaneous sequence \(L\to\infty\).
+
+## 18. Complete covariance spectral weights and a weak-coupling spatial diagonal
+
+### 18.1 The original coordinate weights in the transverse kinetic matrix
+
+Use the exact maximal-tree maps and the actual-vacuum convergence of
+Section 17. We first calculate their limiting covariance state at each
+fixed \(L,a\), retaining every original edge weight. Write
+\[
+ \begin{gathered}
+ m=2L,\qquad r=2m^3+3m^2=16L^3+12L^2,\\
+ w_{(n,1)}=n_2^2,\quad w_{(n,2)}=w_{(n,3)}=0,\qquad
+ \mathsf W=\operatorname{diag}(w_e).
+ \end{gathered}
+ \tag{221}
+\]
+Here \(\mathsf W\) is a matrix on real edge cochains, distinct from the
+full nonlinear Wilson potential \(\mathcal V=\sum_p(2-W_p)\).
+Let \(T\) be the exact additive tree-to-chord map, \(G=TT^{\mathsf T}\),
+\(C=d_1j_{\mathcal C}\), and
+\[
+ O^{\mathsf T}G^{1/2}C^{\mathsf T}CG^{1/2}O=\Lambda^2,
+ \qquad \Lambda=\operatorname{diag}(\sigma_1,\ldots,\sigma_r).
+\]
+The chord insertion \(j_{\mathcal C}\) has zero entries on the original
+tree and retains every chord; it is unrelated to the regulator index used
+later. Each \(\sigma_\nu>0\) is the exact positive open-box curl frequency.
+Define
+\[
+ \mathscr R=T^{\mathsf T}G^{-1/2}O:
+       \mathbb R^r\longrightarrow \ker d_0^{\mathsf T},
+ \qquad D=\mathscr R^{\mathsf T}\mathsf W\mathscr R.
+ \tag{222}
+\]
+The map \(\mathscr R\) is an isometry onto the indicated original
+transverse subspace, by \(TT^{\mathsf T}=G\) and
+\(\ker T=\operatorname{im}d_0\). Thus \(0\le D\le L^2I_r\).
+No independence of the entries of \(D\) is asserted. The original
+coordinate origin remains in \(n_2^2\).
+
+Under the exact logarithm and Haar map followed by the constant-Jacobian
+change \(x=G^{1/2}Oz\) in each color, the limit of \(g^2\Gamma\) on the
+actual vacuum is
+\[
+ \Gamma_{\mathrm{osc}}=
+   -\sum_{\alpha=1}^3\sum_{\nu,\mu=1}^r
+       D_{\nu\mu}\partial_{z_\nu^\alpha}\partial_{z_\mu^\alpha}.
+ \tag{223}
+\]
+Indeed the principal coefficient of the original weighted electric
+operator at the identity is \(T\mathsf W T^{\mathsf T}\) in chord
+coordinates. Conjugating that matrix by \(O^{\mathsf T}G^{-1/2}\)
+gives exactly (222). The strong graph convergence proved in Section 17
+is what justifies applying this principal coefficient to the actual
+vacuum limit; a coefficient calculation alone would not justify it.
+
+The comparison Hamiltonian and its unit ground function in these
+coordinates are
+\[
+ H_{\mathrm{osc}}=\sum_{\nu=1}^r
+   \left[-\frac2a\Delta_{z_\nu}
+                 +\frac{\sigma_\nu^2}{8a}|z_\nu|^2\right],
+ \qquad
+ \Phi_0(z)=\prod_{\nu=1}^r
+       \left(\frac{\sigma_\nu}{4\pi}\right)^{3/4}
+       e^{-\sigma_\nu|z_\nu|^2/8},
+ \qquad
+ \mu_0=\frac3{2a}\sum_\nu\sigma_\nu .
+ \tag{224}
+\]
+The unitary change from an \(x\)-function to a \(z\)-function is
+\(f(x)\mapsto(\det G)^{3/4}f(G^{1/2}Oz)\). This determinant and the
+nonconstant Haar density in Section 17 are both retained. Residual gauge
+invariance is simultaneous adjoint rotation of the color components
+of all \(z_\nu\); it does not remove separate modes.
+
+### 18.2 The entire centered pair state and its raw spectral measure
+
+For one real coordinate define
+\[
+ a_{\nu\alpha}=
+   \sqrt{\frac2{\sigma_\nu}}\,\partial_{z_\nu^\alpha}
+       +\sqrt{\frac{\sigma_\nu}{8}}\,z_\nu^\alpha,\qquad
+ a_{\nu\alpha}^{\dagger}=
+   -\sqrt{\frac2{\sigma_\nu}}\,\partial_{z_\nu^\alpha}
+       +\sqrt{\frac{\sigma_\nu}{8}}\,z_\nu^\alpha .
+ \tag{225}
+\]
+Integration by parts on polynomials times the Gaussian proves the
+adjoint relation. The identity \([\partial_z,z]=1\) proves the
+commutator \([a_{\nu\alpha},a_{\mu\beta}^{\dagger}]
+=\delta_{\nu\mu}\delta_{\alpha\beta}\); all other such commutators
+vanish. Also \(a_{\nu\alpha}\Phi_0=0\), and
+\[
+ H_{\mathrm{osc}}-\mu_0
+   =\sum_{\nu,\alpha}\frac{\sigma_\nu}{a}
+                      a_{\nu\alpha}^{\dagger}a_{\nu\alpha}.
+ \tag{226}
+\]
+These identities follow by direct multiplication of (225); they fix the
+physical coefficient and all excitation energies used below.
+
+Since
+\(\partial_{z_\nu^\alpha}
+=\sqrt{\sigma_\nu/8}(a_{\nu\alpha}-a_{\nu\alpha}^{\dagger})\),
+applying (223) to \(\Phi_0\) gives
+\[
+ \gamma_{\mathrm{osc}}=
+ \langle\Phi_0,\Gamma_{\mathrm{osc}}\Phi_0\rangle
+       =\frac38\operatorname{tr}(\Lambda D),\qquad
+ v_{\mathrm{osc}}
+   :=(\Gamma_{\mathrm{osc}}-\gamma_{\mathrm{osc}})\Phi_0
+   =-\frac18\sum_{\alpha,\nu,\mu}
+       \sqrt{\sigma_\nu\sigma_\mu}\,D_{\nu\mu}
+       a_{\nu\alpha}^{\dagger}a_{\mu\alpha}^{\dagger}\Phi_0.
+ \tag{227}
+\]
+For verification, expand
+\((a_\nu-a_\nu^\dagger)(a_\mu-a_\mu^\dagger)\Phi_0
+=-\delta_{\nu\mu}\Phi_0+
+a_\nu^\dagger a_\mu^\dagger\Phi_0\) at each color.
+Multiplication by the minus sign in (223) gives the positive scalar
+in (227) and its negative pair term. Each color contraction is invariant
+under simultaneous adjoint rotation, so every displayed state is in the
+full physical subspace.
+
+For \(\nu=\mu\), the three vectors
+\((a_{\nu\alpha}^{\dagger})^2\Phi_0\) are orthogonal, each of squared
+norm two. This follows by commuting the two annihilators across the two
+creators, using (225), and then annihilating the vacuum. Their sum has
+squared norm six. For \(\nu<\mu\), the three vectors
+\(a_{\nu\alpha}^{\dagger}a_{\mu\alpha}^{\dagger}\Phi_0\) are orthogonal
+unit vectors; their sum has squared norm three. Different unordered
+spatial pairs are orthogonal because at least one coordinate occupation
+differs. In (227) the two ordered occurrences of a distinct pair give
+the coefficient \(-\sqrt{\sigma_\nu\sigma_\mu}D_{\nu\mu}/4\).
+Consequently its complete raw excitation measure is
+\[
+ \begin{split}
+ m^{\Gamma}_{L,a}
+ &:=\langle v_{\mathrm{osc}},
+       \mathbf1_{(\cdot)}(H_{\mathrm{osc}}-\mu_0)v_{\mathrm{osc}}\rangle\\
+ &=\frac3{32}\sum_{\nu=1}^r
+        \sigma_\nu^2D_{\nu\nu}^2\,\delta_{\,2\sigma_\nu/a}\\
+ &\quad+\frac3{16}\sum_{\nu<\mu}
+        \sigma_\nu\sigma_\mu D_{\nu\mu}^2\,
+                      \delta_{\,(\sigma_\nu+\sigma_\mu)/a}.
+ \end{split}
+ \tag{228}
+\]
+When different pairs have the same energy their displayed weights add;
+there are no cross terms because the corresponding vectors are already
+orthogonal. The exact raw mass is
+\[
+ C_L^{\Gamma}:=\|v_{\mathrm{osc}}\|^2
+       =\frac3{32}\operatorname{tr}(\Lambda D\Lambda D).
+ \tag{229}
+\]
+Thus the normalized probability, using its displayed nonzero raw mass,
+is \(\rho_{L,a}^{\Gamma}=m_{L,a}^{\Gamma}/C_L^\Gamma\). Positivity of
+this mass will be proved quantitatively below.
+
+These formulas are limits of the actual electric covariance measures.
+Let
+\[
+ v_{\Gamma,g}=(\Gamma-\langle\psi_g,\Gamma\psi_g\rangle)\psi_g,
+ \qquad
+ m_{L,a,g}^{\Gamma}(B)
+ =g^4\langle v_{\Gamma,g},
+           \mathbf1_B(H_g-E_g)v_{\Gamma,g}\rangle.
+ \tag{230}
+\]
+Section 17 proves strong convergence of the images of \(g^2v_{\Gamma,g}\)
+to (227), including convergence of its squared norm. The same full
+finite-projection argument proves
+\[
+ m_{L,a,g}^{\Gamma}\Longrightarrow m_{L,a}^{\Gamma},\qquad
+ g^4\|v_{\Gamma,g}\|^2\longrightarrow C_L^\Gamma,\qquad
+ \zeta_{\Gamma,L,a,g}\Longrightarrow\rho_{L,a}^{\Gamma}
+ \quad(g\downarrow0;\ L,a\ \hbox{fixed}).
+ \tag{231}
+\]
+Here weak convergence means convergence against every bounded continuous
+function on the unchanged physical half-line. To give the complete
+passage, choose an energy cutoff avoiding the discrete oscillator
+spectrum. Norm convergence of its full physical spectral projection
+and strong convergence of the vectors give convergence of the mass
+inside that cutoff. Total mass converges by the strong vector limit.
+Taking increasing cutoffs makes the remaining oscillator mass vanish
+by completeness, and hence also bounds the actual tail uniformly for
+small \(g\). Inside a cutoff there are finitely many eigenvalue clusters;
+their eigenvalues and finite spectral projections converge, so uniform
+continuity of a bounded continuous test function on that compact
+interval gives convergence of its integrals. The tail is controlled
+by its supremum norm. Finally divide by the positive masses tending
+to \(C_L^\Gamma>0\). This proves the probability assertion with all
+original raw factors retained. In particular no norm rescaling of the
+original physical vector has been silently made.
+
+### 18.3 A uniform lower raw mass and the fraction at finite physical energy
+
+Let \(r_e\) again be the number of incident elementary faces. The original
+oriented curl matrix has diagonal
+\((d_1^{\mathsf T}d_1)_{ee}=r_e\), because each incidence coefficient
+is \(1\) or \(-1\). It vanishes on \(\operatorname{im}d_0\), and its
+restriction to the transverse space is exactly
+\(\mathscr R\Lambda^2\mathscr R^{\mathsf T}\). It follows that
+\[
+ \operatorname{tr}(\Lambda^2D)=\sum_e w_e r_e
+   =:\mathcal A_L
+   =\frac43 L^2(2L+1)(4L^2+2L+1).
+ \tag{232}
+\]
+The trace identity follows by cyclically moving the rectangular isometry
+and using that \(d_1^{\mathsf T}d_1\) is zero on its orthogonal complement.
+For the last count, put \(r(t)=1\) at \(t=\pm L\) and \(r(t)=2\)
+otherwise. Then \(r_{(n,1)}=r(n_2)+r(n_3)\),
+\[
+ \sum_{t=-L}^L t^2=\frac{L(L+1)(2L+1)}3,\quad
+ \sum_{t=-L}^L r(t)=4L,\quad
+ \sum_{t=-L}^L r(t)t^2=\frac23L(2L^2+1).
+\]
+The last equality is twice the first sum minus \(2L^2\). Sum over
+\(n_3\), then multiply by the \(2L\) possible direction-one sources in
+the first coordinate. The result is
+\(2L[(2L+1)(2/3)L(2L^2+1)
++4L\,L(L+1)(2L+1)/3]\), which is precisely (232).
+Every boundary contribution is present.
+
+The exact frequencies satisfy \(0<\sigma_\nu<\sqrt{12}\): they are
+square roots of sums of three numbers less than four. Therefore
+\(\Lambda\ge\Lambda^2/\sqrt{12}\). Multiplication by \(D\ge0\) and
+taking the trace preserves this inequality, since the trace of a
+product of two positive matrices is the squared Hilbert--Schmidt norm
+of the product of their square roots. The positive matrix
+\(\Lambda^{1/2}D\Lambda^{1/2}\) has at most \(r\) eigenvalues.
+Cauchy--Schwarz on that finite list proves
+\[
+ \operatorname{tr}(\Lambda D\Lambda D)
+ \ge\frac{\operatorname{tr}(\Lambda D)^2}{r}
+ \ge\frac{\mathcal A_L^2}{12r}
+ \ge\frac{128}{297}L^7.
+ \tag{233}
+\]
+For the last inequality use
+\(\mathcal A_L\ge(32/3)L^5\) in (232) and
+\(r=16L^3+12L^2\le22L^3\) for \(L\ge2\).
+For an upper bound, the matrix-entry formula for the trace gives
+\(\operatorname{tr}(\Lambda D\Lambda D)
+=\sum_{\nu,\mu}\sigma_\nu\sigma_\mu D_{\nu\mu}^2
+\le12\operatorname{tr}(D^2)\le12rL^4\).
+In particular the exact mass in (229) satisfies
+\[
+ \frac4{99}L^7\le C_L^\Gamma\le\frac{99}{4}L^7 .
+ \tag{234}
+\]
+These inequalities prove strict positivity for every retained box.
+
+Fix a physical energy \(\Omega\ge0\). A pair in (228) of energy at most
+\(\Omega\) has both frequencies at most \(a\Omega\). Let
+\(n_{L,a}(\Omega)=\#\{\nu:\sigma_\nu\le a\Omega\}\), counted with
+their original transverse multiplicities, and let \(P_\Omega\) be
+that coordinate projection in \(\mathbb R^r\). The entry formula and
+\(\|D\|\le L^2\) give
+\[
+ \begin{split}
+ \rho_{L,a}^{\Gamma}([0,\Omega])
+ &\le\frac{(a\Omega)^2
+          \operatorname{tr}((P_\Omega D P_\Omega)^2)}
+              {\operatorname{tr}(\Lambda D\Lambda D)}\\
+ &\le\frac{12r(a\Omega)^2L^4}{\mathcal A_L^2}
+                     n_{L,a}(\Omega)\\
+ &\le\frac{297}{128}\frac{(a\Omega)^2}{L^3}
+                     n_{L,a}(\Omega).
+ \end{split}
+ \tag{235}
+\]
+The first numerator only enlarges the set of pairs satisfying the
+energy condition; it does not discard a term of the original measure.
+The factors \(3/32\), with doubled off-diagonal terms, cancel between
+that enlarged numerator and the exact mass (229).
+
+Here is a boundary-sensitive count for the remaining dimension. The full
+frequency formula on the open box is
+\[
+ \sigma^2=\sum_{i=1}^3
+       4\sin^2\frac{\pi j_i}{2(2L+1)},\qquad
+ 0\le j_i\le2L,\quad k=\#\{i:j_i>0\}\ge2,
+ \quad\hbox{multiplicity }k-1.
+ \tag{236}
+\]
+For completeness it follows by tensoring the one-dimensional vertex
+cosines and edge sines. The vertex basis is
+\(v_0(t)=(2L+1)^{-1/2}\) and
+\(v_j(t)=\sqrt{2/(2L+1)}
+\cos[\pi j(t+1/2)/(2L+1)]\), \(0\le t\le2L\).
+The edge basis is
+\(u_j(t)=-\sqrt{2/(2L+1)}
+\sin[\pi j(t+1)/(2L+1)]\), \(0\le t<2L\).
+Finite geometric sums show orthonormality, and taking the difference
+of adjacent cosines gives \(dv_j=2\sin[\pi j/(2(2L+1))]u_j\).
+At a tensor index there are \(k\) one-cochain directions and one gradient
+direction with components \(s_i=2\sin[\pi j_i/(2(2L+1))]\).
+The exact oriented curl identity
+\(\sum_{i<h}|s_ix_h-s_hx_i|^2
+=|s|^2|x|^2-|\langle s,x\rangle|^2\)
+gives the value \(|s|^2\) on its \(k-1\) dimensional perpendicular
+space. These tensor spaces exhaust all edge cochains. The original
+index map is \(t=n_i+L\); it does not change \(n_2^2\) in (221).
+
+Concavity of sine on \([0,\pi/2]\) gives
+\(\sin t\ge2t/\pi\) there, by its chord between the endpoints.
+Each positive coordinate in a frequency at most \(a\Omega\) therefore
+satisfies \(2j_i/(2L+1)\le a\Omega\). Put
+\[
+ K_{L,a}(\Omega)=
+ \min\left\{2L,\left\lfloor\frac{(2L+1)a\Omega}{2}\right\rfloor\right\}.
+\]
+There are \(3K^2\) index triples with exactly two positive entries,
+of multiplicity one, and \(K^3\) with three positive entries, of
+multiplicity two. Hence the complete quantitative result is
+\[
+ \rho_{L,a}^{\Gamma}([0,\Omega])
+ \le\min\left\{1,\
+     \frac{297}{128}\frac{(a\Omega)^2}{L^3}
+       \left[3K_{L,a}(\Omega)^2+2K_{L,a}(\Omega)^3\right]\right\}.
+ \tag{237}
+\]
+For \(\Omega=0\), \(K=0\) and the measure has no zero atom, as is
+also evident from (228). Along \(L_j=j^2\), \(a_j=1/(100j)\),
+\(K_{L_j,a_j}(\Omega)\le3\Omega j/200\) for \(j\ge2\). Thus for
+each fixed \(\Omega\)
+\[
+ \rho_{L_j,a_j}^{\Gamma}([0,\Omega])=O_\Omega(j^{-5})
+       \longrightarrow0.
+ \tag{238}
+\]
+To verify the stated order directly, the two terms in (237) are
+bounded by constants times
+\(j^{-2}j^{-6}j^2=j^{-6}\) and
+\(j^{-2}j^{-6}j^3=j^{-5}\), respectively, with all constants already
+given by (237). The physical reference remains \(E_*=1\), so this is
+escape from every fixed physical energy interval.
+
+### 18.4 An actual full-Hamiltonian diagonal and its corrected native state
+
+We now pass from the fixed-box theorem to a precisely defined sequence
+of the original nonlinear Hamiltonians. Its coupling is selected using
+the proved finite-box convergence; no uniform dependence on \(L\) is
+assumed. Let \(j=2^s\), \(s\ge1\), retain \(L_j=j^2\),
+\(a_j=1/(100j)\), and set
+\[
+ d_{\mathrm{BL}}(\nu,\rho)=
+ \sup\left\{\left|\int f\,d(\nu-\rho)\right|:
+         f:\mathbb R_{\ge0}\to\mathbb R,\
+         \|f\|_\infty\le1,\ \operatorname{Lip}(f)\le1\right\}.
+ \tag{239}
+\]
+At each fixed \(j\), (231) implies convergence in this distance.
+Indeed choose a compact interval carrying all but a prescribed small
+tail of both families, which is possible by the tail proof after (231).
+The restrictions of the displayed functions to that interval are bounded
+and equicontinuous; a finite piecewise-linear approximation on a fine
+uniform mesh, with values rounded to a finite mesh in \([-1,1]\),
+is a finite net in uniform norm. Convergence of the finitely many
+continuous test integrals and the uniform tail bound gives convergence
+of the displayed supremum.
+
+Define \(k_j\) to be the least positive integer \(k\) such that every
+integer \(q\ge k\) satisfies all four inequalities
+\[
+ \begin{gathered}
+ 2^{-q}<1/j,\qquad
+ d_{\mathrm{BL}}\bigl(
+   \zeta_{\Gamma,L_j,a_j,2^{-q}},\rho_{L_j,a_j}^\Gamma\bigr)<1/j,\\
+ \left|
+   \frac{2^{-4q}\|v_{\Gamma,2^{-q}}\|^2}{C_{L_j}^\Gamma}-1
+            \right|<1/j,\\
+ \left|
+  \operatorname{gap}(H_{L_j,a_j,2^{-q}})
+    -\frac{4\sqrt2}{a_j}\sin\frac{\pi}{4L_j+2}
+              \right|<1/j.
+ \end{gathered}
+ \tag{240}
+\]
+The norms and operators in this display all belong to this same
+\((L_j,a_j)\). The set defining \(k_j\) is nonempty: (231) proves
+the second and third tail assertions, the finite-box physical eigenvalue
+theorem in Section 17 proves the fourth, and \(2^{-q}\to0\) proves
+the first. Intersect the four proved tails. The well ordering of the
+positive integers then defines \(k_j\) without an unproved assumption.
+This is an exact selection by finite-operator data; the present theorem
+does not give a numerical rate for \(k_j\).
+
+Set \(g_j=2^{-k_j}>0\). Its complete physical coefficients are
+\[
+ g_j^2=2^{-2k_j},\qquad
+ \xi_j=2^{4k_j-2},\qquad
+ \kappa_j=200j\,2^{-2k_j},\qquad
+ b_j=50j\,2^{2k_j},\qquad 2b_jM_j=100j\,2^{2k_j}M_j.
+ \tag{241}
+\]
+Every face and electric term of the original Hamiltonian is present.
+The inequality \(g_j<1/j\) gives \(\xi_j\ge1\) on this sequence.
+
+To control the actual native state along this selected path, strengthen
+only the explicit cusp depth in (173). Put
+\[
+ \begin{gathered}
+ F(\xi)=\xi^{3/4}(6+64\xi),\qquad
+ T_j^\sharp=2C+j^4e^{8\pi\xi_j}F(\xi_j)^{1/4},\\
+ D_j^\sharp=L_{T_j^\sharp}q_{T_j^\sharp}+6m_{T_j^\sharp}^{\,2},
+ \qquad
+ \theta_j^\sharp=\frac{2\pi}{10^4j^2D_j^\sharp},\\
+ v_j^\sharp=e^{-2\pi T_j^\sharp/j},\qquad
+ t_{c,j}^\sharp=(v_j^\sharp)^j=e^{-2\pi T_j^\sharp}.
+ \end{gathered}
+ \tag{242}
+\]
+The cover is still \(j\), with its unchanged pullback metric, determinant
+\(-j^2D_j^\sharp\), original real periods, and fixed physical coordinate
+permutation. Since \(F(\xi)\ge70\) for \(\xi\ge1\), the systole and
+embedding proofs (174)--(177) hold on the same eventual chart domains
+with \(T_j^\sharp\) replacing \(\widetilde T_j\). The full nonlinear
+pullback, flat reference, and exact background ratio are those same
+proved maps evaluated at the displayed original periods. No finite
+Hamiltonian or vacuum changes when this external cusp angle is chosen.
+
+In the denominator estimate (174), the fourth power
+\((T_j^\sharp-C)^4\) now gains a factor \(F(\xi_j)\).
+Substitution in the exact count (180) gives the explicit uniform bound
+\[
+ \bar\eta_j^\sharp
+ \le\frac{69120\pi^2}{10^8}\,j^{-4}
+          \frac{2j^2+1}{j^2+1}
+ \le A_{\mathrm{rel}}j^{-4}\longrightarrow0.
+ \tag{243}
+\]
+Thus the full physical native probability
+\(\nu_j^\sharp\), defined from its actual centered vector
+\(\chi_j^\sharp=(K_{\theta_j^\sharp}
+-\langle\psi_j,K_{\theta_j^\sharp}\psi_j\rangle)\psi_j\),
+satisfies
+\[
+ \sup_B|\nu_j^\sharp(B)-\zeta_{\Gamma,L_j,a_j,g_j}(B)|
+       \le\bar\eta_j^\sharp.
+ \tag{244}
+\]
+All these states are nonzero by Section 14, and the comparison includes
+their original raw masses.
+
+For every \(\Omega\ge0\), use the continuous function equal to one on
+\([0,\Omega]\), linear from one to zero on \([\Omega,\Omega+1]\),
+and zero beyond. It is an admissible test in (239). Equations
+(240), (244), and (237) therefore give
+\[
+ \nu_j^\sharp([0,\Omega])
+ \le \rho_{L_j,a_j}^{\Gamma}([0,\Omega+1])
+                      +j^{-1}+A_{\mathrm{rel}}j^{-4}
+ \longrightarrow0.
+ \tag{245}
+\]
+This is a theorem about the full interacting Hamiltonians at the strictly
+positive couplings (241), with their actual native states (242). It is
+not an inference from a comparison Hamiltonian without state transport.
+At the same time their actual physical gaps close:
+\[
+ 0<\operatorname{gap}(H_j)
+ \le400\sqrt2\,j\sin\frac{\pi}{4j^2+2}+j^{-1}
+ \le\frac{100\sqrt2\pi+1}{j}\longrightarrow0.
+ \tag{246}
+\]
+The first strict inequality follows from compact resolvent and the proved
+unique finite vacuum. The last uses \(\sin x\le x\). Thus gap closure
+and complete loss of this state's probability from finite energy
+intervals occur on the same actual sequence. They are related by the
+explicit covariance weights and state maps above, not treated as
+independent mathematical presentations.
+
+The raw native amplitudes remain quantitative. Write
+\(\varepsilon_j=g_j^4\|v_{\Gamma,g_j}\|^2/C_{L_j}^\Gamma-1\),
+so \(|\varepsilon_j|<1/j\) by (240). Then on
+\(\bar\eta_j^\sharp<1\),
+\[
+ \begin{split}
+ &(1-\bar\eta_j^\sharp)^2(1+\varepsilon_j)
+       \frac49(\theta_j^\sharp)^4g_j^{-4}C_{L_j}^\Gamma
+       \le d_j^\sharp\\
+ &\hspace{15mm}\le
+ (1+\bar\eta_j^\sharp)^2(1+\varepsilon_j)
+       \frac49(\theta_j^\sharp)^4g_j^{-4}C_{L_j}^\Gamma .
+ \end{split}
+ \tag{247}
+\]
+This follows directly from (186); every quantity has its original
+finite value. The raw amplitude estimate (188), applicable here since
+\(\xi_j\ge1\) and \(\bar\eta_j^\sharp<1\), with the additional
+factor \(F(\xi_j)\) now in the denominator of the squared angle, gives
+\[
+ \|\chi_j^\sharp\|
+ \le\frac{384\sqrt3(5/4)^{1/4}\pi^2}{10^8}\,
+      \frac{e^{-32\pi\xi_j}}{6+64\xi_j}\,j^{-10}
+ \longrightarrow0.
+ \tag{248}
+\]
+The finite measures \(d_j^\sharp\nu_j^\sharp\) consequently vanish in
+total mass, while (245) records the separate escape of their probability
+after division by that mass.
+
+For \(t>0\), split the probability integral at a fixed \(R\):
+\(\int e^{-t\omega}d\nu_j^\sharp
+\le\nu_j^\sharp([0,R])+e^{-tR}\). First send \(j\) to infinity using
+(245), then \(R\) to infinity. The result is zero. At \(t=0\) that
+probability integral is exactly one. This gives its exact discontinuous
+unscaled correlation limit; the raw correlation also retains the
+factor \(d_j^\sharp\) in (247). No strongly continuous nonnegative
+Hamiltonian can represent this probability correlation on a unit vector,
+because its spectral integral tends to one as \(t\downarrow0\) by
+bounded convergence. This obstruction applies to this exact selected
+native-state sequence.
+
+The diagonal (240) has not been identified with either explicit running
+coupling (181) or (183), and (245) makes no claim about their unresolved
+covariance measures. It also does not exclude a different continuum
+observable or a different positive-coupling path. The original interacting
+four-dimensional construction and nonzero low-energy native weight
+outside the proved escape sequences remain the research target.
+
+
+## 20. A fixed-box bounded low-mode observable and its exact fate
+
+The retained fixed-box source proof in the weak-coupling state-inputs packet
+contains a second exact state map that is distinct from the native
+\(n_2^2\)-weighted translation. It is useful because it produces genuine
+low-mode spectral mass at each fixed box without replacing the actual
+vacuum. Fix \(L\ge2\) and \(a>0\), use the exact tree/log map of Section 17,
+and let \(\mathcal B_g\) be the full Haar-density/dilation isometry. Strong
+actual-vacuum convergence and finite spectral-projection convergence hold
+as \(g\downarrow0\):
+\[
+ \mathcal B_g\psi_g\longrightarrow\Phi_0,\qquad
+ \mathcal B_gP_g(I)\mathcal B_g^*\longrightarrow P_0(I)
+ \tag{249}
+\]
+for every bounded interval whose endpoints avoid the oscillator spectrum.
+The proof uses the full nonlinear form, compactness from the retained
+potential tails, invariant cutoffs, and the exact physical projection.
+It does not substitute \(\Phi_0\) for \(\psi_g\) at finite \(g\).
+
+Choose a transverse mode \(\nu\), a smooth simultaneous-rotation-invariant
+cutoff \(\chi\) equal to one near the identity and supported inside the
+full logarithm chart, and define the globally smooth physical multiplier
+\[
+ B_{g,\vartheta}(Z)=
+ \begin{cases}
+ \exp\!\left(i\vartheta\chi(y)
+      |(O^TG^{-1/2}(y/g))_\nu|^2\right),& Z=\exp(y),\\
+ 1,&\text{outside the chart}.
+ \end{cases}
+ \tag{250}
+\]
+This is a bounded unitary function for every \(g>0\). Its transported
+multiplier converges pointwise to
+\(B_{0,\vartheta}(x)=\exp(i\vartheta|z_\nu|^2)\), so the actual centered
+vectors
+\[
+ v_g=(B_{g,\vartheta}-\langle\psi_g,B_{g,\vartheta}\psi_g\rangle)\psi_g
+ \tag{251}
+\]
+converge strongly under \(\mathcal B_g\) to
+\(v_0=(B_{0,\vartheta}-c_0)\Phi_0\). Put
+\(\sigma=\sigma_\nu\), \(k=3/2\), and \(\beta=4\vartheta/\sigma\).
+Direct Gamma integration gives
+\[
+ c_0=(1-i\beta)^{-3/2},\qquad
+ \|v_0\|^2=1-(1+\beta^2)^{-3/2}.
+ \tag{252}
+\]
+The centered raw excitation measure is the complete positive series
+\[
+ \nu_0=
+ \sum_{n=1}^{\infty}
+ \frac{(3/2)_n}{n!}\,
+ \frac{\beta^{2n}}{(1+\beta^2)^{n+3/2}}\,
+ \delta_{\,2n\sigma/a}.
+ \tag{253}
+\]
+Indeed the radial Gamma density is
+\(q^{k-1}e^{-q}/\Gamma(k)\), the invariant radial oscillator eigenvectors
+are normalized generalized Laguerre polynomials, and the generating
+function gives the coefficient
+\[
+ \left\langle\varphi_n,B_{0,\vartheta}\Phi_0\right\rangle
+ =\sqrt{\frac{(k)_n}{n!}}\,
+   \frac{(-i\beta)^n}{(1-i\beta)^{n+k}}.
+ \tag{254}
+\]
+The \(n=0\) term is removed exactly by (251), and the binomial series sums
+(253) to the mass in (252). Thus every term is a raw, nonnegative,
+vacuum-orthogonal spectral weight. The corresponding fixed-box
+correlation is
+\[
+ \left\langle v_0,e^{-t(H_{\rm osc}-\mu_0)}v_0\right\rangle
+ =
+ [1+\beta^2(1-e^{-2\sigma t/a})]^{-3/2}
+ -(1+\beta^2)^{-3/2}.
+ \tag{255}
+\]
+
+For the lowest mode
+\(\sigma=\sqrt8\sin(\pi/(4L+2))\), the choice
+\(\vartheta=\sigma/4\) gives \(\beta=1\), total mass
+\(d=1-2^{-3/2}\), and first atom
+\(3/(8\sqrt2)\) at \(4\sqrt2\sin(\pi/(4L+2))/a\).
+Now take \(L_j=j^2\), \(a_j=1/(100j)\), for integers \(j\ge2\). For each fixed \(j\), the
+finite-box theorem permits a separately selected strictly positive \(g_j<1/j\) with
+bounded-Lipschitz distance below \(1/j\) and centered mass within \(1/j\)
+of \(d\). Since every fixed-\(n\) energy \(2n\sigma_j/a_j\) tends to zero
+and the weights in (253) are summable and independent of \(j\),
+\[
+ \nu_{g_j,j}\Longrightarrow d\,\delta_0,\qquad
+ \langle v_{g_j,j},e^{-t(H_{g_j,j}-\mathcal E_{g_j,j})}v_{g_j,j}\rangle
+ \longrightarrow d\quad(t\ge0).
+ \tag{256}
+\]
+This is an exact sequence of nonzero physical vacuum-orthogonal states
+with positive raw mass, but its limit is a zero-energy atom. Any
+nonnegative self-adjoint continuum Hamiltonian \(K\) representing these
+limits together with the retained centering would have a unit vacuum
+\(\Omega\), a vector \(v\) with \(\langle\Omega,v\rangle=0\) and
+\(\|v\|^2=d>0\), and \(\langle v,e^{-tK}v\rangle=d\) for every \(t>0\).
+For any such \(t\), the spectral theorem gives
+\(\int(1-e^{-tE})\,d\nu_v(E)=0\). The integrand is nonnegative and
+strictly positive for \(E>0\), so \(\nu_v((0,\infty))=0\) and \(Kv=0\).
+Thus \(v\) is a second independent zero-energy vector, contradicting
+uniqueness of the vacuum. Retaining the centering is essential: the
+constant autocorrelation alone is also represented by
+\(v=\sqrt d\,\Omega\). Hence this particular macroscopic low-mode
+identification, with its original centering, cannot be the desired
+unique-vacuum interacting continuum. It is a proved degeneration, not
+a mass-gap counterexample. This separately selected sequence has not
+been identified with the covariance sequence in Section 18.
+
+The construction establishes a favorable finite-box state map and
+nonzero low-mode weights before the simultaneous limit. It does not prove
+that those weights survive as a nonzero continuum measure on
+\((0,\Omega]\), and it does not identify the selected \(g_j\) with the
+explicit logarithmic or fixed-electric-coefficient paths. The full
+proof, including chart domains, compactness, Laguerre completeness and
+projection convergence, is retained in the cited source file.
+
+## 21. Compact fluid concentration and its exact gauge source
+
+### 21.1. Primary sources and the mathematical input
+
+The public [OpenAI manuscript](https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf)
+states finite-time velocity blowup for every positive viscosity, with zero
+initial velocity, a smooth force compactly supported in space and time,
+common compact spatial support before time 1, and bounded kinetic energy.
+This is its Theorem 1.1; the whole-space and torus conclusions are stated as
+the Clay C/D alternatives. The retained 165-page edition and the later
+166-page edition have different hashes. The exact versions and the
+[pinned public formal source](https://github.com/openai/NavierStokesAndEuler/tree/8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538)
+are recorded in the source receipt. Equality of the revisions and a complete
+independent verification of the claimed existence proof are not asserted.
+
+[Tristan Buckmaster's statement](https://cims.nyu.edu/~tristanb/statement.pdf)
+attributes the smooth-forcing porous-media, Boussinesq and incompressible
+Euler results to his personal collaboration with Levent Alpöge, and credits
+Diego Córdoba and Luis Martínez-Zoroa for the preceding forced-blowup
+programme. Their [public source](https://github.com/tristanbuckmaster/fluid_lean)
+is a separate source object. These attributions do not identify their
+Euler theorem with the positive-viscosity Navier--Stokes theorem.
+No allegation about access to private material is used in any calculation.
+
+The following results are proved directly for smooth input fields, with
+their entire source and coordinate data retained. Thus the identities and
+estimates are independently established here; existence of a field with
+the newly announced breakdown properties remains the cited source's claim.
+This is an exact translation theorem for the displayed class of inputs,
+not an assumption of a missing quantum or fluid existence theorem.
+
+Use the original spatial coordinates \(x\in\mathbb R^3\), time
+\(0\le t<1\), positive viscosity \(\nu\), and smooth real fields
+\(u,p,f\) satisfying
+\[
+ \partial_tu_i+\sum_{\ell=1}^3u_\ell\partial_\ell u_i
+ -\nu\Delta u_i+\partial_i p=f_i,\qquad
+ \sum_i\partial_i u_i=0,\qquad u(x,0)=0.
+ \tag{257}
+\]
+The supports of \(u(\cdot,t)\) and \(p(\cdot,t)\) lie in one compact set
+\(K\subset\mathbb R^3\), and
+\(f\in C_c^\infty(\mathbb R^3\times(0,\infty);\mathbb R^3)\).
+Fix \(R>0\) with \(K\subset B_R(0)\). The endpoint 1 is the endpoint
+specified by the source, not a replacement of an original time parameter.
+Write
+\[
+ \omega=\nabla\times u,\qquad
+ F_1(t)=\int_0^t\|f(s)\|_{L^2(\mathbb R^3)}\,ds,\qquad
+ F_1(1)=\int_0^1\|f(s)\|_2\,ds<\infty .
+ \tag{258}
+\]
+
+### 21.2. Exact energy identity and finite magnetic spacetime integral
+
+Multiplication of (257) by \(u_i\), summation, and integration over
+\(\mathbb R^3\) give
+\[
+ \frac12\frac{d}{dt}\|u(t)\|_2^2+
+ \nu\|\nabla u(t)\|_2^2=\int_{\mathbb R^3}f(x,t)\cdot u(x,t)\,dx .
+ \tag{259}
+\]
+All integrations by parts are justified by the common compact support on
+every closed interval ending before 1. The transport integral is
+\(\int\operatorname{div}(u|u|^2/2)=0\), using \(\operatorname{div}u=0\).
+The pressure integral is
+\(\int\operatorname{div}(pu)-p\operatorname{div}u=0\). Each viscous
+integral is \(\int u_i\partial_\ell^2u_i=-\int|\partial_\ell u_i|^2\).
+These equalities prove (259) with its original signs.
+
+For \(\epsilon>0\), set \(Y_\epsilon=(\|u\|_2^2+\epsilon)^{1/2}\).
+Equation (259) and Cauchy--Schwarz imply
+\(Y_\epsilon'\le\|f\|_2\|u\|_2/Y_\epsilon\le\|f\|_2\).
+Integrating from zero and letting \(\epsilon\downarrow0\) proves
+\(\|u(t)\|_2\le F_1(t)\). Consequently
+\(\int_0^t\langle f,u\rangle\,ds\le
+\int_0^tF_1'(s)F_1(s)\,ds=F_1(t)^2/2\).
+For each fixed time, expansion of the curl gives
+\[
+ \|\omega\|_2^2
+ =\sum_{i,\ell}\int|\partial_i u_\ell|^2
+ -\sum_{i,\ell}\int\partial_i u_\ell\,\partial_\ell u_i
+ =\|\nabla u\|_2^2 .
+ \tag{260}
+\]
+Indeed integration by parts changes the second sum into
+\(-\sum_\ell\int u_\ell\partial_\ell(\sum_i\partial_i u_i)=0\).
+Integrating (259) and using nonnegative monotone convergence therefore
+proves the quantitative endpoint estimate
+\[
+ \frac12\|u(t)\|_2^2+\nu\int_0^t\|\omega(s)\|_2^2\,ds
+ \le\frac12F_1(t)^2,\qquad
+ \int_0^1\|\omega(s)\|_2^2\,ds\le\frac{F_1(1)^2}{2\nu}.
+ \tag{261}
+\]
+No pointwise-in-time bound for vorticity was used or follows from (261).
+
+### 21.3. The entire connection, curvature, current and gauge law
+
+Fix \(c>0\), \(g>0\), and a real calibration \(\lambda\ne0\).
+Keep \(T=-i\sigma_3/2\), so \(-2\operatorname{tr}(T^2)=1\).
+Use \(X^0=ct\), \(X^i=x^i\) on
+\(\mathbb R^3\times[0,c)\), with metric
+\(\operatorname{diag}(-1,1,1,1)\). Define
+\[
+ A_0=0,\qquad A_i(X)=\lambda u_i(x,X^0/c)T,\qquad
+ u_i(x,t)=-\frac{2}{\lambda}\operatorname{tr}(T A_i(ct,x)).
+ \tag{262}
+\]
+Thus the map to this specified connection presentation is linear and
+injective with the displayed inverse. With velocity in length/time and
+\(A_i\) in inverse length, \(\lambda\) has units time/length squared.
+Neither \(c,\lambda,g\) nor \(\nu\) is set to one.
+
+All components in (262) commute, so evaluation of the full formula
+\(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu]\)
+gives
+\[
+ F_{0i}=\frac{\lambda}{c}\partial_tu_i\,T,\qquad
+ F_{ij}=\lambda(\partial_i u_j-\partial_j u_i)T.
+ \tag{263}
+\]
+In particular, define the nonnegative magnetic and electric component
+amplitudes by
+\[
+ {\cal M}=\left[-2\sum_{i<j}\operatorname{tr}(F_{ij}^2)\right]^{1/2}
+ =|\lambda|\,|\omega|,\qquad
+ {\cal E}=\left[-2\sum_i\operatorname{tr}(F_{0i}^2)\right]^{1/2}
+ =\frac{|\lambda|}{c}|\partial_tu|.
+ \tag{264}
+\]
+These are specified component norms, not the indefinite Lorentzian
+action contraction. Under a smooth \(SU(2)\) gauge map \(h(X)\),
+\(A^h=h^{-1}Ah+h^{-1}dh\) and \(F^h=h^{-1}Fh\).
+For verification, acting on any smooth vector-valued section \(s\) gives
+\((d+A^h)s=h^{-1}(d+A)(hs)\); applying the covariant derivative once more
+proves the curvature law. Cyclicity of trace then proves that both
+amplitudes (264) are gauge invariant, since
+\(\operatorname{tr}((h^{-1}Fh)^2)=\operatorname{tr}(F^2)\).
+
+Use exactly \(D^\mu F_{\mu\nu}=g^2j_\nu\). Each commutator with
+\(A_\mu\) vanishes on this image. The time component is
+\[
+ j_0=-\frac{\lambda}{g^2c}\partial_t\operatorname{div}u\,T=0,
+ \qquad
+ j_i=J_iT,\qquad
+ J_i=\frac{\lambda}{g^2}
+       \left(\Delta u_i-\frac1{c^2}\partial_t^2u_i\right).
+ \tag{265}
+\]
+The spatial derivative before using incompressibility is
+\(\lambda(\Delta u_i-\partial_i\operatorname{div}u)\);
+the raised time derivative contributes
+\(-\lambda c^{-2}\partial_t^2u_i\). Thus (265) includes the
+Lorentzian sign. With \(w_i=\partial_tu_i\), differentiation of (257)
+retains the complete fluid dynamics in the current:
+\[
+ J_i=\frac{\lambda}{g^2}
+ \left[\Delta u_i-\frac1{c^2}
+ \left(\nu\Delta w_i-\sum_\ell w_\ell\partial_\ell u_i
+ -\sum_\ell u_\ell\partial_\ell w_i
+ -\partial_i\partial_t p+\partial_t f_i\right)\right].
+ \tag{266}
+\]
+In particular \(D^\nu j_\nu=0\): the commutators vanish, \(j_0=0\),
+and \(\sum_i\partial_iJ_i=(\lambda/g^2)
+(\Delta-c^{-2}\partial_t^2)\operatorname{div}u=0\).
+This is an exact map to a conserved gauge source, including viscosity,
+nonlinear transport, pressure and forcing.
+
+The physical spacetime volume element in these coordinates is
+\(dX^0\,d^3x=c\,dt\,d^3x\). Equations (261) and (264) give
+\[
+ \int_0^c\!\!\int_{\mathbb R^3}{\cal M}^2\,d^3x\,dX^0
+ =c\lambda^2\int_0^1\|\omega(t)\|_2^2\,dt
+ \le\frac{c\lambda^2}{2\nu}F_1(1)^2 .
+ \tag{267}
+\]
+This is a finite magnetic spacetime integral, with the original time
+Jacobian. It makes no assertion of finite electric action or of a
+quantum vacuum.
+
+### 21.4. Common compact support transfers velocity blowup to curvature
+
+For every smooth compactly supported divergence-free vector field,
+\[
+ u(x)=\frac1{4\pi}\int_{\mathbb R^3}
+       \frac{\omega(y)\times(x-y)}{|x-y|^3}\,dy .
+ \tag{268}
+\]
+Here is the precise reconstruction argument. The function
+\(G(x)=1/(4\pi|x|)\) obeys \(-\Delta G=\delta_0\).
+Away from zero its Laplacian is zero; integration by parts outside a
+ball of radius \(\epsilon\) gives a boundary flux tending to the test
+function's value at zero, because
+\(-\partial_rG=1/(4\pi\epsilon^2)\). The remaining boundary term
+containing \(G\partial_r\phi\) tends to zero. This proves the
+distribution identity. The vector identity
+\(\nabla\times\omega=\nabla\operatorname{div}u-\Delta u=-\Delta u\)
+then gives \(G*(\nabla\times\omega)=G*(-\Delta u)=u\),
+where derivatives may be moved onto the compactly supported smooth
+field by integration by parts. Moving the curl onto \(G\) and using
+\(\nabla G(x-y)=-(x-y)/(4\pi|x-y|^3)\) proves (268).
+The singular kernel is locally integrable, since its magnitude is
+bounded by \(1/(4\pi|x-y|^2)\).
+
+For \(x\in K\), its integration domain lies in \(B_{2R}(x)\), so
+\[
+ |u(x)|\le\frac{\|\omega\|_\infty}{4\pi}
+       \int_{B_{2R}(x)}|x-y|^{-2}\,dy
+       =2R\|\omega\|_\infty.
+ \tag{269}
+\]
+For \(x\notin K\), \(u(x)=0\); hence this is also the global supremum
+bound. The same formula proves injectivity of the spatial curvature
+map on this divergence-free, compactly supported input space:
+zero curvature implies \(\omega=0\), then \(u=0\).
+This statement is about the displayed vector-to-curvature map, not an
+unproved inverse on arbitrary non-Abelian gauge orbits.
+
+Consequently the compactly supported velocity blowup described by the
+source forces
+\[
+ \limsup_{t\uparrow1}\|{\cal M}(t)\|_\infty=\infty,
+ \qquad
+ \int_0^1\|{\cal E}(t)\|_\infty\,dt=\infty .
+ \tag{270}
+\]
+The first assertion follows from
+\(\|{\cal M}\|_\infty=|\lambda|\|\omega\|_\infty
+\ge|\lambda|\|u\|_\infty/(2R)\).
+For the second, \(u(x,t)=\int_0^t\partial_su(x,s)\,ds\) gives
+\(\|u(t)\|_\infty\le\int_0^t\|\partial_su(s)\|_\infty\,ds\);
+a finite endpoint integral would bound every \(\|u(t)\|_\infty\).
+Equation (264) then supplies the exact calibration. In the \(X^0\)
+time coordinate the same assertion is
+\(\int_0^c\|{\cal E}(X^0)\|_\infty\,dX^0
+=|\lambda|\int_0^1\|\partial_tu(t)\|_\infty\,dt=\infty\).
+No claim of electric \(L^2\) divergence is made. The invariant
+magnetic divergence and the finite integral (267) are compatible.
+
+### 21.5. The complete source must be singular at the endpoint
+
+Since the time support of \(f\) is a compact subset of \((0,\infty)\),
+it vanishes for \(0\le t\le t_0\) for some \(t_0>0\).
+The estimate \(\|u(t)\|_2\le F_1(t)\) proves \(u=0\) on that
+interval. Thus both \(u(0)=0\) and \(\partial_tu(0)=0\) hold.
+Equation (265) is equivalently the forced wave equation
+\[
+ \partial_t^2u-c^2\Delta u
+       =-\frac{g^2c^2}{\lambda}J .
+ \tag{271}
+\]
+For every \(t<1\) its exact zero-data solution is
+\[
+ u(t,x)=-\frac{g^2c^2}{4\pi\lambda}
+       \int_0^t(t-s)\int_{S^2}
+                J(s,x+c(t-s)n)\,dS(n)\,ds .
+ \tag{272}
+\]
+For completeness, if \(q\) is smooth and compactly supported, its
+spherical mean
+\(M(r,x)=(4\pi)^{-1}\int_{S^2}q(x+rn)\,dS(n)\)
+satisfies \(M_{rr}+2M_r/r=\Delta_xM\).
+This follows by writing the Laplacian in spherical coordinates:
+its angular part integrates to zero on the sphere by surface
+integration by parts. Therefore
+\(S_c(t)q=tM(ct,x)\) satisfies
+\((\partial_t^2-c^2\Delta_x)S_c(t)q=0\),
+\(S_c(0)q=0\), and \(\partial_tS_c(0)q=q\).
+Differentiating the integral
+\(\int_0^t S_c(t-s)J(s)\,ds\) twice gives its forcing \(J(t)\)
+and zero initial data. Multiplication by
+\(-g^2c^2/\lambda\) proves that the right side of (272) solves
+(271). The difference from \(u\) is a homogeneous wave with zero
+data. On every finite interval it has compact spatial support;
+integration by parts makes its wave energy
+\(\frac12\int(|\partial_tz|^2+c^2|\nabla z|^2)\) constant.
+Zero initial energy implies \(\partial_tz=\nabla z=0\);
+the zero initial value then gives \(z=0\). This proves (272).
+
+Using the Euclidean vector supremum norm in (272) yields
+\[
+ \|u(t)\|_\infty
+ \le\frac{g^2c^2}{|\lambda|}
+       \int_0^t(t-s)\|J(s)\|_\infty\,ds
+ \le\frac{g^2c^2}{|\lambda|}
+       \int_0^1(1-s)\|J(s)\|_\infty\,ds .
+ \tag{273}
+\]
+In particular finite-time unbounded velocity forces the exact
+necessary divergence
+\[
+ \int_0^1(1-s)\|J(s)\|_\infty\,ds=\infty .
+ \tag{274}
+\]
+The quantity \(|J|=[-2\sum_i\operatorname{tr}(j_i^2)]^{1/2}\)
+is gauge invariant by the same trace calculation as (264).
+All \(J(s)\) have support in \(K\). A smooth extension of this
+current across \(t=1\) would be bounded on the compact cylinder,
+making (274) finite, which is impossible. A zero current is also
+impossible for a nonzero zero-data input, directly by (272).
+Thus smooth compact forcing in the fluid equation does not produce
+a smooth gauge current through the singular endpoint under the
+exact map (262).
+
+### 21.6. The displayed inner profile and its shrinking-loop holonomy
+
+This calculation uses the explicit inner-circle data in the retained
+165-page source edition. Its locators are fixed to that edition:
+\(\tau=1-t\), \(A=1/2+h\), \(0<h<1/100\) on page 7;
+\(q_*>0\), \(0<X_a<X_{\rm ext}<\infty\), and
+\(X_{\rm in}\in(0,X_a)\) in Theorem 3.1 on pages 14--15;
+and \(e_0=E_0(X_{\rm in},0)>0\) in Proposition 9.9, Step 5,
+on page 116. The inner value in (3.6) and (10.21), and viscosity
+map (10.22), retain
+\[
+ \begin{split}
+ u_\theta(\sqrt{2X_{\rm in}\tau},0,1-\tau)
+   &=\tau^{-1/2-h}(e_0+\varepsilon(\tau)),\\
+ |\varepsilon(\tau)|&\le C_{\rm in}\tau^{2h},
+       \quad 0<\tau<\tau_*,\\
+ u_\nu(x,t)&=\sqrt{\nu}\,u(x/\sqrt{\nu},t).
+ \end{split}
+ \tag{275}
+\]
+Here \(C_{\rm in}\ge0\) and \(\tau_*>0\) are the finite
+remainder constant and small-time interval supplied by the source's
+printed remainder estimate; no numerical value is asserted for either.
+The reference \(u\) in (275) is the source's unit-viscosity profile,
+and \(u_\nu\) is its displayed map to each prescribed viscosity.
+All subsequent expressions retain that prescribed \(\nu\).
+The annular corrections vanish for this fixed
+\(X_{\rm in}<X_a\); the remaining background is axisymmetric,
+and its localization cutoff equals one near the spacetime origin
+of the blowup. Thus the displayed tangential value holds around the
+whole inner circle. A value at only one angular point would not
+justify the following calculation.
+
+At time \(t=1-\tau\), parameterize the positively oriented circle
+by
+\(\gamma_{\nu,\tau}(\theta)=
+(r_{\nu,\tau}\cos\theta,r_{\nu,\tau}\sin\theta,0)\),
+where \(r_{\nu,\tau}=\sqrt{2\nu X_{\rm in}\tau}\) and
+\(0\le\theta\le2\pi\). Equations (275), together with
+\(\gamma'_{\nu,\tau}=r_{\nu,\tau}e_\theta\), give the exact
+circulation and its retained remainder:
+\[
+ \begin{split}
+ {\cal C}_{\nu,\tau}
+   :=\oint_{\gamma_{\nu,\tau}}u_\nu\cdot dx
+   &=2\pi\nu\sqrt{2X_{\rm in}}\,
+       \tau^{-h}(e_0+\varepsilon(\tau))
+       \longrightarrow+\infty,\\
+ \sup_{D_{\nu,\tau}}|\omega_{\nu,3}|
+   &\ge\sqrt{\frac{2}{X_{\rm in}}}\,
+       \tau^{-1-h}(e_0+\varepsilon(\tau)).
+ \end{split}
+ \tag{276}
+\]
+The second inequality holds for all sufficiently small \(\tau\).
+In fact Stokes' theorem for the disk with normal \(+e_3\) gives
+\({\cal C}_{\nu,\tau}=\int_{D_{\nu,\tau}}\omega_{\nu,3}\,dS\).
+Its area is \(2\pi\nu X_{\rm in}\tau\); dividing the first line
+by this original area proves the second. Positivity of the last
+factor follows once \(C_{\rm in}\tau^{2h}\le e_0/2\).
+When \(C_{\rm in}=0\), it holds throughout the stated small-time
+interval. No sign of the orientation or viscosity factor is dropped.
+
+For the connection (262) formed from \(u_\nu\), ordinary column
+transport along this circle solves
+\(P'(\theta)=-\lambda T(u_\nu(\gamma(\theta),t)\cdot
+\gamma'(\theta))P(\theta)\), \(P(0)=I\).
+The original lattice endpoint convention uses inverse transport
+\(U=P^{-1}\). Differentiating \(P^{-1}P=I\) gives
+\(U'=U\lambda T(u_\nu\cdot\gamma')\).
+Since all coefficients commute, differentiation of the exponential
+integral proves the complete retained pair
+\[
+ \begin{split}
+ P_{\nu,\tau}&=\exp(-\lambda T{\cal C}_{\nu,\tau}),\\
+ U_{\nu,\tau}=P_{\nu,\tau}^{-1}
+    &=\exp(+\lambda T{\cal C}_{\nu,\tau}),\\
+ W_{\nu,\tau}=\operatorname{tr}U_{\nu,\tau}
+    &=2\cos(\lambda{\cal C}_{\nu,\tau}/2).
+ \end{split}
+ \tag{277}
+\]
+The eigenvalues of \(T\) are \(-i/2,i/2\), which proves the trace
+formula with its factor \(1/2\). For an open path, substitution of
+\(h(\gamma(\theta))^{-1}P(\theta)h(\gamma(0))\) into the transport
+equation proves
+\(P^h=h_t^{-1}Ph_s\); taking its inverse gives
+\(U^h=h_s^{-1}Uh_t\), exactly the original lattice law.
+At the closed endpoint this is conjugation, so \(W_{\nu,\tau}\)
+is gauge invariant. The opposite transport signs are both retained;
+the trace is unchanged because the cosine is even.
+
+The cluster set of these traces as \(\tau\downarrow0\) is exactly
+\([-2,2]\). To prove the nontrivial inclusion, fix \(y\in[-2,2]\)
+and set \(\alpha=\arccos(y/2)\). The circulation is continuous on
+every regular-time interval and tends to \(+\infty\).
+The intermediate value theorem therefore supplies times with
+\({\cal C}_{\nu,\tau_n}=(4\pi n+2\alpha)/|\lambda|\) for all
+sufficiently large integers \(n\). They tend to zero, since the
+circulation is bounded on every closed interval separated from
+zero. Formula (277) gives \(W_{\nu,\tau_n}=y\), for either sign
+of \(\lambda\). Conversely the cosine formula always lies in
+\([-2,2]\), proving equality of the cluster set. This is an
+exact calculation on the displayed source core data; it does not
+independently verify the source's complete residual construction.
+
+This identifies a genuine invariant curvature concentration and a
+quantitative source obstruction. It supplies neither a source-free
+solution under this map nor a wave-functional in the physical
+vacuum-orthogonal quantum Hilbert space of the preceding sections.
+The exact connection-to-link map retained in the source packet may
+still be applied on every regular time slice. The source and
+curvature calculations here do not change its finite-box vacuum,
+its raw state norms, or its spectral inequality.
+
+
+## 22. A positive Gamma limit and an exact rescaled electric observable
+
+### 22.1. The radial family with all raw spectral weights retained
+
+The retained radial Gamma and amplitude/time proofs extend the
+fixed-parameter calculation in Section 20. We first give the full
+measure calculation needed for the new operator map below. Keep
+\[
+ L_j=j^2,\quad a_j=\frac1{100j},\quad
+ \sigma_j=\sqrt8\sin\frac{\pi}{4j^2+2},\quad
+ \lambda_j=\frac{2\sigma_j}{a_j},\quad
+ c_j=j\lambda_j,\quad c_\Gamma=100\sqrt2\pi,\quad k=\frac32 .
+ \tag{278}
+\]
+Here \(j\ge2\) is an integer, and \(c_\Gamma\) is the physical
+Gamma scale, distinct from the spacetime coordinate constant in
+Section 21. The full actual finite-box Hamiltonian and vacuum remain
+those of (190)--(205). At each fixed box use the same exact tree,
+Haar, logarithm and kinetic-coordinate maps. Put
+\[
+ F_j(y)=\chi(y)\frac{\sigma_j}{4}
+       |(O^{\mathsf T}G^{-1/2}y)_{\nu_j}|^2,\qquad
+ Q_{g,j}=g^{-2}F_j,\qquad
+ B_{g,j}(\beta)=e^{i\beta Q_{g,j}} .
+ \tag{279}
+\]
+The real invariant cutoff is supported strictly inside the full
+logarithm chart and equals one near zero. Extend \(F_j\) by zero
+off that chart; it is a globally smooth real physical function.
+Thus \(Q_{g,j}\) is a bounded self-adjoint multiplication operator
+at every finite \(g>0,j\), even though no bound uniform in the
+regulator is asserted. In the transported limit it becomes
+\(q=\sigma_j|z_{\nu_j}|^2/4\). Its probability law in the
+comparison vacuum is \(d\rho(q)=q^{k-1}e^{-q}dq/\Gamma(k)\).
+All three colour coordinates and the original kinetic tensor occur
+in (279).
+
+Let \(\beta_j=\sqrt j\), subtract the actual mean
+\(m_{g,j}=\langle\psi_{g,j},B_{g,j}(\beta_j)\psi_{g,j}\rangle\),
+and set \(v_{g,j}=(B_{g,j}(\beta_j)-m_{g,j})\psi_{g,j}\).
+Its raw norm is \(1-|m_{g,j}|^2>0\), by the strict
+Cauchy--Schwarz inequality for a nonconstant multiplier and the
+strictly positive vacuum. The finite-box theorem and (253) give
+the complete comparison measure
+\[
+ \nu_{0,j}=\sum_{n=1}^{\infty}
+ \frac{(k)_n}{n!}\frac{j^n}{(j+1)^{n+k}}\,
+ \delta_{\lambda_j n},\qquad
+ d_j=\nu_{0,j}([0,\infty))=1-(j+1)^{-k}.
+ \tag{280}
+\]
+The missing \(n=0\) coefficient is exactly the removed vacuum
+component, not an omitted low-energy mass.
+
+For a direct quantitative limit, let \(Q\) have law \(\rho\),
+and conditionally on \(Q=q\) let \(N_j\) be Poisson with mean
+\(jq\). Gamma integration gives
+\[
+ {\mathbb P}(N_j=n)
+ =\frac{j^n}{n!\Gamma(k)}
+   \int_0^\infty q^{n+k-1}e^{-(j+1)q}\,dq
+ =\frac{(k)_n}{n!}\frac{j^n}{(j+1)^{n+k}}.
+ \tag{281}
+\]
+Thus the law of \(\lambda_jN_j\) is exactly
+\(\nu_{0,j}+(j+1)^{-k}\delta_0\). Since
+\({\mathbb E}(N_j/j-Q\mid Q)=0\),
+\({\mathbb E}((N_j/j-Q)^2\mid Q)=Q/j\),
+\({\mathbb E}Q=k\) and \({\mathbb E}Q^2=k(k+1)\),
+\[
+ {\mathbb E}|\lambda_jN_j-c_\Gamma Q|^2
+ =\frac{kc_j^2}{j}+k(k+1)(c_j-c_\Gamma)^2.
+ \tag{282}
+\]
+The mixed term vanishes by conditional expectation. For
+\(x_j=\pi/(4j^2+2)\), integration of \(1-\cos x\le x^2/2\)
+gives \(0\le x_j-\sin x_j\le x_j^3/6\), and therefore
+\[
+ 0<c_\Gamma-c_j\le
+ \frac{c_\Gamma}{2j^2+1}
+ +\frac{400\sqrt2\pi^3j^2}{6(4j^2+2)^3}.
+ \tag{283}
+\]
+For finite measures, let \(d_{\rm BL}\) use tests of supremum
+norm at most one and Lipschitz constant at most one. The coupling,
+Cauchy--Schwarz and the removed zero mass yield
+\[
+ \begin{split}
+ d_{\rm BL}(\nu_{0,j},\gamma_\Gamma)
+ &\le
+ \left[\frac{kc_j^2}{j}
+       +k(k+1)(c_j-c_\Gamma)^2\right]^{1/2}+(j+1)^{-k}
+ \longrightarrow0,\\
+ d\gamma_\Gamma(\omega)
+ &=\frac{\omega^{1/2}e^{-\omega/c_\Gamma}}
+       {\Gamma(3/2)c_\Gamma^{3/2}}\,d\omega .
+ \end{split}
+ \tag{284}
+\]
+The density follows by the change of variable \(\omega=c_\Gamma q\).
+It has total mass one, zero mass at zero, and positive mass on every
+\((0,\epsilon)\), \(\epsilon>0\).
+
+At each fixed \(j\), actual-vacuum and finite-projection convergence
+give convergence of the actual raw measure to (280), including total
+mass. A positive dyadic \(g_j\) can consequently satisfy
+\[
+ g_j<j^{-5},\quad
+ d_{\rm BL}(\nu_{g_j,j},\nu_{0,j})<j^{-1},\quad
+ |\|v_{g_j,j}\|^2-d_j|<j^{-1},\quad
+ |m_{g_j,j}-(1-i\sqrt j)^{-k}|<j^{-1}.
+ \tag{285}
+\]
+Below we impose additional proved fixed-box weighted convergence
+conditions on this selection. This refines the finite list used to
+choose the dyadic; it does not identify it with either prescribed
+running-coupling trajectory or with Section 18's native covariance
+sequence. All original coefficients remain
+\(\kappa_j=200jg_j^2\), \(b_j=50j/g_j^2\),
+\(\xi_j=1/(4g_j^4)\), including the scalar \(2b_j|P_j|\).
+Equations (284)--(285) prove the actual nonlinear raw limit
+\(\nu_{g_j,j}\Rightarrow\gamma_\Gamma\) and
+\(\|v_{g_j,j}\|^2\to1\). The absence of endpoint atoms gives
+\[
+ \nu_{g_j,j}((0,\epsilon))
+ \longrightarrow\gamma_\Gamma((0,\epsilon))>0 .
+ \tag{286}
+\]
+This is a positive low-energy limit of this radial observable.
+It has not been identified with the original magnetic translation
+state or a spatial local interacting continuum.
+
+### 22.2. Exact phase conjugation in the full nonlinear Hamiltonian
+
+Fix \(j,g>0\), abbreviate \(A=H-\mathcal E\), \(Q=Q_{g,j}\),
+and retain every edge and colour derivative \(X=X_{e,\alpha}\).
+Each \(X\) is skew-adjoint for the original Haar measure. For a
+smooth physical function \(f\), the product rule gives
+\[
+ X(e^{i\beta Q}f)
+ =e^{i\beta Q}(Xf+i\beta(XQ)f).
+ \tag{287}
+\]
+Applying \(X\) a second time and using the entire Hamiltonian gives
+\[
+ \begin{split}
+ B(\beta)^*AB(\beta)&=A+\beta J+\beta^2R,\\
+ J=i[A,Q]&=-i\kappa\sum_{e,\alpha}
+       \bigl(2(X_{e,\alpha}Q)X_{e,\alpha}
+                    +X_{e,\alpha}^2Q\bigr),\\
+ R=\tfrac12[Q,[A,Q]]
+     &=\kappa\sum_{e,\alpha}(X_{e,\alpha}Q)^2\ge0 .
+ \end{split}
+ \tag{288}
+\]
+These identities hold on smooth physical functions and extend to
+the original second-order Sobolev operator domain, since each
+coefficient and each multiplier is smooth on the compact group.
+The Wilson multiplication, its scalar term and \(\mathcal E\)
+commute with \(B\); none has been deleted. For the double
+commutator, \([J,Q]=-2iR\) follows by applying the displayed
+first-order expression to \(Qf\), so
+\([Q,[A,Q]]=-i[Q,J]=2R\). This checks both signs.
+Gauge invariance follows either from the commutator formula or
+from gauge invariance of \(A,Q\). In particular \(R\) is an
+actual nonnegative, bounded, gauge-invariant multiplication
+operator at every finite regulator.
+
+For any smooth \(h\), the exact ground-state form identity is
+\(q_A[h\psi]=\kappa\int\psi^2\sum|Xh|^2\,dU\).
+It is obtained by expanding \(X(h\psi)\), integrating its mixed
+terms by parts, and substituting the full equation \(H\psi=\mathcal E\psi\);
+the potential cancels against that equation with its complete
+coefficient. Setting \(h=e^{i\beta Q}\) in (287) proves
+\[
+ q_A[(B(\beta)-\langle B(\beta)\rangle_\psi)\psi]
+ =q_A[B(\beta)\psi]=\beta^2\langle R\rangle_\psi .
+ \tag{289}
+\]
+Centering does not change this form because \(A\psi=0\).
+This is an exact electric-energy formula for a raw state.
+
+
+### 22.3. The complete fixed-box weighted tail estimate
+
+Continue at fixed \(j\), and abbreviate \(F=F_j\),
+\(R_g=R_{g,j}\), \(a=a_j\), and \(\nu=\nu_j\), so
+\(\sigma_\nu=\sigma_j\). Write
+\(W=\sum_p(2-\operatorname{tr}U_p)\) for the complete face
+potential, and \(N,M\) for the original edge and face counts.
+All formulas involving \(\mathcal B_g\) below are in the
+original scaled chord coordinates \(x\); their \(\Phi_0\)
+is the exact comparison vacuum in those coordinates. The
+constant-Jacobian kinetic-coordinate unitary from (224)
+then gives the stated radial \(L^2(\rho)\) map.
+
+Let \(\mathcal X_{e,\alpha}\) be the exact quotient fields of Section
+17.1, and define the globally smooth nonnegative function
+\[
+ S(y)=\sum_{e,\alpha}(\mathcal X_{e,\alpha}F(y))^2.
+\]
+The quotient identity intertwines the original sums of squared
+derivatives, so
+\[
+ R_g=\frac{2}{ag^2}S.
+ \tag{290}
+\]
+There is a finite constant \(C_S\), depending on the fixed box, mode
+and cutoff, with
+\[
+ S\le C_SW \quad\hbox{on the whole compact chord manifold}.
+ \tag{291}
+\]
+Here is the global justification. The original face potential has
+expansion
+\(W(y)=\frac14\sum_\alpha\|Cy^\alpha\|^2+O(|y|^3)\).
+The matrix \(C^*C\) is strictly positive on chord coordinates. Hence
+choose a chart radius \(\rho>0\) and \(c_*>0\) with
+\(W(y)\ge c_*|y|^2\) for \(|y|<\rho\). The smooth function \(F\) has
+zero value and zero differential at zero; its differentiated square
+satisfies \(S(y)\le C_*|y|^2\) there. For example bounded second
+derivatives of \(F\), together with bounded coefficient vectors of the
+finitely many \(\mathcal X_{e,\alpha}\), give such a finite \(C_*\)
+by the fundamental theorem of calculus along the segment from zero.
+All faces flat on the contractible open box imply all based chord
+holonomies are the identity: elementary face moves identify the
+canonical tree paths, and the original chord words then equal \(I\).
+Thus \(W\) has precisely one zero on the chord manifold. Compactness
+gives \(W\ge c_\rho>0\) off the radius-\(\rho\) neighborhood.
+One can take
+\[
+ C_S=\max\left\{\frac{C_*}{c_*},
+                 \frac{\max S}{c_\rho}\right\}.
+\]
+This proves (291), including the region where the cutoff changes.
+
+Put \(U_g=W/g^2\) and \(D_S=2C_S/a\). Equations (290)--(291) give
+\[
+ 0\le R_g\le D_SU_g.
+ \tag{292}
+\]
+The complete actual-vacuum moment proof in Section 17.4 gives, for
+every integer \(n\ge0\),
+\[
+ \int U_g^n\psi_g^2\,dU\le B_n,\quad
+ B_0=1,\quad B_1=2aK,\quad
+ B_{n+1}=2aK B_n+16n^2B_{n-1}\ (n\ge1),\quad
+ K=\frac{3\sqrt{NM}}a.
+ \tag{293}
+\]
+Here \(N,M\) are the original numbers of edges and faces.
+These estimates use the actual energy bound \(\mathcal E_g\le K\).
+Their derivation retains the exact identity
+\(q_H[f\psi]-\mathcal E_g\|f\psi\|^2
+=\kappa\int\psi^2\sum|Xf|^2\),
+the full-potential bound \(\sum|XW|^2\le16W\), and consequently
+\(bM_{n+1}\le\mathcal E_g M_n+4\kappa n^2M_{n-1}\).
+Thus (293) is available for arbitrarily high fixed powers, not merely
+the first vacuum moment.
+
+Let \(\mathcal B_g\) be the exact Haar-density and dilation isometry,
+zero-extended outside \(\Omega_g\), and \(f_g=\mathcal B_g\psi_g\).
+For an integer \(m\ge1\) and radius \(R>0\), split \(|x|>R\) into
+\(|gx|<\rho\) and its complement. On the former region
+\(U_g\ge c_*R^2\), and on the latter \(U_g\ge c_\rho/g^2\).
+Equations (292)--(293) therefore give the explicit weighted squared tail
+\[
+ \boxed{
+ \int_{|x|>R}|\mathcal B_g(R_g^m\psi_g)(x)|^2\,dx
+ \le D_S^{2m}B_{2m+1}
+           \left(\frac1{c_*R^2}+\frac{g^2}{c_\rho}\right).
+ }
+ \tag{294}
+\]
+In particular \(m=1\) uses \(B_3\), and \(m=2\) uses \(B_5\).
+No assumption about a cutoff-region tail has been inserted.
+
+### 22.4. Exact coefficient and vacuum-vector limit
+
+Write
+\[
+ z^\alpha=O^{\mathsf T}G^{-1/2}x^\alpha,\qquad
+ q(x)=\frac{\sigma_\nu}{4}|z_\nu|^2,\qquad
+ \lambda=\frac{2\sigma_\nu}{a}.
+\]
+On each fixed ball, \(\chi(gx)=1\) for small enough \(g\).
+The exact tangent coefficients of the quotient fields have squared
+Gram matrix \(G\otimes I_3\). It follows directly from (290) that the
+transported multiplier \(r_g(x)=R_g(\exp(gx))\) satisfies
+\[
+ r_g(x)\longrightarrow
+ \frac2a\sum_\alpha(\nabla_{x^\alpha}q)^{\mathsf T}
+                       G(\nabla_{x^\alpha}q)
+ =\frac2a\frac{\sigma_\nu^2}{4}|z_\nu|^2
+ =\lambda q(x).
+ \tag{295}
+\]
+This convergence is uniform on each fixed ball. The middle equality
+uses the selected row of \(O^{\mathsf T}G^{-1/2}\) and
+\(O^{\mathsf T}O=I\); it retains the original quotient kinetic metric.
+The Haar-density factor commutes with multiplication, so it introduces
+no omitted term into (295).
+
+The actual strong vacuum limit \(f_g\to\Phi_0\), local coefficient
+convergence (295), and the tail bound (294) prove
+\[
+ \boxed{\mathcal B_g(R_g^m\psi_g)
+            \longrightarrow(\lambda q)^m\Phi_0
+       \quad\hbox{strongly in }L^2,\qquad m\ge1.}
+ \tag{296}
+\]
+Indeed convergence on a fixed ball follows by multiplying strongly
+convergent vectors by uniformly convergent bounded multipliers there.
+First taking \(g\downarrow0\), then \(R\to\infty\), controls the full
+error using (294) and the polynomial times Gaussian tail of the limit.
+In particular, with \(k=3/2\) and
+\(d\rho(q)=q^{k-1}e^{-q}dq/\Gamma(k)\),
+\[
+ \langle R_g\rangle_{\psi_g}\to\lambda k,\qquad
+ \langle R_g^n\rangle_{\psi_g}\to\lambda^n(k)_n
+ \quad(n\ge1).
+ \tag{297}
+\]
+One obtains each expectation by (296) and the strong unit vacuum limit.
+
+### 22.5. Weighted transport on actual carrier time-orbit vectors
+
+For each fixed box and real \(\beta\), set
+\[
+ m_g(\beta)=\langle\psi_g,e^{i\beta Q_g}\psi_g\rangle,\qquad
+ v_g(\beta)=(e^{i\beta Q_g}-m_g(\beta))\psi_g,\qquad
+ h_g(\beta,t)=e^{-tA}v_g(\beta),\quad t\ge0.
+\]
+The fixed-box spectral theorem and bounded phase-vector convergence
+give strong transport to the exact oscillator time vector
+\[
+ h_0(\beta,t)=e^{-tA_0}
+       (e^{i\beta q}-(1-i\beta)^{-k})\Phi_0.
+ \tag{298}
+\]
+This convergence is uniform for \(\beta,t\) in compact parameter
+sets. A direct proof uses compactness of the comparison phase-vector
+family in \(L^2\), a finite uniform net and finite oscillator spectral
+cutoffs, convergence of the corresponding actual projections, and
+uniform convergence of the finitely many exponential energy factors.
+The initial phase vectors converge uniformly even over all phase
+parameters: the actual multiplier equals \(e^{i\beta q}\) on a ball
+whose radius tends to infinity, while both multipliers have modulus one.
+
+The original positive heat semigroup satisfies
+\[
+ |e^{-tA}(u\psi_g)|\le\|u\|_\infty\psi_g.
+ \tag{299}
+\]
+For completeness, the product-group electric heat kernels are positive;
+the full real bounded Wilson multiplication has positive exponential.
+The Trotter product and strong convergence preserve positivity and
+\(|e^{-tA}u|\le e^{-tA}|u|\). The identity \(e^{-tA}\psi_g=\psi_g\)
+then proves (299). Gauge restriction preserves it. Thus
+\[
+ |h_g(\beta,t)|\le2\psi_g,
+ \tag{300}
+\]
+uniformly for all real \(\beta\) and \(t\ge0\).
+
+Multiply the squared tail bound (294) by four and use (300). The same
+local convergence argument as in (296) proves, for every fixed integer
+\(m\ge1\),
+\[
+ \boxed{\mathcal B_g(R_g^m h_g(\beta,t))
+       \longrightarrow(\lambda q)^m h_0(\beta,t)
+       \quad\hbox{strongly, uniformly on compact }(\beta,t)\hbox{ sets}.}
+ \tag{301}
+\]
+The local part is uniform by (298) and the fixed-ball multiplier bound;
+the tail is uniform by (294),(300). Finite linear combinations inherit
+the same result. This proves the required polynomial powers on these
+time-orbit vectors. It makes no assertion about arbitrary interspersed
+unbounded products.
+
+### 22.6. A positive-coupling diagonal retaining the weighted tests
+
+For \(j\ge2\), retain
+\[
+ L_j=j^2,\quad a_j=\frac1{100j},\quad
+ \sigma_j=\sqrt8\sin\frac{\pi}{4j^2+2},\quad
+ \lambda_j=\frac{2\sigma_j}{a_j},\quad
+ c_j=j\lambda_j\longrightarrow c_\Gamma=100\sqrt2\pi.
+\]
+The preexisting diagonal selected only bounded phase/time kernels and
+configuration flatness. Those tests alone do not establish (301) after
+multiplication by a growing power of \(j\). Refine the positive dyadic
+choice at stage \(j\) as follows. In addition to every previous
+stage-\(j\) test and \(g<j^{-5}\), require
+\[
+ \sup_{|\beta|\le j^2,\ 0\le t\le j}
+ \left\|\mathcal B_g((jR_g)^m h_g(\beta,t))
+                   -c_j^m q^m h_0(\beta,t)\right\|<\frac1j,
+ \qquad 0\le m\le j,
+ \tag{302}
+\]
+The zero power explicitly includes unweighted vector transport; the compact-family convergence of (298) proves this case. Also impose the corresponding vacuum-vector tests
+\[
+ \left\|\mathcal B_g((jR_g)^m\psi_g)
+                   -c_j^m q^m\Phi_0\right\|<\frac1j
+ \quad(1\le m\le j),\qquad
+ |\langle R_g\rangle-\lambda_j k|<j^{-5}.
+ \tag{303}
+\]
+At each fixed \(j\), there are finitely many powers and each compact
+supremum tends to zero by (296),(301). Thus all tests hold at every
+sufficiently small positive \(g\); a dyadic exists. Take the least
+positive dyadic exponent satisfying the entire list. This is a
+definite refined sequence, not an assertion that an earlier least
+dyadic already satisfies the new conditions. Its original coefficients
+remain \(\kappa_j=200jg_j^2\), \(b_j=50j/g_j^2\),
+\(\xi_j=1/(4g_j^4)\), with every face and scalar Wilson term present.
+Spectral tests for the centered \(R_g\) vacuum vector used below can
+be included in this same finite list, by the fixed-box argument in
+Section 22.8.
+
+### 22.7. The exact nonconstant carrier operator
+
+Fix \(b_0\ne0\), a real offset \(\alpha\), and put
+\(s_j=b_0\sqrt j\), \(\beta_j=s_j+\alpha\).
+The exact oscillator radial map sends the vacuum to \(1\) in
+\(L^2(\rho)\), and
+\[
+ A_{0,j}=\lambda_jN,\qquad
+ N=-q\partial_q^2-(k-q)\partial_q,\qquad
+ U_s f=e^{isq}f,\qquad R_{0,j}=\lambda_jQ,\quad Qf=qf.
+ \tag{304}
+\]
+The identity on exponential functions
+\[
+ e^{-uN}e^{i\beta q}
+ =[1-i\beta(1-e^{-u})]^{-k}
+  \exp\left(\frac{i\beta e^{-u}q}
+                  {1-i\beta(1-e^{-u})}\right)
+ \tag{305}
+\]
+can be verified by differentiating in \(u\) and using (304).
+At \(u=0\) it has the specified initial value. The differentiated
+functions lie in the operator domain at finite \(u\): their derivatives
+are polynomials times an exponential of nonpositive real part, hence
+square-integrable for the Gamma density. More explicitly, multiplying
+by the radial oscillator ground Gaussian and returning to the three
+original selected-mode coordinates gives a smooth Schwartz function
+of those coordinates, in the original oscillator operator domain;
+this fixes the radial endpoint domain rather than inferring it from
+integrability alone. Uniqueness of the
+self-adjoint semigroup evolution proves (305). Its prefactor has
+modulus at most one, and the real part of its exponential coefficient
+is \(-\beta^2e^{-u}(1-e^{-u})/
+[1+\beta^2(1-e^{-u})^2]\le0\).
+
+Take \(u=t\lambda_j\) in (305) and multiply by \(e^{-is_jq}\).
+Its prefactor tends to one, while its exponential coefficient tends to
+\(i\alpha-c_\Gamma b_0^2t\), because
+\[
+ 1-e^{-t\lambda_j}\sim t\lambda_j,\quad
+ \beta_j(1-e^{-t\lambda_j})\to0,\quad
+ s_j\beta_j(1-e^{-t\lambda_j})\to c_\Gamma b_0^2t.
+ \tag{306}
+\]
+For \(t=0\) the same limits are exact directly. The subtracted centered
+term is
+\((1-i\beta_j)^{-k}e^{-is_jq}\); its \(q^m\)-weighted norm is
+\((1+\beta_j^2)^{-k/2}\sqrt{(k)_{2m}}\to0\).
+The uncentered expression and its limit have modulus at most one.
+Dominated convergence against \(q^{2m}\rho\), whose integral is
+\((k)_{2m}\), proves
+\[
+ q^m U_{s_j}^{-1}e^{-t\lambda_jN}
+       \{e^{i\beta_jq}-(1-i\beta_j)^{-k}\}
+ \longrightarrow q^m e^{i\alpha q-c_\Gamma b_0^2tq}
+ \quad\hbox{in }L^2(\rho),\qquad m\ge0.
+ \tag{307}
+\]
+The estimates are uniform for bounded \(\alpha,t\). Equivalently one
+can combine ordinary strong convergence and the domination bound with
+the split
+\(R^{2m}\|\text{unweighted error}\|^2
++4\int_{q>R}q^{2m}d\rho\).
+
+Combining (302),(307), the exact radial coordinate map and demodulation
+therefore identifies the actual operator \(jR_g\) on finite carrier
+time-orbit vectors with
+\[
+ R_\infty=c_\Gamma Q,\qquad
+ H_{b_0}=c_\Gamma b_0^2Q=b_0^2R_\infty .
+ \tag{308}
+\]
+For a precise common-coordinate statement, first transport by
+\(\mathcal B_{g_j}\), then use the orthogonal mode/Gaussian radial
+isometry on its comparison vector and demodulate by \(U_{s_j}^{-1}\).
+The norm error between the actual transported vector and this
+comparison vector tends to zero by (302). The other modes remain in
+their normalized vacuum factors. Thus the varying number of other
+modes introduces no unidentified Hilbert-space map in the stated
+Gram and operator limits.
+
+For nonnegative times \(u,v\), offsets \(\alpha,\delta\), and an
+integer \(m\ge0\), the complete limiting insertion is
+\[
+ \boxed{
+ \left\langle e^{-uH_{b_0}}e^{i\alpha q},
+            R_\infty^m e^{-vH_{b_0}}e^{i\delta q}\right\rangle
+ =\frac{c_\Gamma^m(k)_m}
+ {[1+c_\Gamma b_0^2(u+v)+i(\alpha-\delta)]^{k+m}} .
+ }
+ \tag{309}
+\]
+This follows by integrating \(c_\Gamma^mq^m\) against the original Gamma
+density. Its real denominator part is positive, fixing the complex
+power. The same limit for actual insertions follows from (302),(307)
+and Cauchy--Schwarz. In particular it retains their imaginary parts.
+
+The multiplication operator \(c_\Gamma Q\) is nonconstant, positive and
+self-adjoint on
+\(\{f:\int q^2|f|^2d\rho<\infty\}\): its nonreal resolvents are
+the bounded multipliers \((c_\Gamma q-z)^{-1}\), and testing the adjoint on
+compactly supported functions proves maximality of this domain.
+The carrier time-orbit vectors, together with their modulations, are
+dense. For example the functions \(e^{i\alpha q}\) are total:
+orthogonality makes the Fourier transform of the finite density
+\(\overline f\,d\rho\) zero. Extend that integrable density by
+zero to the negative real axis, and convolve it with a Gaussian.
+The Gaussian Fourier integral and Fubini express the convolution
+as the integral of the zero Fourier transform times a Gaussian
+multiplier, so every such convolution vanishes. Gaussian
+convolutions approach the original density in \(L^1\): uniform
+continuity and Gaussian tails prove this first for continuous
+compactly supported functions, and density with the \(L^1\)
+contraction bound proves the general case. Thus \(f=0\).
+The same argument for the finite measure
+\((1+q^{2m})d\rho\) proves that the modulation span is a
+core for the maximal multiplication domain of \(Q^m\).
+Formula (309) specifies the operator correspondence on the tested
+polynomial domains, rather than only its expectation in one vector.
+It does not assert convergence of arbitrary interspersed unbounded
+products or identify a continuum local field algebra.
+
+For the actual first carrier energy, (289),(303) give
+\[
+ q_{A_j}[v_{g_j}(\beta_j)]
+ =\beta_j^2\langle R_{g_j}\rangle
+ \longrightarrow k c_\Gamma b_0^2.
+ \tag{310}
+\]
+Indeed \(\beta_j^2\lambda_j\to c_\Gamma b_0^2\), while
+\(\beta_j^2|\langle R_{g_j}\rangle-\lambda_j k|
+\le\beta_j^2j^{-5}\to0\). This proves the previously unavailable
+unbounded first moment at physical time zero.
+
+Finally, for \(s_j=b_0\sqrt j\), (288) gives the unchanged-regulator
+realization
+\[
+ jR_{g_j}
+ =\frac{B_{s_j}^{-1}A_jB_{s_j}
+        +B_{-s_j}^{-1}A_jB_{-s_j}-2A_j}{2b_0^2}.
+ \tag{311}
+\]
+It explains exactly in which sense this nonconstant multiplier is a
+rescaled electric-energy observable.
+
+### 22.8. The vacuum image and its entire raw limiting measure
+
+The vacuum cannot be discarded when extending the observable algebra.
+At each fixed \(j\), (296),(297) prove
+\[
+ \mathcal B_g
+   \{j(R_g-\langle R_g\rangle)\psi_g\}
+ \longrightarrow c_j(q-k)\Phi_0.
+ \tag{312}
+\]
+The exact Laguerre identity \(N(q-k)=q-k\) and
+\(\int(q-k)^2d\rho=k\) show that the complete comparison raw excitation
+measure of this vector is
+\[
+ k c_j^2\,\delta_{\lambda_j}.
+ \tag{313}
+\]
+This is a spectral-vector calculation: all other oscillator factors
+are in their vacuum, and \(q-k\) is exactly its first radial Laguerre
+eigenvector up to sign and norm.
+
+The strong vector convergence (312) and finite spectral projection
+convergence imply weak convergence of the actual raw measure to
+(313) at fixed \(j\), including its total mass. To check tightness,
+choose a finite comparison spectral cutoff containing this
+eigenvector. Its limiting omitted mass is zero, while total masses
+converge by (312). The actual omitted mass then tends to zero.
+Finite cluster projections and their converging energies determine
+every bounded continuous test. This repeats the exact argument used
+for the bounded-phase vectors, now with the separately proved
+weighted strong vector convergence.
+
+Add to stage \(j\)'s finite tests a bounded-Lipschitz error below
+\(1/j\) between this actual measure and (313), and the corresponding
+norm error below \(1/j\). These thresholds exist at every fixed
+box by the preceding proof and can be included in the same positive
+dyadic choice. Since \(\lambda_j\to0\) and \(c_j\to c_\Gamma\), the actual
+centered vacuum images
+\(w_j=j(R_{g_j}-\langle R_{g_j}\rangle)\psi_{g_j}\) then satisfy
+\[
+ \boxed{\nu_{w_j}\Longrightarrow k c_\Gamma^2\delta_0,\qquad
+ \|w_j\|^2\to k c_\Gamma^2>0,\qquad
+ \langle w_j,e^{-tA_j}w_j\rangle\to k c_\Gamma^2\quad(t\ge0).}
+ \tag{314}
+\]
+Every finite \(w_j\) is exactly vacuum-orthogonal. It is nonzero:
+\(R_g\) vanishes on an open region outside the cutoff support and
+is strictly positive on an open set near a point where the selected
+quadratic has nonzero derivative. Since \(\psi_g>0\), \(R_g\) cannot
+have zero variance. This argument does not require a limiting norm
+to establish finite-regulator nonzero states.
+
+A representation retaining the vacuum \(\Omega\), this operator's
+centered vacuum image \(w\), its inner products and its correlations
+must have \(\langle\Omega,w\rangle=0\) and \(\|w\|^2=k c_\Gamma^2\).
+If its Hamiltonian is nonnegative, (314) forces \(w\) into its kernel:
+for any \(t>0\),
+\(\int(1-e^{-tE})d\nu_w(E)=0\), and positivity makes the measure
+supported at \(E=0\). Thus it has a second independent zero-energy
+vector. Constant autocorrelation without retained orthogonality
+would not imply this conclusion; orthogonality is part of the
+operator/vacuum map just specified.
+
+There is an exact relation to the previously constructed origin
+modulation sector. In \(L^2(\rho)\),
+\[
+ \frac{e^{i\alpha q}-(1-i\alpha)^{-k}}{i\alpha}
+       \longrightarrow q-k\qquad(\alpha\to0).
+ \tag{315}
+\]
+The inequality \(|(e^{i\alpha q}-1)/\alpha|\le q\) and the finite
+second Gamma moment prove strong convergence of its first term;
+differentiating the Gamma integral gives the scalar derivative
+\(k\). Hence the centered vacuum image of \(R_\infty=c_\Gamma Q\) is the
+precise derivative of the origin modulation state. Its zero-energy
+limit is consistent with that sector's already computed vanishing
+physical-time generator.
+
+The positive carrier result (308)--(310) is therefore an actual
+nonconstant observable extension beyond the scalar unscaled
+configuration cylinders. Its vacuum extension is equally explicit
+and has the zero-energy consequence (314). Neither statement alone
+constructs the desired local interacting four-dimensional theory;
+they specify the maps, domains, moments and the exact obstruction
+for this particular retained observable/state family.
+
+
+### 22.9. Exact relation to the unchanged local cylinders
+
+The retained configuration bridge uses the same original face-filling
+map from Section 13. If a fixed coarse index \(k_0\) divides \(j\),
+replace a coarse edge by the ordered product of \(j/k_0\) fine
+links. Its physical endpoints agree because
+\(a_j(j/k_0)n=a_{k_0}n\). No noncommuting factors are reordered.
+On the cofinal subsequence \(j=n!\), this gives every fixed coarse
+index eventually. The vacuum estimate in (107), with
+\(m=j/k_0\) and \(\sqrt{N_jM_j}\le18\sqrt5j^6\), gives
+\[
+\int\|I-U_p\|_{\rm HS}^2\,d(p_{k_0,j})_*\mu_j
+\le\frac{216\sqrt5}{k_0^2}g_j^2j^8
+\le\frac{216\sqrt5}{k_0^2j^2}.
+\tag{316}
+\]
+All elementary coarse faces therefore become flat in every
+subsequential compact configuration limit. Equation (110)
+identifies all such flat fields as
+\(U_e=q_{s(e)}^{-1}q_{t(e)}\), with one fixed root value.
+They form one compact vertex-gauge orbit. Haar averaging on that
+orbit is its unique invariant probability: the gauge average
+of a continuous function is constant on the transitive orbit,
+and integration against any invariant probability gives that
+same constant. Thus all subsequential vacuum measures have the
+same limit. Every fixed continuous gauge-invariant cylinder
+\(F_j=F\circ p_{k_0,j}\) consequently satisfies
+\[
+\|(F_j-F(I))\psi_j\|\longrightarrow0 .
+\tag{317}
+\]
+The full nonlinear semigroup domination (299) gives, for a finite
+carrier time-orbit combination
+\(w_j=\sum_\ell a_\ell e^{-t_\ell A_j}v_j(\beta_{j,\ell})\),
+\[
+\|(F_j-F(I))w_j\|
+\le2\sum_\ell|a_\ell|\,\|(F_j-F(I))\psi_j\|
+\longrightarrow0 .
+\tag{318}
+\]
+The same inequality includes any finite collection of bounded
+phase carriers. Their limiting cylinder representation is exactly
+\(F\mapsto F(I)I\); this is a unital star representation because
+evaluation preserves sums, products and conjugation. Its norm
+bound by \(\|F\|_\infty\) extends it to the uniform closure.
+
+Equations (308)--(315) now give a concrete observable extension
+beyond (318): \(jR_g\) acts by the nonconstant \(c_\Gamma Q\)
+on a carrier sector, has the complete polynomial insertion
+kernel (309), and its centered vacuum image has the positive
+zero-energy raw measure (314). The original phase coordinate
+uses a selected global transverse mode, so this result does not
+identify \(R_g\) with a spatial local electric or curvature
+field. No interchange of an unbounded multiplier with (318)
+was used; its tails and weighted limits were proved separately.
+The original native magnetic covariance and either prescribed
+running-coupling trajectory remain different, unresolved
+continuum calculations.
+
+
+## 23. Exact correspondence between local energy and radial vacuum images
+
+The complete [local-energy first-band proof](sources/local_band_inputs/LOCAL_ENERGY_BAND_TRANSFER.md)
+is retained together with its [preceding definitions and proofs](sources/local_band_inputs/extensive_quantum_blocking.md). Its equation numbers are explicitly
+called local-band source numbers below; the numbered equations of
+this manuscript continue from (318). That source proves the actual
+fixed-box local-energy graph limit, the seven-dimensional spectral
+frame, and the local spatial Riemann limits. Section 22 supplies
+the phase-square weighted limits. We now prove their exact common
+operator and state maps, including a common positive-coupling
+sequence and every displayed raw amplitude.
+
+### 23.1. One original finite-regulator space
+
+Fix \(L\ge2\), \(a>0\), and \(g>0\). Retain the entire open box, every edge and
+face, and the physical invariant Haar Hilbert space. Put
+\[
+ H=\kappa\sum_e E_e+b\sum_p(2-\operatorname{tr}U_p),\qquad
+ E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2,\qquad
+ \kappa=\frac{2g^2}{a},\quad b=\frac1{2g^2a}.
+\]
+Let \(\psi\) be the actual positive unit vacuum, with energy \(\mathcal E\), and
+\(A=H-\mathcal E\). Write \(d\mu=\psi^2dU\). For real edge weights \(f_e\) set
+\[
+ f_p=\frac14\sum_{e\in\partial p}f_e,\qquad
+ D_f=\kappa\sum_e f_eE_e+b\sum_p f_p(2-\operatorname{tr}U_p),
+ \quad C_f=D_f-\langle\psi,D_f\psi\rangle,\quad \Xi_f=C_f\psi.
+ \tag{319}
+\]
+The signed electric sum has its Peter--Weyl self-adjoint domain: in the
+joint Casimir expansion, the sum of the squared absolute weighted
+eigenvalues times the squared coefficients must be finite. The
+bounded self-adjoint magnetic perturbation makes \(D_f\) self-adjoint on
+that same domain; no invariance of the domain under the multiplier
+is asserted or needed. All identities below
+initially use smooth physical functions; \(\psi\) and every finite spectral
+eigenvector are smooth. Thus all displayed products on those vectors are
+defined, including when unbounded operators occur.
+
+Let \(Q=g^{-2}F\) be the globally smooth real invariant function of Section 22, with its original cutoff. Put
+\[
+ B_s=e^{isQ},\qquad
+ R_g=\kappa\sum_{e,\alpha}(X_{e,\alpha}Q)^2,\qquad
+ z_g=(R_g-\langle R_g\rangle_\psi)\psi.
+ \tag{320}
+\]
+At every fixed regulator \(R_g\) is a bounded smooth nonnegative multiplier.
+It is not the local weighted differential operator \(D_f\).
+
+There is nevertheless an exact common-operator relation. Define
+\[
+ R_{g,f}^{Q}=\kappa\sum_{e,\alpha}f_e(X_{e,\alpha}Q)^2,\qquad
+ J_f^Q=i[D_f,Q].
+\]
+Applying each \(X\) twice to \(B_s v\) gives
+\[
+ B_s^*D_fB_s=D_f+sJ_f^Q+s^2R_{g,f}^{Q},\qquad
+ R_{g,f}^{Q}=\tfrac12[Q,[D_f,Q]],
+ \tag{321}
+\]
+where
+\[
+ J_f^Q=-i\kappa\sum_{e,\alpha}f_e
+ \{2(X_{e,\alpha}Q)X_{e,\alpha}+X_{e,\alpha}^2Q\}.
+\]
+The face multiplication and its entire scalar commute with \(Q\) and \(B_s\);
+this is why they contribute no commutator, not a deletion from \(D_f\).
+For \(s\ne0\), (321) also proves
+\[
+ R_{g,f}^{Q}
+ =\frac{B_s^*D_fB_s+B_{-s}^*D_fB_{-s}-2D_f}{2s^2}.
+ \tag{322}
+\]
+For \(0\le f_e\le M\),
+\[
+ 0\le R_{g,f}^{Q}\le M R_g
+\]
+pointwise. For arbitrary real weights its absolute value is at most
+\(\|f\|_\infty R_g\). These follow term by term from the nonnegative squares.
+When \(f_e=1\), \(D_f=H\) and \(R_{g,f}^{Q}=R_g\) exactly.
+
+The additional exact commutator is
+\[
+ [D_f,R_g]=-\kappa\sum_{e,\alpha}f_e
+ \{(X_{e,\alpha}^2R_g)+2(X_{e,\alpha}R_g)X_{e,\alpha}\}.
+ \tag{323}
+\]
+It follows by the same product rule and again retains the full \(D_f\).
+Equations (321)--(323) are concrete finite-regulator operator maps between
+the two constructions, before any oscillator comparison.
+
+For a regular compact fluid profile \(u(s,x)\), the retained local-band source uses exactly
+\(h_s(x)=\lambda_{\rm fl}^2|\operatorname{curl}u(s,x)|^2\), with calibration \(\lambda_{\rm fl}\).
+The edge weights are \(f_e=h_s(a\,m(e))\), with the original face averages.
+They are nonnegative. Equations (319)--(323) apply to those very weights.
+The fluid parameter \(s\) has not been identified with the phase parameter,
+the quantum heat time, or the coupling regulator.
+
+### 23.2. Exact finite-frame overlap, with the Gram tensor retained
+
+Use the retained local-band source's actual spectral projection
+\[
+ P_g=\mathbf1_{(\Delta/2,\,11\Delta/10)}(H-\mathcal E),\qquad
+ \Pi_g=|\psi\rangle\langle\psi|+P_g,\qquad
+ \Delta=2\sigma/a .
+\]
+
+For sufficiently small \(g>0\) at a fixed box, \(P_g\) has rank six
+and \(\Pi_g\) has rank seven. Retain
+\[
+ {\cal K}=\mathbb C\oplus\operatorname{Sym}_3(\mathbb C),\qquad
+ \langle(c,B),(d,E)\rangle_{\cal K}=\bar c d+6\operatorname{tr}(B^*E),
+\]
+the exact frame \(M_g\), \(G_g=M_g^*M_g\), and inverse \(G_g^{-1}M_g^*\) on the
+range, as in local-band source (133). Set \(e_{\rm vac}=(1,0)\), and define
+\[
+ x_g=M_g^{-1}P_g z_g,\qquad
+ y_{g,f}=M_g^{-1}P_g\Xi_f.
+\]
+Since \(M_ge_{\rm vac}=\psi\), \(C_f\) has zero vacuum expectation, and \(\Pi_g\) projects
+onto the frame,
+\[
+ y_{g,f}={\cal D}_{g,f}e_{\rm vac},\qquad
+ \langle z_g,P_g\Xi_f\rangle
+       =\langle x_g,G_g y_{g,f}\rangle_{\cal K}.
+ \tag{324}
+\]
+This is exact, because the part of \(z_g\) orthogonal to the band has zero
+inner product with \(P_g\Xi_f\), and \(M_g^*M_g=G_g\). Likewise
+\[
+ \|P_g z_g\|^2=\langle x_g,G_gx_g\rangle_{\cal K},\qquad
+ \|z_g\|^2=\|P_gz_g\|^2+\|(I-\Pi_g)z_g\|^2.
+ \tag{325}
+\]
+The last equality uses \(\langle\psi,z_g\rangle=0\), which follows from its actual
+expectation subtraction. No vector is divided by its norm.
+
+One can also write the complete unprojected raw overlap in the original
+vacuum measure. Since \(\psi\) is strictly positive and smooth on a compact
+space, \(d_f=(D_f\psi)/\psi\) is a smooth real physical function. Then
+\[
+ \langle z_g,\Xi_f\rangle
+ =\int (R_g-\mu(R_g))(d_f-\mu(d_f))\,d\mu.
+ \tag{326}
+\]
+This gives its exact covariance; it does not replace \(d_f\) by the classical
+fluid configuration or by a sampled classical energy.
+
+### 23.3. Exact identification of the selected oscillator direction
+
+The two sources retain the same tree linear map \(T\), \(G=TT^*\),
+\(C=d_1\jmath\), and \(B=G^{1/2}C^*CG^{1/2}\). To avoid a conflict with the
+phase-square \(R_g\), call the edge-space isometry
+\[
+ {\cal R}=T^*G^{-1/2}.
+\]
+Direct multiplication gives \({\cal R}^*{\cal R}=I\). Its range is
+\((\ker T)^\perp=(\operatorname{im}d_0)^\perp\), the original transverse edge space.
+The exact identity \(d_1T^*G^{-1}=C\) gives
+\(d_1{\cal R}=CG^{1/2}\), hence
+\[
+ {\cal R}^*d_1^*d_1{\cal R}=B.
+ \tag{327}
+\]
+For the selected lowest eigenmode \(\nu\) of Section 22, its original edge
+vector is \(v_\nu=\mathcal R Oe_\nu\). Thus it belongs to the same lowest
+three-dimensional eigenspace spanned by the retained local-band source's explicit
+orthonormal edge cochains \(V_1,V_2,V_3\). Define
+\[
+ n_i=\langle V_i,v_\nu\rangle,\qquad
+ n\in\mathbb R^3,\quad n^{\mathsf T}n=1,\qquad P_n=nn^{\mathsf T}.
+ \tag{328}
+\]
+Equations (327)--(328) prove the mode alignment without replacing an
+unspecified orthogonal basis by an invented one. On each of the three
+color copies, \(a_{\nu,\alpha}^\dagger=\sum_i n_i a_{i,\alpha}^\dagger\).
+Orthogonality of this mode change preserves the oscillator measure and
+creation commutators.
+
+Keep \(\lambda_{\rm osc}=2\sigma/a\) and \(k=3/2\);
+\(\lambda_{\rm osc}\) is an energy, not \(\lambda_{\rm fl}\).
+With \(q=\sigma|z_\nu|^2/4\) and
+\(z_{\nu,\alpha}=\sqrt{2/\sigma}(a_{\nu,\alpha}+a_{\nu,\alpha}^\dagger)\), direct expansion gives
+\[
+ q=\tfrac12\sum_\alpha
+ \{a_{\nu,\alpha}^2+(a_{\nu,\alpha}^\dagger)^2
+                    +2a_{\nu,\alpha}^\dagger a_{\nu,\alpha}+1\}.
+\]
+Therefore, with the retained local-band source's creation-vector map \(\Phi\),
+\[
+ (q-k)\Phi_0=\tfrac12\Phi(P_n),\qquad
+ \|\tfrac12\Phi(P_n)\|^2=\tfrac64\operatorname{tr}(P_n^2)=\tfrac32.
+ \tag{329}
+\]
+The source's factor six is retained, including all three colors. This
+exact identity is the relation between the radial Gamma vacuum-image
+direction and the local first band. The phase direction is one
+rank-one matrix in that six-dimensional symmetric-matrix band.
+
+At fixed \(L,a\), the two source vector limits and projection convergence give
+\[
+ x_g\longrightarrow (0,\tfrac{\lambda_{\rm osc}}2P_n),\qquad
+ y_{g,f}\longrightarrow(0,\tfrac1{4a}{\mathsf R}_f^{\min}),\qquad
+ \|(I-\Pi_g)z_g\|\longrightarrow0.
+ \tag{330}
+\]
+The last assertion follows by applying the converging band projection to
+the strong vector limit \(\lambda_{\rm osc}(q-k)\Phi_0\), which is entirely in
+that band by (329).
+
+Using the original inner product in (324) now proves
+\[
+ \langle z_g,P_g\Xi_f\rangle
+ \longrightarrow\frac{3\lambda_{\rm osc}}{4a}
+                  n^{\mathsf T}{\mathsf R}_f^{\min}n,\qquad
+ \|z_g\|^2\longrightarrow\tfrac32\lambda_{\rm osc}^2.
+ \tag{331}
+\]
+The unprojected overlap has the same limit: \(\Xi_f\) has a bounded fixed-box
+norm by its proved strong graph limit, and the omitted part of \(z_g\)
+tends strongly to zero. This controls the missing cross term by
+Cauchy--Schwarz; it does not declare all local-energy leakage zero.
+
+### 23.4. The phase-square operator on the whole finite spectral frame
+
+A further fixed-box result follows from the retained local-band source's excited-vector
+moment identity (131). Let \(u_g\) be an eigenvector in the bounded finite
+spectral range, with bounded norm and \(H\)-eigenvalue \(e_g\).
+For \(U_g=W/g^2\), positivity of the electric part gives the initial
+moment bound below. Division of the moment recursion by \(g^{2n+2}\)
+gives the subsequent bounds for integers \(n\ge1\):
+\[
+ \begin{aligned}
+ \int U_g|u_g|^2&\le2ae_g\|u_g\|^2,\\
+ \int U_g^{n+1}|u_g|^2
+ &\le2ae_g\int U_g^n|u_g|^2+
+       16n^2\int U_g^{n-1}|u_g|^2,\qquad n\ge1.
+ \end{aligned}
+ \tag{332}
+\]
+Consequently every fixed moment is bounded at the fixed box, uniformly
+over the bounded eigenvalue range. The global inequality
+\(0\le R_g\le D_SU_g\) from Section 22 is pointwise and does not
+depend on positivity of \(u_g\). For any fixed integer \(m\ge1\),
+it therefore gives exactly the same squared
+tail estimate as (294), with its vacuum moment \(B_{2m+1}\)
+replaced by the eigenvector moment bound in (332):
+\[
+ \int_{|x|>R}|{\cal B}_g(R_g^m u_g)|^2
+ \le D_S^{2m}B^{\rm eig}_{2m+1}
+       \left(\frac1{c_*R^2}+\frac{g^2}{c_\rho}\right).
+ \tag{333}
+\]
+Indeed, in the inner chart \(U_g\ge c_*R^2\); outside it,
+\(U_g\ge c_\rho/g^2\). On each region, \(R_g^{2m}\) is bounded by
+\(D_S^{2m}U_g^{2m}\). One extra power of \(U_g\) proves (333).
+
+On every fixed ball the transported multiplier tends uniformly to
+\(\lambda_{\rm osc}q\). Strong eigenvector convergence, multiplication by
+these locally bounded coefficients, (333), and the polynomial Gaussian
+tail of the comparison eigenvector give
+\[
+ {\cal B}_g(R_g^m u_g)\longrightarrow
+             (\lambda_{\rm osc}q)^m u_0 .
+ \tag{334}
+\]
+For the entire finite frame, choose an eigenbasis along a subsequence,
+use the bounded finite rank and projection convergence to extract
+convergent basis vectors, and apply (334) to each. The computed limiting
+matrix is independent of this extraction; otherwise a sequence failing
+matrix convergence would have a subsequence with the computed limit,
+a contradiction. This proves finite-frame matrix convergence, with
+all constants still depending on the fixed box. It is not a
+uniform-volume theorem.
+
+Write \(Z_g=R_g-\langle R_g\rangle_\psi\) and compress by the exact frame.
+The resulting comparison operator on \(\mathcal K\) is
+\[
+ {\cal Z}_0(c,B)=\lambda_{\rm osc}
+ \left(3\operatorname{tr}(P_nB),
+       \tfrac c2P_n+P_nB+BP_n\right).
+ \tag{335}
+\]
+Pair annihilation gives \(6\operatorname{tr}(P_nB)\), multiplied by
+\(\lambda_{\rm osc}/2\). Pair creation of the vacuum gives
+\(c\lambda_{\rm osc}P_n/2\). The number term has commutator
+\(\Phi(P_nB+BP_n)\). These computations prove
+(335), including its self-adjointness for the factor-six metric.
+
+The compression has nonzero leakage. For any band vector \(\Phi(B)\),
+\[
+ (I-\Pi_0)\lambda_{\rm osc}(q-k)\Phi(B)
+ =\tfrac{\lambda_{\rm osc}}2\,{\cal S}_{P_n}{\cal S}_B\Phi_0,
+ \tag{336}
+\]
+where \(\mathcal S_B\) is the pair-creation polynomial defined in the retained local-band source.
+The pair-annihilation and number terms stay in \(\Pi_0\) and there are no
+higher spatial modes from \(P_n\). For \(B=P_n\), this is nonzero:
+with three color oscillators,
+\[
+ \left\|\left(\sum_\alpha a_\alpha^{\dagger2}\right)^2\Phi_0\right\|^2
+ =4^2\,2!\,(3/2)_2=120.
+\]
+For verification, its three terms \((a_\alpha^\dagger)^4\Phi_0\)
+have total squared norm \(3\cdot4!=72\), and its three terms
+\(2(a_\alpha^\dagger)^2(a_\beta^\dagger)^2\Phi_0\), \(\alpha<\beta\),
+have total squared norm \(3\cdot4\cdot2!\cdot2!=48\).
+Different occupation vectors are orthogonal. The leakage squared norm in (336) is thus
+\(30\lambda_{\rm osc}^2\) for \(B=P_n\).
+
+At finite regulator, inserting \(I=\Pi_g+(I-\Pi_g)\) gives
+\[
+ \Pi_g Z_g C_f\Pi_g
+ =\Pi_g Z_g\Pi_g C_f\Pi_g+
+ ((I-\Pi_g)Z_g\Pi_g)^*((I-\Pi_g)C_f\Pi_g).
+ \tag{337}
+\]
+All range vectors are smooth, \(Z_g\) is a bounded smooth multiplier, and \(C_f\)
+preserves smoothness, so every displayed product is defined.
+The graph limits (334) and local-band source (132) identify each fixed-box
+leakage matrix element by inner products of their full limiting
+vectors. Thus neither compressed multiplication nor a comparison
+of its matrices discards the term in (337).
+
+### 23.5. Ordered local-profile limit: one-third overlap and its constants
+
+Now use exactly
+\[
+ L_j=j^2,\qquad a_j=\frac1{100j},\qquad
+ \ell_j=a_j(2j^2+1),\qquad \lambda_j=\frac{2\sigma_j}{a_j},
+ \qquad c_j=j\lambda_j\longrightarrow c_\Gamma=100\sqrt2\pi.
+\]
+For a fixed real \(h\in C_c(\mathbb R^3)\), set
+\(H_h=\int_{\mathbb R^3}h(x)\,dx\) and \(a_h=\sqrt2\pi H_h\).
+The retained local-band source's proved matrix limit is
+\[
+ \frac{\ell_j^4}{a_j}{\mathsf R}_{h,j}^{\min}
+       \longrightarrow 4\sqrt2\pi H_h I_3.
+ \tag{338}
+\]
+Thus the two comparison frame vectors, with their displayed raw
+scale factors, are
+\[
+ jz_{0,j}=(0,\tfrac{c_j}{2}P_{n_j}),\qquad
+ \ell_j^4v_{h,0,j}=(0,\tfrac{\ell_j^4}{4a_j}
+                      {\mathsf R}_{h,j}^{\min})
+                 =(0,a_h I_3+o(1)).
+ \tag{339}
+\]
+The unit vector \(n_j\) need not converge:
+\(\operatorname{tr}(P_{n_j})=\operatorname{tr}(P_{n_j}^2)=1\)
+for every \(j\), so all the following scalar conclusions are independent
+of that basis freedom. Direct factor-six contractions give
+\[
+ \begin{split}
+ \|jz_{0,j}\|^2&\longrightarrow\tfrac32c_\Gamma^2
+                         =30000\pi^2,\\
+ \|\ell_j^4v_{h,0,j}\|^2&\longrightarrow36\pi^2H_h^2,\\
+ \langle jz_{0,j},\ell_j^4v_{h,0,j}\rangle
+                  &\longrightarrow3c_\Gamma a_h
+                         =600\pi^2H_h.
+ \end{split}
+ \tag{340}
+\]
+For \(H_h\ne0\), the squared cosine of their angle therefore tends to \(1/3\).
+This is a computed fraction of raw Gram entries, not a replacement
+of either original state by a unit vector.
+
+The exact comparison projection of \(v_{h,0,j}\) onto \(z_{0,j}\) has
+coefficient
+\[
+ \frac{n_j^{\mathsf T}{\mathsf R}_{h,j}^{\min}n_j}
+               {2a_j\lambda_j};
+\]
+for the scaled vectors in (339) that coefficient tends to \(H_h/50\).
+Consequently
+\[
+ \|\ell_j^4v_{h,0,j}-(H_h/50)jz_{0,j}\|^2
+                   \longrightarrow24\pi^2H_h^2.
+ \tag{341}
+\]
+Equations (340)--(341) also hold as the ordered actual limits
+\(\lim_{j\to\infty}\lim_{g\downarrow0}\), by (330)--(331) at every fixed \(j\).
+They have not been asserted along either independently selected
+coupling sequence in the two sources.
+
+For the actual regular NS profile, substitute
+\(H_h=\lambda_{\rm fl}^2\|\operatorname{curl}u(s)\|_2^2\). This is positive for a nonzero
+compact smooth incompressible profile: the compact divergence/curl
+identity makes zero curl imply zero gradient, hence \(u=0\).
+The leading local curvature state thus has a nonzero overlap with
+the phase direction, and has the positive residual in (341).
+This is an actual proved relation, rather than an inference of
+nonrelation from the different presentations.
+
+The residual has a concrete completion within the same lowest modes.
+Define three phase quadratics using each of the original \(V_i\), with
+the same admissible cutoff, and write \(z_g^{(i)}\) for their centered
+phase-square vacuum vectors. Their fixed-box comparison matrices
+are \((\lambda_{\rm osc}/2)e_i e_i^{\mathsf T}\). Their three pair vectors are orthogonal.
+Summing them gives \((\lambda_{\rm osc}/2)I_3\). At comparison level,
+\[
+ \ell_j^4v_{h,0,j}-(H_h/50)\sum_{i=1}^3jz_{0,j}^{(i)}
+                         \longrightarrow0.
+ \tag{342}
+\]
+No new spatial-locality identification is involved: these are
+three global selected-mode phases. The same complete compressed
+operator relation holds in the ordered comparison:
+\(\sum_i j\mathcal Z_{0,j}^{(i)}\) acts as
+\(c_j(3\operatorname{tr}B,cI_3/2+2B)\).
+Multiplication by \(H_h/50\) makes its limit exactly the retained
+local-band source's
+\[
+ \mathcal T_h(c,B)=\sqrt2\pi H_h
+                 (6\operatorname{tr}B,cI_3+4B).
+\]
+The proof is substitution into (335), with \(\sum_iP_i=I_3\).
+This relates the entire seven-dimensional compressed operators,
+not merely their vacuum columns. The leakage (337) remains present.
+
+### 23.6. Exact nonidentity and the joint state errors
+
+For nonnegative local \(h\) with at least one positive sampled edge
+weight, \(C_f\) is not any scalar multiple of the bounded multiplier
+\(Z_g\) as an operator on the smooth physical core. Choose a plaquette
+\(p\) incident to an edge \(e\) with \(f_e>0\), and set
+\(\phi=\operatorname{tr}U_p\). There are configurations with
+\(X_{e,\alpha}\phi\ne0\), as follows by varying that edge with all
+other plaquette links fixed to the identity. The smooth function
+\(\phi\) is gauge invariant. Applying \(D_f\) to \(e^{it\phi}\) and
+dividing by that nonzero multiplier gives a polynomial in \(t\)
+whose quadratic coefficient is
+\(\kappa\sum_{e,\alpha}f_e(X_{e,\alpha}\phi)^2\),
+strictly positive somewhere. A fixed multiplication operator has
+no \(t\)-dependence. Equality on every \(e^{it\phi}\) is therefore
+impossible. The same argument applies after subtracting the vacuum scalar.
+
+This establishes the specific full-operator nonidentity while
+(321)--(342) prove the strongest explicit relations derived here.
+The three-phase completion does not remove the full-operator
+nonidentity or the leakage, and does not identify a local field.
+
+The two retained constructions choose different finite lists for
+their least dyadic exponent. Fixed-box convergence alone does not
+prove that either existing least exponent satisfies the other's
+new scaled tests. The concrete joint state errors, which Section 23.8
+controls on its defined refined sequence, are in the common
+comparison coordinates
+\[
+ \|{\cal B}_{g_j}(jz_{g_j,j})
+                 -(c_j/2)\Phi(P_{n_j})\|\to0,\qquad
+ \|\ell_j^4{\cal B}_{g_j}P_{g_j}\Xi_{f_{h,j}}
+                 -\Phi(a_hI_3)\|\to0,
+ \tag{343}
+\]
+together with the already retained frame Gram/projection control.
+These are the precise errors whose product estimates by
+Cauchy--Schwarz would promote (340) to a single actual diagonal.
+Each test is attainable at every fixed box by the preceding proofs,
+so their finite union can be imposed in a newly defined refined
+dyadic selection. Section 23.8 below defines that additional sequence
+and proves the common state map on it. Neither preexisting sequence
+is declared unchanged by this refinement, and no uniform-volume
+bound is inferred.
+
+For products without intermediate projection one additionally needs
+the joint scaled limit of the exact leakage in (337), including
+the retained local-band source's higher spatial modes and four-creation terms.
+Their fixed-box maps are explicit here and in local-band source (147)--(148);
+their simultaneous volume limit is not supplied by the two source
+diagonals. None of the calculations above assumes it.
+
+### 23.7. Unchanged bounded cylinders on the weighted phase core
+
+This additional estimate uses the already selected sequence of Section 22; it
+requires no local-energy-band error estimate. Let \(F_j\) be
+the pullback of one fixed continuous gauge-invariant coarse cylinder,
+let \(\Delta F_j=F_j-F(I)\), and retain (317):
+\(\|\Delta F_j\psi_j\|\to0\). Its uniform bound is
+\(|\Delta F_j|\le2\|F\|_\infty\). Therefore
+\[
+ \int|\Delta F_j|^4\psi_j^2
+ \le4\|F\|_\infty^2\|\Delta F_j\psi_j\|^2\longrightarrow0.
+ \tag{344}
+\]
+For each fixed nonnegative integer \(m\), (303) with power \(2m\)
+gives a uniform bound on \(\|(jR_g)^{2m}\psi_j\|\); for \(m=0\),
+use the unit vacuum norm instead. Write \(h_j\) for an actual carrier
+time-orbit vector. Equation (300) gives \(|h_j|\le2\psi_j\). All the
+multipliers commute, so Cauchy--Schwarz in the original measure gives
+\[
+ \begin{split}
+ \|\Delta F_j(jR_g)^m h_j\|^2
+ &\le4\int|\Delta F_j|^2(jR_g)^{2m}\psi_j^2\\
+ &\le4\left(\int|\Delta F_j|^4\psi_j^2\right)^{1/2}
+               \|(jR_g)^{2m}\psi_j\|\\
+ &\le8\|F\|_\infty\|\Delta F_j\psi_j\|\,
+               \|(jR_g)^{2m}\psi_j\|\longrightarrow0.
+ \end{split}
+ \tag{345}
+\]
+For a finite carrier combination, the bound
+\(|h_j|\le2(\sum_\ell|a_\ell|)\psi_j\) replaces the factor four by
+\(4(\sum_\ell|a_\ell|)^2\). For a weighted vacuum vector, the same
+proof starts with factor one. Since \(j\langle R_g\rangle_\psi\)
+is bounded by (303), it also proves the scalar action on
+\(j(R_g-\langle R_g\rangle_\psi)\psi_j\) after subtracting its
+bounded multiple of \(\psi_j\).
+
+Thus the unchanged bounded cylinder \(F\) acts by exactly \(F(I)\) in all
+the retained polynomial phase-square vector limits. This is a
+proved extension of the scalar cylinder representation to those
+polynomial cores, with the actual moment bounds used in (345).
+It is compatible with (340)--(342): the local operator \(D_f\) is a
+differential operator with coefficients \(\kappa f_e\) and the magnetic
+term \(bf_p\), and its scaled first-band action is not a fixed bounded
+configuration cylinder. The unbounded coefficient and projection
+operations cannot be replaced by the scalar action in (345).
+Equations (321), (335), and (337) give the exact relationships to
+that different operator class.
+
+### 23.8. A defined common dyadic sequence for every fixed local profile
+
+Define one common sequence using the
+finite union of the two source requirements and the additional
+state tests below. It does not identify the numerical least
+dyadic of either preexisting sequence with this new one.
+
+At fixed \(j\), retain the original finite edge set \(E_j\) and let
+\(e^{(r)}\) be the edge weight that is one at \(r\) and zero elsewhere, always
+with the prescribed quarter-face averages. Define the actual
+comparison error map
+\[
+ {\cal T}_{g,j}f
+  ={\cal B}_gP_g C_{g,f}\psi_g
+          -\Phi({\mathsf R}_{f,j}^{\min}/(4a_j)).
+ \tag{346}
+\]
+Here both terms are in the same full comparison Hilbert space,
+including the original constant-Jacobian kinetic coordinate
+isometry used to express \(\Phi\). The map is linear in the finite
+real weight vector \(f\): \(D_f\) is linear, its expectation is linear,
+and \(P_g,\psi_g\) do not depend on \(f\). The oscillator matrix is
+also linear. The source graph and projection convergence imply
+\(\|\mathcal T_{g,j}e^{(r)}\|\to0\) for every \(r\). Thus
+\[
+ \sup_{\|f\|_\infty\le j}\|{\cal T}_{g,j}f\|
+ \le j\sum_{r\in E_j}\|{\cal T}_{g,j}e^{(r)}\|
+ \longrightarrow0\quad(g\downarrow0,\ j\hbox{ fixed}).
+ \tag{347}
+\]
+Every sum in (347) is finite. This proves the required uniformity
+over the entire finite weight cube without assuming uniformity
+as its dimension grows.
+
+At each fixed \(j\), let \(\nu_1,\nu_2,\nu_3\) be the three original
+lowest column indices of \(O\), in their existing order. They include
+the original selected \(\nu_j\) of Section 22. Put
+\[
+ n_{i,j}=V^*{\cal R}Oe_{\nu_i},\qquad
+ P_{i,j}=n_{i,j}n_{i,j}^{\mathsf T},\qquad
+ n_{i,j}^{\mathsf T}n_{r,j}=\delta_{ir},\qquad
+ \sum_{i=1}^3P_{i,j}=I_3.
+\]
+The identities follow from (327), the orthonormality of both
+lowest-mode bases, and their equal three-dimensional ranges.
+For each \(i=1,2,3\), use the same original cutoff and the quadratic
+\(\sigma_j|z_{\nu_i}|^2/4\) for that original \(O\)-column to define
+\(Q_g^{(i)}\), \(R_g^{(i)}\), and
+\(z_g^{(i)}=(R_g^{(i)}-\langle R_g^{(i)}\rangle)\psi_g\).
+These constructions preserve the original tree and Gram metric:
+\(O\) is not changed. Its exact comparison in the \(V\)-basis is
+(327)--(328), acting identically on all three colors.
+The proof of their fixed-box weighted vacuum limits uses the
+same established steps, with this selected quadratic: it and
+its first differential vanish at the unique minimum, its
+derivative square \(S_i\) is bounded by a fixed-box constant times
+\(W\), and its local quadratic coefficient is \(\lambda_jq_i\).
+The source moment recursion and tail proof then give
+\[
+ {\cal B}_g(jz_g^{(i)})
+             \longrightarrow(c_j/2)\Phi(P_{i,j}).
+ \tag{348}
+\]
+This is a proved application to three explicitly specified
+quadratics; it is not an assumption of new weighted convergence.
+One is exactly the original selected-mode quadratic, so its
+phase-square direction has not been replaced. The earlier
+sum in the \(V\)-basis in (342) has this same comparison because both
+sums of the three rank-one projectors are \(I_3\).
+
+At stage \(j\) choose the least positive integer \(n_j^\dagger\) for which
+\(g_j^\dagger=2^{-n_j^\dagger}<j^{-5}\) satisfies all original stage-\(j\)
+tests in both sources and, in addition,
+\[
+ \begin{split}
+ \ell_j^4 j\sum_{r\in E_j}
+       \|{\cal T}_{g_j^\dagger,j}e^{(r)}\|&<1/j,\\
+ \|{\cal B}_{g_j^\dagger}(jz_{g_j^\dagger}^{(i)})
+            -(c_j/2)\Phi(P_{i,j})\|&<1/j
+                 \quad(i=1,2,3),\\
+ j\|{\cal Z}_{g_j^\dagger}^{(i)}
+                -{\cal Z}_{0,j}^{(i)}\|_{\mathcal K}&<1/j
+                 \quad(i=1,2,3),\\
+ \|(I-P_{g_j^\dagger})jz_{g_j^\dagger}^{(i)}\|&<1/j
+                 \quad(i=1,2,3).
+ \end{split}
+ \tag{349}
+\]
+The original source compact-family tests are functions of \(g\) that
+tend to zero at fixed \(j\), as proved there; the number of powers,
+edge basis vectors, and additional quadratics is finite at that
+\(j\). Here
+\[
+ {\cal Z}_g^{(i)}
+ =G_g^{-1}M_g^*\Pi_g
+       (R_g^{(i)}-\langle R_g^{(i)}\rangle)\Pi_gM_g,
+\]
+and \({\cal Z}_{0,j}^{(i)}\) is (335) with \(P_n=P_{i,j}\).
+Equations (334)--(335) prove the finite-frame test tends to zero.
+Equations (347)--(348) prove the vector tests tend to zero.
+For the last test, (348)'s limit lies wholly in the comparison
+first band, and the transported actual band projection converges
+in operator norm at fixed \(j\). Applying the two projections
+to the strongly converging vector proves that its omitted norm
+tends to zero. Thus the last test is attainable as well. Their finite union therefore holds for every
+sufficiently small positive \(g\). The dyadics tend to zero, so the
+set of admissible positive exponents is nonempty and has a
+least element. This proves existence of the sequence just
+defined. No uniform-volume estimate has been assumed.
+Its coefficients are precisely
+\(\kappa_j=200j(g_j^\dagger)^2\) and \(b_j=50j/(g_j^\dagger)^2\),
+including every face and the original Wilson scalar.
+
+Use daggers to distinguish all actual states on this sequence:
+\[
+ v_{h,j}^\dagger=P_{g_j^\dagger}\Xi_{f_{h,j}},\qquad
+ w_{i,j}^\dagger=jz_{g_j^\dagger}^{(i)},\qquad
+ w_{n,j}^\dagger=jz_{g_j^\dagger}.
+\]
+For any fixed real \(h\in C_c(\mathbb R^3)\), \(\|f_{h,j}\|_\infty\le\|h\|_\infty\)
+is at most \(j\) eventually. The first test in (349) and (347)
+then bound its scaled actual-to-comparison error by \(1/j\).
+No finite dense list of profiles is required: the entire
+finite weight cube was controlled on the same sequence.
+
+The source's Riemann matrix limit (338), (348)--(349), and
+the isometry of the common coordinate maps prove
+\[
+ \boxed{\left\|\ell_j^4v_{h,j}^\dagger
+          -\frac{H_h}{50}\sum_{i=1}^3 w_{i,j}^\dagger
+         \right\|\longrightarrow0
+          \quad\hbox{for every fixed }h\in C_c(\mathbb R^3).}
+ \tag{350}
+\]
+Explicitly its transported norm is at most
+\((1+3|H_h|/50)/j\) plus the norm of
+\(\Phi(\ell_j^4\mathsf R_{h,j}^{\min}/(4a_j)-H_hc_jI_3/100)\).
+The last matrix tends to zero because
+\(H_hc_\Gamma/100=\sqrt2\pi H_h\). The factor-six formula makes
+matrix convergence equivalent to convergence of this final
+creation-vector norm. This proves (350) completely.
+
+The same actual-to-comparison estimates prove on this defined
+single sequence
+\[
+ \begin{split}
+ \|w_{n,j}^\dagger\|^2&\longrightarrow30000\pi^2,\\
+ \|\ell_j^4v_{h,j}^\dagger\|^2&\longrightarrow36\pi^2H_h^2,\\
+ \langle w_{n,j}^\dagger,\ell_j^4v_{h,j}^\dagger\rangle
+                                  &\longrightarrow600\pi^2H_h,\\
+ \|\ell_j^4v_{h,j}^\dagger-(H_h/50)w_{n,j}^\dagger\|^2
+                                  &\longrightarrow24\pi^2H_h^2.
+ \end{split}
+ \tag{351}
+\]
+Indeed each comparison vector in (339) has bounded norm, so
+the error in every inner product is bounded by the two
+vector errors times those bounds, plus their product.
+The computed constants (340)--(341) then give (351).
+For \(H_h\ne0\), the squared angular fraction is \(1/3\). For \(H_h=0\),
+(350) gives the vanishing scaled local vector; no division by
+that norm is made.
+
+All these statements retain the raw original local state:
+it has norm of order \(\ell_j^{-4}\) when \(H_h\ne0\). The explicit
+scale \(\ell_j^4\) records its comparison amplitude; it is not a
+unit normalization. Each \(w_{i,j}^\dagger\) likewise retains its definition
+\(j(R_g^{(i)}-\langle R_g^{(i)}\rangle)\psi_g\) and its nonzero raw limiting norm.
+No equality of the fluid time and quantum time was introduced.
+The original phase sequence's bounded-cylinder tests are in
+the finite union, so the polynomial-core scalar action (345)
+persists on this defined refined sequence. Mixed products
+without \(\Pi_g\) still retain the leakage (337); (350) by itself
+does not determine its simultaneous volume limit.
+
+The added finite-frame test also promotes the ordered compressed
+operator relation following (342) to this same sequence:
+\[
+ \left\|\ell_j^4{\cal D}_{g_j^\dagger,f_{h,j}}
+       -\frac{H_h}{50}\sum_{i=1}^3
+                       j{\cal Z}_{g_j^\dagger}^{(i)}
+ \right\|_{\mathcal K}\longrightarrow0.
+ \tag{352}
+\]
+The first term tends to \(\mathcal T_h\) by the retained local-band source's
+edge-basis and Gram tests, which are included in (349).
+For the second term its error from the comparison sum is
+at most \(3|H_h|/(50j)\), by (349). Equations (335) and
+\(\sum_iP_{i,j}=I\) make that comparison sum
+\((H_hc_j/50)(3\operatorname{tr}B,cI_3/2+2B)\), which tends exactly to \(\mathcal T_h\)
+because \(c_\Gamma=100\sqrt2\pi\). This proves (352), retaining
+the full actual Gram frame. It concerns compressed operators;
+the exact full-product term (337) is still present.
+
+
+## 24. The complete local directional electric spectrum
+
+The following proof retains the actual Hamiltonian and vacuum while calculating the original direction-one electric observable. It gives its anisotropic spectral density and every positive-time moment on one strengthened positive-coupling sequence.
+
+### 24.1 Exact original objects and fixed-box graph map
+
+For \(L\ge2\), the original vertices are
+\(\{-L,\ldots,L\}^3\), with every contained positive edge and face.
+For \(a,g>0\), write
+\[
+ H_{L,a,g}=\kappa\sum_eE_e+bW,\qquad
+ E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2,\qquad
+ W=\sum_p(2-\operatorname{tr}U_p),\qquad
+ \kappa=\frac{2g^2}{a},\quad b=\frac1{2g^2a}.
+ \tag{353}
+\]
+Here \(T_\alpha=-i\sigma_\alpha/2\) and the \(X_{e,\alpha}\)
+are the original link derivatives. The full Wilson scalar is
+included in \(bW\). The actual positive unit physical vacuum is
+\(\psi_{L,a,g}\), with actual energy \(\mathcal E_{L,a,g}\);
+put \(A_g=H_{L,a,g}-\mathcal E_{L,a,g}\ge0\).
+The original vertex gauge law and its inverse-parameter
+presentation have the same invariant Hilbert subspace.
+
+Fix real \(h\in C_c^\infty(\mathbb R^3)\) and define
+\[
+ f_{h,L,a}(n,i)=\mathbf1_{\{i=1\}}h(a(n+\mathbf e_1/2)),\qquad
+ \Gamma_h=\sum_{e\parallel1}h(am(e))E_e,
+ \tag{354}
+\]
+\[
+ D^E_h=\kappa\Gamma_h,\qquad
+ \Xi^E_{h,g}=(D^E_h-\langle\psi_g,D^E_h\psi_g\rangle)\psi_g.
+ \tag{355}
+\]
+All sums use the original finite edge set, including the boundary.
+There is no face-average term in \(D^E_h\). For signed weights, the
+joint Peter--Weyl decomposition realizes \(\Gamma_h\) as the real
+multiplier \(\sum_e f_h(e)j_e(j_e+1)\), on the domain defined by
+the squares of those eigenvalues. This gives its self-adjoint
+realization; smooth functions lie in its domain. The actual vacuum
+is smooth, so (355) is smooth, physical, exactly vacuum-orthogonal,
+and in every power domain of the full \(H\).
+
+Retain the exact additive tree-to-chord map \(T\), with
+\(G=TT^*>0\), the chord insertion \(\iota\), and the original
+oriented curl \(C=d_1\iota\). If
+\[
+ O^*G^{1/2}C^*CG^{1/2}O=\Sigma^2,\qquad
+ \Sigma=\operatorname{diag}(\sigma_\nu),\qquad
+ V_\nu=T^*G^{-1/2}Oe_\nu,
+ \tag{356}
+\]
+then the \(V_\nu\) are a real orthonormal transverse edge basis.
+Set
+\[
+ D^h_{\nu\eta}=\sum_{e\parallel1}h(am(e))V_\nu(e)V_\eta(e),
+ \qquad \omega_\nu=\frac{\sigma_\nu}{a}.
+ \tag{357}
+\]
+No kinetic metric or counting inner product has changed.
+
+The exact Haar/log map on based chord functions is
+\[
+ (\mathcal B_gF)(x)
+ =g^{3r/2}\mathcal J(gx)^{1/2}F(\exp(gx))
+ \quad(x\in\Omega_g),\qquad
+ \Omega_g=\{x:|x_c|<2\pi/g\},
+ \tag{358}
+\]
+and is zero outside \(\Omega_g\), with
+\(\mathcal J(y)=(16\pi^2)^{-r}
+\prod_c[\sin(|y_c|/2)/(|y_c|/2)]^2\).
+The kinetic-coordinate unitary is
+\[
+ f(x)\longmapsto(\det G)^{3/4}f(G^{1/2}Oz).
+ \tag{359}
+\]
+We include both (358) and (359) whenever comparison vectors are written
+in \(z\) coordinates, and denote their composition by
+\(\mathcal C_g\). These are isometries with their exact image
+domains; neither identifies the finite-\(g\) vacuum with a trial
+Gaussian.
+
+Here is the Section 17 graph argument needed for (355). Its actual
+vacuum moment calculation gives
+\[
+ \begin{gathered}
+ \int W^n\psi_g^2\,dU\le B_ng^{2n},\qquad
+ B_0=1,\quad B_1=2aK,\\
+ B_{n+1}=2aKB_n+16n^2B_{n-1}\quad(n\ge1),\qquad
+ K=3\sqrt{N_EM_F}/a .
+ \end{gathered}
+ \tag{360}
+\]
+where \(N_E,M_F\) are the original edge and face counts. It follows
+from the full ground-state equation, the bound
+\(\sum_{e,\alpha}|X_{e,\alpha}W|^2\le16W\), and the
+ground-state form identity. At fixed box the potential has its
+unique zero at the identity chords, with
+\(W(y)\ge c|y|^2\) locally and \(W\ge c_\rho>0\) outside that
+neighborhood. The third scaled moment in (360) controls the squared
+tail of \((W/g^2)\psi_g\) by
+\(B_3/(cR^2)+g^2B_3/c_\rho\).
+The full Taylor coefficient and strong actual-vacuum convergence
+therefore give
+\[
+ \mathcal B_g((W/g^2)\psi_g)
+ \longrightarrow \tfrac14\sum_\alpha\|Cx^\alpha\|^2\Phi_0.
+ \tag{361}
+\]
+The unchanged eigen-equation is
+\[
+ g^2\sum_eE_e\psi_g
+ =\frac{a\mathcal E_g}{2}\psi_g-\frac{W}{4g^2}\psi_g.
+ \tag{362}
+\]
+Together with (361), it proves convergence in the total electric
+graph. Since the separate positive link Casimirs strongly commute,
+\[
+ \|\Gamma_hF\|\le\|f_h\|_\infty\|\textstyle\sum_eE_eF\|.
+ \tag{363}
+\]
+Apply (363) to the difference between the actual vacuum and the
+inverse image of a compact invariant cutoff times its limiting
+Gaussian. On that compact chart the exact differentiated
+coefficients converge. Let the cutoff radius tend to infinity
+using the Gaussian graph norm. This proves the arbitrary signed
+weight graph limit, with all constants fixed before \(g\to0\):
+\[
+ \mathcal C_g(g^2\Gamma_h\psi_g)
+ \longrightarrow
+ -\sum_{\nu,\eta,\alpha}D^h_{\nu\eta}
+          \partial_{z_\nu^\alpha}\partial_{z_\eta^\alpha}\Phi_0.
+ \tag{364}
+\]
+It uses the full potential moments, rather than inferring
+unbounded operator convergence from vacuum norm convergence.
+
+Use the original creation operators and variance,
+\[
+ \partial_{z_\nu^\alpha}
+ =\sqrt{\sigma_\nu/8}\,(a_{\nu\alpha}-a_{\nu\alpha}^\dagger),
+ \quad
+ z_\nu^\alpha=\sqrt{2/\sigma_\nu}
+                    (a_{\nu\alpha}+a_{\nu\alpha}^\dagger),
+ \quad
+ A_0=\sum_{\nu,\alpha}\omega_\nu
+                      a_{\nu\alpha}^\dagger a_{\nu\alpha}.
+ \tag{365}
+\]
+Subtracting the expectation in (364) removes its scalar term.
+Since \(\kappa/g^2=2/a\), the exact fixed-box vector limit is
+\[
+ \boxed{\mathcal C_g\Xi^E_{h,g}\longrightarrow
+ X^E_{h,0}
+ =-\frac14\sum_{\nu,\eta,\alpha}
+     \sqrt{\omega_\nu\omega_\eta}\,D^h_{\nu\eta}
+          a_{\nu\alpha}^\dagger a_{\eta\alpha}^\dagger\Phi_0.}
+ \tag{366}
+\]
+The sign is negative. Indeed
+\((a_\nu-a_\nu^\dagger)(a_\eta-a_\eta^\dagger)\Phi_0
+=-\delta_{\nu\eta}\Phi_0+
+a_\nu^\dagger a_\eta^\dagger\Phi_0\), and the electric
+operator has the preceding minus sign.
+
+Define the real symmetric pair matrix
+\[
+ B^{E,L,a}_{h;\nu\eta}
+ =-\sqrt{\omega_\nu\omega_\eta}
+       \sum_{e\parallel1}h(am(e))V_\nu(e)V_\eta(e).
+ \tag{367}
+\]
+There are three equal-colour contractions. The norm of a
+symmetric two-creation kernel is twice its squared Hilbert--Schmidt
+norm: commuting its two annihilators through the two creators
+gives the two ordered contractions. Consequently the complete
+fixed-box raw measure is
+\[
+ \boxed{\nu^{E,L,a}_{h,0}
+ =\frac38\sum_{\nu,\eta}|B^{E,L,a}_{h;\nu\eta}|^2
+          \delta_{\omega_\nu+\omega_\eta}.}
+ \tag{368}
+\]
+The sum is ordered, including both occurrences of distinct modes.
+The coefficient is exactly \(3\cdot2/4^2=3/8\).
+The strong vector theorem (366), convergence of all finite physical
+spectral projections and energies, and convergence of the total
+vector norms prove weak convergence of actual finite measures to
+(368) at fixed box. A finite comparison spectral cutoff contains
+all but a chosen tail of the comparison vector; projection and
+norm convergence give the same bound for the actual vector.
+Within it, only finitely many clusters occur and their projections
+and energies converge. This proves all bounded continuous tests.
+
+### 24.2 Every open-box mode and the directional parity calculation
+
+Put \(N=2L+1\) and \(\ell=aN\). The physical endpoints are
+still \(\pm aL\). On vertices and positive edges respectively use
+\[
+ v_j(n)=\sqrt{\frac{2-\delta_{j0}}N}
+       \cos\frac{\pi j(n+L+1/2)}N,\quad
+ s_j=2\sin\frac{\pi j}{2N},\quad 0\le j<N,
+ \tag{369}
+\]
+\[
+ w_j(n)=-\sqrt{\frac2N}
+       \sin\frac{\pi j(n+L+1)}N,\qquad j>0.
+ \tag{370}
+\]
+There is no \(w_0\). Finite geometric sums give orthonormality
+on the unchanged vertex and edge ranges. Direct differencing
+gives \(d_0v_j=s_jw_j\), and transposition gives
+\(d_0^*w_j=s_jv_j\).
+
+For \(\boldsymbol j=(j_1,j_2,j_3)\), let
+\(I=\{i:j_i>0\}\) and \(s=(s_{j_1},s_{j_2},s_{j_3})\).
+Each real unit \(\epsilon\in\mathbb R^I\) with
+\(s\cdot\epsilon=0\) gives
+\[
+ V_{\boldsymbol j,\epsilon}(n,i)
+ =\epsilon_iw_{j_i}(n_i)\prod_{d\ne i}v_{j_d}(n_d),
+ \qquad \sigma=|s|.
+ \tag{371}
+\]
+There are \(|I|-1\) polarizations for \(|I|\ge2\) and none
+otherwise. The tensor one-form space at this index is
+\(\mathbb R^I\); its gradient line is \(\mathbb Rs\).
+The exact curl squared form is
+\(|s|^2|\epsilon|^2-|s\cdot\epsilon|^2\).
+Thus its transverse complement is exactly (371), proving
+completeness and the original frequencies. Orthogonal changes
+inside eigenspaces give the same ordered spectral sum (368).
+
+Each mode component is bounded by \(2\sqrt2N^{-3/2}\).
+Choose \(R_h\) so that a fixed unit neighborhood of the support
+of \(h\) lies in \([-R_h,R_h]^3\). For \(a\le1\), the
+number of direction-one edge samples meeting this support is at
+most \((2R_h/a+3)^3\). Thus (367) satisfies the global bound
+\[
+ |B^{E,L,a}_{h;\nu\eta}|
+ \le K_h\ell^{-3}\sqrt{\omega_\nu\omega_\eta},\qquad
+ K_h=8(2R_h+3)^3\|h\|_\infty .
+ \tag{372}
+\]
+This constant does not depend on \(L,a\) once the box contains
+the fixed neighborhood. Every edge sample and zero weight remains
+in the original sum.
+
+The sine bounds give
+\[
+ \frac{2|\boldsymbol j|}{\ell}
+      \le\omega_{\boldsymbol j}
+      \le\frac{\pi|\boldsymbol j|}{\ell}.
+ \tag{373}
+\]
+For \(\ell\ge1\) and each \(u>0\), grouping triples in
+shells \(m\le|\boldsymbol j|<m+1\) proves
+\[
+ \ell^{-3}\sum_\nu\omega_\nu e^{-u\omega_\nu}\le C_u.
+ \tag{374}
+\]
+The shell has at most \(C(m+1)^2\) triples, and each has at
+most two polarizations. One justification for this shell count
+is to surround each nonnegative integer triple by its disjoint
+unit cube: their union lies between spheres whose radii differ
+by a fixed constant. Their volume difference is bounded by
+\(C(m+1)^2\). The resulting series is bounded by a constant
+times \(\ell^{-4}\sum_{m\ge1}(m+1)^3e^{-2um/\ell}\);
+integral comparison bounds it uniformly for \(\ell\ge1\).
+
+Combining (372),(374), the contribution of
+\(\omega_\nu+\omega_\eta>R\) to (368) after multiplication
+by \(e^{-t(\omega_\nu+\omega_\eta)}\) is at most
+\(C_{h,t}e^{-tR/2}\), uniformly in the regulators.
+Every fixed additional power of the pair energy is handled by
+using a smaller positive time. The same shell proof gives
+\[
+ \limsup_{\ell\to\infty}\ell^{-3}
+       \sum_{\omega_\nu<\varepsilon}\omega_\nu
+       \le C\varepsilon^4.
+ \tag{375}
+\]
+In a bounded frequency region the triples with a zero coordinate
+number \(O_R(\ell^2)\), so their paired contribution is
+\(O_{h,R}(\ell^{-1})\). Strips of width \(\delta\) adjoining
+a coordinate plane have limiting contribution \(O_{h,R}(\delta)\).
+These bounds justify retaining a bounded momentum region away
+from its coordinate planes and zero before taking its Riemann
+sum, then removing these restrictions.
+
+For positive index coordinates set
+\(k_i=\pi j_i/\ell\), \(\beta_i=j_i\bmod2\) and
+\(\chi_{\boldsymbol j}=(-1)^{\sum_i\lfloor j_i/2\rfloor}\).
+At the physical location of each mode component the exact
+standing-wave identity is
+\[
+ \ell^{3/2}a^{-3/2}V_{\boldsymbol j,\epsilon}(x)
+ =\chi_{\boldsymbol j}\sum_{\rho\in\{-1,1\}^3}
+       U_{\beta\rho}\epsilon^\rho e^{i(\rho k)\cdot x},
+ \quad
+ U_{\beta\rho}=\frac{i}{\sqrt8}e^{i\pi\rho\cdot\beta/2},
+ \quad \epsilon_i^\rho=\rho_i\epsilon_i.
+ \tag{376}
+\]
+The common \(x\) denotes the component expressions restricted
+to their original edge positions in the sum. No sample is moved.
+Expand each cosine and negative sine in (369)--(371) to verify
+(376); the differentiated component contributes \(i\rho_i\)
+relative to the two undifferentiated components. Also
+\[
+ \sum_{\beta\in\{0,1\}^3}
+ e^{i\pi(\rho-\rho')\cdot\beta/2}
+ =8\mathbf1_{\{\rho=\rho'\}},
+ \tag{377}
+\]
+so the eight-by-eight matrix \(U\) is unitary.
+
+On bounded frequencies, \(s/a\to k\) uniformly. The directional
+edge sum in (367) is a Riemann sum for the product of the two
+direction-one components and \(h\); smoothness and compact
+support bound its sample error by \(O_{h,R}(a)\) after its
+volume factor. There are \(O_R(\ell^6)\) mode pairs, and the
+coefficient error is \(o(1)\ell^{-3}\) per pair. Equation (372)
+therefore bounds the error in the squared sum by \(o(1)\).
+One may sum polarizations using \(I-kk^*/|k|^2\), avoiding
+any singular choice of frame; local continuous polarization
+frames on the retained compact sets give the same statement.
+
+For each fixed parity the momentum grid has step \(2\pi/\ell\).
+Align its eight parity grids with one grid; their shifts are at
+most \(\pi/\ell\) in each coordinate and compact-set uniform
+continuity makes the change tend to zero. Equation (377), applied
+to both mode indices, then turns the two standing-wave parity
+sums into the Hilbert--Schmidt sum over the two momentum signs.
+The signed factors \(\chi_{\boldsymbol j}\) cancel in the
+modulus squared, not in the original individual modes.
+The two grid densities and the squared coefficient give precisely
+\(\ell^{-6}(\ell/(2\pi))^6=(2\pi)^{-6}\).
+Their sign grids exhaust momentum space after removing only
+the controlled coordinate strips.
+
+For any measurable real transverse polarization frames
+\(e_r(p)\), the resulting plane-wave coefficient is
+\[
+ \boxed{
+ \mathcal R^{E,rs}_h(p,q)
+ =-\frac{\widehat h(-p-q)}{(2\pi)^3}
+       \sqrt{|p||q|}\,(e_r(p))_1(e_s(q))_1,\qquad
+ \widehat h(k)=\int_{\mathbb R^3}e^{-ik\cdot x}h(x)\,dx .
+ }
+ \tag{378}
+\]
+The minus sign is the electric pair sign in (366).
+Polarization completeness yields exactly
+\[
+ \sum_r(e_r(p))_1^2=1-\frac{p_1^2}{|p|^2},\qquad
+ \sum_{r,s}|(e_r(p))_1(e_s(q))_1|^2
+ =\left(1-\frac{p_1^2}{|p|^2}\right)
+  \left(1-\frac{q_1^2}{|q|^2}\right).
+ \tag{379}
+\]
+Values at zero momentum are irrelevant to the integral.
+The preferred direction one has been retained. In particular
+the coefficient at \(q=-p\) is generally nonzero. There is no
+magnetic pair term in this observable to cancel it.
+
+It follows, with all cutoffs removed by (372)--(375), that for any
+\(a\downarrow0\), \(\ell=a(2L+1)\to\infty\) and \(t>0\),
+\[
+ \boxed{
+ C^{E,L,a}_{0;h,h}(t)\longrightarrow C^E_h(t)
+ =\frac{3}{8(2\pi)^6}
+ \int_{\mathbb R^3}\!\int_{\mathbb R^3}
+ |p||q|\left(1-\frac{p_1^2}{|p|^2}\right)
+       \left(1-\frac{q_1^2}{|q|^2}\right)
+ |\widehat h(p+q)|^2e^{-t(|p|+|q|)}\,dp\,dq .
+ }
+ \tag{380}
+\]
+All energy moments with the same positive-time damping converge
+by the proved uniform tails. Real mixed covariances follow by
+polarization. This is the directional electric counterpart of the
+incoming all-mode result, with a different retained pair kernel.
+
+### 24.3 Exact anisotropic density
+
+Write \(k=p+q\), \(K=|k|\), and \(k_\perp^2=K^2-k_1^2\).
+The raw locally finite measure in (380) is absolutely continuous:
+\[
+ \boxed{
+ \rho^E_h(\omega)=\frac1{2560\pi^5}
+ \int_{|k|<\omega}|\widehat h(k)|^2
+ \left[(\omega^2-K^2)^2+
+       (\omega^2-K^2)k_\perp^2+k_\perp^4\right]\,dk,\qquad
+ d\nu^E_h(\omega)=\rho^E_h(\omega)\,d\omega .
+ }
+ \tag{381}
+\]
+There is no atom at zero or at the threshold. Here is a direct
+evaluation of the full inner angular integral, including the
+preferred axis.
+
+Fix \(K>0\), put \(r=|p|\), \(s=|k-p|\), and
+\(\omega=r+s\). Align a temporary polar coordinate axis with
+\(k\), without moving the fixed vector \(\mathbf e_1\).
+The polar-angle change to \(s\) gives measure
+\((rs/K)\,dr\,d\phi\) after the energy delta function is
+integrated. For \(\omega>K\), set
+\[
+ x=\frac{r-s}{K}\in[-1,1],\quad
+ r=\frac{\omega+Kx}{2},\quad s=\frac{\omega-Kx}{2},
+ \quad D=\omega^2-K^2,
+ \tag{382}
+\]
+\[
+ A=\frac{K+\omega x}{2},\quad B=\frac{K-\omega x}{2},
+ \quad R^2=\frac{D(1-x^2)}4,\quad
+ \mu=\frac{k_1}{K},\quad \eta=\mu^2,\quad e=1-\eta.
+ \tag{383}
+\]
+The variables \(A,B\) are the axial components of \(p,q\) in
+this calculation, not the Hamiltonian or its coefficients.
+The transverse parts are opposite, with length \(R\).
+Thus
+\[
+ p_1=\mu A+\sqrt e\,R\cos\phi,\qquad
+ q_1=\mu B-\sqrt e\,R\cos\phi,\qquad
+ r^2=A^2+R^2,\quad s^2=B^2+R^2.
+ \tag{384}
+\]
+The original angular integrand times its Jacobian reduces to
+\(\tfrac12(r^2-p_1^2)(s^2-q_1^2)\,dx\,d\phi\).
+Using the exact averages of \(\cos\phi,\cos^2\phi,\cos^4\phi\),
+the azimuthal mean of that product before its factor \(1/2\) is
+\[
+ P=e^2A^2B^2+
+ \left[\frac{e(1+\eta)}2(A^2+B^2)-2\eta e AB\right]R^2
+ +\left(\eta+\frac{3e^2}{8}\right)R^4.
+ \tag{385}
+\]
+All four needed polynomial integrals are
+\[
+ \begin{split}
+ \int_{-1}^1A^2B^2\,dx
+  &=\frac{K^4-\frac23K^2\omega^2+\frac15\omega^4}{8},\\
+ \int_{-1}^1(A^2+B^2)R^2\,dx
+  &=\frac{D(5K^2+\omega^2)}{30},\\
+ \int_{-1}^1ABR^2\,dx
+  &=\frac{D(5K^2-\omega^2)}{60},\\
+ \int_{-1}^1R^4\,dx&=\frac{D^2}{15}.
+ \end{split}
+ \tag{386}
+\]
+Each follows by expanding (383) and using
+\(\int_{-1}^1x^{2m}dx=2/(2m+1)\).
+Substituting \(\eta=1-e\) and \(\omega^2=D+K^2\) into
+(385)--(386) gives
+\[
+ \int_{-1}^1P\,dx=\frac{D^2+DeK^2+e^2K^4}{15}.
+ \tag{387}
+\]
+The coefficients of \(D^2,DeK^2,e^2K^4\) are all \(1/15\);
+the remaining expanded terms cancel. Consequently the original
+inner momentum integral is
+\[
+ \begin{split}
+ &\int_{\mathbb R^3}|p||k-p|
+ \left(1-\frac{p_1^2}{|p|^2}\right)
+ \left(1-\frac{(k_1-p_1)^2}{|k-p|^2}\right)
+ \delta(\omega-|p|-|k-p|)\,dp\\
+ &\qquad=\frac{\pi}{15}
+       [(\omega^2-K^2)^2+(\omega^2-K^2)k_\perp^2+k_\perp^4]
+       \mathbf1_{\{\omega>K\}}.
+ \end{split}
+ \tag{388}
+\]
+The triangle inequality gives zero below threshold. The
+degenerate boundary has zero measure in the joint integral.
+At \(K=0\) the expression has limit \(\pi\omega^4/15\);
+that outer null set requires no special assignment.
+Tonelli applies to the nonnegative integrand, and the retained
+constant is
+\([3/(8(2\pi)^6)](\pi/15)=1/(2560\pi^5)\), proving (381).
+
+The density is nonnegative and locally integrable. Its bracket
+is strictly positive for \(K<\omega\), since \(D>0\).
+If nonzero compact smooth \(h\) had \(\widehat h=0\) on a
+ball, its convergent entire Taylor expansion, obtained by
+integrating the exponential series over its compact support,
+would vanish everywhere. Fourier uniqueness then forces \(h=0\).
+For a direct uniqueness proof, multiply the zero transform by
+a Gaussian and use its elementary inverse Fourier integral and
+Fubini; every Gaussian convolution of \(h\) is zero, and these
+convolutions converge to \(h\). Thus
+\(\rho^E_h(\omega)>0\) for every \(\omega>0\) when \(h\ne0\).
+In particular the measure gives positive mass to every
+\((0,\varepsilon)\) and has no zero atom.
+
+Integrating the polynomial in (381) over \(\omega\ge K\)
+also evaluates the exact physical-time correlation:
+\[
+ \boxed{
+ C^E_h(t)=\frac1{2560\pi^5}
+ \int_{\mathbb R^3}e^{-tK}|\widehat h(k)|^2
+ \left[
+ \frac{k_\perp^4}{t}+
+ \frac{2Kk_\perp^2}{t^2}+
+ \frac{10K^2-2k_1^2}{t^3}+
+ \frac{24K}{t^4}+\frac{24}{t^5}
+ \right]\,dk,\qquad t>0 .
+ }
+ \tag{389}
+\]
+To check every coefficient, expand the bracket of (381) as
+\[
+ \omega^4-(K^2+k_1^2)\omega^2+
+                    (K^4-K^2k_1^2+k_1^4)
+ \tag{390}
+\]
+and integrate each monomial by repeated integration by parts
+from \(K\) to infinity. All coefficients in (389) are
+nonnegative; in particular \(10K^2-2k_1^2\ge8K^2\).
+
+### 24.4 Infrared coefficients and the raw large-time amplitudes
+
+Let \(m\) be the least degree of a nonzero homogeneous Taylor
+polynomial \(P_m\) of \(\widehat h\) at zero. Its explicit
+value is
+\[
+ P_m(k)=\frac{(-i)^m}{m!}\int_{\mathbb R^3}(k\cdot x)^m h(x)\,dx.
+ \tag{391}
+\]
+For \(h\ne0\) such a degree exists by the preceding analyticity
+and uniqueness argument. Uniformly for \(|z|\le1\),
+\(\widehat h(\omega z)=\omega^mP_m(z)+O_h(\omega^{m+1})\).
+Scaling \(k=\omega z\) in (381) proves
+\[
+ \rho^E_h(\omega)=A^E_{h,m}\omega^{7+2m}
+                   +O_h(\omega^{8+2m}),\qquad\omega\downarrow0,
+ \tag{392}
+\]
+where the full positive anisotropic coefficient is
+\[
+ \begin{split}
+ A^E_{h,m}
+ &=\frac1{2560\pi^5}
+ \int_{|z|<1}|P_m(z)|^2
+ \bigl[(1-|z|^2)^2+
+       (1-|z|^2)(|z|^2-z_1^2)+(|z|^2-z_1^2)^2\bigr]\,dz\\
+ &=\frac1{2560\pi^5}\int_{S^2}|P_m(n)|^2
+ \left[
+ \frac1{2m+3}-\frac{1+n_1^2}{2m+5}
+             +\frac{1-n_1^2+n_1^4}{2m+7}
+ \right]\,d\Omega(n)>0 .
+ \end{split}
+ \tag{393}
+\]
+The second line is the elementary radial integration of the first,
+using homogeneity. Positivity follows from the first line:
+its bracket is positive inside the ball and a nonzero polynomial
+cannot vanish on an open ball.
+
+For \(H_h=\int h\ne0\), \(m=0\) and \(P_0=H_h\).
+Using
+\(\int_{S^2}1=4\pi\), \(\int n_1^2=4\pi/3\),
+\(\int n_1^4=4\pi/5\) in (393) gives
+\[
+ \boxed{\rho^E_h(\omega)\sim
+       \frac{H_h^2}{3360\pi^4}\omega^7.}
+ \tag{394}
+\]
+The sphere integrals follow by a polar axis along \(\mathbf e_1\)
+and \(2\pi\int_{-1}^1u^{2r}du\).
+
+Equations (381),(392), the rapid decay of \(\widehat h\), and the
+substitution \(v=t\omega\) give
+\[
+ C^E_h(t)\sim
+ A^E_{h,m}\Gamma(8+2m)t^{-(8+2m)},\qquad
+ -{C^E_h}'(t)\sim
+ A^E_{h,m}\Gamma(9+2m)t^{-(9+2m)}
+ \quad(t\to\infty).
+ \tag{395}
+\]
+For rigor, split the frequency integral at a fixed small positive
+number. The complement is exponentially small in large \(t\);
+inside, the remainder in (392) is bounded by its next power and
+its gamma integral. Repeated integration by parts evaluates
+each integer gamma integral. In particular, if \(H_h\ne0\),
+\[
+ \boxed{
+ C^E_h(t)\sim\frac{3H_h^2}{2\pi^4t^8},\qquad
+ -{C^E_h}'(t)\sim\frac{12H_h^2}{\pi^4t^9},\qquad
+ -{C^E_h}'(t)/C^E_h(t)\sim\frac8t.
+ }
+ \tag{396}
+\]
+For general \(m\), the quotient is \((8+2m)/t+o(t^{-1})\).
+The norms in (395)--(396) tend to zero with their full displayed
+amplitudes. These are not unit-vector limits.
+
+An exact continuity bound follows directly from (380):
+\[
+ \boxed{C^E_h(t)\le\frac{3}{2\pi^4t^8}\|h\|_1^2.}
+ \tag{397}
+\]
+Indeed \(|\widehat h|\le\|h\|_1\) and
+\[
+ \int_{\mathbb R^3}|p|
+ \left(1-\frac{p_1^2}{|p|^2}\right)e^{-t|p|}\,dp
+ =\frac{8\pi}{3}\int_0^\infty r^3e^{-tr}\,dr
+ =\frac{16\pi}{t^4}.
+ \tag{398}
+\]
+Squaring (398) and multiplying by the exact prefactor in (380)
+proves (397).
+
+### 24.5 Complete ultraviolet polynomial and equal-time divergence
+
+Since \(h\) is compact smooth, integration by parts makes
+\(\widehat h\) decrease faster than any inverse power. Extending
+the integral in (381),(390) from \(K<\omega\) to all \(k\)
+therefore makes an error \(O_{h,N}(\omega^{-N})\) for every
+fixed integer \(N\). On the omitted region \(K\ge\omega\),
+all terms of (390) are bounded by a constant times \(K^4\);
+the stated remainder follows by choosing a sufficiently high
+Fourier decay power and integrating its radial tail.
+
+Put \(\nabla_\perp=(\partial_2,\partial_3)\) and
+\(\Delta_\perp=\partial_2^2+\partial_3^2\), and define
+\[
+ A_h=\|h\|_2^2,\qquad
+ B_h=\|\nabla h\|_2^2+\|\partial_1h\|_2^2,\qquad
+ D_h=\|\Delta_\perp h\|_2^2+
+        \|\partial_1\nabla_\perp h\|_2^2+
+        \|\partial_1^2h\|_2^2 .
+ \tag{399}
+\]
+Here \(D_h\) denotes this scalar only in (399)--(402);
+the directional electric operator remains \(D^E_h\) in (355).
+The full ultraviolet expansion is
+\[
+ \boxed{
+ \rho^E_h(\omega)=
+ \frac{A_h\omega^4-B_h\omega^2+D_h}{320\pi^2}
+          +O_{h,N}(\omega^{-N})\quad(\omega\to\infty).
+ }
+ \tag{400}
+\]
+Every coefficient follows from (390) and Fourier norm identities.
+In particular
+\[
+ K^4-K^2k_1^2+k_1^4
+ =k_\perp^4+k_1^2k_\perp^2+k_1^4,
+ \tag{401}
+\]
+which gives the three nonnegative terms in \(D_h\).
+With the Fourier convention (378), Parseval contributes
+\((2\pi)^3\), giving \(8\pi^3/(2560\pi^5)=1/(320\pi^2)\).
+This identity can be justified directly here: insert a Gaussian
+factor in \(\int|\widehat h(k)|^2dk\), apply Fubini and the
+elementary Gaussian Fourier integral, and let its width tend to
+zero. The resulting approximate identity gives
+\((2\pi)^3\int|h(x)|^2dx\). Integration by parts yields the
+same statement for the derivatives in (399).
+
+For \(h\ne0\), \(A_h>0\), so the locally finite raw measure has
+infinite total mass. Positive-time damping gives finite mass and
+all energy moments, since the density is bounded by a constant
+times \(1+\omega^4\). Its exact small-time singular expansion is
+\[
+ C^E_h(t)=\frac1{320\pi^2}
+    \left(\frac{24A_h}{t^5}-\frac{2B_h}{t^3}
+                          +\frac{D_h}{t}\right)+O_h(1)
+ \quad(t\downarrow0).
+ \tag{402}
+\]
+To see that the remainder is bounded, subtract the polynomial
+in (400) on the whole half-line. The resulting function is
+integrable: it is bounded near zero and rapidly decreasing at
+infinity. Its Laplace integral is therefore bounded. In
+particular
+\[
+ C^E_h(t)\sim\frac{3\|h\|_2^2}{40\pi^2t^5},\quad
+ -{C^E_h}'(t)\sim\frac{3\|h\|_2^2}{8\pi^2t^6},\quad
+ -{C^E_h}'(t)/C^E_h(t)\sim\frac5t.
+ \tag{403}
+\]
+The first-moment statement follows either by differentiating the
+integral with its polynomial remainder, or repeating (402) with
+one additional power of \(\omega\). Spatial smearing alone
+therefore does not supply an equal-time Hilbert vector in this
+limiting two-creation representation. This does not assert a
+divergence at any finite regulator, where (355) is smooth.
+
+### 24.6 The explicit common two-creation state map
+
+Let the one-particle space be the complex \(L^2\) transverse
+vector fields on momentum space with three colour coordinates,
+using Lebesgue measure. Take its symmetric Fock space and
+\(A_{\mathrm{fr}}=d\Gamma(|p|)\). On the \(n\)-particle space
+this multiplies by \(\sum_{i=1}^n|p_i|\), with maximal squared
+energy domain; the direct sum of these maximal real
+multiplication operators is nonnegative and self-adjoint.
+Its nonreal resolvents are the corresponding bounded
+multipliers, which also verify these domain statements.
+
+For \(t>0\) define the equal-colour symmetric two-particle vector
+\[
+ J^E_t h=\frac14\sum_{\alpha=1}^3\sum_{r,s=1}^2
+ \int e^{-t(|p|+|q|)/2}\mathcal R^{E,rs}_h(p,q)
+       a^\dagger_{r\alpha}(p)a^\dagger_{s\alpha}(q)
+                       \Omega\,dp\,dq.
+ \tag{404}
+\]
+Precisely, its two-particle wavefunction is
+\(\sqrt2/4\) times the displayed symmetric kernel with equal
+colours, so (404) requires no distributional operator product.
+Equation (380) proves square integrability. It is invariant
+under the original simultaneous adjoint rotations of the three
+colour coordinates. The trace metric
+\(-2\operatorname{tr}(T_\alpha T_\beta)=\delta_{\alpha\beta}\)
+makes those rotations orthogonal; their contraction in (404)
+is exactly preserved.
+
+The full raw identities are
+\[
+ \|J^E_t h\|^2=C^E_h(t),\qquad
+ \langle J^E_t h,A_{\mathrm{fr}}^nJ^E_t h\rangle
+   =\int\omega^ne^{-t\omega}\rho^E_h(\omega)\,d\omega,
+ \qquad
+ e^{-sA_{\mathrm{fr}}/2}J^E_t h=J^E_{t+s}h.
+ \tag{405}
+\]
+They follow directly from multiplication by the pair energy
+and the factor \(3/8\) already proved. For nonzero \(h\)
+the norm is positive by (381), proving injectivity on the real
+test profiles. Complex-linear extension has the same Hermitian
+norm formula. Changing a transverse polarization frame applies
+pointwise orthogonal matrices and their tensor squares to
+(378),(404), preserving the Hilbert vector and all norms.
+Spatial translation \(h(x)\mapsto h(x-b)\) multiplies the
+kernel by \(e^{i(p+q)\cdot b}\), the exact two-particle
+translation representation. The direction-one axis remains
+fixed; full spatial rotation covariance would also rotate
+that prescribed axis.
+
+This gives a typed common Hilbert and spectral map for the
+positive-time vectors. Its Hamiltonian is the explicitly defined
+free transverse multiplication operator. The correspondence
+does not identify it with the full interacting continuum theory
+or establish products of several local observables.
+
+### 24.7 A common actual positive dyadic sequence
+
+Retain \(L_j=j^2\), \(a_j=1/(100j)\), and
+\(\ell_j=a_j(2L_j+1)\), for integers \(j\ge2\).
+For actual finite-regulator vectors write
+\[
+ C^E_{g;h,k}(t)=
+ \langle\Xi^E_{h,g},e^{-tA_g}\Xi^E_{k,g}\rangle,\qquad
+ y^E_{h,g}(t)=e^{-tA_g/2}\Xi^E_{h,g}.
+ \tag{406}
+\]
+Enumerate the positive rational times \(t_1,t_2,\ldots\).
+Let \(\mathsf E_1\) be the original direction-one edges and
+\(n_1=|\mathsf E_1|\). For each \(e\in\mathsf E_1\), use
+the original single-edge electric state
+\[
+ \Xi^E_{e,g}=\kappa(E_e-\langle E_e\rangle_{\psi_g})\psi_g.
+ \tag{407}
+\]
+These states have no added quarter-face observable term.
+The full Hamiltonian used to evolve them is still (353).
+Set \(\varepsilon_j=j^{-40}(1+\ell_j)^{-10}\).
+At stage \(j\), impose all previously proved stage-\(j\)
+conditions that are to be retained in the programme,
+\(0<g<j^{-5}\), and the additional finite tests
+\[
+ \left|C^E_{g;e,e'}(t_n)
+     -C^{E,L_j,a_j}_{0;e,e'}(t_n)\right|
+       <\frac{\varepsilon_j}{n_1^2}
+ \quad(e,e'\in\mathsf E_1,\ 1\le n\le j).
+ \tag{408}
+\]
+At fixed \(j\), (366)--(368) prove convergence for each such
+test. Mixed terms follow by real polarization, since the
+Hamiltonian, weights and vacuum are real. The list is finite
+at each stage, so it holds for every sufficiently small
+positive coupling. The previously retained finite tests
+likewise hold on tails by their proved fixed-box convergence.
+Take the least positive integer exponent \(k_j\) for which
+the entire list holds at \(g_j=2^{-k_j}\). Existence follows
+from these tails and well ordering. This refines the coupling
+selection; it does not assert that an earlier least dyadic
+already met these extra electric tests.
+
+Linearity in the original direction-one weights gives
+\[
+ |C^E_{g_j;h,k}(t_n)-C^{E,L_j,a_j}_{0;h,k}(t_n)|
+ \le\varepsilon_j\|h\|_\infty\|k\|_\infty
+ \quad(n\le j).
+ \tag{409}
+\]
+Thus one sequence gives every fixed compact smooth profile at
+each positive rational time. The all-mode limit (380) identifies
+these limits. For every real \(t>0\), the actual diagonal
+covariance \(C^E_{g_j;h,h}(t)\) is decreasing in \(t\)
+because its spectral measure is nonnegative. Squeeze it between
+two rational times and use the continuity of (389); then
+polarize to obtain
+\[
+ C^E_{g_j;h,k}(t)\longrightarrow C^E_{h,k}(t)
+ \quad(t>0)
+ \tag{410}
+\]
+for all real compact smooth \(h,k\).
+
+All original couplings remain
+\[
+ \kappa_j=200jg_j^2,\qquad
+ b_j=50j/g_j^2,\qquad
+ \xi_j=1/(4g_j^4),
+ \tag{411}
+\]
+with every nonlinear Wilson term and its scalar, and the
+actual vacuum at each positive \(g_j\). No uniform dependence
+of the fixed-box approximation on \(L,a\) was assumed.
+This sequence is not identified with the prescribed logarithmic
+or fixed-electric-coefficient coupling paths.
+
+For precision, let \(\nu^E_{h,g_j}\) be the actual unfiltered
+raw spectral measure of (355). For fixed \(t>0\), define the
+finite measure
+\(\mu_{j,t}=e^{-t\omega}\nu^E_{h,g_j}\).
+Its mass tends to \(C^E_h(t)\) and its Laplace transform
+at \(s>0\) tends to \(C^E_h(t+s)\). The exact bound
+\[
+ (1-e^{-sR})\mu_{j,t}([R,\infty))
+ \le C^E_{g_j;h,h}(t)-C^E_{g_j;h,h}(t+s)
+ \tag{412}
+\]
+proves tightness: first choose \(s>0\) small using
+continuity at \(t\), then \(R\) large so its denominator
+is bounded away from zero. Finitely many initial measures
+are controlled separately. On a compact energy interval,
+polynomials in \(e^{-\omega}\) approximate all continuous
+functions by the change \(z=e^{-\omega}\) and polynomial
+approximation on its compact range. The Laplace limits and
+tightness therefore identify the full weak limit:
+\[
+ \boxed{\mu_{j,t}\Longrightarrow
+           e^{-t\omega}\rho^E_h(\omega)\,d\omega.}
+ \tag{413}
+\]
+Applying (413) at \(t/2\) to the bounded continuous test
+\(\omega^n e^{-t\omega/2}\) proves every positive-time
+energy moment, including
+\[
+ \|y^E_{h,g_j}(t)\|^2\to C^E_h(t),\qquad
+ \langle y^E_{h,g_j}(t),A_{g_j}y^E_{h,g_j}(t)\rangle
+                   \to-{C^E_h}'(t).
+ \tag{414}
+\]
+The damped vectors lie in every excitation-power domain:
+the spectral multiplier \(\omega^m e^{-t\omega/2}\)
+is bounded at each fixed \(t>0\).
+
+For finitely many profiles and positive times, their actual
+Gram and semigroup matrix elements converge to those of
+(404). The mixed time is the sum of the two half-times
+and any intervening nonnegative evolution time, so (410)
+applies. This proves the common state correspondence at
+the level claimed, without asserting an isometry between
+the entire varying Hilbert spaces.
+
+### 24.8 Locally finite raw convergence and unfiltered escape
+
+Equation (413) also proves vague convergence of the actual
+unfiltered measures to (381): multiply any compactly
+supported continuous test by \(e^{t\omega}\).
+Because the limiting density has no atoms, the same argument
+by continuous upper and lower approximation gives
+\[
+ \nu^E_{h,g_j}([0,\Omega])
+ \longrightarrow\int_0^\Omega\rho^E_h(\omega)\,d\omega
+ \quad(0<\Omega<\infty).
+ \tag{415}
+\]
+The limit is finite and positive for \(h\ne0\).
+For the damped vectors their raw low-energy mass is instead
+\(\int_0^\Omega e^{-t\omega}\rho^E_h(\omega)d\omega>0\).
+These limits retain the original raw spectral amplitudes.
+
+On the same actual sequence the unfiltered norms diverge:
+\[
+ \boxed{\|\Xi^E_{h,g_j}\|^2\longrightarrow\infty
+        \quad(h\ne0).}
+ \tag{416}
+\]
+Indeed their total spectral masses dominate
+\(C^E_{g_j;h,h}(t)\). For any prescribed \(M\), choose
+a fixed small \(t>0\) with \(C^E_h(t)>2M\), possible by
+(402). Equation (410) makes that lower bound exceed \(M\)
+at every sufficiently late regulator. Since \(M\) was
+arbitrary, this proves (416), with no unsupported rate
+in the regulator.
+
+After these raw facts have been retained, their consequence
+for the corresponding probabilities is
+\[
+ \frac{\nu^E_{h,g_j}([0,\Omega])}
+      {\|\Xi^E_{h,g_j}\|^2}\longrightarrow0
+ \quad(\Omega<\infty).
+ \tag{417}
+\]
+This does not replace any original state by a unit vector;
+it records what division by its explicitly diverging mass
+would do. Positive raw low-energy mass in (415) and
+probability escape in (417) both follow from the full
+calculation.
+
+Equations (395),(414) give the physical large-time filtered
+raw amplitudes at each fixed positive time before any
+time sequence is taken. If an actual time-growing sequence
+is desired, set \(t=n\), and choose the least increasing
+regulator index \(j_n\) for which the two errors in (414)
+are each smaller than \(1/n\) times their respective
+strictly positive limits. These indices exist by (414).
+Then the actual vectors \(y^E_{h,g_{j_n}}(n)\) retain
+the norm and energy amplitudes of (395), with ratio
+\((8+2m)/n+o(n^{-1})\). This is an explicit further
+selection, not an exchange of the positive-time and
+regulator limits.
+
+The original all-box covariance
+\(\Gamma=\sum_{e\parallel1}n_2^2E_e\) has a different
+noncompact spatial coefficient and its raw scaling is
+not determined by replacing it with a fixed \(h\).
+The native magnetic \(K_\theta\) state requires its
+already specified separate covariance comparison.
+This note supplies the exact direction-one local
+electric coefficient, full positive-time spectral map,
+anisotropic density, ultraviolet and infrared raw
+amplitudes, and a common positive-coupling sequence.
+It neither identifies that sequence with a prescribed
+running-coupling path nor constructs an interacting
+four-dimensional mass-gap counterexample.
+
+
+## 25. The original weighted covariance at every physical energy scale
+
+This calculation retains the original noncompact coordinate weight and both open boundaries. The full mode trace supplies an exact leading raw mass, finite-energy fraction and native magnetic transfer on an explicitly strengthened cusp.
+
+### 25.1 Exact original operator and the component trace
+
+Let \(N=2L+1\), \(\ell=aN\), and let \(\mathsf E_L\) be every oriented positive edge of \(\{-L,\ldots,L\}^3\). Retain
+\[
+ H_g=\frac{2g^2}{a}\sum_e E_e+
+ \frac1{2g^2a}\sum_p(2-W_p),\quad
+ A_g=H_g-E_g,\quad
+ \Gamma=\sum_{e=(n,1)}n_2^2E_e,\quad
+ v_{\Gamma,g}=(\Gamma-\langle\Gamma\rangle_g)\psi_g .
+ \tag{418}
+\]
+Here \(\psi_g\) is the actual positive unit physical vacuum. The original period, covering, coordinate, and Haar maps are those of the cumulative manuscript. If \(D^E_h=(2g^2/a)\sum_{e\parallel1}h(am(e))E_e\), then on this entire finite box the physical weight \(h(x)=x_2^2\) gives the exact identity
+\[
+ D^E_{x_2^2}=2g^2a\Gamma,\qquad
+ g^2v_{\Gamma,g}=\frac1{2a}
+       (D^E_{x_2^2}-\langle D^E_{x_2^2}\rangle_g)\psi_g .
+ \tag{419}
+\]
+This growing-box weight is not a fixed compact test function. We prove its limit directly below.
+
+Let \(\mathscr R\), \(\Lambda=\operatorname{diag}\sigma_\nu\), and
+\(D=\mathscr R^{\mathsf T}\mathsf W\mathscr R\) have exactly their Section 18 meanings, with \(\mathsf W_{(n,1)}=n_2^2\) and its other entries zero. The ordered form of its full comparison measure is
+\[
+ m^\Gamma_{L,a}=\frac3{32}\sum_{\nu,\eta}
+   \sigma_\nu\sigma_\eta D_{\nu\eta}^2
+              \delta_{(\sigma_\nu+\sigma_\eta)/a}.
+ \tag{420}
+\]
+The factor \(3/32\) includes three colours, both pair contractions and the original coefficient \(-1/8\) in the pair vector. For \(t\ge0\), set
+\[
+ T_t=\mathscr R\Lambda e^{-t\Lambda/a}\mathscr R^{\mathsf T},
+ \qquad C^\Gamma_{L,a}(t)=\int e^{-t\omega}\,dm^\Gamma_{L,a}(\omega)
+           =\frac3{32}\operatorname{Tr}(\mathsf W T_t\mathsf W T_t).
+ \tag{421}
+\]
+Moving the finite rectangular matrices cyclically proves this equality without a missing projection term.
+
+Write the original exact one-dimensional vertex and edge modes as
+\[
+ \begin{split}
+ v_r(n)&=\sqrt{\frac{2-\delta_{r0}}N}
+   \cos\frac{\pi r(n+L+1/2)}N,\quad 0\le r<N,\\
+ s_r&=2\sin\frac{\pi r}{2N},\\
+ w_r(n)&=-\sqrt{\frac2N}
+   \sin\frac{\pi r(n+L+1)}N,\quad 1\le r<N .
+ \end{split}\tag{422}
+\]
+Finite geometric sums and \(d_0v_r=s_rw_r\) give orthonormality and the full tensor decomposition. In a frequency block \(\boldsymbol r\), its one-form space has components only where \(r_i>0\); the gradient is its line spanned by \(s=(s_{r_1},s_{r_2},s_{r_3})\). The transverse projection is \(I-ss^{\mathsf T}/|s|^2\) on this space. Consequently, the direction-one to direction-one block of \(T_t\), in the exact basis
+\[
+ w_{r_1}(n_1)v_{r_2}(n_2)v_{r_3}(n_3),
+ \quad 1\le r_1<N,\quad 0\le r_2,r_3<N,
+\]
+is diagonal, with scalar
+\[
+ f_t(\boldsymbol r)=
+ \frac{s_{r_2}^2+s_{r_3}^2}{\sigma_{\boldsymbol r}}\,
+            e^{-t\sigma_{\boldsymbol r}/a},\qquad
+ \sigma_{\boldsymbol r}=(s_{r_1}^2+s_{r_2}^2+s_{r_3}^2)^{1/2}.
+ \tag{423}
+\]
+The scalar is zero if \(r_2=r_3=0\). This includes the absent transverse block rather than counting a spurious polarization. Since \(\mathsf W\) has only direction-one entries, (421) uses this component block twice. All original transverse modes and their exact polarization sums have therefore been retained.
+
+### 25.2 Discrete weight estimates including both boundaries
+
+Let \(Z\) be multiplication by \((n_2/N)^2\) on the vertex coordinate \(n_2=-L,\ldots,L\). In its cosine basis denote \(Z_{rs}=\langle v_r,Zv_s\rangle\). There is a constant independent of odd \(N\ge3\) such that
+\[
+ |Z_{rs}|\le\frac{C}{(1+|r-s|)^2},
+ \quad \sum_{|r-s|>M}|Z_{rs}|^2\le CM^{-3},
+ \quad \sum_s|Z_{rs}|^2\le\frac1{16}.
+ \tag{424}
+\]
+We give the boundary proof. For \(d=2,4\), define
+\[
+ q^{(d)}_h=\frac1N\sum_{n=-L}^L
+       (n/N)^d\cos\frac{\pi h(n+L+1/2)}N .
+\]
+Reflect the \(N\) samples evenly at the two endpoint half-cells to a \(2N\)-periodic sequence. In its interior the absolute second differences of the polynomial samples are at most \(C_d/N^2\). At each of the two reflection junctions the second difference is bounded by \(C_d/N\), by the bound on the first derivative of \(x^d\) on \([-1/2,1/2]\). Thus the sum of the absolute second differences around the periodic sequence is at most \(C_d/N\). The Fourier multiplier of minus the periodic second difference is \(4\sin^2(\pi h/(2N))\). Even reflection identifies its Fourier coefficient, up to a unit phase, with \(q^{(d)}_h\). Division by the \(2N\) in that coefficient gives
+\[
+ |q^{(d)}_h|\le
+ \frac{C_d}{N^2\sin^2(\pi h/(2N))}
+ \le\frac{C'_d}{\operatorname{dist}(h,2N\mathbb Z)^2}
+ \quad(h\notin2N\mathbb Z).
+ \tag{425}
+\]
+The second inequality uses \(\sin u\ge 2u/\pi\) for \(0\le u\le\pi/2\), after reflection. The zero coefficient is bounded directly by \(2^{-d}\). The product-of-cosines identity gives
+\[
+ Z_{rs}=\frac{\sqrt{(2-\delta_{r0})(2-\delta_{s0})}}2
+                  (q^{(2)}_{r-s}+q^{(2)}_{r+s}).
+ \tag{426}
+\]
+For \(0\le r,s<N\), both \(r+s\) and \(2N-r-s\) are at least \(|r-s|\). Thus (425) proves the first inequality in (424), including the high-frequency boundary alias \(r+s\) near \(2N\). Summing the fourth-power tail proves the second; the last follows from \(Z^2\le I/16\).
+
+The diagonal of \(Z^2\) is
+\[
+ A_r:=\langle v_r,Z^2v_r\rangle
+ =\begin{cases}\mu_N,&r=0,\\
+ \mu_N+q^{(4)}_{2r},&1\le r<N,\end{cases}
+ \qquad
+ \mu_N=\frac{L(L+1)(3L^2+3L-1)}{15N^4}
+                 \longrightarrow\frac1{80}.
+ \tag{427}
+\]
+Indeed \(\sum_{n=-L}^Ln^4=L(L+1)(2L+1)(3L^2+3L-1)/15\), obtained by summing the fourth finite difference of a fifth-degree polynomial. The formula for \(v_r^2\) proves the diagonal identity. In particular
+\[
+ |A_r-\mu_N|\le
+ \frac{C}{(1+\min(r,N-r))^2}\quad(1\le r<N).
+ \tag{428}
+\]
+
+### 25.3 Full positive-time trace
+
+For every simultaneous \(a\downarrow0\), \(\ell=aN\to\infty\), and fixed \(t>0\), we prove
+\[
+ C^\Gamma_{L,a}(t)
+   \sim\frac{3\ell^7}{12800\pi^2a^2t^5}.
+ \tag{429}
+\]
+Let \(S_t\) be the direction-one diagonal matrix whose entries are \(f_t/a\), and extend \(Z\) on that component edge space as the identity in coordinates one and three. For finite self-adjoint matrices,
+\[
+ \operatorname{Tr}(Z^2S_t^2)-\operatorname{Tr}(ZS_tZS_t)
+              =\frac12\|[Z,S_t]\|_{\rm HS}^2.
+ \tag{430}
+\]
+Expansion of the squared Hilbert--Schmidt norm and cyclicity of the finite trace prove the equality; its right side is nonnegative.
+
+Put \(p_i=s_{r_i}/a\), \(\omega_{\boldsymbol r}=|p|\). The scalar of \(S_t\) is
+\[
+ d_t(p)=\frac{p_2^2+p_3^2}{|p|}e^{-t|p|},\qquad d_t(0)=0.
+ \tag{431}
+\]
+This is a continuous Lipschitz function. Away from zero, differentiating its homogeneous degree-one prefactor bounds its gradient by \(C(1+t|p|)e^{-t|p|}\le C_t e^{-t|p|/2}\). The same bound along segments follows by integration, since a point at the origin has one-dimensional measure zero and the function is Lipschitz there. Also
+\[
+ \frac{2|\boldsymbol r|}{\ell}\le\omega_{\boldsymbol r}
+ \le\frac{\pi|\boldsymbol r|}{\ell},\qquad
+ \left|\frac{\partial (s_r/a)}{\partial r}\right|\le\frac\pi\ell.
+ \tag{432}
+\]
+The number of nonnegative integer triples in a shell \(m\le|\boldsymbol r|<m+1\) is at most \(C(m+1)^2\): associate their disjoint unit cubes to an annulus whose radii differ by at most \(1+2\sqrt3\), and bound its volume. Equations (432), followed by comparison of the resulting polynomial-exponential series with its integral on each unit interval, prove
+\[
+ \sum_{\boldsymbol r}\omega_{\boldsymbol r}^k
+                 e^{-u\omega_{\boldsymbol r}}\le C_{k,u}\ell^3,
+ \quad \ell\ge1,\quad k=0,1,2,\ldots,\quad u>0 .
+ \tag{433}
+\]
+Excluding \(\boldsymbol r=0\) when necessary only decreases these sums. The same argument after factoring out \(e^{-uR/2}\) proves a tail bound \(C_{k,u}\ell^3e^{-uR/2}\) on \(\omega_{\boldsymbol r}>R\), with an adjustment of the constant and a smaller exponent if needed.
+
+In the commutator, only \(r_2,s_2\) differ. Split at \(1\le |r_2-s_2|\le M\), where \(M/\ell\le1\). Integration of the derivative bound and (432) gives
+\[
+ |d_t(p_{\boldsymbol r})-d_t(p_{r_1,s_2,r_3})|
+       \le C_t\frac M\ell e^{-t\omega_{\boldsymbol r}/4}.
+\]
+Here the frequency changes by at most \(\pi M/\ell\le\pi\), so replacing the minimum frequency along the segment by the initial one costs only a constant depending on \(t\). Using the last bound of (424) and then (433), the squared commutator contribution of these entries is at most \(C_t\ell M^2\). On \(|r_2-s_2|>M\), use \(|d-d'|^2\le2d^2+2(d')^2\), the symmetry of \(Z\), and its tail bound in (424). The result is at most \(C_t\ell^3M^{-3}\). Choose \(M=\lfloor\sqrt\ell\rfloor\) for sufficiently large \(\ell\). Then
+\[
+ \|[Z,S_t]\|_{\rm HS}^2=o(\ell^3).
+ \tag{434}
+\]
+Both boundaries and all high-frequency modes have been controlled in this estimate.
+
+Next,
+\(\operatorname{Tr}(Z^2S_t^2)=\sum_{\boldsymbol r}A_{r_2}d_t(p_{\boldsymbol r})^2\).
+On \(\omega_{\boldsymbol r}\le R\), each coordinate index is at most \(R\ell/2\), and for sufficiently small \(a\) this is less than \(N/2\). Equation (428), summation in \(r_2\), and the \(O_R(\ell^2)\) possible pairs \((r_1,r_3)\) bound the error in replacing \(A_{r_2}\) by \(\mu_N\) by \(C_R\ell^2\). The error on the complement divided by \(\ell^3\) tends uniformly to zero as \(R\to\infty\), since \(A_{r_2}\) and \(\mu_N\) are bounded and (433) gives the exponential tail. Thus
+\[
+ \operatorname{Tr}(Z^2S_t^2)
+       =\mu_N\sum_{\boldsymbol r}d_t(p_{\boldsymbol r})^2+o(\ell^3).
+ \tag{435}
+\]
+On every fixed bounded physical frequency region,
+\(s_{r_i}/a-(\pi r_i/\ell)\to0\) uniformly, using the sine Taylor remainder bounded by its cubic term. The continuous function (431), the grid step \(\pi/\ell\), and the tail estimate give
+\[
+ \begin{split}
+ \ell^{-3}\sum_{\boldsymbol r}d_t(p_{\boldsymbol r})^2
+ &\longrightarrow
+ \frac1{\pi^3}\int_{\mathbb R_+^3}
+     |p|^2(1-p_1^2/|p|^2)^2 e^{-2t|p|}\,dp\\
+ &=\frac1{5\pi^2t^5}.
+ \end{split}\tag{436}
+\]
+Coordinate planes contribute \(O_R(\ell^2)\) in each bounded region and have zero limiting measure. The angular integral on the full sphere is
+\(2\pi\int_{-1}^1(1-u^2)^2du=32\pi/15\), and the positive octant gives one eighth of it. Four integrations by parts give
+\(\int_0^\infty r^4e^{-2tr}dr=24/(2t)^5=3/(4t^5)\).
+These constants prove the second line. Finally,
+\[
+ C^\Gamma_{L,a}(t)
+       =\frac3{32}N^4a^2\operatorname{Tr}(ZS_tZS_t).
+\]
+Insert (427), (430), (434)--(436) and \(N=\ell/a\) to prove (429).
+
+### 25.4 Entire raw mass and the exact finite-energy fraction
+
+Define the positive finite lattice integral
+\[
+ I_{\rm lat}=\frac1{\pi^3}\int_{[0,\pi]^3}
+ \frac{(s_2^2+s_3^2)^2}{s_1^2+s_2^2+s_3^2}\,dk_1\,dk_2\,dk_3,
+ \qquad s_i=2\sin(k_i/2),
+ \tag{437}
+\]
+with the integrand set to zero at the single origin. Then
+\[
+ C_L^\Gamma=C^\Gamma_{L,a}(0)
+       \sim \frac{3N^7}{2560}I_{\rm lat},\qquad
+                       \frac83<I_{\rm lat}<4.
+ \tag{438}
+\]
+For the trace proof use the direction-one matrix with scalar
+\(d_0(s)=(s_2^2+s_3^2)/|s|\), extended continuously at zero. It is globally Lipschitz on the bounded cube. Repeat (430) with index derivative at most \(C/N\). The near-diagonal bound is \(CNM^2\), and the far bound is \(CN^3M^{-3}\), since the dimension is less than \(N^3\) and the scalar is bounded. Choosing \(M=\lfloor\sqrt N\rfloor\) makes the commutator squared \(o(N^3)\). Equation (428) gives total diagonal-weight error \(O(N^2)\), including \(r_2\) near \(N\). The Riemann sum of the continuous symbol squared divided by \(N^3\) tends to (437). Multiplication by \(3N^4/32\) and by \(\mu_N\to1/80\) proves the asymptotic.
+
+To prove the bounds, take expectation for uniform \(k\) on the cube, put \(X=s_1^2\), \(S=s_1^2+s_2^2+s_3^2\), and use \(\mathbb EX=2\), \(\mathbb ES=6\). The integral is
+\(\mathbb E(S-2X+X^2/S)=2+\mathbb E(X^2/S)\).
+Cauchy--Schwarz applied to \(X/\sqrt S\) and \(\sqrt S\) gives \(\mathbb E(X^2/S)\ge 4/6\), with strict inequality because \(X/S\) is not constant almost everywhere. Also \(X^2/S<X\) almost everywhere since the two other coordinates have positive squares almost everywhere. This proves both strict bounds without replacing the integral by an estimated coefficient.
+
+Let \(a\to0,\ell\to\infty\). The locally finite raw spectral limit, with its full dimensional factor recorded, is
+\[
+ \frac{a^2}{\ell^7}m^\Gamma_{L,a}
+      \longrightarrow \frac{\omega^4}{102400\pi^2}\,d\omega
+ \quad\hbox{on bounded energy intervals}.
+ \tag{439}
+\]
+For a complete measure proof, multiply these measures by \(e^{-t\omega}\) for a fixed \(t>0\). Their masses and Laplace transforms converge by (429). If their masses are \(M_j(t)\), then
+\[
+ (1-e^{-sR})\mu_j([R,\infty))
+       \le M_j(t)-M_j(t+s).
+\]
+Continuity of \(3/(12800\pi^2t^5)\), first choosing small \(s>0\) and then large \(R\), proves tightness; finitely many initial measures cause no difficulty. On a bounded interval, \(z=e^{-\omega}\) and Bernstein polynomial approximation show that constants and finite linear combinations of \(e^{-n\omega}\) approximate every continuous function. Tightness and the convergent transforms therefore identify the weak limit. Its density is the one in (439) times \(e^{-t\omega}\), because \(\int_0^\infty\omega^4e^{-t\omega}d\omega=24/t^5\). Multiplication by \(e^{t\omega}\) on a bounded interval proves (439), including its interval masses since this density has no atoms. Applying weak convergence at time \(t/2\) to the bounded continuous function \(\omega^k e^{-t\omega/2}\) also proves every positive-time moment:
+\[
+ \frac{a^2}{\ell^7}\int\omega^k e^{-t\omega}dm^\Gamma_{L,a}
+       \longrightarrow
+         \frac{(k+4)!}{102400\pi^2t^{k+5}},
+                  \quad k=0,1,2,\ldots .
+ \tag{440}
+\]
+For every fixed \(\Omega>0\), (438)--(439) give the full leading raw mass and probability,
+\[
+ \begin{split}
+ m^\Gamma_{L,a}([0,\Omega])
+       &\sim\frac{\ell^7}{a^2}\frac{\Omega^5}{512000\pi^2},\\
+ \rho^\Gamma_{L,a}([0,\Omega])
+       &\sim a^5\frac{\Omega^5}{600\pi^2 I_{\rm lat}} .
+ \end{split}\tag{441}
+\]
+Here the probability uses precisely the positive raw mass (438); the first line remains part of the assertion. On \(L_j=j^2,a_j=1/(100j)\), the first mass grows as a fixed constant times \(j^9\), while the whole mass grows as a fixed constant times \(j^{14}\). Their vanishing fraction has exact order \(j^{-5}\). This refines, rather than contradicts, the previous uniform bound.
+
+### 25.5 Transport to one actual positive-coupling sequence
+
+Retain every earlier finite-stage test from Sections 18 and 22--24, including the single-edge directional tests, and the supplied full local-spectrum sequence, and retain \(g<j^{-5}\). Enumerate the positive rational times \(t_1,t_2,\ldots\). At fixed \(j\), set \(N_j=2j^2+1\), \(a_j=1/(100j)\), \(\ell_j=a_jN_j\), and in addition require
+\[
+ \begin{split}
+ |g^4\|v_{\Gamma,g}\|^2-C^\Gamma_{L_j}|&<N_j^7/j,\\
+ \left|g^4\langle v_{\Gamma,g},e^{-t_rA_g}v_{\Gamma,g}\rangle
+                  -C^\Gamma_{L_j,a_j}(t_r)\right|
+                         &<\ell_j^7/(a_j^2j),\quad r\le j .
+ \end{split}\tag{442}
+\]
+The fixed-box graph and finite spectral projection theorem (231) proves convergence of the total mass and every bounded heat multiplier as \(g\downarrow0\). Each prior finite-stage test likewise holds throughout a sufficiently small positive interval by its proved fixed-box limit. Intersect these finitely many intervals. Define \(k_j\) as the least positive integer such that every dyadic \(g=2^{-q}\), \(q\ge k_j\), satisfies this finite list, and set \(g_j=2^{-k_j}\). The intersection proves existence. This is a refinement of the selected actual sequence, with all earlier results retained, and not a claim about either prescribed coupling path.
+
+Every coefficient remains
+\[
+ \kappa_j=200j\,2^{-2k_j},\quad
+ b_j=50j\,2^{2k_j},\quad
+ \xi_j=2^{4k_j-2},\quad
+ 2b_jM_j=100j\,2^{2k_j}M_j .
+ \tag{443}
+\]
+Let \(\nu_{\Gamma,j}\) be the unchanged raw spectral measure of \(v_{\Gamma,g_j}\), so \(m^\Gamma_{L_j,a_j,g_j}=g_j^4\nu_{\Gamma,j}\). Equations (442) and the trace theorem give the heat limits at rational times. Monotonicity of positive spectral heat integrals squeezes every real positive time between rational times, and continuity of the limit gives the same conclusion there. The preceding damped-measure and moment proof applies unchanged. Consequently
+\[
+ \begin{split}
+ g_j^4\|v_{\Gamma,g_j}\|^2&\sim(3I_{\rm lat}/2560)N_j^7,\\
+ \nu_{\Gamma,j}([0,\Omega])
+   &\sim g_j^{-4}\frac{\ell_j^7}{a_j^2}
+                         \frac{\Omega^5}{512000\pi^2},\\
+ \zeta_{\Gamma,j}([0,\Omega])
+   &\sim a_j^5\frac{\Omega^5}{600\pi^2I_{\rm lat}},\\
+ \|e^{-tA_{g_j}/2}v_{\Gamma,g_j}\|^2
+   &\sim g_j^{-4}\frac{3\ell_j^7}{12800\pi^2a_j^2t^5}.
+ \end{split}\tag{444}
+\]
+All positive-time energy moments carry the coefficient in (440), multiplied by \(g_j^{-4}\ell_j^7/a_j^2\). In particular the quotient of first energy and squared norm of the displayed actual filtered vector tends to \(5/t\).
+
+### 25.6 Exact native magnetic transfer on the strengthened original cusp family
+
+To transfer the leading finite-energy fraction, the old relative error \(O(j^{-4})\) is insufficient compared with \(a_j^5\). We explicitly strengthen the external cusp depth while retaining the full finite Hamiltonian, vacuum, coordinate order and cover:
+\[
+ \begin{split}
+ F(\xi)&=\xi^{3/4}(6+64\xi),\\
+ T_j^{\ddagger}
+    &=2C+j^5 e^{8\pi\xi_j}F(\xi_j)^{1/4},\\
+ D_j^{\ddagger}
+    &=L_{T_j^{\ddagger}}q_{T_j^{\ddagger}}
+                             +6m_{T_j^{\ddagger}}^2,\\
+ \theta_j^{\ddagger}&=\frac{2\pi}{10^4j^2D_j^{\ddagger}},\quad
+ v_j^{\ddagger}=e^{-2\pi T_j^{\ddagger}/j},\quad
+ t_{c,j}^{\ddagger}=(v_j^{\ddagger})^j .
+ \end{split}\tag{445}
+\]
+The cover remains \(j\), its matrix is the original \(P_T\operatorname{diag}(1,1,j,j)\), its pullback metric is unchanged in form, its signed determinant is \(-j^2D_j^\ddagger\), and its positive volume is \(j^2D_j^\ddagger\). The original nonwrapping connection is \(h_1(n)=\exp(-\theta_j^\ddagger n_2H_c)\), \(h_2=h_3=I\). The previously proved embedding and systole estimates apply with this larger original cusp parameter.
+
+Relative to (242), the fourth power of \(T-C\) has an extra factor \(j^4\) in the denominator of the angle error. Thus the all-angle estimate, with its original constant \(A_{\rm rel}=138240\pi^2/10^8\), proves
+\[
+ \eta_j^\ddagger\le A_{\rm rel}j^{-8},
+                  \qquad \eta_j^\ddagger/a_j^5\longrightarrow0 .
+ \tag{446}
+\]
+Let
+\(\chi_j^\ddagger=(K_{\theta_j^\ddagger}-\langle K_{\theta_j^\ddagger}\rangle)\psi_{g_j}\),
+and let \(n_j^\ddagger\) be its unchanged raw excitation measure. The exact norm remainder and raw measure comparison from Section 15 are
+\[
+ \begin{split}
+ \|\chi_j^\ddagger+(2/3)(\theta_j^\ddagger)^2v_{\Gamma,g_j}\|
+  &\le\eta_j^\ddagger(2/3)(\theta_j^\ddagger)^2
+                    \|v_{\Gamma,g_j}\|,\\
+ \|n_j^\ddagger-(4/9)(\theta_j^\ddagger)^4\nu_{\Gamma,j}\|_{\rm TV,1}
+  &\le\eta_j^\ddagger(2+\eta_j^\ddagger)
+          (4/9)(\theta_j^\ddagger)^4\|v_{\Gamma,g_j}\|^2 .
+ \end{split}\tag{447}
+\]
+Multiplying the second line by
+\(9g_j^4a_j^2/[4(\theta_j^\ddagger)^4\ell_j^7]\)
+makes its bound asymptotic to a fixed constant times
+\(\eta_j^\ddagger/a_j^5\), which tends to zero by (444) and (446).
+It follows, with every raw factor retained, that for \(\Omega>0\), \(t>0\),
+\[
+ \begin{split}
+ \|\chi_j^\ddagger\|^2
+    &\sim\frac{I_{\rm lat}}{1920}
+       (\theta_j^\ddagger)^4g_j^{-4}N_j^7,\\
+ n_j^\ddagger([0,\Omega])
+    &\sim\frac{(\theta_j^\ddagger)^4g_j^{-4}\ell_j^7}{a_j^2}
+                                      \frac{\Omega^5}{1152000\pi^2},\\
+ \frac{n_j^\ddagger([0,\Omega])}{\|\chi_j^\ddagger\|^2}
+    &\sim a_j^5\frac{\Omega^5}{600\pi^2I_{\rm lat}},\\
+ \|e^{-tA_{g_j}/2}\chi_j^\ddagger\|^2
+    &\sim
+      \frac{(\theta_j^\ddagger)^4g_j^{-4}\ell_j^7}
+                       {9600\pi^2a_j^2t^5},\\
+ \frac{\langle e^{-tA_{g_j}/2}\chi_j^\ddagger,
+          A_{g_j}e^{-tA_{g_j}/2}\chi_j^\ddagger\rangle}
+             {\|e^{-tA_{g_j}/2}\chi_j^\ddagger\|^2}
+    &\longrightarrow 5/t .
+ \end{split}\tag{448}
+\]
+For the energy assertion, every \(\omega^ke^{-t\omega}\) is a bounded multiplier; use (447) with its supremum norm and (440). No unbounded-moment conclusion is taken from unweighted weak convergence.
+
+The raw native mass still vanishes. For example the original cusp bounds give \(D_j^\ddagger\ge c(T_j^\ddagger-C)^2\) for a fixed \(c>0\) on the proved tail. Thus \((\theta_j^\ddagger)^4g_j^{-4}N_j^7\) is at most a fixed power of \(j,\xi_j\) times \(e^{-64\pi\xi_j}\), since \(g_j^{-4}=4\xi_j\). This tends to zero; expansion of the exponential into its positive power series bounds it against every fixed inverse power. The finite-energy and time-filtered masses in (448) also vanish, either from that bound or because they are bounded above by the total raw mass.
+
+For completeness there is a rigorously selected low-quotient family of actual filtered native vectors. For each integer \(n\ge1\), apply the proved fixed-time norm and first-moment limits at \(t=n\), and choose the least \(j_n>j_{n-1}\) for which both relative errors in (448) are less than \(1/n\). Existence follows from the two limits and their positive leading constants. The actual vectors \(e^{-nA_{g_{j_n}}/2}\chi_{j_n}^\ddagger\) then have quotient \(5/n+o(n^{-1})\), with their raw masses given by the fourth line of (448) on this subsequence. The filter is an explicit operation, not an identification with the original unfiltered state.
+
+This theorem establishes the exact leading finite-energy fraction of the original weighted covariance and its proved native magnetic transfer on an explicitly strengthened cusp and coupling selection. It does not identify that selection with \(g_j^2=1/\log j\) or \(g_j^2=\kappa_*/(200j)\); it supplies no uniform-volume rate on those prescribed paths. It also does not identify the depth \(T_j^\ddagger\) with the initial depth \(T_j=j^2\), or prove survival of a nonabelian interaction in a spatial continuum. Those original targets remain part of the active assignment.
+
+
+## 26. Original finite-angle native states at weak coupling
+
+This proof retains the original unmodified cusp angle at each spatial regulator. It first proves a fixed-box theorem for every fixed nontrivial angle. The subsequent simultaneous sequence retains the original depth \(T_j=j^2\), periods, metric, cover and native state. Its strictly positive couplings are selected from proved limits; they are not identified with either prescribed coupling trajectory.
+
+### 26.1 Exact operator, gauge space and translated faces
+
+Fix \(L\ge2\), \(a>0\), and all positive edges and elementary faces of the original open box \(\{-L,\ldots,L\}^3\). Write
+\[
+ N_E=3(2L)(2L+1)^2,\quad M=12L^2(2L+1),\quad
+ W(U)=\sum_p(2-\operatorname{tr}U_p),
+\]
+\[
+ H_g=\frac{2g^2}{a}H_0+\frac{W}{2g^2a},\quad
+ H_0=\sum_eE_e,\quad E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2,
+ \quad T_\alpha=-i\sigma_\alpha/2 .
+ \tag{449}
+\]
+The full potential includes every original face and its scalar \(2bM\). All spectral projections below are on the physical subspace fixed by every original vertex gauge transformation. The operator and form domains are the intersections of that subspace with the product Sobolev spaces \(H^2,H^1\). Its actual positive unit vacuum is \(\psi_g\), with energy \(E_g\), and \(A_g=H_g-E_g\). The previously proved variational estimate gives
+\[
+ 0\le E_g\le K:=\frac{3\sqrt{N_EM}}a,\qquad
+ \|H_0^{1/2}\psi_g\|^2\le\frac{aK}{2g^2}.
+ \tag{450}
+\]
+The second inequality follows directly from (449), since \(W\ge0\).
+
+The native links are \(h_1(n)=\exp(-\theta n_2H_c)\), \(h_2=h_3=I\), \(H_c=-2T_3=i\sigma_3\). Since \(n_2\) is integral, their period in \(\theta\) is exactly \(2\pi\). Choose a representative with \(0<|\theta|\le\pi\). For every edge \(e=(n,1)\) with \(n_2\ne0\), let \(q_e\in SU(2)\) be independent with Haar probability. Put \(h_e^q=q_eh_eq_e^{-1}\); identity edges remain identity. There are
+\[
+ m=4L^2(2L+1)
+ \tag{451}
+\]
+such edges. The exact physical average established earlier is the positive-kernel self-adjoint contraction
+\[
+ K_\theta F(U)=\int F(((h_e^q)^{-1}U_e)_e)\,dq,\qquad
+ \chi_{\theta,g}=K_\theta\psi_g-c_{\theta,g}\psi_g,\quad
+ c_{\theta,g}=\langle\psi_g,K_\theta\psi_g\rangle>0.
+ \tag{452}
+\]
+Each direction-one translated edge has a different source vertex, which is why the source gauge averages give precisely these independent conjugacy averages. Their central convolution factors commute with every edge Casimir and with the full gauge action. Each vector in (452) is therefore smooth and physical, and \(\chi_{\theta,g}\perp\psi_g\).
+
+For a fixed realization \(q\), write \(V_e=(h_e^q)^{-1}U_e\). Consider a \(12\) face with \(n_2=0\). Its bottom direction-one link is unchanged, and only its top direction-one link is translated. In the original positive face word,
+\[
+ V_p=U_p\bigl(U_2(n)h_{(n+e_2,1)}^qU_2(n)^{-1}\bigr).
+ \tag{453}
+\]
+For a \(12\) face with \(n_2=-1\), only its bottom direction-one link is translated, and instead
+\[
+ V_p=(h_{(n,1)}^q)^{-1}U_p .
+ \tag{454}
+\]
+The extra factor in either formula has eigenvalues \(e^{i\theta},e^{-i\theta}\), possibly interchanged. If \(B\) is such a factor and \(S\in SU(2)\), write \(B=B_{1/2}^2\) with eigenvalues of \(B_{1/2}\) equal to \(e^{\pm i\theta/2}\). Then
+\[
+ I+B=2\cos(\theta/2)B_{1/2},\qquad
+ \operatorname{tr}S+\operatorname{tr}(SB)
+       =2\cos(\theta/2)\operatorname{tr}(SB_{1/2})
+       \le4\cos(\theta/2).
+ \tag{455}
+\]
+Here \(\cos(\theta/2)\ge0\), and every \(SU(2)\) trace is at most two. Cyclicity handles the left factor in (454). There are exactly \(2L(2L+1)\) faces in each selected plane. Summing their nonnegative defects, and retaining all other faces in \(W\), proves the global nonlinear separation
+\[
+ \boxed{W(U)+W(((h_e^q)^{-1}U_e)_e)
+    \ge\Delta_{L,\theta}:=
+       16L(2L+1)(1-\cos(\theta/2))>0.}
+ \tag{456}
+\]
+It holds for every configuration and every twirl realization, not just near a flat configuration.
+
+Let \(\delta=\Delta_{L,\theta}/3\) and \(Q=\mathbf1_{\{W\le\delta\}}\), as a bounded multiplication projection. It preserves the physical subspace because \(W\) is gauge invariant. Equation (456) implies the exact support identity
+\[
+ QK_\theta Q=0.
+ \tag{457}
+\]
+Indeed two arguments with potential at most \(\delta\) would have sum at most \(2\Delta/3\), contradicting (456). In particular \(K_\theta Q\) has support in \(W\ge2\delta\).
+
+### 26.2 All potential moments on the actual finite-energy space
+
+For a unit eigenfunction \(u_g\) of the full physical \(H_g\), with eigenvalue \(\lambda_g\le E_*\), set \(I_n=\int W^n|u_g|^2dU\). The original derivative estimate is \(\sum_{e,\alpha}|X_{e,\alpha}W|^2\le16W\). Haar integration by parts gives
+\[
+ \operatorname{Re}\langle W^nu_g,H_0u_g\rangle
+ =\sum_{e,\alpha}\|X_{e,\alpha}(W^{n/2}u_g)\|^2
+       -\frac{n^2}{4}\int W^{n-2}
+                  \sum_{e,\alpha}|X_{e,\alpha}W|^2|u_g|^2
+ \ge-4n^2I_{n-1}.
+ \tag{458}
+\]
+The identity is valid for complex eigenfunctions. At zeros of \(W\), apply it first with \(W+\varepsilon\). Its derivative obeys the same bound by \(16(W+\varepsilon)\); dominated convergence and the form norm give (458). This also supplies the domain justification for odd \(n\).
+
+Using (449), \(I_0=1\), and nonnegativity of the kinetic energy for \(I_1\), we obtain
+\[
+ I_n\le B_n(E_*)g^{2n},\qquad
+ B_0=1,\quad B_1=2aE_*,\quad
+ B_{n+1}=2aE_*B_n+16n^2B_{n-1}\quad(n\ge1).
+ \tag{459}
+\]
+Every constant is fixed before \(g\to0\). For the vacuum, take \(E_*=K\).
+
+Fix \(\Omega>0\), and let \(P_g=\mathbf1_{(0,\Omega]}(A_g)\) on the physical subspace. Its rank is bounded by an integer \(R\) for all sufficiently small positive \(g\). Here is precisely the fixed-box input: Section 17 proves convergence of each ordered physical eigenvalue of \(H_g\) to the corresponding eigenvalue of its compact-resolvent oscillator on the adjoint-invariant chord space. Choose a comparison eigenvalue strictly greater than \(K+\Omega+1\). Its actual eigenvalue is greater than \(K+\Omega\) for all sufficiently small \(g\). Equation (450) then bounds the number of physical eigenvalues below \(E_g+\Omega\) by this fixed index. This argument is not a claim about the rank on the full nongauge-invariant configuration Hilbert space.
+
+Choose a physical orthonormal eigenbasis of \(\operatorname{ran}P_g\) and apply (459) with \(E_*=K+\Omega\). The squared Hilbert--Schmidt bound obtained by summing its at most \(R\) columns yields
+\[
+ \|(I-Q)P_g\|
+ \le\sqrt{R B_n(K+\Omega)}\,\delta^{-n/2}g^n,\qquad
+ \|(I-Q)\psi_g\|\le\sqrt{B_n(K)}\,\delta^{-n/2}g^n.
+ \tag{460}
+\]
+These hold for every integer \(n\ge1\), after possibly reducing the fixed-box positive coupling threshold for the rank assertion.
+
+The support identity (457), contraction of \(K_\theta\), and adjoints in (460) give
+\[
+ \|P_gK_\theta\psi_g\|
+ \le\left[\sqrt{R B_n(K+\Omega)}+\sqrt{B_n(K)}\right]
+                  \delta^{-n/2}g^n .
+ \tag{461}
+\]
+To see the decomposition explicitly, write the input as \(Q\psi+(I-Q)\psi\); the first image equals \((I-Q)K_\theta Q\psi\), and the second has norm at most \(\|(I-Q)\psi\|\). Since \(P_g\psi=0\), the left side equals \(\|P_g\chi_{\theta,g}\|\). Also, by splitting the first argument and then the second in the scalar overlap and using (457),
+\[
+ 0<c_{\theta,g}\le2\|(I-Q)\psi_g\|
+       \le2\sqrt{B_n(K)}\,\delta^{-n/2}g^n .
+ \tag{462}
+\]
+Thus the raw low-energy vector and the uncentered vacuum overlap decrease faster than every power of \(g\), at each fixed box, angle and energy cutoff.
+
+### 26.3 A polynomial lower bound for the unchanged raw norm
+
+A relative spectral conclusion requires a lower bound for the same native state. Positivity of the actual vacuum provides it without replacing that vacuum by a trial function. Let \(T_hF(U)=F((h_e^{-1}U_e)_e)\), so \(\|T_h\psi_g\|=1\). Put
+\[
+ \eta=\frac1{2(1+\sqrt{2maK})},\qquad
+ b_*=\frac{\eta^3}{3\pi^3},\qquad c_*=\frac12 b_*^m .
+ \tag{463}
+\]
+Restrict \(0<g\le1\). For each twirl variable restrict \(q_e=\exp(Y_e)\), where \(|Y_e|\le\eta g\) in the metric making \(T_\alpha\) orthonormal. The curve \(q_e(t)=\exp(tY_e)\) conjugates \(h_e\). Its left or right logarithmic velocity has norm at most \(2|Y_e|\), because it is a difference of two orthogonal adjoint images. Differentiating the product translation along this curve and applying Cauchy--Schwarz in its edge and Lie indices gives
+\[
+ \|T_{h^q}\psi_g-T_h\psi_g\|
+ \le2\eta g\sqrt m\,\|H_0^{1/2}\psi_g\|
+ \le\eta\sqrt{2maK}\le\frac12 .
+ \tag{464}
+\]
+Every product left translation preserves the full electric form, since each edge Laplacian is bi-invariant. This proves the uniform gradient bound along the entire curve used in (464).
+
+Both translated vacua are positive real unit vectors. Their inner product equals one minus half the squared distance, so it is at least \(7/8\) in this neighborhood. At all other twirl parameters their inner product remains nonnegative. The exact Haar density in exponential coordinates is
+\[
+ \frac1{16\pi^2}
+       \left(\frac{\sin(|Y|/2)}{|Y|/2}\right)^2d^3Y.
+ \tag{465}
+\]
+For \(r\le1\), the inequality \(\sin u/u\ge2/\pi\) on \(0\le u\le\pi/2\) and the Euclidean ball volume give Haar measure at least \(r^3/(3\pi^3)\). Thus the product neighborhood in (464) has probability at least \(b_*^m g^{3m}\). Integrating only its positive contributions and using Cauchy--Schwarz with the unit test vector \(T_h\psi_g\) proves
+\[
+ \boxed{\|K_\theta\psi_g\|
+ \ge \langle T_h\psi_g,K_\theta\psi_g\rangle
+ \ge c_*g^{3m}.}
+ \tag{466}
+\]
+The factor \(1/2\) in \(c_*\) is smaller than the proved \(7/8\); it provides a uniform displayed lower bound.
+
+Choose an integer \(n>3m\) in (462). For all sufficiently small positive \(g\), that overlap is at most \(c_*g^{3m}/2\). Orthogonal centering gives the exact equality
+\[
+ d_{\theta,g}:=\|\chi_{\theta,g}\|^2
+       =\|K_\theta\psi_g\|^2-c_{\theta,g}^2
+       \ge\frac34c_*^2g^{6m}>0.
+ \tag{467}
+\]
+In particular, every raw low-energy mass from (461) is being compared with the actual nonzero norm, not an assumed unit excitation.
+
+Combining (461) and (467), for each fixed real \(p>0\) choose an integer \(n\) with \(2n-6m\ge p\). The full physical native probability obeys
+\[
+ \boxed{
+ \frac{\langle\chi_{\theta,g},
+      \mathbf1_{(0,\Omega]}(A_g)\chi_{\theta,g}\rangle}
+      {d_{\theta,g}}
+       =O_{L,a,\theta,\Omega,p}(g^p),\qquad g\downarrow0 .}
+ \tag{468}
+\]
+The raw numerator bound, with its explicit constants, remains (461) squared, and the raw denominator lower bound remains (467). No statement uniform in the growing box is hidden in (468).
+
+### 26.4 The unfiltered raw mass and the central endpoint
+
+For \(0<|\theta|<\pi\), the raw norm also tends to zero. We prove a rate that suffices for later simultaneous selection. Choose the original edge \(e=((0,1,0),1)\). Its central factor in \(K_\theta\) is \(C_{e,\theta}\), with exact spin-\(s\) multiplier
+\[
+ c_s(\theta)=\frac{\sin((2s+1)\theta)}
+                    {(2s+1)\sin\theta},\qquad
+ |c_s(\theta)|\le\frac1{(2s+1)|\sin\theta|}.
+ \tag{469}
+\]
+This is used only when \(\sin\theta\ne0\). All other central factors commute with it and are contractions.
+
+Let \(P_d^e\) be the projection onto edge spins with \(2s+1\le d\), \(d\) a positive integer. Its one-edge projection kernel has constant diagonal
+\(D_d=\sum_{r=1}^dr^2=d(d+1)(2d+1)/6\le d^3\).
+For fixed other links, the original face \(p=((0,0,0),12)\) has word \(U_p=A B U_e^{-1}D_0^{-1}\), where \(A=U_1(0,0,0)\), \(B=U_2(1,0,0)\), and \(D_0=U_2(0,0,0)\) are fixed by the exterior. Cyclicity gives \(\operatorname{tr}U_p=\operatorname{tr}(D_0^{-1}ABU_e^{-1})\). Haar invariance and inversion therefore make the volume of its defect cap independent of the exterior. If \(W\le u\), its face defect is at most \(u\). The Haar class angle \(\phi\in[0,\pi]\) has density \(2\sin^2\phi/\pi\), so the exact defect \(w=2-2\cos\phi\) has density
+\[
+ \frac1\pi\sqrt{w-w^2/4}\,dw,\qquad 0\le w\le4 .
+\]
+Consequently the allowed subset of \(U_e\) has Haar measure at most
+\[
+ C_{\rm cap}u^{3/2},\qquad C_{\rm cap}=\frac2{3\pi},
+                         \quad u>0.
+ \tag{470}
+\]
+Indeed integrate the displayed density over \(0\le w\le\min(u,4)\), bound \(\sqrt{w-w^2/4}\le\sqrt w\), and enlarge the upper integration limit to \(u\). This proves the estimate also when \(u>4\).
+
+For any such fiber subset \(B\), the Hilbert--Schmidt norm squared of \(P_d^e\mathbf1_B\) is \(\int_BD_d\,dU_e\). Apply this bound fiberwise to \(\mathbf1_{\{W\le u\}}\psi_g\), and apply (459) to its complementary part. The triangle inequality squared gives the full edge-spin cumulative probability
+\[
+ F_g(d):=\|P_d^e\psi_g\|^2
+       \le2C_{\rm cap}d^3u^{3/2}
+                  +2B_n(K)g^{2n}u^{-n}.
+ \tag{471}
+\]
+The fiberwise argument uses the full original Haar space; its input is the actual physical vacuum. It requires no factorization of the vacuum measure.
+
+Use \(n=4\), and choose \(u_d=g^2(dg)^{-6/11}>0\) separately for each spin cutoff. This cutoff is used only in (471), which is valid for every positive \(u\); it does not change the fixed separation cutoff in (457). Substitution gives
+\[
+ F_g(d)\le A_4(dg)^{24/11},\qquad
+ A_4=\frac4{3\pi}+2B_4(K).
+\]
+The recurrence (459), with \(x=2aK\), gives exactly \(B_2=x^2+16\), \(B_3=x^3+80x\), and \(B_4=x^4+224x^2+2304\). If \(\mathsf d=2s_e+1\) denotes the positive integer edge-spin dimension in the actual squared coefficient distribution, Tonelli's theorem gives the exact identity
+\[
+ \mathbb E_{\psi_g}\mathsf d^{-2}
+ =\int_1^\infty2t^{-3}F_g(\lfloor t\rfloor)\,dt .
+ \tag{472}
+\]
+For each integer \(d\), the contribution of its probability mass is \(\int_d^\infty2t^{-3}\,dt=d^{-2}\), proving the identity before summing. For \(0<g\le1\), split at \(g^{-1}\). On the first part use the displayed cumulative bound and \(\lfloor t\rfloor\le t\), and on the second use \(F_g\le1\). This gives
+\[
+ \mathbb E_{\psi_g}\mathsf d^{-2}
+ \le2A_4g^{24/11}\int_1^{g^{-1}}t^{24/11-3}\,dt+g^2
+ =11A_4(g^2-g^{24/11})+g^2.
+\]
+Parseval and (469), with the commuting contraction factors retained, therefore prove
+\[
+ d_{\theta,g}\le\|K_\theta\psi_g\|^2
+ \le\frac{1+44/(3\pi)+22B_4(K)}{\sin^2\theta}\,g^2,
+ \qquad 0<g\le1.
+ \tag{473}
+\]
+For every sufficiently small positive \(g\), (467) supplies the simultaneous strictly positive lower bound for this same raw norm. The angle-dependent constant and every original norm remain explicit.
+
+At \(\theta=\pi\), every direction-one link is central, \(h_1(n)=(-1)^{n_2}I\). Then \(K_\pi=T_h\) is a unitary involution. Equations (462) and (467) are still valid, but now
+\[
+ d_{\pi,g}=1-c_{\pi,g}^2\longrightarrow1 .
+ \tag{474}
+\]
+The complete low-energy probability still satisfies (468). At \(\theta=0\) modulo \(2\pi\), \(K_\theta=I\) and the centered state is exactly zero. These branches preserve the discrete center endpoint and the original continuous path; they do not identify the initial cusp exhaustion with its endpoint.
+
+### 26.5 Original geometry on one common actual sequence
+
+Let \(j\) range over an eventual dyadic tail \(j=2^s\), on which the original cusp domain is defined and \(0<\theta_j<\pi\). Retain exactly
+\[
+ T_j=j^2,\quad L_j=j^2,\quad a_j=\frac1{100j},\quad
+ D_j=L_{j^2}q_{j^2}+6m_{j^2}^2,\quad
+ \theta_j=\frac{2\pi}{10^4j^2D_j},
+ \quad v_j=e^{-2\pi j},\quad t_{c,j}=v_j^j .
+ \tag{475}
+\]
+The original period entries, \(B_T\), coordinate permutation, cover \(j\), pullback metric and signed determinant \(-j^2D_j\) remain those of Section 2. Its proved estimate \(D_j=j^4+O(j^2)\) is used only after the exact angle in (475); in particular \(\theta_j\sim(2\pi/10^4)j^{-6}\), and \(0<\theta_j<\pi\) on an eventual tail.
+
+For a fixed \(j\), (468),(473) are actual \(g\downarrow0\) results at that box and its original angle. Set
+\[
+ R_j=\frac{4\sqrt3}{a_j}+1.
+ \tag{476}
+\]
+The comparison covariance measure (228) has pair energies at most \(4\sqrt3/a_j\), because every \(\sigma_\nu\le\sqrt{12}\). The fixed-box convergence (231) therefore implies that the actual covariance probability of \((R_j,\infty)\) tends to zero.
+
+Keep all finite-stage tests defining Section 25's actual coupling selection, including Sections 18 and 22--24 and the retained full local-energy tests. Add
+\[
+ \begin{split}
+ &\zeta_{\theta_j,g}([0,R_j])<a_j^5/j,\qquad
+    \tfrac34c_{*,j}^2g^{6m_j}\le d_{\theta_j,g}<j^{-2},\\
+ &\zeta_{\Gamma,L_j,a_j,g}((R_j,\infty))<j^{-2},
+                       \qquad 0<g<j^{-5}.
+ \end{split}\tag{477}
+\]
+Here \(\zeta_{\theta,g}\) denotes precisely the probability in (468); it has no vacuum atom. Here \(m_j=4L_j^2(2L_j+1)\) and \(c_{*,j}\) is exactly (463) at \(L_j,a_j\); it does not depend on \(g\). The first two new inequalities hold throughout a sufficiently small positive interval by (467),(468),(473). The third holds by the fixed-box covariance convergence and its stated comparison support. Every previous stage test also holds on a sufficiently small interval by its proved fixed-box limit. Their finite intersection is nonempty. Define \(k_j\) as the least positive integer such that all dyadics \(2^{-q}\), \(q\ge k_j\), meet this list, and set \(g_j=2^{-k_j}\). This gives a single exact actual sequence, retaining all original physical coefficients
+\[
+ \kappa_j=200j\,2^{-2k_j},\quad
+ b_j=50j\,2^{2k_j},\quad
+ \xi_j=2^{4k_j-2},\quad
+ 2b_jM_j=100j\,2^{2k_j}M_j.
+ \tag{478}
+\]
+There is no claimed numerical uniform-volume rate for the least exponent.
+
+Write \(\chi_j=\chi_{\theta_j,g_j}\), retaining the original, unchanged depth (475). The same physical Hamiltonians have closing gaps by the retained Section 18 tests. Meanwhile, for each fixed \(\Omega>0\),
+\[
+ \begin{split}
+ &0<\|\chi_j\|^2<j^{-2},\qquad
+   \zeta_{\theta_j,g_j}([0,\Omega])\le a_j^5/j
+                                     =o(a_j^5),\\
+ &\zeta_{\Gamma,L_j,a_j,g_j}([0,\Omega])
+       \sim a_j^5\frac{\Omega^5}{600\pi^2I_{\rm lat}},\\
+ &\frac{\zeta_{\theta_j,g_j}([0,\Omega])}
+           {\zeta_{\Gamma,L_j,a_j,g_j}([0,\Omega])}
+                                  \longrightarrow0 .
+ \end{split}\tag{479}
+\]
+The first estimate uses \(\Omega<R_j\) eventually; the second is the retained all-mode theorem of Section 25 on this refined sequence. The explicit raw lower bound for the first line is (467) at its actual \(L_j,a_j,\theta_j,g_j\), with its full \(m_j,c_{*,j}\); the raw spectral numerator is bounded by \(\|\chi_j\|^2a_j^5/j\). Thus both raw factors accompany the probability assertion.
+
+There is a stronger exact spectral relation at the growing cutoff (476). By (477),
+\[
+ \sup_{B\ {\rm Borel}}|\zeta_{\theta_j,g_j}(B)
+                  -\zeta_{\Gamma,L_j,a_j,g_j}(B)|
+       \ge1-j^{-2}-a_j^5/j\longrightarrow1 .
+ \tag{480}
+\]
+The supremum is at most one, so its limit is one; the total variation mass norm tends to two. Splitting the scalar product at the same physical projection and using Cauchy--Schwarz gives, with all raw norms displayed,
+\[
+ \frac{|\langle\chi_j,v_{\Gamma,g_j}\rangle|}
+           {\|\chi_j\|\,\|v_{\Gamma,g_j}\|}
+       \le\sqrt{a_j^5/j}+j^{-1}\longrightarrow0 .
+ \tag{481}
+\]
+Thus the native state and its electric angular coefficient become orthogonal in their common actual Hilbert space on this selected original geometry, despite both probabilities escaping fixed physical energies.
+
+### 26.6 The angular comparison and its precise nonuniformity
+
+Define the actual relative Taylor remainder at the original angle by
+\[
+ \eta_j^{\rm orig}
+  =\frac{\|\chi_j+(2/3)\theta_j^2v_{\Gamma,g_j}\|}
+          {(2/3)\theta_j^2\|v_{\Gamma,g_j}\|}.
+ \tag{482}
+\]
+The retained all-mode mass theorem and \(N_j=2j^2+1\) give
+\[
+ \frac23\theta_j^2\|v_{\Gamma,g_j}\|
+ \sim
+ \frac{8\pi^2}{3\cdot10^8}
+       \sqrt{\frac{3I_{\rm lat}}{20}}\,
+               g_j^{-2}j^{-5}\longrightarrow\infty,
+ \tag{483}
+\]
+since \(g_j<j^{-5}\). Every factor follows from the exact original \(D_j\), with its asymptotic applied at this final step. Because \(\|\chi_j\|\le1\), the reverse triangle inequality proves
+\[
+ |\eta_j^{\rm orig}-1|
+       \le\frac{\|\chi_j\|}
+                 {(2/3)\theta_j^2\|v_{\Gamma,g_j}\|}
+           \longrightarrow0 .
+ \tag{484}
+\]
+This establishes actual failure of the small relative Taylor approximation on this selected sequence, rather than merely divergence of one certified upper bound. It makes no assertion of that failure on the logarithmic or fixed-electric-coefficient paths.
+
+The strengthened cusp of Section 25 is still defined on these same Hamiltonians and couplings, using its exact \(\theta_j^\ddagger\) and actual centered state \(\chi_j^\ddagger\). Its proved relative error is \(o(a_j^5)\); the exact probability comparison (167) therefore bounds its spectral probability distance from the covariance probability by that error. Equations (480)--(481) therefore imply
+\[
+ \sup_B|\zeta_{\theta_j,g_j}(B)-\zeta_j^\ddagger(B)|
+       \longrightarrow1,\qquad
+ \frac{|\langle\chi_j,\chi_j^\ddagger\rangle|}
+                 {\|\chi_j\|\,\|\chi_j^\ddagger\|}
+       \longrightarrow0 .
+ \tag{485}
+\]
+For the second assertion, the normalized strengthened state converges in norm to the negative normalized covariance vector by the exact relative norm remainder in (447); applying (481) and the triangle inequality proves the limit. This comparison records ratios only after retaining each original raw vector and the raw estimates (448),(467),(479).
+
+There is also an exact unscaled map between the two angular presentations. Let
+\(\mathcal R_\theta=K_\theta-I+(2/3)\theta^2\Gamma\), on \(D(\Gamma^2)\), and let \(P_\psi^\perp=I-|\psi\rangle\langle\psi|\). For any two nonzero real angles,
+\[
+ \begin{split}
+ \chi_\theta-\frac{\theta^2}{\phi^2}\chi_\phi
+ &=P_\psi^\perp
+       \left(\mathcal R_\theta-\frac{\theta^2}{\phi^2}
+                       \mathcal R_\phi\right)\psi,\\
+ \left\|\chi_\theta-\frac{\theta^2}{\phi^2}\chi_\phi\right\|
+ &\le\frac29\theta^2(\theta^2+\phi^2)\|\Gamma^2\psi\|.
+ \end{split}\tag{486}
+\]
+Subtract the two exact centered expansions and use the all-angle graph remainder from Section 15 to prove these identities. They retain both amplitude factors and identify the map whose relative behavior (484)--(485) now determines on the selected sequence.
+
+The original cusp state thus has a proved full-Hamiltonian spectral escape sequence at weak positive coupling without changing its external cusp depth. This result extends the original-state calculation beyond the earlier strengthened-cusp theorem. The prescribed coupling paths and an interacting spatial continuum with nonzero original native low-energy weight remain unresolved; (477) is an explicitly selected sequence, not a substitute definition of those remaining targets.
+
+
+## 26.7 A sharper actual-vacuum fourth electric moment
+
+This continuation records a bound needed when testing the original angle on prescribed coupling paths. It is a fixed finite box statement, with every constant and the original Hamiltonian retained. It does not assert a volume-uniform continuum estimate.
+
+Fix \(L\ge2\), \(a>0\), \(0<g\le1\), and use
+\[
+ H=\kappa H_0+bW,\quad \kappa=2g^2/a,\quad b=(2g^2a)^{-1},
+\quad W=\sum_p(2-\operatorname{tr}U_p),\quad 0\le W\le4M .
+\]
+Let \(\psi\) be the actual positive unit vacuum, \(H\psi=E\psi\), \(E\le K=3\sqrt{N_EM}/a\). The moment recurrence already proved for this same state is
+\[
+ \langle W^n\rangle_\psi\le B_n(K)g^{2n},\qquad
+ B_0=1,\ B_1=2aK,\ B_{n+1}=2aK B_n+16n^2B_{n-1}.
+ \tag{487}
+\]
+In particular \(B_2=x^2+16\) and \(B_4=x^4+224x^2+2304\), \(x=2aK\).
+
+The eigen-equation is an equality of smooth functions:
+\[
+ H_0\psi=f\psi,\qquad f=(E-bW)/\kappa. \tag{488}
+\]
+Applying \(H_0\) once more and using \(E_e=-\sum_\alpha X_{e,\alpha}^2\) gives the exact product identity
+\[
+ H_0^2\psi=f^2\psi-\frac b\kappa[H_0,W]\psi,\qquad
+ [H_0,W]\psi=(H_0W)\psi-2\sum_{e,\alpha}(X_{e,\alpha}W)(X_{e,\alpha}\psi).
+ \tag{489}
+\]
+The sign follows by expanding \(H_0(f\psi)=fH_0\psi+(H_0f)\psi-2\sum(Xf)(X\psi)\), with \(H_0f=-(b/\kappa)H_0W\) and \(Xf=-(b/\kappa)XW\).
+
+Every fundamental face trace is an \(H_0\)-eigenfunction with eigenvalue \(3\). Hence
+\[
+ H_0W=3W-6M. \tag{490}
+\]
+The exact full-face gradient estimate is \(\sum_{e,\alpha}|X_{e,\alpha}W|^2\le16W\). Since \(\langle H_0\rangle_\psi=(E-b\langle W\rangle_\psi)/\kappa\le E/\kappa\), Cauchy--Schwarz and (487) imply
+\[
+\begin{aligned}
+\|[H_0,W]\psi\|
+&\le3\|W\psi\|+6M
+ +2\Big(\int|\nabla W|^2\psi^2\Big)^{1/2}
+       \Big(\int|\nabla\psi|^2\Big)^{1/2}\\
+&\le3\sqrt{B_2(K)}\,g^2+6M+8aK=:C_{LW}(L,a).
+\end{aligned}\tag{491}
+\]
+Indeed the product under the square root is at most
+\((16B_1(K)g^2)(Ka/(2g^2))=16aK\,B_1(K)/2\le16a^2K^2\), and the prefactor \(2\) gives \(8aK\) after using \(B_1=2aK\). (Keeping the unsimplified product gives the same displayed bound.)
+
+For real \(r,s\), \((r+s)^4\le8(r^4+s^4)\). Therefore (487)--(488) give
+\[
+\|f^2\psi\|
+\le\frac{\sqrt{8(K^4+b^4B_4(K)g^8)}}{\kappa^2}
+=\frac{a^2}{4g^4}
+\sqrt{8\left(K^4+\frac{B_4(K)}{16a^4}\right)}.
+\tag{492}
+\]
+Combining (489), (491), and \(b/\kappa=1/(4g^4)\) proves the explicit actual-vacuum bound
+\[
+\boxed{\ \|H_0^2\psi\|\le C_2(L,a)\,g^{-4},\quad
+C_2(L,a)=\frac{a^2}{4}\sqrt{8\left(K^4+\frac{B_4(K)}{16a^4}\right)}
++\frac14C_{LW}(L,a).\ }\tag{493}
+\]
+No replacement state or unlisted boundary face is used.
+
+Finally \(\Gamma=\sum_{(n,1)}n_2^2E_e\) is a positive joint spectral multiplier of the commuting edge Casimirs and \(0\le n_2^2\le4L^2\). The joint spectral theorem gives
+\[
+\|\Gamma^2\psi\|\le16L^4\|H_0^2\psi\|
+\le16L^4C_2(L,a)\,g^{-4}. \tag{494}
+\]
+This is sharper in \(g\) than the earlier \(g^{-7}\) estimate at each fixed box. Its explicit \(L,a\)-dependence still grows with the regulator, so PM8 alone does not prove the prescribed logarithmic or fixed-electric-coefficient continuum path. It is an exact input for the centered spin/remainder estimate now under construction.
+
+
+# Centered spin remainder advance
+
+## 26.8 A polynomial covariance lower bound
+
+This subsection records an exact centered scalar expansion and the strongest finite-box covariance estimate obtained without replacing the actual positive vacuum. It is a fixed-box result, with the remaining volume-uniform centered-remainder estimate stated explicitly below.
+
+## Exact joint-spin fourth coefficient
+
+On a joint spin block, with \(\gamma=\sum_e n_2^2 \lambda_e\), \(\lambda_e=s_e(s_e+1)\), and independent uniform magnetic weights as in (138)--(140), write
+
+\(r_\theta(\gamma,lambda)=k(\theta)-1+(2/3)\theta^2 \gamma\).
+
+The exact fourth term from the cosine expansion is
+
+\(r_\theta = (2/9) \theta^4 \gamma^2 -(4/45)\theta^4 \sum_e n_2^4 \lambda_e^2 -(2/45)\theta^4 \sum_e n_2^4 \lambda_e + R_6\).
+
+Here \(R_6\) is the finite block remainder obtained by replacing \(cos x\) by its sixth-order Taylor polynomial; the displayed coefficient follows directly from (140), without suppressing any diagonal spin term. After centering, the deterministic part of \((2/9)\theta^4 \gamma^2\) is removed by \(P_psi^perp\), leaving the exact covariance contribution \((2/9)\theta^4 P_psi^perp((\Gamma^2-<\Gamma^2>)psi)\) plus the two diagonal terms and the sixth remainder. This identifies precisely what a variance-sensitive estimate must control; the old bound \((2/9)\theta^4\|\Gamma^2 psi\|\) is valid but does not exploit this cancellation.
+
+No bound that replaces \(\|\Gamma^2 psi\|\) by a variance has been asserted: the joint spin blocks carry arbitrary actual-vacuum coefficients, and a scalar variance inequality alone is false without an additional moment/concentration input.
+
+## Polynomial covariance lower bound from the exact vacuum
+
+Let \(W=\sum_p(2-tr U_p)\), and let \(u=log psi\). The exact operator identity is
+
+\(\Gamma W = (3/4) \sum_p S_p (w_p-2)\),
+
+where \(S_p=sum_{e \in p, direction 1} n_2(e)^2\), and \(A_L=\sum_p S_p=sum_{e direction 1} n_2(e)^2 r_e\). In particular \(A_L\) is of order \(L^5\), with all boundary incidence factors retained. The actual energy bound gives
+
+\(A_L = (4 L^2(2L+1)/3)(4L^2+2L+1)\).
+
+\(<W> \le  E/b \le  6 g^2 \sqrt(N M) = 6 g^2 \sqrt(r) M\), \(r=N/M\le 5/4\).
+
+Since \(S_p \le  2 L^2\),
+
+\(\sum_p S_p <w_p> \le  2 L^2 <W>\) and therefore
+
+\(<\Gamma W> \le  -(3/2)A_L + (3/2)L^2 <W>\).
+
+Using the displayed energy estimate, the explicit condition
+\(6 g^2 \sqrt(r) L^2 M \le  A_L/2\) implies \(<\Gamma W> \le  -3A_L/4\); hence
+\(|<\Gamma W>| \ge  3A_L/4\) on that domain. This is an ordinary inequality, with no lower bound on individual plaquette expectations assumed.
+
+Integration by parts gives \(<\Gamma W\ge 2 Re int (\Gamma-gradient W) dot (\Gamma-gradient u) psi^2\). Therefore
+
+\(|<\Gamma W>|^2 \le  4 S_\Gamma <\Gamma>\), \(S_\Gamma=<sum_{e dir1} n_2^2 |grad_e W|^2>\), while \(<\Gamma> \le  L^2 <H_0> \le  3 L^2 \sqrt(NM) \sqrt(xi) = 3 L^2 M \sqrt(r xi)\).
+
+Consequently, whenever the preceding small-coupling inequality holds,
+
+\(S_\Gamma \ge  (A_L^2)/(12 L^2 M \sqrt(r xi))\).
+
+This is a polynomial, volume-explicit replacement for the previous local-density bound \(S_\Gamma \ge  (3/4)e^{-32 pi xi} mathscr S_L\). For an explicit denominator, use the retained exact identity
+\([H_0,W]psi=(3W-6M)psi-2 grad W dot grad psi\). The actual-vacuum graph estimate gives
+\(\|[H_0,W]psi\| \le  6M+3 \sqrt(M_2)+8 \sqrt(I)\),
+where \(I=int W |grad log psi|^2 psi^2 \le  a^2 K^2+3M = 9rM^2+3M\) and \(M_2\le B_2(K)g^4\). Since \(M\ge 240\), \(r\le 5/4\), and \(g\le 1\), one has \(B_2(K)g^4 \le  36rM^2+16\), so this denominator is \(<60M\) (retaining this coarse integer only for a transparent bound). Therefore the preceding inequalities imply the fully explicit covariance estimate
+
+\(\| (\Gamma-<\Gamma>)psi \| \ge  \sqrt(xi) A_L^2 /(720 L^2 M^2 \sqrt(r))\),
+
+whenever \(6g^2 \sqrt(r)L^2M \le  A_L/2\). This is polynomial in \(L\) and \(xi\) and applies to the actual interacting vacuum; it replaces the former exponential-in-\(xi\) lower bound. It still does not control the centered fourth remainder, whose diagonal and sixth-order terms require a separate weighted fourth-moment estimate, so no prescribed-path spectral conclusion is claimed here.
+
+## Consequence and non-claim
+
+The centered expansion is an exact morphism on each finite joint-spin block and the all-block graph domain. The polynomial covariance lower bound holds for the actual interacting ground state on its displayed small-coupling condition. It does not establish nonzero native low-energy weight in the prescribed continuum paths, nor does it prove an interacting four-dimensional continuum; those remain open.
+
+
+# Fixed-box native angle scaled as theta_g = g tau
+
+This note proves the finite spatial regulator limit of the actual vacuum native state when the background angle is \(\theta_g=g\tau+o(g)\), with \(L\ge2\), \(a>0\), and fixed nonzero real \(\tau\). It is a fixed-box theorem; no interchange with \(L\to\infty\) is asserted.
+
+## 1. Exact finite operator and chart
+
+Keep the full physical Hamiltonian
+\[
+ H_g=\frac{2g^2}{a}H_0+\frac{1}{2g^2a}W,\qquad
+ H_0=\sum_eE_e,\quad E_e=-\sum_{\alpha=1}^3X_{e,\alpha}^2,
+\]
+with every edge and face, and let \(\psi_g\) be its strictly positive unit physical vacuum. Let \(K_\theta\) be the exact independent conjugacy twirl on the \(m=4L^2(2L+1)\) direction-one edges with \(n_2\ne0\), as in (452), and put \(\chi_{\theta,g}=K_\theta\psi_g-c_{\theta,g}\psi_g\), \(c_{\theta,g}=\langle\psi_g,K_\theta\psi_g\rangle\).
+
+Use the exact maximal-tree, chord, logarithm and Haar-density isometry \(\mathcal B_g\) of (194)--(197), followed by \(x=G^{1/2}Oz\) in every colour. Write \(R=T^*G^{-1/2}O\), an isometry from chord modes onto the original transverse edge space. The actual-vacuum theorem gives
+\[
+ f_g:=\mathcal B_g\psi_g\to\Phi_0,\qquad
+ \Phi_0(z)=\prod_\nu(\sigma_\nu/4\pi)^{3/4}e^{-\sigma_\nu|z_\nu|^2/8}
+\]
+strongly in \(L^2\), together with convergence of every fixed finite physical spectral projection and of the required weighted graph vectors.
+
+For each twirled edge let \(\eta_e(q)=n_2\,\operatorname{Ad}_{q_e}T_3\) for direction one and \(\eta_e=0\) otherwise. Since \(H_c=-2T_3\) and \(h_e=\exp(-\theta n_2H_c)=\exp(2\theta n_2T_3)\), the inverse translated link is
+\[
+ (h_e^q)^{-1}U_e=\exp(-2\theta n_2\operatorname{Ad}_{q_e}T_3)U_e.
+\]
+Thus the tangent displacement in original edge coordinates is \(-2\tau\eta(q)\) when \(\theta_g/g\to\tau\). The transverse chord displacement is exactly
+\[
+ \delta(q):=-2\tau R^*\eta(q). \tag{S1}
+\]
+The sign follows from the inverse left action.
+
+## 2. Strong convergence of the twirl, including tails
+
+Let \(u\in C_c^\infty(\mathbb R^{3r})\) be invariant under the residual simultaneous adjoint color rotation; such functions form a dense physical core. For each fixed \(q\), apply the exact inverse chart to the configuration with tree links equal to the identity and chord links \(Z=\exp(gG^{1/2}Oz)\). Every translated chord word is a product of finitely many links. Bi-invariance of the SU(2) metric and \(d(\exp(Y),I)\le |Y|\) give, uniformly in \(q\) and on the support of \(u\),
+\[
+ z'_g(z,q)=z+\delta(q)+o(1),\qquad
+ \partial_z^\alpha z'_g(z,q)\to\partial_z^\alpha(z+\delta(q)). \tag{S2}
+\]
+The exact words retain all source/target tree factors; the only first-order term is the edge displacement \(-2\tau\eta\), transported by \(R^*\). Haar factors satisfy
+\(\mathcal J(gG^{1/2}Oz)^{1/2}/\mathcal J(gG^{1/2}Oz'_g)^{1/2}\to1\)
+uniformly on this compact set.
+
+The same word estimate supplies tails rather than merely local convergence. A path through the rooted box has at most \(6L\) tree links, so each chord word in (194) has at most \(\ell_*:=12L+1\) factors. Every translated factor has \(d(h_e^q,I)\le2|g\tau+o(g)|L\). Hence, with \(C_L^{\rm edge}:=2L\ell_*\), bi-invariance gives a uniform word displacement at most \(C_L^{\rm edge}|g\tau+o(g)|\). If \( |z|\le R\), the unshifted chord logarithms are bounded by \(g\|G^{1/2}\|R\), and the translated ones by \(g(\|G^{1/2}\|R+C_L^{\rm edge}(|\tau|+1))\) for small \(g\). The inverse translation has the same bound. Since \(R^*\) is an isometry and \(\|G^{-1/2}\|\) is fixed, this gives a common rescaled support ball of radius \(C(R+1)\), uniformly in \(q\). Thus the exact twirl of \(\mathcal B_g^*u\) has compact support independent of sufficiently small \(g\). Dominated convergence in the finite Haar average proves
+\[
+ \mathcal B_gK_{\theta_g}\mathcal B_g^*u\to A_\tau u,\qquad
+ (A_\tau u)(z)=\int u(z+\delta(q))\,dq \tag{S3}
+\]
+in \(L^2\). This uses the original-chart pullback and word tails; it does not assert that a fixed-\(q\) quotient pullback is a contraction.
+
+The operators \(K_{\theta_g}\) are self-adjoint positive contractions on the exact physical Hilbert space. Choose smooth compact cutoffs \(u_R\) with \(u_R\to\Phi_0\) in Gaussian graph norm. The contraction bounds, (203), and (S3), first with fixed \(R\) and then with \(R\to\infty\), imply
+\[
+ \mathcal B_gK_{\theta_g}\psi_g\to A_\tau\Phi_0\quad\hbox{strongly},\qquad
+ c_{\theta_g,g}\to c_\tau:=\langle\Phi_0,A_\tau\Phi_0\rangle. \tag{S4}
+\]
+Consequently
+\[
+ \mathcal B_g\chi_{\theta_g,g}\to w_\tau:=A_\tau\Phi_0-c_\tau\Phi_0,\quad
+ d_{\theta_g,g}:=\|\chi_{\theta_g,g}\|^2\to d_\tau=\|w_\tau\|^2. \tag{S5}
+\]
+
+## 3. Exact Gaussian translation and centered spectral kernel
+
+Define \(\beta(q)=-\sqrt{\Lambda/8}\,\delta(q)\), where \(\Lambda=\operatorname{diag}(\sigma_\nu)\) acts on each colour. Translation of the product Gaussian is the coherent vector
+\[
+ U_{\delta(q)}\Phi_0(z):=\Phi_0(z+\delta(q)),\qquad
+ U_{\delta(q)}\Phi_0=e^{-\|\beta(q)\|^2/2}\sum_{N\in\mathbb N^{3r}}
+ \frac{\beta(q)^N}{\sqrt{N!}}\Phi_N . \tag{S6}
+\]
+The oscillator excitation energy of \(\Phi_N\) is
+\(E_N=\sum_{\nu,\alpha}\sigma_\nu N_{\nu\alpha}/a\). Therefore the uncentered limiting spectral measure of \(A_\tau\Phi_0\) is
+\[
+ \widetilde\mu_\tau=\sum_N |b_N(\tau)|^2\delta_{E_N},\qquad
+ b_N(\tau)=\int e^{-\|\beta(q)\|^2/2}\frac{\beta(q)^N}{\sqrt{N!}}\,dq. \tag{S7}
+\]
+The centered measure is
+\[
+ \mu_\tau=\widetilde\mu_\tau-c_\tau^2\delta_0,\qquad
+ c_\tau=b_0(\tau)=\int e^{-\|\beta(q)\|^2/2}dq. \tag{S8}
+\]
+The subtraction is exact because all nonzero oscillator levels are orthogonal to \(\Phi_0\). Its total mass is
+\[
+ d_\tau=\iint e^{-\frac1{16}(\delta(q)-\delta(q'))^T\Lambda(\delta(q)-\delta(q'))}dq\,dq'-c_\tau^2. \tag{S9}
+\]
+The exact two-twirl Euclidean-time kernel, for \(t\ge0\), is
+\[
+ \langle A_\tau\Phi_0,e^{-tA_{\rm osc}}A_\tau\Phi_0\rangle
+ =\iint\exp\!\left[-\frac{\|\beta(q)\|^2+\|\beta(q')\|^2}{2}
+ +e^{-t\Lambda/a}\beta(q)\!\cdot\!\beta(q')\right]dq\,dq'. \tag{S10}
+\]
+For the centered state subtract \(c_\tau^2\). These formulas retain all modes and colours.
+
+If \(\tau\ne0\), then \(d_\tau>0\). The random vector \(R^*\eta(q)\) is not almost surely constant: vary one independent \(q_e\) on an edge with \(n_2\ne0\), and pair with a plaquette curl containing that edge; the transverse projection cannot vanish for every such variation. Hence \(\beta\) is nonconstant and strict Cauchy--Schwarz in (S9) gives \(d_\tau>0\). Equivalently, reflection invariance kills linear coefficients while
+\[
+ \sum_{\nu,\alpha}|b_{2e_{\nu\alpha}}|^2>0,
+\]
+because \(\int\|\Lambda^{1/2}R^*\eta(q)\|^2dq>0\). For \(\tau=0\), \(A_0=I\), \(w_0=0\).
+
+## 4. Transfer of the full physical spectral measure
+
+Let \(A_g=H_g-E_g\). Fixed-box spectral-projection convergence from Section 17 applies to bounded intervals whose boundaries avoid the oscillator eigenvalues. Combining it with (S5), for every bounded continuous \(F\) on \([0,\infty)\),
+\[
+ \langle\chi_{\theta_g,g},F(A_g)\chi_{\theta_g,g}\rangle
+ \longrightarrow\int F(\lambda)\,d\mu_\tau(\lambda). \tag{S11}
+\]
+First use a finite oscillator spectral cutoff, where projection convergence is in norm and vectors converge strongly; bound the complementary vector norm by the coherent Gaussian tail uniformly in \(q\), and send the cutoff to infinity. For \(F\equiv1\) this is (S5), so normalized native probabilities converge weakly to \(\mu_\tau/d_\tau\) whenever \(\tau\ne0\). Every finite oscillator interval has the exact mass obtained by summing (S7)--(S8), and some finite positive level has nonzero mass whenever \(\tau\ne0\). No simultaneous infinite-volume conclusion is made.
+
+
+
+## 26.10 Prescribed paths: the centered fourth and sixth remainders remain volume uncontrolled
+
+This note isolates what the exact centered spin expansion and the proved
+actual-vacuum moments do, and do not, imply on the two prescribed coupling
+paths.  The state is always the positive ground vector of the full finite-box
+Hamiltonian; no Gaussian replacement is made.
+
+Write
+\[
+ v_\Gamma=(\Gamma-\langle\Gamma\rangle_\psi)\psi,
+ \qquad
+ \chi_\theta=P_\psi^\perp(K_\theta-I)\psi .
+\]
+The exact joint-spin expansion gives
+\[
+ \chi_\theta=-\frac23\theta^2v_\Gamma+P_\psi^\perp R_{4,\theta}\psi,
+ \qquad
+ \|R_{4,\theta}\psi\|\le\frac29\theta^4\|\Gamma^2\psi\| .
+ \tag{P1}
+\]
+The centered fourth coefficient is more precise blockwise:
+\[
+ r_\theta=\frac29\theta^4\gamma^2
+ -\frac4{45}\theta^4\sum_e n_2^4\lambda_e^2
+ -\frac2{45}\theta^4\sum_e n_2^4\lambda_e+R_{6,\theta},
+ \tag{P2}
+\]
+where the deterministic part of the first term disappears under
+\(P_\psi^\perp\), but the variance of \(\Gamma^2\), the two diagonal spin
+terms, and the sixth remainder remain.  Thus (1) is a valid graph estimate,
+while replacing its \(\Gamma^2\)-norm by the variance of \(\Gamma\) is not a
+consequence of scalar variance alone.
+
+For the original regulator take \(L=j^2\), \(a=(100j)^{-1}\), and
+\(\theta_j=2\pi/(10^4j^2D_j)\), with \(D_j=j^4+O(j^2)\).  Hence
+\(\theta_j\asymp j^{-6}\).  Put
+\[
+ M=12L^2(2L+1),\qquad
+ A_L=\frac{4L^2(2L+1)}3(4L^2+2L+1).
+\]
+The exact covariance estimate from the actual vacuum is
+\[
+ \|v_\Gamma\|\ge
+ \frac{\sqrt\xi\,A_L^2}{720L^2M^2\sqrt r},
+ \qquad r=1+\frac1{2L},\qquad \sqrt\xi=\frac1{2g^2},
+ \tag{P3}
+\]
+provided \(6g^2\sqrt r\,L^2M\le A_L/2\).  This condition holds eventually on
+both prescribed paths, since its left/right ratio is \(O(g^2)\).
+
+The proved fourth electric moment estimate (the preceding (C_2(L,a)) bound)
+gives
+\[
+ \|\Gamma^2\psi\|\le16L^4C_2(L,a)g^{-4},
+ \tag{P4}
+\]
+with that explicit \(C_2\).  Along the displayed regulator,
+\(K=3\sqrt{NM}/a=O(L^{7/2})\), \(a=O(L^{-1/2})\), and the exact recurrence
+for \(B_4\) gives \(C_2(L,a)=O(L^6)\).  Combining (1), (3), and (4), the
+certified relative fourth-order error obeys
+\[
+ \frac{\|P_\psi^\perp R_{4,\theta_j}\psi\|}
+      {(2/3)\theta_j^2\|v_\Gamma\|}
+ \le
+ 7680\,\frac{\theta_j^2L^6M^2C_2(L,a)\sqrt r}{A_L^2}\,g^{-2}
+ =O(j^4g^{-2}).
+ \tag{P5}
+\]
+The power follows from \(L^6M^2C_2/A_L^2=O(L^8)=O(j^{16})\) and
+\(\theta_j^2=O(j^{-12})\).  Consequently, on
+\[
+ g_j^2=\frac1{\log j},
+ \qquad\text{or}\qquad
+ g_j^2=\frac{\kappa_*}{200j},
+ \tag{P6}
+\]
+the right side of (5) is respectively \(O(j^4\log j)\) and
+\(O(j^5)\).  Both diverge.  Therefore the available exact bounds do not
+prove that the centered fourth term is small relative to the covariance term;
+they become quantitatively vacuous precisely in the simultaneous
+volume/coupling limits under consideration.
+
+The sixth term is strictly less controlled.  Taylor's scalar remainder is of
+order \(\theta^6\gamma^3\) on a spin block, so a global estimate requires a
+uniform bound for \(\|\Gamma^3\psi\|\) (and the centered diagonal terms in (2)
+require corresponding mixed moments).  The recurrence for moments of \(W\)
+at a fixed box supplies finite constants for every fixed order, but its
+constants grow with \(L\); it supplies no volume-uniform concentration of the
+joint-spin coefficients.  In particular, a bound on \(\operatorname{Var}(\Gamma)\)
+alone cannot control \(\operatorname{Var}(\Gamma^2)\) or the sixth moment:
+probability measures with the same second moment can have arbitrarily large
+fourth and sixth moments.  Hence the exact cancellation in (2) does not close
+without a new, volume-uniform weighted fourth/sixth-moment theorem for the
+actual interacting vacuum.
+
+This is a rigorous obstruction to the prescribed-path Taylor argument, not a
+claim that the native low-energy weight vanishes there.  The finite-box
+scaled-angle theorem and the selected original-cusp sequence remain valid,
+while nonzero native low-energy weight on either path and an interacting
+four-dimensional continuum remain unproved.
+
+
+## 26.11 Volume scaling of the fixed-box scaled-angle kernel
+
+This note extracts a uniform consequence of the fixed-box limit \(\theta_g/g\to\tau\) from Section 26.9. It does not assert a joint \(L\to\infty\) theorem. All estimates below concern the exact Gaussian kernel obtained after the fixed-box limit.
+
+Let \(P=\mathscr R\mathscr R^{\mathsf T}\) and \(K=\mathscr R\Lambda\mathscr R^{\mathsf T}\), acting separately on each of the three colour components. Thus \(0\le K\le\sqrt{12}\,P\), and \(\operatorname{tr}(KW)=3\operatorname{tr}(\Lambda D)\), where \(W=\operatorname{diag}(n_2^2)\) on direction-one edges. Write
+\[
+ \eta(q)=\sum_e n_2\,\operatorname{Ad}_{q_e}T_3\,\mathbf e_e,
+ \qquad Y_\tau(q)=\delta(q)^{\mathsf T}\Lambda\delta(q)
+        =4\tau^2\eta(q)^{\mathsf T}K\eta(q).
+\]
+All expectations below use normalized product Haar probability. With the normalization \(\|T_3\|=1\), Haar invariance gives
+\[
+ \mathbb E\eta_e=0,
+ \qquad \mathbb E(\eta_{e,\alpha}\eta_{e,\beta})
+     =\frac{n_2^2}{3}\,\delta_{\alpha\beta},
+ \qquad \|\eta_e\|^2=n_2^2.
+\]
+Consequently
+\[
+ \mathbb E Y_\tau=4\tau^2\operatorname{tr}(\Lambda D). \tag{V1}
+\]
+
+The exact trace count from (232) and \(\sigma_\nu<\sqrt{12}\) imply
+\[
+ \frac{\mathcal A_L}{\sqrt{12}}\le \operatorname{tr}(\Lambda D)
+ \le\sqrt{12}\operatorname{tr}D,
+ \qquad
+ \mathcal A_L=\frac{4}{3}L^2(2L+1)(4L^2+2L+1). \tag{V2}
+\]
+For \(L\ge2\), \(\mathcal A_L\ge(32/3)L^5\) and \(\sum_e n_2^4\le18L^7\). In particular
+\[
+ \mathbb E Y_\tau\ge \frac{128}{3\sqrt{12}}\tau^2L^5,
+ \qquad \operatorname{tr}(\Lambda D)\le72L^5. \tag{V3}
+\]
+
+We use the following elementary quadratic-form estimate. If \(\xi_e\) are independent centred vectors with \(\|\xi_e\|^2\le w_e\), \(\mathbb E\xi_e\xi_e^{\mathsf T}=(w_e/3)I_3\), and \(0\le K\le\sqrt{12}I\), then expansion into diagonal and off-diagonal terms, followed by independence and Cauchy--Schwarz, gives
+\[
+ \operatorname{Var}(\sum_{e,f}\xi_e^{\mathsf T}K_{ef}\xi_f)
+ \le 768\,\operatorname{tr}(K W K W)
+ \le 27648\sum_e w_e^2. \tag{V4}
+\]
+The constant is deliberately enlarged: the first inequality uses only \(\mathbb E\|\xi_e\|^4\le w_e^2\), and the second uses \(\|K\|\le\sqrt{12}\) and \(\operatorname{tr}(W^2)=3\sum_e w_e^2\) for the three-colour block.
+Applying (V4) to \(\eta\) and multiplying by \(16\tau^4\) yields
+\[
+ \operatorname{Var}Y_\tau\le 442368\tau^4\sum_e n_2^4
+ \le 7{,}962{,}624\,\tau^4L^7. \tag{V5}
+\]
+Chebyshev and (V3) therefore imply, for every fixed \(\tau\ne0\),
+\[
+ \mathbb P\left(Y_\tau\le \frac{1}{2}\mathbb EY_\tau\right)
+ \le 10^6L^{-3}. \tag{V6}
+\]
+
+Let \(q,q'\) be independent and put \(Y_\tau^\Delta=(\delta(q)-\delta(q'))^{\mathsf T}\Lambda(\delta(q)-\delta(q'))\). The same argument applies to \(\eta(q)-\eta(q')\): its covariance is doubled and its fourth moments are at most \(16n_2^4\). Enlarging the constant in (V6) by a factor 32 gives
+\[
+ \mathbb P\left(Y_\tau^\Delta\le \frac{1}{2}\mathbb E Y_\tau^\Delta\right)
+ \le 3.2\cdot10^7L^{-3},
+ \qquad
+ \mathbb E Y_\tau^\Delta=8\tau^2\operatorname{tr}(\Lambda D). \tag{V7}
+\]
+
+The two-twirl kernel in (S9) is \(J_{L,\tau}=\mathbb E\exp(-Y_\tau^\Delta/16)\), and \(d_{L,\tau}=J_{L,\tau}-c_{L,\tau}^2\le J_{L,\tau}\). Since \(e^{-x}\le1\) and \(e^{-x}\le e^{-\mathbb EY_\tau^\Delta/32}\) on the complementary event,
+\[
+ J_{L,\tau}
+ \le 3.2\cdot10^7L^{-3}
+   +\exp\!\left[-\frac{\tau^2\operatorname{tr}(\Lambda D)}{4}\right]
+ \le 3.2\cdot10^7L^{-3}+e^{-\tau^2L^5/(\sqrt{12})}. \tag{V8}
+\]
+Thus the fixed-\(\tau\) Gaussian native mass satisfies
+\[
+ d_{L,\tau}\longrightarrow0\qquad(L\to\infty,\ \tau\ne0\ \text{fixed}). \tag{V9}
+\]
+This is a genuine volume obstruction: the fixed-box limit has positive mass for every \(L\), but that mass is not uniformly positive in volume.
+
+There is also a small-angle bound useful for the original cusp scales. From \(1-e^{-x}\le x\), \(c_{L,\tau}\ge1-\mathbb EY_\tau/16\), hence
+\[
+ d_{L,\tau}\le1-c_{L,\tau}^2
+ \le\frac{\mathbb EY_\tau}{8}
+ \le36\tau^2L^5. \tag{V10}
+\]
+On the retained sequence \(L_j=j^2\), \(\theta_j\sim(2\pi/10^4)j^{-6}\). Therefore the ideal oscillator parameter \(\tau_j=\theta_j/g_j\) obeys
+\[
+ \tau_j^2L_j^5=O(j^{-2}\log j)\quad(g_j^2=1/\log j),\qquad
+ \tau_j^2L_j^5=O(j^{-1})\quad(g_j^2=\kappa_*/(200j)). \tag{V11}
+\]
+The right side of (V10) consequently tends to zero on both prescribed trajectories. Equation (V11) is an oscillator-kernel statement only; the fixed-box convergence (S11) supplies no uniform error in \(L\), so it cannot by itself be promoted to a theorem for the exact simultaneous lattice sequence. Any such promotion would require a new uniform, centred, finite-volume graph estimate.
+
+
+
+
+
+## 26.12 Exact finite-box small-angle expansion of the centered Gaussian native mass
+
+This is a fixed-box consequence of the exact Gaussian kernel in Section 26.9. Fix \(L\ge2\) and \(a>0\), and write \(\delta(q)=\tau d(q)\), where \(d(q)=-2R^*\eta(q)\). Put
+\[
+u(q)=d(q)^{\mathsf T}\Lambda d(q),\quad z(q,q')=d(q)^{\mathsf T}\Lambda d(q'),\quad \mu=\mathbb E u,\quad \nu=\mathbb E u^2,\quad \zeta=\mathbb E z^2.
+\]
+Since \(R^*\) has operator norm \(1\), \(\|\Lambda\|<\sqrt{12}\), and
+\(\sum_{e=(n,1)}n_2^2=:S_{2,L}=\frac23L^2(L+1)(2L+1)^2\), we may take the
+fully explicit bound
+\[
+ U_L:=4\sqrt{12}\,S_{2,L},
+\]
+so \(0\le u\le U_L\), \(|z|\le U_L\), and
+\(0\le u(q)+u(q')-2z(q,q')\le4U_L\). For \(x\ge0\), \(|e^{-x}-(1-x+x^2/2)|\le x^3/6\). Applying this bound to the two-twirl kernel and to \(c(\tau)=\mathbb E e^{-\tau^2u/16}\), uniformly for \(|\tau|\le1\), gives
+\[
+J(\tau)=1-\frac{\mu}{8}\tau^2+\frac{\nu+\mu^2+2\zeta}{256}\tau^4+R_J,
+\qquad |R_J|\le\frac{U_L^3}{384}|\tau|^6,
+\]
+\[
+c(\tau)=1-\frac{\mu}{16}\tau^2+\frac{\nu}{512}\tau^4+r_c,
+\qquad |r_c|\le\frac{U_L^3}{24576}|\tau|^6.
+\]
+Writing \(a_0=\mu/16\), \(b_0=\nu/512\), and \(R_c=U_L^3/24576\), direct multiplication yields
+\[
+\left|c(\tau)^2-\left(1-2a_0\tau^2+(a_0^2+2b_0)\tau^4\right)\right|
+\le C_{c,L}|\tau|^6,
+\]
+where \(C_{c,L}=2a_0b_0+b_0^2+2(1+a_0+b_0)R_c+R_c^2\). Therefore
+\[
+d_{L,\tau}=J(\tau)-c(\tau)^2=\frac{\zeta}{128}\tau^4+R_{d,L}(\tau),
+\qquad |R_{d,L}(\tau)|\le\left(\frac{U_L^3}{384}+C_{c,L}\right)|\tau|^6.
+\]
+
+All expectations use normalized product Haar probability. In the retained
+\(T_\alpha\)-coordinate norm \(-2\operatorname{tr}(XY)\), \(\|T_3\|=1\);
+the physical metric \(c=-\operatorname{tr}(XY)/2\) is unchanged. Haar
+invariance gives covariance \(\mathbb E[(\operatorname{Ad}_qT_3)_\alpha(\operatorname{Ad}_qT_3)_\beta]=\delta_{\alpha\beta}/3\). Thus each colour block of \(d\) has covariance \((4/3)D\); summing the
+three colour blocks, whose cross-colour covariances vanish, gives
+\[
+\zeta=\frac{16}{3}\operatorname{tr}(\Lambda D\Lambda D).
+\]
+Consequently
+\[
+\boxed{d_{L,\tau}=\frac{\tau^4}{24}\operatorname{tr}(\Lambda D\Lambda D)+R_{d,L}(\tau)},
+\qquad |R_{d,L}(\tau)|\le\left(\frac{U_L^3}{384}+C_{c,L}\right)|\tau|^6.
+\]
+Since \(C_L^\Gamma=(3/32)\operatorname{tr}(\Lambda D\Lambda D)\), the leading term is \((4/9)\tau^4C_L^\Gamma\). On \(L_j=j^2\) and \(\theta_j\asymp j^{-6}\), its leading scale \(\tau_j^4L_j^7\) is \(O(j^{-10}(\log j)^2)\) for \(g_j^2=1/\log j\), and \(O(j^{-8})\) for \(g_j^2=\kappa_*/(200j)\). The preceding Taylor remainder is regulator-dependent. A sharper exact
+finite-box identity gives a useful uniform relative statement. Choose a fixed \(r\in\mathrm{SU}(2)\) with
+\(\operatorname{Ad}_rT_3=-T_3\) and right-multiply every \(q'_e\) by \(r\).
+Product Haar is invariant, \(u'\) is unchanged and \(z\mapsto-z\); hence,
+with \(t=\tau^2\),
+\[
+ d_{L,\tau}=\mathbb E\!\left[e^{-t(u(q)+u(q'))/16}
+ \left(\cosh\!\frac{t\,z(q,q')}{8}-1\right)\right].
+\]
+Writing \(b=t(u+u')/16\) and \(v=tz/8\), Cauchy--Schwarz gives
+\(|v|\le b\). Therefore
+\[
+ e^{-tU_L/8}\frac{t^2\zeta}{128}
+ \le d_{L,\tau}\le\frac{t^2\zeta}{128},
+ \qquad
+ 0\ge R_{d,L}(\tau)\ge
+ -\frac{\tau^6U_L}{192}\operatorname{tr}(\Lambda D\Lambda D).
+\]
+Thus on \(L_j=j^2\), whenever \(\tau_j^2L_j^5\to0\), the oscillator kernel
+satisfies
+\[
+ d_{L_j,\tau_j}\sim\frac{\tau_j^4}{24}
+ \operatorname{tr}(\Lambda D\Lambda D).
+\]
+For the two retained paths this condition follows from (V11), but the
+fixed-box convergence (S11) still has no uniform-in-\(L\) error. Consequently
+this remains an oscillator-kernel result and gives no simultaneous exact-lattice
+or interacting-continuum theorem.
+
+
+## 26.13 Exact prescribed-path rates for the fixed-box oscillator kernel
+
+This source derives only the exact finite-box Gaussian scaled-angle kernel from Sections 26.9, 26.11 and 26.12. It does not identify that kernel with the simultaneous exact interacting lattice state.
+
+## Data retained exactly
+
+Set \(L_j=j^2\), \(a_j=(100j)^{-1}\),
+\[
+ c_*:=\frac{2\pi}{10^4},\qquad
+ D_j=L_{j^2}q_{j^2}+6m_{j^2}^2,\qquad
+ \theta_j=\frac{c_*}{j^2D_j},
+\]
+so the proved cusp asymptotic is \(D_j/j^4\to1\). Let
+\[
+ Q_L:=\operatorname{tr}(\Lambda D\Lambda D),
+ \qquad
+ C_L^\Gamma=\frac3{32}Q_L.
+\]
+The exact bounds already proved in Sections 24--26 imply
+\[
+ \frac{128}{297}L^7\le Q_L\le264L^7. \tag{PK1}
+\]
+The exact small-angle bound in Section 26.12 uses
+\[
+ U_L=4\sqrt{12}\,S_{2,L}
+ =\frac{16\sqrt3}{3}L^2(L+1)(2L+1)^2,
+\]
+therefore \(U_L/L^5\to64\sqrt3/3\).
+
+For any \(\tau\in\mathbb R\), put \(t=\tau^2\). The sign-controlled cosh identity gives the exact two-sided inequality
+\[
+ e^{-tU_L/8}\frac{t^2Q_L}{128}
+ \le d_{L,\tau}
+ \le\frac{t^2Q_L}{128}. \tag{PK2}
+\]
+Thus, for \(\tau\ne0\), \(d_{L,\tau}>0\), and with \(x=tU_L/8\),
+\[
+0\le1-\frac{d_{L,\tau}}{t^2Q_L/128}
+ \le1-e^{-x}\le x. \tag{PK3}
+\]
+
+## Substitution along the two prescribed paths
+
+Use the ideal oscillator parameter \(\tau_j=\theta_j/g_j\), with \(g_j>0\). Since \(L_j^7=j^{14}\), (PK1)--(PK2) give the exact finite-\(j\) bounds
+\[
+ e^{-x_j}\,\frac{c_*^4g_j^{-4}j^6}{297D_j^4}
+ \le d_{L_j,\tau_j}
+ \le \frac{33}{16}\,\frac{c_*^4g_j^{-4}j^6}{D_j^4},
+ \qquad
+ x_j:=\frac{\theta_j^2U_{L_j}}{8g_j^2}. \tag{PK4}
+\]
+No replacement \(D_j=j^4\) is made in (PK4). Also
+\[
+ x_j=\frac{2\sqrt3}{3}\,
+ \frac{c_*^2(L_j+1)(2L_j+1)^2}{D_j^2g_j^2}. \tag{PK5}
+\]
+
+### Logarithmic path
+
+For \(g_j^2=1/\log j\), (PK5) and \(D_j/j^4\to1\) give
+\[
+ x_j=\frac{8\sqrt3}{3}c_*^2\frac{\log j}{j^2}(1+o(1))
+ \longrightarrow0. \tag{PK6}
+\]
+Consequently (PK3)--(PK4) prove the relative oscillator-kernel estimate
+\[
+ d_{L_j,\tau_j}
+ =\frac{c_*^4(\log j)^2j^6}{128D_j^4}Q_{L_j}
+ \,[1+O(\log j/j^2)], \tag{PK7}
+\]
+where the \(O(\cdot)\) is an explicit one-sided bound from (PK3). Using only (PK1), the strongest asymptotic constants currently justified are
+\[
+ \frac{c_*^4}{297}
+ \le\liminf_{j\to\infty}\frac{j^{10}d_{L_j,\tau_j}}{(\log j)^2},
+ \qquad
+ \limsup_{j\to\infty}\frac{j^{10}d_{L_j,\tau_j}}{(\log j)^2}
+ \le\frac{33}{16}c_*^4. \tag{PK8}
+\]
+The bounds are strict-positive at every finite \(j\) and show \(d_{L_j,\tau_j}=\Theta\big(j^{-10}(\log j)^2\big)\) in the two-sided-bound sense.
+
+### Fixed-electric-coefficient path
+
+For \(g_j^2=\kappa_*/(200j)\), with fixed \(\kappa_*>0\), (PK5) gives
+\[
+ x_j=\frac{1600\sqrt3}{3\kappa_*}c_*^2\frac1j(1+o(1))
+ \longrightarrow0. \tag{PK9}
+\]
+The exact relative estimate and (PK1) imply
+\[
+ d_{L_j,\tau_j}
+ =\frac{40000c_*^4j^8}{128\kappa_*^2D_j^4}Q_{L_j}
+ \,[1+O(1/j)], \tag{PK10}
+\]
+and hence
+\[
+ \frac{40000c_*^4}{297\kappa_*^2}
+ \le\liminf_{j\to\infty}j^8d_{L_j,\tau_j},
+ \qquad
+ \limsup_{j\to\infty}j^8d_{L_j,\tau_j}
+ \le\frac{82500c_*^4}{\kappa_*^2}. \tag{PK11}
+\]
+Here \(82500=40000\cdot(264/128)=40000\cdot(33/16)\). Thus \(d_{L_j,\tau_j}=\Theta(j^{-8})\) for this oscillator kernel in the two-sided-bound sense.
+
+## What this does and does not prove for the exact lattice
+
+Equations (PK4)--(PK11) are exact finite-box/oscillator conclusions. They prove positivity and the leading small-\(\tau_j\) scaling after taking the fixed-box \(g\to0\) limit. They do **not** imply the same estimates for the exact positive-vacuum vector at the simultaneous pair \((L_j,g_j)\): (S11) is pointwise in fixed \(L,a\), with no rate uniform in \(L\), while \(L_j\to\infty\) and \(g_j\to0\) together. In particular, no bound currently controls the difference between the exact normalized native spectral measure and the oscillator measure after division by the vanishing mass \(d_{L_j,\tau_j}\). The independent centered Taylor estimate (P5) is volume-vacuous, \(O(j^4\log j)\) and \(O(j^5)\), and the sixth/mixed moments have no volume-uniform bound. Thus the new cosh inequality closes the oscillator-kernel relative error but leaves the simultaneous exact-lattice and interacting-continuum bridge obstructed by the missing uniform fixed-box convergence rate.
+
+This is a precise obstruction, not a claim that either prescribed path has zero native low-energy weight.
+
+
+## 27. Exact collapse of the finite-box weak-coupling disk at fixed coupling
+
+This bounded section isolates the precise limitation of the small-coupling
+argument on a growing open box.  It retains the original interacting
+\(SU(2)\) Wilson Hamiltonian, every face, the physical spacing \(a\), and
+the positive coupling \(g=g_{\mathrm{YM}}\).  It proves neither a continuum
+mass gap nor its absence.
+
+For \(L\ge2\), put \(m=2L\), and let \(P_L\) be the elementary faces of the
+open box.  Then
+\[
+ M_L:=|P_L|=3m^2(m+1)=12L^2(2L+1). \tag{FC1}
+\]
+On \(L^2(SU(2)^{E_L},d\lambda)\), with
+\[
+ H_{L,g,a}=\frac{2g^2}{a}H_{0,L}
+ +\frac{1}{2g^2a}\sum_{p\in P_L}(2-W_p),\qquad
+ H_{0,L}=\sum_{e\in E_L}E_e, \tag{FC2}
+\]
+define \(W_L=\sum_{p\in P_L}W_p\) and
+\(\xi=1/(4g^4)\).  The exact decomposition is
+\[
+ H_{L,g,a}=\frac{2g^2}{a}(H_{0,L}-\xi W_L)
+ +\frac{M_L}{g^2a}I. \tag{FC3}
+\]
+The final term is the complete scalar \(2bM_L\), \(b=(2g^2a)^{-1}\);
+it is retained and only shifts all eigenvalues equally.
+
+Since \(|W_p|\le2\), \(\|W_L\|_\infty\le2M_L\).  At the configuration
+\(U_e=I\) for every edge all \(W_p=2\), so equality is attained:
+\[
+ \|W_L\|_{\mathcal B}=2M_L. \tag{FC4}
+\]
+With \(T_\alpha=-i\sigma_\alpha/2\), the first nonzero one-link Casimir is
+\(3/4\), hence
+\[
+ \operatorname{dist}\bigl(0,\operatorname{spec}(H_{0,L})\setminus\{0\}\bigr)
+ =\frac34. \tag{FC5}
+\]
+Consequently
+\[
+ \|\xi W_L\|=\frac{M_L}{2g^4},\qquad
+ \frac{\|\xi W_L\|}{3/4}
+ =\frac{2M_L}{3g^4}
+ =\frac{8L^2(2L+1)}{g^4}. \tag{FC6}
+\]
+For every fixed finite \(g>0\), this ratio diverges with \(L\).
+
+Take the circle \(\Gamma=\{|z|=3/8\}\).  Equation (FC5) gives
+\(\|(H_{0,L}-z)^{-1}\|\le8/3\) on \(\Gamma\), while
+\[
+ H_{0,L}-\xi W_L-z
+ =\bigl(I-\xi W_L(H_{0,L}-z)^{-1}\bigr)(H_{0,L}-z). \tag{FC7}
+\]
+The global operator-norm Neumann argument therefore certifies invertibility
+on \(\Gamma\), and the corresponding rank-one Riesz projection, only when
+\[
+ 2|\xi|M_L\frac83<1,\qquad\text{i.e.}\qquad
+ \boxed{|\xi|<\frac{3}{16M_L}
+ =\frac{1}{64L^2(2L+1)}.} \tag{FC8}
+\]
+This is a sufficient disk from this proof, not a claim that the true
+analyticity radius equals its boundary.
+
+Along \(L=j^2\), the right side of (FC8) is
+\[
+ \frac{1}{64j^4(2j^2+1)}\sim\frac{1}{128j^6}. \tag{FC9}
+\]
+At fixed \(g\), \(\xi=1/(4g^4)\) is constant, so for all sufficiently large
+\(j\) it lies outside this sufficient disk.  Equivalently, remaining inside
+would require \(16j^4(2j^2+1)<g^4\), impossible for an unbounded sequence at
+fixed finite \(g\).
+
+Thus (FC1)--(FC9) prove a regulator-level obstruction to this
+volume-uniform perturbative certification route: the norm of the retained
+Wilson interaction grows exactly with the number of faces, while the
+unperturbed gap remains \(3/4\).  They do not prove that the interacting
+eigenvalues lack a continuum limit, and they do not prove or refute a
+Yang--Mills mass gap.  A fixed-coupling continuum proof must provide a
+different volume-uniform nonperturbative estimate while retaining the full
+Hamiltonian and gauge-invariant subspace.  The arithmetic replay is the
+accompanying file
+check_fixed_coupling_analytic_disk_obstruction.py; it verifies (FC1),
+(FC6), (FC8), and eventual fixed-coupling failure for representative finite
+couplings.
+
+## 28. Current mathematical conclusion
+
+The fixed-coupling diagonal (12) retains the exact nonlinear geometric map, actual state and measure refinement, configuration compactness and the centered norm bound (22). The new volume-uniform proof (62)--(76) determines its physical spectral consequence for every fixed \(g_0^4\ge12288\): the actual magnetic excitation probability has exactly zero weight on every bounded physical energy interval eventually. This extends the former total-interaction restriction (47) to a coupling interval independent of volume.
+
+For every fixed \(g_0>0\), the unchanged fixed physical Wilson loop states have the positive high-energy raw mass (82), threshold (83), and failure of strong continuity (85) in any direct configuration/correlation limit with those observables. This result proves loss of a positive spectral fraction; outside (62) it does not assert zero low-energy loop weight or determine the native magnetic state's full spectral measure. Tightness for these loop states requires \(g_j\to0\), as proved in (84).
+
+The controlled varying-coupling diagonal (38) still has the full concentration and amplitude estimates (36)--(43), projective-Haar limit (59), and complete spectral escape (42). The explicit alternative (88) retains a vanishing actual magnetic state bound and configuration compactness while leaving both proved whole-spectrum escape domains. The fixed-electric-coefficient alternative (91) retains a growing magnetic interaction. The full weak-coupling variational calculation in Section 12 now improves its earlier constant state bound (92) to the vanishing estimate (104), so its actual uncentered translated and vacuum configuration measures have the same subsequential limits. Section 16 gives an explicit corrected cusp for both alternatives and proves comparison of their full native spectral probabilities with the corresponding actual electric covariance probabilities. Neither probability has yet been proved tight or convergent to an interacting spatial continuum.
+
+The unresolved target is the actual local interacting continuum construction and nonzero original native low-energy spectral weight outside the proved exclusions, followed by an exact determination of whether that construction gives the proposed four-dimensional mass-gap counterexample. The repository supplies full proofs of the obtained estimates, their constants, and all stated exact maps. No missing covariance, tightness, or dynamical convergence statement has been used as an assumption.
+
+
+The exact trial integrals and gauge averaging in (93)--(99) bound the actual mean plaquette defect by \(3\sqrt5\,g^2\). The retained eigen-equation improves its full electric second moment in (100)--(101), yielding the new native magnetic-state estimates (102)--(104) at all positive couplings. Ordered non-Abelian face filling then proves (107). On the explicit trajectory \(g_j^2=j^{-10}\), all actual vacuum cylinders converge to the consistently constructed pure-gauge measure (110)--(111), with zero centered variance for gauge-invariant bounded cylinders. That exact limit describes the loss of those unchanged observables; it supplies neither nonzero magnetic spectral probability nor an interacting continuum field theory.
+
+
+Sections 14--16 prove a local exponential lower bound for the exact electric covariance, a quantitative all-angle lower bound for the original native magnetic mass, an all-angle fourth-order graph remainder, and a full physical spectral probability comparison on an explicit corrected cusp. The correction preserves each finite Hamiltonian, its actual vacuum, the original coordinate and metric dictionary, and all raw amplitudes. The proved total variation error tends to zero on both decreasing-coupling trajectories. Consequently finite-energy weights and tightness of those corrected native probabilities are exactly linked to those of the unchanged covariance vectors; neither tightness nor nonzero low-energy covariance weight is assumed or established by this comparison.
+
+
+Sections 17--18 derive the full actual weighted-electric graph and spectral map at fixed box from potential moments and the retained eigen-equation. They calculate all physical pair-state weights and prove a uniform native comparison-mass bound of order L^7, with finite-energy probability at most the exact rank bound (237). On the original box and mesh diagonal that probability is O(j^-5). The precisely selected positive-coupling diagonal and strengthened original cusp then give an actual native magnetic probability escaping every bounded physical energy interval while the same actual finite-box gaps close. Its full state and period maps, raw masses and physical-time limits are proved. This excludes that particular selected state sequence as the sought interacting continuum; it does not determine the prescribed logarithmic or fixed-electric-coefficient paths, or exclude all other native-state continuations.
+
+
+Section 20 computes a second physical observable's complete raw
+Gamma/Laguerre measure. Its separately selected macroscopic limit is
+\(d\delta_0\), \(d=1-2^{-3/2}>0\); preservation of the original
+vacuum orthogonality then precludes a unique-vacuum realization.
+Section 21 proves the exact fluid-to-curvature-and-current map,
+including finite magnetic spacetime integral, invariant concentration,
+and the necessary divergence (274). The displayed source core also
+gives the shrinking-loop trace cluster set \([-2,2]\) by (275)--(277).
+The new source's fluid existence proof has not been independently
+verified here, and none of these classical maps constructs the
+remaining interacting quantum continuum or a nonzero native
+low-energy spectral measure on either prescribed coupling path.
+
+
+Section 22 adds a different radial observable with actual raw
+Gamma spectral mass on every \((0,\epsilon)\), retaining positive
+finite couplings and the original physical energy scale. Its
+positive double-commutator multiplier has an independently
+proved weighted limit \(jR_g\mapsto c_\Gamma Q\), complete
+carrier insertion kernels, and convergence of the actual first
+energy moment. The centered vacuum image of this same
+observable has nonzero raw limit \((3/2)c_\Gamma^2\delta_0\).
+Thus retaining that observable action on the vacuum produces
+a precise second zero-energy vector, while the original
+bounded local cylinders act by scalars on the carrier sector.
+These results do not identify the radial family with the
+native magnetic translation, either prescribed coupling path,
+or the desired local interacting four-dimensional theory.
+
+
+Section 23 proves an exact correspondence on one refined positive
+dyadic sequence, retaining both earlier families of convergence tests.
+For every fixed real compact profile \(h\), with \(H_h=\int h\),
+the original local first-band vector and the three original radial
+vacuum-image directions obey
+\[
+ \left\|\ell_j^4v_{h,j}^{\dagger}
+       -\frac{H_h}{50}\sum_{i=1}^3w_{i,j}^{\dagger}\right\|\to0.
+\]
+The full raw cross inner product with one radial direction tends to
+\(600\pi^2H_h\); its two squared norms tend to
+\(30000\pi^2\) and \(36\pi^2H_h^2\), respectively. The complete
+seven-dimensional compressed operator correspondence is (352).
+The orthogonal coordinate morphism, polynomial-core cylinder map,
+and nonzero terms leaving the compressed band are all proved.
+This connects the regular compact curvature-profile map to the
+radial phase construction without identifying their full local
+operator algebras or assuming a joint limit for the retained
+higher-mode terms. The original interacting continuum and native
+prescribed-coupling calculations remain unfinished.
+
+
+Sections 24--25 prove the complete directional-electric spectral density and the exact original weighted trace. The local density in (381) has positive raw mass on every finite positive energy interval, while its total unfiltered mass diverges; all positive-time vectors and energy moments have their explicit common free transverse representation. The noncompact original weight is treated by its exact component trace, including the reflected cosine boundary terms. Its whole raw comparison mass is asymptotic to \(3N^7I_{\rm lat}/2560\), its raw finite-energy mass is asymptotic to \(\ell^7\Omega^5/(512000\pi^2a^2)\), and its finite-energy probability is asymptotic to \(a^5\Omega^5/(600\pi^2I_{\rm lat})\). These results are transferred to one actual positive-coupling sequence with all previous stage tests retained. The further original cusp depth in (445) makes the native relative error \(o(a^5)\), proving the same precise native probability coefficient and every raw factor in (448). Section 26 now treats the original depth \(T=j^2\) on a common selected weak-coupling sequence. The prescribed coupling trajectories and survival of a nonabelian continuum interaction remain unresolved.
+
+
+Section 26 proves the original unmodified native state's finite-energy escape directly. At each fixed box and nonzero angle, the exact support separation (456), all eigenfunction moments (459), and raw lower bound (467) imply that its low-energy probability is smaller than every power of the positive coupling. The noncentral raw mass also has the explicit upper bound (473) proportional to \(g^2/\sin^2\theta\); the central endpoint retains raw mass tending to one. The refined common sequence (477)--(478) preserves the original cusp depth and all preceding stage tests, and gives native low-energy probability \(o(a_j^5)\), compared with the covariance coefficient \(a_j^5\Omega^5/(600\pi^2I_{\rm lat})\). Equations (480)--(485) prove maximal spectral separation, asymptotic vector orthogonality, and actual relative Taylor failure, together with the exact two-angle map (486). No conclusion about either prescribed coupling path or an interacting continuum is inferred from this selected sequence.

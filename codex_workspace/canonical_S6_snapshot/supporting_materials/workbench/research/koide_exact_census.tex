@@ -1,0 +1,202 @@
+% Integrated 4 September 2026 from the exact 10^8 census and independent replay.
+% This section retains the literal ternary equation, chamber, strict wall, height,
+% and original-coordinate inverse.
+
+\section{Exact unit-orbit census through height \(10^8\)}
+\label{koide-count-sec-census-1e8}
+
+The census retains exactly the same equation, chamber, strict wall, and
+height as the preceding theorems:
+\begin{equation}
+ (a,q,n)\in\mathbb Z^3,\qquad
+ a^2-3q^2-18n^2=-2,\qquad
+ a>0,\quad q,n\geq0,\quad a+4n>q,\qquad
+ 4a+17n\leq X.
+ \label{koide-count-eq-census-domain}
+\end{equation}
+It does not infer an asymptotic from finite data.  Its exact fixed-\(n\)
+equation and factorization are
+\begin{equation}
+ a^2-3q^2=m_n,\qquad
+ m_n=18n^2-2=2(3n-1)(3n+1).
+ \label{koide-count-eq-census-fixed-n}
+\end{equation}
+For each \(n\geq1\), every ideal of norm \(m_n\) is enumerated by its
+Hermite-normal-form triple
+\begin{equation}
+ (C,D,E)\in\mathbb Z_{>0}^2\times\mathbb Z,\qquad
+ C^2D=m_n,\qquad
+ 0\leq E<D,\qquad E^2\equiv3\pmod D.
+ \label{koide-count-eq-census-hnf}
+\end{equation}
+The generator is reduced by exact multiplication by the fundamental unit
+\(2+\sqrt3\) to the unique seed \(a_0>2q_0\geq0\).  Its forward unit
+orbit is
+\begin{equation}
+ \binom{a_{k+1}}{q_{k+1}}
+ =
+ \begin{pmatrix}2&3\\1&2\end{pmatrix}
+ \binom{a_k}{q_k},\qquad k\geq0.
+ \label{koide-count-eq-census-unit-step}
+\end{equation}
+Each emitted point is reconstructed by
+\begin{equation}
+ x=\frac{a+4n-q}{2},\qquad
+ y=\frac{a+4n+q}{2},\qquad
+ z=4a+17n,
+ \label{koide-count-eq-census-inverse}
+\end{equation}
+and is rechecked in both coordinate systems and in the original polynomial
+\(\Delta(x,y,z)=-1\).  Thus the accelerated enumeration does not replace
+the original objects by a floating-point or rescaled surrogate.
+
+\subsection{Complete result and checkpoint table}
+
+The complete integer-domain audit for
+\(1\leq X\leq100{,}000{,}000\) gives
+\begin{equation}
+ \boxed{R(100{,}000{,}000)=3{,}536{,}002.}
+ \label{koide-count-eq-census-final-count}
+\end{equation}
+The endpoint in \(n\) is \(2{,}943{,}725\); the enumeration contains
+\(2{,}327{,}513\) canonical unit orbits.  The following checkpoints are
+exact integer counts.  The residuals use the proved constant
+\(C_0\) in \eqref{koide-count-eq-final-constant}.
+\begin{center}
+\begin{tabular}{r@{\qquad}r@{\qquad}r@{\qquad}r}
+\toprule
+\(X\)&\(R(X)\)&\(R(X)-C_0X\)&\((R(X)-C_0X)/\sqrt X\)\\
+\midrule
+200,000&7,109&\(36.590440053629\)&\(0.081818711287\)\\
+250,000&8,854&\(13.488050067037\)&\(0.026976100134\)\\
+500,000&17,695&\(13.976100134073\)&\(0.019765190359\)\\
+1,000,000&35,381&\(18.952200268147\)&\(0.018952200268\)\\
+2,000,000&70,637&\(-87.095599463706\)&\(-0.061585888992\)\\
+5,000,000&176,943&\(132.761001340734\)&\(0.059372524752\)\\
+10,000,000&353,598&\(-22.477997318532\)&\(-0.007108166877\)\\
+20,000,000&707,458&\(217.044005362937\)&\(0.048532515010\)\\
+50,000,000&1,768,230&\(127.610013407342\)&\(0.018046781166\)\\
+100,000,000&3,536,002&\(-202.779973185317\)&\(-0.020277997319\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Certified extrema over every integer}
+
+Write \(E(X)=R(X)-C_0X\).  Between consecutive occupied heights,
+\(R(X)\) is constant and both \(E(X)\) and
+\(E(X)/\sqrt X\) are strictly decreasing, since
+\begin{equation}
+ \frac{d}{dX}\left(\frac{R}{\sqrt X}-C_0\sqrt X\right)
+ =-\frac{R}{2X^{3/2}}-\frac{C_0}{2\sqrt X}<0.
+ \label{koide-count-eq-census-monotonicity}
+\end{equation}
+Checking both integer endpoints of every constant-count interval therefore
+certifies extrema over every integer in the audited range, rather than at
+selected checkpoints.  On \(1\leq X\leq10^8\), the maximum signed residual
+is
+\begin{equation}
+ \begin{aligned}
+ E(77{,}078{,}404)
+ &=721.7934249571297569656681553538691093379\ldots,\\
+ R(77{,}078{,}404)&=2{,}726{,}372,
+ \end{aligned}
+ \label{koide-count-eq-census-max-positive}
+\end{equation}
+and the minimum signed, hence largest absolute, residual is
+\begin{equation}
+ \begin{aligned}
+ E(32{,}461{,}294)
+ &=-812.8300691488068897091966006797491655933\ldots,\\
+ R(32{,}461{,}294)&=1{,}147{,}085.
+ \end{aligned}
+ \label{koide-count-eq-census-max-negative}
+\end{equation}
+The maximum of
+\(\lvert E(X)\rvert/\sqrt X\) over the full audited range is attained at
+\(X=160\), where
+\[
+ \frac{\lvert E(160)\rvert}{\sqrt{160}}
+ =0.185157076934082141384010185515317233816\ldots.
+\]
+On \(10{,}000\leq X\leq10^8\), the maximum is
+\begin{equation}
+ \begin{aligned}
+ \frac{\lvert E(867{,}240)\rvert}{\sqrt{867{,}240}}
+ &=0.171400192808814559728949658032345552502\ldots,\\
+ R(867{,}240)&=30{,}827,
+ \end{aligned}
+ \label{koide-count-eq-census-tail-extremum}
+\end{equation}
+and the root entering at that height is
+\begin{equation}
+ (a,q,n)=(199997,115061,3956),\qquad
+ (x,y,z)=(50380,165441,867240).
+ \label{koide-count-eq-census-tail-witness}
+\end{equation}
+The bound \(\lvert E(X)\rvert\leq0.171\sqrt X\) first fails on this tail at
+\(X=867{,}216\), where \(R(X)=30{,}826\) and
+\[
+ E(X)=159.4663553077412220330449353234319817199\ldots.
+\]
+No counterexample to the finite statement with constant \(0.172\) occurs
+through \(10^8\).  These are bounded computations, not a claim that either
+constant persists.
+
+The audit finds \(12{,}916\) sign changes.  The \(3{,}536{,}002\) roots
+occupy \(2{,}472{,}015\) distinct heights; the maximum shell multiplicity
+is \(35\), at \(z=92{,}923{,}120\), and the largest gap between consecutive
+occupied heights is \(564\), from \(71{,}586{,}276\) to \(71{,}586{,}840\).
+
+\subsection{Independent replay and exact algorithm}
+
+An independent pass decompressed and rechecked all \(3{,}536{,}002\)
+six-coordinate rows, recomputed every checkpoint, verified the coordinate
+maps, equations, ordering, chamber, height, nonduplication, and gzip CRC,
+and returned \texttt{PASS}.  It also compared the literal \((n,a)\) scan
+through \(X=20{,}000\), every generalized-Pell seed for \(1\leq n\leq1000\),
+and the full six-coordinate point set through \(X=200{,}000\).
+
+The reproducibility sources and receipts are retained project-relatively under
+\path{supporting_materials/workbench/evidence/koide_exact_checkpoint_20260904/census}.
+The two \(10^8\)-range outputs and the full coordinate receipt are in its
+\path{final_100000000} subdirectory.  The principal digests are
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.43\linewidth}
+                >{\raggedright\arraybackslash}p{0.51\linewidth}}
+\toprule
+artifact&SHA-256\\
+\midrule
+\texttt{koide\_fast\_enum.py}&
+\texttt{dddb73b828b63be08e2ff0b5346edb32\allowbreak%
+31662005f83d5b2448c06fef6ba31017}\\
+\texttt{koide\_discrepancy\_100000000.json}&
+\texttt{da92f0866074e530b8174a48915caa0f\allowbreak%
+65cd4cd8957e209306adc200739d1961}\\
+\texttt{koide\_roots\_through\_\allowbreak 100000000.csv.gz}&
+\texttt{dfc313492aedb396dcfa10520bfefc699\allowbreak%
+ba601357bc9933d921dfa3884310bd4}\\
+\texttt{coordinate\_audit\_receipt.json}&
+\texttt{3010363108e7b460b7331a92f3263bbd\allowbreak%
+77992aedfc3064973750e16d707da80f}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The exact algorithm first finds the largest admissible \(n\) by integer
+binary search, then factors the unchanged integers \(3n-1\) and \(3n+1\)
+with a smallest-prime-factor sieve.  It enumerates every HNF triple in
+\eqref{koide-count-eq-census-hnf}, constructs all roots of \(3\) modulo
+\(D\) by prime-power lifting and the Chinese remainder theorem, reduces
+each generator to the unique seed, and iterates
+\eqref{koide-count-eq-census-unit-step} until the literal height fails.
+For each \(n\), the independently checked identity
+\[
+ \#\mathcal P(m_n)=\rho(m_n)=\rho(3n-1)\rho(3n+1)
+\]
+certifies the orbit multiplicity.  The work is
+\[
+ X^{1+o(1)}+O(R(X))
+\]
+integer operations before the optional height sort.  This complexity and
+the finite census use no conjectural discrepancy estimate.

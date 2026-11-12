@@ -1,0 +1,490 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\tf}{\mathrm{tf}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\ad}{\operatorname{ad}}
+\newcommand{\tr}{\operatorname{tr}}
+\title{An all-time real-connection obstruction for the literal moving-kernel orbit}
+\author{Bounded continuation, 4 September 2026}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Objects, couplings, and the exact coordinate maps}
+
+All gauge matrices belong to $\su(3)$, the real vector space of traceless
+anti-Hermitian complex $3\times3$ matrices. The matter variables are a
+traceless Hermitian matrix $\Phi$ and a vector $b\in\mathbb C^3$.
+For any matrix $M$, set $M_{\tf}=M-(\tr M)I_3/3$.
+Fix $g^2>0$, $\Gamma>0$, $\kappa\ne0$, and real parameters
+$x,a,B,d$ satisfying
+\[
+ 0<\frac{x}{\kappa}\leq\frac{1}{6\Gamma},\qquad
+ a>\frac{\kappa x}{3},\qquad B,d>0,\qquad
+ B^2+d^2=\frac{3ax}{\kappa}-x^2,
+ \qquad m^2=a\left(1-\frac{6\Gamma x}{\kappa}\right).
+\]
+In particular $x\ne0$, $a>0$, and $m^2\geq0$. Define, in the original
+coordinates,
+\[
+ u=(1,1,1)^{\mathsf T},\quad v=(1,-1,0)^{\mathsf T},\quad
+ w=(1,1,-2)^{\mathsf T},\quad
+ K=\left(\frac{v}{\sqrt2},\frac{w}{\sqrt6},\frac{u}{\sqrt3}\right),
+\]
+\[
+ J_0=\begin{pmatrix}0&-1&1\\1&0&-1\\-1&1&0\end{pmatrix},\quad
+ \Pi=uu^{\mathsf T}/3,\quad \Omega=\sqrt{a/3}\,J_0,
+\]
+\[
+ O(t)=\Pi+\cos(\sqrt a\,t)(I_3-\Pi)
+             +\frac{\sin(\sqrt a\,t)}{\sqrt3}J_0,
+\]
+\[
+ \Phi_0=-\frac{x}{6}ww^{\mathsf T}+\frac{x}{3}uu^{\mathsf T}
+       +\frac{d}{\sqrt{18}}(wu^{\mathsf T}+uw^{\mathsf T}),
+ \qquad b_0=\frac{B}{\sqrt2}v.
+\]
+The literal scalar functions under discussion are precisely
+$\Phi(t)=O(t)\Phi_0O(t)^{\mathsf T}$ and $b(t)=O(t)b_0$.
+No time rescaling or alteration of these functions is made.
+
+The vector dot products give $K^{\mathsf T}K=I_3$, and
+$\det(v,w,u)=6=\sqrt2\sqrt6\sqrt3$ gives $\det K=1$.
+Direct multiplication gives $J_0u=0$ and
+$J_0^2=-3(I_3-\Pi)$, so $O(t)\in SO(3)$ and
+$\dot O=\Omega O=O\Omega$. With inverse map $K^{\mathsf T}$, the exact
+constant matter data and original angular generator are
+\[
+ H=K^{\mathsf T}\Phi_0K=
+ \begin{pmatrix}0&0&0\\0&-x&d\\0&d&x\end{pmatrix},\quad
+ q=K^{\mathsf T}b_0=Be_1,\quad
+ A=K^{\mathsf T}\Omega K=
+ \begin{pmatrix}0&-\sqrt a&0\\\sqrt a&0&0\\0&0&0\end{pmatrix}.
+\]
+Write $r^2=x^2+d^2$ and $\mu=r^2+B^2$.
+Then $Hq=0$, $H^2=r^2\operatorname{diag}(0,1,1)$, and
+\[
+ s=\tr H^2+2q^*q=2(r^2+B^2)=\frac{6ax}{\kappa},
+ \qquad m^2+\Gamma s=a.
+\]
+The adjugate is $\operatorname{adj}H=\operatorname{diag}(-r^2,0,0)$.
+Consequently
+\[
+ (\operatorname{adj}H-qq^*)_{\tf}
+ =\operatorname{diag}(-s/3,s/6,s/6),
+\]
+\begin{equation}\label{eq:force}
+ F_H:=-aH+\kappa(\operatorname{adj}H-qq^*)_{\tf}
+ =\begin{pmatrix}-2ax&0&0\\0&2ax&-ad\\0&-ad&0\end{pmatrix}
+ =[A,[A,H]],\qquad A^2q=-aq.
+\end{equation}
+These are direct matrix identities with the original couplings retained.
+The rational original-coordinate example is
+\[
+ m^2=\Gamma=1,\quad\kappa=6,\quad x=\tfrac12,\quad a=2,
+ \quad B=d=\frac{1}{2\sqrt2},\quad
+ \Phi_0=\frac14\begin{pmatrix}1&1&1\\1&1&1\\1&1&-2\end{pmatrix},
+ \quad b_0=\frac14\begin{pmatrix}1\\-1\\0\end{pmatrix}.
+\]
+It has $s=1$, $r^2=3/8$, $\mu=1/2$, and the prescribed frequency remains
+$\sqrt2$.
+
+\section{Every homogeneous equation in the constant-matter frame}
+
+The conventions are signature $(+---)$ and
+\[
+ D_\nu\Phi=\partial_\nu\Phi+[\mathcal A_\nu,\Phi],\quad
+ D_\nu b=\partial_\nu b+\mathcal A_\nu b,\quad
+ \mathcal F_{\nu\rho}=\partial_\nu\mathcal A_\rho-
+ \partial_\rho\mathcal A_\nu+[\mathcal A_\nu,\mathcal A_\rho],
+\]
+\[
+ \mathcal L=\frac1{2g^2}\tr(\mathcal F_{\nu\rho}\mathcal F^{\nu\rho})
+ +\frac12\tr(D_\nu\Phi D^\nu\Phi)+(D_\nu b)^*D^\nu b-V,
+ \quad
+ V=\frac{m^2}{2}s+\frac\Gamma4s^2-\kappa(\det\Phi-b^*\Phi b).
+\]
+For homogeneous fields, let $E_i=\dot{\mathcal A}_i+
+[\mathcal A_0,\mathcal A_i]$, $F_{ij}=[\mathcal A_i,\mathcal A_j]$,
+$X=\dot\Phi+[\mathcal A_0,\Phi]$, and $z=\dot b+\mathcal A_0b$.
+Then the density equals
+\[
+ -\frac1{g^2}\sum_i\tr E_i^2+\frac1{g^2}\sum_{i<j}\tr F_{ij}^2
+ +\tfrac12\tr X^2+z^*z
+ -\tfrac12\sum_i\tr[\mathcal A_i,\Phi]^2
+ -\sum_i|\mathcal A_i b|^2-V.
+\]
+For traceless Hermitian $\delta\Phi$, differentiation of the displayed
+polynomial potential gives
+\[
+ \delta V=\tr\bigl((a\Phi-
+ \kappa(\operatorname{adj}\Phi-bb^*)_{\tf})\delta\Phi\bigr)
+ +2\operatorname{Re}\bigl(\delta b^*(aI_3+\kappa\Phi)b\bigr).
+\]
+Covariant integration by parts in the scalar kinetic terms therefore gives
+\begin{align}
+ D_0X-\sum_i[\mathcal A_i,[\mathcal A_i,\Phi]]
+       +a\Phi-\kappa(\operatorname{adj}\Phi-bb^*)_{\tf}&=0,\label{eq:fullphi}\\
+ D_0z-\sum_i\mathcal A_i^2b+(aI_3+\kappa\Phi)b&=0.\label{eq:fullb}
+\end{align}
+The gauge variation has coefficient
+$-2D_\nu\mathcal F^{\nu\rho}/g^2+J^\rho$ against
+$\delta\mathcal A_\rho$, where
+\[
+ J_\rho=[\Phi,D_\rho\Phi]+b(D_\rho b)^*-(D_\rho b)b^*.
+\]
+Indeed cyclicity gives the first commutator coefficient, and
+anti-Hermiticity gives
+$2\operatorname{Re}((D_\rho b)^*\delta\mathcal A_\rho b)
+=\tr((b(D_\rho b)^*-(D_\rho b)b^*)\delta\mathcal A_\rho)$.
+The gauge coefficient follows from
+$\delta\mathcal F_{\nu\rho}=D_\nu\delta\mathcal A_\rho-
+D_\rho\delta\mathcal A_\nu$, counting both antisymmetric orders.
+Variation over traceless anti-Hermitian matrices gives
+$D_\nu\mathcal F^{\nu\rho}=(g^2/2)(J^\rho)_{\tf}$.
+Since $\mathcal F^{i0}=E_i$, $\mathcal F^{0i}=-E_i$, and $J^i=-J_i$,
+the complete gauge equations are
+\begin{align}
+ \frac2{g^2}\sum_i[\mathcal A_i,E_i]-(J_0)_{\tf}&=0,\label{eq:gaussorig}\\
+ D_0E_i-\sum_j[\mathcal A_j,[\mathcal A_j,\mathcal A_i]]
+            -\frac{g^2}{2}(J_i)_{\tf}&=0.\label{eq:spatialorig}
+\end{align}
+Thus no gauge equation, including Gauss' equation, has been omitted.
+
+For a spatially constant $U(t)\in SU(3)$ the gauge transformation is
+\[
+ \Phi'=U\Phi U^*,\quad b'=Ub,\quad
+ \mathcal A_0'=U\mathcal A_0U^*-\dot U U^*,\quad
+ \mathcal A_i'=U\mathcal A_iU^*.
+\]
+The product rule directly gives
+$D_\nu'(U b)=U D_\nu b$ and
+$D_\nu'(U\Phi U^*)=U(D_\nu\Phi)U^*$; applying two derivatives and
+their commutator gives $\mathcal F'=U\mathcal F U^*$.
+The adjugate covariance follows first from
+$\operatorname{adj}\Phi=(\det\Phi)\Phi^{-1}$ for invertible $\Phi$,
+and then from polynomial continuity. Trace projection also commutes with
+unitary conjugation. Therefore every displayed equation is equivalent
+under this transformation, not merely the scalar equations.
+
+Apply $U(t)=K^{\mathsf T}O(t)^{\mathsf T}$. The new matter fields are
+exactly $H,q$, and put
+\begin{equation}\label{eq:framemap}
+ C=K^{\mathsf T}O^{\mathsf T}\mathcal A_0OK+A,\qquad
+ Y_i=K^{\mathsf T}O^{\mathsf T}\mathcal A_iOK.
+\end{equation}
+The inverse maps are
+$\mathcal A_0=OKCK^{\mathsf T}O^{\mathsf T}-\Omega$ and
+$\mathcal A_i=OKY_iK^{\mathsf T}O^{\mathsf T}$.
+Set
+\[
+ \mathcal I Z=([H,[H,Z]]+qq^*Z+Zqq^*)_{\tf},\qquad
+ \mathcal K_YZ=-\sum_i[Y_i,[Y_i,Z]],\qquad
+ \mathcal E_i=\dot Y_i+[C,Y_i].
+\]
+The exact static-matter-frame system is
+\begin{align}
+ [\dot C,H]+[C,[C,H]]-\sum_i[Y_i,[Y_i,H]]&=F_H,\label{eq:staticphi}\\
+ (\dot C+C^2-\sum_iY_i^2)q&=-aq,\label{eq:staticb}\\
+ \left(\mathcal I+\frac2{g^2}\mathcal K_Y\right)C
+       &=-\frac2{g^2}\sum_i[Y_i,\dot Y_i],\label{eq:staticgauss}\\
+ \dot{\mathcal E}_i+[C,\mathcal E_i]
+ -\sum_j[Y_j,[Y_j,Y_i]]+\frac{g^2}{2}\mathcal I Y_i&=0.
+ \label{eq:staticspatial}
+\end{align}
+Here $(J_0)_{\tf}=-\mathcal I C$ and $(J_i)_{\tf}=-\mathcal I Y_i$.
+Expansion of $\sum_i[Y_i,\mathcal E_i]$ gives
+$\sum_i[Y_i,\dot Y_i]+\mathcal K_Y C$, proving the Gauss sign and factor.
+Equations \eqref{eq:staticphi}--\eqref{eq:staticspatial} are necessary
+and sufficient for a homogeneous lift, by the invertible maps above.
+
+\section{An unrestricted-in-time obstruction in the real gauge algebra}
+
+\begin{proposition}[Static spatial fields, without a reality restriction]
+\label{prop:staticcomplex}
+There is no lift with every $Y_i$ constant in the constant-matter frame,
+even if $C(t)$ is arbitrary and all the connections are complex
+$\su(3)$ matrices.
+\end{proposition}
+\begin{proof}
+With $\langle Z,W\rangle=-\tr(ZW)$ on $\su(3)$, cyclicity and
+anti-Hermiticity give, for every $Z\in\su(3)$,
+\[
+ \langle Z,\mathcal I Z\rangle
+ =\tr[Z,H]^2+2|Zq|^2,\qquad
+ \langle Z,\mathcal K_Y Z\rangle=\sum_i\|[Y_i,Z]\|^2.
+\]
+For the first formula, the trace projection pairs trivially with
+traceless $Z$; cyclically moving the two $H$ factors gives
+$-\tr(Z[H,[H,Z]])=\tr[Z,H]^2$, while
+$-\tr(Z(qq^*Z+Zqq^*))=-2q^*Z^2q=2|Zq|^2$.
+The second formula follows by twice using cyclicity and the norm
+$\|T\|^2=-\tr T^2$. The matrix $[Z,H]$ is Hermitian, so every term
+on both right sides is nonnegative.
+
+Because $\dot Y_i=0$, Gauss' equation paired with $C$ gives
+\[
+ \tr[C,H]^2+2|Cq|^2+\frac2{g^2}\sum_i\|[Y_i,C]\|^2=0.
+\]
+Thus $Cq=0$, $[C,H]=0$, and $[C,Y_i]=0$ for each $i$ and every time.
+Differentiating $Cq=0$ gives $\dot Cq=0$ because $q$ is constant.
+Equation \eqref{eq:staticb} reduces to
+$(-\sum_iY_i^2+aI_3)q=0$. Multiplication by $q^*$ gives
+$\sum_i|Y_iq|^2+aB^2=0$, impossible since $a>0$, $B>0$.
+\end{proof}
+
+\begin{theorem}\label{thm:real}
+There is no homogeneous lift of the prescribed literal moving-kernel
+scalar functions with all four $\mathcal A_\nu(t)$ real skew-symmetric,
+on any nonempty open time interval. The spatial matrices may be arbitrary
+twice differentiable functions; in particular the assertion includes
+rotating, multifrequency, nonperiodic, noncommuting, and nonconstant
+real spatial fields. The temporal matrix is not assumed zero or constant.
+\end{theorem}
+
+\begin{proof}
+Because $K,O,\Omega$ are real, the frame maps \eqref{eq:framemap}
+preserve the real-skew condition in both directions. Define
+\[
+ L_1=\begin{pmatrix}0&0&0\\0&0&-1\\0&1&0\end{pmatrix},\quad
+ L_2=\begin{pmatrix}0&0&1\\0&0&0\\-1&0&0\end{pmatrix},\quad
+ L_3=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&0\end{pmatrix}.
+\]
+For $v\in\mathbb R^3$ put $L(v)=\sum_jv_jL_j$; the identity
+$L(v)w=v\times w$ follows entry by entry. Consequently
+\[
+ [L(v),L(w)]=L(v\times w),\quad
+ L(v)L(w)=wv^{\mathsf T}-(v\cdot w)I_3,\quad
+ -\tr(L(v)L(w))=2v\cdot w.
+\]
+The product identity follows by multiplying the displayed matrices; its
+antisymmetric part gives the commutator identity, and its trace gives
+the final equality. These formulas fix all inner-product factors.
+
+Write
+\[
+ C=L(c),\quad Y_i=L(y_i),\quad h=\dot c,\quad
+ P=\sum_i y_i y_i^{\mathsf T},\quad Q=cc^{\mathsf T}-P,
+ \quad Q=(q_{jk})_{j,k=1}^3.
+\]
+The notation $q_{jk}$ denotes matrix entries and does not change the
+earlier fixed matter vector $q=Be_1$.
+Since $A=\sqrt a\,L_3$, the two scalar residuals, divided by $B$ for
+the vector one, are exactly
+\[
+ R_b=\begin{pmatrix}a-q_{22}-q_{33}\\h_3+q_{12}\\-h_2+q_{13}\end{pmatrix}
+\]
+and the symmetric matrix $R_H$ with entries
+\begin{align*}
+ (R_H)_{11}&=2ax-4dq_{23}+2xq_{22}-2xq_{33},\\
+ (R_H)_{12}&=dh_2+3dq_{13}+xh_3-3xq_{12},\\
+ (R_H)_{13}&=-dh_3+3dq_{12}+xh_2+3xq_{13},\\
+ (R_H)_{22}&=-2ax-2dh_1+2dq_{23}+4xq_{11}+2xq_{33},\\
+ (R_H)_{23}&=ad-4dq_{11}-dq_{22}-dq_{33}-2xh_1,\\
+ (R_H)_{33}&=2dh_1+2dq_{23}-4xq_{11}-2xq_{22}.
+\end{align*}
+To verify the expressions without assuming a special spatial ansatz,
+substitute
+\[
+ R_H=[L(h),H]+\sum_{j,k}q_{jk}[L_j,[L_k,H]]
+                -a[L_3,[L_3,H]],\qquad
+ R_b=L(h)e_1+\sum_{j,k}q_{jk}L_jL_ke_1+ae_1.
+\]
+Matrix multiplication by the three explicitly given $L_j$ gives the
+entries above.
+
+Setting $R_b=0$ gives $q_{22}+q_{33}=a$, $h_3=-q_{12}$,
+$h_2=q_{13}$. The two off-diagonal equations $(R_H)_{12}=
+(R_H)_{13}=0$ therefore become
+$dq_{13}-xq_{12}=0$ and $dq_{12}+xq_{13}=0$.
+Their determinant is $-(x^2+d^2)\ne0$, so
+$q_{12}=q_{13}=h_2=h_3=0$.
+Next $(R_H)_{11}=0$ gives $xq_{22}=dq_{23}$.
+Using this and $q_{22}+q_{33}=a$, the entries $(R_H)_{23}$ and
+$(R_H)_{33}$ give
+$xh_1=-2dq_{11}$ and $dh_1=2xq_{11}$.
+They imply $2(x^2+d^2)q_{11}=0$, hence $q_{11}=h_1=0$.
+Conversely these substitutions set every displayed residual entry to
+zero. Thus the scalar equations are equivalent, within this real
+algebra, to
+\begin{equation}\label{eq:Qform}
+ \dot c=0,\qquad
+ Q=\begin{pmatrix}
+ 0&0&0\\0&d\tau/x&\tau\\0&\tau&a-d\tau/x
+ \end{pmatrix},\qquad \tau=q_{23}(t)\in\mathbb R.
+\end{equation}
+In particular $Qe_1=0$ and $\tr Q=a>0$; $\tau$ need not be constant.
+
+We now use the actual positive-semidefinite covariance $P$, not an
+unconstrained formal symmetric matrix. If $c_1\ne0$ at a time, for every
+$v\in e_1^\perp$ put
+$z=v-(c\cdot v)e_1/c_1$. Then $c\cdot z=0$, and $Qe_1=0$ gives
+\[
+ v^{\mathsf T}Qv=z^{\mathsf T}Qz
+ =(c\cdot z)^2-z^{\mathsf T}Pz
+ =-\sum_i(y_i\cdot z)^2\leq0.
+\]
+Hence the lower $2\times2$ block of $Q$ is negative semidefinite and
+its trace is nonpositive, contradicting $\tr Q=a>0$.
+This is also the explicit Schur-complement argument for
+$P=cc^{\mathsf T}-Q$: $P_{11}=c_1^2$ and its lower Schur complement
+is minus the lower block of $Q$. Thus $c_1=0$ at every time. Then
+$0=Q_{11}=c_1^2-\sum_i y_{i1}^2$ implies $y_{i1}=0$ for every $i$.
+Each $y_i$ and its derivative therefore lie in $e_1^\perp$, and
+\begin{equation}\label{eq:planes}
+ c\in e_1^\perp,\quad y_i,\dot y_i\in e_1^\perp,
+ \quad\sum_i y_i\times\dot y_i\in\mathbb R e_1.
+\end{equation}
+
+For use in Gauss' equation the exact real-algebra inertia is
+\begin{equation}\label{eq:realinertia}
+ \mathcal I L_1=4r^2L_1,\qquad
+ \mathcal I L_2=\mu L_2,\qquad
+ \mathcal I L_3=\mu L_3.
+\end{equation}
+Here is a direct verification. On the lower $2\times2$ block,
+$H^2=r^2I_2$ and $HL_1H=-r^2L_1$, so
+$[H,[H,L_1]]=H^2L_1+L_1H^2-2HL_1H=4r^2L_1$;
+the $qq^*$ term vanishes. For $j=2,3$, the matrix $L_j$ joins the
+first coordinate to the lower block, and multiplication gives
+$HL_jH=0$, $H^2L_j+L_jH^2=r^2L_j$, and
+$qq^*L_j+L_jqq^*=B^2L_j$. All these real-skew matrices have trace zero,
+so trace projection changes none of them. This proves
+\eqref{eq:realinertia} and in particular $\mathcal I C=\mu C$ by
+\eqref{eq:planes}.
+
+For $Z,W\in\su(3)$ use the real inner product
+$\langle Z,W\rangle=-\tr(ZW)$. It is positive definite because
+$Z^*=-Z$ gives $-\tr Z^2=\tr Z^*Z$.
+Cyclicity gives
+$\langle Z,[Y,W]\rangle=-\langle[Y,Z],W\rangle$, and hence
+\[
+ \langle C,\mathcal K_Y C\rangle
+ =\sum_i\|[Y_i,C]\|^2
+ =2\sum_i|y_i\times c|^2.
+\]
+Pair the full Gauss equation \eqref{eq:staticgauss} with $C$.
+The right side is zero by \eqref{eq:planes} and the exact identity
+$\langle L(v),L(w)\rangle=2v\cdot w$.
+The left side is
+\[
+ 2\mu|c|^2+\frac4{g^2}\sum_i|y_i\times c|^2=0.
+\]
+Since $\mu>0$ and $g^2>0$, this implies $c=0$.
+But then $Q=-P$, so $\tr Q=-\sum_i|y_i|^2\leq0$, contradicting
+$\tr Q=a>0$ a second time. This contradiction used both scalar equations
+and the full Gauss equation. Every solution of all field equations must
+satisfy this subset, so none can exist; no assumption about solving or
+discarding the spatial gauge equations was made.
+\end{proof}
+
+\begin{proposition}[A rigorously excluded complex extension]\label{prop:saturation}
+In the constant-matter frame, there is also no lift for which a
+differentiable real function $\theta(t)$ makes all four transformed
+connections
+\[
+ C'=SCS^*-i\dot\theta H,\qquad Y_i'=SY_iS^*,\qquad
+ S(t)=\exp(i\theta(t)H)
+\]
+real skew-symmetric. This includes the stabilizer-gauge saturation of
+the entire real-algebra class of Theorem~\ref{thm:real}.
+Nor is there a lift when such a transformation makes every $Y_i'$ constant,
+without imposing a reality restriction.
+\end{proposition}
+\begin{proof}
+$H$ is Hermitian and traceless, so $S$ is unitary with determinant
+$\exp(i\theta\tr H)=1$. It commutes with $H$, and $Hq=0$ implies
+$Sq=q$. Differentiation gives $\dot S S^*=i\dot\theta H$.
+Thus the displayed fields are exactly the gauge transformation above,
+with the matter fields still $H,q$. If the original fields solved the
+full system, covariance would make $C',Y_i'$ solve it. Theorem
+\ref{thm:real}, using the inverse frame maps, forbids the real case;
+Proposition~\ref{prop:staticcomplex} forbids the constant-spatial case.
+\end{proof}
+
+\section{Exact full-$SU(3)$ equations for a rigid spatial rotation}
+
+The following records a finite system, not an existence theorem or a
+claim that the real obstruction extends to arbitrary complex fields.
+
+\begin{proposition}\label{prop:rotation}
+Take arbitrary constant $C,Z_1,Z_2,Z_3\in\su(3)$ and arbitrary constant
+$W\in\so(3)$ acting on the spatial index, not on the color index. Put
+\[
+ R(t)=e^{tW},\qquad Y_i(t)=\sum_jR_{ij}(t)Z_j,
+ \qquad T_i=\sum_jW_{ij}Z_j+[C,Z_i],
+\]
+\[
+ \mathcal K_Z V=-\sum_i[Z_i,[Z_i,V]],\qquad
+ G_W=\sum_{i,j}W_{ij}[Z_i,Z_j].
+\]
+This ansatz solves the full system \eqref{eq:staticphi}--
+\eqref{eq:staticspatial} if and only if the following finite, exact
+matrix equations hold:
+\begin{align}
+ [C,[C,H]]-\sum_i[Z_i,[Z_i,H]]&=F_H,\label{eq:rotphi}\\
+ (C^2-\sum_iZ_i^2)q&=-aq,\label{eq:rotb}\\
+ (\mathcal I+2\mathcal K_Z/g^2)C&=-2G_W/g^2,\label{eq:rotgauss}\\
+ \sum_j(W^2)_{ij}Z_j+2\sum_jW_{ij}[C,Z_j]+[C,[C,Z_i]]
+ +\mathcal K_ZZ_i+\frac{g^2}{2}\mathcal I Z_i&=0
+ \quad(i=1,2,3).\label{eq:rotspatial}
+\end{align}
+In particular $W_{12}=-\omega$, $W_{21}=\omega$, with all other entries
+zero gives $G_W=-2\omega[Z_1,Z_2]$. This sign and factor are part of
+Gauss' equation, not a convention left unspecified.
+\end{proposition}
+\begin{proof}
+$W^{\mathsf T}=-W$ gives
+$\frac{d}{dt}(R^{\mathsf T}R)=0$ and $R(0)=I_3$, so $R$ is
+orthogonal; its determinant is one by continuity. Also $\dot R=RW=WR$.
+For any fixed matrix $M$, orthogonality gives
+\[
+ \sum_iY_i^2=\sum_jZ_j^2,\qquad
+ \sum_i[Y_i,[Y_i,M]]=\sum_j[Z_j,[Z_j,M]],
+ \qquad\mathcal E_i=\sum_jR_{ij}T_j.
+\]
+The first two identities give \eqref{eq:rotphi} and \eqref{eq:rotb}.
+Using $\dot Y_i=\sum_{j,k}R_{ij}W_{jk}Z_k$ gives
+$\sum_i[Y_i,\dot Y_i]=G_W$, and the same second identity gives
+$\mathcal K_Y=\mathcal K_Z$. This proves \eqref{eq:rotgauss}.
+For the remaining equation,
+\[
+ \dot{\mathcal E}_i+[C,\mathcal E_i]
+ =\sum_jR_{ij}\left(
+ \sum_k(W^2)_{jk}Z_k+2\sum_kW_{jk}[C,Z_k]+[C,[C,Z_j]]\right).
+\]
+Moreover $\mathcal K_YY_i=\sum_jR_{ij}\mathcal K_ZZ_j$ and
+$\mathcal I Y_i=\sum_jR_{ij}\mathcal I Z_j$ by linearity.
+Multiplication by the invertible $R^{\mathsf T}$ proves equivalence
+with \eqref{eq:rotspatial} for every time. Finally the stated two
+nonzero entries of $W$ give
+$-\omega[Z_1,Z_2]+\omega[Z_2,Z_1]=-2\omega[Z_1,Z_2]$.
+\end{proof}
+
+\section{Exact scope and remaining problem}
+
+Theorem~\ref{thm:real} proves an all-time obstruction for every real
+connection in the original coordinates, with arbitrary temporal field
+and arbitrary spatial time dependence. Proposition~\ref{prop:saturation}
+also excludes its precisely specified stabilizer-gauge saturation.
+Proposition~\ref{prop:staticcomplex} separately excludes all complex
+connections whose spatial fields are constant in the constant-matter frame.
+None asserts that every $SU(3)$ connection lies in an excluded class.
+The existence or nonexistence of a lift with genuinely complex
+$\su(3)$ fields outside it remains unresolved by this report.
+Equations \eqref{eq:rotphi}--\eqref{eq:rotspatial} are an exact test for
+one complex, spatially rotating class; no solution or no-solution result
+for that unrestricted algebraic system is claimed.
+
+The accompanying bounded SymPy checker verifies the scalar residual
+entries, their necessary-and-sufficient solution, the three real inertia
+identities, the original-coordinate rational instance, and the rotation
+identities including all field residuals on exact noncommuting complex
+matrix test data. The proofs above do not depend on a numerical test or
+an unproved symbolic assertion.
+\end{document}

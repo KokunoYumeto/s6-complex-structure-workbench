@@ -1,0 +1,52 @@
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+W=Path(__file__).resolve().parents[1]
+O=W/'assets';O.mkdir(exist_ok=True)
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':12,'svg.fonttype':'path','svg.hashsalt':'CG-S6-MIDDLE-REALIZATION-20261010'})
+def chi(x):
+ x=np.asarray(x);out=np.zeros_like(x,dtype=float)
+ out[x>=1]=1;m=(x>0)&(x<1)
+ a=np.exp(-1/x[m]);b=np.exp(-1/(1-x[m]));out[m]=a/(a+b)
+ return out
+fig=plt.figure(figsize=(14,10))
+fig.text(.5,.96,'The actual function behind the modified handle presentation',ha='center',fontsize=18,fontweight='bold')
+ax=fig.add_axes([.075,.56,.39,.28])
+z=np.linspace(-3,3,1501)
+c1=chi((z+2.7)/.3)*(1-chi((z+1.4)/.3))
+c2=chi((z-.8)/.3)*(1-chi((z-2.1)/.3))
+roof=3+c1-2*c2
+ax.fill_between(z,0,roof,color='#dce9ef')
+ax.plot(z,roof,color='#1e5a78',lw=2.5);ax.axhline(0,color='#202d35',lw=1.4)
+ax.axhline(6,color='#91556f',lw=1.6,ls='--');ax.text(2.8,6.13,'c = 6',ha='right',color='#91556f')
+ax.text(-2.12,4.16,'a₁ = 4',ha='center',fontsize=11)
+ax.text(1.62,1.18,'a₂ = 1',ha='center',fontsize=11)
+ax.text(-.1,2.0,r'$P_\ell$',ha='center',fontsize=17,color='#1e5a78')
+ax.set(xlim=(-3,3),ylim=(-.3,6.7),xlabel='one coordinate z on the old level',ylabel='function value t')
+ax.set_title('A section of the variable-height collar',pad=14,fontsize=13)
+ax.spines[['right','top']].set_visible(False);ax.set_yticks([0,1,3,4,6])
+fig.text(.268,.473,r'$\ell=3+\chi_1-2\chi_2,\quad(\delta_1,\delta_2)=(2,5)$',ha='center',fontsize=16)
+fig.text(.268,.427,'The two roof plateaus give the original whole attaching-face values.\nThe dashed line records the common critical value of the added handles.',ha='center',fontsize=10.5)
+ax=fig.add_axes([.595,.56,.32,.28])
+xx=np.linspace(-.62,.62,251);yy=np.linspace(-.56,.56,251);X,Y=np.meshgrid(xx,yy)
+F=6-11*X**2+13*Y**2
+cs=ax.contour(X,Y,F,levels=[4,6,9],colors=['#1e5a78','#8e5371','#2a7657'],linewidths=1.6)
+ax.clabel(cs,inline=True,fmt={4:'f = 4',6:'f = 6',9:'f = 9'},fontsize=10)
+px=np.array([-.4,-.2,.2,.4,-.3,.3]);py=np.array([.25,-.3,.25,-.3,0,0])
+ax.quiver(px,py,-px,py,color='#4f6069',angles='xy',scale_units='xy',scale=3,width=.007)
+ax.scatter([0],[0],s=35,color='#202d35',zorder=5);ax.text(.02,.015,'q',fontsize=13)
+ax.set(xlim=(-.62,.62),ylim=(-.56,.56),xlabel='$x_2$',ylabel='$y_2$')
+ax.set_title('Original quadratic coordinates: ascending field',pad=14,fontsize=13)
+ax.spines[['right','top']].set_visible(False)
+fig.text(.755,.473,r'$f=6-11x_2^2+13y_2^2,\quad(\dot x_2,\dot y_2)=(-x_2,y_2)$',ha='center',fontsize=15)
+fig.text(.755,.412,'This invariant coordinate section has every other x and y equal to zero.\nArrows show one third of the displayed ascending field.\nThe whole function retains all coefficients in (2.9) and Exercise 1.',ha='center',fontsize=10.5)
+fig.text(.5,.347,'The geometric intersections become actual trajectories through the same level map',ha='center',fontsize=15,fontweight='bold')
+fig.text(.5,.282,r'$W^u(p_i)\cap M_{b_k}=H_k(A_i),\qquad W^s(q_j)\cap M_{b_k}=H_k(B_j)$',ha='center',fontsize=20)
+fig.text(.5,.223,r'$A_i\cap B_j\ \longleftrightarrow\ \{\mathrm{descending\ trajectories}\ p_i\to q_j\}$',ha='center',fontsize=20)
+fig.text(.5,.17,'A single geometric point gives a single trajectory only after this function and field have been constructed.',ha='center',fontsize=12)
+fig.text(.5,.105,'Dimension 6: remove 2/3 pairs, reverse to remove 4/3 pairs, then use acyclicity.\nDimension 7: remove 2/3 pairs, reverse to remove 5/4 pairs, then remove 3/4 pairs.',ha='center',fontsize=12)
+fig.text(.5,.041,'Proof: Sections 2–6, especially (2.4)–(2.19), (3.7)–(3.14), (4.6)–(4.7), and (5.1)–(6.8).\nHuman cancellation source: Laudenbach, arXiv:1307.2545v1, Sections 1–3; full receiving proof is included.\nThe smooth sphere-gluing calculation Θ₆ is subsequent work; this diagram makes no claim to complete it.',ha='center',fontsize=9.5)
+fig.savefig(O/'actual-morse-roof-and-trajectory-comparison.svg',metadata={'Date':None})
+print(str(O/'actual-morse-roof-and-trajectory-comparison.svg'))
