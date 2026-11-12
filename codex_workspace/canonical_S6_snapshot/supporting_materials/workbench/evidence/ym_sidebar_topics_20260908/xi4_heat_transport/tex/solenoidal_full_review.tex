@@ -1,0 +1,335 @@
+\section*{Final independent review of the solenoidal heat correspondence, Sections 6--9}
+
+Review completed on 2026-09-09. This is the previously unfinished second independent mathematical review. It covers the complete equations (27)--(48), including the new (46a), their required definitions and generator domains in Sections 1--5, and their composition with the complete later swirl note. The corrected source passes this bounded review. The correction made during review is the explicit original-source localization interval in (46a); its proof is checked below. No equation, forcing term, pressure term, viscosity factor, inverse, or energy factor in the previous Sections 6--9 required correction.
+
+The reviewed original live-file hashes are retained below. The exact supplied snapshots and version mapping accompany this edition under \path{sources/solenoidal_correspondence_009/}:
+
+\begin{itemize}
+\tightlist
+\item
+  \path{solenoidal_arithmetic_heat_correspondence.md}.\par
+  SHA-256 \texttt{0b727b10\allowbreak{}d97ccd2e\allowbreak{}fbf7a341\allowbreak{}02784a10\allowbreak{}3da4c44f\allowbreak{}a53950a4\allowbreak{}297c884a\allowbreak{}6a110fe3}.
+\item
+  \path{solenoidal_swirl_composition.md}.\par
+  SHA-256 \texttt{8e4856e1\allowbreak{}26473534\allowbreak{}2ff14a6a\allowbreak{}d9833eb4\allowbreak{}8285f5df\allowbreak{}d2979c36\allowbreak{}e0dde75f\allowbreak{}c7b67dbf}.
+\end{itemize}
+
+The earlier heat-note snapshot read at the start of this review had SHA-256 \texttt{f9dcd233\allowbreak{}7680cf58\allowbreak{}6a8f3c03\allowbreak{}dd527d71\allowbreak{}f4bc9cb2\allowbreak{}284e490f\allowbreak{}616d04c3\allowbreak{}6240b5cb}. The programme lane's author added (46a) and its surrounding domain proof after receiving the source-domain finding. The reviewer reread the resulting complete Section 9 and checked the resulting hash above. The existing proofs were not edited by this reviewer.
+
+The primary source is the retained 166-page \path{sources/ns_public/navier_stokes_166.pdf}, SHA-256 \texttt{0e779481\allowbreak{}c4da40bd\allowbreak{}28d1e642\allowbreak{}e1d8ca57\allowbreak{}447d1296\allowbreak{}10df28df\allowbreak{}a5a11e9a\allowbreak{}f8ae228f}. Its extracted text is the originally reviewed extraction, SHA-256 \texttt{f83414ea\allowbreak{}543ffd89\allowbreak{}910b9b8a\allowbreak{}35d1680a\allowbreak{}2e329524\allowbreak{}6c91cbed\allowbreak{}f54e719a\allowbreak{}7bc316d0}. Direct source reading for this review covered Theorem 3.1, Proposition 9.9 Step 5, Proposition 10.1 and (10.4)--(10.5), Lemma 10.4 and (10.13)--(10.14), and (10.20)--(10.21). A separately delegated source-match check also inspected the source's original PDF pages. The bounded coordinate calculations below use the source witness with its existence explicitly imported; this report supplies no independent proof of all preceding increment estimates, no complete Navier--Stokes counterexample certificate, and no assertion about zeta zeros. Plancherel and the distributional Fourier foundation are the stated shared foundations of the notes.
+
+\subsection*{1. Required operator identities and their types}
+
+Retain the original positive viscosity, measures, complex inner-product convention and Fourier convention: \[
+\nu>0,\quad a_\nu=\sqrt2\,\nu^{1/4},\quad
+\lambda_\nu=2\sqrt\nu,\quad a_\nu^2=\lambda_\nu,
+\] \[
+H=L^2(\mathbb R,ds;\mathbb C^3),\qquad
+V=L^2(\mathbb R^3,dx;\mathbb C^3),\qquad
+\widehat v(\xi)=(2\pi)^{-3/2}\int e^{-ix\cdot\xi}v(x)\,dx.
+\] The Fourier variable is \(\xi=\rho\omega\), with \(\rho>0\), \(\omega\in S^2\), and measure \(\rho^2d\rho\,d\omega\). Inner products are linear in the first argument. The solenoidal projection has the literal multiplier \[
+L(\omega)=I-\omega\omega^{\mathsf T},\qquad
+\mathbb P=\mathcal F_3^{-1}L\mathcal F_3.
+\] The equation defining \(V_\sigma\) is distributional divergence in physical coordinates, equivalent to \(\xi\cdot\widehat v(\xi)=0\) almost everywhere. It is not differentiation of \(\widehat v\) with respect to \(\xi\). The entries of \(L\) are bounded and real; direct multiplication gives \(L^2=L=L^*\).
+
+The six original angular functions are \[
+U_j^+=\sqrt{3/2}\,(4\pi)^{-1/2}Le_j,
+\qquad
+U_j^-=d_j\sqrt{3/(4\pi)}\,\omega_3Le_j,
+\quad(d_1,d_2,d_3)=(\sqrt5/2,\sqrt5/2,\sqrt{5/2}).
+\] The underlying Gram matrices before these displayed diagonal factors are \((2/3)I\) on the positive branch and \(\operatorname{diag}(4/5,4/5,2/5)\) on the negative branch; the cross-branch matrix is zero by antipodal parity. Multiplication by the displayed factors on both sides gives the identity matrices. Consequently all six functions are orthonormal in \(L^2(S^2;\mathbb C^3)\), and \(\omega\cdot U_j^\pm=0\) entry by entry.
+
+The resulting map and adjoint, with their full coefficients, are \[
+\widehat{K_\nu h}(\rho\omega)
+=\frac{a_\nu}{\rho}\sum_{j=1}^3
+\left(U_j^+(\omega)h_j(\lambda_\nu\rho)
++U_j^-(\omega)h_j(-\lambda_\nu\rho)\right),
+\tag{R1}
+\] \[
+(K_\nu^*v)_j(s)
+=\frac{\rho}{a_\nu}\int_{S^2}U_j^{\operatorname{sgn}(s)}(\omega)
+\cdot\widehat v(\rho\omega)\,d\omega,
+\quad \rho=|s|/\lambda_\nu.
+\tag{R2}
+\] For each half-line the adjoint computation compares the factors \(a_\nu\rho\,d\rho\) and \(\lambda_\nu\rho/a_\nu\,d\rho\); they agree. Orthonormality then gives \[
+K_\nu^*K_\nu=I_H,
+\qquad \|K_\nu h\|_V^2
+=a_\nu^2\int_0^\infty
+\bigl(|h(\lambda_\nu\rho)|^2+|h(-\lambda_\nu\rho)|^2\bigr)d\rho
+=\|h\|_H^2.
+\tag{R3}
+\] Thus \(W_\nu=K_\nu H\) is closed, \(P_\nu=K_\nu K_\nu^*\) is its orthogonal projection on the full \(V\), and \(Q_\nu=I-P_\nu\). At each radius \(P_\nu\) projects onto exactly these six angular functions. This description also proves that \(P_\nu\) is the same operator for all positive \(\nu\), although the parametrization \(K_\nu\) retains its viscosity dependence. Since the six angular functions are tangent, \[
+\mathbb P P_\nu=P_\nu\mathbb P=P_\nu,
+\qquad K_\nu^*\mathbb P=K_\nu^*.
+\tag{R4}
+\] The second product identity in the first pair follows either by taking adjoints of the first one or by the same angular calculation.
+
+Now \(V_{\sigma,c}=V_\sigma\cap W_\nu^\perp\) has the original Hilbert norm. For every \(u\in V_\sigma\), set \(h=K_\nu^*u\), \(w=Q_\nu u\). Equation (R4) proves \(w\in V_\sigma\); projection orthogonality proves \(w\perp W_\nu\). Conversely, for each \((h,w)\in H\oplus V_{\sigma,c}\), \[
+K_\nu^*(K_\nu h+w)=h,
+\qquad Q_\nu(K_\nu h+w)=w,
+\qquad K_\nu K_\nu^*u+Q_\nu u=u.
+\tag{R5}
+\] These are both inverse identities claimed in (27)--(28), on the stated whole spaces.
+
+Antipodal parity is \(U_j^+(-\omega)=U_j^+(\omega)\) and \(U_j^-(-\omega)=-U_j^-(\omega)\). Substituting into (R1), together with \(\widehat{\overline v}(\xi)=\overline{\widehat v(-\xi)}\), gives \(K_\nu C_Hh=\overline{K_\nu h}\), with \(C_H\) exactly as in (21). The real coordinate subspace is precisely \(C_Hh=h\), namely real values on the positive half-line and purely imaginary values on the negative half-line; \(w\) must be real in physical space. Injectivity in (R3) proves necessity as well as sufficiency. Therefore the real source is preserved by the full inverse pair.
+
+\subsection*{2. Generator domains and the regularity actually used}
+
+Write the two original positive generators as \[
+Ah=s^2h/4,
+\qquad B_\nu v=-\nu\Delta v,
+\] with their weighted multiplication domains in (23). For every integer \(m\ge0\), direct substitution into the polar integral gives the exact equality \[
+\int_{\mathbb R^3}(\nu|\xi|^2)^{2m}
+|\widehat{K_\nu h}(\xi)|^2d\xi
+=\int_{\mathbb R}(s^2/4)^{2m}|h(s)|^2ds.
+\tag{R6}
+\] Indeed \(\nu\rho^2=(\lambda_\nu\rho)^2/4=(-\lambda_\nu\rho)^2/4\) at each radius, and every angular factor remains unchanged. Equality of these nonnegative integrals proves equivalence of the domains, including when the integrals are infinite. On the finite domains it gives \[
+B_\nu^mK_\nu h=K_\nu A^mh,
+\qquad K_\nu^*B_\nu^mv=A^mK_\nu^*v.
+\tag{R7}
+\] For the second identity, angular projection commutes with the scalar radial multiplier, and its norm at each radius is at most one. This also proves that \(P_\nu,Q_\nu,\mathbb P\) preserve all these domains and commute with the generators there. No commutation of \(P_\nu\) with an individual Cartesian derivative is needed or asserted: (38) is the radial generator identity for integer \(m\).
+
+Here is an explicit regularity estimate behind the post-(28) paragraph. For an integer derivative order \(k\ge0\), choose an integer \(m\) with \(4m>2k+3\). Cauchy--Schwarz with the original measure gives \[
+\int_{\mathbb R^3}|\xi|^k|\widehat v(\xi)|\,d\xi
+\le I_{\nu,k,m}^{1/2}
+\bigl(\|v\|_V^2+\|B_\nu^mv\|_V^2\bigr)^{1/2},
+\tag{R8}
+\] \[
+I_{\nu,k,m}=4\pi\int_0^\infty
+\frac{\rho^{2k+2}}{1+\nu^{2m}\rho^{4m}}d\rho
+\le4\pi\nu^{-(2k+3)/2}
+\left(\frac1{2k+3}+\frac1{4m-2k-3}\right)<\infty.
+\tag{R9}
+\] The inequality is obtained by splitting the original integral at \(\rho=\nu^{-1/2}\). On the first part the denominator is at least one; on the second it is at least \(\nu^{2m}\rho^{4m}\). Integrating both displayed powers gives exactly (R9). For every multi-index \(\alpha\) with \(|\alpha|=k\), the inverse Fourier integral with multiplier \((i\xi)^\alpha\) is absolutely convergent. Difference quotients, dominated by the next integrable power, show that it is the distributional derivative \(\partial_x^\alpha v\); dominated convergence gives continuity. In particular \[
+\|\partial_x^\alpha v\|_\infty
+\le(2\pi)^{-3/2}I_{\nu,k,m}^{1/2}
+\bigl(\|v\|_V^2+\|B_\nu^mv\|_V^2\bigr)^{1/2}.
+\tag{R10}
+\] This proves the required smooth bounded representatives for every field in all the generator domains, with all viscosity and Fourier factors retained.
+
+The time assertion uses continuity in these graph norms, not merely pointwise set membership without time control. The actual class in Section 7 has exactly that continuity. On a fixed interval \([0,T]\), \(T<1\), its original fields and all their time derivatives are smooth with fixed compact spatial support. Each Cartesian derivative is uniformly continuous and bounded on that compact support times \([0,T]\). Integration over the fixed compact set therefore makes every such time-dependent derivative continuous in \(L^2\). The same argument for one further time derivative proves differentiation in \(L^2\). Equation (R7) transports these graph-norm statements to \(K_\nu h\) and \(w\); (R10) then transports continuity and differentiation to the continuous spatial representatives. The two projected components need not be compactly supported. Their smoothness and the estimates used below follow from this argument, without such a support claim.
+
+\subsection*{3. Complete convection, pressure, force and inverse equations}
+
+For two vector fields define the original ordered bilinear expression \[
+N_i(a,b)=\sum_{j=1}^3a_j\partial_{x_j}b_i,
+\qquad N(u)=N(u,u).
+\tag{R11}
+\] For each spatial point, Cauchy--Schwarz in the three derivative indices yields \[
+|N(a,b)|^2\le |a|^2\sum_{i,j=1}^3|\partial_{x_j}b_i|^2,
+\quad
+\|N(a,b)\|_2\le\|a\|_\infty
+\left(\sum_{i,j=1}^3\|\partial_{x_j}b_i\|_2^2\right)^{1/2}.
+\tag{R12}
+\] All four terms with \(a,b\) chosen from \(K_\nu h,w\) consequently belong to \(L^2\). The full differentiated expression is \[
+\partial_x^\alpha N_i(a,b)
+=\sum_{j=1}^3\sum_{\beta\le\alpha}
+\binom\alpha\beta
+(\partial_x^\beta a_j)
+(\partial_x^{\alpha-\beta+e_j}b_i).
+\tag{R13}
+\] Each term is an \(L^\infty\) factor times an \(L^2\) factor by Section 2, with the literal binomial coefficient retained. The same finite product rule in time proves all required time and graph-norm continuity. This supplies the full nonlinear regularity used in (31) and (36), even though the summands are nonlocal fields.
+
+Bilinearity gives, for each \(i\), exactly \[
+N_i(K_\nu h+w)=\sum_{j=1}^3\left[
+(K_\nu h)_j\partial_{x_j}(K_\nu h)_i
++(K_\nu h)_j\partial_{x_j}w_i
++w_j\partial_{x_j}(K_\nu h)_i
++w_j\partial_{x_j}w_i\right].
+\tag{R14}
+\] There are four ordered contributions. None is removed by the fact that \(w\perp W_\nu\), which is a linear Hilbert-space statement.
+
+Let \(g=f-N(K_\nu h+w)\). The original equation reads \[
+\partial_tu+B_\nu u+\nabla p=g.
+\tag{R15}
+\] Both \(\partial_tu\) and \(B_\nu u\) lie in \(V_\sigma\): the former follows by differentiating the distributional divergence with the proved time regularity, and the latter follows from the multiplier \(\nu|\xi|^2\). The actual pressure has \(\nabla p\in L^2\). Its Fourier vector is longitudinal. This last fact can also be justified without assigning a Fourier transform to a pressure outside a tempered class: the \(L^2\) vector \(b=\nabla p\) satisfies \(\partial_i b_j-\partial_j b_i=0\); Fourier transformation of this identity gives \(\xi_i\widehat b_j-\xi_j\widehat b_i=0\). These products are locally integrable, so the identities hold almost everywhere. At each nonzero \(\xi\), choose an index with \(\xi_i\ne0\); the equations imply \(\widehat b_j=\xi_j\widehat b_i/\xi_i\) for every \(j\), hence \(L\widehat b=0\). Thus \(\mathbb P\nabla p=0\) on the stated class.
+
+Applying \(\mathbb P\) and \(I-\mathbb P\) to (R15) proves both equations \[
+\partial_tu+B_\nu u=F_\sigma,\qquad
+F_\sigma=\mathbb P g,
+\qquad \nabla p=(I-\mathbb P)g.
+\tag{R16}
+\] The force has no additional divergence condition. In Fourier coordinates the last equation retains its full components: \[
+\widehat{\partial_{x_i}p}(\xi)
+=\sum_{j=1}^3\frac{\xi_i\xi_j}{|\xi|^2}\widehat g_j(\xi)
+\quad(\xi\ne0).
+\tag{R17}
+\] The original pressure itself remains part of the data. Equal gradients determine pressures up to a spatially constant function of time on connected \(\mathbb R^3\); the notes do not choose or discard that function. Equation (R17) confirms the sign in (33), including the original force-divergence term in the associated pressure equation.
+
+Applying \(K_\nu^*\) and \(Q_\nu\) to the first equation of (R16), using (R7), gives \[
+\partial_t h+Ah=K_\nu^*F_\sigma,
+\qquad
+\partial_t w+B_\nu w=Q_\nu F_\sigma,
+\tag{R18}
+\] and the original initial data become \(h(0)=K_\nu^*u(0)\), \(w(0)=Q_\nu u(0)\). Conversely apply \(K_\nu\) to the first equation of (R18) and add the second. The forcing is \[
+K_\nu K_\nu^*F_\sigma+Q_\nu F_\sigma
+=P_\nu F_\sigma+Q_\nu F_\sigma=F_\sigma.
+\] The left side is \(\partial_t(K_\nu h+w)+B_\nu(K_\nu h+w)\). Adding the retained pressure equation in (R16) and then the full convection (R14) proves (35) with \(-\nu\Delta\), \(+\nabla p\) and \(+N(u)\) in precisely their original positions. The constraint \(w(t)\in V_{\sigma,c}\), together with (R1), proves divergence zero. Equation (R5) proves both inverse identities on this solution data, including force, pressure and initial data left unchanged. This is an exact equivalence of the stated solution classes, not an equation on a truncated angular field.
+
+For completeness, the mild equations in (36) hold in the same strong class. The semigroups are the explicit contraction multipliers \(e^{-ts^2/4}\) and \(e^{-t\nu|\xi|^2}\). Each commutes with its generator on its domain. A forcing \(G\) continuous in the generator graph norm has a graph-norm Bochner integral \[
+J(t)=\int_0^te^{-(t-s)D}G(s)\,ds,
+\qquad DJ(t)=\int_0^te^{-(t-s)D}DG(s)\,ds,
+\tag{R19}
+\] where \(D=A\) or \(B_\nu\). The two displayed Hilbert-space integrals show membership in the closed graph of \(D\), by approximation by Riemann sums. For a positive increment \(\delta\), \[
+J(t+\delta)=e^{-\delta D}J(t)
++\int_t^{t+\delta}e^{-(t+\delta-s)D}G(s)\,ds.
+\] Divide by \(\delta\), subtract \(J(t)/\delta\), and use the multiplier limit \((e^{-\delta d}-1)/\delta\to-d\), dominated by \(d\) on the domain. The last integral quotient tends to \(G(t)\) by continuity and contraction. The same argument with a negative increment gives \(J'=G-DJ\). The homogeneous term has derivative \(-De^{-tD}v_0\) when \(v_0\in\operatorname{Dom}D\). This proves mild-to-strong. For strong-to-mild, the Fourier coordinate satisfies the scalar integrating-factor formula; Fubini is justified by the continuous Hilbert norm on a finite interval. Alternatively, subtract the constructed mild solution: the difference solves \(z'+Dz=0\), \(z(0)=0\), and \(d\|z\|^2/dt=-2\langle Dz,z\rangle\le0\), because the multiplier is nonnegative. It vanishes identically. Section 2 and (R13) give the graph continuity required by (R19) for the actual source. Mere continuity of a generic Hilbert-space forcing, without the additional stated strong-domain class, is not being used to claim automatic strong differentiability.
+
+\subsection*{4. Energy identities and the exact supremum test}
+
+The two summands in (R5) are perpendicular. Expanding the Hilbert norm, retaining the two conjugate cross terms and using \(K_\nu^*w=0\), gives \[
+\|K_\nu h+w\|_V^2
+=\|K_\nu h\|_V^2+\|w\|_V^2
++\langle K_\nu h,w\rangle+\langle w,K_\nu h\rangle
+=\|h\|_H^2+\|w\|_V^2.
+\tag{R20}
+\] Multiplication by \(1/2\) proves (37) exactly. For every integer \(m\ge0\) on the domain of \(B_\nu^m\), (R7) and commutation of \(Q_\nu\) with the generator give \(B_\nu^mu=K_\nu A^mh+B_\nu^mw\), with \(B_\nu^mw\in W_\nu^\perp\). Applying (R20) gives (38). This does not claim that a single nonsummed Cartesian derivative has an orthogonal splitting.
+
+In the explicit supremum test retain the original nonnegative nonzero real \(\varphi\in C_c^\infty((1,2))\), the original parameter \(R>0\), and \[
+h_R(s)=R^{-1/2}\varphi(s/R)e_3/\|\varphi\|_{L^2(\mathbb R)}.
+\] The change of integration variable \(s=Rr\) gives \(\|h_R\|_H^2=R^{-1}R\int|\varphi(r)|^2dr/\|\varphi\|_2^2=1\); (R3) gives \(\|v_R\|_V=1\) for \(v_R=K_\nu h_R\). Negative-half-line data vanish, so the precise reality constraint holds. Formula (R1) has smooth frequency support bounded away from \(\rho=0\); its radial factors vanish with all derivatives at the ends of their compact support. Thus the full Cartesian Fourier field belongs to \(C_c^\infty(\mathbb R^3)\). Repeated integration by parts in each frequency variable, keeping the factors \((2\pi)^{-3/2}\), proves rapid decrease of every derivative of its inverse Fourier transform.
+
+The angular integral has every coefficient shown in the note: \[
+\int_{S^2}U_3^+(\omega)\,d\omega
+=\sqrt{3/2}(4\pi)^{-1/2}
+\left(4\pi e_3-\frac{4\pi}{3}e_3\right)
+=\sqrt{3/2}(4\pi)^{-1/2}\frac{8\pi}{3}e_3.
+\] Evaluating the absolutely convergent inverse Fourier integral at zero supplies one factor \(\rho^2\) from measure and one factor \(\rho^{-1}\) from (R1). Therefore \[
+v_R(0)=(2\pi)^{-3/2}
+\frac{a_\nu R^{-1/2}}{\|\varphi\|_2}
+\left(\int_0^\infty\rho\varphi(\lambda_\nu\rho/R)d\rho\right)
+\sqrt{3/2}(4\pi)^{-1/2}\frac{8\pi}{3}e_3.
+\] The remaining substitution \(r=\lambda_\nu\rho/R\) gives \(R^2\lambda_\nu^{-2}\int_1^2r\varphi(r)dr\). Combining the displayed factors yields precisely \[
+v_R(0)=R^{3/2}(2\pi)^{-3/2}\frac{a_\nu}{\lambda_\nu^2}
+\sqrt{3/2}(4\pi)^{-1/2}\frac{8\pi}{3}
+\frac{\int_1^2r\varphi(r)dr}{\|\varphi\|_2}e_3.
+\tag{R21}
+\] Every factor multiplying \(R^{3/2}\) is positive. Since \(v_R\) is continuous, its point value is bounded by its essential supremum, proving the stated lower bound in (41). This proves failure of an \(L^2\)-to-\(L^\infty\) bound even on this six-channel range. It proves no trajectory statement because \(R\) is the freely chosen frequency parameter, and the notes correctly keep it distinct from physical time in (32).
+
+\subsection*{5. The actual viscosity map, source, pressure and energy}
+
+Let \((u_*,p_*,f_*)\) be exactly the viscosity-one localized, cutoff-summed, force-extended triple cited in Section 9. For \(y=x/\sqrt\nu\), the fields are \[
+u_\nu(x,t)=\sqrt\nu\,u_*(y,t),\qquad
+p_\nu(x,t)=\nu p_*(y,t),\qquad
+f_\nu(x,t)=\sqrt\nu\,f_*(y,t).
+\tag{R22}
+\] The complete mixed derivative formulas are, for each spatial multi-index \(\alpha\) and time order \(b\ge0\), \[
+\partial_x^\alpha\partial_t^bu_\nu
+=\nu^{(1-|\alpha|)/2}
+(\partial_y^\alpha\partial_t^bu_*)\circ(y,t),
+\] \[
+\partial_x^\alpha\partial_t^bp_\nu
+=\nu^{1-|\alpha|/2}
+(\partial_y^\alpha\partial_t^bp_*)\circ(y,t),
+\qquad
+\partial_x^\alpha\partial_t^bf_\nu
+=\nu^{(1-|\alpha|)/2}
+(\partial_y^\alpha\partial_t^bf_*)\circ(y,t).
+\tag{R23}
+\] These follow by one chain-rule factor \(\nu^{-1/2}\) for each spatial derivative and no time factor. In particular, for each component \(i\), \[
+\partial_tu_{\nu,i}=\sqrt\nu(\partial_tu_{*,i})\circ(y,t),
+\quad
+\sum_j u_{\nu,j}\partial_{x_j}u_{\nu,i}
+=\sqrt\nu\sum_j(u_{*,j}\partial_{y_j}u_{*,i})\circ(y,t),
+\] \[
+-\nu\Delta_xu_{\nu,i}=-\sqrt\nu(\Delta_yu_{*,i})\circ(y,t),
+\quad
+\partial_{x_i}p_\nu=\sqrt\nu(\partial_{y_i}p_*)\circ(y,t).
+\tag{R24}
+\] Adding these four complete terms gives \(\sqrt\nu\) times the full original residual and hence exactly \(f_\nu\). No component of the original force is replaced. Divergence transforms with factor one: \(\sum_i\partial_{x_i}u_{\nu,i}=(\sum_i\partial_{y_i}u_{*,i})\circ(y,t)=0\). The inverse is \[
+u_*(y,t)=\nu^{-1/2}u_\nu(\sqrt\nu y,t),\quad
+p_*(y,t)=\nu^{-1}p_\nu(\sqrt\nu y,t),\quad
+f_*(y,t)=\nu^{-1/2}f_\nu(\sqrt\nu y,t).
+\tag{R25}
+\] Thus the force, pressure, zero initial values, endpoint time and full source smoothness all have an exact inverse correspondence. Spatial support \(K_*\) becomes \(\sqrt\nu K_*\); the time supports are unchanged. The positive spatial Jacobian is \(\nu^{3/2}\), so \[
+\|u_\nu(t)\|_2^2=\nu\,\nu^{3/2}\|u_*(t)\|_2^2
+=\nu^{5/2}\|u_*(t)\|_2^2,
+\quad \|u_\nu(t)\|_\infty=\sqrt\nu\|u_*(t)\|_\infty.
+\tag{R26}
+\] The supremum equality follows because the spatial map is onto, and the amplitude is positive. The corresponding dissipation factor, if the source energy estimate (10.13) is retained, is exactly \[
+\nu\|\nabla_xu_\nu(t)\|_2^2
+=\nu\,\nu^{3/2}\|\nabla_yu_*(t)\|_2^2
+=\nu^{5/2}\|\nabla_yu_*(t)\|_2^2.
+\] Likewise \(\|f_\nu(t)\|_2=\nu^{5/4}\|f_*(t)\|_2\). Thus the entire original energy-and-dissipation estimate scales with \(\nu^{5/2}\), not only its velocity term. This checks the energy factor used in (43) and (45).
+
+The actual arithmetic coordinates in (44) are now the uniquely determined \(K_\nu^*u_\nu\) and \(Q_\nu u_\nu\). Section 3 applies to them with the actual \(p_\nu,f_\nu\), and the initial coordinates are zero. Applying (R20) to precisely this velocity proves (45). Its boundedness uses the source's bounded energy as an imported result; none is inferred from the coordinate decomposition alone.
+
+\subsection*{6. Exact source-domain correction and the inner-circle value}
+
+The required original source constants and their roles are explicit. Theorem 3.1, printed pages 15--16, supplies \(0<h<1/100\), \(q_*>0\), \(0<X_a<X_{\rm ext}<\infty\), and the local domain \(\tau>0,q<q_*\). The original exponent is \(A=1/2+h\). Theorem 3.1(iv), equation (3.6), and Proposition 9.9 Step 5, printed page 116, choose a fixed \[
+X_{\rm in}\in(0,X_a),\qquad e_0=E_0(X_{\rm in},0)>0.
+\tag{R27}
+\] All annular corrections vanish there, and the positive-order background cutoff sum remains in the actual relative remainder \(R_*(\tau)=O(\tau^{2h})\). This statement does not remove the cutoff sum from the remainder. At \(z=0\), the original coordinates have \(\eta=0\) and \(q=\tau=1-t\).
+
+In Proposition 10.1, printed page 118, the source chooses \(0<\tau_0<1/2\) and \(z_0>0\) such that \(C_0(\tau_0+z_0^{1/D})<q_*/2\), with the actual comparison constant \(C_0\) in (10.3) and \(D=1/2-h\). The original \(r_0>0\) is arbitrary and fixed. The spatial cutoff equals one for \(r\le r_0/2,|z|\le z_0/2\), while its compact support lies in \(r<r_0,|z|<z_0\). The time cutoff equals one when \(0\le1-t\le\tau_0/2\) and zero when \(1-t\ge\tau_0\). The localized fields in (10.4) are \[
+u_* =\operatorname{curl}(c\mathcal A)+cB e_\theta,
+\qquad p_*=cp_{\rm loc},\qquad c=\chi_x\chi_t.
+\tag{R28}
+\] Here \(\mathcal A\) denotes the source vector potential called \(A\) in (10.4); this report writes \(\mathcal A\) only to prevent collision with the arithmetic generator and the already retained scalar exponent, without changing the source object. The original product identity is \[
+\operatorname{curl}(c\mathcal A)
+=c\operatorname{curl}\mathcal A+\nabla c\times\mathcal A.
+\tag{R29}
+\]
+
+Choose actual \(\tau_{\rm rem}>0\), \(C_*\ge0\) realizing the source remainder bound \(|R_*(\tau)|\le C_*\tau^{2h}\) for \(0<\tau<\tau_{\rm rem}\). The added equation (46a) retains \[
+\tau_*=
+\min\left\{\tau_{\rm rem},\frac{\tau_0}{2},
+\frac{r_0^2}{8X_{\rm in}},q_*\right\}>0.
+\tag{R30}
+\] At the original, unscaled point \(y_\tau=(\sqrt{2X_{\rm in}\tau},0,0)\), every \(0<\tau<\tau_*\) gives \[
+r=\sqrt{2X_{\rm in}\tau}<r_0/2,
+\quad z=0,\quad |z|<z_0/2,
+\quad q=\tau<q_*,\quad1-t=\tau<\tau_0/2.
+\tag{R31}
+\] Strict inequalities ensure that both cutoff functions equal one in a neighborhood. Therefore \(c=1\) and all its spatial derivatives are zero there; in particular the full second term of (R29) is zero. The localized velocity is exactly the original local velocity at the point. The same argument holds at every angle of this circle because both cutoffs are axisymmetric. This proves the needed localization identity directly, with no omitted curl term and no dependence of \(\tau_*\) on viscosity.
+
+The original cylindrical basis is \(e_\theta=(-\sin\theta,\cos\theta,0)\). At angle \(\theta=0\) it is the positive Cartesian second unit vector. Thus the source (3.6), combined with (R27)--(R31), is precisely \[
+(u_*)_2(y_\tau,1-\tau)
+=\tau^{-1/2-h}(e_0+R_*(\tau)),
+\quad0<\tau<\tau_*.
+\tag{R32}
+\] Multiplication by \(\sqrt\nu\) and the spatial map in (R22) give \(x_{\nu,\tau}=\sqrt\nu y_\tau=(\sqrt{2\nu X_{\rm in}\tau},0,0)\). Inserting the exact inverse pair (R5) proves (47) with its whole remainder and original positive component. The all-order graph argument gives pointwise representatives at every fixed preterminal time; the particular equality (47) uses exactly the smaller interval (R30).
+
+For \(C_*>0\), throughout \[
+0<\tau<\min\{\tau_*,(e_0/(2C_*))^{1/(2h)}\},
+\] the remainder satisfies \(|R_*(\tau)|<e_0/2\). The value in (47) is therefore at least \(\sqrt\nu e_0\tau^{-1/2-h}/2\). For \(C_*=0\), the remainder vanishes on its original interval and the same bound holds on \((0,\tau_*)\). Pointwise triangle inequality and the continuous representatives give exactly (48). The new (46a) resolves the only source-domain precision issue found by this review. It preserves the original constants, source equality, positive-order remainder, signs and support construction.
+
+\subsection*{7. Compatibility with the complete later swirl result}
+
+The later note has the original scalar space \[
+\mathcal B=L^2((0,\infty)\times\mathbb R,2\pi r^{-1}dr\,dz),
+\] and the maps \[
+\Pi v(r,z)=\frac1{2\pi}\int_0^{2\pi}
+r\,v(r\cos\theta,r\sin\theta,z)\cdot e_\theta\,d\theta,
+\qquad (\mathcal R B)(x)=B(r,z)r^{-1}e_\theta.
+\tag{R33}
+\] The later proof's circle Cauchy--Schwarz calculation gives \(\|\Pi v\|_{\mathcal B}\le\|v\|_V\); polar integration gives \(\mathcal R^*=\Pi\), \(\Pi\mathcal R=I\) and \(\|\mathcal R B\|_V=\|B\|_{\mathcal B}\). These retain the original \(2\pi\), radial weight and division by \(r\).
+
+Its composition proof is valid on the full six-channel range. Rotation about the third axis leaves \(Y_0,Y_1\) unchanged and commutes with the negative-branch diagonal coefficient because \(d_1=d_2\). Averaging the rotated coefficient vectors in (R1) leaves their third components alone. Reflection \(S=\operatorname{diag}(1,-1,1)\) satisfies \(U_3^\pm(S\omega)=S U_3^\pm(\omega)\). The original Fourier change of coordinates intertwines the polar-vector actions, with absolute Jacobian one for this reflection. On the fixed physical plane the second component of the reflected-invariant rotational mean is therefore zero. Its value times \(r\) equals the circle integral in (R33). This proves \(\Pi K_\nu h=0\) first on smooth frequency data with compact support away from zero. Such data are dense in \(H\), so the boundedness just established proves \[
+\Pi K_\nu=0:H\to\mathcal B,
+\qquad \Pi Q_\nu=\Pi:V\to\mathcal B,
+\qquad K_\nu^*\mathcal R=0:\mathcal B\to H.
+\tag{R34}
+\] The last equation follows by taking the adjoint of the first. Thus this is an exact operator composition, not a conclusion from the nonidentity of two angular presentations.
+
+For the actual source on the circle in (R31), every annular correction vanishes; the remaining background and its cutoff sum are axisymmetric, as used by the later source application. Localization is one on the entire circle by (R31). Therefore its azimuthal component is constant around that circle and equals (R32) after the viscosity map. Applying (R33) and (R34) to the exact original velocity gives \[
+\Pi w_\nu(r_{\nu,\tau},0,1-\tau)
+=\Pi u_\nu(r_{\nu,\tau},0,1-\tau)
+=\nu\sqrt{2X_{\rm in}}\,\tau^{-h}(e_0+R_*(\tau)),
+\tag{R35}
+\] where \(r_{\nu,\tau}=\sqrt{2\nu X_{\rm in}\tau}>0\). The original integral triangle inequality is \[
+|\Pi w(r,z)|\le r\sup_\theta|w(r\cos\theta,r\sin\theta,z)|
+\le r\|w\|_\infty.
+\] Dividing (R35) by the actual positive radius proves exactly \[
+\|w_\nu(1-\tau)\|_\infty
+\ge\sqrt\nu\,\tau^{-1/2-h}|e_0+R_*(\tau)|.
+\tag{R36}
+\] Its valid interval is (R30), intersected with the displayed positivity interval when the positive half-leading lower bound is used. The later note's asymptotic interval may always be reduced to this intersection. Equation (R36) assigns the growing supremum to the retained complement; it does not assign growth of the complement at the particular angle zero, nor a bound on the separate six-channel field. The earlier heat note now states exactly this stronger subsequent conclusion and no contradictory component claim.
+
+The later additional toroidal heat channel has its two original functions \(\sqrt{15/(8\pi)}\omega_3(\omega\times e_3)\) and \(\sqrt{3/(8\pi)}(\omega\times e_3)\), with \(\omega\times e_3=(\omega_2,-\omega_1,0)\). Its orthogonality to all six functions follows from \((Le_j)\cdot(\omega\times e_3)=(\omega\times e_3)_j\) and oddness in \(\omega_1\) or \(\omega_2\). Its source application never replaces the full complement by these two coefficients. Consequently it introduces no dropped component into (R14)--(R18) or the source value (R32). The full pressure, force and viscosity statements of the reviewed note remain compatible with this later construction.
+
+\subsection*{8. Exact completed coverage and limitation}
+
+This report completes the requested independent review of Sections 6--9, including all earlier definitions needed to type their maps, all original nonlinear and pressure signs, full forcing, both solution inverse directions, the actual strong regularity class, generator and mild-equation domains, energy factors, the explicit supremum family, source viscosity transport, the actual source remainder, the corrected localization interval and the subsequent swirl assignment. The written calculations above are the review evidence; no finite symbolic test is being substituted for them.
+
+The reviewed source existence is imported from the frozen manuscript. This bounded report does not validate its complete local construction, every finite-stage estimate, a formal kernel closure, the comparison theorem excluding all global competitors, or any RH conclusion. No Lean, Lake, Elan, parent proof edit, PDF build, publication or new user-owned task was executed by this reviewer. Root remains responsible for integrating the corrected full heat proof and this completed review into the cumulative artifact.

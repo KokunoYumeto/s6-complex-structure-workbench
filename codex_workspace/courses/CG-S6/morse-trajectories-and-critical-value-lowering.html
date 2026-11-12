@@ -1,0 +1,835 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Morse trajectories and supported critical-value lowering</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/morse-trajectories-and-critical-value-lowering.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="morse-trajectory-lowering">Morse trajectories and supported
+critical-value lowering</h1>
+<p>Working companion for CG-S6 lesson 7. GPT-6 Astra (OpenAI), Ultra, 10
+October 2026. New teaching exposition CC0.</p>
+<p>The <a
+href="relative-morse-functions-and-original-handles.html">original
+relative Morse construction</a> gives a Morse function on the actual
+cobordism and every original framed handle. The <a
+href="rearranging-the-original-framed-handles.html">handle-index
+arrangement</a> gives diffeomorphisms between its reordered handle
+presentations. A cancellation theorem stated in terms of a function and
+descending trajectories needs that additional data. We construct it
+here. All changes occur on the original cobordism; its incoming and
+outgoing inclusions remain the original maps.</p>
+<p>Write <span class="math inline">\(C\)</span> for that compact
+cobordism, <span class="math inline">\(f\)</span> for its current Morse
+function, and <span class="math inline">\(Z\)</span> for its descending
+field. Near an index-<span class="math inline">\(k\)</span> critical
+point <span class="math inline">\(p\)</span>, retain the actual
+coordinate map <span class="math inline">\(\Theta\)</span> and all
+positive Hessian coefficients: <span class="math display">\[
+f(\Theta(x,y))=c-A(x)+B(y),\qquad
+A(x)=\sum_{i=1}^{k}a_i x_i^2,\qquad
+B(y)=\sum_{j=1}^{n-k}b_j y_j^2,\qquad
+\Theta^*Z=(x,-y).
+\tag{0.1}
+\]</span> Here <span class="math inline">\(c=f(p)\)</span>, and every
+<span class="math inline">\(a_i,b_j\)</span> is the original coefficient
+supplied by the full-Hessian comparison. The empty sums at indices zero
+and <span class="math inline">\(n\)</span> are literal. Away from
+critical points <span class="math inline">\(df(Z)&lt;0\)</span>. Every
+boundary collar is kept fixed.</p>
+<h2 id="trajectory-holonomy">1. Realizing the full attachment isotopy as
+descending holonomy</h2>
+<p>Let <span class="math inline">\([b_0,b_1]\)</span> be a closed
+interval of regular values with no critical point between its endpoints.
+On this band put <span class="math display">\[
+Y=-\frac{Z}{-df(Z)},\qquad df(Y)=1,
+\qquad
+\Gamma(q,t)=\operatorname{Fl}^{Y}_{t-b_0}(q),
+\quad q\in N=f^{-1}(b_0).
+\tag{1.1}
+\]</span> The exact product argument in the relative Morse companion
+proves that <span class="math inline">\(\Gamma:N\times[b_0,b_1]\to
+f^{-1}([b_0,b_1])\)</span> is a diffeomorphism, including both endpoint
+collars, with <span class="math inline">\(f\Gamma(q,t)=t\)</span>. In
+these coordinates the descending field <span
+class="math inline">\(-Y\)</span> is <span
+class="math inline">\(-\partial_t\)</span>.</p>
+<p>This use of <span class="math inline">\(-Y\)</span> is an explicitly
+recorded positive change of speed from <span
+class="math inline">\(Z\)</span>. It can be made on a slightly larger
+regular band and joined back to <span class="math inline">\(Z\)</span>
+by a positive smooth multiplier there. It changes neither the
+trajectories nor their direction and leaves all critical neighbourhoods
+and the original boundary collars unchanged. Use the resulting field as
+the current descending field on the selected band.</p>
+<p>Let <span class="math inline">\(\mathcal A_\sigma:N\to N\)</span>,
+<span class="math inline">\(0\leq\sigma\leq1\)</span>, be the given
+smooth ambient isotopy, with <span class="math inline">\(\mathcal
+A_0=1\)</span>. Let <span
+class="math inline">\(\eta:[b_0,b_1]\to[0,1]\)</span> be smooth, equal
+to one near <span class="math inline">\(b_0\)</span> and zero near <span
+class="math inline">\(b_1\)</span>. Define <span class="math display">\[
+F(q,t)=(\mathcal A_{\eta(t)}(q),t),\qquad
+F^{-1}(x,t)=(\mathcal A_{\eta(t)}^{-1}(x),t).
+\tag{1.2}
+\]</span> Both maps are smooth. Their full derivatives are <span
+class="math display">\[
+DF_{(q,t)}=
+\begin{pmatrix}
+D\mathcal A_{\eta(t)}|_q&amp;
+\eta&#39;(t)\,\partial_\sigma\mathcal A_\sigma(q)|_{\sigma=\eta(t)}\\
+0&amp;1
+\end{pmatrix},
+\tag{1.3}
+\]</span> <span class="math display">\[
+DF^{-1}_{(x,t)}=
+\begin{pmatrix}
+(D\mathcal A_{\eta(t)}|_q)^{-1}&amp;
+-\eta&#39;(t)(D\mathcal A_{\eta(t)}|_q)^{-1}
+       \partial_\sigma\mathcal A_\sigma(q)|_{\sigma=\eta(t)}\\
+0&amp;1
+\end{pmatrix},
+\qquad q=\mathcal A_{\eta(t)}^{-1}(x).
+\tag{1.4}
+\]</span> In particular no determinant of <span
+class="math inline">\(\mathcal A_\sigma\)</span> has been replaced by
+one. Push forward the descending field: <span class="math display">\[
+\widetilde Z=\Gamma_*F_*(-\partial_t).
+\tag{1.5}
+\]</span> At the point <span class="math inline">\(\Gamma(x,t)\)</span>,
+its product-coordinate expression is <span class="math display">\[
+\Gamma^*\widetilde Z\big|_{(x,t)}
+=
+\left(
+-\eta&#39;(t)\partial_\sigma\mathcal A_\sigma(q)|_{\sigma=\eta(t)},-1
+\right),
+\qquad q=\mathcal A_{\eta(t)}^{-1}(x).
+\tag{1.6}
+\]</span> It has <span class="math inline">\(df(\widetilde
+Z)=-1\)</span>. Since <span class="math inline">\(\eta&#39;\)</span>
+vanishes on whole endpoint collars, it equals the old field <span
+class="math inline">\(-Y\)</span> there, with every derivative. It
+therefore extends by the old descending field outside the band.</p>
+<p>The trajectory starting at <span
+class="math inline">\(\Gamma(q,b_1)\)</span>, while it stays in the
+band, is exactly <span class="math display">\[
+s\longmapsto
+\Gamma\bigl(\mathcal A_{\eta(b_1-s)}(q),b_1-s\bigr).
+\tag{1.7}
+\]</span> At time <span class="math inline">\(b_1-b_0\)</span> it
+reaches <span class="math inline">\(\Gamma(\mathcal
+A_1(q),b_0)\)</span>. Thus its upper-to-lower holonomy is the entire
+prescribed diffeomorphism <span class="math inline">\(\mathcal
+A_1\)</span>. For an original thick attaching embedding <span
+class="math inline">\(\alpha\)</span> in the upper product coordinates,
+the lower embedding is exactly <span class="math display">\[
+\alpha_{\rm lower}=\mathcal A_1\alpha,\qquad
+D\alpha_{\rm lower}=D\mathcal A_1|_\alpha\,D\alpha.
+\tag{1.8}
+\]</span> Every original parameter radius is unchanged in the domain of
+<span class="math inline">\(\alpha\)</span>; its framing changes by this
+displayed full derivative.</p>
+<p>More generally the time-<span class="math inline">\(s\)</span> map
+within the band is <span class="math display">\[
+\Gamma\circ F\circ T_s\circ F^{-1}\circ\Gamma^{-1},
+\qquad T_s(q,t)=(q,t-s).
+\tag{1.9}
+\]</span> Its derivative is the chain product of all five displayed maps
+at their respective image points. The metric in the changed product
+coordinates is <span class="math display">\[
+(D\Gamma\,DF)^{\mathsf t}\,g_C\,(D\Gamma\,DF).
+\tag{1.10}
+\]</span> This keeps the mixed term from <span
+class="math inline">\(\eta&#39;\)</span>, the original product map, and
+the actual metric.</p>
+<h3 id="the-belt-section-in-the-original-level">1.1. The belt section in
+the original level</h3>
+<p>The belt in the handle-arrangement chapter lies on its actual rounded
+outgoing boundary <span class="math inline">\(S\)</span>. The regular
+outer product in the original Morse chapter supplies its specific map
+<span class="math display">\[
+H:S\longrightarrow f^{-1}(b),\qquad
+H(q)=\operatorname{Fl}^{Y}_{\,b-f(q)}(q).
+\tag{1.11}
+\]</span> At an index-<span class="math inline">\(\mu\)</span> handle
+the belt is the original set <span class="math inline">\(x=0\)</span>,
+<span class="math inline">\(B(y)=\beta\)</span>, before this outer flow;
+it is away from the rounded corner. In (0.1) its forward descending
+trajectory has <span class="math inline">\(x=0\)</span>, <span
+class="math inline">\(y(s)=e^{-s}y(0)\)</span>, and converges to <span
+class="math inline">\(p_\mu\)</span>. Consequently <span
+class="math inline">\(H\)</span> carries that entire belt into <span
+class="math inline">\(W^s(p_\mu)\cap f^{-1}(b)\)</span>.</p>
+<p>The converse is exact as well. Any descending trajectory from that
+level converging to <span class="math inline">\(p_\mu\)</span>
+eventually lies in its original coordinate neighbourhood. The equation
+<span class="math inline">\(\dot x=x\)</span> forces <span
+class="math inline">\(x=0\)</span> there. Following it backwards reaches
+<span class="math inline">\(B(y)=\beta\)</span>, and then the outer
+product reaches the original point on <span
+class="math inline">\(f^{-1}(b)\)</span>. Uniqueness of trajectories
+gives <span class="math display">\[
+H(B_\mu)=W^s(p_\mu)\cap f^{-1}(b).
+\tag{1.12}
+\]</span> An isotopy specified on <span class="math inline">\(S\)</span>
+must therefore be transported as <span class="math inline">\(H\mathcal
+A_\sigma H^{-1}\)</span>, with derivative <span
+class="math inline">\(DH\,D\mathcal A_\sigma\,DH^{-1}\)</span>. This is
+the comparison used in (1.2); no two distinct outgoing boundaries have
+been identified without their map.</p>
+<h2 id="trajectory-unstable-disk">2. The escaping unstable disk is
+compact and embedded</h2>
+<p>Suppose two successive critical values are <span
+class="math inline">\(c_\mu&lt;c_\lambda\)</span>, with respective
+indices <span class="math inline">\(\mu,\lambda\)</span>, and <span
+class="math inline">\(1\leq\lambda\leq\mu\)</span>. Choose a regular
+level <span class="math inline">\(a&lt;c_\mu\)</span>, above the
+preceding critical value, and a regular band between the two displayed
+critical values. Their original local neighbourhoods are disjoint from
+this band.</p>
+<p>The next attaching core has dimension <span
+class="math inline">\(\lambda-1\)</span>. In the intermediate level the
+stable belt of <span class="math inline">\(p_\mu\)</span> has
+codimension <span class="math inline">\(\mu\)</span>. The proved
+finite-parameter core-avoidance argument in <a
+href="belt-sphere-complements-and-the-whitney-disk.html">the
+belt-complement companion</a>, Section 2, applies because <span
+class="math display">\[
+(\lambda-1)-\mu&lt;0.
+\tag{2.1}
+\]</span> Transport its isotopy by the actual map (1.11) and realize it
+by (1.5). One may use the whole composite isotopy of the
+handle-arrangement chapter, which also moves the complete thick tube;
+core avoidance alone is sufficient for the present trajectory
+conclusion. In either case (1.8) records every framing change. The lower
+stable manifold and its belt section are unchanged, because the field
+change is strictly above that section.</p>
+<p>Every descending trajectory from <span
+class="math inline">\(p_\lambda\)</span>, other than its constant
+trajectory, now reaches <span class="math inline">\(f=a\)</span>. To
+prove this, first take its intersection with the small original unstable
+ellipsoid <span class="math display">\[
+A(x)=\epsilon,\qquad y=0,
+\tag{2.2}
+\]</span> inside the unchanged <span
+class="math inline">\(p_\lambda\)</span>-chart. It crosses the
+intermediate band and reaches the moved core in the lower level. If it
+never reaches <span class="math inline">\(f=a\)</span>, it remains for
+all further time in a compact interior band. Its limit set is nonempty,
+compact and connected, since it is the intersection of nested compact
+connected closures of trajectory tails. The values of <span
+class="math inline">\(f\)</span> decrease to a limit; hence <span
+class="math inline">\(f\)</span> is constant on this set. Flow
+invariance and strict decrease at a regular point imply that the limit
+set contains only critical points. A connected subset of the finite
+critical set is a single point. The only possible point below its
+current level and above <span class="math inline">\(a\)</span> is <span
+class="math inline">\(p_\mu\)</span>. Equation (1.12) and the avoided
+belt rule that out. Finite-time existence inside the compact band
+follows from the ordinary flow theorem. Thus the trajectory must reach
+<span class="math inline">\(a\)</span> in finite time.</p>
+<p>The hitting time is smooth near each initial point of (2.2), by the
+implicit function theorem applied to <span
+class="math inline">\(f(\operatorname{Fl}^{Z}_t(q))=a\)</span>; its
+derivative in <span class="math inline">\(t\)</span> is <span
+class="math inline">\(df(Z)&lt;0\)</span> at the crossing. Compactness
+of (2.2) bounds the hitting times. The union of these finite flow
+segments with the local unstable disk is therefore compact. Distinct
+segments do not cross, by uniqueness of trajectories; a segment cannot
+cross itself because <span class="math inline">\(f\)</span> strictly
+decreases. The local disk and the flow annulus agree on their entire
+overlapping local flow collar. They form a compact embedded <span
+class="math inline">\(\lambda\)</span>-disk <span
+class="math inline">\(D\)</span>, with <span class="math display">\[
+\partial D\subset f^{-1}(a),\qquad
+D\subset W^u(p_\lambda),\qquad
+D\cap\operatorname{Crit}(f)=\{p_\lambda\}.
+\tag{2.3}
+\]</span> The next section gives an explicit parametrization of this
+disk and proves that it is a disk, rather than deducing that from its
+homology.</p>
+<p>If the lower index is <span class="math inline">\(n\)</span>, its
+stable manifold is only the critical point, so its belt section is empty
+and the same escape proof applies without an avoidance step. If the
+upper index is zero, its unstable disk is just the critical point. That
+case of lowering is treated directly in Section 4.</p>
+<h2 id="trajectory-disk-coordinates">3. Coordinates on the whole disk
+with every Hessian coefficient retained</h2>
+<p>Put <span class="math inline">\(p=p_\lambda\)</span>, <span
+class="math inline">\(c=f(p)\)</span>, <span
+class="math inline">\(k=\lambda\)</span>, and <span
+class="math display">\[
+T=c-a&gt;0.
+\tag{3.1}
+\]</span> Use the original quadratic form <span
+class="math inline">\(A(x)\)</span> in (0.1). We construct a smooth
+embedding <span class="math display">\[
+J:\{x:A(x)\leq T\}\longrightarrow C,\qquad
+f(J(x))=c-A(x),\qquad J(0)=p,
+\tag{3.2}
+\]</span> onto <span class="math inline">\(D\)</span>. On a small
+ellipsoid it is <span class="math inline">\(J(x)=\Theta(x,0)\)</span>.
+For <span class="math inline">\(A(x)\geq\epsilon\)</span> let <span
+class="math display">\[
+e(x)=\sqrt{\frac{\epsilon}{A(x)}}\,x,\qquad
+J(x)=\operatorname{Fl}^{Z}_{\tau(x)}(\Theta(e(x),0)),
+\tag{3.3}
+\]</span> where the unique nonnegative time <span
+class="math inline">\(\tau(x)\)</span> is determined by <span
+class="math inline">\(f(J(x))=c-A(x)\)</span>. Existence was proved in
+Section 2. Strict descent proves uniqueness, and the implicit function
+theorem proves smoothness.</p>
+<p>On an annulus still inside the original critical chart, <span
+class="math inline">\(\tau(x)=\tfrac12\log(A(x)/\epsilon)\)</span>.
+Equations (0.1) and (3.3) then give <span
+class="math inline">\(J(x)=\Theta(x,0)\)</span> exactly, so the two
+definitions join with all derivatives. Their inverse off <span
+class="math inline">\(p\)</span> is obtained by following the trajectory
+back to (2.2), retaining its original angular coordinate, and taking its
+radius from <span class="math inline">\(A(x)=c-f\)</span>. Both
+operations are smooth away from <span class="math inline">\(p\)</span>.
+Near <span class="math inline">\(p\)</span> the inverse is the original
+coordinate inverse. This proves (3.2) as a smooth embedded disk,
+including its boundary.</p>
+<p>For completeness retain the complete differential of the flow
+parametrization. Let <span
+class="math inline">\(q(x)=\Theta(e(x),0)\)</span>, let <span
+class="math inline">\(P_x=D\operatorname{Fl}^Z_{\tau(x)}|_{q(x)}\)</span>,
+and write <span class="math inline">\(dA=2\sum_i a_i x_i\,dx_i\)</span>.
+Then <span class="math display">\[
+de=\sqrt{\frac{\epsilon}{A}}
+       \left(dx-\frac{x}{2A}\,dA\right),
+\qquad
+DJ=P_xD\Theta_{(e,0)}(de,0)+Z|_{J(x)}\,d\tau,
+\tag{3.4}
+\]</span> <span class="math display">\[
+d\tau=
+\frac{-dA-df|_{J(x)}\,P_xD\Theta_{(e,0)}(de,0)}
+      {df(Z)|_{J(x)}}.
+\tag{3.5}
+\]</span> The denominator is strictly negative on this flow annulus.
+Every <span class="math inline">\(a_i\)</span>, the original coordinate
+derivative, the flow differential and the hitting-time contribution
+remain.</p>
+<p>The field on the disk pulls back to <span class="math display">\[
+J^*Z=(\ell(x)x,0),\qquad
+\ell(x)=\frac{-df(Z)|_{J(x)}}{2A(x)}&gt;0
+\quad(x\ne0),\qquad \ell=1\ \text{near }0.
+\tag{3.6}
+\]</span> The angular coordinate is fixed by the construction, and
+applying <span class="math inline">\(dA\)</span> to the right side gives
+<span class="math inline">\(2A\ell=-df(Z)\)</span>. These two facts
+prove the formula, including its positive speed. Its smooth extension at
+zero is one because the original local field is exactly the field in
+(0.1).</p>
+<h3 id="a-full-transverse-coordinate-map">3.1. A full transverse
+coordinate map</h3>
+<p>We need an actual neighbourhood map, not just the restriction of
+<span class="math inline">\(f\)</span> to <span
+class="math inline">\(D\)</span>. The disk coordinates in (3.2) also
+construct its normal frame. Take the quotient bundle <span
+class="math inline">\(TC|_D/TD\)</span>. Choose a smooth connection that
+is the constant-coordinate connection in the original <span
+class="math inline">\(\Theta\)</span>-frame near <span
+class="math inline">\(p\)</span>. Such a connection exists by taking
+local connections and a partition of unity; their affine combination is
+again a connection, and a cutoff retains the prescribed one on a smaller
+whole neighbourhood. Parallel transport the original positive-coordinate
+basis along <span class="math display">\[
+[0,1]\ni u\longmapsto J(ux).
+\tag{3.7}
+\]</span> Smooth dependence for its linear ODE gives a full smooth frame
+of this quotient bundle, including <span
+class="math inline">\(x=0\)</span>. Near <span
+class="math inline">\(p\)</span> it is precisely the original
+positive-coordinate frame.</p>
+<p>Lift it to a transverse subbundle of <span
+class="math inline">\(TC|_D\)</span> agreeing with the original
+positive-coordinate directions near <span
+class="math inline">\(p\)</span>. Here is an explicit existence argument
+for that choice. A projection onto <span
+class="math inline">\(TD\)</span> is an endomorphism with image <span
+class="math inline">\(TD\)</span> and restriction the identity on <span
+class="math inline">\(TD\)</span>. Local such projections combine by a
+partition of unity; the combination still has these two properties and
+hence still squares to itself. Its kernel is the desired smooth
+complement. Choose its local terms to agree with the prescribed original
+splitting near <span class="math inline">\(p\)</span>. The quotient map
+restricts to an isomorphism on this complement, so it lifts the
+transported frame uniquely.</p>
+<p>Choose a smooth affine connection on <span
+class="math inline">\(C\)</span> whose coefficients vanish in the
+original <span class="math inline">\(\Theta\)</span>-coordinates near
+<span class="math inline">\(p\)</span>. Its exponential map gives a
+transverse tube <span class="math display">\[
+\mathcal T(x,y)=
+\exp_{J(x)}\!\left(\sum_j y_j v_j(x)\right).
+\tag{3.8}
+\]</span> Near <span class="math inline">\((0,0)\)</span>, this is
+exactly <span class="math inline">\(\Theta(x,y)\)</span>, after
+restricting the neighbourhood so that these short geodesics stay in that
+chart. Its derivative along <span class="math inline">\(y=0\)</span> is
+the invertible map <span class="math inline">\((\dot x,\dot y)\mapsto
+DJ\,\dot x+\sum_j\dot y_jv_j(x)\)</span>. The inverse function theorem
+and compactness give an embedding on a sufficiently thin neighbourhood
+of every compact part of <span class="math inline">\(D\)</span> that is
+used below. For global injectivity at a uniform small width, otherwise a
+sequence of collisions with transverse widths tending to zero would
+converge to a collision on the embedded compact disk; local
+invertibility at that limiting point excludes it. One may extend <span
+class="math inline">\(D\)</span> slightly past its regular boundary by
+the original flow when an open base neighbourhood is needed.</p>
+<p>Set <span class="math display">\[
+F_0=f\circ\mathcal T,\qquad
+G(x,y)=c-A(x)+B(y).
+\tag{3.9}
+\]</span> They agree on <span class="math inline">\(y=0\)</span> and on
+a whole neighbourhood of <span class="math inline">\(p\)</span>. Off
+<span class="math inline">\(p\)</span>, their common restriction to the
+disk is a submersion. The relative coordinate comparison proved in <a
+href="morse-cancellation-with-controlled-support.html">the supported
+cancellation companion</a>, equations (1.5)–(1.6), therefore gives a
+diffeomorphism <span class="math inline">\(\Phi\)</span> of
+neighbourhood germs, fixing <span class="math inline">\(y=0\)</span>,
+equal to identity near <span class="math inline">\(p\)</span>, such that
+<span class="math display">\[
+G\circ\Phi=F_0.
+\tag{3.10}
+\]</span> Its existence can also be read directly here. On the disk use
+the direction <span class="math inline">\(-x\partial_x\)</span>, where
+every differential of <span class="math inline">\((1-s)F_0+sG\)</span>
+has value <span class="math inline">\(2A&gt;0\)</span>. Extend that
+direction to a thin tube, use the vector field <span
+class="math display">\[
+V_s=\frac{F_0-G}{d((1-s)F_0+sG)(-x\partial_x)}
+       (-x\partial_x),
+\tag{3.11}
+\]</span> and set it to zero near <span
+class="math inline">\(p\)</span>, where the numerator is identically
+zero. Local extensions and a partition of unity preserve its defining
+differential equation. On each compact portion the field vanishes on the
+disk. Bounded first derivatives and the flow estimate give a
+sufficiently thin starting neighbourhood on which its flow exists for
+<span class="math inline">\(0\leq s\leq1\)</span>. That flow proves
+(3.10), exactly as in the cited comparison.</p>
+<p>Thus <span class="math display">\[
+E=\mathcal T\circ\Phi^{-1},\qquad
+E(x,0)=J(x),\qquad
+f(E(x,y))=c-A(x)+B(y).
+\tag{3.12}
+\]</span> The comparison is an actual map; it has not removed an
+original coefficient. Its full derivative and metric are <span
+class="math display">\[
+DE=D\mathcal T|_{\Phi^{-1}}\,D\Phi^{-1},
+\qquad
+g_E=(DE)^{\mathsf t}\,g_C|_E\,DE.
+\tag{3.13}
+\]</span> These retain the connection transport, the original
+coordinates, the relative comparison and the actual ambient metric. The
+normal frame in these new coordinates is <span
+class="math inline">\(DE(0,e_j)\)</span>; it is not declared equal to
+the previously specified handle framing away from <span
+class="math inline">\(p\)</span>.</p>
+<h2 id="trajectory-supported-lowering">4. Lowering the critical value
+without creating another critical point</h2>
+<p>Fix any target value <span class="math inline">\(c&#39;\)</span> with
+<span class="math inline">\(a&lt;c&#39;&lt;c\)</span>, and set <span
+class="math display">\[
+\delta=c-c&#39;,\qquad 0&lt;\delta&lt;T,\qquad \rho=\delta/T&lt;1.
+\tag{4.1}
+\]</span> Choose and retain <span class="math inline">\(K&gt;1\)</span>
+with <span class="math inline">\(\rho K&lt;1\)</span>. Choose a smooth
+nonnegative function <span class="math inline">\(b\)</span>, compactly
+supported in <span class="math inline">\((0,1)\)</span>, of integral one
+and with <span class="math inline">\(\sup b&lt;K\)</span>. Such a
+function is obtained by smoothing the indicator of an interval
+approaching <span class="math inline">\([0,1]\)</span> and dividing by
+its integral: its maximum tends to one. Define <span
+class="math display">\[
+\beta(v)=\int_v^1 b(s)\,ds\quad(0\leq v\leq1),
+\qquad
+\beta=1\text{ for }v\leq0,\quad
+\beta=0\text{ for }v\geq1.
+\tag{4.2}
+\]</span> It is one near zero, zero near one, and satisfies <span
+class="math display">\[
+0\leq\beta\leq1,\qquad -K&lt;\beta&#39;\leq0.
+\tag{4.3}
+\]</span> Choose a smooth nonincreasing cutoff <span
+class="math inline">\(\zeta(B)\)</span>, equal to one near <span
+class="math inline">\(B=0\)</span> and zero for <span
+class="math inline">\(B\geq\nu\)</span>, where <span
+class="math inline">\(\nu&gt;0\)</span> is small enough that (3.12) is
+defined on its required support. Keep <span
+class="math inline">\(\nu\)</span> explicit; all <span
+class="math inline">\(b_j\)</span> remain in <span
+class="math inline">\(B\)</span>.</p>
+<p>Let <span class="math inline">\(U\)</span> be any prescribed
+neighbourhood of <span class="math inline">\(D\)</span> in <span
+class="math inline">\(\{f\geq a\}\)</span>, disjoint from the other
+critical points and from the original boundary collars. The support of
+<span class="math inline">\(\beta(A/T)\)</span> on the disk is compact
+and stays away from <span class="math inline">\(A=T\)</span>.
+Restricting <span class="math inline">\(\nu\)</span> makes the entire
+proposed modification lie in <span class="math inline">\(U\)</span> and
+in the coordinate neighbourhood. Define, for <span
+class="math inline">\(0\leq s\leq1\)</span>, <span
+class="math display">\[
+f_s(E(x,y))
+=
+c-A(x)+B(y)
+-s\delta\,\beta(A(x)/T)\zeta(B(y)),
+\tag{4.4}
+\]</span> and set <span class="math inline">\(f_s=f\)</span> elsewhere.
+The two definitions agree on whole neighbourhoods of the outer
+transverse boundary and of <span class="math inline">\(A=T\)</span>.
+They therefore define a smooth global family, fixed outside a compact
+subset of <span class="math inline">\(U\)</span>.</p>
+<p>The complete coordinate derivatives are <span class="math display">\[
+\frac{\partial(f_sE)}{\partial x_i}
+=-2a_i x_i
+\left[1+s\frac{\delta}{T}\beta&#39;(A/T)\zeta(B)\right],
+\tag{4.5}
+\]</span> <span class="math display">\[
+\frac{\partial(f_sE)}{\partial y_j}
+=2b_j y_j
+\left[1-s\delta\,\beta(A/T)\zeta&#39;(B)\right].
+\tag{4.6}
+\]</span> The first bracket is at least <span
+class="math inline">\(1-\rho K&gt;0\)</span>; the second is at least
+one. Hence every critical point in this entire neighbourhood has <span
+class="math inline">\(x=y=0\)</span>. Near that point both cutoffs are
+constant one, so <span class="math display">\[
+f_s(E(x,y))=(c-s\delta)-A(x)+B(y),
+\qquad
+\operatorname{Hess}_p(f_s)=\operatorname{Hess}_p(f).
+\tag{4.7}
+\]</span> The equality of Hessians is on the original tangent space:
+<span class="math inline">\(E=\Theta\)</span> near <span
+class="math inline">\(p\)</span>, and the two functions differ there by
+a constant. Thus the family has exactly the original critical point
+there, with exactly its original index and Hessian; every other critical
+point and its whole neighbourhood is unchanged. At <span
+class="math inline">\(s=1\)</span>, its value is precisely <span
+class="math inline">\(c&#39;\)</span>.</p>
+<p>The new values on the modified part remain above <span
+class="math inline">\(a\)</span>. Indeed <span class="math display">\[
+h_s(A)=c-A-s\delta\beta(A/T),\qquad
+h_s&#39;(A)=-\left[1+s(\delta/T)\beta&#39;(A/T)\right]&lt;0,
+\qquad h_s(T)=a.
+\tag{4.8}
+\]</span> Since <span class="math inline">\(B\geq0\)</span> and <span
+class="math inline">\(0\leq\zeta\leq1\)</span>, (4.4) is at least <span
+class="math inline">\(h_s(A)+B\)</span>. This also checks the original
+lower-level constraint; it has not been assumed from the absence of new
+critical points.</p>
+<p>The original field remains tangent to <span
+class="math inline">\(D\)</span>. Equations (3.6) and (4.5) give, at a
+noncritical point of the disk, <span class="math display">\[
+df_s(Z)
+=
+-2A\ell(x)
+\left[1+s(\delta/T)\beta&#39;(A/T)\right]&lt;0.
+\tag{4.9}
+\]</span> We can consequently choose a smooth family of descending
+fields <span class="math inline">\(Z_s\)</span> agreeing with <span
+class="math inline">\(Z\)</span> on <span
+class="math inline">\(D\)</span>, on the original critical
+neighbourhoods, and outside <span class="math inline">\(U\)</span>. Here
+are the extension details. Near <span class="math inline">\(p\)</span>,
+<span class="math inline">\(df_s=df\)</span>, so the original field
+works for every <span class="math inline">\(s\)</span>. On the remaining
+compact part of <span class="math inline">\(D\)</span>, (4.9) has a
+uniform strict bound away from zero after excluding that neighbourhood;
+continuity gives a fixed neighbourhood where it works for all <span
+class="math inline">\(s\)</span>. On the region where <span
+class="math inline">\(f_s=f\)</span> it works as well. On the remaining
+region there is no critical point, and <span
+class="math inline">\(-\nabla f_s\)</span> is a smooth strictly
+descending field. Choose a smooth cutoff equal to one on a smaller
+neighbourhood of <span class="math inline">\(D\)</span>, on all the
+retained critical neighbourhoods and outside the chosen support
+neighbourhood, with its nonzero support contained in the region where
+the original field works for all <span class="math inline">\(s\)</span>.
+Its convex combination of <span class="math inline">\(Z\)</span> and
+<span class="math inline">\(-\nabla f_s\)</span> is the desired <span
+class="math inline">\(Z_s\)</span>. Strict decrease is preserved by that
+convex combination. Near every critical point it is exactly the original
+model field. If this construction gives <span
+class="math inline">\(Z_0\ne Z\)</span> away from the retained region,
+first keep <span class="math inline">\(f\)</span> fixed and interpolate
+the two fields by their convex combination. Both decrease this same
+<span class="math inline">\(f\)</span>, so the interpolation is
+descending and fixes every prescribed neighbourhood. Join the two stages
+with smooth time cutoffs constant near their endpoints. This supplies a
+continuous smooth change from the actual initial pair <span
+class="math inline">\((f,Z)\)</span>, rather than leaving its first
+field unspecified.</p>
+<p>For index zero, there are no <span
+class="math inline">\(x\)</span>-variables and <span
+class="math inline">\(D=\{p\}\)</span>. Formula (4.4) becomes <span
+class="math inline">\(c+B-s\delta\zeta(B)\)</span>. Equation (4.6) alone
+proves all the assertions, in an arbitrarily small original
+neighbourhood. For index <span class="math inline">\(n\)</span>, there
+are no <span class="math inline">\(y\)</span>-variables; set <span
+class="math inline">\(B=0\)</span>, <span
+class="math inline">\(\zeta(0)=1\)</span>, and use (4.5). No artificial
+sphere or missing normal derivative is introduced at either extreme.</p>
+<p>This proves supported critical-value lowering with a complete
+formula. It does not assert that the old field remains a descending
+field at every point outside <span class="math inline">\(D\)</span>; the
+family <span class="math inline">\(Z_s\)</span> is constructed and
+retained explicitly where a change is needed.</p>
+<h2 id="trajectory-ordered-morse">5. An ordered Morse function on the
+original cobordism</h2>
+<p>Take two adjacent critical values in the wrong index order, with
+indices <span class="math inline">\(\mu&gt;\lambda\)</span>. If <span
+class="math inline">\(\lambda\geq1\)</span>, Sections 1–2 construct the
+entire escaping unstable disk of the upper point down to a regular level
+<span class="math inline">\(a&lt;c_\mu\)</span>, above every earlier
+critical value. If <span class="math inline">\(\lambda=0\)</span>, use
+the last paragraph of Section 4. Choose <span class="math display">\[
+a&lt;c&#39;&lt;c_\mu&lt;c_\lambda.
+\tag{5.1}
+\]</span> The compact support neighbourhood <span
+class="math inline">\(U\)</span> can be chosen disjoint from every other
+critical point, because the disk is compact and contains only <span
+class="math inline">\(p_\lambda\)</span>. Equations (4.4)–(4.9) lower
+that point to <span class="math inline">\(c&#39;\)</span>, leave all the
+other values and Hessians unchanged, and introduce no critical point.
+The two values have exchanged order. They may coincide at one
+intermediate parameter; at that parameter both critical points still
+have nonsingular Hessians, so the function remains Morse. Distinct
+critical values are restored at the endpoint.</p>
+<p>For a finite critical sequence with indices <span
+class="math inline">\(k_1,\ldots,k_N\)</span>, let <span
+class="math display">\[
+I=\#\{(i,j):i&lt;j,\ k_i&gt;k_j\}.
+\tag{5.2}
+\]</span> Exchanging an adjacent wrong-order pair removes its mutual
+inversion and changes none of its total comparisons with any third
+entry. Thus <span class="math inline">\(I\)</span> decreases by exactly
+one. Repeating the proved construction terminates after finitely many
+steps, with an actual Morse function <span class="math inline">\(f_{\rm
+ord}\)</span> and an actual descending field <span
+class="math inline">\(Z_{\rm ord}\)</span> on <span
+class="math inline">\(C\)</span>, whose critical values occur in
+nondecreasing index order. Every step keeps the original boundary
+collars. No handle or critical point has yet been removed.</p>
+<p>The original Morse construction now applies to <span
+class="math inline">\((f_{\rm ord},Z_{\rm ord})\)</span> itself. Keep
+the original handle parameter radii <span
+class="math inline">\(r_i,s_i\)</span> for each labelled critical point.
+Choose the new positive critical-band widths explicitly within the new
+critical-value gaps, and label them <span
+class="math inline">\(\delta_i^{\rm ord},\beta_i^{\rm ord}\)</span>;
+they are additional retained choices, not assertions that the old widths
+fit new gaps. Every original Hessian coefficient is unchanged. The
+resulting handle chart has the exact formula <span
+class="math display">\[
+x_{i,j}
+=\frac{u_j}{r_i}
+   \sqrt{\frac{\delta_i^{\rm ord}
+          +\beta_i^{\rm ord}\|v\|^2/s_i^2}{a_{i,j}}},
+\qquad
+y_{i,l}=\frac{v_l}{s_i}
+              \sqrt{\frac{\beta_i^{\rm ord}}{b_{i,l}}}.
+\tag{5.3}
+\]</span> The original chapter supplies its full tangent map, seam,
+rounding and final map into <span class="math inline">\(C\)</span>,
+using these retained quantities. Let that complete map be <span
+class="math inline">\(G_{\rm ord}^{\,M}:P_{\rm ord}^{\,M}\to C\)</span>.
+For the previously constructed original presentation <span
+class="math inline">\(G_{\rm old}:P_{\rm old}\to C\)</span>, the exact
+comparison is <span class="math display">\[
+\Psi_M=(G_{\rm ord}^{\,M})^{-1}G_{\rm old},
+\qquad
+G_{\rm ord}^{\,M}=G_{\rm old}\Psi_M^{-1}.
+\tag{5.4}
+\]</span> Its derivative is the full chain <span class="math display">\[
+D\Psi_M|_z
+=D(G_{\rm ord}^{\,M})^{-1}|_{G_{\rm old}(z)}
+       DG_{\rm old}|_z.
+\tag{5.5}
+\]</span> In particular its restriction to the outgoing boundary is
+retained. This is the precise relation to the earlier handle
+presentation. It does not assert that changed trajectory fields leave
+each thick attaching embedding fixed, or that the Morse presentation is
+literally the same as the separately reordered presentation.</p>
+<p>We now have the function and trajectories needed for later geometric
+cancellations. The <a
+href="removing-the-original-zero-and-top-handles.html#zero-supported-cancellation">zero-
+and top-index removal</a> is now proved in its receiving companion: it
+constructs the connected trajectory graph, verifies each cancellation
+hypothesis and retains all reversal signs. The <a
+href="framed-handle-slides-and-index-one-removal.html#slide-index-one-cancellation">framed
+slides and index-one removal</a> now use this exact holonomy and
+supported lowering to remove index one and its reverse. Its Sections 6–7
+compare the complement and descending maps on their actual domains and
+verify every cancellation hypothesis. The <a
+href="integral-handle-chains-and-signed-incidences.html#handle-six-seven">integral
+handle-chain companion</a> now proves the original
+filtration-to-homology map, every incidence sign, the full integer basis
+comparisons and the exact contractions in dimensions six and seven. The
+<a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven. Section 5 of that receiving companion verifies every
+supported-cancellation hypothesis for the resulting trajectories. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> supplies the additional classification
+calculation. None of those later steps is asserted by the index-order
+proof.</p>
+<h2 id="trajectory-lowering-exercises">6. Two complete calculations</h2>
+<h3 id="the-shear-and-the-full-holonomy-derivative">6.1. The shear and
+the full holonomy derivative</h3>
+<p>In a product chart retain <span
+class="math inline">\(q=(q_1,q_2)\)</span> and the original isotopy
+<span class="math display">\[
+\mathcal A_\sigma(q_1,q_2)
+=(q_1+\sigma q_2^2,q_2).
+\tag{6.1}
+\]</span> Compute the descending field in the band and the full
+derivative of its holonomy.</p>
+<p>Its inverse is <span class="math inline">\((x_1-\sigma
+x_2^2,x_2)\)</span>, and its two required derivatives are <span
+class="math display">\[
+D\mathcal A_\sigma=
+\begin{pmatrix}1&amp;2\sigma q_2\\0&amp;1\end{pmatrix},
+\qquad
+\partial_\sigma\mathcal A_\sigma=(q_2^2,0).
+\tag{6.2}
+\]</span> Equations (1.3) and (1.6) give <span class="math display">\[
+DF=
+\begin{pmatrix}
+1&amp;2\eta(t)q_2&amp;\eta&#39;(t)q_2^2\\
+0&amp;1&amp;0\\
+0&amp;0&amp;1
+\end{pmatrix},
+\qquad
+\Gamma^*\widetilde Z=(-\eta&#39;(t)x_2^2,0,-1).
+\tag{6.3}
+\]</span> Starting at <span class="math inline">\(t=b_1\)</span>, the
+original product-coordinate trajectory is <span
+class="math inline">\((q_1+\eta(b_1-s)q_2^2,q_2,b_1-s)\)</span>. Hence
+the holonomy and its derivative are <span class="math display">\[
+(q_1,q_2)\longmapsto(q_1+q_2^2,q_2),
+\qquad
+\begin{pmatrix}1&amp;2q_2\\0&amp;1\end{pmatrix}.
+\tag{6.4}
+\]</span> The mixed term <span
+class="math inline">\(\eta&#39;(t)q_2^2\)</span> in (6.3) vanishes near
+the band ends but is present inside. This calculation concerns the
+stated coordinate isotopy. A supported version on a compact manifold
+requires the actual ambient isotopy construction of Section 1; an
+arbitrary coordinate cutoff is not silently assumed to preserve
+(6.1).</p>
+<h3
+id="a-lowering-that-retains-six-distinct-quadratic-coefficients">6.2. A
+lowering that retains six distinct quadratic coefficients</h3>
+<p>Take <span class="math inline">\(n=6,k=2,c=11,a=2,c&#39;=5\)</span>,
+and keep <span class="math display">\[
+A=2x_1^2+7x_2^2,\qquad
+B=3y_1^2+5y_2^2+13y_3^2+17y_4^2.
+\tag{6.5}
+\]</span> Then <span
+class="math inline">\(T=9,\delta=6,\rho=2/3\)</span>. Choose <span
+class="math inline">\(K=7/5\)</span> and the cutoff in (4.2) with <span
+class="math inline">\(-7/5&lt;\beta&#39;\leq0\)</span>. Use any retained
+transverse cutoff <span class="math inline">\(\zeta(B)\)</span> with
+<span class="math inline">\(\zeta&#39;\leq0\)</span>. At the end of the
+change the exact function is <span class="math display">\[
+11-2x_1^2-7x_2^2
+    +3y_1^2+5y_2^2+13y_3^2+17y_4^2
+-6\beta((2x_1^2+7x_2^2)/9)
+       \zeta(3y_1^2+5y_2^2+13y_3^2+17y_4^2).
+\tag{6.6}
+\]</span> Its two negative-coordinate derivatives are <span
+class="math display">\[
+-4x_1[1+(2/3)\beta&#39;(A/9)\zeta(B)],
+\qquad
+-14x_2[1+(2/3)\beta&#39;(A/9)\zeta(B)].
+\tag{6.7}
+\]</span> Its four positive-coordinate derivatives are <span
+class="math display">\[
+(6y_1,10y_2,26y_3,34y_4)
+       [1-6\beta(A/9)\zeta&#39;(B)].
+\tag{6.8}
+\]</span> The first bracket is strictly greater than <span
+class="math inline">\(1-(2/3)(7/5)=1/15\)</span>, and the second is at
+least one. Thus the unique critical point in the entire modified
+neighbourhood is the original origin. Its value is five and its Hessian
+in the original displayed coordinates is <span class="math display">\[
+\operatorname{diag}(-4,-14,6,10,26,34).
+\tag{6.9}
+\]</span> The same Hessian occurs before the change. On the lower edge
+<span class="math inline">\(A=9,B=0\)</span>, the cutoff is zero and the
+value is the original <span class="math inline">\(a=2\)</span>.
+Equations (4.8) and (6.7) prove the lower bound throughout the disk, not
+only at the origin and edge.</p>
+<p>An explicit choice for this example, using the retained smooth step
+<span class="math inline">\(\chi\)</span> with <span
+class="math inline">\(\chi(t)+\chi(1-t)=1\)</span>, is <span
+class="math display">\[
+b(v)=\frac43\chi(12v-1)\chi(11-12v),
+\qquad \beta(v)=\int_v^1b(w)\,dw.
+\tag{6.10}
+\]</span> The support of <span class="math inline">\(b\)</span> is in
+<span class="math inline">\([1/12,11/12]\)</span>. Each transition
+interval has length <span class="math inline">\(1/12\)</span>, and <span
+class="math inline">\(\int_0^1\chi=1/2\)</span> by the displayed
+symmetry. Its plateau has length <span
+class="math inline">\(2/3\)</span>. Thus <span class="math display">\[
+\int_0^1b=\frac43\left(\frac1{24}+\frac23+\frac1{24}\right)=1,
+\qquad \sup b=\frac43&lt;\frac75.
+\tag{6.11}
+\]</span> This particular choice improves the first bracket’s lower
+bound to <span class="math inline">\(1/9\)</span>; the stated <span
+class="math inline">\(1/15\)</span> bound remains valid for every
+earlier allowed choice. All these bounds concern the complete original
+six-variable function.</p>
+<figure>
+<img src="assets/morse-holonomy-and-lowering.svg" alt="The actual descending shear through a regular band, and a supported critical-value change with its exact derivative bound." />
+<figcaption>
+The left panel is the slice <span class="math inline">\(q_2=1\)</span>
+of (6.1), with <span class="math inline">\(b_0=2,b_1=6\)</span> and
+<span class="math inline">\(\eta(t)=1-\chi((t-3)/2)\)</span>. Arrows
+follow the descending trajectories (1.7). The right panel plots the
+restriction <span class="math inline">\(B=0\)</span> of (6.6) with the
+explicit cutoff (6.10), retaining <span
+class="math inline">\(T=9,\delta=6\)</span>. The curves are numerical
+samples; (4.5)–(4.9) and (6.10)–(6.11) prove the exact derivative and
+support bounds. The transverse derivatives in all six original
+coordinates remain in the text.
+</figcaption>
+</figure>
+<h2 id="trajectory-lowering-sources">7. Source coverage and the next
+use</h2>
+<p>The human reference is François Laudenbach, <a
+href="https://arxiv.org/abs/1307.2545v1"><em>A proof of Morse’s theorem
+about the cancellation of critical points</em>, arXiv:1307.2545v1</a>.
+Both retained original-author TeX files were previously read in full.
+For this calculation the precise rereading is Lemma 2 and its proof in
+<strong>english3.2.tex</strong>, lines 262–285. That lemma states
+critical-value lowering while retaining a given pseudo-gradient
+everywhere. Its printed proof describes a transverse-foliation change
+and refers elsewhere for further details.</p>
+<p>Section 4 supplies its own complete supported function formula and
+derivative estimates. Its field assertion is exactly the one proved in
+(4.9) and the following extension: the old field is retained on the
+unstable disk and the prescribed outside region, with an explicitly
+constructed descending field elsewhere. The stronger
+everywhere-fixed-field assertion is not being attributed to this
+formula. This proved version suffices for the actual ordered Morse
+construction in Section 5.</p>
+<p>The other receiving proofs are the included original Morse,
+handle-arrangement, belt-complement and supported-cancellation chapters,
+at the exact locations identified above. No new external theorem,
+novelty, exhaustive literature reading or independent review is claimed.
+The course metadata records its formula checks, diagram and reader
+validation. Completion of this companion does not complete lesson 7.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

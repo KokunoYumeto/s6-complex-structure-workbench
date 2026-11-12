@@ -1,0 +1,322 @@
+\section{An exact Erd\H{o}s--Straus/S6 terminal-matrix crosswalk}
+\label{sec:es-s6-crosswalk}
+
+This section records an arithmetic relation suggested by comparing the
+candidate's terminal presentation with the divisor-shell coordinates used in
+the maintained Erd\H{o}s--Straus corpus~\cite{ClankersES2026}.  All maps below
+are proved over the integers.  The conclusion is an exact change of relators;
+it is not a geometric map from the reciprocal cubic surface to the candidate
+complex threefold.
+
+\subsection{The first-half shell and its divisor coordinates}
+
+\begin{proposition}[first-half denominator]
+\label{prop:es-first-half-denominator}
+\Verified\ Let \(p\equiv1\pmod4\) be an odd prime.  If
+\[
+ \frac4p=\frac1x+\frac1y+\frac1z,
+ \qquad x,y,z\in\mathbb Z_{>0},\qquad x\le y\le z,
+\]
+then
+\[
+ \frac p4<x\le\frac p2.
+\]
+\end{proposition}
+
+\begin{proof}
+The lower bound follows from \(1/x<4/p\).  Suppose \(x>p/2\).  Clearing
+denominators and reducing modulo \(p\) gives
+\[
+ 4xyz=p(xy+xz+yz),\qquad p\mid xyz.
+\]
+If \(p\mid x\), then \(x,y,z\ge p\), so the sum of the three reciprocals is
+at most \(3/p\).  If \(p\mid y\), then \(y,z\ge p\), and
+\[
+ \frac1x+\frac1y+\frac1z<\frac2p+\frac2p=\frac4p.
+\]
+Both alternatives are impossible.  Hence \(z=kp\) for an integer \(k\ge1\),
+and substitution gives
+\[
+ (4k-1)xy=kp(x+y).
+\]
+Neither \(x\) nor \(y\) is divisible by \(p\), so \(p\mid4k-1\).  Write
+\(4k-1=\ell p\).  Since \(p\equiv1\pmod4\), one has
+\(\ell\equiv3\pmod4\), hence \(\ell\ge3\).  Cancelling \(p\) gives
+\(\ell xy=k(x+y)\).  Since \(x\le y\),
+\[
+ x\le\frac{2k}{\ell}
+   =\frac{\ell p+1}{2\ell}
+   =\frac p2+\frac1{2\ell}<\frac{p+1}{2}.
+\]
+But the integer \(x>p/2\) is at least \((p+1)/2\), a contradiction.
+\end{proof}
+
+Fix henceforth a prime \(p\equiv1\pmod{12}\), and put
+\[
+ L=\frac{p-1}{4},\qquad
+ R_j=4j+3,\qquad
+ a_j=\frac{p+R_j}{4},\qquad 0\le j<L.
+\]
+The preceding proposition shows that every solution's smallest denominator
+lies in the exact candidate set \(\{a_j:0\le j<L\}\).  Notice that
+\[
+ 4a_j=p+R_j,\qquad
+ \gcd(R_j,p)=\gcd(R_j,a_j)=\gcd(p,a_j)=1.
+\]
+
+\begin{proposition}[complete two-channel divisor selector]
+\label{prop:es-two-channel-selector}
+\Verified\ Define
+\[
+ \begin{aligned}
+ E_j&=\{u\in\mathbb Z_{>0}:u\mid a_j^2,\ R_j\mid4u+1\},\\
+ M_j&=\{u\in\mathbb Z_{>0}:u\mid a_j^2,\ R_j\mid4u+p\}.
+ \end{aligned}
+\]
+Then the Erd\H{o}s--Straus equation for \(p\) has a positive integral
+solution if and only if at least one \(E_j\) or \(M_j\) is nonempty.
+For \(u\in E_j\) set \(\varepsilon=0\), and for \(u\in M_j\) set
+\(\varepsilon=1\).  With
+\[
+ T=\frac{4u+p^\varepsilon}{R_j},\qquad
+ K=\frac{p^{1-\varepsilon}T+1}{4},
+\]
+the corresponding solution is
+\[
+ (x,y,z)=
+ \left(a_j,\frac{p^\varepsilon a_jK}{u},pK\right),
+\]
+up to interchange of \(y\) and \(z\).
+\end{proposition}
+
+\begin{proof}
+Fix \(x=a_j\), and abbreviate \(R=R_j\), \(a=a_j\), and \(N=pa\).
+The remaining equation is
+\[
+ Ryz=N(y+z).
+\]
+It is equivalent to
+\[
+ (Ry-N)(Rz-N)=N^2.
+\]
+Both factors are positive.  Since \(\gcd(R,N)=1\), positive solutions are in
+bijection with positive divisors \(d\mid N^2\) satisfying
+\[
+ d\equiv-N\pmod R;
+\]
+the complementary divisor \(e=N^2/d\) then also satisfies
+\(e\equiv-N\pmod R\), and
+\[
+ y=\frac{N+d}{R},\qquad z=\frac{N+e}{R}.
+\]
+
+Because \(\gcd(p,a)=1\), the \(p\)-adic exponent of \(d\) is \(0\), \(1\),
+or \(2\).  Complementation \(d\leftrightarrow e\) exchanges exponents \(0\)
+and \(2\), so choose the exponent-two representative in that pair.  If
+\(d=p^2u\), then \(u\mid a^2\), and
+\[
+ R\mid d+N
+ \Longleftrightarrow R\mid pu+a
+ \Longleftrightarrow R\mid4u+1,
+\]
+where \(4a\equiv p\pmod R\) and \(p\) is invertible modulo \(R\).  This is
+the \(E_j\) channel.  If \(d=pu\), then
+\[
+ R\mid d+N
+ \Longleftrightarrow R\mid u+a
+ \Longleftrightarrow R\mid4u+p,
+\]
+which is the \(M_j\) channel.  This proves completeness of the two selector
+sets.
+
+For either channel, \(R_jT=4u+p^\varepsilon\).  Modulo \(4\), this says
+\(-T\equiv1\), so \(T\equiv3\pmod4\); the displayed \(K\) is therefore a
+positive integer.  Direct calculation using \(4a=p+R_j\) gives
+\[
+ R_jK=a+p^{1-\varepsilon}u,
+ \qquad Ta=u+p^\varepsilon K.
+\]
+Since \(u\mid a^2\), the second identity implies
+\(u\mid p^\varepsilon aK\).  Finally,
+\[
+ \frac{u}{p^\varepsilon aK}+\frac1{pK}
+ =\frac{p^{1-\varepsilon}u+a}{paK}
+ =\frac{R_j}{pa}
+ =\frac4p-\frac1a,
+\]
+which proves the asserted formula and its converse.
+\end{proof}
+
+\subsection{The unimodular relation-matrix bijection}
+
+Put
+\[
+ \lambda(\ell_0,\ell_1,\ell_2)
+ =12\ell_0-4\ell_1-3\ell_2.
+\]
+By \cref{prop:terminal-group}, the candidate's ordered terminal relation
+matrix in the ordered generator basis \((x,c)\), for
+\(\ell=(\ell_0,\ell_1,\ell_2)\), is
+\[
+ \mathsf R(\ell)=
+ \begin{pmatrix}
+ 3&-\ell_1\\
+ 4&\ell_2-4\ell_0
+ \end{pmatrix},
+ \qquad \det\mathsf R(\ell)=-\lambda(\ell).
+\]
+
+For \(\varepsilon\in\{0,1\}\), define the marked selector space
+\[
+\mathcal W_\varepsilon(p)=
+ \left\{(j,u)\in\mathbb Z\times\mathbb Z_{>0}:
+ \begin{array}{l}
+ 0\le j<L,\ u\in\mathbb Z_{>0},\ u\mid a_j^2,\\
+ R_j\mid4u+p^\varepsilon
+ \end{array}
+ \right\}
+\]
+and the normalized divisor-supported terminal slice
+\[
+\mathcal H_\varepsilon(p)=
+ \left\{(j,\ell_0,\ell_1)\in\mathbb Z^3:
+ \begin{array}{l}
+ 0\le j<L,\ \lambda(\ell_0,\ell_1,1)=p^\varepsilon,\\
+ T:=4\ell_0-1>0,\quad
+ u:=\ell_1+jT>0,\quad u\mid a_j^2
+ \end{array}
+ \right\}.
+\]
+
+\begin{theorem}[exact marked selector/terminal-slice equivalence]
+\label{thm:es-s6-selector-terminal-bijection}
+\Verified\ The map
+\[
+ \Theta_{\varepsilon,p}:\mathcal W_\varepsilon(p)
+ \longrightarrow\mathcal H_\varepsilon(p),
+ \qquad
+ (j,u)\longmapsto
+ \left(j,\frac{T+1}{4},u-jT\right),
+ \quad T=\frac{4u+p^\varepsilon}{R_j},
+\]
+is a bijection.  Under it, the two relation matrices are related by the
+explicit unimodular row operation
+\[
+ \begin{pmatrix}1&-j\\0&1\end{pmatrix}
+ \begin{pmatrix}R_j&-u\\4&-T\end{pmatrix}
+ =
+ \begin{pmatrix}3&-\ell_1\\4&1-4\ell_0\end{pmatrix}
+ =\mathsf R(\ell_0,\ell_1,1),
+\]
+and both determinants equal \(-p^\varepsilon\).
+\end{theorem}
+
+\begin{proof}
+For \((j,u)\in\mathcal W_\varepsilon(p)\), \(T\) is a positive integer and
+the congruence computation in \cref{prop:es-two-channel-selector} gives
+\(T\equiv3\pmod4\), so \(\ell_0=(T+1)/4\) is integral.  Set
+\(\ell_1=u-jT\).  Since \(R_j=4j+3\),
+\[
+ \lambda(\ell_0,\ell_1,1)
+ =3(T+1)-4(u-jT)-3
+ =(4j+3)T-4u=p^\varepsilon.
+\]
+The positivity and divisor conditions in the definition of
+\(\mathcal H_\varepsilon(p)\) follow from \(u=\ell_1+jT\).  Matrix
+multiplication gives the displayed identity, and
+\[
+ \det\begin{pmatrix}R_j&-u\\4&-T\end{pmatrix}
+ =-R_jT+4u=-p^\varepsilon.
+\]
+
+Conversely, from \((j,\ell_0,\ell_1)\in\mathcal H_\varepsilon(p)\) recover
+\[
+ T=4\ell_0-1,
+ \qquad u=\ell_1+jT.
+\]
+Expanding \(\lambda(\ell_0,\ell_1,1)=p^\varepsilon\) gives
+\(R_jT=4u+p^\varepsilon\).  Thus \(R_j\mid4u+p^\varepsilon\), and the
+remaining positivity and divisor hypotheses are already part of
+\(\mathcal H_\varepsilon(p)\).  These constructions are literal inverses.
+\end{proof}
+
+The normalization \(\ell_2=1\) automatically satisfies the candidate's odd
+\(\ell_2\) admissibility condition.  It also forces \(3\nmid\ell_1\): if
+\(3\mid\ell_1\), then \(\lambda(\ell_0,\ell_1,1)\) is divisible by \(3\),
+whereas \(p^\varepsilon\equiv1\pmod3\).  Write
+\(\operatorname{ES}(p)\) for the assertion that \(4/p\) is a sum of three
+positive integral unit fractions.  Consequently
+\[
+ \operatorname{ES}(p)
+ \Longleftrightarrow
+ \mathcal H_0(p)\sqcup\mathcal H_1(p)\ne\varnothing.
+\]
+The \(E\)-channel is the slice with terminal parameter
+\(p_{\mathrm{S6}}=1\); the \(M\)-channel is the slice with
+\(p_{\mathrm{S6}}=p\).
+
+Here the channel label is part of the datum.  The raw selector subsets need
+not be disjoint: for \(p=13\), \(j=0\), and \(u=2\), one has
+\(u\in E_0\cap M_0\).  Accordingly the occurrence statement above means the
+tagged disjoint union
+\(\{0\}\times\mathcal H_0(p)\sqcup\{1\}\times\mathcal H_1(p)\).
+Moreover the map from tagged selector states to \emph{unordered} unit-fraction
+solutions is not injective in the \(M\)-channel: complementation
+\(u\leftrightarrow a_j^2/u\) interchanges \(y\) and \(z\).  For example,
+\(p=13\), \(j=0\), and \(u=2,8\) give the same unordered solution
+\(\{4,26,52\}\).  The theorem is a bijection with the marked terminal slice,
+not a bijection with unordered solutions.
+
+The tags are essential.  For every eligible prime \(q\), define the
+fixed-prime forgetful map
+\[
+ \mathfrak f_q:\mathcal H_0(q)\longrightarrow\mathbb Z^3,
+ \qquad
+ \mathfrak f_q(j,\ell_0,\ell_1)=(\ell_0,\ell_1,1).
+\]
+For \(p=13\), the two \(E\)-channel selector states satisfy
+\[
+ \Theta_{0,13}(0,2)=(0,1,2),
+ \qquad
+ \Theta_{0,13}(1,5)=(1,1,2),
+\]
+so their marked images are distinct, while both are sent by
+\(\mathfrak f_{13}\) to \((1,2,1)\).  Thus forgetting \(j\) destroys
+injectivity.  To compare different prime fibres, define
+\[
+ \mathfrak F:
+ \bigsqcup_{\substack{q\ \mathrm{prime}\\q\equiv1\pmod {12}}}
+ \bigl(\{q\}\times\mathcal H_0(q)\bigr)
+ \longrightarrow\mathbb Z^3,
+ \qquad
+ \mathfrak F(q;j,\ell_0,\ell_1)=(\ell_0,\ell_1,1).
+\]
+At \(q=73\), one has \(\Theta_{0,73}(1,5)=(1,1,2)\), so this tagged
+image is also sent by \(\mathfrak F\) to \((1,2,1)\).  Hence forgetting
+the external prime loses still more information.
+
+\subsection{What the crosswalk proves, and what it does not}
+
+The theorem identifies the complete fixed-\(p\), normalized, positively
+oriented, \(j\)-marked divisor selector with an arithmetic slice of the
+candidate's terminal relation matrices.  It explains a genuine structural
+continuity between the earlier reciprocal-equation work and the terminal
+algebra used here: the common object is a \(2\times2\) integral presentation,
+and the passage between the two displayed matrices is an element of
+\(\operatorname{SL}_2(\mathbb Z)\).
+
+The orientation qualification is substantive.  The geometrically validated
+candidate specialization used elsewhere in this workbench has terminal
+parameter \(p_{\mathrm{S6}}=-1\), whereas the \(E\)-channel here has
+\(p_{\mathrm{S6}}=+1\).  No result in this section identifies those two
+oriented terminal data.  Thus the exact arithmetic equivalence does not, by
+itself, place an Erd\H{o}s--Straus selector state on the particular complex
+threefold reconstructed in the candidate-specific \(p=-1\) branch.
+
+It does not prove that the selector is nonempty for every prime, so it does
+not prove the Erd\H{o}s--Straus conjecture.  It also does not construct a map
+from the reciprocal cubic surface to \(X\), identify selector divisors with
+cycles or attaching maps in the candidate geometry, or transfer the
+candidate's complex structure to the arithmetic surface.  Those would be
+additional geometric assertions, not consequences of unimodular equivalence
+of relation matrices.

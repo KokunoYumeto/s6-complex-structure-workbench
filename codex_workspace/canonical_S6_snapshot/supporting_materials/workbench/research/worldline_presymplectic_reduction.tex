@@ -1,0 +1,991 @@
+% Input-safe canonical proof module.
+% Host requirements: amsmath, amssymb, amsthm, mathtools, mathrsfs,
+% array, booktabs, enumitem, hyperref, and theorem environments
+% theorem, proposition, lemma, and counterexample.
+\begingroup
+\def\J{\mathcal J_2}
+\def\V{\mathscr V}
+\def\Psd{\mathcal P_2}
+\def\Ppos{\mathcal P_2^{++}}
+\def\Nfuture{\mathcal N_+^\times}
+\def\rankC{\operatorname{rank}_{\mathbb C}}
+\def\dd{\mathrm d}
+\def\SpanR{\operatorname{span}_{\mathbb R}}
+
+\section[Exact presymplectic reduction of the SU(3)-Gram worldline model]
+{Exact presymplectic reduction of the\\
+\texorpdfstring{$SU(3)$}{SU(3)}-Gram worldline model}
+\label{wpr:sec:worldline-reduction}
+
+The constrained Hamiltonian framework used below goes back to Dirac's
+analysis of singular Lagrangians and constrained Hamiltonian systems
+\cite{Dirac1950}.  The separation of constraint surface, characteristic
+distribution, and reduced phase space is the finite-dimensional
+presymplectic constraint problem treated systematically by
+Gotay--Nester--Hinds \cite{GotayNesterHinds1978}; the regular quotient
+step is the symplectic reduction mechanism of Marsden--Weinstein
+\cite{MarsdenWeinstein1974}.  These references supply the general
+framework only.  Every constraint rank, orbit, stabilizer, kernel,
+one-form, two-form, quotient map, sign, equation of motion, and singular
+counterexample used for this particular (SU(3))-Gram model is computed
+explicitly below.
+
+\subsection{Objects, constants, and equations}
+Let
+\[
+ \J=\{A\in\operatorname{Mat}_{2\times2}(\mathbb C):A=A^*\},
+\qquad
+ \langle A,B\rangle_L=
+ \frac12\bigl(\operatorname{tr}A\operatorname{tr}B-\operatorname{tr}(AB)\bigr).
+\]
+Then \(\langle A,A\rangle_L=\det A\), and the pairing is nondegenerate.
+Write
+\[
+ \Psd=\{p\in\J:p\succeq0\},\quad
+ \Ppos=\{p\in\J:p\succ0\},\quad
+ \Nfuture=\{p\in\Psd:\rankC p=1\}.
+\]
+Retain
+\[
+ \V=\operatorname{Mat}_{3\times2}(\mathbb C),\quad
+ \alpha>0,\quad c>0,\quad m_0\geq0,
+\]
+and define
+\begin{align}
+ P_\alpha(Z)&=\alpha Z^*Z,\label{wpr:eq:P}\\
+ D P_{\alpha,Z}(\delta Z)&=
+ \alpha(\delta Z^*Z+Z^*\delta Z),\label{wpr:eq:DP}\\
+ \Phi_{m_0,\alpha,c}(Z)&=
+ \frac12\left(\det P_\alpha(Z)-m_0^2c^2\right).\label{wpr:eq:Phi}
+\end{align}
+The history configuration space on a retained parameter interval \(I\) is
+\[
+ \mathfrak C_I=
+ C^\infty(I,\J)\times C^\infty(I,\V)\times C^\infty(I,\mathbb R),
+\]
+with coordinates \((x,Z,e)\).  Because the Lagrangian is first order
+in \(x\), contains no \(\dot Z\), and contains no \(\dot e\), the
+corresponding instantaneous presymplectic phase carrier is
+\[
+ \mathcal E={\J}_x\times{\V}_Z\times\mathbb R_e.
+\]
+Define
+\begin{equation}
+ \theta=\langle P_\alpha(Z),\dd x\rangle_L,\qquad
+ \Omega=-\dd\theta,\qquad
+ \mathcal H=e\Phi_{m_0,\alpha,c}.
+ \label{wpr:eq:forms}
+\end{equation}
+For tangent vectors \(v=(v_x,v_Z,v_e)\) and \(w=(w_x,w_Z,w_e)\),
+\begin{equation}
+ \Omega(v,w)=
+ \langle v_x,D P_{\alpha,Z}(w_Z)\rangle_L
+ -\langle w_x,D P_{\alpha,Z}(v_Z)\rangle_L.
+ \label{wpr:eq:Omega}
+\end{equation}
+
+\begin{proposition}[Exact presymplectic Euler--Lagrange equation]
+\label{wpr:prop:EL}
+A path \((x,Z,e)\) is stationary under compactly supported variations
+if and only if
+\begin{align}
+ \det P_\alpha(Z)&=m_0^2c^2,\label{wpr:eq:EL1}\\
+ \frac{\dd}{\dd\tau}P_\alpha(Z)&=0,\label{wpr:eq:EL2}\\
+ \left\langle D P_{\alpha,Z}(\delta Z),
+ \dot x-eP_\alpha(Z)\right\rangle_L&=0
+ \quad\text{for every }\delta Z\in\V.\label{wpr:eq:EL3}
+\end{align}
+Equivalently, \(\iota_{\dot\gamma}\Omega=\dd\mathcal H\).
+\end{proposition}
+\begin{proof}
+Since
+\[
+ D(\det)_p(A)=2\langle p,A\rangle_L,
+\]
+one has
+\[
+ \dd\mathcal H(w)=
+ \Phi_{m_0,\alpha,c}w_e+
+ e\langle P_\alpha(Z),D P_{\alpha,Z}(w_Z)\rangle_L.
+\]
+Insert \eqref{wpr:eq:Omega} into
+\(\iota_{\dot\gamma}\Omega=\dd\mathcal H\) and test successively
+\(w_x,w_e,w_Z\).  This gives \eqref{wpr:eq:EL2},
+\eqref{wpr:eq:EL1}, and \eqref{wpr:eq:EL3}.
+\end{proof}
+
+\subsection{Colour quotient and orbit types}
+The left action is \(U\cdot(x,Z,e)=(x,UZ,e)\).
+
+\begin{lemma}[Local colour is a zero-moment null symmetry]
+\label{wpr:lem:null}
+For \(\xi\in\mathfrak{su}(3)\), let \(\xi^\#=(0,\xi Z,0)\).  Then
+\[
+ D P_{\alpha,Z}(\xi Z)=0,\qquad
+ \iota_{\xi^\#}\theta=0,\qquad
+ \iota_{\xi^\#}\Omega=0.
+\]
+Thus the zero map to \(\mathfrak{su}(3)^*\) is a presymplectic moment
+map.  The action is invariant under every \(\tau\)-dependent
+\(U:I\to SU(3)\), with no connection term.
+\end{lemma}
+\begin{proof}
+Because \(\xi^*=-\xi\),
+\[
+ D P_{\alpha,Z}(\xi Z)=
+ \alpha(Z^*\xi^*Z+Z^*\xi Z)=0.
+\]
+The form identities follow from \eqref{wpr:eq:forms} and
+\eqref{wpr:eq:Omega}.  Pointwise,
+\((UZ)^*(UZ)=Z^*Z\), even when \(U\) depends on \(\tau\).
+\end{proof}
+
+\begin{theorem}[Gram quotient, fibres, and stabilizers]
+\label{wpr:thm:quotient}
+The map \(P_\alpha\) induces a homeomorphism
+\[
+ \V/SU(3)\xrightarrow{\ \sim\ }\Psd,\qquad [Z]\longmapsto P_\alpha(Z).
+\]
+Its orbit types are
+\begin{center}
+\begin{tabular}{c c c}
+\toprule
+\(\rankC Z\)&\text{fibre}&\(\operatorname{Stab}_{SU(3)}(Z)\)\\
+\midrule
+\(2\)&\(SU(3)\)&\(\{I_3\}\)\\
+\(1\)&\(SU(3)/SU(2)\cong S^5\)&\(SU(2)\)\\
+\(0\)&a point&\(SU(3)\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+The rank-two quotient is smooth and free.  Rank one is a smooth
+nonprincipal orbit-type stratum with nontrivial stabilizer; the zero
+vertex is the singular apex of the total stratified quotient.
+\end{theorem}
+\begin{proof}
+If \(Z_1^*Z_1=Z_2^*Z_2\), the map \(Z_1v\mapsto Z_2v\) is an isometry
+between their images and extends to a unitary map of \(\mathbb C^3\).
+Its action on the orthogonal complement can be adjusted to make its
+determinant one.  In rank two the complement is one-dimensional and
+the adjustment is unique, hence the stabilizer is trivial.  In rank
+one the stabilizer is \(SU(2)\) on the two-dimensional complement.
+At zero it is all of \(SU(3)\).  Surjectivity has the retained section
+\[
+ Z_p=\alpha^{-1/2}
+ \begin{pmatrix}p^{1/2}\\0\quad0\end{pmatrix}.
+\]
+Compactness of \(SU(3)\) and continuity of the positive square root
+give the quotient homeomorphism.  On \(\Ppos\) the section is smooth.
+On \(\Nfuture\), the rank-one identity
+\[
+ p^{1/2}=\frac{p}{\sqrt{\operatorname{tr}p}}
+\]
+shows directly that the same section is smooth; together with the
+constant orbit type \(SU(3)/SU(2)\), this gives the stated smooth
+nonprincipal stratum.
+\end{proof}
+
+\begin{lemma}[Exact ranks of the Gram differential]
+\label{wpr:lem:ranks}
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If \(\rankC Z=2\), then
+\[
+ \operatorname{im}D P_{\alpha,Z}=\J,\qquad
+ \ker D P_{\alpha,Z}=T_Z(SU(3)\cdot Z),
+\]
+of real dimensions \(4\) and \(8\).
+\item If \(\rankC Z=1\) and \(p=P_\alpha(Z)\), then
+\[
+ \operatorname{im}D P_{\alpha,Z}=p^{\perp_L}=T_p\Nfuture
+\]
+has real dimension \(3\).  The full ambient kernel has dimension \(9\),
+but
+\[
+ \ker(D P_{\alpha,Z}|_{T_Z{\V}_1})=T_Z(SU(3)\cdot Z)
+\]
+has dimension \(5\), where \({\V}_1=\{Z:\rankC Z=1\}\).  The remaining
+four real kernel directions are
+\[
+ \operatorname{Hom}_{\mathbb C}
+ \bigl(\ker Z,(\operatorname{im}Z)^\perp\bigr);
+\]
+they raise rank and are not colour gauge.
+\item At \(Z=0\), \(D P_{\alpha,0}=0\).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+For rank two and arbitrary \(A=A^*\), retain
+\[
+ \delta Z_A=\frac1{2\alpha}Z(Z^*Z)^{-1}A.
+\]
+Substitution into \eqref{wpr:eq:DP} gives
+\(D P_{\alpha,Z}(\delta Z_A)=A\).  Hence the kernel has dimension
+\(12-4=8\), equal to the free colour-orbit tangent.
+
+For rank one write, without fixing either norm,
+\[
+ Z=ab^*,\qquad a\in\mathbb C^3\setminus\{0\},\quad
+ b\in\mathbb C^2\setminus\{0\},\quad r=a^*a>0.
+\]
+Then \(p=\alpha rbb^*\).  If \(w=\delta Z^*a\), every
+\(w\in\mathbb C^2\) occurs by taking \(\delta Z=aw^*/r\), and
+\[
+ \operatorname{im}D P_{\alpha,Z}
+ =\{\alpha(wb^*+bw^*):w\in\mathbb C^2\}.
+\]
+The kernel of \(w\mapsto wb^*+bw^*\) is
+\(\{itb:t\in\mathbb R\}\), so the image has dimension three.  It is
+contained in \(p^{\perp_L}\), and equality follows by dimension.
+
+Use the exact orthogonal splittings
+\[
+ \mathbb C^2=(\ker Z)^\perp\oplus\ker Z,\qquad
+ \mathbb C^3=\operatorname{im}Z\oplus(\operatorname{im}Z)^\perp.
+\]
+Retaining the nonzero singular value \(\sigma>0\), adapted unit vectors
+give
+\[
+ Z=\begin{pmatrix}\sigma&0\\0&0\\0&0\end{pmatrix},\qquad
+ \delta Z=\begin{pmatrix}a_0&b_0\\c_1&d_1\\c_2&d_2\end{pmatrix},
+\]
+and
+\[
+ \alpha^{-1}D P_{\alpha,Z}(\delta Z)=
+ \begin{pmatrix}
+ 2\sigma\operatorname{Re}a_0&\sigma b_0\\
+ \sigma\overline{b_0}&0
+ \end{pmatrix}.
+\]
+The ambient kernel has \(\operatorname{Re}a_0=b_0=0\) and dimension
+nine.  The linearized rank-one equations also impose \(d_1=d_2=0\).
+The five remaining directions are the \(SU(3)/SU(2)\)-orbit tangent;
+the \(d_1,d_2\) block is the displayed complex Hom-space.  The zero
+case follows from \eqref{wpr:eq:DP}.
+\end{proof}
+
+\subsection{Forms after colour reduction}
+Define
+\[
+ \overline{\mathcal E}
+ ={\J}_x\times{\Psd}_p\times\mathbb R_e
+ \cong\mathcal E/SU(3),\qquad
+ q(x,Z,e)=(x,P_\alpha(Z),e).
+\]
+
+\begin{proposition}[Reduced one-form and two-form]
+\label{wpr:prop:reduced-forms}
+The forms are basic for the colour action and satisfy
+\[
+ \theta=q^*\overline\theta,\qquad
+ \Omega=q^*\overline\Omega,
+\]
+where
+\begin{align}
+ \overline\theta&=\langle p,\dd x\rangle_L,\label{wpr:eq:bartheta}\\
+ \overline\Omega&=-\dd\overline\theta,\label{wpr:eq:barOmega}\\
+ \overline\Omega((v_x,v_p),(w_x,w_p))
+ &=\langle v_x,w_p\rangle_L-\langle w_x,v_p\rangle_L.
+ \label{wpr:eq:barOmega-explicit}
+\end{align}
+After omitting the multiplier coordinate, this is symplectic on
+\(\J\times\Ppos\).  On \(\J\times\Nfuture\), its kernel is exactly
+\[
+ \ker\overline\Omega_{(x,p)}=\SpanR\{(p,0)\}.
+\]
+On \(\J\times\{0\}\), the stratum-restricted two-form is zero.
+\end{proposition}
+\begin{proof}
+Basicness follows from Lemma~\ref{wpr:lem:null}; the formulas follow by
+differentiation.  The rank-two assertion uses that \(\Ppos\) is open in
+\(\J\).  At nonzero rank-one \(p\), one has
+\[
+ T_p\Nfuture=p^{\perp_L}.
+\]
+If \((v_x,v_p)\) annihilates \eqref{wpr:eq:barOmega-explicit}, testing
+arbitrary \(w_x\) gives \(v_p=0\), and testing
+\(w_p\in p^{\perp_L}\) gives
+\(v_x\in(p^{\perp_L})^{\perp_L}=\SpanR\{p\}\).
+At \(p=0\), the zero stratum has no momentum tangent direction.
+\end{proof}
+
+\subsection{Positive mass}
+For \(m_0>0\), define the retained future shell
+\[
+ \mathcal H^+_{m_0,c}
+ =\{p\in\Ppos:\det p=m_0^2c^2\}.
+\]
+The parameter \(\alpha\) remains present in the exact quotient map
+\(p=\alpha Z^*Z\); the displayed subset of momentum space itself
+depends on \(m_0,c\).
+
+\begin{theorem}[Exact massive reduction]
+\label{wpr:thm:massive}
+Let \(m_0>0\).  Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The constraint surface
+\[
+ \Sigma_{m_0,\alpha,c}
+ =\J\times\{Z:\det P_\alpha(Z)=m_0^2c^2\}\times\mathbb R_e
+\]
+is smooth and the colour action on it is free.
+\item Its colour quotient is
+\[
+ \overline\Sigma_{m_0,c}
+ =\J\times\mathcal H^+_{m_0,c}\times\mathbb R_e.
+\]
+Before colour reduction the kernel of the restricted two-form is the
+direct sum of the eight-dimensional colour-orbit tangent,
+\(\SpanR\{(p,0)\}\), and \(\SpanR\{\partial_e\}\).  After colour
+reduction and omission of \(e\), only \(\SpanR\{(p,0)\}\) remains.
+\item The equations are
+\[
+ \dot p=0,\qquad \dot x=e\,p,\qquad
+ \det p=m_0^2c^2,
+\]
+while \(\dot e\) and motion in the colour fibre are arbitrary.
+\item The physical phase space
+\[
+ \mathcal R_{m_0,c}
+ =
+ \frac{\J\times\mathcal H^+_{m_0,c}}
+ {(x,p)\sim(x+s p,p),\ s\in\mathbb R}
+\]
+is canonically symplectomorphic to \(T^*\mathcal H^+_{m_0,c}\).
+\item The colour-reduced positive-mass model is exactly the standard
+future-directed spinless first-order relativistic particle of mass
+\(m_0\) and speed constant \(c\).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The constraint implies \(\rankC Z=2\).  By
+Lemma~\ref{wpr:lem:ranks}, \(P_\alpha\) is a submersion there, and
+\[
+ D(\det)_p=2\langle p,\mathord{\cdot}\rangle_L\neq0.
+\]
+This proves smoothness.  Theorem~\ref{wpr:thm:quotient} gives freeness
+and the colour quotient.  Since
+\[
+ T_p\mathcal H^+_{m_0,c}=p^{\perp_L},
+\]
+the proof of Proposition~\ref{wpr:prop:reduced-forms} gives the
+characteristic line.  Pullback through the Gram submersion adds exactly
+the colour-orbit kernel, and the multiplier adds \(\partial_e\).
+
+Surjectivity of \(D P_{\alpha,Z}\) turns \eqref{wpr:eq:EL3} into
+\(\dot x=e p\); the other equations are \eqref{wpr:eq:EL1} and
+\eqref{wpr:eq:EL2}.  A path with constant \(p\) lies in one free Gram
+fibre and differs locally from a constant lift by a
+\(\tau\)-dependent colour transformation.
+
+For the physical identification, if
+\(A\in T_p\mathcal H^+_{m_0,c}\), define
+\[
+ \xi_{[x],p}(A)=-\langle x,A\rangle_L.
+\]
+This is unchanged by \(x\mapsto x+s p\).  Conversely, the annihilator
+of \(p^{\perp_L}\) is \(\SpanR\{p\}\), so every cotangent covector has
+one and only one class \([x]\).  Hence
+\[
+ ([x],p)\longmapsto(p,\xi_{[x],p})
+\]
+is a fibrewise linear bijection to \(T^*\mathcal H^+_{m_0,c}\).
+The characteristic \(\mathbb R\)-action is free because every shell
+momentum is nonzero.  It is proper: choose any Euclidean norm on
+\(\J\).  For compact sets \(K_1,K_2\subset
+\J\times\mathcal H^+_{m_0,c}\), the momenta occurring in them have a
+positive minimum Euclidean norm \(\delta\); if
+\((x,p)\in K_1\) and \((x+s p,p)\in K_2\), boundedness of the two
+position projections gives \(|s|\delta\leq C(K_1,K_2)\).
+Thus the orbit space is smooth.  The smooth vector-bundle map
+\[
+ (x,p)\longmapsto
+ \bigl(p,\;A\mapsto-\langle x,A\rangle_L\bigr)
+\]
+is fibrewise onto with kernel \(\SpanR\{p\}\), and therefore descends
+with a smooth inverse.  The displayed bijection is consequently a
+diffeomorphism.
+
+The basic one-form on the shell is
+\begin{equation}
+ \theta_{\mathrm{basic}}=-\langle x,\dd p\rangle_L.
+ \label{wpr:eq:basic}
+\end{equation}
+It is the pullback of the tautological cotangent one-form, and
+\begin{equation}
+ \overline\theta
+ =\dd\langle p,x\rangle_L+\theta_{\mathrm{basic}}.
+ \label{wpr:eq:boundary}
+\end{equation}
+Therefore
+\(\overline\Omega=-\dd\theta_{\mathrm{basic}}\), the canonical
+cotangent symplectic form under the convention
+\(\omega_{\mathrm{can}}=-\dd\lambda_{\mathrm{can}}\).
+The original \(\overline\theta\) is not horizontal on the massive
+characteristic because \(\overline\theta(p,0)=m_0^2c^2\); the exact
+boundary term in \eqref{wpr:eq:boundary} produces the reduced
+one-form.
+
+Finally the reduced action is
+\[
+ \int_I\left(\langle p,\dot x\rangle_L
+ -\frac e2(\det p-m_0^2c^2)\right)\dd\tau.
+\]
+Because \(\Ppos\) is open in \(\J\), \(p\) has every infinitesimal
+Hermitian variation.  This is the standard covariant first-order
+spinless particle action on the future-timelike sector, with no
+residual internal symplectic factor.
+\end{proof}
+
+\begin{proposition}[Exact Hamiltonian gauge quasi-symmetry]
+\label{wpr:prop:gauge}
+For a smooth real \(\varepsilon(\tau)\), set
+\[
+ \delta_\varepsilon x=\varepsilon P_\alpha(Z),\qquad
+ \delta_\varepsilon Z=0,\qquad
+ \delta_\varepsilon e=\dot\varepsilon.
+\]
+Then
+\begin{equation}
+ \delta_\varepsilon L
+ =
+ \frac{\dd}{\dd\tau}
+ \left[
+ \frac{\varepsilon}{2}
+ \bigl(\det P_\alpha(Z)+m_0^2c^2\bigr)
+ \right].
+ \label{wpr:eq:gauge-boundary}
+\end{equation}
+For compactly supported \(\varepsilon\) this is an exact gauge
+quasi-symmetry, whose phase-space part generates the shell
+characteristic where that characteristic is regular.
+\end{proposition}
+\begin{proof}
+Put \(p=P_\alpha(Z)\) and \(q=\det p=\langle p,p\rangle_L\).  Since
+\(\dot q=2\langle p,\dot p\rangle_L\),
+\begin{align*}
+ \delta_\varepsilon L
+ &=
+ \langle p,\dot\varepsilon p+\varepsilon\dot p\rangle_L
+ -\frac{\dot\varepsilon}{2}(q-m_0^2c^2)\\
+ &=
+ \frac{\dot\varepsilon}{2}(q+m_0^2c^2)
+ +\frac{\varepsilon}{2}\dot q,
+\end{align*}
+which is \eqref{wpr:eq:gauge-boundary}.
+\end{proof}
+
+
+\subsection{Massless rank one}
+Set
+\[
+ \mathcal C_{0,\alpha,c}
+ =\{Z:\det P_\alpha(Z)=0\}
+ =\{Z:\rankC Z\leq1\}.
+\]
+The constant \(c>0\) is retained in the model, although it cancels
+from the set-theoretic \(m_0=0\) equation.
+
+\begin{lemma}[The pulled-back massless constraint is irregular]
+\label{wpr:lem:irregular}
+Writing the rows of \(Z\) as \(Z_{a\bullet}\),
+\begin{equation}
+ \det P_\alpha(Z)=
+ \alpha^2\sum_{1\leq a<b\leq3}
+ |Z_{a1}Z_{b2}-Z_{a2}Z_{b1}|^2.
+ \label{wpr:eq:CB}
+\end{equation}
+Consequently,
+\[
+ \dd(\det P_\alpha)_Z=0
+ \quad\text{for every }Z\in\mathcal C_{0,\alpha,c}.
+\]
+The single real multiplier equation describes the rank-at-most-one
+set, but its differential supplies none of the four real normal
+equations on the smooth rank-one stratum.
+\end{lemma}
+\begin{proof}
+Equation \eqref{wpr:eq:CB} is Cauchy--Binet with the factor
+\(\alpha^2\) retained.  On its zero set every complex minor vanishes,
+so differentiation of the sum of squared absolute values gives zero.
+Equivalently, at rank one,
+\[
+ \dd(\det P_\alpha)_Z(\delta Z)
+ =2\langle p,D P_{\alpha,Z}(\delta Z)\rangle_L=0
+\]
+by Lemma~\ref{wpr:lem:ranks}; at \(Z=0\) use
+\(D P_{\alpha,0}=0\).
+\end{proof}
+
+\begin{theorem}[Nonzero massless equations and physical quotient]
+\label{wpr:thm:massless}
+Suppose \(m_0=0\) and \(\rankC Z=1\), and put
+\(p=P_\alpha(Z)\in\Nfuture\).  Then:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The colour fibre is \(SU(3)/SU(2)\), with stabilizer \(SU(2)\).
+\item The complete equations are
+\begin{equation}
+ \dot p=0,\qquad
+ \dot x=\lambda(\tau)p
+ \quad\text{for some real }\lambda(\tau),\qquad
+ e(\tau)\text{ arbitrary}.
+ \label{wpr:eq:null-EL}
+\end{equation}
+No equation identifies \(\lambda\) with the written multiplier \(e\).
+\item On the intrinsic smooth rank-one shell, the kernel before
+colour reduction is the direct sum of
+\[
+ T_Z(SU(3)\cdot Z),\qquad
+ \SpanR\{(p,0)\},\qquad
+ \SpanR\{\partial_e\}.
+\]
+After colour reduction and omission of \(e\), only the characteristic
+\(\SpanR\{(p,0)\}\) remains.
+\item The physical phase space
+\[
+ \mathcal R_0^\times
+ =
+ \frac{\J\times\Nfuture}
+ {(x,p)\sim(x+s p,p)}
+\]
+is canonically symplectomorphic to \(T^*\Nfuture\), with reduced
+one-form \(-\langle x,\dd p\rangle_L\) and its canonical two-form.
+No quotient by positive rescaling of \(p\) occurs.
+\item Thus the unparameterized spacetime curves and physical
+symplectic quotient agree with the standard future-directed nonzero
+spinless massless particle.  The original triples \((x,Z,e)\), their
+off-shell neighbourhood, and their multiplier equations are not
+exactly the standard massless system.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The fibre statement is Theorem~\ref{wpr:thm:quotient}.  By
+Lemma~\ref{wpr:lem:ranks}, equation \eqref{wpr:eq:EL3} says
+\[
+ \dot x-e p\in(p^{\perp_L})^{\perp_L}=\SpanR\{p\}.
+\]
+Since \(ep\) lies in this line, this is equivalent to
+\(\dot x=\lambda p\), with no relation between \(\lambda\) and \(e\).
+Equation \eqref{wpr:eq:EL2} gives \(\dot p=0\).  A path in a fixed
+rank-one Gram fibre differs locally from a constant representative by
+a \(\tau\)-dependent \(SU(3)\) transformation; the \(SU(2)\)
+stabilizer makes this gauge description reducible.
+
+On the intrinsic rank-one manifold,
+Lemma~\ref{wpr:lem:ranks} identifies the vertical kernel with the
+five colour directions.  Proposition~\ref{wpr:prop:reduced-forms}
+adds the one spacetime characteristic, and \(e\) adds
+\(\partial_e\).
+
+Since \(T_p\Nfuture=p^{\perp_L}\), the massive cotangent construction
+applies without division by \(\det p\):
+\[
+ ([x],p)\longmapsto
+ \left(p,\;A\longmapsto-\langle x,A\rangle_L\right).
+\]
+Every \(p\in\Nfuture\) is nonzero.  The freeness, properness, and smooth
+vector-bundle argument in the massive proof applies to compact subsets
+of \(\J\times\Nfuture\) verbatim, and proves that this map is a
+diffeomorphism to \(T^*\Nfuture\).  Moreover,
+\eqref{wpr:eq:boundary} identifies the canonical form.  Reparametrizing
+the worldline changes \(x\) along \(p\); it does not identify distinct
+positive magnitudes of \(p\).  Lemma~\ref{wpr:lem:irregular} and the
+absence of \(\lambda=e\) establish the final inequivalence statement.
+\end{proof}
+
+\begin{counterexample}[Rank-one multiplier mismatch]
+\label{wpr:ce:rank1}
+Retain arbitrary \(s>0\), and set
+\[
+ Z_s=\begin{pmatrix}s&0\\0&0\\0&0\end{pmatrix},\qquad
+ p_s=\alpha\begin{pmatrix}s^2&0\\0&0\end{pmatrix}.
+\]
+The path
+\[
+ Z(\tau)=Z_s,\qquad x(\tau)=\tau p_s,\qquad e(\tau)=0
+\]
+satisfies all equations in Proposition~\ref{wpr:prop:EL} for
+\(m_0=0\).  The standard action with momentum independently varied in
+\(\J\) and the same \(e=0\) would require \(\dot x=e p_s=0\).
+
+Under Proposition~\ref{wpr:prop:gauge}, a solution
+\(\dot x=\lambda p\), \(\dot p=0\), transforms by
+\[
+ \lambda\longmapsto\lambda+\dot\varepsilon,\qquad
+ e\longmapsto e+\dot\varepsilon.
+\]
+Thus \(\lambda-e\) is invariant under the stated Hamiltonian gauge;
+the discrepancy remains when the original multiplier is retained.
+\end{counterexample}
+
+\begin{counterexample}[Four non-colour first-order null directions]
+\label{wpr:ce:transverse}
+Retain arbitrary \(s>0\) and \(t\in\mathbb C\setminus\{0\}\), and put
+\[
+ Z_s=\begin{pmatrix}s&0\\0&0\\0&0\end{pmatrix},\qquad
+ \Delta_t=\begin{pmatrix}0&0\\0&t\\0&0\end{pmatrix}.
+\]
+Then
+\begin{equation}
+ D P_{\alpha,Z_s}(\Delta_t)=0,\qquad
+ \det P_\alpha(Z_s+\varepsilon\Delta_t)
+ =\alpha^2s^2|t|^2\varepsilon^2
+ \quad(\varepsilon\in\mathbb R).
+ \label{wpr:eq:transverse}
+\end{equation}
+The vector \(\Delta_t\) is not tangent to a colour orbit, since every
+\(\xi Z_s\) has zero second column.  It is not tangent to the rank-one
+variety, because the perturbed matrix has rank two for
+\(\varepsilon\neq0\).  Allowing both complex coordinates in
+\((\operatorname{im}Z_s)^\perp\) gives the four real transverse
+directions of Lemma~\ref{wpr:lem:ranks}.  They are second-order
+shell-opening directions, not gauge.
+\end{counterexample}
+
+\subsection{The zero-momentum vertex}
+\begin{theorem}[Additional singular branch]
+\label{wpr:thm:zero}
+Let \(m_0=0\) and \(Z=0\).  Then \(p=0\), the stabilizer is all of
+\(SU(3)\), and both \(\theta\) and \(\Omega\) vanish on
+\(\J\times\{0\}\times\mathbb R_e\).  Every pair of paths
+\[
+ x:I\to\J,\qquad e:I\to\mathbb R,
+\]
+with \(Z(\tau)\equiv0\), satisfies the Euler--Lagrange equations.
+
+The phase part of the Hamiltonian gauge vanishes at \(p=0\), while the
+presymplectic kernel contains every \(x\)-direction.  Quotienting by
+the actual colour and Hamiltonian-gauge orbits therefore leaves the
+whole \(\J\) branch, whereas quotienting by all characteristic leaves
+would collapse it to one point.  This is an exact failure of regular
+Dirac reduction at the vertex.
+\end{theorem}
+\begin{proof}
+At \(Z=0\), one has \(p=0\) and \(D P_{\alpha,0}=0\).  Every equation
+in Proposition~\ref{wpr:prop:EL} is identically satisfied, independent
+of \(\dot x,e,\dot e\).  The form and gauge statements follow from
+\eqref{wpr:eq:forms} and
+\(\delta_\varepsilon x=\varepsilon p=0\).
+\end{proof}
+
+\begin{counterexample}[Stationary zero momentum with nonconstant
+position]
+\label{wpr:ce:zero}
+The retained paths
+\[
+ x(\tau)=\begin{pmatrix}\tau^2&0\\0&0\end{pmatrix},\qquad
+ Z(\tau)=0,\qquad e(\tau)=\sin\tau
+\]
+are stationary for the present \(m_0=0\) action.  The standard
+independent-momentum action gives \(\dot x=e p=0\) at \(p=0\), and
+therefore excludes this path.  Removing \(p=0\), as is conventional
+for physical massless phase space, removes this vertex counterexample
+but does not regularize the off-shell rank-one constraint.
+\end{counterexample}
+
+\subsection{Kernel dimensions and exact verdict}
+\begin{proposition}[Every kernel jump]
+\label{wpr:prop:kernels}
+Omit the always-null multiplier direction for the table.  On the
+ambient \(16\)-real-dimensional \({\J}_x\times{\V}_Z\),
+\begin{center}
+\begin{tabular}{c c c c}
+\toprule
+\(\rankC Z\)&\(\operatorname{rank}_{\mathbb R}D P_{\alpha,Z}\)&
+\(\operatorname{rank}_{\mathbb R}\Omega\)&
+\(\dim_{\mathbb R}\ker\Omega\)\\
+\midrule
+\(2\)&\(4\)&\(8\)&\(8\)\\
+\(1\)&\(3\)&\(6\)&\(10\)\\
+\(0\)&\(0\)&\(0\)&\(16\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+On the \(12\)-real-dimensional intrinsic rank-one stratum
+\({\J}_x\times{\V}_1\), the pulled-back form has rank \(6\) and nullity
+\(6\): five colour directions and one spacetime characteristic.
+\end{proposition}
+\begin{proof}
+Using the Lorentz pairing to identify \(\J\cong\J^*\), the matrix of
+\(\Omega\) is
+\[
+ \begin{pmatrix}
+ 0&G_L D P_{\alpha,Z}\\
+ -(D P_{\alpha,Z})^{\mathsf T}G_L&0
+ \end{pmatrix}.
+\]
+Its rank is twice the rank of \(D P_{\alpha,Z}\).  Apply
+Lemma~\ref{wpr:lem:ranks} in the ambient space and on \(T_Z{\V}_1\).
+\end{proof}
+
+\begin{theorem}[Final comparison]
+\label{wpr:thm:verdict}
+The strongest correct result is:
+\begin{enumerate}[label=\textup{(\arabic*)}]
+\item for \(m_0>0\), colour reduction gives exactly the standard
+future-timelike first-order spinless particle, including its equations,
+constraint characteristic, and physical cotangent symplectic space;
+\item for \(m_0=0\) and \(p\neq0\), colour and characteristic reduction
+gives exactly the standard future-null physical phase space and
+unparameterized null trajectories;
+\item the full \(m_0=0\) pulled-back multiplier action is not the
+standard massless variational system: its constraint has zero
+differential, its rank-one equation is \(\dot x=\lambda p\) rather
+than \(\dot x=e p\), its ambient kernel contains four non-colour
+transverse directions, and its vertex admits arbitrary \(x(\tau)\).
+\end{enumerate}
+The exact relating morphism is \(P_\alpha(Z)=\alpha Z^*Z\); the exact
+failure locus is the singular differential of
+\(\det\circ P_\alpha\) on the rank-at-most-one variety.
+\end{theorem}
+\begin{proof}
+Combine Theorem~\ref{wpr:thm:massive},
+Theorem~\ref{wpr:thm:massless},
+Lemma~\ref{wpr:lem:irregular}, and
+Counterexamples~\ref{wpr:ce:rank1}--\ref{wpr:ce:zero}.
+\end{proof}
+
+\subsection{Deterministic verification companion}
+The companion program
+\texttt{verify\_worldline\_reduction.py} checks the determinant
+polarization, the rank-two Gram right inverse, all Gram and
+presymplectic ranks, all colour-orbit ranks, the intrinsic rank-one
+tangent calculation, the zero gradient and quadratic transverse
+opening of the massless constraint, the cotangent-form sign, and
+\eqref{wpr:eq:gauge-boundary}, using exact symbolic arithmetic.
+
+\subsection{Comparison with the extended exact Lorentz packet}
+\label{wpr:app:packet}
+
+This subsection records a bounded line-specific audit of source lines
+875--1654.  The audited source file is
+\begin{center}
+\small\path{exact_lorentz_observation_bridge.tex}.
+\end{center}
+It is stored beneath
+\path{supporting_materials/workbench/evidence} in the directory
+\begin{center}
+\small\path{worldline_presymplectic_reduction_20260904}.
+\end{center}
+Its file SHA-256 is
+\[
+\texttt{2BE16E1DC71B2E5DC04238F0FBE440138258D0825A4841AB2F29662587681599}.
+\]
+That packet adds a third column \(\phi\in\mathbb C^3\), writes
+\(B=[Z\ \phi]\), and uses
+\[
+ G=Z^*Z,\quad z=Z^*\phi,\quad
+ \lambda=\phi^*\phi,\quad \omega=\det B.
+\]
+Its mass convention is \(m^2_{\mathrm{packet}}=\det p\), with physical
+mass \(M_{\mathrm{phys}}=\sqrt{\det p}/c\).  The convention in the
+audited \(S^6\) module is
+\(m_{\alpha,c}^2=\det p/c^2\).  The exact dictionary is therefore
+\[
+ m^2_{\mathrm{packet}}=c^2m_{\alpha,c}^2,\qquad
+ M_{\mathrm{phys}}=m_{\alpha,c};
+\]
+there is no mathematical disagreement.
+
+\subsubsection{Claim ledger}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.15\textwidth}
+                >{\raggedright\arraybackslash}p{0.20\textwidth}
+                >{\raggedright\arraybackslash}p{0.55\textwidth}}
+\toprule
+Source lines&Verdict&Exact scope\\
+\midrule
+875--950&validated&
+\(p=\alpha Z^*Z\) is a proper surjection, its fibres are the
+\(SU(3)\)-orbits, and
+\(\det p=\alpha^2\sum_{a<b}|\Delta_{ab}(Z)|^2\) has range
+\([0,\infty)\).  The zero fibre is rank at most one.\\
+\addlinespace
+952--1027&validated as a multiplication-operator model&
+With the stated pushforward measure, the observer-energy and
+mass-squared multiplication operators have essential ranges
+\([0,\infty)\), no point spectrum, and no positive gap after a vacuum
+is adjoined.  This is a kinematic/free spectral statement, not a
+statement about an interacting field Hamiltonian.\\
+\addlinespace
+1029--1476&validated&
+For \(\lambda_0>0\), \(\omega_0\neq0\), the constrained quotient,
+associated-ball description, momentum fibres, and sharp lower bound
+\(\det p\geq\alpha^2|\omega_0|^2/\lambda_0\) are algebraic and
+differential-topological statements.  Since \(\omega_0\neq0\) forces
+\(B\) invertible and \(Z\) rank two, the massless rank-one defect
+proved above does not invalidate these claims.\\
+\addlinespace
+1482--1531&valid invariance and constraints, incomplete dynamics&
+The displayed action is invariant and its multiplier and \(x\)
+variations give the stated constraints and \(\dot p=0\).  Its omitted
+\((Z,\phi)\) equations materially change the dynamical interpretation;
+Theorem~\ref{wpr:thm:packet-action} below computes them intrinsically.\\
+\addlinespace
+1533--1603&validated with scope qualification&
+The multiplication spectra and the direct-sum/Fock vacuum gap equal
+the displayed threshold.  The threshold is inserted by fixing
+\(\lambda=\lambda_0\) and \(\omega=\omega_0\neq0\); it is not a
+dynamically generated interacting mass gap and is not a Yang--Mills
+mass-gap theorem.\\
+\addlinespace
+1605--1633&validated and scope-sharpening&
+The two explicit degenerating sequences prove that controlling only
+one of \(\lambda\) and \(\omega\) gives no positive threshold.  Thus
+the positive lower endpoint is exactly constraint-selected.\\
+\addlinespace
+1635--1653&validated&
+The diagonal boost excludes a positive-definite quadratic form on the
+spinor carrier invariant under all of \(SL_2(\mathbb C)\).\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The independent replay and line-by-line claim ledger for this packet are
+retained under the project-relative path
+\path{supporting_materials/workbench/evidence/}\allowbreak
+\path{exact_lorentz_observation_bridge_audit_20260904}.
+The packet checker passes \(33/33\) assertions and the separately written
+checker passes \(30/30\).  The audit-report SHA--256 is
+\texttt{c8d01af28836340798c2fa7e27f8e097\allowbreak%
+d67e0b8d7c13f75271af473958d391df}; the promotion manifest, which verifies
+all retained audit artifacts, has SHA--256
+\par\noindent
+\texttt{52f53746558fa219260b224abdb71c86d2cd6c13192774d0d2fb1a1ed71bcf35}.
+
+\subsubsection{The full dynamics of the packet's constrained action}
+
+Retain the packet's constants
+\[
+ \lambda_0>0,\qquad\omega_0\in\mathbb C^*,\qquad\alpha>0
+\]
+and its smooth colour quotient
+\[
+ \mathcal Q_{\lambda_0,\omega_0}
+ \cong
+ \operatorname{Herm}_2^0(\mathbb C)
+ \times\{w\in\mathbb C^2:\|w\|^2<\lambda_0\}.
+\]
+Put
+\begin{equation}
+ \mu(w)=\frac{|\omega_0|}
+ {\sqrt{\lambda_0-\|w\|^2}},\qquad
+ G(A,w)=\mu(w)e^A,\qquad
+ p(A,w)=\alpha G(A,w).
+ \label{wpr:eq:packet-p}
+\end{equation}
+Eliminating the three regular multiplier constraints from source lines
+1484--1495 gives the intrinsic action
+\begin{equation}
+ S_{\mathrm{packet}}[x,A,w]
+ =\int_I\langle p(A,w),\dot x\rangle_L\,\dd\tau
+ \label{wpr:eq:packet-action}
+\end{equation}
+on \({\J}_x\times\mathcal Q_{\lambda_0,\omega_0}\).  The use of the
+intrinsic constrained action loses no Euler--Lagrange equation:
+the constraint map is a submersion on \(\omega_0\neq0\), so the
+Lagrange-multiplier theorem identifies ambient stationarity with
+stationarity against every tangent vector of the constrained
+manifold.  This is a statement about classical stationary paths; it
+does not assert equality of quantum measures or path integrals after
+formally integrating out the multipliers.
+
+\begin{theorem}[Complete reduced dynamics of the constrained packet]
+\label{wpr:thm:packet-action}
+For the momentum projection in \eqref{wpr:eq:packet-p}:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item If \(w\neq0\), then \(D p_{(A,w)}\) has real rank \(4\), and its
+kernel has dimension \(3\), tangent to the \(S^3\) momentum fibre.
+The Euler--Lagrange equations of \eqref{wpr:eq:packet-action} are
+\[
+ \dot p=0,\qquad \dot x=0,
+\]
+with motion along the fixed \(S^3\) fibre presymplectically null.
+\item If \(w=0\), then
+\[
+ \det p=\frac{\alpha^2|\omega_0|^2}{\lambda_0},
+\]
+\(D p_{(A,0)}\) has rank \(3\), its image is
+\(p^{\perp_L}\), and its kernel consists of all four real
+\(w\)-directions.  The pointwise equations are
+\[
+ \dot p=0,\qquad \dot x=\lambda(\tau)p.
+\]
+Every actual solution remaining on the threshold has constant
+\((A,w)\), because the momentum fibre over a threshold momentum is a
+single point.
+\item Consequently, the source action is not a family of ordinary
+massive particle actions over all masses above the lower endpoint.
+Only its threshold stratum has the ordinary worldline characteristic;
+strict-interior configurations have \(\dot x=0\).  The observer
+multiplication operator of source lines 1533--1603 is a separate
+positive-energy representation and is not the Hamiltonian generating
+\(\tau\)-evolution in \eqref{wpr:eq:packet-action}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For fixed \(w\), varying \(A\) varies \(p\) through the
+three-dimensional fixed-determinant future hyperboloid, so the image
+of the \(A\)-differential is \(p^{\perp_L}\).  Direct differentiation
+without suppressing any constant gives
+\begin{equation}
+ D\mu_w(\delta w)
+ =
+ \frac{|\omega_0|\operatorname{Re}\langle w,\delta w\rangle}
+ {(\lambda_0-\|w\|^2)^{3/2}}.
+ \label{wpr:eq:Dmu}
+\end{equation}
+When \(w\neq0\), a radial \(\delta w\) makes
+\eqref{wpr:eq:Dmu} nonzero and changes \(\det p=\alpha^2\mu(w)^2\).
+This supplies a fourth direction transverse to \(p^{\perp_L}\).
+The remaining \(w\)-directions satisfy
+\(\operatorname{Re}\langle w,\delta w\rangle=0\), form a
+three-dimensional space, and are exactly tangent to the \(S^3\)
+momentum fibre.
+
+At \(w=0\), equation \eqref{wpr:eq:Dmu} vanishes in every direction,
+so the four \(w\)-directions lie in \(\ker Dp\) and the image is only
+\(p^{\perp_L}\).  These directions open the mass above its minimum at
+second order:
+\[
+ \det p(A,\varepsilon v)
+ =
+ \frac{\alpha^2|\omega_0|^2}
+ {\lambda_0-\varepsilon^2\|v\|^2}.
+\]
+
+For an action \(\int\langle p(q),\dot x\rangle_L\dd\tau\), variation
+of \(x\) gives \(\dot p=0\), while variation of \(q\) gives
+\[
+ \langle Dp_q(\delta q),\dot x\rangle_L=0
+ \quad\text{for all }\delta q.
+\]
+If \(w\neq0\), the image is all of \(\J\), hence \(\dot x=0\).
+If \(w=0\), the image is \(p^{\perp_L}\), hence
+\(\dot x\in\SpanR\{p\}\).  The packet's own momentum-fibre theorem
+states that the fibre over a threshold momentum is a singleton, which
+completes the solution statement.
+\end{proof}
+
+\subsubsection{Relation to the rank-one irregularity}
+
+The packet's fixed-\(\omega_0\neq0\) constrained manifold never meets
+\(\rankC Z\leq1\), so the zero differential of
+\(\det\circ P_\alpha\) does not invalidate its topology or positive
+lower bound.  The exact relation is instead:
+\begin{enumerate}
+\item on the unrestricted carrier, the rank-one and zero strata give
+the massless irregularities proved in
+Theorems~\ref{wpr:thm:massless} and \ref{wpr:thm:zero};
+\item on the packet's constrained carrier, \(Z\) remains rank two, but
+the momentum projection develops a different four-real-dimensional
+critical kernel at its positive-mass threshold \(w=0\);
+\item the algebraic inequality is a sharp, externally
+constraint-selected threshold; a dynamically generated gap would
+require a specified interacting Hamiltonian or field operator whose
+spectrum produces the scale rather than receiving
+\(\lambda_0,\omega_0\) as fixed input.
+\end{enumerate}
+
+\endgroup

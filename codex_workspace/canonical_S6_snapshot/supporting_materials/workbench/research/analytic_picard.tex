@@ -1,0 +1,709 @@
+\section{Structure-sheaf direct images and uniform non-torsion}
+\label{sec:analytic-picard}
+
+This section reconstructs the analytic inputs used by the candidate's
+Proposition~10.8.  The proof differs at one important point from the
+candidate's route: extension across the cusp is obtained from the intrinsic
+nearby-cycle isomorphism of \cref{thm:p0-integral-specialization}, not from
+the cellular collapse.  The two cusp maps are now independently proved equal
+in \cref{thm:collapse-equals-specialization}; the argument below nevertheless
+retains its logically independent intrinsic formulation.
+
+Put
+\[
+ e=d\zeta _1\wedge d\zeta _2
+\]
+on the marked torus family.  Retain the local coordinates and notation of
+\cref{sec:candidate-geometry}:
+\[
+s_j\circ g_j=\zeta_js_j,\qquad
+(m_1,m_2)=(3,4),\qquad t_j=s_j^{m_j},\qquad
+f^{-1}(p_j)=m_jS_j.
+\]
+
+\subsection{The Hodge line and the finite normal characters}
+
+\begin{lemma}[determinant characters and the Hodge line]
+\label{lem:hodge-line-audit}
+\Verified\ Let
+\[
+ \mathfrak K=f_*\omega_{X/B}.
+\]
+Then \(\mathfrak K\) is invertible and
+\[
+ \mathfrak K\simeq\mathcal O_B(1).
+\tag{9.1}
+\]
+More precisely,
+\[
+ \det R_{g_1}=-\frac1\tau,\qquad
+ \det R_{g_2}=\frac1\tau,\qquad
+ \det R_{g_0}=1,
+\tag{9.2}
+\]
+and at the fixed points
+\[
+ \det R_{g_j}(z_j)=\zeta_j^{a_j},
+ \qquad (a_1,a_2)=(2,1).
+\tag{9.3}
+\]
+The form \(e\) generates \(\mathfrak K\) at the cusp, while a unit times
+\(s_j^{-a_j}e\) generates it at \(p_j\).
+\end{lemma}
+
+\begin{proof}
+Equation (2.3d) in \cref{prop:period-input-audit} gives
+\[
+ R_g(z)\Pi(z)\lambda=\Pi(gz)A_g\lambda.
+\]
+Using
+\[
+ A_1\widehat w=\widehat u-\widehat w,\quad
+ A_1\widehat\delta=\widehat\delta,\qquad
+ A_2\widehat w=-\widehat u+\widehat\delta,\quad
+ A_2\widehat\delta=\widehat\delta,
+\]
+and writing \(\tau^\sharp=\tau(g_jz)\),
+\(\mu^\sharp=\mu(g_jz)\), direct multiplication gives
+\[
+ R_{g_1}=
+ \begin{pmatrix}\tau^\sharp-1&0\\ \mu^\sharp&1\end{pmatrix},
+ \qquad
+ R_{g_2}=
+ \begin{pmatrix}-\tau^\sharp&0\\1-\mu^\sharp&1\end{pmatrix}.
+\]
+The transformation laws
+\(\tau\circ g_1=(\tau-1)/\tau\) and
+\(\tau\circ g_2=-1/\tau\) prove (9.2) at \(g_1,g_2\); the cusp formulas
+give \(R_{g_0}=I\).  Since \(\widehat\delta\) is fixed, one eigenvalue is
+\(1\).  At \(\tau(z_1)=\rho=e^{\pi i/3}\), the other is
+\(\rho-1=e^{2\pi i/3}=\zeta_1^2\); at \(\tau(z_2)=i\), it is
+\(-i=\zeta_2\).  This proves (9.3).
+
+We determine the extension over a finite filling without suppressing the
+ramification.  On \(J'_j\), the nowhere-zero form \(ds_j\wedge e\)
+transforms by
+\[
+ (\widetilde g_j^{\log})^*(ds_j\wedge e)
+ =\chi_j(s_j)\,ds_j\wedge e,
+ \qquad \chi_j=\zeta_j\det R_{g_j}.
+\tag{9.4}
+\]
+Iteration \(m_j\) times shows
+\(\prod_{r=0}^{m_j-1}\chi_j(\zeta_j^rs)=1\).
+Write \(\chi_j(s)=\chi_j(0)e^{\psi(s)}\), with \(\psi(0)=0\).
+The product identity says that the power series of \(\psi\) has no terms
+whose degree is divisible by \(m_j\).  Hence
+\[
+ \varphi(s)-\varphi(\zeta_js)=\psi(s)
+\]
+has a holomorphic solution, obtained coefficientwise by division by
+\(1-\zeta_j^n\).  Therefore
+\[
+ s^{k_j}e^{\varphi(s)}ds\wedge e,
+ \qquad k_j=m_j-1-a_j,
+\tag{9.5}
+\]
+is invariant: \(\chi_j(0)=\zeta_j^{1+a_j}\), so invariance is equivalent
+to \(k_j+1+a_j\equiv0\pmod {m_j}\).  We now distinguish the descended
+canonical section from the generator of its direct image.  Let
+\[
+ q_j:J'_j\longrightarrow N_j,\qquad
+ \widetilde f_j:J'_j\longrightarrow\Delta_j,\qquad
+ \varpi_j:\Delta_j\longrightarrow D_j
+\]
+denote the finite quotient, the torus-family projection, and the cyclic base
+quotient, respectively, so that
+\[
+ f_j\circ q_j=\varpi_j\circ\widetilde f_j,
+ \qquad t_j=s_j^{m_j}.
+\]
+Put \(\mathcal A_j=\widetilde f_j^{-1}(0)=\{s_j=0\}\) and
+\(G_j=\langle\widetilde g_j^{\log}\rangle\).  The action is free by
+\cref{prop:candidate-finite-fillings}; hence \(q_j\) is finite \'etale
+and \(q_j^{-1}(S_j)=\mathcal A_j\).
+
+The invariant form in (9.5), now denoted
+\[
+ \sigma_j=s_j^{k_j}e^{\varphi(s_j)}ds_j\wedge e,
+ \qquad k_j=m_j-1-a_j,
+\tag{9.5a}
+\]
+descends uniquely to
+\(\overline\sigma_j\in H^0(N_j,K_{N_j})\) with
+\(q_j^*\overline\sigma_j=\sigma_j\).  Since \(e^{\varphi(s_j)}\) is a
+unit and \(ds_j\wedge e\) is nowhere vanishing,
+\[
+ \operatorname{div}_{J'_j}(\sigma_j)=k_j\mathcal A_j.
+\]
+Because \(q_j\) is \'etale,
+\[
+ q_j^*\operatorname{div}_{N_j}(\overline\sigma_j)
+ =\operatorname{div}_{J'_j}(q_j^*\overline\sigma_j)
+ =k_j\mathcal A_j=q_j^*(k_jS_j).
+\]
+Faithfulness of finite surjective pullback on Cartier divisors therefore gives
+\[
+ \operatorname{div}_{N_j}(\overline\sigma_j)=k_jS_j.
+\tag{9.5b}
+\]
+Thus (9.5a) is a canonical section with that divisor, not a nowhere-vanishing
+frame when \(k_j>0\); explicitly, \(k_1=0\) and \(k_2=2\).
+
+For the direct-image generator, let
+\[
+ \vartheta_j=(ds_j\wedge e)\otimes(dt_j)^{-1}
+\tag{9.5c}
+\]
+be the nowhere-vanishing frame of
+\[
+ q_j^*\omega_{N_j/D_j}
+ =K_{J'_j}\otimes(f_j\circ q_j)^*K_{D_j}^{-1}.
+\]
+Here \((dt_j)^{-1}\) is the pulled-back frame of the inverse canonical line
+of \(D_j\), not division by the differential of \(s_j^{m_j}\).  Put
+\(\vartheta'_j=e^{\varphi(s_j)}\vartheta_j\).  The defining equation for
+\(\varphi\), together with
+\(\chi_j(s)=\chi_j(0)e^{\psi(s)}\) and
+\(\chi_j(0)=\zeta_j^{1+a_j}\), gives
+\[
+ (\widetilde g_j^{\log})^*\vartheta'_j
+ =\zeta_j^{1+a_j}\vartheta'_j.
+\tag{9.5d}
+\]
+Every holomorphic coefficient of a relative top form is pulled back from
+\(\Delta_j\), because the fibres of \(\widetilde f_j\) are connected compact
+complex tori.  Hence
+\[
+ \widetilde f_{j*}q_j^*\omega_{N_j/D_j}
+ =\mathcal O_{\Delta_j}\vartheta'_j.
+\]
+For \(F(s_j)\in\mathcal O_{\Delta_j}\), the section
+\(F(s_j)\vartheta'_j\) is \(G_j\)-invariant exactly when
+\[
+ F(\zeta_js_j)\zeta_j^{1+a_j}=F(s_j).
+\tag{9.5e}
+\]
+Writing \(F(s_j)=\sum_{n\ge0}c_ns_j^n\), this says that \(c_n=0\) unless
+\[
+ n+1+a_j\equiv0\pmod {m_j},
+ \qquad\text{equivalently}\qquad n\equiv k_j\pmod {m_j}.
+\]
+Consequently,
+\[
+ \left((\varpi_j)_*\widetilde f_{j*}
+ q_j^*\omega_{N_j/D_j}\right)^{G_j}
+ =\mathcal O_{D_j}\cdot s_j^{k_j}\vartheta'_j,
+\]
+and finite descent gives the precise invariant-module identity
+\[
+ f_{j*}\omega_{N_j/D_j}
+ =\mathcal O_{D_j}\cdot s_j^{k_j}\vartheta'_j.
+\tag{9.5f}
+\]
+Finally, over \(\Delta_j^*\), the differential identity
+\[
+ dt_j=m_js_j^{m_j-1}ds_j
+\]
+identifies this generator with
+\[
+ s_j^{k_j}\vartheta'_j
+ =\frac{e^{\varphi(s_j)}}{m_j}
+ s_j^{k_j-(m_j-1)}e
+ =\frac{e^{\varphi(s_j)}}{m_j}s_j^{-a_j}e.
+\tag{9.5g}
+\]
+Thus a unit times \(s_j^{-a_j}e\) generates
+\(f_{j*}\omega_{N_j/D_j}=(f_*\omega_{X/B})|_{D_j}\), whereas the
+canonical section (9.5a) itself has divisor \(k_jS_j\).
+
+At the cusp, in every smooth toric chart the unimodular monomial change of
+coordinates turns
+\[
+ \Omega_0=\frac{dx_1}{x_1}\wedge
+          \frac{dx_2}{x_2}\wedge dt_c
+\]
+into a unit times the ordinary coordinate volume form.  Thus it generates
+the canonical line.  It is invariant under translations and under the
+unimodular shears defining the quotient.  Under the punctured-overlap map,
+\(\Omega_0=(2\pi i)^2dt_c\wedge e\), so \(e\) generates
+\(\mathfrak K\) at \(p_0\).
+
+It remains to compute the degree.  The modular-form calculation already
+used in the proof of \cref{prop:period-input-audit} gives
+\[
+ \Theta=
+ \left(\frac{E_4^2E_6^{1/2}}{\Delta_{\rm mod}}\right)\!\circ\tau.
+\]
+The square root exists because the zeros of \(E_6\circ\tau\) have even
+order.  The weights \(8,3,12\) give the same automorphy factor as \(e\);
+the sign at \(z_2\) is fixed by its linearizing coordinate.  The orders are
+\[
+ \operatorname{ord}_{z_1}\Theta=2=a_1,\qquad
+ \operatorname{ord}_{z_2}\Theta=1=a_2,\qquad
+ \Theta=t_c^{-1}\cdot(\text{unit})
+\tag{9.6}
+\]
+at the cusp.  Consequently \(\mathsf e=\Theta^{-1}e\) is single-valued.
+At \(p_j\) it is a unit times \(s_j^{-a_j}e\); at \(p_0\) it is a unit
+times \(t_ce\).  Hence it is a global section of \(\mathfrak K\) with the
+single simple zero \(p_0\).  This proves
+\(\mathfrak K\simeq\mathcal O_B(p_0)\simeq\mathcal O_B(1)\).
+Finally, \(\mathfrak K\) is torsion free of generic rank one on the smooth
+curve \(B\), hence is invertible.
+\end{proof}
+
+\begin{lemma}[exact order of the finite-fibre normal line]
+\label{lem:finite-normal-order-audit}
+\Verified\ For \(j=1,2\),
+\[
+ \mathcal O_X(S_j)|_{S_j}=N_{S_j/X}
+\]
+has exact order \(m_j\) in \(\operatorname{Pic}(S_j)\).
+\end{lemma}
+
+\begin{proof}
+On the finite cover of \cref{prop:candidate-finite-fillings}, the central
+torus \(A_0^{(j)}=\{s_j=0\}\) maps to \(S_j\) as a connected principal
+\(G_j\simeq\mathbb Z/m_j\)-cover.  Its normal line is trivial, and a
+generator of \(G_j\) acts on the fibre by
+\(s_j\mapsto\zeta_js_j\).  Thus \(N_{S_j/X}\) is associated to this
+principal cover by the character \(\zeta_j\), and its \(m_j\)-th power is
+trivial.
+
+Suppose its \(k\)-th power were trivial for some \(0<k<m_j\).  Pulling a
+nowhere-zero trivializing section back to \(A_0^{(j)}\) would give a
+nowhere-zero holomorphic function \(h\) satisfying
+\[
+ h(gx)=\zeta_j^{k}h(x).
+\]
+Every holomorphic function on the compact connected torus \(A_0^{(j)}\)
+is constant.  The displayed equation would force \(\zeta_j^k=1\), contrary
+to \(0<k<m_j\).  Hence the order is exactly \(m_j\).
+\end{proof}
+
+\input{supporting_materials/workbench/research/finite_filling_certificates.tex}
+
+\subsection{The cusp structure sheaf}
+
+\begin{lemma}[structure-sheaf cohomology of the cusp fibre]
+\label{lem:cusp-structure-sheaf-audit}
+\Verified\ The reduced normal-crossings fibre \(W\) satisfies
+\[
+ h^q(W,\mathcal O_W)=(1,2,1)\qquad(q=0,1,2).
+\tag{9.7}
+\]
+The natural map
+\[
+ H^1(W;\mathbb C)\longrightarrow H^1(W,\mathcal O_W)
+\tag{9.8}
+\]
+is an isomorphism.  In degree two the corresponding map is surjective and
+is injective on the kernel of pullback to the normalization
+\(\nu:\mathrm{dP}_6\to W\).  Finally,
+\[
+ \bigwedge^2H^1(W,\mathcal O_W)
+ \longrightarrow H^2(W,\mathcal O_W)
+\tag{9.9}
+\]
+is an isomorphism.
+\end{lemma}
+
+\begin{proof}
+Let \(D_1,D_2,D_3\simeq\mathbb P^1\) be the double curves and \(P,Q\) the
+two triple points, with the branch order fixed in the proof of
+\cref{thm:p0-integral-specialization}.  The normalization complex is
+\[
+0\longrightarrow\mathcal O_W\longrightarrow
+ \nu_*\mathcal O_{\mathrm{dP}_6}\xrightarrow{\delta_0}
+ \bigoplus_{k=1}^3\mathcal O_{D_k}\xrightarrow{\delta_1}
+ \mathbb C_P\oplus\mathbb C_Q\longrightarrow0,
+\tag{9.10}
+\]
+where \(\delta_0\) is the difference of the two branch restrictions and
+\[
+ \delta_1(g_1,g_2,g_3)
+ =(g_1(P)-g_2(P)+g_3(P),
+   g_1(Q)-g_2(Q)+g_3(Q)).
+\]
+For completeness, exactness is stalkwise.  At a generic double point it is
+the fibre-product sequence
+\[
+0\to\mathbb C\{x,y,z\}/(xy)
+ \to\mathbb C\{y,z\}\oplus\mathbb C\{x,z\}
+ \to\mathbb C\{z\}\to0.
+\]
+At a triple point it is the augmented branch complex for
+\(\mathbb C\{x,y,z\}/(xyz)\): three branch rings, three pairwise
+intersection rings, and the common residue field, with alternating
+differences.  The augmented two-simplex complex is exact; successively
+lifting compatible power series proves exactness of the analytic rings.
+Away from the singular locus the first arrow is an isomorphism.
+
+The same formulas give an exact complex with \(\mathbb C\) in place of
+\(\mathcal O\).  Since \(\mathrm{dP}_6\) is rational and each \(D_k\) is a
+rational curve, the positive structure-sheaf cohomology of every term on
+the right of (9.10) vanishes.  Hypercohomology therefore reduces to
+\[
+ \mathbb C\xrightarrow{0}\mathbb C^3
+ \xrightarrow{d_1}\mathbb C^2,
+ \qquad
+ d_1(a_1,a_2,a_3)=(s,s),\quad s=a_1-a_2+a_3.
+\tag{9.11}
+\]
+Its cohomology has dimensions \(1,2,1\), proving (9.7).
+
+For the constant-sheaf complex, the row of degree zero is again (9.11),
+the row of degree one vanishes, and the remaining degree-two row begins
+with \(H^2(\mathrm{dP}_6;\mathbb C)\).  The comparison induced by
+\(\mathbb C_W\hookrightarrow\mathcal O_W\) is the identity on (9.11) and
+zero on the positive rows of the target.  It follows that (9.8) is an
+isomorphism, while in degree two it maps the dual-complex summand
+\(\ker\nu^*\) isomorphically onto \(H^2(W,\mathcal O_W)\).
+
+Choose the basis \(\gamma_W,u_W\in H^1(W;\mathbb Z)\) whose intrinsic
+specializations are \(\gamma,u\), respectively; it exists and is unique by
+\cref{thm:p0-integral-specialization}.  Their cup product is nonzero,
+because its specialization is
+\(\gamma\wedge u\ne0\in H^2(F;\mathbb Z)\).  Its pullback to
+\(\mathrm{dP}_6\) is zero since
+\(H^1(\mathrm{dP}_6;\mathbb C)=0\).  The degree-two comparison therefore
+sends it to a nonzero element of \(H^2(W,\mathcal O_W)\).  The images of
+\(\gamma_W,u_W\) form a basis by (9.8), and both sides of (9.9) are
+one-dimensional.  Hence (9.9) is an isomorphism.
+\end{proof}
+
+\subsection{Direct images, base change, and the Picard line}
+
+\begin{theorem}[structure-sheaf direct images]
+\label{thm:structure-direct-images-audit}
+\Verified\ For the constructed map \(f:X\to B=\mathbb P^1\),
+\[
+ f_*\mathcal O_X=\mathcal O_B,\qquad
+ R^1f_*\mathcal O_X\simeq
+ \mathcal O_B\oplus\mathcal O_B(-1),\qquad
+ R^2f_*\mathcal O_X\simeq\mathcal O_B(-1).
+\tag{9.12}
+\]
+All three direct images are locally free and every base-change morphism
+\[
+ (R^qf_*\mathcal O_X)\otimes k(b)
+ \longrightarrow H^q(X_b,\mathcal O_{X_b}),
+ \qquad 0\le q\le2,
+\tag{9.13}
+\]
+is an isomorphism, including at the two nonreduced fibres.  Moreover the
+invariant class \(\gamma\) defines the trivial summand in
+\(R^1f_*\mathcal O_X\) and is nowhere zero on \(B\).
+\end{theorem}
+
+\begin{proof}
+The proper map has connected fibres and \(B\) is normal, so Stein
+factorization gives \(f_*\mathcal O_X=\mathcal O_B\).
+
+The map is flat.  A local parameter on \(B\) pulls back to a nonzero
+element of the regular local domain \(\mathcal O_{X,x}\); if it vanished
+identically near one point, analytic continuation on the connected
+manifold would make \(f\) constant.  Thus \(\mathcal O_{X,x}\) is
+torsion-free, hence flat, over the discrete valuation ring
+\(\mathcal O_{B,f(x)}\).
+
+Over \(B^\circ\), the fibres are two-dimensional complex tori and their
+structure-sheaf cohomology dimensions are \(1,2,1\).  At the cusp the same
+dimensions hold by \cref{lem:cusp-structure-sheaf-audit}.  Grauert's
+theorem therefore gives local freeness of ranks \(1,2,1\) and base change
+on a neighbourhood of \(B^\circ\cup\{p_0\}\); the precise analytic statement is
+\cite[Chapter~III, \S4, Theorem~4.12]{BanicaStanasila1976}, originally due to
+Grauert \cite{Grauert1960}.
+
+At \(p_j\), use the finite cover \(J'_j\to N_j\).  If
+\(\widetilde f:J'_j\to\Delta_j\) is the smooth torus family and
+\(\pi(s)=s^{m_j}\), exactness of finite-group invariants in characteristic
+zero gives
+\[
+ R^qf_*\mathcal O_{N_j}
+ =\bigl(\pi_*R^q\widetilde f_*\mathcal O_{J'_j}\bigr)^{G_j}.
+\tag{9.14}
+\]
+After averaging, a free eigenframe \(v\) may be chosen for each character
+\(\nu\).  The invariant sections are exactly
+\(s^rv\,\mathcal O_{D_j}\), where \(0\le r<m_j\) is determined by
+\(\nu\zeta_j^r=1\).  Hence (9.14) is free of ranks \(1,2,1\).
+Higher direct images vanish by the fibre-dimension bound, so these are all
+the nonzero direct images.  Since all direct images are locally free, the analytic
+cohomology-and-base-change theorem, applied by descending induction from
+\(q=2\), proves (9.13) at the finite fibres as well.  In the notation of
+\cite[Chapter~III, \S3, Theorem~3.4, Corollaries~3.5, 3.7, and 3.10]
+  {BanicaStanasila1976}.  Corollary~3.10 says that, for each fixed \(q\),
+  freeness of \(R^p f_*\mathcal O_X\) for every \(p\ge q\) is equivalent to
+  cohomological flatness in all dimensions \(p\ge q\).  Applying this
+  successively with \(q=2,1,0\) gives the displayed base-change maps in every
+  relevant degree.  This is a local statement on the base and so applies
+  equally to the nonreduced scheme-theoretic fibres.
+
+Write \(G=R^1f_*\mathcal O_X\).  We construct its distinguished section
+without using a cellular collapse.  On \(B^\circ\), the monodromy-invariant
+integral class \(\gamma\) maps to a holomorphic section
+\(\gamma^{0,1}\) of \(G\).  It is nowhere zero there: if its image in
+\(H^{0,1}(F)\) vanished, then
+\(\gamma\in H^{1,0}(F)\cap H^1(F;\mathbb R)=0\).  On a finite cover it is
+a constant invariant class and remains nonzero at \(s_j=0\), so it
+descends across \(p_j\).
+
+At the cusp, let \(j:\Delta^*\hookrightarrow\Delta\).  The natural
+specialization morphism
+\[
+ R^1f_*\mathbb C\longrightarrow
+ j_*R^1f_*\mathbb C|_{\Delta^*}
+\]
+is an isomorphism: away from \(0\) this is tautological, while at \(0\) it
+is exactly the isomorphism from \(H^1(W;\mathbb C)\) onto the
+\(T_0\)-invariant subspace proved in
+\cref{thm:p0-integral-specialization}.  Hence the invariant classes
+\(\gamma,u\) extend as sections of \(R^1f_*\mathbb C\) on the whole disc.
+The natural morphism induced by \(\mathbb C\hookrightarrow\mathcal O\),
+\[
+ R^1f_*\mathbb C\otimes\mathcal O_\Delta
+ \longrightarrow G|_\Delta,
+\]
+sends them at the central point to the two classes in
+\(H^1(W,\mathcal O_W)\).  These form a basis by
+\cref{lem:cusp-structure-sheaf-audit}.  Thus
+\(\gamma^{0,1}\) extends across the cusp and is nowhere zero everywhere.
+In particular \(\mathcal O_B\gamma^{0,1}\subset G\) is a line subbundle.
+
+Relative duality applies to the proper flat Gorenstein map \(f\): \(X\) is
+smooth, the base is a smooth curve, and \(\omega_{X/B}\) is invertible.
+Using \cref{lem:hodge-line-audit}, it gives
+\[
+ R^2f_*\mathcal O_X\simeq\mathfrak K^\vee
+ \simeq\mathcal O_B(-1).
+\tag{9.15}
+\]
+The relative theorem is the one of Ramis--Ruget--Verdier
+\cite[pp.~261--283]{RamisRugetVerdier1971}; the absolute singular
+dualizing-complex comparison is independently recorded in
+\cite[Theorems~1--2 and Proposition~2]{RamisRuget1970}.
+
+The relative cup product
+\[
+ \bigwedge^2G\longrightarrow R^2f_*\mathcal O_X
+\tag{9.16}
+\]
+is an isomorphism.  It is so on every smooth torus fibre.  At the cusp it
+is so by (9.13) and \cref{lem:cusp-structure-sheaf-audit}.  At \(p_j\),
+choose on the cover an eigenframe \(v_1,v_2\), with
+\(v_1=\gamma^{0,1}\) invariant.  Its invariant exponent is \(r_1=0\).
+The action on \(v_1\wedge v_2\) is dual to the Hodge character in (9.3),
+so its invariant generator is \(s_j^{a_j}(v_1\wedge v_2)\).
+The invariant generator for the second line is consequently
+\(s_j^{a_j}v_2\), because \(0<a_j<m_j\).  Wedge product sends
+\(v_1\wedge(s_j^{a_j}v_2)\) to exactly the invariant generator of the
+right side of (9.16), with no wrap modulo \(m_j\).
+
+Consequently
+\(\det G\simeq R^2f_*\mathcal O_X\simeq\mathcal O_B(-1)\).  The quotient
+of \(G\) by its trivial subbundle is \(\mathcal O_B(-1)\), and the
+extension splits because
+\[
+ \operatorname{Ext}^1(\mathcal O_B(-1),\mathcal O_B)
+ =H^1(B,\mathcal O_B(1))=0.
+\]
+This proves (9.12) and identifies the trivial summand.
+\end{proof}
+
+\begin{corollary}[the Picard parameter and fibrewise restriction]
+\label{cor:picard-line-audit}
+\Verified\ One has
+\[
+ H^1(X,\mathcal O_X)=\mathbb C,\qquad
+ \operatorname{Pic}(X)=\operatorname{Pic}^0(X)\simeq(\mathbb C,+).
+\tag{9.17}
+\]
+For every scheme-theoretic fibre \(X_b\), restriction induces an injective
+complex-linear map
+\[
+ \iota_b:H^1(X,\mathcal O_X)\longrightarrow
+ H^1(X_b,\mathcal O_{X_b}).
+\tag{9.18}
+\]
+On a smooth fibre its image is the complex line generated by the
+\((0,1)\)-image of \(\gamma\).
+\end{corollary}
+
+\begin{proof}
+The Leray spectral sequence and \(H^1(B,\mathcal O_B)=0\) identify
+\[
+ H^1(X,\mathcal O_X)=H^0(B,R^1f_*\mathcal O_X)=\mathbb C
+\]
+by \cref{thm:structure-direct-images-audit}.  Since the verified integral
+topology gives \(H^1(X;\mathbb Z)=H^2(X;\mathbb Z)=0\), the analytic
+exponential sequence
+\[
+0\to\mathbb Z\to\mathcal O_X
+ \xrightarrow{u\mapsto e^{2\pi iu}}\mathcal O_X^*\to1
+\]
+identifies \(H^1(X,\mathcal O_X)\) with \(\operatorname{Pic}(X)\) and
+shows that every line bundle is topologically trivial.  Under Leray,
+restriction is evaluation of a global section of
+\(R^1f_*\mathcal O_X\), followed by base change.  The only global section
+is a scalar multiple of the nowhere-zero section \(\gamma^{0,1}\), so
+evaluation is injective at every point and has the stated image on a
+smooth fibre.
+\end{proof}
+
+\subsection{One line bundle non-torsion on every fibre}
+
+\begin{theorem}[uniform non-torsion]
+\label{thm:uniform-nontorsion-audit}
+\Verified\ There is a line bundle \(L\in\operatorname{Pic}(X)\) such that
+\(L|_{X_b}\) is non-torsion for every scheme-theoretic fibre
+\(X_b=f^*(b)\), and \(L|_{S_j}\) is non-torsion for \(j=1,2\).
+More precisely, identify \(\operatorname{Pic}(X)\) with \(\mathbb C\),
+\(z\mapsto L_z\).  Every \(z\) outside the union of \(\mathbb R\) with a
+countable set has these properties.
+\end{theorem}
+
+\begin{proof}
+The pullback \(f^*\mathcal O_B(1)\) is nontrivial: by the projection
+formula and \(f_*\mathcal O_X=\mathcal O_B\),
+\[
+ h^0(X,f^*\mathcal O_B(1))=h^0(B,\mathcal O_B(1))=2,
+\]
+whereas \(h^0(X,\mathcal O_X)=1\).  Rescale the additive coordinate in
+\cref{cor:picard-line-audit} so that
+\[
+ L_{12}=f^*\mathcal O_B(1).
+\tag{9.19}
+\]
+
+Fix a smooth fibre \(F_q\).  Put
+\[
+ \Lambda_q=\iota_q^{-1}\!\left(
+ \operatorname{im}[H^1(F_q;\mathbb Z)\to
+ H^1(F_q,\mathcal O_{F_q})]\right)\subset\mathbb C.
+\tag{9.20}
+\]
+The integral image is a lattice in the underlying real vector space of
+\(H^1(F_q,\mathcal O_{F_q})\), so \(\Lambda_q\) is discrete.  It contains
+\(12\), because (9.19) is trivial on every fibre.  The exponential
+sequence on \(F_q\) shows
+\[
+ L_z|_{F_q}\text{ is torsion}
+ \quad\Longleftrightarrow\quad z\in\mathbb Q\Lambda_q.
+\tag{9.21}
+\]
+If \(\operatorname{rk}\Lambda_q=1\), its nonzero element \(12\) forces
+\(\Lambda_q\subset\mathbb R\); all its bad parameters are real.
+
+Suppose \(\operatorname{rk}\Lambda_q=2\).  By
+\cref{cor:picard-line-audit}, the image of \(\iota_q\) is the line
+generated by the image of \(\gamma\).  Thus there is an integral class
+\[
+ \lambda=a\gamma+bu+cw+d\delta\notin\mathbb Q\gamma
+\tag{9.22}
+\]
+whose \((0,1)\)-image lies on that line.  On the covering family, the four
+marked lattice columns are
+\[
+ \pi_{\widehat\gamma}=(6\mu,\beta),\quad
+ \pi_{\widehat u}=(\tau,\mu),\quad
+ \pi_{\widehat w}=(1,0),\quad
+ \pi_{\widehat\delta}=(0,1).
+\tag{9.23}
+\]
+Every real cohomology class has a unique expression
+\[
+ 2\operatorname{Re}(\bar\xi\,d\zeta_1+
+                       \bar\upsilon\,d\zeta_2).
+\]
+Evaluating it on (9.23) gives
+\[
+\begin{aligned}
+2\operatorname{Re}\bar\xi&=c,&
+2\operatorname{Re}\bar\upsilon&=d,\\
+2\operatorname{Re}(\bar\xi\tau+\bar\upsilon\mu)&=b,&
+2\operatorname{Re}(6\bar\xi\mu+\bar\upsilon\beta)&=a.
+\end{aligned}
+\tag{9.24}
+\]
+For \(\gamma\), the first two right sides vanish.  The third equation then
+shows that its \((0,1)\)-line is represented, up to a nonzero scalar, by
+\((\operatorname{Im}\mu,-\operatorname{Im}\tau)\); the fourth equation
+only fixes the scalar.  Write
+\(\bar\xi=c/2+ir\), \(\bar\upsilon=d/2+is\).  The condition that the class
+in (9.22) have \((0,1)\)-image on the \(\gamma\)-line is
+\[
+ \bar\xi\operatorname{Im}\tau+
+ \bar\upsilon\operatorname{Im}\mu=0.
+\]
+Its real part, together with the third equation of (9.24), is equivalent
+to the single holomorphic equation
+\[
+ c\tau+d\mu-b=0.
+\tag{9.25}
+\]
+Neither \(a\) nor \(\beta\) occurs, as adding a multiple of \(\gamma\)
+must not change the condition.
+
+The functions \(1,\tau,\mu\) are linearly independent.  Applying the cusp
+transformation \((\tau,\mu)\mapsto(\tau-1,\mu)\) to a constant linear
+relation first kills the coefficient of \(\tau\).  If the remaining
+relation made \(\mu\) constant, the order-four law
+\(\mu\circ g_2=1+\mu/\tau\), with nonconstant \(\tau\), would force an
+impossible identity.  Hence all coefficients vanish.
+
+For every integral \(\lambda\notin\mathbb Q\gamma\), equation (9.25) is
+therefore a nonzero holomorphic function on the covering Riemann surface.
+Its zero set is discrete and countable.  There are countably many
+\(\lambda\), so their union, and its image in \(B^\circ\), are countable.
+This image contains every \(q\) for which
+\(\operatorname{rk}\Lambda_q=2\).  Each such fibre contributes the
+countable bad set \(\mathbb Q\Lambda_q\); all rank-one fibres together
+contribute only parameters in \(\mathbb R\).  Thus the smooth fibres
+exclude only \(\mathbb R\) together with a countable set.
+
+There remain the three scheme-theoretic special fibres.  By
+\cref{thm:structure-direct-images-audit,cor:picard-line-audit}, restriction
+\[
+ \mathbb C\longrightarrow H^1(X_b,\mathcal O_{X_b})
+\]
+is complex-linear and injective for each of them.  The exponential sequence
+and countability of \(H^1(X_b;\mathbb Z)\) show that the parameters for
+which \(L_z|_{X_b}\) is torsion form a countable set.
+
+Finally consider the reductions \(S_j\).  The restriction
+\(\varphi_j:\mathbb C\to H^1(S_j,\mathcal O_{S_j})\) is complex-linear.
+It is nonzero.  Write \(\mathcal O_X(S_j)=L_{z_j}\).  Since
+\[
+ \mathcal O_X(m_jS_j)=f^*\mathcal O_B(1)=L_{12},
+\]
+the additive parameter gives \(z_j=12/m_j\), while
+\cref{lem:finite-normal-order-audit} says that
+\[
+ L_{12/m_j}|_{S_j}=\mathcal O_X(S_j)|_{S_j}
+\]
+is nontrivial.  If \(\varphi_j\) were zero, the exponential sequence and
+the vanishing of the restricted first Chern class would make every
+\(L_z|_{S_j}\) trivial, a contradiction.  Thus \(\varphi_j\) is
+injective, and the same exponential-sequence argument makes its torsion
+parameters countable.  Removing these two additional countable sets proves
+the theorem.
+\end{proof}
+
+\begin{remark}[provenance of the repair]
+The period equation \(c\tau+d\mu-b=0\) and the countability strategy are
+the candidate's.  The exact normal-character proof above makes the order of
+\(\mathcal O_X(S_j)|_{S_j}\) explicit, while the cusp extension in
+\cref{thm:structure-direct-images-audit} replaces the candidate's
+collapse-dependent argument by the independently verified intrinsic
+nearby-cycle map.  Identifying the restriction line with the global
+\(\gamma^{0,1}\)-summand also removes the candidate's separate continuity
+argument for a moving integral lift.
+\end{remark}
+
+\input{supporting_materials/workbench/research/analytic_picard_local_obstruction.tex}
+\input{supporting_materials/workbench/research/analytic_canonical_ring.tex}
+\input{supporting_materials/workbench/research/period_parameter_deformation.tex}
+
+\input{supporting_materials/workbench/research/period_shift_classification.tex}

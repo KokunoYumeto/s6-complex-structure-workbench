@@ -1,0 +1,37 @@
+"""Render the original completion map and the exact finite bound. CC0."""
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+W=Path(__file__).resolve().parents[1]/'assets'
+plt.rcParams.update({'svg.hashsalt':'CG-S6-original-arithmetic-completion','font.family':'DejaVu Sans','font.size':12})
+fig,ax=plt.subplots(figsize=(14,8));fig.patch.set_facecolor('white');ax.set(xlim=(0,14),ylim=(0,8));ax.axis('off')
+ax.text(7,7.62,'The actual Adams limit and arithmetic completion',ha='center',fontsize=20,weight='bold',color='#18323d')
+ax.text(7,7.13,r'$X$ has $\pi_iX=0$ for $i<b$; all original maps and integer factors are retained.',ha='center',fontsize=13)
+ax.text(2,5.85,r'$X$',ha='center',va='center',fontsize=21)
+ax.text(9,6.33,r'$P_X=\mathrm{holim}_{m\geq0}\,\mathrm{cofib}(p^m_X)$',ha='center',fontsize=18)
+ax.text(9,4.64,r'$Y_X=\mathrm{holim}_{s\geq0}\,\mathrm{cofib}(q_{s+1}\wedge1_X)$',ha='center',fontsize=18)
+ax.annotate('',xy=(5.5,6.28),xytext=(2.5,5.96),arrowprops={'arrowstyle':'->','lw':1.6,'color':'#157b8b'})
+ax.text(3.8,6.36,r'$v_X$',fontsize=17,color='#157b8b')
+ax.annotate('',xy=(5.5,4.82),xytext=(2.5,5.69),arrowprops={'arrowstyle':'->','lw':1.6,'color':'#157b8b'})
+ax.text(3.8,4.98,r'$u_X$',fontsize=17,color='#157b8b')
+ax.annotate('',xy=(9,5.05),xytext=(9,6.05),arrowprops={'arrowstyle':'->','lw':2,'color':'#75539a'})
+ax.text(9.22,5.50,r'$\Phi_X\ \simeq$',fontsize=18,color='#75539a')
+ax.text(3.12,4.25,r'$\Phi_Xv_X\simeq u_X$',fontsize=16)
+ax.text(9,4.05,'Both targets are derived p-complete; both units agree modulo every pᵐ.',ha='center',fontsize=11)
+ax.plot([.5,13.5],[3.68,3.68],color='#ccd6dc',lw=1)
+ax.text(7,3.25,r'$T_s^{(m)}=B^{\wedge s}\wedge X\wedge D_m,\qquad D_m=\mathrm{cofib}(p^m),\quad m\geq1$',ha='center',fontsize=16)
+ax.text(2.0,2.44,r'$T_{s+r}^{(m)}$',ha='center',fontsize=21)
+ax.text(7,2.44,r'$T_s^{(m)}$',ha='center',fontsize=21)
+ax.text(12,2.44,r'$\tau_{\leq n}T_s^{(m)}$',ha='center',fontsize=21)
+for left,right,label in [(2.65,6.3,'r original transitions'),(7.7,10.9,'original truncation')]:
+ ax.annotate('',xy=(right,2.57),xytext=(left,2.57),arrowprops={'arrowstyle':'->','lw':1.5,'color':'#157b8b'})
+ ax.text((left+right)/2,2.89,label,ha='center',fontsize=11)
+ax.text(7,1.81,r'$r=2m(n-b+1),\quad n\geq b:\qquad\mathrm{the\ full\ composite\ is\ zero.}$',ha='center',fontsize=16,color='#75539a')
+ax.text(7,1.20,r'$p^{2m}1_{D_m}=0,\qquad p^{s+1}1_{C_s}=0,\qquad\pi_0C_s=\mathbb{Z}/p^{s+1}$',ha='center',fontsize=16)
+ax.text(7,.62,'Proof: The original Adams tower and arithmetic completion, (1.7), (3.8), (4.2)–(4.9), (5.2)–(5.8), (7.10)–(7.13).',ha='center',fontsize=10)
+ax.text(7,.26,'Human-source context: Strickland, arXiv:2412.09361v1, Sections 3 and 5. No operation-algebra classification is depicted.',ha='center',fontsize=10)
+fig.tight_layout(pad=.6)
+fig.savefig(W/'arithmetic-completion.svg',metadata={'Date':None})
+plt.close(fig)
+print('Rendered original comparison and finite transition bound.')

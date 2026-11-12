@@ -1,0 +1,3335 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=0.68in]{geometry}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={The claimed complex structure on S6: manuscript and proof-reconstruction overview},
+  pdfauthor={Codex mathematical reconstruction with ChatGPT Pro review records},
+  pdfsubject={Equation-first mathematical account of the candidate, topology, Hodge and Bott-Chern calculations, analytic Picard completion, toric Kummer covers, cusp limits, cone-target sphere maps, split-Cartan SU(r) gauge systems, rank-two and rank-three SU(3) Gram quotients, the Lorentz observation morphism, Hermitian determinant normal slice, Weyl-spinor-scalar splitting, colour-invariant momentum, Klein-Gordon and compact gauge-scalar models, the S8 obstruction, divisor-defect and normal-holonomy lattices, the SU(2)-by-SU(3) tensor subgroup of SU(6), the Erdos-Straus-Koide incidence bridge, and the CDP20 consequence},
+  pdfkeywords={S6, S8, complex threefold, nearby cycles, Leray spectral sequence, CDP20, toric Kummer cover, cusp degeneration, pointed limit, smash product, SU(r) flux, SU(3) Gram quotient, SU(6), normal holonomy, Hermitian Jordan cone, Hermitian normal slice, Lorentz observation morphism, spin representation, Klein-Gordon, gauge-scalar model, coercive spectral transfer, colour-invariant momentum, determinant phase, defect lattice, Erdos-Straus, Koide cone, proof audit}
+}
+\setlength{\parindent}{1.1em}
+\setlength{\parskip}{2.6pt}
+\setlength{\abovedisplayskip}{4.2pt plus 1.2pt minus 1.5pt}
+\setlength{\belowdisplayskip}{4.2pt plus 1.2pt minus 1.5pt}
+\setlength{\emergencystretch}{2em}
+\pagestyle{plain}
+\frenchspacing
+\newcommand{\overviewsection}[1]{%
+  \noindent{\large\bfseries #1}\par\vspace{1.5pt}}
+\DeclareMathSizes{9.4}{9.4}{7}{5}
+
+\begin{document}
+\ifdefined\SIXOverviewEmbedded
+\else
+\begin{center}
+{\Large\bfseries The Claimed Complex Structure on $S^6$}\par
+\vspace{1.5pt}
+{\large What the manuscript and the proof reconstruction establish}\par
+\vspace{2pt}
+{\small A standalone mathematical orientation to the canonical workbench}\par
+\end{center}
+\vspace{-4pt}
+\fi
+\fontsize{9.4pt}{10.65pt}\selectfont
+
+\noindent\textbf{Document map.}
+This file is the equation-first orientation to the cumulative
+\path{workbench.tex}.  Readers following one theorem lane can instead use the
+standalone drafts below; the cumulative workbench remains the source of record
+for their shared hypotheses and comparison maps.
+\begin{flushleft}\small
+\path{koide_arithmetic_preprint.tex}: exact Koide arithmetic.\\
+\path{s6_spectral_degeneration_preprint.tex}: cusp spectral limits.\\
+\path{s6_compact_link_gaussian_preprint.tex}: compact-link Gaussian model.\\
+\path{s6_cone_sphere_routes_preprint.tex}: sphere-carrier topology.\\
+\path{s6_erdos_straus_koide_bridge_preprint.tex}: marked Erd\H{o}s--Straus--$S^6$
+incidence, the modulo-$840$ lattice and exact shell maps.\\
+\path{s6_koide_es_divisor_extension_audit.tex}: divisor-channel audit and two distinct arithmetic maps.\\
+\path{s6_higher_rung_su3_gram_cone_preprint.tex}: rank-three Gram and toroidal-successor calculations.\\
+\path{s6_worldline_presymplectic_reduction_preprint.tex}: exact massive,
+massless, and hard-threshold worldline reduction.
+\\\path{s6_quaternionic_4441_reconciliation.tex}: common quaternionic slice,
+positive fibres, retained Jordan product, omitted-coordinate dynamics,
+exact rotating coupling fibres, the smooth literal scalar--Gauss domain,
+and generic spatial exclusion.
+\\\path{s6_homogeneous_quantum_confinement.tex}: complete homogeneous
+gauge--scalar quantization, Gauss law, and positive finite-model gap.
+\\\path{s6_higher_rung_24d_preprint.tex}: higher torus wrapping,
+octonionic determinant boundary, triality flag, exact mod--12/mod--24 maps,
+and the shared residue-lattice/Weyl-quotient continuation.
+\end{flushleft}
+
+\noindent\textbf{6 September: explicit spectral and umbral maps, and the original family's parameter identifications.}
+For the literal common lattice $\mathcal I=\{\sqrt2(a,a,a):a\in D_4\}$,
+write $a=a_0+v$, $t^2=|v|^2$, $Q=a_0^2+t^2$ and
+$P=a_0(a_0^2-3t^2)$. Its complete cubic image is
+\[
+ \tau(\mathcal I)=2\sqrt2\bigl(18\mathbb Z\cup(6\mathbb Z+2)
+                                      \cup(6\mathbb Z-2)\bigr).
+\]
+Three explicit integral affine lines give a section of this value map.
+The scalar-retaining Albert matrix $X=\mu I+Y(a)$, with cyclic
+off-diagonal entries $\sqrt2a$, has invariants and labelled spectrum
+\[
+\begin{aligned}
+ (\operatorname{tr}X,\operatorname{tr}X^2,\det X)
+   &=(3\mu,3\mu^2+12Q,\mu^3-6\mu Q+4\sqrt2P),\\
+ \operatorname{Spec}Y
+   &=(2\sqrt2a_0,-\sqrt2a_0-\sqrt6t,-\sqrt2a_0+\sqrt6t).
+\end{aligned}
+\]
+For $t>0$, the explicit labelled eigenprojector satisfies
+$(\Pi_1)_{12}=-1/6-\sqrt3(v/t)/6$; thus the frame and spectrum
+recover $a$, not only its norm and cubic. The full discriminant is
+$864t^2(3a_0^2-t^2)^2$. The full Cartan family retains the scalar
+$\mu$, radius $r$, and angle $\theta$, with $r^2=12Q$ and
+$r^3\cos3\theta=24\sqrt3P$ on this subfamily.
+
+For the same marked root system $A_5^4D_4$, the
+Cheng--Duncan--Harvey prescription gives
+$S^X=(5I_{12}+J)S_6$, where $J_{rs}=\mathbf1_{s=5r\ (12)}$ and
+$S_{6,r}=\sum_{k\equiv r\ (12)}kq^{k^2/24}$.
+The coefficient map to the retained Fricke function is
+\[
+ T_6=\frac{\eta(\tau)^5\eta(3\tau)}{\eta(2\tau)\eta(6\tau)^5},
+ \qquad f^X=-q\frac{d}{dq}\log T_6,
+ \qquad T_6\!\left(-\frac1{6\tau}\right)=\frac{72}{T_6(\tau)}.
+\]
+All twelve theta indices, the multiplier determinant, the original
+glue-group action and its twisted shadows are computed in the proofs.
+This is an explicit use and comparison of established umbral machinery,
+not a claim to a new moonshine module.
+
+In the original analytic family $\beta_c=\beta^{\rm part}+c$,
+$\operatorname{Im}c<-M$, the actual global identifications are exactly
+$X_c\simeq X_{c'}\Longleftrightarrow c'-c\in2\mathbb Z$.
+The middle lattices agree for every integer shift; the multiplicity-four
+filling retains an order-two obstruction to odd shifts. Even shifts have
+explicit finite-filling and toric cusp maps and a proved global additive
+gluing correction. The resulting parameter quotient is
+$w=e^{-\pi ic}$, $0<|w|<e^{-\pi M}$.
+This classifies the retained analytic family without using the claimed
+identification of its total space with $S^6$.
+
+
+\noindent\textbf{6 September: cubic arithmetic, integral lattice maps, and the canonical ring.}
+For the retained $A_5^4\perp D_4$ Niemeier lattice $N$ and its
+original index-six Leech neighbour $\Lambda$, fix the Cayley--Dickson
+frame $(1,i,j,k,\ell,i\ell,j\ell,k\ell)$ used in the complete cubic
+proof. Put $\tau(q)=\operatorname{Re}((q_1q_2)q_3)$ and
+$F=\tau\circ\mathcal L$ on the original Niemeier span,
+and $\mathcal V_F(L)=\operatorname{span}_{\mathbb Z}\{F(y):y\in L\}$.
+The exact additive groups are
+\[
+\begin{aligned}
+ \mathcal V_F(N)&=\tfrac1{27}\mathbb Z\oplus
+       \tfrac{\sqrt2}{54}\mathbb Z\oplus\tfrac{\sqrt3}{18}\mathbb Z,\\
+ \mathcal V_F(\Lambda)&=\tfrac1{27}\mathbb Z\oplus
+       \tfrac{\sqrt2}{216}\mathbb Z\oplus\tfrac{\sqrt3}{54}\mathbb Z,
+ \qquad \mathcal V_F(\Lambda)/\mathcal V_F(N)\cong\mathbb Z/12.
+\end{aligned}
+\]
+The Albert determinant is $\lambda^3-\lambda(y,y)+2F(y)$.
+The quotient concerns the displayed value-generated groups in this fixed
+frame, not an inclusion $N\subset\Lambda$. The actual residue
+$r=\rho(361)$ cycles three Leech neighbours $\Lambda_j=r^j\Lambda$.
+Their pairwise intersection is one integral lattice $J$, with
+$\det J=81$ and $[\Lambda_j:J]=9$. The fixed fourth isotropic plane
+in $J^\vee/J$ gives $M$ with exactly $72$ roots of type $A_2^{12}$,
+$M\cap\Lambda_j=J$, and $[M:J]=9$.
+\[
+ \mathcal V_F(J)=\mathcal V_F(M)
+ =\tfrac1{27}\mathbb Z\oplus\tfrac{\sqrt2}{216}\mathbb Z
+                         \oplus\tfrac{\sqrt3}{18}\mathbb Z.
+\]
+The successive value-group inclusions have matrices
+$\operatorname{diag}(1,4,1)$ and $\operatorname{diag}(1,1,3)$,
+giving quotients $\mathbb Z/4$ and $\mathbb Z/3$.
+Both containments and their reverse generator certificates are calculated
+from the full cubic polarization, not inferred from lattice indices.
+
+Wilson's construction \href{https://doi.org/10.1016/j.jalgebra.2009.03.021}{(R.~A.~Wilson, 2009)}, transported by the explicit
+isometry $\iota(x)=x/\sqrt2$, gives $\Lambda_{\rm cyc}$ in the
+original triality metric. Its cyclic fixed Gram matrix is $3G_{E_8}$;
+its orthogonal complement is explicitly isometric to $A_2\otimes E_8$,
+and their sum has index $3^8$, with quotient $\mathbb F_3^8$.
+The directions remain $c(q_1,q_2,q_3)=(q_3,q_1,q_2)$ and
+$c_{\rm W}=c^{-1}$. Its literal intersections are
+\[
+ \Lambda_{\rm cyc}\cap\mathcal L(N)
+ =\Lambda_{\rm cyc}\cap\mathcal L(\Lambda)
+ =\Delta:=\{\sqrt2(a,a,a):a\in D_{\mathbb H}\},
+\]
+where $D_{\mathbb H}$ is the even-coordinate-sum integer lattice in
+the first four stated Cayley coordinates. Thus $\Delta$ has rank $4$,
+Gram matrix $6G_{D_4}$, determinant $5184$, minimum squared norm $12$,
+and value-generated subgroup $4\sqrt2\mathbb Z$ for $\tau|_\Delta$, or
+$8\sqrt2\mathbb Z$ for $2\tau|_\Delta$. This is not the actual image:
+$12\sqrt2$ is not attained by $\tau$ on $\Delta$.
+The preceding proofs retain the triality products and spectral boundary
+graph, the flag's degree-$+1$ collapse, and the retained cusp class's
+nontrivial three-plane reduction; these exact maps do not supply an
+interacting quantum mass-gap result.
+
+For the original analytic fibration $f:X\to\mathbb P^1$, the full
+canonical-divisor proof gives
+$\omega_X\simeq\mathcal O_X(-2S_2)$ and the graded anticanonical ring
+$\bigoplus_{m\ge0}H^0(X,\omega_X^{-m})\cong\mathbb C[U,V]$,
+with $\deg U=1$, $\deg V=2$. The complete system $|-2K_X|$
+recovers $f$ with the specified projective coordinates. This calculation
+uses the original analytic charts and finite fillings, not an
+identification of $X$ with $S^6$, and draws no sphere-topology conclusion.
+
+The retained constant $\beta_c=\beta^{\rm part}+c$ now gives a proper
+holomorphic deformation over $\operatorname{Im}c<-M$, locally on
+relatively compact parameter discs. On a fixed regular fibre set
+$T=\operatorname{Im}\tau$, $m=\operatorname{Im}\mu$,
+$D=\operatorname{Im}\beta_{c_*}-6m^2/T<0$ and $\delta=c-c_*$.
+In the plus-graph convention its exact Beltrami matrix is
+\[
+ \nu_\delta=\frac{\delta}{2iD+\delta}
+                 \begin{pmatrix}0&0\\-m/T&1\end{pmatrix}.
+\]
+The connecting Kodaira--Spencer class is
+$-[\partial_{\zeta_2}\otimes
+(d\bar\zeta_2-(m/T)d\bar\zeta_1)/(2iD)]\ne0$.
+The intrinsic pencil recovers $f$ also over the dual numbers; its three
+fixed critical values prohibit an infinitesimal projective base change.
+Consequently this deformation of the whole $X_c$ is nontrivial,
+not only its marked regular-fibre deformation. The proof uses no sphere
+recognition or CDP conclusion.
+
+
+\noindent\textbf{5 September: two corrections to the S6 proof text.}
+For a compact Cartier surface $W$ in a smooth complex threefold, the
+duality map is constructed by the analytic trace pairing with
+$K_W^\bullet=\omega_W[2]$; matching outer terms of exact sequences
+does not construct its middle arrow. For the logarithmic gluing
+$\zeta\mapsto\zeta+\alpha(s)\Pi(s)v$, the exact real translation is
+\[
+ a(s)=\operatorname{Re}\alpha(s)\,v+
+       \operatorname{Im}\alpha(s)\,J_sv,\qquad
+ J_s=\Pi(s)^{-1}i\Pi(s),\quad \alpha(s)=\log s/(2\pi i).
+\]
+On a full clockwise covering circle, $a(1)-a(0)=-v$, so the mixed
+integral is $-E(v,\lambda)$ for each marked fibre circle $\lambda$.
+The period covariance gives $J_{gs}A=AJ_s$ and
+$a(gs)=Aa(s)-v/m$. These replace the incorrect real-scalar expression
+while preserving the finite-norm identity and based meridian relation.
+The workbench supplies the complete corrected proofs and the exact
+full-fibre map
+$(R^2f_*E)_p/\mathfrak m_p(R^2f_*E)_p\cong H^2(W,E|_W)$.
+This recheck concerns those maps, not a fresh certification of every
+global input or a theorem-level counterexample to CDP20.
+
+\noindent\textbf{5 September: the exact period half-plane and cusp identifications.}
+For the cusp-regular particular solution set
+$D_{\rm part}=\operatorname{Im}\beta^{\rm part}
+-6(\operatorname{Im}\mu)^2/\operatorname{Im}\tau$ and
+$M=\max_{B\setminus\{p_0\}}D_{\rm part}$. This finite maximum is
+attained. The exact constants for which $\beta=\beta^{\rm part}+c_0$
+gives a real period isomorphism everywhere are
+\[
+ \{c_0\in\mathbb C:\operatorname{Im}c_0<-M\}.
+\]
+Without the cusp extension, $\widetilde\beta=\beta+i\,t\circ\pi$
+obeys the same affine laws but has
+$\widetilde D=D+\operatorname{Re}t\to+\infty$ along the positive
+real base ray. The proof is the proposition ``exact admissible period
+constants'' and its following remark in \path{candidate_geometry.tex}.
+The cusp proof in that same source now states the restricted charts
+$\mathcal U_\sigma(S,\epsilon)=\mathcal U_\sigma(S)\cap Y_\epsilon$,
+uses a bound for the full $C(t_c)$ on a fixed closed subdisc, and retains
+the closed-polydisc condition $\theta_i^\sigma(y)\ge0$ for torus points.
+The explicit opposite-edge maps below retain all entries of $C(0)$.
+These period and local-quotient refinements, together with the bounded
+finite-filling recheck, do not add a sphere-identification or CDP theorem.
+
+\noindent\textbf{5 September: the 24-dimensional continuation.}
+The rank-three octonionic Jordan algebra provides two explicit geometric
+objects. For $\lambda\in\mathbb R$, $q_1,q_2,q_3\in\mathbb O$, set
+\[
+ Q(\lambda;q)=
+ \begin{pmatrix}
+ \lambda&q_3&\bar q_2\\
+ \bar q_3&\lambda&q_1\\
+ q_2&\bar q_1&\lambda
+ \end{pmatrix},\qquad
+ \det Q=\lambda^3-\lambda\sum_{i=1}^3|q_i|^2
+             +2\operatorname{Re}((q_1q_2)q_3).
+\]
+Its positive cone $\mathcal C=\{Q\succeq0\}$ lies in the displayed
+25-dimensional real slice. The slice $\lambda=1$ is a compact convex
+24-ball; radial coordinates give an explicit homeomorphism of the cone
+and its determinant-zero boundary to a closed half-space and its boundary.
+One-point compactification therefore gives
+\[
+ (\mathcal C^+,(\partial\mathcal C)^+)\cong(B^{25},S^{24}).
+\]
+The second object, the octonionic flag $\operatorname{Fl}(\mathbb O)
+=F_4/\operatorname{Spin}(8)$, has three rank-eight tangent summands
+$8_v,8_s^+,8_s^-$ and integral cohomology
+\[
+ \frac{\mathbb Z[\beta_1,\beta_2]}
+ {(\beta_1^2-\beta_1\beta_2+\beta_2^2,
+       \beta_1\beta_2(\beta_1-\beta_2))},\qquad |\beta_i|=8.
+\]
+Its six cells have dimensions $0,8,8,16,16,24$ and its Euler class is
+$6\beta_1^2\beta_2$. These known flag results are attributed to
+\href{https://arxiv.org/abs/0809.4318}{Mare--Willems}; the draft writes
+the comparison with the retained toric and determinant constructions.
+The six flag fixed points and the six toric zero-strata admit an explicit
+$S_3$-equivariant bijection. That bijection alone supplies no map on their
+positive-dimensional strata. Both the determinant-boundary sphere and
+the fourth smash of a chosen based $S^6$ carrier are $S^{24}$, with a
+displayed choice-dependent homeomorphism. The flag has degree-one
+collapse maps onto either sphere; its nonzero $H^8$ prevents homotopy
+equivalence with a sphere.
+
+The mod--12/mod--24 relation has explicit maps. In the retained peripheral
+representation,
+\[
+ \chi:SL_2(\mathbb Z)\longrightarrow\mathbb Z/12,\qquad
+ (\chi(C_0),\chi(C_1),\chi(C'_2))=(-1,4,-3).
+\]
+Every homomorphism $SL_2(\mathbb Z)\to\mathbb Z/24$ has even image.
+The embedding $j(a)=2a$ exists, while no homomorphism lifts $\chi$
+under ordinary reduction $\mathbb Z/24\to\mathbb Z/12$.
+For a based cusp map $g:S^6\to S^3$, the suspension calculation gives
+\[
+ E^6:\pi_6(S^3)\cong\mathbb Z/12
+       \hookrightarrow\pi_{12}(S^9)\cong\mathbb Z/24,
+ \qquad E^6(a\alpha)=2a\nu_9.
+\]
+Thus $M\mapsto\chi(M)[g]$ has suspended value $2a\chi(M)\nu_9$ if
+$[g]=a\alpha$, and image order $12/\gcd(a,12)$.
+The actual coefficient is now computed: $a=0$, so this composite is zero.
+For the original periods $Z(s)=sB_0+C(t)$, choose
+$u^0=(-1/4,1/4)$ and the original chart $t=z_0z_1z_2$.
+With $h_j(t)=\exp(-2\pi i(C(t)u^0)_j)$ the exact invertible map
+\[
+ (z_0,z_1,z_2)\longmapsto
+ (z_0/(h_1h_2),h_1z_1,h_2z_2)=(w_0,w_1,w_2)
+\]
+preserves $t$ and puts the complete regular inverse image at
+$(|w_0|,|w_1|,|w_2|)=(r^{1/2},r^{1/4},r^{1/4})$.
+Writing $A=\log(r)B_0-2\pi\operatorname{Im}C(t)$, its actual
+normal frame is $NJH^{-1}$, where $N$ consists of the three radial
+normals, $H$ is the target-coordinate derivative, and
+\[
+ J=\begin{pmatrix}
+ 1/2&-A_{11}-A_{21}&-A_{12}-A_{22}\\
+ 1/4&A_{11}&A_{12}\\1/4&A_{21}&A_{22}
+ \end{pmatrix},\qquad \det J=\det A.
+\]
+The bound $\|Av\|\geq(|\log r|-\|2\pi\operatorname{Im}C(t)\|)\|v\|$
+keeps the framing homotopy invertible. The resulting constant change of
+radial frame extends over a collared $D^2\times T^2$ inside the same
+chart times an interval. Pontryagin--Thom therefore gives $g\simeq *$
+for the original smooth source, without using $X\cong S^6$.
+The complete chart, inverse, derivative, cap, and based-homotopy proof
+is in the higher-rung draft, subsection \emph{The original framed cusp
+coefficient is zero}, and in the cone/sphere draft.
+The full draft gives the maps, the suspension proof, the source citations,
+and the surviving local higher-torus morphisms. A global higher torus
+completion with the required exceptional structure is still open.
+
+\noindent\textbf{Retaining the angle detects topology that the preceding
+projection loses.}
+For the same continuous cusp map
+$q_2:X\to\mathcal A=\operatorname{Susp}(S^1\times\overline T^2)$,
+collapse the coordinate two-skeleton of $S^1\times\overline T^2$
+to obtain $c_3:T^3\to S^3$ and set
+$H([r,z])=[r,c_3(z)]$ after $q_2$. This defines
+$H=p_3q_2:X\to S^4$. Keep the same original periods and coordinate
+map above, but now fix $t_0=r_0e^{i\pi}$ as well as
+$u^0=(-1/4,1/4)$. The complete regular inverse image is
+\[
+ w(a,b)=\bigl(r_0^{1/2}e^{i(\pi-a-b)},
+              r_0^{1/4}e^{ia},r_0^{1/4}e^{ib}\bigr),
+ \qquad (a,b)\in(\mathbb R/2\pi\mathbb Z)^2.
+\]
+The full derivative retains the period correction: with
+$v=(\log|w_1|,\log|w_2|)$, $\ell=\log|t|$, and
+$p_0=(1/4,1/4)$, the identity
+$u=u^0+A(t)^{-1}(v-\ell p_0)$ gives, on this torus,
+$du=A(t_0)^{-1}(dv-p_0d\ell)$. The term differentiating
+$A(t)^{-1}$ vanishes there because its multiplying vector is exactly
+zero. The resulting complete normal-plus-tangent frame has comparison
+matrix $D(a,b)G_0$, where
+\[
+ D(a,b)=\operatorname{diag}(e^{-i(a+b)},e^{ia},e^{ib})\in SU(3)
+\]
+and $G_0$ is one constant invertible real matrix, with its orientation
+sign calculated in the proof. An explicit periodic contraction of $D$
+identifies the induced stable tangent framing with the Lie framing of
+$T^2$. Its spin quadratic form is $q(x,y)=x+xy+y$ over
+$\mathbb F_2$, with Arf invariant one. Pontryagin--Thom and the
+injective stable-range suspension therefore give
+\[
+ [H]=\eta_4\eta_5\ne0\in\pi_6(S^4)\cong\mathbb Z/2,
+ \qquad q_2\not\simeq_*0.
+\]
+Here $X$ has the fixed sphere identification used in the reconstruction.
+This is not a new proof of that identification. Postcomposition by
+$p_3$ gives the exact quotient
+$\pi_6(\mathcal A)/\ker(p_3)_*\cong\mathbb Z/2$ and sends
+the original $q_2$ to its nonzero element. In particular every odd
+multiple of $[q_2]$ is nonzero; its full order is not determined here.
+
+This retained class also supplies a nonzero mod--24 map. Fix the
+complex Hopf map $\eta_2:S^3\to S^2$. The ordered smash gives
+\[
+ \mu_\eta:\pi_6(S^4)\longrightarrow\pi_9(S^6),
+ \qquad [x]\longmapsto[\eta_2\wedge x],\qquad
+ \mu_\eta([H])=\eta^3=12\nu_6\ne0.
+\]
+The equality uses the classical integral stable relation
+$\eta^3=12\nu$, not $4\nu$ from its two-primary quotient
+(\href{https://pi.math.cornell.edu/~hatcher/AT/AT.pdf}{Hatcher,
+printed p.~385}). Three suspensions place $12\nu_9$ in the same
+$\pi_{12}(S^9)\cong\mathbb Z/24$ in which $E^6[g]=0$.
+With the original peripheral character, define
+$\Psi_H(M)=\mu_\eta(\chi(M)[H])$. Then
+\[
+ \Psi_H(C_0,C_1,C'_2)=(12\nu_6,0,12\nu_6),\qquad
+ \ker\Psi_H=\chi^{-1}(2\mathbb Z/12).
+\]
+Its coefficient is $12\chi(M)$ modulo twenty-four, so it retains
+parity. It is not a lift of $\chi$ under reduction modulo twelve:
+that reduction is zero. Both complete proofs are included in the
+higher-rung and cone/sphere drafts. The nonzero class comes from the
+specific retained-angle map, not from matching the number twenty-four
+to a geometric dimension.
+
+\noindent\textbf{5 September: the modulo-$840$ lattice and full Weyl quotient.}
+The shared source \path{es_niemeier_shared.tex} under
+\path{supporting_materials/workbench/research/} proves
+\[
+ R_{\mathrm{ES}}=A_5^4\perp D_4\subset N,\qquad
+ [N:R_{\mathrm{ES}}]=72,\qquad \det N=1,
+ \qquad \#\operatorname{Roots}(N)=144,
+\]
+\[
+ O(N)=W(R_{\mathrm{ES}})\rtimes L(G),\qquad
+ G\cong GL_2(\mathbb F_3)\cong Q_8\rtimes S_3.
+\]
+The abstract Weyl quotient is already recorded by
+\href{https://arxiv.org/abs/1307.5793}{Cheng--Duncan--Harvey, Table~3}.
+Here its code isomorphism and its full lattice lift are explicit in the
+original fibre order. The theorems ``The exact full automorphism quotient
+of $N$'' and ``The residue six-cycle in the full automorphism group''
+prove that $\rho(S_{840})\subset W(R_{\mathrm{ES}})$,
+$S_{840}=\langle289\rangle$, and that this six-cycle centralizes the
+chosen $L(G)$. The $D_4$ discriminant map $G\to S_3$ has kernel $Q_8$.
+The shortest dual classes $v,s,c$ give precisely the vector, even
+half-spin and odd half-spin weights of the flag tangent modules described
+by \href{https://www.uni-muenster.de/FB10/mjm/vol_6/mjm_vol_6_14.pdf}%
+{Mare--Willems, Proposition~2.7 and equations (5.4)--(5.6)}.
+For the fixed shell $R=3$, the residue-one primes $2521$ and $3361$
+have raw counts $0$ and $6$, and unordered counts $0$ and $3$.
+Thus the actual divisor counts do not descend to prime residues alone;
+the finite-sample Fourier pushforward below retains those counts.
+
+\noindent\textbf{5 September: the fifteen-selector test.}
+At $p=1201$, the complete census maps by
+$(h,r,t)\mapsto h\left(\begin{smallmatrix}r^2&rt\\rt&t^2\end{smallmatrix}\right)$
+to fifteen distinct projective rays. Embedding these matrices in the
+upper-left corner of $\operatorname{Herm}_3(\mathbb H)$ gives linear span
+and Jordan closure exactly $\operatorname{Sym}_2(\mathbb R)$, of dimension
+three. The full quaternionic Peirce corner has dimension six. For primes
+$1201,4561,8761,9601$, all congruent to $361$ modulo $840$, the complete
+oriented state counts are respectively $15,54,36,29$; the corresponding
+unordered triple counts are $11,40,26,23$. The expanded divisor-channel
+draft contains the full census, map, and closure proof.
+
+\noindent\textbf{4 September arithmetic addition.}
+For $p\equiv1\pmod4$, divisors $R\mid(p+1)/2$, $R\equiv3\pmod4$
+give $x=(p+R)/4$, $k=(p+1)/R$ and
+$4/p=1/x+1/(xk)+1/(pxk)$. Their number is exactly
+$\frac12(\tau((p+1)/2)-\sum_{d\mid(p+1)/2}\chi_4(d))$; a finite-CRT
+argument gives relative density one in every fixed reduced progression
+of residue one modulo four, not every individual prime. The audit also gives
+a rational inverse-bearing map from $ac-b^2=-\delta$ to $\Delta(q)=-1$:
+with $D=-1-a^2-b^2+4a+4b+4ab$ and $K=1-2a-2b$ it sends
+$A\mapsto(1+2K/D,2Ka/D,2Kb/D)$. For integral $a,b$, its exact image
+denominator is $|D|/\gcd(|D|,|2K|)$. It is different from Pro's
+orthogonal map, whose rational image is empty; neither map establishes
+membership in the global period curve of the proposed threefold.
+
+\noindent\textbf{4 September quaternionic continuation.}
+The two Pro constructions define the same embedded thirteen-space:
+$\{H:PHP^*\in\operatorname{Herm}_2(\mathbb C)\}
+=\{\Theta(A,b):u^*b=0\}$, where $P$ has rows $(1,-1,0)$ and $(0,1,-1)$,
+$u=(1,1,1)^{\mathsf T}$, and $\Theta(A,b)=A+B(b)\mathbf j$ with
+$B(b)_{ij}=\sum_k\epsilon_{ijk}\bar b_k$. Their second spinors satisfy
+$w=-\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\bar\chi$;
+their common positive cone gives the exact boundary pair $(S^{12},S^8)$.
+This geometric identification does not erase the dynamics of the omitted
+complex coordinate. In the supplied scalar model, with
+$s=\operatorname{tr}\Phi^2+2b^*b$ and
+$V=m^2s/2+\Gamma s^2/4-\kappa(\det\Phi-b^*\Phi b)$,
+\[
+ \rho=u^*b,\qquad
+ \ddot\rho=-(m^2+\Gamma s)\rho-\kappa u^*\Phi b.
+\]
+At zero initial velocities, $\Phi=\operatorname{diag}(1,-1,0)$,
+$b=(1,-1,0)^{\mathsf T}$, one has $\rho=0$ but $\ddot\rho=-2\kappa$.
+Nonzero motions can nevertheless remain in the slice without that reaction:
+for each fixed complex $W\subset u^\perp$, keep $b\in W$,
+$\Phi W\subset W$, and tangent initial velocities. The original equations
+preserve this family globally; its configuration dimension is six for a
+line $W$ and eight for $W=u^\perp$. The line case permits a nonzero marked
+cross-coordinate $z$. In contrast, other initial data have vanishing
+normal derivatives through order three but $\rho^{(4)}(0)=-12\kappa$.
+Thus an instantaneous tangency check is weaker than the proved invariant
+family. The proof supplement derives the constrained model's exact reaction force
+$\kappa(uu^*/3)\Phi b$, retains the nonunitary Jordan metric
+$D=\operatorname{diag}((PP^*)^{-1},3)$, and corrects the gauge kinetic sign
+for anti-Hermitian generators. It makes no continuum mass-gap claim.
+
+\noindent\textbf{Periodic continuation and the scalar vacuum.}
+The fixed-subspace families are not exhaustive. For
+$(m^2,\Gamma,\kappa)=(1,1,6)$ take
+$b_0=(1,-1,0)^{\mathsf T}/4$ and
+$\Phi_0=\frac14\left(\begin{smallmatrix}1&1&1\\1&1&1\\1&1&-2\end{smallmatrix}\right)$.
+Let $O(t)$ be rotation about $(1,1,1)$ with angular frequency $\sqrt2$.
+The explicit original-coordinate rotation is given in the proof supplement.
+Then $b(t)=O(t)b_0$, $\Phi(t)=O(t)\Phi_0O(t)^*$ solve the full scalar
+equations and have $u^*b=\Phi b=0$, $s=1$, and energy $7/4$.
+The moving $b$ spans $u^\perp$, while $\Phi_0$ does not preserve that
+plane. The conserved moment is $-\Omega/2$, $\Omega=\dot O O^{-1}$;
+this nonzero matrix prevents the zero-connection lift from satisfying
+Gauss' equation, even in the gauge where the scalar coordinates are static.
+Separately, the supplied potential's nonzero minimum manifold is
+$\{x(3P-I_3):P\in\mathbb{HP}^2\}$ below
+$m^2=\kappa^2/(27\Gamma)$, with coexistence at equality. Here
+$x=(\kappa+\operatorname{sgn}(\kappa)\sqrt{\kappa^2-24\Gamma m^2})/(12\Gamma)$.
+Its full metric Hessian has eigenvalues $x(12\Gamma x-\kappa)$, $0$,
+and $3\kappa x$ of multiplicities $1,8,5$. These are complete scalar
+calculations, not a physical quantum mass-gap claim.
+
+\overviewsection{1. The candidate, its fillings, and the original audit}
+
+\noindent\textbf{The common higher-rung object.}
+The nine-dimensional complex-Hermitian space has a marked $4+4+1$
+decomposition; the two $4+4+4+1$ constructions are the same embedded
+thirteen-slice of $\operatorname{Herm}_3(\mathbb H)$, and its Jordan
+closure is the full $6+4+4+1$ space. A positive observation of that full
+space, $H\mapsto\pi_{\mathbb C}(PHP^*)$, retains a four-dimensional
+Lorentz block $G$ without imposing $\rho=u^*b=0$. Its exact permitted
+pairs are $G\succeq0$, $|\rho|^2\leq\det G$: every such pair lifts.
+Consequently a null block forces $\rho=0$, while timelike blocks admit
+nonzero $\rho$. This inequality alone has no uniform positive threshold;
+$G=\epsilon I_2$, $\rho=\epsilon/2$ has positive lifts for every
+$\epsilon>0$. For the trace-free scalar variable $Q=\Theta(\Phi,b)$,
+the separate positive-boundary map is $Q\mapsto Q-\lambda_{\min}(Q)I_3$,
+and its observation is $P\Phi P^*-\lambda_{\min}(Q)PP^*$.
+No nonzero trace-free matrix is itself positive. These exact maps
+identify a coherent carrier and observation problem; the rank-six
+integral toroidal extension supplies the separate period and filling
+data needed for a successor to the original cusp construction.
+
+\noindent\textbf{What now selects the observation, and what does not.}
+Keep the exact rank-six periods $\Omega_3=(I_3,Z_3)$,
+$Z_3=sI_3+C_3(t)$, $s=x+iy$, including the inherited correction $C_3$.
+For real positive lattice metrics, the map
+$W_3\mapsto H_3=\Omega_3W_3\Omega_3^*$ has a complete
+twelve-dimensional positive fibre; the observed map $W_3\mapsto PH_3P^*$
+has a seventeen-dimensional fibre. Every smooth positive $G(t)$ lifts
+with the original monodromy. In particular
+$G=\operatorname{diag}(\alpha_{\rm obs},\beta_{\rm obs}y^{-p})$
+has an explicit positive equivariant lift and approaches a nonzero null
+block. Its relative metric condition number grows as
+$2\max\{2\alpha_{\rm obs}/3,3\lambda\}y^{p+2}/\beta_{\rm obs}$.
+By contrast a bounded relative condition number excludes such rank loss.
+The periods thus support the proposed observation but do not, without
+a metric-selection law, determine its trajectory.
+
+The full gauge equations give a second exact test. For the rotating
+scalar family, temporal-gauge scalar compatibility forces
+$\mathcal A_i=ic_i\Phi$; Gauss' residual is
+$(2(x^2+d^2)\sum_i c_i^2/g^2+x^2+d^2+B^2)\Omega\ne0$.
+Arbitrary temporal connection is retained in a separate exact inertia
+equation; no general impossibility is inferred from temporal gauge.
+There is a constructive full-gauge sector with
+$\Phi=x(t)\operatorname{diag}(-2,1,1)$,
+$b=\beta(t)e_1$, $\mathcal A_\mu=0$:
+\[
+ \ddot x=-ax-\kappa x^2+\kappa\beta^2/3,\qquad
+ \ddot\beta=-(a-2\kappa x)\beta,\qquad
+ a=m^2+\Gamma(6x^2+2\beta^2).
+\]
+Every real initial condition gives a global solution, including the
+exact scalar minimum $x=(3+\sqrt3)/12$, $\beta=3x$ at $(m^2,\Gamma,\kappa)=(1,1,6)$.
+For a quaternionic positive rank-one $H=\Theta(A,b)$, the gauge-invariant
+average of the marked determinant is
+\[
+ \int_{SU(3)}\det(PgAg^*P^*)\,d\mu(g)
+ =V_\mu\operatorname{tr}\operatorname{adj}(A)=V_\mu\|b\|^2.
+\]
+An explicit family of equal-potential minima has
+$\|b\|^2=9\chi^2\sin^2(2\theta)/4$, $0\leq\theta\leq\pi/4$,
+$\chi=(3+\sqrt3)/6$. The fixed-mark determinant can change from timelike
+to null inside one gauge orbit, whereas this average is invariant and
+distinguishes those minimum orbits. None of these determinants is
+identified here with a quantum Hamiltonian mass.
+
+\noindent\textbf{Exact dynamics and the invariant vector mass.}
+The later calculation derives an actual linearized gauge-vector mass
+from the same invariant. Retain $m^2\geq0$, $\Gamma>0$, $\kappa>0$,
+$m^2\leq\kappa^2/(27\Gamma)$ and
+$\chi=(\kappa+\sqrt{\kappa^2-24\Gamma m^2})/(12\Gamma)$.
+For $q=\cos(2\theta)$, $0\leq\theta\leq\pi/4$, use the minimum
+\[
+ \Phi_\theta=\chi\operatorname{diag}
+       ((1+3q)/2,(1-3q)/2,-1),\qquad
+ b_\theta=-\tfrac32\chi\sin(2\theta)e_3 .
+\]
+With the retained anti-Hermitian kinetic inner product $-\operatorname{tr}(ZW)$,
+all eight inertia eigenvalues, including multiplicities, are
+\[
+ \chi^2\{0,\;3(1-q^2),\;
+       9q^2\ [2],\;\tfrac92(1+q)\ [2],\;\tfrac92(1-q)\ [2]\}.
+\]
+Their transverse squared masses are $g^2/2$ times these values: direct
+substitution into all linearized scalar equations and Gauss gives
+$\omega^2=|k|^2+g^2\lambda/2$. The exact nonlinear phase current
+$j_\nu=-i(b^*D_\nu b-(D_\nu b)^*b)$ is gauge invariant and conserved.
+For a transverse fluctuation along $i\operatorname{diag}(1,1,-2)$,
+it is $-4\|b_\theta\|^2 a_\nu$ at first order. This detects the branch
+\[
+ \mu_{\rm d}^2=\frac{2g^2}{3}\|b_\theta\|^2
+ =\frac{2g^2}{3V_\mu}
+       \int_{SU(3)}\det(PgA_\theta g^*P^*)\,d\mu(g).
+\]
+Here $A_\theta=\Phi_\theta+\chi I_3$ is the complex part of the
+positive rank-one quaternionic matrix. The current coefficient vanishes
+at $b_\theta=0$; it is not a nonzero linear interpolator at that endpoint.
+One transverse zero branch persists in the interior, with kernel
+dimensions four and three at the two endpoints.
+
+There are also exact nonlinear full-gauge continuations with zero
+connection. In the original scalar coordinates put
+\[
+ \Phi=\operatorname{diag}(h+k,h-k,-2h),\qquad b=\beta e_3.
+\]
+All gauge currents vanish for any real profiles. The complete remaining
+equations are
+\[
+ \Box h=-ah-\kappa h^2+\kappa(k^2+\beta^2)/3,\quad
+ \Box k=-(a-2\kappa h)k,\quad
+ \Box\beta=-(a-2\kappa h)\beta,\quad
+ a=m^2+\Gamma(6h^2+2k^2+2\beta^2).
+\]
+For $0<m^2<\kappa^2/(27\Gamma)$ set $h_0=\chi/2$ and choose
+$h_0<h<\kappa/(6\Gamma)$. The exact solutions are
+\[
+ a=\frac{m^2+12\Gamma h^2}{1-6\Gamma h/\kappa},\quad
+ R^2=\frac{3ah}{\kappa}+3h^2,\quad
+ \omega^2=a-2\kappa h>0,\quad
+ k(t)=R\cos(\omega t),\quad\beta(t)=R\sin(\omega t).
+\]
+As $h\downarrow h_0$, their frequency tends to zero and their
+energy density satisfies $E-V_0=9h_0^2\omega^2+O(\omega^4)$.
+The amplitude tends to $3h_0$, not zero: a finite gauge-invariant
+excursion becomes arbitrarily slow. At fixed minimum amplitude,
+$\theta=f(t-x_1)$ instead gives an exact nonlinear travelling wave
+for any smooth $f$. On a rectangular torus and $L_1$-periodic $f$,
+its excess energy is $18\chi^2L_2L_3\int_0^{L_1}(f')^2$.
+These energy statements retain finite spatial volume. They neither
+quantize the model nor decide its interacting quantum spectrum.
+
+\noindent\textbf{The full homogeneous quantum model now has a proved gap.}
+The separate draft \path{s6_homogeneous_quantum_confinement.tex}
+quantizes all three $\mathfrak{su}(3)$ spatial gauge matrices, all eight
+adjoint-scalar coordinates, and all six triplet coordinates. With
+$T_A=-\Delta_{\mathfrak{su}(3)^3}$ and
+$T_E=-\Delta_{\operatorname{tr}(d\Phi^2)+2db^*db}$, its Hamiltonian is
+\[
+ H=\frac{\hbar^2g^2}{4\mathcal V_3}T_A+
+       \frac{\hbar^2}{2\mathcal V_3}T_E+\mathcal V_3U,
+\]
+\[
+ U=\frac1{g^2}\sum_{i<j}\|[A_i,A_j]\|^2
+   +\frac12\sum_i\operatorname{tr}[A_i,\Phi]^2
+   +\sum_i\|A_i b\|^2+V(\Phi,b).
+\]
+Nothing is restricted to the minimum curve. The exact root sum
+$\operatorname{tr}_{\mathfrak{su}(3)}\sqrt{-\operatorname{ad}_X^2}
+=4(\lambda_{\max}(-iX)-\lambda_{\min}(-iX))\geq2\sqrt6\|X\|$
+gives, for every $0<\eta<1$,
+\[
+ H\geq\frac{\eta\hbar^2g^2}{4\mathcal V_3}T_A+
+ \frac{\hbar^2}{2\mathcal V_3}T_E+
+ \hbar\sqrt{6(1-\eta)}\sum_i\|A_i\|
+ +\frac{\mathcal V_3\Gamma s^2}{8}
+ -\frac{\mathcal V_3\kappa^4}{54\Gamma^3}.
+\]
+This quadratic-form bound comes from transverse quantum oscillators,
+not an added classical potential. It proves compact resolvent despite
+commuting classical valleys. The derived Gauss generators impose
+spatially constant $SU(3)$ invariance, and the strictly positive heat
+kernel proves a unique invariant ground state. Thus
+$E^{\rm phys}_1-E_0>0$ for fixed positive
+$\hbar,g^2,\mathcal V_3,\Gamma$, $m^2\geq0$ and real $\kappa$.
+The bosonic matrix mechanism is classical (Simon, 1983, Section~7);
+the calculation applies it with full constants to this coupled action.
+No numerical or volume-uniform gap follows. The classical embedding
+into torus fields is proved, but it is not an automatic quantum
+subsector: the Fourier pair
+$\Phi=(q+y\cos(2\pi x_1/L_1))\operatorname{diag}(1,-1,0)/\sqrt2$
+has the mixed potential $3\Gamma\mathcal V_3q^2y^2/4$. It prevents
+all homogeneous wavefunctions tensored with one fixed normalizable
+discarded-mode state from being a reducing subspace. The continuum
+comparison must retain this coupling.
+
+\noindent\textbf{The period geometry now has a precise spectral meaning.}
+The original $W$ is the inverse metric in lattice coordinates.
+Hermitian compatibility gives $h_3=2H_3^{-1}$ and a quotient metric
+$h_2=2G^{-1}$; the original map $P\oplus Q_{\rm latt}$ intertwines
+the Laplacians exactly on pulled-back characters. For the native
+Euclidean source, $H_3=2I_3$ and $G=2PP^*$ are constant, whereas
+\[
+ \lambda_{m,n}=4\pi^2\left(\|m\|^2+
+       \|(yI_3+\operatorname{Im}C_3)^{-\mathsf T}
+          (n-(xI_3+\operatorname{Re}C_3)^{\mathsf T}m)\|^2\right).
+\]
+The source and induced quotient first positive eigenvalues are
+$4\pi^2/y^2$ and $8\pi^2/y^2$ to leading order, with explicit two-sided
+bounds retaining the full correction $C_3$. Thus constant observed
+cometric does not prevent the native periods from expanding and their
+positive Laplace gaps from tending to zero.
+The full proofs are in the quaternionic continuation draft, including
+the separate exclusions of all time-dependent real gauge lifts and
+constant-spatial complex lifts of the earlier literal rotating orbit.
+
+\noindent\textbf{A controlled quantum correspondence retaining the Fourier interaction.}
+In the exact truncation $\Phi=(q+y\cos(2\pi x_1/L_1))
+\operatorname{diag}(1,-1,0)/\sqrt2$, $A_i=b=0$, the actual fibre
+operator and its ground state are
+\[
+ h(q)=-\frac{\hbar^2}{\mathcal V_3}\partial_y^2
+       +\frac{\mathcal V_3\omega(q)^2}{4}y^2
+       +\frac{3\Gamma\mathcal V_3}{32}y^4,
+ \qquad h(q)\Omega_q=e(q)\Omega_q,
+\]
+where $\omega(q)^2=\omega_*^2+3\Gamma q^2$,
+$\omega_*^2=m^2+(2\pi/L_1)^2$. The strictly positive ground state,
+normalized in $\sqrt{\mathcal V_3/2}\,dy$, is not Gaussian.
+The isometry $Jf=f\Omega_q$ gives the exact compressed Hamiltonian
+\[
+ H_{\rm eff}=-\frac{\hbar^2}{2\mathcal V_3}\partial_q^2
+ +\mathcal V_3\left(\frac{m^2q^2}{2}+\frac{\Gamma q^4}{4}\right)
+ +e(q)+\frac{\hbar^2}{2\mathcal V_3}\|\Omega'_q\|^2.
+\]
+Its Berry connection vanishes in the positive real phase, but its last
+potential term is strictly positive for $q\ne0$. With
+$Q_q=I-|\Omega_q\rangle\langle\Omega_q|$, the full residual is
+\[
+ H_2Jf-JH_{\rm eff}f
+ =-\frac{\hbar^2}{2\mathcal V_3}
+       (2f'\Omega'_q+fQ_q\Omega''_q).
+\]
+This map is not an invariant subsector. Nevertheless, for
+$\mathcal V_3\geq9\Gamma\hbar/(16\omega_*^3)$, a normalized
+initial state of effective energy expectation at most $E$ satisfies
+\begin{align*}
+ \|e^{-itH_2/\hbar}Jf-Je^{-itH_{\rm eff}/\hbar}f\|
+ &\leq |t|\left[
+ \frac{\sqrt{30\Gamma E}}{\omega_*\sqrt{\mathcal V_3}}
+ +\frac{9\sqrt5\,\Gamma\hbar}{\mathcal V_3\omega_*^2}\right.\\[-1mm]
+ &\hspace{22mm}\left.
+ +\frac{96}{5^{3/4}}
+      \sqrt{\frac{\Gamma\hbar}{\mathcal V_3\omega_*}}\right].
+\end{align*}
+The quartic fibre spectrum, derivative estimates and operator domains
+are proved in the quantum draft. The bound improves at fixed
+$\hbar,\Gamma,L_1,m^2,E,t$ as volume grows; it is not uniform when
+the original Fourier frequency tends to zero and does not assert a
+continuum spectral limit. This gives an explicit relation where the
+fixed-vacuum product failed, rather than discarding that interaction.
+
+\noindent\textbf{The remaining rotating-gauge equations are now explicit.}
+For that literal scalar orbit, a genuinely complex class with temporal
+and one spatial matrix exchanging the fixed matter line with its
+orthogonal complement, and the other spatial matrix preserving that
+line, is excluded by the full Gauss and spatial equations. Here the
+unchanged constant-matter data are
+\[
+ H=\begin{pmatrix}0&0&0\\0&-1/2&1/(2\sqrt2)\\
+       0&1/(2\sqrt2)&1/2\end{pmatrix},\quad
+ q=\frac{(1,0,0)^{\mathsf T}}{2\sqrt2},\quad
+ A=\sqrt2\begin{pmatrix}0&-1&0\\1&0&0\\0&0&0\end{pmatrix}.
+\]
+The exclusion
+also covers every constant spatial rotation of that class. For arbitrary
+$Z_1,Z_2\in\mathfrak{su}(3)$ in the two-spatial-rotation ansatz, retain
+$\mathcal IX=([H,[H,X]]+qq^*X+Xqq^*)_{\rm tf}$ and
+$\mathcal KX=-\sum_j[Z_j,[Z_j,X]]$. Every possible solution has
+$[Z_1,Z_2]\ne0$, which makes $L=g^2\mathcal I+2\mathcal K$ positive
+definite. The exact Gauss and scalar equations then give
+\[
+ T=4L^{-1}[Z_1,Z_2],\qquad C=\omega T,\qquad
+ \omega^2=\tau:=\frac{1/4+\|Z_1q\|^2+\|Z_2q\|^2}{\|Tq\|^2}.
+\]
+The numerator retains the original $2q^*q=1/4$. This does not replace
+the scalar equation by its contraction: all entries of
+\[
+ \tau[T,[T,H]]-\sum_j[Z_j,[Z_j,H]]-[A,[A,H]],\qquad
+ (\tau T^2-Z_1^2-Z_2^2)q+2q
+\]
+must vanish, as must the two full spatial residuals printed in the
+quaternionic draft. Their common zero set has an explicit inverse
+$\omega=\pm\sqrt\tau$, $C=\omega T$ recovering the original fields.
+This removes the temporal matrix and frequency from the search without
+discarding colour coordinates or a field equation. It is not yet a
+solution or an exclusion of that unrestricted zero set.
+The full scalar equations also force the original stabilizer
+coefficients $s_X=-i\operatorname{tr}(HX)$ to obey
+$s_C^2<s_{Z_1}^2+s_{Z_2}^2$ unless all three vanish.
+This strict signature constraint is proved for every complex triple,
+not just the excluded block class. A further exact two-by-two stress
+equation, including its sum-of-squares discriminant, retains both
+spatial equations as necessary tests of the remaining zero set.
+
+
+\paragraph{5 September: finite coupling fibres and a proper spatial exceptional set.}
+Keep every entry of the preceding $Z_1,Z_2$ and put
+$t=g^2$, $J=iH$, $W=J^\perp$, and
+$\Pi X=X-\langle J,X\rangle J/(3/4)$. Write
+$\mathscr B=[Z_1,Z_2]$, $\eta=\langle J,\mathcal KJ\rangle$,
+$w=\Pi\mathcal KJ$, and $\beta=\langle J,\mathscr B\rangle$.
+For a noncommuting pair, $\eta>0$, and the exact seven-dimensional
+pencil and forcing vector are
+\[
+ \mathscr M(t)=t\mathcal I|_W+
+  2\left(\Pi\mathcal K|_W-\frac{w\langle w,\cdot\rangle}{\eta}\right),
+ \qquad f_7=\Pi\mathscr B-\frac\beta\eta w.
+\]
+Define $D_7=\det\mathscr M$, $V_7=4\operatorname{adj}(\mathscr M)f_7$,
+and retain the full temporal numerator
+\[
+ N_7=V_7+\frac{2\beta D_7-\langle w,V_7\rangle}{\eta}J,
+ \quad Q_7=\|V_7q\|^2,
+ \quad\alpha=\tfrac14+\sum_j\|Z_jq\|^2.
+\]
+Then $T=N_7/D_7$, $D_7(t)>0$ for $t>0$, and the determinant has
+degree seven with leading coefficient $3/128$.
+Clearing only the retained positive frequency denominator in all four
+full residuals gives $(R_H,R_q,R_1,R_2)=(P_H,P_q,P_1,P_2)/Q_7$.
+Their original Hermitian/vector/anti-Hermitian codomains give the
+nonnegative polynomial
+\[
+ p_Z(t)=\operatorname{tr}(P_H^2)+P_q^*P_q-
+                 \operatorname{tr}(P_1^2)-\operatorname{tr}(P_2^2).
+\]
+For $Q_7\not\equiv0$ its degree is exactly twenty-eight, with
+\[
+ [t^{28}]p_Z=\alpha^2(3/128)^4
+       \|\mathcal L_{2\beta/\eta}^2(Z_1,Z_2)\|^2>0,\qquad
+ \mathcal L_a(X_1,X_2)=(X_1+a[J,X_2],X_2-a[J,X_1]).
+\]
+Every real root has even multiplicity. Thus at most fourteen
+positive couplings satisfy the original system over a fixed pair;
+the exact permitted roots retain $Q_7(t)>0$ and the explicit bounded
+interval proved in the quaternionic draft. Each such root has precisely
+the two reconstructions
+\[
+ \omega=\varepsilon\sqrt\alpha D_7/\sqrt{Q_7},\qquad
+ C=\varepsilon\sqrt\alpha N_7/\sqrt{Q_7},\qquad\varepsilon=\pm1.
+\]
+The identically empty domain is itself decided by three vector tests:
+$f_7q=(\mathcal S_7f_7)q=(\mathcal S_7^2f_7)q=0$, where
+$\mathcal S_7$ is the second summand of $\mathscr M/2$ after
+removing $t\mathcal I|_W/2$.
+
+There is also a global restriction on the sixteen-coordinate spatial
+projection. In the fixed diagonal frame $U$ already used for $H$, the
+two polynomials
+$F_\xi=\eta^{16}(U^*P_HU)_{11}$ and
+$G_\xi=\eta^{16}(U^*P_HU)_{22}$ have degree at most twelve in $t$
+and polynomial coefficients in all spatial coordinates $\xi$.
+The $24\times24$ matrix of $(A,B)\mapsto AF_\xi+BG_\xi$, with
+$\deg A,\deg B<12$, has determinant $\mathscr R(\xi)$.
+Every full solution satisfies $\mathscr R(\xi)=0$.
+For the literal full-coordinate pair
+$(a,h,v_1,v_2,z)=(1,2,1+i,-1+2i,2-i)$ and
+$(-2,1,2+3i,1-i,-1+2i)$, an exact rational Bezout identity shows
+this determinant is nonzero. Independently, reduction through
+$\sqrt6\mapsto39$ modulo $101$ gives determinant $60\ne0$ after
+the displayed $\eta^{16}$ multiplication. The complete determinant
+definition, inverse coordinate maps, and certificates are in the draft.
+Consequently solutions can project only into a closed, nowhere-dense,
+measure-zero algebraic set. Existence on that set requires further analysis.
+
+\paragraph{5 September: an excluded subspace and an exact error bound.}
+This exceptional set contains a whole eight-dimensional linear subspace:
+put $P=qq^*/(q^*q)$ and let both $Z_1,Z_2$ exchange $\mathbb Cq$
+and $q^\perp$, so $PZ_jP=(I-P)Z_j(I-P)=0$.
+The Gauss equation forces $C$ to preserve these two summands.
+Two explicitly invertible simultaneous unitary changes then give
+\[
+ C=ie\operatorname{diag}(1,0,-1),\quad
+ H=\begin{pmatrix}0&0&0\\0&0&r\\0&r&0\end{pmatrix},\quad
+ q=e_1/(2\sqrt2),\quad r=\sqrt6/4,
+\]
+with neither the sign of $e$ nor the sign of $\omega$ selected.
+Every entry of the spatial vectors is retained in
+$Z_1=X(v)$, $Z_2=X(w)$, $X(v)=\left(\begin{smallmatrix}0&-v^*\\v&0\end{smallmatrix}\right)$.
+Write $M=vv^*+ww^*$, $u=M_{11}$, $v_0=M_{22}$, $m=M_{12}$ and
+$d_M=\det M$. Both scalar equations give
+$e^2=2+\operatorname{tr}M$ and $\operatorname{Re}m=\delta=1/(2r)>0$.
+With $N=i(vw^*-wv^*)$ and $b=\operatorname{Im}(v^*w)$, full Gauss gives
+\[
+ b=-\frac e{2\omega}(u+2v_0+t/24),\quad
+ N_{12}=-\frac{3e}{2\omega}m,\quad
+ N_{22}=-\frac e\omega(2v_0+5t/24),\qquad t=g^2>0.
+\]
+The complete spatial residual vectors satisfy
+\[
+ s_1v^*+s_2w^*=DM+d_MI_2+(4bI_2-2\omega eQ)N,\quad
+ Q=\operatorname{diag}(1,2),\quad D=(t/4-\omega^2)I_2-e^2Q^2.
+\]
+If both spatial equations held, the $(2,1)$ and $(2,2)$ entries
+would imply
+\[
+ 0=d_M+\frac{e^2}{\omega^2}
+       (u+2v_0+t/24+2\omega^2)(v_0+5t/12)>0,
+\]
+a contradiction for every permitted coupling and both frequency signs.
+Without setting the spatial residuals to zero, their full matrix versions
+$R_j=X(s_j)$ satisfy, on the same scalar--Gauss zero set,
+\[
+ \sqrt{\|R_1\|_{\mathrm{HS}}^2+\|R_2\|_{\mathrm{HS}}^2}
+ >\frac{5\sqrt2\,e^2t}
+ {6\sqrt{\operatorname{tr}M(1+v_0^2/|m|^2)}}.
+\]
+For $\operatorname{tr}M\leq L$ and $t\geq t_0>0$ this exceeds
+$5\sqrt2\,t_0/(3\sqrt{L(1+L^2/\delta^2)})$.
+The full quaternionic draft proves a denominator-free identity in the
+nonzero Gauss and spatial residuals, then derives this bound; it is not
+a numerical tolerance chosen for a search. The constrained domain is
+now completely parameterized and is nonempty at every original $t>0$,
+as the following continuation proves.
+
+The subspace lies in $\{\mathscr R=0\}$ because the four-dimensional
+cross block of the Gauss pencil contributes a degree-four determinant
+$D_4$ with leading coefficient $1/16$, and both selected diagonal scalar
+polynomials contain $D_4^2$. This inclusion is proved through an explicit
+kernel of the fixed Sylvester map, including degree drops and the zero
+pair. It does not imply these common factors have admissible positive roots.
+The complete proof excludes this subspace, not the remaining exceptional
+set or arbitrary time-dependent complex gauge lifts.
+
+\paragraph{5 September: every-coupling scalar--Gauss classification.}
+The entire classified scalar--Gauss domain is in bijection with
+$\mathcal D\times\{1,-1\}^2\times U(1)^2$, where
+\[
+ \mathcal D=\{(u,v_0,y)\in\mathbb R^3:
+ u>0,\ d=uv_0-\delta^2-y^2>0,\ c=4v_0-5u>0\},\quad
+ \delta=\sqrt{2/3}.
+\]
+Retain $m=\delta+iy$ and set
+\[
+ \begin{gathered}
+ M=\begin{pmatrix}u&m\\\bar m&v_0\end{pmatrix},\quad t=72d/c,\qquad
+ T=\frac t4E-\frac12(QM+MQ),\\
+ Q=\operatorname{diag}(1,2),\qquad E=\operatorname{diag}(2/3,-5/6).
+ \end{gathered}
+\]
+\[
+ \begin{gathered}
+ e=\epsilon\sqrt{2+u+v_0},\qquad
+ k=\sigma\sqrt{\frac d{-\det T}},\qquad
+ \omega=e/k,\\
+ N=kT,\qquad \epsilon,\sigma\in\{1,-1\}.
+ \end{gathered}
+\]
+The full proof establishes $\det T<0$, and $A_\pm=M\pm N$ are
+positive semidefinite of rank one with $h_\pm=(A_\pm)_{11}>0$. Thus
+\[
+ \begin{gathered}
+ a_\pm=\begin{pmatrix}\sqrt{h_\pm}\\(A_\pm)_{21}/\sqrt{h_\pm}\end{pmatrix},\qquad
+ p_\pm\in U(1),\\
+ v=\frac{p_+a_++p_-a_-}2,\quad
+ w=\frac{i(p_+a_+-p_-a_-)}2
+ \end{gathered}
+\]
+are defined throughout $\mathcal D$, and
+$p_\pm=(v\mp iw)_1/\sqrt{h_\pm}$ recovers the phases exactly.
+Their full scalar residuals vanish because
+$e^2=2+\operatorname{tr}M$, $\operatorname{Re}m=\delta$.
+The complete lower Gauss block is
+\[
+ etE-2e(QM+MQ)-4\omega N
+ =etE-2e(QM+MQ)-4e\left(\frac t4E-\frac12(QM+MQ)\right)=0;
+\]
+the remaining upper entry is minus its trace, and all off-block
+entries are zero. These are full residual identities.
+
+Gauss and scalars force every literal temporal matrix into the displayed
+classified form by the retained inverse frame $Y_0=B(\zeta)Y'B(\zeta)^*$.
+Writing $B(\zeta)=U\operatorname{diag}(1,W(\zeta))$ in the draft's
+fixed first frame,
+\[
+ W(\zeta)=\frac1{\sqrt2}
+ \begin{pmatrix}-\zeta^{-1}&-\zeta^{-1}\\\zeta&-\zeta\end{pmatrix},
+ \qquad |\zeta|=1,
+\]
+retains both square roots of the temporal phase. The complete literal
+domain is therefore in bijection with
+\[
+ \bigl(\mathcal D\times\{1,-1\}^2\times U(1)^2\times U(1)\bigr)
+ /\bigl((p_+,p_-,\zeta)\sim(-p_+,-p_-,-\zeta)\bigr).
+\]
+The proof computes every inverse coordinate and shows that each raw
+fibre consists of precisely these two points; no phase is discarded.
+The smooth coordinates
+$(\eta,\alpha,\beta)=(\zeta^2,p_+/\zeta,p_-/\zeta)$ give
+\[
+ \mathcal S_{\rm sg}\cong\{1,-1\}^2\times(0,\infty)
+                         \times\mathbb R^2\times\mathbb T^3.
+\]
+For $(\tau,y,s)\in(0,\infty)\times\mathbb R^2$ the exact coupling
+coordinates are
+\[
+ v_0=\frac{\sqrt5}{2}\sqrt{\delta^2+y^2}+e^s,\qquad
+ u=\frac{4\tau v_0+72(\delta^2+y^2)}{72v_0+5\tau},\qquad t=\tau=g^2.
+\]
+The source \path{scalar_gauss_smooth_shared.tex} proves smooth inverse
+charts in the literal matrix entries and embeddedness. There are exactly
+four six-dimensional literal components; every fixed positive coupling
+has four embedded five-dimensional components
+$\mathbb R^2\times\mathbb T^3$. The positive coordinate is the unchanged
+coupling, and no physical gauge quotient or spatial equation is imposed.
+For every prescribed original $\tau=g^2>0$, take
+\[
+ \rho=\frac{\tau+\sqrt{\tau^2+4608\delta^2}}{96\delta}
+       >1/\sqrt2,\qquad
+ M_\rho=\delta\begin{pmatrix}\rho&1\\1&2\rho\end{pmatrix}.
+\]
+Here $d=\delta^2(2\rho^2-1)>0$, $c=3\delta\rho>0$, and
+$48\delta\rho^2-\tau\rho-24\delta=0$ gives $t=72d/c=\tau$.
+The independent signs retain both temporal and original frequency signs.
+This proves a nonempty domain for the strict spatial-error certificate;
+the two spatial residuals cannot vanish simultaneously throughout the class. Existence
+on the remaining unrestricted exceptional set stays open. These classical
+residual statements do not establish a quantum gap.
+The complete proofs and independent exact replay are retained under
+\path{supporting_materials/workbench/evidence/scalar_gauss_domain_20260905/}.
+
+
+
+The construction starts from
+\[
+ B^\circ=\mathbb P^1\setminus\{p_0,p_1,p_2\},\qquad
+ \Delta\simeq(\mathbb Z/3)*(\mathbb Z/4),\qquad g_0=(g_1g_2)^{-1},
+\]
+and the marked two-tori
+\[
+ \Pi=[Z\mid I_2],\quad
+ Z=\begin{pmatrix}6\mu&\tau\\ \beta&\mu\end{pmatrix},\quad
+ D=\operatorname{Im}\beta-
+ \frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}<0,\quad
+ \det_{\mathbb R}\Pi=\operatorname{Im}\tau\,D<0.
+\]
+The elliptic orientations are simultaneous.  With $s_j$ the Cayley
+coordinates and
+$S_1(w)=(w-1)/w$, $S(w)=-1/w$, $P(w)=w-1$,
+\[
+ \begin{gathered}
+ s_1\circ g_1=e^{-2\pi i/3}s_1,\qquad
+ s_2\circ g_2=-is_2,\qquad g_0\ \text{parabolic},\\
+ \tau\circ g=\varphi(g)\circ\tau,\qquad
+ (\varphi(g_1),\varphi(g_2),\varphi(g_0))=(S_1,S,P),\qquad S_1SP=1.
+ \end{gathered}
+\]
+This normalization is forced at the cusp.  On a $g_0$-stable component
+$U_0$, choose the $j$-cusp component $K$ containing $\tau(U_0)$ and put
+\[
+ P(K)=K,\qquad
+ \tau'=\gamma_0^{-1}\tau|_{U_0},\qquad
+ P'=\gamma_0^{-1}P\gamma_0,\qquad \tau'\circ g_0=P'\circ\tau'.
+\]
+If $P'=1$, then $\exp(2\pi i\bar\tau')$ has a single-valued logarithm and
+winding zero, whereas the pole of $j(\tau)$ forces a zero and positive
+winding.  Hence $P'$ is nontrivial parabolic.  Returning to
+$\tau(z_1)=\rho$, $\varphi(g_1)=S_1$, the order-two condition gives
+\[
+ 0=\operatorname{tr}(\widetilde S_1^{-1}\widetilde P^{-1})
+ =1+k(p^2-pr+r^2),\qquad k=-1,\qquad p^2-pr+r^2=1,
+\]
+so conjugation by a power of $S_1$ gives the displayed triple.  Only then
+is $q:=e^{2\pi i\tau}=t_cu_1(t_c)$, $u_1(0)\ne0$, redefined.  In the
+resulting cusp coordinate $e^{2\pi is}=t_c$.
+
+For $M_g=\rho_V(g)^{\mathsf t}$ and $A_g=M_g^{-1}$, the exact deck identity
+and determinant signs are
+\[
+ \Pi(gz)=R_g(z)\Pi(z)M_g,\quad
+ R_{g_1}=\begin{pmatrix}-1/\tau&0\\(1-\mu)/\tau&1\end{pmatrix},\quad
+ R_{g_2}=\begin{pmatrix}1/\tau&0\\-\mu/\tau&1\end{pmatrix},
+\]
+\[
+ \det R_{g_1}=-\tau^{-1},\qquad
+ \det R_{g_2}=\tau^{-1},\qquad \det R_{g_0}=1.
+\]
+At the cusp,
+\[
+ Z=sB_0+C(t_c),\quad B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+ \Psi_{\bar\lambda}(x,t_c)=
+ \bigl(e^{2\pi iC(t_c)\bar\lambda}t_c^{B_0\bar\lambda}x,t_c\bigr),\quad
+ N_0=Y_\epsilon/\bar\Lambda.
+\]
+The reduced irreducible fibre $W$ has local equations
+$z_0$, $z_0z_1$, $z_0z_1z_2$ and normalization $\mathrm{dP}_6$ with
+opposite hexagon sides identified.  The invariant toric form gives
+\[
+ \Omega=\frac{dx_1\wedge dx_2\wedge dt_c}{x_1x_2}
+ =\pm dz_0\wedge dz_1\wedge dz_2,\qquad
+ \Psi_{\bar\lambda}^*\Omega=\Omega,\qquad
+ \omega_X|_{N_0}\simeq\omega_{N_0}\simeq\mathcal O_{N_0}.
+\]
+
+The opposite-edge identifications are literal holomorphic maps. For
+$C_v=E_0\cap E_v$, put
+$\iota_v=\Psi_{B_0v}|_{C_v}:C_v\to C_{-v}$, and use the same
+primitive character $w=\chi^{(a,0)}$, $av=0$, on both dense edge orbits.
+Then $\iota_v^*w_{-v}=e^{2\pi i\,aC(0)B_0v}w_v$, with
+\[
+ \begin{array}{c|c|c}
+ v&a&\iota_v^*w_{-v}/w_v\\\hline
+ e_1&(0,1)&e^{-2\pi i\mu_0}\\
+ e_2&(1,0)&e^{12\pi i\mu_0}\\
+ e_1-e_2&(1,1)&e^{-2\pi i(7\mu_0+b_0)}
+ \end{array}
+\]
+where $\mu_0=\mu(0)$ and $b_0=b(0)$. The reverse maps have reciprocal
+multipliers; these restrictions extend to the whole rational curves.
+The full matrix $C(0)$ is retained in this calculation.
+
+For $(m_1,m_2)=(3,4)$ and $(v_1,v_2)=(\varepsilon,-\varepsilon')$, the
+finite lifts are
+\[
+ \widetilde g_j^b(z,\zeta)
+ =(g_jz,R_{g_j}(z)\zeta+\Pi(g_jz)b),\qquad
+ Q_{j,\log}=\widetilde g_j^{\,v_j/m_j},\qquad
+ Q_{j,\mathrm{lin}}=\widetilde g_j^{\,0},
+\]
+\[
+ Q_{j,\log}\tau_\lambda Q_{j,\log}^{-1}=\tau_{A_j\lambda},\qquad
+ (Q_{j,\log})^{m_j}=\tau_{v_j},\qquad
+ (Q_{j,\mathrm{lin}})^{m_j}=1.
+\]
+The invariant covector satisfies
+$\gamma A_j=\gamma$,
+$\gamma(kv_1/3)=k/3$ and $\gamma(kv_2/4)=-k/4$ for $0<k<m_j$;
+hence every nonidentity power of the descended $q_{j,\log}$ is fixed-point
+free.  Thus
+\[
+ N_j=J'_j/\langle q_{j,\log}\rangle,\qquad f_j^*(p_j)=m_jS_j,
+\]
+and the punctured conjugacy is
+$h_jq_{j,\log}h_j^{-1}=q_{j,\mathrm{lin}}$ on $J_j^{\prime *}$.
+These maps glue a compact smooth threefold
+$f:X=N_0\cup J\cup N_1\cup N_2\to\mathbb P^1$.
+The integer
+\[
+ p=12\ell_0-4\ell_1-3\ell_2,\qquad
+ (\ell_0,\ell_1,\ell_2)=(0,1,-1)\Longrightarrow p=-1
+\]
+controls the topology.  The manuscript claimed
+$X\cong_{\rm diff}S^6$, $a(X)=1$, and
+$\langle c_3(T_X),[X]\rangle=2$; the first audits verified the integer
+algebra but had not yet identified its collapse and matrices with the
+actual specialization and oriented collar maps.
+
+\clearpage
+\overviewsection{2. Two integral topology certificates and recognition of $S^6$}
+
+Let $F$ be a smooth fibre,
+$V=H^1(F;\mathbb Z)=\mathbb Z\langle\gamma,u,w,\delta\rangle$, and
+$q=uw+6\gamma\delta$.  Integral nearby cycles prove
+\[
+ \operatorname{sp}^r:H^r(W;\mathbb Z)\longrightarrow H^r(F;\mathbb Z),
+ \qquad \operatorname{im}\operatorname{sp}^r
+ =H^r(F;\mathbb Z)^{T_0}\quad(0\le r\le4),
+\]
+with saturated image.  In
+$0\to R^rf_*\mathbb Z\to j_*L^r\to Q^r\to0$,
+\[
+ \begin{aligned}
+ Q^1&=(\mathbb Z/3)_{p_1}\oplus(\mathbb Z/4)_{p_2},&
+ Q^2&=Q^3=(\mathbb Z/2)_{p_2},&
+ Q^4&=(\mathbb Z/3)_{p_1}\oplus(\mathbb Z/4)_{p_2},
+ \end{aligned}
+\]
+and therefore
+\[
+ H^0(R^1f_*\mathbb Z)=\mathbb Z(12\gamma),\quad
+ H^0(R^2f_*\mathbb Z)=\mathbb Z(2q),\quad
+ H^0(R^3f_*\mathbb Z)=\mathbb Z(2\gamma uw).
+\]
+Canonical truncation identifies the disc--pair-of-pants discrepancy with
+Leray $d_2$:
+\[
+ d_2(12\gamma)=-p\omega,\qquad
+ d_2(2q)=-p\omega[\delta],\qquad
+ d_2(2\gamma uw)=-p\omega[\gamma\delta].
+\]
+For $p=-1$ these maps are primitive, so
+$H^1(X;\mathbb Z)=H^2(X;\mathbb Z)=H^3(X;\mathbb Z)=0$ and $H_2(X)=0$.
+The actual based overlap maps give
+\[
+ \pi_1(X)=
+ \langle c,x,y\mid c\ {\rm central},\ xy=1,\ x^3=c,\ y^4=c^{-1}\rangle=1.
+\]
+Consequently
+\[
+ H_k(X;\mathbb Z)=
+ \begin{cases}\mathbb Z,&k=0,6,\\0,&1\le k\le5,\end{cases}
+ \qquad X\simeq S^6,\qquad
+ X\cong_{\rm diff}S^6,\qquad
+ \langle c_3(T_X),[X]\rangle=\chi(X)=2,
+\]
+where the last diffeomorphism uses $\Theta_6=0$.
+
+The independent cellular certificate starts from the equivariant honeycomb
+collapse:
+\[
+ 0\longrightarrow\operatorname{im}(\textstyle\bigwedge^rM_0-I)
+ \longrightarrow\textstyle\bigwedge^r\Lambda
+ \xrightarrow{c_*}H_r(W;\mathbb Z)\longrightarrow0,\qquad
+ \operatorname{sp}^r=i_F^*r^*=c^*.
+\]
+The finite-band attachment has the oriented map
+\[
+ \alpha_r=(\pi_{1*},-\pi_{2*}):
+ H_r(F)\longrightarrow H_r(S_1)\oplus H_r(S_2),
+\]
+and, after splitting primitive cusp kernels, the only global blocks are
+\[
+ D_1=\begin{pmatrix}1&0&0\\0&1&0\\-12&0&-p\end{pmatrix},\qquad
+ D_2^{\mathrm{red}}=\begin{pmatrix}-p&0\\0&1\end{pmatrix},\qquad
+ \det D_1=\det D_2^{\mathrm{red}}=-p.
+\]
+They are unimodular for $p=-1$ and reproduce the same integral homology.
+Dualizing these oriented collar maps gives the three displayed
+transgressions, so the Leray and cellular proofs agree map-by-map without
+depending on one another.
+
+The explicit candidate and terminal algebra remain attributed to the
+Claude/Fabel source.  The audits isolated the missing geometric
+identifications, and the present AI-produced verification aid reconstructs
+the gluing, both topology certificates, meromorphic descent, Picard theory,
+conductor mechanism, Hodge and Bott--Chern calculations, and the CDP repair
+as checkable proofs.  Its purpose is to reduce the reconstruction burden for
+human experts, not to claim priority for the candidate or to substitute for
+independent specialist adjudication.  Root \texttt{main.tex} is the annotated
+edition and \texttt{workbench.tex} contains the complete proofs and sources.
+
+\clearpage
+\overviewsection{3. Algebraic reduction, Picard, Hodge, and Bott--Chern invariants}
+
+For a very general fibre,
+\[
+ \operatorname{NS}(F_b)=\mathbb Z\eta,\qquad
+ \eta=u\wedge w+6\gamma\wedge\delta,\qquad
+ \eta^2=12\gamma\wedge u\wedge w\wedge\delta.
+\]
+Because $\det_{\mathbb R}\Pi<0$, complex and marked orientations are opposite:
+\[
+ \int_{(F_b,\mathrm{or}_{\rm mark})}\eta^2=12,\qquad
+ \int_{(F_b,\mathrm{or}_{\mathbb C})}\eta^2=-12.
+\]
+The Appell--Humbert form has signature $(1,1)$, hence $a(F_b)=0$; the
+meromorphic descent theorem gives
+\[
+ \mathcal M(X)=f^*\mathbb C(t),\qquad a(X)=1.
+\]
+Writing $\mathfrak K=f_*\omega_{X/B}$, one has
+\[
+ \mathfrak K\simeq\mathcal O_B(1),\quad
+ f_*\mathcal O_X=\mathcal O,\quad
+ R^1f_*\mathcal O_X=\mathcal O\oplus\mathcal O(-1),\quad
+ R^2f_*\mathcal O_X=\mathfrak K^\vee=\mathcal O(-1),
+\]
+and $\bigwedge^2R^1f_*\mathcal O_X\simeq R^2f_*\mathcal O_X$.
+The full canonical-bundle chain is
+\[
+ \begin{gathered}
+ L:=K_X\otimes\mathcal O_X(-2S_2),\qquad
+ M:=f_*L,\qquad f^*M\simeq L,\qquad
+ \mathfrak K=M(2),\qquad M\simeq\mathcal O_B(-1),\\
+ K_X\simeq f^*\mathcal O_B(-1)\otimes\mathcal O_X(2S_2),\qquad
+ K_X^{\otimes4}\simeq f^*\mathcal O_B(-2).
+ \end{gathered}
+\]
+Leray and the exponential sequence give
+\[
+ H^1(X,\mathcal O_X)=\mathbb C,\quad H^2(X,\mathcal O_X)=0,\quad
+ \operatorname{Pic}(X)\simeq H^1(X,\mathcal O_X)\simeq\mathbb C.
+\]
+
+For $D=W+S_1+S_2$, $\Sigma=\{p_0,p_1,p_2\}$ and
+$\mathcal E=\Omega_X^1(\log D)/f^*\Omega_B^1(\log\Sigma)$, the cyclic
+invariant lattices give
+\[
+ f_*\mathcal E=\mathcal O\oplus\mathcal O(-1),\quad
+ R^1f_*\mathcal E=\mathcal O^{\oplus2}\oplus\mathcal O(-1)^{\oplus2},\quad
+ R^2f_*\mathcal E=\mathcal O\oplus\mathcal O(-1).
+\]
+The typed Kodaira--Spencer maps
+\[
+ \kappa_0:f_*\mathcal E\to
+ \Omega_B^1(\log\Sigma)\otimes R^1f_*\mathcal O_X,\qquad
+ \kappa_1:R^1f_*\mathcal E\to\mathcal O_B
+\]
+are certified by the load-bearing local equations
+\[
+ \begin{gathered}
+ \operatorname{div}(\det\kappa_0)=p_1+p_2,\qquad
+ \operatorname{coker}\kappa_0=\mathbb C_{p_1}\oplus\mathbb C_{p_2},\qquad
+ \phi\longmapsto(\phi(p_0),3\phi(p_1),4\phi(p_2)),\\
+ \rho_*=(0,1,-1,0):\mathbb C^4\to\mathbb C\theta,\qquad
+ \kappa_1(h\otimes\gamma)(p_2)=-\tfrac14\dot\mu(z_2)\ne0.
+ \end{gathered}
+\]
+The first row is the normalized residue cancellation, the second the cusp
+Čech sign and invariant order-four scalar.  Thus
+\[
+ f_*\Omega_X^1=\mathcal O(-2),\qquad
+ R^1f_*\Omega_X^1=\mathcal O\oplus\mathcal O(-1)^{\oplus2},\qquad
+ R^2f_*\Omega_X^1=\mathcal O\oplus\mathcal O(-1),
+\]
+and coherent Leray yields
+\[
+\begin{array}{c|cccc}
+q\backslash p&0&1&2&3\\ \hline
+3&0&0&0&1\\2&0&1&2&1\\1&1&2&1&0\\0&1&0&0&0.
+\end{array}
+\]
+The two nontrivial Fr\"olicher rows are
+$0\to\mathbb C\to\mathbb C^2\to\mathbb C\to0$;
+$\dim E_1=10$, $\dim E_2=2$, and $E_2=E_\infty$.  McHugh's formulas give
+\[
+ (h^k_{BC})=(1,0,2,2,2,2,1),\quad
+ (h^k_A)=(1,2,2,2,2,0,1),\quad
+ (\Delta^k)=(0,2,4,4,4,2,0).
+\]
+
+Let $\mathfrak g=[G]_{\bar\partial}$ be induced by $\gamma$, and choose a
+coherent-Leray lift $\mathfrak q=[Q]_{\bar\partial}$ of $\eta$.  In complex
+orientation the decisive fibre pairings are
+\[
+ \int_{F_b}Q_F^2=-12,\qquad
+ \int_{F_b}Q_F\wedge\Gamma\wedge d\zeta_2=-1.
+\]
+For $\exp:H^1(X,\mathcal O_X)\to\operatorname{Pic}(X)$ induced by
+$z\mapsto e^{2\pi iz}$,
+\[
+ H^0(B,R^1f_*\mathbb Z)=\mathbb Z(12\gamma),\qquad
+ \exp(12\mathfrak g)=f^*\mathcal O_B(1).
+\]
+Put $\mathsf A=[\partial G]_{BC}$,
+$\mathsf B=[\bar\partial\bar G]_{BC}$.  In a unit frame,
+\[
+ \bar\partial_zs=-2\pi izG\otimes s,\qquad
+ \nabla_z=d-2\pi i(zG+\bar z\,\bar G),\qquad
+ c_{1,BC}(\exp(z\mathfrak g))=z\mathsf A+\bar z\,\mathsf B,
+\]
+so
+$c_{1,BC}(f^*\mathcal O_B(1))=12(\mathsf A+\mathsf B)$.
+If $N$ is spanned by
+\[
+ \mathsf A,\mathsf B,\ [\partial Q]_{BC},[\bar\partial\bar Q]_{BC},\
+ [\partial(G\wedge Q)]_{BC},[\bar\partial(\bar G\wedge\bar Q)]_{BC},\
+ [\partial(Q^2)]_{BC},[\bar\partial(\bar Q^2)]_{BC},\
+ [\nu_{\rm top}]_{BC},
+\]
+with $\int_X\nu_{\rm top}=1$, then
+\[
+ \mathbf1=[1]_{BC},\qquad
+ H^{*,*}_{BC}(X)=\mathbb C\mathbf1\oplus N,\qquad N^2=0.
+\]
+After fixing $\mathfrak g$ and one coherent-Leray lift $\mathfrak q$, smooth
+gauge changes add Dolbeault coboundaries and preserve all displayed classes,
+pairings, nonvanishing arguments and products.  The invariant-basis,
+residue, Čech and scalar computations are in
+\path{supporting_materials/workbench/research/hodge_frolicher.tex};
+the product proofs are in
+\path{supporting_materials/workbench/research/bott_chern_algebra.tex}.
+
+\overviewsection{4. CDP20, the analytic Picard certificate, and the corrected theorem}
+
+For a reduced nonnormal fibre $S$, put
+$\mathcal K_S=\ker(\Omega_X^1|_S\to\widetilde\Omega_S^1)$.  The exact
+sequence and the group surviving the two vanishings used in CDP20 are
+\[
+ 0\to N^*_{S/X}\to\mathcal K_S\to\operatorname{tors}\Omega_S^1\to0,
+\]
+\[
+ H^0(S,\Omega_X^1|_S\otimes A)=
+ \ker\!\left\{
+ H^0(S,\operatorname{tors}\Omega_S^1\otimes A)
+ \xrightarrow{\delta_A}H^1(S,N^*_{S/X}\otimes A)\right\}.
+\]
+CDP20 does not prove $\delta_A$ injective.  Its second imported step must
+also use coinvariants:
+\[
+ (K\rtimes Q)^{\rm ab}\simeq
+ Q^{\rm ab}\oplus(K^{\rm ab})_Q.
+\]
+The contradiction to CDP20 Theorem~2.2 and its $S^6$ corollary
+recorded in the workbench uses its complete analytic construction,
+topology and algebraic-reduction proofs, giving $a(X)=1$ and
+$c_3(X)=2$; it is not inferred from the two proof-route defects above.
+
+It remains to prove the Picard restriction needed by the cusp conductor
+without recycling global topology.  For
+\[
+ E=c_1(L|_F)=kq\in\operatorname{Alt}^2(\Lambda,\mathbb Z),\qquad
+ V_{\mathbb R}=\operatorname{Hom}(\Lambda,\mathbb R),
+\]
+the global factors give
+\[
+ d:\pi_1(P)\to V_{\mathbb R},\qquad
+ d(gh)=d(g)+T_gd(h),\qquad
+ \bar d_1+\bar d_2+\bar d_0=0\quad\text{in }V_G\otimes\mathbb R.
+\]
+Distinguish every finite covering level:
+\[
+ \widetilde J_j=\Delta_j\times\mathbb C^2
+ \xrightarrow{\,r_j\,}J'_j,\qquad
+ q_{j,\bullet}\circ r_j=r_j\circ Q_{j,\bullet},
+ \quad \bullet\in\{\log,\mathrm{lin}\},
+\]
+\[
+ \begin{aligned}
+ Q_{j,\log}\tau_\lambda Q_{j,\log}^{-1}&=\tau_{A_j\lambda},&
+ (Q_{j,\log})^{m_j}&=\tau_{v_j},\\
+ Q_{j,\mathrm{lin}}\tau_\lambda Q_{j,\mathrm{lin}}^{-1}
+ &=\tau_{A_j\lambda},&
+ (Q_{j,\mathrm{lin}})^{m_j}&=1.
+ \end{aligned}
+\]
+On $J_j^{\prime *}=J'_j|_{\Delta_j^*}$,
+\[
+ \begin{gathered}
+ h_jq_{j,\log}h_j^{-1}=q_{j,\mathrm{lin}},\\
+ p_{j,\log}:J_j^{\prime *}\to
+ N_j^*:=J_j^{\prime *}/\langle q_{j,\log}\rangle,\qquad
+ p_{j,\mathrm{lin}}:J_j^{\prime *}\to
+ J_j^*:=J_j^{\prime *}/\langle q_{j,\mathrm{lin}}\rangle,\\
+ \bar h_j:N_j^*\xrightarrow{\sim}J_j^*,\qquad
+ p_{j,\mathrm{lin}}h_j=\bar h_jp_{j,\log},\qquad
+ p_{j,\log}^*(L|_{N_j^*})
+ \simeq h_j^*p_{j,\mathrm{lin}}^*(L|_{J_j^*}).
+ \end{gathered}
+\]
+Put
+\[
+ \widetilde J_j^*=\Delta_j^*\times\mathbb C^2,\quad
+ \Phi_{j,\log}=p_{j,\log}r_j,\quad
+ \Phi_{j,\mathrm{glob}}=p_{j,\mathrm{lin}}h_jr_j
+ =\bar h_j\Phi_{j,\log}.
+\]
+The pulled gluing isomorphism
+\[
+ \Theta_j:\Phi_{j,\log}^*(L|_{N_j^*})
+ \xrightarrow{\sim}\Phi_{j,\mathrm{glob}}^*(L|_{J_j^*})
+\]
+intertwines descent and induces a centre-preserving isomorphism of the two
+$\Gamma_j^{\log}$-factor extensions, where
+\[
+ \Gamma_j^{\log}=
+ \langle\tau_\lambda,Q_{j,\log}:\lambda\in\Lambda\rangle.
+\]
+For normalized vertical lifts
+\[
+ U_\lambda^{(j)}U_\mu^{(j)}
+ =\mathbf c\!\left(\tfrac12E(\lambda,\mu)\right)U_{\lambda+\mu}^{(j)},
+\]
+define
+\[
+ \widetilde G_\alpha U_{A_\alpha^{-1}\lambda}^{(j)}
+ \widetilde G_\alpha^{-1}
+ =\mathbf c(\langle\widetilde d_j(\alpha),\lambda\rangle)
+ U_\lambda^{(j)}.
+ \tag{5.17-A14c}
+\]
+Then
+\[
+ \widetilde d_j(\alpha\beta)=
+ \widetilde d_j(\alpha)+T_\alpha\widetilde d_j(\beta).
+\]
+Compatible basepoints and
+$\ell'(w)=\ell(g_j^{-1}w)-2\pi i/m_j$ identify the clockwise zero-section
+endpoint with exactly $Q_{j,\log}$, not an inverse or lattice translate.
+Thus, for a comparison character $a_j$,
+\[
+ \widetilde d_j(Q_{j,\log})=d_j+(T_j-I)a_j,\qquad
+ \widetilde d_j(\tau_v)=\iota_vE.
+\]
+Since $N_{T_j}(T_j-I)=0$,
+\[
+ N_{T_j}d_j
+ =N_{T_j}\widetilde d_j(Q_{j,\log})
+ =\widetilde d_j((Q_{j,\log})^{m_j})
+ =\widetilde d_j(\tau_{v_j})
+ =\iota_{v_j}E.
+ \tag{5.17-A15}
+\]
+The comparison is independent of frames, lifts, normalized vertical
+systems, and logarithm branch; branch change
+$H_j\mapsto\tau_{nv_j}H_j$ changes $a_j$ by
+$n\iota_{v_j}E$, which is $T_j$-invariant.
+
+At the cusp the argument principle gives $\bar d_0=0$.  With
+\[
+ \eta_1=2u+w+3\delta,\qquad \eta_2=u+w+2\delta,
+\]
+\[
+ \iota_{v_1}q=2\eta_1,\quad
+ \iota_{v_2}q=-3\eta_2,\quad
+ [\eta_1]=3[\delta],\quad[\eta_2]=2[\delta],
+\]
+equation (5.17-A15) yields
+\[
+ \bar d_1=2k[\delta],\qquad
+ \bar d_2=-\tfrac32k[\delta],\qquad
+ 0=\bar d_1+\bar d_2+\bar d_0=\tfrac{k}{2}[\delta].
+\]
+Hence $k=0$ and $E=0$.
+
+For central triviality, put
+\[
+ M=L|_{N_0},\qquad \mathcal M=\pi^*M,\qquad
+ \mathcal R=\mathcal M\otimes\mathcal O(-D_a).
+\]
+The negative-divisor linearization is the inverse-dual
+\[
+ \mu_\lambda^-=((\mu_\lambda^+)^{-1})^\vee,\qquad
+ \theta_\lambda^{\mathcal R}
+ =\theta_\lambda^{\mathcal M}\otimes\mu_\lambda^-.
+\]
+In the stated lattice bases,
+\[
+ B_0:\bar\Lambda\xrightarrow{\sim}\Lambda_{\rm tor},\qquad
+ [B_0]=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+If $A=\nu^*(M|_W)$ has degrees
+$(d_1,d_2,d_3,d_1,d_2,d_3)$ and support matrix
+\[
+ [B]=\begin{pmatrix}d_2+d_3&d_3\\d_3&d_1+d_3\end{pmatrix},
+\]
+then
+\[
+ E_M((\lambda,0),(0,m))=-B(B_0\lambda,m),\qquad
+ E_M=c_1(M|_{F_t})=c_1(L|_F)=E=0.
+\]
+Unimodularity of $B_0$ gives $B=0$, hence
+$d_1=d_2=d_3=0$ and $A\simeq\mathcal O_{\mathrm{dP}_6}$.  Therefore
+$\nu^*i^*:\operatorname{Pic}(X)\to\operatorname{Pic}(\mathrm{dP}_6)$ is
+zero.
+
+For $F_L=T_X\otimes L$ and
+$A_L=(L^\vee\otimes\omega_X)|_W$, duality and base change give
+\[
+ H^2(W,F_L|_W)^\vee\simeq
+ H^0(W,\Omega_X^1|_W\otimes A_L),\qquad
+ (R^2f_*F_L)_{p_0}\otimes\mathbb C\simeq H^2(W,F_L|_W).
+\]
+The conductor section and the just-proved Picard restriction show
+$R^2f_*(T_X\otimes L)\ne0$ for every $L\in\operatorname{Pic}(X)$.
+
+A corrected CDP statement is: if one $L_0$ satisfies
+$H^2(X,T_X\otimes L_0)=0$, then for general $M\in\operatorname{Pic}(X)$,
+\[
+ H^i(X,T_X\otimes M)=0\ (i\ne1),\qquad
+ \tfrac12\langle c_3(T_X),[X]\rangle
+ =-h^1(X,T_X\otimes M)\le0.
+\]
+Relatively, one may instead assume one
+$R^2f_*(T_X\otimes L)=0$; for reduced full fibres, the exact replacement
+for the invalid local step is injectivity of the conductor connecting map
+$\delta_c$ on every whole fibre.  The candidate fails this relative
+sufficient condition by the preceding conductor nonvanishing.  Separately,
+because $c_3(X)=2$, the contrapositive of the corrected global statement gives
+$H^2(X,T_X\otimes L_0)\ne0$ for every $L_0$.  Full local calculations are in
+\path{supporting_materials/workbench/research/analytic_picard_completion.tex}
+and
+\path{supporting_materials/workbench/research/cdp_program.tex}.
+
+\clearpage
+\overviewsection{5. New cusp mathematics: Kummer extension, sphere carriers, and finite gauge systems}
+
+The subsequent work adds several precise results which are logically separate
+from the construction and recognition of $X$.  They concern the local toric
+cusp, its metric limits, topological carriers for its expanding quotients,
+and a finite classical/Gaussian gauge model.  None changes the provenance
+statement in Section~2: these are reconstruction and extension results in the
+AI-produced workbench, not claims of priority for the original candidate.
+
+\medskip\noindent
+\textit{The local toric Kummer map and its two degrees.}
+Write the completed cusp as
+$f_0:N_0=Y/\bar\Lambda\to\Delta_t$, with dense-torus
+action
+\[
+ \Psi_{\bar\lambda}(x,t)=
+ \bigl(e^{2\pi iC(t)\bar\lambda}t^{B_0\bar\lambda}x,t\bigr),
+ \qquad B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+For an integer $N\ge1$, let
+$\rho_N:\Delta_v\to\Delta_t$ be $\rho_N(v)=v^N$, take a copy
+$Y^{(N)}$ of the same toric variety, and replace the source multiplier by
+the holomorphic root
+\[
+ C_N(v)=\frac1N C(v^N),\qquad
+ \Psi^{(N)}_{\bar\lambda}(\xi,v)=
+ \bigl(e^{2\pi iC_N(v)\bar\lambda}
+ v^{B_0\bar\lambda}\xi,v\bigr).
+\]
+Its quotient and reduced central fibre are
+\[
+ f_N:N_0^{\langle N\rangle}:=Y^{(N)}/\bar\Lambda\longrightarrow\Delta_v,
+ \qquad
+ W_N:=\bigl(f_N^{-1}(0)\bigr)_{\rm red}.
+\]
+Then the toric power map
+\[
+ P_N(\xi_1,\xi_2,v)=(\xi_1^N,\xi_2^N,v^N)
+\]
+is equivariant and descends to a finite flat map
+\[
+ \kappa_N:N_0^{\langle N\rangle}\longrightarrow N_0,
+ \qquad f_0\circ\kappa_N=\rho_N\circ f_N,
+ \qquad \deg\kappa_N=N^3,\qquad
+\kappa_N^*W=NW_N,\qquad
+ \operatorname{Ram}(\kappa_N)=(N-1)W_N.
+\]
+The exponent $3$ is the degree over the \emph{unchanged} cusp disc: two
+fibre coordinates and the base coordinate are all raised to the $N$th
+power.  After replacing the target by the base change
+$N_0[N]=N_0\times_{\Delta_t}\Delta_v$, the factorization
+\[
+ N_0^{\langle N\rangle}\xrightarrow{\,Q_N\,}N_0[N]\longrightarrow N_0
+\]
+has generic degree $N^2$.  For $N>1$, $Q_N$ is quasi-\'etale but not flat;
+its non-\'etale and nonflat loci lie exactly over the double and triple strata.
+At a triple point its closed-fibre length is
+$3N^2-3N+1>N^2$, and at a double stratum the transverse closed-fibre length
+is $2N-1>N$.  On the reduced central fibre, the generic degree is $N^2$ and
+after normalizing the reduced source and target central fibres, the induced
+map is toric multiplication
+$[N]:\mathrm{dP}_6\to\mathrm{dP}_6$, ramified with index $N$ along all six
+boundary curves.  For $v\ne0$, the relative fibre map $Q_{N,v}$ has deck
+group $(\mathbb Z/N\mathbb Z)^2$, and
+\[
+S_N^{-1}M_0^NS_N=M_0,\qquad S_N=\operatorname{diag}(1,1,N,N).
+\]
+This is a completed \emph{local} cusp construction.  It is not a
+degree-$N^2$ self-map over the original disc, not a normalization of the
+base change, and not yet a cover over the full three-point base.
+
+\medskip\noindent
+\textit{Native and auxiliary pointed limits.}
+Put $t_c=e^{-2\pi T}$ on the positive radial ray and write the marked period
+matrix and base point as
+\[
+ P_T=(v_{\gamma,T}\ v_{u,T}\ e_1\ e_3),\qquad
+ F_T=\mathbb R^4/P_T\mathbb Z^4,\qquad o_T=[0].
+\]
+Two primitive periods remain of length one, while the other two escape
+without hidden short integer cancellations: for constants
+$c_-,c_+>0$ independent of $T$,
+\[
+ \rho_T:=\min_{(a,b)\ne(0,0)}
+ \operatorname{dist}\!\left(
+ av_{\gamma,T}+bv_{u,T},
+ \mathbb Z\langle e_1,e_3\rangle\right)
+ \ge T-c_-.
+\]
+Consequently the exact native limit of the unmodified four-torus fibres
+\(F_T\), in the unscaled Euclidean quotient metric, is
+\[
+ (F_T,o_T)\longrightarrow
+ (\mathbb T^2\times\mathbb R^2,(0,0)),
+\]
+and every fixed-radius ball is eventually isometric to the corresponding
+ball in that product.  An $\mathbb R^4$ pointed limit of those four-torus
+fibres themselves appears only after the added degree-$M^2$ local cover
+obtained by replacing the two short periods by $M$ times those periods:
+\[
+ \Lambda_{T,M}=
+ \mathbb Z\langle v_{\gamma,T},v_{u,T},Me_1,Me_3\rangle,
+ \qquad
+ \widetilde F_{T,M}=\mathbb R^4/\Lambda_{T,M},
+\]
+\[
+ \min\{T-c_-,M\}\leq\operatorname{sys}(\Lambda_{T,M})
+ \leq\min\{T+c_+,M\}.
+\]
+For every integer-valued $M(T)\in\mathbb Z_{>0}$ with
+$M(T)\to\infty$, the pointed cover tori converge locally isometrically and
+in pointed Gromov--Hausdorff topology to $\mathbb R^4$; on each eventual
+Euclidean base-point neighbourhood this convergence is smooth.  This
+auxiliary cover is the regular-fibre restriction of the relative
+degree-$M^2$ Kummer factor above; the completed map to the original cusp
+family still has degree $M^3$.
+
+\medskip\noindent
+\textit{Exact scalar counting and a fibrewise magnetic gap.}
+Let
+\[
+ D_T:=-\det_{\mathbb R}P_T
+ =\operatorname{Vol}(F_T)=T^2+O(T),
+ \qquad
+ N_T(E):=\#\{k\in\mathbb Z^4:
+ 4\pi^2\lVert P_T^{-\mathsf T}k\rVert^2\le E\}.
+\]
+Counting Fourier modes with multiplicity gives, for every fixed $E\ge0$,
+\[
+ N_T(E)=\pi D_T\sum_{n\in\mathbb Z^2}
+ \left(\frac{E}{4\pi^2}-\lVert n\rVert^2\right)_++O_E(T),
+ \qquad (x)_+:=\max\{x,0\}.
+\]
+In particular, below the first transverse threshold $0<E<4\pi^2$,
+\[
+ N_T(E)=\frac{ED_T}{4\pi}+O_E(T)
+ =\frac{ET^2}{4\pi}+O_E(T).
+\]
+Thus the fixed-energy population has a two-dimensional leading density,
+even though every individual compact fibre has discrete spectrum.
+
+There is also an exact full-four-torus statement which does not pass through
+an elliptic quotient.  Fix a nondegenerate integral alternating form
+$\mathsf E=(E_{jk})$ on the marked lattice, let
+\[
+ d:=|\operatorname{Pf}(\mathsf E)|
+ =|E_{12}E_{34}-E_{13}E_{24}+E_{14}E_{23}|>0,
+\]
+and let $\Delta_{\mathsf E,T}$ be the Friedrichs magnetic Laplacian for the
+constant-curvature connection with curvature $2\pi i\mathsf E$.  If
+\[
+ \operatorname{Spec}\!\left(
+ (P_T^{\mathsf T}P_T)^{-1/2}(2\pi\mathsf E)
+ (P_T^{\mathsf T}P_T)^{-1/2}\right)
+ =\{\pm ib_1,\pm ib_2\},\qquad b_1,b_2>0,
+\]
+then
+\[
+ \operatorname{Spec}(\Delta_{\mathsf E,T})
+ =\{(2n_1+1)b_1+(2n_2+1)b_2:n_1,n_2\in\mathbb Z_{\ge0}\},
+\]
+\[
+ b_1b_2=\frac{4\pi^2d}{D_T},\qquad
+ \operatorname{gap}(\Delta_{\mathsf E,T})
+ =2\min\{b_1,b_2\}
+ \le4\pi\sqrt{\frac d{D_T}}=O(T^{-1}).
+\]
+This magnetic theorem is fibrewise for a fixed marked integral flux; it
+asserts neither full-monodromy invariance of that flux nor a Yang--Mills
+mass-gap result.
+
+\medskip\noindent
+\textit{Exact $S^{12}$ and $S^{24}$ source maps and their metrics.}
+Let
+\[
+ K_\Lambda=\mathbb Z\langle\widehat w,\widehat\delta\rangle,
+ \qquad \overline{\mathbb T}^{\,2}=
+ \frac{(\Lambda/K_\Lambda)\otimes\mathbb R}{\Lambda/K_\Lambda}.
+\]
+Put
+\[
+ Y_T=
+ \begin{pmatrix}
+  6\operatorname{Im}\mu_T&\operatorname{Im}\tau_T\\
+  \operatorname{Im}\beta_T&\operatorname{Im}\mu_T
+ \end{pmatrix},\qquad
+ Q_T=\mathbb R^2/Y_T\mathbb Z^2,\qquad
+ \iota_T:\overline{\mathbb T}^{\,2}\xrightarrow{\sim}Q_T,
+ \quad[y]\longmapsto[Y_Ty].
+\]
+The quotient $\pi_T:F_T\twoheadrightarrow Q_T$ is the radial restriction
+of a quotient over the whole punctured cusp.  Collapsing the central fibre
+and the exterior boundary gives the continuous surjective based quotient
+denoted $q_2$ in the proof; in this overview write it as
+\[
+ \rho_{2,\mathrm{cone}}:(X,x_0)\longrightarrow
+ (\mathcal A_{\mathrm{cone}},v_0),\qquad
+ \mathcal A_{\mathrm{cone}}
+ =\operatorname{Susp}(S^1\times\overline{\mathbb T}^{\,2}).
+\]
+The full-monodromy-invariant character lattice is
+$\mathbb Z\varepsilon_\gamma$; fix the displayed primitive generator.  It
+gives a circle quotient on the regular base and explicit Seifert targets at
+the two finite fillings.  Gluing them gives a compact orientable
+three-manifold $\mathcal M_{\mathrm{Seif}}$ with boundary $\mathbb T^2$;
+coning that entire boundary gives the map denoted $q_1$ in the proof,
+written here as
+\[
+ \mathcal C_{\mathrm{cone}}=
+ \mathcal M_{\mathrm{Seif}}\cup_{\mathbb T^2}
+ \operatorname{Cone}(\mathbb T^2),\qquad
+ \rho_{1,\mathrm{cone}}:(X,x_0)\longrightarrow
+ (\mathcal C_{\mathrm{cone}},c_0).
+\]
+There is also the cusp-supported target
+$\mathcal B_{\mathrm{cone}}=\operatorname{Susp}(S^1\times S^1)$ and a
+based quotient $\rho_{1,\mathrm{cusp}}:X\to\mathcal B_{\mathrm{cone}}$.
+After a based choice $X\cong_{\rm diff}S^6$, basedness induces
+\[
+ \rho_{2,\mathrm{cone}}^{\wedge2}:
+ S^{12}\cong X^{\wedge2}\longrightarrow
+ \mathcal A_{\mathrm{cone}}^{\wedge2},
+ \qquad
+ \rho_{1,\mathrm{cone}}^{\wedge4}:
+ S^{24}\cong X^{\wedge4}\longrightarrow
+ \mathcal C_{\mathrm{cone}}^{\wedge4}.
+\]
+The corresponding Cartesian restrictions, before passage to the smash
+quotient and after identifying their radial images, are exactly
+\[
+ \left.\rho_{2,\mathrm{cone}}^{\times2}\right|_{F_T^{\times2}}
+ =\pi_T^{\times2}:F_T^{\times2}\to Q_T^{\times2},
+ \qquad
+ \left.\rho_{1,\mathrm{cone}}^{\times4}\right|_{F_T^{\times4}}
+ =\chi_{\gamma,T}^{\times4}:F_T^{\times4}\to C_T^{\times4},
+\]
+where
+\[
+ C_T=\mathbb R/\ell_T\mathbb Z,\qquad
+ \ell_T=T+H_{\mathrm{cusp}}-B_{\mathrm{cusp}}+O(T^{-1}),\qquad
+ H_{\mathrm{cusp}}=\operatorname{Im}h(0),\quad
+ B_{\mathrm{cusp}}=\operatorname{Im}b(0).
+\]
+
+Here are the target-slice embeddings, with no implicit identification.  Put
+$r_T=e^{-2\pi T}$ and
+\[
+ \vartheta_T:\mathbb R/\mathbb Z\xrightarrow{\sim}C_T,
+ \qquad[a]\longmapsto[\ell_Ta].
+\]
+In the suspension/cone coordinates used above,
+\[
+ \begin{aligned}
+ j_T(y_1,y_2)
+ &=\bigl[[r_T,1,\iota_T^{-1}(y_1)],
+          [r_T,1,\iota_T^{-1}(y_2)]\bigr]_{\wedge}
+ \in\mathcal A_{\mathrm{cone}}^{\wedge2},\\
+ k_T^{\mathcal B}(c_1,\ldots,c_4)
+ &=\bigl[[r_T,1,\vartheta_T^{-1}(c_1)],\ldots,
+          [r_T,1,\vartheta_T^{-1}(c_4)]\bigr]_{\wedge}
+ \in\mathcal B_{\mathrm{cone}}^{\wedge4},\\
+ k_T^{\mathcal C}(c_1,\ldots,c_4)
+ &=\bigwedge_{j=1}^4
+   [r_T,(1,\vartheta_T^{-1}(c_j))]
+ \in\mathcal C_{\mathrm{cone}}^{\wedge4}.
+ \end{aligned}
+\]
+Each is a topological embedding.  With the intrinsic product quotient
+metrics,
+\[
+ (Q_T^{\times2},0)\longrightarrow(\mathbb R^4,0),
+ \qquad
+ (C_T^{\times4},0)\longrightarrow(\mathbb R^4,0)
+\]
+pointed locally isometrically and in pointed Gromov--Hausdorff topology,
+with smooth convergence on the eventual Euclidean base-point
+neighbourhoods.
+
+These copy numbers are sharp for the unrescaled quotient norm induced by
+the marked Euclidean fibre metric.  For a connected torus quotient of $r$
+copies over the punctured cusp, divergence of the quotient systole forces
+the bounded lattice $K_\Lambda^{\oplus r}$ into the kernel, so the quotient
+rank is at most $2r$; rank four requires $r\ge2$ and is attained by
+$Q_T^{\times2}$.  For a quotient over the full regular base, even after a
+finite base cover, monodromy also forces
+$\widehat u^{\oplus r}$ into the primitive kernel, so the quotient rank is
+at most $r$; rank four requires $r\ge4$ and is attained by
+$C_T^{\times4}$.  Hence $S^{12}$ and $S^{24}$ are the smallest smash-sphere
+sources supplied by the native cusp-local and full-base quotient routes,
+respectively.
+
+There are also genuine sphere targets.  Collapsing the one-skeleton
+\[
+ K^{(1)}=((\mathbb R/\mathbb Z)\times\{0\})
+ \cup(\{0\}\times(\mathbb R/\mathbb Z))
+ \subset\overline{\mathbb T}^{\,2}
+\]
+and forgetting the base angle give continuous surjective based quotient
+maps $\widehat\rho_3:X\to S^3$ and
+$\widehat\rho_\gamma:X\to S^2$.  Their smash powers are
+\[
+ \widehat\rho_3^{\wedge2}:S^{12}\twoheadrightarrow S^6,
+ \qquad
+ \widehat\rho_\gamma^{\wedge4}:S^{24}\twoheadrightarrow S^8.
+\]
+Here \(\widehat\rho_3=\widehat q_3\) and
+\(\widehat\rho_\gamma=\widehat q_\gamma\) in the detailed construction.
+Both full sphere carriers are based null-homotopic, by two distinct exact
+calculations.  For every based map \(f:S^6\to S^2\),
+\[
+ S^{12}=S^6\wedge S^6
+ \xrightarrow{\ f\wedge\operatorname{id}_{S^6}=\Sigma^6f\ }
+ S^2\wedge S^6=S^8
+ \xrightarrow{\ \operatorname{id}_{S^2}\wedge f\ }
+ S^2\wedge S^2=S^4.
+\]
+Since
+\(\pi_{12}(S^8)\cong\pi_4^{\rm S}=0\), the first arrow is based
+null-homotopic, and hence so is \(f\wedge f\).  Therefore
+\[
+ [f^{\wedge r}]=0\in\pi_{6r}(S^{2r})
+ \qquad\text{for every }r\ge2,
+\]
+because
+\(f^{\wedge r}=(f\wedge f)\wedge f^{\wedge(r-2)}\).  Taking
+\(f=\widehat\rho_\gamma\) proves that the entire surjective quotient
+\(\widehat\rho_\gamma^{\wedge4}:S^{24}\twoheadrightarrow S^8\) is based
+null-homotopic.
+
+For every based map \(g:S^6\to S^3\), the exact smash factorization is
+\[
+ g\wedge g=(\Sigma^3g)\circ(\Sigma^6g):
+ S^{12}\longrightarrow S^9\longrightarrow S^6.
+\]
+Let \(\operatorname{st}\) denote stabilization.  The exact low-stem data are
+\[
+ \pi_6(S^3)\cong\mathbb Z/12,
+ \quad
+ \pi_3^{\rm S}=\mathbb Z/24\langle\nu\rangle,
+ \quad
+ \pi_6^{\rm S}=\mathbb Z/2\langle\nu^2\rangle,
+\]
+\[
+ \pi_{12}(S^6)=\mathbb Z/2\langle\nu_6\circ\nu_9\rangle,
+ \qquad
+ \operatorname{st}:\pi_{12}(S^6)\xrightarrow{\ \cong\ }\pi_6^{\rm S}.
+\]
+Here the full group table is Hatcher, p.~339, and the signed smash formula
+and unstable stabilization calculation are Toda, Propositions~3.1 and~5.11.
+Since \(12[g]=0\), one has \(\operatorname{st}([g])=2a\nu\) for some
+\(a\in\mathbb Z/12\).  Multiplicativity gives
+\[
+ \operatorname{st}([g\wedge g])
+ =\operatorname{st}([g])^2
+ =4a^2\nu^2=0\in\pi_6^{\rm S}.
+\]
+The stabilization isomorphism therefore gives
+\([g\wedge g]=0\in\pi_{12}(S^6)\).
+Thus \(g^{\wedge r}\simeq *\) for every \(r\ge2\), and taking
+\(g=\widehat\rho_3\) proves
+\[
+ [\widehat\rho_3^{\wedge2}]=0\in\pi_{12}(S^6),
+ \qquad
+ [\widehat\rho_\gamma^{\wedge4}]=0\in\pi_{24}(S^8).
+\]
+The one-copy map \(\widehat\rho_3\) is now proved null-homotopic by
+the explicit framed filling described above. The one-copy class of
+\(\widehat\rho_\gamma\) remains open. The unstable classes of the
+conical-target maps
+\(\rho_{2,\mathrm{cone}}^{\wedge2}\),
+\(\rho_{1,\mathrm{cusp}}^{\wedge4}\), and
+\(\rho_{1,\mathrm{cone}}^{\wedge4}\) also remain open: nullity after
+postcomposition with the angle-forgetting quotient does not imply nullity of
+the maps before that postcomposition.
+For each sufficiently large $T$, their targets contain moving
+topologically embedded four-spheres, equipped separately with their
+intrinsic quotient length metrics,
+\[
+ \mathbb S_{12,T}^4=S_T^2\wedge S_T^2\hookrightarrow S^6,
+ \qquad
+ \mathbb S_{24,T}^4=C_T^{\wedge4}\hookrightarrow S^8,
+\]
+where $S_T^2=\overline{\mathbb T}^{\,2}/K^{(1)}$ carries the quotient
+length metric pulled back from $Q_T$.  Pointing these spaces at the
+midpoints $\zeta_{12,T},\zeta_{24,T}$, rather than at their smash basepoints,
+every
+radius-$R$ ball is exactly a Euclidean four-ball once
+$T-c_->4R$, respectively once $\ell_T>4R$.  Thus both moving four-spheres
+converge to $\mathbb R^4$ pointed locally isometrically and in pointed
+Gromov--Hausdorff topology, again smoothly on the eventual Euclidean
+neighbourhoods.  The based inclusion maps
+\[
+ \mathbb S_{12,T}^4\hookrightarrow S^6,
+ \qquad
+ \mathbb S_{24,T}^4\hookrightarrow S^8
+\]
+are null-homotopic: sliding the fixed suspension coordinate to an endpoint
+contracts every factor through based maps.  Their four-dimensional
+fundamental classes therefore die in the ambient targets.  These two
+slice-inclusion null-homotopies are separate from the global equalities
+\([\widehat\rho_3^{\wedge2}]=0\in\pi_{12}(S^6)\) and
+\([\widehat\rho_\gamma^{\wedge4}]=0\in\pi_{24}(S^8)\).
+
+Deleting the common smash basepoint gives literal nonclosed topological
+four-cells in the sphere targets:
+\[
+ (Q_T\setminus K_T^{(1)})^2
+ \xrightarrow{\ \cong\ }
+ \mathbb S_{12,T}^4\setminus\{*\}
+ \cong\mathbb R^4\hookrightarrow S^6,
+\]
+\[
+ (C_T\setminus\{0\})^4
+ \xrightarrow{\ \cong\ }
+ \mathbb S_{24,T}^4\setminus\{*\}
+ \cong\mathbb R^4\hookrightarrow S^8.
+\]
+They are open only inside their embedded four-spheres, not in the ambient
+sphere, and no fixed compatible compact-target metric makes them globally
+isometric to Euclidean $\mathbb R^4$.
+
+The metric scope is exact.  For every unrescaled fixed metric compatible
+with any compact cone-target topology, the slices $j_T(Q_T^{\times2})$ and
+$k_T^{\mathcal B}(C_T^{\times4})$,
+and $k_T^{\mathcal C}(C_T^{\times4})$ converge to the cone base point.
+Fixed cusp-adapted
+length metrics do admit moving-base-point blow-ups: after factors
+$T/r_T$ and $\ell_T/r_T$, the displayed slices converge to
+$\mathbb R^4$, while the full conical ambient bubbles are respectively
+$\mathbb R^8$ and $\mathbb R^{12}$.  Their conic vertex links have
+dimensions $7$ and $11$, so the vertex cone dimensions are $8$ and $12$,
+not $4$.  By contrast, an independently chosen smooth Riemannian metric on
+the source sphere has ordinary tangent space $\mathbb R^{12}$ or
+$\mathbb R^{24}$.  The quotient construction supplies no Riemannian metric
+on either source sphere.
+
+Thus $\mathbb R^4$ is neither the whole compact source nor the whole compact
+target, and it cannot be a continuous quotient target of a compact sphere.
+What is proved is a literal nonclosed topological open cell, an intrinsic
+pointed limit of moving flat slices (not Sormani--Wenger
+intrinsic-flat convergence) and, for the fixed cusp-adapted target metrics,
+a four-plane inside a higher-dimensional moving-point bubble.  No auxiliary
+finite-cover unspooling is used in these sphere routes, and no compact
+complex structure on $S^{12}$ or $S^{24}$ follows.  Cartesian products also
+remain distinct from smash spheres:
+$X^{\times2}\simeq S^6\times S^6\ne S^{12}$ and
+$X^{\times4}\simeq(S^6)^{\times4}\ne S^{24}$.
+
+The compact carrier subspaces swept out by the synchronized slices are
+\[
+ \mathcal D_{12}\cong\mathcal D_{24}\cong\operatorname{Cone}(\mathbb T^4).
+\]
+At their vertices the local integral homology has ranks $4,6,4,1$ in
+degrees $2,3,4,5$, respectively.  Thus a vertex is not a
+homology-manifold point, and hence not locally a topological manifold (with
+or without boundary) of any dimension.  The full smash targets retain still
+more topology:
+\[
+ \mathcal A_{\mathrm{cone}}^{\wedge2}\simeq
+ \bigvee^9S^4\vee\bigvee^{18}S^5\vee\bigvee^{15}S^6
+ \vee\bigvee^6S^7\vee S^8,
+\]
+\[
+ \mathcal C_{\mathrm{cone}}^{\wedge4}\simeq
+ S^8\vee\bigvee^4S^9\vee\bigvee^6S^{10}
+ \vee\bigvee^4S^{11}\vee S^{12}.
+\]
+These are homotopy equivalences, not homeomorphisms.
+
+There is nevertheless a space in which the limiting Euclidean fibre is
+literal rather than merely asymptotic.  For $\nu\in\{12,24\}$ put
+\[
+ A_T^{(12)}=\operatorname{diag}(Y_T,Y_T),\qquad
+ A_T^{(24)}=\ell_T I_4,
+\]
+and quotient $[0,s_0]\times\mathbb R^4$ fibrewise by
+$A_{1/s}^{(\nu)}\mathbb Z^4$ for $s>0$, while imposing no identifications
+at $s=0$.  The resulting $\mathfrak E_\nu$ is a Hausdorff,
+second-countable topological five-manifold with boundary, with
+\[
+ p_{12}^{-1}(s)\cong Q_{1/s}^{\times2},\quad
+ p_{24}^{-1}(s)\cong C_{1/s}^{\times4}\quad(s>0),\qquad
+ p_\nu^{-1}(0)\cong\mathbb R^4.
+\]
+There are continuous surjective comparison maps
+$\beta_\nu:\mathfrak E_\nu\twoheadrightarrow\mathcal D_\nu$ which identify
+every positive fibre with its radial carrier slice and collapse the entire
+$\mathbb R^4$ boundary fibre to the cone vertex.  They are homeomorphisms off
+that boundary, but are nonproper and nonquotient; in particular they are not
+topological blow-downs or resolutions, and
+$\mathcal D_\nu\not\cong\mathfrak E_\nu/\mathbb R^4$ via $\beta_\nu$.
+Thus the requested Euclidean object is an intrinsic moving-slice limit and an
+actual boundary fibre of a noncompact comparison manifold, not the whole
+compact $S^{12}$, $S^{24}$, or compact quotient target.
+
+\medskip\noindent
+\textit{Repaired cubical $SU(2)$ flux and the Gaussian theorem.}
+The finite model keeps independent integers $M_{\rm cov}\ge1$, the covering
+index, and $N_{\rm mesh}\ge2$, the number of cubical subdivisions in each
+direction.  Put
+\[
+ S_{M_{\rm cov}}=\operatorname{diag}(1,1,M_{\rm cov},M_{\rm cov}),
+ \qquad P_{T,M_{\rm cov}}=P_TS_{M_{\rm cov}},
+\]
+\[
+ V_{N_{\rm mesh}}=(\mathbb Z/N_{\rm mesh}\mathbb Z)^4,
+ \qquad
+ E_{N_{\rm mesh}}=V_{N_{\rm mesh}}\times\{1,2,3,4\}.
+\]
+Recall that $D_T=-\det_{\mathbb R}P_T=T^2+O(T)$, so the cover covolume is
+$M_{\rm cov}^2D_T$.  With the normalization
+\[
+ \langle X,Y\rangle=-\tfrac12\operatorname{tr}(XY),\qquad
+ H_{\rm link}=\begin{pmatrix}i&0\\0&-i\end{pmatrix},\qquad
+ \lVert H_{\rm link}\rVert^2=1,\qquad
+ \exp(2\pi H_{\rm link})=I_2,
+\]
+the periodic inverse-transport links
+\[
+ \begin{aligned}
+ U_1(n)
+ &=\exp\!\left(-\frac{2\pi n_2}{N_{\rm mesh}^2}
+ H_{\rm link}\right),\\
+ U_2(n)
+ &=
+ \begin{cases}
+  I_2,&0\le n_2\le N_{\rm mesh}-2,\\
+  \exp(2\pi n_1H_{\rm link}/N_{\rm mesh}),
+      &n_2=N_{\rm mesh}-1,
+ \end{cases}\\
+ U_3(n)&=U_4(n)=I_2,
+ \qquad n\in V_{N_{\rm mesh}}.
+ \end{aligned}
+\]
+give every $(1,2)$ plaquette the same value
+$\exp(2\pi H_{\rm link}/N_{\rm mesh}^2)$ and all other positively oriented coordinate
+plaquettes the identity.  The principal-log curvature is exactly
+$2\pi H_{\rm link}\,dy^1\wedge dy^2$, and the metric-weighted logarithmic action is
+\[
+ S^{\log}_{T,M_{\rm cov},N_{\rm mesh}}
+ =\frac{2\pi^2M_{\rm cov}^2}{g_{\rm YM}^2D_T},
+\]
+independent of the mesh.  The explicitly defined continuum-matched Wilson
+sector has value
+\[
+ \frac{M_{\rm cov}^2N_{\rm mesh}^4}{2g_{\rm YM}^2D_T}
+ \left(2-2\cos\frac{2\pi}{N_{\rm mesh}^2}\right)
+ \longrightarrow
+ \frac{2\pi^2M_{\rm cov}^2}{g_{\rm YM}^2D_T}.
+\]
+
+For $k=(k_1,\ldots,k_4)\in V_{N_{\rm mesh}}$, define the componentwise
+Fourier symbol
+\[
+ \mathfrak d_{N_{\rm mesh}}(k)_j
+ =N_{\rm mesh}\left(e^{2\pi ik_j/N_{\rm mesh}}-1\right),
+ \qquad 1\le j\le4.
+\]
+The reduced finite Coulomb space
+$\ker d_{N_{\rm mesh}}^*\cap
+(\ker\Delta_{N_{\rm mesh}}^{(1)})^\perp$ removes the complete harmonic
+$k=0$ fibre.  On that space, Fourier diagonalization of
+$\mathcal L=g_{\rm YM}^{-2}d_{N_{\rm mesh}}^*d_{N_{\rm mesh}}$ gives
+\[
+ \lambda_{T,M_{\rm cov},N_{\rm mesh}}(k)
+ =\frac1{g_{\rm YM}^2}
+ \left\|P_T^{-\mathsf T}S_{M_{\rm cov}}^{-1}
+ \mathfrak d_{N_{\rm mesh}}(k)\right\|^2,
+ \qquad k\ne0,
+\]
+with transverse complex multiplicity $9$.  Its Friedrichs Gaussian
+oscillator
+\[
+ \widehat H^{\rm Gauss}=-\tfrac12\Delta
+ +\tfrac12\langle a,\mathcal La\rangle
+\]
+has a unique Gaussian ground state and exact gap
+$\sqrt{\lambda_{\min}(\mathcal L)}$.  The explicit sequence
+\[
+ T_j^{\rm rad}=j^2,\qquad M_{{\rm cov},j}=j,\qquad
+ N_{{\rm mesh},j}=j^3
+\]
+simultaneously gives a pointed local-isometric $\mathbb R^4$ cover limit,
+vanishing mesh size, vanishing Gaussian gap, and vanishing logarithmic
+classical action.
+
+This last statement is a finite quadratic-oscillator theorem, not a
+four-dimensional interacting Yang--Mills mass-gap result.  Its Hilbert space
+is $L^2$ of a noncompact linear Coulomb slice with Lebesgue measure, whereas
+compact-link lattice theory uses Haar measure on
+$SU(2)^{E_{N_{\rm mesh}}}$ followed by the nonlinear gauge constraint.
+The exponential is only a local chart, no
+unitary identification of these Hilbert spaces is constructed, a link
+configuration defines a Dirac distribution rather than an $L^2$ state, and
+there is no nonlinear Hamiltonian, transfer matrix, renormalized continuum
+limit, or Osterwalder--Schrader reconstruction in the result.
+
+\clearpage
+\overviewsection{6. Split \(SU(r)\), the \(SU(3)\) Gram and Lorentz
+carriers, and the exact Erd\H{o}s--Straus--Koide incidence bridge}
+
+The 3--4 September 2026 continuation separates the structures that first
+appeared together as a heuristic and then computes the strongest exact maps
+among them: a gauge field on each native four-torus; the two- and three-column
+\(SU(3)\) orbit cones; a split Lorentz observation attached to the toroidal
+angular epimorphism; the full retained four-vector--spin-representation--scalar
+fibre; and the arithmetic incidence correspondence.  Each now has a complete
+theorem, but the maps
+which would identify them with one another either fail by an explicit
+invariant or have not been constructed.
+
+\medskip\noindent
+\textit{The full split-Cartan \(SU(r)\) theorem on the native fibres.}
+Fix \(r\ge2\) and a nonzero integral weight
+\[
+ \mathbf m=(m_1,\ldots,m_r),\qquad
+ \sum_i m_i=0,\qquad s_2(\mathbf m)=\sum_i m_i^2.
+\]
+For the full-flux line bundle \(\mathscr L_{\eta,T}\to F_T\), put
+\[
+ \mathscr E_{\mathbf m,T}
+ =\bigoplus_{i=1}^r\mathscr L_{\eta,T}^{\,m_i},
+ \qquad
+ H_{\mathbf m}=i\operatorname{diag}(m_1,\ldots,m_r).
+\]
+The ordered splitting gives a parallel determinant trivialization, and
+\[
+ c_1(\mathscr E_{\mathbf m,T})=0,\qquad
+ c_2(\mathscr E_{\mathbf m,T})
+ =-\frac{s_2(\mathbf m)}2[\eta_T]^2.
+\]
+Since the marked and physical complex orientations are opposite,
+\[
+ \left\langle c_2,[F_T]_{\rm mark}\right\rangle=-6s_2(\mathbf m),
+ \qquad
+ k_{\mathbf m}:=
+ \left\langle c_2,[F_T]_{\rm phys}\right\rangle=6s_2(\mathbf m).
+\]
+The congruence \(s_2(\mathbf m)\equiv\sum_i m_i=0\pmod2\) shows that this
+split family realizes precisely a subset of the sectors
+\(k_{\mathbf m}\in12\mathbb Z_{>0}\).
+
+The diagonal connection and curvature are
+\[
+ \nabla^{\mathbf m,T}
+ =d-2\pi(6y^1\,dy^4+y^2\,dy^3)H_{\mathbf m},
+ \qquad
+ F_{\mathbf m,T}=-2\pi H_{\mathbf m}\eta_T.
+\]
+They solve the Yang--Mills equation on the flat torus.  With
+\(\langle X,Y\rangle=-\tfrac12\operatorname{Tr}(XY)\),
+\(D_T=\operatorname{Vol}(F_T)\), and \(S_T=6L_T-q_T\), the exact action is
+\[
+ \operatorname{YM}_T(\nabla^{\mathbf m,T})
+ =\frac{2\pi^2k_{\mathbf m}}{g_{\rm YM}^2}
+ +\frac{\pi^2s_2(\mathbf m)S_T^2}{g_{\rm YM}^2D_T}.
+\]
+Let \(\mathcal B_{T,\min}\le\mathcal B_{T,\max}\) be the two positive
+charge-one normal-form frequencies and
+\[
+ \rho_T^*=\frac{\mathcal B_{T,\max}}{\mathcal B_{T,\min}},\qquad
+ N_-(T)=\left\lceil\frac{\rho_T^*-1}{2}\right\rceil .
+\]
+For every positive root \(i<j\), write \(q_{ij}=|m_i-m_j|\).  The complete
+negative spectrum of the normalized Coulomb Jacobi operator is
+\[
+ q_{ij}\bigl((2n+1)\mathcal B_{T,\min}
+                    -\mathcal B_{T,\max}\bigr),
+ \qquad 0\le n<N_-(T),
+\]
+and the real multiplicity contributed by this root pair is
+\(12q_{ij}^2\).  Coincident numerical bands are summed.  Consequently
+\[
+ \operatorname{ind}_{\mathbb R}\mathcal J_{\mathbf m,T}
+ =12N_-(T)\sum_{i<j}(m_i-m_j)^2
+ =12rN_-(T)s_2(\mathbf m).
+\]
+If the distinct weights have multiplicities \(r_1,\ldots,r_\ell\), the
+neutral Coulomb nullity away from a wall is
+\[
+ 4\left(\sum_{a=1}^{\ell}r_a^2-1\right).
+\]
+At an odd wall \(\rho_T^*=2n+1>1\), charged zero modes add
+\(12rs_2(\mathbf m)\); at \(S_T=0\), where both favourable polarizations
+vanish, they add \(24rs_2(\mathbf m)\).  On the deep cusp tail,
+\(N_-(T)=3\), so the index is \(36rs_2(\mathbf m)=6rk_{\mathbf m}\).
+For example, \(\mathbf m=(1,0,-1)\) in \(SU(3)\) has
+\[
+ (q_{12},q_{13},q_{23})=(1,2,1),\qquad
+ k_{\mathbf m}=12,\qquad
+ \operatorname{ind}_{\mathbb R}=216,\qquad
+ \operatorname{null}_{\rm neutral}=8
+\]
+on that tail.
+
+These negative eigenspaces are descent directions, not bifurcation kernels;
+only the wall zero modes are candidates for a Lyapunov--Schmidt analysis.
+The bundle itself cannot extend over \(X\), \(S^{12}\), or \(S^{24}\):
+each proposed carrier has \(H^4(-;\mathbb Z)=0\), whereas
+\(c_2(\mathscr E_{\mathbf m,T})\ne0\).
+
+\medskip\noindent
+\textit{The four-dimensional \(SU(3)\) Gram quotient and its exact
+boundary.}
+Let
+\[
+ \mathscr V=\operatorname{Mat}_{3\times2}(\mathbb C),\qquad
+ \Gamma(A)=A^\dagger A,
+\]
+with \(SU(3)\) acting by left multiplication.  Equality of Gram matrices is
+exactly equality of \(SU(3)\)-orbits: after matching the two column spans by
+a unitary map, the unused complex line corrects its determinant uniquely.
+Thus
+\[
+ \mathscr V/SU(3)\cong\operatorname{Herm}_2^{\ge0}.
+\]
+The rank-two stratum is free and has the explicit trivialization
+\[
+ \mathscr V_{(2)}
+ \cong SU(3)\times\operatorname{Herm}_2^{>0};
+\]
+the nonzero rank-one stratum has stabilizer \(SU(2)\), and the zero matrix
+has stabilizer \(SU(3)\).  If \(A=(a\ b)\), then
+\[
+ \det\Gamma(A)
+ =\lVert a\rVert^2\lVert b\rVert^2-|\langle a,b\rangle|^2
+ =\lVert a\wedge b\rVert^2
+ =\sum_{i<j}|a_ib_j-a_jb_i|^2.
+\]
+In Pauli coordinates this is
+\[
+ t^2-x^2-y^2-z^2,
+\]
+but the quotient is only the closed future cone
+\(t\ge\sqrt{x^2+y^2+z^2}\), not all of Minkowski space.  Its fixed-trace
+link is the Bloch ball \(B^3\), with rank-one boundary
+\(\mathbb CP^1\cong S^2\).  If
+\(S^{12}_{\rm col}=\mathscr V^+\) is the one-point compactification of the
+representation, then
+\[
+ S^{12}_{\rm col}/SU(3)
+ \cong\bigl(\operatorname{Herm}_2^{\ge0}\bigr)^+
+ \cong B^4,
+\]
+and the rank-one, zero, and infinity orbits together form its boundary
+\(S^3\).  This \(S^{12}_{\rm col}\) is a representation sphere; it is not
+the earlier cusp-induced smash construction.
+
+The four-variable identity
+\[
+ Q_4(r)=\frac12\left(\sum_{i=1}^4r_i\right)^2-\sum_{i=1}^4r_i^2
+       =h^2-x^2-y^2-z^2
+\]
+under the orthogonal Hadamard transform is exact.  More generally,
+\[
+ Q_{4,\lambda}=(4\lambda-1)h^2-x^2-y^2-z^2;
+\]
+therefore every \(\lambda>1/4\) has Lorentz signature after rescaling time.
+The coefficient \(\lambda=1/2\) is the unique choice retaining unit
+coefficients in this particular orthogonal coordinate system and the
+\(\pi/4\) cone angle, but it is not forced by the \(SU(3)\) orbit theorem.
+
+The quotient does not supply a nonzero \(SU(3)\) instanton sector: its
+principal bundle over \(\operatorname{Herm}_2^{>0}\cong\mathbb R^4\) is
+trivial, and compactifying that open cone to \(S^4\) requires an additional
+clutching class in
+\(\pi_3(SU(3))\cong\mathbb Z\).  Conversely, the native torus bundle above
+is topologically the pullback of an \(S^4\)-bundle along a chosen
+degree-one collapse \(c_T:F_T\to S^4\), because \(c_2\) classifies
+\(SU(3)\)-bundles on four-complexes.  Its native connection cannot be such
+a pullback.  Indeed
+\[
+ \operatorname{Tr}(F_{\mathbf m,T}\wedge F_{\mathbf m,T})
+ =-4\pi^2s_2(\mathbf m)\eta_T^2
+\]
+is nowhere zero.  If it were \(c^*\operatorname{Tr}(F_B\wedge F_B)\),
+then \(dc\) would have rank four everywhere, so \(c:T^4\to S^4\) would be a
+covering map, contradicting
+\(\pi_1(T^4)=\mathbb Z^4\) and \(\pi_1(S^4)=0\).
+
+\medskip\noindent
+\textit{Three columns: the cubic carrier, its rank-loss sphere, and the
+exact limit of the analogy.}
+Now let
+\[
+ \mathscr V_3=\operatorname{Mat}_{3\times3}(\mathbb C).
+\]
+For the left \(U(3)\)-action, \(A\mapsto A^\dagger A\) is a complete orbit
+invariant and gives
+\[
+ \mathscr V_3/U(3)
+ \cong\operatorname{Herm}_3(\mathbb C)_{\geq0}.
+\]
+This is a nine-real-dimensional rank-three Euclidean Jordan cone.  Its
+determinant is cubic, and its trace-one section is an eight-ball.  After
+one-point compactification,
+\[
+ \mathscr V_3^+/U(3)\cong B^9,
+\]
+whose boundary is exactly the compactified rank-deficient locus
+\[
+ \{\operatorname{rank}A\le2\}\cup\{\infty\}\cong S^8.
+\]
+Thus the passage from two to three columns replaces the quadratic
+\(3+1\) Lorentz cone and its \(S^3\) boundary by a cubic rank-three cone and
+an \(S^8\) boundary at the level of the full orbit space.  The full
+nine-dimensional cone is not itself a Lorentz cone; the marked angular
+epimorphism nevertheless gives a split positive observation onto the
+ordinary \(3+1\) cone and identifies all five retained fibre directions.
+
+Strict \(SU(3)\) remembers one more invariant.  The complete quotient map is
+\[
+ A\longmapsto(H,z)=(A^\dagger A,\det A),
+ \qquad |z|^2=\det H,
+\]
+and its image is homeomorphic to \(\mathbb R^{10}\).  Hence
+\[
+ S^{17}/SU(3)\cong S^9,
+ \qquad
+ \mathscr V_3^+/SU(3)\cong S^{10}.
+\]
+In this \(S^{10}\), the same compactified rank-loss set is the standard
+topologically locally flat codimension-two \(S^8\), and
+\[
+ S^{10}\setminus S^8
+ \cong\mathbb R^8\times\mathbb C^*\simeq S^1.
+\]
+The positive generator is the determinant phase
+\(\det A/|\det A|\).  The rank-one trace-one stratum is
+\(\mathbb CP^2\).  Quotienting the residual determinant-phase circle recovers
+\(B^9\), with the \(S^8\) as its fixed-set boundary.  This supplies a precise
+three-input carrier and alternating invariant, but not by itself a principal
+bundle, connection, particle assignment, or Yang--Mills operator.
+
+\medskip\noindent
+\textit{The exact Lorentz observation and all retained directions.}
+The angular map already present in the toroidal quotient,
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},\qquad
+ u=(1,1,1)^{\mathsf T},\qquad Pu=0,
+\]
+has the standard-Hermitian right inverse
+\[
+ R=P^*(PP^*)^{-1}
+ =\frac13\begin{pmatrix}2&1\\-1&1\\-1&-2\end{pmatrix}.
+\]
+With \(\Pi=uu^*/3\) and \(Q_u=I_3-\Pi\), define
+\[
+ \mathcal O_P(H)=PHP^*,\qquad \jmath_P(G)=RGR^*.
+\]
+Both maps preserve positive semidefiniteness, and
+\[
+ \boxed{\mathcal O_P\jmath_P=\operatorname{id},\qquad
+ \jmath_P\mathcal O_P(H)=Q_uHQ_u.}
+\]
+The complete linear kernel is
+\[
+ \ker\mathcal O_P
+ =\{a\,uu^*+uv^*+vu^*:a\in\mathbb R,\ v\in u^\perp\},
+\]
+and its positive zero fibre is precisely
+\(\{\lambda uu^*: \lambda\geq0\}\).
+
+Set \(X=(R\;u)\).  Since
+\[
+ \det X=1,\qquad X^{-1}=\begin{pmatrix}P\\u^*/3\end{pmatrix},
+\]
+every \(H\in\operatorname{Herm}_3(\mathbb C)\) has the unique form
+\[
+ H=X\begin{pmatrix}G&\psi\\\psi^*&\lambda\end{pmatrix}X^*,\qquad
+ G=PHP^*,\quad\psi=\frac13PHu,\quad\lambda=\frac19u^*Hu.
+\]
+This is the complete real decomposition
+\[
+ \boxed{\operatorname{Herm}_3(\mathbb C)
+ \cong\operatorname{Herm}_2(\mathbb C)\oplus\mathbb C^2\oplus\mathbb R,
+ \qquad 9=4+4+1,}
+\]
+with cubic and positive fibre
+\[
+ \boxed{\det H=\lambda\det G-\psi^*\operatorname{adj}(G)\psi,}
+\]
+\[
+ H\succeq0\Longleftrightarrow
+ G\succeq0,\quad\psi\in\operatorname{im}G,\quad
+ \lambda\geq\psi^*G^+\psi.
+\]
+
+The embedded spin action is
+\[
+ T_P(g)=RgP+\Pi=X(g\oplus1)X^{-1},\qquad
+ (G,\psi,\lambda)\longmapsto(gGg^*,g\psi,\lambda).
+\]
+For \(g\in SL_2(\mathbb C)\), the summands are a Lorentz four-vector, the
+defining complex two-dimensional spin representation, and a real scalar.
+The central element \(-I_2\) fixes \(G,\lambda\) and negates \(\psi\);
+hence the four-vector action factors through \(SO^+(1,3)\), while the full
+nine-dimensional carrier remembers the spin double cover.
+
+The relation survives the relevant compactification in one direction:
+\[
+ \boxed{\jmath_P^+:B^4\cong\mathcal P_2^+
+ \lhook\joinrel\longrightarrow(\partial\mathcal P_3)^+\cong S^8,}
+ \qquad e_2(\jmath_P(G))=\frac13\det G,
+\]
+and its normal opening at \(uu^*\) is
+\[
+ \boxed{\det(uu^*+\varepsilon\jmath_P(G))
+ =\varepsilon^2\det G.}
+\]
+The reverse boundary observation is nonproper.  In the strict \(SU(3)\)
+quotient the determinant phase satisfies
+\[
+ |\omega|^2=\lambda\det G-\psi^*\operatorname{adj}(G)\psi,
+\]
+and \(\omega=0\) is exactly the rank-loss locus compactifying to the
+distinguished \(S^8\subset S^{10}\).
+
+The four-branch chart reaches this Lorentz sector through the holomorphic
+seed
+\[
+ K(z)=\operatorname{diag}(z_0z_3,z_1z_2),\qquad
+ \det K=z_0z_1z_2z_3.
+\]
+Its positive \(SL_2(\mathbb C)\)-orbit supplies every future causal
+direction.  For \(Z\in\operatorname{Mat}_{3\times2}(\mathbb C)\) with the
+commuting colour and spin actions, retain \(\alpha,c>0\) and put
+\[
+ p_\alpha(Z)=\alpha Z^*Z,\qquad
+ m_{\alpha,c}^2(Z)=\frac{\alpha^2}{c^2}
+ \sum_{a<b}|Z_{a1}Z_{b2}-Z_{a2}Z_{b1}|^2.
+\]
+The map \(p_\alpha\) separates \(SU(3)\)-orbits and is Lorentz covariant;
+the mass is positive exactly at complex rank two.  Since
+\[
+ m_{\alpha,c}^2(rZ)=r^4m_{\alpha,c}^2(Z),
+\]
+ the unrestricted pointwise carrier is gapless.  Exact presymplectic reduction
+now gives four distinct results.  For \(m_0>0\), the rank-two colour quotient
+and its characteristic reduction are
+\[
+ (\mathcal J_2\times\mathcal H^+_{m_0,c})/
+ ((x,p)\sim(x+sp,p))\cong_{\rm symp}T^*\mathcal H^+_{m_0,c},
+\]
+exactly the future-timelike spinless particle.  On nonzero rank one, the
+intrinsic characteristic quotient is \(T^*\mathcal N_+^\times\), but the
+written massless multiplier action is irregular because
+\[
+ d(\det\circ p_\alpha)_Z=0.
+\]
+It yields \(\dot x=\lambda p\) without \(\lambda=e\), has four transverse
+rank-opening directions which are first-order null but not colour gauge, and
+at \(Z=0\) admits arbitrary \(x(\tau)\).  For the separate hard constraint
+with \(\omega_0\ne0\), the momentum map has rank four above its sharp
+threshold and rank three at the endpoint; its action therefore forces
+\(\dot x=0\) above threshold and has the ordinary
+\(\dot x\in\mathbb Rp\) characteristic only at threshold.  The accompanying
+multiplication/Fock spectrum is exact as a free operator calculation but is
+not the Hamiltonian generating this action, so its positive endpoint is a
+constraint-selected threshold rather than a dynamically generated
+interacting gap.  Complete definitions, maps, stabilizers, reduced forms,
+equations, and singular counterexamples are proved in the canonical module
+\path{supporting_materials/workbench/research/worldline_presymplectic_reduction.tex}.
+
+The affine normal slice is now developed as an exact field-theoretic host.
+Indeed,
+\[
+ \mathcal N_P=\{Y\in\operatorname{Herm}_3(\mathbb C):Yu=0\}
+ =\jmath_P\bigl(\operatorname{Herm}_2(\mathbb C)\bigr),
+ \qquad \jmath_P^{-1}(Y)=PYP^*,
+\]
+and polarization of
+\[
+ \det(uu^*+\varepsilon\jmath_P(G))=\varepsilon^2\det G
+\]
+gives the constant Minkowski form of signature \((1,3)\).  Positive
+semidefinite \(G\) are the future cone, rank-one positive \(G\) its null
+boundary, and the lifted congruence action realizes the spin cover
+\(SL_2(\mathbb C)\to SO^+(1,3)\).  The standard metrics used in the
+Moore--Penrose section further select
+\[
+ W_P=R^*R=(PP^*)^{-1},\qquad
+ K_P=\{a\in SL_2(\mathbb C):a^*W_Pa=W_P\}\cong SU(2).
+\]
+Its real normal representation is exactly
+\(\boldsymbol1\oplus\boldsymbol3\), with trivial central action.  Promoting
+this pointwise action to a local gauge symmetry gives the explicit
+nonnegative Euclidean model
+\[
+ \int_M\left(
+ \frac{|F_{\mathcal A}|^2}{2g_{\rm YM}^2}
+ +\frac{Z_G}{2}|D_{\mathcal A}G|_{E_P}^2
+ +\frac{m_G^2}{2}|G|_{E_P}^2
+ +\frac{\lambda_4}{4}(\det G)^2\right)d\operatorname{vol}_g,
+\]
+where
+\(E_P(G,K)=\operatorname{tr}(GW_PKW_P)\) and
+\(D_{R\mathcal A P}\jmath_P(G)=\jmath_P(D_{\mathcal A}G)\).
+The normal field cannot screen a fundamental centre charge; the retained
+spinor \(\psi\) is centre-nontrivial, but a kinetic and interaction theory for
+that additional direction has not yet been constructed.
+
+The distinction between the candidate cusp matrix and the Gram momentum is
+also now an equation:
+\[
+ \det G_{\eta,T}=-\frac23D_T<0,\qquad
+ \operatorname{im}p_\alpha=
+ \operatorname{Herm}_2(\mathbb C)_{\geq0}.
+\]
+Positive scaling and complex congruence preserve their different inertia
+types, so any common physical model requires a new morphism rather than an
+identification.  After an independent length/time dictionary is chosen, the
+same Lorentzian host carries a standard Klein--Gordon/Fock model with exact
+gap \(m_{\mathrm{KG}}\) for \(m_{\mathrm{KG}}>0\) and gap zero for
+\(m_{\mathrm{KG}}=0\).  The massless transverse gauge Gaussian has lowest
+nonzero frequency \(2\pi/L\), which closes as \(L\to\infty\), and explicit
+Hamiltonian countermodels show that entanglement alone determines neither
+the presence nor the size of a gap.  An auxiliary positive gap transfers to
+a physical Hamiltonian only when a comparison map controls the entire
+excitation form domain:
+\[
+ \|Ru\|\geq c_R\|u\|,\quad
+ \mathfrak b[Ru]\leq C_R
+ (\mathfrak a_{\rm phys}[u]-E_{\rm vac}\|u\|^2)
+ \Longrightarrow
+ \operatorname{gap}(A_{\rm phys})\geq\frac{\gamma c_R^2}{C_R}.
+\]
+An intertwiner on a single selected subspace is insufficient.  Thus a
+field-theoretic kinetic operator has now been constructed on the exact
+Lorentz slice, but dynamics for the complete
+\((G,\psi,\lambda,\omega)\) carrier, a gauge-invariant interacting continuum
+spectrum, and the comparison map required for a nonlinear mass-gap theorem
+remain exact construction problems; the present theorem neither proves nor
+disproves the four-dimensional Yang--Mills mass gap.
+
+\medskip\noindent
+\textit{The actual toroidal successor and its elliptic quotient.}
+Independently of the Gram quotient, the rank-three Kuhn fan produces a proper
+analytic degeneration
+\[
+ \pi_3:N_3\longrightarrow\Delta,\qquad
+ N_{3,t}\cong E_\tau^3\quad(t\ne0),
+\]
+with cusp monodromy
+\[
+ M_3=\begin{pmatrix}I_3&I_3\\0&I_3\end{pmatrix}
+\]
+and deepest local equation \(t=z_0z_1z_2z_3\).  The irreducible central fibre
+has one dense three-torus, seven double surfaces, twelve triple curves, and
+six quadruple points:
+\[
+ (f_0,f_1,f_2,f_3)=(1,7,12,6),\qquad \chi(W_3)=6.
+\]
+Its normalization is the permutohedral toric threefold, with orbit vector
+\[
+ (1,14,36,24)\longrightarrow(1,7,12,6);
+\]
+the positive-codimension strata map with degrees \(2,3,4\), respectively.
+Consequently, any real \(S^8\)-total-space fibration retaining \(W_3\) must
+have its other singular fibres contribute Euler sum \(-4\).
+For a full-rank integral shear
+\(\mathcal B:\bar L_3\hookrightarrow L_3\), the calculation retains the
+entire lattice index:
+\[
+ \chi(W_{3,\mathcal B})
+ =3!\,[L_3:\mathcal B\bar L_3]
+ =3!\,|\det\mathcal B|.
+\]
+This is the precise content of the observed \(6=3!\det I_3\).  It is a
+toroidal volume/index theorem, not a proof that the Hermitian Jordan cone is
+a globalization of the degeneration.
+
+The selectively corrected Jordan determinant/Euler calculation adds an exact algebraic bridge at the
+level of determinant forms.  Fixing the orientation and writing
+\([a]_{\times}v=a\times v\), every \(3\times3\) Hermitian matrix is uniquely
+\(S+i[a]_{\times}\), with
+\[
+ \boxed{\det\bigl(S+i[a]_{\times}\bigr)=\det S-a^{\mathsf T}Sa.}
+\]
+For a marked positive-definite symmetric monodromy form \(B\), the section
+\[
+ \ell_B(\lambda,a)=\lambda B+i[a]_{\times}
+\]
+meets the positive-semidefinite cone in exactly
+\[
+ \lambda\geq0,\qquad a^{\mathsf T}Ba\leq\lambda^2\det B,
+\]
+the future cone of a \((3+1)\)-Lorentz form.  There is also an explicit
+real-linear order-cone bijection
+\[
+ \Theta:\operatorname{Herm}_2(\mathbb C)_{\geq0}
+ \longrightarrow
+ (\mathbb RI_3\oplus i\mathfrak{so}(3))
+ \cap\operatorname{Herm}_3(\mathbb C)_{\geq0}
+\]
+such that
+\[
+ \det_3\Theta(H)=\frac{\operatorname{tr}H}{2}\det_2H.
+\]
+It sends positive-semidefinite ranks \(2,1,0\) to \(3,2,0\).  Separately,
+if \(P\) is a rank-one projection in \(\operatorname{Herm}_2(\mathbb C)\),
+then \(\Theta(P)\) has eigenvalues \(0,1/2,1\) and is not idempotent; hence
+\(\Theta\) is not a Jordan-algebra homomorphism.  These identities exhibit
+literal Lorentz sections inside the cubic cone, but
+they contain no torus lattice, monodromy, period family, or filling map.  The
+toric parameter tends to zero with \(B=I_3\) fixed; this is not the same as
+moving to \(\det B=0\).
+
+There is nevertheless a literal map to the reconstructed rank-two cusp.  In
+the marked angular and deck lattices, set
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},
+ \qquad
+ Q=\begin{pmatrix}0&-1&1\\1&-1&0\end{pmatrix},
+ \qquad \Phi=P\oplus Q.
+\]
+Then \(\Phi:H_1(T^6)\twoheadrightarrow H_1(T^4)\) satisfies
+\[
+ \boxed{\Phi M_3=M_F\Phi,\qquad c_F\Phi=Qc_3.}
+\]
+If the candidate cusp period is \(Z_2(t)=sB_0+C(t)\), the source period
+\[
+ Z_3(t)=sI_3+S\,C(t)\,Q,\qquad
+ S=\begin{pmatrix}1&1\\0&1\\0&0\end{pmatrix},
+\]
+obeys
+\[
+ \boxed{PZ_3(t)=Z_2(t)Q.}
+\]
+Consequently \(P:\mathbb C^3\to\mathbb C^2\) descends to a surjective
+holomorphic map of every smooth cusp fibre, has connected elliptic kernel,
+and extends over the toric boundary.  An explicit unimodular basis change
+splits the source cusp integrally as
+\[
+ M_3\cong M_F\oplus
+ \begin{pmatrix}1&1\\0&1\end{pmatrix}.
+\]
+The candidate's free affine order-three and order-four peripheral actions
+also lift on this added elliptic factor.  The remaining problem is analytic,
+not merely numerical: one still has to build a single period and overlap
+family across both finite-order discs.
+
+This successful lift is not the diagonal local-system candidate
+\[
+ M_1=I_3\otimes S,\qquad M_2=I_3\otimes Q,\qquad M_0=I_3\otimes T,
+ \qquad M_1M_2M_0=I.
+\]
+Although its finite factors have orders \(4\) and \(6\), each
+\(I-M_j:T^6\to T^6\) is a surjective isogeny for \(j=1,2\).  Thus every
+affine lift of either finite action has a fixed point.
+
+The six Kuhn tetrahedra also meet the Gram construction exactly at the level
+of marked fans.  With
+\(\nu_i=E_{ii}-I_3/3\), the \(\pi\)-th tetrahedron maps to the chamber
+\[
+ \mathbb R_{\ge0}\nu_{\pi_1}
+ +\mathbb R_{\ge0}(-\nu_{\pi_3})
+ =\{\lambda_{\pi_1}\ge\lambda_{\pi_2}\ge\lambda_{\pi_3}\}.
+\]
+Thus the six deepest toroidal strata and the six \(A_2\) Weyl chambers form
+the same \(S_3\)-torsor after marking.  This Coxeter correspondence does not
+identify the analytic germs: the toroidal germ has four branches, while the
+rank-one Gram normal determinant is an irreducible quadratic.
+
+The tempting cyclic compression of the six Kuhn labels to two also needs this
+distinction.  The three even labels and three odd labels do map, through the
+saturated rank-lowering homomorphism \(P:\mathbb Z^3\twoheadrightarrow
+\mathbb Z^2\), to the two unimodular triangle orbits of the target fan.  They
+do not arise from the asserted index-three translation superlattice: any
+unimodular triangulation of a rank-three lattice fundamental domain again has
+six maximal tetrahedra.
+
+The free \(\mathbb Z^6\) belonging to this nine-dimensional-cone program is
+\[
+ \Lambda_{\rm tor}=H_1(T^6;\mathbb Z)
+ =\mathbb Z^3_{\rm angular}\oplus\mathbb Z^3_{\rm deck}.
+\]
+It must not be confused either with \(\mathbb Z/6\) or with the different
+rank-six bundle-defect group on the original regular locus.  Under diagonal
+coordinate permutation, \(P\oplus Q\) gives
+\[
+ 0\longrightarrow\mathbb Z(k,0)\oplus\mathbb Z(0,k)
+ \longrightarrow\Lambda_{\rm tor}
+ \longrightarrow A_F\oplus B_F\longrightarrow0,
+ \qquad k=(1,1,1).
+\]
+This sequence splits as an integral lattice with monodromy, but not as an
+integral \(S_3\)-module.  The quotient is two copies of the \(A_2\) weight
+lattice, and the associated root lattices have index three.  The six homology
+basis elements are two three-element permutation orbits; the six Kuhn/Weyl
+chambers are one regular \(S_3\)-orbit.  Thus
+\(\operatorname{rk}\Lambda_{\rm tor}=6\), \(|S_3|=3!=6\), and
+\(\chi(W_{3,\mathcal B})=3!|\det\mathcal B|\) are not three names for one
+object.  The last two share a toric cell count; the first comes from angular
+plus deck homology.
+
+The regular six-set does, however, have an exact home in the associated
+nine-dimensional carrier.  Conjugation by permutation matrices gives
+\[
+ \operatorname{Hom}(\overline L_3,L_3)
+ =\bigoplus_i\mathbb ZE_{ii}\oplus
+  \bigoplus_{i\ne j}\mathbb ZE_{ij},
+\]
+and the six off-diagonal units form one regular \(S_3\)-orbit.  The marked
+chamber \(\pi=(\pi_1\pi_2\pi_3)\) corresponds to
+\(E_{\pi_1,\pi_3}\), or equivalently to the mixed angular--deck pair whose
+alternating pairing is zero.  The three excluded diagonal pairs have pairing
+one.  A real-linear equivariant isomorphism identifies the full matrix
+representation with \(\operatorname{Herm}_3(\mathbb C)\), but the
+symmetric/skew integral splitting has index \(2^3\), and the six
+off-diagonal images are indefinite.  This is therefore a precise
+representation/incidence bridge, not a positive, determinant, Jordan, or
+toric morphism.
+
+The only map presently reaching the positive-semidefinite Hermitian Gram
+boundary is the piecewise-linear chamber map
+\(\Phi_{\rm G}\circ\jmath\circ P\), which uses the angular half, is not
+additive, and does not descend to a torus fibre.  Full proofs are in the
+workbench sections \emph{The rank-six cusp lattice inside the
+nine-dimensional cone program} and \emph{The chamber torsor inside the
+nine-dimensional matrix carrier}.
+
+\medskip\noindent
+\textit{Why the higher-rung object cannot be a literal complex
+fourfold \(S^8\).}
+If a homotopy \(S^8\) admitted an almost-complex tangent bundle \(E\), then
+\[
+ c_1(E)=c_2(E)=c_3(E)=0,\qquad c_4(E)=2u,
+\]
+and therefore
+\[
+ p_2(TS^8)=c_2^2-2c_1c_3+2c_4=4u.
+\]
+But \(p_1=0\) and \(\operatorname{sign}(S^8)=0\), so Hirzebruch's formula
+\[
+ \operatorname{sign}(S^8)
+ =\left\langle\frac{7p_2-p_1^2}{45},[S^8]\right\rangle
+\]
+forces \(p_2=0\), a contradiction.  Thus the rank-loss \(S^8\) above is a
+real stratified boundary, not a smooth complex-fourfold analogue of the
+candidate.  A nonsingular fibration \(T^6\to S^8\to S^2\) is also
+impossible: its homotopy sequence would require a surjection
+\(\mathbb Z\to\mathbb Z^6\), while Euler characteristic would require
+\(2=0\).  Any real singular replacement must instead derive the actual
+local filling maps; its special fibres obey
+\[
+ \sum_i\chi(F_i)=2.
+\]
+For regular-piece monodromy \(\rho\), the corrected homological Serre
+filtration is
+\[
+ 0\longrightarrow(\textstyle\bigwedge^q\Lambda)_\rho
+ \longrightarrow H_q(E;\mathbb Z)
+ \longrightarrow
+ H_1(B^\circ;\textstyle\bigwedge^{q-1}\Lambda)
+ \longrightarrow0,
+\]
+whereas the cohomological edge map has invariant quotient
+\[
+ H^q(E;\mathbb Z)\twoheadrightarrow
+ (\textstyle\bigwedge^q\Lambda^\vee)^\rho.
+\]
+Consequently its van Kampen, Wang, and Mayer--Vietoris maps must kill the
+regular fibre group and all intermediate integral homology while
+respecting the coinvariant subobject and the base-one-cycle quotient;
+using the reverse Serre arrows does not meet this requirement.
+Every effective torus action on \(S^8\) has rank at most four, and this bound
+is attained by the coordinate action
+\[
+ S^8/T^4\cong\operatorname{Susp}(\Delta^3)\cong B^4.
+\]
+This is a real two-pole singular compactification with generic \(T^4\)
+orbit, not a three-special-fibre \(T^6\)-fibration over \(S^2\).
+
+\medskip\noindent
+\textit{The exact interface with the Fabel--Alp\"oge degeneration.}
+The present interface does not identify the rank-loss \(S^8\) with the
+candidate threefold.  It occurs on the regular locus of the reconstructed
+\(S^6\).  Put
+\[
+ D=W\sqcup S_1\sqcup S_2,
+ \qquad U=X\setminus D,
+\]
+where \(W\) is the non-normal central fibre and \(S_1,S_2\) are the two
+multiple bielliptic fibres.  Their computed first homology and Alexander
+duality give the exact map
+\[
+ \boxed{
+ H_1(W;\mathbb Z)\oplus H_1(S_1;\mathbb Z)\oplus H_1(S_2;\mathbb Z)
+ \xrightarrow{\ \sim\ }H^4(U;\mathbb Z)
+ \cong\mathbb Z^2\oplus\mathbb Z^2\oplus\mathbb Z^2.}
+\]
+Because \(U\) has CW dimension at most five, this complete rank-six group
+classifies principal \(SU(3)\)-bundles on \(U\) by \(c_2\).  The pair
+sequence gives another isomorphism
+\[
+ \delta:H^4(U;\mathbb Z)\xrightarrow{\sim}H^5(X,U;\mathbb Z),
+\]
+so an unframed bundle extends across all three special fibres exactly when
+its six-component class vanishes.  Global \(SU(3)\)-bundles on \(S^6\) carry
+instead the separate clutching integer
+\[
+ k\in\pi_5(SU(3))\cong\mathbb Z,
+ \qquad c_3=\pm2ku,
+\]
+and every such global bundle restricts trivially to \(U\).
+
+The displayed \(\mathbb Z^6\) is a free lattice consisting of three
+geometrically localized \(\mathbb Z^2\) summands.  It is not itself a cyclic
+\(\mathbb Z/6\mathbb Z\).  Write its marked basis as
+\[
+ (a_0,b_0,a_1,b_1,a_2,b_2)
+ =(\bar\gamma,\bar u,g_1,h_1,g_2,h_2).
+\]
+The calculations below are proved in the integrated workbench section
+\emph{Fibre degree and the cyclic-six centre}, including the one-shot collar
+matrix and the complete kernel, coefficient, tensor-centre, and common-centre
+arguments.  They have the workbench's internal \emph{Verified} status as
+lattice and matrix-group statements; that status does not extend them to a
+gauge-bundle or spectral conclusion.
+With the complex orientation of a smooth fibre, outward-first boundary
+orientation, and the manuscript's clockwise meridians, the transpose of the
+actual collar matrix gives
+\[
+ \operatorname{res}_F\!\left(\sum_{i=0}^2(n_i a_i+r_i b_i)\right)
+ =(12n_0+4n_1-3n_2)\omega_F,
+ \qquad
+ [\deg_F]=(12,0,4,0,-3,0),
+\]
+where \(\langle\omega_F,[F]\rangle=1\).  This primitive map has saturated
+kernel
+\[
+ \ker\deg_F
+ =\mathbb Z\langle
+ b_0,b_1,b_2,\ a_0-3a_1,\ 3a_1+4a_2
+ \rangle.
+\]
+It is the pullback of the topology-killing functional, not a new numerical
+coincidence.  Define
+\[
+ q_{\rm col}:L\longrightarrow H_1(X^\circ;\mathbb Z),\qquad
+ a_0\mapsto c,\quad a_1\mapsto\bar g_1,\quad a_2\mapsto\bar g_2,\quad
+ b_0,b_1,b_2\mapsto0,
+\]
+and let \(\Phi_1:H_1(X^\circ;\mathbb Z)\to\mathbb Z\) have row
+\((12,4\ell_1,3\ell_2)\) in the basis
+\((c,\bar g_1,\bar g_2)\).  Then
+\[
+ \deg_F=\Phi_1\circ q_{\rm col},\qquad
+ \Phi_1(j_*[\widetilde a_0])
+ =12\ell_0-4\ell_1-3\ell_2=p.
+\]
+
+The order-three and order-four normal-line holonomies give more than the
+formal reduction of an arbitrary rank-six lattice.  If
+\(\vartheta_1(a_1)=e^{-2\pi i/3}\),
+\(\vartheta_2(a_2)=e^{-2\pi i/4}\), and both characters are trivial on the
+other marked generators, and \(\zeta_{12}=e^{-2\pi i/12}\), then the candidate twists
+\((\ell_1,\ell_2)=(1,-1)\) select
+\[
+ \chi_{12}(x)
+ =\vartheta_1(n_1a_1+r_1b_1)
+  \vartheta_2(n_2a_2+r_2b_2)^{-1}
+ =\zeta_{12}^{4n_1-3n_2},\qquad
+ \chi_6=\chi_{12}^2,
+\]
+and, for \(\rho_m(k)=e^{-2\pi i k/m}\),
+\[
+ \boxed{\chi_{12}=\rho_{12}\circ\deg_F,\qquad
+        \chi_6=\rho_6\circ\deg_F.}
+\]
+Consequently
+\[
+ H^4(U;\mathbb Z)/\ker\chi_{12}\cong\mathbb Z/12\mathbb Z,
+ \qquad
+ H^4(U;\mathbb Z)/\ker\chi_6\cong\mathbb Z/6\mathbb Z.
+\]
+This distinguished cyclic quotient is not ordinary coefficient reduction:
+\[
+ H^4(U;\mathbb Z/6)\cong(\mathbb Z/6)^6.
+\]
+For a principal \(SU(3)\)-bundle \(P\to U\), this last identity is the exact
+topological congruence
+\[
+ \chi_6(c_2(P))
+ =\exp\!\left(-\frac{2\pi i}{6}
+ \langle c_2(P)|_F,[F]\rangle\right).
+\]
+The full order-four normal holonomy is essential before squaring: the natural
+combined character has order twelve, not six.
+
+There is a separate exact group-theoretic occurrence of the same finite
+centre.  Tensor product defines the proper closed embedding
+\[
+ \iota:SU(2)\times SU(3)\hookrightarrow SU(6),\qquad
+ \iota(A,B)=A\otimes B,
+\]
+and its restriction
+\(\mu_2\times\mu_3\xrightarrow{\sim}\mu_6=Z(SU(6))\) sends
+\((\lambda,\mu)\) to \(\lambda\mu\).  Since \(U\) has homotopy dimension at
+most five, \(c_2\) classifies \(SU(n)\)-bundles for \(n\ge3\).  If
+\(e=c_2(E)\) and \(f=c_2(F_3)\) for determinant-trivial bundles of ranks two
+and three, then the splitting principle gives
+\[
+ c_2(E\otimes F_3)=3e+2f.
+\]
+Hence every \(SU(6)\)-bundle class \(h\in H^4(U;\mathbb Z)\) admits at least
+one tensor-subgroup reduction, for example \((e,f)=(h,-h)\); all solutions at
+the \(c_2\)-level are
+\[
+ (e,f)=(h+2t,-h-3t),\qquad t\in H^4(U;\mathbb Z),
+\]
+so neither a nonzero \(h\) nor a reduction is canonically selected.
+Moreover
+\[
+ H^5(U;\mathbb Z)
+ \cong\ker\{\mathbb Z^3\xrightarrow{(1,1,1)}\mathbb Z\}
+\cong Q(A_2),
+\]
+after equipping the distinguished three-component support basis with the
+combinatorial orthonormal form.  The resulting simple-root Gram matrix is
+\(\bigl(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\bigr)\); it is not a
+cup-product or intersection form.  This support-redistribution lattice is not
+the defect lattice and does not make its rank-five fibre-degree kernel an
+\(A_5\) root lattice.
+
+The isomorphism
+\(H^4(U)/\ker\chi_6\cong Z(SU(6))\) is an isomorphism of finite groups, not a
+system of \(SU(6)\) transition functions or a connection.  In particular,
+the injective tensor map does not factor through
+\((SU(2)\times SU(3))/\mu_6\): its central \(\mu_6\) maps to nontrivial
+scalar matrices.  The distinct common-centre construction is
+\[
+ \Gamma_6=\{((\lambda\mu)^{-1},\lambda I_2,\mu I_3):
+              \lambda\in\mu_2,\ \mu\in\mu_3\},
+ \qquad
+ \bigl(U(1)\times SU(2)\times SU(3)\bigr)/\Gamma_6
+ \hookrightarrow U(6),\qquad [z,A,B]\longmapsto z(A\otimes B),
+\]
+where \(\Gamma_6\cong\mu_6\).  Its determinant is \(z^6\), and its image
+meets \(SU(6)\) in exactly \(\iota(SU(2)\times SU(3))\); the image in
+\(U(6)\) is not generally contained in \(SU(6)\).  What remains
+unproved is a degree-changing morphism identifying this degree-four number
+with the degree-two lifting obstruction of a common-centre quotient gauge
+bundle and with its electric--magnetic line pairing.  No mass-gap statement
+follows before that bundle, a connection, operator, domain, and spectral
+comparison have been constructed.
+
+\medskip\noindent
+\textit{The audited Erd\H{o}s--Straus selector and its Koide boundary
+model.}
+Let \(P\equiv1\pmod4\) be prime and let
+\(\mathscr S(P)\) be the set of sorted positive solutions of
+\[
+ \frac4P=\frac1x+\frac1y+\frac1z.
+\]
+Every solution has a unique least denominator
+\[
+ x=a_j=\frac{P+R_j}{4},\qquad R_j=4j+3,\qquad
+ 0\le j<\frac{P-1}{4}.
+\]
+For \(a=a_j\), every divisor \(u\mid a^2\) belongs to one of two tagged
+selector channels,
+\[
+ E_j:\ R_j\mid4u+1,\qquad
+ M_j:\ R_j\mid4u+P.
+\]
+For \(\varepsilon=0\) on \(E_j\) and \(\varepsilon=1\) on \(M_j\), put
+\[
+ T=\frac{4u+P^\varepsilon}{R_j},\qquad
+ K=\frac{P^{1-\varepsilon}T+1}{4}.
+\]
+Then
+\[
+ \frac4P
+ =\frac1a+
+  \frac1{P^\varepsilon aK/u}+
+  \frac1{PK}.
+\]
+Middle-channel complementation
+\(\sigma(u)=a^2/u\) exchanges the last two denominators and has no fixed
+point.  The corrected selector theorem is the bijection
+\[
+ \mathcal E(P)\ \sqcup\
+ \bigl(\mathcal M(P)/\langle\sigma\rangle\bigr)
+ \xrightarrow{\ \sim\ }\mathscr S(P).
+\]
+The missing point in the supplied proof was that \(a_j\) remains the unique
+least denominator: if another denominator \(b<a_j\), then
+\(1/a_j+1/b>2/a_j\ge4/P\), contradicting positivity of the third summand.
+
+Writing \(v=a^2/u\) gives the positive rank-one matrix
+\[
+ \Gamma(a,u)=\begin{pmatrix}u&a\\a&v\end{pmatrix}.
+\]
+It has the unique primitive factorization
+\[
+ u=hr^2,\qquad a=hrs,\qquad v=hs^2,\qquad \gcd(r,s)=1,
+\]
+and the two selector congruences become
+\[
+ E_j:\ R_j\mid Pr+s,\qquad
+ M_j:\ R_j\mid r+s.
+\]
+Consequently the unresolved prime case of the Erd\H{o}s--Straus conjecture
+is equivalently the assertion that for every prime \(P\equiv1\pmod{12}\)
+there exist \(h,r,s>0\) with
+\[
+ \gcd(r,s)=1,\qquad
+ \frac P4<hrs<\frac P2,\qquad
+ R=4hrs-P,
+\qquad
+ R\mid Pr+s\ \ \text{or}\ \ R\mid r+s.
+\]
+This is an exact reformulation; it does not prove the required nonemptiness.
+
+The accompanying terminal matrix is also exact.  With
+\[
+ \ell_0=\frac{T+1}{4},\qquad \ell_1=u-jT,\qquad \ell_2=1,
+\]
+\[
+ \lambda=12\ell_0-4\ell_1-3\ell_2=P^\varepsilon,\qquad
+ \mathsf R=
+ \begin{pmatrix}3&-\ell_1\\4&1-4\ell_0\end{pmatrix},\qquad
+ \det\mathsf R=-P^\varepsilon,
+\]
+and \(\operatorname{SNF}(\mathsf R)=\operatorname{diag}(1,P^\varepsilon)\).
+The pair \((\Gamma,\mathsf R)\) is a faithful arithmetic certificate,
+whereas \(\mathsf R\) alone has explicit collisions.  For exterior states
+\(\lambda=+1\) and \(\det\mathsf R=-1\); the actual reconstructed
+\(S^6\) candidate uses
+\[
+ (\ell_0,\ell_1,\ell_2)=(0,1,-1),\qquad
+ \lambda=-1,\qquad \det\mathsf R=+1.
+\]
+No \(SL_2(\mathbb Z)\) row operation identifies these two oriented
+presentations, since it preserves the signed determinant.
+
+Finally,
+\[
+ G(t,m,b)=\begin{pmatrix}2t&2m\\2m&b/3\end{pmatrix},\qquad
+ (t,m,b)=\left(\frac u2,\frac a2,3v\right)
+\]
+gives \(G=\Gamma\) and
+\[
+ \det G=
+ \left(\frac{u+v}{2}\right)^2-a^2-
+ \left(\frac{u-v}{2}\right)^2=0.
+\]
+The inverse orthogonal Koide transform therefore produces a real Koide-null
+vector.  It lies in the positive three-coordinate chamber only when, for
+\(\theta_K=u/a=r/s\),
+\[
+ 0<\theta_K<\frac{\sqrt3-\sqrt2}{1+\sqrt2}
+ \quad\text{or}\quad
+ \frac{\sqrt3+\sqrt2}{1+\sqrt2}<\theta_K<1+\sqrt2.
+\]
+Most selector states are not automatically positive mass points.
+
+This coefficient correspondence lies on the discriminant of the ambient
+period-matrix space:
+\[
+ \det P_{\rm selector}=tb-6m^2=0,
+\]
+whereas a regular torus fibre requires
+\(\det P_T=-D_T\ne0\), with \(\det P_T\sim-T^2\) on the radial cusp.
+Thus the displayed arithmetic map cannot be a map to a regular fibre.
+Together with the signed terminal mismatch, this proves the exact current
+boundary: the arithmetic incidence and Koide/Lorentz identities are real,
+but they do not define a geometric morphism to the candidate threefold.
+The complete proofs and correction ledger are in
+\path{supporting_materials/workbench/research/} and the
+Erd\H{o}s--Straus bridge audit supplied with the workbench.
+
+The shared residue-lattice continuation supplies an additional exact
+count map, without altering these specific geometric boundaries.
+For $p\equiv1\pmod{24}$ prime and $R>0$, $R\equiv3\pmod4$, retain
+\[
+ a=(p+R)/4,\qquad g=\gcd(R,pa),\qquad R_0=R/g,\qquad N_0=pa/g.
+\]
+The complete divisor-to-ordered-pair bijection is
+\[
+ d\mid N_0^2,\quad d>0,\quad d\equiv-N_0\pmod{R_0}
+ \quad\longleftrightarrow\quad
+ (b,c)=\left(\frac{N_0+d}{R_0},\frac{N_0+N_0^2/d}{R_0}\right),
+\]
+where the target consists of all positive integer pairs with
+$4/p=1/a+1/b+1/c$, and the inverse is $d=R_0b-N_0$.
+The raw count $A_R(p)$ and unordered count satisfy
+$U_R(p)=(A_R(p)+\mathbf1_{R_0\mid2})/2$.
+For a finite set $P$ of primes reducing into $S_{840}=\langle289\rangle$,
+put $w_{R,P}(r)=\sum_{p\in P,\ p\equiv r\ (840)}A_R(p)$,
+$W_{R,P}=\sum_r w_{R,P}(r)e_r$, $M_{R,P}=\sum_r w_{R,P}(r)$,
+and $u=\sum_{r\in S_{840}}e_r$. The exact integral map is
+\[
+ Q_{R,P}=6W_{R,P}-M_{R,P}u\in A(S_{840})\subset N.
+\]
+The shared source's ``Inversion and an integral augmentation-valued
+count map'' theorem gives the full Fourier inverse with the fixed
+generator $289$. Both $R$ and the sample $P$ remain part of this map;
+it is neither a universal positivity proof nor a geometric map to $X$.
+
+\medskip\noindent
+\textit{Exact Koide-shell parametrization, hyperbolic realization, and the
+remaining analytic problem.}
+The arithmetic count isolated by the reconstruction is
+\[
+ R(X)=\#\left\{(a,q,n)\in\mathbb Z^3:
+ \begin{array}{c}
+ a^2-3q^2-18n^2=-2,\quad a>0,\ q,n\geq0,\\
+ a+4n>q,\quad 4a+17n\leq X
+ \end{array}\right\}.
+\]
+It now has a multiplicity-one integral parametrization.  Put
+\[
+ \mathcal O_K=\mathbb Z[\sqrt3],\qquad
+ \epsilon=2+\sqrt3,\qquad m_n=18n^2-2\quad(n\geq1).
+\]
+The ideals of norm $m_n$ are in bijection with
+\[
+ \mathcal P(m_n)=\{(C,D,E):C,D>0,\ C^2D=m_n,\ 0\leq E<D,
+                         \ E^2\equiv3\pmod D\}
+\]
+by
+\[
+ (C,D,E)\longmapsto C\bigl(D\mathbb Z+(E+\sqrt3)\mathbb Z\bigr).
+\]
+For every such triple there is one reduced generator
+\[
+ C(A+B\sqrt3),\qquad
+ A^2-3B^2=D,\quad A\equiv EB\pmod D,\quad A>2B\geq0,
+\]
+and all nonnegative-$q$ points in its orbit are obtained, exactly once, from
+\[
+ a_{n,C,D,E,k}+q_{n,C,D,E,k}\sqrt3
+   =C(A+B\sqrt3)\epsilon^k,\qquad k\geq0.
+\]
+The inverse is equally integral: form the HNF data of
+$(a+q\sqrt3)$, then apply
+\[
+ (a,q)\longmapsto(2a-3q,\,2q-a)
+\]
+while $a\leq2q$.  The number of steps is $k$, and the terminal pair is
+the unique reduced generator.  The omitted face is not hidden in this
+description: for $n=0$ the solutions are precisely
+\[
+ a_k+q_k\sqrt3=(1+\sqrt3)\epsilon^k,\qquad k\geq1.
+\]
+
+Writing
+\[
+ \rho(m)=\sum_{d\mid m}\left(\frac{12}{d}\right),
+\]
+the number of unit orbits at fixed $n\geq1$ is
+\[
+ \#\mathcal P(m_n)=\rho(m_n)
+ =\rho(3n-1)\rho(3n+1).
+\]
+The original sharp height is retained rather than replaced by a radial norm.
+For the reduced generator $\alpha_{n,\mathbf p}$, set
+\[
+ \tau_{n,\mathbf p}=
+ \frac{\log(\alpha_{n,\mathbf p}/\sqrt{m_n})}{\log\epsilon}\in[0,1),
+ \qquad Y_n(X)=\frac{X-17n}{4},
+\]
+\[
+ L_n(X)=\frac1{\log\epsilon}
+ \log\!\left(
+ \frac{Y_n(X)+\sqrt{Y_n(X)^2-m_n}}{\sqrt{m_n}}
+ \right),
+ \quad
+ \mathcal N(X)=\{n\geq1:Y_n(X)\geq\sqrt{m_n}\}.
+\]
+Then the endpoint-exact formula is
+\[
+ R(X)=R_0(X)+
+ \sum_{n\in\mathcal N(X)}\ \sum_{\mathbf p\in\mathcal P(m_n)}
+ \bigl(\lfloor L_n(X)-\tau_{n,\mathbf p}\rfloor+1\bigr),
+\]
+where $R_0(X)$ is the preceding $n=0$ Pell count.  Thus the strict
+chamber wall and every equality $4a+17n=X$ remain visible.  Fourier
+expansion of the phases gives unitary Hecke coefficients
+\[
+ S_\ell(m)=\sum_{N\mathfrak a=m}\xi_\ell(\mathfrak a),\qquad
+ S_\ell(18n^2-2)=(-1)^\ell S_\ell(3n-1)S_\ell(3n+1),
+\]
+so the unproved remainder is an explicit sharply truncated shifted
+correlation, rather than an unspecified equidistribution assumption.
+
+There is also an exact quaternionic realization.  In
+\[
+ B=(18,-6)_{\mathbb Q}
+ =\mathbb Q\langle I,J\rangle/(I^2-18,\ J^2+6,\ IJ+JI),
+\]
+the lattice
+\[
+ \mathcal O=\mathbb Z1\oplus
+ \mathbb Z\frac{I+J}{2}\oplus
+ \mathbb Z\frac{I-J}{2}\oplus\mathbb Z\frac{IJ}{2}
+\]
+is an order of reduced discriminant $108$, of index $18$ in a maximal
+overorder.  The algebra has discriminant $6$, ramifies exactly at $2$
+and $3$, and splits over $\mathbb R$.  The map
+\[
+ (a,q,n)\longmapsto
+ \gamma=2+\frac{qI+aJ+nIJ}{2}
+\]
+is a bijection from the parity-restricted ternary shell to the locus
+\[
+ \{\gamma\in\mathcal O:\operatorname{trd}(\gamma)=4,
+                           \ \operatorname{nrd}(\gamma)=1\}.
+\]
+Every image is primitive hyperbolic, has eigenvalues $2\pm\sqrt3$, and
+has translation length $2\log(2+\sqrt3)$.  Its centralizer order is
+\[
+ \mathcal O\cap\mathbb Q(\gamma)=
+ \mathbb Z[\gamma-2]\cong\mathbb Z[\sqrt3].
+\]
+The full shell is a finite union of conjugacy classes under
+$\Gamma=\mathcal O^1$, and $R(X)$ is exactly the sum over their left
+cosets by the centralizers subject to the same four chamber inequalities and
+the same height $4a+17n\leq X$.  No factor two is introduced on passing to
+$PSL_2(\mathbb R)$.
+
+This realization explains both what is now proved and what is still open.
+The standard radial Huber parameter is
+\[
+ X_i(\gamma)^2=1+\frac{(7a+15\sqrt2\,n)^2}{48},
+\]
+not the Koide height $4a+17n$.  The two heights are comparable but their
+sharp regions have a main-order symmetric difference, so a radial remainder
+does not transfer to the original count.  Benoist--Oh's effective theorem
+does apply directly to the literal five-wall sector and proves, for some
+$\eta>0$,
+\[
+ R(X)=C_0X+O(X^{1-\eta}),\qquad
+ C_0=\frac9{2\pi^2}\log(2+\sqrt3)
+                 \log\!\left(\frac3{2\sqrt2}\right).
+\]
+The strongest audited nearby pointwise sharp radial theorem has exponent
+$2/3$; the smooth radial spectral estimate has exponent $39/64$, but
+neither theorem has the target sector and height.  Therefore
+\[
+ R(X)-C_0X=O_\varepsilon(X^{1/2+\varepsilon})
+\]
+remains \textbf{OPEN}, not a polite substitute for a theorem: its exact
+missing object is the displayed sharp shifted Hecke correlation, including
+all endpoint and exceptional-spectrum terms.
+
+The exact census independently verifies every point through $X=10^8$:
+\[
+ R(10^8)=3{,}536{,}002.
+\]
+For integer $10^4\leq X\leq10^8$, the largest observed value of
+$|R(X)-C_0X|/\sqrt X$ is
+$0.1714001928088145\ldots$, attained at $X=867{,}240$; this is finite
+evidence for the open estimate, not its proof.  These arithmetic and
+hyperbolic results do not by themselves identify the counted triples with
+physical lepton masses or a quantum-field-theoretic spectrum.  They instead
+give the exact morphisms and analytic target that any such identification
+must respect.
+
+\end{document}

@@ -1,0 +1,948 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{enumitem}
+\usepackage[a4paper,margin=32mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\renewcommand{\P}{\mathbb P}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\Sing}{\operatorname{Sing}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\id}{\operatorname{id}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\title[An independent test family]{The Singular-Fibre Vanishing Step: An Independent Audit and Proper Test Family}
+\author{Human author to be supplied}
+\date{1 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+We isolate an endpoint implication that is not justified by the displayed
+sheaf sequence in the singular-fibre argument of CDP20 (p.~692).
+Levent Alp{\"o}ge's supplied source
+manuscript already states and proves, for its proposed fibre, a
+conductor-supported differential and uses it to challenge that reduction
+\cite[Sec.~10.2, Lemma~10.3, source PDF pp.~87--88]{S6Source}; we neither
+claim that candidate-specific observation nor repeat its $S^6$ construction.
+The independent calculation here is a proper
+test family.
+For a reduced effective
+Cartier divisor $S$ in a smooth complex threefold $X$, the conormal sequence
+has to be filtered through the torsion subsheaf of $\Omega^1_S$.  We prove
+that, after the two endpoint vanishings used in CDP20, the ambient section
+space is the kernel of an explicit connecting homomorphism
+\[
+\delta_A:H^0(S,\mathscr T_S\otimes A)\longrightarrow
+H^1(S,N^*_{S/X}\otimes A),
+\]
+not automatically zero.  We then give a proper one-parameter morphism over a
+disc with smooth total space whose central fibre is a nodal cubic times
+$\P^1$.  A
+non-torsion gluing line bundle on that fibre has both endpoint groups zero,
+while the ambient twisted cotangent space is nonzero.  Thus the formal
+  three-sheaf implication used at p.~692 of CDP20, if read for an arbitrary
+  fibre line bundle, is not a formal consequence of the displayed sequence
+  without a hypothesis controlling the resulting connecting map; extendability of a
+  line bundle alone is not such a control.  The example can in fact be chosen
+  with an extending line bundle on the displayed local total space, but it
+  does not satisfy the compact global hypotheses of CDP20 Theorem~2.2 and does
+  not claim a
+counterexample to that theorem.  We also give a derived reformulation of the
+surviving CDP20 criterion: one twist with $H^2(X,T_X\otimes L_0)=0$ is enough
+to recover the
+generic vanishing and $c_3\leq0$ conclusions, without using the defective
+endpoint reduction.  Finally, on the bare local models used by the proposed
+construction, we compute the ordinary relative one-form module: it is
+torsion-free but non-locally-free at a crossing, whereas a multiplicity-$m$
+  smooth cyclic chart has torsion exactly $R/(s^{m-1})\,ds$.  This is a local correction
+for $p=1$, not a global assertion about the proposed threefold.  The
+  split-extension coinvariant calculation already appears in the source
+  manuscript (Sec.~10.5, Lemma~10.7, source PDF pp.~90--91) and is deliberately
+  not repeated here.
+\end{abstract}
+
+\maketitle
+
+\section{Purpose and precise scope}
+
+Campana, Demailly, and Peternell prove a vanishing theorem for compact
+complex threefolds with vanishing first and second integral cohomology and
+algebraic dimension one \cite{CDP2020}.  In the singular-fibre part of their
+proof they write, for an irreducible reduced fibre $S$, the conormal sequence
+and reduce the desired vanishing to
+\[
+ H^0(S,\widetilde\Omega^1_S\otimes L|_S)=0,
+ \qquad
+ \widetilde\Omega^1_S:=\Omega^1_S/\text{torsion}.
+ \tag{1.1}
+\]
+The purpose of this note is narrowly defined: we make the omitted connecting
+map explicit, give a proper geometric example showing that the two endpoint
+vanishings are not by themselves sufficient, and record a derived global
+criterion that isolates the extra vanishing needed by the intact part of the
+CDP strategy.  The earlier version of this strategy is the 1998 paper
+\cite{CDP1998}; the present note addresses the singular-fibre reduction in the
+  later paper.  Levent Alp{\"o}ge's source manuscript, Section~10, gives the corresponding
+  candidate-specific normalization--conductor argument (Sec.~10.2,
+  Lemma~10.3, source PDF pp.~87--88; the public audit deposit is
+  \cite{S6AuditArchive}); the filtration and conductor descent are recalled
+  here only to state an independent test precisely.  No priority is claimed
+  for them.  We do not infer
+that CDP20 Theorem~2.2 is
+false, nor do we use the example to assert the existence of a complex
+structure on $S^6$.
+
+All sheaves below are holomorphic sheaves.  If $S$ is reduced, let
+$j:S_{\rm reg}\hookrightarrow S$ be the inclusion of the smooth locus and
+put
+\[
+ \mathscr T_S:=\ker\bigl(\Omega^1_S\longrightarrow
+ j_*\Omega^1_{S_{\rm reg}}\bigr),
+ \qquad
+ \widetilde\Omega^1_S:=\Omega^1_S/\mathscr T_S.
+ \tag{1.2}
+\]
+For the reduced Cartier divisors used below, $\mathscr T_S$ is precisely the
+torsion subsheaf of $\Omega^1_S$.
+
+\begin{lemma}[identification of the torsion subsheaf]
+\label{lem:torsion-identification}
+If $S$ is a reduced effective Cartier divisor in a smooth complex manifold,
+then
+\[
+\ker\bigl(\Omega^1_S\longrightarrow j_*\Omega^1_{S_{\rm reg}}\bigr)
+  =\operatorname{Tor}(\Omega^1_S).
+\]
+\end{lemma}
+
+\begin{proof}
+Every irreducible component of a reduced hypersurface is generically smooth,
+so $S_{\rm reg}$ is dense and its complement is a proper analytic subset.
+If a local section of $\Omega^1_S$ vanishes on $S_{\rm reg}$, its support avoids
+all minimal primes of the reduced local ring.  Prime avoidance therefore gives
+an element of its annihilator outside every minimal prime; that element is a
+nonzerodivisor, so the section is torsion.  Conversely,
+$\Omega^1_S|_{S_{\rm reg}}$ is locally free, hence has no torsion, and every
+torsion section restricts to zero there.
+\end{proof}
+
+\section{The exact cotangent filtration}
+
+Let $i:S\hookrightarrow X$ be a reduced effective Cartier divisor in a
+smooth complex threefold.  Write
+\[
+ N^*_{S/X}:=\mathcal I_S/\mathcal I_S^2,
+ \qquad
+ \Omega^1_X|_S:=i^*\Omega^1_X.
+\]
+
+\begin{lemma}[left exactness of the conormal sequence]
+\label{lem:conormal}
+There is a short exact sequence
+\[
+0\longrightarrow N^*_{S/X}\longrightarrow \Omega^1_X|_S
+\xrightarrow{\rho_0}\Omega^1_S\longrightarrow0.
+\tag{2.1}
+\]
+\end{lemma}
+
+\begin{proof}
+Right exactness is the conormal sequence for a closed immersion.  We check
+the left end.  Work at a point of $S$ and let $R$ be the regular local ring
+of $X$, with reduced local equation $g$ for $S$.  The map at the left is
+\[
+ R/(g)\longrightarrow (\Omega^1_R/g\Omega^1_R),
+ \qquad \bar h\longmapsto h\,dg.
+ \tag{2.2}
+\]
+Let $\mathfrak p$ be a minimal prime of $(g)$.  Since $R$ is regular and
+has characteristic zero, the height-one local ring $R_{\mathfrak p}$ is a
+discrete valuation ring.  Reducedness of $(g)$ gives
+$\operatorname{ord}_{\mathfrak p}(g)=1$, so $g$ is a unit times a
+uniformizer there; in characteristic zero the differential of that
+uniformizer is nonzero modulo $\mathfrak p$.  Hence $dg$ is nonzero in
+$\Omega^1_{R_{\mathfrak p}}\otimes k(\mathfrak p)$, so (2.2) sends $\bar h$
+to zero only if $h\in\mathfrak p$.  This holds for every minimal prime.
+Because $R/(g)$ is reduced, the intersection of its minimal primes is zero;
+therefore $\bar h=0$.  Thus (2.1) is exact.
+\end{proof}
+
+Define the inverse-image sheaf
+\[
+ \mathscr K_S:=\ker\bigl(\Omega^1_X|_S\xrightarrow{\rho_0}
+ \Omega^1_S\longrightarrow\widetilde\Omega^1_S\bigr).
+ \tag{2.3}
+\]
+
+\begin{proposition}[the missing filtration]
+\label{prop:filtration}
+There are natural short exact sequences
+\[
+0\longrightarrow N^*_{S/X}\longrightarrow\mathscr K_S
+\longrightarrow\mathscr T_S\longrightarrow0,
+\tag{2.4}
+\]
+\[
+0\longrightarrow\mathscr K_S\longrightarrow\Omega^1_X|_S
+\longrightarrow\widetilde\Omega^1_S\longrightarrow0.
+\tag{2.5}
+\]
+\end{proposition}
+
+\begin{proof}
+By definition, $\mathscr K_S$ is the inverse image of $\mathscr T_S$ under
+the surjection $\rho_0$ in (2.1).  Restricting $\rho_0$ to this inverse
+image gives a surjection $\mathscr K_S\twoheadrightarrow\mathscr T_S$;
+its kernel is $N^*_{S/X}$ by (2.1).  This proves (2.4).  The quotient map
+in (2.5) is surjective because $\rho_0$ is surjective and
+$\Omega^1_S\twoheadrightarrow\widetilde\Omega^1_S$ is the quotient by
+$\mathscr T_S$.
+\end{proof}
+
+\begin{proposition}[exact global-section criterion]
+\label{prop:criterion}
+Let $A$ be a line bundle on $S$.  If
+\[
+ H^0(S,\widetilde\Omega^1_S\otimes A)=0,
+ \tag{2.6}
+\]
+then the inclusion in (2.5) induces an isomorphism
+\[
+ H^0(S,\Omega^1_X|_S\otimes A)
+ \simeq H^0(S,\mathscr K_S\otimes A).
+ \tag{2.7}
+\]
+If in addition
+\[
+ H^0(S,N^*_{S/X}\otimes A)=0,
+ \tag{2.8}
+\]
+then there is a canonical isomorphism
+\[
+ H^0(S,\Omega^1_X|_S\otimes A)
+ \simeq \ker\!\left(
+ H^0(S,\mathscr T_S\otimes A)
+ \xrightarrow{\;\delta_A\;}
+ H^1(S,N^*_{S/X}\otimes A)
+ \right),
+ \tag{2.9}
+\]
+where $\delta_A$ is the connecting map of (2.4) tensored by $A$.
+Consequently, under (2.6) and (2.8), the ambient group vanishes if and only
+if $\delta_A$ is injective.
+\end{proposition}
+
+\begin{proof}
+Tensor (2.5) by the locally free sheaf $A$ and take global sections.  If
+(2.6) holds, the long exact sequence gives (2.7).  Tensor (2.4) by $A$ and
+take its first four terms.  Condition (2.8) identifies the middle global
+sections with the kernel of the connecting map.  Combining the two
+identifications gives (2.9).
+\end{proof}
+
+\begin{remark}
+The map $\delta_A$ is not an auxiliary hypothesis introduced for
+terminological convenience: it is the exact obstruction to lifting a torsion
+section of $\Omega^1_S\otimes A$ through the conormal extension.  In
+\v{C}ech terms, choose local lifts of a section to
+$\mathscr K_S\otimes A$; their pairwise differences are sections of
+$N^*_{S/X}\otimes A$ and represent $\delta_A$.  The two endpoint groups in
+(2.6) and (2.8) contain no information about this obstruction.
+\end{remark}
+
+\section{A conductor-supported section}
+
+The normalization--conductor mechanism in this section is a self-contained
+restatement (and slight sheaf-theoretic generalization) of the source
+manuscript's Lemma~10.3; it is included so that the independent test family
+can be checked without importing an unprinted step, and no priority is
+claimed for it.  We use it to produce a nonzero element of the kernel in
+(2.9).  Write
+\(\theta_g:=i^*(dg)\in H^0(S,\Omega^1_X|_S)\).  Whenever we write
+$dg|_S$ below it means this ambient restriction $i^*(dg)$, not the intrinsic
+differential $d(g|_S)=0$ of the constant function on the fibre.  Suppose
+$g:X\to\Delta$ is a holomorphic map from a smooth complex threefold to a
+disc, $S=g^{-1}(0)$ is reduced, and, writing $D=\Sing(S)$, every point of
+$D$ has a normal-crossing (self-crossing) map-germ model: in local coordinates
+$(u,v,w)$, $g=h\,uv$ with $h$ a holomorphic unit.  After replacing $u$ by
+$hu$, we use the equivalent model
+\[
+ (X,g,S)\simeq\bigl(\C^3,uv,\{uv=0\}\bigr).
+ \tag{3.1}
+\]
+At points of $S\setminus D$ use the smooth model $(\C^3,\{u=0\})$.
+Let $\eta:\widetilde S\to S$ be the normalization.
+For the application below, $D$ is smooth and $\eta^{-1}(D)$ is the disjoint
+union of two copies of $D$.
+
+\begin{lemma}[normalization--conductor sequence]
+\label{lem:conductor}
+In the situation above there is an exact sequence
+\[
+0\longrightarrow\cO_S\longrightarrow
+ \eta_*\cO_{\widetilde S}\oplus\cO_D
+\longrightarrow\eta_*\cO_{\eta^{-1}(D)}\longrightarrow0,
+\tag{3.2}
+\]
+where the maps are
+\[
+h\longmapsto(\eta^*h,h|_D),\qquad
+(\widetilde h,k)\longmapsto\widetilde h|_{\eta^{-1}(D)}-\eta^*k.
+\]
+\end{lemma}
+
+\begin{proof}
+The assertion is local.  At a point of $D$ the local ring of $S$ is
+\(R=\C\{u,v,w\}/(uv)\).  Its normalization is
+\(\C\{u,w\}\oplus\C\{v,w\}\), the conductor is the $w$-axis, and the
+last term in (3.2) is two copies of $\C\{w\}$.  The resulting map is
+\[
+ (a(u,w),b(v,w),c(w))\longmapsto
+ (a(0,w)-c(w),b(0,w)-c(w)).
+ \tag{3.3}
+\]
+Its kernel consists exactly of pairs obtained by restricting a function on
+the union $uv=0$; for example, a kernel element is represented by
+$a(u,w)+b(v,w)-c(w)$.  Surjectivity follows by taking $a$ and $b$ to be
+the two prescribed functions and $c=0$.  Away from $D$ the normalization is
+an isomorphism, so these local calculations prove exactness.
+\end{proof}
+
+\begin{proposition}[conductor differential]
+\label{prop:conductor-differential}
+Let $A$ be a line bundle on $S$ such that $\eta^*A\simeq\cO_{\widetilde S}$,
+and choose a nowhere-vanishing trivializing section $e$ of $\eta^*A$.
+Put $E=\Omega^1_X|_S\otimes A$.  Assume that $\eta^*\theta_g$ restricts to
+zero on $\eta^{-1}(D)$.  Then there is a unique section
+\[
+ 0\ne s\in H^0(S,\Omega^1_X|_S\otimes A)
+ \tag{3.4}
+\]
+whose image in the normalization term of (3.2), namely
+$\eta_*(\eta^*E)\oplus E|_D$, is
+\[
+  \bigl(\eta^*\theta_g\otimes e,\,0\bigr).
+ \tag{3.5}
+\]
+The image of $s$ in $\Omega^1_S\otimes A$ is supported on $D$, hence is a
+torsion section and maps to zero in $\widetilde\Omega^1_S\otimes A$.
+\end{proposition}
+
+\begin{proof}
+Tensor (3.2) by the locally free sheaf
+$E=\Omega^1_X|_S\otimes A$.  Finiteness of $\eta$ and the projection formula
+identify the first and third terms with $E$ and
+$\eta_*(\eta^*E|_{\eta^{-1}(D)})$.  The two components in (3.5) have the
+same restriction to $\eta^{-1}(D)$ because the first one is zero there.
+Exactness therefore gives a unique section $s$.
+
+On $S\setminus D$, the normalization is an isomorphism and $s$ is
+$dg|_S\otimes e$.  Since $g$ is a submersion along the smooth fibre, this is
+nonzero on a dense open set, so $s\ne0$.  Its intrinsic image vanishes on
+$S\setminus D$ because $g$ is constant on $S$ there.  To see explicitly that
+this makes the image torsion, work at a point $x\in S$.  The support of the
+germ is contained in the proper closed set $D$; hence, for the finitely
+generated module generated by the germ, a power of the ideal of $D$ kills it.
+Because $S$ is reduced and no irreducible component of $S$ is contained in
+$D$, prime avoidance supplies an element of that ideal outside every minimal
+prime of $\mathcal O_{S,x}$.  A suitable power is therefore a non-zero-divisor
+annihilating the germ.  The image is torsion and is killed in the quotient by
+$\mathscr T_S$.
+\end{proof}
+
+\begin{corollary}
+\label{cor:normal-crossing-kernel}
+If, in addition, $H^0(S,N^*_{S/X}\otimes A)=0$ and
+$H^0(S,\widetilde\Omega^1_S\otimes A)=0$, then the section in
+Proposition~\ref{prop:conductor-differential} proves that $\delta_A$ in
+(2.9) is not injective.
+\end{corollary}
+
+\begin{proof}
+The section is nonzero and maps to zero in the quotient
+$\widetilde\Omega^1_S=\Omega^1_S/\mathscr T_S$, so it
+lies in the left-hand side of (2.9).  Proposition~\ref{prop:criterion}
+identifies that group with $\ker\delta_A$, which is therefore nonzero.
+\end{proof}
+
+\section{The proper nodal-cubic test family}
+
+We now instantiate the preceding mechanism in an explicit proper family.
+Let $\Delta$ be a sufficiently small disc with coordinate $t$, and define
+\[
+ \mathscr C=
+ \left\{([x:y:z],t)\in\P^2\times\Delta:
+ y^2z=x^2(x+z)+tz^3\right\}.
+ \tag{4.1}
+\]
+Let $g:\mathcal X\to\Delta$ be the projection from
+$\mathcal X=\mathscr C\times\P^1$, and put
+\[
+ C_0=\mathscr C\cap\{t=0\},\qquad S=C_0\times\P^1=g^{-1}(0).
+ \tag{4.2}
+\]
+
+\begin{proposition}[geometry of the family]
+\label{prop:family-geometry}
+The projection $g$ is proper, $\mathcal X$ is a smooth complex threefold,
+  and $S$ is a reduced irreducible normal-crossing (self-crossing) surface whose normalization
+is $\P^1\times\P^1$.  Its singular locus is
+\(D=\{[0:0:1]\}\times\P^1\), and locally along $D$ the pair $(\mathcal X,S)$
+has the model (3.1); away from $D$ the fibre is smooth and has the usual
+local model $(\C^3,\{u=0\})$.
+\end{proposition}
+
+\begin{proof}
+Properness follows because $\mathscr C$ is closed in the projective
+projection $\P^2\times\Delta\to\Delta$.  Write the defining equation as
+\[
+ F=y^2z-x^2(x+z)-tz^3.
+\]
+On the chart $z\ne0$, $\partial F/\partial t=-z^3\ne0$, so $\mathscr C$
+is smooth there.  On $z=0$, the equation forces $x=0$ and $y\ne0$; at such
+points $\partial F/\partial z=y^2\ne0$.  Hence $\mathscr C$, and therefore
+$\mathcal X$, is smooth.  The only finite discriminant values of the fibres
+are $t=0$ and $t=-4/27$; after shrinking $\Delta$ to $|t|<4/27$, every
+noncentral fibre is smooth.
+
+The central curve is
+\(C_0:\ y^2z=x^2(x+z)\).  Its only singular point is
+\(n=[0:0:1]\): on $z=1$ the equations $F=F_x=F_y=0$ give $(x,y)=(0,0)$,
+and the point at infinity $[0:1:0]$ is smooth because $F_z=1$ there
+(Euler's identity also gives the remaining projective singularity equation).
+The parametrization
+\[
+ \nu:\P^1\longrightarrow C_0,\qquad
+ [u:v]\longmapsto
+ [(u^2-v^2)v:\,u(u^2-v^2):\,v^3]
+ \tag{4.3}
+\]
+maps the two points $p=[1:1]$, $q=[-1:1]$ to $n$.  On the chart $v\ne0$, set
+$r=u/v$; after scaling, its image is
+$[r^2-1:r(r^2-1):1]$.  Conversely, for an affine point of $C_0$ with
+$x\ne0$, the equation gives $r=y/x$ and $x=r^2-1$, so it is hit by
+$[r:1]$.  The only affine point with $x=0$ is the node $(0,0)$, hit by
+$[1:1]$ and $[-1:1]$, and the point at infinity $[0:1:0]$ is hit by
+$[1:0]$.  Thus $\nu(\P^1)=C_0$; as a nonconstant morphism to a projective
+curve it is finite and generically one-to-one, hence the normalization.  In
+particular $C_0$ is irreducible and rational.  The product normalization
+is $\eta=\nu\times\id_{\P^1}:\P^1\times\P^1\to S$.
+
+At $n$ the affine equation is
+\(t=y^2-x^2-x^3\).  On a sufficiently small neighbourhood choose the
+holomorphic square root $h(x)=\sqrt{1+x}$ and set
+\(u=y-xh(x)\), \(v=y+xh(x)\).  Then $uv=t$, and the map
+$(x,y)\mapsto(u,v)$ has invertible $2\times2$ Jacobian at $(0,0)$, so $u,v$
+are local coordinates on the surface $\mathscr C$.  If $s$ is a local
+coordinate on $\P^1$, then $(u,v,s)$ are coordinates on $\mathcal X$ and
+$t=uv$.  Hence the pair has the asserted normal-crossing (self-crossing)
+local model, with singular locus $D$ as stated.
+\end{proof}
+
+\begin{lemma}[the non-torsion gluing bundle]
+\label{lem:gluing-bundle}
+Fix $\lambda\in\C^*$ that is not a root of unity.  Gluing the trivial line
+bundle on $\P^1$ at $p$ and $q$ by the scalar $\lambda$ defines a line bundle
+\(A_\lambda\in\Pic(C_0)\) with
+\[
+ \nu^*A_\lambda\simeq\cO_{\P^1},\qquad
+ H^0(C_0,A_\lambda)=0,\qquad
+ A_\lambda^{\otimes m}\not\simeq\cO_{C_0}\quad(m\ge1).
+ \tag{4.4}
+\]
+\end{lemma}
+
+\begin{proof}
+For a nodal curve, a line bundle with trivial pullback to the normalization
+is obtained by identifying the two fibres over the branches of the node.
+Use the identification whose scalar is $\lambda$.  A global section pulls
+back to a constant $c$ on the projective line and must satisfy
+$c=\lambda c$; since $\lambda\ne1$, $c=0$.  The $m$th tensor power has
+gluing scalar $\lambda^m$, which is never $1$ because $\lambda$ is not a
+root of unity.  This proves (4.4).
+\end{proof}
+
+\begin{lemma}[an extending choice of gluing bundle]
+\label{lem:extending-gluing}
+After shrinking $\Delta$, the sections
+\[
+ O(t)=[0:1:0],\qquad
+ P(t)=[3:\sqrt{36+t}:1]
+\tag{4.5a}
+\]
+of $\mathscr C\to\Delta$ are disjoint and holomorphic.  If
+$B=\cO_{\mathscr C}(P-O)$, then the line bundle
+$\widetilde A=\operatorname{pr}_1^*B$ on $\mathcal X=\mathscr C\times\P^1$
+restricts to $\operatorname{pr}_1^*A_{\lambda}$ on $S$ for
+$\lambda=1/3$ (or its inverse, according to the gluing convention).  In
+particular, the non-torsion bundle used in Theorem~\ref{thm:nodal-test} can
+be chosen to extend to the displayed smooth total space.
+\end{lemma}
+
+\begin{proof}
+The equation of $\mathscr C$ is satisfied by both sections; the square root
+is holomorphic for $|t|$ small, and the two sections are disjoint because
+$O$ has $z=0$ whereas $P$ has $z=1$.  On the normalization of $C_0$, write
+$r=u/v$.  Then $O(0)$ corresponds to $r=\infty$, $P(0)$ to $r=2$, and the
+two branches over the node correspond to $r=1$ and $r=-1$.  Hence
+\[
+ \nu^*(B|_{C_0})\simeq\cO_{\P^1}([2]-[\infty]).
+\]
+The rational function $f(r)=r-2$ has precisely this divisor and trivializes
+the pullback.  Its values at the two branches are $f(1)=-1$ and
+$f(-1)=-3$, so the induced gluing multiplier is $f(1)/f(-1)=1/3$,
+up to inversion.  This is not a root of unity, and the lemma follows from
+the gluing description in Lemma~\ref{lem:gluing-bundle}.
+\end{proof}
+
+\begin{theorem}[failure of the printed endpoint implication]
+\label{thm:nodal-test}
+Let $A=\operatorname{pr}_1^*A_\lambda$ on
+$S=C_0\times\P^1$, with $\lambda$ as in Lemma~\ref{lem:gluing-bundle}.
+Then
+\[
+ H^0(S,N^*_{S/\mathcal X}\otimes A)=0,
+ \qquad
+ H^0(S,\widetilde\Omega^1_S\otimes A)=0,
+ \tag{4.5}
+\]
+but
+\[
+ H^0(S,\Omega^1_{\mathcal X}|_S\otimes A)\ne0.
+ \tag{4.6}
+\]
+In particular, the two endpoint vanishings in (4.5) do not imply the
+vanishing of (4.6), even for a proper morphism over a disc with smooth total
+space and an irreducible reduced normal-crossing (self-crossing) central
+fibre.
+\end{theorem}
+
+\begin{proof}
+Because $S$ is the principal fibre $(t=0)$, its conormal line is trivial:
+\(N^*_{S/\mathcal X}\simeq\cO_S\).  The projection
+\(\operatorname{pr}_1:S\to C_0\) has
+\(\operatorname{pr}_{1*}\cO_S\simeq\cO_{C_0}\), so (4.4) gives
+\[
+ H^0(S,A)\simeq H^0(C_0,A_\lambda)=0.
+ \tag{4.7}
+\]
+This proves the first vanishing in (4.5).
+
+We next check the second.  At a normal-crossing (self-crossing) point with local equation
+\(uv=0\), the pullback map
+\(\Omega^1_S\to\eta_*\Omega^1_{\widetilde S}\) has kernel exactly
+\(\mathscr T_S\).  Indeed, in
+\(R=\C\{u,v,w\}/(uv)\) the relation is
+\(v\,du+u\,dv=0\).  If
+\(a\,du+b\,dv+c\,dw\) restricts to zero on both branches, then
+\(a\in(v)\), \(b\in(u)\), and
+\(c\in(u)\cap(v)=(uv)=0\).  Modulo the relation the class is therefore a
+multiple of $\tau=v\,du=-u\,dv$.  This class is nonzero: if
+\(v\,du=h(v\,du+u\,dv)\), then coefficient comparison gives
+  \((1-h)v=0\) and $hu=0$.  Since
+\(\operatorname{Ann}_R(v)=(u)\) and \(\operatorname{Ann}_R(u)=(v)\),
+\(1-h\in(u)\) and \(h\in(v)\), which would imply
+\(1=(1-h)+h\in(u)+(v)\), impossible because $(u)+(v)$ is proper.
+Moreover $(u+v)\tau=0$.  Since $u+v$ is a non-zero-divisor in
+$R$ (the associated primes are $(u)$ and $(v)$), $\tau$ is genuine
+torsion.
+Conversely, each summand of the normalization module is a module over one of
+the domains $R/(u)$ and $R/(v)$.  A non-zero-divisor of the reduced ring $R$
+avoids both minimal primes and therefore acts injectively on both summands;
+the target is torsion-free.  Thus the kernel of the normalization map is
+exactly the torsion subsheaf, and there is an injection
+\[
+ \widetilde\Omega^1_S\hookrightarrow\eta_*\Omega^1_{\P^1\times\P^1}.
+ \tag{4.8}
+\]
+Since $\eta^*A\simeq\cO_{\P^1\times\P^1}$, the projection formula and (4.8)
+give
+\[
+ H^0(S,\widetilde\Omega^1_S\otimes A)
+ \hookrightarrow
+ H^0(\P^1\times\P^1,\Omega^1_{\P^1\times\P^1})=0.
+ \tag{4.9}
+\]
+The last equality follows from
+\(\Omega^1_{\P^1\times\P^1}\simeq
+\operatorname{pr}_1^*\Omega^1_{\P^1}\oplus
+\operatorname{pr}_2^*\Omega^1_{\P^1}\) and
+\(H^0(\P^1,\Omega^1_{\P^1})=0\).
+
+Finally, along the conductor $D$ the pullback of $dg|_S$ is zero.  Locally
+$g=h\,uv$ with $h$ a unit, so after restriction to $S$ one has
+$i^*(dg)=h(v\,du+u\,dv)$; both coefficients vanish on the preimage of $D$.
+Proposition~\ref{prop:conductor-differential}
+therefore gives a nonzero section in (4.6).  This proves the theorem.
+\end{proof}
+
+\begin{remark}[what the theorem does and does not refute]
+\label{rem:scope}
+The bundle $A$ is non-torsion on $S$: restriction to
+\(C_0\times\{r\}\) would otherwise make $A_\lambda$ torsion.  Thus the
+example meets the non-torsion condition attached to the p.~692 reduction.
+In fact Lemma~\ref{lem:extending-gluing} gives an extending choice of $A$ on
+the displayed smooth total space.  If $\widetilde L:=\omega_{\mathcal X}\otimes
+\widetilde A^{-1}$, then
+$(\widetilde L^\vee\otimes\omega_{\mathcal X})|_S\simeq A$, so the example
+also has the Serre-dual twist appearing in the CDP argument.  This family
+nevertheless does not have
+the global topological and algebraic-dimension hypotheses of CDP20
+Theorem~2.2.  The conclusion is exactly the formal one stated in
+Theorem~\ref{thm:nodal-test}: the two displayed endpoint vanishings do not
+control the torsion-supported lifting obstruction $\delta_A$.
+\end{remark}
+
+\section{The corrected reading of the CDP step}
+
+The published paper states at p.~692 that, for an irreducible reduced fibre,
+the conormal sequence makes it sufficient (when the restriction of the line
+bundle is non-torsion) to prove the quotient vanishing (1.1)
+\cite{CDP2020}.  Propositions~\ref{prop:filtration} and
+\ref{prop:criterion} give the exact replacement:
+\[
+\begin{gathered}
+ H^0(S,\widetilde\Omega^1_S\otimes A)=0,
+ \quad H^0(S,N^*_{S/X}\otimes A)=0,\\[-2pt]
+ \Longrightarrow\quad
+ H^0(S,\Omega^1_X|_S\otimes A)=\ker\delta_A.
+\end{gathered}
+\tag{5.1}
+\]
+The missing assertion is therefore not another endpoint vanishing but the
+injectivity of the explicitly defined map $\delta_A$.  For a reducible
+reduced fibre the same formula must be applied to the whole Cartier fibre,
+not separately to its components.  For a nonreduced fibre there are further
+nilpotent layers, and (5.1) is not a complete analysis of that case.
+
+The test family above is a counterexample to the unrestricted three-sheaf
+implication for an arbitrary fibre line bundle $A$, not to CDP20
+Theorem~2.2 or to its singular-fibre proposition under its full hypotheses.
+Even though $A$ extends over this local total space, the family is not a
+compact CDP threefold; whether the global hypotheses force a different
+argument to make $\delta_A$ injective remains a separate question.
+
+\subsection{A derived global criterion that survives the correction}
+
+For completeness, we record a derived reformulation of the part of the CDP
+strategy that does not use the defective endpoint reduction
+\cite[Prop.~2.4]{CDP2020}.  The following generic-vanishing lemma is
+elementary but useful in isolating the exact extra hypothesis; no priority is
+claimed for this reformulation.
+
+\begin{lemma}[generic endpoint vanishing]
+\label{lem:generic-endpoints}
+Let $Y$ be a connected compact complex manifold of dimension $n$, let $D$ be
+a nonzero effective Cartier divisor with $\cO_Y(D)\in\Pic^0(Y)$, and let
+$B$ be a holomorphic vector bundle.  Let $\mathcal P\subset\Pic^0(Y)$ be a
+connected irreducible reduced complex analytic parameter space carrying a
+Poincar\'e line bundle on $Y\times\mathcal P$.  Assume that dualization
+preserves $\mathcal P$, and suppose it
+  contains points $P_0=\cO_Y(-mD)$ and $Q_0=\cO_Y(-\ell D)$ for some
+  $m,\ell\ge1$ with
+  $H^0(Y,B\otimes P_0)=0$ and
+  $H^0(Y,B^\vee\otimes\omega_Y\otimes Q_0)=0$ (the stabilization argument
+  supplies such exponents whenever the corresponding twists lie in
+  $\mathcal P$).  Then there is a dense open subset
+$U\subset\mathcal P$ such that, for every $P'\in U$,
+\[
+ H^0(Y,B\otimes P')=H^n(Y,B\otimes P')=0.
+ \tag{5.2}
+\]
+\end{lemma}
+
+\begin{proof}
+Put
+  \(V_k=H^0(Y,B\otimes\cO_Y(-kD))\), viewed inside $H^0(Y,B)$, and note
+  that $V_{k+1}\subseteq V_k$.  The descending chain stabilizes.  If $s$ is
+  in its stable value, then at a point of $D$ choose a local defining
+  nonzerodivisor $g_D$ for the Cartier divisor and a local frame of $B$.
+  Every coefficient of the germ of $s$ is divisible by $g_D^k$ for every
+  $k$.  The Krull-intersection theorem in the regular local ring
+  $\cO_{Y,y}$ gives $\bigcap_{k\ge1}g_D^k\cO_{Y,y}=0$, so the germ is zero at
+  every point of $D$.  Hence $s$ vanishes on a nonempty open set and, by
+  connectedness, on $Y$.  Thus $V_k=0$ for all sufficiently large $k$.
+
+  The chosen point $P_0$ satisfies
+  $H^0(Y,B\otimes P_0)=0$.  The Poincar\'e bundle gives, locally on
+$\mathcal P$, a family to which Grauert's theorem applies; the local jump
+  loci $\{P':h^0(Y,B\otimes P')\ge1\}$ glue to a closed analytic subset of
+  $\mathcal P$ (Grauert's theorem; see \cite{GrRe,BaSt}).  It is proper because it misses $P_0$, and irreducibility of
+$\mathcal P$ makes its complement dense open.  Applying the same stabilization
+argument to $B^\vee\otimes\omega_Y$ and using the chosen point $Q_0$ gives
+$H^0(Y,B^\vee\otimes\omega_Y\otimes Q_0)=0$; dualization stability puts
+$Q_0^\vee$ in $\mathcal P$.  Serre duality then gives
+$H^n(Y,B\otimes Q_0^\vee)=0$.  The corresponding top-degree jump locus is
+therefore also proper with dense open complement.  Intersecting the two
+dense open complements proves the claim.
+\end{proof}
+
+\begin{theorem}[derived global CDP criterion]
+\label{thm:corrected-global}
+Let $X$ be a connected compact complex threefold with
+\[
+ H^1(X;\Z)=H^2(X;\Z)=0,\qquad a(X)=1,
+ \tag{5.3}
+\]
+and suppose its algebraic reduction is a holomorphic map $f:X\to C$ to a
+smooth compact curve.  If there is a line bundle $L_0\in\Pic(X)$ with
+\[
+ H^2(X,T_X\otimes L_0)=0,
+ \tag{5.4}
+\]
+then a dense open subset $U\subset\Pic(X)$ satisfies
+\[
+  H^i(X,T_X\otimes M)=0\quad(i\in\{0,2,3\},\ M\in U),
+ \qquad
+ \left\langle c_3(T_X),[X]\right\rangle\le0.
+ \tag{5.5}
+\]
+\end{theorem}
+
+\begin{proof}
+The exponential sequence and (5.3) identify
+\(\Pic(X)\) with the complex vector group $H^1(X,\cO_X)$; in particular it
+is connected and irreducible and is stable under dualization.  Choose a Stein
+cover $\{U_i\}$ of $X$ and a \v{C}ech basis
+$[a^{(1)}_{ij}],\ldots,[a^{(q)}_{ij}]$ of $H^1(X,\cO_X)$ represented by additive
+cocycles.  If $\lambda=(\lambda_1,\ldots,\lambda_q)$ are the corresponding
+coordinates, the functions
+$\exp(\sum_r\lambda_r a^{(r)}_{ij})$ satisfy the multiplicative cocycle
+condition and hence define the holomorphic Poincar\'e family on
+$X\times\Pic(X)\simeq X\times H^1(X,\cO_X)$.  Every
+line bundle in it has vanishing integral
+first Chern class.  The algebraic-reduction map is surjective; choose
+$c\in C$ and let $D=f^*(c)$ denote the scheme-theoretic fibre divisor.  It is
+a nonzero effective Cartier divisor and
+\(\cO_X(D)=f^*\cO_C(c)\in\Pic^0(X)\), because $H^2(X;\Z)=0$.
+  The stabilization argument in Lemma~\ref{lem:generic-endpoints}, applied
+  to $T_X$ and $T_X^\vee\otimes\omega_X$, supplies sufficiently large
+  negative fibre twists; all of them lie in the vector group $\Pic(X)$.
+  Apply that lemma with $Y=X$, $B=T_X$, and $\mathcal P=\Pic(X)$.  The
+  exponential identification supplies the required Poincar\'e family and all
+  negative fibre twists, so the lemma gives simultaneous degree-zero and
+  degree-three vanishing on a dense open set.
+
+The jump locus
+\[
+ J_2=\{M\in\Pic(X):h^2(X,T_X\otimes M)\ge1\}
+\]
+is a closed analytic subset by upper semicontinuity.  It is proper by (5.4),
+so its complement is dense open.  Intersecting the three dense open sets
+proves the cohomology assertions in (5.5).  On this intersection,
+\[
+ \chi(X,T_X\otimes M)=-h^1(X,T_X\otimes M)\le0.
+ \tag{5.6}
+\]
+
+It remains to evaluate the Euler characteristic.  From (5.3), the rational
+groups $H^1(X;\Q)$ and $H^2(X;\Q)$ vanish.  Universal coefficients and
+Poincar\'e duality then give $H^4(X;\Q)=0$.  Hence
+  $c_1(T_X)=c_1(K_X)=0$ and $c_2(T_X)=0$ in rational cohomology, and
+  $c_1(M)=0$ as well.  Since $X$ is
+  compact complex, holomorphic Hirzebruch--Riemann--Roch applies \cite{Hir}.  The
+degree-six component of
+\(\operatorname{ch}(T_X\otimes M)\operatorname{td}(X)\) is consequently
+\(\tfrac12c_3(T_X)\), so
+\[
+ \chi(X,T_X\otimes M)=
+ \frac12\left\langle c_3(T_X),[X]\right\rangle.
+ \tag{5.7}
+\]
+Combining (5.6) and (5.7) proves the final inequality.
+\end{proof}
+
+\begin{corollary}[the intact relative hypothesis]
+\label{cor:relative}
+In the setting of Theorem~\ref{thm:corrected-global}, it is enough to assume
+that one line bundle $L$ satisfies
+\[
+ R^2f_*(T_X\otimes L)=0.
+ \tag{5.8}
+\]
+\end{corollary}
+
+\begin{proof}
+Choose a positive-degree line bundle $A$ on $C$ and set
+$E=T_X\otimes L$.  Projection formula gives
+\(R^2f_*(E\otimes f^*A^m)=0\).  For $m\gg0$, Serre vanishing on the curve
+gives
+\(H^1(C,R^1f_*E\otimes A^m)=0\), while
+\(H^2(C,f_*E\otimes A^m)=0\) because $C$ has dimension one.  In the Leray
+spectral sequence the three terms of total degree two are therefore
+\[
+\begin{aligned}
+ E_2^{2,0}&=H^2(C,f_*E\otimes A^m)=0,\\
+ E_2^{1,1}&=H^1(C,R^1f_*E\otimes A^m)=0,\\
+ E_2^{0,2}&=H^0(C,R^2f_*E\otimes A^m)=0.
+\end{aligned}
+\]
+Thus
+\[
+ H^2(X,E\otimes f^*A^m)=0.
+\]
+Apply Theorem~\ref{thm:corrected-global} to
+$L_0=L\otimes f^*A^m$.
+\end{proof}
+
+\section{A local correction for ordinary relative one-forms}
+\label{sec:relative-one-forms}
+
+Alp{\"o}ge's source uses normal-crossing (self-crossing) charts for its reduced
+singular fibre and cyclic charts for its multiple fibres
+\cite[Sec.~10.2, source PDF pp.~87--88]{S6Source}.  The next
+calculation is entirely local: it does not assume that these charts glue to a
+compact threefold, and it concerns ordinary relative one-forms ($p=1$), not
+their exterior powers.
+
+\begin{proposition}[crossing and multiple-fibre modules]
+\label{prop:relative-local}
+The symbols $R_2$ and $R_3$ denote copies of the same regular local ring,
+with different maps from the one-dimensional base:
+let $R_2=\C\{x,y,z\}$ with base coordinate $t=xy$, and let
+$R_3=\C\{x,y,z\}$ with base coordinate $t=xyz$.  Then
+\[
+\begin{aligned}
+ M_2&:=\Omega^1_{R_2/\C\{t\}}
+ =\frac{R_2\,dx\oplus R_2\,dy\oplus R_2\,dz}
+        {R_2\,(y\,dx+x\,dy)},\\[2pt]
+ M_3&:=\Omega^1_{R_3/\C\{t\}}
+ =\frac{R_3\,dx\oplus R_3\,dy\oplus R_3\,dz}
+        {R_3\,(yz\,dx+xz\,dy+xy\,dz)}.
+\end{aligned}
+\tag{6.1}
+\]
+Both modules are torsion-free, but neither is locally free at the origin.
+They embed in free modules by
+\[
+\begin{aligned}
+ M_2&\hookrightarrow R_2e\oplus R_2dz,
+ &dx&\longmapsto xe,&dy&\longmapsto-ye,&dz&\longmapsto dz,\\
+ M_3&\hookrightarrow R_3e_1\oplus R_3e_2,
+ &dx&\longmapsto xe_1,&dy&\longmapsto ye_2,&dz&\longmapsto-z(e_1+e_2),
+\end{aligned}
+\tag{6.2}
+\]
+with images
+\[
+ R_2dz\oplus (x,y)e,
+ \qquad
+ R_3xe_1+R_3ye_2+R_3z(e_1+e_2).
+\tag{6.3}
+\]
+If $R_m=\C\{s,y_1,y_2\}$ and the base coordinate is $t=s^m$ with
+$m\ge2$, then
+\[
+\Omega^1_{R_m/\C\{t\}}
+\simeq R_m\,dy_1\oplus R_m\,dy_2
+       \oplus R_m/(s^{m-1})\,ds,
+\tag{6.4}
+\]
+and the final summand is exactly its torsion submodule.
+\end{proposition}
+
+\begin{proof}
+Differentiating the three equations gives the presentations in (6.1).  For
+$M_2$, the first map in (6.2) sends $(a,b,c)$ to $(ax-by,c)$.  If this is
+zero, then $c=0$ and $ax=by$.  Since $x$ and $y$ are relatively prime in the
+UFD $R_2$, there is an $h$ with $b=xh$ and $a=yh$; hence its kernel is exactly
+the displayed relation.  For $M_3$, the second map sends $(a,b,c)$ to
+$(ax-cz,by-cz)$.  If it is zero, relative primeness first gives $x\mid c$,
+then $y\mid(c/x)$; writing $c=xyh$ gives
+$(a,b,c)=h(yz,xz,xy)$, again exactly the defining relation.  Thus both maps
+are injective, proving torsion-freeness and (6.3).
+
+At the maximal ideal $(x,y,z)$ each defining relation has all coefficients in
+that maximal ideal.  Consequently the quotient of either module by the
+maximal ideal has dimension $3$ over $\C$, while its generic rank is $2$;
+a locally free module of rank $2$ would need only $2$ generators.  This proves
+non-local-freeness at the origin.  Finally, for $t=s^m$ one has
+$dt=m s^{m-1}ds=0$ relatively.  The integer $m$ is a unit in $\C$, so the
+decomposition (6.4) follows.  Its last summand is annihilated by
+$s^{m-1}$, while the other two summands are free; after inverting $s$ it
+vanishes.  It is therefore exactly the torsion submodule.
+\end{proof}
+
+\begin{remark}[scope of the local correction]
+\label{rem:relative-local-scope}
+The modules in (6.1) are modules on the smooth total-space chart, and their
+torsion-freeness is asserted before restricting to a fibre.  They must be
+distinguished both from the intrinsic sheaf $\Omega^1_S$ of the singular
+fibre and from the restricted relative module
+$M_i\otimes_{R_i}R_i/(t)$ ($i=2,3$): tensoring with the fibre ring can create
+conductor-supported torsion, as the $\tau$ calculation in the proof of
+Theorem~\ref{thm:nodal-test} shows.  If a local quotient is finite
+surjective \'{e}tale over a chart in (6.4), relative differentials commute with
+this base change and faithful flatness then reflects torsion of the pulled-back
+module; a ramified quotient
+requires a separate invariant-module calculation.  Thus the bare $t=xyz$
+chart has a torsion-free but non-locally-free total-space relative module for
+$p=1$; this fact alone does not decide torsion after fibre restriction or
+quotient.  The multiple-fibre charts do have the total-space torsion in
+(6.4).  No claim about torsion in $\bigwedge^2\Omega^1$ or
+$\bigwedge^3\Omega^1$, and no global direct-image or Hodge conclusion, is
+made here.
+\end{remark}
+
+\section{\texorpdfstring{Relation to the proposed $S^6$ reconstruction}{Relation to the proposed S6 reconstruction}}
+
+The larger validate/repair/disprove workbench applies the filtration above to
+a proposed compact complex threefold with a non-normal singular fibre and
+records candidate values
+\[
+ H^1(X;\Z)=H^2(X;\Z)=H^3(X;\Z)=0,
+ \qquad a(X)=1,
+ \qquad \langle c_3(T_X),[X]\rangle=2.
+ \tag{7.1}
+\]
+It also records candidate-specific calculations of integral specialization,
+Leray transgressions, and the nonvanishing of
+$R^2f_*(T_X\otimes L)$.  Those calculations are the source manuscript's
+application and are not repeated here.  None of the upstream construction,
+topology, or Picard assertions is proved in this short note.  Applying Proposition
+\ref{prop:criterion} to that candidate would require, at minimum, a complete
+independent verification of the smooth compact threefold, the full reduced
+Cartier fibre, the normalization and line-bundle restrictions, and the
+actual connecting map $\delta_A$ (or an equivalent explicit computation).
+The present result supplies the local algebraic target for that check; it is
+not an adjudication of the candidate's existence.
+
+\section*{AI-use and authorship disclosure}
+
+Generative-AI systems assisted the transcription of source material, symbolic
+and exact-arithmetic checks, literature searching, and preparation of this
+draft.  The local drafting and audit assistance used OpenAI Codex gpt-5.6-sol,
+Ultra; no AI system is an author.  A human author must verify every statement,
+secure the right to submit the work, and take responsibility for the final
+version, consistent with the current arXiv policy for generative-AI tools
+\cite{arXivModeration}.
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

@@ -1,0 +1,944 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The tangent index with every torsion twist retained</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/tangent-index-with-torsion-line-bundles.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="tangent-index-provider">The tangent-bundle index with every
+torsion twist retained</h1>
+<p>Written by GPT-6 Astra (OpenAI), at Ultra, October 2026. New
+exposition and proofs: CC0. This chapter proves the complete index
+calculation used in lesson 10, including its stated extension to
+threefolds with vanishing first and second Betti numbers. It keeps the
+original Dolbeault operator, the actual line bundle, the full
+characteristic polynomial and every higher component in the Dolbeault–de
+Rham comparison.</p>
+<p>The theorem proved here is the following. Let <span
+class="math inline">\(Y\)</span> be a compact connected complex
+threefold. Suppose that the integral classes <span
+class="math inline">\(c_1(K_Y)\)</span> and <span
+class="math inline">\(c_1(L)\)</span> are torsion, where <span
+class="math inline">\(L\)</span> is a holomorphic line bundle. Then</p>
+<p><span class="math display">\[
+\chi(Y,T_Y\otimes L)
+=\frac12\chi_{\mathrm{top}}(Y)
+=\frac12\langle c_3(T_Y),[Y]\rangle
+=1-b_1(Y)+b_2(Y)-\frac12b_3(Y).
+\tag{0.1}
+\]</span></p>
+<p>The fundamental class has the complex orientation. The hypotheses in
+(0.1) are weaker than <span class="math inline">\(b_2(Y)=0\)</span>: no
+vanishing of <span class="math inline">\(c_2\)</span>, or of the full
+degree-four cohomology group, is needed. This is a receiving proof of a
+known index equality, with no novelty claim. The general Spin<span
+class="math inline">\({}^c\)</span> index formula in Baum–van Erp is a
+broader human-source result; it is not used as an unproved step
+below.</p>
+<p>We use the included <a
+href="smooth-duality-and-finite-twist-complexes.html">smooth Hodge and
+duality proof</a>, the proved <a
+href="integral-chern-classes-for-lesson11.html">integral Chern-class
+construction</a>, and the <a
+href="projective-splitting-for-lesson11.html">compact projective splitting
+argument</a>. Each map from these arguments is specified where it
+enters.</p>
+<h2 id="tangent-fredholm-index">1. The actual operator defines an
+integer homomorphism</h2>
+<p>First let <span class="math inline">\(W\)</span> be any smooth
+complex vector bundle on <span class="math inline">\(Y\)</span>, without
+assuming that <span class="math inline">\(W\)</span> is holomorphic.
+Choose Hermitian metrics and a Hermitian connection <span
+class="math inline">\(\nabla\)</span>. Let <span
+class="math inline">\(b_W=\nabla^{0,1}\)</span> on <span
+class="math inline">\(W\)</span>-valued <span
+class="math inline">\((0,q)\)</span>-forms and retain the original
+factor</p>
+<p><span class="math display">\[
+\mathscr D_W=\sqrt2\,(b_W+b_W^*),\qquad
+D_W=\mathscr D_W|_{\mathrm{even}}:
+H^1(\mathcal A^{0,\mathrm{even}}(Y,W))
+\longrightarrow L^2(\mathcal A^{0,\mathrm{odd}}(Y,W)).
+\tag{1.1}
+\]</span></p>
+<p>The all-degree operator <span class="math inline">\(\mathscr
+D_W\)</span> is odd and formally self-adjoint. Its principal symbol at a
+real covector <span class="math inline">\(\xi\)</span> is</p>
+<p><span class="math display">\[
+\sigma(\mathscr D_W)(\xi)
+=\sqrt2\,i\bigl(\varepsilon(\xi^{0,1})-\iota(\xi^{0,1})\bigr),
+\qquad \sigma(\mathscr D_W)(\xi)^2=|\xi|_g^2\operatorname{id}.
+\tag{1.2}
+\]</span></p>
+<p>For a general connection its full square is</p>
+<p><span class="math display">\[
+\mathscr D_W^2
+=2\bigl(b_W^2+b_Wb_W^*+b_W^*b_W+(b_W^*)^2\bigr).
+\tag{1.3}
+\]</span></p>
+<p>In particular the curvature term <span
+class="math inline">\(b_W^2\)</span> and its adjoint remain. Ellipticity
+follows from (1.2), independently of those zero-order terms. The
+freezing-of-coefficients estimate, weak-domain argument and compact
+resolvent in the smooth Hodge chapter apply to this full formally
+self-adjoint first-order operator. They prove that its closed domain is
+<span class="math inline">\(H^1\)</span>, that its kernel is
+finite-dimensional and smooth, and that its range is closed with
+orthogonal complement its kernel. For example, the compact positive
+resolvent <span class="math inline">\((1+\mathscr D_W^2)^{-1}\)</span>
+has finite-dimensional eigenspaces, with its only possible accumulation
+point zero; hence <span class="math inline">\(\mathscr D_W^2\)</span>
+has a positive lower bound on its kernel complement. This bound and the
+first-order estimate make the range closed in the stated Sobolev domain.
+The odd grading gives the same conclusions for <span
+class="math inline">\(D_W\)</span>, with cokernel <span
+class="math inline">\(\ker D_W^*\)</span>. Define</p>
+<p><span class="math display">\[
+I_Y(W)=\dim\ker D_W-\dim\ker D_W^*\in\mathbb Z.
+\tag{1.4}
+\]</span></p>
+<p>Here is the precise local-constancy argument. For a Fredholm map
+<span class="math inline">\(A_0:H\to H&#39;\)</span> between Hilbert
+spaces, decompose its source into <span class="math inline">\(K\oplus
+B\)</span>, where <span class="math inline">\(K=\ker A_0\)</span>, and
+its target into <span class="math inline">\(R\oplus C\)</span>, where
+<span class="math inline">\(R=\operatorname{im}A_0\)</span> and <span
+class="math inline">\(C=R^\perp\)</span>. The map <span
+class="math inline">\(B\to R\)</span> induced by <span
+class="math inline">\(A_0\)</span> is a bounded isomorphism. For an
+operator sufficiently close to <span class="math inline">\(A_0\)</span>,
+write its blocks, with source ordered <span
+class="math inline">\(B,K\)</span>, as</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\tag{1.5}
+\]</span></p>
+<p>The block <span class="math inline">\(a\)</span> stays invertible by
+its convergent inverse series. Invertible triangular operations on
+source and target transform (1.5) into</p>
+<p><span class="math display">\[
+\begin{pmatrix}a&amp;0\\0&amp;d-ca^{-1}b\end{pmatrix}.
+\tag{1.6}
+\]</span></p>
+<p>The second block is a map between the finite spaces <span
+class="math inline">\(K,C\)</span>. Its index is <span
+class="math inline">\(\dim K-\dim C\)</span>, regardless of its rank,
+because that rank subtracts equally from kernel and cokernel dimensions.
+The first block has index zero. This proves local constancy, with the
+full Schur denominator retained.</p>
+<p>Connections on a fixed bundle form an affine space. Their differences
+are zero-order terms in (1.1), continuous as maps <span
+class="math inline">\(H^1\to L^2\)</span>. Connecting two connections by
+their affine path preserves (1.2), so local constancy on the compact
+parameter interval proves that (1.4) is independent of the connection.
+Hermitian metrics can be connected by their positive affine path; the
+coefficient matrices and adjoints vary continuously and remain elliptic,
+giving metric independence by the same argument. A smooth bundle
+isomorphism transports these data and then this independence applies.
+Direct sums give direct sums of kernels and cokernels, so</p>
+<p><span class="math display">\[
+I_Y(W\oplus W&#39;)=I_Y(W)+I_Y(W&#39;).
+\tag{1.7}
+\]</span></p>
+<p>Let <span class="math inline">\(K^0(Y)\)</span> mean the Grothendieck
+group of smooth complex bundles under direct sum, with multiplication
+induced by tensor product. Equation (1.7) consequently defines an
+integer-valued group homomorphism on <span
+class="math inline">\(K^0(Y)\)</span>. No index theorem is required for
+this definition.</p>
+<p>If <span class="math inline">\(W=V\)</span> is holomorphic, choose a
+connection with <span class="math inline">\((0,1)\)</span>-part the
+original <span class="math inline">\(\bar\partial_V\)</span>. In a
+holomorphic frame write the metric, linear in its first argument, as
+<span class="math inline">\(\langle v,w\rangle=w^*hv\)</span>, so <span
+class="math inline">\(h_{ab}=\langle e_b,e_a\rangle\)</span>. The
+connection matrix <span class="math inline">\(h^{-1}\partial h\)</span>
+has zero <span class="math inline">\((0,1)\)</span>-part and obeys <span
+class="math inline">\(dh=A^*h+hA\)</span>; the frame-change formula
+verifies that these matrices define the Hermitian Chern connection. Now
+<span class="math inline">\(b_V^2=0\)</span>, and the compact Hodge
+proof identifies the kernels in (1.4) with the even and odd Dolbeault
+cohomology groups. Thus</p>
+<p><span class="math display">\[
+I_Y([V])=\chi(Y,V)=\sum_{q=0}^3(-1)^q\dim H^q(Y,V).
+\tag{1.8}
+\]</span></p>
+<p>The homomorphism has therefore been connected to the actual
+holomorphic cohomology by an exact operator with the factor <span
+class="math inline">\(\sqrt2\)</span> unchanged.</p>
+<h2 id="torsion-index-invariance">2. Why a torsion line bundle has
+exactly zero index contribution</h2>
+<p>We first identify the meaning of the integral first class. The smooth
+exponential sequence is</p>
+<p><span class="math display">\[
+0\longrightarrow\mathbb Z\longrightarrow\mathcal C^\infty_Y(\mathbb C)
+\xrightarrow{\ u\mapsto\exp(2\pi i u)\ }
+\mathcal C^{\infty,*}_Y\longrightarrow1.
+\tag{2.1}
+\]</span></p>
+<p>It is exact at germs: a nonzero smooth complex function has a smooth
+logarithm near a point, and the kernel is the locally constant integer
+functions. The middle sheaf is acyclic by its partition-of-unity Čech
+contraction. Smooth transition functions classify smooth line bundles,
+so its connecting homomorphism gives an isomorphism from their
+tensor-product group to <span class="math inline">\(H^2(Y;\mathbb
+Z)\)</span>. This connecting class is the same <span
+class="math inline">\(c_1\)</span> as the included Euler/Chern
+construction. To check the normalization, use its finite-dimensional
+classifying maps to <span class="math inline">\(\mathbb {CP}^N\)</span>.
+On the tautological line, restrict to <span
+class="math inline">\(\mathbb {CP}^1\)</span>; the frames <span
+class="math inline">\((1,z)\)</span> and <span
+class="math inline">\((w,1)\)</span>, with <span
+class="math inline">\(w=1/z\)</span>, obey <span
+class="math inline">\((w,1)=z^{-1}(1,z)\)</span>. Its equatorial
+transition has winding number <span class="math inline">\(-1\)</span>.
+The logarithm coboundary in (2.1) measures exactly that integer, with
+its full <span class="math inline">\(2\pi i\)</span>, and the proved
+Euler calculation gives <span class="math inline">\(c_1=-u\)</span> on
+this same oriented sphere. The restriction <span
+class="math inline">\(H^2(\mathbb {CP}^N;\mathbb Z)\to H^2(\mathbb
+{CP}^1;\mathbb Z)\)</span> is an isomorphism by the projective-cell
+calculation. The two classes agree on every finite classifying space and
+therefore, by pullback, on every smooth line bundle on the compact
+base.</p>
+<p>Consequently, if <span class="math inline">\(c_1(L)\)</span> has
+finite order dividing <span class="math inline">\(m\ge1\)</span>, the
+smooth bundle <span class="math inline">\(L^{\otimes m}\)</span> is
+trivial. We do not replace the holomorphic bundle <span
+class="math inline">\(L\)</span> by a trivial bundle. We calculate its
+full class in <span class="math inline">\(K^0\)</span>.</p>
+<p>Choose finitely many smooth global sections <span
+class="math inline">\(s_1,\ldots,s_N\)</span> of <span
+class="math inline">\(L\)</span> which never vanish simultaneously. Such
+a list is obtained by multiplying finitely many local frames by smooth
+functions supported in their trivializing charts and positive on sets
+covering the compact base. The section <span
+class="math inline">\(s=(s_1,\ldots,s_N)\)</span> of <span
+class="math inline">\(L^{\oplus N}\)</span> is nowhere zero. The Koszul
+complex with differential contraction by <span
+class="math inline">\(s\)</span> is exact. Indeed the metric covector
+<span class="math inline">\(w=s^*/\|s\|^2\)</span> satisfies <span
+class="math inline">\(w(s)=1\)</span>, and exterior multiplication by
+<span class="math inline">\(w\)</span> obeys</p>
+<p><span class="math display">\[
+\iota_s\varepsilon_w+\varepsilon_w\iota_s=1.
+\tag{2.2}
+\]</span></p>
+<p>This is its explicit smooth contraction. Every term is <span
+class="math inline">\(\bigwedge^j((L^*)^{\oplus N})\cong
+(L^*)^{\otimes j}\otimes\mathbb C^{\binom Nj}\)</span>. An exact finite
+complex of bundles splits smoothly, by orthogonal complements to its
+constant-rank kernels, and its alternating class is zero. Thus</p>
+<p><span class="math display">\[
+(1-[L]^{-1})^N=0,
+\qquad a^N=0\quad\hbox{for }a=[L]-1.
+\tag{2.3}
+\]</span></p>
+<p>The second equality follows by multiplying the first by <span
+class="math inline">\([L]^N\)</span>. Triviality of <span
+class="math inline">\(L^{\otimes m}\)</span> gives the full binomial
+relation</p>
+<p><span class="math display">\[
+0=(1+a)^m-1
+=ma+\sum_{j=2}^m\binom mj a^j
+=ma+a^2B(a),
+\quad B(a)=\sum_{j=2}^m\binom mj a^{j-2}.
+\tag{2.4}
+\]</span></p>
+<p>Iterating <span class="math inline">\(ma=-a^2B(a)\)</span> exactly
+<span class="math inline">\(N-1\)</span> times gives</p>
+<p><span class="math display">\[
+m^{N-1}a=(-1)^{N-1}a^NB(a)^{N-1}=0.
+\tag{2.5}
+\]</span></p>
+<p>For <span class="math inline">\(N=1\)</span>, (2.3) already says
+<span class="math inline">\(a=0\)</span>; for <span
+class="math inline">\(m=1\)</span>, the sum <span
+class="math inline">\(B\)</span> is zero and (2.4) says the same. For
+every smooth bundle <span class="math inline">\(W\)</span>, the
+difference <span class="math inline">\([W\otimes L]-[W]=[W]a\)</span> is
+therefore torsion, with the displayed annihilator. Since the target of
+<span class="math inline">\(I_Y\)</span> is the torsion-free group <span
+class="math inline">\(\mathbb Z\)</span>, equations (1.7) and (2.5)
+prove</p>
+<p><span class="math display">\[
+I_Y(W\otimes L)=I_Y(W).
+\tag{2.6}
+\]</span></p>
+<p>For holomorphic <span class="math inline">\(V,L\)</span>, this is the
+exact assertion <span class="math inline">\(\chi(Y,V\otimes
+L)=\chi(Y,V)\)</span>. All holomorphic structures remain present. The
+equality follows from their actual smooth-bundle difference and its
+proved image under the index homomorphism.</p>
+<h2 id="full-derham-transfer">3. Transfer the full de Rham
+differential</h2>
+<p>For this section let the complex dimension be any <span
+class="math inline">\(n\)</span>. On ordinary complex-valued
+differential forms on the original complex manifold,</p>
+<p><span class="math display">\[
+d=\bar\partial+\partial,\qquad
+\bar\partial^2=\partial^2=0,\qquad
+\bar\partial\partial+\partial\bar\partial=0.
+\tag{3.1}
+\]</span></p>
+<p>These equalities follow by writing <span
+class="math inline">\(d\)</span> in holomorphic coordinates and
+commuting the scalar partial derivatives, with the exterior-product
+signs. Identify <span class="math inline">\(A^{0,q}(\Omega_Y^p)\)</span>
+with <span class="math inline">\(A^{p,q}(Y)\)</span> by putting the
+antiholomorphic exterior factor before the holomorphic factor. With this
+specified order its Dolbeault differential is the actual <span
+class="math inline">\(\bar\partial\)</span> in (3.1). The operator <span
+class="math inline">\(\partial\)</span> in (3.1) consequently retains
+every sign from this order.</p>
+<p>Apply the proved compact Dolbeault contraction to each bundle <span
+class="math inline">\(\Omega_Y^p\)</span>, and sum over <span
+class="math inline">\(p\)</span>. Denote the resulting finite space by
+<span class="math inline">\(\mathcal H=\bigoplus_{p,q}\mathcal
+H^{p,q}\)</span>, its inclusion by <span
+class="math inline">\(I\)</span>, its projection by <span
+class="math inline">\(P\)</span>, and its homotopy by <span
+class="math inline">\(h\)</span>. Then</p>
+<p><span class="math display">\[
+\bar\partial h+h\bar\partial=1-IP,\qquad PI=1,
+\qquad h^2=0,\quad hI=0,\quad Ph=0.
+\tag{3.2}
+\]</span></p>
+<p>Here <span class="math inline">\(h\)</span> lowers <span
+class="math inline">\(q\)</span> by one and preserves <span
+class="math inline">\(p\)</span>. The operator <span
+class="math inline">\(\partial\)</span> raises <span
+class="math inline">\(p\)</span> by one and preserves <span
+class="math inline">\(q\)</span>. Therefore both <span
+class="math inline">\(\partial h\)</span> and <span
+class="math inline">\(h\partial\)</span> raise <span
+class="math inline">\(p\)</span> by one, and</p>
+<p><span class="math display">\[
+(\partial h)^{n+1}=(h\partial)^{n+1}=0
+\tag{3.3}
+\]</span></p>
+<p>on every form. These are exact zero operators because no holomorphic
+form degree exceeds <span class="math inline">\(n\)</span>. Thus the two
+inverses used in the perturbation proof are the finite sums</p>
+<p><span class="math display">\[
+(1+\partial h)^{-1}=\sum_{r=0}^n(-\partial h)^r,
+\qquad
+(1+h\partial)^{-1}=\sum_{r=0}^n(-h\partial)^r.
+\tag{3.4}
+\]</span></p>
+<p>Every term maps smooth forms to smooth forms. No smallness estimate
+or convergence assumption is involved. Put</p>
+<p><span class="math display">\[
+\begin{aligned}
+T&amp;=\sum_{r=0}^n(-\partial h)^r\partial,\qquad
+D=PTI,\\
+I&#39;&amp;=I-hTI,\qquad P&#39;=P-PTh,\qquad h&#39;=h-hTh.
+\end{aligned}
+\tag{3.5}
+\]</span></p>
+<p>The algebraic proof of the perturbation identities in the smooth
+duality chapter applies, because (3.1)–(3.4) supply every one of its
+hypotheses. It proves</p>
+<p><span class="math display">\[
+D^2=0,\quad dI&#39;=I&#39;D,\quad P&#39;d=DP&#39;,\quad P&#39;I&#39;=1,
+\qquad dh&#39;+h&#39;d=1-I&#39;P&#39;.
+\tag{3.6}
+\]</span></p>
+<p>The actual de Rham complex is consequently chain-homotopy equivalent
+to the finite complex <span class="math inline">\((\mathcal
+H,D)\)</span>. The term <span class="math inline">\((-1)^rP(\partial
+h)^r\partial I\)</span> maps bidegree <span
+class="math inline">\((p,q)\)</span> to <span
+class="math inline">\((p+r+1,q-r)\)</span>, with total degree raised by
+one. Terms with an out-of-range source or target are zero for that
+precise reason. In dimension three the entire expression is</p>
+<p><span class="math display">\[
+D=P\partial I-P\partial h\partial I
++P\partial h\partial h\partial I
+-P\partial h\partial h\partial h\partial I.
+\tag{3.7}
+\]</span></p>
+<p>The fourth term is zero on every bidegree because it raises <span
+class="math inline">\(p\)</span> by four. The middle two terms have not
+been dropped. This construction therefore does not assume degeneration
+at the first page of the Frölicher spectral sequence, or any Kähler
+identity.</p>
+<p>For a finite complex with vector-space dimensions <span
+class="math inline">\(a_k\)</span> and differential ranks <span
+class="math inline">\(r_k\)</span>, its cohomology dimensions are <span
+class="math inline">\(a_k-r_k-r_{k-1}\)</span>. Summing with <span
+class="math inline">\((-1)^k\)</span> cancels the two rank sums exactly.
+Apply this fact to (3.5), graded by <span
+class="math inline">\(p+q\)</span>, and use the Dolbeault cohomology
+identification of each harmonic space. We obtain</p>
+<p><span class="math display">\[
+\sum_k(-1)^k\dim H^k_{\mathrm{dR}}(Y;\mathbb C)
+=\sum_{p,q}(-1)^{p+q}\dim H^q(Y,\Omega_Y^p)
+=\sum_p(-1)^p\chi(Y,\Omega_Y^p).
+\tag{3.8}
+\]</span></p>
+<h2 id="derham-topology">4. The topological comparison and the signs of
+duality</h2>
+<p>We include the comparison which identifies the first side of (3.8)
+with the ordinary topological Euler characteristic. On a coordinate ball
+the radial homotopy for a <span class="math inline">\(k\)</span>-form,
+<span class="math inline">\(k&gt;0\)</span>, is</p>
+<p><span class="math display">\[
+(K\omega)_x(v_1,\ldots,v_{k-1})
+=\int_0^1t^{k-1}\omega_{tx}(x,v_1,\ldots,v_{k-1})\,dt.
+\tag{4.1}
+\]</span></p>
+<p>Differentiating the pullback along <span
+class="math inline">\(x\mapsto tx\)</span>, or expanding coefficients
+and applying the fundamental theorem of calculus, gives <span
+class="math inline">\(dK+Kd=1-\operatorname{ev}_0\)</span>, with
+evaluation contributing only in degree zero. Thus the sheaf complex of
+smooth forms resolves the constant sheaf <span
+class="math inline">\(\mathbb C\)</span>. Its terms are fine; the
+partition-of-unity Čech contraction proves their acyclicity.</p>
+<p>Here are the cochain details connecting that constant sheaf to
+singular cohomology. For an open cover <span
+class="math inline">\(\mathcal U\)</span>, let <span
+class="math inline">\(C_*^{\mathcal U}\)</span> be the singular chains
+generated by simplices whose images lie in some member of <span
+class="math inline">\(\mathcal U\)</span>. Barycentric subdivision and
+its prism homotopy give a chain-homotopy equivalence <span
+class="math inline">\(C_*^{\mathcal U}\to C_*\)</span>; the complete
+small-chain construction is included in <a
+href="thom-euler-for-lesson11.html">Thom classes, Section2</a>. It works
+for smooth singular simplices as well, since subdivision uses affine
+simplex maps and the local contractions on coordinate balls are smooth.
+Therefore each dual complex of small cochains computes the same
+cohomology as the corresponding full singular cochain complex.</p>
+<p>Sheafify the presheaves of these singular cochains. A cochain has
+zero germ precisely when it vanishes on all sufficiently small simplices
+near each point. Its kernel under sheafification is thus the union of
+the kernels of restriction to <span class="math inline">\(C_*^{\mathcal
+U}\)</span>, over covers <span class="math inline">\(\mathcal
+U\)</span>. Every section of the resulting sheaf is represented by a
+cochain. To see this, choose a locally finite cover <span
+class="math inline">\(V_i\)</span> with closures inside sets <span
+class="math inline">\(U_i\)</span> on which it has representatives <span
+class="math inline">\(c_i\)</span>. For a simplex contained in some
+<span class="math inline">\(V_i\)</span>, choose one such index and
+assign it the value of <span class="math inline">\(c_i\)</span>; assign
+zero to the other simplices. Near a point only finitely many <span
+class="math inline">\(V_i\)</span> meet a sufficiently small
+neighbourhood. Indices whose closures do not contain that point can be
+excluded by shrinking; for the remaining indices, the representatives
+have the same germ there. Shrink again so they agree on every simplex in
+that neighbourhood. The assigned cochain then has exactly the prescribed
+germ. The same construction on an open subset, followed by zero values
+for all other simplices of the larger space, extends its sheaf section.
+Hence these cochain sheaves are flabby.</p>
+<p>Their complex resolves the constant sheaf: on a coordinate ball, the
+contraction to a point gives the usual singular prism homotopy, making
+every positive-degree cohomology germ zero and the degree-zero kernel
+the constants. Its global sections are the filtered limit of the
+complexes of small cochains, by the preceding representation and kernel
+calculation. Filtered limits of vector spaces are exact, so their
+cohomology is the ordinary singular cohomology. The same argument
+applies to smooth singular cochains; both versions resolve the same
+constant sheaf by flabby sheaves.</p>
+<p>Integration on smooth singular simplices is a cochain map from forms
+to smooth cochains, by Stokes’ formula. On the degree-zero constant
+sheaf it is the identity. The local calculation (4.1) and the singular
+contraction make it a quasi-isomorphism of resolutions. Computing their
+global cohomology, using the fine and flabby acyclicity or the augmented
+Čech double complex, therefore gives the canonical isomorphism</p>
+<p><span class="math display">\[
+H^k_{\mathrm{dR}}(Y;\mathbb C)\simeq H^k(Y;\mathbb C).
+\tag{4.2}
+\]</span></p>
+<p>The cup-product comparison has the usual order. On a product of two
+smooth simplices, the shuffle subdivision divides the product into its
+oriented simplices. Integration of <span
+class="math inline">\(\operatorname{pr}_1^*\alpha\wedge\operatorname{pr}_2^*\beta\)</span>
+on their signed sum equals the product of the two original integrals by
+Fubini. Thus integration preserves external products under the shuffle
+and front/back chain maps proved in the included Thom chapter’s product
+section. Naturality under the diagonal identifies the wedge product with
+the pullback of this external product, which is the singular cup
+product. This proves multiplicativity of (4.2) with its graded
+signs.</p>
+<p>We also supply the integral orientation and finiteness facts used
+below. The positive local class in an oriented real <span
+class="math inline">\(m\)</span>-chart lies in <span
+class="math inline">\(H_m(Y,Y\setminus\{x\};\mathbb Z)\)</span>. An
+orientation-preserving coordinate transition acts as <span
+class="math inline">\(+1\)</span>: on a sufficiently small sphere its
+straight homotopy to its invertible derivative avoids zero, and the
+derivative has positive determinant. For a compact convex set <span
+class="math inline">\(K\)</span> in a chart identified with <span
+class="math inline">\(\mathbb R^m\)</span>, choose a point of <span
+class="math inline">\(K\)</span> and a larger enclosing sphere. Radial
+expansion or contraction from that point retracts <span
+class="math inline">\(\mathbb R^m\setminus K\)</span> to the sphere:
+expansion stays outside the convex set, and contraction outside the
+enclosing radius does also. The relative homology is consequently <span
+class="math inline">\(\mathbb Z\)</span> in degree <span
+class="math inline">\(m\)</span>, zero above it, and its generator
+restricts to the positive generator at every point of <span
+class="math inline">\(K\)</span>.</p>
+<p>Relative Mayer–Vietoris now proves the same existence, uniqueness by
+point values, and vanishing above <span class="math inline">\(m\)</span>
+for finite unions of convex compact sets. In fact its map from the
+union’s top group into the sum of the two top groups is injective
+because the preceding intersection group in degree <span
+class="math inline">\(m+1\)</span> is zero. Matching classes lift
+because the next arrow is the difference of restrictions. Intersections
+are unions of fewer convex pieces, so the induction applies. For any
+compact set in that chart, a finite relative cycle has boundary
+separated from it. Enlarge the compact set to finitely many small closed
+balls centred in it, avoiding that boundary. This reduces vanishing and
+point detection to the finite-union assertion. A large chart ball
+supplies the prescribed positive class. Finally split a compact subset
+of <span class="math inline">\(Y\)</span> into finitely many compact
+chart pieces and repeat the same Mayer–Vietoris argument. This gives a
+unique class with the prescribed point values. For <span
+class="math inline">\(K=Y\)</span> it is the integral fundamental class
+<span class="math inline">\([Y]\)</span>. Integration on a positively
+oriented coordinate disk has evaluation one on that same local
+generator; excision and the partition-of-unity comparison then prove
+that integration in (4.2) equals evaluation on <span
+class="math inline">\([Y]\)</span>.</p>
+<p>For integral finite generation, take finitely many coordinate maps
+<span class="math inline">\(x_i:U_i\to\mathbb R^m\)</span> and smooth
+functions <span class="math inline">\(\phi_i\)</span> supported inside
+<span class="math inline">\(U_i\)</span>, positive on sets covering
+<span class="math inline">\(Y\)</span>. The map with Euclidean blocks
+<span class="math inline">\((\phi_i,\phi_i x_i)\)</span>, extended by
+zero, is an injective immersion. A positive block recovers the chart
+coordinate by division; on tangent vectors its derivative first recovers
+<span class="math inline">\(d\phi_i\)</span>, then <span
+class="math inline">\(\phi_i dx_i\)</span>, proving injectivity of the
+derivative. Compactness makes this a smooth embedding. The normal map
+<span class="math inline">\((y,v)\mapsto y+v\)</span> is a local
+diffeomorphism at its zero section and is injective on a uniform small
+disk bundle by the compactness argument in Section6. It gives a
+neighbourhood retraction onto <span class="math inline">\(Y\)</span>. A
+sufficiently fine finite union of closed Euclidean cubes meeting <span
+class="math inline">\(Y\)</span>, with all their faces, lies in this
+neighbourhood. Thus <span class="math inline">\(Y\)</span> is a retract
+of this finite cubical complex. Successive cell attachment, its relative
+sphere groups and the exact sequence of a pair prove finite generation
+of that complex’s integer homology in every degree and vanishing in
+sufficiently high degrees. The homology of <span
+class="math inline">\(Y\)</span> is a direct summand and has the same
+finiteness properties. The universal coefficient calculation in the
+included Thom chapter therefore applies with finitely generated groups.
+These arguments use neither a triangulation of <span
+class="math inline">\(Y\)</span> nor a smooth recognition theorem.</p>
+<p>The complementary-degree pairing is perfect. This can also be proved
+directly from the operator argument, with no Hodge decomposition
+assumption left unstated. For real forms on a real <span
+class="math inline">\(m\)</span>-manifold the operator <span
+class="math inline">\(Q=d+d^*\)</span> has symbol <span
+class="math inline">\(i(\varepsilon(\xi)-\iota(\xi))\)</span>, whose
+square is <span class="math inline">\(|\xi|^2\)</span>, with no factor
+<span class="math inline">\(1/2\)</span>. The same weak estimates and
+compact-resolvent proof give harmonic representatives of all de Rham
+classes. The oriented Hodge star, defined by the metric volume form,
+satisfies</p>
+<p><span class="math display">\[
+*^2|_{A^k}=(-1)^{k(m-k)},\qquad
+d^*|_{A^k}=(-1)^{mk+m+1}*d*,\qquad *\Delta=\Delta*.
+\tag{4.3}
+\]</span></p>
+<p>The first identity follows on each oriented orthonormal wedge basis.
+The second is integration by parts in <span class="math inline">\(\int
+d(\alpha\wedge *\overline\beta)=0\)</span>, keeping the degree of <span
+class="math inline">\(\alpha\)</span>; substituting it twice proves the
+third. A nonzero harmonic <span class="math inline">\(k\)</span>-form
+<span class="math inline">\(\alpha\)</span> pairs with the harmonic
+complementary form <span
+class="math inline">\(*\overline\alpha\)</span>, and</p>
+<p><span class="math display">\[
+\int_Y\alpha\wedge *\overline\alpha=\|\alpha\|_{L^2}^2&gt;0.
+\tag{4.4}
+\]</span></p>
+<p>Finite-dimensionality and the same argument in the complementary
+degree make the pairing perfect. Consequently, in real dimension six,
+<span class="math inline">\(b_k=b_{6-k}\)</span>, and</p>
+<p><span class="math display">\[
+\chi_{\mathrm{top}}(Y)=2-2b_1+2b_2-b_3.
+\tag{4.5}
+\]</span></p>
+<p>In degree three the pairing is alternating because <span
+class="math inline">\((-1)^{3\cdot3}=-1\)</span>. A nondegenerate
+alternating matrix over <span class="math inline">\(\mathbb C\)</span>
+has even size: in odd size its determinant equals the determinant of its
+negative transpose and hence its own negative. Thus <span
+class="math inline">\(b_3\)</span> is even. All terms of (4.5),
+including this middle degree, are retained.</p>
+<h2 id="tangent-euler-calculation">5. Calculate the tangent Euler
+characteristic</h2>
+<p>Return to complex dimension three and suppose <span
+class="math inline">\(c_1(K_Y)\)</span> is torsion. Put <span
+class="math inline">\(\chi_p=\chi(Y,\Omega_Y^p)\)</span>. Smooth Serre
+duality, with the full phase and exterior order proved in the included
+chapter, gives</p>
+<p><span class="math display">\[
+\chi(Y,K_Y)=-\chi(Y,\mathcal O_Y).
+\tag{5.1}
+\]</span></p>
+<p>Equation (2.6) also gives <span
+class="math inline">\(\chi(Y,K_Y)=\chi(Y,\mathcal O_Y)\)</span>. These
+are equalities of integers, so</p>
+<p><span class="math display">\[
+\chi_0=\chi_3=0.
+\tag{5.2}
+\]</span></p>
+<p>The fibrewise exterior pairing <span
+class="math inline">\(\Omega_Y^p\otimes\Omega_Y^{3-p}\to K_Y\)</span> is
+perfect. In a holomorphic coordinate frame, the complementary wedge has
+the sign of the permutation which moves the ordered index set followed
+by its complement to <span class="math inline">\((1,2,3)\)</span>. This
+gives the exact bundle isomorphism <span
+class="math inline">\((\Omega_Y^p)^*\otimes
+K_Y\cong\Omega_Y^{3-p}\)</span>. Together with Serre duality it
+gives</p>
+<p><span class="math display">\[
+\chi_{3-p}=-\chi_p,
+\quad\hbox{in particular }\chi_2=-\chi_1.
+\tag{5.3}
+\]</span></p>
+<p>The tangent comparison is the holomorphic contraction map</p>
+<p><span class="math display">\[
+T_Y\otimes K_Y\longrightarrow\Omega_Y^2,
+\qquad v\otimes\eta\longmapsto\iota_v\eta.
+\tag{5.4}
+\]</span></p>
+<p>In the original coordinate order it sends <span
+class="math inline">\(\partial/\partial z^j\otimes(dz^1\wedge dz^2\wedge
+dz^3)\)</span> to <span
+class="math inline">\((-1)^{j-1}dz^1\wedge\cdots\widehat{dz^j}\cdots\wedge
+dz^3\)</span>. It therefore has an invertible signed permutation matrix
+in every frame, and its definition by evaluation makes it independent of
+coordinates. It is a proved bundle isomorphism, with no suppressed sign.
+By (2.6), (5.4), and the torsion hypothesis,</p>
+<p><span class="math display">\[
+\chi(Y,T_Y)=\chi(Y,T_Y\otimes K_Y)=\chi_2.
+\tag{5.5}
+\]</span></p>
+<p>Now apply the full finite-complex identity (3.8) and the topological
+comparison (4.2):</p>
+<p><span class="math display">\[
+\chi_{\mathrm{top}}(Y)
+=\chi_0-\chi_1+\chi_2-\chi_3
+=2\chi_2=2\chi(Y,T_Y).
+\tag{5.6}
+\]</span></p>
+<p>For a line bundle <span class="math inline">\(L\)</span> with torsion
+<span class="math inline">\(c_1(L)\)</span>, (2.6) finally proves</p>
+<p><span class="math display">\[
+\chi(Y,T_Y\otimes L)
+=\frac12\chi_{\mathrm{top}}(Y)
+=1-b_1+b_2-\frac12b_3.
+\tag{5.7}
+\]</span></p>
+<p>No general index formula has been assumed in deriving (5.7).</p>
+<h2 id="tangent-characteristic-comparison">6. Identify the full
+characteristic-class pairing</h2>
+<p>We prove the remaining equality with <span
+class="math inline">\(c_3/2\)</span> and retain the full degree-six
+polynomial. The top Chern class equals the Euler class of the underlying
+real bundle with its complex orientation, by the exact Thom comparison
+in the included integral Chern provider. Thus it remains to evaluate
+<span class="math inline">\(e(TY_{\mathbb R})\)</span>.</p>
+<p>Here is the diagonal proof, including its orientation. The normal
+bundle of <span class="math inline">\(\Delta:Y\to Y\times Y\)</span> is
+identified with <span class="math inline">\(TY_{\mathbb R}\)</span>
+by</p>
+<p><span class="math display">\[
+v\longmapsto(-v,v).
+\tag{6.1}
+\]</span></p>
+<p>The tangent basis consists of <span
+class="math inline">\((v,v)\)</span>. The tangent-first, normal-second
+comparison matrix is <span
+class="math inline">\(\begin{pmatrix}I&amp;-I\\I&amp;I\end{pmatrix}\)</span>,
+whose real determinant is <span class="math inline">\(2^6&gt;0\)</span>.
+Thus the normal orientation agrees with the complex orientation under
+the exact map (6.1).</p>
+<p>A tubular neighbourhood supplies its relative Thom class. We give the
+analytic construction used here. For a smooth vector field <span
+class="math inline">\(G\)</span> in a coordinate ball, restrict to a
+smaller closed ball where <span class="math inline">\(\|G\|\le
+C\)</span>, <span class="math inline">\(\|DG\|\le L\)</span>. For <span
+class="math inline">\(T&gt;0\)</span> with <span
+class="math inline">\(TL&lt;1/2\)</span> and <span
+class="math inline">\(TC\)</span> less than the available boundary
+margin, the map on continuous paths <span class="math display">\[
+x(s)\longmapsto x_0+\int_0^sG(x(u))\,du
+\]</span> preserves the closed path ball and contracts its supremum
+distance. Its successive iterates converge by the geometric-series
+estimate to the unique solution. Differences of the equations give
+continuous dependence on <span class="math inline">\(x_0\)</span>. Its
+derivative solves <span
+class="math inline">\(J(s)=1+\int_0^sDG(x(u))J(u)\,du\)</span>, whose
+integral operator has norm below <span
+class="math inline">\(1/2\)</span>. Difference quotients converge to
+this solution using the uniform differentiability remainder of <span
+class="math inline">\(G\)</span>. Higher derivatives solve the same
+invertible integral equation with inhomogeneous terms consisting of
+already obtained derivatives. Induction proves smooth dependence.
+Uniqueness joins the local solutions across charts and successive time
+intervals.</p>
+<p>The local inverse assertion has the same explicit proof. If a smooth
+map <span class="math inline">\(F\)</span> has derivative <span
+class="math inline">\(B\)</span> invertible at a point, choose a closed
+ball where <span class="math inline">\(\|1-B^{-1}DF\|&lt;1/2\)</span>.
+For targets near its value, the map <span class="math inline">\(x\mapsto
+x+B^{-1}(y-F(x))\)</span> preserves that ball and contracts. Its unique
+fixed point is the inverse. The bound on inverse differences and the
+differentiability remainder give its derivative <span
+class="math inline">\(DF(x)^{-1}\)</span>; differentiating repeatedly
+proves smoothness.</p>
+<p>In a chart of <span class="math inline">\(Y\)</span>, the
+straight-line field on <span class="math inline">\(TY\)</span> has
+equations <span class="math inline">\(\dot x=v,\dot v=0\)</span>.
+Combine these fields with a smooth partition of unity on the base. The
+resulting global field projects to <span
+class="math inline">\(v\)</span>; its acceleration in every chart is
+quadratic in <span class="math inline">\(v\)</span>, since a coordinate
+change contributes <span class="math inline">\(D^2F(v,v)\)</span>. At a
+zero vector it is zero and its linearization is <span
+class="math inline">\(\dot u=w,\dot w=0\)</span>. The just proved
+local-flow result defines its time-one base point <span
+class="math inline">\(A(x,v)\)</span> near the zero section: the zero
+trajectories exist throughout that interval, and finitely many local
+intervals extend nearby trajectories. Its derivative at <span
+class="math inline">\((x,0)\)</span> is exactly <span
+class="math inline">\((u,v)\mapsto u+v\)</span>. Then <span
+class="math inline">\((x,v)\mapsto(A(x,-v),A(x,v))\)</span> has
+derivative equal to the invertible matrix just displayed. It is a local
+diffeomorphism near the zero section. It is injective on some uniform
+small disk bundle: otherwise two distinct vectors tending to zero with
+equal images have, by compactness, bases converging to the same point,
+contradicting the local inverse there. Its open image is the required
+tube. This is also the compact case of the fully written
+tubular-neighbourhood proof in the manifold-duality source recorded
+below.</p>
+<p>Let <span class="math inline">\(U_\Delta\in H^6(Y\times Y;\mathbb
+C)\)</span> be the image of that Thom class. Zero-section pullback and
+local Thom evaluation give</p>
+<p><span class="math display">\[
+\Delta^*U_\Delta=e(TY_{\mathbb R}),\qquad
+\langle z\smile U_\Delta,[Y\times Y]\rangle
+=\langle\Delta^*z,[Y]\rangle.
+\tag{6.2}
+\]</span></p>
+<p>For the second identity, subdivide for the tube/complement cover. The
+relative Thom cochain is zero on complement pieces. In an oriented
+tangent/normal product chart its cap with the ambient local generator
+evaluates to one on the normal factor, leaving the positive tangent
+generator. Excision and local fundamental-class compatibility give
+precisely the second equality. This is the chain-level evaluation
+argument from the included Thom provider, now with the normal
+orientation fixed by (6.1).</p>
+<p>Choose a homogeneous cohomology basis <span
+class="math inline">\(a_i\)</span> and its dual basis <span
+class="math inline">\(a_i^\vee\)</span>, where <span
+class="math inline">\(\langle a_i\smile
+a_j^\vee,[Y]\rangle=\delta_{ij}\)</span>. The product decomposition of
+cohomology follows either from the proved singular-chain product
+equivalence, or from the real Hodge proof: on the product metric the
+full Laplacian is <span
+class="math inline">\(\Delta_1\otimes1+1\otimes\Delta_2\)</span>, since
+the two cross terms cancel with the exterior-degree sign. Product
+eigenforms form a complete basis, by the separate compact eigenbasis and
+Fubini; only two zero eigenvalues can sum to zero. Thus products of
+harmonic forms span the product cohomology. Using its perfect pairing
+from (4.4), (6.2) determines</p>
+<p><span class="math display">\[
+U_\Delta=\sum_i(-1)^{|a_i|}a_i\times a_i^\vee.
+\tag{6.3}
+\]</span></p>
+<p>To check its sign, test the right side against <span
+class="math inline">\(u\times v\)</span> of total degree six. A
+contributing term has <span class="math inline">\(|a_i|=|v|\)</span>.
+The external-product multiplication sign is <span
+class="math inline">\((-1)^{|v||a_i|}=(-1)^{|a_i|}\)</span>, cancelling
+its displayed coefficient. The resulting sum <span
+class="math inline">\(\sum_i\langle u a_i,[Y]\rangle\langle v
+a_i^\vee,[Y]\rangle\)</span> equals <span class="math inline">\(\langle
+uv,[Y]\rangle\)</span>, exactly the second identity of (6.2).
+Perfectness proves (6.3). Pulling it back to the diagonal and evaluating
+gives</p>
+<p><span class="math display">\[
+\langle c_3(T_Y),[Y]\rangle
+=\langle e(TY_{\mathbb R}),[Y]\rangle
+=\sum_i(-1)^{|a_i|}
+=\chi_{\mathrm{top}}(Y).
+\tag{6.4}
+\]</span></p>
+<p>Now write <span class="math inline">\(c_j=c_j(T_Y)\)</span>, <span
+class="math inline">\(\ell=c_1(L)\)</span>, and let <span
+class="math inline">\(x_1,x_2,x_3\)</span> be the formal tangent Chern
+roots. The splitting provider makes identities in symmetric expressions
+of these roots identities of the original characteristic classes. The
+complete comparison of characteristic factors is</p>
+<p><span class="math display">\[
+e^{c_1/2}\widehat A(TY_{\mathbb R})
+=e^{(x_1+x_2+x_3)/2}
+\prod_{j=1}^3\frac{x_j/2}{\sinh(x_j/2)}
+=\prod_{j=1}^3\frac{x_j}{1-e^{-x_j}}
+=\operatorname{td}(T_Y).
+\tag{6.5}
+\]</span></p>
+<p>For each root this follows from <span
+class="math inline">\(2\sinh(x/2)=e^{x/2}-e^{-x/2}\)</span>. All factors
+remain in this identity. Expanding the character and Todd factors
+through degree six gives the full polynomial</p>
+<p><span class="math display">\[
+\begin{aligned}
+P_6&amp;=[\operatorname{ch}(T_Y)\operatorname{ch}(L)\operatorname{td}(T_Y)]_6\\
+&amp;=\frac12c_3+\frac12c_1^3-\frac{19}{24}c_1c_2
++\frac54\ell c_1^2-\frac34\ell c_2
++\frac54\ell^2c_1+\frac12\ell^3.
+\end{aligned}
+\tag{6.6}
+\]</span></p>
+<p>The exact factor expansions and every mixed coefficient are proved in
+lesson10, equations (11.5)–(11.6). In the present theorem, <span
+class="math inline">\(c_1=-c_1(K_Y)\)</span> and <span
+class="math inline">\(\ell\)</span> are torsion as integral classes.
+Each of the six non-<span class="math inline">\(c_3\)</span> terms in
+(6.6) therefore has zero image in rational cohomology. In particular the
+terms <span class="math inline">\(c_1c_2\)</span> and <span
+class="math inline">\(\ell c_2\)</span> vanish for this explicit reason,
+even when <span class="math inline">\(c_2\ne0\)</span>. We retain their
+original coefficients and contributions before making that evaluation.
+Equations (5.7) and (6.4) give the exact receiving equality</p>
+<p><span class="math display">\[
+\chi(Y,T_Y\otimes L)
+=\langle P_6,[Y]\rangle
+=\frac12\langle c_3(T_Y),[Y]\rangle.
+\tag{6.7}
+\]</span></p>
+<p>This proves (0.1) and its full characteristic-polynomial comparison
+under the stated hypotheses. In the original course threefold, <span
+class="math inline">\(H^2(Y;\mathbb Z)=0\)</span>, <span
+class="math inline">\(b_1=b_2=b_3=0\)</span>, and both first classes
+satisfy those hypotheses. Thus the value is exactly <span
+class="math inline">\(1\)</span>, for every original holomorphic line
+bundle and every period parameter.</p>
+<p>If instead only <span class="math inline">\(b_1=b_2=0\)</span> is
+assumed, the integral group <span class="math inline">\(H^2(Y;\mathbb
+Z)\)</span> is finite: compact-manifold homology is finitely generated,
+and universal coefficients give rank zero in this degree. Hence every
+<span class="math inline">\(c_1(L)\)</span>, including that of <span
+class="math inline">\(K_Y\)</span>, is torsion. Equation (5.7) proves
+the value <span class="math inline">\(1-b_3/2\)</span> on
+<strong>every</strong> Picard component. This establishes the exact
+generality used in lesson10, Section11.5 and Exercise13.4.</p>
+<h2 id="tangent-index-exercises">7. Two calculations with complete
+solutions</h2>
+<h3
+id="exercise-1.-compute-an-actual-annihilator-before-applying-the-index">Exercise
+1. Compute an actual annihilator before applying the index</h3>
+<p>Suppose a smooth line bundle satisfies <span
+class="math inline">\(L^{\otimes3}\cong\mathbf1\)</span> and has four
+global sections with no common zero. Calculate an integer annihilating
+<span class="math inline">\([L]-1\)</span>, without setting that class
+to zero.</p>
+<p><strong>Solution.</strong> Put <span
+class="math inline">\(a=[L]-1\)</span>. The Koszul contraction gives
+<span class="math inline">\(a^4=0\)</span>. The tensor-power relation
+gives</p>
+<p><span class="math display">\[
+3a+3a^2+a^3=0,\qquad 3a=-a^2(3+a).
+\tag{7.1}
+\]</span></p>
+<p>Multiplying by <span class="math inline">\(a^2\)</span> first gives
+<span class="math inline">\(3a^3=0\)</span>. Multiplying the relation by
+<span class="math inline">\(a\)</span> gives <span
+class="math inline">\(3a^2=-3a^3\)</span>, hence <span
+class="math inline">\(3a^2=0\)</span>. Returning to (7.1), <span
+class="math inline">\(3a=-a^3\)</span>, and multiplying by <span
+class="math inline">\(3\)</span> gives <span
+class="math inline">\(9a=0\)</span>. The general bound (2.5) would give
+<span class="math inline">\(27a=0\)</span>; this exact calculation
+proves the stronger annihilator <span class="math inline">\(9\)</span>
+for these data. It does not assert <span
+class="math inline">\(a=0\)</span>. For every <span
+class="math inline">\(W\)</span>, the index homomorphism nevertheless
+gives <span class="math inline">\(9I_Y([W]a)=0\)</span> in <span
+class="math inline">\(\mathbb Z\)</span>, hence the exact equality <span
+class="math inline">\(I_Y(W\otimes L)=I_Y(W)\)</span>.</p>
+<h3 id="exercise-2.-keep-the-second-transferred-differential">Exercise
+2. Keep the second transferred differential</h3>
+<p>Consider a double complex over <span class="math inline">\(\mathbb
+C\)</span> with basis elements <span
+class="math inline">\(a,u,v,w\)</span> in bidegrees <span
+class="math inline">\((0,1),(1,0),(1,1),(2,0)\)</span>. Its vertical
+differential is <span class="math inline">\(\bar\partial u=v\)</span>,
+zero on the other basis elements. Its horizontal differential is <span
+class="math inline">\(\partial a=v\)</span>, <span
+class="math inline">\(\partial u=w\)</span>, zero otherwise. Compute its
+vertical harmonic model and the full transferred differential.</p>
+<p><strong>Solution.</strong> Give the basis the orthonormal metric. The
+vertical cohomology is spanned by <span class="math inline">\(a\)</span>
+and <span class="math inline">\(w\)</span>; its contraction is <span
+class="math inline">\(h(v)=u\)</span> and zero on the other elements.
+The vertical projection kills <span class="math inline">\(u,v\)</span>.
+The equations <span class="math inline">\(\partial^2=0\)</span> and
+<span
+class="math inline">\(\bar\partial\partial+\partial\bar\partial=0\)</span>
+hold on each of the four basis elements. The first transferred term
+<span class="math inline">\(P\partial I\)</span> is zero. The second
+gives</p>
+<p><span class="math display">\[
+-P\partial h\partial I(a)
+=-P\partial h(v)=-P\partial u=-w.
+\tag{7.2}
+\]</span></p>
+<p>All higher terms vanish by the displayed bidegrees. Thus <span
+class="math inline">\(D(a)=-w\)</span>, <span
+class="math inline">\(D(w)=0\)</span>, and the finite model is acyclic.
+The complete original total differential sends <span
+class="math inline">\(a\)</span> to <span
+class="math inline">\(v\)</span> and <span
+class="math inline">\(u\)</span> to <span
+class="math inline">\(v+w\)</span>; its matrix from degree one to degree
+two in bases <span class="math inline">\((a,u)\)</span>, <span
+class="math inline">\((v,w)\)</span> is <span
+class="math inline">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>,
+which is invertible. This independently confirms the actual zero total
+cohomology. Dropping the second term would incorrectly leave two nonzero
+cohomology classes. The Euler characteristic remains zero either way,
+which shows why the full chain comparison contains more information than
+the alternating sum alone.</p>
+<figure style="overflow-x:auto; margin:2em 0;">
+<img id="higher-transfer-diagram" src="assets/higher-transfer-term.svg" alt="The exact four-generator double complex has a zero first transferred term and the nonzero second term sending a to minus w." style="width:100%; min-width:900px; max-width:none; display:block;">
+<figcaption>
+The original bidegrees and all three nonzero arrows in Exercise2 are
+shown, together with the contraction of the vertical pair. The negative
+sign of the effective map is the second term of (3.5), not a chosen
+change of basis. Equations (3.5)–(3.7) and the full solution prove the
+calculation. The perturbation comparison with Crainic is given in the
+included smooth-duality chapter.
+</figcaption>
+</figure>
+<h2 id="tangent-index-sources">Sources, exact use, and limits</h2>
+<p>The human index reference is <a
+href="https://arxiv.org/abs/1604.03502v1">Paul F. Baum and Erik van Erp,
+<em>K-homology and Fredholm Operators I: Dirac Operators</em>,
+arXiv:1604.03502v1</a>, Theorem1 and its complex Spin<span
+class="math inline">\({}^c\)</span> appendix. The title and authors were
+checked against the retained original-author TeX. The source ledger
+records the exact portions read and the retained correction concerning
+negative Bott coefficients. This chapter proves its receiving
+tangent-twist formula by (1.1)–(6.7); it does not claim to supply a
+proof of that paper’s entire general index theorem.</p>
+<p>The transfer algebra is compared exactly with <a
+href="https://arxiv.org/abs/math/0403266v1">Marius Crainic, <em>On the
+perturbation lemma, and deformations</em>, arXiv math/0403266v1,
+Sections2–3</a> in the included smooth-duality chapter. The finite sum
+(3.4) verifies the required inverse here without an operator-norm
+hypothesis. The compact-support, tubular and signed-diagonal comparisons
+were checked against the CC0 chapter <em>Manifold duality, the diagonal
+and Wu classes</em>, written by GPT-6.1 Sol (OpenAI), Sections1–4, with
+its source hash and reading coverage retained privately. That chapter’s
+human references include Milnor–Stasheff and Hatcher; no claim is made
+that those protected books were read in this increment.</p>
+<p>The exact checks of the nilpotent transfer, integer annihilators and
+full characteristic polynomial supplement these written proofs. They do
+not constitute independent review or replace the compact-operator and
+sheaf arguments.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

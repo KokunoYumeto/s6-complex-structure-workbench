@@ -1,0 +1,975 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Global periods and the line-bundle quotient</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/global-periods-and-line-bundle-quotients.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="cg-s6-04">Global periods and the line-bundle quotient</h1>
+<p>CG-S6 · Lesson 4</p>
+<p>The local functions in <a href="CG-S6-03.html">lesson
+3</a> must belong to one global family. We construct that family,
+determine its entire admissible constant parameter set, and recover its
+original four periods from a quotient of a line bundle. The geometric
+comparison keeps the coefficient <span class="math inline">\(6\)</span>,
+the signed translation, and the full parameter <span
+class="math inline">\(\beta\)</span>. The extension over singular
+elliptic fibres is proved in <a
+href="CG-S6-05.html#period-section">lesson 5, Sections
+9–13</a>.</p>
+<p>Throughout, <span class="math inline">\(B=\mathbb P^1\)</span>, and
+its coordinate <span class="math inline">\(t\)</span> has values <span
+class="math inline">\(0,1,\infty\)</span> at <span
+class="math inline">\(p_1,p_2,p_0\)</span>. We retain</p>
+<p><span class="math display">\[
+\rho=e^{\pi i/3},\quad
+\Lambda=\mathbb Z\langle\widehat\gamma,\widehat u,
+\widehat w,\widehat\delta\rangle,\quad
+\Pi(z)=\begin{pmatrix}6\mu(z)&amp;\tau(z)&amp;1&amp;0\\
+\beta(z)&amp;\mu(z)&amp;0&amp;1\end{pmatrix}.
+\tag{0.1}
+\]</span></p>
+<p>Every quotient below is given with its maps. In particular, the
+elliptic curve, its line bundle, and the two-dimensional torus are
+different objects connected by explicit maps.</p>
+<h2 id="global-tau">1. The base and its modular period</h2>
+<p>Let <span class="math inline">\(\mathfrak h_z\to
+B\setminus\{p_0\}\)</span> be the simply connected orbifold cover with
+stabilizer orders <span class="math inline">\(3,4\)</span> at <span
+class="math inline">\(p_1,p_2\)</span>. Its group is</p>
+<p><span class="math display">\[
+\Delta=\langle g_1,g_2\mid g_1^3=g_2^4=1\rangle,
+\qquad g_0=(g_1g_2)^{-1}.
+\tag{1.1}
+\]</span></p>
+<p>Here the two finite generators turn clockwise. In coordinates <span
+class="math inline">\(s_j\)</span> centred at their fixed points <span
+class="math inline">\(z_j\)</span>,</p>
+<p><span class="math display">\[
+s_1(g_1z)=e^{-2\pi i/3}s_1(z),\qquad
+s_2(g_2z)=-i\,s_2(z).
+\tag{1.2}
+\]</span></p>
+<p>These signs are compatible with a parabolic cusp generator. Indeed,
+take a hyperbolic triangle with counterclockwise vertices <span
+class="math inline">\(A,B,C\)</span>, angles <span
+class="math inline">\(\pi/3,\pi/4,0\)</span>, and reflections <span
+class="math inline">\(\sigma_a,\sigma_b,\sigma_c\)</span> in opposite
+sides. The products</p>
+<p><span class="math display">\[
+x=\sigma_b\sigma_c,\quad y=\sigma_c\sigma_a,
+\quad z=\sigma_a\sigma_b,
+\qquad xyz=1
+\tag{1.3}
+\]</span></p>
+<p>rotate counterclockwise at <span class="math inline">\(A,B\)</span>.
+Set <span class="math inline">\(g_1=x^{-1},g_2=y^{-1}\)</span>. Then
+<span class="math inline">\(g_2g_1=z\)</span>, and <span
+class="math inline">\(g_1g_2=g_1zg_1^{-1}\)</span> is parabolic.
+Reflecting the triangle across its sides gives the cover. Around the
+finite vertices there are exactly <span class="math inline">\(6\)</span>
+and <span class="math inline">\(8\)</span> triangles, so their lifted
+neighbourhoods are discs; at the ideal vertex the successive strips give
+a cusp. The side identifications give precisely (1.1). The resulting
+complete simply connected surface has curvature <span
+class="math inline">\(-1\)</span> and is the hyperbolic plane. The local
+coordinate <span class="math inline">\((z-z_j)/(z-\overline
+z_j)\)</span> conjugates a rotation to multiplication by its complex
+derivative and proves (1.2).</p>
+<p>We use the modular functions with their complete usual factors:</p>
+<p><span class="math display">\[
+\begin{aligned}
+q&amp;=e^{2\pi i\tau},\\
+E_4(\tau)&amp;=1+240\sum_{n\ge1}\sigma_3(n)q^n,\\
+E_6(\tau)&amp;=1-504\sum_{n\ge1}\sigma_5(n)q^n,\\
+\Delta_{\rm mod}(\tau)&amp;=\frac{E_4(\tau)^3-E_6(\tau)^2}{1728}
+=q\prod_{n\ge1}(1-q^n)^{24},\\
+j(\tau)&amp;=\frac{E_4(\tau)^3}{\Delta_{\rm mod}(\tau)},\qquad
+j(\tau)-1728=\frac{E_6(\tau)^2}{\Delta_{\rm mod}(\tau)}.
+\end{aligned}
+\tag{1.4}
+\]</span></p>
+<p>Here <span class="math inline">\(\sigma_k(n)=\sum_{d\mid
+n}d^k\)</span>. The provider <a
+href="https://github.com/KokunoYumeto/open-mathematics-courses/blob/ce281243637cab6b7c09f94806b99e78fdb1d69e/courses/LG-MF/lessons/the-valence-formula-and-the-ring-of-modular-forms-of-level-one.md">LG-MF
+lesson 5, §§1–4</a> proves the valence formula, these zero divisors, the
+product, and the bijection <span
+class="math inline">\(\operatorname{PSL}_2(\mathbb Z)\backslash\mathfrak
+h\to\mathbb C\)</span> induced by <span
+class="math inline">\(j\)</span>. In particular, <span
+class="math inline">\(E_4\)</span> has a simple zero at the order-three
+orbit, <span class="math inline">\(E_6\)</span> a simple zero at the
+order-two orbit, and <span class="math inline">\(\Delta_{\rm
+mod}\)</span> has no zero in <span class="math inline">\(\mathfrak
+h\)</span>. That provider uses <span
+class="math inline">\(\rho-1\)</span>; translation by <span
+class="math inline">\(1\)</span>, under which all three forms in (1.4)
+are invariant, identifies that point with our unchanged <span
+class="math inline">\(\rho\)</span>. Away from <span
+class="math inline">\(0,1728\)</span>, <span
+class="math inline">\(j\)</span> is an unramified covering. Its local
+degrees at <span class="math inline">\(\rho,i\)</span> are <span
+class="math inline">\(3,2\)</span>, respectively. At the cusp, <span
+class="math inline">\(1/j=q+O(q^2)\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> There is a holomorphic function <span
+class="math inline">\(\tau:\mathfrak h_z\to\mathfrak h\)</span> with</p>
+<p><span class="math display">\[
+j(\tau(z))=1728t(z),\qquad
+\tau(g_1z)=\frac{\tau(z)-1}{\tau(z)},\quad
+\tau(g_2z)=-\frac1{\tau(z)},\quad
+\tau(g_0z)=\tau(z)-1.
+\tag{1.5}
+\]</span></p>
+<p>It has <span
+class="math inline">\(\tau(z_1)=\rho,\tau(z_2)=i\)</span>; the
+respective vanishing orders of <span
+class="math inline">\(\tau-\rho,\tau-i\)</span> are <span
+class="math inline">\(1,2\)</span>. In the specific cusp coordinate
+<span class="math inline">\(w=1/t\)</span>,</p>
+<p><span class="math display">\[
+e^{2\pi i\tau}=\frac{w}{1728}+O(w^2).
+\tag{1.6}
+\]</span></p>
+<p><strong>Proof.</strong> Delete the inverse images of <span
+class="math inline">\(0,1728\)</span>. A small meridian around a deleted
+point maps under <span class="math inline">\(1728t\)</span> to the third
+power of an order-three modular meridian or the fourth power of an
+order-two modular meridian. Both deck transformations are the identity.
+Small meridians normally generate the fundamental group of the punctured
+simply connected cover: any compact loop bounds a disc meeting only
+finitely many punctures, which can be removed by cutting arcs to those
+points. Thus the covering lifting criterion gives a lift through <span
+class="math inline">\(j\)</span>.</p>
+<p>Compose the lift with a biholomorphism <span
+class="math inline">\(\mathfrak h\to\mathbb D\)</span>. The bounded
+function extends at each deleted point. Its extended value cannot lie on
+the unit circle, since the maximum principle would make it constant. The
+lift therefore extends into <span class="math inline">\(\mathfrak
+h\)</span>. Comparison of local degrees gives the orders <span
+class="math inline">\(1,2\)</span>.</p>
+<p>Deck transformations give a homomorphism <span
+class="math inline">\(\varphi:\Delta\to\operatorname{PSL}_2(\mathbb
+Z)\)</span>. After moving the first value to <span
+class="math inline">\(\rho\)</span>, differentiation at its simple zero
+gives</p>
+<p><span class="math display">\[
+\varphi(g_1)=S_1,\quad S_1(v)=(v-1)/v,
+\qquad S_1&#39;(\rho)=\rho^{-2}=e^{-2\pi i/3}.
+\tag{1.7}
+\]</span></p>
+<p>The image of <span class="math inline">\(g_2\)</span> has order two:
+it fixes the second elliptic value, and triviality would force the order
+of its local invariant function to be divisible by <span
+class="math inline">\(4\)</span>, contrary to order <span
+class="math inline">\(2\)</span>.</p>
+<p>The cusp image <span class="math inline">\(P=\varphi(g_0)\)</span>
+preserves one component of <span
+class="math inline">\(j^{-1}(\{|v|&gt;R\})\)</span>. Its stabilizer
+consists of parabolic translations at that component’s rational cusp.
+The image is nontrivial. Otherwise, after moving that cusp to infinity,
+the lifted period would descend to the punctured base disc. Its
+exponential <span class="math inline">\(q\)</span> would have a zero,
+because <span class="math inline">\(j\sim q^{-1}\)</span> has a pole,
+and also a single-valued logarithm. The argument principle gives
+positive winding for the zero and zero winding for the logarithm, a
+contradiction.</p>
+<p>For completeness the cusp width and sign can be calculated without
+guessing them. The trace-<span class="math inline">\(+2\)</span> lift of
+a nontrivial integral parabolic fixing the primitive vector <span
+class="math inline">\((p,r)^{\mathsf t}\)</span> is</p>
+<p><span class="math display">\[
+\widetilde P=I+k\begin{pmatrix}-pr&amp;p^2\\-r^2&amp;pr\end{pmatrix},
+\quad k\in\mathbb Z\setminus\{0\},\quad \gcd(p,r)=1.
+\tag{1.8}
+\]</span></p>
+<p>To see this form, write its nilpotent difference from the identity as
+a rank-one map whose image and kernel are both the fixed line. The
+primitive image vector is <span class="math inline">\((p,r)\)</span>,
+and its integral annihilator is generated by <span
+class="math inline">\((-r,p)\)</span>. Integrality gives the integer
+<span class="math inline">\(k\)</span>. Since <span
+class="math inline">\(\varphi(g_2)=S_1^{-1}P^{-1}\)</span> has
+projective order two,</p>
+<p><span class="math display">\[
+0=\operatorname{tr}(\widetilde S_1^{-1}\widetilde P^{-1})
+=1+k(p^2-pr+r^2),\qquad
+\widetilde S_1=\begin{pmatrix}1&amp;-1\\1&amp;0\end{pmatrix}.
+\tag{1.9}
+\]</span></p>
+<p>The positive integer <span class="math inline">\(p^2-pr+r^2\)</span>
+must be <span class="math inline">\(1\)</span>, and <span
+class="math inline">\(k=-1\)</span>. Its solutions, up to common sign,
+are <span class="math inline">\((1,0),(0,1),(1,1)\)</span>. A power of
+<span class="math inline">\(S_1\)</span>, which fixes <span
+class="math inline">\(\rho\)</span>, moves the fixed vector to <span
+class="math inline">\((1,0)\)</span>. Consequently <span
+class="math inline">\(P(v)=v-1\)</span> and <span
+class="math inline">\(\varphi(g_2)(v)=-1/v\)</span>. This proves every
+transformation in (1.5). Finally <span
+class="math inline">\(j=1728/w\)</span> and <span
+class="math inline">\(1/j=q+O(q^2)\)</span> give (1.6) by the inverse
+function theorem. ∎</p>
+<h2 id="sphere-gluing">2. The two gluing calculations on the sphere</h2>
+<p>We will use two additive gluing facts and give the analytic argument.
+A section of <span class="math inline">\(\mathcal O_B(-p_0)\)</span> is
+a holomorphic function required to vanish at <span
+class="math inline">\(p_0\)</span>; local frames can be <span
+class="math inline">\(e_0=1\)</span> on the finite chart and <span
+class="math inline">\(e_\infty=w=1/t\)</span> near infinity. Their
+transition is <span
+class="math inline">\(e_\infty=t^{-1}e_0\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Additive holomorphic cocycles on the
+sphere with values in either <span class="math inline">\(\mathcal
+O_B\)</span> or <span class="math inline">\(\mathcal O_B(-p_0)\)</span>
+split into local holomorphic functions. Global holomorphic sections are
+constants for the first sheaf and zero for the second.</p>
+<p><strong>Proof.</strong> For an arbitrary finite open cover and
+cocycle, a smooth partition of unity first splits it into smooth local
+functions. Applying <span class="math inline">\(\bar\partial\)</span>
+gives a globally defined smooth <span
+class="math inline">\((0,1)\)</span>-form with values in the specified
+line bundle, since the original differences are holomorphic. It suffices
+to solve <span class="math inline">\(\bar\partial v=\alpha\)</span>.</p>
+<p>Use two slightly enlarged discs containing <span
+class="math inline">\(|t|\le2\)</span> and <span
+class="math inline">\(|t|\ge1\)</span>, respectively. In each frame,
+multiply the local coefficient of <span
+class="math inline">\(\alpha\)</span> by a smooth cutoff equal to one on
+the smaller disc. For a compactly supported coefficient <span
+class="math inline">\(a\)</span>, the Cauchy transform</p>
+<p><span class="math display">\[
+v(z)=\frac1\pi\int_{\mathbb C}\frac{a(\zeta)}{z-\zeta}
+\,dA(\zeta)
+\tag{2.1}
+\]</span></p>
+<p>satisfies <span class="math inline">\(\bar\partial v=a\,d\bar
+z\)</span>. This follows by applying Cauchy’s integral formula on a disc
+with a radius-<span class="math inline">\(\varepsilon\)</span> hole
+around <span class="math inline">\(z\)</span>, integrating by parts, and
+taking <span class="math inline">\(\varepsilon\to0\)</span>; the
+boundary integral at that hole contributes <span
+class="math inline">\(a(z)\)</span>, and the remaining kernel is locally
+integrable. Thus obtain local smooth solutions <span
+class="math inline">\(v_0,v_\infty\)</span>.</p>
+<p>For <span class="math inline">\(\mathcal O_B(-p_0)\)</span>, their
+difference <span class="math inline">\(h=v_0-t^{-1}v_\infty\)</span> is
+holomorphic on <span class="math inline">\(1&lt;|t|&lt;2\)</span>. Its
+convergent Laurent series splits exactly as</p>
+<p><span class="math display">\[
+h=\sum_{n\in\mathbb Z}a_nt^n=f_0-t^{-1}f_\infty,
+\quad f_0=\sum_{n\ge0}a_nt^n,
+\quad f_\infty=-\sum_{n\le-1}a_nt^{n+1}.
+\tag{2.2}
+\]</span></p>
+<p>The first series extends into the finite disc; the second is
+holomorphic in <span class="math inline">\(w\)</span>, including <span
+class="math inline">\(w=0\)</span>. Subtracting them makes the two
+smooth solutions agree as a global section. For <span
+class="math inline">\(\mathcal O_B\)</span>, use the same decomposition
+with <span class="math inline">\(h=v_0-v_\infty\)</span> and <span
+class="math inline">\(f_\infty=-\sum_{n&lt;0}a_nt^n\)</span>. Subtract
+the resulting global solution from the original smooth cocycle
+splitting. This gives the required holomorphic splitting. Finally a
+holomorphic function on the compact sphere is constant by the maximum
+principle, and a constant vanishing at infinity is zero. ∎</p>
+<h2 id="global-mu">3. A unique cusp-regular middle period</h2>
+<p>Define a multiplicative factor by</p>
+<p><span class="math display">\[
+\widetilde\jmath(g_1,z)=-\tau(z),\quad
+\widetilde\jmath(g_2,z)=\tau(z),\quad
+\widetilde\jmath(gh,z)=\widetilde\jmath(g,hz)\widetilde\jmath(h,z).
+\tag{3.1}
+\]</span></p>
+<p>It is well defined on (1.1), since</p>
+<p><span class="math display">\[
+(-1)^3\tau\frac{\tau-1}{\tau}\frac{-1}{\tau-1}=1,
+\qquad
+\tau\left(-\frac1\tau\right)\tau\left(-\frac1\tau\right)=1.
+\tag{3.2}
+\]</span></p>
+<p>It has <span
+class="math inline">\(\widetilde\jmath(g_0,z)=1\)</span>. The
+homogeneous problem asks for</p>
+<p><span class="math display">\[
+\nu(gz)=\nu(z)/\widetilde\jmath(g,z)
+\tag{3.3}
+\]</span></p>
+<p>with a holomorphic invariant branch at the cusp.</p>
+<p><strong>Theorem 3.1.</strong> There is exactly one holomorphic <span
+class="math inline">\(\mu\)</span> satisfying</p>
+<p><span class="math display">\[
+\mu(g_1z)=\frac{1-\mu(z)}{\tau(z)},\quad
+\mu(g_2z)=1+\frac{\mu(z)}{\tau(z)},\quad
+\mu(g_0z)=\mu(z),
+\tag{3.4}
+\]</span></p>
+<p>whose cusp branch is holomorphic in <span
+class="math inline">\(w=1/t\)</span>. Its finite special values are
+<span class="math inline">\(\mu(z_1)=(2-\rho)/3\)</span> and <span
+class="math inline">\(\mu(z_2)=(1-i)/2\)</span>.</p>
+<p><strong>Proof.</strong> The finite relations close by substitution,
+as in lesson 3. At the respective elliptic points local solutions
+are</p>
+<p><span class="math display">\[
+\mu_1=(2-\tau)/3,\qquad \mu_2=(1-\tau)/2.
+\tag{3.5}
+\]</span></p>
+<p>At an ordinary point choose zero on one sheet, extending to the other
+sheets by (3.4). At the cusp choose zero on its distinguished component.
+Thus solutions exist locally; the difference of any two satisfies
+(3.3).</p>
+<p>We identify the sheaf of these differences exactly. The function
+<span class="math inline">\(E_6\circ\tau\)</span> has only double zeros
+on the simply connected cover, so it has a global holomorphic square
+root <span class="math inline">\(h\)</span>. One construction continues
+a local square root along paths: each small zero meridian changes the
+argument by an even multiple of <span
+class="math inline">\(2\pi\)</span>, so there is no sign monodromy.
+Put</p>
+<p><span class="math display">\[
+\Theta=\frac{(E_4\circ\tau)^2h}{\Delta_{\rm mod}\circ\tau}.
+\tag{3.6}
+\]</span></p>
+<p>The quotient <span
+class="math inline">\(h(g_jz)/(\tau(z)^3h(z))\)</span> has square one
+and extends at zeros. At <span class="math inline">\(z_1\)</span>, <span
+class="math inline">\(h\ne0\)</span> and <span
+class="math inline">\(\rho^3=-1\)</span>, so its sign is <span
+class="math inline">\(-1\)</span>. At <span
+class="math inline">\(z_2\)</span>, <span
+class="math inline">\(h\)</span> has a simple zero and <span
+class="math inline">\(s_2(g_2z)=-is_2(z)\)</span>, so the ratio <span
+class="math inline">\(h(g_2z)/h(z)\)</span> tends to <span
+class="math inline">\(-i=i^3\)</span>; its sign is <span
+class="math inline">\(+1\)</span>. The modular weights <span
+class="math inline">\(4,6,12\)</span> give</p>
+<p><span class="math display">\[
+\Theta(g_1z)=-\Theta(z)/\tau(z),\qquad
+\Theta(g_2z)=\Theta(z)/\tau(z).
+\tag{3.7}
+\]</span></p>
+<p>The orders of <span class="math inline">\(\Theta\)</span> at <span
+class="math inline">\(z_1,z_2\)</span> are <span
+class="math inline">\(2,1\)</span>. A solution of (3.3) is divisible by
+these respective powers. For example, using <span
+class="math inline">\(q_1=(\tau-\rho)/(\tau-\bar\rho)\)</span>,
+multiplication by <span class="math inline">\(1-q_1\)</span> changes
+(3.3) into the character law <span
+class="math inline">\(f(\zeta_1s)=\zeta_1^2f(s)\)</span>, so its series
+has only powers <span class="math inline">\(s^{2+3n}\)</span>. At <span
+class="math inline">\(z_2\)</span>, the corresponding character is <span
+class="math inline">\(-i\)</span>, giving powers <span
+class="math inline">\(s^{1+4n}\)</span>. These are precisely the
+homogeneous terms in lesson 3, equation (1.4). Dividing by <span
+class="math inline">\(\Theta\)</span> therefore gives an ordinary
+holomorphic function of the base coordinate at each finite point.</p>
+<p>At infinity, (1.6) and (1.4) give <span
+class="math inline">\(\Theta=w^{-1}\)</span> times a holomorphic unit.
+Cusp regularity says that <span
+class="math inline">\(\nu/\Theta\)</span> vanishes at <span
+class="math inline">\(w=0\)</span>. Consequently the difference sheaf is
+exactly <span class="math inline">\(\mathcal O_B(-p_0)\)</span>, via
+multiplication by <span class="math inline">\(\Theta\)</span>. Lemma 2.1
+splits the local affine differences and gives a global solution. Its
+difference from any other global solution lies in the zero space of
+global sections of <span class="math inline">\(\mathcal
+O_B(-p_0)\)</span>. This proves uniqueness. Substitution at the fixed
+points gives the stated values. ∎</p>
+<h2 id="global-beta">4. The last period and all its constants</h2>
+<p>Define</p>
+<p><span class="math display">\[
+\phi_1=2-\frac{6(1-\mu)^2}{\tau},\qquad
+\phi_2=-3-\frac{6\mu^2}{\tau}.
+\tag{4.1}
+\]</span></p>
+<p><strong>Theorem 4.1.</strong> There is a holomorphic <span
+class="math inline">\(\beta^{\rm part}\)</span> with</p>
+<p><span class="math display">\[
+\beta(g_1z)=\beta(z)+\phi_1(z),\quad
+\beta(g_2z)=\beta(z)+\phi_2(z),\quad
+\beta(g_0z)=\beta(z)+1,
+\tag{4.2}
+\]</span></p>
+<p>such that <span class="math inline">\(b=\beta+\tau\)</span> is
+holomorphic in <span class="math inline">\(w\)</span> at the cusp. Every
+such solution is exactly <span class="math inline">\(\beta=\beta^{\rm
+part}+c\)</span>, with <span class="math inline">\(c\in\mathbb
+C\)</span>.</p>
+<p><strong>Proof.</strong> The three order-three increments are</p>
+<p><span class="math display">\[
+2-\frac{6(1-\mu)^2}{\tau},\quad
+2-\frac{6(\tau-1+\mu)^2}{\tau(\tau-1)},\quad
+2+\frac{6\mu^2}{\tau-1}.
+\tag{4.3}
+\]</span></p>
+<p>Their sum is zero, as putting them over <span
+class="math inline">\(\tau(\tau-1)\)</span> shows: the constant terms
+give <span class="math inline">\(6\tau(\tau-1)\)</span> and the other
+terms give its negative. The four order-four increments are</p>
+<p><span class="math display">\[
+-3-\frac{6\mu^2}{\tau},\quad
+-3+\frac{6(\tau+\mu)^2}{\tau},\quad
+-3-\frac{6(1-\tau-\mu)^2}{\tau},\quad
+-3+\frac{6(1-\mu)^2}{\tau}.
+\tag{4.4}
+\]</span></p>
+<p>Their sum is <span
+class="math inline">\(-12+(6/\tau)(2\tau)=0\)</span>. Thus the
+increments define a cocycle on the group (1.1). Direct composition gives
+the cusp increment <span class="math inline">\(+1\)</span>.</p>
+<p>At each elliptic point the explicit local solution is</p>
+<p><span class="math display">\[
+\beta_j=\frac1{m_j}\sum_{k=0}^{m_j-1}k\,\phi_j(g_j^kz).
+\tag{4.5}
+\]</span></p>
+<p>Subtracting this expression from its <span
+class="math inline">\(g_j\)</span>-translate telescopes to <span
+class="math inline">\(\phi_j\)</span>, using the zero total increment.
+Ordinary local solutions can be chosen as zero on one sheet; the cusp
+solution is <span class="math inline">\(-\tau\)</span>. Their
+differences are invariant holomorphic functions, including at infinity.
+Lemma 2.1 glues them and says that any two global solutions differ by a
+constant. ∎</p>
+<h2 id="admissible-constants">5. The exact nonsingularity range</h2>
+<p>Write <span
+class="math inline">\(T=\operatorname{Im}\tau&gt;0\)</span>, <span
+class="math inline">\(U=\operatorname{Im}\mu\)</span>, <span
+class="math inline">\(V=\operatorname{Im}\beta\)</span>. Retain the full
+scalar</p>
+<p><span class="math display">\[
+D=V-\frac{6U^2}{T}.
+\tag{5.1}
+\]</span></p>
+<p>For the ordered real output <span
+class="math inline">\((\operatorname{Re}z_1,\operatorname{Im}z_1,
+\operatorname{Re}z_2,\operatorname{Im}z_2)\)</span> and the input order
+in (0.1), the real determinant is <span
+class="math inline">\(TD\)</span>. In fact, the real matrix is</p>
+<p><span class="math display">\[
+\begin{pmatrix}
+6\operatorname{Re}\mu&amp;\operatorname{Re}\tau&amp;1&amp;0\\
+6U&amp;T&amp;0&amp;0\\
+\operatorname{Re}\beta&amp;\operatorname{Re}\mu&amp;0&amp;1\\
+V&amp;U&amp;0&amp;0
+\end{pmatrix}.
+\tag{5.2}
+\]</span></p>
+<p>Expansion in its last two columns gives <span
+class="math inline">\(TV-6U^2=TD\)</span>.</p>
+<p>The lattice maps and complex maps are the unchanged ones:</p>
+<p><span class="math display">\[
+\begin{gathered}
+A_1=\begin{pmatrix}1&amp;0&amp;0&amp;0\\6&amp;0&amp;1&amp;0\\-6&amp;-1&amp;-1&amp;0\\-2&amp;1&amp;0&amp;1\end{pmatrix},\quad
+A_2=\begin{pmatrix}1&amp;0&amp;0&amp;0\\0&amp;0&amp;-1&amp;0\\-6&amp;1&amp;0&amp;0\\3&amp;0&amp;1&amp;1\end{pmatrix},\\
+R_1=\begin{pmatrix}-1/\tau&amp;0\\(1-\mu)/\tau&amp;1\end{pmatrix},\quad
+R_2=\begin{pmatrix}1/\tau&amp;0\\-\mu/\tau&amp;1\end{pmatrix},\\
+R_j(z)\Pi(z)=\Pi(g_jz)A_j.
+\end{gathered}
+\tag{5.3}
+\]</span></p>
+<p>The last identities follow by multiplying all four columns, or from
+the full calculation in lesson 3. Both integral determinants are <span
+class="math inline">\(1\)</span>, while <span
+class="math inline">\(|\det_{\mathbb C}R_j|^2=1/|\tau|^2\)</span> and
+<span class="math inline">\(T(g_jz)=T(z)/|\tau|^2\)</span>. Taking real
+determinants in (5.3) shows <span
+class="math inline">\(D(g_jz)=D(z)\)</span>. Thus <span
+class="math inline">\(D\)</span> is a continuous function on the finite
+base, including its orbifold points.</p>
+<p>For a fixed particular solution let</p>
+<p><span class="math display">\[
+D_{\rm part}=\operatorname{Im}\beta^{\rm part}-\frac{6U^2}{T},
+\qquad M=\max_{B\setminus\{p_0\}}D_{\rm part}.
+\tag{5.4}
+\]</span></p>
+<p><strong>Theorem 5.1.</strong> The maximum in (5.4) exists and is
+finite. The exact constants giving a real isomorphism (0.1) at every
+point are</p>
+<p><span class="math display">\[
+\boxed{\operatorname{Im}c&lt;-M.}
+\tag{5.5}
+\]</span></p>
+<p><strong>Proof.</strong> At the cusp, <span
+class="math inline">\(\mu,b=\beta^{\rm part}+\tau\)</span> are bounded
+and <span class="math inline">\(T\to+\infty\)</span>, so</p>
+<p><span class="math display">\[
+D_{\rm part}=\operatorname{Im}b-T-6U^2/T\longrightarrow-\infty.
+\tag{5.6}
+\]</span></p>
+<p>Choose a point of the finite base. Outside a sufficiently large
+compact set, the value is smaller than its value at that point minus
+<span class="math inline">\(1\)</span>. The maximum on the compact set
+is therefore the global maximum. Adding <span
+class="math inline">\(c\)</span> changes <span
+class="math inline">\(D\)</span> by exactly <span
+class="math inline">\(\operatorname{Im}c\)</span>. Strict inequality in
+(5.5) makes every determinant negative. At equality it vanishes at a
+maximum point. Above the boundary it is positive there and negative near
+the cusp; the intermediate value theorem along a path gives a zero.
+Since <span class="math inline">\(T&gt;0\)</span>, these are exactly the
+failures of the real isomorphism. ∎</p>
+<p>This also proves why cusp regularity is part of the construction. The
+replacement <span
+class="math inline">\(\widetilde\beta=\beta+it\)</span> preserves every
+affine group law but adds <span
+class="math inline">\(\operatorname{Re}t\)</span> to <span
+class="math inline">\(D\)</span>. On the actual ray <span
+class="math inline">\(t=R\to+\infty\)</span>,</p>
+<p><span class="math display">\[
+q=(1728R)^{-1}(1+O(R^{-1})),\qquad
+D(R)=-\frac{\log(1728R)}{2\pi}+\operatorname{Im}b(0)+o(1).
+\tag{5.7}
+\]</span></p>
+<p>Thus <span class="math inline">\(\widetilde D(R)\to+\infty\)</span>.
+No constant makes it negative everywhere. Its cusp expression <span
+class="math inline">\(\widetilde\beta+\tau=b+it\)</span> has a pole,
+exactly the excluded behaviour.</p>
+<p>For (5.5), the original periods form a discrete rank-four lattice:
+the real inverse of (5.2) maps a compact set to a bounded set, which
+contains only finitely many integral vectors. Locally in the base the
+inverse matrices are uniformly bounded on compact sets, proving proper
+discontinuity for the entire family. The quotient is a holomorphic
+family of compact complex tori. As a real family it is explicitly the
+product with <span class="math inline">\(\mathbb R^4/\Lambda\)</span>,
+via</p>
+<p><span class="math display">\[
+(z,[r])\longmapsto(z,[\Pi(z)r]).
+\tag{5.8}
+\]</span></p>
+<p>The inverse real marking varies smoothly. In particular, inverse
+images of compact base sets are compact. The identities (5.3) give the
+group action on the family; compositions satisfy the action law because
+they agree on a real basis of periods. No further complex coordinates
+have been substituted for the original matrix.</p>
+<h2 id="line-bundle-dictionary">6. Recovering the line bundle and its
+signed translation</h2>
+<p>Fix a point of the cover and keep its exact <span
+class="math inline">\((\tau,\mu,\beta)\)</span>. First divide <span
+class="math inline">\(\mathbb C^2\)</span>, with coordinates <span
+class="math inline">\((\xi,\eta)\)</span>, by the last three columns of
+(0.1). Exponentiating only the second coordinate gives the explicit
+presentation</p>
+<p><span class="math display">\[
+L_\mu^\times=(\mathbb C\times\mathbb C^*)/\sim,
+\quad
+(\xi,W)\sim(\xi+1,W)\sim(\xi+\tau,e^{2\pi i\mu}W).
+\tag{6.1}
+\]</span></p>
+<p>It projects to <span class="math inline">\(E_\tau=\mathbb C/(\mathbb
+Z+\tau\mathbb Z)\)</span>. Allowing <span
+class="math inline">\(W=0\)</span> defines a holomorphic line bundle
+<span class="math inline">\(L_\mu\to E_\tau\)</span>.</p>
+<p><strong>Theorem 6.1.</strong> With <span
+class="math inline">\(P=[\mu]\in E_\tau\)</span> and <span
+class="math inline">\(O=[0]\)</span>,</p>
+<p><span class="math display">\[
+L_\mu\simeq\mathcal O_{E_\tau}(P-O).
+\tag{6.2}
+\]</span></p>
+<p>The remaining period acts by</p>
+<p><span class="math display">\[
+A(\xi,W)=(\xi+6\mu,e^{2\pi i\beta}W).
+\tag{6.3}
+\]</span></p>
+<p>Consequently there is a biholomorphism, with its complete covering
+map specified,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb C^2/\Pi\Lambda&amp;\longrightarrow L_\mu^\times/\langle
+A\rangle,\\
+[(\xi,\eta)]&amp;\longmapsto[(\xi,e^{2\pi i\eta})].
+\end{aligned}
+\tag{6.4}
+\]</span></p>
+<p>The generator covering translation by <span
+class="math inline">\(-6P\)</span> is exactly <span
+class="math inline">\(A^{-1}\)</span>, whose fibre multiplier is <span
+class="math inline">\(e^{-2\pi i\beta}\)</span>.</p>
+<p><strong>Proof.</strong> The odd theta function can be taken to be</p>
+<p><span class="math display">\[
+\vartheta(\xi,\tau)=\sum_{n\in\mathbb Z}
+\exp\!\left(\pi i(n+\tfrac12)^2\tau
++2\pi i(n+\tfrac12)(\xi+\tfrac12)\right).
+\tag{6.5}
+\]</span></p>
+<p>On compact subsets with <span
+class="math inline">\(\operatorname{Im}\tau&gt;0\)</span>, its summands
+and derivatives are bounded by a constant times <span
+class="math inline">\(e^{-a n^2+b|n|}\)</span>, so the series and its
+derivatives converge uniformly. Index changes give</p>
+<p><span class="math display">\[
+\vartheta(\xi+1)=-\vartheta(\xi),\quad
+\vartheta(\xi+\tau)=-e^{-\pi i\tau-2\pi i\xi}\vartheta(\xi),
+\quad \vartheta(-\xi)=-\vartheta(\xi).
+\tag{6.6}
+\]</span></p>
+<p>It is not the zero function, since its Fourier coefficients are
+nonzero. On a translated fundamental parallelogram avoiding zeros on the
+boundary, the logarithmic derivative has period <span
+class="math inline">\(1\)</span> and changes by <span
+class="math inline">\(-2\pi i\)</span> under <span
+class="math inline">\(\tau\)</span>. The vertical integrals cancel, and
+the oriented top and bottom integrals differ by <span
+class="math inline">\(2\pi i\)</span>. The argument principle gives
+exactly one zero, counted with multiplicity. Oddness places a zero at
+<span class="math inline">\(0\)</span>; hence all zeros are lattice
+points and are simple.</p>
+<p>Therefore</p>
+<p><span class="math display">\[
+f(\xi)=\frac{\vartheta(\xi-\mu,\tau)}{\vartheta(\xi,\tau)}
+\tag{6.7}
+\]</span></p>
+<p>is a meromorphic section for (6.1): <span
+class="math inline">\(f(\xi+1)=f(\xi)\)</span> and <span
+class="math inline">\(f(\xi+\tau)=e^{2\pi i\mu}f(\xi)\)</span>. Its
+divisor is <span class="math inline">\(P-O\)</span>, including
+cancellation when <span class="math inline">\(P=O\)</span>. A line
+bundle with a meromorphic section of divisor <span
+class="math inline">\(D\)</span> is <span class="math inline">\(\mathcal
+O(D)\)</span>: on local frames the section’s meromorphic coefficients
+give the transition functions of that divisor. This proves (6.2) without
+reversing the sign of <span class="math inline">\(P\)</span>.</p>
+<p>The translations in (6.1) commute with (6.3), so <span
+class="math inline">\(A\)</span> descends. Taking a local logarithm of
+<span class="math inline">\(W\)</span> gives an inverse to (6.4);
+changing that logarithm adds the fourth period <span
+class="math inline">\((0,1)\)</span>, the two identifications in (6.1)
+add the third and second periods, and changing the <span
+class="math inline">\(A\)</span>-representative adds the first period
+<span class="math inline">\((6\mu,\beta)\)</span>. Thus the inverse is
+well defined and holomorphic, and its only ambiguities are exactly <span
+class="math inline">\(\Pi\Lambda\)</span>. Inverting (6.3) proves the
+final signed formula. ∎</p>
+<h2 id="exact-contraction">7. The determinant is the contraction
+rate</h2>
+<figure>
+<img src="assets/period-line-quotient.svg" class="compact-diagram"
+alt="The complete marked period matrix maps first to the degree-zero line bundle and then to the torus quotient, with the negative translation and its exact contraction factor labelled." />
+<figcaption aria-hidden="true">The complete marked period matrix maps
+first to the degree-zero line bundle and then to the torus quotient,
+with the negative translation and its exact contraction factor
+labelled.</figcaption>
+</figure>
+<p><strong>Figure 1.</strong> These are quotient maps, not
+identifications of the three spaces before quotienting. The first arrow
+divides by the second, third and fourth columns of <span
+class="math inline">\(\Pi\)</span>; the second divides by the first
+column, with inverse generator chosen to display translation by <span
+class="math inline">\(-6[\mu]\)</span>. Theorem 6.1 proves the maps and
+Theorem 7.1 proves the norm ratio. <a
+href="checks/draw_period_quotient.py">Editable drawing
+program</a>.</p>
+<p>Define a Hermitian norm on (6.1) by</p>
+<p><span class="math display">\[
+N(\xi,W)=|W|\exp\!\left(2\pi\frac{U}{T}\operatorname{Im}\xi\right).
+\tag{7.1}
+\]</span></p>
+<p>It is invariant under both identifications: the second multiplies
+<span class="math inline">\(|W|\)</span> by <span
+class="math inline">\(e^{-2\pi U}\)</span> and the exponential by <span
+class="math inline">\(e^{2\pi U}\)</span>. It is therefore a norm on the
+actual line bundle, with no change of its factors.</p>
+<p><strong>Theorem 7.1.</strong> In this metric the lift of translation
+by <span class="math inline">\(-6P\)</span> satisfies the exact
+identity</p>
+<p><span class="math display">\[
+N(A^{-1}(\xi,W))=e^{2\pi D}N(\xi,W).
+\tag{7.2}
+\]</span></p>
+<p>For the whole cusp-regular family <span
+class="math inline">\(\beta=\beta^{\rm part}+c\)</span>, its constants
+and multiplicative parameters are related by</p>
+<p><span class="math display">\[
+u=e^{-2\pi ic},\quad |u|=e^{2\pi\operatorname{Im}c},\qquad
+0&lt;|u|&lt;e^{-2\pi M}.
+\tag{7.3}
+\]</span></p>
+<p>The last inequality is equivalent to nonsingularity at every base
+point.</p>
+<p><strong>Proof.</strong> Under <span
+class="math inline">\(A^{-1}\)</span>, the absolute multiplier of <span
+class="math inline">\(W\)</span> is <span class="math inline">\(e^{2\pi
+V}\)</span> and <span
+class="math inline">\(\operatorname{Im}\xi\)</span> decreases by <span
+class="math inline">\(6U\)</span>. The ratio of norms is exactly</p>
+<p><span class="math display">\[
+e^{2\pi V}\exp(-12\pi U^2/T)=e^{2\pi(V-6U^2/T)}.
+\tag{7.4}
+\]</span></p>
+<p>This proves (7.2). Multiplying this generator by <span
+class="math inline">\(u\)</span> changes its multiplier <span
+class="math inline">\(e^{-2\pi i\beta^{\rm part}}\)</span> to <span
+class="math inline">\(e^{-2\pi i(\beta^{\rm part}+c)}\)</span>, which
+proves the full parameter relation. Theorem 5.1 proves its exact range.
+The phase factor is exactly <span class="math inline">\(e^{-2\pi
+i\operatorname{Re}c}\)</span>, and the only kernel of <span
+class="math inline">\(c\mapsto u\)</span> is <span
+class="math inline">\(\mathbb Z\)</span>. ∎</p>
+<p>For clarity, contraction proves the required quotient properties
+directly. On a compact subset of <span
+class="math inline">\(L_\mu^\times\)</span>, <span
+class="math inline">\(N\)</span> has bounds <span
+class="math inline">\(0&lt;a\le N\le b\)</span>. If <span
+class="math inline">\(r=e^{2\pi D}&lt;1\)</span>, an intersection with
+its <span class="math inline">\(A^{-n}\)</span>-translate requires <span
+class="math inline">\(a/b\le r^n\le b/a\)</span>, permitting only
+finitely many integers <span class="math inline">\(n\)</span>. A fixed
+point for a nonzero power would require <span
+class="math inline">\(r^n=1\)</span>, which is impossible. Thus the
+action is free and properly discontinuous. On compact subsets of the
+base, continuity gives a uniform <span
+class="math inline">\(r&lt;1\)</span>, proving the corresponding
+assertion for families. The real marking (5.8) proves compactness of
+each torus and properness of the torus family.</p>
+<p>Equation (7.3) compares the complete period parameter to the scalar
+multiplying a chosen reference lift. The reference lift here is the
+explicitly constructed one for <span class="math inline">\(\beta^{\rm
+part}\)</span>. <a
+href="CG-S6-05.html#lift-comparison">Lesson 5, Theorem
+13.1</a>, proves its global extension over the resolved elliptic surface
+by the exact theta rigidification <span
+class="math inline">\(I=2r_\theta s_{P-O}/(fF_\theta)\)</span>. If the
+geometric reference was fixed independently, its full scalar is <span
+class="math inline">\(u_{\rm ref}=\lambda_0e^{-2\pi ic}\)</span>, with
+the nonzero constant <span class="math inline">\(\lambda_0\)</span>
+retained and computed by that comparison.</p>
+<h2 id="weierstrass-comparison">8. The cubic with the same elliptic
+periods</h2>
+<p>Let</p>
+<p><span class="math display">\[
+G_k(\tau)=\sum_{(m,n)\in\mathbb Z^2\setminus\{(0,0)\}}(m\tau+n)^{-k},
+\quad g_2=60G_4=\frac{4\pi^4}{3}E_4,
+\quad g_3=140G_6=\frac{8\pi^6}{27}E_6.
+\tag{8.1}
+\]</span></p>
+<p>Here <span class="math inline">\(g_2,g_3\)</span> are Weierstrass
+invariants; the subscripts in this section do not denote triangle
+generators. All constants follow from the lattice-series Fourier
+calculation in <a
+href="https://github.com/KokunoYumeto/open-mathematics-courses/blob/ce281243637cab6b7c09f94806b99e78fdb1d69e/courses/LG-MF/lessons/modular-forms-lattice-functions-and-eisenstein-series.md">LG-MF
+lesson 4, §§3–4</a>. In particular,</p>
+<p><span class="math display">\[
+g_2^3-27g_3^2=(2\pi)^{12}\Delta_{\rm mod},\qquad
+j=1728\frac{g_2^3}{g_2^3-27g_3^2}.
+\tag{8.2}
+\]</span></p>
+<p>On the cover define <span class="math inline">\(f\)</span>, up to one
+global sign, by</p>
+<p><span class="math display">\[
+f^2=-\frac23t(t-1)\frac{g_2}{g_3}.
+\tag{8.3}
+\]</span></p>
+<p>The right side has zero orders <span
+class="math inline">\(4,2\)</span> at the first and second elliptic
+orbits and is otherwise a holomorphic unit. Thus it extends and has a
+global square root, of orders <span class="math inline">\(2,1\)</span>.
+The same sign calculation as for <span class="math inline">\(h\)</span>
+gives</p>
+<p><span class="math display">\[
+f(g_1z)=-f(z)/\tau(z),\qquad f(g_2z)=f(z)/\tau(z).
+\tag{8.4}
+\]</span></p>
+<p><strong>Proposition 8.1.</strong> Over <span
+class="math inline">\(t\ne0,1,\infty\)</span>, the elliptic family above
+is explicitly isomorphic to</p>
+<p><span class="math display">\[
+y^2=x^3-3t^3(t-1)x+2t^4(t-1)^2
+\tag{8.5}
+\]</span></p>
+<p>by</p>
+<p><span class="math display">\[
+x=f^2\wp_\tau(\xi),\qquad y=\tfrac12 f^3\wp&#39;_\tau(\xi),\qquad
+O\mapsto[0:1:0].
+\tag{8.6}
+\]</span></p>
+<p><strong>Proof.</strong> The lattice series</p>
+<p><span class="math display">\[
+\wp_\tau(\xi)=\xi^{-2}+\sum_{\omega\in\mathbb Z+\tau\mathbb Z,\
+\omega\ne0}
+\left((\xi-\omega)^{-2}-\omega^{-2}\right)
+\tag{8.7}
+\]</span></p>
+<p>converges locally uniformly off its poles: each summand is <span
+class="math inline">\(O(|\omega|^{-3})\)</span> on a fixed compact set,
+and lattice point counting proves convergence. Its derivative is
+periodic by reindexing; evenness and evaluation at half a primitive
+period remove the possible additive constant, so <span
+class="math inline">\(\wp\)</span> itself is periodic. Expanding (8.7)
+near zero gives <span
+class="math inline">\(\wp=\xi^{-2}+3G_4\xi^2+5G_6\xi^4+\cdots\)</span>.
+Subtracting the principal parts shows that</p>
+<p><span class="math display">\[
+(\wp&#39;)^2-4\wp^3+g_2\wp+g_3=0:
+\tag{8.8}
+\]</span></p>
+<p>the difference is an elliptic function without poles, hence constant,
+and the constant term of its expansion is zero. The function <span
+class="math inline">\(\wp\)</span> has one double pole on the torus, so
+it has degree two to the sphere. Evenness pairs its points by <span
+class="math inline">\(\xi\mapsto-\xi\)</span>; the derivative
+distinguishes that pair except at a half-period, where the two points
+are already the same. At these branch points the cubic is nonsingular by
+(8.2). Thus <span class="math inline">\((\wp,\wp&#39;/2)\)</span>
+identifies the torus with its smooth cubic, including the point at
+infinity.</p>
+<p>Since <span class="math inline">\(j=1728t\)</span>, equation (8.2)
+gives <span class="math inline">\(g_2^3/g_3^2=27t/(t-1)\)</span> away
+from the elliptic values. Substitution in (8.3) retains the exact two
+identities</p>
+<p><span class="math display">\[
+f^4=\frac{12t^3(t-1)}{g_2},\qquad
+f^6=-\frac{8t^4(t-1)^2}{g_3}.
+\tag{8.9}
+\]</span></p>
+<p>Equations (8.8)–(8.9) give precisely (8.5). Scaling a lattice by
+<span class="math inline">\(a\)</span> gives <span
+class="math inline">\(\wp_{a\Lambda}(a\xi)=a^{-2}\wp_\Lambda(\xi)\)</span>
+and the derivative factor <span class="math inline">\(a^{-3}\)</span>,
+directly from (8.7). The elliptic part of (5.3) has <span
+class="math inline">\(a=-1/\tau,1/\tau\)</span>; together with (8.4),
+these factors make both coordinates in (8.6) invariant. Hence the map
+descends over the finite punctured base. ∎</p>
+<p>There is also a direct rationality calculation for (8.5). Set</p>
+<p><span class="math display">\[
+w=1-1/t,\quad X=x/t^2,\quad Y=y/t^3.
+\tag{8.10}
+\]</span></p>
+<p>The equation becomes <span
+class="math inline">\(Y^2=X^3-3wX+2w^2\)</span>. On the open set <span
+class="math inline">\(X\ne0\)</span>, let <span
+class="math inline">\(U=(Y-\sqrt2w)/X\)</span>. Substitution gives the
+exact inverse formulas</p>
+<p><span class="math display">\[
+w=\frac{X^2-U^2X}{3+2\sqrt2U},\quad
+Y=UX+\sqrt2w,\quad t=\frac1{1-w},\quad
+x=t^2X,\quad y=t^3Y.
+\tag{8.11}
+\]</span></p>
+<p>They are mutual rational inverses where their displayed denominators
+are nonzero. Thus this surface has function field <span
+class="math inline">\(\mathbb C(X,U)\)</span>; any smooth projective
+resolution has the same function field and is rational. The visible
+section <span class="math inline">\((x,y)=(0,\sqrt2t^2(t-1))\)</span>
+follows by direct substitution. <a
+href="CG-S6-05.html#period-section">Lesson 5, Theorems
+9.1 and 11.2</a>, uses the complete affine logarithm cocycle and the
+resolved fibres to prove that the original period section is a
+Mordell–Weil generator and equals one of the two signed visible
+sections. It also proves its exact height <span
+class="math inline">\(1/6\)</span>, its divisor intersections and the
+resulting identity <span
+class="math inline">\(\wp_\tau(\mu)=0\)</span>.</p>
+<p>For later use the full cubic invariants are</p>
+<p><span class="math display">\[
+c_4=144t^3(t-1),\quad c_6=-1728t^4(t-1)^2,\quad
+\Delta_{\rm cub}=1728t^8(t-1)^3.
+\tag{8.12}
+\]</span></p>
+<p>They are different from <span class="math inline">\(\Delta_{\rm
+mod}\)</span>, and (8.9) records their scale comparison. At infinity,
+<span class="math inline">\(v=1/t,\ X_\infty=v^2x,\
+Y_\infty=v^3y\)</span> gives</p>
+<p><span class="math display">\[
+Y_\infty^2=X_\infty^3-3(1-v)X_\infty+2(1-v)^2,
+\quad \Delta_\infty=1728v(1-v)^3.
+\tag{8.13}
+\]</span></p>
+<p>At <span class="math inline">\(v=0\)</span>, the cubic is <span
+class="math inline">\((X_\infty-1)^2(X_\infty+2)\)</span>, so its
+singularity is a node at <span class="math inline">\((1,0)\)</span>:
+writing <span class="math inline">\(h=X_\infty-1\)</span>, its lowest
+equation is <span class="math inline">\(Y_\infty^2-3h^2=0\)</span>, with
+two distinct tangent lines. This calculation retains the two branches
+needed in the cusp construction.</p>
+<h2 id="exercises">9. Exercises with complete solutions</h2>
+<p><strong>Exercise 9.1.</strong> Compute the complete permitted
+half-plane for <span class="math inline">\(c\)</span>, and its image
+under <span class="math inline">\(c\mapsto e^{-2\pi ic}\)</span>, when
+<span class="math inline">\(M=7/3\)</span>. Determine whether two
+constants with the same image necessarily give the same marked period
+matrix.</p>
+<p><strong>Solution.</strong> The half-plane is <span
+class="math inline">\(\operatorname{Im}c&lt;-7/3\)</span>. Its image is
+the punctured disc <span
+class="math inline">\(0&lt;|u|&lt;e^{-14\pi/3}\)</span>. Equality of
+exponentials means <span class="math inline">\(c&#39;-c=n\in\mathbb
+Z\)</span>. The matrices then differ in the first column by <span
+class="math inline">\(n(0,1)^{\mathsf t}\)</span>. Their unmarked
+lattices are equal, by the integral basis change <span
+class="math inline">\(\widehat\gamma\mapsto\widehat\gamma+n\widehat\delta\)</span>,
+with the other three basis vectors fixed. Their marked period matrices
+agree only for <span class="math inline">\(n=0\)</span>. The quotient
+parameter retains the phase modulo this exact integral change of
+marking.</p>
+<p><strong>Exercise 9.2.</strong> Derive the norm multiplier for <span
+class="math inline">\(A^k\)</span> for every <span
+class="math inline">\(k\in\mathbb Z\)</span>, including all factors, and
+use it to prove that no nonzero power fixes a point when <span
+class="math inline">\(D\ne0\)</span>.</p>
+<p><strong>Solution.</strong> The iterate is <span
+class="math inline">\((\xi+6k\mu,e^{2\pi ik\beta}W)\)</span>. The
+absolute multiplier of <span class="math inline">\(W\)</span> is <span
+class="math inline">\(e^{-2\pi kV}\)</span>, and the exponential in
+(7.1) changes by <span class="math inline">\(e^{12\pi kU^2/T}\)</span>.
+Their product is <span class="math inline">\(e^{-2\pi kD}\)</span>.
+Since a point of <span class="math inline">\(L_\mu^\times\)</span> has
+strictly positive norm, a fixed point requires this number to be <span
+class="math inline">\(1\)</span>; real <span
+class="math inline">\(D\ne0\)</span> forces <span
+class="math inline">\(k=0\)</span>. For <span
+class="math inline">\(D&gt;0\)</span>, it is <span
+class="math inline">\(A\)</span> that contracts, whereas for <span
+class="math inline">\(D&lt;0\)</span>, it is <span
+class="math inline">\(A^{-1}\)</span>. The global cusp condition fixes
+the latter sign throughout the admitted family.</p>
+<p><strong>Exercise 9.3.</strong> Verify the rational parametrization
+(8.11) without cancelling the exceptional sets out of its domain.</p>
+<p><strong>Solution.</strong> Starting with <span
+class="math inline">\(Y=UX+\sqrt2w\)</span> gives <span
+class="math inline">\(Y^2-2w^2=U^2X^2+2\sqrt2UXw\)</span>. Equality to
+<span class="math inline">\(X^3-3wX\)</span>, on <span
+class="math inline">\(X\ne0\)</span>, is equivalent to <span
+class="math inline">\((3+2\sqrt2U)w=X^2-U^2X\)</span>. If <span
+class="math inline">\(3+2\sqrt2U\ne0\)</span>, this is precisely (8.11).
+Conversely those formulas give the original cubic and recover <span
+class="math inline">\(U=(Y-\sqrt2w)/X\)</span>. The affine <span
+class="math inline">\(t\)</span>-chart also requires <span
+class="math inline">\(w\ne1\)</span>, while (8.10) requires <span
+class="math inline">\(t\ne0\)</span>. These restrictions describe the
+open sets of the birational map; the curves omitted by them remain part
+of the elliptic surface and must be treated in its completion.</p>
+<p><strong>Exercise 9.4.</strong> Explain why multiplying <span
+class="math inline">\(\beta\)</span>’s cusp exponential by a nonzero
+constant does not discard the cusp contribution <span
+class="math inline">\(+1\)</span> in (4.2).</p>
+<p><strong>Solution.</strong> The equality <span
+class="math inline">\(\beta(g_0z)=\beta(z)+1\)</span> remains true after
+adding <span class="math inline">\(c\)</span>. Its exponential <span
+class="math inline">\(e^{-2\pi i\beta}\)</span> is invariant, but the
+logarithm still changes by <span class="math inline">\(-2\pi i\)</span>.
+Writing <span class="math inline">\(b=\beta+\tau\)</span> gives <span
+class="math inline">\(e^{-2\pi i\beta}=e^{-2\pi ib}q\)</span>, with
+<span class="math inline">\(q=e^{2\pi i\tau}\)</span>. Equation (1.6)
+shows a simple zero, and multiplication by <span
+class="math inline">\(e^{-2\pi ic}\ne0\)</span> preserves its order.
+Thus the integral cusp monodromy appears as the exact vanishing order of
+the multiplier; it has not disappeared.</p>
+<h2 id="sources">Sources and proof scope</h2>
+<p>The global period construction is independently taught from the
+retained <a
+href="https://zenodo.org/records/22678442/files/28_s6_complete_public_project_frozen_2026-09-06.zip">programme
+source archive</a>, member
+<code>project/supporting_materials/workbench/research/candidate_geometry.tex</code>,
+especially <code>prop:period-input-audit</code>,
+<code>prop:period-exact-admissible-constants</code>, and the
+cusp-extension remark. The full matrix marking comes from the same
+archive and the first three lessons. The original construction is
+attributed there to work produced with Claude under Levent Alpöge’s
+direction; the retained transcription is a reconstruction, not
+original-author TeX.</p>
+<p><a href="https://arxiv.org/abs/2609.38442v1">Philip Engel,
+<em>Complex structures on S6</em>, arXiv:2609.38442v1</a>,
+original-author <code>S6.tex</code>, §1.3 and §2, gives the geometric
+line-bundle and lifted-translation presentation and equation (8.5).
+Sections 6–8 here supply explicit fibre maps, the exact contraction
+identity, and the cubic scale calculation. They do not infer the
+still-needed resolution and section-intersection arguments from Engel’s
+short period dictionary. The modular prerequisites have the precise
+pinned proof links above. These proofs are author self-checks; this
+lesson does not claim independent review of the whole construction.</p>
+<p>Original course exposition and calculations: CC0-1.0. Human sources
+retain their own authorship and rights.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

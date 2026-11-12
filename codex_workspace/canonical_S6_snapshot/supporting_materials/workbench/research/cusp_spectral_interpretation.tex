@@ -1,0 +1,332 @@
+\section{The exact gapless auxiliary operator and the physical boundary}
+\label{cusp-interpretation-section}
+
+The preceding flat-torus calculation produces eigenvalues tending to zero
+along the radial cusp.  This section identifies a single self-adjoint
+operator for which those numbers genuinely form a gapless spectrum, proves
+that complex and Hodge-theoretic data alone cannot determine such a
+spectrum, and states the exact additional morphism needed to transfer an
+auxiliary Rayleigh sequence to a physical Hamiltonian.  In particular, the
+word \emph{gapless} below is attached to a specified operator and Hilbert
+space, not to the complex threefold in isolation.
+
+\subsection{A direct-integral scalar Laplacian with zero essential threshold}
+\label{cusp-interpretation-direct-integral-subsection}
+
+Use the angular coordinates \(y\in\mathbb R^4/\mathbb Z^4\) of
+\cref{cusp-spec-exact-dual-lattice}.  The map \(y\mapsto P_Ty\) identifies
+this fixed torus with \(F_T\), and normalized Haar measure on \(F_T\) pulls
+back to \(dy\).  Write
+\[
+ e_k(y):=e^{2\pi i k\cdot y},
+ \qquad
+ \lambda_k(T):=4\pi^2\lvert P_T^{-\mathsf T}k\rvert^2,
+ \qquad k\in\mathbb Z^4.
+\]
+By \cref{cusp-spec-exact-dual-lattice}, these are exactly the
+scalar-Laplacian eigenfunctions and eigenvalues on \((F_T,g_T)\), normalized
+in \(L^2\) for Haar probability measure.
+
+Fix \(T_0\) large enough that all radial formulas of
+\cref{cusp-spec-exact-dual-lattice,cusp-spec-shortest-modes} hold, and put
+\begin{equation}
+ \mathscr H_{\mathrm{aux}}
+ :=L^2\!\left([T_0,\infty),dT;
+ L^2_0(\mathbb R^4/\mathbb Z^4,dy)\right).
+ \label{cusp-interpretation-auxiliary-Hilbert-space}
+\end{equation}
+Fourier expansion gives the concrete unitary identification
+\begin{equation}
+ \mathscr H_{\mathrm{aux}}
+ \cong
+ \bigoplus_{k\in\mathbb Z^4\setminus\{0\}}
+ L^2([T_0,\infty),dT).
+ \label{cusp-interpretation-Fourier-direct-sum}
+\end{equation}
+Define the multiplication operator
+\begin{equation}
+ (\mathscr L_{\mathrm{aux}}u)_k(T)
+ :=\lambda_k(T)u_k(T)
+ \label{cusp-interpretation-direct-integral-operator}
+\end{equation}
+on the exact domain
+\begin{equation}
+ D(\mathscr L_{\mathrm{aux}})
+ :=\left\{u\in\mathscr H_{\mathrm{aux}}:
+ \sum_{k\ne0}\int_{T_0}^{\infty}
+ \lambda_k(T)^2\lvert u_k(T)\rvert^2\,dT<\infty\right\}.
+ \label{cusp-interpretation-direct-integral-domain}
+\end{equation}
+Thus \(\mathscr L_{\mathrm{aux}}\) is, by definition and not by analogy,
+the direct integral of the mean-zero scalar Laplacians \(\Delta_{F_T}\).
+
+\begin{theorem}[A proved gapless auxiliary operator]
+\label{cusp-interpretation-direct-integral-gapless}
+The operator \(\mathscr L_{\mathrm{aux}}\) in
+\cref{cusp-interpretation-direct-integral-operator} is nonnegative and
+self-adjoint.  It has no zero eigenvector, but
+\begin{equation}
+ 0\in\sigma_{\mathrm{ess}}(\mathscr L_{\mathrm{aux}}).
+ \label{cusp-interpretation-zero-essential-spectrum}
+\end{equation}
+In particular, this specified auxiliary operator has no positive spectral
+gap above zero.
+\end{theorem}
+
+\begin{proof}
+For each \(k\ne0\), \(\lambda_k(T)\) is a positive continuous real function.
+Multiplication by it on
+\[
+ \{v\in L^2([T_0,\infty)):\lambda_kv\in L^2([T_0,\infty))\}
+\]
+is self-adjoint and nonnegative: its adjoint domain is obtained by testing
+against compactly supported bounded functions, which forces
+\(\lambda_kv\in L^2\), and the adjoint acts by the same real multiplier.
+The orthogonal sum of these multiplication operators has precisely the
+domain in \cref{cusp-interpretation-direct-integral-domain}; hence it is
+self-adjoint and nonnegative.  Since every \(\lambda_k(T)\) is strictly
+positive, \(\mathscr L_{\mathrm{aux}}u=0\) implies \(u_k=0\) almost
+everywhere for every \(k\ne0\), so its kernel is zero.
+
+Let \(k_0=(1,0,0,0)\).  The exact formula
+\cref{cusp-spec-unit-mode-exact-lengths} gives
+\begin{equation}
+ \lambda_{k_0}(T)
+ =4\pi^2\frac{L_T^2+m_T^2}{D_T^2}
+ =\frac{4\pi^2}{T^2}\bigl(1+O(T^{-1})\bigr).
+ \label{cusp-interpretation-soft-mode-eigenvalue}
+\end{equation}
+Choose integers \(n>T_0\), and define \(u^{(n)}\) by
+\begin{equation}
+ u^{(n)}_{k_0}(T)=\mathbf1_{[n,n+1]}(T),
+ \qquad u^{(n)}_k(T)=0\quad(k\ne k_0).
+ \label{cusp-interpretation-Weyl-sequence}
+\end{equation}
+The vectors \(u^{(n)}\) lie in
+\(D(\mathscr L_{\mathrm{aux}})\), are orthonormal, and converge weakly to
+zero because their \(T\)-supports escape to infinity.  Moreover,
+\[
+ \lVert\mathscr L_{\mathrm{aux}}u^{(n)}\rVert^2
+ =\int_n^{n+1}\lambda_{k_0}(T)^2\,dT
+ \le\sup_{T\in[n,n+1]}\lambda_{k_0}(T)^2
+ \longrightarrow0
+\]
+by \cref{cusp-interpretation-soft-mode-eigenvalue}.  This orthonormal
+singular sequence proves
+\(0\in\sigma_{\mathrm{ess}}(\mathscr L_{\mathrm{aux}})\).  Explicitly, if
+zero were outside the essential spectrum, then, because the kernel is zero,
+some interval \([0,\varepsilon)\) would have finite-dimensional spectral
+projection.  Its complement would satisfy
+\(\lVert\mathscr L_{\mathrm{aux}}v\rVert\ge
+\varepsilon\lVert v\rVert\); weak convergence would make the components of
+\(u^{(n)}\) in the finite-dimensional spectral subspace tend strongly to
+zero, contradicting
+\(\lVert\mathscr L_{\mathrm{aux}}u^{(n)}\rVert\to0\) and
+\(\lVert u^{(n)}\rVert=1\).
+\end{proof}
+
+\begin{remark}[The unit-volume normalization is a different operator family]
+The theorem uses the unscaled Euclidean quotient metrics \(g_T\).  By
+\cref{cusp-spec-unit-volume}, the first positive scalar eigenvalue for
+\(\widehat g_T=D_T^{-1/2}g_T\) still tends to zero, but at the different
+rate
+\[
+ \lambda_1(F_T,\widehat g_T)
+ =\frac{4\pi^2}{T}\bigl(1+O(T^{-1})\bigr),
+\]
+rather than the unscaled \(T^{-2}\) rate.  Rescaling a metric changes its
+Laplacian, so the two operator families and their asymptotic scales must not
+be identified.
+\end{remark}
+
+\subsection{Complex data do not select a spectral gap}
+\label{cusp-interpretation-metric-indeterminacy-subsection}
+
+\begin{proposition}[Fixed complex torus, fixed volume, arbitrarily small gap]
+\label{cusp-interpretation-fixed-complex-counterexample}
+Let
+\[
+ A=(\mathbb C/(\mathbb Z+i\mathbb Z))^2
+\]
+with fixed complex coordinates
+\(z_j=x_j+iy_j\).  For \(R\ge1\), the metric
+\begin{equation}
+ g_R=R^2(dx_1^2+dy_1^2)+R^{-2}(dx_2^2+dy_2^2)
+ \label{cusp-interpretation-fixed-complex-metric}
+\end{equation}
+is a flat K\"ahler metric of volume one on the same complex torus, while
+\begin{equation}
+ \lambda_1(\Delta_{g_R})=\frac{4\pi^2}{R^2}\longrightarrow0.
+ \label{cusp-interpretation-fixed-complex-gap}
+\end{equation}
+Consequently the complex structure, Hodge decomposition, integral
+cohomology, and coherent direct-image data of a trivial family do not, even
+together with total volume, determine a positive lower bound for the scalar
+Laplacian gap.
+\end{proposition}
+
+\begin{proof}
+The associated two-form
+\[
+ \omega_R=R^2dx_1\wedge dy_1+R^{-2}dx_2\wedge dy_2
+\]
+is closed, positive, and \(J\)-invariant, so \(g_R\) is K\"ahler for the fixed
+complex structure.  In the ordered real coordinates
+\((x_1,y_1,x_2,y_2)\), its matrix is
+\(\operatorname{diag}(R^2,R^2,R^{-2},R^{-2})\), whose determinant is one;
+therefore the volume is one.  The Fourier character
+\[
+ e_{a,b,c,d}
+ =\exp(2\pi i(ax_1+by_1+cx_2+dy_2))
+\]
+has eigenvalue
+\[
+ 4\pi^2\left(R^{-2}(a^2+b^2)+R^2(c^2+d^2)\right).
+\]
+For \(R\ge1\), the minimum over nonzero integer quadruples is
+\(4\pi^2R^{-2}\), attained at the four vectors
+\[
+ (a,b,c,d)\in
+ \{(1,0,0,0),(-1,0,0,0),(0,1,0,0),(0,-1,0,0)\}.
+\]
+This proves
+\cref{cusp-interpretation-fixed-complex-gap}.  None of the listed complex or
+cohomological objects depends on \(R\), and for a trivial holomorphic family
+their coherent direct images are likewise unchanged.
+\end{proof}
+
+\subsection{The exact bridge to a physical Hamiltonian}
+\label{cusp-interpretation-physical-bridge-subsection}
+
+The mathematical mass gap in the Clay formulation is a property of the
+Hamiltonian of a constructed four-dimensional quantum Yang--Mills theory,
+not of an internal scalar Laplacian or of a classical Hessian
+\cite{JaffeWitten2000}.  Euclidean input reaches such a Hamiltonian only
+after a positive-metric reconstruction satisfying, in particular, the
+Osterwalder--Schrader requirements
+\cite{OsterwalderSchrader1973,OsterwalderSchrader1975}.  The following
+proposition isolates the exact operator-theoretic statement that any proposed
+transfer must prove.
+
+\begin{proposition}[Typed Rayleigh-sequence transfer]
+\label{cusp-interpretation-typed-physical-transfer}
+Let \(H\ge0\) be self-adjoint on a Hilbert space
+\(\mathcal H_{\mathrm{phys}}\).  Define
+\begin{equation}
+ \mathcal V_0:=\ker H,
+ \qquad P_0:=\mathbf1_{\{0\}}(H),
+ \qquad
+ \mathcal H_{\mathrm{exc}}:=(I-P_0)\mathcal H_{\mathrm{phys}},
+ \label{cusp-interpretation-excitation-space}
+\end{equation}
+and let
+\begin{equation}
+ \mathfrak h[\psi]:=\lVert H^{1/2}\psi\rVert^2,
+ \qquad
+ \mathcal Q(H):=D(H^{1/2}).
+ \label{cusp-interpretation-Hamiltonian-form}
+\end{equation}
+For each \(n\), let \(\mathcal K_n\) be a Hilbert space,
+\(\mathfrak q_n\) a nonnegative quadratic form on a domain
+\(D(\mathfrak q_n)\subseteq\mathcal K_n\), and
+\(0\ne u_n\in D(\mathfrak q_n)\).  Suppose there is a linear map
+\[
+ J_n:\operatorname{span}\{u_n\}\longrightarrow\mathcal Q(H),
+\]
+and put
+\(\psi_n=(I-P_0)J_nu_n\).  If there are \(c>0\), \(C_n\ge0\), and
+\(\varepsilon_n\ge0\) such that
+\begin{align}
+ \lVert\psi_n\rVert
+ &\ge c\lVert u_n\rVert,
+ \label{cusp-interpretation-norm-noncollapse}\\
+ \mathfrak h[\psi_n]
+ &\le C_n\mathfrak q_n[u_n]
+       +\varepsilon_n\lVert u_n\rVert^2,
+ \label{cusp-interpretation-energy-transfer}\\
+ C_n\frac{\mathfrak q_n[u_n]}{\lVert u_n\rVert^2}
+   +\varepsilon_n&\longrightarrow0.
+ \label{cusp-interpretation-physical-smallness}
+\end{align}
+Then the excitation Hamiltonian
+\[
+ H_{\mathrm{exc}}
+ :=H\big|_{D(H)\cap\mathcal H_{\mathrm{exc}}}
+\]
+is self-adjoint and satisfies
+\begin{equation}
+ \inf\sigma(H_{\mathrm{exc}})=0,
+ \qquad
+ 0\in\sigma_{\mathrm{ess}}(H_{\mathrm{exc}}).
+ \label{cusp-interpretation-physical-gapless-conclusion}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The spectral projection \(P_0\) commutes with \(H\) and \(H^{1/2}\), so
+\[
+ \mathcal H_{\mathrm{phys}}
+ =\ker H\oplus\mathcal H_{\mathrm{exc}}
+\]
+is a reducing decomposition.  Hence \(H_{\mathrm{exc}}\) is self-adjoint,
+nonnegative, has form domain
+\(\mathcal Q(H)\cap\mathcal H_{\mathrm{exc}}\), and has zero kernel.
+Define \(w_n=\psi_n/\lVert\psi_n\rVert\).  Then
+\(\lVert w_n\rVert=1\),
+\(w_n\in\mathcal Q(H)\cap\mathcal H_{\mathrm{exc}}\), and
+\begin{align*}
+ \mathfrak h[w_n]
+ &=\frac{\mathfrak h[\psi_n]}{\lVert\psi_n\rVert^2}\\
+ &\le c^{-2}\left(
+ C_n\frac{\mathfrak q_n[u_n]}{\lVert u_n\rVert^2}
+ +\varepsilon_n\right)\longrightarrow0.
+\end{align*}
+The variational characterization of the bottom of a nonnegative
+self-adjoint operator gives
+\[
+ \inf\sigma(H_{\mathrm{exc}})
+ =\inf_{0\ne\psi\in
+ \mathcal Q(H)\cap\mathcal H_{\mathrm{exc}}}
+ \frac{\mathfrak h[\psi]}{\lVert\psi\rVert^2}=0.
+\]
+Since the spectrum is closed, zero belongs to it; since
+\(\ker H_{\mathrm{exc}}=0\), zero is not an eigenvalue.  It is therefore a
+continuous spectral point, and hence belongs to the essential spectrum under
+the standard definition that removes isolated eigenvalues of finite
+multiplicity.
+\end{proof}
+
+\begin{remark}[Why one vacuum vector is not enough]
+If the vacuum is unique, choose a normalized vector
+\(\Omega\) spanning \(\ker H\).  Then
+\(P_0=|\Omega\rangle\langle\Omega|\).  Without uniqueness, merely requiring
+\(J_nu_n\perp\Omega\) does not project away every zero-energy state.  For
+example,
+\[
+ H=\operatorname{diag}(0,0,1),\qquad
+ \Omega=(1,0,0),\qquad \psi=(0,1,0)
+\]
+has \(\psi\perp\Omega\) and zero Rayleigh quotient, although the genuine
+excitation space \((\ker H)^\perp\) is the third coordinate and has gap one.
+Thus \cref{cusp-interpretation-excitation-space} must use the full kernel
+unless vacuum uniqueness is independently proved.
+\end{remark}
+
+\begin{auditrecord}[What the \(S^6\) calculation proves]
+\label{cusp-interpretation-present-boundary}
+The radial period matrix, scalar spectra, classical gauge Hessian, finite
+cochain operator, magnetic Laplacian, and reducible \(SU(2)\) Jacobi operator
+are explicit auxiliary geometric or classical operators.  They prove the
+operator statements made in
+\cref{cusp-interpretation-direct-integral-gapless,cusp-gauge-continuum-gap,cusp-gauge-finite-gap-limits,cusp-magnetic-oscillator-theorem,cusp-magnetic-negative-mode}.
+They do not construct a common gauge-invariant positive-metric physical
+Hilbert space \(\mathcal H_{\mathrm{phys}}\), a quantum Hamiltonian \(H\),
+or maps \(J_n\) satisfying
+\cref{cusp-interpretation-norm-noncollapse,cusp-interpretation-energy-transfer,cusp-interpretation-physical-smallness}
+after continuum, infinite-volume, and renormalization limits.  Nor do the
+period, Hodge, Leray, or direct-image calculations determine those data, as
+\cref{cusp-interpretation-fixed-complex-counterexample} already disproves at
+the level of geometric Laplacians.  Therefore the auxiliary gaplessness is
+\Verified, while a conclusion about the four-dimensional quantum
+Yang--Mills Hamiltonian is \Open.
+\end{auditrecord}

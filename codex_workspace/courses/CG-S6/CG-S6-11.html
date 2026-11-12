@@ -1,0 +1,2201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Almost complex structures, octonions, and integrability</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/almost-complex-structures-and-integrability.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="cg-s6-11">Almost complex structures, octonions, and
+integrability</h1>
+<p>The construction in this course gives complex coordinate charts on a
+compact six-dimensional manifold. The standard octonion construction
+gives an endomorphism of the tangent bundle of the round six-sphere. To
+compare these objects, we need the exact map from coordinate charts to a
+tangent-bundle endomorphism and the exact obstruction to reversing that
+map. We develop those maps first. We then calculate the obstruction for
+the octonion field, including its relation to the associator and all
+constants in its norm.</p>
+<p>The multiplication formulas below are compared directly with <a
+href="https://arxiv.org/abs/math/0105155v4">John Baez, <em>The
+Octonions</em>, Section 2.2</a>. The sphere background is treated by <a
+href="https://arxiv.org/abs/1707.03883v1">Panagiotis Konstantis and
+Maurizio Parton, <em>Almost complex structures on spheres</em></a>. The
+later coordinate construction follows the factorization of Malgrange as
+developed in <a href="https://arxiv.org/abs/0710.2310v2">C. Denson Hill
+and Michael Taylor, <em>Integrability of Rough Almost Complex
+Structures</em>, Sections 2–4</a>. We keep their matrix conventions when
+comparing formulas and identify the sign correction needed in their
+equation 3.14.</p>
+<h2 id="charts-and-tensors">1. From charts to a tensor, and from a
+tensor to a differential equation</h2>
+<p>Let <span class="math inline">\(M\)</span> be a smooth real manifold
+of dimension <span class="math inline">\(2n\)</span>. An <strong>almost
+complex structure</strong> is a smooth real bundle endomorphism</p>
+<p><span class="math display">\[
+J:TM\longrightarrow TM,\qquad J^2=-\operatorname{id}_{TM}.
+\tag{1.1}
+\]</span></p>
+<p>It makes each real tangent space a complex vector space by <span
+class="math inline">\((a+ib)v=av+bJv\)</span>. The coefficients <span
+class="math inline">\(a,b\)</span> are real, and the relation <span
+class="math inline">\(J^2=-1\)</span> verifies multiplication by two
+complex scalars. Conversely multiplication by <span
+class="math inline">\(i\)</span> in a complex vector-bundle structure on
+<span class="math inline">\(TM\)</span> satisfies (1.1). These two
+operations are inverse.</p>
+<p>If <span class="math inline">\(z:U\to\mathbb C^n\)</span> is a
+complex coordinate chart, let <span class="math inline">\(I\)</span>
+denote multiplication by <span class="math inline">\(i\)</span> on the
+real tangent spaces of <span class="math inline">\(\mathbb C^n\)</span>,
+and set</p>
+<p><span class="math display">\[
+J|_U=(Dz)^{-1}I(Dz).
+\tag{1.2}
+\]</span></p>
+<p>For overlapping holomorphic charts <span
+class="math inline">\(z,w\)</span>, their transition derivative
+satisfies <span class="math inline">\(D(w\circ z^{-1})I=I D(w\circ
+z^{-1})\)</span>, so (1.2) agrees on the overlap. A complex atlas
+therefore defines an almost complex structure. A structure obtained in
+this way is called <strong>integrable</strong>.</p>
+<p>The inverse problem asks for a local map <span
+class="math inline">\(F:U\to\mathbb C^n\)</span>, with invertible real
+differential, satisfying</p>
+<p><span class="math display">\[
+dF\circ J=i\,dF.
+\tag{1.3}
+\]</span></p>
+<p>Such maps are precisely the required complex coordinate charts: the
+real inverse-function theorem makes them charts, and the chain rule
+makes their transition maps satisfy the ordinary Cauchy–Riemann
+equations. For completeness, a <span class="math inline">\(C^1\)</span>
+map between open subsets of <span class="math inline">\(\mathbb
+C^n\)</span> whose differential is complex-linear is holomorphic. On a
+closed polydisc in its domain, each component is holomorphic in one
+variable with the others fixed, by the one-variable Cauchy–Riemann
+theorem. Apply the one-variable Cauchy integral formula in each variable
+successively. The resulting product Cauchy integral has a convergent
+multivariable power series on every smaller polydisc, and equals the
+original component. Thus the transitions are holomorphic in the atlas
+sense.</p>
+<p>Complexify the real tangent bundle and extend <span
+class="math inline">\(J\)</span> complex-linearly. Define</p>
+<p><span class="math display">\[
+\begin{gathered}
+T^{1,0}_JM=\ker(J-i),\qquad T^{0,1}_JM=\ker(J+i),\\
+\pi^{1,0}=\tfrac12(1-iJ),\qquad
+\pi^{0,1}=\tfrac12(1+iJ).
+\end{gathered}
+\tag{1.4}
+\]</span></p>
+<p>Multiplication of these operators gives <span
+class="math inline">\((\pi^{1,0})^2=\pi^{1,0}\)</span>, <span
+class="math inline">\((\pi^{0,1})^2=\pi^{0,1}\)</span>, <span
+class="math inline">\(\pi^{1,0}\pi^{0,1}=0\)</span>, and <span
+class="math inline">\(\pi^{1,0}+\pi^{0,1}=1\)</span>. Complex
+conjugation interchanges their images. In particular both eigenbundles
+have complex rank <span class="math inline">\(n\)</span>.</p>
+<p>The <strong>Nijenhuis tensor</strong> used throughout this lesson
+is</p>
+<p><span class="math display">\[
+N_J(X,Y)=[JX,JY]-[X,Y]-J[JX,Y]-J[X,JY].
+\tag{1.5}
+\]</span></p>
+<p>Its sign is the negative of the convention in Hill–Taylor equation
+1.2. Write <span class="math inline">\(N_{\mathrm{HT}}=-N_J\)</span>
+when comparing those sources. Their zero conditions agree because
+multiplication by <span class="math inline">\(-1\)</span> is an
+invertible bundle map.</p>
+<p>We verify that (1.5) is a tensor rather than an operator depending on
+the chosen extensions of tangent vectors. Inserting <span
+class="math inline">\(fX\)</span> for <span
+class="math inline">\(X\)</span>, the four extra derivative terms, in
+their displayed order, are</p>
+<p><span class="math display">\[
+-(JYf)JX,\quad (Yf)X,\quad -(Yf)X,\quad (JYf)JX.
+\tag{1.6}
+\]</span></p>
+<p>They sum to zero. Thus <span
+class="math inline">\(N_J(fX,Y)=fN_J(X,Y)\)</span>. Skewness in <span
+class="math inline">\(X,Y\)</span> gives linearity in the second
+argument as well. Substituting <span class="math inline">\(JX\)</span>
+or <span class="math inline">\(JY\)</span> in (1.5) and using <span
+class="math inline">\(J^2=-1\)</span> also gives</p>
+<p><span class="math display">\[
+N_J(JX,Y)=N_J(X,JY)=-J N_J(X,Y).
+\tag{1.7}
+\]</span></p>
+<p>These identities include the exact real-to-complex type information.
+For sections <span class="math inline">\(Z,W\)</span> of <span
+class="math inline">\(T^{0,1}_JM\)</span>, complex bilinearity and <span
+class="math inline">\(JZ=-iZ\)</span> give</p>
+<p><span class="math display">\[
+N_J(Z,W)=-2[Z,W]+2iJ[Z,W]
+=-4\pi^{1,0}[Z,W].
+\tag{1.8}
+\]</span></p>
+<p>For two sections of <span class="math inline">\(T^{1,0}_JM\)</span>
+the corresponding formula is <span
+class="math inline">\(-4\pi^{0,1}[Z,W]\)</span>. For one section of each
+type all four terms in (1.5) cancel. Consequently</p>
+<p><span class="math display">\[
+N_J=0\quad\Longleftrightarrow\quad
+[\Gamma(T^{0,1}_JM),\Gamma(T^{0,1}_JM)]
+\subseteq\Gamma(T^{0,1}_JM).
+\tag{1.9}
+\]</span></p>
+<p>The right side is <strong>involutivity</strong>. In complex
+coordinates the fields <span class="math inline">\(\partial/\partial\bar
+z_j\)</span> span this bundle and commute; the bracket formula for their
+smooth linear combinations proves involutivity. Equations (1.8)–(1.9)
+prove that every integrable <span class="math inline">\(J\)</span> has
+<span class="math inline">\(N_J=0\)</span>.</p>
+<p>There is a useful scalar version of the same obstruction. Let <span
+class="math inline">\(\bar\partial_J f\)</span> be the <span
+class="math inline">\((0,1)\)</span> part of <span
+class="math inline">\(df\)</span>, and on forms define <span
+class="math inline">\(\bar\partial_J\)</span> to be the <span
+class="math inline">\((p,q+1)\)</span> component of the exterior
+derivative of a <span class="math inline">\((p,q)\)</span> form. For
+<span class="math inline">\(Z,W\)</span> of type <span
+class="math inline">\((0,1)\)</span>, the definition of exterior
+derivative gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+(\bar\partial_J^2f)(Z,W)
+&amp;=Z(Wf)-W(Zf)-(\bar\partial_Jf)([Z,W])\\
+&amp;=df\bigl(\pi^{1,0}[Z,W]\bigr)
+=-\tfrac14df\bigl(N_J(Z,W)\bigr).
+\end{aligned}
+\tag{1.10}
+\]</span></p>
+<p>Thus the obstruction is both a bundle map and the failure of this
+first-order operator to square to zero on functions. All factors in
+their comparison are explicit.</p>
+<h2 id="octonion-comparison">2. Two octonion formulas and the exact map
+between them</h2>
+<p>We first construct the needed algebraic identities. This also fixes
+every multiplication sign used later. Represent the quaternions by</p>
+<p><span class="math display">\[
+Q(\alpha,\beta)=
+\begin{pmatrix}\alpha&amp;\beta\\-\bar\beta&amp;\bar\alpha\end{pmatrix},
+\qquad \alpha,\beta\in\mathbb C.
+\tag{2.1}
+\]</span></p>
+<p>Matrix multiplication gives</p>
+<p><span class="math display">\[
+Q(\alpha,\beta)Q(\gamma,\delta)
+=Q(\alpha\gamma-\beta\bar\delta,
+\alpha\delta+\beta\bar\gamma).
+\tag{2.2}
+\]</span></p>
+<p>Conjugation <span class="math inline">\(q\mapsto\bar q\)</span> is
+matrix adjoint; the norm squared is the determinant <span
+class="math inline">\(|\alpha|^2+|\beta|^2\)</span>. Hence <span
+class="math inline">\(|ab|=|a||b|\)</span>, <span
+class="math inline">\(\overline{ab}=\bar b\bar a\)</span>, and <span
+class="math inline">\(a\bar a=|a|^2\)</span>. The real part <span
+class="math inline">\(\operatorname{Re}a=\frac12\operatorname{tr}a\)</span>
+is unchanged by cyclic permutation of a product. Set</p>
+<p><span class="math display">\[
+i=Q(i,0),\quad j=Q(0,1),\quad k=Q(0,i).
+\tag{2.3}
+\]</span></p>
+<p>Direct multiplication gives <span
+class="math inline">\(ij=k,jk=i,ki=j\)</span>, their reversed products
+with minus signs, and <span
+class="math inline">\(i^2=j^2=k^2=-1\)</span>. The quaternion product is
+associative because it is matrix multiplication.</p>
+<p>On <span class="math inline">\(\mathbb H\oplus\mathbb H\)</span>, the
+product used for our labelled sphere is</p>
+<p><span class="math display">\[
+(a,b)\cdot(c,d)=(ac-\bar d b,\;da+b\bar c),
+\quad \overline{(a,b)}=(\bar a,-b),
+\quad |(a,b)|^2=|a|^2+|b|^2.
+\tag{2.4}
+\]</span></p>
+<p>Baez’s Cayley–Dickson formula in Section 2.2 is</p>
+<p><span class="math display">\[
+(a,b)\star(c,d)=(ac-d\bar b,\;\bar a d+cb),
+\quad (a,b)^*=(\bar a,-b).
+\tag{2.5}
+\]</span></p>
+<p>Neither formula is being substituted silently for the other.
+Define</p>
+<p><span class="math display">\[
+\Phi:(\mathbb H\oplus\mathbb H,\cdot)
+\longrightarrow(\mathbb H\oplus\mathbb H,\star),
+\qquad \Phi(a,b)=(a,\bar b).
+\tag{2.6}
+\]</span></p>
+<p>It is real-linear, norm preserving, fixes <span
+class="math inline">\((1,0)\)</span>, and has inverse itself. Most
+importantly,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Phi(a,b)\star\Phi(c,d)
+&amp;=(ac-\bar d b,\;\bar a\bar d+c\bar b)\\
+&amp;=\bigl(ac-\bar d b,\;\overline{da+b\bar c}\bigr)\\
+&amp;=\Phi\bigl((a,b)\cdot(c,d)\bigr).
+\end{aligned}
+\tag{2.7}
+\]</span></p>
+<p>Also <span class="math inline">\(\Phi(\overline{(a,b)})=(\bar a,-\bar
+b)=\Phi(a,b)^*\)</span>. Equations (2.6)–(2.7) prove a unital isometric
+real algebra isomorphism, including conjugation. They transport
+associators and cross products with no discarded term.</p>
+<p>Hereafter write <span class="math inline">\(xy\)</span> for (2.4),
+and call this algebra <span class="math inline">\(\mathbb O\)</span>.
+Its identity is <span class="math inline">\(1=(1,0)\)</span>. Expanding
+the norm gives</p>
+<p><span class="math display">\[
+\begin{aligned}
+|ac-\bar d b|^2
+&amp;=|a|^2|c|^2+|d|^2|b|^2-2\operatorname{Re}(ac\bar b d),\\
+|da+b\bar c|^2
+&amp;=|d|^2|a|^2+|b|^2|c|^2+2\operatorname{Re}(dac\bar b).
+\end{aligned}
+\tag{2.8}
+\]</span></p>
+<p>The displayed cross terms cancel by the cyclic trace identity in the
+associative quaternion algebra. Therefore</p>
+<p><span class="math display">\[
+|xy|^2=|x|^2|y|^2.
+\tag{2.9}
+\]</span></p>
+<p>This calculation does not assume associativity of the octonions.</p>
+<p>Let <span class="math inline">\(L_x\)</span> be the real linear map
+<span class="math inline">\(y\mapsto xy\)</span>, and let <span
+class="math inline">\(L_x^*\)</span> be its adjoint for the Euclidean
+inner product associated with (2.4). Polarizing (2.9) in <span
+class="math inline">\(y\)</span> gives <span
+class="math inline">\(L_x^*L_x=|x|^2I\)</span>. Expanding <span
+class="math inline">\(|(1+tx)y|^2=|1+tx|^2|y|^2\)</span> in real <span
+class="math inline">\(t\)</span>, and then polarizing in <span
+class="math inline">\(y\)</span>, gives</p>
+<p><span class="math display">\[
+L_x+L_x^*=2\operatorname{Re}(x)I.
+\tag{2.10}
+\]</span></p>
+<p>For <span class="math inline">\(x\)</span> in the seven-dimensional
+imaginary space <span class="math inline">\(\operatorname{Im}\mathbb
+O=1^\perp\)</span>, it follows that</p>
+<p><span class="math display">\[
+L_x^*=-L_x,\qquad L_x^2=-|x|^2I.
+\tag{2.11}
+\]</span></p>
+<p>Applying the last identity to <span class="math inline">\(1\)</span>,
+and polarizing, gives <span class="math inline">\(x^2=-|x|^2\)</span>
+and <span class="math inline">\(xy+yx=-2\langle x,y\rangle\)</span> for
+imaginary <span class="math inline">\(x,y\)</span>. Also <span
+class="math inline">\(\operatorname{Re}(xy)=\langle
+L_xy,1\rangle=-\langle y,x\rangle\)</span>. Define their cross product
+by</p>
+<p><span class="math display">\[
+xy=-\langle x,y\rangle+x\times y.
+\tag{2.12}
+\]</span></p>
+<p>It is imaginary, bilinear and skew. The identity <span
+class="math inline">\(\langle L_xy,L_x1\rangle=|x|^2\langle
+y,1\rangle=0\)</span> proves perpendicularity to <span
+class="math inline">\(x\)</span>, and skewness then proves
+perpendicularity to <span class="math inline">\(y\)</span>. Separating
+real and imaginary parts of (2.9) gives</p>
+<p><span class="math display">\[
+|x\times y|^2=|x|^2|y|^2-\langle x,y\rangle^2.
+\tag{2.13}
+\]</span></p>
+<p>Applying <span class="math inline">\(L_x^2\)</span> to <span
+class="math inline">\(y\)</span> and using (2.12) twice gives the full
+repeated-product identity</p>
+<p><span class="math display">\[
+x\times(x\times y)=-|x|^2y+\langle x,y\rangle x.
+\tag{2.14}
+\]</span></p>
+<p>Finally <span class="math inline">\(L_x^*=-L_x\)</span> gives <span
+class="math inline">\(\langle x\times y,z\rangle=-\langle x\times
+z,y\rangle\)</span>. Together with skewness in <span
+class="math inline">\(x,y\)</span>, this says that</p>
+<p><span class="math display">\[
+\varphi(x,y,z)=\langle x\times y,z\rangle
+\tag{2.15}
+\]</span></p>
+<p>is an alternating trilinear form. Equations (2.13)–(2.15) are proved
+consequences of the original product; none requires suppressing its
+nonassociativity.</p>
+<p>Use the ordered orthonormal basis</p>
+<p><span class="math display">\[
+\begin{gathered}
+e_1=(i,0),\ e_2=(j,0),\ e_3=(k,0),\ e_4=(0,1),\\
+e_5=(0,i),\ e_6=(0,j),\ e_7=(0,k).
+\end{gathered}
+\tag{2.16}
+\]</span></p>
+<p>The complete imaginary multiplication table is specified by the
+oriented triples</p>
+<p><span class="math display">\[
+123,\quad145,\quad176,\quad246,\quad257,\quad347,\quad365.
+\tag{2.17}
+\]</span></p>
+<p>In a triple <span class="math inline">\(abc\)</span>, the products
+<span class="math inline">\(e_ae_b=e_c,e_be_c=e_a,e_ce_a=e_b\)</span>
+have positive sign; reversed products are negative, and <span
+class="math inline">\(e_a^2=-1\)</span>. Each unordered pair of distinct
+indices occurs in exactly one triple, so this specifies all products.
+Substituting (2.3) in (2.4) verifies the seven displayed triples and
+hence, by skewness, the entire table.</p>
+<h2 id="round-sphere-obstruction">3. The round six-sphere and its
+complete Nijenhuis tensor</h2>
+<p>Let</p>
+<p><span class="math display">\[
+S^6=\{p\in\operatorname{Im}\mathbb O:|p|=1\},
+\qquad T_pS^6=p^\perp,
+\qquad J_pU=p\times U.
+\tag{3.1}
+\]</span></p>
+<p>Equation (2.14) gives <span class="math inline">\(J_p^2U=-U\)</span>
+on <span class="math inline">\(p^\perp\)</span>, with the coefficient
+<span class="math inline">\(|p|^2=1\)</span> retained from the defining
+sphere. Perpendicularity makes <span class="math inline">\(J_pU\)</span>
+tangent, and (2.13) gives <span
+class="math inline">\(|J_pU|=|U|\)</span>. Thus (3.1) is a smooth
+orthogonal almost complex structure for the round metric.</p>
+<p>Write <span class="math inline">\(D\)</span> for ambient
+differentiation and <span class="math inline">\(\nabla\)</span> for
+tangential projection. Differentiating <span
+class="math inline">\(\langle V,p\rangle=0\)</span> in a tangent
+direction <span class="math inline">\(U\)</span> gives</p>
+<p><span class="math display">\[
+D_UV=\nabla_UV-\langle U,V\rangle p.
+\tag{3.2}
+\]</span></p>
+<p>This connection preserves the induced metric and has zero torsion,
+directly by projection of the ambient derivative. It is the round
+Levi-Civita connection. Differentiating <span
+class="math inline">\(JV=p\times V\)</span>, using (3.2), and projecting
+tangentially yields</p>
+<p><span class="math display">\[
+A(U,V):=(\nabla_UJ)V
+=U\times V-\langle U\times V,p\rangle p.
+\tag{3.3}
+\]</span></p>
+<p>The normal contribution to <span class="math inline">\(p\times
+D_UV\)</span> is zero because <span class="math inline">\(p\times
+p=0\)</span>. Hence (3.3) includes the entire derivative. It is skew in
+<span class="math inline">\(U,V\)</span>. Differentiating <span
+class="math inline">\(J^2=-1\)</span> gives <span
+class="math inline">\(A(U,JV)=-JA(U,V)\)</span>; using skewness gives
+the other identity</p>
+<p><span class="math display">\[
+A(JU,V)=A(U,JV)=-JA(U,V).
+\tag{3.4}
+\]</span></p>
+<p>For a torsion-free connection, substitute <span
+class="math inline">\([X,Y]=\nabla_XY-\nabla_YX\)</span> into (1.5).
+Terms containing derivatives of <span class="math inline">\(X,Y\)</span>
+cancel, leaving</p>
+<p><span class="math display">\[
+N_J(U,V)=A(JU,V)-A(JV,U)+JA(V,U)-JA(U,V).
+\tag{3.5}
+\]</span></p>
+<p>Skewness and (3.4) turn each of the four terms into <span
+class="math inline">\(-JA(U,V)\)</span>. We have therefore proved</p>
+<p><span class="math display">\[
+N_J(U,V)=-4JA(U,V)=-4p\times(U\times V).
+\tag{3.6}
+\]</span></p>
+<p>No normal term was dropped in the last equality: it is annihilated
+exactly by <span class="math inline">\(p\times p=0\)</span>. Alternation
+of (2.15) identifies the coefficient of that normal term as <span
+class="math inline">\(\langle U\times V,p\rangle=\langle
+JU,V\rangle\)</span>. The norm of the orthogonal projection in (3.3) is
+therefore</p>
+<p><span class="math display">\[
+|N_J(U,V)|^2
+=16\bigl(|U|^2|V|^2-\langle U,V\rangle^2
+-\langle JU,V\rangle^2\bigr).
+\tag{3.7}
+\]</span></p>
+<p>At any <span class="math inline">\(p\)</span>, choose a unit <span
+class="math inline">\(U\in T_pS^6\)</span>, and a unit <span
+class="math inline">\(V\)</span> perpendicular to <span
+class="math inline">\(U,JU\)</span> in that six-dimensional tangent
+space. Then (3.7) gives <span
+class="math inline">\(|N_J(U,V)|=4\)</span>. Thus <span
+class="math inline">\(N_J\)</span> is nonzero at every point, and (1.9)
+proves that the particular field (3.1) is not integrable.</p>
+<p>The associated real two-form is <span
+class="math inline">\(\omega(U,V)=\langle JU,V\rangle\)</span>. The
+exterior derivative of a two-form for a torsion-free connection is the
+cyclic sum of its covariant derivative. Using (3.3) and pairing with a
+tangent <span class="math inline">\(W\)</span>, the normal term
+disappears by <span class="math inline">\(\langle p,W\rangle=0\)</span>,
+and all three cyclic terms agree by alternation. Hence</p>
+<p><span class="math display">\[
+d\omega(U,V,W)=3\langle U\times V,W\rangle.
+\tag{3.8}
+\]</span></p>
+<p>For our labels, at <span class="math inline">\(p=e_7\)</span>,</p>
+<p><span class="math display">\[
+Je_1=-e_6,\quad Je_2=e_5,\quad Je_3=e_4,
+\quad N_J(e_1,e_2)=-4e_4,
+\quad d\omega(e_1,e_2,e_3)=3.
+\tag{3.9}
+\]</span></p>
+<p>Every equality follows from (2.17), so (3.9) fixes both the tensor
+convention and the orientation-sensitive multiplication signs.</p>
+<p>There is also an orientation sign to retain. At <span
+class="math inline">\(e_7\)</span>, the complex-oriented real basis
+<span class="math inline">\((e_1,Je_1,e_2,Je_2,e_3,Je_3)\)</span> is
+<span class="math inline">\((e_1,-e_6,e_2,e_5,e_3,e_4)\)</span>. Its
+permutation of <span class="math inline">\((e_1,\ldots,e_6)\)</span> has
+six inversions and one additional minus sign, hence determinant <span
+class="math inline">\(-1\)</span>. The latter basis is positively
+oriented for the outward orientation of <span
+class="math inline">\(S^6\subset\mathbb R^7\)</span>, because <span
+class="math inline">\((e_7,e_1,\ldots,e_6)\)</span> has positive
+determinant. Thus this labelled octonion field induces the negative of
+the outward orientation. The sign is constant on the connected sphere.
+It will appear explicitly in its top Chern number below.</p>
+<h2 id="associator-and-kernel">4. The associator, the exact kernel, and
+the complex obstruction map</h2>
+<p>The <strong>associator</strong> records the precise defect of
+associativity:</p>
+<p><span class="math display">\[
+[x,y,z]_{\mathbb O}=(xy)z-x(yz).
+\tag{4.1}
+\]</span></p>
+<p>For <span class="math inline">\(p,U,V\)</span> in (3.1), set <span
+class="math inline">\(\alpha=\langle JU,V\rangle\)</span>. Expand both
+original products in (4.1), using only (2.12):</p>
+<p><span class="math display">\[
+\begin{aligned}
+(pU)V&amp;=-\alpha+(JU)\times V,\\
+p(UV)&amp;=-\langle U,V\rangle p-\alpha+p\times(U\times V).
+\end{aligned}
+\tag{4.2}
+\]</span></p>
+<p>Both scalar terms <span class="math inline">\(-\alpha\)</span> are
+displayed and cancel. Alternation and <span
+class="math inline">\(J^2=-1\)</span> give <span
+class="math inline">\(\langle(JU)\times V,p\rangle=\langle
+J(JU),V\rangle=-\langle U,V\rangle\)</span>. Consequently the remaining
+first two terms are exactly <span class="math inline">\((JU)\times
+V+\langle U,V\rangle p=A(JU,V)\)</span>. Equation (3.4) now gives</p>
+<p><span class="math display">\[
+[p,U,V]_{\mathbb O}=-2JA(U,V),
+\qquad \boxed{N_J(U,V)=2[p,U,V]_{\mathbb O}}.
+\tag{4.3}
+\]</span></p>
+<p>For the Hill–Taylor tensor convention the coefficient is <span
+class="math inline">\(-2\)</span>. The algebra isomorphism (2.6)
+transports (4.3) to Baez’s product, because applying a homomorphism to
+the two terms of (4.1) gives their corresponding two terms in the target
+algebra. This is the exact relation between the algebraic defect and the
+geometric tensor.</p>
+<p>We next describe the object cut out by the obstruction, rather than
+only asserting that it is nonzero. For a fixed nonzero tangent <span
+class="math inline">\(U\)</span>, define the real linear map</p>
+<p><span class="math display">\[
+\mathcal N_U:T_pS^6\longrightarrow T_pS^6,
+\qquad \mathcal N_U(V)=N_J(U,V),
+\qquad W_U=\{U,JU\}^{\perp}\subset T_pS^6.
+\tag{4.4}
+\]</span></p>
+<p>Since <span class="math inline">\(U\)</span> and <span
+class="math inline">\(JU\)</span> are perpendicular and have the same
+norm, the full orthogonal decomposition is</p>
+<p><span class="math display">\[
+V=\frac{\langle U,V\rangle}{|U|^2}U
++\frac{\langle JU,V\rangle}{|U|^2}JU+V_\perp,
+\qquad V_\perp\in W_U.
+\tag{4.5}
+\]</span></p>
+<p>Substitution in (3.7) gives</p>
+<p><span class="math display">\[
+|\mathcal N_U(V)|^2=16|U|^2|V_\perp|^2,
+\qquad \ker\mathcal N_U=\operatorname{span}_{\mathbb R}\{U,JU\}.
+\tag{4.6}
+\]</span></p>
+<p>Thus a real two-plane generated by independent <span
+class="math inline">\(U,V\)</span> has zero octonionic associator with
+<span class="math inline">\(p\)</span> exactly when it is the complex
+line generated by <span class="math inline">\(U\)</span>. The two
+conditions are equivalent by (4.3), not merely formally similar.</p>
+<figure id="octonion-circle-figure">
+<img src="assets/octonion-obstruction-circle.svg"
+style="min-width:900px;max-width:none;width:900px"
+alt="A specified circle of unit tangent vectors at the original basis point e7. The curves plot the exact norm formulas for the Nijenhuis tensor and the octonion associator; they represent this stated slice, not a picture of the whole sphere. Their zero set is the complex line in (4.6). Proof: (3.6)–(3.7), (4.3), and (4.6). Human source for the original octonion algebra: Baez, Section 2.2; the full calculations are given here." />
+<figcaption aria-hidden="true">A specified circle of unit tangent
+vectors at the original basis point e7. The curves plot the exact norm
+formulas for the Nijenhuis tensor and the octonion associator; they
+represent this stated slice, not a picture of the whole sphere. Their
+zero set is the complex line in (4.6). Proof: (3.6)–(3.7), (4.3), and
+(4.6). Human source for the original octonion algebra: Baez, Section
+2.2; the full calculations are given here.</figcaption>
+</figure>
+<p>Let <span class="math inline">\(A_U(V)=A(U,V)\)</span>. The identity
+(2.14), with skewness, gives <span class="math inline">\(U\times
+JU=U\times(p\times U)=|U|^2p\)</span>. If <span
+class="math inline">\(V\in W_U\)</span>, then <span
+class="math inline">\(\langle U\times V,p\rangle=\langle
+JU,V\rangle=0\)</span>, and <span class="math inline">\(\langle U\times
+V,JU\rangle=-\langle U\times JU,V\rangle=0\)</span>. Therefore <span
+class="math inline">\(A_U(V)=U\times V\)</span> lies in <span
+class="math inline">\(W_U\)</span>. Applying (2.14) again gives</p>
+<p><span class="math display">\[
+A_U^2|_{W_U}=-|U|^2I,
+\qquad A_UJ=-JA_U,
+\qquad \mathcal N_U^2|_{W_U}=-16|U|^2I.
+\tag{4.7}
+\]</span></p>
+<p>The middle identity is (3.4), and the last follows by multiplying
+<span class="math inline">\(\mathcal N_U=-4JA_U\)</span> twice. Hence
+the image of <span class="math inline">\(\mathcal N_U\)</span> is
+exactly <span class="math inline">\(W_U\)</span>, its rank is four, and
+its inverse on <span class="math inline">\(W_U\)</span> is</p>
+<p><span class="math display">\[
+(\mathcal N_U|_{W_U})^{-1}
+=-\frac{1}{16|U|^2}\mathcal N_U|_{W_U}.
+\tag{4.8}
+\]</span></p>
+<p>Equation (4.8) constructs the connecting map from every vector in the
+image back to an argument of the tensor. It also shows that the four
+nonzero real singular values are <span
+class="math inline">\(4|U|\)</span>.</p>
+<p>The complex form of the obstruction is even more precise. Extend
+<span class="math inline">\(N_J\)</span> complex-bilinearly. Equation
+(1.8) defines a complex bundle map</p>
+<p><span class="math display">\[
+\mathscr N:\Lambda^2_{\mathbb C}T^{0,1}_JS^6
+\longrightarrow T^{1,0}_JS^6.
+\tag{4.9}
+\]</span></p>
+<p>We prove that it is an isomorphism at every point. Choose unit
+vectors <span class="math inline">\(u_1,u_2\)</span> with <span
+class="math inline">\(u_2\perp u_1,Ju_1\)</span>, and set <span
+class="math inline">\(u_3=A(u_1,u_2)=u_1\times u_2\)</span>. Equations
+(2.13), (3.3), and (4.7) show that <span
+class="math inline">\(u_3\)</span> is unit and perpendicular to <span
+class="math inline">\(u_1,Ju_1\)</span>. It is also perpendicular to
+<span class="math inline">\(u_2,Ju_2\)</span>: perpendicularity to <span
+class="math inline">\(u_2\)</span> is a cross-product identity, and
+<span class="math inline">\(\langle u_1\times u_2,Ju_2\rangle=\langle
+u_1,u_2\times Ju_2\rangle=\langle u_1,p\rangle=0\)</span>. Metric
+compatibility with <span class="math inline">\(J\)</span> then shows
+that <span class="math inline">\(u_1,Ju_1,u_2,Ju_2,u_3,Ju_3\)</span> is
+an orthonormal real basis.</p>
+<p>The repeated-product identity gives</p>
+<p><span class="math display">\[
+A(u_1,u_2)=u_3,\qquad
+A(u_2,u_3)=u_1,\qquad
+A(u_3,u_1)=u_2.
+\tag{4.10}
+\]</span></p>
+<p>For example <span class="math inline">\(u_2\times(u_1\times
+u_2)=u_1\)</span> follows from (2.14) after reversing the inner product,
+and the result is tangent, so its normal projection is zero. Define
+complex bases</p>
+<p><span class="math display">\[
+Z_a=\tfrac12(u_a-iJu_a),\qquad
+\bar Z_a=\tfrac12(u_a+iJu_a),\quad a=1,2,3.
+\tag{4.11}
+\]</span></p>
+<p>Using (1.7), expansion of these four terms gives <span
+class="math inline">\(N_J(\bar Z_a,\bar
+Z_b)=\frac12\{N_J(u_a,u_b)-iJN_J(u_a,u_b)\}\)</span>. Together with
+(3.6) and (4.10), this yields</p>
+<p><span class="math display">\[
+\mathscr N(\bar Z_2\wedge\bar Z_3)=-4iZ_1,
+\quad \mathscr N(\bar Z_3\wedge\bar Z_1)=-4iZ_2,
+\quad \mathscr N(\bar Z_1\wedge\bar Z_2)=-4iZ_3.
+\tag{4.12}
+\]</span></p>
+<p>In the displayed ordered bases its determinant is <span
+class="math inline">\((-4i)^3=64i\)</span>, and its inverse sends <span
+class="math inline">\(Z_c\)</span> to <span
+class="math inline">\((i/4)\bar Z_a\wedge\bar Z_b\)</span> for the
+corresponding cyclic pair. This proves the isomorphism claim. By (1.8),
+the projected bracket map is exactly <span
+class="math inline">\(-\mathscr N/4\)</span>. By (1.10), the scalar
+failure of <span class="math inline">\(\bar\partial_J^2=0\)</span> is
+its dual evaluation. Thus the algebra, tangent tensor, projected bracket
+and scalar differential operator are linked by proved maps.</p>
+<h2 id="transport-of-structures">5. What changes under a diffeomorphism
+or a complex atlas</h2>
+<p>Let <span class="math inline">\(\phi:M\to M&#39;\)</span> be a smooth
+diffeomorphism, and let <span class="math inline">\(J&#39;\)</span> be
+an almost complex structure on <span
+class="math inline">\(M&#39;\)</span>. Its pullback is</p>
+<p><span class="math display">\[
+J^\phi_p=(D\phi_p)^{-1}J&#39;_{\phi(p)}D\phi_p.
+\tag{5.1}
+\]</span></p>
+<p>It is smooth and squares to <span class="math inline">\(-1\)</span>.
+For vector fields the differential carries brackets to brackets: <span
+class="math inline">\(\phi_*[X,Y]=[\phi_*X,\phi_*Y]\)</span>. To verify
+this identity, apply both sides to a smooth function <span
+class="math inline">\(f\)</span> on <span
+class="math inline">\(M&#39;\)</span>: each equals <span
+class="math inline">\(X(Y(f\circ\phi))-Y(X(f\circ\phi))\)</span>,
+transported by <span class="math inline">\(\phi^{-1}\)</span>.
+Substituting this identity in all four terms of (1.5) gives</p>
+<p><span class="math display">\[
+D\phi_p\,N_{J^\phi}(U,V)
+=N_{J&#39;}(D\phi_pU,D\phi_pV).
+\tag{5.2}
+\]</span></p>
+<p>If <span class="math inline">\(J&#39;\)</span> comes from complex
+charts <span class="math inline">\(z_\alpha\)</span>, then <span
+class="math inline">\(z_\alpha\circ\phi\)</span> are complex charts
+inducing (5.1). Conversely an atlas for <span
+class="math inline">\(J^\phi\)</span> transports through <span
+class="math inline">\(\phi^{-1}\)</span>. Thus integrability is
+preserved exactly under (5.1).</p>
+<p>Apply (1.2) directly to the holomorphic quotient and gluing charts
+constructed in lessons 1–5. Their holomorphic transition maps give a
+tensor <span class="math inline">\(J_X\)</span> on the actual manifold
+<span class="math inline">\(X\)</span>, and (1.8) gives <span
+class="math inline">\(N_{J_X}=0\)</span>. This statement uses the charts
+already proved to exist. It is independent of the separate
+smooth-recognition argument in lesson 7.</p>
+<p>The local constructions also show why the octonionic calculation
+cannot obstruct all conceivable complex structures on the same
+underlying smooth manifold. Equation (3.7) proves a statement about the
+specific field (3.1). Equation (5.2) proves that no diffeomorphism can
+carry that field to a field arising from holomorphic charts, because an
+invertible differential cannot carry a nonzero tensor to zero. The exact
+obstruction distinguishes these fields while preserving the possibility
+of other fields on the same tangent bundle.</p>
+<p>There is a second constraint supplied by compactness. On any compact
+oriented <span class="math inline">\(2n\)</span>-manifold, a closed
+two-form <span class="math inline">\(\omega\)</span> satisfying <span
+class="math inline">\(\omega(v,Jv)&gt;0\)</span> for an almost complex
+structure has <span class="math inline">\(\int_M\omega^n&gt;0\)</span>
+in the associated orientation. In a complex basis, a positive compatible
+form has positive determinant; more generally taming gives the same
+orientation through the path to its positive <span
+class="math inline">\((1,1)\)</span> part, since the value on <span
+class="math inline">\((v,Jv)\)</span> remains positive along that path.
+If <span class="math inline">\(H^2(M;\mathbb R)=0\)</span>, then <span
+class="math inline">\(\omega=d\alpha\)</span>, and closedness gives</p>
+<p><span class="math display">\[
+\omega^n=d(\alpha\wedge\omega^{n-1}),\qquad
+\int_M\omega^n=0
+\tag{5.3}
+\]</span></p>
+<p>by Stokes’ theorem. For the application to a Hermitian metric we only
+need the compatible case: at a unitary real basis <span
+class="math inline">\(v_1,Jv_1,\ldots,v_n,Jv_n\)</span>, one has <span
+class="math inline">\(\omega^n(v_1,Jv_1,\ldots,v_n,Jv_n)=n!\)</span>. In
+particular a complex structure on a compact six-manifold with the
+integral cohomology calculated in lesson 7 cannot have a Kähler metric.
+This is a direct map from the exactness of a two-form to a contradiction
+with its volume integral; it does not identify the round form (3.8) with
+another metric’s form.</p>
+<h2 id="coordinate-equation">6. The full coordinate equation and its
+change of variables</h2>
+<p>We now prove the smooth coordinate-existence theorem. Fix a point
+<span class="math inline">\(p\)</span> of a smooth <span
+class="math inline">\(2n\)</span>-manifold with a smooth almost complex
+structure <span class="math inline">\(J\)</span>. Begin with real
+coordinates <span class="math inline">\(y\)</span>, with <span
+class="math inline">\(y(p)=y_p\)</span>. Choose a real basis <span
+class="math inline">\(v_1,J_pv_1,\ldots,v_n,J_pv_n\)</span> of the
+tangent space. Such a basis is obtained by successively choosing a
+vector outside the previously chosen <span
+class="math inline">\(J_p\)</span>-invariant span; the relation <span
+class="math inline">\(J_p^2=-1\)</span> ensures that each step adds two
+independent vectors. Let <span class="math inline">\(C\)</span> be the
+invertible real matrix carrying this basis to the standard ordered real
+basis of <span class="math inline">\(\mathbb C^n\)</span>, and put</p>
+<p><span class="math display">\[
+z=C(y-y_p),\qquad J_z=CJ_yC^{-1}.
+\tag{6.1}
+\]</span></p>
+<p>This is an exact coordinate comparison; it retains the original field
+<span class="math inline">\(J_y\)</span> by its displayed inverse. At
+<span class="math inline">\(z=0\)</span>, <span
+class="math inline">\(J_z=I\)</span>. The projection of <span
+class="math inline">\(T^{0,1}_J\)</span> onto the span of the coordinate
+fields <span class="math inline">\(\partial_{\bar z_j}\)</span> is
+therefore invertible near zero, by continuity of its determinant. Hence
+that eigenbundle has a unique frame</p>
+<p><span class="math display">\[
+L_j=\partial_{\bar z_j}-\sum_{k=1}^n A_{jk}(z)\partial_{z_k},
+\qquad A(0)=0.
+\tag{6.2}
+\]</span></p>
+<p>The functions <span class="math inline">\(A_{jk}\)</span> are smooth,
+since they are obtained by inverting that finite matrix of smooth
+coefficients. A row vector <span
+class="math inline">\(F=(F_1,\ldots,F_n)\)</span> satisfies (1.3)
+precisely when all <span class="math inline">\(L_jF_\ell\)</span>
+vanish, or</p>
+<p><span class="math display">\[
+\partial_{\bar z}F=A\partial_zF.
+\tag{6.3}
+\]</span></p>
+<p>Here <span class="math inline">\(\partial_{\bar z}F\)</span> and
+<span class="math inline">\(\partial_zF\)</span> are matrices with
+derivative index in the row and function index in the column. This order
+matters in all subsequent products.</p>
+<p>Compute the bracket directly. It has no <span
+class="math inline">\(\partial_{\bar z}\)</span> component, and its
+coefficient row in the <span class="math inline">\(\partial_z\)</span>
+directions is</p>
+<p><span class="math display">\[
+-\partial_{\bar z_j}A_k+\partial_{\bar z_k}A_j
++A_j\partial_z A_k-A_k\partial_z A_j.
+\tag{6.4}
+\]</span></p>
+<p>Because no nonzero combination of the <span
+class="math inline">\(L_j\)</span> has zero <span
+class="math inline">\(\partial_{\bar z}\)</span> component, involutivity
+is equivalent here to the literal commutation relations <span
+class="math inline">\([L_j,L_k]=0\)</span>. By (1.9) it is equivalent
+to</p>
+<p><span class="math display">\[
+\partial_{\bar z_k}A_j+A_j\partial_z A_k
+=\partial_{\bar z_j}A_k+A_k\partial_z A_j.
+\tag{6.5}
+\]</span></p>
+<p>Let <span class="math inline">\(H\)</span> be a real local
+diffeomorphism close to the identity, write <span
+class="math inline">\(\zeta=H(z)\)</span>, and seek <span
+class="math inline">\(F=G\circ H\)</span>. Suppose <span
+class="math inline">\(\partial_{\bar\zeta}G=B\partial_\zeta G\)</span>.
+The chain rule, in the row convention of (6.3), gives</p>
+<p><span class="math display">\[
+\partial_{\bar z}H+(\partial_{\bar z}\bar H)(B\circ H)
+=A\{\partial_z H+(\partial_z\bar H)(B\circ H)\}.
+\tag{6.6}
+\]</span></p>
+<p>Thus the exact transformed coefficient matrix is</p>
+<p><span class="math display">\[
+E:=B\circ H
+=-(\partial_{\bar z}\bar H-A\partial_z\bar H)^{-1}
+(\partial_{\bar z}H-A\partial_zH).
+\tag{6.7}
+\]</span></p>
+<p>The inverse exists near <span
+class="math inline">\((H,A)=(\operatorname{id},0)\)</span>, where its
+matrix is <span class="math inline">\(I\)</span>. In particular <span
+class="math inline">\(H=\operatorname{id}\)</span> gives <span
+class="math inline">\(B=A\)</span>. The transformed field is <span
+class="math inline">\(DH\,J\,(DH)^{-1}\)</span>, as follows by applying
+the chain rule to vectors annihilating the coordinate functions.
+Equation (5.2) therefore proves that <span
+class="math inline">\(B\)</span> satisfies (6.5) with <span
+class="math inline">\(\zeta\)</span> in place of <span
+class="math inline">\(z\)</span> whenever <span
+class="math inline">\(A\)</span> satisfies it. We will choose <span
+class="math inline">\(H\)</span> so that it also satisfies</p>
+<p><span class="math display">\[
+\sum_{j=1}^n\partial_{\zeta_j}B_j=0.
+\tag{6.8}
+\]</span></p>
+<p>This extra equation makes the coefficient field analytic. Sections
+7–9 prove that assertion and the existence of the required <span
+class="math inline">\(H\)</span>, instead of assuming them as additional
+hypotheses about the original <span
+class="math inline">\(J\)</span>.</p>
+<p><strong>Source sign correction.</strong> Keep the definitions <span
+class="math inline">\(E\)</span> and <span
+class="math inline">\(\Psi=\sum_j(\partial_{\zeta_j}B_j)\circ H\)</span>
+exactly as in Hill–Taylor equations 3.9 and3.12. At <span
+class="math inline">\(A=0\)</span>, insert <span
+class="math inline">\(H(z)=z+\epsilon h(z)\)</span> into (6.7). Its two
+matrix factors give</p>
+<p><span class="math display">\[
+E=-\epsilon\partial_{\bar z}h+O(\epsilon^2),
+\qquad
+D_H\Psi(\operatorname{id},0)h
+=-\sum_j\partial_{z_j}\partial_{\bar z_j}h
+=-\tfrac14\Delta h.
+\tag{6.9}
+\]</span></p>
+<p>The first variation of <span class="math inline">\((DH)^{-1}\)</span>
+multiplies <span class="math inline">\(DE=0\)</span> at the base point,
+so it contributes nothing. The sign in their displayed equation 3.14 is
+positive; with their preceding definitions it must be negative. If <span
+class="math inline">\(\mathcal G\)</span> solves <span
+class="math inline">\(\Delta v=f\)</span> with zero boundary values, the
+right inverse under their point condition <span
+class="math inline">\(h(0)=0\)</span> is correspondingly <span
+class="math inline">\(-4(\mathcal Gf-\mathcal Gf(0))\)</span>, rather
+than their positive expression. Invertibility is preserved. Below we
+give a periodic construction whose inverse is an explicit Fourier
+multiplier and has the sign in (6.9).</p>
+<h2 id="periodic-gauge">7. Constructing the divergence-free
+coordinates</h2>
+<p>We give the analytic estimates needed for this step, including the
+function spaces and the treatment of constants. Let <span
+class="math inline">\(m=2n\)</span>, and let <span
+class="math inline">\(\mathbb T^m=\mathbb R^m/(2\pi\mathbb
+Z)^m\)</span>. For an integer <span class="math inline">\(s\)</span>,
+its Sobolev norm is</p>
+<p><span class="math display">\[
+\|u\|_{H^s}^2
+=(2\pi)^m\sum_{k\in\mathbb Z^m}(1+|k|^2)^s|\widehat u(k)|^2,
+\qquad
+\widehat u(k)=(2\pi)^{-m}\int_{[-\pi,\pi]^m}e^{-ik\cdot x}u(x)\,dx.
+\tag{7.1}
+\]</span></p>
+<p>For vector or matrix functions, sum the squared norms of the entries.
+We treat complex entries as pairs of real entries. Fix an integer <span
+class="math inline">\(s&gt;m/2+3\)</span>.</p>
+<p>Here are the estimates we use. If <span
+class="math inline">\(r&gt;m/2\)</span>, Cauchy–Schwarz gives</p>
+<p><span class="math display">\[
+\sum_k|\widehat u(k)|
+\leq\left(\sum_k(1+|k|^2)^{-r}\right)^{1/2}
+\left(\sum_k(1+|k|^2)^r|\widehat u(k)|^2\right)^{1/2}.
+\tag{7.2}
+\]</span></p>
+<p>The first sum is finite by comparison on successive lattice shells
+with <span class="math inline">\(\sum_{q\geq1}q^{m-1-2r}\)</span>. This
+proves <span class="math inline">\(H^r\subset C^0\)</span>; applying it
+to derivatives proves <span class="math inline">\(H^{r+j}\subset
+C^j\)</span>. The convolution formula for Fourier coefficients, the
+inequality</p>
+<p><span class="math display">\[
+(1+|k+\ell|^2)^{r/2}\leq C_r\{(1+|k|^2)^{r/2}+(1+|\ell|^2)^{r/2}\}
+\]</span></p>
+<p>, and the elementary convolution bound <span
+class="math inline">\(\|a*b\|_{\ell^2}\leq\|a\|_{\ell^1}\|b\|_{\ell^2}\)</span>
+give</p>
+<p><span class="math display">\[
+\|uv\|_{H^r}\leq C_r\|u\|_{H^r}\|v\|_{H^r}.
+\tag{7.3}
+\]</span></p>
+<p>The convolution bound follows from the triangle inequality in <span
+class="math inline">\(\ell^2\)</span> applied to the sum of translated
+copies of <span class="math inline">\(b\)</span>, weighted by <span
+class="math inline">\(a\)</span>. The same proof with <span
+class="math inline">\(|k|^a|\ell|^b\leq
+C_r\{(1+|k|^2)^{r/2}+(1+|\ell|^2)^{r/2}\}\)</span> shows that products
+of derivatives of total order at most <span
+class="math inline">\(r\)</span> are in <span
+class="math inline">\(L^2\)</span>, with the same type of bound. On
+<span class="math inline">\(\mathbb R^m\)</span> the identical argument
+uses integrals and Young’s convolution inequality, whose proof is the
+same translated-norm argument.</p>
+<p>These estimates also hold on concentric balls with radii in a fixed
+compact interval of positive radii, with uniform constants. One explicit
+extension construction suffices to see this. Flatten a boundary patch,
+and for its half-space normal coordinate <span
+class="math inline">\(t\geq0\)</span> extend to <span
+class="math inline">\(t&lt;0\)</span> by <span
+class="math inline">\(Eu(x&#39;,-t)=\sum_{\ell=1}^{r+1}c_\ell
+u(x&#39;,\ell t)\)</span>, where <span class="math inline">\(\sum_\ell
+c_\ell(-\ell)^j=1\)</span> for <span class="math inline">\(0\leq j\leq
+r\)</span>. The Vandermonde matrix is invertible. Derivatives through
+order <span class="math inline">\(r\)</span> match at the boundary, and
+changes of variable bound the Sobolev norm of each reflected term. A
+finite set of boundary charts and a smooth partition of unity give an
+extension on a ball. Dilations between the stated range of radii keep
+all constants bounded. Applying the Euclidean Fourier estimates to these
+extensions proves the assertions for balls.</p>
+<p>Choose a smooth real function <span
+class="math inline">\(\chi\)</span> supported in <span
+class="math inline">\(\{|x|&lt;2\}\subset(-\pi,\pi)^m\)</span>, equal to
+one on <span class="math inline">\(\{|x|\leq1\}\)</span>. For
+sufficiently small positive <span
+class="math inline">\(\epsilon\)</span>, define the periodic matrix</p>
+<p><span class="math display">\[
+\widetilde A_\epsilon(x)=\chi(x)A(\epsilon x).
+\tag{7.4}
+\]</span></p>
+<p>The original coefficient matrix is defined on the support because
+<span class="math inline">\(\epsilon\)</span> is small. Every derivative
+through order <span class="math inline">\(s+1\)</span> tends uniformly
+to zero as <span class="math inline">\(\epsilon\to0\)</span>: the zeroth
+order uses <span class="math inline">\(A(0)=0\)</span>, and a positive
+derivative of <span class="math inline">\(A(\epsilon x)\)</span>
+contains the factor <span
+class="math inline">\(\epsilon^{|\alpha|}\)</span>. Leibniz’s rule
+retains the derivatives of <span class="math inline">\(\chi\)</span>,
+multiplied by these same vanishing factors or by <span
+class="math inline">\(A(\epsilon x)\)</span>. Thus <span
+class="math inline">\(\|\widetilde A_\epsilon\|_{H^{s+1}}\to0\)</span>.
+On the unit ball it is the exact pullback under <span
+class="math inline">\(z=\epsilon x\)</span>; outside that ball no
+involutivity assertion is needed.</p>
+<p>Let <span class="math inline">\(h\in H^{s+2}(\mathbb T^m;\mathbb
+C^n)\)</span> have zero mean and be small, and let the lift of <span
+class="math inline">\(H\)</span> be</p>
+<p><span class="math display">\[
+H(x)=x+h(x).
+\tag{7.5}
+\]</span></p>
+<p>The real Jacobian is <span class="math inline">\(DH=I+Dh\)</span>.
+Arrange <span class="math inline">\(\|Dh\|_\infty&lt;1/2\)</span> by
+(7.2). For any <span class="math inline">\(y\in\mathbb R^m\)</span>, the
+map <span class="math inline">\(x\mapsto y-h(x)\)</span> is a
+contraction of the complete space <span class="math inline">\(\mathbb
+R^m\)</span>; its successive iterates have differences bounded by a
+geometric series and hence converge to its unique fixed point. Thus
+<span class="math inline">\(H\)</span> is bijective on <span
+class="math inline">\(\mathbb R^m\)</span>. Its periodic lift property
+descends to a diffeomorphism of <span class="math inline">\(\mathbb
+T^m\)</span>. Its Jacobian determinant <span
+class="math inline">\(j_H\)</span> is positive: all <span
+class="math inline">\(I+tDh\)</span>, <span class="math inline">\(0\leq
+t\leq1\)</span>, are invertible by the Neumann series, so their
+determinants cannot change the positive sign at <span
+class="math inline">\(t=0\)</span>.</p>
+<p>Use (6.7), with <span class="math inline">\(\widetilde
+A_\epsilon\)</span> in place of <span class="math inline">\(A\)</span>,
+to define the periodic function <span class="math inline">\(E\)</span>.
+Put <span class="math inline">\(B=E\circ H^{-1}\)</span>. The pullback
+of the left side of (6.8), multiplied by its real Jacobian, is</p>
+<p><span class="math display">\[
+\mathcal F(h,\widetilde A_epsilon)
+=j_H\sum_j\bigl(\partial_{\zeta_j}B_j\bigr)\circ H.
+\tag{7.6}
+\]</span></p>
+<p>Formula (7.6) is evaluated on the fixed <span
+class="math inline">\(x\)</span>-torus as follows: differentiate <span
+class="math inline">\(E_j(x)\)</span>, and contract its real
+differential with <span class="math inline">\((DH)^{-1}\)</span> applied
+to the constant complex vector <span
+class="math inline">\(\partial_{\zeta_j}\)</span>. Hence it involves
+only <span class="math inline">\(\widetilde A_epsilon,D\widetilde
+A_epsilon,Dh,D^2h\)</span>, matrix inversion, and multiplication. There
+is no loss from differentiating a parameter-dependent composition.
+Equations (7.2)–(7.3) and the locally convergent matrix Neumann series
+prove that</p>
+<p><span class="math display">\[
+\mathcal F:H^{s+2}_0\times H^{s+1}
+\longrightarrow H^s_0
+\tag{7.7}
+\]</span></p>
+<p>is continuously differentiable near <span
+class="math inline">\((0,0)\)</span>; the subscript means zero mean. Its
+output has zero mean because change of variables in the integral of
+(7.6) gives the integral of a periodic derivative in <span
+class="math inline">\(\zeta\)</span>, which is zero. The regularities
+already proved make this ordinary change of variables legitimate. All
+inverses in the formula exist in a neighborhood of the base point by
+(7.3).</p>
+<p>At the base point, <span class="math inline">\(E=0\)</span>, so the
+derivative of the Jacobian factor contributes zero. Equation (6.9) gives
+the exact derivative</p>
+<p><span class="math display">\[
+L:=D_h\mathcal F(0,0)=-\tfrac14\Delta:
+H^{s+2}_0\longrightarrow H^s_0.
+\tag{7.8}
+\]</span></p>
+<p>It is a bounded bijection. Its inverse is the Fourier multiplier</p>
+<p><span class="math display">\[
+\widehat{L^{-1}f}(0)=0,
+\qquad
+\widehat{L^{-1}f}(k)=\frac{4}{|k|^2}\widehat f(k)
+\quad(k\ne0).
+\tag{7.9}
+\]</span></p>
+<p>The norm bound follows from</p>
+<p><span class="math display">\[
+(1+|k|^2)^2/|k|^4\leq4
+\]</span></p>
+<p>for nonzero integer <span class="math inline">\(k\)</span>. Thus the
+constant Fourier mode is treated exactly, and the sign agrees with
+(6.9).</p>
+<p>For clarity, the needed implicit-function argument is the following
+contraction. Define <span class="math inline">\(T_A(h)=h-L^{-1}\mathcal
+F(h,A)\)</span>. Its derivative in <span
+class="math inline">\(h\)</span> is zero at <span
+class="math inline">\((0,0)\)</span>, so continuity makes its Lipschitz
+constant at most <span class="math inline">\(1/2\)</span> on a
+sufficiently small closed ball in <span
+class="math inline">\(H^{s+2}_0\)</span>, for all sufficiently small
+<span class="math inline">\(A\)</span>. Since <span
+class="math inline">\(T_0(0)=0\)</span>, shrinking the allowed norm of
+<span class="math inline">\(A\)</span> makes <span
+class="math inline">\(\|T_A(0)\|\)</span> at most half the radius of
+that ball. The map then preserves the ball. Successive iterates converge
+by a geometric-series bound in the complete Sobolev space to a unique
+fixed point. At that point <span class="math inline">\(\mathcal
+F(h,A)=0\)</span>. Apply this to (7.4).</p>
+<p>We have constructed <span class="math inline">\(H\)</span> and <span
+class="math inline">\(B\)</span> satisfying (6.7)–(6.8), with <span
+class="math inline">\(B\)</span> as small in <span
+class="math inline">\(C^0\)</span> as desired. The function <span
+class="math inline">\(B\)</span> belongs locally to <span
+class="math inline">\(H^{s+1}\)</span>. To verify the last assertion,
+the weak chain rule for <span class="math inline">\(E\circ
+H^{-1}\)</span> is obtained first for smooth approximations and then by
+passage in Sobolev norm: the first derivative uses <span
+class="math inline">\(DE\,(DH)^{-1}\)</span>, change of variables bounds
+its <span class="math inline">\(L^2\)</span> norm, and each successive
+derivative is a finite product of derivatives of <span
+class="math inline">\(E\)</span> and <span
+class="math inline">\(H\)</span>, with factors of <span
+class="math inline">\((DH)^{-1}\)</span>. The product estimates
+following (7.3) bound these terms through order <span
+class="math inline">\(s+1\)</span>. Smooth periodic approximations
+preserve the uniform lower Jacobian bound, so the limit has those weak
+derivatives. This proves the claimed regularity without assuming that
+the newly constructed coordinates are already smooth.</p>
+<p>On the image of the unit ball, involutivity is preserved by the
+diffeomorphism, as proved after (6.7). Thus there <span
+class="math inline">\(B\)</span> satisfies both (6.5) and (6.8). The
+next section proves the stronger regularity forced by those
+equations.</p>
+<h2 id="analytic-estimates">8. Why the gauged coefficient matrix is
+analytic</h2>
+<p>This section supplies the elliptic step used in the coordinate
+construction. All estimates are local in the real dimension <span
+class="math inline">\(m=2n\)</span>. For a column field <span
+class="math inline">\(b=(b_1,\ldots,b_n)\)</span>, define the
+constant-coefficient first-order operator</p>
+<p><span class="math display">\[
+\mathcal Lb=
+\left((\partial_{\bar\zeta_j}b_k-\partial_{\bar\zeta_k}b_j)_{j&lt;k},
+\ \sum_j\partial_{\zeta_j}b_j\right).
+\tag{8.1}
+\]</span></p>
+<p>For a real covector <span
+class="math inline">\(\xi=(\xi_x,\xi_y)\)</span>, the symbol of <span
+class="math inline">\(\partial_{\bar\zeta_j}\)</span> is <span
+class="math inline">\(a_j=(i\xi_{x_j}-\xi_{y_j})/2\)</span>, and that of
+<span class="math inline">\(\partial_{\zeta_j}\)</span> is <span
+class="math inline">\(-\bar a_j\)</span>. Expanding the squared norms of
+the wedge and inner product gives</p>
+<p><span class="math display">\[
+\sum_{j&lt;k}|a_jb_k-a_kb_j|^2
++\left|\sum_j\bar a_jb_j\right|^2
+=|a|^2|b|^2=\tfrac14|\xi|^2|b|^2.
+\tag{8.2}
+\]</span></p>
+<p>Indeed the diagonal terms on the left collect <span
+class="math inline">\(|a_j|^2|b_k|^2\)</span> for every ordered pair,
+while the mixed terms cancel. Parseval’s identity therefore proves, for
+compactly supported smooth fields,</p>
+<p><span class="math display">\[
+\|Db\|_{L^2}=2\|\mathcal Lb\|_{L^2}.
+\tag{8.3}
+\]</span></p>
+<p>Apply <span class="math inline">\(\mathcal L\)</span> to every column
+of <span class="math inline">\(B\)</span>. Its full system is</p>
+<p><span class="math display">\[
+\mathcal LB=\mathcal Q(B,DB),
+\qquad
+\mathcal Q(B,DV)_{jk}=B_j\partial_\zeta V_k-B_k\partial_\zeta V_j
+\quad(j&lt;k),
+\tag{8.4}
+\]</span></p>
+<p>with zero divergence component. This is exactly (6.5), with its terms
+rearranged, together with (6.8). The finite sums in the row products
+give, for the Euclidean norms of all entries, <span
+class="math inline">\(|\mathcal Q(B,DV)|\leq2n|B||DV|\)</span>. Take the
+smallness in Section 7 so that</p>
+<p><span class="math display">\[
+\sup|B|&lt;\frac1{8n}.
+\tag{8.5}
+\]</span></p>
+<p>The factor <span class="math inline">\(2\)</span> in (8.3) then
+permits absorption of the highest derivative in <span
+class="math inline">\(\mathcal P_BV=\mathcal LV-\mathcal
+Q(B,DV)\)</span>.</p>
+<h3 id="smoothness-including-weak-derivatives">8.1. Smoothness,
+including weak derivatives</h3>
+<p>First consider a compactly supported <span class="math inline">\(V\in
+L^2\)</span> for which <span class="math inline">\(\mathcal P_BV\in
+L^2\)</span> distributionally, with <span
+class="math inline">\(B\)</span> continuously differentiable and
+satisfying (8.5). We prove <span class="math inline">\(V\in
+H^1\)</span>. Convolve with a smooth compactly supported approximate
+identity <span class="math inline">\(\rho_\delta\)</span>. The
+commutator of a term <span class="math inline">\(B\partial_a\)</span>
+with convolution is the sum of an integral with kernel <span
+class="math inline">\((B(x)-B(x-y))\partial_a\rho_\delta(y)\)</span> and
+an integral with a factor <span
+class="math inline">\(\partial_aB(x-y)\rho_\delta(y)\)</span>, with
+signs determined by integration by parts. Their absolute values suffice
+for this estimate. The mean-value inequality bounds the first difference
+by <span class="math inline">\(\|DB\|_\infty|y|\)</span>. Since</p>
+<p><span class="math display">\[
+\int|y||D\rho_\delta(y)|\,dy
+=\int|y||D\rho(y)|\,dy,
+\tag{8.6}
+\]</span></p>
+<p>Young’s inequality bounds both commutators uniformly on <span
+class="math inline">\(L^2\)</span>. Thus <span
+class="math inline">\(\mathcal P_B(\rho_\delta*V)\)</span> is bounded in
+<span class="math inline">\(L^2\)</span>. Applying (8.3) and absorbing
+the term <span class="math inline">\(\mathcal
+Q(B,D(\rho_\delta*V))\)</span> by (8.5) bounds the derivatives uniformly
+in <span class="math inline">\(L^2\)</span>. Weak compactness gives a
+weakly convergent subsequence of these derivatives; testing against
+compactly supported smooth functions identifies its limit as the
+distributional derivative of <span class="math inline">\(V\)</span>.
+This proves <span class="math inline">\(H^1\)</span> regularity. For a
+local assertion, first multiply by a smooth cutoff; the extra term is a
+bounded coefficient times <span class="math inline">\(V\)</span>, hence
+remains in <span class="math inline">\(L^2\)</span>. The convolution is
+performed inside a slightly larger region, so no boundary extension of
+the equation is required.</p>
+<p>Suppose now <span class="math inline">\(B\in
+H^r_{\mathrm{loc}}\)</span>, with integer <span
+class="math inline">\(r&gt;m/2+2\)</span>, and (8.4) holds. This applies
+to the matrix obtained in Section 7. Differentiate the equation
+distributionally by a multi-index <span
+class="math inline">\(\alpha\)</span> of length <span
+class="math inline">\(r\)</span>. The terms with no derivative on the
+first factor are moved to the left. The result is</p>
+<p><span class="math display">\[
+\mathcal P_B(D^\alpha B)
+=\sum_{0&lt;\beta\leq\alpha}\binom{\alpha}{\beta}
+\mathcal Q(D^\beta B,D(D^{\alpha-\beta}B)).
+\tag{8.7}
+\]</span></p>
+<p>Every term on the right is in <span
+class="math inline">\(L^2\)</span>. To see this, put one derivative on
+each copy of <span class="math inline">\(B\)</span>; the remaining
+derivative orders sum to <span class="math inline">\(r-1\)</span>. The
+derivative-product estimate following (7.3), applied to <span
+class="math inline">\(DB\in H^{r-1}\)</span>, gives the bound because
+<span class="math inline">\(r-1&gt;m/2\)</span>. The differentiated
+identity follows by approximation of <span
+class="math inline">\(B\)</span> in <span
+class="math inline">\(H^r\)</span>, using those same bounds to pass the
+products to distributions. Its left side has <span
+class="math inline">\(D^\alpha B\in L^2\)</span>, and <span
+class="math inline">\(B\)</span> is <span
+class="math inline">\(C^1\)</span> by (7.2). The preceding convolution
+argument therefore proves <span class="math inline">\(D^\alpha B\in
+H^1_{\mathrm{loc}}\)</span>. Hence <span class="math inline">\(B\in
+H^{r+1}_{\mathrm{loc}}\)</span>. Iteration proves <span
+class="math inline">\(B\in C^\infty\)</span>.</p>
+<h3 id="an-interior-estimate-with-only-one-inverse-distance">8.2. An
+interior estimate with only one inverse distance</h3>
+<p>We need the dependence on the shrinking radius, not merely
+smoothness. Fix a closed ball <span
+class="math inline">\(\overline{B_R}\)</span> inside the region just
+considered, and an integer <span
+class="math inline">\(q&gt;m/2\)</span>. For <span
+class="math inline">\(R/2\leq r&lt;r+\delta&lt;R\)</span>, choose a
+smooth cutoff equal to one on <span class="math inline">\(B_r\)</span>,
+supported in <span class="math inline">\(B_{r+\delta}\)</span>, with
+<span class="math inline">\(|D\chi|\leq c/\delta\)</span>. Applying
+(8.3) and absorption to <span class="math inline">\(\chi D^\alpha
+V\)</span>, separately for every <span
+class="math inline">\(|\alpha|\leq q\)</span>, gives</p>
+<p><span class="math display">\[
+\|DV\|_{H^q(B_r)}
+\leq C\left\{
+\|\mathcal P_BV\|_{H^q(B_{r+\delta})}
++(\delta^{-1}+K)\|V\|_{H^q(B_{r+\delta})}
+\right\}.
+\tag{8.8}
+\]</span></p>
+<p>Here <span class="math inline">\(C,K\)</span> are finite constants
+independent of <span class="math inline">\(r,\delta,V\)</span>. One can
+take <span class="math inline">\(K\)</span> to be a fixed multiple of
+<span class="math inline">\(1+\max_{1\leq j\leq
+q}\|D^jB\|_{L^\infty(B_R)}\)</span>. To check the estimate, commute
+<span class="math inline">\(D^\alpha\)</span> past <span
+class="math inline">\(\mathcal P_B\)</span>. Each commutator has at
+least one derivative on <span class="math inline">\(B\)</span>, hence at
+most <span class="math inline">\(|\alpha|\)</span> derivatives on <span
+class="math inline">\(V\)</span>, and is bounded by this <span
+class="math inline">\(K\)</span> times <span
+class="math inline">\(\|V\|_{H^q}\)</span>. The commutator with <span
+class="math inline">\(\chi\)</span> uses only <span
+class="math inline">\(D\chi\)</span>, because <span
+class="math inline">\(\mathcal P_B\)</span> is first order. Applying the
+estimate separately to <span class="math inline">\(D^\alpha V\)</span>,
+rather than differentiating the cutoff <span
+class="math inline">\(q\)</span> times, is what leaves precisely <span
+class="math inline">\(\delta^{-1}\)</span> in (8.8). The coefficient of
+the highest derivative is absorbed by (8.5) before summing these
+inequalities.</p>
+<h3 id="factorial-bounds">8.3. Factorial bounds</h3>
+<p>Set</p>
+<p><span class="math display">\[
+F_k(r)=\max_{|\alpha|=k}\|D^\alpha B\|_{H^q(B_r)}.
+\tag{8.9}
+\]</span></p>
+<p>Use (8.8) for <span class="math inline">\(V=D^\alpha B\)</span>,
+<span class="math inline">\(|\alpha|=k\)</span>, and use (8.7) with that
+multi-index. The ball version of (7.3) bounds every product in <span
+class="math inline">\(H^q\)</span>, uniformly for these radii. The
+identity <span
+class="math inline">\(\sum_{|\beta|=j,\beta\leq\alpha}\binom\alpha\beta=\binom
+kj\)</span> is the coefficient of <span
+class="math inline">\(t^j\)</span> in <span
+class="math inline">\(\prod_a(1+t)^{\alpha_a}\)</span>. Thus, enlarging
+the fixed constant <span class="math inline">\(C\)</span>,</p>
+<p><span class="math display">\[
+F_{k+1}(r)\leq C\left\{
+(\delta^{-1}+K)F_k(r+\delta)
++\sum_{j=1}^k\binom kjF_j(r+\delta)F_{k-j+1}(r+\delta)
+\right\}.
+\tag{8.10}
+\]</span></p>
+<p>Choose <span class="math inline">\(M\geq\max(1,4R F_1(R))\)</span>.
+We prove by induction, for a sufficiently large fixed <span
+class="math inline">\(a\geq1\)</span>, that</p>
+<p><span class="math display">\[
+F_k(r)\leq
+\frac{M a^{k-1}k!}{(k+1)^2(R-r)^k}
+\qquad(k\geq1, R/2\leq r&lt;R).
+\tag{8.11}
+\]</span></p>
+<p>The case <span class="math inline">\(k=1\)</span> follows from the
+choice of <span class="math inline">\(M\)</span>. For the induction step
+put <span class="math inline">\(d=R-r\)</span>, <span
+class="math inline">\(\delta=d/(k+1)\)</span>, so that <span
+class="math inline">\(d&#39;=R-r-\delta=dk/(k+1)\)</span>. Then <span
+class="math inline">\((d/d&#39;)^{k+1}=(1+1/k)^{k+1}\leq4\)</span>. In
+the product term of (8.10), write <span
+class="math inline">\(\ell=k-j+1\)</span>. The factorials satisfy <span
+class="math inline">\(\binom kj j!\ell!=k!\ell\)</span>, and</p>
+<p><span class="math display">\[
+\sum_{j=1}^k\frac{k-j+1}{(j+1)^2(k-j+2)^2}
+\leq \frac{8(k+1)}{(k+2)^2}.
+\tag{8.12}
+\]</span></p>
+<p>Here is a bound with all its indices. Put <span
+class="math inline">\(a_1=j+1\)</span>, <span
+class="math inline">\(b_1=k-j+2\)</span>, so <span
+class="math inline">\(a_1+b_1=k+3\)</span>, and replace <span
+class="math inline">\((b_1-1)/b_1^2\)</span> by <span
+class="math inline">\(1/b_1\)</span>. In the terms <span
+class="math inline">\(a_1\leq(k+3)/2\)</span>, use <span
+class="math inline">\(1/b_1\leq2/(k+3)\)</span> and <span
+class="math inline">\(\sum_{a_1\geq2}a_1^{-2}&lt;1\)</span>. In the
+other terms use <span
+class="math inline">\(a_1^{-2}\leq4/(k+3)^2\)</span>, <span
+class="math inline">\(1/b_1\leq1/2\)</span>, and at most <span
+class="math inline">\(k\)</span> terms. The total is at most <span
+class="math inline">\(4/(k+3)\)</span>, which is at most the right side
+of (8.12), since <span
+class="math inline">\((k+2)^2\leq2(k+1)(k+3)\)</span>.</p>
+<p>The products in (8.10), divided by the proposed bound for <span
+class="math inline">\(F_{k+1}(r)\)</span>, are therefore at most <span
+class="math inline">\(32CM/a\)</span>. Its linear term has ratio at most
+<span class="math inline">\(9C(1+KR)/a\)</span>, using <span
+class="math inline">\((k+2)^2/(k+1)^2\leq9/4\)</span>. Choosing, for
+example,</p>
+<p><span class="math display">\[
+a\geq128C(1+KR+M)
+\tag{8.13}
+\]</span></p>
+<p>makes their sum at most one and completes the induction. The factor
+<span class="math inline">\((k+1)^{-2}\)</span> in (8.11) is retained
+because it controls the full convolution of derivatives in the nonlinear
+equation.</p>
+<p>At <span class="math inline">\(r=3R/4\)</span>, the Sobolev embedding
+(7.2) and (8.11) give a constant <span
+class="math inline">\(C_0\)</span> with <span
+class="math inline">\(\sup_{B_{3R/4}}|D^\alpha B|\leq
+C_0(4a/R)^{|\alpha|}|\alpha|!\)</span>. Taylor’s formula along a segment
+with increment <span class="math inline">\(h\)</span>, expanded by the
+multinomial theorem, bounds its remainder of order <span
+class="math inline">\(k\)</span> by <span
+class="math inline">\(C_0\{(4a/R)\sum_j|h_j|\}^{k+1}\)</span>, provided
+the segment stays in that ball. This tends to zero for sufficiently
+small <span class="math inline">\(h\)</span>. Thus the Taylor series
+equals <span class="math inline">\(B\)</span> near each point. We have
+proved real analyticity from the actual equations (8.4), including the
+existence and convergence of the required derivatives.</p>
+<h2 id="analytic-flows">9. Analytic commuting flows produce the
+coordinates</h2>
+<p>We finish the coordinate-existence proof without invoking an unproved
+analytic Frobenius theorem. Translate the point <span
+class="math inline">\(H(0)\)</span> to the origin in the <span
+class="math inline">\(\zeta\)</span>-coordinates, recording this
+translation in the final map. A real-analytic matrix <span
+class="math inline">\(B(\zeta,\bar\zeta)\)</span> extends to a
+holomorphic matrix <span class="math inline">\(\mathcal B(z,w)\)</span>
+in independent variables <span class="math inline">\((z,w)\in\mathbb
+C^n\times\mathbb C^n\)</span>. Indeed substitute <span
+class="math inline">\(x=(z+w)/2\)</span>, <span
+class="math inline">\(y=(z-w)/(2i)\)</span> into its convergent real
+power series. The real diagonal <span
+class="math inline">\((z,w)=(\zeta,\bar\zeta)\)</span> recovers the
+original matrix exactly.</p>
+<p>Consider the holomorphic vector fields</p>
+<p><span class="math display">\[
+\mathcal L_j=\partial_{w_j}-\sum_k\mathcal B_{jk}(z,w)\partial_{z_k}.
+\tag{9.1}
+\]</span></p>
+<p>Their brackets vanish. Their bracket formula is (6.4), and is zero on
+the real diagonal by (6.5). To verify that it is then identically zero
+holomorphically, make the invertible linear substitution between <span
+class="math inline">\((z,w)\)</span> and <span
+class="math inline">\((x,y)\)</span> just given. A holomorphic power
+series in <span class="math inline">\((x,y)\)</span> that vanishes for
+real <span class="math inline">\((x,y)\)</span> in an open set has every
+Taylor coefficient zero, by differentiating its restriction in those
+real coordinates. Apply this to each bracket coefficient.</p>
+<p>Each <span class="math inline">\(\mathcal L_j\)</span> has a local
+holomorphic flow <span class="math inline">\(\Phi_j^t\)</span>. One
+direct proof is Picard iteration on a smaller closed polydisc: on a
+larger polydisc the holomorphic coefficients and their first derivatives
+are bounded, say by <span class="math inline">\(M_0,M_1\)</span>. Choose
+<span class="math inline">\(|t|M_0\)</span> smaller than the margin to
+the larger boundary and <span
+class="math inline">\(|t|M_1&lt;1/2\)</span>. The map <span
+class="math inline">\(u(t)\mapsto u(0)+\int_0^t\mathcal
+L_j(u(s))\,ds\)</span> preserves the closed sup-norm ball of curves and
+is a contraction there. Integrating along the straight complex segment
+and iterating gives holomorphic functions of the initial value and <span
+class="math inline">\(t\)</span>; uniform convergence on the smaller
+polydisc preserves holomorphicity by the Cauchy integral formula. The
+limit solves the differential equation and is unique. Negative time
+gives the local inverse by uniqueness.</p>
+<p>The flows commute. To check this, the chain rule for the flow
+equation gives the exact inverse-pushforward formula <span
+class="math inline">\(\frac{d}{dt}(\Phi_j^{-t})_*\mathcal
+L_k=(\Phi_j^{-t})_*[\mathcal L_j,\mathcal L_k]=0\)</span>. Its value is
+therefore the original <span class="math inline">\(\mathcal
+L_k\)</span>. It follows that <span
+class="math inline">\(\Phi_j^t\)</span> sends integral curves of <span
+class="math inline">\(\mathcal L_k\)</span> to integral curves with the
+same parameter; uniqueness of their initial-value problems gives <span
+class="math inline">\(\Phi_j^t\Phi_k^u=\Phi_k^u\Phi_j^t\)</span>
+wherever both sides are defined.</p>
+<p>Start on the transverse complex plane <span
+class="math inline">\(w=0\)</span> and define</p>
+<p><span class="math display">\[
+\Theta(a,t)=\Phi_1^{t_1}\circ\cdots\circ\Phi_n^{t_n}(a,0).
+\tag{9.2}
+\]</span></p>
+<p>The <span class="math inline">\(w\)</span>-coordinate is exactly
+<span class="math inline">\(t\)</span>, since <span
+class="math inline">\(\mathcal L_jw_k=\delta_{jk}\)</span>. The
+derivative in <span class="math inline">\(a\)</span> of the <span
+class="math inline">\(z\)</span>-coordinate is the identity at <span
+class="math inline">\((0,0)\)</span>. Thus <span
+class="math inline">\(D\Theta(0,0)\)</span> is a block triangular matrix
+with identity diagonal blocks, and is invertible. The holomorphic
+inverse-function theorem here follows from the same contraction
+argument: after subtracting the value and multiplying by the inverse
+derivative, write <span class="math inline">\(\Theta(v)=v+R(v)\)</span>
+with <span class="math inline">\(DR(0)=0\)</span>, and solve <span
+class="math inline">\(v=y-R(v)\)</span> on a small closed ball. Its
+convergent iterations are holomorphic in <span
+class="math inline">\(y\)</span>, so the inverse is holomorphic. Let
+<span class="math inline">\(\mathcal G(z,w)\)</span> be the first <span
+class="math inline">\(n\)</span> components of this inverse, the initial
+value <span class="math inline">\(a\)</span>.</p>
+<p>Commutativity of the flows makes <span class="math inline">\(\mathcal
+G\)</span> constant on each <span class="math inline">\(\mathcal
+L_j\)</span>-flow. Therefore</p>
+<p><span class="math display">\[
+\partial_{w_j}\mathcal G
+=\mathcal B_j\partial_z\mathcal G.
+\tag{9.3}
+\]</span></p>
+<p>Restrict to <span
+class="math inline">\((z,w)=(\zeta,\bar\zeta)\)</span>. The resulting
+real-analytic map <span class="math inline">\(G(\zeta)=\mathcal
+G(\zeta,\bar\zeta)\)</span> satisfies <span
+class="math inline">\(\partial_{\bar\zeta}G=B\partial_\zeta G\)</span>.
+At the chosen center its differential, with output regarded as a column,
+is</p>
+<p><span class="math display">\[
+dG(v)=v+B(0)^{\mathsf T}\bar v.
+\tag{9.4}
+\]</span></p>
+<p>This follows either from the inverse triangular matrix in (9.2) or
+directly from (9.3) and <span class="math inline">\(\partial_z\mathcal
+G(0)=I\)</span>. The real perturbation in (9.4) has norm at most <span
+class="math inline">\(|B(0)|&lt;1\)</span>, so it is invertible. Thus
+<span class="math inline">\(G\)</span> is a real local
+diffeomorphism.</p>
+<p>Return to the untranslated gauged coordinate by using <span
+class="math inline">\(G(\zeta-H(0))\)</span>, where <span
+class="math inline">\(G\)</span> is constructed for the translated
+coefficient <span class="math inline">\(B(\zeta+H(0))\)</span>. The
+complete coordinate map on the original <span
+class="math inline">\(y\)</span>-domain is</p>
+<p><span class="math display">\[
+F_y(y)=\epsilon\,
+G\left(H\left(\frac{C(y-y_p)}{\epsilon}\right)-H(0)\right).
+\tag{9.5}
+\]</span></p>
+<p>Restrict to a neighborhood where <span
+class="math inline">\(|C(y-y_p)|&lt;\epsilon\)</span> and all the flow
+and inverse maps above are defined. Then the cutoff in (7.4) equals one.
+Equations (6.6)–(6.7) prove exactly that <span
+class="math inline">\(dF_y\circ J_y=i,dF_y\)</span>. Its real derivative
+is invertible by the invertibility of <span
+class="math inline">\(C\)</span>, the positive scale <span
+class="math inline">\(\epsilon\)</span>, <span
+class="math inline">\(DH\)</span>, and <span
+class="math inline">\(DG\)</span>. Every coordinate change, translation
+and scale used in the construction occurs explicitly in (9.5).</p>
+<p>The map is initially of finite Sobolev regularity, sufficient for a
+<span class="math inline">\(C^1\)</span> chart. It is in fact smooth. In
+the <span class="math inline">\(z\)</span>-coordinates its components
+satisfy the linear first-order system <span
+class="math inline">\((\partial_{\bar z}-A\partial_z)f=0\)</span>, with
+smooth <span class="math inline">\(A\)</span> as small as desired on a
+smaller ball. The symbol of <span class="math inline">\(\partial_{\bar
+z}\)</span> has norm <span class="math inline">\(|\xi|/2\)</span>;
+Parseval gives the same first-order estimate as (8.3). The cutoff,
+absorption and convolution argument of Section 8.1 applies to this
+system. After differentiating it, the commutators contain derivatives of
+the smooth coefficient <span class="math inline">\(A\)</span> and at
+most the already known number of derivatives of <span
+class="math inline">\(f\)</span>. It follows successively that <span
+class="math inline">\(f\in H^{r+1}_{\mathrm{loc}}\)</span> whenever
+<span class="math inline">\(f\in H^r_{\mathrm{loc}}\)</span>. Sobolev
+embedding gives smoothness.</p>
+<p>We have proved the smooth Newlander–Nirenberg theorem in the form
+needed here:</p>
+<p><strong>Theorem 9.1.</strong> A smooth almost complex structure is
+induced by a complex coordinate atlas if and only if its tensor (1.5)
+vanishes.</p>
+<p>Necessity was proved in Section 1. For sufficiency, the original zero
+tensor gives (6.5); Sections 7–8 construct the actual divergence-free
+analytic coefficient field, and the commuting flows give (9.5). On
+overlaps the chain rule and the Cauchy integral argument after (1.3)
+make the transitions holomorphic. No analytic regularity hypothesis was
+imposed on the original smooth field.</p>
+<figure id="integrability-map-figure">
+<img src="assets/integrability-coordinate-maps.svg"
+style="min-width:900px;max-width:none;width:900px"
+alt="The exact local maps in the coordinate proof. The cutoff equals one on the receiving domain, and the original scale, real coordinate matrix, and translation all reappear in the final formula (9.5). The coefficient in the translated analytic chart is B-hat(w)=B(w+H (0)). The torus is the auxiliary periodic domain used in Section 7. Proof: Sections 6–9. Human source for the factorization method: Hill–Taylor, Sections 2–4; this lesson supplies the periodic construction, corrected sign, and convergence estimates." />
+<figcaption aria-hidden="true">The exact local maps in the coordinate
+proof. The cutoff equals one on the receiving domain, and the original
+scale, real coordinate matrix, and translation all reappear in the final
+formula (9.5). The coefficient in the translated analytic chart is
+B-hat(w)=B(w+H (0)). The torus is the auxiliary periodic domain used in
+Section 7. Proof: Sections 6–9. Human source for the factorization
+method: Hill–Taylor, Sections 2–4; this lesson supplies the periodic
+construction, corrected sign, and convergence estimates.</figcaption>
+</figure>
+<h2 id="sphere-classification">10. The sphere restriction, with a proof
+of the needed Bott generation</h2>
+<p>We prove that the positive-dimensional spheres admitting almost
+complex structures are exactly <span class="math inline">\(S^2\)</span>
+and <span class="math inline">\(S^6\)</span>. The characteristic-class
+argument is the one discussed by Konstantis–Parton, Sections 3–6. We
+supply the needed generation step in complex K-theory by polynomial
+clutching, so its required integrality does not rest on an unproved
+appeal to Bott periodicity. The same finite linearization is developed
+in the CC0 supporting course <em>K-theory for operator algebras</em>,
+lesson <em>Bott periodicity</em>, Section 5; its full Toeplitz proof
+gives periodicity for a larger class of coefficient algebras than we
+need here.</p>
+<h3 id="bundles-clutching-and-based-loops">10.1. Bundles, clutching, and
+based loops</h3>
+<p>All bases in Sections 10.1–10.3 are compact Hausdorff spaces. For
+such a space <span class="math inline">\(Y\)</span>, <span
+class="math inline">\(K^0(Y)\)</span> is the group completion of the
+direct-sum monoid of finite-rank complex vector bundles. Thus its
+elements are differences <span class="math inline">\([E]-[F]\)</span>,
+with the relation that adding the same bundle to both terms does not
+change the difference. Tensor product makes this a ring.</p>
+<p>We use two elementary bundle facts, with their proofs. Every bundle
+<span class="math inline">\(E\)</span> over compact <span
+class="math inline">\(Y\)</span> embeds in a trivial bundle: choose
+finitely many trivializations and a partition of unity <span
+class="math inline">\(\rho_i\)</span> subordinate to them, and send
+<span class="math inline">\(v\in E_y\)</span> to the list <span
+class="math inline">\((\sqrt{\rho_i(y)}v_i)_i\)</span> of its local
+coordinates, with zero entries off the corresponding supports. At least
+one <span class="math inline">\(\rho_i(y)\)</span> is positive, so the
+map is injective on each fibre. Its image is a subbundle, and the
+orthogonal complement gives <span class="math inline">\(E\oplus
+E^\perp\simeq\mathbf1^N\)</span>. The orthogonal projection onto the
+image is continuous, as is seen in a local frame by the formula <span
+class="math inline">\(T(T^*T)^{-1}T^*\)</span>.</p>
+<p>Second, bundles pulled back by homotopic maps from a compact space
+are isomorphic. Embed the bundle over the product with the homotopy
+interval in a trivial bundle as just described, and let <span
+class="math inline">\(p(y,t)\)</span> be its range projection. Uniform
+continuity gives a finite partition of the interval on which consecutive
+projections differ in norm by less than one, uniformly in <span
+class="math inline">\(y\)</span>. For projections <span
+class="math inline">\(p,q\)</span> with <span
+class="math inline">\(\|p-q\|&lt;1\)</span>, the map <span
+class="math inline">\(q:\operatorname{im}p\to\operatorname{im}q\)</span>
+is injective, since <span
+class="math inline">\(\|qv\|\geq(1-\|p-q\|)\|v\|\)</span>. Reversing
+<span class="math inline">\(p,q\)</span> gives equal ranks, so it is an
+isomorphism; its inverse is continuous in local finite matrices.
+Composing these finite isomorphisms proves the assertion. This proof
+applies equally with a compact disk included in the base.</p>
+<p>Apply these facts to a bundle on <span
+class="math inline">\(S^2\times Y\)</span>. Its restrictions to the
+closed hemispheres are pullbacks of bundles on <span
+class="math inline">\(Y\)</span>, by contraction of the disks. Their
+restrictions at one equatorial point identify those two bundles, say
+with <span class="math inline">\(E_0\)</span>. Adding the pullback of a
+complement of <span class="math inline">\(E_0\)</span> makes both
+hemisphere bundles trivial. The stabilized bundle is then obtained from
+a clutching map</p>
+<p><span class="math display">\[
+g:Y\times\mathbb T\longrightarrow GL_r(\mathbb C).
+\tag{10.1}
+\]</span></p>
+<p>Changing one hemisphere frame by <span
+class="math inline">\(g(y,1)^{-1}\)</span> makes <span
+class="math inline">\(g(y,1)=I_r\)</span>. Homotopies of such based
+loops give isomorphic stable bundles: glue throughout the homotopy and
+apply the preceding interval result. Block sum of loops gives direct sum
+of bundles. Pointwise product gives the same stable sum, by the explicit
+based homotopy</p>
+<p><span class="math display">\[
+\begin{pmatrix}g&amp;0\\0&amp;I\end{pmatrix}
+R_\theta
+\begin{pmatrix}I&amp;0\\0&amp;h\end{pmatrix}R_\theta^{-1},
+\quad
+R_\theta=
+\begin{pmatrix}\cos\theta I&amp;-\sin\theta I\\
+\sin\theta I&amp;\cos\theta I\end{pmatrix},
+\quad0\leq\theta\leq\frac\pi2.
+\tag{10.2}
+\]</span></p>
+<p>The endpoints are <span
+class="math inline">\(\operatorname{diag}(g,h)\)</span> and <span
+class="math inline">\(\operatorname{diag}(gh,I)\)</span>. All loop
+values at <span class="math inline">\(1\)</span> remain the
+identity.</p>
+<h3 id="the-finite-polynomial-reduction">10.2. The finite polynomial
+reduction</h3>
+<p>Regard (10.1) as a based loop in matrices over the Banach algebra
+<span class="math inline">\(D=C(Y)\)</span>. It is uniformly
+approximated by Laurent polynomial loops. Indeed convolution in the
+circle coordinate with the Fejér kernel <span
+class="math inline">\((N+1)^{-1}|\sum_{j=0}^N e^{ij\theta}|^2\)</span>
+converges uniformly for continuous Banach-valued functions: the kernel
+has integral one, is nonnegative, and outside any fixed arc its bound is
+<span class="math inline">\(((N+1)\sin^2(\theta/2))^{-1}\)</span>.
+Uniform continuity controls the near arc and this bound controls its
+complement. The inverse of <span class="math inline">\(g\)</span> has
+bounded norm by compactness. Therefore a sufficiently close Laurent
+approximation is joined to <span class="math inline">\(g\)</span> by
+invertible straight interpolations, by the Neumann series. Replacing
+every interpolant <span class="math inline">\(H(z)\)</span> by <span
+class="math inline">\(H(z)H(1)^{-1}\)</span> makes the entire homotopy
+based.</p>
+<p>Let <span class="math inline">\(g_0\)</span> be the resulting based
+Laurent polynomial loop. Choose an integer <span
+class="math inline">\(a\geq0\)</span> so that <span
+class="math inline">\(f(z)=z^ag_0(z)\)</span> is a polynomial, say <span
+class="math inline">\(f(z)=\sum_{j=0}^d a_jz^j\)</span>, with <span
+class="math inline">\(f(1)=I_r\)</span>. The notation <span
+class="math inline">\(a_j\)</span> denotes matrix coefficients, whereas
+<span class="math inline">\(a\)</span> is the chosen Laurent exponent.
+Form the block matrix</p>
+<p><span class="math display">\[
+\mu(f)(z)=
+\begin{pmatrix}
+a_0&amp;a_1&amp;\cdots&amp;a_d\\
+-zI&amp;I&amp;\cdots&amp;0\\
+0&amp;-zI&amp;\ddots&amp;\vdots\\
+\vdots&amp;\ddots&amp;\ddots&amp;I
+\end{pmatrix}.
+\tag{10.3}
+\]</span></p>
+<p>This matrix is linear in <span class="math inline">\(z\)</span>. Its
+precise rows are: the top row is <span
+class="math inline">\((a_0,\ldots,a_d)\)</span>, and row <span
+class="math inline">\(j\)</span>, <span class="math inline">\(1\leq
+j\leq d\)</span>, has entries <span class="math inline">\(-zI\)</span>
+in column <span class="math inline">\(j-1\)</span>, <span
+class="math inline">\(I\)</span> in column <span
+class="math inline">\(j\)</span>, and zero elsewhere.</p>
+<p>Eliminate the columns successively from <span
+class="math inline">\(j=d\)</span> down to <span
+class="math inline">\(1\)</span>. When the last nonzero top-row
+coefficient is <span
+class="math inline">\(A_j=a_j+a_{j+1}z+\cdots+a_dz^{d-j}\)</span>, left
+multiplication by <span class="math inline">\(I-E_{0j}(A_j)\)</span>
+clears it and replaces the preceding coefficient by <span
+class="math inline">\(a_{j-1}+A_jz\)</span>. Right multiplication by
+<span class="math inline">\(I+E_{j,j-1}(zI)\)</span> then clears the
+subdiagonal <span class="math inline">\(-zI\)</span> without disturbing
+that top row. The result after all steps is <span
+class="math inline">\(\operatorname{diag}(f,I_{dr})\)</span>. Every
+elementary factor is connected to the identity through invertibles by
+multiplying its off-diagonal block by a real parameter in <span
+class="math inline">\([0,1]\)</span>; its inverse changes that block’s
+sign. This proves both invertibility of <span
+class="math inline">\(\mu(f)\)</span> on the circle and a homotopy to
+the displayed diagonal matrix. Basing the entire homotopy by right
+multiplication with its value at <span class="math inline">\(1\)</span>
+inverted gives a based linear loop</p>
+<p><span class="math display">\[
+\ell(z)=\mu(f)(z)\mu(f)(1)^{-1}=I+(z-1)b
+\tag{10.4}
+\]</span></p>
+<p>with the same stable class as <span class="math inline">\(f\)</span>.
+This includes <span class="math inline">\(d=0\)</span>, where the based
+polynomial is already the identity.</p>
+<p>The spectrum of <span class="math inline">\(b\in
+M_{(d+1)r}(C(Y))\)</span> misses the line <span
+class="math inline">\(\operatorname{Re}\lambda=1/2\)</span>. For <span
+class="math inline">\(z\ne1\)</span>, <span
+class="math inline">\(I+(z-1)b=(1-z)((1-z)^{-1}I-b)\)</span>, and the
+numbers <span class="math inline">\((1-z)^{-1}\)</span>, <span
+class="math inline">\(z\in\mathbb T\setminus\{1\}\)</span>, run exactly
+along that line. Let <span class="math inline">\(e\)</span> be the Riesz
+idempotent for the spectral part to its right:</p>
+<p><span class="math display">\[
+e=\frac1{2\pi i}\int_\Gamma(\lambda I-b)^{-1}\,d\lambda,
+\tag{10.5}
+\]</span></p>
+<p>where <span class="math inline">\(\Gamma\)</span> is a positively
+oriented contour enclosing that part and no other spectrum. Such a
+contour can be chosen uniformly on <span
+class="math inline">\(Y\)</span>: the matrices are bounded, and the
+compact spectrum of the algebra element has positive distance from the
+separating line. The resolvent identity proves continuity of the
+integral, its commutation with <span class="math inline">\(b\)</span>,
+and its idempotence. For the last statement, multiply the two contour
+integrals on nested separating contours and use</p>
+<p><span class="math display">\[
+(\lambda-b)^{-1}(\mu-b)^{-1}=((\lambda-b)^{-1}-(\mu-b)^{-1})/(\mu-\lambda)
+\]</span></p>
+<p>, then apply the scalar Cauchy formula. It also shows that <span
+class="math inline">\(e\)</span> acts as identity on the enclosed
+spectral summand and zero on its complement.</p>
+<p>The path <span class="math inline">\(b_t=(1-t)b+te\)</span> keeps its
+right spectral part strictly to the right of the line and its left part
+strictly to the left: on those two invariant summands its spectra are
+respectively <span class="math inline">\((1-t)\lambda+t\)</span> and
+<span class="math inline">\((1-t)\lambda\)</span>. Thus <span
+class="math inline">\(I+(z-1)b_t\)</span> stays invertible. Its endpoint
+is <span class="math inline">\(I-e+ze\)</span>.</p>
+<p>The image of <span class="math inline">\(e(y)\)</span> is a vector
+bundle <span class="math inline">\(E_e\)</span>: its rank is locally
+constant, and a nonzero minor supplies local frames. Let <span
+class="math inline">\(p_e\)</span> be its orthogonal range projection.
+In the orthogonal splitting <span class="math inline">\(E_e\oplus
+E_e^\perp\)</span>, the idempotent has matrix <span
+class="math inline">\(\begin{pmatrix}I&amp;T\\0&amp;0\end{pmatrix}\)</span>.
+Replacing <span class="math inline">\(T\)</span> by <span
+class="math inline">\((1-t)T\)</span> is a continuous idempotent
+homotopy from <span class="math inline">\(e\)</span> to <span
+class="math inline">\(p_e\)</span>, and <span
+class="math inline">\(I-e_t+ze_t\)</span> is invertible with inverse
+<span class="math inline">\(I-e_t+z^{-1}e_t\)</span>. Hence the endpoint
+loop multiplies by <span class="math inline">\(z\)</span> on the actual
+bundle <span class="math inline">\(E_e\)</span> and by one on its
+complement.</p>
+<h3 id="integral-chern-characters-on-a-product-of-two-spheres">10.3.
+Integral Chern characters on a product of two-spheres</h3>
+<p>Let <span class="math inline">\(Q\)</span> be the line over <span
+class="math inline">\(S^2=\mathbb{CP}^1\)</span> with finite-chart frame
+<span class="math inline">\((1,\zeta)\)</span> and infinity-chart frame
+<span class="math inline">\((1/\zeta,1)\)</span>. The finite frame
+equals <span class="math inline">\(\zeta\)</span> times the infinity
+frame. Thus the coefficient transfer from the finite to the infinity
+chart is exactly the loop <span class="math inline">\(z\)</span> used
+above. Put <span class="math inline">\(b=[Q]-[\mathbf1]\)</span>,
+keeping the subtracted rank-one class.</p>
+<p>The preceding reduction and (10.2) show that for every compact <span
+class="math inline">\(Y\)</span>, the group <span
+class="math inline">\(K^0(S^2\times Y)\)</span> is generated by</p>
+<p><span class="math display">\[
+\operatorname{pr}_Y^*K^0(Y)
+\quad\text{and}\quad
+\operatorname{pr}_{S^2}^*b\ \operatorname{pr}_Y^*K^0(Y).
+\tag{10.6}
+\]</span></p>
+<p>To retain the ranks and the Laurent contribution explicitly, a
+stabilized clutching loop <span class="math inline">\(g_0\)</span> of
+size <span class="math inline">\(r\)</span> has</p>
+<p><span class="math display">\[
+[T_{g_0}]-r[\mathbf1]
+=b\left([E_e]-ar[\mathbf1]\right).
+\tag{10.7}
+\]</span></p>
+<p>Indeed the endpoint <span class="math inline">\(I-p_e+zp_e\)</span>
+clutches <span class="math inline">\((Q\otimes E_e)\oplus
+E_e^\perp\)</span>, whose difference from the trivial bundle is <span
+class="math inline">\(b[E_e]\)</span>. The original loop is obtained
+from <span class="math inline">\(f=z^ag_0\)</span> by subtracting the
+<span class="math inline">\(a\)</span> positive scalar loops on all
+<span class="math inline">\(r\)</span> coordinates, by (10.2). Finally
+undo the original complement added to trivialize the hemisphere
+restrictions; its class lies in the first summand of (10.6). This proves
+the full generation assertion needed here.</p>
+<p>We fix the integral Chern sign first. The coordinate functional <span
+class="math inline">\((z_0,z_1)\mapsto z_1\)</span>, restricted to the
+tautological line, is a section of <span
+class="math inline">\(Q^*\)</span>. It has one zero, at <span
+class="math inline">\([1:0]\)</span>. In the finite frame <span
+class="math inline">\((1,\zeta)\)</span>, its coefficient is <span
+class="math inline">\(\zeta\)</span>, whose real derivative has positive
+determinant. The Euler class of a complex line equals its first Chern
+class; the local zero formula therefore gives <span
+class="math inline">\(c_1(Q^*)=u\)</span> and <span
+class="math inline">\(c_1(Q)=-u\)</span>. The local zero formula follows
+by pulling the positive fibre Thom class back under the section, using
+excision to split the relative group into its isolated-zero disks, and
+evaluating each local degree on the oriented disk. Homotopy of the
+section to the zero section identifies the resulting absolute class with
+the Euler class. This also proves the zero-count formula used in Section
+10.5.</p>
+<p>The curvature calculation provides the exact differential-form
+comparison in these coordinates. Use the unit section <span
+class="math inline">\(s=(1,\zeta)/\sqrt{1+|\zeta|^2}\)</span>. The
+projected unitary connection has connection and curvature forms</p>
+<p><span class="math display">\[
+\mathcal A=s^*ds=
+\frac{\bar\zeta\,d\zeta-\zeta\,d\bar\zeta}{2(1+|\zeta|^2)},
+\qquad
+\mathcal F=d\mathcal A=
+\frac{d\bar\zeta\wedge d\zeta}{(1+|\zeta|^2)^2}.
+\tag{10.8}
+\]</span></p>
+<p>With the convention <span class="math inline">\(c_1=(i/2\pi)\mathcal
+F\)</span>, its integral in the complex orientation is</p>
+<p><span class="math display">\[
+\frac{i}{2\pi}\int_{\mathbb C}\mathcal F
+=-\frac1\pi\int_{\mathbb R^2}\frac{dx\,dy}{(1+x^2+y^2)^2}
+=-2\int_0^\infty\frac{r\,dr}{(1+r^2)^2}=-1.
+\tag{10.9}
+\]</span></p>
+<p>Thus <span class="math inline">\(c_1(Q)=-u\)</span>, where <span
+class="math inline">\(u\)</span> is the positive integral generator. The
+clutching loop direction is positive while this tautological line’s
+Chern number is negative; both signs are retained. Since <span
+class="math inline">\(u^2=0\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{ch}(Q)=1-u,
+\qquad \operatorname{ch}(b)=-u.
+\tag{10.10}
+\]</span></p>
+<p>The Chern character is defined degree by degree as rank plus the
+Newton power sum in the Chern roots divided by <span
+class="math inline">\(j!\)</span> in degree <span
+class="math inline">\(2j\)</span>. Its sum and tensor rules follow from
+the integral splitting principle: pull back to a common flag bundle,
+where both bundles split into lines and pullback on cohomology is
+injective. If their line roots are <span
+class="math inline">\(t_i\)</span> and <span
+class="math inline">\(u_j\)</span>, the characters are <span
+class="math inline">\(\sum_i e^{t_i}\)</span> and <span
+class="math inline">\(\sum_j e^{u_j}\)</span>; the direct sum joins
+these lists, while the tensor product has roots <span
+class="math inline">\(t_i+u_j\)</span>. The finite homogeneous
+coefficients of <span class="math inline">\(e^{t+u}=e^te^u\)</span>,
+followed by injectivity of pullback, prove additivity and
+multiplicativity on the original base. These are the integral Chern
+classes, with the complex orientation on the underlying real bundle. The
+curvature expression <span
+class="math inline">\(\operatorname{tr}\exp(i\mathcal F/2\pi)\)</span>
+has the same operations: direct sums are block diagonal, and the two
+tensor curvature endomorphisms commute. The factorial and rank in both
+expressions are retained.</p>
+<p>For <span class="math inline">\(P_n=(S^2)^n\)</span>, let <span
+class="math inline">\(b_i\)</span> and <span
+class="math inline">\(u_i\)</span> be the pullbacks from the <span
+class="math inline">\(i\)</span>-th factor. Induction using (10.6)
+proves that its K-group is generated by <span
+class="math inline">\(b_I=\prod_{i\in I}b_i\)</span>, for all subsets
+<span class="math inline">\(I\subseteq\{1,\ldots,n\}\)</span>, including
+<span class="math inline">\(b_\varnothing=1\)</span>. Its integral
+cohomology has basis <span class="math inline">\(u_I=\prod_{i\in
+I}u_i\)</span>, with <span class="math inline">\(u_i^2=0\)</span>. This
+follows from the product cell structure: each factor has one zero-cell
+and one two-cell, all cellular boundary maps vanish, and products of the
+oriented two-cells identify the cup products and their evaluations on
+the corresponding factor submanifolds. Formula (10.10) gives</p>
+<p><span class="math display">\[
+\operatorname{ch}(b_I)=(-1)^{|I|}u_I.
+\tag{10.11}
+\]</span></p>
+<p>These images are an integral basis, so the generators <span
+class="math inline">\(b_I\)</span> are also independent. In particular
+the entire Chern character of every complex vector bundle on <span
+class="math inline">\(P_n\)</span> has integral coefficients in this
+basis. This is the precise Bott integrality consequence required for the
+sphere argument, now with its generation and independence proved.</p>
+<h3 id="the-degree-one-map-and-the-factorial">10.4. The degree-one map
+and the factorial</h3>
+<p>Collapse the union of subspaces of <span
+class="math inline">\(P_n\)</span> in which at least one factor is its
+infinity point. The quotient is the smash product <span
+class="math inline">\(S^2\wedge\cdots\wedge S^2\)</span>, the one-point
+compactification of <span class="math inline">\(\mathbb R^{2n}\)</span>,
+hence a <span class="math inline">\(2n\)</span>-sphere. Identify it with
+the outward-oriented unit sphere by</p>
+<p><span class="math display">\[
+x\longmapsto\frac{(2x,\,1-|x|^2)}{1+|x|^2},
+\qquad \infty\longmapsto(0,\ldots,0,-1).
+\tag{10.12}
+\]</span></p>
+<p>At <span class="math inline">\(x=0\)</span>, the derivative in the
+<span class="math inline">\(2n\)</span> tangent directions is twice the
+identity, and the outward normal is the last positive coordinate. Moving
+that normal to the front has sign <span
+class="math inline">\((-1)^{2n}=1\)</span>; thus the map has positive
+local degree. The resulting collapse map <span
+class="math inline">\(f:P_n\to S^{2n}\)</span> has degree one and</p>
+<p><span class="math display">\[
+f^*u=u_1\cdots u_n
+\quad\text{for the positive generator }u\in H^{2n}(S^{2n};\mathbb Z).
+\tag{10.13}
+\]</span></p>
+<p>It is an isomorphism on cohomology in degrees zero and <span
+class="math inline">\(2n\)</span>. It is not an isomorphism on the full
+cohomology when <span class="math inline">\(n&gt;1\)</span>: the product
+has the additional classes <span class="math inline">\(u_I\)</span> in
+intermediate degrees. This corrects the broader wording in
+Konstantis–Parton Section 6 without altering the map used in their
+top-degree argument.</p>
+<p>Let <span class="math inline">\(E\)</span> be a complex vector bundle
+of rank <span class="math inline">\(r\)</span> on <span
+class="math inline">\(S^{2n}\)</span>. All Chern classes below degree
+<span class="math inline">\(2n\)</span> vanish, and classes above it are
+zero by dimension. Newton’s identity gives</p>
+<p><span class="math display">\[
+\operatorname{ch}(E)=r+
+\frac{(-1)^{n-1}}{(n-1)!}c_n(E).
+\tag{10.14}
+\]</span></p>
+<p>To check its coefficient, write the Chern polynomial as <span
+class="math inline">\(\prod_j(1+x_jt)=1+c_n t^n\)</span> through degree
+<span class="math inline">\(n\)</span>. Its logarithmic derivative has
+coefficient <span class="math inline">\(nc_n\)</span> at <span
+class="math inline">\(t^{n-1}\)</span>, whereas the product expression
+gives <span class="math inline">\((-1)^{n-1}\sum_jx_j^n\)</span>.
+Division by <span class="math inline">\(n!\)</span> in the exponential
+defining the Chern character gives (10.14), including its rank and sign.
+This symmetric-polynomial identity is valid in cohomology without
+choosing actual line summands on the sphere.</p>
+<p>By naturality, <span
+class="math inline">\(f^*\operatorname{ch}(E)=\operatorname{ch}(f^*E)\)</span>.
+Equations (10.11), (10.13), and (10.14) imply</p>
+<p><span class="math display">\[
+\frac{\langle c_n(E),[S^{2n}]\rangle}{(n-1)!}\in\mathbb Z.
+\tag{10.15}
+\]</span></p>
+<p>We used only the top-degree coefficient of the exact pullback, while
+retaining the other cohomology classes of <span
+class="math inline">\(P_n\)</span>.</p>
+<h3 id="apply-the-calculation-to-the-tangent-bundle">10.5. Apply the
+calculation to the tangent bundle</h3>
+<p>An almost complex structure on <span
+class="math inline">\(S^{2n}\)</span> makes its real tangent bundle into
+a complex rank-<span class="math inline">\(n\)</span> bundle <span
+class="math inline">\(E\)</span>. Its top Chern class is the Euler class
+in the orientation induced by <span class="math inline">\(J\)</span>:
+both are the signed zero obstruction of a section of the same oriented
+real bundle; a complex frame gives the same local orientation used for
+the top Chern obstruction. Write <span
+class="math inline">\(\sigma=1\)</span> or <span
+class="math inline">\(-1\)</span> for the sign of this orientation
+relative to the outward sphere orientation. Its outward-oriented tangent
+Euler number is exactly two, as the following section computes without a
+general Euler-characteristic theorem. Fix a unit <span
+class="math inline">\(a\in\mathbb R^{2n+1}\)</span> and use the tangent
+field <span class="math inline">\(s_a(p)=a-\langle a,p\rangle
+p\)</span>. Its only zeros are <span class="math inline">\(p=a\)</span>
+and <span class="math inline">\(p=-a\)</span>. Differentiation on the
+tangent space at either zero is <span class="math inline">\(-\langle
+a,p\rangle I\)</span>, so the two derivatives are <span
+class="math inline">\(-I\)</span> and <span
+class="math inline">\(+I\)</span> in real dimension <span
+class="math inline">\(2n\)</span>, both with determinant sign <span
+class="math inline">\(+1\)</span>. The zero-count proof in Section 10.3
+gives Euler number two. Reversing the fibre orientation multiplies its
+class by <span class="math inline">\(\sigma\)</span>. It follows
+that</p>
+<p><span class="math display">\[
+c_n(E)=2\sigma u.
+\tag{10.16}
+\]</span></p>
+<p>Equation (10.15) gives <span
+class="math inline">\((n-1)!\mid2\)</span>. Thus <span
+class="math inline">\(n\leq3\)</span>.</p>
+<p>We must still exclude <span class="math inline">\(n=2\)</span>, and
+the following argument excludes every even <span
+class="math inline">\(n\)</span>. The full real stable trivialization
+is</p>
+<p><span class="math display">\[
+TS^{2n}\oplus\mathbf1_{\mathbb R}
+\longrightarrow S^{2n}\times\mathbb R^{2n+1},
+\qquad (p;v,a)\longmapsto(p;v+ap).
+\tag{10.17}
+\]</span></p>
+<p>Its inverse sends <span class="math inline">\((p;w)\)</span> to <span
+class="math inline">\((p;w-\langle w,p\rangle p,\langle
+w,p\rangle)\)</span>. Complexifying it gives <span
+class="math inline">\((E\oplus\bar E)\oplus\mathbf1_{\mathbb
+C}\simeq\mathbf1_{\mathbb C}^{2n+1}\)</span>. The exact map behind <span
+class="math inline">\(E_{\mathbb R}\otimes\mathbb C\simeq E\oplus\bar
+E\)</span> sends <span class="math inline">\(v\otimes z\)</span> to
+<span class="math inline">\((zv,z\bar v)\)</span>, with scalar
+multiplication in the conjugate bundle in the second component. In
+underlying real notation its inverse on <span
+class="math inline">\((w,\bar v)\)</span> is <span
+class="math inline">\(\frac12(w+v)\otimes1+\frac12J(v-w)\otimes
+i\)</span>. This proves the complexification comparison, including its
+conjugate summand; it does not assert that <span
+class="math inline">\(E\)</span> itself is stably trivial as a complex
+bundle.</p>
+<p>Conjugation gives <span class="math inline">\(c_j(\bar
+E)=(-1)^jc_j(E)\)</span>, since it negates each line Chern root; the
+equality also follows from conjugating the unitary curvature in the
+elementary symmetric Chern polynomial. Taking total Chern classes of the
+complexified stable trivialization, and using the dimension of the
+sphere, yields</p>
+<p><span class="math display">\[
+1=c(E)c(\bar E)
+=1+(1+(-1)^n)c_n(E).
+\tag{10.18}
+\]</span></p>
+<p>The term <span class="math inline">\((-1)^nc_n(E)^2\)</span> is in
+degree <span class="math inline">\(4n\)</span>, which is zero on the
+<span class="math inline">\(2n\)</span>-sphere; this is its exact reason
+for vanishing. If <span class="math inline">\(n\)</span> is even,
+(10.18) says <span class="math inline">\(2c_n(E)=0\)</span>,
+contradicting (10.16) in the free group <span
+class="math inline">\(H^{2n}(S^{2n};\mathbb Z)\)</span>. Hence only
+<span class="math inline">\(n=1,3\)</span> remain.</p>
+<p>Both are realized. The complex atlas of <span
+class="math inline">\(\mathbb{CP}^1\)</span>, identified with <span
+class="math inline">\(S^2\)</span> by (10.12) in dimension two, provides
+<span class="math inline">\(n=1\)</span>. Formula (3.1) provides <span
+class="math inline">\(n=3\)</span>; its failure of integrability does
+not affect the almost-complex assertion. With our original octonion
+labels, the orientation calculation after (3.9) gives <span
+class="math inline">\(\sigma=-1\)</span>, so its top Chern class is
+<span class="math inline">\(-2u\)</span> in the outward orientation, and
+its top Chern character is <span class="math inline">\(-u\)</span> by
+(10.14). An odd-dimensional real tangent space cannot carry <span
+class="math inline">\(J^2=-1\)</span>, because it would be a complex
+vector space and thus have even real dimension. This proves the claimed
+classification of positive-dimensional spheres. The zero-sphere consists
+of two complex zero-dimensional points and is outside that stated
+range.</p>
+<h2 id="integrability-exercises">11. Six complete exercises</h2>
+<h3
+id="exercise-1.-keep-the-algebra-and-orientation-comparisons-together">Exercise
+1. Keep the algebra and orientation comparisons together</h3>
+<p>Prove that the map <span class="math inline">\(\Phi\)</span> in (2.6)
+preserves cross products and associators, and compute its determinant on
+the imaginary seven-space.</p>
+<p><strong>Solution.</strong> It preserves the real unit, the inner
+product, and multiplication by (2.6)–(2.7). Applying it to <span
+class="math inline">\(xy=-\langle x,y\rangle+x\times y\)</span>
+therefore gives <span class="math inline">\(\Phi(x\times
+y)=\Phi(x)\times_\star\Phi(y)\)</span>. Applying it separately to the
+two bracketed products in (4.1) gives <span
+class="math inline">\(\Phi([x,y,z]_{\mathbb O})=[\Phi x,\Phi y,\Phi
+z]_\star\)</span>. In the basis <span
+class="math inline">\((1,e_1,\ldots,e_7)\)</span>, it fixes the first
+quaternion and the real coordinate of the second quaternion, and negates
+its three imaginary coordinates. Its full determinant is <span
+class="math inline">\((-1)^3=-1\)</span>. Since the real unit is fixed,
+the determinant on its perpendicular imaginary space is also <span
+class="math inline">\(-1\)</span>. Thus the induced sphere map reverses
+the specified ambient outward orientations while intertwining the two
+corresponding almost complex fields. Their complex orientations are
+transported by the intertwining differential, as follows directly from
+the ordered bases <span
+class="math inline">\((v_1,Jv_1,\ldots,v_3,Jv_3)\)</span>. There is no
+conflict between these two orientation statements: the ambient and
+complex orientations have each been specified separately and compared by
+explicit determinants.</p>
+<h3
+id="exercise-2.-describe-every-fixed-vector-obstruction-map-including-its-zero-case">Exercise
+2. Describe every fixed-vector obstruction map, including its zero
+case</h3>
+<p>For <span class="math inline">\(\mathcal N_U\)</span> in (4.4),
+determine its kernel and image, solve <span
+class="math inline">\(\mathcal N_UV=W\)</span> when it is solvable, and
+include <span class="math inline">\(U=0\)</span>.</p>
+<p><strong>Solution.</strong> If <span
+class="math inline">\(U\ne0\)</span>, equations (4.6)–(4.8) give kernel
+<span class="math inline">\(\operatorname{span}_{\mathbb
+R}(U,JU)\)</span>, image <span class="math inline">\(W_U\)</span>, and
+the particular solution</p>
+<p><span class="math display">\[
+V_0=-\frac{\mathcal N_UW}{16|U|^2}\quad(W\in W_U).
+\tag{11.1}
+\]</span></p>
+<p>Indeed applying <span class="math inline">\(\mathcal N_U\)</span>
+gives <span class="math inline">\(W\)</span> by (4.7). All solutions are
+<span class="math inline">\(V_0+aU+bJU\)</span>, <span
+class="math inline">\(a,b\in\mathbb R\)</span>, because their
+differences are exactly the kernel. A vector with nonzero component in
+<span class="math inline">\(\operatorname{span}(U,JU)\)</span> is not in
+the image. If <span class="math inline">\(U=0\)</span>, bilinearity
+gives <span class="math inline">\(\mathcal N_0=0\)</span>, its kernel is
+the entire tangent space, its image is zero, and the equation has every
+<span class="math inline">\(V\)</span> as a solution for <span
+class="math inline">\(W=0\)</span> and no solution otherwise. No
+division in (11.1) is applied to this zero case.</p>
+<h3
+id="exercise-3.-determine-all-scalar-holomorphic-functions-for-the-octonion-field">Exercise
+3. Determine all scalar holomorphic functions for the octonion
+field</h3>
+<p>Let <span class="math inline">\(U\subset S^6\)</span> be a connected
+open subset, and let <span class="math inline">\(f:U\to\mathbb
+C\)</span> be a <span class="math inline">\(C^2\)</span> function
+satisfying <span class="math inline">\(df\circ J=i\,df\)</span> for the
+field (3.1). Prove that <span class="math inline">\(f\)</span> is
+constant.</p>
+<p><strong>Solution.</strong> The equation says <span
+class="math inline">\(\bar\partial_Jf=0\)</span>. Hence <span
+class="math inline">\(\bar\partial_J^2f=0\)</span>. By (1.10), <span
+class="math inline">\(df\)</span> annihilates the image of <span
+class="math inline">\(\mathscr N\)</span>. Equation (4.12) says that
+image is the entire <span class="math inline">\(T^{1,0}_J\)</span>,
+while the original equation says that <span
+class="math inline">\(df\)</span> annihilates <span
+class="math inline">\(T^{0,1}_J\)</span>. Their direct sum is the
+complexified tangent bundle, so <span
+class="math inline">\(df=0\)</span>. The function is locally constant,
+and connectedness makes it constant on <span
+class="math inline">\(U\)</span>. In the adapted frame the precise
+equations are</p>
+<p><span class="math display">\[
+(\bar\partial_J^2f)(\bar Z_2,\bar Z_3)=iZ_1f,
+\quad
+(\bar\partial_J^2f)(\bar Z_3,\bar Z_1)=iZ_2f,
+\quad
+(\bar\partial_J^2f)(\bar Z_1,\bar Z_2)=iZ_3f.
+\tag{11.2}
+\]</span></p>
+<p>This is stronger than the assertion that this field supplies no
+holomorphic coordinate system. More generally the same proof applies to
+any almost complex structure for which the image of the complex tensor
+map in (4.9) spans <span class="math inline">\(T^{1,0}\)</span> at every
+point of the open set. It proves that exact consequence; it does not
+assert the same condition for a different field on the sphere.</p>
+<h3
+id="exercise-4.-test-the-coordinate-change-sign-without-discarding-nonlinear-terms">Exercise
+4. Test the coordinate-change sign without discarding nonlinear
+terms</h3>
+<p>In complex dimension one, take <span
+class="math inline">\(A=0\)</span>, real <span
+class="math inline">\(\epsilon\)</span>, and <span
+class="math inline">\(H(z)=z+\epsilon z\bar z\)</span>. Compute <span
+class="math inline">\(E=B\circ H\)</span>, the real Jacobian, and <span
+class="math inline">\(\Psi=(\partial_\zeta B)\circ H\)</span> wherever
+the displayed inverses exist.</p>
+<p><strong>Solution.</strong> Here <span class="math inline">\(\bar
+H=\bar z+\epsilon z\bar z\)</span>, so (6.7) gives</p>
+<p><span class="math display">\[
+E=-\frac{\epsilon z}{1+\epsilon z},
+\qquad
+j_H=(1+\epsilon\bar z)(1+\epsilon z)-\epsilon^2z\bar z
+=1+\epsilon(z+\bar z).
+\tag{11.3}
+\]</span></p>
+<p>The cancelled quadratic terms are displayed in the determinant. The
+inverse real Jacobian gives <span class="math inline">\((\partial_\zeta
+H^{-1})\circ H=(1+\epsilon z)/j_H\)</span>. The expression <span
+class="math inline">\(E\)</span> is holomorphic in <span
+class="math inline">\(z\)</span>, so its <span
+class="math inline">\(\bar z\)</span>-derivative is zero. Therefore</p>
+<p><span class="math display">\[
+\Psi=-\frac{\epsilon}
+{(1+\epsilon z)\{1+\epsilon(z+\bar z)\}}.
+\tag{11.4}
+\]</span></p>
+<p>For example, on <span class="math inline">\(|\epsilon
+z|&lt;1/4\)</span> both denominators are nonzero and the real Jacobian
+is positive. The first variation is <span
+class="math inline">\(-1\)</span>, in agreement with <span
+class="math inline">\(-\frac14\Delta(z\bar z)=-1\)</span>. This local
+test is not the periodic coordinate choice in Section 7; it verifies the
+sign using the original nonlinear formula on its stated domain.</p>
+<h3
+id="exercise-5.-see-the-intermediate-cohomology-which-the-collapse-does-not-remove">Exercise
+5. See the intermediate cohomology which the collapse does not
+remove</h3>
+<p>On <span class="math inline">\(S^2\times S^2\)</span>, expand the
+full K-class and Chern character of <span
+class="math inline">\(Q_1\otimes Q_2\)</span>, and compare with a
+pullback from <span class="math inline">\(S^4\)</span> under
+(10.12).</p>
+<p><strong>Solution.</strong> Since <span
+class="math inline">\([Q_i]=1+b_i\)</span>,</p>
+<p><span class="math display">\[
+[Q_1\otimes Q_2]=1+b_1+b_2+b_1b_2,
+\qquad
+\operatorname{ch}(Q_1\otimes Q_2)
+=1-u_1-u_2+u_1u_2.
+\tag{11.5}
+\]</span></p>
+<p>The two degree-two terms are nonzero: they pair as <span
+class="math inline">\(-1\)</span> with the respective factor spheres. A
+bundle of rank <span class="math inline">\(r\)</span> on <span
+class="math inline">\(S^4\)</span> has Chern character <span
+class="math inline">\(r-c_2\)</span> by (10.14), so its pullback has the
+form <span class="math inline">\(r-mu_1u_2\)</span> for an integer <span
+class="math inline">\(m\)</span>; it has no degree-two component. Thus
+the line in (11.5) is not such a pullback. The map <span
+class="math inline">\(f^*\)</span> identifies the top generators exactly
+but does not make the product’s intermediate classes disappear. This is
+the concrete distinction needed in the sphere proof.</p>
+<h3 id="exercise-6.-conjugate-the-actual-almost-complex-field">Exercise
+6. Conjugate the actual almost complex field</h3>
+<p>Compute <span class="math inline">\(N_{-J}\)</span>, the complex
+orientation, and the top Chern class for the negative of the field
+(3.1), preserving the outward orientation of the labelled sphere.</p>
+<p><strong>Solution.</strong> Substitute <span
+class="math inline">\(-J\)</span> in all four terms of (1.5). The first
+term has two minus signs in its bracket, and each of the last two terms
+has one minus sign from the outer endomorphism and one from the inner
+vector. Consequently</p>
+<p><span class="math display">\[
+N_{-J}=N_J.
+\tag{11.6}
+\]</span></p>
+<p>The ordered real complex basis changes from <span
+class="math inline">\((v_1,Jv_1,v_2,Jv_2,v_3,Jv_3)\)</span> to <span
+class="math inline">\((v_1,-Jv_1,v_2,-Jv_2,v_3,-Jv_3)\)</span>, so its
+orientation changes by <span class="math inline">\((-1)^3=-1\)</span>.
+Since the original field has sign <span
+class="math inline">\(-1\)</span> relative to the outward orientation,
+the conjugate has sign <span class="math inline">\(+1\)</span>. Its
+complex tangent bundle is the conjugate bundle of the original one, so
+<span class="math inline">\(c_3\)</span> changes from <span
+class="math inline">\(-2u\)</span> to <span
+class="math inline">\(+2u\)</span>, and <span
+class="math inline">\(\operatorname{ch}_3=c_3/2\)</span> changes from
+<span class="math inline">\(-u\)</span> to <span
+class="math inline">\(+u\)</span>. The nonzero tensor in (11.6) remains,
+so this conjugate field is also not integrable. The calculation changes
+an orientation and a Chern sign without changing the zero condition of
+the actual tensor.</p>
+<h2 id="sources">Included prerequisites, sources, and checks</h2>
+<p>The complete receiving proofs for Section 10 are included in this
+edition: <a href="thom-euler-for-lesson11.html">Thom classes and Euler
+numbers</a>, <a href="projective-splitting-for-lesson11.html">integral
+projective splitting</a>, and <a
+href="integral-chern-classes-for-lesson11.html">integral Chern classes and
+characters</a>. They prove the integral flag pullback, line tensor rule,
+Euler comparison and character operations with the exact signs used
+above. Their source authors and editorial changes are identified in
+those chapters; the original CC0 source files are retained
+unchanged.</p>
+<p>The <a href="checks/verify_almost_complex.py">exact checker</a>
+verifies the two octonion products on all basis pairs, every basis
+associator triple, the original tangent projections and obstruction
+maps, the nonlinear coordinate-change sign, and the finite polynomial
+matrix reduction. These finite checks supplement the written convergence
+and topological arguments. The <a
+href="checks/render_lesson11_figures.py">figure program</a>
+reproduces both diagrams.</p>
+<p>Original-author TeX was read from the retained source archives of
+Baez, arXiv math/0105155v4, Section 2.2; Hill–Taylor, arXiv 0710.2310v2,
+the complete source; and Konstantis–Parton, arXiv 1707.03883v1, the
+portions used for the sphere restriction. The source ledger specifies
+the actual reading coverage. The smooth integrability proof here
+supplies its own analytic estimates and commuting-flow construction; it
+does not claim the rough-regularity theorem of Hill–Taylor. Section 10
+proves the polynomial generation needed for the sphere calculation. The
+coefficient-algebra Toeplitz proof in the CC0 KT-OPK course was also
+read for comparison; no unproved periodicity theorem is used in the
+receiving argument.</p>
+<p>All proofs and exercises in this lesson are author-written and
+self-checked. This is not an independent review of the whole
+construction or an assertion that every related paper has been read. The
+analytic vanishing providers of lesson 10 are now included. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

@@ -1,0 +1,424 @@
+# The exact lowest-energy image of the full Fabel tensor
+
+Complete section of the cumulative manuscript, 9 September 2026.
+
+ 
+
+This section continues the actual tensor map of Section 13 through a spectral projection of the original interacting Hamiltonian. The resulting states are explicitly derived from the full material tensor. Their positive-coupling finite-regulator energy quotients tend to zero. The construction does not identify their changing Hilbert spaces with an interacting four-dimensional continuum theory.
+
+## Full weighted weak-coupling state map
+
+The source proofs retained with this manuscript are *The original finite-box SU(2) Hamiltonian at small positive coupling*, *Actual weak-coupling vacuum, observable and spectral maps*, and *Full-vacuum potential moments and the electric-state graph limit*. We retain their full proofs as authored reference files. Here is the complete dictionary and the additional weighted magnetic calculation.
+
+The original vertex gauge law is $U_e\mapsto h_s^{-1}U_eh_t$. Setting $k_v=h_v^{-1}$ gives exactly the same transformation written $U_e\mapsto k_sU_ek_t^{-1}$ in those sources. Thus their invariant function space is identical, with the identity map on link configurations and wavefunctions. Root the specified tree at $(-L,-L,-L)$, using the first coordinate, in order $1,2,3$, that exceeds $-L$ to select each vertex's parent. If $t_v$ is its ordered root-to-vertex holonomy, put $Z_c=t_{s(c)}U_ct_{t(c)}^{-1}$ for each non-tree chord $c$. The inverse keeps the tree variables and sets $U_c=t_s^{-1}Z_ct_t$. For each fixed tree configuration these chord changes are independent left/right Haar translations. Fubini gives the exact product measure identity. Based gauge invariance removes the tree variables; the remaining gauge action is simultaneous conjugation of every $Z_c$. This constructs the same physical Hilbert space, including the residual constraint.
+
+On real cochains with counting inner products let $d_0$ be the original vertex difference and $d_1$ the oriented four-edge curl. Let $p_v(x)$ be the additive tree integral and 
+
+$$
+(Tx)_c=p_{s(c)}(x)+x_c-p_{t(c)}(x),\quad
+ G=TT^{\mathsf T},\quad C=d_1\iota,\quad
+ R=T^{\mathsf T}G^{-1/2},
+$$
+
+ where $\iota$ inserts chords with zero tree entries. Square interchanges of monotone paths prove $\ker T=\ker d_1=\operatorname{im}d_0$ and $T\iota=I$. Consequently $R^{\mathsf T}R=I$, its range is $\ker d_0^{\mathsf T}$, and $d_1R=CG^{1/2}$. Choose an orthogonal matrix $O$ with 
+
+$$
+O^{\mathsf T}G^{1/2}C^{\mathsf T}CG^{1/2}O=\Sigma^2,\qquad
+ \Sigma=\operatorname{diag}(\sigma_\nu),\quad \sigma_\nu>0.
+$$
+
+ Thus the columns of $RO$ are an orthonormal transverse edge basis with curl frequencies $\sigma_\nu$. None of $T,G,C,R,O$ changes the original edge or face inner products.
+
+Write $Z_c=\exp(y_c^\alpha T_\alpha)$, $|y_c|<2\pi$. Outside a Haar-null set these logarithms are unique. For $\Omega_g=\{x:|x_c|<2\pi/g\}$ the exact Hilbert map is 
+
+$$
+\qquad\text{(112)}
+ (\mathcal B_gF)(x)=
+ g^{3r/2}\mathcal J(gx)^{1/2}F(\exp(gx)),\qquad
+ \mathcal J(y)=(16\pi^2)^{-r}
+ \prod_c\left(\frac{\sin(|y_c|/2)}{|y_c|/2}\right)^2,
+$$
+
+ extended by zero off $\Omega_g$, where $r=|\mathsf E_L|-|\mathsf V_L|+1$. Change of variables proves that it is an isometry onto the supported subspace; its adjoint includes the reciprocal density and dilation. Both commute with simultaneous colour rotations.
+
+Fix $L,a,f$ before sending $g$ to zero. Put $W_p= \operatorname{tr}U_p$ as before, $w_p=2-W_p$, $W=\sum_pw_p$, and $W_f=\sum_pf_pw_p$. The vacuum and spectral source proofs give 
+
+$$
+\mathcal B_g\psi_g\longrightarrow\Phi_0,\qquad
+ \mathcal B_gP_g(I)\mathcal B_g^*\longrightarrow P_0(I)
+ \quad\hbox{in operator norm}
+$$
+
+ for bounded excitation intervals $I$ whose endpoints avoid the comparison spectrum. Here $P_g(I)=\mathbf1_I(H_g-\mathcal E_g)$ on the physical space and 
+
+$$
+H_{\mathrm{osc}}=\frac1a\sum_{\nu,\alpha}
+ \left(-2\partial_{z_{\nu,\alpha}}^2+
+             \frac{\sigma_\nu^2z_{\nu,\alpha}^2}{8}\right),
+ \qquad z^\alpha=O^{\mathsf T}G^{-1/2}x^\alpha .
+$$
+
+ The density and constant Jacobian in this linear coordinate map remain part of the unitary representation. In $z$ coordinates the unit Gaussian has variance $2/\sigma_\nu$ in each real coordinate and ground energy $\mu_0=3\sum_\nu\sigma_\nu/(2a)$.
+
+For specificity, these convergence statements follow from the full operator, as follows. The full potential has a unique zero at all $Z_c=I$, by the contained-square path argument, and its Taylor term is $\frac14\sum_\alpha\|Cy^\alpha\|^2$. It bounds $c|y|^2$ from below in a fixed small chart and has positive minimum $c_\rho$ outside that chart. A vector with bounded original energy has chart-tail mass bounded by $2aK/(cR_0^2)+2aKg^2/c_\rho$ outside $|x|\le R_0$. Local ellipticity gives a local $H^1$ bound, so Rellich compactness and that tail estimate give global $L^2$ compactness. Cut-off invariant oscillator eigenfunctions give the min--max upper bound. The exact partition-of-unity identity for the full kinetic form has error $O_{L,\rho}(g^2)$; the exterior potential and interior quadratic comparison give the lower bound on each finite eigenvalue. The bounded-energy compactness identifies every subsequential eigenvector limit. Equality of finite ranks then proves the stated finite spectral projection convergence. Positivity fixes the vacuum phase. The retained source files contain the complete form estimates, domains, cutoffs and min--max calculation.
+
+The electric graph result for arbitrary real $f_e$ is 
+
+$$
+\mathcal B_g\left(g^2\sum_ef_eE_e\psi_g\right)
+ \longrightarrow
+ -\sum_{\alpha,c,d}(T\operatorname{diag}(f_e)T^{\mathsf T})_{cd}
+              \partial_{x_c^\alpha}\partial_{x_d^\alpha}\Phi_0 .
+$$
+
+ Its derivative control comes from the vacuum equation and all potential moments, not vacuum $L^2$ convergence alone. Indeed $\sum_{e,\alpha}|X_{e,\alpha}W|^2\le16W$ follows from $\sum_\alpha|X_{e,\alpha}w_p|^2=w_p-w_p^2/4$ and at most four incident faces. The ground-state transform applied to $W^{k/2}$, with positive regularization, gives 
+
+$$
+b\langle W^{k+1}\rangle
+ \le\mathcal E_g\langle W^k\rangle+4\kappa k^2\langle W^{k-1}\rangle.
+$$
+
+ At fixed $L,a$, $\mathcal E_g$ is bounded. Hence every $\langle(W/g^2)^k\rangle$ is bounded. This proves strong convergence of $(W/g^2)\psi_g$ by local Taylor expansion and its third-moment tail bound. The vacuum equation gives the strong graph limit for $g^2\sum_eE_e\psi_g$. The strongly commuting nonnegative link Casimirs obey $\|\sum_ef_eE_eF\|\le\|f\|_\infty\|\sum_eE_eF\|$. Apply this inequality to $\psi_g-\mathcal B_g^*(\chi_{R_0}\Phi_0)$, use convergence of all differentiated coefficients on the fixed compact support, and then let $R_0$ grow. Gaussian graph decay proves the displayed arbitrary-weight limit.
+
+The missing magnetic-weight extension is also strong: 
+
+$$
+\qquad\text{(113)}
+ \mathcal B_g((W_f/g^2)\psi_g)
+ \longrightarrow \frac14\sum_\alpha
+ (Cx^\alpha)^{\mathsf T}\operatorname{diag}(f_p)Cx^\alpha\Phi_0.
+$$
+
+ To prove it, use the exact inequality $|W_f|\le\max_p|f_p|\,W$. The same third-moment tail estimate controls its squared norm outside every chart ball. On a fixed ball every face word has its full Taylor limit; finite summation, strong vacuum convergence and bounded local multipliers give the limit there. The limiting quadratic Gaussian has an integrable squared tail. These statements prove (113) globally, for signed weights as well as positive weights.
+
+Define the full matrices 
+
+$$
+\begin{aligned}
+ A_f&=O^{\mathsf T}R^{\mathsf T}\operatorname{diag}(f_e)RO,
+ \qquad
+ M_f=O^{\mathsf T}R^{\mathsf T}d_1^{\mathsf T}
+                  \operatorname{diag}(f_p)d_1RO, \\
+ \mathsf R_f&=\Sigma^{-1/2}M_f\Sigma^{-1/2}
+                   -\Sigma^{1/2}A_f\Sigma^{1/2}. \qquad\text{(114)}
+\end{aligned}
+$$
+
+ All magnetic edge averages are the original $f_p=\frac14\sum_{\partial p}f_e$. Combining both graph limits with $\kappa=2g^2/a$ and $b=1/(2g^2a)$ proves the actual raw centered-vector limit 
+
+$$
+\qquad\text{(115)}
+ \mathcal B_g\Xi_f\longrightarrow
+ V_f=\frac1{4a}\sum_{\nu,\eta}(\mathsf R_f)_{\nu\eta}
+       \sum_{\alpha=1}^3
+       a_{\nu,\alpha}^\dagger a_{\eta,\alpha}^\dagger\Phi_0 .
+$$
+
+ Here $z_{\nu,\alpha}=\sqrt{2/\sigma_\nu}
+(a_{\nu,\alpha}+a_{\nu,\alpha}^\dagger)$, with the usual commutator equal to $\delta_{\nu\eta}\delta_{\alpha\beta}$. To check the coefficient, differentiating the Gaussian makes the electric centered creation coefficient $-\Sigma^{1/2}A_f\Sigma^{1/2}/(4a)$. The magnetic quadratic is $\sum_\alpha z_\alpha^{\mathsf T}M_fz_\alpha/(8a)$; its centered creation coefficient is $\Sigma^{-1/2}M_f\Sigma^{-1/2}/(4a)$. The scalar expectations converge by inner products with the converging unit vacuum. This retains both terms and their cancellation; for constant $f$ the matrices give $\mathsf R_f=0$, agreeing with $D_f=fH$.
+
+A diagonal colour contraction has squared norm $6$, and an off-diagonal contraction has squared norm $3$. Commuting its two annihilators through its two creators proves these values, with different unordered pairs orthogonal. Thus the full limiting raw measure is 
+
+$$
+\qquad\text{(116)}
+ \nu_{f,0}=\frac3{8a^2}\sum_\nu(\mathsf R_f)_{\nu\nu}^2
+                       \delta_{2\sigma_\nu/a}
+ +\frac3{4a^2}\sum_{\nu<\eta}(\mathsf R_f)_{\nu\eta}^2
+                       \delta_{(\sigma_\nu+\sigma_\eta)/a}.
+$$
+
+ Its total mass is $3\operatorname{tr}(\mathsf R_f^2)/(8a^2)$ and its first moment is $3\operatorname{tr}(\Sigma\mathsf R_f^2)/(4a^3)$. Strong vector convergence and finite spectral projection convergence, followed by a finite comparison-energy cutoff, prove weak convergence of the actual raw measures with total-mass convergence. We do not infer convergence of an unbounded energy test from weak convergence. For the bounded spectral intervals used below, the projected energy moments do converge.
+
+## All open-boundary coefficients in the lowest mode block
+
+Put $N=2L+1$, $h=\pi/(2N)$, $s=2\sin h$, and $\sigma=\sqrt2s$. The one-dimensional vertex and edge functions, in the original coordinates, are 
+
+$$
+\begin{aligned}
+ v_0(n)&=N^{-1/2},\quad
+ v_1(n)=-\sqrt{2/N}\sin(\pi n/N), &&-L\le n\le L,\\
+ w_1(n)&=-\sqrt{2/N}\cos(\pi(n+\tfrac12)/N), &&-L\le n<L.
+\end{aligned}
+$$
+
+ Finite geometric sums prove their unit norms, orthogonality of $v_0,v_1$, and $dv_1=sw_1$, $d^*w_1=sv_1$ with the open endpoints. For each cyclic triple $(i,p,q)=(1,2,3),(2,3,1),(3,1,2)$ define the edge cochain $V_i$ by its only two nonzero directional components: 
+
+$$
+\qquad\text{(117)}
+ (V_i)_p(n)=\frac{v_0(n_i)w_1(n_p)v_1(n_q)}{\sqrt2},\qquad
+ (V_i)_q(n)=-\frac{v_0(n_i)v_1(n_p)w_1(n_q)}{\sqrt2}.
+$$
+
+ The exact vertex divergence cancels between the two components. Tensor products give $\langle V_i,V_j\rangle=\delta_{ij}$. Their curls have disjoint face-plane supports and squared norms $\sigma^2$. For example $d_1V_1$ on plane $23$ is $-\sigma v_0(n_1)w_1(n_2)w_1(n_3)$; the other two signs follow from the same original positive face ordering. These are precisely the three lowest transverse modes: the full frequency list is $\sigma_{\mathbf j}^2=\sum_i4\sin^2(\pi j_i/(2N))$, $0\le j_i\le N-1$, with multiplicity $k-1$ for $k\ge2$ positive indices. It follows by tensoring the one-dimensional difference bases; curl on a fixed index triple has squared form $|s|^2|v|^2-|s\cdot v|^2$. This also proves completeness and all endpoint counts.
+
+Retain $f_S(e)=m(e)^{\mathsf T}S m(e)$ for real symmetric $S$, $m(e)=n+\mathbf e_i/2$. Define 
+
+$$
+\qquad\text{(118)}
+ \delta_L=\frac{1-\cot^2h}{8},\qquad
+ \mathfrak m_L^2=\frac{\cos^2h}{2N^2\sin^4h}.
+$$
+
+### Theorem 14.1.
+
+On the three-mode basis (117), the exact block $\mathsf R_S^{\min}$ of (114) is 
+
+$$
+\qquad\text{(119)}
+ (\mathsf R_S^{\min})_{ii}=\sigma\delta_L(\operatorname{tr}S-S_{ii}),
+ \qquad
+ (\mathsf R_S^{\min})_{ij}=\sigma\mathfrak m_L^2S_{ij}\quad(i\ne j).
+$$
+
+ The linear map from real symmetric $S$ to this real symmetric block is injective. Its full raw first-physical-band mass is 
+
+$$
+\qquad\text{(120)}
+ d_{L,a}(S)=\frac{3\sigma^2}{8a^2}
+ \left[
+ \delta_L^2\sum_i(\operatorname{tr}S-S_{ii})^2+
+ 2\mathfrak m_L^4\sum_{i<j}S_{ij}^2
+ \right].
+$$
+
+ It is strictly positive for every $S\ne0$.
+
+### Proof.
+
+Let 
+
+$$
+A=\sum_{n=-L}^Ln^2v_1(n)^2,\quad
+ B=\sum_{n=-L}^{L-1}(n+\tfrac12)^2w_1(n)^2,\quad
+ M=\sum_{n=-L}^Ln\,v_1(n)v_0(n).
+$$
+
+ These exact finite sums obey 
+
+$$
+\qquad\text{(121)}
+ B-A=-\tfrac14\cot^2h,\qquad
+ M=-\frac{\sqrt2\cos h}{2N\sin^2h},\qquad M^2=\mathfrak m_L^2.
+$$
+
+ Here is a derivation including the endpoint terms. Put 
+
+$$
+D_N(t)=\sum_{n=-L}^Le^{int}=\frac{\sin(Nt/2)}{\sin(t/2)},
+ \qquad D_{N-1}(t)=\sum_{n=-L}^{L-1}e^{i(n+1/2)t}.
+$$
+
+ The second sum equals $D_N(t)\cos(t/2)-\cos(Nt/2)$. Using $\sin^2u=(1-\cos2u)/2$ and $\cos^2u=(1+\cos2u)/2$ gives 
+
+$$
+B-A=\frac1N\left[
+ -\frac{N(N-1)}4-D_N''(2\pi/N)-D_{N-1}''(2\pi/N)\right].
+$$
+
+ Direct differentiation of the displayed quotient and identity yields 
+
+$$
+D_N''(2\pi/N)+D_{N-1}''(2\pi/N)
+ =\frac{N}{4\sin^2h}-\frac{N^2}4.
+$$
+
+ Substitution gives the first equality in (121). The first derivative at $\pi/N$ is 
+
+$$
+D_N'(\pi/N)=-\frac{\cos h}{2\sin^2h}.
+$$
+
+ This gives the displayed $M$. Thus neither endpoint lattice has been replaced by an integral.
+
+For a face in plane $pq$ its four edge midpoints have mean $c=n+(\mathbf e_p+\mathbf e_q)/2$, and averaging the four full quadratics gives 
+
+$$
+f_p=c^{\mathsf T}S c+(S_{pp}+S_{qq})/8 .
+$$
+
+ For the mode normal to $i$, parity removes the mixed-coordinate terms in both diagonal expectations. The electric expectation is $(S_{pp}+S_{qq})(A+B)/2+S_{ii}C_0$ and the unit-curl face expectation is $(S_{pp}+S_{qq})(B+1/8)+S_{ii}C_0$, where $C_0=\sum n^2v_0(n)^2$ is retained in both and cancels exactly. Their difference is $(S_{pp}+S_{qq})((B-A)/2+1/8)$, which is $\delta_L(\operatorname{tr}S-S_{ii})$. The common frequency factors in (114) give the diagonal part of (119).
+
+For distinct normal indices $i,j$, the two cochains share one edge direction. The product of their two signed components is minus one half of the squared $w_1$ factor times one $v_0v_1$ factor in each of the other directions. Only the term $2S_{ij}n_in_j$ in the full edge quadratic survives the two odd sums. The electric matrix entry is therefore $-S_{ij}M^2$. Their curls have disjoint face-plane supports, so the magnetic matrix entry is zero even with arbitrary face weights. The negative electric sign in (114) gives the positive off-diagonal entry in (119).
+
+Since $L\ge2$, $0<h\le\pi/10$; hence $\delta_L<0$ and $\mathfrak m_L^2>0$. A zero block first forces every off-diagonal $S_{ij}$ to vanish and then $S_{ii}=\operatorname{tr}S$ for all $i$. Summing gives $\operatorname{tr}S=3\operatorname{tr}S$, so all entries vanish. For an explicit inverse, if $B=\mathsf R_S^{\min}/\sigma$, then $\operatorname{tr}S=\operatorname{tr}B/(2\delta_L)$, $S_{ii}=\operatorname{tr}B/(2\delta_L)-B_{ii}/\delta_L$, and $S_{ij}=B_{ij}/\mathfrak m_L^2$. Finally the six colour contractions at energy $2\sigma/a$ and their squared norms in (116) give (120).
+
+The first physical energy is $\Delta=2\sigma/a$ with multiplicity six. Every one-quantum state transforms as a colour vector and has no invariant component. Among two-quanta states the only energy $\Delta$ comes from the three lowest modes, and rotation invariance of a bilinear tensor forces the scalar colour contraction. The next transverse frequency is $\sqrt3s$: triples $(1,1,1)$ give it, whereas a triple including $2$ has squared frequency at least $(1+4\cos^2h)s^2>3s^2$. All other two-quanta energies are at least $(\sqrt2+\sqrt3)s/a>(11/10)\Delta$. Every state with three or more quanta has energy at least $3\sigma/a>(11/10)\Delta$. Consequently 
+
+$$
+I_{L,a}=(\Delta/2,11\Delta/10)
+$$
+
+ isolates precisely the first six-dimensional physical comparison space. For $S\ne0$, (115) and spectral projection convergence prove 
+
+$$
+\qquad\text{(122)}
+ \|P_g(I_{L,a})\Xi_{f_S}\|^2\longrightarrow d_{L,a}(S)>0.
+$$
+
+ This is a conclusion for the actual positive-coupling vector, not an assignment of the comparison Gaussian as its vacuum.
+
+## The entire raw state and its lowest-band fraction
+
+Set 
+
+$$
+\mathcal N_{L,a}(S)=\frac3{8a^2}\operatorname{tr}(\mathsf R_{f_S}^2).
+$$
+
+ This is the limiting squared norm of the entire unchanged tensor state, including all higher mode pairs in (116). It is positive for $S\ne0$, since its lowest block is nonzero. The exact limiting fraction in the first physical band is therefore 
+
+$$
+\qquad\text{(123)}
+ \rho_{L,a}(S)=
+ \frac{d_{L,a}(S)}{\mathcal N_{L,a}(S)}
+ =\frac{\operatorname{tr}((\mathsf R_S^{\min})^2)}
+        {\operatorname{tr}(\mathsf R_{f_S}^2)}.
+$$
+
+ This ratio records two separately retained raw masses; it does not change the vector. Both strong vector and projection convergence prove that the corresponding fraction for $\Xi_{f_S}$ at positive $g$ tends to (123).
+
+There is an explicit lower bound retaining all original modes: 
+
+$$
+\qquad\text{(124)}
+ 1\ge\rho_{L,a}(S)\ge
+ \frac{\sigma^2\delta_L^2}{432rL^4}>0,\qquad
+ r=4L^2(4L+3).
+$$
+
+ To prove it, let $V=RO$ and $Y=d_1V\Sigma^{-1}$. Both are isometries into the original edge and face spaces, respectively. Equation (114) becomes 
+
+$$
+\mathsf R_{f_S}=\Sigma^{1/2}
+  [Y^{\mathsf T}\operatorname{diag}(f_p)Y
+             -V^{\mathsf T}\operatorname{diag}(f_e)V]\Sigma^{1/2}.
+$$
+
+ Every original midpoint has squared length at most $B_L=2L^2+(L-\tfrac12)^2<3L^2$. Thus $|f_e|,|f_p|\le B_L\|S\|_{\mathrm{op}}$. Since $\sigma_{\max}^2\le12$, compression and finite-rank Hilbert--Schmidt estimates give 
+
+$$
+\operatorname{tr}(\mathsf R_{f_S}^2)
+ \le 4\sigma_{\max}^2rB_L^2\|S\|_{\mathrm{op}}^2
+ \le432rL^4\|S\|_{\mathrm{op}}^2.
+$$
+
+ On the lowest block, $\sum_i(\operatorname{tr}S-S_{ii})^2
+=\sum_iS_{ii}^2+(\operatorname{tr}S)^2$. Moreover 
+
+$$
+\frac{\mathfrak m_L^2}{|\delta_L|}
+ =\frac{4\cos^2h}{N^2\sin^2h\cos(2h)}
+ >\frac{16}{\pi^2}>1.
+$$
+
+ Here $\cos(2h)>0$, $\cos^2h>\cos(2h)$ and $\sin h<h$ give the strict inequalities. Consequently $\operatorname{tr}((\mathsf R_S^{\min})^2)
+\ge\sigma^2\delta_L^2\|S\|_{\mathrm F}^2$. Use $\|S\|_{\mathrm F}\ge\|S\|_{\mathrm{op}}$ to obtain (124). The upper bound follows because the full Hilbert--Schmidt sum contains the lowest block. The displayed lower bound tends to zero at large $L$; it is not an asserted positive volume-uniform spectral fraction.
+
+## The original material endpoint and an actual diagonal
+
+For integers $j\ge2$ retain the original full matrices from Section 13 and set 
+
+$$
+\qquad\text{(125)}
+ L_j=j^2,\quad a_j=\frac1{100j},\quad z_j=\frac1j,\quad
+ \tau_j=\frac{1-j^{-2}}8,\quad S_j=K_{\tau_j}=C_{\tau_j}C_{\tau_j}^{\mathsf T}.
+$$
+
+ These times stay on the regular material orbit; no singular matrix is inserted at its endpoint. Each $S_j$ is positive definite because $C_{\tau_j}$ is invertible. In particular the preceding theorem applies. Section 13 proves $j^{-6}S_j\to S_*=\eta\eta^{\mathsf T}$, $\eta=(1/4,3/8,-9/4)^{\mathsf T}$, with every matrix entry retained. Define $d_j=d_{L_j,a_j}(S_j)$, $\Delta_j=2\sigma_j/a_j$, and 
+
+$$
+\qquad\text{(126)}
+ \mathcal C_*=
+ \frac{204976875}{512\pi^2}+\frac{3982500}{\pi^6}>0 .
+$$
+
+### Theorem 14.2.
+
+There is a definite sequence of strictly positive dyadic couplings $g_j<1/j$ and actual smooth physical vectors 
+
+$$
+\qquad\text{(127)}
+ w_j=\mathbf1_{(\Delta_j/2,\,11\Delta_j/10)}
+        (H_{g_j,L_j,a_j}-\mathcal E_{g_j,L_j,a_j})
+        \,\Xi_{f_{S_j}},
+$$
+
+ orthogonal to the actual vacuum, for which 
+
+$$
+\begin{aligned}
+ j^{-18}\|w_j\|^2&\longrightarrow\mathcal C_*,
+ \qquad\text{(128)}\\
+ j^{-17}\langle w_j,(H_{g_j,L_j,a_j}-\mathcal E_{g_j,L_j,a_j})w_j\rangle
+ &\longrightarrow100\sqrt2\pi\,\mathcal C_*,
+ \qquad\text{(129)}\\
+ j\,\frac{\langle w_j,(H_{g_j,L_j,a_j}-\mathcal E_{g_j,L_j,a_j})w_j\rangle}
+               {\|w_j\|^2}
+ &\longrightarrow100\sqrt2\pi .
+ \qquad\text{(130)}
+\end{aligned}
+$$
+
+ No vector is divided by its norm in this construction.
+
+### Proof.
+
+For each fixed $j$, fixed-box eigenvalue convergence and (122) imply that every sufficiently small $g>0$ satisfies the following finite set of strict inequalities. The first six physical excitation energies lie within $\Delta_j/(10j)$ of $\Delta_j$, the seventh exceeds $11\Delta_j/10$, and 
+
+$$
+\left|\frac{\|P_g(I_{L_j,a_j})\Xi_{f_{S_j}}\|^2}{d_j}-1\right|<\frac1j.
+$$
+
+ Also require $|\|\Xi_{f_{S_j}}\|^2/\mathcal N_{L_j,a_j}(S_j)-1|<1/j$, which follows from the proved full-vector norm convergence. Let $n_j$ be the least positive integer for which $g_j=2^{-n_j}<1/j$ and all these inequalities hold. Their established fixed-box limits prove existence of this integer. This definition asserts no unproved volume-uniform convergence rate or prescribed renormalized coupling law.
+
+The projection in (127) has rank six. Its range consists of smooth physical eigenvectors; it excludes the vacuum, since its energy interval is strictly positive. The norm inequality gives $\|w_j\|^2>(1-1/j)d_j>0$. On that range every excitation eigenvalue differs from $\Delta_j$ by at most $\Delta_j/(10j)$. Expansion in its actual orthonormal eigenbasis therefore gives the exact two-sided bound 
+
+$$
+\left|
+ \frac{\langle w_j,(H-\mathcal E)w_j\rangle}{\Delta_j\|w_j\|^2}-1
+ \right|<\frac1{10j}.
+$$
+
+ The basis is used to evaluate the original vector, not to rescale it.
+
+It remains to compute the unchanged raw scale $d_j$. For $N_j=2j^2+1$ and $h_j=\pi/(2N_j)$, the limit $\sin h_j/h_j\to1$ gives 
+
+$$
+\frac{\sigma_j^2}{2\pi^2/N_j^2}\to1,\qquad
+ \frac{\delta_{L_j}}{N_j^2}\to-\frac1{2\pi^2},\qquad
+ \frac{\mathfrak m_{L_j}^2}{N_j^2}\to\frac8{\pi^4},
+ \qquad \frac{N_j^2}{a_j^2j^6}\to40000.
+$$
+
+ The exact tensor entries give 
+
+$$
+\sum_i(\operatorname{tr}S_*-S_{*,ii})^2
+ =\frac{333^2+328^2+13^2}{64^2}=\frac{109321}{2048},
+ \qquad
+ \sum_{i<j}S_{*,ij}^2=\frac{531}{512}.
+$$
+
+ Insert these into the full expression (120), using $j^{-6}S_j\to S_*$, to obtain 
+
+$$
+j^{-18}d_j\to
+ \frac{7500}{\pi^2}\frac{109321}{2048}
+ +\frac{3840000}{\pi^6}\frac{531}{512}=\mathcal C_* .
+$$
+
+ Moreover $j\Delta_j=400\sqrt2\,j^2\sin(\pi/(4j^2+2))
+\to100\sqrt2\pi$. The norm and energy inequalities above now prove all three limits. The additionally retained whole-state norm gives the actual positive-coupling fraction bound 
+
+$$
+\frac{\|w_j\|^2}{\|\Xi_{f_{S_j}}\|^2}
+ \ge\frac{j-1}{j+1}\,
+ \frac{\sigma_j^2\delta_{L_j}^2}{432r_jL_j^4}.
+$$
+
+ Its right side is asymptotic to $j^{-10}/(3456\pi^2)$. No limit of the full fraction is inferred from this lower estimate. Every finite Hamiltonian still has $\kappa_j=200jg_j^2$, $b_j=50j/g_j^2$ and $\xi_j=1/(4g_j^4)$, including the full scalar $2b_j|\mathsf P_{L_j}|$. No strong-coupling inverse estimate was used.
+
+If the chosen observable uses physical midpoints $am(e)$ instead, its exact state is $a_j^2w_j$ by linearity of $D_f$, centering and spectral projection. Its raw norm and energy are multiplied by $a_j^4$. Thus their powers become $j^{14}$ and $j^{13}$ with constants $\mathcal C_*/10^8$ and $100\sqrt2\pi\,\mathcal C_*/10^8$. The quotient is identical. This is the full coordinate/unit dictionary, not a silent change of weight.
+
+The construction proves the full morphism from each material tensor through the energy-current state and the actual physical spectral projection. The six-dimensional coefficient map has the explicit inverse in Theorem 14.1. The spectral projection itself is global in space and depends on the full Hamiltonian. It has not been proved to be a local observable map between the changing regulators, nor a dynamical intertwiner of the forced Navier--Stokes solution and source-free Yang--Mills. The compactly supported Navier--Stokes profile is not replaced here by the stationary Fabel material orbit. The next unresolved part of the original objective is a common interacting continuum state/observable construction preserving this low-energy image. The finite-regulator sequence alone does not supply that identification. Section 15 constructs the next common vacuum-plus-band frame with its exact Gram tensor, calculates compact local-energy and Navier--Stokes curvature-state matrix elements, and retains the explicit higher-mode leakage in products. The common full local interacting continuum representation remains unresolved.
+

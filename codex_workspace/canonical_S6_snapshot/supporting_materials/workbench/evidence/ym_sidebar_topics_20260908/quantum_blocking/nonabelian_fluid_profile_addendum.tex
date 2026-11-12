@@ -1,0 +1,269 @@
+\section{Exact non-Abelian map of the released viscous source}
+\label{sec:nonabelian-fluid-profile}
+
+This section composes the actual released positive-viscosity source
+profile with a three-colour connection. It is a coordinate-level
+calculation on the source field; it is not a replacement of that field by
+an Euler solution, and it is not a claim that the resulting source-free
+Yang--Mills theory has been constructed. The source files retained for
+provenance are
+\begin{sloppypar}
+\texttt{released\_ns\allowbreak\_reader\allowbreak\_corrected\allowbreak\_20260909.tex},
+\texttt{endpoint\_derivation.tex},
+and
+\texttt{axis\_continuation\_body.tex}.
+The first has 854321 bytes, the second 25620 bytes, and the third 41080
+bytes in this workspace. The latter two are exact source continuations;
+their construction theorems are attributed to those sources. The
+identities below are independently checked by
+\texttt{check\_nonabelian\_flow.py}, whose receipt records 41 exact
+symbolic tests.
+\end{sloppypar}
+
+\subsection{Spaces, units, and the exact map}
+
+Let \(I\) be the source's preterminal time interval and let
+\[
+ u\in C^\infty(I\times\mathbb R^3;\mathbb R^3),\qquad
+ \partial_i u_i=0.
+\tag{225}
+\]
+be the actual localized field in the retained source. Pointwise formulas
+need no support hypothesis; in each spatial integral below the source's
+compact support is retained. Keep \(c>0\), \(g>0\), and
+\(\lambda\in\mathbb R\setminus\{0\}\), with \(X^0=cs\), \(X^i=x^i\) and
+\(\eta_{\mu\nu}=\operatorname{diag}(-1,1,1,1)\). Let
+\(T_a=-i\sigma_a/2\), so
+\[
+ [T_a,T_b]=\varepsilon_{abd}T_d,\qquad
+ -2\operatorname{tr}(T_aT_b)=\delta_{ab}.
+\tag{226}
+\]
+Identify colour coefficient vectors with the oriented spatial basis, but
+do not identify the two fields. Define
+\[
+ {\bf A}_0=0,\qquad {\bf A}_i=\lambda\,e_i\times u,\qquad
+ A_\mu={\bf A}_\mu\cdot T.
+\tag{227}
+\]
+The exact inverse on this displayed image is
+\[
+ u=-\frac1{2\lambda}\sum_{i=1}^3e_i\times{\bf A}_i.
+\tag{228}
+\]
+Indeed \(\sum_i e_i\times(e_i\times u)=-2u\). The earlier Cartan map
+\(C_i=\lambda u_iT_3\) and (227) are related by two explicit compositions:
+\[
+ C_i=\lambda u_iT_3\longmapsto {\bf A}_i=\lambda(e_i\times u),
+ {\bf A}\longmapsto
+ C_i=\lambda\left[-\frac1{2\lambda}\sum_j e_j\times{\bf A}_j\right]_iT_3.
+\tag{229}
+\]
+Each composition is the identity on its stated image. This proves the
+type morphism between the two encodings while making no assertion that
+either representative map is injective on all gauge orbits.
+
+\subsection{Curvature, its invariant norm, and the current}
+
+For \(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu]\),
+write \({\bf E}_i={\bf F}_{0i}\) and
+\({\bf B}_i=\frac12\varepsilon_{ijk}{\bf F}_{jk}\). Direct expansion of
+(227), retaining the commutator, gives
+\[
+ {\bf E}_i=\frac{\lambda}{c}e_i\times u_s,\qquad
+ B_i^a=\lambda(\partial_a u_i-\delta_{ia}\partial_k u_k)
+               +\lambda^2u_i u_a.
+\tag{230}
+\]
+The epsilon contractions used here are
+\[
+ \varepsilon_{ijk}\varepsilon_{akb}
+ =\delta_{ib}\delta_{ja}-\delta_{ia}\delta_{jb},\qquad
+ ((e_j\times u)\times(e_k\times u))_a
+ =\varepsilon_{jkb}u_bu_a.
+\tag{231}
+\]
+Thus incompressibility gives
+\[
+ B_i^a=\lambda\partial_a u_i+\lambda^2u_i u_a,\quad
+ |{\bf B}|^2=\lambda^2|\nabla u|^2+
+ 2\lambda^3u_i u_a\partial_a u_i+\lambda^4|u|^4
+ =\lambda^2|\nabla u|^2+\lambda^3\partial_a(|u|^2u_a)
+ +\lambda^4|u|^4.
+\tag{232}
+\]
+For compact support,
+\[
+ \int|{\bf B}|^2\,dx
+ =\lambda^2\|\nabla u\|_2^2+\lambda^4\|u\|_4^4
+ =\lambda^2\|\operatorname{curl}u\|_2^2+\lambda^4\|u\|_4^4,\qquad
+ \int|{\bf E}|^2\,dx=\frac{2\lambda^2}{c^2}\|u_s\|_2^2.
+\tag{233}
+\]
+The second equality uses integration by parts and the cubic divergence in
+(232) has not been discarded pointwise. Moreover
+\(\operatorname{tr}B=\lambda^2|u|^2\), hence
+\[
+ |{\bf B}|^2\ge\frac{\lambda^4}{3}|u|^4.
+\tag{234}
+\]
+The trace is frame-dependent; the norm and the inequality are invariant.
+
+Define the induced current by the full sourced equation
+\[
+ D^\mu F_{\mu\nu}=g^2j_\nu,\qquad D_\mu V=\partial_\mu V+[A_\mu,V].
+\tag{235}
+\]
+The exact lower-index Gauss component and spatial component are
+\[
+ g^2{\bf j}_0=-\frac{\lambda}{c}\operatorname{curl}u_s
+              -\frac{\lambda^2}{c}u\times u_s,
+\tag{236}
+\]
+\[
+ g^2{\bf j}_i=-\frac{\lambda}{c^2}e_i\times u_{ss}
+ -\lambda\nabla\omega_i
+ -\lambda^2\left(2\omega_i u+
+ \varepsilon_{ijk}u_k\partial_j u+e_i\times((u\cdot\nabla)u)\right)
+ -\lambda^3|u|^2(e_i\times u),\quad \omega=\operatorname{curl}u.
+\tag{237}
+\]
+To prove (237), first use the unreduced exact form
+\[
+ g^2{\bf j}_i=-\frac{\lambda}{c^2}e_i\times u_{ss}
+ -\varepsilon_{ijk}\{\partial_j{\bf B}_k+
+ \lambda(e_j\times u)\times{\bf B}_k\},
+\tag{238}
+\]
+then insert (230) and contract all three epsilon indices. The coefficient
+\(2\omega_i u\) consists of two terms: differentiating the quadratic
+part of (230), and commuting its linear part. Antisymmetry and Jacobi give
+\[
+ g^2D^\nu j_\nu
+ =\tfrac12[D^\nu,D^\mu]F_{\mu\nu}
+ =\tfrac12[F^{\nu\mu},F_{\mu\nu}]=0.
+\tag{239}
+\]
+
+If the same actual field satisfies the retained forced viscous equation,
+\[
+ u_s+(u\cdot\nabla)u-\nu\Delta u+\nabla p=f,\qquad \nu>0,
+\tag{240}
+\]
+set
+\[
+ N=\nu\Delta u-(u\cdot\nabla)u-\nabla p+f=u_s,\qquad
+ u_{ss}=\nu\Delta N-(N\cdot\nabla)u-(u\cdot\nabla)N-\nabla p_s+f_s.
+\tag{241}
+\]
+Equations (236)--(238) with (241) are the exact fluid-to-current
+morphism. Viscosity, pressure, forcing and both differentiated transport
+terms remain present.
+
+\subsection{The released axis jet and an actual curvature consequence}
+
+The released source continuation fixes \(0<h<1/100\), \(C>0\), and
+\(\tau=1-s>0\), and proves, on a common preterminal axis neighborhood,
+\[
+ u_1=a(\sigma,z,s)x_1-b(\sigma,z,s)x_2,\quad
+ u_2=a(\sigma,z,s)x_2+b(\sigma,z,s)x_1,\quad
+ u_3=w(\sigma,z,s),\quad \sigma=(x_1^2+x_2^2)/2,
+\tag{242}
+\]
+\[
+ b(0,0,s)=C^{-1}\tau^{-1-h},\qquad
+ \partial_3w(0,0,s)=-2a(0,0,s).
+\tag{243}
+\]
+The first equality is the source's actual axis quotient; the second is
+incompressibility, not an imposed symmetry reduction. At the axis the
+full spatial gradient and velocity are therefore
+\[
+ \nabla u=\begin{pmatrix}a&-b&0\\ b&a&0\\0&0&-2a\end{pmatrix},
+ \qquad u=(0,0,w).
+\tag{244}
+\]
+Substitution into (230), with no coefficient suppressed, gives
+\[
+ |{\bf B}|^2_{\rm axis}
+ =2\lambda^2(a^2+b^2)+(-2\lambda a+\lambda^2w^2)^2
+ \ge 2\lambda^2C^{-2}\tau^{-2-2h}.
+\tag{245}
+\]
+Thus the source's axis vorticity growth is invariant curvature growth for
+this exact non-Abelian representative, including \(a\) and \(w\). Since
+\(\partial_s b=(1+h)C^{-1}\tau^{-2-h}\),
+\[
+ \operatorname{curl}u_s(0,0,s)=
+ 2(1+h)C^{-1}\tau^{-2-h}e_3,\qquad
+ u(0,0,s)\times u_s(0,0,s)=0,
+\]
+and hence
+\[
+ g^2{\bf j}_0(0,0,s)
+ =-\frac{2\lambda(1+h)}{cC}\tau^{-2-h}e_3.
+\tag{246}
+\]
+This is an exact nonzero sourced Yang--Mills component. It prevents the
+axis calculation from being misreported as a sourceless solution.
+
+The source's viscosity map is retained with no parameter replacement:
+\[
+ x=\sqrt{\nu}\,y,\quad
+ u_\nu(x,s)=\sqrt{\nu}\,u_*(y,s),\quad
+ p_\nu(x,s)=\nu p_*(y,s),\quad f_\nu(x,s)=\sqrt{\nu}f_*(y,s).
+\tag{247}
+\]
+Its inverse divides by the displayed factors after \(y=x/\sqrt{\nu}\).
+The chain rule gives
+\(\mathcal R_\nu(u_\nu,p_\nu,f_\nu)=
+\sqrt{\nu}\mathcal R_1(u_*,p_*,f_*)\) and preserves zero initial data,
+support and the full forcing residual. This map is between the source's
+viscosity-one presentation and every stated \(\nu>0\); it does not set
+physical viscosity to one.
+
+\subsection{Composition with the actual quantum state map}
+
+At every regular source time, retain the positive density and the original
+quarter-face weighted operator from Sections~16--18. The exact chain is
+\[
+ u\longmapsto h=|{\bf B}|^2
+ \longmapsto D_{h,g}
+ \longmapsto \Xi_{h,g}=(D_{h,g}-\langle\psi_g,D_{h,g}\psi_g\rangle)\psi_g
+ \longmapsto e^{-tA_g/2}\Xi_{h,g}.
+\tag{248}
+\]
+Here \(h\) is nonnegative, but its cubic and quartic terms in (232) remain
+in its Fourier transform:
+\[
+ \widehat h(k)=\lambda^2\widehat{|\nabla u|^2}(k)
+ +i\lambda^3 k\cdot\widehat{|u|^2u}(k)
+ +\lambda^4\widehat{|u|^4}(k).
+\tag{249}
+\]
+The nine ordered products in \(|\widehat h|^2\) remain in the full
+two-creation spectral measure. The exact Section16 comparison map
+\(J_t h\) consequently has
+\[
+ \|J_t h\|^2=\frac1{320\pi^5t}\int_{\mathbb R^3}|k|^4e^{-t|k|}
+ |\widehat h(k)|^2\,dk,\qquad t>0.
+\tag{250}
+\]
+If \(H=\int h\ne0\), its point-concentration comparison has raw norm
+\(9H^2/(\pi^4t^8)\) and raw excitation \(72H^2/(\pi^4t^9)\), with quotient
+\(8/t\). These are unchanged raw states; no state is divided by its norm.
+Equations (248)--(250) are a free comparison representation with the
+original interacting finite-box state map preceding it. They do not prove
+that the interacting continuum Hamiltonian has this spectrum.
+
+\subsection{Scope of the propagated result}
+
+The exact map (227)--(249) proves a non-Abelian, gauge-invariant curvature
+and current consequence for the released positive-viscosity profile,
+including all original source terms. It does not turn a sourced classical
+connection into a source-free quantum Yang--Mills solution, and it does
+not by itself establish a zero mass gap. The remaining interacting
+question is whether the actual finite-box states in (248), with their
+full \(D_{h,g}\), Gram corrections, and regulator-dependent interaction
+matrix, admit a jointly controlled continuum limit. A negative or
+divergent classical term is not substituted for that spectral proof.

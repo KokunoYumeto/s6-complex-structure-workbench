@@ -1,0 +1,1143 @@
+% Workbench-ready, self-contained mathematical section.
+% Required bibliography keys: Borovoi_2001, GorodnikOhShah_2009,
+% Voight_2021.  Every cross-reference label is namespaced koide-count-*.
+
+\section{Exact arithmetic of the Koide defect-one shell}
+\label{koide-count-sec-main}
+
+This section isolates an arithmetic result that does not use the existence of
+the proposed complex structure on \(S^6\), any period-map assertion, or any
+Yang--Mills interpretation.  All coordinates, chambers, local factors, and
+normalizations used in the final constant are fixed explicitly below.
+
+For \(r=(r_1,r_2,r_3)\), define the Koide quadratic form
+\begin{equation}
+ Q_K(r_1,r_2,r_3)
+ :=\frac23(r_1+r_2+r_3)^2-(r_1^2+r_2^2+r_3^2).
+ \label{koide-count-eq-qk}
+\end{equation}
+For integral coordinates put
+\begin{equation}
+ \Delta(x,y,z):=4(xy+xz+yz)-(x^2+y^2+z^2).
+ \label{koide-count-eq-defect}
+\end{equation}
+Expanding \eqref{koide-count-eq-qk} gives the exact identity
+\begin{equation}
+ \Delta(x,y,z)=3Q_K(x,y,z).
+ \label{koide-count-eq-defect-qk}
+\end{equation}
+Thus the equation studied here,
+\(\Delta=-1\), is the nonzero level \(Q_K=-1/3\); it is not an affine
+translate of the null cone \(Q_K=0\).
+
+\subsection{Vieta reduction and exact ternary coordinates}
+\label{koide-count-subsec-vieta}
+
+Regarded as a monic quadratic equation in \(z\), the defect equation is
+\begin{equation}
+ z^2-4(x+y)z+x^2+y^2-4xy-1=0.
+ \label{koide-count-eq-monic-z}
+\end{equation}
+Consequently the other root is
+\begin{equation}
+ z'=4(x+y)-z.
+ \label{koide-count-eq-vieta-root}
+\end{equation}
+The analogous substitutions in \(x\) and \(y\) are integral involutions
+preserving \(\Delta\).
+
+Let $e_1,e_2,e_3$ be the standard basis and let $B_K$ be the integral
+bilinear form with Gram matrix
+\begin{equation}
+ A_K=
+ \begin{pmatrix}
+ -1&2&2\\
+ 2&-1&2\\
+ 2&2&-1
+ \end{pmatrix},
+ \qquad
+ B_K(u,v)=u^{\mathsf T}A_Kv.
+ \label{koide-count-eq-vieta-gram}
+\end{equation}
+Thus $\Delta(u)=B_K(u,u)$.  The eigenvalue of $A_K$ on
+$\mathbb R(1,1,1)$ is $3$, and its eigenvalue on the orthogonal complement is
+$-3$, so this integral presentation has signature $(1,2)$.
+
+\begin{proposition}[Vieta moves are Lorentzian reflections]
+\label{koide-count-prop-vieta-reflections}
+For $i=1,2,3$, define
+\begin{equation}
+ s_i(u)=u-
+ \frac{2B_K(u,e_i)}{B_K(e_i,e_i)}e_i.
+ \label{koide-count-eq-reflection-definition}
+\end{equation}
+Then $s_i\in\operatorname O(B_K,\mathbb Z)$,
+$s_i^2=1$, and $\det s_i=-1$.  Explicitly,
+\begin{align}
+ s_1(x,y,z)&=(-x+4y+4z,y,z),\label{koide-count-eq-vieta-s1}\\
+ s_2(x,y,z)&=(x,-y+4x+4z,z),\label{koide-count-eq-vieta-s2}\\
+ s_3(x,y,z)&=(x,y,-z+4x+4y).\label{koide-count-eq-vieta-s3}
+\end{align}
+Consequently these are exactly the three Vieta root substitutions for
+$\Delta=-1$, now identified as reflections of the unchanged Lorentzian
+lattice $(\mathbb Z^3,B_K)$.
+\end{proposition}
+
+\begin{proof}
+Since $B_K(e_i,e_i)=-1$, formula
+\eqref{koide-count-eq-reflection-definition} is integral and direct
+evaluation gives \eqref{koide-count-eq-vieta-s1}--
+\eqref{koide-count-eq-vieta-s3}.  The standard reflection calculation
+gives
+\[
+ B_K(s_i(u),s_i(v))=B_K(u,v),\qquad s_i^2=1.
+\]
+The map fixes the hyperplane $e_i^\perp$ pointwise and sends $e_i$ to
+$-e_i$, hence has determinant $-1$.  Finally, when the equation is viewed
+as a monic quadratic in one coordinate, the displayed replacement is the
+sum of its two roots minus the original root, proving the last assertion.
+\end{proof}
+
+\begin{proposition}[Strict Vieta reduction]
+\label{koide-count-prop-vieta-reduction}
+Let \(0<x\leq y\leq z\) be integers satisfying
+\(\Delta(x,y,z)=-1\).  If \(z<4(x+y)\), then the other root in
+\eqref{koide-count-eq-vieta-root} satisfies \(0<z'<y\).  If
+\(z\geq4(x+y)\), then \(z'\leq0\).
+\end{proposition}
+
+\begin{proof}
+In the first case \(z'>0\) follows immediately from
+\eqref{koide-count-eq-vieta-root}.  Let \(P(Z)\) be the polynomial on the
+left of \eqref{koide-count-eq-monic-z}.  Since \(x\leq y\),
+\[
+ P(y)=x^2-8xy-2y^2-1
+ \leq xy-8xy-2y^2-1<0.
+\]
+But \(P(y)=(y-z)(y-z')\), and \(y-z\leq0\); hence \(y-z'>0\), so
+\(z'<y\).  The second assertion again follows directly from
+\eqref{koide-count-eq-vieta-root}.
+\end{proof}
+
+Define the reduced-root set and its height count by
+\begin{align}
+ \mathcal R
+ &:={}
+ \{(x,y,z)\in\mathbb Z_{>0}^3:
+ x\leq y\leq z,\ \Delta(x,y,z)=-1,\ z\geq4(x+y)\},
+ \label{koide-count-eq-reduced-set}\\
+ R(X)&:=\#\{(x,y,z)\in\mathcal R:z\leq X\}.
+ \label{koide-count-eq-rx-definition}
+\end{align}
+Proposition~\ref{koide-count-prop-vieta-reduction} shows that the wall
+\(z\geq4(x+y)\) is exactly the terminal side of the decreasing Vieta move
+after the coordinates have been ordered.
+
+\begin{proposition}[The positive Vieta graph is a rooted forest]
+\label{koide-count-prop-vieta-forest}
+Let $\mathcal S^+$ be the set of unordered triples of positive integers
+satisfying $\Delta=-1$.  Join two vertices in a simple graph when one is
+obtained from the other by a Vieta reflection $s_i$ and the reflected
+coordinate is positive.  Every connected component of this graph is a
+tree with exactly one root, and the roots are precisely the unordered
+triples whose ordered representatives lie in $\mathcal R$.  Equivalently,
+every positive integral solution has a unique reduced representative, and
+it is obtained by repeatedly ordering the coordinates and reflecting the
+largest coordinate whenever it lies below the terminal wall.
+\end{proposition}
+
+\begin{proof}
+First, no Vieta reflection fixes a point of $\Delta=-1$.  Indeed, a fixed
+reflection in a coordinate $w$, with the other two coordinates denoted by
+$u,v$, would give $w=2(u+v)$, and substitution in the unchanged form gives
+\[
+ \Delta(u,v,2(u+v))=3(u^2+4uv+v^2)>0.
+\]
+Thus the sum of the three coordinates changes strictly across every edge.
+
+Now order a vertex as $0<x\leq y\leq z$.  In fact $y<z$, because $y=z$
+would give
+\[
+ \Delta(x,y,y)=-x^2+8xy+2y^2>0.
+\]
+Reflecting either of the two smaller coordinates produces a new coordinate
+strictly larger than $z$:
+\[
+ 4(y+z)-x>z,\qquad 4(x+z)-y>z.
+\]
+If $z<4(x+y)$, Proposition~\ref{koide-count-prop-vieta-reduction} says
+that reflection in the largest coordinate produces $0<z'<y$ and strictly
+decreases the coordinate sum.  If $z\geq4(x+y)$, that reflection is
+nonpositive and hence is not an edge of $\mathcal S^+$.  Therefore every
+nonterminal vertex has exactly one neighbour of smaller coordinate sum,
+whereas a terminal vertex has none.
+
+Iteration of the unique decreasing move terminates because the coordinate
+sum is a positive integer.  The endpoint is represented by an element of
+$\mathcal R$.  The graph has no cycle: on a putative simple cycle choose a
+vertex of largest coordinate sum; its two neighbours on the cycle would be
+two distinct smaller neighbours, contrary to uniqueness.  Thus each
+component is a tree.  A tree in which following the unique decreasing edge
+always terminates has exactly one terminal vertex, proving both uniqueness
+and the characterization of the roots.
+\end{proof}
+
+For an ordered triple define
+\begin{equation}
+ n=z-4(x+y),\qquad q=y-x,\qquad a=x+y-4n,
+ \label{koide-count-eq-forward-coordinates}
+\end{equation}
+and let
+\begin{equation}
+ \mathcal T:=
+ \left\{(a,q,n)\in\mathbb Z^3:
+ \begin{array}{c}
+ a>0,\ q\geq0,\ n\geq0,\ a+4n>q,\\
+ a^2-3q^2-18n^2=-2
+ \end{array}
+ \right\}.
+ \label{koide-count-eq-ternary-chamber}
+\end{equation}
+
+\begin{theorem}[Integral ternary-coordinate bijection]
+\label{koide-count-thm-coordinate-bijection}
+The map in \eqref{koide-count-eq-forward-coordinates} restricts to a
+bijection \(\Phi:\mathcal R\to\mathcal T\).  Its inverse is
+\begin{equation}
+ (a,q,n)\longmapsto
+ \left(
+ \frac{a+4n-q}{2},
+ \frac{a+4n+q}{2},
+ 4a+17n
+ \right).
+ \label{koide-count-eq-inverse-coordinates}
+\end{equation}
+For arbitrary integral \((x,y,z)\) and the associated \((a,q,n)\),
+\begin{equation}
+ 2\Delta(x,y,z)=a^2-3q^2-18n^2,
+ \qquad z=4a+17n.
+ \label{koide-count-eq-polynomial-identity}
+\end{equation}
+In particular,
+\begin{equation}
+ R(X)=\#\{(a,q,n)\in\mathcal T:4a+17n\leq X\}.
+ \label{koide-count-eq-exact-count}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Put \(p=x+y\).  Since \(q=y-x\), one has
+\(2x=p-q\) and \(2y=p+q\), and direct substitution into
+\eqref{koide-count-eq-defect} gives
+\[
+ 2\Delta=p^2-3q^2+8pz-2z^2.
+\]
+The definition \(n=z-4p\) gives \(z=4p+n\), whence
+\[
+ 2\Delta=p^2-3q^2-8pn-2n^2.
+\]
+Finally \(a=p-4n\), equivalently \(p=a+4n\), gives both identities in
+\eqref{koide-count-eq-polynomial-identity}.
+
+Suppose first that \((x,y,z)\in\mathcal R\).  Then \(q,n\geq0\), while
+\(a+4n=p>q\) because \(p-q=2x>0\).  The defect equation and
+\eqref{koide-count-eq-polynomial-identity} give
+\(a^2-3q^2-18n^2=-2\).  If \(n=0\), then \(a=p>0\).  If \(n\geq1\),
+then
+\[
+ a^2=3q^2+18n^2-2\geq18n^2-2\geq16n^2.
+\]
+Were \(a\leq0\), this inequality would force \(a\leq-4n\), contrary to
+\(a+4n>q\geq0\).  Hence \(a>0\), and the forward map lands in
+\(\mathcal T\).
+
+Conversely, reducing the ternary equation modulo \(2\) gives
+\(a\equiv q\pmod2\), so all three coordinates in
+\eqref{koide-count-eq-inverse-coordinates} are integral.  Put
+\(p=a+4n\).  The chamber inequality gives
+\[
+ x=\frac{p-q}{2}>0,\qquad
+ y=\frac{p+q}{2}\geq x.
+\]
+Moreover
+\[
+ z=4a+17n=4p+n\geq4p>p>y.
+\]
+The identities \eqref{koide-count-eq-polynomial-identity} now give
+\(\Delta=-1\) and \(z-4(x+y)=n\geq0\).  Thus the inverse map lands in
+\(\mathcal R\).  The displayed formulae show directly that the two
+compositions are the identity.  The last assertion follows from the height
+identity in \eqref{koide-count-eq-polynomial-identity}.
+\end{proof}
+
+\begin{proposition}[Complete Pell classification of the chamber faces]
+\label{koide-count-prop-pell-faces}
+The integral points of $\mathcal T$ on its two coordinate faces are the
+following two disjoint families.
+
+On the terminal Vieta wall $n=0$, define integers $a_k,q_k$ by
+\begin{equation}
+ a_k+q_k\sqrt3=(1+\sqrt3)(2+\sqrt3)^k
+ \qquad(k\geq0).
+ \label{koide-count-eq-wall-pell-sequence}
+\end{equation}
+Then the points of $\mathcal T$ with $n=0$ are exactly
+$(a_k,q_k,0)$ for $k\geq1$, and their reduced roots are
+\begin{equation}
+ \left(
+  \frac{a_k-q_k}{2},
+  \frac{a_k+q_k}{2},
+  4a_k
+ \right).
+ \label{koide-count-eq-wall-pell-roots}
+\end{equation}
+The first is $(1,4,20)$.
+
+On the symmetry face $q=0$, define integers $A_k,N_k$ by
+\begin{equation}
+ A_k+N_k\sqrt{18}=(4+\sqrt{18})(17+4\sqrt{18})^k
+ \qquad(k\geq0).
+ \label{koide-count-eq-symmetric-pell-sequence}
+\end{equation}
+Then the points of $\mathcal T$ with $q=0$ are exactly
+$(A_k,0,N_k)$ for $k\geq0$, and their reduced roots are
+\begin{equation}
+ \left(
+  \frac{A_k+4N_k}{2},
+  \frac{A_k+4N_k}{2},
+  4A_k+17N_k
+ \right).
+ \label{koide-count-eq-symmetric-pell-roots}
+\end{equation}
+The first is $(4,4,33)$.
+
+In the projectivized real quadric these families tend, respectively, to
+the two chamber-boundary rays
+\begin{equation}
+ (a,q,n)=\mathbb R_{>0}(\sqrt3,1,0),
+ \qquad
+ (a,q,n)=\mathbb R_{>0}(3\sqrt2,0,1).
+ \label{koide-count-eq-pell-limit-rays}
+\end{equation}
+Each family contributes only $O(\log X)$ points to $R(X)$.
+\end{proposition}
+
+\begin{proof}
+On $n=0$, the equation of $\mathcal T$ is
+$a^2-3q^2=-2$.  Here $q=0$ is impossible.  If $q=1$, positivity gives
+$a=1$, which fails the strict chamber inequality $a>q$.  For any positive
+solution with $q\geq2$, multiplication by the norm-one unit
+$2-\sqrt3$ gives
+\begin{equation}
+ a'+q'\sqrt3=(a+q\sqrt3)(2-\sqrt3),\qquad
+ a'=2a-3q,\quad q'=2q-a.
+ \label{koide-count-eq-wall-pell-descent}
+\end{equation}
+The unchanged equation implies
+\[
+ a<2q,\qquad
+ a>\frac32q,\qquad
+ a>q
+ \quad(q\geq2),
+\]
+because its squares differ from $4q^2$, $9q^2/4$, and $q^2$ by,
+respectively, $q^2+2$, $3q^2/4-2>0$, and $2q^2-2>0$.
+Thus $a',q'>0$ and $q'<q$.  Repeated descent reaches $(1,1)$, and reversing
+the descent proves \eqref{koide-count-eq-wall-pell-sequence} is the complete
+positive solution set.  The recurrence
+\[
+ a_{k+1}=2a_k+3q_k,\qquad q_{k+1}=a_k+2q_k
+\]
+shows inductively that $a_k,q_k$ are both odd.  The chamber excludes only
+$k=0$, and Theorem~\ref{koide-count-thm-coordinate-bijection} now gives
+\eqref{koide-count-eq-wall-pell-roots}.
+
+On $q=0$, one has $a^2-18n^2=-2$.  Necessarily $n>0$.  Direct substitution
+for $1\leq n\leq5$ gives the sole solution $(a,n)=(4,1)$.  If $n\geq6$,
+multiplication by the norm-one unit $17-4\sqrt{18}$ gives
+\begin{equation}
+ a'+n'\sqrt{18}=(a+n\sqrt{18})(17-4\sqrt{18}),\qquad
+ a'=17a-72n,\quad n'=17n-4a.
+ \label{koide-count-eq-symmetric-pell-descent}
+\end{equation}
+Both new coordinates are positive.  Indeed,
+\[
+ \frac an=\sqrt{18-\frac2{n^2}}
+ >\frac{72}{17}\quad(n\geq6),
+ \qquad
+ \frac an<\sqrt{18}<\frac{17}{4}.
+\]
+Moreover $a>4n$ and hence $0<n'<n$.  Descent therefore reaches $(4,1)$,
+and reversal proves \eqref{koide-count-eq-symmetric-pell-sequence} is the
+complete positive solution set.  Its recurrence,
+\[
+ A_{k+1}=17A_k+72N_k,\qquad
+ N_{k+1}=4A_k+17N_k,
+\]
+keeps $A_k$ even and $N_k$ odd, so
+\eqref{koide-count-eq-symmetric-pell-roots} follows from the inverse
+coordinate formula.
+
+Conjugating the two identities defining the sequences shows
+\[
+ \frac{a_k}{q_k}\longrightarrow\sqrt3,\qquad
+ \frac{A_k}{N_k}\longrightarrow\sqrt{18}=3\sqrt2,
+\]
+which proves \eqref{koide-count-eq-pell-limit-rays}.  Finally, the dominant
+factors $2+\sqrt3>1$ and $17+4\sqrt{18}>1$ give exponential growth in $k$,
+whereas the heights in \eqref{koide-count-eq-wall-pell-roots} and
+\eqref{koide-count-eq-symmetric-pell-roots} are positive linear forms in
+the displayed coordinates.  Hence either face contains only $O(\log X)$
+points of height at most $X$.
+\end{proof}
+
+\subsection{The affine quadric and its local densities}
+\label{koide-count-subsec-local}
+
+Put
+\begin{equation}
+ F(a,q,n):=a^2-3q^2-18n^2,
+ \qquad
+ \mathscr X:=\{F=-2\}\subset\mathbb A^3.
+ \label{koide-count-eq-affine-quadric}
+\end{equation}
+The matrix of \(F\) is
+\(A=\operatorname{diag}(1,-3,-18)\), so
+\(\det A=54\), and
+\(-(-2)\det A=108\) is not a square.  The integral point
+\(x_0=(1,1,0)\) lies on \(\mathscr X\).
+
+For every prime \(p\), define
+\begin{equation}
+ N_{p,k}:=
+ \#\{(a,q,n)\bmod p^k:F(a,q,n)\equiv-2\pmod{p^k}\},
+ \qquad
+ \sigma_p:=\lim_{k\to\infty}p^{-2k}N_{p,k}.
+ \label{koide-count-eq-local-density-definition}
+\end{equation}
+
+\begin{theorem}[Exact local densities]
+\label{koide-count-thm-local-densities}
+The limits in \eqref{koide-count-eq-local-density-definition} exist and
+are
+\begin{equation}
+ \sigma_2=\frac32,
+ \qquad
+ \sigma_3=2,
+ \qquad
+ \sigma_p=
+ \frac{1-p^{-2}}{1-\left(\frac3p\right)p^{-1}}
+ \quad(p\geq5).
+ \label{koide-count-eq-all-local-densities}
+\end{equation}
+Writing \(\chi_{12}\) for the primitive real character modulo \(12\), the
+singular series, with the primes taken in increasing order (equivalently,
+with Borovoi's convergence-factor prescription), is therefore
+\begin{equation}
+ \mathfrak S(\mathscr X):=\prod_p\sigma_p
+ =\frac92\frac{L(1,\chi_{12})}{\zeta(2)}
+ =\frac92\frac{\log(2+\sqrt3)}{\sqrt3\,\zeta(2)}.
+ \label{koide-count-eq-singular-series}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+We compute the two bad primes first.
+
+For \(p=3\), once \(q,n\bmod3^k\) have been chosen, the equation for
+\(a\) is
+\[
+ a^2\equiv-2+3q^2+18n^2\equiv1\pmod3.
+\]
+The two roots modulo \(3\) are nonsingular, and each has a unique Hensel
+lift modulo every \(3^k\).  Thus
+\begin{equation}
+ N_{3,k}=2\cdot3^{2k},
+ \label{koide-count-eq-three-adic-count}
+\end{equation}
+which gives \(\sigma_3=2\).
+
+For \(p=2\), reduction modulo \(4\) leaves exactly two parity branches:
+\begin{equation}
+ (a,q,n)\equiv(0,0,1)\pmod2,
+ \qquad
+ (a,q,n)\equiv(1,1,0)\pmod2.
+ \label{koide-count-eq-two-adic-branches}
+\end{equation}
+Fix \(k\geq4\) and put \(j=k-1\).  On the first branch write
+\(a=2A\), \(q=2Q\), and put \(r=3n\).  Then
+\begin{equation}
+ F(a,q,n)+2
+ =-2\bigl(r^2-2A^2+6Q^2-1\bigr).
+ \label{koide-count-eq-two-adic-even-branch}
+\end{equation}
+Hence we must solve
+\[
+ r^2\equiv1+2A^2-6Q^2\pmod{2^j}.
+\]
+An odd unit is a square modulo \(2^j\), \(j\geq3\), precisely when it is
+\(1\pmod8\), in which case it has four roots.  Here that condition is
+equivalent to \(A,Q\) both being even.  There are \(2^{2j-2}\) such pairs
+\((A,Q)\bmod2^j\), four choices of \(r\bmod2^j\), and, because \(3\) is
+a unit, two odd choices of \(n\bmod2^k\) above each such \(r\).  This
+branch therefore contributes
+\begin{equation}
+ 2^{2j-2}\cdot4\cdot2=2^{2k-1}
+ \label{koide-count-eq-two-adic-first-branch-count}
+\end{equation}
+solutions modulo \(2^k\).
+
+On the second branch write \(n=2m\) and set
+\begin{equation}
+ v=\frac{a-q}{2},
+ \qquad
+ r=\frac{-a+3q}{2}.
+ \label{koide-count-eq-two-adic-divided-coordinates}
+\end{equation}
+Then \(r,v\) have opposite parity, the inverse formula is
+\(a=r+3v\), \(q=r+v\), and
+\begin{equation}
+ F(a,q,n)+2
+ =-2\bigl(r^2-3v^2+36m^2-1\bigr).
+ \label{koide-count-eq-two-adic-odd-branch}
+\end{equation}
+First suppose \(v=2V\) and \(r\) is odd.  For fixed
+\(V\bmod2^{j-1}\) and \(m\bmod2^j\), the equation for \(r\) is
+\[
+ r^2\equiv1+12V^2-36m^2\pmod{2^j}.
+\]
+Its right side is \(1\pmod8\) exactly when \(V,m\) have the same parity.
+There are
+\(2\cdot2^{j-2}2^{j-1}=2^{2j-2}\) such pairs, and four roots \(r\),
+so this subbranch gives \(2^{2j}\) triples \((r,v,m)\bmod2^j\).
+
+Now suppose \(r=2R\) and \(v\) is odd.  The congruence in
+\eqref{koide-count-eq-two-adic-odd-branch}, solved for \(v^2\), has an
+odd square on the left; its right side is \(1\pmod8\) exactly when
+\(R,m\) have opposite parity.  Again there are \(2^{2j-2}\) admissible
+pairs and four square roots, hence \(2^{2j}\) transformed triples.
+
+It remains to account for the divided-coordinate map.  Each class
+\((r,v)\bmod2^j\) of opposite parity has exactly two inverse classes
+\((a,q)\bmod2^k\): shifting either \(r\) or \(v\) by \(2^j\) changes both
+\(a=r+3v\) and \(q=r+v\) by \(2^j\), while shifting both changes neither
+modulo \(2^k\).  The class \(m\bmod2^j\) gives one even class
+\(n=2m\bmod2^k\).  Thus the second branch contributes
+\begin{equation}
+ 2\bigl(2^{2j}+2^{2j}\bigr)=2^{2k}.
+ \label{koide-count-eq-two-adic-second-branch-count}
+\end{equation}
+Combining \eqref{koide-count-eq-two-adic-first-branch-count} and
+\eqref{koide-count-eq-two-adic-second-branch-count} gives
+\begin{equation}
+ N_{2,k}=3\cdot2^{2k-1}\qquad(k\geq4),
+ \label{koide-count-eq-two-adic-total-count}
+\end{equation}
+and hence \(\sigma_2=3/2\).
+
+For \(p\geq5\), one has \(p\nmid108\).  Borovoi's good-prime formula
+\cite[Section~1.3]{Borovoi_2001} gives
+\[
+ \sigma_p=\frac{1-p^{-2}}{1-\chi(p)p^{-1}},
+ \qquad
+ \chi(p)=\left(\frac{-(-2)\det A}{p}\right)
+ =\left(\frac{108}{p}\right)=\left(\frac3p\right),
+\]
+which proves the remaining formula in
+\eqref{koide-count-eq-all-local-densities}.  Since
+\(\chi(p)=\chi_{12}(p)\) for \(p\geq5\),
+\[
+ \prod_{p\geq5}\sigma_p
+ =L(1,\chi_{12})\prod_{p\geq5}(1-p^{-2})
+ =\frac32\frac{L(1,\chi_{12})}{\zeta(2)}.
+\]
+Multiplication by \(\sigma_2\sigma_3=3\) gives the first equality in
+\eqref{koide-count-eq-singular-series}.  Finally, the residue classes on
+which \(\chi_{12}\) is nonzero give
+\begin{align*}
+ L(1,\chi_{12})
+ &=\sum_{m\geq0}
+ \left(
+ \frac1{12m+1}-\frac1{12m+5}
+ -\frac1{12m+7}+\frac1{12m+11}
+ \right)\\
+ &=\int_0^1\frac{1-x^2}{x^4-x^2+1}\,\mathrm dx
+ =\frac{\log(2+\sqrt3)}{\sqrt3},
+\end{align*}
+where the middle equality follows by summing the geometric series and the
+last by an elementary partial-fraction integration.  This completes the
+local computation.
+\end{proof}
+
+\subsection{The archimedean chamber factor}
+\label{koide-count-subsec-archimedean}
+
+The Poincar\'e-residue gauge form on the whole smooth affine quadric is the
+unique regular \(2\)-form \(\omega_\infty\) whose local representatives
+satisfy
+\begin{equation}
+ \omega_\infty\wedge\mathrm dF
+ =\mathrm da\wedge\mathrm dq\wedge\mathrm dn,
+ \label{koide-count-eq-gauge-form}
+\end{equation}
+Explicitly, on the three standard charts it is
+\begin{equation}
+ \omega_\infty
+ =\frac{\mathrm dq\wedge\mathrm dn}{2a}\quad(a\neq0),
+ \qquad
+ \omega_\infty
+ =\frac{\mathrm da\wedge\mathrm dn}{6q}\quad(q\neq0),
+ \qquad
+ \omega_\infty
+ =-\frac{\mathrm da\wedge\mathrm dq}{36n}\quad(n\neq0).
+ \label{koide-count-eq-global-gauge-charts}
+\end{equation}
+These expressions agree on overlaps after restriction to the tangent bundle
+of \(F=-2\).  Since the gradient
+\((2a,-6q,-36n)\) cannot vanish on that level, the three charts cover
+\(\mathscr X\), so \(\omega_\infty\) is globally defined and nowhere
+vanishing.  Let \(m_\infty:=|\omega_\infty|\) be its associated positive
+measure.  On the sheet \(a>0\), used for the chamber count, the first
+expression in \eqref{koide-count-eq-global-gauge-charts} applies.
+Let
+\begin{equation}
+ \mathcal C:=
+ \{(a,q,n)\in\mathbb R^3:a>0,\ q\geq0,\ n\geq0,\ a+4n>q\}.
+ \label{koide-count-eq-real-chamber}
+\end{equation}
+
+\begin{theorem}[Exact archimedean factor]
+\label{koide-count-thm-archimedean-factor}
+As \(X\to\infty\),
+\begin{equation}
+ m_\infty\{u\in\mathscr X(\mathbb R)\cap\mathcal C:
+              4a+17n\leq X\}
+ \sim I_\infty X,
+ \qquad
+ I_\infty=\frac1{2\sqrt3}
+ \log\!\left(\frac3{2\sqrt2}\right).
+ \label{koide-count-eq-archimedean-asymptotic}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+First, the wall \(a+4n>q\) removes only a bounded part of the positive
+orthant.  Indeed, if \(q\geq a+4n\), then \(a\leq q-4n\); using
+\(a^2=3q^2+18n^2-2\) gives
+\[
+ 3q^2+18n^2-2\leq(q-4n)^2,
+ \qquad\text{hence}\qquad
+ q^2+4qn+n^2\leq1.
+\]
+Thus the removed real region has bounded \(m_\infty\)-measure.  Its only
+integral point on \(\mathscr X\) with \(a>0,q,n\geq0\) is
+\((a,q,n)=(1,1,0)\).
+
+Introduce polar coordinates in the negative plane by
+\begin{equation}
+ \sqrt3\,q=r\cos\theta,
+ \qquad
+ 3\sqrt2\,n=r\sin\theta,
+ \qquad
+ 0\leq\theta\leq\frac\pi2.
+ \label{koide-count-eq-polar-coordinates}
+\end{equation}
+On \(F=-2\), one has \(a=\sqrt{r^2-2}\) and \(r\,\mathrm dr=a\,\mathrm da\).
+The Jacobian in \eqref{koide-count-eq-polar-coordinates} therefore gives
+\begin{equation}
+ \mathrm dm_\infty
+ =\frac1{6\sqrt6}\,\mathrm da\,\mathrm d\theta.
+ \label{koide-count-eq-polar-measure}
+\end{equation}
+At fixed \(\theta\), the height boundary is
+\begin{equation}
+ 4a+\frac{17}{3\sqrt2}\sqrt{a^2+2}\sin\theta=X.
+ \label{koide-count-eq-height-boundary}
+\end{equation}
+Let \(A_X(\theta)\) be its nonnegative solution when one exists, and put
+it equal to zero otherwise.  Then \(0\leq A_X(\theta)/X\leq1/4\), and
+for every fixed \(\theta\),
+\[
+ \frac{A_X(\theta)}{X}
+ \longrightarrow
+ \frac1{4+\frac{17}{3\sqrt2}\sin\theta}.
+\]
+Dominated convergence and \eqref{koide-count-eq-polar-measure} give
+\begin{equation}
+ I_\infty
+ =\frac1{6\sqrt6}\int_0^{\pi/2}
+ \frac{\mathrm d\theta}
+ {4+\frac{17}{3\sqrt2}\sin\theta}.
+ \label{koide-count-eq-archimedean-integral}
+\end{equation}
+For completeness, set \(t=\tan(\theta/2)\).  If
+\(\alpha=2\sqrt2/3\) and \(\beta=3/(2\sqrt2)\), then
+\(\alpha\beta=1\), and
+\[
+ \int_0^{\pi/2}
+ \frac{\mathrm d\theta}
+ {4+\frac{17}{3\sqrt2}\sin\theta}
+ =\frac12\int_0^1\frac{\mathrm dt}{(t+\alpha)(t+\beta)}
+ =3\sqrt2\log\!\left(\frac3{2\sqrt2}\right).
+\]
+Substitution in \eqref{koide-count-eq-archimedean-integral} proves
+\eqref{koide-count-eq-archimedean-asymptotic}.
+\end{proof}
+
+\subsection{A genuine norm and the homogeneous counting theorem}
+\label{koide-count-subsec-gos}
+
+\begin{lemma}[A genuine norm realizing the height]
+\label{koide-count-lem-genuine-norm}
+Define
+\begin{equation}
+ \lVert(a,q,n)\rVert_*
+ :=\max\{|4a+17n|,|q|,|a|\}.
+ \label{koide-count-eq-star-norm}
+\end{equation}
+Then \(\lVert\cdot\rVert_*\) is a norm on \(\mathbb R^3\), and on the
+chamber \(\mathcal C\) it satisfies
+\begin{equation}
+ \lVert(a,q,n)\rVert_*=4a+17n.
+ \label{koide-count-eq-norm-is-height}
+\end{equation}
+For every integer \(X\geq0\),
+\begin{equation}
+ R(X)=\#\{u\in\mathscr X(\mathbb Z)\cap\mathcal C:
+                    \lVert u\rVert_*<X+1\}.
+ \label{koide-count-eq-r-as-sector-count}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The linear map
+\[
+ (a,q,n)\longmapsto(4a+17n,q,a)
+\]
+has determinant \(-17\).  Thus \eqref{koide-count-eq-star-norm} is the
+pullback of the supremum norm by an invertible linear map and is a genuine
+norm.  If \((a,q,n)\in\mathcal C\), then
+\[
+ 0<a<4a+17n,
+ \qquad
+ 0\leq q<a+4n<4a+17n,
+\]
+which proves \eqref{koide-count-eq-norm-is-height}.  Since \(4a+17n\)
+is integral on \(\mathscr X(\mathbb Z)\), equation
+\eqref{koide-count-eq-r-as-sector-count} follows from
+\eqref{koide-count-eq-exact-count}.
+\end{proof}
+
+\begin{lemma}[Verification of the Gorodnik--Oh--Shah hypotheses]
+\label{koide-count-lem-gos-hypotheses}
+Let \(\mathbf G=\operatorname{Spin}(F)\), acting through its standard
+three-dimensional orthogonal representation on \(W=\mathbb R^3\), and let
+\(x_0=(1,1,0)\).  Then
+\[
+ \mathscr X(\mathbb R)=\mathbf G(\mathbb R)^\circ x_0.
+\]
+This orbit is a closed affine symmetric variety; \(\mathbf G\) is connected
+and absolutely almost simple over \(\mathbb Q\), is isotropic over
+\(\mathbb R\), and acts irreducibly on \(W\) over \(\mathbb R\); and the
+stabilizer \(\mathbf H=\operatorname{Stab}_{\mathbf G}(x_0)\) has no
+nontrivial \(\mathbb Q\)-characters.  The cone \(\mathcal C\) in
+\eqref{koide-count-eq-real-chamber} is admissible and generic for
+\cite[Theorem~1.6]{GorodnikOhShah_2009}.
+\end{lemma}
+
+\begin{proof}
+The form \(F\) has signature \((1,2)\).  Hence \(\mathbf G\) is a
+connected absolutely almost simple group of type \(A_1\), it is
+\(\mathbb R\)-isotropic, and its standard three-dimensional representation
+is \(\mathbb R\)-irreducible.  The nonzero level \(\mathscr X\) is
+Zariski closed.  With
+\[
+ Q=\sqrt3\,q,
+ \qquad
+ N=3\sqrt2\,n,
+\]
+its real equation becomes
+\[
+ Q^2+N^2-a^2=2.
+\]
+The parametrization
+\[
+ (a,\theta)\longmapsto
+ \bigl(a,\sqrt{a^2+2}\cos\theta,
+          \sqrt{a^2+2}\sin\theta\bigr),
+ \qquad (a,\theta)\in\mathbb R\times(\mathbb R/2\pi\mathbb Z),
+\]
+shows that \(\mathscr X(\mathbb R)\) is connected.  Witt extension first
+produces an element \(t\in\operatorname O(F)(\mathbb R)\) taking any
+prescribed point of the level set to any other.  If \(\det t=-1\), choose
+an anisotropic vector in the orthogonal complement of the target point and
+compose \(t\) on the left with its reflection.  That reflection fixes the
+target point and has determinant \(-1\); hence the composite lies in
+\(\operatorname{SO}(F)(\mathbb R)\).  Thus
+\(\operatorname{SO}(F)(\mathbb R)\) is transitive on the level set.  The
+identity-component orbits have the full dimension of the level surface and
+are open; because their complements are unions of open orbits, each is also
+closed.  Connectedness therefore leaves only one such orbit, proving
+\(\mathscr X(\mathbb R)=\mathbf G(\mathbb R)^\circ x_0\).  The stabilizer
+of a nonisotropic vector is the fixed subgroup of the involution induced by
+reflection in that vector, so the orbit is affine symmetric.
+
+The orthogonal complement of \(x_0\) is
+\begin{equation}
+ x_0^\perp=\{(3s,s,t):s,t\in\mathbb Q\},
+ \qquad
+ F(3s,s,t)=6(s^2-3t^2).
+ \label{koide-count-eq-rational-complement}
+\end{equation}
+Thus \(\mathbf H\) is the norm-one torus of
+\(K=\mathbb Q(\sqrt3)\).  Its character lattice is \(\mathbb Z\), with
+the nontrivial element of \(\operatorname{Gal}(K/\mathbb Q)\) acting by
+\(-1\); consequently it has no nonzero Galois-invariant character and no
+nontrivial \(\mathbb Q\)-character.  The integral point \(x_0\) supplies
+the required nonempty integral locus.
+
+It remains to check the sector rather than merely the affine orbit.  For the
+given representation and any Euclidean sphere in \(W\), the Satake boundary
+is
+\begin{equation}
+ \mathscr X^\infty=\{F=0\}\cap S(W)
+ =\mathcal O_+\sqcup\mathcal O_-,
+ \qquad
+ \mathcal O_\pm:=\{F=0,\ \pm a>0\}\cap S(W),
+ \label{koide-count-eq-satake-boundary}
+\end{equation}
+and \(\mathbf G(\mathbb R)^\circ\) is transitive on each displayed circle.
+For a nonzero null vector with \(a,q,n\geq0\),
+\[
+ a=\sqrt{3q^2+18n^2}>q-4n.
+\]
+Hence both the closure and the relative interior of \(\mathcal C\) meet
+exactly \(\mathcal O_+\), not \(\mathcal O_-\).  The intersection of
+\(\partial\mathcal C\) with the Satake boundary consists of the two radial
+directions
+\begin{equation}
+ (a,q,n)=(\sqrt3,1,0),
+ \qquad
+ (a,q,n)=(3\sqrt2,0,1).
+ \label{koide-count-eq-sector-boundary-rays}
+\end{equation}
+These are exactly the two projective limits of the integral Pell families
+in Proposition~\ref{koide-count-prop-pell-faces}.
+This two-point intersection has measure zero for the smooth measure class
+on the boundary orbit.
+This is precisely the admissibility and genericity condition required by
+the cited sector theorem.
+\end{proof}
+
+\subsection{The 2-adic orbit sign and Borovoi's coefficient}
+\label{koide-count-subsec-borovoi}
+
+Write $\widehat{\mathbb Z}=\prod_p\mathbb Z_p$.  For the nonsquare
+ternary quadric under consideration, Borovoi associates to every local
+point an orbit sign $\nu_v\in\{\pm1\}$, constant on
+$\operatorname{Spin}(F)(\mathbb Q_v)$-orbits and equal to $+1$ at almost
+every finite place.  Thus
+$\nu_f((x_p)_p)=\prod_p\nu_p(x_p)$ is defined on
+$\mathscr X(\widehat{\mathbb Z})$.  Because $\mathscr X(\mathbb R)$ is
+connected, his normalization reads
+\begin{equation}
+ c_{\mathscr X}
+ =\frac{2m_f\{x\in\mathscr X(\widehat{\mathbb Z}):\nu_f(x)=+1\}}
+ {m_f(\mathscr X(\widehat{\mathbb Z}))},
+ \label{koide-count-eq-borovoi-sign-definition}
+\end{equation}
+where $m_f$ is the finite Tamagawa measure attached to the gauge form
+\eqref{koide-count-eq-gauge-form} and Borovoi's convergence factors.
+
+\begin{proposition}[Finite adelic sign balance]
+\label{koide-count-prop-finite-sign-balance}
+For the affine quadric \(\mathscr X=\{F=-2\}\), the coefficient
+\(c_{\mathscr X}\) in Borovoi's counting formula
+\cite[Theorem~1.4.1 and Proposition~1.5.1]{Borovoi_2001} is exactly
+\begin{equation}
+ c_{\mathscr X}=1.
+ \label{koide-count-eq-borovoi-coefficient}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Continue to write \(A=\operatorname{diag}(1,-3,-18)\).  Put
+\(e=(1,0,0)\), \(v=(1,0,1)\), and for every anisotropic vector \(w\) let
+\[
+ r_w(u)=u-\frac{2u^{\mathsf T}Aw}{w^{\mathsf T}Aw}\,w
+\]
+be its orthogonal reflection.  The element \(g=r_vr_e\) is
+\begin{equation}
+ g=
+ \begin{pmatrix}
+  -19/17&0&-36/17\\
+  0&1&0\\
+  -2/17&0&-19/17
+ \end{pmatrix}.
+ \label{koide-count-eq-sign-toggle-matrix}
+\end{equation}
+Direct multiplication gives
+\begin{equation}
+ g^{\mathsf T}Ag=A,
+ \qquad
+ \det g=1.
+ \label{koide-count-eq-sign-toggle-orthogonal}
+\end{equation}
+Because \(17\in\mathbb Z_2^\times\), both \(g\) and \(g^{-1}\) have entries
+in \(\mathbb Z_2\), so \(g\in\operatorname{SO}(F,\mathbb Z_2)\).  Its
+spinor norm is
+\begin{equation}
+ \vartheta(g)=F(v)F(e)=-17
+ \quad\text{in }\mathbb Q_2^\times/\mathbb Q_2^{\times2}.
+ \label{koide-count-eq-toggle-spinor-norm}
+\end{equation}
+
+We identify the stabilizer's spinor-norm image.  By
+\eqref{koide-count-eq-rational-complement}, over \(\mathbb Q_2\) the
+orthogonal complement of \(x_0\) is
+\begin{equation}
+ F|_{x_0^\perp}
+ =6(s^2-3t^2)
+ =6N_{K_2/\mathbb Q_2}(s+t\sqrt3),
+ \qquad K_2=\mathbb Q_2(\sqrt3).
+ \label{koide-count-eq-two-adic-complement}
+\end{equation}
+The odd unit \(3\) is not a square in \(\mathbb Q_2\), so \(K_2\) is a
+quadratic field and this binary plane is anisotropic.  Put
+\(u_0=(3,1,0)\), so \(F(u_0)=6\).  If
+\(h\in\operatorname{SO}(F|_{x_0^\perp})(\mathbb Q_2)\), then
+\(hr_{u_0}\) is a two-dimensional orthogonal transformation of determinant
+\(-1\), hence is a reflection \(r_w\) in some nonisotropic vector
+\(w=(3s,s,t)\).  Therefore \(h=r_wr_{u_0}\) and
+\[
+ \vartheta(h)=F(w)F(u_0)
+ =36N_{K_2/\mathbb Q_2}(s+t\sqrt3)
+ \quad\bmod\mathbb Q_2^{\times2}.
+\]
+Conversely these products realize every norm square class as \(w\) ranges
+through the nonzero vectors of the anisotropic plane.  Hence
+\begin{equation}
+ \vartheta\!\left(
+ \operatorname{Stab}_{\operatorname{SO}(F)}(x_0)(\mathbb Q_2)
+ \right)
+ =N_{K_2/\mathbb Q_2}(K_2^\times)
+ \quad\bmod\mathbb Q_2^{\times2}.
+ \label{koide-count-eq-stabilizer-spinor-image}
+\end{equation}
+
+For a quadratic extension, its norm group is the kernel of the Hilbert
+symbol with the defining square class
+\cite[Corollary~13.4.6]{Voight_2021}.  The odd-unit formula
+\cite[Equation~12.4.14]{Voight_2021} gives
+\begin{equation}
+ (-17,3)_2
+ =(-1)^{((-17-1)/2)((3-1)/2)}=-1.
+ \label{koide-count-eq-minus17-hilbert-symbol}
+\end{equation}
+Thus \(-17\notin N_{K_2/\mathbb Q_2}(K_2^\times)\).
+
+By Witt extension, every \(x\in\mathscr X(\mathbb Q_2)\) is \(tx_0\) for
+some \(t\in\operatorname O(F)(\mathbb Q_2)\).  If \(\det t=-1\), choose
+an anisotropic vector in \(x^\perp\) and compose on the left with its
+reflection; this fixes \(x\) and changes the determinant.  Hence every
+such \(x\) has the form \(x=sx_0\) with
+\(s\in\operatorname{SO}(F)(\mathbb Q_2)\).  The image of
+\(\operatorname{Spin}(F)(\mathbb Q_2)\) in
+\(\operatorname{SO}(F)(\mathbb Q_2)\) is the kernel of the spinor norm,
+as used in \cite[Lemma~3.1]{Borovoi_2001}.  Consequently the
+\(\operatorname{Spin}(F)(\mathbb Q_2)\)-orbit of \(x=sx_0\) is determined
+by
+\begin{equation}
+ \vartheta(s)\in
+ \mathbb Q_2^\times/
+ \bigl(\mathbb Q_2^{\times2}
+ N_{K_2/\mathbb Q_2}(K_2^\times)\bigr),
+ \label{koide-count-eq-two-adic-orbit-quotient}
+\end{equation}
+a quotient of order two.  Equations
+\eqref{koide-count-eq-toggle-spinor-norm} and
+\eqref{koide-count-eq-minus17-hilbert-symbol} show that multiplication by
+\(g\) exchanges these two orbits.  In Borovoi's convention, the orbit of
+\(x_0\) has sign \(\nu_2=+1\) and the other orbit has sign
+\(\nu_2=-1\).  Hence
+\begin{equation}
+ \nu_2(gx)=-\nu_2(x)
+ \qquad(x\in\mathscr X(\mathbb Q_2)).
+ \label{koide-count-eq-local-sign-toggle}
+\end{equation}
+
+Apply \(g\) at the prime \(2\) and the identity at every other finite
+prime.  This gives a bijection of \(\mathscr X(\widehat{\mathbb Z})\).  It
+preserves the finite Tamagawa measure: at \(2\) this follows from invariance
+of the local measure, equivalently from \(g^*F=F\) and \(\det g=1\), and at
+all other primes the map is the identity.  Equation
+\eqref{koide-count-eq-local-sign-toggle} shows that it exchanges the finite
+sign loci \(\nu_f=+1\) and \(\nu_f=-1\).  They therefore have equal
+measure.  Since \(\mathscr X(\mathbb R)\) is connected, Borovoi's formula
+becomes
+\[
+ c_{\mathscr X}
+ =\frac{2m_f(\mathscr X(\widehat{\mathbb Z})_+)}
+        {m_f(\mathscr X(\widehat{\mathbb Z}))}=1.
+\]
+The argument uses a measure-preserving, sign-reversing bijection; it does
+not require \(g\) to be an involution (indeed \(g^2\neq I\)).
+\end{proof}
+
+\subsection{Calibration and the counting constant}
+\label{koide-count-subsec-calibration}
+
+\begin{theorem}[Calibrated reduced-root asymptotic]
+\label{koide-count-thm-linear-asymptotic}
+The number of reduced positive defect-one roots satisfies
+\begin{equation}
+ R(X)\sim C_0X\qquad(X\to\infty),
+ \label{koide-count-eq-final-asymptotic}
+\end{equation}
+where
+\begin{equation}
+ \begin{aligned}
+ C_0
+ &=\mathfrak S(\mathscr X)I_\infty\\
+ &=\frac9{2\pi^2}\log(2+\sqrt3)
+   \log\!\left(\frac3{2\sqrt2}\right)\\
+ &=0.035362047799731853\ldots.
+ \end{aligned}
+ \label{koide-count-eq-final-constant}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Let \(\mu_{\mathrm{GOS}}\) denote the invariant measure on
+\(\mathscr X(\mathbb R)\) with the normalization appearing in the
+Gorodnik--Oh--Shah sector theorem
+\cite[Theorem~1.6]{GorodnikOhShah_2009}.  The gauge measure \(m_\infty\)
+in \eqref{koide-count-eq-gauge-form} is also a nonzero
+\(\mathbf G(\mathbb R)^\circ\)-invariant Radon measure.  Because
+\(\mathscr X(\mathbb R)\) is a single homogeneous orbit, uniqueness of
+invariant measure gives
+\begin{equation}
+ \mu_{\mathrm{GOS}}=\kappa m_\infty
+ \label{koide-count-eq-measure-scalar}
+\end{equation}
+for some \(\kappa>0\).
+
+The scalar is fixed by applying both counting theorems to the same Euclidean
+balls and the full cone \(W\).  Gorodnik--Oh--Shah give
+\[
+ \#\{x\in\mathscr X(\mathbb Z):|x|_2<T\}
+ \sim\kappa\,m_\infty
+ \{x\in\mathscr X(\mathbb R):|x|_2<T\}.
+\]
+Borovoi's Theorem~1.4.1 and Proposition~1.5.1, together with
+Proposition~\ref{koide-count-prop-finite-sign-balance}, give for the same
+balls
+\[
+ \#\{x\in\mathscr X(\mathbb Z):|x|_2<T\}
+ \sim\mathfrak S(\mathscr X)\,m_\infty
+ \{x\in\mathscr X(\mathbb R):|x|_2<T\}.
+\]
+The real volume here is asymptotic to a positive constant times \(T\).
+Comparison therefore gives the invariant-measure calibration
+\begin{equation}
+ \kappa=\mathfrak S(\mathscr X).
+ \label{koide-count-eq-measure-calibration}
+\end{equation}
+
+Lemma~\ref{koide-count-lem-genuine-norm} and
+Lemma~\ref{koide-count-lem-gos-hypotheses} now allow the sector theorem to
+be applied with the actual norm and chamber of the reduced-root problem:
+\begin{align*}
+ R(X)
+ &\sim\mu_{\mathrm{GOS}}
+ \{u\in\mathscr X(\mathbb R)\cap\mathcal C:
+       \lVert u\rVert_*\leq X\}\\
+ &=\mathfrak S(\mathscr X)\,
+ m_\infty\{u\in\mathscr X(\mathbb R)\cap\mathcal C:
+       4a+17n\leq X\}\\
+ &\sim\mathfrak S(\mathscr X)I_\infty X.
+\end{align*}
+The switch between strict and weak inequalities is harmless by a
+\((1\pm\varepsilon)X\) squeeze; on integral points it also follows directly
+from \eqref{koide-count-eq-r-as-sector-count}.  Since
+\(R(X)=R(\lfloor X\rfloor)\), the integer-height asymptotic extends to all
+real \(X\to\infty\).  Finally, substituting
+\eqref{koide-count-eq-singular-series} and
+\eqref{koide-count-eq-archimedean-asymptotic}, and using
+\(\zeta(2)=\pi^2/6\), gives exactly
+\eqref{koide-count-eq-final-constant}.
+\end{proof}
+
+\subsection{Exact computation and the remaining open problem}
+\label{koide-count-subsec-computation}
+
+The first five reduced roots are
+\begin{equation}
+ (1,4,20),\quad(4,4,33),\quad(4,8,49),\quad
+ (4,15,76),\quad(8,24,129).
+ \label{koide-count-eq-first-roots}
+\end{equation}
+The first root is the first admissible term of the $n=0$ Pell family and
+the second is the first term of the $q=0$ Pell family in
+Proposition~\ref{koide-count-prop-pell-faces}.
+Exact integer enumeration in the ternary coordinates gives the following
+values.  The residual column uses the full constant in
+\eqref{koide-count-eq-final-constant}, not a fitted constant.
+\begin{center}
+\begin{tabular}{r@{\qquad}r@{\qquad}r}
+\toprule
+\(X\)&\(R(X)\)&\(R(X)-C_0X\)\\
+\midrule
+10,000&353&\(-0.62048\)\\
+20,000&715&\(7.75904\)\\
+50,000&1,755&\(-13.10239\)\\
+75,000&2,654&\(1.84642\)\\
+100,000&3,535&\(-1.20478\)\\
+125,000&4,460&\(39.74403\)\\
+150,000&5,294&\(-10.30717\)\\
+175,000&6,195&\(6.64164\)\\
+200,000&7,109&\(36.59044\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+The enumeration loops over \(n\geq0\) and \(a>0\) with
+\(4a+17n\leq X\), tests whether
+\[
+ q^2=\frac{a^2-18n^2+2}{3}
+\]
+is the square of a nonnegative integer satisfying \(q<a+4n\), and then
+reconstructs \((x,y,z)\) with
+\eqref{koide-count-eq-inverse-coordinates}.  Every retained triple is
+rechecked in the original polynomial \eqref{koide-count-eq-defect} and
+against all ordering and wall inequalities.  Separate exhaustive congruence
+enumerations agree with the formulae above at
+\(p=2,3,5,7,11,13\) through the computed powers.  These finite checks
+verify the implementation; the asymptotic theorem rests on the proofs above,
+not on numerical fitting.
+
+The reproducibility script is
+\begin{center}
+ \path{supporting_materials/workbench/reproduction/t1_koide_exact/verify_koide_narain_root_density.py}.
+\end{center}
+Running it with \texttt{--max-z 200000} emits the coordinate, local-density,
+$2$-adic isometry, and bounded-enumeration certificates recorded in
+\begin{center}
+ \path{supporting_materials/workbench/reproduction/t1_koide_exact/koide_verification_200000.json}.
+\end{center}
+The script uses vectorized square detection only to propose candidates; it
+rechecks every retained candidate with integer arithmetic in both coordinate
+systems and in the original polynomial $\Delta$.
+
+\begin{test}[Square-root discrepancy]
+\label{koide-count-open-square-root-discrepancy}
+\Open Determine whether, for every \(\varepsilon>0\),
+\begin{equation}
+ R(X)-C_0X=O_\varepsilon(X^{1/2+\varepsilon}).
+ \label{koide-count-eq-square-root-discrepancy}
+\end{equation}
+The preceding homogeneous-dynamics argument proves
+\(R(X)=C_0X+o(X)\), but does not prove
+\eqref{koide-count-eq-square-root-discrepancy}.  No unproved spectral gap,
+GRH assumption, or implicit ``conditional theorem'' is being used here:
+the sharper error term is an open problem in this workbench.
+\end{test}

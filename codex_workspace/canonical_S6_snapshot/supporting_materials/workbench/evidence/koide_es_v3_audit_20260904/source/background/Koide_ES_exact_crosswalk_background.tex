@@ -1,0 +1,1609 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{booktabs,array,longtable,enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+ pdftitle={Erdos-Straus Selectors at the Koide-S6 Determinant Boundary},
+ pdfauthor={Technical research continuation}
+}
+\emergencystretch=2em
+\setlist{nosep,leftmargin=2.1em}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Kfield}{\mathbb Q(\sqrt2,\sqrt3)}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\SNF}{\operatorname{SNF}}
+\newcommand{\ES}{\operatorname{ES}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\dd}{\,\mathrm d}
+
+\title{Erd\H{o}s--Straus Selectors at the Koide--$S^6$ Determinant Boundary\\
+\large Exact incidence maps, primitive rays, terminal homology, and information loss}
+\author{Technical research continuation}
+\date{3 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\begin{minipage}{0.93\textwidth}\small
+\textbf{Exact source basis.}
+The source objects are the active Erd\H{o}s--Straus project archive of The
+Clankers and the current canonical TeX/Bib bundle for the Alp\"oge--Fable/
+Claude $S^6$ construction and its integrated audit.  The two supplied files
+have SHA-256 values
+\nolinkurl{d1e371380e9507a4e142dbf56430bc37145bf5ba42edfb76d21e898f0d131fea}
+and
+\nolinkurl{4a8453f2872dbd93269fc53c321cc19b74553fe0a4fa3f31c79644e28203c92a},
+respectively.  Every map below displays its domain, codomain, inverse where it
+exists, and lost data where it does not.  No regular $S^6$ torus fibre is
+identified with a Koide point: the relevant coefficient matrix is singular.
+\end{minipage}}
+\end{center}
+
+\begin{abstract}
+For a prime $p\equiv1\pmod4$, every ordered Erd\H{o}s--Straus solution with
+smallest denominator $a$ lies on a shell
+\[
+ Ryz=pa(y+z),\qquad 4a=p+R,\qquad R\equiv3\pmod4.
+\]
+The maintained divisor selector rewrites the shell by a divisor $u\mid a^2$
+and one of two congruences.  We prove that the same selector state is exactly
+an integral point on the incidence of two determinant loci:
+\[
+ \det\begin{pmatrix}R&-u\\4&-T\end{pmatrix}=-p^\varepsilon,
+ \qquad
+ \det\begin{pmatrix}u&a\\a&v\end{pmatrix}=0,
+ \qquad uv=a^2.
+\]
+The first matrix is unimodularly row-equivalent to the terminal relation matrix
+of the $(3,4,\infty)$ $S^6$ construction; the second is a positive integral
+rank-one matrix and is exactly the Koide/$S^6$ determinant-boundary form.  A
+unique factorization
+\[
+ u=hr^2,\qquad a=hrs,\qquad v=hs^2,\qquad \gcd(r,s)=1
+\]
+turns the two divisor channels into the linear congruences
+$R\mid pr+s$ and $R\mid r+s$ and yields closed denominator formulas.  The pair
+consisting of the rank-one matrix and terminal matrix is a globally injective
+certificate; explicit inverse formulas recover $p,\varepsilon,j,u$ and the
+unit-fraction denominators.  The exterior channel has terminal determinant
+$-1$ and the printed integral homology package of $S^6$; the middle channel has
+determinant $-p$ and $p$-torsion in degrees one through four.  The selector-to-solution map is also determined exactly: exterior states
+are faithful, while middle states are paired by the fixed-point-free divisor
+complement involution.  Finally, the full Erd\H{o}s--Straus conjecture is
+equivalent to nonemptiness of the displayed two-determinant incidence for
+every prime \(p\equiv1\pmod{12}\).  The construction does not prove that
+nonemptiness.
+\end{abstract}
+
+\section{The fixed-prime shell}
+
+Let $p\equiv1\pmod4$ be prime.  Write $\ES(p)$ for the assertion that there
+exist positive integers $x\le y\le z$ with
+\begin{equation}\label{eq:ES}
+ \frac4p=\frac1x+\frac1y+\frac1z.
+\end{equation}
+
+\begin{proposition}[First-half denominator]\label{prop:first-half}
+Every solution of \eqref{eq:ES} satisfies
+\begin{equation}\label{eq:first-half}
+ \frac p4<x\le\frac p2.
+\end{equation}
+Consequently there is a unique integer $j$ with
+\begin{equation}\label{eq:R-a}
+ 0\le j<\frac{p-1}{4},\qquad
+ R_j=4j+3,\qquad
+ x=a_j=\frac{p+R_j}{4}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The strict lower bound follows from $1/x<4/p$.  Suppose $x>p/2$.
+Clearing denominators gives
+\[
+ 4xyz=p(xy+xz+yz),
+\]
+so $p\mid xyz$.  If $p\mid x$, all three denominators are at least $p$ and
+the sum is at most $3/p$.  If $p\mid y$, then $y,z\ge p$ and
+$1/x+1/y+1/z<2/p+2/p$.  Hence $z=kp$.  Substitution gives
+\[
+ (4k-1)xy=kp(x+y).
+\]
+Neither $x$ nor $y$ is divisible by $p$, so $4k-1=\ell p$.  Because
+$p\equiv1\pmod4$, $\ell\equiv3\pmod4$ and $\ell\ge3$.  After cancelling $p$,
+\[
+ x\le\frac{2k}{\ell}
+ =\frac p2+\frac1{2\ell}<\frac{p+1}{2},
+\]
+contradicting the integral inequality $x>p/2$.  Formula \eqref{eq:R-a} is the
+unique enumeration of the integers in \eqref{eq:first-half}.
+\end{proof}
+
+Fix $j$ and abbreviate
+\begin{equation}\label{eq:fixed-shell-data}
+ R=R_j=4j+3,\qquad a=a_j=\frac{p+R}{4},\qquad N=pa.
+\end{equation}
+Then
+\begin{equation}\label{eq:gcds}
+ \gcd(R,p)=\gcd(R,a)=\gcd(p,a)=1.
+\end{equation}
+After fixing $x=a$, equation \eqref{eq:ES} is
+\begin{equation}\label{eq:shell}
+ Ryz=N(y+z),
+\end{equation}
+which is equivalent to
+\begin{equation}\label{eq:factor-shell}
+ (Ry-N)(Rz-N)=N^2.
+\end{equation}
+Thus, with
+\begin{equation}\label{eq:d-e}
+ d=Ry-N,
+ \qquad e=Rz-N,
+\end{equation}
+we have $d,e>0$, $de=N^2$, and
+\begin{equation}\label{eq:denom-inverse}
+ y=\frac{N+d}{R},\qquad z=\frac{N+e}{R}.
+\end{equation}
+Conversely, any positive divisor $d\mid N^2$ satisfying
+$d\equiv-N\pmod R$ gives \eqref{eq:shell} through
+\eqref{eq:denom-inverse}; its complementary divisor automatically satisfies
+the same congruence.
+
+\section{The two complete divisor channels}
+
+Because $\gcd(p,a)=1$, the $p$-adic exponent of $d$ is $0$, $1$, or $2$.
+The involution $d\leftrightarrow e$ exchanges exponents $0$ and $2$.  Retain
+the exponent-two representative in that pair and define
+\begin{align}
+ E_j&=\{u\in\Z_{>0}:u\mid a_j^2,\ R_j\mid4u+1\},\label{eq:E}\\
+ M_j&=\{u\in\Z_{>0}:u\mid a_j^2,\ R_j\mid4u+p\}.\label{eq:M}
+\end{align}
+The letter $E$ records the exterior $p$-adic channel $d=p^2u$; the letter
+$M$ records the middle channel $d=pu$.
+
+\begin{theorem}[Complete two-channel selector]\label{thm:selector}
+For $p\equiv1\pmod4$ prime,
+\begin{equation}\label{eq:ES-selector}
+ \ES(p)
+ \quad\Longleftrightarrow\quad
+ \bigsqcup_{0\le j<(p-1)/4}(E_j\sqcup M_j)\ne\varnothing.
+\end{equation}
+For a state $(\varepsilon,j,u)$, where $\varepsilon=0$ on $E_j$ and
+$\varepsilon=1$ on $M_j$, put
+\begin{equation}\label{eq:T-K}
+ T=\frac{4u+p^\varepsilon}{R_j},
+ \qquad
+ K=\frac{p^{1-\varepsilon}T+1}{4}.
+\end{equation}
+Then $T,K\in\Z_{>0}$ and the corresponding denominators are
+\begin{equation}\label{eq:source-denominators}
+ (x,y,z)=
+ \left(a_j,\frac{p^\varepsilon a_jK}{u},pK\right),
+\end{equation}
+up to interchange of $y,z$.
+\end{theorem}
+
+\begin{proof}
+If $d=p^2u$, then $e=a^2/u$ and
+\[
+ R\mid d+N
+ \Longleftrightarrow R\mid pu+a
+ \Longleftrightarrow R\mid4u+1.
+\]
+If $d=pu$, then $e=pa^2/u$ and
+\[
+ R\mid d+N
+ \Longleftrightarrow R\mid u+a
+ \Longleftrightarrow R\mid4u+p.
+\]
+This proves completeness under the factor involution.  In either channel,
+$RT=4u+p^\varepsilon$.  Since $R\equiv3\pmod4$ and
+$p^\varepsilon\equiv1\pmod4$, one has $T\equiv3\pmod4$, so $K$ is integral.
+The identities
+\[
+ RK=a+p^{1-\varepsilon}u,
+ \qquad Ta=u+p^\varepsilon K
+\]
+give the divisibility in \eqref{eq:source-denominators}; direct substitution
+then yields \eqref{eq:ES}.
+\end{proof}
+
+\section{The terminal determinant}
+
+Define
+\begin{equation}\label{eq:lambda}
+ \lambda(\ell_0,\ell_1,\ell_2)
+ =12\ell_0-4\ell_1-3\ell_2
+\end{equation}
+and the ordered terminal relation matrix
+\begin{equation}\label{eq:Rterminal}
+ \mathsf R(\ell_0,\ell_1,\ell_2)
+ =\begin{pmatrix}3&-\ell_1\\4&\ell_2-4\ell_0\end{pmatrix},
+ \qquad
+ \det\mathsf R=-\lambda.
+\end{equation}
+For a selector state set
+\begin{equation}\label{eq:ellmap}
+ \ell_0=\frac{T+1}{4},
+ \qquad
+ \ell_1=u-jT,
+ \qquad
+ \ell_2=1.
+\end{equation}
+
+\begin{theorem}[Exact selector-to-terminal morphism]\label{thm:terminal}
+For every prime $p\equiv1\pmod4$ and every selector state,
+\begin{equation}\label{eq:lambda-pe}
+ \lambda(\ell_0,\ell_1,1)=p^\varepsilon
+\end{equation}
+and
+\begin{equation}\label{eq:row-equivalence}
+ \begin{pmatrix}1&-j\\0&1\end{pmatrix}
+ \begin{pmatrix}R_j&-u\\4&-T\end{pmatrix}
+ =
+ \begin{pmatrix}3&-\ell_1\\4&1-4\ell_0\end{pmatrix}
+ =\mathsf R(\ell_0,\ell_1,1).
+\end{equation}
+The inverse is
+\begin{equation}\label{eq:terminal-inverse}
+ T=4\ell_0-1,
+ \qquad
+ u=\ell_1+jT.
+\end{equation}
+The crosswalk therefore needs only $p\equiv1\pmod4$, not the stronger
+restriction $p\equiv1\pmod{12}$ used to isolate the hard prime class in the
+source chapter.
+\end{theorem}
+
+\begin{proof}
+Substituting \eqref{eq:ellmap}, $R_j=4j+3$, and
+$R_jT=4u+p^\varepsilon$ gives
+\[
+ \lambda(\ell_0,\ell_1,1)
+ =3(T+1)-4(u-jT)-3
+ =(4j+3)T-4u=p^\varepsilon.
+\]
+Matrix multiplication proves \eqref{eq:row-equivalence};
+\eqref{eq:terminal-inverse} is literal inversion.  The parity argument uses
+only $p^\varepsilon\equiv1\pmod4$.  The $S^6$ finite-filling admissibility
+conditions on this slice are also automatic: $\ell_2=1$ is odd, and
+\[
+ p^\varepsilon=\lambda(\ell_0,\ell_1,1)
+ \equiv-\ell_1\pmod3.
+\]
+Because $p\ne3$, this forces $3\nmid\ell_1$ without assuming
+$p\equiv1\pmod3$.
+\end{proof}
+
+
+Put
+\begin{equation}\label{eq:selector-relation-matrix}
+ \mathsf A_{p,\varepsilon,j,u}
+ =\begin{pmatrix}R_j&-u\\4&-T\end{pmatrix}.
+\end{equation}
+
+\begin{proposition}[Exact adjugate factorization]
+\label{prop:adjugate-factorization}
+Every selector state satisfies
+\begin{equation}\label{eq:adjugate-factorization}
+ \mathsf A_{p,\varepsilon,j,u}
+ \begin{pmatrix}T&-u\\4&-R_j\end{pmatrix}
+ =p^\varepsilon I_2.
+\end{equation}
+Thus
+\begin{equation}\label{eq:A-inverse}
+ \mathsf A_{p,\varepsilon,j,u}^{-1}
+ =\frac1{p^\varepsilon}
+ \begin{pmatrix}T&-u\\4&-R_j\end{pmatrix}.
+\end{equation}
+For the primitive rank-one completion below,
+\begin{equation}\label{eq:Gamma-primitive-kernel}
+ \Gamma(a,u)\binom{s}{-r}=0,
+ \qquad \gcd(r,s)=1.
+\end{equation}
+Hence a selector state carries simultaneously an index-\(p^\varepsilon\)
+nonsingular relation matrix and a singular positive rank-one matrix with a
+primitive integral kernel vector.
+\end{proposition}
+
+\begin{proof}
+The four entries in the product on the left of
+\eqref{eq:adjugate-factorization} are
+\[
+ R_jT-4u=p^\varepsilon,
+ \qquad -R_ju+uR_j=0,
+ \qquad 4T-4T=0,
+ \qquad -4u+TR_j=p^\varepsilon.
+\]
+This proves the factorization and inverse.  Substitution of
+\(\Gamma=h\binom r s(r\ s)\) gives
+\(\Gamma(s,-r)^{\mathsf T}=0\), and primitivity is
+\(\gcd(r,s)=1\).
+\end{proof}
+
+The left factor in \eqref{eq:row-equivalence} lies in
+$\operatorname{SL}_2(\Z)$.  Hence both matrices present the same cokernel.
+Since the terminal matrix contains entries $3$ and $4$, the gcd of all its
+entries is one, and
+\begin{equation}\label{eq:SNF}
+ \SNF(\mathsf R)=\diag(1,p^\varepsilon),
+ \qquad
+ \coker\mathsf R\cong\Z/p^\varepsilon\Z.
+\end{equation}
+The numerical appearance of the pair $(3,4)$ is exact: the ES residue
+$R_j=4j+3$ is changed to $3$ by subtracting $j$ times the second relation,
+while the coefficient $4$ remains fixed.  These are the same two integers as
+the finite orbifold multiplicities in the terminal $S^6$ presentation.
+
+\section{The rank-one completion of the divisor gate}
+
+Let $u\mid a^2$ and set
+\begin{equation}\label{eq:v}
+ v=\frac{a^2}{u}.
+\end{equation}
+Define
+\begin{equation}\label{eq:Gamma}
+ \Gamma(a,u)
+ =\begin{pmatrix}u&a\\a&v\end{pmatrix}
+ \in\Sym_2(\Z).
+\end{equation}
+
+\begin{proposition}[Divisibility as a unique rank-one completion]
+\label{prop:completion}
+For positive integers $a,u$, the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $u\mid a^2$;
+\item there is a positive integer $v$ for which
+$\det\bigl(\begin{smallmatrix}u&a\\a&v\end{smallmatrix}\bigr)=0$.
+\end{enumerate}
+When these conditions hold, $v=a^2/u$ is unique, $\Gamma(a,u)$ is positive
+semidefinite of rank one, and the map
+\begin{equation}\label{eq:completion-map}
+ (a,u)\longmapsto\Gamma(a,u)
+\end{equation}
+has inverse $\Gamma\mapsto(\Gamma_{12},\Gamma_{11})$ on its image.
+\end{proposition}
+
+\begin{proof}
+The determinant equation is $uv-a^2=0$.  It has an integral positive solution
+$v$ exactly when $u\mid a^2$, and then $v$ is forced.  The trace is positive
+and the determinant is zero, so the eigenvalues are $u+v$ and zero.
+\end{proof}
+
+\begin{theorem}[Unique primitive-ray factorization]\label{thm:primitive}
+Every matrix \eqref{eq:Gamma} has a unique factorization
+\begin{equation}\label{eq:primitive-factorization}
+ u=hr^2,
+ \qquad
+ a=hrs,
+ \qquad
+ v=hs^2,
+ \qquad
+ h,r,s\in\Z_{>0},
+ \qquad
+ \gcd(r,s)=1.
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:Gamma-ray}
+ \Gamma(a,u)=h\binom r s(r\ s),
+ \qquad
+ \SNF(\Gamma)=\diag(h,0).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Put $g=\gcd(a,u)$, $r=u/g$, and $s=a/g$.  Then $\gcd(r,s)=1$.
+The divisibility $u\mid a^2$ gives $gr\mid g^2s^2$, so
+$r\mid gs^2$.  Coprimality gives $r\mid g$; put $h=g/r$.  Then
+$u=hr^2$, $a=hrs$, and $v=a^2/u=hs^2$.  Conversely these equations clearly
+produce \eqref{eq:Gamma}.  Any second primitive factorization has
+$r/s=u/a$ in lowest terms, so it has the same $r,s$, and then the same $h$.
+The gcd of all four matrix entries is $h$, while its determinant is zero,
+which proves the Smith form.
+\end{proof}
+
+\section{The selector becomes two linear congruences}
+
+\begin{theorem}[Primitive channel equations]\label{thm:primitive-channels}
+Let \eqref{eq:primitive-factorization} hold.  Then
+\begin{align}
+ u\in E_j
+ &\quad\Longleftrightarrow\quad R_j\mid pr+s,
+ \label{eq:E-primitive}\\
+ u\in M_j
+ &\quad\Longleftrightarrow\quad R_j\mid r+s.
+ \label{eq:M-primitive}
+\end{align}
+When \eqref{eq:E-primitive} holds, put
+\begin{equation}\label{eq:kappaE}
+ \kappa_E=\frac{pr+s}{R_j}.
+\end{equation}
+Then an ordered denominator triple is
+\begin{equation}\label{eq:E-denominators}
+ (x,y,z)=\bigl(hrs,\;phr\kappa_E,\;hs\kappa_E\bigr).
+\end{equation}
+When \eqref{eq:M-primitive} holds, put
+\begin{equation}\label{eq:kappaM}
+ \kappa_M=\frac{r+s}{R_j}.
+\end{equation}
+Then an ordered denominator triple is
+\begin{equation}\label{eq:M-denominators}
+ (x,y,z)=\bigl(hrs,\;phr\kappa_M,\;phs\kappa_M\bigr).
+\end{equation}
+Interchanging the last two entries gives the complementary orientation.
+\end{theorem}
+
+\begin{proof}
+Modulo $R=R_j$, the identity $4a=p+R$ gives
+$p\equiv4hrs$.  Since $R$ is coprime to $a=hrs$, each of $h,r,s$ is a unit
+modulo $R$.  Thus
+\[
+ pr+s\equiv s(4hr^2+1)\pmod R,
+\]
+which proves \eqref{eq:E-primitive}.  Similarly
+\[
+ 4u+p\equiv4hr^2+4hrs=4hr(r+s)\pmod R,
+\]
+which proves \eqref{eq:M-primitive}.
+
+For \eqref{eq:E-denominators}, a common denominator calculation gives
+\[
+ \frac1{hrs}+\frac1{phr\kappa_E}+\frac1{hs\kappa_E}
+ =\frac{p\kappa_E+s+pr}{phrs\kappa_E}
+ =\frac{(p+R)\kappa_E}{phrs\kappa_E}
+ =\frac4p.
+\]
+The middle-channel calculation is
+\[
+ \frac1{hrs}+\frac1{phr\kappa_M}+\frac1{phs\kappa_M}
+ =\frac{p\kappa_M+s+r}{phrs\kappa_M}
+ =\frac{(p+R)\kappa_M}{phrs\kappa_M}
+ =\frac4p.
+\]
+\end{proof}
+
+\begin{corollary}[Channel overlap]\label{cor:overlap}
+Fix $(p,j,u)$ which lies in at least one of $E_j,M_j$.  It lies in both
+channels exactly when
+\begin{equation}\label{eq:overlap}
+ R_j\mid p-1.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The difference between the two primitive congruence numerators is
+$(p-1)r$.  Since $r$ is a unit modulo $R_j$, the two congruences are
+equivalent precisely under \eqref{eq:overlap}.  The hypothesis that one
+already holds supplies the other.
+\end{proof}
+
+
+\section{Primitive-ray residues and the divisor-complement reflection}
+
+Let
+\begin{equation}\label{eq:swap-matrix}
+ J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\end{equation}
+For a rank-one completion
+\(
+ \Gamma=h\binom r s(r\ s)
+\)
+write
+\begin{equation}\label{eq:primitive-residue}
+ \rho_{R}(\Gamma):=s r^{-1}\pmod R.
+\end{equation}
+This is defined because \(\gcd(R,hrs)=1\).
+
+\begin{proposition}[The two channels as exact primitive-ray residues]
+\label{prop:projective-rays}
+For the fixed shell \((p,R,a)\),
+\begin{align}
+ u\in E_j
+ &\quad\Longleftrightarrow\quad
+ \rho_R(\Gamma)\equiv-p\pmod R,
+ \label{eq:E-projective}\\
+ u\in M_j
+ &\quad\Longleftrightarrow\quad
+ \rho_R(\Gamma)\equiv-1\pmod R.
+ \label{eq:M-projective}
+\end{align}
+Thus the two channels are two exact residue points of the primitive rank-one
+ray.  They coincide exactly when \(R\mid p-1\).
+\end{proposition}
+
+\begin{proof}
+Theorem~\ref{thm:primitive-channels} gives
+\(pr+s\equiv0\pmod R\) in the exterior channel and
+\(r+s\equiv0\pmod R\) in the middle channel.  Multiplication by the inverse
+of \(r\) proves \eqref{eq:E-projective} and \eqref{eq:M-projective}.  Their
+right sides coincide exactly when \(p\equiv1\pmod R\).
+\end{proof}
+
+The divisor-complement map is
+\begin{equation}\label{eq:divisor-complement}
+ \sigma_j(u)=v=\frac{a_j^2}{u},
+ \qquad
+ \Gamma(a_j,v)=J\Gamma(a_j,u)J.
+\end{equation}
+
+\begin{theorem}[Exact complement action]
+\label{thm:complement-action}
+For every fixed shell:
+\begin{enumerate}[label=(\roman*)]
+\item \(\sigma_j\) preserves \(M_j\), has no fixed point there, and the two
+states \(u\) and \(v\) reconstruct the same unordered denominator pair.
+\item If \(u\in E_j\), then
+\begin{equation}\label{eq:E-complement-condition}
+ v\in E_j
+ \quad\Longleftrightarrow\quad
+ R_j\mid p^2-1.
+\end{equation}
+\item The diagonal rank-one matrix
+\begin{equation}\label{eq:diagonal-gamma}
+ \Gamma=a_j\begin{pmatrix}1&1\\1&1\end{pmatrix}
+\end{equation}
+occurs in the exterior channel exactly when
+\begin{equation}\label{eq:diagonal-condition}
+ R_j\mid p+1.
+\end{equation}
+In that case, with \(\kappa=(p+1)/R_j\), it gives
+\begin{equation}\label{eq:diagonal-denominators}
+ \frac4p=\frac1{a_j}+\frac1{pa_j\kappa}
+             +\frac1{a_j\kappa}.
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Under \(u=hr^2,a=hrs,v=hs^2\), the complement interchanges \(r\) and
+\(s\).  The middle congruence \(R\mid r+s\) is symmetric, and
+\eqref{eq:M-denominators} shows that the last two denominators are exchanged.
+A fixed point would give \(u=v=a\), but then the middle condition would imply
+\[
+ R\mid4a+p=2p+R,
+\]
+hence \(R\mid2\), contradicting \(R\ge3\) odd and \(\gcd(R,p)=1\).
+
+Suppose \(u\in E_j\).  Modulo \(R\),
+\[
+ 4u\equiv-1,
+ \qquad 4a\equiv p,
+ \qquad
+ 4v=4a^2u^{-1}\equiv-p^2.
+\]
+Therefore \(4v+1\equiv1-p^2\pmod R\), proving
+\eqref{eq:E-complement-condition}.  Finally \(u=v=a\) is an exterior state
+exactly when
+\[
+ R\mid4a+1=p+R+1,
+\]
+which is \eqref{eq:diagonal-condition}; substitution of \(r=s=1,h=a\) into
+\eqref{eq:E-denominators} gives \eqref{eq:diagonal-denominators}.
+\end{proof}
+
+Let \(\mathbf r_K(a,u)\) be the Koide vector defined below in
+\eqref{eq:Koide-vector}.  The complement has an exact action already in the
+original three Koide coordinates.
+
+\begin{proposition}[Denominator exchange as a Koide reflection]
+\label{prop:Koide-reflection}
+Define
+\begin{equation}\label{eq:WK}
+ W_K=\frac13
+ \begin{pmatrix}
+  2&2&-1\\
+  2&-1&2\\
+  -1&2&2
+ \end{pmatrix}.
+\end{equation}
+Then
+\begin{equation}\label{eq:WK-properties}
+ W_K^{\mathsf T}W_K=I,
+ \qquad W_K^2=I,
+ \qquad\det W_K=-1,
+ \qquad Q_K(W_Kr)=Q_K(r),
+\end{equation}
+and
+\begin{equation}\label{eq:WK-complement}
+ \mathbf r_K(a,v)=W_K\mathbf r_K(a,u).
+\end{equation}
+In particular, middle-channel denominator exchange is represented exactly by
+this rational orthogonal reflection on the Koide null cone.
+\end{proposition}
+
+\begin{proof}
+Conjugation by \(J\) sends
+\[
+ \left(\frac{u+v}{2},a,\frac{u-v}{2}\right)
+ \longmapsto
+ \left(\frac{u+v}{2},a,-\frac{u-v}{2}\right).
+\]
+Thus in Lorentz coordinates the complement is
+\(\operatorname{diag}(1,1,-1)\).  Conjugating by the orthogonal matrix
+\(\mathcal F\) gives
+\[
+ W_K=\mathcal F^{-1}\operatorname{diag}(1,1,-1)\mathcal F,
+\]
+whose direct multiplication is \eqref{eq:WK}.  The identities in
+\eqref{eq:WK-properties} and \eqref{eq:WK-complement} follow.
+\end{proof}
+
+\section{The exact terminal--Koide incidence set}
+
+For $\varepsilon\in\{0,1\}$ define $\mathscr I_\varepsilon(p)$ to be the set
+of tuples
+\begin{equation}\label{eq:incidence-tuple}
+ (j,\ell_0,\ell_1,\Gamma)
+\end{equation}
+with
+\begin{equation}\label{eq:incidence-range}
+ 0\le j<\frac{p-1}{4},
+ \qquad
+ \Gamma=\begin{pmatrix}u&a\\a&v\end{pmatrix}
+ \in\Sym_2(\Z),
+ \qquad u,a,v>0,
+\end{equation}
+subject to
+\begin{align}
+ T&=4\ell_0-1>0,\label{eq:incidence-T}\\
+ a&=\frac{p+4j+3}{4},\label{eq:incidence-a}\\
+ u&=\ell_1+jT,\label{eq:incidence-u}\\
+ \lambda(\ell_0,\ell_1,1)&=p^\varepsilon,\label{eq:incidence-lambda}\\
+ \det\Gamma&=uv-a^2=0.\label{eq:incidence-zero}
+\end{align}
+
+\begin{theorem}[Erd\H{o}s--Straus as a two-determinant incidence problem]
+\label{thm:incidence}
+The map
+\begin{equation}\label{eq:incidence-map}
+ (\varepsilon,j,u)
+ \longmapsto
+ \left(j,\frac{T+1}{4},u-jT,
+ \begin{pmatrix}u&a_j\\a_j&a_j^2/u\end{pmatrix}\right)
+\end{equation}
+is a bijection from the complete tagged selector to
+$\mathscr I_0(p)\sqcup\mathscr I_1(p)$.  Its inverse is
+\begin{equation}\label{eq:incidence-inverse}
+ u=\Gamma_{11},
+ \qquad
+ \varepsilon=
+ \begin{cases}
+ 0,&\lambda=1,\\
+ 1,&\lambda=p,
+ \end{cases}
+ \qquad
+ j\text{ retained}.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:ES-incidence}
+ \boxed{\ES(p)\Longleftrightarrow
+ \mathscr I_0(p)\sqcup\mathscr I_1(p)\ne\varnothing.}
+\end{equation}
+Equations \eqref{eq:incidence-lambda} and \eqref{eq:incidence-zero} are
+respectively the terminal determinant condition
+\begin{equation}\label{eq:two-dets-1}
+ \det\mathsf R(\ell_0,\ell_1,1)=-p^\varepsilon
+\end{equation}
+and the Koide/$S^6$ coefficient-boundary condition
+\begin{equation}\label{eq:two-dets-2}
+ \det\Gamma=0.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The forward map is well defined by Theorems~\ref{thm:selector} and
+\ref{thm:terminal} and Proposition~\ref{prop:completion}.  Conversely,
+\eqref{eq:incidence-zero} gives $v=a^2/u\in\Z_{>0}$, hence $u\mid a^2$.
+Expanding \eqref{eq:incidence-lambda} using
+\eqref{eq:incidence-T}--\eqref{eq:incidence-u} gives
+\[
+ (4j+3)T-4u=p^\varepsilon,
+\]
+so $R_j\mid4u+p^\varepsilon$.  This is exactly the relevant selector
+condition.  Both compositions are the identity entry by entry.
+\end{proof}
+
+The theorem identifies the surviving arithmetic difficulty exactly.  The
+terminal determinant equation by itself has many integral solutions.  The
+Erd\H{o}s--Straus gate is the additional requirement that the shared top row
+$(u,a)$ admit the positive integral rank-one completion \eqref{eq:Gamma}.
+
+
+\section{Exact quotient from selector states to denominator triples}
+
+Let \(\mathscr S(p)\) be the set of triples
+\((x,y,z)\in\Z_{>0}^3\) satisfying \eqref{eq:ES} and
+\(x\le y\le z\).  Put
+\begin{equation}\label{eq:EM-global-sets}
+ \mathcal E(p)=\bigsqcup_j\{j\}\times E_j,
+ \qquad
+ \mathcal M(p)=\bigsqcup_j\{j\}\times M_j.
+\end{equation}
+By Theorem~\ref{thm:complement-action},
+\begin{equation}\label{eq:M-involution}
+ \sigma(j,u)=\left(j,\frac{a_j^2}{u}\right)
+\end{equation}
+is a fixed-point-free involution of \(\mathcal M(p)\).
+
+\begin{theorem}[Exact solution-set quotient]
+\label{thm:solution-quotient}
+Sorting the three denominators in
+\eqref{eq:E-denominators} and \eqref{eq:M-denominators} induces a bijection
+\begin{equation}\label{eq:solution-quotient}
+ \boxed{
+ \mathcal E(p)\;\sqcup\;
+ \bigl(\mathcal M(p)/\langle\sigma\rangle\bigr)
+ \xrightarrow{\ \sim\ }
+ \mathscr S(p).}
+\end{equation}
+Consequently
+\begin{equation}\label{eq:solution-count}
+ |\mathscr S(p)|
+ =\sum_j|E_j|+\frac12\sum_j|M_j|.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Surjectivity is Theorem~\ref{thm:selector} together with the unique
+first-denominator index of Proposition~\ref{prop:first-half}.  Given a sorted
+solution, the value \(x=a_j\) recovers \(j\).  The unordered residual factors
+\[
+ \{d,e\}=\{R_jy-pa_j,R_jz-pa_j\}
+\]
+have \(p\)-adic exponent multiset \(\{2,0\}\) in the exterior channel and
+\(\{1,1\}\) in the middle channel; hence the channel is recovered.
+
+In the exterior channel, the factor of \(p\)-adic exponent two uniquely has
+form \(p^2u\), so it recovers \(u\).  Two different exterior states therefore
+cannot give the same sorted triple.  In the middle channel the unordered
+factors are \(\{pu,pv\}\), so the sorted triple recovers exactly the orbit
+\(\{u,v\}\).  The involution has no fixed point by
+Theorem~\ref{thm:complement-action}.  This proves both injectivity and
+\eqref{eq:solution-count}.
+\end{proof}
+
+\section{A faithful double certificate}
+
+Define the global tagged selector set by taking the disjoint union over all
+primes $p\equiv1\pmod4$.  The double-certificate map is
+\begin{equation}\label{eq:double-cert}
+ \mathfrak C(p,\varepsilon,j,u)
+ =\left(
+ \Gamma(a_j,u),
+ \mathsf R(\ell_0,\ell_1,1)
+ \right).
+\end{equation}
+
+\begin{theorem}[Global injectivity and explicit inverse]\label{thm:faithful}
+The map \eqref{eq:double-cert} is injective.  For a pair in its image, write
+\[
+ \Gamma=\begin{pmatrix}u&a\\a&v\end{pmatrix},
+ \qquad
+ \mathsf R=\begin{pmatrix}3&-\ell_1\\4&-T\end{pmatrix}.
+\]
+Then the inverse is
+\begin{equation}\label{eq:faithful-inverse}
+ j=\frac{u-\ell_1}{T},
+ \qquad
+ p=4a-(4j+3),
+ \qquad
+ \lambda=-\det\mathsf R,
+ \qquad
+ \varepsilon=
+ \begin{cases}0,&\lambda=1,\\1,&\lambda=p.\end{cases}
+\end{equation}
+The complementary divisor is $v=\Gamma_{22}$, and
+Theorem~\ref{thm:primitive-channels} then recovers the denominator triple.
+\end{theorem}
+
+\begin{proof}
+Every formula in \eqref{eq:faithful-inverse} follows from a displayed entry of
+the two matrices: $u=\Gamma_{11}$, $a=\Gamma_{12}$,
+$T=-\mathsf R_{22}$, and $\ell_1=-\mathsf R_{12}$.  The source equation
+$\ell_1=u-jT$ gives $j$; $4a=p+4j+3$ gives $p$; the determinant gives the
+channel.  Thus two selector states with the same matrix pair have identical
+$p,\varepsilon,j,u$.
+\end{proof}
+
+The terminal matrix alone is not faithful.  At $p=13$, the exterior states
+$(j,u)=(0,2)$ and $(1,5)$ both give
+\begin{equation}\label{eq:same-terminal}
+ \mathsf R=\begin{pmatrix}3&-2\\4&-3\end{pmatrix},
+\end{equation}
+but their rank-one matrices are respectively
+\begin{equation}\label{eq:different-gamma}
+ \begin{pmatrix}2&4\\4&8\end{pmatrix},
+ \qquad
+ \begin{pmatrix}5&5\\5&5\end{pmatrix}.
+\end{equation}
+The same terminal matrix also occurs at $p=73$, $j=1$, $u=5$, where
+\begin{equation}\label{eq:p73-gamma}
+ \Gamma=\begin{pmatrix}5&20\\20&80\end{pmatrix}.
+\end{equation}
+The matrix pair restores exactly the information lost by the terminal
+projection.
+
+\section{The Koide and \texorpdfstring{$S^6$}{S6} coefficient maps}
+
+Define the native $S^6$ coefficient form
+\begin{equation}\label{eq:Gnative}
+ G(t,m,b)=\begin{pmatrix}2t&2m\\2m&b/3\end{pmatrix}
+\end{equation}
+and the native Lorentz dictionary
+\begin{equation}\label{eq:Lnative}
+ \mathcal L(t,m,b)
+ =\left(t+\frac b6,\;2m,\;t-\frac b6\right)=(H,X,Y).
+\end{equation}
+Its inverse is
+\begin{equation}\label{eq:Linv}
+ \mathcal L^{-1}(H,X,Y)
+ =\left(\frac{H+Y}{2},\frac X2,3(H-Y)\right).
+\end{equation}
+The raw-period dictionary is
+\begin{equation}\label{eq:PK}
+ \mathcal P_K(H,X,Y)
+ =\left(H+Y,\frac{X}{\sqrt6},H-Y\right)
+ =(T_{\rm raw},M_{\rm raw},B_{\rm raw}).
+\end{equation}
+The exact morphism between the two coefficient triples is
+\begin{equation}\label{eq:Dmap}
+ \mathcal D(t,m,b)
+ =\left(2t,\sqrt{\frac23}\,m,\frac b3\right),
+ \qquad
+ \mathcal D^{-1}(T,M,B)
+ =\left(\frac T2,\sqrt{\frac32}\,M,3B\right),
+\end{equation}
+and
+\begin{equation}\label{eq:dictionary-commutes}
+ \mathcal P_K=\mathcal D\circ\mathcal L^{-1}.
+\end{equation}
+
+\begin{theorem}[Selector state to the Koide--$S^6$ boundary]
+\label{thm:koide-boundary}
+For a selector state, put $v=a^2/u$ and define
+\begin{equation}\label{eq:S6-coeff-state}
+ (t,m,b)=\left(\frac u2,\frac a2,3v\right).
+\end{equation}
+Then
+\begin{equation}\label{eq:G=Gamma}
+ G(t,m,b)=\Gamma(a,u),
+\end{equation}
+\begin{equation}\label{eq:native-Lorentz-state}
+ \mathcal L(t,m,b)
+ =\left(\frac{u+v}{2},a,\frac{u-v}{2}\right),
+\end{equation}
+and
+\begin{equation}\label{eq:raw-state}
+ \mathcal D(t,m,b)=\left(u,\frac a{\sqrt6},v\right).
+\end{equation}
+Therefore
+\begin{align}
+ \det G(t,m,b)
+ &=\frac23(tb-6m^2)=0,\label{eq:native-zero}\\
+ T_{\rm raw}B_{\rm raw}-6M_{\rm raw}^2
+ &=uv-a^2=0.\label{eq:raw-zero}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+Each assertion is direct substitution.  In particular,
+\[
+ G\left(\frac u2,\frac a2,3v\right)
+ =\begin{pmatrix}u&a\\a&v\end{pmatrix}.
+\]
+Equation \eqref{eq:dictionary-commutes} follows by applying
+\eqref{eq:Dmap} to \eqref{eq:Linv}.
+\end{proof}
+
+Let
+\begin{equation}\label{eq:QK}
+ Q_K(r_1,r_2,r_3)
+ =\frac23(r_1+r_2+r_3)^2-(r_1^2+r_2^2+r_3^2)
+\end{equation}
+and let
+\begin{equation}\label{eq:F}
+ \mathcal F(r_1,r_2,r_3)
+ =\left(
+ \frac{r_1+r_2+r_3}{\sqrt3},
+ \frac{r_1-r_3}{\sqrt2},
+ \frac{r_1+r_3-2r_2}{\sqrt6}
+ \right)=(H,X,Y).
+\end{equation}
+Then $\mathcal F$ is orthogonal and
+\begin{equation}\label{eq:QK-Lorentz}
+ Q_K=H^2-X^2-Y^2.
+\end{equation}
+The exact Koide vector associated with the selector matrix is
+\begin{equation}\label{eq:Koide-vector}
+ \mathbf r_K(a,u)=
+ \mathcal F^{-1}\left(\frac{u+v}{2},a,\frac{u-v}{2}\right),
+\end{equation}
+that is,
+\begin{align}
+ (\mathbf r_K)_1
+ &=\frac{u+v}{2\sqrt3}+\frac a{\sqrt2}
+   +\frac{u-v}{2\sqrt6},\label{eq:rK1}\\
+ (\mathbf r_K)_2
+ &=\frac{u+v}{2\sqrt3}-\frac{u-v}{\sqrt6},\label{eq:rK2}\\
+ (\mathbf r_K)_3
+ &=\frac{u+v}{2\sqrt3}-\frac a{\sqrt2}
+   +\frac{u-v}{2\sqrt6}.
+ \label{eq:rK3}
+\end{align}
+It satisfies
+\begin{equation}\label{eq:rKnull}
+ Q_K(\mathbf r_K(a,u))=0.
+\end{equation}
+
+\begin{proposition}[The arithmetic field is necessarily enlarged]
+\label{prop:anisotropic}
+The equation $Q_K(r)=0$ has no nonzero solution in $\Q^3$.  Thus every
+nonzero integral selector matrix gives a Lorentz-rational null point through
+\eqref{eq:native-Lorentz-state}, but its Koide coordinates
+\eqref{eq:rK1}--\eqref{eq:rK3} lie in $\Kfield^3$ and never in
+$\Q^3\setminus\{0\}$.
+\end{proposition}
+
+\begin{proof}
+For rational $r_i$, clear denominators and put
+\[
+ S=r_1+r_2+r_3,
+ \qquad U=r_1-r_2,
+ \qquad V=r_1+r_2-2r_3.
+\]
+A direct invertible rational change of coordinates gives
+\begin{equation}\label{eq:rational-Q}
+ Q_K=\frac{2S^2-3U^2-V^2}{6}.
+\end{equation}
+Suppose a primitive nonzero integer triple satisfies
+$2S^2=3U^2+V^2$.  Modulo $3$, the equality
+$V^2\equiv2S^2$ forces $3\mid S,V$.  Dividing by $3$ and reducing again
+modulo $3$ forces $3\mid U$.  This contradicts primitivity.  The field
+claim follows from the explicit formulas.
+\end{proof}
+
+\begin{proposition}[Exact positive Koide sector]\label{prop:positive-sector}
+Put
+\begin{equation}\label{eq:theta}
+ \theta=\frac ua=\frac rs>0
+\end{equation}
+and
+\begin{equation}\label{eq:thresholds}
+ \theta_-=
+ \frac{\sqrt3-\sqrt2}{1+\sqrt2},
+ \qquad
+ \theta_+=\frac{\sqrt3+\sqrt2}{1+\sqrt2}.
+\end{equation}
+The first coordinate in \eqref{eq:rK1} is always positive, and all three
+Koide coordinates are positive exactly when
+\begin{equation}\label{eq:positive-sector-condition}
+ 0<\theta<\theta_-
+ \qquad\text{or}\qquad
+ \theta_+<\theta<1+\sqrt2.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use $u=a\theta$ and $v=a/\theta$ in
+\eqref{eq:rK1}--\eqref{eq:rK3}.  After multiplication by the positive factor
+$2\sqrt6\theta/a$, the second coordinate has sign
+\[
+ (\sqrt2-2)\theta^2+(\sqrt2+2),
+\]
+which is positive exactly for $\theta<1+\sqrt2$.  The third has sign
+\[
+ (1+\sqrt2)\theta^2-2\sqrt3\theta+(\sqrt2-1),
+\]
+whose roots are $\theta_-,\theta_+$ and whose leading coefficient is
+positive.  The corresponding expression for the first coordinate has all
+positive coefficients.  Because $\theta\in\Q$ and the three boundary numbers
+are irrational, equality does not occur.
+\end{proof}
+
+\begin{remark}[Exact image obstruction]
+The map \eqref{eq:S6-coeff-state} lands in the determinant-zero boundary of
+the ambient coefficient space.  For every choice of the real parts of
+$\tau,\mu,\beta$, the canonical real period matrix with these imaginary
+coefficients satisfies $\det P=0$.  Its four columns therefore do not generate
+a full lattice in $\R^4$.  The map is not a map to a regular complex-torus
+fibre.  The actual radial $S^6$ cusp instead has
+$\det P_R=-\delta_R\ne0$ with $\delta_R\sim R^2$.
+\end{remark}
+
+\section{The full residual shell as a second rank-one matrix}
+
+The selector matrix $\Gamma$ records $u,a,v$.  The complete two-denominator
+shell records $d,N,e$ in
+\begin{equation}\label{eq:shell-matrix}
+ \Gamma_{\rm sh}=\begin{pmatrix}d&N\\N&e\end{pmatrix},
+ \qquad de=N^2.
+\end{equation}
+The exact map from the selector matrix is channel dependent:
+\begin{align}
+ \Gamma_{\rm sh}^{E}
+ &=\begin{pmatrix}p&0\\0&1\end{pmatrix}
+   \Gamma
+   \begin{pmatrix}p&0\\0&1\end{pmatrix}
+ =\begin{pmatrix}p^2u&pa\\pa&v\end{pmatrix},
+ \label{eq:shell-E}\\
+ \Gamma_{\rm sh}^{M}
+ &=p\Gamma
+ =\begin{pmatrix}pu&pa\\pa&pv\end{pmatrix}.
+ \label{eq:shell-M}
+\end{align}
+
+Put
+\begin{equation}\label{eq:selector-lorentz-vector}
+ \mathbf L(\Gamma)=
+ \begin{pmatrix}H\\X\\Y\end{pmatrix}
+ =\begin{pmatrix}(u+v)/2\\a\\(u-v)/2\end{pmatrix},
+ \qquad
+ Q_L(H,X,Y)=H^2-X^2-Y^2.
+\end{equation}
+
+\begin{theorem}[The two ES channels as exact Lorentz-conformal maps]
+\label{thm:channel-lorentz-maps}
+The channel maps in \eqref{eq:shell-E}--\eqref{eq:shell-M} induce the following
+linear maps on the Lorentz coordinates of the rank-one symmetric matrix:
+\begin{align}
+ \mathbf L(\Gamma_{\rm sh}^{E})
+ &=\mathcal B_p\mathbf L(\Gamma),
+ &\mathcal B_p
+ &=\begin{pmatrix}
+ \dfrac{p^2+1}{2}&0&\dfrac{p^2-1}{2}\\
+ 0&p&0\\
+ \dfrac{p^2-1}{2}&0&\dfrac{p^2+1}{2}
+ \end{pmatrix},
+ \label{eq:E-Lorentz-map}\\
+ \mathbf L(\Gamma_{\rm sh}^{M})
+ &=pI_3\mathbf L(\Gamma).
+ \label{eq:M-Lorentz-map}
+\end{align}
+With \(J_L=\diag(1,-1,-1)\),
+\begin{equation}\label{eq:conformal-Lorentz}
+ \mathcal B_p^{\mathsf T}J_L\mathcal B_p=p^2J_L,
+ \qquad
+ (pI_3)^{\mathsf T}J_L(pI_3)=p^2J_L.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:channel-Q-scaling}
+ Q_L(\mathbf L(\Gamma_{\rm sh}^{E}))
+ =Q_L(\mathbf L(\Gamma_{\rm sh}^{M}))
+ =p^2Q_L(\mathbf L(\Gamma)).
+\end{equation}
+On primitive rank-one vectors, the exterior channel sends
+\begin{equation}\label{eq:E-ray-map}
+ h\binom r s(r\ s)
+ \longmapsto
+ h\binom{pr}{s}(pr\ s),
+\end{equation}
+whereas the middle channel sends
+\begin{equation}\label{eq:M-ray-map}
+ h\binom r s(r\ s)
+ \longmapsto
+ ph\binom r s(r\ s).
+\end{equation}
+Thus the exterior channel changes the primitive projective ray
+\([r:s]\) to \([pr:s]\), while the middle channel retains \([r:s]\) and
+multiplies its content by \(p\).
+\end{theorem}
+
+\begin{proof}
+Under the symmetric-matrix identification
+\[
+ \begin{pmatrix}H+Y&X\\X&H-Y\end{pmatrix},
+\]
+conjugation by \(\diag(p,1)\) gives
+\[
+ \begin{pmatrix}p^2(H+Y)&pX\\pX&H-Y\end{pmatrix}.
+\]
+Taking its half-trace, off-diagonal entry, and half diagonal difference gives
+\eqref{eq:E-Lorentz-map}.  Multiplication of the symmetric matrix by \(p\)
+gives \eqref{eq:M-Lorentz-map}.  Direct matrix multiplication proves
+\eqref{eq:conformal-Lorentz}; the quadratic identity and the two primitive-ray
+formulas follow.
+\end{proof}
+
+\begin{corollary}[Exact boost--dilation factorization]
+\label{cor:boost-dilation}
+Let
+\begin{equation}\label{eq:boost-generator}
+ \mathcal K_{HY}=
+ \begin{pmatrix}0&0&1\\0&0&0\\1&0&0\end{pmatrix}.
+\end{equation}
+Then
+\begin{equation}\label{eq:boost-generator-lorentz}
+ \mathcal K_{HY}^{\mathsf T}J_L+J_L\mathcal K_{HY}=0
+\end{equation}
+and the exterior channel matrix has the exact factorization
+\begin{equation}\label{eq:boost-factorization}
+ \mathcal B_p
+ =p\exp\!\bigl((\log p)\mathcal K_{HY}\bigr)
+ =p\begin{pmatrix}
+ \cosh(\log p)&0&\sinh(\log p)\\
+ 0&1&0\\
+ \sinh(\log p)&0&\cosh(\log p)
+ \end{pmatrix}.
+\end{equation}
+The middle channel is the pure dilation $pI_3$.  If
+$\theta=s/r$ is the positive primitive slope, then the exterior channel sends
+\begin{equation}\label{eq:slope-exterior}
+ \theta\longmapsto\frac{\theta}{p},
+\end{equation}
+while the middle channel retains $\theta$.  With
+\begin{equation}\label{eq:zeta-middle-function}
+ \zeta_M(\theta)=-\frac{\theta}{(1+\theta)^2},
+\end{equation}
+one has the exact identity
+\begin{equation}\label{eq:zeta-channel-composition}
+ \zeta_E(\theta)=\zeta_M\!\left(\frac{\theta}{p}\right).
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Since
+\[
+ \cosh(\log p)=\frac{p+p^{-1}}2,
+ \qquad
+ \sinh(\log p)=\frac{p-p^{-1}}2,
+\]
+multiplication by $p$ gives the three entries of $\mathcal B_p$ in
+\eqref{eq:E-Lorentz-map}.  Direct multiplication proves
+\eqref{eq:boost-generator-lorentz}.  The primitive-ray map
+$[r:s]\mapsto[pr:s]$ gives \eqref{eq:slope-exterior}, and
+\[
+ -\frac{p\theta}{(p+\theta)^2}
+ =-\frac{\theta/p}{(1+\theta/p)^2}
+\]
+proves \eqref{eq:zeta-channel-composition}.
+\end{proof}
+
+Both matrices have determinant zero.  Their Sarnak coordinates are
+\begin{equation}\label{eq:Sarnak}
+ T_S=\frac{d+e}{2},
+ \qquad X_S=N,
+ \qquad Y_S=0,
+ \qquad W_S=\frac{d-e}{2},
+\end{equation}
+and satisfy
+\begin{equation}\label{eq:Sarnak-null}
+ X_S^2+W_S^2-T_S^2=N^2-de=0.
+\end{equation}
+Denominator exchange is $W_S\mapsto-W_S$.
+
+Define the exact quarter coordinate
+\begin{equation}\label{eq:zeta}
+ \zeta=-\frac{yz}{(y+z)^2}.
+\end{equation}
+Then
+\begin{equation}\label{eq:quarter-general}
+ \zeta=-\frac14+\frac14
+ \left(\frac{W_S}{T_S+X_S}\right)^2.
+\end{equation}
+Using Theorem~\ref{thm:primitive-channels}, this becomes
+\begin{align}
+ \zeta_E&=-\frac{prs}{(pr+s)^2},\label{eq:zetaE}\\
+ \zeta_M&=-\frac{rs}{(r+s)^2}.\label{eq:zetaM}
+\end{align}
+
+\begin{proposition}[The balanced quarter point is excluded]
+\label{prop:quarter-excluded}
+No Erd\H{o}s--Straus shell in these channels has $\zeta=-1/4$.
+\end{proposition}
+
+\begin{proof}
+Equality in \eqref{eq:quarter-general} is equivalent to $d=e$, or $y=z$.
+In the exterior channel this gives $pr=s$.  Primitivity forces $r=1,s=p$,
+but then $R\mid pr+s=2p$, impossible because $R\ge3$ is odd and
+$\gcd(R,p)=1$.  In the middle channel equality gives $r=s$, so primitivity
+forces $r=s=1$, but then $R\mid r+s=2$, again impossible.
+\end{proof}
+
+The null cone \eqref{eq:Sarnak-null} is the $p=1$ member of the
+Kocik--Sarnak four-circle family used in the Erd\H{o}s--Straus archive.  The
+Kocik charged-lepton specialization is the different four-circle member
+$p=2/3$, whose equation has coefficient $5/3$.  The rigorous Koide relation in
+this note is instead the explicit three-dimensional Lorentz isometry
+\eqref{eq:F}--\eqref{eq:QK-Lorentz}.  These two statements are connected by
+the displayed maps, not by identifying $1$ with $2/3$.
+
+\section{The terminal topological dichotomy}
+
+The source terminal group is
+\begin{equation}\label{eq:terminal-group}
+ \mathcal G(\ell)=
+ \langle c,x,y\mid c\text{ central},\ xy=c^{\ell_0},\
+ x^3=c^{\ell_1},\ y^4=c^{\ell_2}\rangle.
+\end{equation}
+Eliminating $y$ makes the presentation abelian with relation matrix
+\eqref{eq:Rterminal}.  Therefore
+\begin{equation}\label{eq:group-outcome}
+ \mathcal G(\ell)\cong\Z/p^\varepsilon\Z.
+\end{equation}
+The source all-degree terminal package gives, for $\lambda=p^\varepsilon$,
+\begin{equation}\label{eq:homology-package}
+ (H_0,\ldots,H_6)
+ \cong
+ \left(
+ \Z,\Z/p^\varepsilon,\Z/p^\varepsilon,
+ \Z/p^\varepsilon,\Z/p^\varepsilon,0,\Z
+ \right).
+\end{equation}
+Here $\Z/1=0$.  Consequently:
+\begin{center}
+\begin{tabular}{c c c c}
+\toprule
+Channel & $\lambda$ & terminal group & terminal homology package\\
+\midrule
+$E$ & $1$ & $0$ & $H_*(S^6;\Z)$\\
+$M$ & $p$ & $\Z/p$ & $\Z/p$ in degrees $1,2,3,4$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Thus an $E$-channel Erd\H{o}s--Straus witness lands on the homology-sphere
+terminal slice of the $S^6$ algebra.  An $M$-channel witness lands on a
+$p$-torsion terminal slice.  A state in both channels supplies two different
+terminal matrices over the same rank-one Koide boundary matrix.
+
+\section{Worked exact examples}
+
+\subsection{\texorpdfstring{$p=5$: extension beyond $p\equiv1\pmod{12}$}{p=5: extension beyond p=1 mod 12}}
+Here $j=0$, $R=3$, $a=2$, and $u=2$ lies in $E_0$.  One has
+\[
+ \Gamma=\begin{pmatrix}2&2\\2&2\end{pmatrix},
+ \qquad
+ T=3,
+ \qquad
+ (\ell_0,\ell_1,\ell_2)=(1,2,1),
+\]
+\[
+ \mathsf R=\begin{pmatrix}3&-2\\4&-3\end{pmatrix},
+ \qquad
+ \det\mathsf R=-1,
+\]
+and
+\[
+ \frac45=\frac12+\frac1{20}+\frac14.
+\]
+This proves by an explicit state that the terminal crosswalk itself applies to
+the residue class $p\equiv5\pmod{12}$.
+
+\subsection{\texorpdfstring{$p=13$: one rank-one ray, two channels}{p=13: one rank-one ray, two channels}}
+For $j=0$, $R=3$, $a=4$, $u=2$, one has
+\[
+ \Gamma=\begin{pmatrix}2&4\\4&8\end{pmatrix}
+ =2\binom12(1\ 2).
+\]
+The exterior state gives
+\[
+ T_E=3,
+ \quad
+ \mathsf R_E=\begin{pmatrix}3&-2\\4&-3\end{pmatrix},
+ \quad
+ \frac4{13}=\frac14+\frac1{130}+\frac1{20}.
+\]
+The same $(p,j,u)$ also satisfies the middle congruence because $3\mid12$:
+\[
+ T_M=7,
+ \quad
+ \mathsf R_M=\begin{pmatrix}3&-2\\4&-7\end{pmatrix},
+ \quad
+ \frac4{13}=\frac14+\frac1{26}+\frac1{52}.
+\]
+Thus the same Koide/$S^6$ boundary ray supports both the sphere-type terminal
+package and the $13$-torsion terminal package.
+
+For $j=1$, $R=7$, $a=5$, $u=5$, the exterior state has
+\[
+ \Gamma=\begin{pmatrix}5&5\\5&5\end{pmatrix},
+ \qquad
+ \mathsf R=\begin{pmatrix}3&-2\\4&-3\end{pmatrix},
+ \qquad
+ \frac4{13}=\frac15+\frac1{130}+\frac1{10}.
+\]
+This is the same terminal matrix as the preceding exterior state but a
+different rank-one matrix; Theorem~\ref{thm:faithful} distinguishes them.
+
+
+\section{The full Erd\H{o}s--Straus conjecture}
+
+Let \(\mathrm{ES}\) denote the assertion that
+\begin{equation}\label{eq:global-ES}
+ \frac4n=\frac1x+\frac1y+\frac1z
+\end{equation}
+has a positive integral solution for every integer \(n\ge2\).
+
+\begin{theorem}[Global reduction to the two-determinant incidence]
+\label{thm:global-incidence}
+The full conjecture is equivalent to
+\begin{equation}\label{eq:global-incidence}
+ \boxed{
+ \mathrm{ES}
+ \quad\Longleftrightarrow\quad
+ \forall p\in\mathbb P,
+ \ p\equiv1\pmod{12}:
+ \ \mathscr I_0(p)\sqcup\mathscr I_1(p)\ne\varnothing.}
+\end{equation}
+Equivalently,
+\begin{equation}\label{eq:global-counterexample}
+ \neg\mathrm{ES}
+ \quad\Longleftrightarrow\quad
+ \exists p\in\mathbb P,
+ \ p\equiv1\pmod{12}:
+ \ \mathscr I_0(p)=\mathscr I_1(p)=\varnothing.
+\end{equation}
+The sphere-type subproblem
+\begin{equation}\label{eq:E-only-sufficient}
+ \forall p\equiv1\pmod{12},\quad
+ \mathscr I_0(p)\ne\varnothing
+\end{equation}
+is sufficient for \(\mathrm{ES}\); it is not asserted to be necessary.
+\end{theorem}
+
+\begin{proof}
+If \eqref{eq:global-ES} holds for a divisor \(d\mid n\), multiplication of all
+three denominators by \(n/d\) gives a solution for \(n\).  It therefore
+suffices, and is necessary, to treat primes.
+
+For \(p=2\),
+\[
+ \frac42=\frac11+\frac12+\frac12.
+\]
+For a prime \(p\equiv3\pmod4\), put
+\[
+ a=\frac{p+1}{4},\qquad N=pa,\qquad
+ b=N+1,\qquad c=N(N+1).
+\]
+Then
+\[
+ \frac4p-\frac1a=\frac1N
+ =\frac1{N+1}+\frac1{N(N+1)}.
+\]
+For a prime \(p\equiv5\pmod{12}\), put
+\[
+ a=\frac{p+3}{4},\qquad
+ b=\frac{(p+1)(p+3)}{12},\qquad c=pb.
+\]
+Then
+\[
+ \frac4p-\frac1a=\frac3{pa}
+ =\frac1b+\frac1{pb}.
+\]
+Every prime greater than three is congruent to \(1,5,7\), or \(11\) modulo
+\(12\); the last two classes are \(3\pmod4\).  Hence only primes
+\(p\equiv1\pmod{12}\) remain.  For each of those primes,
+Theorem~\ref{thm:incidence} is exactly the asserted incidence criterion.
+Taking the logical negation gives \eqref{eq:global-counterexample}, and
+retaining only the \(\varepsilon=0\) alternative gives
+\eqref{eq:E-only-sufficient}.
+\end{proof}
+
+\begin{corollary}[Global primitive Koide-ray formulation]
+\label{cor:global-primitive}
+The full Erd\H{o}s--Straus conjecture is equivalent to the following statement:
+for every prime \(p\equiv1\pmod{12}\), there exist
+\(h,r,s\in\Z_{>0}\) such that
+\begin{equation}\label{eq:global-primitive-data}
+ \gcd(r,s)=1,
+ \qquad
+ \frac p4<hrs<\frac p2,
+ \qquad
+ R:=4hrs-p,
+\end{equation}
+and at least one of the two exact ray conditions holds:
+\begin{equation}\label{eq:global-primitive-rays}
+ R\mid pr+s
+ \qquad\text{or}\qquad
+ R\mid r+s.
+\end{equation}
+A hard prime \(p\equiv1\pmod{12}\) is a counterexample exactly when every
+triple satisfying \eqref{eq:global-primitive-data} satisfies
+\begin{equation}\label{eq:global-primitive-obstruction}
+ R\nmid pr+s
+ \qquad\text{and}\qquad
+ R\nmid r+s.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Given an incidence point, Theorem~\ref{thm:primitive} writes
+\(u=hr^2,a=hrs,v=hs^2\).  Proposition~\ref{prop:first-half} gives the strict
+interval in \eqref{eq:global-primitive-data}, and
+Theorem~\ref{thm:primitive-channels} gives
+\eqref{eq:global-primitive-rays}.  Conversely, a triple satisfying
+\eqref{eq:global-primitive-data} has
+\[
+ 0<R<p,
+ \qquad R\equiv3\pmod4,
+ \qquad j=\frac{R-3}{4}\in\Z,
+ \qquad a=hrs=\frac{p+R}{4}.
+\]
+Set \(u=hr^2\) and \(v=hs^2\).  Then \(uv=a^2\), and either divisibility in
+\eqref{eq:global-primitive-rays} is, by
+Theorem~\ref{thm:primitive-channels}, exactly one of the two selector channels.
+The global equivalence follows from Theorem~\ref{thm:global-incidence}; its
+logical negation is \eqref{eq:global-primitive-obstruction}.
+\end{proof}
+
+\begin{corollary}[Divisor-free hard-prime formulation]
+\label{cor:global-divisor-free}
+The full Erd\H{o}s--Straus conjecture is equivalent to the following statement:
+for every prime $p\equiv1\pmod{12}$ there exist positive coprime integers
+$r,s$ and an integer $R$ such that
+\begin{equation}\label{eq:divisor-free-range}
+ 0<R<p,
+ \qquad R\equiv3\pmod4,
+ \qquad 4rs\mid p+R,
+\end{equation}
+and
+\begin{equation}\label{eq:divisor-free-rays}
+ R\mid pr+s
+ \qquad\text{or}\qquad
+ R\mid r+s.
+\end{equation}
+For such data the content and first denominator are uniquely
+\begin{equation}\label{eq:divisor-free-h-a}
+ h=\frac{p+R}{4rs},
+ \qquad a=hrs=\frac{p+R}{4}.
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The data of Corollary~\ref{cor:global-primitive} give
+$R=4hrs-p$, hence $p+R=4hrs$ and therefore
+$4rs\mid p+R$.  Conversely, \eqref{eq:divisor-free-range} defines the positive
+integer $h$ in \eqref{eq:divisor-free-h-a}; then
+$R=4hrs-p$ and $p/4<hrs<p/2$.  The two divisibility conditions are unchanged,
+so Corollary~\ref{cor:global-primitive} applies in both directions.
+\end{proof}
+
+\begin{proposition}[Exact middle-channel shell bound]
+\label{prop:middle-shell-bound}
+Suppose a hard-prime selector lies in the middle channel and write
+\begin{equation}\label{eq:middle-kappa}
+ r+s=\kappa R,
+ \qquad \kappa\in\Z_{>0}.
+\end{equation}
+Then
+\begin{equation}\label{eq:middle-shell-bound}
+ (4\kappa-1)R\le p+4.
+\end{equation}
+In particular
+\begin{equation}\label{eq:middle-shell-one-third}
+ R\le\frac{p+4}{3},
+\end{equation}
+and for every fixed $K\ge1$, a middle state with $\kappa\ge K$ satisfies
+\begin{equation}\label{eq:middle-shell-K}
+ R\le\frac{p+4}{4K-1}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Using $p=4hrs-R$ and $r+s=\kappa R$, one has the exact identity
+\begin{equation}\label{eq:middle-bound-factorization}
+ p+4-(4\kappa-1)R
+ =4(hrs-r-s+1)
+ =4\bigl((h-1)rs+(r-1)(s-1)\bigr).
+\end{equation}
+Both terms on the last side are nonnegative, proving
+\eqref{eq:middle-shell-bound}.  The two displayed consequences follow from
+$\kappa\ge1$ and $\kappa\ge K$, respectively.  Equality in
+\eqref{eq:middle-shell-bound} holds exactly when $h=1$ and
+$(r-1)(s-1)=0$.
+\end{proof}
+
+\section{Exact conclusion for Erd\H{o}s--Straus}
+
+For every prime $p\equiv1\pmod4$, the complete result can be written as the
+following equality of existence statements:
+\begin{equation}\label{eq:master}
+\boxed{
+\begin{aligned}
+\ES(p)
+\quad\Longleftrightarrow\quad
+\exists\;&\varepsilon\in\{0,1\},\;
+0\le j<\frac{p-1}{4},\;
+\ell_0,\ell_1,u,a,v\in\Z,\\
+& T=4\ell_0-1>0,\quad
+ a=\frac{p+4j+3}{4},\quad
+ u=\ell_1+jT>0,\quad v>0,\\
+&12\ell_0-4\ell_1-3=p^\varepsilon,\qquad
+ uv=a^2.
+\end{aligned}}
+\end{equation}
+The two equations on the last line are exactly
+\[
+ \det\mathsf R(\ell_0,\ell_1,1)=-p^\varepsilon,
+ \qquad
+ \det\Gamma(a,u)=0.
+\]
+The first is the terminal determinant of the $(3,4,\infty)$ sphere
+construction.  The second is the positive rank-one Koide/$S^6$ coefficient
+boundary.  The coupling equations on the preceding line preserve the prime,
+first-denominator index, orientation, and divisor information.
+
+The sphere construction therefore supplies an exact terminal-topological
+interpretation of each selector state and the Koide coefficient form supplies
+an exact rank-one completion of its divisor gate.  What remains in the
+Erd\H{o}s--Straus conjecture is precisely the assertion that the integral
+incidence set in \eqref{eq:master} is nonempty for every relevant prime.  The
+$S^6$ terminal algebra alone does not force $uv=a^2$; the Koide determinant
+boundary alone does not force
+$12\ell_0-4\ell_1-3=p^\varepsilon$.  Their coupled integral incidence is the
+complete selector.
+
+Finally, the positive defect-one Koide/Vieta shell studied elsewhere in the
+source has
+\[
+ \Delta=3Q_K=-1,
+ \qquad Q_K=-\frac13,
+\]
+whereas every Erd\H{o}s--Straus selector and shell matrix constructed here has
+$Q_K=0$.  An invertible isometry of the quadratic space preserves the value of
+$Q_K$, so the defect-one shell is not the Erd\H{o}s--Straus null shell.  The
+proved linear counting theorem for that defect-one hyperboloid is therefore a
+separate arithmetic result, not a count of Erd\H{o}s--Straus witnesses.
+
+\section*{Reproducibility}
+
+The accompanying exact-integer program verifies every displayed map,
+congruence, inverse, determinant, denominator identity, quarter-coordinate
+formula, channel overlap, and double-certificate reconstruction for every
+prime $p\equiv1\pmod4$ through $2000$.  It checks $147$ primes and $6548$
+tagged selector states.  They give exactly $4963$ sorted denominator triples,
+in agreement with \eqref{eq:solution-count}; all $6548$ double certificates
+are distinct, while $391$ terminal-matrix collision classes demonstrate the
+information lost by the terminal projection alone.  The bounded computation
+is a verification receipt, not a proof of universal selector nonemptiness.
+
+\begin{thebibliography}{9}
+
+\bibitem{AlpogeFableS6}
+L. Alp\"oge, with the disclosed Fable/Claude contribution,
+\emph{The $(3,4,\infty)$ modular family of $2$-tori, completed at its three
+special points, is a complex structure on $S^6$}, together with the current
+canonical reconstruction and integrated audit, Zenodo record 22238779 (2026).
+
+\bibitem{ClankersES}
+The Clankers,
+\emph{Erd\H{o}s--Straus Project Archive: Residual Divisor Shells, Quotient
+Surpluses, and Finite Verification}, Zenodo record 22209908 (2026), and the
+active research continuation supplied with this note.
+
+\bibitem{Koide1983}
+Y. Koide,
+\emph{New View of Quark and Lepton Mass Hierarchy},
+Physical Review D \textbf{28} (1983), 252--254;
+erratum, Physical Review D \textbf{29} (1984), 1544.
+
+\bibitem{Kocik2012}
+J. Kocik,
+\emph{The Koide Lepton Mass Formula and Geometry of Circles},
+arXiv:1201.2067 (2012).
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,252 @@
+\section{The alternate collapse and Mayer--Vietoris route}
+
+The nearby-cycle/Leray proof in \cref{sec:integral-leray} gives a verified
+independent route to the topology of $X$.  This section keeps the manuscript's independent
+cellular-collapse/Mayer--Vietoris route under audit.  The integer algebra in
+\cref{prop:terminal-group,prop:terminal-degree-two} is complete, but the
+geometric realization of the printed homology matrices is not yet needed or
+fully validated.  Write the relevant decomposition as
+$X=U\cup N$, with $N=\bigcup_jN_j$ and $U\cap N$ the disjoint union of
+oriented collars.  The Mayer--Vietoris map is
+\[
+\delta_q=(i_{U*},-i_{N*}):
+H_q(U\cap N;\mathbb Z)\longrightarrow
+H_q(U;\mathbb Z)\oplus H_q(N;\mathbb Z).
+\tag{4.1}
+\]
+The assertion requiring geometric proof is not the Smith form of a printed
+matrix but
+\[
+\alpha_q=[\delta_q]_{\mathcal B_q}
+\tag{4.2}
+\]
+for bases $\mathcal B_q$ constructed from actual primitive oriented cycles.
+
+\subsection{A complete abstract cusp-retraction lemma}
+
+\begin{proposition}[equivariant topological spine]\label{prop:topological-spine}
+\Verified\ Let $A$ be a contractible manifold with boundary and
+$A_0\subset\partial A$ a contractible union of boundary components.  Let a
+group $\Gamma$ act freely and properly discontinuously on $(A,A_0)$.  Assume
+$Q=A/\Gamma$ and $H=A_0/\Gamma$ are manifolds, $Q$ is compact,
+$H\hookrightarrow Q$ is collared, and the two quotient maps are connected
+coverings with deck group $\Gamma$.  If the inclusion identifies the two
+deck groups by the identity automorphism of $\Gamma$, then
+$H\hookrightarrow Q$ is a strong deformation retract.  The retraction lifts
+uniquely from the identity lift to a $\Gamma$-equivariant strong deformation
+retraction of $A$ onto $A_0$.
+\end{proposition}
+
+\begin{proof}
+Because $A$ and $A_0$ are contractible universal covers,
+$\pi_n(Q)=\pi_n(H)=0$ for $n\ge2$, while
+$\pi_1(Q)\cong\Gamma\cong\pi_1(H)$.  By hypothesis the inclusion induces the
+identity on $\Gamma$, so it is a weak homotopy equivalence.  Manifolds have
+the homotopy type of CW complexes; Whitehead's theorem
+\cite[Theorem~4.5]{Hatcher2002} therefore makes the inclusion a homotopy
+equivalence.
+
+The collar makes $(Q,H)$ an NDR pair, hence the inclusion is a cofibration.
+We record the standard cofibration argument.  Choose a homotopy inverse
+$r_0:Q\to H$.  Since $r_0|_H\simeq\operatorname{id}_H$, the homotopy
+extension property modifies $r_0$ through maps $Q\to H$ to a retraction
+$r$ satisfying $r|_H=\operatorname{id}_H$.  The maps
+$\operatorname{id}_Q$ and $i\circ r$ are homotopic and agree on $H$.
+Applying the homotopy extension property once more makes that homotopy
+stationary on $H$.  It is therefore a strong deformation retraction.
+
+Let $P:A\to Q$ be the covering.  Lift the deformation homotopy from the
+initial lift $\operatorname{id}_A$.  Since the base homotopy fixes $H$ and
+the initial lift fixes $A_0$, uniqueness of path lifting makes the lifted
+homotopy fix $A_0$.  For $\gamma\in\Gamma$, both
+$\widetilde H_t\circ\gamma$ and $\gamma\circ\widetilde H_t$ lift the same
+map and agree at $t=0$; uniqueness gives equality for every $t$.  The lift is
+therefore $\Gamma$-equivariant and ends in $A_0$.
+\end{proof}
+
+This proves the formal retraction step once its hypotheses are established.
+The manifold, freeness, proper discontinuity, and quotient assertions for the
+infinite toric space are now proved in
+\cref{thm:candidate-cusp-geometry}; the candidate-specific collar and
+contractibility assertions used by this alternate route remain to be checked.
+
+\subsection{The remaining candidate-specific obligations}
+
+\begin{obligation}[C1: finite collapse model]
+\label{obl:finite-model}
+\Open\ The analytic quotient prerequisites are discharged by
+\cref{thm:candidate-cusp-geometry}.  For the alternate collapse proof,
+construct the claimed finite quotient CW structure, verify its attaching maps
+on all common faces, and check the collar, contractibility, and identity deck
+group hypotheses needed by \cref{prop:topological-spine}.
+\end{obligation}
+
+\begin{obligation}[C2--C3: collapse and specialization]
+\label{obl:cusp-collapse}
+\Open\ Construct the collapse on each toric stratum, prove compatibility on
+all face inclusions and $\bar\Lambda$-equivariance, and compute its map on
+integral cellular chains with oriented primitive bases.  Then prove that this
+topological collapse map agrees with the nearby-cycle specialization
+\[
+\operatorname{sp}^q:H^q(W;\mathbb Z)\longrightarrow H^q(F;\mathbb Z)
+\].
+The image, torsion, and saturation of specialization itself are proved in
+\cref{thm:p0-integral-specialization} for the reconstructed cusp model.
+What remains for this alternate route is the
+model-specific equality of that map with the cellular collapse and the
+oriented chain matrix.  SGA~7 supplies formal nearby cycles
+\cite{SGA7II1973}; it does not supply that equality.
+\end{obligation}
+
+\begin{obligation}[V1: based van Kampen inclusions]
+\label{obl:vankampen}
+\Verified\ The actual overlap coordinate maps, with the zero section as
+base locus and clockwise meridians, show that the
+finite fillings impose $\widehat\rho_j^{m_j}=t_{v_j}$ with the same sign,
+the cusp filling kills $\Lambda_{\rm tor}$ and its toric meridian, and the
+tautological gluing has zero translation drift.  Thus the abstract terminal
+presentation is the actual $\pi_1(X)$.  The deck generators, common clockwise
+convention, zero-section disc, normal closure, boundary inclusion
+$\Lambda\to\Lambda/\Lambda_{\rm tor}$,
+$\widetilde a_0\mapsto1$, and absence of extra whisker drift are proved in
+\cref{prop:geometric-pi1}.
+\end{obligation}
+
+\begin{obligation}[MV1 and the remaining comparison]
+\label{obl:leray}
+\Open\ Prove (4.2) for every degree used in the homology calculation.
+The integral Leray transgression and its candidate sign are already derived
+in \cref{lem:first-transgression}; the higher transgressions are
+\cref{lem:higher-transgressions}.  What remains is a commuting comparison
+diagram between those maps and (4.1), listing every
+nearby-cycle, meridian, transfer, and basis identification shared by the two
+routes.  Agreement of their terminal integers is not itself such a diagram.
+\end{obligation}
+
+\begin{test}[immediate topological falsifiers]
+The alternate collapse certificate fails if any actual map has a
+nonprimitive image where
+the printed matrix assumes a primitive one, if specialization contributes an
+omitted torsion class or nonunit index, if a meridian sign changes $p=-1$ to
+a nonunit, or if the geometric Leray transgression differs from
+$\pm p\omega$ by a nonunit factor.
+\end{test}
+
+\subsection{Complete conditional recognition theorem}
+
+\begin{lemma}[cohomological closure in dimension six]
+\label{lem:cohomological-closure}
+\Verified\ Let $X$ be a smooth, closed, connected, oriented six-manifold.
+If
+\[
+\pi_1(X)=0,
+\qquad H^2(X;\mathbb Z)=H^3(X;\mathbb Z)=0,
+\tag{4.3}
+\]
+then $H_k(X;\mathbb Z)$ is $\mathbb Z$ for $k=0,6$ and zero for
+$1\le k\le5$.
+\end{lemma}
+
+\begin{proof}
+The Hurewicz map in degree one identifies
+$H_1(X;\mathbb Z)=\pi_1(X)^{\mathrm{ab}}=0$.  The universal coefficient
+sequence
+\[
+0\longrightarrow\operatorname{Ext}(H_1(X),\mathbb Z)
+\longrightarrow H^2(X;\mathbb Z)
+\longrightarrow\operatorname{Hom}(H_2(X),\mathbb Z)
+\longrightarrow0
+\]
+shows that $\operatorname{Hom}(H_2(X),\mathbb Z)=0$, so the finitely
+generated group $H_2(X)$ is torsion.  The next universal coefficient
+sequence contains an injection
+\[
+\operatorname{Ext}(H_2(X),\mathbb Z)
+\hookrightarrow H^3(X;\mathbb Z)=0.
+\]
+For a finitely generated torsion group
+$A=\bigoplus_i\mathbb Z/n_i$, one has
+$\operatorname{Ext}(A,\mathbb Z)=\bigoplus_i\mathbb Z/n_i$; hence
+$H_2(X)=0$.  Poincar\'e duality gives
+\[
+H_3(X)\simeq H^3(X)=0,\quad
+H_4(X)\simeq H^2(X)=0,\quad
+H_5(X)\simeq H^1(X)=0.
+\]
+Finally connectedness and orientation give $H_0(X)=H_6(X)=\mathbb Z$.
+\end{proof}
+
+\begin{theorem}[sphere recognition from the exact inputs]
+\label{thm:sphere-recognition}
+\Conditional\ Let $X$ be a smooth, closed, connected six-manifold.  If
+\[
+\pi_1(X)=0,\qquad
+H_k(X;\mathbb Z)\cong
+\begin{cases}
+\mathbb Z,&k=0,6,\\
+0,&1\le k\le5,
+\end{cases}
+\tag{4.4}
+\]
+then $X$ is diffeomorphic to the standard $S^6$.
+\end{theorem}
+
+\begin{proof}
+A closed smooth manifold has the homotopy type of a finite CW complex.
+We first prove successively that $\pi_i(X)=0$ for $1\le i\le5$.
+The case $i=1$ is assumed.  Suppose $2\le n\le5$ and
+$\pi_i(X)=0$ for $i<n$.  Then $X$ is $(n-1)$-connected, so the Hurewicz
+homomorphism
+\[
+h_n:\pi_n(X)\longrightarrow H_n(X;\mathbb Z)
+\]
+is an isomorphism by the Hurewicz theorem
+\cite[Theorem~4.32]{Hatcher2002}.  The target vanishes by (4.4), hence
+$\pi_n(X)=0$.  Induction proves the assertion.
+
+Now $X$ is $5$-connected.  Hurewicz in degree six gives
+$\pi_6(X)\cong H_6(X;\mathbb Z)\cong\mathbb Z$.  Choose a map
+$g:S^6\to X$ whose homotopy class maps to a chosen orientation generator.
+It has degree one.  Hence $g_*$ is an isomorphism in degrees zero and six;
+in every other degree both integral homology groups vanish.  Thus $g$ is an
+integral homology equivalence.  Both spaces are simply connected CW
+complexes, so the homological Whitehead theorem
+\cite[Corollary~4.33]{Hatcher2002} makes $g$ a homotopy equivalence.
+Therefore $X$ is a smooth homotopy $6$-sphere.
+
+Smale's generalized Poincar\'e theorem in dimensions greater than four
+\cite[Theorem~A]{Smale1961} identifies the underlying topological manifold
+with $S^6$.  Smooth homotopy $6$-spheres up to oriented
+$h$-cobordism form the group $\Theta_6$; the opening table of
+Kervaire--Milnor gives $|\Theta_6|=1$
+\cite{KervaireMilnor1963}.  Hence there is no exotic smooth structure in
+dimension six, and $X$ is diffeomorphic to the standard sphere.
+\end{proof}
+
+\begin{corollary}[abstract application boundary]\label{cor:conditional-s6}
+\Conditional\ Suppose V1 identifies the actual based van Kampen quotient
+with $G(\ell_0,\ell_1,\ell_2)$ of
+\cref{prop:terminal-group}, and suppose an independently constructed
+MV1/L1 comparison proves
+\[
+H^2(X;\mathbb Z)\cong H^3(X;\mathbb Z)
+\cong\mathbb Z/|p|\mathbb Z,
+\qquad p=12\ell_0-4\ell_1-3\ell_2.
+\tag{4.5}
+\]
+If $|p|=1$, then $X\cong_{\mathrm{diff}}S^6$.
+\end{corollary}
+
+\begin{proof}
+For $|p|=1$, 
+\cref{prop:terminal-group} and the assumed geometric identification give
+$\pi_1(X)=0$, while (4.5) gives $H^2(X)=H^3(X)=0$.
+\Cref{lem:cohomological-closure} proves (4.4), and
+\cref{thm:sphere-recognition} gives the claimed diffeomorphism.
+\end{proof}
+
+The corollary is an abstract implication.  For the actual candidate, the
+intrinsic nearby-cycle/Leray and based van Kampen route now proves the
+hypotheses used by \cref{cor:candidate-sphere}.  C1--C3, MV1, and L1 remain
+only the independent collapse/Mayer--Vietoris certificate; the additional open
+work in this section concerns that alternate certificate.

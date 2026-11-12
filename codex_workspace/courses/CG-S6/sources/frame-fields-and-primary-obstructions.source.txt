@@ -1,0 +1,569 @@
+# Frame fields and primary obstructions
+
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.*
+
+This completes the frame-obstruction part of lesson 8 after its [Gysin and projective calculations](gysin-sequence-and-projective-splitting.md). A frame extends across a cell exactly when its boundary map in the Stiefel fibre extends across a disk. The first such boundary classes assemble into a cohomology class with explicit coefficients. Its reduction is a Stiefel–Whitney class, and for one nonzero field the oriented integer class is the Euler class.
+
+Learn first [Grassmannians and classifying maps](grassmannians-and-classifying-maps.md), [Thom classes and Euler classes](thom-classes-and-euler-classes.md), [Steenrod squares and Stiefel–Whitney classes](steenrod-squares-and-stiefel-whitney-classes.md), and [Schubert cells and Grassmannian cohomology](schubert-cells-and-grassmannian-cohomology.md). The disk movement in the sphere-degree proof also uses the fully proved smooth local-flow lemma in Section 3 of [Manifold duality, the diagonal and Wu classes](manifold-duality-the-diagonal-and-wu-classes.md). We develop the remaining homotopy, chain and local-coefficient prerequisites below. Later rational cobordism needs further rational homotopy results, which are not claimed in this chapter.
+
+## A. Based homotopies and finite approximation
+
+For a based space \((X,x_0)\) and \(r\geq1\), define \(\pi_r(X,x_0)\) to be homotopy classes of maps
+\((I^r,\partial I^r)\to(X,x_0)\), with homotopies fixed on the boundary. Concatenate in the first coordinate. Rescaling the two subintervals gives associativity up to boundary-fixed homotopy; the constant map is the identity, and reversing that coordinate gives an inverse. To verify the inverse relation, compress a map followed by its reverse into an interval traversed forward and backward, and then continuously shorten the traversed part to zero. This keeps every cube-boundary value fixed.
+
+For \(r\geq2\) one can also concatenate in the second coordinate. The four quadrant subdivisions give the interchange identity between the two concatenations. Each has the same constant identity. Inserting constant maps into the four quadrants shows the two operations agree; interchanging the other two quadrants then shows they are commutative. Thus \(\pi_r\) is abelian for \(r\geq2\). A based map induces a homomorphism by composition, and a based homotopy gives the same homomorphism. Paths used to move a basepoint act by inserting the path and its reverse along a collar of the cube boundary; concatenating paths composes the basepoint changes. These constructions are all reparametrizations of the cube.
+
+**Lemma A.1 — Finite simplicial approximation.** Let \(P,Q\) be finite simplicial complexes. Every continuous map \(|P|\to|Q|\) is homotopic to a simplicial map after sufficiently many subdivisions of \(P\). If a chosen source vertex has a prescribed target-vertex value, the homotopy can fix that vertex.
+
+**Proof.** The open stars of the vertices of \(Q\) cover its realization. Their inverse images form an open cover of the compact metrizable \(|P|\). This cover has a Lebesgue number: otherwise subsets of diameter tending to zero, each lying in no cover member, have points with a convergent subsequence; a cover neighbourhood of the limiting point contains every sufficiently late subset, a contradiction.
+
+Barycentric subdivision makes the mesh tend to zero. In a simplex of dimension \(d\), two vertices of a subdivided simplex are barycentres of nested faces; their distance is at most \(d/(d+1)\) times its diameter, by expressing the larger barycentre as the smaller-face contribution plus the remaining vertices. The maximum dimension is finite, so iterating gives geometric decay. Closed stars then have diameter at most twice the mesh. Subdivide until the image of each closed source-vertex star lies in one target open star, and send that source vertex to the corresponding target vertex. At the specified vertex choose its prescribed target star; continuity permits this after a further subdivision.
+
+The chosen target vertices belonging to any source simplex span a simplex of \(Q\). Indeed a point in the relative interior of the source simplex belongs to every one of its vertex stars, so its image belongs to all the selected open target stars. A point in an intersection of open stars has a supporting simplex containing all their vertices. Extending linearly therefore gives a simplicial map \(g\).
+
+For any source point, the selected vertices of its supporting face and the supporting face of its image lie together in a target simplex, by the same open-star condition. In the ambient vector space of the target realization, the straight segment from \(f(x)\) to \(g(x)\) therefore stays in \(|Q|\). These segments vary continuously and give the homotopy. At the specified vertex both endpoints coincide, so it is fixed. ∎
+
+A sphere is a finite simplicial complex, for instance the boundary of a simplex. A simplicial map from an \(i\)-sphere to an \(m\)-sphere has image in a finite union of simplices of dimensions at most \(i\). If \(i<m\), this image misses a point in an \(m\)-simplex. Its complement is homeomorphic to \(\mathbb R^m\), by stereographic projection, and contracts to the image basepoint. Consequently
+\[
+\pi_i(S^m)=0,\qquad 1\leq i<m.
+\tag{A.1}
+\]
+For \(m\geq1\) the sphere is path connected, using its meridian arcs. Thus \(S^m\) is \((m-1)\)-connected with the usual interpretation at \(m=1\).
+
+## B. The full degree classification of sphere maps
+
+The cube description equals the based sphere description. Radially map the cube centred at zero to the unit disk by \(v\mapsto\|v\|_\infty v/\|v\|_2\), with zero sent to zero. This sends its boundary to the disk boundary and is a homeomorphism, with inverse \(w=s u\mapsto s u/\|u\|_\infty\). The quotient \(D^m/\partial D^m\) maps to \(S^m\) by \((r,u)\mapsto(\sin(\pi r)u,\cos(\pi r))\). It is a continuous bijection from a compact space to a Hausdorff space, hence a homeomorphism, sending the collapsed boundary to the south pole.
+
+The earlier singular/cellular proofs identify \(H_m(S^m;\mathbb Z)\) with \(\mathbb Z\). For an oriented sphere map \(f:S^m\to S^m\), its **degree** is the integer by which \(f_*\) multiplies the positive generator. The prism identity makes this invariant under homotopy.
+
+**Lemma B.1.** For \(m\geq1\), degree gives an isomorphism
+\[
+\pi_m(S^m)\longrightarrow\mathbb Z.
+\tag{B.1}
+\]
+The degree of a coordinate reflection is \(-1\); a positively oriented identity sphere has degree \(1\).
+
+**Proof.** First let \(m=1\). The exponential covering \(\mathbb R\to S^1\) lifts every based interval map uniquely after its starting value is chosen, by the finite subdivision/local inverse lifting proof in the real-line chapter. Its final lift is an integer. Homotopies lift as well, so keep that integer fixed. A lift with final integer \(k\) is homotopic relative endpoints to the straight lift \(t\mapsto kt\), by linear interpolation in \(\mathbb R\). Concatenation adds integers. Cutting a circle at the basepoint, or the cellular one-cycle calculation, shows that this integer is exactly the induced homology degree. This proves (B.1) in dimension one.
+
+Now let \(m\geq2\). Apply Lemma A.1 to a based map. Choose the target triangulation as a regular simplex boundary radially projected to the unit sphere, with the basepoint at one vertex. The opposite point \(y\) is in the interior of the opposite top-dimensional face. For its simplicial approximation \(g\), the inverse image of \(y\) is a finite set: it contains one point in each source \(m\)-simplex mapping affinely and bijectively to that face, and none in any collapsed simplex or lower-dimensional face. Choose a sufficiently small round ball \(B\) about \(y\), contained in that target face. Then \(g^{-1}(B)\) is a disjoint union of finitely many small disks \(B_a\), each inside one source \(m\)-simplex, and \(g:B_a\to B\) is an orientation-signed local diffeomorphism.
+
+Collapse the complement of \(B\) in the target to its basepoint. This collapse can be chosen based homotopic to the identity explicitly. With \(y\) at the north pole and the basepoint at the south pole, let \(\alpha_0\) be the angular radius of \(B\). Replace the colatitude \(\alpha\) by
+\(\min(\pi\alpha/\alpha_0,\pi)\), leaving its longitude fixed. Interpolate this colatitude function linearly with \(\alpha\). At both poles longitude is irrelevant, so these formulas are continuous and fix the south pole. The final map \(q\) sends \(B/\partial B\) orientation-preservingly onto the sphere and is constant outside \(B\).
+
+Thus \(qg\), in the same based homotopy class, is supported on the finitely many disjoint disks \(B_a\). Each disk contributes an identity generator or its inverse, according to its local orientation sign. Here are the geometric details of interpreting these contributions as the cube concatenation. Shrink each disk inside its coordinate ball by an increasing radial isotopy. Move the resulting small disks, one at a time, to ordered disjoint balls in the interior of a standard cube chart avoiding the basepoint. The complement of finitely many disjoint closed balls in this punctured sphere of dimension at least two is path connected. First choose a path avoiding their finitely many centres; in a Euclidean chart a polygonal path can be perturbed to do this. In each ball chart, radial projection away from its centre pushes this path onto the ball boundary, fixing the outside. The disjoint balls allow these pushes independently. A slightly larger disjoint chart collar pushes the boundary portions outward too. A path avoiding the other balls can be covered by finitely many coordinate neighbourhoods. In each neighbourhood a compactly supported constant-direction vector field moves a sufficiently small ball along a short segment; the proved smooth local-flow lemma gives the isotopy, fixing all other disks and the basepoint. The finite sequence does the required movement.
+
+Disjoint successive supports in that cube give exactly the concatenation operation, with constant slabs between them; varying slab widths is its defining reparametrization homotopy. The individual disk contribution is explicit in the affine face coordinates used before radial projection to the sphere. The opposite face is perpendicular to its central north-pole direction, so the chosen small round spherical ball \(B\) becomes a round disk in that face. Each inverse disk \(B_a\) is its ellipsoid inverse under a full-rank affine map. After centring, its normalized map is therefore the invertible linear matrix, with the radial quotient on each disk. A positive-determinant matrix is joined to the identity by the linear-group path proved in the Thom chapter; a negative-determinant matrix differs by one coordinate reflection. Apply that matrix path, with the same radial disk identifications, to give a homotopy of the collapsed disk maps. Thus these contributions represent the identity generator and its inverse respectively. Their movement by the preceding isotopies does not change their classes. Every class is consequently an integer multiple \(k\) of the identity, with \(k\) the sum of the local signs.
+
+On homology that same sum is its degree. To verify this without counting a chosen triangulation as a proof, use the pairs formed by deleting the preimages of \(y\) and by deleting \(y\). Excision identifies their top relative homology with the direct sum of the local disk groups and the target local disk group. The fundamental class has positive local value in every source disk, and each local homeomorphism acts by its orientation sign, as proved in the integer local fundamental-class construction. The commutative map of pairs consequently sends their sum to that signed sum. The global sphere group maps isomorphically to the target point-relative group, so the global degree is \(k\).
+
+Cube concatenation also adds these homology degrees, either by this disk description or by the pinch map splitting its two oriented half-cubes. The identity has degree one. Thus no nonzero multiple of it is null-homotopic, whereas every degree-zero map represents its zero multiple. This proves that degree is both injective and surjective. A coordinate reflection reverses the local generator and has degree \(-1\), as already checked by the determinant action. ∎
+
+In particular the homotopy class of a map from the boundary of an oriented \(m\)-disk to an \((m-1)\)-sphere, \(m\geq2\), is exactly its degree. It extends over the disk if and only if that degree is zero: an extension gives a null-homotopy by radial contraction, and a null-homotopy gives an extension by the cone formula. The rank-one, disconnected \(S^0\) case will be treated separately using the reduced local component group.
+
+
+## C. Compact homotopy lifting and its exact sequence
+
+Let \(V_k(\mathbb R^n)\) now denote orthonormal ordered \(k\)-frames. This does not change the homotopy problem for linearly independent frames. Gram–Schmidt writes an independent frame as an orthonormal frame times an upper-triangular matrix with positive diagonal. Interpolating that triangular matrix to the identity keeps its diagonal positive and hence stays invertible. This is a continuous deformation onto orthonormal frames.
+
+The map forgetting the last vector,
+\[
+p:V_k(\mathbb R^n)\longrightarrow V_{k-1}(\mathbb R^n),
+\tag{C.1}
+\]
+is the unit-sphere bundle of the orthogonal complement of the first \(k-1\) vectors. Its fibre is \(S^{n-k}\). The full projection/complement proof in the bundle chapter gives local trivializations. We need its lifting property with every compact parameter space used for cube maps and homotopies.
+
+Write \(P_b=I-\sum_{a=1}^{k-1}v_a v_a^{\mathsf T}\) for the projection onto that complement at the frame \(b\). Let \(H:K\times I\to V_{k-1}(\mathbb R^n)\) be a continuous homotopy with \(K\) compact, and let \(w(x,0)\) be a continuous initial unit vector in its complement. Uniform continuity of \(P_{H(x,t)}\) gives a subdivision
+\(0=t_0<\cdots<t_N=1\) such that
+\(\|P_{H(x,t)}-P_{H(x,t_a)}\|<1/2\)
+for every \(x\) and \(t_a\leq t\leq t_{a+1}\).
+On that interval define the lift recursively by
+\[
+w(x,t)=
+\frac{P_{H(x,t)}w(x,t_a)}
+{\|P_{H(x,t)}w(x,t_a)\|}.
+\tag{C.2}
+\]
+Its denominator is at least \(1/2\), so the lift is continuous and agrees at subdivision endpoints. It stays fixed wherever both the base homotopy and the initial lift are fixed.
+
+More is available from this formula. The linear map
+\(P_{H(x,t)}:\operatorname{im}P_{H(x,t_a)}\to
+\operatorname{im}P_{H(x,t)}\)
+is injective by the same norm estimate. Both spaces have the same dimension, so it is an isomorphism, with inverse continuous by the finite matrix inverse formula in local frames. Its normalized action is a homeomorphism of their unit spheres. Composing these homeomorphisms gives a continuous transport \(T_{x,t}\) from the initial sphere to the current sphere, with \(T_{x,0}\) the identity.
+
+This also proves independence of lifting choices in the cases needed below. If \(w(x,t)\) is any lift of \(H\) with the same initial values, pull it back by \(T_{x,t}^{-1}\). The homotopy
+\[
+w_a(x,t)=T_{x,t}\bigl(T_{x,at}^{-1}w(x,at)\bigr),
+\qquad 0\leq a\leq1,
+\tag{C.3}
+\]
+runs from the transport lift to the given lift, over the unchanged base \(H(x,t)\). It fixes initial values and all parameter subsets where the base and lift are constant. The same argument compares two transports by viewing one transport lift as an arbitrary lift for the other. Extra cube parameters, including parameters of a homotopy between base homotopies, remain compact; the uniform subdivision construction applies to them jointly.
+
+Here is the exact sequence in the required based form. Set \(E=V_k(\mathbb R^n)\), \(B=V_{k-1}(\mathbb R^n)\), and let \(F=p^{-1}(b_0)\) with chosen \(w_0\). For \(r\geq2\) there are maps
+\[
+\pi_r(F)\xrightarrow{i_*}\pi_r(E)\xrightarrow{p_*}
+\pi_r(B)\xrightarrow{\partial}\pi_{r-1}(F)
+\xrightarrow{i_*}\pi_{r-1}(E)\xrightarrow{p_*}
+\pi_{r-1}(B),
+\tag{C.4}
+\]
+and they are exact. Define \(\partial\) by representing a base class on \(I^{r-1}\times I\), constant on its boundary, and lifting from the constant value \(w_0\) on the bottom. Formula (C.2) keeps the side boundary fixed. The top face is a based map \(I^{r-1}\to F\), defining \(\partial\). Formula (C.3) makes this independent of lift choices, and lifting a based homotopy with its extra parameter makes it independent of representative. Concatenation in a parameter coordinate proves it is a homomorphism.
+
+For clarity, exactness follows directly from these cubes. A fibre map projects to a constant. If a based map to \(E\) projects to a null-homotopic map, lift the base null-homotopy from the given map; its end is a fibre map, showing \(\ker p_*=\operatorname{im}i_*\). A based lift of a base cube has constant top boundary, hence \(\partial=0\). Conversely, if the lifted top face is null-homotopic in \(F\), append that fibre null-homotopy as an extra last-coordinate slab. Its base stays \(b_0\); rescale the two slabs. This gives a cube map to \(E\) constant on its full boundary whose projected class is the original base class. Thus \(\ker\partial=\operatorname{im}p_*\).
+
+Finally a lifted base cube null-homotopes its top fibre map inside \(E\), so \(i_*\partial=0\). If a fibre map is null-homotopic inside \(E\), represent this by a cube having that map on its top and constant value on bottom and sides. Projection gives a based cube in \(B\); lift-choice independence says its connecting map is the given fibre class. This proves \(\ker i_*=\operatorname{im}\partial\), and the same arguments in adjacent degrees prove all of (C.4). In degree one the construction still yields the usual exact sequence of based sets with fibre components. We will use that version only for path components; no abelian structure on an arbitrary \(\pi_0\) is presumed.
+
+The total space in (C.1) is path connected when the base and fibre are path connected. Lift a path joining projected endpoints, then join its lifted endpoint to the desired endpoint within the fibre. This supplies the connectivity assertion needed to start the degree-by-degree induction.
+
+
+## D. The first Stiefel homotopy group and its coefficient action
+
+The Euler calculation supplies the connecting map needed in (C.4). We explain this connection at the disk level.
+
+**Lemma D.1 — Sphere-bundle connecting degree.** For an oriented real rank-\(r\) bundle \(\eta\) over an oriented \(S^r\), \(r\geq2\), the connecting map for its unit-sphere bundle sends a positive generator of \(\pi_r(S^r)\) to an element of \(\pi_{r-1}(S^{r-1})=\mathbb Z\) whose integer is
+\(\langle e(\eta),[S^r]\rangle\), up to the single sign coming from the chosen connecting-disk convention.
+
+**Proof.** Embed \(\eta\) as a summand of a finite trivial bundle, by the compact-base embedding proof, and use its orthogonal projections. The transport and lifting proof of Section C then applies to its sphere bundle too. Trivialize the bundle on the two closed hemispheres. This is allowed by the full bundle homotopy-invariance/classification proof: a disk contracts, so its bundle is trivial; an oriented trivialization can be chosen. Choose a constant nonzero unit section on one hemisphere. In the other trivialization its boundary values give
+\(g:S^{r-1}\to\mathbb R^r\setminus0\).
+Represent the base sphere as a disk with its boundary collapsed. Trivializing its pulled-back bundle, the connecting construction in Section C reads the clutch matrix applied to a fixed fibre vector on that boundary. The chosen section from the other hemisphere reads its inverse clutch matrix applied to that vector. Normalize the clutch matrix at one boundary basepoint. Pointwise multiplication of based maps to its linear group agrees on homotopy classes with cube concatenation, by the same two-operation interchange argument as in Section A. Therefore pointwise matrix inversion gives the negative homotopy class. Applying the evaluation map from matrices to the unit-vector sphere makes these two boundary degrees negatives of each other. Reversing a boundary orientation contributes another possible overall sign. Changes of trivialization extend over their disks, so their boundary classes are null-homotopic and do not change this conclusion.
+
+Extend the boundary section into its hemisphere by the cone formula \(s(t,u)=t\,g(u)\), with its centre \(t=0\) the only zero. Glue to the nonzero section on the other hemisphere. This is a continuous global section with one isolated zero. The full sphere local-Euler proof in the Thom chapter, Section 9, applies to this section: its pair map pulls the fibre Thom generator to the integer local degree of \(g/\|g\|\). Its top evaluation is that degree. By Lemma B.1 the boundary homotopy class is the same integer. Thus it is the Euler number, with precisely the disk-orientation sign just described. ∎
+
+The same proof also establishes a fact we will need later with its orientation fixed: a boundary section of an oriented \(r\)-disk has local Thom index equal to its degree on the outward-oriented boundary sphere. It is this local convention, rather than an unspecified sign in a long exact sequence, which will define the Euler obstruction cocycle.
+
+**Theorem D.2 — Connectivity and first group.** Let \(n\geq1\), \(1\leq k\leq n\), and put \(j=n-k+1\). For \(j\geq2\), \(V_k(\mathbb R^n)\) is \((j-2)\)-connected. Inclusion of the sphere obtained by fixing its first \(k-1\) vectors and varying its last vector induces a surjection
+\[
+\mathbb Z=\pi_{j-1}(S^{j-1})\longrightarrow
+\pi_{j-1}(V_k(\mathbb R^n)).
+\tag{D.1}
+\]
+The resulting group is
+\[
+\pi_{j-1}(V_k(\mathbb R^n))=
+\begin{cases}
+\mathbb Z,&j=n\ \text{or }j\text{ odd},\\
+\mathbb Z/2,&j<n\ \text{and }j\text{ even}.
+\end{cases}
+\tag{D.2}
+\]
+For \(j=1\), \(V_n(\mathbb R^n)=O(n)\) has two path components, and its reduced component group \(\widetilde H_0(O(n);\mathbb Z)\) is \(\mathbb Z\).
+
+**Proof.** The case \(k=1\) is the sphere \(S^{n-1}\). Its connectivity and first group, and the identity sphere inclusion, are exactly Sections A/B. For \(n=k=1\) it is \(S^0\), the two-point case just stated.
+
+Induct on \(k\), using (C.1). Its base \(V_{k-1}(\mathbb R^n)\) is \((j-1)\)-connected by the induction hypothesis, and its fibre is \(S^{j-1}\), which is \((j-2)\)-connected. Path lifting gives path connectivity for \(j\geq2\), and (C.4) gives vanishing of every \(\pi_i\) for \(1\leq i\leq j-2\). In the first potentially nonzero degree it gives
+\[
+\pi_j(V_{k-1}(\mathbb R^n))
+\xrightarrow{\partial}\mathbb Z
+\longrightarrow\pi_{j-1}(V_k(\mathbb R^n))
+\longrightarrow0.
+\tag{D.3}
+\]
+This proves the surjection in (D.1). At \(j=2\), its target \(\pi_1\) is cyclic because it is a quotient of this \(\mathbb Z\), so the same quotient argument is valid there.
+
+By induction the first group of the base is generated by its own sphere inclusion: fix the first \(k-2\) frame vectors and vary its last vector in a unit sphere \(S^j\) in their orthogonal \(\mathbb R^{j+1}\). Pulling (C.1) back to this sphere gives the unit-sphere bundle of \(TS^j\), since the complement of its varying unit vector is exactly that sphere's tangent plane. Naturality of the lifted-cube construction makes the image of \(\partial\) in (D.3) the image of the connecting map for this pulled-back bundle: the generating sphere map surjects onto the first base group.
+
+The full Thom chapter computed
+\(\langle e(TS^j),[S^j]\rangle=1+(-1)^j\),
+from the tangent field with north/south derivatives \(-I,+I\).
+Lemma D.1 consequently says that the image in (D.3) is \(2\mathbb Z\) when \(j\) is even, and zero when \(j\) is odd. This proves (D.2) for \(k\geq2\). The \(k=1\) exception \(j=n\) remains the ordinary sphere's infinite cyclic group even when \(j\) is even.
+
+Finally, orthonormal full frames are orthogonal matrices. The determinant separates \(O(n)\) into two components. The positive component is path connected: rotate its first column to the first coordinate vector by a plane rotation, preserving orthogonality; the remaining block is an element of \(SO(n-1)\). Induction on \(n\) contracts this matrix to the identity by a finite succession of plane-rotation paths. The negative component is a fixed reflection times that component. For \(n=1\) both components are points. Thus the reduced zero-dimensional homology is generated by the difference of their two component generators and is infinite cyclic. ∎
+
+**Proposition D.3 — Monodromy.** In each infinite cyclic case of (D.2), the action induced by \(A\in GL(n,\mathbb R)\) is multiplication by \(\operatorname{sign}\det A\). The same statement holds on the reduced component group for \(j=1\). In the cyclic order-two case the action is the identity. Consequently the first coefficient system of a real bundle is either the constant \(\mathbb Z/2\) system or the integer orientation system of that bundle.
+
+**Proof.** Work first with independent frames, where \(A\) acts literally by applying it to every vector, and use Gram–Schmidt's deformation to identify their groups with the orthonormal calculation. The positive linear group is path connected by the proved linear-group paths, so its action is homotopic to the identity. Basepoint changes do not affect the first group: for \(j\geq3\) the fibre is simply connected by Theorem D.2, and for \(j=2\) its fundamental group is cyclic, so conjugation by a different basepoint path is trivial.
+
+For a negative determinant it suffices to use one reflection. If \(j\geq2\), reflect a coordinate orthogonal to the chosen standard \(k\)-frame. This fixes its basepoint and its first \(k-1\) vectors. On the generating last-vector sphere it is a coordinate reflection of degree \(-1\), by Lemma B.1. Surjectivity in (D.1) therefore makes its action multiplication by \(-1\) on the first group. This is the identity on \(\mathbb Z/2\). For \(j=1\), a negative-determinant matrix swaps the two full-frame components, so negates their difference generator; a positive determinant preserves them.
+
+Bundle transitions transport these generators by exactly those determinant signs. Along a loop, their product is its orientation monodromy, already identified through the determinant line in the real-line chapter. Thus the integer system is precisely \(\mathbb Z_{\det\xi}\), with sign transport along orientation-reversing loops, whereas the order-two system has its unique possible automorphism. This proves the proposition, including the full-frame exception. ∎
+
+
+## E. First homotopy, homology and coherent simplex homotopies
+
+The primary obstruction needs the *natural* identification of the first homotopy group with the first homology group. Here is a direct chain proof. It does not assume a CW model for a Stiefel manifold or a relative homotopy excision theorem.
+
+First record the elementary homotopy extension construction used throughout this section. The cylinder \(D^m\times I\) retracts onto its bottom and sides. For \(v\in D^m\) and \(t\in I\), put
+\[
+\lambda(v,t)=\min\left\{\frac{2}{2-t},\frac1{\|v\|}\right\},
+\qquad
+R(v,t)=\bigl(\lambda v,\,2+\lambda(t-2)\bigr),
+\tag{E.1}
+\]
+where the second entry in the minimum is \(+\infty\) at \(v=0\). This is continuous, fixes the bottom and sides, and lands on one of them: the first entry reaches the bottom and the second reaches the side. Its time coordinate lies between zero and \(t\). Thus a map on the bottom and a compatible homotopy on the boundary extend by composition with \(R\). A simplex is homeomorphic to a disk by radial coordinates from its barycentre, so the same assertion holds for simplex cylinders.
+
+This proves homotopy extension for a CW pair as well. Extend successively over each cell cylinder, using its characteristic disk and (E.1). Compatibility on the attaching boundary makes the extensions descend. The weak topology makes the resulting map continuous on the complex; for the homotopy use the proved fact that a quotient map remains a quotient map after product with \(I\), from the classifying-map chapter, Lemma 7.1 and the paragraph following it. There is consequently no finiteness assumption on the number of cells here.
+
+For a based path-connected space \(X\), the **Hurewicz map** is
+\[
+h:\pi_q(X)\longrightarrow H_q(X;\mathbb Z),
+\qquad h([f])=f_*[S^q],\quad q\geq1.
+\tag{E.2}
+\]
+It is natural by composition. It is a homomorphism: the pinch map dividing a sphere into the two concatenation disks sends its fundamental class to the sum of the two disk generators, by their positive local values and excision. The homology prism identity makes (E.2) invariant under homotopy.
+
+**Lemma E.1 — First Hurewicz theorem in the needed form.** If \(q\geq2\), \(X\) is path connected, and \(\pi_i(X)=0\) for \(1\leq i<q\), then
+\[
+\widetilde H_i(X;\mathbb Z)=0\quad(0\leq i<q),
+\qquad
+h:\pi_q(X)\xrightarrow{\cong}H_q(X;\mathbb Z).
+\tag{E.3}
+\]
+For every path-connected \(X\), \(H_1(X;\mathbb Z)\) is the abelianization of \(\pi_1(X)\), by the same map \(h\). In particular \(h\) is an isomorphism if that fundamental group is abelian.
+
+**Proof.** Begin with \(q\geq2\). Choose coherent homotopies of all singular simplices of dimensions at most \(q-1\) to the constant simplex at \(x_0\). “Coherent” means that restriction to a face is exactly the homotopy already chosen for that face, including when the same singular face occurs more than once.
+
+At a vertex choose a path to \(x_0\), taking the constant path at \(x_0\). Suppose the homotopies of lower-dimensional simplices have been chosen. For a singular \(i\)-simplex \(\sigma\), prescribe \(\sigma\) on the bottom of \(\Delta^i\times I\), the constant map on the top, and the chosen face homotopies on its sides. Their agreement on every intersection gives a continuous map from the boundary sphere \(S^i\) to \(X\). For \(1\leq i\leq q-1\) it is null-homotopic by hypothesis and basepoint change. The cone on a null-homotopy extends it over the cylinder. Choose such an extension. When \(\sigma\) is constant at \(x_0\), choose the constant extension. Induction gives the coherent system.
+
+For each singular \(q\)-simplex, its bottom map and these boundary homotopies extend over its cylinder by (E.1). Do not prescribe its top. The top map \(\sigma'\) has constant boundary, so defines a based sphere map and an element
+\(a(\sigma)\in\pi_q(X)\). Extend \(a\) additively to singular \(q\)-chains.
+
+We need one elementary sphere-pinch fact. If a triangulated \(q\)-sphere maps to a space with its \((q-1)\)-skeleton constant, its homotopy class is the sum of the oriented sphere classes of its \(q\)-simplices. To see this, radially compress the support of each simplex map into a small interior disk; the radial collapse of its outer annulus is homotopic to the identity relative boundary. There are finitely many disjoint supports. The source-disk movement and subdivision argument in Lemma B.1 places them in consecutive cube slabs and identifies their combination with concatenation. That movement uses only the source sphere, so applies to maps into any target. The orientations supply the signs. For \(q\geq2\), changes of ordering are harmless because the group is abelian.
+
+Apply the chosen homotopies to the \(q\)-faces of a singular \((q+1)\)-simplex \(\tau\). They agree on intersections, and their boundary homotopy extends over \(\tau\)'s cylinder by (E.1). At its top, every \((q-1)\)-face is constant. Its boundary sphere therefore has class
+\(\sum_{i=0}^{q+1}(-1)^i a(d_i\tau)\), by the sphere-pinch fact. It bounds the top disk, so this sum is zero. Hence
+\[
+a(\partial\tau)=0.
+\tag{E.4}
+\]
+Thus \(a\) defines a homomorphism \(A:H_q(X;\mathbb Z)\to\pi_q(X)\).
+
+Here and below constant simplices cause no normalization problem. Work in the relative complex \(C_*(X,\{x_0\})\) when taking the top maps: every constant simplex at \(x_0\) is zero there. The long exact sequence of that pair identifies its positive-degree homology with \(H_*(X)\), because \(X\) is path connected, \(H_i(\{x_0\})=0\) for \(i>0\), and the map on \(H_0\) is an isomorphism.
+
+For a singular cycle \(z\), triangulate each chosen simplex cylinder by the usual ordered prism triangulation. Its chain boundary is top minus bottom minus the corresponding face prisms. On \(z\), face-prism terms cancel exactly, since the chosen homotopies are coherent and \(\partial z=0\). Therefore the top chain is homologous to \(z\). Each top \(q\)-simplex has constant boundary and represents, in relative homology, precisely \(h(a(\sigma))\): the identity simplex represents the positive disk-relative generator. This proves \(hA([z])=[z]\).
+
+Conversely, triangulate a based map \(f:S^q\to X\), making its basepoint a vertex. The coherent homotopies on its lower faces, and the chosen homotopies on its top-dimensional simplices, glue into a homotopy of the whole sphere, fixing that vertex. Its final map has the lower skeleton constant. The sphere-pinch fact now says that its class is the oriented sum of the \(a\)-values of its simplices, which is \(A(h([f]))\). Hence \(Ah\) is the identity too.
+
+For a cycle of degree \(i<q\), the already chosen coherent homotopies send every simplex to the constant map. The same prism cancellation shows that its class is zero in \(H_i(X,\{x_0\})\). This proves the asserted vanishing; reduced \(H_0\) vanishes by path connectivity.
+
+For degree one there is a simpler argument that requires no simple connectivity. Choose paths \(p_x\) from \(x_0\) to every point \(x\). A singular edge \(\sigma\), with endpoints \(x,y\), gives the loop \(p_x*\sigma*p_y^{-1}\). Sum its class in \(\pi_1(X)^{\mathrm{ab}}\) over the edges of a cycle. The triangular boundary of any singular 2-simplex gives zero: its three edge paths form the boundary of the filled triangle, and the inserted \(p\)-paths cancel in the abelian group. Changing the paths adds endpoint terms, whose coefficients cancel in a cycle. This defines an inverse to \(h\): a based loop returns its own abelianized class, and the inserted paths cancel on homology as well. Both compositions are identities. ∎
+
+For our connected Stiefel fibre \(F=V_k(\mathbb R^n)\), put \(q=j-1\). Theorem D.2 and Lemma E.1 identify
+\[
+\pi_q(F)\xrightarrow{\cong}H_q(F;\mathbb Z)=:A,
+\qquad \widetilde H_i(F;\mathbb Z)=0\ (i<q).
+\tag{E.5}
+\]
+At \(q=1\) its fundamental group is cyclic, so the degree-one assertion applies. Naturality of \(h\) makes the determinant actions of Proposition D.3 the actions on these homology groups too. This identification is what lets cancellation of simplex boundaries prove the obstruction cocycle identity directly.
+
+
+## F. The primary class with its actual local coefficients
+
+Let \(\xi\) be a real rank-\(n\) bundle over a CW complex \(B\), and let \(1\leq k\leq n\). A section of its independent-\(k\)-frame bundle is exactly \(k\) everywhere independent vector fields in \(\xi\). Put \(j=n-k+1\). Use the independent-frame fibre, so a global metric on \(B\) is not required; Gram–Schmidt on each trivialized fibre gives the groups computed above.
+
+For \(j\geq2\) its first coefficient group is
+\[
+A_b=H_{j-1}(V_k(\xi_b);\mathbb Z)
+=\begin{cases}
+\mathbb Z_{\det\xi,b},&j=n\ \text{or }j\text{ odd},\\
+\mathbb Z/2,&j<n\ \text{and }j\text{ even}.
+\end{cases}
+\tag{F.1}
+\]
+Here \(\mathbb Z_{\det\xi}\) means the integer local system with a positive generator after orienting \(\xi_b\), transported with the determinant sign. Along a path, trivialize the pulled-back vector bundle and transport the fibre homology. Two interval trivializations differ by a path of invertible matrices, so induce the same homology transport once their endpoints are identified. The same argument over a square makes transport depend only on the homotopy class of the path relative endpoints. Proposition D.3 identifies this transport with (F.1).
+
+Spell out the cochain convention. A singular \(r\)-cochain \(c\) with values in a local system \(A\) assigns to every singular simplex \(\sigma:\Delta^r\to B\) an element of the fibre \(A_{\sigma(v_0)}\). Its coboundary is
+\[
+(\delta c)(\sigma)=
+T_{01}^{-1}c(d_0\sigma)
++\sum_{i=1}^{r+1}(-1)^i c(d_i\sigma),
+\tag{F.2}
+\]
+where \(T_{01}\) is transport along the first edge of \(\sigma\), from \(v_0\) to \(v_1\). Each double face in \(\delta^2\) occurs with opposite signs; the two routes across a triangle give the same transport because that triangle fills their path homotopy. Hence \(\delta^2=0\). This defines \(H^*(B;A)\). Pulling back both simplices and their transport defines the pullback under any continuous map. The ordinary ordered prism, with each term transported along its vertex paths, proves homotopy invariance: its interior faces cancel by exactly the same triangle identity, leaving the two endpoint maps and the cochain homotopy.
+
+**Theorem F.1 — Construction and naturality.** For \(j\geq2\), the bundle has a canonical primary class
+\[
+\mathfrak o_j(\xi;k)\in H^j(B;A).
+\tag{F.3}
+\]
+It is independent of the choices used to construct it, is preserved by bundle isomorphism, and pulls back under every continuous map of CW bases, with the pulled-back local system. Its cellular extension meaning will be proved in Section G.
+
+**Proof.** Choose coherent lifts of every singular simplex of dimensions at most \(j-1\) to the frame bundle. At each vertex choose a frame. For a simplex of dimension \(r\), its prescribed face lifts give a section over its boundary sphere. The vector bundle on its disk is trivial by the disk homotopy-invariance proof in the classifying-map chapter. If \(r\leq j-1\), the boundary map to the frame fibre extends: at \(r=1\) use path connectivity; at higher \(r\) use \(\pi_{r-1}(F)=0\) from Theorem D.2. Choose one such extension for each singular simplex, maintaining the previously chosen face values. Repeated faces therefore have identical lifts. These are compatible maps on individual compact disks; no continuity over a space indexing all singular simplices is being asserted or needed.
+
+For a singular \(j\)-simplex \(\sigma\), its boundary has a prescribed frame lift. Trivialize \(\sigma^*\xi\) over the whole disk, identifying its fibre at the first vertex with the actual fibre there. The boundary section is a map
+\(g_\sigma:\partial\Delta^j\to V_k(\xi_{\sigma(v_0)})\).
+Orient the disk by its ordered vertices and the boundary outward first. Define
+\[
+c(\sigma)=(g_\sigma)_*[\partial\Delta^j]\in A_{\sigma(v_0)}.
+\tag{F.4}
+\]
+The normalized trivialization is immaterial. A change is a disk-valued invertible-matrix map, equal to the identity at the first vertex; contraction of that disk to the vertex makes its action on the boundary map homotopic to the original action. Alternatively the induced transports identify its homology groups throughout the disk. Thus (F.4) is intrinsic. Lemma E.1 says that it is precisely the first homotopy obstruction, in homology coordinates.
+
+Trivialize the pulled-back bundle on a singular \((j+1)\)-simplex \(\tau\). All its chosen \((j-1)\)-face sections then lie in one fixed frame fibre. The class on each \(j\)-face is the homology image of that face's oriented boundary. In the alternating sum of these boundaries, every \((j-1)\)-face occurs twice with opposite signs and exactly the same section. Hence their singular chains cancel. Transporting everything to the first vertex is precisely (F.2), so \(\delta c=0\).
+
+Compare two systems of chosen lifts. They can be homotoped coherently on all singular simplices of dimensions at most \(j-2\). At vertices use paths in the fibre; for an \(r\)-simplex the cylinder boundary has dimension \(r\), and its map extends since \(\pi_r(F)=0\) for \(r\leq j-2\). On a \((j-1)\)-simplex \(\rho\), join its first section to its second along these boundary homotopies. Their two disks and the side cylinder form an oriented \((j-1)\)-sphere, giving a difference value \(d(\rho)\in A_{\rho(v_0)}\). Choose its orientation so that the second disk has positive sign and the first negative sign.
+
+On a \(j\)-simplex, compare the two boundary spheres. The difference of their fundamental chains is the alternating sum of these face difference spheres. Every cylinder over a lower face occurs twice and cancels. Thus, including the first-face transport,
+\[
+c'-c=\delta d.
+\tag{F.5}
+\]
+This proves choice independence. A bundle isomorphism carries all lifts and fibre homology groups to those of the isomorphic bundle. For a map \(f:B'\to B\), use on a simplex \(\sigma\) of \(B'\) the choices made for \(f\sigma\). They remain coherent, and (F.4) is the pulled-back cochain. Hence the class is natural for arbitrary continuous maps, without invoking cellular approximation. ∎
+
+There is always a coefficient map \(A\to\mathbb F_2\): reduce an integer generator modulo two in the integer case, and use the identity in the order-two case. Reversing that integer generator leaves its reduction unchanged, so the target system is constant. Write
+\[
+\overline{\mathfrak o}_j(\xi;k)\in H^j(B;\mathbb F_2)
+\tag{F.6}
+\]
+for the reduced primary class. It is just as natural. We will identify it with \(w_j(\xi)\) after proving its cellular meaning.
+
+### The disconnected full-frame case
+
+When \(j=1\), the fibre has two components. Its reduced component group is \(A=\mathbb Z_{\det\xi}\), but a choice of component is not an arbitrary element of that group. This distinction matters for the extension criterion.
+
+Let \(M_b\) be the free abelian group on the two frame components at \(b\), with transport permuting them. Augmentation gives the exact sequence of local systems
+\[
+0\longrightarrow A\longrightarrow M
+\xrightarrow{\epsilon}\mathbb Z\longrightarrow0.
+\tag{F.7}
+\]
+An oriented fibre identifies the generator of its kernel with
+\([+] - [-]\); an orientation reversal negates it. Choose a component generator \(m_b\in M_b\) at every vertex. On an edge set
+\[
+c_1(\sigma)=T_{01}^{-1}m_{\sigma(v_1)}-m_{\sigma(v_0)}\in A_{\sigma(v_0)}.
+\tag{F.8}
+\]
+The augmentation is zero. The triangle transport identity proves it is a cocycle. Replacing the chosen generators changes it by the coboundary of their differences in \(A\). Thus its class is the connecting image of \(1\in H^0(B;\mathbb Z)\) under (F.7), and is natural.
+
+Its vanishing is equivalent to a continuous choice of orientation on each component of \(B\). Indeed zero means that (F.8) is a coboundary. Subtract that vertex cochain from \(m\) to obtain an invariant section of \(M\) with augmentation one. An orientation-reversing loop swaps the two component basis elements; an invariant element then has equal coefficients and hence even augmentation, a contradiction. If there is no reversing loop, choose a component at one vertex and transport it along paths; this is independent of the path and gives the required component choice, locally continuous in bundle charts. CW complexes are locally path connected by the proved neighbourhood construction in the classifying-map chapter, so this pathwise choice is a section of the orientation double cover.
+
+Reduction of the kernel generator in (F.7) modulo two sends (F.8) to one exactly on edges that switch the transported component. The determinant double-cover cocycle from the real-line classification proof is exactly this cocycle. Therefore
+\[
+\overline{\mathfrak o}_1(\xi;n)=w_1(\xi).
+\tag{F.9}
+\]
+Moreover \(2\mathfrak o_1=0\), since the sum of both component generators is invariant and has augmentation two. Vanishing of this first obstruction permits a full frame over the one-skeleton; it asserts orientation, and does not assert that a rank-\(n\) bundle is globally trivial. Later skeletons can have further frame obstructions.
+
+
+## G. Cellular coefficients and the exact extension criterion
+
+We prove the cellular comparison for the actual local system, including complexes with infinitely many cells. This supplies the cohomology group in which the extension criterion is valid.
+
+**Lemma G.1 — Cellular cohomology with local coefficients.** Choose an orientation and a centre in each cell of a CW complex \(B\). For a local system \(A\), put
+\[
+C^r_{\mathrm{cell}}(B;A)
+=H^r(B^r,B^{r-1};A)
+=\prod_{e^r} A_{b_e}.
+\tag{G.1}
+\]
+The differential is the connecting map through the next skeleton,
+\[
+H^r(B^r,B^{r-1};A)\longrightarrow H^r(B^r;A)
+\xrightarrow{\partial}H^{r+1}(B^{r+1},B^r;A).
+\tag{G.2}
+\]
+Its square is zero, and its cohomology is naturally \(H^*(B;A)\). The cell factor is evaluation on the positively oriented characteristic disk, with coefficients transported in that disk. In particular \(H^r(B;A)\to H^r(B^r;A)\) is injective.
+
+**Proof: relative groups.** For \(r>0\), in \(B^r\) take the open neighbourhood \(U\) of \(B^{r-1}\) consisting also of the outer annuli of radius greater than \(1/3\) in every characteristic disk. Take the disjoint open inner balls \(V_e\) of radius less than \(2/3\). These sets cover \(B^r\). The radial deformation retract of \(U\) onto \(B^{r-1}\) is continuous on characteristic disks and hence on the attachment quotient times \(I\), by the quotient-product fact already proved. No local finiteness of the cells is needed.
+
+The small-chain subdivision and excision argument from the Thom chapter applies with local transport. One can see this at the chain level on the universal cover of each component of \(B\). That cover and its lifted CW structure are given by the full general path-cover proof in the classifying-map chapter, Theorem 8.3. Its cells are the lifts of characteristic disks: a disk has a unique lift after choosing one point, attaching lifts agree on their boundaries, and the covering charts give the same weak topology. On the cover the pulled-back local system is constant. With \(\pi\) the deck group and \(A_0\) the coefficient fibre, local cochains identify with
+\(\operatorname{Hom}_{\mathbb Z[\pi]}(C_*(\widetilde B),A_0)\): lifting a simplex at its first vertex gives exactly the transport convention (F.2).
+
+All the radial homotopies and subdivision operators commute with deck transformations. Choose any necessary chain-level choices once for each orbit of simplices and translate them; the deck action on those simplices is free. Modulo chains in the lifted \(U\), the small-chain complex is the direct sum of the relative complexes of
+\((V_e,U\cap V_e)\), over all lifted cells. Indeed its generators lie in \(U\) or in one of the disjoint \(V_e\); its intersections with the \(U\)-complex are exactly the chains in those annuli. The subdivision homotopies give the equivalence with all relative chains.
+
+Replacing \(B^{r-1}\) by \(U\) also gives a chain homotopy equivalence of these relative complexes, not just an unverified inference after dualization. Here is the elementary algebra behind that assertion. For a degreewise split inclusion of free chain complexes \(D\subset C\), its mapping cone maps to \(C/D\). The kernel has terms \(D_m\oplus D_{m-1}\), differential \((b,a)\mapsto(db+a,-da)\), and contraction \((b,a)\mapsto(0,b)\). Thus cone and quotient are chain homotopy equivalent. A deformation retract of the subspace gives a chain homotopy equivalence of its subcomplex by the prism, so gives the corresponding equivalence of cones. These splittings and contractions can be made equivariant here by taking the complements of the subspace simplex bases. This justifies both replacements as equivariant chain homotopy equivalences.
+
+Each ball-annulus pair has its chain complex homotopy equivalent to \(\mathbb Z[r]\). Its homology is \(\mathbb Z\) in degree \(r\), zero otherwise, by the disk/sphere calculation; the free-chain splitting and contraction proof from the Thom chapter applies because this homology is free. Make the choice on one lift of each cell and translate. The relative complex is therefore equivariantly homotopy equivalent to the direct sum of one \(\mathbb Z[\pi][r]\) for each cell. Applying equivariant \(\operatorname{Hom}\) gives a product of its coefficient fibres in degree \(r\), zero in all other degrees. This proves (G.1) and relative vanishing. At \(r=0\) use the discrete zero-skeleton directly. Products over cells are essential for cochains, whereas chains have finite support.
+
+**Proof: skeletons and the infinite complex.** Exactness of the middle skeleton pair makes the composite in (G.2) square to zero. Induction with the relative vanishing just proved gives \(H^m(B^r;A)=0\) for \(m>r\). For fixed \(q\), the pair sequences now show
+\[
+H^q(B^{q+1};A)
+=\ker(\delta:C^q_{\mathrm{cell}}\to C^{q+1}_{\mathrm{cell}})
+/\operatorname{im}(\delta:C^{q-1}_{\mathrm{cell}}\to C^q_{\mathrm{cell}}).
+\tag{G.3}
+\]
+Explicitly \(C^q\to H^q(B^q)\) is onto because \(H^q(B^{q-1})=0\); its kernel is the image of the preceding connecting map and therefore of \(C^{q-1}\). The classes surviving in the next skeleton are exactly those with next connecting map zero. Attaching cells of dimensions greater than \(q+1\) makes no further change to \(H^q\).
+
+To include an infinite-dimensional \(B\), every singular simplex has compact image and hence lies in a finite subcomplex, by the full compact-subcomplex lemma. Therefore its cochain complex is the inverse limit of the cochain complexes of the skeleta. Their restriction maps are surjective in every degree: extend a cochain by zero on simplices outside the smaller skeleton. There is the short exact sequence of complexes
+\[
+0\longrightarrow \varprojlim C^*(B^r;A)
+\longrightarrow\prod_r C^*(B^r;A)
+\xrightarrow{D}\prod_r C^*(B^r;A)\longrightarrow0,
+\quad D(c)_r=c_r-\operatorname{res}c_{r+1}.
+\tag{G.4}
+\]
+Surjectivity follows by recursively lifting the required value at each stage. Cohomology of a product of complexes is the product of their cohomologies: kernels and images are coordinatewise, with preimages chosen in each coordinate. Its long exact sequence consequently identifies the possible extra term for degree \(q\) with the cokernel of \(D\) on the tower \(H^{q-1}(B^r;A)\). That tower is constant up to isomorphism after \(r=q\), so this \(D\) is onto: solve recursively in the isomorphic tail, then solve backward through the finitely many earlier stages. The extra term is zero. The kernel of \(D\) on the degree-\(q\) tower is its stabilized value \(H^q(B^{q+1};A)\). This proves (G.3) for \(B\) itself, without assuming an inverse-limit cohomology formula. All maps used are restriction and pair connecting maps, so the comparison is natural. Finally those same pair sequences make restriction from \(B\) to \(B^q\) injective in degree \(q\). ∎
+
+**Theorem G.2 — Primary extension criterion.** For \(j\geq2\), a section \(s\) of the independent-\(k\)-frame bundle exists on \(B^{j-1}\). For each oriented \(j\)-cell, trivialize the pulled-back bundle over its characteristic disk. The boundary section gives a class
+\[
+c_s(e^j)\in\pi_{j-1}(V_k(\mathbb R^n))=A_{b_e}.
+\tag{G.5}
+\]
+With the identification (E.5), these values form a cellular cocycle representing \(\mathfrak o_j(\xi;k)\). A *given* \(s\) extends across all \(j\)-cells exactly when every value in (G.5) is zero. There exists a choice of partial section that extends to \(B^j\) exactly when
+\[
+\mathfrak o_j(\xi;k)=0\quad\text{in }H^j(B;A).
+\tag{G.6}
+\]
+For \(j=1\), the corresponding assertion is extension of some full frame from the vertices to \(B^1\), with the component obstruction (F.8).
+
+**Proof.** Choose frames at the vertices and extend successively over cells of dimensions at most \(j-1\). Every boundary map extends by the fibre connectivity in Theorem D.2 and the cone formula. Characteristic-disk quotient topology glues the extensions into a continuous section. A disk boundary in dimension \(j\) extends exactly when its homotopy class is zero, which proves the assertion for a fixed partial section.
+
+To identify the cocycle, construct the coherent singular lifts in Theorem F.1 using \(s\) on every simplex whose image lies in \(B^{j-1}\). Keep these prescribed choices when extending the other lower simplices. The resulting singular cocycle vanishes on \(B^{j-1}\): for a \(j\)-simplex in that skeleton its boundary lift extends by the given section. Thus it represents a relative class, and its restriction to \((B^j,B^{j-1})\) is a cellular cochain in (G.1).
+
+Its cell value is (G.5). To check this explicitly, triangulate a characteristic disk and trivialize its pulled-back bundle. Sum (F.4) on its oriented \(j\)-simplices. Every interior \((j-1)\)-face section occurs twice with opposite signs, leaving just the given boundary section. The sum of fibre homology classes is therefore that boundary's class. Transport through the disk gives exactly the cell coefficient. Since the singular cocycle is closed, its next pair connecting map is zero. Equations (G.2)–(G.3) show that \(c_s\) is closed and represents (F.3).
+
+Changing \(s\) on the \((j-1)\)-cells while fixing \(B^{j-2}\) gives a difference cochain \(d\in C^{j-1}_{\mathrm{cell}}(B;A)\). On a cell, glue its new disk section to the negative of the old one along their common boundary; the resulting sphere gives that value of \(d\). The same oriented face cancellation used in (F.5), now evaluated on a characteristic disk, gives
+\[
+c_{s'}-c_s=\delta d.
+\tag{G.7}
+\]
+For an attaching sphere that runs through several cells, this statement follows from the relative-chain construction in Lemma G.1: excise the cell cores, evaluate the sphere chain in their oriented relative groups, and transport each coefficient along the attaching map. This is precisely the pair connecting map (G.2); lower-face cylinder terms cancel as before. The attaching map has compact image, so only finitely many cells occur in each such calculation.
+
+Every cochain \(d\) can be realized by such changes. In the interior of a \((j-1)\)-disk, trivialize the bundle and make its section constant on a small ball, by a homotopy supported in a slightly larger ball. This is possible by continuity and a convex coordinate ball around one independent frame. Insert on the small ball a based sphere map representing the desired element, using its quotient by its boundary. Lemma E.1 identifies those sphere classes with all elements of \(A\). The modification is fixed on the cell boundary, so all cells can be modified independently and glued by the weak topology.
+
+If (G.6) holds, Lemma G.1 gives \(c_s=\delta d\). Make the changes realizing \(-d\); (G.7) kills every value of \(c_s\), so the new section extends across all \(j\)-cells. Conversely an extension makes its cellular cocycle zero and hence makes the canonical class zero. This proves (G.6), distinguishing it from the cellwise criterion for a fixed section.
+
+For \(j=1\), an edge admits a frame path between its endpoint frames exactly when their transported components agree, since each component is path connected. A consistent component choice on \(B^1\) is thus exactly an extension there. Its obstruction is the restriction of (F.8). Lemma G.1 makes degree-one restriction injective, and Section F identifies vanishing of the global class with orientation. Choosing that orientation supplies suitable vertex components and then edge paths. ∎
+
+This is a *primary* criterion. If \(\dim B\leq j\), it is the complete existence criterion for those fields. In greater dimension, extension over later cells can meet higher fibre homotopy groups even when this first class vanishes.
+
+
+## H. Identification with Stiefel–Whitney and Euler classes
+
+We will use the already proved universal mod-two ring
+\(H^*(BO(n);\mathbb F_2)=\mathbb F_2[w_1,\ldots,w_n]\).
+For completeness, the universal comparison needed here holds on an arbitrary CW base without first assuming a paracompactness theorem for CW complexes.
+
+**Lemma H.1 — A classifying map on every CW base.** Every real rank-\(n\) bundle on a CW complex \(B\) is isomorphic to \(f^*\gamma_n\) for a continuous map \(f:B\to BO(n)\).
+
+**Proof.** Construct, cell by cell, a fibrewise linear injection \(\Phi:\xi\to\mathbb R^\infty\), using the weak direct-limit topology on the union of the finite coordinate spaces. At vertices choose the standard injection. Suppose the injection has been defined over the preceding skeleton. Pull the bundle back to a characteristic \(d\)-disk and trivialize it, by the proved disk classification. The existing boundary injection gives an independent ordered \(n\)-frame in \(\mathbb R^\infty\) at each boundary point.
+
+This compact boundary family lies in some finite coordinate space \(\mathbb R^N\). For each column use the compact-stage argument proved for weak direct limits in the classifying-map chapter: points escaping every finite stage would form a closed discrete subset, since their intersection with each stage is finite, contradicting compactness. There are finitely many columns, so one common stage suffices. The frame map into that finite matrix space is continuous.
+
+It is null-homotopic through independent frames in a larger finite space, explicitly. Choose a fixed standard frame \(U\) in coordinates orthogonal to \(\mathbb R^N\), also disjoint from the first \(n\) standard coordinates. Rotate the boundary frame \(A\) to \(U\) by
+\(\cos\theta\,A+\sin\theta\,U\), \(0\leq\theta\leq\pi/2\).
+Its columns stay independent because the two summands have disjoint coordinate supports. Rotate \(U\) to the fixed first-coordinate frame in the same way. The cone on this homotopy extends the injection over the disk, agreeing with its boundary. For a one-cell this supplies paths between both endpoint injections; for a zero-cell the initial choice suffices. Do this on all cells.
+
+The total bundle has the quotient topology from its pulled-back characteristic bundles. Indeed, locally in a bundle chart this is the characteristic quotient for the base multiplied by \(\mathbb R^n\). That product is quotient by the same compact-neighbourhood argument used for the quotient-times-interval lemma: for an open preimage in the product and a compact box \(K\) in a vertical slice, the set of base points whose entire \(K\)-slice lies in the open set has open inverse image by the tube lemma, hence is open; a box containing the given fibre point in its interior supplies a product neighbourhood. Restricting to an open base chart preserves the quotient property. Consequently the cellwise injections form a continuous \(\Phi\).
+
+Send \(b\) to its image plane. On a characteristic disk this is a finite-stage continuous map, with projection matrix \(A(A^{\mathsf T}A)^{-1}A^{\mathsf T}\). The CW weak topology therefore makes \(f:B\to BO(n)\) continuous. The injection \(\Phi\) identifies \(\xi_b\) with the canonical plane \(\gamma_{n,f(b)}\) in every fibre. It is a bundle isomorphism: in local finite-rank bundle frames its inverse is given by the invertible matrix inverse, which is continuous. Thus \(\xi\cong f^*\gamma_n\). ∎
+
+**Theorem H.2 — The frame obstruction is \(w_j\) modulo two (MS 12.1).** For every rank-\(n\) bundle over a CW complex and \(1\leq j\leq n\), the primary obstruction to \(n-j+1\) independent fields satisfies
+\[
+\overline{\mathfrak o}_j(\xi;n-j+1)=w_j(\xi).
+\tag{H.1}
+\]
+The unreduced obstruction has the coefficient system (F.1), or the reduced component system in degree one. Thus \(w_j\) is the reduced primary obstruction, including the cases where reduction loses integer information.
+
+**Proof.** Degree one is (F.9). Suppose \(j\geq2\). Naturality in Theorem F.1 and Lemma H.1 reduce the identification to the canonical rank-\(n\) bundle. Its reduced primary class is a homogeneous weight-\(j\) polynomial \(P\) in the universal classes, by the proved \(BO(n)\) ring.
+
+Pull it back along \(BO(j-1)\to BO(n)\) that adds a trivial \((n-j+1)\)-plane. This bundle has the requisite independent fields everywhere, so its primary class vanishes by Theorem G.2. Under that map \(w_1,\ldots,w_{j-1}\) remain the algebraically independent universal classes, and the higher classes are zero. Hence every monomial of \(P\) using only the lower variables has coefficient zero. Weight \(j\) leaves only
+\[
+P=\lambda w_j,\qquad\lambda\in\mathbb F_2.
+\tag{H.2}
+\]
+This vanishing argument determines all lower-variable terms, rather than merely checking one example of them.
+
+Determine \(\lambda\) on \(\mathbb RP^j\). Let \(\gamma\) be its tautological line, and let \(\eta=\gamma^\perp\) in the trivial \((j+1)\)-plane. For a fixed unit vector \(u_0\), the section
+\[
+s([u])=u_0-\langle u_0,u\rangle u\in\eta_{[u]},
+\qquad \|u\|=1,
+\tag{H.3}
+\]
+is well defined under \(u\mapsto-u\). It has exactly one zero, at \([u_0]\). The hyperplane \(\mathbb RP^{j-1}\) orthogonal to \(u_0\) is the standard lower skeleton; on it \(s=u_0\), so there is no zero there. The complement is the unique top cell.
+
+In its coordinates \([u_0+z]\), \(z\perp u_0\), formula (H.3) is
+\((\|z\|^2u_0-z)/(1+\|z\|^2)\). In a bundle frame obtained by projecting a basis of \(u_0^\perp\), its derivative at zero is \(-I\). Its local sphere map therefore has degree \((-1)^j\), by the invertible-derivative local-index proof in the Thom chapter. For
+\(\xi=\eta\oplus\varepsilon^{n-j}\), take the \(n-j\) constant fields first and (H.3) last. On a small sphere around that one zero, the resulting frame map is the generating fibre sphere inclusion of (D.1). Its obstruction value is consequently a generator, up to sign, in either the integer group or its order-two quotient. Reduction gives one on the top cell.
+
+This nonzero cell value is a nonzero cohomology class. The one-cell-in-each-dimension structure and the proved mod-two groups of \(\mathbb RP^j\) force every mod-two cellular differential to vanish: a nonzero adjacent differential would lower one of its one-dimensional Betti numbers. Thus the reduced obstruction is \(a^j\ne0\). On the other hand Whitney multiplication gives
+\[
+w(\eta)(1+a)=1,
+\qquad w(\eta)=1+a+\cdots+a^j,
+\tag{H.4}
+\]
+so \(w_j(\xi)=a^j\). Equations (H.2)–(H.4) imply \(\lambda=1\). Pullback to any \(B\) proves (H.1). ∎
+
+**Theorem H.3 — Integral Euler primary obstruction (MS 12.5).** For an oriented real rank-\(n\) bundle \(\xi\) on a CW complex, \(n\geq1\), the primary obstruction to a nowhere-zero section, with the boundary-degree convention above, is
+\[
+\mathfrak o_n(\xi;1)=e(\xi)\in H^n(B;\mathbb Z).
+\tag{H.5}
+\]
+In particular if \(\dim B\leq n\), a nowhere-zero section exists exactly when \(e(\xi)=0\).
+
+**Proof.** Let \(n\geq2\). The fibre is \(S^{n-1}\), whose positive generator is fixed by the chosen bundle orientation. Thus its system (F.1) is constant \(\mathbb Z\). Choose a nonzero section on \(B^{n-1}\), as in Theorem G.2. Extend it over the whole bundle as a section that is allowed to vanish. On each higher characteristic disk the pulled-back vector bundle is trivial and the fibre is a vector space; the radial cone formula \(s(t,u)=t\,s(1,u)\) extends its boundary values. The weak topology glues these extensions.
+
+This section gives a map of pairs
+\[
+s:(B,B^{n-1})\longrightarrow(E,E_0),
+\qquad \widetilde e=s^*u\in H^n(B,B^{n-1};\mathbb Z),
+\tag{H.6}
+\]
+where \(u\) is the positive integral Thom class. Its image in absolute cohomology is \(e(\xi)\): the section is homotopic in \(E\) to the zero section by scalar multiplication, and the Euler class was defined as that zero-section pullback.
+
+Evaluate (H.6) on an oriented characteristic \(n\)-disk. In an oriented trivialization, the Thom class is the positive generator of the fibre pair \((\mathbb R^n,\mathbb R^n\setminus0)\). The section's boundary is nonzero. Naturality of the disk/sphere pair connecting map identifies the pulled-back top relative generator with the degree of
+\(s/\|s\|:\partial D^n\to S^{n-1}\), with both boundaries outward oriented. Equivalently this is the local Thom index calculation in Lemma D.1 and the Thom chapter. By Lemma B.1 this integer is the obstruction homotopy class (G.5). Therefore the cellular representatives of \(e(\xi)\) and of \(\mathfrak o_n(\xi;1)\) coincide. Lemma G.1 proves (H.5), including torsion classes that a sphere evaluation alone would not detect.
+
+For \(n=1\), an oriented line on a CW complex is trivial: its determinant double cover has a chosen component, and the full real-line classification in the classifying-map chapter identifies \(w_1=0\) with the trivial line. A positive nonzero section makes both the component obstruction (F.8) and the Euler class zero. This is (H.5) in degree one. The rank-zero bundle is excluded from the statement; its earlier convention \(e(\varepsilon^0)=1\) remains unchanged.
+
+Finally Theorem G.2 supplies the stated existence criterion when there are no cells above dimension \(n\). In higher dimension (H.5) identifies the first obstruction only; its vanishing does not eliminate the later obstruction problem. ∎
+
+For example the tangent bundle of \(S^{2m}\), \(m\geq1\), has primary integer obstruction \(2\), yet its top mod-two class is zero. Reduction alone would miss the nonzero-section obstruction. On \(S^{2m+1}\) the Euler obstruction vanishes and there is an explicit nonzero tangent field: regard its ambient space as \(\mathbb C^{m+1}\) and use \(x\mapsto ix\), whose inner product with \(x\) is zero and whose norm is one.
+
+
+## I. Examples and exercises with solutions
+
+**Exercise I.1 (easy).** Write the integral Gysin sequence of \(S^{2r+1}\to\mathbb CP^r\), \(r\geq1\), and recover the base ring using its one-cell-in-each-even-dimension structure.
+
+**Solution.** The total space is the unit sphere of the tautological complex line, whose real oriented Euler class is \(-x\). Its exact sequence has segments
+\[
+\cdots\longrightarrow H^{a-2}(\mathbb CP^r)
+\xrightarrow{\smile(-x)}H^a(\mathbb CP^r)
+\longrightarrow H^a(S^{2r+1})
+\longrightarrow H^{a-1}(\mathbb CP^r)
+\xrightarrow{\smile(-x)}H^{a+1}(\mathbb CP^r)\longrightarrow\cdots.
+\]
+The sphere groups vanish for \(1\leq a\leq2r\), and the cellular dimension bound makes the base groups zero above \(2r\). Starting with \(H^0=\mathbb Z\), exactness gives zero odd groups and an isomorphism by \(-x\) between each consecutive even group up to degree \(2r\). Thus \(1,x,\ldots,x^r\) generate those groups and \(x^{r+1}=0\). There is no further polynomial relation, since each displayed power is a generator in its degree. Therefore \(H^*(\mathbb CP^r;\mathbb Z)=\mathbb Z[x]/(x^{r+1})\). The sign is fixed by \(\langle x,[\mathbb CP^1]\rangle=1\), as proved in the Gysin chapter.
+
+**Exercise I.2 (easy).** Compute the first nonzero group for \(V_2(\mathbb R^4)\), \(V_2(\mathbb R^5)\), and \(V_1(\mathbb R^5)\). Describe the effect of a reflection. What replaces this group for \(V_4(\mathbb R^4)\)?
+
+**Solution.** The values of \(j=n-k+1\) are respectively \(3,4,5\). Hence \(V_2(\mathbb R^4)\) is simply connected with \(\pi_2=\mathbb Z\); a reflection negates its generator. The space \(V_2(\mathbb R^5)\) is 2-connected with \(\pi_3=\mathbb Z/2\); a reflection acts trivially. The third space is \(S^4\), so is 3-connected with \(\pi_4=\mathbb Z\), again negated by reflection. Finally \(V_4(\mathbb R^4)=O(4)\) is disconnected: its reduced component group is \(\mathbb Z\), generated by the difference of its determinant components and negated when they are swapped. Treating that last group as the fundamental group would confuse two different obstruction degrees.
+
+**Exercise I.3 (easy).** Why does the top Stiefel–Whitney obstruction fail to detect the absence of a nonzero tangent field on \(S^2\)? Contrast \(S^3\).
+
+**Solution.** With the positive sphere generator \(t\), \(e(TS^2)=2t\). The integer primary obstruction is therefore nonzero and excludes such a field. Its reduction is \(w_2(TS^2)=0\). On \(S^3\), the Euler number is zero and the field \(x\mapsto ix\) on the unit sphere in \(\mathbb C^2\) is tangent and has norm one. Thus a vanishing reduced obstruction by itself is weaker than the integral criterion; in the latter case an explicit section also resolves the existence question.
+
+**Exercise I.4 (medium).** Compute the component obstruction of the Möbius line over the circle in its integer local system, and check its reduction.
+
+**Solution.** Use a CW circle with one vertex and one positively oriented edge. The orientation transport is \(-1\), so its integer cellular differential from degree zero to degree one is \(a\mapsto-2a\): the transported terminal value minus the initial value. Thus
+\(H^1(S^1;\mathbb Z_{\mathrm{sign}})=\mathbb Z/2\).
+Choose the same positive component generator at the identified endpoint vertex. Transport around the edge interchanges components, so (F.8) is \([-]-[+]=-( [+]-[-])\). Its class is the nonzero element of that quotient. Modulo two it is one, which is the Möbius line's \(w_1\). The obstruction has order two even though its *fibre* coefficient group is infinite cyclic. An invariant element of the free group on both components has even augmentation, so cannot remove this class by an augmentation-one lift.
+
+**Exercise I.5 (medium).** Give a trivial bundle whose primary class vanishes although a prescribed partial section does not extend.
+
+**Solution.** Give \(D^2\) a CW structure with its boundary circle as the one-skeleton, and take the oriented trivial rank-two bundle. On that circle prescribe the unit section \(s(e^{i\theta})=e^{i\theta}\). Its single two-cell obstruction cochain is the degree one. That prescribed section cannot extend nonvanishingly over the disk. Nevertheless \(e(\varepsilon^2)=0\), and the constant section extends. In the cellular complex, the attaching circle has degree one, so \(\delta:C^1\to C^2\) is multiplication by one; the obstruction cochain represents zero. Changing the one-cell section by difference \(-1\) kills it. This gives the precise distinction between the cellwise obstruction of a fixed section and the canonical obstruction class.
+
+**Exercise I.6 (medium).** Over \(\mathbb RP^4\), let \(\eta\) be the orthogonal complement of the tautological line in \(\varepsilon^5\), and put \(\xi=\eta\oplus\varepsilon^2\). How many independent fields are supplied by this presentation, and what obstructs a third? Identify its coefficient group.
+
+**Solution.** The two trivial summands give two fields. A third would have primary degree \(j=6-3+1=4\). The first Stiefel group is \(\mathbb Z/2\), since \(4<6\) is even, so its coefficient system is constant. Whitney multiplication gives \(w(\eta)=(1+a)^{-1}=1+a+a^2+a^3+a^4\), with \(a^5=0\). Hence its obstruction is \(w_4(\xi)=a^4\ne0\). A third field cannot exist. The section (H.3), appended to the two constant fields away from its one zero, realizes that nonzero top obstruction explicitly.
+
+**Exercise I.7 (medium).** Prove the mod-two oriented universal ring, using the Gysin sequence of the orientation double cover.
+
+**Solution.** For \(n\geq2\), the orientation double cover \(BSO(n)\to BO(n)\) is the unit sphere of the determinant line of the universal bundle. Its class is \(w_1\), by the determinant proof in the Stiefel–Whitney chapter. Its Gysin sequence is
+\[
+\cdots\longrightarrow H^{a-1}(BO(n))
+\xrightarrow{\smile w_1}H^a(BO(n))
+\longrightarrow H^a(BSO(n))
+\longrightarrow H^a(BO(n))
+\xrightarrow{\smile w_1}H^{a+1}(BO(n))\longrightarrow\cdots.
+\]
+All coefficients here are \(\mathbb F_2\). The proved polynomial ring \(\mathbb F_2[w_1,\ldots,w_n]\) makes multiplication by \(w_1\) injective in every degree. Exactness therefore makes pullback surjective with kernel the ideal \((w_1)\). As pullback is a ring map, this gives
+\(H^*(BSO(n);\mathbb F_2)=\mathbb F_2[w_2,\ldots,w_n]\).
+For \(n=1\) the cover is the proved contractible \(S^\infty\), so the ring is \(\mathbb F_2\), the same empty-variable formula. For \(n=0\) use the point separately. This supplies MS 12.4 with its low-rank cases and does not assume the answer to force injectivity.
+
+**Exercise I.8 (hard).** Identify the integral primary nonzero-section obstruction with the Euler class without assuming that the punctured total space has a CW structure.
+
+**Solution.** Let the oriented rank be \(n\geq2\). The sphere fibre is \((n-2)\)-connected and has first group \(\pi_{n-1}(S^{n-1})=\mathbb Z\) identified with boundary degree. Choose a nonzero section on \(B^{n-1}\), and extend it as a vector-valued section allowed to vanish on higher cells. Pull its positive Thom class back to \(H^n(B,B^{n-1};\mathbb Z)\). Its absolute image is the zero-section pullback, since scalar multiplication gives a section-to-zero homotopy, so that image is \(e(\xi)\).
+
+On a characteristic \(n\)-disk, the pulled-back Thom class is the positive generator for the fibre pair. The disk/sphere connecting map identifies its evaluation with the degree of the nonzero boundary section normalized to the sphere. This is exactly the obstruction cochain, including its orientation sign. Thus the two classes have the same cellular representative, and the local-coefficient cellular comparison proves their equality even when \(H^n(B;\mathbb Z)\) has torsion. Rank one is an oriented trivial line on a CW base and both classes vanish. The argument uses CW structure only on the base, disk triviality and relative Thom cohomology; it never assigns a CW structure to \(E_0\).
+
+**Exercise I.9 (hard).** In the Stiefel induction, explain why the quotient is \(\mathbb Z/2\) for even \(j<n\), but remains \(\mathbb Z\) for even \(j=n\).
+
+**Solution.** For \(k\geq2\), forget the last vector. The first possible group is the cokernel of
+\(\pi_j(V_{k-1}(\mathbb R^n))\to\pi_{j-1}(S^{j-1})=\mathbb Z\).
+The source is generated by its own last-vector sphere \(S^j\). Pulling the complement bundle back to that sphere gives \(TS^j\). Its sphere-bundle connecting map has degree equal, up to the fixed connecting convention, to its Euler number \(1+(-1)^j\). This follows by comparing the boundary lift with its clutch section and evaluating the section's local Thom index, as in Lemma D.1. For even \(j\) the image is therefore \(2\mathbb Z\), giving the quotient \(\mathbb Z/2\). For odd \(j\) it is zero, giving \(\mathbb Z\). But \(j=n\) means \(k=1\): there is no preceding nonempty-frame base producing that tangent-bundle connecting map. The Stiefel space itself is \(S^{n-1}\), with first group \(\mathbb Z\) regardless of the parity of \(n\). This is why the exception in (D.2) is necessary.
+
+## References
+
+[MS] John Milnor and James Stasheff, *Characteristic Classes*, Princeton University Press, 1974, Section 12, especially Theorems 12.1 and 12.5. Scholarly coverage reference for Stiefel frame obstructions and the Euler primary obstruction. The proofs, prerequisite constructions, examples and solutions here are independently authored; protected text and source exercise sets are not reproduced.
+
+[H] Allen Hatcher, *Algebraic Topology*, Cambridge University Press, 2002, Sections 4.1–4.2, especially the sphere-degree discussion and the first Hurewicz theorem. Scholarly reference for the homotopy background. The coherent simplex contractions, explicit projection lifting, singular primary cocycle and local-coefficient cellular comparison above supply their own stated prerequisites and proofs. The general relative Hurewicz and rational homotopy theorems required later in the course are not claimed here.

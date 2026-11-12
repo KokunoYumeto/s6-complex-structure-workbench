@@ -1,0 +1,813 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Morse cancellation with controlled support</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/morse-cancellation-with-controlled-support.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="morse-cancellation-provider">Morse cancellation with the support
+and comparison maps retained</h1>
+<p>CG-S6 · Smooth recognition companion · Written by GPT-6 Astra
+(OpenAI), at Ultra, October 2026. Independently written exposition:
+CC0.</p>
+<p>The receiving result of this chapter is geometric cancellation: two
+adjacent critical points joined by exactly one transverse descending
+trajectory can be removed in a specified neighbourhood. In particular, a
+compact cobordism with just these two critical points is a product, with
+its lower boundary map fixed. This is one ingredient of lesson 7. It is
+not the full smooth <span class="math inline">\(h\)</span>-cobordism
+theorem, and it does not calculate <span class="math inline">\(\Theta
+_6\)</span>.</p>
+<p>The human source is François Laudenbach, <a
+href="https://arxiv.org/abs/1307.2545v1"><em>A proof of Morse’s theorem
+about the cancellation of critical points</em>, arXiv:1307.2545v1</a>,
+Sections 1–3. Both original author TeX files were read in full. Its main
+geometric construction is used below. We supply an explicit transverse
+cutoff calculation for the critical-value change, and the compactness
+argument which makes the auxiliary disk fibres global. No claim about a
+unique birth–death parameter along our particular interpolation is
+needed or made.</p>
+<h2 id="morse-coordinate-comparison">1. The local coordinates are actual
+changes of variables</h2>
+<p>Let <span class="math inline">\(f\)</span> be a smooth real function
+near <span class="math inline">\(0\in\mathbb R^n\)</span>, with <span
+class="math inline">\(df_0=0\)</span> and nonsingular Hessian. Taylor’s
+formula with its entire integral remainder gives</p>
+<p><span class="math display">\[
+f(v)-f(0)=v^{\mathsf t}Q(v)v,
+\qquad
+Q(v)=\int_0^1(1-t)\operatorname{Hess}f(tv)\,dt,
+\qquad Q(0)=\tfrac12\operatorname{Hess}f(0).
+\tag{1.1}
+\]</span></p>
+<p>Choose a fixed linear splitting into the negative and positive spaces
+of <span class="math inline">\(Q(0)\)</span>. Write <span
+class="math inline">\(v=(x,z)\)</span> in that splitting, and retain all
+the variable blocks:</p>
+<p><span class="math display">\[
+Q(v)=
+\begin{pmatrix}-A(v)&amp;B(v)\\ B(v)^{\mathsf t}&amp;C(v)\end{pmatrix},
+\qquad S(v)=C(v)+B(v)^{\mathsf t}A(v)^{-1}B(v).
+\tag{1.2}
+\]</span></p>
+<p>After restricting the neighbourhood, <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(S\)</span> are positive definite. Their positive
+square roots depend smoothly on <span class="math inline">\(v\)</span>.
+For completeness, the differential of <span
+class="math inline">\(R\mapsto R^2\)</span> on symmetric matrices at a
+positive definite <span class="math inline">\(R\)</span> is <span
+class="math inline">\(H\mapsto RH+HR\)</span>. In an orthonormal
+eigenbasis its <span class="math inline">\((i,j)\)</span>-entry is
+multiplied by the strictly positive number <span
+class="math inline">\(r_i+r_j\)</span>. The inverse function theorem
+therefore constructs the square root smoothly near each positive matrix;
+uniqueness of the positive root makes these local constructions
+agree.</p>
+<p>The coordinate map is</p>
+<p><span class="math display">\[
+y=A(v)^{1/2}\bigl(x-A(v)^{-1}B(v)z\bigr),
+\qquad w=S(v)^{1/2}z.
+\tag{1.3}
+\]</span></p>
+<p>Its derivative at zero is invertible. The inverse function theorem
+gives a local diffeomorphism, and direct multiplication, with the mixed
+terms retained, gives</p>
+<p><span class="math display">\[
+f(v)=f(0)-|y|^2+|w|^2.
+\tag{1.4}
+\]</span></p>
+<p>Thus (1.4) is an exact pullback identity through (1.3), including the
+factor <span class="math inline">\(1/2\)</span> in (1.1). If an already
+embedded negative disk is <span class="math inline">\(z=0\)</span>, and
+the restriction of <span class="math inline">\(f\)</span> to it has its
+nondegenerate maximum at zero, choose the negative splitting tangent to
+that disk before (1.2). Formula (1.3) keeps that disk equal to <span
+class="math inline">\(w=0\)</span>. This is the relative coordinate
+choice used at the upper critical point below. The corresponding
+positive-disk version follows by applying the same calculation to <span
+class="math inline">\(-f\)</span>.</p>
+<p>We also need a relative coordinate comparison away from critical
+points. Suppose two functions <span class="math inline">\(F,G\)</span>
+agree on an embedded submanifold <span class="math inline">\(V\)</span>,
+and their common restriction has nonzero differential. Put <span
+class="math inline">\(F_s=(1-s)F+sG\)</span>. Locally choose a vector
+field <span class="math inline">\(T\)</span> tangent to <span
+class="math inline">\(V\)</span> there, extended to a neighbourhood,
+such that <span class="math inline">\(dF_s(T)&gt;0\)</span> for every
+<span class="math inline">\(0\leq s\leq1\)</span>. This can be done
+because on <span class="math inline">\(V\)</span> all these
+differentials have the same strictly positive value; shrink the
+neighbourhood and use compactness of the parameter interval. Then</p>
+<p><span class="math display">\[
+Z_s=\frac{F-G}{dF_s(T)}\,T
+\tag{1.5}
+\]</span></p>
+<p>vanishes on <span class="math inline">\(V\)</span> and satisfies
+<span class="math inline">\(dF_s(Z_s)=F-G\)</span>. Local fields of this
+kind can be combined by a partition of unity: the equation is linear in
+the field and the weights sum to one. If <span
+class="math inline">\(F=G\)</span> near a prescribed closed subset,
+choose zero there. On a sufficiently small neighbourhood, the
+time-dependent flow <span class="math inline">\(\Phi_s\)</span> exists
+for <span class="math inline">\(0\leq s\leq1\)</span>, fixes <span
+class="math inline">\(V\)</span>, and obeys</p>
+<p><span class="math display">\[
+\frac{d}{ds}(F_s\circ\Phi_s)
+=(G-F+dF_s(Z_s))\circ\Phi_s=0.
+\tag{1.6}
+\]</span></p>
+<p>Consequently <span class="math inline">\(G\circ\Phi_1=F\)</span>. For
+a compact portion of <span class="math inline">\(V\)</span>, finitely
+many coordinate neighbourhoods and a smaller common neighbourhood give
+one such comparison. The assertion is about germs along that portion; it
+does not assert existence of the flow on an unrelated noncompact
+region.</p>
+<h2 id="morse-cancellation-data">2. The precise cancellation data</h2>
+<p>A descending field for <span class="math inline">\(f\)</span> will
+mean a smooth vector field <span class="math inline">\(X\)</span> with
+<span class="math inline">\(df(X)&lt;0\)</span> away from the critical
+points, equal to <span class="math inline">\((y,-w)\)</span> in the
+coordinates (1.4) near each critical point. Its unstable manifold <span
+class="math inline">\(W^u(p)\)</span> consists of trajectories tending
+to <span class="math inline">\(p\)</span> in negative time, and its
+stable manifold <span class="math inline">\(W^s(q)\)</span> consists of
+those tending to <span class="math inline">\(q\)</span> in positive
+time. These manifolds can be constructed here without a separate
+stable-manifold theorem: take the local disks <span
+class="math inline">\(w=0\)</span> and <span
+class="math inline">\(y=0\)</span>, respectively, and extend them by the
+flow. A trajectory tending to the critical point eventually stays in the
+coordinate neighbourhood; the equations <span class="math inline">\(\dot
+y=y,\dot w=-w\)</span> force exactly the asserted vanishing of the
+transverse coordinate in the relevant time direction. Flow maps are
+local diffeomorphisms, so the continued disks are immersed smooth
+manifolds of the same dimensions. Their portions between fixed
+transverse levels used below are embedded by uniqueness of integral
+curves. In these coordinates the field has</p>
+<p><span class="math display">\[
+df(y,-w)=-2|y|^2-2|w|^2;
+\tag{2.1}
+\]</span></p>
+<p>its unstable dimension is the index of the critical point. Such local
+fields extend to a descending field by a partition of unity, since
+strict negativity of <span class="math inline">\(df(X)\)</span> is
+preserved by convex combinations away from the critical points.</p>
+<p>Here are the hypotheses in the receiving cancellation theorem. The
+function has critical points <span class="math inline">\(p,q\)</span> of
+respective indices <span class="math inline">\(k+1,k\)</span>, with
+<span class="math inline">\(f(p)&gt;f(q)\)</span>. The manifolds <span
+class="math inline">\(W^u(p)\)</span> and <span
+class="math inline">\(W^s(q)\)</span> meet transversely in exactly one
+trajectory <span class="math inline">\(\ell\)</span>. There is a regular
+value <span class="math inline">\(a_0&lt;f(q)\)</span> such that every
+other descending trajectory in <span
+class="math inline">\(W^u(p)\)</span> reaches <span
+class="math inline">\(f^{-1}(a_0)\)</span>. Fix an open set <span
+class="math inline">\(U\)</span> containing the closure of the portion
+of <span class="math inline">\(W^u(p)\)</span> above that original
+level. The critical points are isolated, and the local construction
+below is taken inside <span class="math inline">\(U\)</span>; other
+critical points of <span class="math inline">\(f\)</span> may lie
+outside it.</p>
+<p>For <span class="math inline">\(0\leq k\leq n-1\)</span>, these
+hypotheses imply the following statement:</p>
+<p><strong>Theorem 2.1.</strong> There is a smooth function <span
+class="math inline">\(F\)</span>, equal to <span
+class="math inline">\(f\)</span> outside a compact subset of <span
+class="math inline">\(U\)</span>, with no critical points in the region
+where the two given critical points and their connecting trajectory are
+changed. No new critical points occur anywhere. There is a smooth
+interpolation from <span class="math inline">\(f\)</span> to <span
+class="math inline">\(F\)</span>, fixed outside that same region.</p>
+<p>When <span class="math inline">\(k=0\)</span>, the transverse
+negative variables below are absent. When <span
+class="math inline">\(k=n-1\)</span>, the transverse positive variables
+are absent. Empty sums, disks of dimension zero, and the associated
+absent derivatives are interpreted literally. The argument includes both
+cases.</p>
+<h2 id="morse-cancellation-fibres">3. Constructing the disk fibres,
+including their far ends</h2>
+<p>Choose disjoint small Morse neighbourhoods of <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\(q\)</span>. Retain <span
+class="math inline">\(a_0\)</span>, and choose a second regular value
+<span class="math inline">\(a=f(q)-\epsilon\)</span>, with <span
+class="math inline">\(0&lt;\epsilon&lt;f(q)-a_0\)</span>, sufficiently
+close to <span class="math inline">\(f(q)\)</span> that the negative
+disk down to this level and the short positive cap used below lie within
+the <span class="math inline">\(q\)</span>-chart. Every trajectory which
+reaches <span class="math inline">\(a_0\)</span> crosses <span
+class="math inline">\(a\)</span> first. Thus the same trajectory
+hypothesis holds at <span class="math inline">\(a\)</span>, and its
+truncated closure is still in the prescribed <span
+class="math inline">\(U\)</span>. At <span
+class="math inline">\(p\)</span>, split off the direction of <span
+class="math inline">\(\ell\)</span> from its negative space; at <span
+class="math inline">\(q\)</span>, split it off from the positive space.
+With compatible signs along the connecting arc, their formulas are</p>
+<p><span class="math display">\[
+\begin{aligned}
+f&amp;=f(p)-t^2-|y|^2+|z|^2&amp;&amp;\text{near }p,\\
+f&amp;=f(q)+t^2-|y|^2+|z|^2&amp;&amp;\text{near }q,
+\end{aligned}
+\qquad y\in\mathbb R^k,\quad z\in\mathbb R^{n-k-1}.
+\tag{3.1}
+\]</span></p>
+<p>Take a short negative-time continuation through <span
+class="math inline">\(p\)</span> on the other side of its local unstable
+diameter, then the connecting trajectory, and finally a short
+continuation through <span class="math inline">\(q\)</span> along the
+other side of its stable diameter. The first continuation reaches the
+level <span class="math inline">\(a\)</span>, by the hypothesis on the
+other trajectories. The resulting smooth embedded arc is denoted by</p>
+<p><span class="math display">\[
+\alpha:[0,1]\longrightarrow U,
+\qquad h(u)=f(\alpha(u)).
+\tag{3.2}
+\]</span></p>
+<p>Choose its parameter increasing in the indicated direction. It has
+precisely one local maximum at <span class="math inline">\(p\)</span>
+and one local minimum at <span class="math inline">\(q\)</span>. It
+satisfies <span class="math inline">\(h(0)=a\)</span>, <span
+class="math inline">\(h(u)&gt;a\)</span> for <span
+class="math inline">\(u&gt;0\)</span>, and <span
+class="math inline">\(h&#39;&gt;0\)</span> near both endpoints. Its last
+endpoint lies just beyond <span class="math inline">\(q\)</span>, inside
+its Morse neighbourhood. The arc can be smoothed at the joins while
+retaining these properties: each join outside the two critical points
+lies in a flow box, where the level itself is a coordinate and the
+tangent line is already the same descending line.</p>
+<p>We describe carefully the transverse manifold around this arc. Just
+above <span class="math inline">\(q\)</span>, its Morse handle has a
+level face parametrized by <span class="math inline">\(D^k\times
+S^{n-k-1}\)</span>; its belt sphere is <span
+class="math inline">\(\{0\}\times S^{n-k-1}\)</span>. The descending
+sphere from <span class="math inline">\(p\)</span> meets this belt
+sphere at one transverse point. Compactness gives a sufficiently small
+tubular neighbourhood of the entire belt sphere in which there are no
+other sheets of that descending sphere. Near the intersection, the
+implicit function theorem writes its sheet as a graph over <span
+class="math inline">\(D^k\)</span>.</p>
+<p>In a coordinate chart on the spherical factor write that graph as
+<span class="math inline">\(z=b(y)\)</span>, with <span
+class="math inline">\(b(0)=0\)</span>. The local map</p>
+<p><span class="math display">\[
+(y,z)\longmapsto (y,z-sb(y)),\qquad 0\leq s\leq1,
+\tag{3.3}
+\]</span></p>
+<p>is a diffeomorphism where it is used, has inverse <span
+class="math inline">\((y,z)\mapsto(y,z+sb(y))\)</span>, and fixes the
+belt sphere there. A cutoff <span
+class="math inline">\(\chi(y,z)\)</span> in a slightly larger spherical
+chart extends it to an isotopy. Shrink the <span
+class="math inline">\(y\)</span>-disk so that <span
+class="math inline">\(|b(y)|\,|\partial_z\chi(y,z)|&lt;1\)</span>
+wherever the cutoff changes; this is possible because <span
+class="math inline">\(b(0)=0\)</span>. For each fixed <span
+class="math inline">\(y\)</span>, the map <span
+class="math inline">\(z\mapsto z-s\chi(y,z)b(y)\)</span> is then an
+injective perturbation of the identity, with invertible derivative and
+compact support. It is onto: the map is proper, its image is closed, and
+local invertibility makes that image open in the connected Euclidean
+chart extended by the identity. The <span
+class="math inline">\(y\)</span>-coordinate is unchanged, so these maps
+together give the required diffeomorphism. No bound on <span
+class="math inline">\(\partial_yb\)</span> is needed. Thus the sheet is
+made a meridian without changing the belt sphere. Extend this isotopy
+through a collar of the level face. It is stationary near <span
+class="math inline">\(q\)</span>, so its Morse coordinates at the
+critical point are retained.</p>
+<p>Use the meridian to attach the set <span
+class="math inline">\(z=0\)</span> of the <span
+class="math inline">\(q\)</span>-chart to the unstable disk descending
+from <span class="math inline">\(p\)</span>. On the entrance collar both
+sets have the same tangent model. A descending field can be chosen
+tangent to this union: on its two sides use the original descending
+field and the field in (3.1), and combine them in the collar. Their
+restrictions are tangent to the same submanifold and both strictly
+decrease <span class="math inline">\(f\)</span>, so the combined field
+has both properties. Outside the collar keep the original field.</p>
+<p>Extend the remaining portions down to <span
+class="math inline">\(f=a\)</span> by this field. This constructs a
+compact embedded <span class="math inline">\((k+1)\)</span>-manifold
+<span class="math inline">\(W\)</span> with corners. Its boundary
+consists of a lower part in <span class="math inline">\(f=a\)</span> and
+an end cap beyond <span class="math inline">\(q\)</span>; these meet at
+their ordinary corner. Specifically take the end cap in the <span
+class="math inline">\(q\)</span>-chart to be <span
+class="math inline">\(t=t_*&gt;0,z=0\)</span>, extended down to <span
+class="math inline">\(f=a\)</span>; its restricted function is <span
+class="math inline">\(f(q)+t_*^2-|y|^2\)</span>. It is not a
+constant-level top face. The arc (3.2) lies in <span
+class="math inline">\(W\)</span>. There are no other critical points of
+<span class="math inline">\(f|_W\)</span>: on the flow pieces its
+derivative in the flow direction is strictly negative, and in the two
+Morse pieces this follows directly from (3.1). The local negative and
+positive indices on <span class="math inline">\(W\)</span> are
+respectively <span class="math inline">\((k+1,0)\)</span> at <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\((k,1)\)</span> at <span
+class="math inline">\(q\)</span>.</p>
+<p>Here are the compactness details used in this construction. Truncate
+the unstable manifold first at the upper face of the <span
+class="math inline">\(q\)</span>-handle. Its part away from the small
+meridian is compact. Every point of this remaining compact set reaches
+<span class="math inline">\(f=a\)</span> in finite time. The hitting
+time is smooth near each point because the final crossing is transverse;
+a finite cover bounds it on that compact set. The portion close to the
+meridian is supplied explicitly by (3.1). Uniqueness of integral curves
+prevents two flow pieces from crossing, and the graph description at the
+entrance gives the embedded smooth join. Shrinking the Morse handle and
+its collars keeps these compact pieces in <span
+class="math inline">\(U\)</span>, since their limiting compact set lies
+there. The only new end cap is the positive continuation just beyond
+<span class="math inline">\(q\)</span>.</p>
+<p>Along the arc, apply the relative comparison (1.5)–(1.6), keeping the
+two Morse neighbourhoods fixed. It gives a small tubular neighbourhood
+of the arc in <span class="math inline">\(W\)</span> with</p>
+<p><span class="math display">\[
+f|_W=h(u)-|y|^2.
+\tag{3.4}
+\]</span></p>
+<p>There are no critical points of the common restriction on the portion
+requiring this comparison. Near the two critical points, (3.4) already
+holds by (3.1), so the vector field in (1.5) is set to zero there.</p>
+<p>The coordinates in (3.4) must reach the lower ends of the disks,
+rather than merely describe a small neighbourhood of the arc. On that
+neighbourhood put <span class="math inline">\(Y=y\partial_y\)</span>. It
+strictly decreases <span class="math inline">\(f|_W\)</span> off the
+arc. Extend it to a vector field on all of <span
+class="math inline">\(W\)</span>, tangent to the end cap, still with
+<span class="math inline">\(df(Y)&lt;0\)</span> off the arc. To do so,
+away from the arc choose any local direction of strict decrease; on the
+end cap choose a direction tangent to the cap, where its restricted
+function has only the maximum at the endpoint of the arc. Near that
+endpoint (3.4) supplies the direction. A partition of unity preserves
+tangency and strict decrease. At the lower boundary the field points
+outwards, because that boundary is a regular lowest level.</p>
+<p>Every negative-time trajectory of <span
+class="math inline">\(Y\)</span> stays in <span
+class="math inline">\(W\)</span>: it points inward at the lower boundary
+and is tangent to the end cap. It exists for all negative time by
+compactness. Choose a smaller tube about the arc in which the field is
+exactly <span class="math inline">\(y\partial_y\)</span>; this tube is
+invariant under negative time. On the compact complement, <span
+class="math inline">\(-df(Y)\)</span> has a positive lower bound. If a
+negative-time trajectory never entered the tube, <span
+class="math inline">\(f\)</span> would increase at at least that rate
+for arbitrarily long time, contradicting its boundedness on <span
+class="math inline">\(W\)</span>. Once it enters, its transverse
+coordinate is multiplied by <span class="math inline">\(e^{-s}\)</span>
+in additional negative time <span class="math inline">\(s\)</span>, so
+it converges to a unique point of the arc. This proves, rather than
+assumes, the global disk-fibre description.</p>
+<p>The limiting arc coordinate <span class="math inline">\(u\)</span> is
+smooth off and on the arc. Away from it, flow to a fixed small
+transverse radius; the hitting time is smooth by transversality, and the
+flow and its inverse depend smoothly on initial data. In the tube it is
+already the coordinate <span class="math inline">\(u\)</span>. Carry the
+angular coordinate <span class="math inline">\(y/|y|\)</span> along
+these flow lines and define its radius by</p>
+<p><span class="math display">\[
+r^2=h(u)-f(x).
+\tag{3.5}
+\]</span></p>
+<p>This agrees with (3.4) near the arc and increases strictly along
+every outward trajectory. Each trajectory reaches the lower level in
+finite positive time: once outside the small tube the same compact lower
+bound applies until that crossing. Consequently the entire fibre has the
+exact radius</p>
+<p><span class="math display">\[
+R(u)^2=h(u)-a,
+\qquad |y|^2\leq R(u)^2.
+\tag{3.6}
+\]</span></p>
+<p>At <span class="math inline">\(u=0\)</span> the fibre is a point. For
+<span class="math inline">\(u&gt;0\)</span> it is a closed <span
+class="math inline">\(k\)</span>-disk. At <span
+class="math inline">\(u=1\)</span> it is the end cap. These statements
+concern the displayed parametrization, with its pinched first fibre;
+smoothness near the first endpoint is read in the original coordinates
+of <span class="math inline">\(W\)</span>, not asserted from a
+rectangular parameter box.</p>
+<p>The normal bundle of <span class="math inline">\(W\)</span> is
+trivial. Indeed (3.5) contracts each disk to its centre and then the
+centre interval to a point. Parallel transport for any connection along
+this contraction identifies its fibres with one fixed vector space; one
+can equivalently do this on overlapping flow-coordinate pieces, using
+the contraction to extend a frame. The frames near the two critical
+points can be chosen compatibly along the intervening interval. Choose a
+tubular neighbourhood using this frame. On it compare <span
+class="math inline">\(f\)</span> with <span
+class="math inline">\(f|_W+|z|^2\)</span>, holding the Morse
+neighbourhoods fixed, once more by (1.5)–(1.6). Its common restriction
+has nonzero differential everywhere else. This gives the exact
+formula</p>
+<p><span class="math display">\[
+f(u,y,z)=h(u)-|y|^2+|z|^2
+\tag{3.7}
+\]</span></p>
+<p>on a neighbourhood of each compact portion of <span
+class="math inline">\(W\)</span> away from its pinched first endpoint.
+That is sufficient: the change below is supported on such a compact
+portion, away from both endpoints and away from the lower boundary.</p>
+<h2 id="morse-monotone-minorant">4. An increasing function below the
+original arc function</h2>
+<p>We need a smooth function <span class="math inline">\(h_1\)</span>
+satisfying</p>
+<p><span class="math display">\[
+h_1&#39;&gt;0,\qquad h_1\leq h,\qquad
+h_1=h\text{ near }0\text{ and }1.
+\tag{4.1}
+\]</span></p>
+<p>Here is a construction with the endpoint and inequality requirements
+checked. On the first increasing branch, choose a short interval whose
+entire range lies strictly below the local minimum value <span
+class="math inline">\(f(q)\)</span>. Keep <span
+class="math inline">\(h\)</span> up to that interval and then replace
+its positive derivative by <span class="math inline">\(\rho
+h&#39;\)</span>, where <span class="math inline">\(\rho\)</span>
+decreases smoothly from one to zero, is strictly between zero and one in
+the interior, and is constant near the interval’s ends. The resulting
+function becomes a constant <span
+class="math inline">\(b&lt;f(q)\)</span>, remains below <span
+class="math inline">\(h\)</span>, and agrees with <span
+class="math inline">\(h\)</span> at the first endpoint.</p>
+<p>Keep that constant across the maximum and minimum. On the final
+increasing branch, join it to <span class="math inline">\(h\)</span>
+by</p>
+<p><span class="math display">\[
+h_0=(1-\chi)b+\chi h,
+\qquad
+h_0&#39;=\chi&#39;(h-b)+\chi h&#39;,
+\tag{4.2}
+\]</span></p>
+<p>where <span class="math inline">\(\chi\)</span> increases smoothly
+from zero to one before the last endpoint. Both terms in its derivative
+are nonnegative, and the derivative is positive throughout the interior
+of the transition. Thus <span class="math inline">\(h_0\leq h\)</span>,
+equals <span class="math inline">\(h\)</span> near the endpoints, and
+has nonnegative derivative everywhere. Its zero-derivative set is
+contained in a compact interval on which <span
+class="math inline">\(h-h_0\)</span> is strictly positive.</p>
+<p>To remove the flat interval, choose a smooth function <span
+class="math inline">\(q_+\geq0\)</span> positive on a neighbourhood of
+that zero-derivative set, with compact support where <span
+class="math inline">\(h-h_0&gt;0\)</span>. Choose <span
+class="math inline">\(q_-\geq0\)</span>, supported where also <span
+class="math inline">\(h_0&#39;&gt;0\)</span>, in the same open gap
+region. Scale <span class="math inline">\(q_-\)</span> so that its
+integral equals that of <span class="math inline">\(q_+\)</span>, and
+put</p>
+<p><span class="math display">\[
+r(u)=\int_0^u(q_+(v)-q_-(v))\,dv,
+\qquad h_1=h_0+\varepsilon r.
+\tag{4.3}
+\]</span></p>
+<p>The function <span class="math inline">\(r\)</span> is zero near both
+endpoints. All its support lies in a compact subinterval of the gap
+region. There <span class="math inline">\(h-h_0\)</span> has a positive
+minimum. Choose <span class="math inline">\(\varepsilon&gt;0\)</span>
+small enough that <span class="math inline">\(\varepsilon|r|\)</span> is
+below this minimum. On the support of <span
+class="math inline">\(q_-\)</span>, also require <span
+class="math inline">\(\varepsilon q_-&lt;h_0&#39;\)</span>; this is
+possible after choosing its support compactly inside the
+positive-derivative region. On the remaining set where <span
+class="math inline">\(h_0&#39;&gt;0\)</span>, the added derivative is
+nonnegative; on its zero set the added derivative is strictly positive.
+These estimates prove all of (4.1).</p>
+<p>Let</p>
+<p><span class="math display">\[
+\delta(u)=h(u)-h_1(u)\geq0.
+\tag{4.4}
+\]</span></p>
+<p>It is supported away from the endpoints. Because <span
+class="math inline">\(h_1\)</span> is strictly increasing and <span
+class="math inline">\(h_1(0)=a\)</span>, equations (3.6) and (4.4)
+give</p>
+<p><span class="math display">\[
+0\leq\frac{\delta(u)}{R(u)^2}&lt;1
+\tag{4.5}
+\]</span></p>
+<p>on its support. By compactness there is one number <span
+class="math inline">\(\rho&lt;1\)</span> bounding these ratios. This
+quantitative gap is exactly what permits the supported transverse change
+without introducing critical points.</p>
+<h2 id="morse-supported-cutoff">5. The full cutoff calculation</h2>
+<p>Choose a constant <span class="math inline">\(K&gt;1\)</span> with
+<span class="math inline">\(\rho K&lt;1\)</span>. There exists a
+nonnegative smooth function <span class="math inline">\(b\)</span>,
+compactly supported in <span class="math inline">\((0,1)\)</span>, of
+integral one and with <span class="math inline">\(\sup b&lt;K\)</span>.
+For example, smooth the indicator of <span
+class="math inline">\([\epsilon,1-\epsilon]\)</span>, keep its support
+in <span class="math inline">\((0,1)\)</span>, and divide by its
+integral. Its maximum tends to one as <span
+class="math inline">\(\epsilon\)</span> tends to zero, so a sufficiently
+small <span class="math inline">\(\epsilon\)</span> gives the stated
+bound. Put</p>
+<p><span class="math display">\[
+\beta(v)=\int_v^1b(s)\,ds\quad(0\leq v\leq1),
+\tag{5.1}
+\]</span></p>
+<p>and extend it constantly as one to the left and zero to the right.
+Then <span class="math inline">\(0\leq\beta\leq1\)</span>, it is one
+near zero and zero near one, and</p>
+<p><span class="math display">\[
+-K&lt;\beta&#39;\leq0.
+\tag{5.2}
+\]</span></p>
+<p>Choose another smooth nonincreasing cutoff <span
+class="math inline">\(\eta\)</span> of the nonnegative variable <span
+class="math inline">\(|z|^2\)</span>, equal to one near zero and zero
+outside a small fixed normal radius. Take that radius within the
+coordinate neighbourhood (3.7) on the compact set of <span
+class="math inline">\(u\)</span>’s and <span
+class="math inline">\(y\)</span>’s where the proposed change has
+support. Such a fixed radius exists by compactness. The cutoff <span
+class="math inline">\(\beta\)</span> is already zero near the lower
+boundary, so this set stays away from the corners there.</p>
+<p>For <span class="math inline">\(0\leq s\leq1\)</span>, define, in
+that neighbourhood,</p>
+<p><span class="math display">\[
+F_s(u,y,z)=h(u)-|y|^2+|z|^2
+-s\delta(u)\,
+\beta\!\left(\frac{|y|^2}{R(u)^2}\right)\eta(|z|^2).
+\tag{5.3}
+\]</span></p>
+<p>Set <span class="math inline">\(F_s=f\)</span> outside. This is
+smooth: its difference from <span class="math inline">\(f\)</span> is
+zero near the arc endpoints, near the lower boundary of <span
+class="math inline">\(W\)</span>, and near the outside of the normal
+tube. The possibly pinched coordinate at <span
+class="math inline">\(u=0\)</span> is never used where the difference is
+nonzero.</p>
+<p>Write <span class="math inline">\(v=|y|^2/R(u)^2\)</span> and <span
+class="math inline">\(w=|z|^2\)</span>. Its complete transverse
+derivatives are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{\partial F_s}{\partial y_i}
+&amp;=-2y_i\left(1+s\frac{\delta(u)}{R(u)^2}\beta&#39;(v)\eta(w)\right),\\
+\frac{\partial F_s}{\partial z_j}
+&amp;=2z_j\left(1-s\delta(u)\beta(v)\eta&#39;(w)\right).
+\end{aligned}
+\tag{5.4}
+\]</span></p>
+<p>The first parenthesis is at least <span class="math inline">\(1-\rho
+K&gt;0\)</span>. The second is at least one. Thus all transverse
+derivatives can vanish simultaneously only at <span
+class="math inline">\(y=z=0\)</span>. On that axis,</p>
+<p><span class="math display">\[
+F_s(u,0,0)=h(u)-s\delta(u),
+\qquad
+\frac{\partial F_s}{\partial u}(u,0,0)=h&#39;(u)-s\delta&#39;(u).
+\tag{5.5}
+\]</span></p>
+<p>There are no missing derivatives of <span
+class="math inline">\(R(u)\)</span> in (5.5): the argument of <span
+class="math inline">\(\beta\)</span> is zero on the axis and <span
+class="math inline">\(\beta\)</span> is constant near zero. Likewise
+<span class="math inline">\(\eta\)</span> is constant there. At <span
+class="math inline">\(s=1\)</span>, the last expression is <span
+class="math inline">\(h_1&#39;(u)&gt;0\)</span>. Therefore <span
+class="math inline">\(F_1\)</span> has no critical points in the
+modified region. Off that region, the function and all its derivatives
+are unchanged. This proves Theorem 2.1.</p>
+<p>The derivative estimate is useful even when the two critical values
+are far apart. A cutoff of arbitrary slope would not suffice: it could
+make the first parenthesis zero and create additional critical points.
+The factor <span class="math inline">\(R(u)^{-2}\)</span>, the full
+difference <span class="math inline">\(\delta(u)\)</span>, and the
+strict inequality <span class="math inline">\(\rho K&lt;1\)</span> are
+all used.</p>
+<p>For the figure use the explicit example <span
+class="math inline">\(u\in[-2,2]\)</span>, <span
+class="math inline">\(a=-2\)</span>, <span
+class="math inline">\(h_1(u)=u\)</span>, and <span
+class="math inline">\(h(u)=u+\delta(u)\)</span>, where <span
+class="math inline">\(\delta(u)=4\exp(-1/(1-u^2))\)</span> for <span
+class="math inline">\(|u|&lt;1\)</span> and zero otherwise. Every
+derivative of the exponential tends to zero at the two joining points:
+it is the exponential times a rational function whose denominator has
+finite order, and <span class="math inline">\(t^N e^{-t}\to0\)</span>
+for every fixed <span class="math inline">\(N\)</span>. Thus the example
+is smooth and agrees with <span class="math inline">\(h_1\)</span> near
+both outer endpoints. On its support, <span
+class="math inline">\(\delta\leq4/e&lt;3/2\)</span>, while <span
+class="math inline">\(R^2=u+2+\delta\geq1+\delta\)</span>. Hence <span
+class="math inline">\(\delta/R^2&lt;3/5\)</span>. The elementary bound
+<span class="math inline">\(e&gt;8/3\)</span> follows already from the
+first five terms of its positive series. Taking <span
+class="math inline">\(\rho=3/5\)</span> and <span
+class="math inline">\(K=3/2\)</span> gives the displayed transverse gap
+<span class="math inline">\(1/10\)</span>.</p>
+<p>The sample also has exactly the required two critical points. For
+<span class="math inline">\(0&lt;u&lt;1\)</span>, write <span
+class="math inline">\(h&#39;=1-g\)</span>, where <span
+class="math inline">\(g=8u(1-u^2)^{-2}\exp(-1/(1-u^2))\)</span>. Direct
+differentiation gives <span class="math inline">\((\log
+g)&#39;=(1-3u^4)/(u(1-u^2)^2)\)</span>. Thus <span
+class="math inline">\(g\)</span> increases and then decreases, tends to
+zero at both ends, and has a single strict maximum. Its value at <span
+class="math inline">\(u=1/2\)</span> is <span
+class="math inline">\((64/9)e^{-4/3}&gt;1\)</span>. To check the last
+inequality without a decimal approximation, <span
+class="math inline">\(e&lt;3\)</span> follows by comparing the tail of
+its series with a geometric series; then <span
+class="math inline">\(e^{4/3}&lt;3^{3/2}&lt;6&lt;64/9\)</span>. The two
+solutions of <span class="math inline">\(g=1\)</span> are on opposite
+sides of its strict maximum and have nonzero derivative. They give the
+nondegenerate maximum and minimum of <span
+class="math inline">\(h\)</span>. For <span
+class="math inline">\(u\leq0\)</span>, and for <span
+class="math inline">\(|u|\geq1\)</span>, its derivative is positive. The
+plotted samples illustrate these exact statements; their pixels are not
+the proof.</p>
+<figure>
+<img id="morse-cutoff-diagram" src="assets/morse-supported-cutoff.svg" alt="The original arc function and an increasing minorant; the transverse derivative bounds for the supported cancellation." />
+<figcaption>
+A numerical illustration of the one-dimensional arc change, beside the
+exact transverse bounds in (5.4). The plotted curves are an example for
+teaching the mechanism; the theorem uses the original function through
+(3.2)–(5.5), including its actual disk radius. The source construction
+is Laudenbach, Sections 1–2; the explicit cutoff estimate is proved
+here.
+</figcaption>
+</figure>
+<h2 id="morse-product-map">6. The exact product map after
+cancellation</h2>
+<p>Suppose <span class="math inline">\((C;M_0,M_1)\)</span> is a compact
+smooth cobordism, and <span class="math inline">\(f:C\to[0,1]\)</span>
+equals the boundary collar coordinate near each boundary. Assume it has
+exactly two critical points and the transverse connecting-trajectory
+hypothesis above. A descending trajectory from the upper point, other
+than the one ending at the lower point, reaches <span
+class="math inline">\(M_0\)</span>. To verify this, an interior
+positive-time limit set is nonempty, compact and connected: it is the
+intersection of the nested compact connected closures of trajectory
+tails. The value of <span class="math inline">\(f\)</span> is constant
+on it, since the decreasing values have a limit. It is invariant under
+the flow, so it cannot contain a regular point, where <span
+class="math inline">\(df(X)&lt;0\)</span> would contradict that
+constancy. A connected subset of the finite critical set is a single
+point. It cannot be the upper point because the value has already
+decreased below that critical value. Approaching the lower point is
+precisely membership in its stable manifold, and the unique such
+trajectory is the given one. A boundary limit instead enters its collar,
+where the descending field reaches the boundary in finite time. It is
+the lower boundary because the values decrease. Thus every other
+trajectory reaches <span class="math inline">\(M_0\)</span>. Choose a
+regular value <span class="math inline">\(a_0\)</span> just above zero,
+and then the closer value <span class="math inline">\(a\)</span> of
+Section 3.</p>
+<p>Cancel the two points in the interior by Theorem 2.1. The resulting
+<span class="math inline">\(F:C\to[0,1]\)</span> has no critical points
+and retains the two collar formulas. The range remains in <span
+class="math inline">\([0,1]\)</span>: (5.3) only decreases values, its
+minimum on each transverse disk remains bounded below by the old lowest
+level where the change vanishes, and more directly a value outside the
+boundary range would attain an interior extremum on compact <span
+class="math inline">\(C\)</span>, contradicting the absence of critical
+points.</p>
+<p>Choose a smooth Riemannian metric and put</p>
+<p><span class="math display">\[
+V=\frac{\nabla F}{|\nabla F|^2}.
+\tag{6.1}
+\]</span></p>
+<p>Then <span class="math inline">\(dF(V)=1\)</span>. Its flow <span
+class="math inline">\(\varphi_t\)</span>, starting at <span
+class="math inline">\(M_0\)</span>, exists until time one. Indeed,
+before reaching either boundary it stays in compact subregions of the
+interior; a finite-time limit is extendible by the ordinary local flow
+theorem. It cannot exit a boundary early because its value is exactly
+<span class="math inline">\(t\)</span>. At time one it meets <span
+class="math inline">\(M_1\)</span>, and the collar formula extends the
+flow to that time smoothly.</p>
+<p>The map and its inverse are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Psi:M_0\times[0,1]&amp;\longrightarrow C,
+&amp;\Psi(x,t)&amp;=\varphi_t(x),\\
+\Psi^{-1}:C&amp;\longrightarrow M_0\times[0,1],
+&amp;\Psi^{-1}(y)&amp;=(\varphi_{-F(y)}(y),F(y)).
+\end{aligned}
+\tag{6.2}
+\]</span></p>
+<p>Uniqueness of integral curves verifies both inverse identities.
+Smooth dependence of the flow and the collar formulas verify smoothness
+up to the boundary. In particular <span
+class="math inline">\(\Psi(x,0)=x\)</span>: this is a product relative
+to the actual lower boundary inclusion. Its map <span
+class="math inline">\(\Psi|_{M_0\times\{1\}}\)</span> is the actual
+remaining boundary diffeomorphism. Nothing in this proof asserts that an
+unrelated diffeomorphism of a sphere extends across a disk.</p>
+<p>For lesson 7, (6.2) is the last step after one has geometrically
+arranged and cancelled every pair of handles. The <a
+href="morse-trajectories-and-critical-value-lowering.html#trajectory-ordered-morse">ordered
+Morse function and descending trajectories</a> are now constructed in
+their included companion, with the exact supported critical-value
+change. The <a
+href="removing-the-original-zero-and-top-handles.html#zero-supported-cancellation">zero-
+and top-index removal</a> now applies this theorem to the actual
+boundary-to-minimum trajectories and its exact reversed function. The <a
+href="framed-handle-slides-and-index-one-removal.html#slide-index-one-cancellation">framed
+slides and index-one removal</a> now verify every hypothesis of this
+cancellation theorem for the actual one/two pair and its reverse. The <a
+href="integral-handle-chains-and-signed-incidences.html#handle-six-seven">integral
+handle-chain companion</a> now proves the original
+filtration-to-homology map, every incidence sign, the full integer basis
+comparisons and the exact contractions in dimensions six and seven. The
+<a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven. The additional sphere-group calculation is supplied by the <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">complete
+smooth-recognition proof</a>. This companion supplies the cancellation
+and product-map parts only.</p>
+<h2 id="morse-cancellation-exercises">7. Two worked exercises</h2>
+<h3
+id="exercise-7.1.-keep-every-term-in-a-variable-radius-modification">Exercise
+7.1. Keep every term in a variable-radius modification</h3>
+<p>Let <span class="math inline">\(R(u)&gt;0\)</span>, <span
+class="math inline">\(\delta(u)\geq0\)</span>, <span
+class="math inline">\(v=|y|^2/R(u)^2\)</span>, <span
+class="math inline">\(w=|z|^2\)</span>, and use (5.3). Compute its full
+<span class="math inline">\(u\)</span>-derivative, not just its value on
+the arc. Determine exactly why the radius derivative disappears on the
+arc.</p>
+<p><strong>Solution.</strong> The chain rule gives</p>
+<p><span class="math display">\[
+\frac{\partial v}{\partial u}
+=-2\frac{R&#39;(u)}{R(u)}v.
+\tag{7.1}
+\]</span></p>
+<p>Consequently</p>
+<p><span class="math display">\[
+\frac{\partial F_s}{\partial u}
+=h&#39;(u)-s\delta&#39;(u)\beta(v)\eta(w)
++2s\delta(u)\frac{R&#39;(u)}{R(u)}v\beta&#39;(v)\eta(w).
+\tag{7.2}
+\]</span></p>
+<p>The last summand is present off the arc and is retained. On the arc,
+<span class="math inline">\(v=w=0\)</span>, <span
+class="math inline">\(\beta(0)=\eta(0)=1\)</span>, and <span
+class="math inline">\(\beta&#39;(0)=0\)</span>. Thus (7.2) is precisely
+(5.5). To test for a critical point, first use the two independently
+positive parentheses in (5.4), which force <span
+class="math inline">\(y=z=0\)</span>. Only then use (7.2). Discarding
+its last summand everywhere would give an incorrect derivative even
+though it happens to vanish at the only possible critical points.</p>
+<h3
+id="exercise-7.2.-a-cutoff-can-create-an-unwanted-critical-point">Exercise
+7.2. A cutoff can create an unwanted critical point</h3>
+<p>Consider the exact two-variable function</p>
+<p><span class="math display">\[
+G(y,z)=-y^2+z^2-d(1-y^2)^2
+\tag{7.3}
+\]</span></p>
+<p>on a neighbourhood of <span
+class="math inline">\(|y|&lt;1,z=0\)</span>, with <span
+class="math inline">\(d&gt;0\)</span>. Locate the critical points and
+their Hessians when <span class="math inline">\(d&gt;1/2\)</span>.
+Compare the result with the strict derivative bound in Section 5.</p>
+<p><strong>Solution.</strong> Its derivatives are</p>
+<p><span class="math display">\[
+G_y=-2y\bigl(1-2d+2dy^2\bigr),
+\qquad G_z=2z.
+\tag{7.4}
+\]</span></p>
+<p>For <span class="math inline">\(d&gt;1/2\)</span>, there are three
+critical points:</p>
+<p><span class="math display">\[
+(0,0),\qquad
+\left(\sqrt{1-\frac1{2d}},0\right),\qquad
+\left(-\sqrt{1-\frac1{2d}},0\right).
+\tag{7.5}
+\]</span></p>
+<p>The Hessian is diagonal, with entries</p>
+<p><span class="math display">\[
+G_{yy}=-2+4d-12dy^2,
+\qquad G_{zz}=2.
+\tag{7.6}
+\]</span></p>
+<p>At the origin both entries are positive. At either additional point,
+the first entry is <span class="math inline">\(4-8d&lt;0\)</span> and
+the second is positive. Thus the change has created two index-one
+critical points and changed the original point to a minimum. For the
+cutoff <span class="math inline">\(\beta(v)=(1-v)^2\)</span>, its
+derivative at zero is <span class="math inline">\(-2\)</span>; the first
+parenthesis in (5.4) at the origin is <span
+class="math inline">\(1-2d&lt;0\)</span>. This is exactly the failed
+inequality. The polynomial example concerns the displayed local
+neighbourhood; it does not pretend that this polynomial is already a
+globally supported smooth cutoff. A smooth cutoff agreeing with it near
+the three points has the same three local critical points, so adding an
+outer support cutoff cannot repair this local defect.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

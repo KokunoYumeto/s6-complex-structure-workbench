@@ -1,0 +1,840 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The degree-six calculation in the full Milnor cobar complex</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/the-degree-six-milnor-cobar-calculation.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="the-degree-six-calculation-in-the-full-milnor-cobar-complex">The
+degree-six calculation in the full Milnor cobar complex</h1>
+<p>This chapter calculates the algebra needed for the smooth-sphere
+argument. It proves the result for every cobar length, rather than
+checking a finite segment of a table. The original coproduct, every
+correcting cochain and all signs at odd primes remain explicit.</p>
+<p>The conclusion here concerns the specified cobar complexes. The
+comparison with the stable homotopy of the sphere, its convergence, the
+framed-manifold invariant and the surgery on a bounding seven-manifold
+are subsequent mathematical steps. The <a
+href="framed-manifolds-and-the-pontryagin-thom-map.html#pt-bijection">Pontryagin–Thom
+companion</a> now proves the geometric framed-manifold correspondence,
+its inverse and its exact stabilization; it does not identify this
+algebraic calculation with that stable class. This chapter does not
+assume the remaining steps.</p>
+<p><a id="six-cobar-original-complex"></a></p>
+<h2 id="the-original-hopf-algebra-and-the-entire-differential">1. The
+original Hopf algebra and the entire differential</h2>
+<p>Work first over <span class="math inline">\(\mathbb F _2\)</span>.
+Define <span class="math display">\[
+H=\mathbb F _2[\zeta _1,\zeta _2,\ldots],\qquad
+|\zeta _i|=2^i-1,\qquad \zeta _0=1,
+\tag{1.1}
+\]</span> with counit <span
+class="math inline">\(\epsilon(\zeta_i)=0\)</span> for <span
+class="math inline">\(i&gt;0\)</span>, and with the multiplicative
+coproduct <span class="math display">\[
+\Delta\zeta_i
+=\sum_{k=0}^{i}\zeta_{i-k}^{\,2^k}\otimes\zeta_k
+=\zeta_i\otimes1+1\otimes\zeta_i+
+   \sum_{k=1}^{i-1}\zeta_{i-k}^{\,2^k}\otimes\zeta_k .
+\tag{1.2}
+\]</span> Both endpoint terms in the first sum are displayed in the
+second expression. The counit identities follow from them.
+Coassociativity follows on each generator because both iterated
+coproducts are the same full sum <span class="math display">\[
+\sum_{\substack{a,b,c\geq0\\a+b+c=i}}
+\zeta_a^{\,2^{b+c}}\otimes
+\zeta_b^{\,2^c}\otimes\zeta_c .
+\tag{1.3}
+\]</span> Multiplicativity then proves it on every polynomial. No
+restriction to the first few generators is made in the definition.</p>
+<p>Put <span class="math inline">\(\overline H=\ker\epsilon\)</span>. A
+word of length <span class="math inline">\(s\)</span> and internal
+degree <span class="math inline">\(t\)</span> is denoted by <span
+class="math display">\[
+[m_1|\cdots|m_s]\in C^{s,t}(H)
+   =(\overline H^{\otimes s})_t,\qquad
+\sum_{\nu=1}^{s}|m_\nu|=t .
+\tag{1.4}
+\]</span> Here <span class="math inline">\(C^{0,0}=\mathbb F
+_2\)</span>, and the other length-zero components are zero. Write <span
+class="math display">\[
+\overline\Delta m=\Delta m-m\otimes1-1\otimes m.
+\tag{1.5}
+\]</span> The two removed terms in (1.5) are exactly the displayed
+counit terms of the full coproduct. The differential is <span
+class="math display">\[
+d[m_1|\cdots|m_s]
+=\sum_{\nu=1}^{s}\ \sum_{\overline\Delta m_\nu
+                       =\sum a\otimes b}
+[m_1|\cdots|m_{\nu-1}|a|b|m_{\nu+1}|\cdots|m_s].
+\tag{1.6}
+\]</span> All coefficients are in <span class="math inline">\(\mathbb F
+_2\)</span>. It has bidegree <span class="math inline">\((1,0)\)</span>;
+hence it decreases the difference <span
+class="math inline">\(t-s\)</span> by one.</p>
+<p>The equality <span class="math inline">\(d^2=0\)</span> follows
+directly. Splittings at two different positions occur in both possible
+orders and cancel. The two orders of splitting one position agree by
+(1.3) and likewise cancel. Concatenation makes this a differential
+algebra. We will calculate <span class="math display">\[
+\mathcal H^{s,t}(H)
+  =\frac{\ker(d:C^{s,t}\longrightarrow C^{s+1,t})}
+         {\operatorname{im}(d:C^{s-1,t}\longrightarrow C^{s,t})}.
+\tag{1.7}
+\]</span></p>
+<p><strong>Theorem 1.1.</strong> For the full Hopf algebra (1.1)–(1.2),
+<span class="math display">\[
+\mathcal H^{s,s+6}(H)=
+\begin{cases}
+\mathbb F _2\{[\zeta_1^4|\zeta_1^4]\},&amp;s=2,\\
+0,&amp;s\ne2.
+\end{cases}
+\tag{1.8}
+\]</span> In particular the assertion includes arbitrarily large <span
+class="math inline">\(s\)</span>. The proof occupies Sections 2–5.
+Section 6 proves the corresponding vanishing at every odd prime.</p>
+<p><a id="six-cobar-finite-filtration"></a></p>
+<h2 id="a-bounded-filtration-on-every-original-internal-degree">2. A
+bounded filtration on every original internal degree</h2>
+<p>For a nonnegative integer <span class="math inline">\(e\)</span>, let
+<span class="math inline">\(\alpha(e)\)</span> be its number of nonzero
+binary digits. Define the weight of an original monomial and of an
+original word by <span class="math display">\[
+W\!\left(\prod_{i\geq1}\zeta_i^{e_i}\right)
+    =\sum_{i\geq1}(2i-1)\alpha(e_i),\qquad
+W([m_1|\cdots|m_s])=\sum_{\nu=1}^{s}W(m_\nu).
+\tag{2.1}
+\]</span> Let <span class="math inline">\(F_wC^{s,t}\)</span> be the
+span of words of weight at most <span class="math inline">\(w\)</span>.
+This defines subspaces of the original complex; it does not change its
+monomials or differential.</p>
+<p>Binary carrying can only lower <span
+class="math inline">\(\alpha(e)+\alpha(f)\)</span> when passing to <span
+class="math inline">\(\alpha(e+f)\)</span>. Consequently the weight of a
+product is no larger than the sum of the weights. In (1.2) applied to
+<span class="math inline">\(\zeta_i^{2^j}\)</span>, the two endpoint
+terms have weight <span class="math inline">\(2i-1\)</span>, while each
+interior term has weight <span class="math display">\[
+(2(i-k)-1)+(2k-1)=2i-2.
+\tag{2.2}
+\]</span> It follows by multiplication that every term of <span
+class="math inline">\(\Delta m\)</span> has total tensor weight at most
+<span class="math inline">\(W(m)\)</span>. Thus <span
+class="math inline">\(dF_w\subset F_w\)</span>.</p>
+<p>For a monomial of degree <span class="math inline">\(t\)</span>, its
+weight is at most its degree, since <span class="math display">\[
+2i-1\leq2^i-1,\qquad \alpha(e_i)\leq e_i.
+\tag{2.3}
+\]</span> Every nonunit monomial has degree at least one. Therefore, for
+fixed <span class="math inline">\(t\)</span>, <span
+class="math display">\[
+C^{s,t}=0\quad(s&gt;t),\qquad
+0=F_{-1}C^{s,t}\subset F_0C^{s,t}\subset\cdots
+       \subset F_tC^{s,t}=C^{s,t},
+\tag{2.4}
+\]</span> and every space in (2.4) is finite dimensional. There is no
+infinite-filtration convergence assumption in the argument below.</p>
+<p>Here is the finite filtered-complex construction that we use. First
+take cohomology of the part of <span class="math inline">\(d\)</span>
+preserving weight. A representative of weight <span
+class="math inline">\(w\)</span> that survives this operation can be
+corrected by terms of weight <span class="math inline">\(w-1\)</span>.
+Its next obstruction is the component of its differential in weight
+<span class="math inline">\(w-1\)</span>. Iterating, the <span
+class="math inline">\(r\)</span>-th obstruction decreases weight by
+<span class="math inline">\(r\)</span>, increases length by one and
+retains internal degree. At each step quotient by the obstructions
+already obtained from length <span class="math inline">\(s-1\)</span>.
+These are exactly changes of a representative by a boundary, with its
+highest nonzero weight treated first.</p>
+<p>To verify that this procedure computes (1.7), perform ordinary
+elimination in a basis ordered by weight, pairing each nonzero
+differential with its highest remaining target weight. Each pair is an
+acyclic two-dimensional summand and can be removed by the corresponding
+triangular basis change. The unpaired vectors are cocycles modulo
+boundaries. At a fixed <span class="math inline">\(t\)</span>, only
+finitely many pairs and weights occur by (2.4). Thus the procedure
+terminates and the surviving weight-graded vector space is the
+associated graded vector space of (1.7). A zero associated graded
+component is a zero cohomology group. A single one-dimensional component
+gives a one-dimensional cohomology group, with no additive extension
+over <span class="math inline">\(\mathbb F _2\)</span>. This also proves
+the convergence statement used here.</p>
+<p>We denote its pages by <span
+class="math inline">\(E_1,E_2,\ldots\)</span>, with <span
+class="math inline">\(E_1\)</span> the cohomology of the
+weight-preserving differential and <span
+class="math inline">\(d_r\)</span> the obstruction decreasing <span
+class="math inline">\(W\)</span> by <span
+class="math inline">\(r\)</span>.</p>
+<h3 id="the-first-page-with-all-generators-retained">The first page,
+with all generators retained</h3>
+<p>In the associated graded Hopf algebra the elements <span
+class="math display">\[
+e_{ij}=\operatorname{gr}(\zeta_i^{2^j}),\qquad i&gt;0,\ j\geq0,
+\tag{2.5}
+\]</span> are primitive. They have square zero, since the square in the
+original algebra has weight <span class="math inline">\(2i-1\)</span>,
+strictly less than <span class="math inline">\(2(2i-1)\)</span>.
+Products of distinct binary factors give a basis. The associated graded
+Hopf algebra is therefore the tensor product of the primitive exterior
+algebras on all <span class="math inline">\(e_{ij}\)</span>, with <span
+class="math display">\[
+|e_{ij}|=2^j(2^i-1),\qquad W(e_{ij})=2i-1.
+\tag{2.6}
+\]</span> The word “exterior” here includes its exact characteristic-two
+relation <span class="math inline">\(e_{ij}^2=0\)</span>.</p>
+<p>For completeness, the cobar cohomology of this coalgebra is
+polynomial. For one primitive exterior generator, the dual algebra is
+<span class="math inline">\(\mathbb F _2[u]/(u^2)\)</span>. The free
+resolution having one copy of this algebra in every nonnegative
+resolution degree, with every positive differential multiplication by
+<span class="math inline">\(u\)</span>, is exact: the kernel and image
+of multiplication by <span class="math inline">\(u\)</span> are both the
+span of <span class="math inline">\(u\)</span>. Its degree-zero cokernel
+is <span class="math inline">\(\mathbb F _2\)</span>. Applying <span
+class="math inline">\(\operatorname{Hom}(-,\mathbb F _2)\)</span> gives
+one zero-differential generator in every degree. The shift by one place
+in the free resolution represents its degree-one extension, and the
+successive shifts show that every power is nonzero. For finitely many
+generators, tensor these resolutions over the field. Exactness follows
+by decomposing each underlying vector-space complex into its degree-zero
+homology and two-term contractible pairs; tensoring a contractible pair
+remains contractible. The same degree-shift maps identify the cohomology
+ring as the polynomial algebra on one class for each generator. For the
+infinite tensor product, each fixed internal degree uses finitely many
+generators, so this argument applies degree by degree.</p>
+<p>Equivalently these are the cobar classes of the primitive factors:
+the bar resolution of the finite-degree dual algebra and the cobar
+complex are dual in each internal degree. The bar resolution is free and
+exact: its augmented complex contracts by moving the augmentation-ideal
+part of the leading algebra factor into the first bar slot; the
+multiplication term restores that part and the remaining terms cancel in
+pairs. The scalar part is restored by the augmentation term. Thus the
+resolution calculation computes the same cohomology.</p>
+<p>It follows that <span class="math display">\[
+E_1=\mathbb F _2[h_{ij}:i&gt;0,\ j\geq0],\qquad
+(s,t,W)(h_{ij})=(1,2^j(2^i-1),2i-1).
+\tag{2.7}
+\]</span> The weight drop (2.2), without discarding its summands, gives
+<span class="math display">\[
+d_1h_{ij}=\sum_{k=1}^{i-1}h_{i-k,j+k}h_{k,j}.
+\tag{2.8}
+\]</span> The product order in a tensor representative is the order in
+(1.2); the product on <span class="math inline">\(E_1\)</span> is
+commutative by the resolution computation. The differential on every
+polynomial follows by the Leibniz rule.</p>
+<p><a id="six-cobar-all-lengths"></a></p>
+<h2 id="the-first-differential-at-every-length">3. The first
+differential at every length</h2>
+<p>The following letters retain an exact dictionary with the generators
+of (2.7): <span class="math display">\[
+\begin{array}{c|rrrrrrr}
+\text{letter}&amp;x&amp;y&amp;a&amp;z&amp;b&amp;c&amp;w\\ \hline
+\text{generator}&amp;h_{10}&amp;h_{11}&amp;h_{20}&amp;h_{12}&amp;h_{21}&amp;h_{30}&amp;h_{13}\\
+t&amp;1&amp;2&amp;3&amp;4&amp;6&amp;7&amp;8\\
+t-s&amp;0&amp;1&amp;2&amp;3&amp;5&amp;6&amp;7\\
+W&amp;1&amp;1&amp;3&amp;1&amp;3&amp;5&amp;1
+\end{array}
+\tag{3.1}
+\]</span> They are the only generators with <span
+class="math inline">\(t-s\leq7\)</span>. Every other generator has <span
+class="math inline">\(t-s\geq11\)</span>. Since all generator
+differences are nonnegative, an omitted generator cannot occur in any
+polynomial with difference at most seven. The unrestricted exponent of
+<span class="math inline">\(x\)</span> is retained by working over <span
+class="math display">\[
+R=\mathbb F _2[x].
+\tag{3.2}
+\]</span> In this region (2.8) reads <span class="math display">\[
+d_1a=xy,\qquad d_1b=yz,\qquad d_1c=xb+az,\qquad
+d_1x=d_1y=d_1z=d_1w=0.
+\tag{3.3}
+\]</span> Put <span class="math inline">\(B=a^2\)</span> and <span
+class="math inline">\(u=xb+az\)</span>. Both are <span
+class="math inline">\(d_1\)</span>-cycles. To show every kernel and
+image needed at difference six, here are the complete <span
+class="math inline">\(R\)</span>-bases in differences five, six and
+seven: <span class="math display">\[
+\begin{array}{c|l}
+5&amp;y^5,\ y^3a,\ ya^2,\ y^2z,\ az,\ b\\
+6&amp;y^6,\ y^4a,\ y^2a^2,\ a^3,\ y^3z,\ yaz,\ z^2,\ yb,\ c\\
+7&amp;y^7,\ y^5a,\ y^3a^2,\ ya^3,\ y^4z,\ y^2az,\
+       a^2z,\ yz^2,\ y^2b,\ ab,\ yc,\ w .
+\end{array}
+\tag{3.4}
+\]</span> Exhaustiveness follows by solving <span
+class="math display">\[
+e_y+2e_a+3e_z+5e_b+6e_c+7e_w=k,\qquad e_\bullet\geq0,
+\tag{3.5}
+\]</span> for <span class="math inline">\(k=5,6,7\)</span>; <span
+class="math inline">\(x\)</span> has difference zero and is already
+retained in <span class="math inline">\(R\)</span>.</p>
+<p>All nonzero differentials on these bases are <span
+class="math display">\[
+\begin{array}{c|l}
+5&amp;
+y^3a\mapsto xy^4,\quad az\mapsto xyz,\quad b\mapsto yz\\
+6&amp;
+y^4a\mapsto xy^5,\quad a^3\mapsto xyB,\quad
+yaz\mapsto xy^2z,\quad yb\mapsto y^2z,\quad c\mapsto u\\
+7&amp;
+y^5a\mapsto xy^6,\quad ya^3\mapsto xy^2B,\quad
+y^2az\mapsto xy^3z,\quad y^2b\mapsto y^3z,\quad
+ab\mapsto yu,\quad yc\mapsto yu .
+\end{array}
+\tag{3.6}
+\]</span> Every basis element not listed has zero differential.
+Comparing coefficients over the integral domain <span
+class="math inline">\(R\)</span> now gives <span class="math display">\[
+\begin{aligned}
+\ker(d_1|_5)&amp;=R\{y^5,yB,y^2z,u\},\\
+\operatorname{im}(d_1|_6)&amp;=R\{xy^5,xyB,y^2z,u\},\\
+\ker(d_1|_6)&amp;=R\{y^6,y^2B,y^3z,z^2,yu\},\\
+\operatorname{im}(d_1|_7)&amp;=R\{xy^6,xy^2B,y^3z,yu\}.
+\end{aligned}
+\tag{3.7}
+\]</span> For example, the coefficients of <span
+class="math inline">\(yaz\)</span> and <span
+class="math inline">\(yb\)</span> in a cycle must be in the ratio <span
+class="math inline">\(1:x\)</span>, which gives <span
+class="math inline">\(yu\)</span>. The independent <span
+class="math inline">\(b\)</span> and <span
+class="math inline">\(az\)</span> terms in the image of <span
+class="math inline">\(c\)</span> force its coefficient to vanish in a
+difference-six cycle. The other displayed equalities follow one
+coefficient at a time from (3.6). Consequently <span
+class="math display">\[
+\begin{aligned}
+(E_2)_{t-s=5}
+   &amp;=(R/(x))\{y^5,yB\},\\
+(E_2)_{t-s=6}
+   &amp;=(R/(x))\{y^6,y^2B\}\ \oplus\ R\{z^2\}.
+\end{aligned}
+\tag{3.8}
+\]</span> These are module identities covering every power of <span
+class="math inline">\(x\)</span>, not a finite list of lengths.</p>
+<p>We also need two difference-seven cycles: <span
+class="math display">\[
+y^3B,\qquad v=ab+yc.
+\tag{3.9}
+\]</span> The second is a cycle because <span
+class="math inline">\(d_1(ab)=yu=d_1(yc)\)</span>. Both classes are
+nonzero on <span class="math inline">\(E_2\)</span>. To verify this
+without assuming a table, set <span
+class="math inline">\(x=z=w=0\)</span> in the polynomial algebra on
+(3.1). The induced differential on <span class="math inline">\(\mathbb F
+_2[y,a,b,c]\)</span> is zero, whereas the images <span
+class="math inline">\(y^3a^2\)</span> and <span
+class="math inline">\(ab+yc\)</span> are nonzero. This detects that
+neither is a boundary. Boundaries into difference seven come from
+difference eight, where the same seven generators still suffice; the
+next omitted generator has difference eleven. Thus the projection
+argument covers every possible incoming boundary.</p>
+<p>Every monomial on <span class="math inline">\(E_1\)</span> has <span
+class="math inline">\(W\equiv s\pmod2\)</span>, because all generator
+weights are odd. The same is true on <span
+class="math inline">\(E_2\)</span>. A differential increasing <span
+class="math inline">\(s\)</span> by one and dropping weight by two
+cannot connect two such bidegrees. Therefore <span
+class="math inline">\(d_2=0\)</span>. The next possible differential is
+<span class="math inline">\(d_3\)</span>, which we now compute from the
+entire original cobar differential.</p>
+<p><a id="six-cobar-exact-corrections"></a></p>
+<h2 id="two-complete-correcting-cochains">4. Two complete correcting
+cochains</h2>
+<p>For the formulas in this section only, write <span
+class="math display">\[
+P=\zeta_1,\qquad Q=\zeta_2,\qquad T=\zeta_3.
+\tag{4.1}
+\]</span> These letters do not change the original variables. The full
+coproducts are <span class="math display">\[
+\begin{aligned}
+\Delta P&amp;=P\otimes1+1\otimes P,\\
+\Delta Q&amp;=Q\otimes1+P^2\otimes P+1\otimes Q,\\
+\Delta T&amp;=T\otimes1+Q^2\otimes P+P^4\otimes Q+1\otimes T.
+\end{aligned}
+\tag{4.2}
+\]</span> Define the following seven-term cochain of length two and
+internal degree six: <span class="math display">\[
+\begin{aligned}
+\mathcal B={}&amp;[Q|Q]+[Q|P^3]+[P|P^2Q]+[P|P^5]\\
+              &amp;+[PQ|P^2]+[P^3|Q]+[P^3|P^3].
+\end{aligned}
+\tag{4.3}
+\]</span> The only weight-six term is <span
+class="math inline">\([Q|Q]\)</span>. In the displayed order the seven
+weights are <span class="math inline">\(6,5,5,3,5,5,4\)</span>.
+Expanding (1.6) using (4.2) gives <span class="math display">\[
+d\mathcal B=[P^2|P^2|P^2]+[P|P|P^4].
+\tag{4.4}
+\]</span> Here is the complete term-by-term expansion; it also records
+every cancellation: <span class="math display">\[
+\begin{array}{c|l}
+[Q|Q]&amp;[Q|P^2|P]+[P^2|P|Q]\\
+[Q|P^3]&amp;[Q|P|P^2]+[Q|P^2|P]+[P^2|P|P^3]\\
+[P|P^2Q]&amp;[P|Q|P^2]+[P|P^2|Q]+[P|P^2|P^3]+[P|P^4|P]\\
+[P|P^5]&amp;[P|P|P^4]+[P|P^4|P]\\
+[PQ|P^2]&amp;[Q|P|P^2]+[P|Q|P^2]+[P^2|P^2|P^2]+[P^3|P|P^2]\\
+[P^3|Q]&amp;[P|P^2|Q]+[P^2|P|Q]+[P^3|P^2|P]\\
+[P^3|P^3]&amp;[P|P^2|P^3]+[P^2|P|P^3]+[P^3|P|P^2]+[P^3|P^2|P].
+\end{array}
+\tag{4.5}
+\]</span> Each word except the two in (4.4) occurs twice. The weight
+drops from six to three. The leading class of <span
+class="math inline">\(\mathcal B\)</span> is <span
+class="math inline">\(B=a^2\)</span>, so <span class="math display">\[
+d_3B=y^3+x^2z.
+\tag{4.6}
+\]</span></p>
+<p>For the second calculation use the complete eight-term cochain of
+length two and internal degree nine <span class="math display">\[
+\begin{aligned}
+\mathcal V={}&amp;[Q|Q^2]+[Q|P^6]+[P^2|T]+[P^2|PQ^2]\\
+              &amp;+[P^2|P^4Q]+[P^2|P^7]
+                +[P^2Q|P^4]+[P^5|P^4].
+\end{aligned}
+\tag{4.7}
+\]</span> Its weights in that order are <span
+class="math inline">\(6,5,6,5,5,4,5,3\)</span>. Its two highest-weight
+terms represent <span class="math inline">\(ab+yc=v\)</span>. Direct
+expansion gives <span class="math display">\[
+d\mathcal V=[P|P^4|P^4].
+\tag{4.8}
+\]</span> Again the entire expansion is included: <span
+class="math display">\[
+\begin{array}{c|l}
+[Q|Q^2]&amp;[Q|P^4|P^2]+[P^2|P|Q^2]\\
+[Q|P^6]&amp;[Q|P^2|P^4]+[Q|P^4|P^2]+[P^2|P|P^6]\\
+[P^2|T]&amp;[P^2|Q^2|P]+[P^2|P^4|Q]\\
+[P^2|PQ^2]&amp;[P^2|Q^2|P]+[P^2|P|Q^2]+[P^2|P^4|P^3]+[P^2|P^5|P^2]\\
+[P^2|P^4Q]&amp;[P^2|Q|P^4]+[P^2|P^2|P^5]+[P^2|P^4|Q]+[P^2|P^6|P]\\
+[P^2|P^7]&amp;[P^2|P|P^6]+[P^2|P^2|P^5]+[P^2|P^3|P^4]
+          +[P^2|P^4|P^3]+[P^2|P^5|P^2]+[P^2|P^6|P]\\
+[P^2Q|P^4]&amp;[Q|P^2|P^4]+[P^2|Q|P^4]+[P^2|P^3|P^4]+[P^4|P|P^4]\\
+[P^5|P^4]&amp;[P|P^4|P^4]+[P^4|P|P^4].
+\end{array}
+\tag{4.9}
+\]</span> Every word except (4.8) occurs twice. The resulting
+differential is <span class="math display">\[
+d_3v=xz^2.
+\tag{4.10}
+\]</span> Equations (4.3) and (4.7) give the actual cobar preimages, so
+the calculation is reproducible without an external differential
+table.</p>
+<h3 id="exact-comparison-with-the-sources-indices">Exact comparison with
+the source’s indices</h3>
+<p>In Isaksen’s source, the four indices are May filtration, stem, Adams
+filtration and motivic weight. Only its classical calculation is used
+here. If its first index is <span class="math inline">\(m\)</span> and
+its Adams filtration is our word length <span
+class="math inline">\(s\)</span>, then the two retained filtrations
+satisfy <span class="math display">\[
+W=2m-s,\qquad m=\frac{W+s}{2}
+\tag{4.11}
+\]</span> on the polynomial generators and their products. Thus a
+differential dropping <span class="math inline">\(W\)</span> by three
+and increasing <span class="math inline">\(s\)</span> by one lowers
+<span class="math inline">\(m\)</span> by one. Our <span
+class="math inline">\(d_3\)</span> is the differential denoted <span
+class="math inline">\(d_2\)</span> in that source. Equations (4.6) and
+(4.10) recover its classical formulas for <span
+class="math inline">\(b_{20}\)</span> and <span
+class="math inline">\(h_0(1)\)</span>. The original <span
+class="math inline">\(W\)</span>, the source’s <span
+class="math inline">\(m\)</span>, the length <span
+class="math inline">\(s\)</span> and every term of the cochain
+calculation remain identifiable. No motivic <span
+class="math inline">\(\tau\)</span>-factor is silently transferred into
+the classical complex.</p>
+<p><a id="six-cobar-survival"></a></p>
+<h2 id="all-other-degree-six-classes-vanish">5. All other degree-six
+classes vanish</h2>
+<p>The primitive words <span class="math inline">\([P]\)</span>, <span
+class="math inline">\([P^2]\)</span> and <span
+class="math inline">\([P^4]\)</span> are exact cocycles in the original
+complex. Consequently their page classes <span
+class="math inline">\(x,y,z\)</span> have zero differential on every
+page on which they are present.</p>
+<p>Using (3.8), (4.6), the Leibniz rule and the relation <span
+class="math inline">\(yz=0\)</span> on <span
+class="math inline">\(E_2\)</span>, we obtain <span
+class="math display">\[
+\begin{aligned}
+d_3(y^2B)&amp;=y^5+x^2y^2z=y^5\ne0,\\
+d_3(y^3B)&amp;=y^6+x^2y^3z=y^6,\\
+d_3v&amp;=xz^2.
+\end{aligned}
+\tag{5.1}
+\]</span> The first line removes the entire class <span
+class="math inline">\(y^2B\)</span>, which is already annihilated by
+<span class="math inline">\(x\)</span>. The second line makes <span
+class="math inline">\(y^6\)</span> a boundary; that class too is
+annihilated by <span class="math inline">\(x\)</span>. The third line
+and all its <span class="math inline">\(x\)</span>-multiples make <span
+class="math inline">\(xz^2,x^2z^2,\ldots\)</span> boundaries. Every
+candidate in (3.8) has therefore been accounted for. After this
+differential the difference-six part has dimension at most one,
+represented by <span class="math inline">\(z^2\)</span> at <span
+class="math display">\[
+(s,t,W)=(2,8,2).
+\tag{5.2}
+\]</span></p>
+<p>It remains to prove that this one class survives. Its representative
+<span class="math inline">\([P^4|P^4]\)</span> has differential zero by
+(4.2), so it has no outgoing obstruction. A possible incoming
+differential would have source of length one and internal degree eight.
+On the entire <span class="math inline">\(E_1\)</span>-page, the
+equation <span class="math display">\[
+2^j(2^i-1)=8,\qquad i&gt;0,\ j\geq0,
+\tag{5.3}
+\]</span> has the unique solution <span
+class="math inline">\(i=1,j=3\)</span>. The resulting source is <span
+class="math inline">\(w=h_{13}\)</span>, of weight one. Any incoming
+<span class="math inline">\(d_r\)</span> into weight two would need
+source weight <span class="math inline">\(2+r&gt;2\)</span>. Such a
+source is absent already on <span class="math inline">\(E_1\)</span>,
+and passing to later subquotients cannot create it. The class is also
+nonzero on <span class="math inline">\(E_1\)</span>, where it is the
+polynomial square of <span class="math inline">\(h_{12}\)</span>.</p>
+<p>Thus it survives. The finite convergence proof in Section 2 yields
+exactly (1.8). In particular the conclusion covers all lengths because
+(3.7)–(3.8) were proved over the entire ring <span
+class="math inline">\(\mathbb F _2[x]\)</span>.</p>
+<p>There is a useful stronger piece of information in the explicit
+calculation: <span class="math display">\[
+[P]\,[P^4|P^4]=d\mathcal V
+\tag{5.4}
+\]</span> is an equality of actual cochains, not merely an equality of
+associated-graded classes. The product by <span
+class="math inline">\([P]\)</span> vanishes with the specific homotopy
+witness (4.7).</p>
+<p><a id="six-cobar-odd-primes"></a></p>
+<h2 id="the-odd-prime-calculation-with-its-signs">6. The odd-prime
+calculation with its signs</h2>
+<p>For an odd prime <span class="math inline">\(p\)</span>, define the
+graded-commutative Hopf algebra <span class="math display">\[
+\begin{aligned}
+H_p&amp;=\mathbb F _p[\xi_1,\xi_2,\ldots]
+                  \otimes\Lambda(\tau_0,\tau_1,\ldots),\\
+|\xi_i|&amp;=2(p^i-1),\qquad |\tau_i|=2p^i-1,\qquad \xi_0=1,\\
+\Delta\xi_i&amp;=\sum_{k=0}^{i}\xi_{i-k}^{p^k}\otimes\xi_k,\\
+\Delta\tau_i&amp;=\tau_i\otimes1+
+                  \sum_{k=0}^{i}\xi_{i-k}^{p^k}\otimes\tau_k .
+\end{aligned}
+\tag{6.1}
+\]</span> The tensor-product multiplication uses its graded sign. The
+<span class="math inline">\(\xi_i\)</span> have even degree and the
+<span class="math inline">\(\tau_i\)</span> have odd degree. The counit
+kills every positive-degree generator. Thus the last sum contains <span
+class="math inline">\(1\otimes\tau_i\)</span>, and both counit terms are
+retained. Coassociativity for the <span
+class="math inline">\(\xi_i\)</span> follows by the same three-index sum
+as (1.3), with <span class="math inline">\(2\)</span> replaced by <span
+class="math inline">\(p\)</span>. For <span
+class="math inline">\(\tau_i\)</span>, both iterated coproducts are
+<span class="math display">\[
+\tau_i\otimes1\otimes1
++\sum_{k=0}^{i}\xi_{i-k}^{p^k}\otimes\tau_k\otimes1
++\sum_{a+b+c=i}
+       \xi_a^{p^{b+c}}\otimes\xi_b^{p^c}\otimes\tau_c .
+\tag{6.2}
+\]</span> The graded exterior relations are respected because the
+coproduct is graded-commutative and every odd element has square zero
+when <span class="math inline">\(2\)</span> is invertible.</p>
+<p>In the cobar complex a slot <span class="math inline">\([m]\)</span>
+has total degree <span class="math inline">\(|m|-1\)</span>. With the
+same counit subtraction (1.5), fix the sign convention <span
+class="math display">\[
+d[m]=\sum_{\overline\Delta m=\sum a\otimes b}
+                  (-1)^{|a|}[a|b],\qquad
+d(UV)=d(U)V+(-1)^{|U|_{\rm tot}}U\,d(V).
+\tag{6.3}
+\]</span> The differential still increases word length and preserves
+internal degree. For a triple <span class="math inline">\(a,b,c\)</span>
+in an iterated coproduct, the two ways of splitting have coefficients
+<span class="math inline">\((-1)^{|b|}\)</span> and <span
+class="math inline">\(-(-1)^{|b|}\)</span>. They cancel. Splittings in
+different slots cancel by the displayed derivation sign. Hence <span
+class="math inline">\(d^2=0\)</span> with precisely this convention.</p>
+<p><strong>Theorem 6.1.</strong> For every odd prime, <span
+class="math display">\[
+\mathcal H^{s,s+6}(H_p)=0\quad\hbox{for all }s\geq0.
+\tag{6.4}
+\]</span></p>
+<p><strong>Proof for <span
+class="math inline">\(p\geq5\)</span>.</strong> The only positive-degree
+monomial of degree at most seven is <span
+class="math inline">\(\tau_0\)</span>, of degree one. Indeed the
+smallest other generator is <span class="math inline">\(\xi_1\)</span>,
+of degree <span class="math inline">\(2(p-1)\geq8\)</span>, and <span
+class="math inline">\(\tau_0^2=0\)</span>. Every slot contributes <span
+class="math inline">\(|m|-1\geq0\)</span> to the difference of its word.
+A word of difference six could use only monomials of degree at most
+seven, so every slot would have to be <span
+class="math inline">\(\tau_0\)</span>; its difference would then be
+zero. There are no such words. Thus the original cochain group itself is
+zero in the degree under consideration.</p>
+<p><strong>Proof for <span class="math inline">\(p=3\)</span>.</strong>
+Write <span class="math inline">\(T_0=\tau_0\)</span> and <span
+class="math inline">\(X=\xi_1\)</span>, preserving their degrees <span
+class="math inline">\(1\)</span> and <span
+class="math inline">\(4\)</span>. The complete list of nonunit monomials
+of degree at most seven is <span class="math display">\[
+T_0,\quad X,\quad T_0X,\quad\tau_1,\quad T_0\tau_1,
+\qquad\hbox{of degrees }1,4,5,5,6.
+\tag{6.5}
+\]</span> The corresponding slot differences are <span
+class="math inline">\(0,3,4,4,5\)</span>. Hence every original word of
+difference six consists of exactly two slots <span
+class="math inline">\(X\)</span> and any number of slots <span
+class="math inline">\(T_0\)</span>: <span class="math display">\[
+[T_0]^{a}[X][T_0]^{b}[X][T_0]^{c},
+\qquad a,b,c\geq0.
+\tag{6.6}
+\]</span> The notation <span class="math inline">\([T_0]^a\)</span>
+denotes concatenation of <span class="math inline">\(a\)</span> slots;
+the exterior-algebra power <span class="math inline">\(T_0^a\)</span> is
+zero only when the exponent is at least two. Both <span
+class="math inline">\(T_0\)</span> and <span
+class="math inline">\(X\)</span> are primitive. Therefore every word
+(6.6) is a cocycle.</p>
+<p>The exact coproducts of the two incoming monomials give, with all
+signs from (6.3), <span class="math display">\[
+\begin{aligned}
+\overline\Delta(T_0X)&amp;=T_0\otimes X+X\otimes T_0,\\
+d[T_0X]&amp;=-[T_0|X]+[X|T_0],\\
+\overline\Delta(X^2)&amp;=2X\otimes X,\\
+d[X^2]&amp;=2[X|X].
+\end{aligned}
+\tag{6.7}
+\]</span> For any cocycle words <span
+class="math inline">\(U,V\)</span>, these identities imply <span
+class="math display">\[
+U[X][T_0]V-U[T_0][X]V
+   =(-1)^{|U|_{\rm tot}}d\bigl(U[T_0X]V\bigr).
+\tag{6.8}
+\]</span> Repeatedly apply (6.8) to move every <span
+class="math inline">\(T_0\)</span> slot to the left, retaining its
+signed preimage at each interchange. This is a finite operation: each
+interchange decreases the number of pairs with an <span
+class="math inline">\(X\)</span> to the left of a <span
+class="math inline">\(T_0\)</span>. Thus (6.6) is homologous to <span
+class="math display">\[
+[T_0]^{a+b+c}[X|X]
+   =d\left(\frac12[T_0]^{a+b+c}[X^2]\right).
+\tag{6.9}
+\]</span> Here <span class="math inline">\(1/2=2\)</span> in <span
+class="math inline">\(\mathbb F _3\)</span>, and the prefix has total
+degree zero, so no additional sign is suppressed. Adding the explicitly
+signed interchange preimages from (6.8) to the cochain on the right of
+(6.9) supplies a preimage of the original word. Every cocycle in the
+component is a linear combination of these words. Therefore every one is
+a boundary, for every length <span class="math inline">\(s\)</span>,
+proving (6.4).</p>
+<p><a id="six-cobar-exercises"></a></p>
+<h2 id="two-complete-worked-exercises">7. Two complete worked
+exercises</h2>
+<h3 id="exercise-1.-a-boundary-at-arbitrarily-high-word-length">Exercise
+1. A boundary at arbitrarily high word length</h3>
+<p>For each integer <span class="math inline">\(r\geq1\)</span>, produce
+an original cochain whose differential is <span class="math display">\[
+[P]^r[P^4|P^4]\in C^{r+2,r+8}(H).
+\tag{7.1}
+\]</span> List its entire set of terms, rather than referring only to
+the page relation.</p>
+<p><strong>Solution.</strong> Since <span
+class="math inline">\(d[P]=0\)</span>, equation (4.8) gives the required
+preimage <span class="math display">\[
+\begin{aligned}
+\mathcal V_r=[P]^{r-1}\bigl(&amp;[Q|Q^2]+[Q|P^6]+[P^2|T]
+             +[P^2|PQ^2]\\
+             &amp;+[P^2|P^4Q]+[P^2|P^7]
+             +[P^2Q|P^4]+[P^5|P^4]\bigr).
+\end{aligned}
+\tag{7.2}
+\]</span> It has length <span class="math inline">\(r+1\)</span> and
+internal degree <span class="math inline">\((r-1)+9=r+8\)</span>. Its
+highest weight is <span class="math inline">\((r-1)+6=r+5\)</span>.
+Formula (1.6) and the complete cancellation table (4.9) give <span
+class="math display">\[
+d\mathcal V_r=[P]^{r-1}[P|P^4|P^4]
+              =[P]^r[P^4|P^4].
+\tag{7.3}
+\]</span> This works for every <span class="math inline">\(r\)</span>;
+no bound on word length is used.</p>
+<h3
+id="exercise-2.-an-odd-prime-preimage-with-the-sign-visible">Exercise 2.
+An odd-prime preimage with the sign visible</h3>
+<p>At <span class="math inline">\(p=3\)</span>, find a complete preimage
+of <span class="math inline">\([X|T_0|X]\)</span>.</p>
+<p><strong>Solution.</strong> In this case (6.3) gives <span
+class="math inline">\(|[X]|_{\rm tot}=3\)</span> and <span
+class="math inline">\(|[T_0]|_{\rm tot}=0\)</span>. A suitable
+length-two cochain is <span class="math display">\[
+Z=[T_0X|X]+\frac12[T_0|X^2].
+\tag{7.4}
+\]</span> Indeed <span class="math display">\[
+\begin{aligned}
+d[T_0X|X]&amp;=-[T_0|X|X]+[X|T_0|X],\\
+d\!\left(\frac12[T_0|X^2]\right)
+   &amp;=\frac12\cdot2[T_0|X|X]=[T_0|X|X].
+\end{aligned}
+\tag{7.5}
+\]</span> Their sum is exactly the required word. The coefficient <span
+class="math inline">\(1/2\)</span>, the negative term and its
+cancellation are all essential parts of the original differential.</p>
+<figure>
+<img src="assets/degree-six-cobar-all-lengths.svg" alt="The complete degree-six modules over F2[x], the three required weight-drop-three differentials and the surviving original cobar word." />
+</figure>
+<p>The diagram retains every power of the length-one class through the
+full module R in Section 3. Its arrows are the exact differentials
+(5.1), with every length, internal degree and weight displayed. The
+explicit cochains (4.3) and (4.7) prove the arrows. The weight argument
+(5.3) proves survival; Section 6 proves the odd-prime vanishing with its
+original signs. The source filtration comparison is (4.11). This depicts
+the algebraic calculation. The geometric framed-manifold correspondence
+is proved in its linked companion; the linked actual-cooperation and
+integral companions now prove its comparison with the stable group, and
+the <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> calculates the original manifold’s
+value.</p>
+<p><a id="six-cobar-source-use"></a></p>
+<h2 id="sources-proof-scope-and-verification">8. Sources, proof scope
+and verification</h2>
+<p>The original-author TeX of Daniel C. Isaksen, Guozhen Wang and Zhouli
+Xu, <a href="https://arxiv.org/abs/2001.04247v1">Stable homotopy groups
+of spheres, arXiv:2001.04247v1</a>, supplies the classical dual
+coproduct in its section on the Adams spectral sequence, original
+<code>ms.tex</code> lines 483–583. Its low-dimensional table was read as
+a routing aid. The proof of (1.8) here is the explicit calculation in
+Sections 2–5, including the full correcting cochains; it is not inferred
+from that table.</p>
+<p>Daniel C. Isaksen, <a href="https://arxiv.org/abs/1407.8418v2">Stable
+stems, arXiv:1407.8418v2</a>, supplies the comparison with the May
+notation. The precise passages read for this comparison are original
+<code>stable-stems-May.tex</code> lines 904–1000 and
+<code>stable-stems-tables.tex</code> lines 50–118, together with the
+previously recorded introductory coverage. Equations (4.11), (4.6) and
+(4.10) give the exact classical comparison. The original source archives
+and per-file hashes are retained in the private reading ledger. No
+whole-monograph reading or PDF reading is claimed.</p>
+<p>The displayed odd-prime Hopf algebra is defined in (6.1); its
+coassociativity, cobar signs and degree-six vanishing are proved
+directly in Section 6. The <a
+href="the-original-odd-prime-cooperations-and-degree-six-adams-calculation.html#odd-actual-adams">actual
+odd-prime companion</a> constructs the actual original cooperations in
+the needed degrees and proves their degree-six cobar vanishing and
+receiving Adams comparison directly. No classification of all odd-prime
+operations is needed for that proof or assumed by the algebraic
+vanishing theorem.</p>
+<p>The reproducible calculation script expands the complete coproduct,
+checks both displayed correcting cochains and their full expansions, and
+computes selected finite cobar kernels and images. Those finite
+computations are supplementary checks. The argument over <span
+class="math inline">\(\mathbb F _2[x]\)</span> in Section 3 and the
+signed word reduction in Section 6 are what prove the assertions for
+every length. Neither a finite rank computation nor this algebraic
+theorem by itself establishes the stable homotopy or framed-bordism
+conclusion needed by lesson 7.</p>
+<p>The <a
+href="coefficient-rings-and-the-original-degree-six-class.html#coefficient-all-length-receiving">original
+coefficient-ring companion</a> retains the full source polynomial
+coefficient algebra before inversion, proves both inverse coefficient
+and grading maps, and applies Theorem 1.1 here to every length. Its
+complete original matrices then prove that the bidegree <span
+class="math inline">\((2,8)\)</span> module has exactly the specified
+polynomial generator and no coefficient torsion. The coefficient
+multiple receiving <span
+class="math inline">\([\zeta_1^4|\zeta_1^4]\)</span> is displayed with
+all four original powers. The included topological comparison, geometric
+framing calculation and <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> supply the subsequent receiving
+arguments.</p>
+<p>The <a
+href="the-adams-tower-and-exact-inverse-limits.html#adams-degree-five-cobar">Adams-tower
+companion</a>, Section 5, extends the complete original module
+calculation to prove <span
+class="math inline">\(H^{s,s+5}(C^\bullet(H_{\mathrm{cl}}))=0\)</span>
+for every nonnegative length. Its full difference-four kernel and image,
+followed by both terms of the existing seven-term correcting-cochain
+differential, prove the result. Sections 8–11 construct the actual
+coefficient spectrum and establish finite-stage tower convergence. The
+<a
+href="the-original-adams-tower-and-arithmetic-completion.html#arithmetic-homotopy-groups">arithmetic
+companion</a> now proves the unit-preserving comparison of that limit
+with the original Moore tower and retains both derived homotopy-group
+terms. The <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-bijectivity">actual
+degree-eight companion</a> identifies the actual mod-two cooperations in
+the required degrees. The <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> constructs the full quadratic invariant,
+proves framed bordism invariance and gives value zero for the original
+framed homotopy six-sphere, with an actual framed nullbordism. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map.</p>
+<p>This is an author-written teaching proof of classical algebra. No
+novelty or independent-review claim is made.</p>
+<p>The <a
+href="the-actual-mod-two-adams-resolution-and-cooperation-maps.html#cooperation-chain-comparison">actual
+mod-two cooperation companion</a> now constructs both cross-product
+coordinate maps, the actual cofree Adams resolution and both chain maps
+and inverse homotopies comparing it with the actual cooperation cobar
+complex. Its <a
+href="the-actual-mod-two-adams-resolution-and-cooperation-maps.html#cooperation-original-diagonal">original
+diagonal and degree-range proof</a> identifies the generator tied to the
+original integer two, proves every degree-two reduced coproduct zero,
+and shows that the degree-six calculation at every word length uses
+cooperation degrees through eight. The <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-bijectivity">actual
+degree-eight companion</a> supplies the required polynomial comparison
+through degree eight; the <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> now supplies that value and its actual
+framed nullbordism.</p>
+<p>The <a
+href="the-exact-characteristic-two-coordinate-calculation.html#formal-two-linearization">full
+characteristic-two coordinate proof</a> now supplies the all-ring
+formal-series calculation and both inverses. The <a
+href="the-original-projective-coordinate-and-actual-cooperations.html#projective-actual-coproduct">actual
+projective-coordinate proof</a> constructs the polynomial-to-cooperation
+morphism, proves its full coproduct and antipode comparison, and
+identifies its <a
+href="the-original-projective-coordinate-and-actual-cooperations.html#projective-original-two">first
+generator with the original integer two</a>. The <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-bijectivity">actual
+degree-eight companion</a> now proves bijectivity of this original
+morphism in every cooperation degree from zero through eight. Its <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-original-suspension">bar
+and original-suspension proof</a> determines the full graded dimensions,
+and its <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-nonzero-powers">cup-square
+calculation</a> proves every power of the actual first generator
+nonzero. The <a
+href="the-actual-mod-two-cooperation-comparison-through-degree-eight.html#actual-eight-receiving-cobar">receiving
+cobar and convergence argument</a> identifies the entire degree-six line
+and proves <span class="math inline">\(\pi_6(\mathbb
+S^{\wedge}_2)=\mathbb F_2\)</span>, with the original permanent-cycle
+representative. The <a
+href="the-original-odd-prime-cooperations-and-degree-six-adams-calculation.html#odd-actual-adams">actual
+odd-prime companion</a> now proves the full signed bar and original
+suspension calculation, the actual cooperation degrees needed by stem
+six, and the signed comparison with the original Adams tower. It proves
+<span class="math inline">\(\pi_6(\mathbb S^{\wedge}_p)=0\)</span> for
+every odd prime. The <a
+href="the-original-integral-stable-group-and-its-completion-maps.html#integral-degree-six-answer">original
+integral comparison</a> now proves finite generation of the original
+sphere groups, the exact suspension range and the full unit comparison
+with all prime completions. It proves <span
+class="math inline">\(\pi_6(\mathbb S)=\mathbb Z/2\mathbb Z\)</span> and
+that the original 2-completion unit is an isomorphism in degree six. The
+<a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">original
+geometric framing proof</a> constructs the full quadratic invariant,
+proves framed bordism invariance and gives value zero for the original
+framed homotopy six-sphere, with an actual framed nullbordism. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> now constructs the new interior gluing
+with its full frame defect, cancels every actual handle and gives the
+orientation-preserving diffeomorphism to the original six-sphere,
+homotopic to its original degree-one map.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

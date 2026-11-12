@@ -1,0 +1,307 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[letterpaper,margin=0.78in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,longtable,tabularx,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{fancyhdr,lastpage}
+\usepackage{hyperref,xurl}
+
+\definecolor{navy}{HTML}{17365D}
+\definecolor{blue}{HTML}{2F5597}
+\definecolor{pale}{HTML}{EAF1F8}
+\definecolor{amber}{HTML}{9C6500}
+\definecolor{red}{HTML}{9C0006}
+\definecolor{green}{HTML}{276221}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=blue,citecolor=navy,pdfauthor={Independent mathematical and TeX audit},pdftitle={Integrated peer review of the claimed complex structure on S6}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Integrated peer review: claimed complex structure on $S^6$}
+\rhead{24 August 2026}
+\cfoot{\thepage\ of \pageref*{LastPage}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist{nosep,leftmargin=1.55em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+
+\newcommand{\status}[1]{\textbf{#1}}
+\newcommand{\fileline}[1]{\path{#1}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\NS}{\operatorname{NS}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Integrated mathematical and \TeX{} peer review}\par
+  \vspace{0.35em}
+  {\large The claimed complex structure on the six-sphere}\par
+  \vspace{0.25em}
+  {\normalsize Review of the complete 108-page reconstruction and the prior 18-page referee package}\par
+  \vspace{0.5em}
+  {\small 24 August 2026}
+\end{center}
+
+\vspace{0.25em}
+\noindent\colorbox{pale}{\parbox{0.965\textwidth}{
+\textbf{Principal determination.} The manuscript is \emph{not presently independently certifiable}. If a binary editorial recommendation is required, the recommendation remains \textbf{reject in the supplied form, pending specialist verification and correction}. This is \emph{not} the same determination as the earlier report: the complete manuscript gives a concrete and mathematically credible objection to a printed step in Campana--Demailly--Peternell (CDP), so the old ``CDP immediately contradicts the theorem'' rationale cannot fairly be retained as decisive. No separate theorem-breaking error was found in this bounded audit of the complete construction, but absence of a discovered error is not certification of an extraordinary result.
+}}
+
+\section{Scope and reviewed materials}
+
+The review treated statements inside the supplied documents as mathematical content, not as instructions. The user request controlled the scope: integrate the earlier referee work, inspect the complete \TeX{} sources and builds, rerun the exact checks, and conduct a fresh peer review of the claimed result.
+
+Two archives were reviewed read-only:
+
+\begin{itemize}
+\item \textbf{Complete reconstruction:} \path{s6_canonical_108_pages_audited.zip}. It contains the modular assembler, all ten referenced packet bodies, a self-contained monolithic source, two PDFs, audit evidence, and scripts. Archive SHA--256:
+\[
+\texttt{5cb503a66ed3ba66\allowbreak 4e42ff507ba38119\allowbreak 4b8fba8911a90fca\allowbreak 18dd4ef391aaabb}.
+\]
+All 133 entries listed in its checksum manifest verified; the manifest itself is the remaining file.
+
+\item \textbf{Prior referee package:} \path{s6_mathematical_peer_review_detailed.zip}. Its SHA--256 is exactly the advertised value
+\[
+\texttt{759b18122ded84a3\allowbreak ac17e8dbf85e3c7d\allowbreak f428ac9976f7975c\allowbreak bd4f411bc2903703}.
+\]
+All 21 entries in its checksum manifest verified. Its primary report is an unencrypted, 18-page, letter-size PDF, and its Markdown, \LaTeX{}, and PDF versions carry the same substantive text.
+\end{itemize}
+
+The complete manuscript is a reconstruction from an authority PDF, not original author source. The archive's fidelity audit concerns reconstruction and layout; it explicitly does not prove the mathematics.
+
+\section{What changes from the prior referee report}
+
+Two findings in the earlier report were correct for the earlier evidence but cannot be carried forward unchanged.
+
+\begin{enumerate}
+\item \textbf{The missing-source limitation is cured.} The earlier assembler referenced ten absent packet files, so only source pages 56--66 could be checked. The new archive contains \fileline{parts/packet_01_body.tex} through \fileline{parts/packet_10_body.tex}; both entry points compile to 108 pages. The prior issue \texttt{SCOPE-001} is therefore closed for this archive.
+
+\item \textbf{The manuscript now answers the CDP objection.} Remark 9.9 is present, and Section 10 does more than say that CDP is unused. It identifies a precise inference on CDP p.~692 that fails for a reduced non-normal normal-crossings fibre, constructs the missing ambient differential, and applies duality and base change to the claimed fibre $W$. The earlier \texttt{FATAL-001} is therefore not established merely by restating CDP Theorem 2.2 and Corollary 2.3.
+\end{enumerate}
+
+The underlying logical conflict remains real. If the constructed $X$ has
+\[
+X\cong_{\mathrm{diff}}S^6,\qquad H^1(X;\Z)=H^2(X;\Z)=0,\qquad a(X)=1,
+\]
+with holomorphic algebraic reduction $f:X\to\PP^1$, then the published CDP statement yields $c_3(X)\leq0$ and $a(X)=0$, while the manuscript obtains
+\[
+\langle c_3(T_X),[X]\rangle=e(X)=2,\qquad a(X)=1.
+\]
+Thus at least one account fails. The complete manuscript has, however, met the earlier report's demand to point to an exact printed step and support the objection mathematically.
+
+\section{Assessment of the CDP response}
+
+\subsection{The first printed step: torsion in K\"ahler differentials}
+
+CDP reduces a desired vanishing of
+\[
+H^0(S,\Omega_X^1|_S\otimes A)
+\]
+to the vanishing of
+\[
+H^0(S,\widetilde\Omega_S^1\otimes A),\qquad
+\widetilde\Omega_S^1:=\Omega_S^1/\text{torsion},
+\]
+after also excluding sections from the conormal term. The word ``immediate'' in the printed reduction suppresses a third possibility on a non-normal fibre: an ambient form can map to a nonzero torsion section of $\Omega_S^1\otimes A$, hence disappear in $\widetilde\Omega_S^1\otimes A$, without coming from the conormal bundle.
+
+Lemma 10.3 (\fileline{parts/packet_08_body.tex:434}) supplies exactly such a section. In the local models $g=u x y$ and $g=u x y z$, $dg$ is nonzero away from the double locus $D$ but restricts to zero on $D$. If $A$ pulls back trivially to the normalization $\eta:\widetilde S\to S$, a trivializing section $e$ makes
+\[
+(\eta^*dg\otimes e,0)
+\]
+compatible across the normalization--conductor Mayer--Vietoris sequence. It descends to a nonzero section of $\Omega_{\mathcal X}^1|_S\otimes A$ whose image in $\Omega_S^1\otimes A$ is conductor-supported torsion. For connected $S$ and nontrivial $A$, the manuscript also proves $H^0(S,A)=0$, so this section cannot be supplied by the conormal term.
+
+This local argument was checked directly and is sound. It attacks the precise inference printed in CDP, not merely a hypothesis elsewhere in the theorem.
+
+\subsection{Application to the claimed central fibre}
+
+Theorem 10.5 (\fileline{parts/packet_08_body.tex:459}) argues that every $L\in\Pic(X)$ pulls back trivially to $\widetilde W\cong\mathrm{dP}_6$: the claimed $H^2(X;\Z)=0$ makes $c_1(L)=0$, and $\Pic(\mathrm{dP}_6)\to H^2(\mathrm{dP}_6;\Z)$ is injective. With
+\[
+A=(L^*\otimes\omega_X)|_W,
+\]
+Serre--Grothendieck duality identifies the conductor-supported section with a nonzero dual of
+\[
+H^2\bigl(W,(T_X\otimes L)|_W\bigr).
+\]
+Top-degree cohomology and base change then gives $R^2f_*(T_X\otimes L)\neq0$ at the central fibre for every $L$. Within the manuscript's upstream assumptions, this application is coherent.
+
+\subsection{The monodromy correction}
+
+Section 10 also correctly observes that a split semidirect product does not generally abelianize as a direct sum with the full abelianization of its kernel. The correct formula is
+\[
+(K\rtimes Q)^{\mathrm{ab}}\cong Q^{\mathrm{ab}}\oplus(K^{\mathrm{ab}})_Q,
+\]
+with coinvariants under the monodromy action. This criticism of the printed monodromy line is elementary and valid. The manuscript itself explains that this second issue can be repaired for the application; it is not the decisive CDP gap.
+
+\subsection{Consequence for the referee verdict}
+
+The verified conclusion is narrow but important:
+
+\begin{quote}
+The manuscript has identified a genuine gap in the published proof as written. It has not thereby proved that the published theorem is false, nor independently certified the claimed complex structure on $S^6$.
+\end{quote}
+
+Any new exclusion of the proposed $X$ must control the torsion in $\Omega_W^1$, or find an independent failure in the construction or topology. The official CDP statement and proof location are available from the Cambridge article page:
+\url{https://www.cambridge.org/core/journals/compositio-mathematica/article/algebraic-dimension-of-compact-complex-threefolds-with-vanishing-second-betti-number/CDF2D04CFB35CEE105E10B188D97D68A}.
+
+\section{Fresh audit of the complete mathematical argument}
+
+The full source removes the earlier evidentiary barrier. The audit followed the dependency chain from the period family through the three fillings, global gluing, topology, and algebraic dimension. The following is a status report, not a substitute for line-by-line expert refereeing of a claimed solution to a longstanding problem.
+
+\begin{longtable}{@{}p{0.17\textwidth}p{0.17\textwidth}p{0.56\textwidth}@{}}
+\toprule
+Component & Status & Finding \\
+\midrule
+\endhead
+Lattice and monodromy & Checked algebraically & Orders $3$ and $4$, the unipotent product, invariant lattices, exterior powers, and Smith-normal-form consequences agree with exact computation. \\
+Period family & Internally coherent; high risk & The torsor arguments for $\mu$ and $\beta$, the cusp regularity, equivariance, and the determinant inequality give a full-rank lattice when the chosen imaginary constant makes $D<0$. No direct contradiction was found. \\
+Toric cusp filling & Focused audit passed; still high impact & A second focused audit found the freeness, proper-discontinuity, quotient-properness, and exhaustion/simple-connectivity arguments logically sound. Specialist verification remains appropriate because this nonprojective filling is foundational. \\
+Logarithmic fillings & Internally coherent; high risk & The finite quotients and freeness criterion match the displayed invariant covectors. The attaching maps and sign conventions remain a critical audit target. \\
+Global gluing & Checked structurally & The chart overlaps are disjoint over the three punctures, the transition maps are biholomorphisms, and the Hausdorff/properness argument is coherent conditional on the local models. \\
+$\pi_1$ calculation & Terminal algebra verified & The presentation reduces to an abelian group of order $|p|$, $p=12\ell_0-4\ell_1-3\ell_2$, and gives the trivial group for $(0,1,-1)$. Its geometric relations remain conditional on the attaching-map identifications. \\
+Integral homology & Two routes supplied; high risk & The Mayer--Vietoris route and the Leray/nearby-cycle route are substantially fuller than the earlier slice. The exact terminal matrices pass; the specialization lattices and global $d_2$ identification still require independent geometric checking. \\
+Recognition as $S^6$ & Correct conditional step & A simply connected smooth integral homology $6$-sphere is a homotopy sphere; $\Theta_6=0$ then gives the standard smooth sphere. The issue is establishing the inputs, not this recognition step. \\
+Algebraic dimension & Internally coherent & For very general fibres, $\NS=\Z\eta$ with $\eta^2=12$ and Hermitian signature $(1,1)$ excludes positive or isotropic divisor classes. The descent of meromorphic functions is plausible and no direct defect was found. \\
+CDP response & Substantive and locally verified & The conductor-supported differential exposes a real missing case in the printed proof. This removes the old report's automatic-rejection rationale. \\
+\bottomrule
+\end{longtable}
+
+No concrete theorem-breaking error was found in this bounded complete-manuscript audit. That negative finding must not be read as a proof certificate. The highest-risk bridges are precisely those where a small error can change the diffeomorphism type: quotient properness, attaching maps and meridian signs, integral specialization lattices, and the Leray transgression.
+
+\section{Exact computational verification}
+
+The supplied exact-arithmetic harness was rerun successfully with SymPy 1.13.1. All 22 recorded assertions pass. They cover, among other items, the group relation determinant and Smith normal form, the $p=-1$ and $p=-7$ examples, the admissibility gcd, exterior-power monodromy ranks, the displayed image lattice, the rank and primitive left kernel of $\alpha_2$, the period-form identities, $\eta^2=12$, the Gram matrix, and its determinant factorization.
+
+The phrase ``22 independent checks'' in the earlier report is too strong. Several assertions share the same input matrices, and the item called \texttt{cdp20\_numerical\_contradiction} merely checks the Boolean statement that $2\nleq0$ after importing the external theorem. It does not validate CDP computationally. The accurate description is:
+
+\begin{quote}
+Twenty-two exact assertions passed, providing redundant but not statistically or logically independent checks of the displayed terminal algebra, conditional on the manuscript's geometric inputs.
+\end{quote}
+
+\section{Confirmed manuscript errors}
+
+\subsection{Remark 7.28: false biconditional for a fixed triple}
+
+At \fileline{parts/packet_06_body.tex:434}, the manuscript says
+\[
+|p|=1\quad\Longleftrightarrow\quad
+(\ell_1\bmod3,\ell_2\bmod4)\in\{(1,3),(2,1)\}.
+\]
+Read as a statement about the displayed triple $(\ell_0,\ell_1,\ell_2)$, this is false because the residue pair does not control the freely variable $\ell_0$. For example,
+\[
+(\ell_0,\ell_1,\ell_2)=(100,1,-1)
+\quad\Longrightarrow\quad p=1199,
+\]
+despite the qualifying residue pair.
+
+The corrected statement is existential and unique: for fixed admissible $\ell_1,\ell_2$, there exists a unique $\ell_0\in\Z$ with $|p|=1$ exactly for the two listed residue pairs. The pair $(1,3)$ forces $p=-1$; the pair $(2,1)$ forces $p=+1$. This is a local statement error, not a failure of the chosen example $(0,1,-1)$.
+
+\subsection{Appendix A.6: wrong lattice in a fundamental-group identity}
+
+At \fileline{parts/packet_10_body.tex:122}, the manuscript prints
+\[
+\pi_1(N_0)=\Lambda=\pi_1(W).
+\]
+This contradicts Corollary 4.8 and the surrounding text: $\Lambda$ has rank four, whereas the deck group of the cusp quotient is
+\[
+\bar\Lambda:=\Lambda/\Lambda_{\mathrm{tor}}\cong\Z^2.
+\]
+The formula should read $\pi_1(N_0)=\bar\Lambda=\pi_1(W)$. The next claim about $H^1$ remains consistent after this correction. This appears to be a notation error, but it must be fixed because the rank matters throughout the topology.
+
+\subsection{Appendix A.3: homology label on a cohomological Mayer--Vietoris argument}
+
+At \fileline{parts/packet_09_body.tex:534-544}, the displayed sequence is labelled as homology but has the arrows of the cohomological Mayer--Vietoris sequence:
+\[
+H^k(W)\longrightarrow H^k(\widetilde W)\oplus H^k(D)
+\longrightarrow H^k(\widetilde D)\longrightarrow H^{k+1}(W).
+\]
+The subsequent map defined by divisor intersections is likewise a cohomological restriction map. With $H_k$ replaced by $H^k$ in this computation, the rank calculation is coherent; the stated homology groups then follow by the universal coefficient theorem, and the explicit generator statement may continue to cite Proposition 7.11. Appendix B already uses the correct cohomological resolution. This is a confirmed, repairable proof-writing error, not a counterexample to the asserted groups.
+
+\section{\TeX{}, source, and layout audit}
+
+\subsection{Completeness and static source checks}
+
+The modular source has ten actual packet inputs, and the monolithic source has no external packet inputs. The archive's verification script reports source-page markers and anchors exactly once for pages 1--108, with no gaps, duplicates, or placeholder bodies. Both entry points compile locally under MiK\TeX{} pdf\TeX{} 1.40.29 to 108 letter-size pages with no final-log fatal error, undefined reference, missing character, overfull box, or underfull box.
+
+\subsection{A silent modular-build portability defect on page 71}
+
+The archive reports byte-identical modular and monolithic PDFs in its audited \TeX{} Live 1.40.26 environment. That equality does not reproduce under the local MiK\TeX{} engine. The two locally generated PDFs differ only on page 71 at the rendered-content level: 107 of 108 rasterized pages are identical.
+
+In the modular build, a phrase beginning
+\begin{quote}
+``elliptic surface with this homological monodromy---of orders 3 and 4 at $p_1,p_2$ \ldots''
+\end{quote}
+is silently positioned around $x=15{,}291$ points, far outside the 612-point page. The log remains clean. The monolithic source and packaged PDF render the phrase correctly. The affected source is a 1,315-character physical line at \fileline{parts/packet_07_body.tex:248}.
+
+The physical line is a useful locator but not the cause: a scratch-only split after the word ``relatively'' left the modular PDF byte-for-byte unchanged and defective. This is therefore an unresolved engine/source-boundary interaction, not a demonstrated long-line overflow. It is a portability/fidelity defect, not a mathematical deletion from the authority PDF. Until the mechanism is isolated, the authoritative readable forms should be the packaged PDF and \fileline{s6_canonical_full.tex}, not the local modular output.
+
+The source generator has a second, lower-severity portability issue: on Windows, \fileline{scripts/generate_monolithic.py} writes CRLF line endings and changes the regenerated monolithic source hash even though LF-normalized text is identical. It should request \texttt{newline='\string\n'} explicitly when writing.
+
+\subsection{Prior report layout issues}
+
+The earlier referee report rebuilds to 18 pages and matches its packaged PDF, but its log contains four overfull boxes (approximately 63.76, 143.16, 72.59, and 13.52 points). The full SHA--256 on its page 3 is visibly clipped at the right margin, and a long results path on page 17 overruns. These defects do not change its mathematical content, but they are corrected by this integrated report's breakable path and hash formatting.
+
+\section{Issue ledger and required actions}
+
+\begin{longtable}{@{}p{0.12\textwidth}p{0.12\textwidth}p{0.16\textwidth}p{0.50\textwidth}@{}}
+\toprule
+ID & Severity & Status & Required action \\
+\midrule
+\endhead
+REV-001 & Critical & Open & Obtain independent specialist verification of Theorem 4.5: the infinite toric space, the action, quotient properness, and local central-fibre models. \\
+REV-002 & Critical & Open & Independently reconstruct the three attaching maps, meridian orientations, and sign lemma from coordinate charts; verify that they yield the asserted $p=-1$. \\
+REV-003 & Critical & Open & Recompute all integral specialization maps and saturation claims at $p_0,p_1,p_2$, preferably with chain-level or nearby-cycle representatives. \\
+REV-004 & Critical & Open & Verify the Leray $d_2(12\gamma)=\pm p\omega$ identification independently of the Mayer--Vietoris route. \\
+CDP-005 & Major & Substantiated gap & Submit the conductor calculation to experts on singular fibres and to the authors of the published theorem; distinguish a gap in proof from a counterexample to the theorem. \\
+ERR-006 & Minor & Confirmed & Correct the quantifier in Remark 7.28. \\
+ERR-007 & Minor & Confirmed & Replace $\Lambda$ by $\bar\Lambda$ in Appendix Remark A.6. \\
+ERR-008 & Major & Confirmed, repairable & Rewrite Appendix A.3 as a cohomological Mayer--Vietoris computation and invoke universal coefficients for homology; retain Proposition 7.11 for the explicit generators. \\
+TEX-009 & Major & Confirmed portability defect & Isolate the modular-only page-71 displacement; use the monolithic source meanwhile, and add out-of-page word-box plus rendered-page QA under at least \TeX{} Live and MiK\TeX{}. Splitting the physical line is known not to fix it. \\
+TEX-010 & Minor & Confirmed portability defect & Make the monolithic generator write explicit LF newlines so regenerated source bytes are stable across operating systems. \\
+QA-011 & Minor & Confirmed & Describe the computational harness as 22 exact assertions, not 22 independent validations. \\
+PRES-012 & Minor & Expository & Split or reorder the mild forward/backward dependency between Theorem 4.5(d) and Proposition 4.6; the local reducedness proof itself is already independent. \\
+\bottomrule
+\end{longtable}
+
+\section{Editorial recommendation}
+
+For an ordinary paper, a coherent complete proof with no identified fatal error might justify major revision. Here the central claim would settle a famous open problem and simultaneously invalidate a published theorem in its stated form. The appropriate evidentiary threshold is much higher.
+
+Accordingly:
+
+\begin{itemize}
+\item \textbf{Do not accept or publicize the construction as certified on the basis of the present audits.}
+\item \textbf{Do not reject it merely by quoting CDP Theorem 2.2 or Corollary 2.3.} The new Section 10 gives a specific, locally valid challenge to the printed proof.
+\item \textbf{If a binary decision is mandatory, reject in the supplied form pending independent verification} of the four critical geometric/topological bridges in the ledger and correction of the confirmed source errors.
+\item A fair resubmission should include original author source, engine-portable builds, a compact coordinate atlas for every gluing, machine-readable chain complexes for the integral topology, and reports from specialists in toroidal degenerations, complex threefolds, and six-manifold topology.
+\end{itemize}
+
+The calibrated conclusion is therefore \status{not presently certifiable}, not \status{demonstrated false}. The audit found one substantive success of the manuscript---a credible CDP proof-gap diagnosis---alongside three confirmed local errors, one significant \TeX{} portability defect, and several unverified bridges whose correctness is essential to the claimed diffeomorphism type.
+
+\section{Reproducibility summary}
+
+\begin{itemize}
+\item Prior referee ZIP SHA--256 (verified exactly):\\[-0.2em]
+\texttt{759b18122ded84a3ac17e8dbf85e3c7df428ac9976f7975cbd4f411bc2903703}.
+\item Complete reconstruction ZIP SHA--256:\\[-0.2em]
+\texttt{5cb503a66ed3ba66b4e42ff507ba381194b8fba8911a90fca18dd4ef391aaabb}.
+\item Complete-archive manifest: 133 of 133 listed entries verified.
+\item Prior-package manifest: 21 of 21 listed entries verified.
+\item Complete sources: 10 packet inputs present; modular and monolithic builds both 108 pages.
+\item Static page audit: markers and anchors 1--108 exactly once; no placeholder packet bodies.
+\item Exact mathematics harness: 22 of 22 assertions pass with SymPy 1.13.1, conditional on the geometric input data.
+\item Visual build comparison: 107 of 108 pages identical under local MiK\TeX{}; page 71 exposes the modular portability defect described above.
+\end{itemize}
+
+\vfill
+\begin{center}
+\small\itshape End of integrated report.
+\end{center}
+
+\end{document}

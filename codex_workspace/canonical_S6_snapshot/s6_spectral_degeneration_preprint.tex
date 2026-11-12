@@ -1,0 +1,2645 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,amscd,mathtools,mathrsfs}
+\usepackage{booktabs,array}
+\usepackage{enumitem}
+\usepackage{natbib}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.52em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathbb T}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\opnorm}[1]{\left\lVert #1\right\rVert_{\mathrm{op}}}
+\newcommand{\Verified}{\textbf{Verified.}\ }
+
+\title{Cusp Spectral Degeneration and Local Toric Kummer Extension\\
+\large Conditional results from the reconstructed candidate $S^6$
+complex-torus fibration}
+\author{A specialist-verification draft\\
+\small based on the candidate $S^6$ construction of Levent Alp\"oge}
+\date{Revised conditional specialist-verification draft, 4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Use the period, integral-monodromy, and toric-cusp data from a recent
+manuscript proposing a complex structure on $S^6$.  Those inputs have been
+reconstructed and separately verified in the accompanying workbench, but
+they are imported, rather than reproved, in this standalone note.  The
+regular fibres are marked complex two-tori
+\[
+ F_z=\C^2/\mathsf P_z\Z^4
+\]
+with an explicit real period matrix $\mathsf P_z$.  We equip the covering space $\R^4\cong\C^2$ with its coordinate Euclidean metric and study the resulting scalar fibre Laplacians.  Every fixed fibre has a positive first eigenvalue.  Nevertheless, on the actual manuscript cusp, where $T=\operatorname{Im}\tau\to\infty$, $\mu$ and $\beta+\tau$ remain bounded, one has the sharp asymptotics
+\[
+ \lambda_1(F_z)=\frac{4\pi^2}{T^2}
+ \left(1+\frac{2\min\{b_{\mathrm I,0},0\}}{T}+O(T^{-2})\right),
+ \qquad
+ \operatorname{Vol}(F_z)=T^2-b_{\mathrm I,0}T+O(1),
+\]
+where $b_{\mathrm I,0}=\operatorname{Im}(\beta+\tau)(0)$.  The two possible shortest
+signed Fourier pairs, their exact comparison, and their first corrections are
+determined below.  After rescaling each four-torus to unit volume, the first
+eigenvalue still tends to zero, now as $4\pi^2/T$.  The decomposable vertical
+operator obtained by integrating the mean-zero fibre Laplacians along a cusp
+ray is injective but has zero at the bottom of its essential spectrum.
+
+The degeneration is not represented by only one soft Fourier mode.  If
+$\mathcal D_T:=|\det\mathsf P_z|=-TD$ and $N_T(E)$ counts scalar
+eigenvalues with Fourier multiplicity, then throughout the first transverse
+band $0<E<4\pi^2$ one has the fixed-energy law
+\[
+ N_T(E)=\frac{E\mathcal D_T}{4\pi}+O_E(T).
+\]
+Thus a two-dimensional density of low modes grows on the order of the fibre
+covolume.  We also give the unit-volume counting law and the exact finite
+count at the collapsing $T^{-2}$ scale.
+
+The native marked four-tori do not converge to $\R^4$: their pointed smooth
+limit is $\T^2\times\R^2$.  Replacing the two fixed unit periods by $M$ times
+those periods gives degree-$M^2$ local fibre covers.  They converge pointed
+  smoothly to $\R^4$, along sequences with $T\to\infty$, exactly when
+  $M\to\infty$ for the unscaled metric.  For
+the pullback of the base-fibre unit-volume metric the condition is
+$M/T^{1/2}\to\infty$; if every cover is instead normalized to have its own
+volume one, no choice of $M$ has pointed smooth limit $\R^4$.  After the
+cyclic base change $t_c=v^M$ the cover monodromy is integral, and the complete
+cover spectrum separates its deck-invariant pullback sector from its new
+momentum sectors.  These finite-cover limits are different from both the
+native $\T^2\times\R^2$ limit and the quotient constructions below.
+
+The full monodromy has, up to sign, a unique primitive invariant integral character.  It gives a real, non-holomorphic circle quotient of the regular group family.  In the convention above, with $m=\operatorname{Im}\mu$, $D=\operatorname{Im}\beta-6m^2/T<0$, and $b_{\mathrm I,0}=\operatorname{Im}(\beta+\tau)(0)$, its exact quotient circumference and radial asymptotic are
+\[
+ \ell_\gamma=\frac{-TD}{\sqrt{T^2+m^2}}
+ =T-b_{\mathrm I,0}+O(T^{-1}).
+\]
+Four synchronized copies, with no base change or fibre cover, give a real four-torus quotient over the full regular base whose radial fibres converge pointed locally isometrically to $\R^4$.  Four copies are minimal within the class of fixed primitive full-monodromy-invariant kernels equipped with the induced product quotient metric.  The literal map to this fixed product $\mathbb T^4$ target does not extend continuously through the asserted toric cusp and does not factor through the fourfold smash collapse; these statements concern that target and that regular-fibre restriction only.
+
+The included local toric theorem gives the exact Kummer extension after the
+base change $t=v^N$.  If $Z(s)=sB_0+C(t)$, the source action is not the
+naive target action with $v$ substituted for $t$: it is
+\[
+ \Psi^{(N)}_{\bar\lambda}(\xi,v)
+ =\left(\exp\!\left(\frac{2\pi i}{N}C(v^N)\bar\lambda\right)
+ v^{B_0\bar\lambda}\xi,v\right).
+\]
+With this action, $(\xi_1,\xi_2,v)\mapsto
+(\xi_1^N,\xi_2^N,v^N)$ descends to a finite flat map of degree $N^3$ to
+the original completed cusp family.  Its factor to the base-changed target
+has generic degree $N^2$; for $N>1$ that relative map is quasi-etale but not
+flat along the preimages of the double and triple central-fibre strata.
+This is a completed local cusp morphism, not a cover over the full base.
+
+For the classical Yang--Mills functional at the product connection, Coulomb
+reduction gives an exact Hessian gap
+\[
+ \gamma_T=\frac{4\pi^2}{g_{\mathrm{YM}}^2T^2}
+ \left(1+\frac{2\min\{b_{\mathrm I,0},0\}}{T}+O(T^{-2})\right).
+\]
+The corresponding finite cubical cochain model has exact gap
+$\rho_N/(4\pi^2)$ times this value, where
+$\rho_N=4N^2\sin^2(\pi/N)$; it closes as $T^{-2}$ uniformly for every
+$N\ge2$, although resolving the varying continuum metric requires
+$N/T\to\infty$.  These are linear classical fluctuation operators, not a
+nonlinear lattice gauge theory or a quantum Hamiltonian.
+
+An independent compact-link and Gaussian construction keeps the cover index
+$M_{\mathrm{cov}}$ separate from the cubical subdivision count
+$N_{\mathrm{mesh}}$.  It proves the exact holonomy and plaquette formulas for
+an explicit periodic $\mathrm{SU}(2)$ flux and the complete finite cochain
+spectrum.  The associated finite-dimensional Gaussian oscillator has a
+unique ground state and gap $\sqrt{\lambda_{\min}}$.  Along the explicit
+sequence
+\[
+ R_j=j^2,\qquad M_{\mathrm{cov},j}=j,\qquad
+ N_{\mathrm{mesh},j}=j^3,
+\]
+the covering tori converge pointed locally isometrically to $\R^4$, the mesh
+resolves the varying metric, and both the Gaussian gap and the displayed
+logarithmic flux action tend to zero.  This Gaussian Hilbert space is an
+$L^2$-space on a linear Coulomb slice; it is not the compact-link Haar
+Hilbert space and does not define an interacting Hamiltonian.
+
+For every fixed nondegenerate integral alternating form $\mathsf E$ on the
+marked four-torus, the associated constant-curvature magnetic Laplacian has
+oscillator frequencies $b_1,b_2>0$ satisfying
+\[
+ b_1b_2=\frac{4\pi^2|\operatorname{Pf}(\mathsf E)|}{\mathcal D_T},
+ \qquad
+ \operatorname{gap}\le
+ 4\pi\sqrt{\frac{|\operatorname{Pf}(\mathsf E)|}{\mathcal D_T}}
+ =O(T^{-1}).
+\]
+This is a fibrewise statement in the marked cusp family and does not by
+itself globalize the flux through monodromy.  The actual lattice nevertheless
+has the explicit invariant full-flux class
+\[
+ \eta=u\wedge w+6\gamma\wedge\delta,
+ \qquad \operatorname{Pf}(\eta)=6.
+\]
+Writing $R$ for logarithmic cusp height, its two charge-one frequencies obey
+$\mathcal B_{R,+}\mathcal B_{R,-}=24\pi^2/D_R$ and have leading terms
+$12\pi/R$ and $2\pi/R$.  Every joint Landau level has complex multiplicity
+six, and the first distinct spacing is $4\pi/R+O(R^{-2})$.  The corresponding
+maximal multiplication operators on both the fixed and varying measurable
+radial Hilbert fields are self-adjoint and have purely continuous spectrum
+$[0,\infty)$, empty point spectrum, and zero kernel.  The radial variable in
+these operators is only a direct-integral parameter: there is no radial
+derivative or boundary condition.
+
+The split connection on
+$\mathscr L_{\eta,R}\oplus\mathscr L_{\eta,R}^{-1}$ is a non-flat reducible
+$\mathrm{SU}(2)$ Yang--Mills critical point.  Its closed Coulomb Jacobi
+operator has exactly three negative bands on a sufficiently deep cusp tail,
+each of real multiplicity $48$, and hence real Morse index $144$.  For every
+nonzero trace-zero integral weight vector
+$\mathbf m\in\mathbb Z^r$, the split-Cartan $\mathrm{SU}(r)$ construction has
+exact rootwise negative bands and deep-tail index
+$36r\sum_jm_j^2$.  These are spectra of classical fibre Hessians at explicit
+reducible backgrounds, not the spectrum of interacting four-dimensional
+quantum Yang--Mills theory.
+
+By contrast, the specific degree-six magnetic construction pulled back from
+the holomorphic first-coordinate elliptic quotient requires
+$6\mu=a\tau+b$ for integers $a,b$.  We prove, from the stated transformation
+and cusp laws, that this exceptional locus has no cusp-accumulating sequence
+and is finite on the completed orbifold base.  Consequently that
+first-coordinate Landau spectrum cannot supply the cusp limit.  Finally, all
+fibre and finite Gaussian degenerations are distinguished from the scalar
+Laplacian of any smooth metric on the compact total space, which necessarily
+has compact resolvent and a positive first eigenvalue.
+\end{abstract}
+
+\paragraph{Status and logical scope.}
+All statements involving the global $S^6$ fibration use the unpublished
+construction in \citet{AlpogeS6_2026}.  Its topology, singular-fibre maps,
+and direct-image argument have been reconstructed and separately verified in
+the accompanying proof-verification workbench; this standalone note imports
+that geometric package as stated input instead of reproducing those proofs.
+A contemporaneous downstream paper treats
+that construction as an assumption rather than supplying an independent
+proof \citep{LiangLiuZhang_2026}.  The linear algebra, Fourier spectra, cusp
+estimates, and direct-integral argument below are independent deductions
+from the displayed period and cusp formulae.  The regular-locus quotient
+theorem additionally uses the asserted integral monodromy matrices, which
+are restated and checked below; its nonextension statement additionally uses
+the asserted toric cusp chart, and is only a nonextension result for the
+literal fixed product-circle target with the stated regular-fibre map.  The
+quotient map is real.  Its radial
+circumference and pointed-limit statements use the separately chosen
+Euclidean metrics on marked cusp fibres; no deck-invariant global fibre
+metric is asserted.  It is neither the holomorphic first-coordinate quotient
+nor the separate degree-$M^2$ cover construction.
+The counting theorem and the arbitrary-flux magnetic theorem are likewise
+statements along the marked cusp.  A general alternating form $\mathsf E$ is
+fixed only in the marked lattice; a global magnetic line bundle over the
+regular family would require additional descent data.  Separately, the
+displayed class $\eta=u\wedge w+6\gamma\wedge\delta$ is proved invariant
+under the asserted monodromy generators and is realized by an explicit factor
+of automorphy on every marked fibre.  The radial direct-integral theorem uses
+Lebesgue measure in logarithmic height and a multiplication operator with the
+exact maximal domain; it includes no radial derivative.
+The local toric Kummer theorem included below is proved for a completed cusp
+disc.  It uses the modified source factor
+$\exp(2\pi iC(v^N)\bar\lambda/N)$ and distinguishes the degree-$N^3$ map
+to the original cusp family from the generic degree-$N^2$ relative map to
+the base-changed target.  It supplies no full-base cover.  The separate cone
+targets, simultaneous-root construction, and Seifert filling proofs in the
+canonical workbench are not imported or claimed here.  This paper does prove
+statements about scalar and magnetic fibre Laplacians, their specified
+decomposable radial multiplication operators, classical Yang--Mills Hessians
+at the product and explicit reducible split backgrounds, an honest
+compact-link flux configuration, and explicitly defined finite cochain and
+Gaussian models.  It constructs neither nonlinear quantum Yang--Mills theory
+nor a four-dimensional physical Hamiltonian, and makes no physical mass-gap
+claim.
+
+\section{Conditional period data}
+
+Let $\mathfrak h_z$ be the marked parameter upper half-plane used in the proposed construction.  The asserted holomorphic period functions are
+\[
+ \tau:\mathfrak h_z\longrightarrow\mathfrak h,
+ \qquad \mu,\beta:\mathfrak h_z\longrightarrow\C,
+\]
+and the complex period matrix and its real form are
+\begin{equation}\label{eq:Z-P}
+ Z(z)=\begin{pmatrix}6\mu(z)&\tau(z)\\ \beta(z)&\mu(z)\end{pmatrix},
+ \qquad
+ \mathsf P_z=
+ \begin{pmatrix}
+ 6\Re\mu&\Re\tau&1&0\\
+ 6\Im\mu&\Im\tau&0&0\\
+ \Re\beta&\Re\mu&0&1\\
+ \Im\beta&\Im\mu&0&0
+ \end{pmatrix}.
+\end{equation}
+Write
+\begin{equation}\label{eq:D}
+ T=\Im\tau>0,
+ \qquad m=\Im\mu,
+ \qquad p=\Im\beta,
+ \qquad D=p-\frac{6m^2}{T}.
+\end{equation}
+The manuscript asserts that an additive normalization of $\beta$ can be chosen so that $D<0$ everywhere and proves the determinant identity
+\begin{equation}\label{eq:detP}
+ \det\mathsf P_z=T D.
+\end{equation}
+Thus $\mathsf P_z\Z^4$ is a full lattice in $\R^4$ at each regular parameter.
+
+At the distinguished cusp, let $t_c$ be a local coordinate with $t_c=0$ at the added point.  The manuscript gives
+\begin{equation}\label{eq:cusp-input}
+ q=e^{2\pi i\tau}=t_cu_1(t_c),\qquad u_1(0)\ne0,
+\end{equation}
+while $\mu$ and $b:=\beta+\tau$ extend holomorphically across $t_c=0$.
+On a sufficiently small cusp disc choose a holomorphic logarithm of $u_1$ and
+put
+\begin{equation}\label{eq:cusp-s-coordinate}
+ h=\frac{1}{2\pi i}\log u_1,\qquad
+ s=\tau-h,\qquad e^{2\pi i s}=t_c.
+\end{equation}
+The positive radial lift is $s=iR$, where $R\to\infty$.  We reserve
+$T=\operatorname{Im}\tau=R+\operatorname{Im}h$ for the convention in
+\eqref{eq:D}; the radial height $R$ is therefore not denoted by $T$ in this
+paper.  Along that lift put
+\begin{equation}\label{eq:radial-b-data}
+ B_R:=\operatorname{Im}b(e^{-2\pi R}),\qquad
+ b_{\mathrm I,0}:=\operatorname{Im}b(0),\qquad
+ m_0:=\operatorname{Im}\mu(0).
+\end{equation}
+Holomorphy at the cusp gives
+\begin{equation}\label{eq:radial-holomorphic-errors}
+ B_R=b_{\mathrm I,0}+O(e^{-2\pi R}),\qquad
+ m=m_0+O(e^{-2\pi R}),
+\end{equation}
+and, because $b=\beta+\tau$,
+\begin{equation}\label{eq:radial-covolume-exact}
+ p=B_R-T,\qquad
+ \mathcal D_T:=|\det\mathsf P_z|=-TD
+ =T(T-B_R)+6m^2>0.
+\end{equation}
+In particular, along every path in a fixed cusp sector on which $T\to\infty$,
+one has
+\begin{equation}\label{eq:cusp-asymptotic-input}
+ m=O(1),\qquad p=-T+O(1),\qquad D=-T+O(1).
+\end{equation}
+The coarse asymptotics suffice for the leading spectral term; the exact
+radial identities above determine its first correction.
+
+The generator laws needed later are
+\begin{equation}\label{eq:generator-laws}
+ \tau\circ g_0=\tau-1,\qquad \mu\circ g_0=\mu,
+ \qquad
+ \tau\circ g_2=-\frac1\tau,\qquad
+ \mu\circ g_2=1+\frac\mu\tau.
+\end{equation}
+
+For the regular-locus quotient, we also use the asserted integral lattice
+\begin{equation}\label{eq:monodromy-lattice}
+ \Lambda=\Z\langle\widehat\gamma,\widehat u,
+                    \widehat w,\widehat\delta\rangle
+\end{equation}
+in the column order of \eqref{eq:Z-P}.  Let
+$\Delta=\langle g_1,g_2\mid g_1^3=g_2^4=1\rangle$ denote the manuscript's
+triangle-group deck action.  It must not be identified with the ordinary
+fundamental group of
+$B^\circ=B\setminus\{p_0,p_1,p_2\}$.  Put $g_0=(g_1g_2)^{-1}$.  Its asserted
+action on $\Lambda$ is
+generated by
+\begin{equation}\label{eq:monodromy-matrices}
+ A_1=
+ \begin{pmatrix}
+ 1&0&0&0\\6&0&1&0\\-6&-1&-1&0\\-2&1&0&1
+ \end{pmatrix},\qquad
+ A_2=
+ \begin{pmatrix}
+ 1&0&0&0\\0&0&-1&0\\-6&1&0&0\\3&0&1&1
+ \end{pmatrix},
+\end{equation}
+and the cusp monodromy is
+\begin{equation}\label{eq:cusp-monodromy-matrix}
+ M_0=(A_1A_2)^{-1}=
+ \begin{pmatrix}
+ 1&0&0&0\\0&1&0&0\\0&1&1&0\\-1&0&0&1
+ \end{pmatrix}.
+\end{equation}
+Let $\mathfrak h_z^\circ$ be the inverse image of $B^\circ$ in the marked
+parameter cover.  We use here the manuscript's assertion that the elliptic
+fixed-point orbits have been removed, that the deck action on
+$\mathfrak h_z^\circ$ is free, and that its lift to the complex torus family
+is holomorphic and complex-linear.  The fibre over the marked cover is
+$\C^2/\mathsf P_z\Lambda$, and in flat angular coordinates the lifted action
+is
+\begin{equation}\label{eq:flat-monodromy-action}
+ (z,x+\Lambda)\longmapsto(gz,A_gx+\Lambda).
+\end{equation}
+It is linear and fixes the zero section.  Consequently its quotient
+$J=X^\circ=f^{-1}(B^\circ)$ is, conditionally on this input, a holomorphic
+family of complex Lie groups rather than merely an affine torus bundle.
+
+\section{The fixed-fibre flat spectrum}
+
+Equip $\R^4$ with the Euclidean metric in the coordinates used in \eqref{eq:Z-P}, and put
+\begin{equation}\label{eq:flat-fibre}
+ F_z^{\mathrm{flat}}=\R^4/\mathsf P_z\Z^4.
+\end{equation}
+This metric is a chosen auxiliary metric determined by the displayed coordinate realization.  It is not asserted to be canonical for the complex torus or to extend across a singular fibre of the completed family.
+
+\begin{proposition}[Fourier spectrum on a marked flat fibre]\label{prop:fixed-spectrum}
+If $\det\mathsf P_z\ne0$, let $\Delta_z$ be the nonnegative self-adjoint
+operator associated with the closed Dirichlet form
+\[
+ q_z[f]=\int_{F_z^{\mathrm{flat}}}|\dd f|^2\,
+ \dd\operatorname{vol}_{F_z},\qquad \operatorname{Dom}(q_z)=H^1(F_z^{\mathrm{flat}}).
+\]
+Then $\operatorname{Dom}(\Delta_z)=H^2(F_z^{\mathrm{flat}})$ and
+$\Delta_z$ has spectrum
+\begin{equation}\label{eq:fixed-spectrum}
+ \Spec(\Delta_z)=
+ \left\{4\pi^2\left\lVert\mathsf P_z^{-\mathsf T}k\right\rVert^2:
+ k\in\Z^4\right\},
+\end{equation}
+with multiplicities.  Its kernel is the constants and
+\begin{equation}\label{eq:fixed-gap}
+ \lambda_1(z)=4\pi^2
+ \min_{k\in\Z^4\setminus\{0\}}
+ \left\lVert\mathsf P_z^{-\mathsf T}k\right\rVert^2>0.
+\end{equation}
+For an arbitrary $k=(r,s,n_1,n_2)^{\mathsf T}$, set
+\[
+ \alpha=\Re\mu,\qquad \eta=\Re\tau,\qquad c=\Re\beta,
+\]
+\begin{equation}\label{eq:shifted-Fourier-indices}
+ R_z(k)=r-6\alpha n_1-cn_2,
+ \qquad S_z(k)=s-\eta n_1-\alpha n_2.
+\end{equation}
+The complete dual-vector formula is
+\begin{equation}\label{eq:complete-dual-vector}
+ \mathsf P_z^{-\mathsf T}k
+ =\left(n_1,
+ \frac{mR_z(k)-pS_z(k)}{-TD},n_2,
+ \frac{-TR_z(k)+6mS_z(k)}{-TD}\right).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The characters
+\[
+ e_k([x])=\exp\bigl(2\pi i\langle\mathsf P_z^{-\mathsf T}k,x\rangle\bigr),
+ \qquad k\in\Z^4,
+\]
+form the Fourier basis for the compact abelian group $F_z^{\mathrm{flat}}$.
+Applying $-\sum_j\partial_{x_j}^2$ gives the eigenvalue in
+\eqref{eq:fixed-spectrum}.  The standard closed-form construction and
+elliptic regularity give the stated form and operator domains.  The dual
+lattice is discrete, so its shortest nonzero vector has positive length.
+Standard flat-torus spectral theory gives completeness \citep{Chavel_1984}.
+Finally, solving $\mathsf P_z^{\mathsf T}x=k$ gives $x_1=n_1$ and
+$x_3=n_2$; the remaining system is
+\[
+ \begin{pmatrix}6m&p\\T&m\end{pmatrix}
+ \binom{x_2}{x_4}=\binom{R_z(k)}{S_z(k)}.
+\]
+Its determinant is $-TD$, and direct inversion proves
+\eqref{eq:complete-dual-vector}.
+\end{proof}
+
+\section{Sharp degeneration on the actual cusp}
+
+The following result uses the actual cusp behavior \eqref{eq:cusp-asymptotic-input}; it is not based on an arbitrary family in the ambient period-matrix space.
+
+\begin{theorem}[Shortest cusp modes and their first corrections]
+\label{thm:cusp-gap}
+Assume the conditional period data in Section~1 and restrict to the positive
+radial lift $s=iR$.  Put
+\[
+ e_\gamma=(1,0,0,0)^{\mathsf T},\qquad
+ e_u=(0,1,0,0)^{\mathsf T},\qquad
+ \ell_{\gamma,T}=\mathsf P_z^{-\mathsf T}e_\gamma,\qquad
+ \ell_{u,T}=\mathsf P_z^{-\mathsf T}e_u.
+\]
+For all sufficiently large $T=\operatorname{Im}\tau$, every shortest
+nonzero vector of the dual lattice belongs to
+\[
+ \{\pm\ell_{\gamma,T},\ \pm\ell_{u,T}\}.
+\]
+Their exact squared lengths and exact comparison are
+\begin{align}
+ \|\ell_{\gamma,T}\|^2
+ &=\frac{T^2+m^2}{\mathcal D_T^2},&
+ \|\ell_{u,T}\|^2
+ &=\frac{(T-B_R)^2+36m^2}{\mathcal D_T^2},
+ \label{eq:unit-mode-exact-lengths}\\
+ \mathcal D_T^2
+ \bigl(\|\ell_{\gamma,T}\|^2-\|\ell_{u,T}\|^2\bigr)
+ &=B_R(2T-B_R)-35m^2.
+ \label{eq:unit-mode-comparison}
+\end{align}
+Thus the shortest indices are $\pm e_u$ when the right-hand side of
+\eqref{eq:unit-mode-comparison} is positive, $\pm e_\gamma$ when it is
+negative, and both signed pairs when it vanishes.
+
+The two candidate eigenvalues have the expansions
+\begin{align}
+ 4\pi^2\|\ell_{\gamma,T}\|^2
+ &=\frac{4\pi^2}{T^2}
+   \left(1+\frac{2b_{\mathrm I,0}}{T}+O(T^{-2})\right),
+ \label{eq:gamma-eigenvalue-correction}\\
+ 4\pi^2\|\ell_{u,T}\|^2
+ &=\frac{4\pi^2}{T^2}
+   \left(1+O(T^{-2})\right).
+ \label{eq:u-eigenvalue-correction}
+\end{align}
+More generally, for each fixed $(r,s)\in\Z^2$,
+\begin{equation}\label{eq:general-plane-mode-correction}
+ \frac{T^2}{4\pi^2}\lambda_T(r,s,0,0)
+ =r^2+s^2+\frac{2b_{\mathrm I,0}r^2-10m_0rs}{T}+O_{r,s}(T^{-2}).
+\end{equation}
+Consequently
+\begin{equation}\label{eq:cusp-gap-result}
+ \boxed{\lambda_1(z)=\frac{4\pi^2}{T^2}
+ \left(1+\frac{2\min\{b_{\mathrm I,0},0\}}{T}+O(T^{-2})\right).}
+\end{equation}
+If $b_{\mathrm I,0}>0$, the bottom indices are eventually $\pm e_u$; if
+$b_{\mathrm I,0}<0$, they are eventually $\pm e_\gamma$.  If
+$b_{\mathrm I,0}=0$, the exact comparison
+\eqref{eq:unit-mode-comparison} decides; in particular, if $m_0\ne0$ then
+the bottom indices are eventually $\pm e_\gamma$.  The first positive
+eigenvalue has complex multiplicity two when exactly one signed pair
+minimizes and multiplicity four when both pairs minimize.  All statements
+are independent of the real parts of $\tau,\mu,\beta$.
+\end{theorem}
+
+\begin{proof}
+Write $k=(r,s,n_1,n_2)\in\Z^4$ and solve
+$\mathsf P_z^{\mathsf T}x=k$.  The third and fourth equations are
+\begin{equation}\label{eq:x1x3}
+ x_1=n_1,\qquad x_3=n_2.
+\end{equation}
+Hence every mode with $(n_1,n_2)\ne(0,0)$ has dual squared norm at least
+one.  For $k=(r,s,0,0)$, the remaining system is
+\[
+ \begin{pmatrix}6m&p\\T&m\end{pmatrix}
+ \begin{pmatrix}x_2\\x_4\end{pmatrix}
+ =\begin{pmatrix}r\\s\end{pmatrix}.
+\]
+Its determinant is $-TD=\mathcal D_T$, and $p=B_R-T$, so
+\begin{equation}\label{eq:dual-exact}
+ \mathsf P_z^{-\mathsf T}(r,s,0,0)
+ =\left(
+ 0,\frac{mr+(T-B_R)s}{\mathcal D_T},
+ 0,\frac{-Tr+6ms}{\mathcal D_T}
+ \right).
+\end{equation}
+Define
+\begin{equation}\label{eq:MT}
+ M_T:=\frac{T}{\mathcal D_T}
+ \begin{pmatrix}m&T-B_R\\-T&6m\end{pmatrix}.
+\end{equation}
+Equations \eqref{eq:radial-holomorphic-errors} and
+\eqref{eq:radial-covolume-exact} give
+\begin{equation}\label{eq:MT-J}
+ M_T=J+\frac1T
+ \begin{pmatrix}m_0&0\\-b_{\mathrm I,0}&6m_0\end{pmatrix}
+ +O_{\mathrm{op}}(T^{-2}),
+ \qquad J=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\end{equation}
+In particular, because $J$ is orthogonal, a constant $C$ exists such that
+for every $v\in\R^2$ and every sufficiently large $T$,
+\begin{equation}\label{eq:singular-value-bound}
+ \left(1-\frac CT\right)\|v\|
+ \le\|M_Tv\|
+ \le\left(1+\frac CT\right)\|v\|.
+\end{equation}
+Thus every plane vector with $r^2+s^2\ge2$ is eventually longer than all
+four plane vectors with $r^2+s^2=1$, while the vectors excluded by
+\eqref{eq:x1x3} have norm at least one and the four candidates have norm
+$T^{-1}(1+O(T^{-1}))$.  This proves the asserted exhaustive minimizing list.
+
+Putting $(r,s)=(1,0)$ and $(0,1)$ in \eqref{eq:dual-exact} proves
+\eqref{eq:unit-mode-exact-lengths}.  Subtracting their numerators gives
+\[
+ T^2+m^2-(T-B_R)^2-36m^2
+ =B_R(2T-B_R)-35m^2,
+\]
+which proves \eqref{eq:unit-mode-comparison}.  Finally, squaring
+\eqref{eq:MT-J} on a fixed vector $(r,s)$ gives
+\[
+ \|M_T(r,s)^{\mathsf T}\|^2
+ =r^2+s^2+\frac{2b_{\mathrm I,0}r^2-10m_0rs}{T}+O_{r,s}(T^{-2}).
+\]
+Since $T^2\|\mathsf P_z^{-\mathsf T}(r,s,0,0)\|^2
+=\|M_T(r,s)^{\mathsf T}\|^2$, this proves
+\eqref{eq:general-plane-mode-correction} and the two special expansions.
+The smaller of the relative corrections $2b_{\mathrm I,0}$ and $0$ is
+$2\min\{b_{\mathrm I,0},0\}$, proving \eqref{eq:cusp-gap-result}; the exact comparison
+and Fourier signed-pair counting prove the remaining assertions.
+\end{proof}
+
+\begin{corollary}[Volume and unit-volume degeneration]\label{cor:unit-volume}
+Let $V_z$ be the Euclidean volume of $F_z^{\mathrm{flat}}$.  Then
+\begin{equation}\label{eq:volume-asymptotic}
+ V_z=|\det\mathsf P_z|=\mathcal D_T
+ =T(T-B_R)+6m^2
+ =T^2-b_{\mathrm I,0}T+6m_0^2+O(Te^{-2\pi R}).
+\end{equation}
+If $g_z$ is the flat metric and
+\begin{equation}\label{eq:unit-volume-metric}
+ \widehat g_z=V_z^{-1/2}g_z
+\end{equation}
+so that $\operatorname{Vol}(F_z,\widehat g_z)=1$, then
+\begin{equation}\label{eq:unit-volume-gap}
+ \lambda_1(F_z,\widehat g_z)
+ =\frac{4\pi^2}{T}
+ \left(1+\frac{-b_{\mathrm I,0}/2+2\min\{b_{\mathrm I,0},0\}}{T}
+ +O(T^{-2})\right)\longrightarrow0.
+\end{equation}
+In the normalized metric the two fixed periods have length
+$\mathcal D_T^{-1/4}=T^{-1/2}(1+O(T^{-1}))$, whereas the two long periods
+have length $T^{1/2}(1+O(T^{-1}))$.
+\end{corollary}
+
+\begin{proof}
+Equation \eqref{eq:radial-covolume-exact} gives the exact volume and
+\eqref{eq:radial-holomorphic-errors} gives its expansion.  In real dimension
+four, replacing $g$ by
+$\alpha g$ multiplies volume by $\alpha^2$ and Laplace eigenvalues by
+$\alpha^{-1}$.  Therefore \eqref{eq:unit-volume-metric} multiplies eigenvalues by $V_z^{1/2}$.  Combine this with Theorem~\ref{thm:cusp-gap}.
+The period-length assertions follow directly from the columns of
+$\mathsf P_z$: the last two have length one, while the first two have length
+$T(1+O(T^{-1}))$; all lengths are multiplied by $\mathcal D_T^{-1/4}$.
+\end{proof}
+
+\begin{proposition}[Fixed-energy counting law]\label{prop:fixed-energy-count}
+Along the radial cusp of Theorem~\ref{thm:cusp-gap}, retain the positive
+covolume
+\begin{equation}\label{eq:covolume-DT}
+ \mathcal D_T=|\det\mathsf P_z|=-TD
+ =\operatorname{Vol}(F_z^{\mathrm{flat}})
+\end{equation}
+from \eqref{eq:radial-covolume-exact}.
+For $E\ge0$, count eigenvalues with their Fourier multiplicities by
+\begin{equation}\label{eq:counting-definition}
+ \lambda_T(k):=4\pi^2\|\mathsf P_z^{-\mathsf T}k\|^2,
+ \qquad
+ N_T(E):=\#\{k\in\Z^4:\lambda_T(k)\le E\}.
+\end{equation}
+Then, for every fixed $E$,
+\begin{equation}\label{eq:fixed-energy-all-bands}
+ N_T(E)=\pi\mathcal D_T
+ \sum_{n\in\Z^2}
+ \left(\frac{E}{4\pi^2}-\|n\|^2\right)_+
+ +O_E(T),
+ \qquad (x)_+:=\max\{x,0\}.
+\end{equation}
+The sum is finite.  In particular, throughout the first transverse band
+$0<E<4\pi^2$,
+\begin{equation}\label{eq:fixed-energy-first-band}
+ \boxed{N_T(E)=\frac{E}{4\pi}\mathcal D_T+O_E(T).}
+\end{equation}
+Since $\mathcal D_T=T^2(1+O(T^{-1}))$, the number of modes below any fixed
+energy in this band grows as $ET^2/(4\pi)+O_E(T)$.
+
+For the unit-volume metric $\widehat g_z$ of
+\eqref{eq:unit-volume-metric}, let
+\begin{equation}\label{eq:unit-volume-count-definition}
+ \widehat N_T(E):=
+ \#\{k\in\Z^4:\lambda_T(k;\widehat g_z)\le E\}.
+\end{equation}
+For every fixed $E>0$,
+\begin{equation}\label{eq:unit-volume-count}
+ \widehat N_T(E)
+ =\frac{E}{4\pi}\mathcal D_T^{1/2}
+ +O_E(\mathcal D_T^{1/4}+1),
+ \qquad
+ \lim_{T\to\infty}
+ \frac{\widehat N_T(E)}{\mathcal D_T^{1/2}}
+ =\frac{E}{4\pi}.
+\end{equation}
+
+At the collapsing spectral scale define
+\begin{equation}\label{eq:collapsing-count-definition}
+ N_T^{\mathrm{coll}}(E):=
+ \#\left\{k\in\Z^4:
+ \lambda_T(k)\le\frac{4\pi^2E}{T^2}\right\}.
+\end{equation}
+If $E$ is not a sum of two integer squares, then for all sufficiently large
+$T$,
+\begin{equation}\label{eq:collapsing-count}
+ N_T^{\mathrm{coll}}(E)
+ =\#\{(r,s)\in\Z^2:r^2+s^2\le E\}.
+\end{equation}
+If $E$ is a sum of two integer squares, then
+\begin{equation}\label{eq:threshold-count}
+ \begin{split}
+ \#\{(r,s):r^2+s^2<E\}
+ &\le\liminf_{T\to\infty}N_T^{\mathrm{coll}}(E)\\
+ &\le\limsup_{T\to\infty}N_T^{\mathrm{coll}}(E)
+ \le\#\{(r,s):r^2+s^2\le E\}.
+ \end{split}
+\end{equation}
+For a threshold vector $(r,s)$, the coefficient
+$2b_{\mathrm I,0}r^2-10m_0rs$ in \eqref{eq:general-plane-mode-correction} decides
+membership whenever it is nonzero; the exact formula
+\eqref{eq:counting-exact-eigenvalue} and higher Taylor coefficients decide
+the remaining cases.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+ \alpha=\Re\mu,\qquad \eta=\Re\tau,\qquad c=\Re\beta,
+\]
+and index $k\in\Z^4$ as $k=(r,s,n_1,n_2)$.  Solving
+$\mathsf P_z^{\mathsf T}x=k$ first gives $x_1=n_1$ and $x_3=n_2$.
+The remaining two equations are
+\begin{equation}\label{eq:counting-two-by-two-system}
+ \mathcal A_T\binom{x_2}{x_4}
+ =\binom{r}{s}-\theta_T(n),
+ \quad
+ \mathcal A_T:=\begin{pmatrix}6m&p\\T&m\end{pmatrix},
+ \quad
+ \theta_T(n):=\binom{6\alpha n_1+cn_2}{\eta n_1+\alpha n_2}.
+\end{equation}
+Here
+\[
+ \det\mathcal A_T=6m^2-pT=-TD=\mathcal D_T>0.
+\]
+Consequently the exact eigenvalue formula is
+\begin{equation}\label{eq:counting-exact-eigenvalue}
+ \frac{\lambda_T(r,s,n_1,n_2)}{4\pi^2}
+ =\|n\|^2+
+ \left\|\mathcal A_T^{-1}
+ \left(\binom{r}{s}-\theta_T(n)\right)\right\|^2,
+ \qquad n=(n_1,n_2).
+\end{equation}
+
+Put $R_E^2=E/(4\pi^2)$.  A fixed $n$ contributes nothing when
+$\|n\|^2>R_E^2$.  Otherwise, with
+$\rho_n=(R_E^2-\|n\|^2)^{1/2}$, its admissible pairs $(r,s)$ are precisely
+the integer points of the translated ellipse
+\begin{equation}\label{eq:counting-ellipse}
+ \theta_T(n)+\mathcal A_T\overline B_{\R^2}(0,\rho_n).
+\end{equation}
+When $\rho_n>0$, this ellipse has area
+$\pi\mathcal D_T\rho_n^2$ and perimeter $O_E(T)$, because
+$m=O(1)$, $p=-T+O(1)$, and hence
+$\opnorm{\mathcal A_T}=O(T)$.  When $\rho_n=0$, its contribution is zero or
+one and is absorbed by $O_E(1)$.
+
+For completeness, every translated compact convex set $K\subset\R^2$
+satisfies
+\begin{equation}\label{eq:area-perimeter-lattice-bound}
+ \#(K\cap\Z^2)=\operatorname{area}(K)
+ +O\bigl(\operatorname{length}(\partial K)+1\bigr),
+\end{equation}
+with an absolute implied constant.  Indeed, center a unit square at every
+point of $K\cap\Z^2$ and let $U$ be their union.  The squares have disjoint
+interiors and $\operatorname{area}(U)=\#(K\cap\Z^2)$.  Every point of
+$U\mathbin\triangle K$ lies within distance $\sqrt2$ of $\partial K$:
+this is immediate for $U\setminus K$, while a point of $K\setminus U$ farther
+than $\sqrt2$ from the boundary would have its nearest lattice point in $K$
+and hence lie in the corresponding square.  The inner and outer boundary
+strips of a planar convex set of fixed width have area bounded by an absolute
+constant times its perimeter plus one (first for polygons, by summing edge
+rectangles and vertex sectors, and then by polygonal approximation).  This
+proves \eqref{eq:area-perimeter-lattice-bound}.
+
+Only finitely many $n$ occur for fixed $E$.  Applying
+\eqref{eq:area-perimeter-lattice-bound} to
+\eqref{eq:counting-ellipse}, and summing over those $n$, proves
+\eqref{eq:fixed-energy-all-bands}.  If $0<E<4\pi^2$, only $n=0$ occurs, and
+its area is
+$\pi\mathcal D_T E/(4\pi^2)=E\mathcal D_T/(4\pi)$, proving
+ \eqref{eq:fixed-energy-first-band}.
+
+Under $\widehat g_z=\mathcal D_T^{-1/2}g_z$, every eigenvalue is multiplied
+by $\mathcal D_T^{1/2}$, so
+$\widehat N_T(E)=N_T(E/\mathcal D_T^{1/2})$.  For large $T$ only $n=0$
+can occur in \eqref{eq:counting-exact-eigenvalue}.  Its ellipse has radius
+parameter
+\[
+ \rho=\left(\frac{E}{4\pi^2\mathcal D_T^{1/2}}\right)^{1/2},
+\]
+area $E\mathcal D_T^{1/2}/(4\pi)$, and perimeter
+$O_E(T\mathcal D_T^{-1/4}+1)=O_E(\mathcal D_T^{1/4}+1)$.
+The same lattice estimate proves \eqref{eq:unit-volume-count}.
+
+At the collapsing scale, every index with $(n_1,n_2)\ne(0,0)$ contributes
+at least $4\pi^2$ and hence contributes nothing for large $T$.  For
+$n_1=n_2=0$, equations \eqref{eq:MT}--\eqref{eq:MT-J} give uniformly
+\[
+ \frac{T^2\lambda_T(r,s,0,0)}{4\pi^2}
+ =\|M_T(r,s)^{\mathsf T}\|^2\longrightarrow r^2+s^2.
+\]
+The lower singular-value bound \eqref{eq:singular-value-bound} restricts a
+fixed rescaled window to a fixed finite set of pairs $(r,s)$.  Termwise
+comparison proves \eqref{eq:collapsing-count} away from thresholds and
+\eqref{eq:threshold-count} at thresholds.  The final refinement follows
+from \eqref{eq:general-plane-mode-correction} and the exact eigenvalue
+formula.
+\end{proof}
+
+\begin{remark}[What the determinant condition does and does not imply]
+The pointwise condition $\det\mathsf P_z\ne0$ proves that every individual quotient is a compact torus and hence individually gapped.  It supplies no uniform lower bound over a noncompact parameter family.  The cusp gives an explicit failure of the implication
+\[
+ \text{pointwise nondegeneracy}\quad\Longrightarrow\quad
+ \inf_z\lambda_1(z)>0.
+\]
+The failure persists after volume normalization, so it is anisotropic rather than a mere global dilation.
+\end{remark}
+
+\section{The native pointed limit and finite-cover unspooling}
+
+Let $e_1,e_2,e_3,e_4$ be the standard basis in the real coordinate order
+of \eqref{eq:Z-P}, and on the positive radial lift put
+\begin{equation}\label{eq:primal-period-decomposition}
+ v_{\gamma,T}:=\mathsf P_ze_\gamma,\qquad
+ v_{u,T}:=\mathsf P_ze_u,\qquad
+ \mathsf P_z\Z^4
+ =\Z v_{\gamma,T}\oplus\Z v_{u,T}
+  \oplus\Z e_1\oplus\Z e_3.
+\end{equation}
+Define the fixed real two-torus
+\begin{equation}\label{eq:native-fixed-torus}
+ \T^2_{\mathrm{re}}
+ :=(\R e_1\oplus\R e_3)/(\Z e_1\oplus\Z e_3).
+\end{equation}
+
+\begin{theorem}[Native limit and expanding marked covers]
+\label{thm:native-and-cover-limits}
+Let $o_T$ be the origin of $F_z^{\mathrm{flat}}$.  With the unscaled
+Euclidean quotient metric,
+\begin{equation}\label{eq:native-pointed-limit}
+ (F_z^{\mathrm{flat}},o_T)
+ \longrightarrow
+ (\T^2_{\mathrm{re}}\times(\R e_2\oplus\R e_4),(0,0))
+ \cong(\T^2\times\R^2,(0,0))
+\end{equation}
+in pointed smooth and pointed Gromov--Hausdorff topology.  For every fixed
+$r<\infty$, the radius-$r$ balls are exactly isometric for all sufficiently
+large $T$.  Moreover, eventually
+\begin{equation}\label{eq:native-systole}
+ \operatorname{sys}(\mathsf P_z\Z^4)=1,
+ \qquad \operatorname{inj}(F_z^{\mathrm{flat}})=\frac12.
+\end{equation}
+
+For $M\in\Z_{\ge1}$ define
+\begin{equation}\label{eq:cover-sublattice}
+ \Lambda_{T,M}
+ :=\Z v_{\gamma,T}\oplus\Z v_{u,T}
+   \oplus\Z(Me_1)\oplus\Z(Me_3),
+ \qquad
+ \widetilde F_{T,M}:=\R^4/\Lambda_{T,M}.
+\end{equation}
+The identity on $\R^4$ induces a regular holomorphic local-isometric cover
+\begin{equation}\label{eq:degree-cover}
+ c_{T,M}:\widetilde F_{T,M}\longrightarrow F_z^{\mathrm{flat}}
+\end{equation}
+of degree $M^2$, with deck group $(\Z/M\Z)^2$.  There are constants
+$C,C'>0$, independent of large $T$ and $M$, for which
+\begin{equation}\label{eq:cover-systole-two-sided}
+ \min\{T-C,M\}\le\operatorname{sys}(\Lambda_{T,M})
+ \le\min\{T+C',M\}.
+\end{equation}
+Consequently, for an integer-valued $M=M(T)$,
+\begin{equation}\label{eq:cover-R4-limit}
+ (\widetilde F_{T,M(T)},\widetilde o_{T,M(T)})
+ \longrightarrow(\R^4,0)
+\end{equation}
+in pointed smooth and pointed Gromov--Hausdorff topology if and only if
+$M(T)\to\infty$.
+
+If the cover instead carries the pullback of the base-fibre unit-volume
+metric $\widehat g_z=\mathcal D_T^{-1/2}g_z$, then the same two pointed
+limits are $\R^4$ if and only if
+\begin{equation}\label{eq:unit-volume-cover-condition}
+ \frac{M(T)}{\mathcal D_T^{1/4}}\longrightarrow\infty,
+ \qquad\text{equivalently}\qquad
+ \frac{M(T)}{\sqrt T}\longrightarrow\infty.
+\end{equation}
+By contrast, if each covering torus is rescaled by
+\begin{equation}\label{eq:cover-own-unit-volume-metric}
+ g^{\mathrm{cov},1}_{T,M}:=(M^2\mathcal D_T)^{-1/2}g_z
+\end{equation}
+so that the cover itself has volume one, no choice of $M(T)$ gives pointed
+smooth limit $\R^4$.
+\end{theorem}
+
+\begin{proof}
+Project the two long periods in \eqref{eq:primal-period-decomposition} to
+the $(e_2,e_4)$-plane.  Their projected column matrix is
+\begin{equation}\label{eq:long-plane-matrix}
+ Y_T=\begin{pmatrix}6m&T\\B_R-T&m\end{pmatrix}
+ =T\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+  +\begin{pmatrix}6m&0\\B_R&m\end{pmatrix}.
+\end{equation}
+The second matrix is uniformly bounded.  Hence, after increasing $C$,
+\begin{equation}\label{eq:long-plane-lower-bound}
+ \left\|Y_T\binom ab\right\|
+ \ge(T-C)\sqrt{a^2+b^2}
+ \qquad(a,b\in\R).
+\end{equation}
+First quotient $\R^4$ by $\Z e_1\oplus\Z e_3$.  The result is the product
+$\T^2_{\mathrm{re}}\times(\R e_2\oplus\R e_4)$.  Every nonidentity
+remaining deck translation has displacement at least $T-C$ by
+\eqref{eq:long-plane-lower-bound}.  If $T-C>4r$, no such translate can
+identify two points of the radius-$r$ ball or shorten their distance, while
+every minimizing quotient geodesic of length at most $r$ lifts from the
+origin.  The two radius-$r$ balls are therefore exactly isometric.  This
+proves \eqref{eq:native-pointed-limit}.  A nonzero period with a nonzero long
+coefficient has length at least $T-C$, whereas the shortest nonzero vector
+of $\Z e_1\oplus\Z e_3$ has length one; this proves
+\eqref{eq:native-systole}.
+
+The four vectors in \eqref{eq:primal-period-decomposition} are a lattice
+basis, so \eqref{eq:cover-sublattice} has index $M^2$ and quotient
+$(\Z/M\Z)^2$.  Finite-index inclusion of complex lattices makes
+\eqref{eq:degree-cover} holomorphic and local-isometric.  A nonzero vector
+\[
+ av_{\gamma,T}+bv_{u,T}+M(pe_1+qe_3)
+\]
+has length at least $T-C$ if $(a,b)\ne(0,0)$, by its plane projection, and
+at least $M$ otherwise.  Conversely, $Me_1$ has length $M$, while either
+long generator has length at most $T+C'$ for a uniform $C'$.  This proves
+\eqref{eq:cover-systole-two-sided}.  A flat quotient has radius-$r$ balls
+exactly Euclidean once its lattice systole exceeds $4r$; hence $M(T)\to
+\infty$ proves \eqref{eq:cover-R4-limit}.  If $M(T)$ does not tend to
+infinity, integrality gives a subsequence on which $M(T)=M_*$ is constant.
+Quotienting first by $M_*\Z e_1\oplus M_*\Z e_3$ and repeating the preceding
+exact-ball argument shows that this subsequence converges to
+$(\R/M_*\Z)^2\times\R^2$, not to $\R^4$.  This excludes both asserted
+$\R^4$ topologies and proves necessity.
+
+Under the pullback of $\widehat g_z$, all lengths are multiplied by
+$\mathcal D_T^{-1/4}$.  The long lower bound becomes
+$(T-C)\mathcal D_T^{-1/4}\sim\sqrt T$ and diverges automatically, while
+$Me_1$ has length $M\mathcal D_T^{-1/4}$.  This proves the equivalence
+\eqref{eq:unit-volume-cover-condition} in the sufficient direction.  For
+necessity, if $\ell_T=M(T)\mathcal D_T^{-1/4}$ does not tend to infinity,
+pass to a subsequence with $\ell_T\to\ell<\infty$.  Once the remaining long
+translations leave every fixed ball, the balls are those of
+$(\R/\ell_T\Z)^2\times\R^2$.  If $\ell>0$ the pointed limit is
+$(\R/\ell\Z)^2\times\R^2$; if $\ell=0$ the pointed
+Gromov--Hausdorff limit is $\R^2$ and there is collapse, so there is no
+pointed smooth four-dimensional limit.  In neither case is the limit $\R^4$.
+Finally, under
+\eqref{eq:cover-own-unit-volume-metric}, the explicit periods $Me_1$ and
+$v_{\gamma,T}$ have respective lengths
+\begin{equation}\label{eq:cover-own-unit-volume-lengths}
+ \sqrt{\frac MT}\,(1+o(1)),\qquad
+ \sqrt{\frac TM}\,(1+o(1)).
+\end{equation}
+Their leading factors have product one, so at least one stays bounded.  The
+injectivity radius cannot tend to infinity, which excludes a pointed smooth
+$\R^4$ limit.
+\end{proof}
+
+\begin{theorem}[Base-changed monodromy and exact cover momenta]
+\label{thm:cover-momentum}
+Put
+\begin{equation}\label{eq:cover-index-matrix}
+ \mathsf S_M=\operatorname{diag}(1,1,M,M),
+ \qquad \Lambda^{(M)}=\mathsf S_M\Z^4.
+\end{equation}
+Then $\mathsf P_z\Lambda^{(M)}=\Lambda_{T,M}$.  Writing
+$M_0=I+R_0$ for the cusp monodromy in
+\eqref{eq:cusp-monodromy-matrix}, one has
+\begin{equation}\label{eq:cover-monodromy-algebra}
+ R_0^2=0,\qquad
+ \ker R_0=\operatorname{im}R_0
+ =\Z\langle\widehat w,\widehat\delta\rangle,
+ \qquad
+ \mathsf S_M^{-1}M_0^M\mathsf S_M=M_0.
+\end{equation}
+Thus, after the cyclic base change $t_c=v^M$, the covers form a regular
+relative degree-$M^2$ cover over $v\ne0$.  This is punctured descent; the
+completed local extension and its different absolute and relative degrees
+are treated in Section~\ref{cusp-cover-section}.
+
+With normalized Haar measure, the complete orthonormal character basis of
+$\widetilde F_{T,M}$ is
+\begin{equation}\label{eq:cover-characters}
+ \widetilde\chi_{T,M,k}([x])
+ =\exp\!\left(2\pi i
+ \left\langle\mathsf P_z^{-\mathsf T}\mathsf S_M^{-1}k,x\right\rangle
+ \right),\qquad k\in\Z^4,
+\end{equation}
+and its scalar spectrum, with multiplicity, is
+\begin{equation}\label{eq:cover-scalar-spectrum}
+ \Spec(\widetilde\Delta_{T,M})
+ =\left\{4\pi^2
+ \left\|\mathsf P_z^{-\mathsf T}\mathsf S_M^{-1}k\right\|^2:
+ k\in\Z^4\right\}.
+\end{equation}
+The pullback, equivalently deck-invariant, sector consists exactly of
+\begin{equation}\label{eq:cover-invariant-sector}
+ k\in\mathsf S_M\Z^4
+ \quad\Longleftrightarrow\quad
+ k_3\equiv k_4\equiv0\pmod M.
+\end{equation}
+There is a constant $C_{\mathrm{mom}}$, independent of large $T$ and
+$M\ge1$, such that
+\begin{equation}\label{eq:cover-momentum-mesh}
+ \sup_{p\in\R^4}\operatorname{dist}\!\left(
+ p,\mathsf P_z^{-\mathsf T}\mathsf S_M^{-1}\Z^4\right)
+ \le C_{\mathrm{mom}}\left(\frac1T+\frac1M\right).
+\end{equation}
+Hence if $T_j,M_j\to\infty$, the cover momentum lattices become locally
+dense in $\R^4$, and every $E\ge0$ is a limit of eigenvalues in
+\eqref{eq:cover-scalar-spectrum}.
+\end{theorem}
+
+\begin{proof}
+From \eqref{eq:cusp-monodromy-matrix},
+$R_0(a,b,c,d)^{\mathsf T}=(0,0,b,-a)^{\mathsf T}$.  This proves the kernel,
+image, and square-zero assertions.  The binomial theorem gives
+$M_0^M=I+MR_0$, and direct evaluation on $(a,b,c,d)^{\mathsf T}$ gives
+\[
+ \mathsf S_M^{-1}M_0^M\mathsf S_M(a,b,c,d)^{\mathsf T}
+ =(a,b,c+b,d-a)^{\mathsf T}=M_0(a,b,c,d)^{\mathsf T}.
+\]
+Thus $M_0^M$ preserves $\Lambda^{(M)}$, which is exactly descent after
+$t_c=v^M$.
+
+The dual of $\mathsf P_z\mathsf S_M\Z^4$ is
+$\mathsf P_z^{-\mathsf T}\mathsf S_M^{-1}\Z^4$.  Fourier theory proves
+\eqref{eq:cover-characters}--\eqref{eq:cover-scalar-spectrum}.  Moreover,
+$c_{T,M}^*\chi_{T,\ell}=\widetilde\chi_{T,M,\mathsf S_M\ell}$, so a cover
+character descends exactly under the congruence in
+\eqref{eq:cover-invariant-sector}.
+
+Let $b_{j,T,M}$ be the columns of
+$\mathsf P_z^{-\mathsf T}\mathsf S_M^{-1}$.  The exact system
+\eqref{eq:counting-two-by-two-system}, boundedness of all holomorphic cusp
+data, and $\mathcal D_T\asymp T^2$ give a uniform constant $C_0$ with
+\[
+ \|b_{1,T,M}\|+\|b_{2,T,M}\|\le\frac{C_0}{T},
+ \qquad
+ \|b_{3,T,M}\|+\|b_{4,T,M}\|\le\frac{C_0}{M}.
+\]
+Express any $p\in\R^4$ uniquely as $p=\sum_jt_jb_{j,T,M}$ and choose
+$n_j\in\Z$ with $|t_j-n_j|\le1/2$.  Then
+\[
+ \left\|p-\sum_jn_jb_{j,T,M}\right\|
+ \le\frac12\sum_j\|b_{j,T,M}\|
+ \le\frac{C_0}{2}\left(\frac1T+\frac1M\right),
+\]
+which proves \eqref{eq:cover-momentum-mesh}.  For $E>0$, approximate a
+vector $p$ with $4\pi^2\|p\|^2=E$; continuity gives eigenvalues tending to
+$E$.  For $E=0$, take $k=e_\gamma$, whose momentum is $O(T^{-1})$.
+\end{proof}
+
+\section{The invariant real quotient and its four-copy limit}
+
+Define the short-plane lattice, the primitive integral character, and its
+kernel lattice by
+\begin{equation}\label{eq:invariant-character}
+ \begin{aligned}
+ K_\Lambda&=\Z\langle\widehat w,\widehat\delta\rangle,\\
+ \varepsilon_\gamma
+ (a\widehat\gamma+b\widehat u+c\widehat w+d\widehat\delta)&=a,
+ &L_\Lambda=\ker\varepsilon_\gamma
+ &=\Z\langle\widehat u,\widehat w,\widehat\delta\rangle.
+ \end{aligned}
+\end{equation}
+
+\begin{theorem}[Regular-locus quotient and exact radial metric]
+\label{thm:global-real-quotient}
+Assume the conditional global period family and the integral monodromy data
+in Section~1.  Then the following statements hold.
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.3em]
+\item The formula
+\begin{equation}\label{eq:global-circle-map}
+ \chi_\gamma([z,\mathsf P_zx])
+ =\bigl([z],\varepsilon_\gamma(x)\bmod\Z\bigr)
+\end{equation}
+defines a smooth real-analytic fibrewise group epimorphism
+\begin{equation}\label{eq:global-circle-quotient}
+ \chi_\gamma:J\longrightarrow B^\circ\times(\R/\Z).
+\end{equation}
+Its kernel is a connected real-three-torus family with fibre
+$(L_\Lambda\otimes\R)/L_\Lambda$.  The kernel family need not be a product.
+The quotient is real; it is not a holomorphic quotient of complex tori.
+Moreover,
+\begin{equation}\label{eq:invariant-character-lattice}
+ \operatorname{Hom}(\Lambda,\Z)^\Delta=\Z\varepsilon_\gamma,
+\end{equation}
+so this primitive invariant character is unique up to sign.
+
+\item Give each marked fibre the Euclidean quotient metric already used in
+Section~2 and give the target circle its Riemannian quotient metric.  On a
+radial cusp fibre,
+\begin{equation}\label{eq:radial-circle-character}
+ \chi_{\gamma,z}([y])
+ =\left\langle\mathsf P_z^{-\mathsf T}e_\gamma,y\right\rangle\bmod\Z,
+ \qquad e_\gamma=(1,0,0,0)^{\mathsf T},
+\end{equation}
+and its circumference is exactly
+\begin{equation}\label{eq:circle-circumference}
+ \ell_\gamma(z)
+ =\frac{1}{\lVert\mathsf P_z^{-\mathsf T}e_\gamma\rVert}
+ =\frac{-TD}{\sqrt{T^2+m^2}}.
+\end{equation}
+If $b_{\mathrm I,0}=\operatorname{Im}b(0)$, then on the positive radial lift
+\begin{equation}\label{eq:circle-circumference-asymptotic}
+ \ell_\gamma(z)=T-b_{\mathrm I,0}+O(T^{-1})\longrightarrow\infty.
+\end{equation}
+The pullback of the first circle Fourier mode is the fibre character with
+index $e_\gamma$, whose eigenvalue is $4\pi^2/\ell_\gamma(z)^2$.  The
+character is global, but the chosen Euclidean fibre metrics need not be
+invariant under the deck transitions.  On the positive radial marked lift,
+this mode gap-closes with the same leading rate as
+Theorem~\ref{thm:cusp-gap}; it is not asserted to be the exact shortest mode
+at every radial parameter.
+
+\item Let
+\begin{equation}\label{eq:fourfold-fibre-product}
+ J^{[4]}=J\times_{B^\circ}J\times_{B^\circ}J\times_{B^\circ}J.
+\end{equation}
+The fourfold product of \eqref{eq:global-circle-map} is a quotient
+\begin{equation}\label{eq:fourfold-circle-map}
+ \chi_\gamma^{[4]}:J^{[4]}\longrightarrow
+ B^\circ\times(\R/\Z)^4
+\end{equation}
+with connected twelve-torus kernel.  Along the synchronized positive radial
+cusp, its quotient fibre with the induced product metric is
+\begin{equation}\label{eq:four-circle-fibre}
+ G_z=(\R/\ell_\gamma(z)\Z)^4.
+\end{equation}
+Its systole is $\ell_\gamma(z)$.
+Consequently
+\begin{equation}\label{eq:four-circle-limit}
+ (G_z,0)\longrightarrow(\R^4,0)
+\end{equation}
+in pointed local-isometric, pointed smooth, and pointed
+Gromov--Hausdorff topology.  For every fixed $r>0$, the radius-$r$ ball is
+exactly Euclidean once $\ell_\gamma(z)>4r$.
+
+Equivalently, the external Cartesian product defines
+\begin{equation}\label{eq:external-four-circle-map}
+ J^4\longrightarrow(B^\circ)^4\times(\R/\Z)^4,
+\end{equation}
+and $J^{[4]}$ is its pullback along the diagonal
+$B^\circ\to(B^\circ)^4$.  At four independent positive radial cusp
+parameters $z_1,\ldots,z_4$, its quotient lattice is
+\[
+ \operatorname{diag}\bigl(\ell_\gamma(z_1),\ldots,
+ \ell_\gamma(z_4)\bigr)\Z^4,
+\]
+so the same three pointed limits hold whenever
+$\min_i\ell_\gamma(z_i)\to\infty$.
+
+Among connected torus quotients of $n$ synchronized copies defined by a
+fixed primitive full-monodromy-invariant kernel lattice and equipped with the
+Riemannian quotient of the product Euclidean metric, any quotient whose
+systole tends to infinity has rank at most $n$.  Hence four copies are
+minimal for a rank-four all-expanding quotient in this class, and
+\eqref{eq:fourfold-circle-map} attains the bound.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For a row covector $(a,b,c,d)$, invariance under the first matrix in
+\eqref{eq:monodromy-matrices} gives $b=2c$ and $d=3c$, whereas invariance
+under the second gives $b=c$ and $d=2c$.  Thus $b=c=d=0$, which proves
+\eqref{eq:invariant-character-lattice}.  In particular
+$\varepsilon_\gamma A_g=\varepsilon_\gamma$ for every $g\in\Delta$.
+Equation \eqref{eq:flat-monodromy-action} therefore proves that
+\eqref{eq:global-circle-map} is well defined.  Primitivity of
+$\varepsilon_\gamma$ proves surjectivity and connectedness of its kernel,
+and the induced action on $\Lambda/L_\Lambda\simeq\Z$ is trivial.  Hence the
+target circle family is the displayed product.  Since the kernel has odd real
+dimension, it is not a complex subtorus, proving (i).
+
+Putting $(r,s)=(1,0)$ in \eqref{eq:dual-exact} gives
+\begin{equation}\label{eq:circle-dual-vector}
+ \mathsf P_z^{-\mathsf T}e_\gamma
+ =\left(0,\frac{m}{-TD},0,\frac{-T}{-TD}\right)^{\mathsf T}.
+\end{equation}
+The length of a Riemannian quotient circle defined by a primitive dual
+character is the reciprocal norm of that character, which proves
+\eqref{eq:circle-circumference}.  Write
+$b_{\mathrm I}(t_c)=\operatorname{Im}b(t_c)$.  Since
+$p=b_{\mathrm I}(t_c)-T$,
+\begin{equation}\label{eq:circumference-numerator}
+ -TD=T^2-Tb_{\mathrm I}(t_c)+6m^2.
+\end{equation}
+Holomorphy at $t_c=0$ gives
+$b_{\mathrm I}(t_c)=b_{\mathrm I,0}+O(e^{-2\pi R})$ and
+$m=\operatorname{Im}\mu(0)+O(e^{-2\pi R})$ on the positive radial lift.
+Because $T=R+O(1)$, expansion of
+\eqref{eq:circle-circumference} proves
+\eqref{eq:circle-circumference-asymptotic}.  Formula
+\eqref{eq:radial-circle-character} is the standard character formula from
+Proposition~\ref{prop:fixed-spectrum}, and its exponential is precisely the
+index-$e_\gamma$ eigenfunction.  This proves (ii).
+
+Taking four products proves the quotient and kernel statements in (iii).
+After multiplying each angular target coordinate by $\ell_\gamma(z)$, its
+fibre is $\R^4/\ell_\gamma(z)\Z^4$.  If $x,y\in B_r(0)$ and
+$0\ne\lambda\in\ell_\gamma(z)\Z^4$, then
+\[
+ \lVert x-y+\lambda\rVert
+ \ge \lVert\lambda\rVert-\lVert x-y\rVert
+ >\ell_\gamma(z)-2r>2r\ge\lVert x-y\rVert
+\]
+when $\ell_\gamma(z)>4r$.  The covering map is therefore an exact isometry
+on the radius-$r$ ball, proving all three pointed convergences.  Taking the
+four quotient maps over independent base parameters gives
+\eqref{eq:external-four-circle-map}; the identical estimate with
+$\ell_\gamma(z)$ replaced by $\min_i\ell_\gamma(z_i)$ proves its pointed
+limit and pulling back along the diagonal recovers $J^{[4]}$.
+
+For minimality, equation \eqref{eq:Z-P} gives
+$\mathsf P_z\widehat w=(1,0,0,0)^{\mathsf T}$ and
+$\mathsf P_z\widehat\delta=(0,0,1,0)^{\mathsf T}$.  Thus each fixed element
+of $K_\Lambda^{\oplus n}$ has length bounded independently of the radial
+parameter.  Let $N\subset\Lambda^{\oplus n}$ be the fixed primitive invariant
+kernel lattice of an all-expanding quotient.  If a fixed
+$k\in K_\Lambda^{\oplus n}$ did not lie in $N$, primitivity would give
+$N_\R\cap\Lambda^{\oplus n}=N$, so $k$ would determine a nonzero quotient
+period of bounded length, contradicting divergence of the quotient systole.
+Therefore $K_\Lambda^{\oplus n}\subset N$.
+
+The first matrix in \eqref{eq:monodromy-matrices} satisfies
+$A_1\widehat w=\widehat u-\widehat w$.  Invariance of $N$ consequently gives
+$L_\Lambda^{\oplus n}\subset N$, and hence
+\[
+ \operatorname{rank}(\Lambda^{\oplus n}/N)
+ \le 4n-3n=n.
+\]
+Rank four requires $n\ge4$, while
+$N=L_\Lambda^{\oplus4}$ gives the quotient already constructed.
+\end{proof}
+
+\begin{proposition}[The expanding quotient of the native cusp fibre]
+\label{prop:native-cusp-quotient}
+On a radial cusp fibre define
+\[
+ \rho:\R^4\longrightarrow\R^2,
+ \qquad \rho(x_1,x_2,x_3,x_4)=(x_2,x_4),
+\]
+and
+\begin{equation}\label{eq:native-long-matrix}
+ Y_z=\begin{pmatrix}6m&T\\p&m\end{pmatrix}.
+\end{equation}
+Then $\rho$ induces an exact sequence
+with
+\[
+ \T^2_{\mathrm{re}}
+ :=\frac{\R\langle e_1,e_3\rangle}{\Z\langle e_1,e_3\rangle},
+\]
+namely
+\begin{equation}\label{eq:native-cusp-exact-sequence}
+ 0\longrightarrow\T^2_{\mathrm{re}}\longrightarrow
+ F_z^{\mathrm{flat}}\longrightarrow
+ Q_z:=\R^2/Y_z\Z^2\longrightarrow0,
+\end{equation}
+and $\operatorname{sys}(Q_z)\ge T-C$ for large $T$.  Thus $(Q_z,0)$ has
+pointed local-isometric limit $(\R^2,0)$, and two synchronized copies satisfy
+\begin{equation}\label{eq:native-quotient-two-copy-limit}
+ (Q_z\times Q_z,0)\longrightarrow(\R^4,0).
+\end{equation}
+The native fibre itself still has the different pointed limit
+$\T^2_{\mathrm{re}}\times\R^2$ from
+Theorem~\ref{thm:native-and-cover-limits}.
+The one-copy quotient has kernel lattice $K_\Lambda$, and the displayed
+two-copy quotient has kernel lattice $K_\Lambda^{\oplus2}$.  This is not the
+global quotient of four copies in Theorem~\ref{thm:global-real-quotient}.
+No finite cover of $B^\circ$ makes either of these particular kernels
+full-monodromy invariant.
+\end{proposition}
+
+\begin{proof}
+The last two columns of \eqref{eq:Z-P} are killed by $\rho$, and the
+projections of the first two columns are the columns of $Y_z$.  Moreover,
+\[
+ \det Y_z=6m^2-Tp=-TD>0.
+\]
+If $\rho(x)=Y_z(a,b)^{\mathsf T}$, then
+$x-\mathsf P_z(a,b,0,0)^{\mathsf T}$ lies in
+$\ker\rho=\R\langle e_1,e_3\rangle$.  Conversely, if
+$\mathsf P_zk\in\ker\rho$ for $k\in\Z^4$, then
+$Y_z(k_1,k_2)^{\mathsf T}=0$; invertibility of $Y_z$ gives $k_1=k_2=0$.
+Thus
+\[
+ \ker\bigl(F_z^{\mathrm{flat}}\longrightarrow Q_z\bigr)
+ \simeq
+ \frac{\R\langle e_1,e_3\rangle}
+      {\Z\langle e_1,e_3\rangle}
+ =\T^2_{\mathrm{re}},
+\]
+which proves exactness without identifying this kernel with the invariant
+kernel $L_\Lambda$.  By
+\eqref{eq:cusp-asymptotic-input},
+\[
+ T^{-1}Y_z=
+ \begin{pmatrix}0&1\\-1&0\end{pmatrix}+O_{\mathrm{op}}(T^{-1}).
+\]
+The least singular value of $Y_z$ is therefore at least $T-C$, and the same
+is true of the shortest nonzero vector of $Y_z\Z^2$.  The pointed-limit
+argument in the proof of Theorem~\ref{thm:native-and-cover-limits} now applies
+first to $Q_z$ and then to $Q_z^2$.
+
+For the finite-cover assertion, direct multiplication gives
+\begin{equation}\label{eq:no-finite-cover-matrix}
+ H_*=A_2A_1=
+ \begin{pmatrix}
+ 1&0&0&0\\6&1&1&0\\0&0&1&0\\-5&0&-1&1
+ \end{pmatrix}=I+N_*,\qquad N_*^2=0.
+\end{equation}
+Consequently, for every nonzero integer $n$,
+\begin{equation}\label{eq:no-finite-cover-orbit}
+ H_*^n\widehat w
+ =\widehat w+n(\widehat u-\widehat\delta),
+ \qquad H_*^n\widehat\delta=\widehat\delta,
+\end{equation}
+so $H_*^nK_\Lambda\ne K_\Lambda$.  Choose a loop in $B^\circ$ whose
+monodromy is $H_*$.  Every finite-index subgroup of the ordinary
+$\pi_1(B^\circ)$ contains a positive power of this loop, and that power still
+fails to preserve $K_\Lambda$.  Hence no finite base cover globalizes this
+particular one-copy marked quotient.  Under diagonal monodromy,
+$(\widehat w,0)$ proves the same assertion for $K_\Lambda^{\oplus2}$ and thus
+for its two-copy product.
+\end{proof}
+
+\begin{remark}[Copies, quotients, and covers]
+The native fibre limit in Theorem~\ref{thm:native-and-cover-limits} is
+$\T^2\times\R^2$.  The same theorem obtains $\R^4$ only after passing to
+degree-$M(T)^2$ fibre covers with $M(T)\to\infty$.  Neither statement is a
+quotient construction.  By contrast, the four-circle limit in
+Theorem~\ref{thm:global-real-quotient} changes
+neither the base nor the fibre lattice: it takes a quotient of four
+synchronized copies.  Proposition~\ref{prop:native-cusp-quotient} instead
+uses a rank-two marked-fibre quotient whose all-expanding behavior is radial
+cusp behavior and whose kernel does not descend over the full regular base.
+These quotient constructions are distinct from the degree-$M^2$ fibre covers,
+whose punctured descent requires the base change $t_c=v^M$; no such
+finite-cover construction is used in this paper's globalization theorem.
+\end{remark}
+
+\begin{proposition}[Literal fixed-target nonextension through the toric cusp]
+\label{prop:circle-cusp-nonextension}
+Assume the toric cusp chart asserted for the proposed completion.  Then
+neither $\chi_\gamma$ to the fixed product-circle target nor
+$\chi_\gamma^{[4]}$ to the fixed product $\mathbb T^4$ target extends
+continuously through the toric cusp fibre with its stated regular-fibre
+restriction.
+\end{proposition}
+
+\begin{proof}
+On the positive radial lift $s=iR$, equations \eqref{eq:Z-P} and
+\eqref{eq:cusp-s-coordinate} give
+\[
+ Z_R=iR B_0+C(t_c),\qquad
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ C(t_c)=\begin{pmatrix}6\mu&h\\b-h&\mu\end{pmatrix},
+ \qquad t_c=e^{-2\pi R}.
+\]
+For $a\in\R^2$, let
+$x_R(a)=\exp(2\pi iZ_Ra)\in(\C^*)^2$ in the dense torus of the cusp model.
+Its normalized logarithmic position is
+\begin{equation}\label{eq:cusp-log-position}
+ \frac{(\log|x_{R,1}(a)|,\log|x_{R,2}(a)|)}{\log|t_c|}
+ =B_0a+\frac{\operatorname{Im}C(t_c)a}{R}.
+\end{equation}
+In the affine toric chart belonging to
+$\sigma=\operatorname{conv}(0,e_1,e_2)$, the coordinates are
+\[
+ z_0=\frac{t_c}{x_1x_2},\qquad z_1=x_1,\qquad z_2=x_2.
+\]
+Writing the left side of \eqref{eq:cusp-log-position} as
+$y_R=(y_{R,1},y_{R,2})$, one has exactly
+\[
+ |z_0|=|t_c|^{1-y_{R,1}-y_{R,2}},\qquad
+ |z_1|=|t_c|^{y_{R,1}},\qquad
+ |z_2|=|t_c|^{y_{R,2}}.
+\]
+If the limit of $y_R$ lies in the interior of $\sigma$, all three exponents
+are eventually positive, so all three coordinates tend to zero and the path
+approaches the same toric fixed point.
+
+Take
+\[
+ a=\left(-\frac14,\frac14\right),\qquad
+ a'=\left(-\frac12,\frac14\right).
+\]
+Then
+\[
+ B_0a=\left(\frac14,\frac14\right),\qquad
+ B_0a'=\left(\frac14,\frac12\right)
+\]
+are both interior to $\sigma$, whereas
+\[
+ Z_Ra=\mathsf P_z(a_1,a_2,0,0)^{\mathsf T},\qquad
+ Z_Ra'=\mathsf P_z(a'_1,a'_2,0,0)^{\mathsf T},
+\]
+in the real coordinate identification, and hence
+\[
+ \chi_{\gamma,R}(x_R(a))=\frac34,
+ \qquad
+ \chi_{\gamma,R}(x_R(a'))=\frac12
+ \quad\text{in }\R/\Z.
+\]
+Thus two paths converge to the same cusp point while their character values
+have different limits.  This rules out continuous extension of the literal
+map to the fixed circle target.  Holding the other three factors on identical
+radial paths proves the assertion for the fixed product $\mathbb T^4$ target.
+\end{proof}
+
+\begin{corollary}[The fixed $\mathbb T^4$ target and the smash collapse]
+\label{cor:product-smash-obstruction}
+Assume in addition the claimed recognition $X\cong_{\mathrm{diff}}S^6$.
+Then
+\[
+ X^4\cong_{\mathrm{diff}}(S^6)^4\not\simeq S^{24},
+ \qquad H_6(X^4;\Z)\cong\Z^4.
+\]
+After choices of base point and of the recognition, one has
+$X^{\wedge4}\cong S^{24}$, but the literal fourfold quotient to the fixed
+$\mathbb T^4$ target has no extension that factors through that smash
+sphere.  More precisely, no map
+$\Phi:X^4\to(\R/\Z)^4$ restricts on a regular fourfold fibre to
+$(\chi_{\gamma,z})^4$, and no map
+$\Psi:X^{\wedge4}\to(\R/\Z)^4$ has that restriction after precomposition
+with the smash-collapse map $X^4\to X^{\wedge4}$.
+These statements obstruct only the displayed character quotient with the
+fixed target $(\R/\Z)^4$ and the stated regular-fibre restriction; they do
+not rule out codomain-changing cone targets or any other real or singular
+globalization mechanism.
+\end{corollary}
+
+\begin{proof}
+The product homology statement follows from the integral Kunneth theorem, so
+$X^4$ is not a homotopy sphere.  The smash identification follows from a
+based recognition $X\cong S^6$.  On
+$F_z^{\mathrm{flat}}\times\{0\}^3$, the fourfold quotient is
+\[
+ x\longmapsto(\chi_{\gamma,z}(x),0,0,0),
+\]
+which is nonconstant.  It is therefore not constant on the fat wedge and
+does not factor through the fibre smash product.
+
+For the stronger extension statement, $H^1(X^4;\Z)=0$.  If a map
+\[
+ \Phi:X^4\longrightarrow(\R/\Z)^4
+\]
+restricted on one regular fourfold fibre to
+$(\chi_{\gamma,z})^4$, the pullback of the
+first target $H^1$-generator would restrict to the nonzero class
+$\varepsilon_\gamma$ on the first fibre factor, while every class pulled
+back to $X^4$ is zero.  This is impossible.  A map from $X^{\wedge4}$ with
+the corresponding restriction would give such a $\Phi$ after precomposition
+with the smash-collapse map $X^4\to X^{\wedge4}$, so it is impossible as
+well.
+\end{proof}
+
+\section{The completed local toric Kummer morphism}
+
+The spectral degeneration and the invariant-character quotient do not by
+themselves extend a fibre cover across the cusp.  The following local theorem
+performs that separate task.  Its source quotient uses the modified action
+with $C_N(v)=C(v^N)/N$; consequently the toric power map is equivariant.
+The degree to the original cusp family is $N^3$, whereas $N^2$ is the generic
+degree only after factoring through the base-changed target.  The construction
+is local at the cusp and makes no full-base claim.
+
+\input{supporting_materials/workbench/research/cusp_toric_cover_completion}
+
+\paragraph{Context from the separate cone-target construction.}
+The canonical workbench contains a different, codomain-changing construction
+whose proof is not reproduced or claimed in this standalone paper.  In that
+construction, collapsing the appropriate cusp boundary pieces gives based
+maps
+\[
+ q_2^{\wedge2}:X^{\wedge2}\cong S^{12}
+ \longrightarrow\mathcal A^{\wedge2},
+ \qquad
+ q_1^{\wedge4}:X^{\wedge4}\cong S^{24}
+ \longrightarrow\mathcal C^{\wedge4}.
+\]
+Their synchronized radial target slices have intrinsic varying flat metrics
+with pointed local-isometric $\R^4$ limits.  In every one fixed compatible
+ambient metric on the compact cone targets, however, those same slices
+collapse to the relevant cone point.  These sphere-source maps have different
+codomains from the fixed $(\R/\Z)^4$ target in
+Corollary~\ref{cor:product-smash-obstruction}, so they are outside that
+literal nonextension statement.
+
+\section{A gapless vertical direct-integral operator}
+
+Choose a measurable cusp ray $T\mapsto z(T)$ for $T\ge T_0$ and normalize Haar measure on every fibre.  The marking identifies the fibre characters measurably.  Let
+\begin{equation}\label{eq:direct-integral-space}
+ \mathcal H_0=
+ \int_{T_0}^{\infty}{}^{\oplus}
+ L_0^2(F_{z(T)}^{\mathrm{flat}})\,w(T)\,\dd T,
+\end{equation}
+where $L_0^2$ denotes the orthogonal complement of the constants and $w$ is a positive locally integrable weight whose measure is nonzero on arbitrarily distant bounded intervals.  Define the decomposable operator
+\begin{equation}\label{eq:direct-integral-operator}
+ H_{\mathrm v}=
+ \int_{T_0}^{\infty}{}^{\oplus}
+ \Delta_{z(T)}\big|_{L_0^2}\,w(T)\,\dd T.
+\end{equation}
+Fourier expansion in the marked angular coordinates gives the concrete
+unitary identification
+\begin{equation}\label{eq:direct-integral-Fourier-sum}
+ \mathcal H_0\cong
+ \bigoplus_{k\in\Z^4\setminus\{0\}}
+ L^2([T_0,\infty),w(T)\,\dd T),
+\end{equation}
+under which
+\begin{equation}\label{eq:direct-integral-domain}
+ \begin{split}
+ (H_{\mathrm v}u)_k(T)&=\lambda_T(k)u_k(T),\\
+ \operatorname{Dom}(H_{\mathrm v})
+ &=\left\{u\in\mathcal H_0:
+ \sum_{k\ne0}\int_{T_0}^{\infty}
+ \lambda_T(k)^2|u_k(T)|^2w(T)\,\dd T<\infty\right\}.
+ \end{split}
+\end{equation}
+
+\begin{theorem}[Continuous spectral threshold at zero]\label{thm:direct-integral}
+The operator $H_{\mathrm v}$ is nonnegative and self-adjoint,
+\begin{equation}\label{eq:direct-integral-conclusion}
+ \inf\Spec(H_{\mathrm v})=0,
+ \qquad
+ \ker H_{\mathrm v}=\{0\}.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:direct-integral-essential}
+ 0\in\sigma_{\mathrm{ess}}(H_{\mathrm v})
+ \cap\sigma_{\mathrm{cont}}(H_{\mathrm v}),
+\end{equation}
+so there is no positive spectral gap.  If the fibrewise constants are
+retained instead, the kernel contains the entire parameter-space factor and
+is infinite-dimensional.
+\end{theorem}
+
+\begin{proof}
+For each $k\ne0$, multiplication by the positive measurable real function
+$\lambda_T(k)$ on $L^2([T_0,\infty),w(T)\,\dd T)$ is self-adjoint on its
+maximal multiplication domain.  The orthogonal sum of these operators has
+exactly the domain \eqref{eq:direct-integral-domain}, proving
+self-adjointness and nonnegativity; this is also the standard direct-integral
+construction \citep[Chapter XIII]{ReedSimonIV_1978}.  Let $e_{\gamma,T}$ be
+the normalized fixed-fibre character corresponding to $k=e_\gamma$.
+Proposition~\ref{prop:fixed-spectrum}, formula \eqref{eq:dual-exact}, and the
+cusp estimates imply
+\begin{equation}\label{eq:specific-mode-energy}
+ \langle e_{\gamma,T},\Delta_{z(T)}e_{\gamma,T}\rangle
+ \le \frac{C}{T^2}
+\end{equation}
+for large $T$.  Theorem~\ref{thm:global-real-quotient} additionally identifies
+this already-defined character as the pullback of the first Fourier mode on
+the global real circle quotient, but the direct-integral argument does not
+depend on that identification and does not require it to be the exact shortest
+fibre mode.  Choose pairwise disjoint intervals $I_j=[S_j,S_j+1]$ with $S_j\to\infty$ and positive $w(T)\dd T$ measure.  The sections
+\[
+ \Psi_j(T)=
+ \frac{\mathbf 1_{I_j}(T)e_{\gamma,T}}
+ {\left(\int_{I_j}w(T)\,\dd T\right)^{1/2}}
+\]
+belong to $\operatorname{Dom}(H_{\mathrm v})$, have unit norm, are mutually
+orthogonal, hence converge weakly to zero, and satisfy
+\[
+ \|H_{\mathrm v}\Psi_j\|^2
+ \le C^2/S_j^4\longrightarrow0.
+\]
+Weyl's criterion proves $0\in\sigma_{\mathrm{ess}}(H_{\mathrm v})$, and in
+particular the spectral bottom is zero.
+
+If $H_{\mathrm v}\Psi=0$, then nonnegativity and decomposability give
+\[
+ 0=\int\langle\Psi(T),\Delta_{z(T)}\Psi(T)\rangle w(T)\,\dd T.
+\]
+The integrand is nonnegative, hence vanishes almost everywhere.  Every fibre vector then lies in the constants, but those were removed in \eqref{eq:direct-integral-space}; therefore $\Psi=0$.  A self-adjoint operator has no residual spectrum, so an injective operator with $0\in\Spec$ has $0$ in its continuous spectrum.  Retaining constants instead gives all sections $T\mapsto c(T)\mathbf 1_T$ as zero modes.
+\end{proof}
+
+\begin{remark}[Vertical, not total-space]
+The operator \eqref{eq:direct-integral-operator} differentiates only along the torus fibres.  It has no derivative in the cusp parameter, no boundary coupling, and no claim to be the Laplacian of a smooth metric on the completed six-dimensional total space.  Its gaplessness is exact for the operator defined here, but it must not be silently transferred to a different operator.
+\end{remark}
+
+\section{Classical gauge fluctuation operators on the radial cusp}
+
+Let $G$ be a compact Lie group with real Lie algebra $\mathfrak g$, equipped
+with a positive-definite $\operatorname{Ad}(G)$-invariant inner product, and
+put
+\[
+ d_G=\dim_{\R}\mathfrak g,\qquad
+ \mathfrak g_{\C}=\mathfrak g\otimes_{\R}\C.
+\]
+Fix a coupling $g_{\mathrm{YM}}>0$.  Every operator in this section acts on
+the trivial bundle over one of the auxiliary flat tori
+$F_z^{\mathrm{flat}}$ along the positive radial cusp.  No physical spacetime
+identification is made.
+
+\subsection{Continuum Hessian and Coulomb spectrum}
+
+On the trivial principal bundle
+$\mathcal P_T=F_z^{\mathrm{flat}}\times G$, let $A_0$ be the product
+connection and normalize
+\begin{equation}\label{eq:YM-functional}
+ \operatorname{YM}_T(A)=\frac1{2g_{\mathrm{YM}}^2}
+ \int_{F_z^{\mathrm{flat}}}|F_A|^2\,\dd\operatorname{vol}_{F_z}.
+\end{equation}
+
+\begin{proposition}[Hessian at the product connection]
+\label{prop:YM-Hessian}
+For smooth $a,b\in\Omega^1(F_z^{\mathrm{flat}};\mathfrak g)$,
+\begin{equation}\label{eq:YM-Hessian-bilinear}
+ \operatorname{Hess}_{A_0}\operatorname{YM}_T(a,b)
+ =g_{\mathrm{YM}}^{-2}\langle\dd a,\dd b\rangle_{L^2}.
+\end{equation}
+Let $\dd_1$ be the maximal closed exterior derivative on
+$L^2\Omega^1(F_z^{\mathrm{flat}};\mathfrak g)$,
+\[
+ \operatorname{Dom}(\dd_1)=\{a\in L^2\Omega^1:
+ \dd a\in L^2\Omega^2\text{ distributionally}\}.
+\]
+The closed Hessian form and its nonnegative self-adjoint operator are
+\begin{align}
+ \mathfrak l_T[a]&=g_{\mathrm{YM}}^{-2}\|\dd_1a\|_{L^2}^2,
+ &\operatorname{Dom}(\mathfrak l_T)&=\operatorname{Dom}(\dd_1),
+ \label{eq:YM-closed-form}\\
+ \mathcal L_T&=g_{\mathrm{YM}}^{-2}\dd_1^*\dd_1,
+ &\operatorname{Dom}(\mathcal L_T)
+ &=\{a\in\operatorname{Dom}(\dd_1):
+ \dd_1a\in\operatorname{Dom}(\dd_1^*)\}.
+ \label{eq:YM-Hessian-operator}
+\end{align}
+Its differential expression on smooth one-forms is
+$g_{\mathrm{YM}}^{-2}\dd^*\dd$.
+\end{proposition}
+
+\begin{proof}
+With $F_{A_0+a}=\dd a+\tfrac12[a\wedge a]$,
+\[
+ F_{A_0+sa+tb}=s\,\dd a+t\,\dd b+O((|s|+|t|)^2).
+\]
+The mixed derivative of \eqref{eq:YM-functional} is therefore
+\eqref{eq:YM-Hessian-bilinear}.  The maximal distributional exterior
+derivative is closed and densely defined, so the first representation theorem
+for closed nonnegative forms gives \eqref{eq:YM-closed-form} and
+\eqref{eq:YM-Hessian-operator}, including the displayed operator domain.
+\end{proof}
+
+Gauge-longitudinal one-forms and harmonic one-forms are Hessian-zero
+directions.  Remove both by defining
+\begin{equation}\label{eq:continuum-Coulomb-space}
+ \mathscr C_T=\{a\in L^2\Omega^1(F_z^{\mathrm{flat}};\mathfrak g):
+ \dd^*a=0\text{ distributionally},\ 
+ a\perp\mathcal H^1(F_z^{\mathrm{flat}};\mathfrak g)\}.
+\end{equation}
+This closed subspace reduces $\mathcal L_T$.  On it the form domain is
+$H^1\Omega^1\cap\mathscr C_T$ and the operator domain is
+$H^2\Omega^1\cap\mathscr C_T$: on the coclosed slice the graph norm of
+$\dd_1$, together with the $L^2$ norm, is the Hodge graph norm, so the
+claims follow from the Gaffney estimate and elliptic regularity on the compact
+flat torus.
+
+For $k\in\Z^4$ put
+\[
+ \xi_{T,k}=\mathsf P_z^{-\mathsf T}k,
+ \qquad
+ \chi_{T,k}([x])=e^{2\pi i\langle\xi_{T,k},x\rangle}.
+\]
+If $\varepsilon(\xi)$ denotes exterior multiplication by a covector and
+$\iota_{\xi^\sharp}$ contraction by its Euclidean dual vector, direct
+differentiation gives
+\begin{align}
+ \dd(\chi_{T,k}\alpha)
+ &=2\pi i\chi_{T,k}\varepsilon(\xi_{T,k})\alpha,
+ \label{eq:continuum-d-symbol}\\
+ \dd^*(\chi_{T,k}\alpha)
+ &=-2\pi i\chi_{T,k}\iota_{\xi_{T,k}^\sharp}\alpha,
+ \label{eq:continuum-dstar-symbol}\\
+ \dd^*\dd(\chi_{T,k}\alpha)
+ &=4\pi^2\chi_{T,k}
+ \bigl(|\xi_{T,k}|^2\alpha-
+ \varepsilon(\xi_{T,k})\iota_{\xi_{T,k}^\sharp}\alpha\bigr).
+ \label{eq:continuum-Hessian-symbol}
+\end{align}
+
+\begin{theorem}[Exact reduced continuum Hessian gap]
+\label{thm:continuum-YM-gap}
+For $k\ne0$, the Coulomb polarization space
+\begin{equation}\label{eq:continuum-transverse-space}
+ \mathcal T_{T,k}=\ker\iota_{\xi_{T,k}^\sharp}
+ \subset(\R^4)^*_{\C}
+\end{equation}
+has complex dimension three.  On
+$\mathcal T_{T,k}\otimes\mathfrak g_{\C}$ the Hessian eigenvalue is
+\begin{equation}\label{eq:continuum-YM-mode}
+ \lambda_T^{\mathrm{YM}}(k)
+ =\frac{4\pi^2}{g_{\mathrm{YM}}^2}
+ |\mathsf P_z^{-\mathsf T}k|^2
+\end{equation}
+with complex multiplicity $3d_G$ on that signed Fourier fibre.  If
+$K_T(\lambda)=\{k\ne0:\lambda_T^{\mathrm{YM}}(k)=\lambda\}$, then the
+total complex multiplicity, and the dimension of the real eigenspace, is
+$3d_G\#K_T(\lambda)$.
+
+For all sufficiently large $T$, the first eigenvalue on $\mathscr C_T$ is
+\begin{equation}\label{eq:continuum-YM-gap-exact}
+ \gamma_T=\frac{4\pi^2}{g_{\mathrm{YM}}^2}
+ \min\left\{
+ \frac{T^2+m^2}{\mathcal D_T^2},
+ \frac{(T-B_R)^2+36m^2}{\mathcal D_T^2}
+ \right\},
+\end{equation}
+and
+\begin{equation}\label{eq:continuum-YM-gap-expansion}
+ \boxed{\gamma_T=
+ \frac{4\pi^2}{g_{\mathrm{YM}}^2T^2}
+ \left(1+\frac{2\min\{b_{\mathrm I,0},0\}}T+O(T^{-2})\right).}
+\end{equation}
+If $I_T\subset\{\gamma,u\}$ records which of the two exact quantities in
+\eqref{eq:continuum-YM-gap-exact} attain the minimum, the real multiplicity
+of $\gamma_T$ is exactly $6d_G\#I_T$.
+\end{theorem}
+
+\begin{proof}
+For $k\ne0$, invertibility of $\mathsf P_z$ gives $\xi_{T,k}\ne0$.
+Contraction by $\xi_{T,k}^\sharp$ has rank one on complexified one-forms,
+so \eqref{eq:continuum-transverse-space} has dimension three.  On its kernel
+the second term of \eqref{eq:continuum-Hessian-symbol} vanishes, proving
+\eqref{eq:continuum-YM-mode}.  Fourier completeness gives the whole reduced
+spectrum.  Complex conjugation exchanges $k$ and $-k$; the reality condition
+on their amplitudes shows that each conjugate pair contributes $6d_G$ real
+dimensions, proving the multiplicity statement.  The zero Fourier mode is
+precisely the harmonic sector already removed in
+\eqref{eq:continuum-Coulomb-space}.
+
+Minimizing \eqref{eq:continuum-YM-mode} is exactly the shortest-dual-vector
+problem solved by Theorem~\ref{thm:cusp-gap}.  Equations
+\eqref{eq:unit-mode-exact-lengths} and \eqref{eq:cusp-gap-result} prove the
+exact gap, its expansion, and the bottom multiplicity.
+\end{proof}
+
+In lattice-coordinate coefficients $a_y$, the exact Coulomb projection at
+mode $k$ is
+\begin{equation}\label{eq:continuum-Coulomb-projection}
+ k^{\mathsf T}(\mathsf P_z^{\mathsf T}\mathsf P_z)^{-1}a_y=0,
+ \qquad
+ \Pi_{T,k}a_y=a_y-k
+ \frac{k^{\mathsf T}(\mathsf P_z^{\mathsf T}\mathsf P_z)^{-1}a_y}
+ {k^{\mathsf T}(\mathsf P_z^{\mathsf T}\mathsf P_z)^{-1}k}.
+\end{equation}
+Thus Coulomb reduction uses the full physical covector metric, including all
+cross terms; it is not obtained by deleting a coordinate component.
+
+\subsection{Finite cubical cochains and simultaneous cusp--mesh limits}
+
+Fix $N\ge2$ and write $\Lambda_N=(\Z/N\Z)^4$.  Its vertex $n$ represents
+the point $\mathsf P_z(n/N)$ in the flat torus.  Let
+$E=(\R^4)^*$ with its Euclidean inner product, let $\mathbf e_j$ be the
+standard coordinate columns in lattice-coordinate space, and define the
+physical coframe
+\begin{equation}\label{eq:finite-physical-coframe}
+ \vartheta_T^j=\mathsf P_z^{-\mathsf T}\mathbf e_j\in E,
+ \qquad 1\le j\le4.
+\end{equation}
+For $0\le p\le4$, set
+\begin{equation}\label{eq:finite-cochain-spaces}
+ C_N^p(T;\mathfrak g_{\C})
+ =\operatorname{Map}(\Lambda_N,\bigwedge^pE_{\C}\otimes\mathfrak g_{\C})
+\end{equation}
+and equip it with
+\begin{equation}\label{eq:finite-inner-product}
+ \langle a,b\rangle_{N,p,T}
+ =\frac{\mathcal D_T}{N^4}\sum_{n\in\Lambda_N}
+ \langle a(n),b(n)\rangle_{\wedge^pE\otimes\mathfrak g_{\C}}.
+\end{equation}
+This includes the exact Riemann-sum weight.  If
+$G_T=\mathsf P_z^{\mathsf T}\mathsf P_z$, then
+\begin{equation}\label{eq:finite-exterior-metric}
+ \left\langle
+ \vartheta_T^{i_1}\wedge\cdots\wedge\vartheta_T^{i_p},
+ \vartheta_T^{j_1}\wedge\cdots\wedge\vartheta_T^{j_p}
+ \right\rangle
+ =\det\bigl((G_T^{-1})_{i_aj_b}\bigr)_{a,b=1}^p.
+\end{equation}
+Indeed,
+$\langle\vartheta_T^i,\vartheta_T^j\rangle
+=\mathbf e_i^{\mathsf T}\mathsf P_z^{-1}\mathsf P_z^{-\mathsf T}
+\mathbf e_j=(G_T^{-1})_{ij}$, and the inner product induced on an exterior
+power is the determinant of the matrix of pairings.
+
+Let $(\mathsf T_ja)(n)=a(n+\mathbf e_j)$ and put
+\begin{equation}\label{eq:finite-differences}
+ D_{N,j}^+=N(\mathsf T_j-\id),\qquad
+ (D_{N,j}^-a)(n)=N(a(n)-a(n-\mathbf e_j)).
+\end{equation}
+Define
+\begin{equation}\label{eq:finite-exterior-derivative}
+ \dd_Na=\sum_{j=1}^4\varepsilon(\vartheta_T^j)D_{N,j}^+a.
+\end{equation}
+This convention stores differential-form coefficients.  If $c_I(n)$ instead
+stores the integral over a positively oriented $p$-cell, then
+$a_I(n)=N^pc_I(n)$ carries the unscaled cellular coboundary
+$\mathsf T_j-\id$, together with the inner product
+\begin{equation}\label{eq:integrated-cochain-normalization}
+ \langle c,c'\rangle^{\mathrm{int}}_{N,p,T}
+ =\mathcal D_TN^{2p-4}\sum_{n\in\Lambda_N}
+ \langle c(n),c'(n)\rangle,
+\end{equation}
+isometrically to \eqref{eq:finite-exterior-derivative} and
+\eqref{eq:finite-inner-product}.  Thus both conventions give exactly the
+same Hessian symbols and eigenvalues.  Explicitly,
+$\mathcal D_TN^{2p-4}\sum|c|^2
+=\mathcal D_TN^{-4}\sum|N^pc|^2$, and multiplying the unscaled coboundary
+of $c$ by $N^{p+1}$ gives exactly $\dd_N(N^pc)$.
+The differences commute while exterior multiplications anticommute, so
+$\dd_N^2=0$.  Translation is unitary for
+\eqref{eq:finite-inner-product}, and the adjoint of exterior multiplication
+by $\vartheta_T^j$ is contraction by $(\vartheta_T^j)^\sharp$.  Hence
+\begin{equation}\label{eq:finite-adjoint}
+ \dd_N^*=-\sum_{j=1}^4
+ \iota_{(\vartheta_T^j)^\sharp}D_{N,j}^-.
+\end{equation}
+
+For $k\in\Lambda_N$, put
+\begin{align}
+ \chi_{N,k}(n)&=e^{2\pi i k\cdot n/N},&
+ \mathfrak d_N(k)_j&=N(e^{2\pi ik_j/N}-1),
+ \label{eq:finite-coordinate-symbol}\\
+ \zeta_{N,T}(k)&=\sum_j\mathfrak d_N(k)_j\vartheta_T^j
+ =\mathsf P_z^{-\mathsf T}\mathfrak d_N(k).
+ \label{eq:finite-physical-symbol}
+\end{align}
+Then, for every constant exterior amplitude $\alpha$,
+\begin{align}
+ \dd_N(\chi_{N,k}\alpha)
+ &=\chi_{N,k}\varepsilon(\zeta_{N,T}(k))\alpha,\\
+ \dd_N^*(\chi_{N,k}\alpha)
+ &=\chi_{N,k}\iota_{\overline{\zeta_{N,T}(k)}^\sharp}\alpha,\\
+ (\dd_N\dd_N^*+\dd_N^*\dd_N)(\chi_{N,k}\alpha)
+ &=|\zeta_{N,T}(k)|^2\chi_{N,k}\alpha.
+ \label{eq:finite-Hodge-symbol}
+\end{align}
+The last identity is the Hermitian exterior-algebra relation
+$\iota_{\overline\zeta^\sharp}\varepsilon(\zeta)+
+\varepsilon(\zeta)\iota_{\overline\zeta^\sharp}=|\zeta|^2\id$.
+It also proves that the harmonic $p$-cochains are exactly the constant
+cochains, of complex dimension $\binom4p d_G$.
+Indeed, $\mathfrak d_N(k)=0$ precisely for $k=0$ in $\Lambda_N$, and
+$\mathsf P_z$ is invertible, so the Hodge symbol vanishes precisely on the
+zero Fourier mode.
+
+Define the finite reduced Coulomb slice and Hessian by
+\begin{align}
+ \mathscr C_{N,T}
+ &=\ker(\dd_N^*:C_N^1\to C_N^0)
+ \cap(\ker\Delta_{N,T}^{(1)})^\perp,
+ &\Delta_{N,T}^{(1)}&=\dd_N\dd_N^*+\dd_N^*\dd_N,
+ \label{eq:finite-Coulomb-space}\\
+ \mathcal L_{N,T}&=g_{\mathrm{YM}}^{-2}\dd_N^*\dd_N.
+ \label{eq:finite-Hessian}
+\end{align}
+Equivalently, remove $k=0$ and at each $k\ne0$ restrict the one-form
+amplitude to
+$\ker\iota_{\overline{\zeta_{N,T}(k)}^\sharp}$, a complex
+three-dimensional space.  The exact projection is
+\begin{equation}\label{eq:finite-Coulomb-projection}
+ \Pi_{N,T,k}\alpha=\alpha-\zeta_{N,T}(k)
+ \frac{\iota_{\overline{\zeta_{N,T}(k)}^\sharp}\alpha}
+ {|\zeta_{N,T}(k)|^2}.
+\end{equation}
+
+\begin{theorem}[Finite Coulomb spectrum and every mesh regime]
+\label{thm:finite-YM-gap}
+On the nonzero $k$-Fourier fibre of $\mathscr C_{N,T}$,
+$\mathcal L_{N,T}$ has the single eigenvalue
+\begin{equation}\label{eq:finite-YM-mode}
+ \lambda_{N,T}^{\mathrm{YM}}(k)
+ =g_{\mathrm{YM}}^{-2}
+ |\mathsf P_z^{-\mathsf T}\mathfrak d_N(k)|^2
+ =g_{\mathrm{YM}}^{-2}\mathfrak d_N(k)^*G_T^{-1}
+ \mathfrak d_N(k),
+\end{equation}
+with complex multiplicity $3d_G$.  Put
+\begin{equation}\label{eq:finite-rho}
+ \rho_N=4N^2\sin^2(\pi/N).
+\end{equation}
+For all sufficiently large $T$, uniformly in $N\ge2$, the first eigenvalue is
+\begin{align}
+ \gamma_{N,T}
+ &=\min\{\lambda_{N,T}^{\mathrm{YM}}(\mathbf e_\gamma),
+          \lambda_{N,T}^{\mathrm{YM}}(\mathbf e_u)\}
+ \label{eq:finite-gap-exact}\\
+ &=\frac{\rho_N}{g_{\mathrm{YM}}^2T^2}
+ \left(1+\frac{2\min\{b_{\mathrm I,0},0\}}T+O(T^{-2})\right).
+ \label{eq:finite-gap-expansion}
+\end{align}
+If $I_{N,T}\subset\{\gamma,u\}$ records the minimizing coordinate modes
+and $\eta_N=1$ for $N=2$, $\eta_N=2$ for $N>2$, its real multiplicity is
+\begin{equation}\label{eq:finite-gap-multiplicity}
+ 3d_G\eta_N\#I_{N,T}.
+\end{equation}
+The following conclusions hold:
+\begin{enumerate}[label=(\roman*),leftmargin=2.3em]
+\item For fixed $N$, $T^2\gamma_{N,T}\to\rho_N/g_{\mathrm{YM}}^2$ and
+$\gamma_{N,T}\to0$.
+\item For every integer-valued $N(T)\ge2$, with no growth assumption, there
+are constants $0<c<C<\infty$ independent of $N(T)$ such that
+\begin{equation}\label{eq:finite-arbitrary-mesh}
+ \frac c{T^2}\le\gamma_{N(T),T}\le\frac C{T^2}
+\end{equation}
+for all large $T$.
+\item If $N(T)\to\infty$, then
+\begin{equation}\label{eq:finite-growing-mesh}
+ \gamma_{N(T),T}=\frac{4\pi^2}{g_{\mathrm{YM}}^2T^2}
+ \bigl(1+O(T^{-1})+O(N(T)^{-2})\bigr).
+\end{equation}
+\item The largest physical elementary edge is
+\begin{equation}\label{eq:finite-mesh-size}
+ \max_j\frac{\|\mathsf P_z\mathbf e_j\|}{N(T)}
+ =\frac{T}{N(T)}(1+O(T^{-1})).
+\end{equation}
+Thus the varying continuum torus is resolved if and only if
+$N(T)/T\to\infty$.  This refinement condition is not needed for the
+algebraic soft-mode conclusion in (ii).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The symbol identities preceding the theorem and the exterior-algebra
+identity show that on the transverse space
+$\dd_N^*\dd_N=|\zeta_{N,T}(k)|^2\id$, proving
+\eqref{eq:finite-YM-mode} and its multiplicity.  Let
+$\sigma_N=2N\sin(\pi/N)$, so $\rho_N=\sigma_N^2$.  The least nonzero modulus
+of a coordinate of $\mathfrak d_N(k)$ is $\sigma_N$, attained precisely at
+frequency $\pm1$ (with the two signs equal when $N=2$).  A frequency supported
+in the first two coordinates but not equal to
+$\pm\mathbf e_\gamma$ or $\pm\mathbf e_u$ has squared coordinate norm at
+least $2\sigma_N^2$.  Indeed, either both coordinates are nonzero, or the
+single frequency is not $\pm1$; in the latter case
+$\sin(2\pi/N)/\sin(\pi/N)=2\cos(\pi/N)\ge\sqrt2$ for $N\ge4$, and
+$N=2,3$ are immediate.
+
+On complex two-vectors $z=(z_1,z_2)$, the relevant soft block is
+\[
+ \frac1{\mathcal D_T}
+ \begin{pmatrix}m&T-B_R\\-T&6m\end{pmatrix}z.
+\]
+After multiplication by $T$, its singular values are
+$1+O(T^{-1})$, uniformly on complex vectors, by
+\eqref{eq:MT-J}.  The factor $\sqrt2$ therefore separates every other
+soft-plane frequency from the two coordinate frequencies uniformly in $N$
+for large $T$.  For a general $z\in\C^4$, solving
+$\mathsf P_z^{\mathsf T}x=z$ shows that the first and third components of
+$x$ are $z_3,z_4$.  Thus a frequency with nonzero third or fourth coordinate
+has image norm at least $\sigma_N$, whereas either coordinate candidate is
+$O(\sigma_N/T)$.  This proves the exact minimizing list and
+\eqref{eq:finite-gap-exact}; the signed-frequency reality condition proves
+\eqref{eq:finite-gap-multiplicity}.  Multiplying
+\eqref{eq:gamma-eigenvalue-correction} and
+\eqref{eq:u-eigenvalue-correction} by $\rho_N/g_{\mathrm{YM}}^2$ proves
+\eqref{eq:finite-gap-expansion}.
+
+The elementary sine bounds give $16\le\rho_N\le4\pi^2$, proving (i) and
+(ii); $\rho_N=4\pi^2(1+O(N^{-2}))$ proves (iii).  Finally, the first two
+columns of $\mathsf P_z$ have length $T(1+O(T^{-1}))$, while the last two
+have length one.  Division by $N(T)$ proves (iv).
+\end{proof}
+
+\begin{remark}[Classical linear scope]
+For each fixed $T$, the reduced continuum operator is positively gapped; for
+each fixed $(T,N)$, so is the reduced finite operator.  What fails is a
+positive bound uniform as $T\to\infty$.  Before reduction, gauge-longitudinal
+directions and constant harmonic one-forms are separate Hessian-zero
+directions.  The spaces \eqref{eq:finite-cochain-spaces} are linear
+Lie-algebra-valued cochains, not compact-group link variables, and
+\eqref{eq:finite-Hessian} is not a Wilson plaquette action.  Neither operator
+contains the nonlinear interaction, a gauge-invariant quantum measure,
+renormalization, confinement, or a Hamiltonian reconstruction.
+\end{remark}
+
+\section{Full-torus integral magnetic flux}
+
+The elliptic quotient studied in the next section is not required in order to
+define a magnetic Laplacian on the full marked four-torus.  We now retain the
+original lattice, metric, constants, and flux class and give the exact
+self-adjoint operator.  The result is fibrewise along the marked cusp; it does
+not assert that the chosen class is fixed by the full monodromy.
+
+Use angular coordinates $u\in\R^4/\Z^4$, so that the Euclidean covering
+coordinate is $x=\mathsf P_z u$ and the metric matrix is
+\begin{equation}\label{eq:magnetic-Gram}
+ G_T=\mathsf P_z^{\mathsf T}\mathsf P_z,
+ \qquad \sqrt{\det G_T}=|\det\mathsf P_z|=\mathcal D_T.
+\end{equation}
+Fix an integral alternating form
+\begin{equation}\label{eq:integral-flux}
+ \mathsf E=\sum_{1\le j<k\le4}E_{jk}\,\dd u_j\wedge\dd u_k
+ \in\bigwedge^2(\Z^4)^*,
+ \qquad E_{jk}\in\Z,
+\end{equation}
+and denote its skew matrix by the same letter.  For $n\in\Z^4$, set
+\begin{equation}\label{eq:magnetic-automorphy}
+ J_n^{\mathsf E}(u)=
+ \exp\left(-2\pi i\sum_{j<k}E_{jk}n_j u_k\right).
+\end{equation}
+Since $\sum_{j<k}E_{jk}m_jn_k\in\Z$,
+\[
+ J_m^{\mathsf E}(u+n)J_n^{\mathsf E}(u)=J_{m+n}^{\mathsf E}(u).
+\]
+Thus \eqref{eq:magnetic-automorphy} defines a Hermitian line bundle
+$\mathcal L_{\mathsf E,T}$ on $F_z^{\mathrm{flat}}$.  The connection
+\begin{equation}\label{eq:magnetic-connection}
+ \nabla^{\mathsf E}=\dd+2\pi i
+ \sum_{j<k}E_{jk}u_j\,\dd u_k
+\end{equation}
+descends because
+$J_n^{-1}\dd J_n=-2\pi i\sum_{j<k}E_{jk}n_j\dd u_k$, and its curvature is
+\begin{equation}\label{eq:magnetic-curvature}
+ F_{\nabla^{\mathsf E}}=2\pi i\,\mathsf E.
+\end{equation}
+
+The Hilbert space is concretely
+\begin{align}
+ \mathcal H_{\mathsf E,T}
+ =\{f\in L^2_{\mathrm{loc}}(\R^4):{}&
+ f(u+n)=J_n^{\mathsf E}(u)f(u)
+ \text{ for every }n\in\Z^4\},
+ \label{eq:magnetic-Hilbert-space}\\
+ \|f\|^2={}&\int_{[0,1]^4}|f(u)|^2\mathcal D_T\,\dd^4u.
+ \nonumber
+\end{align}
+On smooth functions with the same automorphy, define
+\begin{equation}\label{eq:magnetic-form}
+ q_{\mathsf E,T}[f]=\int_{[0,1]^4}
+ (G_T^{-1})^{jk}\overline{\nabla_j^{\mathsf E}f}
+ \nabla_k^{\mathsf E}f\,\mathcal D_T\,\dd^4u.
+\end{equation}
+
+\begin{theorem}[Full-torus magnetic oscillator spectrum]
+\label{thm:full-torus-magnetic-spectrum}
+The form \eqref{eq:magnetic-form} is nonnegative and closable, with closed
+form domain $H^1(F_z^{\mathrm{flat}};\mathcal L_{\mathsf E,T})$.  Its
+Friedrichs operator is
+\[
+ \Delta_{\mathsf E,T}=(\nabla^{\mathsf E})^*\nabla^{\mathsf E},
+ \qquad
+ \operatorname{Dom}(\Delta_{\mathsf E,T})
+ =H^2(F_z^{\mathrm{flat}};\mathcal L_{\mathsf E,T}),
+\]
+and has compact resolvent.
+
+Assume $\mathsf E$ is nondegenerate.  Define $b_1,b_2>0$ by
+\begin{equation}\label{eq:magnetic-frequency-definition}
+ \Spec\!\left(G_T^{-1/2}(2\pi\mathsf E)G_T^{-1/2}\right)
+ =\{ib_1,-ib_1,ib_2,-ib_2\}.
+\end{equation}
+Then, as a set with finite multiplicities,
+\begin{equation}\label{eq:magnetic-oscillator-spectrum}
+ \Spec(\Delta_{\mathsf E,T})
+ =\{(2n_1+1)b_1+(2n_2+1)b_2:
+ n_1,n_2\in\Z_{\ge0}\}.
+\end{equation}
+In particular, the spacing from the ground level to the first distinct
+level is
+\begin{equation}\label{eq:magnetic-level-gap}
+ \operatorname{gap}(\Delta_{\mathsf E,T})=2\min\{b_1,b_2\}.
+\end{equation}
+No multiplicity formula is needed for, or asserted in, these identities.
+\end{theorem}
+
+\begin{proof}
+In local unitary trivializations, the integrand in
+\eqref{eq:magnetic-form} is the squared norm of a first-order unitary
+covariant derivative.  A finite trivializing cover and a partition of unity
+show that $\|f\|^2+q_{\mathsf E,T}[f]$ is equivalent to the usual local
+$H^1$ norm.  Its completion is therefore
+$H^1(F_z^{\mathrm{flat}};\mathcal L_{\mathsf E,T})$.  The representation
+theorem for closed nonnegative forms gives the Friedrichs operator.  Its
+principal symbol is $G_T^{-1}(\xi,\xi)$, so it is elliptic; elliptic regularity
+on the compact boundaryless torus identifies its domain with $H^2$, and the
+compact inclusion $H^1\hookrightarrow L^2$ gives compact resolvent.
+
+The real skew-normal-form theorem gives a constant orthonormal frame
+$v_1,\ldots,v_4$ on the Euclidean cover in which $2\pi\mathsf E$ is
+\[
+ b_1v^1\wedge v^2+b_2v^3\wedge v^4,
+\]
+after reversing $v^2$ or $v^4$ if necessary.  Let $\nabla_a$ be covariant
+differentiation along $v_a$.  On the common smooth invariant core,
+\[
+ [\nabla_1,\nabla_2]=ib_1,
+ \qquad [\nabla_3,\nabla_4]=ib_2,
+\]
+and all other commutators vanish.  Put
+\[
+ C_1=\nabla_1-i\nabla_2,\qquad
+ C_2=\nabla_3-i\nabla_4,\qquad
+ \Delta_j=-(\nabla_{2j-1}^2+\nabla_{2j}^2).
+\]
+Direct multiplication, retaining the commutator signs, gives
+\begin{equation}\label{eq:magnetic-ladder-identities}
+ C_j^*C_j=\Delta_j-b_j,
+ \qquad C_jC_j^*=\Delta_j+b_j,
+ \qquad [\Delta_{\mathsf E,T},C_j]=-2b_jC_j.
+\end{equation}
+
+Compact resolvent gives a smooth lowest eigenfunction $\psi_0\ne0$.  If
+$C_j\psi_0\ne0$, the last identity in
+\eqref{eq:magnetic-ladder-identities} would produce an eigenfunction at a
+strictly lower eigenvalue.  Hence $C_1\psi_0=C_2\psi_0=0$, and the first
+identity gives
+\[
+ \Delta_{\mathsf E,T}\psi_0=(b_1+b_2)\psi_0.
+\]
+Repeated application of $C_1^*$ and $C_2^*$ produces nonzero eigenfunctions
+at all values displayed in \eqref{eq:magnetic-oscillator-spectrum}; their
+nonvanishing follows from $C_jC_j^*=C_j^*C_j+2b_j$.  Conversely, for an
+eigenfunction $\psi$ of eigenvalue $\lambda>b_1+b_2$,
+\[
+ (\lambda-b_1-b_2)\psi
+ =C_1^*C_1\psi+C_2^*C_2\psi.
+\]
+Each nonzero $C_j\psi$ lies at the strictly smaller eigenvalue
+$\lambda-2b_j$.  Induction over the finite set of eigenvalues below
+$\lambda$ therefore expresses every eigenspace in raised ground states and
+excludes all other spectral values.  Raising once in a least-frequency plane
+proves \eqref{eq:magnetic-level-gap}.
+\end{proof}
+
+\begin{corollary}[Pfaffian product and cusp gap bound]
+\label{cor:full-torus-magnetic-gap}
+Let
+\begin{equation}\label{eq:magnetic-pfaffian}
+ d:=|\operatorname{Pf}(\mathsf E)|
+ =|E_{12}E_{34}-E_{13}E_{24}+E_{14}E_{23}|>0.
+\end{equation}
+Then
+\begin{equation}\label{eq:magnetic-frequency-product}
+ b_1b_2=\frac{4\pi^2d}{\mathcal D_T},
+\end{equation}
+and
+\begin{equation}\label{eq:full-torus-magnetic-gap-bound}
+ \boxed{
+ \operatorname{gap}(\Delta_{\mathsf E,T})
+ \le4\pi\sqrt{\frac d{\mathcal D_T}}
+ =\frac{4\pi\sqrt d}{T}\bigl(1+O(T^{-1})\bigr).}
+\end{equation}
+Thus the ground-to-first-level spacing tends to zero for every fixed
+nondegenerate integral flux on the marked cusp fibres.
+\end{corollary}
+
+\begin{proof}
+The determinant of the skew matrix in
+\eqref{eq:magnetic-frequency-definition} is both $b_1^2b_2^2$ and
+\[
+ \frac{\det(2\pi\mathsf E)}{\det G_T}
+ =\frac{(2\pi)^4\operatorname{Pf}(\mathsf E)^2}{\mathcal D_T^2}.
+\]
+Taking the positive square root proves
+\eqref{eq:magnetic-frequency-product}.  Since
+$\min(b_1,b_2)\le\sqrt{b_1b_2}$, Theorem~\ref{thm:full-torus-magnetic-spectrum}
+gives the inequality.  Finally,
+$\mathcal D_T=T^2(1+O(T^{-1}))$ by
+\eqref{eq:volume-asymptotic}, which gives the final asymptotic.
+\end{proof}
+
+\begin{remark}[Scope of the magnetic result]
+Theorem~\ref{thm:full-torus-magnetic-spectrum} concerns a scalar magnetic
+Laplacian on a Hermitian line bundle over each marked flat four-torus.  It is
+not a Yang--Mills mass-gap theorem, and it does not claim that
+$[\mathsf E]\in H^2(F_z;\Z)$ is invariant under the monodromy of the global
+family.  It does show that the failure of the particular elliptic quotient
+below is not an obstruction to a fibrewise full-torus magnetic gap-closing
+sequence.
+\end{remark}
+
+\input{supporting_materials/workbench/research/cusp_spectral_preprint_radial_bridge}
+\input{supporting_materials/workbench/research/cusp_compact_link_gaussian_preprint}
+\input{supporting_materials/workbench/research/cusp_su2_magnetic_preprint}
+\input{supporting_materials/workbench/research/cusp_native_full_flux_magnetic_preprint}
+\input{supporting_materials/workbench/research/cusp_native_full_flux_radial_preprint}
+\input{supporting_materials/workbench/research/cusp_native_full_flux_suN_preprint}
+
+\section{The exceptional first-coordinate elliptic quotient and Landau sector}
+
+The four period generators in $\C^2$ are
+\begin{equation}\label{eq:generators}
+ v_\gamma=(6\mu,\beta),\quad
+ v_u=(\tau,\mu),\quad
+ v_w=(1,0),\quad
+ v_\delta=(0,1).
+\end{equation}
+Let $E_\tau=\C/(\Z\tau+\Z)$.
+
+\begin{proposition}[Exact descent criterion]\label{prop:descent}
+The first-coordinate projection $\operatorname{pr}_1:\C^2\to\C$ descends to a surjective holomorphic homomorphism
+\[
+ \overline{\operatorname{pr}}_1:F_z\longrightarrow E_\tau
+\]
+if and only if
+\begin{equation}\label{eq:descent-condition}
+ 6\mu=a\tau+b
+ \qquad\text{for some }(a,b)\in\Z^2.
+\end{equation}
+The pair $(a,b)$ is necessarily unique.
+On this locus, put
+\begin{equation}\label{eq:tau-f}
+ \tau_f=a\mu-\beta.
+\end{equation}
+Then $\Im\tau_f=-D>0$ and the connected kernel is the elliptic curve
+$E_{\tau_f}=\C/(\Z+\Z\tau_f)$, up to the harmless reversal of one lattice generator.
+\end{proposition}
+
+\begin{proof}
+The first coordinates of \eqref{eq:generators} are $6\mu,\tau,1,0$.  Descent to $E_\tau$ is therefore equivalent to $6\mu\in\Z\tau+\Z$, which is \eqref{eq:descent-condition}; the images of $v_u,v_w$ prove surjectivity.  Uniqueness follows from $\Im\tau>0$.  The unimodular replacement
+\[
+ v_\gamma\longmapsto v_\gamma-av_u-bv_w=(0,\beta-a\mu)
+\]
+shows that the kernel lattice is generated by $1$ and $\beta-a\mu=-\tau_f$.  Taking imaginary parts in \eqref{eq:descent-condition} gives $6m=aT$, and hence
+\[
+ D=p-\frac{6m^2}{T}=p-am=\Im(\beta-a\mu)=-\Im\tau_f.
+\]
+Since $D<0$, $\tau_f\in\mathfrak h$.
+\end{proof}
+
+Define the marked exceptional set
+\begin{equation}\label{eq:descent-locus}
+ \mathcal D=\bigcup_{(a,b)\in\Z^2}
+ \mathcal D_{a,b},
+ \qquad
+ \mathcal D_{a,b}=\{z:6\mu(z)-a\tau(z)-b=0\}.
+\end{equation}
+
+\begin{theorem}[No cusp accumulation and finiteness on the orbifold base]\label{thm:descent-finite}
+Assume the transformation laws and extension properties in Section~1.
+The generator laws act on the integral labels by
+\begin{equation}\label{eq:descent-label-monodromy}
+ g_0:(a,b)\longmapsto(a,a+b),
+ \qquad
+ g_2:(a,b)\longmapsto(-b,6+a).
+\end{equation}
+Consequently $\mathcal D$ is invariant under the triangle group and has a
+well-defined image in the completed orbifold base.
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.3em]
+\item There is a punctured neighborhood of the distinguished cusp containing no point of $\mathcal D$.
+\item The image of $\mathcal D$ in the completed triangle-orbifold base is finite.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+If $z\in\mathcal D_{a,b}$, then the $g_0$ laws give
+\[
+ 6\mu(g_0z)=a(\tau(g_0z)+1)+b
+ =a\tau(g_0z)+(a+b),
+\]
+while the $g_2$ laws give
+\[
+ 6\mu(g_2z)=6+a+\frac b{\tau(z)}
+ =-b\tau(g_2z)+(6+a).
+\]
+Both label maps are bijections, and $g_0,g_2$ generate the triangle group.
+This proves \eqref{eq:descent-label-monodromy} and invariance of $\mathcal D$.
+
+Suppose first that $z_j\in\mathcal D_{a_j,b_j}$ approaches the cusp in a fixed cusp component.  Taking imaginary parts gives
+\begin{equation}\label{eq:a-cusp}
+ a_j=\frac{6\Im\mu(z_j)}{\Im\tau(z_j)}\longrightarrow0.
+\end{equation}
+Because $a_j\in\Z$, one has $a_j=0$ eventually.  Then
+$6\mu(z_j)=b_j$.  The holomorphic cusp extension of $\mu$ makes it bounded, so the integers $b_j$ are bounded.  After passage to a subsequence, $b_j=b$ is constant.  The bounded holomorphic function $6\mu-b$ extends across the cusp and has zeros accumulating at the added interior point, hence vanishes identically.
+
+No identity $6\mu=a\tau+b$ with fixed integers $a,b$ is possible.  Indeed, applying $g_0$ and using \eqref{eq:generator-laws} forces $a=0$.  The identity would then make $\mu=b/6$ constant, whereas the $g_2$ law would require
+\[
+ \frac b6=1+\frac{b}{6\tau}
+\]
+for the nonconstant function $\tau$, an impossibility.  This contradiction proves (i).
+
+For (ii), truncate a fundamental polygon by the cusp neighborhood supplied by (i).  Its orbifold closure is compact, and the stated elliptic regularity makes $\tau$ and $\mu$ bounded there, while $\Im\tau$ has a positive lower bound.  At a point of $\mathcal D_{a,b}$,
+\[
+ a=\frac{6\Im\mu}{\Im\tau},
+ \qquad b=6\mu-a\tau.
+\]
+Thus only finitely many integer pairs $(a,b)$ can occur on the compact truncation.  For each such pair, the holomorphic function $6\mu-a\tau-b$ is not identically zero by the preceding transformation-law argument, so it has only finitely many zeros on the compact orbifold chart system.  The union is finite.  The period monodromy merely permutes the marked pairs, so this is a statement on the quotient base.
+\end{proof}
+
+On a descent fibre, the degree-six holomorphic line bundle isolated in the supplied workbench has a unitary constant-curvature connection.  For the Hamiltonian $H_{\phi,\psi}=\tfrac12\nabla^*\nabla$ its spectrum is
+\begin{equation}\label{eq:landau-spectrum}
+ \Spec(H_{\phi,\psi})=
+ \left\{
+ \frac{12\pi}{\Im\tau_f}\left(j+\frac12\right):
+ j\in\Z_{\ge0}
+ \right\},
+\end{equation}
+with multiplicity six at each level.  The ground-shifted operator has levels
+$12\pi j/\Im\tau_f$ and a six-dimensional kernel.
+
+\begin{corollary}[The first-coordinate Landau sector does not run into the cusp]\label{cor:no-landau-cusp}
+There is no sequence of actual descent fibres in the proposed $S^6$ family approaching the cusp.  In particular, the limit $\Im\tau_f\to\infty$ cannot be inferred from the $S^6$ cusp and cannot be used to close the Landau-level spacing in \eqref{eq:landau-spectrum} inside this family.
+\end{corollary}
+
+\begin{remark}[Correction of an ambient-family argument]
+The pointwise matrices
+\[
+ (\tau_T,\mu_T,\beta_T)=(i/T,0,-iT)
+\]
+ do satisfy a nonzero period determinant and make certain flat or magnetic gaps small.  They are, however, an arbitrary path in the ambient coefficient space.  They are not shown to belong to the image of the asserted period map, and this specific first-coordinate magnetic construction also requires the independent arithmetic condition \eqref{eq:descent-condition}.  Theorem~\ref{thm:cusp-gap} supplies the correct scalar gap-closing statement on the actual cusp; Corollary~\ref{cor:no-landau-cusp} shows that this exceptional first-coordinate Landau sector does not realize it.  The independent full-torus construction in Theorem~\ref{thm:full-torus-magnetic-spectrum} does give a magnetic gap-closing sequence for every fixed nondegenerate integral flux on the marked cusp fibres, without asserting a monodromy-invariant global flux class or classifying holomorphic elliptic quotients.  The native full-flux theorem separately treats the explicit invariant class $u\wedge w+6\gamma\wedge\delta$ and does not use this exceptional elliptic quotient.
+
+The descent theorem classifies only the specified first-coordinate map to
+$\C/(\Z\tau+\Z)$.  It does not prove that $F_z$ has no other elliptic
+quotient or elliptic subtorus, that its Néron--Severi group vanishes, or that
+it admits no smooth integral magnetic line bundle; those are different typed
+questions.
+\end{remark}
+
+\section{The compact total space is a different spectral problem}
+
+\begin{proposition}[Compact total-space scalar gap]\label{prop:total-space}
+Assume that the proposed completion is a smooth compact manifold $X\cong S^6$.  For every smooth Riemannian metric $g_X$ on $X$, the scalar Laplace--Beltrami operator has compact resolvent,
+\[
+ 0=\lambda_0(X,g_X)<\lambda_1(X,g_X)\le\lambda_2(X,g_X)\le\cdots,
+ \qquad \lambda_j\to\infty,
+\]
+and $\lambda_1(X,g_X)>0$ because $X$ is connected.
+\end{proposition}
+
+\begin{proof}
+This is the standard elliptic spectral theorem on a connected closed Riemannian manifold \citep{Chavel_1984}.
+\end{proof}
+
+The proposition does not contradict Theorem~\ref{thm:cusp-gap}.  The latter concerns a singularly degenerating family of auxiliary vertical metrics on regular torus fibres.  No argument in the period construction shows that these Euclidean fibre metrics are restrictions of one smooth metric on the completed total space.  The same warning applies to the quotient metrics in Theorem~\ref{thm:global-real-quotient}: a pointed $\R^4$ limit of their regular-fibre targets is not a metric or operator on the compact total space.  A complex structure alone determines neither a preferred Riemannian metric nor a Hamiltonian.
+
+\section{Metric indeterminacy and the physical boundary}
+
+The preceding results attach gaplessness only to explicitly displayed scalar,
+magnetic, classical Hessian, and finite Gaussian operators.  The following
+example shows why the complex-geometric data alone cannot select any one of
+those metric spectra.
+
+\begin{proposition}[Fixed complex torus, fixed volume, arbitrarily small gap]
+\label{prop:fixed-complex-metric-counterexample}
+Let
+\[
+ A=(\C/(\Z+i\Z))^2,
+ \qquad z_j=x_j+iy_j.
+\]
+For every $R\ge1$,
+\begin{equation}\label{eq:fixed-complex-metric}
+ g_R=R^2(\dd x_1^2+\dd y_1^2)
+     +R^{-2}(\dd x_2^2+\dd y_2^2)
+\end{equation}
+is a flat Kähler metric of volume one on this one fixed complex torus, and
+\begin{equation}\label{eq:fixed-complex-small-gap}
+ \lambda_1(\Delta_{g_R})=\frac{4\pi^2}{R^2}\longrightarrow0.
+\end{equation}
+Therefore the complex structure, Hodge decomposition, integral cohomology,
+and coherent direct-image data, even together with total volume, do not
+determine a positive lower bound for the scalar Laplacian gap.
+\end{proposition}
+
+\begin{proof}
+The two-form
+\[
+ \omega_R=R^2\dd x_1\wedge\dd y_1
+          +R^{-2}\dd x_2\wedge\dd y_2
+\]
+is closed, positive, and invariant under the fixed complex structure, so
+$g_R$ is Kähler.  Its real metric matrix is
+$\operatorname{diag}(R^2,R^2,R^{-2},R^{-2})$, of determinant one, and the
+coordinate fundamental domain has volume one.  The Fourier character
+\[
+ e_{a,b,c,d}=e^{2\pi i(ax_1+by_1+cx_2+dy_2)}
+\]
+has eigenvalue
+\[
+ 4\pi^2\bigl(R^{-2}(a^2+b^2)+R^2(c^2+d^2)\bigr).
+\]
+For $R\ge1$ its minimum over nonzero integer quadruples is
+$4\pi^2R^{-2}$, attained exactly at
+$(\pm1,0,0,0)$ and $(0,\pm1,0,0)$.  This proves the claim; none of the
+listed complex or cohomological data varies with $R$.
+\end{proof}
+
+The mathematical mass gap in the Clay formulation concerns the Hamiltonian
+of a constructed four-dimensional quantum Yang--Mills theory, not an internal
+scalar Laplacian or a classical Hessian \citep{JaffeWitten_2006}.  Euclidean
+data reach such a Hamiltonian only after a positive-metric reconstruction
+satisfying, in particular, the Osterwalder--Schrader requirements
+\citep{OsterwalderSchrader_1973,OsterwalderSchrader_1975}.  The exact
+operator-level implication that a transfer argument would need is the next
+proposition.
+
+\begin{proposition}[Typed Rayleigh-sequence transfer]
+\label{prop:typed-physical-transfer}
+Let $H\ge0$ be self-adjoint on a Hilbert space $\mathcal H_{\mathrm{phys}}$.
+Put
+\begin{equation}\label{eq:physical-excitation-space}
+ \mathcal V_0=\ker H,\qquad P_0=\mathbf1_{\{0\}}(H),\qquad
+ \mathcal H_{\mathrm{exc}}=(I-P_0)\mathcal H_{\mathrm{phys}},
+\end{equation}
+and let
+\begin{equation}\label{eq:physical-energy-form}
+ \mathfrak h[\psi]=\|H^{1/2}\psi\|^2,
+ \qquad \mathcal Q(H)=\operatorname{Dom}(H^{1/2}).
+\end{equation}
+For each $n$, let $\mathcal K_n$ be a Hilbert space,
+$\mathfrak q_n$ a nonnegative quadratic form on
+$D(\mathfrak q_n)\subseteq\mathcal K_n$, and
+$0\ne u_n\in D(\mathfrak q_n)$.  Suppose that a linear map
+\[
+ J_n:\operatorname{span}\{u_n\}\longrightarrow\mathcal Q(H)
+\]
+is given.  Set $\psi_n=(I-P_0)J_nu_n$.  If there are $c>0$, $C_n\ge0$,
+and $\varepsilon_n\ge0$ such that
+\begin{align}
+ \|\psi_n\|&\ge c\|u_n\|,
+ \label{eq:bridge-norm}\\
+ \mathfrak h[\psi_n]
+ &\le C_n\mathfrak q_n[u_n]+\varepsilon_n\|u_n\|^2,
+ \label{eq:bridge-energy}\\
+ C_n\frac{\mathfrak q_n[u_n]}{\|u_n\|^2}+\varepsilon_n
+ &\longrightarrow0,
+ \label{eq:bridge-smallness}
+\end{align}
+then the reducing restriction
+\[
+ H_{\mathrm{exc}}
+ :=H\big|_{\operatorname{Dom}(H)\cap\mathcal H_{\mathrm{exc}}}
+\]
+is self-adjoint and
+\begin{equation}\label{eq:bridge-conclusion}
+ \inf\Spec(H_{\mathrm{exc}})=0,
+ \qquad 0\in\sigma_{\mathrm{ess}}(H_{\mathrm{exc}}).
+\end{equation}
+Thus $H$ has no positive gap above its full zero-energy sector.
+\end{proposition}
+
+\begin{proof}
+The spectral projection $P_0$ commutes with $H$ and $H^{1/2}$, so
+$\mathcal H_{\mathrm{phys}}=\ker H\oplus\mathcal H_{\mathrm{exc}}$ is a
+reducing decomposition.  Hence $H_{\mathrm{exc}}$ is self-adjoint,
+nonnegative, has form domain
+$\mathcal Q(H)\cap\mathcal H_{\mathrm{exc}}$, and has zero kernel.  Normalize
+$w_n=\psi_n/\|\psi_n\|$.  Then
+\[
+ \mathfrak h[w_n]
+ \le c^{-2}\left(
+ C_n\frac{\mathfrak q_n[u_n]}{\|u_n\|^2}+\varepsilon_n\right)
+ \longrightarrow0.
+\]
+The variational characterization of the bottom of a nonnegative
+self-adjoint operator therefore gives
+$\inf\Spec(H_{\mathrm{exc}})=0$.  Its spectrum is closed, so zero belongs to
+it; its kernel is zero, so zero is not an eigenvalue.  A self-adjoint operator
+has no residual spectrum.  Hence zero is a continuous spectral point and
+belongs to the essential spectrum under the standard convention that removes
+isolated eigenvalues of finite multiplicity.
+\end{proof}
+
+\begin{remark}[The missing physical morphism]
+The native unscaled limit retains two compact directions, and the cusp
+parameter $T$ has not been identified with a spacetime box size, lattice
+spacing, correlation length, Euclidean time, or renormalization scale.  No
+reflection-positive measure, transfer matrix, Osterwalder--Schrader
+reconstruction, Gauss-law physical quotient, local observable algebra,
+thermodynamic limit, or continuum limit in fixed physical units has been
+constructed.  An eigenvalue of a four-dimensional elliptic Hessian has units
+of inverse length squared; without a time reconstruction and a scale
+conversion it is not an eigenvalue of a physical Hamiltonian.
+
+The cusp calculations supply many possible auxiliary soft states: the scalar
+characters in Theorem~\ref{thm:cusp-gap}, the continuum transverse modes in
+Theorem~\ref{thm:continuum-YM-gap}, the finite transverse modes in
+Theorem~\ref{thm:finite-YM-gap}, the native full-flux Landau bands and their
+radial multiplication operator, and the finite Gaussian oscillator modes in
+Theorem~\ref{cusp-link-gaussian-theorem}.  The reducible full-flux critical
+connections additionally have negative Jacobi bands, so their Hessians are
+not positive candidate vacuum Hamiltonians.  None of these constructions
+supplies one already constructed, gauge-invariant, positive-metric physical
+Hilbert space for four-dimensional quantum Yang--Mills theory, its Hamiltonian
+$H$, or maps $J_n$ satisfying
+\eqref{eq:bridge-norm}--\eqref{eq:bridge-smallness} with constants controlled
+in physical units after gauge reduction, reconstruction, renormalization,
+the infinite-volume limit, and the continuum limit.  Orthogonality to one
+chosen vacuum vector would not suffice unless vacuum uniqueness were also
+proved: the projection $I-P_0$ must remove the full zero-energy sector.
+Consequently Proposition~\ref{prop:typed-physical-transfer} is an exact
+transfer theorem, not an assertion that the required transfer data exist.
+No nonlinear or quantum mass-gap conclusion follows here.
+\end{remark}
+
+\section{Conclusions}
+
+Conditional on the manuscript's period, monodromy, and toric cusp formulae
+in the precise scopes stated above, the following hierarchy is exact.
+
+\begin{enumerate}[leftmargin=2.3em]
+\item Every fixed regular flat fibre has a positive scalar spectral gap.
+\item The family has no uniform flat-fibre gap at the actual cusp.  Its first
+eigenvalue is
+$4\pi^2T^{-2}(1+2\min\{b_{\mathrm I,0},0\}T^{-1}+O(T^{-2}))$, and after unit-volume
+normalization it is
+$4\pi^2T^{-1}(1+(-b_{\mathrm I,0}/2+2\min\{b_{\mathrm I,0},0\})T^{-1}+O(T^{-2}))$.
+\item More than one eigenvalue becomes soft: if $0<E<4\pi^2$, the exact
+fixed-energy count with Fourier multiplicity is
+$N_T(E)=E\mathcal D_T/(4\pi)+O_E(T)$, where
+$\mathcal D_T=|\det\mathsf P_z|=T^2-b_{\mathrm I,0}T+O(1)$.  Thus the low-energy
+population has a two-dimensional leading density.  The unit-volume count is
+$E\mathcal D_T^{1/2}/(4\pi)+O_E(\mathcal D_T^{1/4}+1)$, and at the
+collapsing $T^{-2}$ scale the finite limiting count is the lattice-point count
+in a two-dimensional Euclidean disc, with the stated threshold refinement.
+\item The native pointed smooth limit of the marked four-tori is
+$\T^2\times\R^2$, not $\R^4$.  The degree-$M(T)^2$ marked local fibre covers
+have pointed $\R^4$ limit precisely when $M(T)\to\infty$ in the unscaled
+metric, and precisely when $M(T)/\sqrt T\to\infty$ for the pullback of the
+base-fibre unit-volume metric.  Normalizing every covering torus to its own
+volume one never gives a pointed smooth $\R^4$ limit.
+\item After $t_c=v^M$, the cover sublattice is preserved by the pulled-back
+cusp monodromy.  Its exact Fourier spectrum separates the deck-invariant
+pullback sector from the new momenta, and those momentum lattices become dense
+in $\R^4$ when $T,M\to\infty$.  This punctured statement is distinct from
+the completed local toric theorem below.
+\item Up to sign, the unique primitive full-monodromy-invariant integral
+character gives a real, non-holomorphic circle quotient of the regular group
+family.  In this paper's convention its quotient circumference is exactly
+$-TD/\sqrt{T^2+m^2}$ and is
+$T-b_{\mathrm I,0}+O(T^{-1})$ on the positive radial marked lift.  The
+character is global; for the chosen radial fibre metrics its
+Fourier mode gap-closes, but it need not be the exact shortest mode at every
+parameter.
+\item Four synchronized copies, without a base change or fibre cover, give an
+all-expanding real four-torus quotient with pointed $\R^4$ radial limit.
+Four copies are minimal only within the stated fixed primitive
+full-monodromy-invariant kernel class with its induced quotient metric.  The
+different two-copy expanding quotient of the native fibre is cusp-local, and
+no finite base cover globalizes its particular kernel.  Neither quotient is
+the native fibre or its degree-$M^2$ cover.
+\item The literal invariant-character map does not extend through the
+asserted toric cusp with its fixed circle target.  Conditional on
+$X\cong_{\mathrm{diff}}S^6$, its fourfold product has no extension to the
+fixed target $(\R/\Z)^4$ from $X^4$ with the stated regular-fibre restriction,
+and no such fixed-target extension factors through
+$X^{\wedge4}\cong S^{24}$.  This is not an obstruction to a construction
+that changes the codomain.
+\item The exact local Kummer construction after $t=v^N$ requires the source
+action
+$\Psi^{(N)}_{\bar\lambda}(\xi,v)=
+(\exp(2\pi iC(v^N)\bar\lambda/N)v^{B_0\bar\lambda}\xi,v)$.
+It gives a finite flat degree-$N^3$ map to the original completed cusp
+family.  The factor to the base-changed target has generic degree $N^2$ and,
+for $N>1$, is quasi-etale but nonflat precisely over the double and triple
+central-fibre strata.  These are local cusp statements, not a full-base
+cover.
+\item Separately, the canonical workbench constructs
+$q_2^{\wedge2}$ from the sphere source $S^{12}$ and $q_1^{\wedge4}$ from
+the sphere source $S^{24}$ by changing to compact cone targets.  This paper
+does not reproduce their proofs.  Their radial target slices have intrinsic
+pointed $\R^4$ limits but collapse in every fixed compatible ambient target
+metric.
+\item The associated mean-zero scalar vertical direct integral is injective
+and gapless, with zero in its essential continuous spectrum.  This statement
+identifies the threshold but does not assert the stronger full-half-line
+spectral classification proved below for the native magnetic multiplication
+operator.
+\item The classical Yang--Mills Hessian at the product connection, after
+Coulomb reduction and removal of harmonic one-forms, has exact gap
+\eqref{eq:continuum-YM-gap-exact} and closes as
+$4\pi^2/(g_{\mathrm{YM}}^2T^2)$.  The exact finite cubical cochain Hessian
+closes uniformly as $T^{-2}$ for every $N\ge2$; resolving the varying
+continuum geometry is the separate condition $N/T\to\infty$.
+\item Keeping the covering degree $M_{\mathrm{cov}}^2$ separate from the
+mesh count $N_{\mathrm{mesh}}^4$ gives an honest transported cubical complex,
+typed continuum holonomy, and an explicit periodic compact-link
+$\mathrm{SU}(2)$ flux.  Its logarithmic action is exactly
+$2\pi^2M_{\mathrm{cov}}^2/(g_{\mathrm{YM}}^2D_R)$, and its displayed
+$(1,2)$-sector Wilson functional converges to that value as
+$N_{\mathrm{mesh}}\to\infty$.
+\item On the reduced finite linear Coulomb space, the Gaussian Hamiltonian
+has a unique ground state and exact gap
+$\sqrt{\lambda_{\min}(g_{\mathrm{YM}}^{-2}d^*d)}$.  The diagonal sequence
+$R_j=j^2$, $M_{\mathrm{cov},j}=j$,
+$N_{\mathrm{mesh},j}=j^3$ simultaneously has pointed locally isometric
+$\R^4$ cover limit, vanishing maximal physical edge length, vanishing
+Gaussian gap, and vanishing displayed logarithmic action.
+\item For every fixed nondegenerate integral alternating form $\mathsf E$ on
+the marked four-torus, the full-torus constant-curvature magnetic Laplacian
+has frequency product
+$b_1b_2=4\pi^2|\operatorname{Pf}(\mathsf E)|/\mathcal D_T$ and level spacing
+at most
+$4\pi\sqrt{|\operatorname{Pf}(\mathsf E)|/\mathcal D_T}=O(T^{-1})$.
+This is a fibrewise marked-cusp result, not an assertion of monodromy
+invariance or a physical mass gap.
+\item The distinguished class
+$\eta=u\wedge w+6\gamma\wedge\delta$ is invariant under the asserted
+monodromy generators, has elementary divisors $(1,6)$ and Pfaffian $6$, and
+is represented by the explicit cocycle and constant-curvature connection
+given below.  Its exact charge-one frequencies have product
+$24\pi^2/D_R$ and asymptotics
+$\mathcal B_{R,+}=12\pi/R+O(R^{-2})$ and
+$\mathcal B_{R,-}=2\pi/R+O(R^{-2})$.  Every joint Landau level has complex
+multiplicity six, the ground energy is $14\pi/R+O(R^{-2})$, and the first
+distinct spacing is $4\pi/R+O(R^{-2})$.
+\item After the fixed marking and volume-correcting unitary trivialize the
+varying fibre Hilbert spaces, the full-flux magnetic family has common
+$H^2$ operator domain and locally norm-continuous resolvents.  Its exact
+maximal radial multiplication operators, in both fixed- and varying-fibre
+forms over $(R_1,\infty)$ with Lebesgue measure, are self-adjoint and satisfy
+\[
+ \sigma=\sigma_{\mathrm{ess}}=\sigma_{\mathrm c}=[0,\infty),
+ \qquad \sigma_{\mathrm p}=\varnothing,
+ \qquad \ker=\{0\}.
+\]
+The parameter $R$ is not differentiated.
+\item The nontrivial split bundle
+$\mathscr L_{\eta,R}\oplus\mathscr L_{\eta,R}^{-1}$ carries a reducible
+$\mathrm{SU}(2)$ Yang--Mills critical connection.  Its gauge-fixed Jacobi
+form is closed, its operator domain is $H^2\Omega^1$, the maximal Coulomb
+slice is reducing, and on a sufficiently deep cusp tail its complete
+negative spectrum comprises three bands of real multiplicity $48$, giving
+real Morse index $144$.  Thus this Hessian is not a positive fluctuation
+operator.
+\item More generally, every nonzero trace-zero integral weight vector
+$\mathbf m=(m_1,\ldots,m_r)$ gives a split-Cartan $\mathrm{SU}(r)$ critical
+connection with $k_{\mathbf m}=6\sum_jm_j^2$ and exact rootwise Jacobi
+spectrum.  On the deep tail its real Morse index is
+$36r\sum_jm_j^2=6rk_{\mathbf m}$; the neutral and odd-wall nullities are
+given exactly in Theorem~\ref{cusp-native-full-flux-suN-nullity-theorem}.
+These nonzero-$c_2$ bundles cannot be restrictions of bundles on a carrier
+with vanishing $H^4(-;\mathbb Z)$.
+\item The specific degree-six Landau construction pulled back from the
+first-coordinate elliptic quotient is confined to a finite exceptional locus
+and cannot approach the cusp.  This does not contradict the preceding
+full-torus magnetic theorem, whose line bundle is defined directly from an
+integral alternating form and is not pulled back from that elliptic quotient.
+\item None of the preceding statements determines the scalar spectrum of a
+smooth metric on the compact six-dimensional total space.  Even on one fixed
+complex two-torus, unit-volume flat Kähler metrics can have arbitrarily small
+scalar gap.
+\item The finite Gaussian oscillator is not the compact-link Haar Hilbert
+space, the exponential map from cochains is only a local chart, and the
+magnetic Landau operators and reducible Jacobi operators remain fibrewise.
+Transfer of any auxiliary soft sequence to a physical Hamiltonian would
+require the explicit norm-noncollapse and energy-comparison morphisms in
+Proposition~\ref{prop:typed-physical-transfer}.  No such physical Hilbert
+space, Hamiltonian, or morphisms are constructed here, so no nonlinear or
+quantum Yang--Mills mass-gap conclusion follows.
+\end{enumerate}
+
+The main structural lesson is that compactness and a positive gap at every
+fibre do not survive integration over a noncompact degenerating modulus
+without a uniform coercive estimate.  Conversely, a gapless decomposable
+vertical operator or classical Hessian cannot be identified with a
+field-theoretic Hamiltonian without the explicit operator-level bridge.
+Likewise, the native $\T^2\times\R^2$ limit, finite-cover $\R^4$ unspooling,
+fixed-target quotient limits, and cone-target constructions are four
+different operations.  The fixed-target obstruction concerns only the
+displayed character map to $(\R/\Z)^4$ with its stated fibre restriction;
+the cone constructions change the codomain and distinguish intrinsic
+expanding slice metrics from collapse in a fixed compact ambient metric.
+
+\appendix
+\section{Reproducibility formulas}
+
+For a direct algebraic reproducibility check, expansion along the last two
+columns of \eqref{eq:Z-P} gives
+\[
+ \det\mathsf P_z=T\left(p-\frac{6m^2}{T}\right)
+\]
+and multiplication of \eqref{eq:Z-P}$^{\mathsf T}$ by the vector in
+\eqref{eq:complete-dual-vector} returns $(r,s,n_1,n_2)^{\mathsf T}$ exactly.
+On the radial cusp, substitution of $p=B_R-T$ gives
+\[
+ -TD=T(T-B_R)+6m^2,
+\]
+while squaring the first two columns of the inverse transpose gives
+\eqref{eq:unit-mode-exact-lengths} and their subtraction gives
+\eqref{eq:unit-mode-comparison}.  These identities are exact.  The proof of
+Theorem~\ref{thm:cusp-gap} then uses the uniform singular-value estimate
+\eqref{eq:singular-value-bound}; no finite lattice search or numerical
+sampling is part of the proof.
+
+\bibliographystyle{apalike}
+\bibliography{references}
+\end{document}

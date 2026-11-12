@@ -1,0 +1,999 @@
+% Proof-bearing workbench module.  The standalone root supplies its preamble.
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\ZZpos}{\mathbb Z_{>0}}
+\providecommand{\ES}{\operatorname{ES}}
+\providecommand{\Rel}{\operatorname{Rel}}
+\providecommand{\coker}{\operatorname{coker}}
+\providecommand{\eps}{\varepsilon}
+
+\section{The exact marked Erd\H{o}s--Straus--\texorpdfstring{\(S^6\)}{S6} bridge}
+\label{sec:esksb-bridge}
+
+\subsection*{Result and scope}
+For each prime \(p\equiv1\pmod {12}\), the complete first-half
+Erd\H{o}s--Straus divisor selector is in explicit bijection with a
+normalized, positively oriented, divisor-supported, and shell-marked slice of
+the terminal parameter lattice occurring in the candidate complex structure
+on \(S^6\).  The coordinate change is integral in both directions.  More
+strongly, the selector relation matrix and the S6 terminal relation matrix
+have exactly the same row lattice: they differ by a displayed element of
+\(\operatorname{SL}_2(\ZZ)\).  Composing the bijection with the shell
+reconstruction gives positive denominators solving \(4/p=1/x+1/y+1/z\), and
+every positive solution is detected by at least one of the two tagged slices.
+
+The nonlinear condition \(u\mid a_j^2\), together with the external labels
+\((p,j,\eps)\), is indispensable.  If it is removed, each normalized S6 fibre
+is an infinite affine line and carries no Erd\H{o}s--Straus existence
+information.  A particularly natural unmarked S6 point produces precisely
+the already-solved congruence class \(p\equiv13\pmod {24}\) and produces no
+selector state when \(p\equiv1\pmod {24}\).  Thus the bridge is an exact
+arithmetic equivalence of marked presentations, not a proof of universal
+selector nonemptiness and not a geometric morphism from the reciprocal cubic
+to the complex threefold.
+
+\subsection{All objects and conventions}
+
+Fix throughout a prime
+\[
+ p\equiv1\pmod {12},\qquad
+ h=\frac{p-1}{12}\in\ZZpos,
+\]
+and write
+\[
+ L=\frac{p-1}{4}=3h,
+ \qquad J_p=\{j\in\ZZ:0\leq j<L\}.
+\]
+For \(j\in J_p\), retain the four integers
+\begin{equation}
+ R_j=4j+3,
+ \qquad a_j=3h+j+1=\frac{p+R_j}{4},
+ \qquad N_j=pa_j,
+ \qquad 4a_j=p+R_j.                         \tag{1.1}
+\end{equation}
+No label in \((p,j)\) will be suppressed.  The inequalities
+\[
+ 3\leq R_j\leq p-2,
+ \qquad \frac{p+3}{4}\leq a_j\leq\frac{p-1}{2}<p
+\]
+give
+\begin{equation}
+ \gcd(p,a_j)=\gcd(p,R_j)=\gcd(a_j,R_j)=1.  \tag{1.2}
+\end{equation}
+Indeed \(p\) is prime and \(0<a_j<p\); then \(R_j=4a_j-p\)
+gives the other two equalities.
+
+Let
+\[
+ \mathscr S(p)=
+ \left\{(x,y,z)\in\ZZpos^3:
+ 4xyz=p(xy+xz+yz)\right\}.
+\]
+The equation is symmetric, but whenever completeness is invoked we choose the
+ordered representative \(x\leq y\leq z\).
+Write \(\ES(p)\) for the assertion \(\mathscr S(p)\neq\varnothing\).
+
+For the S6 terminal parameters put
+\begin{equation}
+ \lambda(\ell_0,\ell_1,\ell_2)
+ =12\ell_0-4\ell_1-3\ell_2                 \tag{1.3}
+\end{equation}
+and define the abstract terminal group
+\begin{equation}
+ G(\ell_0,\ell_1,\ell_2)=
+ \left\langle c,x,y\ \middle|\
+ c\text{ central},\ xy=c^{\ell_0},\
+ x^3=c^{\ell_1},\ y^4=c^{\ell_2}
+ \right\rangle .                            \tag{1.4}
+\end{equation}
+After eliminating \(y\), and using the ordered generator basis \((x,c)\),
+its ordered row-relation matrix is
+\begin{equation}
+ \mathsf R(\ell_0,\ell_1,\ell_2)=
+ \begin{pmatrix}
+ 3&-\ell_1\\
+ 4&\ell_2-4\ell_0
+ \end{pmatrix},
+ \qquad
+ \det\mathsf R=-\lambda(\ell_0,\ell_1,\ell_2).              \tag{1.5}
+\end{equation}
+The letter \(p\) in this note always denotes the Erd\H{o}s--Straus prime.
+The signed terminal value is denoted
+\[
+ q_\eps=p^\eps\in\{1,p\},\qquad \eps\in\{0,1\}.
+\]
+Thus no identification of the external prime \(p\) with the terminal value
+is made in the \(\eps=0\) channel.
+
+For any integral \(2\times2\) matrix \(A\), define its row-relation lattice
+and row-presented group by
+\[
+ \Rel(A)=\{v^{\mathsf T}A:v\in\ZZ^2\}\subseteq\ZZ^2,
+ \qquad \mathcal G(A)=\ZZ^2/\Rel(A)=\coker(A^{\mathsf T}).    \tag{1.6}
+\]
+This convention makes every matrix direction in the bridge explicit.
+
+\subsection{The complete first-half shell selector}
+
+\begin{lemma}[first-half denominator]\label{lem:esksb-first-half}
+Let \(p\equiv1\pmod4\) be an odd prime.  If
+\((x,y,z)\in\mathscr S(p)\) and \(x\leq y\leq z\), then
+\[
+ \frac p4<x\leq\frac p2.
+\]
+\end{lemma}
+
+\begin{proof}
+Positivity of the two reciprocals other than \(1/x\) gives
+\(1/x<4/p\), hence \(x>p/4\).  Suppose \(x>p/2\).  Clearing denominators
+gives
+\[
+ 4xyz=p(xy+xz+yz),
+\]
+so \(p\mid xyz\).  If \(p\mid x\), then \(x,y,z\geq p\) and the reciprocal
+sum is at most \(3/p\).  If \(p\mid y\), then \(y,z\geq p\), while
+\(1/x<2/p\), so the sum is strictly less than \(4/p\).  Both cases are
+impossible.  Therefore \(z=kp\) for some \(k\in\ZZpos\), while neither
+\(x\) nor \(y\) is divisible by \(p\).  Substitution yields
+\[
+ (4k-1)xy=kp(x+y).
+\]
+Reduction modulo \(p\) gives \(p\mid4k-1\).  Write \(4k-1=rp\).
+Since \(p\equiv1\pmod4\), one has \(r\equiv3\pmod4\), hence \(r\geq3\).
+After cancelling \(p\),
+\[
+ rxy=k(x+y).
+\]
+As \(x\leq y\), division by \(xy\) gives
+\[
+ x\leq\frac{2k}{r}
+ =\frac{rp+1}{2r}
+ =\frac p2+\frac1{2r}<\frac{p+1}{2}.
+\]
+The integer \(x>p/2\) must be at least \((p+1)/2\), a contradiction.
+\end{proof}
+
+For fixed \(j\in J_p\), define the ordered residual shell
+\begin{equation}
+ \mathscr P_{p,j}=
+ \{(y,z)\in\ZZpos^2:R_jyz=N_j(y+z)\}                         \tag{2.1}
+\end{equation}
+and the oriented divisor shell
+\begin{equation}
+ \mathscr D_{p,j}=
+ \{d\in\ZZpos:d\mid N_j^2,\ d\equiv-N_j\pmod {R_j}\}.       \tag{2.2}
+\end{equation}
+
+\begin{proposition}[oriented shell bijection]\label{prop:esksb-shell-bijection}
+The maps
+\begin{align*}
+ \delta_{p,j}:\mathscr P_{p,j}&\longrightarrow\mathscr D_{p,j},
+ &(y,z)&\longmapsto R_jy-N_j,\\
+ \rho_{p,j}:\mathscr D_{p,j}&\longrightarrow\mathscr P_{p,j},
+ &d&\longmapsto
+ \left(\frac{N_j+d}{R_j},
+       \frac{N_j+N_j^2/d}{R_j}\right)
+\end{align*}
+are mutually inverse.  The involution
+\[
+ \iota_{N_j}(d)=\frac{N_j^2}{d}
+\]
+corresponds exactly to \((y,z)\mapsto(z,y)\).
+\end{proposition}
+
+\begin{proof}
+Abbreviate \(R=R_j\) and \(N=N_j\).  Equation~(2.1) is equivalent to
+\begin{equation}
+ (Ry-N)(Rz-N)=N^2.                                            \tag{2.3}
+\end{equation}
+Both factors are positive: for example, division of
+\(Ryz=N(y+z)\) by \(z\) gives \(Ry=N(1+y/z)>N\), and similarly for
+\(Rz-N\).  Therefore \(d=Ry-N\) is a positive divisor of \(N^2\) and
+\(d\equiv-N\pmod R\).
+
+Conversely, let \(d\in\mathscr D_{p,j}\) and put \(e=N^2/d\).  By~(1.2),
+\(d\) and \(N\) are units modulo \(R\); hence
+\[
+ e\equiv N^2(-N)^{-1}\equiv-N\pmod R.
+\]
+Thus both components of \(\rho_{p,j}(d)\) are positive integers.  Their
+ two shifted factors are \(d\) and \(e\), so~(2.3), and therefore~(2.1),
+ holds.  The formulas visibly compose to the identity.  Replacing \(d\) by
+\(e=N^2/d\) exchanges the two reconstructed components.
+\end{proof}
+
+For \(\eps\in\{0,1\}\), define the fixed-shell selector and the fully marked
+selector by
+\begin{align}
+ \mathcal W_\eps(p,j)
+ &=\{u\in\ZZpos:u\mid a_j^2,\ R_j\mid4u+p^\eps\},             \tag{2.4}\\
+ \mathcal W_\eps(p)
+ &=\{(j,u):j\in J_p,\ u\in\mathcal W_\eps(p,j)\}.           \tag{2.5}
+\end{align}
+The tag \(\eps=0\) is the exterior, or \(E\), channel; \(\eps=1\) is the
+middle, or \(M\), channel.
+Whenever a disjoint union of the two channels is written below, it means the
+tagged coproduct
+\[
+ \{0\}\times\mathcal W_0(p)\ \sqcup\
+ \{1\}\times\mathcal W_1(p).
+\]
+This convention is necessary because the two raw subsets can intersect.
+
+\begin{proposition}[exact two-channel decomposition]\label{prop:esksb-two-channel}
+The maps
+\begin{align*}
+ \iota_E:\mathcal W_0(p,j)&\longrightarrow\mathscr D_{p,j},
+ &u&\longmapsto p^2u,\\
+ \iota_M:\mathcal W_1(p,j)&\longrightarrow\mathscr D_{p,j},
+ &u&\longmapsto pu
+\end{align*}
+are bijections onto the subsets on which the \(p\)-adic valuations are \(2\)
+and \(1\), respectively.  The valuation-zero subset is
+\(\iota_{N_j}(\iota_E(\mathcal W_0(p,j)))\).  Consequently
+\begin{equation}
+ \mathscr D_{p,j}=
+ \iota_E(\mathcal W_0(p,j))\ \sqcup\
+ \iota_M(\mathcal W_1(p,j))\ \sqcup\
+ \iota_{N_j}(\iota_E(\mathcal W_0(p,j))),                    \tag{2.6}
+\end{equation}
+and
+\begin{equation}
+ |\mathscr D_{p,j}|=2|\mathcal W_0(p,j)|+|\mathcal W_1(p,j)|. \tag{2.7}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Because \(p\nmid a_j\), every divisor \(d\mid p^2a_j^2\) has
+\(v_p(d)\in\{0,1,2\}\).
+
+If \(d=p^2u\), then \(u\mid a_j^2\).  The shell congruence is
+\[
+ R_j\mid d+N_j=p(pu+a_j).
+\]
+After cancelling the unit \(p\) modulo \(R_j\) and multiplying by \(4\),
+the identity \(4a_j=p+R_j\) makes this equivalent to
+\(R_j\mid4u+1\).  This proves the \(E\)-channel assertion in both
+directions.  If \(d=pu\), the same calculation gives
+\[
+ R_j\mid d+N_j
+ \Longleftrightarrow R_j\mid u+a_j
+ \Longleftrightarrow R_j\mid4u+p,
+\]
+which proves the \(M\)-channel assertion.  Complementation preserves the
+shell congruence by Proposition~\ref{prop:esksb-shell-bijection}, exchanges
+valuations \(0\) and \(2\), and preserves valuation \(1\).  This proves the
+disjoint decomposition and its cardinality formula.
+\end{proof}
+
+For \(u\in\mathcal W_\eps(p,j)\), define the two exact quotients
+\begin{equation}
+ T=\frac{4u+p^\eps}{R_j},
+ \qquad K=\frac{p^{1-\eps}T+1}{4}.                            \tag{2.8}
+\end{equation}
+Since \(R_j\equiv3\pmod4\) and \(p^\eps\equiv1\pmod4\), the first equation
+gives \(T\equiv3\pmod4\).  Hence \(K\in\ZZpos\).  Direct calculation,
+without dropping the tag, gives
+\begin{equation}
+ R_jK=a_j+p^{1-\eps}u,
+ \qquad Ta_j=u+p^\eps K.                                    \tag{2.9}
+\end{equation}
+Indeed, multiplication by \(4\) changes these identities into
+\begin{align*}
+ 4R_jK
+ &=p^{1-\eps}(4u+p^\eps)+R_j
+ =4p^{1-\eps}u+p+R_j,\\
+ 4Ta_j
+ &=T(p+R_j)
+ =pT+4u+p^\eps
+ =4u+4p^\eps K.
+\end{align*}
+
+\begin{proposition}[denominator reconstruction]\label{prop:esksb-reconstruct}
+The map
+\begin{equation}
+ \Psi_{p,j,\eps}:\mathcal W_\eps(p,j)\longrightarrow\mathscr S(p),
+ \qquad
+ u\longmapsto
+ \left(a_j,\ pK,\ \frac{p^\eps a_jK}{u}\right)             \tag{2.10}
+\end{equation}
+is well-defined.  Its two oriented shell factors are
+\begin{equation}
+ R_j(pK)-N_j=p^{2-\eps}u,
+ \qquad
+ R_j\left(\frac{p^\eps a_jK}{u}\right)-N_j
+ =p^\eps\frac{a_j^2}{u}.                                    \tag{2.11}
+\end{equation}
+Moreover,
+\begin{equation}
+ \ES(p)\quad\Longleftrightarrow\quad
+ \bigl(\{0\}\times\mathcal W_0(p)\bigr)\sqcup
+ \bigl(\{1\}\times\mathcal W_1(p)\bigr)\neq\varnothing.   \tag{2.12}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The last coordinate in~(2.10) is integral.  To see this without assuming it,
+reduce the second identity in~(2.9) modulo \(u\), multiply by \(a_j\), and
+use \(u\mid a_j^2\): this gives \(u\mid p^\eps a_jK\).
+The two identities~(2.11) now follow from the first identity in~(2.9).
+Their product is \(N_j^2\), so Proposition~\ref{prop:esksb-shell-bijection}
+shows that~(2.10) lies in \(\mathscr S(p)\).
+
+Conversely, suppose \(\mathscr S(p)\neq\varnothing\), and sort a solution.
+Lemma~\ref{lem:esksb-first-half} shows that its smallest denominator is uniquely
+of the form \(x=a_j\) with \(j\in J_p\): explicitly
+\[
+ R_j=4x-p\equiv3\pmod4,
+ \qquad j=\frac{4x-p-3}{4}.
+\]
+Proposition~\ref{prop:esksb-shell-bijection} supplies a divisor
+\(d\in\mathscr D_{p,j}\), and Proposition~\ref{prop:esksb-two-channel} places
+either \(d\) or its complement in the image of \(\iota_E\), or places \(d\)
+in the image of \(\iota_M\).  Hence one of the two marked selector sets is
+nonempty.  The forward implication follows from~(2.10).
+\end{proof}
+
+\subsection{The exact selector--terminal-lattice equivalence}
+
+Define the normalized, positively oriented, divisor-supported terminal slice
+\begin{equation}
+ \mathcal H_\eps(p)=
+ \left\{(j,\ell_0,\ell_1)\in\ZZ^3:
+ \begin{array}{l}
+ j\in J_p,\quad \lambda(\ell_0,\ell_1,1)=p^\eps,\\
+ T(\ell_0):=4\ell_0-1>0,\\
+ u(j,\ell_0,\ell_1):=\ell_1+jT(\ell_0)>0,\\
+ u(j,\ell_0,\ell_1)\mid a_j^2
+ \end{array}
+ \right\}.                                                   \tag{3.1}
+\end{equation}
+Let \(\mathcal H_\eps(p,j)\) be the fibre with the displayed marker \(j\).
+
+For a selector state define its relation matrix
+\begin{equation}
+ \mathsf A_\eps(p;j,u)=
+ \begin{pmatrix}
+ R_j&-u\\
+ 4&-T
+ \end{pmatrix},
+ \qquad R_jT=4u+p^\eps.                                     \tag{3.2}
+\end{equation}
+For the marker \(j\), retain both inverse unimodular shears
+\begin{equation}
+ \mathsf U_j=
+ \begin{pmatrix}1&-j\\0&1\end{pmatrix},
+ \qquad
+ \mathsf L_j=\mathsf U_j^{-1}=
+ \begin{pmatrix}1&j\\0&1\end{pmatrix}.                    \tag{3.3}
+\end{equation}
+
+\begin{theorem}[strong marked bridge theorem]\label{thm:esksb-bridge}
+For every \(\eps\in\{0,1\}\), the map
+\begin{equation}
+ \Theta_{\eps,p}:\mathcal W_\eps(p)\longrightarrow\mathcal H_\eps(p),
+ \qquad
+ (j,u)\longmapsto
+ \left(j,\frac{T+1}{4},u-jT\right)                          \tag{3.4}
+\end{equation}
+is a bijection.  Its inverse is
+\begin{equation}
+ \Theta_{\eps,p}^{-1}(j,\ell_0,\ell_1)
+ =\left(j,\ell_1+j(4\ell_0-1)\right).                       \tag{3.5}
+\end{equation}
+For corresponding points, with
+\(\ell=(\ell_0,\ell_1,1)\), one has the exact matrix identities
+\begin{equation}
+ \boxed{
+ \mathsf U_j\mathsf A_\eps(p;j,u)
+ =\mathsf R(\ell_0,\ell_1,1),
+ \qquad
+ \mathsf A_\eps(p;j,u)
+ =\mathsf L_j\mathsf R(\ell_0,\ell_1,1).}                  \tag{3.6}
+\end{equation}
+In particular,
+\begin{equation}
+ \Rel(\mathsf A_\eps(p;j,u))
+ =\Rel(\mathsf R(\ell_0,\ell_1,1)),
+ \qquad
+ \det\mathsf A_\eps=\det\mathsf R=-p^\eps.                \tag{3.7}
+\end{equation}
+Thus the bridge intertwines the entire integral row presentation, not only
+its determinant.
+\end{theorem}
+
+\begin{proof}
+Take \((j,u)\in\mathcal W_\eps(p)\).  Section~2 proves that \(T\) is a
+positive integer satisfying \(T\equiv3\pmod4\), so
+\(\ell_0=(T+1)/4\in\ZZ\).  Put \(\ell_1=u-jT\).  Since
+\(R_j=4j+3\),
+\begin{align*}
+ \lambda(\ell_0,\ell_1,1)
+ &=3(T+1)-4(u-jT)-3\\
+ &=(4j+3)T-4u=p^\eps.
+\end{align*}
+The positivity and divisor-support conditions in~(3.1) hold because
+\(u=\ell_1+jT\).  Thus~(3.4) is well-defined.
+
+Conversely, take \((j,\ell_0,\ell_1)\in\mathcal H_\eps(p)\), and set
+\[
+ T=4\ell_0-1,
+ \qquad u=\ell_1+jT.
+\]
+Expanding \(\lambda(\ell_0,\ell_1,1)=p^\eps\) gives
+\[
+ (4j+3)T-4u=p^\eps,
+\]
+so \(R_j\mid4u+p^\eps\).  All other selector conditions occur explicitly
+in~(3.1).  The two constructions recover \(T,u,\ell_0,\ell_1\) literally,
+which proves bijectivity and~(3.5).
+
+Finally, direct multiplication gives
+\[
+ \begin{pmatrix}1&-j\\0&1\end{pmatrix}
+ \begin{pmatrix}4j+3&-u\\4&-T\end{pmatrix}
+ =
+ \begin{pmatrix}3&-u+jT\\4&-T\end{pmatrix}
+ =
+ \begin{pmatrix}3&-\ell_1\\4&1-4\ell_0\end{pmatrix}.
+\]
+Both shears have determinant \(1\), so their integral row operations are
+invertible and the row lattices are equal.  The signed determinant is
+\(-R_jT+4u=-p^\eps\), proving~(3.7).
+\end{proof}
+
+\begin{corollary}[presented groups and the Erd\H{o}s--Straus equation]
+For every corresponding selector/S6 point,
+\begin{equation}
+ \mathcal G(\mathsf A_\eps(p;j,u))
+ =\mathcal G(\mathsf R(\ell_0,\ell_1,1))
+ \cong G(\ell_0,\ell_1,1)
+ \cong\ZZ/p^\eps\ZZ.                                       \tag{3.8}
+\end{equation}
+Here \(\ZZ/1\ZZ\) is the trivial group.  Moreover the direct map
+\begin{equation}
+ \widehat\Psi_{\eps,p}:\mathcal H_\eps(p)\longrightarrow\mathscr S(p)
+                                                                    \tag{3.9}
+\end{equation}
+is obtained by~(3.5), (2.8), and
+\begin{equation}
+ (j,\ell_0,\ell_1)\longmapsto
+ \left(a_j,\ pK,\ \frac{p^\eps a_jK}{u}\right),
+ \quad
+ \begin{cases}
+ T=4\ell_0-1,\\
+ u=\ell_1+jT,\\
+ K=(p^{1-\eps}T+1)/4.
+ \end{cases}                                                \tag{3.10}
+\end{equation}
+It satisfies
+\begin{equation}
+ \boxed{\quad
+ \ES(p)\Longleftrightarrow
+ \bigl(\{0\}\times\mathcal H_0(p)\bigr)\sqcup
+ \bigl(\{1\}\times\mathcal H_1(p)\bigr)\neq\varnothing.
+ \quad}                                                       \tag{3.11}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+The relation \(xy=c^{\ell_0}\) in~(1.4) gives
+\(y=x^{-1}c^{\ell_0}\); since \(c\) is central, \(x\) and \(y\) commute.
+The remaining two relations are the rows of~(1.5).  The greatest common
+divisor of the four entries of \(\mathsf R\) is \(1\), because it divides
+both \(3\) and \(4\).  Its Smith form is therefore
+\(\operatorname{diag}(1,p^\eps)\), proving~(3.8).  Formula~(3.10) is the
+composition of Theorem~\ref{thm:esksb-bridge} with
+Proposition~\ref{prop:esksb-reconstruct}, and~(3.11) follows from~(2.12).
+\end{proof}
+
+\begin{remark}[the selector tag and the solution map]
+The channel tag is not redundant.  For \(p=13\), \(j=0\), and \(u=2\),
+one has \(u\in\mathcal W_0(p,j)\cap\mathcal W_1(p,j)\), but the two tags
+give different terminal values and different marked terminal points.  Nor is
+the map to unordered denominator triples injective: in the \(M\)-channel at
+\(p=13,j=0\), the complementary divisors \(u=2\) and \(u=8=a_0^2/2\)
+both give the unordered solution \(\{4,26,52\}\).  The bijection in
+Theorem~\ref{thm:esksb-bridge} is a bijection of marked selector states with marked
+terminal states, not a bijection with unordered solutions.
+\end{remark}
+
+\begin{corollary}[fixed-fibre affine coordinates and the intrinsic gate]
+Put
+\[
+ C_\eps=\frac{p^\eps+3}{4},
+ \qquad D_{\eps,j}=j+C_\eps=\frac{R_j+p^\eps}{4}.
+\]
+Every integral point with \(\ell_2=1\) and
+\(\lambda(\ell_0,\ell_1,1)=p^\eps\) is uniquely
+\begin{equation}
+ (\ell_0,\ell_1,\ell_2)=(n,3n-C_\eps,1),\qquad n\in\ZZ,      \tag{3.12}
+\end{equation}
+and, for each fixed marker \(j\in J_p\), define
+\begin{equation}
+ T=4n-1,
+ \qquad u=R_jn-D_{\eps,j},
+ \qquad K=\frac{p^{1-\eps}T+1}{4}.                          \tag{3.13}
+\end{equation}
+Then \(T\equiv3\pmod4\), so \(K\in\ZZ\), and the congruence equation
+\(R_jT=4u+p^\eps\) holds identically.  On the locus \(T>0\) and
+\(u>0\), one has
+\begin{equation}
+ \gcd(R_j,u)=1,
+ \qquad
+ u\mid a_j^2\Longleftrightarrow u\mid K^2.                  \tag{3.14}
+\end{equation}
+Thus the nonlinear divisor gate can be written entirely in the S6
+coordinates, but it does not disappear.
+\end{corollary}
+
+\begin{proof}
+Equation~(3.12) is the direct solution of
+\(12\ell_0-4\ell_1-3=p^\eps\).  Substitution gives the first two
+formulas in~(3.13), and \(T\equiv3\pmod4\) proves that the displayed
+integer \(K\) is well defined.  The definitions give
+\[
+ 4u=4R_jn-(R_j+p^\eps)=R_jT-p^\eps,
+\]
+so the congruence equation holds for every integral point in~(3.12).
+If a positive integer divides both \(R_j\) and \(u\), then the congruence
+equation makes it divide \(p^\eps\); (1.2) therefore gives
+\(\gcd(R_j,u)=1\).  Without invoking the selector hypothesis, direct
+substitution gives
+\[
+ 4\bigl(R_jK-p^{1-\eps}u-a_j\bigr)
+ =p^{1-\eps}(R_jT-4u)-p=0.
+\]
+Thus \(a_j\equiv R_jK\pmod u\).  Since \(R_j\) is a unit modulo \(u\),
+\(a_j^2\equiv R_j^2K^2\pmod u\), which proves (3.14) in both directions.
+\end{proof}
+
+The normalization automatically lies in the admissible residue class used by
+the S6 terminal presentation:
+\begin{equation}
+ \ell_2=1\text{ is odd},
+ \qquad \ell_1\equiv2\pmod3.                                \tag{3.15}
+\end{equation}
+Indeed reduction of \(\lambda(\ell_0,\ell_1,1)=p^\eps\equiv1\pmod3\)
+gives \(-\ell_1\equiv1\pmod3\).
+
+\begin{remark}[orientation and the constructed S6 candidate]
+The geometrically reconstructed candidate elsewhere in the audited corpus
+uses the oriented terminal parameter
+\(\lambda(0,1,-1)=-1\).  The two arithmetic channels in this note use
+the positive terminal values \(+1\) and \(+p\).  No audited map identifies
+the \(-1\) terminal datum with either positive datum.  Consequently the row
+shear proved here does not, by itself, place any selector state on the
+particular complex threefold constructed in the \(-1\) branch.
+\end{remark}
+
+\subsection{The exact remaining arithmetic incidence}
+
+The bridge can be expressed without an untyped phrase such as ``some divisor
+of a square.''  The next factor coordinates are canonical and retain their
+orientation.
+
+\begin{lemma}[canonical ordered factor coordinates]\label{lem:esksb-factors}
+For \(a,u\in\ZZpos\), the condition \(u\mid a^2\) is equivalent to the
+existence of a unique ordered triple \((r,s,t)\in\ZZpos^3\) such that
+\begin{equation}
+ u=r^2s,
+ \qquad a=rst,
+ \qquad \gcd(r,t)=1.                                        \tag{4.1}
+\end{equation}
+Explicitly, with \(g=\gcd(a,u)\),
+\begin{equation}
+ r=\frac ug,
+ \qquad s=\frac{g^2}{u},
+ \qquad t=\frac ag.                                         \tag{4.2}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write \(v_q(a)=\alpha\) and \(v_q(u)=\beta\leq2\alpha\) prime by prime.
+Then
+\[
+ v_q(g)=\min(\alpha,\beta),
+ \qquad
+ v_q(g^2/u)=2\min(\alpha,\beta)-\beta\geq0.
+\]
+Thus~(4.2) consists of positive integers.  If \(\beta\leq\alpha\), then
+\(q\nmid r\); if \(\beta\geq\alpha\), then \(q\nmid t\).  Hence
+\(\gcd(r,t)=1\), and direct multiplication gives~(4.1).
+
+Conversely,~(4.1) gives
+\(a^2/u=s t^2\in\ZZpos\).  It also gives
+\(\gcd(a,u)=rs\), because \(\gcd(r,t)=1\).  Formula (4.2) then recovers
+\((r,s,t)\), proving uniqueness.
+\end{proof}
+
+\begin{proposition}[factor form of both selector channels]\label{prop:esksb-factor-congruence}
+For the unique factorization
+\(u=r^2s\), \(a_j=rst\), \(\gcd(r,t)=1\), one has
+\begin{align}
+ u\in\mathcal W_0(p,j)
+ &\Longleftrightarrow R_j\mid pr+t,                           \tag{4.3}\\
+ u\in\mathcal W_1(p,j)
+ &\Longleftrightarrow R_j\mid r+t.                            \tag{4.4}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+All of \(r,s,t\) are units modulo \(R_j\), because their product is \(a_j\)
+and \(\gcd(a_j,R_j)=1\).  For the \(E\)-channel,
+\[
+ t(4u+1)=4r^2st+t=(p+R_j)r+t=(pr+t)+R_jr.
+\]
+Cancelling \(t\) modulo \(R_j\) proves~(4.3).  For the \(M\)-channel,
+\[
+ 4u+p\equiv4(u+a_j)=4rs(r+t)\pmod {R_j},
+\]
+and cancellation of the unit \(4rs\) proves~(4.4).
+\end{proof}
+
+\begin{theorem}[necessary-and-sufficient counterexample criterion]
+A prime \(p\equiv1\pmod {12}\) is a counterexample to the
+Erd\H{o}s--Straus equation if and only if, for every \(j\in J_p\) and every
+ordered \((r,s,t)\in\ZZpos^3\) satisfying
+\[
+ a_j=rst,
+ \qquad \gcd(r,t)=1,
+\]
+one has simultaneously
+\begin{equation}
+ R_j\nmid pr+t,
+ \qquad R_j\nmid r+t.                                       \tag{4.5}
+\end{equation}
+Equivalently, with the tag retained, it is necessary and sufficient that
+\begin{equation}
+ R_j\nmid p^{1-\eps}r+t                                     \tag{4.6}
+\end{equation}
+for every \(j\in J_p\), every \(\eps\in\{0,1\}\), and every such factor
+triple.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:esksb-factors} is a bijection between all allowed divisors in
+the selector~(2.4) and all displayed ordered factor triples.  Proposition
+\ref{prop:esksb-factor-congruence} translates the two selector congruences without
+loss.  The assertion now follows directly from~(2.12), or equivalently
+(3.11), by negating the finite existential statement.
+\end{proof}
+
+This theorem isolates the unresolved problem exactly: the S6 row shear has
+not removed the bounded factor-incidence condition~(4.5).
+
+\subsection{Why the labels and support cannot be forgotten}
+
+\begin{lemma}[full terminal fibres are affine lattices]
+The kernel of \(\lambda:\ZZ^3\to\ZZ\) is
+\begin{equation}
+ \ker\lambda=\ZZ(1,3,0)\oplus\ZZ(1,0,4).                    \tag{5.1}
+\end{equation}
+If \(q\equiv1\pmod {12}\) and \(m_q=(q+11)/12\), then
+\begin{equation}
+ \lambda^{-1}(q)=
+ \{(m_q+r+s,\ 2+3r,\ 1+4s):r,s\in\ZZ\}.                   \tag{5.2}
+\end{equation}
+In the normalized slice \(\ell_2=1\), this is an infinite affine line.
+\end{lemma}
+
+\begin{proof}
+If \(12a-4b-3c=0\), reduction modulo \(4\) gives \(c=4s\).  The remaining
+equation gives \(b=3(a-s)\); putting \(r=a-s\) yields
+\((a,b,c)=r(1,3,0)+s(1,0,4)\), uniquely.  Since
+\(\lambda(m_q,2,1)=12m_q-11=q\), translation by~(5.1) proves~(5.2).
+\end{proof}
+
+The lemma proves that the mere existence of a terminal parameter with signed
+value \(1\) or \(p\) is automatic.  It cannot imply selector nonemptiness.
+The following examples show separately why the marker and the divisor-support
+condition are both part of the theorem's domain.
+
+\begin{example}[forgetting \(j\) and \(p\) is noninjective]\label{ex:esksb-tags}
+For each eligible prime \(q\), define the fixed-prime forgetful map
+\[
+ \mathfrak f_q:\mathcal H_0(q)\longrightarrow\ZZ^3,
+ \qquad
+ \mathfrak f_q(j,\ell_0,\ell_1)=(\ell_0,\ell_1,1).
+\]
+At \(p=13\), the two \(E\)-states
+\[
+ (j,u,T)=(0,2,3),\qquad(1,5,3)
+\]
+satisfy
+\[
+ \Theta_{0,13}(0,2)=(0,1,2),
+ \qquad
+ \Theta_{0,13}(1,5)=(1,1,2),
+\]
+and both images are sent by \(\mathfrak f_{13}\) to
+\((1,2,1)\).  To compare different prime fibres, form the tagged coproduct
+and the global forgetful map
+\[
+ \mathfrak F:
+ \bigsqcup_{\substack{q\ \text{prime}\\q\equiv1\pmod {12}}}
+ \bigl(\{q\}\times\mathcal H_0(q)\bigr)
+ \longrightarrow\ZZ^3,
+ \qquad
+ \mathfrak F(q;j,\ell_0,\ell_1)=(\ell_0,\ell_1,1).
+\]
+The state \((p,j,u)=(73,1,5)\) has
+\(\Theta_{0,73}(1,5)=(1,1,2)\), so its tagged image also maps under
+\(\mathfrak F\) to \((1,2,1)\).  Therefore neither \(j\) nor the external
+prime \(p\) is recoverable after applying the explicitly displayed
+forgetful maps.
+\end{example}
+
+\begin{example}[ambient positivity does not imply divisor support]\label{ex:esksb-ambient}
+For \(p=13\), \(j=2\), one has \(R_j=11\) and \(a_j=6\).  The positive
+normalized \(E\)-line has
+\[
+ (\ell_0,\ell_1)=(n,3n-1),
+ \qquad u=11n-3,
+\]
+and the positive normalized \(M\)-line has
+\[
+ (\ell_0,\ell_1)=(n,3n-4),
+ \qquad u=11n-6.
+\]
+Both lines are infinite.  The only positive \(u\leq a_j^2=36\) are
+\[
+ E:\ 8,19,30,
+ \qquad M:\ 5,16,27,
+\]
+and none divides \(36\).  Hence
+\(\mathcal H_0(13,2)=\mathcal H_1(13,2)=\varnothing\), even though both
+ambient positive S6 lines are nonempty.  The prime \(13\) is solved at other
+markers, so this is a fixed-shell counterexample to forgetting support, not
+an Erd\H{o}s--Straus counterexample.
+\end{example}
+
+\subsection{The natural unmarked \texorpdfstring{\(S^6\)}{S6} point and its complete divisor gate}
+
+The most direct attempted use of the S6 presentation starts from one point in
+the signed \(p\)-fibre and shears it through every shell.  Its exact content
+can be classified completely.
+
+Write
+\begin{equation}
+ p=12m-11,
+ \qquad m=h+1\geq2,
+ \qquad J_p=\{0,\ldots,3m-4\}.                              \tag{6.1}
+\end{equation}
+Retain the unmarked S6 point
+\begin{equation}
+ \ell^{\mathrm{aff}}=(m,2,1),
+ \qquad \lambda(\ell^{\mathrm{aff}})=p,                     \tag{6.2}
+\end{equation}
+and for \(j\in J_p\) put
+\begin{equation}
+ T_0=4m-1,
+ \quad u_j=2+jT_0,
+ \quad a_j=3m+j-2,
+ \quad R_j=4j+3.                                             \tag{6.3}
+\end{equation}
+Then
+\begin{equation}
+ R_jT_0=4u_j+p,
+ \qquad R_jm=a_j+u_j,
+ \qquad T_0a_j-u_j=pm,                                      \tag{6.4}
+\end{equation}
+and
+\begin{equation}
+ \mathsf U_j
+ \begin{pmatrix}R_j&-u_j\\4&-T_0\end{pmatrix}
+ =
+ \begin{pmatrix}3&-2\\4&1-4m\end{pmatrix}
+ =\mathsf R(m,2,1).                                         \tag{6.5}
+\end{equation}
+
+\begin{theorem}[complete affine-line gate]\label{thm:esksb-affine-gate}
+For prime \(p=12m-11\), \(m\geq2\), and \(0\leq j<3m-3\),
+\begin{equation}
+ u_j\mid a_j^2
+ \Longleftrightarrow
+ \bigl(j=0\text{ and }2\mid m\bigr)
+ \ \text{or}\ 
+ \bigl(j=2\text{ and }8\mid m\bigr).                       \tag{6.6}
+\end{equation}
+Consequently the single unmarked point~(6.2), with all markers restored,
+produces an Erd\H{o}s--Straus witness if and only if
+\(p\equiv13\pmod {24}\).  In that case \(j=0,u=2,K=m\) gives
+\begin{equation}
+ \frac4p=
+ \frac1{3m-2}
+ +\frac1{pm}
+ +\frac{1}{pm(3m-2)/2}.                                    \tag{6.7}
+\end{equation}
+For \(p\equiv1\pmod {24}\), this affine S6 point supplies no supported
+selector state at any \(j\in J_p\).
+\end{theorem}
+
+\begin{proof}
+The identities~(6.4) and~(6.5) follow by direct expansion.  Assume first
+that \(u_j\mid a_j^2\), and put \(g=\gcd(u_j,a_j)\).  Write
+\(u_j=gu'\) and \(a_j=ga'\) with \(\gcd(u',a')=1\).  The assumed
+divisibility gives \(u'\mid g(a')^2\), hence \(u'\mid g\), and therefore
+\begin{equation}
+ u_j\mid g^2.                                                \tag{6.8}
+\end{equation}
+The last identity in~(6.4) gives \(g\mid pm\).  Since \(0<a_j<p\), the
+primality of \(p\) and \(g\mid a_j\) imply \(p\nmid g\); therefore
+\(g\mid m\).  Reducing \(u_j=2+j(4m-1)\) modulo \(m\) now gives
+\begin{equation}
+ g\mid j-2.                                                  \tag{6.9}
+\end{equation}
+
+Suppose \(j\neq0,2\).  Then \(j\geq1\), and~(6.8)--(6.9) imply
+\(u_j\leq g^2\leq(j-2)^2\).  But
+\begin{equation}
+ u_j-(j-2)^2=j(4m+3-j)-2>0                                  \tag{6.10}
+\end{equation}
+For \(m\geq2\) and \(1\leq j<3m-3\), indeed
+\(4m+3-j\geq m+7\), so the right-hand side of~(6.10) is at least
+\(m+5>0\).  This is a contradiction.  Thus only \(j=0\) or \(j=2\)
+can occur.
+
+At \(j=0\), \(u_0=2\) and \(a_0=3m-2\), so
+\(u_0\mid a_0^2\) exactly when \(m\) is even.  At \(j=2\),
+\(u_2=8m\) and \(a_2=3m\), so
+\[
+ u_2\mid a_2^2
+ \Longleftrightarrow 8m\mid9m^2
+ \Longleftrightarrow 8\mid m.
+\]
+These calculations also prove both converse implications in~(6.6).
+
+Now \(p=12m-11\) is congruent to \(13\pmod {24}\) exactly when \(m\) is
+even.  The \(j=0\) state lies in the \(M\)-channel, and~(2.8) gives
+\(T=T_0\) and \(K=(T_0+1)/4=m\).  Formula~(2.10) is precisely~(6.7).
+If \(m\) is odd,~(6.6) excludes every marker on this particular S6 point.
+\end{proof}
+
+The last sentence is deliberately local to~(6.2).  For example, \(p=73\)
+has \(m=7\) odd, so the affine point contributes nothing; nevertheless
+\((j,u,T;\ell_0,\ell_1)=(1,1,11;3,-10)\) is an \(M\)-state.  Thus failure of
+the affine point is not failure of the full selector.
+
+\subsection{Exact descendant maps transported through the bridge}
+
+The bridge also transports a verified selector witness along multiplicative
+descendant rays.  This is a map from an already nonempty domain, not a
+nonemptiness theorem.
+
+Fix a supported state at \((p,j)\), retain \(R=R_j\), and let \(b\in\ZZpos\).
+Define
+\begin{equation}
+ a_b=ba_j,
+ \qquad p_b=4a_b-R=bp+(b-1)R.                               \tag{7.1}
+\end{equation}
+Whenever \(p_b\) is again a prime congruent to \(1\pmod {12}\), the same
+marker \(j\) belongs to \(J_{p_b}\), since \(R<p\leq p_b\), and the following
+maps have the displayed domains and codomains:
+\begin{align}
+ \Phi_{b;p}^E:\mathcal H_0(p,j)&\longrightarrow\mathcal H_0(p_b,j),
+ &(j,\ell_0,\ell_1)&\longmapsto(j,\ell_0,\ell_1),             \tag{7.2}\\
+ \Phi_{b;p}^M:\mathcal H_1(p,j)&\longrightarrow\mathcal H_1(p_b,j),
+ &(j,\ell_0,\ell_1)&\longmapsto
+ (j,b\ell_0,b\ell_1-j(b-1)).                               \tag{7.3}
+\end{align}
+Write
+\[
+ \theta_{\eps,p,j}:\mathcal W_\eps(p,j)\longrightarrow
+ \mathcal H_\eps(p,j),
+ \qquad
+ \theta_{\eps,p,j}(u)=\Theta_{\eps,p}(j,u)
+\]
+for the fixed-marker restriction of the marked bridge.
+
+\begin{proposition}[intertwining of descendant actions]
+The selector maps corresponding to~(7.2) and~(7.3) are the typed maps
+\begin{align*}
+ \psi_{b;p}^E:\mathcal W_0(p,j)&\longrightarrow\mathcal W_0(p_b,j),
+ &u&\longmapsto u,\\
+ \psi_{b;p}^M:\mathcal W_1(p,j)&\longrightarrow\mathcal W_1(p_b,j),
+ &u&\longmapsto bu.
+\end{align*}
+They intertwine the fixed-marker bridges exactly:
+\begin{equation}
+ \Phi_{b;p}^\bullet\circ\theta_{\eps,p,j}
+ =\theta_{\eps,p_b,j}\circ\psi_{b;p}^\bullet,
+ \qquad
+ (\bullet,\eps)\in\{(E,0),(M,1)\}.                         \tag{7.4}
+\end{equation}
+Equivalently,
+\[
+ \theta_{0,p_b,j}^{-1}\Phi_{b;p}^E\theta_{0,p,j}(u)=u,
+ \qquad
+ \theta_{1,p_b,j}^{-1}\Phi_{b;p}^M\theta_{1,p,j}(u)=bu.
+\]
+On the accompanying arithmetic metadata these maps replace
+\((a_j,p,u)\) by \((a_b,p_b,u)\) and \((a_b,p_b,bu)\), respectively.
+For the latter,
+\begin{equation}
+ T_b=bT+b-1,
+ \qquad u_b=bu,
+ \qquad K_b=bK,                                              \tag{7.5}
+\end{equation}
+and
+\begin{equation}
+ \lambda(b\ell_0,b\ell_1-j(b-1),1)=p_b.                    \tag{7.6}
+\end{equation}
+For either tag the maps are injective.  For \(c\in\ZZpos\), put
+\[
+ a_{bc}=bc\,a_j,
+ \qquad
+ p_{bc}=4a_{bc}-R=bc\,p+(bc-1)R.
+\]
+Whenever \(p_b\) and \(p_{bc}\) are primes congruent to \(1\pmod {12}\),
+the displayed maps are composable and satisfy
+\begin{equation}
+ \Phi_{c;p_b}^\bullet\circ\Phi_{b;p}^\bullet
+ =\Phi_{bc;p}^\bullet                                      \tag{7.7}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+In the \(E\)-channel, \(u\mid a_j^2\) implies \(u\mid a_b^2\), and the
+congruence \(R\mid4u+1\) and quotient \(T\) are unchanged.  Hence
+\(\ell_0,\ell_1\) are unchanged by~(3.4).
+
+In the \(M\)-channel, \(bu\mid b^2a_j^2=a_b^2\), and
+\[
+ 4bu+p_b=b(4u+p)+(b-1)R.
+\]
+Thus the descendant is a selector state and its quotient is
+\(T_b=bT+b-1\).  Since \(K=(T+1)/4\) in this channel,
+\(K_b=(T_b+1)/4=bK\).  Applying~(3.4) gives
+\[
+ \ell_{0,b}=\frac{T_b+1}{4}=b\ell_0,
+ \qquad
+ \ell_{1,b}=bu-jT_b=b\ell_1-j(b-1),
+\]
+which proves~(7.3)--(7.6), including the intertwining identity~(7.4).
+Each map is visibly injective for fixed \(b\).  Substitution into
+~(7.1)--(7.3), with the source prime retained, proves the typed composition
+law~(7.7).
+\end{proof}
+
+Reverse descent need not preserve divisor support: the factor \(b\) can
+introduce divisors absent from a proposed parent.  Therefore~(7.2)--(7.7)
+propagate witnesses but cannot create the first witness on an empty ray.
+
+\subsection{Sharp verdict}
+
+The strongest theorem supported by the audited data is
+Theorem~\ref{thm:esksb-bridge} together with the exhaustive equivalence~(3.11):
+the complete tagged Erd\H{o}s--Straus selector for a fixed prime
+\(p\equiv1\pmod {12}\) is exactly the marked divisor-supported S6 terminal
+slice, and the two integral relation matrices have the same row lattice.
+The exact remaining obstruction is~(4.5).
+
+Three stronger readings are false or unsupported.
+
+\begin{enumerate}
+\item The abstract group \(G(\ell)\), its determinant, or an unmarked
+terminal triple does not determine selector support.  Every \(E\)-state has
+the same trivial presented group, every \(M\)-state has group \(\ZZ/p\ZZ\),
+and Examples~\ref{ex:esksb-tags} and~\ref{ex:esksb-ambient} exhibit the information lost by forgetting
+the marker and divisor gate.
+
+\item The row shear is not a geometric map from the reciprocal cubic
+\(4xyz=p(xy+xz+yz)\) to the candidate complex threefold \(X\).  No map of
+varieties or analytic spaces, no cycle map, no attaching map, and no
+cohomological correspondence is defined by left multiplication of a
+relation matrix.
+
+\item The existence of the full S6 affine fibre cannot prove universal
+Erd\H{o}s--Straus positivity.  Those fibres are always nonempty by~(5.2),
+whereas selector nonemptiness is exactly the additional finite nonlinear
+incidence in~(4.5).  The natural affine point is completely exhausted by
+Theorem~\ref{thm:esksb-affine-gate} and contributes nothing to the unresolved
+\(p\equiv1\pmod {24}\) half.
+\end{enumerate}
+
+Accordingly, the bridge is a genuine theorem and is stronger than a shared
+determinant or a heuristic analogy.  It is also exact enough to prove its own
+boundary: without a new argument forcing one of the bounded factor
+congruences in~(4.5), it neither proves nor disproves the Erd\H{o}s--Straus
+conjecture.

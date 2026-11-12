@@ -1,0 +1,350 @@
+\section{Divisor channels, density one, and two distinct arithmetic maps}
+\label{sec:esv3-audit}
+
+This dated continuation (4 September 2026) checks the supplied Pro-mode
+\emph{Divisor Channels, Prime Saturation, and B\'ezout Openings}, version 3,
+and extends its final arithmetic comparison. The original packet is retained
+unchanged under \path{supporting_materials/workbench/evidence/koide_es_v3_audit_20260904/source/}.
+The claims below concern explicit reciprocal equations, integral matrices,
+and quadratic surfaces. They do not require a complex structure on a sphere.
+
+\subsection{The complete oriented channel map}
+
+Fix integers $n\equiv1\pmod4$, $R\equiv3\pmod4$, $0<R<n$,
+$\gcd(n,R)=1$, and put $a=(n+R)/4$, $N=na$. Then
+$\gcd(n,a)=\gcd(R,a)=1$. For a positive divisor $\delta\mid n^2$ define
+\[
+ \mathcal C_\delta(n,R)=\{(u,v)\in\mathbb Z_{>0}^2:
+ uv=a^2,\ R\mid4u+\delta\}.
+\]
+\begin{proposition}\label{prop:esv3-channel}
+The following is a bijection onto all ordered positive solutions of
+$4/n=1/a+1/y+1/z$:
+\[
+ (\delta,u,v)\longmapsto
+ \left(y,z\right)=
+ \left(\frac{N+(n^2/\delta)u}{R},\frac{N+\delta v}{R}\right),
+ \qquad (u,v)\in\mathcal C_\delta(n,R).
+\]
+Its inverse, retaining this orientation, is
+\[
+ d=Ry-N,\quad e=Rz-N,\quad k=\gcd(d,n^2),\quad
+ \delta=n^2/k,\quad u=d/k,\quad v=e/\delta.
+\]
+Exchange of $y,z$ is the fixed-point-free involution
+$(\delta,u,v)\mapsto(n^2/\delta,v,u)$.
+\end{proposition}
+\begin{proof}
+The reciprocal equation is $Ryz=N(y+z)$, hence $de=N^2$.
+For any positive solution $Ry=N+Ny/z>N$, so $d>0$; similarly $e>0$.
+Because $n$ and $a$ are coprime, every prime dividing $n$ occurs in $de$
+with precisely its exponent in $n^2$. Thus $k$ extracts the entire
+$n$-primary part of $d$, $\delta$ the entire $n$-primary part of $e$,
+and $u,v$ are positive integers with $uv=a^2$.
+Reducing $N+e$ modulo $R$ gives
+$0\equiv na+\delta v\equiv4a^2+\delta v=v(4u+\delta)$.
+Since $v$ is a unit modulo $R$, this proves the channel condition.
+Conversely that condition makes $N+e$ divisible by $R$; also
+$\delta(N+d)=n(\delta a+nu)\equiv na(\delta+4u)\equiv0\pmod R$.
+The unit $\delta$ can be cancelled modulo $R$, proving integrality of $y$.
+The identity $de=N^2$ proves the reciprocal equation. These operations are
+inverse. A fixed point of the involution would have $\delta=n$, $u=v=a$,
+so $R\mid4a+n=2n+R$, impossible since $R\ge3$ is odd and coprime to $n$.
+\end{proof}
+
+The package therefore corrects the earlier orientation reversal: the channel
+order is $n^2/\gcd(Ry-na,n^2)$, not $\gcd(Ry-na,n^2)$.
+For $n=9$, $R=7$, $a=4$, $(\delta,u,v)=(3,1,16)$, the ordered
+solution is $(y,z)=(9,12)$, and $\gcd(27,81)=27$.
+
+\subsection{The integral presentation, with its exact realization boundary}
+
+Put $T=(4u+\delta)/R$, $j=(R-3)/4$, and
+$\sigma=1$ for $\delta\equiv1\pmod4$, $\sigma=-1$ otherwise. Define
+\[
+ \ell_0=(T+\sigma)/4,\quad \ell_1=u-jT=(3T-\delta)/4,
+ \quad \ell_2=\sigma,\quad
+ \mathsf R_\delta=\begin{pmatrix}3&-\ell_1\\4&-T\end{pmatrix}.
+\]
+All coordinates are integral because $T\equiv-\delta\pmod4$.
+Direct multiplication and subtraction give
+\[
+ \begin{pmatrix}1&-j\\0&1\end{pmatrix}
+ \begin{pmatrix}R&-u\\4&-T\end{pmatrix}=\mathsf R_\delta,
+ \qquad12\ell_0-4\ell_1-3\ell_2=\delta.
+\]
+The entries $3,4$ are coprime, so
+$\operatorname{SNF}(\mathsf R_\delta)=\operatorname{diag}(1,\delta)$;
+in particular its cokernel is $\mathbb Z/\delta\mathbb Z$.
+Reducing $4\ell_1=3T-\delta$ modulo three gives
+$\ell_1\equiv-\delta\pmod3$. Thus the source gluing admissibility
+$3\nmid\ell_1$ fails precisely when $3\mid\delta$.
+For the example above $(\ell_0,\ell_1,\ell_2)=(0,0,-1)$.
+The matrix and its cokernel remain valid, but assigning the source's global
+manifold homology to this nonadmissible triple is not established by this
+calculation. This is an explicit admissibility test, not a failure of the
+reciprocal solution or the integral matrix morphism.
+
+\subsection{An exact density-one statement and what it leaves out}
+
+\begin{proposition}\label{prop:esv3-diagonal}
+Let $p\equiv1\pmod4$ be prime and $m=(p+1)/2$. The exterior channel
+states on $u=a=v$ are indexed exactly by
+\[
+ \{R:R\mid m,\ R\equiv3\pmod4\}.
+\]
+For each such $R$, set $x=(p+R)/4$ and $k=(p+1)/R$. Then
+\[
+ \frac4p=\frac1x+\frac1{xk}+\frac1{pxk},\qquad
+ \nu(p)=\frac12\left(\tau(m)-\sum_{d\mid m}\chi_4(d)\right),
+\]
+where $\chi_4(d)=1$ for $d\equiv1\pmod4$ and $-1$ for $d\equiv3\pmod4$.
+The count is zero exactly when every prime divisor of $m$ is $1\pmod4$.
+\end{proposition}
+\begin{proof}
+For $\delta=1$ and $u=a$, the condition is $R\mid4a+1=p+R+1$,
+equivalently $R\mid p+1$. Since $R$ is odd this is $R\mid m$.
+Every such $R$ obeys $3\le R\le(p+1)/2<p$, and $k\ge2$.
+Adding the final two fractions gives $(p+1)/(pxk)=R/(px)$,
+and adding $1/x$ gives $(p+R)/(px)=4/p$.
+Distinct $R$ give distinct $x$. Summing the indicator
+$(1-\chi_4(d))/2$ over divisors of $m$ proves the count.
+A divisor of residue three exists exactly when a prime factor of residue
+three exists: the converse follows because products of residue-one primes
+and their powers have residue one.
+\end{proof}
+
+\begin{proposition}\label{prop:esv3-density}
+For fixed $4\mid M$, $\gcd(c,M)=1$, $c\equiv1\pmod4$, the preceding
+diagonal states cover relative density one of primes $p\equiv c\pmod M$.
+For a finite set $\mathcal Q$ of primes $q\equiv3\pmod4$, $q\nmid M$,
+the subfamily with some $q\mid p+1$ has exact relative density
+\[
+ 1-\prod_{q\in\mathcal Q}\frac{q-2}{q-1}.
+\]
+\end{proposition}
+\begin{proof}
+The Chinese remainder theorem gives $\prod(q-1)$ reduced residue classes
+modulo $M\prod q$ above the specified class modulo $M$. Avoiding
+$p\equiv-1\pmod q$ at every $q$ leaves exactly $\prod(q-2)$ of them.
+The prime number theorem for each fixed arithmetic progression gives the
+displayed ratio. For completeness, its modulus-four case and partial
+summation give
+\[
+ \sum_{\substack{q\le Y\\q\equiv3\ (4)}}\frac1q
+ =\frac{\pi(Y;4,3)}Y+\int_2^Y\frac{\pi(t;4,3)}{t^2}\,dt
+ \sim\tfrac12\log\log Y.
+\]
+Removing finitely many primes dividing $M$ does not change divergence.
+Since $\log(1-z)\le-z$ for $0<z<1$, the finite products tend to zero.
+The full family's lower relative density is at least each of these finite
+union densities, hence is at least one and therefore equals one.
+No interchange of two unproved asymptotic limits is needed.
+\end{proof}
+
+These analytic tools are classical. Elsholtz and Tao,
+\emph{Counting the number of solutions to the Erd\H{o}s--Straus equation on
+unit fractions}, J. Aust. Math. Soc. 94 (2013), 50--105,
+\href{https://arxiv.org/abs/1107.1010v6}{arXiv:1107.1010v6}, Appendix A,
+Lemma A.3, give a stronger shifted-prime additive-function statement,
+attributed there to Barban via Elliott. Choosing its prime weight to be
+the indicator of residue three gives the relevant abundance of factors.
+The finite-CRT proof above records the precise chosen ray and progression;
+it is not a claim that almost-all solvability is new.
+
+For $p=73$, $(p+1)/2=37$ has no residue-three prime factor. This prime
+therefore misses the diagonal ray, although
+\[
+ \frac4{73}=\frac1{20}+\frac1{220}+\frac1{4015}.
+\]
+Here $R=7$, $u=5$, $v=80$, and the primitive factor ray is $[1:4]$.
+Thus a prime missed by the selected ray need not be missed by the full
+selector. Density one does not settle the universal Erd\H{o}s--Straus claim.
+
+\subsection{The B\'ezout opening, with the positivity hypothesis retained}
+
+For coprime positive integers $r,t$, choose $x,y\in\mathbb Z$ with
+$ry-tx=1$, set $v=(r,t)^{\mathsf T}$, $w=(x,y)^{\mathsf T}$, and let
+\[
+ B=(v\ w)\in\operatorname{SL}_2(\mathbb Z),\qquad
+ A=\delta vv^{\mathsf T}-ww^{\mathsf T}
+ =B\operatorname{diag}(\delta,-1)B^{\mathsf T}.
+\]
+Then $\det A=-\delta$ for every real $\delta$. All companions are
+$w+kv$ for $k\in\mathbb Z$: subtraction of two B\'ezout equations gives
+$r\Delta y=t\Delta x$, so coprimality gives $(\Delta x,\Delta y)=k(r,t)$.
+Choosing $|x|\le r/2$ retains an actual companion rather than quotienting
+away its dependence. For a positive integer channel order,
+\[
+ A_{11}=\delta r^2-x^2\ge(\delta-1/4)r^2>0.
+\]
+The broader wording ``every $\delta>0$'' does not imply that inequality.
+At $(r,t,\delta)=(2,1,1/8)$ all companions have $x$ odd, and
+$A_{11}=1/2-x^2\le-1/2$. For a specified real order and companion the
+exact necessary and sufficient condition is $\delta>(x/r)^2$.
+This correction leaves every positive integral divisor channel intact.
+
+With $A=\left(\begin{smallmatrix}a&b\\b&c\end{smallmatrix}\right)$ and
+$a>0$, the periods $(\tau,\mu,\beta)=(ia,ib/\sqrt6,ic)$ give
+\[
+ P_A=\begin{pmatrix}
+ 0&0&1&0\\ \sqrt6 b&a&0&0\\0&0&0&1\\c&b/\sqrt6&0&0
+ \end{pmatrix},\qquad
+ \det P_A=ac-b^2=-\delta.
+\]
+This invertible real matrix sends $\mathbb Z^4$ to a discrete cocompact
+lattice in $\mathbb C^2$ and therefore defines a complex two-torus.
+The determinant sign and the factor $\sqrt6$ are retained.
+It does not determine a point on the particular global equivariant period
+curve of the proposed threefold. That incidence problem remains a distinct
+map problem, not an obstruction to the torus just constructed.
+
+There is also an explicit integral equivalence of presentations, not merely
+an equality of determinants. Set
+\[
+ P_0=\begin{pmatrix}-1&1\\-4&3\end{pmatrix},\quad
+ Q_0=\begin{pmatrix}1&T-\ell_1\\0&1\end{pmatrix},\quad
+ J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+Multiplication gives $P_0\mathsf R_\delta Q_0=\operatorname{diag}(1,-\delta)$
+and $(-JB^{-1})A(B^{-\mathsf T}J)=\operatorname{diag}(1,-\delta)$.
+Thus, for $L=P_0^{-1}(-JB^{-1})$, $V=B^{-\mathsf T}JQ_0^{-1}$,
+\[
+ \mathsf R_\delta=LAV.
+\]
+As maps $\mathbb Z^2\to\mathbb Z^2$, the commuting square has source
+isomorphism $V^{-1}$ and target isomorphism $L$ because
+$\mathsf R_\delta V^{-1}=LA$. Hence $[z]\mapsto[Lz]$ is an explicit
+isomorphism of the two cokernels. It is not by itself a map of tori or of
+global threefolds.
+
+\subsection{The original map's rational nonintersection}
+
+Retain the exact form and orthogonal matrix
+\[
+ \Delta(q)=4(q_1q_2+q_1q_3+q_2q_3)-q_1^2-q_2^2-q_3^2,
+ \quad
+ F=\begin{pmatrix}
+ 1/\sqrt3&1/\sqrt3&1/\sqrt3\\
+ 1/\sqrt2&0&-1/\sqrt2\\
+ 1/\sqrt6&-2/\sqrt6&1/\sqrt6
+ \end{pmatrix}.
+\]
+For $\det A=-\delta$, $\delta\in\mathbb Q_{>0}$, Pro's map is
+\[
+ \mathfrak K_\delta(A)=F^{-1}
+ \frac{((a+c)/2,b,(a-c)/2)^{\mathsf T}}{\sqrt{3\delta}}.
+\]
+It satisfies $\Delta(\mathfrak K_\delta(A))=-1$ but sends no rational
+$A$ to a rational triple. Indeed, if $q$ were rational, put
+$S=q_1+q_2+q_3$, $U=q_1-q_3$, $V=q_1+q_3-2q_2$. The rational coordinates
+$H=(a+c)/2$, $X=b$, $Y=(a-c)/2$ would satisfy
+\[
+ H=\sqrt\delta S,\quad X=\sqrt{3\delta/2}\,U,
+ \quad Y=\sqrt{\delta/2}\,V.
+\]
+Two nonzero coordinates would make one of $\sqrt{3/2}$, $\sqrt2$,
+$\sqrt3$ rational. If only $H$ is nonzero the determinant is positive.
+If only $X$ or only $Y$ is nonzero, the determinant equation forces,
+respectively, $U^2=2/3$ or $V^2=2$, impossible over $\mathbb Q$.
+All coordinates zero also contradicts $\delta>0$. This proves the claim.
+
+\subsection{A different rational bridge, with exact inverse and denominators}
+
+The preceding nonintersection concerns the specified map, not every map
+between the quadratic surfaces. The following construction uses projection
+from the rational point $(1,0,0)$ on $\Delta=-1$; it does not replace $F$ or
+the physical meaning, if any, assigned to its coordinates.
+
+\begin{lemma}\label{lem:esv3-anisotropic}
+The equation $\Delta(q)=0$ has no nonzero rational solution.
+\end{lemma}
+\begin{proof}
+After clearing denominators use the integral $S,U,V$ just defined.
+Expansion gives $2\Delta=2S^2-3U^2-V^2$. Modulo three,
+$2S^2=V^2$ forces $3\mid S,V$. Substitution then forces $3\mid U$.
+Repeating gives divisibility of $S,U,V$ by every power of three, hence all
+vanish. The linear map from $q$ to $(S,U,V)$ has nonzero determinant,
+so $q=0$.
+\end{proof}
+
+\begin{theorem}\label{thm:esv3-rational-bridge}
+For fixed $\delta\in\mathbb Q_{>0}$ write
+\[
+ X_\delta=\{(a,b,c):ac-b^2=-\delta\},\quad
+ Y=\{q:\Delta(q)=-1\},
+\]
+and define
+\[
+ D(a,b)=-1-a^2-b^2+4a+4b+4ab,\quad K(a,b)=1-2a-2b.
+\]
+On $U_\delta=\{(a,b,c)\in X_\delta:aDK\ne0\}$ the map
+\[
+ \mathcal B_\delta(a,b,c)=
+ \left(1+\frac{2K}{D},\frac{2Ka}{D},\frac{2Kb}{D}\right)
+ \label{eq:esv3-birational}
+\]
+is an isomorphism of open varieties over $\mathbb Q$ onto the open part of
+$Y$ where $q_1\ne1$, $q_2\ne0$, and
+$D(q_2/(q_1-1),q_3/(q_1-1))\ne0$. Its inverse is
+\[
+ a=\frac{q_2}{q_1-1},\qquad b=\frac{q_3}{q_1-1},\qquad
+ c=\frac{b^2-\delta}{a}.
+\]
+Every integral matrix on $X_\delta$ with $a>0$ belongs to $U_\delta$.
+For such a matrix, the exact least common denominator of its image is
+\[
+ d_{\rm image}=\frac{|D(a,b)|}{\gcd(|D(a,b)|,|2K(a,b)|)}.
+\]
+In particular its image is integral exactly when $D(a,b)\mid2K(a,b)$.
+\end{theorem}
+\begin{proof}
+Set $q=(1,0,0)+\lambda(1,a,b)$. Expansion, with no change of scale in
+$\Delta$, gives
+\[
+ \Delta(q)=-1-2K\lambda+D\lambda^2.
+\]
+The second intersection with $Y$ is therefore $\lambda=2K/D$, nonzero
+on the stated domain. The displayed image and inverse follow. Conversely,
+for a point of the stated target open set, put $\lambda=q_1-1$ and recover
+$a,b$. Its equation gives $\lambda D=2K$, so $K\ne0$ and the constructions
+are inverse regular maps on the indicated opens. Recovering $c$ retains the
+fixed determinant $-\delta$. For integral $a,b$, $K$ is odd and cannot
+vanish. Moreover $D=\Delta(1,a,b)\ne0$ by
+Lemma~\ref{lem:esv3-anisotropic}. Finally, $q_1-1=2K/D$ has reduced
+denominator $|D|/\gcd(|D|,|2K|)$, and $q_2,q_3$ are integer multiples
+of this fraction. This proves both the denominator formula and its exactness.
+\end{proof}
+
+For the packet's fixed opening
+$A_*=\left(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\right)$,
+$\delta=1$, $D=9$, $K=-3$, and
+\[
+ \mathcal B_1(A_*)=(1/3,-2/3,-2/3),\qquad
+ \Delta(1/3,-2/3,-2/3)=-1.
+\]
+This rational image coexists with the irrationality of
+$\mathfrak K_1(A_*)$, because the two maps are different and both have now
+been specified. The rational bridge does not automatically preserve the
+integral positive chamber, the integral orbit count, or a dynamics. The
+denominator condition above is the exact next arithmetic restriction, and
+the inverse retains $\delta$ as a parameter rather than erasing it.
+
+\subsection{Independent checks and reproducibility}
+
+The separate verifier
+\path{supporting_materials/workbench/evidence/koide_es_v3_audit_20260904/verify_independent.py}
+enumerates the smaller denominator $N/R<y\le2N/R$, then reconstructs
+$z=Ny/(Ry-N)$, independently of the packet's divisor enumerator. It agrees
+with all 1430 oriented states in 665 coprime shells through $n=161$.
+It checks the 819 diagonal certificates for 329 primes below 5000, the
+symbolic rational-map identity and inverse, and 820 exact denominator cases.
+These finite regressions supplement, rather than replace, the proofs above.
+The original packet's verifier is replayed separately without modifying its
+source or its original output. The archive SHA-256 is
+\begin{quote}\small\ttfamily
+ab5c21cf00268f9019c95ee24b565d05c4d9\allowbreak
+337c51e4a576ded9e3cc3f0f235e
+\end{quote}
+The correct full hash is recorded byte-for-byte in the evidence manifest;
+the line breaking here is typographical only.

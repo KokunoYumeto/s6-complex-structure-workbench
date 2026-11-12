@@ -1,0 +1,740 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,amscd,mathtools,mathrsfs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{booktabs,array}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,
+ citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+\setlist{itemsep=2pt,topsep=4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.48em}
+\setlength{\emergencystretch}{2em}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{The \(\mathrm{SU}(3)\) Gram and toroidal carriers}
+\fancyhead[R]{Verification draft}
+\fancyfoot[C]{\thepage}
+
+\title{\bfseries The \(\mathrm{SU}(3)\) Gram Cone and the Rank-Six
+Toroidal Lattice\\
+\large Exact orbit spaces, Weyl-chamber incidence, and the obstruction to
+a monodromy-compatible Gram map}
+\author{Independent mathematical verification draft}
+\date{4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let \(\mathrm{SU}(3)\) act on
+\(\operatorname{Mat}_{3\times2}(\mathbb C)\) by left multiplication.  The
+first part proves that the Gram map induces a proper stratified
+homeomorphism from the orbit space onto the positive-semidefinite
+\(2\times2\) Hermitian cone, determines every stabilizer and orientation,
+and identifies the compact quotient as \(B^4\), not \(S^4\).  The second
+part treats the distinct rank-six toroidal lattice
+\(\Lambda_3=H_1(T^6;\mathbb Z)=L_3\oplus\bar L_3\).  We compute its exact
+diagonal \(S_3\)-action, integral symplectic monodromy, and the quotient
+\(\Phi=P\oplus Q\).  Its kernel is a fixed rank-two lattice, while each
+rank-two quotient is the \(A_2\) weight lattice rather than the root lattice;
+the sequence splits as abelian groups but has no integral
+\(S_3\)-equivariant splitting.  The six Kuhn chambers form the regular
+\(S_3\)-set, not the two three-point orbits furnished by a basis of
+\(\Lambda_3\).  An exact incidence complex and the spectral-floor evaluation
+place the six chambers on six diagonal rank-two Gram-boundary points, but
+the tempting extension from all six lattice directions has a non-invariant
+kernel and therefore cannot intertwine monodromy.  Finally we prove that the
+branch-exponent map restricts to the angular map \(P\); composing it with the
+deck map \(Q\) is a domain error.  The separate free defect lattice
+\(H^4(U;\mathbb Z)\cong(\mathbb Z^2)^3\) is not identified with
+\(\Lambda_3\), despite the equality of ranks.
+\end{abstract}
+
+\medskip
+\noindent\fcolorbox{black!55}{black!3}{%
+\begin{minipage}{0.94\linewidth}
+\textbf{Status and scope.}
+This note separates two exact carriers.  The rank-two Gram quotient follows
+from the displayed \(\mathrm{SU}(3)\) action.  The later toroidal calculation
+uses the explicitly marked lattice \(\Lambda_3\), its Kuhn fan, and
+\(\Phi=P\oplus Q\); it does not assert a holomorphic map from the toroidal
+total space to a Gram or Jordan cone.  The representation sphere
+\(S^{12}_{\mathrm{col}}\) is not a claimed complex manifold and is not
+automatically a cusp-induced smash sphere.  The note constructs neither a
+nonzero instanton sector on \(S^4\) nor a quantum Yang--Mills Hamiltonian.
+The rank-three toroidal lattice and the regular-locus defect group are kept
+as different typed objects throughout.
+\end{minipage}}
+
+\paragraph{Provenance.}
+This standalone draft extracts the rigorously surviving Gram-quotient and
+toroidal-lattice calculations from independent audits of proposed
+continuations of the reconstructed \(S^6\) manuscript.  The orbit,
+stabilizer, orientation, compactification, clutching, lattice, incidence, and
+obstruction claims are proved below from their stated objects; no theorem
+about the existence of the candidate complex structure on \(S^6\) is used.
+
+\input{supporting_materials/workbench/research/higher_rung_su3_gram_cone}
+
+\section{The marked rank-six toroidal lattice and the Weyl carrier}
+\label{sec:rank-six-toroidal-lattice}
+
+The rank-six lattice in this section is the first homology of the marked
+rank-three torus.  It is not the rank-six degree-four defect group introduced
+in \cref{subsec:distinct-defect-lattice} below.  Put
+\[
+ L_3=\mathbb Z^3,\qquad
+ \bar L_3=\mathbb Z^3,\qquad
+ \Lambda_3=L_3\oplus\bar L_3=H_1(T^6;\mathbb Z),
+ \qquad u=(1,1,1)^{\mathsf T}.
+\]
+For \(\sigma\in S_3\), let \(R_\sigma e_i=e_{\sigma(i)}\).  The retained
+Weyl action on \(\Lambda_3\) is the diagonal action
+\begin{equation}
+ \sigma(a,b)=(R_\sigma a,R_\sigma b).                    \label{eq:rank6-s3-action}
+\end{equation}
+The monodromy, nilpotent part, filling map, and integral symplectic form are
+\begin{align}
+ M_3(a,b)&=(a+b,b),& N_3&=M_3-I, & c_3(a,b)&=b,
+                                                        \label{eq:rank6-monodromy}\\
+ \Omega_3((a,b),(a',b'))&=a^{\mathsf T}b'-b^{\mathsf T}a'.
+                                                        \label{eq:rank6-symplectic}
+\end{align}
+
+\begin{proposition}[Integral Weyl and monodromy structure]
+\label{prop:rank6-weyl-monodromy}
+The \(S_3\)-action commutes with \(M_3\), preserves \(c_3\) equivariantly,
+and preserves \(\Omega_3\).  Moreover
+\[
+ N_3^2=0,\qquad
+ \ker N_3=\operatorname{im}N_3=L_3\oplus0.
+\]
+As an integral \(S_3\)-module,
+\[
+ \Lambda_3\cong\mathbb Z^3_{\rm perm}\oplus
+                    \mathbb Z^3_{\rm perm};
+\]
+over \(\mathbb Q\) this is
+\begin{equation}
+ \Lambda_3\otimes\mathbb Q
+ \cong2\,\mathbf1\oplus2\,{\rm Std}.                  \label{eq:rank6-rational-decomposition}
+\end{equation}
+Its character on the conjugacy classes represented by
+\(1,(12),(123)\) is respectively \((6,2,0)\).
+\end{proposition}
+
+\begin{proof}
+Every permutation matrix is orthogonal and fixes \(u\).  Substitution in
+\eqref{eq:rank6-monodromy} shows that the diagonal action commutes with the
+shear and that \(c_3(\sigma(a,b))=R_\sigma c_3(a,b)\).  Orthogonality gives
+\[
+ \Omega_3(\sigma(a,b),\sigma(a',b'))
+ =a^{\mathsf T}R_\sigma^{\mathsf T}R_\sigma b'
+  -b^{\mathsf T}R_\sigma^{\mathsf T}R_\sigma a'
+ =\Omega_3((a,b),(a',b')).
+\]
+Also \(N_3(a,b)=(b,0)\), proving the two nilpotent assertions.  Each of the
+two displayed bases is a three-point permutation orbit.  A permutation
+module \(\mathbb Q^3\) is \(\mathbf1\oplus{\rm Std}\); doubling gives
+\eqref{eq:rank6-rational-decomposition}.  The traces are twice the numbers
+of fixed points of a permutation acting on three letters, hence \(6,2,0\).
+\end{proof}
+
+\subsection{The exact quotient and its nonsplitting as a Weyl lattice}
+
+Let \(A_F=B_F=\mathbb Z^2\), and retain the matrices
+\begin{equation}
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},\qquad
+ Q=B_0^{-1}P=\begin{pmatrix}0&-1&1\\1&-1&0\end{pmatrix}.
+                                                        \label{eq:rank6-pq}
+\end{equation}
+Define
+\begin{equation}
+ \Phi=P\oplus Q:\Lambda_3\longrightarrow A_F\oplus B_F,
+ \qquad \Phi(a,b)=(Pa,Qb),                              \label{eq:rank6-phi}
+\end{equation}
+and
+\[
+ M_F(x,y)=(x+B_0y,y),\qquad c_F(x,y)=y.
+\]
+
+\begin{theorem}[Kernel, weight lattices, and integral nonsplitting]
+\label{thm:rank6-exact-sequence}
+The map \(\Phi\) is surjective and fits into an exact sequence of integral
+\(S_3\)-modules
+\begin{equation}
+ 0\longrightarrow K\longrightarrow\Lambda_3
+ \xrightarrow{\ \Phi\ }A_F\oplus B_F\longrightarrow0,
+ \qquad
+ K=\mathbb Z(u,0)\oplus\mathbb Z(0,u).                 \label{eq:rank6-exact}
+\end{equation}
+The action on \(A_F\) and \(B_F\) is the uniquely induced action satisfying
+\begin{equation}
+ \rho_A(\sigma)P=PR_\sigma,qquad
+ \rho_B(\sigma)Q=QR_\sigma.                            \label{eq:rank6-target-action}
+\end{equation}
+It obeys
+\[
+ \rho_A(\sigma)B_0=B_0\rho_B(\sigma),qquad
+ \Phi M_3=M_F\Phi,qquad c_F\Phi=Qc_3.
+\]
+Both \(A_F\) and \(B_F\), with these actions, are the \(A_2\) weight
+lattice \(P(A_2)=\mathbb Z^3/\mathbb Zu\).  They are not the root lattice
+\[
+ Q(A_2)=\{a\in\mathbb Z^3:u^{\mathsf T}a=0\},
+\]
+whose image has index three in either quotient.  Sequence
+\eqref{eq:rank6-exact} splits in the category of abelian groups, but it has
+no integral \(S_3\)-equivariant splitting.
+\end{theorem}
+
+\begin{proof}
+The two-by-two minors of \(P\) include \(1\), so \(P\) is surjective; the
+identity \(Q=B_0^{-1}P\), with \(B_0\in\mathrm{SL}_2(\mathbb Z)\), gives
+the same conclusion for \(Q\).  Direct solution of \(Pa=0\) gives
+\(a_1=a_2=a_3\), and therefore
+\(\ker P=\ker Q=\mathbb Zu\).  This proves
+\eqref{eq:rank6-exact}, and \(K\) is fixed pointwise by \(S_3\).
+
+Because \(P\) and \(Q\) are quotient maps with invariant kernel, the formulas
+\eqref{eq:rank6-target-action} define unique integral actions.  From
+\(B_0Q=P\) and the surjectivity of \(Q\),
+\[
+ \rho_A(\sigma)B_0Q=\rho_A(\sigma)P
+ =PR_\sigma=B_0QR_\sigma=B_0\rho_B(\sigma)Q,
+\]
+which proves the first compatibility.  The other two are the direct
+calculations
+\[
+ \Phi M_3(a,b)=(Pa+Pb,Qb)
+ =(Pa+B_0Qb,Qb)=M_F\Phi(a,b)
+\]
+and \(c_F\Phi(a,b)=Qb=Qc_3(a,b)\).
+
+The first isomorphism theorem identifies each quotient with
+\(\mathbb Z^3/\mathbb Zu\).  In the root basis
+\(\alpha_1=e_1-e_2,\alpha_2=e_2-e_3\),
+\begin{equation}
+ P(\alpha_1\ \alpha_2)
+ =\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.              \label{eq:rank6-cartan-index}
+\end{equation}
+The determinant is three, proving that the root lattice maps with index
+three into the weight lattice.  An explicit abelian-group section of \(P\)
+is
+\[
+ S=\begin{pmatrix}1&0\\0&0\\0&-1\end{pmatrix},
+ \qquad PS=I_2;
+\]
+an explicit section of \(Q\) is \(SB_0\).  Hence
+\((x,y)\mapsto(Sx,SB_0y)\) splits \(\Phi\) as abelian groups.
+
+It remains to prove the integral equivariant obstruction.  Over \(\mathbb Q\)
+the invariant line \(\mathbb Qu\) has the unique isotypic complement
+\(u^\perp=\{a:u^{\mathsf T}a=0\}\); there are no equivariant maps from
+\({\rm Std}\) to \(\mathbf1\).  Thus any rational \(S_3\)-equivariant
+complement to \(K\otimes\mathbb Q\) in \(\Lambda_3\otimes\mathbb Q\) must
+be \(u^\perp\oplus u^\perp\).  Its integral intersection is
+\(Q(A_2)\oplus Q(A_2)\), whose image in \(A_F\oplus B_F\) has index
+\(3^2=9\) by \eqref{eq:rank6-cartan-index}.  It is not surjective, so an
+integral equivariant section cannot exist.
+\end{proof}
+
+\begin{proposition}[The symplectic position of the kernel]
+\label{prop:rank6-kernel-pairing}
+In the ordered basis \(((u,0),(0,u))\),
+\begin{equation}
+ \Omega_3|_K=\begin{pmatrix}0&3\\-3&0\end{pmatrix}.     \label{eq:rank6-k-pairing}
+\end{equation}
+Moreover
+\[
+ K^{\perp_{\Omega_3}}=Q(A_2)\oplus Q(A_2),\qquad
+ [\Lambda_3:K\oplus K^{\perp_{\Omega_3}}]=9.
+\]
+In the root bases \((\alpha_1,\alpha_2)\) in the two summands, the restricted
+form is
+\begin{equation}
+ \Omega_3|_{K^{\perp_{\Omega_3}}}
+ =\begin{pmatrix}0&C\\-C&0\end{pmatrix},
+ \qquad C=\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.       \label{eq:rank6-root-pairing}
+\end{equation}
+Both \(K\) and its symplectic orthogonal are preserved by \(S_3\) and
+\(M_3\).  In particular, \(\Omega_3\) does not descend through \(\Phi\) to
+a form on \(A_F\oplus B_F\).
+\end{proposition}
+
+\begin{proof}
+Equation \eqref{eq:rank6-k-pairing} follows from \(u^{\mathsf T}u=3\).
+Orthogonality to \((u,0)\) and \((0,u)\) is respectively the pair of
+conditions \(u^{\mathsf T}b=0\) and \(u^{\mathsf T}a=0\).  The determinant
+of the three-column matrix \((u\ \alpha_1\ \alpha_2)\) has absolute value
+three; taking both summands gives index nine.  Finally
+\((\alpha_i^{\mathsf T}\alpha_j)_{ij}=C\), which proves
+\eqref{eq:rank6-root-pairing}.  The preservation statements follow from
+\cref{prop:rank6-weyl-monodromy}.  A bilinear form descending through a
+quotient must annihilate the kernel in each argument, whereas
+\eqref{eq:rank6-k-pairing} is nonzero.
+\end{proof}
+
+The simultaneous quotient--kernel matrices
+\[
+ A=\begin{pmatrix}P\\e_3^{\mathsf T}\end{pmatrix},
+ \qquad B=\begin{pmatrix}Q\\e_3^{\mathsf T}\end{pmatrix},
+ \qquad J=\operatorname{diag}(A,B)
+\]
+are unimodular and split the complex-torus lattice and its monodromy.  They
+do not preserve the particular marked alternating form
+\eqref{eq:rank6-symplectic}.  In fact, with
+\(\Omega_3=\begin{psmallmatrix}0&I_3\\-I_3&0\end{psmallmatrix}\),
+\begin{equation}
+ J^{\mathsf T}\Omega_3J
+ =\begin{pmatrix}0&H\\-H^{\mathsf T}&0\end{pmatrix},
+ \qquad
+ H=A^{\mathsf T}B=
+ \begin{pmatrix}0&-1&1\\1&0&-1\\-1&1&1\end{pmatrix}\ne I_3.
+                                                        \label{eq:rank6-j-not-symplectic}
+\end{equation}
+Thus this product splitting is an unpolarized complex-torus isomorphism; it
+cannot be called an isomorphism of principally polarized tori for the
+standard marked form without an additional polarization comparison.
+
+\subsection{Six chambers, six formal rays, and their exact incidence}
+
+Let \(E_{ii}\) be the diagonal matrix unit and put
+\[
+ \nu_i=E_{ii}-\frac13I_3.
+\]
+For a one-line permutation
+\(\pi=(\pi_1\pi_2\pi_3)\in S_3\), the marked \(A_2\) chamber is
+\begin{equation}
+ \mathcal C_\pi
+ =\mathbb R_{\geq0}\nu_{\pi_1}
+  +\mathbb R_{\geq0}(-\nu_{\pi_3}).                    \label{eq:rank6-chamber}
+\end{equation}
+These are the images under the angular quotient \(P\) of the six Kuhn
+tetrahedra incident to a marked vertex.  Notice that both rays in
+\eqref{eq:rank6-chamber} are angular: the second is the image of a negative
+angular vector, not of a deck vector under \(Q\).
+
+Let
+\[
+ \mathscr C=\mathbb Z\langle c_\pi:\pi\in S_3\rangle
+ \cong\mathbb Z[S_3]
+\]
+be the chamber module and let
+\[
+ \mathscr R=\mathbb Z\langle r_1^+,r_2^+,r_3^+,
+                                  r_1^-,r_2^-,r_3^-\rangle
+\]
+be the formal oriented-ray module.  The action permutes indices.  Define
+\begin{align}
+ I:\mathscr C&\longrightarrow\mathscr R,&
+ I(c_\pi)&=r_{\pi_1}^++r_{\pi_3}^-,                   \label{eq:rank6-incidence-map}\\
+ d:\mathscr R&\longrightarrow\mathbb Z,&
+ d(r_i^+)&=1,& d(r_i^-)&=-1.                           \label{eq:rank6-ray-augmentation}
+\end{align}
+
+\begin{theorem}[Integral chamber--ray incidence]
+\label{thm:rank6-incidence}
+There is an exact sequence of integral \(S_3\)-modules
+\begin{equation}
+ 0\longrightarrow\mathbb Z_{\rm sgn}
+ \xrightarrow{\ 1\mapsto\varepsilon\ }\mathscr C
+ \xrightarrow{\ I\ }\mathscr R
+ \xrightarrow{\ d\ }\mathbb Z_{\rm triv}
+ \longrightarrow0,                                    \label{eq:rank6-incidence-exact}
+\end{equation}
+where
+\begin{equation}
+ \varepsilon=\sum_{\pi\in S_3}\operatorname{sgn}(\pi)c_\pi.
+                                                        \label{eq:rank6-epsilon}
+\end{equation}
+Use the chamber order
+\[
+ (123),(132),(213),(231),(312),(321)
+\]
+and the ray order
+\[
+ (r_1^+,r_2^+,r_3^+,r_1^-,r_2^-,r_3^-).
+\]
+Then the matrix of \(I\) is
+\begin{equation}
+ [I]=
+ \begin{pmatrix}
+ 1&1&0&0&0&0\\
+ 0&0&1&1&0&0\\
+ 0&0&0&0&1&1\\
+ 0&0&0&1&0&1\\
+ 0&1&0&0&1&0\\
+ 1&0&1&0&0&0
+ \end{pmatrix}.                                        \label{eq:rank6-incidence-matrix}
+\end{equation}
+With the basis vectors orthonormal, the chamber incidence pairing is
+\begin{equation}
+ I^{\mathsf T}I=
+ \begin{pmatrix}
+ 2&1&1&0&0&0\\
+ 1&2&0&0&1&0\\
+ 1&0&2&1&0&0\\
+ 0&0&1&2&0&1\\
+ 0&1&0&0&2&1\\
+ 0&0&0&1&1&2
+ \end{pmatrix},                                        \label{eq:rank6-incidence-pairing}
+\end{equation}
+and its integral radical is \(\mathbb Z\varepsilon\).
+\end{theorem}
+
+\begin{proof}
+The six possible ordered pairs \((\pi_1,\pi_3)\) are precisely the pairs
+\((i,j)\) with \(i\ne j\), giving \eqref{eq:rank6-incidence-matrix}.
+After replacing each negative-ray basis vector by its negative, this is the
+oriented vertex--edge incidence map of the connected bipartite graph having
+vertices \(r_i^+,r_j^-\) and one edge for every \(i\ne j\).  That graph has
+six vertices and six edges and is a single six-cycle.  Its integral cellular
+chain complex is exact except for its rank-one first homology.  Returning to
+the original signs identifies the last vertex augmentation with \(d\), and
+the cycle generator with \eqref{eq:rank6-epsilon}.  Left multiplication by
+\(\sigma\) sends \(\varepsilon\) to
+\(\operatorname{sgn}(\sigma)\varepsilon\), proving the module labels in
+\eqref{eq:rank6-incidence-exact}.  Direct multiplication of
+\eqref{eq:rank6-incidence-matrix} gives
+\eqref{eq:rank6-incidence-pairing}.  Since the Euclidean ray pairing is
+positive definite, \(\ker(I^{\mathsf T}I)=\ker I=\mathbb Z\varepsilon\).
+\end{proof}
+
+The chamber set is one free \(S_3\)-orbit, so its permutation character is
+\((6,0,0)\).  By contrast, the six displayed basis vectors of \(\Lambda_3\)
+are two three-point orbits and have character \((6,2,0)\) by
+\cref{prop:rank6-weyl-monodromy}.  Thus the six chambers and the six basis
+directions are not isomorphic as \(S_3\)-sets or permutation modules.  There
+is an abstract \(S_3\)-module isomorphism
+\begin{equation}
+ \psi:\Lambda_3\xrightarrow{\sim}\mathscr R,qquad
+ \psi(e_i,0)=r_i^+,quad \psi(0,e_i)=r_i^-,             \label{eq:rank6-formal-ray-iso}
+\end{equation}
+but it is not induced by the fan: both geometric ray signs in
+\eqref{eq:rank6-chamber} come from \(L_3\), while \(\bar L_3\) records deck
+and filling data.
+
+\subsection{Spectral-floor evaluation and the monodromy obstruction}
+
+Let
+\[
+ \mathscr D_{\mathbb Z}=\bigoplus_{i=1}^3\mathbb ZE_{ii}
+ \subset\operatorname{Herm}_3(\mathbb C),
+ \qquad
+ F(H)=H-\lambda_{\min}(H)I_3.
+\]
+The diagonal Weyl action is conjugation by permutation matrices.  Since
+\[
+ F(\nu_i)=E_{ii},\qquad F(-\nu_i)=I_3-E_{ii},
+\]
+the endpoint values define the unique \(S_3\)-equivariant homomorphism
+\begin{equation}
+ E:\mathscr R\longrightarrow\mathscr D_{\mathbb Z},qquad
+ E(r_i^+)=E_{ii},\quad E(r_i^-)=I_3-E_{ii}.              \label{eq:rank6-ray-evaluation}
+\end{equation}
+
+\begin{proposition}[Exact diagonal Gram-boundary carrier]
+\label{prop:rank6-gram-carrier}
+The map \(E\) is surjective and
+\begin{equation}
+ \ker E=\mathbb Z\left\langle
+ \begin{array}{l}
+ r_1^--r_2^+-r_3^+,\\
+ r_2^--r_1^+-r_3^+,\\
+ r_3^--r_1^+-r_2^+
+ \end{array}\right\rangle.                              \label{eq:rank6-e-kernel}
+\end{equation}
+For the trace pairing on diagonal matrices, the pullback matrix on
+\(\mathscr R\) is
+\begin{equation}
+ E^{\mathsf T}E=
+ \begin{pmatrix}
+ I_3&J_3-I_3\\
+ J_3-I_3&I_3+J_3
+ \end{pmatrix},                                        \label{eq:rank6-e-pairing}
+\end{equation}
+where \(J_3\) is the all-ones matrix; its radical is \(\ker E\).
+For every chamber,
+\begin{equation}
+ G_\pi:=(EI)(c_\pi)
+ =2E_{\pi_1\pi_1}+E_{\pi_2\pi_2}
+ =F(\nu_{\pi_1}-\nu_{\pi_3}).                         \label{eq:rank6-six-gram-points}
+\end{equation}
+The six \(G_\pi\) are distinct rank-two positive-semidefinite matrices and
+form a free \(S_3\)-orbit on the diagonal part of the cubic Gram boundary.
+Their integral span is
+\begin{equation}
+ \left\{\operatorname{diag}(m_1,m_2,m_3):
+ m_1+m_2+m_3\equiv0\pmod3\right\},                     \label{eq:rank6-gram-span}
+\end{equation}
+an index-three sublattice of \(\mathscr D_{\mathbb Z}\).
+\end{proposition}
+
+\begin{proof}
+The positive-ray images already form the standard basis, so \(E\) is
+surjective.  In the displayed ray order its matrix is
+\([I_3\mid J_3-I_3]\).  Solving its three coordinate equations gives
+exactly the three independent generators in \eqref{eq:rank6-e-kernel};
+multiplying the matrix by its transpose gives
+\eqref{eq:rank6-e-pairing}.  On the chamber
+\(s\nu_i+t(-\nu_j)\), where \(i\ne j\) and \(s,t\geq0\), the \(j\)-th
+diagonal entry is least, and direct subtraction shows
+\[
+ F(s\nu_i-t\nu_j)=sE_{ii}+t(I_3-E_{jj}).
+\]
+Putting \(s=t=1\) proves \eqref{eq:rank6-six-gram-points}; the ordered
+diagonal entries are a permutation of \((2,1,0)\), which proves rank, positivity,
+distinctness, and freeness.  Every such vector has coordinate sum three.
+Conversely, the three columns corresponding to
+\(G_{123},G_{132},G_{213}\) have determinant \(-3\).  Their span therefore
+has index three and lies in the index-three lattice on the right of
+\eqref{eq:rank6-gram-span}; equality follows.
+\end{proof}
+
+The preceding proposition is a typed map from the chamber/ray module to a
+rank-three diagonal lattice in the nine-real-dimensional Hermitian carrier.
+It does not yet give a map from all of \(\Lambda_3\), and the missing
+compatibility cannot be repaired by assigning the deck basis to the negative
+rays.  Indeed, the homomorphism
+\(g(e_i)=E_{ii}\) used below is the unique linear extension of the three
+positive endpoint labels to \(L_3\); it is not a map on the quotient
+\(A_F=L_3/\mathbb Zu\), since \(g(u)=I_3\ne0\).  The genuine spectral-floor
+map is only piecewise linear on the chamber fan.
+
+\begin{theorem}[No monodromy-compatible extension of the angular Gram rays]
+\label{thm:rank6-monodromy-obstruction}
+Let
+\[
+ g:L_3\xrightarrow{\sim}\mathscr D_{\mathbb Z},qquad
+ g(a)=\operatorname{diag}(a_1,a_2,a_3).
+\]
+There do not exist homomorphisms
+\(\eta:\Lambda_3\to\mathscr D_{\mathbb Z}\) and
+\(T:\mathscr D_{\mathbb Z}\to\mathscr D_{\mathbb Z}\) such that
+\begin{equation}
+ \eta|_{L_3\oplus0}=g,qquad \eta M_3=T\eta.             \label{eq:rank6-impossible-descent}
+\end{equation}
+Consequently no torus homomorphism whose angular cocharacter map is the
+Gram-ray marking can intertwine the displayed monodromy with an endomorphism
+of this diagonal Gram carrier.
+\end{theorem}
+
+\begin{proof}
+For every \(a\in L_3\), \(M_3(a,0)=(a,0)\).  Hence
+\eqref{eq:rank6-impossible-descent} gives \(Tg(a)=g(a)\).  Since \(g\) is
+surjective, \(T=I\).  For every \(b\in\bar L_3\), the same equation applied
+to \((0,b)\) now gives
+\[
+ g(b)+\eta(0,b)=\eta(b,b)=\eta M_3(0,b)
+ =T\eta(0,b)=\eta(0,b),
+\]
+so \(g(b)=0\) for all \(b\), contradicting that \(g\) is an isomorphism.
+A torus homomorphism induces a homomorphism of cocharacter lattices, and
+intertwining family monodromies induces the second equality in
+\eqref{eq:rank6-impossible-descent}; therefore the lattice contradiction is
+also the stated torus-level obstruction.
+\end{proof}
+
+For completeness, the tempting formal assignment is
+\begin{equation}
+ \eta_0=E\psi,qquad
+ \eta_0(a,b)=\operatorname{diag}(a)
+ +(u^{\mathsf T}b)I_3-\operatorname{diag}(b).            \label{eq:rank6-eta0}
+\end{equation}
+Its kernel has the basis
+\begin{equation}
+ k_i=(e_i-u,e_i),\qquad i=1,2,3.                         \label{eq:rank6-eta0-kernel}
+\end{equation}
+This kernel is a rank-three Lagrangian for \(\Omega_3\), because direct
+substitution gives \(\Omega_3(k_i,k_j)=0\).  It is not monodromy invariant:
+\begin{equation}
+ \eta_0(k_i)=0,qquad \eta_0(M_3k_i)=E_{ii}.             \label{eq:rank6-eta0-failure}
+\end{equation}
+Thus \eqref{eq:rank6-eta0-failure} exhibits the obstruction of
+\cref{thm:rank6-monodromy-obstruction} on three primitive generators.
+
+\subsection{The branch map is angular: the corrected \texorpdfstring{\(\beta\)}{beta} square}
+\label{subsec:rank6-beta-square}
+
+Consider the monomial torus map
+\[
+ q:(\mathbb C^*)^4\longrightarrow(\mathbb C^*)^3,qquad
+ q(z_0,z_1,z_2,z_3)=(z_0z_3,z_1,z_2).
+\]
+On cocharacter lattices it induces
+\begin{equation}
+ \beta:\mathbb Z^4\longrightarrow\mathbb Z^3,qquad
+ \beta(n_0,n_1,n_2,n_3)=(n_0+n_3,n_1,n_2).             \label{eq:rank6-beta}
+\end{equation}
+If \(\Sigma_r\) denotes coordinate sum on \(\mathbb Z^r\), then
+\begin{equation}
+ \Sigma_3\beta=\Sigma_4.                                \label{eq:rank6-sum-square}
+\end{equation}
+Thus \(\beta\) restricts from the four-branch angular fibre lattice
+\(\ker\Sigma_4\) to the three-branch angular fibre lattice
+\(\ker\Sigma_3\).
+
+Define the integral isomorphisms
+\begin{align}
+ \alpha_3:L_3&\xrightarrow{\sim}\ker\Sigma_4,&
+ \alpha_3(x_1,x_2,x_3)
+ &=(-x_1,x_1-x_2,x_2-x_3,x_3),                          \label{eq:rank6-alpha3}\\
+ \alpha_2:A_F&\xrightarrow{\sim}\ker\Sigma_3,&
+ \alpha_2(y_1,y_2)&=(-y_1-y_2,y_1,y_2).                 \label{eq:rank6-alpha2}
+\end{align}
+
+\begin{proposition}[Typed angular factorization]
+\label{prop:rank6-beta-p}
+The exact branch/fan square is
+\begin{equation}
+ \boxed{\ \beta\alpha_3=\alpha_2P\ },                 \label{eq:rank6-beta-p}
+\end{equation}
+or equivalently
+\[
+ \begin{CD}
+ L_3 @>{P}>> A_F\\
+ @V{\alpha_3}V{\cong}V @VV{\alpha_2}V\\
+ \ker\Sigma_4 @>{\beta|_{\ker\Sigma_4}}>> \ker\Sigma_3.
+ \end{CD}
+\]
+The deck map \(Q:\bar L_3\to B_F\) belongs instead to the separate filling
+square \(c_F\Phi=Qc_3\).  Therefore the written matrix product \(Q\beta\),
+although numerically formable after erasing all lattice labels, is not a
+composition of the displayed geometric maps: the codomain of \(\beta\) is
+the branch cocharacter lattice \(\mathbb Z^3\), whereas the domain of \(Q\)
+is the independently marked deck lattice \(\bar L_3\).
+\end{proposition}
+
+\begin{proof}
+The matrices of the two vertical maps in the displayed bases are
+\[
+ [\alpha_3]=
+ \begin{pmatrix}-1&0&0\\1&-1&0\\0&1&-1\\0&0&1\end{pmatrix},
+ \qquad
+ [\alpha_2]=
+ \begin{pmatrix}-1&-1\\1&0\\0&1\end{pmatrix}.
+\]
+They have images in the stated sum-zero lattices, and solving successively
+for the partial sums gives integral inverses.  Multiplication with
+\eqref{eq:rank6-pq} and \eqref{eq:rank6-beta} gives
+\[
+ [\beta][\alpha_3]
+ =\begin{pmatrix}-1&0&1\\1&-1&0\\0&1&-1\end{pmatrix}
+ =[\alpha_2]P,
+\]
+which proves the square.  The source and target labels in
+\eqref{eq:rank6-phi} show that \(Q\) acts on \(\bar L_3\), not on the branch
+coordinate lattice appearing in \eqref{eq:rank6-beta}; this proves the type
+statement.  The valid deck/filling identity was already proved in
+\cref{thm:rank6-exact-sequence}.
+\end{proof}
+
+\subsection{The distinct regular-locus defect lattice}
+\label{subsec:distinct-defect-lattice}
+
+For the candidate six-dimensional regular locus
+\(U=X\setminus(W\sqcup S_1\sqcup S_2)\), the independent defect calculation
+has the marked decomposition
+\begin{equation}
+ \mathcal L_{\rm def}:=H^4(U;\mathbb Z)
+ \cong H_1(W;\mathbb Z)\oplus H_1(S_1;\mathbb Z)
+               \oplus H_1(S_2;\mathbb Z)
+ \cong(\mathbb Z^2)^3.                                  \label{eq:rank6-defect-lattice}
+\end{equation}
+The cusp, order-three, and order-four support components distinguish the
+three summands; no geometric \(S_3\)-action permuting them is supplied.  In
+the marked basis \((a_0,b_0,a_1,b_1,a_2,b_2)\), its primitive fibre-degree
+map is
+\begin{equation}
+ \deg_F:\mathcal L_{\rm def}\longrightarrow\mathbb Z,
+ \qquad [\deg_F]=(12,0,4,0,-3,0).                       \label{eq:rank6-defect-degree}
+\end{equation}
+Its reductions define finite character quotients such as
+\(\mathcal L_{\rm def}/\ker(\rho_6\deg_F)\cong\mathbb Z/6\), but this is
+secondary quotient data of \(\mathcal L_{\rm def}\), not its underlying
+rank-six structure.
+
+There is consequently no typed identification in the retained data between
+\(\mathcal L_{\rm def}\) and \(\Lambda_3\).  Equality of ranks supplies no
+map; their markings, functorial origins, distinguished maps, and available
+pairings differ.  In particular \(\Omega_3\) is the explicitly chosen
+nondegenerate alternating form in the marked decomposition
+\(L_3\oplus\bar L_3\), not an intersection pairing canonically attached to
+the six-torus.  Ordinary Poincar\'e duality for the noncompact
+six-dimensional regular locus pairs \(H^4(U)\) with compactly supported
+degree-two data and does not provide the displayed self-pairing on
+\(\mathcal L_{\rm def}\).  A comparison would require an explicit geometric
+correspondence
+\[
+ H_1(T^6;\mathbb Z)\longrightarrow H^4(U;\mathbb Z)
+\]
+together with proofs of its compatibility with monodromy, support markings,
+and the relevant pairings.  No such correspondence occurs in the audited
+construction.
+
+\subsection{What the exact carrier does and does not supply}
+
+The verified maps now form three distinct diagrams:
+\[
+ \Lambda_3\xrightarrow{P\oplus Q}A_F\oplus B_F,
+ \qquad
+ \mathscr C\xrightarrow{I}\mathscr R\xrightarrow{E}\mathscr D_{\mathbb Z},
+ \qquad
+ \ker\Sigma_4\xrightarrow{\beta}\ker\Sigma_3.
+\]
+The first intertwines monodromy and filling, the second records angular
+Weyl-chamber incidence and its diagonal spectral-floor image, and the third
+is the cocharacter map of the local monomial toric morphism.  The equality
+of several ranks or the possibility of multiplying their unlabeled integer
+matrices does not merge these diagrams.  In particular, the construction
+provides six exact marked points in the rank-two stratum of the cubic Gram
+boundary, but it does not provide a continuous, holomorphic, toric, or
+stratified map from the compactified toroidal total space to the full
+eight-dimensional Gram boundary.  Such a global map would still require
+explicit overlap descent, a singular-fibre extension, and a boundary
+comparison compatible with monodromy and filling; the lattice obstruction
+of \cref{thm:rank6-monodromy-obstruction} rules out the most direct angular
+Gram-ray extension.
+
+\section*{Conclusion}
+
+Two complex color triplets produce an exact four-real-dimensional Gram orbit
+space, and the compact representation quotient is the four-ball with the
+complete orbit-type boundary displayed above.  Independently, the toroidal
+homology lattice \(\Lambda_3\) carries an exact diagonal Weyl action,
+symplectic shear, and weight-lattice quotient.  Its six Kuhn chambers map by
+an integral incidence complex to six diagonal rank-two points of the cubic
+Gram boundary.  They do not identify with the six basis directions of
+\(\Lambda_3\), and no lattice map extending the angular Gram-ray marking can
+intertwine the toroidal monodromy.  The branch map factors through \(P\), not
+through the deck map \(Q\), and the separately arising free defect lattice
+\(H^4(U;\mathbb Z)\) remains nonidentified with \(\Lambda_3\).
+
+Thus the surviving result is an exact collection of typed orbit, lattice,
+fan, and boundary-carrier theorems together with a sharp monodromy
+obstruction.  It does not supply the missing global toroidal-to-Gram map, a
+nonzero \(S^4\) clutching class, or a nontrivial interacting Yang--Mills
+sector.
+
+\end{document}

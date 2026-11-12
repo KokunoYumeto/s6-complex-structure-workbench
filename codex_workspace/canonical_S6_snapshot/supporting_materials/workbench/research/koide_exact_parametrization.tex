@@ -1,0 +1,1185 @@
+% Integrated 4 September 2026 from the isolated exact-parametrization audit.
+% Every label is namespaced koide-param-*; the original variables, chamber,
+% strict walls, lattice, and height are unchanged.
+\providecommand{\OO}{\mathcal O}
+\providecommand{\NN}{\mathbb N}
+\providecommand{\ZZ}{\mathbb Z}
+\providecommand{\RR}{\mathbb R}
+\providecommand{\QQ}{\mathbb Q}
+\providecommand{\Norm}{\operatorname N}
+\providecommand{\Tr}{\operatorname {Tr}}
+\providecommand{\e}{\varepsilon}
+
+\section{Exact ideal and unit-orbit parametrization of the unchanged sharp Koide count}
+
+Throughout this section the variables, equation, chamber, and height are
+exactly
+\begin{equation}
+ a^2-3q^2-18n^2=-2,
+ \qquad
+ a>0,\quad q\geq0,\quad n\geq0,\quad a+4n>q,
+ \qquad
+ 4a+17n\leq X.
+ \label{koide-param-eq:original-problem}
+\end{equation}
+Every auxiliary symbol introduced below is connected to these same integer
+points by an explicitly proved map and inverse.  No count for a normalized
+form, a rescaled lattice, or a substituted cutoff is used in place of
+\eqref{koide-param-eq:original-problem}.
+Thus
+\begin{equation}
+ R(X)=\#\left\{(a,q,n)\in\ZZ^3:\text{all conditions in
+ \eqref{koide-param-eq:original-problem} hold}\right\}.
+ \label{koide-param-eq:R-definition}
+\end{equation}
+The already calibrated leading constant is
+\begin{equation}
+ C_0=
+ \frac9{2\pi^2}\log(2+\sqrt3)
+ \log\!\left(\frac3{2\sqrt2}\right).
+ \label{koide-param-eq:C0}
+\end{equation}
+
+The exact parametrization proved below has four pieces of data for each
+fixed $n\geq1$: a positive integer $C$, a positive integer $D$, a square
+root $E$ of $3$ modulo $D$, and a nonnegative Pell exponent $k$.  There is
+no quotient left implicit: equations \eqref{koide-param-eq:bounded-seed-search},
+\eqref{koide-param-eq:HNF-to-seed}, and \eqref{koide-param-eq:unit-orbit-coordinates} construct
+$(a,q,n)$ by finite integer operations, while
+\eqref{koide-param-eq:forward-HNF} and the descent \eqref{koide-param-eq:inverse-descent} recover
+$(C,D,E,k)$ from $(a,q,n)$.  The face $n=0$ is recorded separately and
+exactly.
+
+This parametrization gives the exact sharp-cutoff formula
+\eqref{koide-param-eq:exact-floor-formula}.  It also separates the discrepancy into
+the radial shifted-divisor sum and the unit-phase discrepancy in
+\eqref{koide-param-eq:exact-discrepancy-splitting}.  The square-root estimate
+\begin{equation}
+ R(X)-C_0X=O_\e(X^{1/2+\e})
+ \label{koide-param-eq:square-root-target}
+\end{equation}
+is not proved or refuted here.  What is proved unconditionally, by applying
+the effective symmetric-variety theorem to the exact chamber, is that
+there is a constant $\eta>0$ for which
+\begin{equation}
+ R(X)=C_0X+O(X^{1-\eta}).
+ \label{koide-param-eq:unconditional-power-saving}
+\end{equation}
+The cited general theorem does not supply $\eta\geq1/2$, and its proof does
+not justify replacing \eqref{koide-param-eq:unconditional-power-saving} by
+\eqref{koide-param-eq:square-root-target}.
+
+\section{Arithmetic of $\ZZ[\sqrt3]$}
+
+Put
+\begin{equation}
+ K=\QQ(\sqrt3),\qquad \OO=\ZZ[\sqrt3],\qquad
+ \epsilon=2+\sqrt3.
+ \label{koide-param-eq:field-data}
+\end{equation}
+For $\alpha=u+v\sqrt3\in K$, write
+\begin{equation}
+ \alpha'=u-v\sqrt3,
+ \qquad
+ \Norm(\alpha)=\alpha\alpha'=u^2-3v^2.
+ \label{koide-param-eq:conjugate-norm}
+\end{equation}
+
+\begin{lemma}[Ring, class number, and totally positive units]
+\label{koide-param-lem:ring-units}
+The ring of integers of $K$ is $\OO$.  Every nonzero integral ideal of
+$\OO$ is principal.  Every unit has norm $+1$, and the totally positive
+unit group is
+\begin{equation}
+ \OO^{\times,+}=\{\epsilon^j:j\in\ZZ\}.
+ \label{koide-param-eq:positive-units}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Since $3\equiv3\pmod4$, the standard integral-basis calculation for a
+quadratic field gives $\OO_K=\ZZ[\sqrt3]$ and discriminant $12$.
+Minkowski's bound says that every ideal class in a real quadratic field of
+discriminant $12$ has an integral representative of norm at most
+\(\frac{2!}{2^2}\sqrt{12}=\sqrt3<2\).  Its norm must therefore be $1$,
+so it is $\OO$ and the ordinary class number is one.
+
+The norm of a unit is $\pm1$.  The equation $u^2-3v^2=-1$ is impossible
+modulo $3$, because it would give $u^2\equiv2\pmod3$.  Hence every unit
+has norm $+1$.  Dirichlet's unit theorem makes the positive units an
+infinite cyclic group.  To identify its least generator, suppose
+$\gamma=u+v\sqrt3>1$ and $\gamma'>0$.  Replacing $\gamma$ by its inverse
+if necessary makes $v\geq0$.  If $v=0$, then $\gamma=1$.  If $v\geq1$,
+then $u^2-3v^2=1$ forces $u\geq2$, and consequently
+$\gamma\geq2+\sqrt3=\epsilon$.  Since $\epsilon$ itself has norm one,
+it is the least positive unit greater than one and generates the group.
+\end{proof}
+
+For $m\geq1$ define
+\begin{equation}
+ \chi_{12}(d)=\left(\frac{12}{d}\right),
+ \qquad
+ \rho(m)=\sum_{d\mid m}\chi_{12}(d).
+ \label{koide-param-eq:rho-definition}
+\end{equation}
+Here the symbol is Kronecker's symbol; in particular
+\begin{equation}
+ \chi_{12}(d)=
+ \begin{cases}
+  0,&2\mid d\text{ or }3\mid d,\\
+  1,&d\equiv1,11\pmod {12},\\
+  -1,&d\equiv5,7\pmod {12}.
+ \end{cases}
+ \label{koide-param-eq:chi12-table}
+\end{equation}
+
+\begin{lemma}[Ideal number]
+\label{koide-param-lem:ideal-number}
+The number of integral ideals of $\OO$ having absolute norm $m$ is
+$\rho(m)$.
+\end{lemma}
+
+\begin{proof}
+The Dedekind zeta function factors as
+$\zeta_K(s)=\zeta(s)L(s,\chi_{12})$.  Comparing Dirichlet coefficients
+gives the assertion.  Equivalently, the equality follows prime by prime.
+At $2$ and $3$ there is one ramified prime ideal, so there is one ideal of
+norm $p^e$ for every $e\geq0$.  If $\chi_{12}(p)=1$, then $p$ splits and
+there are $e+1$ ideals of norm $p^e$.  If $\chi_{12}(p)=-1$, then $p$ is
+inert, so there is one such ideal when $e$ is even and none when $e$ is
+odd.  These are respectively the local values of
+$\sum_{j=0}^e\chi_{12}(p)^j$.
+Consequently, if
+$m=2^{e_2}3^{e_3}\prod_{p\geq5}p^{e_p}$, then
+\begin{equation}
+ \rho(m)=
+ \begin{cases}
+  \displaystyle\prod_{\substack{p\mid m,\ p\geq5\\p\equiv1,11\ (12)}}(e_p+1),
+   &e_p\text{ is even for every }p\equiv5,7\pmod {12},\\[6pt]
+  0,&\text{otherwise}.
+ \end{cases}
+ \label{koide-param-eq:rho-Euler-product}
+\end{equation}
+\end{proof}
+
+\section{Hermite-normal-form parameters for every ideal}
+
+For $m\geq1$ let
+\begin{equation}
+ \mathcal P(m)=
+ \left\{(C,D,E):
+ \begin{array}{l}
+ C,D\in\ZZ_{>0},\quad C^2D=m,\\
+ 0\leq E<D,\quad E^2\equiv3\pmod D
+ \end{array}
+ \right\}.
+ \label{koide-param-eq:P-m}
+\end{equation}
+
+\begin{proposition}[Exact HNF parametrization of ideals]
+\label{koide-param-prop:HNF-ideals}
+The map
+\begin{equation}
+ (C,D,E)\longmapsto
+ \mathfrak a(C,D,E)
+ :=C\bigl(D\ZZ+(E+\sqrt3)\ZZ\bigr)
+ \label{koide-param-eq:param-ideal}
+\end{equation}
+is a bijection from $\mathcal P(m)$ to the integral ideals of $\OO$ of
+norm $m$.  Consequently
+\begin{equation}
+ \#\mathcal P(m)
+ =\sum_{C^2D=m}\#\{E\bmod D:E^2\equiv3\pmod D\}
+ =\rho(m).
+ \label{koide-param-eq:root-divisor-identity}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Relative to the basis $1,\sqrt3$ of $\OO$, the lattice in
+\eqref{koide-param-eq:param-ideal} has column basis
+\[
+ \begin{pmatrix}CD&CE\\0&C\end{pmatrix}.
+\]
+Its index is $C^2D=m$.  It is stable under multiplication by $\sqrt3$
+because
+\begin{align*}
+ \sqrt3(CD)&=D\,C(E+\sqrt3)-E(CD),\\
+ \sqrt3\,C(E+\sqrt3)
+ &=E\,C(E+\sqrt3)+\frac{3-E^2}{D}(CD),
+\end{align*}
+and the last coefficient is integral.  It is therefore an integral ideal
+of norm $m$.
+
+Conversely, write the unique column Hermite normal form of an integral
+ideal $\mathfrak a$ as
+\[
+ \mathfrak a=A\ZZ+(B+C\sqrt3)\ZZ,
+ \qquad A,C>0,\quad0\leq B<A.
+\]
+Stability of $A$ under multiplication by $\sqrt3$ implies $C\mid A$ and
+$C\mid B$.  Write $A=CD$ and $B=CE$.  Stability of $B+C\sqrt3$ then
+implies $D\mid3-E^2$.  The HNF inequality gives $0\leq E<D$, and the
+index is $AC=C^2D$.  HNF uniqueness proves injectivity and surjectivity.
+
+For completeness, the last equality in \eqref{koide-param-eq:root-divisor-identity}
+can be checked without zeta functions.  Let
+$r_3(D)=\#\{E\bmod D:E^2\equiv3\pmod D\}$.  For $p\geq5$, Hensel's
+lemma gives $r_3(p^j)=2$ for every $j\geq1$ if
+$\chi_{12}(p)=1$, and $r_3(p^j)=0$ if $\chi_{12}(p)=-1$.  Also
+$r_3(2)=r_3(3)=1$ and $r_3(2^j)=r_3(3^j)=0$ for $j\geq2$.
+Thus, for every prime power $p^e$,
+\[
+ \sum_{2c+j=e}r_3(p^j)=\sum_{j=0}^e\chi_{12}(p)^j.
+\]
+Multiplicativity proves \eqref{koide-param-eq:root-divisor-identity}.
+\end{proof}
+
+The HNF parameters can be recovered directly from a generator.  Suppose
+$\alpha=a+q\sqrt3$ has positive norm $m$, with $a>0$ and $q\geq0$.  Put
+\begin{equation}
+ C=\gcd(a,q),\qquad A=a/C,\qquad B=q/C,\qquad D=m/C^2.
+ \label{koide-param-eq:forward-HNF-pre}
+\end{equation}
+If $D=1$, put $E=0$.  If $D>1$, then
+\begin{equation}
+ \gcd(B,D)=1,\qquad E\equiv A B^{-1}\pmod D,\qquad0\leq E<D.
+ \label{koide-param-eq:forward-HNF}
+\end{equation}
+Indeed,
+$\gcd(B,D)=\gcd(B,A^2-3B^2)=\gcd(B,A^2)=1$, and
+$E^2\equiv3\pmod D$.  The principal ideal $(\alpha)$ is exactly
+$\mathfrak a(C,D,E)$: the element $A+B\sqrt3$ lies in
+$D\ZZ+(E+\sqrt3)\ZZ$, so the principal ideal is contained in the HNF
+ideal, while both ideals have norm $D$ after division by $C$.
+
+\section{Complete integral parametrization of the original equation}
+
+For $n\geq1$ retain the exact integer
+\begin{equation}
+ m_n=18n^2-2.
+ \label{koide-param-eq:mn}
+\end{equation}
+It satisfies $m_n>0$ and $m_n\equiv1\pmod3$.
+
+\begin{lemma}[Every ideal of norm $m_n$ has positive-norm generators]
+\label{koide-param-lem:positive-norm-generator}
+If $\mathfrak a$ is an integral ideal of $\OO$ of norm $m_n$, then every
+generator has norm $+m_n$, rather than $-m_n$.
+\end{lemma}
+
+\begin{proof}
+Lemma~\ref{koide-param-lem:ring-units} makes $\mathfrak a$ principal.  A generator
+$u+v\sqrt3$ has norm $\pm m_n$.  Negative norm would give
+\[
+ u^2-3v^2=-m_n,
+\]
+and reduction modulo $3$ would give
+$u^2\equiv-m_n\equiv2\pmod3$, which is impossible.  Thus the norm is
+$+m_n$.
+\end{proof}
+
+For each $\mathbf p=(C,D,E)\in\mathcal P(m_n)$, choose a generator of
+$\mathfrak a(C,D,E)$.  By Lemma~\ref{koide-param-lem:positive-norm-generator} its
+norm is $m_n$.  Change its sign so that both real embeddings are positive,
+and multiply by a unique power of $\epsilon$ so as to obtain the unique
+generator
+\begin{equation}
+ \alpha_{n,\mathbf p}=a_{n,\mathbf p,0}
+   +q_{n,\mathbf p,0}\sqrt3,
+ \qquad
+ \sqrt{m_n}\leq\alpha_{n,\mathbf p}
+       <\epsilon\sqrt{m_n}.
+ \label{koide-param-eq:canonical-generator}
+\end{equation}
+Existence and uniqueness follow from
+\eqref{koide-param-eq:positive-units}, because the half-open intervals
+$[\epsilon^j\sqrt{m_n},\epsilon^{j+1}\sqrt{m_n})$ partition
+$\RR_{>0}$.  Since
+$\alpha_{n,\mathbf p}'=m_n/\alpha_{n,\mathbf p}$, the lower inequality
+in \eqref{koide-param-eq:canonical-generator} implies
+$q_{n,\mathbf p,0}\geq0$.
+
+\begin{lemma}[Purely integral reduced seed and descent]
+\label{koide-param-lem:integral-seed-descent}
+For an integral pair $(a,q)$ satisfying
+\[
+ a^2-3q^2=m_n,\qquad a>0,\qquad q\geq0,
+\]
+the half-open inequalities
+\[
+ \sqrt{m_n}\leq a+q\sqrt3<\epsilon\sqrt{m_n}
+\]
+are equivalent to the purely integral inequalities
+\begin{equation}
+ a>2q\geq0.
+ \label{koide-param-eq:integral-seed-condition}
+\end{equation}
+If $a\leq2q$, multiplication by $\epsilon^{-1}=2-\sqrt3$ is the
+integral inverse step
+\begin{equation}
+ (a,q)\longmapsto(a^-,q^-)=(2a-3q,2q-a).
+ \label{koide-param-eq:inverse-descent}
+\end{equation}
+It preserves the norm, has $a^->0$ and $0\leq q^-<q$, and can therefore
+be iterated until the unique pair satisfying \eqref{koide-param-eq:integral-seed-condition}
+is reached.
+\end{lemma}
+
+\begin{proof}
+Put $u=(a+q\sqrt3)/\sqrt{m_n}$.  Norm positivity and the sign conditions
+give $u\geq1$.  Moreover
+\[
+ \frac a{\sqrt{m_n}}=\frac{u+u^{-1}}2,
+ \qquad
+ \frac{q\sqrt3}{\sqrt{m_n}}=\frac{u-u^{-1}}2.
+\]
+For $u\geq1$, the ratio
+\[
+ \frac aq=\sqrt3\,\frac{u^2+1}{u^2-1}
+\]
+(with value $+\infty$ when $q=0$) is strictly decreasing.  At
+$u=\epsilon$ it equals $2$, since
+$\epsilon+\epsilon^{-1}=4$.  Thus $u<\epsilon$ is equivalent to $a>2q$;
+the strict inequality exactly matches the half-open upper endpoint.
+
+If $a\leq2q$, norm positivity gives $a>\sqrt3q$, and hence
+\[
+ a^-=2a-3q>(2\sqrt3-3)q>0,
+ \qquad q^-=2q-a\geq0.
+\]
+Also $a>\sqrt3q>q$ gives $q^-=2q-a<q$.  Thus the positive integer $q$
+strictly decreases at every inverse step, so the process terminates.  A
+terminal pair has $a>2q$.  Conversely, for such a pair the second
+coordinate after one inverse step is negative, so no further inverse step
+stays in the nonnegative-$q$ region.  This proves uniqueness as well as
+termination.
+\end{proof}
+
+The preceding seed can be reconstructed from the HNF data by a bounded
+integer search; thus the parametrization does not require an unspecified
+choice of a generator.  More precisely, for
+$\mathbf p=(C,D,E)\in\mathcal P(m_n)$ there is a unique pair $(A,B)$ with
+\begin{equation}
+ \begin{gathered}
+  A,B\in\ZZ,\qquad A>0,\qquad 0\leq B,\qquad B^2<D,\\
+  A^2-3B^2=D,\qquad A\equiv EB\pmod D.
+ \end{gathered}
+ \label{koide-param-eq:bounded-seed-search}
+\end{equation}
+It gives the generator in \eqref{koide-param-eq:canonical-generator} by the exact
+integer formula
+\begin{equation}
+ (a_{n,\mathbf p,0},q_{n,\mathbf p,0})=(CA,CB).
+ \label{koide-param-eq:HNF-to-seed}
+\end{equation}
+Indeed, existence follows by writing the reduced generator as
+$C(A+B\sqrt3)$.  The seed inequality $A>2B$ gives
+$D=A^2-3B^2>B^2$.  Conversely, the conditions in
+\eqref{koide-param-eq:bounded-seed-search} imply $A>2B$ and put
+$A+B\sqrt3$ in $D\ZZ+(E+\sqrt3)\ZZ$.  Its principal ideal is contained
+in that HNF ideal, and both have norm $D$, so they are equal.  Lemma
+\ref{koide-param-lem:integral-seed-descent} and HNF uniqueness give uniqueness.  In
+particular one needs to test only the integers
+$0\leq B\leq\lfloor\sqrt{D-1}\rfloor$ and the positive square
+$A=\sqrt{D+3B^2}$.
+The phase introduced below is therefore also explicit in the same integer
+data:
+\begin{equation}
+ \tau_{n,(C,D,E)}
+ =\frac{\log((A+B\sqrt3)/\sqrt D)}{\log\epsilon}.
+ \label{koide-param-eq:HNF-phase-explicit}
+\end{equation}
+Here the factor $C$ cancels because $m_n=C^2D$; no ideal generator remains
+to be chosen.
+
+For $k\geq0$ define integers $a_{n,\mathbf p,k}$ and
+$q_{n,\mathbf p,k}$ by
+\begin{equation}
+ a_{n,\mathbf p,k}+q_{n,\mathbf p,k}\sqrt3
+ =\alpha_{n,\mathbf p}\epsilon^k.
+ \label{koide-param-eq:unit-orbit-coordinates}
+\end{equation}
+Equivalently,
+\begin{equation}
+ \begin{pmatrix}a_{n,\mathbf p,k+1}\\q_{n,\mathbf p,k+1}\end{pmatrix}
+ =
+ \begin{pmatrix}2&3\\1&2\end{pmatrix}
+ \begin{pmatrix}a_{n,\mathbf p,k}\\q_{n,\mathbf p,k}\end{pmatrix}.
+ \label{koide-param-eq:unit-recurrence}
+\end{equation}
+
+\begin{theorem}[Integral parametrization, with inverse and multiplicity]
+\label{koide-param-thm:integral-parametrization}
+The map
+\begin{equation}
+ (n,\mathbf p,k)
+ \longmapsto
+ (a_{n,\mathbf p,k},q_{n,\mathbf p,k},n),
+ \qquad
+ n\geq1,\quad\mathbf p\in\mathcal P(m_n),\quad k\geq0,
+ \label{koide-param-eq:parameter-map}
+\end{equation}
+is a bijection onto all integral solutions of
+\begin{equation}
+ a^2-3q^2-18n^2=-2,\qquad a>0,\ q\geq0,\ n\geq1.
+ \label{koide-param-eq:n-positive-solutions}
+\end{equation}
+Every such solution automatically satisfies $a+4n>q$.
+
+The inverse is as follows.  From $(a,q,n)$ form
+$\alpha=a+q\sqrt3$ and recover $(C,D,E)$ by
+\eqref{koide-param-eq:forward-HNF-pre}--\eqref{koide-param-eq:forward-HNF}.  There is a unique
+$k\geq0$ such that
+\begin{equation}
+ \alpha=\alpha_{n,(C,D,E)}\epsilon^k.
+ \label{koide-param-eq:recover-k}
+\end{equation}
+Thus every point occurs with multiplicity exactly one.
+\end{theorem}
+
+\begin{proof}
+Equation \eqref{koide-param-eq:unit-orbit-coordinates} preserves the norm, so its
+image satisfies
+\[
+ a_{n,\mathbf p,k}^2-3q_{n,\mathbf p,k}^2=m_n,
+\]
+which is exactly the equation in \eqref{koide-param-eq:n-positive-solutions}.
+Both embeddings of the generator are positive, hence $a>0$; and
+$\alpha_{n,\mathbf p}\geq\sqrt{m_n}$ and $k\geq0$ imply $q\geq0$.
+
+Conversely, a solution in \eqref{koide-param-eq:n-positive-solutions} has
+\(\Norm(a+q\sqrt3)=m_n>0\).  Since $a>0$ and $q\geq0$, the inequality
+$a^2-3q^2=m_n>0$ gives $a>\sqrt3q$; hence both embeddings are positive.
+Its principal ideal has unique HNF data $(C,D,E)$.  The quotient of
+ $a+q\sqrt3$ by the canonical generator of that ideal is a totally positive
+ unit, hence is $\epsilon^k$ for a unique $k\in\ZZ$.  Lemma
+ \ref{koide-param-lem:integral-seed-descent} supplies the completely integral recovery
+ of $k$: iterate \eqref{koide-param-eq:inverse-descent} precisely while $a\leq2q$;
+ the number of steps is $k$, and the terminal pair is
+ $(a_{n,\mathbf p,0},q_{n,\mathbf p,0})$.  In particular $k\geq0$.  This
+ proves surjectivity and the stated inverse.  HNF uniqueness, seed
+ uniqueness, and unit-exponent uniqueness prove multiplicity one.
+
+It remains to prove the chamber wall.  If a point with $n\geq1$ had
+$q\geq a+4n$, then $a\leq q-4n$, and the unchanged equation would give
+\[
+ 3q^2+18n^2-2=a^2\leq(q-4n)^2.
+\]
+After moving terms and dividing by $2$, this is
+\[
+ q^2+4qn+n^2\leq1.
+\]
+For nonnegative integers with $n\geq1$, equality could occur only at
+$(q,n)=(0,1)$, but that pair does not satisfy $q\geq a+4n$ with $a>0$.
+Thus the assumed wall inequality is impossible.
+\end{proof}
+
+The congruence needed by the original inverse map to the $(x,y,z)$
+coordinates is retained automatically: reducing
+$a^2-3q^2-18n^2=-2$ modulo $2$ gives
+\begin{equation}
+ a\equiv q\pmod2.
+ \label{koide-param-eq:parity}
+\end{equation}
+No parity class has been lost or added in
+Theorem~\ref{koide-param-thm:integral-parametrization}.
+
+\begin{proposition}[The face $n=0$]
+\label{koide-param-prop:n-zero}
+All points satisfying the original equation and chamber with $n=0$ are
+\begin{equation}
+ a_k+q_k\sqrt3=(1+\sqrt3)\epsilon^k,\qquad k\geq1.
+ \label{koide-param-eq:n-zero-family}
+\end{equation}
+They have height $4a_k$ and occur with multiplicity one.
+\end{proposition}
+
+\begin{proof}
+When $n=0$, the norm is $-2$.  Its parity implies $a\equiv q\pmod2$, and
+therefore
+\[
+ \frac{a+q\sqrt3}{1+\sqrt3}
+ =\frac{3q-a}{2}+\frac{a-q}{2}\sqrt3\in\OO.
+\]
+The quotient has norm one, so it is $\pm\epsilon^k$ by
+Lemma~\ref{koide-param-lem:ring-units}.  The conditions $a>0$ and $q\geq0$ select the
+positive sign.  At $k=0$ one gets $(a,q)=(1,1)$, which is excluded by the
+strict chamber wall $a>q$.  At every $k\geq1$, the recurrence
+\eqref{koide-param-eq:unit-recurrence} gives
+$a_{k+1}-q_{k+1}=a_k+q_k>0$.  For $k\leq-1$, direct use of
+$a=(t-2/t)/2$ with $t=(1+\sqrt3)\epsilon^k\leq\sqrt3-1<\sqrt2$
+gives $a<0$.  Hence precisely the exponents $k\geq1$ occur.
+\end{proof}
+
+\section{Exact divisor and sharp-height formulas}
+
+The number of unit-orbits at a fixed positive $n$ has an especially simple
+divisor formula.
+
+\begin{proposition}[Orbit divisor sum and shifted factorization]
+\label{koide-param-prop:orbit-divisor}
+For $n\geq1$, the number of orbits under
+\((a,q)\mapsto(2a+3q,a+2q)\) among the solutions with $a>0$ and
+$q\geq0$ is
+\begin{equation}
+ \rho(m_n)=\sum_{d\mid18n^2-2}\chi_{12}(d)
+ =\rho(3n-1)\rho(3n+1).
+ \label{koide-param-eq:orbit-divisor-sum}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The first equality is Theorem~\ref{koide-param-thm:integral-parametrization} and
+Proposition~\ref{koide-param-prop:HNF-ideals}.  For the second, write
+\[
+ m_n=2(3n-1)(3n+1).
+\]
+The two displayed linear factors have greatest common divisor dividing
+$2$.  The function $\rho=1*\chi_{12}$ is multiplicative and
+$\rho(2^j)=1$ for all $j\geq0$.  Removing all powers of $2$ therefore
+makes the two factors coprime without changing any of the three $\rho$
+values, proving the product identity.
+\end{proof}
+
+For $\mathbf p\in\mathcal P(m_n)$ define its exact unit phase by
+\begin{equation}
+ \tau_{n,\mathbf p}
+ =\frac{\log(\alpha_{n,\mathbf p}/\sqrt{m_n})}{\log\epsilon},
+ \qquad0\leq\tau_{n,\mathbf p}<1.
+ \label{koide-param-eq:unit-phase}
+\end{equation}
+For $n\geq1$ put
+\begin{equation}
+ Y_n(X)=\frac{X-17n}{4}.
+ \label{koide-param-eq:Y-n}
+\end{equation}
+Whenever $Y_n(X)\geq\sqrt{m_n}$, put
+\begin{equation}
+ L_n(X)=
+ \frac1{\log\epsilon}
+ \log\!\left(
+ \frac{Y_n(X)+\sqrt{Y_n(X)^2-m_n}}{\sqrt{m_n}}
+ \right).
+ \label{koide-param-eq:L-n}
+\end{equation}
+Let
+\begin{equation}
+ \mathcal N(X)=
+ \{n\in\ZZ_{\geq1}:Y_n(X)\geq\sqrt{m_n}\}.
+ \label{koide-param-eq:N-X}
+\end{equation}
+This is the exact finite range
+\begin{equation}
+ X\geq17n+4\sqrt{18n^2-2};
+ \label{koide-param-eq:n-boundary}
+\end{equation}
+no asymptotic replacement of this boundary is made.
+
+For the $n=0$ face define
+\begin{equation}
+ R_0(X)=
+ \max\!\left\{0,
+ \left\lfloor
+ \frac{
+ \log\!\left(
+ \dfrac{X/4+\sqrt{(X/4)^2+2}}{1+\sqrt3}
+ \right)}{\log\epsilon}
+ \right\rfloor\right\}.
+ \label{koide-param-eq:R0-exact}
+\end{equation}
+
+\begin{theorem}[Exact sharp-height floor formula]
+\label{koide-param-thm:exact-floor}
+For every real $X\geq0$,
+\begin{equation}
+ R(X)=R_0(X)+
+ \sum_{n\in\mathcal N(X)}
+ \sum_{\mathbf p\in\mathcal P(m_n)}
+ \left(\left\lfloor L_n(X)-\tau_{n,\mathbf p}\right\rfloor+1\right).
+ \label{koide-param-eq:exact-floor-formula}
+\end{equation}
+Every equality case in $4a+17n\leq X$ is included by the floor in
+\eqref{koide-param-eq:exact-floor-formula}.
+\end{theorem}
+
+\begin{proof}
+For a fixed positive $n$ and parameter $\mathbf p$, put
+$t_k=\alpha_{n,\mathbf p}\epsilon^k$.  Since
+$t_k\geq\sqrt{m_n}$,
+\begin{equation}
+ a_{n,\mathbf p,k}=\frac12\left(t_k+\frac{m_n}{t_k}\right)
+ \label{koide-param-eq:a-from-t}
+\end{equation}
+is nondecreasing, and is strictly increasing after the possible initial
+case $q=0$.  The unchanged height inequality is
+$a_{n,\mathbf p,k}\leq Y_n(X)$.  It has no solution unless
+$Y_n(X)\geq\sqrt{m_n}$.  In that range, solving the quadratic inequality
+in $t_k$ gives
+\begin{equation}
+ t_k\leq Y_n(X)+\sqrt{Y_n(X)^2-m_n}.
+ \label{koide-param-eq:t-height-bound}
+\end{equation}
+After division by $\sqrt{m_n}$ and logarithms, this is precisely
+\begin{equation}
+ k+\tau_{n,\mathbf p}\leq L_n(X).
+ \label{koide-param-eq:k-phase-bound}
+\end{equation}
+Because $L_n(X)\geq0$ and $0\leq\tau_{n,\mathbf p}<1$, the number of
+integers $k\geq0$ satisfying \eqref{koide-param-eq:k-phase-bound} is exactly
+$\lfloor L_n(X)-\tau_{n,\mathbf p}\rfloor+1$; this expression is zero,
+not negative, when $L_n(X)<\tau_{n,\mathbf p}$.  Equality is retained.
+Theorem~\ref{koide-param-thm:integral-parametrization} now proves the positive-$n$
+sum.
+
+For $n=0$, put $t=(1+\sqrt3)\epsilon^k$.  Since the norm is $-2$,
+$a_k=(t-2/t)/2$.  The inequality $4a_k\leq X$ is equivalent to
+\[
+ t\leq X/4+\sqrt{(X/4)^2+2}.
+\]
+Counting the integers $k\geq1$ gives \eqref{koide-param-eq:R0-exact} and completes
+the proof.
+\end{proof}
+
+Write
+\begin{equation}
+ J_n(X)=\lfloor L_n(X)\rfloor,
+ \qquad
+ \lambda_n(X)=L_n(X)-J_n(X)\in[0,1),
+ \label{koide-param-eq:J-lambda}
+\end{equation}
+and define the exact phase distribution
+\begin{equation}
+ A_n(t)=\#\{\mathbf p\in\mathcal P(m_n):
+                     \tau_{n,\mathbf p}\leq t\},
+ \qquad0\leq t<1,
+ \label{koide-param-eq:A-n}
+\end{equation}
+with discrepancy
+\begin{equation}
+ \Delta_n(t)=A_n(t)-t\rho(m_n).
+ \label{koide-param-eq:Delta-n}
+\end{equation}
+Since
+\(\lfloor J+\lambda-\tau\rfloor+1
+=J+\mathbf1_{\{\tau\leq\lambda\}}\), Theorem~\ref{koide-param-thm:exact-floor}
+gives the exact identity
+\begin{align}
+ R(X)-C_0X
+ &=R_0(X)
+ +\left[
+   \sum_{n\in\mathcal N(X)}
+     \rho(m_n)L_n(X)-C_0X
+  \right]
+ +\sum_{n\in\mathcal N(X)}
+    \Delta_n(\lambda_n(X)).
+ \label{koide-param-eq:exact-discrepancy-splitting}
+\end{align}
+This identity includes the two unbounded coordinate faces and every sharp
+height boundary point.  Formula \eqref{koide-param-eq:R0-exact} also gives
+$R_0(X)=O(\log(2+X))$, so the $n=0$ face is below the requested
+$X^{1/2+\varepsilon}$ scale; the two positive-$n$ brackets are the genuine
+analytic terms.
+
+\section{The phase term as exact Hecke-character data}
+
+The last sum in \eqref{koide-param-eq:exact-discrepancy-splitting} is not determined
+by the divisor count $\rho(m_n)$.  It records where the generator of each
+ideal lies inside a fundamental interval for the positive units.
+
+For $\ell\in\ZZ$ and a nonzero integral ideal $\mathfrak a=(\gamma)$,
+define
+\begin{equation}
+ \xi_\ell(\mathfrak a)=
+ \exp\!\left(
+  \frac{\pi i\ell}{\log\epsilon}
+  \log\left|\frac{\gamma}{\gamma'}\right|
+ \right).
+ \label{koide-param-eq:Hecke-character}
+\end{equation}
+This is independent of the generator: replacing $\gamma$ by
+$\pm\epsilon^j\gamma$ changes the logarithm by $2j\log\epsilon$, and
+the exponential by $e^{2\pi i\ell j}=1$.  It is multiplicative, hence is
+the unramified ideal part of a unitary Hecke character of $K$.  For
+$m=m_n$ and the canonical generator,
+\begin{equation}
+ \xi_\ell(\mathfrak a(C,D,E))
+ =e^{2\pi i\ell\tau_{n,(C,D,E)}}.
+ \label{koide-param-eq:character-phase}
+\end{equation}
+Define its norm-$m$ coefficient by
+\begin{equation}
+ S_\ell(m)=\sum_{\Norm\mathfrak a=m}\xi_\ell(\mathfrak a).
+ \label{koide-param-eq:S-ell}
+\end{equation}
+Then $S_0(m)=\rho(m)$, whereas the nonzero $S_\ell(m_n)$ are the Fourier
+coefficients of the phase multiset.
+
+The coefficient $S_\ell(m)$ also has a completely explicit Euler-factor
+description.  It is multiplicative in $m$.  If $p\geq5$ is split, choose
+one prime ideal $\mathfrak p$ above $p$ and put
+$\omega_{\ell,p}=\xi_\ell(\mathfrak p)$.  Since
+$\mathfrak p\overline{\mathfrak p}=(p)$ and
+$\xi_\ell((p))=1$, one has
+\begin{equation}
+ S_\ell(p^e)=\sum_{j=0}^{e}\omega_{\ell,p}^{2j-e}
+ \qquad(\chi_{12}(p)=1).
+ \label{koide-param-eq:split-Hecke-factor}
+\end{equation}
+If $p\geq5$ is inert, then
+\begin{equation}
+ S_\ell(p^e)=
+ \begin{cases}1,&2\mid e,\\0,&2\nmid e.
+ \end{cases}
+ \qquad(\chi_{12}(p)=-1).
+ \label{koide-param-eq:inert-Hecke-factor}
+\end{equation}
+Finally the unique primes above $2$ and $3$ are generated by
+$1+\sqrt3$ and $\sqrt3$, respectively.  Since
+\[
+ \left|\frac{1+\sqrt3}{1-\sqrt3}\right|=\epsilon,
+ \qquad
+ \left|\frac{\sqrt3}{-\sqrt3}\right|=1,
+\]
+their factors are
+\begin{equation}
+ S_\ell(2^e)=(-1)^{\ell e},
+ \qquad S_\ell(3^e)=1.
+ \label{koide-param-eq:ramified-Hecke-factors}
+\end{equation}
+These formulas enumerate every ideal factor with multiplicity one.  At
+$\ell=0$ they reduce prime by prime to the divisor sum $\rho(m)$; at
+$\ell\ne0$ they show exactly what angular information the unweighted
+divisor sum omits.
+
+They also retain the shifted factorization of $m_n$ at every Fourier mode.
+Writing $3n-1=2^r u$ and $3n+1=2^s v$ with $u,v$ odd, one has
+$\gcd(u,v)=1$.  Multiplicativity and
+\eqref{koide-param-eq:ramified-Hecke-factors} therefore give the exact identity
+\begin{equation}
+ S_\ell(18n^2-2)
+ =(-1)^\ell S_\ell(3n-1)S_\ell(3n+1).
+ \label{koide-param-eq:shifted-Hecke-factorization}
+\end{equation}
+Indeed, the exponent of $2$ on the left is $1+r+s$, while the product on
+the right has total exponent $r+s$; all odd prime factors are disjoint.
+Thus the angular obstruction is itself a shifted correlation, now of
+nontrivial Hecke coefficients rather than merely of their dimensions.
+
+Here is an endpoint-exact Fourier statement.  Suppose $0<\lambda<1$, and
+let
+\begin{equation}
+ b_n(t)=\#\{\mathbf p\in\mathcal P(m_n):\tau_{n,\mathbf p}=t\}.
+ \label{koide-param-eq:b-n}
+\end{equation}
+Fej\'er summation of the Fourier series of
+$\mathbf1_{[0,\lambda]}-\lambda$ gives
+\begin{align}
+ \Delta_n(\lambda)
+ &=\frac12\bigl(b_n(0)+b_n(\lambda)\bigr)\notag\\
+ &\quad+
+ \lim_{M\to\infty}
+ \sum_{0<|\ell|\leq M}
+ \left(1-\frac{|\ell|}{M+1}\right)
+ \frac{1-e^{-2\pi i\ell\lambda}}{2\pi i\ell}
+ S_\ell(m_n).
+ \label{koide-param-eq:Fejer-exact}
+\end{align}
+The two half-weights correct the midpoint convention at the circular
+endpoint $0$ and at $\lambda$.  When $\lambda=0$, the exact value is
+simply $\Delta_n(0)=b_n(0)$.
+
+Combining this with \eqref{koide-param-eq:shifted-Hecke-factorization} makes the
+aggregate obstruction a literal shifted correlation.  Define the exact
+endpoint contribution
+\begin{equation}
+ \mathcal E(X)=
+ \sum_{\substack{n\in\mathcal N(X)\\\lambda_n(X)=0}}b_n(0)
+ +\frac12
+ \sum_{\substack{n\in\mathcal N(X)\\\lambda_n(X)>0}}
+       \bigl(b_n(0)+b_n(\lambda_n(X))\bigr).
+ \label{koide-param-eq:endpoint-aggregate}
+\end{equation}
+Since $\mathcal N(X)$ is finite, summation over $n$ commutes with the
+Fej\'er limit and gives
+\begin{align}
+ \sum_{n\in\mathcal N(X)}\Delta_n(\lambda_n(X))
+ &=\mathcal E(X)\notag\\
+ &\quad+\lim_{M\to\infty}
+ \sum_{0<|\ell|\leq M}
+ \left(1-\frac{|\ell|}{M+1}\right)
+ \frac{(-1)^\ell}{2\pi i\ell}\notag\\
+ &\qquad\times
+ \sum_{\substack{n\in\mathcal N(X)\\\lambda_n(X)>0}}
+ \bigl(1-e^{-2\pi i\ell\lambda_n(X)}\bigr)
+ S_\ell(3n-1)S_\ell(3n+1).
+ \label{koide-param-eq:exact-shifted-Hecke-correlation}
+\end{align}
+Every coefficient and endpoint in this identity comes from the original
+weak height inequality; no smoothing has been inserted.
+
+Equations \eqref{koide-param-eq:exact-discrepancy-splitting} and
+\eqref{koide-param-eq:Fejer-exact} identify the analytic problem without discarding
+the original height.  Its radial part is the sharply weighted shifted
+correlation
+\begin{equation}
+ \sum_{n\in\mathcal N(X)}
+ \rho(3n-1)\rho(3n+1)L_n(X),
+ \label{koide-param-eq:radial-shifted-correlation}
+\end{equation}
+and its angular part requires cancellation in the polynomially sampled
+Hecke coefficients
+\begin{equation}
+ S_\ell(18n^2-2),
+ \label{koide-param-eq:polynomial-Hecke-samples}
+\end{equation}
+uniformly over the Fourier modes needed to approximate the discontinuous
+threshold $\tau\leq\lambda_n(X)$.  The endpoint
+\eqref{koide-param-eq:n-boundary} gives $L_n(X)=0$ and has a square-root singularity
+in its derivative; it is not a fixed smooth weight.  A bound for the
+unweighted orbit total $\rho(m_n)$ therefore does not bound the actual
+sharp-height count.
+
+\section{An unconditional effective exponent for the exact sector}
+
+This section records the power saving that is presently justified without
+assuming the square-root estimate.
+
+Let
+\begin{equation}
+ F(a,q,n)=a^2-3q^2-18n^2,
+ \qquad
+ \mathscr X=\{F=-2\},
+ \qquad
+ \mathbf G=\operatorname{Spin}(F).
+ \label{koide-param-eq:group-variety}
+\end{equation}
+Let $x_0=(1,1,0)$.  Its orthogonal complement is
+\begin{equation}
+ x_0^\perp=\{(3s,s,t):s,t\in\QQ\},
+ \qquad
+ F(3s,s,t)=6(s^2-3t^2),
+ \label{koide-param-eq:stabilizer-complement}
+\end{equation}
+so the identity component of its stabilizer is the norm-one torus of
+$\QQ(\sqrt3)$.  Its rational character group is zero because Galois
+conjugation acts by $-1$ on its geometric character lattice.
+
+The form $F$ is anisotropic over $\QQ$.  Indeed, suppose a primitive
+integral triple satisfies $F(a,q,n)=0$.  Modulo $3$ one first gets
+$3\mid a$.  Writing $a=3a_1$ and dividing the equation by $3$ gives
+$3a_1^2-q^2-6n^2=0$, hence $3\mid q$.  Write $q=3q_1$ and divide by
+$3$ again to get
+\begin{equation}
+ a_1^2-3q_1^2-2n^2=0.
+\end{equation}
+Modulo $3$, the sum $a_1^2+n^2$ is zero, which forces
+$3\mid a_1$ and $3\mid n$.  Thus $3$ divides $a,q,n$, contradicting
+primitivity.  In particular the associated arithmetic Fuchsian quotient
+is cocompact.
+
+For $X>0$ let $B_X$ be the exact subset of $\mathscr X(\RR)$ cut out by
+\begin{equation}
+ a>0,\quad q\geq0,\quad n\geq0,\quad a+4n>q,
+ \quad4a+17n\leq X.
+ \label{koide-param-eq:B-X}
+\end{equation}
+With the gauge measure
+\begin{equation}
+ dm_\infty=\frac{dq\,dn}{2a}\qquad(a>0),
+ \label{koide-param-eq:gauge-measure}
+\end{equation}
+put
+\begin{equation}
+ I_\infty=\frac1{2\sqrt3}
+ \log\!\left(\frac3{2\sqrt2}\right).
+ \label{koide-param-eq:I-infty}
+\end{equation}
+
+\begin{lemma}[Exact-sector volume with a power-saving remainder]
+\label{koide-param-lem:volume}
+As $X\to\infty$,
+\begin{equation}
+ m_\infty(B_X)=I_\infty X+O(1).
+ \label{koide-param-eq:volume-linear-O1}
+\end{equation}
+Moreover, the family $B_X$ is effectively well-rounded in the sense of
+Benoist--Oh, Definition~13.1~\cite[p.~1931]{BenoistOh_2012}.
+\end{lemma}
+
+\begin{proof}
+Introduce exact polar coordinates on the negative plane by
+\begin{equation}
+ \sqrt3q=r\cos\theta,\qquad
+ 3\sqrt2n=r\sin\theta,\qquad
+ 0\leq\theta\leq\pi/2.
+ \label{koide-param-eq:polar}
+\end{equation}
+On $F=-2$ one has $r=\sqrt{a^2+2}$ and
+\begin{equation}
+ dm_\infty=\frac1{6\sqrt6}\,da\,d\theta.
+ \label{koide-param-eq:polar-measure}
+\end{equation}
+Write $b(\theta)=17\sin\theta/(3\sqrt2)$.  In the positive orthant the
+outer boundary is the unique nonnegative solution $A_X(\theta)$ of
+\begin{equation}
+ 4A_X(\theta)+b(\theta)\sqrt{A_X(\theta)^2+2}=X.
+ \label{koide-param-eq:A-boundary}
+\end{equation}
+For all sufficiently large $X$, uniformly in $\theta$,
+\begin{equation}
+ A_X(\theta)=\frac{X}{4+b(\theta)}+O(X^{-1}).
+ \label{koide-param-eq:A-asymptotic}
+\end{equation}
+To see this without a formal expansion, subtract
+$(4+b)A_X$ from \eqref{koide-param-eq:A-boundary} and use
+\[
+ \sqrt{A_X^2+2}-A_X
+ =\frac2{\sqrt{A_X^2+2}+A_X}=O(X^{-1}),
+\]
+where \eqref{koide-param-eq:A-boundary} uniformly gives $A_X\asymp X$.
+Integration of \eqref{koide-param-eq:A-asymptotic} in
+\eqref{koide-param-eq:polar-measure} gives
+\[
+ \frac{X}{6\sqrt6}\int_0^{\pi/2}
+ \frac{d\theta}{4+\frac{17}{3\sqrt2}\sin\theta}+O(X^{-1})
+ =I_\infty X+O(X^{-1}).
+\]
+For the asserted exact value, set
+$c=17/(3\sqrt2)$, $d=\sqrt{c^2-16}=1/(3\sqrt2)$, and
+$t=\tan(\theta/2)$.  Then
+\begin{align*}
+ \int_0^{\pi/2}\frac{d\theta}{4+c\sin\theta}
+ &=\int_0^1\frac{dt}{2t^2+ct+2}\\
+ &=\frac1d
+   \left[\log\!\left(\frac{4t+c-d}{4t+c+d}\right)\right]_{t=0}^{t=1}\\
+ &=3\sqrt2\log\!\left(\frac3{2\sqrt2}\right).
+\end{align*}
+Multiplication by $1/(6\sqrt6)$ is exactly the constant in
+\eqref{koide-param-eq:I-infty}.
+If the strict chamber wall fails, then the calculation in the proof of
+Theorem~\ref{koide-param-thm:integral-parametrization}, now over $\RR$, gives
+$q^2+4qn+n^2\leq1$.  The removed real subset is therefore compact.
+For all large $X$ it contributes a fixed finite measure, proving
+\eqref{koide-param-eq:volume-linear-O1}.
+
+It remains to check effective well-roundedness for the actual sector.
+Let $U_\delta$ be the image in the fixed vector representation of the
+group ball used by Benoist--Oh~\cite[Definition~13.1]{BenoistOh_2012}.
+For every linear functional $\ell$ on
+$\RR^3$ there is a constant, independent of $x$ and $\delta$, such that
+\begin{equation}
+ |\ell(xg)-\ell(x)|\leq C_\ell\delta\|x\|
+ \qquad(g\in U_\delta).
+ \label{koide-param-eq:linear-functional-motion}
+\end{equation}
+Apply this to the five literal boundary functionals
+\[
+ a,\qquad q,\qquad n,\qquad a+4n-q,\qquad4a+17n.
+\]
+On the unbounded part of the positive sheet, $\|x\|\asymp a+1$, and the
+last functional is also comparable to $\|x\|$.  Thus membership in the
+outer height inequality can change only in a shell of radial width
+$O(\delta X)$.  Membership in $q\geq0$ or $n\geq0$ can change only in
+angular strips of width $O(\delta)$ about $\theta=\pi/2$ or $\theta=0$.
+The boundary $a=0$ is compact.  The boundary $a+4n-q=0$ is compact by
+the calculation preceding \eqref{koide-param-eq:volume-linear-O1}; moreover its
+restriction to $\mathscr X$ is regular, because proportionality of
+$(1,-1,4)$ to $(2a,-6q,-36n)$ is incompatible with $a,q,n\geq0$.
+Consequently its group-action boundary tube has measure $O(\delta)$.
+By \eqref{koide-param-eq:polar-measure}, all these regions together have measure
+$O(\delta X)$.  The same analysis applies to the inner intersection that
+defines $B^-_{X,\delta}$.  Hence
+\begin{equation}
+ m_\infty(B^+_{X,\delta}\setminus B^-_{X,\delta})
+ \ll \delta\,m_\infty(B_X),
+ \label{koide-param-eq:BO-boundary-condition}
+\end{equation}
+which is precisely Definition 13.1(2), with boundary exponent $1$, for
+the group-action thickenings rather than merely Euclidean tubes.
+
+For Definition~13.1(3) of \cite{BenoistOh_2012}, take the archimedean height to be the
+Euclidean norm in the displayed integral basis.  It is bounded below on
+$\mathscr X$.  Uniformly for $0<\delta<1$, the thickening
+$B^+_{X,\delta}$ lies in a fixed finite enlargement of the polar sector;
+there $H_\infty(x)\asymp1+a$ and the measure in a radial interval is
+$O(da)$.  Hence for every $s>0$, uniformly in $\delta$,
+\[
+ \int_{B_X^+}\|u\|^{-s}\,dm_\infty(u)
+ \ll
+ \begin{cases}
+ X^{1-s},&0<s<1,\\
+ \log X,&s=1,\\
+ 1,&s>1.
+ \end{cases}
+\]
+Each line is $O(m_\infty(B_X)^{1-\delta_s})$, for example with
+$\delta_s=\min(s/2,1/2)>0$.  This is the remaining condition.  Since
+$S=\{\infty\}$, Definition 13.1(1), concerning a finite-place compact
+open subgroup, is void.  The choices of strict
+or weak inequality on the finitely many piecewise smooth boundary arcs do
+not change these neighborhood estimates.
+\end{proof}
+
+\begin{theorem}[Unconditional effective conclusion]
+\label{koide-param-thm:power-saving}
+There exists $\eta>0$, depending only on the fixed form, lattice, chamber,
+and height in \eqref{koide-param-eq:original-problem}, such that
+\begin{equation}
+ R(X)=C_0X+O(X^{1-\eta}).
+ \label{koide-param-eq:power-saving-again}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Use the standard vector representation
+$\rho:\operatorname{Spin}(F)\to\operatorname{SO}(F)\subset
+\operatorname{GL}_3$, whose kernel is finite, and the displayed integral
+basis of the exact lattice $\ZZ^3$.  Let
+\[
+ \mathbf G_{\ZZ}
+ =\{g\in\mathbf G(\QQ):\rho(g)\ZZ^3=\ZZ^3\}.
+\]
+This is the integral group attached to the chosen representation and
+lattice in the Benoist--Oh setup~\cite[pp.~1892--1893]{BenoistOh_2012};
+take their congruence subgroup
+$\Gamma_S$ to be the level-one group $\mathbf G_{\ZZ}$ itself.  The group
+$\mathbf G$ is connected,
+simply connected, and almost $\QQ$-simple.  It is noncompact over $\RR$
+because $F$ has signature $(1,2)$.  Thus $S=\{\infty\}$ contains every
+noncompact archimedean place and $G_S$ is noncompact.  The orbit
+$x_0\mathbf G$ is the affine symmetric variety $\mathscr X$, and its
+stabilizer has no nontrivial rational character by
+\eqref{koide-param-eq:stabilizer-complement}.  These verify every standing hypothesis
+on pp.~1892--1893 of \cite{BenoistOh_2012}.  Their Theorem~12.5 supplies the required
+effective equidistribution of the symmetric-stabilizer translates.
+
+The Borel--Harish-Chandra finiteness theorem quoted in \cite[p.~1892]{BenoistOh_2012}
+p.~1892 says that $\mathscr X(\ZZ)$ is a finite union of
+$\mathbf G_{\ZZ}$-orbits.  A rational representative of any such orbit
+again has a symmetric stabilizer with no rational
+character: its orthogonal complement is anisotropic over $\QQ$, since an
+isotropic vector in it would be an isotropic vector for $F$.  Apply
+Benoist--Oh, Theorem~13.2~\cite[pp.~1931--1932]{BenoistOh_2012}, to each orbit and to the exact effectively
+well-rounded family $B_X$ of Lemma~\ref{koide-param-lem:volume}.  For each orbit it
+gives its invariant-volume main term with error
+$O(m_\infty(B_X)^{1-\eta_j})$ for some $\eta_j>0$.  There are finitely
+many orbits, so their sum has the same form with
+$\eta=\min_j\eta_j>0$.
+
+All invariant measures on the same real homogeneous variety are
+proportional.  Hence the sum of the finitely many orbit main terms is
+$K\,m_\infty(B_X)$ for one fixed $K>0$.  Lemma~\ref{koide-param-lem:volume} and the
+already established asymptotic $R(X)\sim C_0X$ force
+$K I_\infty=C_0$.  Therefore
+\[
+ K\,m_\infty(B_X)=K(I_\infty X+O(1))=C_0X+O(1).
+\]
+Since $m_\infty(B_X)\asymp X$, summing the effective errors proves
+\eqref{koide-param-eq:power-saving-again}; the $O(1)$ term is absorbed after decreasing
+$\eta$ if necessary.  The theorem is applied first to the sequence of
+positive integral $X$.  For real $X$, the original height $4a+17n$ is an
+integer, so $R(X)=R(\lfloor X\rfloor)$; replacing $X$ by $\lfloor X\rfloor$
+changes $C_0X$ by $O(1)$ and proves the same estimate.
+\end{proof}
+
+\begin{remark}[What exponent has actually been obtained]
+Theorem~\ref{koide-param-thm:power-saving} is an unconditional exponent strictly
+smaller than $1$: the error is $O(X^{1-\eta})$ for some $\eta>0$.
+Neither the statement nor the proof of \cite[Theorem~13.2]{BenoistOh_2012} identifies an exponent
+$1-\eta\leq1/2$ for this sharp sector.  Tracing their Sobolev and mixing
+constants would make a positive $\eta$ effective in principle, but that
+calculation has not been carried out in this section and cannot be replaced
+by the assertion $\eta=1/2$.
+\end{remark}
+
+\section{Exact obstruction to the square-root claim}
+
+There are two complementary descriptions of the remaining obstruction;
+the first is an exact identity, while the second explains the relevant
+spectral mechanisms without asserting an unproved intertwining formula.
+
+First, the elementary ideal description gives the literal identity
+\eqref{koide-param-eq:exact-discrepancy-splitting}.  Thus the square-root claim is
+equivalent to a bound of that size for the displayed sum of the radial
+bracket, the aggregate phase discrepancy, and $R_0(X)$.  Controlling the
+radial and phase terms separately is a sufficient route, though the exact
+identity also permits cancellation between them.  Formula
+\eqref{koide-param-eq:Fejer-exact} shows that a separate estimate of the latter entails
+uniform cancellation in the nonzero archimedean Hecke modes
+\eqref{koide-param-eq:polynomial-Hecke-samples}.  Merely using
+\(\#\mathcal P(m_n)=\rho(m_n)\), or replacing each phase distribution by
+Lebesgue measure, deletes a term that is exactly present in $R(X)$.
+
+Second, $F$ is rationally anisotropic, so $\mathbf G$ gives a cocompact
+arithmetic Fuchsian quotient.  A negative-norm vector represents an
+oriented geodesic, and its stabilizer is the split real torus appearing in
+\eqref{koide-param-eq:stabilizer-complement}.  In the standard radial torus-orbit
+counting kernel, the spectral expansion has two possible sources larger
+than the square-root scale:
+\begin{enumerate}
+ \item an exceptional eigenvalue $\lambda=s(1-s)<1/4$ can contribute
+ $c_sX^s$ with $s>1/2$, unless the exact torus period and exact sector
+ transform make $c_s=0$;
+ \item after exceptional terms are absent or removed, estimating the
+ tempered spectral sum for a discontinuous cutoff at the conjectural
+ $X^{1/2+\e}$ scale requires cancellation beyond the general
+ effective-mixing argument.
+\end{enumerate}
+For the present nonradial chamber, one must first construct a
+remainder-preserving sector spectral expansion before these candidate
+terms can even be asserted with their exact coefficients.  An actual
+refutation by a secondary term would then require proving both $s>1/2$
+and $c_s\ne0$ for this fixed arithmetic quotient and exact chamber.  No
+such construction or nonvanishing has been established here.  Conversely,
+absence of exceptional terms alone would not estimate the full tempered
+sharp-cutoff sum.  This is why the exact parametrization neither proves
+nor refutes \eqref{koide-param-eq:square-root-target}, while it does isolate the data a
+future proof must bound.
+
+For comparison only, not as a theorem about the present nonradial sector,
+the classical hyperbolic lattice-point problem for a conjugacy class has
+an unconditional $O(X^{2/3})$ remainder due to Good
+\cite[Theorem~4]{Good_1983}, with the modern proof of
+Chatzakos--Petridis~\cite[Theorem~1.1 and Conjecture~5.7]{ChatzakosPetridis_2016},
+and a conjectural $O_\e(X^{1/2+\e})$ scale.  That
+published $O(X^{2/3})$ theorem counts a different radial kernel.  An exact
+intertwining of its kernel with the simultaneous chamber and height in
+\eqref{koide-param-eq:original-problem} has not been proved, so $O(X^{2/3})$ is not
+claimed here for $R(X)$.
+
+The independent finite replay used to check the HNF multiplicities, seed
+reduction, inverse descent, and divisor factorization for \(1\leq n\leq200\)
+is retained at
+\path{supporting_materials/workbench/evidence/koide_exact_checkpoint_20260904/parametrization/verify_parametrization.py};
+its SHA--256 digest is
+\texttt{061c5e22258628169fd1ecb8bcc5e7cf\allowbreak%
+8b8d19bfdb918650668c3e90f2f9730d}.
+That replay is a finite consistency check.  The proofs above, rather than the
+finite range, establish the parametrization for every admissible integer.
+
+\section{Boundary ledger}
+
+For clarity, every boundary used above has the following exact treatment.
+\begin{itemize}
+ \item $a>0$ is strict.  There is no omitted integral solution with
+ $a=0$, because the original equation would give a multiple of $3$ equal
+ to $2$.
+ \item $q=0$ is included.  It corresponds to phase $\tau=0$, is included
+ by $\tau\leq\lambda$, and is retained in the endpoint term
+ $b_n(0)/2$ in \eqref{koide-param-eq:Fejer-exact}.
+ \item $n=0$ is included and is counted exactly by $R_0(X)$; the sole
+ solution $(a,q,n)=(1,1,0)$ on $a+4n=q$ is excluded.
+ \item $a+4n=q$ is strict.  Its real intersection is bounded and its sole
+ integral point in the nonnegative chamber is $(1,1,0)$.
+ \item $4a+17n=X$ is included.  Equality is included in
+ \eqref{koide-param-eq:t-height-bound}, \eqref{koide-param-eq:k-phase-bound}, and every floor in
+ \eqref{koide-param-eq:exact-floor-formula}.
+ \item The canonical unit interval is half-open,
+ $[\sqrt{m_n},\epsilon\sqrt{m_n})$.  Consequently no generator is counted
+ twice at a unit boundary.
+ \item Conjugate ideals are distinct unless the ideal is fixed by
+ conjugation.  They yield distinct canonical phases and distinct
+ $q\geq0$ unit-orbits; no division by $2$ is made.  When $q=0$, the ideal
+ is self-conjugate and still occurs once by HNF uniqueness.
+\end{itemize}

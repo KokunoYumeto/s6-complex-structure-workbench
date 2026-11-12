@@ -1,0 +1,778 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,amscd,mathtools,array,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,capitalise]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\Hh}{\mathbb H}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\CP}{\mathbb {CP}}
+\newcommand{\Herm}{\operatorname{Herm}}
+\newcommand{\Mat}{\operatorname{Mat}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Sp}{\operatorname{Sp}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\bj}{\mathbf j}
+\newcommand{\bk}{\mathbf k}
+\newcommand{\e}{\mathrm e}
+
+\title{The Exact \texorpdfstring{$4+4+4+1$}{4+4+4+1} Continuation:\\
+A Thirteen-Dimensional Quaternionic Peirce Slice, Its Dirac--Lorentz Cubic, and Its Rank-Defect \texorpdfstring{$S^{12}$}{S12}}
+\author{Working theorem/proof module}
+\date{4 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The previously established marked observation matrix
+\[
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix}
+\]
+splits $\Herm_3(\C)$ as a four-dimensional Lorentz vector, one four-real-dimensional Weyl spinor, and a scalar.  This note extends the same map over the quaternions without replacing its basis or its coefficients.  Fixing the observed block to remain in $\Herm_2(\C)$ gives the pullback
+\[
+ \cJ_{13,P}:=(\cO_P^{\Hh})^{-1}(\Herm_2(\C))\subset\Herm_3(\Hh),
+\]
+a real thirteen-dimensional space with the exact decomposition
+\[
+ \cJ_{13,P}\cong\Herm_2(\C)\oplus\C^2\oplus\C^2\oplus\R.
+\]
+Its restricted Moore determinant is the cubic
+\[
+ \cN_{13}(G,z,w,\lambda)
+ =\lambda\det G-z^*\adj(G)z-w^*\adj(G)w.
+\]
+After charge conjugating the second spinor this becomes the Lorentz-invariant vector--Dirac-spinor--scalar expression
+\[
+ \lambda\det G-\psi_L^*\adj(G)\psi_L-\psi_R^*G\psi_R.
+\]
+We classify every positive-semidefinite fibre, prove invariance under
+$(SL_2(\C)\times SU(2))/\{\pm(1,1)\}$, identify an $\CP^1$-family of determinant-preserving nine-dimensional slices, and show that the old compactified rank defect is the fixed unknotted $S^8\subset S^{12}$.  The complement is $S^3\times\R^9$, so the added four-dimensional spinor has the unit-quaternion linking sphere predicted by the coordinate count.  The slice is not a Jordan subalgebra; an explicit product leaves it, and its Jordan closure is all of $\Herm_3(\Hh)$.  We also compare it, on the identical coordinate space, with the other natural thirteen-dimensional complex $4\times4$ determinant model and prove the exact correction
+\[
+ \det\begin{pmatrix}G&Z\\Z^*&\lambda I_2\end{pmatrix}
+ =\lambda\cN_{13}(G,Z,\lambda)+|\det Z|^2.
+\]
+Thus the quaternionic model is distinguished by preserving the old cubic exactly, while the complex rank-four model carries an additional Pluecker term.  No toroidal filling or quantum field theory is identified by the dimension count alone.
+\end{abstract}
+
+\tableofcontents
+
+\section{The retained observation map and the quaternionic pullback}
+
+Write the quaternions as
+\begin{equation}\label{eq:H-decomp}
+ \Hh=\C\oplus\C\bj,
+ \qquad \bj^2=-1,
+ \qquad \bj a=\overline a\,\bj\quad(a\in\C).
+\end{equation}
+For $q=a+b\bj$, quaternionic conjugation is
+$\overline q=\overline a-b\bj$.
+
+Retain the exact marked data
+\begin{equation}\label{eq:P-data}
+ P=\begin{pmatrix}1&-1&0\\0&1&-1\end{pmatrix},
+ \qquad
+ u=\begin{pmatrix}1\\1\\1\end{pmatrix},
+ \qquad
+ C=PP^*=\begin{pmatrix}2&-1\\-1&2\end{pmatrix},
+\end{equation}
+\begin{equation}\label{eq:R-data}
+ R_P=P^*C^{-1}
+ =\frac13\begin{pmatrix}2&1\\-1&1\\-1&-2\end{pmatrix},
+ \qquad
+ \Pi_u=\frac{uu^*}{3},
+ \qquad X=(R_P\;u).
+\end{equation}
+Then
+\begin{equation}\label{eq:split}
+ PR_P=I_2,
+ \quad R_PP=I_3-\Pi_u,
+ \quad u^*R_P=0,
+ \quad Pu=0,
+ \quad \det X=1,
+ \quad X^{-1}=\begin{pmatrix}P\\u^*/3\end{pmatrix}.
+\end{equation}
+
+Extend the observation map, using the same real matrix $P$, to
+\begin{equation}\label{eq:OH}
+ \cO_P^{\Hh}:\Herm_3(\Hh)\longrightarrow\Herm_2(\Hh),
+ \qquad \cO_P^{\Hh}(H)=PHP^*.
+\end{equation}
+Fix the displayed complex subalgebra $\C\subset\Hh$ and define
+\begin{equation}\label{eq:J13-pullback}
+ \boxed{
+ \cJ_{13,P}:=(\cO_P^{\Hh})^{-1}(\Herm_2(\C)).}
+\end{equation}
+Thus $\cJ_{13,P}$ is defined by a pullback square, not by dimension alone:
+\begin{equation}\label{eq:pullback-square}
+\begin{CD}
+ \cJ_{13,P}@>>>\Herm_3(\Hh)\\
+ @V{\cO_P}VV @VV{\cO_P^{\Hh}}V\\
+ \Herm_2(\C)@>>>\Herm_2(\Hh).
+\end{CD}
+\end{equation}
+
+\begin{theorem}[Unique $4+4+4+1$ coordinates]\label{thm:coordinates}
+Every $H\in\cJ_{13,P}$ has one and only one expression
+\begin{equation}\label{eq:marked-block}
+ H=X
+ \begin{pmatrix}
+  G&\psi\\ \psi^*&\lambda
+ \end{pmatrix}X^*,
+ \qquad
+ G\in\Herm_2(\C),\quad
+ \psi\in\Hh^2,\quad
+ \lambda\in\R.
+\end{equation}
+Writing
+\begin{equation}\label{eq:psi-zw}
+ \psi=z+w\bj,
+ \qquad z,w\in\C^2,
+\end{equation}
+the extraction formulae are
+\begin{equation}\label{eq:extraction}
+ G=PHP^*,
+ \qquad
+ z+w\bj=\frac13PHu,
+ \qquad
+ \lambda=\frac19u^*Hu.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:4441}
+ \boxed{
+ \cJ_{13,P}
+ \cong_{\R}
+ \underbrace{\Herm_2(\C)}_{4}
+ \oplus
+ \underbrace{\C^2}_{4}
+ \oplus
+ \underbrace{\C^2}_{4}
+ \oplus
+ \underbrace{\R}_{1}.}
+\end{equation}
+The old space $\Herm_3(\C)$ is exactly the subspace $w=0$.
+\end{theorem}
+
+\begin{proof}
+For an arbitrary quaternionic Hermitian matrix, conjugation by $X^{-1}$ gives
+\[
+ X^{-1}HX^{-*}
+ =\begin{pmatrix}
+ PHP^*&PHu/3\\u^*HP^*/3&u^*Hu/9
+ \end{pmatrix}.
+\]
+Membership in $\cJ_{13,P}$ says precisely that the upper-left block is complex Hermitian.  The remaining off-diagonal block is an arbitrary vector in $\Hh^2$, and \eqref{eq:H-decomp} gives its unique pair $(z,w)$.  The dimension is $4+8+1=13$.  If $w=0$, every block is complex, and because $X$ is real this is exactly $\Herm_3(\C)$; conversely every complex Hermitian matrix has $w=0$.
+\end{proof}
+
+\section{The restricted Moore determinant}
+
+Use the complex $2\times2$ representation
+\begin{equation}\label{eq:rhoH}
+ \rho(a+b\bj)=
+ \begin{pmatrix}a&b\\-\overline b&\overline a\end{pmatrix}.
+\end{equation}
+For a quaternionic Hermitian matrix $M$, its Moore determinant $\det_{\Hh}M$ is the real polynomial normalized by $\det_{\Hh}I=1$ and
+\begin{equation}\label{eq:Moore-square}
+ \det_{\C}\rho(M)=(\det_{\Hh}M)^2.
+\end{equation}
+
+\begin{lemma}[Quaternionic form splitting]\label{lem:qsplit}
+If $A\in\Herm_2(\C)$ and $\psi=z+w\bj\in\Hh^2$, then
+\begin{equation}\label{eq:qsplit}
+ \boxed{\psi^*A\psi=z^*Az+w^*Aw\in\R.}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Expand with $\bj a=\overline a\bj$.  The two complex scalar parts are $z^*Az$ and $w^*Aw$.  The coefficient of $\bj$ is
+$z^*Aw-w^{\mathsf T}\overline A\,\overline z$, which vanishes because $A=A^*$.  Both scalar terms are real.
+\end{proof}
+
+\begin{theorem}[The thirteen-dimensional cubic]\label{thm:cubic}
+For $H$ with coordinates $(G,z,w,\lambda)$, the restricted Moore determinant is
+\begin{equation}\label{eq:N13}
+ \boxed{
+ \cN_{13}(G,z,w,\lambda)
+ :=\det_{\Hh}H
+ =\lambda\det_{\C}G
+  -z^*\adj(G)z
+  -w^*\adj(G)w.}
+\end{equation}
+Equivalently, with $Z=(z\;w)\in\Mat_{2\times2}(\C)$,
+\begin{equation}\label{eq:N13-trace}
+ \cN_{13}(G,Z,\lambda)
+ =\lambda\det G-\tr\bigl(Z^*\adj(G)Z\bigr).
+\end{equation}
+On $w=0$ this is exactly the old nine-dimensional cubic
+\begin{equation}\label{eq:N9}
+ \cN_9(G,z,\lambda)=\lambda\det G-z^*\adj(G)z,
+\end{equation}
+with no extra factor.
+\end{theorem}
+
+\begin{proof}
+Since $\det X=1$, quaternionic congruence by $X$ leaves the Moore determinant unchanged.  For invertible $G$, the quaternionic Schur formula gives
+\[
+ \det_{\Hh}
+ \begin{pmatrix}G&\psi\\\psi^*&\lambda\end{pmatrix}
+ =\det G\,(\lambda-\psi^*G^{-1}\psi)
+ =\lambda\det G-\psi^*\adj(G)\psi.
+\]
+Both sides are polynomial, so the identity holds for singular $G$ as well.  Apply \cref{lem:qsplit} with $A=\adj(G)$.
+\end{proof}
+
+\subsection{Dirac form of the same cubic}
+
+Put
+\begin{equation}\label{eq:epsilon}
+ \epsilon_2=\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+\end{equation}
+and write the second left-handed spinor as the charge conjugate of a right-handed one:
+\begin{equation}\label{eq:charge-conj}
+ w=\epsilon_2\overline{\psi_R},
+ \qquad z=\psi_L.
+\end{equation}
+For every $G\in\Herm_2(\C)$,
+\begin{equation}\label{eq:epsilon-adj}
+ \epsilon_2^*\adj(G)\epsilon_2=G^{\mathsf T}.
+\end{equation}
+
+\begin{corollary}[Vector--Dirac-spinor--scalar cubic]\label{cor:Dirac}
+In the variables $(G,\psi_L,\psi_R,\lambda)$,
+\begin{equation}\label{eq:Dirac-cubic}
+ \boxed{
+ \cN_{13}
+ =\lambda\det G
+ -\psi_L^*\adj(G)\psi_L
+ -\psi_R^*G\psi_R.}
+\end{equation}
+Under $g\in SL_2(\C)$,
+\begin{equation}\label{eq:chiral-action}
+ G\mapsto gGg^*,
+ \qquad
+ \psi_L\mapsto g\psi_L,
+ \qquad
+ \psi_R\mapsto(g^*)^{-1}\psi_R,
+ \qquad
+ \lambda\mapsto\lambda.
+\end{equation}
+Thus the two four-real-dimensional summands may be read either as two left Weyl spinors or, after the exact map \eqref{eq:charge-conj}, as one Dirac spinor.
+\end{corollary}
+
+\begin{proof}
+Equation \eqref{eq:epsilon-adj} gives
+\[
+ w^*\adj(G)w
+ =\psi_R^{\mathsf T}G^{\mathsf T}\overline{\psi_R}
+ =\psi_R^*G\psi_R.
+\]
+The identity $g\epsilon_2=\epsilon_2(g^{\mathsf T})^{-1}$ proves that $w\mapsto gw$ is equivalent to the right-handed transformation in \eqref{eq:chiral-action}.
+\end{proof}
+
+\section{The complete positive cone and all observation fibres}
+
+Let
+\begin{equation}\label{eq:C13}
+ \cC_{13,P}=\cJ_{13,P}\cap\Herm_3(\Hh)_{\succeq0}.
+\end{equation}
+
+\begin{theorem}[Exact positivity and rank]\label{thm:positivity}
+A point $(G,z,w,\lambda)$ lies in $\cC_{13,P}$ if and only if
+\begin{equation}\label{eq:positivity}
+ \boxed{
+ G\succeq0,
+ \qquad z,w\in\Ran G,
+ \qquad
+ \lambda\ge z^*G^\dagger z+w^*G^\dagger w.}
+\end{equation}
+Put
+\begin{equation}\label{eq:s-schur}
+ s=\lambda-z^*G^\dagger z-w^*G^\dagger w\ge0.
+\end{equation}
+Then the quaternionic rank is
+\begin{equation}\label{eq:rank}
+ \boxed{
+ \rank_{\Hh}H
+ =\rank_{\C}G+
+ \begin{cases}1,&s>0,\\0,&s=0.\end{cases}}
+\end{equation}
+For fixed $G\succeq0$ of rank $r$, the positive fibre of $\cO_P$ is
+\begin{equation}\label{eq:fibre}
+ \left\{
+ (z,w,s):z,w\in\Ran G,\ s\ge0
+ \right\}
+ \cong\C^{2r}\times[0,\infty),
+\end{equation}
+of real dimension $4r+1$.  In particular,
+\begin{equation}\label{eq:zero-fibre}
+ \boxed{
+ \cO_P^{-1}(0)\cap\cC_{13,P}
+ =\{\lambda uu^*: \lambda\ge0\}.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Work in the block basis $X$.  A positive block matrix must have $G\succeq0$.  Positivity on vectors from $\ker G\oplus\Hh$ forces $\psi=z+w\bj$ to lie in the quaternionic range of $G$.  Since $G$ is complex, this is equivalent to $z,w\in\Ran_{\C}G$.  Put $v=G^\dagger\psi$.  The exact quaternionic congruence
+\[
+ \begin{pmatrix}I_2&0\\-v^*&1\end{pmatrix}
+ \begin{pmatrix}G&\psi\\\psi^*&\lambda\end{pmatrix}
+ \begin{pmatrix}I_2&-v\\0&1\end{pmatrix}
+ =\begin{pmatrix}G&0\\0&\lambda-\psi^*G^\dagger\psi\end{pmatrix}
+\]
+proves positivity and rank.  By \cref{lem:qsplit}, the last scalar is exactly \eqref{eq:s-schur}.  If $G=0$, then $z=w=0$, leaving the ray \eqref{eq:zero-fibre} after returning through $X$.
+\end{proof}
+
+\begin{corollary}[Boundary strata]\label{cor:strata}
+The open positive-definite stratum has real dimension $13$.  The generic rank-two boundary stratum is given by $G>0$ and $s=0$ and has dimension $12$.  The rank-one locus has top dimension $7$, obtained from $\rank G=1$ and $s=0$; the ray \eqref{eq:zero-fibre} is contained in its closure.
+\end{corollary}
+
+\section{Lorentz and internal symmetry}
+
+For $g\in SL_2(\C)$ retain
+\begin{equation}\label{eq:TP}
+ T_P(g)=X(g\oplus1)X^{-1}=R_PgP+\Pi_u.
+\end{equation}
+For $k\in SU(2)$ act on the two-spinor matrix $Z=(z\;w)$ on the right.
+
+\begin{theorem}[Exact symmetry group]\label{thm:symmetry}
+The action
+\begin{equation}\label{eq:group-action}
+ (g,k)\cdot(G,Z,\lambda)
+ =\bigl(gGg^*,\ gZk,\ \lambda\bigr)
+\end{equation}
+preserves $\cC_{13,P}$ and $\cN_{13}$.  Its kernel is
+\begin{equation}\label{eq:group-kernel}
+ \{(I_2,I_2),(-I_2,-I_2)\},
+\end{equation}
+so the effective group is
+\begin{equation}\label{eq:effective-group}
+ \boxed{(SL_2(\C)\times SU(2))/\mu_2.}
+\end{equation}
+The left factor is exactly the previous marked Lorentz action.  The right factor is right multiplication of $\psi\in\Hh^2$ by unit quaternions and rotates the two complex Weyl summands.
+\end{theorem}
+
+\begin{proof}
+For $g\in SL_2(\C)$,
+\[
+ \adj(gGg^*)=(g^*)^{-1}\adj(G)g^{-1},
+\]
+so both spinor quadratic terms and $\det G$ are invariant.  For $k\in SU(2)$,
+\[
+ \tr\bigl((Zk)^*\adj(G)(Zk)\bigr)
+ =\tr\bigl(k^*Z^*\adj(G)Zk\bigr)
+ =\tr\bigl(Z^*\adj(G)Z\bigr).
+\]
+The positivity criterion \eqref{eq:positivity} has the same invariance.  The only elements acting trivially on every $G$ are $g=\pm I_2$, and triviality on every $Z$ then forces $k=g$.  The quaternionic realization follows from the usual identification of $SU(2)$ with unit quaternions and the decomposition \eqref{eq:H-decomp}.
+\end{proof}
+
+\section{The old nine-dimensional object inside the new one}
+
+Define
+\begin{align}
+ \iota_9(G,z,\lambda)&=(G,z,0,\lambda),\label{eq:iota9}\\
+ r_9(G,z,w,\lambda)&=(G,z,\lambda).\label{eq:r9}
+\end{align}
+
+\begin{theorem}[Split positive continuation]\label{thm:split-continuation}
+The map $\iota_9$ is an injective, determinant-preserving, positivity-preserving linear map
+\begin{equation}\label{eq:iota-cones}
+ \iota_9:\Herm_3(\C)_{\succeq0}\hookrightarrow\cC_{13,P}.
+\end{equation}
+The coordinate retraction $r_9$ maps $\cC_{13,P}$ into $\Herm_3(\C)_{\succeq0}$ and satisfies
+\begin{equation}\label{eq:split-r}
+ r_9\iota_9=\id.
+\end{equation}
+Their determinants are related by the exact correction
+\begin{equation}\label{eq:det-correction}
+ \boxed{
+ \cN_9(r_9H)-\cN_{13}(H)
+ =w^*\adj(G)w\ge0
+ \quad(H\in\cC_{13,P}).}
+\end{equation}
+Both maps are proper on their closed positive cones and therefore extend to the one-point compactifications
+\begin{equation}\label{eq:ball-split}
+ B^9\xrightarrow{\ \iota_9^+\ }B^{13}
+ \xrightarrow{\ r_9^+\ }B^9,
+ \qquad r_9^+\iota_9^+=\id.
+\end{equation}
+The retraction does not restrict to a map from the new rank-defect boundary to the old one: if $G=I_2$, $z=0$, $w\ne0$, and $\lambda=\|w\|^2$, then $\cN_{13}=0$ but $\cN_9=\lambda>0$.
+\end{theorem}
+
+\begin{proof}
+The first statements follow immediately from \cref{thm:cubic,thm:positivity}.  Since $G\succeq0$ implies $\adj(G)\succeq0$, the correction is nonnegative.  To prove properness of $r_9$ on the cone, let $(G,z,\lambda)$ range over a compact set.  If $g_i$ are the eigenvalues of $G$, \eqref{eq:positivity} gives, in a $G$-eigenbasis,
+\[
+ |w_i|^2\le \lambda g_i.
+\]
+Thus $w$ is bounded; the fibre is also closed.  Properness of $\iota_9$ is immediate.  The displayed counterexample proves the final assertion and supplies the exact map relating the two boundaries when a boundary-to-boundary retraction fails.
+\end{proof}
+
+\subsection{A family of old slices}
+
+For a line $L=[\ell]\in\CP^1$, choose $\ell\in\C^2$ with $\ell^*\ell=1$ and set
+\begin{equation}\label{eq:J9L}
+ \cJ_9(L)=\{(G,Z,\lambda):Z=\psi\ell^*,\ \psi\in\C^2\}.
+\end{equation}
+This subspace is independent of the phase of $\ell$.
+
+\begin{proposition}[$\CP^1$-family of determinant-preserving slices]\label{prop:CP1-family}
+Each $\cJ_9(L)$ is a nine-dimensional copy of $\Herm_3(\C)$, and
+\begin{equation}\label{eq:N-on-L}
+ \cN_{13}(G,\psi\ell^*,\lambda)
+ =\lambda\det G-\psi^*\adj(G)\psi.
+\end{equation}
+The internal $SU(2)$ acts transitively on this family, with stabilizer $U(1)$, so its parameter space is $SU(2)/U(1)=\CP^1$.  The locus contained in at least one such slice is exactly $\rank_{\C}Z\le1$.
+\end{proposition}
+
+\begin{proof}
+One has
+\[
+ \tr\bigl((\psi\ell^*)^*\adj(G)(\psi\ell^*)\bigr)
+ =\tr\bigl(\ell\psi^*\adj(G)\psi\ell^*\bigr)
+ =\psi^*\adj(G)\psi.
+\]
+The remaining statements are the standard transitive action on complex lines and the rank-one factorization of a $2\times2$ complex matrix.
+\end{proof}
+
+\section{The rank-defect sphere is exactly \texorpdfstring{$S^{12}$}{S12}}
+
+Let
+\begin{equation}\label{eq:boundary13}
+ \partial\cC_{13,P}
+ =\{H\in\cC_{13,P}:\det_{\Hh}H=0\}
+\end{equation}
+and let
+\begin{equation}\label{eq:tracefree13}
+ \cJ_{13,P}^0=\{K\in\cJ_{13,P}:\tr K=0\}.
+\end{equation}
+This is a real vector space of dimension $12$.
+
+\begin{theorem}[Spectral-floor coordinates]\label{thm:spectral-floor}
+For quaternionic Hermitian $K$, let $\lambda_{\min}(K)$ denote its least real eigenvalue.  The maps
+\begin{align}
+ \Phi_{13}(K)&=K-\lambda_{\min}(K)I_3,
+ &&K\in\cJ_{13,P}^0,\label{eq:Phi13}\\
+ \Psi_{13}(H)&=H-\frac{\tr H}{3}I_3,
+ &&H\in\partial\cC_{13,P},\label{eq:Psi13}
+\end{align}
+are inverse positively homogeneous homeomorphisms.  More generally,
+\begin{equation}\label{eq:halfspace-homeo}
+ \cC_{13,P}\xrightarrow{\cong}
+ \cJ_{13,P}^0\times[0,\infty),
+ \qquad
+ H\longmapsto
+ \left(H-\frac{\tr H}{3}I_3,
+       \frac{\tr H}{3}+\lambda_{\min}\left(H-\frac{\tr H}{3}I_3\right)
+ \right).
+\end{equation}
+Consequently
+\begin{equation}\label{eq:compact-topology}
+ \boxed{
+ \cC_{13,P}^+\cong B^{13},
+ \qquad
+ (\partial\cC_{13,P})^+\cong S^{12}.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The identity matrix lies in $\cJ_{13,P}$, so both shifts remain in the slice.  If $K$ is trace-free, $K-\lambda_{\min}(K)I_3$ is positive semidefinite and singular.  If $H$ is positive semidefinite and singular, then
+\[
+ \lambda_{\min}\left(H-\frac{\tr H}{3}I_3\right)
+ =-\frac{\tr H}{3},
+\]
+so the maps are inverse.  Continuity follows from continuity of ordered Hermitian eigenvalues.  Writing $H=K+rI_3$ shows that positivity is equivalent to $r\ge-\lambda_{\min}(K)$; the second coordinate in \eqref{eq:halfspace-homeo} is exactly the nonnegative excess.  The one-point compactifications of $\R^{12}\times[0,\infty)$ and its boundary $\R^{12}$ are $B^{13}$ and $S^{12}$.
+\end{proof}
+
+\begin{theorem}[The old $S^8$ and its quaternionic link]\label{thm:S8-in-S12}
+The involution
+\begin{equation}\label{eq:involution}
+ \sigma(G,z,w,\lambda)=(G,z,-w,\lambda)
+\end{equation}
+preserves $\cN_{13}$ and $\cC_{13,P}$.  Its fixed space is $\Herm_3(\C)$, and its fixed set on the compactified rank defect is the previously constructed $S^8$.  Under the spectral-floor coordinates,
+\begin{equation}\label{eq:pair}
+ \boxed{
+ \bigl((\partial\cC_{13,P})^+,
+       (\partial\Herm_3(\C)_{\succeq0})^+\bigr)
+ \cong(S^{12},S^8)}
+\end{equation}
+as the standard unknotted linear pair.  Its complement is
+\begin{equation}\label{eq:complement}
+ \boxed{S^{12}\setminus S^8\cong S^3\times\R^9.}
+\end{equation}
+The $S^3$ is the unit sphere in the added $w\in\C^2\cong\R^4$ direction and is the unit-quaternion group $\Sp(1)\cong SU(2)$.
+\end{theorem}
+
+\begin{proof}
+The determinant and positivity formulae are even in $w$.  The fixed locus $w=0$ is $\Herm_3(\C)$ by \cref{thm:coordinates}.  The trace-free pair is the linear pair
+\[
+ (\cJ_{13,P}^0,\Herm_3^0(\C))\cong(\R^{12},\R^8).
+\]
+One-point compactification gives the standard pair.  Removing the fixed set gives
+\[
+ \R^8\times(\R^4\setminus\{0\})
+ \cong\R^8\times S^3\times\R
+ \cong S^3\times\R^9.
+\]
+\end{proof}
+
+\section{It is a generating cubic slice, not a Jordan subalgebra}
+
+The ambient quaternionic Euclidean Jordan algebra has the Peirce decomposition
+\begin{equation}\label{eq:H3H-Peirce}
+ \Herm_3(\Hh)
+ \cong
+ \underbrace{\Herm_2(\Hh)}_{6}
+ \oplus
+ \underbrace{\Hh^2}_{8}
+ \oplus
+ \underbrace{\R}_{1}.
+\end{equation}
+The inclusion $\Herm_2(\C)\subset\Herm_2(\Hh)$ selects the $(1,3)$ Lorentz subspace inside the full $(1,5)$ spin factor and gives exactly $\cJ_{13,P}$.
+
+\begin{theorem}[Exact Jordan completion]\label{thm:Jordan-closure}
+The space $\cJ_{13,P}$ is not closed under the Jordan product
+$A\circ B=(AB+BA)/2$.  In the block basis, take
+\[
+ \psi=\binom10,
+ \qquad
+ \phi=\binom0{\bj},
+ \qquad
+ A=\begin{pmatrix}0&\psi\\\psi^*&0\end{pmatrix},
+ \qquad
+ B=\begin{pmatrix}0&\phi\\\phi^*&0\end{pmatrix}.
+\]
+Then the upper-left block of $A\circ B$ is
+\begin{equation}\label{eq:nonclosure}
+ \frac12
+ \begin{pmatrix}0&-\bj\\\bj&0\end{pmatrix},
+\end{equation}
+which is not in $\Herm_2(\C)$.  Replacing $\bj$ by $\bk$ produces the other missing real direction.  Therefore
+\begin{equation}\label{eq:Jordan-closure}
+ \boxed{
+ \operatorname{Jord}\langle\cJ_{13,P}\rangle
+ =\Herm_3(\Hh).}
+\end{equation}
+The exact completion is
+\begin{equation}\label{eq:15-completion}
+ 4+4+4+1
+ \quad\longrightarrow\quad
+ 6+4+4+1=15,
+\end{equation}
+where the two added coordinates complete the Lorentz vector from $(1,3)$ to $(1,5)$; the two spinors and scalar are unchanged.
+\end{theorem}
+
+\begin{proof}
+The displayed product is a direct multiplication.  The slice already contains the full $\Hh^2$ Peirce half-space, the scalar, and the complex four-dimensional part of $\Herm_2(\Hh)$.  The two products with $\bj$ and $\bk$ generate the two missing off-diagonal components of $\Herm_2(\Hh)$.  Hence the Jordan algebra generated is the full ambient algebra.
+\end{proof}
+
+\section{The other thirteen-dimensional determinant and the exact comparison}
+
+The same coordinate vector space has a second natural realization as a complex Hermitian $4\times4$ slice:
+\begin{equation}\label{eq:K4}
+ \cK_{13}(G,Z,\lambda)
+ =\begin{pmatrix}G&Z\\Z^*&\lambda I_2\end{pmatrix}
+ \in\Herm_4(\C).
+\end{equation}
+It has the same $4+8+1$ coordinate count and the same
+$SL_2(\C)\times SU(2)$ action, but its determinant is quartic.
+
+\begin{theorem}[Quartic--cubic comparison]\label{thm:quartic-comparison}
+For all $(G,Z,\lambda)$,
+\begin{align}
+ \det_{\C}\cK_{13}(G,Z,\lambda)
+ &=\lambda^2\det G
+ -\lambda\tr\bigl(Z^*\adj(G)Z\bigr)
+ +|\det Z|^2\label{eq:D4}\\
+ &=\boxed{\lambda\cN_{13}(G,Z,\lambda)+|\det Z|^2.}\label{eq:D4N13}
+\end{align}
+On the old slice $Z=(z\;0)$,
+\begin{equation}\label{eq:quartic-old}
+ \det\cK_{13}=\lambda\cN_9,
+ \qquad
+ \cN_{13}=\cN_9.
+\end{equation}
+Thus the quaternionic slice is the one that preserves the preceding cubic exactly; the complex rank-four slice adds both a factor $\lambda$ and the Pluecker correction $|\det Z|^2$.
+
+The coordinate identity maps the quaternionic positive cone into the complex one:
+\begin{equation}\label{eq:cone-inclusion}
+ \cC_{13,P}\hookrightarrow
+ \{(G,Z,\lambda):\cK_{13}(G,Z,\lambda)\succeq0\}.
+\end{equation}
+It is not onto.  For example,
+\begin{equation}\label{eq:not-onto-example}
+ G=I_2,
+ \qquad Z=I_2,
+ \qquad \lambda=1
+\end{equation}
+gives a positive-semidefinite complex $4\times4$ block, while the quaternionic condition would require $1\ge\tr(I_2)=2$.
+\end{theorem}
+
+\begin{proof}
+For invertible $G$ or nonzero $\lambda$, the block determinant formula gives \eqref{eq:D4}; polynomial continuation gives it everywhere.  The last term is
+$\det(Z^*Z)=|\det Z|^2$.  The quaternionic positivity criterion is
+\[
+ G\succeq0,
+ \quad\Ran Z\subset\Ran G,
+ \quad\lambda\ge\tr(Z^*G^\dagger Z).
+\]
+The complex block criterion is
+\[
+ G\succeq0,
+ \quad\Ran Z\subset\Ran G,
+ \quad\lambda I_2-Z^*G^\dagger Z\succeq0.
+\]
+Since a positive $2\times2$ matrix has largest eigenvalue at most its trace, the first scalar inequality implies the second matrix inequality.  The example has complex Schur complement zero but violates the scalar trace bound.
+\end{proof}
+
+\begin{remark}[Branch count]
+On the diagonal locus $Z=0$ and $G=\diag(x,y)$, the quaternionic cubic is
+$\lambda xy$, whereas the complex quartic is $\lambda^2xy$.  Thus the thirteen-dimensional quartic model merges two of four diagonal branches into one multiplicity-two branch.  Four independently variable simple diagonal branches require a second scalar coordinate, giving at least the fourteen-dimensional block
+$\diag(x,y,\lambda,\mu)$.  This is the exact branch morphism behind the distinction; the equation $z_0z_1z_2z_3=t$ is not produced merely by writing $4+4+4+1$.
+\end{remark}
+
+\section{Exact relation to the existing colour \texorpdfstring{$S^{12}$}{S12}}
+
+Let
+\begin{equation}\label{eq:colorV}
+ V_{\mathrm{col}}=\Mat_{3\times2}(\C),
+ \qquad
+ \Gamma(A)=A^*A\in\Herm_2(\C)_{\succeq0}.
+\end{equation}
+The left $SU(3)$ Gram quotient is
+$V_{\mathrm{col}}/SU(3)\cong\Herm_2(\C)_{\succeq0}$.
+Define the proper map
+\begin{equation}\label{eq:color-to-13}
+ F_{13}(A)
+ =X\begin{pmatrix}\Gamma(A)&0\\0&0\end{pmatrix}X^*
+ \in\partial\cC_{13,P}.
+\end{equation}
+
+\begin{proposition}[The two $S^{12}$ carriers are connected by a typed map]\label{prop:S12-map}
+The map $F_{13}$ factors exactly as
+\begin{equation}\label{eq:S12-factor}
+ \Mat_{3\times2}(\C)
+ \xrightarrow{\ \Gamma\ }
+ \Herm_2(\C)_{\succeq0}
+ \xrightarrow{\ \jmath_P\ }
+ \partial\cC_{13,P}.
+\end{equation}
+After one-point compactification it gives
+\begin{equation}\label{eq:S12-compact-map}
+ \boxed{
+ S^{12}_{\mathrm{col}}
+ \xrightarrow{\ \Gamma^+\ }
+ B^4
+ \xrightarrow{\ \jmath_P^+\ }
+ S^{12}_{13}.}
+\end{equation}
+This sphere map is based null-homotopic because it factors through the based-contractible ball $B^4$.  Its image is the embedded four-ball face $\jmath_P^+(B^4)$; it is not an identification of the two sphere constructions.
+\end{proposition}
+
+\begin{proof}
+The factorization is the definition.  Properness follows from
+$\tr\Gamma(A)=\|A\|_F^2$ and injectivity/properness of $\jmath_P$ on the cone.  The compactified Gram quotient has codomain $B^4$, and a closed ball contracts to its chosen boundary basepoint while fixing that point.
+\end{proof}
+
+\begin{remark}[Relation to the toroidal map]
+The toroidal cusp construction already uses the same marked integral matrix $P$ as the angular part of the lattice map $\Phi=P\oplus Q$.  The new quaternionic coordinate $w$ has not been assigned an integral period lattice, monodromy, fan ray, or filling homomorphism.  Therefore the exact new maps are \eqref{eq:pullback-square}, \eqref{eq:iota-cones}, and \eqref{eq:S12-factor}; a map from the completed toroidal total space to $S^{12}_{13}$ requires additional transition and filling data and is not inferred from the shared symbol $P$.
+\end{remark}
+
+\section{A precise threshold consequence of the cubic}
+
+Let $G\in\Herm_2(\C)_{>0}$ and retain a conversion constant $\alpha>0$.  Define
+\begin{equation}\label{eq:momentum}
+ p=\alpha G,
+ \qquad m^2=\det p=\alpha^2\det G.
+\end{equation}
+In Dirac variables put
+\begin{equation}\label{eq:QD}
+ Q_G(\psi_L,\psi_R)
+ =\psi_L^*\adj(G)\psi_L+\psi_R^*G\psi_R\ge0.
+\end{equation}
+Then
+\begin{equation}\label{eq:N-threshold}
+ \cN_{13}=\lambda\det G-Q_G.
+\end{equation}
+
+\begin{proposition}[Joint scalar--cubic threshold]\label{prop:threshold}
+Fix $\lambda_0>0$ and $\nu_0>0$.  On the invariant level set
+\begin{equation}\label{eq:level-set}
+ \lambda=\lambda_0,
+ \qquad \cN_{13}=\nu_0,
+ \qquad G>0,
+\end{equation}
+one has the exact lower bound
+\begin{equation}\label{eq:mass-threshold}
+ \boxed{m^2\ge\frac{\alpha^2\nu_0}{\lambda_0}.}
+\end{equation}
+Equality holds exactly when $\psi_L=\psi_R=0$.  At a fixed $G$ above threshold, the spinor fibre is the ellipsoid
+\begin{equation}\label{eq:S7-fibre}
+ Q_G(\psi_L,\psi_R)
+ =\lambda_0\det G-\nu_0,
+\end{equation}
+which is diffeomorphic to $S^7$; it collapses to a point at threshold.
+\end{proposition}
+
+\begin{proof}
+Equation \eqref{eq:N-threshold} gives
+\[
+ \lambda_0\det G=\nu_0+Q_G\ge\nu_0.
+\]
+Since both $G$ and $\adj(G)$ are positive definite, equality holds precisely at the zero Dirac spinor.  Above threshold, $Q_G$ is a positive-definite quadratic form on $\C^4\cong\R^8$, and a positive level is an ellipsoidal $S^7$.
+\end{proof}
+
+\begin{remark}
+This is a finite-dimensional invariant threshold, not a quantum-field-theoretic mass gap.  A Hamiltonian statement would additionally require one fixed positive Hilbert space, a self-adjoint dynamics, a vacuum projection, and an energy-controlled map from these variables into physical states.
+\end{remark}
+
+\section{Conclusion}
+
+The expression $4+4+4+1$ has a rigid continuation of the preceding marked construction.  Extend the same observation map $P$ from complex to quaternionic Hermitian matrices, but require its observed block to remain in the original four-dimensional Lorentz space $\Herm_2(\C)$.  The result is the thirteen-dimensional pullback $\cJ_{13,P}$, with one Lorentz vector, two Weyl spinors (equivalently one Dirac spinor), and one scalar.  Its cubic restricts exactly to the nine-dimensional cubic, its positive cone has compactified rank defect $S^{12}$, and the old $S^8$ is the fixed unknotted subspace with quaternionic linking sphere $S^3$.
+
+The same coordinate count also supports a complex rank-four determinant, but the exact identity
+\[
+ \det\cK_{13}=\lambda\cN_{13}+|\det Z|^2
+\]
+separates the two constructions.  The quaternionic slice preserves the cubic ladder; the complex slice carries the quartic and Pluecker correction.  Finally, Jordan multiplication generates two further Lorentz-vector coordinates and closes the thirteen-dimensional slice to the full fifteen-dimensional algebra $\Herm_3(\Hh)$.  These maps specify what the thirteen-dimensional object is, how it contains the old object, how it connects to the existing colour $S^{12}$, and exactly where further toroidal or physical data would have to enter.
+
+\appendix
+\section{Symbolic replay}
+
+The accompanying exact-arithmetic script verifies:
+\begin{itemize}
+\item all retained $P,R_P,u,X$ identities;
+\item the quaternionic splitting $\psi^*A\psi=z^*Az+w^*Aw$;
+\item $\det_{\C}\rho(H)=\cN_{13}(H)^2$;
+\item the Dirac charge-conjugation identity;
+\item the adjugate covariance and internal $SU(2)$ invariance;
+\item exact restriction to the old cubic and the determinant correction under $r_9$;
+\item the complex rank-four determinant and the Pluecker correction;
+\item the explicit Jordan nonclosure witness.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,107 @@
+% Peer-review annotation overlay for the derivative annotated edition.
+% The overlay has zero layout dimensions and does not alter manuscript flow.
+\makeatletter
+
+\definecolor{AuditExact}{HTML}{237A45}
+\definecolor{AuditReviewed}{HTML}{2B67A0}
+\definecolor{AuditConditional}{HTML}{A65F00}
+\definecolor{AuditCritical}{HTML}{B3261E}
+\definecolor{AuditRepairable}{HTML}{9B2C78}
+\definecolor{AuditProvenance}{HTML}{5F6368}
+\definecolor{AuditPale}{HTML}{F5F7FA}
+
+\hypersetup{
+  pdftitle={Annotated peer-review edition of the 108-page S6 canonical reconstruction},
+  pdfauthor={Integrated Reviewer A, Reviewer B, and Codex audit},
+  pdfsubject={Mathematical peer-review annotations and TeX audit},
+  pdfkeywords={S6, complex threefold, mathematical proof audit, peer review, annotated LaTeX}
+}
+
+\newif\ifAuditSourcePages
+\AuditSourcePagestrue
+
+\newcount\AuditPageLoop
+\newcommand{\AuditRegisterRange}[3]{%
+  \AuditPageLoop=#1\relax
+  \loop
+    \expandafter\gdef\csname AuditStatus@\the\AuditPageLoop\endcsname{#3}%
+  \ifnum\AuditPageLoop<#2\relax
+    \advance\AuditPageLoop by 1\relax
+  \repeat
+}
+
+% One precedence status per source page. Detailed, reviewer-separated notes
+% are printed in the appendix linked from each badge.
+\AuditRegisterRange{1}{7}{conditional}
+\AuditRegisterRange{8}{12}{exact}
+\AuditRegisterRange{13}{13}{reviewed}
+\AuditRegisterRange{14}{23}{reviewed}
+\AuditRegisterRange{24}{29}{critical}
+\AuditRegisterRange{30}{30}{repairable}
+\AuditRegisterRange{31}{35}{reviewed}
+\AuditRegisterRange{36}{37}{conditional}
+\AuditRegisterRange{38}{39}{critical}
+\AuditRegisterRange{40}{62}{critical}
+\AuditRegisterRange{63}{63}{repairable}
+\AuditRegisterRange{64}{64}{conditional}
+\AuditRegisterRange{65}{70}{conditional}
+\AuditRegisterRange{71}{71}{repairable}
+\AuditRegisterRange{72}{73}{conditional}
+\AuditRegisterRange{74}{77}{critical}
+\AuditRegisterRange{78}{83}{conditional}
+\AuditRegisterRange{84}{95}{critical}
+\AuditRegisterRange{96}{97}{exact}
+\AuditRegisterRange{98}{98}{repairable}
+\AuditRegisterRange{99}{99}{exact}
+\AuditRegisterRange{100}{100}{repairable}
+\AuditRegisterRange{101}{105}{critical}
+\AuditRegisterRange{106}{108}{provenance}
+
+\expandafter\def\csname AuditSymbol@exact\endcsname{E}
+\expandafter\def\csname AuditSymbol@reviewed\endcsname{N}
+\expandafter\def\csname AuditSymbol@conditional\endcsname{C}
+\expandafter\def\csname AuditSymbol@critical\endcsname{U}
+\expandafter\def\csname AuditSymbol@repairable\endcsname{X}
+\expandafter\def\csname AuditSymbol@provenance\endcsname{P}
+
+\expandafter\def\csname AuditColor@exact\endcsname{AuditExact}
+\expandafter\def\csname AuditColor@reviewed\endcsname{AuditReviewed}
+\expandafter\def\csname AuditColor@conditional\endcsname{AuditConditional}
+\expandafter\def\csname AuditColor@critical\endcsname{AuditCritical}
+\expandafter\def\csname AuditColor@repairable\endcsname{AuditRepairable}
+\expandafter\def\csname AuditColor@provenance\endcsname{AuditProvenance}
+
+\newcommand{\AuditShipoutBadge}{%
+  \begingroup
+  \edef\AuditPageNumber{\number\value{page}}%
+  \ifcsname AuditStatus@\AuditPageNumber\endcsname
+    \edef\AuditStatusName{\csname AuditStatus@\AuditPageNumber\endcsname}%
+    \edef\AuditStatusLetter{\csname AuditSymbol@\AuditStatusName\endcsname}%
+    \edef\AuditStatusColor{\csname AuditColor@\AuditStatusName\endcsname}%
+    \raisebox{-13pt}[0pt][0pt]{%
+      \makebox[0pt][l]{%
+        \hspace*{\dimexpr\paperwidth-31pt\relax}%
+        \hyperlink{audit-page-\AuditPageNumber}{%
+          \colorbox{\AuditStatusColor}{%
+            \strut\color{white}\sffamily\bfseries
+            \fontsize{5.2pt}{5.7pt}\selectfont
+            \AuditStatusLetter\,\AuditPageNumber
+          }%
+        }%
+      }%
+    }%
+  \fi
+  \endgroup
+}
+
+\AddToShipoutPictureFG{%
+  \ifAuditSourcePages
+    \ifnum\value{page}>0\relax
+      \ifnum\value{page}<109\relax
+        \AtPageUpperLeft{\AuditShipoutBadge}%
+      \fi
+    \fi
+  \fi
+}
+
+\makeatother

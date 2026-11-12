@@ -1,0 +1,751 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creating an original cancelling handle pair</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/creating-an-original-cancelling-handle-pair.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="creating-an-original-cancelling-handle-pair">Creating an
+original cancelling handle pair</h1>
+<p>Working source for CG-S6 lesson 7. GPT-6 Astra (OpenAI), Ultra, 10
+October 2026. New teaching exposition CC0.</p>
+<p>The next handle argument needs a new index-two handle whose attaching
+circle bounds a framed disk in the original regular level, together with
+a cancelling index-three handle. Here we construct that pair inside any
+chosen regular coordinate band. The original function, field, boundary
+collars, metric and all other critical neighbourhoods are retained
+outside a compact subset of that band.</p>
+<p>More generally, let <span class="math inline">\(1\leq k\leq
+n-2\)</span>. We construct a pair of indices <span
+class="math inline">\(k,k+1\)</span>, prove its unique transverse
+connecting trajectory, and identify the lower attaching sphere and its
+complete normal frame. The cases used in lesson 7 are <span
+class="math inline">\(k=2\)</span> and <span
+class="math inline">\(n=6,7\)</span>. The construction below is a proof
+on the original cobordism, with every change of coordinates
+specified.</p>
+<h2 id="pair-global-model">1. An explicit global pair</h2>
+<p>On <span class="math inline">\(\mathbb R\times\mathbb
+R^k\times\mathbb R^{n-k-1}\)</span>, keep the coordinates <span
+class="math inline">\((u,y,z)\)</span> and chosen positive coefficients
+<span class="math display">\[
+A(y)=\sum_{i=1}^k a_i y_i^2,\qquad
+B(z)=\sum_{j=1}^{n-k-1}b_j z_j^2.
+\tag{1.1}
+\]</span> No coefficient is absorbed into a coordinate. Set <span
+class="math display">\[
+a=-2,\qquad
+\delta(u)=
+\begin{cases}4e^{-1/(1-u^2)},&amp;|u|&lt;1,\\0,&amp;|u|\geq1,\end{cases}
+\qquad h(u)=u+\delta(u),\qquad
+F_b(u,y,z)=h(u)-A(y)+B(z).
+\tag{1.2}
+\]</span> Every derivative of <span
+class="math inline">\(\delta\)</span> tends to zero at either joining
+point: it is an exponential multiplied by a rational function of finite
+pole order, and <span class="math inline">\(t^N e^{-t}\to0\)</span>.
+Thus these are smooth global functions.</p>
+<p>For <span class="math inline">\(0&lt;u&lt;1\)</span>, <span
+class="math display">\[
+h&#39;(u)=1-g(u),\quad
+g(u)=\frac{8u}{(1-u^2)^2}e^{-1/(1-u^2)},\quad
+(\log g)&#39;(u)=\frac{1-3u^4}{u(1-u^2)^2}.
+\tag{1.3}
+\]</span> The function <span class="math inline">\(g\)</span> increases
+and then decreases, with its unique maximum at <span
+class="math inline">\(u_*=3^{-1/4}\)</span>, and tends to zero at both
+endpoints. Also <span
+class="math inline">\(g(1/2)=(64/9)e^{-4/3}&gt;1\)</span>. For an exact
+bound, the exponential series gives <span
+class="math inline">\(e&lt;3\)</span>, whence <span
+class="math inline">\(e^{4/3}&lt;3^{3/2}&lt;6&lt;64/9\)</span>.
+Consequently there are exactly two solutions of <span
+class="math inline">\(g=1\)</span>, denoted <span
+class="math display">\[
+0&lt;u_M&lt;u_*&lt;u_m&lt;1.
+\tag{1.4}
+\]</span> They are simple. The first is a nondegenerate maximum of <span
+class="math inline">\(h\)</span>, the second a nondegenerate minimum. On
+<span class="math inline">\(u\leq0\)</span> the derivative of <span
+class="math inline">\(h\)</span> is positive, as it is outside <span
+class="math inline">\([-1,1]\)</span>. The entire critical set of <span
+class="math inline">\(F_b\)</span> is therefore <span
+class="math display">\[
+p=(u_M,0,0),\qquad q=(u_m,0,0).
+\tag{1.5}
+\]</span> Its Hessian in the displayed original model coordinates is
+<span class="math display">\[
+\operatorname{diag}\bigl(h&#39;&#39;(u),-2a_1,\ldots,-2a_k,
+                    2b_1,\ldots,2b_{n-k-1}\bigr).
+\tag{1.6}
+\]</span> Thus <span class="math inline">\(p\)</span> has index <span
+class="math inline">\(k+1\)</span> and <span
+class="math inline">\(q\)</span> has index <span
+class="math inline">\(k\)</span>, with <span
+class="math inline">\(h(u_M)&gt;h(u_m)&gt;a\)</span>.</p>
+<p>Use the smooth step <span class="math display">\[
+\vartheta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\leq0,\end{cases}
+\qquad
+\chi(t)=\frac{\vartheta(t)}{\vartheta(t)+\vartheta(1-t)}.
+\tag{1.7}
+\]</span> The denominator is positive everywhere; <span
+class="math inline">\(\chi=0\)</span> on <span
+class="math inline">\(t\leq0\)</span>, <span
+class="math inline">\(\chi=1\)</span> on <span
+class="math inline">\(t\geq1\)</span>, and <span
+class="math inline">\(\chi(t)+\chi(1-t)=1\)</span>. Fix a positive
+coefficient <span class="math inline">\(L\)</span> and put <span
+class="math display">\[
+b(v)=\frac43\chi(12v-1)\chi(11-12v),\qquad
+\beta(v)=\int_v^1 b(w)\,dw,\qquad
+\eta(B)=1-\chi(2B/L-1).
+\tag{1.8}
+\]</span> Extend <span class="math inline">\(\beta\)</span> by one for
+<span class="math inline">\(v&lt;0\)</span> and zero for <span
+class="math inline">\(v&gt;1\)</span>. The two transition intervals of
+<span class="math inline">\(b\)</span> have length <span
+class="math inline">\(1/12\)</span>, the plateau has length <span
+class="math inline">\(2/3\)</span>, and symmetry gives <span
+class="math display">\[
+\int_0^1b=\frac43\left(\frac1{24}+\frac23+\frac1{24}\right)=1,
+\qquad -\frac43\leq\beta&#39;\leq0.
+\tag{1.9}
+\]</span> In particular <span class="math inline">\(\beta=1\)</span> on
+<span class="math inline">\(v\leq1/12\)</span> and zero on <span
+class="math inline">\(v\geq11/12\)</span>. The other cutoff is one on
+<span class="math inline">\(B\leq L/2\)</span>, zero on <span
+class="math inline">\(B\geq L\)</span>, and nonincreasing.</p>
+<p>On <span class="math inline">\(-1&lt;u&lt;1\)</span>, define <span
+class="math display">\[
+R(u)^2=h(u)-a=u+\delta(u)+2.
+\tag{1.10}
+\]</span> This is positive there. We have <span
+class="math inline">\(\delta\leq4/e&lt;3/2\)</span> and <span
+class="math inline">\(R^2\geq1+\delta\)</span>, so <span
+class="math display">\[
+0\leq\frac{\delta}{R^2}&lt;\frac35.
+\tag{1.11}
+\]</span> The bound <span class="math inline">\(e&gt;8/3\)</span>
+follows from the first five positive terms of its series. Define <span
+class="math display">\[
+F_c=F_b-\delta(u)\beta(A/R^2)\eta(B)
+\tag{1.12}
+\]</span> where <span class="math inline">\(|u|&lt;1\)</span>, and <span
+class="math inline">\(F_c=F_b\)</span> elsewhere. Near either endpoint
+<span class="math inline">\(R^2\)</span> stays positive and all
+derivatives of <span class="math inline">\(\delta\)</span> vanish, so
+the displayed joining is smooth. The difference has compact support:
+<span class="math inline">\(|u|\leq1\)</span>, <span
+class="math inline">\(A\leq(11/12)R^2\)</span>, and <span
+class="math inline">\(B\leq L\)</span> on that support. Positive
+definiteness in (1.1) bounds all transverse coordinates.</p>
+<h2 id="pair-cancelled-model">2. Cancellation, the complete derivative
+and the lower level</h2>
+<p>Write <span class="math inline">\(v=A/R^2\)</span>. The full
+derivatives on the changed region are <span class="math display">\[
+\begin{aligned}
+\partial_{y_i}F_c&amp;=-2a_i y_i
+       \left[1+\frac{\delta}{R^2}\beta&#39;(v)\eta(B)\right],\\
+\partial_{z_j}F_c&amp;=2b_j z_j
+       \left[1-\delta\beta(v)\eta&#39;(B)\right],\\
+\partial_uF_c&amp;=h&#39;-\delta&#39;\beta(v)\eta(B)
+       +2\delta\frac{R&#39;}R\,v\beta&#39;(v)\eta(B).
+\end{aligned}
+\tag{2.1}
+\]</span> Here <span class="math inline">\(2RR&#39;=h&#39;\)</span>. In
+particular the variable-radius contribution is retained. The first
+bracket is at least <span
+class="math inline">\(1-(3/5)(4/3)=1/5\)</span>; the second is at least
+one. A critical point would have <span
+class="math inline">\(y=z=0\)</span>. But there <span
+class="math inline">\(F_c=u\)</span> and <span
+class="math inline">\(\partial_uF_c=1\)</span>. Outside the changed
+region a possible critical point of <span
+class="math inline">\(F_b\)</span> would be one of (1.5), both of which
+lie in the changed region. Hence <span
+class="math inline">\(F_c\)</span> has no critical point anywhere.</p>
+<p>The entire level at <span class="math inline">\(a=-2\)</span> is
+unchanged: <span class="math display">\[
+F_c^{-1}(a)=F_b^{-1}(a).
+\tag{2.2}
+\]</span> To prove this, fix <span class="math inline">\(u\)</span> in
+the support interval and <span class="math inline">\(B\geq0\)</span>,
+and regard (1.12) as a function of <span
+class="math inline">\(A\)</span>. Its derivative with respect to <span
+class="math inline">\(A\)</span> is the negative of the first bracket in
+(2.1), hence is at most <span class="math inline">\(-1/5\)</span>. At
+<span class="math inline">\(A=R^2\)</span> its value is <span
+class="math inline">\(a+B\)</span>. Thus at <span
+class="math inline">\(A&lt;R^2\)</span> it is strictly greater than
+<span class="math inline">\(a+B\)</span>. At <span
+class="math inline">\(A\geq R^2\)</span> the modification is zero. This
+proves both inclusions in (2.2). In fact the support of the difference
+stays a positive distance above that level: when <span
+class="math inline">\(A\leq(11/12)R^2\)</span>, integration of the same
+derivative bound gives <span class="math display">\[
+F_c-a\geq B+\frac15(R^2-A)\geq B+\frac{R^2}{60}
+          \geq \frac1{60}.
+\tag{2.3}
+\]</span> The endpoint closures also satisfy this bound wherever the
+support can accumulate. Thus the two functions agree on a whole
+neighbourhood of their common <span
+class="math inline">\(a\)</span>-level.</p>
+<p>That level has a global parametrization, not merely a local chart.
+For <span class="math inline">\(y,z\)</span>, put <span
+class="math display">\[
+u_0=a+A(y)-B(z),\qquad
+\gamma(y,z)=1+\frac{\delta(u_0)}{A(y)},\qquad
+j(y,z)=(u_0,\sqrt{\gamma(y,z)}\,y,z).
+\tag{2.4}
+\]</span> When <span class="math inline">\(\delta(u_0)=0\)</span>,
+interpret <span class="math inline">\(\gamma=1\)</span>. This defines a
+smooth function even at <span class="math inline">\(A=0\)</span>: if
+<span class="math inline">\(A&lt;1\)</span>, then <span
+class="math inline">\(u_0&lt;-1\)</span>, so the added numerator is
+identically zero. When that numerator is nonzero, <span
+class="math inline">\(A=u_0-a+B&gt;1+B&gt;0\)</span>. Direct
+substitution, retaining both quadratic forms, gives <span
+class="math display">\[
+A(\sqrt\gamma\,y)=A(y)+\delta(u_0),\qquad F_b(j(y,z))=a.
+\tag{2.5}
+\]</span> On this level, writing its points as <span
+class="math inline">\((u,Y,z)\)</span>, the inverse is <span
+class="math display">\[
+j^{-1}(u,Y,z)=
+\left(
+\sqrt{\frac{u-a+B(z)}{u+\delta(u)-a+B(z)}}\,Y,\ z
+\right)
+\tag{2.6}
+\]</span> when <span class="math inline">\(\delta(u)\ne0\)</span>, and
+<span class="math inline">\((Y,z)\)</span> otherwise. Both numerator and
+denominator are positive on the support interval. The same zero
+extension proves smoothness at all other points, including <span
+class="math inline">\(Y=0\)</span>. Equations (2.4)–(2.6) verify the two
+inverse identities. Consequently <span class="math inline">\(j\)</span>
+is a diffeomorphism onto the entire common level.</p>
+<p>For later framing and metric comparisons, its derivative is <span
+class="math display">\[
+\begin{aligned}
+du_0&amp;=2\sum_i a_i y_i\,dy_i-2\sum_j b_jz_j\,dz_j=dA-dB,\\
+d\gamma&amp;=\frac{\delta&#39;(u_0)}A\,du_0
+                  -\frac{\delta(u_0)}{A^2}\,dA,\\
+d(\sqrt\gamma\,y)&amp;=\sqrt\gamma\,dy+\frac{y}{2\sqrt\gamma}\,d\gamma,
+\qquad dz=dz.
+\end{aligned}
+\tag{2.7}
+\]</span> The formulas involving <span
+class="math inline">\(A^{-1}\)</span> are used on <span
+class="math inline">\(A&gt;0\)</span> and have the smooth zero extension
+just proved. No term is dropped at a nonzero numerator.</p>
+<h2 id="pair-global-product">3. A global product with its inverse</h2>
+<p>Use the Euclidean metric on the model coordinates solely to define
+the following auxiliary vector field: <span class="math display">\[
+V=\frac{\nabla F_c}{\|\nabla F_c\|^2}.
+\tag{3.1}
+\]</span> There is a uniform positive lower bound for <span
+class="math inline">\(\|\nabla F_c\|\)</span>. Outside <span
+class="math inline">\(|u|\leq1\)</span>, the <span
+class="math inline">\(u\)</span>-derivative is one. Inside that interval
+but outside a bounded transverse set, the modification is zero and the
+transverse gradient of <span class="math inline">\(F_b\)</span>, namely
+<span class="math inline">\((-2a_i y_i,2b_jz_j)\)</span>, has norm
+tending to infinity. The remaining set is compact, and the already
+proved absence of critical points gives a positive minimum there. Let
+<span class="math inline">\(m&gt;0\)</span> be the resulting bound. Then
+<span class="math inline">\(\|V\|\leq1/m\)</span>.</p>
+<p>The field <span class="math inline">\(V\)</span> is complete in both
+time directions. In finite time, its bounded speed keeps every
+trajectory in a compact Euclidean ball. On that ball it is smooth with
+bounded derivatives, and the elementary local ODE theorem extends a
+trajectory past any proposed finite endpoint. Moreover <span
+class="math inline">\(dF_c(V)=1\)</span>. Writing its global flow as
+<span class="math inline">\(\phi_s\)</span>, define <span
+class="math display">\[
+H(q_0,t)=\phi_{t-a}(j(q_0)),\qquad
+H:\mathbb R^{n-1}\times\mathbb R\longrightarrow\mathbb R^n.
+\tag{3.2}
+\]</span> Here <span class="math inline">\(q_0=(y,z)\)</span>; it is a
+level parameter, not the critical point <span
+class="math inline">\(q\)</span> from (1.5). The inverse map is exactly
+<span class="math display">\[
+H^{-1}(x)=
+\left(j^{-1}(\phi_{a-F_c(x)}(x)),\,F_c(x)\right).
+\tag{3.3}
+\]</span> Indeed <span
+class="math inline">\(F_c(\phi_sx)=F_c(x)+s\)</span>, so the inner point
+lies in the common <span class="math inline">\(a\)</span>-level. Flow
+uniqueness and (2.6) verify both compositions. Smooth dependence of the
+flow verifies smoothness. Thus <span class="math inline">\(H\)</span> is
+a global diffeomorphism and <span class="math display">\[
+F_cH(q_0,t)=t,\qquad
+D H_{(q_0,t)}(\xi,\tau)
+  =D\phi_{t-a}|_{j(q_0)}\,Dj|_{q_0}\xi+V(H(q_0,t))\tau.
+\tag{3.4}
+\]</span> For completeness the derivative of the inverse uses <span
+class="math inline">\(s(x)=a-F_c(x)\)</span>: <span
+class="math display">\[
+D H^{-1}|_x=
+\begin{pmatrix}
+Dj^{-1}|_{\phi_sx}\,[D\phi_s|_x-V(\phi_sx)\,dF_c|_x]\\
+dF_c|_x
+\end{pmatrix}.
+\tag{3.5}
+\]</span> These formulas retain the variable hitting-time term.</p>
+<p>Set <span class="math display">\[
+\mathcal B(q_0,t)=F_b(H(q_0,t)).
+\tag{3.6}
+\]</span> Then <span class="math inline">\(\mathcal
+B-t=(F_b-F_c)H\)</span> has compact support <span
+class="math inline">\(K&#39;=H^{-1}K\)</span>, where <span
+class="math inline">\(K=\operatorname{supp}(F_b-F_c)\)</span>.
+Compactness follows because <span class="math inline">\(H^{-1}\)</span>
+is continuous. The entire two-critical-point function is now a compactly
+supported modification of the actual height coordinate, with its
+diffeomorphism explicitly proved.</p>
+<p>This construction also gives a single birth through a supported path.
+Put <span class="math display">\[
+F_s=F_b-(1-s)\delta\beta(A/R^2)\eta(B),\quad
+\mathcal B_s=F_sH,\qquad 0\leq s\leq1.
+\tag{3.7}
+\]</span> Outside <span class="math inline">\(|u|&lt;1\)</span> use the
+unchanged formula. Both transverse brackets remain positive. Therefore
+every critical point of <span class="math inline">\(F_s\)</span> lies on
+the axis, where its equation is <span
+class="math inline">\(1-sg(u)=0\)</span>. If <span
+class="math display">\[
+s_*=\frac1{g(u_*)},
+\tag{3.8}
+\]</span> then <span class="math inline">\(0&lt;s_*&lt;1\)</span>; there
+are no critical points for <span
+class="math inline">\(s&lt;s_*\)</span>, one degenerate point for <span
+class="math inline">\(s=s_*\)</span>, and exactly the two nondegenerate
+points for <span class="math inline">\(s&gt;s_*\)</span>. At the
+degenerate point the second derivative in <span
+class="math inline">\(u\)</span> is zero, the third is <span
+class="math inline">\(-s_*g&#39;&#39;(u_*)&gt;0\)</span>, and the
+derivative of <span class="math inline">\(\partial_uF_s\)</span> with
+respect to <span class="math inline">\(s\)</span> is <span
+class="math inline">\(-g(u_*)&lt;0\)</span>. The strict negativity of
+<span class="math inline">\(g&#39;&#39;(u_*)\)</span> follows by
+differentiating (1.3): at its zero the derivative of its numerator is
+<span class="math inline">\(-12u_*^3&lt;0\)</span> and its denominator
+is positive. Thus the path has the asserted single ordinary birth, with
+every transverse Hessian coefficient still <span
+class="math inline">\(-2a_i,2b_j\)</span>. It is not necessary to
+presume a birth theorem.</p>
+<h2 id="pair-connecting-trajectory">4. The exact descending field and
+its connecting trajectory</h2>
+<p>Near either critical coordinate <span
+class="math inline">\(u_c\in\{u_M,u_m\}\)</span>, put <span
+class="math display">\[
+\alpha_c=\frac{|h&#39;&#39;(u_c)|}{2},\qquad
+\sigma_M=-1,\quad\sigma_m=1,\qquad
+v_c(u)=(u-u_c)
+\sqrt{\frac{h(u)-h(u_c)}{\sigma_c\alpha_c(u-u_c)^2}}.
+\tag{4.1}
+\]</span> The quotient extends smoothly with value one, by Taylor’s
+integral formula. On a small interval it is positive and <span
+class="math inline">\(v_c&#39;&gt;0\)</span>, with <span
+class="math inline">\(v_c&#39;(u_c)=1\)</span>. The exact equation is
+<span class="math inline">\(h=h(u_c)+\sigma_c\alpha_c
+v_c^2\)</span>.</p>
+<p>Choose a smooth positive function <span
+class="math inline">\(\tau(u)\)</span>, equal to <span
+class="math inline">\(1/[2\alpha_c(v_c&#39;)^2]\)</span> on smaller
+disjoint critical intervals and equal to one outside a compact subset of
+<span class="math inline">\((0,1)\)</span>. A convex interpolation by
+cutoffs gives such a function, bounded above and below by positive
+constants. Define <span class="math display">\[
+X_b=(-\tau(u)h&#39;(u),\,y,\,-z).
+\tag{4.2}
+\]</span> Then <span class="math display">\[
+dF_b(X_b)=-\tau(u)(h&#39;(u))^2-2A(y)-2B(z)&lt;0
+\tag{4.3}
+\]</span> away from the two critical points. In the exact coordinates
+<span class="math inline">\((v_c,y,z)\)</span>, it is <span
+class="math inline">\((-\sigma_c v_c,y,-z)\)</span> near either point.
+At the minimum reorder the negative and positive coordinates as <span
+class="math inline">\((y;v_m,z)\)</span>. This reordering has
+determinant sign <span class="math inline">\((-1)^k\)</span>; the
+maximum order is <span class="math inline">\((v_M,y;z)\)</span>. The
+factors <span class="math inline">\(\alpha_c,a_i,b_j\)</span> remain in
+their function formulas.</p>
+<p>The field is complete: its <span
+class="math inline">\(u\)</span>-component is bounded, while <span
+class="math inline">\(y(s)=e^s y(0)\)</span> and <span
+class="math inline">\(z(s)=e^{-s}z(0)\)</span>. Its exact unstable and
+stable sets relevant here are <span class="math display">\[
+W^u(p)=\{(u,y,0):u&lt;u_m\},\qquad
+W^s(q)=\{(u,0,z):u&gt;u_M\}.
+\tag{4.4}
+\]</span> For the first equality, a backward limit at <span
+class="math inline">\(p\)</span> forces <span
+class="math inline">\(z=0\)</span>; the scalar <span
+class="math inline">\(u\)</span>-equation has backward limit <span
+class="math inline">\(u_M\)</span> exactly when <span
+class="math inline">\(u&lt;u_m\)</span>, and the <span
+class="math inline">\(y\)</span>-coordinates then tend to zero. The
+forward argument proves the second equality. Their intersection is the
+open axial interval <span
+class="math inline">\(u_M&lt;u&lt;u_m\)</span>. On it <span
+class="math inline">\(-\tau h&#39;&gt;0\)</span>, so it is a single
+nonconstant trajectory. The tangent spaces of the two sets span the
+<span class="math inline">\(u,y\)</span> and <span
+class="math inline">\(u,z\)</span> directions, respectively, and their
+sum is the entire tangent space. Thus the connecting trajectory is
+transverse.</p>
+<p>Every other nonconstant descending trajectory in <span
+class="math inline">\(W^u(p)\)</span> crosses <span
+class="math inline">\(F_b=a\)</span>. If <span
+class="math inline">\(y\ne0\)</span>, then <span
+class="math inline">\(A(y(s))=e^{2s}A(y(0))\)</span> tends to infinity,
+while <span class="math inline">\(h(u(s))\)</span> is bounded above on
+<span class="math inline">\(u&lt;u_m\)</span>; hence <span
+class="math inline">\(F_b\)</span> tends to minus infinity. If <span
+class="math inline">\(y=0\)</span> and <span
+class="math inline">\(u&lt;u_M\)</span>, the scalar solution eventually
+enters <span class="math inline">\(u&lt;-1\)</span>, where its
+derivative is <span class="math inline">\(-1\)</span>, and again the
+value tends to minus infinity. The only remaining nonconstant orbit is
+the connecting interval.</p>
+<p>The closure of the part needed above the lower level is compact:
+<span class="math display">\[
+T=\overline{W^u(p)\cap\{F_b\geq a\}}
+   =\{(u,y,0): a\leq u\leq u_m,\ A(y)\leq h(u)-a\}.
+\tag{4.5}
+\]</span> The equality follows from (4.4), with its limiting face <span
+class="math inline">\(u=u_m\)</span> retained. Positive definiteness and
+compactness of the <span class="math inline">\(u\)</span>-interval give
+compactness. In particular it includes the limiting lower unstable disk;
+that contribution is not discarded. This is the full compact set that
+will be kept inside the original regular band.</p>
+<h2 id="pair-original-band">5. Insert the pair in the original band</h2>
+<p>Let <span class="math inline">\(f:C\to\mathbb R\)</span> be the
+original Morse function and <span class="math inline">\(Z\)</span> its
+descending field. Choose a regular product chart <span
+class="math display">\[
+\Gamma:Q\times J\longrightarrow C,\qquad f\Gamma(x,t)=t,
+\tag{5.1}
+\]</span> where <span class="math inline">\(Q\)</span> is a coordinate
+ball in an original regular level and <span
+class="math inline">\(J\)</span> is an open interval with no critical
+value. The <a
+href="morse-trajectories-and-critical-value-lowering.html#trajectory-holonomy">Morse-trajectory
+companion</a> constructs this chart from the original field and retains
+its full derivative. Choose its coordinate origin in <span
+class="math inline">\(Q\)</span>, and choose <span
+class="math inline">\(t_0\in J\)</span>.</p>
+<p>The compact sets <span class="math inline">\(K&#39;\)</span>, <span
+class="math inline">\(H^{-1}T\)</span> and a neighbourhood of both
+critical points in <span class="math inline">\(H\)</span>-coordinates
+fit in a finite coordinate rectangle. Enlarge that rectangle to contain
+all the values of <span class="math inline">\(F_b\)</span> on <span
+class="math inline">\(T\)</span>, the value <span
+class="math inline">\(a\)</span>, and the two critical values in its
+height bound. Choose explicit positive scales <span
+class="math inline">\(\epsilon_1,\ldots,\epsilon_{n-1},\lambda\)</span>
+small enough that <span class="math display">\[
+L_0(q_0,t)=(\epsilon_1q_{0,1},\ldots,\epsilon_{n-1}q_{0,n-1},
+                         t_0+\lambda t)
+\tag{5.2}
+\]</span> carries the closure of a larger rectangle into <span
+class="math inline">\(Q\times J\)</span>. Such choices exist because the
+rectangle is compact and <span class="math inline">\(Q\times J\)</span>
+is open around <span class="math inline">\((0,t_0)\)</span>. Retain the
+chosen scales as part of the construction. They specify an embedding of
+the model into the original coordinates; the original function is not
+replaced by a rescaled function elsewhere.</p>
+<p>In this chart set <span class="math display">\[
+f_{\mathrm{new}}(\Gamma L_0(q_0,t))
+       =t_0+\lambda\mathcal B(q_0,t),
+\tag{5.3}
+\]</span> and use the old <span class="math inline">\(f\)</span> outside
+the changed compact subset. The two definitions agree on a whole open
+collar because <span class="math inline">\(\mathcal B=t\)</span> outside
+<span class="math inline">\(K&#39;\)</span>. Thus the joining is smooth.
+Replacing <span class="math inline">\(\mathcal B\)</span> by <span
+class="math inline">\(\mathcal B_s\)</span> gives the supported birth
+path from the actual old function to the new one.</p>
+<p>On the model domain for which the expression is defined, the complete
+comparison map is <span class="math display">\[
+E=\Gamma L_0 H^{-1},\qquad
+f_{\mathrm{new}}E=t_0+\lambda F_b,\qquad
+DE=D\Gamma|_{L_0H^{-1}}\;DL_0\;DH^{-1}.
+\tag{5.4}
+\]</span> Here <span
+class="math inline">\(DL_0=\operatorname{diag}(\epsilon_1,\ldots,\epsilon_{n-1},\lambda)\)</span>.
+At either new critical point, <span class="math display">\[
+(DE)^t\,\operatorname{Hess}(f_{\mathrm{new}})\,DE
+     =\lambda\,\operatorname{Hess}(F_b).
+\tag{5.5}
+\]</span> The extra second-derivative chain-rule term vanishes there
+precisely because <span
+class="math inline">\(df_{\mathrm{new}}=0\)</span>. Equations (1.6),
+(5.4) and (5.5) give the original-coordinate Hessians without deleting
+any factor. The original metric <span class="math inline">\(g_C\)</span>
+pulls back to <span class="math display">\[
+E^*g_C=(DE)^t(g_C\circ E)\,DE;
+\tag{5.6}
+\]</span> the auxiliary Euclidean metric in (3.1) was not an assertion
+that this metric is Euclidean.</p>
+<p>To construct the endpoint field, choose a smooth cutoff <span
+class="math inline">\(\rho\)</span> equal to one on a neighbourhood of
+<span class="math inline">\(K&#39;\cup H^{-1}T\)</span>, with compact
+support inside the larger rectangle. It can be chosen so that its
+transition region misses <span class="math inline">\(K&#39;\)</span>:
+first take a relatively compact open neighbourhood of that entire
+compact set, then a larger one, and use a smooth cutoff between them.
+Push <span class="math inline">\(X_b\)</span> forward by <span
+class="math inline">\(E\)</span>, and set <span class="math display">\[
+Z_{\mathrm{new}}=\rho\,E_*X_b+(1-\rho)Z
+\tag{5.7}
+\]</span> inside the chart, with the cutoff interpreted through <span
+class="math inline">\(L_0^{-1}\Gamma^{-1}\)</span>, and <span
+class="math inline">\(Z_{\mathrm{new}}=Z\)</span> outside. On the
+transition region <span
+class="math inline">\(f_{\mathrm{new}}=f\)</span>; there both fields
+strictly decrease that same function. On the inner region (4.3) applies,
+and at either new critical neighbourhood the field is exactly the Morse
+model from (4.1)–(4.2). Thus (5.7) is a smooth descending Morse
+field.</p>
+<p>The entire image of <span class="math inline">\(T\)</span> has the
+unchanged pushed-forward model field on a neighbourhood. Therefore the
+new upper unstable trajectories, followed down to the level <span
+class="math inline">\(t_0+\lambda a\)</span>, are exactly those proved
+in Section 4. Any trajectory which has crossed that lower level cannot
+return to the new lower critical value, since the function strictly
+decreases. There can be no extra connection produced by the outer
+interpolation. We have consequently inserted exactly one geometrically
+cancelling pair in the original band, keeping both original boundary
+collars and every other critical neighbourhood. The cancellation
+hypotheses in <a
+href="morse-cancellation-with-controlled-support.html#morse-cancellation-data">the
+supported cancellation companion</a> now hold for this actual pair.</p>
+<p>The <a
+href="relative-morse-functions-and-original-handles.html">original handle
+construction</a> gives the actual handle presentation of <span
+class="math inline">\(f_{\mathrm{new}}\)</span>. If <span
+class="math inline">\(G_{\mathrm{old}}:P_{\mathrm{old}}\to C\)</span>
+and <span class="math inline">\(G_{\mathrm{new}}:P_{\mathrm{new}}\to
+C\)</span> are its two complete presentation maps, their exact
+comparison is <span class="math display">\[
+\Psi=G_{\mathrm{new}}^{-1}G_{\mathrm{old}},\qquad
+D\Psi|_x=DG_{\mathrm{new}}^{-1}|_{G_{\mathrm{old}}(x)}
+                                      DG_{\mathrm{old}}|_x.
+\tag{5.8}
+\]</span> It carries every old thick attaching map <span
+class="math inline">\(\alpha\)</span> to <span
+class="math inline">\(\Psi\alpha\)</span>, with frame <span
+class="math inline">\(D\Psi|_\alpha D\alpha\)</span>. The entire
+outgoing restriction is retained. This supplies the morphism between the
+two presentations of the original cobordism.</p>
+<h2 id="pair-attaching-disk">6. The lower attaching sphere bounds its
+framed disk</h2>
+<p>Write <span class="math inline">\(h_m=h(u_m)\)</span>. The lower
+unstable disk down to the original model <span
+class="math inline">\(a\)</span>-level is exactly <span
+class="math display">\[
+D_q=\{(u_m,y,0):A(y)\leq h_m-a\}.
+\tag{6.1}
+\]</span> It is embedded, its boundary lies in <span
+class="math inline">\(F_b^{-1}(a)\)</span>, and its interior is the
+lower unstable manifold truncated at that level. Apply <span
+class="math inline">\(H^{-1}\)</span> to its boundary. Since <span
+class="math inline">\(H(q_0,a)=j(q_0)\)</span>, (2.6) gives the exact
+lower attaching sphere in the original height product: <span
+class="math display">\[
+t=a,\quad z=0,\quad A(y_0)=u_m-a,\qquad
+y_0=\sqrt{\frac{u_m-a}{h_m-a}}\,y.
+\tag{6.2}
+\]</span> In that very same level it bounds the disk <span
+class="math display">\[
+D_{\mathrm{in}}=\{(y_0,0,a):A(y_0)\leq u_m-a\}.
+\tag{6.3}
+\]</span> Choose the rectangle in Section 5 to contain this additional
+compact disk and a neighbourhood before fixing its scales. This is
+compatible with every earlier compactness requirement. Its image under
+<span class="math inline">\(\Gamma L_0\)</span> is the desired actual
+embedded disk in the original regular level. For <span
+class="math inline">\(k=2\)</span>, (6.2) is the actual contractible
+attaching circle needed later.</p>
+<p>We also compute the normal frame supplied by the Morse construction.
+Choose a small positive <span
+class="math inline">\(\varepsilon&lt;h_m-a\)</span> within the exact
+lower critical chart. On its descending unstable sphere <span
+class="math inline">\(A(y)=\varepsilon\)</span>, <span
+class="math inline">\(v_m=z=0\)</span>. A whole nearby level section is
+<span class="math display">\[
+y=\sqrt{\frac{\varepsilon+\alpha_m v_m^2+B(z)}{\varepsilon}}\,
+       y_\theta,\qquad A(y_\theta)=\varepsilon,
+\tag{6.4}
+\]</span> so its function value is exactly <span
+class="math inline">\(h_m-\varepsilon\)</span>. This formula specifies
+the initial thick section, with all mixed derivatives included by
+differentiation; its derivatives in <span
+class="math inline">\(v_m,z\)</span> at zero have no <span
+class="math inline">\(y\)</span>-component.</p>
+<p>On the unstable sphere the time to <span
+class="math inline">\(a\)</span> is the constant <span
+class="math display">\[
+T_0=\frac12\log\frac{h_m-a}{\varepsilon}.
+\tag{6.5}
+\]</span> The linearized <span class="math inline">\(u\)</span>-equation
+along it is <span class="math inline">\(\dot{\xi}_u=-\xi_u\)</span>,
+since <span class="math inline">\(\tau(u_m)h&#39;&#39;(u_m)=1\)</span>.
+The <span class="math inline">\(z\)</span>-equation is also <span
+class="math inline">\(\dot{\xi}_z=-\xi_z\)</span>. At the endpoint their
+first variations of <span class="math inline">\(F_b\)</span> vanish:
+<span class="math inline">\(h&#39;(u_m)=0\)</span>, <span
+class="math inline">\(z=0\)</span>, and their <span
+class="math inline">\(y\)</span>-variations are zero. The implicit
+hitting-time derivative is therefore zero in these normal directions. As
+<span class="math inline">\(v_m&#39;(u_m)=1\)</span>, their transported
+model frame is <span class="math display">\[
+e^{-T_0}\partial_u,\qquad
+e^{-T_0}\partial_{z_1},\ldots,e^{-T_0}\partial_{z_{n-k-1}}.
+\tag{6.6}
+\]</span> Apply the full derivative of (2.6) at <span
+class="math inline">\(u=u_m,z=0\)</span>. Since <span
+class="math inline">\(h&#39;(u_m)=0\)</span>, it gives, in the fixed
+<span class="math inline">\(t=a\)</span> level, <span
+class="math display">\[
+e^{-T_0}\frac{y_0}{2(u_m-a)},\qquad
+e^{-T_0}\partial_{z_1},\ldots,e^{-T_0}\partial_{z_{n-k-1}}.
+\tag{6.7}
+\]</span> The first vector is outward radial in (6.3); the remaining
+constant vectors are its normal frame throughout the disk. The positive
+factors in (6.7) give a specified homotopy through frames to the outward
+radial vector followed by the constant <span
+class="math inline">\(z\)</span>-frame, by interpolating each factor in
+the positive real numbers. No rotation or twist is being assumed absent
+without calculation.</p>
+<p>The actual sphere, disk and frame are the images of (6.2), (6.3),
+(6.7) under the full maps <span class="math inline">\(\Gamma
+L_0\)</span> and <span class="math inline">\(D(\Gamma L_0)\)</span>. The
+complete nearby attaching tube is obtained from (6.4) by the <span
+class="math inline">\(X_b\)</span>-flow with its unique implicit hitting
+time, then by <span class="math inline">\(j^{-1}\)</span> and <span
+class="math inline">\(\Gamma L_0\)</span>. For an initial point <span
+class="math inline">\(x\)</span> of that section, that time <span
+class="math inline">\(T(x)\)</span> and its full derivative satisfy
+<span class="math display">\[
+F_b(\operatorname{Fl}^{X_b}_{T(x)}x)=a,\qquad
+dT=-\frac{dF_b|_{\operatorname{Fl}_{T}x}\,
+                  D\operatorname{Fl}_{T}|_x}
+                 {dF_b(X_b)|_{\operatorname{Fl}_{T}x}}.
+\tag{6.8}
+\]</span> The denominator is strictly negative; compactness of the
+initial sphere gives a uniform sufficiently small tube on which the
+formula is defined. Its tangent map is <span
+class="math inline">\(D\operatorname{Fl}_T+X_b\,dT\)</span>, followed by
+<span class="math inline">\(Dj^{-1}\)</span> and <span
+class="math inline">\(D(\Gamma L_0)\)</span>. This retains the entire
+thick embedding and all frame contributions, beyond just its central
+sphere.</p>
+<h2 id="pair-exercises">7. Two complete calculations</h2>
+<h3
+id="a-six-dimensional-pair-with-five-distinct-transverse-coefficients">7.1.
+A six-dimensional pair with five distinct transverse coefficients</h3>
+<p>Take <span class="math inline">\(n=6,k=2\)</span>, and retain <span
+class="math display">\[
+A=2y_1^2+7y_2^2,\qquad B=3z_1^2+5z_2^2+13z_3^2.
+\tag{7.1}
+\]</span> Compute the final and cancelled Hessians and the incoming
+attaching ellipse.</p>
+<p><strong>Solution.</strong> At either critical point of <span
+class="math inline">\(F_b\)</span>, its Hessian is <span
+class="math display">\[
+\operatorname{diag}(h&#39;&#39;(u_c),-4,-14,6,10,26).
+\tag{7.2}
+\]</span> The signs give index three at <span
+class="math inline">\(u_M\)</span>, and index two at <span
+class="math inline">\(u_m\)</span>. The cancelled function has no
+critical point, as its transverse derivative vector is <span
+class="math display">\[
+(-4y_1,-14y_2)
+       [1+(\delta/R^2)\beta&#39;\eta],\qquad
+(6z_1,10z_2,26z_3)[1-\delta\beta\eta&#39;].
+\tag{7.3}
+\]</span> Both brackets are strictly positive; on their only common zero
+<span class="math inline">\(y=z=0\)</span>, the remaining derivative is
+one. The lower attaching ellipse in the product level is <span
+class="math display">\[
+2y_{0,1}^2+7y_{0,2}^2=u_m+2,\qquad z=0,\quad t=-2.
+\tag{7.4}
+\]</span> Its semiaxes are <span
+class="math inline">\(\sqrt{(u_m+2)/2}\)</span> and <span
+class="math inline">\(\sqrt{(u_m+2)/7}\)</span>, and its framed filling
+is the exact inequality with the same left side. Under (5.2) these two
+semiaxes become <span
+class="math inline">\(\epsilon_1\sqrt{(u_m+2)/2}\)</span> and <span
+class="math inline">\(\epsilon_2\sqrt{(u_m+2)/7}\)</span> in the chosen
+original level coordinates; its level is <span
+class="math inline">\(t_0-2\lambda\)</span>. The original metric lengths
+are computed with <span class="math inline">\(\Gamma^*g_C\)</span>, not
+presumed equal to these coordinate semiaxes. Equations (5.4)–(5.6)
+specify that comparison.</p>
+<h3 id="the-variable-time-term-is-necessary">7.2. The variable-time term
+is necessary</h3>
+<p>For the product (3.2), calculate the derivative of its inverse and
+verify its height component and level projection.</p>
+<p><strong>Solution.</strong> The height derivative is <span
+class="math inline">\(dF_c\)</span>. The level projection <span
+class="math inline">\(P(x)=\phi_{a-F_c(x)}x\)</span> has derivative
+<span class="math display">\[
+DP=D\phi_{a-F_c(x)}|_x
+      -V(P(x))\,dF_c|_x.
+\tag{7.5}
+\]</span> The identity <span
+class="math inline">\(F_c\phi_s=F_c+s\)</span>, differentiated with
+<span class="math inline">\(s\)</span> fixed, gives <span
+class="math inline">\(dF_c|_{P(x)}D\phi_s|_x=dF_c|_x\)</span>. Since
+<span class="math inline">\(dF_c(V)=1\)</span>, applying <span
+class="math inline">\(dF_c|_{P(x)}\)</span> to (7.5) gives zero. Thus
+<span class="math inline">\(DP\)</span> lands in the tangent space of
+the actual <span class="math inline">\(a\)</span>-level, as required for
+<span class="math inline">\(Dj^{-1}\)</span> in (3.5). Also flow
+invariance gives <span class="math inline">\(D\phi_s
+V(x)=V(P(x))\)</span>; therefore <span
+class="math inline">\(DP(V(x))=0\)</span>. Substituting (3.4) into (3.5)
+now gives the identity on both the level tangent and height directions.
+Omitting the second term of (7.5) would send <span
+class="math inline">\(V(x)\)</span> to the nonzero vector <span
+class="math inline">\(V(P(x))\)</span>, which is not tangent to the
+level. The omitted term would make the proposed inverse derivative
+false.</p>
+<figure>
+<img src="assets/original-handle-pair.svg" alt="The exact supported birth path on its axis, the retained incoming ellipse and outward frame, and the full product and original-band maps." />
+<figcaption>
+The left panel samples the exact axis restriction (3.7) at zero, the
+unique birth parameter (3.8), and one. Its two marked final points have
+the indices proved in Section 1. The right panel is the actual incoming
+coordinate ellipse (7.4), with outward transverse directions from (6.7);
+the three constant normal directions are outside the plotted slice. The
+lower arrows are the complete maps (3.2) and (5.4), restricted to the
+chosen implantation domain for the second arrow. Sections 2–6 prove
+their inverses, derivatives, support and framing. The plots are
+numerical illustrations of those exact formulas; no metric
+identification follows from their appearance.
+</figcaption>
+</figure>
+<h2 id="pair-sources">8. Sources and the next use</h2>
+<p>The construction uses the exact supported cutoff mechanism already
+proved in <a
+href="morse-cancellation-with-controlled-support.html#morse-supported-cutoff">the
+cancellation companion, Section 5</a>, and its explicitly calculated
+two-critical-point example. The human source for the cancellation
+mechanism is François Laudenbach, <a
+href="https://arxiv.org/abs/1307.2545v1"><em>A proof of Morse’s theorem
+about the cancellation of critical points</em>, arXiv:1307.2545v1</a>,
+Sections 1–3; both retained original-author TeX files were already read
+in full. The global level parametrization, complete product, compact
+implantation, birth path and framing calculation are written out above
+as the receiving teaching derivation. No additional external source
+reading or novelty is claimed.</p>
+<p>This proves the exact pair-creation step, including the framed disk
+for the new lower attaching sphere. The <a
+href="framed-handle-slides-and-index-one-removal.html#slide-index-one-cancellation">framed
+slides and index-one removal</a> now use this pair, calculate the exact
+based relator sign and multiplication order, construct the full ambient
+loop isotopy, and verify the unique transverse trajectory for the actual
+one/two cancellation. The added three-handle remains with its complete
+transported attachment. The included middle-cancellation companion
+proves the later reduction, and the <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> supplies the full six-sphere group
+calculation. This companion by itself does not complete lesson 7.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

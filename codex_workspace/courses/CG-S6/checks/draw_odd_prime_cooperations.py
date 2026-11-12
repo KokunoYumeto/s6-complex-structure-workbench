@@ -1,0 +1,42 @@
+"""Actual odd-prime bar maps and the degree-six calculation. CC0-1.0."""
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+W=Path(__file__).resolve().parents[1]/'assets'
+plt.rcParams.update({'svg.hashsalt':'CG-S6-odd-prime-cooperations','font.family':'DejaVu Sans'})
+fig,ax=plt.subplots(figsize=(14,10));ax.set(xlim=(0,14),ylim=(0,10));ax.axis('off')
+ink='#19333f';teal='#147989';purple='#754d96'
+def txt(x,y,s,size=13,color=ink,weight='normal'):ax.text(x,y,s,ha='center',va='center',fontsize=size,color=color,fontweight=weight)
+def arrow(a,b):ax.annotate('',xy=b,xytext=a,arrowprops=dict(arrowstyle='->',lw=1.8,color=teal))
+txt(7,9.65,'The original odd-prime maps give vanishing in degree six',18,weight='bold')
+txt(7,9.16,'1. Compute the actual bar homology, with the original internal degree d',13,weight='bold')
+txt(2.7,8.58,r'$T=k[e]/(e^p),\quad |e|=d\ \mathrm{even}$',16)
+txt(10.1,8.58,r'$H_*B(T)=E_k(\sigma e)\otimes\Gamma_k(\varphi e)$',16)
+arrow((5.1,8.58),(6.4,8.58));txt(5.75,8.9,r'$H_*B(-)$',11)
+txt(7,8.05,r'$\sigma e=[e],\quad |\sigma e|=d+1;\qquad\varphi e=[e^{p-1}|e],\quad|\varphi e|=pd+2$',16)
+txt(7,7.54,r'$U_mU_n=\binom{m+n}{m}U_{m+n},\qquad U_n=[e^{p-1}|e|\cdots|e^{p-1}|e]$',16)
+txt(7,7.11,'Actual chains → bar prisms → classifying space → original coefficient-space suspension (Sections 1–3).',11)
+ax.plot([.4,13.6],[6.78,6.78],color='#d5dfe3')
+txt(7,6.43,'2. Stabilize those original generators; retain both degree-five classes at p = 3',13,weight='bold')
+txt(3.7,5.96,r'$r$',17)
+txt(3.7,5.51,r'$\dim\Gamma_r^{(3)}$',17)
+txt(3.7,5.06,r'$\dim\Gamma_r^{(p)}$',17)
+for i in range(8):
+ txt(5.05+.68*i,5.96,str(i),17)
+ txt(5.05+.68*i,5.51,str([1,1,0,0,1,2,1,0][i]),17)
+ txt(5.05+.68*i,5.06,str([1,1,0,0,0,0,0,0][i]),17)
+txt(11.2,5.06,r'$(p\geq5)$',16)
+txt(7,4.61,r'$\Gamma_r^{(p)}=\mathrm{colim}_q\,\widetilde H_{q+r}(L_q;\mathbb{F}_p)$',17)
+txt(7,4.22,'For q ≥ 8 and 0 ≤ r ≤ 7, every product has degree ≥ 2q > q + r (Section 4).',11)
+ax.plot([.4,13.6],[3.89,3.89],color='#d5dfe3')
+txt(7,3.54,'3. Bound every original stem-six word, then use the actual Adams comparison',13,weight='bold')
+txt(7,3.03,r'$p=3:\quad |t|=1,\quad|x|=4,\quad d[tx]=-[t|x]+[x|t],\quad d[x^2]=2[x|x]$',16)
+txt(7,2.53,r'$[t]^a[x][t]^b[x][t]^c\ \sim\ [t]^{a+b+c}[x|x]=d\left(2[t]^{a+b+c}[x^2]\right)$',16)
+txt(7,2.08,'The sign of each interchange is retained in (5.6); p ≥ 5 has no stem-six words.',11)
+txt(7,1.61,r'$T_s[a_1|\cdots|a_s]=(-1)^{s+\sum_{j=1}^s(s-j)|a_j|}[a_1|\cdots|a_s]$',16)
+txt(7,1.09,r'$E_2^{s,s+6}=0\ (s\geq0)\qquad\Longrightarrow\qquad\pi_6(\mathbb{S}^{\wedge}_p)=0\ (p\ \mathrm{odd})$',18,color=teal)
+txt(7,.63,'Proof: (4.3), (5.4)–(5.8), (6.11)–(6.13). The integral comparison and original framed value remain.',10)
+txt(7,.27,'Human source context: Eric Peterson, FormalGeomNotes, cooperations.tex 269–277. Full proofs and precise links accompany this figure.',9)
+fig.tight_layout(pad=.6);fig.savefig(W/'odd-prime-cooperations.svg',metadata={'Date':None});plt.close(fig)
+print('Rendered the original odd-prime maps, dimensions, boundaries and convergence.')

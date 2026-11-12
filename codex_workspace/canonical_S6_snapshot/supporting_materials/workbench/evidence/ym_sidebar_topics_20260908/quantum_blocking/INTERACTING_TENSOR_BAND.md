@@ -1,0 +1,390 @@
+# The interacting first band in the original tensor coordinates
+
+Complete section of the cumulative manuscript, 9 September 2026.
+
+ 
+
+We now relate the complete first interaction matrix to the original Fabel tensor and to each weighted curvature state. The result is an exact onto map at every sufficiently small positive coupling in each fixed original box, together with the first interaction coefficient of its raw norms, energies and spectral evolution. All estimates in this section fix $L\ge2$ and $a>0$. Their volume dependence is retained. The source *The cubic color singlet and the first vacuum-energy correction* is included in full as `references/CUBIC_SINGLET_INPUT.md`; its complete inspected revision and coefficients are used below.
+
+## The original weighted graph estimate and the exact input dictionary
+
+To avoid confusing the Gaussian matrix $K$ of (178) with an operator, put $K_{\mathrm{el}}=\sum_eE_e$ and $W=\sum_p(2-\operatorname{tr}U_p)$. Each of the four distinct edge variables of an original face is in the fundamental representation. Directly, $\sum_\alpha T_\alpha^2=-3I/4$; differentiating its trace twice in each edge therefore proves 
+
+$$
+K_{\mathrm{el}}\operatorname{tr}U_p=3\operatorname{tr}U_p,
+ \qquad K_{\mathrm{el}}W=3W-6|\mathsf P_L|.
+$$
+
+ The constant and the number of original faces have not been removed. For complex smooth $u$, integration by parts in Haar probability measure gives 
+
+$$
+\operatorname{Re}\langle K_{\mathrm{el}}u,Wu\rangle
+ =\sum_{e,\alpha}\int W|X_{e,\alpha}u|^2
+       +\tfrac12\int(K_{\mathrm{el}}W)|u|^2.
+$$
+
+ For the mixed derivative use $\operatorname{Re}(\overline u Xu)=X|u|^2/2$ and integrate its $XW$ factor once more. Since the original $\kappa b=a^{-2}$, we obtain the exact identity 
+
+$$
+\begin{aligned}
+ \|H_gu\|^2={}&\|\kappa K_{\mathrm{el}}u\|^2+\|bWu\|^2
+   +\frac2{a^2}\sum_{e,\alpha}\int W|X_{e,\alpha}u|^2\\
+ &+\frac1{a^2}\int(3W-6|\mathsf P_L|)|u|^2.
+ \qquad\text{(199)}
+\end{aligned}
+$$
+
+ Each $2-\operatorname{tr}U_p\ge0$. Joint Peter--Weyl decomposition of the commuting nonnegative edge Casimirs gives $\|\sum f_eE_eu\|\le\|f\|_\infty\|K_{\mathrm{el}}u\|$. The retained quarter-boundary average has $|f_p|\le\|f\|_\infty$, so $|W_f|\le\|f\|_\infty W$ pointwise. The triangle inequality, $(x+y)^2\le2(x^2+y^2)$ and (199) prove 
+
+$$
+\qquad\text{(200)}
+ \|D_{f,g}u\|\le\sqrt2\,\|f\|_\infty
+ \left(\|H_gu\|^2+\frac{6|\mathsf P_L|}{a^2}\|u\|^2\right)^{1/2}.
+$$
+
+ Smooth functions are a graph core for the original compact elliptic operator, so approximation extends this to its full operator domain. This proves a bound independent of $g$ at fixed $L,a$. In particular the lower-order raw quasimode already controls each weighted vacuum vector through order $g^2$ with an $O(g^3)$ error. The fourth-order fields, face coefficients and quasimode in Section 17 remain valid and are retained. Its earlier $g^{-2}$ estimate is a weaker valid bound; (200) proves why that loss is unnecessary for this operator. The factor $|\mathsf P_L|/a^2$ remains explicit.
+
+Here is the coordinate map to the retained input. Its matrices, distinguished by a subscript $\mathrm{in}$, satisfy 
+
+$$
+\qquad\text{(201)}
+ B_{\mathrm{in}}=K/4,\quad M_{\mathrm{in}}=2K^{-1},\quad
+ \mathsf A_{\mathrm{in}}=G^{1/2}O,\quad
+ t^{\mathrm{in}}_{ec}=t_{ce},\quad s^{\mathrm{in}}_{ec}=-b_{ce}.
+$$
+
+ Substituting into the input Gaussian gives exactly $\Phi_0=N_0\exp(-\sum_\alpha x^{\alpha\mathsf T}Kx^\alpha/8)$. Its variable $p_{\mathrm{in}}$ is our $Kx/4$. The kinetic determinant $-2\sum s^{\mathrm{in}}t^{\mathrm{in}}
+\det(x,p_{\mathrm{in}},p_{\mathrm{in}})/a$ therefore equals the kinetic term $\sum v_e\cdot\theta_e/(8a)$ in (179), by the cyclic determinant identity. The ordered face expansion is the same Pauli product, so its magnetic term agrees too. If $\Theta_{ijk}$ is the input coefficient of $\det(z_i,z_j,z_k)\Phi_0$ for $i<j<k$, its precise map to our creation coefficient is 
+
+$$
+\qquad\text{(202)}
+ d_{ijk}=\sqrt{\frac8{\sigma_i\sigma_j\sigma_k}}\,\Theta_{ijk}.
+$$
+
+ Indeed $z_i^\alpha=\sqrt{2/\sigma_i}(a_{i\alpha}+a^\dagger_{i\alpha})$, and these three distinct modes have no vacuum contractions. Thus the two raw norms are exactly $6|d_{ijk}|^2=48|\Theta_{ijk}|^2/(\sigma_i\sigma_j\sigma_k)$; division by the identical excitation $(\sigma_i+\sigma_j+\sigma_k)/a$ proves agreement of the vacuum-energy and inverse-vector formulas, with no hidden scale.
+
+## The complete first interaction matrix in a raw frame
+
+Let $\sigma=\sigma_*$ be the lowest spatial frequency, let the three lowest modes be numbered $1,2,3$ as in Section 14, and put $\Delta=2\sigma/a$. In the fixed ordered six coordinates $\mathcal I=(11,22,33,12,13,23)$ use the following comparison vectors: 
+
+$$
+\begin{aligned}
+ S_{ii}&=\frac1{\sqrt6}\sum_\alpha
+                  (a^\dagger_{i\alpha})^2\Phi_0
+       =\frac{\sigma}{2\sqrt6}(|z_i|^2-6/\sigma)\Phi_0,\\
+ S_{ij}&=\frac1{\sqrt3}\sum_\alpha
+           a^\dagger_{i\alpha}a^\dagger_{j\alpha}\Phi_0
+       =\frac{\sigma}{2\sqrt3}(z_i\cdot z_j)\Phi_0\quad(i<j).
+ \qquad\text{(203)}
+\end{aligned}
+$$
+
+ The six and three independent colour contractions prove that these vectors are orthonormal. They are exactly the input's six vectors, not a change of any original trial state. Section 14 proves their span is the full first physical eigenspace. Denote its projection by $P_*$ and write $A_0=H_{\mathrm{osc}}-\mu_0$.
+
+For complete evaluation let $h_n\Phi_0$ be the product Hermite occupation basis on all $3r$ coordinates, with $\omega_n=\sum_{i,\alpha}n_{i\alpha}\sigma_i/a$. The probabilists' polynomial is 
+
+$$
+\operatorname{He}_k(u)=k!\sum_{j=0}^{\lfloor k/2\rfloor}
+ \frac{(-1)^j u^{k-2j}}{2^j j!(k-2j)!},\qquad
+ h_n(z)=\prod_{i,\alpha}
+ \frac{\operatorname{He}_{n_{i\alpha}}(\sqrt{\sigma_i/2}z_i^\alpha)}
+      {\sqrt{n_{i\alpha}!}}.
+$$
+
+ Define the explicitly evaluable coefficients 
+
+$$
+\begin{aligned}
+ c_{I,n}&=\langle h_n\Phi_0,H^{(1)}S_I\rangle,\quad
+ V_{IJ}=\langle S_I,H^{(2)}S_J\rangle,\\
+ \mathsf K_{IJ}&=V_{IJ}
+   -\sum_{|n|=3\ \mathrm{or}\ 5}
+                  \frac{\overline{c_{I,n}}c_{J,n}}{\omega_n-\Delta}
+   -E^{(2)}\delta_{IJ}.
+ \qquad\text{(204)}
+\end{aligned}
+$$
+
+ These symbols specify finite coefficients, not unevaluated arbitrary operator data: substitute the full polynomial fields and face words of (176), then the displayed Hermite polynomial and $x=G^{1/2}Oz$. Each monomial expectation is zero in odd degree; in degree $2k$ it is the sum over all $(2k-1)!!$ pairings, with factor $2\delta_{ij}\delta_{\alpha\beta}/\sigma_i$ for each pair. Differentiating the Gaussian exponential proves this prescription. The retained input gives the expanded face and kinetic contractions and the identical matrix in its equations (24)--(36). Degree and parity allow only $1,3,5$ for $H^{(1)}S_I$; the degree-one projection vanishes because it is a colour vector, whereas the original vector and its projection are fixed by all colour rotations. Hence all denominators actually used in (204) are at least $\sigma/a>0$. Every reached spatial mode is included. In particular outside-mode contributions are not removed from this formula. The input's occupation-number proof cancels the terms acting exclusively on outside vacuum modes between the two absolute energies; both sides of that identity are retained in its equations (42)--(44).
+
+For use without altering the raw state norms, construct an explicit frame as follows. Set 
+
+$$
+\eta_I=-\sum_{|n|=3\ \mathrm{or}\ 5}
+              \frac{c_{I,n}}{\omega_n-\Delta}h_n\Phi_0,
+ \qquad \mathsf K^{\mathrm{abs}}=\mathsf K+E^{(2)}I.
+$$
+
+ Let $\zeta_I\perp\operatorname{Ran}P_*$ solve 
+
+$$
+\qquad\text{(205)}
+ (A_0-\Delta)\zeta_I
+ =-H^{(1)}\eta_I-H^{(2)}S_I+\sum_JS_J\mathsf K^{\mathrm{abs}}_{JI}.
+$$
+
+ Its right side is perpendicular to that cluster by (204); expand its finite Hermite polynomial and divide every other coefficient by $\omega_n-\Delta$. The physical eigenspace at $\Delta$ is exactly the displayed six, so the division is defined on this invariant input. This also specifies every coefficient of $\zeta_I$. No negative vacuum denominator is changed or suppressed.
+
+Let $P_g=1_{(\Delta/2,11\Delta/10)}(A_g)$ be the actual physical projection of Section 14. Define the six columns 
+
+$$
+\qquad\text{(206)}
+ \mathcal R_g e_I=P_g\mathcal B_g^*\chi(gx)
+                         (S_I+g\eta_I+g^2\zeta_I),\qquad
+ \mathcal G_g=\mathcal R_g^*\mathcal R_g.
+$$
+
+ The cutoff coefficient equations give residual $O(g^3)$ for $(\mu_0+\Delta)I+g^2\mathsf K^{\mathrm{abs}}$. The same spectral-separation argument as Section 17, applied to six columns, bounds their off-cluster part and its original graph norm by $O(g^3)$. One can first orthogonally diagonalize the real symmetric finite matrix in the residual; the distance from each approximate eigenvalue to the other actual clusters is bounded below at this fixed box. The off-cluster resolvent then gives the asserted bound for every column and hence their operator norm.
+
+Parity makes $\eta_I$ odd, whereas $S_I,\zeta_I$ are even. The perpendicular choice in (205) therefore gives 
+
+$$
+\begin{aligned}
+ \mathcal G_g&=I+g^2\mathcal G_2+O(g^3),\quad
+             (\mathcal G_2)_{IJ}=\langle\eta_I,\eta_J\rangle,\\
+ \mathcal R_g^*A_g\mathcal R_g
+       &=\Delta\mathcal G_g+g^2\mathsf K+O(g^3),\\
+ \mathcal A_g^{\mathrm{coord}}
+       :=\mathcal G_g^{-1}\mathcal R_g^*A_g\mathcal R_g
+       &=\Delta I+g^2\mathsf K+O(g^3).
+ \qquad\text{(207)}
+\end{aligned}
+$$
+
+ For the energy identity multiply the residual by the bounded frame adjoint and subtract the actual vacuum $\mathcal E_g=\mu_0+g^2E^{(2)}+O(g^3)$. Invertibility of $\mathcal G_g$ follows from its convergence to $I$. The frame is onto the actual six-dimensional cluster. These formulas use its inverse Gram matrix, not a unit-norm alteration of its columns. The coordinate operator is self-adjoint for the retained inner product $q^*\mathcal G_g r$, since its energy form is Hermitian.
+
+## An exact onto tensor map at positive coupling
+
+Keep the full original weight $f_S(e)=m(e)^{\mathsf T}S m(e)$, including all off-diagonal coefficients of the real symmetric tensor. Complexification below is linear only; real tensors give real states. Define 
+
+$$
+\qquad\text{(208)}
+ \mathcal T_g:\operatorname{Sym}_3(\mathbb C)\longrightarrow
+       \operatorname{Ran}P_g,\qquad
+ \mathcal T_gS=P_g\Xi_{f_S,g}.
+$$
+
+ The original vacuum subtraction is linear in the weight, so this is an exact linear map at each $g$. Let $\mathcal T_0$ denote its comparison limit. In the six-vector coordinates its full coefficient $q(S)$, with $R=\mathsf R_S^{\min}$ from (119), is 
+
+$$
+\qquad\text{(209)}
+ q_{ii}(S)=\frac{\sqrt6}{4a}R_{ii},\qquad
+ q_{ij}(S)=\frac{\sqrt{12}}{4a}R_{ij}\quad(i<j),\qquad
+ \|q(S)\|^2=\frac3{8a^2}\operatorname{tr}(R^*R).
+$$
+
+ The diagonal contraction has norm squared six. An off-diagonal matrix entry occurs twice in $\Phi(R)$ and its single colour contraction has norm squared three. These facts prove every factor in (209) and recover the unchanged mass $d_{L,a}(S)$ of (120).
+
+In the coordinates $(S_{11},S_{22},S_{33},S_{12},S_{13},S_{23})$, write $F$ for the matrix of $q$. Its diagonal block is $c_d(\boldsymbol 1\boldsymbol 1^{\mathsf T}-I_3)$ and its other block is $c_oI_3$, where 
+
+$$
+c_d=\frac{\sqrt6\sigma\delta_L}{4a},\qquad
+ c_o=\frac{\sqrt{12}\sigma\mathfrak m_L^2}{4a},\qquad
+ \det F=2c_d^3c_o^3\ne0.
+$$
+
+ The determinant follows from eigenvalues $2,-1,-1$ of the first displayed integer matrix. More explicitly, given $q$, set $R_{ii}=4a q_{ii}/\sqrt6$ and $R_{ij}=4a q_{ij}/\sqrt{12}$; then its unique preimage is 
+
+$$
+\qquad\text{(210)}
+ S_{ii}=\frac{\operatorname{tr}R/2-R_{ii}}{\sigma\delta_L},
+ \qquad S_{ij}=\frac{R_{ij}}{\sigma\mathfrak m_L^2}\quad(i<j).
+$$
+
+ Here $\delta_L<0$ and $\mathfrak m_L^2>0$ in the actual box; neither sign has been changed by the coordinate map.
+
+Put $Q_g=\mathcal G_g^{-1}\mathcal R_g^*\mathcal T_g$. Section 17's weighted vector expansion, now controlled also by (200), and the column expansion above give $Q_g=F+O(g^2)$. There is no linear term: both candidate linear inner products pair one odd vector and one even vector. Thus $\det Q_g\to\det F\ne0$. For each fixed $L,a$ it follows that there is $g_0(L,a)>0$ such that $\mathcal T_g$ is a bijection onto $\operatorname{Ran}P_g$ for $0<g<g_0(L,a)$. Its exact inverse, independent of a basis choice in that actual Hilbert space, is 
+
+$$
+\qquad\text{(211)}
+ \mathcal T_g^{-1}u=(\mathcal T_g^*\mathcal T_g)^{-1}
+                              \mathcal T_g^*u,\qquad u\in\operatorname{Ran}P_g.
+$$
+
+ For the adjoint use the displayed six tensor-entry coordinates with their ordinary Euclidean inner product. Multiplying (211) by $\mathcal T_g$ gives the identity on its range, and multiplying it by $\mathcal T_g$ on the right gives the identity on all six tensor coordinates. This proves both directions of the exact morphism.
+
+In particular let $h$ be any real original edge profile and retain its original averaged face weights. Define 
+
+$$
+\qquad\text{(212)}
+ S_g(h)=(\mathcal T_g^*\mathcal T_g)^{-1}\mathcal T_g^*
+                                   P_g\Xi_{h,g}.
+$$
+
+ Then $\mathcal T_gS_g(h)=P_g\Xi_{h,g}$ exactly. The kernel of this map consists exactly of profiles whose actual projected state is zero; it includes every constant profile because $\Xi_{1,g}=0$. It does not assert injectivity on the whole space of profiles. At comparison coupling, (210) gives the same map with $R=\mathsf R_h^{\min}$ computed using all original weighted edges and faces. Also $S_g(h)=S_0(h)+O(g^2)$ for each fixed profile. For a regular Navier--Stokes field at fluid time $s$, insert the actual sampled profile $h(e)=\lambda^2|\nabla\times u(s,a m(e))|^2$. This supplies an exact coordinate map from that finite-box curvature state to its tensor representative. The curvature map's units, sampling, physical spacing and original fluid time remain in $h$; the quantum projection does not identify that time with a semigroup time.
+
+## Raw interaction energies and the resolved spectral splitting
+
+For fixed $S$ write $u_g=\mathcal T_gS$ and let its coordinates in the unchanged frame be $q_g=\mathcal G_g^{-1}\mathcal R_g^*u_g=q+g^2b_S+O(g^3)$, where $q=FS$. In terms of Section 17's complete weighted-state coefficients for $f=f_S$, its second coefficient is explicitly 
+
+$$
+(b_S)_I=\langle S_I,\xi_2\rangle+\langle\eta_I,\xi_1\rangle
+       +\langle\zeta_I,\xi_0\rangle
+       -\sum_J(\mathcal G_2)_{IJ}q_J.
+$$
+
+ Indeed expand $\mathcal R_g^*\Xi_{f_S,g}$, then multiply by $\mathcal G_g^{-1}=I-g^2\mathcal G_2+O(g^3)$. The projector in the first factor makes this the same as $\mathcal R_g^*P_g\Xi_{f_S,g}$ exactly. Its off-cluster column error contributes $O(g^3)$ against the bounded fixed-box weighted state norm. This retains every intermediate state and vacuum correction. The exact norm is $q_g^*\mathcal G_gq_g$, so (207) proves 
+
+$$
+\begin{aligned}
+ \|u_g\|^2&=n_0+g^2n_2+O(g^3),\quad n_0=q^*q,\\
+ n_2&=2\operatorname{Re}(q^*b_S)+q^*\mathcal G_2q,\\
+ \langle u_g,A_gu_g\rangle
+       &=\Delta(n_0+g^2n_2)+g^2q^*\mathsf Kq+O(g^3).
+ \qquad\text{(213)}
+\end{aligned}
+$$
+
+ For $S\ne0$ the proved inverse gives $n_0>0$. Dividing these two unaltered scalar quantities yields 
+
+$$
+\qquad\text{(214)}
+ \frac{\langle\mathcal T_gS,A_g\mathcal T_gS\rangle}
+      {\|\mathcal T_gS\|^2}
+ =\Delta+g^2\frac{S^*F^*\mathsf KFS}{S^*F^*FS}+O(g^3).
+$$
+
+ The $n_2$ terms cancel in this ratio only after appearing explicitly in both quantities in (213); they were not dropped from the state. The positive definite tensor Gram matrix is $F^*F$. Therefore the generalized eigenvalues of $(F^*\mathsf KF,F^*F)$ equal every eigenvalue of $\mathsf K$: multiply the equation by $(F^*)^{-1}$ and put $q=FS$. In fact the exact inverse (211) represents every actual first-band eigenvector by a unique tensor. Minimizing the exact quotient over $S\ne0$ thus gives the actual first physical gap, with the complete coefficient (204).
+
+This also resolves the splitting in a correlation limit. Fix $\tau\ge0$ and retain the original quantum time $t=\tau/g^2$. The exact frame intertwining is $A_g\mathcal R_g=\mathcal R_g\mathcal A_g^{\mathrm{coord}}$; it follows because the range is invariant and its inverse coordinate map is $\mathcal G_g^{-1}\mathcal R_g^*$. Consequently for any fixed tensors $S,T$, 
+
+$$
+\qquad\text{(215)}
+ e^{\tau\Delta/g^2}
+ \langle\mathcal T_gS,e^{-\tau A_g/g^2}\mathcal T_gT\rangle
+ \longrightarrow (FS)^*e^{-\tau\mathsf K}(FT).
+$$
+
+ To prove the limit, the left side equals $q_g(S)^*\mathcal G_g
+ \exp[-\tau(\mathcal A_g^{\mathrm{coord}}-\Delta I)/g^2]q_g(T)$. The matrix in its exponential tends in norm to $\mathsf K$ by (207). The matrix exponential converges uniformly on each bounded $\tau$ interval: integrate the exact finite-matrix Duhamel identity between the two exponentials and bound it by $\tau e^{\tau(\|\mathsf K\|+1)}O(g)$. Together with $\mathcal G_g\to I$ and $q_g\to F$, this proves (215). Both states are exactly in the actual band throughout this identity; no full-space approximation is multiplied by the large prefactor. The large prefactor is displayed and does not redefine the original energy origin or state norm. No positivity of $\mathsf K$ is assumed in this matrix limit.
+
+Finally the complete Fabel tensor of Section 13 satisfies $z^6K_\tau\to S_*=\eta\eta^{\mathsf T}$, $\eta=(1/4,3/8,-9/4)$, as $z=\sqrt{1-8\tau}\downarrow0$. Here this $\tau$ is the original material parameter, distinct from the semigroup parameter in (215). At fixed $L,a,g$, linearity of (208) proves 
+
+$$
+\begin{aligned}
+ z^6\mathcal T_gK_\tau&\longrightarrow\mathcal T_gS_*,\\
+ z^{12}\|\mathcal T_gK_\tau\|^2&\longrightarrow\|\mathcal T_gS_*\|^2>0,
+ \quad
+ z^{12}\langle\mathcal T_gK_\tau,A_g\mathcal T_gK_\tau\rangle
+       \longrightarrow\langle\mathcal T_gS_*,A_g\mathcal T_gS_*\rangle.
+ \qquad\text{(216)}
+\end{aligned}
+$$
+
+ The last passage is valid since the actual band is finite-dimensional and $A_g$ is bounded on it. Its limiting ratio has correction $(FS_*)^*\mathsf K(FS_*)/\|FS_*\|^2$ by (214). This is the exact way the given material direction samples the full interaction matrix. Its sign cannot be inferred from a scalar coordinate sign in the source map. No simultaneous change of $L,a,g,z$ is substituted for these ordered limits: controlling their combined remainders and the nonlinear continuum states remains necessary for the requested mass-gap violation.
+
+## All three interaction channels in the source tensor
+
+The retained input *Exact cubic-box symmetry of the first physical gap correction*, included in `references/CUBIC_BOX_SYMMETRY_INPUT.md`, now determines the entire structure of (204). We give the exact basis dictionary before applying it. The input's interval coordinate is $l=n+L$. Substitution in its cosine and sine functions gives precisely our $v_1(n),w_1(n)$ of Section 14, without a scale or sign change. Its spatial modes are ordered $(V_{12},V_{13},V_{23})$. Our normal-index modes satisfy 
+
+$$
+(V_1,V_2,V_3)=(V_{23},-V_{13},V_{12}),\qquad
+ z_{\mathrm{in}}=Jz,\quad
+ J=\begin{pmatrix}0&0&1\\0&-1&0\\1&0&0\end{pmatrix}.
+$$
+
+ Both statements follow by comparing the two signed components of (117). In the six coordinates, this sends the input's diagonal states to $(S_{33},S_{22},S_{11})$ and its off-diagonal states to $(-S_{23},S_{13},-S_{12})$. It is an orthogonal signed permutation and retains every raw norm.
+
+For completeness the source symmetry acts on the original links, not only on these three modes. Extend $U_{-e}=U_e^{-1}$ and for a signed coordinate permutation $R$ set $(\alpha_RU)_{Re}=U_e$. This is a Haar-preserving permutation and inversion of the original edge factors, with inverse $\alpha_{R^{-1}}$. Inversion preserves the bi-invariant Casimir. It maps each face word to a cyclically reordered face word or its inverse, whose SU(2) trace is identical. The pullback therefore commutes with the complete $H_g$ and with the full vertex gauge action, carried by $h_{Rn}=h_n$. It fixes the actual positive vacuum and the first-band projector.
+
+The chosen root can move under this operation. Its exact induced chord map is obtained by applying $\alpha_R$ to the tree-identity representative and recomputing every root-to-vertex product and rooted chord; call it $\beta_R$. This finite product map and its inverse act on the physical functions. Its derivative at the identity is the original oriented cochain permutation modulo gradients. Conjugation by $\mathcal B_g$ retains the Haar and dilation density. On a compact $x$ set, $g^{-1}\log\beta_R(\exp(gx))=D\beta_R(I)x+O(g|x|^2)$; bounded analytic derivatives on an interior chart and Gaussian tail estimates give convergence on each polynomial Gaussian. The detailed inverse-chart bounds and all root changes are proved in Sections 1--3 of the retained source.
+
+On the three-mode basis the limiting action is $\bigwedge^2R$: a coordinate permutation takes $V_{ij}$ to $V_{\pi(i)\pi(j)}$, and a reflection with coordinate signs $\varepsilon_i$ multiplies it by $\varepsilon_i\varepsilon_j$. The latter follows directly from $v_1(-n)=-v_1(n)$ and the even edge function together with its reflected orientation. Its action on the six states is the symmetric square. In the raw frame (206) the exact coordinate representation of the symmetry commutes with $\mathcal A_g^{\mathrm{coord}}$ and tends to that symmetric square. Subtract $\Delta I$ in (207), divide the commutator by $g^2$, and pass to the finite-dimensional limit. Thus $\mathsf K$ commutes with every one of these actions. Reflections fix all three diagonal states but give the three off-diagonal states distinct nontrivial sign characters. This forces all cross-block entries and all distinct off-diagonal-state entries to be zero. Permutations equate the three diagonal entries, their three mutual entries, and the three off-diagonal entries. The displayed signed change $J$ preserves the resulting matrix: 
+
+$$
+\qquad\text{(217)}
+ \mathsf K=\begin{pmatrix}
+ d&o&o&0&0&0\\o&d&o&0&0&0\\o&o&d&0&0&0\\
+ 0&0&0&c&0&0\\0&0&0&0&c&0\\0&0&0&0&0&c
+ \end{pmatrix}.
+$$
+
+ Here $d,o,c$ are exactly its three full matrix entries in (204), each with original units $a^{-1}$. The coefficient $c$ in this display is not the conversion constant in the fluid-to-spacetime coordinate map.
+
+Define $k_s=d+2o$, $k_t=d-o$ and $k_o=c$. The three orthogonal projections in six coordinates are respectively onto the constant diagonal vector, the diagonal sum-zero plane, and the off-diagonal three-space. Direct multiplication proves that their eigenvalues are $k_s,k_t,k_o$. For any original tensor $S$, the unchanged squared norms of its three components are 
+
+$$
+\begin{aligned}
+ N_s(S)&=\frac{\sigma^2\delta_L^2}{2a^2}|\operatorname{tr}S|^2,\\
+ N_t(S)&=\frac{3\sigma^2\delta_L^2}{8a^2}
+                 \sum_i|S_{ii}-\operatorname{tr}S/3|^2,\\
+ N_o(S)&=\frac{3\sigma^2\mathfrak m_L^4}{4a^2}
+                 \sum_{i<j}|S_{ij}|^2.
+ \qquad\text{(218)}
+\end{aligned}
+$$
+
+ Indeed the scalar projection of $q$ has mass $|\sum_iq_{ii}|^2/3$, with $\sum_iq_{ii}=2c_d\operatorname{tr}S$; the sum-zero projection has entries $-c_d(S_{ii}-\operatorname{tr}S/3)$; the remaining entries are $c_oS_{ij}$. This proves (218) and $N_s+N_t+N_o=d_{L,a}(S)$, retaining the three positive raw masses. Consequently the full coefficient in (214) is 
+
+$$
+\qquad\text{(219)}
+ \frac{k_sN_s(S)+k_tN_t(S)+k_oN_o(S)}{N_s(S)+N_t(S)+N_o(S)}.
+$$
+
+ Similarly the limit in (215) for equal tensors is exactly $e^{-\tau k_s}N_s+e^{-\tau k_t}N_t+e^{-\tau k_o}N_o$. The tensors $I_3$, $\operatorname{diag}(1,-1,0)$ and $e_1e_2^{\mathsf T}+e_2e_1^{\mathsf T}$ isolate these three coefficients respectively, with their displayed raw masses.
+
+For the full specified Fabel endpoint $S_*=\eta\eta^{\mathsf T}$, the diagonal entries are $(4,9,324)/64$ and the off-diagonal entries are $(6,-36,-54)/64$. Substitution gives 
+
+$$
+\qquad\text{(220)}
+ N_s(S_*)=\frac{\sigma^2}{a^2}\frac{113569}{8192}\delta_L^2,
+ \quad N_t(S_*)=\frac{\sigma^2}{a^2}\frac{100825}{16384}\delta_L^2,
+ \quad N_o(S_*)=\frac{\sigma^2}{a^2}\frac{1593}{2048}\mathfrak m_L^4.
+$$
+
+ For the second numerator the three traceless entries are $(-325,-310,635)/192$; for the third, the squared off-diagonal sum is $531/512$. These direct rational calculations prove every coefficient in the display. The cusp direction therefore reaches all three interacting channels with nonzero raw mass. Its full interaction correction is their weighted value in (219), not a sign assigned from one source coordinate. Evaluating $d,o,c$ and their simultaneous-regulator behavior remains part of the original spectral calculation.
+
+## An explicit smooth fluid representative of every real band state
+
+The onto tensor map admits a further exact right inverse through regular Navier--Stokes curvature profiles, with the forcing constructed rather than suppressed. Fix the original positive $\nu,a,g$, with $0<g<g_0(L,a)$, and fix real $\lambda\ne0$. Let $w$ be a real vector in the actual first physical band; reality refers to complex conjugation in the original group-coordinate Hilbert space. Since the Hamiltonian, its positive vacuum and its spectral projector are real, the inverse (211) gives a real tensor $S=\mathcal T_g^{-1}w$. Put 
+
+$$
+\qquad\text{(221)}
+ M_S=\max_{e\in\mathsf E_L}|f_S(e)|,\qquad h_e=f_S(e)+M_S\ge0.
+$$
+
+ This addition retains its original units, since $M_S$ has the same units as the edge weight. It changes neither centered state nor projection: $D_{h,g}=D_{f_S,g}+M_SH_g$, so $\Xi_{h,g}=\Xi_{f_S,g}$ exactly on the original actual vacuum. The corresponding face weights still use the original quarter-edge average, which adds the same scalar $M_S$ to every face.
+
+Let $p_e=a m(e)$ be the distinct physical edge midpoints and set $\rho=a/8$. The distance between two distinct such points is at least $a/\sqrt2$: their coordinates are integers or half-integers times $a$, with exactly one half-integer coordinate. If the half-integer coordinates have the same position, a nonzero difference has magnitude at least $a$; if their positions differ, two components have magnitude at least $a/2$. This proves that the closed radius-$\rho$ balls are pairwise disjoint.
+
+For an explicit cutoff define $b(t)=e^{-1/t}$ for $t>0$ and $b(t)=0$ for $t\le0$, and 
+
+$$
+\chi_e(x)=\frac{b(1-|x-p_e|^2/\rho^2)}
+ {b(1-|x-p_e|^2/\rho^2)+b(|x-p_e|^2/\rho^2-1/4)}.
+$$
+
+ The denominator is positive everywhere. The vanishing of all one-sided derivatives of $b$ at zero proves smoothness; $\chi_e=1$ for $|x-p_e|\le\rho/2$ and zero for $|x-p_e|\ge\rho$. Choose a fixed unit spatial vector $e_3$ and put 
+
+$$
+\qquad\text{(222)}
+ \omega_e=\frac{\sqrt{h_e}}{|\lambda|}e_3,\qquad
+ \mathcal V_e(x)=-\tfrac14\chi_e(x)|x-p_e|^2\omega_e,
+ \qquad U_S(x)=\nabla\times\sum_e\mathcal V_e(x).
+$$
+
+ All quantities in this finite sum are explicit original-coordinate functions. Curl of a smooth compactly supported vector field is divergence-free, so $U_S\in C_c^\infty(\mathbb R^3;\mathbb R^3)$ and $\nabla\cdot U_S=0$. Near $p_e$, disjointness removes all other summands and the cutoff equals one. There $U_S(x)=\omega_e\times(x-p_e)/2$, by direct differentiation of the quadratic vector potential. Differentiating its three components once more gives $\nabla\times U_S(p_e)=\omega_e$. Consequently 
+
+$$
+\qquad\text{(223)}
+ \lambda^2|\nabla\times U_S(p_e)|^2=h_e\quad\hbox{for every original edge }e,
+ \qquad P_g\Xi_{\lambda^2|\nabla\times U_S|^2,g}=w.
+$$
+
+ The state notation on the right uses exactly these samples, not a different rule for the face weights. This proves the full right-inverse identity, including its nonlinear square root and added constant. For $w=0$ the formula gives $S=0$, $M_S=0$ and $U_S=0$.
+
+These profiles occur in explicit smooth forced Navier--Stokes flows. Fix $s_0>0$ and choose a real smooth function $\theta$ with compact support in $(0,\infty)$, equal to one near $s_0$. Set 
+
+$$
+\begin{aligned}
+ u(s,x)&=\theta(s)U_S(x),\qquad p(s,x)=0,\\
+ f(s,x)&=\theta'(s)U_S(x)
+    +\theta(s)^2(U_S\cdot\nabla)U_S(x)-\nu\theta(s)\Delta U_S(x).
+ \qquad\text{(224)}
+\end{aligned}
+$$
+
+ Direct substitution proves, with the original positive viscosity, $\partial_su+(u\cdot\nabla)u=-\nabla p+\nu\Delta u+f$ and $\nabla\cdot u=0$ on $\mathbb R^3$ for all $s\ge0$. Both velocity and force are smooth, spatially compactly supported and time-compact, with zero initial data for this chosen $\theta$; in particular their energy is finite at every time. The pressure, viscous and transport terms are all displayed. The fixed-colour connection of the earlier bridge still has its full source $j_i=(\lambda/g^2)(\Delta u_i-c^{-2}\partial_s^2u_i)T$; the construction has not imposed a sourceless Yang--Mills equation. At $s=s_0$, (223) gives the prescribed actual quantum band state, with precisely its original norm and energy. No state has been divided by its norm.
+
+This proves surjectivity for the specified map from smooth forced fluid profiles to the real first physical band. The displayed force depends on $w,L,a,g$ through $S$ and its local vector potentials. It is not the fixed force or singular profile stipulated in the counterexample programme. To transfer that particular Navier--Stokes breakdown one must calculate its own samples and retained limits using (212); the right inverse proves that the curvature representation itself does not exclude the band states whose full interacting energies are now given in these coordinates.
+

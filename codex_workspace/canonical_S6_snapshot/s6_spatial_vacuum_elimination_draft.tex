@@ -1,0 +1,799 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\SU}{\operatorname{SU}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Rea}{\operatorname{Re}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\dd}{\,\mathrm d}
+\title{Exact spatial elimination in the true lattice vacuum:\\marginals, temporal memory, and excitation estimates}
+\author{}
+\date{8 September 2026}
+\begin{document}
+\maketitle
+
+\section{The finite interacting Hamiltonian and its actual vacuum}
+
+Let $n\geq2$. Fix a finite lattice with physical oriented links
+$\mathsf E$, all its retained oriented plaquette words $\mathsf P$, and
+positive coefficients $\kappa_e,b_p$. Reverse traversal uses $U_e^{-1}$.
+Take precisely
+\begin{equation}\label{eq:H}
+ H=-\sum_{e\in\mathsf E}\kappa_e\sum_{a=1}^{n^2-1}X_{e,a}^2
+       +\sum_{p\in\mathsf P}b_p(n-\Rea\tr U_p),\qquad
+ X_{e,a}f=\left.\frac d{dt}\right|_0f(\ldots,e^{tT_a}U_e,\ldots),
+\end{equation}
+where $T_a$ is anti-Hermitian, traceless, and
+$-2\tr(T_aT_b)=\delta_{ab}$. Its Hilbert space is the probability-Haar
+space $L^2(\mathcal Q,\lambda)$ on $\mathcal Q=\SU(n)^{\mathsf E}$.
+Every potential term in \eqref{eq:H} is retained. The original metric
+$c(X,Y)=-\tfrac12\tr(XY)$ has orthonormal basis $2T_a$ and
+$\Delta_e^c=4\sum_aX_{e,a}^2$. Hence the same kinetic operator is
+$-\sum_e(\kappa_e/4)\Delta_e^c$.
+
+Let $\psi_0$ be the actual positive normalized ground state,
+$H\psi_0=E_0\psi_0$ and $\int\psi_0^2d\lambda=1$. Existence,
+smoothness, strict positivity, uniqueness, and gauge invariance hold
+for this finite compact elliptic Schr\"odinger operator; they are proved
+for \eqref{eq:H} in \texttt{wilson\_finite\_lattice.tex}. Set
+\[
+ \rho=\psi_0^2,\quad d\mu=\rho d\lambda,\quad
+ \mathbb H=L^2(\mathcal Q,\mu),\quad \mathcal Uu=\psi_0u.
+\]
+The map $\mathcal U:\mathbb H\to L^2(\lambda)$ is unitary, and the
+exact ground-state transform is
+\begin{align}
+ L&=\mathcal U^{-1}(H-E_0)\mathcal U
+   =-\rho^{-1}\sum_{e,a}\kappa_eX_{e,a}(\rho X_{e,a}),\label{eq:L}\\
+ q(u,v)&=\langle L^{1/2}u,L^{1/2}v\rangle_\mu
+   =\sum_{e,a}\kappa_e\int\overline{X_{e,a}u}X_{e,a}v\,d\mu.
+   \label{eq:fullform}
+\end{align}
+Indeed the product rule in $H(\psi_0u)-uH\psi_0$ gives the displayed
+divergence operator, and Haar integration by parts gives the form.
+These steps use the eigenvalue equation for the full potential.
+
+All inner products below are conjugate-linear in the first argument.
+The form domain $\mathcal V$ of $q$ is $H^1(\mathcal Q)$: the fields
+span the tangent spaces and the positive smooth $\rho$ is bounded
+above and below on the compact product. Its form norm is
+$\|u\|_\mathcal V^2=q(u,u)+\|u\|_\mu^2$. Smooth functions are a form
+core, and the smooth weighted elliptic operator has domain $H^2$ and
+smooth operator core. The compact Sobolev embedding gives compact
+resolvent. If $q(u,u)=0$, every derivative is zero and connectedness
+gives a constant function. Consequently the kernel is exactly
+$\mathbb C1$ and the first nonzero eigenvalue $\delta$ is positive.
+These are finite-regulator assertions; $\delta$ is not assumed to have
+a positive bound uniform in a spatial continuum limit.
+
+\section{The true marginal, conditional projection, and retained form}
+
+Split the physical links into two disjoint nonempty sets
+$\mathsf E=\mathsf S\sqcup\mathsf R$. There is no independence
+assumption and no restriction on shared plaquettes in the operator
+calculation. Write
+\[
+ \mathcal Q=\mathcal Q_S\times\mathcal Q_R,\quad U=(s,r),\quad
+ d\lambda=d\lambda_Sd\lambda_R,
+\]
+and define
+\begin{equation}\label{eq:marginal}
+ \rho_R(r)=\int_{\mathcal Q_S}\rho(s,r)d\lambda_S(s),\qquad
+ d\mu_R=\rho_Rd\lambda_R,\qquad
+ p(s\mid r)=\frac{\rho(s,r)}{\rho_R(r)}.
+\end{equation}
+Differentiation under a compact integral proves that $\rho_R$ is smooth.
+Its positivity follows from $\rho>0$, and
+$\int\rho_Rd\lambda_R=1$ by Fubini. The density $p$ is also smooth
+and positive and integrates to one for each $r$.
+
+Let $\mathbb K=L^2(\mathcal Q_R,\mu_R)$ and define
+\begin{equation}\label{eq:conditional}
+ (Jf)(s,r)=f(r),\qquad
+ (J^*u)(r)=\int p(s\mid r)u(s,r)d\lambda_S(s),\qquad
+ P=JJ^*,\quad Q=I-P.
+\end{equation}
+Fubini proves $\|Jf\|_\mu=\|f\|_{\mu_R}$ and
+$\langle Jf,u\rangle_\mu=\langle f,J^*u\rangle_{\mu_R}$.
+Jensen's inequality proves $\|J^*u\|\leq\|u\|$. Therefore $P$ is
+the orthogonal projection onto functions of the retained links, and
+\[
+ \mathbb H=J\mathbb K\oplus\mathbb H_Q,\qquad
+ \mathbb H_Q=\ker J^*=Q\mathbb H.
+\]
+In particular every $h\in\mathbb H_Q$ is orthogonal to $1=J1$.
+
+For a retained index $i=(e,a)$ with $e\in\mathsf R$, write $X_i=X_{e,a}$
+and $\kappa_i=\kappa_e$. These fields act on $r$ and leave $s$ fixed.
+Define the real conditional score
+\begin{equation}\label{eq:score}
+ \ell_i=X_i\log\rho,\qquad
+ \bar\ell_i=X_i\log\rho_R,\qquad
+ \sigma_i=\ell_i-J\bar\ell_i=X_i\log p(s\mid r).
+\end{equation}
+Compactness makes every $\sigma_i$ and its derivatives bounded.
+Differentiation of \eqref{eq:marginal} gives
+$J^*\ell_i=\bar\ell_i$, so $J^*\sigma_i=0$.
+
+\begin{lemma}\label{lem:projection-domain}
+Conditional expectation satisfies the exact derivative identity
+\begin{equation}\label{eq:conditional-derivative}
+ X_iJ^*u=J^*(X_i u)+J^*(\sigma_i u)
+\end{equation}
+for smooth $u$. It extends boundedly from $\mathcal V$ to
+$\mathcal V_R:=H^1(\mathcal Q_R)$, with
+\begin{equation}\label{eq:projection-bound}
+ a(J^*u,J^*u)\leq2q(u,u)+2\eta\|u\|_\mu^2,
+ \quad
+ \eta=\sum_{i\in R}\kappa_i\|\sigma_i\|_\infty^2,
+\end{equation}
+where
+\begin{equation}\label{eq:reducedform}
+ a(f,g)=\sum_{i\in R}\kappa_i\int\overline{X_if}X_ig\,d\mu_R.
+\end{equation}
+Both $P$ and $Q$ preserve the full form domain and are bounded for its
+norm. The lift $J$ identifies $\mathcal V_R$ with
+$\mathcal V\cap J\mathbb K$.
+\end{lemma}
+\begin{proof}
+Differentiate $J^*u=\int p u\,d\lambda_S$ and use $X_ip=p\sigma_i$.
+Conditional Cauchy--Schwarz and Fubini give
+$\|J^*X_iu\|_{\mu_R}\leq\|X_iu\|_\mu$ and
+$\|J^*(\sigma_i u)\|_{\mu_R}\leq\|\sigma_i\|_\infty\|u\|_\mu$.
+Squaring their sum with $(x+y)^2\leq2x^2+2y^2$ and summing all
+retained $\kappa_i$ proves \eqref{eq:projection-bound}.
+Smooth approximation extends the derivative identity in the weak
+Sobolev sense and the norm bound to $\mathcal V$. Since
+$q(Jf,Jf)=a(f,f)$ and $J$ is an isometry in $L^2$, this proves the
+claims about $P$ and $Q$. Conversely the weak retained derivatives of
+$Jf$ are the lifts of those of $f$, so $Jf\in\mathcal V$ implies
+$f\in\mathcal V_R$. Repeated differentiation of the compact conditional
+integral also shows $J^*:H^k(\mathcal Q)\to H^k(\mathcal Q_R)$ is
+bounded for each nonnegative integer $k$; in particular these maps
+preserve smooth functions.
+\end{proof}
+
+The form $a$ is closed on $\mathcal V_R$ and has the self-adjoint
+weighted elliptic generator
+\begin{equation}\label{eq:A}
+ A=-\rho_R^{-1}\sum_{i\in R}\kappa_iX_i(\rho_RX_i),
+ \qquad D(A)=H^2(\mathcal Q_R).
+\end{equation}
+For a nonconstant smooth retained observable $F$, let
+$f=F-\mu_R(F)$ and $u_F=\psi_0Jf$. Then
+\begin{equation}\label{eq:Rayleigh}
+ \langle\psi_0,u_F\rangle_\lambda=0,\qquad
+ \frac{\langle u_F,(H-E_0)u_F\rangle_\lambda}{\|u_F\|_\lambda^2}
+ =\frac{\displaystyle\sum_{i\in R}\kappa_i\mu_R(|X_iF|^2)}
+        {\displaystyle\mu_R(|F|^2)-|\mu_R(F)|^2}.
+\end{equation}
+The numerator follows from \eqref{eq:fullform}, since the eliminated-link
+derivatives of $Jf$ vanish; the denominator and orthogonality follow
+from Fubini. Positivity of $\rho_R$ makes the denominator strictly
+positive. Eliminated kinetic coefficients and all magnetic coefficients
+still affect $\psi_0$, $\rho_R$, and the conditional density.
+
+For the original gauge law $U_e\mapsto h_{s(e)}^{-1}U_eh_{t(e)}$,
+the same vertex transformation acts separately on $s$ and $r$.
+Gauge invariance of $\rho$ and Haar substitution in $s$ prove
+$\rho_R(h\cdot r)=\rho_R(r)$ and covariance of $p(s\mid r)$.
+Thus $J,J^*,P,Q$ intertwine these gauge actions. The equally valid law
+$g_{s(e)}U_eg_{t(e)}^{-1}$ uses $g_v=h_v^{-1}$ and gives exactly the
+same subspaces. Every formula therefore restricts to gauge-invariant
+observables and vectors. For such a nonconstant $F$, \eqref{eq:Rayleigh}
+is an upper bound on the physical finite-lattice gap. The infimum of
+these quotients over retained invariant functions is at least the
+infimum over all full invariant functions; a lower bound on one
+retained quotient alone is not a full spectral lower bound.
+
+\section{The exact coupling to eliminated functions and its domains}
+
+For $f\in C^\infty(\mathcal Q_R)$, expand \eqref{eq:L} and compare
+with \eqref{eq:A}. The retained second-derivative terms cancel, and
+all eliminated derivatives of $Jf$ are zero. Hence
+\begin{equation}\label{eq:B}
+ LJf=JAf+Bf,\qquad
+ Bf=-\sum_{i\in R}\kappa_i\sigma_i J(X_if),\qquad J^*Bf=0.
+\end{equation}
+This is the exact first-order map from retained variation to the
+eliminated subspace. It extends boundedly
+$B:\mathcal V_R\to\mathbb H_Q$, because
+\begin{equation}\label{eq:Bbound}
+ \|Bf\|_\mu^2\leq\eta\,a(f,f).
+\end{equation}
+Pointwise Cauchy--Schwarz with the factors $\sqrt{\kappa_i}\sigma_i$
+and $\sqrt{\kappa_i}X_if$, followed by integration, proves this bound.
+The exact squared norm retains the full conditional covariance:
+\begin{equation}\label{eq:Fisher}
+ \|Bf\|_\mu^2
+ =\int\sum_{i,j\in R}\kappa_i\kappa_j
+       I_{ij}(r)\overline{X_if(r)}X_jf(r)\,d\mu_R(r),
+ \quad I_{ij}=J^*(\sigma_i\sigma_j).
+\end{equation}
+The matrix $I(r)$ is positive semidefinite by the exact identity
+\[
+ \sum_{i,j}\overline z_i I_{ij}(r)z_j
+ =J^*\left(\left|\sum_i z_i\sigma_i\right|^2\right)(r)\geq0.
+\]
+Because $J^*\ell_i=\bar\ell_i$, it is exactly the conditional covariance
+of $X_i\log\rho$ and $X_j\log\rho$ under $p(s\mid r)$.
+
+Define $\mathcal V_Q=\mathcal V\cap\mathbb H_Q$ and restrict the
+full form:
+\begin{equation}\label{eq:Cform}
+ c_Q(h,k)=q(h,k),\qquad h,k\in\mathcal V_Q.
+\end{equation}
+This is a closed densely defined nonnegative form on $\mathbb H_Q$.
+Closedness follows since $\mathbb H_Q$ is $L^2$ closed. Density and a
+form core follow by applying the bounded $Q$ of Lemma
+\ref{lem:projection-domain} to smooth approximations; thus
+$Q C^\infty(\mathcal Q)$ is a form core. Let $C$ be its associated
+self-adjoint operator. There is no unsupported assertion here that
+the formal differential compression $QLQ$ has an automatically chosen
+operator domain. The form determines the domain uniquely by
+\[
+ D(C)=\{h\in\mathcal V_Q:\text{there exists }v\in\mathbb H_Q
+       \text{ with }c_Q(k,h)=\langle k,v\rangle
+       \text{ for every }k\in\mathcal V_Q\},\quad Ch=v.
+\]
+For smooth $h\in\mathbb H_Q$ this definition gives $Ch=QLh$ by
+integration by parts. Since every $h\in\mathbb H_Q$ is orthogonal to
+$1$, the full Poincare inequality gives
+\begin{equation}\label{eq:Cgap}
+ c_Q(h,h)\geq\delta\|h\|_\mu^2,
+ \qquad C\geq\delta I>0.
+\end{equation}
+In particular $C^{-1}$ exists as a bounded operator. It and all
+$(C+z)^{-1}$, $z\geq0$, map into $D(C)\subset\mathcal V_Q$.
+
+For $f,g\in\mathcal V_R$ and $h,k\in\mathcal V_Q$, the exact block
+form is
+\begin{equation}\label{eq:blockform}
+ q(Jf+h,Jg+k)=a(f,g)+\langle Bf,k\rangle
+                         +\langle h,Bg\rangle+c_Q(h,k).
+\end{equation}
+For smooth functions this follows from \eqref{eq:B}; the bounded map
+$B:\mathcal V_R\to\mathbb H_Q$ and the form-domain decomposition in
+Lemma \ref{lem:projection-domain} extend it to the displayed domains.
+
+The adjoint coupling has an explicit expression as well. For smooth
+$h\in\mathbb H_Q$, Haar integration by parts in $r$ gives
+\begin{equation}\label{eq:Bstar}
+ B^*h=\rho_R^{-1}\sum_{i\in R}\kappa_i
+                   X_i\bigl(\rho_R J^*(\sigma_i h)\bigr).
+\end{equation}
+Indeed $\langle Bf,h\rangle=-\sum_i\kappa_i
+\int\rho_R\overline{X_if}J^*(\sigma_ih)d\lambda_R$, which becomes
+$\langle f,B^*h\rangle$ with the sign in \eqref{eq:Bstar}.
+Using \eqref{eq:conditional-derivative} with $u=\sigma_i h$ expands it
+as the finite sum
+\[
+ B^*h=\sum_{i\in R}\kappa_i
+ \left[J^*(\sigma_iX_ih)+J^*((X_i\sigma_i)h)
+       +J^*(\sigma_i^2h)+\bar\ell_iJ^*(\sigma_i h)\right].
+\]
+Every coefficient is bounded, so this formula extends to a bounded map
+$B^*:\mathcal V_Q\to\mathbb K$. On $\mathbb H_Q$ without this
+regularity, the symbol $B^*$ is instead the bounded dual map into
+$\mathcal V_R^*$ specified by $\langle f,B^*h\rangle=\langle Bf,h\rangle$.
+These two definitions agree on their common domain.
+
+Replacing $X_i$ by $X_i^c=2X_i$, $\sigma_i$ by $2\sigma_i$, and every
+kinetic coefficient by $\kappa_i/4$ leaves \eqref{eq:A}, \eqref{eq:B},
+and \eqref{eq:blockform} unchanged. This records the full original
+metric dictionary for the eliminated coupling as well as for $H$.
+
+\section{Exact compressed resolvents as closed Schur forms}
+
+For $z>0$, put $R_z=(C+z)^{-1}$ and define on $\mathcal V_R$
+\begin{equation}\label{eq:Schurform}
+ s_z(f,g)=a(f,g)+z\langle f,g\rangle-\langle Bf,R_zBg\rangle.
+\end{equation}
+The last term is well defined by \eqref{eq:Bbound}. All occurrences of
+$B^*R_zB$ below mean this form on the stated domain, not a product of
+unbounded operators with unspecified domains.
+
+\begin{theorem}\label{thm:Schur}
+The form $s_z$ is closed, positive, and coercive on $\mathcal V_R$.
+Its self-adjoint operator $S_z$ obeys $S_z\geq zI$ and
+\begin{equation}\label{eq:Schurresolvent}
+ J^*(L+z)^{-1}J=S_z^{-1}
+   =\left[A+z-B^*(C+z)^{-1}B\right]^{-1}.
+\end{equation}
+The eliminated component of $(L+z)^{-1}Jg$ is exactly
+$-R_zB S_z^{-1}g$. Moreover, in operator order,
+\begin{equation}\label{eq:resolventorder}
+ J^*(L+z)^{-1}J\ \geq\ (A+z)^{-1}.
+\end{equation}
+\end{theorem}
+\begin{proof}
+The block form and completion of the square give, for every
+$f\in\mathcal V_R$, $h\in\mathcal V_Q$,
+\begin{equation}\label{eq:square}
+ q(Jf+h,Jf+h)+z(\|f\|^2+\|h\|^2)
+ =s_z(f,f)+\|(C+z)^{1/2}(h+R_zBf)\|^2.
+\end{equation}
+Thus $s_z(f,f)$ is the infimum over $h$, uniquely attained at
+$h=-R_zBf$, and nonnegativity of $q$ gives $s_z(f,f)\geq z\|f\|^2$.
+For an explicit form-norm lower bound, apply
+\eqref{eq:projection-bound} to $v=Jf+h$, for which $J^*v=f$:
+\[
+ a(f,f)+\|f\|^2
+ \leq2q(v,v)+(2\eta+1)\|v\|^2
+ \leq K_z\bigl(q(v,v)+z\|v\|^2\bigr),
+ \quad K_z=\max\{2,(2\eta+1)/z\}.
+\]
+Take the minimizing $h$ to obtain
+$s_z(f,f)\geq K_z^{-1}(a(f,f)+\|f\|^2)$.
+Conversely $s_z(f,f)\leq a(f,f)+z\|f\|^2$ by choosing $h=0$.
+These two bounds make its norm equivalent to the complete
+$\mathcal V_R$ norm and prove closedness and coercivity. The
+associated operator therefore exists and is at least $zI$.
+
+For $g\in\mathbb K$, let $v=(L+z)^{-1}Jg$ and decompose it as
+$v=Jf+h$ using the bounded form projection. The weak resolvent
+equation tested against $k\in\mathcal V_Q$ gives
+$c_Q(k,h)+z\langle k,h\rangle=-\langle k,Bf\rangle$.
+The definition of $C$ proves $h=-R_zBf$. Testing against $Jf'$ for
+$f'\in\mathcal V_R$ then gives
+$s_z(f',f)=\langle f',g\rangle$, so $f=S_z^{-1}g$.
+This proves both the compressed inverse and the reconstruction formula
+with their domains resolved.
+
+Finally, $s_z(f,f)\leq a(f,f)+z\|f\|^2$. For a positive coercive
+closed form $t$ with associated operator $T$, completing the square in
+its form space gives
+$\langle g,T^{-1}g\rangle=\sup_f[2\Rea\langle g,f\rangle-t(f,f)]$.
+Applying this formula to the two forms proves
+\eqref{eq:resolventorder}. It is an order statement for the resolvents;
+no ordering of their time exponentials is inferred from it.
+\end{proof}
+
+This is a weighted, infinite-rank Schur complement. The projection and
+effective-resolvent method itself is established in Feshbach's work and
+in the modern Feshbach--Schur formulation \cite{Feshbach,DSS}. The proof
+above supplies the conditional-score coupling, form domains, and
+coercivity needed for this particular infinite-dimensional projection.
+
+\section{Full temporal correlations and exact memory}
+
+Define the compressed correlation operator on the retained Hilbert space
+by
+\begin{equation}\label{eq:Kt}
+ K(t)=J^*e^{-tL}J,\qquad t\geq0.
+\end{equation}
+It is a positive self-adjoint contraction with $K(0)=I$ and $K(t)1=1$.
+These statements follow respectively from positivity in the spectral
+sense, contraction, the isometry $J$, and $L1=0$. Its matrix elements
+are the actual full quantum vacuum correlations, since
+\begin{equation}\label{eq:quantumcorrelation}
+ \langle f,K(t)g\rangle_{\mu_R}
+ =\langle\psi_0Jf,e^{-t(H-E_0)}\psi_0Jg\rangle_\lambda.
+\end{equation}
+The spectral theorem also gives its norm-convergent Laplace integral
+\begin{equation}\label{eq:Laplace}
+ \int_0^\infty e^{-zt}K(t)\,dt
+ =J^*(L+z)^{-1}J=S_z^{-1},\qquad z>0.
+\end{equation}
+The integral is convergent in operator norm because $\|K(t)\|\leq1$.
+
+\begin{theorem}\label{thm:memory}
+For smooth initial $f_0\in C^\infty(\mathcal Q_R)$, set
+$f(t)=K(t)f_0$. It satisfies the exact equation in $\mathbb K$
+\begin{equation}\label{eq:memory}
+ f'(t)=-Af(t)+\int_0^t B^*e^{-(t-s)C}Bf(s)\,ds,
+ \qquad f(0)=f_0.
+\end{equation}
+The integral is a well-defined Bochner integral; its positive sign is
+fixed by eliminating the other component of the full equation.
+For every smooth $f$,
+\begin{equation}\label{eq:secondmoment}
+ \langle f,K(t)f\rangle
+ =\|f\|^2-t\,a(f,f)
+       +\frac{t^2}{2}\bigl(\|Af\|^2+\|Bf\|^2\bigr)+o(t^2).
+\end{equation}
+The equality $K(t)=e^{-tA}$ for all $t\geq0$ holds if and only if
+$B=0$ on $\mathcal V_R$.
+\end{theorem}
+\begin{proof}
+Let $v(t)=e^{-tL}Jf_0$ and $h(t)=Qv(t)$. Smooth initial data belong to
+all powers of the compact elliptic operator $L$, so spectral calculus
+and elliptic regularity make $v(t)$ smooth in space and continuously
+differentiable in every required Sobolev norm for $t\geq0$. Lemma
+\ref{lem:projection-domain} implies the same spatial regularity for
+$f(t)=J^*v(t)$ and $h(t)$. The full equation $v'=-Lv$ and
+\eqref{eq:blockform} therefore give
+\[
+ f'=-Af-B^*h,\qquad h'=-Bf-Ch,\qquad h(0)=0.
+\]
+For the second equation, differentiating
+$e^{-(t-s)C}h(s)$ and integrating in $s$ gives
+\begin{equation}\label{eq:eliminatedevolution}
+ h(t)=-\int_0^te^{-(t-s)C}Bf(s)\,ds.
+\end{equation}
+This differentiation is justified since the smooth $h(s)$ lies in
+$D(C)$ with $Ch(s)=QLh(s)$ continuously in $\mathbb H_Q$.
+
+The map $B^*:\mathcal V_Q\to\mathbb K$ was proved bounded above.
+Spectral calculus for $C\geq0$ gives
+\[
+ \|e^{-\tau C}\|_{\mathbb H_Q\to\mathcal V_Q}
+ \leq1+(2e\tau)^{-1/2},\qquad\tau>0,
+\]
+because $\sup_{x\geq0}\sqrt{x}e^{-\tau x}=(2e\tau)^{-1/2}$.
+Consequently the integrand in \eqref{eq:eliminatedevolution} is
+integrable in the form norm near $s=t$, as $Bf(s)$ is continuous in
+$\mathbb H_Q$. Applying the bounded $B^*$ to that form-norm integral
+and substituting into the first equation proves \eqref{eq:memory}
+as a strong $\mathbb K$ identity. This also specifies rigorously the
+memory-kernel domain: $B^*e^{-\tau C}B$ maps $\mathcal V_R$ to
+$\mathbb K$ for $\tau>0$, with an integrable $O(1+\tau^{-1/2})$
+bound on bounded time intervals. This is an exact projection-memory
+construction of the type introduced by Mori \cite{Mori}, with the
+Euclidean generator and signs derived here.
+
+For \eqref{eq:secondmoment}, apply the scalar spectral theorem to the
+smooth vector $Jf$, which lies in $D(L^2)$. The zeroth, first and
+second moments are $\|f\|^2$, $a(f,f)$, and
+\[
+ \|LJf\|_\mu^2=\|JAf+Bf\|_\mu^2=\|Af\|_{\mu_R}^2+\|Bf\|_\mu^2.
+\]
+The second-order Taylor remainder is $o(t^2)$ by dominated convergence
+against its finite second spectral moment. This proves the expansion.
+The corresponding expansion for $e^{-tA}$ has second coefficient
+$\|Af\|^2/2$. Equality of all the correlation operators therefore
+forces $Bf=0$ for every smooth $f$, and density and \eqref{eq:Bbound}
+extend this to $\mathcal V_R$. Conversely, if $B=0$, the exact closed
+form \eqref{eq:blockform} is the orthogonal direct sum of $a$ and $c_Q$.
+Its self-adjoint operator and semigroup are direct sums as well, giving
+$K(t)=e^{-tA}$.
+\end{proof}
+
+In particular the explicit second-derivative diagnostic is
+\[
+ \left.\frac{d^2}{dt^2}\right|_{t=0}
+ \left[\langle Jf,e^{-tL}Jf\rangle_\mu
+              -\langle f,e^{-tA}f\rangle_{\mu_R}\right]=\|Bf\|_\mu^2.
+\]
+
+For the unrestricted retained function space this condition has a
+concrete statistical characterization:
+\begin{equation}\label{eq:factorization}
+ B=0\text{ on }\mathcal V_R
+ \quad\Longleftrightarrow\quad
+ \rho(s,r)=\rho_S(s)\rho_R(r)
+ \text{ for positive probability densities }\rho_S,\rho_R.
+\end{equation}
+The reverse implication follows immediately from $\sigma_i=0$.
+For the forward implication, \eqref{eq:B} vanishes for every smooth
+test function $f$. The resulting functions are smooth, so vanishing
+in $L^2$ means vanishing pointwise. At any fixed $r$, a smooth function
+with arbitrary prescribed differential at $r$ is obtained from local
+coordinates and a smooth cutoff. The independent tangent basis $X_i$
+and positive $\kappa_i$ then force each $\sigma_i(s,r)=0$. Thus every
+$r$ derivative of $p(s\mid r)$ is zero, and connectedness of
+$\mathcal Q_R$ makes it independent of $r$. Normalization gives the
+factorization. If one restricts tests to gauge-invariant functions,
+the exact criterion is $B=0$ on that invariant form space; the stronger
+factorization is not asserted from that smaller test space.
+
+\section{Constructed excitation vectors using the eliminated resolvent}
+
+The marginal quotient can be improved by an explicit full-state vector.
+Let $0\ne f\in\mathcal V_R$ satisfy $\mu_R(f)=0$. For every $z\geq0$
+define
+\begin{equation}\label{eq:correctedstate}
+ w_z=(C+z)^{-1}Bf,\qquad
+ u_z=\psi_0(Jf-w_z).
+\end{equation}
+Equation \eqref{eq:Cgap} guarantees existence even at $z=0$, and
+$w_z\in\mathcal V_Q$. Orthogonality gives
+$\langle\psi_0,u_z\rangle_\lambda=0$ and
+$\|u_z\|_\lambda^2=\|f\|_{\mu_R}^2+\|w_z\|_\mu^2>0$.
+All gauge actions commute with the forms and their resolvents; hence
+if $f$ is invariant, $u_z$ is invariant as well.
+For a full original-Hilbert-space form-domain vector $u$, write
+\[
+ \mathfrak h_0[u]=\|(H-E_0)^{1/2}u\|_\lambda^2
+                =q(u/\psi_0,u/\psi_0).
+\]
+This is the energy used below. It equals
+$\langle u,(H-E_0)u\rangle$ when $u\in D(H)$, but no such stronger
+domain membership is assumed for the constructed form-domain vector.
+
+\begin{theorem}\label{thm:improvedtrial}
+The actual full-Hamiltonian Rayleigh quotient of \eqref{eq:correctedstate}
+is
+\begin{equation}\label{eq:improvedquotient}
+ \frac{\mathfrak h_0[u_z]}{\|u_z\|^2}
+ =\frac{a(f,f)-\langle Bf,w_z\rangle-z\|w_z\|^2}
+        {\|f\|^2+\|w_z\|^2}
+ \leq\frac{a(f,f)}{\|f\|^2}.
+\end{equation}
+The inequality is strict whenever $Bf\ne0$. The numerator is
+nonnegative. For $z=0$, $-w_0$ uniquely minimizes the full Dirichlet
+energy among all $Jf+h$, $h\in\mathcal V_Q$, with the retained
+conditional mean $f$ fixed.
+\end{theorem}
+\begin{proof}
+The equation $(C+z)w_z=Bf$ gives
+$c_Q(w_z,w_z)=\langle Bf,w_z\rangle-z\|w_z\|^2$.
+Insert $h=-w_z$ in \eqref{eq:blockform}. The two cross terms subtract
+$2\langle Bf,w_z\rangle$, yielding exactly the numerator in
+\eqref{eq:improvedquotient}. It is nonnegative because it is the full
+closed form $q(Jf-w_z,Jf-w_z)$. The scalar
+$\langle Bf,w_z\rangle=\langle Bf,(C+z)^{-1}Bf\rangle$ is
+nonnegative and strictly positive when $Bf\ne0$. The numerator is
+therefore at most $a(f,f)$ and the denominator at least $\|f\|^2$;
+when $Bf\ne0$ the numerator is strictly smaller. The base energy is
+positive for a nonzero centered $f$, because $\rho_R>0$ on a connected
+space. This proves the claimed strict inequality. Completion of the
+square in \eqref{eq:square} with $z=0$ remains valid because $C>0$,
+and proves the minimization statement.
+\end{proof}
+
+For a centered retained $f$, define the actual excitation spectral
+probability measure
+\[
+ \nu_f(E)=\|f\|^{-2}
+ \langle\psi_0Jf,\mathbf1_E(H-E_0)\psi_0Jf\rangle.
+\]
+Its first moment is $a(f,f)/\|f\|^2$, its second moment for smooth
+$f$ is $(\|Af\|^2+\|Bf\|^2)/\|f\|^2$, and its Laplace transform
+is $\langle f,K(t)f\rangle/\|f\|^2$. The corrected states have their
+own actual spectral measures with first moment
+\eqref{eq:improvedquotient}. In particular each invariant corrected
+state gives a genuine upper bound on the full physical spectral gap;
+none of these energies is assigned from an independently chosen
+single-slice density.
+
+\section{Exact nonlinear Wilson integration leading to this marginal}
+
+We now construct the connection to the completed compact-link
+integration. Specialize to $\SU(2)$ and the fixed spatial regulator
+with the original action metric, spatial mesh $a>0$, and coupling
+$g_{\rm YM}>0$. Retain
+\begin{equation}\label{eq:physicalcoefficients}
+ \kappa_e=\frac{2g_{\rm YM}^2}{a},\qquad
+ b_p^{\rm Hamiltonian}=\frac1{2g_{\rm YM}^2a},\qquad
+ b_t(\epsilon)=\frac{a}{2g_{\rm YM}^2\epsilon},\qquad
+ b_s(\epsilon)=\frac{\epsilon}{2g_{\rm YM}^2a}.
+\end{equation}
+The companion \texttt{temporal\_transfer.tex} defines the positive
+normalized transfer operator
+\[
+ F_\epsilon=e^{-\epsilon V/2}K_\epsilon e^{-\epsilon V/2}.
+\]
+The exact temporal link kernel has
+spin-$j$ multiplier $I_{2j+1}(2b_t)/I_1(2b_t)$, temporal vertex
+integration gives the Gauss projector $P_G$, and the raw transfer is
+\begin{equation}\label{eq:rawrelation}
+ T_\epsilon^{\rm raw}=c_\epsilon F_\epsilon P_G,
+ \qquad c_\epsilon=[e^{-2b_t}Z(b_t)]^{|\mathsf E|},\qquad
+ Z(b)=I_1(2b)/b.
+\end{equation}
+That companion proves, on the actual dense invariant core and then
+strongly on the full Hilbert space,
+$F_{T/m}^{\,m}\to e^{-TH}$ for fixed $T>0$. This is a time limit at
+fixed spatial graph, with every coefficient in
+\eqref{eq:physicalcoefficients} retained.
+
+For $T>0$ and integer $m\geq1$, put $\epsilon=T/m$ and
+\begin{equation}\label{eq:slabdensities}
+ \phi_{T,m}=F_{T/m}^{\,m}1,\qquad
+ \rho_{T,m}(U)=\frac{\phi_{T,m}(U)^2}{\|\phi_{T,m}\|_\lambda^2},\qquad
+ \rho_{R;T,m}(r)=\int\rho_{T,m}(s,r)d\lambda_S(s).
+\end{equation}
+All these functions are positive, and $1$ is gauge invariant, so the
+Gauss projector is retained automatically. Kernel composition and
+Fubini identify \eqref{eq:slabdensities} with the central-slice density
+of a two-sided finite Euclidean Wilson slab with slices
+$-m,-m+1,\ldots,m$, fixed central slice $U$, and constant outer
+boundary states. Each temporal plaquette has weight $b_t$, every
+interior spatial plaquette has weight $b_s$, and spatial plaquettes
+on the two outer boundary slices have half weight. The central
+magnetic factor is full, because the two half factors multiply.
+The two raw factors $c_\epsilon^m$ multiply to $c_\epsilon^{2m}$ in
+both numerator and normalization and cancel exactly. This proves a
+specific Euclidean-integral representation, including both temporal
+sides and their boundary weights.
+
+Assume now that $\mathsf S$ is the selected spatial-link set with no
+two selected edges belonging to one spatial plaquette, and that each
+plaquette uses any one physical edge at most once. Apply the selection
+only at the central time slice. A temporal plaquette has only one
+spatial edge at that slice, so no spacetime plaquette contains two
+selected central links either. Let $Y$ denote every remaining slab
+variable except the retained central links $r$.
+For each selected central edge $e$, cyclically rotate and, when
+necessary, invert a plaquette inside its real trace to write all its
+incident contributions as $\Rea\tr(U_eV_{ep})$. Define
+\begin{align}
+ H_e(Y,r)&=\sum_{p\ni(e,0)}b_pV_{ep},&
+ B_e&=\sum_{p\ni(e,0)}b_p,\nonumber\\
+ r_e^2(Y,r)&=\tfrac12\tr(H_eH_e^\dagger)
+ =\sum_{p\ni(e,0)}b_p^2
+   +\sum_{p<q\ni(e,0)}b_pb_q\Rea\tr(V_{ep}V_{eq}^\dagger).
+   \label{eq:allstaples}
+\end{align}
+The weights in this sum are the actual anisotropic weights of their
+plaquettes. For a spatial interior edge there are four spatial staples
+of weight $b_s$ and two temporal staples of weight $b_t$, so
+$B_e=4b_s+2b_t$. At a spatial boundary the displayed incident sum,
+rather than this interior count, is used.
+
+The exact single-link integral is
+\begin{equation}\label{eq:Zintegration}
+ \int_{\SU(2)}e^{-2B_e+\Rea\tr(U_eH_e)}dU_e
+   =e^{-2B_e}Z(r_e),\qquad
+ Z(r)=\sum_{k=0}^\infty\frac{r^{2k}}{k!(k+1)!},\quad Z(0)=1.
+\end{equation}
+To prove it, write every $\SU(2)$ matrix as a unit real quaternion.
+The real linear combination $H_e$ then obeys
+$H_eH_e^\dagger=r_e^2I$ and $\det H_e=r_e^2$.
+For $r_e>0$, $H_e/r_e\in\SU(2)$ and Haar translation reduces the
+integral to
+$(2/\pi)\int_{-1}^1e^{2r_ex}\sqrt{1-x^2}dx$.
+Termwise integration of its uniformly convergent exponential series,
+using
+$\int_{-1}^1x^{2k}\sqrt{1-x^2}dx
+=\pi(2k)!/[2\cdot4^kk!(k+1)!]$, gives
+\eqref{eq:Zintegration}. The even moment formula follows by integration
+by parts from the semicircle area at $k=0$. At $r_e=0$ the quaternion
+is zero and the integral is exactly one before its constant factor.
+
+No incident plaquette is shared by selected links. Thus the exact
+central retained density in \eqref{eq:slabdensities} is
+\begin{equation}\label{eq:integratedslab}
+ \rho_{R;T,m}(r)=
+ \frac{\displaystyle\int
+    e^{-S_{\rm rest}(Y,r)}
+    \prod_{e\in\mathsf S}e^{-2B_e}Z(r_e(Y,r))\,dY}
+      {\displaystyle\int_{\mathcal Q_R}\int
+    e^{-S_{\rm rest}(Y,r')}
+    \prod_{e\in\mathsf S}e^{-2B_e}Z(r_e(Y,r'))\,dY\,d\lambda_R(r')}.
+\end{equation}
+Here $S_{\rm rest}$ is precisely the slab action with those incident
+plaquettes removed; it includes every other plaquette and the stated
+outer boundary weights. The integrals over $Y$ include all temporal
+vertex links. Formula \eqref{eq:integratedslab} follows by applying
+\eqref{eq:Zintegration} to the finite positive integrand and Fubini.
+All cross-staple traces, the two temporal staples, and all induced
+interactions remain in it. For a general split $\mathsf S$, the
+unfactorized exact integral over selected links in
+\eqref{eq:slabdensities} remains valid; only the product expression
+\eqref{eq:integratedslab} uses the no-shared-plaquette property.
+
+\begin{theorem}\label{thm:slablimit}
+The exact true-vacuum marginal is the sequential $L^1$ limit
+\begin{equation}\label{eq:sequentiallimit}
+ \rho_R=\lim_{T\to\infty}\lim_{m\to\infty}\rho_{R;T,m},
+ \qquad\epsilon=T/m,
+\end{equation}
+with the spatial graph and $a,g_{\rm YM}$ fixed. In particular the
+nonlinear integration \eqref{eq:integratedslab}, performed with all
+its interactions, has this precise relation to the true vacuum.
+\end{theorem}
+\begin{proof}
+Strong transfer convergence gives
+$\phi_{T,m}\to\phi_T:=e^{-TH}1$ in $L^2(\lambda)$ for each fixed
+$T>0$. This nonzero positive vector has a nonzero norm. Normalization
+is continuous at a nonzero vector, and
+$\|v^2-w^2\|_1\leq(\|v\|_2+\|w\|_2)\|v-w\|_2$ for real
+functions. Consequently
+\[
+ \rho_{T,m}\longrightarrow
+ \rho_T:=\frac{(e^{-TH}1)^2}{\|e^{-TH}1\|^2}
+ \quad\text{in }L^1(\lambda).
+\]
+Marginalization is an $L^1$ contraction by Fubini and the triangle
+inequality, so the retained marginals converge in $L^1(\lambda_R)$.
+
+Set $c_0=\langle\psi_0,1\rangle_\lambda>0$. Spectral decomposition,
+the unique ground state, and the finite gap $\delta$ give
+\[
+ e^{TE_0}e^{-TH}1=c_0\psi_0+r_T,\qquad
+ r_T\perp\psi_0,\qquad
+ \|r_T\|\leq e^{-T\delta}\sqrt{1-c_0^2}.
+\]
+The norm of this vector is $\sqrt{c_0^2+\|r_T\|^2}$. Subtracting
+$\psi_0$ after normalizing and using the triangle inequality gives
+\[
+ \left\|\frac{e^{-TH}1}{\|e^{-TH}1\|}-\psi_0\right\|_2
+ \leq\frac{2\|r_T\|}{c_0}.
+\]
+Thus the same square-density inequality and marginal contraction yield
+\begin{equation}\label{eq:vacuumerror}
+ \|\rho_{R;T}-\rho_R\|_1
+ \leq\|\rho_T-\rho\|_1
+ \leq\frac{4\sqrt{1-c_0^2}}{c_0}e^{-T\delta}.
+\end{equation}
+This proves \eqref{eq:sequentiallimit}. It does not exchange the two
+limits or infer a spatial continuum limit from them.
+\end{proof}
+
+The resulting excitation estimate can be obtained continuously from
+these exact marginal integrations. Fix a nonconstant smooth invariant
+$F(r)$ and put
+\[
+ \gamma_R(F)=\sum_{i\in R}\kappa_i|X_iF|^2,
+ \qquad Q_R(F)=\frac{\mu_R(\gamma_R(F))}{\Var_{\mu_R}(F)}.
+\]
+For a probability density $\widetilde\rho_R$ let $\widetilde Q_R(F)$
+be the same ratio with that density. Set
+$\eta_1=\|\widetilde\rho_R-\rho_R\|_1$,
+$M_F=\|F\|_\infty$, $G_F=\|\gamma_R(F)\|_\infty$, and
+$v_F=\Var_{\mu_R}(F)>0$. Direct integration gives
+\[
+ |\widetilde\mu_R(\gamma_R)-\mu_R(\gamma_R)|\leq G_F\eta_1,
+ \quad
+ |\Var_{\widetilde\mu_R}(F)-v_F|\leq3M_F^2\eta_1.
+\]
+The second inequality uses the second-moment error at most
+$M_F^2\eta_1$ and
+$\bigl|\lvert\widetilde\mu_R(F)\rvert^2-\lvert\mu_R(F)\rvert^2\bigr|
+\leq2M_F^2\eta_1$ for the mean term. If
+$\eta_1\leq v_F/(6M_F^2)$, the new variance is at least $v_F/2$;
+subtracting the two fractions then proves the explicit estimate
+\begin{equation}\label{eq:quotienterror}
+ |\widetilde Q_R(F)-Q_R(F)|
+ \leq\frac{2G_F}{v_F}\eta_1
+      +\frac{6G_FM_F^2}{v_F^2}\eta_1.
+\end{equation}
+In particular the sequential limits of the quotients constructed from
+\eqref{eq:integratedslab} equal the genuine full-vacuum Rayleigh
+quotient \eqref{eq:Rayleigh}, and hence its actual spectral first
+moment. The controlled finite integrals, the true marginal, and the
+quantum excitation estimate are related by the displayed maps and
+limits. The single-time density proportional to
+$\exp[-\sum_pb_p(2-\Rea\tr U_p)]$ is nowhere substituted for
+$\psi_0^2$.
+
+\section{Verification and literature provenance}
+
+The calculation uses the full finite interacting Hamiltonian, not a
+Gaussian or Abelian replacement. The map $B$, its conditional
+covariance, the closed Schur form, the memory integral, and the
+corrected full trial states all retain the actual $\rho=\psi_0^2$.
+The scalar Schur/memory signs and corrected Rayleigh algebra are also
+checked in \texttt{check\_spatial\_elimination.py}; that finite exact
+algebra check does not replace the proved form-domain argument.
+It passed 12 exact scalar/block assertions, together with exact
+matrix-entry checks. An additional explicit rational-matrix quotient
+checks the strict decrease; it is an algebra diagnostic and is not
+presented as a lattice vacuum or a continuum approximation.
+
+The general projection and Schur ideas are established methods, not
+claimed as new results here. The locally retained source of
+Dusson--Sigal--Stamm was inspected at Theorem 1.2 and the subsequent
+effective-interaction equations; the retained projection here has
+infinite rank, so its bounded finite-rank formulas are not invoked
+without the form proof above. The earlier complete finite-vacuum and
+time-transfer sources in this directory provide the retained kinetic,
+potential, metric, and temporal-normalization dictionaries used here.
+No infinite-volume or spatial-continuum spectral conclusion is made.
+
+\begin{thebibliography}{9}
+\bibitem{Feshbach}
+H. Feshbach, \emph{Unified Theory of Nuclear Reactions},
+Reviews of Modern Physics \textbf{36} (1964), 1076--1078,
+\href{https://doi.org/10.1103/RevModPhys.36.1076}
+{doi:10.1103/RevModPhys.36.1076}.
+
+\bibitem{DSS}
+G. Dusson, I. M. Sigal, and B. Stamm,
+\emph{The Feshbach--Schur map and perturbation theory},
+\href{https://arxiv.org/abs/2105.02058}{arXiv:2105.02058v1} (2021),
+Theorem 1.2 and equations (1.10)--(1.16).
+
+\bibitem{Mori}
+H. Mori, \emph{Transport, Collective Motion, and Brownian Motion},
+Progress of Theoretical Physics \textbf{33} (1965), 423--455,
+\href{https://doi.org/10.1143/PTP.33.423}{doi:10.1143/PTP.33.423}.
+\end{thebibliography}
+\end{document}

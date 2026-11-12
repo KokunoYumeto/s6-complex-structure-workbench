@@ -1,0 +1,856 @@
+\section{Cubical holonomy and finite gauge systems}
+\label{cusp-link-section}
+
+This section records three constructions on the regular cusp fibres while
+keeping two independent integers separate throughout:
+\(M_{\mathrm{cov}}\) is the index used to enlarge two periods of a fibre,
+whereas \(N_{\mathrm{mesh}}\) is the number of cubical subdivisions in each
+coordinate direction.  In particular, no mesh refinement is identified with
+a change of covering space.
+
+Let
+\begin{equation}
+ P_T=
+ \begin{pmatrix}
+  6\operatorname{Re}\mu_T&\operatorname{Re}\tau_T&1&0\\
+  6\operatorname{Im}\mu_T&\operatorname{Im}\tau_T&0&0\\
+  \operatorname{Re}\beta_T&\operatorname{Re}\mu_T&0&1\\
+  \operatorname{Im}\beta_T&\operatorname{Im}\mu_T&0&0
+ \end{pmatrix},
+ \qquad
+ F_T=\mathbb R^4/P_T\mathbb Z^4.
+ \label{cusp-link-period-matrix}
+\end{equation}
+Write
+\begin{equation}
+ L_T=\operatorname{Im}\tau_T,
+ \qquad m_T=\operatorname{Im}\mu_T,
+ \qquad q_T=-\operatorname{Im}\beta_T,
+ \qquad D_T=L_Tq_T+6m_T^2>0.
+ \label{cusp-link-radial-data}
+\end{equation}
+Expanding the determinant along the last two columns gives
+\[
+ \det P_T=L_T\operatorname{Im}\beta_T-6m_T^2=-D_T.
+\]
+Along the positive radial cusp the source data give
+\begin{equation}
+ L_T=T+O(1),\qquad q_T=T+O(1),\qquad m_T=O(1),
+ \label{cusp-link-cusp-asymptotics}
+\end{equation}
+and all three real parts occurring in \eqref{cusp-link-period-matrix} are
+bounded.  Equivalently, after ordering physical coordinates as
+\((x_1,x_3;x_2,x_4)\), the first two columns have block form
+\begin{equation}
+ \binom{A_T}{B_T},\qquad
+ B_T=
+ \begin{pmatrix}6m_T&L_T\\-q_T&m_T\end{pmatrix}
+ =T\begin{pmatrix}0&1\\-1&0\end{pmatrix}+C_T,
+ \qquad \sup_T\lVert C_T\rVert_{\mathrm{op}}<\infty.
+ \label{cusp-link-block-form}
+\end{equation}
+
+For \(M_{\mathrm{cov}}\geq1\), put
+\begin{equation}
+ S_{M_{\mathrm{cov}}}
+ =\operatorname{diag}(1,1,M_{\mathrm{cov}},M_{\mathrm{cov}}),
+ \qquad
+ P_{T,M_{\mathrm{cov}}}=P_TS_{M_{\mathrm{cov}}},
+ \label{cusp-link-cover-matrix}
+\end{equation}
+and define the degree-\(M_{\mathrm{cov}}^2\) cover
+\begin{equation}
+ \widetilde F_{T,M_{\mathrm{cov}}}
+ =\mathbb R^4/P_{T,M_{\mathrm{cov}}}\mathbb Z^4
+ \longrightarrow F_T.
+ \label{cusp-link-cover-torus}
+\end{equation}
+Indeed,
+\(S_{M_{\mathrm{cov}}}\mathbb Z^4\subset\mathbb Z^4\) and
+\[
+ \mathbb Z^4/S_{M_{\mathrm{cov}}}\mathbb Z^4
+ \cong(\mathbb Z/M_{\mathrm{cov}}\mathbb Z)^2,
+\]
+so the identity on \(\mathbb R^4\) induces the asserted cover and its deck
+group has order \(M_{\mathrm{cov}}^2\).
+Its Euclidean quotient metric, written on the coordinate torus
+\(\mathbb R^4/\mathbb Z^4\), has Gram matrix and covolume
+\begin{equation}
+ G_{T,M_{\mathrm{cov}}}
+ =P_{T,M_{\mathrm{cov}}}^{\mathsf T}P_{T,M_{\mathrm{cov}}},
+ \qquad
+ \mathcal D_{T,M_{\mathrm{cov}}}
+ =\sqrt{\det G_{T,M_{\mathrm{cov}}}}
+ =M_{\mathrm{cov}}^2D_T.
+ \label{cusp-link-cover-metric}
+\end{equation}
+
+\subsection{The transported cubical subdivision and continuum holonomy}
+
+Fix an integer \(N_{\mathrm{mesh}}\geq2\), and let
+\(K_{N_{\mathrm{mesh}}}\) be the standard cubical subdivision of
+\(\mathbb R^4/\mathbb Z^4\) obtained by dividing every coordinate circle
+into \(N_{\mathrm{mesh}}\) equal intervals.  Its vertex set and positively
+oriented coordinate edges are
+\begin{equation}
+ V_{N_{\mathrm{mesh}}}
+ =(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4,
+ \qquad
+ E_{N_{\mathrm{mesh}}}
+ =V_{N_{\mathrm{mesh}}}\times\{1,2,3,4\}.
+ \label{cusp-link-cubical-sets}
+\end{equation}
+
+\begin{proposition}[Exact cubical realization and the torsion vertices]
+\label{cusp-link-cubical-realization}
+The linear map \(P_{T,M_{\mathrm{cov}}}\) induces a diffeomorphism
+\begin{equation}
+ \Phi_{T,M_{\mathrm{cov}}}:\mathbb R^4/\mathbb Z^4
+ \longrightarrow\widetilde F_{T,M_{\mathrm{cov}}},
+ \qquad [y]\longmapsto[P_{T,M_{\mathrm{cov}}}y].
+ \label{cusp-link-coordinate-diffeomorphism}
+\end{equation}
+Transporting \(K_{N_{\mathrm{mesh}}}\) by this diffeomorphism gives an
+honest cubical cell decomposition of the whole torus.  On vertices its
+restriction is the bijection
+\begin{equation}
+ \begin{aligned}
+ \iota_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}:\quad
+ &(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4
+ \xrightarrow{\ \cong\ }
+ \widetilde F_{T,M_{\mathrm{cov}}}[N_{\mathrm{mesh}}],\\
+ &[n]\longmapsto
+ \left[\frac1{N_{\mathrm{mesh}}}P_{T,M_{\mathrm{cov}}}n\right].
+ \end{aligned}
+ \label{cusp-link-torsion-bijection}
+\end{equation}
+Here the codomain is the finite \(N_{\mathrm{mesh}}\)-torsion subgroup,
+not the entire torus.  The coordinate edge \((n,j)\) is the path
+\begin{equation}
+ \gamma_{n,j}(t)=
+ \left[
+  \frac1{N_{\mathrm{mesh}}}
+  P_{T,M_{\mathrm{cov}}}(n+t\mathbf e_j)
+ \right],
+ \qquad 0\leq t\leq1.
+ \label{cusp-link-coordinate-edge}
+\end{equation}
+More generally, for an ordered subset
+\(I=\{i_1,\ldots,i_p\}\subset\{1,2,3,4\}\), the corresponding closed
+\(p\)-cell is parametrized by
+\begin{equation}
+ c_{n,I}(t_1,\ldots,t_p)=
+ \left[
+  \frac1{N_{\mathrm{mesh}}}P_{T,M_{\mathrm{cov}}}
+  \left(n+\sum_{a=1}^pt_a\mathbf e_{i_a}\right)
+ \right],
+ \qquad (t_1,\ldots,t_p)\in[0,1]^p.
+ \label{cusp-link-general-cell}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+If \(y-y'\in\mathbb Z^4\), then
+\(P_{T,M_{\mathrm{cov}}}(y-y')\) belongs to the quotient lattice, so
+\eqref{cusp-link-coordinate-diffeomorphism} is well defined.  The matrix
+\(P_{T,M_{\mathrm{cov}}}\) is invertible, and its inverse induces the
+inverse map on the two quotients.  Hence it is a diffeomorphism and carries
+every open cell of the standard subdivision diffeomorphically onto an open
+cell of the target.
+
+Every point displayed in \eqref{cusp-link-torsion-bijection} is killed by
+\(N_{\mathrm{mesh}}\).  If it is zero, then
+\[
+ \frac{P_{T,M_{\mathrm{cov}}}n}{N_{\mathrm{mesh}}}
+ \in P_{T,M_{\mathrm{cov}}}\mathbb Z^4.
+\]
+Invertibility gives
+\(n\in N_{\mathrm{mesh}}\mathbb Z^4\), proving injectivity.  Conversely,
+if \([x]\) is killed by \(N_{\mathrm{mesh}}\), choose a lift
+\(x\in\mathbb R^4\).  There is \(n\in\mathbb Z^4\) such that
+\(N_{\mathrm{mesh}}x=P_{T,M_{\mathrm{cov}}}n\), and therefore
+\([x]=[P_{T,M_{\mathrm{cov}}}n/N_{\mathrm{mesh}}]\).  This proves
+surjectivity.  Formula \eqref{cusp-link-coordinate-edge} is simply the
+transport of the corresponding coordinate edge; at a wrap-around endpoint
+the extra vector \(P_{T,M_{\mathrm{cov}}}\mathbf e_j\) is a period.
+\end{proof}
+
+Let \(G\) be a compact matrix Lie group and use the trivial principal bundle over
+\(\widetilde F_{T,M_{\mathrm{cov}}}\).  A connection is represented by
+\(A\in\Omega^1(\widetilde F_{T,M_{\mathrm{cov}}};\mathfrak g)\).  For an
+oriented path \(\gamma\), define \(U_A(\gamma)\) by
+\begin{equation}
+ \frac{dU}{dt}=-A_{\gamma(t)}(\dot\gamma(t))U(t),
+ \qquad U(0)=1,
+ \qquad U_A(\gamma)=U(1).
+ \label{cusp-link-parallel-transport-ode}
+\end{equation}
+
+\begin{proposition}[Typed continuum-to-link holonomy map]
+\label{cusp-link-holonomy-map}
+The formula
+\begin{equation}
+ \operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(A)_{n,j}
+ =U_A(\gamma_{n,j})
+ \label{cusp-link-holonomy-definition}
+\end{equation}
+defines a map
+\begin{equation}
+ \operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}:
+ \Omega^1(\widetilde F_{T,M_{\mathrm{cov}}};\mathfrak g)
+ \longrightarrow G^{E_{N_{\mathrm{mesh}}}}.
+ \label{cusp-link-holonomy-typed}
+\end{equation}
+For the convention
+\begin{equation}
+ A^g=g^{-1}Ag+g^{-1}dg,
+ \qquad
+ g\in C^\infty(\widetilde F_{T,M_{\mathrm{cov}}},G),
+ \label{cusp-link-gauge-convention}
+\end{equation}
+it is equivariant for evaluation of \(g\) at the vertices:
+\begin{equation}
+ \operatorname{Hol}(A^g)_{n,j}
+ =g(\gamma_{n,j}(1))^{-1}
+  \operatorname{Hol}(A)_{n,j}
+  g(\gamma_{n,j}(0)).
+ \label{cusp-link-holonomy-equivariance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The smooth matrix ODE \eqref{cusp-link-parallel-transport-ode} has a unique
+solution on every edge, which proves that \eqref{cusp-link-holonomy-typed}
+is defined.  Let \(U\) solve that ODE for \(A\), set
+\(g_t=g(\gamma_{n,j}(t))\), and put
+\(V(t)=g_t^{-1}U(t)g_0\).  Direct differentiation gives
+\[
+ V'(t)=-\bigl(g_t^{-1}A(\dot\gamma_{n,j})g_t
+                 +g_t^{-1}g_t'\bigr)V(t),
+ \qquad V(0)=1.
+\]
+This is exactly the parallel-transport equation for \(A^g\).  Uniqueness
+and evaluation at \(t=1\) prove \eqref{cusp-link-holonomy-equivariance}.
+Notice that the endpoint inverse in this formula is forced by the joint
+conventions \eqref{cusp-link-parallel-transport-ode} and
+\eqref{cusp-link-gauge-convention}.
+\end{proof}
+
+\subsection{An explicit compact-link
+\texorpdfstring{\(\mathrm{SU}(2)\)}{SU(2)} flux}
+
+The ordered plaquette convention used below is most naturally written for
+the inverse-transport link variable
+\begin{equation}
+ \mathcal U(A)_{n,j}
+ =\operatorname{Hol}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(A)_{n,j}^{-1}.
+ \label{cusp-link-inverse-transport-variable}
+\end{equation}
+Equation \eqref{cusp-link-holonomy-equivariance} then becomes
+\begin{equation}
+ \mathcal U(A^g)_{n,j}
+ =g(\gamma_{n,j}(0))^{-1}\mathcal U(A)_{n,j}g(\gamma_{n,j}(1)).
+ \label{cusp-link-inverse-transport-gauge-law}
+\end{equation}
+Thus the product in \eqref{cusp-link-plaquette-convention} transforms by
+conjugation at its base vertex.  The symbols \(U_j(n)\) in the remainder of
+this subsection use this inverse-transport convention.
+
+Use
+\begin{equation}
+ \mathfrak{su}(2)=\{X\in M_2(\mathbb C):X^*=-X,\ \operatorname{tr}X=0\},
+ \qquad
+ \langle X,Y\rangle_{\mathfrak{su}(2)}
+ =-\frac12\operatorname{tr}(XY),
+ \label{cusp-link-su2-inner-product}
+\end{equation}
+on real elements, and fix
+\begin{equation}
+ H_{\mathrm{link}}=\begin{pmatrix}i&0\\0&-i\end{pmatrix}.
+ \qquad
+ \lVert H_{\mathrm{link}}\rVert^2=1,
+ \qquad \exp(2\pi H_{\mathrm{link}})=1.
+ \label{cusp-link-flux-generator}
+\end{equation}
+Write \(N=N_{\mathrm{mesh}}\) temporarily inside the next displayed link
+formulas, and represent \(n_1,n_2\) by integers in
+\(\{0,\ldots,N-1\}\).
+
+\begin{theorem}[A periodic compact-link flux and its exact action]
+\label{cusp-link-flux-theorem}
+On the oriented edges of \(K_N\), define
+\begin{align}
+ U_1(n)&=\exp\left(-\frac{2\pi n_2}{N^2}H_{\mathrm{link}}\right),
+ \label{cusp-link-flux-u1}\\
+ U_2(n)&=
+ \begin{cases}
+  1,&0\leq n_2\leq N-2,\\[1mm]
+  \exp(2\pi n_1H_{\mathrm{link}}/N),&n_2=N-1,
+ \end{cases}
+ \label{cusp-link-flux-u2}\\
+ U_3(n)&=U_4(n)=1.
+ \label{cusp-link-flux-u34}
+\end{align}
+For
+\begin{equation}
+ U_{ij}(n)=U_i(n)U_j(n+\mathbf e_i)
+            U_i(n+\mathbf e_j)^{-1}U_j(n)^{-1},
+ \label{cusp-link-plaquette-convention}
+\end{equation}
+one has
+\begin{equation}
+ \begin{aligned}
+ U_{12}(n)&=\exp(2\pi H_{\mathrm{link}}/N^2)
+ &&\text{for every }n,\\
+ U_{ij}(n)&=1
+ &&\text{for }1\leq i<j\leq4,\quad(i,j)\neq(1,2).
+ \end{aligned}
+ \label{cusp-link-plaquette-values}
+\end{equation}
+
+Let \(\operatorname{Log}\) be the principal logarithm on the displayed
+plaquette.  It is unambiguous because \(0<2\pi/N^2\leq\pi/2\).  Define
+the logarithmic curvature two-form and its metric-weighted action by
+\begin{align}
+ \mathcal F_N^{\log}(n)
+ &=N^2\operatorname{Log}(U_{12}(n))\,dy^1\wedge dy^2,
+ \label{cusp-link-log-curvature}\\
+ S^{\log}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{\mathcal D_{T,M_{\mathrm{cov}}}}{2g_{\mathrm{YM}}^2N^4}
+   \sum_{n\in V_N}
+   \lVert\mathcal F_N^{\log}(n)\rVert^2_{
+       G_{T,M_{\mathrm{cov}}}^{-1}\otimes\mathfrak{su}(2)}.
+ \label{cusp-link-log-action}
+\end{align}
+Then
+\begin{equation}
+ \mathcal F_N^{\log}(n)=2\pi H_{\mathrm{link}}\,dy^1\wedge dy^2,
+ \qquad
+ S^{\log}_{T,M_{\mathrm{cov}},N}(U)
+ =\frac{2\pi^2M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}.
+ \label{cusp-link-log-action-value}
+\end{equation}
+In particular, the native-fibre value \(M_{\mathrm{cov}}=1\) is
+\(2\pi^2/(g_{\mathrm{YM}}^2D_T)\), independently of the mesh.
+
+There is no canonical scalar Wilson action for a general nonorthogonal
+metric obtained merely by assigning independent character weights to all
+coordinate plaquettes.  For this configuration, however, the exact
+continuum-matched \((1,2)\)-sector Wilson functional is unambiguous if it is
+defined explicitly by the following formula.  Its ordered plaquette
+holonomy and real trace are the Wilson lattice-action construction
+\cite{Wilson_1974}; the metric coefficient and normalization here are the
+present definition, and their consequences are proved below rather than
+imported from that source:
+\begin{equation}
+ S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ =\frac{\mathcal D_{T,M_{\mathrm{cov}}}\kappa^{12}_{T,M_{\mathrm{cov}}}}
+        {2g_{\mathrm{YM}}^2}
+   \sum_{n\in V_N}
+   \left(2-\operatorname{Re}\operatorname{tr}U_{12}(n)\right),
+ \label{cusp-link-wilson-sector-definition}
+\end{equation}
+where
+\begin{equation}
+ \kappa^{12}_{T,M_{\mathrm{cov}}}
+ =(G_{T,M_{\mathrm{cov}}}^{-1})_{11}
+  (G_{T,M_{\mathrm{cov}}}^{-1})_{22}
+ -(G_{T,M_{\mathrm{cov}}}^{-1})_{12}^2
+ =D_T^{-2}.
+ \label{cusp-link-two-form-minor}
+\end{equation}
+Its exact value and continuum-mesh limit are
+\begin{align}
+ S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{M_{\mathrm{cov}}^2N^4}{2g_{\mathrm{YM}}^2D_T}
+   \left(2-2\cos\frac{2\pi}{N^2}\right),
+ \label{cusp-link-wilson-sector-value}\\
+ &=\frac{M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}
+   \left(
+    2\pi^2-\frac{2\pi^4}{3N^4}
+    +\frac{4\pi^6}{45N^8}+O(N^{-12})
+   \right),
+ \label{cusp-link-wilson-sector-expansion}\\
+ \lim_{N\to\infty}S^{W,12}_{T,M_{\mathrm{cov}},N}(U)
+ &=\frac{2\pi^2M_{\mathrm{cov}}^2}{g_{\mathrm{YM}}^2D_T}.
+ \label{cusp-link-wilson-sector-limit}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+All links lie in the same diagonal circle subgroup, so they commute.  If
+\(0\leq n_2\leq N-2\), the two \(U_2\)-terms in
+\eqref{cusp-link-plaquette-convention} are trivial and
+\[
+ U_{12}(n)=
+ \exp(-2\pi n_2H_{\mathrm{link}}/N^2)
+ \exp(2\pi(n_2+1)H_{\mathrm{link}}/N^2)
+ =\exp(2\pi H_{\mathrm{link}}/N^2).
+\]
+If \(n_2=N-1\), then \(U_1(n+\mathbf e_2)=1\).  Moreover,
+\[
+ U_2(n+\mathbf e_1)U_2(n)^{-1}=\exp(2\pi H_{\mathrm{link}}/N).
+\]
+For \(n_1=N-1\), the exponent computed with representatives differs from
+\(2\pi H_{\mathrm{link}}/N\) by \(-2\pi H_{\mathrm{link}}\), whose exponential is one; hence the formula
+also holds across that wrap boundary.  It follows that
+\[
+ U_{12}(n)=
+ \exp\left(-\frac{2\pi(N-1)}{N^2}H_{\mathrm{link}}\right)
+ \exp\left(\frac{2\pi}{N}H_{\mathrm{link}}\right)
+ =\exp(2\pi H_{\mathrm{link}}/N^2).
+\]
+The functions \(U_1,U_2\) are independent of \(n_3,n_4\), and
+\(U_3=U_4=1\), proving every remaining assertion in
+\eqref{cusp-link-plaquette-values}.  Reversing the orientation gives
+\(U_{21}(n)=U_{12}(n)^{-1}\); it is not an additional trivial plaquette.
+
+The lower-right \(2\times2\) principal block of the cover Gram matrix is
+\(M_{\mathrm{cov}}^2I_2\).  Jacobi's
+complementary-minor identity therefore gives
+\[
+ \kappa^{12}_{T,M_{\mathrm{cov}}}
+ =\frac{\det(M_{\mathrm{cov}}^2I_2)}
+        {\det G_{T,M_{\mathrm{cov}}}}
+ =\frac{M_{\mathrm{cov}}^4}{M_{\mathrm{cov}}^4D_T^2}
+ =D_T^{-2},
+\]
+which proves \eqref{cusp-link-two-form-minor}.  By
+\eqref{cusp-link-flux-generator} and the principal-log choice,
+\(N^2\operatorname{Log}U_{12}=2\pi H_{\mathrm{link}}\).  Hence every one of the \(N^4\)
+summands in \eqref{cusp-link-log-action} equals
+\(4\pi^2D_T^{-2}\).  Substitution of
+\(\mathcal D_{T,M_{\mathrm{cov}}}=M_{\mathrm{cov}}^2D_T\) proves
+\eqref{cusp-link-log-action-value}.
+
+Finally, \(H_{\mathrm{link}}\) has eigenvalues \(\pm i\), so
+\[
+ \operatorname{Re}\operatorname{tr}\exp(2\pi H_{\mathrm{link}}/N^2)
+ =2\cos(2\pi/N^2).
+\]
+There are \(N^4\) equal plaquettes.  Substitution proves
+\eqref{cusp-link-wilson-sector-value}.  Applying
+\[
+ 1-\cos x=\frac{x^2}{2}-\frac{x^4}{24}
+           +\frac{x^6}{720}+O(x^8)
+\]
+with \(x=2\pi/N^2\) proves
+\eqref{cusp-link-wilson-sector-expansion} and
+\eqref{cusp-link-wilson-sector-limit}.
+\end{proof}
+
+\subsection{Finite Gaussian quantization with independent cover and mesh}
+
+Let
+\begin{equation}
+ \vartheta^j_{T,M_{\mathrm{cov}}}
+ =P_{T,M_{\mathrm{cov}}}^{-\mathsf T}\mathbf e_j
+ \in(\mathbb R^4)^*,
+ \qquad 1\leq j\leq4.
+ \label{cusp-link-physical-coframe}
+\end{equation}
+For \(0\leq p\leq4\), define the real finite cochain spaces
+\begin{equation}
+ C^p_{N_{\mathrm{mesh}}}(T,M_{\mathrm{cov}})
+ =\operatorname{Map}\left(
+ V_{N_{\mathrm{mesh}}},
+ \bigwedge^p(\mathbb R^4)^*\otimes\mathfrak{su}(2)
+ \right).
+ \label{cusp-link-cochain-spaces}
+\end{equation}
+The exterior powers carry the metric induced by the physical coframe
+\eqref{cusp-link-physical-coframe}; explicitly, for increasing multi-indices
+\(I=(i_1,\ldots,i_p)\) and \(J=(j_1,\ldots,j_p)\),
+\begin{equation}
+ \left\langle
+  \vartheta^{i_1}\wedge\cdots\wedge\vartheta^{i_p},
+  \vartheta^{j_1}\wedge\cdots\wedge\vartheta^{j_p}
+ \right\rangle
+ =
+ \det\left((G_{T,M_{\mathrm{cov}}}^{-1})_{i_a j_b}\right)_{a,b=1}^p.
+ \label{cusp-link-exterior-metric}
+\end{equation}
+Together with \eqref{cusp-link-su2-inner-product}, this defines the
+pointwise tensor-product metric.  The cochain inner product is
+\begin{equation}
+ \langle a,b\rangle_p
+ =\frac{\mathcal D_{T,M_{\mathrm{cov}}}}{N_{\mathrm{mesh}}^4}
+   \sum_{n\in V_{N_{\mathrm{mesh}}}}
+   \langle a(n),b(n)\rangle.
+ \label{cusp-link-cochain-inner-product}
+\end{equation}
+Let \(\mathsf T_j a(n)=a(n+\mathbf e_j)\), set
+\begin{equation}
+ D^+_{N_{\mathrm{mesh}},j}
+ =N_{\mathrm{mesh}}(\mathsf T_j-1),
+ \qquad
+ D^-_{N_{\mathrm{mesh}},j}a(n)
+ =N_{\mathrm{mesh}}(a(n)-a(n-\mathbf e_j)),
+ \label{cusp-link-differences}
+\end{equation}
+and define
+\begin{equation}
+ d_{N_{\mathrm{mesh}}}a
+ =\sum_{j=1}^4
+  \varepsilon(\vartheta^j_{T,M_{\mathrm{cov}}})
+  D^+_{N_{\mathrm{mesh}},j}a.
+ \label{cusp-link-finite-exterior-derivative}
+\end{equation}
+The commuting differences and anticommuting exterior multiplications give
+\(d_{N_{\mathrm{mesh}}}^2=0\).  Its adjoint is
+\begin{equation}
+ d_{N_{\mathrm{mesh}}}^*
+ =-\sum_{j=1}^4
+  \iota_{(\vartheta^j_{T,M_{\mathrm{cov}}})^\sharp}
+  D^-_{N_{\mathrm{mesh}},j}.
+ \label{cusp-link-finite-adjoint}
+\end{equation}
+Define the real reduced Coulomb space
+\begin{align}
+ \mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ &=
+ \ker(d_{N_{\mathrm{mesh}}}^*:C^1\to C^0)
+ \cap
+ \left(\ker\Delta^{(1)}_{N_{\mathrm{mesh}}}\right)^\perp,
+ \label{cusp-link-reduced-coulomb-space}\\
+ \Delta^{(1)}_{N_{\mathrm{mesh}}}
+ &=d_{N_{\mathrm{mesh}}}d_{N_{\mathrm{mesh}}}^*
+ +d_{N_{\mathrm{mesh}}}^*d_{N_{\mathrm{mesh}}}.
+ \label{cusp-link-finite-hodge-laplacian}
+\end{align}
+On this finite-dimensional space put
+\begin{equation}
+ \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =g_{\mathrm{YM}}^{-2}d_{N_{\mathrm{mesh}}}^*
+                         d_{N_{\mathrm{mesh}}}.
+ \label{cusp-link-finite-hessian}
+\end{equation}
+
+\begin{proposition}[Exact finite Hessian spectrum]
+\label{cusp-link-finite-spectrum}
+For
+\begin{equation}
+ \mathfrak d_{N_{\mathrm{mesh}}}(k)_j
+ =N_{\mathrm{mesh}}
+  \left(e^{2\pi i k_j/N_{\mathrm{mesh}}}-1\right),
+ \qquad
+ k\in(\mathbb Z/N_{\mathrm{mesh}}\mathbb Z)^4,
+ \label{cusp-link-fourier-symbol}
+\end{equation}
+the positive spectrum of \(\mathcal L\) is obtained from
+\begin{equation}
+ \lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(k)
+ =\frac1{g_{\mathrm{YM}}^2}
+  \left\lVert
+   P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}
+   \mathfrak d_{N_{\mathrm{mesh}}}(k)
+  \right\rVert^2,
+ \qquad k\neq0.
+ \label{cusp-link-finite-mode-eigenvalue}
+\end{equation}
+Each complex Fourier fibre has transverse multiplicity
+\(3\dim\mathfrak{su}(2)=9\).  In particular,
+\begin{equation}
+ \lambda_{\min}(\mathcal L)
+ =\min_{k\neq0}\lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(k)>0.
+ \label{cusp-link-finite-minimum}
+\end{equation}
+For \(\mathbf e_1=(1,0,0,0)^{\mathsf T}\), the exact mode value is
+\begin{equation}
+ \lambda_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}(\mathbf e_1)
+ =\frac{4N_{\mathrm{mesh}}^2
+              \sin^2(\pi/N_{\mathrm{mesh}})}{g_{\mathrm{YM}}^2}
+  \frac{L_T^2+m_T^2}{D_T^2};
+ \label{cusp-link-cover-soft-mode}
+\end{equation}
+it is independent of \(M_{\mathrm{cov}}\).
+\end{proposition}
+
+\begin{proof}
+Translation is unitary for \eqref{cusp-link-cochain-inner-product}, so
+\((D_j^+)^*=-D_j^-\).  Exterior multiplication by \(\vartheta^j\) has
+adjoint contraction by \((\vartheta^j)^\sharp\), proving
+\eqref{cusp-link-finite-adjoint}.  On the Fourier character
+\(\chi_k(n)=e^{2\pi i k\cdot n/N_{\mathrm{mesh}}}\), the derivative symbol
+is exterior multiplication by
+\[
+ \zeta(k)=P_{T,M_{\mathrm{cov}}}^{-\mathsf T}
+           \mathfrak d_{N_{\mathrm{mesh}}}(k)
+ =P_T^{-\mathsf T}S_{M_{\mathrm{cov}}}^{-1}
+           \mathfrak d_{N_{\mathrm{mesh}}}(k).
+\]
+The Hermitian exterior-algebra identity
+\[
+ \iota_{\overline\zeta^\sharp}\varepsilon(\zeta)
+ +\varepsilon(\zeta)\iota_{\overline\zeta^\sharp}
+ =\lVert\zeta\rVert^2\operatorname{id}
+\]
+shows that on the Coulomb polarization
+\(\ker\iota_{\overline\zeta^\sharp}\subset(\mathbb C^4)^*\), the operator
+\(d^*d\) is multiplication by \(\lVert\zeta\rVert^2\).  For \(k\neq0\),
+\(\mathfrak d_{N_{\mathrm{mesh}}}(k)\neq0\), so invertibility of
+\(P_{T,M_{\mathrm{cov}}}\) gives
+\(\zeta(k)\neq0\).  The contraction has rank one, and its kernel has
+dimension three.  The zero Fourier fibre consists exactly of constant
+harmonic cochains and was removed in
+\eqref{cusp-link-reduced-coulomb-space}.  Fourier completeness now proves
+\eqref{cusp-link-finite-mode-eigenvalue}--\eqref{cusp-link-finite-minimum}.
+
+For \(k=\mathbf e_1\), the only nonzero component of
+\(\mathfrak d_{N_{\mathrm{mesh}}}(k)\) has modulus
+\[
+ 2N_{\mathrm{mesh}}\sin(\pi/N_{\mathrm{mesh}}),
+\]
+and
+\(S_{M_{\mathrm{cov}}}^{-1}\mathbf e_1=\mathbf e_1\).  Solving
+\(P_T^{\mathsf T}\xi=\mathbf e_1\), or directly inverting the lower
+\(2\times2\) block in \eqref{cusp-link-period-matrix}, gives
+\[
+ \lVert P_T^{-\mathsf T}\mathbf e_1\rVert^2
+ =\frac{L_T^2+m_T^2}{D_T^2}.
+\]
+Substitution proves \eqref{cusp-link-cover-soft-mode}.
+\end{proof}
+
+Let \(da\) denote Lebesgue measure on
+\(\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}\) induced by
+\eqref{cusp-link-cochain-inner-product} and define
+\begin{equation}
+ \mathcal H^{\mathrm{Gauss}}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =L^2(\mathscr C_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}},da).
+ \label{cusp-link-gaussian-hilbert-space}
+\end{equation}
+
+\begin{theorem}[Finite Gaussian oscillator and a resolved cusp sequence]
+\label{cusp-link-gaussian-theorem}
+The Friedrichs realization on \eqref{cusp-link-gaussian-hilbert-space} of
+\begin{equation}
+ \widehat H^{\mathrm{Gauss}}_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}
+ =-\frac12\Delta_{\mathscr C}
+  +\frac12\langle a,
+     \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}}a\rangle
+ \label{cusp-link-gaussian-hamiltonian}
+\end{equation}
+has a unique Gaussian ground state and spectral gap
+\begin{equation}
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ =\sqrt{\lambda_{\min}(
+   \mathcal L_{T,M_{\mathrm{cov}},N_{\mathrm{mesh}}})}.
+ \label{cusp-link-gaussian-gap}
+\end{equation}
+Consequently,
+\begin{equation}
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ \leq
+ \frac{2N_{\mathrm{mesh}}\sin(\pi/N_{\mathrm{mesh}})}{g_{\mathrm{YM}}}
+ \frac{\sqrt{L_T^2+m_T^2}}{D_T}.
+ \label{cusp-link-gaussian-gap-bound}
+\end{equation}
+
+There is an explicit diagonal sequence for which the cover geometry tends locally to
+\(\mathbb R^4\), the cubical mesh resolves that geometry, and the Gaussian
+gap tends to zero.  Explicitly, for integers \(j\to\infty\), take
+\begin{equation}
+ T_j=j^2,\qquad M_{\mathrm{cov},j}=j,\qquad
+ N_{\mathrm{mesh},j}=j^3.
+ \label{cusp-link-diagonal-sequence}
+\end{equation}
+Then
+\begin{equation}
+ \begin{aligned}
+ \operatorname{sys}(\widetilde F_{T_j,M_{\mathrm{cov},j}})
+ &\longrightarrow\infty,\\
+ \max_r
+ \frac{\lVert P_{T_j,M_{\mathrm{cov},j}}\mathbf e_r\rVert}
+      {N_{\mathrm{mesh},j}}
+ &\longrightarrow0,\\
+ \operatorname{gap}(\widehat H^{\mathrm{Gauss}})
+ &\longrightarrow0,\\
+ S^{\log}_{T_j,M_{\mathrm{cov},j},N_{\mathrm{mesh},j}}(U)
+ &\longrightarrow0.
+ \end{aligned}
+ \label{cusp-link-diagonal-conclusions}
+\end{equation}
+Thus the pointed cover tori converge locally isometrically to \(\mathbb R^4\)
+while their finite linearized Gaussian systems are simultaneously refined.
+\end{theorem}
+
+\begin{proof}
+The real finite-dimensional operator \(\mathcal L\) is positive definite on
+the reduced Coulomb space.  Choose an orthonormal eigenbasis with eigenvalues
+\(0<\lambda_1\leq\cdots\leq\lambda_r\).  In the resulting coordinates,
+\eqref{cusp-link-gaussian-hamiltonian} is the tensor sum
+\[
+ \sum_{s=1}^r
+ \left(-\frac12\frac{\partial^2}{\partial x_s^2}
+       +\frac12\lambda_sx_s^2\right).
+\]
+The normalized Hermite basis has eigenvalues
+\(\sum_s(n_s+\tfrac12)\sqrt{\lambda_s}\), with
+\(n_s\in\mathbb Z_{\geq0}\).  The all-zero multi-index is the unique ground
+state, and the smallest possible positive excitation is
+\(\sqrt{\lambda_1}\).  This proves \eqref{cusp-link-gaussian-gap}; applying
+the minimum to the explicit \(\mathbf e_1\)-mode in
+\eqref{cusp-link-cover-soft-mode} proves
+\eqref{cusp-link-gaussian-gap-bound}.
+
+For completeness, reorder physical coordinates as in
+\eqref{cusp-link-block-form}.  Every vector of the cover lattice has the
+form
+\[
+ \binom{A_Tn+M_{\mathrm{cov}}m}{B_Tn},
+ \qquad n,m\in\mathbb Z^2.
+\]
+Let \(C=\sup_T\lVert C_T\rVert_{\mathrm{op}}\).  If \(n\neq0\), then
+\(\lVert B_Tn\rVert\geq(T-C)\lVert n\rVert\); if \(n=0\) and the lattice
+vector is nonzero, its norm is at least \(M_{\mathrm{cov}}\).  Hence
+\begin{equation}
+ \operatorname{sys}(\widetilde F_{T,M_{\mathrm{cov}}})
+ \geq\min\{T-C,M_{\mathrm{cov}}\}.
+ \label{cusp-link-cover-systole-bound}
+\end{equation}
+This tends to infinity for the first two choices in
+\eqref{cusp-link-diagonal-sequence}.  For any fixed \(R>0\), once the
+systole exceeds \(4R\), the quotient map from \(\mathbb R^4\) is injective
+and distance-preserving on the radius-\(R\) ball: for a nonzero period
+\(\lambda\) and \(x,y\) in that ball,
+\[
+ \lVert x-y+\lambda\rVert
+ \geq\lVert\lambda\rVert-\lVert x-y\rVert
+ >4R-2R\geq\lVert x-y\rVert.
+\]
+This proves the pointed local-isometric \(\mathbb R^4\) limit.
+
+The first two columns of \(P_T\) have norm \(O(T)\), while the last two
+columns of \(P_{T,M_{\mathrm{cov}}}\) have norm exactly
+\(M_{\mathrm{cov}}\).  Therefore the largest physical edge in the
+\(N_{\mathrm{mesh}}\)-subdivision has length
+\(O(\max\{T,M_{\mathrm{cov}}\}/N_{\mathrm{mesh}})\), which is \(O(j^{-1})\)
+for \eqref{cusp-link-diagonal-sequence}.  Finally,
+\eqref{cusp-link-cusp-asymptotics} gives
+\(\sqrt{L_T^2+m_T^2}/D_T=T^{-1}(1+O(T^{-1}))\), while
+\(2N\sin(\pi/N)\leq2\pi\).  The right-hand side of
+\eqref{cusp-link-gaussian-gap-bound} is therefore \(O(j^{-2})\).
+Moreover, \eqref{cusp-link-log-action-value} is \(O(j^{-2})\), since
+\(M_{\mathrm{cov},j}^2/D_{T_j}=j^2/(j^4+O(j^2))\).
+This proves every assertion in \eqref{cusp-link-diagonal-conclusions}.
+\end{proof}
+
+\subsection{The exponential map and the exact physical boundary}
+
+Let \(C^1=C^1_{N_{\mathrm{mesh}}}(T,M_{\mathrm{cov}})\), regarded only as a
+finite-dimensional Lie-algebra cochain space, and define componentwise
+\begin{equation}
+ \operatorname{Exp}_{N_{\mathrm{mesh}}}:C^1
+ \longrightarrow\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},
+ \qquad
+ a\longmapsto\left(\exp(a_e/N_{\mathrm{mesh}})\right)_e.
+ \label{cusp-link-exponential-map}
+\end{equation}
+Here, if
+\(a(n)=\sum_{j=1}^4\vartheta^j_{T,M_{\mathrm{cov}}}\otimes a_j(n)\),
+then \(a_e=a_j(n)\) for the oriented edge \(e=(n,j)\).
+
+\begin{proposition}[Local chart, not a global embedding]
+\label{cusp-link-exponential-local-only}
+The map \eqref{cusp-link-exponential-map} is smooth and a local
+diffeomorphism at zero, but it is not globally injective.  Under left
+trivialization of every tangent space at the identity,
+\begin{equation}
+ D\operatorname{Exp}_{N_{\mathrm{mesh}}}(0)\,a
+ =N_{\mathrm{mesh}}^{-1}a.
+ \label{cusp-link-exponential-derivative}
+\end{equation}
+If \(S_W\) is any smooth compact-link action for which the identity
+configuration is critical, then
+\begin{equation}
+ D^2(S_W\circ\operatorname{Exp}_{N_{\mathrm{mesh}}})_0[a,b]
+ =N_{\mathrm{mesh}}^{-2}
+  D^2(S_W)_{\mathbf1}[a,b]
+ \label{cusp-link-exponential-hessian-scaling}
+\end{equation}
+under the same tangent identification.  Thus, for a prescribed cochain
+quadratic form \(Q\),
+\[
+ D^2(S_W\circ\operatorname{Exp}_{N_{\mathrm{mesh}}})_0=Q
+\]
+holds exactly when
+\[
+ D^2(S_W)_{\mathbf1}=N_{\mathrm{mesh}}^2Q
+\]
+under the coefficient identification.  Both this scaling and the tensor
+structure must be verified for the chosen compact-link action; neither
+follows from the exponential map alone.
+\end{proposition}
+
+\begin{proof}
+For the Lie-group exponential, \(D\exp_0\) is the identity.  Applying the
+chain rule to \(a_e\mapsto a_e/N_{\mathrm{mesh}}\) gives
+\eqref{cusp-link-exponential-derivative}, which is invertible, so the inverse
+function theorem gives a local diffeomorphism.  It is not globally
+injective: a cochain which is zero on every edge except one, where it equals
+\(2\pi N_{\mathrm{mesh}}H_{\mathrm{link}}\), has the same image as the zero cochain by
+\eqref{cusp-link-flux-generator}.  Finally, the second-derivative chain rule
+contains a term involving \(DS_W(\mathbf1)\), which vanishes by criticality;
+the two remaining first derivatives of \(\operatorname{Exp}\) each supply
+the factor \(N_{\mathrm{mesh}}^{-1}\).  This proves
+\eqref{cusp-link-exponential-hessian-scaling}.
+\end{proof}
+
+The Gaussian Hilbert space in \eqref{cusp-link-gaussian-hilbert-space} is
+not the compact-link Yang--Mills Hilbert space.  At this finite lattice, the
+latter kinematic and gauge-invariant spaces would be
+\begin{equation}
+ \mathcal H^{\mathrm{link}}_{N_{\mathrm{mesh}}}
+ =L^2(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},dU),
+ \qquad
+ \mathcal H^{\mathrm{inv}}_{N_{\mathrm{mesh}}}
+ =\left(\mathcal H^{\mathrm{link}}_{N_{\mathrm{mesh}}}\right)^{
+    \mathrm{SU}(2)^{V_{N_{\mathrm{mesh}}}}},
+ \label{cusp-link-physical-hilbert-space}
+\end{equation}
+where \(dU\) is product normalized Haar measure and the superscript denotes
+the nonlinear vertex-gauge action.  Here ``gauge-invariant'' refers only to
+the link-configuration space of this four-dimensional cell complex.  Without
+a chosen time direction or transfer matrix, it is not asserted to be a
+canonical Hamiltonian physical Hilbert space.  L\"uscher's construction of
+a selfadjoint, strictly positive transfer matrix
+\cite{Luscher_1977} and Menotti--Pelissetto's reflection-positivity theorem
+for the Wilson action \cite{MenottiPelissetto_1987} concern the standard
+Wilson lattice setting after the requisite reflection/time structure has
+been fixed; they do not supply those omitted choices for the nonorthogonal
+sector functional \eqref{cusp-link-wilson-sector-definition}.  The
+Osterwalder--Schrader reconstruction boundary is likewise the one stated in
+the primary Euclidean axioms papers
+\cite{OsterwalderSchrader1973,OsterwalderSchrader1975}, not a consequence of
+a finite Gaussian oscillator calculation.  The differences are
+structural:
+\begin{enumerate}
+\item \(\mathcal H^{\mathrm{Gauss}}\) is an \(L^2\)-space on a noncompact
+linear Coulomb slice with Lebesgue measure; \(\mathcal H^{\mathrm{inv}}\)
+is a gauge-invariant subspace of an \(L^2\)-space on compact link variables
+with Haar measure.
+\item The local exponential map is neither a global coordinate chart nor a
+measure-preserving bijection.  No unitary map between the two displayed
+Hilbert spaces has been constructed.
+\item A link configuration \(U\) determines the Dirac distribution
+\(\delta_U\), but
+\begin{equation}
+ \delta_U\in\mathcal D'(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}}),
+ \qquad
+ \delta_U\notin L^2(\mathrm{SU}(2)^{E_{N_{\mathrm{mesh}}}},dU).
+ \label{cusp-link-dirac-not-l2}
+\end{equation}
+Indeed, product Haar measure is nonatomic, so a point mass is singular with
+respect to it and has no square-integrable density.
+\item No nonlinear compact-link Hamiltonian, Gauss-law spectral problem,
+time direction, reflection-positive transfer matrix, renormalized-scale
+limit, or Osterwalder--Schrader reconstruction is supplied here.
+\end{enumerate}
+Accordingly, \eqref{cusp-link-gaussian-gap} is an exact theorem about the
+finite quadratic oscillator defined by the Coulomb-restricted operator
+\(g_{\mathrm{YM}}^{-2}d^*d\).  It is not an eigenvalue statement about a
+nonperturbative physical Yang--Mills
+Hamiltonian, and the small classical action in
+\eqref{cusp-link-log-action-value} is not by itself a physical-state Rayleigh
+quotient.

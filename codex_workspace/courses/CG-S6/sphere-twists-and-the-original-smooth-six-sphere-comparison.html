@@ -1,0 +1,1560 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sphere twists and the original smooth six-sphere comparison</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/sphere-twists-and-the-original-smooth-six-sphere-comparison.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1
+id="sphere-twists-and-the-original-smooth-six-sphere-comparison">Sphere
+twists and the original smooth six-sphere comparison</h1>
+<p>Receiving proof for CG-S6 lesson 7. GPT-6 Astra (OpenAI), Ultra, 11
+October 2026. New exposition CC0-1.0.</p>
+<p>The preceding geometric framing chapter constructs a framed
+seven-manifold with the original homotopy six-sphere as its specified
+boundary. The argument here works with an actual middle level of that
+manifold. It constructs smooth twists with their full signed integral
+homology action, realizes the required integral change by a finite
+composition of those maps, and changes the interior gluing while keeping
+both outer boundaries. The resulting handles cancel. Every original
+gluing, frame-comparison map and incidence matrix is retained in the
+comparison.</p>
+<h2 id="twist-actual-tube">1. A smooth twist in the actual three-sphere
+tube</h2>
+<p>Let <span class="math inline">\(P\)</span> be a closed oriented
+smooth six-manifold, and let <span class="math display">\[
+f:S^3\longrightarrow P
+\tag{1.1}
+\]</span> be an oriented parametrized embedding. The sphere is the unit
+sphere in the original ordered quaternion space <span
+class="math inline">\(\mathbb H=(1,i,j,k)\)</span>, with its boundary
+orientation. Its oriented rank-three normal bundle is trivial: its
+hemisphere transition has class in <span
+class="math inline">\(\pi_2SO(3)=0\)</span>, as proved in the geometric
+framing chapter, Sections 1–2. Retain a chosen normal frame <span
+class="math inline">\(\psi_q:\operatorname{Im}\mathbb
+H\to\nu_{f,q}\)</span>, an actual tubular map and a positive coordinate
+radius <span class="math inline">\(R\)</span> on which that map is
+injective.</p>
+<p>The left quaternion frame gives the exact bundle isomorphisms <span
+class="math display">\[
+TS^3\longleftrightarrow S^3\times\operatorname{Im}\mathbb H,
+\qquad(q,z)\longmapsto(q,\bar qz),\qquad
+(q,h)\longmapsto(q,qh).
+\tag{1.2}
+\]</span> Here <span class="math inline">\(\langle
+q,z\rangle=\operatorname{Re}(\bar qz)=0\)</span>. Thus the actual tube
+can be written as <span class="math display">\[
+\begin{split}
+N_R&amp;=\{(q,z)\in\mathbb H\oplus\mathbb H:
+                   |q|=1,\ \langle q,z\rangle=0,\ |z|\le R\},\\
+\Gamma(q,z)&amp;=\operatorname{tube}\bigl(f(q),\psi_q(\bar qz)\bigr).
+\end{split}
+\tag{1.3}
+\]</span> The norm on <span class="math inline">\(z\)</span> is a
+coordinate norm specifying this auxiliary disc bundle. It does not
+replace an original ambient metric. If that metric gives the Gram matrix
+<span class="math inline">\(G_\psi(q)\)</span> to <span
+class="math inline">\(\psi_q\)</span>, the actual normal squared length
+is <span class="math display">\[
+       (\bar qz)^T G_\psi(q)(\bar qz).
+\tag{1.4}
+\]</span> Both (1.3) and (1.4) are retained; no metric-isometry
+assertion about <span class="math inline">\(\Gamma\)</span> is
+needed.</p>
+<p>Choose actual numbers <span
+class="math inline">\(0&lt;a&lt;b&lt;R\)</span>. Set <span
+class="math display">\[
+\eta(t)=
+\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+\qquad
+\beta(r)=\frac{\eta(b-r)}{\eta(b-r)+\eta(r-a)},\qquad
+                       \theta(r)=\pi\beta(r).
+\tag{1.5}
+\]</span> The denominator is positive for every real <span
+class="math inline">\(r\)</span>, since <span
+class="math inline">\(a&lt;b\)</span>. The function is smooth, equals
+one for <span class="math inline">\(r\le a\)</span>, and equals zero for
+<span class="math inline">\(r\ge b\)</span>. For <span
+class="math inline">\(a&lt;r&lt;b\)</span> its derivative is <span
+class="math display">\[
+\beta&#39;(r)=
+\frac{-\eta&#39;(b-r)\eta(r-a)-\eta(b-r)\eta&#39;(r-a)}
+      {(\eta(b-r)+\eta(r-a))^2}&lt;0 .
+\tag{1.6}
+\]</span> Every derivative of <span class="math inline">\(\eta\)</span>
+at zero vanishes: on the positive side it is a finite polynomial in
+<span class="math inline">\(1/t\)</span> times <span
+class="math inline">\(e^{-1/t}\)</span>, whose limit is zero. This
+proves the asserted smoothness at both transition points.</p>
+<p>For <span class="math inline">\(r=|z|&gt;0\)</span>, define <span
+class="math display">\[
+\begin{split}
+F_\theta(q,z)&amp;=(q&#39;,z&#39;),\\
+q&#39;&amp;=\cos\theta(r)\,q+\frac{\sin\theta(r)}r\,z,\\
+z&#39;&amp;=-r\sin\theta(r)\,q+\cos\theta(r)\,z.
+\end{split}
+\tag{1.7}
+\]</span> At <span class="math inline">\(z=0\)</span>, define <span
+class="math inline">\(F_\theta(q,0)=(-q,0)\)</span>. For <span
+class="math inline">\(r&lt;a\)</span>, (1.7) is exactly <span
+class="math inline">\((q,z)\mapsto(-q,-z)\)</span>, so this definition
+is smooth at the entire zero section. For <span
+class="math inline">\(r&gt;b\)</span> it is the identity.</p>
+<p>The original constraints and radius are preserved. Writing <span
+class="math inline">\(c=\cos\theta(r)\)</span>, <span
+class="math inline">\(s=\sin\theta(r)\)</span>, direct expansion gives
+<span class="math display">\[
+\begin{split}
+|q&#39;|^2&amp;=c^2|q|^2+2cs\langle q,z\rangle/r+s^2|z|^2/r^2=1,\\
+\langle q&#39;,z&#39;\rangle
+      &amp;=-rcs|q|^2+(c^2-s^2)\langle q,z\rangle
+                                      +cs|z|^2/r=0,\\
+|z&#39;|^2&amp;=r^2s^2|q|^2-2rcs\langle q,z\rangle+c^2|z|^2=r^2 .
+\end{split}
+\tag{1.8}
+\]</span> Since <span class="math inline">\(r\)</span> is unchanged,
+replacing <span class="math inline">\(\theta\)</span> by <span
+class="math inline">\(-\theta\)</span> in (1.7) gives the two-sided
+inverse, by multiplication of the displayed two-by-two rotation
+matrices. It is smooth at zero for the same reason. Hence <span
+class="math inline">\(F_\theta\)</span> is a diffeomorphism of the
+original <span class="math inline">\(N_R\)</span>.</p>
+<p>For clarity, its differential away from zero retains all radial
+derivatives. With <span class="math inline">\(\dot r=\langle z,\dot
+z\rangle/r\)</span>, it is <span class="math display">\[
+\begin{split}
+\dot q&#39;={}&amp;c\dot q+\frac{s}{r}\dot z
+       -s\theta&#39;(r)\dot r\,q
+       +\left(\frac{c\theta&#39;(r)}r-\frac{s}{r^2}\right)\dot r\,z,\\
+\dot z&#39;={}&amp;-rs\dot q+c\dot z
+       -\bigl(s+rc\theta&#39;(r)\bigr)\dot r\,q
+       -s\theta&#39;(r)\dot r\,z .
+\end{split}
+\tag{1.9}
+\]</span> At zero the differential is <span class="math inline">\((\dot
+q,\dot z)\mapsto(-\dot q,-\dot z)\)</span> in the surrounding bundle
+coordinates. The inverse in (1.8) proves that this differential is
+invertible on each tangent space, including at the transition radii. The
+map preserves orientation: it is the identity on a nonempty outer
+collar, and its determinant sign is constant on the connected <span
+class="math inline">\(N_R\)</span>.</p>
+<p>Extend the following map by the identity outside the actual tube:
+<span class="math display">\[
+\mathcal F_f=
+\begin{cases}
+  \Gamma F_\theta\Gamma^{-1},&amp;\text{on }\Gamma(N_R),\\
+  1,&amp;\text{on }P\setminus\Gamma(N_R).
+\end{cases}
+\tag{1.10}
+\]</span> The definitions agree on an open collar because <span
+class="math inline">\(b&lt;R\)</span>. They give a smooth
+orientation-preserving diffeomorphism of <span
+class="math inline">\(P\)</span>, with inverse obtained from <span
+class="math inline">\(F_{-\theta}\)</span>. On the tube its exact
+derivative is <span class="math display">\[
+D\mathcal F_f
+       =D\Gamma_{F_\theta(q,z)}\,
+             DF_{\theta,(q,z)}\,D\Gamma_{(q,z)}^{-1}.
+\tag{1.11}
+\]</span> Thus every chosen tube coordinate, normal frame and original
+metric comparison remains present.</p>
+<p>This model has a precise source comparison. Paul Seidel’s
+original-author TeX, <a
+href="https://arxiv.org/abs/math/0105186v2"><em>A long exact sequence
+for symplectic Floer cohomology</em>, math/0105186v2</a>, lines 663–730,
+uses ordered variables <span class="math inline">\((u,v)\)</span> with
+<span class="math inline">\(|v|=1\)</span>, <span
+class="math inline">\(\langle u,v\rangle=0\)</span>, and the flow <span
+class="math display">\[
+\sigma_t(u,v)=
+  \left(\cos t\,u-\sin t\,|u|v,\
+          \cos t\,v+\frac{\sin t}{|u|}u\right).
+\tag{1.12}
+\]</span> The exact interchange is <span
+class="math inline">\((u,v)=(z,q)\)</span>. If his function is chosen on
+<span class="math inline">\(r\ge0\)</span> as <span
+class="math display">\[
+R_{\rm S}(r)=-\frac1{2\pi}\int_r^R\theta(s)\,ds ,
+\qquad 2\pi R_{\rm S}&#39;(r)=\theta(r),
+\tag{1.13}
+\]</span> then his formula is exactly (1.7) under that interchange. Near
+zero <span class="math inline">\(R_{\rm S}(r)=R_{\rm S}(0)+r/2\)</span>;
+extend it across zero by <span class="math inline">\(R_{\rm
+S}(-r)=R_{\rm S}(r)-r\)</span>. It is smooth there and vanishes for
+<span class="math inline">\(r\ge b\)</span>. His retained primitive
+correction is <span class="math display">\[
+2\pi\bigl(R_{\rm S}&#39;(r)r-R_{\rm S}(r)\bigr)
+              =r\theta(r)+\int_r^R\theta(s)\,ds .
+\tag{1.14}
+\]</span> We use the smooth map, with its inverse proved above. No
+ambient symplectic form or symplectic tubular embedding of <span
+class="math inline">\(f\)</span> is assumed. The source’s ambient
+extension in lines 979–1002 has an additional Lagrangian hypothesis for
+its symplectic assertion; (1.10) is a smooth tubular construction under
+the explicitly proved bundle comparison (1.2)–(1.3).</p>
+<h2 id="twist-signed-action">2. The full signed integral action</h2>
+<p>Write <span class="math inline">\(v=f_*[S^3]\in H_3(P;\mathbb
+Z)\)</span>, and write <span class="math inline">\(\lambda(x,y)=x\cdot
+y\)</span> for the ordered intersection number using the original
+orientation. The normal orientation in (1.3) is the one for which an
+oriented tangent frame of <span class="math inline">\(f(S^3)\)</span>,
+followed by its normal frame, is positive in <span
+class="math inline">\(P\)</span>.</p>
+<p>We prove <span class="math display">\[
+       (\mathcal F_f)_*(x)=x-\lambda(v,x)v,
+       \qquad
+       (\mathcal T_f)_*(x)=x+\lambda(v,x)v,
+       \qquad \mathcal T_f=\mathcal F_f^{-1}.
+\tag{2.1}
+\]</span> This includes the integer sign, rather than only its residue
+modulo two.</p>
+<p>First define the variation map on the original tube: <span
+class="math display">\[
+\begin{split}
+\operatorname{Var}_{F_\theta}:H_3(N_R,\partial N_R;\mathbb Z)
+       &amp;\longrightarrow H_3(N_R;\mathbb Z),\\
+                         [c]&amp;\longmapsto[F_\theta c-c].
+\end{split}
+\tag{2.2}
+\]</span> A relative cycle has boundary in <span
+class="math inline">\(\partial N_R\)</span>, on which <span
+class="math inline">\(F_\theta\)</span> is the identity, so the
+displayed difference is a cycle. Replacing <span
+class="math inline">\(c\)</span> by <span
+class="math inline">\(c+\partial d+e\)</span>, where <span
+class="math inline">\(e\)</span> is a chain in the boundary, changes
+that difference by <span class="math inline">\(\partial(F_\theta
+d-d)\)</span>. This proves that (2.2) is well-defined with the displayed
+sign.</p>
+<p>The oriented Thom comparison from the included duality chapter
+identifies <span class="math inline">\(H_3(N_R,\partial N_R;\mathbb
+Z)\)</span> with <span class="math inline">\(H_0(S^3;\mathbb Z)=\mathbb
+Z\)</span>. Its positive generator is the original oriented fibre disc
+<span class="math inline">\(D_{q_0}\)</span>. Retraction to the zero
+section identifies <span class="math inline">\(H_3(N_R;\mathbb
+Z)\)</span> with <span class="math inline">\(\mathbb Z[S^3]\)</span>. We
+now calculate (2.2) on <span class="math inline">\(D_{q_0}\)</span>.</p>
+<p>Take <span class="math inline">\(q_0=1\)</span> first, with the
+ordered fibre coordinates <span class="math inline">\((i,j,k)\)</span>.
+Projection of its image under (1.7) is <span class="math display">\[
+        z=ru\longmapsto
+              \cos\theta(r)\,1+\sin\theta(r)\,u,
+       \qquad u\in S^2\subset\operatorname{Im}\mathbb H.
+\tag{2.3}
+\]</span> It equals <span class="math inline">\(1\)</span> near the
+boundary and equals <span class="math inline">\(-1\)</span> near the
+centre. It therefore descends to a map <span
+class="math inline">\(D^3/\partial D^3\to S^3\)</span>. Every target
+with polar angle <span
+class="math inline">\(\vartheta\in(0,\pi)\)</span> has exactly one
+inverse image: (1.6) gives exactly one <span
+class="math inline">\(r\in(a,b)\)</span> with <span
+class="math inline">\(\theta(r)=\vartheta\)</span>, and the target’s
+unit imaginary direction gives <span
+class="math inline">\(u\)</span>.</p>
+<p>The source orientation is <span
+class="math inline">\(dr\wedge\omega_{S^2}\)</span>, with its positive
+radial factor <span class="math inline">\(r^2\)</span>. In the target
+coordinates <span class="math inline">\((\vartheta,u)\)</span>, the
+original boundary orientation is <span
+class="math inline">\(\sin^2\vartheta\,d\vartheta\wedge\omega_{S^2}\)</span>.
+Indeed the ordered first two columns <span
+class="math inline">\((q,\partial_\vartheta q)\)</span> have determinant
+one in the plane spanned by <span class="math inline">\(1,u\)</span>,
+and each angular column contributes the positive factor <span
+class="math inline">\(\sin\vartheta\)</span>. Thus at that unique
+inverse point the signed Jacobian has the sign of <span
+class="math inline">\(\theta&#39;(r)\)</span>, namely minus one. Both
+radial factors are positive. The degree of (2.3) is exactly <span
+class="math inline">\(-1\)</span>.</p>
+<p>For arbitrary <span class="math inline">\(q_0\)</span>, left
+multiplication by <span class="math inline">\(q_0\)</span> takes this
+entire calculation to the corresponding fibre. It has determinant <span
+class="math inline">\(+1\)</span> in <span class="math inline">\(\mathbb
+H\)</span> and takes <span class="math inline">\((i,j,k)\)</span> to the
+positive tangent frame <span
+class="math inline">\((q_0i,q_0j,q_0k)\)</span>. The sign is therefore
+unchanged. Projection of the original, unmoved fibre is constant, of
+degree zero. Consequently <span class="math display">\[
+                   \operatorname{Var}_{F_\theta}[D_{q_0}]
+                                      =-[S^3].
+\tag{2.4}
+\]</span></p>
+<p>The passage from (2.4) to the ambient action has an exact chain
+description. Subdivide an ambient cycle and cut it across an inner
+boundary collar of the tube; the resulting inside chain is a relative
+cycle and the outside chain is fixed by (1.10). Its variation is
+precisely (2.2), included into <span class="math inline">\(P\)</span>.
+The collar prism produced by the subdivision has the same boundary on
+both sides and contributes a boundary to the difference. This proves the
+factorization <span class="math display">\[
+\begin{split}
+H_3(P)&amp;\longrightarrow
+H_3(P,P\setminus\operatorname{int}\Gamma(N_R))
+        \xrightarrow[\rm excision]{\ \cong\ }H_3(N_R,\partial N_R)\\
+&amp;\xrightarrow{\operatorname{Var}_{F_\theta}}H_3(N_R)
+        \xrightarrow{\Gamma_*}H_3(P)
+        \ =\ (\mathcal F_f)_*-1 .
+\end{split}
+\tag{2.5}
+\]</span> Equivalently one may use singular relative chains throughout;
+excision follows from barycentric subdivision, and (2.2) proves
+independence of every collar-chain choice.</p>
+<p>The coefficient of the relative fibre generator in (2.5) is <span
+class="math inline">\(\lambda(v,x)\)</span>. At each transverse
+intersection, an ordered tangent basis of the zero section followed by
+an oriented fibre basis is the ambient orientation by our convention.
+This is exactly the order defining <span
+class="math inline">\(\lambda(v,x)\)</span>. Summing these local
+coefficients gives the Thom coefficient, by the included
+intersection/duality comparison. Equations (2.4)–(2.5) prove the first
+formula in (2.1). Since <span
+class="math inline">\(\lambda(v,v)=0\)</span> in this skew integral
+pairing, its inverse is the second formula there. In particular <span
+class="math display">\[
+T_v^m(x)=x+m\lambda(v,x)v,\qquad
+           m\in\mathbb Z,\qquad T_v=(\mathcal T_f)_* .
+\tag{2.6}
+\]</span> Expansion verifies <span class="math display">\[
+\lambda(T_vx,T_vy)
+  =\lambda(x,y)+\lambda(v,y)\lambda(x,v)
+                     +\lambda(v,x)\lambda(v,y)=\lambda(x,y);
+\tag{2.7}
+\]</span> the last possible term is <span
+class="math inline">\(\lambda(v,x)\lambda(v,y)\lambda(v,v)=0\)</span>.
+No integral intersection sign has been absorbed into the symbol <span
+class="math inline">\(T_v\)</span>.</p>
+<p>When <span class="math inline">\(P\)</span> is two-connected and
+stably framed, every class <span class="math inline">\(v\in
+H_3(P;\mathbb Z)\)</span> has an embedded representative by the
+geometric framing chapter, Section 7. Its normal bundle has the actual
+trivialization used in (1.3). Thus every transvection (2.6) needed below
+is realized by an actual orientation-preserving diffeomorphism of the
+original <span class="math inline">\(P\)</span>. The normal frame used
+to define a twist is not required to extend a framed surgery handle:
+that extension condition belongs to a different operation. We keep the
+derivative frame comparison of each twist explicitly in Section 5.</p>
+<figure>
+<img src="assets/sphere-twist-fibre.svg" alt="The retained smooth radial cutoff decreases from pi to zero; a fixed-direction fibre meridian traverses the three-sphere from minus one to plus one, with negative polar degree." />
+<figcaption>
+Numerical sample of the exact cutoff (1.5) at the stated auxiliary
+radii, and one fixed-direction meridian of (2.3). The complete
+three-dimensional degree is proved using both volume factors in Section
+2; the curve alone is a meridian. Seidel’s original source and all
+comparison factors are identified in (1.12)–(1.14). Reproducible source:
+<a href="checks/draw_sphere_twists.py">draw_sphere_twists.py</a>.
+</figcaption>
+</figure>
+<h2 id="twist-integral-lagrangians">3. Integral Lagrangians and a finite
+sequence of the actual twists</h2>
+<p>Let <span class="math inline">\(H\)</span> be a free integral group
+of rank <span class="math inline">\(2r\)</span>, with a unimodular
+alternating pairing <span class="math inline">\(\lambda\)</span>. A
+primitive subgroup <span class="math inline">\(L\)</span> means that
+<span class="math inline">\(H/L\)</span> is torsion-free. An integral
+Lagrangian is a primitive rank-<span class="math inline">\(r\)</span>
+subgroup on which <span class="math inline">\(\lambda\)</span> vanishes.
+We prove that a finite product of the transvections (2.6) carries any
+such <span class="math inline">\(L\)</span> to any specified integral
+Lagrangian. All changes below are actual automorphisms of <span
+class="math inline">\(H\)</span>; the original group and pairing remain
+fixed.</p>
+<p>First construct a symplectic basis adapted to an original Lagrangian
+<span class="math inline">\(B\)</span>. Choose its basis <span
+class="math inline">\(e_1,\ldots,e_r\)</span>. Primitivity and the
+subgroup theorem over <span class="math inline">\(\mathbb Z\)</span>
+split <span class="math inline">\(H=B\oplus B&#39;\)</span>. Hence every
+functional on <span class="math inline">\(B\)</span> extends to <span
+class="math inline">\(H\)</span>. Unimodularity then supplies <span
+class="math inline">\(y_j\in H\)</span> with <span
+class="math display">\[
+                         \lambda(e_i,y_j)=\delta_{ij}.
+\tag{3.1}
+\]</span> Write <span
+class="math inline">\(C_{jk}=\lambda(y_j,y_k)\)</span>, retaining the
+full skew integer matrix. Define coefficients <span
+class="math inline">\(a_{jk}=C_{jk}\)</span> for <span
+class="math inline">\(j&lt;k\)</span>, and <span
+class="math inline">\(a_{jk}=0\)</span> for <span
+class="math inline">\(j\ge k\)</span>, and put <span
+class="math display">\[
+                       f_j=y_j+\sum_i a_{ij}e_i .
+\tag{3.2}
+\]</span> Every pair then satisfies <span class="math display">\[
+\lambda(f_j,f_k)=C_{jk}+a_{kj}-a_{jk}=0,\quad
+\lambda(e_i,f_j)=\delta_{ij},\quad
+\lambda(e_i,e_j)=0 .
+\tag{3.3}
+\]</span> These classes are an integral basis, not merely a rational
+basis. To check this, for <span class="math inline">\(z\in H\)</span>
+subtract <span class="math display">\[
+              \sum_i\lambda(z,f_i)e_i
+                       -\sum_i\lambda(z,e_i)f_i .
+\tag{3.4}
+\]</span> The remainder pairs to zero with every <span
+class="math inline">\(e_i,f_i\)</span>. The displayed pairing matrix is
+invertible over <span class="math inline">\(\mathbb Q\)</span>, so these
+<span class="math inline">\(2r\)</span> classes span <span
+class="math inline">\(H\otimes\mathbb Q\)</span>; the remainder pairs to
+zero with every element of <span class="math inline">\(H\)</span>.
+Unimodularity makes it zero. Formula (3.4) is the integral
+inverse-coordinate map.</p>
+<p>In the original coordinates <span
+class="math inline">\(z=\sum_i(a_ie_i+b_if_i)\)</span>, the twists on
+one pair act by <span class="math display">\[
+\begin{array}{rcl}
+T_{e_i}^{m}:(a_i,b_i)&amp;\longmapsto&amp;(a_i+mb_i,b_i),\\
+T_{f_i}^{m}:(a_i,b_i)&amp;\longmapsto&amp;(a_i,b_i-ma_i).
+\end{array}
+\tag{3.5}
+\]</span> They fix all other coordinates. Their explicit product is
+<span class="math display">\[
+J_i=T_{e_i}T_{f_i}T_{e_i}:
+           (a_i,b_i)\longmapsto(b_i,-a_i),\qquad J_i^2=-I_2.
+\tag{3.6}
+\]</span> Products act from right to left throughout.</p>
+<p>If <span class="math inline">\(\lambda(u,w)=0\)</span>, direct use of
+(2.6) gives <span class="math display">\[
+E_{u,w}=T_{u+w}T_u^{-1}T_w^{-1},
+\qquad
+E_{u,w}(z)=z+\lambda(u,z)w+\lambda(w,z)u.
+\tag{3.7}
+\]</span> The added operator has square zero, so its <span
+class="math inline">\(m\)</span>-th power adds <span
+class="math inline">\(m\)</span> times the same two terms for every
+integer <span class="math inline">\(m\)</span>. For <span
+class="math inline">\(i\ne j\)</span>, the original vectors <span
+class="math inline">\(u=e_i,w=f_j,u+w=e_i+f_j\)</span> are primitive and
+perpendicular, and <span class="math display">\[
+E_{e_i,f_j}^{m}:
+      a_i\longmapsto a_i-ma_j,\qquad
+      b_j\longmapsto b_j+mb_i ,
+\tag{3.8}
+\]</span> with every other coordinate fixed. Formula (3.8) retains the
+companion change of <span class="math inline">\(b_j\)</span>; it is an
+automorphism of the entire original symplectic lattice.</p>
+<p>Here is a terminating algorithm carrying any primitive <span
+class="math inline">\(z\in H\)</span> to <span
+class="math inline">\(e_1\)</span>.</p>
+<p>For each <span class="math inline">\(i\)</span>, integer division in
+(3.5), followed when needed by (3.6), performs the Euclidean algorithm
+on <span class="math inline">\((a_i,b_i)\)</span>. If <span
+class="math inline">\(b_i\ne0\)</span>, choose the quotient <span
+class="math inline">\(q\)</span> with <span
+class="math inline">\(a_i=qb_i+s\)</span>, <span
+class="math inline">\(0\le s&lt;|b_i|\)</span>, using a signed divisor
+if necessary. Apply <span class="math inline">\(T_{e_i}^{-q}\)</span> to
+obtain <span class="math inline">\((s,b_i)\)</span>, then <span
+class="math inline">\(J_i\)</span> to obtain <span
+class="math inline">\((b_i,-s)\)</span>. The absolute value of the
+second nonzero entry strictly decreases. Iteration ends at <span
+class="math inline">\((g_i,0)\)</span>, where <span
+class="math inline">\(g_i\)</span> is a signed greatest common divisor
+of the two original entries. Use <span
+class="math inline">\(J_i^2\)</span> when necessary to make <span
+class="math inline">\(g_i\ge0\)</span>. This also covers one zero entry,
+while <span class="math inline">\((0,0)\)</span> stays zero.</p>
+<p>Now every <span class="math inline">\(b_i\)</span> is zero.
+Operations (3.8) perform integer row additions on the original <span
+class="math inline">\(a\)</span>-coordinates, and keep every <span
+class="math inline">\(b_i=0\)</span>. Two nonzero <span
+class="math inline">\(a\)</span>-entries are reduced by the same
+division procedure, using row additions and the two-coordinate signed
+interchange <span class="math display">\[
+(A,B)\longmapsto(A-B,B)
+       \longmapsto(A-B,A)
+       \longmapsto(-B,A).
+\tag{3.9}
+\]</span> Each arrow is a row addition of the form (3.8), with its full
+companion <span class="math inline">\(b\)</span>-action. Their product
+moves the two coordinates with the displayed signs. A coordinate sign
+can also be corrected by (3.6). Thus a finite sequence puts the greatest
+common divisor of all original <span
+class="math inline">\(a_i,b_i\)</span> in the first <span
+class="math inline">\(a\)</span>-entry and zero in the others.
+Primitivity of <span class="math inline">\(z\)</span> makes that
+greatest common divisor one: otherwise <span
+class="math inline">\(z\)</span> is divisible in <span
+class="math inline">\(H\)</span>, and conversely a common divisor is
+exactly that divisibility in an integral basis. The final image is <span
+class="math inline">\(e_1\)</span>.</p>
+<p>We now act on <span class="math inline">\(L\)</span>. Choose a basis
+element <span class="math inline">\(x\)</span> of <span
+class="math inline">\(L\)</span>. It is primitive in <span
+class="math inline">\(H\)</span>: if <span
+class="math inline">\(x=ny\)</span>, primitivity of <span
+class="math inline">\(L\)</span> first puts <span
+class="math inline">\(y\)</span> in <span
+class="math inline">\(L\)</span>, and primitivity of its basis element
+forces <span class="math inline">\(n=\pm1\)</span>. The preceding
+algorithm sends <span class="math inline">\(x\)</span> to <span
+class="math inline">\(e_1\)</span>. Call the image Lagrangian <span
+class="math inline">\(L_1\)</span>. Isotropy gives <span
+class="math inline">\(L_1\subset e_1^\perp\)</span>, and <span
+class="math inline">\(e_1\in L_1\)</span>. The actual quotient map and
+its section are <span class="math display">\[
+\begin{split}
+e_1^\perp&amp;=\mathbb Ze_1\oplus H&#39;,\qquad
+                H&#39;=\bigoplus_{i=2}^r(\mathbb Ze_i\oplus\mathbb
+Zf_i),\\
+e_1^\perp/\mathbb Ze_1&amp;\longleftrightarrow H&#39;,\\
+[ce_1+z&#39;]&amp;\longmapsto z&#39;,\qquad
+z&#39;\longmapsto[z&#39;] .
+\end{split}
+\tag{3.10}
+\]</span> Under these maps <span class="math inline">\(L_1/\mathbb
+Ze_1\)</span> is a primitive rank-<span
+class="math inline">\((r-1)\)</span> isotropic subgroup of <span
+class="math inline">\(H&#39;\)</span>. Its primitivity follows because
+<span class="math inline">\(e_1^\perp/L_1\)</span> is a subgroup of the
+torsion-free <span class="math inline">\(H/L_1\)</span>. Its rank and
+isotropy follow from the displayed direct decomposition and original
+pairing.</p>
+<p>Induct on <span class="math inline">\(r\)</span>. Use only the twists
+in <span class="math inline">\(H&#39;\)</span>; each fixes both <span
+class="math inline">\(e_1\)</span> and <span
+class="math inline">\(f_1\)</span> in the full <span
+class="math inline">\(H\)</span>. They carry that quotient subgroup to
+<span
+class="math inline">\(\operatorname{span}(e_2,\ldots,e_r)\)</span>. At
+this point every lifted generator differs from its <span
+class="math inline">\(e_i\)</span> by an integer multiple of <span
+class="math inline">\(e_1\)</span>, already in <span
+class="math inline">\(L_1\)</span>; subtracting that multiple proves
+that the full image is precisely <span
+class="math inline">\(B=\operatorname{span}(e_1,\ldots,e_r)\)</span>.
+The induction starts at <span class="math inline">\(r=0\)</span>, with
+the identity. Every step is a finite product of the displayed twists, so
+the induction supplies an actual finite product.</p>
+<p>In particular a further product of <span
+class="math inline">\(J_i^{-1}\)</span>, for all <span
+class="math inline">\(i\)</span>, sends that <span
+class="math inline">\(B\)</span> to <span class="math display">\[
+                         B^\vee=\operatorname{span}(f_1,\ldots,f_r),
+             \qquad J_i^{-1}e_i=f_i.
+\tag{3.11}
+\]</span> This proves the transitivity needed below, with an algorithm
+recording every integer quotient, sign and ordered transvection factor.
+It also proves transitivity on primitive vectors. When <span
+class="math inline">\(H=H_3(P;\mathbb Z)\)</span> for the two-connected
+stably framed <span class="math inline">\(P\)</span> of Section 2,
+replace each factor <span class="math inline">\(T_v^{m}\)</span> by the
+exact diffeomorphism <span class="math inline">\(\mathcal
+T_f^{m}\)</span> from (1.10) for an embedded representative of that
+original class <span class="math inline">\(v\)</span>. The ordered
+composition is a diffeomorphism of the original <span
+class="math inline">\(P\)</span> inducing the calculated lattice
+automorphism. The supporting tubes may intersect; finite composition of
+the actual maps requires no disjointness among those tubes.</p>
+<h2 id="twist-original-middle-level">4. The two integral Lagrangians in
+the original middle level</h2>
+<p>Let <span class="math inline">\(\Sigma\)</span> be the original
+oriented smooth homotopy six-sphere. Retain its specified stable tangent
+framing. Section 9 of the <a
+href="the-original-six-dimensional-framing-invariant.html#framed-six-original-nullbordism">geometric
+framing chapter</a> constructs a compact framed seven-manifold <span
+class="math inline">\(W\)</span>, together with the actual boundary
+identification <span class="math display">\[
+                  \iota_\Sigma:\Sigma\xrightarrow{\cong}\partial W .
+\tag{4.1}
+\]</span> This is the framed nullbordism supplied by the proved
+geometric invariant and original integral stable-group calculation. It
+does not presuppose a smooth identification of <span
+class="math inline">\(\Sigma\)</span> with a standard sphere.</p>
+<p>Choose an oriented coordinate embedding <span
+class="math inline">\(\chi:D^7_\rho\to\operatorname{int}W\)</span>, with
+its actual radius <span class="math inline">\(\rho&gt;0\)</span>, and
+remove the open coordinate ball. The incoming parametrization is <span
+class="math display">\[
+j:S^6\longrightarrow\partial\chi(D^7_\rho),\qquad
+                 j(q)=\chi(\rho q),\qquad Dj_q(v)=D\chi_{\rho q}(\rho
+v).
+\tag{4.2}
+\]</span> The positive orientation on its domain is the boundary
+orientation of the coordinate ball. Thus the oriented boundary of the
+resulting cobordism <span class="math inline">\(C\)</span> is <span
+class="math inline">\(-j(S^6)\sqcup\iota_\Sigma(\Sigma)\)</span>. The
+factor <span class="math inline">\(\rho\)</span> in (4.2) remains part
+of the map and its differential.</p>
+<p>Apply the interior surgeries proved in Section 8.2 of the geometric
+framing chapter to <span class="math inline">\(C\)</span>, keeping both
+boundary collars and their maps fixed. They produce a two-connected
+framed cobordism <span class="math inline">\(C&#39;\)</span> with
+precisely these boundaries. The full surgery traces, normal-frame
+changes and appended stable coordinates are retained by that
+construction. Section 8.3 then gives a handle presentation of this same
+<span class="math inline">\(C&#39;\)</span> with only indices three and
+four. Its proof uses <span
+class="math inline">\(H_2(C&#39;,S^6)=H_2(C&#39;,\Sigma)=0\)</span>; it
+makes no assumption that <span
+class="math inline">\(H_3(C&#39;)\)</span> is zero or free. The original
+handle-arrangement proof orders the stages. Write them as <span
+class="math display">\[
+C&#39;=C_-\cup_P C_+,\qquad
+C_-:S^6\longrightarrow P,\qquad C_+:P\longrightarrow\Sigma,
+\tag{4.3}
+\]</span> with <span class="math inline">\(r\)</span> index-three
+handles in <span class="math inline">\(C_-\)</span> and <span
+class="math inline">\(s\)</span> index-four handles in <span
+class="math inline">\(C_+\)</span>. The common oriented regular level
+<span class="math inline">\(P\)</span>, its two inclusions, every
+parameter radius and every full framed attachment are fixed in (4.3). In
+particular <span class="math inline">\(P\)</span> is not replaced by a
+connected-sum model.</p>
+<p>The first stage and its reverse have the original relative core
+models <span class="math display">\[
+H_k(C_-,S^6;\mathbb Z)=
+\begin{cases}\mathbb Z^r,&amp;k=3,\\0,&amp;k\ne3,\end{cases}
+\qquad
+H_k(C_-,P;\mathbb Z)=
+\begin{cases}\mathbb Z^r,&amp;k=4,\\0,&amp;k\ne4.\end{cases}
+\tag{4.4}
+\]</span> Consequently the exact sequences, with all endpoint terms
+specified, give <span class="math display">\[
+H_4(C_-)=0,\qquad H_3(C_-)\cong\mathbb Z^r,\qquad
+0\longrightarrow\mathbb Z^r
+   \xrightarrow{\delta_-}H_3(P;\mathbb Z)
+   \xrightarrow{p_-}\mathbb Z^r\longrightarrow0 .
+\tag{4.5}
+\]</span> For example <span
+class="math inline">\(H_4(S^6)=H_3(S^6)=H_2(S^6)=0\)</span>, and the
+adjacent relative groups in (4.4) are zero; these are exactly the zero
+terms giving (4.5). The classes <span
+class="math inline">\(\delta_-(e_i)\)</span> are the original belt
+spheres <span class="math display">\[
+B_i=\{0\}\times S^3_{\beta_i}
+\quad\hbox{of }D^3_{\alpha_i}\times D^4_{\beta_i},
+\qquad b_i=[B_i].
+\tag{4.6}
+\]</span> Give each belt the boundary orientation of its original
+four-disc. The image <span class="math inline">\(B=\sum_i\mathbb
+Zb_i\)</span> is primitive because the quotient in (4.5) is free. It is
+isotropic: different belts are disjoint, and a small push in an original
+<span class="math inline">\(D^3_{\alpha_i}\)</span>-direction gives a
+disjoint self-push-off. Equation (4.5) gives <span
+class="math inline">\(\operatorname{rank}H_3(P)=2r\)</span>.</p>
+<p>The original core-cell comparisons also show that <span
+class="math inline">\(P\)</span> is two-connected. Attaching only
+three-cells to <span class="math inline">\(S^6\)</span> gives <span
+class="math inline">\(\pi_1C_-=\pi_2C_-=0\)</span>, while <span
+class="math inline">\((C_-,P)\)</span> has only four-cells and therefore
+zero relative homotopy groups through degree three. Its exact sequence
+identifies <span class="math inline">\(\pi_1P,\pi_2P\)</span> with those
+of <span class="math inline">\(C_-\)</span>. The stable frame on <span
+class="math inline">\(C&#39;\)</span> supplies one on <span
+class="math inline">\(P\)</span>. The integral intersection pairing
+<span class="math display">\[
+       \lambda:H_3(P;\mathbb Z)\times H_3(P;\mathbb
+Z)\longrightarrow\mathbb Z
+\tag{4.7}
+\]</span> is alternating and unimodular by the full integral duality
+comparison in the geometric framing chapter, Section 6.3. In particular
+(4.6) spans an integral Lagrangian.</p>
+<p>Read the second stage in reverse. It consists of <span
+class="math inline">\(s\)</span> index-three handles from the original
+<span class="math inline">\(\Sigma\)</span> to the same underlying <span
+class="math inline">\(P\)</span>. Since <span
+class="math inline">\(\Sigma\)</span> has the integral homology and low
+homotopy groups of <span class="math inline">\(S^6\)</span>, the same
+relative argument gives <span class="math display">\[
+0\longrightarrow\mathbb Z^s
+      \xrightarrow{\delta_+}H_3(P;\mathbb Z)
+      \xrightarrow{p_+}\mathbb Z^s\longrightarrow0 .
+\tag{4.8}
+\]</span> The orientation on the reversed middle boundary is the
+opposite one if the reversed cobordism is given the opposite
+orientation; its intersection pairing is then <span
+class="math inline">\(-\lambda\)</span>. Both primitivity and isotropy
+are unchanged by this specified sign. In coordinates an original upper
+handle <span class="math inline">\(D^4_{\gamma_j}\times
+D^3_{\delta_j}\)</span>, with coordinates <span
+class="math inline">\((x,y)\)</span>, reverses to the handle with
+ordered coordinates <span class="math inline">\((y,x)\)</span>. The
+block permutation has sign <span
+class="math inline">\((-1)^{4\cdot3}=+1\)</span>; a constant reflection
+used for the chosen reversed orientation is recorded separately. The
+reversed belt <span class="math inline">\(\{0\}_y\times
+S^3_{\gamma_j,x}\)</span> is exactly the original upper attaching
+sphere. Its orientation differs, if at all, by that recorded constant
+sign.</p>
+<p>Let <span class="math inline">\(a_j\)</span> be the class of the
+original upper attaching sphere with the boundary orientation of its
+original <span class="math inline">\(x\)</span>-core. Thus <span
+class="math inline">\(\delta_+(e_j)=\varepsilon_j a_j\)</span>, with the
+explicit reversal sign <span
+class="math inline">\(\varepsilon_j\in\{1,-1\}\)</span>. Equation (4.8)
+proves that <span class="math display">\[
+L=\sum_{j=1}^s\mathbb Za_j\quad\hbox{is primitive and isotropic},
+\qquad 2s=\operatorname{rank}H_3(P)=2r.
+\tag{4.9}
+\]</span> It follows that <span class="math inline">\(s=r\)</span> and
+<span class="math inline">\(L\)</span> is an integral Lagrangian. This
+conclusion does not assert that <span class="math inline">\(B\)</span>
+and <span class="math inline">\(L\)</span> were complementary in the
+original filling.</p>
+<p>Retain the original signed matrix as well. Let <span
+class="math inline">\(\sigma_i\)</span> be the orientation sign of the
+ordered lower handle coordinates <span
+class="math inline">\((u_1,u_2,u_3,v_1,v_2,v_3,v_4)\)</span> relative to
+<span class="math inline">\(C&#39;\)</span>. Equation (8.4) of the
+geometric framing chapter, with its ordered tangent calculation, gives
+the original handle boundary matrix <span class="math display">\[
+D^{\rm old}_{ij}=\sigma_i\lambda(b_i,a_j),\qquad
+H_4(C&#39;,S^6)=\ker D^{\rm old},\quad
+H_3(C&#39;,S^6)=\operatorname{coker}D^{\rm old}.
+\tag{4.10}
+\]</span> Indeed the relative boundary of the <span
+class="math inline">\(j\)</span>-th original four-core is its oriented
+attaching sphere. The projection <span
+class="math inline">\(r_3p_-\)</span> in that equation gives its
+coordinates in the original lower core basis, and multiplication by
+<span class="math inline">\(\sigma_i\)</span> is its own inverse. There
+are no other relative handle groups. Thus every free or torsion
+contribution of the old matrix remains visible in (4.10).</p>
+<p>Apply Section 3 to <span class="math inline">\(H=H_3(P;\mathbb
+Z)\)</span> with <span class="math inline">\(e_i=b_i\)</span>. Construct
+the actual dual basis <span class="math inline">\(f_i\)</span>,
+including its full skew correction (3.2), and use the finite twist
+algorithm to obtain an orientation-preserving diffeomorphism <span
+class="math display">\[
+\phi:P\longrightarrow P,\qquad
+             \phi_*L=\operatorname{span}_{\mathbb Z}(f_1,\ldots,f_r).
+\tag{4.11}
+\]</span> Every class used in this algorithm is represented by an
+embedded three-sphere by Section 7 of the geometric framing chapter; its
+rank-three normal bundle is trivial. Sections 1–2 supply each actual
+tube diffeomorphism. This verifies the geometric realization of every
+algebraic factor. If <span class="math inline">\(r=0\)</span>, take
+<span class="math inline">\(\phi=1_P\)</span>; there are already no
+handles.</p>
+<h2 id="twist-original-gluing">5. Regluing the original pieces and
+retaining the frame defect</h2>
+<p>Write <span class="math inline">\(i_-:P\to\partial_+C_-\)</span> and
+<span class="math inline">\(i_+:P\to\partial_-C_+\)</span> for the
+inclusions in (4.3). Their original gluing identifies <span
+class="math inline">\(i_+(p)\)</span> with <span
+class="math inline">\(i_-(p)\)</span>. Define a new cobordism by the
+actual equivalence relation <span class="math display">\[
+C_\phi=(C_-\sqcup C_+)/\bigl(i_+(p)\sim i_-(\phi(p))\bigr).
+\tag{5.1}
+\]</span> The two outer boundary maps <span
+class="math inline">\(j\)</span> and <span
+class="math inline">\(\iota_\Sigma\)</span> are retained literally. The
+natural maps of each piece into <span
+class="math inline">\(C&#39;\)</span> and <span
+class="math inline">\(C_\phi\)</span> identify the interiors and their
+outer collars. They do not claim an identification of the two entire
+fillings; their old and new middle homology may differ.</p>
+<p>Here is the smooth seam. Retain original collar parameters <span
+class="math display">\[
+c_-:P\times(-d_-,0]\to C_-,\qquad
+c_+:P\times[0,d_+)\to C_+,
+\qquad d_-,d_+&gt;0,
+\tag{5.2}
+\]</span> directed from the lower to the upper piece. Restrict to <span
+class="math inline">\(d=\min(d_-,d_+)\)</span>, without changing either
+parameter scale. A chart neighbourhood of the seam is parametrized by
+<span class="math display">\[
+\Xi_\phi(q,t)=
+\begin{cases}
+    c_-(q,t),&amp;-d&lt;t\le0,\\
+    c_+(\phi^{-1}(q),t),&amp;0\le t&lt;d .
+\end{cases}
+\tag{5.3}
+\]</span> At <span class="math inline">\(t=0\)</span> these are the same
+quotient point by (5.1). Together with the original interior charts,
+(5.3) defines a smooth atlas: on either open half its transition maps
+are the original collar maps composed with the smooth diffeomorphism
+<span class="math inline">\(\phi^{-1}\)</span>. The inverse coordinate
+is <span class="math inline">\((q,t)\)</span> on the lower half and
+<span class="math inline">\((\phi(p),t)\)</span> on the upper half. The
+two pieces are compact and are glued along a closed boundary by a
+homeomorphism; the quotient is Hausdorff (disjoint compact equivalence
+classes have disjoint saturated collar neighbourhoods) and compact. This
+establishes the underlying manifold structure, not merely a formal
+gluing notation.</p>
+<p>In upper coordinates <span class="math inline">\((p,t)\)</span> the
+tangent identification at the seam, written in the ordered summands
+<span class="math inline">\(TP\oplus\mathbb R_t\)</span>, is <span
+class="math display">\[
+                         (v,a)\longmapsto(D\phi_pv,a).
+\tag{5.4}
+\]</span> The orientation of <span class="math inline">\(\phi\)</span>
+is positive, and <span class="math inline">\(t\)</span> keeps its
+direction. Hence the given orientations on the two original pieces
+extend to the stated oriented cobordism from <span
+class="math inline">\(S^6\)</span> to <span
+class="math inline">\(\Sigma\)</span>.</p>
+<p>To retain the full stable-frame comparison, append identity
+coordinates until the two original piece frames have a common rank <span
+class="math inline">\(7+h\)</span>. Express them through (5.2) as
+isomorphisms <span class="math display">\[
+\tau_{\pm,p}:T_pP\oplus\mathbb R_t\oplus\mathbb R^h
+                                    \longrightarrow\mathbb R^{7+h}.
+\tag{5.5}
+\]</span> If an original boundary frame was given using an outward
+rather than a directed collar vector, the corresponding sign is included
+in <span class="math inline">\(\tau_{\pm,p}\)</span>. The old and new
+comparisons are exactly <span class="math display">\[
+A_{\rm old}(p)=\tau_{-,p}\tau_{+,p}^{-1},\qquad
+A_\phi(p)=\tau_{-,\phi(p)}
+              (D\phi_p\oplus1\oplus I_h)\tau_{+,p}^{-1}.
+\tag{5.6}
+\]</span> The original global frame supplies the old seam compatibility
+or its specified collar homotopy. The new map <span
+class="math inline">\(A_\phi\)</span> is retained as an actual
+matrix-valued map. Its derivative factor is the ordered product of
+(1.11) for the chosen twist factors, evaluated at their successive image
+points. No null-homotopy of <span class="math inline">\(A_\phi\)</span>,
+and no preservation of the original frame by <span
+class="math inline">\(\phi\)</span>, is being asserted. Equation (5.6)
+is the exact comparison between the two framed pieces in the new
+oriented smooth filling.</p>
+<p>Likewise the full upper attaching tube, originally <span
+class="math display">\[
+\alpha_j:S^3_{\gamma_j}\times D^3_{\delta_j}\longrightarrow P,
+\tag{5.7}
+\]</span> becomes <span class="math inline">\(\phi\circ\alpha_j\)</span>
+in the lower seam coordinates. Its differential is <span
+class="math inline">\(D\phi_{\alpha_j(q,z)}D\alpha_{j,(q,z)}\)</span>,
+including every tangent and normal column. A normal bundle here is first
+the quotient by the attaching tangent bundle; this derivative induces
+the exact quotient isomorphism and carries its frame. If one uses
+metric-orthogonal normal vectors, apply the original metric projection
+to these columns and retain that projection map. Invertibility on the
+quotient guarantees that they still form a frame. Neither <span
+class="math inline">\(\gamma_j\)</span>, <span
+class="math inline">\(\delta_j\)</span>, nor any derivative factor has
+been removed.</p>
+<p>There is no requirement for a global stable framing on <span
+class="math inline">\(C_\phi\)</span> in the subsequent smooth
+cancellation theorem. Its data are oriented full handle attachments,
+which (5.7) has supplied. The original stable frame was used to
+construct <span class="math inline">\(W,C&#39;\)</span>, to prove the
+properties of <span class="math inline">\(P\)</span>, and to supply the
+embedded representatives. Those uses are complete before the regluing.
+The original frame and its precise defect (5.6) remain part of the
+comparison.</p>
+<h2 id="twist-actual-cancellation">6. The new signed matrix and
+cancellation of every actual handle</h2>
+<p>Define <span class="math inline">\(F_i=\sigma_i f_i\)</span>. The
+classes <span class="math inline">\(F_i\)</span> are still a basis of
+the complementary Lagrangian. Since <span
+class="math inline">\(\phi_*\)</span> maps the basis <span
+class="math inline">\(a_j\)</span> of <span
+class="math inline">\(L\)</span> onto another basis of this same
+subgroup, there is a unique unimodular integer matrix <span
+class="math inline">\(U\)</span> with <span class="math display">\[
+        \phi_*a_j=\sum_iF_iU_{ij},\qquad
+        U_{ij}=\sigma_i\lambda(b_i,\phi_*a_j).
+\tag{6.1}
+\]</span> The equality on the right follows from <span
+class="math inline">\(\lambda(b_i,f_k)=\delta_{ik}\)</span> and <span
+class="math inline">\(\sigma_i^2=1\)</span>. Its determinant is <span
+class="math inline">\(1\)</span> or <span
+class="math inline">\(-1\)</span> because both displayed collections are
+bases of the same free group.</p>
+<p>The full relative handle chain complex of (5.1), in its original
+lower and transported upper core bases, is <span class="math display">\[
+       0\longrightarrow\mathbb Z^r
+                \xrightarrow{\,D^\phi=U\,}\mathbb Z^r
+                       \longrightarrow0 .
+\tag{6.2}
+\]</span> This is the same signed core-to-belt calculation that gave
+(4.10), now applied to the actual tubes (5.7). Both matrices <span
+class="math inline">\(D^{\rm old}\)</span> and <span
+class="math inline">\(D^\phi\)</span> are retained; (6.2) does not erase
+the kernel or torsion cokernel of (4.10). It proves that the new
+relative groups vanish because <span class="math inline">\(U\)</span> is
+an integer isomorphism.</p>
+<p>For actual cancellation, factor <span
+class="math inline">\(U^{-1}\)</span> into the finite integer additions,
+label permutations and signed basis comparisons proved in Section 6 of
+the <a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-integer-changes">higher-index
+slide chapter</a>. Perform each addition by its full index-four framed
+slide in the seven-dimensional cobordism. The hypotheses there are
+satisfied: the lower boundary <span class="math inline">\(P\)</span> is
+connected, and <span class="math inline">\(2\le4\le7-2\)</span>. Carry
+the full tubes and outgoing boundary map through its specified cobordism
+diffeomorphism after every operation. Its signed chain-prism proof gives
+the exact comparison <span class="math display">\[
+                 D_{\rm comparison}^{\rm new}=U\,U^{-1}=I_r .
+\tag{6.3}
+\]</span> There is no index-five boundary to omit; its adjacent source
+group is zero. The lower index-three basis is kept fixed.</p>
+<p>It is essential to retain what a signed basis change means
+geometrically. The slide proof leaves every original oriented core
+identifiable. After all the actual slides and permutations, let <span
+class="math inline">\(c_j^{\rm geom}\)</span> be the resulting upper
+geometric core generator. The final comparison basis is <span
+class="math inline">\(\widehat c_j=\epsilon_j c_j^{\rm geom}\)</span>,
+with each recorded <span
+class="math inline">\(\epsilon_j\in\{1,-1\}\)</span>; assigning this
+sign does not assert an orientation-reversing ambient isotopy. The lower
+geometric core bases were fixed. Therefore (6.3) is equivalent to the
+full geometric identities <span class="math display">\[
+D^{\rm geom}_{ij}=\epsilon_j\delta_{ij},\qquad
+[A_j^{\rm geom}]=\epsilon_jF_j,\qquad
+       \lambda(b_i,[A_j^{\rm geom}])
+                             =\epsilon_j\sigma_i\delta_{ij}.
+\tag{6.4}
+\]</span> To verify the second identity, the upper comparison generator
+is the recorded linear combination <span
+class="math inline">\(U^{-1}\)</span> of the transported original
+generators; its attaching homology class is <span
+class="math inline">\(\sum_k\phi_*a_k(U^{-1})_{kj}=F_j\)</span>.
+Multiply by <span class="math inline">\(\epsilon_j\)</span> to recover
+its original geometric orientation. This proves every sign in (6.4).</p>
+<p>Perturb the disjoint upper attaching spheres and their full tubes
+slightly to be transverse to the lower belts, retaining their parameter
+domains and frames by the derivative of the perturbing ambient isotopy.
+The finite-chart transverse perturbation in the receiving Whitney
+chapter supplies such an isotopy. All intersections are then finite. For
+each pair <span class="math inline">\(A_j^{\rm geom},B_i\)</span>, (6.4)
+gives algebraic count zero off the diagonal and absolute count one on
+the diagonal. Pair all opposite-sign points. After each removal, retain
+the single point of sign <span
+class="math inline">\(\epsilon_j\sigma_j\)</span> on the diagonal.</p>
+<p>Every such removal has the precise hypotheses of the <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-levels">receiving
+Whitney construction</a>. The level before the original index-three
+stage is <span class="math inline">\(S^6\)</span> with its retained
+product collar, so it is simply connected. The sheet dimensions are
+exactly <span class="math inline">\((d,p,q)=(6,3,3)\)</span>. The
+original belt complement is diffeomorphic to that <span
+class="math inline">\(S^6\)</span> minus its disjoint attaching
+two-sphere cores; a loop and a null-homotopy can avoid them because
+<span class="math inline">\(1+2&lt;6\)</span> and <span
+class="math inline">\(2+2&lt;6\)</span>. The exact complement
+diffeomorphism and all its radial coefficients are those of that
+included construction.</p>
+<p>The two arcs joining a chosen opposite-sign pair give its Whitney
+circle. The disk filling, with its complete collar fixed, can avoid
+every other three-dimensional sheet because <span
+class="math inline">\(2+3&lt;6\)</span>, and can be embedded because
+<span class="math inline">\(2+2&lt;6\)</span>. The rank-four adapted
+normal-frame calculation of Sections 2–3 of that chapter removes its
+actual rotation obstruction. Its Section 4 then supplies the supported
+ambient flow, the derivative transport of every upper normal column, and
+the full diffeomorphism of attached cobordisms. Its support misses all
+other sheets except the two prescribed patches. Thus it removes exactly
+the chosen two points and creates none.</p>
+<p>There are finitely many points and each operation decreases their
+number by two. Finite iteration gives <span class="math display">\[
+                  \#(A_j^{\rm geom}\cap B_i)=\delta_{ij}.
+\tag{6.5}
+\]</span> The remaining diagonal signs are still those in (6.4). This
+geometric assertion follows after the supported moves; it is stronger
+than the algebraic equation (6.3).</p>
+<p>Apply Sections 2–5 of the <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-actual-incidence">actual
+Morse realization chapter</a> to this complete modified presentation.
+Here three is the lowest remaining index, the level below it is the
+incoming product, the <span class="math inline">\(r\)</span> lower
+points have one common value, and the <span
+class="math inline">\(r\)</span> upper points have another strictly
+larger value. That proof builds the actual function and descending field
+from all the retained handle maps and parameter radii. Its
+intersection-to-trajectory bijection turns (6.5) into exactly one
+transverse descending trajectory from the <span
+class="math inline">\(j\)</span>-th upper point to the <span
+class="math inline">\(j\)</span>-th lower point, and no such trajectory
+to any other lower point.</p>
+<p>For completeness, its escape and support hypotheses can be checked
+directly in this presentation. Fix a regular value <span
+class="math inline">\(a_0\)</span> in the incoming product below all
+lower points. A descending trajectory which does not reach <span
+class="math inline">\(a_0\)</span> stays in a compact band and must
+limit to a critical point: at a noncritical limit point the strictly
+negative derivative would give a uniform positive drop on infinitely
+many disjoint time intervals, contradicting the lower bound on the
+function. The connected limit set is contained in the finite critical
+set, hence is one point. The common upper value excludes every other
+upper point, and the trajectory bijection excludes every lower point
+except the one on the specified trajectory. Thus all other trajectories
+escape to <span class="math inline">\(a_0\)</span>.</p>
+<p>Near that lower point the actual quadratic coordinates retain <span
+class="math display">\[
+f=c-\sum_{\nu=1}^3 a_\nu x_\nu^2+
+                     \sum_{\mu=1}^4 b_\mu y_\mu^2,\qquad
+x(t)=e^t x(0),\quad y(t)=e^{-t}y(0),\qquad a_\nu,b_\mu&gt;0 .
+\tag{6.6}
+\]</span> These formulas show that the only additional limits of the
+upper unstable sheet are in the chosen lower unstable disc. The compact
+lower exit sphere reaches <span class="math inline">\(a_0\)</span> in
+uniformly bounded time, by a finite cover of its transverse hitting
+neighbourhoods. The same holds for the compact remainder of the upper
+attaching sphere away from the chosen intersection. The resulting
+truncated unstable closure is therefore compact, contains only this pair
+of critical points, and stays away from both boundary collars. Distinct
+pairs have disjoint such compact sets by uniqueness of trajectories and
+(6.5). Choose disjoint neighbourhoods with compact closure around them.
+These are exactly the supported cancellation hypotheses proved in that
+chapter.</p>
+<p>Its cancellation formula now removes every index-three/four pair,
+with the retained signs permitted by its theorem. All comparison
+diffeomorphisms and boundary maps are carried through the finite
+sequence. No critical point remains. The resulting function <span
+class="math inline">\(f_{\rm end}\)</span> on the actual <span
+class="math inline">\(C_\phi\)</span>, viewed through those comparisons,
+has original constant boundary values <span
+class="math inline">\(\ell_-&lt;\ell_+\)</span> and no critical
+point.</p>
+<p>Choose a smooth positive transverse field <span
+class="math inline">\(V\)</span> matching its prescribed boundary
+collars, and retain the full multiplier in <span class="math display">\[
+Y=\frac{V}{df_{\rm end}(V)},\qquad df_{\rm end}(Y)=1,\qquad
+                        T=\ell_+-\ell_-&gt;0 .
+\tag{6.7}
+\]</span> The actual product map and its inverse are <span
+class="math display">\[
+\begin{split}
+\Psi:S^6\times[0,T]&amp;\longrightarrow C_\phi,
+                  &amp;\Psi(q,t)&amp;=\operatorname{Fl}^{Y}_t(j(q)),\\
+\Psi^{-1}(w)&amp;=
+\left(j^{-1}\operatorname{Fl}^{Y}_{-(f_{\rm end}(w)-\ell_-)}(w),
+                          f_{\rm end}(w)-\ell_-\right).
+\end{split}
+\tag{6.8}
+\]</span> On each trajectory the function increases by exactly its time,
+so compactness gives existence up to both specified endpoints and each
+intermediate level is crossed once. This proves both inverse identities.
+The derivative in a tangent direction is <span
+class="math inline">\(D\operatorname{Fl}^Y_t\,Dj\)</span>, and the time
+column is <span class="math inline">\(Y\)</span>, transverse to the
+level. Thus both maps are smooth with invertible differentials,
+including in their boundary collars. All earlier presentation
+comparisons are part of <span class="math inline">\(j\)</span> and <span
+class="math inline">\(\iota_\Sigma\)</span> in this formula. If one
+compares with the interval <span class="math inline">\([0,1]\)</span>,
+the map is <span class="math inline">\((q,s)\mapsto\Psi(q,Ts)\)</span>,
+whose second derivative column is <span class="math inline">\(T
+Y\)</span>; the original positive length <span
+class="math inline">\(T\)</span> is retained.</p>
+<h2 id="twist-original-smooth-map">7. The smooth map to the original
+sphere and its original homotopy class</h2>
+<p>Restrict the product map to its outgoing boundary and use the
+original boundary identification: <span class="math display">\[
+       d:S^6\longrightarrow\Sigma,\qquad
+              d(q)=\iota_\Sigma^{-1}\bigl(\Psi(q,T)\bigr).
+\tag{7.1}
+\]</span> Every factor in (7.1) is a specified smooth map and (6.8)
+gives its smooth inverse: <span class="math display">\[
+d^{-1}(x)=j^{-1}\operatorname{Fl}^{Y}_{-T}(\iota_\Sigma(x)).
+\tag{7.2}
+\]</span> It is orientation-preserving. The positive orientation on the
+incoming level was specified by the disc in (4.2). The directed product
+orientation has boundary <span class="math inline">\(-S^6\)</span> at
+<span class="math inline">\(0\)</span> and <span
+class="math inline">\(+\Sigma\)</span> at <span
+class="math inline">\(T\)</span>. The flow preserves the level
+orientation since its transverse time column stays positive. All
+intervening comparisons are orientation-preserving. Hence <span
+class="math inline">\(d_*[S^6]=[\Sigma]\)</span>, with the original
+orientations, without an unrecorded reflection.</p>
+<p>Take now <span class="math inline">\(\Sigma=X\)</span>, the actual
+compact smooth manifold of lesson 7. Its original degree-one map <span
+class="math inline">\(g:S^6\to X\)</span> was constructed in Section 9
+of that lesson. The included first Hurewicz theorem gives an isomorphism
+<span class="math display">\[
+        h_6:\pi_6(X,x_*)\xrightarrow{\cong}H_6(X;\mathbb Z),
+                         [u]\longmapsto u_*[S^6].
+\tag{7.3}
+\]</span> The hypothesis is verified there: <span
+class="math inline">\(X\)</span> is five-connected by its integral
+homology calculation and successive first Hurewicz applications. If the
+basepoint of <span class="math inline">\(d\)</span> differs from that of
+<span class="math inline">\(g\)</span>, choose a path between their
+images and use the homotopy-extension property of <span
+class="math inline">\(\{q_*\}\subset S^6\)</span> to move the basepoint
+along that path. The induced based class is independent of the path,
+since <span class="math inline">\(\pi_1X=0\)</span>. Both (7.1) and
+<span class="math inline">\(g\)</span> map under (7.3) to the same
+generator <span class="math inline">\([X]\)</span>. Injectivity supplies
+a based homotopy after that basepoint change, and adjoining the
+basepoint-change homotopy gives the actual free homotopy <span
+class="math display">\[
+                              d\simeq g .
+\tag{7.4}
+\]</span> This uses equality of the original oriented degree classes,
+not a new choice of the original map.</p>
+<p>The homotopy inverse retained in lesson 7 is <span
+class="math inline">\(h_X:X\to S^6\)</span>. In this companion write
+<span class="math inline">\(h=h_X\)</span>, with no change to that
+original map. Compose (7.4) with <span class="math inline">\(h\)</span>
+to get <span class="math inline">\(hd\simeq hg\simeq1_{S^6}\)</span>;
+precompose this homotopy with <span
+class="math inline">\(d^{-1}\)</span>. It gives <span
+class="math display">\[
+                              h\simeq d^{-1}.
+\tag{7.5}
+\]</span> Thus both original homotopy-equivalence maps receive a proved
+comparison to inverse smooth diffeomorphisms.</p>
+<p>The previous tangent comparison is retained as well. Let <span
+class="math inline">\(B:g^*TX\to TS^6\)</span> be the rank-six bundle
+isomorphism of the spin-six chapter, (6.3), and let <span
+class="math inline">\(H(q,s)\)</span> be the homotopy from <span
+class="math inline">\(g\)</span> to <span
+class="math inline">\(d\)</span> just obtained. The finite projection
+transport proved in lesson 11 constructs an actual oriented isomorphism
+<span class="math inline">\(P_H:g^*TX\to d^*TX\)</span>: embed the
+bundle over the compact homotopy cylinder in a trivial bundle, partition
+its parameter interval finely enough that adjacent projection operators
+differ in norm by less than one, and compose their restricted projection
+isomorphisms. Their inverse operators, in reverse order, give its
+inverse. Compactness makes one finite partition work for every <span
+class="math inline">\(q\)</span>. This uses the original continuous
+homotopy and needs no smoothness assumption on <span
+class="math inline">\(g\)</span>. The exact automorphism comparing the
+old bundle identification with the differential of the new map is <span
+class="math display">\[
+              E_q=B_q(P_H)_q^{-1}Dd_q:T_qS^6\longrightarrow T_qS^6 .
+\tag{7.6}
+\]</span> It is invertible and orientation-preserving, and the exact
+relation is <span class="math display">\[
+                     Dd_q=(P_H)_qB_q^{-1}E_q .
+\tag{7.7}
+\]</span> No claim that <span class="math inline">\(E\)</span> is the
+identity or nullhomotopic is needed or made. Stabilizing retains the
+original radial coordinate: the differential-induced frame of <span
+class="math inline">\(d^*TX\oplus\mathbb R\)</span> sends <span
+class="math inline">\((v,a)\)</span> to <span
+class="math inline">\((Dd_q)^{-1}v+a q\)</span>, with inverse <span
+class="math inline">\(w\mapsto(Dd_q(w-\langle w,q\rangle q),\langle
+w,q\rangle)\)</span>. The earlier <span
+class="math inline">\(B\)</span>-frame, transported through <span
+class="math inline">\(P_H\)</span>, differs on the tangent summand by
+exactly <span class="math inline">\(E_q\)</span> and on the radial line
+by the identity. This records the full rank-six and rank-seven
+comparisons.</p>
+<p>The same proof applies to every oriented smooth homotopy six-sphere.
+Its actual bundle <span class="math inline">\(T\Sigma\oplus\mathbb
+R\)</span> is trivial by <span
+class="math inline">\(\pi_5SO(7)=0\)</span> and the pullback/descent
+construction proved in Sections 5–6 of the spin-six chapter. The stable
+tangent-to-normal framing comparison needed for the whole framed bordism
+group is proved in Section 7.1 below, extending the original
+complex-case comparison without changing its endpoints. The geometric
+framing proof therefore gives a nullbordism for this actual stable
+tangent frame because its middle homology is zero, so its proved
+quadratic invariant has value zero. Sections 4–6 above then apply
+without a complex structure. Consequently every such sphere admits the
+orientation-preserving diffeomorphism (7.1). In particular the group of
+oriented smooth homotopy six-spheres is <span class="math display">\[
+                                  \Theta_6=0 .
+\tag{7.8}
+\]</span> This is the classical smooth recognition result, proved here
+with its receiving maps; no novelty is asserted.</p>
+<p>One can also retain a smooth filling. Cap the incoming boundary of
+<span class="math inline">\(C_\phi\)</span> by the original coordinate
+seven-disc using <span class="math inline">\(j\)</span>. Equation (6.8)
+identifies the attached collar with its actual product; extending a disc
+by a finite collar is diffeomorphic to a disc by a smooth increasing
+radial coordinate whose derivative stays positive, equal to the original
+coordinate near the centre. Such a function is obtained by integrating a
+positive smooth function with the prescribed constant endpoint germs and
+the required total radial length. The full radial derivative and the
+original factor <span class="math inline">\(\rho\)</span> specify that
+comparison. This gives a smooth disc filling of the underlying original
+<span class="math inline">\(\Sigma\)</span>. It does not claim that the
+new filling’s framing agrees with the two old piece frames; their exact
+difference is (5.6). The original framed nullbordism remains retained
+separately.</p>
+<h3 id="twist-general-stable-framing">7.1. The full tangent-to-normal
+comparison for every stable six-dimensional frame</h3>
+<p>This argument supplies an additional receiving prerequisite used by
+the general framed-bordism calculation. It is a direct bundle
+calculation from the original Pontryagin–Thom matrices, independent of
+the gluing and smooth-recognition conclusions above, so it may be used
+before Section 4. Section 8 of the Pontryagin–Thom companion proved a
+homotopy for the original complex tangent bundle. Its equation (8.11)
+also calculated the exact comparison for an arbitrary stable tangent
+frame. We now prove that this latter comparison is stably homotopic to
+the identity in dimension six, retaining every original map and using no
+complex structure on the original tangent bundle.</p>
+<p>Use that chapter’s notation: <span
+class="math inline">\(J:T_mM\to\mathbb R^N\)</span> is the derivative of
+the actual embedding, <span class="math inline">\(H=J^TJ\)</span> is its
+Gram matrix, <span class="math inline">\(Q=H^{-1}J^T\)</span>, and <span
+class="math inline">\(P_\nu=I-JQ\)</span>. The actual stable tangent
+frame is <span class="math display">\[
+\tau:T M\oplus\mathbb R^k\xrightarrow{\cong}\mathbb R^{6+k},
+\qquad QJ=I,\quad QP_\nu=0,\quad P_\nu+JQ=I_N .
+\tag{7.9}
+\]</span> The notation <span class="math inline">\(H\)</span> in (7.9)
+is this original Gram matrix, distinct from the earlier map homotopy
+<span class="math inline">\(H(q,s)\)</span>. If the original <span
+class="math inline">\(k\)</span> is odd, append one identity coordinate
+to <span class="math inline">\(\tau\)</span>, in the original
+last-coordinate convention. Denote the resulting even number again by
+<span class="math inline">\(k\)</span>, recording this one stabilization
+explicitly. If it is already even, append none. In particular the
+original rank-seven frame of a homotopy six-sphere uses exactly one
+further coordinate here.</p>
+<p>Give the ordered trivial spaces <span class="math inline">\(\mathbb
+R^{6+k}\)</span> and <span class="math inline">\(\mathbb R^k\)</span>
+their constant operators <span class="math inline">\(J_{6+k}\)</span>
+and <span class="math inline">\(J_k\)</span>, acting on each successive
+coordinate pair by <span
+class="math inline">\((x,y)\mapsto(-y,x)\)</span>. For <span
+class="math inline">\(k=0\)</span> the second operator and its formulas
+act on the zero space. The original <span
+class="math inline">\(\tau\)</span> determines the operator <span
+class="math display">\[
+\mathcal I=\tau^{-1}J_{6+k}\tau
+        \quad\hbox{on }E=TM\oplus\mathbb R^k,\qquad
+\mathcal I^2=-I_E .
+\tag{7.10}
+\]</span> This is an operator on the specified stabilized bundle; it
+makes no claim that <span class="math inline">\(TM\)</span> alone has
+such an operator.</p>
+<p>For <span class="math inline">\(0\le t\le1\)</span>, put <span
+class="math inline">\(\alpha=\pi t\)</span>, <span
+class="math inline">\(\theta=\pi t/2\)</span>, and define <span
+class="math display">\[
+\begin{split}
+C_t&amp;=\cos\alpha\,I_E+\sin\alpha\,\mathcal I,\\
+R_t&amp;=I_{TM}\oplus(\cos\alpha\,I_k+\sin\alpha\,J_k),\\
+D_t&amp;=R_tC_t .
+\end{split}
+\tag{7.11}
+\]</span> Their exact inverses replace each sine by its negative and
+reverse the product: <span class="math display">\[
+C_t^{-1}=\cos\alpha\,I_E-\sin\alpha\,\mathcal I,\qquad
+R_t^{-1}=I_{TM}\oplus(\cos\alpha\,I_k-\sin\alpha\,J_k),\qquad
+D_t^{-1}=C_t^{-1}R_t^{-1}.
+\tag{7.12}
+\]</span> Multiplication, using the two squared-operator identities,
+proves both inverse identities in every fibre. The endpoints are <span
+class="math display">\[
+               D_0=I_E,\qquad D_1=(-I_{TM})\oplus I_k .
+\tag{7.13}
+\]</span> Indeed <span class="math inline">\(C_1=-I_E\)</span> and <span
+class="math inline">\(R_1=I_{TM}\oplus(-I_k)\)</span>, so the auxiliary
+minus signs cancel exactly.</p>
+<p>For the original variables <span class="math inline">\((v,a,b)\in
+TM\oplus\mathbb R^N\oplus\mathbb R^k\)</span>, put <span
+class="math inline">\(u=Qa\)</span> and <span
+class="math inline">\(y=P_\nu a\)</span>. Define the full homotopy by
+<span class="math display">\[
+\begin{split}
+v_t&amp;=\cos\theta\,v+\sin\theta\,u,\\
+(w_t,b_t)&amp;=D_t(-\sin\theta\,v+\cos\theta\,u,\ b),\\
+a_t&amp;=y+Jw_t,\qquad
+\mathcal S_t(v,a,b)=(v_t,a_t,b_t).
+\end{split}
+\tag{7.14}
+\]</span> Here every occurrence of <span
+class="math inline">\(\tau,J,H,Q,P_\nu\)</span> is the original
+point-dependent map from (7.9); none has been replaced by an orthonormal
+constant matrix.</p>
+<p>The inverse is explicit. Given <span
+class="math inline">\((v_t,a_t,b_t)\)</span>, recover <span
+class="math inline">\(y=P_\nu a_t\)</span>, <span
+class="math inline">\(w_t=Qa_t\)</span>, then put <span
+class="math inline">\((w,b)=D_t^{-1}(w_t,b_t)\)</span>. Finally set
+<span class="math display">\[
+v=\cos\theta\,v_t-\sin\theta\,w,\qquad
+u=\sin\theta\,v_t+\cos\theta\,w,\qquad a=y+Ju .
+\tag{7.15}
+\]</span> Equations (7.9) and (7.12) prove both composites are the
+identity. Thus (7.14) is a homotopy through bundle isomorphisms. Its
+endpoints are <span class="math display">\[
+\mathcal S_0=I,\qquad
+\mathcal S_1(v,a,b)=(Qa,\ P_\nu a+Jv,\ b).
+\tag{7.16}
+\]</span> The second is precisely the original involution <span
+class="math inline">\(S_m\)</span> in equation (8.11) of the
+Pontryagin–Thom chapter, with the stated appended coordinate if
+needed.</p>
+<p>All derivative terms are retained as well. In any original bundle
+chart, <span class="math display">\[
+\begin{split}
+d\mathcal I
+   &amp;=-\tau^{-1}(d\tau)\tau^{-1}J_{6+k}\tau
+                           +\tau^{-1}J_{6+k}\,d\tau,\\
+dC_t
+   &amp;=(-\sin\alpha\,I_E+\cos\alpha\,\mathcal I)\,d\alpha
+                                      +\sin\alpha\,d\mathcal I,\\
+dR_t
+   &amp;=0_{TM}\oplus(-\sin\alpha\,I_k+\cos\alpha\,J_k)\,d\alpha,\\
+dD_t&amp;=(dR_t)C_t+R_t\,dC_t .
+\end{split}
+\tag{7.17}
+\]</span> In (7.14), <span class="math inline">\(du=(dQ)a+Q\,da\)</span>
+and <span class="math inline">\(dy=(dP_\nu)a+P_\nu\,da\)</span>. Writing
+<span class="math inline">\(z=-\sin\theta\,v+\cos\theta\,u\)</span>, its
+full remaining derivatives are <span class="math display">\[
+\begin{split}
+dv_t={}&amp;\cos\theta\,dv+\sin\theta\,du
+                  +(-\sin\theta\,v+\cos\theta\,u)d\theta,\\
+dz={}&amp;-\sin\theta\,dv+\cos\theta\,du
+                  +(-\cos\theta\,v-\sin\theta\,u)d\theta,\\
+d(w_t,b_t)={}&amp;(dD_t)(z,b)+D_t(dz,db),\\
+da_t={}&amp;dy+(dJ)w_t+J\,dw_t .
+\end{split}
+\tag{7.18}
+\]</span> Here <span
+class="math inline">\(dQ=-H^{-1}(dH)H^{-1}J^T+H^{-1}dJ^T\)</span>, <span
+class="math inline">\(dH=(dJ)^TJ+J^TdJ\)</span>, and <span
+class="math inline">\(dP_\nu=-(dJ)Q-J\,dQ\)</span>, by differentiating
+(7.9). These formulas verify smooth dependence while preserving the
+entire metric comparison.</p>
+<p>The earlier exact equality is <span
+class="math inline">\(\tau_E=\tau_{\rm st}S_m\)</span>. Equations
+(7.14)–(7.16) therefore give the required general homotopy <span
+class="math display">\[
+             \tau_{\rm st}\mathcal S_t:
+                         \tau_{\rm st}\simeq\tau_E .
+\tag{7.19}
+\]</span> It applies to every stably framed six-manifold and to a smooth
+family of its frames. Making its parameter constant near the endpoints
+lets it be installed in a boundary collar exactly as in (8.15)–(8.16) of
+the Pontryagin–Thom chapter. The original boundary map and specified
+stable frame are then recovered.</p>
+<p>This completes the tangent-framed use of the normal-framed
+Pontryagin–Thom bijection for the entire six-dimensional bordism group
+used in the geometric framing chapter, (9.1). One direction first forms
+the original normal frame by that chapter’s explicit embedding and
+normal-bundle map; the inverse first takes a regular inverse image and
+its tangent-plus-normal frame. Their composite comparison is precisely
+(7.19). For a bordism, extend the prescribed boundary embedding over a
+collar and use the relative embedding and frame constructions from the
+same chapter; (7.19) corrects its boundary frame while fixing the rest
+of the collar. Conversely a normal-framed bordism has the tangent frame
+(8.15), and (7.19) recovers its prescribed endpoint frames. Thus the
+same explicit comparisons give injectivity, surjectivity and
+compatibility with bordism, without an unproved complex-structure
+hypothesis on an arbitrary representative.</p>
+<figure>
+<img src="assets/sphere-twist-gluing.svg" alt="The original lower and upper seven-dimensional pieces are glued through phi on their common level; both old and new incidence matrices and the full frame defect are retained before supported cancellation produces the actual product and outgoing diffeomorphism." />
+<figcaption>
+Schematic of the exact maps (4.3)–(7.5), with the original outer
+boundary parametrizations fixed. The boxes represent the two original
+pieces; they do not assert a geometric embedding of a seven-manifold in
+the page. Both the torsion-bearing old matrix and the new frame defect
+are retained. The full smooth argument is in Sections 4–7. Reproducible
+source:
+<a href="checks/draw_sphere_twists.py">draw_sphere_twists.py</a>.
+</figcaption>
+</figure>
+<h2 id="twist-worked-exercises">8. Two complete worked calculations</h2>
+<h3
+id="exercise-8.1.-keep-the-old-torsion-and-all-the-new-orientation-signs">Exercise
+8.1. Keep the old torsion and all the new orientation signs</h3>
+<p>In the original rank-two lattice with <span
+class="math inline">\(\lambda(e,f)=1\)</span>, let the lower belt be
+<span class="math inline">\(e\)</span>, the upper attaching class be
+<span class="math inline">\(a=2e+3f\)</span>, and the lower chart sign
+be <span class="math inline">\(\sigma=-1\)</span>. Compute both original
+relative homology groups, give an explicit twist word taking the upper
+Lagrangian to the complementary one, and retain the signed basis
+comparison for cancellation.</p>
+<p><strong>Solution.</strong> The vector <span
+class="math inline">\((2,3)\)</span> is primitive: the identity <span
+class="math inline">\(2(-1)+3(1)=1\)</span> extends it to an integral
+basis. Its span is isotropic because the pairing is alternating. Formula
+(4.10) gives <span class="math inline">\(D^{\rm old}=(-3)\)</span>, so
+<span class="math display">\[
+       \ker D^{\rm old}=0,\qquad
+       \operatorname{coker}D^{\rm old}=\mathbb Z/3\mathbb Z .
+\tag{8.1}
+\]</span> The exact maps in (3.5), in the original ordered coordinates
+<span class="math inline">\((e,f)\)</span>, give <span
+class="math display">\[
+T_f=\begin{pmatrix}1&amp;0\\-1&amp;1\end{pmatrix},\qquad
+T_e^{-2}=\begin{pmatrix}1&amp;-2\\0&amp;1\end{pmatrix},\qquad
+S=T_e^{-2}T_f=\begin{pmatrix}3&amp;-2\\-1&amp;1\end{pmatrix}.
+\tag{8.2}
+\]</span> Their determinants are one. The intermediate vectors are <span
+class="math display">\[
+                    (2,3)^T\longmapsto(2,1)^T
+                                      \longmapsto(0,1)^T .
+\tag{8.3}
+\]</span> The actual diffeomorphism is the ordered composition <span
+class="math inline">\(\mathcal T_e^{-2}\mathcal T_f\)</span>, using the
+embedded representatives and full tubes of Sections 1–2. It sends <span
+class="math inline">\(a\)</span> to <span
+class="math inline">\(f\)</span>.</p>
+<p>Here <span class="math inline">\(F=\sigma f=-f\)</span>, so the new
+coefficient matrix in (6.1) is <span
+class="math inline">\(U=(-1)\)</span>. The actual new geometric boundary
+coefficient is <span class="math inline">\(-1\)</span>, while its signed
+comparison basis is <span class="math inline">\(\widehat c=-c^{\rm
+geom}\)</span>; thus <span class="math inline">\(\epsilon=-1\)</span>
+and <span class="math inline">\(D_{\rm comparison}=1\)</span>. The
+remaining ordered intersection of belt and upper attaching sphere has
+sign <span class="math inline">\(\epsilon\sigma=+1\)</span>. Its single
+Morse trajectory cancels the pair. Both new relative groups are zero, by
+the isomorphism <span class="math inline">\((-1):\mathbb Z\to\mathbb
+Z\)</span>.</p>
+<p>The original <span class="math inline">\(\mathbb Z/3\mathbb
+Z\)</span> in (8.1) has not been identified with zero by a supposed
+diffeomorphism. The two original pieces have been reglued by <span
+class="math inline">\(S\)</span>; (5.1) specifies a different interior
+filling with the same outer boundary. On frames the exact new comparison
+is <span class="math inline">\(\tau_{-,\phi(p)}(D\phi_p\oplus1\oplus
+I_h)\tau_{+,p}^{-1}\)</span>. Its factors are retained regardless of the
+homology calculation. This example verifies both the utility and the
+precise scope of that operation.</p>
+<h3
+id="exercise-8.2.-two-interacting-pairs-with-every-companion-coordinate-retained">Exercise
+8.2. Two interacting pairs with every companion coordinate retained</h3>
+<p>Use the ordered coordinates <span
+class="math inline">\((e_1,e_2,f_1,f_2)\)</span>, with matrix <span
+class="math display">\[
+\Lambda=\begin{pmatrix}0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\\-1&amp;0&amp;0&amp;0\\0&amp;-1&amp;0&amp;0\end{pmatrix}.
+\tag{8.4}
+\]</span> Set <span class="math display">\[
+S=T_{e_1+f_2}^{\,2}T_{f_1}^{-1}T_{e_2}^{\,3},\qquad
+L=S\operatorname{span}(e_1,e_2),\qquad
+                  (\sigma_1,\sigma_2)=(-1,+1).
+\tag{8.5}
+\]</span> Compute the original incidence, an exact complementary gluing,
+and the resulting signed matrices. Explain why the full vector <span
+class="math inline">\(e_1+f_2\)</span> cannot be replaced by only its
+first component.</p>
+<p><strong>Solution.</strong> For a column <span
+class="math inline">\(v\)</span>, formula (2.6) gives the entire matrix
+<span class="math inline">\(T_v^m=I_4+mv(v^T\Lambda)\)</span>.
+Multiplication in the written order gives <span class="math display">\[
+S=\begin{pmatrix}
+3&amp;-2&amp;2&amp;-6\\
+0&amp;1&amp;0&amp;3\\
+1&amp;0&amp;1&amp;0\\
+2&amp;-2&amp;2&amp;-5
+\end{pmatrix},\qquad
+[a_1\ a_2]=
+\begin{pmatrix}3&amp;-2\\0&amp;1\\1&amp;0\\2&amp;-2\end{pmatrix}.
+\tag{8.6}
+\]</span> Each factor preserves <span
+class="math inline">\(\Lambda\)</span> by (2.7) and has inverse obtained
+by negating its exponent. Hence <span class="math inline">\(S\)</span>
+is an integral symplectic isomorphism; its first two columns span a
+primitive Lagrangian. Directly <span class="math inline">\(a_1^T\Lambda
+a_2=3\cdot0+0\cdot(-2)-1\cdot(-2)-2\cdot1=0\)</span>, retaining all four
+contributions.</p>
+<p>The ordered belt-to-attaching matrix is <span class="math display">\[
+[\,\lambda(e_i,a_j)\,]=
+        \begin{pmatrix}1&amp;0\\2&amp;-2\end{pmatrix},
+\qquad
+D^{\rm old}=
+        \begin{pmatrix}-1&amp;0\\2&amp;-2\end{pmatrix}.
+\tag{8.7}
+\]</span> Its kernel is zero. Its image is generated by <span
+class="math inline">\((-1,2)^T,(0,-2)^T\)</span>; the first generator
+eliminates the first coordinate, and the second leaves exactly the
+parity of the second coordinate. Thus its cokernel is <span
+class="math inline">\(\mathbb Z/2\mathbb Z\)</span>, by the actual
+quotient map <span class="math inline">\((x,y)\mapsto
+y\bmod2\)</span>.</p>
+<p>Put <span class="math inline">\(K=J_1^{-1}J_2^{-1}\)</span>; it sends
+each <span class="math inline">\(e_i\)</span> to <span
+class="math inline">\(f_i\)</span> and each <span
+class="math inline">\(f_i\)</span> to <span
+class="math inline">\(-e_i\)</span>. The exact gluing action is <span
+class="math display">\[
+P_*=KS^{-1}=
+\begin{pmatrix}
+1&amp;2&amp;-3&amp;0\\
+0&amp;-2&amp;2&amp;-1\\
+1&amp;2&amp;-2&amp;0\\
+0&amp;-5&amp;6&amp;-3
+\end{pmatrix},\qquad
+P_*[a_1\ a_2]=
+\begin{pmatrix}0&amp;0\\0&amp;0\\1&amp;0\\0&amp;1\end{pmatrix}.
+\tag{8.8}
+\]</span> Its finite twist word is <span
+class="math inline">\(J_1^{-1}J_2^{-1}T_{e_2}^{-3}T_{f_1}T_{e_1+f_2}^{-2}\)</span>,
+in that order of composition. Sections 1–2 realize every factor on the
+original level, so <span class="math inline">\(P_*\)</span> is not
+merely a desired abstract matrix.</p>
+<p>The target basis in (6.1) is <span
+class="math inline">\(F_1=-f_1,F_2=f_2\)</span>. Consequently <span
+class="math display">\[
+U=D^\phi=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix},
+\quad U^{-1}=U,\quad D_{\rm comparison}^{\rm new}=I_2,
+\quad(\epsilon_1,\epsilon_2)=(-1,+1).
+\tag{8.9}
+\]</span> The geometric diagonal coefficients remain <span
+class="math inline">\((-1,+1)\)</span>. The belt-to-attaching signs are
+<span
+class="math inline">\((\epsilon_1\sigma_1,\epsilon_2\sigma_2)=(+1,+1)\)</span>.
+The supported Whitney moves leave exactly the two specified points, and
+the two supported Morse cancellations remove both pairs.</p>
+<p>Finally <span class="math inline">\(v=e_1+f_2\)</span> has <span
+class="math inline">\(v^T\Lambda=(0,-1,1,0)\)</span>. Its contribution
+to a vector <span class="math inline">\((a_1,a_2,b_1,b_2)^T\)</span> is
+<span class="math display">\[
+T_v^m(a_1,a_2,b_1,b_2)^T
+=\bigl(a_1+m(b_1-a_2),\ a_2,\ b_1,\
+                         b_2+m(b_1-a_2)\bigr)^T .
+\tag{8.10}
+\]</span> Both displayed changes are required. Omitting the <span
+class="math inline">\(f_2\)</span> coordinate changes the map and
+destroys (8.6)–(8.8). Equations (8.4)–(8.10) retain the original ordered
+lattice throughout.</p>
+<h2 id="twist-sources">9. Sources, proof locations and scope of the
+checks</h2>
+<p>The human source used for the tube model is Paul Seidel, <a
+href="https://arxiv.org/abs/math/0105186v2"><em>A long exact sequence
+for symplectic Floer cohomology</em>, arXiv:math/0105186v2</a>. The
+retained original-author file is all.tex; lines 645–731 and 979–1002
+were read. Its exact flow is at lines 663–730. Equations (1.12)–(1.14)
+prove the full comparison, including the interchanged coordinates, the
+<span class="math inline">\(2\pi\)</span> multiplier, the function at
+negative radii and its primitive correction. The present argument uses
+the underlying smooth map; it does not import a symplectic assertion
+without the source’s Lagrangian hypothesis. The archive remains intact
+in the private source ledger. No reading of the remainder of the Floer
+argument is claimed.</p>
+<p>The complete receiving prerequisites are included in this course. The
+following immutable links identify the checked earlier edition:</p>
+<ul>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/the-original-six-dimensional-framing-invariant.md#framed-six-embedded-representatives">Original
+geometric framing invariant</a>, Sections 7–9: embedded representatives,
+full index-three comparison (8.1)–(8.6), two-connected preparation, the
+exact index reduction, and the original framed nullbordism.</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/the-original-integral-stable-group-and-its-completion-maps.md#integral-degree-six-answer">Original
+integral stable comparison</a>, Sections 5–7: the exact suspension
+range, all completion terms and the original sixth stable sphere
+group.</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/higher-index-framed-slides-and-chain-maps.md#higher-slide-integer-changes">Higher-index
+framed slides</a>, Sections 3–6: full cobordism map, signed chain prism,
+both neighbouring matrices and finite integral changes.</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/whitney-moves-in-the-receiving-dimensions.md#receiving-whitney-levels">Receiving
+Whitney moves</a>, Sections 1–4: the exact complement, complete
+two-corner disc, rank-four framing and supported flow for <span
+class="math inline">\((6,3,3)\)</span>.</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/realizing-framed-handles-and-middle-cancellation.md#middle-actual-incidence">Actual
+Morse realization</a>, Sections 4–6: intersections as actual
+trajectories, escape and support, finite cancellation and the exact
+product map (6.8).</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/spin-six-and-the-framing-comparison.md#framing-so7">Original
+six-dimensional bundle comparison</a>, Sections 5–6: <span
+class="math inline">\(\pi_5SO(7)=0\)</span>, the original stable frame
+and rank-six comparison.</li>
+<li><a
+href="https://github.com/KokunoYumeto/open-math-courses/blob/84b42864aa2fc5b0f494a0498158a881589dc8ee/docs/courses/CG-S6/src/integral-homology-and-sphere-recognition.md#homotopy-sphere">The
+receiving lesson</a>, Section 9: the original degree-one map, its two
+inverse homotopies and the exact homology calculation. The earlier
+edition still labels smooth recognition unfinished; Sections 4–7 above
+supply that receiving proof.</li>
+</ul>
+<p>The construction proves the classical <span
+class="math inline">\(\Theta_6=0\)</span> statement and its application
+to the original <span class="math inline">\(X\)</span>. The new filling
+is (5.1); the old filling, old torsion matrix and stable-frame defect
+are (4.10) and (5.6). The argument does not assert that a twist
+preserves the old framing or that the two entire fillings are
+diffeomorphic. Formula (7.6) retains the exact comparison with the
+earlier tangent-bundle map.</p>
+<p>The accompanying checker verifies finite algebra and the displayed
+examples against this source. It cannot certify the embedded-disk,
+differential-topological, source-reading or global proof claims by a
+finite computation. Those are supplied by the written arguments and
+included prerequisites and have received author self-checking. No
+independent review, exhaustive literature audit or new mathematical
+discovery is claimed.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>

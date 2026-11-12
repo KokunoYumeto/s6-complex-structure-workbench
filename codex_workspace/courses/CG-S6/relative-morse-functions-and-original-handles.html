@@ -1,0 +1,1215 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relative Morse functions and the original handles</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">CG-S6 course</a> · <a href="CG-S6-01.html">Lesson 1</a> · <a href="src/relative-morse-functions-and-original-handles.md">Editable source</a> · <a href="downloads/CG-S6-current.zip">Offline course</a></nav><article><h1 id="relative-morse-handles">Relative Morse functions and the
+original handles</h1>
+<p>Companion for CG-S6 lesson 7. GPT-6 Astra (OpenAI), Ultra, 10 October
+2026. New teaching exposition CC0. The actual cobordism is the original
+<span class="math display">\[
+C=X\setminus(\operatorname{int}D_0\cup\operatorname{int}D_1)
+\]</span> from lesson 7, with both original boundary inclusions.
+Sections 1–4 construct a relative Morse function, prove its full-Hessian
+coordinate comparison, calculate the local level maps, and construct all
+its actual framed handles. The finite original handle decomposition is
+proved. The <a
+href="rearranging-the-original-framed-handles.html#arrangement-interchange">original
+handle-index arrangement</a> is now proved in its companion; the <a
+href="framed-handle-slides-and-index-one-removal.html#slide-index-one-cancellation">framed
+slides and index-one removal</a> are now included as well. The <a
+href="integral-handle-chains-and-signed-incidences.html#handle-six-seven">integral
+handle-chain companion</a> now proves the original
+filtration-to-homology map, every incidence sign, the full integer basis
+comparisons and the exact contractions in dimensions six and seven. The
+<a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven.</p>
+<h2 id="relative-morse-existence">1. A Morse function on the actual
+cobordism</h2>
+<p>Write <span class="math inline">\(M_-=\partial D_0\)</span>, <span
+class="math inline">\(M_+=\partial D_1\)</span>, and retain disjoint
+inward collars <span class="math display">\[
+c_\pm:M_\pm\times[0,L_\pm)\longrightarrow C.
+\tag{1.1}
+\]</span> Choose and retain real numbers <span
+class="math inline">\(c_-&lt;c_+\)</span>, their midpoint <span
+class="math inline">\(c_*=(c_-+c_+)/2\)</span>, and a positive width
+<span class="math display">\[
+0&lt;\rho&lt;\min\{L_-/5,L_+/5,(c_+-c_-)/10\}.
+\tag{1.2}
+\]</span> These are explicit auxiliary choices. They do not change the
+original disk radii or the boundary maps.</p>
+<p>Let <span class="math inline">\(\chi\)</span> be the full smooth
+nondecreasing step used in the preceding companions, zero on <span
+class="math inline">\((-\infty,0]\)</span> and one on <span
+class="math inline">\([1,\infty)\)</span>. Define collar cutoffs <span
+class="math display">\[
+\theta_\pm(c_\pm(p,r))=1-\chi((r-3\rho)/\rho),
+\tag{1.3}
+\]</span> extended by zero outside their respective collars. They are
+one for <span class="math inline">\(r\leq3\rho\)</span> and zero for
+<span class="math inline">\(r\geq4\rho\)</span>. Their supports are
+disjoint. The function <span class="math display">\[
+f_0=c_*+\theta_-(c_-+r_--c_*)
+              +\theta_+(c_+-r_+-c_*)
+\tag{1.4}
+\]</span> is well-defined by those supported products. It is exactly
+<span class="math inline">\(c_-+r_-\)</span> on the first <span
+class="math inline">\(3\rho\)</span> of the incoming collar, exactly
+<span class="math inline">\(c_+-r_+\)</span> on the first <span
+class="math inline">\(3\rho\)</span> of the outgoing collar, and equals
+<span class="math inline">\(c_*\)</span> away from both. Each transition
+value is a convex combination of the displayed collar value and <span
+class="math inline">\(c_*\)</span>. Consequently <span
+class="math inline">\(c_-&lt;f_0&lt;c_+\)</span> on the interior and the
+boundary values are exactly <span
+class="math inline">\(c_-,c_+\)</span>.</p>
+<p>Let <span class="math inline">\(g\)</span> equal <span
+class="math inline">\(\chi((r_\pm-\rho)/\rho)\)</span> on each collar
+for <span class="math inline">\(r_\pm\leq2\rho\)</span>, and equal one
+elsewhere. It is smooth, zero on the entire prescribed collars <span
+class="math inline">\(r_\pm\leq\rho\)</span>, positive just beyond them,
+and one outside <span class="math inline">\(r_\pm&lt;2\rho\)</span>.
+Construct and retain a smooth embedding <span
+class="math inline">\(\iota:C\to\mathbb R^m\)</span> as follows. Choose
+finitely many coordinate charts <span
+class="math inline">\((U_j,\phi_j)\)</span>, and nonnegative smooth
+functions <span class="math inline">\(\rho_j\)</span> compactly
+supported in them, such that at every point at least one <span
+class="math inline">\(\rho_j\)</span> is positive. Boundary charts take
+values in half-spaces, with their full <span
+class="math inline">\(n\)</span> coordinate functions. The map with all
+components <span class="math display">\[
+\iota=(\rho_j,\rho_j\phi_{j,1},\ldots,\rho_j\phi_{j,n})_j
+\]</span> is smooth after each supported component is extended by zero.
+If two points have the same image, choose <span
+class="math inline">\(j\)</span> with <span
+class="math inline">\(\rho_j&gt;0\)</span> at the first point; equality
+of the first component gives the same positive value at the second, and
+equality of the next <span class="math inline">\(n\)</span> components
+then gives the same chart coordinates, hence the same point. If a
+tangent vector has zero image derivative, its <span
+class="math inline">\(d\rho_j\)</span> component vanishes, and the next
+components give <span class="math inline">\(\rho_j d\phi_j=0\)</span>,
+forcing that vector to be zero. Thus the map is an injective immersion.
+Compactness of <span class="math inline">\(C\)</span> and the Hausdorff
+property of <span class="math inline">\(\mathbb R^m\)</span> give the
+inverse continuity onto its image, proving that it is an embedding. Here
+<span class="math inline">\(m\)</span> is the full number of the
+displayed components. For parameters <span
+class="math inline">\(v=(v_0,\ldots,v_m)\)</span>, set <span
+class="math display">\[
+f_v=f_0+g\left(v_0+\sum_{\nu=1}^m v_\nu\iota_\nu\right).
+\tag{1.5}
+\]</span> All components and the constant parameter remain.</p>
+<p>There is a ball of parameters about zero on which these functions
+have no critical point in <span
+class="math inline">\(r_\pm\leq2\rho\)</span>. Indeed <span
+class="math inline">\(df_0=\pm dr_\pm\)</span> there, whose norm in the
+retained original metric has a positive minimum on those compact collar
+portions. The derivative of the parameter term is linear in <span
+class="math inline">\(v\)</span>, with bounded coefficients on <span
+class="math inline">\(C\)</span>. Choose the parameter norm so its
+derivative norm is less than half that minimum. Also bound its absolute
+value by <span class="math inline">\(\rho/2\)</span>. Outside the fixed
+collars, (1.4) lies between <span
+class="math inline">\(c_-+\rho\)</span> and <span
+class="math inline">\(c_+-\rho\)</span>; inside them the perturbation is
+zero. Thus every such <span class="math inline">\(f_v\)</span> still has
+its exact boundary values and its whole interior in <span
+class="math inline">\((c_-,c_+)\)</span>.</p>
+<p>Where <span class="math inline">\(g(p)&gt;0\)</span>, parameter
+differentiation of the covector <span
+class="math inline">\(df_v(p)\)</span> is surjective onto <span
+class="math inline">\(T_p^*C\)</span>. Given any desired covector <span
+class="math inline">\(\eta\)</span>, choose <span
+class="math inline">\(v&#39;=(v_1&#39;,\ldots,v_m&#39;)\)</span> with
+<span class="math display">\[
+g(p)\sum_\nu v_\nu&#39; d\iota_\nu|_p=\eta,
+\qquad
+v_0&#39;=-\sum_\nu v_\nu&#39;\iota_\nu(p).
+\tag{1.6}
+\]</span> Such <span class="math inline">\(v&#39;\)</span> exists
+because <span class="math inline">\(D\iota_p\)</span> is injective, so
+its transpose is onto. In differentiating (1.5), the full <span
+class="math inline">\(dg\)</span> contribution vanishes for this choice
+of <span class="math inline">\(v_0&#39;\)</span>, while the other
+contribution is exactly <span class="math inline">\(\eta\)</span>. This
+proves the stated surjectivity without assuming that <span
+class="math inline">\(d(g\iota)\)</span> alone has full rank.</p>
+<p>In local coordinates, the joint critical set <span
+class="math inline">\(df_v(p)=0\)</span> is therefore a smooth manifold
+of dimension <span class="math inline">\(m+1\)</span>. All its points
+for our small parameter ball lie in a fixed compact subset of the
+interior where <span class="math inline">\(g&gt;0\)</span>. At a
+critical pair its tangent equation is <span class="math display">\[
+H_pu+L_pw=0,
+\tag{1.7}
+\]</span> where <span class="math inline">\(H_p\)</span> is the full
+Hessian of <span class="math inline">\(f_v\)</span> and <span
+class="math inline">\(L_p\)</span> is the onto parameter derivative just
+proved. The projection of this tangent space to the parameter vector
+<span class="math inline">\(w\)</span> is onto if and only if <span
+class="math inline">\(H_p\)</span> is onto. One direction follows by
+solving for <span class="math inline">\(u\)</span> when <span
+class="math inline">\(H_p\)</span> is invertible. Conversely
+surjectivity of that projection implies <span
+class="math inline">\(\operatorname{im}L_p\subset\operatorname{im}H_p\)</span>,
+hence <span
+class="math inline">\(\operatorname{im}H_p=T_p^*C\)</span>.</p>
+<p>Sard’s theorem applied to the critical-set projection now gives
+parameters arbitrarily close to zero for which every critical Hessian is
+invertible. A countable coordinate cover suffices for this application;
+the union of the exceptional measure-zero sets still has measure zero.
+Select such a parameter in the stated small ball. The resulting critical
+points are isolated, lie in a compact interior set, and hence are
+finite.</p>
+<p>Their critical values can be made distinct without moving the points,
+changing their Hessians or changing the boundary collars. Choose
+disjoint coordinate neighbourhoods <span
+class="math inline">\(U_i\)</span> of the critical points <span
+class="math inline">\(p_i\)</span>, and smooth cutoffs <span
+class="math inline">\(\psi_i\)</span> supported there and one on smaller
+neighbourhoods. The original differential has a positive norm minimum
+<span class="math inline">\(\eta_i\)</span> on the compact annulus where
+<span class="math inline">\(d\psi_i\)</span> can be nonzero. If <span
+class="math display">\[
+|\epsilon_i|\,\sup\|d\psi_i\|&lt;\eta_i/2,
+\tag{1.8}
+\]</span> the perturbation <span class="math display">\[
+f=f_v+\sum_i\epsilon_i\psi_i
+\tag{1.9}
+\]</span> has no new critical point on these annuli, has the exact old
+differential near each <span class="math inline">\(p_i\)</span>, and is
+unchanged elsewhere. Further decrease the bounds to retain the
+interior-value inequalities. Choose the finitely many <span
+class="math inline">\(\epsilon_i\)</span> successively within these
+intervals while excluding the finitely many values that would repeat an
+earlier critical value. For example one can choose the first rational in
+a fixed enumeration satisfying those explicit conditions. Then the
+values <span class="math inline">\(f_v(p_i)+\epsilon_i\)</span> are
+distinct, all Hessians are unchanged, and (1.9) is the required relative
+Morse function on the original <span
+class="math inline">\(C\)</span>.</p>
+<h2 id="relative-morse-hessian">2. The full original Hessian in local
+coordinates</h2>
+<p>Retain an original coordinate chart <span
+class="math inline">\(u=(u_1,\ldots,u_n)\)</span> centred at any
+critical point <span class="math inline">\(p\)</span>, its critical
+value <span class="math inline">\(c=f(p)\)</span>, and its full
+nonsingular Hessian matrix <span class="math display">\[
+H_0=(\partial_i\partial_j f)(0).
+\tag{2.1}
+\]</span> Here <span class="math inline">\(n=6\)</span> for the current
+cobordism; the argument also applies to the later seven-dimensional
+cobordism. The coordinate chart and original metric are not replaced by
+a preferred metric.</p>
+<p>Taylor’s formula with integral remainder gives exactly <span
+class="math display">\[
+f(u)-c=u^{\mathsf t}A(u)u,\qquad
+A(u)=\int_0^1(1-t)\,D^2f(tu)\,dt,\qquad A(0)=H_0/2.
+\tag{2.2}
+\]</span> Choose the chart neighbourhood star-shaped so these segments
+are inside it. The matrix <span class="math inline">\(A(u)\)</span> is
+symmetric. Write <span class="math inline">\(A_0=H_0/2\)</span>, <span
+class="math inline">\(\Delta(u)=A(u)-A_0\)</span>, and <span
+class="math display">\[
+A_s(u)=A_0+s\Delta(u),\qquad 0\leq s\leq1.
+\tag{2.3}
+\]</span> If <span class="math inline">\(\sigma&gt;0\)</span> is the
+smallest singular value of <span class="math inline">\(A_0\)</span>,
+restrict the chart so <span
+class="math inline">\(\|\Delta(u)\|&lt;\sigma/2\)</span>. Then every
+<span class="math inline">\(A_s(u)\)</span> is invertible, since <span
+class="math inline">\(\|A_s
+v\|\geq(\sigma-\|\Delta\|)\|v\|&gt;\sigma\|v\|/2\)</span>.</p>
+<p>Solve the matrix equation <span class="math display">\[
+\frac{dM_s(u)}{ds}
+=-\frac12A_s(u)^{-1}\Delta(u)M_s(u),\qquad M_0(u)=I_n.
+\tag{2.4}
+\]</span> It has a smooth solution on the entire compact <span
+class="math inline">\(s\)</span>-interval. Its determinant is <span
+class="math display">\[
+\det M_s(u)=
+\exp\left[-\frac12\int_0^s
+\operatorname{tr}(A_\tau(u)^{-1}\Delta(u))\,d\tau\right]&gt;0.
+\tag{2.5}
+\]</span> This is obtained by differentiating the determinant along the
+linear equation; equivalently the inverse matrix solves its
+corresponding linear equation, and the logarithmic derivative is the
+displayed trace. Thus every <span class="math inline">\(M_s\)</span> is
+invertible.</p>
+<p>Differentiate the complete congruence expression: <span
+class="math display">\[
+\begin{aligned}
+\frac{d}{ds}(M_s^{\mathsf t}A_sM_s)
+&amp;=M_s^{\mathsf t}
+\left[-\frac12\Delta A_s^{-1}A_s
++\Delta-\frac12A_sA_s^{-1}\Delta\right]M_s\\
+&amp;=0.
+\end{aligned}
+\tag{2.6}
+\]</span> Symmetry of both <span class="math inline">\(A_s\)</span> and
+<span class="math inline">\(\Delta\)</span> justifies the first
+transpose term; commutativity of these two matrices was not assumed.
+Consequently <span class="math display">\[
+M_1(u)^{\mathsf t}A(u)M_1(u)=A_0.
+\tag{2.7}
+\]</span> Put <span class="math inline">\(w=M_1(u)^{-1}u\)</span>. At
+<span class="math inline">\(u=0\)</span>, <span
+class="math inline">\(\Delta=0\)</span>, so <span
+class="math inline">\(M_1(0)=I_n\)</span>. The derivative of <span
+class="math inline">\(u\mapsto w\)</span> there is identity. The inverse
+function theorem gives an actual local coordinate map, and (2.2), (2.7)
+give the exact identity <span class="math display">\[
+f(u)=c+w^{\mathsf t}(H_0/2)w.
+\tag{2.8}
+\]</span></p>
+<p>To identify the index while keeping all eigenvalues, take an
+orthogonal eigenvector matrix <span class="math inline">\(Q\)</span> of
+the original <span class="math inline">\(H_0\)</span>, with <span
+class="math display">\[
+Q^{\mathsf t}H_0Q=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
+\tag{2.9}
+\]</span> Every <span class="math inline">\(\lambda_i\)</span> is the
+original nonzero eigenvalue, including its size and sign. Retain the
+chosen <span class="math inline">\(Q\)</span> and its determinant. Set
+<span class="math inline">\(\xi=Q^{\mathsf t}w\)</span>. Then <span
+class="math display">\[
+f=c+\frac12\sum_{i=1}^n\lambda_i\xi_i^2.
+\tag{2.10}
+\]</span> This is an exact coordinate comparison retaining the complete
+original coefficients. The eigenvalues have not been replaced by
+signs.</p>
+<p>The full derivative of that comparison is <span
+class="math display">\[
+D\xi|_u[v]
+=Q^{\mathsf t}M_1(u)^{-1}v
+-Q^{\mathsf t}M_1(u)^{-1}
+(DM_1|_u[v])M_1(u)^{-1}u.
+\tag{2.11}
+\]</span> Its second term is part of the map away from the critical
+point. For the inverse <span class="math inline">\(u=u(\xi)\)</span>,
+the original metric in these coordinates remains <span
+class="math display">\[
+G_\xi=(Du|_\xi)^{\mathsf t}G_u(u(\xi))(Du|_\xi).
+\tag{2.12}
+\]</span> No identity metric is substituted for (2.12). At the critical
+point the covariant Hessian agrees with (2.1), since all Christoffel
+contributions multiply <span class="math inline">\(df(p)=0\)</span>.</p>
+<p>Order the eigenvalues so the first <span
+class="math inline">\(k\)</span> are negative. Write their retained
+coefficients as <span class="math display">\[
+a_i=-\lambda_i/2&gt;0,\quad 1\leq i\leq k,\qquad
+b_j=\lambda_{k+j}/2&gt;0,\quad1\leq j\leq n-k.
+\tag{2.13}
+\]</span> With <span class="math inline">\(\xi=(x,y)\)</span>, define
+the full sums <span class="math display">\[
+A(x)=\sum_{i=1}^k a_ix_i^2,\qquad
+B(y)=\sum_{j=1}^{n-k}b_jy_j^2,\qquad
+f=c-A(x)+B(y).
+\tag{2.14}
+\]</span> These formulas retain every eigenvalue contribution, including
+the empty sums when <span class="math inline">\(k=0\)</span> or <span
+class="math inline">\(k=n\)</span>.</p>
+<h2 id="relative-morse-levels">3. Exact level maps and regular-band
+products</h2>
+<h3 id="a-local-increasing-field-with-its-metric-comparison">3.1. A
+local increasing field with its metric comparison</h3>
+<p>In the coordinates just constructed, define the auxiliary field <span
+class="math display">\[
+V=(-x_1,\ldots,-x_k,y_1,\ldots,y_{n-k}).
+\tag{3.1}
+\]</span> Its flow, full derivative and function derivative are <span
+class="math display">\[
+\Phi_t(x,y)=(e^{-t}x,e^t y),\quad
+D\Phi_t=\operatorname{diag}(e^{-t}I_k,e^tI_{n-k}),\quad
+df(V)=2A(x)+2B(y)&gt;0
+\tag{3.2}
+\]</span> away from the critical point. The determinant is <span
+class="math inline">\(e^{(n-2k)t}\)</span>; every coefficient of <span
+class="math inline">\(f\)</span> remains in <span
+class="math inline">\(A,B\)</span>.</p>
+<p>This field is not identified with the gradient for the original
+metric. That gradient is exactly <span class="math display">\[
+\nabla_{G_\xi}f
+=G_\xi^{-1}(-2a_1x_1,\ldots,-2a_kx_k,
+           2b_1y_1,\ldots,2b_{n-k}y_{n-k})^{\mathsf t}.
+\tag{3.3}
+\]</span> The comparison is <span class="math display">\[
+df((1-s)V+s\nabla_{G_\xi}f)
+=(1-s)(2A+2B)+s\,df\,G_\xi^{-1}(df)^{\mathsf t}&gt;0
+\tag{3.4}
+\]</span> for <span class="math inline">\(0\leq s\leq1\)</span>, away
+from the critical point. Thus (3.1) supplies an increasing local field,
+with its exact relation to the original gradient and metric.</p>
+<h3 id="hitting-a-specified-lower-or-upper-level">3.2. Hitting a
+specified lower or upper level</h3>
+<p>Retain <span class="math inline">\(\delta&gt;0\)</span>. A trajectory
+hits <span class="math inline">\(f=c-\delta\)</span> when <span
+class="math display">\[
+-Ae^{-2t}+Be^{2t}=-\delta.
+\tag{3.5}
+\]</span> If <span class="math inline">\(A&gt;0\)</span>, its unique
+positive exponential coordinate and time are <span
+class="math display">\[
+s_-=e^{2\tau_-}
+=\frac{2A}{\delta+\sqrt{\delta^2+4AB}},
+\qquad
+\tau_-=\frac12\log s_-.
+\tag{3.6}
+\]</span> The time itself can have either sign; the exponential
+coordinate is positive. This expression remains valid at <span
+class="math inline">\(B=0\)</span>, where <span
+class="math inline">\(s_-=A/\delta\)</span>. It follows by solving <span
+class="math inline">\(Bs^2+\delta s-A=0\)</span> and retaining the
+displayed rationalized expression rather than dividing by <span
+class="math inline">\(B\)</span> at its zero.</p>
+<p>If <span class="math inline">\(A=0\)</span> and <span
+class="math inline">\(B&gt;0\)</span>, the trajectory has <span
+class="math inline">\(f&gt;c\)</span> at all finite times and never
+reaches the lower level. If <span class="math inline">\(A=B=0\)</span>,
+it is the stationary critical point and reaches neither level.</p>
+<p>Similarly the upper level <span
+class="math inline">\(f=c+\delta\)</span>, for <span
+class="math inline">\(B&gt;0\)</span>, is reached at <span
+class="math display">\[
+s_+=e^{2\tau_+}
+=\frac{\delta+\sqrt{\delta^2+4AB}}{2B},
+\qquad
+\tau_+=\frac12\log s_+.
+\tag{3.7}
+\]</span> This remains valid at <span
+class="math inline">\(A=0\)</span>, where <span
+class="math inline">\(s_+=\delta/B\)</span>. If <span
+class="math inline">\(B=0\)</span> and <span
+class="math inline">\(A&gt;0\)</span>, the trajectory stays below <span
+class="math inline">\(c\)</span> and never reaches the upper level.
+These exceptional stable and unstable sets are retained.</p>
+<p>The coordinate flow is used only while it remains in the original
+chart. On that domain the complete hitting maps are <span
+class="math display">\[
+P_\pm(x,y)=(e^{-\tau_\pm(x,y)}x,e^{\tau_\pm(x,y)}y).
+\tag{3.8}
+\]</span> Differentiating the respective level equation gives, with
+<span class="math display">\[
+\mathcal D=Ae^{-2\tau_\pm}+Be^{2\tau_\pm}
+=\sqrt{\delta^2+4AB}&gt;0,
+\]</span> the full time differential <span class="math display">\[
+d\tau_\pm=
+\frac{e^{-2\tau_\pm}dA-e^{2\tau_\pm}dB}{2\mathcal D},
+\quad
+dA[v]=2\sum_i a_ix_iv_i,\quad
+dB[w]=2\sum_j b_jy_jw_j.
+\tag{3.9}
+\]</span> Thus <span class="math display">\[
+DP_\pm[v,w]
+=\bigl(e^{-\tau_\pm}(v-x\,d\tau_\pm[v,w]),
+       e^{\tau_\pm}(w+y\,d\tau_\pm[v,w])\bigr).
+\tag{3.10}
+\]</span> The time derivative terms remain. Substitution into <span
+class="math inline">\(df\)</span> at the image gives zero, as it must
+for a map into the specified level: the numerator in (3.9) cancels
+exactly the <span class="math inline">\(2\mathcal D\,d\tau_\pm\)</span>
+term. These formulas include every coefficient, and describe their exact
+domains at <span class="math inline">\(A=0\)</span> and <span
+class="math inline">\(B=0\)</span>.</p>
+<h3 id="the-complete-product-between-two-regular-levels">3.3. The
+complete product between two regular levels</h3>
+<p>Choose disjoint small critical charts, and use their fields (3.1) on
+smaller neighbourhoods. Off the critical points, the original gradient
+has positive function derivative. Near the boundary use <span
+class="math inline">\(+\partial_{r_-}\)</span> and <span
+class="math inline">\(-\partial_{r_+}\)</span>, respectively, whose
+function derivatives equal one by (1.4), (1.9). A partition of unity
+joins these fields into a smooth field <span
+class="math inline">\(X\)</span> on the actual cobordism, equal to the
+specified fields on smaller critical charts and on the prescribed
+boundary collars. Each weighted contribution has positive <span
+class="math inline">\(df\)</span>-value away from a critical point.
+Therefore <span class="math display">\[
+df(X)&gt;0\quad\text{off the critical points}.
+\tag{3.11}
+\]</span> It has no extra zero. Its metric and original-coordinate
+description is obtained by (2.11)–(2.12) in each chart and by the
+retained collars at the boundary.</p>
+<p>Let <span class="math inline">\([a,b]\subset[c_-,c_+]\)</span>
+contain no critical value. On its compact inverse image the field <span
+class="math display">\[
+Y=\frac{X}{df(X)}
+\tag{3.12}
+\]</span> is smooth and has <span
+class="math inline">\(df(Y)=1\)</span>. The positive denominator has a
+minimum on that compact band. The flow therefore exists for the whole
+time needed to cross the band: while inside it the field is bounded in
+finitely many charts, and its level coordinate changes exactly at unit
+speed. Its only exit in the forward direction is at <span
+class="math inline">\(f=b\)</span>, and in the backward direction at
+<span class="math inline">\(f=a\)</span>.</p>
+<p>The exact product map and inverse are <span class="math display">\[
+\begin{aligned}
+f^{-1}(a)\times[a,b]&amp;\longrightarrow f^{-1}([a,b]),
+&amp;(p,s)&amp;\longmapsto\operatorname{Fl}^{Y}_{s-a}(p),\\
+m&amp;\longmapsto
+\bigl(\operatorname{Fl}^{Y}_{a-f(m)}(m),f(m)\bigr).
+\end{aligned}
+\tag{3.13}
+\]</span> The flow uniqueness and composition rule prove both inverse
+identities. Smooth dependence on time and initial data proves
+smoothness. This supplies the actual products between the critical
+levels of (1.9), retaining their endpoint identifications. The next
+section constructs the exact framed handle across each critical
+level.</p>
+<h2 id="relative-morse-attachment">4. The actual framed handle at one
+critical level</h2>
+<h3 id="its-domain-embedding-and-complete-attaching-tube">4.1. Its
+domain, embedding and complete attaching tube</h3>
+<p>Let <span class="math inline">\(p\)</span> be one of the critical
+points of (1.9), with index <span class="math inline">\(k\)</span>,
+value <span class="math inline">\(c\)</span>, and the actual coordinates
+(2.14). Put <span class="math inline">\(q=n-k\)</span>. Denote the
+inverse of those coordinates, into the original cobordism, by <span
+class="math inline">\(\Theta\)</span>. Choose positive numbers <span
+class="math inline">\(\delta,\beta\)</span> so small that <span
+class="math display">\[
+a=c-\delta,\qquad b=c+2\beta
+\tag{4.1}
+\]</span> are regular values, the interval <span
+class="math inline">\([a,b]\)</span> contains only this critical value,
+and the compact set <span class="math display">\[
+H_{\mathrm{coord}}
+=\{(x,y):B(y)\leq\beta,\ A(x)\leq\delta+B(y)\}
+\tag{4.2}
+\]</span> and a neighbourhood of it lie in a coordinate neighbourhood
+where <span class="math inline">\(X=V\)</span>. Such a choice exists:
+there are finitely many distinct critical values; moreover (4.2)
+satisfies <span class="math inline">\(A\leq\delta+\beta\)</span>, <span
+class="math inline">\(B\leq\beta\)</span>, so it shrinks into any given
+neighbourhood of the origin as both numbers tend to zero. No original
+coefficient in <span class="math inline">\(A,B\)</span> is changed.
+Write <span class="math inline">\(H=\Theta(H_{\mathrm{coord}})\)</span>
+and <span class="math inline">\(C_t=f^{-1}([c_-,t])\)</span>.</p>
+<p>Retain arbitrary positive handle radii <span
+class="math inline">\(r,s\)</span>, and let <span
+class="math inline">\(D_r^k,D_s^q\)</span> be the closed Euclidean disks
+with those radii. Their coordinates will be <span
+class="math inline">\(u,v\)</span>. The exact coordinate embedding is
+<span class="math display">\[
+\begin{aligned}
+B_v&amp;=\frac{\beta}{s^2}\sum_{j=1}^q v_j^2,\\
+E_i^x(u,v)&amp;=\frac{u_i}{r}
+       \sqrt{\frac{\delta+B_v}{a_i}},\qquad 1\leq i\leq k,\\
+E_j^y(u,v)&amp;=\frac{v_j}{s}
+       \sqrt{\frac{\beta}{b_j}},\qquad 1\leq j\leq q.
+\end{aligned}
+\tag{4.3}
+\]</span> Its map into the original cobordism is <span
+class="math inline">\(\mathcal E=\Theta\circ E\)</span>. Direct
+substitution gives <span class="math display">\[
+B(E^y)=B_v,\qquad
+A(E^x)=\frac{\|u\|^2}{r^2}(\delta+B_v),\qquad
+f(\mathcal E(u,v))
+=c-\frac{\|u\|^2}{r^2}(\delta+B_v)+B_v.
+\tag{4.4}
+\]</span> Thus the image is exactly (4.2). The full inverse is <span
+class="math display">\[
+u_i=r\sqrt{\frac{a_i}{\delta+B(y)}}\,x_i,
+\qquad
+v_j=s\sqrt{\frac{b_j}{\beta}}\,y_j.
+\tag{4.5}
+\]</span> All denominators are positive. These formulas and their smooth
+extensions to neighbourhoods of the closed disks prove that this is a
+diffeomorphism of manifolds with corners onto <span
+class="math inline">\(H\)</span>.</p>
+<p>In particular, the negative and positive faces are <span
+class="math display">\[
+\begin{aligned}
+H^-&amp;=\mathcal E(S_r^{k-1}\times D_s^q)
+     =\{A=\delta+B,\ B\leq\beta\}\subset M_a=f^{-1}(a),\\
+H^+&amp;=\mathcal E(D_r^k\times S_s^{q-1})
+     =\{B=\beta,\ A\leq\delta+\beta\}.
+\end{aligned}
+\tag{4.6}
+\]</span> The attaching map is the complete embedding <span
+class="math inline">\(\varphi=\mathcal E|_{S_r^{k-1}\times
+D_s^q}\)</span>, not only its core sphere. Formula (4.4) proves <span
+class="math display">\[
+H\cap C_a=H^-,\qquad f&gt;a\ \text{on }H\setminus H^-.
+\tag{4.7}
+\]</span> This equality is an equality of subsets of the original
+cobordism. Hence <span class="math inline">\(C_a\cup H\)</span> is the
+actual handle attachment along <span
+class="math inline">\(\varphi\)</span>.</p>
+<p>For completeness, retain the entire derivative of this embedding. For
+variations <span class="math inline">\(\dot u,\dot v\)</span>, set <span
+class="math display">\[
+\dot B_v=\frac{2\beta}{s^2}\sum_jv_j\dot v_j.
+\]</span> Then <span class="math display">\[
+\begin{aligned}
+DE_i^x[\dot u,\dot v]
+&amp;=\frac1r\sqrt{\frac{\delta+B_v}{a_i}}\,\dot u_i
+  +\frac{E_i^x}{2(\delta+B_v)}\,\dot B_v,\\
+DE_j^y[\dot u,\dot v]
+&amp;=\frac1s\sqrt{\frac{\beta}{b_j}}\,\dot v_j,\\
+D\mathcal E&amp;=D\Theta|_{E(u,v)}\,DE.
+\end{aligned}
+\tag{4.8}
+\]</span> The second term in the first line remains throughout the thick
+attaching tube. On its core <span class="math inline">\(v=0\)</span> it
+vanishes because <span class="math inline">\(dB_v=0\)</span>, and the
+normal framing of the core in <span class="math inline">\(M_a\)</span>
+is the ordered collection <span class="math display">\[
+N_j(u)=D\Theta|_{E(u,0)}
+       \left(0,\frac1s\sqrt{\frac{\beta}{b_j}}\,e_j\right),
+\qquad 1\leq j\leq q.
+\tag{4.9}
+\]</span> These vectors lie in <span
+class="math inline">\(TM_a\)</span>: the <span
+class="math inline">\(y\)</span>-derivative of <span
+class="math inline">\(f\)</span> vanishes at <span
+class="math inline">\(y=0\)</span>. Together with the tangent vectors
+obtained from <span class="math inline">\(T_uS_r^{k-1}\)</span>, they
+are independent by the invertibility of <span
+class="math inline">\(DE\)</span> and <span
+class="math inline">\(D\Theta\)</span>. They therefore give the actual
+normal framing, with the indicated ordering and scale. Their full Gram
+matrix is <span class="math display">\[
+\left(N_i(u)^{\mathsf t}G_{\mathrm{original}}(\mathcal E(u,0))
+                     N_j(u)\right)_{i,j=1}^q.
+\tag{4.10}
+\]</span> No orthonormal framing or replacement metric is inserted.</p>
+<p>As a further direct verification of the full tube, differentiating
+(4.4) gives <span class="math display">\[
+d(f\mathcal E)=
+-\frac{\delta+B_v}{r^2}\,d\|u\|^2
++\left(1-\frac{\|u\|^2}{r^2}\right)dB_v.
+\tag{4.11}
+\]</span> Both terms vanish on tangent vectors of <span
+class="math inline">\(S_r^{k-1}\times D_s^q\)</span>. Dropping the <span
+class="math inline">\(x\)</span>-term involving <span
+class="math inline">\(dB_v\)</span> in (4.8) would destroy this identity
+away from the core.</p>
+<h3 id="the-specified-smooth-attachment-corner">4.2. The specified
+smooth attachment corner</h3>
+<p>Assume for this paragraph that <span
+class="math inline">\(0&lt;k&lt;n\)</span>. The two faces meet at <span
+class="math inline">\(A=\delta+\beta,\ B=\beta\)</span>. In a
+neighbourhood of their intersection introduce the exact radial
+coordinates <span class="math display">\[
+U=f-a=\delta-A+B,\qquad V=B-\beta.
+\tag{4.12}
+\]</span> Both radial differentials are independent there: <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span> are nonzero, <span
+class="math inline">\(dA\)</span> involves only <span
+class="math inline">\(x\)</span>, and <span
+class="math inline">\(dB\)</span> only <span
+class="math inline">\(y\)</span>. Coordinates on the two corresponding
+ellipsoidal spheres supply the remaining coordinates. The inverse radial
+formulas are <span class="math display">\[
+A=\delta+\beta+V-U,\qquad B=\beta+V.
+\tag{4.13}
+\]</span> The raw attachment occupies <span class="math display">\[
+\{U\leq0\}\ \cup\ \{V\leq0\}
+\tag{4.14}
+\]</span> in this neighbourhood. Indeed <span
+class="math inline">\(U\leq0\)</span> is <span
+class="math inline">\(C_a\)</span>, whereas for <span
+class="math inline">\(U\geq0\)</span>, <span
+class="math inline">\(V\leq0\)</span> is precisely its added handle
+portion.</p>
+<p>Here is a specific smoothing, including its scale. The step function
+may be taken to be <span class="math display">\[
+\chi(t)=\frac{e^{-1/t}}{e^{-1/t}+e^{-1/(1-t)}}\quad(0&lt;t&lt;1),
+\tag{4.15}
+\]</span> with values zero and one outside this interval. This is the
+symmetric smooth step already permitted in (1.3); it satisfies <span
+class="math inline">\(\chi(t)+\chi(1-t)=1\)</span>. Set <span
+class="math display">\[
+\kappa(t)=\chi(3t-1),\qquad
+\kappa(t)+\kappa(1-t)=1\quad(0\leq t\leq1).
+\tag{4.16}
+\]</span> For a sufficiently small retained <span
+class="math inline">\(L&gt;0\)</span>, replace the corner by the curve
+<span class="math display">\[
+U(t)=L\int_0^t\kappa(z)\,dz,\qquad
+V(t)=L\int_t^1\kappa(1-z)\,dz,\qquad 0\leq t\leq1.
+\tag{4.17}
+\]</span> It runs from <span class="math inline">\((0,L/2)\)</span> to
+<span class="math inline">\((L/2,0)\)</span>. Near its first endpoint it
+is exactly a segment of the <span class="math inline">\(V\)</span>-axis,
+and near its second it is exactly a segment of the <span
+class="math inline">\(U\)</span>-axis. Thus it joins the original two
+boundary pieces with every derivative. Its tangent is <span
+class="math display">\[
+(U&#39;,V&#39;)=L(\kappa(t),-\kappa(1-t)),
+\tag{4.18}
+\]</span> which never vanishes. Add to (4.14) the bounded region in the
+nonnegative quadrant enclosed by this curve and the axes. This is an
+outward rounding of the attachment, not a deletion of points of <span
+class="math inline">\(C_a\)</span> or <span
+class="math inline">\(H\)</span>. Choose <span
+class="math inline">\(L&lt;\delta\)</span>, and further decrease it so
+the entire rounding lies inside the retained coordinate neighbourhood.
+Equations (4.13) remain positive there.</p>
+<p>The field <span
+class="math inline">\(X=V_{\mathrm{field}}=(-x,y)\)</span>, where the
+subscript distinguishes the vector field from the scalar coordinate
+<span class="math inline">\(V\)</span>, satisfies <span
+class="math display">\[
+XU=2(A+B)&gt;0,\qquad XV=2B&gt;0.
+\tag{4.19}
+\]</span> An outward conormal along (4.17) is <span
+class="math display">\[
+\kappa(1-t)\,dU+\kappa(t)\,dV.
+\tag{4.20}
+\]</span> Its value on <span class="math inline">\(X\)</span> is
+strictly positive, because both coefficients are nonnegative and their
+sum is one. On the old boundary portion <span
+class="math inline">\(f=a\)</span>, the outward conormal is <span
+class="math inline">\(df\)</span>, whose value on <span
+class="math inline">\(X\)</span> is positive; on the unchanged handle
+face <span class="math inline">\(B=\beta\)</span>, it is <span
+class="math inline">\(dB\)</span>, whose value is <span
+class="math inline">\(2\beta&gt;0\)</span>. Consequently <span
+class="math inline">\(X\)</span> is transverse outwards along the entire
+new outgoing boundary.</p>
+<p>Let <span class="math inline">\(K\)</span> denote this particular
+smoothed attachment, and let <span class="math inline">\(S\)</span> be
+its outgoing boundary. Its incoming boundary and a whole collar of it
+agree with those of <span class="math inline">\(C\)</span>. The only
+critical point in <span class="math inline">\(f^{-1}([a,b])\)</span> is
+in the interior of <span class="math inline">\(H\)</span>, hence in the
+interior of <span class="math inline">\(K\)</span>. Moreover <span
+class="math display">\[
+a\leq f|_S\leq c+\beta&lt;b.
+\tag{4.21}
+\]</span> For the rounded part, <span class="math inline">\(f=a+U\leq
+a+L/2&lt;c\)</span>; for the original positive face, <span
+class="math inline">\(f=c-A+\beta\leq c+\beta\)</span>; the remaining
+part has <span class="math inline">\(f=a\)</span>. This proves (4.21) on
+all pieces, including their joins.</p>
+<p>The construction defines a specific smooth structure on the attached
+handle and its seam through its embedding in <span
+class="math inline">\(C\)</span>. It does not appeal to an unspecified
+smoothing theorem. The original <span class="math inline">\(\mathcal
+E\)</span>, all of <span class="math inline">\(H\)</span>, and the old
+<span class="math inline">\(C_a\)</span> are retained as subsets. Their
+common face becomes interior except at its boundary, which lies inside
+the rounded region. The original metric on <span
+class="math inline">\(K\)</span> is its restricted metric from <span
+class="math inline">\(C\)</span>.</p>
+<h3 id="absorbing-the-regular-outer-region-by-an-exact-collar-map">4.3.
+Absorbing the regular outer region by an exact collar map</h3>
+<p>Define <span class="math display">\[
+E_{\mathrm{out}}=\overline{C_b\setminus K}.
+\tag{4.22}
+\]</span> Its two boundary faces are <span
+class="math inline">\(S\)</span> and <span
+class="math inline">\(M_b=f^{-1}(b)\)</span>. There are no critical
+points on this compact region. In particular, the field <span
+class="math inline">\(Y=X/df(X)\)</span> from (3.12) is smooth on a
+neighbourhood of it and satisfies <span
+class="math inline">\(df(Y)=1\)</span>.</p>
+<p>Every forward trajectory from <span class="math inline">\(q\in
+S\)</span> stays outside the interior of <span
+class="math inline">\(K\)</span> until it reaches <span
+class="math inline">\(M_b\)</span>. It cannot cross back into <span
+class="math inline">\(K\)</span>: every possible first return through
+<span class="math inline">\(S\)</span> would point inward, contrary to
+the strict outward transversality already proved. Compactness and the
+equation <span class="math inline">\(df(Y)=1\)</span> ensure existence
+up to the upper level. Its exact travel time is <span
+class="math display">\[
+T(q)=b-f(q)&gt;0.
+\tag{4.23}
+\]</span> Conversely, every backward trajectory from a point of <span
+class="math inline">\(E_{\mathrm{out}}\)</span> reaches <span
+class="math inline">\(S\)</span>. If it did not, it would continue in
+the compact critical-point-free region until its value decreased below
+<span class="math inline">\(a\)</span>, which is impossible because
+<span class="math inline">\(C_a\subset K\)</span>. Before any such exit
+it therefore meets the boundary <span class="math inline">\(S\)</span>;
+strict transversality and uniqueness give a single first intersection
+and prevent a second. These arguments prove that <span
+class="math display">\[
+e(q,t)=\operatorname{Fl}^Y_t(q),
+\qquad q\in S,\quad 0\leq t\leq T(q),
+\tag{4.24}
+\]</span> is a bijection onto <span
+class="math inline">\(E_{\mathrm{out}}\)</span>. Its derivative is
+invertible: <span class="math inline">\(Y\)</span> is transverse to
+<span class="math inline">\(S\)</span>, and the flow carries this
+transverse splitting to each later time. Equivalently the inverse
+hitting time is smooth by the implicit function theorem in the
+transverse boundary coordinate. Thus (4.24) is a diffeomorphism of the
+displayed variable-length collar with <span
+class="math inline">\(E_{\mathrm{out}}\)</span>.</p>
+<p>Since <span class="math inline">\(S\)</span> is compact and disjoint
+from every critical point and the incoming boundary, this collar extends
+for a uniform negative time <span class="math inline">\(-\ell\)</span>.
+Decrease <span class="math inline">\(\ell&gt;0\)</span> until <span
+class="math display">\[
+e:S\times[-\ell,0]\longrightarrow K
+\tag{4.25}
+\]</span> is an embedding, stays away from the incoming boundary, and
+stays in the regular part. For clarity about the embedding assertion,
+each point has a flow coordinate neighbourhood by transversality; a
+finite cover gives a uniform local width. Failure of global injectivity
+at every smaller width would supply two sequences of distinct flow
+coordinates with times tending to zero and the same image. Compactness
+gives a common limit on <span class="math inline">\(S\)</span>, since
+both images converge to their starting points; this contradicts the
+local injectivity there. This proves (4.25) after decreasing the width
+once.</p>
+<p>Choose a smooth nondecreasing <span
+class="math inline">\(\eta:[-\ell,0]\to[0,1]\)</span>, zero near <span
+class="math inline">\(-\ell\)</span> and one near <span
+class="math inline">\(0\)</span>. For example use <span
+class="math inline">\(\chi((t+3\ell/4)/(\ell/2))\)</span>. For each
+<span class="math inline">\(q\)</span>, define <span
+class="math display">\[
+h_q(t)=t+T(q)\eta(t),\qquad -\ell\leq t\leq0.
+\tag{4.26}
+\]</span> Then <span class="math display">\[
+h_q(-\ell)=-\ell,\quad h_q(0)=T(q),\qquad
+\partial_t h_q=1+T(q)\eta&#39;(t)&gt;0.
+\tag{4.27}
+\]</span> It maps its interval diffeomorphically onto <span
+class="math inline">\([-\ell,T(q)]\)</span>. Define <span
+class="math display">\[
+F:K\longrightarrow C_b,\qquad
+F(e(q,t))=e(q,h_q(t))
+\tag{4.28}
+\]</span> on the inner collar, and take <span
+class="math inline">\(F\)</span> to be the identity elsewhere in <span
+class="math inline">\(K\)</span>. It is identity on an open overlap near
+<span class="math inline">\(t=-\ell\)</span>, so the two definitions
+agree smoothly with every derivative. Equations (4.24), (4.27) prove
+bijectivity and give its inverse by the smooth inverse of <span
+class="math inline">\(h_q\)</span>.</p>
+<p>The full derivative in these collar coordinates is <span
+class="math display">\[
+DF_{(q,t)}[\dot q,\dot t]
+=\left(\dot q,\,
+(1+T(q)\eta&#39;(t))\dot t+\eta(t)\,dT|_q[\dot q]\right),
+\qquad dT=-d(f|_S).
+\tag{4.29}
+\]</span> Its determinant in this splitting is <span
+class="math inline">\(1+T\eta&#39;&gt;0\)</span>; the tangential
+travel-time term is retained. In original coordinates the derivative is
+<span class="math display">\[
+De|_{(q,h_q(t))}
+\begin{pmatrix}I&amp;0\\ \eta(t)dT&amp;1+T\eta&#39;\end{pmatrix}
+(De|_{(q,t)})^{-1}.
+\tag{4.30}
+\]</span> Consequently every tangent vector, frame and original metric
+has its exact change of coordinates: for example the pullback metric is
+<span class="math inline">\((DF)^{\mathsf
+t}G_{\mathrm{original}}(F(\cdot))DF\)</span>, with the full matrix
+(4.30).</p>
+<p>The map fixes a whole incoming collar and all sufficiently early
+sublevels. More explicitly, the affected collar has <span
+class="math inline">\(f(e(q,t))=f(q)+t\geq a-\ell\)</span>; taking a
+slightly earlier regular value gives a sublevel that is fixed pointwise.
+It generally does not fix the whole of <span
+class="math inline">\(C_a\)</span>, since its old outgoing boundary
+outside the attaching tube must move to <span
+class="math inline">\(M_b\)</span>. On the new outgoing boundary it is
+the exact map <span class="math display">\[
+F|_S(q)=\operatorname{Fl}^Y_{b-f(q)}(q).
+\tag{4.31}
+\]</span> Near <span class="math inline">\(t=0\)</span>, <span
+class="math inline">\(\eta=1\)</span>, and <span class="math display">\[
+f(F(e(q,t)))=f(q)+t+b-f(q)=b+t.
+\tag{4.32}
+\]</span> Thus the diffeomorphism also gives the precise outgoing
+product collar. This proves that the original sublevel <span
+class="math inline">\(C_b\)</span> is diffeomorphic, relative to its
+incoming collar, to the specified framed <span
+class="math inline">\(k\)</span>-handle attached to <span
+class="math inline">\(C_a\)</span>, with the corner smoothing
+(4.17).</p>
+<h3 id="the-extreme-indices-and-the-whole-original-decomposition">4.4.
+The extreme indices and the whole original decomposition</h3>
+<p>At index <span class="math inline">\(k=0\)</span>, the <span
+class="math inline">\(x,u\)</span> blocks are empty and <span
+class="math inline">\(A=0\)</span>. Formula (4.3) is the full <span
+class="math inline">\(0\)</span>-handle parametrization <span
+class="math display">\[
+D_r^0\times D_s^n\longrightarrow\{B\leq\beta\}.
+\tag{4.33}
+\]</span> Its negative face is empty and the handle is a new component
+above <span class="math inline">\(a=c-\delta\)</span>. Its positive face
+<span class="math inline">\(B=\beta\)</span> is transverse outwards with
+<span class="math inline">\(df(X)=2\beta\)</span>. There is no
+attachment corner. Take <span class="math inline">\(K=C_a\sqcup
+H\)</span>; the outer-collar proof (4.22)–(4.32) applies to every
+component of its outgoing boundary. The number <span
+class="math inline">\(r&gt;0\)</span> is retained as part of the chosen
+zero-dimensional disk notation, without introducing an extra
+coordinate.</p>
+<p>At index <span class="math inline">\(k=n\)</span>, the <span
+class="math inline">\(y,v\)</span> blocks are empty and <span
+class="math inline">\(B=0\)</span>. Formula (4.3) is <span
+class="math display">\[
+D_r^n\times D_s^0\longrightarrow
+\{A\leq\delta\},\qquad
+x_i=\frac{u_i}{r}\sqrt{\frac{\delta}{a_i}}.
+\tag{4.34}
+\]</span> Its entire boundary <span
+class="math inline">\(A=\delta\)</span> is the negative face; its
+positive face is empty. The old and added regions occupy respectively
+<span class="math inline">\(A\geq\delta\)</span> and <span
+class="math inline">\(A\leq\delta\)</span> near that sphere, so their
+union is smooth without a corner there. This fills the relevant outgoing
+boundary component. The remaining outgoing components, if any, have
+exactly the outer collar already proved. If there is no outgoing
+component, there is no outer region to absorb. Indeed a nonempty such
+region would contain a backward unit-speed flow trajectory forced to hit
+an outgoing boundary of <span class="math inline">\(K\)</span>, a
+contradiction. The original radius <span
+class="math inline">\(s\)</span> and all empty sums remain as in
+(4.34).</p>
+<p>Finally order the finitely many critical values of (1.9): <span
+class="math display">\[
+c_-&lt;c_1&lt;\cdots&lt;c_N&lt;c_+.
+\tag{4.35}
+\]</span> Choose the intervals <span
+class="math inline">\([a_i,b_i]\)</span> of (4.1) disjoint and in that
+order, keeping all chosen <span
+class="math inline">\(\delta_i,\beta_i,r_i,s_i\)</span>. The first
+interval <span class="math inline">\([c_-,a_1]\)</span>, the intervening
+<span class="math inline">\([b_i,a_{i+1}]\)</span>, and the last <span
+class="math inline">\([b_N,c_+]\)</span> have the actual product maps
+(3.13). Across each critical interval use the just-proved attachment and
+map (4.28). This is a finite construction, so it yields the entire
+original cobordism.</p>
+<p>Here is the precise induction on its identifications. Suppose an
+already constructed handle body <span class="math inline">\(P_i\)</span>
+has a diffeomorphism <span class="math inline">\(G_i:P_i\to
+C_{a_i}\)</span>, carrying its outgoing boundary to <span
+class="math inline">\(M_{a_i}\)</span> and agreeing with the retained
+incoming identification. Pull the full attaching tube back by <span
+class="math display">\[
+\widetilde\varphi_i=G_i^{-1}\circ\varphi_i
+:S_{r_i}^{k_i-1}\times D_{s_i}^{n-k_i}\longrightarrow\partial_+P_i.
+\tag{4.36}
+\]</span> Attach the original parameter disk product along this map. The
+transverse smooth seam is specified as follows, so equality of boundary
+maps is not being used as a substitute for equality of collar maps. For
+<span class="math inline">\(u_0\in S_{r_i}^{k_i-1}\)</span>, extend
+(4.3) to <span class="math display">\[
+(u_0,v,\sigma)\longmapsto
+\mathcal E_i((1+\sigma/r_i)u_0,v)
+\tag{4.37}
+\]</span> for small positive and negative <span
+class="math inline">\(\sigma\)</span>. For <span
+class="math inline">\(\sigma&gt;0\)</span> the image is in the old
+sublevel, and for <span class="math inline">\(\sigma&lt;0\)</span> in
+the new handle. Its transverse function derivative is <span
+class="math display">\[
+\frac{\partial f}{\partial\sigma}
+=-\frac{2}{r_i}(1+\sigma/r_i)(\delta_i+B_v)&lt;0.
+\tag{4.38}
+\]</span> Thus (4.37) is a genuine collar through the face, with every
+derivative prescribed. On the old side use its pullback by <span
+class="math inline">\(G_i^{-1}\)</span> as the gluing collar. In this
+collar chart the combined old and new map is exactly (4.37) on both
+sides, hence is smooth with smooth inverse at the seam. At the edge of
+the face use the radial corner coordinates (4.12)–(4.13) and the
+smoothing (4.17), transported through these same maps; this defines a
+compatible smooth extension across that edge as well. At index zero
+there is no seam, and at the top index the face collar (4.37) has no
+edge.</p>
+<p>The map <span class="math inline">\(G_i\)</span> on the old part and
+<span class="math inline">\(\mathcal E_i\)</span> on the handle
+therefore gives the specified smoothed attachment its exact
+diffeomorphism to <span class="math inline">\(K_i\)</span>. Compose it
+with <span class="math inline">\(F_i:K_i\to C_{b_i}\)</span> and then
+with the following regular product. This supplies <span
+class="math inline">\(G_{i+1}\)</span>. Every framing in (4.36) is
+transported by <span class="math inline">\(DG_i^{-1}\)</span>, including
+all scale factors in (4.9), and every thick tube is transported by its
+full map (4.8). The collars in (4.32) specify the smooth seam at the
+next regular product.</p>
+<p>Start this induction with the first regular product from <span
+class="math inline">\(M_-\)</span>. If <span
+class="math inline">\(N=0\)</span>, the single product (3.13) already
+supplies the whole cobordism; otherwise it terminates at the last
+regular product into <span class="math inline">\(M_+\)</span>. The final
+outgoing identification is the restriction of the composition of these
+actual maps. It is retained as part of the construction; it is not
+replaced by an arbitrary identification of the boundary spheres. This
+proves a finite handle decomposition of the original <span
+class="math inline">\(C\)</span>, relative to its prescribed incoming
+collar, with every original critical index, attaching tube and outgoing
+gluing map accounted for. This gives their original order. The <a
+href="rearranging-the-original-framed-handles.html#arrangement-interchange">original
+handle-index arrangement</a> is proved in the receiving companion; it
+does not yet remove a handle.</p>
+<figure>
+<img src="assets/relative-morse-levels.svg" alt="The original Hessian coefficients, metric and exact lower and upper level-hit formulas, beside their specified coordinate slice." />
+</figure>
+<p><em>Figure 1.</em> The left panel is the specified coordinate slice
+<span class="math inline">\(f=c-3x_1^2+5y_1^2\)</span>, with all other
+coordinates zero, <span class="math inline">\(\delta=4/5\)</span>, and
+starting point <span class="math inline">\((1,3/10)\)</span>. The dark
+curve is the exact flow (3.2); its marked intersections use (3.6) and
+(3.7), with their stated domains. The right panel displays the complete
+Hessian comparison (2.2)–(2.12), including the original metric. This is
+a slice of the proved construction, not a picture of all of <span
+class="math inline">\(C\)</span>. Reproducible source: the included
+figure script; no additional result or source reading is asserted by the
+illustration.</p>
+<h2 id="relative-morse-exercises">5. Two worked exercises</h2>
+<h3
+id="exercise-5.1.-a-thick-attaching-tube-is-tangent-only-with-all-its-terms">Exercise
+5.1. A thick attaching tube is tangent only with all its terms</h3>
+<p>Take <span class="math inline">\(n=6\)</span>, <span
+class="math inline">\(k=2\)</span>, and retain <span
+class="math display">\[
+(a_1,a_2)=(2,11),\quad
+(b_1,b_2,b_3,b_4)=(3,13,17,19),\quad
+r=2,\ s=3,\ \delta=5,\ \beta=7.
+\tag{5.1}
+\]</span> At the point <span class="math display">\[
+u=(0,2),\qquad v=(3/5,4/5,0,0)
+\tag{5.2}
+\]</span> of the negative face, compute the original coordinate image,
+its differential in the direction <span class="math inline">\(\dot
+u=0,\dot v=(1,0,0,0)\)</span>, and the resulting differential of <span
+class="math inline">\(f\)</span>. State the complete core framing,
+retaining the two unused positive directions.</p>
+<p><strong>Solution.</strong> Here <span
+class="math inline">\(\|u\|^2=r^2=4\)</span>, <span
+class="math inline">\(\|v\|^2=1&lt;s^2=9\)</span>, and <span
+class="math inline">\(B_v=7/9\)</span>. Equations (4.3)–(4.4) give <span
+class="math display">\[
+\begin{aligned}
+x_1&amp;=0,&amp;x_2&amp;=\sqrt{\frac{52}{99}},\\
+y_1&amp;=\frac15\sqrt{\frac73},&amp;
+y_2&amp;=\frac4{15}\sqrt{\frac7{13}},&amp;
+y_3&amp;=0,&amp;y_4&amp;=0,\\
+A(x)&amp;=\frac{52}{9},&amp;
+B(y)&amp;=\frac79,&amp;
+f&amp;=c-\frac{52}{9}+\frac79=c-5=a.
+\end{aligned}
+\tag{5.3}
+\]</span> In the stated direction, <span class="math display">\[
+\dot B_v=\frac{14}{9}\frac35=\frac{14}{15}.
+\]</span> Consequently the full differential is <span
+class="math display">\[
+\dot x_1=0,\qquad
+\dot x_2=\frac{21}{260}x_2,\qquad
+\dot y_1=\frac13\sqrt{\frac73},\qquad
+\dot y_2=\dot y_3=\dot y_4=0.
+\tag{5.4}
+\]</span> The two contributions to <span
+class="math inline">\(df\)</span> are exactly <span
+class="math display">\[
+-2(11)x_2\dot x_2
+=-22\frac{52}{99}\frac{21}{260}
+=-\frac{14}{15},
+\qquad
+2(3)y_1\dot y_1
+=6\left(\frac15\sqrt{\frac73}\right)
+   \left(\frac13\sqrt{\frac73}\right)
+=\frac{14}{15}.
+\tag{5.5}
+\]</span> Their sum is zero, as required for a vector tangent to <span
+class="math inline">\(M_a\)</span>. If the <span
+class="math inline">\(dB_v\)</span> term in the <span
+class="math inline">\(x\)</span>-coordinate were dropped, the result
+would instead be <span class="math inline">\(14/15\)</span>, so the
+alleged tangent map would not land in <span
+class="math inline">\(TM_a\)</span>.</p>
+<p>At any point of the core <span class="math inline">\(v=0\)</span>,
+retain the actual base point <span class="math display">\[
+E(u,0)=\left(\frac{u_1}{2}\sqrt{\frac52},
+             \frac{u_2}{2}\sqrt{\frac5{11}},0,0,0,0\right)
+\]</span> and the four ordered vectors <span class="math display">\[
+\begin{aligned}
+N_1&amp;=D\Theta|_{E(u,0)}(0,0,\sqrt{7/3}/3,0,0,0),\\
+N_2&amp;=D\Theta|_{E(u,0)}(0,0,0,\sqrt{7/13}/3,0,0),\\
+N_3&amp;=D\Theta|_{E(u,0)}(0,0,0,0,\sqrt{7/17}/3,0),\\
+N_4&amp;=D\Theta|_{E(u,0)}(0,0,0,0,0,\sqrt{7/19}/3).
+\end{aligned}
+\tag{5.6}
+\]</span> They are the complete framing from (4.9). The original metric
+gives their Gram matrix (4.10). The zero coordinates in (5.2) do not
+remove the last two normal directions or their scale factors.</p>
+<h3
+id="exercise-5.2.-variable-collar-length-changes-the-mixed-metric-terms">Exercise
+5.2. Variable collar length changes the mixed metric terms</h3>
+<p>On a one-dimensional coordinate slice of <span
+class="math inline">\(S\)</span>, let its coordinate be <span
+class="math inline">\(z\in(-1,1)\)</span>, with <span
+class="math display">\[
+a=-3,\qquad b=3,\qquad f(q(z))=-2+z/4,\qquad
+T(z)=5-z/4.
+\tag{5.7}
+\]</span> Retain <span class="math inline">\(\ell&gt;0\)</span> and the
+exact step <span
+class="math inline">\(\eta(t)=\chi((t+3\ell/4)/(\ell/2))\)</span> from
+Section 4.3. Compute the full derivative of <span
+class="math inline">\((z,t)\mapsto(z,t+T(z)\eta(t))\)</span>, and its
+pullback of the original metric <span class="math display">\[
+G_{\mathrm{image}}=
+\begin{pmatrix}P&amp;Q\\Q&amp;R\end{pmatrix},
+\quad P&gt;0,\quad PR-Q^2&gt;0,
+\tag{5.8}
+\]</span> evaluated at the actual image point. Explain why the
+tangential derivative must remain even when only a collar is being
+added.</p>
+<p><strong>Solution.</strong> Since <span
+class="math inline">\(T(z)&gt;19/4&gt;0\)</span>, the complete
+derivative and its determinant are <span class="math display">\[
+D F=
+\begin{pmatrix}
+1&amp;0\\-\eta/4&amp;w
+\end{pmatrix},
+\qquad
+w=1+(5-z/4)\eta&#39;(t)&gt;0,\qquad
+\det DF=w.
+\tag{5.9}
+\]</span> Here <span class="math inline">\(19/4\)</span> is the strict
+lower bound because <span class="math inline">\(z&lt;1\)</span>. Matrix
+multiplication, without discarding either mixed term of (5.8), gives
+<span class="math display">\[
+F^*G=
+\begin{pmatrix}
+P-\eta Q/2+\eta^2R/16 &amp; w(Q-\eta R/4)\\
+w(Q-\eta R/4)&amp;w^2R
+\end{pmatrix}.
+\tag{5.10}
+\]</span> Its determinant is exactly <span
+class="math inline">\(w^2(PR-Q^2)&gt;0\)</span>, and its first diagonal
+entry is positive because it is the value of the original positive
+metric on the nonzero vector <span
+class="math inline">\((1,-\eta/4)\)</span>. Thus it is the complete
+positive pullback metric.</p>
+<p>The inverse function theorem gives a smooth inverse because <span
+class="math inline">\(w&gt;0\)</span>; global invertibility on the
+collar follows from strict monotonicity in <span
+class="math inline">\(t\)</span>, the endpoint values <span
+class="math inline">\(-\ell\)</span> and <span
+class="math inline">\(T(z)\)</span>, and the unchanged <span
+class="math inline">\(z\)</span> coordinate. Differentiating this
+inverse in the image <span class="math inline">\(z\)</span>-direction
+gives <span class="math display">\[
+DF^{-1}(1,0)=\left(1,\frac{\eta}{4w}\right).
+\tag{5.11}
+\]</span> In particular the original and image level parameters cannot
+be varied independently while suppressing that second component.</p>
+<p>For an exact interior check, at <span
+class="math inline">\(z=0,t=-\ell/2\)</span> we have <span
+class="math inline">\(\chi(1/2)=1/2\)</span> and <span
+class="math inline">\(\chi&#39;(1/2)=2\)</span>, by differentiating
+(4.15). Therefore <span class="math display">\[
+\eta=\frac12,\quad \eta&#39;=\frac4\ell,\quad
+w=1+\frac{20}{\ell},\quad
+h_0(-\ell/2)=-\ell/2+5/2.
+\tag{5.12}
+\]</span> The off-diagonal entry in (5.10) is <span
+class="math inline">\(w(Q-R/8)\)</span>, and its first diagonal entry is
+<span class="math inline">\(P-Q/4+R/64\)</span>. These contributions
+persist even if the original metric happened to have <span
+class="math inline">\(Q=0\)</span>. The variation of the travel time,
+rather than a change of the original metric, creates these coordinate
+terms.</p>
+<figure>
+<img src="assets/original-handle-attachment.svg" alt="The exact original handle in a coordinate slice, its specified outward corner smoothing and the monotone collar-absorption map." />
+</figure>
+<p><em>Figure 2.</em> The left panel retains <span
+class="math inline">\(A=3x_1^2\)</span>, <span
+class="math inline">\(B=5y_1^2\)</span>, <span
+class="math inline">\(\delta=4/5\)</span>, <span
+class="math inline">\(\beta=5/4\)</span>, with all other coordinates
+zero. The turquoise region is the handle (4.2), and the brown region is
+the original sublevel; their common curved sides are exactly the
+attaching face. Pink curves mark the outward smoothing (4.17), with
+<span class="math inline">\(L=2/5\)</span>. The middle panel shows its
+exact radial coordinates <span
+class="math inline">\(U=f-a,V=B-\beta\)</span>, the two original
+boundary rays, and its outward conormal directions. The last panel is
+the one-variable collar map (4.26) at a fixed boundary point, with <span
+class="math inline">\(\ell=2/5,T(q)=3/5\)</span>; the full
+variable-<span class="math inline">\(q\)</span> derivative is (4.29).
+The plotted integrals are numerical samples of the exact smooth curve;
+the endpoint values and all signs are proved in Section 4.2.</p>
+<h2 id="relative-morse-sources">6. Sources, use and the next receiving
+calculation</h2>
+<p>The objects here are the original punctured manifold and boundary
+inclusions of <a
+href="CG-S6-07.html#smooth-recognition">lesson
+7</a>. Sections 1–4 give the complete relative Morse and
+handle-insertion argument used in that lesson, including the coordinate
+comparison, literal attachment, specified seam, smoothing and boundary
+map. The proof uses the inverse function theorem, smooth dependence and
+uniqueness for ordinary differential equations, and Sard’s theorem in
+the explicit finite-parameter application (1.5)–(1.7). The
+compact-manifold embedding used there is constructed in Section 1. The
+proof does not assume a handle decomposition or its index order.</p>
+<p>For the later cancellation step, the original-author source already
+read is François Laudenbach, <em>A proof of Morse’s theorem about the
+cancellation of critical points</em>, <a
+href="https://arxiv.org/abs/1307.2545v1">arXiv:1307.2545v1</a>, Sections
+1–3, including the relative coordinate claim, Lemmas 1–2 and Corollary
+1. Both retained author TeX files, <em>cancel_hal.tex</em> and
+<em>english3.2.tex</em>, were read in full. Its receiving argument is
+written separately in the <a
+href="morse-cancellation-with-controlled-support.html#morse-product-map">supported
+Morse-cancellation companion</a>. This is a citation for that receiving
+cancellation method; the full formulas and handle-insertion proof of the
+present chapter are given here. No additional human-source reading,
+exhaustive literature coverage, novelty or independent review is
+claimed.</p>
+<p>The <a
+href="rearranging-the-original-framed-handles.html#arrangement-interchange">original
+handle-index arrangement</a> now carries the entire original
+decomposition into index order, preserving its full outgoing
+identification. The <a
+href="framed-handle-slides-and-index-one-removal.html#slide-index-one-cancellation">framed
+slides and index-one removal</a> now remove index one and its reversed
+counterpart after the included zero/top removal. The <a
+href="integral-handle-chains-and-signed-incidences.html#handle-six-seven">integral
+handle-chain companion</a> now proves the original
+filtration-to-homology map, every incidence sign, the full integer basis
+comparisons and the exact contractions in dimensions six and seven. The
+<a
+href="higher-index-framed-slides-and-chain-maps.html#higher-slide-matrices">higher-index
+framed-slide companion</a> now realizes every elementary integral change
+with its full framed cobordism map and proves both neighbouring
+differentials using the singular-prism correction. The <a
+href="whitney-moves-in-the-receiving-dimensions.html#receiving-whitney-flow">receiving-dimension
+Whitney companion</a> proves the full disk, adapted frame and supported
+move for the three required sheet-dimension pairs, with all original
+metric, orientation and framing maps retained. The <a
+href="realizing-framed-handles-and-middle-cancellation.html#middle-six-seven-reduction">actual
+Morse realization and middle-cancellation companion</a> constructs the
+compatible function, proves the exact intersection-to-trajectory
+comparison and every escape and support hypothesis, and completes the
+simply connected smooth cobordism reductions in dimensions six and
+seven. Only after those operations produce the needed original stage can
+the <a
+href="belt-sphere-complements-and-the-whitney-disk.html#whitney-boundary">framed
+Whitney disk</a> and the <a
+href="whitney-move-with-controlled-support.html#move-receiving-attachments">supported
+Whitney move</a> be applied there, followed by supported Morse
+cancellation. The original outgoing identification from (4.35)–(4.38)
+must be transported throughout those operations. The <a
+href="sphere-twists-and-the-original-smooth-six-sphere-comparison.html#twist-original-smooth-map">sphere-twist
+and smooth-recognition proof</a> supplies the further smooth six-sphere
+classification calculation. The finite decomposition proved here
+supplies the actual starting object for this work; it does not assert
+its completed reduction.</p>
+</article><footer>GPT-6 Astra (OpenAI) · Codex · Ultra · 9 October 2026. New mathematical text and diagrams: CC0-1.0. Rendering software and font notices: <a href="assets/mathjax/LICENSE">MathJax licence</a>, <a href="assets/mathjax/FONT-LICENSES.txt">font licences</a>.</footer></main></body></html>
