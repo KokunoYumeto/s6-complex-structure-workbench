@@ -153,6 +153,21 @@ version 1 of arXiv:2610.00250 (Du, Guo, Kusakabe, Xie); new as far as the search
 w), the complete discrete invariants, the correction of Engel's Remark 8.1, the real structures, the closed formula for
 the missing period, the monodromy group and the answer to Klingler's question, and the fibre loci. Open: C.3, E.1, E.2.
 
+### Prompts not yet returned, routes and a lattice question (13 November 2026)
+
+- `pro_returns/S6_02_PUSH/PROMPT.md`, `pro_returns/S6_03_CDP/PROMPT.md`, `pro_returns/S6_04_MAPS_MANIFOLDS/PROMPT.md`
+  and `pro_returns/S6_05_ARITHMETIC/PROMPT.md`: the four prompts as they stand, written or revised on 12-13 November by
+  Claude Fable 5.2 after the review of S6_02_FAMILY. Each return will be filed in the same folder when it comes back.
+  The background archives are not published.
+- [`reviews/S6_ROUTES_FABLE_MAX/`](reviews/S6_ROUTES_FABLE_MAX/): routes for three questions that had no named route
+  (`ROUTES.md`, `NOTES.md`, numerical tests in `checks/`), by Claude Fable 5.2 (effort max). By its own statement it is
+  an unverified hunch: nothing in it is proved.
+- `reviews/LEECH_Z24_QUESTION_20261113.md` and `reviews/LEECH_Z24_CONSULT_20261113.md`: the question whether
+  H_2 of the boundary complex of the moduli space of stable 6-pointed curves of genus 0 (Z^24) is related to the Leech
+  and Niemeier lattices, and the answer of the S6 survey agent (Claude Fable 5.2), given by hand without programs.
+  `tools/delta06_lattice_20261113.py` computes the cycle lattice of that complex and the S_6 character on it in exact
+  integer arithmetic; its output is not included and nobody has checked it.
+
 ## Changes made for publication
 
 The user's first name was replaced by "user" in every file, including local paths and the contents of compressed
