@@ -72,8 +72,7 @@ All dates are 2026. Model names and effort settings are those given in the recor
 - **Course CG-S6 (to 11 October):** OpenAI Codex, GPT-6 Astra at effort ultra (course README); prerequisite chapters
   keep GPT-6.1 Sol (effort not recorded) authorship where their arguments are retained.
 - **Paper [R], "The S6 record and the integral monodromy of its (3,4,∞) period system"** (28 September), cited by the
-  status note of 5 October: Claude Opus 5.5. Not in this repository; it is in Zenodo record
-  [10.5281/zenodo.23003415](https://doi.org/10.5281/zenodo.23003415).
+  status note of 5 October: Claude Opus 5.5 at effort max (the user's default then). Not in this repository.
 - **Survey of 12 November (`survey_20261112/`):** Claude Fable 5.2 at effort high, from its own reading and the notes
   of fifteen readers, also Claude Fable 5.2 at effort high. The survey is not a verification.
 - **Returns of the Pro prompts (`pro_returns/`):** GPT-6 Astra (OpenAI, ChatGPT Pro mode), from 12 November; not
