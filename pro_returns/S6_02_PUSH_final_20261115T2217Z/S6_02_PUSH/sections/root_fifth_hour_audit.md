@@ -1,0 +1,35 @@
+# Fifth-hour mathematical and artifact audit
+
+The integrated paper remains INCOMPLETE. This record distinguishes proved additions from active construction candidates as of the fifth hourly checkpoint on 15 November 2026.
+
+## Monodromy
+
+The actual positive one-loop monodromy is now determined to be zero in the oriented group of homotopy seven-spheres. C.3.21 computes the actual delta-line square as −2. C.3.22 combines it with the signed relative Pontryagin defect −24. The first determination uses the integral equivariant three-knot class and its additivity before reducing modulo 28. The second determination constructs an actual smooth spin-c eight-manifold by attaching a product-framed four-handle to a disk line bundle and computes its Eells–Kuiper invariant; a separate characteristic-index bordism proves the needed integral additivity. The second route does not use the Wall–Davis or Haefliger conversion. Both routes share the explicitly disclosed geometric cap pairings and annular representative. Independent rereading is a referee check, not a third method.
+
+The smooth eight-dimensional coboundary is not the analytic filling requested in B.4. Its actual boundary is identified geometrically, and its intersection matrix and characteristic covectors are computed exactly. The requested analytic W and its almost-complex Chern data remain open in C.5.1. Jiang's original 2014 circle-bundle surgery supplies known predecessor machinery, now cited beside the construction; no novelty is claimed for that handle technique.
+
+## Analytic filling
+
+B.4.7 gives an explicit proper semistable Hopf degeneration with simply connected centre and h1(O)=1, and a punctured product whose isomorphism has no proper meromorphic extension. It is a concrete limitation of broad comparison arguments, and is not an S6 filling. Its elliptic Cartier-logarithm machinery is compared with Fujimoto's original papers. Nakayama's codimension-two extension theorem is elliptic and does not apply directly to the generic simple two-tori of the prescribed family.
+
+B.4.8 proves an integral normal-line obstruction for every semistable good-reduction elliptic interface, including rational tails and arbitrary punctured translations. The line's mixed first Chern covector is (0,mN) after a base change of degree N. An all-rational genus-one centre has nontrivial positive Picard–Lefschetz monodromy and is excluded; an elliptic core supplies two bounding solid tori and gives the contradiction. The direct diagonal Hopf bridge is therefore excluded. This theorem does not classify arbitrary analytic interfaces.
+
+B.4.9 identifies all ordinary globally specified logarithmic cocharacters at the double cusp as the two toric invariant cycles. It also computes the full abstract torsor group over the punctured bidisc as Z². Crucially, an explicit quadratic section in the logarithmic parameter proves that the actual marked cusp family has zero class in that group. Choosing a nonzero abstract torsor would change the prescribed punctured germ. The section is holomorphic for nonzero parameter and supplies no extension across the missing parameter axis.
+
+An ordinary blowup repair of the Hopf axis remains obstructed if its exceptional-intersection Cartier divisor extends: tensoring the new normal with that divisor restores the original degree-zero winding line. A genuinely different parabolic Kato construction is now under investigation. Its contracted germ changes from a blown-up Hopf model to a parabolic monomial model, and a candidate extending negative-degree elliptic normal is being checked. No gluing of such a cap into the actual S6 family, total-space construction, descent action, least exponent or topology has yet been proved. Unintegrated working notes are retained without promoting them to the statement registry.
+
+## Smooth deformation limits
+
+E.2.5 proves that the fractional canonical pencil has two independent central sections in every smooth disc specialization of a fixed known multiplicity pair. The retained non-holomorphic-map theorem of Campana–Demailly–Peternell, also stated and proved in the opened Lehn–Rollenske–Schinko source, makes the central reduction holomorphic. The different holomorphic-fibration theorem from the same CDP paper is not used.
+
+E.2.6 proves relative persistence of this fibration when the canonical slope is positive. The key steps are a surface-fibre canonical argument eliminating horizontal fixed components, and connectedness of an actual flat Cartier divisor eliminating vertical fixed components and degree loss. It separates different positive-slope pairs at a common smooth junction and excludes a common junction of opposite signs. It does not prove separation along arbitrary deformation chains. A further zero-period-end obstruction is drafted separately and awaiting integration; a Hopf-general-fibre argument for the negative-slope case is being examined without importing the invalid general CDP assertion.
+
+## Source and build audit
+
+Primary sources newly checked include Jiang's original circle-action manuscript, Fujimoto's 1988 and 1990 constructions, Nakayama's original RIMS manuscript and published metadata, the restricted CDP theorem, and the Lehn–Rollenske–Schinko proof. The exact scope of every borrowed theorem is recorded in the corresponding sections. Ueno's 1983 title was located through original references but its original was not opened and no theorem from it is invoked.
+
+Drafts16–18 compiled without overfull boxes. Intermediate integration checks caught source additions made after bibliography assembly; these were build-tree timing mismatches, not successful full consistency audits. Draft19 is the current clean 140-page PDF, with112 numbered statements and88 bibliography entries. All four build stages succeeded, with zero overfull boxes, and the final log has no unresolved references, citations or rerun warnings. The integrated audit passes. An audit parser initially mistook the unnumbered heading “Scope after E.2.6” for a duplicate statement; anchoring declaration IDs to the start of theorem headings corrected that parser error. No mathematical statement was removed to make the audit pass.
+
+Eleven pages spread across the entire paper and six additional pages containing the new B, C and E propositions were rendered and visually inspected. The title-page conventions, long displays, matrices, proof paragraphs, page breaks and bibliography margins are legible, with no clipping or overflow found in those samples. The inspection is a sample of the document, not a claim that every page was read visually.
+
+The fifth-hour progress assessment continues work because the main analytic-filling question has gained a proved cusp-normal obstruction, an exact identification of its actual torsor class, and a concrete new parabolic-cap construction to test. The monodromy question has also reached a checked value by two specified routes, and smooth-limit persistence has advanced the remaining deformation problem. The global analytic filling and arbitrary deformation-chain questions remain exact open items.
