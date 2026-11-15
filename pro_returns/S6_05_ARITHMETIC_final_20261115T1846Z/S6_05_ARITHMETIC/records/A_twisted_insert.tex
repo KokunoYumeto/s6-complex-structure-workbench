@@ -1,0 +1,85 @@
+
+\paragraph{Statement A.4.2 (Proved reduction; its needed uniform estimate remains undecided).}
+For each integer $\ell$ define a unitary character on the nonzero ideals
+of $\mathbb Z[\sqrt3]$ by
+\[
+ \psi_\ell((\alpha))=
+ \left|\frac{\alpha}{\alpha'}\right|^{i\pi\ell/L_0},
+ \qquad a_\ell(m)=\sum_{N\mathfrak a=m}\psi_\ell(\mathfrak a),
+\]
+where the prime denotes the nontrivial real embedding. Then
+\begin{equation}\label{A:twisted-shift}
+ T_\ell(X):=\sum_{z\leq X}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}
+ =(-1)^\ell\sum_{z\leq X}a_\ell(3z-1)a_\ell(3z+1).
+\end{equation}
+For every integer $H\geq1$ the actual sharp-arc error satisfies
+\begin{equation}\label{A:ET-reduction}
+ |R(X)-C_0X|\ll X^{2/3}+\frac XH+
+       \sum_{1\leq\ell\leq H}\frac{|T_\ell(X)|}{\ell}
+       +\log(2X).
+\end{equation}
+In particular, the uniform bound
+\begin{equation}\label{A:needed-twist}
+ |T_\ell(X)|\ll_\epsilon X^{2/3+\epsilon}
+           +X^{1/2+\epsilon}\ell^{1/2}
+ \quad(1\leq\ell\leq X^{1/3})
+\end{equation}
+would prove the requested exponent $2/3+\epsilon$.
+We have not proved \eqref{A:needed-twist}.
+\begin{proof}
+Changing the generator by $\pm\varepsilon_0^k$ changes the logarithm
+of the absolute embedding ratio by $2kL_0$, and so leaves
+$\psi_\ell$ unchanged. The character is multiplicative. On the
+positive-norm generator of $m_z$ it is exactly
+$e^{2\pi i\ell\theta}$. For the unique prime ideal above $2$,
+$|(1+\sqrt3)/(1-\sqrt3)|=\varepsilon_0$, so its character is
+$(-1)^\ell$. Away from $2$, the integers $3z-1$ and $3z+1$ are
+coprime. At $2$, where they can share powers, there is just one prime
+ideal, and its local coefficient is geometric. Combining these facts
+proves \eqref{A:twisted-shift}, including the ramified factor.
+Conjugation pairs inverse character values, so $a_\ell(m)$ is real.
+
+Apply the Erd\H{o}s--Tur\'an inequality in the form of
+\cite[equation (8.2)]{CarneiroVaaler2010} to the finite list of the
+$S(X)$ ideal angles. That equation bounds the translate of the sawtooth
+sum; the characteristic function of an interval minus its length is
+the difference of two translates of that sawtooth function, away from
+its endpoints. Thus the arc discrepancy is at most a fixed constant
+times $S(X)/H+\sum_{\ell\leq H}|T_\ell(X)|/\ell$, plus endpoint
+multiplicities. The upper endpoint is empty by the calculation in
+Statement A.4.1. At the lower endpoint, $t=0$ gives
+$s^2-2(3z)^2=-2$. Reduction in $\mathbb Z[\sqrt2]$ by its norm-one
+unit $3+2\sqrt2$ puts a positive generator in
+$[\sqrt2,(3+2\sqrt2)\sqrt2)$, where the only solutions of norm $-2$
+are the finite seeds $(s,3z)=(0,1),(4,3)$. Thus the total number with
+$z\leq X$ is $O(\log(2X))$; imposing divisibility of the second
+coordinate by $3$ can only decrease it.
+Statement A.3.1 gives $S(X)=cX+O(X^{2/3})$ and $S(X)\ll X$.
+Statement A.1.3 now proves \eqref{A:ET-reduction}.
+Under \eqref{A:needed-twist}, take $H=\lfloor X^{1/3}\rfloor$;
+the two sums cost $O_\epsilon(X^{2/3+\epsilon}\log X)$ and
+$O_\epsilon(X^{1/2+\epsilon}H^{1/2})$, respectively. Relabeling
+$\epsilon$ proves the asserted conditional implication.
+\end{proof}
+
+\paragraph{Uniformity audit and current obstruction.}
+A bound for each fixed $\ell$ with an unspecified constant depending on
+$\ell$ cannot be inserted in \eqref{A:ET-reduction} with $H$ growing
+with $X$. More quantitatively, a bound
+$T_\ell(X)\ll_\epsilon \ell^A X^{\beta+\epsilon}$, $A>0$, leads by this
+argument to exponent $(A+\beta)/(A+1)$, after balancing $X/H$ against
+$X^\beta H^A$. Thus even a fixed-mode exponent $2/3$ with polynomial
+loss in the mode does not establish the sharp-arc exponent $2/3$.
+Theorems 1.2 and 1.5 of Lekkas--Petridis integrate the entire source
+geodesic. Their Remark 6 changes the target geodesic, but does not
+supply these growing-mode estimates. Voskou's four orientation cases
+\cite{Voskou2024} are discrete sign cases, not intervals in the foot
+parameter. The fixed compact angular modes in
+\cite[Theorem 1.1]{BourgainKontorovichSarnak2010} likewise do not
+supply the required uniform hyperbolic-foot estimate.
+The direct domain method of Statement A.4.1 proves $7/8+\epsilon$.
+A joint radial and angular spectral smoothing with the uniform
+estimate \eqref{A:needed-twist}, or a substitute averaged estimate
+strong enough for \eqref{A:ET-reduction}, remains the concrete step
+needed to reach $2/3+\epsilon$.

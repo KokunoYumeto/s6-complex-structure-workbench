@@ -1,0 +1,122 @@
+% Work record, not a completed implication from Sun's conjecture.
+\paragraph{The exact good-modulus calculation.}
+For $q\geq1$ and $c=(c_1,c_2,c_3)\in\Z^3$, define
+\[
+ S_q(c)=\sum_{a\bmod q}^{*}\sum_{b\in(\Z/q\Z)^3}
+ e\left(\frac{a(b_1^2-3b_2^2-18b_3^2+2)+c\cdot b}{q}\right).
+\]
+If $\gcd(q,6)=1$, completion of the three squares gives exactly
+\begin{equation}\label{A5audit:ternary-gauss}
+ S_q(c)=\left(\frac6q\right)G(1;q)^3
+ T(2,\overline{72}H(c);q),
+ \quad H(c)=-18c_1^2+6c_2^2+c_3^2,
+\end{equation}
+where $G(1;q)=\sum_{y\bmod q}e(y^2/q)=\epsilon_q\sqrt q$.
+Indeed for $d\in\{1,-3,-18\}$,
+\[
+ \sum_{b\bmod q}e((ad b^2+c_i b)/q)
+ =e(-\overline{4ad}c_i^2/q)
+  \left(\frac{ad}{q}\right)G(1;q).
+\]
+The product of the three Jacobi factors is
+$\bigl(\frac a q\bigr)\bigl(\frac{54}q\bigr)
+=\bigl(\frac a q\bigr)\bigl(\frac6q\bigr)$, and the completed
+phase is $2a+\bar a\overline{72}H(c)$.
+The symmetry $T(m,n;q)=T(n,m;q)$ follows by $x\mapsto\bar x$.
+This proves \eqref{A5audit:ternary-gauss} with all signs fixed.
+The program \path{code/B_A5_delta_audit.py} verifies it in the exact
+cyclotomic ring for 60 pairs, including prime-power and composite
+moduli and both signs of $H(c)$.
+
+This calculation identifies the obstacle to an immediate application
+of Steiner's integral-weight conjecture: the Jacobi character in the
+inner modulus sum is present.  To use Sun's half-integral-weight
+Conjecture~1.4 one must still match the sums, including their local
+factors at $2$ and $3$, to precisely specified multiplier systems on
+$\Gamma_0(N)$ and verify the stated spectral condition there.
+No such complete bad-prime and multiplier identification is claimed
+in this record.
+
+\paragraph{Where a sharp region introduces a further uniformity problem.}
+In the usual delta-symbol expansion with parameter $X$, the
+oscillatory integrals have the form
+\[
+ I_q(c)=\int_{\R^3}w(x/X)
+ h\left(q/X,(F(x)+2)/X^2\right)e(-c\cdot x/q)\,dx,
+\]
+with $F(s,t,z)=s^2-3t^2-18z^2$.
+The sharp physical region is a rational tetrahedral cone cut by a
+height plane; its top vertices include
+$(4,0,1)$, $(17/4,0,1)$ and $(17/4,1/4,1)$ in normalized coordinates.
+Integration by parts along its faces produces inverse-modulus phases
+$e(-Xc\cdot v/q)$ at vertices $v$.
+For example the upper $t$ boundary is $t=s-4z$, so when
+$c=(0,k,0)$ its boundary phase is $e(-k(s-4z)/q)$; the upper
+$s$ and $z$ endpoints then give $e(-kX/(4q))$.
+This example identifies phases in the direct full-tetrahedron
+organization; it does not assert that this boundary term alone is a
+lower bound for the actual arithmetic error.  An alternative extension
+of the cutoff away from the quadric can suppress vertices not lying
+near $F=0$.  Such a reorganization must be analyzed separately; we do
+not assert that these particular vertex terms are unavoidable in every
+delta-method formula for the same count.
+
+For a dyadic modulus block $Q<q\leq2Q$, partial summation of an
+untwisted sum against $e(D/q)$ costs total variation of order
+$1+|D|/Q$.  With $Q\asymp X$, $D\asymp X|c|$, and dual
+frequencies as large as $|c|\asymp X^{1/2}$ after smoothing at
+physical relative width $X^{-1/2}$, this is a polynomial loss.
+Sun's conjecture, which bounds the untwisted partial sums, does
+not itself state the needed bound after such a phase is inserted.
+No free suppression of that variation is valid.
+
+The latter warning has an exact abstract model.  For an integer
+$Q\geq16$ and $D=Q^{3/2}$, put
+\[
+ a_q=e(-D/q)-e(-D/(q-1)),\qquad Q<q\leq2Q.
+\]
+Every interval sum of $a_q$ has modulus at most $2$, by telescoping,
+and $|a_q|\leq2\pi D/(Q(Q+1))\ll Q^{-1/2}$.
+Nevertheless
+\begin{align*}
+ \operatorname{Im}\sum_{Q<q\leq2Q}a_q e(D/q)
+ &=\sum_{Q<q\leq2Q}\sin\frac{2\pi D}{q(q-1)}\\
+ &\geq4D\sum_{Q<q\leq2Q}\frac1{q(q-1)}
+ =\frac{2D}{Q}=2\sqrt Q.
+\end{align*}
+Here every sine argument lies in $[0,\pi/2]$, and
+$\sin t\geq2t/\pi$ on that interval.
+Thus even an $O(1)$ untwisted partial-sum bound together with the
+individual size $O(Q^{-1/2})$ does not imply an
+$O(Q^\varepsilon)$ bound after the relevant inverse-modulus twist.
+Arb evaluations for $Q=16,100,10000$ are preserved in
+\path{code/B_A5_delta_audit.out}.
+These $a_q$ are an abstract example, not Kloosterman coefficients.
+The example identifies a gap in the suggested partial-summation
+inference; it does not prove that Sun's full arithmetic conjecture
+can never imply the desired count by another argument.
+
+\paragraph{Present status.}
+An exact follow-up now tests the full amplitude, rather than the phase
+alone; see \path{records/B_A5_compensated_weight.tex}.  Multiplication
+by a smooth function of $F(y)$ that equals one on every counted point
+for $X\geq16$ makes the actual Heath-Brown kernel equal to
+$\omega(r)/r$ on $r=q/X\in[2/3,3/4]$.  For $c=(1,0,k)$ the full
+normalized Abel weight has size $\asymp k^{-1}$, but its total
+variation is $L+O(k^{-1})$, where $L>0$ is explicitly certified.
+The summed discrete variation through $H$ is
+$LH+O(\log(2H)+H^2/X)$, and boundary smoothing at width $H^{-1}$
+retains a linear lower bound on the summed variation for
+$k\leq\eta H$.  Thus the amplitude compensates for one phase factor
+without giving an epsilon-sized sum of variation norms.  This is
+still only an obstruction to the termwise Abel/absolute-frequency
+procedure, not a lower bound for an arithmetic error or an
+impossibility assertion about all deductions from Sun's conjecture.
+
+The next required step is either a new uniform transformation which
+absorbs these phases into the exact half-integral Kloosterman sums,
+or a published conjecture which already covers them with its theta
+terms removed and its dependence on $D$ explicit.  We have not
+found and verified such an implication.  Replacing Sun's statement
+by a stronger twisted statement without identifying a primary
+source would invent the requested conjectural input.

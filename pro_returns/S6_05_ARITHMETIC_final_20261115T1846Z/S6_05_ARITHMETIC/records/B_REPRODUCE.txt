@@ -1,0 +1,88 @@
+PART B: EXACT REPRODUCTION AND AUDIT
+15 November 2026
+
+Work from the S6_05_ARITHMETIC directory. Python scripts locate their own
+code/ and records/ directories; no absolute installation path is required.
+Tested: Python 3.12.14, numpy 2.3.5, python-flint 0.9.0, sympy 1.14.0,
+pynauty 2.8.8.1, mmgroup 1.0.8. C++ sources require a C++17 compiler with
+128-bit integer support. They do not require a proprietary CAS. GAP is
+used only in the supplementary B_code_group.g calculation; all final
+permutation orders are also computed with SymPy.
+
+Compile each of B_enumerate, B_affine_orbits, B_binary_subset_orbits and
+B_code_aut_exhaust from its corresponding code/*.cpp with:
+  g++ -O3 -std=c++17 code/NAME.cpp -o code/NAME
+
+A. QUICK READ-ONLY DATA AUDIT
+  python code/B_final_group_audit.py
+This rereads all 129 plane representatives and every one of the 654
+integral matrix generators, proves their Gram/plane identities, and
+recomputes the complete incidence mass from the delivered full group
+orders. Expected last line:
+  PASS: all 129 full group records verified; NO RESIDUAL MASS REMAINS.
+It also refreshes records/B_plane_group_manifest.json. Group orders are
+proved by the separate generation runs below, not merely inferred from
+these matrix identities.
+
+B. REGENERATE THE 129 FULL GROUP CERTIFICATES
+With the supplied exact input records and compressed orbit maps:
+  python code/B_plane_stabilizer_recipe.py
+  python code/B_rare_plane_groups.py
+  python code/B_final_group_audit.py
+The first program generates and independently orders the 126 rooted
+stabilizers; the second uses exact Schreier trees and marking orbits for
+the remaining three. All outputs are records/B_plane_groups/001.json
+through 129.json, in one common standard integral Leech basis. Rooted
+orders use faithful permutations of the intrinsic union of extension
+roots; rare orders use the faithful norm-six / minimal-triangle
+configuration action, exact Schreier generators and all marking changes.
+
+C. FULL ORBIT-CLASSIFICATION CHAIN
+Run the following scripts in the stated dependency order; preserve stdout
+in a separate .out file for each. Existing stdout files document this run.
+  B_exact_lattices.py, B_autJ.py, B_global_A2_setup.py
+For s=0,1,2,3 run
+  code/B_affine_orbits records/B_A2_stratum_s.bin
+with stdin records/B_A2_stratum_s.in and save stdout as the corresponding
+records/B_A2_stratum_s.out. Then run
+  B_A2_flags.py, B_A2_fusion.py, B_global_A1_setup.py
+For s=0,1,2,3 run
+  code/B_binary_subset_orbits records/B_A1_stratum_s.bin
+with stdin records/B_A1_stratum_s.in and save stdout as the corresponding
+records/B_A1_stratum_s.out. Then run
+  B_A1_flags.py, B_A1_fusion.py, B_global_mass.py,
+  B_rare_setup.py, B_rare_orbits.py, B_rare_audit.py,
+  B_Co3_upper_bound.py, B_U6_upper_bound.py,
+  B_global_assembly.py, B_plane_stabilizer_recipe.py,
+  B_rare_plane_groups.py, B_final_group_audit.py,
+  B_specific_plane_group.py, B_identify_specific_plane.py.
+B_rare_setup.py discovers useful words randomly, but saves the words,
+matrices and resulting orders. This discovery is not a proof assumption:
+subsequent exhaustive orbit closure, Schreier and exact mass checks prove
+completeness. The stored rare inputs make downstream runs deterministic.
+
+Dense orbit maps are supplied losslessly as records/B_A[12]_stratum_*.bin.gz.
+B_global_lattice.orbit_map automatically decompresses them into a sibling
+B_cache directory when necessary. Uncompressed SHA256 hashes and exact
+byte counts are in records/B_orbit_map_manifest.json. These maps require
+roughly 400 MB when decompressed; their compressed replacements suffice.
+B_compress_maps.py can recompress regenerated .bin files. Compression does
+not replace any mathematical information.
+
+D. OTHER PART B RESULTS
+B.1: B_exact_lattices.py; exact rational Gram, HNF, gluing and extension data.
+B.2: B_theta.py, B_autJ.py, B_code_aut_verify.py and B_code_aut_exhaust.cpp;
+  B_specific_plane_group.py supplies the full chosen-plane stabilizer.
+B.3: B_fetch_catalogue.py downloads the 23 published Gram inputs. All
+  inputs are already supplied. B_all_neighbours.py independently verifies
+  every input root system and enumerates all 96 Weyl neighbours.
+B.4: B_E8_projection.py, B_triality.py, B_wilson_stabilizer.py,
+  B_cubic_embeddings.py, in that order.
+
+E. STATUS OF FAILED OR SUPERSEDED EXPLORATION
+B_root_graph.py was an early, unsuccessful common-root distinctness
+hypothesis; it is retained as a work record and is not a dependency of any
+proved result. B_A1_fusion_fixed.out is the successful full fusion run;
+the earlier output records an exhausted-memory attempt. Read
+records/B_research_log.md for these and other corrections. Exact proof
+statements, invariance arguments and literature scopes are in sections/B.tex.

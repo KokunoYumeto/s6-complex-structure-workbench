@@ -1,0 +1,146 @@
+\paragraph{Statement A.4.8 (Exact outgoing physical kernel, including glancing).}
+Retain $a_*,B_*,R_*$ from Statement A.4.7 and put
+\[
+ \tau(u)=\operatorname{arsinh}(B_*\cosh u),\qquad
+ f_s(r)=2^{-s}(\cosh r)^{-s}
+ {}_2F_1\!\left(\frac s2,\frac s2;s+\frac12;\operatorname{sech}^2r\right).
+\]
+For $\Re s>0$ the inverse Fourier kernel of $m_s$ is
+\begin{equation}\label{A:exact-physical-kernel}
+ k_s(u)=-\frac{\Gamma(s)}{\sqrt\pi\,\Gamma(s+1/2)}
+          \frac{a_*}{\cosh\tau(u)}f_s'(\tau(u)).
+\end{equation}
+Here the convention is
+$m_s(\kappa)=\int_{\mathbb R}k_s(u)e^{i\kappa u}\,du$.
+For every contributing reflection-even eigenfunction the exact sharp
+coefficient is therefore
+\begin{equation}\label{A:Q-physical}
+ Q_{j,I}=\int_{\mathbb R}u_j(i e^u)\,q_{t_j}(u)\,du,
+ \qquad q_t(u)=\frac{K_{1/2+it,0}}2 k_{1/2+it}(u).
+\end{equation}
+The integral is absolutely convergent. As $t\to+\infty$,
+\begin{equation}\label{A:physical-principal-symbol}
+ q_t(u)=
+ \frac{a_*}{2\cosh^{3/2}\tau(u)}
+       e^{-it\tau(u)}\{1+O(t^{-1})\},
+ \qquad u\in\mathbb R,
+\end{equation}
+uniformly over the entire real line.
+The principal amplitude is positive and decreases like
+$e^{-3|u|/2}$. Thus the physical formula remains uniform where
+$|\kappa|/t$ tends to one in the Fourier description.
+
+\begin{proof}
+The hypergeometric equation gives directly
+\[
+ f_s''+\tanh r\,f_s'+s(1-s)f_s=0,\qquad
+ f_s(r)\sim e^{-sr}\quad(r\to+\infty).
+\]
+We prove the Fourier identity first for real $s>1$ and then use
+analytic continuation. In this proof temporarily allow
+$a_*=\cosh R$, $B_*=\sinh R$ with arbitrary $R>0$.
+The elementary function $W_s(R,u)$ satisfies
+\[
+ \left(\partial_R^2+\coth R\,\partial_R+s(1-s)
+              -\frac{\partial_u^2}{\sinh^2R}\right)W_s(R,u)=0.
+\]
+To check the candidate kernel, set $y=\sinh r$ and write $f_s(r)=F_s(y)$.
+Then
+\[
+ (1+y^2)F_s''+2yF_s'+s(1-s)F_s=0.
+\]
+Consequently $g=F_s'$ satisfies
+\[
+ (1+y^2)g''+4yg'+\{s(1-s)+2\}g=0.
+\]
+A direct differentiation shows that
+$\cosh R\,g(\sinh R\cosh u)$ satisfies the same two-variable
+equation as $W_s$. Its scalar multiple in
+\eqref{A:exact-physical-kernel} therefore does so as well.
+Fourier transformation in $u$ makes both transforms solutions of
+\[
+ h''+\coth R\,h'
+       +\left(s(1-s)+\frac{\kappa^2}{\sinh^2R}\right)h=0.
+\]
+
+We compare their outgoing coefficients. Uniformly under the integrable
+majorants needed for Fourier transformation,
+\[
+ W_s(R,u)\sim e^{-sR}\cosh^{-2s}(u/2),\qquad
+ k_s(R,u)\sim
+ \frac{s\Gamma(s)}{\sqrt\pi\,\Gamma(s+1/2)}
+ e^{-sR}\cosh^{-s-1}u.
+\]
+The duplication formula gives the exact identity
+\[
+ \frac{K_{s,\kappa}K_{s+1,\kappa}}
+            {2K_{2s,2\kappa}}
+   =\frac{\sqrt\pi\,\Gamma(s+1/2)}{s\Gamma(s)}.
+\]
+It follows that the Fourier transform of $k_s$ and $H_s/K_s$
+have the same leading $e^{-sR}$ coefficient.
+For $s>1$, the other solution grows like $e^{(s-1)R}$;
+the outgoing solution is unique.
+Thus their transforms coincide.
+All defining integrals are locally holomorphic for $\Re s>0$,
+and $K_{s,\kappa}$ has neither zeros nor poles there.
+The identity theorem proves \eqref{A:exact-physical-kernel}
+throughout that half-plane. Statement A.4.7 and Fourier
+periodization now give \eqref{A:Q-physical}.
+
+For the uniform high-frequency assertion, write
+$v_t(r)=\sqrt{\cosh r}\,f_{1/2+it}(r)$.
+The equation becomes the elementary one-dimensional scattering equation
+\[
+ v_t''+\left(t^2-\frac14\operatorname{sech}^2r\right)v_t=0,
+ \qquad v_t(r)\sim 2^{-1/2}e^{-itr}.
+\]
+On $r\geq R_*>0$, its outgoing Volterra equation has an
+integrable smooth potential $V(r)=\operatorname{sech}^2r/4$.
+Successive approximation, using the Green kernel
+$t^{-1}\sin(t(r-v))$ and
+$\int_r^\infty V(v)\,dv\ll e^{-2r}$, yields
+\[
+ v_t(r)=2^{-1/2}e^{-itr}
+       \{1+O(t^{-1}e^{-2r})\},\qquad
+ v_t'(r)=-it\,2^{-1/2}e^{-itr}+O(e^{-2r}).
+\]
+The constants are uniform for $t\geq1$ and $r\geq R_*$.
+Therefore
+\[
+ f_{1/2+it}'(r)=
+ -\frac{it}{\sqrt{2\cosh r}}e^{-itr}\{1+O(t^{-1})\}.
+\]
+If further finite-order symbol expansions are required, they follow
+from the same Volterra equation: after removing $e^{-itr}$,
+insert $\sum_{n=0}^N(2it)^{-n}a_n(r)$, with $a_0=1$ and
+$a_{n+1}'=a_n''-Va_n$, $a_{n+1}(\infty)=0$.
+The residual is $O(t^{-N}e^{-2r})$, and the outgoing Green kernel
+gains a further factor $t^{-1}$. All coefficients and their fixed-order
+$r$ derivatives are bounded, and the nonconstant coefficients decrease
+exponentially. This also verifies that the preceding uniform
+estimate is compatible with finite-order stationary-phase calculations.
+
+Finally, Stirling's formula or direct stationary phase in $K$ gives
+\[
+ \frac{\Gamma(1/2+it)}{\Gamma(1+it)}
+       =t^{-1/2}e^{-i\pi/4}\{1+O(t^{-1})\},\qquad
+ K_{1/2+it,0}=
+       \sqrt{\frac{2\pi}{t}}e^{-i\pi/4}\{1+O(t^{-1})\}.
+\]
+The factor $it$ from $f_s'$ cancels both phases.
+Substitution in \eqref{A:exact-physical-kernel} proves
+\eqref{A:physical-principal-symbol}. Since
+$\cosh\tau(u)\asymp e^{|u|}$, it also proves the stated decay.
+\end{proof}
+
+\paragraph{Remaining nonvanishing issue after this reduction.}
+The exact physical kernel makes the two pieces of a relative-wave
+argument concrete. On bounded $u$ intervals, the phase is the signed
+difference of distances to the target geodesic and to $U^{-1}g_0$;
+its critical points represent common perpendiculars. At infinity,
+these differences approach endpoint Busemann constants.
+Those constants can accumulate, so their contribution must be summed
+with a quantitative bound before the positive shortest-perpendicular
+term proves a nonzero complete-eigenspace contraction.
+Statement A.4.8 itself does not claim that final comparison.

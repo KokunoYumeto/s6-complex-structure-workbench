@@ -1,0 +1,137 @@
+\paragraph{Independent verification of the physical kernel in A.4.8.}
+The following calculation checks the exact scalar and branches without
+using uniqueness for a differential equation.  The Fourier convention is
+$\widehat h(\kappa)=\int_{\mathbb R}h(u)e^{i\kappa u}\,du$.
+Let $a=\cosh R$, $B=\sinh R$, $R>0$, and initially assume $B>1$.
+In the application $a=17$, $B=12\sqrt2$, and $B^{-2}=1/288$.
+Write
+\[
+ K_{p,\kappa}=
+ \frac{2^{p-1}\Gamma((p+i\kappa)/2)\Gamma((p-i\kappa)/2)}
+      {\Gamma(p)},\qquad
+ \tau(u)=\operatorname{arsinh}(B\cosh u).
+\]
+For $\Re s>0$ set
+\[
+ f_s(r)=2^{-s}(\cosh r)^{-s}
+ {}_2F_1\!\left(\frac s2,\frac s2;s+\frac12;\operatorname{sech}^2r\right).
+\]
+All powers of positive real numbers use the real logarithm.
+The Pfaff transformation, DLMF (15.8.1), with $x=\sinh r>0$,
+gives
+\[
+ f_s(r)=2^{-s}x^{-s}
+ {}_2F_1\!\left(\frac s2,\frac{s+1}2;s+\frac12;-x^{-2}\right).
+\]
+Termwise differentiation therefore yields
+\[
+ \frac{f_s'(r)}{\cosh r}
+ =-s2^{-s}x^{-s-1}
+ {}_2F_1\!\left(\frac{s+1}2,\frac{s+2}2;s+\frac12;-x^{-2}\right).
+\]
+At $r=\tau(u)$ the argument has modulus at most $B^{-2}<1$.
+The series is absolutely and uniformly convergent after multiplication
+by the integrable majorant $\cosh(u)^{-\Re s-1}$, locally uniformly
+in $s$ in the right half-plane.  It may consequently be integrated
+term by term against $e^{i\kappa u}$ for real $\kappa$.
+The identity
+\[
+ \frac{K_{s+1+2n,\kappa}}{K_{s+1,\kappa}}
+ =\frac{((s+1+i\kappa)/2)_n((s+1-i\kappa)/2)_n}
+ {((s+1)/2)_n((s+2)/2)_n}
+\]
+cancels the two numerator factors of the differentiated series. Hence
+\begin{align*}
+ \int_{\mathbb R}
+ \frac{a f_s'(\tau(u))}{\cosh\tau(u)}e^{i\kappa u}\,du
+ &=-sa2^{-s}B^{-s-1}K_{s+1,\kappa}\,\mathcal F_s(\kappa),\\
+ \mathcal F_s(\kappa)
+ &={}_2F_1\!\left(\frac{s+1+i\kappa}2,
+                  \frac{s+1-i\kappa}2;
+                  s+\frac12;-B^{-2}\right).
+\end{align*}
+
+Independently, the Legendre formula already proved in A.4.7 is
+\[
+ m_s(\kappa)=\frac{2^{s-1/2}}{\sqrt{\pi B}}
+ \Gamma\!\left(\frac{s+1+i\kappa}2\right)
+ \Gamma\!\left(\frac{s+1-i\kappa}2\right)
+ P_{-1/2+i\kappa}^{\,1/2-s}(a/B).
+\]
+DLMF (14.3.18), followed by the Pfaff transformation (15.8.1), gives,
+for $x>1$,
+\[
+ P_\nu^{-\mu}(x)=
+ \frac{(x^2-1)^{\mu/2}}{2^\mu\Gamma(\mu+1)}
+ {}_2F_1\!\left(\frac{\mu-\nu}2,
+                  \frac{\mu+\nu+1}2;\mu+1;1-x^2\right).
+\]
+Here DLMF's normalized hypergeometric function has been converted
+using $\mathbf F(A,B;C;z)={}_2F_1(A,B;C;z)/\Gamma(C)$.
+Substitute $x=a/B$, $\mu=s-1/2$, and $\nu=-1/2+i\kappa$.
+Euler's transformation (also DLMF (15.8.1)) replaces the resulting
+first two parameters $(s\pm i\kappa)/2$ by
+$(s+1\pm i\kappa)/2$ and introduces precisely
+$(1+B^{-2})^{1/2}=a/B$.  Thus
+\[
+ m_s(\kappa)=
+ \frac{a B^{-s-1}}
+      {\sqrt\pi\,\Gamma(s+1/2)}
+ \Gamma\!\left(\frac{s+1+i\kappa}2\right)
+ \Gamma\!\left(\frac{s+1-i\kappa}2\right)
+ \mathcal F_s(\kappa).
+\]
+Comparison with the preceding Fourier integral proves exactly
+\[
+ \boxed{\quad
+ m_s(\kappa)=\int_{\mathbb R}k_s(u)e^{i\kappa u}\,du,
+ \qquad
+ k_s(u)=-\frac{\Gamma(s)}{\sqrt\pi\,\Gamma(s+1/2)}
+       \frac{a f_s'(\tau(u))}{\cosh\tau(u)}.
+ \quad}
+\]
+The original argument $\operatorname{sech}^2\tau$ lies in $(0,1/289]$,
+and the transformed one lies in $[-1/288,0)$.
+The transformations therefore cross no cut; $a/B$ and
+$1+B^{-2}$ are positive.  This checks all branch choices in the
+application.  The identity for arbitrary $B>0$, if desired, follows
+by analytic continuation in $R>0$ or the differential-equation proof
+in A.4.8; that extension is not needed here.
+
+\paragraph{An elementary scalar check.}
+At $s=1$,
+$f_1(r)=\arctan(e^{-r})$ and $f_1'(r)=-(2\cosh r)^{-1}$.
+Since $\Gamma(1)/(\sqrt\pi\Gamma(3/2))=2/\pi$ and
+$K_{1,0}=\pi$, the inverse Fourier kernel of $K_{1,0}m_1$ is
+\[
+ \pi k_1(u)=\frac{a}{1+B^2\cosh^2u}.
+\]
+This is positive and agrees with direct Fourier inversion at $s=1$.
+
+\paragraph{Uniform outgoing estimate.}
+Writing $v_t(r)=\sqrt{\cosh r}\,f_{1/2+it}(r)$ gives
+\[
+ v_t''+(t^2-V(r))v_t=0,\qquad
+ V(r)=\tfrac14\operatorname{sech}^2r,\qquad
+ v_t(r)\sim2^{-1/2}e^{-itr}.
+\]
+The outgoing Volterra equation has kernel bounded in modulus by
+$1/t$.  Put $J(r)=\int_r^\infty V(v)\,dv=(1-\tanh r)/4$.
+Its successive approximations imply, for $t\geq1$,
+\[
+ \left|v_t(r)-2^{-1/2}e^{-itr}\right|
+ \leq2^{-1/2}(e^{J(r)/t}-1),\qquad
+ \left|v_t'(r)+it2^{-1/2}e^{-itr}\right|
+ \leq2^{-1/2}J(r)e^{J(r)/t}.
+\]
+Both are uniform for all $r\geq R_*$, and
+$J(r)\leq e^{-2r}/2$.  These inequalities independently verify
+the uniform first-order estimates in A.4.8.  They do not estimate
+the sum of endpoint Busemann contributions in the relative wave
+composition, and no nonvanishing conclusion is drawn from them alone.
+
+\paragraph{Sources checked.}
+The full DLMF equations (14.3.18) and (15.8.1), their notation and
+principal-branch conventions were opened at
+\texttt{https://dlmf.nist.gov/14.3} and
+\texttt{https://dlmf.nist.gov/15.8} on 15 November 2026.

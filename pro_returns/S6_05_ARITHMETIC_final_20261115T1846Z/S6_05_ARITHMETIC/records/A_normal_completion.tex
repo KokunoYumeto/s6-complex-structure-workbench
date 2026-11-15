@@ -1,0 +1,174 @@
+% Exact alternative to termwise Abel summation; unresolved global implication.
+\subsection*{Completing the radial frequency before modulus summation}
+
+Let $q$ be coprime to $6$, let
+$G_q=\sum_{x\bmod q}e(x^2/q)$, and write
+\[
+ T(m,n;q)=\sum_{a\bmod q}^{*}
+       \left(\frac aq\right)e((ma+n\bar a)/q),\qquad
+ S(m,n;q)=\sum_{a\bmod q}^{*}e((ma+n\bar a)/q).
+\]
+For arbitrary integers $d,h$ one has the exact finite Fourier identity
+\begin{equation}\label{A:normal-completion}
+ \sum_{k\bmod q}
+   T(2,\overline{72}(k^2+d);q)e(-hk/q)
+ =\left(\frac2q\right)G_q\,
+       S(2-18h^2,\overline{72}d;q).
+\end{equation}
+Indeed, after interchanging the $k$ and $a$ sums, the inner
+quadratic Gauss sum has coefficient
+$A=\overline{72}\bar a$. Completing its square gives
+\[
+ \sum_{k\bmod q}e((Ak^2-hk)/q)
+ =\left(\frac Aq\right)G_q e(-\overline{4A}h^2/q).
+\]
+Here $\overline{4A}=18a$ and
+$(a/q)(A/q)=(2/q)$, proving
+\eqref{A:normal-completion} for arbitrary odd composite $q$
+as well as for primes.
+
+For the decisive family $c=(1,0,k)$, the constant is $d=-18$,
+so that $\overline{72}d=-\overline4$.
+If $M=2-18h^2$, then
+\begin{equation}\label{A:normal-classical}
+ S(M,-\overline4;q)=-S(M,-1;2q).
+\end{equation}
+To check the sign and the modulus, Chinese remaindering gives
+\[
+ S(M,-1;2q)
+ =S(M\bar q,-\bar q;2)\,
+       S(M\overline2,-\overline2;q).
+\]
+The first factor is $(-1)^{M-1}=-1$ because $M$ is even.
+In the second factor substitute the summation variable $2a$.
+This gives \eqref{A:normal-classical}. Thus this family really
+does reduce to ordinary integral-weight Kloosterman sums;
+no extension of a named conjecture to a new multiplier is
+being assumed for this identity.
+
+Both identities are checked independently in exact cyclotomic
+rings by \path{code/A_normal_completion_check.py}. The first
+has 160 checks, including composite and prime-power moduli,
+and the second has 40 checks. Their proofs above are valid
+for every modulus stated.
+
+\paragraph{Poisson completion with the endpoint phase retained.}
+For $\psi$ Schwartz, $K>0$, and a real endpoint $X$, use
+$\widehat\psi(\xi)=\int_{\mathbb R}\psi(v)e(-v\xi)\,dv$.
+Poisson summation in residue classes gives exactly
+\begin{align}
+ &\sum_{k\in\mathbb Z}\psi(k/K)e(-Xk/q)
+              T(2,\overline{72}(k^2+d);q)\nonumber\\
+ &\quad=\frac Kq\left(\frac2q\right)G_q
+     \sum_{h\in\mathbb Z}
+       \widehat\psi\!\left(\frac{K(X-h)}q\right)
+       S(2-18h^2,\overline{72}d;q).
+ \label{A:normal-poisson}
+\end{align}
+The new index is centered at $h=X$, with width $q/K$.
+This is a genuine improvement over discarding the endpoint
+phase by absolute value: it turns the phase into the location
+of the quadratic Kloosterman parameter.
+
+For a dyadic endpoint-amplitude term
+$K^{-1}\psi(k/K)e(-Xk/q)$, the factor $K$ on the right
+of \eqref{A:normal-poisson} cancels.
+The exact top-face denominator need not be expanded:
+if $\eta$ is supported in a fixed positive dyadic interval, write
+\[
+ \frac{\eta(k/K)}{k+u}
+   =K^{-1}\psi_{K,u}(k/K),\qquad
+ \psi_{K,u}(v)=\frac{\eta(v)}{v+u/K}.
+\]
+For $K\geq1$ and $4\leq u\leq17/4$, this family and its Fourier
+transforms have uniform Schwartz bounds. Thus the following
+calculation applies to the exact top-face term, without silently
+claiming a global bound for its separate radial remainder.
+Multiplying the three original Gauss factors gives
+$G_q^4=q^2$ and
+$(6/q)(2/q)=(3/q)$. Consequently, after including the
+$X^{-2}q^{-3}$ delta prefactor and the $X^3$ physical
+volume factor, this dyadic term has the structural scale
+\begin{equation}\label{A:normal-completed-scale}
+ X\sum_h\sum_{q\asymp X}
+    \frac{S(2-18h^2,-1;2q)}{q^2}
+    \left(\frac3q\right)
+    \widehat\psi\!\left(\frac{K(X-h)}q\right)
+    A(q/X),
+\end{equation}
+up to fixed constants and the sign in
+\eqref{A:normal-classical}. Here $A$ represents the fixed
+face amplitude; its exact expression may be retained as
+an integral over the fixed triangle.
+
+In that face integral the remaining phase is $e(-Xu/q)$.
+With $c=2q$, $m=18h^2-2$, and $n=1$, this has the standard
+twisted Kloosterman form
+\[
+ e\!\left(\frac{2\sqrt{mn}\,\alpha}{c}\right),
+ \qquad \alpha=-\frac{Xu}{\sqrt{18h^2-2}}.
+\]
+For $h\asymp X$ and $4<u<17/4$, $|\alpha|$ is bounded
+independently of $X,K,h$ and is independent of $q$.
+The Jacobi factor $(3/q)$ can be separated into finitely
+many fixed residue classes. More explicitly, if $X\geq2$ and
+$h\geq X/2$, then $|\alpha|\leq17/8$, so $B=3$ suffices.
+The four good classes of $q$ modulo $12$ become the fixed
+classes $c=2q\equiv2,10,14,22\pmod{24}$.
+Conjecture 2 of Steiner \cite{A5Steiner2019} allows arbitrary
+classes $c\equiv a\pmod{s}$, with no coprimality restriction
+on $a,s$, and arbitrary nonzero indices. Its constants may
+depend on $s,B$, which here are fixed at $24,3$.
+This is why a bounded-twist
+integral-weight conjecture is a more plausible input after
+completion than it was before completion.
+
+\paragraph{The remaining quantitative loss.}
+Assume, only for this scaling test on the isolated top-face
+family, Steiner's Conjecture 2 in the fixed classes just
+specified. This does not assume a new multifrequency
+extension of that conjecture.
+Fix $\delta>0$ and consider $X^\delta\leq K\leq X^{1/2}$.
+For $h$ outside $[X/2,2X]$, the Schwartz argument in
+\eqref{A:normal-completed-scale} has size at least a
+constant times $K$. Trivial bounds for the Kloosterman
+sums, followed by an arbitrarily high Schwartz bound,
+make this part smaller than any prescribed power of
+$X$; choose the Schwartz order after $\delta$.
+Thus the bounded-twist hypothesis is invoked only
+where $h\asymp X$, and no uniformity for unbounded
+$\alpha$ is being assumed.
+For each $h$ in the effective range, Abel summation in
+\eqref{A:normal-completed-scale} has weight $X/q$ of
+bounded size and bounded variation. It therefore gives
+$O_\epsilon(X^\epsilon)$ per $h$.
+There are $O(X/K)$ effective $h$ values on $q\asymp X$,
+with Schwartz tails treated dyadically. The resulting
+termwise estimate is
+\[
+ O_\epsilon(X^{1+\epsilon}/K).
+\]
+This reaches square-root size for the terminal block
+$K\asymp\sqrt X$, but does not do so uniformly for the
+intermediate blocks.
+The earlier hypothetical Sun estimate applied before
+completion has scale $X^{1/2+\epsilon}K$ on the same
+dyadic family. Taking the better of these two procedures
+leaves
+\[
+ \min\{X^{1/2}K,\ X/K\},
+\]
+whose largest transition value is $X^{3/4}$ at
+$K=X^{1/4}$.
+
+This last comparison is an explicit accounting of two
+termwise methods, not a lower bound for the true sum and
+not an assertion that either conjecture fails to imply
+the desired result. In particular, it does not complete
+the requested known-conjecture implication. The next
+concrete missing estimate is cancellation in the joint
+$h,q$ sum in \eqref{A:normal-completed-scale}, with
+$2-18h^2$ varying over a short quadratic sequence and
+the bounded twist retained. A pointwise modulus bound
+for each fixed $h$ supplies no such cancellation by
+itself.

@@ -1,0 +1,186 @@
+C.6.R5: exact leading-factor certificate
+======================================
+
+Mathematical result and scope
+-----------------------------
+The full proof is sections/C_gz_factors.tex. The six additional factors,
+in rows 2,4,6,9,10,11, are 8,32,8,16,16,576. Auxiliary central-value
+ratios are 64,64,8,16,400,64. The proof uses a genus-character
+Gross--Zagier denominator bound, then interval separation. It does not
+assume BSD or identify the six actual Tate--Shafarevich orders.
+
+Every period in this certificate is the integral over all real components
+of the absolute minimal differential. Every height is relative to (O),
+not 2(O). The YZZ relative-to-K diagonal pairing is 4 times this absolute
+height. Exact q values and separation margins are in
+records/B_C6_exact_factors.json; the compact table is the matching CSV.
+
+Dependencies used
+-----------------
+GNU C++17, GMP, MPFR (256-bit directed interval arithmetic), Python3,
+python-flint0.9.0 (Arb, 512-bit periods and recognition), PARI/GP2.17
+with elldata for displaying the base curve labels. No Sage is required
+for this supplement. The independently generated height certificate
+records/C_cm_height_arb.json is an input, with its own complete program
+code/C_cm_height_arb.py and proof C.6.5.
+
+Commands below are run from the directory containing S6_05_ARITHMETIC,
+as in the original workspace. With ordinary installed development
+libraries the compilation is:
+
+  g++ -O3 -std=c++17 S6_05_ARITHMETIC/code/B_C6_central_stream.cpp \
+      -o S6_05_ARITHMETIC/code/B_C6_central_stream -lgmp -lmpfr
+
+The actual local build used:
+
+  g++ -O3 -std=c++17 -I .apt/runtime/usr/include \
+      S6_05_ARITHMETIC/code/B_C6_central_stream.cpp \
+      -o S6_05_ARITHMETIC/code/B_C6_central_stream \
+      -lgmp /usr/lib/x86_64-linux-gnu/libmpfr.so.6
+
+Quick audit using retained exact coefficients and L-sum certificates
+-----------------------------------------------------------------
+Run:
+
+  python S6_05_ARITHMETIC/code/B_C6_exact_factors.py
+
+Expected final line:
+  PASS: ALL SIX REMAINING RATIONAL LEADING FACTORS ARE EXACTLY CERTIFIED.
+
+This independently recomputes all periods, reads the directed L-sum
+intervals and rigorous heights, isolates each auxiliary rational by its
+proved integrality, and isolates each q by its proved denominator bound.
+It rewrites the JSON and CSV certificates deterministically.
+
+Exact arithmetic and global coefficient audit
+--------------------------------------------
+The script code/B_C6_gz_exact_metadata.gp checks the exact equations,
+minimal twist c4/c6 scalings, conductor identities, torsion orders,
+root numbers and every Heegner splitting condition. It checks every
+coefficient through10000 for the four CM bases and their auxiliary
+twists. The manuscript's Hecke theorem and valence proof upgrade these
+finite comparisons to global identities; the four bounds are
+22,315,759,4455. Its final line is:
+
+  PASS: SIX EXACT GROSS--ZAGIER INPUT RECORDS AND FOUR CM THETA COEFFICIENT AUDITS.
+
+The GP scripts set datadir to the local PARI runtime in this workspace.
+For another installation replace that one datadir line with the correct
+PARI data directory, or remove it when the normal installation already
+finds elldata. Run the script from the same parent directory:
+
+  gp -q S6_05_ARITHMETIC/code/B_C6_gz_exact_metadata.gp
+
+Full directed L-sum reproduction
+-------------------------------
+Let EXE denote S6_05_ARITHMETIC/code/B_C6_central_stream. Run one command
+per output file as follows (the identifiers on the left are stdout
+destinations in S6_05_ARITHMETIC/code):
+
+  B_C6_central_file_2.out : EXE --file S6_05_ARITHMETIC/records/B_C6_aux_coeff_2.dat
+  B_C6_central_file_4.out : EXE --file S6_05_ARITHMETIC/records/B_C6_aux_coeff_4.dat
+  B_C6_central_file_6.out : EXE --file S6_05_ARITHMETIC/records/B_C6_aux_coeff_6.dat
+  B_C6_central_file_9.out : EXE --file S6_05_ARITHMETIC/records/B_C6_aux_coeff_9.dat
+  B_C6_central_file_10.out: EXE --file S6_05_ARITHMETIC/records/B_C6_aux_coeff_10.dat
+  B_C6_central_11.out     : EXE 163 -557403 60
+
+  B_C6_derivative_2.out : EXE --dfile S6_05_ARITHMETIC/records/Crank_coeff_2.dat
+  B_C6_derivative_4.out : EXE --dfile S6_05_ARITHMETIC/records/Crank_coeff_4.dat
+  B_C6_derivative_6.out : EXE --dfile S6_05_ARITHMETIC/records/Crank_coeff_6.dat
+  B_C6_derivative_9.out : EXE --dfile S6_05_ARITHMETIC/records/Crank_coeff_9.dat
+  B_C6_derivative_10.out: EXE --derivative 67 217 60
+  B_C6_derivative_11.out: EXE --derivative 163 185801 60
+
+An independent central stream run is also retained:
+  B_C6_central_10.out: EXE 67 -651 60
+It agrees with the PARI-coefficient file run for that auxiliary curve.
+
+Central coefficient files begin with N M. Derivative coefficient files
+begin with N rank M and the script requires rank=1. The remaining lines
+are exact integer a_n. Every completed L-sum output ends:
+  PASS: directed-rounding arithmetic, block Cauchy remainders and infinite tail included.
+
+The largest central run used867617471 coefficients in bounded-memory
+segments, with58429787 nonzero coefficients and3375904 Taylor blocks.
+It took56seconds in the original environment. The largest derivative
+run used289205824 coefficients,22686277 nonzero coefficients and1125275
+blocks, taking46seconds. Runtime is hardware-dependent.
+
+The central tail for row11 is below5.07e-19 and the derivative tail
+below2.82e-21. These are rigorous error bounds, not truncation heuristics.
+All arithmetic within the finite sums is outward rounded. The older
+central-only implementation is retained as records/B_C6_central_stream_v1.cpp;
+the current combined evaluator supersedes it.
+
+Base Manin factors and coefficient generation
+--------------------------------------------
+code/B_C6_gz_setup.gp generated the five auxiliary coefficient files and
+independently computed the first five base Manin constants as1. Its
+retained output stops after announcing base26569a1; no completed PARI
+Manin computation for that last base is claimed. The last value1 is
+instead verified in the primary Belabas--Bernardi--Perrin-Riou2019
+AppendixB,p102, the unnumbered26569a1/26569a2 block.
+
+The setup script is an exploration/generation transcript, not the final
+exact-scaling audit. Its displayed fourth roots of exact ratios have
+been superseded by exact c4/c6 equalities in B_C6_gz_exact_metadata.gp.
+PARI's write() appends: regenerate the auxiliary files only in a fresh
+output directory, or first move the old generated files aside. Do not
+blindly append a second copy of the coefficients. All inputs needed for
+the final certificate are already retained.
+
+Opened primary sources and precise uses
+--------------------------------------
+Cai--Shu--Tian2014, publisher54-page PDF:
+https://msp.org/ant/2014/8-10/ant-v8-n10-p05-p.pdf
+Theorem1.1,pp2524--2525; general Neron--Tate pairing conventionp2531.
+All hypotheses are checked in step2 of C.6.R5. Degree cancellation,
+twist differential scaling and conversion to full real periods are
+proved explicitly in steps1--3, rather than inferred from a BSD formula.
+
+Belabas--Bernardi--Perrin-Riou2019, complete publisher PDF:
+https://www.numdam.org/item/10.5802/pmb.37.pdf
+AppendixA Algorithm1 and AppendixB p102. Earlier search output wrongly
+attached the label Table5 to the26569 block; the actual block is unnumbered.
+The manuscript and bibliography use the corrected location.
+
+Yuan--Zhang--Zhang, author manuscript dated6Nov2011, full266-page PDF:
+https://www.researchgate.net/profile/Xinyi-Yuan-11/publication/267551160_Gross-Zagier_Formula_On_Shimura_Curves/links/548e842c0cf225bf66a5ff13/Gross-Zagier-Formula-On-Shimura-Curves.pdf?origin=publication_detail
+Section7.1.1, printedpp218--219 and Theorem7.1.2. Relative height divides
+by [L:F]; the bilinear polarization pairing has no factor one-half.
+This was independently opened and checked by both the lattice subagent
+and root. It confirms the factor4 relative to absolute h_(O).
+
+Stein2007, full author-hosted book:
+https://wstein.org/books/modform/stein-modform.pdf
+Theorem9.18 and Corollaries9.19--9.20. The weaker characteristic-zero
+comparison needed here is independently proved by a coset product and
+the full-level valence formula in step4.
+
+Darmon2009, complete author notes:
+https://www.math.mcgill.ca/darmon/pub/Articles/Expository/13.Oberwolfach/paper.pdf
+Section3,pp4--5 gives precisely the canonical Hecke-character theta
+series for class-number-one imaginary quadratic fields of odd prime
+discriminant and its weight2, levelD^2, trivial-character assertion.
+
+Literature routes examined but not used to assume the exact factors
+------------------------------------------------------------------
+The Li--Tian--Yan--Zhu ordinary CM theorem was read with its ordinary
+hypotheses; it does not cover every problematic bad/inert prime here.
+Kobayashi2013 addresses odd good supersingular primes, not arbitrary
+bad inert/ramified primes. The2026 Burungale--Kobayashi--Nakamura--Ota
+primary preprint was inspected: its Theorems1.7--1.8 and Section1.4
+do not provide the missing full rank-one leading-term claim in the form
+required here. A sweeping2026 Manin-constant preprint was read but not
+used; the six small base constants and the explicit twist construction
+avoid that dependency. Generic modular-degree-dependent denominator
+bounds at the enormous target level were also discarded as unnecessary.
+
+Numerical height distinction
+----------------------------
+The older270-digit PARI height values are independent numerical checks.
+They are not the rigorous intervals used here. This certificate uses
+only the separately proved Arb CM-height intervals in
+records/C_cm_height_arb.json. Similarly, the initial GP auxiliary L
+values in B_C6_gz_setup.out are exploratory checks; the final proof uses
+only the completed directed-rounding L_lower/L_upper transcripts.

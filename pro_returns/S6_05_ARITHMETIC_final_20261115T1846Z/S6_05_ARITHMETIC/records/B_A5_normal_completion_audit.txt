@@ -1,0 +1,120 @@
+Independent audit of records/A_normal_completion.tex
+15 November 2026, approximately 18:26--18:32 UTC.
+Verdict: PASS for the finite identities and dyadic scaling; no complete
+known-conjecture implication is established.
+
+1. Finite transform, independently recomputed.
+
+For (q,6)=1, expand the Salié sum and complete the k-square. The coefficient
+of k^2 is bar72*bar(a), its inverse fourfold coefficient is 18a, and the
+product of the two Jacobi factors is (2/q). This gives exactly
+  sum_{k mod q} T(2,bar72(k^2+d);q)e(-hk/q)
+    = (2/q)G_q S(2-18h^2,bar72 d;q).
+The quadratic Gauss formula used is valid for every odd q, including
+non-squarefree composite q, when its quadratic coefficient is a unit.
+
+An independent recomputation from the original three-variable sum gives
+  sum_{k mod q} S_q(c1,c2,k)e(-hk/q)
+    = q^2 (3/q) S(2-18h^2,bar12(c2^2-3c1^2);q).
+Here the k-sum sets the original third coordinate equal to h modulo q;
+the two remaining Gauss factors have product q(3/q). The extra q is
+the finite Fourier orthogonality factor. For c1=1,c2=0 this agrees with
+the displayed Salié completion and provides an independent sign check.
+
+2. Change of modulus and sign.
+
+For odd q and even M, CRT gives
+  S(M,-1;2q)=S(M bar(q),-bar(q);2)
+             S(M bar2,-bar2;q).
+The first factor is -1. Substitution x=2y in the second gives
+S(M,-bar4;q). Therefore the record's negative sign is correct.
+For |h|>=1, simultaneous negation of both Kloosterman parameters gives
+  S(2-18h^2,-1;2q)=S(18h^2-2,1;2q).
+The resulting product of parameters is positive.
+
+The existing exact cyclotomic program has 160 completion checks and
+40 modulus-doubling checks, with stdout preserved. This audit also
+verified the general algebraic proof; the finite tests are not used
+as its replacement.
+
+3. Poisson and the prefactor.
+
+Expanding a q-periodic function in its finite Fourier series, followed
+by ordinary Poisson summation for the Schwartz weight, gives the record's
+factor K/q and the argument K(X-h)/q with the stated Fourier sign.
+The endpoint factor K^-1 cancels K. Multiplication by the original
+X^-2 q^-3 delta prefactor, X^3 physical volume and three Gauss factors
+then gives
+  X q^-4 (6/q)(2/q)G_q^4 = X q^-2(3/q).
+There is no missing factor sqrt(q), K, or X in the completed scale.
+
+For the exact positive dyadic radial-face coefficient, the denominator
+is 1/(k+u), with 4<u<17/4. It can be retained without approximation by
+writing it as K^-1 psi_{K,u}(k/K), where a fixed smooth cutoff supported
+in [1,2] is divided by (v+u/K). This family and all its Fourier transforms
+have uniform Schwartz seminorms for K>=1. The suggestion was sent to
+the count agent to avoid implying an unproved global treatment of the
+O(k^-2) remainder of a leading-term expansion.
+
+4. Exact scope of the named classical input.
+
+For h in [X/2,3X/2] and X>=2, set m=18h^2-2, n=1 and c=2q. The retained
+face phase e(-Xu/q) is exactly
+  e(2 sqrt(mn) alpha/c), alpha=-Xu/sqrt(18h^2-2).
+It satisfies |alpha|<=17/8, independently of q,X,K,h and u in the fixed
+triangle. Thus B=3 is a valid fixed twist bound.
+The factor (3/q), with (q,6)=1, is constant on four classes modulo12;
+after c=2q these become fixed classes modulo24. Browning--Kumaraswamy--
+Steiner Conjecture1.1, checked in its primary author v2 p2, does include
+this fixed arithmetic-progression and bounded-twist setup, uniformly in
+the nonzero m,n. Steiner's published Conjecture2 is the corresponding
+source already audited in the manuscript.
+
+This is a real per-h application of the named classical conjecture,
+unlike substituting it directly for the original Salié sums. It is not
+a claim that the conjecture supplies cancellation across h.
+
+5. Tails and remaining exponent.
+
+For each h in the central range, the residual q-weight X/q times the
+Schwartz transform and the fixed face amplitude has bounded supremum
+and variation, with Schwartz decay in K|X-h|/X. The named partial-sum
+input therefore gives O_epsilon(X^epsilon) per effective h. There are
+O(1+X/K) such indices, giving X^(1+epsilon)/K for K<=sqrt(X).
+
+The far range |h-X|>=X/2 may be treated without the bounded-twist input.
+Weil's bound has gcd(m,1,c)=1 and is O_epsilon(X^(1/2+epsilon)) uniformly
+in h. Summing the Schwartz tail gives
+  O_A(X^(3/2+epsilon) K^(-A)).
+For K>=X^delta, choosing A in terms of delta makes it arbitrarily small.
+The low blocks K<X^delta are covered by the pre-completion estimate
+at scale X^(1/2+epsilon)K, if its separate arithmetic assumptions are
+granted. Neither treatment silently uses a fixed twist bound when h
+is small.
+
+The two termwise envelopes are exactly sqrt(X)K and X/K. Their
+transition K=X^(1/4) has value X^(3/4). This is a limitation of these
+two estimates, not a lower bound for the genuine sum.
+
+6. Strict main-item assessment.
+
+The finite transform is substantive: it absorbs the growing normal
+frequency into a short quadratic sequence of ordinary Kloosterman
+parameters, and the residual face phase has a bounded classical twist.
+It does not prove the required X^(1/2+epsilon) error. An additional
+uniform estimate for the joint h,q sum is still needed, as is treatment
+of the other dual families and local factors for a complete global proof.
+
+A targeted search for a published numbered bilinear/quadratic-sequence
+conjecture found no sufficient input. El Abdalaoui--Shparlinski--Steiner,
+arXiv2211.00379, primary full PDF opened: Conjectures2.1--2.2 and
+Theorem2.4 concern a fixed Kloosterman parameter a and qualitative
+horizontal correlation decay. They do not state the required uniform
+square-root bound with a=18h^2-2 varying near X^2. Creech2025,
+arXiv2508.18666, primary full PDF opened: Conjectures1.1--1.2 concern
+mass equidistribution, and Theorem1.5 averages over holomorphic Hecke
+forms; neither is the required joint arithmetic estimate. No theorem
+from those sources has been invoked in the count.
+
+Audited source snapshot SHA256 follows:
+80b27507a4645b2dece38ff80516bc08fae85e533391e02c8189f7d43a828d09  S6_05_ARITHMETIC/records/A_normal_completion.tex
