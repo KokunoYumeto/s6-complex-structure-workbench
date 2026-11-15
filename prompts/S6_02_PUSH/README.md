@@ -1,0 +1,10 @@
+# S6_02_PUSH
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`PROMPT.md`](PROMPT.md) | main session | Claude Opus 5.5 at effort max | 2026-11-15 | S6_02_PUSH: the family of complex structures on S^6, finished. The limit at w = 0 (Engel's Conjecture 8.2 and its S^6 version), the class of |
+| [`history_and_work/PROMPT.md`](history_and_work/PROMPT.md) | main session | Claude Opus 5.5 at effort max | 2026-11-13 | S6_02_PUSH: the family of complex structures on S^6, finished. The limit at w = 0 (Engel's Conjecture 8.2 and its S^6 version), the class of |
+| [`history_and_work/PROMPT_before_literature_status_20261115.md`](history_and_work/PROMPT_before_literature_status_20261115.md) | main session | Claude Opus 5.5 at effort max | 2026-11-14 | S6_02_PUSH: the family of complex structures on S^6, finished. The limit at w = 0 (Engel's Conjecture 8.2 and its S^6 version), the class of |
+| [`history_and_work/PROMPT_before_three_hour_check_20261113.md`](history_and_work/PROMPT_before_three_hour_check_20261113.md) | main session | Claude Opus 5.5 at effort max | 2026-11-13 | S6_02_PUSH: the family of complex structures on S^6, finished. The limit at w = 0 (Engel's Conjecture 8.2 and its S^6 version), the class of |
+| [`history_and_work/ZIP_ADD_20261113.md`](history_and_work/ZIP_ADD_20261113.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_02_PUSH: ZIP_ADD_20261113 |
+| [`history_and_work/ZIP_LIST.md`](history_and_work/ZIP_LIST.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_02_PUSH: files of `S6_02_PUSH_background.zip` |
