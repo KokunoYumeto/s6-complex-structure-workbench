@@ -1,0 +1,74 @@
+\section{C.2, C.4 and C.5: Euler numbers and tangent quotients}
+
+\subsection{Euler additivity and its limits}
+
+\begin{statement}{C2a}{Proved}{Euler localization for torus fibrations}
+Let $g:Y\to C$ be a proper surjective holomorphic map from a connected compact complex manifold to a compact Riemann surface, with connected general fibre $F$. Let $\Sigma\subset C$ contain every critical value. Then $\Sigma$ can be chosen finite, and
+\[
+ e(Y)=e(C\setminus\Sigma)e(F)+\sum_{c\in\Sigma}e((Y_c)_{\rm red}). \tag{C.1}
+\]
+For a complex threefold with general fibre a complex two-torus this becomes
+$\int_Yc_3(T_Y)=e(Y)=\sum_{c\in\Sigma}e((Y_c)_{\rm red})$.
+\end{statement}
+\begin{proof}
+The critical locus is a closed analytic subset of $Y$. Properness and the proper mapping theorem make its image analytic in $C$; generic smoothness over characteristic zero makes this image proper. Thus it is finite. Over $C\setminus\Sigma$, the underlying differentiable map is a proper submersion. Ehresmann's theorem makes it a smooth locally trivial fibre bundle. Euler characteristic with compact supports is additive for the finite stratification by this open part and the fibres; triangulating the base and trivializing over its cells shows that the open part contributes $e_c(C\setminus\Sigma)e(F)$. The real dimensions of a complex curve and its punctured strata are even, so $e_c(C\setminus\Sigma)=e(C\setminus\Sigma)$. Nilpotents change no underlying topological space. This proves (C.1). A two-torus has the cohomology of the real four-torus and Euler number $(1-1)^4=0$. Finally the top Chern class of the complex tangent bundle is the Euler class for the complex orientation, giving the last identity.
+\end{proof}
+
+\begin{statement}{C2b}{Refuted}{Nonnegativity of every fibre in unrestricted torus fibrations}
+There is a smooth projective threefold $Y$ with a proper connected-fibre map $Y\to\PP^1$, smooth general fibre an abelian surface, and a reduced normal-crossing fibre of Euler number $-2$. There is also such a threefold with a singular reduced fibre of Euler number zero whose three irreducible components are a blown-up abelian surface, a ruled surface over a genus-two curve, and $\PP^2$.
+\end{statement}
+\begin{proof}
+Let $C_2$ be the smooth projective completion of $w^2=z^6-1$. Its six simple branch points and the unramified points at infinity give genus two by Riemann--Hurwitz. Let $A=\operatorname{Jac}(C_2)$ and embed $C_2$ in $A$ by $p\mapsto\OO(p-p_*)$. This is injective because a principal divisor $p-q$ for distinct points would define a degree-one map $C_2\to\PP^1$. It is an immersion because the canonical system of a genus-two curve has no base point; the explicit differentials $dz/w,z\,dz/w$ verify that property, including at infinity. A proper injective immersion is an embedding. Adjunction on the torus gives $N_{C_2/A}=K_{C_2}$.
+
+Blow up $A\times\PP^1$ along $C_2\times\{0\}$, and denote the resulting smooth projective threefold by $Y$. Compose its blowdown with projection to $\PP^1$. The exceptional divisor is $E=\PP(K_{C_2}\oplus\OO_{C_2})$. The strict transform of $A\times\{0\}$ is $A$ itself, since blowing up a Cartier divisor in a smooth surface is an isomorphism. These two components meet along a section isomorphic to $C_2$. In local coordinates $(u,v,t)$ with centre $(u,t)=(0,0)$, a blowup chart has $t=u\tau$, so the fibre is the reduced normal-crossing divisor $u\tau=0$. The other chart and the complement give the claimed global map and connectedness of its fibres. Euler additivity gives
+\[
+ e((Y_0)_{\rm red})=e(A)+e(E)-e(C_2)=0+2(-2)-(-2)=-2.
+\]
+Every other fibre is $A$.
+
+Now blow up one point of the strict-transform component $A$ away from $C_2$. The new central fibre has components $\operatorname{Bl}_pA$, $E$, and $\PP^2$. Its pairwise intersections are $C_2$ and $\PP^1$, with no triple intersection. Its Euler number is
+\[
+1-4+3-(-2)-2=0.
+\]
+Both modifications have smooth total space and reduced normal-crossing central fibre. For completeness the integral cohomology is torsion-free. The Betti numbers of $A\times\PP^1$ are $(1,4,7,8,7,4,1)$; the blowup formula adds $H^{k-2}(C_2,\Z)$ in degree $k$, giving $(1,4,8,12,8,4,1)$. The point blowup adds one generator in degrees two and four, giving $(1,4,9,12,9,4,1)$. These formulas follow from excision for the exceptional projective bundle and its hyperplane class, whose restriction identifies the new relative summands. Their Euler numbers are respectively $-2$ and zero, independently checking the fibre computation. The exact arithmetic is in \texttt{code/C\_euler.py}.
+\end{proof}
+
+\begin{statement}{C2c}{Proved}{Euler numbers in semistable toric rank-two models}
+Consider a rank-two Mumford model with smooth three-dimensional total space obtained from a unimodular periodic triangulation of $\R^2$, divided by a rank-two translation lattice acting freely on the total model. Let $V,E,F$ be the numbers of vertices, edges and triangles in the quotient triangulation. Its reduced central fibre has Euler number
+\[
+ e(S)=F=2V\in2\Z_{>0}.                                \tag{C.2}
+\]
+Every positive even number occurs in this class. A rank-one model assembled from $\PP^1$-bundles over elliptic curves with their boundary elliptic sections identified has Euler number zero.
+\end{statement}
+\begin{proof}
+The toric orbit strata of a rank-two central fibre have dimensions two, one and zero. Its two-dimensional strata are copies of $(\C^*)^2$, its one-dimensional strata copies of $\C^*$, and its zero-dimensional strata correspond to triangles of the quotient triangulation. The first two have compactly supported Euler number zero. Hence the Euler number is $F$. The quotient complex is a real two-torus, so $V-E+F=0$, and every edge has two incident triangles, giving $3F=2E$, with incidences counted even when a face has identified edges. Thus $F=2V$.
+
+For existence, take the standard unimodular triangular tiling and divide its translations by the subgroup generated by $(N,0),(0,1)$. It has $V=N$ and $F=2N$. A positive integral quadratic form with this triangular Delaunay decomposition supplies the convex height function; multiplying the form by a positive integer supplies integral heights. The toric charts are the cones over its unimodular triangles, so their coordinate rings are regular and the base parameter is the product of three coordinate functions. The period lattice generated by the corresponding two monomials acts freely and properly after restricting to a sufficiently small punctured base disc, and the quotient compactification is the rank-two construction of Mumford, Section 6 of \cite{Mumford1972}. This gives its analytic realization and the required smooth local model. Equivalently it is the finite cover, of degree $N$ on the dual translation lattice, of the single-vertex triangular model; the free lattice action also shows that smoothness is retained. For rank one every normalization component is a $\PP^1$-bundle over an elliptic curve, with Euler number zero, and the identified boundary sections also have Euler number zero. Additivity gives the result.
+\end{proof}
+
+Statement C2b disproves a universal nonnegativity assertion without a restriction on the birational model. Its two examples have nonzero second Betti number. They therefore supply no counterexample to the additional $b_2=0$ question. The obstruction proved in Part D shows why the exhibited modifications cannot enter that subclass: a component with a compact K\"ahler resolution cannot meet another fibre component when every ambient divisor has rationally trivial first Chern class.
+
+\subsection{The logarithmic tangent quotient}
+
+\begin{statement}{C5a}{Proved}{The normalization quotient and its cohomology map}
+Let $Y$ be a smooth compact complex threefold, $S\subset Y$ a reduced normal-crossing divisor, and $\nu:\widetilde S\to Y$ the normalization followed by inclusion. This is a finite holomorphic immersion on each local branch. Put $\mathcal T=T_Y(-\log S)$. There is a canonical exact sequence of coherent $\OO_Y$-modules
+\[
+0\longrightarrow\mathcal T\longrightarrow T_Y
+ \longrightarrow\nu_*N_\nu\longrightarrow0,
+\qquad N_\nu=K_{\widetilde S}\otimes\nu^*K_Y^{-1}.      \tag{C.3}
+\]
+For every holomorphic line bundle $L$ on $Y$, the image of the natural cohomology map is exactly
+\[
+\begin{split}
+\im\bigl(H^2(Y,T_Y\otimes L)&\longrightarrow
+ H^2(\widetilde S,N_\nu\otimes\nu^*L)\bigr)\\
+ &=\ker\bigl(H^2(\widetilde S,N_\nu\otimes\nu^*L)
+ \longrightarrow H^3(Y,\mathcal T\otimes L)\bigr).
+\end{split}                                             \tag{C.4}
+\]
+The target identifies by Serre duality with
+$H^0(\widetilde S,\nu^*(K_Y\otimes L^{-1}))^\vee$.
+\end{statement}
+\begin{proof}
+In coordinates with $S=(z_1\cdots z_r=0)$, $1\le r\le3$, the map sends a vector field $\sum a_i\partial_{z_i}$ to the normal coefficient $a_i|_{z_i=0}$ on each branch $i\le r$. The separate coefficients lift independently to holomorphic functions, making the map surjective. Its kernel consists precisely of fields with $z_i\mid a_i$ for $i\le r$, which is $T_Y(-\log S)$. Coordinate changes act on each coefficient through the normal-line transition and permute the branches; hence the map and its exactness descend canonically to the normalization. The immersion tangent sequence on $\widetilde S$ gives $\det\nu^*T_Y=\det T_{\widetilde S}\otimes N_\nu$, proving the adjunction expression. Tensoring by the locally free line bundle $L$ preserves exactness. Finite pushforward has no higher direct images, so the long exact sequence in coherent cohomology gives (C.4). The smooth compact surface $\widetilde S$ has the usual Serre pairing, which gives the stated dual target. In particular the vanishing of $H^3(Y,\mathcal T\otimes L)$ makes this cohomology map surjective; no such vanishing has been suppressed in (C.4).
+\end{proof}
