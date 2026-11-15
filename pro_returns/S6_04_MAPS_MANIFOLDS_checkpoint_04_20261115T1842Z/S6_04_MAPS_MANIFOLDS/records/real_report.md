@@ -1,0 +1,11 @@
+# A.3 proof and audit record
+
+The two representatives were derived from the supplied real comparison R3, its finite twist normalization, and the actual even-shift cocycle K8. This is not an inference from Smith theory alone. The root continuation is fixed from t>1 through the upper half-plane. The three affine reflection matrices are R, A2^{-1}R, and M0 R; using g0 instead of g0^{-1} on the left arc was an unsuccessful exploratory convention and produced a nonintegral square translation. The corrected convention is used throughout.
+
+For negative imaginary w both real classes have fixed locus S3, with a semifree circle action and one fixed circle. For positive imaginary w one class is fixed-point free and the other has fixed locus S3 with the Hopf action. The table specifies all real base arcs, regular-fibre cosets, finite fibres and cusp circles. No triple point is fixed. The repaired map can be circle invariant and is null-homotopic on each fixed S3.
+
+Exact Hermite/Smith computations are in real_involutions.py and real_finite_four.py, with outputs. A separate agent independently checked every degree-four reflection lift and the component interchange, in maps_real_audit.py. It confirmed that each nonempty reflection parity gives one torus downstairs, not a Klein bottle. It also checked the degree-three transport C=B1^2: the root-lift condition is 2k=1 modulo 3. This explanation and its wording correction are included in the paper.
+
+The total S3 identification uses explicit semifree surface quotients in the negative case and the two solid-torus meridians in the positive case. Smith's theorem supplies only connectedness, orientability and mod-two homology. The positive Heegaard determinant calculation supplies the missing integral information.
+
+Read: S6_02 return AB real comparison and normalization sections; checkpoint closing cocycle; Knudson's original arXiv paper math/0409133, Theorem4.1(1), giving the Smith mod-p sphere statement. Searches included real forms of complex six-spheres, real involutions of S6, and exotic involutions of Euclidean spheres. No priority is claimed. The embedded loci are specified by actual local equations and attachments; no ambient-isotopy or Haefliger knot-invariant classification is asserted or required for their intrinsic closed-three-manifold diffeomorphism type.

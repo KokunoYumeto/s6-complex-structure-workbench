@@ -1,0 +1,212 @@
+\paragraph{Theorem F.2.12 (Proved: an integral obstruction for a rational $(5,12)$ family).}
+Let a rational rank-six cohomology representation have generators
+\[
+ A=\begin{pmatrix}1&0\\0&A_5\end{pmatrix},\qquad
+ B=\begin{pmatrix}1&c\\0&B_5\end{pmatrix},\qquad
+ c=(0,0,0,1,0),
+\]
+where
+\[
+ A_5=\begin{pmatrix}
+ 1&0&1&0&0\\1&0&0&0&0\\-1&0&0&1&1\\
+ 1&-1&0&-1&0\\0&1&0&0&0
+ \end{pmatrix},\qquad
+ B_5=\begin{pmatrix}
+ 0&1&0&0&0\\0&0&0&0&1\\1&-2&0&0&0\\
+ 0&1&0&-1&-1\\0&0&1&1&2
+ \end{pmatrix}.
+ \tag{F.33}
+\]
+For every invariant integral lattice with an index-one maximal
+square-zero cusp, and every free affine filling of multiplicities
+$m_1,m_2$ divisible respectively by five and twelve, a simply
+connected total space has
+\[
+ \operatorname{Tor}_3 H_2
+       \simeq\mathbb Z/3^{v_3(m_2)}.
+ \tag{F.34}
+\]
+In particular none of these data is three-connected.
+The standard lattice nevertheless has a primitive cusp,
+free affine fillings of orders five and twelve, and a simply
+connected total space with rational Betti vector
+$(1,0,0,0,4,0,0,0,1)$.
+
+\begin{proof}
+All matrix identities and integral lattices used below are
+printed and checked exactly in
+\texttt{fourfolds\_512\_probe.py}.
+The generators have orders five and twelve, characteristic
+polynomials $(T-1)^2\Phi_5$ and $(T-1)^2\Phi_{12}$,
+and $(AB-I)^2=0$ with three nonzero Smith factors equal to one.
+Their common invariant line is the first coordinate line.
+For homology matrices $A^t,B^t$ put
+\[
+ u_1=(1,0,0,0,0,0)^t,\qquad
+ u_2=(1,-1,1,-1,0,-1)^t,
+ \qquad \ell=(1,0,0,0,0,0).
+\]
+They are invariant vectors with $\ell(u_i)=1$.
+The cusp vanishing lattice and its two finite translates
+generate the saturated lattice $\ker\ell$.
+Choose twists $v_1=-2u_1$, $v_2=5u_2$.
+Their $\ell$-values are units modulo five and twelve, proving
+every nonidentity affine power free.
+After killing the vanishing lattice the group relations are
+$5a=-2h$, $12b=5h$, $a+b=0$; their determinant has absolute
+value $|-24+25|=1$.  Thus the total space is simply connected.
+The exact rational exterior calculations give
+\[
+ h^0=(1,1,0,0,0,0,1),\qquad
+ h^1=(0,0,0,3,0,0,0),\qquad
+ h^2=(1,0,0,0,0,1,1)
+\]
+for the invariant sheaves, and the same rational Leray
+argument as in F.2.5 gives the asserted Betti vector.
+
+We first prove that changing the lattice cannot remove the
+obstruction at the prime three.  Write $R=\mathbb Z_3$ and
+$K=\mathbb Q_3$.  The standard quotient lattice $W_R$ defined
+by $A_5,B_5$ has irreducible reduction modulo three.
+Indeed $\Phi_5$ is irreducible over $\mathbb F_3$, since
+three has order four modulo five.  Every proper nonzero
+$A_5$-stable subspace therefore has dimension one or four.
+On a one-dimensional subrepresentation or quotient its
+$A_5$ character is one; the unipotent product forces the
+$B_5$ character to be one too.  The stacked and horizontal
+matrices for $A_5-I,B_5-I$ both have rank five modulo three,
+as certified in the code, ruling out those two possibilities.
+
+This irreducible reduction makes $W_R$ the unique stable
+$R$-lattice up to homothety.  To see this, rescale another
+lattice into $W_R$ but not into $3W_R$.  Its reduction is
+a nonzero invariant subspace, hence all of $W_R/3W_R$.
+Nakayama's lemma, or the elementary Smith form of the
+inclusion, then makes it equal to $W_R$.
+
+Normalize the quotient of any stable lattice in $V_K$ to
+be $W_R$.  Its intersection with the invariant line is
+$3^rRe$ for some integer $r$.
+The representation of the free group on the two generators
+has extension class
+$\alpha\in H^1(\Gamma,W_R^*)$.
+This cohomology group is torsion free: the coboundary map
+from $W_R^*$ into two copies has full column rank modulo
+three, since $W_R^*$ has no invariants modulo three.
+The class $\alpha$ is primitive in this free $R$-module.
+Otherwise the extension would split modulo three and $V$
+would have a trivial quotient there.  The horizontal
+matrix $[A-I\ B-I]$ instead has Smith factors
+$(1,1,1,1,1,2)$, so it has full rank modulo three.
+
+In a basis starting with $3^re$, the extension class is
+$3^{-r}\alpha$.  Integrality is therefore possible exactly
+when $r\leq0$.  Changes of splitting introduce no further
+classes: the coboundary image is primitive, so an integral
+coboundary over $K$ is already an integral coboundary over
+$R$.  Thus these lattices are represented by multiplying
+the extension rows by $3^{-r}$.
+On the quotient cusp $N_W$ has primitive rank-two image.
+The extra cusp map is the nonzero map
+$\ker N_W/\operatorname{im}N_W\to Re$.
+It is a unit for the displayed lattice, because its full
+cusp has Smith factors $(1,1,1)$; for the lattice indexed
+by $r$ it is multiplied by $3^{-r}$.
+Hence the full cusp is primitive exactly when $r=0$.
+We have proved uniqueness of the primitive-cusp lattice
+over $R$, without relying on a bounded lattice search.
+
+It remains to compute the obstruction on that lattice.
+We first justify the arbitrary-twist comparison integrally.
+For any global invariant lattice take the primitive invariant
+homology covector $\ell$ and quotient the van Kampen group
+by every fibre loop in $\ker\ell$.
+The finite presentations become
+$[a,h]=[b,h]=1$, $a^{m_1}=h^{r_1}$,
+$b^{m_2}=h^{r_2}$, where $r_i=\ell(v_i)$.
+The cusp meridian gives $ab=h^{-\kappa}$ for an integer
+$\kappa$ determined by its translation clutching
+($\kappa=0$ for the stated standard clutching).
+The cusp angular lattice lies in $\ker\ell$, so it adds
+no further relation to this quotient.  In particular this
+is an abelian quotient with determinant
+$m_1m_2\kappa+m_2r_1+m_1r_2$.
+Simple connectivity makes that determinant $\pm1$.
+Reduction modulo each $m_i$ proves both
+$\gcd(m_1,m_2)=1$ and $\gcd(r_i,m_i)=1$.
+
+The two finite fillings have free $R$-cohomology in the
+degrees needed here.  In the invariant marking whose first
+homology vector over $R$ has $\ell$-value one, the map
+$m_i\ell$ from the reduced finite fibre to $\mathbb R/\mathbb Z$
+has connected fibre $T^5$: the affine generator permutes
+its $m_i$ preimage components by addition of $r_i$ modulo
+$m_i$, transitively by the proved coprimality.
+Its monodromy on vertical homology is $D_i^{s_i}$, where
+$s_ir_i\equiv1\pmod {m_i}$, possibly followed by a translation.
+Thus it is a mapping torus of a power prime to the linear
+order.  The translation is isotopic to the identity and
+does not change its Wang maps.  At the second point, over
+$R$ we may take the invariant first vector to be $v_2/r_2$;
+its denominator is prime to three and does not change the
+$R$-homology lattice.  At the first point the covering
+degree $m_1$ is prime to three, so averaging and the transfer
+identify its $R$-cohomology with the invariant fibre
+cohomology directly.
+In degrees one and two the matrices
+$D_i-I$ and $\bigwedge^2D_i-I$ have only unit Smith factors.
+This proves the stated freeness by the Wang sequence.
+
+The finite degree-two covering cokernel is read from
+integral periods.  Vertical cycles have integral periods.
+The remaining primitive two-cycle is the commuting torus
+formed by a base suspension and a primitive fixed vertical
+loop $\lambda_i$; its covering period is
+$\omega(u_i,\lambda_i)/m_i$ for an invariant integral
+two-form $\omega$.
+More explicitly the homological Wang sequence is
+\[
+ 0\longrightarrow\operatorname{coker}(D_i^{s_i}-I\mid H_2(T^5;R))
+ \longrightarrow H_2(B_i;R)
+ \longrightarrow\ker(D_i^{s_i}-I\mid H_1(T^5;R))
+ \longrightarrow0.
+\]
+The last group has rank one, generated by $\lambda_i$.
+The commuting suspension torus maps to that generator;
+at the second point the invariant vector $v_2/r_2$ may be used after taking
+$R$-linear combinations of integral cycles.
+Therefore vertical cycles and this one torus generate
+$H_2(B_i;R)$, proving sufficiency of the period test.
+For integral bases of the invariant two-forms, the numerator
+rows at the two points are
+\[
+ (0,0,5),\qquad (3,1,1).
+ \tag{F.35}
+\]
+The vertical Wang quotient has no torsion, so those cycles
+generate the full free second homology and the period test
+is sufficient as well as necessary.
+
+Since $3\mid m_2$, the already-proved coprimality gives
+$3\nmid m_1$ and makes $r_2$ a unit in $R$.
+Changing that unit twist or adding a fixed vertical vector
+does not change the three-primary cokernel in (F.35): the
+former multiplies its generating period by a unit, and the
+latter has zero wedge with the fixed vertical loop.
+The first finite point has zero covering cokernel over $R$;
+the second has $R/m_2R$.
+
+The global invariant degree-two group is zero, and the
+degree-two global coboundary image is primitive, with
+vanishing rational parabolic first cohomology.  Therefore
+$H^1(\mathbb P^1,R^2g_*R)=R/m_2R$.
+The global degree-one coinvariants vanish over $R$, and
+there are no degree-two or degree-three point-supported
+kernels: the finite cap groups just proved free, and the
+Kuhn cusp has its sole kernel in degree four.
+The degree-three global invariant group also vanishes.
+Consequently the only nonzero total-degree-three Leray
+term over $R$ is $E_2^{1,2}=R/m_2R$; it has no possible
+differential.  Thus $H^3(g^{-1}(\mathbb P^1);R)=R/m_2R$.
+The universal coefficient theorem gives precisely (F.34).
+\end{proof}
