@@ -1,0 +1,13 @@
+# Degree-one cap obstruction: sources and scope
+
+Opened 2026-11-15, approximately 15:51–16:10 UTC.
+
+Search: `Istrati Otiman Pontecorvo Ruggiero Toric Kato manifolds Theorem 7.1 degeneration` (web engine 2). Opened the published primary PDF https://www.numdam.org/item/10.5802/jep.208.pdf (JEP9,2022,1347–1395; DOI10.5802/jep.208). The existing bibliography key `IstratiEtAl2022Root` is reused; no duplicate entry is made.
+
+Read Section2 p1352 (fundamental group Z), Section5 and Theorem5.2 (hyperbolic invariant curves rational), Proposition8.4 (no holomorphic one-forms), Theorem8.5 (hyperbolic h01=1), and the proof of Theorem8.8 p1380 (normalized invariant divisors are compact toric or hyperbolic toric Kato). The source distinguishes hyperbolic, parabolic and Hopf cases. B.4.6 uses the hyperbolic statements only; it does not import the hyperbolic h01 theorem into an unrestricted parabolic case. Retrieved as turn238view0/1/2, turn239view0/1/2/3.
+
+The low-degree comparison criterion is proved directly from the two closed-cover/ordered-branch resolutions and their natural five-term sequences. Its horizontal-block application uses the independently established H1(V)=H1(C) and the exact characteristic polynomial p(1)=1. It is a restricted obstruction to an explicit class of non-Kähler cap assemblies. Arbitrary analytic caps and arbitrary conductor/intersection geometries remain outside its scope.
+
+Also opened Kajiwara–Kato–Nakayama (2008), original journal PDF https://www.ms.u-tokyo.ac.jp/journal/pdf/jms150104.pdf: Definitions1.3.4–1.3.5, Theorems5.1.3,5.2.1,5.3.2. A nonpolarized log complex torus defined by an admissible pairing has proper finite-orbit cone models. These are construction statements for a pre-existing logarithmic group sheaf, not a theorem identifying every proper analytic cap with such a model. The marked S6 cusp family also has an affine torsor translation around the parameter; the existence/extension of a suitable logarithmic torsor has not been proved. Retrieved as turn240view0/1/2. Existing key `KKN2008Root` is reused.
+
+Further search at approximately16:10: `semistable degenerations complex tori Hopf surfaces non Kähler central fibre`; `Nishiguchi degeneration abelian surfaces non Kähler torus degeneration Hopf`. The results again led to Nishiguchi's K3 alternatives, Kamenova's Kähler theorem, and Schröer–Siebert's Kodaira-surface construction. No primary result was located that proves arbitrary analytic two-torus degenerations have only class-C normalized components, or that the marked affine cusp torsor extends to the KKN category. Search-result snippets were not promoted to such a theorem. The primary sources already opened are retained with their actual hypotheses.

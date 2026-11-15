@@ -1,0 +1,332 @@
+\subsection{E.4. An independent interval certificate}
+\label{sec:e4}
+
+We write $\eta_D$ for the Dedekind eta function and set
+\[
+ h=z-(1-\tau)/2,\qquad
+ \mathcal N^2(z,\tau)=
+ \left|\frac{\vartheta_3(h,\tau)}{\eta_D(\tau)}\right|^2
+ \exp\left(-\frac{2\pi(\Im h)^2}{\Im\tau}\right).
+\]
+The half-period theta identity identifies this with the norm used in
+R3. The coefficient of $\Im c$ in $D_c$ is one. Consequently the
+identity from the supplied return which we use is
+\[
+ D_{\rm part}=\frac6\pi
+ \log\left(\frac{\mathcal N}{2\sqrt3}\right).
+\]
+It follows directly by taking the imaginary part of the theta formula
+for $\beta^{\rm part}$; its Gaussian factor removes
+$6(\Im\mu)^2/\Im\tau$. Thus no numerical normalization is inferred
+from the new computation. The analytic formula and the first
+certificate are recorded in the supplied return, Statements C.1.1
+and C.2.3 \citep{family2026}. The result below supplies independent
+arithmetic evidence for that same conclusion, without a priority claim.
+
+\begin{theorem}[E.4.1 (Proved): independent certification of every box]
+For all 19701 rational rectangles in the supplied certificate, and for
+each $\tau$ in the rectangle, both zeros of $\wp_\tau$ satisfy
+$\mathcal N^2<2$. The new largest certified upper bound is less than
+\[
+ 1.999877571767410525.
+\]
+The 19701 rectangles, 36 local rectangles and 174 excluded rectangles
+have disjoint interiors and cover exactly
+$[0,1/2]\times[17/20,2]$. Every local rectangle is contained in
+$|\tau-i|<3/20000$, and every excluded rectangle satisfies
+$|\tau|<1$ throughout.
+\end{theorem}
+
+\begin{proof}
+The programs \path{code/e4_arb_certificate.py} and
+\path{code/e4_cover_and_local.py} use respectively 192-bit and 256-bit
+Arb arithmetic through python-flint 0.9.0. The arithmetic implementation
+is independent of mpmath. We import neither mpmath nor any routine
+from the previous certificate. The only numerical data taken from that
+certificate are its rational rectangle endpoints. We recompute roots,
+preconditioners, radii, contraction bounds, function values and tails.
+Arb's midpoint-radius representation and its outward error bounds are
+described by \citet[Sections 2--3]{Johansson2016}; the precise
+constructor and endpoint semantics used here are documented in
+\citet{PythonFlint2026}. The final comparison is made with an upper
+endpoint, before conversion to a decimal string.
+
+For a rectangle $Q$, let $z_0$ and $A\ne0$ be the exact dyadic complex
+numbers selected by the midpoint Newton iteration. That iteration is
+only a choice of constants. For $Z=z_0+[-r,r]+i[-r,r]$ we independently
+enclose $\wp_\tau(z_0)$ and $\wp'_\tau(Z)$ for $\tau\in Q$.
+We accept only if
+\[
+ \begin{split}
+ &\left|-A\wp_\tau(z_0)
+ +(1-A\wp'_\tau(Z))(Z-z_0)\right|_\infty<r,\\
+ &|\Re(1-A\wp'_\tau(Z))|
+       +|\Im(1-A\wp'_\tau(Z))|<1.
+ \end{split}
+\]
+Here absolute values on enclosures mean their outward upper bounds.
+The derivative enclosure and integration along a line segment show
+that $z\mapsto z-A\wp_\tau(z)$ is a strict contraction of $Z$ into
+itself, uniformly for $\tau\in Q$. Thus it has a genuine zero in $Z$.
+The two zeros of $\wp$ are negatives modulo the period lattice, counted
+with multiplicity. The theta transformation laws show that
+$\mathcal N$ is invariant under these operations; hence one root
+enclosure controls both zeros. No continuity or success of Newton
+iteration is used in that conclusion.
+
+We use the normally convergent cosine expansion
+\[
+ \wp_\tau(z)=\frac{\pi^2}{\sin^2\pi z}-\frac{\pi^2}{3}
+ +8\pi^2\sum_{n\geq1}\frac{nq^n}{1-q^n}
+                      (1-\cos 2\pi nz),\qquad q=e^{2\pi i\tau},
+\]
+and differentiate it in $z$ for $\wp'$. This identity follows by twice
+differentiating the normally convergent Jacobi product and inserting
+$E_2=1-24\sum_{n\geq1}nq^n/(1-q^n)$; this also verifies the
+Fourier formula used in the supplied return. The new program sums
+32 terms directly in cosine form. Put $r_q\geq|q|$,
+$H_z\geq|\Im z|$, and $R_q=r_q e^{2\pi H_z}<1$.
+For $j=1,2$, the inequality $(N+k)^j\leq(N+1)^jk^j$ gives
+\[
+ \begin{aligned}
+ U_1(a)&=\frac{(N+1)a^{N+1}}{(1-a)^2},\\
+ U_2(a)&=\frac{(N+1)^2a^{N+1}(1+a)}{(1-a)^3},
+ \qquad
+ \sum_{n>N}n^j a^n\leq U_j(a).
+ \end{aligned}
+\]
+We therefore add complex rectangles enclosing discs of radii
+\[
+ \frac{8\pi^2}{1-r_q}\bigl(U_1(r_q)+U_1(R_q)\bigr),
+ \qquad \frac{16\pi^3}{1-r_q}U_2(R_q)
+\]
+to the two partial sums. These estimates follow from
+$|\cos z|,|\sin z|\leq e^{|\Im z|}$ and
+$|1-q^n|\geq1-r_q$. They differ from the moment formulas used in
+the old implementation.
+
+For $\vartheta_3$ we sum
+$1+2\sum_{n=1}^{12}e^{\pi i n^2\tau}\cos(2\pi nh)$.
+With $T_*\leq\Im\tau$ and $H_*\geq|\Im h|$, the remaining
+absolute value is at most
+\[
+ \frac{2e^{-169\pi T_*+26\pi H_*}}
+ {1-e^{-27\pi T_*+2\pi H_*}}.
+\]
+The ratio in this expression is tested to be less than one. For eta
+we independently sum its logarithm,
+\[
+ \log\eta_D(\tau)=\frac{\pi i\tau}{12}
+          +\sum_{n=1}^{24}\log(1-q^n)+\mathcal E,
+ \qquad
+ |\mathcal E|\leq
+ \frac{r_q^{25}}{(1-r_q)(1-r_q^{25})}.
+\]
+The logarithms are holomorphic on $|q^n|<1$. The tail follows by
+summing $|\log(1-z)|\leq|z|/(1-|z|)$.
+We enclose $\mathcal N^2$ as
+\[
+ ((\Re\vartheta_3)^2+(\Im\vartheta_3)^2)
+ \exp\left(-2\Re\log\eta_D-
+                   \frac{2\pi(\Im h)^2}{\Im\tau}\right),
+\]
+and test its upper endpoint against the exact integer 2.
+
+All 19701 tests succeeded. The full output records each new enclosure;
+the largest is enclosed by
+\[
+ 1.999877571767410524070536478244687423578792301873142913
+       \ \pm 9.26\cdot10^{-56}.
+\]
+This is the enclosure of a certified upper bound, not an estimate of
+the actual maximum. Its box has input index 17866, with zero-based
+indexing. The file digest of the input is recorded in the output.
+
+The cover check is exact rational arithmetic. At all 438 distinct
+vertical edges we maintain the active closed vertical intervals. In
+every open vertical slab they form an ordered partition of
+$[17/20,2]$, each with multiplicity one. The last active set is empty;
+all leaves lie in the root rectangle, and the sum of their exact areas
+is $23/40$. The closed rectangles also cover their common edges.
+The omitted and excluded conditions are checked separately using
+rational endpoint comparisons. Finally,
+$2(1/10000)^2<(3/20000)^2$ puts the entire omitted square inside the
+analytic disc used below. This verifies both the inequalities and
+the coverage, rather than just replaying the old list of successful
+flags.
+\end{proof}
+
+\begin{theorem}[E.4.2 (Proved): quantitative local maximum]
+If $|\tau-i|\leq3/20000$ and $\wp_\tau(z)=0$, then
+$\mathcal N(z,\tau)\leq\sqrt2$, with equality precisely at
+$\tau=i$. The proof uses the explicit constants below.
+\end{theorem}
+
+\begin{proof}
+Set $x=\tau-i$, $G(h,\tau)=\wp_\tau((1-\tau)/2+h)$ and
+$H(h,\tau)=\log(\vartheta_3(h,\tau)/\eta_D(\tau))$.
+Both functions are even in $h$. On $|h|\leq1/5$, $|x|\leq1/10$,
+the point $(1-\tau)/2+h$ has distance at least $0.9/2-0.2$ in
+imaginary part from any lattice point, so $G$ has no pole.
+Put
+\[
+ A_k=\sum_{n\geq1}n^ke^{-0.9\pi n^2}\cosh(0.4\pi n),
+ \quad a_0=2A_0,\ a_1=4\pi A_1,\ a_2=8\pi^2A_2,
+ \quad r=e^{-1.8\pi}.
+\]
+Then $a_0<0.225$, so the theta series has no zero there and a
+holomorphic logarithm exists. From
+$G=-\partial_h^2\log\vartheta_3-\pi^2E_2/3$ we obtain
+\[
+ \begin{aligned}
+ |G|&\leq\frac{a_2}{1-a_0}+
+ \frac{a_1^2}{(1-a_0)^2}+
+ \frac{\pi^2}{3}\left(1+\frac{24r}{(1-r)^3}\right)<18.373<20,\\
+ |H|&\leq-\log(1-a_0)+\frac{1.1\pi}{12}
+                  +\frac{r}{(1-r)^2}<0.547<0.6.
+ \end{aligned}
+\]
+The new certified upper bounds are respectively
+$18.372504032305989$ and $0.546229724979279$.
+For the sums $A_k$ we retain ten terms. If $n=11+j$, then
+$n^2\geq121+23j$ and $n^k\leq11^k(1+j)^k$; replacing cosh by
+the positive exponential bounds the tail by a geometric series with
+ratio $e^{-20.3\pi}$ and its first two moment sums. These formulas,
+including all outward rounding, are in the accompanying program.
+
+At $(0,i)$ the coefficients are
+\[
+ G=0,\qquad G_{h^2}=-g_2(i)/4,\qquad G_x=id,
+ \qquad H=\log\sqrt2,\quad H_x=0,\quad H_{h^2}=-\pi/2,
+\]
+where $d>0$. The first two identities follow from the half-period
+value of $\wp$ and $\wp''=6\wp^2-g_2/2$. If
+$e_2(\tau)=\pi^2(\vartheta_2^4-\vartheta_4^4)/3$, differentiating
+its Gaussian series gives $e_2'(i)=id$. We compute
+\[
+ \begin{split}
+ 10.03&<d<10.04,\\
+ 47.26&<g_2(i)/4<47.30.
+ \end{split}
+\]
+More precisely the certified enclosures begin
+$d=10.03061933746602249879\ldots$ and
+$g_2(i)/4=47.26818003230846307326\ldots$.
+The computation of $d$ uses 16 terms in the two Gaussian series and
+their derivatives, followed by geometric Gaussian tail bounds.
+For $g_2/4$ it uses
+\[
+ \frac{g_2(i)}4=\frac{\pi^4}{3}
+ \left(1+240\sum_{n\geq1}\frac{n^3e^{-2\pi n}}{1-e^{-2\pi n}}\right)
+\]
+with 24 terms and the bound
+$\sum_{n>24}n^3q^n/(1-q^n)
+\leq25^3q^{25}(1+4q+q^2)/(1-q)^5$.
+The modular transformation of $\vartheta_3/\eta_D$ gives $H_x=0$;
+that of eta gives $E_2(i)=3/\pi$. Inserting this in the displayed
+formula for $G$ gives $H_{h^2}=-\pi/2$.
+
+Take $\epsilon=3/20000$, $r_h=3/100$,
+$s=\epsilon/(1/10)=3/2000$ and $r_2=(r_h/(1/5))^2=9/400$.
+Cauchy's coefficient estimates give on $|h|=r_h$
+\[
+ |G(h,i)|\geq
+ \left(47.26-\frac{500r_2}{1-r_2}\right)r_h^2
+       >0.03217594373401534,
+\]
+while
+\[
+ |G(h,i+x)-G(h,i)|\leq
+ \frac{20s}{(1-s)(1-r_2)}<0.03073664204747019.
+\]
+Rouch\'e's theorem therefore encloses both zeros in $|h|<r_h$.
+The comparison with the total number of zeros of an elliptic function
+of order two identifies these with all roots modulo the lattice.
+
+Write $G=e_2(\tau)+h^2Q(h,\tau)$. The same Cauchy bounds imply
+\[
+ \left|Q+\frac{g_2(i)}4\right|
+ \leq\frac{500(r_2+s/(1-s))}{1-r_2}<12.277368,
+ \quad
+ |e_2(\tau)-idx|\leq\frac{2000|x|^2}{1-s}.
+\]
+At a root, first bounding the left side of the last inequality below
+and then bounding it above yields respectively
+\[
+ |x|<6.123343|h|^2<7|h|^2,
+ \qquad |h|^2<0.000044338219<\frac1{20000}.
+\]
+For example the two rational majorants actually evaluated are
+\[
+ \frac{47.30+Q_*}{10.03-2000\epsilon/(1-s)},
+ \qquad
+ \frac{10.04\epsilon+2000\epsilon^2/(1-s)}{47.26-Q_*},
+\]
+where $Q_*=500(r_2+s/(1-s))/(1-r_2)$; both denominators are
+strictly positive.
+
+In the even power series of $H$, put
+$\alpha=|x|/(1/10)\leq70|h|^2$ and
+$\beta=|h|^2/(1/5)^2=25|h|^2$. After removal of its displayed
+constant and linear coefficients, the remaining bivariate series is
+bounded by
+$0.6(\alpha^2+\alpha\beta+\beta^2)/((1-\alpha)(1-\beta))$.
+The change from $1/\Im\tau$ to one in the Gaussian contributes
+at most $7\pi|h|^4/(1-\epsilon)$. Thus a bound for the total
+coefficient of $|h|^4$ is
+\[
+ \frac{0.6(70^2+25\cdot70+25^2)}
+ {(1-s)(1-25/20000)}+\frac{7\pi}{1-\epsilon}
+ <4399.024<5000.
+\]
+Since $\Re(-\pi h^2/2)-\pi(\Im h)^2=-\pi|h|^2/2$, we have
+\[
+ \log\mathcal N-\log\sqrt2
+ \leq-\frac\pi2|h|^2+5000|h|^4
+ <-\left(\frac\pi2-\frac14\right)|h|^2
+\]
+whenever $h\ne0$. The coefficient is greater than $1.32079632679$.
+If $h=0$, the lower bound for $e_2$ forces $x=0$. This proves the
+claim with all constants controlled by a second arithmetic engine.
+\end{proof}
+
+\begin{corollary}[E.4.3 (Proved): confirmation of the maximum in R3]
+For the normalization in the prompt, $M=-(3/\pi)\log6$, attained
+only at $t=1$. In particular the radius 216 has an independent
+arithmetic certificate.
+\end{corollary}
+\begin{proof}
+The theta transformation formulas preserve $\mathcal N$ under modular
+transport, lattice translation, sign, and
+$(z,\tau)\mapsto(\bar z,-\bar\tau)$; hence the half modular domain
+suffices. Theorems E.4.1--E.4.2 cover its portion $\Im\tau\leq2$.
+For $T=\Im\tau\geq2$, choose $|\Im z|\leq T/2$ by lattice
+translation. With $b=43/100$ and $r=e^{-4\pi}$, if
+$|\Im z|\geq b$ the Fourier formula gives
+\[
+ \left|\frac{\wp_\tau(z)}{\pi^2}+\frac13\right|
+ \leq\frac1{\sinh^2(\pi b)}+
+ 8\left\{\frac r{(1-r)^3}
+ +\frac1{2(1-r)}\left(
+ \frac{e^{-2\pi}}{(1-e^{-2\pi})^2}+
+ \frac{e^{-6\pi}}{(1-e^{-6\pi})^2}\right)\right\}<\frac13.
+\]
+Thus a zero has $|\Im z|<b$. The function
+$\cosh(\pi y)e^{-\pi y^2/T}$ is increasing for $0\leq y\leq b$:
+concavity and the positive endpoint value of $\tanh(\pi y)-y$
+give its nonnegative logarithmic derivative. The Jacobi product now
+implies
+\[
+ \mathcal N\leq2\cosh(\pi b)
+ e^{-\pi/3-\pi b^2/2}
+ \exp\left(\frac{2\cosh(2\pi b)r}{1-r}
+                +\frac{r^2}{1-r^2}\right)<1.082<\sqrt2.
+\]
+This bound decreases with $T\geq2$. Both strict inequalities are
+independently checked in \path{code/e4_cover_and_local.py}.
+At $\tau=i$, $\vartheta_3(0,i)/\eta_D(i)=\sqrt2$, so equality
+does occur. The period identity at the beginning of the subsection
+then gives the claimed value of $M$ and
+$e^{-\pi M}=6^3=216$. The invariant $j(\tau)=1728t$ sends its
+unique modular equality orbit to $t=1$.
+\end{proof}

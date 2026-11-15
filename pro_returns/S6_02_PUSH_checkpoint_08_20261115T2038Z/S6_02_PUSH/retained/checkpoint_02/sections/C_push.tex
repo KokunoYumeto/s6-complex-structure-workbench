@@ -1,0 +1,386 @@
+\section{C. Smooth monodromy and the seven-dimensional invariant}
+
+We distinguish the value of the invariant from formulas which would
+compute it after a suitable coboundary has been constructed. In this
+section $M_\Phi$ is a closed seven-manifold, whereas $W_8$ denotes a
+compact oriented eight-manifold with boundary. The circle parameter
+has positive orientation. On $M_\Phi$ we use the orientation
+$d\theta\wedge o_{X_c}$; this is the boundary orientation of a
+holomorphic family over a positively oriented disc. The statements
+below do not assign a characteristic number to any unconstructed
+filling in Part B.
+
+\subsection{C.1. Clutching conventions and the mapping torus}
+
+\begin{proposition}[C.1.1 (Known, with derivation): the mapping-torus comparison]
+For an orientation-preserving smooth diffeomorphism
+$\phi:S^6\to S^6$, put
+\[
+ M_\phi=(S^6\times[0,1])/((x,1)\sim(\phi(x),0)),\qquad
+ \Sigma_\phi=D^7_+\cup_\phi(-D^7_-).
+\]
+The boundary identification uses the usual oriented parametrizations
+of the two underlying copies of $S^6$; the minus sign reverses the
+orientation of the second disc. Then
+\[
+ M_\phi\cong (S^1\times S^6)\mathbin\#\Sigma_\phi
+\]
+as oriented smooth manifolds. With the corresponding sphere-gluing
+identification, $[\phi]\mapsto[\Sigma_\phi]$ identifies
+$\pi_0\Diff^+(S^6)$ with $\Theta_7$. For either spin structure on
+$M_\phi$,
+\[
+ \mu(M_\phi)=\mu(\Sigma_\phi).
+\]
+For the family in the prompt the gluing map is
+$\Phi=F_{2,c_0-2}\circ H$, with $c(r)=c_0-2r$.
+\end{proposition}
+
+\begin{proof}
+An ambient isotopy first arranges that $\phi$ is the identity on a
+small closed disc: move the image of its centre back, correct the
+oriented derivative through $\GL^+(6,\R)$, and use isotopy extension
+on a smaller coordinate disc. Consequently its support lies in the
+complementary disc $D^6$. Cut the mapping torus at its seam and take
+the block $D^6\times[-\epsilon,\epsilon]$. The lower half of this
+block has the old coordinates; on the upper half replace the
+coordinates by $\phi^{-1}$. This identifies the reglued block with a
+standard seven-disc. Its attaching map is $\phi$ on its upper
+hemisphere and the identity on the lower hemisphere and side collar.
+The upper hemisphere has boundary orientation $o_{D^6}$ for the
+orientation $dt\wedge o_{D^6}$ on the block. Thus the replacement
+has exactly the sign in $D^7_+\cup_\phi(-D^7_-)$.
+Removing a small ball from the second disc in that sphere leaves the
+same attaching construction; this proves the connected-sum formula.
+
+Sphere gluing identifies pseudo-isotopy classes with homotopy spheres;
+Cerf's pseudo-isotopy theorem changes pseudo-isotopy to isotopy for
+the simply connected six-sphere. The exact primary statements are
+Theorem 0 and Corollaries 1--2 of \citet[p.~8]{Cerf1970};
+the sphere case is also explained in Theorem 1 and Corollary 1 of
+\citet[p.~156]{Poenaru1971}. These statements compare the
+sphere gluing and extension-over-a-disc constructions. This is the
+high-dimensional theorem, not the separate statement $\Gamma_4=0$.
+The oriented connected-sum group is Theorem 1.1 and Lemma 2.1 of
+\citet[pp.~504--505]{KervaireMilnor1963}; their dimension table on
+p.~504 gives order 28 in dimension seven.
+
+The sphere summand is spin. The product $S^1\times S^6$ is spin and
+has two spin structures; both bound $S^1\times D^7$ with the
+corresponding choice on $S^1$. That coboundary has zero fourth
+cohomology and zero signature, hence zero Eells--Kuiper invariant.
+Boundary connected sum of this coboundary with a spin coboundary of
+$\Sigma_\phi$ proves additivity directly: the fourth intersection
+forms are an orthogonal sum and the Pontryagin evaluations add.
+Thus the two boundary spin structures give the same value. This is
+also the connected-sum property in \citet[Section 3]{EellsKuiper1962}.
+
+Finally $e^{-\pi i(c_0-2r)}=e^{-\pi ic_0}e^{2\pi ir}$.
+Parallel transport therefore reaches $X_{c_0-2}$ along the positive
+$w$-circle; its endpoint is identified by $F_{2,c_0-2}$.
+This confirms the sign and endpoint in R12. Two smooth connections
+can be joined by a smooth path of horizontal distributions, producing
+an isotopy of the resulting monodromies. Holomorphic automorphisms in
+the connected group $\C^*$ also change the result only by isotopy.
+\end{proof}
+
+\begin{proposition}[C.1.2 (Known, with derivation): the positive generator]
+The generator $1\in\Z/28$ is represented by the oriented sphere
+bundle of a rank-four oriented real vector bundle on $S^4$ with
+$e=1$ and $p_1=6$, oriented as the boundary of its disc bundle.
+Its Eells--Kuiper invariant is $1/28$.
+\end{proposition}
+\begin{proof}
+The clutching parameters $(h,j)=(2,-1)$ in the oriented
+$S^3$-bundle construction give $e=h+j=1$ and $p_1=2(h-j)=6$;
+we orient the base and fibre to give these signs. These are the
+bundle conventions and computations of \citet[Section 6,
+equations (12)--(13)]{EellsKuiper1962}. The Gysin sequence gives
+the integral homology of $S^7$, and the homotopy sequence gives
+simple connectivity. Thus the total space is a homotopy sphere.
+Its disc bundle has intersection form $(1)$ on the zero section,
+is spin because its second cohomology with $\Z/2$ coefficients
+vanishes, and has $p_1^2=36$ and signature 1. Hence
+\[
+ \mu=\frac{36-4}{896}=\frac1{28}.
+\]
+The order-28 classification identifies this with the requested
+positive generator. The integer and rational arithmetic is checked
+in \path{code/c_exact.py}.
+\end{proof}
+
+\subsection{C.2. The corrected hypotheses for the characteristic formula}
+
+\begin{theorem}[C.2.1 (Known, with derivation): Lead 6's formula]
+Let $M=M_\phi$ have the orientation above. Let $W_8$ be a smooth
+compact oriented spin$^c$ eight-manifold with $\partial W_8=M$.
+Let $c\in H^2(W_8;\Z)$ be the first Chern class of its determinant
+line, and choose a trivialization on the boundary which induces the
+spin structure used on $M$. Write $p=p_1(TW_8)$, choose a relative
+lift $\bar c$, and let $\bar p$ be the unique rational relative lift
+of $p$. Then, with all products evaluated on $[W_8,M]$,
+\begin{equation}\label{eq:c-spin-c}
+ \mu(M)\equiv
+ \frac{\bar p^{,2}-4\sigma(W_8)}{896}
+ -\frac{\bar p\bar c^{,2}}{192}
+ +\frac{\bar c^{,4}}{384}\pmod{\Z}.
+\end{equation}
+The value is independent of the lift $\bar c$. If $W_8$ is almost
+complex, use its canonical spin$^c$ structure, for which
+$c=c_1(TW_8)$ and $p=c_1^2-2c_2$. If $W_8$ is spin and its
+determinant line is trivial, this reduces to
+\[
+ 28\mu(M)=\frac{p_1^2-4\sigma(W_8)}{32}\pmod{28}.
+\]
+All the boundary cohomology and spin-structure conditions in this
+statement hold for the mapping torus; the existence of the particular
+geometric $W_8$ proposed in Part B is a separate assertion.
+\end{theorem}
+
+\begin{proof}
+The mapping-torus exact sequence, or Proposition C.1.1, gives
+$H^k(M;\Z)=0$ for $2\leq k\leq5$ and $H^1(M;\Z)=\Z$.
+The same vanishing in degree two holds with $\Z/2$ coefficients,
+so $M$ is spin. Its spin structures form a torsor for
+$H^1(M;\Z/2)=\Z/2$. The exact sequence of the pair gives an
+isomorphism
+$H^4(W_8,M;\Q)\to H^4(W_8;\Q)$ and a surjection
+$H^2(W_8,M;\Z)\to H^2(W_8;\Z)$, proving the assertions
+about lifts and determinant trivializations.
+
+If two lifts of $c$ differ by $\delta\alpha$ with
+$\alpha\in H^1(M;\Z)$, the relative cup-product identity gives
+$\delta\alpha\smile b=\delta(\alpha\smile i^*b)$.
+The restrictions of $c$ and $p$ vanish on $M$. Every term in the
+change of $\bar p\bar c^2$ or $\bar c^4$ is therefore zero;
+in particular $(\delta\alpha)^2=0$. This proves lift independence.
+There is no assertion here that the relative class $\bar c$ itself
+is unique.
+
+For a closed spin$^c$ eight-manifold the degree-eight part of the
+Dirac index density is
+\[
+ [e^{c/2}\widehat A]_8
+ =\frac{7p_1^2-4p_2}{5760}
+       -\frac{p_1c^2}{192}+\frac{c^4}{384}.
+\]
+Eliminate $p_2$ using $\sigma=(7p_2-p_1^2)/45$.
+The result is exactly the right side of
+\eqref{eq:c-spin-c}. To justify its use on a boundary, glue $W_8$
+to the negative of a spin coboundary inducing the same boundary spin
+structure; extend the determinant line by its chosen trivialization.
+The glued manifold is spin$^c$, so its Dirac index is an integer.
+Novikov additivity and the relative-product comparison identify that
+integer with the difference between \eqref{eq:c-spin-c} and the
+spin formula for $M$. The spin formula is
+\citet[Section 6, equation (11)]{EellsKuiper1962}.
+The spin$^c$ version is also explicitly recorded, with normalization
+$28\mu$ and characteristic class
+$\widehat p=(p_1+c^2)/2$, by
+\citet[Section 2.2, equation (2.1)]{CrowleyNordstrom2020}.
+Substituting this $\widehat p$ gives the same coefficients; both
+polynomial identities are verified exactly in \path{code/c_exact.py}.
+
+A spin coboundary can be supplied using the connected-sum description:
+bound the product by $S^1\times D^7$ and bound the sphere summand
+by its spin coboundary. Thus no inference from simple connectivity of
+$M$ is made; indeed $\pi_1(M)=\Z$. The original Eells--Kuiper
+paper's unstructured formulation has an extra condition on
+$H^1(W;\Z/2)\to H^1(M;\Z/2)$ to ensure spin structures glue.
+Our explicit requirement that the boundary spin structures match
+supplies precisely that gluing datum. By Proposition C.1.1 the two
+possible spin structures on this particular $M$ have equal invariant.
+Finally the splitting principle gives
+$p_1(TW_8)=c_1^2-2c_2$ for an almost complex tangent bundle.
+\end{proof}
+
+\input{sections/C_untwisted_coboundary}
+
+\subsection{C.3. What an equivariant twist does and does not determine}
+
+\begin{proposition}[C.3.1 (Proved): the circle action and local shear]
+The effective circle subgroup $\rho=\R/\Z\subset\C/\Z$ of R6
+acts freely outside its fixed double curve. That curve is a sphere,
+and its two complex normal weights are $1,-1$. A monodromy
+representative may be chosen $\rho$-equivariant. In marked real
+coordinates on a regular torus fibre, its linear part is
+$I-2\widehat\delta\otimes\gamma$; its affine correction is the
+translation supplied by R2 and depends on the trivialization.
+\end{proposition}
+
+\begin{proof}
+On a regular torus the circle acts by translation in the primitive
+lattice direction $\widehat\delta$, and is therefore free.
+At a multiple fibre, apply the invariant covector $\gamma$ to the
+equation that a circle translation agrees with the $j$-th affine
+deck generator to the power $a$. Since the deck translation has
+$\gamma$-component $\pm1/m_j$, equality forces
+$a\equiv0\pmod{m_j}$. Primitivity of $\widehat\delta$ then
+forces the circle element to be the identity. This checks freeness
+on the quotient using the actual twist vectors, including the root
+centre; the argument is not just a statement about the product cover.
+
+In a cusp toric chart, the relevant primitive edge directions are
+$e_1,e_2,e_1-e_2$, with $e_2=\widehat\delta$.
+Their nonzero determinants with $e_2$ have absolute value one.
+Thus stabilizers off the edge in direction $e_2$ are trivial. Along
+that edge the circle is fixed; the two normal characters in the
+adjacent unimodular cones are $1$ and $-1$ because the base monomial
+is invariant. The opposite-edge identification gives the double
+curve with its two distinct triple-point endpoints, namely a
+$\PP^1$. This verifies the toric step of R6 used here.
+
+The circle acts on the entire family and commutes with the endpoint
+isomorphism $F_2$. Averaging a Riemannian metric over this compact
+circle makes the orthogonal horizontal distribution invariant.
+Its parallel transport and hence the monodromy commute with $\rho$.
+On a local marked torus chart,
+$\Pi_{c-2}=\Pi_c(I-2\widehat\delta\otimes\gamma)$.
+Inserting the identity complex-linear part and translation of R2
+gives the asserted affine formula. A locally chosen lift of its
+translation must not be multiplied by a real interpolation parameter
+without checking its period cocycle; that operation need not descend
+to the torus bundle.
+\end{proof}
+
+\begin{proposition}[C.3.2 (Proved): a global scalar gauge would be trivial]
+Let a smooth circle act on a simply connected smooth manifold $Z$.
+If $g:Z\to S^1$ is smooth and invariant under the circle, then
+$z\mapsto g(z)\cdot z$ is smoothly isotopic to the identity.
+The primitive coordinate $\theta$ detecting $\gamma$ on a regular
+fibre of $X_c$ has no continuous extension to $X_c$.
+\end{proposition}
+
+\begin{proof}
+Since $Z$ is simply connected, $g$ lifts to a smooth real function
+$a$ with $g=e^{2\pi ia}$. Invariance implies
+$a(\lambda z)-a(z)\in\Z$. This difference is continuous in the
+connected circle and is zero at its identity, so it is zero
+everywhere. The maps $z\mapsto e^{2\pi ita(z)}\cdot z$ are
+diffeomorphisms with inverses obtained by replacing $t$ by $-t$.
+They give the isotopy. In the present application a loop representing
+$\widehat\gamma$ in a regular torus fibre has degree one under
+$\theta$. If $\theta$ extended to the simply connected $S^6$,
+that degree would be zero. The contradiction shows why the local
+twist in Lead 7 is not a global scalar-gauge calculation.
+\end{proof}
+
+\begin{proposition}[C.3.3 (Known, with derivation): equivariance alone is insufficient]
+All 28 oriented mapping classes of $S^6$ admit representatives
+equivariant for one fixed semifree circle action with fixed set $S^2$.
+Consequently the circle action, its fixed set, and its normal weights
+do not determine $[\Phi]$.
+\end{proposition}
+
+\begin{proof}
+Use $S^6\subset\operatorname{Im}\mathbb H\oplus\mathbb H$.
+The equivariant Blakers--Massey construction gives a generator
+$\sigma$ of $\pi_0\Diff^+(S^6)$ equivariant for simultaneous
+quaternionic conjugation. The smooth reentrance statement is
+\citet[Theorem 2.1]{DuranRigas2007}; Section 3.2 identifies this
+representative and its powers with all 28 classes. Restrict
+conjugation to $q=e^{i\theta/2}$, regarding $q$ and $-q$ as the
+same effective circle element. Its fixed vector space consists of
+$p\in\R i$ and $w\in\R+\R i$, a real three-space, so the
+fixed set on the sphere is $S^2$. Outside it, at least one of the
+two $(j,k)$-planes is nonzero, and an effective rotation fixing it
+is the identity. Thus the action is semifree. All powers of
+$\sigma$ commute with it. Conjugating the complex coordinate on
+one of the two real normal planes writes the characters as
+$1,-1$; this representation calculation is checked exactly in
+\path{code/c_exact.py}. These are statements about smooth circle
+actions and normal representations, not a comparison of their
+complex structures with $X_c$.
+\end{proof}
+
+\begin{proposition}[C.3.4 (Proved): information lost under the proposed base change]
+Under $w=r^6$ the smooth monodromy class becomes $6[\Phi]$.
+Its value alone leaves two possibilities for $[\Phi]$ in $\Z/28$,
+differing by 14. In particular a vanishing value after that base
+change would not prove that $[\Phi]=0$.
+\end{proposition}
+\begin{proof}
+The induced homomorphism on fundamental groups sends a positive
+$r$-circle to six positive $w$-circles, so its transport is
+$\Phi^6$ up to isotopy. The kernel of multiplication by six on
+$\Z/28$ is $\{0,14\}$. The explicit preimages of all elements
+of its image are checked in \path{code/c_exact.py}.
+\end{proof}
+
+\input{sections/C_closing_cocycle}
+\input{sections/C_orbit_lift_comparison}
+
+\subsection{C.4. Change of twists and real structures}
+
+\begin{proposition}[C.4.1 (Proved): twist independence in the sphere cases]
+For the fixed multiplicities $(3,4)$ and all admissible data in R5
+with $|p|=1$, the monodromy class of the positive $w$-circle is the
+same class in $\Theta_7$, with the complex orientation on each fibre.
+\end{proposition}
+
+\begin{proof}
+The explicit sufficiency maps in E.1 depend holomorphically on a
+small $c$-disc: the lattice defects and toric integral exponents are
+constant, the periods and unit factors are holomorphic, and the
+translation correction is solved in the fixed sheaf $V$ with
+$H^1(B,V)=0$. This is the parameter-dependent assertion of E.1.3,
+not just the fibrewise classification. For the second twist
+coefficient $s_2$, the parameter identification is
+$W=e^{-\pi i(c+s_2)}=(-1)^{s_2}w$.
+The rotation of the punctured disc preserves its positive
+fundamental-group generator. Local family identifications differ
+by elements of $\Aut(X)=\C^*$, a connected group, so their
+transition changes are smoothly isotopic to the identity. Following
+these identifications around the circle conjugates the monodromy
+in the oriented mapping-class group. Since $\Theta_7$ is abelian,
+the resulting class is unchanged. If the lattice sign in R5 is
+$-1$, the comparison map is nevertheless holomorphic and preserves
+the complex orientation; no extra sign is introduced.
+\end{proof}
+
+\begin{proposition}[C.4.2 (Proved): conjugation gives no torsion constraint]
+The antiholomorphic identification in R6 covers
+$w\mapsto-\bar w$. At a fixed base point on the imaginary
+$w$-axis it identifies the positive-loop monodromy with the
+inverse-loop monodromy by an orientation-reversing fibre map.
+Its action on $\Theta_7$ is negation, so the resulting equation is
+the tautology $-[\Phi]=-[\Phi]$, not $2[\Phi]=0$.
+\end{proposition}
+
+\begin{proof}
+From $c'=1-\bar c$ we obtain
+$e^{-\pi ic'}=-\overline{e^{-\pi ic}}$.
+Complex conjugation reverses the parameter circle. An
+antiholomorphic map in complex dimension three reverses the real
+orientation because its determinant has sign $(-1)^3$.
+Conjugating a sphere clutching map by a reflection changes the
+orientation of its glued homotopy sphere, hence negates its
+$\Theta_7$ class. Equivalently the Eells--Kuiper invariant changes
+sign. Applying this to the inverse loop proves the assertion.
+This confirms the last sentence of Lead 7 without extracting a
+spurious order-two restriction.
+\end{proof}
+
+\begin{problem}[C.5.1 (Open): the actual residue and its independent computation]
+The value
+\[
+ [\Phi]\in\Z/28
+\]
+for the specified family has not been computed in this return.
+Propositions C.1.1--C.4.2 do not supply it. To evaluate
+\eqref{eq:c-spin-c} on the geometric route, one must construct the
+specific resolution $W_8$ of a descended filling and compute its
+relative intersection pairing, $c_1,c_2$, and signature. No such
+intersection pairing is asserted here. On the equivariant route,
+one must identify the global correction cocycle of the local
+$\gamma$-shear with a class of equivariant sphere diffeomorphisms;
+the regular-fibre shear and the fixed-point data alone do not do so.
+The failed scalar-gauge reduction is excluded by C.3.2, and
+C.3.3 explains why merely constructing an equivariant representative
+cannot finish the calculation. A computation of $6[\Phi]$ would
+still need to resolve the order-two ambiguity in C.3.4. Thus the
+numeric requests in C.1--C.3 and the numeric part of C.4 remain
+undecided, as does the full corrected-twist formula of Lead 7.
+The characteristic formula in Lead 6 is established with its
+hypotheses; its proposed geometric application is not.
+\end{problem}

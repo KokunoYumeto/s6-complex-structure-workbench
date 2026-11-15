@@ -1,0 +1,9 @@
+# Source and proof record for A.4.7
+
+15 November2026,15:23–15:28UTC. Primary queries: `Bierstone Milman canonical desingularization complex analytic spaces 1997 arxiv functorial` and `proper bimeromorphic smooth complex manifolds fundamental group isomorphism modification`.
+
+Opened: Bierstone and Milman, *Canonical desingularization in characteristic zero by blowing up the maximum strata of a local invariant*, arXiv:alg-geom/9508005, https://arxiv.org/pdf/alg-geom/9508005. The opened primary file contains the explicit analytic scope in(0.2)(2), Theorem1.6 and the following paragraph extending it to relatively compact open subsets and locally finite resolutions of noncompact analytic spaces. A.4.7 uses only existence of a smooth model of the explicit normal common modification already constructed by fan intersection. It does not infer that a punctured-family isomorphism has an analytic graph closure.
+
+An author-hosted Bei–Piazza PDF was located for the standard fundamental-group invariance of modifications, but its opening timed out; no theorem from that unopened file is cited. A.4.7 instead gives the short general-position proof in full.
+
+The Euler formula is derived from the stratification: 11 for the Euler number of S minus its nodal fibre, one for each four-cone orbit at the cusp, and zero for every positive-dimensional algebraic torus. Multiplicities enter the nearby function but not the underlying central Euler number. The boundary determinant forces exactly two one-branch cusp contributions of weight1. The independent saved script checks33 models, including five genuinely nonreduced examples; its output reports the actual count and all inputs. No broad integral-homology consequence is inferred from the rational toric cohomology theorems of de Cataldo–Migliorini–Mustață.

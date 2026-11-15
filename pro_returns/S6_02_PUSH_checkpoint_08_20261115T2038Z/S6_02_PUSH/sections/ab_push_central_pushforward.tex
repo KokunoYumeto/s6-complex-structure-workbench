@@ -1,0 +1,155 @@
+\begin{proposition}[A.4.9; Proved; a second integral central-space computation]\label{push:A49}
+The homology formula of A.4.8 can also be computed
+on the central spaces, by their normalization
+resolutions and the strata of each recorded star.
+More precisely, let $Y'\to Y$ be one ordinary
+blow-up in the algorithm of A.2.5, with closed
+smooth centre $C$ of complex codimension $c$.
+Let $D,D'$ be the reduced central supports and
+$C_0=C\cap D$. In the derived category of integral
+sheaves on $D$ there is an isomorphism
+\[
+ R(\pi_D)_*\mathbb Z_{D'}\simeq
+ \mathbb Z_D\oplus
+ \bigoplus_{a=1}^{c-1}(i_0)_*\mathbb Z_{C_0}[-2a],
+ \tag{A.49a}
+\]
+where $\pi_D:D'\to D$ and $i_0:C_0\hookrightarrow D$
+are the induced continuous maps. In particular
+\[
+ H^j(D';\mathbb Z)\simeq H^j(D;\mathbb Z)
+ \oplus\bigoplus_{a=1}^{c-1}H^{j-2a}(C_0;\mathbb Z).
+ \tag{A.49b}
+\]
+The maps in this splitting are integral, with unit
+diagonal on the exceptional-fibre basis. Thus it
+also determines the primitive boundary maps and
+the absence of torsion in the normalization
+mapping-cylinder computation along the entire
+finite algorithm, not just the Euler characteristic.
+\end{proposition}
+\begin{proof}
+We construct the sheaf maps rather than infer a
+splitting from fibre ranks. Let $E=\mathbb P_C(N_{C/Y})$
+be the exceptional divisor, let $p:E\to C$, and put
+$\xi=c_1(\mathcal O_E(1))$. Pullback from $Y$ gives
+the degree-zero summand. For $1\leq a\leq c-1$,
+pullback by $p$, multiplication by $\xi^{a-1}$,
+and the exceptional Gysin morphism give a derived
+map
+\[
+ i_*\mathbb Z_C[-2a]\longrightarrow
+ R\pi_*\mathbb Z_{Y'},\qquad i:C\hookrightarrow Y.
+\]
+The Gysin map exists integrally for a closed complex
+divisor, by its oriented tubular Thom class; neither
+the centre nor the ambient space must be compact.
+At a point of $C$, proper base change identifies
+the stalk of the target with
+$H^*(\mathbb P^{c-1};\mathbb Z)$.
+Restriction of the exceptional normal line is
+$\mathcal O_E(-1)$, so the displayed maps send
+the generators to
+\[
+ 1,-\xi,-\xi^2,\ldots,-\xi^{c-1}.
+\]
+This is an integral basis. Off $C$ the map is
+the identity. It is therefore a stalkwise
+quasi-isomorphism
+\[
+ \mathbb Z_Y\oplus
+ \bigoplus_{a=1}^{c-1}i_*\mathbb Z_C[-2a]
+ \xrightarrow{\ \simeq\ }R\pi_*\mathbb Z_{Y'}.
+\]
+
+Now restrict this actual sheaf morphism to $D$.
+The central support upstairs is the whole inverse
+image $\pi^{-1}D$, including when the centre is
+horizontal. Proper base change applies to this
+Cartesian square. The inverse-image functor for
+integral sheaves is exact, and the inverse image
+of $i_*\mathbb Z_C$ is
+$(i_0)_*\mathbb Z_{C_0}$. This proves (A.49a).
+Taking derived global sections proves (A.49b).
+This calculation concerns the stratified map of
+central spaces. It does not first calculate the
+cohomology of either ambient total neighbourhood.
+
+Here is its explicit relation to the requested
+normalization mapping cylinders. Resolve
+$\mathbb Z_{D'}$ by the alternating ordered-local-branch
+complex: its first term is the constant sheaf on
+the normalization, its next term is on the normalized
+double-branch space, and so on. Its augmentation is
+an integral quasi-isomorphism, because at a point
+with $s$ branches it is the augmented simplex
+complex on those branches. No division by $s!$ is
+used; one uses alternating integral cochains, or
+equivalently the orientation local system of each
+unordered branch set. Proper pushforward of this
+resolution computes the left side of (A.49a).
+The same resolution for $D$, together with the
+centre complex, computes its right side.
+
+The local matrices can be read directly from the
+blow-up charts in A.2.5. If the centre lies on $k$
+central branches among its $c$ defining coordinates,
+the exceptional fibre is $\mathbb P^{c-1}$. The new
+exceptional branch supplies that whole projective
+space; the strict transform of old branch $i$
+supplies its coordinate hyperplane $H_i$.
+Intersections supply the corresponding coordinate
+projective subspaces. In each even cohomological
+degree the normalization differential is the
+alternating restriction matrix with entries
+$0,1,-1$. The cover consisting of the whole
+projective space and its selected hyperplanes
+has the elementary simplex contraction, leaving
+one generator $\xi^a$ in each degree $2a$,
+$0\leq a<c$. For a horizontal centre, every
+central branch meeting its generic central
+stratum supplies the whole exceptional fibre;
+the same simplex contraction applies to these
+copies. Higher boundary strata are treated by
+the same coordinate restrictions. The global
+Gysin maps just constructed glue the surviving
+classes with unit coefficient, so this local
+cancellation cannot hide an extension or an
+integral index.
+
+Starting from the explicitly computed reference
+normalization matrices in A.4.8, (A.49a) therefore
+computes the normalization complex along every
+recorded blow-up or inverse blow-up. A compact
+centre has $C_0=C$. A horizontal toric surface
+centre retracts to its rational-chain $C_0$;
+a horizontal curve centre has $C_0$ a point.
+Their cohomology is free and even. Consequently
+the central computation preserves odd cohomology
+and torsion, adds one to $b_2$ for every new
+boundary ray, and adds one to $b_6$ exactly for
+a new central ray. It gives the same
+$(b_1,b_3,b_5)=(1,7,0)$,
+$b_2=8+k+m$ and $b_6=k+m$ as A.4.8.
+
+Independently, stratification of $\pi_D$ into
+$D\setminus C_0$ and $C_0$, with fibres a point
+and $\mathbb P^{c-1}$, gives
+\[
+ \chi(D')-\chi(D)=(c-1)\chi(C_0).
+\]
+The absolute torus-stratum count of A.4.7 is
+$\chi(D)=11k+t_4$. Together with the central
+group calculation this gives again
+$b_4=9k+t_4-2m-1$. Thus the two computations
+agree integrally and in Euler number.
+
+The program \path{code/ab_push_central_pushforward.py}
+constructs every local alternating projective-subspace
+matrix for $2\leq c\leq4$ and $1\leq k\leq c$,
+as well as the possible horizontal cases. Its
+Smith calculations check the unit cancellations
+in every local dimension occurring in the
+fourfolds. The sheaf construction proves their
+global compatibility for arbitrary input fans.
+\end{proof}
