@@ -1,0 +1,13 @@
+# _prompt_sources
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`S6_1_CDP_body.md`](S6_1_CDP_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_1_CDP: Campana-Demailly-Peternell after S^6. Where the proofs fail, a counterexample that does not use S^6, and the strongest theorem tha |
+| [`S6_2_INVARIANTS_body.md`](S6_2_INVARIANTS_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_2_INVARIANTS: the Dolbeault, Frölicher, Bott-Chern and deformation invariants of the complex structures on S^6 of [AC26] |
+| [`S6_3_FAMILY_body.md`](S6_3_FAMILY_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_3_FAMILY: the family of complex structures on S^6 of [AC26] and [E26]. Its exact classification, its parameter space, its boundary and it |
+| [`S6_4_MAPS_body.md`](S6_4_MAPS_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_4_MAPS: the maps from the complex S^6 to S^3, S^2 and S^4 given by its torus fibration, and their homotopy classes |
+| [`S6_5_MANIFOLDS_body.md`](S6_5_MANIFOLDS_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_5_MANIFOLDS: the other manifolds the S^6 construction gives. Covers, other elliptic surfaces, the conifold transition, the fibre-product  |
+| [`S6_6_ARITHMETIC_body.md`](S6_6_ARITHMETIC_body.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | S6_6_ARITHMETIC: two arithmetic problems left open by the side lanes of the S6 workbench. A sectorial count of geodesic arcs, and a rank-24  |
+| [`_COMMON_BLOCK.md`](_COMMON_BLOCK.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | THE MATERIAL YOU ARE GIVEN |
+| [`_COMMON_BLOCK_ARITHMETIC.md`](_COMMON_BLOCK_ARITHMETIC.md) | main session | Claude Opus 5.5 at effort max | 2026-11-12 | THE MATERIAL YOU ARE GIVEN |
+| [`reading_notes_head.md`](reading_notes_head.md) | named in the file | Claude Fable 5.2 at effort high | 2026-11-12 | What each part contains: the local S6 workspace and the public repository |

@@ -1,0 +1,6 @@
+# _history_top
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`S6_03_CDP_PROMPT_before_routes_20261113.md`](S6_03_CDP_PROMPT_before_routes_20261113.md) | main session | Claude Opus 5.5 at effort max | 2026-11-13 | S6_03_CDP: Campana-Demailly-Peternell after S^6. Where the proofs fail, a counterexample that does not use S^6, and the strongest theorem th |
+| [`S6_05_ARITHMETIC_PROMPT_before_routes_20261113.md`](S6_05_ARITHMETIC_PROMPT_before_routes_20261113.md) | main session | Claude Opus 5.5 at effort max | 2026-11-13 | S6_05_ARITHMETIC: three arithmetic problems from the S6 workbench. A sectorial count of geodesic arcs; a rank-24 lattice between Leech latti |
