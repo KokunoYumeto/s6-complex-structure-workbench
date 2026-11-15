@@ -1,0 +1,1233 @@
+\section{The lattice intersection and its cubic symmetries}
+\label{sec:B}
+
+We use positive definite lattices with roots of squared length two. Thus
+\(\det L\) is the determinant of a Gram matrix, and
+\(\Theta_L(\tau)=\sum_{x\in L}q^{(x,x)/2}\), where
+\(q=e^{2\pi i\tau}\). The quadratic discriminant form is
+\(Q_L(x+L)=(x,x)/2\pmod{\Z}\). All matrices in our certificates
+are rational or integral. The two different quadratic forms sometimes
+called the discriminant form, \((x,x)\pmod{2\Z}\) and \(Q_L\),
+therefore differ by the displayed factor two.
+
+\subsection{An independent construction and the eight extensions}
+
+Put
+\[
+ A_5=\{x\in\Z^6:\ \textstyle\sum x_i=0\},\qquad
+ D_4=\{y\in\Z^4:\ \textstyle\sum y_i\in2\Z\},\qquad
+ R=A_5^4\perp D_4.
+\]
+The scalar product is the ordinary Euclidean product on the ambient
+\(28\)-space. Write \(\lambda=(5,-1,-1,-1,-1,-1)/6\), and
+\(\omega_j=\sum_{i=1}^j e_i-(j/6)\sum_{i=1}^6e_i\).
+The five glue vectors, with their first four entries denoting multiples
+of \(\lambda\), are
+\begin{equation}\label{eq:B-glue}
+\begin{split}
+ &(3,3,3,3;0),\quad(3,3,0,0;(1,0,0,0)),\\
+ &(3,0,3,0;(1/2,1/2,1/2,1/2)),\\
+ &(2,2,2,0;0),\quad(2,4,0,2;0).
+\end{split}
+\end{equation}
+We define \(N\) to be their span together with \(R\), and put
+\[
+ \rho=((5,3,1,-1,-3,-5)/2)^4\,\oplus\,(3,2,1,0),
+ \qquad \alpha=(e_1-e_2,0,0,0;0).
+\]
+Then \((\rho,\alpha)=1\), \(\rho^2=84\), and \(\rho\in N\).
+For \(d\mid6\) define, without any choice of a lift modulo \(d^2\),
+\begin{equation}\label{eq:B-neighbor}
+ K_d=\{x\in N:(\rho,x)\in d\Z\},\qquad
+ N_d=K_d+\Z\bigl(\rho/d-(6/d)\alpha\bigr).
+\end{equation}
+Let \(r\) cyclically shift the six coordinates in every \(A_5\) factor
+by two places and fix the \(D_4\) factor. Set
+\(\Lambda_i=r^iN_6\), \(i\in\Z/3\Z\), and
+\(J=\Lambda_0\cap\Lambda_1\).
+
+\begin{statement}[B.1 (Proved): the intersection and its discriminant form]
+The lattice \(N\) is even unimodular, with root system \(A_5^4D_4\).
+The three distinct lattices \(\Lambda_i\) are Leech lattices, every
+pair has intersection \(J\), and
+\[
+ rJ=J,\qquad [\Lambda_i:J]=9,\qquad\det J=81.
+\]
+Put \(u=(\omega_2,\omega_4,0,\omega_2;0)\),
+\(v=\rho/6-\alpha\), and \((e_1,e_2,e_3,e_4)=(u,v,ru,rv)\).
+Their classes form a basis of \(J^\vee/J\) over \(\mathbb F_3\).
+In this basis,
+\begin{equation}\label{eq:B-disc}
+ \bigl((e_i,e_j)\bigr)=
+ \begin{pmatrix}
+ 4&2&-2&-4/3\\2&4&-2/3&-2/3\\
+ -2&-2/3&4&2\\-4/3&-2/3&2&4
+ \end{pmatrix},\qquad
+ Q_J(a,b,c,d)=\frac{2ad+bc+bd}{3}\pmod{\Z}.
+\end{equation}
+In particular this discriminant form is split and nondegenerate.
+\end{statement}
+
+\begin{proof}
+We give both the exact finite verification and the algebra that makes
+it sufficient. The root lattice has determinant \(6^4\cdot4=5184\).
+The classes in \eqref{eq:B-glue} span an isotropic subgroup of its
+quadratic discriminant group of order \(72\): reduce the four
+\(A_5\) coordinates modulo six and the \(D_4\) classes modulo its
+root lattice. The orders of the independent primary components are
+\(2^3\) and \(3^2\). Their pairings and half norms are integral.
+Consequently \(N\) is even and has determinant \(5184/72^2=1\).
+
+Here and below an assertion about a lattice span is verified by integer
+Hermite normal form in the ambient coordinates multiplied by twelve.
+The complete implementation is \path{code/B_exact_lattices.py};
+the constructed bases and its output are in the correspondingly named
+\path{records/B_*} files. A basis of \(K_d\) is obtained by taking
+the Hermite normal form of
+\[
+ d\alpha,\qquad g-(\rho,g)\alpha
+ \quad(g\text{ a generator of }N).
+\]
+The homomorphism \(x\mapsto(\rho,x)\pmod d\) is onto since it takes
+\(\alpha\) to one, so \([N:K_d]=d\). The added vector \(w_d\)
+in \eqref{eq:B-neighbor} pairs integrally with \(K_d\), has square
+\(4(6/d)^2\), and has exact order \(d\) modulo \(K_d\).
+These facts prove evenness and unimodularity of \(N_d\).
+
+For clarity, intersection is not inferred from the coincidence of any
+shells. The identity
+\[
+ A\cap B=(A^\vee+B^\vee)^\vee
+\]
+for full lattices is applied with exact rational Gram inverses and
+Hermite normal forms. It gives determinant \(81\) for all three pairwise
+intersections, identical bases for those intersections, and invariance
+under \(r\). The determinant formula for an inclusion in a unimodular
+lattice gives index nine. Direct reduction gives \(3e_i\in J\),
+\((e_i,J)\subset\Z\), and
+\(J+\sum_i\Z e_i=J^\vee\). The last lattice has index \(81\), so the
+four classes are independent. Taking half the norm in the displayed
+Gram matrix gives \eqref{eq:B-disc}. The plane spanned by its first two
+basis vectors is totally isotropic. A nondegenerate four-dimensional
+quadratic space containing such a plane is split.
+
+We verify root systems by complete short-vector enumeration, not by a
+random or a numerical search. The exact enumeration method is described
+below. It gives \(144\) roots for \(N\), the roots already in \(R\),
+and no roots in any \(\Lambda_i\). The uniqueness of the rootless even
+unimodular positive definite lattice of rank 24 then identifies these
+as Leech lattices. This is the rank-24 classification, in the form
+stated and proved in Chapter II, Corollary 3.14, of
+\citet{B_ChenevierLannes2019}; the rootless case is also established
+by the construction and uniqueness argument of \citet{B_Borcherds1985}.
+Every hypothesis here has been checked: rank 24, positive definiteness,
+evenness, determinant one, and the complete absence of roots.
+\end{proof}
+
+\begin{statement}[B.2 (Proved): all eight even unimodular extensions]
+There are exactly eight even unimodular lattices containing \(J\) in
+\(J\otimes\Q\). In the coordinates of \eqref{eq:B-disc} they are
+\(M_i=J+\Z\widetilde a_i+\Z\widetilde b_i\), where a tilde denotes the
+linear combination of the \(e_j\) with the indicated coefficients:
+\begin{center}\small
+\begin{tabular}{ccllc}
+\toprule
+\(i\)&\(a_i\)&\(b_i\)&Root system&\(rM_i\)\\\midrule
+0&0001&0010&none; \(\Lambda_1\)&\(M_7\)\\
+1&0001&1100&none&\(M_3\)\\
+2&0010&1000&\(A_2^{12}\); \(N_2\)&\(M_2\)\\
+3&0011&1200&none&\(M_4\)\\
+4&0012&0100&none&\(M_1\)\\
+5&0100&1000&none; \(\Lambda_0\)&\(M_0\)\\
+6&0112&1020&\(A_2^{12}\)&\(M_6\)\\
+7&0121&1010&none; \(\Lambda_2\)&\(M_5\)\\\bottomrule
+\end{tabular}
+\end{center}
+The two rooted extensions have exactly the same set of 72 roots in the
+ambient Euclidean space. Moreover \(N_3\) has root system \(A_1^{24}\).
+Thus Lead 6 holds, including its assertions about the action of \(r\).
+\end{statement}
+
+\begin{proof}
+An intermediate lattice \(J\subset M\subset J^\vee\) is even exactly
+when \(M/J\) is isotropic for \(Q_J\); it is unimodular exactly when
+\((M/J)^\perp=M/J\). Indeed integrality and evenness are respectively
+the vanishing of the induced bilinear form and of the quadratic form,
+and the dual corresponds to the perpendicular subgroup. In our
+nondegenerate group of order \(3^4\), these are precisely the isotropic
+planes. The split four-space has 32 nonzero isotropic vectors and
+16 isotropic lines. Every isotropic line belongs to two maximal
+isotropic planes and each plane contains four lines, hence there are
+\(16\cdot2/4=8\) planes. Alternatively substitution in
+\(2ad+bc+bd=0\) gives exactly the eight spans in the table; the program
+checks all 81 vectors and all pairs. The two rulings each have four
+planes, as follows also by fixing one plane and using the parity of
+the intersection dimension.
+
+For each span the program computes an even unimodular basis and
+exhausts every vector of square at most two. Six counts are zero;
+the remaining counts are 72. Joining roots when their inner product
+is nonzero partitions each of the latter root sets into twelve
+rank-two components of size six, which are \(A_2\). Exact equality
+of the two ambient root sets is checked. The same enumeration for
+\(N_3\) gives 48 roots in 24 orthogonal rank-one components.
+Applying \(r\) to the bases and reducing their spans gives the last
+column. This verifies both fixed rooted lattices and the two cycles
+of length three on the Leech lattices.
+\end{proof}
+
+\paragraph{The exact enumeration certificate.}
+The program \path{code/B_enumerate.cpp} uses an integral,
+fraction-free version of completing squares. After an integral
+unimodular basis reduction, whose change-of-basis matrix and determinant
+are checked, let \(G\) be the Gram matrix and \(D_i\) its first \(i\)
+principal minors, with \(D_0=1\). Rational elimination gives integers
+\(m_{ij}\) such that
+\[
+ x^tGx=\sum_{i=0}^{23}
+ \frac{(D_{i+1}x_i+\sum_{j>i}m_{ij}x_j)^2}{D_iD_{i+1}}.
+\]
+All \(D_i\) are positive. Enumerate backwards from \(i=23\), using
+integer square roots for the bounds. If the residual after the later
+coordinates is \(R_{i+1}/D_{i+1}\), the new integral residual is
+\[
+ R_i=\frac{D_iR_{i+1}-(D_{i+1}x_i+\sum_{j>i}m_{ij}x_j)^2}{D_{i+1}}.
+\]
+The division is exact by the completed-square identity. Every permitted
+integer in the closed interval is visited. This gives an induction
+proof of completeness, including points on its boundary. The files
+\texttt{*.enum} contain the exact minors and coefficients; files
+\texttt{*.basis.json} identify the reduced bases. Root enumerations
+also record every vector. No floating point decision enters the
+enumeration. The largest minor in the construction of Statements
+B.1--B.2 is \(2596\).
+
+\subsection{Minimum, theta series, and the full automorphism group}
+
+\begin{statement}[B.3 (Proved): the theta series of \(J\)]
+The minimum of \(J\) is four, its kissing number is \(23058\), and
+its theta series is a modular form of weight 12 on \(\Gamma_0(3)\)
+with trivial character. With the usual normalizations of \(E_4\),
+\(\Delta=\eta^{24}\), and \(\eta\), it is
+\begin{equation}\label{eq:B-theta}
+\begin{split}
+ \Theta_J(\tau)={}&\frac{7381}{66430}E_4(\tau)^3
+ +\frac{59049}{66430}E_4(3\tau)^3
+ -\frac{531432}{6643}\Delta(\tau)\\
+ &-\frac{4251528}{6643}\Delta(3\tau)
+ +\frac{88938}{73}\eta(\tau)^{12}\eta(3\tau)^{12}.
+\end{split}
+\end{equation}
+In particular its coefficients through \(q^8\) are
+\begin{align*}
+ 1+23058q^2+1849032q^3+44291124q^4
+ &+514246104q^5+3824355978q^6\\
+ &+20831769864q^7+90541677312q^8+O(q^9).
+\end{align*}
+\end{statement}
+
+\begin{proof}
+The exact enumeration gives respectively
+\(1,0,23058,1849032,44291124\) vectors of squares \(0,2,4,6,8\).
+The norm-eight enumeration visits \(215418506\) nodes. Its complete
+output and input are \path{records/B_J8.out} and
+\path{records/B_J8.enum}; the separate norm-six run is retained.
+Positive definiteness and the absence of norm-two vectors then prove
+the first two assertions.
+
+For the modular assertion we include the transformation argument.
+Evenness gives \(\Theta_J(\tau+1)=\Theta_J(\tau)\). Poisson summation
+on the rank-24 lattice gives
+\[
+ \Theta_J(-1/\tau)=\frac{\tau^{12}}9\Theta_{J^\vee}(\tau).
+\]
+Equation \eqref{eq:B-disc} gives \(3(x,x)/2\in\Z\) for every
+\(x\in J^\vee\), so \(\Theta_{J^\vee}\) is invariant under
+\(\tau\mapsto\tau+3\). The weight-12 slash action therefore makes
+\(\Theta_J\) invariant under \(T\) and \(ST^3S^{-1}\), and hence
+under \(\Gamma_0(3)\). To check the last generation assertion, write
+the first column of a matrix as \((a,3c)^t\). Left multiplication by
+these two parabolic generators permits \(a\mapsto a+3nc\) and
+\(c\mapsto c+ma\). Nearest-integer reduction gives successively
+\(|a|\le3|c|/2\) and \(|c|\le|a|/2\), reducing a nonzero
+\(|c|\) by a factor at most \(3/4\). The terminal triangular matrix
+is generated by \(T\) and \(-I\), the latter acting trivially in
+weight 12. Holomorphy at the two cusps follows from the nonnegative
+norms in the two Poisson expansions. The lattice level is exactly three, because \eqref{eq:B-disc} has
+a value \(1/3\). The theta form itself is not a form for the full
+modular group: its constant and linear coefficients would force
+it to equal \(E_4^3-720\Delta\), whose quadratic coefficient is
+196560 rather than 23058.
+
+Each term on the right of \eqref{eq:B-theta} is holomorphic of weight
+12 on \(\Gamma_0(3)\). For the eta product this follows directly from
+\(\eta(\tau+1)=e^{\pi i/12}\eta(\tau)\) and
+\(\eta(-1/\tau)=\sqrt{-i\tau}\eta(\tau)\): the product is invariant
+under \(T\), and its Fricke transformation is
+\(g(-1/(3\tau))=3^6\tau^{12}g(\tau)\), which gives the other
+generator. It vanishes at both cusps.
+
+Finally, a nonzero weight-12 holomorphic form on \(\Gamma_0(3)\)
+cannot vanish to order more than four at infinity. One proof takes
+the product of its four slash translates over
+\(\Gamma_0(3)\backslash\mathrm{SL}_2(\Z)\); the product is a nonzero
+holomorphic form of weight 48 for the full modular group. Its order
+at infinity is at least that of the original form, and the usual
+valence formula bounds that order by \(48/12=4\). The right side of
+\eqref{eq:B-theta} has the five enumerated coefficients, so subtraction
+and this bound prove the identity. The coefficient computation, using
+integer products for eta and divisor sums for \(E_4\), is
+\path{code/B_theta.py}; its five-by-five coefficient matrix has
+nonzero determinant \(-387419760\). No extrapolation of shell counts
+is used in the identity.
+\end{proof}
+
+The equality of the two root sets in Statement B.2 makes the group
+calculation substantially smaller. Let \(R'\cong A_2^{12}\) be their
+common span. In each component choose roots \(\beta_i,\gamma_i\)
+with \((\beta_i,\gamma_i)=-1\), both having the same nonzero class
+under the quotient homomorphism \(R'\to R'/(J\cap R')\cong\mathbb F_3\).
+These choices, in ambient coordinates, are recorded in
+\path{records/B_autJ_data.json}.
+
+\begin{statement}[B.4 (Proved): the full group of \(J\)]
+The full isometry group of \(J\) has order
+\[
+ |\operatorname{Aut}J|=12597120=2\cdot3^7\cdot2880
+                      =2^7 3^9 5.
+\]
+An explicit structural description is
+\[
+ \operatorname{Aut}J\cong C_2\times
+    \bigl((\mathbb F_3)^7\rtimes\operatorname{Aut}_{\rm mon}(D)\bigr),
+\]
+where \(D\) is the ternary code generated by
+\begin{equation}\label{eq:B-code}
+\begin{pmatrix}
+1&1&0&0&0&0&0&0&2&2&2&2\\
+0&0&1&0&0&2&0&2&2&2&0&2\\
+0&0&0&1&0&2&0&0&2&1&2&1\\
+0&0&0&0&1&2&0&2&1&0&1&1\\
+0&0&0&0&0&0&1&2&1&1&2&2
+\end{pmatrix}.
+\end{equation}
+Here \(\operatorname{Aut}_{\rm mon}\) means signed coordinate
+permutations. Its order is 2880. Fourteen integral matrices generating
+the full group, in the basis \path{B_J_basis.json}, are supplied in
+\path{B_autJ_data.json} and verified by \path{B_autJ.py}.
+Its action on the eight extensions has order 36 and has two orbits,
+the six Leech extensions and the two rooted extensions.
+\end{statement}
+
+\begin{proof}
+Every isometry of \(J\) permutes its even unimodular extensions and
+preserves roots. It therefore preserves \(R'\), intrinsically obtained
+from the two rooted extensions. This gives an upper bound by root
+system isometries, and is the reason that the computation below
+identifies the full group.
+
+Put \(K=J\cap R'\). Exact reduction of the displayed root basis gives
+\[
+ K=\{\textstyle\sum_i(a_i\beta_i+b_i\gamma_i):
+       a_i,b_i\in\Z,\ \sum_i(a_i+b_i)=0\pmod3\}.
+\]
+For \(x=\sum_i(a_i\beta_i+b_i\gamma_i)\in R'^\vee\), put
+\(c_i=3b_i\pmod3\). Then \(a_i+b_i\in\Z\), and the homomorphism
+\[
+ R'^\vee/K\longrightarrow\mathbb F_3^{12}\oplus\mathbb F_3,
+ \quad x\longmapsto
+ \left(c,\sum_i(a_i+b_i)-\sum_i c_i\right)
+\]
+is an isomorphism; representatives of \(c_i\) can be changed by
+multiples of three without changing the last coordinate. Reduction of
+the 24 generators of \(J\) gives the graph of a functional \(f:D\to
+\mathbb F_3\), with values \((0,1,1,2,1)\) on the rows of
+\eqref{eq:B-code}. The code has weight enumerator
+\(1+90z^6+140z^9+12z^{12}\).
+
+In one component let \(r_i\) send \(\beta_i\) to \(\gamma_i\)
+and \(\gamma_i\) to \(-\beta_i-\gamma_i\). Let \(t_i\) be the
+involution with row-coordinate matrix
+\(\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)
+\left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)\).
+In the quotient coordinates above, \(r_i\) sends
+\((c,h)\) to \((c,h-c_i)\), whereas \(t_i\) changes \(c_i\) to
+\(-c_i\) and fixes \(h\). The product of the rotations with exponents
+\[
+ z_0=(0,0,1,1,2,0,1,0,0,0,0,0)
+\]
+changes the graph of \(f\) to \(D\oplus0\).
+
+An isometry of \(A_2^{12}\) preserving \(K\) must act on its defining
+nonzero linear functional by one common scalar \(\varepsilon=\pm1\).
+The component root isometries are the dihedral groups of order twelve.
+Those with scalar \(+1\) are generated by \(r_i,t_i\); the common
+scalar \(-1\) is provided by the central global negation. After the
+normalizing rotations, preservation of \(D\oplus0\) is therefore
+equivalent to a monomial automorphism of \(D\), and a rotation vector
+\(z\in D^\perp\). The latter space has dimension seven. This proves
+the claimed group description, both its upper bound and existence.
+
+We certify the finite code group twice. The first computation encodes
+all 242 nonzero codewords and the 24 signed coordinates as a coloured
+graph; the six returned signed coordinate generators are checked
+against every codeword, and an exact permutation-group calculation
+gives order 2880. A separate exhaustive computation in
+\path{B_code_aut_exhaust.cpp} does not rely on the graph
+algorithm. The five pivot columns of \eqref{eq:B-code} are the standard
+basis of \(\mathbb F_3^5\). Its twelve columns form eleven projective
+classes, one occurring twice. We exhaust all ordered images of the
+five pivot columns among these eleven classes, with all \(2^5\) signs:
+\(11\cdot10\cdot9\cdot8\cdot7\cdot32=1774080\) choices. Exactly
+1440 linear transformations preserve the column multiset. Each has
+two lifts to a signed coordinate permutation, arising from the repeated
+class. The 2880 resulting permutations are distinct and all belong to
+the group generated by the six displayed generators. This proves the
+order without an unverified completeness assertion about a search.
+
+The seven rotations from a basis of \(D^\perp\), the six monomial
+generators, and global negation give fourteen generators. Conjugation
+by the displayed normalizing rotations and by the exact root-to-\(J\)
+basis matrix gives the recorded integral matrices. Each has determinant
+\(\pm1\) and satisfies \(T G_JT^t=G_J\). Reducing their images of each
+extension gives the stated permutation group and its two orbits.
+\end{proof}
+
+\begin{statement}[B.5 (Proved): the associated plane and its stabilizer]
+Identify \(\Lambda=\Lambda_0=M_5\). The plane
+\[
+ P=3J^\vee/3\Lambda\ \subset\ \Lambda/3\Lambda
+\]
+is totally isotropic and has the two generators \(3ru,3rv\pmod{3\Lambda}\).
+Its perpendicular preimage in \(\Lambda\) is \(J\). Its full
+stabilizer in \(\mathrm{Co}_0=\operatorname{Aut}\Lambda\) has order
+\(2099520\). Its \(\mathrm{Co}_0\)-orbit consists of
+\(3960692736000\) isotropic planes. Intrinsically, it is the orbit
+whose perpendicular lattice is isometric to the \(J\) above; the
+choice of a Leech extension introduces no further orbit, because
+\(\operatorname{Aut}J\) is transitive on all six such extensions.
+Eleven integral generators in the displayed \(\Lambda_0\) basis are
+given in \path{records/B_specific_plane_group.json}. This is orbit 4
+in the complete classification below; the integral comparison
+isometry is supplied in \path{B_specific_to_orbit4.json}.
+\end{statement}
+
+\begin{proof}
+Since \(3J^\vee\subset J\subset\Lambda\), the quotient is defined.
+The image has order nine: \([J^\vee:\Lambda]=9\). Pairings among
+its vectors are divisible by three and its norms are divisible by
+six, by \eqref{eq:B-disc}, proving isotropy for
+\(x\mapsto x^2/2\pmod3\). The equality
+\[
+ x\in J\quad\Longleftrightarrow\quad
+ (x,J^\vee)\subset\Z
+ \quad\Longleftrightarrow\quad
+ (x,3J^\vee)\subset3\Z
+\]
+proves the perpendicular assertion. The first two discriminant
+basis classes generate \(\Lambda/J\), so the last two give the
+specified basis of \(P\).
+
+The stabilizer equals \(\operatorname{Aut}(J)_\Lambda\): in one
+direction an isometry preserving \(P\) preserves its perpendicular
+preimage; in the other it preserves \(3J^\vee/3\Lambda\). Statement
+B.4 and orbit--stabilizer give \(12597120/6=2099520\). The order
+\(8315553613086720000\) of \(\mathrm{Co}_0\), twice the listed
+order of \(\mathrm{Co}_1\) in the primary ATLAS table
+\citep{B_ATLASCo1}, then gives the displayed
+orbit length. The isometry class characterization follows because
+an isometry between two copies of \(J\) can be adjusted by an
+automorphism of \(J\) to match any prescribed Leech extensions.
+For the generator assertion we apply Schreier's lemma to the
+six-point orbit of \(M_5\) under the fourteen matrices of B.4.
+If \(t_i\) takes \(M_5\) to \(M_i\), the words
+\(t_i g t_{g(i)}^{-1}\) generate its stabilizer. After change of
+basis to \(\Lambda_0\), every retained matrix is integral,
+unimodular, and preserves its Gram matrix. Their faithful action on
+the 72 intrinsic roots has independently computed order 2099520;
+\path{code/B_specific_plane_group.py} retains the words and checks.
+\end{proof}
+
+\subsubsection{Complete classification of isotropic planes modulo three}
+
+For an isotropic line \(\ell\subset\Lambda/3\Lambda\), let
+\(N(\ell)\) denote its unique even unimodular 3-neighbour. Explicitly,
+choose \(v\in\Lambda\) spanning \(\ell\), replace \(v\) by
+\(v+3a\) so that \(v^2\equiv0\pmod {18}\), and put
+\[
+ N(\ell)=\{x\in\Lambda:(x,v)\equiv0\pmod3\}+\Z(v/3).
+\]
+The replacement exists because the nonzero functional
+\((v,{\cdot})\pmod3\) is onto. The resulting lattice is independent
+of the replacement and sign of \(v\). Indeed the common index-three
+intersection has split discriminant plane; its two isotropic lines
+give precisely \(\Lambda\) and \(N(\ell)\). We call \((\ell,P)\),
+where \(\ell\subset P\) is a totally isotropic plane, a marked plane.
+
+\begin{statement}[B.9 (Proved): all 129 plane orbits and their full groups]
+There are exactly 129 \(\mathrm{Co}_0\)-orbits of totally isotropic
+planes in \(\Lambda/3\Lambda\). Of these, 106 have a line whose
+3-neighbour is \(A_2^{12}\), another 20 have a line whose
+3-neighbour is \(A_1^{24}\), and the remaining three have eight
+Leech extensions. Table~\ref{tab:B129} gives every orbit, its full
+stabilizer order, its orbit length, and the eight Niemeier extensions
+of the perpendicular preimage \(J_P\).
+
+For every row we supply a two-by-24 reduced matrix over \(\mathbb F_3\)
+in the same integral Leech basis, not merely an abstract isometry
+class. These matrices and all eight extension labels are in
+\path{records/B_all_129_plane_orbits.json} and its CSV companion.
+Full integral stabilizer generators in that same basis, with exact
+order certificates, are in \path{records/B_plane_groups/001.json}
+through \path{records/B_plane_groups/129.json}. The sum of the 129
+orbit lengths is exactly
+\[
+ 61549107892647466000,
+ \qquad
+ \sum_{[P]}\frac1{|\mathrm{Co}_{0,P}|}
+   =\frac{14703561369481}{1986515435520}.
+\]
+The eight-extension multiset alone does not determine the orbit:
+rows 1 and 12 both have four Leech and four \(A_2^{12}\) extensions,
+but their stabilizers have orders 93312 and 103680.
+\end{statement}
+
+\begin{proof}
+We give the finite reductions, their completeness arguments, and the
+independent mass check. All quadratic forms in the finite calculation
+are \(x\mapsto x^2/2\pmod3\).
+
+The binary Golay code used in the common coordinate model is the
+span of the following twelve hexadecimal masks; bit \(i\) means
+coordinate \(i\), starting at zero:
+\[
+\begin{gathered}
+\mathtt{fff0f0},\ \mathtt{ff0ff0},\ \mathtt{f0fff0},\
+\mathtt{0ffff0},\ \mathtt{cccc00},\ \mathtt{aaaa00},\\
+\mathtt{6ac0c0},\ \mathtt{c6a0a0},\ \mathtt{a6c00c},\
+\mathtt{6ca00a},\ \mathtt{11111e},\ \mathtt{ffffff}.
+\end{gathered}
+\]
+In \(\R^{24}\) with scalar product divided by eight, take the
+integer span of \(8e_0\), the 23 vectors \(4(e_i-e_0)\), twice
+these twelve binary code generators, and \((-3,1^{23})\).
+Exact Hermite reduction gives the common basis; its Gram matrix is
+even of determinant one, and exact norm-two enumeration is empty.
+This identifies it as the Leech lattice. The ternary glue code in
+the rooted marked model is the row span over \(\mathbb F_3\) of
+\[
+\begin{pmatrix}
+1&0&0&0&0&1&0&2&2&1&1&0\\
+0&1&0&0&0&2&0&1&0&1&1&2\\
+0&0&1&0&0&2&0&2&2&2&0&2\\
+0&0&0&1&0&2&0&0&2&1&2&1\\
+0&0&0&0&1&2&0&2&1&0&1&1\\
+0&0&0&0&0&0&1&2&1&1&2&2
+\end{pmatrix}.
+\]
+Its self-duality and weight distribution are checked directly on
+all 729 words. These displayed codes specify the inputs independently
+of any software convention for Golay coordinates.
+
+\paragraph{The four line orbits and full line stabilizers.}
+There are four line types. The familiar labels \(3,6_{22},6_{23},9_{33}\)
+refer to vector classes, not to their dimension. We use them only as
+names for the explicit representatives in the supplied programs.
+Their full line-stabilizer orders and orbit lengths are
+\[
+\begin{array}{c|r|r|c}
+\text{type}&|\mathrm{Co}_{0,\ell}|&|\mathrm{Co}_0\ell|&N(\ell)\\\hline
+3&991533312000&8386560&\Lambda\\
+6_{22}&110361968640&75348000&\Lambda\\
+6_{23}&489646080&16982784000&A_1^{24}\\
+9_{33}&277136640&30005248000&A_2^{12}
+\end{array}
+\]
+We justify fullness rather than inferring it from a generated subgroup.
+For the last two rows, work in the indicated rooted neighbour \(N\).
+The line stabilizer is exactly the group of root-system isometries
+preserving both its glue and \(K=N\cap\Lambda\). Preservation of
+\(N,K\) preserves the other unimodular extension \(\Lambda\), by
+the two-line discriminant argument above.
+
+For \(A_1^{24}\), in orthogonal root coordinates,
+\(N=\Z^{24}+\tfrac12 C_{24}\), with the extended binary Golay
+code, and \(K=\ker(\rho,{\cdot})\pmod3\),
+\(\rho=\tfrac12\sum_i\alpha_i\). A signed permutation preserving
+\(K\) must have a common sign on all roots. Thus the full group is
+\(C_2\times M_{24}\), of order 489646080. The code graph and the
+displayed coordinate permutations independently give the full
+\(M_{24}\) order 244823040.
+For \(A_2^{12}\), its glue is the self-dual ternary Golay code
+\(C_{12}\) of dimension six. In a root basis
+\(\beta_i,\gamma_i\) with \(\rho=\sum_i(\beta_i+\gamma_i)\),
+the same quotient-functional argument used in B.4 gives
+\[
+ \mathrm{Co}_{0,\ell}
+   =C_2\times\bigl(3^6\rtimes
+           \operatorname{Aut}_{\rm mon}(C_{12})\bigr).
+\]
+The rotations are indexed by \(C_{12}^{\perp}=C_{12}\). The
+monomial group, computed on the complete code graph, has order
+190080, giving the displayed full order 277136640. All its lifted
+24-dimensional matrices, including the stabilizers of the four
+codeword strata below, are retained.
+
+For the first two rows we also provide independent finite upper
+bounds. Use the standard integral-coordinate Leech model, with
+scalar product \(x\cdot y/8\), in
+\path{B_standard_Leech_basis.json}. For type 3 take
+\(v=(5,1^{23})\), of squared norm six. It is the unique vector of
+norm six in its residue class: two such vectors differing by
+\(3\Lambda\) would have squared distance at least 36 and at most
+24. The 552 norm-four vectors \(w\) with \((v,w)=3\) span the
+ambient space. Their Gram values off the diagonal are \(-1,1,2\);
+the \(-1\) pairs are \(\{w,v-w\}\). We encode the inner-product-one
+graph and separately mark those 276 pairs. Its full permutation
+group has order 991533312000. Exact reconstruction of its linear
+maps exhibits a generator that fails to preserve the Leech lattice.
+The independently verified lattice subgroup of order 495766656000
+has index two in that graph group. The lattice vector stabilizer
+therefore has precisely that order, and adjoining global negation
+gives the stated line stabilizer. The graph, maps, and failed
+integrality witness are in \path{B_Co3_upper_bound.json}.
+
+For type \(6_{22}\), take the three vectors whose nonzero coordinate
+triples are the permutations of \((-8,4,4)\), in coordinate
+positions 2,3,4. They have squared norm 12, sum zero, and lie in the
+same nonzero class modulo \(3\Lambda\). These are all the shortest
+representatives of that class. Distinct representatives of norm 12
+must have inner product \(-6\): their difference has squared norm
+at least 36, and the next possible squared norm in \(3\Lambda\)
+is 54, larger than the maximum 48. A set of \(k\) such vectors has
+Gram matrix \(18I_k-6\mathbf1\mathbf1^t\), whence \(k\le3\).
+Their differences divided by three form a triangle of minimal
+vectors. Fix two of these minimal vectors \(a,b\), with norms four
+and inner product \(-2\). The 891 minimal vectors satisfying
+\((w,a)=2,(w,b)=0\) span \(b^\perp\). Their Gram graph has full
+group order 55180984320. A verified pointwise triangle subgroup has
+order 9196830720. Of the six cosets of that subgroup in the graph
+group, exact extension fixing \(b\) shows that just one preserves
+the Leech lattice. Consequently the full pointwise triangle group
+has order 9196830720. The displayed generators induce all six
+permutations of the three norm-12 representatives, and global
+negation doubles the class stabilizer to the line stabilizer.
+This proves the second row. The complete six-coset test is
+\path{B_U6_upper_bound.py}; no untested graph symmetry is counted as
+a lattice isometry.
+
+These calculations independently recover the customary names
+\(\mathrm{Co}_3\) and \(U_6(2):S_3\). The corresponding known
+stabilizer interpretations are recorded in
+\citet[Section 2]{B_BrouwerLeech} and
+\citet[Section 5, p.~10, statement preceding Corollary 7]{B_Fairbairn2010}.
+Fairbairn's hypothesis is an unordered triangle of three minimal
+vectors with sum zero; the difference triangle just constructed
+has exactly that form. We use our graph and lattice calculations
+for the numerical upper bounds. The first two types are distinct
+because one has a norm-six representative and the other does not;
+the latter assertion also follows from the minimum-distance bound
+between a norm-six and a norm-12 vector in one class. The last two
+types are distinguished by their rooted neighbours. Finally
+\[
+ 8386560+75348000+16982784000+30005248000
+ =47071766560
+ =\frac{(3^{11}+1)(3^{12}-1)}2.
+\]
+This is the number of isotropic lines in the split quadratic
+24-space. Thus the four verified line orbits exhaust all lines.
+
+\paragraph{All planes with an \(A_2^{12}\) neighbour.}
+For this line the quotient \(\ell^\perp/\ell\) is explicitly
+\[
+ W=K/(3N+\Z\rho),\qquad\dim_{\mathbb F_3}W=22.
+\]
+The comparison sends a vector of \(K\) to the same rational vector
+in the Leech construction. Its kernel is \(3N+\Z\rho\); the
+displayed matrices check the pairing, so it is an isometry of
+quadratic spaces. Projection to the glue gives an equivariant
+map \(W\to C_{12}\) with 16-dimensional kernel. The four codeword
+orbits have weights \(0,6,9,12\) and sizes \(1,264,440,24\).
+For a fixed representative of each, the full stabilizer acts
+affinely on its 16-dimensional fibre. We give all affine matrices,
+their integral lattice lifts, and the quadratic equation in
+\path{B_A2_strata_setup.json}. The four complete enumerations give
+\[
+\begin{array}{c|r|r|r}
+\text{codeword weight}&\text{code orbit}&
+ \text{isotropic fibre vectors}&\text{fibre orbits}\\\hline
+0&1&14467005&16\\
+6&264&14348907&54\\
+9&440&14348907&64\\
+12&24&14348907&14
+\end{array}
+\]
+Each enumeration examines all \(3^{16}=43046721\) vectors and
+closes every retained orbit under every generator. Removing the
+zero vector gives 147 marked-plane orbits. Since global negation
+belongs to the full line group, a fibre orbit of size \(f\) over
+a codeword orbit of size \(c\) gives a marked-plane orbit of size
+\(fc/2\). Their sum is exactly
+\[
+ 5230235650
+   =\frac{(3^{10}+1)(3^{11}-1)}2,
+\]
+the full number of isotropic lines in \(W\). The dense orbit maps
+are supplied losslessly compressed, together with their hashes.
+
+For each of the 147 representatives we construct \(J_P\), its
+split four-dimensional discriminant form, and all eight maximal
+isotropic subspaces, hence all eight unimodular extensions. Complete
+root enumeration identifies each extension. The four extensions
+meeting the original Leech lattice in index three correspond
+bijectively to the four lines of \(P\); the remaining three other
+extensions have intersection index nine. This distinction is
+checked by exact lattice intersections, not inferred from a root
+label.
+
+We change the marked line in every possible way that again gives
+an \(A_2^{12}\) neighbour. In its root system choose
+\(\beta_i,\gamma_i\) on which the intersection functional has
+value one. Root-coordinate rotations normalize its value on the
+glue, and an isomorphism of the complete Golay code graphs maps
+the glue to the fixed model. The resulting rational map \(T\)
+satisfies both the exact Gram identity and
+\(\Lambda T=\Lambda\). Reducing the transported second vector in
+the fibre tables gives the new marked orbit. These are actual
+isometries, rather than matches of extension multisets. Their
+connected components are exactly the unmarked plane orbits:
+any isometry between two planes first sends the chosen mark to one
+of the four possible marks, after which it lies in the full line
+stabilizer already enumerated. The 147 marked orbits fuse to 106
+unmarked orbits. All links and representatives are in
+\path{B_A2_plane_orbits.json}.
+
+\paragraph{All additional planes with an \(A_1^{24}\) neighbour.}
+In the orthogonal root coordinates the corresponding quotient is
+\[
+ W=\{x\in\mathbb F_3^{24}:\sum_i x_i=0\}/\langle\mathbf1\rangle.
+\]
+An isotropic vector has all three colour-class sizes divisible by
+three. Quotienting by constants and nonzero scalars makes these
+three classes unordered. Apart from the zero vector, their sorted
+sizes are
+\[
+\begin{gathered}
+(0,3,21),(0,6,18),(0,9,15),(0,12,12),\\
+(3,3,18),(3,6,15),(3,9,12),(6,6,12),(6,9,9).
+\end{gathered}
+\]
+We first fix the smallest class. Its size is 0, 3 or 6; there are
+four \(M_{24}\)-orbits, with lengths
+\(1,2024,21252,113344\) and stabilizers of orders
+\(244823040,120960,11520,2160\). The last two lengths sum to
+\(\binom{24}{6}\). Exhaustive subset orbits of the second class,
+followed by all allowed permutations of the three colours, give
+114 marked-plane orbits. Their lengths again sum to 5230235650.
+Every extension of every representative is constructed and its
+roots are enumerated. Of these marked orbits, 83 have an
+\(A_2^{12}\) mark and are mapped by the preceding explicit
+isometry construction into the 106 existing classes. The other
+31 marked orbits fuse, by all \(A_1^{24}\) changes of mark, to
+20 further classes. The binary Golay graph gives the exact
+coordinate permutation in every such change. The data and all
+cross-identifications are in \path{B_A1_plane_orbits.json}.
+
+\paragraph{The last three classes.}
+The 126 classes just obtained contain
+\(61549106976378112000\) planes. The residual count is
+\(916269354000\). We find three further representatives in the
+standard Leech coordinates; their second vectors are recorded by
+the following unambiguous packing convention:
+\[
+ \operatorname{pack}(w)=
+   \sum_{w_i=1}2^i+2^{24}\sum_{w_i=2}2^i,
+ \quad w_i\in\mathbb F_3,\quad 0\le i<24.
+\]
+For type 3 the anchor is \((5,1^{23})\), and for type \(6_{22}\)
+it is the vector with entries \((-8,4,4)\) in positions 2,3,4.
+The table gives the complete orbit under the anchor-class group
+(global negation acts trivially on marked planes).
+\[
+\begin{array}{c|r|r|r|r}
+\text{anchor}&\operatorname{pack}(w)&\text{flag orbit}&
+ |\mathrm{Co}_{0,P}|&|\mathrm{Co}_0P|\\\hline
+3&9192064&37950&52254720&159134976000\\
+6_{22}&416910284928&27720&15925248&522161640000\\
+6_{22}&5174966569752&12474&35389440&234972738000
+\end{array}
+\]
+The first plane has two type-3 lines and two type-\(6_{22}\) lines;
+the other two have four type-\(6_{22}\) lines. Every eligible change
+of mark stays in the same displayed flag orbit. All changes are
+checked as integral Leech isometries, and their complete orbit
+trees, parent edges and generators are retained. Thus these are
+three distinct full plane orbits. Exact enumeration shows that
+all 24 of their extensions are rootless. The seeded search used
+to discover these representatives is not a completeness argument:
+completeness follows from their closed group orbits and the exact
+mass equality below.
+
+\paragraph{Full group generators and order certificates.}
+For clarity we state the constructive recipe used for every row.
+In a rooted marked model let \(H=\mathrm{Co}_{0,\ell}\), and let
+\(H_P\) be the stabilizer of the marked plane. In the \(A_2\)
+model write \(H=C_2\times(R\rtimes M)\), where
+\(R=C_{12}\cong3^6\) is the root-rotation group and
+\(M=\operatorname{Aut}_{\rm mon}(C_{12})\). For a second quotient
+vector \(y\), enumerate its at most 729 images under \(R\),
+retaining a rotation \(r_x\) with \(yr_x=x\), and the rotation
+kernel \(R_y\). For each signed monomial element \(m\) whose
+image \(ym\) lies in that rotation orbit, retain
+\(m r_{ym}^{-1}\). These elements and \(R_y\) generate the full
+vector stabilizer by the semidirect decomposition. Adjoin global
+negation to obtain \(H_P\). This gives a finite exact recipe using
+only 729 rotations and 380160 signed monomial elements; it does
+not enumerate a huge \(\mathrm{Co}_0\)-orbit. The program reduces
+the generating set in its faithful action on the 72 roots and
+checks that its order equals the independently known
+\(|H|/|H\cdot P|\).
+
+In the \(A_1\) model, adjoin to the 24 coordinate vertices and
+759 octad vertices three vertices for the unordered colour classes.
+The full coloured-graph group is exactly the \(M_{24}\) partition
+stabilizer: each returned permutation is checked against every
+octad and the three classes. Adjoin global negation. For either
+model, for each mark whose transported flag lies in the original
+\(H\)-orbit, compose the mark-changing isometry with an
+\(H\)-transporter back to the representative. Adjoining these
+matrices gives the full plane stabilizer, since its orbit on the
+chosen mark has then been exhausted. Every generator is checked
+to be integral in the common Leech basis, to preserve its Gram
+matrix, and to preserve the two-dimensional plane modulo three.
+Finally the union of the roots in all eight extensions spans the
+ambient space and is intrinsic to \(J_P\). Its permutation action
+is faithful; the orders of all 126 generated groups are independently
+recomputed on that union. The complete program is
+\path{B_plane_stabilizer_recipe.py}.
+
+For the three remaining rows we use the saved flag-orbit trees.
+If \(t_x\) is the tree word taking the representative to \(x\),
+the words \(t_x g t_{xg}^{-1}\) generate its class-flag stabilizer.
+Its order is computed in the faithful degree-276 or degree-891
+class-group representation, giving respectively
+\(13063680,1990656,4423680\). Adjoining global negation doubles
+these orders. The exact changes of mark have anchor orbits of
+sizes \(2,4,4\), giving precisely the three full orders displayed
+above. All tree edges are rechecked by
+\path{B_rare_plane_groups.py}; this proves both generation and
+fullness without a guessed abstract group name.
+
+\paragraph{Common coordinates and the final mass equality.}
+Starting from the standard integral Leech basis, we construct its
+type-\(9_{33}\) and type-\(6_{23}\) neighbours and use the root/glue
+isometries above to identify them with the two marked models. The
+exact maps preserve the forms and send the whole Leech lattice
+onto the marked Leech lattice, as checked by integral Hermite
+normal forms. Their inverses put every representative and every
+group generator in one common basis. These comparison maps are
+in \path{B_global_model_isometries.json}.
+
+Independently of all orbit enumerations, an isotropic line has a
+22-dimensional split perpendicular quotient, and a plane contains
+four lines. Hence the total number of planes is
+\[
+ \frac14\,
+ \frac{(3^{11}+1)(3^{12}-1)}2\,
+ \frac{(3^{10}+1)(3^{11}-1)}2
+ =61549107892647466000.
+\]
+The 126 rooted classes and the three new classes are disjoint by
+the exhaustive changes of mark and their line types. Their exact
+orbit lengths sum to this number: the last three lengths sum to
+916269354000, precisely the residual count. Thus no plane remains.
+Equivalently, division by
+\(|\mathrm{Co}_0|=8315553613086720000\), as in
+\citet[Theorem 1.1]{B_BrouwerLeech}, gives the stated rational mass.
+The final stdout certificate \path{B_global_assembly.out} prints
+both \texttt{RESIDUAL PLANES: 0} and \texttt{RESIDUAL MASS: 0}.
+As a separate final check, \path{B_final_group_audit.py} rereads the
+129 group files, verifies all 654 integral generator matrices, and
+recomputes the same rational mass from their separately generated
+full-group orders. Its stdout again gives both residuals as zero;
+the per-file hashes are retained in \path{B_plane_group_manifest.json}.
+\end{proof}
+
+In Table~\ref{tab:B129}, the extension symbols have the following
+fixed meanings; an exponent is the multiplicity of that entire
+Niemeier lattice among the eight extensions, not a root multiplicity:
+\[
+\begin{array}{c|cccccc}
+\text{symbol}&L&1&2&3&4&5\\\hline
+\text{lattice}&\Lambda&A_1^{24}&A_2^{12}&A_3^8&A_4^6&A_5^4D_4
+\end{array}
+\qquad
+\begin{array}{c|ccccc}
+\text{symbol}&6&7&8&9&10\\\hline
+\text{lattice}&D_4^6&A_6^4&A_7^2D_5^2&A_8^3&E_6^4
+\end{array}
+\]
+The stratum and flag identifiers in the representative column refer
+to the complete affine or subset orbit files described above. The
+last three rows use the packed-coordinate convention in the proof.
+The JSON and CSV also list all eight extensions separately, with
+their exact bases and complete root sets referenced by filename.
+{\scriptsize\setlength{\tabcolsep}{3pt}
+\input{records/B_all_129_table.tex}}
+
+\subsection{Weyl-vector neighbours for all rooted Niemeier lattices}
+
+\begin{statement}[B.6 (Refuted, with complete replacement table)]
+The proposed rule that the Weyl \(d\)-neighbour has Coxeter number
+\(h/d\), for every \(d\mid h\), is false. Of the 96 pairs consisting
+of a rooted Niemeier lattice and a divisor of its Coxeter number,
+exactly the following eleven violate the rule:
+\begin{center}\small
+\begin{tabular}{lrrll}
+\toprule
+Original root system&\(h\)&\(d\)&Neighbour root system&\(h'\ne h/d\)\\\midrule
+\(D_{12}^2\)&22&2&\(D_6^4\)&\(10\ne11\)\\
+\(D_8^3\)&14&2&\(D_4^6\)&\(6\ne7\)\\
+\(E_8^3\)&30&2&\(D_8^3\)&\(14\ne15\)\\
+\(E_8^3\)&30&3&\(A_8^3\)&\(9\ne10\)\\
+\(E_8^3\)&30&5&\(A_4^6\)&\(5\ne6\)\\
+\(D_6^4\)&10&2&\(A_3^8\)&\(4\ne5\)\\
+\(E_6^4\)&12&3&\(A_2^{12}\)&\(3\ne4\)\\
+\(D_4^6\)&6&2&\(A_1^{24}\)&\(2\ne3\)\\
+\(D_{10}E_7^2\)&18&2&\(A_7^2D_5^2\)&\(8\ne9\)\\
+\(D_{16}E_8\)&30&2&\(D_8^3\)&\(14\ne15\)\\
+\(D_{24}\)&46&2&\(D_{12}^2\)&\(22\ne23\)\\\bottomrule
+\end{tabular}
+\end{center}
+The complete list of all 96 neighbours, including root systems and
+root counts, is \path{records/B_all_neighbours.csv}. Every
+\(d=h\) neighbour is Leech.
+\end{statement}
+
+\begin{proof}
+We specify the neighbour construction for arbitrary \(N\), so the
+counterexamples are not an ambiguity of neighbour conventions. Choose
+a positive system, let \(\rho\) be half its root sum, and let \(\alpha\)
+be any simple root. For a rooted Niemeier lattice the components have
+the same Coxeter number \(h\), \(\rho\in N\),
+\(\rho^2=2h(h+1)\), and \((\rho,\alpha)=1\). These assertions are
+respectively Lemmas 2.3, 2.6, and 2.4 of \citet{B_Borcherds1985};
+in \citet{B_ChenevierLannes2019} they occur in Chapter III,
+Propositions 4.2.1 and 4.2.5, with the common Coxeter number supplied
+by the Niemeier root-system classification.
+For \(d\mid h\) put
+\[
+ K_d=\{x\in N:(\rho,x)\in d\Z\},\qquad
+ w_d=\rho/d-(h/d)\alpha,\qquad N_d=K_d+\Z w_d.
+\]
+The square of \(w_d\) is \(4h^2/d^2\), and \((w_d,K_d)\subset\Z\).
+The vector \(dw_d=\rho-h\alpha\) lies in \(K_d\). Its order modulo
+\(K_d\) is exactly \(d\): pairing a putative smaller multiple with
+\(\alpha\), in the unimodular lattice \(N\), would require \(d\)
+to divide that multiple because
+\((\rho-h\alpha,\alpha)=1-2h\) is prime to \(d\).
+Thus \(N_d\) is even and unimodular. Replacing \(\alpha\) by another
+simple root changes \(w_d\) by an element of \(K_d\), so this
+construction is independent of that choice. A Weyl change of positive
+system gives an isometric neighbour.
+
+For reproducibility the original integral Gram matrices for all 23
+rooted lattices were retrieved from the catalogue of
+\citet{B_NebeSloaneCatalogue}. We did not accept the labels of those
+matrices as a certificate. The program \path{B_all_neighbours.py}
+checks that each is positive definite, even and of determinant one,
+enumerates all norm-two vectors, and verifies the stated root system.
+Half the sum of the lexicographically positive roots gives an integral
+\(\rho\), and the equalities above are independently checked in every
+case. A root of pairing one supplies \(\alpha\). The kernel basis is
+constructed by an elementary unimodular transformation of its pairing
+row, followed by the single congruence condition modulo \(d\). An
+exact rational span gives \(N_d\); evenness and determinant one are
+checked again.
+
+Every norm-two vector of each of the 96 resulting lattices is then
+enumerated by the integer procedure already proved complete. The
+connected components of the graph of nonorthogonal roots are
+classified by their exact rank and number of roots. For an irreducible
+simply laced positive definite root system these distinguish
+\(A_n,D_n,E_6,E_7,E_8\), with the harmless equality \(A_3=D_3\).
+The original and neighbour Gram matrices, Weyl vector, divisor,
+and complete roots are retained for every pair. This is a finite
+exhaustion of all divisors for all 23 possibilities, and yields the
+table. The error in the proposed rule is the unwarranted assertion
+that the quotient of a Coxeter number controls the roots surviving
+or appearing in a smaller-divisor neighbour; the example
+\(E_8^3,d=2\) already disproves it. Indeed there is not even an
+allowed rank-24 Niemeier root system of common Coxeter number 15.
+
+The final assertion also has a uniform proof: Chapter III,
+Theorem 4.2.10(c), of \citet{B_ChenevierLannes2019} says that for an
+even unimodular positive definite rank-24 lattice with roots and
+Coxeter number \(h\), its Weyl \(h\)-neighbour is Leech.
+Proposition 4.2.11 identifies this neighbour with the holy
+construction. Our formula uses their correction vector of pairing
+one and hence is precisely that neighbour. All 23 inputs satisfy
+those hypotheses; the computation verifies the conclusion separately.
+\end{proof}
+
+\subsection{The Wilson cubic and an integral Niemeier embedding}
+
+Write \(\mathbb O\) for the real division octonions with orthonormal
+basis \(1,i_t\), \(t\in\Z/7\Z\), and multiplication
+\(i_ti_{t+1}=i_{t+3}\), cyclically in every such triple. Put
+\[
+ s=(-1+i_0+\cdots+i_6)/2,
+ \qquad L=D_8+\Z s,\qquad M=L\bar s,\quad H=Ls.
+\]
+Here \(L\) has 240 vectors of square two: the vectors
+\(\pm e_i\pm e_j\), and the half-vectors with an odd number of minus
+signs. Wilson's lattice is
+\begin{equation}\label{eq:B-Wilson}
+ \mathcal W=\{(x,y,z)\in L^3:
+    x+y,y+z,z+x\in M,\ x+y+z\in H\},
+\end{equation}
+with squared length \((|x|^2+|y|^2+|z|^2)/2\). This is the
+normalization in \citet{B_Wilson2009}. The cubic is
+\(F(x,y,z)=\operatorname{Re}((xy)z)\); its polarized trilinear
+expression is unambiguous because the octonion associator has real
+part zero.
+
+\begin{statement}[B.7 (Proved): the full Wilson cubic stabilizer]
+The full stabilizer of \(F\) in \(\operatorname{Aut}\mathcal W\)
+is
+\[
+ C_2^2\rtimes C_3\ \times\ (C_7\rtimes C_3)
+ \ \cong\ A_4\times(C_7\rtimes C_3),
+ \qquad\text{of order }252.
+\]
+Generators are the even sign changes of the three octonion
+coordinates, their cyclic permutation, and the simultaneous Fano
+permutations \(i_t\mapsto i_{t+1}\) and \(i_t\mapsto i_{2t}\).
+Thus the subgroup exhibited in the workbench is the full stabilizer.
+\end{statement}
+
+\begin{proof}
+First we reduce the continuous symmetry question to an explicitly
+bounded finite calculation. The singular locus of \(F\) is the union
+of the three coordinate octonion spaces. In fact its three derivatives
+are, after octonion conjugation, the products of the other two
+coordinates. The division property implies that at most one
+coordinate is nonzero. A linear isometry preserving \(F\) must
+therefore permute these three eight-dimensional subspaces.
+
+The projections of \(\mathcal W\) to each block equal \(L\).
+The projection of its intersection with a sum of two blocks to either
+one of those blocks equals \(M\). To see this, \(M,H\subset L\)
+contain \(2L\), their images modulo \(2L\) are complementary
+four-dimensional subspaces, and the two-block section has
+\(x,y\in M\), \(x+y\in2L\). These identities follow either directly
+from the multiplication table or from the exact bases in
+\path{B_wilson_stabilizer.py}. Consequently each block of a
+lattice symmetry belongs to \(G=\operatorname{Aut}(L)_M\).
+
+We determine this full projection group, rather than assuming that
+familiar octonion maps generate it. The 240 roots of \(L\) are
+explicit above. Choose the positive roots lexicographically and their
+half sum; the eight roots pairing one with this half sum are simple.
+Their root reflections generate the Weyl group of \(E_8\), which is
+all \(\operatorname{Aut}(L)\), because the \(E_8\) Dynkin diagram
+has no automorphisms. The exact permutation action on the roots gives
+order \(696729600\). Its orbit on the subspace \(M/2L\) has size
+270. The seven right multiplications \(R_{i_t}\), and the six maps
+\[
+ \frac12 R_{1+i_t}R_{1-i_0},\qquad t=1,\ldots,6,
+\]
+all preserve \(M\), have determinant \(+1\), and generate a group
+of order \(2580480=696729600/270\). Orbit--stabilizer proves that
+these generate the full \(G\). These checks, including the entire
+finite subspace orbit, are \path{B_E8_projection.py}.
+
+Consider now an ordered-block cubic symmetry \((A,B,C)\), with
+\(A\in G\), and set \(D=\bar{\phantom{x}}\,C\,\bar{\phantom{x}}\),
+where the bars denote the linear conjugation operator. The cubic
+identity is equivalent to
+\begin{equation}\label{eq:B-triality}
+ (Ax)(By)=D(xy)\quad(x,y\in\mathbb O).
+\end{equation}
+For a fixed \(A\) there are at most two orthogonal solutions
+\((B,C)\). Indeed the ratio of two solutions has first component
+identity. Equation \eqref{eq:B-triality} with \(x=1\), then \(y=1\),
+shows that its remaining maps are right multiplication by one unit
+\(b\), and that \(x(yb)=(xy)b\) for all \(x,y\). The nucleus of
+\(\mathbb O\) is \(\R\), hence \(b=\pm1\). In the supplied
+multiplication table this last statement can also be verified by the
+64 linear equations in the eight coordinates of \(b\); their
+solution space is exactly \(\R\cdot1\).
+
+For each of the thirteen generators of \(G\) we solve
+\eqref{eq:B-triality} exactly. If \(a=A1\), then \(D=L_aB\), so
+\((Ax)(By)=aB(xy)\) is a system of 512 rational linear equations in
+the 64 entries of \(B\). In each case its nullspace is one dimensional
+and admits a rational orthogonal normalization. The matrices are
+recorded in \path{B_triality_lifts.json}. Adjoin the kernel
+\((I,-I,-I)\). Their faithful permutation action on the roots in
+the first and second blocks has order \(5160960=2|G|\).
+This proves that we have exhausted all possible first projections
+and their two lifts.
+
+It remains to impose the lattice conditions on the other blocks.
+The orbit of \(L\) under the third components of this lift group
+has size 15, giving a stabilizer of order \(344064\). Its Schreier
+generators are obtained by exact rational lattice Hermite normal
+forms. On this subgroup all three components preserve \(L\).
+Modulo \(2L^3\), the glue of \(\mathcal W\) is the twelve-dimensional
+binary code
+\[
+ \{(m_1+n,m_2+n,m_1+m_2+n):
+        m_1,m_2\in M/2L,\ n\in H/2L\}.
+\]
+The orbit of this code has size 4096. The ordered-block stabilizer
+therefore has order
+\(5160960/(15\cdot4096)=84\). Exact Schreier generators are retained
+in \path{B_wilson_stabilizer.json}; their generated order is
+independently checked in their permutation action. The code orbit
+is exhaustive: a queue starts at the displayed code and closes under
+every generator, comparing reduced binary echelon bases exactly.
+Thus the order is an upper bound as well as a lower bound.
+
+No odd permutation of blocks can occur. After a cyclic permutation
+and composition with one of the even triality lifts having the same
+first block, such a symmetry would have first block \(I\) and
+interchange the other two. Its identity would force
+\(x(yb)=(yx)b\) for all \(x,y\), for a unit \(b\). This is
+impossible. For completeness the same exact linear calculation gives
+a zero-dimensional solution space in the eight coordinates of \(b\),
+whereas the non-reversed equation above gives dimension one. This is
+a finite verification of the obstruction over \(\Q\), and hence
+over \(\R\), since the coefficients are rational.
+
+Finally the listed even sign changes, coordinate cycle and two Fano
+permutations preserve \eqref{eq:B-Wilson} and the cubic. The first
+two operations generate \(A_4\); the Fano permutations fix \(s\),
+preserve the multiplication table, and generate \(C_7\rtimes C_3\).
+The two groups commute and have trivial intersection. They give
+\(4\cdot3\cdot21=252\) elements, precisely three times the
+ordered-block upper bound 84. This proves both fullness and the
+claimed isomorphism type.
+\end{proof}
+
+\begin{statement}[B.8 (Proved): a Niemeier embedding with integral twice cubic]
+The Niemeier lattice \(E_8^3\), with its usual norm-two roots, has the
+explicit isometric embedding \(L^3\subset\mathbb O^3\), where
+\(L=D_8+\Z s\) as above and the Euclidean norm is
+\(|x|^2+|y|^2+|z|^2\). Its cubic value group, meaning the additive
+subgroup generated by all \(F(x,y,z)\), is
+\[
+ \langle F(L^3)\rangle_{\Z}=\tfrac12\Z.
+\]
+In particular \(2F\) is integer valued on this embedding. This
+arithmetic property depends on the embedding: rotating the real and
+\(i_0\) axes of the first block through \(\pi/4\) gives another
+isometric embedding whose cubic value group is not \(\tfrac12\Z\).
+More precisely, the second value group is
+\(\tfrac12\Z+\tfrac{\sqrt2}{4}\Z\).
+\end{statement}
+
+\begin{proof}
+Here the ambient metric is the ordinary octonion sum norm, the
+coefficient of \(-\lambda\) in the Albert determinant
+\(\lambda^3-\lambda(|x|^2+|y|^2+|z|^2)+2F(x,y,z)\).
+Wilson's separately specified half-sum norm in B.7 is identified
+with this metric by \((x,y,z)\mapsto(x,y,z)/\sqrt2\).
+That change multiplies the cubic by \(1/(2\sqrt2)\) and leaves
+its stabilizer unchanged; B.8 uses the ordinary metric throughout.
+The lattice \(L\) is even unimodular: \(D_8\) has determinant four,
+\(s^2=2\), \((s,D_8)\subset\Z\), and adjoining \(s\) has index
+two. Thus its orthogonal cube is the stated Niemeier lattice.
+The real trilinear expression is cyclic in its three arguments.
+If all arguments belong to \(D_8\), its value is integral; if one
+argument is \(s\), it lies in \(\tfrac12\Z\). If two arguments
+are \(s\), cyclicity makes them adjacent and the coordinates of
+\(s^2\) are half integers, so the same conclusion follows. Finally
+\(\operatorname{Re}(s^3)=5/2\). Trilinearity in a generating set
+therefore proves \(F(L^3)\subset\tfrac12\Z\). On the other hand
+\((s,s,s)\) gives \(5/2\), and \((2,2,2)\) gives 8, so their
+integer combinations generate \(\tfrac12\Z\).
+
+Let \(T\) act orthogonally on the first octonion block by
+\(T1=(1+i_0)/\sqrt2\), \(Ti_0=(-1+i_0)/\sqrt2\), fixing the
+remaining six coordinates. The second embedding is
+\((x,y,z)\mapsto(Tx,y,z)\). Its value at \((2,2,2)\) is
+\(4\sqrt2\), which is not in \(\tfrac12\Z\). Thus the arithmetic
+criterion offered in B.4 is satisfied by an explicit embedding, but
+does not make the value group an invariant of the abstract Niemeier
+lattice. No assertion of uniqueness or canonicality of that embedding
+is implied by the word ``distinguished.''
+
+We also compute the entire second group, rather than only an
+irrational witness. Write \(e_0=1,e_{t+1}=i_t\), and take the
+\(E_8\) basis
+\(s,d_1,\ldots,d_7\), where
+\(d_j=e_j-e_{j+1}\) for \(1\le j\le6\), and
+\(d_7=e_6+e_7\). Its Gram determinant is one. Trilinearity reduces
+the value group to the 512 triples of these basis vectors.
+In \path{B_cubic_embeddings.py} every value is computed exactly
+as a pair of rational coefficients of \(1,\sqrt2\); all have
+first coefficient in \(\tfrac12\Z\) and second in
+\(\tfrac14\Z\). Conversely the three exact values
+\[
+ F(Ts,s,d_4)=\tfrac12,\qquad
+ F(Ts,d_7,s)=\tfrac{\sqrt2}{2},\qquad
+ F(Ts,s,s)=\tfrac32+\tfrac{3\sqrt2}{4}
+\]
+generate \(\tfrac12\Z+\tfrac{\sqrt2}{4}\Z\). The complete
+coefficient list and its two-dimensional integer Hermite reduction
+are retained in \path{B_cubic_embeddings.json}. Thus both embeddings
+and both distinct value groups have exact finite certificates.
+\end{proof}
+
+\paragraph{Literature scope.}
+Borcherds' construction and the Weyl-neighbour results of Chenevier and
+Lannes supply the rank-24 background and the endpoint \(d=h\); they
+do not supply the eleven-exception table. Wilson's 2009 construction
+supplies \eqref{eq:B-Wilson}, and his account of Conway's group supplies
+large generating groups preserving that lattice. A generator of
+\(\mathrm{Co}_0\) need not preserve the cubic, which is why the
+separate upper-bound argument in B.7 is required. Searches for the
+related Albert-algebra interpretation also locate
+\citet[Corollary 2.3 and Section 4]{B_Rios2018}. Its equation (8)
+uses the quadratic map \(v\mapsto vv^*\) into the full Albert
+algebra. That construction does not identify the fixed linear
+off-diagonal coordinates with a cubic-preserving action on
+\(\mathbb O^3\); in particular \(v\) and \(-v\) have the same
+quadratic image, whereas our nonzero cubic changes sign. We
+therefore do not infer a cubic stabilizer from that interpretation.
+Searches for the specific determinant-81 intersection, its shell counts 23058 and
+1849032, and its group orders, together with searches for isotropic
+planes modulo three, did not identify a published occurrence of this
+configuration or a full plane-orbit table. We therefore make no
+priority claim and do not label the configuration new. The exact
+searches, sources opened, and theorem locations are retained in the
+Part B research record. The full 129-orbit table in B.9 is an
+independent exact classification; the failure to locate an earlier
+table is not a claim of priority. The vector-residue table in
+\citet[Proposition 4.2 and Table 4.2]{B_MartinetLatticesMod} and the
+explicit vector transporters documented by \citet{B_mmgroup2026}
+are useful comparisons, but neither supplies the plane fusion or
+the 129 full stabilizers proved here. The known triangle stabilizer
+in \citet[Section 5]{B_Fairbairn2010} is independently recovered by
+our complete Gram-graph coset test. The Albert/Niemeier connection
+itself is present in the work of \citet{B_ElkiesGross2001}; B.8
+addresses the particular Euclidean embedding and cubic normalization
+asked for here, and its elementary value-group calculation makes no
+claim to introduce that broader connection.
+
+The requested Conway--Sloane comparison is more specific than a
+general reference to their book. Their Chapter 16 tables record the
+rooted Niemeier systems and glue; the opened Chapter 17 material
+classifies odd unimodular lattices through their two even neighbours,
+an index-two construction. For Chapter 24 we opened the complete
+original article \citep{B_ConwaySloane1982Holy}, whose Figure 3
+includes both \(A_5^4D_4\) and \(A_2^{12}\). Its unnumbered holy
+construction on p.~275, proved on pp.~281--283, constructs a Leech
+lattice from each rooted Niemeier lattice, with the norm-two root
+normalization used here. This is known background for B.1 and B.3.
+The opened material does not state the common determinant-81
+intersection, its six Leech and two rooted extensions, or the
+129 plane orbits. We distinguish that precise search outcome from
+an assertion that the configuration is absent from all literature.

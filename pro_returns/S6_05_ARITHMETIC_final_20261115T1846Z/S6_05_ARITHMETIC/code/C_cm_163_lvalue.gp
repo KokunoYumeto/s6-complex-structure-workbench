@@ -1,0 +1,10 @@
+default(realprecision,60);
+default(parisizemax,1800000000);
+M=ellinit([0,0,1,-75065352465446420,7916029533155605844266842]);
+print("conductor ",ellglobalred(M)[1]);
+print("start analytic calculation");
+A=ellanalyticrank(M);
+print("analytic_rank_and_derivative ",A);
+print("leading_derivative/real_period ",A[2]/real(M.omega[1]));
+print("height_O ",ellheight(M,[0,-2813543945482])/2);
+quit;

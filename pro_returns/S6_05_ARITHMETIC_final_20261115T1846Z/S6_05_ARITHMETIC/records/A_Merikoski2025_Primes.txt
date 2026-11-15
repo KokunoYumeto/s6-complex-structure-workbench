@@ -1,0 +1,2032 @@
+                                                              ON PRIMES REPRESENTED BY aX 2 + bY 3
+
+                                                                                    JORI MERIKOSKI
+
+                                                 Abstract. Let a, b > 0 be coprime integers. Assuming a conjecture on Hecke eigenvalues
+                                                 along binary cubic forms, we prove an asymptotic formula for the number of primes of
+arXiv:2503.05396v1 [math.NT] 7 Mar 2025
+
+
+
+
+                                                 the form ax2 + by 3 with x ≤ X 1/2 and y ≤ X 1/3 . The proof combines sieve methods
+                                                 with the theory of real quadratic fields/indefinite binary quadratic forms, the Weil bound
+                                                 for exponential sums, and spectral methods of GL(2) automorphic forms. We also discuss
+                                                 applications to elliptic curves.
+
+
+
+
+                                                                                       Contents
+                                            1. Introduction                                                                                    1
+                                            2. Restricted representations by indefinite binary quadratic forms                                 7
+                                            3. Lemmas                                                                                         10
+                                            4. Set-up and arithmetic information                                                              14
+                                            5. Proof of Proposition 4.2                                                                       15
+                                            6. Proof of Proposition 4.3: initial reductions                                                   16
+                                            7. Proof of Proposition 6.2                                                                       20
+                                            8. Proofs of Theorems 4.1 and 1.2                                                                 28
+                                            9. Proof of Theorem1.3                                                                            30
+                                            References                                                                                        32
+
+
+
+                                                                                   1. Introduction
+                                             The problem of counting prime numbers along thin polynomial sequences has been solved
+                                          only for a very narrow class of polynomials. Results fall into one of two lineages, one starting
+                                          from the Friedlander-Iwaniec primes of the form X 2 + Y 4 [8] and one from the Heath-Brown
+                                          primes of the form X 3 + 2Y 3 [18]. See [7, 10, 12, 19, 26, 30, 31, 32, 38] and [20, 21, 27, 29]
+                                          for their respective descendants. In particular, all known results about prime values of thin
+                                          polynomials require that the polynomial factorizes in a number field gaining at least one
+                                          linear variable, √
+                                                           for example,
+                                                                    √   X 2 + Y 4 = (X + iY 2 )(X − iY 2 ) in Q(i) and X 3 + 2Y 3 is the
+                                                           3        3
+                                          norm of X + Y 2 in Q( 2).
+                                             We introduce a new approach for counting the prime values of the polynomial aX 2 + bY 3
+                                          that has no obvious factorization. In the absence of a linear variable, we will leverage the
+                                          quadratic variable. This is a much harder task and our main result is conditional on a
+                                          hypothesis that we formulate now.                                                       √
+                                             Let d > 0 be a fundamental discriminant and consider the realP   quadratic  field Q(   d) (see
+                                                                                                                          ℓ
+                                          Section 2 for a more detailed discussion). We let λχξℓ (n) = N √ (a)=n χξ (a) denote the
+                                                                                                                    Q( d)
+
+                                          Hecke eigenvalue associated to the Größencharakter χξ ℓ , parametrized by ℓ ∈ Z and class
+                                                                                             1
+group characters χ ∈ C(d)     d [22, 23]. For χξ ℓ = 1 it is given by the Dirichlet convolution
+            d           d
+λ1 = 1 ∗ ( · ) where ( n ) is the Jacobi symbol. For T > 1 we define the truncated approxima-
+tion λ♯1 (n, T ) = 1 ∗ (( d· )1[0,T ] )(n) and denote the error term by λ♭1 (n, T ) = λ1 (n) − λ♯1 (n, T ).
+Having no reason to suspect otherwise, for χξ ℓ 6= 1 we expect square-root cancellation along
+the values of binary cubic forms, and for a ∈ Z>0 and ε > 0 we make the following hypothesis.
+
+Conjecture Ca (ε). Let C(X, Y ) = c1 X 3 − c2 Y 3 ∈ Z[X, Y ] for some c1 , c2 > 0. Then for
+χξ ℓ 6= 1 and B1 , B2 > 1 we have
+               X
+                          λχξℓ (| a1 C(y1 , y2 )|) ≪ε max{B12 , B22 , c21 , c22 , d, |ℓ|2}ε (B1 + B2 ),
+            y1 ≤B1 , y2 ≤B2
+          C(y1 ,y2 )≡0 (mod a)
+
+and for some η > 0 we have for any T ∈ [(B1 + B2 )1−η , B1 + B2 ]
+                X
+                        λ♭1 (| a1 C(y1 , y2 )|, T ) ≪ max{c21 , c22 , d, |ℓ|2}η (B12 + B22 )1−η .
+               y1 ≤B1 , y2 ≤B2
+             C(y1 ,y2 )≡0 (mod a)
+
+  For B1 ≈ B2 taking ε = o(1) corresponds to square-root cancellation, and ε = 1/2
+corresponds to no cancellation at all. For χξ ℓ = 1 we require only a small power-saving.
+This conjecture serves as a placeholder, we only require such a bound on average over a large
+family of eigenvalues, see Conjecture La,b (ε) in Remark 7.1. Assuming that this conjecture
+holds for all ε > 0, we can show an asymptotic formula for the number of primes of the form
+aX 2 + bY 3 . As usual, Λ(n) denotes the von Mangoldt function.
+Theorem 1.1. Let a, b > 0 be coprime integers. Assume that Conjecture Ca (ε) holds for all
+ε > 0. Then
+                       X X
+                                  Λ(ax2 + by 3 ) = (1 + o(1))X 5/6 .
+                                 x≤X 1/2 y≤X 1/3
+
+  For a fixed ε > 0 the error term o(1) is replaced by O(ε) (see Theorem 4.1). We get a
+correct order lower bound for primes with the fixed value ε = 1/17 and a lower bound for
+products of exactly k ≥ 2 primes for any ε < 1/4.
+Theorem 1.2. Let a, b > 0 be coprime integers. Assuming that Conjecture Ca (1/17) holds,
+we have
+                      X X
+                                 Λ(ax2 + by 3 ) ≥ (0.05 + o(1))X 5/6 .
+                            x≤X 1/2 y≤X 1/3
+
+Assuming that Conjecture Ca (ε) holds for some ε < 1/4, we have for any k ≥ 2
+                 X X
+                             (Λ     · · ∗ Λ})(ax2 + by 3 ) ≫ X 5/6 (log X)k−1.
+                              | ∗ ·{z
+                       x≤X 1/2 y≤X 1/3       k times
+
+ The proof of Theorem 1.1 may be adapted to show that, under the same hypothesis, the
+Möbius function µ(n) has cancellation.
+
+                                                       2
+Theorem 1.3. Let a, b > 0 be coprime integers. Assume that Conjecture Ca (ε) holds for all
+ε > 0. Then
+                           X X
+                                      µ(ax2 + by 3 ) = o(X 5/6 ).
+                             x≤X 1/2 y≤X 1/3
+
+  Unconditionally, for the Liouville function λ, Teräväinen [35, Theorem 2.12] has shown
+that λ(ax2 + by 3 ) takes both values ±1 infinitely often.
+
+1.1. Applications to elliptic curves. A major motivation for studying prime numbers of
+this form comes from elliptic curves
+
+                                   EA,B :      y 2 = x3 + Ax + B
+
+whose discriminant
+
+                                 ∆(EA,B ) = −16(4A3 + 27B 2 )
+
+controls the places of bad reduction. Therefore, as a special case of Theorem 1.1 with
+a = 27, b = 4, assuming Conjecture C27 (ε) for all ε > 0, we get an asymptotic formula for
+the number of elliptic curves with exactly one place of bad reduction p > 2.
+   It is not clear if the argument can be adapted to study the distribution of the root numbers
+of the elliptic curves EA,B (see [39, proof of Proposition 3.1] for 4A3 + 27B 2 square-free)
+
+                      w(EA,B ) = −µ(4A3 + 27B 2 )( 4A3 +27B
+                                                       6B
+                                                            2 )w2 (EA,B ).
+
+
+
+The twist by the Jacobi symbol appears surprisingly difficult to accommodate in our ap-
+proach. Helfgott [24, Corollary 5.2] has shown that for the family y 2 = x(x + A)(x + B) the
+root numbers are evenly distributed, by considering essentially ( B
+                                                                  A
+                                                                    )µ(AB(A − B)), but for
+his arguments the Jacobi symbol causes only minor issues.
+  It should however be possible to consider the root numbers of the quadratic twist family
+                                    (B)
+                                 EA,B :        By 2 = x3 + Ax + B
+
+for B and 4A3 + 27B 2 square-free with gcd(B, ∆(EA,B )) = 1, since their root numbers satisfy
+               (B)
+           w(EA,B ) = w(EA,B )( 4A3−B
+                                   +27B 2
+                                          ) = −µ(4A3 + 27B 2 )( 4A3 +27B
+                                                                    −6
+                                                                         2 )w2 (EA,B ).
+
+
+
+The local root number w2 (EA,B ) may be controlled using [34, Table III] after sorting A and
+B into residue classes.
+
+1.2. Overview. We restrict to the case a = b = 1 in this non-rigorous sketch. Replacing the
+rough cut-offs by smooth weights f , we consider counting primes weighted by the sequence
+                            X
+                     an =         f ( Ax )f ( By ), A ≍ X 1/2 , B ≍ X 1/3 .
+                             n=x2 +y 3
+                                                   3
+By a sieve argument (essentially Heath-Brown’s identity [16]), the proof reduces to the
+asymptotic evaluation of three different types of sums
+                                                       X     X
+               Linear sums (Type I)                       αd     adn ,
+                                                                 d≤D1        n
+                                                                 X           X
+                Bilinear sums (Type II)                                 αm            βn amn ,
+                                                               m∼X/N             n
+                                                                 X           X
+                Divisor sums (Type I2 )                                 αd           admn ,
+                                                                 d≤D2        m,n
+
+where α and β denote bounded complex coefficients.
+1.2.1. Type I sums. We are able to handle the Type I sums for
+                                                D1 < X 5/9
+by applying Poisson summation to the variables x and y and the Weil bound for exponential
+sums.
+1.2.2. Type II sums. Assuming conjecture C1 (ε) for some ε > 0, we are able to handle Type
+II sums in the range
+                                          X 1/6 < N < X 1/3−2ε/3 .
+This estimate for type II sums is based on the following considerations that can be seen
+as the main idea of this paper. After applying the Cauchy-Schwarz inequality on m and
+rearranging sums, the task reduces to evaluating a sum of the form
+                            X            X
+                                 βn1 βn2      Υn1 ,n2 (k)Qn1 ,n2 (k),
+                              n1 ,n2 ∼N         k≍N X
+
+where Υn1 ,n2 (k), Qn1 ,n2 (k) denote the restricted representations by binary cubic and qua-
+dratic forms
+                           X                                           X
+        Υn1 ,n2 (k) =             f ( yB1 )f ( yB2 ) and Qn1 ,n2 (k) =      f ( xA1 )f ( xA2 ).
+                    k=n1 y23 −n2 y13                                    k=n2 x21 −n1 x22
+                                                                            √
+Using the classical correspondence between the class group C(d) of Q( d) and the set of
+GL2 (Z)-equivalence classes of binary quadratic forms of discriminant d, the latter may be
+expanded (see Lemma 2.1) using the Hecke characters for the real quadratic field of discrim-
+inant d = 4n1 n2 ≍ N 2 . We essentially get
+                             1     X X
+            Qn1 ,n2 (k) ≈                   χξ ℓ (n2 )λχξℓ (k), n22 = (4n2 ) ⊆ Od .
+                          h(d)Rd
+                                                d
+                                       |ℓ|≪Rd χ∈C(d)
+
+Here the class number h(d) and the regulator Rd satisfy the Dirichlet class number formula
+(2.1)
+                                      √              √
+                           2h(d)Rd = dL(1, ( d· )) ≈ d ≍ N,
+where ≈ holds on average over n1 , n2 . By the Cohen-Lenstra heuristics, we expect that
+typically h(d) ≪ 1 and Rd ≍ N, so that the characters ξ ℓ are the main culprit for the
+losses. Corresponding to the fact that a minimal solution to Pell’s equations may be expo-
+nentially large, we expect that often Qn1 ,n2 (k) = 0. More precisely, we have an expansion of
+                                                       4
+the function Qn1 ,n2 (k) which has expected density ≈ 1/N into roughly N many harmonics
+λχξℓ (k).
+  Invoking Conjecture C1 (ε), we obtain for χξ ℓ 6= 1
+                              X
+                                   Υn1 ,n2 (k)λχξℓ (k) ≪ X 1/3+2ε/3 ,
+                                k≍N X
+
+which is sufficient provided that N < X 1/3−2ε/3 . We merely require this bound on average
+over the complete family of n1 , n2 ∼ N, χ ∈ C(d),      d and |ℓ| ≪ Rd (see Remark 7.1). It
+is tempting to think that this problem would be amenable to large sieve techniques but
+unfortunately, the cubic forms appearing in Υn1 ,n2 (k) are entangled with n1 , n2 . We mention
+that similar sums for a fixed discriminant and a fixed binary cubic or quartic form arise
+naturally in the context of Manin’s conjecture for Châtelet surfaces [37].
+   The task is then to evaluate the main term coming from χξ ℓ = 1
+                         X            βn1 βn2            X
+                               √              4n1 n2          Υn1 ,n2 (k)λ1 (k).
+                       n ,n ∼N
+                                 n1 n2 L(1, (   ·
+                                                     )) k≍N X
+                        1   2
+
+
+It is not obvious how to make the argument unconditional and we have to assume that λ1 (k)
+may be replaced by the truncated approximation λ♯1 (k, T ). For the divisor function along
+binary cubic forms Greaves has shown an asymptotic formula with a power saving [11].
+   Using Heath-Brown’s large sieve for quadratic characters [17], on average over n1 , n2 we can
+                                            P
+replace the factor L(1, ( 4n1· n2 ))−1 by k≤X ε µ(k)
+                                                  k
+                                                     ( 4nk1 n2 ) (see Lemma 3.5). For the truncated
+                                P
+approximation λ♯1 (k, T ) =              4n1 n2
+                                    c≤T ( c ) we can evaluate the sum over y1 , y2 by applying
+Poisson summation twice, which produces a count for cubic congruences
+(1.1)                    #{(y1 , y2) ∈ (Z/cZ)2 : n1 y23 ≡ n2 y13 (mod c)}.
+Expanding (1.1) by cubic Dirichlet characters, the principal characters give the main term.
+We then need to bound error terms of the form
+                      1 X 1 X µ(k) X               X                2
+                                                                n
+                                                       βn χ(n)( ck ) .
+                     N c≤T c k≤X ε k               n∼N
+                                              χ (mod c)
+                                             χ3 =χ0 6=χ0
+
+This is bounded using the large sieve for sextic characters due to Baier and Young [1].
+
+1.2.3. Type I2 sums. The obtained Type I and Type II ranges would already be enough for
+a lower bound of the correct order of magnitude for the number of primes p = x2 + y 3. To
+show an asymptotic formula, we also need to consider the Type I2 sums. We are able to
+handle these for
+                                           D2 < X 1/4
+by using the spectral methods of GL(2) automorphic forms. The proof will appear in an
+upcoming joint work with Grimmelt [14], as an application of the averages overp orbits in-
+troduced in [13]. To sketch the idea in the critical case d ∼ D2 , m ∼ n ∼ X/D2 , note
+that
+P forx a fixed   y we consider a variant of the divisor problem along a quadratic polynomial
+               2   3
+   x f ( A )d(x + y ). Applying Poisson summation on x√    produces the expected main term
+and an error term with the dual variable of length H ≈ D2 .
+                                                 5
+    Arguing similarly to Duke, Friedlander, and Iwaniec [5], utilizing the factorization y 3 =
+y · y 2, we get a spectral expansion for the error term that is morally of the shape (suppressing
+the Eisenstein series and other minor details)
+                                          Γ0 (d)
+                  B 1/2 X y X             X              X λj (h) X X
+                          f ( B
+                                )     α d        λ j (y)                 uj (τ z).
+                  H 1/2 y         d∼D       j            h∼H
+                                                             d 1/2
+                                                                   z∈Λ τ
+                                      2                             y
+                                           |tj |≪1
+
+Here uj (z) are the (L2 -normalized) Maass cusp forms for the Hecke congruence subgroup
+Γ0 (d) and λj (h) denote the Hecke eigenvalues. Here Λy ⊆ H is essentially the set Heegner
+points for the discriminant y so that #Λy ≈ y 1/2 , and τ runs over a subset of size ≪ do(1) in
+Γ0 (d)\ SL2 (Z).
+   Applying the Cauchy-Schwarz inequality
+                                        P       with the variables z, τ on the outside (as in [5]),
+and using the Rankin-Selberg bound y f ( By )|λj (y)|2 ≤ (dB)o(1) B, we would get the range
+D2 < X 1/6 . This turns out to be just barely insufficient for an asymptotic formula for primes.
+Taking advantage of the average over the orbits z ∈ Λy allows us to essentially save a factor
+of (#Λy )1/2 ≈ X 1/12 , which bumps the range up to D2 < X 1/4 . We note that any range with
+D2 > X 1/6+η would be sufficient for getting the asymptotic formula – curiously, the prime
+detecting sieve has a discontinuity at 1/6 in terms of the parameter log    D2
+                                                                         log X
+                                                                               , caused by crossing
+from Type I2 sums to Type II sums (see [6] for a detailed discussion of discontinuities in
+sieve methods).
+   It seems difficult to improve the error term o(1) in Theorem 1.1. Even if we assumed a
+much more uniform conjecture with max{· · · }ε replaced by (log max{· · · })O(1) , we would
+only improve the error term o(1) to O( logloglogXX ). We are missing arithmetic information for
+multiple different types of sums, especially (i) three variables of size X 1/3+o(1) and (ii) six
+variables of size X 1/6+o(1) .
+
+1.2.4. Generalizations to other sequences. We mainly leverage the fact that the first term is
+a quadratic monomial, so the discussion, at least in principle, extends primes of the form
+X 2 + y with y weighted by other sequences γy . Of particular interest are sequences γy with
+support of size X 1/2−η for some small η > 0. For such a sequence the diagonal terms in the
+Type II argument are admissible if N > X η . Therefore, to produce a non-trivial Type II
+range, we would only require a small amount of saving instead of square-root saving in the
+corresponding convolution sums along Hecke eigenvalues
+                                 X
+(1.2)                               γv1 γv2 λχξℓ (n1 v2 − n2 v1 ).
+                                  v1 ,v2
+
+Furthermore, since n1 , n2 are small, the uniformity in the conductor does not seem to be
+a formidable issue for, say, automorphic techniques. It would therefore be of great interest
+to obtain bounds for sums of the form (1.2), as it would quickly translate to results about
+primes or at least products of k ≥ 2 primes of the form x2 + y with the weights γy .
+
+1.3. Acknowledgements. I am grateful to James Maynard, Kyle Pratt, and Lasse Grim-
+melt for helpful discussions. The project has received funding from the European Research
+Council (ERC) under the European Union’s Horizon 2020 research and innovation pro-
+gramme (grant agreement No 851318).
+                                                     6
+        2. Restricted representations by indefinite binary quadratic forms
+2.1. Real quadratic fields. Let d > 0 be a fundamental discriminant, that is, d ≡
+0, 1 (mod 4) and d√is square-free
+                               √    except for a possible factor of 4 or 8. Consider the real
+quadratic field Q( d) := Q( d) and its ring of integers
+                                               ( √
+                                                 1
+                        √                            d,           d ≡ 0 (mod 4)
+                Od = Z[ ωd ], where ωd := 12            √
+                                                 2
+                                                   (1 + d),       d ≡ 1 (mod 4).
+                √                               √
+For z = x + y√ d, x, y ∈ Q we let z σ := x − y d denote the other embedding into R. The
+norm Nd : Q( d) → Q is defined by Nd (z) := zz σ = x2 −dy 2 . The norm is extended to ideals
+a ⊆ Od via Nd (a) = #Od /a, so that for any principal ideal a = (z) we have Nd (a) = |Nd (z)|.
+   The group of units has rank 1 and it is generated by −1 and the fundamental unit εd ,
+which is √defined as the smallest element ε ∈ Od with ε > 1 and Nd (ε) = ±1. In other words,
+εd = a+b2 d is the smallest element > 1 such that (a, b) ∈ Z is a solution to the Pell equations
+a2 − db2 = ±4.
+   We let Id denote the group of fractional ideals and Pd denote the subgroup of principal
+fractional ideals. The ideal class group is then defined as
+                                             C(d) := Id /Pd .
+The class group C(d) is a finite abelian group
+                                             √ and the class number is defined as h(d) :=
+#C(d). The regulator of the number field Q( d) is defined by Rd := log εd . We then have
+the Dirichlet class number formula for real quadratic fields
+                                                                                ∞
+                                                                                X
+                                    √
+(2.1)                 2h(d)Rd =         d L(1, ( d· )),       L(s, ( d· )) :=         ( nd )n−s
+                                                                                n=1
+
+where ( nd ) is the primitive real character associated to the fundamental discriminant d.
+                                                                   √
+  We define the hyperbolic coordinates of any non-zero z ∈ Q( d) via
+                        r(z) = sgn(z)|Nd (z)|1/2 ,             α(z) = 21 log |z/z σ |.
+Then analogous to the polar coordinates for imaginary quadratic fields we have for zz σ > 0
+                                 √
+                       z = x + y d = r(z)eα(z) , z σ = r(z)e−α(z) ,
+                                                 1
+                       x = r(z) cosh α(z), y = √ r(z) sinh α(z).
+                                                  d
+For zz σ < 0 we have z σ = −r(z)e−α(z) and the roles of cosh α and sinh α are swapped.
+  The Hecke characters [22, 23] {ξ ℓ }ℓ∈Z are defined for principal ideals a = (z) by the formula
+                            ξ ℓ (a) = ξ ℓ (z) := e(ℓ α(z)
+                                                      Rd
+                                                          ),        e(x) = e2πix .
+It is quick to check using εσd = 1/εd that this definition does not depend on the choice of the
+generator z. The character ξ ℓ may be extended to a character on all fractional ideals, and
+                                                                               d
+the extension is unique up to multiplication by a class group character χ ∈ C(d).
+   We denote
+(2.2)                  ψχξℓ ,s (a) := ξ ℓ (a)χ(a)Nd (a)−s/2 ,           ψχξℓ := ψχξℓ ,0 .
+                                                          7
+We define the associated Hecke eigenvalues
+                                                          X
+(2.3)                                   λχξℓ (n) :=              ψχξℓ (a).
+                                                       a⊆Od
+                                                      Nd (a)=n
+
+For χξ ℓ = 1 we have the Dirichlet convolution λ1 = 1 ∗ ( d· ). For any T > 1, we define the
+truncated approximation
+                                                        X
+                                λ♯1 (n) = λ♯1 (n, T ) =   ( dc )
+                                                                   c|n
+                                                                  c≤T
+
+and set
+(2.4)         λ♭1 (n) = λ♭1 (n, T ) := λ1 (n) − λ♯1 (n, T ),     λ♭χξℓ (n) := λχξℓ (n) for χξ ℓ 6= 1.
+
+For n = 0 we set λ♯1 (0) = λ♭1 (0) = λχξℓ (0) = 0.
+  The associated L-function
+                                                          X λχξℓ (n)
+                                          L(s, χξ ℓ ) =
+                                                           n
+                                                                  ns
+
+has a meromorphic continuation [22, 23], with a simple pole only for (χξ ℓ , s) = (1, 1). It
+satisfies a functional equation of the form
+                         L(s, χξ ℓ ) = (d/π 2 )1/2−s G(1 − s, χξ ℓ )L(1 − s, χξ ℓ ),
+where for σ < η < 0 [3, 4, 33]
+                                 |G(1 − s, χξ ℓ )| ≪η (1 + t2 + ℓ2 )1/2−σ .
+In particular, for σ < η < 0 by the functional equation this implies
+(2.5)                           L(σ + it, χξ ℓ ) ≪η (d(1 + t2 + ℓ2 ))1/2−σ .
+
+2.2. Indefinite binary quadratic forms. Let d > 0 be a fundamental disrciminant and
+let Bd denote the set of binary quadratic forms B ∈ Z[X, Y ]
+                 B(X, Y ) = aX 2 + bXY + cY 2              of discriminant    b2 − 4ac = d.
+The group GL2 (Z) acts on Bd via
+                                                                                   
+          γ                                                                 a11 a12
+        B (X, Y ) = B(a11 X + a12 Y, a21 X + a22 Y ),            where γ =            ∈ GL2 (Z).
+                                                                            a21 a22
+There is a well-known isomorphism between the GL2 (Z) equivalence classes of such forms
+and the class group C(d), which sends the class of a form B(X, Y ) = aX 2 + bXY + cY 2 ∈ Bd
+to the class in C(d) of the ideal
+                                   √                       √
+                             (a, b+2 d )Z = {2ax + b+2 d y : x, y ∈ Z} ⊆ Od .
+  We now restrict to the specific binary quadratic forms B(X, Y ) = n2 X 2 − n1 Y 2 of discrim-
+inant 4n1 n2 , for which we can argue directly. We obtain an expansion for representations
+restricted by a smooth weight on the variables.
+                                                       8
+Lemma 2.1. Let ǫ ∈ {±}. Let n1 , n2 > 0 be square-free, odd, and coprime and denote
+d = 4n1 n2 . Let n2 ⊆ Od denote the ideal such that (4n2 ) = n22 . Let δ, δ0 , η, Z > 0 and let
+F : (0, ∞)2 → C be a fixed smooth function F is supported on (η, 1/η)2 and ǫ(x21 − x22 ) > δ0 .
+Suppose that for all J ≥ 0 we have ∂xJ11 ∂xJ22 F (x1 , x2 ) ≪J1 ,J2 δ −J1 −J2 . Then for any m ∈ Z>0
+we have
+       X                                                      Z
+                          √
+                 x1 2n2 x2 4n1 n2       1       1 X X
+              F( Z ,        Z
+                                  )=                                 Z s F̌ (ℓ, s)ψχξℓ ,s (n2 )λχξℓ ,s (m)ds,
+     x ,x ∈Z
+                                     h(d)R d  2πi  ℓ∈Z           (0)
+          1   2                                                 d
+                                                              χ∈C(d)
+  |n2 x21 −n1 x22 |=m
+
+
+where the coefficients F̌ (ℓ, s) satisfy the decay property that for any J ≥ 0
+
+                                                         1 + | log δ0 |
+(2.6)                            |F̌ (ℓ, s)| ≪η,J                         .
+                                                    (1 + δ|ℓ|/Rd + δ|s|)J
+
+Proof. We consider ǫ = +, the case ǫ = − is similar. Since 4n2 (n2 x21 − n1 x22 ) = (2n2 x1 )2 −
+4n1 n2 x22√
+          , the representations |n2 x21 − n1 x22 | = m are in 1-to-1 correspondence with z =
+x1 + x2 d ∈ Od which satisfy |Nd (z)| = 4n2 m and 2n2 |x1 . The condition 2n2 |x1 may be
+dropped since it is implied by 4n2 ||Nd(z)| = |x21 − 4n1 n2 x22 |. By unique
+                                                                        √ prime factorization √ of
+ideals we have n2 |(z). Let f (r, α) be defined by f (r, α) = F (x1 , x2 d) for z = reα ∈ Q( d).
+We then have
+     X                        √            X               √        X      X r(z)
+               F ( x1Z2n2 , x2 4n
+                                Z
+                                  1 n2
+                                       ) =        F ( x1 x2 d
+                                                      Z
+                                                        ,  Z
+                                                              ) =             f ( Z , α(z) + kRd ).
+     x1 ,x2 ∈Z                              z∈Od                           a=(z)    k∈Z
+|n2 x21 −n1 x22 |=m                    |Nd (z)|=4n2 m                  Nd (a)=4n2 m
+
+
+
+                     P
+Denoting G(r, α) = k∈Z f (r, α + kRd ), applying Mellin inversion and Fourier series expan-
+sion to G(r/Z, α), and expanding the condition that a is a principal ideal by class group
+characters we get
+     X                                              Z
+                        √
+               x1 2n2 x2 4n1 n2        1    1 X X           s
+                                                                        X
+            F( Z ,        Z
+                                ) =                       Z   F̌ (ℓ, s)     ψχξℓ ,s (a)ds
+   x ,x ∈Z
+                                    h(d)Rd 2πi
+                                               ℓ∈Z    (0)
+      1   2                                                   b
+                                                            χ∈C(d)      a∈O               d
+|n2 x21 −n1 x22 |=m                                                              Nd (a)=4n2 m
+                                                     Z
+                                         1    1 X X                                   X
+                                    =                      Z s F̌ (ℓ, s)ψχξℓ ,s (n2 )     ψχξℓ ,s (a)ds.
+                                      h(d)Rd 2πi ℓ∈Z   (0)    b
+                                                            χ∈C(d)                    a∈O          d
+                                                                                              Nd (a)=m
+
+
+By unfolding the sum over k ∈ Z we have
+             Z Rd Z ∞                             Z Z ∞
+                                        s dr                                               dr
+ F̌ (ℓ, s) =                      α
+                      G(r, α)e(−ℓ Rd )r      dα =       F (r cosh α, r sinh α)e(−ℓ Rαd )r s dα.
+              0    0                      r        R 0                                      r
+
+The decay property (2.6) follows from iterating integration by parts with respect to the
+symmetric differential operator
+                                                 δ
+                                   Ξr,α = 1 + ( 2πi ∂α )2 + (iδ|r|∂r )2 ,
+                                                        9
+that is, for any J ≥ 0 we have
+                                          Z Z ∞                                       
+                           1                                           J        α     s dr
+   F̌ (ℓ, s) =                                  F (r cosh α, r sinh α)Ξr,α e(−ℓ Rd )r       dα
+               (1 + (δℓ/Rd )2 + (δ|s|)2)J R 0                                            r
+                                          Z Z ∞                            
+                           1                                                             dr
+             =              2         2 J
+                                                 J
+                                                Ξr,α F (r cosh α, r sinh α) e(−ℓ Rαd )r s dα
+               (1 + (δℓ/Rd ) + (δ|s|) ) R 0                                              r
+                       1 + | log δ0 |
+             ≪η,J                       .
+                  (1 + δ|ℓ|/Rd + δ|s|)J
+                                                                                                       
+  We also need the following variant, where the smooth weight depends only on the hyper-
+bolic angle. The proof is similar but easier.
+Lemma 2.2. Let n1 , n2 > 0 be square-free, odd, and coprime and denote d = 4n1 n2 . Let
+n2 ⊆ Od denote the ideal such that (4n2 ) = n22 . Let δ, K > 0 and let f : R → C be a smooth
+function supported in [−K, K] satisfying ∂xJ f (x) ≪J δ −J . Then for any m ∈ Z>0 we have
+             X                             √               1   X X
+                     f (log | xx11 2n
+                                   2n2 +x2 √4n1 n2
+                                      2 −x2 4n1 n2
+                                                   |) =            fˇ(ℓ)ψχξℓ (n2 )λχξℓ (m),
+           x ,x ∈Z
+                                                        h(d)Rd
+                                                               ℓ∈Z
+              1   2                                                            d
+                                                                             χ∈C(d)
+        |n2 x21 −n1 x22 |=m
+
+where the coefficients fˇ(ℓ) satisfy |fˇ(ℓ)| ≪J K(1 + δ|ℓ|/Rd )−J for all J > 0.
+
+                                                      3. Lemmas
+  We need the following truncated version of the Poisson summation formula, which follows
+by repeated integration by parts for |h| > H.
+Lemma 3.1 (Truncated Poisson summation formula). Let δ, η > 0 and let f be a smooth
+function supported in [1, 2] with f (J) ≪J δ −J for all J ≥ 0. Let N > 1 and q ∈ Z>0 . Let
+Z > 1 and let
+                                                    H ≥ N η δ −1 q/N.
+Then for any C > 0
+               X                             Nb        N    X
+                                f ( Nn ) =     f (0) +               fb( hN
+                                                                          q
+                                                                            )eq (ah) + Oη,C (N −C ),
+                                             q         q
+                      n≡a (q)                              1≤|h|≤H
+                  R
+where fb(h) :=        R
+                          f (u)e(−hu)du is the Fourier transform.
+   The following lemma considers a smoothed sum over λχξℓ (n) and shows that, if the length
+of the sum is longer than the conductor, then we get almost perfect cancellation.
+Lemma 3.2. Let δ > 0 and let f be a smooth function supported in [1, 2] with f (J) ≪J δ −J
+for all J ≥ 0. Let λχξℓ (n) be eigenvalues (2.3) for a fundamental discriminant d > 0 with
+χξ ℓ 6= 1 and let q ∈ Z>0 . Suppose that for some η > 0 we have N > N η qd(1 + δ −2 + ℓ2 ).
+Then for any C > 0
+                              X
+                                  f ( Nn )λχξℓ (qn) ≪η,C q o(1) N −C .
+                                             n
+                                                             10
+Proof. Let q = q0 q1 with q0 = gcd(q, (2d)∞ ). Then we have the Hecke relation
+                                            X
+                     λχξℓ (qn) = λχξℓ (q0 )      µ(r)( dr )λχξℓ ( qr1 )λχξℓ ( nr ),
+                                              r| gcd(q1 ,n)
+
+which reduces the proof to the case q = 1. By Mellin inversion we have
+                      X                         Z
+                                             1
+                              n
+                          f ( N )λχξℓ (n) =           N s fe(s)L(s, χξ ℓ )ds,
+                       n
+                                            2πi   (2)
+
+where the Mellin transform satisfies for any J > 0 by repeated integration by parts
+                                         fe(s) ≪J (1 + δ|t|)−J .
+Then by shifting the contour to (−σ) using the bound (2.5) we have
+        X                            Z
+                                  −σ
+                 n
+             f ( N )λχξℓ (n) ≪J N      (1 + δ|t|)−J (d(1 + t2 + ℓ2 ))1/2+σ dt ≪η,C N −C
+            n                             R
+
+if we let J > 2σ + 3 and take σ sufficiently large in terms of C and η.                                  
+   We also need the following lemma for a smoothed sum over λ♭1 (n, T ), which gives a non-
+trivial bound as soon as T is a bit larger than qd1/2 .
+Lemma 3.3. Let δ > 0 and let f be a smooth function supported in [1, 2] with f (J) ≪J δ −J
+for all J ≥ 0. Let λ♭1 (n, T ) be as in (2.4) for a fundamental discriminant d > 1. Let N > 1
+and let q ∈ Z>0 . Then for any ν ∈ (0, δ) we have
+                         X                                  qN 1/2
+                              f ( Nn )λ♭χξℓ (qn, T ) ≪ ν −1    d + νN 1+o(1) .
+                          n
+                                                             T
+
+Proof. By Dirichlet divisor switching we get
+                                             X          X
+                             λ♭χξℓ (m, T ) =   ( dc ) =      d
+                                                          ( m/c ).
+                                                 c|m            c|m
+                                                 c>T          c≤m/T
+
+                                                          m           (J)
+Approximating c ≤ m/T by a smooth function fν ( cT           ) with fν ≪J ν −J , we get an error term
+                                                                                                   c
+νN 1+o(1) by the divisor bound. It then suffices to show that for any c1 = gcd(c,q)                  ≤ 2qN/T
+we have
+                  X                                   X
+                                      qn
+                         f ( Nn )fν ( cT     d
+                                         )( n/c 1
+                                                  ) =   f ( nc
+                                                             N
+                                                               1
+                                                                 )fν ( qnc
+                                                                        cT
+                                                                           1
+                                                                             )( nd ) ≪ ν −1 d1/2 .
+                n≡0 (mod c1 )                          n
+
+This is a variant of the Pólya-Vinogradov bound, and it follows by Poisson summation
+(Lemma 3.1) and the bound d1/2 for the resulting Gauss sums.                        
+  We need the following lemma, which gives a cheap but flexible version of the fundamental
+lemma of the sieve along arithmetic progressions.
+Lemma 3.4. Let δ > 0 and let f be a smooth function supported in [1, 2] with f (J) ≪J δ −J
+for all J ≥ 0. Let N, X > 1 and let q ∈ Z>0 . Suppose that for some small η > 0
+                                    X η max{1, δ −1q} < N < X 1/η .
+                                                      11
+                           −2                      3
+Let W := X (log log X) , W1 := X η , and define the normalized sieve weights
+                                        P (W )                                                          X
+                          λW
+                           d :=                  µ(d)1d≤W1 1d|P (W ) ,                       θnW :=           λW
+                                                                                                               d
+                                       ϕ(P (W ))
+                                                                                                        d|n
+
+Then for any a ∈ Z and for any C > 0
+   X                          1gcd(a,q)=1 b             N        gcd(a, q, P (W ))1/10 gcd(a, q)1/10 
+              f ( Nn )θnW =              N f (0) + Oη,C    fb(0)                        +                .
+                                 ϕ(q)                    q              (log X)C            W 1/10
+n≡a (mod q)
+
+Proof. By Lemma 3.1 we have
+                    X                               1                   X                   gcd(d, q)
+                              f ( Nn )θnW = N fb(0)                                    λW
+                                                                                        d             + Oη (X −100 ).
+                                                    q                     d
+                                                                                               d
+                n≡a (mod q)
+                                                                  gcd(d,q)| gcd(a,q)
+
+Here
+                        X                   gcd(d, q) P (W )                      X                     gcd(d, q)
+                                       λW
+                                        d            =                                           µ(d)
+                          d
+                                               d       ϕ(W )                                               d
+                                                                                d|P (W )
+                  gcd(d,q)| gcd(a,q)                                        gcd(d,q)| gcd(a,q)
+(3.1)                                                                                       X                        
+                                                                     P (W )                                 gcd(d, q)
+                                                                  +O                                                    .
+                                                                     ϕ(W )                                     d
+                                                                                           d|P (W )
+                                                                                       gcd(d,q)| gcd(a,q)
+                                                                                            d>W1
+
+The first term in (3.1) vanishes unless gcd(a, q, P (W )) = 1, in which case it is equal to
+
+                 P (W ) X     1   gcd(q, P (W ))    q
+                          µ(d) =                  =     (1 + OC ((log X)−C ),
+                 ϕ(W )        d  ϕ(gcd(q, P (W ))) ϕ(q)
+                          d|P (W )
+                          (d,q)=1
+
+
+which gives the main term. Note that 1gcd(a,q,P (W ))=1 = 1gcd(a,q)=1 unless gcd(a, q) ≥ W ,
+in which case we can use the upper bound 1gcd(a,q)≥W ≤ W −1/10 gcd(a, q)1/10 to absorb the
+main term to the error term.
+   For gcd(a, q, P (W )) ≥ W the second term in (3.1) is bounded trivially by
+
+        1gcd(a,q,P (W ))≥W d(gcd(a, q, P (W ))(log X)2 ≤ W −1/20 (log X)2 gcd(a, q, P (W ))1/10 .
+
+For gcd(a, q, P (W, P (W ))) < W we have e = gcd(d, q) < W , and the second term in (3.1) is
+bounded by a bound for large smooth numbers (for instance, [31, Lemma 9])
+                                        X               X 1
+                    ≪ (log X)                      e        ≪C d(gcd(a, q, P (W )))(log X)−C .
+                                                          d
+                                     e| gcd(a,q)       d|P (W )
+                                        e≤W              e|d
+                                                        d>W1
+
+                                                                                                                            
+                                                                       12
+  When applying Lemma 3.4, we bound the error term using the following simple estimates,
+which hold for any P0 ∈ {0, P (W )} and D, Y, n1 , n2 ∈ (1, X] with gcd(n1 , n2 ) = 1
+       X X                     X                gcd(n2 x2 − n1 x2 , d1 y 3n2 , P0 )1/10
+                                                                                 1          2          1
+                                                                                       (d1 y13 n2 )2
+(3.2)   d1 ∼D y1 ,y2 ∼Y              x1 ,x2 ,u (mod d1 y13 n2 )
+                          bn1 u2 y23 ≡a(n2 x21 −n1 x22 ) (mod d1 y13 n2 )
+
+                                                                            ≪ DY 2 (log X)O(1) d(gcd(n2 , P0 ))O(1) ,
+        X X                          X                   gcd(y13 u1 , c)1/10 gcd(y23u2 , c)1/10
+                                                                                                ≪ DY 2 (log X)O(1) .
+(3.3)                                                                       c
+        c∼D y1 ,y2 ∼Y           u1 ,u2 (mod c)
+                        bn2 y13 u1 ≡bn1 y23 u2 (mod c)
+
+In the proofs we will also need the divisor bound for rough divisors of n ≤ X with W as in
+Lemma 3.4
+(3.4)                       #{d|n : gcd(d, P (W )) = 1} ≤ 2log n/ log W ≤ W o(1) .
+ We will need the following truncated approximation to L(1, ( 4d· ))−1 on average over the
+moduli d = n1 n2 for the proof of Proposition 4.3.
+Lemma 3.5. We have for any K, D ≥ 1
+               X              1         X µ(k)( 4d ) 2   D 1+o(1)
+                                4d
+                                      −         k
+                                                       ≪          + D o(1) .
+                          L(1, ( · ))        k              K
+                         d≤D                                     k≤K
+                 square-free and odd
+
+Proof. Plugging in
+                                                    1           X µ(k)( 4d )
+                                                                        k
+                                                              =              ,
+                                                L(1, ( 4d· ))   k
+                                                                     k
+applying quadratic reciprocity, a dyadic partition, and Cauchy-schwarz, it suffices to bound
+                        X                     X          X µ(k)( k ) 2
+                               (log K1 )2                         d
+                                                                       .
+                         j
+                                                               k
+                            K1 =2 ≥K/2                            d≤D            k∼K1
+                                                           square-free and odd
+                                                                                 ε                         ε
+We split into three cases, K1 ∈ [K/2, D 3], K1 ∈ (D 3 , eD ], and K1 > eD .
+                                                             ε
+ By the Siegel-Walfisz theorem terms where K1 > eD contribute
+                                      X             D
+                               ≪C                          C
+                                                               ≪ε 1
+                                        j   D ε
+                                                (log K 1 )
+                                                    K1 =2 >e
+
+by taking C sufficiently large in terms of ε.
+   For K1 ≤ D 3 applying Heath-Brown’s large sieve for quadratic characters [17, Theorem
+1] we get
+      X                      X           X µ(k)( k ) 2     X                        D
+                        2
+              (log K1 )                          d
+                                                       ≪             (DK1 )1+o(1) (    + 1)
+          j 3                d≤D        k∼K
+                                              k                j   3
+                                                                                    K1
+K/2≤K1 =2 ≤D                                                    1                    K/2≤K1 =2 ≤D
+                                square-free and odd
+
+                                                                                     D 1+o(1)
+                                                                                 ≪            + D o(1) .
+                                                                                        K
+                                                                    13
+                        ε
+  For D 3 ≤ K1 ≤ eD , it suffices to show that for any βd we have
+                          X           X                2
+(3.5)                                          βd ( d ) ≪ K1 kβk22 ,
+                                                    k
+
+                              k∼K1            d≤D
+                                       square-free and odd
+
+since then by the duality principle (see [25, Chapter 7.1], for instance)
+        X                     X            X µ(k)( k ) 2          X
+                (log K1 )2                          d
+                                                         ≪                 (log K1 )2 ≪ε D 3ε .
+    3     j  Dε               d≤D         k∼K
+                                                 k            3      j  Dε
+  D <K1 =2 ≤e                                          1                      D <K1 =2 ≤e
+                            square-free and odd
+
+To show (3.5), inserting a smooth majorant F for [1, 2] and expanding the square the left-
+hand side is bounded by
+                     X               X                         X
+             ≪               βd1 βd2   F ( Kk1 )( d1kd2 ) ≪ K1          |βd |2 ,
+                      d1 ,d2 ≤D                k                                     d≤D
+                 square-free and odd                                          square-free and odd
+
+since by Poisson summation (Lemma 3.1)
+          X                                   K1                X
+               F ( Kk1 )( d1kd2 ) ≪ D −100 +                           ( d1kd2 ) ≪ D −100 + K1 1d1 =d2 .
+            k
+                                             d1 d2
+                                                      k (mod d1 d2 )
+
+                                                                                                           
+
+                            4. Set-up and arithmetic information
+  We let δ = δ(X) := (log X)−c for some fixed large c > 0. Let f, f1 , f2 denote non-
+negative non-zero smooth functions supported in [1, 1 + δ] and satisfying the derivative
+                (J)  (J)
+bounds f (J) , f1 , f2 ≪J δ −J for all J ≥ 0. For A ∈ (δX 1/2 , X 1/2 ] and B ∈ (δX 1/3 , X 1/3 ]
+we define the sequences A = (an ), B = (bn ), and their difference W = (wn ) by
+                                                        X
+                      an := an (a, b, f1 , f2 , A, B) =   f1 ( Ax )f2 ( By ),
+                                                                n=ax2 +by 3
+
+                                                                              AB fb1 (0)fb2 (0)
+                      bn := bn (a, b, f, f1 , f2 , A, B, W ) = f ( Xn )
+                                                                                 X fb(0)
+                      wn := an − bn
+Theorem 1.1 is an immediate corollary, via finer-than-dyadic decomposition and the Prime
+number theorem, of the following smoothed version which is proved in Section 8.
+Theorem 4.1. Let a, b > 0 be coprime integers. Let ε > 0 and suppose that Conjecture
+Ca (ε) holds. Let A ∈ (δX 1/2 , X 1/2 ] and B ∈ (δX 1/3 , X 1/3 ]. Then
+                                 X
+                                       Λ(n)wn ≪ εAB fb1 (0)fb2 (0).
+                                       n
+
+   For the proof, we require three types of arithmetic information. Proposition 4.2 is proved
+in Section 5 and Proposition 4.3 is proved in Sections 6 and 7. Conjecture Ca (ε) is required
+only for Proposition 4.3, the other results are unconditional. The proof of Proposition 4.4
+will appear in [14], where it can be done more economically as a corollary of more general
+considerations, via the spectral methods of GL(2) automorphic forms. Only for Proposition
+                                                           14
+4.4 do we need that a, b are positive, and it may be possible to relax this assumption using
+ideas from [36].
+Proposition 4.2 (Type I information up to 5/9). Let a, b 6= 0 be coprime integers. For any
+square-free d ≤ X 5/9−η we have
+                                X
+                                    wdn ≪ d−1 X 5/6−η .
+                                                n
+
+Proposition 4.3 (Type II information in (1/6, 1/3)). Let a, b 6= 0 be coprime integers. Let
+ε > 0 and assume that Conjecture Ca (ε) holds. Let M, N > 1 satisfy for some η > 0
+                                X 1/6+η ≤ N ≤ X 1/3−2ε/3−η ,                  MN = X.
+            (log log X)−2
+Let W := X              . Let αm , βn be bounded coefficients supported on square-free integers
+with gcd(mn, P (W )) = 1. Suppose that βn satisfies the Siegel-Walfisz condition, that is, for
+all r, q, N ′ ≤ 2N we have for any C > 0
+                    X                        N′   X
+(4.1)                      βn = 1gcd(r,q)=1             βn + OC (N(log N)−C ).
+                       ′
+                                            Nϕ(q) n≤N
+                   n≤N
+                 n≡r (mod q)                                      (n,q)=1
+
+Then we have for any C > 0
+                                      X X                                   X 5/6
+                                                    αm βn wmn ≪C                   .
+                                     m∼M        n
+                                                                          (log X)C
+Proposition 4.4 (Type I2 information up to 1/4). Let a, b > 0 be coprime integers. For
+any K ≤ X 3/4 we have
+                    X        X                    X
+                                   µ2 (k)f ( Kk )   wkn ≪ d−1 X 5/6−η .
+                     d≤X 1/4−η      k≡0 (mod d)                       n
+
+                                     5. Proof of Proposition 4.2
+  The argument is a routine application of the Poisson summation formula and the Weil
+bound for exponential sums. We have by Lemma 3.1
+          X              X                                       2
+             adn =               f1 ( Ax )f2 ( By ) = MA + O(X 2η EA ) + Oε (X −100 ),
+            n                     x,y
+                         ax2 +by 3 ≡0 (mod d)
+                     2                      2
+where for H1 = X η d/A, H2 = X η d/B
+                                                                              2   3
+                                        #{x, y ∈ Z/dZ : ax + by ≡ 0 (mod d)}
+                 MA = AB fb1 (0)fb2 (0)
+                                                          d2
+                       1          X              X
+                 EA =                                     ed (h1 x + h2 y)
+                      H1 H2
+                                      |h1 |≤H1             x,y (mod d)
+                                      |h2 |≤H2         ax2 +by 3 ≡0 (mod d)
+                                    (h1 ,h2 )6=(0,0)
+
+Here by the Chinese remainder Theorem
+                                                                                        Y
+                Na,b (d) = #{x, y ∈ Z/dZ : ax2 + by 3 ≡ 0 (mod d)} =                        Na,b (p).
+                                                                                        p
+                                                             15
+For (a, p) = (b, p) = 1 substituting x = zy gives Na,b (p) = p. On the other hand, using
+(a, b) = 1 we note that p|a implies p|y and p|b implies p|x, so that also for p|ab we have
+Na,b (p) = p. Therefore, we get
+
+                                                        AB fb1 (0)fb2 (0)
+                                               MA =                       .
+                                                                d
+We also have by Lemma 3.1
+           X             AB fb1 (0)fb2 (0)       X                             AB fb1 (0)fb2 (0)
+                 bdn =                                      f (n/X) =                            + O(X −100 ),
+             n              X fb(0)           n≡0 (mod d)
+                                                                                       d
+
+so that the two main terms cancel precisely. It then remains to bound the error term EA .
+We have by the Chinese remainder theorem
+                              X                            Y
+             Sd (h1 , h2 ) =            ed (h1 x + h2 y) =   Sp (h1 d/p, h2 d/p)
+                                     x,y (mod d)                                   p|d
+                                 ax2 +by 3 ≡0 (mod d)
+
+For (a, p) = (b, p) = 1 the substitution x ≡ zy gives y = −abz 2 , so that by the Weil bound
+(see, for instance, [2])
+                               X
+               Sp (h1 , h2 ) =    ep (−ab(h1 z 3 + h2 z 2 )) ≪ gcd(h1 , h2 , p)1/2 p1/2 .
+                                 z∈Z/pZ
+
+Thus, Sd (h1 , h2 ) ≪ gcd(h1 , h2 , d)1/2 d1/2+o(1) , and for d ≤ X 5/9−η
+                                              1         X
+                        EA ≪ d1/2+o(1)                         gcd(h1 , h2 , d)1/2
+                                            H1 H2
+                                                              |h1 |≤H1
+                                                              |h2 |≤H2
+                                                            (h1 ,h2 )6=(0,0)
+
+                                ≪ d1/2+o(1) ≪ d−1 X 5/6−3η/2+o(1) .
+                                                                                                                 
+
+                    6. Proof of Proposition 4.3: initial reductions
+  We wish to apply Cauchy-Schwarz to m but face a problem, namely, the distribution of
+an does not match bn modulo squares or larger powers. We have two options, either to
+remember that m is square-free or modify the sequence bn . Both options lead to unfortunate
+complications, but the latter allows us to minimize the conjecture required since for the first
+option we would also need to consider twists of χξ ℓ by Dirichlet characters.
+                                                              (2)
+  A robust solution is to construct an auxiliary sequence an in between an and bn as a
+kind of random model for an . While this causes some bother during the initial stages of the
+argument, it will greatly simplify the endgame. Let Fη2 (u) denote a smooth non-negative
+                                              2        (J)        2
+bump function supported on u ∈ [1, 1 + X −η ] with Fη2 ≪J X Jη and denote
+                                                Fη2 ( Uu )                                2
+                               F2 ( Uu ) :=                        with U := X 1−η .
+                                              U 2/3 Fc
+                                                     η2 (0)
+                                                              16
+                  P
+Let λW    W
+     d , θn =
+                         W
+                    d|n λd be as in Lemma 3.4. We define
+                                 X                                            X                1/3
+                  γv(1) :=           1v=by3 f2 ( By ),          γv(2) :=                 f2 ( U B y )F2 ( Uu )θuW ,
+                                 y                                           v=buy 3
+
+and for j ∈ {1, 2}
+                                                             X
+                                                a(j)
+                                                 n :=                 f1 ( Ax )γv(j) .
+                                                           n=ax2 +v
+
+                      (1)
+Note that then an = an . The function F2 is normalized so that the densities match, that
+    R              1/3         R
+is, F2 ( Uu )f2 ( U B y )dudy = f2 ( By )dy. To show Proposition 4.3, it suffices to prove the
+following two variants of Proposition 4.3.
+Proposition 6.1. Suppose that the assumptions of Proposition 4.3 hold. Then for any C > 0
+                                     X          X                                     X 5/6
+                                           αm           βn (a(2)
+                                                             mn − bmn ) ≪C
+                                     m∼M           n
+                                                                                    (log X)C
+
+Proposition 6.2. Suppose that the assumptions of Proposition 4.3 hold. Then for any C > 0
+                                     X X                                             X 5/6
+                                                   βn (a(1)   (2)
+                                                        mn − amn ) ≪C                       .
+                                     m∼M       n
+                                                                                   (log X)C
+
+  The Proposition 6.1 is easy to prove and we do this immediately. We will prove Proposition
+6.2 in Section 7.
+
+6.1. Proof of Proposition 6.1. By the Siegel-Walfisz property (4.1) and summation by
+parts we have (denoting N = X/M)
+        X       X                             X αm 1 X
+            αm     βn bmn = AB fb1 (0)fb2 (0)             βn + OC (X 5/6 (log X)−C ).
+       m∼M       n                            m∼M
+                                                  m N n≤N
+
+Substituting for the variable u and using the Poisson summation formula (Lemma 3.1) to
+the variable x, we have
+             X       X                 X
+                             U 1/3 y                                2
+      a(2)
+       mn  =     λ W
+                   d    f2 (   B
+                                     )        f1 ( Ax )F2 ( mn−ax
+                                                             by 3 U
+                                                                      )
+              d              y                         x
+                                               ax2 ≡n (mod bdy 3 )
+              X             X ̺2 (mn, bdy 3 )
+          =        λW
+                    d                                  I(mn, y) + O(X −100 ),
+              d              y
+                                       bdy 3
+ ̺2 (a, q) :=#{x ∈ Z/q : ax2 ≡ n (mod q)},
+                       Z                                   Z √
+               U 1/3 y          n−ax2        by 3  U 1/3 y     n−by 3 u        du
+  I(n, y) =f2 ( B ) f1 ( A )F2 ( by3 U )dx = √ f2 ( B ) f1 ( A√a )F2 ( Uu ) p
+                           x
+                                                                                        .
+                                               a                             n − by 3 u
+By differentiation under integration in the latter expression, we have for all J1 , J2 ≥ 0
+                                                                 B 3 −J1 −J2 −J1 −J2
+                                 ∂nJ1 ∂yJ2 I(n, y) ≪J1 ,J2             δ    n y .
+                                                                AU 2/3
+                                                                17
+Since gcd(mn, P (W )) = 1, the contribution from gcd(mn, qy 3 ) > 1 is negligible by crude
+estimates. Therefore, using summation by parts on n and gluing the variables q = bd, the
+task is reduced to showing that for any N ′ ≤ 2N and Y = BU −1/3 ≤ X η we have
+           X X 1         X            X                                MN
+                                                           3
+                                              βn ̺2 (mn, qy ) − 1 ≪C             .
+          q≤X η y∼Y
+                    qy   m∼M             ′
+                                                                       (log X)C
+                                                   n≤N
+                          gcd(mn,qy 3 )=1      gcd(mn,qy 3 )=1
+
+Expanding the defininition of ̺2 (mn, qy 3 ) we have gcd(x, qy 3 ) = 1. Pulling the sum over
+x ∈ (Z/qy 3 Z)× outside and taking the maximum, we need to show that
+            X X              X                                   
+                                                             1               N
+                     max            βn 1n≡ax2 (mod qy3 ) −     3
+                                                                     ≪C           .
+           q≤X η y∼Y
+                      x
+                                ′
+                                                           ϕ(qy )        (log X)C
+                                    n≤N
+                                 gcd(n,qy 3 )=1
+
+Expanding the congruence into Dirichlet characters modulo qy 3, the main terms for the
+principal character cancel. It then remains to show that the error term satisfies
+                     X X 1             X       X                   N
+                                                    βn χ(n) ≪ C
+                    q≤X η y∼Y
+                              ϕ(qy 3)      3
+                                                                (log X)C
+                                                  ′
+                                                  χ (mod qy )    n≤N
+                                                     χ6=χ0
+
+Sorting by the conductor of the character χ, we apply the Siegel-Walfisz property (4.1) for
+the small conductors ≤ (log X)C1 . For the large conductors     P > (log     X)CP1
+                                                                                   we may apply
+                                                                           3
+Cauchy-Schwarz, estimate crudely the sum over cubes by y∼Y S(y ) ≤ z∼Y 3 S(z), and
+use the classical large sieve for multiplicative characters [9, (9.52)] to get the claim, once C1
+is sufficiently large in terms of C.                                                           
+                                                                     (i)
+6.2. Lemmas on additive convolutions of γv . Define for i1 , i2 ∈ {1, 2}
+                                            X
+(6.1)                   Υin11,i,n2 2 (m) :=    γv(i11 ) γv(i22 )
+                                                            n1 v2 −n2 v1 =am
+
+To prepare for the proof of Proposition 6.2, we need the following two lemmas.
+Lemma 6.3. For n1 , n2 ≤ X 1/3−η with gcd(n1 , n2 ) = 1 we have
+                              B2 X
+              Υ2,2
+                n1 ,n2 (m) =             1be|m Ge,n1 ,n2 ( nm
+                                                            1X
+                                                               ) + Oη (X −100 ),
+                             N1 X      2
+                                                   e≤X 4η
+
+where Ge,n1,n2 (u) is a smooth function supported on |u| ≤ 4N1 B 3 which satisfies for all J ≥ 0
+                                       2    2
+the derivative bound G(J) (u) ≪J X Jη +O(η ) .
+Proof. We have
+                                                                                 1/3                      1/3
+                      X                              X                     f2 ( U B y1 )F ( d1Uu1 ) f2 ( U B y2 )F ( d2Uu2 )
+      Υ2,2
+       n1 ,n2 (m) =            λW   W
+                                d1 λd2                                                                                       .
+                      d1 ,d2                        y1 ,y2 ,u1                   U 2/3 Fb(0)              U 2/3 Fb(0)
+                                         b(n1 d2 u2 y23 −n2 du1 y13 )=am
+
+Substituting
+                                                        a mb + n2 d1 u1 y13
+                                                  u2 :=
+                                                             d2 n1 y23
+                                                                18
+and applying Poisson summation to u1 with n2 d1 u1 y13 ≡ a mb (mod d2 n1 y23) gives the claim
+after splitting into the parts depending on
+                                                    e0 := gcd(d2 n1 y23 , d1 n2 y13 )| a mb
+                   e0                                                                                                                     2
+and letting e = gcd(e 0 ,a)
+                            . Note that by gcd(n1 , n2 ) = 1 we have e ≤ d1 d2 y13y23 ≤ X 4η .                                                     
+
+Lemma 6.4. Let n1 , n2 ∼ N1 ≤ X 1/3−η be square-free with gcd(n1 , n2 ) = gcd(n1 n2 , P (W )) =
+1, and let (i1 , i2 ) ∈ {(1, 2), (2, 1)}. Then for any C > 0
+      X                                                                               B2
+                 x1     x2     i1 ,i2     2      2      2,2         2       2
+           f1 ( A )f1 ( A ) Υn1 ,n2 (n2 x1 − n1 x2 ) − Υn1 ,n2 (n2 x1 − n1 x2 ) ≪C             .
+      x ,x
+                                                                                   N1 (log X)C
+           1   2
+
+
+Proof. Expanding the definition of Υ2,1       n1 ,n2 we have
+         X
+             f1 ( xA1 )f1 ( xA2 )Υ2,1         2       2
+                                  n1 ,n2 (n2 x1 − n1 x2 )
+               x1 ,x2
+                     X                              X                                          1/3
+                =          λW
+                            d1                                                 f1 ( xA1 )f2 ( U B y1 )F2 ( d1Uu1 )f1 ( xA2 )f2 ( yB2 ).
+                      d1                    x1 ,x2 ,y1 ,y2 ,u1
+                                 a(n2 x21 −n1 x22 )=b(n1 y23 −n2 d1 u1 y13 )
+
+Making the variable u1 implicit by substitution we are summing over the congruence
+                                            bn1 y23 ≡ a(n2 x21 − n1 x22 ) (mod bd1 y13n2 ).
+Since the modulus is d1 y13 n2 ≤ X 1/3−η/2 , an application of Poisson summation formula
+(Lemma 3.1) to the variables x1 , x2 , y2 produces a main term M2,1n1 ,n2 with an error term
+     −100
+O(X       ). Similarly, we have
+   X
+       f1 ( xA1 )f1 ( xA2 )Υ2,2         2       2
+                            n1 ,n2 (n2 x1 − n1 x2 )
+  x1 ,x2
+       X                                 X                                            1/3                                  1/3
+   =           λW
+                d1                                                    f1 ( xA1 )f2 ( U B y1 )F2 ( d1Uu1 )f1 ( xA2 )f2 ( U B y2 )F2 ( uU2 )θuW2 .
+       d1                       x1 ,x2 ,y1 ,y2 ,u1 ,u2
+                     a(n2 x21 −n1 x22 )=b(n1 u2 y23 −n2 d1 u1 y13 )
+
+Making the variable u1 implicit by substitution, we are summing over the congruence
+                                         bn1 u2 y23 ≡ a(n2 x21 − n1 x22 ) (mod bd1 y13n2 )..
+We apply Poisson summation (Lemma 3.1) to x1 , x2 and Lemma 3.4 to u2 , using (3.2) to
+bound the error term. This produces a main term with the count
+#{(x1 , x2 , u2 ) ∈ (Z/d1 y13n2 Z)2 × (Z/d1 y13n2 Z)× : bn1 u2 y23 ≡ a(n2 x21 − n1 x22 ) (mod d1 y13 n2 )}.
+As a function of y2 , this count depends only on gcd(y23, d1 y13n2 ). The part where gcd(y23 , d1 y13n2 ) >
+   3                                                                  3
+X η is negligible by crude estimates. For gcd(y23, d1 y13 n2 ) ≤ X η we may apply Poisson sum-
+mation formula to y2 . This produces a main term which matches M2,1         n1 ,n2 , since
+
+#{(x1 , x2 , y2 , u2 ) ∈ (Z/d1 y13n2 Z)3 × (Z/d1 y13n2 Z)× : bn1 u2 y23 ≡ a(n2 x21 − n1 x22 ) (mod d1 y13 n2 )}
+   = ϕ(d1y13 n2 )#{(x1 , x2 , y2 ) ∈ (Z/d1 y13n2 Z)3 : bn1 y23 ≡ a(n2 x21 − n1 x22 ) (mod d1 y13n2 )}
+by making the change of variables (x1 , x2 , y2 ) 7→ (u22 x1 , u22 x2 , uy2).                                                                      
+                                                                            19
+                                        7. Proof of Proposition 6.2
+7.1. Application of Cauchy-Schwarz. Without loss of generality, we may assume that
+βn is real-valued and insert n ∼ N for N ≍ X/M. By applying Cauchy-Schwarz, dropping
+m ∼ M, and expanding the dispersion, we have
+         X X                                                                     1/2
+                   βn (a(1)   (2)
+                        mn − amn ) ≪ M
+                                       1/2
+                                           U(1, 1) − U(1, 2) − U(2, 1) + U(2, 2)      ,
+         m∼M      n∼N
+
+where for i1 , i2 ∈ {1, 2}
+                      X            X              X                                        X
+      U(i1 , i2 ) =        βn1 βn2   a(i 1) (i2 )
+                                      mn1 amn2 =                                                        βn0 n1 βn0 n2 Vn0 (n1 , n2 )
+                      n1 ,n2 ∼N               m                         n0 ≤2N n1 ,n2 ∼N/n0
+                                                                               gcd(n1 ,n2 )=1
+
+with
+                                                  X              X
+                          Vn0 (n1 , n2 ) =                                      f1 ( xA1 )f1 ( xA2 )γv(i11 ) γv(i22 )
+                                                   m mn0 n1 =ax21 +v1
+                                                     mn0 n2 =ax22 +v2
+
+It then suffices to show that for some Y we have for i1 , i2 ∈ {1, 2}
+(7.1)                                U(i1 , i2 ) = Y + OC (NX 2/3 (log X)−C )
+We first bound the diagonal contribution where n1 = n2 = 1.
+7.2. Contribution from the diagonal n1 = n2 = 1. By using the divisor bound
+            X                            X                      X
+               |βn |2 Vn (1, 1) ≪ X o(1)   |γv(i11 ) γv(i22 ) |   f1 ( xA1 )f1 ( xA2 )
+                  n                                     v1 ,v2                            x1 ,x2
+                                                                                   a(x21 −x22 )=v2 −v1
+
+                                          ≪ X o(1) (AB + B 2 ) ≪ NX 2/3−η
+by using N ≥ X 1/6+η , where x1 = ±x2 contributed ≪ X o(1) AB and x1 6= ±x2 contributed ≪
+X o(1) B 2 by a divisor bound for the number of representations as x21 − x22 = (x1 − x2 )(x1 + x2 ).
+7.3. Contribution from n0 = 1. This will give the main term, we postpone bounding the
+contribution from the pseudo-diagonal terms n0 > 1 (where n0 ≥ W by gcd(n, P (W )) = 1)
+to Section 7.11. For n0 = 1 we want to evaluate
+                                           X
+                           U1 (i1 , i2 ) =      βn1 βn2 V1 (n1 , n2 )
+                                                          n1 ,n2 ∼N
+                                                        gcd(n1 ,n2 )=1
+
+where
+                  X       X                                                                   X
+V1 (n1 , n2 ) =                       f1 ( xA1 )f1 ( xA2 )γv(i11 ) γv(i22 ) =                                      f1 ( xA1 )f1 ( xA2 )γv(i11 ) γv(i22 ) .
+                  m mn1 =ax21 +v1                                                        x1 ,x2 ,v1 ,v2
+                                                                                n2 (ax21 +v1 )=n1 (ax22 +v2 )
+                    mn2 =ax22 +v2
+
+We have n2 x21 6= n1 x22 since n1 , n2 are square-free and coprime. We rearrange the equation
+to a(n2 x21 − n1 x22 ) = n1 v2 − n2 v1 and obtain
+                                 X               X
+               U1 (i1 , i2 ) =           βn1 βn2   f1 ( xA1 )f1 ( xA2 )Υin11,i,n2 2 (n2 x21 − n1 x22 ).
+                                    n1 ,n2 ∼N                 x1 ,x2
+                                  gcd(n1 ,n2 )=1
+                                                                   20
+It follows from Lemma 6.4 that
+                           U1 (1, 2), U1 (2, 1) = U1 (2, 2) + O(NX 2/3 (log X)−C ).
+Therefore, the current task is reduced to showing that
+(7.2)                            |U1 (1, 1) − U1 (2, 2)| ≪C NX 2/3 (log X)−C .
+
+We partition according to the sign of n2 x21 −n1 x22 and separate the part where it is small. For
+δ1 = (log X)−C1 with C1 > 0 large we let F0 (r) be a 1-bounded smooth even function with
+F0 (r) = 1 for |r| ≤ δ1 NX and supported on |r| ≤ 2δ1 N. We define non-negative functions
+Fǫ (r) by Fǫ (r)2 = (1 − F0 (r)2 )1sgn(r)=ǫ . We insert the smooth partition of unity
+                                X                              X
+                         1=           Fǫ (r)2 ,    U1 (j, j) =     Uǫ (j),
+                                    ǫ∈{±,0}                                      ǫ∈{±,0}
+
+where for ǫ ∈ {±, 0}
+                                          X                       X
+                           Uǫ (j) =                    βn1 βn2            Fǫ (m)Υj,j
+                                                                                 n1 ,n2 (m)Qǫ,n1 ,n2 (m),
+                                        n1 ,n2 ∼N                     m
+                                      gcd(n1 ,n2 )=1
+                                             X
+                  Qǫ,n1 ,n2 (m) =                            Fǫ (a(n2 x21 − n1 x22 ))f1 ( xA1 )f1 ( xA2 ).
+                                              x1 ,x2
+                                      a(n2 x21 −n1 x22 )=m
+
+We will bound the contribution from ǫ = 0 in Section 7.10. For a fixed sgn(m) = ǫ, ǫ ∈ {±}
+and a|m we have
+                                  X
+              Qǫ,n1 ,n2 (m) =              Fǫ (a(n2 x21 − n1 x22 ))f1 ( xA1 )f1 ( xA2 ).
+                                                x1 ,x2
+                                       |n2 x21 −n1 x22 |=|m/a|
+
+
+7.4. Evaluation of Uǫ (1, 1) and Uǫ (2, 2). Applying Lemma 2.1 with m = |m/a|, Z = AN,
+and the smooth function F (x1 , x2 ) = Fǫ,n1 ,n2 (x1 , x2 ) supported on (x1 , x2 ) ∈ [1/4, 4]2 defined
+by
+                                            2 2               
+                 Fǫ,n1 ,n2 (x1 , x2 ) := Fǫ aA2nN2 (x21 − x22 ) f1 ( x2n1 N2 )f1 ( √x4n2 N1 n2 ),
+
+we obtain for ǫ ∈ {±}
+                                    Uǫ (j) = Mǫ (j) + Eǫ (j) + Oη (X −100 ),
+
+where for T = X 1/3−η/2
+                     Z                      X
+                   1                                    βn1 βn2 ( 2na 2 )it/2 (AN)it F̌ǫ,n1 ,n2 (0, it)
+        Mǫ (j) =                                                                                          Cǫ,n1 ,n2 ,t (j)dt,
+                  2π |t|≤X η3            n1 ,n2 ∼N
+                                                                          h(4n1 n2 )R4n1 n2
+                                       gcd(n1 ,n2 )=1
+                           X                     ♯
+     Cǫ,n1 ,n2 ,t (j) :=       Fǫ (m)Υj,j
+                                      n1 ,n2 (m)λ1 (|m/a|, T )|m|
+                                                                  −it/2
+
+                           m
+                                                                 21
+and
+                                     Z                 X
+                            1                                      βn1 βn2 ait/2 (AN)it
+                  Eǫ (j) =
+                           2π         |t|≤X η3      n1 ,n2 ∼N
+                                                                    h(4n1 n2 )R4n1 n2
+                                                  gcd(n1 ,n2 )=1
+                                                          X              X
+                                                                                                              ♭
+                                                 ×                             F̌ǫ,n1,n2 (ℓ, it)ψχξℓ ,s (n2 )Cǫ,n 1 ,n2 ,t
+                                                                                                                           (j, χξ ℓ )dt,
+                                                     |ℓ|≤X η3 R4n1 n2 χ∈C(d)
+                                                                        d
+                                 X
+    ♭
+   Cǫ,n 1 ,n2 ,t
+                 (j, χξ ℓ ) :=       Fǫ (m)Υj,j        ♭
+                                            n1 ,n2 (m)λχξ ℓ (|m/a|)|m|
+                                                                       −it/2
+                                                                             .
+                                 m
+
+Note that by (2.6) we have the trivial bound
+                           Z
+                                   |F̌ǫ,n1,n2 (ℓ, it)| ≪ (log X)O(1) .
+                                             |t|≤X η3
+
+By the class number formula (2.1), Cauchy-Schwarz, and Lemma 3.5, we have for j ∈ {1, 2}
+                                                         3                     2
+ Mǫ (j) = Mǫ (j, K) + O(NX 2/3−η ), K := X η ,
+               Z          X
+             1                  βn1 βn2 ait/2 (AN)it F̌ǫ,n1 ,n2 (0, it) X µ(k)( 4nk1 n2 )
+Mǫ (j, K) =                                    √                                          Cǫ,n1 ,n2 ,t (j)dt.
+            2π |t|≤X η3 n ,n ∼N                  n1 n2                         k
+                                         1   2                                                      k≤K
+                                     gcd(n1 ,n2 )=1
+
+  Recall that the aim is to show (7.2). To this end, in the following subsections we will
+                                           2
+bound the error terms Eǫ (j) ≪ NX 2/3−η and show that the main terms match up to a
+negligible error term |Mǫ (1, K) − Mǫ (2, K)| ≪C NX 2/3 (log X)−C .
+
+7.5. Bounding Eǫ (1). We invoke Conjecture Ca (ε) with the binary cubic form C(X, Y ) =
+bn1 X 3 − bn2 Y 3 to get for χξ ℓ 6= 1 by summation by parts
+                                  ♭                                  2                                    2
+                                 Cǫ,n 1 ,n2 ,t
+                                               (1, χξ ℓ ) ≪ X O(η ) B 1+2ε ≪ X 1/3+2ε/3+O(η ) .
+
+and for χξ ℓ = 1
+                                                  ♭                                         2
+                                                 Cǫ,n 1 ,n2 ,t
+                                                               (1, 1) ≪ X 2/3−η/4+O(η ) .
+
+Therefore, by the condition N ≤ X 1/3−2ε/3−η we get
+                                                               2                            2
+                       Eǫ (1) ≪ N 2 X 1/3+2ε/3+O(η ) + NX 2/3−η/4+O(η ) ≪ NX 2/3−η/4 ,
+
+Remark 7.1. Conjecture Ca (ε) may be replaced by the following large sieve type bound,
+which saves a factor of N 1+2η over the trivial bound.
+                                                 √
+Conjecture La,b (ε). For any                         B1 + B2 < N ≤ (B1 + B2 )1−2ε we have for some η > 0
+        X                 X                  X                     X
+                                                                                   λ♭χξℓ ( ab |n1 y23 − n2 y13|) ≪ N 2−η (B1 + B2 )2 .
+      n1 ,n2 ≤N           \
+                      χ∈C(4n 1 n2 )
+                                    |ℓ|≤N η R4n1 n2    y1 ≤B1 , y2 ≤B2
+n1 n2 square-free odd                               n1 y23 ≡n2 y13 (mod a)
+                                                                      22
+7.6. Bounding Eǫ (2). Similar to the previous section, it suffices to show that for χξ ℓ 6= 1
+                                           ♭                                                  2
+(7.3)                                     Cǫ,n 1 ,n2 ,t
+                                                        (2, χξ ℓ ) ≪ X 1/3+2ε/3+O(η ) .
+and for χξ ℓ = 1
+                                                ♭                                         2
+(7.4)                                          Cǫ,n 1 ,n2 ,t
+                                                             (2, 1) ≪ X 2/3−η/4+O(η ) .
+The bound (7.3) follows from combining Lemma 6.3 and Lemma 3.2. The bound (7.4) follows
+from combining Lemma 6.3 and Lemma 3.3 using T = X 1/3−η/2 .
+7.7. Evaluation of Mǫ (2, K). Denote Fǫ,t (m) = Fǫ (m)|m|−it/2 . We have
+                     X            X
+  Cǫ,n1 ,n2 ,t (2) =   ( 4n1cn2 )     Fǫ,t (n1 v2 − n2 v1 )γv(2)
+                                                              1
+                                                                 γv(2)
+                                                                    2
+                   c≤T                n1 v2 ≡n2 v1 (mod ac)
+                   X                  X              1/3          1/3
+               =         ( 4n1cn2 )            f2 ( U B y1 )f2 ( U B y2 )
+                   c≤T                y1 ,y2
+                                                           X
+                                      ×                                     F2 ( uU1 )F2 ( uU2 )Fǫ,t (n1 u2 y23 − n2 u1 y13)θuW1 θuW2 .
+                                                       u1 ,u2
+                                          bn1 y23 u2 ≡bn2 y13 u1 (mod ac)
+                                                                                2                     3
+Since the variables uj are localized to U(1 + O(X −η ) and |t| ≤ X η , we may replace
+                               Fǫ,t (n1 u2 y23 − n2 u1 y13) 7→ Fǫ,t (U(n1 y23 − n2 y13 ))
+with a negligible error term. We have gcd(n1 n2 , ac) = 1 due to gcd(n1 n2 , P (W )) = 1 and
+( 4n1cn2 ). Applying Lemma 3.4 twice with (3.3), we see that Cǫ,n1 ,n2 ,t (2) is up to negligible
+error terms equal to
+                    X            X       1/3          1/3
+              U 2/3   ( 4n1cn2 )   f2 ( U B y1 )f2 ( U B y2 )Fǫ,t (U(n1 y23 − n2 y13 ))
+                    c≤T                y1 ,y2
+
+                                                     #{u ∈ (Z/acZ)× : bn1 y23 u ≡ bn2 y13 (mod ac)}
+                                                 ×                                                  .
+                                                                       ϕ(ac)
+The number of solutions for u only depends on gcd(by23 , by13 , ac). The contribution from the
+                                            3                                                               3
+part where gcd(y13y23 , ac) ≥ X η is negligible by trivial bounds. For gcd(y13 y23, ac) < X η
+applying Poisson summation (Lemma 3.1) to the variables y1 , y2 produces the main term
+                          X                   X        #{u ∈ (Z/acZ)× : bn1 y23 u ≡ bn2 y13 (mod ac)}
+      B 2 Iǫ,t (n1 , n2 )     ( 4n1cn2 )                                              2 ϕ(ac)
+                                                                                                          ,
+                          c≤T
+                                                                                (ac)
+                                         y1 ,y2 ∈Z/acZ
+                              Z
+          Iǫ,t (n1 , n2 ) :=        f2 (y1 )f2 (y2 )Fǫ,t(B 3 (n1 y23 − n2 y13 ))dy1 dy2
+                                R 2
+                                              Z
+                          = (n1 n2 )   −1/3
+                                                   f2 ( y1/3
+                                                          1
+                                                             )f2 ( y1/3
+                                                                     2
+                                                                        )Fǫ,t (B 3 (y23 − y13 ))dy1 dy2 .
+                                                            n2          n1
+                                                     R2
+
+We have gcd(n1 n2 , ac) = 1 for gcd(n1 n2 , P (W )) = 1 and ( 4n1cn2 ) 6= 0. Let g := gcd(by23 , ac) =
+gcd(by13 , ac). Expanding into Dirichlet characters modulo ac    g
+                                                                   , the sum over u picks out the
+contribution from the principal character, so that the last expression is equal to
+                                            X              X         1
+                        B 2 Iǫ,t (n1 , n2 )     ( 4n1cn2 )          2    ac ,
+                                            c≤T
+                                                              (ac)    ϕ( g
+                                                                           )
+                                                                        y1 ,y2 ∈Z/acZ
+                                                                   23
+Therefore, we obtain
+                                         X          βn1 βn2 Jǫ (n1 , n2 ) X µ(k) X 4n1 n2
+             Mǫ (2, K) = B 2                             √                         (      )
+                                    n1 ,n2 ∼N
+                                                            n1 n2         k≤K
+                                                                              k c≤T ck
+                                  gcd(n1 ,n2 )=1
+                                                         X                           1
+(7.5)                                    ×                                                         + O(NX 2/3 (log X)−C ),
+                                                                             (ac)2 ϕ( ac
+                                                                                      g
+                                                                                         )
+                                                  y1 ,y2 ∈Z/acZ
+                                             gcd(by23 ,ac)=gcd(by13 ,ac)
+                                    Z
+                               1
+             Jǫ (n1 , n2 ) :=            ( 2na 2 )it/2 (AN)it F̌ǫ,n1,n2 (0, it)Iǫ,t (n1 , n2 )dt.
+                              2π     R
+
+Note that, by differentiation under integration, the weight Jǫ (n1 , n2 ) satisfies for all J1 , J2 ≥ 0
+(7.6)                  ∂wJ11 ∂wJ22 Jǫ (w1 , w2 ) ≪J1 ,J2 |w1 |−J1 |w2 |−J2 (log X)O(J1 +J2 )
+
+7.8. Evaluation of Mǫ (1, K). We have
+                             X            X
+          Cǫ,n1 ,n2 ,t (1) =   ( 4n1cn2 )                                Fǫ,t (n1 v2 − n2 v1 )γv(1)
+                                                                                                 1
+                                                                                                    γv(1)
+                                                                                                       2
+                              c≤T                n1 v2 ≡n2 v1 (mod ac)
+                              X                           X
+                          =         ( 4n1cn2 )                                 f2 ( yB1 )f2 ( yB2 )Fǫ,t (n1 y23 − n2 y13 ).
+                              c≤T                          y1 ,y2
+                                                 bn1 y23 ≡bn2 y13 (mod ac)
+
+Applying the Poisson summation formula (Lemma 3.1) to y1 , y2 we get
+                                       X              #{(y1 , y2 ) ∈ (Z/acZ)2 : bn1 y23 ≡ bn2 y13 (mod ac)}
+Cǫ,n1 ,n2 ,t (1) = B 2 Iǫ,t (n1 , n2 )     ( 4n1cn2 )                             2
+                                                                                                            + O(X −100 ).
+                                       c≤T
+                                                                             (ac)
+
+We have gcd(n1 n2 , ac) = 1 for gcd(n1 n2 , P (W )) = 1 and ( 4n1cn2 ) 6= 0. Expanding into
+Dirichlet characters modulo ac
+                            g
+                               with g = gcd(by23 , ac) = gcd(by13 , ac) we have
+                   #{(y1 , y2 ) ∈ (Z/acZ)2 : bn1 y23 ≡ bn2 y13 (mod ac)}
+                               X            1        X         by 3 by 3
+                   =                         ac            χ( g2 )χ( g1 )χ(n1 )χ(n2 ).
+                                          ϕ( g )        ac
+                           y1 ,y2 ∈Z/acZ                     χ (mod        )
+                      gcd(by23 ,ac)=gcd(by13 ,ac)                      g
+
+The contribution from the principal character χ = χ0 matches exactly the main term in
+(7.5). Therefore, to show (7.2), it remains to show that the error term from χ 6= χ0
+           X µ(k) X             X               1       X        by 3  by 3
+  Lǫ (1) =                                     2  ac          χ( g2 )χ( g1 )
+           k≤K
+                 k c≤T                     (ac) ϕ( g )     ac
+                                   y1 ,y2 ∈Z/acZ                                χ (mod         )
+                              gcd(by23 ,ac)=gcd(by13 ,ac)                                  g
+                                                                                   χ6=χ0
+                                                                     X              βn1 βn2 Jǫ (n1 , n2 )
+                                                            ×                            √                χ(n1 )χ(n2 )( 4nck
+                                                                                                                           1 n2
+                                                                                                                                )
+                                                                  n1 ,n2 ∼N
+                                                                                            n1 n2
+                                                                gcd(n1 ,n2 )=1
+
+satisfies
+                                                                      N
+(7.7)                                             Lǫ (1) ≪C                .
+                                                                  (log X)C
+                                                                24
+                                                                                                         2
+Remark 7.2. With more work, T could be increased to B 2−η . Indeed, applying the Poisson
+summation formula the exponential sums may be expressed in terms of Ramanujan sums
+which have almost complete cancellation. We leave the details to the interested reader since
+in any case our treatment of χξ ℓ = 1 is conditional.
+7.9. Bounding Lǫ (1). We denote b0 = gcd(b, c) and
+                                                                                                      ac
+                               g = gcd(by23 , by13 , ac) = b0 gcd(y23, y13 ,                             ) =: b0 g1 .
+                                                                                                      b0
+Making the change of variables c 7→ b0 c we get
+               X X µ(k)                    X                              X                           1                  X                y3      y3
+    Lǫ (1) =                                                                                                                           χ( g21 )χ( g11 )
+                               k                                                               (acb0 )2 ϕ( gac1 )              ac
+               b0 |b k≤K               c≤T /b0           y1 ,y2 ∈Z/acb0 Z                                             χ (mod      )
+                                                                                                                               g1
+                                     gcd(c, bb )=1 gcd(y23 ,ac)=gcd(y13 ,ac)=g1
+                                               0                                                                        χ6=χ0
+                                                                       X             βn1 βn2 Jǫ (n1 , n2 )
+                                                         ×                                √                χ(n1 )χ(n2 )( 4nck
+                                                                                                                            1 n2
+                                                                                                                                 ).
+                                                               n1 ,n2 ∼N
+                                                                                             n1 n2
+                                                             gcd(n1 ,n2 )=1
+
+We now show that the sum over yj vanishes unless χ is a cubic character. By induction on
+k with pk ||g1 we see that either pk ||ac or 3|k, that is, for some integers g2 , g3 we have
+
+                                            g1 = g2 g33               with           gcd(g2 , gac2 ) = 1.
+
+For any fixed g2 , g3 , and fixed χ (mod g2acg3 ), we can take the sum over y1 , y2 inside and we
+                                              3
+have, by the change of variables yj 7→ yj g2 g3 , recalling that gcd(g2 , gac2 ) = 1,
+                                   X                         y3             y3
+                                                                                               X
+                                                       χ( g2 2g3 )χ( g2 1g3 ) =                                 χ(y23 )χ(y13).
+                                                                  3              3
+                         y1 ,y2 ∈Z/acb0 Z                                                             acb0
+                                                                                         y1 ,y2 ∈Z/         Z
+                    (y13 ,ac)=(y23 ,ac)=g2 g33                                                        g2 g3
+
+
+The sum over y1 , y2 vanishes unless χ3 = χ0 and we get
+                 X µ(k) X                      X                             X                         1                 X
+      Lǫ (1) =
+                 k≤K
+                           k                                                                      (ac) ϕ( gac1 )
+                                                                                                      2
+                                                                                                                                ac
+                                   b0 |b     c≤T /b0           y1 ,y2 ∈Z/acb0 Z                                       χ (mod       )
+                                                                                                                                g1
+                                           gcd(c, bb )=1 gcd(y23 ,ac)=gcd(y13 ,ac)=g1
+                                                   0                                                                    χ3 =χ0
+                                                                                                                        χ6=χ0
+                                                                          X             βn1 βn2 Jǫ (n1 , n2 )
+                                                             ×                               √                χ(n1 )χ(n2 )( 4nb01ckn2 ).
+                                                                        n1 ,n2 ∼N
+                                                                                                n1 n2
+                                                                      gcd(n1 ,n2 )=1
+                                                                                         √
+We use summation by parts to n1 , n2 with (7.6) to relax the smooth weight Jǫ (n1 , n2 )/ n1 n2 .
+We have for any g = g2 g33 |q, gcd(g2 , gq2 ) = 1
+                                    X                        1                              X            g32        g3
+                                                                    ≤ d(q)                                   ≤ d(q)
+                                                          q ϕ( gq )
+                                                           2                                             q 2        qg2
+                             y1 ,y2 ∈Z/qZ                                                 y∈Z/qZ
+                       gcd(y23 ,q)=gcd(y13 ,q)=g                                        gcd(y 3 ,q)=g
+                                                                             25
+We glue together a, b0 , c, k to q = ab0 ck and make the change of variables q 7→ g2 g33 q. Thus,
+to prove (7.7), it suffices to show that
+                 X X d(g2 g3 )O(1)                  X          d(q)O(1)     X                X
+S(N1 , N2 ) :=                                                                                           βn1 βn2 χ(n1 )χ(n2 )( 4n1q n2 )
+                 g2       g3
+                                    g22 g32                  3
+                                                                  q                        n1 ≤N1
+                                               q<abKT /g2 g3              χ (mod q)
+                                                                           χ3 =χ0          n2 ≤N2
+                                                                            χ6=χ0       gcd(n1 ,n2 )=1
+
+satisfies for any N1 , N2 ≤ 2N and any C > 0
+                                                                        N2
+(7.8)                                           S(N1 , N2 ) ≪C                .
+                                                                     (log X)C
+                                                                                                                         2
+We now drop the condition gcd(n1 , n2 ) = 1, which gives an error term ≪ WN1/2 since
+gcd(n1 n2 , P (W )) = 1. We can remove the divisor function d(q)O(1) by applying Cauchy-
+Schwarz
+X d(q)O(1) X           X              2 1/2  X         2 1/2                  X X 2 1/2
+                           d(q)O(1) X              1 X                      O(1)     1
+                     ≤                                           ≤ N(log X)                   .
+ q
+       q       n ,n      q
+                              q     n           q
+                                                   q  n                            q
+                                                                                     q n
+                 1    2                                  1                      2                                                 2
+
+
+Therefore, it suffices to show that for any C > 0 and N ′ ≤ 2N
+                                              X 1        X      X                   2
+                                                                                                N2
+                          S(N ′ ) :=                                    βn χ(n)         ≪C            ,
+                                                q                                            (log X)C
+                                         q<abKT     χ (mod q)   n≤N ′
+                                                     χ6 =χ0
+                                                      χ6=χ0
+
+Partitioning according to cond(χ) = r and using gcd(n, P (W )) = 1 to bound the contribution
+from gcd( qr , n) > 1, we get
+                                                                         N2
+                                S(N ′ ) ≪C (log X)2 S ∗ (N ′ ) +               ,
+                                                                      (log X)C
+                                                        1 X          X     X           2
+                               S ∗ (N ′ ) :=    max                             βn χ(n) .
+                                               R≤2abT K R
+                                                          r∼R    χ (mod r)∗    n≤N ′
+                                                                   χ6 =χ0
+                                                                    χ6=χ0
+
+We let C2 > 0 be large compared to C and split into three cases depending on the size of R.
+   For R ≤ (log X)C2 we have S ∗ (N ′ ) ≪C N 2 (log X)−C by the Siegel-Walfisz property (4.1)
+since χ 6= χ0 .
+   For (log X)C2 < R ≤ N 1/3 we get by the duality principle and the Poisson summation
+formula (similar to the proof of Lemma 3.5), using N > X η R2 , that
+                          N2 X                X                               N2 X                    N2
+        S ∗ (N ′ ) ≪                                     1 + O(X −100 ) ≪            d(r) O(1)
+                                                                                               ≪ C
+                          R2 r ,r ∼R                                          R2 r∼R               (log N)C
+                                1   2    χj (mod rj )∗
+                                            χ6j =χ0
+                                            χj 6=χ0
+                                            χ1 =χ2
+
+once C2 is sufficiently large in terms of C.
+                                                                26
+  For N 1/3 < R ≤ 2abT K we apply the large sieve for sextic characters due to Baier and
+Young [1, Theorem 1.5] to show that
+                                                  X o(1) 4/3
+                              S2∗ (N ′ , R) ≪           (R + R1/2 N)N ≪ N 2−η/2
+                                                   R
+since R ≪ T K ≪ N 3−3η . This completes the proof of (7.7) and thus the proof of (7.2). To
+complete the proof of Proposition 6.2 it remains to bound the contributions from |n2 x21 −
+n1 x22 | ≤ 2δ1 and n0 > 1.
+
+7.10. Contribution from |n2 x21 − n1 x22 | ≤ 2δ1 NX. By the triangle inequality, we have
+                            X                  X
+                 U0 (j) ≪           |βn1 βn2 |    F0 (m)2 Υj,j
+                                                           n1 ,n2 (m)Q0,n1 ,n2 (m),
+                                       n1 ,n2 ∼N                     m6=0
+                                     gcd(n1 ,n2 )=1
+                                              X
+              Q0,n1 ,n2 (m) =                                  f1 ( xA1 )f1 ( xA2 ),
+                                              x1 ,x2
+                                    |a(n2 x21 −n1 x22 )|=|m|
+
+For m ∈ Z6=0 we can majorize the weight appearing in Q0,n1 ,n2 (m) by
+                                                                                       √
+                                                                          2n2 +x2 √4n1 n2
+                                    f1 ( xA1 )f1 ( xA2 ) ≤ f0 (log | xx11 2n 2 −x2 4n1 n2
+                                                                                          |).
+for a smooth bump function f0 : R → C supported in [−2 log X, 2 log X] and satisfying
+f (J) ≪J 1. Then by similar arguments as above, using Lemma 2.2 in place of Lemma 2.1,
+assuming Conjecture Ca (ε) we have
+                                            U0 (j) ≪ M0 (j) + NX 2/3−η/4 .
+We then drop the condition that m 6= 0 and apply Poisson summation to y1 , y2, which
+captures a factor δ1 from the support of the weight F0 (m). We then bound trivially the
+number of solutions
+       #{(y1 , y2) ∈ (Z/acZ)2 : bn1 y23 ≡ bn2 y13 (mod ac)} ≤ ac gcd(bn1 n2 , ac)d(ac)O(1)
+instead of expanding into Dirichlet characters. Taking δ1 = (log X)−C1 with C1 large in
+terms of C, we obtain
+                                                                                            NX 2/3
+                               M0 (j) ≪ δ1 NX 2/3 (log X)O(1) ≪C                                    .
+                                                                                           (log X)C
+
+7.11. Contribution from n0 > 1. Since βn are supported on gcd(n, P (W )) = 1, we have
+n0 ≥ W and n1 , n2 ≪ N/W . We may then use a divisor bound (3.4) to get a contribution
+           X                      X                  X
+      ≪            |βn1 βn2 |                               f1 ( xA1 )f1 ( xA2 )γv(i11 ) γv(i22 )
+         n1 ,n2 ≤2N/W                            x1 ,x2 ,v1 ,y2                 n0 |ax2 +by13
+         gcd(n1 ,n2 )=1              a(n2 x21 −n1 x22 )=b(n1 v23 −n2 v13 )6=0 gcd(n ,P1(W ))=1
+                                                                                       0
+             n1 n2 >1
+                              X                                            X
+           ≪ W o(1)                        |βn1 βn2 |                                                  f1 ( xA1 )f1 ( xA2 )γv(i11 ) γv(i22 ) .
+                          n1 ,n2 ≤2N/W                                x1 ,y1 ,x2 ,y2
+                          gcd(n1 ,n2 )=1                |a(n2 x21 −n1 x22 )|=|b(n1 y23 −n2 y13 )|6=0
+                              n1 n2 >1
+                                                                   27
+By similar arguments as above (using once more Conjecture Ca (ε)), we see that this is
+bounded by ≪ W −1/2 NX 2/3 . This completes the proof of Proposition 6.2 and thus the proof
+of Proposition 4.3.                                                                      
+   Proving the upper bounds in this and the previous section are non-trivial tasks and we
+needed to employ the Conjecture Ca (ε). It is not clear if a correct-order upper bound can
+be proved unconditionally by more elementary considerations, and this on its own would be
+an interesting problem.
+
+                            8. Proofs of Theorems 4.1 and 1.2
+                                                                                                     (2)
+8.1. Proof of Theorem 4.1. We let let W = (wn log n) and define W (2) := (wn ) (of sieve
+dimension 2) by
+                                         X
+                     wn(2) := wn log n            µ2 (m)1m|n .
+                                               4X 1/3 ≤m<2X 1/2
+
+For any sequence C = (cn ) we denote
+                                           X
+                       S(Cd , z) =                    cdn ,      S(C, z) = S(C1 , z).
+                                     gcd(n,P (z))=1
+
+The following lemmas follow quickly from the fundamental lemma of the sieve [9, Corollary
+6.10], using respectively Propositions 4.2 and 4.4 to bound the remainder.
+                                       2
+Lemma 8.1. Let W = X 1/(log log X) and d ≤ X 5/9−η be square-free. Then
+                               S(Wd , W ) ≪η,C X 5/6 (log X)−C .
+                                           2
+Lemma 8.2. Let W = X 1/(log log X) and let αd be bounded and supported on square-free
+integers. Then
+                   X                (2)
+                            αd S(Wd , W ) ≪η,C X 5/6 (log X)−C .
+                        d≤X 1/4−η
+
+  The goal is to show that
+                      X
+                          wp log p = S(W, 2X 1/2 ) ≪ εAB fb1 (0)fb2 (0).
+                        p
+
+Applying Buchstab’s identity twice with Z = X 1/6−2ε/3−η we get
+                                       X
+          S(W, 2X 1/2 ) =S(W, Z) −          S(Wp , p)
+                                           Z≤p<2X 1/2
+                                               X                                   X
+                        =S(W, Z) −                         S(Wp , Z) −                        S(Wp , p)
+                                           Z≤p<4X 1/3                      4X 1/3 ≤p<2X 1/2
+                                                                   X
+                                                       +                         S(Wp1 p2 , p2 )
+                                                              Z≤p2 ≤p1 <4X 1/3
+
+                        =:S1 (W ) − S2 (W ) − S3 (W ) + S4 (W ).
+                                                      28
+By using Propositions 4.2 and 4.3 the first sum satisfies (similar to [15, Theorem 3.1] or [31,
+Proposition 25], for instance)
+
+                                   S1 (W) ≪C X 5/6 (log X)−C .
+                                                  2
+To see this, we have for W = X 1/(log log X)
+                                                      X
+                                S(W, Z) =                     µ(d)S(Wd , W ).
+                                                     P (Z)
+                                                  d| P (W )
+
+                2                                                      2
+For d < X 1/6+η we can use Lemma 8.1. For d ≥ X 1/6+η with d|P (Z) there is some factor
+                        2              2
+d1 |d with d1 ∈ [X 1/6+η , X 1/3−2ε/3−η ], so that we can use Proposition 4.3 after relaxing
+cross-conditions. Similarly, the second sum satisfies
+                              X       X
+                S2 (W) =                    µ(d)S(Wdp , W ) ≪C X 5/6 (log X)−C
+                           Z≤p<4X 1/3 d| P (Z)
+                                         P (W )
+
+                                                                                       2         2
+by using Lemma 8.1 or Proposition 4.3 according to whether d < X 1/6+η or d ≥ X 1/6+η .
+  For the fourth sum S4 (W) we get a contribution ≪C X 5/6 (log X)−C by Proposition 4.3
+                                         2                    2
+except for the part where p1 < X 1/6+η or p1 > X 1/3−2ε/3−η . The bad ranges contribute
+≪ εAB fb1 (0)fb2 (0) by a simple upper bound sieve (eg. [9, Theorem 7.1]), using Proposition
+4.2 to bound the remainder.
+  It then remains to handle the third term which counts products of two primes, that is,
+                                      X
+                     −S3 (W) = −              S(Wp , p) = −S(W (2) , X 1/3 )
+                                    4X 1/3 ≤p<2X 1/2
+
+By Buchstab’s identity
+                                                   X
+             −S3 (W) = −S(W (2) , Z) +                         S(Wp(2) , p) = −S5 (W) + S6 (W)
+                                             Z≤p<X 1/3
+
+
+We have S5 (W) ≪C X 5/6 (log X)−C by a similar argument as for S1 (W), just using Propo-
+sition 4.4 in place of 4.2.
+   Finally, for S6 (W) we get ≪C X 5/6 (log X)−C by Proposition 4.3 except for the part where
+p1 < X 1/6+η or p1 > X 1/3−2ε/3−η . The bad ranges contribute ≪ εAB fb1 (0)fb2 (0), by using
+              2                     2
+
+   (2)
+|wn | ≤ 6(an + bn ) log n for (n, P (Z))=1 and applying a simple upper bound sieve (eg. [9,
+Theorem 7.1]), using Proposition 4.2 to bound the remainder. This completes the proof of
+Theorem 4.1.                                                                               
+
+8.2. Proof of Theorem 1.2. . The bad ranges come from the terms S4 (W), S6 (W) which
+have a positive sign. Thus, taking η = o(1) in the above argument, we get the Harman’s
+sieve lower bound
+                    X                                        X
+                       Λ(n)an ≥ (1 − D4 (ε) − D6 (ε) + o(1))   Λ(n)bn
+                      n                                                         n
+                                                        29
+where, denoting I(ε) := [1/6, 1/3 − 2ε/3] and the Buchstab function by ω(u) (similar to [31,
+Section 7], for instance),
+                          Z
+                                                      ω( 1−αα12−α2 )dα1 dα2
+                 D4 (ε) =
+                           1/6−2ε/3<α2 <α1 <1/3                α1 α22
+                             α1 ,α2 ,α1 +α2 6∈I(ε)
+                          Z                      Z
+                                                                ω( 1−αα12−α2 )ω( αα21 )dα1 dα2
+                 D6 (ε) =                                                                      .
+                           1/6−2ε/3<α2 <1/3
+                                                   1/3<α1 <1/2                α23
+                                             α2 6∈I(ε)
+
+For ε = 1/17 a numerical computation D4 (ε) + D6 (ε) < 0.22 + 0.73 = 0.95, which shows
+that
+                         X                         X
+                            Λ(n)an ≥ (0.05 + o(1))    Λ(n)bn .
+                                         n                                                 n
+
+The second part of Theorem 1.2 follows immediately from Proposition 4.3, by restricting the
+k-fold convolution to having a factor in [X 1/6+η , X 1/6+2η ] for some η > 0 small.     
+  The value ε = 1/17 in Theorem 1.2 can of course be greatly improved by a more careful
+argument and by further iterations of Buchstab’s identity.
+
+                                               9. Proof of Theorem1.3
+  By a finer-than-dyadic decomposition it suffices to show that for A ∈ (δX 1/2 , X 1/2 ] and
+B ∈ (δX 1/3 , X 1/3 ] and for any ν > 0 we have
+                                    X
+(9.1)                           S=      µ(n)an ≪ νAB fb1 (0)fb2 (0).
+                                                    n
+
+We decompose n into the smooth and rough parts
+                      X         X
+              S=                      µ(ns )µ(nr )ans nr = S≤ + S0 + S> ,
+                               P + (ns )<X ν 2 P − (nr )≥X ν 2
+                                 3                                                                          3
+where S≤ has ns ≤ X ν and S> has ns > X ν , and S0 restricts to X ν < ns ≤ X ν .
+  Using a sieve upper bound with Proposition 4.2 to handle the remainder, we have
+            X            X                                             AB fb1 (0)fb2 (0) X 1
+   S≤ =                               µ(ns )µ(nr )ans nr ≪                                       ≪ νAB fb1 (0)fb2 (0).
+                                                                         ν 2 log X            ns
+          ns ≤X ν 3 P − (nr )≥X ν 2                                                       ν 3
+                                                                                                  ns ≤X
+
+  We then consider S> . By a greedy algorithm ns = n0 n1 with n0 ∈ [X ν , X 2ν ]. Therefore,
+gluing the variables m = n1 nr , by Proposition 4.2 and [31, Lemma 9] we have
+              X                 X                           X     1
+     Sν ≤              µ2 (n0 )   an0 m ≪ AB fb1 (0)fb2 (0)          ≪ νAB fb1 (0)fb2 (0).
+                     2          m                               2
+                                                                  n0
+            P + (n0 )<X ν                                                                P + (n0 )<X ν
+            n0 ∈[X ν ,X 2ν ]                                                             n0 ∈[X ν ,X 2ν ]
+
+  We then consider
+                                                X                   X
+                                 S0 =                                                   µ(ns )µ(nr )ans nr .
+                                         P + (ns )<X     ν2   gcd(nr ,P (X   ν2   )=1
+                                            3
+                                         X ν <ns ≤X ν
+                                                                      30
+We have the Heath-Brown identity for any n ≤ X (see, for instance, [28, Section 4.1])
+                         X             
+                                   j−1 3
+                    µ=       (−1)         (µ1[0,X 1/3 ] )(∗)j ∗ 1(∗)(j−1) .
+                        1≤j≤3
+                                       j
+
+We apply this to µ(nr ) to get
+                                                           X                      
+                                                                           j−1    3
+                                               S0 =             (−1)                 Sj
+                                                       1≤j≤3
+                                                                                  j
+
+The sum S1 is empty since nr > X 1/2 , say. We claim that
+                                       S2 ≪ (εν −2 21/ν + ν)AB fb1 (0)fb2 (0)
+                                                       2
+(9.2)
+                                       S3 ≪ (εν −2 24/ν + ν)AB fb1 (0)fb2 (0)
+                                                       2
+(9.3)
+Assuming that these bounds hold, we can complete the proof (9.1) and thus of Theorem 1.3,
+                         2
+by choosing ε = ν 3 2−4/ν .
+9.1. Bounding S2 . We have
+                       X                                   X
+              S2 =                                                           µ(ns )µ(k1 )µ(k2)ans k1 k2 m .
+                                        2                   2
+                           P + (ns )<X ν gcd(k1 k2 m,P (X ν )=1
+                               3                        1/3
+                             ν
+                           X <ns ≤X     ν     k1 ,k2 ≤X
+
+The part where k1 ∈ [X 1/3−ε , X 1/3 ] (resp. k2 ∈ [X 1/3−ε , X 1/3 ]) contribute by glueing together
+the variables n = ns k2 m and by Proposition 4.2
+                                X          X
+                                               ak1 n ≪ εν −2 21/ν AB fb1 (0)fb2 (0).
+                         2                                        2
+(9.4)            ≪ 21/ν
+                                   gcd(k1 ,P (X ν )=1 n
+                                                 2
+
+                                   k1 ∈[X 1/3−ε ,X 1/3 ]
+
+For k1 ∈ [X 1/6+ε , X 1/3−ε ] or k2 ∈ [X 1/6+ε , X 1/3−ε ] we get by Proposition 4.3 a contribu-
+tion ≪C (log X)−C AB fb1 (0)fb2 (0). For k1 , k2 ≤ X 1/6+ε we get by the fundamental lemma
+                                                    2
+of the sieve [9, Corollary 6.10] to gcd(m, P (X ν ) = 1, using Propositions 4.2 to bound the
+remainder, and capturing oscillations in µ(ns ) by the Prime number theorem,
+                       AB fb1 (0)fb2 (0)             1
+               ≪C                  C
+                                         + ν −3 e− 10ν 2 AB fb1 (0)fb2 (0) ≪ νAB fb1 (0)fb2 (0).
+                        (log X)
+9.2. Bounding S3 . We have
+                X                                X
+        S3 =                                                              µ(ns )µ(k1)µ(k2 )µ(k3 )ans k1 k2 k3 m1 m2 .
+                P + (ns )<X   ν2   gcd(k1 k2 k3 m1 m2 ,P (X    ν2   )=1
+                   3
+                X ν <ns ≤X ν              k1 ,k2 ,k3 ≤X 1/3
+
+Similar to (9.4), for the parts where kj ∈ [X 1/3−ε , X 1/3 ] we glue together the rest of the
+variables and use Proposition 4.2 to get the bound
+                               X        X
+                                           ak1 n ≪ εν −2 24/ν AB fb1 (0)fb2 (0).
+                         2                                    2
+                  ≪ 24/η
+                                                  2
+                                   gcd(k1 ,P (X ν )=1      n
+                                   k1 ∈[X 1/3−ε ,X 1/3 ]
+                                                                    31
+For kj ∈ [X 1/6+ε , X 1/3−ε ] we may use Proposition 6. For k1 , k2 , k3 ≤ X 1/6+ε we have ki kj ≤
+X 1/3+2ε for any i 6= j. The parts where ki kj ∈ [X 1/3−ε , X 1/3+2ε ] contribute
+                                  X         X
+                                               ak1 n ≪ εν −4 23/ν AB fb1 (0)fb2 (0).
+                         2                                        2
+                ≪ 23/η
+                                               2
+                              gcd(k1 k2 ,P (X ν )=1         n
+                            k1 k2 ∈[X 1/3−ε ,X 1/3+2ε ]
+
+For ki kj ∈ [X 1/6+ε , X 1/3−ε ] we may use Proposition 6.
+  In the remaining parts we have k1 k2 k3 ≤ X 1/3+3ε . The parts where ki kj ∈ [X 1/3−ε , X 1/3+2ε ]
+contribute
+                                    X         X
+                                                 ak n ≪ εν −6 22/ν AB fb1 (0)fb2 (0).
+                        2                                         2
+                ≪ 22/η                                               1
+                                                   2        n
+                             gcd(k1 k2 k2 ,P (X ν )=1
+                           k1 k2 k3 ∈[X 1/3−ε ,X 1/3+3ε ]
+
+For k1 k2 k3 ∈ [X 1/6+ε , X 1/3−ε ] we may use Proposition 6.
+  It then remains to handle
+                     X                  X
+           S4 =                                    µ(ns )µ(k1)µ(k2 )µ(k3 )ans k1 k2 k3 m1 m2 .
+                             2                              2
+                 P + (ns )<X ν gcd(k1 k2 k3 m1 m2 ,P (X ν )=1
+                    3
+                 X ν <ns ≤X ν        k1 k2 k3 ≤X 1/6+ε
+                                                                                                     2
+By the fundamental lemma of the sieve [9, Corollary 6.10] with κ = 2 to gcd(m1 m2 , P (X ν ) =
+1, using Propositions 4.4 and 4.2 to bound the remainder, and capturing oscillations in µ(ns )
+by the Prime number theorem, we get
+                    AB fb1 (0)fb2 (0)            1
+            S4 ≪ C                    + ν −5 − 100ν
+                                            e       2
+                                                      AB fb1 (0)fb2 (0) ≪ νAB fb1 (0)fb2 (0).
+                       (log X)C
+                                                                                              
+
+                                                       References
+ [1] S. Baier and M. P. Young. Mean values with cubic characters. Journal of Number Theory, 130(4):879–
+     903, 2010.
+ [2] E. Bombieri. On exponential sums in finite fields. Amer. J. Math., 88:71–105, 1966.
+ [3] M. D. Coleman. The distribution of points at which norm-forms are prime. J. Number Theory, 41(3):359–
+     378, 1992.
+ [4] W. Duke. Some problems in multidimensional analytic number theory. Acta Arith., 52(3):203–228, 1989.
+ [5] W. Duke, J. B. Friedlander, and H. Iwaniec. Equidistribution of roots of a quadratic congruence to
+     prime moduli. Ann. of Math. (2), 141(2):423–441, 1995.
+ [6] K. Ford and J. Maynard. On the theory of prime producing sieves. Preprint, arXiv:2407.14368, 2024.
+ [7] E. Fouvry and H. Iwaniec. Gaussian primes. Acta Arith., 79(3):249–287, 1997.
+ [8] J. Friedlander and H. Iwaniec. The polynomial X 2 + Y 4 captures its primes. Ann. of Math. (2),
+     148(3):945–1040, 1998.
+ [9] J. Friedlander and H. Iwaniec. Opera de cribro, volume 57 of American Mathematical Society Colloquium
+     Publications. American Mathematical Society, Providence, RI, 2010.
+[10] J. Friedlander and H. Iwaniec. Coordinate distribution of Gaussian primes. J. Eur. Math. Soc. (JEMS),
+     24(3):737–772, 2022.
+[11] G. Greaves. On the divisor-sum problem for binary cubic forms. Acta Arith., 17:1–28, 1970.
+[12] B. Green and M. Sawhney. Primes of the form p2 + nq 2 . Preprint, arXiv:2410.04189, 2024.
+[13] L. Grimmelt and J. Merikoski. Twisted correlations of the divisor function via discrete averages of
+     SL2 (R) Poincaré series. https: // arxiv. org/ abs/ 2404. 08502 , 2024.
+[14] L. Grimmelt and J. Merikoski. Upcoming work, 2025.
+                                                                32
+[15] G. Harman. Prime-detecting sieves, volume 33 of London Mathematical Society Monographs Series.
+     Princeton University Press, Princeton, NJ, 2007.
+[16] D. R. Heath-Brown. Prime numbers in short intervals and a generalized Vaughan identity. Canadian J.
+     Math., 34(6):1365–1377, 1982.
+[17] D. R. Heath-Brown. A mean value estimate for real character sums. Acta Arithmetica, 72(3):235–275,
+     1995.
+[18] D. R. Heath-Brown. Primes represented by x3 + 2y 3 . Acta Math., 186(1):1–84, 2001.
+[19] D. R. Heath-Brown and X. Li. Prime values of a2 + p4 . Invent. Math., 208(2):441–499, 2017.
+[20] D. R. Heath-Brown and B. Z. Moroz. Primes represented by binary cubic forms. Proc. London Math.
+     Soc. (3), 84(2):257–288, 2002.
+[21] D. R. Heath-Brown and B. Z. Moroz. On the representation of primes by cubic polynomials in two
+     variables. Proc. London Math. Soc. (3), 88(2):289–312, 2004.
+[22] E. Hecke. Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der Primzahlen I.
+     Math. Z., 1(4):357–376, 1918.
+[23] E. Hecke. Eine neue Art von Zetafunktionen und ihre Beziehungen zur Verteilung der Primzahlen II.
+     Math. Z., 6(1-2):11–51, 1920.
+[24] H. A. Helfgott. The parity problem for reducible cubic forms. J. London Math. Soc. (2), 73(2):415–435,
+     2006.
+[25] H. Iwaniec and E. Kowalski. Analytic Number Theory. American Mathematical Society colloquium
+     publications. American Mathematical Society, 2004.
+[26] P. C.-H. Lam, D. Schindler, and S. Y. Xiao. On prime values of binary quadratic forms with a thin
+     variable. J. Lond. Math. Soc. (2), 102(2):749–772, 2020.
+[27] X. Li. Prime values of a sparse polynomial sequence. Duke Math. J., 171(1):101–208, 2022.
+[28] K. Matomäki and J. Teräväinen. On the Möbius function in all short intervals. J. Eur. Math. Soc.
+     (JEMS), 25(4):1207–1225, 2023.
+[29] J. Maynard. Primes represented by incomplete norm forms. Forum Math. Pi, 8:e3, 2020.
+[30] J. Merikoski. On Gaussian primes in sparse sets. Preprint, arXiv:2302.11331, 2023.
+[31] J. Merikoski. The polynomials X 2 + (Y 2 + 1)2 and X 2 + (Y 3 + Z 3 )2 also capture their primes. Proc.
+     Lond. Math. Soc. (3), 127(4):1057–1133, 2023.
+[32] K. Pratt. Primes from sums of two squares and missing digits. Proc. Lond. Math. Soc. (3), 120(6):770–
+     830, 2020.
+[33] H. Rademacher. On the Phragmén-Lindelöf theorem and some applications. Math. Z., 72:192–204,
+     1959/60.
+[34] O. G. Rizzo. Average root numbers for a nonconstant family of elliptic curves. Compositio Math.,
+     136(1):1–23, 2003.
+[35] J. Teräväinen. On the Liouville function at polynomial arguments. Amer. J. Math., 146(4):1115–1167,
+     2024.
+[36] A. Tóth. Roots of quadratic congruences. Internat. Math. Res. Notices, 14:719–739, 2000.
+[37] K. Woo. On Manin’s conjecture for Châtelet surfaces. https: // arxiv. org/ abs/ 2409. 17381 , 2024.
+[38] S. Y. Xiao. Prime values of f (a, b2 ) and f (a, p2 ), f quadratic. Algebra Number Theory, 18(9):1619–1679,
+     2024.
+[39] M. P. Young. On the non-vanishing of elliptic curve L-functions at the central point. Proc. London
+     Math. Soc. (3), 93(1):1–42, 2006.
+
+  Mathematical Institute, University of Oxford, Andrew Wiles Building, Radcliffe Ob-
+servatory Quarter, Woodstock Road, Oxford, OX2 6GG
+  Email address: jori.merikoski@maths.ox.ac.uk
+
+
+
+
+                                                      33
+

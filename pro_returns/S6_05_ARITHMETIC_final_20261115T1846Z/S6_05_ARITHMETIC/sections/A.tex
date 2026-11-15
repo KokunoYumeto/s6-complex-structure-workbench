@@ -1,0 +1,2827 @@
+\section{The arithmetic count}\label{sec:A}
+We write
+\[
+ F(s,t,z)=s^2-3t^2-18z^2,\quad
+ \varepsilon_0=2+\sqrt3,\quad L_0=\log\varepsilon_0,
+ \quad b_0=\log\frac3{2\sqrt2}.
+\]
+The letter $t$ in this section is an integer coordinate, unrelated to the
+elliptic-surface parameter in Part C. All areas on the hyperbolic plane use
+curvature $-1$ and the measure $dx\,dy/y^2$.
+
+\subsection{The coordinates, ideals, and all boundary terms}
+\paragraph{Statement A.1.1 (Proved).}
+For every real $X\geq1$, the count in the prompt equals
+\[
+ \#\{(s,t,z)\in\mathbb Z^3:F(s,t,z)=-2,\ 1\leq z\leq X,
+ \ t\geq0,\ t+4z<s\leq17z/4\}.
+\]
+The comparison map from the original variables is the integral isometry
+\[
+ \begin{pmatrix}s\\t\\z\end{pmatrix}=
+ \begin{pmatrix}17&0&72\\0&1&0\\4&0&17\end{pmatrix}
+ \begin{pmatrix}a\\q\\n\end{pmatrix},\qquad
+ (a,q,n)=(17s-72z,t,17z-4s).
+\]
+It is a bijection of the indicated integer sets, with no parity restriction
+lost. In the original $(x,y,z)$ coordinates,
+\[
+ s=x+y+4z,\quad t=y-x,\quad
+ x=(s-4z-t)/2,\quad y=(s-4z+t)/2,
+\]
+and $2\{4(xy+xz+yz)-x^2-y^2-z^2\}=F(s,t,z)$.
+\begin{proof}
+The matrix has determinant $1$ and preserves $\operatorname{diag}(1,-3,-18)$.
+The upper inequality is precisely $n\geq0$, and the strict lower inequality
+is precisely $a+4n>q$. Conversely these inequalities force $a>0$:
+if $a\leq0$ and $n=0$ the strict inequality is impossible; if $n\geq1$, it
+implies $-4n<a\leq0$, whereas the equation gives
+$a^2=3q^2+18n^2-2\geq16n^2$, a contradiction. The transformed height is
+exactly $z=4a+17n$. Reduction of $F=-2$ modulo $2$ gives $s\equiv t\pmod2$,
+so the displayed inverse to $(x,y,z)$ is integral. Direct expansion proves
+its polynomial identity, and proves every asserted equivalence.
+\end{proof}
+
+\paragraph{Statement A.1.2 (Proved).}
+Every nonzero integral ideal of $\mathbb Z[\sqrt3]$, of absolute ideal
+norm $m$, has a unique generator $\alpha=s+t\sqrt3$ satisfying
+\[
+ \sqrt m\leq\alpha<\varepsilon_0\sqrt m.
+\]
+Its field norm may be $+m$ or $-m$. For example $(1+\sqrt3)$ has ideal
+norm $2$ and field norm $-2$; a generator of field norm $+2$ is impossible
+modulo $3$. Thus the interval assertion in Lead 2 is correct as written,
+but it must not be silently strengthened to positive field norm for every
+$m$. For the norms actually used here,
+\[
+ m_z=18z^2-2\quad(z\geq1),
+\]
+every ideal of norm $m_z$ has positive field-norm generator, so the unique
+interval generator satisfies
+\[
+ N_{\mathbb Q(\sqrt3)/\mathbb Q}(\alpha)=m_z,\qquad s>0,\quad t\geq0.
+\]
+The number of these ideals is
+\[
+ \rho(m_z)=\sum_{d\mid m_z}\chi_{12}(d)
+          =\rho(3z-1)\rho(3z+1).
+\]
+\begin{proof}
+The full ring of integers is $\mathbb Z[\sqrt3]$. It is norm Euclidean:
+rounding the two coefficients of an element of $\mathbb Q(\sqrt3)$ gives
+an error $u+v\sqrt3$ with $|u|,|v|\leq1/2$ and
+$|u^2-3v^2|\leq3/4<1$. Thus all ideals are principal. The units are
+$\{\pm\varepsilon_0^k:k\in\mathbb Z\}$: a unit of norm $-1$ is impossible
+modulo $3$, and the least unit greater than $1$ with positive conjugate is
+$2+\sqrt3$. The latter assertion also follows directly since
+$1<\alpha<\varepsilon_0$ would give an integral coefficient
+$0< (\alpha-\alpha^{-1})/(2\sqrt3)<1$.
+
+For any $m$, choose a generator, change its real sign to positive, and
+multiply by a unique power of $\varepsilon_0$ to put it in the stated
+half-open interval. This proves the general assertion without any
+assumption on the sign of its field norm.
+A generator of an ideal of norm $m_z$ has field norm $\pm m_z$.
+Since $m_z\equiv1\pmod3$, the negative sign is impossible modulo $3$.
+Choose its positive sign in the real embedding and multiply by a unique
+power of $\varepsilon_0$ to put it in the stated half-open interval.
+Then $s>0$ and $t\geq0$. The standard ideal factorization is particularly
+transparent here: a split prime contributes $e+1$ ideals of norm $p^e$,
+an inert prime contributes one if $e$ is even and none otherwise, and a
+ramified prime contributes one. These are exactly the Euler factors of
+$1*\chi_{12}$. The two linear factors $3z-1$ and $3z+1$ have greatest common
+divisor dividing $2$; the extra factor $2$ and their common factors at $2$
+make no difference because $2$ is ramified and $\rho(2^e)=1$.
+\end{proof}
+
+\paragraph{Statement A.1.3 (Proved).}
+Put $\theta(\mathfrak a)=L_0^{-1}\log(\alpha/\sqrt{m_z})$ for the generator
+in Statement A.1.2 and $\lambda_0=b_0/L_0$. For $X\geq1$,
+\begin{equation}\label{A:arc-exact}
+ R(X)=\sum_{1\leq z\leq X}
+ \#\{\mathfrak a:N\mathfrak a=m_z,\ 0\leq\theta(\mathfrak a)\leq\lambda_0\}
+ +R_0(X)-1,
+\end{equation}
+where
+\[
+ R_0(X)=\#\{k\geq1:4a_k\leq X\},\qquad
+ a_k+q_k\sqrt3=(1+\sqrt3)\varepsilon_0^k.
+\]
+In particular $R_0(X)=O(\log(2X))$. The only points with $z\geq1$,
+$t\geq0$, $s>0$, $s\leq17z/4$, and $F=-2$ which fail $s-4z>t$ are
+$(4,0,1)$ and $(17,1,4)$.
+\begin{proof}
+Since
+\[
+ \cosh b_0=\frac{17}{12\sqrt2},
+\]
+the fixed-arc condition is exactly
+\begin{equation}\label{A:arc-integer}
+ 288s^2\leq289(18z^2-2).
+\end{equation}
+It implies $4s<17z$. Conversely let $r=17z-4s\geq1$. Then
+$r<17z$ and
+\[
+ 18r(34z-r)\geq18(34z-1)\geq594>578,
+\]
+which is precisely the strict version of \eqref{A:arc-integer} after
+substitution. Consequently the only points between the fixed arc and
+the moving upper wall are the points $4s=17z$.
+
+If $s-4z\leq t$, the equation implies
+$(6z-s)^2\leq3z^2+1$. The upper wall gives
+$(6z-s)^2\geq49z^2/16$, so $z\leq4$. For $z=1,2,3,4$ the interval
+$\lceil\sqrt{18z^2-2}\rceil\leq s\leq\lfloor17z/4\rfloor$
+gives respectively $(s,t)=(4,0)$, no point, no point, and $(17,1)$.
+The first lies in the fixed arc; the second is on the moving wall.
+
+On that wall write $z=4a$, $s=17a$. Then $a^2-3t^2=-2$.
+Every solution with $a>0,t\geq0$ is
+$(a,t)=(a_k,q_k)$ for a unique $k\geq0$. Indeed, reduction by the unit to
+$\sqrt2\leq a+t\sqrt3<\varepsilon_0\sqrt2$ gives
+$a\geq0$, $2a<3t$, and hence $3t^2<8$; its only possibility is $(1,1)$.
+The strict wall excludes $k=0$ and includes all $k\geq1$.
+Finally $a_k$ grows geometrically, proving the logarithmic estimate and
+\eqref{A:arc-exact}, including both exceptional points.
+\end{proof}
+
+\paragraph{Statement A.1.4 (Proved by exact exhaustive computation).}
+The independently computed counts are
+\[
+ \begin{array}{c|r}
+ X&R(X)\\\hline
+ 10^6&35\,381\\
+ 10^7&353\,598\\
+ 10^8&3\,536\,002\\
+ 10^9&35\,363\,970
+ \end{array}
+\]
+The first three confirm Lead 5. The fourth extends the census by a factor
+of ten. The exact algorithm, its exhaustiveness proof, and its numerical
+discrepancy analysis are given below in Statement A.5.1.
+
+\subsection{The full integral group and the two closed geodesics}
+Let $B_F(x,y)=x^{\mathsf T}\operatorname{diag}(1,-3,-18)y$ and
+\[
+ \mathbb H_F=\{x:F(x)=1,\ x_1>0\},\qquad
+ O^+(F,\mathbb Z)=\{g\in O(F,\mathbb Z):g\mathbb H_F=\mathbb H_F\}.
+\]
+The orientation-preserving Fuchsian group is
+$\Gamma^+=O^+(F,\mathbb Z)\cap SO(F,\mathbb R)$.
+Thus the literal $SO(F,\mathbb Z)$ in Lead 3 must be restricted to its
+index-two subgroup preserving the chosen component before it acts on
+$\mathbb H_F$.
+
+\paragraph{Statement A.2.1 (Proved).}
+For the five primitive vectors
+\[
+ r_0=(0,-1,0),\ r_1=(0,0,-1),\ r_2=(1,1,0),\
+ r_3=(9,3,2),\ r_4=(4,0,1),
+\]
+let $S_jx=x-2B_F(x,r_j)r_j/F(r_j)$. Then
+$O^+(F,\mathbb Z)=\langle S_0,S_1,S_2,S_3,S_4\rangle$.
+A fundamental domain is the compact right-angled pentagon
+\[
+ \mathcal P=\{(s,t,z)\in\mathbb H_F:
+ t,z\geq0,\ s\geq3t,\ s\geq t+4z,\ 2s\geq9z\}.
+\]
+Its area is $\pi/2$. The group $\Gamma^+$ has area $\pi$, is generated by
+$S_0S_j$ ($1\leq j\leq4$), and has signature $(0;2,2,2,2,2)$.
+\begin{proof}
+The five reflection matrices, in their displayed order, are
+\[
+ \begin{gathered}
+ S_0=\operatorname{diag}(1,-1,1),\quad
+ S_1=\operatorname{diag}(1,1,-1),\quad
+ S_2=\begin{pmatrix}2&-3&0\\1&-2&0\\0&0&1\end{pmatrix},\\
+ S_3=\begin{pmatrix}10&-9&-36\\3&-2&-12\\2&-2&-7\end{pmatrix},\qquad
+ S_4=\begin{pmatrix}17&0&-72\\0&1&0\\4&0&-17\end{pmatrix}.
+ \end{gathered}
+\]
+They are integral isometries, have determinant $-1$, and preserve
+$\mathbb H_F$. In projective coordinates $(u,v)=(t/s,z/s)$ the pentagon
+has vertices
+\[
+ (0,0),\ (1/3,0),\ (1/3,1/6),\ (1/9,2/9),\ (0,2/9).
+\]
+Each lies strictly inside $3u^2+18v^2<1$. Consecutive normals are
+orthogonal; hence all five angles are $\pi/2$. Reflection across the sides
+produces a tiling: glue copies along the paired sides, with four copies
+around every vertex. The relations $S_j^2=1$ and
+$(S_jS_{j+1})^2=1$ (indices modulo $5$) remove the edge and vertex loops,
+so the resulting simply connected development is a hyperbolic surface.
+It is complete: a bounded path cannot cross infinitely many nonadjacent
+sides, since the pentagon is compact and these sides are separated by a
+positive distance; only four chambers meet at a vertex. Its developing
+map to the complete simply connected plane is consequently an isometry.
+Thus the interiors of the pentagons are disjoint. The area formula gives
+$3\pi-5\pi/2=\pi/2$.
+
+We also prove that no integral isometries have been omitted. Let
+$x=(a,q,n)\in\mathbb Z^3$ have $F(x)=1$, $a>0$. Reflections $S_0,S_1$
+make $q,n\geq0$. If one of the other three defining inequalities fails,
+reflection in that side strictly decreases the positive integer $a$.
+It remains positive because the reflection preserves $\mathbb H_F$.
+The process terminates in $\mathcal P$. There
+\[
+ a^2=(1-3u^2-18v^2)^{-1}\leq27/2;
+\]
+the maximum follows by convexity of $3u^2+18v^2$ on the projective polygon
+and evaluation at its vertices. For integral $a\leq3$, the only norm-one
+point in the pentagon is $(1,0,0)$: $a=2$ would give $(q,n)=(1,0)$,
+which violates $a\geq3q$, and $a=3$ is impossible modulo $3$.
+
+Apply this descent to $g(1,0,0)$ for any $g\in O^+(F,\mathbb Z)$.
+After multiplication by a word in the $S_j$, it fixes $(1,0,0)$.
+An integral isometry of the remaining positive binary form
+$3q^2+18n^2$ only changes the two signs: its first column of norm $3$
+is $(\pm1,0)$, and its second column is then $(0,\pm1)$.
+These sign changes are $S_0,S_1$. This proves the asserted equality.
+The orientation subgroup has index two, and doubling the pentagon gives
+its stated orbifold signature and area.
+\end{proof}
+
+\paragraph{Statement A.2.2 (Proved).}
+The integral vectors of norm $-2$ form exactly two $\Gamma^+$-orbits,
+represented by $v_1=r_2=(1,1,0)$ and $v_2=r_4=(4,0,1)$.
+They are distinguished by
+\[
+ \operatorname{div}(s,t,z)=\gcd(s,3t,18z),
+\]
+which equals $1$ and $2$, respectively. The stabilizers of the oriented
+normals are primitive infinite cyclic groups. The associated primitive
+closed-geodesic lengths are $2L_0$ and $L_0$. The oriented stabilizer of
+$e_z=(0,0,1)$ is generated by
+\[
+ T=\begin{pmatrix}2&3&0\\1&2&0\\0&0&1\end{pmatrix}
+\]
+and its primitive length is $L_0$.
+\begin{proof}
+Move a point of the geodesic $v^\perp\cap\mathbb H_F$ into $\mathcal P$.
+If $p$ is the resulting point and $B_F(p,v)=0$, the negative-definite
+Cauchy--Schwarz inequality on $p^\perp$ gives
+\[
+ |v_1|^2=|B_F(e_s,v)|^2\leq2(p_1^2-1)\leq25.
+\]
+For $|s|\leq5$, the norm equation has only the possibilities
+\[(s,t,z)=(\pm1,\pm1,0),(\pm4,0,\pm1),(\pm5,\pm3,0).\]
+Checking the linear function $s-3tu-18zv$ at the five projective vertices
+shows that only $\pm r_2,\pm r_4$ have geodesics meeting the pentagon.
+These are exactly its two norm-$-2$ sides. A side reflection negates its
+normal; an adjacent side reflection fixes it. Their product is in
+$\Gamma^+$, so signs do not split the orbits. Moreover a determinant-$-1$
+word mapping a representative to a vector can be multiplied by the
+adjacent reflection fixing the representative. Thus passage from the
+full reflection group to $\Gamma^+$ does not split either orbit.
+The invariant divisibility separates them.
+
+On any side, its two adjacent reflections act on its line by reflections
+in the endpoints of a fundamental segment. The line stabilizer is the
+resulting infinite dihedral group; its translation subgroup is generated
+by their product. This follows directly by moving a point into that
+segment in the reflection tiling; an additional stabilizer would identify
+two interiors of fundamental segments. For $r_1,r_2,r_4$ the products are,
+respectively, $S_0S_2$, $S_1S_3$, $S_3S_0$. Their traces are $5,15,5$.
+For a hyperbolic isometry in the three-dimensional Lorentz representation,
+$\operatorname{tr}g=1+2\cosh\ell(g)$. Since
+$\cosh L_0=2$ and $\cosh(2L_0)=7$, the lengths follow. The source
+stabilizer also follows immediately from the Pell equation
+$u^2-3v^2=1$ for its upper left $2\times2$ block.
+\end{proof}
+
+\paragraph{Statement A.2.3 (Proved).}
+For $v=(s,t,z)$ with $F(v)=-2$, $s>0$, $z\geq1$, let
+$g_v=v^\perp\cap\mathbb H_F$ and $g_0=e_z^\perp\cap\mathbb H_F$.
+They are disjoint and
+\[
+ \cosh d(g_v,g_0)=3z.
+\]
+Writing $m_z=s^2-3t^2$, the foot of their common perpendicular on $g_0$
+has arclength coordinate
+\[
+ u=\log\frac{s+\sqrt3t}{\sqrt{m_z}},\qquad
+ p(u)=(\cosh u,\sinh u/\sqrt3,0).
+\]
+In particular $\theta=u/L_0$ modulo $1$, and the arc in
+\eqref{A:arc-exact} has length $b_0$ in the source circle of length $L_0$.
+If $H_0=\langle T\rangle$ and $H_j=\operatorname{Stab}_{\Gamma^+}(v_j)$,
+then, with cyclic stabilizers and both normal orientations retained,
+\begin{equation}\label{A:double-coset-exact}
+ \sum_{j=1}^2
+ \#\{H_0\gamma H_j:\ 3|z(\gamma v_j)|\leq3X\}
+ =4\sum_{1\leq z\leq X}\rho(m_z)+2.
+\end{equation}
+\begin{proof}
+The unit spacelike normals have absolute inner product
+$|B_F(v,e_z)|/\sqrt{(-2)(-18)}=3z>1$; the hyperboloid formula for
+ultraparallel geodesics therefore gives the distance. To verify this
+formula directly, restrict to their common two-dimensional Lorentz
+plane, in which unit normals have coordinates $(0,1)$ and
+$(\sinh d,\cosh d)$.
+
+The minimum along $g_0$ occurs where
+$s\sinh u-\sqrt3t\cosh u=0$. Solving gives the stated logarithm;
+$T$ translates $u$ by $L_0$. The map
+$\Gamma^+/H_j\to\Gamma^+v_j$, $\gamma H_j\mapsto\gamma v_j$,
+is bijective by its stabilizer definition. Quotienting on the left by
+$H_0$ gives precisely unit orbits of the norm equation in $(s,t)$.
+For each $z\geq1$, there are $\rho(m_z)$ with $s>0$; the independent signs
+of $z$ and $s$ give four such sets. At $z=0$, the norm-$-2$ equation has
+two $H_0$-orbits, according to the sign of $s+\sqrt3t$. These account for
+the last $2$ in \eqref{A:double-coset-exact}. This also tracks the
+orbifold half-turns: they are not silently included in the cyclic
+stabilizers or divided out a second time.
+\end{proof}
+
+\subsection{Comparison with the quaternion orders}
+\paragraph{Statement A.2.4 (Proved).}
+Let $B=(3,-1)_{\mathbb Q}$ with $i^2=3$, $j^2=-1$, $ij=k=-ji$.
+Then $B$ has discriminant $6$. The orders
+\[
+ \mathcal O_{12}=\mathbb Z[1,i,j,k],\qquad
+ \mathcal O_6=\mathbb Z[1,i,j,(1+i+j+k)/2],\qquad
+ \mathcal O_{108}=\mathbb Z[1,i,3j,3k]
+\]
+have the indicated reduced discriminants, and $\mathcal O_6$ is maximal.
+Under the pure-coordinate map
+\[
+ V(a,q,n)=\frac{3q+a}{2}i+\frac{3(q+a)}2j+3nk,
+ \qquad \operatorname{nrd}V=\frac32F(a,q,n),
+\]
+the spinor kernel of $\Gamma^+$ is
+$\operatorname{Ad}(\mathcal O_{12}^{1})$, of index $2$ in $\Gamma^+$.
+The image of the workbench's norm-one order is
+$\operatorname{Ad}(\mathcal O_{108}^{1})$, of index $6$ in this spinor
+kernel and index $12$ in $\Gamma^+$.
+\begin{proof}
+The Hilbert symbol $(3,-1)_3$ is $(-1/3)=-1$, and the odd-unit formula
+at $2$ gives $(3,-1)_2=(-1)^{((3-1)/2)((-1-1)/2)}=-1$.
+At all other finite primes the symbol is $+1$, as at infinity.
+Thus the algebra is an indefinite division algebra of discriminant $6$.
+Direct multiplication checks that $\mathcal O_6$ is an order and that
+its trace-pairing determinant is $-36$; it is maximal since its reduced
+discriminant equals the algebra discriminant. The other discriminants
+follow either from the trace pairings or from lattice indices $2$ and
+$18$ in $\mathcal O_6$.
+
+For comparison with the original presentation set
+$I=3i+3j$, $J=i+3j$, $K=6k$. Then $I^2=18$, $J^2=-6$, $IJ=K=-JI$,
+and the original basis $(1,(I+J)/2,(I-J)/2,K/2)$ gives exactly
+$\mathcal O_{108}$. The map $V$ sends the parity lattice $a\equiv q\pmod2$
+onto its trace-zero lattice, but the adjoint norm-one action preserves the
+whole diagonal lattice as well. This last assertion, absent from the
+workbench bridge, follows by direct multiplication. More generally, for
+$g=r+si+cj+dk\in\mathcal O_{12}^1$, the only possible denominator in its
+adjoint matrix in the $(a,q,n)$ coordinates is $3$, in a term $rc/3$.
+The norm equation implies $r^2+c^2\equiv1\pmod3$, hence $3\mid rc$.
+Thus $\operatorname{Ad}(\mathcal O_{12}^1)\subseteq\Gamma^+$.
+
+At $2$, the quotient of the maximal order by its radical is $\mathbb F_4$,
+and $\mathcal O_{12}$ is the preimage of $\mathbb F_2$. The norm-one
+unit index is $3$: the unit $(1+i+3j+k)/2$ has norm $1$ and its reduction
+generates $\mathbb F_4^\times$. At other primes the orders coincide.
+Therefore $[\mathcal O_6^1:\mathcal O_{12}^1]=3$.
+Voight's Theorem 39.1.2, in the opened version 0.9.14 of
+\emph{Quaternion algebras}, states that a maximal order in an indefinite
+rational quaternion algebra of discriminant $D$ has projective norm-one
+covolume $\frac\pi3\prod_{p\mid D}(p-1)$ \cite{Voight2018}.
+Here the hypotheses have just been verified and $D=6$, giving $2\pi/3$.
+Thus the adjoint image of $\mathcal O_{12}^1$ has area $2\pi$ and index
+$2$ in the already identified group of area $\pi$.
+
+The quaternion $3+k$ has norm $6$ and adjoint matrix $T^{-1}$.
+Its spinor class is the non-square $6$, whereas norm-one elements have
+trivial class. Hence the index-two subgroup just computed is exactly
+the spinor kernel.
+Finally $\mathcal O_{108}^1$ is the subgroup of $\mathcal O_{12}^1$
+with $c\equiv d\equiv0\pmod3$. The norm-one reductions modulo $3$
+have $r^2+c^2=1$ and arbitrary $s,d$, hence size $36$; the indicated
+subgroup has size $6$. Surjectivity follows from the reductions of the
+actual norm-one units $j$, $2+i$, and $2+k$: the latter two generate the
+two additive directions and $j$ generates the four residue units.
+This proves index $6$, including the local conditions at both ramified
+primes. The exact matrix calculations are reproduced in
+\path{code/A_quaternion.py}.
+\end{proof}
+
+\subsection{Absence of exceptional spectrum}
+\paragraph{Statement A.2.5 (Proved).}
+Every compact hyperbolic orbifold of signature $(0;2,2,2,2,2)$,
+independently of its moduli, has Cheeger constant at least $1$.
+On $M=\Gamma^+\backslash\mathbb H_F$, every nonconstant Laplace
+eigenfunction has eigenvalue strictly greater than $1/4$. In particular no
+exceptional spectral term obstructs the exponent $2/3$ in either
+the unrestricted or the arc-restricted problem.
+\begin{proof}
+We prove the stronger geometric fact that every compact hyperbolic
+orbifold of signature $(0;2,2,2,2,2)$ has Cheeger constant at least $1$.
+Here the Cheeger constant is the infimum of
+$\operatorname{length}(\partial U)/\operatorname{area}(U)$ over
+smooth domains of area at most half the total area. Boundaries can be
+taken disjoint from the finite set of cone points, by approximation.
+
+First let $D$ be a disk with a smooth boundary containing at most two
+cone points. Its orbifold fundamental group maps into the ambient
+Fuchsian group with image either trivial, cyclic of order two, or
+generated by two half-turns about distinct points. In the last case
+the image is infinite dihedral: the product of the half-turns is a
+translation by twice the distance between their centres. The disk
+lifts injectively and isometrically to the corresponding complete
+orbifold cover. The injectivity of the lift follows immediately from
+the identity obtained after composition with the covering map; no
+claim about an embedded developed image in $\mathbb H_F$ is needed.
+
+Each of these three complete covers has a smooth orbifold vector
+field $V$ with $|V|\leq1$ and $\operatorname{div}V=1$.
+For the trivial and finite elliptic cases use polar coordinates about
+a fixed point and
+$V=\tanh(r/2)\partial_r$ in the metric
+$dr^2+\sinh^2r\,d\phi^2$; its divergence is
+$1/(\cosh r+1)+\cosh r/(\cosh r+1)=1$.
+For the infinite dihedral case use Fermi coordinates about the common
+axis, with metric $dr^2+\cosh^2r\,ds^2$, and
+$V=\tanh r\,\partial_r$. The field is invariant under translations
+and under $(r,s)\mapsto(-r,-s)$, and its divergence is
+$\operatorname{sech}^2r+\tanh^2r=1$.
+The divergence theorem, or its application after deleting disks of
+radius tending to zero about the cone points, now gives
+\begin{equation}\label{A:disk-isoperimetry}
+ \operatorname{area}(D)\leq\operatorname{length}(\partial D).
+\end{equation}
+For a nonempty disk the inequality is strict, since its lifted boundary
+is compact and the displayed vector field has $|V|<1$ at every finite
+point. The later argument only requires the weak inequality for the
+Cheeger infimum, but the strict version will exclude eigenvalue $1/4$.
+
+
+For completeness we pass from disks to arbitrary domains, a step
+which matters for the Cheeger constant. The disjoint boundary circles
+of $U$ cut the underlying sphere into components; their dual graph is
+a tree. Give each vertex its number of cone points, with total weight
+$5$. Orient each edge toward the side with at least three cone points.
+There is a unique sink: two different sinks would require disjoint
+subtrees each containing at least three of the five points. Every
+subtree separated from the sink by one edge is a disk with at most
+two cone points, so its area is bounded by the length of that edge's
+boundary circle, by \eqref{A:disk-isoperimetry}.
+If the sink is outside $U$, choose for each connected cluster of
+vertices belonging to $U$ its boundary edge nearest the sink. The
+associated disk contains the entire cluster. The chosen edges are
+distinct, so their inequalities give
+$\operatorname{length}(\partial U)\geq\operatorname{area}(U)$.
+If the sink is inside $U$, apply the same argument to the complement:
+$\operatorname{length}(\partial U)\geq
+\operatorname{area}(M\setminus U)\geq\operatorname{area}(U)$.
+Thus $h(M)\geq1$.
+
+We also include the analytic implication to specify the convention
+and to avoid a hidden orbifold hypothesis. For a smooth mean-zero
+real function $f$, choose a median $m$ and put
+$f_+=(f-m)_+$, $f_-=(m-f)_+$. Each support has area at most half
+the total area. The coarea formula and the preceding isoperimetric
+inequality yield
+\[
+ \int f_\pm^2\leq\int|\nabla(f_\pm^2)|
+ \leq2\Big(\int f_\pm^2\int|\nabla f_\pm|^2\Big)^{1/2}.
+\]
+Adding the resulting inequalities gives
+\[
+ \int|\nabla f|^2\geq\frac14\int(f-m)^2
+ \geq\frac14\int f^2.
+\]
+Orbifold charts justify coarea and integration by parts by lifting
+to disks; isolated cone points have area zero. The Rayleigh
+principle gives the weak spectral bound. For a nonconstant
+eigenfunction the positive or negative part is nonzero, and its regular
+positive level sets have positive area for a set of levels of positive
+measure. The strict disk inequality, and the same tree argument, make
+coarea strict on those levels. Thus its Rayleigh quotient is strictly
+greater than $1/4$. We claim no uniform strict margin over all moduli.
+Statement A.2.1
+verified that our actual group has exactly this signature.
+\end{proof}
+
+\subsection{The unrestricted relative count}
+\paragraph{Statement A.3.1 (Known theorem applied with complete bookkeeping).}
+For $X\geq2$,
+\begin{equation}\label{A:unrestricted-asymptotic}
+ S(X)=\sum_{1\leq z\leq X}\rho(3z-1)\rho(3z+1)
+ =\frac{9L_0^2}{2\pi^2}X+O(X^{2/3}).
+\end{equation}
+The implied constant is fixed for the displayed lattice and region.
+\begin{proof}
+We use Theorem 1.2 of Lekkas--Petridis and its explicitly proved
+two-geodesic extension, Remark 6 \cite{LekkasPetridis2026}.
+Their hypotheses are a cocompact torsion-free Fuchsian group and
+primitive cyclic geodesic stabilizers. Their conclusion is
+\[
+ N(Y;l,l')=\sum_{1/2<s_j\leq1}\frac2\pi\gamma_1(s_j)
+  \Big(\int_lu_j\,ds\Big)\Big(\int_{l'}u_j\,ds\Big)Y^{s_j}
+  +O(Y^{2/3}),
+\]
+where the $u_j$ are orthonormal Laplace eigenfunctions,
+$\lambda_j=s_j(1-s_j)$, and
+\[
+ \gamma_1(s)=\frac\pi2
+ \frac{\Gamma(s+1/2)\Gamma((s+1)/2)}{\Gamma(s/2)^3}
+ \frac4{s(2s-1)},\qquad \gamma_1(1)=1.
+\]
+Intersecting axes contribute only finitely many double cosets.
+The extension in Remark 6 replaces squared periods by products;
+its proof uses the same transform and Cauchy--Schwarz for the two
+period sums. We now verify the torsion removal and its exact effect,
+instead of applying the torsion-free statement directly to $M$.
+
+Set $K=\ker(\Gamma^+\to\operatorname{GL}_3(\mathbb F_5))$ and
+$d=[\Gamma^+:K]$. It is normal of finite index and cocompact.
+It is torsion-free: a nonidentity matrix congruent to $1$ modulo $5$
+can be written $1+5^eB$ with $e\geq1$ and $B\not\equiv0\pmod5$.
+If it has finite order, a power has prime order $p$. For $p\ne5$
+the binomial expansion modulo $5^{e+1}$ contradicts order $p$;
+for $p=5$ expansion modulo $5^{e+2}$ gives the same contradiction.
+Put $H_i'=H_i\cap K$, $m_i=[H_i:H_i']$. These are the full
+oriented cyclic stabilizers in $K$ and their primitive lengths are
+$m_i l_i$. The values from Statement A.2.2 are
+$l_0=L_0$, $l_1=2L_0$, $l_2=L_0$.
+
+For $i=1,2$ no translate of the target axis equals the source axis:
+such equality would make an integral norm-$-2$ normal proportional
+to $(0,0,1)$, hence equal to $(0,0,\pm1/3)$, which is impossible.
+Consequently $H_0\cap\gamma H_i\gamma^{-1}$ is trivial for every
+$\gamma$. The natural map
+\[
+ H_0'\backslash\Gamma^+/H_i'\longrightarrow
+ H_0\backslash\Gamma^+/H_i
+\]
+therefore has exactly $m_0m_i$ preimages of every double coset:
+they are represented by the $m_0$ left and $m_i$ right residue
+classes, and an equality between two of them would give a
+nonidentity element of that intersection. Distance is unchanged.
+
+Decompose $\Gamma^+$ into its $d$ cosets $K\gamma_r$.
+The part in $K\gamma_r$ is the pair count in $K$ for $H_0'$ and
+$\gamma_rH_i'\gamma_r^{-1}$. All these stabilizers are primitive.
+There are no asymptotic pairs of distinct axes: two hyperbolic
+elements of a discrete cocompact Fuchsian group sharing one boundary
+fixed point share both, and then their axes coincide. To see the
+claim directly, conjugate the common endpoint to infinity; distinct
+second endpoints and conjugation by powers of one dilation produce
+nonidentity group elements tending to the identity. Thus the
+regularity condition $abcd\ne0$ in the cited construction holds
+outside the finite intersection terms.
+
+Apply the displayed theorem to each of the finitely many pairs in
+$K\backslash\mathbb H_F$. Extra small eigenvalues of this cover do
+not survive the sum. Indeed the deck group $\Gamma^+/K$ acts
+unitarily on every Laplace eigenspace. The sum of the target periods
+over $\gamma_r$ is $d$ times the period of the orthogonal projection
+onto the deck-invariant subspace. We may choose an orthonormal
+eigenbasis respecting that subspace. All other terms cancel exactly.
+The invariant eigenfunctions are $d^{-1/2}$ times normalized
+eigenfunctions on $M$. Their source and target periods acquire
+factors $m_0/\sqrt d$ and $m_i/\sqrt d$, respectively. Summing $d$
+cosets and dividing by $m_0m_i$ cancels these factors. By Statement
+A.2.5 only the constant eigenfunction has $1/2<s_j\leq1$.
+We obtain, for each $i$,
+\[
+ N_i(Y)=\frac{2l_0l_i}{\pi\operatorname{area}(M)}Y
+       +O(Y^{2/3}).
+\]
+Since $\operatorname{area}(M)=\pi$, summing $i=1,2$, substituting
+$Y=3X$, and using the exact identity
+$N_1(3X)+N_2(3X)=4S(X)+2$ proves
+\eqref{A:unrestricted-asymptotic}.
+
+The theorem is written with a strict cutoff, whereas our count uses
+a weak cutoff. Their difference at a height $z$ is at most
+$4\rho(m_z)$. The elementary estimate $d(n)\ll_\epsilon n^\epsilon$
+therefore makes this $O_\epsilon(X^\epsilon)$, which is absorbed.
+For clarity that elementary estimate follows by separating the
+finitely many primes $p<2^{1/\epsilon}$; for the remaining primes
+$e+1\leq2^e\leq p^{\epsilon e}$, and the finitely many maxima of
+$(e+1)p^{-\epsilon e}$ are finite.
+\end{proof}
+
+\paragraph{Statement A.3.2 (Proved reformulation and literature comparison).}
+Writing $n=3z-1$ gives the exact shifted norm-coefficient sum
+\[
+ S(X)=\sum_{\substack{1\leq n\leq3X-1\\n\equiv2\pmod3}}
+       (1*\chi_{12})(n)(1*\chi_{12})(n+2).
+\]
+These are the coefficients counting ideals in $\mathbb Q(\sqrt3)$:
+$\zeta_{\mathbb Q(\sqrt3)}(s)=\zeta(s)L(s,\chi_{12})$.
+This specifies the binary additive-divisor interpretation precisely:
+the additive shift $2$ is in the integer norm variable, with the
+progression $n\equiv2\pmod3$. It is not a sum over elements of the
+quadratic field modulo an unstated unit convention.
+For comparison, Motohashi's Theorem 1 and Corollary 1
+\cite{Motohashi1994} give, for every fixed positive shift $h$,
+\[
+ \sum_{n\leq Y}d(n)d(n+h)=Y P_{2,h}(\log Y)
+       +O_{h,\epsilon}(Y^{2/3+\epsilon}),
+\]
+where the quadratic polynomial has leading coefficient
+$6\sigma_{-1}(h)/\pi^2$. In our case the main term is linear without a
+logarithmic polynomial. The distinction is consistent with the simple
+pole of the Dedekind zeta function, as opposed to the double pole of
+$\zeta(s)^2$. The cited classical theorem concerns $d(n)$, so it is a
+comparison and is not used as a theorem about the character-twisted
+coefficients or the sharp ideal arc. Statement A.3.1 proves our formula
+from the relative hyperbolic count instead.
+
+\subsection{The sharp arc: an explicit power saving and the uniform transform}
+\paragraph{Statement A.4.1 (Proved; weaker than the requested exponent).}
+For every $\epsilon>0$,
+\begin{equation}\label{A:sharp-7-8}
+ R(X)=\frac{9L_0b_0}{2\pi^2}X+O_\epsilon(X^{7/8+\epsilon}).
+\end{equation}
+In particular this proves the proposed leading constant for the actual
+sharp arc. It does not prove the requested exponent $2/3$.
+\begin{proof}
+Here is a direct application of the general lattice-counting theorem of
+Gorodnik--Nevo \cite{GorodnikNevo2012}, with its domain regularity verified
+for this arc. Work first in $G=\operatorname{PSL}_2(\mathbb R)$, identified
+with the connected isometry group of $\mathbb H_F$. Conjugate the source
+axis to the imaginary axis and put
+\[
+ A_u=\begin{pmatrix}e^{u/2}&0\\0&e^{-u/2}\end{pmatrix},\qquad
+ B_r=\begin{pmatrix}\cosh(r/2)&\sinh(r/2)\\
+                  \sinh(r/2)&\cosh(r/2)\end{pmatrix}.
+\]
+For $g=A_uB_rA_v=\begin{pmatrix}a&b\\c&d\end{pmatrix}$,
+\[
+ ad+bc=\cosh r,\qquad
+ u=\frac12\log\left|\frac{ab}{cd}\right|,\qquad
+ v=\frac12\log\left|\frac{ac}{bd}\right|.
+\]
+The parameter $u$ is arclength of the perpendicular foot on the source
+axis, with the choice of origin and orientation in Statement A.2.3.
+There are four regular cells, according to the sign of $ad+bc$ and the
+side/orientation of the perpendicular; each is obtained from the displayed
+cell by fixed matrices reversing axes and/or replacing $r$ by $-r$.
+Their absolute Haar densities agree. Direct differentiation of
+$g^{-1}dg$ gives
+\begin{equation}\label{A:Haar-ABA}
+ dg=\kappa\sinh r\,du\,dr\,dv\qquad(r>0),
+\end{equation}
+for a positive normalization constant $\kappa$. The exact symbolic check
+is in \path{code/A_relative_coordinates.py}.
+
+Choose $\tau_i\in G$ carrying the standard oriented normal to the
+normal of the $i$th target geodesic, for $i=1,2$. Then
+$H_i=\tau_i\langle A_{l_i}\rangle\tau_i^{-1}$. An element of
+$H_0\backslash\Gamma^+/H_i$ has a unique representative in the coset
+$\Gamma^+\tau_i$ with
+\[
+ 0\leq u<L_0,\qquad 0\leq v<l_i,
+\]
+once its regular cell is specified. Indeed left and right translations
+change $u$ and $v$ by the indicated primitive lengths, and their
+intersection is trivial, as proved in Statement A.3.1. A single one of
+the four cells is the positive-$s$, positive-$z$ ideal count. In that
+cell the sharp arc is exactly $0\leq u\leq b_0$.
+The lower bound $r\geq1$ removes no positive integral height, since
+$\cosh r=3z\geq3$ and $\operatorname{arcosh}3>1$.
+Thus, apart from the explicitly treated endpoints, its count is the
+number of coset points in
+\[
+ D_i(X;I)=\{A_u B_r A_v:u\in I,\ 0\leq v<l_i,
+              \ 1\leq r\leq\operatorname{arcosh}(3X)\}
+\]
+in the appropriate regular cell, where $I=[0,b_0]$ or $[0,L_0)$.
+Changing which endpoint of a fundamental interval is included selects
+one representative and introduces no multiplicity.
+
+We verify Lipschitz well-roundedness, rather than assuming a sector
+regularity theorem. On each such domain all four entries have absolute
+value between fixed positive multiples of $e^{r/2}$: the ranges of
+$u,v$ are fixed compact intervals and $r\geq1$. Left or right
+multiplication by a matrix $1+O(\delta)$ changes each entry relatively
+by $O(\delta)$, uniformly in $r$. The signs therefore remain fixed, the
+two logarithmic formulas change $u,v$ by $O(\delta)$, and the formula
+for $\cosh r$ changes $r$ by $O(\delta)$, since $\coth r$ is bounded
+for $r\geq1$. The same estimates applied to inverse perturbations give
+an inner comparison. Hence the outer and inner $\delta$-perturbations
+are bounded by coordinate rectangles whose six faces have moved by
+$O(\delta)$. Formula \eqref{A:Haar-ABA} shows
+\[
+ \operatorname{vol}(D_i^+(\delta))-
+ \operatorname{vol}(D_i^-(\delta))
+       =O(\delta\operatorname{vol}(D_i)),\qquad
+ \operatorname{vol}(D_i)\asymp X.
+\]
+This is precisely Definition 1.1 of the cited paper with exponent
+$a=1$. Small identity balls have upper local dimension $\rho=3$.
+
+The representation on $L^2_0(\Gamma^+\backslash G)$ is $L^{2+}$.
+For completeness, the unitary dual classification
+\cite[Theorem (2.3)]{Moriyama1999} consists of the trivial representation,
+principal series, discrete series and their limits, and complementary
+series. Every complementary series has a $K$-fixed vector and corresponds
+to a scalar Laplace eigenvalue in $(0,1/4)$, excluded by Statement A.2.5.
+The other nontrivial representations are tempered: their $K$-finite
+matrix coefficients are in $L^{2+}$ (in polar coordinates the principal
+series bound is a constant times $(1+r)e^{-r/2}$ and Haar density is
+$O(e^r)$; discrete series are square integrable, with their limits
+satisfying the same $L^{2+}$ bound). Finite sums of such vectors are dense.
+The constant representation is removed, and connectedness of the quotient
+ensures there are no other invariant vectors.
+
+To satisfy the algebraic simply-connected hypothesis in Gorodnik--Nevo,
+lift the group, lattice and domains to $\operatorname{SL}_2(\mathbb R)$.
+This is a real isotropic simply connected semisimple algebraic group;
+the twofold central lift changes point counts and volumes by the same
+factor. It does not change the representation on the quotient.
+Theorem 4.5 and equation (3.1) of the cited paper, with $p=2$ and
+$n_e(p)=1$, give the stable operator bound
+$E(X)\ll_\eta\operatorname{vol}(D_i)^{-1/2+\eta}$.
+The lattice is discrete and cocompact, so the identity and the finitely
+many translates $\tau_i$ have positive injectivity radii. Theorem 1.9
+and Corollary 1.11, with $a=1,\rho=3$, now give
+\[
+ \#(\Gamma^+\tau_i\cap D_i(X;I))
+ =\frac{\operatorname{vol}(D_i(X;I))}
+        {\operatorname{vol}(\Gamma^+\backslash G)}
+    +O_\epsilon(X^{7/8+\epsilon}).
+\]
+This checks both the translated-coset and sharp-boundary hypotheses.
+
+It remains to normalize the main coefficient. By
+\eqref{A:Haar-ABA}, restriction from $[0,L_0)$ to $[0,b_0]$ multiplies
+volume by $b_0/L_0$. The four regular cells have equal volume. Their
+full count is $4S(X)+O(1)$ by Statement A.2.3, whose leading coefficient
+was proved in Statement A.3.1. Consequently the positive-$s$, positive-$z$
+cell has leading coefficient $9L_0^2/(2\pi^2)$, and the arc has coefficient
+$9L_0b_0/(2\pi^2)$, as asserted.
+The lower endpoint consists of the Pell family $t=0$, hence contributes
+$O(\log X)$ if its convention is changed. The upper endpoint is empty:
+$288s^2=289(18z^2-2)$ would imply $17\mid s$ and then
+$144(s/17)^2=9z^2-1$, impossible modulo $9$.
+Finally Statement A.1.3 changes the arc count by $O(\log X)$.
+\end{proof}
+
+
+\paragraph{Statement A.4.2 (Proved reduction; its needed uniform estimate remains undecided).}
+For each integer $\ell$ define a unitary character on the nonzero ideals
+of $\mathbb Z[\sqrt3]$ by
+\[
+ \psi_\ell((\alpha))=
+ \left|\frac{\alpha}{\alpha'}\right|^{i\pi\ell/L_0},
+ \qquad a_\ell(m)=\sum_{N\mathfrak a=m}\psi_\ell(\mathfrak a),
+\]
+where the prime denotes the nontrivial real embedding. Then
+\begin{equation}\label{A:twisted-shift}
+ T_\ell(X):=\sum_{z\leq X}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}
+ =(-1)^\ell\sum_{z\leq X}a_\ell(3z-1)a_\ell(3z+1).
+\end{equation}
+For every integer $H\geq1$ the actual sharp-arc error satisfies
+\begin{equation}\label{A:ET-reduction}
+ |R(X)-C_0X|\ll X^{2/3}+\frac XH+
+       \sum_{1\leq\ell\leq H}\frac{|T_\ell(X)|}{\ell}
+       +\log(2X).
+\end{equation}
+In particular, the uniform bound
+\begin{equation}\label{A:needed-twist}
+ |T_\ell(X)|\ll_\epsilon X^{2/3+\epsilon}
+           +X^{1/2+\epsilon}\ell^{1/2}
+ \quad(1\leq\ell\leq X^{1/3})
+\end{equation}
+would prove the requested exponent $2/3+\epsilon$.
+We have not proved \eqref{A:needed-twist}.
+\begin{proof}
+Changing the generator by $\pm\varepsilon_0^k$ changes the logarithm
+of the absolute embedding ratio by $2kL_0$, and so leaves
+$\psi_\ell$ unchanged. The character is multiplicative. On the
+positive-norm generator of $m_z$ it is exactly
+$e^{2\pi i\ell\theta}$. For the unique prime ideal above $2$,
+$|(1+\sqrt3)/(1-\sqrt3)|=\varepsilon_0$, so its character is
+$(-1)^\ell$. Away from $2$, the integers $3z-1$ and $3z+1$ are
+coprime. At $2$, where they can share powers, there is just one prime
+ideal, and its local coefficient is geometric. Combining these facts
+proves \eqref{A:twisted-shift}, including the ramified factor.
+Conjugation pairs inverse character values, so $a_\ell(m)$ is real.
+
+Apply the Erd\H{o}s--Tur\'an inequality in the form of
+\cite[equation (8.2)]{CarneiroVaaler2010} to the finite list of the
+$S(X)$ ideal angles. That equation bounds the translate of the sawtooth
+sum; the characteristic function of an interval minus its length is
+the difference of two translates of that sawtooth function, away from
+its endpoints. Thus the arc discrepancy is at most a fixed constant
+times $S(X)/H+\sum_{\ell\leq H}|T_\ell(X)|/\ell$, plus endpoint
+multiplicities. The upper endpoint is empty by the calculation in
+Statement A.4.1. At the lower endpoint, $t=0$ gives
+$s^2-2(3z)^2=-2$. Reduction in $\mathbb Z[\sqrt2]$ by its norm-one
+unit $3+2\sqrt2$ puts a positive generator in
+$[\sqrt2,(3+2\sqrt2)\sqrt2)$, where the equation of norm $-2$
+has the sole seed $(s,3z)=(0,1)$. Thus the total number with
+$z\leq X$ is $O(\log(2X))$; imposing divisibility of the second
+coordinate by $3$ can only decrease it.
+Statement A.3.1 gives $S(X)=cX+O(X^{2/3})$ and $S(X)\ll X$.
+Statement A.1.3 now proves \eqref{A:ET-reduction}.
+Under \eqref{A:needed-twist}, take $H=\lfloor X^{1/3}\rfloor$;
+the two sums cost $O_\epsilon(X^{2/3+\epsilon}\log X)$ and
+$O_\epsilon(X^{1/2+\epsilon}H^{1/2})$, respectively. Relabeling
+$\epsilon$ proves the asserted conditional implication.
+\end{proof}
+
+\paragraph{Uniformity audit and current obstruction.}
+A bound for each fixed $\ell$ with an unspecified constant depending on
+$\ell$ cannot be inserted in \eqref{A:ET-reduction} with $H$ growing
+with $X$. More quantitatively, a bound
+$T_\ell(X)\ll_\epsilon \ell^A X^{\beta+\epsilon}$, $A>0$, leads by this
+argument to exponent $(A+\beta)/(A+1)$, after balancing $X/H$ against
+$X^\beta H^A$. Thus even a fixed-mode exponent $2/3$ with polynomial
+loss in the mode does not establish the sharp-arc exponent $2/3$.
+Theorems 1.2 and 1.5 of Lekkas--Petridis integrate the entire source
+geodesic. Their Remark 6 changes the target geodesic, but does not
+supply these growing-mode estimates. Voskou's four orientation cases
+\cite{Voskou2024} are discrete sign cases, not intervals in the foot
+parameter. The fixed compact angular modes in
+\cite[Theorem 1.1]{BourgainKontorovichSarnak2010} likewise do not
+supply the required uniform hyperbolic-foot estimate.
+The direct domain method of Statement A.4.1 proves $7/8+\epsilon$.
+Statement A.4.4 supplies a uniform averaged substitute by Mellin
+inversion and proves the requested $2/3+\epsilon$ exponent. The
+stronger individual-mode bound \eqref{A:needed-twist} is not needed
+for that proof and is not asserted here.
+
+
+\paragraph{Statement A.4.3 (Proved uniform spectral coefficient estimate).}
+Let $M$ be a fixed compact hyperbolic surface, let $l_0,l_1$ be fixed
+closed geodesics of lengths $L_0,L_1$, and let $u_j$ be an orthonormal
+basis of scalar Laplace eigenfunctions with
+$\lambda_j=1/4+t_j^2$, $t_j\geq0$. Set $s_j=1/2+it_j$ and
+\[
+ P_{j,\ell}=L_0^{-1/2}\int_{l_0}u_j(u)e^{2\pi i\ell u/L_0}\,du,
+ \quad P_j'=L_1^{-1/2}\int_{l_1}u_j\,du,\quad
+ \kappa_\ell=2\pi\ell/L_0,
+\]
+\[
+ D_s(\kappa)=
+ \frac{\Gamma((s+i\kappa)/2)\Gamma((s-i\kappa)/2)}{\Gamma(s)},
+ \qquad
+ Q_{j,H}=\sum_{|\ell|\leq H}b_\ell
+             \frac{D_{s_j}(0)}{D_{s_j}(\kappa_\ell)}P_{j,\ell},
+\]
+where $|b_\ell|\leq B/(1+|\ell|)$ and $H\geq1$. Then, for $T\geq1$,
+\begin{equation}\label{A:uniform-arc-period}
+ \sum_{T\leq t_j<2T}|Q_{j,H}|^2
+       \ll B^2T\log^2(2H),\qquad
+ \sum_{T\leq t_j<2T}|P_j'Q_{j,H}|
+       \ll BT\log(2H).
+\end{equation}
+The constants depend on the surface and geodesics, but not on $T,H$
+or the displayed coefficients. Thus the angular sum itself can be
+controlled without a power of $H$ in this normalized spectral expression.
+The uniform inversion that turns this coefficient bound into a sharp-arc
+count is proved in Statement A.4.4 below.
+\begin{proof}
+We first record an elementary broad-band restriction estimate, uniformly
+in the real frequency $\kappa$:
+\begin{equation}\label{A:broad-band-period}
+ \sum_{t_j\leq2T}\left|\int_{l_0}u_j(u)e^{i\kappa u}\,du\right|^2
+       \ll T.
+\end{equation}
+Indeed, in finitely many Fermi charts along the parametrized geodesic,
+the one-dimensional fundamental theorem of calculus and Cauchy--Schwarz
+give, for $0<\delta\ll1$,
+\[
+ \|f|_{l_0}\|_2^2\ll
+ \delta^{-1}\|f\|_{L^2(M)}^2+
+ \delta\|\nabla f\|_{L^2(M)}^2.
+\]
+The finite number of charts accounts for any self-intersections.
+For a linear combination of eigenfunctions with $t_j\leq2T$,
+$\|\nabla f\|_2^2\leq(4T^2+1/4)\|f\|_2^2$.
+Take $\delta=T^{-1}$ (adjust a fixed constant for small $T$), and
+apply the adjoint restriction operator to $e^{i\kappa u}$, whose
+$L^2(l_0)$ norm is fixed. This proves \eqref{A:broad-band-period}.
+The same estimate applies to $P_j'$.
+We also use the elementary bound $\#\{t_j\leq2T\}\ll T^2$.
+One proof partitions a fixed finite collection of coordinate patches
+into $O(T^2)$ cells of diameter $c/T$ and uniformly bounded shape.
+If the spectral space had larger dimension, a nonzero member would
+have integral zero on every cell. The cell Poincar\'e inequalities would
+give $\|f\|_2^2\leq C(c/T)^2\|\nabla f\|_2^2$, contradicting the
+spectral bound when the fixed $c$ is sufficiently small.
+
+Reznikov's mean-value estimate
+\cite[equation (1.13), proved in Sections 2.3 and 3.1--3.2]{Reznikov2015}
+states that the normalized hyperbolic coefficients $a_{j,\ell}$ satisfy
+\begin{equation}\label{A:Reznikov-mean}
+ \sum_{|\ell|\leq N}|a_{j,\ell}|^2\ll\max(N,1+t_j),
+ \qquad P_{j,\ell}=a_{j,\ell}D_{s_j}(\kappa_\ell).
+\end{equation}
+A fixed scalar from the model functional in his equation (2.3) has
+been absorbed into $a_{j,\ell}$. Explicitly, put his representation
+parameter equal to $-2it_j$ and his diagonal-character parameter equal
+to $2i\kappa_\ell$. His gamma arguments
+$(1-\lambda_{\mathrm{Rep}}\pm s_{\mathrm{char}})/4$ then become
+$(s_j\pm i\kappa_\ell)/2$, and his denominator argument
+$(1-\lambda_{\mathrm{Rep}})/2$ is $s_j$. The scalar $2/\pi$
+is independent of both parameters. The hypotheses are precisely a fixed
+closed geodesic on a compact hyperbolic surface and an $L^2$-normalized
+principal-series eigenfunction. His argument includes both components
+of the diagonal group; retaining the component that gives scalar
+periods only decreases its nonnegative sum. The assertion is uniform
+in the eigenfunction as well as in $N$.
+
+Split the angular modes at $|\kappa_\ell|=T/2$.
+For $t_j\in[T,2T]$ and the lower modes, Stirling's formula in the
+fixed vertical strip $\operatorname{Re}(s_j/2)=1/4$ gives
+\[
+ \left|\frac{D_{s_j}(0)}{D_{s_j}(\kappa_\ell)}\right|\ll1.
+\]
+For bounded $T$ this follows from continuity and the absence of gamma
+zeros or poles; for large $T$ both $t_j\pm\kappa_\ell$ are comparable
+to $T$ and the exponential factors cancel exactly.
+Minkowski's inequality in the $j$ variable and
+\eqref{A:broad-band-period} bound the square root of the lower-mode
+sum by
+\[
+ \sum_{|\kappa_\ell|\leq T/2}|b_\ell|
+ \left(\sum_{T\leq t_j<2T}|P_{j,\ell}|^2\right)^{1/2}
+       \ll B\sqrt T\log(2H).
+\]
+
+For the higher modes divide the integers into dyadic blocks
+$N\leq|\ell|<2N$, with $N\gg T$ up to a fixed geodesic-length factor.
+On such a block \eqref{A:Reznikov-mean} and Cauchy--Schwarz give
+\[
+ \left|\sum_{N\leq|\ell|<2N}b_\ell a_{j,\ell}\right|
+ \leq\left(\sum|a_{j,\ell}|^2\right)^{1/2}
+       \left(\sum|b_\ell|^2\right)^{1/2}\ll B.
+\]
+Stirling's formula also gives $|D_{s_j}(0)|\ll T^{-1/2}$.
+Since the gamma factors cancel exactly in the definition of $Q$,
+the higher-mode contribution to each $Q_{j,H}$ is at most
+$BT^{-1/2}\log(2H)$. There are $O(T^2)$ eigenvalues in the band,
+so its squared sum is $O(B^2T\log^2(2H))$.
+Combining the two ranges proves the first estimate in
+\eqref{A:uniform-arc-period}; Cauchy--Schwarz with
+$\sum|P_j'|^2\ll T$ proves the second.
+\end{proof}
+
+The estimate applies after torsion removal to the fixed cover used in
+Statement A.3.1. The original angular frequencies are a fixed-index
+subsequence of the cover's frequencies, and the constants in
+\eqref{A:Reznikov-mean} change only by that fixed index. The next statement derives the corresponding uniform radial transform
+and proves its inversion estimates explicitly.
+
+\paragraph{Statement A.4.4 (Proved sharp-arc exponent).}
+For every $\epsilon>0$, the actual count in the question satisfies
+\begin{equation}\label{A:sharp-two-thirds}
+ R(X)=C_0X+O_\epsilon(X^{2/3+\epsilon}).
+\end{equation}
+The proof uses an angularly uniform Mellin transform. In particular, it
+does not deduce an arc estimate from a count over an entire geodesic.
+
+\begin{proof}
+We give the transform and all uniform estimates used to invert it.
+Put $A_z=(9z^2-1)^{1/2}$ and $\kappa_\ell=2\pi\ell/L_0$.
+In this proof periods are unnormalized; this changes the estimates of
+Statement A.4.3 only by fixed geodesic-length factors. Choose real
+orthonormal eigenfunctions $u_j$ on $\Gamma^+\backslash\mathbb H$ and put
+\[
+ p_{j,\ell}=\int_{l_0}u_j(u)e^{i\kappa_\ell u}\,du,
+ \qquad p_j'=\sum_{i=1}^2\int_{l_i}u_j\,du.
+\]
+Apart from the constant eigenfunction, write $s_j=1/2+it_j$, with
+$t_j>0$, using Statement A.2.5. The constants in the following estimates
+may depend on this fixed orbifold and its three geodesics. The spectral
+estimates on its torsion-free cover apply to these eigenfunctions:
+their lifts are normalized by the square root of the cover degree,
+and a period on a lifted geodesic is the original period multiplied by
+its fixed covering degree. The angular frequencies form the corresponding
+fixed-index subsequence. Thus no spectral gap is assumed on the cover.
+
+\emph{1. An exact Mellin identity.}
+For $\operatorname{Re}s>1$ form the absolutely convergent series
+\[
+ E_s(p)=\sum_{i=1}^2\sum_{H_i\backslash\Gamma^+}
+       \cosh\bigl(d(p,\gamma^{-1}l_i)\bigr)^{-s}.
+\]
+Absolute local uniform convergence follows by placing fixed disjoint
+balls around coset representatives in the hyperbolic cylinder:
+the number at distance at most $r$ is $O(e^r)$, since a cylinder
+of fixed neck length has area $O(e^r)$ in that range. Its derivatives
+also converge locally after increasing $\operatorname{Re}s$; the
+identities initially obtained there continue to $\operatorname{Re}s>1$.
+Set
+\[
+ K_s(\kappa)=\int_{\mathbb R}(\cosh u)^{-s}e^{i\kappa u}\,du
+ =\frac{2^{s-1}\Gamma((s+i\kappa)/2)\Gamma((s-i\kappa)/2)}{\Gamma(s)},
+\]
+\[
+ M_\ell(s)=K_s(\kappa_\ell)^{-1}
+                 \int_{l_0}E_s(u)e^{i\kappa_\ell u}\,du.
+\]
+The beta integral proves the displayed formula for $K_s$.
+For a disjoint target axis, the signed distance of a point on $l_0$
+from that axis has absolute hyperbolic sine
+$A\cosh(u-u_0)$, where $A=\sinh d(l_0,l)$ and $u_0$ is the
+perpendicular foot. Consequently its contribution to $M_\ell$ is
+\[
+ e^{i\kappa_\ell u_0}A^{-s}F_{s,\kappa_\ell}(A),\quad
+ F_{s,\kappa}(A)=
+ {}_2F_1\left(\frac{s+i\kappa}{2},\frac{s-i\kappa}{2};
+                    \frac{s+1}{2};-A^{-2}\right).
+\]
+To verify this identity without an unquoted transform formula, expand
+$(1+A^{-2}\operatorname{sech}^2u)^{-s/2}$ and integrate termwise.
+The coefficient is
+\[
+ \frac{(-1)^k(s/2)_k}{k!A^{2k}}
+      \frac{K_{s+2k}(\kappa)}{K_s(\kappa)}
+ =\frac{(-1)^k((s+i\kappa)/2)_k((s-i\kappa)/2)_k}
+          {k!((s+1)/2)_k A^{2k}},
+\]
+by the gamma duplication formula. Here $A=A_z\geq\sqrt8$, so the
+series and the original integrals converge absolutely.
+
+There are four copies of each positive-height ideal angle: changing
+the normal's sign and changing the sign of its $z$ coordinate leave
+the foot coordinate unchanged modulo $L_0$. These are the four
+regular cells already counted in Statement A.2.3. The two exceptional
+double cosets with $z=0$ meet $l_0$ orthogonally at $u=L_0/2$.
+Indeed $r_2=(1,1,0)$ is orthogonal to $e_z$ and its intersection
+point has $\tanh u=1/\sqrt3$. Their individual contributions are
+$e^{i\kappa_\ell L_0/2}=(-1)^\ell$. Thus exactly
+\begin{equation}\label{A:Mellin-geometry}
+ M_\ell(s)=2(-1)^\ell+4D_\ell(s)+4H_\ell(s),
+\end{equation}
+where
+\[
+ D_\ell(s)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+          e^{2\pi i\ell\theta(\mathfrak a)}A_z^{-s},
+\]
+\[
+ H_\ell(s)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}A_z^{-s}
+                    (F_{s,\kappa_\ell}(A_z)-1).
+\]
+All sums in \eqref{A:Mellin-geometry} are absolutely convergent
+in their initial half-plane. The half-turns reversing an axis do not
+belong to its cyclic subgroup $H_i$; they therefore give the two
+oriented normal cosets, as required for this factor of four.
+
+Unfolding the scalar spectral coefficient of $E_s$ along $l_i$ gives
+\[
+ \begin{aligned}
+ &\left(\int_{l_i}u_j\right)
+ \int_{\mathbb R}(1+x^2)^{-s/2}
+ {}_2F_1\left(\frac{s_j}{2},\frac{1-s_j}{2};\frac12;-x^2\right)dx
+ \\
+ &\qquad=\left(\int_{l_i}u_j\right)
+ \frac{\sqrt\pi\Gamma((s+s_j-1)/2)\Gamma((s-s_j)/2)}{\Gamma(s/2)^2}.
+ \end{aligned}
+\]
+Here $x=\sinh r$ in Fermi coordinates. Integrating the eigenfunction
+along the full target geodesic solves
+$\xi''+\tanh r\,\xi'+\lambda_j\xi=0$; its odd initial-data solution
+integrates to zero over $r\in\mathbb R$, and its even solution is
+the displayed hypergeometric function. For the beta evaluation put
+$y=x^2/(1+x^2)$, apply the power-series identity
+\[
+ {}_2F_1(s_j/2,(1-s_j)/2;1/2;-x^2)
+ =(1+x^2)^{-s_j/2}{}_2F_1(s_j/2,s_j/2;1/2;y),
+\]
+and integrate the series against
+$y^{-1/2}(1-y)^{(s+s_j-3)/2}$. The resulting Gauss beta sum
+is the stated gamma quotient. All beta integrals are absolutely
+convergent for $\operatorname{Re}s>1$.
+It follows that, for $\ell\ne0$,
+\begin{equation}\label{A:Mellin-spectral}
+ M_\ell(s)=\sum_{j\geq1}p_j'p_{j,\ell}G(s,t_j,\kappa_\ell),
+\end{equation}
+\[
+ G(s,t,\kappa)=
+ \frac{\Gamma((s+1)/2)\Gamma((s+s_j-1)/2)\Gamma((s-s_j)/2)}
+ {\Gamma(s/2)\Gamma((s+i\kappa)/2)\Gamma((s-i\kappa)/2)}.
+\]
+The constant eigenfunction vanishes because its nonzero Fourier
+period on $l_0$ is zero. For each fixed $\ell$ the series in
+\eqref{A:Mellin-spectral} converges normally on compact subsets away
+from its poles, since its terms decay exponentially as
+$t_j\to\infty$. It therefore supplies the needed meromorphic
+continuation. In $\operatorname{Re}s>0$ its only possible poles are
+$s=s_j$ and $s=1-s_j$.
+
+\emph{2. A uniform bound for the geometric correction.}
+Fix $0<\sigma<1/2$, write $s=\sigma+i\tau$, and put
+$U=1+|\tau|$. With $\delta=\operatorname{arsinh}(1/A)$ one has
+\begin{equation}\label{A:F-spherical-integral}
+ F_{s,\kappa}(A)=
+ \frac{\Gamma((s+1)/2)}{\sqrt\pi\Gamma(s/2)}
+ \int_{-1}^1
+ \bigl(\cosh(2\delta)+x\sinh(2\delta)\bigr)^{-(s+i\kappa)/2}
+ (1-x^2)^{s/2-1}\,dx.
+\end{equation}
+For completeness, this identity follows by differentiating under
+the integral and integrating once by parts in $x$: both sides,
+as analytic even functions of $\delta$ near zero, solve
+\[
+ f''+2s\coth(2\delta)f'+(s^2+\kappa^2)f=0,
+ \qquad f(0)=1,\quad f'(0)=0.
+\]
+Uniqueness follows coefficient by coefficient, since
+$\operatorname{Re}s>0$; continuation along positive real $\delta$
+then proves \eqref{A:F-spherical-integral}. Equivalently, it is
+the quadratic hypergeometric transformation with parameters
+$a+b=s$, $c=(s+1)/2$.
+The base in the integral is positive. Its complex power has modulus
+equal to the power $-\sigma/2$, independently of both $\tau$ and
+$\kappa$; the weight has modulus $(1-x^2)^{\sigma/2-1}$.
+Stirling's formula for the prefactor gives
+\[
+ |F_{s,\kappa}(A)|\ll_\sigma U^{1/2}.
+\]
+At $\delta=0$ the first derivative of the integrand is an odd
+multiple of $x$, whose integral is zero. Its second derivative is
+bounded by a constant times $(1+|s|+|\kappa|)^2$ times the same
+integrable absolute weight, uniformly for
+$0\leq\delta\leq\operatorname{arsinh}(1/\sqrt8)$.
+Taylor's formula with integral remainder therefore gives
+\begin{equation}\label{A:F-uniform}
+ |F_{s,\kappa}(A)-1|
+ \ll_\sigma U^{1/2}
+       \min\{1,(U+|\kappa|)^2/A^2\}.
+\end{equation}
+Statement A.3.1 implies
+$\#\{(z,\mathfrak a):A_z\leq V\}\ll V$.
+Partial summation in \eqref{A:F-uniform} now proves normal
+absolute convergence of $H_\ell(s)$ for $\operatorname{Re}s>0$
+and, on our chosen line,
+\begin{equation}\label{A:H-uniform}
+ |H_\ell(\sigma+i\tau)|
+       \ll_\sigma U^{1/2}(U+|\kappa_\ell|)^{1-\sigma}.
+\end{equation}
+The same convergence argument continues it to any closed strip
+in $\operatorname{Re}s>-1$ avoiding the possible hypergeometric
+parameter poles, but only the positive strip is needed here.
+
+\emph{3. The remaining Mellin contour, uniformly in the angular cutoff.}
+Let $T,H\geq2$. Let $w=w_T$ be a smooth function, equal to one
+near zero, supported in $[0,2]$, with its transition confined to
+$[1-1/T,1+1/T]$, $0\leq w\leq1$, and
+$|w^{(k)}|\ll_kT^k$. Its Mellin transform satisfies, on every
+fixed positive vertical strip and for every $N$,
+\begin{equation}\label{A:w-Mellin-bound}
+ |\widehat w(\sigma+i\tau)|
+ \ll_{\sigma,N}U^{-1}(1+U/T)^{-N}.
+\end{equation}
+This follows by one integration by parts, whose derivative has
+bounded $L^1$ norm, and repeated further integrations by parts in
+the logarithmic variable. Let $b_\ell$, $1\leq\ell\leq H$, be
+arbitrary complex numbers with $|b_\ell|\leq1/\ell$.
+We prove
+\begin{equation}\label{A:contour-uniform}
+ \int_{\mathbb R}|\widehat w(\sigma+i\tau)|
+ \left|\sum_{\ell=1}^H b_\ell M_\ell(\sigma+i\tau)\right|d\tau
+       \ll_\sigma (T+H)\log(2H).
+\end{equation}
+
+Here are details of the gamma estimate and its summation, to make
+the frequency uniformity explicit. Write
+$p_{j,\ell}=a_{j,\ell}D_{s_j}(\kappa_\ell)$ as in
+\eqref{A:Reznikov-mean}. Put
+$a=3/4-\sigma/2$ and $b=1/2-\sigma/2$, so $1/2<a<3/4$.
+For $\tau,t,\kappa\geq0$ Stirling's formula gives
+\begin{align}\label{A:gamma-full-bound}
+ |G(\sigma+i\tau,t,\kappa)D_{1/2+it}(\kappa)|
+ &\ll_\sigma U^{1/2}
+  \{(1+\tau+t)(1+|\tau-t|)\}^{-a}\\
+ &\quad\cdot\{(1+\tau+\kappa)(1+|\tau-\kappa|)\}^{b}
+ \\ &\quad\cdot\{(1+t+\kappa)(1+|t-\kappa|)\}^{-1/4}
+ e^{-c\operatorname{dist}(t,[\min(\tau,\kappa),\max(\tau,\kappa)])}.
+ \nonumber
+\end{align}
+One may take $c=\pi/2$. The exponential follows exactly from
+\[
+ t-\max(t,\kappa)-\max(t,\tau)+\max(\tau,\kappa)
+ =-\operatorname{dist}(t,[\min(\tau,\kappa),\max(\tau,\kappa)]).
+\]
+The same bound holds with $|\tau|$, $|\kappa|$ for arbitrary signs.
+The fixed real parts of the numerator gamma functions are
+$\sigma/2-1/4$, which are negative but not nonpositive integers;
+thus the estimate is bounded at $\tau=\pm t$.
+
+In a dyadic spectral band $J\leq1+t_j<2J$, the elementary
+estimates and Reznikov's bound used in Statement A.4.3 give
+\begin{equation}\label{A:three-basic-sums}
+ \sum_j|p_j'|^2\ll J,\quad
+ \sum_j|p_j'|\ll J^{3/2},\quad
+ \sum_j|p_j'p_{j,\ell}|\ll J,
+ \quad\sum_{|\ell|\leq K}|a_{j,\ell}|^2\ll\max(K,J).
+\end{equation}
+The middle bound uses the elementary $O(J^2)$ eigenvalue count.
+Changing between $\ell$ and $\kappa_\ell$ changes dyadic bounds
+only by fixed constants.
+
+First suppose $\kappa_\ell\leq t_j/2$. Then
+$|D_{s_j}(\kappa_\ell)|\asymp J^{-1/2}$.
+For $\tau\geq t_j/2$, \eqref{A:gamma-full-bound} implies
+\[
+ |G(\sigma+i\tau,t_j,\kappa_\ell)|
+ \ll_\sigma
+ \left(\frac{1+\tau}{1+|\tau-t_j|}\right)^a
+ e^{-c(t_j-\tau)_+}.
+\]
+For $\tau<t_j/2$ there is instead exponential decay in $J$,
+with an immaterial polynomial factor. Since $a<1$, integration
+over a dyadic $\tau$ block of size $U\gg J$, with the factor
+$U^{-1}(1+U/T)^{-N}$, is
+$O((1+U/T)^{-N})$; the same assertion holds for $U\asymp J$
+because the integrable singular factor is bounded by
+$(J/(1+|\tau-t_j|))^a$.
+Summing \eqref{A:three-basic-sums} over $\ell$ costs $\log(2H)$.
+Summing over $U\gg J$ and then dyadic $J$ costs $O(T)$:
+for $J\leq T$ the contribution is
+$O(J\log(2T/J))$, whose dyadic sum is $O(T)$, and the remaining
+bands decay faster than any power of $J/T$.
+
+Second suppose $\kappa_\ell\geq2t_j$, in an angular block
+$K\leq\kappa_\ell<2K$ with $K\gg J$.
+Up to $\tau\leq\max(2t_j,\kappa_\ell/2)$,
+\eqref{A:gamma-full-bound} is bounded by
+\[
+ K^{1/2-\sigma}U^{1/2}J^{-a}(1+|\tau-t_j|)^{-a}
+ e^{-c(\tau-t_j)_+}.
+\]
+In the remaining range, the exponential factor is at most
+$e^{-c'K}$. For $\tau\gg K$ the polynomial factor is bounded
+independently of $\tau$ (the total $\tau$ power in
+\eqref{A:gamma-full-bound} is zero). For $\tau\asymp K$ it is
+at most a fixed power of $K$. After the coefficient bounds below,
+the sum of all these tails is therefore $O(\log(2T))$:
+the integral of $U^{-1}(1+U/T)^{-N}$ above a fixed positive
+lower limit is $O(\log(2T))$, and the exponential in $K$
+absorbs the polynomial factors. This accounts also for
+$\tau\geq\kappa_\ell$, where the exponential is
+$e^{-c(\kappa_\ell-t_j)}$, rather than
+$e^{-c(\tau-t_j)}$.
+Cauchy--Schwarz in $\ell$, using
+$\sum|a_{j,\ell}|^2\ll K$ and
+$\sum_{\ell\asymp K}|b_\ell|^2\ll K^{-1}$, introduces no
+additional factor. The elementary beta-integral bound
+\[
+ \int_0^\infty U^{-1/2}(1+|\tau-t_j|)^{-a}
+ e^{-c(\tau-t_j)_+}(1+U/T)^{-N}\,d\tau
+ \ll_\sigma J^{-a}\min(J,T)^{1/2}
+\]
+therefore bounds the spectral band by
+\[
+ K^{1/2-\sigma}J^{3/2-2a}\min(J,T)^{1/2}
+ =K^{1/2-\sigma}J^\sigma\min(J,T)^{1/2}.
+\]
+Its dyadic sum over $J\ll K$ is $O_\sigma(K)$ for $K\leq T$
+and $O_\sigma(\sqrt{KT})$ for $K>T$. Summing $K\ll H$ is
+$O_\sigma(T+H)$.
+
+Finally suppose $t_j/2<\kappa_\ell<2t_j$, so $J\ll H$.
+Cauchy--Schwarz in $\ell$ gives
+\[
+ \left|\sum b_\ell a_{j,\ell}
+       G(\sigma+i\tau,t_j,\kappa_\ell)D_{s_j}(\kappa_\ell)\right|
+ \ll J^{-1/2}
+       \left(\sum_{\kappa_\ell\asymp J}|GD|^2\right)^{1/2}.
+\]
+Squaring \eqref{A:gamma-full-bound} and using
+$\sum_{\kappa_\ell\asymp J}(1+|t_j-\kappa_\ell|)^{-1/2}
+\ll J^{1/2}$ gives, in the three respective $\tau$ ranges,
+\[
+ \sum_{\kappa_\ell\asymp J}|GD|^2\ll_\sigma
+ \begin{cases}
+ U/J,&\tau\leq t_j/2,\\
+ J^{2b+1/2}(1+|\tau-t_j|)^{-2a},&t_j/2<\tau<2t_j,\\
+ 1,&\tau\geq2t_j.
+ \end{cases}
+\]
+After multiplication by $|\widehat w|$, integration in $\tau$,
+and summation of $|p_j'|$ over the spectral band, these give
+respectively
+\[
+ O_\sigma(\sqrt{J\min(J,T)}),\qquad
+ O_\sigma(J(1+J/T)^{-N}),\qquad
+ O_\sigma\bigl(J\log(2+T/J)\min(1,(T/J)^N)\bigr).
+\]
+For the middle range the exponent is exactly
+$b-1/4-a=-1/2$ before the final $J^{3/2}$ sum.
+Their dyadic sum over $J\ll H$ is $O_\sigma(T+H)$.
+These three cases prove \eqref{A:contour-uniform}. The finitely
+many $0<t_j<1$ are included in the band $J=1$; the strict spectral
+gap ensures all constants there are finite.
+
+\emph{4. Shifting the contour and bounding the residues.}
+For $Y\geq2$ write
+\[
+ W_\ell(Y)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}w(A_z/Y).
+\]
+Mellin inversion of \eqref{A:Mellin-geometry} on a line
+$\operatorname{Re}s>1$ gives $4W_\ell$ as the inverse Mellin
+transform of $M_\ell-2(-1)^\ell-4H_\ell$.
+For $H_\ell$ shift to $\operatorname{Re}s=\sigma$ without
+crossing a pole. Equations \eqref{A:H-uniform} and
+\eqref{A:w-Mellin-bound} show, uniformly in the coefficients,
+\begin{equation}\label{A:correction-inversion}
+ \left|\sum_{\ell=1}^Hb_\ell\frac1{2\pi i}
+ \int_{(\sigma)}\widehat w(s)Y^sH_\ell(s)\,ds\right|
+ \ll_\sigma Y^\sigma
+     T^{1/2}(T+H)^{1-\sigma}\log(2H).
+\end{equation}
+Indeed the remaining integral is bounded by
+$\int_0^\infty U^{-1/2}(U+H)^{1-\sigma}(1+U/T)^{-N}\,d\tau$.
+The exceptional constant $2(-1)^\ell$ contributes
+$2(-1)^\ell w(1/Y)$ and hence $O(\log(2H))$ in the angular sum.
+
+Shift the $M_\ell$ contour to the same line. Its residue at $s=s_j$ is
+\[
+ p_j'p_{j,\ell}\,r_j\frac{D_{s_j}(0)}{D_{s_j}(\kappa_\ell)},\qquad
+ r_j=\frac{2\Gamma((s_j+1)/2)\Gamma(s_j-1/2)}{\Gamma(s_j/2)^3},
+ \qquad |r_j|\ll(1+t_j)^{1/2}.
+\]
+The residue at $1-s_j$ has the conjugate gamma factors and obeys
+the same estimate. Statement A.4.3 and
+\eqref{A:w-Mellin-bound} therefore bound all residues, after summing
+the angular coefficients, by
+\begin{equation}\label{A:residues-inversion}
+ \ll Y^{1/2}\log(2H)
+      \sum_{J\text{ dyadic}}J^{1/2}(1+J/T)^{-N}
+ \ll Y^{1/2}T^{1/2}\log(2H).
+\end{equation}
+The lower-half-plane residues use the same proof with conjugated
+gamma ratios. No positivity or common phase of the periods is used.
+The remaining contour costs
+$O_\sigma(Y^\sigma(T+H)\log(2H))$ by
+\eqref{A:contour-uniform}.
+
+For clarity, all contour shifts can first be made at finite heights.
+The eigenvalue bound $N(V)\ll V^2$ permits heights tending to infinity
+whose distance from every $\pm t_j$ is at least a fixed multiple of
+$V^{-3}$: the excluded intervals in $[V,V+1]$ have total length
+$O(V^{-1})$. On these horizontal segments the gamma formula and
+the spectral coefficient bounds give polynomial growth for each
+fixed $H$. Taking $N$ arbitrarily large in
+\eqref{A:w-Mellin-bound} makes their integrals tend to zero.
+Absolute convergence of the residue series follows from
+\eqref{A:residues-inversion}. The estimates on the resulting vertical
+line are uniform in $H,T$, so this limiting argument makes no
+uncontrolled exchange of a growing angular cutoff with a contour limit.
+
+Combining these estimates proves the uniform smoothed inequality
+\begin{equation}\label{A:smoothed-angular-sum}
+ \left|\sum_{\ell=1}^H b_\ell W_\ell(Y)\right|
+ \ll_\sigma\log(2H)\left[
+ Y^{1/2}T^{1/2}+Y^\sigma(T+H)
+ +Y^\sigma T^{1/2}(T+H)^{1-\sigma}+1\right].
+\end{equation}
+Because the coefficients $b_\ell$ are arbitrary within
+$|b_\ell|\leq1/\ell$, choose their phases to align $W_\ell(Y)$.
+Then the left side is exactly
+$\sum_{\ell\leq H}|W_\ell(Y)|/\ell$.
+This averaged angular estimate is sufficient; it avoids asserting
+the stronger, individual-mode estimate \eqref{A:needed-twist}.
+
+\emph{5. Returning to both sharp boundaries.}
+The Erd\H{o}s--Tur\'an inequality used in Statement A.4.2 applies
+also to a finite list with nonnegative real weights. For rational
+weights this follows by replication after clearing denominators;
+arbitrary weights follow by approximation and continuity. Hence the
+weighted arc discrepancy is at most
+\[
+ O\left(\frac{W_0(Y)}H+
+       \sum_{\ell\leq H}\frac{|W_\ell(Y)|}{\ell}+\log(2Y)\right).
+\]
+The endpoint term is $O(\log(2Y))$ by the Pell calculation already
+proved; the other arc endpoint is empty.
+Since Statement A.3.1 gives
+$\#\{(z,\mathfrak a):A_z\leq V\}=(c/3)V+O(V^{2/3})$,
+partial summation gives
+\[
+ W_0(Y)=\frac c3Y\widehat w(1)+O(Y^{2/3}),
+ \qquad c=\frac{9L_0^2}{2\pi^2},
+\]
+uniformly for the monotone smooth cutoffs under discussion, because
+their total variation is one.
+
+Choose two such cutoffs $w^-,w^+$ with
+$0\leq w^-\leq\mathbf1_{[0,1]}\leq w^+\leq1$,
+transition intervals respectively $[1-1/T,1]$ and $[1,1+1/T]$.
+They bracket the sharp radial count with nonnegative weights and
+satisfy $\widehat w^\pm(1)=1+O(1/T)$.
+Put $T=H=\lfloor Y^{1/3}\rfloor$ in
+\eqref{A:smoothed-angular-sum}. The three nonconstant error terms
+are respectively
+\[
+ O(Y^{2/3}\log Y),\quad
+ O_\sigma(Y^{1/3+\sigma}\log Y),\quad
+ O_\sigma(Y^{1/2+2\sigma/3}\log Y).
+\]
+The angular and radial main-term bracketing errors are
+$O(Y/H+Y/T)=O(Y^{2/3})$.
+Take any fixed sufficiently small $\sigma>0$, and absorb logarithms
+into $Y^\epsilon$. Finally put $Y=(9X^2-1)^{1/2}$.
+The ideal-arc main term is $(\lambda_0c/3)Y=C_0X+O(X^{-1})$.
+Statement A.1.3 changes this by only $O(\log(2X))$, proving
+\eqref{A:sharp-two-thirds}.
+\end{proof}
+
+
+\paragraph{Statement A.4.5 (Proved endpoint-strip rigidity).}
+Put $b=b_0$, $A=A_z=\sqrt{9z^2-1}$ and
+$\delta=\operatorname{arsinh}(1/A)$. For an integral solution
+$s^2-3t^2=2A^2$, $s>0$, write
+$s=\sqrt2A\cosh u$, $t=\sqrt{2/3}A\sinh u$.
+After choosing the lift of $u$ nearest the indicated endpoint,
+\[
+ |u|\leq\delta\ \Longrightarrow\ t=0,
+ \qquad |u-b|\leq\delta\ \Longrightarrow\
+ \bigl(4s-17z=0\text{ or }(s,t,z)=(4,0,1)\bigr).
+\]
+Consequently only $O(\log(2X))$ reduced ideals with $z\leq X$
+can lie within these two endpoint strips. These are exactly the
+possible endpoint-crossing terms in the spherical correction of
+Statement A.4.4; this assertion concerns the geometric support of
+that correction, not its complete amplitude.
+\begin{proof}
+The first implication follows from
+$|t|\leq\sqrt{2/3}A\sinh\delta=\sqrt{2/3}<1$.
+For the second use
+\[
+ \cosh b=\frac{17}{12\sqrt2},\qquad
+ \sinh b=\frac1{12\sqrt2},\qquad
+ \cosh\delta=\frac{3z}{A}.
+\]
+It follows that
+\[
+ \sqrt2A\cosh(b\pm\delta)=\frac{17z}{4}\pm\frac1{12}.
+\]
+Since $b>0$ and $\cosh$ is increasing on $[0,\infty)$, this
+bounds $s$ when $\delta<b$, since the entire strip is positive.
+In the remaining case $\delta\geq b$, we have $A\leq
+1/\sinh b=12\sqrt2$, hence $z\leq5$. Directly for these five
+heights, the only integral solutions in the second strip are
+$(4,0,1)$ and $(17,1,4)$; equivalently one can note that the negative part lies
+in the first strip and has $t=0$, and test $s^2=18z^2-2$ for
+$z=1,2,3,4,5$. The only $t=0$ point in this finite range is $(4,0,1)$.
+Outside this one stated exception, $|4s-17z|\leq1/3$, and integrality forces
+$4s=17z$. The latter equation gives $z=4a$, $s=17a$ and
+$a^2-3t^2=-2$, precisely the $n=0$ Pell family already counted.
+The first equation gives $s^2-18z^2=-2$, another Pell equation;
+its positive solutions form finitely many unit orbits, hence have
+$O(\log(2X))$ members up to height $X$. Alternatively, ordinary
+reduction by the fixed unit $17+12\sqrt2$ proves this bound directly.
+
+Finally, in \eqref{A:F-spherical-integral} the multiplier of
+$e^{i\kappa u}$ is an integral of
+$e^{-i\kappa\log B(x)/2}$, with
+$B(x)=\cosh(2\delta)+x\sinh(2\delta)$ and $-1\leq x\leq1$.
+Since $e^{-2\delta}\leq B(x)\leq e^{2\delta}$, it only shifts
+$u$ by a number in $[-\delta,\delta]$. An interval indicator
+can therefore change only in the strips just considered. There
+is also the scalar factor $B(x)^{-s/2}$: away from the strips
+it gives $F_{s,0}(A)$, rather than $1$. No disappearance of that
+amplitude correction is claimed.
+\end{proof}
+
+\paragraph{Statement A.4.6 (Proved existence of the sharp spectral arc functional).}
+For each fixed nonconstant eigenfunction $u_j$, the limit
+\[
+ Q_{j,I}=\lim_{H\to\infty}
+ \sum_{|\ell|\leq H}\widehat{\mathbf1_I}(\ell)
+ \frac{D_{s_j}(0)}{D_{s_j}(\kappa_\ell)}p_{j,\ell}
+\]
+exists. Here $I=[0,b_0/L_0]$, the Fourier coefficient is with
+respect to $\theta=u/L_0$, and the periods are unnormalized as
+in Statement A.4.4. The limit is a well-defined interval value
+of a distribution whose local primitive is H\"older continuous
+with exponent $1/2$. This proves existence, not nonvanishing,
+of the actual arc coefficient.
+\begin{proof}
+Conjugate the lift of the source axis to $\{ie^u:u\in\mathbb R\}$
+in the upper half-plane. The Poisson--Helgason boundary
+representation writes the lifted eigenfunction as
+\[
+ u_j(z)=\int_{\mathbb R}
+       \left(\frac{\operatorname{Im}z}{|z-x|^2}\right)^{s_j}
+       T_j(dx).
+\]
+This is a distributional integral, with the usual additional
+chart at infinity. The precise theorem used is the boundary-value
+representation in Anantharaman--Zelditch
+\cite[Theorem 3.2]{AnantharamanZelditch2012}, together with their
+Theorem 7.1 (Otal's boundary regularity theorem): a bounded
+hyperbolic Laplace eigenfunction with bounded gradient and
+parameter $s$, $\operatorname{Re}s\geq0$, has boundary values
+which are the distributional derivative of a
+$\operatorname{Re}s$-H\"older function. Our eigenfunction and
+its gradient are bounded because the quotient is compact;
+Statement A.2.5 gives $\operatorname{Re}s_j=1/2$. The source is
+written for compact torsion-free quotients, so apply it to the
+fixed cover of Statement A.3.1. The lifted eigenfunction is
+unchanged as a function on the universal cover.
+
+For $x=\pm e^v$, define the sum of two boundary distributions
+\[
+ \beta_j(dv)=(2e^v)^{-s_j}
+       \bigl(T_j(d(e^v))+T_j(d(-e^v))\bigr),
+\]
+where $T_j(d(-e^v))$ denotes pushforward under
+$x\mapsto\log|x|$ on the negative half-line, without an
+orientation sign. Smooth changes of variable and multiplication
+by a smooth function preserve the property of being the
+derivative of a locally $1/2$-H\"older function. To see the
+multiplication assertion explicitly, if $T=F'$ then
+$aT=(aF)'-a'F$, and the second term has a continuously
+differentiable primitive. The same formula after a smooth
+coordinate change proves the other assertion.
+
+The dilation $x\mapsto e^{L_0}x$ belongs to the source
+stabilizer. Uniqueness of the Poisson boundary representation
+implies $T_j(e^{L_0}dx)=e^{L_0s_j}T_j(dx)$, so $\beta_j$ is
+$L_0$-periodic. Since
+\[
+ \left(\frac{e^u}{e^{2v}+e^{2u}}\right)^{s_j}
+     =(2e^v)^{-s_j}\cosh(u-v)^{-s_j},
+\]
+its convolution with $\cosh(u)^{-s_j}$ is the restriction
+$u_j(ie^u)$. The convolution is legitimate for the periodic
+distribution because this kernel and each of its derivatives
+decay exponentially. Taking its Fourier coefficients gives
+\[
+ p_{j,\ell}=K_{s_j}(\kappa_\ell)\,\beta_{j,\ell},
+ \qquad K_s(\kappa)=2^{s-1}D_s(\kappa),\qquad
+ \beta_{j,\ell}=\int_0^{L_0}e^{i\kappa_\ell v}\beta_j(dv).
+\]
+Therefore the displayed partial sum defining $Q_{j,I}$ equals
+$K_{s_j}(0)$ times the pairing of $\beta_j$ with the symmetric
+Fourier partial sum of $\mathbf1_{[0,b_0]}$.
+
+Let $F_j$ be a continuous local primitive of $\beta_j$;
+subtracting its affine mean gives a periodic $1/2$-H\"older
+function. Its Fourier partial sums converge uniformly. For
+completeness, convolving a H\"older function with the Fej\'er
+kernel gives uniform error $O_j(H^{-1/2})$ by splitting the
+kernel integral at $1/H$; composing the approximation with the
+Dirichlet projection of degree $H$ and using its elementary
+$L^1$ bound $O(\log(2H))$ gives an error
+$O_j(H^{-1/2}\log(2H))$ for the ordinary partial sum (use a
+Fej\'er polynomial of degree at most $H$). Integration by parts
+then identifies the limit with
+\[
+ Q_{j,I}=K_{s_j}(0)\bigl(F_j(b_0)-F_j(0)\bigr).
+\]
+This value is independent of the primitive's additive constant,
+and the convergence error is $O_j(H^{-1/2}\log(2H))$.
+The implied constant here depends on the fixed eigenfunction;
+no exchange with an unbounded spectral sum follows from this
+fixed-eigenfunction assertion alone.
+\end{proof}
+
+\paragraph{Statement A.4.7 (Proved: exact smooth model for this particular sharp arc).}
+This statement concerns the actual arc, and uses its arithmetic endpoints.
+Put
+\[
+ a_*=17,\qquad B_*=12\sqrt2,\qquad
+ R_*=\operatorname{arcosh}(17)=2\operatorname{arcosh}(3),
+ \qquad b=\log\frac3{2\sqrt2}.
+\]
+Thus $a_*^2-B_*^2=1$ and $\coth R_*=\cosh b$.
+For $\Re s>0$, define
+\[
+ W_s(u)=(a_*+B_*\cosh u)^{-s},\qquad
+ H_s(\kappa)=\int_{\mathbb R}W_s(u)e^{i\kappa u}\,du,
+ \qquad m_s(\kappa)=H_s(\kappa)/K_{s,\kappa}.
+\]
+Choose a real eigenbasis also diagonalizing the reflection involution.
+Every mode that contributes to $p'_j$ is reflection-even. For those modes,
+\begin{align}\label{A:U-smooth-boundary}
+ \beta_j([0,b])
+ &=\frac12\int_{\mathbb R}W_{s_j}(u)\,\beta_j(du),\\
+ Q_{j,I}
+ &=\frac{K_{s_j,0}}{2L_0}
+       \sum_{\ell\in\mathbb Z}p_{j,\ell}\,
+                    m_{s_j}(\kappa_\ell).
+ \label{A:U-smooth-Q}
+\end{align}
+The first integral is the distributional pairing with a smooth,
+exponentially decreasing function; the second series converges absolutely.
+In particular no truncation at the sharp endpoints occurs in
+\eqref{A:U-smooth-Q}.
+
+The multiplier has the exact formula
+\begin{align}\label{A:U-Legendre-multiplier}
+ H_s(\kappa)
+ &=\sqrt{\frac{2\pi}{B_*}}\,
+   \frac{\Gamma(s+i\kappa)\Gamma(s-i\kappa)}{\Gamma(s)}
+   P_{-1/2+i\kappa}^{\,1/2-s}(a_*/B_*),\\
+ m_s(\kappa)
+ &=\frac{2^{s-1/2}}{\sqrt{\pi B_*}}\,
+   \Gamma\!\left(\frac{s+1+i\kappa}{2}\right)
+   \Gamma\!\left(\frac{s+1-i\kappa}{2}\right)
+   P_{-1/2+i\kappa}^{\,1/2-s}(a_*/B_*).
+ \nonumber
+\end{align}
+For $s=1/2+it$, $t\geq0$, and $|\kappa|\geq t$,
+\begin{equation}\label{A:U-forbidden-exponential}
+ |m_s(\kappa)|\ll
+ (1+t+|\kappa|)^{1/2}
+       e^{-\pi(|\kappa|-t)/4}.
+\end{equation}
+
+For each fixed $\delta>0$ there is also a uniform stationary-phase
+description on $|\rho|=|\kappa/t|\leq1-\delta$ as $t\to\infty$.
+Set
+\[
+ q(\rho)=\sqrt{B_*^2+\rho^2},\qquad
+ \xi(\rho)=
+ \log\frac{q(\rho)+a_*\rho}{B_*\sqrt{1-\rho^2}},
+\]
+and
+\[
+ S(\rho)=\log(a_*+q(\rho))
+       -\tfrac12\log(1-\rho^2)-\rho\,\xi(\rho).
+\]
+Then
+\begin{equation}\label{A:U-stationary-multiplier}
+ m_{1/2+it}(\kappa)
+ =q(\rho)^{-1/2}(1-\rho^2)^{1/4}
+       e^{-itS(\rho)}\{1+O_\delta(t^{-1})\}.
+\end{equation}
+Its canonical time and tangential displacement obey the exact identities
+\begin{equation}\label{A:U-canonical-time}
+ S'(\rho)=-\xi(\rho),\qquad
+ S(\rho)-\rho S'(\rho)
+   =\operatorname{arsinh}\!\bigl(B_*\cosh\xi(\rho)\bigr)
+   \geq R_*.
+\end{equation}
+These formulas and the exponential forbidden-region estimate do not by
+themselves assert nonvanishing of an eigenspace contraction.
+
+\begin{proof}
+All reflections represent the same nontrivial coset of
+$W/\Gamma^+$. Thus an odd eigenfunction vanishes pointwise on every
+reflection mirror, in particular on both target geodesics.
+Its two target periods vanish. We may therefore restrict to
+$W$-even eigenfunctions.
+
+In the upper half-plane model with source axis $i e^u$, the reflections
+in $z=0$ and $t=0$ act on its real boundary as $x\mapsto-x$ and
+$x\mapsto1/x$, respectively. Consequently the boundary distribution
+$T_j$ in Statement A.4.6 satisfies $T_j(-dx)=T_j(dx)$, and
+$\beta_j$ is even in $u$. The element
+\[
+ U=S_4S_1,\qquad U(x)=\frac{3x+2\sqrt2}{2\sqrt2 x+3}
+\]
+belongs to $\Gamma^+$, fixes $x=1$, and maps $\infty$ to $e^b$.
+The boundary transformation law, obtained directly from the Poisson
+kernel and uniqueness of its distributional boundary value, is
+$T_j(U\,dx)=|U'(x)|^{s_j}T_j(dx)$.
+On the positive boundary, the two equal signs of $x$ give
+$\beta_j(du)=2(2e^u)^{-s_j}T_j(d(e^u))$.
+Changing variables $x=U(y)$ on the interval $[1,e^b]$ therefore gives
+\[
+ \beta_j([0,b])
+ =\int_0^\infty
+ \left(\frac{e^u}
+ {(3e^u+2\sqrt2)(2\sqrt2e^u+3)}\right)^{s_j}
+ \beta_j(du)
+ =\int_0^\infty W_{s_j}(u)\,\beta_j(du).
+\]
+Evenness gives \eqref{A:U-smooth-boundary}. The change of variables
+is first made away from the endpoints. The boundary primitive is
+$1/2$-H\"older, so its interval masses are well-defined; the tail
+of the transformed pairing tends to zero because $W_s$ and all its
+derivatives decrease exponentially for fixed $\Re s>0$.
+This justifies passage to the endpoints.
+Periodize $W_s$ with period $L_0$ and use
+$p_{j,\ell}=K_{s_j,\kappa_\ell}\beta_{j,\ell}$.
+The smooth periodic kernel has rapidly decreasing Fourier coefficients,
+which proves \eqref{A:U-smooth-Q}; the stronger convergence assertion
+also follows from \eqref{A:U-forbidden-exponential}.
+
+For the special-function identity, take
+$x=a_*/B_*>1$, $\nu=-1/2+i\kappa$, and $\mu=s-1/2$
+in DLMF \cite[equation (14.12.4)]{DLMF}. Its conditions
+$\Re(\mu-\nu)>0$ and $\nu+\mu\notin\{-1,-2,\ldots\}$
+hold for $\Re s>0$ and real $\kappa$.
+Since $x^2-1=B_*^{-2}$, its integral is exactly one half
+of $B_*^sH_s(\kappa)$. This gives the first formula.
+The gamma duplication formula gives the second.
+For $\kappa=0$, equation (14.12.6), with the conversion
+from Olver's $\mathbf Q$ to the standard $Q$, gives
+$H_s(0)=2Q_{s-1}(17)$. For example
+$H_1(0)=2Q_0(17)=2b$, verifying the constant-mode normalization.
+
+For the uniform bound, the analytic continuation of $W_s(u)$
+has no singularity in $|\Im u|<\pi$: its first zeros are
+at $\pm b\pm i\pi$.
+Shift the contour to $\Im u=3\pi/4$ when $\kappa\geq0$,
+and to $\Im u=-3\pi/4$ when $\kappa<0$.
+For $v=3\pi/4$ and real $u$,
+\[
+ |a_*+B_*\cosh(u+iv)|^2
+   =288\cosh^2u-408\cosh u+145
+   \geq25\cosh^2u.
+\]
+Also $|\arg(a_*+B_*\cosh(u+iv))|\leq v$.
+For $u\geq0$ the imaginary part is nonnegative, and
+the imaginary part after multiplication by $e^{-iv}$ equals
+$-\sin v\,(a_*+B_*e^{-u}\cos v)<0$;
+the other signs follow by conjugation. Hence
+\[
+ |H_{1/2+it}(\kappa)|
+ \leq 5^{-1/2}K_{1/2,0}
+       e^{-3\pi(|\kappa|-t)/4}.
+\]
+The vertical connecting segments vanish by exponential decay in
+$|\Re u|$. Uniform two-sided Stirling estimates give
+\[
+ |K_{1/2+it,\kappa}|
+ \asymp
+ [(1+|t+\kappa|)(1+|t-\kappa|)]^{-1/4}
+ e^{-\frac\pi4(|t+\kappa|+|t-\kappa|-2t)}.
+\]
+Combining the two estimates proves
+\eqref{A:U-forbidden-exponential}.
+
+Finally apply stationary phase separately to $H$ and $K$.
+The phases are $\rho u-\log(a_*+B_*\cosh u)$ and
+$\rho u-\log\cosh u$.
+Their unique stationary points are
+\[
+ u_W=\log\frac{q(\rho)+a_*\rho}{B_*(1-\rho)},
+ \qquad u_K=\operatorname{artanh}\rho .
+\]
+On $|\rho|\leq1-\delta$ they stay in a fixed compact set and
+are uniformly nondegenerate. Outside a larger fixed compact set
+the phase derivatives are uniformly separated from zero;
+integration by parts treats these exponentially decreasing tails.
+At the stationary points, the amplitude divided by the square root
+of the absolute second phase derivative equals $q(\rho)^{-1/2}$
+for $H$, and $(1-\rho^2)^{-1/4}$ for $K$.
+The two stationary-phase factors have the same sign and cancel
+in the quotient. This proves \eqref{A:U-stationary-multiplier}.
+The formulas for $S'$ and the canonical time follow by differentiation.
+Explicitly
+$\cosh\xi=q/(B_*\sqrt{1-\rho^2})$ and
+$\sinh\xi=a_*\rho/(B_*\sqrt{1-\rho^2})$; substitution gives
+\eqref{A:U-canonical-time}.
+\end{proof}
+
+\paragraph{Scope of this additional identity.}
+The axis of $U$ is the mirror $t=0$, whose normal has norm $-3$.
+It is not either norm-$-2$ target.
+The two roots of the smooth kernel, $-e^{\pm b}$, are endpoints
+of $U^{-1}g_0$, a translate of the source geodesic.
+The positive boundary component used in the integral is not a
+full period fundamental interval for that axis. Thus the identity
+does not turn $Q_{j,I}$ into a positive scalar multiple of $p'_j$.
+The nonzero complete-eigenspace coefficient required in
+Statement A.5.6 is proved separately in Statement A.5.8, using
+the outgoing physical kernel and the complete endpoint comparison.
+
+
+\paragraph{Statement A.4.8 (Proved: exact outgoing physical kernel, including glancing).}
+Retain $a_*,B_*,R_*$ from Statement A.4.7 and put
+\[
+ \tau(u)=\operatorname{arsinh}(B_*\cosh u),\qquad
+ f_s(r)=2^{-s}(\cosh r)^{-s}
+ {}_2F_1\!\left(\frac s2,\frac s2;s+\frac12;\operatorname{sech}^2r\right).
+\]
+For $\Re s>0$ the inverse Fourier kernel of $m_s$ is
+\begin{equation}\label{A:exact-physical-kernel}
+ k_s(u)=-\frac{\Gamma(s)}{\sqrt\pi\,\Gamma(s+1/2)}
+          \frac{a_*}{\cosh\tau(u)}f_s'(\tau(u)).
+\end{equation}
+Here the convention is
+$m_s(\kappa)=\int_{\mathbb R}k_s(u)e^{i\kappa u}\,du$.
+For every contributing reflection-even eigenfunction the exact sharp
+coefficient is therefore
+\begin{equation}\label{A:Q-physical}
+ Q_{j,I}=\int_{\mathbb R}u_j(i e^u)\,q_{t_j}(u)\,du,
+ \qquad q_t(u)=\frac{K_{1/2+it,0}}2 k_{1/2+it}(u).
+\end{equation}
+The integral is absolutely convergent. As $t\to+\infty$,
+\begin{equation}\label{A:physical-principal-symbol}
+ q_t(u)=
+ \frac{a_*}{2\cosh^{3/2}\tau(u)}
+       e^{-it\tau(u)}\{1+O(t^{-1})\},
+ \qquad u\in\mathbb R,
+\end{equation}
+uniformly over the entire real line.
+The principal amplitude is positive and decreases like
+$e^{-3|u|/2}$. Thus the physical formula remains uniform where
+$|\kappa|/t$ tends to one in the Fourier description.
+
+\begin{proof}
+The hypergeometric equation gives directly
+\[
+ f_s''+\tanh r\,f_s'+s(1-s)f_s=0,\qquad
+ f_s(r)\sim e^{-sr}\quad(r\to+\infty).
+\]
+We prove the Fourier identity first for real $s>1$ and then use
+analytic continuation. In this proof temporarily allow
+$a_*=\cosh R$, $B_*=\sinh R$ with arbitrary $R>0$.
+The elementary function $W_s(R,u)$ satisfies
+\[
+ \left(\partial_R^2+\coth R\,\partial_R+s(1-s)
+              -\frac{\partial_u^2}{\sinh^2R}\right)W_s(R,u)=0.
+\]
+To check the candidate kernel, set $y=\sinh r$ and write $f_s(r)=F_s(y)$.
+Then
+\[
+ (1+y^2)F_s''+2yF_s'+s(1-s)F_s=0.
+\]
+Consequently $g=F_s'$ satisfies
+\[
+ (1+y^2)g''+4yg'+\{s(1-s)+2\}g=0.
+\]
+A direct differentiation shows that
+$\cosh R\,g(\sinh R\cosh u)$ satisfies the same two-variable
+equation as $W_s$. Its scalar multiple in
+\eqref{A:exact-physical-kernel} therefore does so as well.
+Fourier transformation in $u$ makes both transforms solutions of
+\[
+ h''+\coth R\,h'
+       +\left(s(1-s)+\frac{\kappa^2}{\sinh^2R}\right)h=0.
+\]
+
+We compare their outgoing coefficients. Uniformly under the integrable
+majorants needed for Fourier transformation,
+\[
+ W_s(R,u)\sim e^{-sR}\cosh^{-2s}(u/2),\qquad
+ k_s(R,u)\sim
+ \frac{s\Gamma(s)}{\sqrt\pi\,\Gamma(s+1/2)}
+ e^{-sR}\cosh^{-s-1}u.
+\]
+The duplication formula gives the exact identity
+\[
+ \frac{K_{s,\kappa}K_{s+1,\kappa}}
+            {2K_{2s,2\kappa}}
+   =\frac{\sqrt\pi\,\Gamma(s+1/2)}{s\Gamma(s)}.
+\]
+It follows that the Fourier transform of $k_s$ and $H_s/K_s$
+have the same leading $e^{-sR}$ coefficient.
+For $s>1$, the other solution grows like $e^{(s-1)R}$;
+the outgoing solution is unique.
+Thus their transforms coincide.
+All defining integrals are locally holomorphic for $\Re s>0$,
+and $K_{s,\kappa}$ has neither zeros nor poles there.
+The identity theorem proves \eqref{A:exact-physical-kernel}
+throughout that half-plane. Statement A.4.7 and Fourier
+periodization now give \eqref{A:Q-physical}.
+
+For the uniform high-frequency assertion, write
+$v_t(r)=\sqrt{\cosh r}\,f_{1/2+it}(r)$.
+The equation becomes the elementary one-dimensional scattering equation
+\[
+ v_t''+\left(t^2-\frac14\operatorname{sech}^2r\right)v_t=0,
+ \qquad v_t(r)\sim 2^{-1/2}e^{-itr}.
+\]
+On $r\geq R_*>0$, its outgoing Volterra equation has an
+integrable smooth potential $V(r)=\operatorname{sech}^2r/4$.
+Successive approximation, using the Green kernel
+$t^{-1}\sin(t(r-v))$ and
+$\int_r^\infty V(v)\,dv\ll e^{-2r}$, yields
+\[
+ v_t(r)=2^{-1/2}e^{-itr}
+       \{1+O(t^{-1}e^{-2r})\},\qquad
+ v_t'(r)=-it\,2^{-1/2}e^{-itr}+O(e^{-2r}).
+\]
+The constants are uniform for $t\geq1$ and $r\geq R_*$.
+Therefore
+\[
+ f_{1/2+it}'(r)=
+ -\frac{it}{\sqrt{2\cosh r}}e^{-itr}\{1+O(t^{-1})\}.
+\]
+If further finite-order symbol expansions are required, they follow
+from the same Volterra equation: after removing $e^{-itr}$,
+insert $\sum_{n=0}^N(2it)^{-n}a_n(r)$, with $a_0=1$ and
+$a_{n+1}'=a_n''-Va_n$, $a_{n+1}(\infty)=0$.
+The residual is $O(t^{-N}e^{-2r})$, and the outgoing Green kernel
+gains a further factor $t^{-1}$. All coefficients and their fixed-order
+$r$ derivatives are bounded, and the nonconstant coefficients decrease
+exponentially. This also verifies that the preceding uniform
+estimate is compatible with finite-order stationary-phase calculations.
+
+Finally, Stirling's formula or direct stationary phase in $K$ gives
+\[
+ \frac{\Gamma(1/2+it)}{\Gamma(1+it)}
+       =t^{-1/2}e^{-i\pi/4}\{1+O(t^{-1})\},\qquad
+ K_{1/2+it,0}=
+       \sqrt{\frac{2\pi}{t}}e^{-i\pi/4}\{1+O(t^{-1})\}.
+\]
+The factor $it$ from $f_s'$ cancels both phases.
+Substitution in \eqref{A:exact-physical-kernel} proves
+\eqref{A:physical-principal-symbol}. Since
+$\cosh\tau(u)\asymp e^{|u|}$, it also proves the stated decay.
+\end{proof}
+
+\paragraph{Connection with the nonvanishing argument.}
+The exact physical kernel makes the two pieces of a relative-wave
+argument concrete. On bounded $u$ intervals, the phase is the signed
+difference of distances to the target geodesic and to $U^{-1}g_0$;
+its critical points represent common perpendiculars. At infinity,
+these differences approach endpoint Busemann constants.
+Those constants can accumulate, so their contribution requires a
+quantitative summation before the shortest-perpendicular term
+proves nonvanishing. Statement A.5.8 supplies that comparison:
+the entire endpoint contribution is the Fourier transform of a
+bounded-variation density with finite total variation, and is
+of lower order than the positive stationary term.
+
+
+\subsection{Exact census and square-root-scale evidence}
+\paragraph{Statement A.5.1 (Proved by exact exhaustive computation).}
+The census in Statement A.1.4 is exhaustive. Moreover the following
+finite-range inequality is certified for every real $x$ in its stated
+range:
+\begin{equation}\label{A:finite-bound}
+ |R(x)-C_0x|<\frac{43}{250}\sqrt{x}
+ \qquad(10^4\leq x\leq10^9).
+\end{equation}
+This is a finite theorem, and asserts no bound as $x\to\infty$.
+\begin{proof}
+The principal census program \texttt{A\_census.cpp} uses independent
+$n$-slices and verifies every output in $(s,t,z)$ coordinates. For
+$n\geq1$, factor $18n^2-2=2(3n-1)(3n+1)$ with an exact smallest-prime-factor
+sieve. In $\mathbb Z[\sqrt3]$, an inert prime of odd exponent rules out a
+solution. An inert prime of exponent $2e$ contributes the scalar $p^e$;
+the ramified prime $2$ contributes $(1+\sqrt3)^e$; and a split prime of
+exponent $e$ contributes the $e+1$ generators
+$\pi^k\bar\pi^{e-k}$, $0\leq k\leq e$.
+Here $\pi$ is computed as the norm-Euclidean gcd of $p$ and
+$r+\sqrt3$, where $r^2\equiv3\pmod p$ is found by the exact
+Tonelli--Shanks algorithm. The norm of this gcd is asserted to be $\pm p$.
+There is no factor at $3$, since $3n\pm1$ are prime to $3$.
+The Euclidean division rounds the two rational coefficients; the strict
+decrease of absolute norm is asserted at each division step.
+
+Every product is reduced by exact powers of $2+\sqrt3$, with its real
+sign decided by integer comparisons. Since the total norm is positive,
+the resulting seeds are precisely
+\[
+ a+q\sqrt3\in[\sqrt{18n^2-2},\varepsilon_0\sqrt{18n^2-2}),
+ \qquad a>2q\geq0.
+\]
+Unique factorization of ideals and Statement A.1.2 prove that there is
+one seed for every unit orbit and no omitted orbit. Equality of distinct
+computed seeds is also explicitly ruled out. From each seed, multiply
+successively by $\varepsilon_0$ until $4a+17n>X$. These are all solutions
+with $a>0,q\geq0$: they correspond to all generators at least
+$\sqrt{18n^2-2}$, and the positive coefficient $a$ increases strictly
+under this iteration. The $n=0$ family is generated separately from
+$1+\sqrt3$ and the strict inequality rejects its first member.
+The last possible $n$ is found by exact binary search using
+$4\lceil\sqrt{18n^2-2}\rceil+17n\leq X$; at $X=10^9$ it is
+$29\,437\,251$. Integer square roots are corrected by exact comparisons,
+so floating-point initial guesses do not decide any predicate.
+
+For every emitted point the code checks $F(s,t,z)=-2$,
+$t+4z<s$, $4s\leq17z$, the inverse parity, and the original equation
+$4(xy+xz+yz)-x^2-y^2-z^2=-1$ in signed 128-bit arithmetic.
+Its sorted height list is compared literally with a direct scan of
+$s$ at every $z\leq10^6$. A second program,
+\texttt{A\_height\_census.cpp}, independently slices by every height
+$z\leq10^7$, enumerates ideals of $18z^2-2$, tests the moving region
+and the fixed arc $288s^2\leq289(18z^2-2)$, and verifies
+\eqref{A:arc-exact} at every height. Its full ordered height list agrees
+with the $n$-slice program. This is the required independent recount in
+$(s,t,z)$ through $10^7$, and not an extrapolation of the literal scan.
+
+The $10^9$ census contains $35\,363\,970$ solutions at
+$23\,243\,639$ occupied heights. The maximum multiplicity is $52$,
+first attained at $971\,256\,191$. The raw sorted little-endian
+32-bit height receipt has SHA256
+\begin{center}\small\ttfamily
+29bc345c303f0f1885b13f459669411fc4202\\
+a43d3ed95509844f8fac2c65a48
+\end{center}
+The lossless file \texttt{A\_census\_1e9.d16m8.gz} stores successive
+height gaps as 16-bit integers and multiplicities as 8-bit integers;
+the maximum gap is $601$. The attached pack/unpack program reconstructs
+the raw file and verifies this hash.
+
+To certify \eqref{A:finite-bound}, the Arb computation
+\path{A_certify_constant.py}, at 256-bit precision, proves
+\[
+ \frac{35362047799}{10^{12}}<C_0<
+ \frac{35362047800}{10^{12}}.
+\]
+For both rational endpoints $c/10^{12}$, at every jump height $z$ we
+check both its right value and its left limit by the integer inequality
+\[
+ 62500\big(10^{12}R-cz\big)^2
+       <1849z\,10^{24}.
+\]
+The program checks a strict size guard before squaring, which keeps all
+products inside signed 128-bit range. It also checks the endpoints
+$10^4,10^9$. Convexity in $C_0$ gives the same bound for the enclosed
+constant. Between consecutive jumps $R(x)=r$ is constant and
+\[
+ \frac{d}{dx}\frac{r-C_0x}{\sqrt x}
+ =-\frac{r}{2x^{3/2}}-\frac{C_0}{2\sqrt x}<0.
+\]
+Thus the two one-sided jump values and the external endpoints control
+the absolute value throughout every interval. All checks pass, proving
+the assertion for real, as well as integer, $x$.
+\end{proof}
+
+\paragraph{Statement A.5.2 (Proved finite computations; descriptive evidence with its scope specified).}
+On integer $X\leq10^8$ the extremes in Lead 5 are confirmed:
+\[
+ E(32\,461\,294)=-812.8300691488068897\ldots,
+ \qquad E(77\,078\,404)=721.7934249571297570\ldots,
+\]
+where $E(X)=R(X)-C_0X$. On integer $X\leq10^9$ the extrema are
+\[
+ \begin{split}
+ E(889\,576\,590)&=-2332.8971024648566233\ldots,\\
+ E(586\,293\,324)&= 2668.4520483254967593\ldots.
+ \end{split}
+\]
+For $10^4\leq X\leq10^9$ the largest absolute standardized discrepancy
+at an integer is $0.1714001928088145597\ldots$, attained at
+$X=867\,240$. These decimal evaluations use 80-digit arithmetic after
+exactly locating the integer candidates; the finite bound itself is the
+separate rational certificate in Statement A.5.1.
+
+The deterministic sample $X=10^4+1000k\leq10^9$, with $999\,991$
+observations, has mean $0.00067195$, standard deviation $0.04345364$,
+skewness $0.21623$, and excess kurtosis $-0.71874$ for $E(X)/\sqrt X$.
+Its median is $-0.00410075$, its $5\%$ and $95\%$ quantiles are
+$-0.06359556$ and $0.07133799$, and its lag-one correlation is
+$0.99986553$. Thus the sample has strong serial dependence; these
+statistics do not constitute evidence of independent normal sampling,
+and no limiting law is inferred.
+The complete sample and its generating program are attached.
+
+For the continuous mean-square integral, exact constancy of $R(x)$
+between successive jumps reduces each interval of length $g$, beginning
+at $a$ with $E(a)=e$, to
+\[
+ \int_a^{a+g}E(x)^2\,dx=e^2g-eC_0g^2+\frac{C_0^2g^3}{3}.
+\]
+Summation in long-double arithmetic gives the following descriptive
+values; they are not interval-certified decimal values:
+\[
+\begin{array}{c|c}
+ X&X^{-2}\int_X^{2X}|E(x)|^2\,dx\\\hline
+ 10^4&0.0021358981\\
+ 10^5&0.0057996192\\
+ 10^6&0.0048290724\\
+ 10^7&0.0091159753\\
+ 10^8&0.0027564219\\
+ 5\cdot10^8&0.0031277302
+\end{array}
+\]
+The asserted finite computations are reproducible from
+\path{A_statistics.py} and its output. No global mean-square,
+$\Omega$, or $\Omega_\pm$ theorem follows from this finite table.
+
+\paragraph{Statement A.5.3 (Proved weaker mean-square bound).}
+For every $\epsilon>0$,
+\[
+ \int_X^{2X}|R(x)-C_0x|^2\,dx\ll_\epsilon X^{7/3+\epsilon}.
+\]
+\begin{proof}
+Apply Statement A.4.4 with $\epsilon/2$ uniformly for
+$x\in[X,2X]$, square it, and integrate over an interval of length $X$.
+\end{proof}
+
+\paragraph{Statement A.5.4 (Open: remaining pointwise conjecture and literature scope).}
+The exact square-root conjecture for this count is
+\[
+ \text{for every }\epsilon>0\text{ there are }C_\epsilon,X_\epsilon>0
+ \text{ such that }|R(X)-C_0X|\leq C_\epsilon X^{1/2+\epsilon}
+ \quad(X\geq X_\epsilon).
+\]
+The requested mean-square bound is proved in Statement A.5.5.
+Statement A.5.8 proves both
+$R(X)-C_0X=\Omega_+(X^{1/2})$ and
+$R(X)-C_0X=\Omega_-(X^{1/2})$, and hence the unsigned assertion.
+The displayed pointwise square-root conjecture remains unproved,
+and we have not established an implication from a numbered
+published conjecture to it.
+The numerical work above settles the finite census and tests the
+standardized discrepancy; the infinite oscillation assertions
+are settled by the separate analytic proof.
+
+\emph{An exact sufficient arithmetic hypothesis.}
+Retain the ideal characters and coefficients $a_\ell(m)$ of
+Statement A.4.2, and put
+\[
+ U_\ell(X)=\sum_{1\leq z\leq X}a_\ell(18z^2-2).
+\]
+The following uniform estimate would imply the displayed
+square-root conjecture:
+\begin{equation}\label{A:sufficient-uniform-quadratic}
+ \begin{aligned}
+ \left|U_\ell(X)-\mathbf1_{\ell=0}\,cX\right|
+ &\ll_\eta X^{1/2+\eta}(1+|\ell|)^\eta,\\
+ &0\leq|\ell|\leq\lfloor X^{1/2}\rfloor,\qquad \eta>0.
+ \end{aligned}
+\end{equation}
+The implied constant must be independent of both $X$ and $\ell$.
+This is a precisely stated sufficient hypothesis, not a conjecture
+attributed to the literature. To prove the implication, view the
+ideals of norm $18z^2-2$, $z\leq X$, as a positive measure on
+$\mathbb R/\mathbb Z$. Its mass is $U_0(X)$ and its $\ell$th
+Fourier coefficient is exactly $U_\ell(X)$. Weighted
+Erd\H{o}s--Tur\'an, or the Selberg majorants and minorants already
+used in Statement A.4.4, gives for $H=\lfloor X^{1/2}\rfloor$
+\[
+ \left|\sum_{z\leq X}\#\{\mathfrak a:
+ N\mathfrak a=18z^2-2,\ \theta(\mathfrak a)\in I\}
+       -\lambda_0 U_0(X)\right|
+ \ll \frac{U_0(X)}{H+1}
+       +\sum_{\ell=1}^{H}\frac{|U_\ell(X)|}{\ell}.
+\]
+Endpoint conventions change only the already counted Pell
+families, hence contribute $O(\log X)$.
+Under \eqref{A:sufficient-uniform-quadratic} the right side is
+$O_\eta(X^{1/2+3\eta/2}\log(2X))$.
+Take $\eta=\epsilon/3$, absorb the logarithm into the remaining
+power, and use the exact formula in Statement A.1.3 and
+$C_0=\lambda_0c$. This proves the claimed implication. Equivalently,
+the nonzero modes in \eqref{A:sufficient-uniform-quadratic} are
+\[
+ U_\ell(X)=(-1)^\ell
+       \sum_{z\leq X}a_\ell(3z-1)a_\ell(3z+1);
+\]
+thus uniformity in a family of real-quadratic ideal characters
+growing as fast as $|\ell|\leq X^{1/2}$ is essential.
+
+The closest explicit shifted-convolution expectation located,
+\cite[equation (2) and the paragraph immediately after it]
+{NordentoftPetridisRisager2022}, concerns a fixed holomorphic
+level-one form and expressly leaves its weight-uniform range
+unspecified. It does not state
+\eqref{A:sufficient-uniform-quadratic}.
+The varying-form Conjectures 1.6 and 1.8 of
+\cite{Nelson2022Quadratic} assume non-dihedral holomorphic forms
+and irreducible quadratic polynomials, and ask for weaker
+cancellation; Remark 1.9 says that variants for dihedral forms
+or reducible polynomials still need to be formulated.
+Our character family is dihedral and
+$18z^2-2=2(3z-1)(3z+1)$ is reducible.
+Finally, \cite[Conjecture $C_a(\epsilon)$]{Merikoski2025Primes}
+has explicit epsilon dependence on the real-quadratic character
+parameter, but its sum runs over the two-variable binary cubic
+$c_1y_1^3-c_2y_2^3$. No specialization of that conjecture to
+\eqref{A:sufficient-uniform-quadratic} is proved here.
+
+A direct delta-method attempt using the theta-corrected
+half-integral Kloosterman-sum Conjecture 1.4 of
+Sun \cite{A5Sun2025} was tested on its full analytic weights,
+including their inverse-phase amplitudes.  The calculation in
+\path{records/B_A5_compensated_weight.tex}, with its exact and
+Arb certificates, uses a cutoff supported near the actual quadric
+and the dual vectors $(1,0,k)$.  On the fixed modulus block
+$2X/3\leq q\leq3X/4$, their normalized weights satisfy
+$\|W_k\|_\infty\asymp k^{-1}$ but
+$\operatorname{Var}W_k=L+O(k^{-1})$ for an explicit $L>0$.
+The variation summed over $k\leq H$ is therefore $\asymp H$,
+also for smoothing of width $H^{-1}$.
+Consequently, applying the proposed untwisted bound separately
+to each frequency by Abel summation and then summing absolutely
+has the scale $X^{1/2+\epsilon}H$ on this family.
+Balancing this with a boundary cost $X/H$ gives a $3/4$
+envelope for that procedure.  This is neither a full $3/4$
+theorem nor a proof that Sun's conjecture cannot imply the
+desired result by another argument.  It identifies the precise
+remaining loss; cancellation between dual frequencies or an
+arithmetic transformation retaining their joint phases is still
+needed.  The multiplier, bad-prime factors, and complete theta
+projection must also be matched before that conjecture is applied.
+
+Completing the normal frequency before summing over moduli gives
+a further exact reduction, recorded in
+\path{records/A_normal_completion.tex}.
+For the same family $(1,0,k)$, a finite quadratic Fourier
+transform converts the Sali\'e sums to
+$S(2-18h^2,-\overline4;q)$, and Chinese remaindering gives
+\[
+ S(2-18h^2,-\overline4;q)
+       =-S(2-18h^2,-1;2q).
+\]
+The endpoint phase centers the new index at $h=X$ with width
+$X/K$ for an original dyadic block $k\asymp K$.
+The bounded-twist Linnik--Selberg conjecture proposed by
+Browning--Kumaraswamy--Steiner and stated as
+\cite[Conjecture 2]{A5Steiner2019} does apply to each such
+completed modulus sum: its fixed parameters can be taken
+as $s=24$ and $B=3$. Its resulting bound, summed absolutely
+over the new index, is $O_\epsilon(X^{1+\epsilon}/K)$
+for this top-face family when $X^\delta\leq K\leq X^{1/2}$,
+with any fixed $\delta>0$. Before completion the proposed
+Sun estimate gives $O_\epsilon(X^{1/2+\epsilon}K)$.
+Taking the better bound still leaves the intermediate
+block $K=X^{1/4}$ at scale $X^{3/4+\epsilon}$.
+The two exact Fourier identities have been checked in
+200 cyclotomic-ring computations, including composite
+and prime-power moduli. This supplies a verified application
+of a named conjecture to an isolated transformed family;
+it supplies no implication to the full sharp square-root
+bound. The missing estimate is joint cancellation over
+$h,q$, with $2-18h^2$ running over a short quadratic sequence.
+
+The exact scope of the closest sources matters. Theorem 1.5 of
+Lekkas--Petridis \cite{LekkasPetridis2026} proves
+$\int_X^{2X}|E(x,l)|^2\,dx\ll X^2\log^2X$ for the count integrating
+an entire closed geodesic; its Conjecture 1.6 is the square-root
+conjecture for that full-geodesic error. Neither statement includes a
+fixed sharp foot arc. In \cite[Theorem 3]{Voskou2025Omega}, the
+$\Omega_\delta(X^{1/2}(\log\log X)^{1/4-\delta})$ theorem concerns a
+full geodesic paired with itself, with the eigenvalue-$1/4$ contribution
+removed. Its squared periods supply a positivity absent from the
+cross-geodesic count with a source arc. It does not assert
+$\Omega_\pm$ for the present count. Statements A.4.4 and A.5.5 prove
+the uniform spectral estimates and the requested mean square.
+Statement A.5.6 further proves an absolutely convergent
+almost-periodic expansion after fixed positive radial smoothing
+of the actual sharp arc. It proves both oscillation signs conditional
+on a precisely stated nonzero complete-eigenspace coefficient.
+Statement A.5.8 proves that condition, indeed for infinitely many
+spectral parameters, using the exact arithmetic endpoints,
+the outgoing physical kernel, a summable endpoint density, and
+the positive shortest-perpendicular contribution.
+The square-root pointwise conjecture and its implication from
+a numbered known conjecture remain open here.
+
+Two recent results do not remove this gap.
+Constantinescu--Nordentoft \cite[Theorems 1.3 and 1.5]{ConstantinescuNordentoft2025}
+prove nonvanishing while varying the closed geodesic for a fixed
+automorphic form; their general theorem assumes a cusp.
+Chatzakos--Dimakis \cite[Theorem 1.2]{ChatzakosDimakis2026} prove
+square-root cancellation, up to logarithms, for almost every
+point paired with a fixed point on a compact quotient.
+Their Section 1.6 explicitly excludes a conclusion for a
+preassigned pair. Neither theorem supplies the fixed-cycle,
+fixed-arc contraction considered here.
+
+
+\paragraph{Statement A.5.5 (Proved sharp-arc mean square).}
+For every $\epsilon>0$,
+\begin{equation}\label{A:sharp-mean-square}
+ \int_X^{2X}|R(x)-C_0x|^2\,dx\ll_\epsilon X^{2+\epsilon}.
+\end{equation}
+\begin{proof}
+We extend the uniform transform of Statement A.4.4 to a negative
+Mellin line and then apply the geodesic large sieve to its actual
+arc coefficients. This checks the additional step needed to use that
+large sieve here.
+
+\emph{1. The geometric correction on a negative line.}
+In \eqref{A:F-spherical-integral} put
+$p=(s+i\kappa)/2$, $B(x)=\cosh(2\delta)+x\sinh(2\delta)$,
+and $f(x)=B(x)^{-p}$, where $\delta=\operatorname{arsinh}(1/A)$.
+For $\operatorname{Re}s>0$ the identity
+\[
+ (1-x^2)^{s/2-1}
+ =\frac{s+1}{s}(1-x^2)^{s/2}
+       -\frac1s\frac d{dx}\{x(1-x^2)^{s/2}\}
+\]
+and integration by parts give
+\begin{equation}\label{A:F-regularized}
+ F_{s,\kappa}(A)=
+ \frac{\Gamma((s+3)/2)}{\sqrt\pi\Gamma((s+2)/2)}
+ \int_{-1}^1(1-x^2)^{s/2}
+       \left(f(x)+\frac{x f'(x)}{s+1}\right)dx.
+\end{equation}
+The right side converges absolutely and is analytic for
+$\operatorname{Re}s>-2$, apart from its displayed parameter
+singularities. Therefore it continues the left side to the range
+$-1<\operatorname{Re}s<0$ used below.
+
+Fix $-1<\sigma<0$, write $s=\sigma+i\tau$,
+$U=1+|\tau|$ and $V=U+|\kappa|$. The gamma prefactor is
+$O_\sigma(U^{1/2})$, $|s+1|^{-1}\ll_\sigma U^{-1}$,
+and $|f'(x)|\ll_\sigma V/A$. Hence
+\begin{equation}\label{A:F-negative-large}
+ |F_{s,\kappa}(A)-1|
+       \ll_\sigma U^{1/2}\left(1+\frac{V}{UA}\right).
+\end{equation}
+If $A\geq V$, differentiate the integrand in
+\eqref{A:F-regularized} twice with respect to $\delta$ on
+$0\leq\delta\leq\operatorname{arsinh}(1/A)$.
+Its first derivative at zero is odd in $x$, so it integrates to
+zero. Its second derivative is $O_\sigma(V^2)$ times the
+integrable absolute weight: the possible third power of $p$
+from $f'$ is multiplied by $\delta/(s+1)$ and is bounded by
+$O_\sigma(V^2)$ because $V\delta\leq1$.
+Taylor's integral remainder therefore gives
+\begin{equation}\label{A:F-negative-small}
+ |F_{s,\kappa}(A)-1|\ll_\sigma U^{1/2}V^2/A^2
+ \qquad(A\geq V).
+\end{equation}
+Using the count $\#\{A_z\leq y\}\ll y$ with its ideal
+multiplicities, sum \eqref{A:F-negative-large} over $A_z\leq V$
+and \eqref{A:F-negative-small} over $A_z>V$.
+The term $V/(UA)$ is summable with total
+$O_\sigma(U^{-1/2}V^{1-\sigma})$ because $\sigma<0$;
+the other two terms are
+$O_\sigma(U^{1/2}V^{1-\sigma})$ because $\sigma>-1$.
+Thus precisely the same estimate as \eqref{A:H-uniform} holds:
+\begin{equation}\label{A:H-negative}
+ |H_\ell(\sigma+i\tau)|
+       \ll_\sigma U^{1/2}(U+|\kappa_\ell|)^{1-\sigma}.
+\end{equation}
+The series defining $H_\ell$ converges normally in this strip,
+since its summands at large $A_z$ have two additional inverse
+powers of $A_z$.
+
+At $s=0$ the exact hypergeometric identity is
+\[
+ F_{0,\kappa}(A)=\cos\bigl(\kappa\operatorname{arsinh}(1/A)\bigr).
+\]
+It follows either by solving the differential equation in the proof
+of \eqref{A:F-spherical-integral} at $s=0$, or by its power
+series. In particular,
+\begin{equation}\label{A:H-at-zero}
+ H_0(0)=0,\qquad |H_\ell(0)|\ll1+|\ell|.
+\end{equation}
+For the second assertion sum
+$\min(2,\kappa_\ell^2/A_z^2)$ using the same linear counting
+bound. No estimate for the distribution of individual ideal angles
+is being assumed in this step.
+
+\emph{2. A uniform spectral expansion with square-root-size remainder.}
+Fix a large base height $Y_0$, and take
+$T=H=\lfloor\sqrt{Y_0}\rfloor$, fixed as $Y$ varies over
+$[Y_0,2Y_0]$. Let $w=w_T$ be either smooth radial cutoff of
+Statement A.4.4. Its Mellin transform continues meromorphically by
+\[
+ \widehat w(s)=-\frac1s\int_0^\infty w'(u)u^s\,du.
+\]
+It has a simple pole at zero of residue one and satisfies
+\eqref{A:w-Mellin-bound} on any fixed nonzero real-part line.
+Choose $\sigma=-1/2+\eta$, where $0<\eta<1/2$ is fixed.
+
+The contour estimate \eqref{A:contour-uniform}, with $T=H$,
+remains valid on this line. Here are the precise changes to its
+proof. The gamma bound \eqref{A:gamma-full-bound} is unchanged,
+with $a=1-\eta/2<1$ and $b=3/4-\eta/2$; its numerator gamma
+functions still have fixed real parts strictly between $-1/2$
+and $-1/4$, and so have no pole on the line. The low-angular and
+comparable-angular integrations use only $a<1$ and remain
+identical. In the high-angular range, $K\ll H=T$ and the sum is
+\[
+ K^{1/2-\sigma}\sum_{J\ll K}J^{\sigma+1/2}
+       \ll_\eta K,
+\]
+because $\sigma+1/2=\eta>0$. The exponentially small tails
+remain $O(\log(2T))$. These facts give
+$O_\eta(T\log(2H))$ for the remaining contour before multiplication
+by $Y^\sigma$. All constants are uniform in $Y\in[Y_0,2Y_0]$.
+Allowing negative angular indices changes only a factor of two.
+
+We also include angular index zero. Its nonconstant spectral
+part obeys the same estimates, using the low-angular range.
+The constant eigenfunction contributes
+\[
+ p'_0p_{0,0}
+ \frac{\Gamma((s+1)/2)\Gamma((s-1)/2)}{\Gamma(s/2)^2}.
+\]
+On the negative contour this is $O_\eta(1)$ in $\tau$, and
+its only pole in the traversed strip is at $s=1$.
+Its residue in $M_0$ is $4c/3$, where
+$c=9L_0^2/(2\pi^2)$. This follows also directly from
+\eqref{A:Mellin-geometry} and the already proved
+$\sum_{A_z\leq Y}\rho(m_z)=(c/3)Y+O(Y^{2/3})$;
+$H_0$ is analytic at one.
+
+There is no contribution at zero from $\widehat w(s)M_\ell(s)$:
+the normally convergent gamma series shows $M_\ell(0)=0$
+for every $\ell$. For $\ell\ne0$, the factor $1/\Gamma(s/2)$
+gives this zero; for $\ell=0$ the nonconstant terms have three
+such factors, and the displayed constant term has two.
+In the geometric correction the pole of $\widehat w$ does give
+$H_\ell(0)$, whose total against coefficients
+$|b_\ell|\ll(1+|\ell|)^{-1}$ is $O(H)$ by
+\eqref{A:H-at-zero}. The two exceptional double cosets contribute
+only $O(\log(2H))$.
+Equation \eqref{A:H-negative} bounds the negative-contour
+correction by
+\[
+ O_\eta\left(Y_0^\sigma
+       T^{1/2}(T+H)^{1-\sigma}\log(2H)\right)
+ =O_\eta\left(Y_0^{1/2+\eta/2}\log Y_0\right).
+\]
+The remaining $M$ contour costs only
+$O_\eta(Y_0^\sigma T\log(2H))$.
+The finite-height contour justification from Statement A.4.4
+continues without change; the next spectral poles have real part
+$-3/2$, outside the traversed strip.
+
+Consequently, for any real trigonometric polynomial
+$B(\theta)=\sum_{|\ell|\leq H}b_\ell e^{2\pi i\ell\theta}$
+with $|b_\ell|\ll(1+|\ell|)^{-1}$, the weighted count
+\[
+ \mathcal N_{w,B}(Y)=\sum_z\sum_{N\mathfrak a=m_z}
+                  w(A_z/Y)B(\theta(\mathfrak a))
+\]
+has the expansion, uniformly on $[Y_0,2Y_0]$,
+\begin{align}\label{A:sqrt-remainder-expansion}
+ \mathcal N_{w,B}(Y)&=\frac{b_0c}{3}\widehat w(1)Y
+ \\ &\quad+\frac14\sum_{j\geq1}p'_j
+  \left(r_j\widehat w(s_j)Q_{j,H}Y^{s_j}
+       +\overline{r_j\widehat w(s_j)Q_{j,H}}Y^{1-s_j}\right)
+ \\ &\quad+O_\eta\left(Y_0^{1/2+\eta/2}\log Y_0\right).
+ \nonumber
+\end{align}
+Here $Q_{j,H}=\sum b_\ell D_{s_j}(0)
+p_{j,\ell}/D_{s_j}(\kappa_\ell)$ uses the unnormalized source
+periods. The conjugation in the second term is valid because
+the eigenfunctions are real and $b_{-\ell}=\overline{b_\ell}$.
+The coefficients, including $\widehat w(s_j)$ and $Q_{j,H}$,
+are fixed throughout this $Y$ interval.
+
+\emph{3. The large sieve and its hypotheses.}
+Theorem 3 of Lekkas--Voskou \cite{LekkasVoskou2024}, with weight
+$m=0$, states that for a fixed cofinite Fuchsian group and a
+fixed closed geodesic, arbitrary complex coefficients $d_j$, and
+$\delta$-separated points $y_\nu\in[Y_0,2Y_0]$,
+\[
+ \sum_\nu\left|\sum_{|t_j|\leq V}d_jy_\nu^{it_j}
+                    \int_lu_j\right|^2
+ \ll (V+Y_0\delta^{-1})\sum_{|t_j|\leq V}|d_j|^2.
+\]
+The continuous-spectrum coefficients vanish on a compact quotient.
+The same statement is Theorem 1.3 of \cite{LekkasPetridis2026}.
+Apply it on the fixed compact torsion-free cover from Statement A.3.1,
+with zero coefficients for all eigenfunctions not lifted from
+$\Gamma^+$. The covering and period normalization factors are
+fixed and were verified above. Apply it separately to the two
+target geodesics and use Cauchy--Schwarz for their sum $p_j'$.
+There is no requirement that the target equal the source geodesic
+or that the coefficients $d_j$ be periods.
+
+For a finite spectral sum, take equally spaced $y_\nu$ with
+mesh $h$, choose $\delta=h/2$, multiply the inequality by $h$,
+and let $h\to0$. The Riemann sums converge, giving
+\begin{equation}\label{A:continuous-large-sieve}
+ \int_{Y_0}^{2Y_0}
+       \left|\sum_jd_jY^{it_j}p_j'\right|^2dY
+       \ll Y_0\sum_j|d_j|^2.
+\end{equation}
+For the band $J\leq1+t_j<2J$, take
+$d_j=r_j\widehat w(s_j)Q_{j,H}$.
+By Statement A.4.3, Stirling's formula, and
+\eqref{A:w-Mellin-bound},
+\[
+ \sum_{j\text{ in band}}|d_j|^2
+ \ll J^{-1}(1+J/T)^{-2N}\sum_{j\text{ in band}}|Q_{j,H}|^2
+ \ll\log^2(2H)(1+J/T)^{-2N}.
+\]
+The factor $Y^{1/2}$ in \eqref{A:sqrt-remainder-expansion}
+therefore gives $L^2([Y_0,2Y_0])$ norm at most
+$O(Y_0\log(2H)(1+J/T)^{-N})$ for this band.
+Minkowski's inequality over the dyadic bands, and then passage
+to the absolutely convergent spectral series, prove
+\begin{equation}\label{A:smoothed-mean-square}
+ \int_{Y_0}^{2Y_0}
+ \left|\mathcal N_{w,B}(Y)-\frac{b_0c}{3}\widehat w(1)Y\right|^2dY
+ \ll_\eta Y_0^2\log^4Y_0+Y_0^{2+\eta}\log^2Y_0.
+\end{equation}
+
+\emph{4. Sharp arc and sharp height.}
+For the fixed arc $I=[0,\lambda_0]$ take its Selberg majorant
+and minorant trigonometric polynomials $B_H^+,B_H^-$.
+The exact elementary approximation used here is
+\cite[equation (4.11)]{LesterMatomakiRadziwill2015}:
+for every interval in $\mathbb R/\mathbb Z$ and integer $H\geq1$,
+\[
+ B_H^-\leq\mathbf1_I\leq B_H^+,\qquad
+ b_0^\pm=|I|\pm\frac1{H+1},\qquad
+ |b_\ell^\pm|\ll(1+|\ell|)^{-1}\quad(0<|\ell|\leq H).
+\]
+Endpoint half-value conventions can change the sum only by the
+already proved $O(\log Y_0)$ Pell contribution.
+These polynomials are real, have degree at most $H$, and are
+fixed throughout the dyadic $Y$ interval. In particular $B_H^+\geq0$.
+Use the radial cutoffs $w^\pm$ of Statement A.4.4 with the same
+fixed $T=\lfloor\sqrt{Y_0}\rfloor$. Then
+\[
+ \mathcal N_{w^-,B_H^-}(Y)
+ \leq\mathcal A(Y)
+ \leq\mathcal N_{w^+,B_H^+}(Y)+O(\log Y_0),
+\]
+where $\mathcal A(Y)$ is the exact sharp ideal-arc count with
+$A_z\leq Y$. The lower inequality is valid even where
+$B_H^-$ is negative: if $w^-\ne0$ the radial sharp indicator
+is one, and multiplication by $0\leq w^-\leq1$ still leaves
+$w^-B_H^-\leq\mathbf1_I$. Outside that radial range it is zero.
+The upper inequality follows from nonnegativity of $B_H^+$.
+
+Both main terms differ from $\lambda_0cY/3$ by
+$O(Y_0/H+Y_0/T)=O(\sqrt{Y_0})$.
+Thus \eqref{A:smoothed-mean-square} for the two fixed pairs
+$(w^-,B_H^-)$ and $(w^+,B_H^+)$ proves
+\[
+ \int_{Y_0}^{2Y_0}|\mathcal A(Y)-\lambda_0cY/3|^2dY
+       \ll_\epsilon Y_0^{2+\epsilon},
+\]
+after choosing $\eta$ smaller than $\epsilon$ and absorbing
+logarithms. Finally $Y=(9x^2-1)^{1/2}$ has derivative bounded
+above and below by positive constants for $x\geq1$;
+two dyadic $Y$ intervals cover the image of $[X,2X]$.
+The difference between $\lambda_0cY/3$ and $C_0x$ is
+$O(x^{-1})$, and Statement A.1.3 adds $O(\log(2x))$.
+These terms have mean square $O(X\log^2X)$, proving
+\eqref{A:sharp-mean-square}.
+\end{proof}
+
+
+\paragraph{Statement A.5.6 (Proved smoothed expansion and conditional two-sided oscillation).}
+Let
+\[
+ \mathcal A(Y)=\sum_{A_z\leq Y}
+       \#\{\mathfrak a:N\mathfrak a=m_z,\ \theta(\mathfrak a)\in I\},
+ \qquad e(Y)=\frac{\mathcal A(Y)-\lambda_0cY/3}{\sqrt Y}.
+\]
+Fix a smooth nonincreasing function $w:[0,\infty)\to[0,1]$,
+equal to $1$ near zero and to $0$ for sufficiently large argument.
+Its derivative is supported in a compact subinterval of $(0,\infty)$.
+Then, as $Y\to\infty$,
+\begin{align}\label{A:fixed-smoothing-AP}
+ \int_0^\infty e(Yv)\sqrt v\,(-w'(v))\,dv
+ &=\frac14\sum_{j\geq1}p'_j
+ \left(r_j\widehat w(s_j)Q_{j,I}Y^{it_j}
+ +\overline{r_j\widehat w(s_j)Q_{j,I}}Y^{-it_j}\right)
+ \nonumber\\
+ &\quad+O_w(Y^{-1/25}).
+\end{align}
+The series converges absolutely and uniformly in $\log Y$.
+It is a real uniformly almost-periodic function with mean zero.
+The following is consequently a sufficient condition for the
+requested two-sided oscillation:
+\begin{equation}\label{A:exact-nonvanishing-condition}
+ \text{there is a }t>0\text{ such that }\quad
+ \mathcal C(t):=\sum_{j:t_j=t}p'_jQ_{j,I}\ne0.
+\end{equation}
+If \eqref{A:exact-nonvanishing-condition} holds, then
+$R(X)-C_0X=\Omega_+(X^{1/2})$ and
+$R(X)-C_0X=\Omega_-(X^{1/2})$.
+The sum in \eqref{A:exact-nonvanishing-condition} is over the
+complete eigenspace and is independent of its real orthonormal
+basis. Nonvanishing is not asserted in this statement.
+
+\begin{proof}
+We give the additional estimates needed to pass to the sharp arc.
+They also explain why the $O(H)$ zero-residue bound used in
+Statement A.5.5 cannot simply be retained in this argument.
+
+\emph{1. Uniform angular discrepancy.}
+The proof of Statement A.4.4 gives the stronger intermediate fact
+\begin{equation}\label{A:all-interval-discrepancy}
+ D(V):=\sup_{J\subset\mathbb R/\mathbb Z}
+ \left|\sum_{A_z\leq V}\sum_{N\mathfrak a=m_z}
+       \bigl(\mathbf1_J(\theta(\mathfrak a))-|J|\bigr)\right|
+ \ll_\epsilon V^{2/3+\epsilon}.
+\end{equation}
+Indeed its phase-aligned bound for
+$\sum_{\ell\leq H}|W_\ell|/\ell$ is independent of the interval;
+the weighted Erd\H{o}s--Tur\'an step and the two radial
+brackets therefore apply to every $J$ with the same constants.
+One can use half-open intervals, or control a point mass by
+the same positive Fej\'er majorant. This avoids assuming any
+uniform Pell estimate for a varying interval endpoint.
+For every periodic absolutely continuous function $f$ of mean zero,
+Stieltjes integration by parts consequently gives
+\begin{equation}\label{A:BV-discrepancy}
+ \left|\sum_{A_z\leq V}\sum_{\mathfrak a}f(\theta(\mathfrak a))\right|
+ \leq D(V)\operatorname{Var}(f).
+\end{equation}
+The assertion follows first for step functions, by expressing
+them through interval indicators, and then by approximation.
+
+\emph{2. Canonical angular polynomials have bounded variation.}
+We use a specified choice of the Selberg polynomials.
+The sawtooth approximation in
+\cite[Lemma 2.2]{WangZhang2023}, explicitly attributed there to
+Vaaler's Theorem 18, states the following. For an integer $H\geq1$,
+put
+\[
+ W(t)=\pi t(1-|t|)\cot(\pi t)+|t|\quad(0<|t|<1),
+ \qquad W(0)=1,
+\]
+extend $W$ by zero outside $[-1,1]$, and set
+\[
+ \psi_H(x)=-\sum_{1\leq|\ell|\leq H}
+       \frac{W(\ell/(H+1))}{2\pi i\ell}e^{2\pi i\ell x},
+ \quad
+ F_H(x)=\sum_{|\ell|\leq H}
+       \left(1-\frac{|\ell|}{H+1}\right)e^{2\pi i\ell x}.
+\]
+Then $F_H\geq0$ and
+$|\psi_H-\psi|\leq F_H/(2(H+1))$.
+These hypotheses are purely trigonometric and impose no
+condition on our lattice. For an interval $I=[a,b]$ take
+\[
+ B_H^\pm(x)=b-a+\psi_H(a-x)+\psi_H(x-b)
+ \ \pm\frac{F_H(a-x)+F_H(x-b)}{2(H+1)}.
+\]
+With the usual half-value convention at the two endpoints,
+these satisfy the pointwise brackets of Statement A.5.5.
+The endpoint convention changes our actual count by
+$O(\log(2Y))$, already proved in Statement A.1.3.
+
+In addition to the previously used Fourier bounds, these
+particular polynomials satisfy
+\begin{equation}\label{A:Selberg-BV}
+ \|B_H^\pm\|_\infty+\operatorname{Var}(B_H^\pm)\ll1,
+ \qquad \|(B_H^\pm)^{(r)}\|_1\ll_r H^{r-1}\quad(r\geq1).
+\end{equation}
+Here is a direct verification of the extra assertion.
+The extension of $W$ is $C^1$, with integrable piecewise second
+derivative: its value and first derivative vanish at $\pm1$.
+Twice summing its Fourier polynomial by parts gives
+\[
+ \left|\sum_{\ell\in\mathbb Z}W(\ell/(H+1))e^{2\pi i\ell x}\right|
+ \ll \min\{H,(H\|x\|^2)^{-1}\}.
+\]
+Its $L^1$ norm is therefore bounded independently of $H$.
+Since $\psi_H'$ equals one minus this polynomial, it has
+bounded $L^1$ norm. The formula
+$F_H(x)=\sin^2(\pi(H+1)x)/((H+1)\sin^2(\pi x))$
+shows $\|F_H'\|_1\ll H$: split at $\|x\|=1/H$ and
+differentiate, using $O(H^3|x|)$ in the first range and
+$O(|x|^{-2}+H^{-1}|x|^{-3})$ in the second.
+This proves the variation bound; bounded sup norm follows from
+the sawtooth approximation and $F_H\leq H+1$.
+Finally, the elementary $L^1$ Bernstein bound for band-limited
+polynomials gives the derivative estimates in
+\eqref{A:Selberg-BV}. It can be proved here without an
+approximation theorem: choose a fixed smooth frequency cutoff
+equal to one on $[-1,1]$ and supported in $[-2,2]$.
+Its periodic kernel, differentiated $r-1$ times, has $L^1$
+norm $O_r(H^{r-1})$, by periodizing its Schwartz inverse Fourier
+transform. Convolve this kernel with $(B_H^\pm)'$.
+
+\emph{3. Improvement of the zero residue.}
+For either polynomial $B=B_H^\pm$, the exact identity at $s=0$
+in Statement A.5.5 gives
+\[
+ H_B(0):=\sum_{|\ell|\leq H}b_\ell H_\ell(0)
+   =\sum_z\sum_{\mathfrak a}f_{A_z}(\theta(\mathfrak a)),
+\]
+where, putting $\delta(A)=\operatorname{arsinh}(1/A)/L_0$,
+\[
+ f_A(x)=\tfrac12\{B(x+\delta(A))+B(x-\delta(A))-2B(x)\}.
+\]
+This series converges absolutely for each fixed $H$,
+since its large-$A$ summand is $O_H(A^{-2})$ and
+$S_A(V)\ll V$. Every $f_A$ has mean zero.
+On a dyadic block $A\asymp Z$, \eqref{A:Selberg-BV} gives
+\[
+ \operatorname{Var}(f_A)\ll
+      \min\{1,H^2/Z^2\},\qquad
+ \operatorname{Var}(\partial_A f_A)
+      \ll\min\{H/Z^2,H^2/Z^3\}.
+\]
+The second estimate follows from
+$|\delta'(A)|\ll A^{-2}$ and the first or second difference
+of $B''$; the first follows from the second difference of $B'$.
+Partial summation in $A$, followed by
+\eqref{A:BV-discrepancy}, bounds that dyadic block by
+\[
+ \begin{cases}
+ O_\epsilon(HZ^{\vartheta-1}),&Z\leq H,\\
+ O_\epsilon(H^2Z^{\vartheta-2}),&Z\geq H,
+ \end{cases}
+ \qquad \vartheta=2/3+\epsilon<1.
+\]
+For $A\leq V$ use instead $\|B\|_\infty\ll1$ and
+$S_A(V)\ll V$. Summing the remaining dyadic blocks gives
+\[
+ |H_B(0)|\ll_\epsilon
+ V+HV^{\vartheta-1}+H^\vartheta.
+\]
+Take $V=H^{1/(2-\vartheta)}$. Since $\epsilon$ can be
+arbitrarily small, this proves
+\begin{equation}\label{A:zero-residue-improved}
+ H_B(0)\ll_\epsilon H^{3/4+\epsilon}.
+\end{equation}
+
+\emph{4. Fixed radial smoothing and passage to the sharp arc.}
+Use the negative-line transform of Statement A.5.5 with the fixed
+function $w$, $\sigma=-49/100$, and $H=\lfloor Y^{3/5}\rfloor$.
+The parameter $T$ in the transform bounds is now a fixed
+constant depending on $w$. The contour bound remains
+$O_w((T+H)\log(2H))$ for $-1/2<\sigma<0$.
+To verify the only extra range not used in Statement A.5.5,
+take $K>T$ in its high-angular calculation. The dyadic sum is
+\[
+ K^{1/2-\sigma}\sum_{J\ll K}J^\sigma\min(J,T)^{1/2}
+ \ll_\sigma K^{1/2-\sigma}T^{\sigma+1/2}\leq C_\sigma K.
+\]
+The low and comparable ranges use only $a<1$, exactly as before.
+The spherical-correction inversion, the new zero-residue bound,
+and the exceptional intersection terms therefore leave an error
+\[
+ O_w\bigl(Y^\sigma H\log(2H)
+          +Y^\sigma H^{1-\sigma}\log(2H)
+          +H^{3/4+1/100}+\log(2Y)\bigr)
+   =O_w(Y^{23/50}).
+\]
+The zero Fourier mode has the same main term and pole at $s=1$
+as in Statement A.5.5; all $M_\ell(0)$ vanish.
+
+We also need a bound uniform in $H$ for the individual
+$Q_{j,H}^\pm$. The quantitative assertion of
+\cite[Theorem 7.1 and Section 7.1]{AnantharamanZelditch2012}
+gives a polynomial bound in $t_j$ for the H\"older norm of
+the boundary primitive. Its displayed constant is
+$O((1+t_j)^{3/2})$ times
+$\|u_j\|_\infty+\|\nabla u_j\|_\infty$.
+On the fixed compact cover, the elliptic estimate and Sobolev
+embedding give the deliberately coarse bound
+$\|u_j\|_{C^1}\ll(1+t_j)^4$.
+The fixed coordinate changes and multiplication by
+$(2e^v)^{-s_j}$ in Statement A.4.6 cost at most a further fixed
+power of $1+t_j$. Thus, for some absolute integer $M$ depending
+only on this fixed geometric setup, the periodic primitive
+$F_j$ of $\beta_j$ has
+\[
+ \|F_j\|_{C^{1/2}}\ll(1+t_j)^M.
+\]
+An affine mean is understood in this assertion, as in
+Statement A.4.6.
+
+Identify $u=L_0\theta$, absorbing only fixed coordinate factors.
+The middle polynomial in $B_H^\pm$ is the convolution of the
+interval indicator with the kernel having coefficients
+$W(\ell/(H+1))$. Its bounded $L^1$ norm and the displayed
+decay bound imply approximation of a $1/2$-H\"older primitive
+with error $O(H^{-1/2})$. For the two Fej\'er terms,
+integration by parts and the preceding bounds for $F_H'$ give
+\[
+ \frac1{H+1}\left|\int F_H(x-a)\,\beta_j(dx)\right|
+ \ll (1+t_j)^M H^{-1/2};
+\]
+subtract $F_j(a)$ inside the derivative integral and use
+$|F_j(x)-F_j(a)|\ll(1+t_j)^M\|x-a\|^{1/2}$.
+Consequently
+\begin{equation}\label{A:Selberg-Q-limit}
+ |Q_{j,H}^\pm-Q_{j,I}|
+       \ll(1+t_j)^M H^{-1/2},
+ \qquad |Q_{j,H}^\pm|+|Q_{j,I}|\ll(1+t_j)^M,
+\end{equation}
+after increasing $M$ if necessary.
+The rapid vertical decay of $\widehat w$, the polynomial gamma
+bound on $r_j$, the broad-band period bound, and
+$\#\{t_j\leq V\}\ll V^2$ make the residue series absolutely
+convergent. Equation \eqref{A:Selberg-Q-limit} permits passage
+to its sharp-arc limit with error $O_w(Y^{1/2}H^{-1/2})$.
+
+Bracket the actual radially smoothed arc count by $B_H^-$ and
+$B_H^+$. Their main terms differ from
+$\lambda_0cY\widehat w(1)/3$ by $O_w(Y/H)$.
+Both spectral terms converge to the same series, and all the
+other errors just proved are $O_w(Y^{23/50})$.
+This proves the corresponding unnormalized expansion.
+Partial summation gives
+\[
+ \sum_z\sum_{\mathfrak a}w(A_z/Y)\mathbf1_I(\theta(\mathfrak a))
+       -\frac{\lambda_0c}{3}Y\widehat w(1)
+ =\sqrt Y\int_0^\infty e(Yv)\sqrt v\,(-w'(v))\,dv,
+\]
+and proves \eqref{A:fixed-smoothing-AP}.
+
+\emph{5. The conditional two-sided conclusion.}
+Group the absolutely convergent series by distinct $t$.
+Its coefficient at frequency $t$ is
+$r(t)\widehat w(1/2+it)\mathcal C(t)/4$.
+Here $r(t)\ne0$ because the gamma function has no zeros.
+If \eqref{A:exact-nonvanishing-condition} holds, choose $w$
+with $\widehat w(1/2+it)\ne0$: smooth monotone approximations
+to $\mathbf1_{[0,1]}$ have Mellin transforms tending to
+$(1/2+it)^{-1}\ne0$.
+The resulting real series $P(\log Y)$ is nonzero.
+Termwise averaging, justified by absolute uniform convergence,
+gives mean zero and strictly positive mean square.
+Since it is bounded, these two facts imply
+$\limsup P>0$ and $\liminf P<0$.
+For example, if $\limsup P\leq0$, then for every $\varepsilon>0$
+one has eventually $P\leq\varepsilon$ and $P\geq-C$.
+The inequality
+$P^2\leq(\varepsilon-C)P+\varepsilon C$ contradicts the
+positive mean square after averaging and letting
+$\varepsilon\to0$. The other sign is identical.
+
+The kernel $\sqrt v\,(-w'(v))$ is nonnegative, has finite
+positive integral, and is supported in a fixed compact
+subinterval of $(0,\infty)$. Positive and negative values
+bounded away from zero of its convolution with $e(Y)$
+therefore force positive and negative values bounded away
+from zero of $e$ at arbitrarily large arguments.
+Finally $Y=\sqrt{9X^2-1}=3X+O(X^{-1})$ and
+$R(X)=\mathcal A(Y)+O(\log(2X))$ transfer both assertions
+to $R(X)-C_0X$. The eigenspace sum is basis-independent because
+it is the contraction of the two linear period functionals
+with the orthogonal projector onto that eigenspace.
+\end{proof}

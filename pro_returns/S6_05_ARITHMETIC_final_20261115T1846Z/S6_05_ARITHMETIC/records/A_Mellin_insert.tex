@@ -1,0 +1,455 @@
+\paragraph{Statement A.4.4 (Sharp-arc exponent; complete candidate proof under review).}
+For every $\epsilon>0$, the actual count in the question satisfies
+\begin{equation}\label{A:sharp-two-thirds}
+ R(X)=C_0X+O_\epsilon(X^{2/3+\epsilon}).
+\end{equation}
+The proof uses an angularly uniform Mellin transform. In particular, it
+does not deduce an arc estimate from a count over an entire geodesic.
+
+\begin{proof}
+We give the transform and all uniform estimates used to invert it.
+Put $A_z=(9z^2-1)^{1/2}$ and $\kappa_\ell=2\pi\ell/L_0$.
+In this proof periods are unnormalized; this changes the estimates of
+Statement A.4.3 only by fixed geodesic-length factors. Choose real
+orthonormal eigenfunctions $u_j$ on $\Gamma^+\backslash\mathbb H$ and put
+\[
+ p_{j,\ell}=\int_{l_0}u_j(u)e^{i\kappa_\ell u}\,du,
+ \qquad p_j'=\sum_{i=1}^2\int_{l_i}u_j\,du.
+\]
+Apart from the constant eigenfunction, write $s_j=1/2+it_j$, with
+$t_j>0$, using Statement A.2.5. The constants in the following estimates
+may depend on this fixed orbifold and its three geodesics. The spectral
+estimates on its torsion-free cover apply to these eigenfunctions:
+their lifts are normalized by the square root of the cover degree,
+and a period on a lifted geodesic is the original period multiplied by
+its fixed covering degree. The angular frequencies form the corresponding
+fixed-index subsequence. Thus no spectral gap is assumed on the cover.
+
+\emph{1. An exact Mellin identity.}
+For $\operatorname{Re}s>1$ form the absolutely convergent series
+\[
+ E_s(p)=\sum_{i=1}^2\sum_{H_i\backslash\Gamma^+}
+       \cosh\bigl(d(p,\gamma^{-1}l_i)\bigr)^{-s}.
+\]
+Absolute local uniform convergence follows by placing fixed disjoint
+balls around coset representatives in the hyperbolic cylinder:
+the number at distance at most $r$ is $O(e^r)$, since a cylinder
+of fixed neck length has area $O(e^r)$ in that range. Its derivatives
+also converge locally after increasing $\operatorname{Re}s$; the
+identities initially obtained there continue to $\operatorname{Re}s>1$.
+Set
+\[
+ K_s(\kappa)=\int_{\mathbb R}(\cosh u)^{-s}e^{i\kappa u}\,du
+ =\frac{2^{s-1}\Gamma((s+i\kappa)/2)\Gamma((s-i\kappa)/2)}{\Gamma(s)},
+\]
+\[
+ M_\ell(s)=K_s(\kappa_\ell)^{-1}
+                 \int_{l_0}E_s(u)e^{i\kappa_\ell u}\,du.
+\]
+The beta integral proves the displayed formula for $K_s$.
+For a disjoint target axis, the signed distance of a point on $l_0$
+from that axis has absolute hyperbolic sine
+$A\cosh(u-u_0)$, where $A=\sinh d(l_0,l)$ and $u_0$ is the
+perpendicular foot. Consequently its contribution to $M_\ell$ is
+\[
+ e^{i\kappa_\ell u_0}A^{-s}F_{s,\kappa_\ell}(A),\quad
+ F_{s,\kappa}(A)=
+ {}_2F_1\left(\frac{s+i\kappa}{2},\frac{s-i\kappa}{2};
+                    \frac{s+1}{2};-A^{-2}\right).
+\]
+To verify this identity without an unquoted transform formula, expand
+$(1+A^{-2}\operatorname{sech}^2u)^{-s/2}$ and integrate termwise.
+The coefficient is
+\[
+ \frac{(-1)^k(s/2)_k}{k!A^{2k}}
+      \frac{K_{s+2k}(\kappa)}{K_s(\kappa)}
+ =\frac{(-1)^k((s+i\kappa)/2)_k((s-i\kappa)/2)_k}
+          {k!((s+1)/2)_k A^{2k}},
+\]
+by the gamma duplication formula. Here $A=A_z\geq\sqrt8$, so the
+series and the original integrals converge absolutely.
+
+There are four copies of each positive-height ideal angle: changing
+the normal's sign and changing the sign of its $z$ coordinate leave
+the foot coordinate unchanged modulo $L_0$. These are the four
+regular cells already counted in Statement A.2.3. The two exceptional
+double cosets with $z=0$ meet $l_0$ orthogonally at $u=L_0/2$.
+Indeed $r_2=(1,1,0)$ is orthogonal to $e_z$ and its intersection
+point has $\tanh u=1/\sqrt3$. Their individual contributions are
+$e^{i\kappa_\ell L_0/2}=(-1)^\ell$. Thus exactly
+\begin{equation}\label{A:Mellin-geometry}
+ M_\ell(s)=2(-1)^\ell+4D_\ell(s)+4H_\ell(s),
+\end{equation}
+where
+\[
+ D_\ell(s)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+          e^{2\pi i\ell\theta(\mathfrak a)}A_z^{-s},
+\]
+\[
+ H_\ell(s)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}A_z^{-s}
+                    (F_{s,\kappa_\ell}(A_z)-1).
+\]
+All sums in \eqref{A:Mellin-geometry} are absolutely convergent
+in their initial half-plane. The half-turns reversing an axis do not
+belong to its cyclic subgroup $H_i$; they therefore give the two
+oriented normal cosets, as required for this factor of four.
+
+Unfolding the scalar spectral coefficient of $E_s$ along $l_i$ gives
+\[
+ \left(\int_{l_i}u_j\right)
+ \int_{\mathbb R}(1+x^2)^{-s/2}
+ {}_2F_1\left(\frac{s_j}{2},\frac{1-s_j}{2};\frac12;-x^2\right)dx
+ =\left(\int_{l_i}u_j\right)
+ \frac{\sqrt\pi\Gamma((s+s_j-1)/2)\Gamma((s-s_j)/2)}{\Gamma(s/2)^2}.
+\]
+Here $x=\sinh r$ in Fermi coordinates. Integrating the eigenfunction
+along the full target geodesic solves
+$\xi''+\tanh r\,\xi'+\lambda_j\xi=0$; its odd initial-data solution
+integrates to zero over $r\in\mathbb R$, and its even solution is
+the displayed hypergeometric function. For the beta evaluation put
+$y=x^2/(1+x^2)$, apply the power-series identity
+\[
+ {}_2F_1(s_j/2,(1-s_j)/2;1/2;-x^2)
+ =(1+x^2)^{-s_j/2}{}_2F_1(s_j/2,s_j/2;1/2;y),
+\]
+and integrate the series against
+$y^{-1/2}(1-y)^{(s+s_j-3)/2}$. The resulting Gauss beta sum
+is the stated gamma quotient. All beta integrals are absolutely
+convergent for $\operatorname{Re}s>1$.
+It follows that, for $\ell\ne0$,
+\begin{equation}\label{A:Mellin-spectral}
+ M_\ell(s)=\sum_{j\geq1}p_j'p_{j,\ell}G(s,t_j,\kappa_\ell),
+\end{equation}
+\[
+ G(s,t,\kappa)=
+ \frac{\Gamma((s+1)/2)\Gamma((s+s_j-1)/2)\Gamma((s-s_j)/2)}
+ {\Gamma(s/2)\Gamma((s+i\kappa)/2)\Gamma((s-i\kappa)/2)}.
+\]
+The constant eigenfunction vanishes because its nonzero Fourier
+period on $l_0$ is zero. For each fixed $\ell$ the series in
+\eqref{A:Mellin-spectral} converges normally on compact subsets away
+from its poles, since its terms decay exponentially as
+$t_j\to\infty$. It therefore supplies the needed meromorphic
+continuation. In $\operatorname{Re}s>0$ its only possible poles are
+$s=s_j$ and $s=1-s_j$.
+
+\emph{2. A uniform bound for the geometric correction.}
+Fix $0<\sigma<1/2$, write $s=\sigma+i\tau$, and put
+$U=1+|\tau|$. With $\delta=\operatorname{arsinh}(1/A)$ one has
+\begin{equation}\label{A:F-spherical-integral}
+ F_{s,\kappa}(A)=
+ \frac{\Gamma((s+1)/2)}{\sqrt\pi\Gamma(s/2)}
+ \int_{-1}^1
+ \bigl(\cosh(2\delta)+x\sinh(2\delta)\bigr)^{-(s+i\kappa)/2}
+ (1-x^2)^{s/2-1}\,dx.
+\end{equation}
+For completeness, this identity follows by differentiating under
+the integral and integrating once by parts in $x$: both sides,
+as analytic even functions of $\delta$ near zero, solve
+\[
+ f''+2s\coth(2\delta)f'+(s^2+\kappa^2)f=0,
+ \qquad f(0)=1,\quad f'(0)=0.
+\]
+Uniqueness follows coefficient by coefficient, since
+$\operatorname{Re}s>0$; continuation along positive real $\delta$
+then proves \eqref{A:F-spherical-integral}. Equivalently, it is
+the quadratic hypergeometric transformation with parameters
+$a+b=s$, $c=(s+1)/2$.
+The base in the integral is positive. Its complex power has modulus
+equal to the power $-\sigma/2$, independently of both $\tau$ and
+$\kappa$; the weight has modulus $(1-x^2)^{\sigma/2-1}$.
+Stirling's formula for the prefactor gives
+\[
+ |F_{s,\kappa}(A)|\ll_\sigma U^{1/2}.
+\]
+At $\delta=0$ the first derivative of the integrand is an odd
+multiple of $x$, whose integral is zero. Its second derivative is
+bounded by a constant times $(1+|s|+|\kappa|)^2$ times the same
+integrable absolute weight, uniformly for
+$0\leq\delta\leq\operatorname{arsinh}(1/\sqrt8)$.
+Taylor's formula with integral remainder therefore gives
+\begin{equation}\label{A:F-uniform}
+ |F_{s,\kappa}(A)-1|
+ \ll_\sigma U^{1/2}
+       \min\{1,(U+|\kappa|)^2/A^2\}.
+\end{equation}
+Statement A.3.1 implies
+$\#\{(z,\mathfrak a):A_z\leq V\}\ll V$.
+Partial summation in \eqref{A:F-uniform} now proves normal
+absolute convergence of $H_\ell(s)$ for $\operatorname{Re}s>0$
+and, on our chosen line,
+\begin{equation}\label{A:H-uniform}
+ |H_\ell(\sigma+i\tau)|
+       \ll_\sigma U^{1/2}(U+|\kappa_\ell|)^{1-\sigma}.
+\end{equation}
+The same convergence argument continues it to any closed strip
+in $\operatorname{Re}s>-1$ avoiding the possible hypergeometric
+parameter poles, but only the positive strip is needed here.
+
+\emph{3. The remaining Mellin contour, uniformly in the angular cutoff.}
+Let $T,H\geq2$. Let $w=w_T$ be a smooth function, equal to one
+near zero, supported in $[0,2]$, with its transition confined to
+$[1-1/T,1+1/T]$, $0\leq w\leq1$, and
+$|w^{(k)}|\ll_kT^k$. Its Mellin transform satisfies, on every
+fixed positive vertical strip and for every $N$,
+\begin{equation}\label{A:w-Mellin-bound}
+ |\widehat w(\sigma+i\tau)|
+ \ll_{\sigma,N}U^{-1}(1+U/T)^{-N}.
+\end{equation}
+This follows by one integration by parts, whose derivative has
+bounded $L^1$ norm, and repeated further integrations by parts in
+the logarithmic variable. Let $b_\ell$, $1\leq\ell\leq H$, be
+arbitrary complex numbers with $|b_\ell|\leq1/\ell$.
+We prove
+\begin{equation}\label{A:contour-uniform}
+ \int_{\mathbb R}|\widehat w(\sigma+i\tau)|
+ \left|\sum_{\ell=1}^H b_\ell M_\ell(\sigma+i\tau)\right|d\tau
+       \ll_\sigma (T+H)\log(2H).
+\end{equation}
+
+Here are details of the gamma estimate and its summation, to make
+the frequency uniformity explicit. Write
+$p_{j,\ell}=a_{j,\ell}D_{s_j}(\kappa_\ell)$ as in
+\eqref{A:Reznikov-mean}. Put
+$a=3/4-\sigma/2$ and $b=1/2-\sigma/2$, so $1/2<a<3/4$.
+For $\tau,t,\kappa\geq0$ Stirling's formula gives
+\begin{align}\label{A:gamma-full-bound}
+ |G(\sigma+i\tau,t,\kappa)D_{1/2+it}(\kappa)|
+ &\ll_\sigma U^{1/2}
+  \{(1+\tau+t)(1+|\tau-t|)\}^{-a}\\
+ &\quad\cdot\{(1+\tau+\kappa)(1+|\tau-\kappa|)\}^{b}
+ \{(1+t+\kappa)(1+|t-\kappa|)\}^{-1/4}
+ e^{-c\operatorname{dist}(t,[\min(\tau,\kappa),\max(\tau,\kappa)])}.
+ \nonumber
+\end{align}
+One may take $c=\pi/2$. The exponential follows exactly from
+\[
+ t-\max(t,\kappa)-\max(t,\tau)+\max(\tau,\kappa)
+ =-\operatorname{dist}(t,[\min(\tau,\kappa),\max(\tau,\kappa)]).
+\]
+The same bound holds with $|\tau|$, $|\kappa|$ for arbitrary signs.
+The fixed real parts of the numerator gamma functions are
+$\sigma/2-1/4$, which are negative but not nonpositive integers;
+thus the estimate is bounded at $\tau=\pm t$.
+
+In a dyadic spectral band $J\leq1+t_j<2J$, the elementary
+estimates and Reznikov's bound used in Statement A.4.3 give
+\begin{equation}\label{A:three-basic-sums}
+ \sum_j|p_j'|^2\ll J,\quad
+ \sum_j|p_j'|\ll J^{3/2},\quad
+ \sum_j|p_j'p_{j,\ell}|\ll J,
+ \quad\sum_{|\ell|\leq K}|a_{j,\ell}|^2\ll\max(K,J).
+\end{equation}
+The middle bound uses the elementary $O(J^2)$ eigenvalue count.
+Changing between $\ell$ and $\kappa_\ell$ changes dyadic bounds
+only by fixed constants.
+
+First suppose $\kappa_\ell\leq t_j/2$. Then
+$|D_{s_j}(\kappa_\ell)|\asymp J^{-1/2}$.
+For $\tau\geq t_j/2$, \eqref{A:gamma-full-bound} implies
+\[
+ |G(\sigma+i\tau,t_j,\kappa_\ell)|
+ \ll_\sigma
+ \left(\frac{1+\tau}{1+|\tau-t_j|}\right)^a
+ e^{-c(t_j-\tau)_+}.
+\]
+For $\tau<t_j/2$ there is instead exponential decay in $J$,
+with an immaterial polynomial factor. Since $a<1$, integration
+over a dyadic $\tau$ block of size $U\gg J$, with the factor
+$U^{-1}(1+U/T)^{-N}$, is
+$O((1+U/T)^{-N})$; the same assertion holds for $U\asymp J$
+because the integrable singular factor is bounded by
+$(J/(1+|\tau-t_j|))^a$.
+Summing \eqref{A:three-basic-sums} over $\ell$ costs $\log(2H)$.
+Summing over $U\gg J$ and then dyadic $J$ costs $O(T)$:
+for $J\leq T$ the contribution is
+$O(J\log(2T/J))$, whose dyadic sum is $O(T)$, and the remaining
+bands decay faster than any power of $J/T$.
+
+Second suppose $\kappa_\ell\geq2t_j$, in an angular block
+$K\leq\kappa_\ell<2K$ with $K\gg J$.
+Up to $\tau\leq\max(2t_j,\kappa_\ell/2)$,
+\eqref{A:gamma-full-bound} is bounded by
+\[
+ K^{1/2-\sigma}U^{1/2}J^{-a}(1+|\tau-t_j|)^{-a}
+ e^{-c(\tau-t_j)_+}.
+\]
+In the remaining range, the exponential factor is at most
+$e^{-c'K}$. For $\tau\gg K$ the polynomial factor is bounded
+independently of $\tau$ (the total $\tau$ power in
+\eqref{A:gamma-full-bound} is zero). For $\tau\asymp K$ it is
+at most a fixed power of $K$. After the coefficient bounds below,
+the sum of all these tails is therefore $O(\log(2T))$:
+the integral of $U^{-1}(1+U/T)^{-N}$ above a fixed positive
+lower limit is $O(\log(2T))$, and the exponential in $K$
+absorbs the polynomial factors. This accounts also for
+$\tau\geq\kappa_\ell$, where the exponential is
+$e^{-c(\kappa_\ell-t_j)}$, rather than
+$e^{-c(\tau-t_j)}$.
+Cauchy--Schwarz in $\ell$, using
+$\sum|a_{j,\ell}|^2\ll K$ and
+$\sum_{\ell\asymp K}|b_\ell|^2\ll K^{-1}$, introduces no
+additional factor. The elementary beta-integral bound
+\[
+ \int_0^\infty U^{-1/2}(1+|\tau-t_j|)^{-a}
+ e^{-c(\tau-t_j)_+}(1+U/T)^{-N}\,d\tau
+ \ll_\sigma J^{-a}\min(J,T)^{1/2}
+\]
+therefore bounds the spectral band by
+\[
+ K^{1/2-\sigma}J^{3/2-2a}\min(J,T)^{1/2}
+ =K^{1/2-\sigma}J^\sigma\min(J,T)^{1/2}.
+\]
+Its dyadic sum over $J\ll K$ is $O_\sigma(K)$ for $K\leq T$
+and $O_\sigma(\sqrt{KT})$ for $K>T$. Summing $K\ll H$ is
+$O_\sigma(T+H)$.
+
+Finally suppose $t_j/2<\kappa_\ell<2t_j$, so $J\ll H$.
+Cauchy--Schwarz in $\ell$ gives
+\[
+ \left|\sum b_\ell a_{j,\ell}
+       G(\sigma+i\tau,t_j,\kappa_\ell)D_{s_j}(\kappa_\ell)\right|
+ \ll J^{-1/2}
+       \left(\sum_{\kappa_\ell\asymp J}|GD|^2\right)^{1/2}.
+\]
+Squaring \eqref{A:gamma-full-bound} and using
+$\sum_{\kappa_\ell\asymp J}(1+|t_j-\kappa_\ell|)^{-1/2}
+\ll J^{1/2}$ gives, in the three respective $\tau$ ranges,
+\[
+ \sum_{\kappa_\ell\asymp J}|GD|^2\ll_\sigma
+ \begin{cases}
+ U/J,&\tau\leq t_j/2,\\
+ J^{2b+1/2}(1+|\tau-t_j|)^{-2a},&t_j/2<\tau<2t_j,\\
+ 1,&\tau\geq2t_j.
+ \end{cases}
+\]
+After multiplication by $|\widehat w|$, integration in $\tau$,
+and summation of $|p_j'|$ over the spectral band, these give
+respectively
+\[
+ O_\sigma(\sqrt{J\min(J,T)}),\qquad
+ O_\sigma(J(1+J/T)^{-N}),\qquad
+ O_\sigma\bigl(J\log(2+T/J)\min(1,(T/J)^N)\bigr).
+\]
+For the middle range the exponent is exactly
+$b-1/4-a=-1/2$ before the final $J^{3/2}$ sum.
+Their dyadic sum over $J\ll H$ is $O_\sigma(T+H)$.
+These three cases prove \eqref{A:contour-uniform}. The finitely
+many $0<t_j<1$ are included in the band $J=1$; the strict spectral
+gap ensures all constants there are finite.
+
+\emph{4. Shifting the contour and bounding the residues.}
+For $Y\geq2$ write
+\[
+ W_\ell(Y)=\sum_{z\geq1}\sum_{N\mathfrak a=m_z}
+ e^{2\pi i\ell\theta(\mathfrak a)}w(A_z/Y).
+\]
+Mellin inversion of \eqref{A:Mellin-geometry} on a line
+$\operatorname{Re}s>1$ gives $4W_\ell$ as the inverse Mellin
+transform of $M_\ell-2(-1)^\ell-4H_\ell$.
+For $H_\ell$ shift to $\operatorname{Re}s=\sigma$ without
+crossing a pole. Equations \eqref{A:H-uniform} and
+\eqref{A:w-Mellin-bound} show, uniformly in the coefficients,
+\begin{equation}\label{A:correction-inversion}
+ \left|\sum_{\ell=1}^Hb_\ell\frac1{2\pi i}
+ \int_{(\sigma)}\widehat w(s)Y^sH_\ell(s)\,ds\right|
+ \ll_\sigma Y^\sigma
+     T^{1/2}(T+H)^{1-\sigma}\log(2H).
+\end{equation}
+Indeed the remaining integral is bounded by
+$\int_0^\infty U^{-1/2}(U+H)^{1-\sigma}(1+U/T)^{-N}\,d\tau$.
+The exceptional constant $2(-1)^\ell$ contributes
+$2(-1)^\ell w(1/Y)$ and hence $O(\log(2H))$ in the angular sum.
+
+Shift the $M_\ell$ contour to the same line. Its residue at $s=s_j$ is
+\[
+ p_j'p_{j,\ell}\,r_j\frac{D_{s_j}(0)}{D_{s_j}(\kappa_\ell)},\qquad
+ r_j=\frac{2\Gamma((s_j+1)/2)\Gamma(s_j-1/2)}{\Gamma(s_j/2)^3},
+ \qquad |r_j|\ll(1+t_j)^{1/2}.
+\]
+The residue at $1-s_j$ has the conjugate gamma factors and obeys
+the same estimate. Statement A.4.3 and
+\eqref{A:w-Mellin-bound} therefore bound all residues, after summing
+the angular coefficients, by
+\begin{equation}\label{A:residues-inversion}
+ \ll Y^{1/2}\log(2H)
+      \sum_{J\text{ dyadic}}J^{1/2}(1+J/T)^{-N}
+ \ll Y^{1/2}T^{1/2}\log(2H).
+\end{equation}
+The lower-half-plane residues use the same proof with conjugated
+gamma ratios. No positivity or common phase of the periods is used.
+The remaining contour costs
+$O_\sigma(Y^\sigma(T+H)\log(2H))$ by
+\eqref{A:contour-uniform}.
+
+For clarity, all contour shifts can first be made at finite heights.
+The eigenvalue bound $N(V)\ll V^2$ permits heights tending to infinity
+whose distance from every $\pm t_j$ is at least a fixed multiple of
+$V^{-3}$: the excluded intervals in $[V,V+1]$ have total length
+$O(V^{-1})$. On these horizontal segments the gamma formula and
+the spectral coefficient bounds give polynomial growth for each
+fixed $H$. Taking $N$ arbitrarily large in
+\eqref{A:w-Mellin-bound} makes their integrals tend to zero.
+Absolute convergence of the residue series follows from
+\eqref{A:residues-inversion}. The estimates on the resulting vertical
+line are uniform in $H,T$, so this limiting argument makes no
+uncontrolled exchange of a growing angular cutoff with a contour limit.
+
+Combining these estimates proves the uniform smoothed inequality
+\begin{equation}\label{A:smoothed-angular-sum}
+ \left|\sum_{\ell=1}^H b_\ell W_\ell(Y)\right|
+ \ll_\sigma\log(2H)\left[
+ Y^{1/2}T^{1/2}+Y^\sigma(T+H)
+ +Y^\sigma T^{1/2}(T+H)^{1-\sigma}+1\right].
+\end{equation}
+Because the coefficients $b_\ell$ are arbitrary within
+$|b_\ell|\leq1/\ell$, choose their phases to align $W_\ell(Y)$.
+Then the left side is exactly
+$\sum_{\ell\leq H}|W_\ell(Y)|/\ell$.
+This averaged angular estimate is sufficient; it avoids asserting
+the stronger, individual-mode estimate \eqref{A:needed-twist}.
+
+\emph{5. Returning to both sharp boundaries.}
+The Erd\H{o}s--Tur\'an inequality used in Statement A.4.2 applies
+also to a finite list with nonnegative real weights. For rational
+weights this follows by replication after clearing denominators;
+arbitrary weights follow by approximation and continuity. Hence the
+weighted arc discrepancy is at most
+\[
+ O\left(\frac{W_0(Y)}H+
+       \sum_{\ell\leq H}\frac{|W_\ell(Y)|}{\ell}+\log(2Y)\right).
+\]
+The endpoint term is $O(\log(2Y))$ by the Pell calculation already
+proved; the other arc endpoint is empty.
+Since Statement A.3.1 gives
+$\#\{(z,\mathfrak a):A_z\leq V\}=(c/3)V+O(V^{2/3})$,
+partial summation gives
+\[
+ W_0(Y)=\frac c3Y\widehat w(1)+O(Y^{2/3}),
+ \qquad c=\frac{9L_0^2}{2\pi^2},
+\]
+uniformly for the monotone smooth cutoffs under discussion, because
+their total variation is one.
+
+Choose two such cutoffs $w^-,w^+$ with
+$0\leq w^-\leq\mathbf1_{[0,1]}\leq w^+\leq1$,
+transition intervals respectively $[1-1/T,1]$ and $[1,1+1/T]$.
+They bracket the sharp radial count with nonnegative weights and
+satisfy $\widehat w^\pm(1)=1+O(1/T)$.
+Put $T=H=\lfloor Y^{1/3}\rfloor$ in
+\eqref{A:smoothed-angular-sum}. The three nonconstant error terms
+are respectively
+\[
+ O(Y^{2/3}\log Y),\quad
+ O_\sigma(Y^{1/3+\sigma}\log Y),\quad
+ O_\sigma(Y^{1/2+2\sigma/3}\log Y).
+\]
+The angular and radial main-term bracketing errors are
+$O(Y/H+Y/T)=O(Y^{2/3})$.
+Take any fixed sufficiently small $\sigma>0$, and absorb logarithms
+into $Y^\epsilon$. Finally put $Y=(9X^2-1)^{1/2}$.
+The ideal-arc main term is $(\lambda_0c/3)Y=C_0X+O(X^{-1})$.
+Statement A.1.3 changes this by only $O(\log(2X))$, proving
+\eqref{A:sharp-two-thirds}.
+\end{proof}

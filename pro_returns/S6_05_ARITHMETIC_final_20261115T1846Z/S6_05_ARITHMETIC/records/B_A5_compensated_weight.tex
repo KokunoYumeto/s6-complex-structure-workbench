@@ -1,0 +1,270 @@
+% Exact test of the compensated delta-method weight.  Work record only.
+% No impossibility theorem about Sun's conjecture is asserted.
+\subsection*{An exact compensated-weight test at the radial face}
+
+The issue tested here is the following specific proposed inference: an
+untwisted modulus partial-sum bound of size $X^\epsilon$, followed by
+Abel summation for each dual vector and absolute summation over those
+vectors, might retain only an $X^\epsilon$ loss because the oscillatory
+integral compensates for its inverse-modulus phase.  The following
+calculation shows precisely what that compensation does for one
+family of vectors in the present problem.  It is a statement about
+the full analytic weights, not a lower bound for the arithmetic error.
+
+Write $e(x)=\exp(2\pi i x)$, and set
+\[
+ P=\{(s,t,z):0<z<1,\quad0<t<s-4z,\quad s<17z/4\},\qquad
+ F(s,t,z)=s^2-3t^2-18z^2.
+\]
+Boundary conventions have no effect on the integrals below; the
+original conventions may be retained when evaluating weights at
+lattice points.  Fix a nonnegative $C^\infty$ function $\chi$ such that
+\[
+ 0\leq\chi\leq1,\quad \chi(v)=1\ (|v|\leq1/128),\quad
+ \chi(v)=0\ (|v|\geq1/64).
+\]
+For example, let $b(t)=\exp(-1/t)$ for $t>0$, $b(t)=0$ otherwise,
+put $\theta(t)=b(t)/(b(t)+b(1-t))$, and take
+$\chi(v)=1-\theta(128|v|-1)$.  This expression is smooth also at zero,
+because it is constant in a neighborhood of zero.  Multiplying the
+sharp weight by $\chi(F(y))$ preserves every counted solution for
+$X\geq16$: on $F(Xy)=-2$ one has
+$|F(y)|=2/X^2\leq1/128$.
+
+We use exactly Heath-Brown's kernel, not a surrogate amplitude.
+With
+\[
+ w_0(t)=\begin{cases}\exp(-(1-t^2)^{-1}),&|t|<1,\\0,&|t|\geq1,
+ \end{cases}\quad
+ c_0=\int_{-1}^1w_0(t)\,dt,\quad
+ \omega(r)=4c_0^{-1}w_0(4r-3),
+\]
+the kernel is
+\[
+ h(r,v)=\sum_{j\geq1}\frac{\omega(rj)-\omega(|v|/(rj))}{rj}.
+\]
+These are the definitions in Heath-Brown (1996), Section 3; his
+Theorem 2 supplies the Poisson formula for smooth compactly supported
+weights, and Lemma 4 states the needed flatness in $v$.
+The full primary author PDF was downloaded and its Theorems 1--2,
+Section 3 and Lemma 4 read; see \cite{A5HeathBrown1996}.
+
+Put $K=[2/3,3/4]$.  On the support of $\chi(F(y))$, for $X\geq16$,
+\[
+ |F(y)+2/X^2|\leq3/128<r/2\qquad(r\in K).
+\]
+Only $j=1$ can occur in the first sum defining $h$, and the second
+sum vanishes.  Therefore the following identity is exact:
+\begin{equation}\label{B:compensated-flat-h}
+ h(r,F(y)+2/X^2)=\frac{\omega(r)}r\qquad
+ (r\in K,\ \chi(F(y))\ne0).
+\end{equation}
+For $k\geq1$ define the normalized full integral and its Abel weight by
+\[
+ J_k(r)=\int_P\chi(F(y))h(r,F(y)+2/X^2)
+                 e(-(s+kz)/r)\,dy,\qquad
+ W_k(r)=r^{-1/2}J_k(r).
+\]
+By \eqref{B:compensated-flat-h}, these functions are independent of
+$X$ throughout $K$.
+
+\paragraph{Exact analytic conclusion.}
+There is a fixed number $L>0$ such that, as $k\to\infty$,
+\begin{equation}\label{B:compensated-norm}
+ \|W_k\|_{L^\infty(K)}\asymp k^{-1},\qquad
+ \operatorname{Var}_K W_k=L+O(k^{-1}).
+\end{equation}
+Consequently
+\[
+ \sum_{10\leq k\leq H}
+ \bigl(\|W_k\|_\infty+\operatorname{Var}_K W_k\bigr)
+ =LH+O(\log(2H)).
+\]
+The same linear lower bound holds for standard smooth approximations
+to the sharp weight, for a fixed positive proportion of the frequencies
+$k\leq H$; a precise statement is given below.
+
+\paragraph{Proof, including the nonzero face coefficient.}
+Write $s=zu$, $t=zv$.  The Jacobian is $z^2$, the fixed triangular
+cross-section is
+\[
+ D=\{(u,v):4<u<17/4,\ 0<v<u-4\},\qquad
+ f(u,v)=u^2-3v^2-18,
+\]
+and $F(zu,zv,z)=z^2f(u,v)$.  Thus
+\[
+ J_k(r)=\frac{\omega(r)}r
+ \int_D\int_0^1 z^2\chi(z^2f(u,v))
+               e(-(k+u)z/r)\,dz\,du\,dv.
+\]
+Twice integrating the inner integral by parts gives, uniformly on $K$,
+\begin{equation}\label{B:compensated-leading}
+ J_k(r)=-\frac{\omega(r)}{2\pi i k}A(r)e(-k/r)+O(k^{-2}),
+ \qquad
+ A(r)=\int_D\chi(f(u,v))e(-u/r)\,du\,dv.
+\end{equation}
+The lower endpoint contributes zero because $z^2\chi(z^2f)$ and its
+first derivative vanish at zero.  The replacement
+$(k+u)^{-1}=k^{-1}+O(k^{-2})$ is uniform on the bounded triangle.
+All constants depend only on the displayed fixed cutoff.
+
+The top-face coefficient cannot vanish by phase cancellation.  Indeed,
+for $u_0=33/8$, one has $|u-u_0|\leq1/8$ on $D$, and hence
+\[
+ \Re\{e(u_0/r)A(r)\}
+ \geq \cos(3\pi/8)\int_D\chi(f(u,v))\,du\,dv>0.
+\]
+For an explicit positive lower bound use the rational rectangle
+\[
+ R=[8489/2000,8491/2000]\times[159/2000,161/2000]\subset D.
+\]
+On this rectangle $|f|<1/128$, so $\chi(f)=1$, and
+$\operatorname{area}(R)=10^{-6}$.  It follows that
+\begin{equation}\label{B:compensated-A-positive}
+ |A(r)|\geq10^{-6}\cos(3\pi/8)\qquad(r\in K).
+\end{equation}
+
+To control differentiation of the remainder without an unsupported
+differentiation of big-$O$ notation, use Euler's identity.  Set
+$a(r)=\omega(r)/r$ and
+\[
+ B_k(r)=\int_P F(y)\chi'(F(y))e(-(s+kz)/r)\,dy.
+\]
+Since
+\[
+ r\partial_r e(-(s+kz)/r)=-y\cdot\nabla_y e(-(s+kz)/r),\qquad
+ \operatorname{div}(y\chi(F))=3\chi(F)+2F\chi'(F),
+\]
+the divergence theorem gives the exact relation
+\begin{equation}\label{B:compensated-Euler}
+ rJ_k'(r)=\left(\frac{ra'(r)}{a(r)}+3\right)J_k(r)
+       -a(r)A(r)e(-k/r)+2a(r)B_k(r).
+\end{equation}
+The three angular faces satisfy $y\cdot\nu=0$ and have no flux.
+The face $z=1$ has $y\cdot\nu=1$ and produces exactly the displayed
+top-face term.  The vertex at zero has zero flux; alternatively apply
+the theorem first to $z\geq\delta$ and let $\delta\downarrow0$.
+One radial integration by parts gives $J_k=O(k^{-1})$ and
+$B_k=O(k^{-1})$, uniformly in $r$.  Hence
+\[
+ J_k'(r)=-\frac{\omega(r)}{r^2}A(r)e(-k/r)+O(k^{-1}),\qquad
+ W_k'(r)=-\frac{\omega(r)}{r^{5/2}}A(r)e(-k/r)+O(k^{-1}).
+\]
+Thus
+\begin{equation}\label{B:compensated-L}
+ L=\int_{2/3}^{3/4}\frac{\omega(r)}{r^{5/2}}|A(r)|\,dr>0,
+\end{equation}
+which proves \eqref{B:compensated-norm}.  The same radial integration
+by parts, after differentiating twice under the integral, gives
+$\|W_k''\|_\infty=O(k)$: the differentiated amplitude and its first
+radial derivative are $O(k^2)$, while the phase derivative is
+$\asymp k$.  This observation also verifies the discrete assertion
+below.
+
+The positivity can be certified without numerical quadrature of
+$A$.  Since $c_0\leq2e^{-1}$ and
+$w_0(4r-3)\geq e^{-9/8}$ on $K$, one has
+$\omega(r)\geq2e^{-1/8}$.  Therefore
+\begin{equation}\label{B:compensated-explicit-lower}
+ L\geq\frac1{12}\,2e^{-1/8}\left(\frac43\right)^{5/2}
+           10^{-6}\cos(3\pi/8)>0.
+\end{equation}
+The rational rectangle checks, Euler identities and a rigorous Arb
+enclosure of the last positive number are recorded by
+\path{code/B_A5_compensated_weight.py} and its stdout.
+
+\paragraph{The actual discrete modulus variation.}
+Let $\operatorname{Var}_{X,K} W$ be the sum of
+$|W((q+1)/X)-W(q/X)|$ over consecutive integer mesh points lying in
+$K$.  The elementary comparison of a differentiable function with its
+piecewise linear interpolant gives
+\[
+ \left|\operatorname{Var}_{X,K}W_k-
+                  \operatorname{Var}_K W_k\right|
+ \ll X^{-1}(\|W_k'\|_\infty+\|W_k''\|_{L^1(K)})
+ \ll (1+k)/X.
+\]
+For example, on each mesh interval replace $W_k'(r)$ by its left
+endpoint value, and bound both resulting errors by the integral of
+$|W_k''|$ times the mesh width.  The two incomplete endpoint intervals
+cost $O(X^{-1}\|W_k'\|_\infty)$.
+It follows that
+\[
+ \sum_{10\leq k\leq H}\operatorname{Var}_{X,K}W_k
+       =LH+O(\log(2H)+H^2/X).
+\]
+In particular this is a loss of order $H$ when $H\asymp\sqrt X$.
+Restricting $q$ to any one fixed residue class only changes the mesh
+width by a fixed factor and gives the same conclusion.
+
+\paragraph{Stability under boundary smoothing.}
+Let $w=\mathbf1_P\chi(F)$, and let $w_H$ be any smooth approximation
+supported in a fixed compact set within $|F|\leq1/64$, with
+\[
+ \|w_H-w\|_{L^1(\R^3)}\leq C/H.
+\]
+Such approximations are obtained by mollifying $\mathbf1_P$ at scale
+$H^{-1}$ and then multiplying by $\chi(F)$; the polytope boundary has
+finite area.  Define $J_{H,k}$ and $W_{H,k}$ by replacing $w$ with
+$w_H$ in the full integrals.  Identity
+\eqref{B:compensated-flat-h} still holds exactly.  Differentiating its
+finite integral gives
+\[
+ \|W_{H,k}-W_k\|_\infty\ll H^{-1},\qquad
+ \|W_{H,k}'-W_k'\|_\infty\ll(1+k)/H.
+\]
+Consequently there are fixed $\eta,c>0$ and $k_0$ such that, for
+$k_0\leq k\leq\eta H$, $H=o(X)$, and $X$ sufficiently large,
+\[
+ \operatorname{Var}_{X,K}W_{H,k}\geq c.
+\]
+Indeed compare discrete variations by the integral of
+$|W_{H,k}'-W_k'|$, choose $k_0$ so that the $O(k^{-1})$ error is
+less than $L/4$, then choose $\eta$ so that the smoothing error is
+less than $L/4$, and finally use $H/X\to0$.  The upper bound is
+also fixed on this frequency range.  Thus the sum of these full
+smoothed variation norms is $\asymp H$.
+
+\paragraph{What this proves and what it leaves open.}
+For $c_k=(1,0,k)$ the good-modulus dual form in the exact Gauss
+calculation is
+\[
+ H(c_k)=k^2-18.
+\]
+For $k\geq10$ it lies strictly between $(k-1)^2$ and $k^2$ and is
+not a rational square.  In the rational normalization of the Sali\'e
+parameters the discriminant is $4mn=H(c_k)/9$, also not a square.
+This avoids the evident square-discriminant family $c=(0,0,k)$.
+We do not use this observation as a substitute for identifying the
+precise half-integral multiplier and its complete unary-theta
+projection; that arithmetic step remains separate.
+
+On a modulus block $q=Xr$, the exact Poisson summand has the scale
+\[
+ X^{-2}q^{-3}S_q(c)I_q(c),\qquad I_q(c_k)=X^3J_k(r).
+\]
+After the three Gauss factors, writing the arithmetic sequence in the
+normalization $T_q(c_k)/q$ leaves the analytic weight
+\[
+ q^{-1/2}I_q(c_k)=X^{5/2}W_k(q/X).
+\]
+Grant, even before completing the multiplier identification, an
+$O_\epsilon((Xk)^\epsilon)$ bound for every required partial sum of
+the theta-subtracted arithmetic sequence on this block.  Abel
+summation and absolute summation over $k$ then incur the weight norm
+just calculated: their direct bound has scale
+$X^{1/2+\epsilon}H$, not $X^{1/2+\epsilon}$, on this family alone.
+This statement concerns the bound delivered by that procedure; it is
+not a lower bound for the true arithmetic sum.  In the common
+balancing heuristic with a boundary cost $X/H$, it predicts the
+exponent $3/4$, not the requested $1/2$; no full $3/4$ theorem is
+claimed here because the other dual frequencies and local
+arithmetic factors have not been bounded by this calculation.
+
+The missing improvement could come from cancellation between dual
+frequencies, an arithmetic transformation retaining their phases,
+or another organization of the count.  This calculation does not
+rule out such arguments, nor does it prove that Sun's conjecture
+cannot imply the desired result.  It settles only the proposed free
+compensation in the termwise Abel-summation argument, while using
+the actual radial face and the full Heath-Brown kernel.

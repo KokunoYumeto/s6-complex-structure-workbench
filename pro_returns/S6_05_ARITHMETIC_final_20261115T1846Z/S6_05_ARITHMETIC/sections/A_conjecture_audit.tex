@@ -1,0 +1,172 @@
+% Source audit for A.5, 15 November 2026.  Ready for root integration.
+% No assertion that a corrected Sali\'e conjecture implies the actual arc count.
+\subsection{An audit of a proposed square-root input}
+\paragraph{Statement A.5.7 (Refuted conjectural input).}
+The literal Conjecture~1 of Bir\'o \cite{A5Biro2026} cannot serve as a
+sound conjectural input: it contradicts a proved first-moment formula.
+We give the specialization, including its smoothness and normalization
+checks.  This does not refute a version in which the unary-theta
+contribution is subtracted.
+
+For odd positive $c$, put
+\[
+ T(m,n;c)=\sum_{x\in(\Z/c\Z)^\times}
+ \left(\frac{x}{c}\right)e\left(\frac{m\bar x+nx}{c}\right),
+ \qquad e(u)=e^{2\pi i u},
+ \qquad
+ \epsilon_c=\begin{cases}1,&c\equiv1\pmod4,\\
+                         i,&c\equiv3\pmod4.
+            \end{cases}
+\]
+These are Bir\'o's conventions.  Louvel's $K_2(m,n;c)$ writes the two
+arguments in the reverse order; replacing $x$ by $\bar x$ shows that
+the two definitions agree, since
+$\bigl(\frac{\bar x}{c}\bigr)=\bigl(\frac{x}{c}\bigr)$.
+
+Choose a fixed nonnegative, nonzero function
+$g\in C_c^\infty(\R)$ supported in $[1,2]$ and, for $C\geq1$, define
+\[
+ f_C(x)=\sqrt{C/x}\,g(x/C).
+\]
+This is smooth and supported in $[C,2C]$, and for every fixed
+$j\geq0$ it satisfies
+$x^j f_C^{(j)}(x)=O_{g,j}(1)$.
+In Bir\'o's conjecture take
+\[
+ L=4,\quad K=1,\quad m=4,\quad n=1,
+ \quad B=1,\quad\alpha=0,
+ \quad r=1.
+\]
+All the hypotheses hold: $2\mid L$,
+$\gcd(L,Kr)=1$, and $LK(1+B)=8\ll_\delta C^\delta$
+for any $\delta>0$ once $C$ grows.  The stated derivative bounds hold
+for that same $\delta$.  For each odd $c$, multiplication by $4$ is a
+bijection of $(\Z/c\Z)^\times$.  Substitution $x=4y$ gives
+\[
+ T(4,\bar4;c)
+ =\sum_y\left(\frac{4y}{c}\right)
+ e\left(\frac{\bar y+y}{c}\right)
+ =T(1,1;c).
+\]
+The choice $n=1$ also removes any possible notational ambiguity about
+the placement of the overline in Bir\'o's second argument.
+Thus his asserted estimate would give
+\[
+ \sum_{c\equiv1\pmod4}
+ g(c/C)\frac{T(1,1;c)}{\sqrt c}
+ =O_{g,\varepsilon}(C^{1/2+\varepsilon}).
+\]
+
+Theorem~1 of Louvel's published paper
+\cite[p.~525]{A5Louvel2012} (Theorem~1.1 in its arXiv version)
+has the following applicable specialization:
+\begin{equation}\label{A5audit:louvel-specialization}
+ A(U):=\sum_{\substack{0<c\leq U\\c\ \text{ odd}}}
+ \frac{T(1,1;c)\overline{\epsilon_c}}{\sqrt c}
+ =\frac8{\pi^2}U+O_\eta(U^{3/4+\eta})
+ \qquad(\eta>0).
+\end{equation}
+For completeness, in his general theorem we take the odd, coprime
+integers $D=f=1$, the even primitive character of conductor~$1$,
+and positive $m=n=1$.  In his formula for the main coefficient take
+$t=s=m'=n'=D_t=D_0=D_1=1$.
+Then $t$ is squarefree and $1$ modulo~$4$, $s$ is supported by $t$,
+$s^2t^3\mid D$, and all coprimality and equal-gcd conditions hold.
+The Jacobi symbol with denominator~$1$ equals~$1$ and all prime
+products are empty, so the coefficient is exactly $8/\pi^2$.
+The conjugate on $\epsilon_c$ has been checked in both the author
+preprint and the published formula; omitting it would change this
+normalization.
+
+The same theorem, with $m=n=-1$ and the other data unchanged, gives
+\[
+ A_-(U):=\sum_{\substack{0<c\leq U\\c\ \text{ odd}}}
+ \frac{T(-1,-1;c)\overline{\epsilon_c}}{\sqrt c}
+ =O_\eta(U^{3/4+\eta}),
+\]
+because its first case applies whenever either argument is negative.
+The exact substitution $x=-y$ in the defining sum gives
+\[
+ T(-1,-1;c)=\left(\frac{-1}{c}\right)T(1,1;c).
+\]
+Consequently the single residue class $1$ modulo $4$ has the asymptotic
+\begin{equation}\label{A5audit:single-class}
+ A_1(U):=\sum_{\substack{0<c\leq U\\c\equiv1\pmod4}}
+ \frac{T(1,1;c)}{\sqrt c}
+ =\frac{A(U)+A_-(U)}2
+ =\frac4{\pi^2}U+O_\eta(U^{3/4+\eta}).
+\end{equation}
+
+Abel summation applied to \eqref{A5audit:single-class} gives
+\begin{align*}
+ \sum_{c\equiv1\pmod4} g(c/C)
+       \frac{T(1,1;c)}{\sqrt c}
+ &=-\frac1C\int_C^{2C} A_1(u)g'(u/C)\,du\\
+ &=\frac4{\pi^2}C\int_1^2g(v)\,dv
+       +O_{g,\eta}(C^{3/4+\eta}).
+\end{align*}
+In the exact normalization of Bir\'o's left side, this states
+\[
+ \frac1C\sum_{c\equiv1\pmod4}f_C(c)T(4,\bar4;c)
+ =\frac4{\pi^2}\sqrt C\int_1^2g(v)\,dv
+ +O_{g,\eta}(C^{1/4+\eta}).
+\]
+The main coefficient is positive.  Taking, for example,
+$\eta=1/16$ and $\varepsilon=1/8$ contradicts his asserted
+$O(C^\varepsilon)$ bound as $C\to\infty$.
+This is a single completely specified parameter family violating the
+printed conjecture.
+
+The program \path{code/B_A5_salie_audit.py} checks the change of
+variables and the identity for $(-1,-1)$ exactly as equalities of integer coefficient vectors in
+$\Z[X]/(X^c-1)$ for every odd $3\leq c\leq1001$.
+It also checks the identity
+\[
+ T(1,1;c)=
+ \left(\sum_{y\bmod c}e(y^2/c)\right)
+ \sum_{v^2\equiv4\pmod c}e(v/c)
+\]
+exactly modulo the cyclotomic polynomial $\Phi_c$ for odd
+$3\leq c\leq199$.
+The accompanying first-moment evaluations use 192-bit Arb arithmetic
+and the explicit bump
+\[
+ g(v)=\begin{cases}
+ \exp\!\left(4-\dfrac1{(v-1)(2-v)}\right),&1<v<2,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+They are finite normalization checks, not the proof of the asymptotic
+contradiction.  The latter is the preceding application of Louvel's
+theorem.  On $[5/4,7/4]$ this bump is at least $e^{-4/3}$, so its
+positive integral does not depend on a numerical quadrature.
+
+For the literature status of this correction, on 15 November 2026 we
+searched the exact paper identifier, its title together with
+``correction'' and ``counterexample'', and Bir\'o--Louvel--Sali\'e
+combinations.  The primary arXiv record still listed only version~1
+of 13 April 2026.  We did not locate an earlier published correction
+of this printed conjecture.  The mathematical input is Louvel's known
+theorem, and the present deduction is an independently checked
+specialization of it; we make no claim of priority.
+
+\paragraph{The corrected candidate and the remaining reduction.}
+Conjecture~1.4 of Sun \cite{A5Sun2025} explicitly subtracts
+\[
+ 2Y^{1/2}\sum_{r_j=i/4}\tau_j(m,n)
+\]
+from the corresponding sum of half-integral-weight Kloosterman
+sums divided by their moduli.  Its hypotheses include a weight
+$k=\pm1/2$ multiplier on $\Gamma_0(N)$ and absence of Laplace
+eigenvalues in $(3/16,1/4)$ for that multiplier space.
+It gives an untwisted, uniformly parameterized modulus-sum estimate;
+it does not state a bound for the angular-period coefficients of
+our compact quaternionic surface.
+We have not established a reduction from that conjecture to the
+actual sharp-arc count.  In a direct ternary delta-method approach
+one must specify the multiplier and its spectral condition, handle
+the local factors at $2$ and $3$, identify and subtract every theta
+term, and prove uniform bounds for the resulting modulus weights
+as the physical angular and radial transition widths shrink to
+$X^{-1/2}$.  Partial summation with an uncontrolled total-variation
+factor does not prove the required exponent.
