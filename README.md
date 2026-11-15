@@ -70,7 +70,7 @@ All dates are 2026. Model names and effort settings are those given in the recor
 - **Consolidation of 30 September and the custody records:** OpenAI Codex; the consolidation main session is recorded
   as gpt-6-sol at effort ultra (`codex_workspace/custody/FINAL_CUSTODY_AUDIT.json`).
 - **Course CG-S6 (to 11 October):** OpenAI Codex, GPT-6 Astra at effort ultra (course README); prerequisite chapters
-  keep GPT-6.1 Sol (effort not recorded) authorship where their arguments are retained.
+  keep GPT-6.1 Sol (reasoning effort ultra) authorship where their arguments are retained.
 - **Paper [R], "The S6 record and the integral monodromy of its (3,4,∞) period system"** (28 September), cited by the
   status note of 5 October: Claude Opus 5.5 at effort max (the user's default then). Not in this repository.
 - **Survey of 12 November (`survey_20261112/`):** Claude Fable 5.2 at effort high, from its own reading and the notes

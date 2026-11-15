@@ -1,0 +1,1163 @@
+\section{E. Classification and deformation questions}
+\subsection{E.1. Higher logarithmic transformations}
+We distinguish Viaclovsky's indices $0,1$ from the indices $1,2$ of
+the question.  Put $m=3k$, $n=4l$, and assume $\gcd(m,n)=1$.
+The lattice coordinates in this subsection are integral homology
+coordinates, and matrices act on columns.
+
+\begin{proposition}[E.1.1 (Proved): the integral dictionary]
+Let $(\delta,a,b,d)$ be the marking in
+\cite[Section 2, equations (2.1), (2.2), (2.7), (2.11)--(2.12)]{ViaLog26push},
+and put $u_0=d+2a+2b$, $u_1=d+3a+3b$.
+The homomorphism from the marking of the question to this marking is
+\[
+ P_V=\begin{pmatrix}
+ -2&1&0&1\\-6&0&-1&0\\0&-1&0&0\\-1&0&0&0
+ \end{pmatrix},\qquad \det P_V=-1.
+\]
+It intertwines the two finite monodromies and satisfies
+\[
+ P_V\widehat\delta=\delta,\qquad
+ P_V\varepsilon=-u_0,\qquad
+ P_V\varepsilon'=\delta-u_1.
+\]
+With the counterclockwise deck generators of that paper, its data
+$m_0=3k$, $m_1=4l$ and
+$a_i=[v_i/m_i]$ with $v_i=\rho_i\delta+N_i u_i$ correspond to
+\[
+ w_1=N_0\varepsilon-\rho_0\widehat\delta,
+ \qquad
+ w_2=N_1\varepsilon'-(\rho_1+N_1)\widehat\delta.
+\]
+For the section-preserving cusp comparison used there, $l_0=0$ and
+$p=-(nN_0+mN_1)$.  Thus its sphere condition is
+$b:=nN_0+mN_1=\pm1$.
+The brackets in $a_i$ mean the torsion point in the smooth
+root torus, using its section-preserving origin and the
+transported period vector.  Replacing $v_i$ by an integral
+multiple $m_i$ times a period does not change that torsion
+point, although its chosen lift fixes the collar bookkeeping.
+\end{proposition}
+\begin{proof}
+In Engel's marking the four columns of the change to Viaclovsky's
+basis are
+\[
+ Q_E=\begin{pmatrix}-2&1&0&-2\\-1&0&0&0\\3&-1&1&0\\0&0&0&1\end{pmatrix}.
+\]
+Direct integral multiplication gives $P_V=Q_E^{-1}P_E$ and
+$V_0P_V=P_VA_1$, $V_1P_V=P_VA_2$, where $V_0,V_1$ are the
+matrices in that paper's Lemma 2.1.  Multiplication by the three
+specified invariant vectors gives the displayed identities.
+Inverting a clockwise affine generator replaces its invariant
+translation $w_j/m_j$ by $-w_j/m_j$.  Consequently the actual
+counterclockwise translation vector is $-P_Vw_j$, which gives the
+two formulas, including the otherwise easily missed $N_1$ in the
+second coefficient.  Viaclovsky's reference section extends through
+the smooth locus of the cusp; its comparison therefore has zero
+class in the quotient lattice of toric directions.  This is precisely
+$l_0=0$.  Substitution into the definition of $p$ proves its formula.
+These matrix identities are independently executed in
+\texttt{code/e\_push\_exact.py}, with their output attached.
+\end{proof}
+
+For a general cusp collar $\sigma$, write $c(\sigma)$ for
+its residual translation defect in
+$\overline\Lambda=\Lambda/(\mathbb Z\widehat w+
+\mathbb Z\widehat\delta)$, using the convention
+$\sigma(g_0z)-R_0\sigma(z)=\Pi_c(g_0z)\ell(\sigma)$
+and $c(\sigma)=[\ell(\sigma)]$.
+Set $l_0=\gamma(c(\sigma))$.  In the question's notation
+$w_j=r_j\varepsilon_j+s_j\widehat\delta$, the integer is
+$p=mn l_0-nr_1-mr_2$.
+The section-preserving source data of E.1.1 have $c(\sigma)=0$.
+
+\begin{theorem}[E.1.2 (Proved): classification in Viaclovsky's coordinates]
+Use a local logarithm $c$ of the transported linearization,
+$u=e^{-2\pi i c}$, and the same reference section and cusp comparison
+on both sides.  Two sphere members with data
+$(m,\rho_0,N_0;n,\rho_1,N_1;c)$ and primed data are biholomorphic
+if and only if their multiplicities agree and there are
+$\alpha\in\{1,-1\}$ and $h=c'-c\in\mathbb Z$ such that
+\[
+ b'=\alpha b,\qquad
+ hN'_0\equiv\rho'_0-\alpha\rho_0\pmod{k},\qquad
+ hN'_1\equiv\rho'_1-\alpha\rho_1\pmod{2l}.
+\]
+Every such biholomorphism covers the identity of $B$.
+For fixed discrete data the period identification subgroup is
+$2kl\mathbb Z$.  At fixed $u$ all sphere translation data give
+exactly $2kl$ classes.  A positive $u$-circuit acts on them by a
+single cycle.
+\end{theorem}
+\begin{proof}
+We first give the complete sufficiency argument in the question's
+clockwise coordinates, writing $w_j=r_j\varepsilon_j+s_j\widehat\delta$.
+Set $S_h=I+hE$ and $d_j=S_hw'_j-\alpha w_j$.
+The repeated norm maps have images
+\[
+ N_m\Lambda=m\mathbb Z\varepsilon+k\mathbb Z\widehat\delta,
+ \qquad
+ N_n\Lambda=n\mathbb Z\varepsilon'+2l\mathbb Z\widehat\delta.
+\]
+This follows directly from
+\[
+ N_3v=3\gamma(v)\varepsilon+(2v_u+v_w+3v_\delta)\widehat\delta,
+ \quad
+ N_4v=4\gamma(v)\varepsilon'+(2v_u+2v_w+4v_\delta)\widehat\delta.
+\]
+Suppose $p'=\alpha p$ and
+$hr'_1\equiv\alpha s_1-s'_1\pmod k$,
+$hr'_2\equiv\alpha s_2-s'_2\pmod{2l}$.
+Reduction of $p'=\alpha p$ modulo $m,n$ gives
+$r'_j\equiv\alpha r_j\pmod{m_j}$.
+We may choose integral solutions of $N_{m_j}\ell_j=-d_j$ explicitly:
+\[
+ \begin{split}
+ \ell_1&=\left(\frac{\alpha r_1-r'_1}{m},0,
+ -\frac{s'_1+hr'_1-\alpha s_1}{k},0\right)^t,\\
+ \ell_2&=\left(\frac{\alpha r_2-r'_2}{n},
+ -\frac{s'_2+hr'_2-\alpha s_2}{2l},0,0\right)^t.
+ \end{split}
+\]
+Put $y_j=d_j/m_j+\ell_j$; these vectors belong to the rational
+kernel of $N_{m_j}$ and have first coordinate zero.
+The following rational vectors solve $(I-A_j)b_j=y_j$:
+\[
+ \begin{split}
+ b_1&=(0,(2y_{1u}+y_{1w})/3,(y_{1w}-y_{1u})/3,0)^t,\\
+ b_2&=(0,(y_{2u}-y_{2w})/2,(y_{2u}+y_{2w})/2,0)^t.
+ \end{split}
+\]
+The last coordinates of the equations follow from the displayed
+norm-kernel equations.  The maps
+\[
+ (s,\zeta)\longmapsto(s,\alpha\zeta+\Pi_c(s)b_j)
+\]
+are holomorphic maps of the normalized torus families over the
+degree-$m_j$ root discs.  Their inverses are holomorphic, and period
+covariance and $(I-A_j)b_j=d_j/m_j+\ell_j$ give exact commutation
+with the prescribed affine deck generators, modulo the integral
+period $\ell_j$.  They therefore descend to biholomorphisms of the
+finite fillings, including the full multiple fibres.
+
+On the punctured root collar the corresponding middle translation is
+\[
+ A_j=\Pi_cb_j+\frac{\log s_j}{2\pi i}\Pi_cd_j.
+\]
+Its integral defect is $\ell_j$.  The middle cocycle relation fixes
+$\ell_0=-A_0(\ell_1+A_1\ell_2)$.  In the quotient
+$\overline\Lambda=\Lambda/(\mathbb Z\widehat w+\mathbb Z\widehat\delta)$,
+the first-coordinate condition is exactly $p'=\alpha p$.
+Adding an integral multiple of $(0,1,-2,0)^t\in\ker N_m$ to
+$\ell_1$ changes the other quotient coordinate by a generator,
+without changing this first coordinate.  We can consequently arrange
+\[
+ [\ell_0]=-\alpha c(\sigma)+c(\sigma')\quad\hbox{in }\overline\Lambda.
+\]
+An integral toric vector then supplies $q\in\mathbb Z^2$ such that
+the cusp reference $sq+\alpha\sigma-\sigma'$ has precisely defect
+$\ell_0$.  Here $s=(2\pi i)^{-1}\log t_c$ is the cusp logarithm;
+the maps of cusp toric covers are
+\[
+ (x,t_c)\longmapsto(t_c^q a(t_c)x^\alpha,t_c),
+ \qquad a(0)\in(\mathbb C^*)^2.
+\]
+Integer translations of the cocharacter lattice, its inversion,
+and multiplication by a holomorphic unit preserve the specified
+hexagonal fan and all its strata.  These maps and their inverses
+extend holomorphically across the three double curves and both
+triple points.
+
+We justify the global analytic correction.  Differences of allowed
+finite extensions are the equivariant holomorphic vertical vectors
+on the complete root discs.  The extra subgroup of order $k$ at
+the first point acts trivially on the vertical vector coefficients
+and rotates $s$; its invariant holomorphic coefficients are exactly
+those in $s^k$.  The remaining order-three equivariance is the
+original one.  The argument at the second point uses $s^l$ and
+order four.  Thus the coarse difference sheaf is literally the same
+sheaf $\mathcal V_B$ as for multiplicities $(3,4)$, not an assumed
+analogue.  Its first-coordinate quotient is
+$\mathcal O_B(-p_0)$: the modular frame has vanishing orders $2k,l$
+on the two enlarged roots and a simple cusp pole.  Its fixed
+second-coordinate subline is $\mathcal O_B$.  Finite averaging
+provides local lifts, hence
+\[
+ 0\longrightarrow\mathcal O_B\longrightarrow\mathcal V_B
+ \longrightarrow\mathcal O_B(-p_0)\longrightarrow0.
+\]
+Both end terms have vanishing $H^1$ on $\mathbb P^1$, so
+$H^1(B,\mathcal V_B)=0$.  The permitted local translations form a
+torsor under this sheaf: on each overlap their defects agree, so
+their difference is a single-valued section of the indicated
+difference sheaf.  Vanishing of its \v Cech class gives a global
+middle translation.  Its overlap equalities are exactly the two
+finite formulas and the cusp formula just displayed.  Consequently
+the local biholomorphisms glue, with their inverses, over $B$.
+
+For necessity the base is intrinsic even when its anticanonical
+pencil changes.  If $F:X\to X'$ is a biholomorphism, the pullback
+of the Fubini--Study form by $f'F$ is exact because
+$H^2(S^6,\mathbb R)=0$.  Its restriction to a regular complex torus,
+wedged with a flat K\"ahler form, has zero integral.  Positivity
+forces $f'F$ to be constant on that torus.  The proper analytic
+image of $(f,f'F)$ is therefore a curve of degree one over $B$;
+normalization and the inverse argument give a base automorphism.
+Its three monodromy orders $3,4,\infty$ are distinct, so it fixes
+all three marked points and is the identity.  Multiplicities agree.
+On ordinary fibres the lift is affine.  The simultaneous rational
+centralizer of $A_1,A_2$ is $\mathbb Q I+\mathbb Q E$, as follows
+by solving their entrywise commuting equations.  Comparison of the
+constant last two columns of $\Pi_c$ and unimodularity then gives
+fibre-linear part $\alpha I$, integer difference $h$, and lattice
+map $\alpha S_h^{-1}$.  The normalized root base change is
+functorial, so the lifted map commutes with the actual deck
+generator.  Summing its defect around that generator gives the
+two norm conditions above.  A cusp map has an integral toric
+winding: at a generic point of a toric component, its ratio of
+characters is $t_c^q$ times a holomorphic unit.  Its class in
+$\overline\Lambda$ vanishes.  The middle cocycle relation then
+gives $p'=\alpha p$.  This proves all the necessary conditions.
+
+Substitute E.1.1.  In the second congruence the extra term
+$N'_1-\alpha N_1$ is divisible by $4l$, and hence drops out
+modulo $2l$.  We obtain exactly the statement's two congruences.
+For fixed data $b\ne0$ excludes $\alpha=-1$.
+The invertibility of $N_0$ modulo $k$, of $N_1$ modulo $2l$, and
+$\gcd(k,2l)=1$ give $h\in2kl\mathbb Z$.
+For varying data the Chinese remainder theorem gives exactly one
+shift class modulo $2kl$, and all residue classes of
+$\rho_0\bmod k$, $\rho_1\bmod2l$ occur without changing $b$ or
+freeness.  Finally a positive $u$-circuit sends $c$ to $c-1$.
+Its translation on $\mathbb Z/(2kl)$ is a generator.
+\end{proof}
+
+The preceding theorem answers Question 3 of
+\cite[Section 1.1]{ViaLog26push}.  The original return asserted the
+same arithmetic classification in B.3.1; the contribution here is
+the explicit dictionary and the complete enlarged-root and collar
+argument.  We make no priority claim.
+
+\begin{corollary}[E.1.3 (Proved): holomorphic dependence of the comparisons]
+For fixed discrete data in E.1.2 and a fixed admissible shift $h$,
+the constructed comparisons are holomorphic isomorphisms of families
+over a sufficiently small parameter disc.  In particular, for sphere
+data with multiplicities $(3,4)$ the identification with the standard
+family uses the parameter
+\[
+ W=e^{-\pi i(c+s_2)}=(-1)^{s_2}w.
+\]
+The smooth monodromy conjugacy class around the positive parameter
+circle is unchanged by this identification of twist data.
+\end{corollary}
+\begin{proof}
+In E.1.2 the rational vectors $b_j$, integral defects $\ell_j$,
+and toric exponents are independent of $c$.  All period matrices,
+root comparisons, and cusp unit factors are holomorphic in $c$.
+On a small Stein parameter disc $D$, the correction sheaf is
+$\mathcal V_B\boxtimes\mathcal O_D$.  Its first cohomology on
+$B\times D$ is zero: project to $D$, use the same two-chart
+complex and $H^1(B,\mathcal V_B)=0$, and then Stein acyclicity.
+Thus the affine correction can be chosen holomorphically in $c$.
+For $(k,l)=(1,1)$ the only nonvacuous finite congruence is
+$h\equiv s_2-s_2'\pmod2$, because the admissible $r_2'$ is odd.
+Taking $s_2'=0$ gives the displayed parameter identification.
+Two choices of these family comparisons differ fibrewise by an
+automorphism of the standard member.  The full automorphism
+calculation audited in E.3.2 identifies that group with $\mathbb C^*$;
+it is connected.  On overlapping parameter arcs the transitions
+are therefore isotopic to the identity.  Composing around a circle
+changes the resulting diffeomorphism only by such an isotopy and
+by conjugation at the chosen base fibre.  Multiplication of the
+parameter by $(-1)^{s_2}$ preserves the positive orientation.
+\end{proof}
+
+\subsection{E.2. Tangent cohomology for arbitrary coprime multiplicities}
+\begin{theorem}[E.2.1 (Proved): tangent cohomology and local miniversality]
+For every sphere member with multiplicities $(3k,4l)$ and the
+admissible logarithmic data of E.1, put $z=kl$ and $d=3k+4l$.
+On $\mathfrak B_{k,l}=\mathbb P(3k,4l)$ the root lift
+$\bar f:X\to\mathfrak B_{k,l}$ satisfies
+\[
+ \begin{split}
+ \mathcal E&=\mathcal O\oplus\mathcal O(-z),\\
+ R^q\bar f_*\mathcal O_X&=
+ \mathcal O,\quad\mathcal O\oplus\mathcal O(-z),\quad\mathcal O(-z),\\
+ K_X&=\bar f^*\mathcal O(z-d).
+ \end{split}
+\]
+The tangent cohomology is $(h^0,h^1,h^2,h^3)(X,T_X)=(1,1,1,0)$.
+With the groupoid derivative convention
+$\kappa(\Phi)=(\partial_c\Phi)\Phi^{-1}$, the class of
+$\partial/\partial c$ is $e\otimes[\gamma]$.  The class of
+$\partial/\partial u$ is
+$-(2\pi i u)^{-1}e\otimes[\gamma]$.  Both are nonzero.
+The Kuranishi germ is a smooth reduced line, and the fixed-data
+period family is locally miniversal.
+\end{theorem}
+\begin{proof}
+The root object is defined by the actual divisor identities
+$f^*(0)=mS_1$ and $f^*(1)=nS_2$, with $m=3k$, $n=4l$.
+It gives a holomorphic map to the analytic root stack.  Its base
+changes to the two root discs are the actual smooth torus
+families; the quotient actions are free.  At the cusp its charts
+are $q=z_0z_1z_2$, so the source is smooth and the map is flat,
+of relative dimension two, with Gorenstein fibres.  Properness is
+checked on the root atlas, where it is properness of the compact
+torus families and the original compact cusp filling.
+
+Use weighted coordinates $x,y$ of weights $m,n$, with coarse
+coordinate $t=y^m/(y^m-x^n)$.
+The two root divisors have bundles $\mathcal O(n)$ and
+$\mathcal O(m)$, and the cusp has bundle $\mathcal O(mn)$.
+The root-forgetting morphism
+\[
+ r:\mathfrak B_{k,l}\longrightarrow\mathfrak B_{1,1},
+ \qquad (x,y)\longmapsto(x^l,y^k),
+\]
+uses the group homomorphism $\lambda\mapsto\lambda^{kl}$ on
+the weighted quotient.  It is a holomorphic morphism of analytic
+stacks over $B$, with local maps $s\mapsto s^k$ and
+$s\mapsto s^l$.  In particular $r^*\mathcal O(1)=\mathcal O(z)$.
+For completeness, the analytic Picard group of this root curve has
+the presentation
+$\langle H,R_1,R_2\mid mR_1=H,\ nR_2=H\rangle$:
+after subtracting the two stabilizer characters, a line bundle
+descends to the coarse projective line.  Its only relations are
+the two defining root identities.  The Smith form and
+$\gcd(m,n)=1$ identify this group with $\mathbb Z$, with
+$H=mn\mathcal O(1)$, $R_1=n\mathcal O(1)$, and
+$R_2=m\mathcal O(1)$.  This proves the analytic torsion-free
+Picard assertion used below.
+Translations have identity vertical derivative and act trivially
+on structure-sheaf cohomology.  Thus the vertical bundle computed
+from the linear period factors is $r^*(\mathcal O\oplus
+\mathcal O(-1))$.  The original determinant calculation can also
+be repeated: its quotient line $L$ has
+$L^{12}=\mathcal O(-p_0)=\mathcal O(-12z)$, so
+$L=\mathcal O(-z)$ because the Picard group is torsion-free.
+The fixed vector gives a subline $\mathcal O$; its extension
+splits because $H^1(\mathcal O(z))=0$.
+
+The cusp normalization resolution has terms
+$\mathcal O_{\mathrm{dP}_6}$, three copies of
+$\mathcal O_{\mathbb P^1}$, and two point sheaves.
+Its global differential is $(a,b,c)\mapsto
+(a-b+c,a-b+c)$, giving cohomology $(1,2,1)$; its alternating cup
+pairing in degree one is nondegenerate.  The degree-one cocycle
+$\gamma$ extends across the cusp because it vanishes on the toric
+period lattice.  Its edge values $(0,-1,-1)$ have nonzero cup
+product with $(1,0,-1)$.  On finite root charts its class is the
+nonzero constant lattice cocycle $\gamma$, invariant under every
+deck transformation.  These are explicit comparisons of the
+same class, so it gives a nowhere-zero subline in
+$G=R^1\bar f_*\mathcal O_X$.
+The base-change and relative-duality argument E.3.1 applies on
+these charts.  It gives $R^2\bar f_*\mathcal O_X=L$ and
+$\det G=L$.  The extension of $L$ by the specified
+$[\gamma]$-subline splits by the same $H^1(\mathcal O(z))=0$.
+This proves all direct-image formulas.
+
+The logarithmic tangent sequence is
+\[
+ 0\longrightarrow\mathcal V=\bar f^*\mathcal E
+ \longrightarrow\mathcal T=T_X(-\log W)
+ \longrightarrow\mathcal H=\bar f^*\mathcal O(d-12z)
+ \longrightarrow0.
+\]
+Its last map is the relative differential on smooth root charts
+and sends $\sum a_i z_i\partial_{z_i}$ to
+$(\sum a_i)q\partial_q$ at the cusp.  It is surjective there.
+Since $K_{\mathfrak B}=\mathcal O(-d)$, determinants give
+$K_X=\bar f^*\mathcal O(z-d)$.
+
+We give the weighted cohomology calculation explicitly; simply
+replacing $1$ by $kl$ in an acyclicity assertion would be incorrect.
+The two quotient charts $x\ne0$, $y\ne0$ are finite quotients
+of affine lines, and their overlap is a finite quotient of a
+punctured line.  Finite averaging and Stein acyclicity compute
+coherent cohomology by this two-chart complex.  Its homogeneous
+Laurent monomials give
+\[
+ \begin{split}
+ h^0\mathcal O(a)&=\#\{(i,j)\in\mathbb Z_{\ge0}^2:mi+nj=a\},\\
+ h^1\mathcal O(a)&=h^0\mathcal O(-a-d).
+ \end{split}
+\]
+The second equality identifies the remaining monomials
+$x^{-i-1}y^{-j-1}$; it does not require a positivity theorem.
+The bundles $\mathcal O(-z),\mathcal O(-2z)$ are acyclic.
+Indeed a possible degree-one monomial would give
+$m(i+1)+n(j+1)=az$, with $a=1$ or $2$.
+Coprimality forces $i+1=lA$, $j+1=kB$, hence
+$3A+4B=a$ with $A,B\ge1$, which is impossible.
+Positive degree has no degree-one monomials, so
+$H^1\mathcal O(z)=0$ as used above.
+
+Put $b=d-12z$.  Both $b$ and $b-z$ are negative.
+Degree-one monomials for $\mathcal O(b)$ would satisfy
+$3A+4B=12$, with $A,B\ge1$, and none exist.
+For $\mathcal O(b-z)$ the equation is $3A+4B=13$;
+its only positive solution is $(A,B)=(3,1)$, producing
+$x^{3l-2}y^{k-2}$ in the dual description.  It is allowed
+exactly when $k>1$; write $e_k=1$ in that case and $e_k=0$
+otherwise.  Projection formula and the two-column Leray sequence
+now give
+\[
+ h^\bullet(\mathcal V)=(1,1,0,0),\qquad
+ h^\bullet(\mathcal H)=(0,0,e_k,e_k),\qquad
+ h^\bullet(\mathcal T)=(1,1,e_k,e_k).
+\]
+The program \texttt{e\_push\_exact.py} independently checks these
+counts for all $1965$ coprime pairs with $k,l\le80$; the monomial
+argument proves them for all pairs.
+
+On the normalization $\nu:E=\mathrm{dP}_6\to W\subset X$,
+the branchwise normal line is $K_E$: the invariant cusp form
+$d\log x_1\wedge d\log x_2\wedge dq$ trivializes $K_X$
+on the entire cusp neighbourhood.  Local normal coefficients
+therefore give the exact sequence
+\[
+ 0\longrightarrow\mathcal T\longrightarrow T_X
+ \longrightarrow\nu_*K_E\longrightarrow0,
+ \qquad h^\bullet(K_E)=(0,0,1).
+\]
+We must determine its connecting map when $k>1$.
+The dual logarithmic sequence, tensored with $K_X$, has horizontal
+subline $\bar f^*\mathcal O(13z-2d)$ and vertical quotient
+$\bar f^*(\mathcal O(z-d)\oplus\mathcal O(2z-d))$.
+The latter has no global sections, by the same equations
+$3A+4B=1,2$ above.  Consequently
+\[
+ H^0(\Omega_X^1(\log W)\otimes K_X)
+ =H^0(\mathfrak B,\mathcal O(13z-2d)).
+\]
+For $k>1$ this is generated by the monomial
+$x^{3l-2}y^{k-2}$ multiplying the horizontal logarithmic
+differential.  Both $x$ and $y$ are nonzero over $p_0$, so its
+residue on $E$ is nonzero.  The ordinary logarithmic residue
+sequence, tensored with $K_X$, identifies this residue map with
+the Serre dual of
+$H^2(E,K_E)\to H^3(X,\mathcal T)$.
+One can check this identification directly in each chart
+$q=z_0z_1z_2$: the residues of $dq/q$ are one on each branch,
+and contraction with the invariant three-form is the normal
+coefficient pairing.  Thus that connecting map has rank $e_k$.
+The long exact sequence proves $h^2(T_X)=1$ and $h^3(T_X)=0$;
+degrees zero and one are unchanged.
+
+Finally $\partial_c\Pi=e\otimes\gamma$ gives the constant
+groupoid cocycle $\lambda\mapsto\gamma(\lambda)e$ on every
+regular torus.  On the enlarged finite roots the derivative of the
+affine generator is $(r_j/m_j)e$, and the derivative of its
+punctured connector is $(\log s_j)/(2\pi i)\,r_je$.
+The identity $m_j(r_j/m_j)=\gamma(w_j)$ verifies the power
+relation, while $\gamma A_j=\gamma$ verifies conjugation with
+every lattice arrow.  Changing $\log s_j$ by $2\pi i N$
+adds the derivative of the integral arrow $Nw_j$; the connector
+formula is used only on the punctured overlap.  Its central
+root-chart representative is the constant $(r_j/m_j)e$,
+which is holomorphic.  At the cusp $\gamma$ kills the toric periods,
+so the constant deck cocycle is exactly its extending cocycle
+above.  Its image under the two isomorphisms
+$H^1(\mathcal V)\simeq H^1(\mathcal T)\simeq H^1(T_X)$
+is $e\otimes[\gamma]\ne0$.  The chain rule gives the asserted
+$u$-class.  The Kuranishi local algebra is
+$\mathbb C\{t\}/I$ since $h^1=1$.  The existing family induces
+$t\mapsto g(c)$ with $g'(c_0)\ne0$.  The analytic inverse
+function theorem makes this substitution injective; every
+element of $I$ maps to zero, so $I=0$.  Its classifying map is
+then an isomorphism of germs, proving local miniversality.
+\end{proof}
+
+\begin{proposition}[E.2.2 (Proved): local separation and canonical dimension]
+The multiplicity pair $(3k,4l)$ is constant on every sufficiently
+small deformation of one of the preceding members.  Distinct
+pairs therefore determine disjoint open loci among these
+isomorphism classes.  Moreover
+\[
+ \kappa(X)=\begin{cases}-\infty,&kl<3k+4l,\\1,&kl>3k+4l.
+ \end{cases}
+\]
+Equality $kl=3k+4l$ never occurs under $\gcd(3k,4l)=1$.
+\end{proposition}
+\begin{proof}
+Local miniversality identifies every small deformation with the
+fixed-data period family; E.1.2 makes its multiplicity pair an
+intrinsic biholomorphic invariant.  The canonical formula of
+E.2.1 and connected fibres identify its pluricanonical sections
+with those of $\mathcal O(r(kl-3k-4l))$ on the root curve.
+Negative weight has no sections.  Positive weight has linearly
+growing section counts along multiples of $12kl$, giving
+Kodaira dimension one.  Equality would imply $k\mid4l$;
+coprimality forces $k=1$, and then $l=3+4l$ is impossible.
+\end{proof}
+
+\begin{proposition}[E.2.3 (Proved): separation in irreducible analytic families]
+Suppose a proper holomorphic submersion over a connected
+irreducible reduced complex base has two fibres of the type
+in E.2.1.  Then their multiplicity pairs agree, even if some
+other fibres have not been constructed by this method.
+For these members the asymptotic number
+\[
+ s(X)=\lim_{r\to\infty}
+ \frac{h^0(X,K_X^r)-h^0(X,K_X^{-r})}{r}
+ =\frac1{12}-\frac1{3k}-\frac1{4l}
+\]
+recovers the ordered multiplicity pair uniquely.
+\end{proposition}
+\begin{proof}
+For coprime $m,n$, the number of nonnegative solutions of
+$mi+nj=N$ is $N/(mn)+O(1)$ as $N\to\infty$:
+there is one permitted residue class of $j$ modulo $m$, and
+its representatives lie between $0$ and $N/n$.
+The canonical formula in E.2.1 proves the displayed limit,
+with a negative value when the anticanonical counts grow.
+Write $1/12-s(X)=a/b$ in lowest positive terms.
+Since $\gcd(m+n,mn)=1$, we have $a=m+n$, $b=mn$.
+Thus $m,n$ are the two roots of $T^2-aT+b$.
+Their order is determined because only $m$ is divisible by
+three and only $n$ is divisible by four.
+
+For every fixed integer $r$, apply the finite-free-complex
+theorem of \cite[Chapter III, Theorem 4.1]{BS76push} to
+the relative canonical power, which is an invertible flat
+sheaf for a holomorphic submersion.  Its zeroth cohomology
+dimension has analytic jumping loci.  On an irreducible
+base any value constant on a nonempty open set is its
+generic value: a proper analytic jumping locus has empty
+interior.  Local miniversality in E.2.1 makes these dimensions
+constant near either of the two given fibres, since all
+nearby fibres have the same multiplicities and their
+canonical formula is independent of the period parameter.
+Consequently the two fibres have equal dimensions for
+every positive and negative $r$.  Their limits $s(X)$
+are equal, and the preceding arithmetic recovers the same
+pair.  This proof uses relative cohomology only; it makes
+no general invariance assertion for Kodaira dimension.
+\end{proof}
+
+\begin{problem}[E.2.4 (Open): arbitrary connected deformation chains]
+We have not excluded a connected reducible deformation base,
+or a chain of irreducible families, joining different pairs
+through smooth members outside this period construction.
+E.2.3 rules out a single irreducible analytic family containing
+two such pairs.  At an unconstructed intervening fibre,
+plurigenera may jump on two different branches, so the proof
+does not turn $s(X)$ into a deformation invariant on the
+entire space of complex structures.  E.2.2 also does not
+make these open loci closed.  The attempted local-miniversality
+argument fails at that closedness step.  A persistence theorem
+for the intrinsic torus fibration would have to control a
+possibly base-pointed limiting canonical pencil; extension
+of the two generating sections alone does not do so.
+The outer boundary obstruction of Part D does not control
+the parameter end at zero.  A proof of full separation
+would require such persistence at every unconstructed
+smooth boundary, or an invariant that remains constant
+along an arbitrary connecting deformation chain.
+\end{problem}
+
+\subsection{E.3. Analytic foundations and the historical first version}
+\begin{proposition}[E.3.1 (Known, with chartwise derivation): base change and duality]
+For the proper flat root-curve morphisms in E.2.1, the canonical
+geometric-point comparison
+\[
+ (R^q\bar f_*\mathcal O_X)\otimes k(b)
+ \longrightarrow H^q(X_b,\mathcal O_{X_b})
+\]
+is an isomorphism for $q=0,1,2$, and the direct images are locally
+free.  The trace induces the canonical isomorphism
+\[
+ (R^2\bar f_*\mathcal O_X)^\vee
+ \simeq\bar f_*\omega_{X/\mathfrak B}.
+\]
+Both comparisons descend on the analytic root-curve groupoid.
+These conclusions, and hence the use made of them in R4, require
+no result specific to the historical first version of
+\cite{DGKXv1push}.
+\end{proposition}
+\begin{proof}
+Take the atlas consisting of the smooth base complement and the
+two complete root discs.  The pullback over the $j$th root disc
+is the actual torus family before its free affine quotient:
+\[
+ [J'_j/\mu_{m_j}]
+ \mathbin{\times_{[\Delta_{s_j}/\mu_{m_j}]}}
+ \Delta_{s_j}=J'_j.
+\]
+The atlas map, unlike $s_j\mapsto s_j^{m_j}$ on coarse spaces,
+is etale.  Properness, smoothness at these roots, and the
+flat equation $q=z_0z_1z_2$ at the remaining cusp were checked
+in E.2.1.  The atlas source is smooth; all its fibres are local
+complete intersections of pure dimension two.  It is therefore
+a proper flat Gorenstein family of complex spaces over a reduced
+smooth curve.  Torus cohomology and the explicit cusp resolution
+give the constant dimensions $(1,2,1)$ on every chart, including
+its centre.
+
+Apply B\u anic\u a and St\u an\u a\c sil\u a
+\cite[Chapter III, Theorem 4.12(ii), pp.~134--135]{BS76push}:
+properness, base flatness of the coherent sheaf, a reduced base,
+and constant fibre cohomology give cohomological flatness and
+local freeness.  Their Theorem 4.10, pp.~132--133, supplies the
+canonical analytic base-change comparison.  On the double atlas
+overlap both pullbacks are identified with the direct image of
+the same pulled-back family.  These comparisons commute with a
+third pullback by their construction, so they satisfy the
+groupoid cocycle condition.  The resulting descended vector
+bundle is $R^q\bar f_*\mathcal O_X$, and its geometric fibre
+comparison is the displayed one.  No assertion about the
+cohomology of the reduced multiple surface is substituted for
+the torus geometric fibre of the stack map.
+
+Let $p:Y\to U$ denote any of these atlas families.  Proper analytic
+duality is the canonical trace identity in
+Ramis--Ruget--Verdier \cite[introduction, equation (1),
+Section 1, pp.~264--265, and Proposition 2.1, p.~266]{RRV71push}.
+The cited article does not number its main identity as a theorem;
+these are its actual locations.  The smooth-space dualizing
+complex is $K_Y[3]$, and the relative Gorenstein dualizing
+complex is $\omega_{Y/U}[2]$; the relevant absolute statements
+are Ramis--Ruget \cite[Section 3, Theorem 1, p.~81;
+Proposition 2 and the complete-intersection calculation, p.~91]{RR70push}.
+Cancelling $p^*K_U[1]$ in proper duality gives
+\[
+ Rp_*\omega_{Y/U}[2]
+ \simeq R\mathcal Hom_U(Rp_*\mathcal O_Y,\mathcal O_U).
+\]
+The direct images just obtained are locally free, so the positive
+sheaf Ext terms in the hyper-Ext spectral sequence vanish.
+Degree $-2$ is therefore
+$p_*\omega_{Y/U}\simeq(R^2p_*\mathcal O_Y)^\vee$.
+The trace is local and invariant under the local biholomorphisms
+on the atlas overlaps.  The two pullbacks of this isomorphism
+thus agree with the trace for the same pulled-back family and
+satisfy the same cocycle condition.  This proves descent.
+
+For the original multiplicities $(3,4)$, E.2.1 specializes to
+$\mathcal E=\mathcal O\oplus\mathcal O(-1)$,
+$\omega_{X/\mathfrak B}=\bar f^*\mathcal O(1)$ and
+$R^2\bar f_*\mathcal O_X=\mathcal O(-1)$.
+The nondegenerate cusp cup product identifies
+$\det R^1\bar f_*\mathcal O_X$ with this last line, and the
+nonzero $[\gamma]$-subline and $H^1(\mathcal O(1))=0$ give
+$R^1=\mathcal O\oplus\mathcal O(-1)$.
+This derives exactly the direct images used in R4.
+\end{proof}
+
+Grauert's original direct-image theorem
+\cite[Section 6, Hauptsatz I, and Section 7, Satz 5]{Grauert60push}
+was also opened together with its correction \cite{Grauert63push}.
+The correction explicitly warns that the exceptional locus in
+Section 7, Satz 2 need not be closed.  E.3.1 uses the
+constant-cohomology theorem on every chart and the later
+base-change formulation, so it does not make that erroneous
+closedness inference.  For a generic argument over a smooth
+curve one can instead use the finite free complex of
+\cite[Chapter III, Theorem 4.1]{BS76push}; its rank-jump minors
+give the required local analytic exceptional sets.
+
+\begin{proposition}[E.3.2 (Proved as a source audit): the five historical claims]
+For the standard twist vectors, each of the five named theorems
+in the attached version 1 of \cite{DGKXv1push} has a complete
+argument relative to the explicitly constructed family and the
+standard analytic theorems it cites.  We located no failed step
+in those five arguments.  Their assertions are not present in
+the attached version 2 \cite{DGKXv2push}.  This textual
+difference carries no inference about their mathematical truth
+or about the reason for their omission.
+\end{proposition}
+\begin{proof}
+We give the dependency audit, rather than infer correctness from
+the occurrence of the theorem labels.
+
+For \texttt{p2:thm:tangent-cohomology}, the proof first constructs
+the root lift as an actual Cartesian quotient, proves properness
+and flatness on its atlas, and computes the cusp normalization
+resolution with the multiplicative cup pairing.  The two lemmas
+\texttt{p2:lem:analytic-grauert} and
+\texttt{p2:lem:analytic-relative-duality} explicitly cite the
+standard results checked in E.3.1 and perform descent; they do
+not assume an unproved general stack duality principle.  Its
+weighted cohomology and the normal sequence then give
+$(1,1,1,0)$.  Its algebraic-to-analytic Picard comparison invokes
+the applicable proper-stack GAGA theorem
+\cite[Theorem 7.4]{PY16push}; the direct analytic Picard
+argument in E.2.1 provides another justification.  Our general
+calculation reduces to precisely its four acyclic weights
+$-1,-2,-5,-6$ at $k=l=1$.  The extra logarithmic cohomology
+for $k>1$ is outside that source's assertion.
+
+For \texttt{p2:thm:kuranishi-aut}, the generating-arrow formulas
+are $\gamma(\lambda)e$ on a lattice arrow, $0$ on a core deck
+arrow, $e/3,-e/4$ on the two affine root generators, and
+$\gamma(\lambda)e$ on a cusp arrow.  Its proof verifies the
+relations, uses logarithms only on punctured connectors, and
+uses the extending toric logarithmic vector on the cusp.
+The Leray edge isomorphism carries this class to
+$e\otimes[\gamma]\ne0$.  Completeness of the Kuranishi family
+then gives a substitution $t\mapsto g(s)$ with $g'(0)\ne0$;
+injectivity forces the entire defining ideal, including any
+nilpotents, to vanish.  This proves a smooth reduced germ and
+miniversality, without incorrectly claiming uniqueness or
+universality.  The same theorem proves only
+$\operatorname{Aut}^0=\mathbb C^*$: its flow has kernel
+$\mathbb Z$, verified on the normalization of the cusp.  Full
+automorphisms are treated separately below.
+
+For \texttt{p2:thm:intrinsic-fibration}, adjunction and the
+local finite characters give $K^{-2}=f^*\mathcal O_B(1)$.
+Connected fibres and the projection formula identify all its
+sections with the two base sections.  The complete pencil
+therefore forces a biholomorphism to cover a base automorphism.
+The three different multiplicity and monodromy types distinguish
+the marked values, so this base automorphism is the identity.
+This is the same argument as A.1 of the original return; it
+needs no assertion that an arbitrary biholomorphism was
+initially fibre preserving.
+
+For \texttt{p2:thm:exact-period}, the simultaneous centralizer
+is computed entrywise, and the period columns force integral
+parameter difference.  Normalization after the genuine cyclic
+base change tests the actual affine deck action, giving the
+order-four parity obstruction.  Sufficiency is explicit:
+choose $F^3=t$, $G^4=t-1$ and
+$\ell=(2\pi i)^{-1}\log(F/G)$ on the universal cover, modulo
+integral constants.  The source's translation is
+\[
+ b_{a,h}=-\frac h{12}\Pi_a\widehat\gamma+h\ell e.
+\]
+Its defects at $g_1,g_2,g_0$ are respectively
+\[
+ \tfrac h2(\widehat u-\widehat w-\widehat\delta),\qquad
+ \tfrac h2(-\widehat w+\widehat\delta),\qquad0.
+\]
+For even $h$ these are integral.  Removing the known logarithmic
+connector on each root chart leaves a holomorphic translation;
+at the cusp $\ell=-s/12+$ a holomorphic function cancels the
+period's logarithm.  Thus both the map and its inverse extend
+over all three fillings.  Appendix calculations give the raw
+composition defect $-hk\,e/12$ and the correction
+$-h^2e/24$, which makes the action strict.  These identities
+were re-executed exactly in
+\texttt{code/e\_push\_source\_audit.py}.  The return's torsor
+argument is another sufficiency proof, not a repair of a
+missing proof in this source.
+
+For \texttt{p2:thm:full-automorphisms}, a self-map's linear
+part is first forced to be the identity.  The integral middle
+translation cohomology is $\mathbb Z$, with representative
+$c_N(g_1)=N(0,1,-2,0)^t$, $c_N(g_2)=0$.
+The cusp defect is $N(0,-1,1,0)^t$, whose residual class in
+$\Lambda/(\mathbb Z\widehat w+\mathbb Z\widehat\delta)$ is
+$(0,-N)$.  A transverse disc through a smooth central point
+lifts to the free cusp cover, forcing that residual monodromy
+to vanish.  Hence $N=0$.  For the remaining zero class the
+local quotient lift gives meromorphic character ratios; their
+already single-valued additive logarithms have zero winding,
+so the ratios are units and their logarithms extend.  Finite
+averaging gives extension on both complete root discs.  The
+result is a global section of the vertical bundle, hence a
+constant multiple of $e$.  Its period kernel is $\mathbb Z$.
+This proves $\operatorname{Aut}=\mathbb C^*$, including the
+absence of disconnected components.  It corresponds to the
+integral-cocycle and cusp-extension steps of B.4.1 in the return.
+
+The audit program records attachment SHA-256 hashes and all five
+label locations in version 1; every label and the corresponding
+Kuranishi, Kodaira--Spencer, parity-classification and tangent
+statements are absent from version 2.  We separately opened the
+version-specific arXiv records and treat these as preprint
+versions, not as a journal publication verified by its title.
+\end{proof}
+
+\begin{proposition}[E.3.3 (Proved as a source audit): limits of the overlap]
+The five audited version-1 results concern the standard
+$(3,4)$ twist data.  That text does not classify general twist
+vectors, compute the exact maximum $M$, construct a filling as
+the family parameter tends to zero, compute a class in
+$\Theta_7$, or settle the boundary questions in Parts A--D.
+\end{proposition}
+\begin{proof}
+Its finite generators use only
+$\widehat\gamma+2\widehat u-4\widehat w$ and
+$-\widehat\gamma-3\widehat u+3\widehat w$ throughout the
+deformation and classification arguments.  The cusp completion
+constructed there fills the elliptic-base puncture for a fixed
+period parameter; it is not a filling at zero of the parameter
+$w$.  Its period domain is an admissible region, without the
+maximization or the interval certificate of R3.  The concluding
+orbit groupoid, quadratic correction, and the Oka results do not
+supply the missing parameter degenerations or their topology.
+Thus none of these omitted conclusions can be read into the
+five theorems merely from the words ``family'' or ``cusp''.
+\end{proof}
+
+\input{sections/E4_push}
+\subsection{E.5. The two-parameter family and its actual singular fibres}
+\begin{proposition}[E.5.1 (Refuted as stated; corrected): the input configuration]
+The configuration in the question is not the configuration of
+\cite{ViaTwo26push}.  The elliptic surface
+$y^2=x^3+tx+1$ has fibre $III^*$ at infinity.  The constructed
+threefold has two rank-one fibres at $p_1,p_2$, a rank-two
+hexagonal fibre at $p_3$, and the multiple bielliptic fibre
+$4B_*$ at infinity.
+\end{proposition}
+\begin{proof}
+Put $s=t^{-1}$, $X=s^2x$, and $Y=s^3y$.  The minimal equation is
+$Y^2=X^3+s^3X+s^6$, with coefficient and discriminant orders
+$(3,6,9)$; this is the $III^*$ equation, as in
+\cite[Lemma 2.1]{ViaTwo26push}.  The discriminant at finite
+points is $-16(4t^3+27)$ with three simple zeros.  In the
+threefold's multiplicative periods the orders at these points
+are respectively $(1,0),(1,0),(1,1)$:
+\[
+ h(z,v)=(q\alpha(q)z,\beta(q)v),\qquad
+ k(z,v)=(\gamma(q)z,\lambda q^\epsilon\delta(q)v),
+\]
+where all four coefficients are units, $\epsilon=0$ at $p_1,p_2$,
+and $\epsilon=1$ at $p_3$.  Thus the first two torus ranks
+drop by one and the last by two.  The explicit matrices of
+E.5.2 independently have nilpotent ranks $1,1,2$; their exact
+calculation rules out the assertion that all three are rank one.
+These are the types stated in Proposition 3.1 and Theorem 1.1
+of the cited source, not a correction to that source.
+\end{proof}
+
+\begin{proposition}[E.5.2 (Proved): monodromy, centralizer, and integral lattices]
+Use the source's left-action marking
+$H^1(F,\mathbb Z)=\mathbb Z\langle\psi,u,w,\delta\rangle$
+and the ordered meridians $*,1,2,3$ with product one.
+The cohomological matrices are
+\[
+\begin{aligned}
+ T_*&=\begin{pmatrix}1&0&-2&-1\\0&0&-1&0\\0&1&0&-1\\0&0&0&1\end{pmatrix},&
+ T_1&=\begin{pmatrix}1&0&2&2\\0&1&1&1\\0&0&1&0\\0&0&0&1\end{pmatrix},\\
+ T_2&=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&-1&1&0\\0&0&0&1\end{pmatrix},&
+ T_3&=\begin{pmatrix}1&0&0&-1\\0&1&1&0\\0&0&1&0\\0&0&0&1\end{pmatrix}.
+\end{aligned}
+\]
+On ordinary dual homology put $H_i=(T_i^{-1})^t$,
+$\ell=(1,-1,-1,0)^t$ and $\widehat\delta=(0,0,0,1)^t$.
+Then
+\[
+ \operatorname{Cent}_{M_4(\mathbb Q)}(H_*,H_1,H_2,H_3)
+ =\mathbb Q I\oplus\mathbb Q E_{41},
+\]
+and the cohomological centralizer is
+$\mathbb Q I\oplus\mathbb Q E_{14}$.
+The fixed and norm lattices at the multiple fibre are
+\[
+ \begin{aligned}
+ \Lambda^{H_*}&=\mathbb Z\ell\oplus\mathbb Z\widehat\delta,\\
+ N_4\Lambda&=4\mathbb Z\ell\oplus2\mathbb Z\widehat\delta,\\
+ \Lambda^{H_*}/N_4\Lambda&\simeq\mathbb Z/4\oplus\mathbb Z/2.
+ \end{aligned}
+\]
+The primitive vanishing lattices at the three reduced fibres are
+\[
+ K_1=\mathbb Z(\widehat w+\widehat\delta),\qquad
+ K_2=\mathbb Z\widehat u,\qquad
+ K_3=\mathbb Z\widehat w\oplus\mathbb Z\widehat\delta.
+\]
+Their invariant lattices are
+\[
+ \begin{split}
+ \Lambda^{H_1}&=\mathbb Z(\widehat\psi-2\widehat u)
+       \oplus\mathbb Z\widehat w\oplus\mathbb Z\widehat\delta,\\
+ \Lambda^{H_2}&=\mathbb Z\widehat\psi\oplus
+       \mathbb Z\widehat u\oplus\mathbb Z\widehat\delta,\\
+ \Lambda^{H_3}&=K_3.
+ \end{split}
+\]
+\end{proposition}
+\begin{proof}
+The matrices are Proposition 4.2 of \cite{ViaTwo26push}, whose
+derivation uses the elliptic monodromies, the winding of $P$,
+and the primitive rank-two cusp.  In particular it determines
+the initially undetermined winding integer by the saturation
+index $d^2=1$, rather than assuming this winding from the
+desired topology.  Direct multiplication gives
+$T_*T_1T_2T_3=I$, $T_*^4=I$ and
+$(T_i-I)^2=0$ for $i=1,2,3$.
+For clarity the homological matrices used in our calculation are
+\[
+\begin{aligned}
+ H_*&=\begin{pmatrix}1&0&0&0\\-2&0&-1&0\\0&1&0&0\\1&1&0&1\end{pmatrix},&
+ H_1&=\begin{pmatrix}1&0&0&0\\0&1&0&0\\-2&-1&1&0\\-2&-1&0&1\end{pmatrix},\\
+ H_2&=\begin{pmatrix}1&0&0&0\\0&1&1&0\\0&0&1&0\\0&0&0&1\end{pmatrix},&
+ H_3&=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&-1&1&0\\1&0&0&1\end{pmatrix}.
+\end{aligned}
+\]
+Solving the sixty-four rational equations $CH_i=H_iC$
+gives $C=aI+bE_{41}$ with free $a,b$; the retained exact
+row-reduction program displays a basis and verifies its
+dimension two.  Inverse transpose gives the stated
+cohomological centralizer.  Solving $(H_*-I)v=0$ gives
+$v=(a,-a,-a,d)^t$ integrally, and
+\[
+ N_4=I+H_*+H_*^2+H_*^3
+ =\begin{pmatrix}4&0&0&0\\-4&0&0&0\\-4&0&0&0\\0&2&-2&4\end{pmatrix}.
+\]
+In the basis $(\ell,\widehat\delta)$ its columns are
+$(4,0),(0,2),(0,-2),(0,4)$, giving exactly the displayed
+norm group.  Each $K_i$ is the actual integral image of
+$H_i-I$; its Smith form has only unit nonzero entries.
+The kernels of these three matrices give the remaining fixed
+lattices.  All products, rational row reductions, Hermite forms,
+and Smith forms are executed in
+\texttt{code/e\_push\_two\_parameter.py}.
+\end{proof}
+
+We now specify the parameter domain, because the source proves
+a family on a sufficiently small bidisc, not on the entire
+$\mu$-plane.  Set
+\[
+ S_\mu:\ y^2=x^3+tx+\mu t+1,\qquad
+ P_\mu=(-\mu,\sqrt{1-\mu^3}),
+\]
+with the square root equal to one at zero.  Label the three roots
+$p_i(\mu)$ of $4t^3+27(\mu t+1)^2$ holomorphically near zero;
+$p_3$ is the zero of the chosen linearization.
+Choose a holomorphic generator of its one-dimensional space of
+sections vanishing at $p_3$ and scale it by $\lambda$.
+For the added homology generator take the inverse of the
+contracting lift.  On the universal cover of the four-punctured
+base its period columns then have the form
+\[
+ \Pi_{\mu,c}=
+ \begin{pmatrix}2z_\mu&\tau_\mu&1&0\\
+ \beta_\mu+c&z_\mu&0&1\end{pmatrix},
+ \qquad \lambda=e^{-2\pi i c},\qquad
+ \partial_c\Pi=e\otimes\psi.
+\]
+Here $z_\mu$ is a lifted elliptic logarithm in the chosen marking;
+changing the generator of the linearization changes
+$\beta_\mu$ and the origin of $c$ by a holomorphic function of
+$\mu$, and changes neither the integer-difference criterion
+below nor the original $\lambda$-labelled bidisc.
+This choice of inverse lift fixes the sign of $c$.
+At $p_3$ its second period has jump $-1$, exactly canceled by
+$H_3\widehat\psi=\widehat\psi+\widehat\delta$.
+The covariance identities for all four matrices, including
+$\tau_*=-1/\tau$, $z_*=(z-1)/\tau$,
+$\beta_* =\beta-1-2(z-1)^2/\tau$, are checked symbolically
+in the same program.
+
+\begin{theorem}[E.5.3 (Proved): classification on the specified parameter domain]
+There are $\epsilon>0$ and a real constant $C$ such that the
+source construction, with its fixed logarithmic vector $\ell$,
+defines a proper holomorphic family
+$X_{\mu,c}$ over
+$\{ |\mu|<\epsilon\}\times\{\operatorname{Im}c<C\}$.
+It has the singular fibres of E.5.1 and the markings above.
+Two of its members are biholomorphic if and only if
+\[
+ \mu'=\mu,\qquad c'-c\in2\mathbb Z.
+\]
+Every such biholomorphism covers the identity of the elliptic
+base.  The quotient parameter in the second variable is
+$v=e^{-\pi i c}$, with $\lambda=v^2$.
+On a sufficiently small bidisc centred at any
+$(0,\lambda_0)$ in Theorem 1.1 of \cite{ViaTwo26push}, choose
+one logarithm of $\lambda$.  Within that actual bidisc,
+\[
+ X_{\mu,\lambda}\simeq X_{\mu',\lambda'}
+ \quad\Longleftrightarrow\quad
+ (\mu,\lambda)=(\mu',\lambda').
+\]
+\end{theorem}
+\begin{proof}
+The equations of Proposition 6.4 in \cite{ViaTwo26push}
+give the simultaneous elliptic family, line bundle, linearization,
+and good-reduction comparison.  On a smaller closed $\mu$-disc
+all unit factors in its four local fillings are uniformly bounded
+above and below.  Its contraction estimates therefore have a
+common nonzero bound $|\lambda|<\eta$.  Pulling back by
+$\lambda=e^{-2\pi i c}$ gives the indicated half-plane.
+The integral markings and the four-torsion section $\ell/4$
+continue uniquely on this simply connected parameter domain.
+On every relatively compact subset the source's finite root
+quotients and the fixed rank-one and hexagonal fans give
+holomorphic charts with uniform bounds.  Their comparisons are
+the specified section-preserving ones, so they agree on
+intersections and define a family.  Properness is local on
+the parameter domain and follows from the compact four-piece
+construction there; smoothness follows from the same free
+finite action and unimodular charts.  We make no assertion
+about continuation to arbitrary $\mu$.
+
+The intrinsic fibration is the anticanonical pencil.  To verify
+the needed input from Proposition 6.1 of the source, on the
+smooth core the line-coordinate form $dv/v$ wedged with a
+base two-form identifies $K_X$ with $f^*\mathcal O(-1)$.
+The forms $dq\wedge d\log z\wedge d\log v$ extend without
+zeros or poles in both rank-one charts $q=ab$ and rank-two
+charts $q=abc$.  At the finite root at infinity the source's
+coordinate change gives
+\[
+ ds\wedge\frac{dX}{Y}\wedge\frac{dv}{v}
+ =4\,dr\wedge\frac{dx'}{y'}\wedge\frac{dv'}{v'},
+ \qquad s=r^4.
+\]
+It is invariant under the actual affine deck map and descends
+through its free quotient.  Thus the same canonical formula
+holds everywhere.  Connected fibres and projection formula
+give $H^0(-K_X)=f^*H^0(\mathcal O(1))$, without base points.
+A biholomorphism therefore induces an affine automorphism of
+the elliptic base, fixing its distinguished multiple point
+at infinity and its distinguished hexagonal point $p_3$.
+It may initially interchange the two rank-one points.
+
+Put $Q(\mu)=(p_1-p_3)/(p_2-p_3)$.
+The source computes $p_i'(0)=-9/(2p_i(0))$.
+If $Q'(0)$ vanished, the three velocities would have the form
+$Ap_i(0)+B$; the polynomial $Az^2+Bz+9/2$ would vanish
+at three distinct numbers, a contradiction.
+Also $Q(0)^2-Q(0)+1=0$, so $Q(0)\ne Q(0)^{-1}$.
+Shrink $\epsilon$ so that $Q$ is injective and its image
+is disjoint from the image of $Q^{-1}$.  Preservation or
+interchange of the rank-one values gives respectively
+$Q(\mu')=Q(\mu)$ or $Q(\mu')=Q(\mu)^{-1}$.
+The second possibility is excluded, and the first gives
+$\mu'=\mu$.  The base automorphism now fixes three distinct
+points individually and is the identity.
+
+On regular fibres a biholomorphism is affine, and its integral
+linear map commutes with all four $H_i$.  E.5.2 gives
+$aI+bE_{41}$.  Comparing the constant third and fourth
+period columns makes its complex linear part $aI$;
+unimodularity gives $a=\alpha\in\{1,-1\}$.
+The first column then gives $h=c'-c\in\mathbb Z$ and
+lattice map $\alpha(I-hE_{41})$.
+Normalize after the actual fourth-root base change.  Its
+affine generator is the one with fourth power $\ell$, not
+an arbitrary generator of its cyclic subgroup.  Summing the
+translation defect around this generator gives
+\[
+ (I+hE_{41})\ell-\alpha\ell
+ =(1-\alpha)\ell+h\widehat\delta\in N_4\Lambda.
+\]
+The norm lattice in E.5.2 forces $\alpha=1$ and $h$ even.
+This proves necessity, including the multiple fibre's full
+non-reduced structure.
+
+We prove sufficiency with all four collar conditions.
+Let $h$ be even and put
+\[
+ b_*=-\tfrac h4(\widehat u+\widehat w),\qquad
+ L_*=-\tfrac h2\widehat u.
+\]
+Direct multiplication gives
+\[
+ (I-H_*)b_*=\tfrac h4\widehat\delta+L_*.
+\]
+Consequently $\zeta\mapsto\zeta+\Pi_{\mu,c}b_*$ on the
+complete root torus family conjugates the two affine actions,
+modulo the integral arrow $L_*$.  It and its inverse extend
+over $r=0$ and descend.  On the punctured root collar its
+middle translation includes
+$h(\log r)/(2\pi i)e$; this is the derivative-free collar
+term for the change of the invariant translation
+$\Pi\ell/4$, not a logarithm used on the central chart.
+
+At a rank-one point the vanishing coordinate is the first
+toric coordinate in its chain cover, while the other
+direction is the universal cover of the elliptic factor.
+An extending translation has integral winding only in $K_j$.
+After removing the corresponding power of $q$, its toric
+coefficient is a holomorphic unit and its elliptic translation
+extends holomorphically.  These are the full analytic collar
+conditions.  Necessity follows by lifting a transverse disc
+through a smooth central point to this free cover: its residual
+defect in $\Lambda/K_j$ is zero.  The coordinate ratios on
+the cover then give the asserted unit and holomorphic
+remainder.  Conversely an integral power of $q$ translates
+the infinite chain by an integer number of components;
+the holomorphic remainders give torus and elliptic translations.
+These maps and their inverses extend at both branches of every
+node.  At the hexagonal point the same description uses two
+toric windings in $K_3$, and integer translation of the fan
+extends over its three double curves and both triple points.
+This criterion includes regularity of the remainder; membership
+of the defect in $K_j$ alone would not exclude an essential
+singularity of a preassigned punctured translation.
+
+Choose the three integral defects
+\[
+ L_1=0,\qquad L_2=\tfrac h2\widehat u,\qquad
+ L_3=-\tfrac h2\widehat w.
+\]
+They belong to $K_1,K_2,K_3$, respectively, and are realized
+by the preceding toric translations with initially constant
+unit remainder.  In primitive cocharacter coordinates these
+are $1$, $q_2^{h/2}$, and $(q_3^{-h/2},1)$, where the
+monodromy defect of $q^a$ is defined as $a$ times the chosen
+vanishing generator.  The required sphere relation is
+\[
+ L_*+H_*L_1+H_*H_1L_2+H_*H_1H_2L_3=0.
+\]
+It holds as an exact integer identity, checked in the program.
+Thus the four local choices have compatible additive defects
+and define a torsor of allowed middle translations.
+
+We verify the vanishing of its analytic obstruction, including
+the difference sheaf.  The root curve has just the order-four
+point at infinity and is $\mathfrak C=\mathbb P(1,4)$,
+with $K_{\mathfrak C}=\mathcal O(-5)$ and coarse pullback
+$\mathcal O_B(1)=\mathcal O_{\mathfrak C}(4)$.
+Vertical logarithmic fields on a rank-one chart are generated
+by $a\partial_a-b\partial_b$ and the elliptic vector;
+on a hexagonal chart they are the two height-zero toric fields.
+The root chart has the ordinary vertical tangent frame.
+Their linear transition functions depend only on the base;
+they define a rank-two bundle $\mathcal E$ on $\mathfrak C$.
+The fixed line-coordinate field supplies a subline
+$\mathcal O\subset\mathcal E$ everywhere in these logarithmic
+frames.  The logarithmic determinant sequence and cancellation
+of the three reduced fibre divisors give
+$K_X=\bar f^*(K_{\mathfrak C}\otimes(\det\mathcal E)^{-1})$.
+The verified canonical formula and
+$\bar f_*\mathcal O_X=\mathcal O_{\mathfrak C}$ therefore
+give $\det\mathcal E=\mathcal O(-1)$.
+The extension splits since
+$H^1(\mathfrak C,\mathcal O(1))=0$, by the same two-chart
+Laurent calculation with weights $1,4$.
+The coarse difference sheaf is $V_B=\rho_*\mathcal E$:
+on the root chart this is precisely finite equivariance,
+and on each reduced collar it is precisely the holomorphic
+remainder just described.  Finite averaging is exact, so
+\[
+ H^1(B,V_B)=H^1(\mathfrak C,\mathcal E)
+ =H^1(\mathcal O\oplus\mathcal O(-1))=0.
+\]
+The torsor's Cech class vanishes.  Correcting the four local
+translations by its holomorphic zero-cochain gives a global
+middle translation and exact equality with all four local
+extensions.  Their inverses have the opposite allowed
+translations and glue as well.  This constructs the required
+biholomorphism over $B$.
+
+Finally choose a single logarithm of $\lambda$ on the source's
+small bidisc.  Its $c$-values can be placed in a strip of
+width less than two.  The criterion just proved then says
+$c'=c$ and $\mu'=\mu$, which is equivalent to equality of
+the original two parameters.  Conversely equality gives the
+identity, with the fixed root, rank-one and hexagonal charts.
+\end{proof}
+
+The matrix data and the independent-variation argument are in
+\cite[Proposition 4.2 and Proposition 6.4]{ViaTwo26push}; the
+source states dimension at least two and does not state the
+integer classification on the logarithmic lift.  We derived
+the latter here from the marked norm and collar calculations.
+For E.1--E.5 our searches on 15 November 2026 included the
+exact arXiv identifiers together with ``classification'',
+``Kuranishi'', ``deformation'', and ``parameters'', and the
+references and version-specific records of the attached
+papers.  No further paper resolving the general deformation
+equivalence in E.2.4 was located.  This is a record of the
+search performed, not a completeness or priority assertion;
+the query responses and opened-source metadata are retained
+in \texttt{evidence/E\_search*.json}.
