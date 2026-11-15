@@ -156,14 +156,14 @@ the missing period, the monodromy group and the answer to Klingler's question, a
 
 - `pro_returns/S6_02_PUSH/PROMPT.md`, `pro_returns/S6_03_CDP/PROMPT.md`, `pro_returns/S6_04_MAPS_MANIFOLDS/PROMPT.md`
   and `pro_returns/S6_05_ARITHMETIC/PROMPT.md`: the four prompts as they stand, written or revised on 12-13 November by
-  Claude Fable 5.2 (effort not recorded) after the review of S6_02_FAMILY. Each return will be filed in the same folder when it comes back.
+  Claude Fable 5.2 (at effort high in the S6_02 review of 12 November, at effort max on 13 November) after the review of S6_02_FAMILY. Each return will be filed in the same folder when it comes back.
   The background archives are not published.
 - [`reviews/S6_ROUTES_FABLE_MAX/`](reviews/S6_ROUTES_FABLE_MAX/): routes for three questions that had no named route
   (`ROUTES.md`, `NOTES.md`, numerical tests in `checks/`), by Claude Fable 5.2 (effort max). By its own statement it is
   an unverified hunch: nothing in it is proved.
 - `reviews/LEECH_Z24_QUESTION_20261113.md` and `reviews/LEECH_Z24_CONSULT_20261113.md`: the question whether
   H_2 of the boundary complex of the moduli space of stable 6-pointed curves of genus 0 (Z^24) is related to the Leech
-  and Niemeier lattices, and the answer of the S6 survey agent (Claude Fable 5.2 (effort not recorded)), given by hand without programs.
+  and Niemeier lattices, and the answer of the S6 survey agent (Claude Fable 5.2 at effort high), given by hand without programs.
   `tools/delta06_lattice_20261113.py` computes the cycle lattice of that complex and the S_6 character on it in exact
   integer arithmetic; its output is not included and nobody has checked it.
 
