@@ -1,0 +1,144 @@
+\begin{theorem}[A.4.7; Proved; Euler number and fundamental group for every toroidal output]\label{push:A47}
+Let $\Sigma$ be any output of A.2.4 for $u=r^n$, and let
+$D_\Sigma$ denote the underlying reduced central space.
+Let $k(\Sigma)$ be the number of selected pure top ray
+orbits, and let $t_4(\Sigma)$ be the number of maximal
+four-cones in one fundamental prism. Then
+\[
+ \chi(D_\Sigma)=11k(\Sigma)+t_4(\Sigma),
+ \qquad \pi_1(D_\Sigma)=\mathbb Z,
+ \qquad H_1(D_\Sigma;\mathbb Z)=\mathbb Z.
+\]
+These assertions include nonreduced central divisors.
+At a point with precisely one local central branch of
+multiplicity $\ell$, the nearby Euler function is $\ell$;
+at a point with at least two local branches it is zero.
+Its integral is always two. For every reduced output the
+pure top count is $k(\Sigma)=n$, so
+$\chi(D_\Sigma)=11n+t_4(\Sigma)$.
+The higher integral homology of every arbitrary output is
+not asserted by this theorem.
+\end{theorem}
+\begin{proof}
+Over $B\setminus\{\infty\}$ the top fan gives a cycle
+of $k(\Sigma)$ ruled bundles over
+$S\setminus S_\infty$, glued along their zero and
+infinity sections with the specified translations.
+There are no triple intersections there. Its Euler
+number is therefore
+\[
+ 2k(\Sigma)\chi(S\setminus S_\infty)
+       -k(\Sigma)\chi(S\setminus S_\infty)
+ =11k(\Sigma),
+\]
+because $\chi(S)=12$ and $\chi(S_\infty)=1$.
+This computation concerns the support of the divisor,
+so the multiplicities do not enter.
+
+At $q=r=0$ the strata are the torus orbits of cones whose
+generators collectively have positive $q$-height and
+positive $r$-height. Each such cone has trivial period
+stabilizer. Indeed, an element $G_1^aG_2^b$ preserving
+its finite set of primitive rays has a power fixing them
+all. A ray of positive $q$-height then forces $a=0$;
+any ray with positive $q$- or $r$-height forces $b=0$.
+Consequently a stratum of cone dimension $d$ is an actual
+$(\mathbb C^*)^{4-d}$, with no additional torus quotient.
+The induced gluing units only identify different period
+translates of the stratum. Its compactly supported Euler
+number is zero unless $d=4$, in which case it is one.
+Every maximal cone has both kinds of height, and each has
+one representative in the interior of the fundamental
+prism. Thus the cusp contributes exactly $t_4(\Sigma)$.
+Additivity proves the displayed central Euler formula.
+
+The local total space is smooth, and its parameter is
+$r=z_1^{\ell_1}\cdots z_s^{\ell_s}$ times a holomorphic
+unit, with $\ell_i>0$. Its Milnor fibre has the homotopy
+type of a finite disjoint union of $(S^1)^{s-1}$.
+For $s=1$ it consists of $\ell_1$ contractible pieces;
+for $s\geq2$ its Euler number is zero. This proves the
+pointwise assertion. Off the cusp the one-branch parts
+are $\mathbb C^*$-bundles over the appropriate parts of
+$S\setminus S_\infty$ and have Euler number zero; the
+double parts have nearby Euler value zero. At the cusp,
+positive-dimensional torus strata again contribute zero.
+A maximal cone with exactly one positive-$r$ ray must
+have three bottom rays. Its bottom face is consequently
+one of the two prescribed triangles $ABC$ and $BCD$.
+Each triangle belongs to exactly one such maximal cone.
+Its determinant is the $r$-height $\ell$ of the fourth
+ray, because the bottom triangle is unimodular.
+Smoothness forces $\ell=1$. Exactly these two points
+contribute one each. Thus the nearby Euler integral is
+two for every output, even when some other components
+have multiplicity greater than one.
+
+For the fundamental group, first choose the reference
+model obtained by base-changing $\mathcal X^+$ by
+$u=r^n$ and resolving the surface equation $xy=r^n$
+along its smooth conductor $S$. Its normalized central
+components are $R^+$ and $n-1$ projective-line bundles
+over $S$. All are simply connected, and their double
+surfaces are copies of the simply connected $S$.
+The gluing graph is an $n$-cycle, interpreted as the
+self-gluing circle when $n=1$. Van Kampen therefore
+gives fundamental group $\mathbb Z$ for this reference
+centre.
+
+Any two fans of A.2.4 have the explicit proper common
+normal modification formed by intersecting their cones.
+Resolve this analytic space to a smooth common model;
+analytic resolution, including the noncompact version
+near the compact central set, is supplied by
+\cite[Theorem 1.6 and its following paragraph]{BM95AB}.
+This use of a common modification is legitimate here
+because the common fan has already constructed it.
+It is not an assumed extension of an arbitrary punctured
+isomorphism.
+
+A proper bimeromorphic map $F:Y\to X$ between smooth
+complex manifolds induces an isomorphism of fundamental
+groups. To see this directly, choose an analytic
+$A\subset X$ of complex codimension at least two such
+that $F$ is an isomorphism outside $A$. General position
+gives $\pi_1(X\setminus A)\simeq\pi_1(X)$, and gives
+surjectivity of
+$\pi_1(Y\setminus F^{-1}A)\to\pi_1(Y)$.
+Under the common-open identification, composition with
+$F_*$ is the displayed isomorphism to $\pi_1(X)$.
+Thus the first map is also injective, and $F_*$ is an
+isomorphism. Apply this argument to both maps from the
+smooth common model, after restricting to a sufficiently
+small parameter disc.
+
+Finally, each smooth total space retracts to the support
+of its central divisor, including in the nonreduced case.
+The gradient proof in B.4.2 applies with the explicit
+bound for $\rho=|r|^2$
+\[
+ \|\nabla\rho\|\geq c\rho^{1-1/(2L)},
+ \qquad L=\ell_1+\cdots+\ell_s.
+\]
+On the complement of the divisor it follows from the
+weighted arithmetic--geometric mean inequality applied
+to $\sum_i\ell_i^2/|z_i|^2$. A holomorphic unit can be
+absorbed into one coordinate locally. Compactness of
+the central set gives a uniform exponent below one,
+and the resulting finite remaining path-length bound
+gives the continuous gradient retraction. Hence all
+the centres and their smooth total neighbourhoods have
+the same fundamental group as the reference centre.
+Abelianization gives the stated $H_1$.
+
+The program \path{code/ab_push_all_fan_topology.py}
+checks the Euler and two-point nearby formulas for every
+minimal bridge at $n=1,2,12$, eight point-star
+modifications, and five nonreduced conductor-star
+modifications. In the latter family the added pure top
+rays are $(0,1,0,j)$ for $2\leq j\leq m+1$; the formula
+gives $\chi(D_m)=14+12m$, independently agreeing with
+successive blow-ups of the conductor surface of Euler
+number twelve. The finite checks are recorded separately
+from the proof for every fan.
+\end{proof}

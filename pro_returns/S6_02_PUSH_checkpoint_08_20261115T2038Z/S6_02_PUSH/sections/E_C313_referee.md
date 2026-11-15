@@ -1,0 +1,13 @@
+# Independent referee of C.3.13
+
+**Verdict: the final written corrected Seifert comparison is valid, with the stated modification of the cusp leaves and no six-dimensional framing conclusion.**
+
+For the weighted map, the numerator z2³ is R^12 t exp(24πiTheta), while z1⁴ is R^12(t−1) exp(24πiTheta). Therefore the displayed target map gives p=t exactly. The root-generator changes give cancelling phases: at the multiplicity-three centre, the change of F is cancelled by Theta increasing by 1/3; at the multiplicity-four centre, the change of G and Theta decreasing by 1/4 cancel in both coordinates. The omitted radial term would have been a genuine error; here it is retained as A_j and cancelled by d=−A_j. The finite root expressions thus extend smoothly with the actual affine deck rotations.
+
+The cusp boundary extension uses the exact integral character. The q-meridian bounds the toric section z1=z2=1 and has character zero, so the extension class has no hidden meridian shift. An averaged integral-period closed one-form represents that class. Its contraction with the circle generator is constant by Cartan's formula and zero at a fixed point. An averaged primitive and a collar cutoff correct the boundary discrepancy without changing the class. Integration modulo Z yields a smooth invariant map on the actual smooth cusp body, equal to the original character on the specified outer collar. This argument makes no unjustified smoothness assumption about arbitrary functions in raw Hopf quotient coordinates.
+
+The cusp algebra also checks: R_t=|q|^(1/12)S(q), and the q phases cancel precisely after setting vartheta=Theta−Re(s)/12. The resulting target solid-torus chart has the displayed smooth inverse; hence it is an actual marked chart, not a multiplicity-only identification. Changing the original Mumford coordinate by a holomorphic base unit leaves the chosen bounding toric section and its zero character unchanged.
+
+Finally, z2³−z1⁴ along a nearby regular weighted orbit has argument degree +12. Its zero is a simple complex-normal zero along the positive (3,4) torus knot, so that argument represents the positive meridian class. This proves the three-dimensional linking claim with its sign. It does not identify this target push-off with the normal framing of the six-dimensional orbit trace. The nonzero Euler correction in C.3.11 and the main monodromy value remain unresolved.
+
+The relative homotopy uniqueness statement is also valid: both boundary and cusp quotient are connected, and restriction on integral H¹ is injective on the two marked period generators; hence H¹(Vbar,boundary Vbar;Z)=0. The statement concerns maps to S¹, not framed embeddings or ambient isotopies.

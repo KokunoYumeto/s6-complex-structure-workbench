@@ -1,0 +1,183 @@
+\begin{proposition}[D.4.7; Proved]
+The function $D_{\rm part}$ has no critical point on the punctured
+root neighbourhood $0<|\tau-i|\leq3/20000$, no critical point on the
+coarse neighbourhood represented by $|\tau-\rho|\leq1/50$, and no
+critical point where $\Im\tau\geq2$. At $\rho$ the two factors
+$Z$ and $F=3ZP-2g_2$ of D.4.4 vanish, but the coarse gradient is
+nonzero, as in D.4.5. The assertions away from $i$ are certified by
+the independently implemented Arb calculation
+\path{code/d_root_gradient_certificate.py}; all its intervals and
+the 400 local rectangles are retained.
+\end{proposition}
+\begin{proof}
+We first treat $i$ by analytic estimates. Use the holomorphic
+functions $G(h,i+x)$ and $H(h,i+x)$ of E.4.2. That proof gives
+$|G|<20$, $|H|<0.6$ on the polydisc with radii $1/5$ in $h$ and
+$1/10$ in $x$, and gives all its roots over $|x|\leq3/20000$ in
+$|h|^2<1/20000$. Put
+\[
+ a=\frac3{2000},\qquad b=\frac1{800},\qquad
+ U=(1-a)^{-2}(1-b)^{-1}-1,\qquad
+ V=(1-a)^{-1}(1-b)^{-2}-1.
+\]
+Differentiate the convergent even power series of $G$. Subtracting
+the known coefficients $G_x(0,i)=id$ and
+$G_{h^2}(0,i)=-g_2(i)/4$, Cauchy's coefficient inequalities give
+\[
+ |G_x-id|\leq200U<0.853,\qquad
+ \frac{|G_h|}{|h|}\leq2(47.30+500V)<98.611.
+\]
+The first bound follows by summing
+$\sum_{j\geq1,k\geq0}j a^{j-1}b^k$ after its constant term
+has been removed. The second uses
+$\sum_{j\geq0,k\geq1}k a^j b^{k-1}$ with the same removal.
+Since $d>10.03$, $G_x$ is nonzero and the zero curve is locally
+$x=x(h)$, with
+\[
+ |x'(h)|\leq K|h|,\qquad
+ K=\frac{2(47.30+500V)}{10.03-200U}<10.745<11.
+\]
+At $h=0$, E.4.2 forces $x=0$; elsewhere $h$ is thus a valid local
+coordinate of this curve. For
+$R=H-H(0,i)+\pi h^2/2$, its constant and both linear coefficients
+in $(x,h^2)$ vanish. The same sums imply
+\[
+ |R_h|\leq30V|h|,\qquad |R_x|\leq6U.
+\]
+Write $T=1+\Im x$ and $y=\Im h$. The norm on the zero curve is
+$\log\mathcal N=\Re H-\pi y^2/T$. Its Wirtinger derivative satisfies
+\[
+ \partial_h\log\mathcal N
+ =-\frac\pi2\bar h+\mathcal E,
+\]
+\[
+ \frac{|\mathcal E|}{|h|}
+ \leq\frac{30V+6UK}{2}
+ +\frac{\pi\epsilon}{1-\epsilon}
+ +\frac{\pi K}{40000(1-\epsilon)^2}
+ <0.198862<\frac\pi2,\qquad \epsilon=\frac3{20000}.
+\]
+Indeed the last two terms bound respectively
+$\pi i y(T^{-1}-1)$ and
+$-\pi i y^2x'(h)/(2T^2)$. This proves strict nonvanishing for
+$h\ne0$. Since $D=(6/\pi)\log(\mathcal N/(2\sqrt3))$, it proves
+the assertion at $i$ without differentiating a numerical upper bound.
+
+We give the details of the other two certificates. Write $q=e^{2\pi
+i\tau}$ and use $\wp,\wp'$ as in E.4.1, together with
+\[
+\begin{aligned}
+ L&=\pi\cot\pi z+
+       4\pi\sum_{n\geq1}\frac{q^n}{1-q^n}\sin(2\pi nz),\\
+ E&=\frac{\pi^2}{3}-8\pi^2\sum_{n\geq1}\frac{nq^n}{1-q^n},&
+ g_2&=\frac{4\pi^4}{3}
+       +320\pi^4\sum_{n\geq1}\frac{n^3q^n}{1-q^n}.
+\end{aligned}
+\]
+These follow directly by differentiating the Jacobi product and the
+Eisenstein series. The code sums 40 terms. For $0\leq r<1$, set
+\[
+ V_j(r)=41^j r^{41}M_j(r),\qquad
+ (M_0,M_1,M_2,M_3)=
+ \left(\frac1{1-r},\frac1{(1-r)^2},
+ \frac{1+r}{(1-r)^3},\frac{1+4r+r^2}{(1-r)^4}\right).
+\]
+Then $\sum_{n>40}n^j r^n\leq V_j(r)$, by
+$(40+k)^j\leq41^jk^j$. If $r\geq|q|$ and
+$R=r\exp(2\pi|\Im z|)<1$, the tails for
+$(\wp,\wp',L,E,g_2)$ are enclosed by complex squares whose
+coordinate radii are respectively
+\[
+ \frac1{1-r}\bigl(
+ 8\pi^2(V_1(r)+V_1(R)),\ 16\pi^3V_2(R),\
+ 4\pi V_0(R),\ 8\pi^2V_1(r),\ 320\pi^4V_3(r)\bigr).
+\]
+They enclose the corresponding complex discs and so are conservative.
+Every use of a strict inequality is an Arb comparison between
+outward-rounded real balls at 256-bit precision.
+
+For the cusp, let
+\[
+ z_\infty=\frac12-\frac{i}{2\pi}\log(5+2\sqrt6).
+\]
+The $q=0$ trigonometric function has a simple zero there. Let $z_0$
+be its stored exact dyadic approximation and let $A$ be the stored
+dyadic approximation of the inverse derivative at $q=0$. The
+closed square $|\Re(z-z_0)|,|\Im(z-z_0)|\leq1/1000$ is invariant
+under $z\mapsto z-A\wp(z,q)$ for every $q$ in the square
+$|\Re q|,|\Im q|\leq e^{-4\pi}$. The certified supremum-norm
+Lipschitz bound is less than $0.024725$ and the image radius is less
+than $0.000122623$. Banach's theorem gives the unique analytic root
+there, agreeing with the chosen cusp branch. The square in $q$
+contains the entire required disc; its larger absolute-value bound
+is used in every tail. In the additional interval
+$0\leq1/\Im\tau\leq1/2$, direct evaluation gives
+\[
+ |Z|>1.39894,\qquad |3ZP-2g_2|>127.018.
+\]
+Consequently neither critical factor vanishes anywhere above height
+two. The opposite zero $-z$ changes the sign of $Z$ and $P$ and
+leaves $F$ unchanged; translations by periods leave the same test
+invariant. Thus the choice of the zero representative does not
+restrict this conclusion.
+
+At $\rho$, put $z_\rho=(2-\rho)/3$ and $P_0=\wp'_\rho(z_\rho)$.
+The square $\rho+[-1/50,1/50]+i[-1/50,1/50]$ is divided into
+$20\times20$ closed rectangles of side $1/500$. This is an exact
+rational partition relative to $\rho$. On each rectangle the code
+constructs an exact dyadic centre and preconditioner and proves the
+same strict contraction criterion for a root square of radius
+$1/1000$. Every resulting root lies in the common closed square of
+coordinate radius $1/80$ about the dyadic centre of $z_\rho$; the
+largest required coordinate radius is less than $0.007731<1/80$.
+On this larger square the same uniform derivative calculation
+gives $\|1-A\wp'\|_\infty<0.432523<1$ for every modulus in the
+whole square about $\rho$. This proves injectivity of $\wp$ there:
+if two values agree, the difference of the inputs equals their
+difference under $z\mapsto z-A\wp(z)$, contradicting the strict
+Lipschitz inequality. This larger square need not be invariant
+under that map, and we do not assert that it is. Existence on each
+small box and uniqueness in the common square therefore glue one
+holomorphic root. The certified nonzero values of $P$ also exclude
+a double root. At the centre this is $z_\rho$.
+
+All needed total derivatives on $\wp(\mu)=0$ can be evaluated
+without numerical differentiation. With $b=\Im\mu/\Im\tau$,
+they are
+\[
+\begin{aligned}
+ \mu'&=\frac{iL}{2\pi}-\frac{i g_2}{6\pi P},\\
+ Z_\tau&=\frac{-P-2EL}{4\pi i}-E\mu'
+                  +\frac\pi{\Im\tau}(\mu'-b),&
+ Z_{\bar\tau}&=\frac\pi{\Im\tau}(b-\overline{\mu'}),\\
+ P_\tau&=\frac{-3EP-Lg_2/2}{2\pi i}-\frac{g_2}2\mu',&
+ g_2'&=\frac{2iEg_2+3iP^2}{\pi},\\
+ F_\tau&=3Z_\tau P+3ZP_\tau-2g_2',&
+ F_{\bar\tau}&=3Z_{\bar\tau}P.
+\end{aligned}
+\]
+The first two follow from D.4.4 and the theta heat equation. For the
+third, differentiate its displayed partial-$\tau$ identity for
+$\wp$ in $\mu$, then add $\wp''\mu'=-g_2\mu'/2$.
+The fourth is Ramanujan's identity together with $P^2=-g_3$ at a
+zero of $\wp$. In particular these formulas are identities for
+the chosen analytic root, not independent-variable derivatives.
+
+Let $A_0=iP_0/(4\pi)$ and $B_0=-21iP_0^2/(4\pi)$. The
+400 strict enclosures give, throughout the square,
+\[
+\begin{aligned}
+ |Z_\tau-A_0|+|Z_{\bar\tau}|&<0.423916
+                         <2.279897<|A_0|,\\
+ |F_\tau-B_0|+|F_{\bar\tau}|&<337.953
+                         <1371.701<|B_0|.
+\end{aligned}
+\]
+Since $Z(\rho)=F(\rho)=0$ by D.4.5, integrate each derivative
+along the segment from $\rho$ to $\tau$. Its difference from
+$A_0(\tau-\rho)$, respectively $B_0(\tau-\rho)$, has strictly
+smaller absolute value than that linear term. Hence both factors
+are nonzero for $0<|\tau-\rho|\leq1/50$. At the centre itself,
+D.4.5 gives the nonzero coarse derivative $7/(64\pi)$.
+This completes all local and cusp assertions.
+\end{proof}

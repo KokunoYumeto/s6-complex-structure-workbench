@@ -1,0 +1,298 @@
+\paragraph{Theorem F.2.20 (Proved: the complete rational $(5,4)$ normal form).}
+Consider ordered rational rank-five pairs $(A,C)$ with
+\[
+ \chi_A=(x-1)\Phi_5,
+ \qquad \chi_C=(x-1)(x+1)^2(x^2+1).
+\]
+Put
+\[
+ N=CA^{-1}-I,
+ \qquad N^2=0,\quad\operatorname{rank}N=2,
+\]
+where $A^5=C^4=I$ and the pair is irreducible over $\mathbb Q$.
+Their simultaneous rational conjugacy classes are parametrized
+bijectively by
+\[
+ \bigl\{[r:s:t]\in\mathbb P^2(\mathbb Q):D(r,s,t)\ne0\bigr\}
+ \ \sqcup\ \mathbb A^1(\mathbb Q),
+ \tag{F.R1}
+\]
+where
+\[
+\begin{split}
+ D={}&r^3-4r^2s-r^2t+7rs^2+rst-3rt^2\\
+     &{}-7s^3+11s^2t-11st^2+7t^3.
+\end{split}
+ \tag{F.R2}
+\]
+The second summand lies over the single exceptional point
+$[4:1:3]$ of $D=0$.  The construction below is explicit and
+uses only a ten-variable linear system.  By F.2.11 it also
+parametrizes the rational rank-six maximal-cusp extensions
+of all these pairs, with $B=C^{-1}$.
+This is a rational classification; the stable integral
+lattices, affine twists and surviving homology still require
+the arithmetic conditions of F.2.
+
+\begin{proof}
+Write $K=\mathbb Q(\zeta)$, $\zeta^4+\zeta^3+\zeta^2+
+\zeta+1=0$, and identify the rational space with
+$\mathbb Q\oplus K$.  The matrix of $A$ is multiplication by
+$(1,\zeta)$:
+\[
+ A=\operatorname{diag}(1,J),\qquad
+ J=\begin{pmatrix}
+ 0&0&0&-1\\1&0&0&-1\\0&1&0&-1\\0&0&1&-1
+ \end{pmatrix},\qquad R=(A+I)^{-1}.
+ \tag{F.R3}
+\]
+Its rational centralizer is $\mathbb Q^*\times K^*$.
+Let $I_N=\operatorname{im}N$.  If $X$ is any basis matrix
+for this plane and $N=XY$, then $YX=0$.
+The identity
+\[
+ C+I=(A+I)+XYA
+\]
+shows that its two-dimensional kernel has the same dimension
+as the kernel of
+$I_2+YARX=I_2-YRX$.  Hence
+\[
+ YRX=I_2,
+ \qquad I_N\cap RI_N=0.
+ \tag{F.R4}
+\]
+Conversely the two matrix equations in (F.R4), together with
+$YX=0$, give precisely that two-dimensional $-1$ eigenspace.
+
+The plane $I_N$ projects nontrivially to $\mathbb Q$:
+otherwise the first-coordinate covector is invariant under
+both $A$ and $C$, contrary to irreducibility.
+It contains no nonzero vector of $\mathbb Q\oplus0$,
+because $R$ acts as $1/2$ on that line and (F.R4) would fail.
+Write a basis of the plane as $(0,u),(1,v)$, where
+$u\in K^*$.  Multiplication on $K$ by $u^{-1}$ puts it into
+\[
+ I_N=\langle(0,1),(1,\beta)\rangle_{\mathbb Q}.
+\]
+Changing the second basis vector by a rational multiple of
+the first changes $\beta$ by a rational constant.
+Two such planes are in the same centralizer orbit exactly
+when $\beta'=a\beta+b$, with $a\in\mathbb Q^*$ and
+$b\in\mathbb Q$.  Indeed a centralizer element carrying
+one to the other must preserve the kernel of the projection
+to $\mathbb Q$, so its $K^*$ component is itself rational;
+the displayed affine change follows, and every such change
+is realized.  We may therefore take
+\[
+ \beta=r\zeta+s\zeta^2+t\zeta^3,
+ \qquad [r:s:t]\in\mathbb P^2(\mathbb Q),
+ \qquad
+ X=\begin{pmatrix}0&1\\1&0\\0&r\\0&s\\0&t\end{pmatrix}.
+ \tag{F.R5}
+\]
+The triple is nonzero; a rational $\beta$ would make the
+plane contain the forbidden first-coordinate line.
+The stabilizer of such a plane in the centralizer consists
+only of common scalar matrices.  Thus it introduces no
+further identifications of the resulting nilpotent operators.
+
+Write $Y$ as an unknown two-by-five matrix.  It is determined
+by the following ten linear equations:
+\[
+ YX=0,\qquad YRX=I_2,\qquad
+ \operatorname{tr}(YAX)=-1,\qquad
+ \operatorname{tr}(YA^{-1}X)=1.
+ \tag{F.R6}
+\]
+The first eight are (F.R4).  The last two are exactly
+$\operatorname{tr}C=\operatorname{tr}C^{-1}=-1$, since
+$\operatorname{tr}A=\operatorname{tr}A^{-1}=0$ and
+$C^{-1}=A^{-1}(I-XY)$.
+They suffice to obtain the required characteristic
+polynomial: the two $-1$ roots and determinant one leave a
+monic cubic of constant term $-1$, and the two traces fix
+that cubic to $(x-1)(x^2+1)$.
+These remaining three roots are distinct, and the $-1$
+eigenspace already has dimension two, so $C$ is semisimple
+and $C^4=I$.  Also $YRX=I_2$ ensures that $N$ has rank two.
+Thus every solution of (F.R6) gives all the asserted local
+linear conditions.
+
+In row-major order on the ten entries of $Y$, the determinant
+of the coefficient matrix in (F.R6) is $D/4$.
+For $D\ne0$ this proves uniqueness and gives the explicit
+formula $Y=\operatorname{reshape}(E^{-1}b)$, where $E$ is
+the coefficient matrix of the displayed linear equations
+and $b$ their displayed right side.
+The exact expanded matrix and all ten rational functions
+are printed by \texttt{fourfolds\_relative\_normalform.py}.
+There is no search or degree cutoff in this calculation.
+
+We check the entire exceptional locus, rather than discard it.
+Set
+\[
+ Q_1=r^2-rs-rt+s^2+t^2,
+ \qquad Q_2=r^2-2rs-3rt+4s^2-4st+4t^2.
+\]
+The first column of the unique generic solution is
+\[
+ y_{10}=\frac{2Q_1Q_2}{D},\qquad
+ y_{20}=\frac{2(r-s-t)Q_1}{D}.
+ \tag{F.R7}
+\]
+Here $y_{10},y_{20}$ are the first column of $Y$.
+The two equalities after multiplication by $D$ are polynomial
+linear combinations of (F.R6), by its adjugate matrix.
+The program prints the corresponding two polynomial rows
+and verifies those identities, so they remain necessary
+also when $D=0$.
+Moreover
+\[
+ 2Q_1=(r-s)^2+(r-t)^2+s^2+t^2>0
+\]
+for every nonzero rational triple.  Consequently consistency
+on $D=0$ forces $r=s+t$ and $Q_2=0$.
+Substitution gives
+\[
+ D(s+t,s,t)=(t-3s)(2t-s)^2,
+ \qquad Q_2(s+t,s,t)=(3s-t)(s-2t).
+ \tag{F.R8}
+\]
+There are precisely two resulting projective points,
+$[3:2:1]$ and $[4:1:3]$.
+At the former, $[X\mid RX]$ has rank less than four, so
+(F.R4) is impossible.  At the latter the coefficient and
+augmented matrices of (F.R6) both have rank nine, and every
+solution is
+\[
+ Y_z=\begin{pmatrix}
+ 4z+16/5&0&-2z-1&4/5-2z&2z\\
+ 2z-2/5&0&-z&2/5-z&z
+ \end{pmatrix},\qquad z\in\mathbb Q.
+ \tag{F.R9}
+\]
+Direct substitution proves both necessity and sufficiency.
+This establishes the exceptional affine line in (F.R1).
+
+Every pair just constructed is irreducible over $\mathbb Q$.
+An $A$-stable proper rational subspace has dimension one or
+four.  A one-dimensional subrepresentation or quotient must
+have trivial character, since its finite eigenvalues of
+orders dividing five and four must agree under the
+unipotent product.  The only $A$-invariant covector is the
+first-coordinate covector.  Its product with $N$ is the
+second row of $Y$, which is nonzero by $YRX=I_2$.
+The only $A$-invariant vector is the first-coordinate vector;
+its image under $N$ vanishes exactly if both entries in
+(F.R7) vanish.  For $D\ne0$, positivity of $Q_1$ and
+(F.R8) rule this out.  On the exceptional line the two
+entries $4z+16/5$ and $2z-2/5$ never vanish simultaneously.
+There are therefore neither invariant vectors nor covectors,
+which excludes both possible dimensions.
+
+Finally, rescaling $(r,s,t)$ is exactly the centralizer
+change already described; it gives a conjugate pair.
+Conversely any conjugacy of two normalized pairs centralizes
+$A$ and hence identifies their projective parameters as proved
+above.  At the exceptional point its stabilizer is scalar,
+so distinct $z$ give distinct pairs.  This proves the stated
+bijection, including completeness and uniqueness.
+The saved program checks all determinant, adjugate,
+characteristic-polynomial and finite-order identities over
+the rational function field, and checks the exceptional
+line symbolically for every $z$.
+\end{proof}
+
+\paragraph{Corollary F.2.21 (Proved: all good-prime lattices are forced).}
+For a $(5,4)$ datum with $\pi_1=1$ and $H_2=0$, the
+rank-five quotient has absolutely irreducible reduction
+at every prime $p\ne2,5$.  At each such prime its stable
+$\mathbb Z_p$-lattice is unique up to homothety.
+The same is true of the rank-six extension among lattices
+with primitive maximal cusp.  Thus, once a rational pair
+in F.2.20 admits one survivor, all remaining integral-lattice
+ambiguity is supported at the primes two and five.
+This assertion supplies no finite bound on those bad-prime
+lattices or on the rational parameters.
+
+\begin{proof}
+Work first over an algebraic closure of $\mathbb F_p$.
+Both finite generators are semisimple because $p\ne2,5$.
+A one-dimensional composition factor must be trivial:
+its $A$ and $C$ eigenvalues agree by the unipotent product,
+and their orders divide five and four.
+There can be at most one such factor, since the $1$
+eigenvalue of $A$ occurs once.
+If it occurs, the remaining four-dimensional module is
+absolutely irreducible by the spectral argument in F.2.19.
+The only other possible reducible composition pattern is
+$2+3$.
+On each factor, determinants of $A$ and $C$ agree and
+have orders dividing five and four, hence are one.
+The two-dimensional $C$ eigenvalue pair is therefore
+$(-1,-1)$ or $(i,-i)$.
+The first would give $C=-I$ on that factor, contradicting
+the unipotence of $CA^{-1}$ and the absence of $-1$
+among the eigenvalues of $A$.
+In the second case the three-dimensional factor has
+$C$ eigenvalues $1,-1,-1$, so $C^2=I$ there; it has
+an $A$-fixed vector because the other factor has determinant
+one and cannot contain the simple $1$ eigenvalue of $A$.
+
+Here is the required elementary involutory identity in the
+present characteristic.  Put $B=A^{-1}$ on this factor.
+From $(CB-I)^2=0$ and $C^2=I$ one obtains
+\[
+ BC+CB^{-1}=2I.
+\]
+For $Bv=v$ this says $(B+I)Cv=2v$.
+The operator $B+I$ is invertible, since $B^5=I$ and
+$p\ne2$, so $Cv=v$.  The resulting common fixed line
+contradicts simplicity of the three-dimensional factor.
+We have proved that any reducible residual representation
+has exactly the constituents $1$ and an absolutely
+irreducible four-dimensional module.  Theorem F.2.19
+excludes that possibility for a survivor, proving absolute
+irreducibility at every indicated prime.
+
+Let $R=\mathbb Z_p$ and $K_p=\mathbb Q_p$.
+For two stable quotient lattices, multiply one by a power
+of $p$ until it is contained in the other but not in its
+$p$-multiple.  Its nonzero residual image must then be the
+whole quotient by absolute irreducibility.  Nakayama's
+lemma, or the Smith form of the inclusion, makes the
+lattices equal.  This proves quotient-lattice uniqueness.
+
+For completeness the extension-lattice comparison is also
+integral.  Fix a primitive-cusp lattice $V_R$, with invariant
+line $Re$ and quotient $W_R$.
+The coboundary map
+\[
+ W_R^*\longrightarrow W_R^*\oplus W_R^*
+\]
+is primitive, because its reduction has trivial kernel.
+Thus its cokernel, the degree-one cohomology of the free
+group on the two generators, is torsion free, and an
+integral coboundary over $K_p$ is already integral over $R$.
+The extension class $\alpha$ is primitive in this cokernel.
+Indeed, divisibility by $p$ would make the extra cusp map
+\[
+ \ker N_W/\operatorname{im}N_W\longrightarrow Re
+\]
+divisible by $p$, contrary to the three unit Smith factors
+of the full cusp.  Here $N_W$ has primitive image:
+it is the quotient of the primitive image of $N_V$ by
+$Re\subset\operatorname{im}N_V$.
+
+Normalize any other stable lattice by the already proved
+quotient homothety so that its quotient is $W_R$.
+Its invariant line is $p^rRe$ for some integer $r$.
+The extension class in that basis is $p^{-r}\alpha$;
+primitivity makes it integral only when $r\leq0$.
+Primitivity of the coboundary map eliminates any additional
+rational change of splitting.  The extra cusp map is then
+multiplied by $p^{-r}$, so its Smith factor is a unit exactly
+when $r=0$.  The lattices coincide after the common homothety.
+This proves the full assertion and retains the bad-prime
+and rational-parameter problems explicitly.
+\end{proof}

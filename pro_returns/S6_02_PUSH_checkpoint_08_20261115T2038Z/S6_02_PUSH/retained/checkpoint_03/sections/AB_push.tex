@@ -1,0 +1,2618 @@
+\section{A. The untwisted limit}
+\subsection{A.1. The nodal plumbing}
+
+We write $L=\mathcal O_S(P-O)$, $T=t_{6P}$,
+$J=L\otimes T^*L^{-1}=\pi^*\mathcal O_B(1)$, and
+$R=\mathbb P_S(\mathcal O\oplus L)$. The convention for this projective
+bundle is that its zero and infinity sections have normal bundles
+$L$ and $L^{-1}$. The identification defining $Q$ is
+$s_0(x)\sim s_\infty(Tx)$. The equality defining $J$ is the equality
+in Engel's Lemma 2.1, with this direction of $T$; its intersection
+calculation uses $P\cdot O=0$, $P^2=O^2=-1$,
+$6P\cdot O=6P\cdot P=2$. Thus the degree on $O$ is
+$(O-P)\cdot6P+(P-O)\cdot O=1$. We use the section
+$\phi\in H^0(S,J)$ whose divisor is $S_\infty$, as in his
+Corollary 2.2. The source being checked is the attached version of
+\cite{E26}, not a later inference from its conjecture.
+
+\begin{proposition}[A.1.1; Proved]\label{push:A11}
+The cones $P_{k,l}$ in Lead 2 and their faces form a fan. Its two
+period automorphisms on the cocharacter lattice are
+\[
+ G_1(y_1,y_2,h_q,h_u)=(y_1+h_q,y_2,h_q,h_u),\qquad
+ G_2(y_1,y_2,h_q,h_u)=(y_1,y_2+h_q+h_u,h_q,h_u).
+\]
+The affine chart of $P_{0,0}$ is
+\[
+ U_{0,0}=\operatorname{Spec}\mathbb C[x,y,z,v,u]/(xy-uzv),
+ \qquad q=zv.
+\]
+In particular the unsubdivided chart is not a smooth simultaneous
+model of the cusp.
+\end{proposition}
+\begin{proof}
+At fixed $h_q,h_u\geq0$, the cone $P_{k,l}$ cuts out the rectangle
+\[
+ kh_q\leq y_1\leq(k+1)h_q,\qquad
+ l(h_q+h_u)\leq y_2\leq(l+1)(h_q+h_u).
+\]
+When $h_q=0$ the first interval is a point. These rectangles tile
+their support, and their intersections are common faces, including
+this collapsed boundary. This proves the fan assertion. The displayed
+integral transformations preserve the fan and have integral inverses.
+
+For a character $(a,b,c,d)$, the six inequalities of the dual cone
+are $c,a+c,b+c,a+b+c,d,b+d\geq0$. The characters
+\[
+ x=(0,1,0,0),\quad y=(0,-1,1,1),\quad
+ z=(1,0,0,0),\quad v=(-1,0,1,0),\quad u=(0,0,0,1)
+\]
+generate its integral monoid. Indeed if $b\geq0$ we subtract $b x$;
+if $b<0$ we subtract $(-b)y$. The remaining character has second
+coordinate zero and is a nonnegative integral combination of $z,v,u$.
+The sole relation is $x+y=u+z+v$, and the character of the first
+base coordinate is $z+v$. This proves the coordinate-ring assertion,
+including normality. The calculation is checked exactly in
+\texttt{code/ab\_push\_local\_checks.py}.
+\end{proof}
+
+\begin{theorem}[A.1.2; Proved]\label{push:A12}
+There is a reduced complex space $\mathcal X^\flat$ and a proper flat
+holomorphic map
+\[
+ (f,\varpi):\mathcal X^\flat\longrightarrow B\times\Delta_u
+\]
+whose central threefold is $Q$. For $u\ne0$ its fibre is the
+contraction of Engel's chosen $X(u)$ at one rational curve of the
+Mumford fibre. This curve is the double curve corresponding to the
+diagonal of the square in the chosen $A_2$ triangulation; in the
+return's coordinates its direction is $e_1-e_2$. Its normal bundle
+in $X(u)$ is $\mathcal O_{\mathbb P^1}(-1)^{\oplus2}$. Its image is
+the unique ordinary double point of $\mathcal X^\flat_u$.
+\end{theorem}
+\begin{proof}
+Here is a construction on the whole compact surface $S$. Choose a
+Hermitian metric on $L$, use the dual metric on $L^{-1}$, and choose
+$0<r<1/4$. For sufficiently small $\epsilon>0$ we have
+$|u|\|\phi_x\|<r^2$ for all $x\in S$ and $|u|<\epsilon$.
+Take the core
+\[
+ C=\{(x,a,u):a\in L_x,\ r<\|a\|<r^{-1},\ |u|<\epsilon\}
+\]
+and the node space
+\[
+ N=\{(x,a,b,u):a\in L_x,\ b\in L^{-1}_{Tx},\
+ a\otimes b=u\phi_x,\ \|a\|,\|b\|<2r,\ |u|<\epsilon\}.
+\]
+On $r<\|a\|<2r$ identify a point of $N$ with $(x,a,u)\in C$.
+On $r<\|b\|<2r$ identify it with $(Tx,b^{-1},u)\in C$.
+Both identifications are biholomorphisms between open complex spaces;
+in the first collar $b=u\phi_x/a$, and in the second
+$a=u\phi_xb^{-1}$. Their domains are disjoint because
+$\|a\|\|b\|<r^2$. Changes of frames multiply the equation by
+units and give the stated bundle-valued equation, so no choice of
+frame enters the gluing.
+
+This gluing is Hausdorff. At either end of a collar, exactly one
+of its two charts contains the limiting circle: the core omits
+$\|a\|=r$, and the node chart omits $\|a\|=2r$; the infinity
+collar has the identical property in $b$. Thus the graph of the
+identification has no unpaired pair of limiting points. The two
+collars in each chart are separated, so there are no additional
+chains of identifications. These observations give disjoint
+saturated neighbourhoods of any two inequivalent points. Properness
+is equally concrete. Over a compact subset of $B\times\Delta_\epsilon$,
+the closed core $3r/2\leq\|a\|\leq2/(3r)$ together with the
+closed node subspace $\|a\|,\|b\|\leq7r/4$ is compact and maps
+onto the glued space. To see surjectivity, a point outside the smaller
+core lies on a node collar, and a node point outside the smaller
+node subspace lies on the smaller core. Compactness of $S$ supplies
+the uniform bound used above. This proves properness of the joint
+map to $(t,u)$.
+
+The total node rings are hypersurface rings over the regular
+two-dimensional local rings of $S$. They are Cohen--Macaulay.
+Every fibre of the joint map has pure dimension two: first fix
+$t$, and then impose $xy=u\phi$ on the two line coordinates over
+the one-dimensional fibre of $S$. Consequently $t-t_0,u-u_0$ is a
+regular sequence in every total local ring. The regular-sequence
+flatness criterion over the smooth two-dimensional base proves
+flatness. On the core the same conclusion is immediate from
+flatness of $S\to B$. This includes the nonreduced Kodaira fibres
+at $0,1$; smoothness of $S$, rather than smoothness of those fibres,
+is what the argument uses. At $u=0$ the node equation is $ab=0$,
+and the two collar maps recover precisely the specified pinching
+of the two sections of $R$.
+
+For $u\ne0$ and $t\ne\infty$, the equation gives
+$a_{Tx}=a_x/(u\phi_x)$. Hence the resulting quotient is exactly
+$L^\times/\langle u\phi\rangle$, where the contracting generator
+covers $T^{-1}$. Every orbit meets a core or a collar, by the
+uniform contraction estimate; the displayed comparison identifies
+exactly its orbit relation. It is therefore a biholomorphism,
+not just a meromorphic comparison.
+
+At the nodal point of $S_\infty$, write $q=zv$. Absorbing a unit
+in one line coordinate gives $xy=uzv$. At a smooth point of
+$S_\infty$ the equation is $xy=uq$. For $u\ne0$ the latter
+threefold is smooth; the former has one nondegenerate quadratic
+singularity at the origin. There are no other singularities of a
+nonzero $u$ fibre.
+
+For completeness, the relation to the infinite fan quotient is
+also explicit. In a Tate covering of a neighbourhood of the $I_1$
+fibre use the torus coordinates $(Z,W)$ of Engel's Proposition 2.7.
+The two periods act as
+\[
+ (Z,W,q,u)\longmapsto(c_1qZ,c_2W,q,u),\qquad
+ (Z,W,q,u)\longmapsto(c_3Z,c'_4uqW,q,u),
+\]
+with holomorphic units $c_i$. Their monomial parts are $G_1,G_2$.
+The chart indexed by $(k,l)$ has
+$z=Zq^{-k}$, $v=q^{k+1}/Z$, $x=W(qu)^{-l}$,
+$y=qu/x$, with the harmless unit changes supplied by the line
+frames. It is the chart of Proposition~\ref{push:A11}.
+The Tate cover unfolds the node of $S_\infty$ into its infinite
+chain, and unfolding the two plumbing collars gives the additional
+integer index $l$. The foregoing collar identifications are exactly
+the two deck identifications. Thus, on an invariant neighbourhood
+over a sufficiently small bidisc, the fan space maps by a
+holomorphic covering to the plumbing, with deck group $\mathbb Z^2$.
+Each core or node coordinate neighbourhood has disjoint lifts
+indexed by the two unfolded integers; this proves freeness and
+proper discontinuity, including the $\rho_l$ orbits. The first
+period stabilizes such a ray but on its orbit translates the Tate
+coordinate by $c_1q$, with $q\ne0$ and $|c_1q|<1$; it does not
+fix a point. Properness of its quotient was proved by the compact
+core and node representatives. This supplies the analytic
+comparison needed here. Construction 3.8 of \cite{EGFS25} is a
+related multivariable polarized construction; its symmetry
+hypothesis on period units is not being silently imposed on these
+generally unpolarized tori.
+
+Subdividing the square at $h_u=0$ by the chosen diagonal gives
+the usual small resolution of $xy=uzv$ for $u\ne0$. Its exceptional
+curve has the two affine charts of the total space of
+$\mathcal O_{\mathbb P^1}(-1)\oplus
+\mathcal O_{\mathbb P^1}(-1)$, as follows by setting $x=za$ on
+one chart and $z=xb$ on the other. The two normal coordinates
+transform by the reciprocal affine coordinate. There is one
+diagonal edge modulo the periods, so there is exactly one such
+curve. Removing that edge contracts the paired opposite
+$(-1)$-curves in the normalization $dP_6$ to the square model
+$\mathbb P^1\times\mathbb P^1$. This identifies the contracted
+curve intrinsically in the selected toric model. It is not the
+$e_2$-direction curve fixed by $\operatorname{Aut}^0$.
+\end{proof}
+
+\subsection{A.2. Two minimal toroidal fillings and further modifications}
+
+\begin{proposition}[A.2.1; Proved]\label{push:A21}
+Among subdivisions with no new rays, the fan in A.1.1 has exactly
+two smooth period-invariant subdivisions restricting to the chosen
+$A_2$ triangulation at $h_u=0$. These are also all subdivisions
+which are flat over the original $(q,u)$ bidisc, have reduced
+$u$-central divisor, and retain that boundary triangulation.
+Without the joint-flatness restriction there are infinitely many
+smooth invariant subdivisions retaining that triangulation and
+having reduced $u$-central divisor.
+\end{proposition}
+\begin{proof}
+Write the six rays of $P_{0,0}$ as
+$A=(0,0,1,0)$, $B=(1,0,1,0)$, $C=(0,1,1,0)$,
+$D=(1,1,1,0)$, $E=(0,0,0,1)$, $F=(0,1,0,1)$.
+The return's $A_2$ diagonal is $BC$. A triangular prism has six
+triangulations without new vertices. With this bottom diagonal
+the three possibilities are
+\[
+\begin{array}{c|c|c}
+\text{maximal tetrahedra}&\text{left diagonal}&\text{right diagonal}\\\hline
+ABCE,\ BCDE,\ CDEF&CE&DE\\
+ABCE,\ BCDF,\ BCEF&CE&BF\\
+ABCF,\ ABEF,\ BCDF&AF&BF.
+\end{array}
+\]
+Periodicity identifies the left and right faces by $A\mapsto B$,
+$C\mapsto D$, $E\mapsto E$, $F\mapsto F$; it excludes exactly
+the middle row. Every listed maximal cone has determinant $\pm1$.
+There are no missed triangulations: the prism has normalized volume
+three, all its nondegenerate four-vertex tetrahedra have normalized
+volume one, and enumeration of their triples with pairwise
+face intersections gives exactly these six possibilities before
+fixing the bottom. The program \texttt{ab\_push\_fan.py} performs
+this enumeration in rational arithmetic; intersections are tested
+by all vertices of the combined barycentric halfspaces.
+
+For the stronger assertion, a new ray with $h_q,h_u>0$ would
+give a divisor mapping to the origin of the two-dimensional base.
+Its fibre dimension would be three, contradicting joint flatness.
+A ray with $h_u=0$ is excluded by the retained boundary
+triangulation. On $h_q=0$, the fan support has $y_1=0$.
+Reducedness requires the primitive ray to have $h_u=1$, so it
+is already one of the $\rho_l$. Thus there are no new rays under
+the stated three restrictions. Conversely the two triangulations
+have all heights zero or one, and every cone maps onto a face of
+the quadrant with saturated image. Their local monomial maps
+are flat and their $u$ divisors reduced.
+
+If joint flatness is omitted, star-subdivide the orbit of the
+maximal cone $ABCE$ by its interior ray
+$v_1=A+B+C+E=(1,1,3,1)$. Distinct translates have disjoint
+interiors and distinct closed torus orbits. These are simultaneous
+ordinary blow-ups at disjoint points, so the operation is
+unambiguously period-invariant. Repeat in the cone $ABCv_{m-1}$,
+where $v_0=E$. The new ray is
+$v_m=v_{m-1}+A+B+C=(m,m,3m,1)$. Replacing any basis vector
+by their sum preserves determinant one, and every new ray has
+$h_u=1$. The boundary triangulations are unchanged. On the
+compact quotient this blows up one smooth central point away
+from the conductor at each step. There are therefore infinitely
+many invariant smooth refinements, all reduced over $u=0$, with
+increasing numbers of rays modulo the period group. They are
+not jointly flat. An earlier attempted witness using an orbit
+of two-faces did not justify compatibility of intersecting
+centres; its correction is retained in
+\path{evidence/ab_push_correction_orbit_stars.md}.
+\end{proof}
+
+\begin{theorem}[A.2.2; Proved]\label{push:A22}
+The two minimal subdivisions of A.2.1 give proper flat holomorphic
+families $\mathcal X^+,\mathcal X^-\to\Delta_u$ with smooth total
+spaces. Their joint maps to $B\times\Delta_u$ are flat. Over
+$\Delta_u^*$ they are isomorphic as families to the specified
+untwisted family $X(u)$. Each central fibre $Q^\pm$ is reduced,
+irreducible, and has normal crossings, with smooth double locus
+$S$ and no triple points.
+
+Its normalization $R^\pm$ is obtained by blowing up $R$ along
+$S_\infty$ in, respectively, one of its two sections and then
+taking the small resolution at the unique ordinary double point
+of that blow-up prescribed by the fixed bottom diagonal.
+The two proper transforms of the sections are still copies of
+$S$, glued by $T$. Their normal-bundle product is trivial;
+in particular $\mathcal T^1_{Q^\pm}\simeq\mathcal O_S$.
+\end{theorem}
+\begin{proof}
+Apply either fan subdivision over the cusp neighbourhood in
+Theorem~\ref{push:A12}, and use the identity modification elsewhere.
+Toric modifications are proper, and a subdivision is an
+isomorphism off the strata it subdivides. Its restriction over
+$q\ne0$ is the identity, so this gluing has no additional
+transition choice. The period actions preserve the subdivisions,
+and the covering description in A.1.2 descends the proper
+modifications to the quotient. All maximal cones are regular.
+Every local ring of the resulting fourfold is therefore regular.
+The coordinate $u$ is the product of those affine coordinates
+whose rays have $h_u=1$; there are at most two such rays in a
+maximal cone. This proves reduced normal crossings and the absence
+of triple points for the $u$-central fibre. The regular-sequence
+argument, or the saturated face images in A.2.1, proves joint
+flatness. Properness follows from properness of the toric
+modification and of $\mathcal X^\flat$.
+
+We give the normalization calculation, including the singular
+centre. At a node of $S_\infty$, write the original normalization
+as coordinates $(X,z,v)$, with section $X=0$ and centre
+$(X,zv)$. Blowing up that ideal has charts
+\[
+ X=zvA;\qquad zv=XB.
+\]
+The first is smooth, and the second has one conifold at its
+origin. A small resolution of the latter is, for one of the
+bottom-diagonal conventions,
+\[
+ X=za,\quad v=aB;\qquad z=Xd,\quad B=dv.
+\]
+Interchanging $z,v$ gives the other diagonal convention. These
+are holomorphic charts of a proper small modification: they are
+the two usual charts of the blow-up of the appropriate rank-one
+ideal on the conifold. The strict transform of $X=0$ is $A=0$
+in the first chart and never passes through the conifold. It is
+therefore unchanged as a surface. The other section is disjoint
+from the centre and is unchanged as well. Over a smooth point
+of $S_\infty$ the exceptional fibre is one $\mathbb P^1$;
+over its node it is a chain of two $\mathbb P^1$'s, one being
+the exceptional curve of the small resolution. This identifies
+the normalization morphism, including its order of operations.
+
+For example the corresponding total fourfold modification of
+$xy=uzv$ can be written by first taking $x=ua$, $ay=zv$ and
+then resolving the conifold in $(a,y,z,v)$, together with the
+other chart $u=xb$, $y=bzv$. It has three smooth affine charts.
+The assignments in \texttt{ab\_push\_local\_checks.py} verify
+the equations and the map to $q=zv$ exactly. Exchanging the
+chosen zero and infinity branches gives the other model.
+
+The normal bundle of the section containing the centre changes
+by tensoring with $\mathcal O_S(-S_\infty)$; the second normal
+bundle is unchanged. Since the original product is $J$, the
+new product is $J(-S_\infty)=\mathcal O_S$. The local
+formula for $\mathcal T^1$ is the product of the two normal
+bundles, with $T$ used on the infinity branch. This proves
+d-semistability in this precise sense. The $\rho_l$ form one
+orbit, so the central fibre is irreducible and its conductor is
+exactly the two stated sections. Over $u\ne0$ both subdivisions
+restrict to the fixed bottom triangulation, giving precisely
+Engel's Mumford filling, simultaneously in $u$.
+
+The birational comparison $\mathcal X^+\dashrightarrow
+\mathcal X^-$ is the identity over the punctured $u$ disc and
+off the exceptional loci over $(q,u)=(0,0)$. Locally it replaces
+the two compatible side-face diagonals by the other two.
+All its rays lie in the Gorenstein hyperplane $h_q+h_u=1$,
+so both small modifications are crepant over
+$\mathcal X^\flat$. Over a smooth point of the nodal curve
+this is the ordinary Atiyah flop times a curve; at the node its
+extension is exactly the displayed pair of prism subdivisions.
+This specifies the birational map without asserting a uniqueness
+theorem for arbitrary non-toroidal fillings.
+\end{proof}
+
+\begin{problem}[A.2.3; Open; unrestricted scope]\label{push:A23}
+For every unrestricted refinement, convert the central
+normalization charts into the requested explicit sequence of
+blow-ups, resolutions and gluing maps, with their centres.
+A.2.4 below gives an exhaustive finite-data parametrization of
+all admissible fans, constructs their proper families, and
+specifies their central strata by charts. It does not give a
+uniform blow-up description for every normalization, or the
+integral topology requested in A.4.5. A.2.1--A.2.2 completely
+describe the two minimal, jointly flat, reduced models, and
+A.4.6 treats an additional infinite class. If reducedness is
+omitted, primitive rays with $h_u>1$ produce central
+multiplicities. The two-model theorem alone therefore does not
+close the literal unrestricted scope of prompt A.2.
+\end{problem}
+
+\begin{theorem}[A.2.4; Proved; exhaustive finite fan data]\label{push:A24}
+The following finite-data procedure parametrizes all smooth
+period-invariant subdivisions of the cusp fan after
+$u=r^n$, retaining the prescribed bottom triangulation and
+having finitely many cones modulo the periods. Here $n=1$
+gives Part A, and $n=2,12$ give the two cases of B.2.
+Each output defines a proper flat family over $\Delta_r$
+with smooth total space, whose punctured restriction is the
+given untwisted family pulled back by $u=r^n$.
+
+For a bound $H\geq1$, retain the four bottom rays
+$A,B,C,D$ and consider all primitive vectors
+\[
+ \begin{gathered}
+ v=(a,b,k,\ell),\qquad
+ \ell\geq1,\quad k\geq0,\quad k+\ell\leq H,\\
+ 0\leq a\leq k,\qquad0\leq b\leq k+n\ell.
+ \end{gathered}
+ \tag{A.24a}
+\]
+Take any collection of four-element subsets of this finite
+set satisfying the following exact tests:
+\begin{enumerate}
+\item Each four-column determinant has absolute value one.
+\item After dividing each ray by $k+\ell$, the resulting
+tetrahedra intersect pairwise in common faces, and their
+volumes sum to $(n+2)/6$.
+\item Their bottom boundary is the two triangles $ABC,BCD$.
+Their boundary subdivisions on $a=0$ and $a=k$ agree under
+$G_1$, and those on $b=0$ and $b=k+n\ell$ agree under $G_2$.
+\end{enumerate}
+All these are finite rational-arithmetic tests. Extend a
+passing collection by the two periods, and discard duplicates
+as $H$ increases. This is exhaustive. For a reduced central
+divisor, retain only $\ell=1$ in (A.24a).
+
+The central prime components are indexed by period orbits of
+the selected rays with $\ell>0$, and the multiplicity of the
+component indexed by $v$ is exactly $\ell$. The normalization
+charts of that component are the star fan of $v$ in
+$N/\mathbb Zv$, with the inherited bundle units and the
+stabilizer action. For $k>0$ the stabilizer is trivial and this
+normalization is a smooth complete toric threefold. All
+multiple loci, including possible triple and quadruple loci,
+are specified by the positive-$\ell$ rays belonging to each
+cone. In the reduced case
+$\mathcal T^1\simeq\mathcal O_{\operatorname{Sing}D}$,
+so every output is d-semistable.
+\end{theorem}
+\begin{proof}
+Write the period shears as
+\begin{align*}
+ G_1(a,b,k,\ell)&=(a+k,b,k,\ell),\\
+ G_2(a,b,k,\ell)&=(a,b+k+n\ell,k,\ell).
+\end{align*}
+One closed fundamental cone is
+\[
+ P_n=\{k,\ell\geq0,\ 0\leq a\leq k,
+                    \ 0\leq b\leq k+n\ell\}.
+\]
+Its bottom is the original square; its top is the edge from
+$(0,0,0,1)$ to $(0,n,0,1)$. The slice $k+\ell=1$, in
+coordinates $(a,b,k)$, is the compact polytope
+\[
+ 0\leq k\leq1,\qquad0\leq a\leq k,
+ \qquad0\leq b\leq n-(n-1)k.
+\]
+Its volume is
+$\int_0^1 k(n-(n-1)k)\,dk=(n+2)/6$.
+A tetrahedron with ray columns $v_i$ has slice volume
+\[
+ \frac{|\det(v_1,v_2,v_3,v_4)|}
+      {6\prod_{i=1}^4(k_i+\ell_i)}.
+ \tag{A.24b}
+\]
+This follows by applying the determinant-one coordinate
+change from $(a,b,k,\ell)$ to $(a,b,k,k+\ell)$ and then
+normalizing the last coordinate to one.
+
+A common-face test is also completely explicit: write each
+tetrahedron in barycentric halfspaces, intersect the two
+finite lists of halfspaces, and enumerate the possible
+vertices by solving triples of bounding equations. The
+intersection is a common face precisely when all its vertices
+are common tetrahedron vertices. Since the candidate
+tetrahedra lie in $P_n$, pairwise face intersections and the
+volume equality imply that they cover the slice. Otherwise
+their finite closed union would omit a nonempty relatively
+open set, which has positive volume. The boundary tests make
+the translates agree on every shared face. This proves that
+every passing collection gives the claimed invariant fan.
+
+Conversely, intersect any invariant smooth refinement with
+$P_n$. A smooth maximal cone has four primitive generators
+with determinant $\pm1$, and its slice is one of the stated
+tetrahedra. Finitely many cone orbits give finitely many rays
+in this prism, hence some maximum height $H$. No additional
+bottom rays are permitted by the boundary condition; every
+other ray has the form (A.24a). The resulting collection
+passes all three tests. Thus the procedure is a finite,
+exhaustive search at every height, rather than a restriction
+to regular triangulations or to new rays in a chosen orbit.
+There is no projectivity condition in the tests.
+
+The finite-orbit condition is necessary for a proper quotient
+of such a refinement, not an additional restriction on the
+requested proper models. Each full-dimensional cone has a
+closed torus orbit consisting of one point with $q=r=0$.
+These points form a closed discrete set: an affine chart
+of a full-dimensional cone contains exactly its own closed
+torus orbit. After the properly discontinuous period
+quotient the points are indexed by cone orbits and remain
+closed and discrete. Infinitely many such orbits would
+therefore give an infinite closed discrete subset of a
+compact central fibre, which is impossible.
+
+The fundamental orbit representatives of mixed rays are
+\[
+ (a,b,k,\ell),\quad k,\ell>0,
+ \quad0\leq a<k,\quad0\leq b<k+n\ell,
+ \quad\gcd(a,b,k,\ell)=1.
+ \tag{A.24c}
+\]
+For pure top rays they are $(0,b,0,\ell)$ with
+$0\leq b<n\ell$ and $\gcd(b,\ell)=1$. A smooth top
+subdivision necessarily includes each $(0,j,0,1)$,
+$0\leq j\leq n$. Indeed an omitted such vector would lie
+inside a regular two-cone; writing it in that cone's integral
+basis would express its height one as the sum of two
+positive integral heights, which is impossible.
+In the reduced search there are exactly $n$ pure top orbits
+and $\sum_{k=1}^{H-1}k(k+n)$ available mixed orbits.
+
+The program \path{code/ab_push_all_refinements.py} enumerates
+all candidate rays for $n=1,2,12$ through $H=3$, and all
+four-column determinant tests at the bounds reported here:
+\[
+\begin{array}{c|c|c|r|r}
+n&H&\text{reduced}&\text{rays in }P_n&
+       \text{unimodular four-subsets}\\\hline
+1&1&\text{yes}&6&12\\
+1&2&\text{yes}&12&267\\
+1&2&\text{no}&13&357\\
+2&2&\text{yes}&15&544\\
+2&2&\text{no}&17&784\\
+12&1&\text{yes}&17&100
+\end{array}
+\]
+These are candidate counts, not a claim that every candidate
+four-subset or collection passes the other tests. At height
+one, the complete collections are the two and $n+1$ fans
+already proved in A.2.1 and B.2.1. The saved program also
+certifies the first eight members of the explicit infinite
+family in A.2.1.
+
+For existence of the corresponding compact family, start
+with the proper nodal plumbing of A.1.2 and base-change it
+by $u=r^n$. On the cusp cover apply the proper toric
+modification defined by the refinement. Its support is
+unchanged, which is the toric properness criterion
+\cite[Section 2, p.6]{DMM16}, and each
+original affine chart is replaced by a finite fan. On
+$q\ne0$ use the subdivision of the top two-dimensional fan
+to modify the chart $ab=r^n\varphi$ fibrewise over $S$.
+Changes of trivialization multiply $a$ and $b$ by the given
+nonvanishing line-bundle units; a torus action extends to
+every toric fan chart, so these modifications glue. The same
+top fan occurs on the overlap with the cusp construction.
+The core outside the plumbing charts is unchanged. This defines
+an actual proper modification of the base-changed compact
+nodal family, not a gluing inferred from a vanishing theorem.
+
+The period maps lift because the fan is invariant. Their
+lifted action is free: a fixed point would project to a fixed
+point in the nodal covering. It is properly discontinuous:
+compact sets project to compact sets, and any translating
+element producing an intersection upstairs produces one
+downstairs, where A.1.2 gives finiteness. Thus the quotient
+exists as a Hausdorff complex space, and the equivariant
+proper modification descends to a proper modification of
+the compact nodal quotient. In a unimodular chart its
+coordinates $z_i$ satisfy
+\[
+ r=\text{unit}\cdot\prod_{i=1}^4 z_i^{\ell_i},
+ \qquad q=\text{unit}\cdot\prod_{i=1}^4 z_i^{k_i}.
+ \tag{A.24d}
+\]
+The total space is smooth. The nonconstant coordinate $r$
+is a nonzerodivisor, so the morphism to the disc is flat.
+Its central multiplicities are the indicated $\ell_i$;
+it is reduced exactly when all selected positive heights
+are one. The bottom fan gives the specified smooth
+Mumford model over $r\ne0$, including its original period
+identification. Thus the punctured-family assertion holds
+simultaneously in the parameter.
+
+For completeness the normalization description is an
+explicit chart prescription. For a maximal cone with basis
+$(v,v_2,v_3,v_4)$, let $(m_1,m_2,m_3,m_4)$ be the dual
+integral basis. The chart of the normalized component is
+$z_1=0$ with coordinates $z_i=\chi^{m_i}$, $i=2,3,4$.
+On overlaps the transition matrix is the product of the two
+integer basis matrices, and the original bundle units are
+raised to those same integer exponents. This is precisely
+the star fan in $N/\mathbb Zv$. When $k>0$, (A.24c) shows
+that the period stabilizer of the ray is trivial. The ray
+lies in the interior of the full support, so its star is
+complete. Its normalized component is therefore the
+asserted complete smooth toric threefold, lying over the
+cusp. When $k=0$, the stabilizer is generated by $G_1$.
+Away from $S_\infty$ the resulting component is the ruled
+bundle $\mathbb P_S(\mathcal O\oplus L^\ell)$: a character
+on its open ruled fibre is $W^\ell/r^b$, which transforms
+by the $\ell$th power of the transition of $L$. The stated
+star charts describe its replacement over $S_\infty$.
+This also specifies all gluing maps, rather than only their
+combinatorial incidence: they are the original period maps
+on those same integer characters.
+
+Intersections are read from common cones, with separate
+local branches retained before the period quotient. In a
+chart (A.24d), the number of branches of the reduced
+central divisor is the number of positive $\ell_i$.
+When all these heights are one, the hypersurface
+calculation gives
+$\mathcal T^1_D=\mathcal O_D(D)|_{\operatorname{Sing}D}$.
+The divisor is globally principal, cut out by $r$, so this
+line on the singular locus is trivial. Finally, any two
+output fans have an explicit common refinement by all
+intersections of their cones. Its normal toric modification
+gives a proper common model, and the resulting birational
+map is the identity on the fixed lattice and on the
+punctured family. No meromorphic extension of an arbitrary
+punctured isomorphism is needed here.
+\end{proof}
+
+\subsection{A.3. The virtual Euler obstruction and the conjecture}
+
+\begin{lemma}[A.3.1; Proved]\label{push:A31}
+Let $Z$ be a compact reduced local-complete-intersection complex
+space of pure dimension $n$. In any proper flat holomorphic
+family over a disc with central fibre $Z$ and smooth nearby
+fibres, their Euler number is
+\[
+ e_{\mathrm{vir}}(Z)=\langle c_n(T_Z^{\mathrm{vir}}),[Z]\rangle.
+\]
+This statement needs no projectivity or K\"ahler hypothesis.
+\end{lemma}
+\begin{proof}
+Flat deformation preserves the local-complete-intersection
+property relative to the disc near $Z$. Locally this follows by
+lifting an embedding and its regular sequence of equations;
+Nakayama's lemma and flatness show that their lifts generate
+the ideal and remain a regular sequence. Properness allows one
+to shrink the disc so that these neighbourhoods cover the total
+space. The relative cotangent complex is consequently perfect
+of amplitude $[-1,0]$. Its dual defines a topological complex
+$K$-class $V$ on that total space; local finite vector-bundle
+complexes define the class by descent, or by stabilization and
+partitions of unity; the analytic-to-topological comparison is
+given in \cite[Lemmas 3.1--3.2 and Section 3.1]{Levy08}.
+Its restriction to a smooth fibre is its
+tangent bundle, and its restriction to $Z$ is its intrinsic
+virtual tangent class.
+
+The compact fundamental cycles of the central and a nearby
+fibre are homologous in the total space. More explicitly,
+the inverse image $K$ of a short closed radial segment
+$[0,\epsilon]$ is compact and semianalytic. Away from
+$\operatorname{Sing}Z$ it is an oriented real
+$(2n+1)$-manifold with boundary the nearby fibre and
+$-Z_{\mathrm{reg}}$, because flatness with smooth fibre
+implies smoothness of the morphism at those points.
+The exceptional set $\operatorname{Sing}Z$ has real
+dimension at most $2n-2$. Triangulate compatibly with
+this set and the two endpoints, using
+\cite[Section 3, Theorems 1--2]{Loj64}. The sum of the
+oriented top simplices has boundary exactly
+$[X_\epsilon]-[Z]$: no real $2n$-simplex can be supported
+on that exceptional set. Reducedness and flatness give
+multiplicity one on every central component. Pairing the globally defined
+$c_n(V)$ with these homologous cycles gives the equality of
+Chern numbers. Gauss--Bonnet on the smooth compact complex
+fibre gives its Euler number. This proves the analytic assertion
+directly. The algebraic counterpart is Theorem 5.8 and
+Remark 5.9 of \cite{FG10}; those scheme statements alone would
+not justify omitting the analytic comparison above.
+\end{proof}
+
+\begin{theorem}[A.3.2; Proved; Conjecture 8.2 refuted]\label{push:A32}
+For the specified pinching $Q$ one has $e_{\mathrm{vir}}(Q)=0$.
+Every smooth proper-flat smoothing of $Q$ therefore has Euler
+number zero. In particular there is no proper flat holomorphic
+filling of Engel's untwisted family with central fibre exactly
+$Q$, even if no map to $B$ is required. Thus Conjecture 8.2
+of the attached \cite{E26} is false as worded. The proper nodal
+filling of A.1.2 and the two natural semistable fillings of
+A.2.2 are precise replacements, with different central fibres.
+\end{theorem}
+\begin{proof}
+Let $D_0,D_\infty\subset R$ be the conductor sections and
+$\nu:R\to Q$ the normalization. On either branch of the
+hypersurface $xy=0$, the derivative comparison with its
+normalization gives in $K^0(R)$, where pullback of the
+perfect tangent class means derived pullback,
+\[
+ \nu^*T_Q^{\mathrm{vir}}
+ =T_R-i_{0*}(J|_{D_0})-i_{\infty*}(J|_{D_\infty}).
+\]
+Indeed in a smooth local ambient space the normal line $A$ of
+the branch and the normal line of the whole hypersurface
+differ by $D$: the latter is $A(D)$. Their difference in
+$K$-theory is $-[i_*(A(D)|_D)]$, and $A(D)|_D$ is exactly
+the product of the two branch normals, namely $\mathcal T^1_Q$.
+These local comparisons are intrinsic and agree on overlaps.
+On the infinity branch $J$ means its $T^{-1}$-pullback
+from the double locus, canonically the same line bundle
+because it comes from $B$. Thus $J$ extends from both sections by the pullback from $B$,
+so $[i_*J]=[J]-[J(-D)]$.
+
+Put $j=c_1(J)=\pi_R^*F$, $d_i=[D_i]$. Since the sections are
+disjoint, $d_0d_\infty=0$, and since $F$ is a fibre, $j^2=0$.
+Consequently
+\[
+ c(\nu^*T_Q^{\mathrm{vir}})
+ =c(T_R)\frac{(1+j-d_0)(1+j-d_\infty)}{(1+j)^2}
+ =c(T_R)\{1-d_0-d_\infty+j(d_0+d_\infty)\}.
+\]
+The degree-three part has integral
+\[
+ e(R)-\sum_i\int_{D_i}c_2(T_R|_{D_i})
+       +\sum_i\int_{D_i}j\,c_1(T_R|_{D_i}).
+\]
+We have $e(R)=2e(S)=24$. On a section with normal class
+$n_i$, $c_2(T_R|_{D_i})=c_2(S)+c_1(S)n_i$ and
+$c_1(T_R|_{D_i})=c_1(S)+n_i$. The two normal classes on
+the unglued normalization are $m,-m$, where $m=c_1(L)$.
+Their sum is zero; $c_1(S)=F$ and $F^2=0$. The displayed
+number is therefore $24-24+0=0$. Because
+$\nu_*[R]=[Q]$, this is the intrinsic virtual number on $Q$.
+The projective-bundle calculation is independently checked
+in \texttt{ab\_push\_local\_checks.py}, using
+$H(H+m)=0$, $d_0=H+m$, $d_\infty=H$.
+
+The untwisted quotient away from its cusp has Euler number zero:
+scalar multiplication supplies a free circle action, including
+the two additive places before logarithmic transformation. Indeed
+a circle scalar identified with an iterate of $u\phi$ must be
+the identity, since every positive iterate strictly contracts
+the Hermitian norm and every negative iterate expands it.
+Compact fibres with a free circle action have Euler number zero.
+The chosen Mumford fibre has two zero-dimensional torus orbits
+and all other torus strata have Euler number zero, so
+$e(X(u))=2$. The same number follows independently from the
+semistable nearby-cycle count in A.4.3 below. Lemma~\ref{push:A31}
+therefore excludes such a smoothing of $Q$. No requirement
+on its leading smoothing section, and no extension of $f$,
+entered this argument.
+
+There is also a direct check that zero is the correct smooth
+number. Replace $\phi$ in the global construction of A.1.2
+by a section of $J$ vanishing on a smooth elliptic fibre of
+$S$. The compact collar construction still applies. At its
+zero divisor the fixed nonzero-parameter equation is $xy=uz$
+with $dz\ne0$, so every nearby threefold is smooth. The
+double-locus nearby Euler function is one on that elliptic
+curve and zero off it; its integral is zero. This is an actual
+proper-flat smoothing of $Q$, but is not Engel's family.
+\end{proof}
+
+\begin{proposition}[A.3.3; Refuted and corrected]\label{push:A33}
+The assertion in Lead 3, or A.3(iii), that the two natural
+fillings exhaust smooth-total-space reduced-normal-crossings
+fillings is false, even when joint flatness over
+$B\times\Delta$ is imposed. There are infinitely many such
+fillings of the same punctured untwisted family. The
+two-model classification in A.2.1 is a classification of the
+specified minimal toroidal refinements, not of all fillings.
+\end{proposition}
+\begin{proof}
+We give centres that preserve joint flatness, rather than
+blowing up a point over a point of the two-dimensional base.
+The section $2P$ is disjoint from $P$ and $O$. In the
+Weierstrass equation its coordinates are
+\[
+ x(2P)=\frac{9t^2}{8},\qquad
+ y(2P)=\frac{\sqrt2\,t^2(5t-32)}{32}.
+\]
+At $0$ it meets the nonidentity component different from
+that met by $P$; at $1$ the displayed coordinates are finite
+and different from those of $P,O$; at infinity the minimal
+coordinates are finite and different as well. This also
+checks directly the zero intersection numbers
+$P\cdot2P=O\cdot2P=0$. The rational section of
+$\mathcal O(P-O)$ therefore restricts to a nowhere-vanishing
+holomorphic section on $2P\simeq B$. Its graph is a compact
+curve $C\subset L^\times\subset R^\pm$ disjoint from both
+conductor sections and from the modification centres.
+It gives a curve in the smooth locus of $Q^\pm$ mapping
+isomorphically to $B$.
+
+Blow up $C$ in the smooth total fourfold $\mathcal X^\pm$.
+Locally the coordinates are $(t,u,a,b)$ with
+$C=(u,a,b)=0$. The blow-up charts replace $u$ by $u$ itself
+or by $aU$ or $bU$. Thus the new central divisor is reduced
+normal crossings, and the total space is smooth. All fibres
+over $(t,u)$ still have pure dimension two; the regular base
+criterion proves joint flatness. The morphism is proper and
+is an isomorphism for $u\ne0$. It adds a
+$\mathbb P^2$-bundle over $C$, hence a new central irreducible
+component. To justify repetition, $N_{C/Q^\pm}$ is an extension
+of $\mathcal O_B(-1)$ by $\mathcal O_B$ and splits, and
+$H^1(N_{C/Q^\pm})=0$. The normal sequence in the total family
+therefore splits off the trivial parameter direction. Its
+section in the exceptional $\mathbb P^2$-bundle is disjoint
+from the intersection with the strict central transform and
+has the same normal sequence. We may repeat indefinitely.
+Their differing component counts preclude
+isomorphism as fillings. The local substitutions and the
+section-doubling calculation are exact computations, recorded
+with the other local checks.
+\end{proof}
+
+\subsection{A.4. Integral topology and nearby cycles}
+
+\begin{proposition}[A.4.1; Proved]\label{push:A41}
+With integral coefficients, the spaces constructed above have
+\[
+\begin{array}{c|rrrrrrr|r}
+&b_0&b_1&b_2&b_3&b_4&b_5&b_6&\chi\\\hline
+R&1&0&11&0&11&0&1&24\\
+R^\pm&1&0&12&0&12&0&1&26\\
+Q&1&1&8&7&10&0&1&12\\
+Q^\pm&1&1&9&7&11&0&1&14
+\end{array}
+\]
+All these homology groups are torsion free. The fundamental
+groups of $R,R^\pm$ are trivial and those of $Q,Q^\pm$ are
+$\mathbb Z$. The dual complex of either $Q^\pm$ is a circle.
+\end{proposition}
+\begin{proof}
+We check the lattice step of R10 on which the calculation depends.
+Let $\mathcal L=H_2(S;\mathbb Z)$, with its unimodular intersection
+pairing, and put
+\[
+ F=[S_t],\qquad m=P-O,\qquad v=[6P]-[O]-3F.
+\]
+The intersections are
+\[
+ F^2=Fm=Fv=0,\quad m^2=-2,\quad v^2=-6,\quad mv=-1,
+ \quad OF=Om=1,\quad Ov=0.
+\]
+Translation is the integral isometry
+\[
+ T_*a=a+(aF)v-(av-3aF)F.
+\]
+This is checked on $F,O,v$ and on the seven root classes of
+the two reducible Kodaira fibres, which translation fixes.
+It also gives $T^*m=m-F$. The span of $F,v,m$ is primitive:
+split off the unimodular plane generated by $F,O$; the Gram
+determinant of $m-F,v$ in its orthogonal complement is eleven,
+so an index larger than one would have its square divide eleven.
+Unimodularity therefore makes
+$a\mapsto(aF,av,am)$ surjective onto $\mathbb Z^3$.
+
+The normalization mapping cylinder gives
+\[
+ H_i(S)\xrightarrow{d_i}H_i(R)\longrightarrow H_i(Q)
+ \longrightarrow H_{i-1}(S),\qquad
+ d_i=s_{0*}-s_{\infty*}T_*.
+\]
+The maps are induced by actual embeddings, and the mapping
+cylinder is homotopy equivalent to the pinching because the
+two section embeddings are disjoint cofibrations. With $f$ the
+projective-line fibre, the degree-two map is
+\[
+ d_2(a)=-(aF)v+(av-3aF)F+(am-aF)f.
+\]
+Its three coefficient columns have determinant $-1$, so the
+image is primitive of rank three, the kernel has rank seven,
+and the cokernel has rank eight. In degree four the image is
+the primitive class Poincar\'e dual to $m$, since $mO=1$.
+In degree zero the difference map is zero. The projective-bundle
+formula and this exact sequence give the asserted groups of
+$R,Q$. Van Kampen on the same mapping cylinder gives the
+single stable loop and no other generator, hence
+$\pi_1(Q)=\mathbb Z$.
+
+Now let $h:R^+\to R$ be the modification constructed in A.2.2.
+Its fibres are points off the nodal curve $C=S_\infty$, one
+$\mathbb P^1$ over $C_{\mathrm{reg}}$, and a chain of two
+$\mathbb P^1$'s over the node. The chart calculation identifies
+the sheaf $R^2h_*\mathbb Z$ with
+$\eta_*\mathbb Z_{\mathbb P^1}$, where
+$\eta:\mathbb P^1\to C$ is the normalization. Here is the
+integral check at the node. If $(a,b)$ are the cohomological
+degrees on the two exceptional curves, generization to the
+two branches is $a$ and $a+b$: on one branch the generic
+exceptional fibre specializes to the first curve, on the
+other it specializes to their sum. The matrix
+$\left(\begin{smallmatrix}1&0\\1&1\end{smallmatrix}\right)$
+is unimodular. These generizations follow by substituting
+$X=za$, $v=aB$ in the blow-up charts, or by taking the two
+limits of their exceptional fibres. Proper local neighbourhoods
+retract onto these fibres by the positive toric contraction,
+so the fibre calculation computes the higher direct images.
+There is no other positive-degree direct image.
+
+The Leray spectral sequence has only the row $H^*(R,\mathbb Z)$
+and the row $H^{*-2}(\mathbb P^1,\mathbb Z)$; both are free
+and in even degrees. It degenerates integrally for degree
+reasons, giving the stated groups of $R^+$. The same local
+neighbourhood retractions and Van Kampen show that $h$ induces
+an isomorphism on fundamental groups, so $R^+$ is simply
+connected. The case $R^-$ interchanges the branches.
+
+For $Q^+$ use the normalization mapping cylinder once again.
+The new degree-two difference map is the old $d_2$ with
+one extra coordinate $aF$: the exceptional divisor restricts
+to $F$ on the blown-up section and to zero on the other.
+It has the same primitive rank-three image and the same
+kernel; its cokernel rank increases by one. The degree-four
+difference remains primitive, since its pushforward to $R$
+already was primitive, and its cokernel likewise increases
+by one. This proves the groups of $Q^+$. Interchanging the
+sections changes the extra coordinate by a sign and does
+not change any group. Smith normal forms are recorded in
+\texttt{ab\_push\_local\_checks.out}. The dual complex has
+one vertex and one self-edge, with no higher cells, and
+Van Kampen again gives $\mathbb Z$.
+
+As independent Euler checks, stratification gives
+$\chi(Q)=\chi(R)-\chi(S)=24-12$. In the modification $h$,
+$C_{\mathrm{reg}}\simeq\mathbb C^*$ contributes zero and
+the exceptional chain above the node increases Euler number
+by $3-1=2$. Thus $\chi(R^\pm)=26$ and
+$\chi(Q^\pm)=26-12=14$.
+\end{proof}
+
+\begin{proposition}[A.4.2; Proved]\label{push:A42}
+The untwisted smooth fibre has torsion-free integral homology
+with Betti numbers
+\[
+ (b_0,b_1,b_2,b_3,b_4,b_5,b_6)=(1,1,8,14,8,1,1).
+\]
+The positive-$u$ monodromy is the identity outside degree three.
+In degree three there is an integral exact sequence
+\[
+ 0\longrightarrow \mathcal L/\langle F,v,m\rangle
+ \longrightarrow H_3(X(u);\mathbb Z)
+ \longrightarrow K\longrightarrow0,\qquad
+ K=\{a\in\mathcal L:aF=av=am=0\},
+\]
+in which $T_u-I$ is zero on the left term and, on the quotient,
+is the map
+\[
+ K\longrightarrow \mathcal L/\langle F,v,m\rangle,\qquad
+ a\longmapsto a\bmod\langle F,v,m\rangle.
+\]
+The sign convention orients the neck circle by increasing
+$\arg x$ in $xy=u$; the boundary convention for a transported
+chain is chosen so that a positive $u$ loop adds this circle
+times its boundary cycle. With these conventions
+$(T_u-I)^2=0$, its rank is six, and its nonzero Smith factors
+are $1,1,1,1,1,11$.
+\end{proposition}
+\begin{proof}
+We use the actual semistable model A.2.2. Remove disjoint
+open tubular neighbourhoods of the two conductor sections
+from $R^+$, and denote the remaining compact manifold by
+$Z$. Its two boundary circle bundles are identified by the
+plumbing; let $E$ denote the first. The Euler class of
+$E\to S$ is $n=m-F$. It is primitive. The Thom sequence
+for $(R^+,Z)$ gives
+\[
+ H_5(Z)=\mathbb Z,\quad H_4(Z)=0,\quad
+ H_3(Z)=\mathcal L/\langle F,m\rangle\simeq\mathbb Z^8,
+ \quad H_2(Z)\simeq\mathbb Z^{10},\quad H_1(Z)=0.
+\]
+We spell out the rank and saturation assertions. If $H$ is
+the projective-bundle class restricting to zero on $s_0$
+and to $-m$ on $s_\infty$, and $A$ is the exceptional
+divisor class, the two restriction maps on $H^2(R^+)$ are
+\[
+ (\alpha,h,a)\longmapsto\alpha+aF,\qquad
+ (\alpha,h,a)\longmapsto\alpha-hm.
+\]
+Their combined image is primitive of rank twelve, and its
+cokernel is $\mathcal L/\langle F,m\rangle$. In degree two,
+intersection with the two sections is onto $\mathbb Z^2$:
+a generic projective fibre meets both once, and an exceptional
+projective fibre meets just the section containing the centre
+once. In degree six the map is the diagonal
+$\mathbb Z\to\mathbb Z^2$. These are precisely the Thom
+maps giving the asserted groups.
+
+The Gysin sequence of the primitive circle bundle gives
+\[
+ H_2(E)=n^\perp\subset\mathcal L,\qquad
+ H_3(E)=\mathcal L/\mathbb Z n,\qquad
+ H_1(E)=H_4(E)=0,\quad H_5(E)=\mathbb Z.
+\]
+The smooth fibre is obtained from $Z$ by the boundary
+mapping cylinder. In its Mayer--Vietoris sequence the
+degree-two difference map is the normalization difference
+$d_2^+$ restricted to $n^\perp$. In the coefficient
+coordinates $(s,t,h)=(aF,av,am)$ the constraint is $h=s$,
+so this map has primitive rank two and kernel $K$.
+The degree-three difference map is, modulo $F,m$,
+$(T_*-I)a=(aF)v$, hence has primitive image $\mathbb Z v$.
+These statements use the surjectivity of the three
+intersection coordinates proved in A.4.1, so no integral
+index is omitted. The degree-five difference is zero:
+the plumbing reverses the normal circle orientation, and
+the two boundary fundamental classes sum to zero in $Z$.
+The degree-zero difference is zero as well. Exactness now
+gives the claimed groups and the displayed degree-three
+extension. Poincar\'e duality, or the same integral exact
+sequence, confirms the absence of torsion in complementary
+degrees.
+
+We also compute monodromy directly from this decomposition.
+In the neck $xy=u$, a positive circuit of $u$ rotates one
+boundary normal coordinate once relative to the other.
+A cycle in $Z$ is unchanged. A three-cycle whose cut-open
+boundary represents $a\in K$ acquires the tube obtained
+by sweeping $a$ once around that normal circle. The Gysin
+description sends this tube to the class of $a$ in
+$H_3(E)=\mathcal L/\mathbb Z n$, and then to its class in
+$\mathcal L/\langle F,m,v\rangle$. This is exactly the
+map in the statement. The same description in the other
+degrees is zero, using the groups and difference maps just
+computed. A tube has no cut-open boundary, which proves
+$(T_u-I)^2=0$ without an appeal to a monodromy theorem.
+
+Finally $K\cap\langle F,m,v\rangle=\mathbb ZF$, since
+the Gram matrix of $m-F,v$ has determinant eleven.
+Hence the rank is six. In the unimodular $E_8$ summand,
+the primitive rank-two lattice spanned by $m-F,v$ has
+discriminant eleven; its orthogonal complement maps into
+the dual quotient with cokernel of order eleven. Thus the
+nonzero Smith factors are five ones and eleven. The fully
+integral check uses an explicit $E_8$ basis in
+\texttt{ab\_push\_monodromy.py}; its output records the
+kernel basis, quotient projection, and all entries of the
+seven-by-seven monodromy block. This supplies a second,
+exact lattice verification of the discriminant argument.
+\end{proof}
+
+\begin{proposition}[A.4.3; Proved; pointwise correction to Lead 1]\label{push:A43}
+For $\mathcal X^\flat\to\Delta_u$ the nearby-fibre Euler
+function on the double locus of $Q$ is zero off $S_\infty$
+and one at every point of $S_\infty$, including its node.
+Its integral is one. In particular the assertion that the
+pointwise value on the smooth part of $S_\infty$ is zero
+is false; its integrated contribution is zero.
+For either semistable family $\mathcal X^\pm$ the nearby
+Euler function is one off the double locus and zero on
+it, giving $\chi(X(u))=26-2\cdot12=2$.
+\end{proposition}
+\begin{proof}
+Off the zero divisor of $\phi$, the transverse nearby
+fibre of $xy=u\phi$ is an annulus and has Euler number
+zero. At a smooth zero, the local equation is $xy=uz$;
+for fixed $u\ne0$ one solves for $z$, and the small
+local nearby space is contractible. Its Euler number
+is one. At the node it is the quadratic cone
+$xy=uzv$, also contractible, with Euler number one.
+The smooth part of the nodal elliptic curve is
+$\mathbb C^*$ and has Euler number zero; the node
+contributes one. The core $Q\setminus S$ is a
+$\mathbb C^*$-bundle and contributes zero.
+This proves the first count.
+
+In the resolved family the local map on the double locus
+is simply $ab=u$ times two transverse coordinates,
+including above the old node. Its nearby annulus has
+Euler number zero everywhere on that locus. Away from
+it, the family is a submersion and the local value is
+one. Integrating gives the second count. If the nodal
+threefold in the first family is smoothed rather than
+small-resolved, its ordinary-double-point Milnor fibre
+is homotopy equivalent to $S^3$ and has Euler number
+zero; the replacement changes $1$ to $0$, whereas
+the small resolution changes $1$ to $2$. These agree
+with the intrinsic virtual number in A.3.2.
+\end{proof}
+
+\begin{proposition}[A.4.4; Proved; limitation of Clemens--Schmid]\label{push:A44}
+The classical K\"ahler or projective Clemens--Schmid
+comparison cannot be applied to these untwisted models.
+Their smooth fibres have $b_1=1$ and are not K\"ahler.
+Moreover the exceptional small-resolution curve in
+$R^\pm$ is null-homologous, so that normalization is
+not K\"ahler either. The rational monodromy weight
+filtration, defined algebraically from $N=T_u-I$ and
+centred at degree three, has graded ranks $6,2,6$ in
+weights $2,3,4$. This is a filtration of the computed
+monodromy representation; we do not identify it with
+a polarized limiting mixed Hodge structure.
+\end{proposition}
+\begin{proof}
+The odd first Betti number excludes a K\"ahler metric.
+In the generization matrix of A.4.1 a global section of
+$R^2h_*\mathbb Z$ has equal branch values, hence degree
+zero on the small exceptional curve. All classes pulled
+back from $R$ also have degree zero on it. The Leray
+calculation exhausts $H^2(R^\pm)$, so the curve has
+zero homology class; it cannot have positive area for
+a K\"ahler form. Finally $N^2=0$, rank $N=6$, and
+$\dim H_3=14$, so the centred filtration is
+$W_2=\operatorname{im}N$, $W_3=\ker N$, $W_4=H_3$.
+Its graded dimensions are the asserted ones. These
+topological computations replace, rather than assume,
+the inapplicable K\"ahler comparison.
+\end{proof}
+
+\begin{problem}[A.4.5; Open; unrestricted scope]\label{push:A45}
+Compute the integral topology of every further subdivision
+in A.2.4. The calculations A.4.1--A.4.4 give the complete
+groups, nearby functions and monodromy for $Q$ and the two
+minimal models; A.4.6 adds an infinite explicit subclass.
+The normalization and stratum charts of an arbitrary output
+are specified by A.2.4, but their integral boundary maps
+have not all been evaluated. No uniform integral topology
+formula for every arbitrary refinement is asserted.
+\end{problem}
+
+\begin{proposition}[A.4.6; Proved; an infinite explicit subclass]\label{push:A46}
+Let $D_m$ be the central fibre after the $m$ maximal-cone
+star subdivisions in A.2.1, starting with $Q^+$, where
+$m\geq0$. Then
+\[
+ \begin{gathered}
+ \pi_1(D_m)=\mathbb Z,\qquad
+ H_*(D_m;\mathbb Z)\text{ is free},\\
+ (b_0,\ldots,b_6)=(1,1,9+m,7,11+m,0,1+m).
+ \end{gathered}
+\]
+and $\chi(D_m)=14+3m$. For $m\geq1$ its normalization is
+the disjoint union of $\operatorname{Bl}_pR^+$, $m-1$
+copies of $\operatorname{Bl}_{p_i}\mathbb P^3$, and a final
+$\mathbb P^3$. The original two sections are still glued
+by $T$. The new components form a chain attached to the
+original component. Consecutive components meet in one
+$\mathbb P^2$, with no triple intersections. The dual
+complex is the original circle with a chain of $m$ edges
+attached. The nearby Euler function is one off the double
+locus and zero on it; its integral remains two. The nearby
+integral monodromy remains exactly that of A.4.2.
+\end{proposition}
+\begin{proof}
+The torus orbit of the cone $ABCE$ is a point on a single
+local central branch, because precisely one of its four
+rays has positive $u$-height. Hence it is a smooth point
+of the central fibre, away from the conductor. A star at
+the sum of the four basis rays is the ordinary blow-up
+of that point in the smooth fourfold. The central divisor
+is the union of its strict transform and the exceptional
+$\mathbb P^3$, both with multiplicity one. Their
+intersection is the exceptional $\mathbb P^2$ in the
+blow-up of the central threefold, identified with a
+hyperplane in $\mathbb P^3$. Their two normal lines there
+are $\mathcal O(-1)$ and $\mathcal O(1)$.
+
+The next distinguished cone $ABCv_1$ has only the new
+central ray $v_1$. Its point lies on the new $\mathbb P^3$
+away from its attaching hyperplane. Repeating therefore
+blows up that component at a point away from the preceding
+double locus and attaches the next $\mathbb P^3$. The
+incoming hyperplane and outgoing exceptional plane are
+disjoint in each middle $\operatorname{Bl}_{p_i}\mathbb P^3$.
+This proves the complete normalization and gluing
+description, the absence of triples and the dual complex.
+
+For the integral calculation, blowing up a smooth point
+of a compact complex threefold adds one free generator
+in each of $H_2$ and $H_4$ and changes no other homology.
+This also holds when the threefold has singularities away
+from that point: remove a small ball and use the
+Mayer--Vietoris sequence with boundary $S^5$; the
+replacement retracts to $\mathbb P^2$. Now attach
+$\mathbb P^3$ along that $\mathbb P^2$. In degrees
+$0,2,4$ the inclusion into $\mathbb P^3$ is an integral
+isomorphism, so the Mayer--Vietoris boundary map is
+injective and primitive. It contributes no torsion or
+odd homology. The new component contributes one free
+$H_6$ generator, since $H_6(\mathbb P^2)=0$. Each step
+therefore adds precisely one to $b_2,b_4,b_6$.
+Van Kampen gives no change of fundamental group: the
+blow-up ball replacement, the attaching plane and the
+new projective component are simply connected.
+Induction from A.4.1 proves the asserted groups.
+
+Independently, the strict-transform blow-up adds two to
+the central Euler number, the new $\mathbb P^3$ adds
+four, and its intersection $\mathbb P^2$ subtracts
+three. Thus each step adds three, agreeing with the
+homology computation. The double locus is the disjoint
+union of the original $S$ and $m$ planes, of Euler number
+$12+3m$. Since the local equation is $u=x$ off this locus
+and $u=xy$ on it, the nearby Euler integral is
+$(14+3m)-(12+3m)=2$. All modifications are the identity
+over $u\ne0$, so they do not alter the marked punctured
+family or its homological monodromy. The exact saved
+certificates check all determinants, boundary faces,
+slice volumes and these integer formulas for $0\leq m\leq8$;
+the displayed induction proves them for every $m$.
+\end{proof}
+
+\input{sections/ab_push_all_fan_topology}
+
+\section{B. Local limits and the global component obstruction}
+\subsection{B.1. The finite root neighbourhoods}
+
+\begin{proposition}[B.1.1; Refuted and corrected]\label{push:B11}
+The product assertion in Lead 4 is false on the whole root
+disc. There is, however, a proper flat holomorphic filling of
+the marked root family over
+$\Delta_{s_j}\times\Delta_r$, where $u=r^{12}$, with smooth
+total space and reduced normal-crossings $r$-central divisor.
+Its central surface over an ordinary value of $s_j$ is a cycle
+of twelve ruled surfaces over the smooth elliptic curve
+$E'_{j,s_j}$. Their normalizations are projective bundles
+associated with the degree-zero line bundle represented by
+$P_{s_j}-O_{s_j}$, with the appropriate pullbacks by translations.
+They are not generically products with $\mathbb P^1$.
+\end{proposition}
+\begin{proof}
+On the root disc the elliptic family $E'_j\to\Delta_{s_j}$ is
+smooth. In the additive period coordinates $(\xi,\zeta_2)$,
+put $W=\exp(-2\pi i\zeta_2)$. Quotienting by
+$\ker\gamma\subset\Lambda$ gives a holomorphic
+$\mathbb C^*$-bundle over this elliptic family. The period
+$\widehat\gamma$ acts by
+\[
+ (\xi,W)\longmapsto
+ (\xi+6\mu(s),a(s)uW),\qquad
+ a(s)=\exp(-2\pi i\beta^{\rm part}(s)).
+\]
+This is the bundle and translation in R8, with inverse fibre
+coordinate; the period identities check its transition
+functions directly. The factor $a$ is a holomorphic unit on
+the entire root disc. Apply the compact-core plumbing of
+A.1.2 relatively over a closed smaller root disc. Here the
+smoothing section never vanishes, so the only local equation
+at the conductor is $xy=u$ after a change of frame. This
+gives a smooth total space before the base change.
+
+After $u=r^{12}$, the local equation is $xy=r^{12}$,
+times the two smooth coordinates on $E'_j$. Resolve its
+$A_{11}$ surface singularity by its minimal toric resolution.
+In lattice coordinates this inserts each primitive height-one
+ray between the two boundary rays, at unit intervals. The
+construction is canonical for changes $x\mapsto a x$,
+$y\mapsto a^{-1}y$ by a holomorphic unit, so these local
+resolutions glue. Its affine charts have the equation
+$r=XY$, or $r=X$ at a smooth point of the central divisor,
+times the elliptic and root coordinates. Thus the total space
+is smooth, the divisor is reduced with normal crossings, and
+the joint map to $(s_j,r)$ is flat. The resolution is proper,
+and the plumbing was proper, so the joint map is proper.
+The comparison over $r\ne0$ is the original period quotient,
+since the resolution is an isomorphism there. There are
+twelve components in the cycle because one application of
+$\widehat\gamma$ shifts the unfolded component index by
+twelve.
+
+The ruled normalization of a component is obtained by adding
+the zero and infinity sections to the indicated
+$\mathbb C^*$-bundle. For a degree-zero line bundle $L_0$
+on an elliptic curve, $\mathbb P(\mathcal O\oplus L_0)$
+is a product over that curve only if $L_0$ is trivial.
+Indeed an isomorphism would give two independent nowhere
+vanishing quotient sections of a common twist of
+$\mathcal O\oplus L_0$; degree zero forces that twist and
+$L_0$ to be trivial. Equivalently, the two distinguished
+disjoint sections have normal bundles $L_0,L_0^{-1}$.
+A finite isogeny can trivialize $L_0$ only when $L_0$ is
+torsion, because the norm of its pullback is a positive
+tensor power of $L_0$.
+
+The section $P$ of the rational elliptic surface is not
+torsion, as is checked by its positive Mordell--Weil height
+in Engel's Lemma 2.1. If its restriction to the root disc
+were identically killed by a positive integer, analytic
+continuation on the smooth part of $S\to B$ would give the
+same identity globally. Each nonzero torsion equation
+therefore has a discrete zero set. Outside a countable union
+of such sets, $P_s-O_s$ is non-torsion. This disproves the
+product assertion, even after an arbitrary fixed finite
+isogeny of the elliptic factor. The special torsion
+isogenies at $s_j=0$ used in R11 remain valid.
+\end{proof}
+
+\begin{theorem}[B.1.2; Proved]\label{push:B12}
+The twisted finite deck generators extend to the models of
+B.1.1. On the twelve component labels their actions are
+$i\mapsto i+4$ at $j=1$ and $i\mapsto i-3$ at $j=2$,
+with labels in $\mathbb Z/12$. Every nonidentity group
+element acts freely, including at every node of the central
+cycle. The quotient is a smooth complex fourfold, proper
+and flat over $(t,r)=(s_j^{m_j},r)$, with a reduced
+normal-crossings $r$-central divisor. Its fibre divisor
+over $t=p_j$ has multiplicity exactly $m_j$.
+
+The reduction over $s_j=r=0$ is the central surface of R11:
+a cycle of four ruled surfaces at $j=1$, and a cycle of
+three at $j=2$. In the root presentation the normal
+character to $s_j=0$ is $e^{-2\pi i/m_j}$ and the
+character on $r$ is trivial.
+\end{theorem}
+\begin{proof}
+We retain source and target arguments. Write primes for
+evaluation at $g_js$, put $\zeta_j=e^{-2\pi i/m_j}$,
+and set
+\[
+ R_1=\begin{pmatrix}-1/\tau&0\\(1-\mu)/\tau&1\end{pmatrix},
+ \qquad
+ R_2=\begin{pmatrix}1/\tau&0\\-\mu/\tau&1\end{pmatrix}.
+\]
+The identity $R_j\Pi_c=\Pi'_c A_j$ and the fixed-vector
+identities $A_jv_j=v_j$ are checked symbolically in
+\texttt{ab\_push\_finite\_decks.py}. In the coordinates
+$(s,\xi,W,r)$ the two affine deck maps become
+\begin{align*}
+ s'&=\zeta_1s,\qquad
+ \xi'=-\xi/\tau+(6\mu'+2\tau'-4)/3,\\
+ W'&=r^4 U_1(s,\xi)W,\\
+ U_1&=\exp\!\left[-2\pi i
+  \left(\frac{1-\mu}{\tau}\xi+
+        \frac{\beta^{{\rm part}\prime}+2\mu'}3\right)\right],
+ \end{align*}
+and
+\begin{align*}
+ s'&=\zeta_2s,\qquad
+ \xi'=\xi/\tau+(-6\mu'-3\tau'+3)/4,\\
+ W'&=r^{-3} U_2(s,\xi)W,\\
+ U_2&=\exp\!\left[-2\pi i
+  \left(-\frac{\mu}{\tau}\xi-
+        \frac{\beta^{{\rm part}\prime}+3\mu'}4\right)\right].
+ \end{align*}
+Each $U_j$ is a nowhere vanishing holomorphic function on
+the additive elliptic cover. Period covariance says
+exactly that it defines the required bundle isomorphism
+after quotient by $\ker\gamma$; it is not being treated
+as a scalar function on the elliptic curve when it is not
+one. Multiplication by a unit preserves every toric chart.
+Multiplication by $r^a$ sends the chart of component index
+$i$ to the chart of index $i+a$. Therefore the displayed
+maps and their inverses extend holomorphically to the
+resolved infinite chain and then to its twelve-component
+quotient. The identities $g_1^3=g_2^4=1$ on the quotient
+hold on the dense punctured family, and hence everywhere.
+
+A nonidentity power has component shift $4,8$ in the first
+case and $-3,-6,-9$ in the second. None is zero modulo
+twelve. The same shifts act on the edge labels of the
+cycle, so no node can be fixed either. At $s\ne0$ the
+rotation of $s$ already excludes fixed points. The finite
+quotient map is consequently a holomorphic local
+isomorphism. Its source is smooth, so its target is smooth.
+Properness follows from the proper root model and the
+finite base map. Flatness can be checked after the
+surjective local-isomorphism cover: there $s^{m_j}$ and
+$r$ are a regular sequence, and their fibres have pure
+dimension two. The local central equation remains
+$r=XY$ or $r=X$. Finally $t=s^{m_j}$ shows that the
+Cartier divisor over $p_j$ is exactly $m_j$ times its
+reduction, including where this divisor meets a central
+node. This also proves the asserted normal characters.
+
+At $s=0$ use the explicitly marked isogenies
+\[
+ L_1(\xi,\eta)=(\eta,\xi-\eta/3),\qquad
+ L_2(\xi,\eta)=(\eta,\xi-\eta/2).
+\]
+Their kernel generators are $(2/3,\rho)$ and $(1/2,i)$,
+and the finite deck maps lift to
+\[
+ (\xi,\eta)\mapsto(\xi+\kappa_1/3,(\rho-1)\eta),
+ \qquad
+ (\xi,\eta)\mapsto(\xi-\kappa_2/4,-i\eta).
+\]
+In the Tate coordinate $v=e^{-2\pi i\xi}$ these are the
+shifts $4,-3$ just computed. The kernel generators act
+by nonzero translations on the smooth elliptic factor
+$F_j$, hence freely even at the two fixed points of each
+Tate component. Every other element with nonzero deck
+power has a nonzero component shift. The full product
+groups are therefore free on the product semistable
+models. Their component orbits have cardinalities three
+and four, giving precisely four and three ruled
+components. The original lattice isogenies intertwine
+the maps on the dense tori and their unit-interval fans,
+so the quotient identifications extend across all nodes.
+This verifies the particular comparison with R11 that
+we use.
+
+For the punctured family obtained by descending the
+$c$-family, the holomorphic correction $\eta_j(s)$ in
+R2 causes no additional local obstruction here. At the
+shift $c\mapsto c+12$, the reference translations
+$-4\Pi_c(\widehat u+\widehat w)$ and
+$3\Pi_c(\widehat u+\widehat w)$ are periods.
+The remaining correction is equivariant and independent
+of $c$. Translation by $-c\eta_j(s)/12$ on the additive
+cover conjugates that descent to the period descent.
+It commutes with the finite deck action by equivariance.
+Thus the constructed finite models fill the actual local
+pullback by $w=r^6$ after a specified holomorphic
+identification over $r\ne0$. This local gauge is not
+asserted to extend across $r=0$ on overlaps with other
+base neighbourhoods.
+\end{proof}
+
+\subsection{B.2. The base-changed cusp fan}
+
+\begin{proposition}[B.2.1; Proved]\label{push:B21}
+For the plain base change $u=r^n$ of the untwisted cusp
+model, the smooth period-invariant refinements which
+retain the prescribed bottom triangulation, are jointly
+flat over $(q,r)$, and have reduced $r$-central divisor
+are indexed by $k=0,\ldots,n$. In a fundamental prism
+write its four bottom rays as $A,B,C,D$ as in A.2.1,
+and put $\rho_i=(0,i,0,1)$ for $0\leq i\leq n$.
+The maximal cones for the index $k$ are
+\[
+ ABC\rho_k,\quad BCD\rho_k,\quad
+ AB\rho_i\rho_{i+1}\ (i<k),\quad
+ CD\rho_i\rho_{i+1}\ (i\geq k).
+\]
+There are thirteen such models for $n=12$ and three
+for $n=2$. Each has smooth total space and a reduced
+normal-crossings central divisor with $n$ components
+and no triple locus. Its component labels over the
+punctured $q$-disc are globally $\mathbb Z/n$; in
+particular their monodromy around $q=0$ is the identity.
+\end{proposition}
+\begin{proof}
+The map of cocharacter lattices for the base change is
+\[
+ (y_1,y_2,h_q,h_r)\longmapsto
+ (y_1,y_2,h_q,nh_r).
+\]
+The old top ray indexed by $l$ pulls back to
+$(0,nl,0,1)$. Smoothness on the two-dimensional top
+face forces insertion of every primitive ray
+$\rho_{nl+i}$, $0<i<n$: a skipped interval of length
+$d>1$ would retain lattice index $d$ on that face.
+Joint flatness excludes any new ray with both base
+heights positive, and the fixed bottom excludes new
+rays of $h_r=0$. Reducedness permits only top rays
+of $h_r=1$. These are consequently all the rays.
+
+On the left face $AC\rho_0\rho_n$, a triangulation
+with these collinear top vertices has a unique triangle
+containing the bottom edge $AC$. Write its third
+vertex as $\rho_a$. The triangles on either side
+of that bridge are then forced. The analogous right
+face has bridge $BD\rho_b$. The first period takes
+$A,C$ to $B,D$ and fixes every top ray, so periodicity
+requires $a=b=k$. The fixed bottom triangles $ABC$
+and $BCD$ must then cone to $\rho_k$. The remaining
+successive top intervals force exactly the displayed
+cones, leaving no choice. Conversely those cones
+have determinant $\pm1$ and common-face
+intersections. Their normalized volumes sum to
+$n+2$, the volume of the prism, so they cover it.
+The determinant, intersection and volume assertions
+for both requested exponents are certified in
+\texttt{ab\_push\_basechange\_fan.py} using rational
+arithmetic.
+
+The period actions are
+\[
+ G_1:(y_1,y_2)\mapsto(y_1+h_q,y_2),\qquad
+ G_2:(y_1,y_2)\mapsto(y_1,y_2+h_q+nh_r).
+\]
+Thus the choices propagate consistently from the
+fundamental prism. The proper toric subdivisions
+descend by the covering construction of A.1.2.
+Every ray has pure $q$-height or pure $r$-height, so
+in a regular affine chart $q$ and $r$ are monomials
+in disjoint sets of coordinates. This proves joint
+flatness. All nonzero $r$-heights equal one, and
+there are at most two top rays in any maximal cone;
+this proves reduced normal crossings and absence of
+triple points. Properness follows by descent from
+the proper toric modification of the base-changed
+proper cusp model.
+
+The central components and all their intersection
+maps are specified by the stars of the $\rho_i$.
+Modulo the periods their indices are $i\bmod n$;
+adjacent indices meet in the conductor elliptic
+surface. Away from the cusp their normalizations
+are the ruled bundles of the expanded plumbing.
+At the unique bridge class the star has both bottom
+triangles, and gives the nodal-curve blow-up and
+small resolution described in A.2.2, on the
+corresponding ruled bundle. This star description
+also fixes the gluing when the bridge is on an
+inserted component. The endpoint choices $k=0,n$
+are the canonical resolutions of the base changes
+of the two original models. Intermediate values
+are related to them by the successive side flops.
+
+Finally, $G_1$ fixes each index and $G_2$ changes it
+by $n$. The units in the cusp periods are
+single-valued holomorphic functions of $q$ and do
+not change a ray label. The toric charts themselves
+are defined over $q$, not a root of $q$. Hence
+these labels remain global on the punctured
+$q$-disc, proving the monodromy assertion. Further
+smooth periodic subdivisions with mixed rays give
+infinitely many models flat over $r$ alone, as in
+A.2.1; they are excluded by the stated joint-flatness
+condition.
+\end{proof}
+
+\begin{problem}[B.2.2; Open; unrestricted scope]\label{push:B22}
+Give the requested uniform blow-up description and integral
+central topology for every further invariant smooth
+subdivision when joint flatness is omitted. The finite-data
+fan classification and family construction now follow from
+A.2.4; the remaining distinction from the explicit minimal
+models is the one stated in A.2.3 and A.4.5.
+\end{problem}
+
+\begin{corollary}[B.2.3; Proved; unrestricted toroidal parametrization]\label{push:B23}
+For $u=r^{12}$ and $u=w^2$, all finite-orbit smooth invariant
+subdivisions of the plain cusp fan are obtained by A.2.4
+with $n=12$ and $n=2$, respectively. The construction there
+gives their proper flat smooth-total-space families,
+central multiplicities, normalization charts and all
+multiple loci. Reducedness is exactly the restriction
+$\ell=1$. This is a classification of the plain untwisted
+cusp models; it does not supply the missing transition to
+the finite logarithmic-transform models in B.3.
+\end{corollary}
+
+\subsection{B.3. The prescribed pieces do not glue}
+
+\begin{theorem}[B.3.1; Refuted; Lead 5]\label{push:B31}
+The finite models of B.1 and any of the plain
+$u=r^{12}$ cusp models of B.2 cannot be glued to a
+proper complex space over $B\times\Delta_r$ with
+the prescribed central fibres on all three base
+neighbourhoods. In particular Lead 5's asserted
+simultaneous gluing is false. This conclusion does
+not rule out a different cusp model of the same
+punctured $S^6$ family.
+\end{theorem}
+\begin{proof}
+If a further plain cusp refinement changes the top fan,
+its central fibre over an ordinary $q\ne0$ has additional
+components or different multiplicities and already cannot
+agree with the twelve-cycle model of B.1 on the overlap.
+We may therefore assume its top fan is the standard reduced
+twelve-cycle. Additional mixed-height rays lie over $q=0$
+and do not change the following argument over the punctured
+base.
+
+Suppose such a gluing exists and put
+$B^\circ=B\setminus\{0,1,\infty\}$. Normalize
+its reduced central fibre over $B^\circ$. In
+each of the prescribed plumbing charts this is
+a proper smooth family whose fibres are the
+disjoint union of twelve connected ruled
+surfaces. The charts and their transition
+isomorphisms therefore give a locally constant
+twelve-element set of connected components.
+Equivalently, the Stein factor of this
+normalization is an unramified degree-twelve
+cover of $B^\circ$: the algebra of fibrewise
+holomorphic functions is locally $\mathcal O^{12}$,
+since each proper connected ruled surface has
+only constant holomorphic functions. This
+description constructs the cover and requires
+no conjecture about components at the missing
+three points.
+
+The double curves give the adjacency graph of
+a twelve-cycle. Thus its transition
+permutations lie in the dihedral group
+$D_{12}$, the automorphism group of that graph.
+We record a peripheral permutation by its
+deck-identification map. Holonomy defined by
+lifting a clockwise path and returning its
+endpoint to the initial root slice uses the
+inverse permutations throughout; the relation
+and the following contradiction are unchanged.
+At $0$ the monodromy is a rotation by four
+steps; at $1$ it is a rotation by minus three
+steps, by the explicit root deck maps in
+B.1.2. Relabelling a cycle can reverse either
+orientation, but changes these only to
+$\pm4$ and $\pm3$. At the cusp the
+monodromy is the identity by B.2.1.
+
+The peripheral relation in
+$\pi_1(B^\circ)$ is $g_1g_2g_0=1$ with
+the consistently chosen clockwise loops.
+In any common labelling, the product of the
+two finite rotations would therefore have
+to be the identity. Its possible rotation
+numbers are
+\[
+ 4+3,\quad4-3,\quad-4+3,\quad-4-3
+ \equiv7,1,11,5\pmod {12}.
+\]
+None is zero. This contradicts the peripheral
+relation. The four residues and the finite
+component cycles are checked exactly by
+\texttt{ab\_push\_finite\_decks.py}.
+\end{proof}
+
+\begin{proposition}[B.3.2; Proved; necessary condition only]\label{push:B32}
+If a corrected global construction retains the
+finite models and a twelve-cycle over
+$B^\circ$, then, in the common orientation
+with finite shifts $4,-3$, its cusp
+component monodromy must be the twelve-cycle
+of shift $-1$. The associated component
+cover of $B^\circ$ is connected. Its compact
+normalization over $B$ has degree twelve,
+ramification indices $3,4,12$, and genus
+three. In this deck convention it is the
+normalization of
+\[
+ y^{12}=\frac{t^4}{(t-1)^3}.
+\]
+These assertions do not construct
+the required central complex space.
+\end{proposition}
+\begin{proof}
+The peripheral relation gives the remaining
+rotation as $-4+3=-1$. The subgroup generated
+by $4,-3$ is all of $\mathbb Z/12$, proving
+connectedness. The local cycle decompositions
+have four cycles of length three, three
+cycles of length four, and one of length
+twelve. Filling a punctured-disc cover by
+its normal branched cover gives ramification
+contribution
+$4(3-1)+3(4-1)+(12-1)=28$.
+The Riemann--Hurwitz formula gives
+$2-2g=24-28=-4$, hence $g=3$.
+The displayed Kummer equation has orders
+$4,-3,-1$ at the three points and hence
+the same marked cyclic monodromy. The
+classification of connected covering
+spaces identifies its restriction to
+$B^\circ$ with the required component
+cover; normalization gives the compact
+comparison. Reversing the transport
+convention replaces $y$ by $y^{-1}$.
+Only this component cover has been
+constructed; no topology is assigned here
+to a hypothetical threefold above it.
+\end{proof}
+
+\begin{proposition}[B.3.3; Proved; obstruction to a specified repair]\label{push:B33}
+A cyclic cusp-root construction using a
+fractional translation by the two cusp
+periods cannot repair B.3.1 while retaining
+the reduced Mumford fibre for $r\ne0$.
+More precisely, let $q=s^d$, $u=r^n$,
+and suppose a cyclic deck generator has
+translation $d^{-1}(aG_1+bG_2)$ in the
+additive notation for the two periods.
+Assume its $r$-component shift is integral.
+Then its $r$-component shift is
+$nb/d\bmod n$, whereas the multiplicity
+of every generic quotient $q$-component
+is a positive multiple of
+\[
+ \frac{d}{\gcd(d,a,b)}.
+\]
+A nonzero $r$-component shift therefore
+forces a nonreduced $q$-fibre. In
+particular a shift $-1\bmod12$ in this
+class of constructions forces multiplicity
+at least twelve.
+\end{proposition}
+\begin{proof}
+In the coordinates of A.1.2 the two
+periods have $q$-valuation vectors
+$(1,0)$ and $(0,1)$; their $r$-valuation
+vectors are $(0,0)$ and $(0,n)$.
+After $q=s^d$, the period lattice on
+the $q$-central component indices is
+$d\mathbb Z^2$. A regular toroidal
+resolution has indices in
+$(\mathbb Z/d)^2$. The proposed deck
+generator translates them by $(a,b)$.
+The order of that translation is
+$d/\gcd(d,a,b)$, so the subgroup
+preserving a component has order
+$h=\gcd(d,a,b)$. Its subgroup fixing
+a generic point has some order
+$h_0$ dividing $h$; unit factors may
+make $h_0$ smaller. That isotropy
+acts on the normal coordinate $s$
+by a primitive $h_0$th root of
+unity. The quotient normal
+coordinate is $s^{h_0}$, and
+$q=(s^{h_0})^{d/h_0}$ has
+multiplicity $d/h_0$, a positive
+multiple of $d/h$. Unit factors
+cannot decrease this lower bound.
+
+Reducedness would require $h_0=d$,
+and therefore $h=d$,
+so both $a,b$ are divisible by $d$.
+Then $nb/d$ is zero modulo $n$.
+If $nb/d$ is relatively prime to
+$n$, its order in $\mathbb Z/n$
+is $n$, which divides the order
+$d/h$ of the full component
+translation; this gives the final
+lower bound. The residue calculations
+and examples for the requested
+exponents are independently recorded
+in \texttt{ab\_push\_cusp\_root\_repair.py}.
+This rules out the specified repair,
+not a cusp model with a different
+geometry or a different comparison
+to the punctured family.
+\end{proof}
+
+\begin{theorem}[B.3.4; Proved; split-normalization trace obstruction]\label{push:B34}
+Let $C$ be the genus-three component cover
+in B.3.2, and let $\mathscr E\to C$ be
+the relatively minimal elliptic surface
+obtained by pulling back $S\to B$.
+Write $\sigma$ for the order-twelve deck
+transformation, with its natural lift to
+$\mathscr E$. Then
+\[
+ \operatorname{Tr}_{\sigma}
+   \mathscr E(\mathbb C(C))
+ :=\left\{\sum_{i=0}^{11}\sigma^i Q:
+                 Q\in\mathscr E(\mathbb C(C))\right\}
+ =12\mathbb Z P.
+\]
+In particular there is no section $Q$
+for which $(t_Q\circ\sigma)^{12}=t_{6P}$.
+Thus the proposed repair that takes the
+normalization over $C$ to be ruled over
+this split elliptic surface, with adjacent
+conductor map $t_Q\circ\sigma$, is
+impossible.
+
+This conclusion is restricted to the
+stated split normalization. A ruled
+normalization over a nontrivial genus-one
+torsor need not admit a section or such
+an expression for its affine deck lift;
+it is not excluded by this theorem.
+\end{theorem}
+\begin{proof}
+There is a convenient model of the cover
+and its elliptic surface:
+\[
+ C:\ b^3=a^4+1,\qquad
+ t=b^3,\quad y=b/a,\qquad
+ \mathscr E:\ Y^2=X^3-3bX+2a^2.
+\]
+Indeed $y^{12}=t^4/(t-1)^3$.
+The substitution from the original
+Weierstrass coordinates is
+$x=a^2b^4X$, $y_{\rm old}=a^3b^6Y$.
+The affine discriminant of the new
+equation is $1728$; it has no singular
+fibre on the affine curve. The curve
+$C$ has one point at infinity, with
+pole orders $3,4$ for $a,b$.
+Put $z=a/b$ and $c=z^3a=z^4b$ there.
+Then $z$ is a uniformizer and
+\[
+ c^3(1-c)=z^{12},\qquad c(0)=1.
+\]
+In the integral Weierstrass coordinates
+$X_0=z^2X$, $Y_0=z^3Y$, the equation is
+\[
+ Y_0^2=X_0^3-3cX_0+2c^2.
+\]
+Its discriminant has order twelve and
+its $c_4$ is a unit. The unique singular
+fibre of the minimal regular surface
+is therefore $I_{12}$. The fundamental
+line bundle is $\mathcal O_C(\infty)$,
+so $\chi(\mathcal O_{\mathscr E})=1$.
+This is a projective elliptic surface.
+
+Let $\omega=e^{2\pi i/3}$ and
+$\lambda=e^{2\pi i/12}$. The deck lift is
+\[
+ \sigma(a,b,X,Y)=(ia,\omega b,\lambda^2X,\lambda^3Y).
+\]
+It fixes the section $P=(0,-\sqrt2a)$.
+Two further sections are
+\[
+ R=\left(\frac{a^2}{b-1},
+                 \frac{\sqrt3a}{b-1}\right),
+ \qquad
+ R'=\sigma R=
+   \left(\frac{a^2}{b-\omega},
+                 \frac{\sqrt3\omega a}{b-\omega}\right).
+\]
+Direct substitution verifies their
+equations. The three orbit points
+$R,\sigma R,\sigma^2R$ lie on the line
+\[
+ Y=\frac{\sqrt3b}{a}X-\sqrt3a.
+\]
+Thus $R+\sigma R+\sigma^2R=O$ by the
+elliptic chord law, and $\sigma^3R=R$.
+The ansatz that produced these sections,
+its other solutions, and this line
+identity are checked symbolically in
+\texttt{ab\_push\_trace\_sections.py}.
+
+We give the intersection computation
+needed for the height lattice; this
+also fixes the component indices used
+below. The only pole of $R$ on the affine
+curve is at $(a,b)=(0,1)$. There $a$ is
+a uniformizer and $b-1=a^4/3+O(a^8)$,
+so $X=3a^{-2}+O(a^2)$ and
+$Y=3\sqrt3a^{-3}+O(a)$.
+Consequently $R\cdot O=1$.
+The same computation at $(0,\omega)$
+gives $R'\cdot O=1$, while $P\cdot O=0$.
+At the other two points with $a=0$,
+$P$ and $R$ meet simply: the fibre is
+smooth at $(X,Y)=(0,0)$, and the
+difference of their $Y$ coordinates
+has a nonzero linear term in $a$.
+Thus $P\cdot R=2$, and likewise
+$P\cdot R'=2$. The sections $R,R'$
+meet simply at $(a,b)=(0,\omega^2)$.
+They cannot meet elsewhere on the
+affine curve, since their $X$
+coordinates are distinct for $a\ne0$.
+
+To check infinity, for the section
+$\sigma^jR$ put $k=\omega^j$. Its
+integral coordinates are
+\[
+ X_0=\frac{c^2}{c-kz^4},\qquad
+ Y_0=\frac{\sqrt3kc z^4}{c-kz^4}.
+\]
+At the node use analytic coordinates
+\[
+ U=Y_0-(X_0-1)\sqrt{X_0+2},\qquad
+ V=Y_0+(X_0-1)\sqrt{X_0+2}.
+\]
+They satisfy
+\[
+ UV=(1-c)\{3X_0-2(c+1)\},
+\]
+whose right side is a unit times $z^{12}$.
+The section expansions are
+\[
+ U=-\frac{\sqrt3k^2}{6}z^8+O(z^{12}),
+ \qquad V=2\sqrt3kz^4+O(z^8).
+\]
+Hence $R,R'$ both meet component $4$
+of the resolved $I_{12}$ cycle, with
+distinct coordinates on that component.
+Reversing the cycle numbering replaces
+both indices by $8$ and has no effect
+on the argument. The section $P$ meets
+the identity component, at the smooth
+point $(X_0,Y_0)=(0,-\sqrt2)$.
+Thus no further intersections occur at
+infinity, and $R\cdot R'=1$.
+
+The height pairing formula and its
+positivity are those of
+\cite[Theorems 8.4 and 8.6, table (8.16)]{Shioda90}.
+For an $I_{12}$ fibre its correction is
+$\operatorname{contr}(i,j)=\min(i,j)-ij/12$.
+The preceding intersections give, in
+the ordered basis $P,R,R'$,
+\[
+ G=\begin{pmatrix}
+ 2&0&0\\
+ 0&4/3&-2/3\\
+ 0&-2/3&4/3
+ \end{pmatrix},\qquad \det G=8/3.
+\]
+In particular these are three independent
+sections. The Leray sequence and
+$R^1\pi_*\mathcal O_{\mathscr E}
+=\mathcal O_C(-\infty)$ show that its
+irregularity equals $g(C)=3$; the
+right-hand sheaf has no global section.
+This also agrees with the Picard-variety
+statement in \cite[Theorem 4.1]{Shioda90}.
+The equalities $\chi=1$ and
+$e(\mathscr E)=12$ give $p_g=3$,
+$b_2=22$ and $h^{1,1}=16$.
+The zero section, a fibre and the eleven
+nonidentity $I_{12}$ components generate
+a rank-thirteen trivial lattice.
+The identification of sections with
+the N\'eron--Severi quotient
+\cite[Theorem 1.3]{Shioda90}, together
+with $\rho\le h^{1,1}$, now shows that
+the Mordell--Weil rank is exactly three
+and $\rho=16$.
+
+There is no nonzero torsion section.
+Indeed its height would be zero, so
+for some $0\le j<12$ the height formula
+would give
+\[
+ 0=2+2(Q\cdot O)-\frac{j(12-j)}{12}.
+\]
+The correction is at most three and
+$Q\cdot O$ is a nonnegative integer.
+This forces $Q\cdot O=0$ and
+$j(12-j)=24$, which has no integral
+solution.
+
+Let $L=\mathbb ZP+\mathbb ZR+\mathbb ZR'$.
+The integral N\'eron--Severi sublattice
+generated by the trivial lattice and
+these three sections has determinant
+$-32$. This follows either by eliminating
+the trivial lattice with the displayed
+height matrix, or from the integral
+intersection matrix recorded in
+\texttt{ab\_push\_trace\_obstruction.py}.
+All its entries have just been computed:
+sections have square $-1$, their mutual
+intersections are $2,2,1$, and $R,R'$
+meet precisely component $4$.
+If $d=[\mathscr E(\mathbb C(C)):L]$,
+the section--N\'eron--Severi quotient
+identification gives the same index
+for this sublattice in
+$\operatorname{NS}(\mathscr E)$.
+Its integral determinant implies
+$d^2\mid32$, hence $d\in\{1,2,4\}$.
+In particular $4Q\in L$ for every section.
+
+In the rational basis $P,R,R'$ the
+deck action and its trace are
+\[
+ M=\begin{pmatrix}1&0&0\\0&0&-1\\0&1&-1\end{pmatrix},
+ \qquad \sum_{i=0}^{11}M^i=
+       \operatorname{diag}(12,0,0).
+\]
+Suppose first that the trace of $Q$ is
+$6P$. By the index bound we may write
+\[
+ Q=\frac12P+\frac14(uR+vR'),\qquad u,v\in\mathbb Z.
+\]
+Let $j\in\mathbb Z/12$ be its component
+index at infinity. Since both $R,R'$
+meet component four, the height formula
+modulo integers gives
+\[
+ \frac{2u-v}{6}\equiv\frac j3\pmod{\mathbb Z},
+ \qquad
+ \frac{-u+2v}{6}\equiv\frac j3\pmod{\mathbb Z}.
+\]
+Equivalently $2u-v-2j$ and $-u+2v-2j$
+are divisible by six. Reducing modulo
+two shows that both $u,v$ are even.
+Write $u=2u'$, $v=2v'$. The component
+map is a group homomorphism, so
+\[
+ 2j\equiv4(u'+v')\pmod{12}.
+\]
+Therefore $j$ is even. The geometric
+height formula then lies in
+$\tfrac13\mathbb Z$. In contrast the
+height from $G$ is
+\[
+ \langle Q,Q\rangle
+ =\frac12+\frac{u'^2-u'v'+v'^2}{3},
+\]
+which lies in the disjoint coset
+$\tfrac12+\tfrac13\mathbb Z$.
+This is a contradiction.
+
+The same argument determines the full
+trace image. If $Q=\alpha P+\beta R+\gamma R'$
+in the rational span, pairing with the
+narrow section $P$ gives
+$2\alpha=\langle Q,P\rangle\in\mathbb Z$.
+Every odd half-integral value of $\alpha$
+leads to the identical congruences and
+height contradiction, with $1/2$
+replaced by an odd square divided by
+two. Thus $\alpha\in\mathbb Z$ and
+the trace is in $12\mathbb ZP$.
+The section $P$ realizes the generator.
+The exact matrices, local series,
+torsion test, and all relevant residue
+classes are verified in
+\texttt{ab\_push\_trace\_obstruction.py}.
+Finally the identity
+$(t_Q\circ\sigma)^{12}=t_{\operatorname{Tr}_\sigma Q}$
+proves the claimed obstruction, with
+the scope stated in the theorem.
+\end{proof}
+
+\begin{corollary}[B.3.5; Proved; exact Mordell--Weil lattice]\label{push:B35}
+In the notation of B.3.4,
+\[
+ \mathscr E(\mathbb C(C))
+   =\mathbb ZP\oplus\mathbb ZR\oplus\mathbb ZR',
+ \qquad \det\operatorname{NS}(\mathscr E)=-32.
+\]
+\end{corollary}
+\begin{proof}
+The affine coordinate ring of $C$ is
+$\mathbb C[a,b]/(b^3-a^4-1)$, with
+unique representatives of degree at most
+two in $b$. The pole orders $3i+4j$ of
+$a^ib^j$, $0\le j\le2$, are distinct,
+so cancellation cannot create functions
+with pole order one or two at infinity.
+Consequently
+\[
+ H^0(C,\mathcal O_C(2\infty))=\mathbb C,
+ \qquad
+ H^0(C,\mathcal O_C(3\infty))
+       =\mathbb C\oplus\mathbb Ca.
+\]
+A section disjoint from $O$ therefore
+has $X=x_0$, $Y=y_0+y_1a$ for constants
+$x_0,y_0,y_1$. Substitution in the
+Weierstrass equation forces $x_0=y_0=0$
+and $y_1^2=2$. Thus the only nonzero
+sections with intersection zero with
+$O$ are $P,-P$.
+Every other nonzero section has
+intersection at least one with $O$,
+and hence height at least $4-3=1$.
+
+B.3.4 proves that every section has
+integral coefficient along $P$ in the
+rational height decomposition. The
+remaining lattice can have index only
+one, two or four over $\mathbb ZR+\mathbb ZR'$.
+Any proper such overlattice contains a
+nonzero element of order two modulo
+this sublattice. After subtracting an
+integral combination of $R,R'$ it is
+one of $R/2$, $R'/2$, $(R+R')/2$.
+Each has height $1/3$, contradicting
+the preceding lower bound. Thus the
+index is one. The determinant already
+computed in B.3.4 is the full
+N\'eron--Severi determinant.
+The pole-basis calculation, coefficient
+equations and three half-class heights
+are included in the exact certificate
+\texttt{ab\_push\_trace\_obstruction.py}.
+\end{proof}
+
+\begin{proposition}[B.3.6; Proved; an unramified torsor alternative]\label{push:B36}
+Put $K=\mathbb C(t)$, $L=\mathbb C(C)$,
+$G=\operatorname{Gal}(L/K)=\langle\sigma\rangle$,
+and let $E/K$ be the generic elliptic
+curve of $S\to B$. There is a nonzero
+class
+\[
+ \xi\in\operatorname{Sha}(E_L/L)^G
+ \quad\hbox{whose transgression in}\quad
+ H^2(G,E(L))=\mathbb ZP/12\mathbb ZP
+ \quad\hbox{is }6P.
+\]
+Here $\operatorname{Sha}$ denotes the
+subgroup of genus-one torsors trivial
+over the henselian local fields of all
+points of $C$.
+In particular the trace obstruction of
+B.3.4 does not obstruct all genus-one
+torsors. Such a class has a relatively
+minimal projective genus-one surface
+$V\to C$, locally isomorphic to
+$\mathscr E\to C$, and an affine lift
+$A:V\to V$ of $\sigma$ with
+\[
+ A^{12}=t_{6P}.
+\]
+This is an existence statement for a
+possible normalization base, not a
+construction of a threefold central
+fibre or of its smoothing.
+\end{proposition}
+\begin{proof}
+We use Galois cohomology with its
+continuous cochains. The five-term
+Hochschild--Serre sequence gives
+\[
+ H^1(K,E)\longrightarrow H^1(L,E)^G
+ \xrightarrow{\ d_2\ }H^2(G,E(L))
+ \longrightarrow H^2(K,E).
+\]
+The transgression sequence is
+\cite[Chapter III, Section 4, Theorem 2
+and the following remark, pp.129--130]{HS53};
+its continuous form follows by passing
+to finite Galois quotients for the
+finitely many values of each continuous
+cochain. For this complex function field,
+$H^2(K,E)=0$, as in
+\cite[Lemma 4.7.8]{CDL24}.
+One can also see this from
+$\operatorname{cd}K=1$: the torsion
+submodule of $E(\overline K)$ has no
+second cohomology, and its quotient is
+a rational vector space, whose positive
+continuous cohomology vanishes by
+averaging on finite quotients.
+
+Cyclic group cohomology gives
+$H^2(G,E(L))=E(K)/\operatorname{Tr}_\sigma E(L)$.
+By B.3.4 this is $\mathbb Z/12$, with
+generator the class of $P$. Hence there
+is a $G$-invariant torsor class
+$\xi_0\in H^1(L,E)$ with $d_2\xi_0=6P$.
+We next remove all its local ramification
+without changing this transgression.
+
+At a place $v$ of $B$ choose a point
+$w$ of $C$ above it and its decomposition
+subgroup $G_w$. The only nontrivial
+decomposition groups have orders
+$3,4,12$, at $0,1,\infty$ respectively.
+The component groups of the original
+fibres are $\mathbb Z/3$, $\mathbb Z/2$
+and zero. Thus $6P$ belongs to the
+identity component of the local N\'eron
+group at every ramified place.
+Multiplication by the ramification
+index is surjective on that identity
+group over the henselian local field:
+on the residue group it is surjective
+on $\mathbb G_a(\mathbb C)$ or
+$\mathbb G_m(\mathbb C)$, and its
+derivative is invertible; Hensel's
+lemma lifts a division point.
+Choose such a division point over
+$K_v^h$. Viewed over $L_w^h$, it is
+invariant, so its local norm is $6P$.
+The restriction of the transgression
+class to $H^2(G_w,E(L_w^h))$ is
+therefore zero. For unramified places
+the decomposition group is trivial,
+so the same assertion is automatic.
+
+Naturality and exactness of the local
+five-term sequences now show that
+$(\xi_0)_w$ is the restriction of some
+$\eta_v\in H^1(K_v^h,E)$.
+Only finitely many of these classes
+need be nonzero. The original elliptic
+surface is nontrivial, since
+$j=1728t$. Ogg--Shafarevich localization
+is therefore surjective:
+\[
+ H^1(K,E)\longrightarrow
+ \bigoplus_{v\in B}H^1(K_v^h,E)
+ \longrightarrow0.
+\]
+This is the combination of exact
+sequence (4.7.4) and Theorem 4.7.9
+of \cite{CDL24}; the same surjectivity
+and its geometric fibre-twist
+interpretation are given in
+\cite[Section 4, equation (4)]{Xiao91}.
+Take a global $\eta$ with these local
+values and put
+$\xi=\xi_0-\operatorname{res}_{L/K}\eta$.
+It is locally trivial at every point
+of $C$, remains $G$-invariant, and has
+$d_2\xi=6P$. It is nonzero because its
+transgression is nonzero.
+
+The standard interpretation of the
+Weil--Ch\^atelet group represents
+$\xi$ by a smooth projective genus-one
+curve over $L$; taking its relatively
+minimal regular model over $C$ gives
+$V$. Local triviality identifies each
+henselian model with that of $E_L$.
+Over $\mathbb C$ the corresponding
+\'etale identifications yield
+holomorphic identifications over small
+base discs. Equivalently, $V$ is obtained
+by gluing copies of $\mathscr E$ over
+these discs by translations by local
+sections. These translations extend
+over the regular $I_{12}$ model.
+Thus $V$ is locally isomorphic to
+$\mathscr E$, has smooth total surface,
+no multiple fibres, and the same single
+$I_{12}$ fibre. Properness and flatness
+hold locally over the base and hence
+globally. This use of torsors and local
+twists is the one in
+\cite[Sections 3--4]{Xiao91}; it does
+not assert an explicit equation for
+the selected torsor.
+
+The $G$-invariance of $\xi$ gives an
+affine isomorphism of its generic fibre
+covering $\sigma$. It extends to the
+relatively minimal regular surface:
+in this particular situation the
+extension can be checked on a common
+resolution. If an exceptional
+$(-1)$-curve for one projection is not
+contracted by the other, its image is
+a vertical rational curve and has
+self-intersection at least $-1$,
+since blowing down only increases
+self-intersection. On either locally
+trivial model all vertical rational
+curves are components of the $I_{12}$
+fibre, of square $-2$. Thus every such
+$(-1)$-curve is contracted by both
+projections and can be removed from
+the common resolution. Repeating this
+proves that the map is an isomorphism.
+The same argument gives the local
+comparison with the Jacobian model
+used above. Transporting the base by
+$\sigma$ changes none of these facts.
+Write $A_0$ for this lift. Its twelfth
+power is translation by a section
+$N\in E(L)^G=\mathbb ZP$.
+Choosing the powers $1,A_0,\ldots,A_0^{11}$
+as lifts of $G$ gives the cyclic
+factor set
+$N\lfloor(i+j)/12\rfloor$.
+Its cohomology class is precisely the
+descent obstruction $d_2\xi$, so
+$N=(6+12m)P$ for an integer $m$.
+Replacing $A_0$ by $A=t_{-mP}\circ A_0$
+gives $A^{12}=t_{6P}$.
+The finite carry-cocycle identities,
+its exact order two modulo twelve,
+and the three local component checks
+are recorded in
+\texttt{ab\_push\_torsor\_cocycles.py}.
+
+Neither this cohomological construction
+nor local triviality specifies the
+normal line bundles, the threefold
+cusp charts, or a smoothing with the
+given punctured-family identification.
+Those remain requirements of B.4.1.
+\end{proof}
+
+\begin{proposition}[B.3.7; Proved; an auxiliary family with the wrong cusp]\label{push:B37}
+For the torsor and affine lift $(V,A)$
+of B.3.6, there is a line bundle $M$ on
+$V$ representing the narrow Jacobian
+section $P$, with
+\[
+ M^2=-2,\qquad
+ M\otimes(A^*M)^{-1}
+       \simeq\pi^*\mathcal O_C(\infty).
+\]
+These data give a proper flat nodal
+plumbing $\mathcal Z^\flat\to\Delta_h$
+and two uniform smooth-total-space
+semistable modifications
+$\mathcal Z^\pm\to\Delta_h$, together
+with holomorphic maps to $B$.
+For $h\ne0$, the nodal fibre has
+twelve ordinary double points and
+Euler number twelve; each small-resolved
+fibre has Euler number twenty-four.
+The cusp fibre of the latter map to
+$B$ has multiplicity twelve.
+Consequently this auxiliary construction
+does not fill the prescribed $S^6$
+family. No proper birational modification
+over $B$ can turn its multiple cusp
+into a reduced cusp.
+\end{proposition}
+\begin{proof}
+The section $P$ determines a relative
+Picard class of multidegree zero on
+every fibre component of $V\to C$.
+It lifts to a line bundle $M$ because
+$\operatorname{Br}(C)=0$; this is the
+relative Picard consequence of
+\cite[Proposition 0.9.2 and the opening
+of Section 4.2, p.370]{CDL24}.
+In local trivializations of the torsor,
+translation acts trivially on the
+relative degree-zero Picard class.
+Thus the local Poincar\'e lines glue
+up to base lines, with precisely that
+Brauer obstruction. In particular we
+may and do retain multidegree zero
+on all twelve fibre components.
+
+Choose a finite multisection cover of
+degree $d$ which trivializes the torsor
+generically, and resolve its base change.
+There the pulled-back $M$ becomes the
+narrow Poincar\'e line for the pulled-back
+$P$, up to a base line. Its square is
+$-2d$, by height base change
+\cite[Proposition 8.12, equation (8.25)]{Shioda90}.
+Base lines do not change the square
+of a fibre-degree-zero line. The
+intersection pullback formula therefore
+gives $M^2=-2$.
+
+Since $\sigma P=P$, the line
+$J=M\otimes(A^*M)^{-1}$ is trivial
+on every fibre, including the
+$I_{12}$ fibre. Grauert base change
+and the evaluation map give
+$J=\pi^*J_C$ for a line on $C$.
+The line $M\otimes(t_{6P}^*M)^{-1}$
+has base degree twelve. To check the
+sign and degree, pass to the same
+trivializing cover. On a Jacobian,
+the degree of the restriction of
+$\mathcal O(P-O)$ to a section $Q$
+minus its degree on $O$ is
+$-\langle P,Q\rangle$, by the height
+formula and the narrowness of $P$.
+For $Q=6P$ this is $-12d$.
+Descending the degree factor $d$
+proves the assertion. Iterating $A^*$
+twelve times now gives
+$12\deg J_C=12$, so $\deg J_C=1$.
+
+The forms $da/b^2$, $a\,da/b^2$ and
+$da/b$ form a basis of $H^0(C,K_C)$.
+Their $\sigma$-eigenvalues are
+$\lambda^7,\lambda^{10},\lambda^{11}$.
+Thus the characteristic polynomial
+on $H^1(C,\mathbb Z)$ is
+\[
+ p(x)=\Phi_{12}(x)\Phi_6(x)
+     =x^6-x^5+x^3-x+1,
+ \qquad
+ p(x)+(1-x)(x^5+x^2+x)=1.
+\]
+It follows that $1-\sigma^*$ is an
+automorphism of $\operatorname{Pic}^0(C)$,
+with inverse $(\sigma^*)^5+(\sigma^*)^2+\sigma^*$.
+Twisting $M$ by a base line changes
+$J_C$ by $N\otimes(\sigma^*N)^{-1}$.
+The displayed inverse therefore supplies
+a base twist making
+$J_C=\mathcal O_C(\infty)$.
+Let $\phi$ be its section with divisor
+the reduced $I_{12}$ fibre $F_\infty$.
+
+We spell out the comparison with A.1.2
+to identify the family actually obtained.
+Set $R_V=\mathbb P_V(\mathcal O\oplus M)$,
+and identify its zero and infinity
+sections by $s_0(x)\sim s_\infty(Ax)$.
+On the node neighbourhood over $V$ use
+\[
+ a\in M_x,\quad b\in M_{Ax}^{-1},
+ \qquad a\otimes b=h\phi_x.
+\]
+The $a$ collar is glued to the annular
+core at $(x,a)$; the $b$ collar is glued
+at $(Ax,b^{-1})$. Choose the Hermitian
+metric and collar radii as in A.1.2.
+Compactness of $V$ and the bounded norm
+of $\phi$ give disjoint collars,
+Hausdorffness and compact representatives
+by exactly the same inequalities.
+These are holomorphic gluing maps of
+fourfolds over $\Delta_h$.
+Their local hypersurface rings are flat
+over $h$, and the compact representatives
+prove properness. The map to $B$ is
+well defined because $t\circ\sigma=t$.
+No identification with the requested
+punctured $S^6$ family is being made.
+
+At a smooth point of $F_\infty$ the
+equation is $ab=hz_C$; at one of its
+twelve nodes, $z_C=uv$ and it is
+$ab=huv$. For $h\ne0$ the latter
+has one ordinary double point.
+These twelve centres are distinct
+even if $A$ rotates the fibre
+components. A centre has $a=b=0$
+and is in neither annular collar;
+no overlap identifies it with the
+centre indexed by $Ax$.
+The double locus is $V$, not $V/A$.
+The two uniform prism subdivisions
+of A.2.2 extend over these charts:
+the affine action preserves the
+orientation of the $I_{12}$ cycle,
+and all remaining changes are units.
+They give proper small modifications,
+smooth total spaces and reduced
+normal-crossings $h$-central fibres.
+Equivalently their normalizations are
+the blow-up of $R_V$ along $F_\infty$
+in one section, followed by the twelve
+chosen small resolutions. The normal
+product becomes
+$\pi^*\mathcal O_C(\infty)(-F_\infty)=\mathcal O_V$.
+
+The nearby function of the nodal
+plumbing is one on $F_\infty$ and
+zero on its complement in the conductor.
+Since $e(F_\infty)=12$, its integral
+is twelve. Each small resolution
+replaces a point by $\mathbb P^1$
+and adds one, giving twenty-four.
+Independently $e(R_V)=24$; above each
+of the twelve nodes the modified
+normalization replaces a point by
+a chain of two projective lines,
+of Euler number three. The open
+parts of the fibre are copies of
+$\mathbb C^*$ and contribute zero.
+The modified normalization therefore
+has Euler number $48$, its pinching
+has Euler number $36$, and the
+semistable nearby count is
+$48-2e(V)=24$.
+
+Finally $z=a/b$ is a coordinate on
+$C$ near infinity and
+$q_B=1/t=z^{12}/c^3$, with $c$ a unit.
+At a generic point of the auxiliary
+cusp fibre this gives multiplicity
+twelve. In fact the map $q_B$ is
+locally a twelfth power throughout
+the smooth nearby threefold; a
+holomorphic root of the unit can
+be chosen locally. On any common
+resolution of a proper birational
+comparison over $B$, every divisor
+over that fibre consequently has
+$q_B$-valuation divisible by twelve.
+A reduced fibre on another smooth
+model would have a strict transform
+of valuation one, a contradiction.
+The finite Euler, polynomial and
+multiplicity checks are in
+\texttt{ab\_push\_auxiliary\_plumbing.py}.
+\end{proof}
+
+\input{sections/ab_push_analytic_torsors}
+
+\subsection{B.4--B.5. The remaining filling problem}
+
+\begin{problem}[B.4.1; Open]\label{push:B41}
+Construct, or obstruct, a proper flat
+holomorphic filling of the actual $S^6$
+family after a finite base change which
+repairs the cusp incompatibility of B.3.1.
+If it exists, determine an equivariant
+model for descent to $w$, its central
+multiplicities and a resolution, and the
+least semistable base-change exponent.
+The local constructions in B.1 and B.2
+do not settle this problem.
+\end{problem}
+
+The obstruction cannot be removed by citing
+$H^1(B,\mathcal V)=0$ from R2. That
+vanishing solves an additive translation
+cocycle for a fixed nonzero parameter and
+its integer shifts. On a finite overlap
+the translation contains
+\[
+ \frac{\log s_j}{2\pi i}\,\Pi_c v_j,
+ \qquad c=-\frac{12}{2\pi i}\log r.
+\]
+Its vertical exponential contains a product
+of the two logarithms. No assertion in
+the cited vanishing controls its growth
+at $r=0$ or makes it a unit in the central
+toric charts. B.3.1 proves that at least
+one of those extension requirements must
+fail for the prescribed pieces. A
+construction with a corrected cusp remains
+necessary before descent or characteristic
+numbers can be computed.
+
+\begin{theorem}[B.4.2; Proved; fundamental-group obstruction]\label{push:B42}
+Let $f:\mathcal Y\to\Delta$ be a
+proper holomorphic map from a smooth
+complex manifold, with smooth connected
+fibres over $\Delta^*$ and reduced
+normal-crossings central fibre $D$.
+There is a continuous specialization
+map from a nearby fibre $Y_t$ to $D$
+which induces a surjection
+\[
+ \pi_1(Y_t)\longrightarrow\pi_1(D).
+\]
+No K\"ahler hypothesis is needed.
+Hence the central fibre of any such
+semistable filling of $S^6$ is simply
+connected. In particular it cannot
+be a simple pinching of a connected
+normalization along one pair of
+disjoint nonempty conductor sections,
+whether its elliptic normalization
+base is split or is a genus-one torsor.
+\end{theorem}
+\begin{proof}
+Equip $\mathcal Y$ and $\Delta$ with
+their divisorial logarithmic structures
+from $D$ and $0$. Locally, after
+absorbing a unit, the map is
+$t=z_1\cdots z_k$. Its monoid chart
+is the diagonal
+$\mathbb N\to\mathbb N^k$; it is
+fine, saturated, exact and log smooth.
+Thus \cite[Theorem 5.1, p.2226]{NO10}
+applies in the complex analytic
+category. The induced map of real
+oriented logarithmic blow-ups is a
+proper topological fibre bundle over
+$[0,\epsilon)\times S^1$.
+Fix $\theta=\arg t$. Trivializing
+this bundle along the radial interval
+identifies $Y_t$ homeomorphically with
+the fibre $D^{\log}_\theta$ over
+$(0,\theta)$. Its natural projection
+\[
+ p_\theta:D^{\log}_\theta\longrightarrow D
+\]
+is proper and surjective. Above a
+point lying on $k$ local branches,
+its fibre consists of the phases
+$(\theta_1,\ldots,\theta_k)$ whose
+product is the fixed phase $\theta$,
+including the harmless phase of the
+local unit. It is a torus
+$(S^1)^{k-1}$, in particular connected.
+
+Here is a covering-space proof that
+$p_\theta$ is surjective on fundamental
+groups; path lifting for the collapse
+is not assumed. The normal-crossings
+space $D$ is locally contractible
+and has a connected universal cover
+$\widetilde D$. Pull it back along
+$p_\theta$. The map from the pullback
+to $\widetilde D$ is still proper,
+surjective and has connected fibres.
+Its total space is connected: a
+nontrivial separation into open and
+closed sets would, by properness and
+connected fibres, give such a
+separation of $\widetilde D$.
+On the other hand its connected
+components are indexed by the cosets
+of the image of
+$\pi_1(D^{\log}_\theta)$ in $\pi_1(D)$.
+There is therefore only one coset.
+Composing $p_\theta$ with the chosen
+radial homeomorphism proves the claim.
+
+We give an independent elementary
+surjectivity argument. Put
+$W=f^{-1}(\overline\Delta_\epsilon)$
+and $W^*=W\setminus D$. The negative
+gradient of $|f|^2$, for a Hermitian
+metric, retracts $W$ onto $D$.
+For completeness, in a product chart
+$f=z_1\cdots z_k$ the arithmetic--
+geometric mean inequality gives
+\[
+ \|\nabla |f|^2\|
+   \ge c\,|f|^{,2-1/k}.
+\]
+A finite cover of compact $D$ gives
+a common exponent $\alpha<1$ in
+$\|\nabla\rho\|\ge c\rho^\alpha$,
+where $\rho=|f|^2$; for a fourfold
+one may take $\alpha=7/8$.
+The remaining trajectory length is
+bounded by
+$c^{-1}\rho^{1-\alpha}/(1-\alpha)$.
+Hence trajectories converge uniformly
+to $D$, and parametrization by the
+level of $\rho$ gives a continuous
+strong deformation retraction fixing
+$D$. General position moves every
+loop of $W$ off the real-codimension-two
+normal-crossings strata, so
+$\pi_1(W^*)\to\pi_1(W)$ is onto.
+The smooth proper fibration over the
+punctured disc gives
+\[
+ \pi_1(Y_t)\longrightarrow\pi_1(W^*)
+       \longrightarrow\mathbb Z\longrightarrow0.
+\]
+A small transverse meridian at a
+smooth point of a reduced component
+maps to the generator of $\mathbb Z$
+and bounds a disc in $W$.
+Thus the image of $\pi_1(Y_t)$ alone
+generates $\pi_1(W)=\pi_1(D)$.
+
+For the last assertion, let $R$ be
+the connected normalization and
+$D_0,D_\infty$ its two disjoint
+conductor sections. Choose a
+continuous function $h:R\to[0,1]$
+equal to zero on $D_0$ and one on
+$D_\infty$. The function
+$\exp(2\pi i h)$ descends to the
+pinching. A path from a point of
+$D_0$ to its paired point in
+$D_\infty$ becomes a loop whose
+image has winding number one.
+Consequently the pinching has a
+surjection of its fundamental group
+onto $\mathbb Z$. This contradicts
+the preceding necessary condition
+when $Y_t\simeq S^6$.
+\end{proof}
+
+\input{sections/B_hodge_obstruction}
+
+\begin{problem}[B.5.1; Open]\label{push:B51}
+For an actual corrected filling in B.4.1,
+compute the integral topology of its
+central fibre and of a descent resolution,
+the nearby-cycle Euler count, and the
+applicable monodromy or Hodge comparison.
+These invariants are not assigned to the
+incompatible assembly refuted in B.3.1.
+\end{problem}
