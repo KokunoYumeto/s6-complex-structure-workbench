@@ -1,0 +1,28 @@
+"""Record independent root proof audits made during the fourth hour.
+
+This is an audit record only; it does not freeze or upload a checkpoint.
+"""
+from pathlib import Path
+import datetime
+import json
+
+root = Path(__file__).resolve().parents[1]
+record = {
+    "reviewed_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    "reviewer": "GPT-6 Astra root independent audit",
+    "statements": {
+        "B.6.10": "Passed: degree-twelve scalar cover, ramification, genus, canonical divisor orders, holomorphic character basis, fixed-point Lefschetz traces, eigenspace signatures and narrow height. Exact code independently rerun. This cover is not identified with an actual filling normalization.",
+        "B.6.11": "Passed: immersed-normalization self-pairing includes both conductor cross terms; middle cycles generate and give signature +2. Principal central divisor, H5 vanishing and primitive c1 prove the untwisted boundary nonspin. Root independently reran the exact Gram certificate. The finite logarithmic boundary is different.",
+        "B.6.12": "Passed: actual parabolic cocycle representations, pure-braid matrices, hyperbolic commutators, nonconstant one-dimensional period domains, countable exceptional Hodge locus, integral even height and exact norm image 12ZP. Griffiths II Theorem1.1 and Shioda Theorems8.6-8.7/Proposition8.12 opened directly. Exact code independently rerun.",
+        "B.6.13": "Passed: analytic exponential at I1, coarse invariant sequence including its finite component sheaf, local cyclic obstruction groups, Hochschild-Serre transgression, unimodular elliptic coinvariants and norm-zero Lie cohomology. Multiplication by9 produces a four-torsion torsor. Its Kummer splitting cover compactifies after Tate root base changes; the pulled-back conductor line has degree zero on every component, so the narrow height computes degree12d. Pic0 correction is unique since det(1-eta)=1. Two missing TeX escapes were reported and fixed.",
+        "B.6.14": "Passed: principal irreducible central divisor implies rational H2 restriction injection; nonzero base pullback survives through the torsor, ruled normalization and modifications. Mapping tori have H2 zero. Independently derived local xy=r*z, t-p=z^12 mismatch and reran local root/multiplicity script. Central blowups alone cannot change the wrong boundary.",
+        "D.2.13": "Passed: all four actual semistable profiles, free smooth-log quotient condition, primitive17-column graph kernel and exact residual5-column presentation. Prime-local Smith proof covers all parameters, including n=0. Root independently reran2924 full18x19 Smith forms, including388 n=0 cases.",
+        "D.2.14": "Passed: global semifree angular circle, exact cusp weights and normal line degrees, nullhomology of the fixed curve, oriented SU2 trivialization (reverse model base orientation after conjugating one normal line), spin lift through surgery, primitive Euler class and Smale-Barden base. Primary GR25 TheoremA and Lemma5.2 opened; twisted suspension framing retained. Zhubr Theorem1 cancellation uses all refined invariants, not merely p1. Exact local/suspension code independently rerun.",
+        "D.2.15": "Passed: index-two triangular cusp, PL free H2 defect, full primitive normal-torus kernel, boundary Z2 maps isomorphically to regular Z2, saturated vanishing and nonabelian van Kampen, exact all-order normal matrix. Fixed-curve two-colour degrees vanish, both curves specialize and die when n=+-1. Spin and two disjoint nullhom surgeries give the GR25 TheoremA/B(2) model; Zhubr cancels two S3xS3 summands. Root independently reran630 full10x10 Smith forms and opened GR25 TheoremB(2)."
+    },
+    "scope": "No numerical Theta7 residue, exhaustive D2/F2 classification, or shifted-product smooth classification follows from these audits."
+}
+(root / "records/root_audit_checkpoint04_progress.json").write_text(
+    json.dumps(record, indent=2) + "\n"
+)
+print(json.dumps(record, indent=2))
