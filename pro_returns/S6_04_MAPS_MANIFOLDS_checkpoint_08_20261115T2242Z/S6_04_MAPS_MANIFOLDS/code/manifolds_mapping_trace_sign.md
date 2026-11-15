@@ -1,0 +1,7 @@
+# Proposed signed trace lemma (not registered; requires marked handle generator)
+
+Let N be the positive mapping torus of an oriented six-manifold Y with symplectic basis a,b in H3(Y), a·b=+1, and F(b)=b+q a, F(a)=a. Orient N by fibre then parameter. The product cylinder C=b×[0,1] has boundary -q a: the product-boundary sign is (-1)^3. The ordered intersection C·a is +1, since (b,dt,a) reorders to (a,b,dt) with sign +1. Hence the torsion linking pairing on the marked class a is -1/q modulo Z.
+
+For an oriented rank-one filling V with ∂V=N, the boundary linking pairing on the image of a primitive relative generator is -Q_V^{-1}. If that marked boundary generator is ±a and |Q_V|=|q|, this determines Q_V=q for |q|>2. For |q|=1 the Eells–Kuiper correction already vanishes when c=2q. For |q|=2 the wrong sign would give a difference of 1/112 between the two fillings, which is incompatible with a homotopy7-sphere invariant in (1/28)Z/Z; this selects the same sign if all other conventions match.
+
+This is a potential shortcut for the remaining higher spin-trace sign. It is not a proof until the trace co-core boundary has been identified as ±a, rather than an unspecified unit multiple of a, and the convention ∂V=N has been matched to the actual cobordism. If so, ell=4q and c=ell−2q=2q give the same (q−signq)/224 correction from the circle disk and trace, so their difference is zero for every q=-kl.

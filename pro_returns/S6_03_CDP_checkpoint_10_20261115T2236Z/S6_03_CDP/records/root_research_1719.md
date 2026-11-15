@@ -1,0 +1,11 @@
+# Root audit and research, 15 November 2026, 16:59–17:20 UTC
+
+Root audited C.2.RAT.2–4 in full and the appended genus-zero non-lci tacnode calculation; all maps and inequalities accepted. Root audited C.2.CR.2–3 in full; the conductor ideal summand, residue/GR quotient and m² inclusion are essential. Root read C.2.D4.2 in full and accepted all splitting, eigensheaf, disconnected-boundary and rational-normalization calculations. E independently audited root C.2.D4.1 and C.2.D4.3; the only wording correction was that the two roots other than a chosen simple root may coincide with each other.
+
+New root programs root_cubic_normal_cone.py/.out and root_rational_triple.py/.out were executed. The first checks all 51 delta-at-most-four collections and exact monomial weights; the second exhausts all two-common-fibre contact partitions. A's delta-five extension is separately executed.
+
+Primary sources opened: Nori 1983, Zariski's conjecture and related problems, Proposition3.27 and Section6.5 (numdam ASENS_1983_4_16_2_305_0); Merle–Teissier 1977, Conditions d'adjonction, Theorem2.1.1 and Corollary2.1.3, with determinant proof (numdam SSS_1976-1977____A16_0); Steenbrink 1989, The spectrum of hypersurface singularities, pp165–167 (numdam AST_1989__179-180__163_0). The latter was downloaded, OCRed and the original page166–167 scan visually inspected for the geometric-genus interval. Yau–Zuo's primary paper was used to locate the original adjunction source, not as a substitute for it.
+
+Nori's criterion would require a complement-group calculation and exceptional cases. The succeeding proof uses only b1(U)≤3 and a nonzero compact intersection pairing, transferred through an actual compact core to T4. It therefore does not need Nori's criterion. An intermediate handwritten claim that the E6 plane suspension had link b1=2 was caught both by the exact Fraction computation and E's independent audit: its actual value is0; the proved bound remains valid. Only A5 and D4 contribute link b1=2 in the delta≤5 lists.
+
+Current main gaps: rational degree-two ordinary-triple covers with common cubic zeros; rational or elliptic contracted horizontal sections; equality geometry in remaining rational classes; unrestricted classification of every zero-Euler torus-degeneration fibre. No Euler identity alone is treated as that classification.
