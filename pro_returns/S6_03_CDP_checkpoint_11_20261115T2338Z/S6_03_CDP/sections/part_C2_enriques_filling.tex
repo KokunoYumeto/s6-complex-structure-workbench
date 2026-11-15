@@ -1,0 +1,318 @@
+\subsection{An Enriques component in a zero-Euler torus filling}
+
+\begin{statement}{C.2.UN.25}{Proved}{An essential Enriques surface occurs in a compact zero-Euler torus filling}
+There is a smooth compact complex threefold over
+$\PP^1$ with connected two-torus general fibre and
+a simple-normal-crossing special support of Euler
+number zero containing an unchanged smooth Enriques
+surface as an irreducible component.
+Before six explicit vertical modifications, its full
+central fibre is
+\[
+ 2M+2A+4Q_1+4Q_2+E_1+E_2+E_3+E_4,                 \tag{C.EN.1}
+\]
+where $M$ is Enriques, $A\simeq\PP^1\times\PP^1$,
+$Q_1,Q_2$ are primary Hopf surfaces, and every
+$E_i$ is the Hirzebruch surface $\mathbb F_2$.
+That reduced support has Euler number $12$.
+All six modifications can be made disjoint from $M$.
+The Enriques component is therefore essential in the
+sense of C.2.UN.14.
+The reduced supports before and after balancing have
+respectively
+\[
+ \begin{array}{c|c|c}
+ & (b_0,b_1,b_2,b_3,b_4)&(h^0(\OO),h^1(\OO),h^2(\OO))\\ \hline
+ S&(1,1,8,4,8)&(1,1,0)\\
+ S_{\rm bal}&(1,1,20,40,20)&(1,1,0).
+ \end{array}                                             \tag{C.EN.18}
+\]
+\end{statement}
+\begin{proof}
+We first give a compact base with specified local
+coordinates. Take the Weierstrass elliptic surface
+over $\PP^1_T$
+\[
+ y^2=x^3+(T^4-3)x+(T^6+T+2).                       \tag{C.EN.2}
+\]
+The coefficients are sections of $\OO(4)$ and
+$\OO(6)$. Its discriminant, up to the usual nonzero
+constant factor, is
+\[
+ \begin{split}
+ \Delta(T)={}&31T^{12}-36T^8+54T^7+108T^6\\
+             &+108T^4+27T^2+108T .
+ \end{split}                                       \tag{C.EN.3}
+\]
+The exact Euclidean algorithm gives
+$\gcd(\Delta,\Delta')=1$; also
+$\Delta'(0)=108$ and its leading coefficient is
+$31$. These checks are saved in
+\texttt{code/E\_enriques\_filling.py}.
+Thus every singular fibre is nodal of type $I_1$,
+the fibre at zero is nodal, and infinity is smooth.
+The total Weierstrass surface is smooth.
+
+Here is an explicit chart at the node of the
+zero fibre. Put $\xi=x-1$ and
+$U=1+T^3(1+\xi)+T^5$. On the surface,
+\[
+ X=\frac{y-\xi\sqrt{3+\xi}}{U},\qquad
+ Y=y+\xi\sqrt{3+\xi}
+ \quad\Longrightarrow\quad XY=T .                  \tag{C.EN.4}
+\]
+The coordinate Jacobian at $\xi=y=T=0$ is
+nonzero, so these are actual local coordinates.
+Make the quadratic base change $T=t^2$ and
+resolve $XY=t^2$. One resolution chart is
+\[
+       (X,Y,t)=(u,uv^2,uv),\qquad
+       h(u,v)=(u,-v),                              \tag{C.EN.5}
+\]
+where $h$ is the deck involution. The other chart
+interchanges $X,Y$ and replaces $v$ by $v^{-1}$.
+The central fibre of the smooth base surface $V_0$
+is $R_0+R_1$ of type $I_2$. Its strict nodal
+normalization $R_0\simeq\PP^1$ is fixed pointwise
+by $h$. The exceptional curve $R_1\simeq\PP^1$
+has coordinate $z=v$, with $h(z)=-z$, and
+meets $R_0$ exactly at $z=0,\infty$.
+
+Blow up the four points $z=1,2,-1,-2$ of $R_1$.
+Write their exceptional curves as
+$D_1,D_2,D_{-1},D_{-2}$, and denote the resulting
+compact surface by $V$. The involution lifts
+and exchanges $D_j,D_{-j}$. Set
+\[
+ D=D_1+D_2-D_{-1}-D_{-2},\qquad L=\OO_V(D).
+                                                               \tag{C.EN.6}
+\]
+The canonical meromorphic section $\sigma$ of
+$L$ supplies the section-preserving identification
+$h^*L=L^{-1}$. Its square is the identity.
+
+Apply the explicit signed root construction of
+C.2.UN.18 with order $m=2$ at these four disjoint
+curves. Thus on the complement of the negative
+curves use $\sigma=a^2\ell$, with $\ell\in L^\times$;
+on the complement of the positive curves use
+$\sigma^{-1}=(a')^2\ell'$, where
+$a'=a^{-1}$ and $\ell'=\ell^{-1}$. Divide by
+\[
+       (\ell,a)\longmapsto(q^2\ell,q^{-1}a),
+                  \qquad 0<q<1 .                  \tag{C.EN.7}
+\]
+Every local root chart is the already verified
+free finite quotient of an elliptic product in
+(C.PE.8), so the resulting compact threefold
+$\widetilde Y$ is smooth and proper over $V$.
+Away from the four exceptional curves the
+actual product coordinate is
+$\ell=\sigma c^2,\ a=c^{-1}$, with
+$[c]\in E=\C^*/q^{\Z}$.
+
+Dualization gives an involution of
+$\widetilde Y$: it takes the global meromorphic
+coordinates $(\ell,a)$ to $(\ell^{-1},a^{-1})$
+over $h$. Equivalently, a positive chart maps
+to the target negative chart with unchanged
+numerical coordinates $(\ell',a')=(\ell,a)$.
+It conjugates (C.EN.7) to its inverse, so
+descends to the quotient and still squares
+to one. In the product coordinate it is
+\[
+                       (v,[c])\longmapsto(hv,[c^{-1}]).
+                                                               \tag{C.EN.8}
+\]
+It covers $t\mapsto-t$.
+
+We identify the component over the strict
+transform of $R_1$. The restriction of $L$
+there is trivial; in a compatible frame,
+\[
+ \sigma|_{R_1}=\phi(z)
+   =\frac{(z-1)(z-2)}{(z+1)(z+2)},\qquad
+                    \phi(-z)=\phi(z)^{-1}.          \tag{C.EN.9}
+\]
+Let $C$ be the smooth elliptic curve
+\[
+ C:\quad Y^2=(z^2-1)(z^2-4),\qquad
+ y=\frac{Y}{(z+1)(z+2)},\quad y^2=\phi(z).
+                                                               \tag{C.EN.10}
+\]
+Its four simple branch values are $1,2,-1,-2$.
+The exact finite product-cover map from UN18 is
+\[
+ C\times E\longrightarrow B,\qquad
+ (z,y,[u])\longmapsto[\ell=u^2,\ a=y/u].
+                                                               \tag{C.EN.11}
+\]
+It is \'etale, including at the four root values,
+by the two Jacobians in (C.PE.13). Its deck
+involution is
+\[
+ \eta:(z,y,[u])\longmapsto(z,-y,[-u]).
+                                                               \tag{C.EN.12}
+\]
+The translation $[u]\mapsto[-u]$ is a nonzero
+two-torsion translation, so $\eta$ is free.
+Thus $B=(C\times E)/\langle\eta\rangle$ is
+bielliptic. The involution (C.EN.8) lifts to
+\[
+ k:(z,y,[u])\longmapsto(-z,y^{-1},[u^{-1}])
+       \quad\text{or}\quad
+       (z,Y,[u])\longmapsto(-z,Y,[u^{-1}]).
+                                                               \tag{C.EN.13}
+\]
+These formulas commute with $\eta$.
+
+On $C$, the involution $j:(z,Y)\mapsto(z,-Y)$
+and $k_C:(z,Y)\mapsto(-z,Y)$ each act by $-1$
+on $dz/Y$. The latter has four fixed points,
+the two points over each of $0,\infty$.
+Their product $jk_C$ has no fixed point:
+over zero its equation would require $Y=0$,
+and at infinity it exchanges the two points.
+It is consequently a nonzero two-torsion
+translation of the elliptic curve $C$.
+It follows that $\eta$ and $\eta k$ are
+free on $C\times E$, whereas $k$ has exactly
+$4\cdot4=16$ fixed points. They occur in
+eight free $\eta$-orbits. At each, the
+derivative of $k$ is $(-1,-1)$.
+
+The quotient $B/\langle h\rangle$ therefore
+has exactly eight $A_1$ singularities and
+no branch curve. Its minimal resolution
+$M$ is Enriques. One exact verification
+uses the intermediate quotient
+$(C\times E)/\langle k\rangle$. Its
+minimal resolution is K3 by UN23.
+The involution $\eta$ extends over its
+sixteen exceptional curves, permuting
+them in pairs. It is free away from
+them because both $\eta$ and $\eta k$
+are free upstairs, and free on them
+because they are paired. Its quotient
+is precisely $M$. Equivalently, the
+canonical form has character $-1$
+under $\eta$ and $+1$ under $k$;
+its square descends through the
+explicit crepant $A_1$ resolutions,
+while $p_g(M)=q(M)=0$. Thus $K_M$
+has exact order two and $e(M)=12$.
+This is an actual noncyclic product
+quotient, consistent with the two
+Enriques holonomy cases of
+\cite[Theorem~2.1 and Example~2.3]{Yoshihara1995}.
+
+It remains to realize this surface resolution
+inside the threefold, not just on an abstract
+component. Near $R_0$ the four root curves
+are absent, so (C.EN.8) is a product.
+Its fixed locus over zero consists of four
+disjoint copies of $R_0$, indexed by $E[2]$.
+Near either node of $R_0+R_1$, choose a
+local coordinate $w$ at the corresponding
+two-torsion point of $E$, so inversion is
+$w\mapsto-w$. The ambient action is
+\[
+ (u,v,w)\longmapsto(u,-v,-w),\qquad
+                         T=u^2v^2 .
+                                                               \tag{C.EN.14}
+\]
+Its quotient has invariant coordinates
+$A_0=v^2,B_0=vw,C_0=w^2$, with
+$A_0C_0=B_0^2$ and $T=u^2A_0$.
+The two smooth resolution charts are
+\[
+ \begin{array}{lll}
+ A_0=r,&B_0=rs,&C_0=rs^2,\quad T=u^2r,\\
+ A_0=r's'^2,&B_0=r's',&C_0=r',\quad T=u^2r's'^2 .
+ \end{array}                                             \tag{C.EN.15}
+\]
+They glue by $s'=s^{-1}$ and $r'=rs^2$.
+Globally they resolve the four fixed
+curves. Restricting to $u=0$ is exactly
+the minimal $A_1$ resolution of the
+eight surface singularities just found.
+In particular the strict central component
+is the smooth Enriques surface $M$.
+
+The component over $R_0$ becomes
+$A=R_0\times(E/\{\pm1\})\simeq\PP^1\times\PP^1$.
+Each exceptional surface of (C.EN.15)
+is the projective normal-direction bundle
+of a fixed curve. That normal bundle is
+$\OO_{R_0}(-2)\oplus\OO_{R_0}$: the
+product trivialization is valid on an
+entire neighbourhood of $R_0$, and
+$R_0^2=-2$. Hence these surfaces are
+$E_i\simeq\mathbb F_2$.
+The four root Hopf components are
+exchanged in two pairs and give
+$Q_1,Q_2$. Squaring the base parameter,
+and the exact monomials in (C.EN.15),
+give every coefficient in (C.EN.1).
+Those same monomials show that its
+reduced support is simple normal
+crossing.
+
+The full incidence calculation is
+\[
+ \begin{array}{c|c}
+ \text{intersection}&\text{reduced space}\\ \hline
+ M\cap A&\PP^1\sqcup\PP^1\\
+ M\cap Q_j&\text{one elliptic curve}\quad(j=1,2)\\
+ A\cap E_i&\PP^1\quad(i=1,\ldots,4)\\
+ M\cap E_i&\PP^1\sqcup\PP^1\quad(i=1,\ldots,4)\\
+ M\cap A\cap E_i&\text{two points}\quad(i=1,\ldots,4).
+ \end{array}                                             \tag{C.EN.16}
+\]
+There are no other nonempty intersections.
+Thus inclusion--exclusion gives, with
+every nonzero term displayed,
+\[
+ e(S)=12+4+4\cdot4-(4+4\cdot2+4\cdot4)+8=12 .
+                                                               \tag{C.EN.17}
+\]
+
+For the compact construction, the base involution
+also fixes the smooth elliptic fibre at infinity.
+The ambient fixed loci there are four elliptic
+curves, and the same transverse $A_1$ charts
+resolve them. Their exceptional surfaces and
+all intersections are elliptic ruled and
+have Euler number zero. At the remaining
+nodal base values the elliptic-product
+coordinate gives a nodal curve times $E$,
+also of Euler number zero. The quotient
+and the resolutions are proper and compact.
+Over a general $T$, the two $t$-sheets
+are exchanged by $h$, so their quotient
+is exactly one product of two elliptic
+curves. The Stein factor has generic
+degree one over the normal curve
+$\PP^1$, proving connectedness.
+
+Finally perform six of the point-then-quartic
+operations of UN4, all over $T=0$ and
+away from $M$. They can begin at fresh
+smooth points of an $E_i$ outside its
+intersections. Their exceptional plane
+quartics and subsequent centres remain
+disjoint from $M$. Each changes the
+reduced Euler number by $-2$, preserves
+the smooth total space and the normal
+crossing support, and leaves the
+punctured family unchanged. The resulting
+support has Euler number zero, with
+the same smooth Enriques component.
+Its nonzero even pluricanonical form
+precludes a covering family of rational
+curves, so it is non-uniruled.
+The exact inverse-map resolution argument
+of UN14 proves essentiality. This completes
+the compact occurrence construction.
+\input{sections/enriques_support.inc.tex}
+\end{proof}
