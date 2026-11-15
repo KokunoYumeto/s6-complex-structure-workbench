@@ -1,0 +1,13 @@
+# B.4.24: exact logarithmic category obstruction
+
+Owner: classification_e. 15 November 2026, 20:46 UTC. **Proved and integrated after B.4.23.** Root and boundary_d independently read the full source and opened the original KKN definitions and proper-model theorems. D's referee is `D_B4424_referee.md`.
+
+The actual Jacobian has multiplicative pairing `[[q a0,a1^6],[a1^−1,q r^12 a2]]`. Every monoid-face test and the residual unit pairing satisfy KKN's nondegeneracy definition. Thus the unpolarized proper-model existence theorem applies to the Jacobian itself. This is an existence assertion in its exact source category, not a polarization assumption.
+
+The actual affine gluing gives additional information. After q=Q^12, the actual cusp side has the extending origin σ from B.4.9, and the rotating side is its prequotient root fan with the ordinary zero origin. Passing from those explicit fan presentations to their associated log-torus sheaves, the transition is exactly F. Its multiplicative lift has Y-monodromy γ around r. Every extending log section on the q-axis has zero such monodromy because q-valuation induces the injective matrix diag(12,12) on Y. A section extending across r=0 has zero r-loop monodromy by contractibility. Hence the clutching cannot split, and multiplying it by any positive integer cannot split either. Finite coordinate-root covers preserve the obstruction.
+
+The full raw overlap remains `F−σ−kvδ=G(s)+6vδ`. This exact cancellation invalidates an analytic nonextension argument from F alone. It does not invalidate the sheaf calculation using the two verified extending origins: kvδ does not extend as a log section at q=0. The difference between these two arguments is explicitly recorded in the proof and the earlier working notes.
+
+The result excludes only a cap supplied by a locally trivial torsor under this fixed log complex torus with the given axial identifications. Proper fan models themselves are not group objects. Arbitrary analytic caps may contain vertical threefolds and need not define such a torsor. KKN's log Picard comparison explicitly assumes Hodge goodness and an invariant-cycle condition; neither is silently transferred to the present general cap problem. The unrestricted B.4 construction and B.5 invariants remain Open.
+
+Files: `B_log_torsor_obstruction.tex`, `B_log_torsor_results.csv`, `B_log_torsor_references.bib`; exact checks in `code/e_push_completion_diagnostics.py/.out/.json`. The historical attempts and source scopes remain in `E_B_general_completion_attempt.md` and `E_B_log_torsor_working.md`. Search metadata is in `evidence/E_B_completion_search_log.json` and its addendum. Full downloaded articles remain outside the deliverable package.

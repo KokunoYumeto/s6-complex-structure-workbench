@@ -1,0 +1,15 @@
+# Independent referee of B.4.7
+
+Referee: boundary_d. Date: 15 November 2026. Status: PASS at the stated parabolic-model scope.
+
+The Cartier logarithm cocycle is single-valued modulo the elliptic lattice and satisfies the triple relation. Its Chern vector is `(1+i)L−iA`, giving restrictions `1,i` on the two central projective lines and `1+i` on the generic line. The total space is an actual proper principal elliptic bundle on the blown-up base, not a formal gluing of central surfaces. Local triviality above the base node gives precisely `xy=u`, so smoothness, flatness, properness and semistability follow in the analytic category without a Kähler assumption.
+
+For a primitive vector c the quotient of O(1)^× by the kernel of `c log(z)/(2πi)` is correctly identified with a scalar Hopf quotient after fibrewise inversion to O(−1)^×. The choices `(1,i)`, `(i,−1)`, `(1+i,i)` yield the claimed multipliers `exp(−2π), exp(−2π), −exp(−π)`. The exceptional divisor line has its canonical trivialization on the punctured base, so the claimed punctured product is explicit.
+
+The fibre inclusion on fundamental groups is the quotient of Z² by the Chern vector. Thus the two central inclusions have independent kernels, van Kampen gives trivial central fundamental group, and the normalization Mayer–Vietoris map in degree one is the displayed unimodular matrix. The stated integral homology follows, including rank three in degree three. The coherent degree-one restrictions are isomorphisms because translations act trivially on H1(E,O), giving the claimed one-dimensional central H1(O). Both normal lines are genuinely trivial, not merely degree zero.
+
+The nonextension of a proper meromorphic comparison follows from the actual total-space fundamental groups, using the semistable retraction and proper-modification invariance already proved elsewhere. It does not assume that an arbitrary punctured analytic comparison automatically extends meromorphically. The extra comparison that the two scalar Hopf surfaces are not bimeromorphic is also valid: lifts extend by Hartogs, their derivatives cannot intertwine the two scalar generators, and both surfaces contain no rational curves.
+
+Finally, the generic simplicity calculation was checked independently. The coefficient of beta in the determinant is `(Ab−aB)tau+(Ac−aC)`. If it vanishes with one of a,A nonzero, proportionality of the first three rational coordinates reduces the determinant to the remaining fourth-coordinate minor. If a=A=0, the coefficients of `1,tau,mu` are exactly the three remaining minors. Rational independence excludes an identically zero determinant for any independent integral pair. Countability then gives simplicity for all but countably many beta values at the chosen ordinary base point.
+
+This is a concrete parabolic analytic degeneration and a counterexample to an automatic meromorphic-comparison inference. Its generic fundamental group and Euler number explicitly prevent its being identified with the requested S6 filling. The normal-degree and generic-simplicity limitations on insertion into the actual cusp are accurately retained.

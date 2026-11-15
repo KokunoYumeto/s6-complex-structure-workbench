@@ -1,0 +1,19 @@
+# Rank-one axial comparison: current attempt and exact missing lemma
+
+This is an unproved working route, not a numbered result. It addresses the residual gap after the marked-graph audit in ab_push_marked_graph_scope.md.
+
+Fix an ordinary q value. The actual two-torus periods may be written u=(tau,mu), w=(1,0), delta=(0,1), and gamma=(6mu,C-12v), with v=log(r)/(2pi i). The monodromy image is the line spanned by delta; its kernel is spanned by u,w,delta. The residual elliptic torus is Gr^W_1, with lattice spanned by u,w after quotienting delta.
+
+There is no holomorphic projection from the ordinary simple two-torus to this residual elliptic torus: zeta_1 changes by 6mu under gamma, and 6P is not a lattice point. A putative residual quotient of an arbitrary cap must therefore be constructed from its limiting geometry; it cannot be the restriction of a generic torus quotient.
+
+The current full-rank two-section route is being developed by classification_e and boundary_d. It does not automatically cover this rank-one axis. A local semistable meridian lies in the specialization kernel, and in particular in the monodromy-invariant lattice; this alone leaves the two residual elliptic directions. The missing statement is either that these meridians lie in im(N) over Q, or another analytic mechanism bounding the residual elliptic part of differences of two sections extending into the same cap.
+
+One intermediate route to check is the following. Suppose the normalized relative one-form alpha=d zeta_1 has already been shown meromorphic as a section of Omega^1(log D)/O dlog r on a semistable surface degeneration. Its periods on all flat cycles are bounded. If alpha had a minimal pole r^(-m), m>0, then r^m alpha would have zero limiting periods on compact loops in every normalization component and zero residues on conductor meridians. The restrictions would consequently be holomorphic one-forms with zero periods on compact surfaces, hence vanish. Vanishing on the reduced entire D would make this locally free logarithmic section divisible by r, contradicting minimality. This suggests removal of poles without a Kahler hypothesis.
+
+Two gaps must not be concealed. First, the initial meromorphic extension of the specifically period-normalized alpha has not been derived merely from coherence of the direct image; its coefficients in a coherent frame could in principle have essential singularities unless their periods are controlled. Second, even a holomorphic logarithmic extension of alpha need not have zero residues when m=0. A local meridian with a residual elliptic component would have a finite nonzero alpha period. Thus the pole-removal argument does not prove the required logarithmic Jacobian comparison.
+
+The generic simplicity supplies an additional exact constraint: if two independent rational lattice vectors span a decomposable two-torus class, their period against the holomorphic volume form is nonzero. Otherwise their complex periods would be collinear, giving an elliptic subtorus. It is not yet proved that a forbidden residual meridian produces such a two-torus on which the volume period must vanish. The possible failure of invariant-cycle equality in non-Kahler degenerations must be retained; one cannot replace this missing construction by an unqualified Clemens--Schmid argument.
+
+The B.4.15 regular-place insertion is not a counterexample to a one-parameter rank-one two-section theorem: its Hopf normalization components are vertical threefolds over a two-dimensional base origin, and a generic one-dimensional slice has a cycle of elliptic ruled surfaces. Conversely, its existence shows that a classification of transverse one-parameter surface limits alone cannot identify every vertical fourfold cap.
+
+Current conclusion: the intrinsic marked q-map extends, but a comparison between an arbitrary rank-one axial completion and the prescribed log Jacobian remains unproved.

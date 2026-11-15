@@ -1,0 +1,13 @@
+# Source and scope record for C.3.25
+
+The coboundary is constructed directly from the actual framed surgery in C.3.14. It uses the disk bundle of its Hopf Euler line and one product-framed four-handle. The additional cycle is the projective plane formed from the Euler-one disc bundle over S2 and the handle core; its normal bundle is explicitly trivial. This supplies the actual boundary identification and intersection matrix, rather than assuming a numerical homotopy-sphere class.
+
+The spin-c Eells--Kuiper formula was independently reopened in Crowley and Nordström, *Exotic G2-manifolds*, arXiv:1411.0656v4, section 2.2, equation (2.1), PDF page 5: <https://arxiv.org/pdf/1411.0656>. Its invariant takes values in Z/28 in the sphere case, whereas this manuscript uses Q/Z, so division by 28 is explicit. Substituting their characteristic class `(p1+c²)/2` yields the coefficients `1/896`, `-1/192`, `1/384`. C.2.1 already supplies the independent derivation by gluing a spin filling and applying the closed spin-c index theorem.
+
+Primary publisher metadata was verified at <https://link.springer.com/article/10.1007/s00208-020-02009-1>: Crowley, D., and Nordström, J. (2021), *Exotic G2-manifolds*, **Mathematische Annalen, 381**(1--2), 29--74, DOI 10.1007/s00208-020-02009-1. Online publication was June 8, 2020; the volume year is 2021. At root's request the existing entry CrowleyNordstrom2020 was updated to this published metadata, retaining its historical key and the explicit reading of the 2020 preprint in its note. No prior source-audit record was overwritten.
+
+The original Eells--Kuiper scan was also reopened: <https://webhomes.maths.ed.ac.uk/~v1ranick/papers/eelskuip.pdf>. The manuscript's existing EellsKuiper1962 entry and C.2.1 already document section 6, equation (11), with page-image inspection. No new claim is attributed to an unread secondary summary.
+
+Searches on November 15, 2026 included `Eells Kuiper invariant spin c coboundary formula p1 c2 192 384`, `Kreck Stolz Eells Kuiper spin c coboundary c4 384`, and `Crowley Nordstrom Exotic G2 manifolds 2020 Math Ann DOI 02009`. Primary web results opened: turn273view0, turn273view1, turn274view0; published metadata turn274search0 and the author university record turn274search1.
+
+The numerical geometric inputs p and k are shared with C.3.18--C.3.22. The eight-dimensional boundary identification, intersection matrix, spin-c correction, and direct characteristic-index conversion are independent of the Wall--Davis/Haefliger classification bridge. The one-loop determination additionally requires C.3.26's independent characteristic-number additivity. This construction is not the still-unconstructed analytic filling of Part B.
