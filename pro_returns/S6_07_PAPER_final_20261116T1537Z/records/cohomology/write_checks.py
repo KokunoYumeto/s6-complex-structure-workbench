@@ -1,0 +1,53 @@
+from pathlib import Path
+import json
+O=Path('/workspace/scratch/33c5206c0778/deliverables/records/cohomology')
+def row(key,url,locator,match,role,refs=None,local=None):
+ return dict(citation_key=key,status='verified',check_type='S',by='GPT-6 Astra',effort='ChatGPT Pro mode',date='2026-11-16',url=url,locator=locator,match=match,role=role,web_source_refs=refs or [],local_source=local)
+checks=[
+row('AC26','https://alpo.ge/s6.pdf',
+ 'Supplied transcription: Definition 3.1 and Theorem 3.4(i), printed p. 14; Theorem 9.1, p. 64; Proposition 9.11, pp. 70–71; Lemma 9.12, pp. 72–74; Proposition 9.13, pp. 74–76; Remarks 1.3 and 9.21, pp. 5 and 81; Corollary 9.22 and Proposition 9.23, p. 81; Theorems 7.17 and 7.22; Lemma 10.3 and Theorem 10.5, pp. 87–89.',
+ 'Opened and matched construction/period inputs, known structure direct images and Hodge constraints, canonical and topology credits, correction targets, and the memberwise algebraic-dimension input. No source prose reproduced. Verification concerns the supplied transcription, not a newly inspected original PDF.',
+ 'Known results, source inputs and correction targets',local='original/AC26_transcription.tex'),
+row('E26','https://arxiv.org/abs/2609.38442',
+ 'Introduction, lines 215–277; proposition fundamental-group, lines 1215–1231; final invariant-Hodge-form remark, lines 1723–1731.',
+ 'Opened the original supplied TeX; it credits AC26 for Dolbeault information and expressly omits those calculations. The construction comparison, standard-collar presentation and fibre-form background match the cited/credited scope.',
+ 'Construction comparison and bounded credit comparison',local='papers/arXiv_2609.38442_Engel_src/S6.tex'),
+row('DGKXv1','https://arxiv.org/abs/2610.00250v1',
+ 'Theorem 1.3 (p2:thm:kuranishi-aut), lines 310–327; Proposition 6.10 (p2:prop:structure-direct-images), lines 9151ff.; Theorem 6.12 (p2:thm:tangent-cohomology), lines 9445ff.; p2:prop:kuranishi-line, lines 9877ff.; p2:thm:intrinsic-fibration, lines 10018ff.',
+ 'The exact tangent vector, smooth reduced Kuranishi line and miniversality are already present. The structure direct images and intrinsic-pencil inputs also match. The reviewed two DGKX lemma citations have been replaced by BS76, RRV71 and RR70 rather than retained as primary analytic references.',
+ 'Load-bearing K status and earlier-result credit',local='papers/arXiv_2610.00250v1_Du_Guo_Kusakabe_Xie.tex'),
+row('VL26','https://arxiv.org/abs/2610.39102',
+ 'Theorem 1.1 (t:main), source lines 210–244; Proposition 2.3 (logprop), lines 420–496.',
+ 'Opened the actual source theorem and logarithmic-transformation proposition. They provide the sufficiently small nonzero construction domain, coprimality and admissible free cyclic quotients required in inv:B2.1.',
+ 'Load-bearing construction hypotheses',local='papers/arXiv_2610.39102_Viaclovsky_log_transformations_src/Logarithmic_S6_October_28_2026_Final.tex'),
+row('BS76','https://djvu.online/file/2hQiOnz8WuoQk',
+ 'Chapter III, Theorem 4.10, pp. 132–133; Theorem 4.12(ii), pp. 134–135; web lines 5410–5508.',
+ 'Original-book text reproduction opened. The first theorem supplies the analytic base-change criterion and comparison; the second gives cohomological flatness and local freeness from constant fibre-cohomology dimension for a flat coherent sheaf over a reduced base. Applied on the source complex-space charts, with canonical overlap comparison.',
+ 'Load-bearing base-change reference; replacement required by REVIEW §5.6',['turn28view0','turn30view0','turn30view1']),
+row('RRV71','https://www.academia.edu/5435625/Dualit%C3%A9_relative_en_g%C3%A9om%C3%A9trie_analytique_complexe',
+ 'Original article introduction p. 261 and Section 2, pp. 264–266; original bibliographic identification Invent. Math. 13 (1971), 261–283, DOI 10.1007/BF01406078.',
+ 'Full original-article text opened through a third-party reproduction. The proper analytic duality isomorphism and relative trace were matched. These support the source duality applications on smooth analytic atlases; RR70 identifies the Gorenstein dualizing line.',
+ 'Load-bearing analytic relative duality; replacement required by REVIEW §5.6',['turn28view2','turn30view3']),
+row('RR70','https://www.numdam.org/item/10.1007/BF02684652.pdf',
+ 'Section 3, Theorem 1, printed p. 81; Proposition 2 and complete-intersection paragraph, printed p. 91 (PDF page 16).',
+ 'Original Numdam PDF opened. A Gorenstein analytic space has its dualizing complex represented by an invertible sheaf in the dimension shift; complete intersections are included. This is the dualizing-sheaf input used with the relative theorem.',
+ 'Load-bearing Gorenstein duality input',['turn28view1','turn30view2']),
+row('Ugarte00','https://zaguan.unizar.es/record/165697/files/texto_completo.pdf?version=1',
+ 'Proposition 3.1, pp. 175–176; Theorem 3.2, pp. 176–177; Corollary 3.3, p. 177.',
+ 'Original PDF opened through the already retrieved primary-source reference after two fresh URL timeouts. Matched the conditional Hodge relations and the second- and third-page Frölicher constraints for a hypothetical complex S6. The paper cites these as background, not as an evaluation of this family’s h12.',
+ 'Historical mathematical credit',['turn33view0','turn34view0','turn34view1','turn34view2']),
+row('McHugh18','https://arxiv.org/pdf/1708.03251',
+ 'Version 4, 15 November 2018; Section 7.1, printed pp. 24–25, including the table on p. 25; web lines 3342–3500.',
+ 'Original PDF opened. The formulas express complex-S6 Bott–Chern dimensions using Dolbeault dimensions and the E2 term, with Aeppli obtained by the stated duality. Exact comparison scope is the background recorded in inv:C2.2; no certification of the whole paper is asserted.',
+ 'Historical mathematical credit',['turn31view0','turn32view3','turn33view1']),
+row('Angella17','https://arxiv.org/pdf/1705.10518',
+ 'Version 2, November 2017; introduction, Figures 1–2, and Section 4, printed pp. 13–16.',
+ 'Original PDF opened. Matched the conditional spectral-sequence/double-complex diagrams and Bott–Chern relations for complex S6. Used only for the precise historical discussion and credit, with the actual table proved from the stated INV input.',
+ 'Historical mathematical credit',['turn31view1','turn32view2','turn32view4','turn33view2']),
+row('Stelzig21','https://arxiv.org/pdf/1812.00865',
+ 'Version 3, 8 March 2021; Theorem 3 (Theorem A in introduction, printed p. 2), Proposition 6(1), p. 16, Lemma 8, pp. 17–18.',
+ 'Original PDF opened. The bounded-double-complex decomposition into squares and zigzags is valid for vector spaces without a finite-dimensional-component hypothesis. Proposition 6(1) identifies even-zigzag multiplicities with ranks of the spectral-sequence differentials; the BC/A counting interpretation was matched.',
+ 'Load-bearing for inv:C2.1',['turn28view3','turn30view4']),
+]
+(O/'citation_checks.json').write_text(json.dumps(checks,ensure_ascii=False,indent=2)+'\n')
+print(len(checks))
