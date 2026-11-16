@@ -179,3 +179,5 @@ The rights in the original manuscript [AC26] and in [E26] belong to their author
 extent we hold rights in the AI-produced material of this repository, they are dedicated to the public domain under
 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Bundled third-party software and fonts (for example
 MathJax in `codex_workspace/courses/CG-S6/assets/`) keep their own notices.
+
+Claude's own mathematical notes (`claude_math_notes/`): the working notes of the main session (Claude Opus 5.5 at effort max) from 15 November 2026 on S6 and on the Grothendieck programme, with the consults they started and the scripts of their checks; raw provenance, not refereed. `PROGRAMS.md` says which sections are about S6.
