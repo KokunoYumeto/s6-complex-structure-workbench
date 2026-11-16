@@ -1,0 +1,207 @@
+%%% POST-RECORD v1 BEGIN
+% format: hexagon-post-format/1
+% record_id: S6_07_PAPER
+% version: 1
+% date: 2026-11-16
+% title: "The (3,4,infinity) family of complex structures on S^6: periods, moduli and the ends of the disc"
+% kind: theorem
+% claim_status: "T, K and A per result; see the concordance in Appendix C"
+% statement_plain: "The cusp-normalized period has maximum -(3/pi)log(6), only at t=1; the known punctured-disc parameter w has exact radius 216 and Albanese nome iw/216."
+% statement_tex: "M=-(3/\pi)\log 6; 0<|w|<216; q_2=iw/216."
+% corrects: "Engel Remark 8.1; AC26 Remarks 1.3 and 9.21"
+% refutes: "Engel Conjecture 8.2 as worded"
+% answers: "Engel Remark 8.4, Klingler's question"
+% known_before: "Construction: AC26 and E26; standard-data 2Z, intrinsic pencil, tangent cohomology, Kuranishi germ and full automorphisms: arXiv:2610.00250v1."
+% new_here: "Closed periods and exact radius, all discrete data, the specified cohomology computations, real structures, monodromy and ends; prior overlaps credited in Appendix C."
+% main_statements: ["FAM C.1.1", "FAM C.2.3", "ARI C.8.5", "INV A3.1", "FAM F.1.1", "PUSH D.1.2", "PUSH A.3.2"]
+% hard_step: "FAM C.2.3 and PUSH E.4: interval certificates; ARI C.8.1-C.8.5: ladder"
+% external_results: "Exact locators and opened-source checks in the Verification record and Appendix C"
+% produced_by:
+%   - {role: source proofs, model: "GPT-6 Astra", effort: "ChatGPT Pro mode", date: "2026-11-12/2026-11-16"}
+%   - {role: workbench proof, model: "GPT-5.6 Sol and GPT-6 Astra", effort: "Codex reasoning effort ultra", date: "2026-09"}
+%   - {role: assembly and source audit, model: "GPT-6 Astra", effort: "ChatGPT Pro mode", date: "2026-11-16"}
+% checks:
+%   - {by: "Claude Fable 5.2", effort: high, type: "F,D,C,S,R", scope: "Exactly the supplied review and intake records"}
+%   - {by: "Claude Fable 5.2", effort: max, type: "R,D,S", scope: "Exactly RESPONSE_EXPERT.md"}
+%   - {by: "Claude Opus 5.5", effort: max, type: "S,D", scope: "Checks reported in the supplied status files"}
+%   - {by: "GPT-6 Astra", effort: "ChatGPT Pro mode", type: S, scope: "Opened citations, three-source credit search and source-to-print comparison"}
+% human_understanding: none
+% text_origin: primarily AI-generated
+% formalization: none
+% open_points: ["algebraic dimension zero", "real S3 knot", "replacement for the zero-end limit", "other families' monodromy"]
+% not_claimed: ["human verification", "fresh execution of missing interval data", "proofs of the A-items in this paper"]
+% literature_search: {date: "2026-11-16", scope: "supplied primary sources and opened primary web sources", outcome: "Section-by-section overlaps and limitations recorded in Appendix C"}
+% licence: CC0-1.0
+% provenance:
+%   prompt: "PROMPT(20261116-143923).md (supplied separately)"
+%   return: "S6_07_PAPER_paper.tex"
+%   reports: ["S6_07_PAPER_report.md", "records/"]
+%   register: "S6_07_PAPER_source_table.csv"
+%   repository: "https://github.com/KokunoYumeto/s6-complex-structure-workbench"
+% hexagon:
+%   subject: math.CV
+%   cross_lists: [math.AG, math.DG, math.NT]
+%   msc: [32G05, 32J17, 14K25, 11F03]
+%   tags: [periods, moduli, complex-six-sphere, cohomology, monodromy]
+%   tools: ["GPT-6 Astra, ChatGPT Pro mode", "Claude Fable 5.2, effort high", "Claude Fable 5.2, effort max", "Claude Opus 5.5, effort max", "GPT-5.6 Sol and GPT-6 Astra, Codex reasoning effort ultra", "LuaLaTeX"]
+%   comments: "AI-produced; no human checking and no formalization. Status differs by result."
+%   provenance_statement: "Source-preserving assembly of six supplied returns, with reviews and source audits."
+%%% POST-RECORD v1 END
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,tabularx,longtable,array,multirow}
+\usepackage{enumitem}
+\usepackage{graphicx,xcolor}
+\usepackage{microtype}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{newunicodechar}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{Θ}{\ensuremath{\Theta}}
+\newunicodechar{χ}{\ensuremath{\chi}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{²}{\ensuremath{{}^2}}
+\newunicodechar{³}{\ensuremath{{}^3}}
+\newunicodechar{⁶}{\ensuremath{{}^6}}
+\newunicodechar{⁷}{\ensuremath{{}^7}}
+\newunicodechar{¹}{\ensuremath{{}^1}}
+\newunicodechar{₁}{\ensuremath{{}_1}}
+\newunicodechar{₂}{\ensuremath{{}_2}}
+\newunicodechar{₃}{\ensuremath{{}_3}}
+\newunicodechar{→}{\ensuremath{\to}}
+\newunicodechar{≠}{\ensuremath{\ne}}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{∪}{\ensuremath{\cup}}
+\newunicodechar{∩}{\ensuremath{\cap}}
+\newunicodechar{⊕}{\ensuremath{\oplus}}
+\newunicodechar{⊗}{\ensuremath{\otimes}}
+\newunicodechar{∂}{\ensuremath{\partial}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{ℤ}{\ensuremath{\mathbb Z}}
+\newunicodechar{ℂ}{\ensuremath{\mathbb C}}
+\newunicodechar{ℙ}{\ensuremath{\mathbb P}}
+\newunicodechar{ℝ}{\ensuremath{\mathbb R}}
+\newunicodechar{⋅}{\ensuremath{\cdot}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{≅}{\ensuremath{\simeq}}
+\newunicodechar{∗}{\ensuremath{*}}
+\newunicodechar{‖}{\ensuremath{\Vert}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{′}{\ensuremath{\prime}}
+\newunicodechar{℘}{\ensuremath{\wp}}
+\newunicodechar{₀}{\ensuremath{{}_0}}
+\newunicodechar{₄}{\ensuremath{{}_4}}
+\newunicodechar{⁴}{\ensuremath{{}^4}}
+\newunicodechar{⁸}{\ensuremath{{}^8}}
+\newunicodechar{ⁿ}{\ensuremath{{}^n}}
+\newunicodechar{ᶜ}{\ensuremath{{}^c}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{𝒩}{\ensuremath{\mathcal N}}
+\newunicodechar{𝓛}{\ensuremath{\mathcal L}}
+\newunicodechar{𝒜}{\ensuremath{\mathcal A}}
+\newunicodechar{𝒲}{\ensuremath{\mathcal W}}
+\newunicodechar{𝓔}{\ensuremath{\mathcal E}}
+\newunicodechar{𝒮}{\ensuremath{\mathcal S}}
+\newunicodechar{ℛ}{\ensuremath{\mathcal R}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∧}{\ensuremath{\wedge}}
+\newunicodechar{̄}{\ensuremath{\bar{\vphantom x}}}
+\emergencystretch=2em
+\allowdisplaybreaks[2]
+\setlength{\parskip}{3pt}
+\setlist{topsep=3pt,itemsep=2pt,parsep=0pt}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem (T)}[section]
+\newtheorem{proposition}[theorem]{Proposition (T)}
+\newtheorem{lemma}[theorem]{Lemma (T)}
+\newtheorem{corollary}[theorem]{Corollary (T)}
+\theoremstyle{definition}
+\newtheorem{cited}[theorem]{Known result (K)}
+\newtheorem{announcement}[theorem]{Announcement (A)}
+\newtheorem{computed}[theorem]{Certified computation (T)}
+\newtheorem{refuted}[theorem]{Refuted statement (false)}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{openq}[theorem]{Open question}
+\newcommand{\uses}[1]{\par\noindent{\small\textsf{Uses:} #1}\par\smallskip}
+\newcommand{\step}[2]{\par\smallskip\noindent\textbf{Step #1} (#2).\ \ignorespaces}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\partt}{\mathrm{part}}
+\newcommand{\gh}{\widehat\gamma}
+\newcommand{\uh}{\widehat u}
+\newcommand{\wh}{\widehat w}
+\newcommand{\dhat}{\widehat\delta}
+\newcommand{\RP}{\mathbb R\mathbb P}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dbar}{\bar\partial}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Hh}{\mathbb H}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cB}{\mathfrak B}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\NS}{NS}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\MW}{MW}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Log}{Log}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Vol}{Vol}
+\DeclareMathOperator{\Rea}{Re}
+\DeclareMathOperator{\Ima}{Im}
+\title{The $(3,4,\infty)$ family of complex structures on $S^6$:\\periods, moduli and the ends of the disc}
+\author{AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode)}
+\date{16 November 2026\qquad Version 1\qquad CC0 1.0}
+\begin{document}
+\maketitle
