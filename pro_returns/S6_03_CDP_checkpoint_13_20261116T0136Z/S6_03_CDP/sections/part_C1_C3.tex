@@ -1,0 +1,1230 @@
+\section{The tangent index and restrictions on smooth fibres}
+
+\subsection{The Picard family and the tangent index (C.1)}
+
+\begin{proposition}[C.1.1; Proved]\label{st:C.1.1}
+Let $Y$ be a connected compact complex threefold with
+$b_1(Y)=b_2(Y)=0$. Every holomorphic line bundle $L$ on $Y$ satisfies
+\[
+ \chi(Y,T_Y\otimes L)=\frac12\int_Yc_3(T_Y)
+ =1-\frac{b_3(Y)}2.
+\]
+The orientation in the integral is the complex orientation. The group
+$\Pic(Y)$ has finitely many connected components, each a torsor for the
+complex vector group $H^1(Y,\OO_Y)$, and
+$\pi_0\Pic(Y)\simeq H^2(Y;\Z)$ through the first Chern class.
+\end{proposition}
+\begin{proof}
+The universal coefficient theorem gives
+$H^1(Y;\Z)=\Hom(H_1(Y;\Z),\Z)=0$ from $b_1(Y)=0$.
+The group $H^2(Y;\Z)$ is finite because $Y$ has a finite CW model and
+$b_2(Y)=0$. In the exponential sequence, normalized by
+$\exp(2\pi i\,\cdot)$, the relevant maps are
+\[
+0=H^1(Y;\Z)\longrightarrow H^1(Y,\OO_Y)
+ \xrightarrow{\exp} \Pic(Y)
+ \xrightarrow{c_1} H^2(Y;\Z).
+\]
+They are group homomorphisms; the middle map is holomorphic on the
+Picard group. Consequently its image $\Pic^0(Y)$ is isomorphic to the
+complex vector space $H^1(Y,\OO_Y)$. The next map in the exponential
+sequence is $H^2(Y;\Z)\to H^2(Y,\OO_Y)$; it is zero because its
+source is finite and its target is a complex vector space. Thus
+$c_1$ is surjective, and the component group is exactly $H^2(Y;\Z)$.
+
+Poincar\'e duality gives $H^4(Y;\Q)=0$. Thus
+$c_1(T_Y)$, $c_2(T_Y)$ and $c_1(L)$ vanish in rational cohomology.
+The degree-six component of
+$\operatorname{ch}(T_Y)\exp(c_1(L))\operatorname{td}(T_Y)$ is then
+$c_3(T_Y)/2$. The Hirzebruch--Riemann--Roch formula for the Dolbeault
+index gives the first equality. Chern--Gauss--Bonnet identifies
+$\int_Yc_3(T_Y)$ with $e(Y)$. Since $Y$ is a connected closed oriented
+six-manifold, its Betti numbers satisfy
+$b_0=b_6=1$, $b_1=b_5=0$, and $b_2=b_4=0$. Hence
+$e(Y)=2-b_3(Y)$. The pairing on $H^3(Y;\Q)$ is nondegenerate and
+alternating, so $b_3(Y)$ is even, consistently with the integral index.
+The exact symbolic expansion is recorded in
+\texttt{code/D\_exact\_checks.py} and its output.
+\end{proof}
+
+\begin{proposition}[C.1.2; Proved]\label{st:C.1.2}
+Let $Y$ be as in Statement C.1.1 and let $D$ be any nonzero effective
+Cartier divisor, with arbitrary positive multiplicities. For every
+holomorphic vector bundle $E$ and every component $P$ of $\Pic(Y)$ there
+is a dense open subset $P_E\subset P$ on which
+\[
+ H^0(Y,E\otimes L)=H^3(Y,E\otimes L)=0.
+\]
+Each excluded locus is a proper closed complex analytic subset of $P$.
+\end{proposition}
+\begin{proof}
+Choose $m>0$ annihilating $c_1(\OO_Y(D))$ in the finite group
+$H^2(Y;\Z)$. Thus $\OO_Y(mD)\in\Pic^0(Y)$. Fix a representative $L_P$
+of the component $P$. The inclusions of locally free sheaves
+\[
+ E\otimes L_P(-(k+1)mD)\hookrightarrow E\otimes L_P(-kmD)
+ \hookrightarrow E\otimes L_P
+\]
+give a descending sequence of finite-dimensional spaces of global
+sections. Its eventual stable value is zero. Indeed every section in
+that value is locally divisible by every power of an equation of
+$mD$. At a smooth point of a component of $D_{\rm red}$, the equation
+has positive vanishing order. The intersection of all its powers in
+the local ring of the manifold is zero. The section therefore vanishes
+on a nonempty open set and hence on connected $Y$. We have proved
+$H^0(Y,E\otimes L_P(-kmD))=0$ for some integer $k$.
+
+We specify the family used in applying semicontinuity. Put
+$V=H^1(Y,\OO_Y)$ and choose additive holomorphic \v Cech
+one-cocycles $a^1_{ij},\ldots,a^q_{ij}$ representing a complex basis
+on a common Stein open cover. On the product of this cover with $V$
+use the transition functions
+\[
+ g_{ij}(v)=\exp\left(2\pi i\sum_{k=1}^q v_k a^k_{ij}\right).
+\]
+The additive cocycle identities imply $g_{ij}g_{jk}=g_{ik}$,
+so these functions define a holomorphic line bundle $\mathscr P$.
+Its restriction to $Y\times\{v\}$ is the line bundle
+corresponding to $v$ under the preceding exponential convention.
+Tensoring with $\operatorname{pr}_Y^*L_P$ gives a holomorphic family
+parametrizing the entire component $P$. The projection
+$Y\times V\to V$ is proper and the sheaf of sections of this bundle
+is flat over $V$.
+
+The proper cohomology-and-base-change theorem represents its cohomology
+locally on $V$ by a finite complex of finite free analytic modules.
+The conditions $h^j\geq a$ are determinantal analytic conditions on
+the differentials of that complex. Thus the degree-zero jump locus is
+closed analytic, and the line bundle $L_P(-kmD)$ constructed above
+shows that it is proper. Its complement is dense because $V$ is
+irreducible. Applying this argument to $E^*\otimes K_Y$ in the
+component $P^{-1}$, and applying Serre duality
+\[
+ H^3(Y,E\otimes L)^*
+ \simeq H^0(Y,E^*\otimes K_Y\otimes L^{-1}),
+\]
+gives the degree-three assertion. The intersection of the two dense
+open subsets is dense open. The argument uses only positive
+multiplicity at one component of $D$; no reduction of its scheme
+structure was made.
+\end{proof}
+
+
+
+\begin{corollary}[C.1.3; Proved]\label{st:C.1.3}
+For every $Y$ and $D$ in Statement C.1.2 and every $L\in\Pic(Y)$,
+\[
+ h^2(Y,T_Y\otimes L)\geq
+ \max\left\{0,1-\frac{b_3(Y)}2\right\}.
+\]
+In particular, $b_3(Y)=0$ gives $H^2(Y,T_Y\otimes L)\ne0$ for
+every $L$. A threefold in this class possessing a twist with vanishing
+second tangent cohomology has $b_3(Y)\geq2$.
+\end{corollary}
+\begin{proof}
+On the dense open subset of each Picard component supplied by
+Statement C.1.2, Statement C.1.1 becomes
+\[
+ h^2(Y,T_Y\otimes L)-h^1(Y,T_Y\otimes L)
+ =1-b_3(Y)/2.
+\]
+The asserted lower bound holds there. The jump locus for the lower
+bound on $h^2$ is closed analytic in the explicit family above and
+contains a dense subset of the component. It therefore contains the
+entire component. This proves the bound for all line bundles,
+including torsion bundles and the trivial bundle. The final assertion
+is its direct numerical consequence.
+\end{proof}
+
+Statements C.1.1--C.1.3 prove Lead 4 with rational Betti-number
+vanishing. No integral trivialization of either Chern class is needed
+for the index. The existence of the divisor enters in the endpoint
+vanishing, and a positive multiple of its actual Cartier divisor
+enters the Picard family. These statements supply an index
+obstruction; they make no assertion that the failed degree-two
+vanishing holds.
+
+\subsection{What follows for the smooth fibre (C.3)}
+
+\begin{proposition}[C.3.1; Proved]\label{st:C.3.1}
+Let $f:Y\to C$ be a holomorphic algebraic reduction of a connected
+compact complex threefold with $b_1(Y)=b_2(Y)=0$ and $a(Y)=1$.
+The base is $C\simeq\PP^1$. Every smooth fibre $F$ has
+\[
+ c_1(K_F)=0\text{ in }H^2(F;\Q),\qquad
+ c_2(F)=0\text{ in }H^4(F;\Z),\qquad
+ \chi(F,\OO_F)=0,
+\]
+and contains no exceptional curve of the first kind. A very general
+smooth fibre has $\kappa(F)\leq0$. Its type belongs to the following
+list: a complex two-torus, a bielliptic surface, a primary or secondary
+Kodaira surface, a primary or secondary Hopf surface, or an Inoue
+surface. Every listed type has Euler characteristic zero. This is a
+preliminary necessary list. Statement C.3.7 below excludes the
+bielliptic entry, and C.3.8 makes the very general Hopf fibre have
+algebraic dimension zero. C.3.9 and C.3.10 exclude both Kodaira
+entries. Statement C.3.6 realizes both primary and secondary Hopf
+entries, and D.2.7 realizes a fixed abelian surface as general
+fibre. Statement C.3.12 excludes the Inoue entry. Thus the
+final very general list consists exactly of two-tori and
+primary or secondary Hopf surfaces of algebraic dimension zero.
+\end{proposition}
+\begin{proof}
+Connected fibres give $f_*\Q_Y=\Q_C$ and the degree-one edge injection
+$H^1(C;\Q)\hookrightarrow H^1(Y;\Q)$. Therefore the genus of $C$ is
+zero. The holomorphic tangent sequence on a smooth fibre, with the
+last map induced by the differential of $f$, is
+\[
+0\longrightarrow T_F\longrightarrow T_Y|_F
+ \xrightarrow{df} \OO_F\otimes T_{C,f(F)}\longrightarrow0.
+\]
+The normal factor is a trivial holomorphic line bundle. Thus
+$K_F=K_Y|_F$ and $c_2(F)=c_2(Y)|_F$. Rational $H^2(Y)$ and $H^4(Y)$
+vanish, and $H^4(F;\Z)=\Z$ has no torsion. These facts give the two
+Chern-class assertions. Noether's formula gives $\chi(\OO_F)=0$.
+An exceptional curve $E\simeq\PP^1$ with $E^2=-1$ would have
+$K_F\cdot E=-1$ by adjunction, contradicting the rational vanishing of
+$c_1(K_F)$.
+
+For completeness we derive the Kodaira-dimension restriction directly.
+Fix $m>0$ and put $G_m=f_*(K_Y^m)$. This is a coherent torsion-free
+sheaf on the smooth curve $C$: a section killed by a nonzero base
+function vanishes on a dense open subset of $Y$ and hence everywhere.
+It is consequently a vector bundle. On the nonempty open set of
+cohomological base change its fibre is $H^0(F,K_F^m)$. A rank at least
+two would give a meromorphic map
+\[
+ Y\dashrightarrow \PP_C(G_m^*)
+\]
+whose restriction to a general fibre is defined by at least two
+independent sections of a line bundle and has positive-dimensional
+image. Its image has dimension at least two. The target is projective:
+a vector bundle on a compact Riemann surface is algebraic, and its
+projectivization is a projective variety. The image is therefore
+projective and its rational functions pull back to a subfield of
+$\mathcal M(Y)$ of transcendence degree at least two. This contradicts
+$a(Y)=1$. Thus $\rk G_m\leq1$ for every $m$. Removing the countable
+union of the exceptional base-change sets gives the claimed very
+general-fibre assertion.
+
+We now apply the Enriques--Kodaira classification in the form of
+\cite[Theorem 3.1]{Peters1990}. The surface is minimal by the
+adjunction argument. Rational and ruled surfaces have a rational
+curve on which the canonical class has nonzero degree, so they are
+excluded. K3 and Enriques surfaces have Euler numbers $24$ and $12$,
+respectively. Properly elliptic and general-type surfaces have
+positive Kodaira dimension. The remaining K\"ahler possibilities are
+tori and bielliptic surfaces; the remaining Kodaira-dimension-zero
+non-K\"ahler possibilities are the two types of Kodaira surfaces.
+For class VII, $b_1(F)=1$, and $e(F)=0$ gives $b_2(F)=0$. The
+classification of this case gives Hopf and Inoue surfaces; its
+precise scope, including finite covers, is stated in
+\cite[p.~2]{Teleman2008} and \cite[Theorem 1]{BBK2019}.
+No assertion about torsion in $H_1(F;\Z)$ was used.
+\end{proof}
+
+
+
+\begin{proposition}[C.3.2; Refuted surface assertion, with explicit example]
+\label{st:C.3.2}
+The assertion that every secondary Kodaira surface has torsion in
+$H_1(-;\Z)$ is false. There is a secondary Kodaira surface $Q$ with
+\[
+H_1(Q;\Z)=\Z,\qquad H^2(Q;\Z)=0,
+\]
+whose canonical bundle has holomorphic order six.
+\end{proposition}
+\begin{proof}
+Let $H$ be the real Heisenberg group in coordinates $(x,y,z)$ with law
+\[
+(x,y,z)(x',y',z')
+=\left(x+x',y+y',z+z'+\frac{xy'-yx'}2\right).
+\]
+Let $\Gamma\subset H$ be generated by
+$a=(1,0,0)$, $b=(0,1,0)$ and $c=(0,0,1)$. Thus
+\[
+\Gamma=\{(x,y,z):x,y\in\Z,\ z-xy/2\in\Z\},
+\qquad [a,b]=c.
+\]
+It is a discrete cocompact subgroup. On $H\times\mathbb R_t$ write
+\[
+\tau=e^{\pi i/3},\quad
+\eta=dz-\frac{x\,dy-y\,dx}{2},\quad
+\alpha=dx+\tau\,dy,\quad
+\beta=\eta-\frac{dx+dy}{2}+i\,dt.
+\]
+These two complex one-forms and their conjugates are linearly
+independent over $\C$. Declaring $\alpha,\beta$ to have type $(1,0)$
+defines a left-invariant almost complex structure. It is integrable:
+$d\alpha=0$ and $d\beta=-dx\wedge dy$ has type $(1,1)$, so the
+ideal generated by the $(1,0)$ forms has no $(0,2)$ obstruction.
+The structure descends to
+$P=\Gamma\backslash H\times(\mathbb R/\Z)$.
+The nonzero form $\alpha\wedge\beta$ is $\bar\partial$-closed and
+trivializes $K_P$. The projection induced by $x+\tau y$ is a
+holomorphic elliptic bundle over $\C/(\Z+\tau\Z)$, with nonzero
+central Chern class $[a,b]=c$. Its first Betti number is three, so
+$P$ is a primary Kodaira surface.
+
+Define the Lie-group automorphism
+\[
+\sigma(x,y,z)=(-y,x+y,z-y/2).
+\]
+It preserves $\Gamma$: the difference between the new central
+coordinate and half the product of the new horizontal coordinates
+is
+\[
+(z-xy/2)+xy+y(y-1)/2.
+\]
+This is integral on $\Gamma$. The inverse preserves the lattice too,
+and direct substitution gives $\sigma^6=1$. Moreover
+$\sigma^*\alpha=\tau\alpha$ and $\sigma^*\beta=\beta$.
+Consequently
+\[
+g:P\longrightarrow P,\qquad
+g([x,y,z],t)=([\sigma(x,y,z)],t+1/6)
+\]
+is a holomorphic automorphism of order six. Every nonidentity power
+is fixed-point-free because of its translation of the $t$-circle.
+The quotient $Q=P/\langle g\rangle$ is therefore a compact complex
+surface and $P\to Q$ is finite \emph{\'etale} of degree six.
+
+The contractible manifold $H\times\mathbb R$ is its universal cover.
+The deck group is $\Gamma\rtimes_\sigma\Z$, where the infinite
+generator is the lift $(\sigma,t\mapsto t+1/6)$; its sixth power is
+the original integral translation in $t$. Since
+$\Gamma^{\rm ab}=\Z^2$ and the induced matrix is
+\[
+A=\begin{pmatrix}0&-1\\1&1\end{pmatrix},\qquad
+\det(A-I)=1,
+\]
+abelianization gives $H_1(Q;\Z)=\Z$.
+The finite cover and $e(P)=0$ give $e(Q)=0$. Poincar\'e duality then
+gives $b_2(Q)=0$, and the universal coefficient theorem gives
+$H^2(Q;\Z)=0$ because $H_1(Q;\Z)$ has no torsion.
+Finally $g^*(\alpha\wedge\beta)=\tau\alpha\wedge\beta$.
+Every holomorphic section of $K_P^m$ is a constant multiple of
+$(\alpha\wedge\beta)^m$, by compactness. Such a section descends
+precisely when $6$ divides $m$. Thus $K_Q$ has holomorphic order six.
+The surface has $b_1=1$ and a primary Kodaira surface as a finite
+\'etale cover, so it is secondary Kodaira. The matrix and lattice
+calculations have been checked exactly by the attached program.
+\end{proof}
+
+\begin{proposition}[C.3.3; Refuted surface assertion, with explicit example]
+\label{st:C.3.3}
+The assertion that a secondary Hopf surface has torsion in
+$H_1(-;\Z)$ is false. There is a secondary Hopf surface $Q_H$ with
+$H_1(Q_H;\Z)=\Z$ and $H^2(Q_H;\Z)=0$.
+\end{proposition}
+\begin{proof}
+Write a quaternion as $(q_0,q_1,q_2,q_3)$ and put
+$\varphi=(1+\sqrt5)/2$. Let $G$ be the following set of 120 unit
+quaternions: the eight signed coordinate units; the sixteen points
+$(\pm1,\pm1,\pm1,\pm1)/2$; and the 96 points obtained by even
+coordinate permutations of
+$(0,\pm1,\pm\varphi,\pm\varphi^{-1})/2$, with independent signs.
+Quaternion multiplication makes this the binary icosahedral group.
+For an entirely finite verification, the attached program enumerates
+these points in $\Q(\sqrt5)^4$, verifies unit norm and all 14,400
+multiplication-table entries, and computes its commutator subgroup.
+Every element is a commutator, in particular $G^{\rm ab}=0$.
+This is an exact computation over rational pairs representing
+$\Q(\sqrt5)$.
+
+Use the faithful holomorphic representation
+\[
+(a,b,c,d)\longmapsto
+\begin{pmatrix}a+ib&c+id\\-c+id&a-ib\end{pmatrix}\in SU(2)
+\]
+and let the generator of $\Z$ act on $\C^2\setminus\{0\}$ by
+$v\mapsto2v$. The action of $\Z\times G$ is free. An equality
+$2^ngv=v$ first gives $n=0$ by norms, and a unit quaternion whose
+matrix has eigenvalue one is the identity. Proper discontinuity
+follows from the radial scaling and finiteness of $G$.
+Polar coordinates identify the quotient smoothly with
+\[
+Q_H=(\C^2\setminus\{0\})/(2^{\Z}\times G)
+\simeq (\mathbb R/(\log2)\Z)\times(S^3/G).
+\]
+It is compact, and its universal cover is $\C^2\setminus\{0\}$.
+The fundamental group is $\Z\times G$, whose abelianization is
+$\Z$. The quotient by $2^{\Z}$ alone is a primary Hopf surface
+covering $Q_H$ with degree 120. The fundamental group of $Q_H$ is
+noncyclic, so $Q_H$ is secondary Hopf. The product description gives
+$e(Q_H)=0$, and the same duality and universal-coefficient argument
+as before gives $H^2(Q_H;\Z)=0$.
+\end{proof}
+
+These two explicit finite-cover maps locate two additional failures
+in the surface-level exclusions used in the proof of CDP20,
+Lemma 4.3. They do not construct these surfaces as fibres of a
+threefold satisfying the standing hypotheses. Such a realization or
+a separate exclusion remains part of C.3.
+
+\begin{proposition}[C.3.4; Proved]\label{st:C.3.4}
+Let $Y$ be a compact complex threefold with $b_2(Y)=0$, and let
+$f:Y\to C$ be proper, holomorphic, surjective, with connected fibres.
+Every irreducible component of a reducible reduced fibre has no
+compact K\"ahler resolution. In particular, a fibre all of whose
+components admit compact K\"ahler resolutions is irreducible.
+\end{proposition}
+\begin{proof}
+Let $D$ be a component of a reducible fibre. The incidence graph of
+the components is connected, so some other component $D'$ meets $D$.
+Both are Cartier divisors on the smooth threefold. Let
+$\mu:\widehat D\to D\hookrightarrow Y$ be a resolution by a compact
+smooth surface. Pullback of the canonical section of $\OO_Y(D')$
+is a nonzero holomorphic section of $\mu^*\OO_Y(D')$. Its zero
+divisor $E$ is effective and nonzero: the intersection $D\cap D'$
+is a nonempty divisor on the irreducible surface $D$, and pullback
+to the resolution preserves its nonzero vanishing order along a
+component dominating that intersection. On the other hand
+$c_1(\mu^*\OO_Y(D'))=0$ in $H^2(\widehat D;\R)$.
+A K\"ahler form $\omega$ on $\widehat D$ would give
+\[
+0=\int_{\widehat D}c_1(\OO_{\widehat D}(E))\wedge\omega
+ =\int_E\omega>0,
+\]
+where positive multiplicities are retained in the last integral.
+This contradiction proves the assertion for every component.
+\end{proof}
+
+\begin{corollary}[C.3.5; Proved]\label{st:C.3.5}
+For every threefold and fibration in C.3.1, including every type on
+its necessary list, the Euler-number identity of Lead 5 is
+\[
+\int_Y c_3(Y)=e(Y)=\sum_{c\in\Delta}e\bigl((Y_c)_{\rm red}\bigr),
+\]
+where $\Delta$ contains the finitely many critical values.
+The identity alone assigns no sign to the summands.
+\end{corollary}
+\begin{proof}
+All the listed smooth surfaces have Euler number zero by C.3.1.
+Additivity of compactly supported Euler characteristic for the
+stratification by the smooth-fibre locus and the finitely many
+exceptional fibres gives
+$e(Y)=e_c(C\setminus\Delta)e(F)+\sum_{c\in\Delta}e(Y_c)$.
+The first term vanishes. A scheme-theoretic fibre and its reduction
+have the same underlying topological space, so their topological
+Euler numbers agree. Chern--Gauss--Bonnet gives the first equality.
+\end{proof}
+
+\begin{example}[C.3.6; Proved actual occurrence of both Hopf types]
+\label{st:C.3.6}
+There are compact complex threefolds with $b_1=b_2=0$ and $a=1$
+whose holomorphic algebraic reduction is a smooth bundle over
+$\PP^1$ with primary Hopf fibre. There are also such threefolds
+with secondary Hopf fibre. In these examples every fibre has Euler
+number zero and $c_3=0$.
+\end{example}
+\begin{proof}
+Put $a_1=1$, $a_2=\sqrt2$ and
+$W=(\C^2\setminus\{0\})_z\times(\C^2\setminus\{0\})_w$.
+The additive complex Lie group $\C$ acts holomorphically by
+\[
+t\cdot(z,w_1,w_2)
+ =\bigl(e^t z,e^{ia_1t}w_1,e^{ia_2t}w_2\bigr).
+\tag{C.H.1}
+\]
+This action is free. Indeed $e^t z=z$ implies $t=2\pi in$ with
+$n\in\Z$; a nonzero $w_j$ then gives $e^{-2\pi a_jn}=1$ and
+therefore $n=0$. It is proper as well. If a point and its translate
+range in fixed compact subsets of $W$, the $z$-norm bounds
+$\operatorname{Re}t$. Writing $s=\operatorname{Im}t$, the identity
+\[
+\|t\cdot w\|^2
+ =e^{-2a_1s}|w_1|^2+e^{-2a_2s}|w_2|^2
+\]
+and the positive constants $a_1,a_2$ bound $s$ both above and
+below, since both $w$-norms are bounded away from zero. The inverse
+image of a compact subset under the action graph is consequently
+closed and bounded in the group variable and compact in the other
+variable. This proves properness.
+
+Every orbit meets the real submanifold
+$\{\|z\|=\|w\|=1\}=S^3\times S^3$ exactly once.
+The first equation fixes $\operatorname{Re}t=-\log\|z\|$.
+The displayed squared $w$-norm is strictly decreasing in $s$,
+with limits $+\infty$ and $0$, so the second equation has one
+solution. Its derivative is strictly negative, and the implicit
+function theorem makes the resulting cross-section smooth.
+Thus the complex quotient $Y=W/\C$ is a smooth compact complex
+threefold diffeomorphic to $S^3\times S^3$. In particular
+$b_1(Y)=b_2(Y)=0$ and $e(Y)=0$.
+
+The map
+\[
+f:Y\longrightarrow\PP^1,\qquad [z,w]\longmapsto[z_1:z_2]
+\]
+is well-defined and holomorphic. Choose a holomorphic nonzero
+frame of the tautological line on a small base disc. Scaling the
+$z$-coordinate to this frame leaves exactly the transformations
+$t=2\pi in$, which act on $w$ by powers of
+\[
+Q=\operatorname{diag}(q_1,q_2),\qquad
+q_j=e^{-2\pi a_j}.
+\]
+This identifies $f$ over that disc with the product having fibre
+$H=(\C^2\setminus\{0\})/\langle Q\rangle$.
+The quotient is a primary Hopf surface, and these local products
+prove that $f$ is a proper holomorphic submersion with connected
+fibres.
+
+We verify $a(H)=0$ directly. A meromorphic function on $H$ lifts
+to a $Q$-invariant meromorphic function on $\C^2\setminus\{0\}$.
+It extends meromorphically across the origin: the closure of its
+polar divisor is analytic by the codimension-two extension theorem
+for divisors, is locally principal on the smooth ball, and
+multiplying by a local defining function reduces extension to
+Hartogs' theorem for a holomorphic function. Write the germ as
+$g/h$ with relatively prime convergent power series. The identity
+$(g\circ Q)h=g(h\circ Q)$ gives
+\[
+g\circ Q=ug,\qquad h\circ Q=uh
+\]
+for one holomorphic unit $u$: divisibility follows from relative
+primality, and preservation of the vanishing order makes the
+quotient a unit. Write $u/u(0)=e^\ell$ with $\ell(0)=0$ and set
+\[
+v(w)=\exp\left(\sum_{n\ge0}\ell(Q^nw)\right).
+\]
+The sum converges normally on a sufficiently small ball, because
+$Q$ is a strict contraction. It gives
+$v(Qw)/v(w)=u(0)/u(w)$. Consequently both $vg$ and $vh$ are
+eigenfunctions of pullback by $Q$ with the same eigenvalue $u(0)$.
+The monomial $w_1^rw_2^s$ has eigenvalue
+$e^{-2\pi(r+s\sqrt2)}$. These numbers are distinct for distinct
+$(r,s)\in\Z_{\ge0}^2$. Comparing power-series coefficients shows
+that each nonzero eigenfunction is a single monomial and that the
+two eigenfunctions are proportional. The meromorphic function is
+therefore constant, first near the origin and then everywhere by
+analytic continuation.
+
+Every meromorphic function on $Y$ is constant on each general
+fibre of $f$. On a product chart, restricting to a local section
+gives the descended meromorphic function on the base; equality on
+the fibres and the identity theorem identify its pullback with
+the original function. These local functions agree on overlaps
+and extend at the finitely many possible poles on the base.
+Thus $\mathcal M(Y)=f^*\mathcal M(\PP^1)$, proving $a(Y)=1$
+and proving that $f$ is the holomorphic algebraic reduction.
+
+For any integer $m>1$, let $\mu_m$ act on $W$ by
+$(z,w)\mapsto(z,\zeta w)$. It commutes with (C.H.1) and induces
+a free action on $Y$. A fixed orbit would give $t=2\pi in$ from
+the $z$-coordinate; equality of norms in a nonzero $w_j$ then
+gives $n=0$ and $\zeta=1$. The quotient
+$Y_m=Y/\mu_m$ is a smooth compact complex threefold. Transfer
+injects $H^j(Y_m;\Q)$ into $H^j(Y;\Q)$, so $b_1(Y_m)=b_2(Y_m)=0$.
+The simply connected cover $Y\simeq S^3\times S^3$ gives
+$\pi_1(Y_m)=\mu_m$, and the universal coefficient theorem gives
+$H^2(Y_m;\Z)\simeq\Z/m\Z$: its free part is zero by the
+rational calculation, and its torsion is
+$\operatorname{Ext}(H_1(Y_m;\Z),\Z)$. Thus these secondary
+examples meet exactly the rational hypotheses of C.3; the primary
+example also has $H^1(Y;\Z)=H^2(Y;\Z)=0$.
+The induced map to $\PP^1$ has fibre
+\[
+H_m=(\C^2\setminus\{0\})/
+       \bigl(\langle Q\rangle\times\mu_m\bigr).
+\]
+Its universal cover is $\C^2\setminus\{0\}$ and its fundamental
+group is $\Z\times\mu_m$, which is noncyclic. It is therefore a
+secondary Hopf surface, with the displayed primary cover of degree
+$m$. Any meromorphic function on $H_m$ pulls back to one on $H$,
+so $a(H_m)=0$. The same local descent proves
+$\mathcal M(Y_m)=f_m^*\mathcal M(\PP^1)$ and $a(Y_m)=1$.
+Finally transfer of Euler characteristic under the finite covering,
+or the smooth-fibration Euler formula, gives $e(Y_m)=0$.
+\end{proof}
+
+\begin{proposition}[C.3.7; Proved exclusion of bielliptic fibres]
+\label{st:C.3.7}
+A compact complex threefold $Y$ with $b_1(Y)=b_2(Y)=0$ has no
+proper connected-fibre holomorphic map to a compact curve whose
+general fibre is bielliptic.
+\end{proposition}
+\begin{proof}
+We use precisely the relative Albanese construction of
+\cite[Proposition~2, pp.~605--608]{Kawai1969}, and not its subsequent
+corollary. Applied to bielliptic fibres, which have
+$p_g=0$ and $h^0(\Omega^1)=1$, it gives a compact complex surface
+$B$, a holomorphic map $h:B\to C$, and a meromorphic map
+$\Phi:Y\dashrightarrow B$ over $C$. On the complement $C^\circ$
+of finitely many values, $B^\circ\to C^\circ$ is a smooth family
+of elliptic curves and
+\[
+ \Phi|_{F_c}:F_c\longrightarrow B_c
+\]
+is the Albanese morphism of the bielliptic surface, with connected
+elliptic fibres. To specify the comparison being imported, the
+construction forms the relative period-lattice quotient, glues its
+local Albanese maps by fibre translations, and compactifies at each
+missing value by a normalized finite base change and the projective
+space associated with the direct images of a divisor which is the
+inverse image of a local Albanese section. In making this last
+step equivariant, use the sum of the finite orbit of that divisor;
+a selected section need not itself be invariant under the covering
+group. Resolve the normalized base change first if needed, so the
+divisor defines a line bundle. The orbit sum restricts on every
+general fibre to the pullback of a positive-degree divisor on its
+Albanese elliptic curve; sufficiently large powers give the same
+Albanese image. Its naturally linearized line bundle and direct
+images carry the finite covering-group action, and their quotient
+glues the construction to $B^\circ$. These are the maps asserted by
+Proposition~2, with that equivariant choice made explicit. The
+later assertion in Kawai's corollary about multiple fibres is not
+used here.
+
+Resolve $B$ over $C\setminus C^\circ$ and resolve the induced
+meromorphic map by a sequence of blowups with smooth centres
+supported over those same values. This produces a diagram
+\[
+ \widetilde Y\xrightarrow{\ g\ }\widetilde B,
+ \qquad \pi:\widetilde Y\longrightarrow Y,
+ \qquad (h\circ\rho)\circ g=f\circ\pi,
+\]
+where $\rho:\widetilde B\to B$ is a resolution and both spaces
+are smooth and compact. The map $g$ has connected fibres:
+its general fibres are the connected Albanese fibres just described,
+and its Stein factorization has finite degree one over the normal
+surface $\widetilde B$. Hence
+$H^1(\widetilde B;\Q)\hookrightarrow H^1(\widetilde Y;\Q)$.
+Blowing up smooth centres does not change first cohomology, so
+$b_1(\widetilde B)=0$. The compact-surface K\"ahler criterion
+\cite[Theorem~1.1]{Peters1990} therefore gives a K\"ahler form
+$\omega_B$ on $\widetilde B$.
+
+The blowup cohomology formula gives
+\[
+ H^2(\widetilde Y;\R)
+ =\pi^*H^2(Y;\R)\oplus\bigoplus_j\R[E_j]
+ =\bigoplus_j\R[E_j],
+\]
+where the $E_j$ are the exceptional prime-divisor classes (with
+the corresponding total transforms for successive blowups).
+Every $E_j$ is supported above one of the removed values in $C$.
+Consequently its restriction to a general smooth fibre $F_c$,
+identified with its unchanged inverse image in $\widetilde Y$,
+is zero. In particular
+\[
+ [g^*\omega_B]|_{F_c}=0\quad\hbox{in }H^2(F_c;\R).
+\]
+Choose a K\"ahler form $\omega_F$ on the bielliptic surface $F_c$.
+The Albanese morphism $g|_{F_c}$ is a submersion to the elliptic
+curve $\widetilde B_c$. Thus its pullback of $\omega_B$ is a
+nonzero semipositive $(1,1)$-form and
+\[
+ \int_{F_c}g^*\omega_B\wedge\omega_F>0.
+\]
+The vanishing cohomology class makes the same integral zero by
+Stokes' theorem, a contradiction. All maps in this argument are
+the displayed relative Albanese map and its modifications; no
+comparison between the two elliptic fibrations of a bielliptic
+surface is needed.
+\end{proof}
+
+\begin{proposition}[C.3.8; Proved exclusion of elliptic Hopf general fibres]
+\label{st:C.3.8}
+The very general Hopf fibre of the algebraic reduction in C.3.1
+has algebraic dimension zero. In particular neither primary nor
+secondary Hopf surfaces of algebraic dimension one can be its
+general fibre. This exclusion uses no restriction-surjectivity
+assertion from CDP98 or CDP20.
+\end{proposition}
+\begin{proof}
+We first verify that a Hopf surface $H$ with $a(H)=1$ satisfies
+$\kappa(H,K_H^{-1})=1$. On a primary Hopf cover the contraction
+normal forms are diagonal, or
+\[
+A(z,w)=(\alpha z+\lambda w^n,\beta w),\qquad
+\lambda\ne0,\quad \alpha=\beta^n.
+\]
+The invariant bivectors $zw\,\partial_z\wedge\partial_w$ in the
+diagonal case and $w^{n+1}\,\partial_z\wedge\partial_w$ in the
+second case give a nonzero effective anticanonical divisor.
+The invariance is an equality under the derivative of the
+displayed contraction: its determinant is $\alpha\beta$, and
+the displayed coefficient transforms by the same scalar.
+These normal forms and the elliptic-fibration description are
+also used in \cite[Proposition~3.1 and its proof]{SS2002}.
+
+The algebraic reduction of an elliptic Hopf surface is a
+holomorphic map to $\PP^1$, with smooth reductions of all fibres.
+Every curve is vertical: its intersection with a general fibre
+is zero since $H^2(H;\R)=0$, whereas a horizontal curve would
+have positive intersection equal to its degree over the base.
+Thus the nonzero anticanonical divisor is a positive sum of
+reduced fibres. If $m_iD_i$ is the full fibre supported on
+$D_i$, each $\OO(m_iD_i)$ is the pullback of $\OO_{\PP^1}(1)$.
+A common multiple of the $m_i$ therefore makes a positive power
+of $K_H^{-1}$ the pullback of a positive-degree line bundle on
+$\PP^1$. Its Iitaka dimension is one.
+
+For a secondary Hopf surface take a normal finite primary cover
+$p:H'\to H$. The cover is unramified, so
+$K_{H'}^{-1}=p^*K_H^{-1}$, and $a(H')=a(H)=1$ by invariance of
+transcendence degree under a finite map. The anticanonical
+section ring of $H$ is the invariant subring of that of $H'$.
+The latter is integral over the invariant subring: a homogeneous
+section $s$ satisfies the monic orbit polynomial
+$\prod_{g\in\operatorname{Gal}(H'/H)}(T-gs)$. Their fraction
+fields have the same transcendence degree, proving
+$\kappa(H,K_H^{-1})=1$ also in this case.
+
+Now, for each positive integer $m$, the locus
+\[
+Z_m=\{c\in C^\circ:
+ h^0(Y_c,K_Y^{-m}|_{Y_c})\ge2\}
+\]
+is a closed analytic subset of the smooth base $C^\circ$.
+If the very general Hopf fibre had algebraic dimension one,
+the preceding calculation would make the union of these
+countably many loci contain the complement of a countable
+subset of $C^\circ$. A proper closed analytic subset of a
+curve is discrete and countable, so some $Z_m$ is the whole
+connected smooth base. Coherent base change then gives
+$\operatorname{rank}f_*K_Y^{-m}\ge2$.
+The relative linear system defines a meromorphic map of $Y$
+to $\PP(f_*K_Y^{-m})$ over $C$ with positive-dimensional image
+on a general fibre. Its image has dimension at least two.
+The projective bundle over the compact curve is projective,
+so pulling back its meromorphic functions gives $a(Y)\ge2$,
+contrary to the hypothesis. In fact the same argument shows
+that, when the smooth fibres are Hopf surfaces, the values with
+$a(Y_c)=1$ form at most a countable set.
+\end{proof}
+
+\begin{theorem}[C.3.9; Proved exclusion of secondary Kodaira general fibres]
+\label{st:C.3.9}
+A compact complex threefold with $b_1(Y)=b_2(Y)=0$ and
+$a(Y)=1$ cannot have a holomorphic algebraic reduction
+$f:Y\to\PP^1$ whose general fibre is a secondary Kodaira
+surface. Rational Betti-number vanishing suffices; no integral
+torsion-freeness of the fibre is assumed.
+\end{theorem}
+\begin{proof}
+Suppose that the smooth general fibres $S_c$ are secondary
+Kodaira surfaces. They have $h^1(\OO_{S_c})=b_1(S_c)=1$.
+The nonzero integral transgression section of D.1.9 has
+coefficient image $\beta\in H^1(Y,\OO_Y)$ and gives a
+nowhere-zero section of $\mathscr E=R^1f_*\OO_Y$.
+This coherent sheaf is a line bundle by E4. Thus
+$\mathscr E=\OO_{\PP^1}$ and
+$H^1(Y,\OO_Y)=\C\beta$. For every $z\in\C$ set
+\[
+ M_z=\exp(2\pi\mathrm i z\beta)\in\Pic^0(Y).
+\tag{C.SK.1}
+\]
+Its restriction satisfies $M_{z+1}|_{S_c}\simeq M_z|_{S_c}$,
+because $\beta|_{S_c}$ is the coefficient image of an
+integral class. It is nonzero as a tangent vector of
+$\Pic^0(S_c)$ by D.1.7. The exponential sequence therefore
+identifies $\Pic^0(S_c)$ with $\C^*$ and makes (C.SK.1), on
+each smooth fibre, a nonconstant homomorphism from
+$\C/\Z$ to this group.
+
+We specify the primary cover and the invariant used below.
+Let $m>1$ be the order of $K_{S_c}$, and let
+\[
+ p_c:P_c\longrightarrow S_c
+\]
+be its connected cyclic canonical cover, with deck group
+$G=\mu_m$. It is finite \emph{\'etale}. Its canonical bundle
+is trivial, and it is non-K\"ahler, because a finite
+\emph{\'etale} quotient of a K\"ahler surface is K\"ahler
+by averaging a K\"ahler form. The classification of
+surfaces with trivial canonical bundle consequently makes
+$P_c$ a primary Kodaira surface. Write
+$\pi_c:P_c\to E_c$ for its Albanese elliptic bundle, and
+$d>0$ for its topological degree. These covers exist in
+holomorphic families locally on the smooth base: the
+evaluation of a local frame of $f_*K_{Y/\PP^1}^{m}$
+trivializes $K_{Y/\PP^1}^{m}$, since it is nowhere zero on
+each fibre, and taking its cyclic root gives the required
+finite \emph{\'etale} covering family. The integers $m,d$
+are locally constant and hence constant on the connected
+smooth base.
+
+The exact primary-surface invariant we use is
+\[
+ Q_c=\Pic^0(P_c)/\pi_c^*\Pic^0(E_c)\simeq\C^*.
+\tag{C.SK.2}
+\]
+The Picard pullback in the denominator is injective:
+$\pi_{c*}\OO_{P_c}=\OO_{E_c}$ and the projection formula
+show that a line with trivial pullback is trivial. For
+any line $L_c$ of degree $d$ on $E_c$, the pullback
+$\pi_c^*L_c$ belongs to $\Pic^0(P_c)$, and its class in
+$Q_c$ is independent of $L_c$. Choose the group
+isomorphism $q_c:Q_c\to\C^*$ that places this
+positive-degree class in the punctured unit disc, and
+denote its value by $\alpha(c)$.
+This fixes the possible inversion ambiguity of the
+group coordinate. The descriptions in
+\cite[Theorem~4 and Remark~1]{Borcea1984} and
+\cite[\S1, pp.~2--3]{SS2002} identify $\alpha$ as the
+intrinsic holomorphic punctured-disc coordinate of the
+moduli of primary Kodaira surfaces. More explicitly,
+$P_c$ is the associated elliptic bundle of a line of
+degree $d$ with fibre $\C^*/\langle\alpha(c)\rangle$;
+quotienting by $\pi_c^*\Pic^0(E_c)$ removes the choice
+of that line within its degree. In a holomorphic
+family the local integral marking and the coefficient
+map give this quotient a holomorphic $\C^*$ coordinate,
+and the chosen positive-degree orientation is locally
+constant. This is also immediate in Borcea's complete
+period family. Thus $\alpha(c)$ is holomorphic.
+
+The locally constructed canonical covers have the same
+isomorphism class on overlaps, so this intrinsic
+function glues on the smooth base. It has
+$0<|\alpha(c)|<1$. It extends across the finitely many
+omitted values by the removable singularity theorem
+and is constant on $\PP^1$. Write its nonzero constant
+value as $\alpha$.
+
+Consider the exact homomorphism of connected Picard
+groups
+\[
+ \Pic^0(S_c)\xrightarrow{\ p_c^*\ }\Pic^0(P_c)
+          \longrightarrow Q_c\xrightarrow{\ q_c\ }\C^*.
+\tag{C.SK.3}
+\]
+Its differential is nonzero. Indeed finite-cover trace
+identifies $H^1(S_c,\OO_{S_c})$ with the $G$-invariant
+line in $H^1(P_c,\OO_{P_c})$. The other line,
+$\pi_c^*H^1(E_c,\OO_{E_c})$, has nontrivial $G$ action:
+otherwise the unique holomorphic one-form of $P_c$
+would descend to $S_c$, whereas a secondary Kodaira
+surface has no holomorphic one-form. Hence the invariant
+line has zero intersection with the denominator's
+tangent line in (C.SK.2). This proves the claim.
+Consequently (C.SK.3) is a nonzero isogeny of $\C^*$
+groups. Composing it with (C.SK.1) gives
+\[
+ q_c\bigl([p_c^*(M_z|_{S_c})]\bigr)
+       =\exp(2\pi\mathrm i k z)
+       \qquad(k\in\Z\setminus\{0\}).
+\tag{C.SK.4}
+\]
+Here integrality follows from the period $z\mapsto z+1$;
+every holomorphic group homomorphism $\C^*\to\C^*$ is
+an integral power. The integer $k$ is locally constant
+in the holomorphic families just described, and is
+therefore a single integer on the connected smooth base.
+
+Let $\rho_c:S_c\to\PP^1$ be its elliptic algebraic
+reduction. The induced finite map $r_c:E_c\to\PP^1$
+satisfies $\rho_c p_c=r_c\pi_c$. Write $h=\deg r_c$;
+this positive integer is constant. Choose one positive
+integer $N$ killing the torsion group $H^2(S_c;\Z)$
+and satisfying $d\mid hN$. This choice is uniform
+because the smooth fibres are differentiably locally
+trivial. Then
+$A_c=\rho_c^*\OO_{\PP^1}(N)$ belongs to $\Pic^0(S_c)$,
+and (C.SK.2) gives
+\[
+ q_c([p_c^*A_c])=\alpha^{hN/d}.
+\tag{C.SK.5}
+\]
+This identity is fibrewise and uses only degrees; it
+does not require the divisors $\rho_c^{-1}(x)$ to
+extend across a singular fibre of $f$.
+
+Choose $z_0\in\C$ with
+$\exp(2\pi\mathrm i k z_0)=\alpha^{hN/d}$ and put
+$M=M_{z_0}$. By (C.SK.4)--(C.SK.5), the difference of
+$p_c^*(M|_{S_c})$ and $p_c^*A_c$ is
+$\pi_c^*R_c$ for some $R_c\in\Pic^0(E_c)$.
+Both of the first two lines come from $S_c$ and are
+$G$-invariant. Injectivity of $\pi_c^*$ implies that
+$R_c$ is fixed by the induced nontrivial linear action
+on $\Pic^0(E_c)$. An elliptic-curve linear automorphism
+of finite order other than one has order
+$r\in\{2,3,4,6\}$. If it fixes a point $R_c$, then
+\[
+ rR_c=(1+\zeta+\cdots+\zeta^{r-1})R_c=0
+\]
+in the elliptic group. Thus $R_c^{\otimes12}$ is
+trivial. The norm of the finite cover satisfies
+$\operatorname{Nm}_{p_c}(p_c^*L)=L^{\otimes m}$.
+Applying it to the difference now proves the exact
+line-bundle identity
+\[
+ M^{\otimes12m}|_{S_c}
+       \simeq \rho_c^*\OO_{\PP^1}(12mN)
+\tag{C.SK.6}
+\]
+for every smooth general fibre.
+
+The right side has at least two linearly independent
+sections, by pullback from $\PP^1$. Coherent generic
+base change gives
+$\operatorname{rank}f_*M^{\otimes12m}\ge2$.
+Its relative linear system has a positive-dimensional
+image on a general fibre and therefore a surface
+image in the projective bundle over $\PP^1$.
+Pullback of meromorphic functions from this image
+gives $a(Y)\ge2$, the desired contradiction.
+This proves the exclusion without the arbitrary-twist
+cohomological-flatness assertion used in the printed
+Kodaira exclusion.
+\end{proof}
+
+\begin{theorem}[C.3.10; Proved exclusion of primary Kodaira general fibres]
+\label{st:C.3.10}
+A compact complex threefold with $b_1(Y)=b_2(Y)=0$ and
+$a(Y)=1$ cannot have a holomorphic algebraic reduction
+$f:Y\to\PP^1$ whose general fibre is a primary Kodaira
+surface. Together with C.3.9 this excludes both Kodaira
+types using only rational Betti-number vanishing.
+\end{theorem}
+\begin{proof}
+Let $B=\PP^1\setminus\Sigma$ be the smooth base and write
+$P_c=f^{-1}(c)$ and $\pi_c:P_c\to E_c$ for the canonical
+elliptic algebraic reduction of a smooth fibre. The degree
+$d>0$ is constant. All the smooth fibres have the fixed
+primary Kodaira differentiable type; every complex structure
+on that type is again a primary Kodaira structure
+\cite[pp.~373--374]{Borcea1984}.
+Use the intrinsic quotient and its orientation from (C.SK.2):
+\[
+ Q_c=\Pic^0(P_c)/\pi_c^*\Pic^0(E_c),\qquad
+ q_c:Q_c\xrightarrow{\simeq}\C^*.
+\]
+The class of the pullback of a degree-$d$ line has coordinate
+$\alpha(c)\in\Delta^*$. The holomorphic moduli comparison
+in the proof of C.3.9 applies directly here, so this bounded
+function extends to $\PP^1$ and has a single nonzero
+constant value $\alpha$.
+
+Put $\mathscr E=R^1f_*\OO_Y$ and
+$\mathscr G=R^2f_*\OO_Y$. The primary Kodaira case of
+D.1.12 proves, on the original threefold and every full fibre,
+\[
+ \operatorname{rank}\mathscr E=2,\qquad
+ \operatorname{rank}\mathscr G=1,\qquad
+ \bigwedge^2\mathscr E\xrightarrow{\simeq}\mathscr G.
+\tag{C.PK.1}
+\]
+Both sheaves are locally free and satisfy base change.
+Let $\gamma$ be the integral transgression section of D.1.9,
+and let $\beta\in H^0(\PP^1,\mathscr E)=H^1(Y,\OO_Y)$
+be its coefficient image. This section is nowhere zero.
+For $u\in H^1(P_c,\OO_{P_c})$ define the complex-linear
+functional $\lambda_c$ by the exact identity
+\[
+ q_c\bigl([\exp(2\pi\mathrm i z u)]\bigr)
+     =\exp(2\pi\mathrm i z\lambda_c(u))
+     \quad(z\in\C).
+\tag{C.PK.2}
+\]
+Its kernel is the line
+$A_c=\pi_c^*H^1(E_c,\OO_{E_c})$.
+The function $k(c)=\lambda_c(\beta_c)$ takes integral
+values, because $\beta_c$ is the coefficient image of
+an integral class. It is holomorphic, by the actual relative
+Picard quotient in (C.SK.2), hence is a constant integer $k$.
+
+When $k\ne0$, choose $n>0$ with $nd\ge2$ and choose
+$z\in\C$ with $\exp(2\pi\mathrm i kz)=\alpha^n$.
+The ambient line $M=\exp(2\pi\mathrm i z\beta)$ then
+has, on every smooth fibre, the same $Q_c$ class as the
+pullback of a degree-$nd$ line on $E_c$. Its difference
+from that pullback belongs to $\pi_c^*\Pic^0(E_c)$.
+Thus
+$M|_{P_c}=\pi_c^*L_c$ for a line $L_c$ of degree $nd$,
+and $h^0(P_c,M|_{P_c})=nd\ge2$. The relative linear
+system gives $a(Y)\ge2$, as at the end of C.3.9.
+It remains to obtain the same contradiction when $k=0$.
+
+In that case $\beta_c\in A_c$. The coefficient map
+$H^1(E_c;\R)\to H^1(E_c,\OO_{E_c})$ is an isomorphism
+of real vector spaces. Its pullback, together with the real
+injectivity of D.1.7 on $P_c$, proves the exact implication
+\[
+ \beta_c\in A_c
+ \quad\Longrightarrow\quad
+ \gamma_c\in\pi_c^*H^1(E_c;\R).
+\tag{C.PK.3}
+\]
+The lattice $\pi_c^*H^1(E_c;\Z)$ is saturated in
+$H^1(P_c;\Z)$: the elliptic bundle induces a surjection
+on fundamental groups, so the cokernel of the induced
+injection on integral $H^1$ is torsion free. Thus $\gamma$
+lies in this rank-two integral local system. Divide it by
+its fixed positive divisibility to obtain a primitive fixed
+section $\gamma_0$. On a simply connected open set choose
+a complementary integral section $\delta$ with oriented
+intersection number one. The ratio of their nonzero
+coefficient images is a holomorphic elliptic period
+\[
+ \tau=\frac{\iota(\delta)}{\iota(\gamma_0)},
+ \qquad \operatorname{Im}\tau>0,
+\]
+after choosing the sign convention of the ordered pair.
+Monodromy fixes $\gamma_0$ and replaces $\delta$ by
+$\delta+N\gamma_0$, $N\in\Z$. Therefore
+$\exp(2\pi\mathrm i\tau)$ is a single-valued bounded
+holomorphic function on $B$. It extends to $\PP^1$ and
+is constant. Its logarithmic derivative gives $d\tau=0$,
+and a nonzero integral translation cannot fix this constant
+period. Consequently the Albanese integral $H^1$ local
+system has identity monodromy, and $j(E_c)$ is constant.
+
+Both moduli $(j,\alpha)$ and the degree $d$ are now
+constant. Borcea's classification, in the precise form
+\cite[\S1]{SS2002}, makes all smooth fibres biholomorphic
+to one primary Kodaira surface $P$. Here is the actual
+local product comparison we use. Borcea's complete
+holomorphic marked period family \cite[Remark~1]{Borcea1984}
+expresses our family, near any smooth base point, as the
+pullback by a holomorphic map into his period domain
+$\mathcal D\subset\PP(H^2(P;\C))$. By his Theorem~3,
+constant isomorphism class means that the image of this
+map lies in one orbit of the integral cohomology action.
+That orbit is countable, since the action factors through
+$\operatorname{GL}(H^2(P;\Z)/\operatorname{torsion})$.
+A connected subset of a countable subset of a complex
+manifold is one point: a real coordinate separating two
+points would have a nontrivial interval as its connected
+image. Therefore the period parameter is constant and
+its pullback is a product. This proves the needed
+holomorphic local triviality from the specified complete
+family.
+
+We compute its entire action on $H^2(P;\C)$, including
+vertical shears. Write the fundamental group as
+\[
+ \Gamma=\langle x,y,w,u\mid
+       w,u\text{ central},\ [x,y]=w^d\rangle.
+\tag{C.PK.4}
+\]
+Its centre $\langle w,u\rangle$ is the fundamental group
+of the elliptic fibre, and its quotient is the fundamental
+group of the elliptic base. A biholomorphism inducing the
+identity on the base $H^1$ induces the identity on this
+quotient. The relation in (C.PK.4) then forces it to fix
+$w$. On an elliptic fibre its linear part is a holomorphic
+group automorphism. Such an automorphism acts by a complex
+scalar on the universal cover; fixing the nonzero period
+$w$ forces that scalar to be one. It therefore fixes both
+$w$ and $u$. The remaining possible actions on $x,y$ are
+exactly multiplication by central elements.
+
+For clarity, their induced cohomology action can be read
+off without discarding any of those elements. In the real
+nilmanifold presentation choose invariant one-forms
+$a,b,c,e$ with
+\[
+ da=db=de=0,\qquad dc=d\,a\wedge b.
+\]
+The four classes $[a\wedge c],[b\wedge c],
+[a\wedge e],[b\wedge e]$ form a basis of
+$H^2(P;\R)$, as in \cite[\S3]{Borcea1984}.
+An automorphism of (C.PK.4) with the stated action extends
+to the real nilpotent group: in logarithmic coordinates it
+fixes the two central generators and adds central vectors
+to the two base generators. Its pullback fixes $a,b$ and
+replaces each of $c,e$ by itself plus a real linear
+combination of $a,b$. Each of the four displayed classes
+therefore changes only by a multiple of the exact form
+$a\wedge b$. Since the universal cover of $P$ is
+contractible, a map of $P$ and this group-model map with
+the same induced fundamental-group map are homotopic.
+This computes the action of the original biholomorphism
+and proves it is the identity on $H^2$.
+In particular every monodromy of our isotrivial family,
+whose action on the base $H^1$ was just proved to be the
+identity, acts identically on $H^2(P;\C)$.
+
+We next construct a global section of $\mathscr G$ by an
+actual morphism of complexes. Resolve all exceptional
+fibres by successive blowups with smooth centres contained
+in those fibres, writing
+$\rho:\widetilde Y\to Y$ and $h=f\rho$. For each such
+blowup, $\rho_*\OO_{\widetilde Y}=\OO_Y$ and
+$R^j\rho_*\OO_{\widetilde Y}=0$ for $j>0$.
+One local verification uses the formal neighbourhoods of
+the exceptional projective bundle: their successive
+conormal layers restrict to nonnegative twists
+$\OO_{\PP^{r-1}}(l)$, $l\ge0$, which have no higher
+cohomology. The analytic theorem on formal functions
+gives the asserted vanishing; normality gives the
+degree-zero equality. The Leray edge is consequently the
+canonical isomorphism
+\[
+ R^2h_*\OO_{\widetilde Y}\xrightarrow{\simeq}
+ R^2f_*\OO_Y=\mathscr G.
+\tag{C.PK.5}
+\]
+The same identities hold for a composite by derived
+pushforward.
+
+Let $D=(h^{-1}(\Sigma))_{\mathrm{red}}$ and use the
+relative logarithmic de Rham complex
+\[
+ \mathscr K^\bullet=
+ \Omega_{\widetilde Y}^\bullet(\log D)\big/
+ \bigl(h^*\Omega_{\PP^1}^1(\log\Sigma)
+       \wedge\Omega_{\widetilde Y}^{\bullet-1}(\log D)\bigr).
+\]
+Projection onto degree zero is a morphism of complexes
+$\mathscr K^\bullet\to\OO_{\widetilde Y}[0]$:
+it is the identity in degree zero and zero in every
+positive degree. The exact analytic comparison of D.2.3,
+namely \cite[Theorem~2.18 and \S\S2.19--2.21]{Steenbrink1976},
+applies to this resolution with all its fibre multiplicities
+and without a K\"ahler hypothesis. It gives the logarithmic
+de Rham bundle
+$\mathscr H^2=\mathbb R^2h_*\mathscr K^\bullet$.
+Identity monodromy makes every residue zero, by the
+residue interval $[0,1)$ and the exponential comparison.
+The global flat frame on $B$ therefore extends across
+every point of $\Sigma$, proving
+$\mathscr H^2\simeq H^2(P;\C)\otimes\OO_{\PP^1}$.
+Taking degree-two direct hypercohomology of the displayed
+projection and then (C.PK.5) gives a holomorphic map
+\[
+ p:H^2(P;\C)\otimes\OO_{\PP^1}
+          \longrightarrow\mathscr G.
+\tag{C.PK.6}
+\]
+Over $B$ it is precisely the coefficient projection
+$H^2(P_c;\C)\to H^2(P_c,\OO_{P_c})$.
+
+In an isotrivial chart this latter map is constant. It is
+surjective: the class of
+$\overline\alpha\wedge\overline\eta$ used in the proof
+of D.1.12 is represented by a closed invariant two-form
+and has nonzero Dolbeault class. The charts also show
+that its kernel is a flat subspace. Choose a constant flat
+class $v_0\in H^2(P;\C)$ whose projection is nonzero,
+and put $s=p(v_0)\in H^0(\PP^1,\mathscr G)$.
+This section is nowhere zero on $B$; zeros at points
+of $\Sigma$ cause no problem.
+
+By (C.PK.1) and the nowhere-zero section $\beta$, the
+following is an exact sequence of vector bundles on the
+entire projective line:
+\[
+ 0\longrightarrow\OO_{\PP^1}\beta
+  \longrightarrow\mathscr E
+  \xrightarrow{\ \beta\wedge-\ }\mathscr G
+  \longrightarrow0.
+\tag{C.PK.7}
+\]
+Since $H^1(\PP^1,\OO)=0$, choose
+$v\in H^0(\PP^1,\mathscr E)=H^1(Y,\OO_Y)$ with
+$\beta\wedge v=s$.
+We identify exactly the scalar that this lift induces in
+the quotient (C.PK.2). In each isotrivial chart,
+$\beta$ is the coefficient image of a fixed integral
+class, $v_0$ is a fixed de Rham class, and $s=p(v_0)$
+is a fixed nonzero class in $H^2(P,\OO_P)$.
+The intrinsically oriented quotient $q_c$ is also fixed
+by the chart: every automorphism preserves its
+positive-degree class $\alpha\in\Delta^*$, so it cannot
+induce inversion of $\C^*$.
+Both linear maps $u\mapsto\beta\wedge u$ and
+$u\mapsto\lambda(u)s$ have kernel $A$ and are nonzero.
+Thus they differ by a constant $\kappa\in\C^*$ on
+that chart. The constants agree on overlaps, because
+all the maps and sections used in their definition are
+the actual global ones. The connectedness of $B$ gives
+one constant $\kappa$, and (C.PK.7) yields
+\[
+ \lambda_c(v_c)=\kappa^{-1}\ne0
+ \quad\hbox{for every }c\in B.
+\tag{C.PK.8}
+\]
+This proves constancy of the quotient differential,
+including its normalization; it is not a boundedness
+assertion about an unspecified function on $B$.
+
+Choose $n>0$ with $nd\ge2$ and $z\in\C$ with
+$\exp(2\pi\mathrm i z\kappa^{-1})=\alpha^n$.
+The single ambient line $M=\exp(2\pi\mathrm i z v)$
+has this quotient coordinate on every smooth fibre.
+Exactly as in the $k\ne0$ case,
+$M|_{P_c}=\pi_c^*L_c$ with $\deg L_c=nd\ge2$.
+Its direct image has rank at least two and its relative
+linear system gives a surface image over $\PP^1$,
+contradicting $a(Y)=1$. This completes the proof.
+\end{proof}
+
+\begin{corollary}[C.3.11; Proved complete cohomological dichotomy]
+\label{st:C.3.11}
+Under the hypotheses of C.3.1, a very general smooth fibre
+is a two-torus, a primary or secondary Hopf surface of
+algebraic dimension zero. The Inoue exclusion is C.3.12.
+Both Hopf
+entries and the torus entry occur, by C.3.6 and D.2.7.
+For the entire smooth locus there are exactly the following
+two cohomological alternatives:
+\[
+\begin{array}{c|c|c}
+\text{smooth fibres}&
+ (h^0(\OO),h^1(\OO),h^2(\OO))&
+ \text{coherent direct images}\\ \hline
+\text{two-tori}&(1,2,1)&
+ R^2f_*\OO_Y\simeq\det R^1f_*\OO_Y\\
+b_1=1,\ b_2=0&(1,1,0)&
+ R^1f_*\OO_Y\simeq\OO_{\PP^1},\
+ R^2f_*\OO_Y=0 .
+\end{array}
+\tag{C.PK.9}
+\]
+The indicated cohomology dimensions hold on every
+scheme-theoretic full fibre in the respective branch,
+and both direct images satisfy base change there.
+In the second branch
+$H^q(Y,\OO_Y)=(\C,\C,0,0)$ and
+$\Pic^0(Y)=\C\beta$ with the exponential convention
+of D.1.9. The first line records a cohomological
+alternative rather than a positivity assertion about
+the splitting of $R^1f_*\OO_Y$.
+\end{corollary}
+\begin{proof}
+C.3.7, C.3.9, C.3.10 and C.3.12 remove the bielliptic,
+Kodaira and Inoue types from C.3.1; C.3.8 gives the Hopf algebraic
+dimension. All smooth fibres are diffeomorphic over the
+connected smooth base. In the torus branch they have
+$b_1=4$, $b_2=6$, and are K\"ahler by the compact-surface
+criterion. Their rational first Chern class and second
+Chern number vanish by C.3.1. The surface classification
+then makes them two-tori: an effective nonzero canonical
+divisor has strictly positive degree against a K\"ahler
+form, whereas this rational first Chern class has zero
+degree. The minimal K\"ahler surfaces of Kodaira dimension
+zero with these Betti numbers are exactly the two-tori.
+D.1.12 supplies this branch's full-fibre assertions.
+
+In the Hopf branch every smooth fibre has
+$b_1=1$ and $b_2=0$. A nonzero holomorphic two-form
+is closed and has strictly positive integral against
+its conjugate, so it defines a nonzero de Rham
+cohomology class. Thus $b_2=0$ forces $p_g=0$.
+Since $\chi(\OO)=0$ by C.3.1, one has $q=1$.
+By E4, $\mathscr E=R^1f_*\OO_Y$ is a line bundle,
+and its nowhere-zero transgression section $\beta$
+from D.1.9 trivializes it. The coherent sheaf
+$\mathscr G=R^2f_*\OO_Y$ has rank zero, hence finite
+length. Hirzebruch--Riemann--Roch on $Y$ and coherent
+Leray give the exact equality
+\[
+ 0=\chi(Y,\OO_Y)
+   =\chi(\OO_{\PP^1})-\chi(\mathscr E)+\chi(\mathscr G)
+   =1-1+\operatorname{length}(\mathscr G).
+\]
+Therefore $\mathscr G=0$. Top-degree base change and
+the parameter-multiplication exact sequence give
+$h^2(\OO_{Y_c})=0$ and $h^1(\OO_{Y_c})=1$ on each
+full fibre; E4 gives $h^0(\OO_{Y_c})=1$.
+Leray now gives the stated global structure-sheaf
+cohomology. Finally $H^1(Y;\Z)=0$ and the exponential
+sequence identify $\Pic^0(Y)$ with
+$H^1(Y,\OO_Y)=\C\beta$, as asserted.
+\end{proof}
