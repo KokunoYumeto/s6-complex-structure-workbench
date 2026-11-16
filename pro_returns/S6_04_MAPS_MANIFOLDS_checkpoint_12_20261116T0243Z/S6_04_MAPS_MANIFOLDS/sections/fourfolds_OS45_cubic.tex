@@ -1,0 +1,206 @@
+% Working exact free-lattice input for the maps-owned OS45 invariant problem.
+% No complete torsion fundamental-class invariant or smooth classification is asserted.
+\subsubsection*{The primitive component lattice and cubic in the sixteen-component OS45 example}
+We first record a saturation calculation which uses the actual component
+meridians. Let $X$ be simply connected, let $N$ be a single rank-two
+Mumford cusp with $D$ components, and put $E=X\setminus\operatorname{int}N$.
+Assume $b_2(X)=D-1$, $H_3(N;\mathbb Z)$ is free, and
+\[
+ H_1(E;\mathbb Z)=\mathbb Z\oplus A,\qquad
+                       \mu_i=(1,a_i),                      \tag{D.PC1}
+\]
+where $A$ is finite and $\mu_i$ is the positively oriented meridian of
+component $i$. The component classes $x_i$ then generate a sublattice
+\[
+ L=\mathbb Z^D/\mathbb Z(1,\ldots,1)
+                       \subset H^2(X;\mathbb Z)
+\]
+whose full primitive extension, inside $L\otimes\mathbb Q$, is
+\[
+ H^2(X;\mathbb Z)
+   =L+\left\{\sum_i\widetilde{\chi(a_i)}x_i:
+                         \chi\in\operatorname{Hom}(A,\mathbb Q/\mathbb Z)
+        \right\}.                                        \tag{D.PC2}
+\]
+A tilde means any rational lift of a value in $\mathbb Q/\mathbb Z$;
+changing it adds an element of $L$. In particular the component
+lattice has index $|A|$.
+
+\begin{proof}
+Poincare--Lefschetz duality identifies
+$H^2(X,E;\mathbb Z)=H_4(N;\mathbb Z)=\mathbb Z^D$,
+with its positive component Thom basis, and
+$H^3(X,E;\mathbb Z)=H_3(N;\mathbb Z)$ is free. The connecting
+map from $H^1(E;\mathbb Z)$ evaluates on the meridians (D.PC1),
+so its image is precisely $\mathbb Z(1,\ldots,1)$.
+The relative exact sequence therefore injects $L$ into $H^2(X)$.
+Since $X$ is simply connected, the latter group is free; its rank is
+$D-1$ by hypothesis. Its quotient by $L$ is finite and embeds in
+$H^2(E)$, whose torsion is
+$\operatorname{Ext}(H_1(E),\mathbb Z)=\operatorname{Hom}(A,\mathbb Q/\mathbb Z)$.
+All this torsion lifts to $H^2(X)$ because the next relative group is
+free. Thus the quotient has exactly that order.
+
+Here is also its precise embedding, rather than only its index.
+For a character $\chi$ of order $m$, extend it by zero on the free
+summand of $H_1(E)$. Regard it as a class in
+$H^1(E;\mathbb Z/m)$ by multiplying its values by $m$.
+Its relative coboundary has component coordinates
+$m\widetilde{\chi(a_i)}\pmod m$. Choose the displayed integers
+as an integral relative lift. Its image in $H^2(X;\mathbb Z/m)$
+is zero by exactness. Hence its integral image is divisible by $m$
+in $H^2(X;\mathbb Z)$, giving the class in (D.PC2).
+The coefficient exact sequences identify its exterior restriction
+with the corresponding torsion Bockstein, up to the harmless common
+connecting-map sign. Since these characters give the full torsion
+of $H^2(E)$, they give the full primitive extension. This proves
+(D.PC2), including every finite denominator.
+\end{proof}
+
+Now take the exact marked data
+\[
+ \mathrm{OS45/default},\quad P=2G,\quad Q=8G,\quad
+ (w_0,w_1,w_2,w_3,w_4)=(2,0,0,0,0),\quad e=1,              \tag{D.PC3}
+\]
+with all multiplicative fibres filled by their marked Mumford caps.
+D.2.46 gives
+\[
+ H_2(X)=\mathbb Z^{15}\oplus\mathbb Z/8,\qquad
+ H_3(X)=\mathbb Z/8,\qquad \pi_1(X)=1.
+                                                               \tag{D.PC4}
+\]
+The elliptic monodromy at $I_8$ is
+$\left(\begin{smallmatrix}1&8\\0&1\end{smallmatrix}\right)$
+and its section cocycle is $(3,0)$. Formula (D.GI2) therefore gives
+\[
+ A_0=\begin{pmatrix}
+ 1&8&0&24\\0&1&0&0\\0&-6&1&-16\\0&0&0&1
+ \end{pmatrix},\qquad
+ L_{\rm per}=\left\langle(8,-6),(24,-16)\right\rangle
+                 =8\mathbb Z\oplus2\mathbb Z.             \tag{D.PC5}
+\]
+The short basis is $(e_1,\delta)$ and the long basis is $(e_2,\gamma)$.
+This is an equality of sublattices, not merely a comparison of
+indices. The determinant is sixteen and the Smith factors are two
+and eight. Label the normalized components by
+\[
+             (r,s)\in\mathbb Z/8\times\mathbb Z/2,
+             \qquad i=2r+s.                              \tag{D.PC6}
+\]
+
+The actual cusp complement satisfies
+\[
+ H_1(E)=\mathbb Z\oplus\mathbb Z/2,
+                      \qquad \mu_{r,s}=(1,s\bmod2).      \tag{D.PC7}
+\]
+To verify the marking, retain all peripheral generators and the
+ordinary clutch in the exact degree-one presentation. Its Smith
+form has seven unit factors, one factor two, and one free generator.
+The torsion character in the original nine coordinates is
+\[
+                  (0,-2,1,2,0,0,2,-2,2)\pmod2,
+                                                               \tag{D.PC8}
+\]
+which is precisely $\delta^*$ modulo two. The free character
+evaluates to one on the cusp meridian. A height-one ray at
+$(r,s)$ has literal meridian $\theta+r e_1+s\delta$; it
+therefore gives exactly (D.PC7). The full original presentation,
+Smith change of basis and all sixteen meridian images are saved
+in the executable below.
+
+Applying (D.PC2), there is a unique integral class $y$ with
+\[
+                    2y=\sum_{r=0}^{7}x_{r,1}.             \tag{D.PC9}
+\]
+The component lattice has exact index two. In particular it would
+be incorrect to declare any fifteen of the component classes a
+primitive basis. A convenient actual basis is
+\[
+ x_0,x_1,\ldots,x_{13},y,\qquad
+ x_{14}=-2y-\sum_{\substack{i<14\\i\ \mathrm{even}}}x_i,
+ \qquad
+ x_{15}=2y-\sum_{\substack{i<14\\i\ \mathrm{odd}}}x_i.
+                                                               \tag{D.PC10}
+\]
+The integral matrix of the sixteen component classes in this basis
+has Smith factors $1^{14},2$ and kernel generated by the all-one
+vector. These are the asserted primitive markings.
+
+Here is the complete cubic on that basis. For component classes,
+D.2.47 specializes to the following symmetric integral trilinear
+form. With distinct vertices as appropriate,
+\[
+ \begin{aligned}
+ T(x_i,x_i,x_i)&=6,\\
+ T(x_i,x_i,x_j)&=
+ \begin{cases}
+ -2,&i=(r,s),\ j=(r,1-s),\\
+ -1,&i=(r,s),\ j=(r\pm1,t),\quad t=0,1,\\
+ 0,&\text{otherwise},
+ \end{cases}\\
+ T(x_i,x_j,x_k)&=
+ \begin{cases}
+ 1,&\{i,j,k\}\text{ is three of the four vertices in}\\[-2pt]
+   &\hspace{12pt}\{(r,0),(r,1),(r+1,0),(r+1,1)\}
+                   \text{ for some }r,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+ \end{aligned}                                             \tag{D.PC11}
+\]
+All horizontal indices are cyclic modulo eight. Repeated geometric
+edges and triangle cells are retained in this formula.
+The remaining primitive entries are
+\[
+ \begin{aligned}
+ T(y,x_{r,s},x_{r',s'})
+ &=(-1)^s\left(
+       \mathbf1_{s'=s,\ r'=r+1}
+      +\mathbf1_{s'=s,\ r'=r-1}
+      -2\mathbf1_{(r',s')=(r,s)}\right),\\
+ T(y,y,x_i)&=0,\qquad T(y,y,y)=0.
+ \end{aligned}                                             \tag{D.PC12}
+\]
+These formulas determine every entry on the primitive basis
+(D.PC10), and every resulting entry is integral.
+
+For a geometric verification of the half-class entries, on a
+normalized $dP_6$ take the cyclic boundary classes
+\[
+ E_1,\ H-E_1-E_2,\ E_2,\ H-E_2-E_3,\ E_3,\ H-E_1-E_3
+                                                               \tag{D.PC13}
+\]
+in the ray order of D.2.47. The four nonhorizontal boundary classes
+sum to $2f$, where $f=H-E_1$ and $f^2=0$. Restricting (D.PC9)
+therefore gives
+\[
+                         y|_{P_{r,s}}=(-1)^s f.            \tag{D.PC14}
+\]
+This division is valid in the torsion-free group $H^2(dP_6;\mathbb Z)$.
+The fibre $f$ has degree one on each horizontal boundary curve
+and zero on the other four. The Cartier restriction formula in
+D.2.47 now gives the first line of (D.PC12). Squaring (D.PC14)
+gives $y^2x_i=0$; multiplying (D.PC9) by $y^2$ gives $y^3=0$.
+Thus no rational cubic has been silently substituted for the
+integral form.
+
+Finally $c_1(X)=0$ and both $c_2$ and $p_1$ pair to zero with
+every class in the primitive free basis. For $c_1$, the normalized
+component tangent calculation is zero and the component restriction
+is rationally injective by the connected toric graph Laplacian;
+$H^2(X)$ is torsion-free, so this proves integral vanishing.
+For $c_2,p_1$, D.2.47 gives zero on every component. The component
+classes have finite index, and the evaluations are integers, so they
+also vanish on $y$. These statements concern the free characteristic
+pairings; they do not determine the torsion class of $c_2$, the
+refined class, or the full finite-coefficient fundamental-class
+invariant.
+
+\path{code/fourfolds_OS45_primitive_cubic.py}
+reconstructs the actual complement before using its torsion
+character, checks all sixteen meridians, computes the exact
+index-two primitive lattice, and verifies all $15^3=3375$ primitive
+triples and all $16^3=4096$ recovered component triples. The
+normalization restriction (D.PC14), the actual period basis, and
+all sparse integral entries are retained in its JSON output.
+The preliminary component-only calculation is retained separately
+in \path{code/fourfolds_OS45_component_ring.py}.

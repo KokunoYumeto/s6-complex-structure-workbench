@@ -1,0 +1,367 @@
+\paragraph{Theorem F.3.8 (Proved: the unpolarized period domain has LSAP).}
+Let $D_3$ be the component of
+\[
+ \{F\in\operatorname{Gr}(3,\mathbb C^6):F\cap\overline F=0\}
+\]
+containing the standard complex structure, so that
+$D_3\cong GL^+(6,\mathbb R)/GL(3,\mathbb C)$.
+At every point, $D_3$
+is dominated by a spanning tube of nine complex lines.  In particular,
+it has the local spray approximation property (LSAP) and is Oka--1.
+These assertions concern the unpolarized domain.
+
+\begin{proof}
+Use the graph chart $F_Z=\operatorname{im}\binom Z{I_3}$.
+The open set
+\[
+ \Omega=\{Z\in M_3(\mathbb C):\det(\operatorname{Im}Z)>0\}
+ \tag{F.O1}
+\]
+lies in $D_3$ and contains $iI_3$.  For a real column $w$, write
+$K_w x=w\times x$, put $q_w=w^tw$, and define
+\[
+ A_w=q_wI_3-ww^t+K_w.
+ \tag{F.O2}
+\]
+Take the six vectors
+\[
+ e_1,\ e_2,\ e_3,\ e_1+e_2,\ e_1+e_3,\ e_2+e_3
+\]
+and the corresponding six matrices $A_w$, followed by the three
+matrices $K_{e_1},K_{e_2},K_{e_3}$.  Call these nine matrices
+$A_1,\ldots,A_9$.  Their symmetric parts are a basis of the
+six-dimensional space of real symmetric matrices: the first three
+give all diagonal matrices and the last three add the three distinct
+off-diagonal entries.  The final three skew matrices form a basis
+of the skew matrices.  Thus the nine directions are linearly
+independent over $\mathbb R$ and also over $\mathbb C$.
+For reference, the determinant of their nine row-major coordinate
+columns is $-16$.
+
+Each $A_w$ is real normal, is zero on $\mathbb Rw$, and has
+eigenvalues $q_w\pm i\sqrt{q_w}$ on $w^\perp\otimes\mathbb C$.
+For every real $s$ its two transverse squared singular values are
+\[
+ (1+q_ws)^2+q_ws^2
+ =q_w(q_w+1)\left(s+\frac1{q_w+1}\right)^2
+       +\frac1{q_w+1}\ge\frac13,
+ \tag{F.O3}
+\]
+since $q_w\in\{1,2\}$; the remaining squared singular value is one.
+For a pure skew direction $K_{e_j}$ all singular values of
+$I_3+sK_{e_j}$ are at least one.  Their determinants are positive
+at $s=0$ and never vanish, so they are positive for all real $s$.
+
+Let $\Lambda=\bigcup_{j=1}^9(iI_3+\mathbb C A_j)$ and let
+$B_{1/4}$ be the open Frobenius ball of radius $1/4$ in
+$M_3(\mathbb C)$.  Then
+\[
+ T=\Lambda+B_{1/4}\subset\Omega.
+ \tag{F.O4}
+\]
+Indeed, the imaginary part of $iI_3+tA_j+E$ is
+$I_3+(\operatorname{Im}t)A_j+\operatorname{Im}E$.
+Its unperturbed least singular value is at least $1/\sqrt3$,
+whereas $\|\operatorname{Im}E\|_{\rm op}<1/4$.
+It therefore stays invertible throughout the straight perturbation
+from $E=0$, preserving the positive determinant.
+The set $T$ is open and connected and is a union of affine
+translates of the spanning tree $\Lambda$.  Thus it is a spanning
+tube in the precise sense of \cite[Definition 2.1]{ffAlarconForstneric25},
+not merely a neighborhood of one entire line.  Its inclusion in
+$D_3$ is a local biholomorphism at $iI_3$.
+
+The real group $GL^+(6,\mathbb R)$ acts holomorphically and
+transitively on $D_3$.  Transporting this tube gives the same
+domination at every point.  The observation preceding
+\cite[Proposition 7.13]{ffAlarconForstneric25} gives LSAP from
+this domination, and its part (b), or Theorem 2.2 of that paper,
+gives Oka--1.  The exact program
+\texttt{code/fourfolds\_oka\_tubes.py} checks all nine integer
+matrices, their linear independence and the symbolic identity
+(F.O3); the displayed uniform bound proves (F.O4) for all complex
+parameters and is not a finite positivity test.
+\end{proof}
+
+\paragraph{Theorem F.3.9 (Proved: holomorphic periods on every open base).}
+Let $B$ be an open connected Riemann surface and
+$\rho:\pi_1(B)\to GL^+(6,\mathbb R)$ any representation.
+Its associated flat $D_3$-bundle admits a holomorphic section.
+More generally, every continuous section which is holomorphic
+near a compact Runge set can be deformed through sections to a
+holomorphic section, with arbitrary uniform approximation there
+and any prescribed finite-order interpolation at finitely many
+points of that set.  For an integral representation, this gives
+a holomorphic family of complex three-tori with the prescribed
+lattice local system and a zero section over $B$.
+
+\begin{proof}
+The flat bundle
+$\mathscr D=\widetilde B\times_\rho D_3\to B$ is a holomorphic
+fibre bundle: its transition maps are constant real linear
+transformations, acting holomorphically on the Grassmannian.
+Its fibre has LSAP by Theorem F.3.8, so the bundle map is an
+Oka--1 map by \cite[Proposition 7.13(d)]{ffAlarconForstneric25}.
+The lifting property in Definition 7.7 of that paper, applied
+to the identity map of $B$, gives precisely the stated section
+deformation and approximation, including the finite jets.
+This uses the section theorem, rather than an inference from
+the Oka--1 property for maps to the fibre alone.
+
+There is a continuous section to start with.  An open Riemann
+surface has the homotopy type of a one-dimensional CW complex;
+a bundle with connected fibre admits a section over its vertices
+and edges, and the homotopy lifting property transports this
+section to $B$.  Connectedness holds for the chosen component
+$D_3$.  Taking the Runge set empty therefore proves existence.
+
+For an integral representation let $\mathbb V_\mathbb Z$ be its
+lattice local system and let $\mathcal F\subset
+\mathbb V_\mathbb Z\otimes\mathcal O_B$ be the resulting
+holomorphic rank-three subbundle.  Real transversality says that
+projection identifies the real vector bundle with the underlying
+real bundle of
+$\mathcal Q=(\mathbb V_\mathbb Z\otimes\mathcal O_B)/\mathcal F$.
+Hence the image of $\mathbb V_\mathbb Z$ is a full lattice in
+every fibre of $\mathcal Q$.  Locally it is uniformly discrete
+and acts by holomorphic translations.  The quotient
+$\mathcal Q/\mathbb V_\mathbb Z\to B$ is consequently a smooth
+proper holomorphic family of compact complex three-tori,
+with its evident zero section and the required marking.
+\end{proof}
+
+\paragraph{Scope of F.3.8--F.3.9.}
+Taking $B=\mathbb P^1\setminus\{\hbox{singular values}\}$
+settles existence of nondegenerate holomorphic periods on the
+smooth locus for every oriented rank-six datum.  It does not
+impose good reduction after the finite root changes or the bounded
+correction to the logarithmic cusp period.  Those are conditions
+at points missing from $B$, whereas the interpolation theorem
+controls only finite jets at points lying in $B$.  Exact agreement
+with a prescribed germ on an annulus cannot be requested either:
+the identity theorem would then determine its analytic continuation.
+Thus this theorem advances the unrestricted F.3 problem but does
+not decide all its compactification conditions.
+
+\paragraph{Lemma F.3.10 (Proved: retaining isolated extension points).}
+Let $R$ be an open Riemann surface, $V\to R$ a holomorphic vector
+bundle, and $\mathscr U\subset\operatorname{Gr}_r(V)$ an open
+subset whose projection onto $R$ is surjective.  Let $S\subset R$
+be finite.  Suppose that over $R\setminus S$ this projection is
+a holomorphic fibre bundle with an LSAP fibre.  Let $K\subset R$
+be a compact Runge set containing $S$ in its interior.
+Every continuous section of $\mathscr U$ which is holomorphic
+near $K$ can be deformed through sections to a holomorphic
+section, with arbitrary uniform approximation on $K$ and
+interpolation of any given finite jets at finitely many points
+of its interior.  No fibre-bundle or Serre-fibration assertion
+is required at the points of $S$.
+
+\begin{proof}
+Here are the details of the relative version of the LSAP argument
+in \cite[Lemma 5.1, Theorem 6.1 and Proposition 7.13(d)]
+{ffAlarconForstneric25}.  They also specify why isolated extension
+points cause no new analytic step.  Enlarge $K$ slightly inside
+the domain of holomorphicity, retaining the Runge property.
+Choose a strongly subharmonic Morse exhaustion of $R$ starting
+with this compact set.  All subsequent boundary arcs, attached
+discs and critical one-handles can and will be chosen disjoint
+from $S$.  On them $\mathscr U$ is an ordinary holomorphic
+bundle with LSAP fibre.
+
+The global spray on the old compact set can be taken to be
+vertical even though the fibres at $S$ differ.  Indeed, let $f$
+be the current holomorphic section on a Stein neighborhood $W$
+of that set.  Put $A$ equal to the finite interpolation set,
+including $S$, and choose an ideal sheaf $\mathcal I$ vanishing
+to one more than the prescribed jet orders at its points.
+Cartan's theorem A supplies finitely many holomorphic sections
+$T_1,\ldots,T_N$ of
+$\operatorname{End}(V)|_W\otimes\mathcal I$ which generate
+$\operatorname{End}(V)$ on the compact attaching arcs, after
+shrinking $W$ if needed.  The formula
+\[
+ F(z,a)=\exp\left(\sum_{j=1}^N a_jT_j(z)\right)f(z)
+ \tag{F.O5}
+\]
+defines a holomorphic spray of sections of the Grassmannian
+bundle.  Its differential in $a$ surjects onto the vertical
+tangent space at every attaching point, since
+$\operatorname{End}(V_z)\to
+\operatorname{Hom}(f(z),V_z/f(z))$ is onto.
+For $a$ sufficiently small it has range in $\mathscr U$ on
+a neighborhood of the old compact set, by openness and
+compactness.  Every parameter value preserves all the chosen
+jets.  Domination at $A$ is neither asserted nor used.
+
+For a noncritical extension, subdivide the new annular regions
+into small discs lying in bundle trivializations over
+$R\setminus S$.  Restrict (F.O5) to a thin attaching disc.
+LSAP of the fibre extends this spray across the attached disc,
+approximating the old spray as closely as desired on the
+intersection.  The spray gluing used in the proof of
+\cite[Lemma 5.1, equations (5.6)--(5.8)]
+{ffAlarconForstneric25} now applies verbatim to vertical sprays:
+the inverse-function step is needed only on the attaching
+intersection, where (F.O5) is dominating.  It produces
+reparametrizations of the two sprays and a glued section.
+The old part remains in $\mathscr U$ because it is evaluated
+in (F.O5); the new part remains in $\mathscr U$ because the
+LSAP spray takes values in the bundle fibre.  The fixed jets
+survive the reparametrizations, being independent of the
+spray parameters on the old side.
+
+For a critical extension, first extend over the attached real
+arc using the given continuous section and the homotopy already
+constructed on the old compact set.  Apply Mergelyan
+approximation with the same finite jets to a neighborhood of
+the union of the old set and this arc, and then apply the
+noncritical step.  To see explicitly that this approximation
+is by sections, trivialize $V$ holomorphically on the open
+Riemann surface: its underlying complex bundle is trivial over
+a graph spine, and the frame bundle therefore has a continuous
+section.  Its fibre $GL(\operatorname{rank}V,\mathbb C)$ has
+the dominating spray $(g,A)\mapsto g\exp A$, so
+\cite[Theorem 1.2]{ffForstnericPrezelj02} gives a holomorphic
+frame.  The section is then a map to the
+fixed Grassmannian, to which
+\cite[Theorem 2.13]{ffAlarconForstneric25} applies.  The base
+coordinate is kept unchanged.  Close approximation on the
+compact arc and old set, followed by shrinking its
+neighborhood, preserves membership in the open subset
+$\mathscr U$.  This is the critical case of Theorem 6.1 of
+that paper, with no approximation performed at a singular
+point of the projection: here the projection is a submersion
+everywhere, as $\mathscr U$ is open in a Grassmannian bundle.
+
+Choose successive errors summably small on the preceding
+compact sets and smaller than their distances to the complement
+of $\mathscr U$.  The sections converge uniformly on every
+compact set to a holomorphic section with range in
+$\mathscr U$.  The finite jets persist.  The close homotopies
+on successive stages concatenate in the usual exhaustion
+construction.  All new attachment regions lie outside $S$;
+the old section remains holomorphic on a full neighborhood of
+each point of $S$ at every stage.  This proves the lemma.
+\end{proof}
+
+\paragraph{Theorem F.3.11 (Proved: the bounded-cusp period decision).}
+Let
+$B^*=\mathbb P^1\setminus\{p_0,p_1,\ldots,p_k\}$,
+where $k\ge1$, and let
+$\rho:\pi_1(B^*)\to GL^+(6,\mathbb R)$ be a representation.
+Assume that the monodromy $M_0$ at $p_0$ satisfies
+$(M_0-I)^2=0$ and $\operatorname{rank}(M_0-I)=3$.
+Then there is a holomorphic period family with this monodromy
+and nondegenerate real transversality everywhere on $B^*$,
+equivalently a nondegenerate imaginary part in each local
+normalized period chart.
+In a marking with $M_0=\left(\begin{smallmatrix}I&I\\0&I\end{smallmatrix}\right)$
+its cusp period is
+\[
+ Z(t)=\frac{\log t}{2\pi i}I_3+C(t),
+ \qquad C(t)\text{ holomorphic at }t=0.
+ \tag{F.O6}
+\]
+Any prescribed finite jet of $C$ at zero may be imposed.
+For an integral primitive cusp the marking can be integral.
+Consequently every topological survivor of F.2 admits the
+period family requested literally in F.3.  No good-reduction
+condition at the other, still punctured, points is included
+in this assertion.
+
+\begin{proof}
+Write $N=M_0-I$ and choose a real basis with
+$N=\left(\begin{smallmatrix}0&I\\0&0\end{smallmatrix}\right)$.
+Its integral version is Theorem F.2.1.  Choose the component
+of the period domain selected by the positive logarithmic
+model in (F.O6).  This choice matters only when an orientation
+has been fixed independently of the marking; every element
+of $GL^+(6,\mathbb R)$ preserves either component.
+
+Retain the cusp as a point of the \emph{open} surface
+\[
+ B=\mathbb P^1\setminus\{p_1,\ldots,p_k\}.
+\]
+The flat complex vector bundle on $B^*$ has a holomorphic
+extension $V_D$ across $p_0$: in a local coordinate $t$ use
+the single-valued frame obtained by the change
+$\exp(-sN)$, where $s=(\log t)/(2\pi i)$.
+Changing the logarithm by $2\pi i$ is cancelled by $M_0$.
+This specifies the extension directly, without a growth
+assumption on a period section.
+
+Over $B^*$ let $\mathscr U$ be the flat bundle of real-transverse
+planes in the chosen component.  At $p_0$ adjoin only the
+planes transverse to $\ker N_\mathbb C$, an affine space of
+matrices $C\in M_3(\mathbb C)$.  This gives an \emph{open}
+subset $\mathscr U\subset\operatorname{Gr}_3(V_D)$.
+Indeed, in the chart $F_C=\operatorname{im}\binom C{I_3}$
+the actual flat period is
+$\exp(sN)F_C=F_{sI_3+C}$.  For $t\ne0$ membership is exactly
+\[
+ \det\bigl(y(t)I_3+\operatorname{Im}C\bigr)>0,
+ \qquad y(t)=-\frac{\log|t|}{2\pi}.
+ \tag{F.O7}
+\]
+For every fixed $C_0$, and uniformly for $C$ in a sufficiently
+small bounded neighborhood of $C_0$, the matrix in (F.O7) is
+invertible with positive determinant when $|t|$ is sufficiently
+small.  This follows, for example, from
+$y(t)>\|\operatorname{Im}C\|_{\rm op}$ and a straight-line
+homotopy to $y(t)I_3$.  Thus a full neighborhood of
+$(0,C_0)$ lies in the adjoined set, proving openness.
+The projection is consequently a holomorphic submersion,
+although its fibre at $p_0$ is $\mathbb C^9$ rather than $D_3$.
+
+Start with a polynomial $C_0(t)$ realizing the desired finite
+jet.  Formula (F.O7) makes it a holomorphic section on a small
+closed cusp disc $K$, which is Runge in $B$.
+This section extends continuously over $B$.  To justify the
+relative extension, $D_3$ is connected and simply connected:
+it retracts onto $SO(6)/U(3)$, and
+$\pi_1(U(3))\to\pi_1(SO(6))$ is onto, since a unitary rotation
+in one complex coordinate is a generator of the real
+two-plane rotation loop.  A cellular decomposition of the
+surface outside the cusp disc now extends its boundary
+section over edges by connectedness and over two-cells by
+simple connectivity.  The flat bundle is trivial over each
+cell.  This argument uses no fibration property at $p_0$.
+
+Over $B\setminus\{p_0\}$ the fibre is the LSAP manifold
+$D_3$ from Theorem F.3.8.  Lemma F.3.10, with $S=\{p_0\}$,
+produces a holomorphic section of $\mathscr U$ over all of
+$B$, with the chosen jet at $p_0$.  Since its value at $p_0$
+lies in the affine chart just adjoined, it has a holomorphic
+matrix $C(t)$ there.  Undoing the canonical frame gives
+exactly (F.O6), with a bounded holomorphic correction.
+Everywhere else membership in $\mathscr U$ is precisely
+nondegeneracy of the complex-torus periods.
+More explicitly, choose three members of a real lattice basis
+whose projected periods are complex-linearly independent, and
+normalize them to $I_3$.  The remaining three periods form a
+matrix $Z$, and real transversality is exactly
+$\det\operatorname{Im}Z\ne0$.  This normalization persists
+locally.  A single Schubert chart is not imposed globally,
+and none is needed to define a marked torus period family.
+
+For F.2 survivors, Theorem F.2.7 excludes $k=3$ and
+Proposition F.2.15 proves orientation preservation of the
+finite matrices for $k=2$.  The cusp determinant is also one.
+Thus all survivors satisfy the hypotheses.  This is a
+universal existence decision and does not require completion
+of their simultaneous integral classification.
+\end{proof}
+
+\paragraph{Finite good reduction remains a distinct requirement.}
+Theorem F.3.11 resolves the period-existence clause of F.3 as
+written: its base is the punctured sphere, and its specified
+end condition is the bounded cusp correction.  It does not
+claim that every such family extends at the other punctures
+after the finite root changes.  Requiring that stronger
+simultaneous extension would retain every puncture and leave
+a compact base, to which the Runge exhaustion used above does
+not apply.  The specific compact fourfold in F.4 already has
+all its finite extensions by Theorems F.3.5--F.3.7; its
+existence does not depend on this stronger unresolved general
+compactification question.

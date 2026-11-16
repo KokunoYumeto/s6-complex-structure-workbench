@@ -1,0 +1,268 @@
+\paragraph{Theorem D.2.25 (Proved: all initial rows and all regular logarithms in the semistable sector).}
+Consider any of the $62$ natural initial rows of D.2.22 on the four
+all-multiplicative profiles $45,47,55,56$. Write $P=aG,Q=bG$, with
+$a,b>0$. Use the primitive Mumford model at each multiplicative fibre.
+An original zero-free filling with zero line multidegree and one
+component orbit may be used in its place; it has the same marked
+primitive rank-one model. Perform any finite number of regular
+logarithmic modifications, with data
+\[
+ m_i>0,\qquad v_i=(x_i,y_i,z_i,n_i)\in\mathbb Z^4,
+ \qquad\gcd(m_i,x_i,y_i,z_i,n_i)=1.                           \tag{D.SC1}
+\]
+The coordinates are $(e_1,e_2,\delta,\gamma)$. Put
+$\omega=a e_1^*e_2^*+b\gamma^*\delta^*$. The initial rows have
+$\gcd(a,b)=1$. Retain the peripheral integer $e$ of D.2.23;
+one may keep every order-one site and use the canonical value $e=0$.
+
+Here is a complete integral homology algorithm without a bound on
+orders, number of sites, or translation coordinates. Let $S$ be the
+Seifert relation matrix (D.FG2), and write
+\[
+ \operatorname{coker}S=\mathbb Z^r\oplus A_1,\qquad r\in\{0,1\}.
+\]
+Form an integral presentation $\mathcal C$ with generators
+$s$ and $t_i(u)$, linear in $u\in\Lambda=\mathbb Z^4$, and relations
+\[
+ \begin{split}
+ m_i t_i(u)&=\omega(u,v_i)s\quad(u=e_1,e_2,\delta,\gamma),\\
+ t_i(v_i)&=0,\\
+ \sum_i t_i(\delta)+be\,s&=0.
+ \end{split}                                                \tag{D.SC2}
+\]
+Write $T=\operatorname{Tor}\operatorname{coker}\mathcal C$.
+Then $\operatorname{coker}\mathcal C$ has free rank $r$ and
+\[
+\begin{array}{c|c}
+ j&H_j(X;\mathbb Z)\\\hline
+ 0,6&\mathbb Z\\
+ 1&\mathbb Z^r\oplus A_1\\
+ 2,3&\mathbb Z^{2r}\oplus T\\
+ 4&\mathbb Z^{2r}\oplus A_1\\
+ 5&\mathbb Z^r.
+\end{array}                                                 \tag{D.SC3}
+\]
+The fundamental group is exactly (D.FG1), rather than merely the
+abelian group in degree one. Smith reduction of the explicit matrix
+(D.SC2) computes $T$, including all extensions.
+
+If this group is trivial, let
+\[
+ M=\prod_i m_i,\quad
+ X_0=\sum_i(M/m_i)x_i,\quad Y_0=\sum_i(M/m_i)y_i,\quad
+ g=\gcd(b,M,X_0,Y_0).
+\]
+For no displayed sites use $M=1$ and $X_0=Y_0=0$.
+Then
+\[
+ H_2(X)=H_3(X)=
+ \mathbb Z/g\oplus\mathbb Z/M\oplus\mathbb Z/(bM/g).          \tag{D.SC4}
+\]
+Consequently a sphere occurs precisely when the group criterion
+(D.FG3) holds and $b=M=1$. In the canonical marking with all sites
+retained, this says that every regular logarithmic order is one and
+$|\sum_i n_i|=1$.
+
+There are exactly $17$ permitted initial rows with $b=1$:
+\[
+\begin{array}{c|c|c|c}
+ \text{profile}&\text{zero fibre}&(a,b)&\text{marked positions}\\\hline
+ 45&I_1&(8,1)&4\\
+ 47&I_2&(7,1)&1\\
+ 47&I_1&(14,1)&3\\
+ 55&I_4&(5,1)&1\\
+ 55&I_1&(20,1)&3\\
+ 56&I_5&(6,1)&1\\
+ 56&I_3&(10,1)&1\\
+ 56&I_2&(15,1)&1\\
+ 56&I_1&(30,1)&2.
+\end{array}                                                 \tag{D.SC5}
+\]
+This is the complete natural sphere table for these four profiles,
+including original-versus-Mumford choices: any additional original
+cap not covered by the first paragraph is excluded by the positive
+local defect in D.2.22.
+
+More generally, every simply connected output in these $17$ rows,
+with arbitrary data (D.SC1), is oriented diffeomorphic to
+\[
+                              \widetilde\Sigma_0N_M,         \tag{D.SC6}
+\]
+with the twisted framing and the Smale five-manifold of D.2.14.
+Thus its full smooth type depends only on $M$, including when $M$
+is even. For $b>1$, (D.SC2)--(D.SC4) give the complete integral
+homology and exclude a sphere; no smooth classification of all
+those torsion types is asserted here.
+
+\begin{proof}
+\emph{1. The actual marked caps and the constant integral calculation.}
+At the component zero the valuation lattice has index one by D.2.22,
+so its cap is the primitive hexagonal model. Every other
+multiplicative monodromy in these $62$ rows has rank-one difference
+and Smith width one, as checked in D.2.23. Its local Mumford cap is
+the marked one-node model times $T^2$. The integral specialization
+onto its $H_2$, and that of the hexagonal cap, are onto; their
+boundary kernels are exactly the normal tori swept by
+$\operatorname{Fix}(A_i)$. The toric angular coordinates give these
+as pure swept classes, with zero fibre-area term. The same statement
+for an original zero-degree, one-orbit cap follows by quotienting
+its component cycle by $Q$, using the unit-factor isotopy of D.2.12.
+
+These normal markings agree with the section-line construction.
+Rigidify $M$ along $O$ on the punctured base. Put the divisor of this
+rigidification at the chosen zero; its integral change there is
+multiplication of the line coordinate by $t^h$. On the infinite
+toric model this translates the fan by an integral lattice vector,
+and hence extends over the cap. At all other points the
+rigidification is a unit and the earlier relative unit isotopy
+applies. Thus this normalization does not assume that equality of
+vertical forms alone determines mixed swept classes.
+
+The exact program \texttt{manifolds\_semistable\_catalogue.py}
+performs the graph and exterior calculations for all $62$ rows.
+The degree-two fibre coinvariants are freely generated by $s$,
+with primitive detector $\omega$; all its Smith factors are one.
+Adjoin one regular puncture, with monodromy the identity. In the
+notation of D.2.13, the $14$ old normal columns form a primitive
+rank-$14$ sublattice of the rank-$17$ graph kernel. Their quotient
+is freely generated by the regular sweeps of $e_1,e_2,\gamma$,
+while the sweep of $\delta$ is zero. All $62$ left inverses and
+quotient matrices are saved, so this is an exact integral
+certificate, not a numerical rank inference.
+
+Adding another regular puncture adds four free graph coordinates.
+The old normal lattice remains primitive by projection onto the
+previous graph. Since every monodromy fixes $\delta$, the peripheral
+Fox maps satisfy $\sum j_i(\delta)=0$. Induction therefore gives
+all regular sweeps freely, with the sole relation
+$\sum_i t_i(\delta)=0$. The degree-two exterior summand remains
+$\mathbb Zs$. A change of global peripheral lift by $e\gamma$
+adds $be\,s$ to this relation: the correction to a swept $\delta$
+cycle is its wedge with that translation, and
+$\omega(\delta,\gamma)=-b$. Equivalently, under
+$v_i\mapsto v_i+m_i h_i\gamma$ the new sweep is
+$t_i'(u)=t_i(u)+\omega(u,h_i\gamma)s$;
+$e\mapsto e+\sum h_i$ makes (D.SC2) invariant. This checks its
+sign against (D.FG1).
+
+\emph{2. The complete regular-log kernel.}
+At a regular log point its reduced torus has lattice
+$\Lambda'=\Lambda+\mathbb Z(v_i/m_i)$. The nearby fibre inclusion
+and the base circle send a boundary bivector respectively to
+$z$ and $u\wedge(v_i/m_i)$ in $\bigwedge^2\Lambda'$.
+This map is onto. The condition in (D.SC1) means $v_i$ is primitive
+modulo $m_i$; the integral normal lattice is exactly
+$m_i\Lambda+\mathbb Z v_i$. This can be checked in a basis in which
+$v_i$ modulo $m_i$ is the first basis vector, using the Euclidean
+algorithm. Its generators give the full normal columns
+\[
+ (-\omega(u,v_i),\ m_it_i(u)),\qquad (0,t_i(v_i)).
+\]
+They are precisely the first two lines of (D.SC2). The argument
+identifies the full integral kernel, including its index, not only
+its rational span. Since specialization is onto every cap in degree
+two, Mayer--Vietoris reduces to this cokernel.
+
+The remaining first MV kernel is free: all boundary $H_1$ groups
+are free in these primitive toric models. Its rank is $r$, because
+the domain and target of the first boundary map have equal rational
+dimension and its cokernel is $H_1(X)$. Hence it contributes a
+split $\mathbb Z^r$ to $H_2(X)$. Over $\mathbb Q$, eliminate the
+sweeps in (D.SC2); its sole residual relation is
+\[
+                 b\left(e-\sum_i n_i/m_i\right)s=0.
+\]
+Thus its free rank is the same $r$ as the Seifert matrix.
+Only the primitive hexagonal cap contributes Euler characteristic,
+so $\chi(X)=2$. Integral Poincare duality and the universal coefficient
+theorem give (D.SC3), including the identical torsion in $H_2,H_3$.
+This also proves the formula when the rational Euler number is zero;
+that case is not obtained by deleting a nonzero-order torsion factor.
+
+For one site in canonical marking, quotienting the zero $\delta$
+sweep displays the concrete four-by-five matrix
+\[
+ \begin{pmatrix}
+ -ay&ax&bn&-bz&0\\
+ m&0&0&0&x\\0&m&0&0&y\\0&0&0&m&n
+ \end{pmatrix}.                                             \tag{D.SC7}
+\]
+Its maximal minors are, up to signs,
+$bm^2n\,(m,n,z,y,x)$. In particular, whenever $n\ne0$,
+the finite degree-two cokernel has order $bm^2|n|$.
+The implementation accepts the general multi-site matrix (D.SC2),
+and verifies its comparison with all constant graph presentations.
+
+\emph{3. The simply connected Smith form.}
+Assume (D.FG1) is trivial. After removing order-one sites there are
+at most two multiplicities greater than one, they are coprime, and
+every $n_i$ is a unit modulo its $m_i$. Put
+\[
+                  D=M\left(\sum_i n_i/m_i-e\right).
+\]
+The group criterion gives $D=\pm1$. Work over $\mathbb Z_p$.
+If $p$ does not divide $M$, all sweeps can be eliminated and the
+cokernel is $\mathbb Z_p/(b)$. If $p\mid M$, it divides exactly
+one multiplicity, say $m_i$. For every other site $m_j$ is a unit,
+so its $\delta$ sweep equals $-bn_j/m_j$ times $s$. The global
+relation then eliminates $t_i(\delta)$. Its own normal relation
+becomes $bD/(M/m_i)$ times $s$, and hence is equivalent to $bs=0$.
+Since $n_i$ is a unit, its relation $t_i(v_i)=0$ eliminates
+$t_i(\gamma)$, whose remaining normal relation is redundant by
+alternation of $\omega$. The three remaining generators have
+presentation
+\[
+ \begin{pmatrix}
+ b&0&0\\ -ay_i&m_i&0\\ ax_i&0&m_i
+ \end{pmatrix}.                                             \tag{D.SC8}
+\]
+Its determinantal divisors are $g_i,m_i g_i,bm_i^2$, where
+$g_i=\gcd(b,m_i,x_i,y_i)$ in $\mathbb Z_p$; we used
+$\gcd(a,b)=1$. The Chinese remainder theorem packages all these
+primary invariant factors as (D.SC4), because
+$X_0,Y_0$ reduce at $p\mid m_i$ to unit multiples of $x_i,y_i$.
+The invariant factors divide in the stated order, since $g$ divides
+both $b$ and $M$. This proves the formula for every integer twist,
+not by extrapolating from the finite checks.
+
+The group in (D.SC4) vanishes exactly for $b=M=1$. Simple connectivity,
+Euler number two, and integral duality then give a homotopy sphere;
+$\Theta_6=0$ identifies it with the standard $S^6$. The seventeen
+initial rows in (D.SC5) are the complete $b=1$ filter of D.2.22.
+An excluded original cap has nonzero Chern degree or multiple
+component orbits and would already force $b_2>0$, so cannot supply
+additional sphere rows.
+
+\emph{4. The smooth type when $b=1$.}
+We verify the hypotheses of the geometric proof D.2.14 rather than
+inferring a smooth type from homology. At every zero-free
+multiplicative point the component equation forces $P$ to be narrow
+when $Q=G$; the component action of $Q$ is primitive and transitive. The code
+checks these component statements and, more directly, that adjoining
+$\delta$ to the actual primitive vanishing vector gives two unit
+Smith factors at every such site. Thus $\delta$ stays primitive
+modulo the vanishing line and its circle is free on the cap; width
+one alone is not being used to infer this. At the zero, index one makes the valuation lattice the full original
+short lattice, in which $\delta$ is the second coordinate. The code
+checks its primitive inclusion in that lattice in all seventeen rows.
+The actual hexagonal fan weights are therefore the same $(-1,0,1)$ as in D.2.14, with one fixed rational curve and
+normal bundle $\mathcal O(-1)_{+1}\oplus\mathcal O(-1)_{-1}$.
+For every regular log cap, $\gcd(m_i,n_i)=1$ implies that a scalar
+angle lying in $\Lambda+\mathbb Z(v_i/m_i)$ is integral. Hence no
+new circle stabilizers occur.
+
+The fixed curve lies in the cyclic fibre summand generated by $s$.
+The $\delta$ normal relations together with the global relation,
+when $b=1$, are the unimodular Seifert matrix because $D=\pm1$.
+They kill $s$ integrally. The fixed sphere is therefore nullhomologous
+and nullhomotopic. Its equivariant surgery gives
+$Y\cong X\#(S^3\times S^3)$ with a free, projectably spin circle
+action, exactly as in D.2.14. The same orientation convention in its
+normal-coordinate conjugation is retained. Its spin simply connected
+quotient has $H_2=\mathbb Z\oplus(\mathbb Z/M)^2$, with primitive
+Euler class. Smale--Barden and the spin branch of
+\cite[Theorem A]{manGR25} give
+$Y\cong(S^3\times S^3)\#\widetilde\Sigma_0N_M$.
+Cancellation by the full Zhubr invariants, as justified in D.2.14,
+proves (D.SC6), including the two-primary refined invariant.
+\end{proof}

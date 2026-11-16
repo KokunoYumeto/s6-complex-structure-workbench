@@ -1,0 +1,281 @@
+\paragraph{Theorem D.2.40 (Proved: shared odd factors in every weighted profile).}
+The uniform weighted algorithm of D.2.37 extends from
+$\gcd(a,d)=1$ to
+\[
+                     \gcd(a,d)\text{ odd}.                \tag{D.OW1}
+\]
+In particular it covers \emph{every} positive translation
+iterate of every row with $a$ odd. All its original,
+Mumford, finite-good and regular logarithmic choices,
+freeness tests and full Seifert groups remain valid.
+Star caps are still original. The free ranks and Euler
+number are still exactly (D.WP8)--(D.WP9), with
+$\chi=2d$.
+
+The torsion must now be computed with the full fibre
+presentation rather than one alternating functional.
+Use the target
+\[
+                       \Lambda^2\Lambda\oplus K
+\]
+and include all columns
+\[
+ ((\Lambda^2A_i(d)-I)\eta,0)\qquad
+                  (\eta\text{ a standard bivector}).     \tag{D.OW2}
+\]
+For a finite or regular logarithm replace (D.WP6) by
+\[
+ (-\lambda\wedge v,\;J_iN_m\lambda)
+       \quad(\lambda=e_1,e_2,\delta,\gamma),\qquad
+                         (0,J_iv).                       \tag{D.OW3}
+\]
+At every other cap include its full fixed-normal
+columns $(0,J_iF_i)$ and the complete fibre kernel
+\[
+ {\cal K}_i(d)=
+ \bigl\{\eta\in\Lambda^2\Lambda:
+          (\Lambda^2S_d)\eta\in
+          {\cal K}_i(1)\otimes\mathbb Q\bigr\}.             \tag{D.OW4}
+\]
+Here $\mathcal K_i(1)$ is the recorded actual fibre kernel
+for a nonzero-Chern original. In every other case its
+rational span is
+$\operatorname{im}(\Lambda^2A_i-I)$.
+Formula (D.OW4) is evaluated as an ordinary saturated
+integer kernel, not by discarding the nonunit Smith
+factors of (D.OW2).
+
+Let $T$ be the torsion cokernel of this full matrix.
+Then (D.WP9), with this $T$, is the complete integral
+homology for every datum in (D.OW1).
+The executable \path{code/manifolds_odd_weighted_profiles.py}
+implements this extension and retains all shared-factor
+torsion.
+
+\begin{proof}
+\emph{The integral involution splitting.}
+Put $g=\gcd(a,d)$. The prime-local proof in D.2.37
+shows, without assuming $g=1$, that every torsion
+prime of
+\[
+ C=(\Lambda^2\Lambda)_{\{A_i(d)\}}
+\]
+divides $g$. Its free rank is one. Under (D.OW1)
+we may write $C\simeq\mathbb Z\oplus C_{\rm tor}$,
+with $C_{\rm tor}$ of odd order. The regular graph
+sequence is an exact sequence of abelian groups
+\[
+                 0\longrightarrow C\longrightarrow
+           H_2(V)\longrightarrow K\longrightarrow0.      \tag{D.OW5}
+\]
+Fibre inversion is an actual involution of this
+linear torus bundle. It acts by $+1$ on $C$ and
+by $-1$ on $K$.
+
+Let $A:H_2(V)\to\mathbb Z$ be evaluation by the
+pullback of the marked weight-one class used in
+D.2.37. It is invariant under inversion: this is
+true on the old fibre and on all its generating
+fixed sweeps, and therefore remains true on the
+cover. Its restriction to $C$ is
+\[
+ g\,\omega',\qquad
+ \omega'=(a/g)e_1^*e_2^*-(db/g)\delta^*\gamma^*,
+\]
+where $\omega'$ is the primitive free functional.
+For any $x\in H_2(V)$, $x+\iota x$ belongs to $C$.
+Hence
+$2A(x)=A(x+\iota x)$ is divisible by $g$.
+Since $g$ is odd, $A/g$ is an integral homomorphism.
+Call it $B$.
+
+We spell out the resulting splitting to avoid a
+formality or invariant-descent assumption. Given
+$k\in K$, choose a lift $x$ with $B(x)=0$, subtracting
+a fibre generator if necessary. Then
+$x+\iota x\in C_{\rm tor}$. Multiplication by two
+is an automorphism of this finite group, so
+\[
+                  y=x-\tfrac12(x+\iota x)                 \tag{D.OW6}
+\]
+is a well-defined integral class with
+$\iota y=-y$ and image $k$. If the lift $x$ is
+changed by $c\in C_{\rm tor}$, the half term
+changes by $c$, so $y$ is unchanged.
+This constructs an additive section of (D.OW5).
+It is the unique section with $B=0$ and
+anti-invariant image. Thus
+$H_2(V)=C\oplus K$ with an actual integral marking,
+including the odd torsion of $C$.
+
+Every literal fixed-loop peripheral torus is
+anti-invariant, since inversion reverses its
+fibre circle and fixes the base circle. It
+therefore has exactly its graph coordinate and
+zero fibre coordinate in this splitting.
+This remains true for the norm sweep of any
+covering-torus loop: take the pushforward of
+$\lambda\times S^1$ from the $m$-fold mapping-torus
+cover, where $A^m=I$. It is anti-invariant and
+has graph coordinate $N_m\lambda$.
+This is the step that controls integral torsion
+which a vertical alternating form alone cannot see.
+
+\emph{The full finite and regular normal columns.}
+On the $m$-fold boundary cover the normal meridian
+is $m\theta-v$. The shear
+$(x,t)\mapsto(x-tv,t)$ sends the product torus
+of $\lambda$ and the covering base circle to
+that norm sweep minus the regular torus
+$\lambda\wedge v$. Pushing it to the ordinary
+mapping torus and then to $V$, the preceding
+anti-invariant description gives exactly the
+first four columns of (D.OW3).
+There is no unknown torsion component in the
+norm sweep.
+
+For the affine meridian, use its commuting lifts
+$\theta$ and $\mu=\theta^m v^{-1}$ in the boundary
+group. Their torus is the fixed torus of $v$
+and $\theta$, with the normal orientation
+convention of D.2.29. Hence its image is
+$(0,J_iv)$, the last column in (D.OW3).
+These loops generate the complete normal Thom
+image, including torsion loops in the central
+finite quotient. The proof of the general
+freeness test (D.WP5) is unchanged.
+
+\emph{Every nonfinite fibre kernel and its marked normal.}
+All the unchanged caps in this construction have
+torsion-free $H_2$. For the rank-two cusp this is
+the explicit normalization calculation. For a
+rank-one gamma cover the normalized components
+are $S^2$ bundles of degree zero over a covered
+two-torus, and consecutive double curves are
+identified by translations; straightening those
+translations gives the same free homology as a
+cycle of spheres times $T^2$. Original
+zero-degree additive caps have the permutation
+mapping-torus homology of a Kodaira tree times
+$S^1$, which is free. The nonzero-Chern originals
+have the primitive Gysin presentations of
+D.2.32--33, also free.
+
+The covering square on regular fibres multiplies
+bivectors by $\Lambda^2S_d$. The needed ranks come
+from the actual caps, as follows. At the rank-two
+zero the short-period map has Smith factors $(1,d)$.
+In that basis its exterior-square difference has
+primitive image of rank two, so the boundary has
+$H_2=\mathbb Z^6$. The normalization calculation of
+D.2.34 gives $H^3(N)=\mathbb Z^2$. The two angular
+normal tori are a primitive sublattice of boundary
+homology and bound by their section-disc sweeps.
+The pair sequence bounds its whole kernel by rank
+two; hence they are exactly that kernel. In
+particular the regular-fibre coinvariant of rank
+four injects into the cap. This proves that the
+rational fibre kernel is precisely the monodromy
+image, without a local invariant-cycle assumption.
+
+For the rank-one cap, the explicit cycle of
+$\rho$ spheres times $T^2$ has four independent
+nearby-fibre classes: the sum of the component
+spheres, the surviving nodal-circle class times
+each transverse circle, and the transverse
+$T^2$ area. This is the full four-dimensional
+fibre coinvariant, so again its kernel is exactly
+the monodromy image over $\mathbb Q$. For an
+original zero-degree additive cap, the permutation
+mapping torus of the Kodaira tree gives the two
+independent images: the nonzero multiplicity-weighted
+whole-fibre class in the component-orbit space,
+and the transverse $\delta\gamma$ area. These
+are the full two-dimensional fibre coinvariant,
+also for the original odd-star fibres. The
+zero-degree multiplicative original has the same
+four explicit classes as the nodal-cycle model.
+
+Thus in every zero-degree case the rational
+fibre kernel is exactly the inverse image of
+the old one. For a nonzero-Chern original the
+actual area and principal-bundle formulas give
+the same statement directly. Since the target
+$H_2$ is torsion free, the integral kernel is the
+saturation of that rational kernel. This is
+precisely (D.OW4).
+
+The full fixed-normal projections lift the old
+bounding section-disc sweeps, as in D.2.37.
+There is one previously isolated correction:
+at a nonzero-Chern original multiplicative cap,
+the vanishing-loop normal can differ from a
+kernel cycle by an integral multiple of
+$u_2\wedge\delta$. In D.2.33 only its zero
+alternating-form value was needed. Here it
+vanishes in the full global fibre coinvariant.
+Indeed, for all $172$ rows the elliptic matrices
+$B_i$ satisfy the exact unit Smith certificate
+\[
+       \mathbb Z^2/\sum_i(B_i-I)\mathbb Z^2=0.             \tag{D.OW7}
+\]
+These $172$ matrices and their unit factors
+are retained in
+\path{records/manifolds_elliptic_coinvariants.json}.
+Since every $A_i(d)$ fixes $\delta$,
+\[
+ (\Lambda^2A_i(d)-I)(\delta\wedge z)
+                 =\delta\wedge(B_i-I)z
+       \quad(z\in\mathbb Z^2).
+\]
+Consequently $\delta\wedge e_1$ and
+$\delta\wedge e_2$ are zero integrally in $C$,
+for every weight. This kills the correction
+without any assumption on its integer value.
+
+Subtracting these complete marked normals
+from a boundary-kernel element leaves a
+regular-fibre element. Its full image is
+exactly (D.OW4). Thus (D.OW2)--(D.OW4)
+give the entire integral global kernel;
+in particular a primitive fibre relation
+that was only a torsion class in the boundary
+has not been omitted.
+
+\emph{Global homology and the remaining scope.}
+The relative pair argument (D.WP11) does not
+require the regular coinvariant to be free.
+Finite and regular caps still have free
+relative degree-two groups, and their
+nonzero base-meridian coefficients make the
+first relative map injective. Their full
+degree-three images are now (D.OW3).
+The remaining caps still have free
+$H^4$, so the final kernel in (D.WP11) is
+free and the abelian-group extension splits.
+The top component counts and rational ranks
+are unchanged. Therefore (D.WP8) and the
+entire duality table hold, with exactly the
+full torsion cokernel computed here.
+
+The vertical normal closures are also unchanged,
+so the same all-order Seifert presentation
+computes the full fundamental group.
+The argument has not used a bound on weights
+or logarithmic parameters. It uses oddness
+only in dividing $g$ in the invariant functional
+and in the unique half of (D.OW6). When both
+$a$ and $d$ are even, a two-primary ambiguity
+can remain in that marking; this theorem
+does not discard it.
+\end{proof}
+
+The exact implementation computes the saturated
+preimages (D.OW4) before forming any Smith quotient.
+Its overlap checks compare this full fibre-and-graph
+matrix with D.2.37's independent scalar-functional
+matrix whenever $g=1$. Shared odd-factor cases
+retain the nontrivial regular fibre coinvariant
+and all its relations. The printed certificates
+and explicit sample matrices are retained in
+\path{records/manifolds_odd_weighted_profiles.json}.

@@ -1,0 +1,558 @@
+# Maps worker: proof and audit record
+
+This is a component of the S6_04_MAPS_MANIFOLDS research package, produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode). It claims no priority. The source paths below are relative to the supplied background archive. This record is extended during the run.
+
+
+**Current conclusion (after the independent audit of B.6.22--B.6.25):** all assigned map questions and the complete numerical monodromy question B.6 are settled. For every coprime sphere-producing multiplicity pair (3k,4l), the return for the positive parameter generator 2kl is smoothly isotopic to the identity. The research chronology below retains unsuccessful approaches; statements there that the value was then unknown are superseded by B.6.24.
+
+## Statements written
+
+| Prompt item | Statements | State |
+|---|---|---|
+| A.1 | A.1.1--A.1.3 | Quotient lattices, finite fillings, target lens slopes, and all cusp strata computed; incorrect identification of extendible double curve refuted |
+| A.2 | A.2.1--A.2.2 | Smooth map exists and is canonical under the over-base/solid-torus requirement; bare outside-neighbourhood agreement permits all twelve classes |
+| B.1 | B.1.1--B.1.2 | Canonical map has class 6 nu' = eta3 eta4 eta5; full framing comparison and independent real APS invariant 1/2 written |
+| B.2 | B.2.1 | f is null, with quotient and divisor-section proofs |
+| B.3 | B.3.1--B.3.3 | H nonzero; qhat3 and qhatgamma null; q1 is the S3-summand inclusion of 6 nu' under the specified cofiber splitting |
+| B.4 | B.4.1 | All listed canonical quotients have target S3 and class 6 nu'; explicit invariant lattices, local extensions, and target gluing checked |
+| B.5 | B.5.1--B.5.2 | Actual topological mapping-cylinder/CW construction, reduced finite model, exact integral attaching maps, and homotopy-sphere recognition written; this does not assert a smooth framed handle cancellation for B.6 |
+| B.6 | B.6.1--B.6.25 | COMPLETE: every sphere-producing (3k,4l) family has zero smooth monodromy. The actual fixed-circle replacement has signed Euler cube -kl and quotient Pontryagin pairing -4kl; the marked spin-trace correction cancels its free-circle filling invariant. A subsequent explicit spin filling has one zero-handle and one one-handle. |
+
+## Located corrections
+
+1. **A.1 parenthesis / Lead 1 interpretation.** In the original toric chart q=z0 z1 z2, x1=z1, x2=z2, theta_gamma approaches -log|z2|/log|q|. It extends along z0=z1=0, z2 nonzero. The C* action in direction delta=e2 is (z0,z1,z2) -> (lambda^-1 z0,z1,lambda z2), and its fixed curve is z0=z2=0. The character does not extend along this fixed curve. The prompt's identification is false; the workbench's two-path calculation itself is correct. This distinction is not a sign convention.
+2. **A.2 unrestricted uniqueness.** A requirement to agree with the quotient only outside a neighbourhood of W leaves a local pi6(S3) insertion ambiguity. All twelve classes occur. Keeping the image of the cusp neighbourhood inside the corresponding solid torus removes that ambiguity and gives a well-defined repaired class.
+3. **Engel covector.** The supplied source calls the primitive invariant covector psi in Lemma `covect`, not epsilon. With the integral comparison matrix from S6_02 B.2.2, psi P_E = -gamma. The circle orientation must be reversed to identify the characters.
+4. **C1 notes, C1-1.** The abstract torus-knot group alone does not identify a knot exterior with its peripheral structure. We match the local Seifert data to the weighted S1 action. Also, the phrase 'the only slope with trivial H1' is not correct without restricting the family of slopes: arbitrary knot Dehn filling has many primitive slopes with that homology property. The supplied cusp slope itself is unambiguous and yields S3.
+5. **Independent e-invariant computation.** The relevant invariant is the real Adams e-invariant. The complex invariant of the Lie-framed T3 vanishes. APS II Theorem (4.14) has the essential factor 1/2 in dimension three, giving 1/2 from eta=0 and dim ker D=2.
+6. **AC26 page 42, smooth tubular neighbourhood.** The opening paragraph says multiplicity prevents N'_j from being a tubular neighbourhood of S_j. The displayed free quotient (F×D²)/mu_m is exactly the associated smooth disc bundle over F/mu_m, with normal character exp(-2pi i/m). Multiplicity concerns the function f=s^m. The printed meridian calculation remains correct; the normal meridian winds m times around the base. No holomorphic tubular projection is claimed. The wording was checked visually in the authoritative PDF, page 42.
+
+## Source passages read and checks
+
+- `original/AC26_transcription.tex`, lines 134--161: actual cohomological matrices, inverse-transpose convention, monodromies, toric fan, and affine generators. The authoritative PDF page 2 was rendered and visually compared; no discrepancy was found in the matrices, basis, B0, twists, root signs, or gluing data used here. Page 42 was also rendered and read for the tubular-neighbourhood correction.
+- `workbench/cusp_globalization_replacement.tex`, lines 293--349, 443--502, 551--657: quotient character, finite descent, two radial paths, and H1 extension. Our proof rederives the invariant equations and the stratum limits; no status label was used as authority.
+- `notes/C1_notes.md`, C1-1 through C1-7: framing sketch, soft cone null-homotopies, and maps. The sketch's monodromy-invariance and Spin lifting steps were expanded into B.1.1.
+- `workbench/higher_rung_24d_continuation.tex`, retained-angle block, especially lines 4524--4850: exact coordinate replacement, entire regular inverse image, Jacobian, determinant sign, and explicit SU(3) contraction. B.3.1 reproduces the needed calculation in full.
+- `papers/arXiv_2609.38442_Engel_src/S6.tex`: filtration `filt1`, Lemma `covect`, monodromy theorem, and Remark 8.3. Remark 8.3's literal continuous-extension sentence is contradicted by A.1.2 and replaced by A.2.1.
+- `s6_02_return/sections/AB.tex`, B.2.2: integral P_E dictionary and sign of the quotient covector.
+- `checkpoint_01/S6_02_PUSH_E_push.tex`, E.1.1 and E.5.1--E.5.2: higher logarithmic dictionary and corrected two-parameter monodromy. The latter matrices were independently checked in `code/maps_exact.py`.
+- `papers/arXiv_2609.33785_Viaclovsky_two_parameter_src/Viaclovsky_S6_September_26_2026.tex`, source labels `mum`, `mon`, `pi`, `d2`: local reduced fillings, global monodromy, fundamental-group relations, and primitive circle transgression.
+- `papers/arXiv_2609.33826_Liu_Rollenske_src/S6_arxiv.tex`, source labels `prop: monodromy and specialisation at 1`, `prop: monodromy and specialisation at infinity`, `prop: global monodromy`, `prop: Leray differentials`: product model at the type-II fibre, primitive cusp, global integral matrices, and d2(4xi)=1.
+- `workbench/topology_reduction.tex`, especially the fixed-fibre collapse, integral collapse matrix, actual finite-band maps, and cusp kernels/primitive blocks: the claims were rederived from the boundary maps in B.5. We do not rely on its degree-three finite-band projection-formula paragraph; low-degree exact maps, duality, and Euler characteristic suffice.
+- `original/AC26_transcription.tex`, Lemma 7.4, Proposition 7.2, Lemmas 7.5--7.10, Theorem 7.17, and the finite-band/cusp Mayer--Vietoris calculation: compared with the workbench construction. B.5 strengthens the positive retraction to an actual product using a verified 3-manifold theorem.
+
+## Exact computations
+
+`code/maps_exact.py` uses SymPy integer and rational arithmetic. It computes inverse-transpose matrices, exact products and finite orders, common kernels, Smith form, all 16 possible mod-two covectors, the invariant H3 evaluation, exact rational cusp paths, edge-character slopes, symbolic lens-space arithmetic, comparison matrices, and the Fourier-symbol polynomial for the flat Dirac operator. All outputs are in `maps_exact.out.json` and `maps_exact.stdout.txt`. There is no numerical approximation. The mod-two enumeration is exhaustive. The symbolic lens identity holds for all integers satisfying a*l1+3*b=1, so it has no finite-search cutoff.
+
+`code/maps_cw.py` checks every matrix and primitive index in B.5 over Z. It computes the exterior powers of the finite three-torus monodromies, the finite quotient H1 relations, the H2 pullback intersection determinants and embedded-torus evaluations, alpha1 and alpha2 and their primitive kernels, every cusp collapse matrix and its equality of kernel with the monodromy image, the final unimodular cusp blocks, and the cell counts (5,20,45,56,42,17,3). It writes `maps_cw.out.json` and `maps_cw.stdout.txt`. The final H3--H5 closure uses the proved duality argument; the script explicitly does not pretend to construct a full six-dimensional chain matrix from ranks.
+
+`code/maps_source_counters.py` audits the literal counter definitions in the supplied sources. Liu--Rollenske share the section-reset equation counter; their two numbered gathers have two rows each and the script checks the absence of counter overrides, tags or suppressed numbers. The relevant numbers are Lemma 3.10, Propositions 3.11--3.13, Corollary 3.16 and Proposition 4.8. Viaclovsky uses a separate section-reset theorem counter: local completions Proposition 3.1, monodromy Proposition 4.2, transgression Proposition 5.4. This is a source-counter reconstruction, not a successful TeX compilation. The complete audit and its restrictions are saved with its output.
+
+`code/maps_register.py` writes all 28 numbered statements to `records/maps_results.csv` with the columns requested in the prompt. The B.6.10--B.6.11 and B.6.14 proofs, their exact programs, and the local cyclic norms used in B.6.13 were contributed by the fourfolds worker and are integrated here without duplicate statement rows in its E--F register.
+
+## Literature searches and verified external sources
+
+Searches on 15 November 2026 included: `Toda Composition methods homotopy groups spheres eta3 eta4 eta5 6 nu prime`; `Adams e invariant Lie framed 3 torus eta cubed 12 nu framed bordism`; `"Complex structures on S6" Engel arxiv 2609.38442`; `Adams real e invariant framed manifold Dirac eta invariant dimension 3 flat torus 1/2`; `"Complex structures on" "S6" "homotopy" Engel`; `Atiyah Patodi Singer Spectral asymmetry Riemannian geometry III e invariant Theorem 4.14 pdf`; `"pi_6" "stabilization" "S^3" "24"`; and `Toda 1951 "Theorem 4.1" homotopy groups spheres`.
+
+The original APS II paper was opened at https://webhomes.maths.ed.ac.uk/~v1ranick/papers/aps002.pdf. Theorem (4.14), p.423, and its derivation from the quaternionic Dirac index were read. The original Toda paper was opened at https://www.i-repository.net/contents/osakacu/sugaku/DB-M-002-02-01.pdf; Theorem 4.1 and Corollaries 4.2--4.3 were read. The source is published in July 1952, though received in December 1951. These are the primary external inputs actually used. The relevant Goette survey was consulted to locate APS, and Strickland's notes were consulted during source discovery, but neither is substituted for the original theorem.
+
+No later computation of the particular quotient class was found in these searches. This is not an exhaustive bibliographic theorem and no novelty or priority claim is made. The class proposed in the supplied C1 notes is confirmed by the expanded proof; the analytic APS calculation is an independent verification of that conclusion, not a claim to be its first proof.
+
+Attempts to open arXiv HTML and PDF endpoints for 2609.33826, 2609.33785 and 2610.39102 returned DisabledError. Their supplied exact sources were used instead. Attempting to compile the Liu--Rollenske source solely to recover displayed proposition numbers failed because the environment's `pdflatex.fmt` was absent. Source labels and passages remain recorded without inventing a numerical theorem label.
+
+The theorem numbers were subsequently recovered from the explicit source counters as described above; no TeX compilation success is claimed. Further primary sources actually opened were Bott, *The stable homotopy of the classical groups* (1959), Corollary to Theorem II and its table on p.315 (pi6 SO=0); Hatcher's author PDF of *Algebraic Topology*, Propositions 1B.9, 4G.1--4G.2, Theorems 4.5, 4.8 and 4.32; and Waldhausen, *On irreducible 3-manifolds which are sufficiently large* (1968), Theorem 6.1 on p.77, including the clause fixing boundary maps throughout the homotopy. For the last application we prove irreducibility from the explicitly product interior, both boundary pi1 injections, existence of the prescribed map of pairs, sufficient largeness of the target, and degree one of the resulting covering. It is not an unverified appeal to a general product-cobordism slogan.
+
+The B.5 construction is a proof of the requested CW alternative. The actual polyhedral mapping-cylinder model is distinguished from its smaller cellular homotopy replacement and from any smooth handle decomposition. No smooth attaching-framing information sufficient to calculate B.6 is inferred from this topological calculation.
+
+## B.6 research and current exact gap (incomplete)
+
+The arithmetic in K7 has been separated from any geometric computation: if a computed sixfold monodromy has residue b=2r, then the original class is 5r modulo 14. Its two lifts differ by 14. Neither the supplied checkpoint nor our present computation evaluates b, so the conditional reduction by itself excludes none of the 28 original residues. This is Proposition B.6.1; the original and higher-logarithmic values remain Problem B.6.2.
+
+We read the complete K8 closing-cocycle proof. The scalar t^4/(t-1)^3 and the cusp holomorphic unit differ by one gamma deck period, so they define the same endpoint comparison. Scaling their additive logarithms produces a fractional deck period on the overlap and therefore does not automatically patch into an isotopy. The unbounded modulus of the scalar at the cusp also prevents treating this as a global invariant unit-circle gauge. The global invariant scalar-gauge null-isotopy from K5 does not apply to this unpatched object.
+
+We checked whether the finite semistable models after u=r^12 in the supplied S6_02_PUSH_AB_push.tex, B.1--B.3, could provide a bounding manifold. Their explicit component shifts 4 and -3 are incompatible with the zero cusp component shift of the plain base-changed cusp model. Consequently those particular models do not glue. We do not infer nonexistence of every analytic filling from this obstruction, and no characteristic number has been assigned to an unconstructed filling.
+
+We investigated a smooth plumbing comparison. Primary sources opened on 15 November 2026: Krylov, arXiv:math/0107005, Theorems 2 and 3; and Randal-Williams, arXiv:2308.06397v2 and the publisher version, Theorem 4.1. The latter's September 2024 correction was also opened and concerns typesetting. The quaternionic shears Y(u,v)=(u,uv), U(u,v)=(v^-1u,v) obey (YUY)^4=Sigma_Milnor^-1 in the mapping class group of S3xS3. This detects the importance of the actual relative smooth maps. No identification of our transport with these plumbing maps is yet available; matching linear monodromy alone cannot establish it. Searches included `Krylov Milnor mapping class S3`, `On the Jacobi group Krylov pdf`, and `Monodromy and mapping class groups of 3-dimensional hypersurfaces`.
+
+The real involution approach was audited independently in code/maps_real_audit.py, with saved output maps_real_audit.out.txt. At the order-three cap, the product B of the two reflection matrices has order three and the root-lift comparison satisfies 2k=1 modulo3, forcing C=B^2. It sends u+w to -w+delta and transports the order-four exchange to diag(-1,1) on <w,delta>. All four finite reflection lifts have the asserted fixed-component counts; the deck square exchanges both tori in every nonempty lift. These checks support A.3's fixed-three-manifold calculation. They do not classify the ambient smooth involutions or evaluate their product in Theta7. We corrected the phrase that literal conjugation acts transitively on three lifts: conjugation by the order-three deck group acts transitively on the three reflection lifts.
+
+The remaining next step for the handle route is a relative smooth realization of the parameter transport across the cusp and finite fillings, preserving enough normal framing to construct a spin eight-dimensional trace and compute its p1-square and signature. The topological homeomorphism used in B.5 deliberately supplies no such smooth framing. This exact missing step has not been replaced by a conclusion from cellular homology or circle equivariance.
+
+An additional primary classification was opened: Olbermann, AGT10(2010)1905--1932, Theorems1.3--1.5. It implies that each embedded real S3 found in A.3 has even Haefliger knot class. Even after fixing that knot there are four equivariant diffeomorphism classes of involutions relative to it. This supplies a precise reason why knowing the real fixed three-manifold does not identify the ambient involution. We did not compute the relevant knot integer or the extra finite invariant. The publisher PDF, rather than a secondary summary, was read.
+
+Further current-literature queries on 15 November 2026 were `complex structures S6 monodromy sphere`, `complex six-sphere monodromy`, and `six-sphere Theta monodromy`, with a one-year recency filter and the stronger search engine. They found the named 2026 construction papers and older work on the space of almost complex structures, but no verified paper computing this family's smooth monodromy class. Search absence is not treated as a theorem or a priority claim.
+
+### Conifold comparison: an exact Torelli result
+
+Proposition B.6.3 now constructs the even-shift comparisons on the D.3 smoothing and proves that its parameter monodromy is identity on H3(S3xS3;Z). Moving the linearization zero replaces beta by beta-L_s and ell by ell-L_s/12, where L_s=log(1-st)/(2 pi i). These changes cancel in the additive even-shift vector. Its sixfold scalar is t^4/[(t-1)^3(1-st)], with divisor 4[0]-3[1]-[1/s]. The two primitive rank-one monodromies are C_w=I+w u* and C_d=I-delta gamma, with A1 A2 C_w C_d=I.
+
+The new exact script maps_smoothing_monodromy.py computes the parabolic cohomology for every exterior degree using cocycles, local image constraints and coboundaries, and writes its full output to .out.json and .stdout.txt. The H1 dimensions are (0,0,2,0,0). In degree two, the four image ranks are4,4,2,2, the relation and coboundary ranks are both5, and explicit two-column cocycles give a basis. Their differences under I-2E are the coboundaries of -2 gamma wedge u* and -2 gamma wedge w*. Thus the parameter action is identity on the rank-two middle parabolic group. The primitive rank-one local invariant-cycle calculation identifies R^q g_*Q with j_* exterior^q V. Since D.3.2 proves b3=2, the surviving middle term is all of H3. Torsionfreeness promotes rational identity to integral identity.
+
+This eliminates an attempted identification with a nontrivial action by two elementary homology shears: any valid smooth plumbing word must have trivial middle homology action. It still could be a nontrivial Torelli element. Proposition B.6.4 removes the normal-framing homomorphism; B.6.5 below then identifies the remaining central class with the original six-sphere class. Its numerical residue is still undetermined.
+
+### Mapping-torus p1 calculation
+
+Proposition B.6.4 computes the finite affine return defects d1=(0,1,-1,-1), d2=(0,0,-1,1), whose peripheral sum is zero. The regular five-dimensional fibre has bracket [k,g]=-2 delta and is Nil3 times T2. The saved exploratory exact script maps_mapping_torus_cohom.py computes its rational invariant differential-form cohomology and the four base actions. Its complete algebra is included, but the proof only needs two direct form identities: gamma wedge u is a Cw coboundary, and gamma wedge w differs from gamma wedge u by an A2 coboundary modulo the exact form gamma wedge kappa.
+
+At the new rank-one fibre, kappa wedge gamma wedge u and kappa wedge gamma wedge w are independent degree-three stalk classes with zero regular restriction. The boundary equation d(theta)=(alpha+2 kappa) wedge gamma gives their Wang terms -gamma wedge u/2 and -gamma wedge w/2. The graph-and-discs cochain model sends these to global coinvariants, where both vanish. They survive the Leray sequence and exhaust H3 of the seven-dimensional mapping torus. Their restrictions pair trivially with each swept critical elliptic curve. The global tangent K-class is [E]=[V]+[L]-[L|C]; V is the locally free saturated vertical tangent bundle, and delta is nowhere zero as a section of V even at a zero of its evaluation in E. Thus c2(V)=0, c2(E)=PD(C), and p1 of the mapping torus is zero. Torsionfreeness of H4 promotes rational vanishing to integral vanishing.
+
+Kreck's Torelli exact sequence, read in Krylov Section2.1 equation(2), identifies the remaining smoothing class with an element of the central Theta7. The stable normal clutching generator has p1-number of absolute value4, as checked in Krylov's proof of Theorem2; zero p1 therefore forces zero normal-framing invariant. No numerical central residue is obtained from this vanishing.
+
+### Exact preservation through the conifold trace
+
+Proposition B.6.5 removes the former possible reverse-surgery correction. The single-valued coordinate x'=x/u makes the local equation x'y-zv=-s. The even-shift family preserves this actual parameter s. Relative Morse coordinate changes preserve the quadratic function, and deformation to their derivatives plus preservation of the selected ruling reduces the local structure group to SO4; there is no additional conformal C* loop. The explicit SO4 action on the handle D3 x D4 is (g,h):(v,q) -> (g v g^-1, g q h^-1), with SU2 x SU2 modulo its diagonal sign. Its two boundary faces identify equivariantly with the real small-resolution and Milnor models. This supplies a bundle of seven-dimensional surgery traces over the parameter circle.
+
+For its total eight-manifold Z, H4(Z;Z) -> H4(M_s;Z) is an injection: the Wang identification reduces it to the primitive inclusion H3(W;Z) -> H3(S3xS3;Z) for the one-index-three-handle trace W. Thus p1(Z)=0, because its restriction is zero by B.6.4. The same injection forces the image of H4(Z,boundary Z;Q) in H4(Z;Q) to be zero, so signature(Z)=0. The trace is spin. The Eells-Kuiper cobordism formula therefore gives mu(M_Phi)=mu(M_s). Both product mapping tori bound product spin manifolds with zero invariant, hence the original Theta7 class and the smoothing's central Theta7 class are exactly equal. Their common value remains open.
+
+Primary literature added: Crowley--Nordstrom, *The classification of 2-connected 7-manifolds*, Proceedings LMS 119 (2019), 1--54, DOI 10.1112/plms.12222. The publisher metadata and arXiv:1406.2226v3 were opened; Section 1.4 equations (2)--(3) explicitly permit any spin seven-manifold with rationally zero p1, without requiring rational H4 to vanish. Their invariant is 28 times our Q/Z normalization.
+
+Independent audit completed of the fourfold worker's F.3.5--F.3.7: checked rational pair rigidity, root-chart Hodge exponents, compact-orbifold H1(P*) vanishing, the real intersection-line height argument, the rank-three cusp graph, peripheral inversion, finite logarithmic translation signs, and bounded non-symmetric cusp properness. No flaw was found; the audit was sent to that worker and the root agent.
+
+### Higher multiplicities and an exploratory braid calculation
+
+Proposition B.6.6 extends the reduction to each X_3k_4l with h=2kl. Its analytic step is stated explicitly: the fixed-data K1 finite vectors all have zero gamma coordinate, hence are unchanged when only the gamma-period column receives -L_s. Split the integral old cusp defect aw+bd between the two primitive rank-one directions; Cw fixes d. The allowed translation difference sheaf retains quotient O(-p0), since the underlying elliptic Lie line is unchanged and the new delta node contributes no pole. Its zero H1 solves the comparison, including holomorphic parameter dependence. The nilpotent boundary equation becomes d(theta)=(alpha+h kappa) gamma, so the two Wang classes acquire the factor1/h. All finite affine corrections affect the two required coinvariant calculations only through the exact gamma wedge kappa term. The same tangent and trace proofs apply. This is a reduction of each requested class, not a formula relating different multiplicity pairs.
+
+The exploratory script maps_moving_zero_braid.py computes Artin pure-braid actions on the exact middle parabolic cohomology, retaining the full free-group automorphisms and their matrices in its output. Dragging the fourth monodromy Cd around the three old punctures yields T1=[[-1,1],[-1,0]], T2=[[1,-2],[1,-1]], T3=[[1,-1],[0,1]], with respective linear orders3,4,infinite and T3 T2 T1=I. This is not registered as a computation of smooth monodromies or of Theta7. A moving-zero meridian may change an affine torsion sheet: the order-four finite norm obstruction contains a parity condition. Those affine sheets must be tracked before a matrix loop becomes a closed geometric loop.
+
+A proposed12-positive-Dehn-twist shortcut is also excluded at its presently unjustified step. Although the linear actions resemble Kodaira IV*, III, I1 with twist lengths8+3+1, simply deforming the two additive fibres to nodal ones does not preserve the marked linearization. The six-manifolds worker checked from Engel's height formula that h(P)=1/6 becomes2, Q=6P has Q.O changing from2 to35, and J changes from pi*O(1) to pi*O(12). The missing section and affine corrections could carry the desired central residue. Likewise the naive collision chart xy=u(s_j^m-a) does not carry the actual logarithmic action without a root Q^m=u(s_j^m-a): the long-period translation acts by a root of the Tate parameter and permutes the semistable components. No finite smooth order or numerical sphere residue is inferred from either shortcut.
+
+### A stronger refutation of Lead 8 on the ordinary locus
+
+Proposition B.6.7 refutes the asserted isotopy to the pure scalar shear even over B^circ, not only after extending to the compact sphere. On a compact ordinary pair-of-pants core the actual monodromy acts on Lambda semidirect F2 by S=I-2E and affine defects d1=(0,1,-1,-1), d2=(0,0,-1,1). A fibre-preserving homotopy to the scalar shear, even allowing any additional base circle gauge, would force those defects modulo delta to be an integral simultaneous coboundary. The unique rational solution is lambda=(1/6,0,0), which is not integral. Marking changes act by simultaneous coboundaries or by delta-valued terms, so the obstruction is intrinsic.
+
+The quotient class has exact order6: six times it is the coboundary of g, and the quotient coboundary matrix has Smith factors1,1,6. The full defect has rank4 against a rank3 rational coboundary matrix. After the sixth iterate and subtraction of the integral g coboundary, the remaining two defects are -4 delta and3 delta, exactly the scalar K8 windings up to comparison direction. A literal -h times global gamma-coordinate shear would need base coordinate windings1/3 and-1/4 for every nonzero even h, which is impossible. A scalar gauge without a global hth root is distinct and is what occurs at the sixth iterate. The local interpolation on a simply connected ordinary base chart remains valid. This correction is separate from K5's obstruction to extending a gamma-coordinate over all of X, and it supplies no numerical Theta7 value. Exact checks and complete output are saved in maps_ordinary_shear_obstruction.py, .out.json and .stdout.txt.
+
+Corollary B.6.8 proves exact order6 for the same quotient obstruction for every coprime multiplicity pair. K1's fixed-data norm solutions at h=2kl are ell1=(0,0,-2lN0,0), ell2=(0,-kN1,0,0), with cusp defect already in Zw+Zdelta. Their rational simultaneous coboundary modulo delta is ((4lN0-3kN1)/6, 2lN0-kN1, 2kN1-2lN0). Its first entry is b/6-kN1 with b=±1, and the other entries are integral. Thus its exact denominator is6 for every pair. The original-pair comparison is checked by an explicit integral correction, and the general formulas were added symbolically to the same exact program. Again this is an affine obstruction on the marked ordinary bundle, not a comparison of the numerical smooth sphere classes.
+
+The auxiliary record maps_parameter_cover.md separates local finite-sheet norm constraints for the two-parameter section At+B from unproved global filling claims. The additional exact script maps_b6_auxiliary.py preserves the invariant alternating-form and elliptic-matrix products explored during the search; neither its form nor its matrix products are used as a smooth-lift computation.
+
+### Almost complex filling formula
+
+Proposition B.6.9 records a useful verified alternative to constructing a spin filling. Crowley--Nordstrom, *Exotic G2-manifolds*, Mathematische Annalen381(2021),29--74, DOI10.1007/s00208-020-02009-1, Section2.2 equation(2.1), permits a Spin^c filling. The primary publisher article was opened and Sections2.1--2.2 read. Dividing its invariant by28 gives mu=(p1^2-4sigma)/896-p1 z^2/192+z^4/384. For an almost complex filling z=c1 and p1=c1^2-2c2, hence r[Phi]=(-c1^4+4c1^2c2+3c2^2-3sigma)/24 modulo28. The expansion is checked symbolically in maps_b6_auxiliary.py. H2(M)=0 makes the boundary Spin^c structure unique, and both spin structures induce it and have the same mu. Thus the almost complex filling, if constructed with the actual oriented mapping-torus boundary, automatically has the required boundary compatibility. No existence or numerical characteristic-number assertion has been added.
+
+### The corrected component cover and the sectioned norm obstruction
+
+The direct transfer of K13's untwisted parameter filling was tested against the literal supplied source `checkpoint_01/S6_02_PUSH_AB_push.tex`, TheoremB.1.2, PropositionB.2.1 and TheoremB.3.1, with the necessary-cover statement PropositionB.3.2. The fixed finite logarithmic caps after u=r^12 rotate the twelve components by4 and-3, whereas every one of the thirteen plain K13 cusp refinements has trivial component monodromy. The ordinary expansion of the single rational-surface normalization has a globally labelled cycle. The peripheral relation requires cusp rotation-1, so choosing the other small resolution or another plain bridge cannot repair the incompatibility. For the split-cusp smoothing that missing component ramification lies at the new delta point p. This rejects transfer of the raw filling to the sphere family; it does not assert that all corrected fillings are impossible.
+
+B.6.10, contributed by the fourfolds worker and independently read, computes the auxiliary cover h^12=t^4/[(t-1)^3(t-p)]. It has genus3 and ramification3,4,12. The minimal sectioned elliptic pullback has twelve I1 fibres, chi(O)=1, q=pg=3, signature-8, and full deck characters computed by holomorphic forms and fixed-point traces. Its pulled-back section P has height2. The exact code is fourfolds_B6_cover.py with complete .out. This is a scalar-cover calculation, not a constructed semistable normalization.
+
+B.6.11, also contributed by that worker and audited by the root, computes the actual untwisted K13 total-space signature as+2. If U is the conductor restriction difference, the middle intersection form is minus the surface form on im U=span(F,v,m). Its radical is F and its nondegenerate matrix is [[2,1],[1,6]]. The raw E8-summand inference is therefore false even for that untwisted filling. The same tangent-normal calculation proves integral c1^2=0. These facts do not compute the relative p1-square and do not insert the missing finite logarithmic caps. Exact certificate: fourfolds_B6_plumbing.py and .out.
+
+The additional boundary calculation in B.6.11 was independently checked: H6(W)=Z is generated by the principal central divisor and H5(W)=0, so H2(W;Z) in cohomology restricts isomorphically to H2(boundary W;Z). The primitive c1 class detected by the zero-section curve stays nonzero modulo2 on the boundary. That raw untwisted boundary is therefore nonspin and cannot be identified with the required sphere or central smoothing mapping torus. This is a separate obstruction in addition to the component-permutation mismatch.
+
+B.6.12 proves an additional generic obstruction to using the sectioned pullback itself as the conductor normalization. The exact program maps_component_periods.py computes the order-four and order-two eigenspace parabolic cocycles and their pure-braid actions as p varies. The order-four commutator has polynomial x^2-5x+1; the order-two commutator has (x-1)(x^2-7x+1). Both are noncompact, so neither one-dimensional Hodge period map can be constant. Holomorphicity and a countable rational-hyperplane argument show that, outside a countable parameter set, neither cyclotomic summand contributes a rational (1,1) class. The Mordell-Weil lattice then has L^(eta^4)=L^eta=ZP. For Q in L write (1+eta^4+eta^8)Q=mP; integral heights give3<P,Q>=2m, hence m=3r and NQ=12rP. Thus the norm image is exactly12ZP and6P is its nonzero order-two obstruction. A step t_Q eta cannot have twelfth power t_(6P); a step with an additional inversion has zero alternating norm. An elliptic torsor without a zero section is explicitly outside this obstruction; its existence and the next obstruction are proved in B.6.13--B.6.14. No identification of this order-two obstruction with any Theta7 residue is made.
+
+Primary inputs read for this last proof: Griffiths, *Periods of integrals on algebraic manifolds II*, American Journal of Mathematics90(1968),805--865, Theorem(1.1), pp809--810, from the author's IAS PDF; Shioda, *On the Mordell-Weil lattices*, Commentarii Mathematici Universitatis Sancti Pauli39(1990),211--240, Lemmas8.1--8.3, Theorems8.4 and8.6--8.9, Corollary8.10 and Proposition8.12, from the institutional primary paper. Direct PDF requests initially returned429, but the full cached primary text was subsequently retrieved and the stated passages read; no theorem was inferred from a failed request.
+
+### The torsor exists, but its direct plumbing is not the required filling
+
+B.6.13 resolves the preceding section obstruction by constructing an analytic genus-one torsor for every p away from0,1,infinity. The proof uses the full local and global obstruction groups. At the two CM branch points the stabilizer fixed groups have orders3 and2, and6P has zero specialization; at the new branch point the identity elliptic action has surjective multiplication-by12. Thus6P has zero local cyclic H2 restriction. The exponential sequence for the analytic Neron section sheaf has constructible period kernel, including the invariant rank-one lattice at each I1 point. The invariant Lie sheaf is coherent, and the finite component sheaves are skyscrapers. Therefore the degree-two quotient-orbifold obstruction is exactly Z3 plus Z2, with no omitted coarse H2 or H3 term. The group-Cech five-term sequence produces an invariant torsor whose lifted automorphism can be adjusted to F^12=t_(6P).
+
+The torsor can be chosen4-torsion. The cover's elliptic monodromy still contains both original elliptic generators, so its lattice coinvariant group is zero integrally. Consequently H1(Lie) surjects onto H1(E), and its three nontrivial deck characters show that the group norm on H1(E) is zero. An invariant torsor is12-torsion; multiplication by9 makes it4-torsion without changing the order-two transgression. A finite splitting cover then justifies the conductor-line degree using the narrow Shioda pairing, rather than applying a sectioned formula directly to a torsor. Finally det(1-eta on H1(C;Z))=Phi6(1)Phi12(1)=1 makes1-eta an automorphism of Pic0(C), allowing a unique base-line correction to M/F*M=O(c_p). These computations are included in maps_component_periods.py and the local root checks in fourfolds_B6_torsor_local.py.
+
+B.6.14, contributed by the fourfolds worker and independently checked, proves why these exact conductor data do not yet give the actual parameter filling. In a smooth semistable total with one reduced irreducible central component, its principal divisor makes H2(W;Q) in cohomology inject into boundary H2. The extended base class pulls back nontrivially to the ruled normalization, because a nonisotrivial elliptic torsor has no invariant R1 and hence injects H2(C). Thus boundary H2 is nonzero, whereas all required mapping tori have H2=0. Locally the simple conductor zero at the order12 branch point gives xy=rz, t-p=z^12 and hence t-p=(xy/r)^12 for r nonzero, an unwanted multiple fibre. A free quotient preserves its generic multiplicity. Additional central components or a suitably ramified total-space quotient could evade these obstructions, but their boundary identification and characteristic numbers have not been computed. Blowing up the central fibre of an already incorrect filling keeps its boundary and does not repair that comparison. The new torsor existence and the one-component obstruction are compatible statements, and neither assigns a Theta7 residue.
+
+### Fixed-curve surgery and its two quotient invariants
+
+B.6.15 records a second verified conditional filling formula. Equivariant surgery on the actual fixed S2, as in D.2.14, produces a free circle action on S3xS3; this is a different surgery from the analytic conifold transition. If Q is its six-dimensional quotient mapping torus, write x^2=k y and p1(Q)=ell y with <xy>=1. The spin Dirac index gives ell=4k+24r. Thom integration in D(L_x) gives mu=(3ell^2/k-8ell-4k-12sign(k))/2688 for k nonzero. For k=0 and p1(boundary)=0, ell=0 and mu=0. All coefficients are checked in maps_free_circle.py and its saved output. The shear k and stable derivative invariant ell have not been evaluated for the actual return, and its parametrized surgery trace must still be compared. Thus this is a concrete alternative formula, not a numerical value of the sphere class.
+
+The distinction between homotopy and derivative data was checked against Rokhlin's primary appendix on diffeomorphisms of S2xS3, in Novikov's rational-Pontryagin paper, reprinted in Topological Library Part2, pp201--202. It exhibits homotopic maps with distinct Pontryagin data after gluing; killing a quotient homotopy obstruction alone cannot justify ell=0. The fixed-point normal representation alone also cannot do so, as K6 already realizes every sphere class equivariantly.
+
+B.6.16 makes this alternative surgery concrete for the actual marked family. Set a1=w, a2=w-d, b1=u, b2=g+u. The cusp residue is the identity in these short/long bases, and the existing fan is the square grid subdivided along d=a1-a2. The product of two infinite nodal chains with parameters q and q-s has local equation xy-zv=s, q=xy; its small resolution at s=0 is exactly the given cusp and resolves one orbit of curves. The bounded unit matrix C_c(q) supplies the same commuting long-period deck action. On the outer regular annulus the single-valued difference log(1-s/q)E22 is cut off smoothly to zero. Thus this construction matches the original exterior and both finite logarithmic caps exactly, and claims no global holomorphic smoothing.
+
+The c-independent perturbation preserves the integral even-shift lattice comparison. Crucially, use the existing holomorphic cusp unit bbar_h(q) unchanged: its two torus factors extend on xy=q, zv=q-s and preserve the actual smoothing parameter s. This gives the original closing map on the outer collar, with its original finite affine defects and no defects at the two new nodes. The delta action has weights (1,-1,-1,1), and hence is free for s nonzero. D.2.14 identifies the smooth fibre with S3xS3.
+
+The new local monodromies are C1=I+w(u*-g*) and C2=I+(w-d)g*, whose product is M0. The exact program maps_fixed_curve_monodromy.py verifies them, the integral basis, their commutation with S=I-2dg*, all invariant and coinvariant actions, and the parabolic dimensions. The middle H1 is zero in every exterior degree. The two H3 pieces are H0(R3) and H2(R1), each rank one, so the return is an integral unipotent shear whose off-diagonal entry is not detected by the separate local-system actions. On the first critical elliptic factor (a2,b2) the return has matrix [[1,2],[0,1]], and on the second (a1,b1) it is the identity. These data now specify a finite integral MV target. They do not transfer the Torelli result of B.6.3, whose different surgery puts both H3 generators in the middle parabolic grade. The numerical Theta7 residue remains open.
+
+B.6.17 is the root worker's completed quotient tangent calculation, independently audited here and included after B.6.16. Its crucial point is that the descended determinant class is checked on the new Hopf quotient sphere using the invariant local residue volume, rather than inferred from the ordinary torus region. All multiple-fibre divisor classes vanish in torsion-free H2(Q). The descended Koszul class then gives p1(Q)=-2PD(Z1+Z2). The actual mapping-torus convention is (x,1)~(Sx,0); the first critical torus has Euler pairing+2, including simultaneous reversal from a2 to delta=-a2 and of the quotient orientation, while the second has pairing0. Hence ell=-4. The inverse-M_A convention of B.5 concerns base-lattice monodromies and must not be used for this sign. Its register row is owned by the root in maps_quotient_results.csv.
+
+B.6.18 uses a newly checked primary classification to remove all remaining torsion ambiguity in the quotient return. Huize Jin, arXiv:2608.26698v2 (12 September2026), proves in Lemma2.1 that the mapping-torus bordism construction is injective, and in Proposition3.1/Theorem4.9 that Torelli(S2xS3) is Z² detected by ((4k-ell)/24,k). Lemmas4.4 and4.8 give characteristic pairs(1,4) for the primitive-sphere Dehn twist a and(8,8) for the double-sphere twist b. Consequently the actual quotient class is exactly a^(-1-2B)b^B with k=-1+6B. No hidden order2 quotient class remains. The integer B, and the required marked reverse-surgery comparison to a sphere class, remain unevaluated. Exact arithmetic is in maps_quotient_classification.py and its saved output.
+
+The full primary Jin PDF and TeX source were retrieved successfully by direct HTTPS, despite the web reader returning DisabledError on its arXiv pages. The full text was read locally, particularly pp7--9,15--17 and23--24. This retrieval distinction is recorded rather than treating the web-reader failure as a source problem. The new result is a September2026 preprint, with that provenance stated in the bibliography.
+
+### The original numerical monodromy is zero
+
+B.6.19 computes the previously missing fixed-curve surgery correction using integral equivariant cohomology. The trace has H4 generated by alpha=kappa beta. Its Borel H4 is Zu² plus Zalpha, and alpha restricts zero on the fixed disc bundle. The fixed normal weights give p1^S1=2u²+c alpha. The relative Hopf-handle Thom class has fixed restriction plus or minus u²; its product with kappa proves surjectivity onto H4(Q), so alpha restricts to the primitive y. Thus c=ell-2k. Forgetting the action gives a rank-one relative form of absolute determinant|k|. At k=-1 and ell=-4, c=-2, and for either orientation of the rank-one form its Pontryagin square is exactly four times its signature. The spin trace correction is therefore zero.
+
+B.6.20, contributed by the six-manifolds worker and independently audited by both root and maps, performs the remaining actual-caps cup calculation. Its source is copied to sections/maps_fixed_cube.tex, with exact certificate code/manifolds_mapping_quotient.py and saved outputs. The regular g-parameter torus maps to twice the primitive H2 generator, normalizing the Euler curvature to2GK. On the finite caps its boundary mixed terms are -2K/3 and K/2; all cap representatives have square zero. Explicit boundary primitives and the multiplicative cylinder form produce contributions2,-3,0,0, giving absolute cube1. The smooth endpoint correction uses bump primitives. The direct/inverse mapping-torus convention change reverses all contributions simultaneously, including the full last-word path, so it cannot affect the absolute answer. Independently ell=-4 and the spin congruence ell=4k modulo24 select k=-1.
+
+Theorem B.6.21 now concludes [Phi]=0 for the original(3,4) family. The free-circle disc filling has mu0; the actual fixed-curve spin trace also has zero Eells-Kuiper correction, so the original oriented sphere mapping torus has mu0. K3 identifies this with the specified Theta7 class. Consequently its sixfold class is zero and the selected original residue is0, not14. This is an unconditional numerical result for the original family, not a guess from equivariance. At that checkpoint the higher pairs were still open; the next calculation settles them. Older unsuccessful routes above are retained as the research record and do not supersede the completed theorem B.6.24.
+
+
+### Every higher-multiplicity monodromy is zero
+
+B.6.22 constructs the replacement for the actual higher family, rather than inferring it from the original pair. Write A=lN0, B=kN1, P=4A+3B=±1 and h=2kl. The integral parameter-basis correction r=(-B,2A-B,2B-2A,0) removes the entire cusp defect because (M0-I)r is exactly that defect. This is an actual long-period deck transformation made before splitting the node, so the remaining comparison is a holomorphic toric unit. Keeping that unit unchanged in the product nodal-chain replacement gives the original marked exterior and finite caps, with zero new-node affine defects in the corrected marking. The finite defects are (0,P,-P,-2A-B) and (0,0,-P,2A+B). The first critical elliptic return has shear h, and the second is identity; the descended tangent calculation therefore gives ell=-2h=-4kl. The actual equivariant quadratic trace of B.6.19 extends with the same marked generator and coefficient c=ell-2k_cup.
+
+B.6.23, contributed and registered by the six-manifolds worker, computes the signed cube for all parameters symbolically. The regular Euler curvature is hGK with one uniform convention fixed by its clutch exponent -h. After the integral gauge, the finite boundary differences are -4G-W+(2P/3)K and -3G+U+(P/2)K. The same exact primitives as in the original calculation give collar terms h,-3h/2,0,0. For P=1 these are positive kl multiples of the original oriented computation, proving k_cup=-kl even when 3 divides kl, where the spin congruence alone would not determine the sign. For P=-1, holomorphic fibre inversion reverses both the Euler class and the quotient orientation, leaving the cubic and Pontryagin pairings unchanged. Source sections/maps_fixed_general_cube.tex and exact code manifolds_mapping_general.py were independently read and rerun; root's full audit passed. Its row is in records/manifolds_results.csv.
+
+B.6.24 supplies the remaining trace-sign argument for every kl, without assuming an unproved local orientation convention. The disc bundle has intersection form (k_cup), and the spin trace has form (j) with j=±k_cup. Their absolute generators restrict to the same marked torsion class pi*y. Therefore the boundary linking pairing gives the same reciprocal 1/k_cup and 1/j modulo integers, forcing j=k_cup when |k_cup|>2. At |k_cup|=1 the characteristic correction is zero for either sign. At |k_cup|=2 the opposite sign would produce mu=±1/112 for the original sphere mapping torus, contradicting K3's lattice (1/28)Z/Z. Thus the sign is fixed wherever it matters. With ell=4k_cup and c=2k_cup, both the free-circle disc invariant and the trace correction equal (k_cup-sign(k_cup))/224. Their difference is zero. Consequently [Phi_3k,4l]=0 in the specified Theta7=Z/28 for every requested pair. Root and six-manifolds independently audited the marked linking generator and the exceptional |k_cup|=2 argument. The exact symbolic identity and exceptional cases are recorded in maps_trace_linking.py and its saved output.
+
+B.6.25 now constructs the explicit spin filling required by the prompt. Since the actual return has been proved isotopic to the identity, choose an isotopy h_t with constant endpoints. The map [x,t] to (h_t(x),exp(2pi it)) identifies the marked mapping torus with S6xS1. The product D7xS1, in that order of orientations, supplies a parallelizable spin filling with one zero-handle and one one-handle, zero signature and zero Pontryagin square. Both boundary spin structures extend. This is a consequence of the completed characteristic-number computation, not an assumed product used to infer the answer.
+
+The nonzero order-six ordinary affine obstruction in B.6.7--B.6.8 remains valid: it forbids the specified homotopy over the ordinary base to the pure scalar shear. The unrestricted smooth isotopy established here need not preserve that fibration, so the two conclusions are consistent. All requested sixfold classes are zero, and the original classes select residue0 from K7's conditional pair{0,14}.
+
+
+### E.2 continuation: the fibre is not an ordinary closed spin
+
+After completing B.6, the maps worker was assigned an independent attack on the remaining shifted-fivefold classification. Proposition E.2.10 identifies the actual regular-fibre complement group as the(3,4) torus-knot group and retains its peripheral marking: g maps to the central Seifert fibre h, the three kernel-circle generators die, and the normal meridian is ab. Thus the preferred zero-linking longitude is h(ab)^(-12). The group and peripheral subgroup alone do not identify the four-torus embedding.
+
+The boundary cohomology gives a specific obstruction to every ordinary closed-spin model. In the unique zero-linking framing, the restriction image in degree two contains12gamma u and12gamma w, so its common contraction radical is contained in Zdelta. In degree three the image contains the nonzero class2gamma u w, annihilated bydelta. For a closed spin of any T3 inS5, the exact complement decomposition gives R2=R2_old and R3=R2_old wedge s; the primitive spin vector lies in the first radical and contracts the latter injectively. The actual pair violates this condition. This rules out a single ordinary closed spin and hence the proposed threefold spin of the classical torus knot, including all changes of normal framing. It does not exclude turned or deform-spun constructions.
+
+The primary literature check opened and read Winter's arXiv0711.1638v3 PDF: the closed torus-spin definition is immediately before Theorem3.4 onPDFpage4; Theorem4.5 onPDFpages9--10 proves preservation of the peripheral group, meridian and longitude group under the first spin/Tube construction. Theorems5.1--5.3 onPDFpage11 concern classification within the ordinary spun-torus class, not arbitrary higher-dimensional embeddings, and were not applied outside that scope. The local proof here supplies the higher-dimensional obstruction directly. The bibliography entry mapsWinter08 records the checked version; a publisher DOI lookup was inaccessible through the web reader and is not represented as a full publisher-text check.
+
+### E.2 continuation: exact second-homotopy coinvariants
+
+Theorem E.2.11 computes more than ordinary homology. For the classifying map c:P→N, the homology map H3(P)→H3(N)=Z is zero: in the exact boundary kernel, the two normal-circle/g coordinates vanish because i2 has only a delta-sweep image, and the mixed g1g2 coefficient then vanishes as well. Those are exactly the coordinates retained by the boundary map to the aspherical target.
+
+On cohomology, a generator of H3(N) is the MV connecting class of gamma1 gamma2. Its pullback has exact order12. The two normal-circle/gamma classes already extend from the E pieces, so12gamma1 gamma2 lies in the source boundary image; conversely every image has mixed gamma1 gamma2 coefficient divisible by12. Relative Hurewicz identifies H3(N,P) with pi2(P)_G. Its exact extension is0→Z→pi2(P)_G→Z⊕(Z12)^7→0. The cohomology calculation says that evaluation on the injected Z has image12Z, forcing a primitive Ext vector. The resulting Smith factors give the exact answer pi2(P)_G=Z²⊕(Z12)^6. Thus pi2(P) is not projective overZG, since coinvariants preserve a direct-summand splitting and a projective Z-module is torsion-free.
+
+This excludes N×S6 connected sums with products of spheres and a homotopy10sphere, whose second homotopy modules are free overZG. It does not compute the full module, its higher equivariant forms, or the smooth classification. The exact program maps_shifted_pi2.py checks the contraction kernel and the integral order12 image certificate for all16 boundary-adjoint sign choices. Root independently audited both propositions, including the primitive Ext/Smith argument and the strengthened one-spin obstruction. Their proofs are in sections/maps_shifted_homotopy.tex, input at the end of shifted_full.tex, and their register rows are owned here.
+
+The six-manifolds worker additionally supplied an integral cusp Alexander calculation, saved in code/manifolds_cusp_alexander_proof.tex and its executable/output. For the infinite cyclic cover with gamma deck z and u deck1, it gives H2=R⊕(R/(z−1))², H3=0,H4=R and H0=H1=R/(z−1), R=Z[z,z^-1]. The normalization matrix and infinite-cylinder argument were read and the certificate rerun successfully. This is a local input for a possible fuller complement-module calculation; it is not presently registered as the full Alexander or homotopy module of E or P.
+
+
+### E.2 continuation: central localization of the actual homotopy module
+
+Theorem E.2.12 now uses that cusp calculation to compute localizations over the full group ring R=ZG. The two central elements h1,h2 generate an injected Z². With R_i=R[(h_i−1)^(-1)], flatness follows from central localization, and the result is
+
+pi2(P) localized at h1−1 = R_1/(h2−1), and symmetrically with the factors exchanged; localizing at both makes it zero.
+
+The full singly localized universal-cover homology consists of1,3,4,4,3,1 copies of that module in degrees2,3,4,5,6,7 and zero in the other degrees. For the regular-fibre complement with knot group K, localizing at its central h−1 gives a free rank-one second homotopy module and a free rank-one fourth homology module over ZK[(h−1)^(-1)].
+
+The proof keeps the actual group-ring coefficients. On the regular first torus the g1 loop acts by h1, so the invertible h1−1 entry contracts its Koszul chain complex. This makes the regular graph piece and every boundary acyclic. Every second-factor cap retains that regular first torus and is acyclic as well. At each first-factor finite cap the relevant connected cover is T3×R; the m-th affine deck power is a translation and acts identically on homology, so h1−1 kills it before localization. Only the first cusp survives. Its image group is precisely the centralZ², and its connected lifted cover is the gamma-cover of W timesR×T3. The gamma deck is h1; h2 translates the real factor and acts trivially on T3 homology. Induction of the two surviving free cusp classes, in degrees2 and4, gives the asserted ranks and modules. All coefficient and covering identifications were independently audited by root.
+
+This is stronger than merely knowing ordinary coinvariants: the nonzero localized module is killed by the central non-zero-divisor h2−1 and supplies a second proof of nonprojectivity. It still leaves the full module and the extension data at h1=h2=1 open, and it is not a smooth classification of the fivefold. No such inference is made in the theorem or register.
+
+
+The same E.2.12 proof includes the integral uniform annihilator q², q=(h1−1)(h2−1). Before localization, the regular eight-torus Koszul homology is R/I tensor exterior^j(Z6), with I=(h1−1,h2−1). The regular-graph and boundary Wang filtrations each have only two stages, both killed byI, soI² kills their full homology. Finite caps are killed byI; the two cusp homologies are killed byh2−1 andh1−1 respectively. Thusq kills every piece and overlap group, and the two-stage Mayer--Vietoris extension is killed byq². No splitting of those filtrations is assumed.
+
+Finally pi2(P) has infinite rational rank. Localization at h1−1 cannot turn a finite-dimensional rational representation into an infinite-dimensional one, whereas the computed quotient R1/(h2−1) contains the infinite-dimensional Laurent localization in h1. The universal cover therefore has no finite homotopy type, and P cannot fibre overN with compact manifold fibre and a fundamental-group isomorphism. This provides a precise obstruction to a further simple recognition route while leaving the integral intersection module uncomputed.
+
+### E.2 continuation: an actual circle fibration with infinite-order return
+
+Theorem E.2.13 gives a smooth fibration P→S1, with connected closed nine-dimensional fibre Y, inducing the primitive character(4,−3,−4,3,12,−12). This does not contradict E.2.12, since its fibre has a nontrivial fundamental group. The construction uses the particular map c=(e1,e2) from E.2.9. Average a representative of the integral one-class on N over its T2 action; the resulting closed form evaluates to12 and−12 on the two circle generators. At every point of P, one factor is regular and outside its cusp repair, so its actual quotient derivative supplies a vertical vector with evaluation±12. This proves pointwise nonsingularity, rather than merely a group-theoretic candidate for a fibration. Its integrated map is a proper submersion, and primitivity gives connectedness.
+
+The fibre group ker(chi) maps onto the kernel of the mod12 character on S2(3,4,3,4). That character is injective on all four cone groups, so its kernel is the genus-six surface group. The central kernel is the primitive diagonal h1h2. Its oriented circle Euler number is−1: the weighted Hopf connection theta=cos²(r)dphi1/4+sin²(r)dphi2/3 has integral theta dtheta/(2pi)²=1/12, and the tautological line convention gives orbifold Euler−1/12 for each factor. The degree12 pullback gives vector(−1,−1), equal to minus the diagonal generator in an integral determinant-one basis. Therefore H1(Y)=Z^12, and a three-dimensional aspherical model of its group is the unit-circle bundle of degree−1 over the genus-six surface. Scott's primary Theorem3.6 independently supplies the covering formula; the sign here is fixed explicitly to avoid Seifert-presentation convention ambiguity.
+
+The centre Z² acts faithfully on pi2(P), by the two computed localizations in E.2.12. The centre of every finite-index subgroup is its intersection with that Z², because a nonelementary Fuchsian subgroup has trivial centralizer in the orbifold quotient. Thus no finite cover of P can be homotopy equivalent to a product S1×Z: its circle generator would be central and act trivially on pi2. In particular no positive power of Y's actual return is homotopic to the identity. On the other hand its outer automorphism of ker(chi) has exact order12, since chi of the centre is12Z and the centralizer of the kernel is the centre. The return is therefore not detected by its finite-order outer action. This is a new structural result, not a classification of Y or of the full smooth return; it concerns a different mapping torus from the sphere-family returns settled in B.6.
+
+Root independently audited the complete proof and reran code/maps_shifted_circle.py successfully. E.2.13 is registered here. The smooth nine-dimensional fibre, the actual return classification, and the full integral homotopy-module extension at h1=h2=1 remain open.
+
+### E.2 continuation: the actual separating torus twist
+
+Theorem E.2.14 makes the fibre and a power of its return explicit. Let E12 be the ordinary cyclic degree12 cover of the actual regular-fibre complement, using its meridian character. Then Y=(E12×T3)∪(T3×E12), with common boundaryT8 and lifted normal angles theta'_1=gamma2−gamma1 and theta'_2=gamma1−gamma2. On the two pieces choose the flow fields−g2/12 andg1/12 in the globally regular factors. Interpolation on their common regular collar by(eta g1−(1−eta)g2)/12 has period-one base derivative. At time12 the return is exactly the identity off that collar and translation byeta(g1+g2) on it. Thus psi^12 is a specific separating torus twist; no local singular-cap correction remains unspecified in this comparison.
+
+Its cohomological variation is the marked Mayer--Vietoris connecting map composed with contraction by g1+g2 and boundary restriction. Squaring it gives zero. Rational transfer identifies the boundary-visible part of H*(E12) with H*(E), since the finite deck action is translation on the boundary torus. Therefore the exact restriction matrices are known from E.2.6 by substituting theta=12(gamma2−gamma1). Exterior linear algebra gives variation rank1 in degrees4 and5 and zero elsewhere. The generalized eigenvalue-one dimensions are(1,0,1,19,45,45,19,1,0,1); Wang with the already-computed P cohomology gives exactly one size2 Jordan block in each of those middle degrees. This detects infinite homotopy order using ordinary rational cohomology, independently of the earlier central-module obstruction.
+
+The entire rational cohomology of E12 is also now computed. At each twelfth-root character, finite averaging and the integral cusp specialization from B.5.16 identify R^q f_* with j_* of the exact scalar-twisted exterior monodromy. On the base disc, restriction of a cocycle on its three free loops to the local coinvariant spaces is onto, so H²(j_*) vanishes and Leray has only base degrees0,1. Exact cyclotomic matrices give E12 Betti(1,7,46,56,46,6,0). Combining its nontrivial eigenspaces with the boundary calculation yields Y Betti(1,12,121,407,693,693,407,121,12,1). All nontrivial return eigenvalues are twelfth roots and are semisimple. These are exact topological data of the actual fibre, without substituting a manifold having the same group or homology.
+
+Proof and both full matrix certificates are saved as maps_shifted_return.py and maps_shifted_cover.py with their outputs. Root independently audited the geometry, all-degree invariant specialization, graph-sheaf calculation and Jordan argument, and both exact reruns exited0. E.2.14 is registered. The remaining smooth recognition is concentrated in the actual E12 and its marked boundary embedding; the explicit cover-splice and twist do not by themselves classify it by a familiar product or connected-sum model.
+
+### E.2 continuation: integral fibre cohomology and shear coefficient72
+
+Theorem E.2.15 upgrades that calculation integrally. Using the regular coefficient lattice Z[C12], the finite affine caps unfold into ordinary torus root covers; invariant values are specified integrally on one sheet, so no division by the finite group order occurs. The cusp specialization is primitive by B.5.16. The integral j_* complex over the base disc is V→direct sum im(T_i−I). Hermite bases of those exact image lattices and Smith reduction give only unit nonzero entries. Thus H*(E12) is torsion-free with the previously computed ranks.
+
+Poincare–Lefschetz duality now fixes the actual integral boundary images of E12×T3: their cokernels inject into free relative groups, hence the images are primitive and equal to the saturation of the known rational images. The combined saturated boundary matrices have nonunit Smith entries6,6 only in boundary degrees2 and6. Therefore Y has cohomological torsion(Z6)^2 in degrees3 and7, equivalently homological torsion(Z6)^2 in degrees2 and6, and no other torsion. The Betti numbers remain(1,12,121,407,693,693,407,121,12,1).
+
+The collar variation formula also holds integrally, by the singular prism of the translation loop. Its common-boundary lattice and quotient are now known exactly. Smith reduction gives variation of rank one and divisibility72 in degrees4 and5, with zero variation in all other degrees, including the two possible mod6 torsion components. The connecting free subgroup is primitive in H*(Y), so72 is the actual coefficient in the full cohomology lattice. In separate integral bases, the twelfth return has matrix[[1,72],[0,1]] plus identity in H4 andH5. This supplies the previously unknown integral size of the torus twist.
+
+For every n≥1, the connected12n-fold cyclic cover is the mapping torus of that twist to powern. Its Betti numbers are(1,13,133,528,1099,1384,1099,528,133,13,1), and its homology torsion is(Z6)^2 in degrees2,3,6,7 andZ/(72n) in degrees4,5, with no other torsion. The two Wang extensions whose right terms have torsion are not assumed to split: cohomological H4 andH8 are first determined by sequences with free right terms; oriented ten-dimensional torsion linking then fixes H7 andH3 respectively. This proves the full abelian-group result and pairwise nonhomotopy-equivalence of these covers.
+
+Both integral programs, maps_shifted_cover_integral.py and maps_shifted_fibre_integral.py, retain exact outputs. Every Smith transform is checked unimodular, and all torsion variation residues are checked to vanish. Root independently audited the full proofs and reran both calculations successfully; E.2.15 is registered. No complete smooth recognition of E12 or the residual homotopy-module extension at the central value1 is inferred. A separate unregistered research note records further central-localization consequences; the main remaining target is that integral module and the smooth recognition, rather than further peripheral exclusions.
+
+### E.2 continuation: full complement module and its derived peripheral attachment
+
+Theorem E.2.16 computes the entire second homotopy module of the actual complement E, including the previously unknown central value h=1. Write R=ZK for its marked torus-knot group and Q=K/<h>=C3*C4. In right-module convention,
+
+pi2(E)=R ⊕(ZQ)^2 ⊕L,
+
+where L has generators x,t, with t fixed byQ and x(1+b)+3t=0. It is the nonsplit order-two extension of the induced C4 sign module by the trivialZ module. Equivalently it is the cyclic module ZQ/((b²−1)ZQ+(1+b)(a−1)ZQ). Its central torsion is killed by h−1 itself, and its coinvariants are free of rank4, in agreement with the ordinary Hopf calculation. Restricting to the degree12 subgroup gives the previously established rank40 coinvariants, and the character dimensions reproduce all twisted E homology values after including the knot-group Alexander term.
+
+The proof supplies the missing chain information. In the gamma cover of the cusp, the boundary has a length-two unipotent deck block. The normalized component divisor restricts by the exact coefficient2−h−h^-1=−h^-1(h−1)^2. Relative duality forces a unit Ext1 attachment from A/(h−1)^2 to the freeA summand. All permitted normalizations are explicit triangular target chain equivalences, applied simultaneously to the cusp and its whole incoming boundary map; the regular core and external boundary stay fixed. The torus monodromy chain lift is justified geometrically on R_gamma×T3: concentrate the actual translation loop at the terminal strip endpoint, whose deck coefficient is h. Its sweep is exterior multiplication by the translation vector, giving the exact exterior-power Fox matrices. Finite caps use the actual winding norm N(s,Λ^rD), with no unproved higher coherence.
+
+The resulting integral group-ring complex has low cell ranks(4,20,49,62). Exact unit cancellations leave the ordinary one-relator Fox column and a five-generator presentation. The remaining24 relations reduce explicitly to the displayed module. Every group-ring operation uses the exact normal form h^r times alternating words in a,a² and b,b²,b³; no finite quotient or rational approximation replaces the group.
+
+The peripheral map is part of the result. On the connected lifted boundary, uw,ud,wd map to t,0,0. Since t is twice a primitive coinvariant, this recovers the independent ordinary coefficient2. More importantly, the complete degree-two chain map sends the swept g-mu cell to a vector whose free-cusp coefficient is the unit h. This survives at the derived level even though the free summand receives zero from peripheral H2. It must therefore be retained when forming the actual P or Y splice; a direct-sum inference from homology alone would lose it. Both the unreduced columns and the compact table are saved in the exact certificate.
+
+Root independently audited the full geometric and derived comparisons and reran code/maps_complement_module.py successfully; its audit output is records/root_maps_complement_module_audit.out. The six-manifolds worker independently verified the cusp divisor coefficient and every integral boundary Jordan block in manifolds_cusp_boundary.py. E.2.16 is registered and input. The remaining main target is the full P/Y splice module using this actual peripheral chain map, followed by smooth recognition; no such classification is asserted by this complement-module computation.
+
+### E.2 continuation: the complete shifted homotopy module
+
+Theorem E.2.17 resolves the entire module extension that remained open at h1=h2=1. Let R=ZG and let Gamma be the orbifold group of S2(3,4,3,4). Then
+
+pi2(P)=R/(h2−1) ⊕ R/(h1−1) ⊕T_L⊕T_R.
+
+Each T summand is given by six generators and ten explicit relations over ZGamma. Three generators satisfy an order-three norm relation, three an order-four norm relation, and four further relations make a specified linear combination Omega invariant under the four orbifold generators. The full coefficient formulas are displayed in E.P3 and E.P4. This is an integral group-ring presentation, not a rational calculation or a localization. The two T summands are exactly the common kernel of h1−1 andh2−1; the improved annihilator is their product, without squaring. Their ordinary coinvariants are immediately(Z12)^6, which recovers the previously computed Z²+(Z12)^6 for the entire module.
+
+The computation retains the actual peripheral map of E.2.16. Project the actual splice complex onto the full aspherical N resolution, including its degree-four cell. The kernel has low ranks(0,6,40,123). Six literal unit maps from the shifted boundary circles cancel its degree-one generators, leaving a complete34-generator123-relation presentation of pi2(P). Exact group-ring reduction gives16 generators and52 relations. Two generators split off on the two central axes; the remaining14 generators are proved annihilated by both central operators before taking that quotient. A coefficientwise reduction separates two seven-generator blocks; determinant-one sweep changes and elimination of one invariant generator in each block give the compact12-generator20-relation central presentation. No assumption of a split Mayer--Vietoris sequence enters the calculation.
+
+Restriction to Pi=pi1(Y) gives
+
+pi2(Y)=(ZPi)^24 ⊕Res_Sigma6(T_L⊕T_R),
+
+where the surface-group summand has trivial action of the central diagonal z. Each axis term is free rank12 because Pi injects with index12 into G/<hi>. The exact12-sheet permutation evaluation of either central presentation gives coinvariants Z86+(Z6)^2. Adding the free24 gives pi2(Y)_Pi=Z110+(Z6)^2, agreeing with the separate Hopf computation. Both the raw and compact matrices, all unit reductions, source signs and word operations are saved in maps_splice_module.py and its JSON/output.
+
+Root independently audited the full proof, including the full target resolution, precise normal-circle inversion coefficient, both block changes and the surface-subgroup restriction. The independent final rerun is records/root_maps_splice_module_final_audit.out; every chain identity, coefficientwise block check and both Smith comparisons passed. E.2.17 is registered and input. The full complement and shifted/fibre second-homotopy modules are now determined. Smooth recognition of E, Y and P remains open; this is the remaining E.2 scope, rather than an uncomputed central module extension.
+
+### E.2 continuation: the actual quadratic attachment obstructs free summands
+
+Proposition E.2.18 retains information that the full second-homotopy module does not contain. The normalized cusp surface S=dP6 maps to E and lifts to its universal cover. Whitehead's natural exact sequence sends its actual H4 class to ±([e(h−1),t]−12q(t)) in Gamma(pi2E). This is an image of a genuine four-dimensional homology class, rather than an isolated attaching-cell word that later three-cells might change. The primary source is Whitehead, The Secondary Boundary Operator, Theorems1 and5 and Section2, with naturality and the infinite-complex statement read directly. The bibliographic record is PNAS36(1)(1950),55–60, DOI10.1073/pnas.36.1.55.
+
+The Picard calculation uses the common reversal that compares the complex toric curves to B.5.16 phase-cell orientations. The normalization map is onto the full cyclic-cover H2, its two torsion generators are the adjacent exceptional curves, and its free coefficient is therefore a Laurent unit. A deck translation of the entire normalized component fixes that unit while leaving both torsion coordinates unchanged. In the retained cusp basis the quadratic class is−[E,U]−2q(D). The exact original cancellation certificate tracks E→(1−h)e+6t, U→t and D→0, giving the displayed result. No arbitrary derived shear of the free generator is used.
+
+For every split free ZK axis, Hom(T,ZK)=0 and regularity of h−1 force its generator to be eu+t0 with u left-invertible. Residual finiteness of the torus-knot group proves direct finiteness of ZK, hence u is a unit and the complement is precisely T. The mixed Whitehead component remains nonzero under every such change. A connected sum with S2×S4 would have no such mixed H4 image. Therefore E is not homotopy equivalent to E0#S2×S4 for any compact connected E0, even without preserving the boundary.
+
+The exact splice inclusion check tracks the two original pairs(t0,e0),(t1,e1) to the pure axes and the invariant classes OmegaR,OmegaL of E.2.17. Their ordinary orbifold coinvariant images have order exactly6. All24 chosen deck translates of the normalized cusp surfaces therefore give mixed Whitehead terms[f_j(z−1),t_i] in the universal cover of Y. For any proposed free direct summand, its retraction kills the central-annihilated residual module. Vanishing of all mixed terms would force every retraction coefficient into6ZPi, because z−1 is injective on the finite-support group ring modulo6. This contradicts the retraction equation. Thus Y is not homotopy equivalent to Y0#S2×S7 despite its24 free ZPi axes.
+
+Exact programs maps_cusp_quadratic.py and maps_splice_quadratic.py retain full stdout and JSON. Root independently audited the normalization, orientation, naturality, arbitrary-summand argument, actual splice inclusions and all-group invariance, and both reruns exited0; its logs are records/root_maps_cusp_quadratic_audit.out and root_maps_splice_quadratic_audit.out. Six-manifolds independently checked the Picard quadratic algebra and orientation comparison. E.2.18 is registered and input. Searches covered Whitehead's quadratic functor and connected-sum obstruction, spun/deform-spun torus constructions, and the related primary normal-crossings plumbing literature; no claim of priority is made.
+
+Smooth recognition remains unresolved. The next route retains the complete cusp framing through a smooth relative deformation of its bounded period correction to zero, then seeks a finite framed description of the resulting canonical-bundle self-plumbing and its actual affine cap attachments. Chain cancellations alone are not being promoted to smooth handle cancellations.
+
+### E.2 continuation: relative smooth cusp plumbing
+
+Proposition E.2.19 upgrades the topological cusp comparison of B.5 to a relative smooth comparison. The actual bounded holomorphic correction C(q) is deformed through(1−s)C(q) to zero. On the fixed unimodular toric cover the deck actions differ only by analytic units, so their quotient is an actual smooth family over the interval, including on every normal-crossings stratum. Uniform nondegeneracy follows for T=−log|q|/(2pi)>K+1. Compactness is checked in coordinates: choose the unperturbed triangle containingB0a; nonnegative barycentric exponents give log|z_j|≤2pi||P^-1||Ksqrt2, so finitely many closed affine polydiscs cover the quotient uniformly. A horizontal field matching the full marked boundary trivialization and tangent to every stratum gives the relative diffeomorphism. No smoothness atq=0 is inferred from the earlier logarithmic homeomorphism.
+
+The unitless endpoint is the self-plumbing of the canonical disk bundle ofdP6 along its three opposite toric curve pairs. Each surface normal line and canonical normal line has degree−1 on the pairedP1. The entire attachment, including normal coordinates, is(z,a,b)→(1/z,zb,za), withq=zab. It extends at the other chart as(z,b,a), is involutive, and has complex Jacobian1. The two endpoint orbits{0,2,4},{1,3,5} have exact cyclic coordinate permutations with threefold composite identity. Every assertion is derived from the six actual translated fan matrices; it is not an arbitrary abstract plumbing chosen to have the same homology. The outer identification recovers the full markedM0 mapping torus.
+
+The exact chart program maps_cusp_smooth_plumbing.py and its stdout/JSON are saved. Root independently audited the full proof, properness bound, relative boundary field, normal degrees, all six fan maps and triple cycles; its rerun records/root_cusp_smooth_plumbing_audit.out exits0. E.2.19 is registered and input in the working tree after checkpoint09. It does not complete E.2: the smallest remaining instance is the actual fixed(3,4) shifted productP, whose complete smooth identification or framed-handle comparison remains. In particular E cannot have only handles of index≤4, since that would make its abelian boundary fundamental group surject onto the nonabelian torus-knot group. The global five-handles and the entire exterior attaching data remain part of the task.
+
+### E.2 continuation: all smooth cap and exterior markings
+
+Proposition E.2.20 combines the relative cusp comparison with the actual finite and regular pieces. Because kappa_j=gamma(v_j)=±1, r=s exp(2pi i kappa_j gamma(x)) is a single-valued invariant smooth normal coordinate on each affine root quotient. Thus the cap is the explicit linearT3 mapping torus of B_j=A_j|ker(gamma), times an orientedD2. In the basis w_j=kappa_j v_j, x=phi w_j+l, its marked boundary map is sigma=m_j kappa_j phi+theta, alpha=kappa_j phi. The angle matrix is unimodular, its positive normal meridian is exactlyv_j−m_j rho_j, and the actual base map isq=r^m exp(−2pi i sigma). In particular no winding is lost by replacing the cap with a product.
+
+The standard flatT4 bundle over a four-holed disc, these two product caps and the explicit E.2.19 canonical-bundle plumbing define a finite smooth pieceE_pl with all boundary maps specified. The actual E is diffeomorphic toE_pl relative its full ordinary-fibre boundary. The shifted product is therefore the splice(E_pl×T4) union(T4×E_pl), using the stated normal-angle reversal. This is proved by gluing the actual relative comparisons, not inferred from any invariant calculation. Root independently read the entire proof and reran maps_finite_cap_framings.py; its log is records/root_finite_cap_framings_audit.out. E.2.20 is registered and input after checkpoint09.
+
+The remaining handle conversion is now concrete. The proposed actual-stratum decomposition of the cusp uses two triple-pointD6 blocks, three annulus blocksS1×D1×D4, and one dense-core blockT2×D2×D2. Their bundle trivializations exist, but the endpoint rotations of both normal complex lines and the nested collars must be retained in the attaching maps. Six-manifolds independently checked the absence of an extra normal-bundle obstruction and the resulting ordinary counts(2,3,4,2,1), contingent on that collar comparison. This conversion is being proved geometrically rather than inferred from the matching B.5 CW counts.
+
+### E.2 completed: the actual ordinary framed-handle identification
+
+Theorem E.2.21 completes the requested smooth identification of the original shifted product. The actual regular-fibre complement E is diffeomorphic, relative its entire marked T4×S1 boundary, to the explicitly prescribed ordinary handlebody H6. Its counts by index are(2,5,14,22,21,10,2), total76. The shifted fivefold is diffeomorphic to the explicitly prescribed closed handlebody H10, with counts(4,31,119,290,485,574,485,290,119,31,4), total2432. These are not recognition statements from matching counts: the whole ordered attaching embeddings and their normal coordinates are given, and the proof compares the actual smooth pieces at every stage.
+
+The cusp starts with its two actual triple-point complex six-balls. Its three double-curve annuli give S1×D1×D4 blocks. The six endpoint coordinate-axis placements are tabulated, retaining the transition(z,a,b)→(1/z,za,zb); both complex normal vectors rotate once, while the curve angle reverses. The dense torus core is T2×D2×D2_q. A positive log-sum-exponential moment map specifies its compact rounded hexagonal disk; q itself trivializes its normal disk. Nested moment cuts held constant in q make its entire interface exactlyT2×∂D2×D2. All six full-dimensional sector embeddings are explicit monomials inX,Y,q. Their exponent matrices telescope exactly, including the triple identifications. Star-shaped normal domains give actual smooth balls, not merely homotopy cells. Properness ensures that these blocks partition the whole sufficiently small tube, and the exterior radial collar transport fixes its complete marked real torus coordinates.
+
+Every torus parameter is then cut into two semicircles. This literal product splitting gives ordinary handles with their full newly created parameter faces and normal frames; the primary comparison is Vogel Section4.1 equation(16), printed p103, and the elementary proof is repeated. Starting from the cusp boundary, the planar core contributes two actual T4-parametrized bands. Their bank embeddings use the explicit exponential period formula and the integer monodromy matrices. Each finite cap is its actual linearT3 mapping torus timesD2, attached by the complete angle map of E.2.20; its relative ordinary handle counts are(1,4,6,4,1) in indices2 through6. In particular the meridian v−m rho is retained. No high handle is silently discarded.
+
+For P, take the product of the76-handle complement withT4, then the full dual relative handle decomposition ofT4×E, attached by the actual normal-angle reversal. The identity on each new coordinate handle and the computed product-collar comparison on the previous stage give the actual diffeomorphism. The exact classifying data are the ordered full framed characteristic embeddings. Milnor's primary Theorem3.13 identifies the elementary cobordism from that data, Theorem1.4 makes the smooth composition unique relative the marked boundaries, and Theorem5.8 supplies the isotopy-extension step. The proof derives the needed relative tubular/cutoff version explicitly. Every top handle retains its entire sphere attaching map, so neither a disk-gluing ambiguity nor an uncomputed homotopy-sphere summand remains. No conclusion is inferred from the already known homology or homotopy modules alone.
+
+The program code/maps_ordinary_handles.py verifies all chart, framing and monodromy identities and expands every one of the76 and2432 handles, including parameter bits, index, coindex, side, duality and attaching-map macro, in its saved JSON inventory. Root independently read the complete geometric proof, reran this certificate, and visually checked Milnor's original Theorems1.4,3.13,5.8 on printed pages25,31,63–64. Fourfolds independently passed an adversarial audit of the full framed construction and its scope, and six-manifolds independently checked the actual toric collar/product argument. The final local LuaLaTeX build has no warnings or overfull/underfull boxes. Source verification and external-cache hashes are recorded in maps_handle_source_audit.md and maps_milnor_source.json; full external books are outside the deliverable project.
+
+E.2.21 is registered and input afterE.2.20. The earlier status paragraphs above are chronological records; their smooth-recognition obstruction is now resolved by this direct finite framed-handle identification. No simpler product or connected-sum normal form is claimed. All originally assigned map tasks, B.6 for every requested multiplicity pair, and this E.2 smooth-type task are settled. The parent project continues on its remaining D.2 classification questions.
+
+## D.2.48: complete smooth classification of the weighted Engel family
+
+The simply connected sector of D.2.34 is now classified for **every positive
+weight d**, including the previously excluded even and three-divisible
+weights. The scope is the original IV*, III, I1 Engel profile, translation
+6dG and linearization zero dI1, with both additive caps replaced by any
+good logarithmic caps of orders 3k and 4l whose marked numerators satisfy
+4l n0+3k n1=±1. Every affine delta numerator is retained. No global-cover
+assumption is made at the finite caps.
+
+There is one oriented smooth type M_d for each d. Its complete Zhubr data
+are H2=Z^(d−1)⊕Zd, middle Betti number zero, refined class zero, and the
+fundamental-class coordinates specified below. Different weights are
+distinguished by Euler number 2d. The case d=1 is S6; weights prime to six
+recover the previously classified D.1 covers.
+
+### Actual integral geometry and refined class
+
+The d component divisors generate H2 cohomology primitively, with sole
+relation that their sum is zero. This follows from the actual primitive
+cusp meridian in the finite-cap complement, the relative Thom sequence,
+and torsion-freeness of the exterior H2 cohomology; saturation is proved.
+The common complex ruling f=H−E1 is the literal specialization of a∧b
+through a unit-period annulus, and generates the Zd torsion. Thus the
+degree-two products are the cyclic graph Laplacian times PD(f), retaining
+the two repeated edges when d=2. In particular the free cubic is zero,
+while the torsion products are usually nonzero.
+
+The normalization immersion of each dP6 component has normal line K_dP6.
+Its pulled-back c1 and c2 pairing vanish. Restriction of global H2
+cohomology to all components is injective, by the connected graph Laplacian,
+so c1(X)=0. The total fibre and every reduced finite-fibre divisor have
+zero cohomology class. Consequently the corrected differential target L
+and the abstract vertical bundle V are topologically trivial; V retains
+its nonzero abstract delta section. The resulting reference frame away
+from the critical curve has relative spin characteristic obstruction equal
+to minus the **literal** full critical cycle.
+
+Only the core and cusp are compared with weight one. Their degree-d period
+cover transfers the three critical curves to the regular-fibre preimage
+d a∧b+d b∧delta+delta∧gamma_d. The actual primitive functional evaluates
+this cycle as −5d times the torsion generator. Therefore the full critical
+cycle is nullhomologous and c2=lambda=0 integrally.
+
+The missing two-primary refinement is detected inside the order-four
+finite cap. A primitive character with value one on a has value −2 on
+delta, so its fibre N is an actual elliptic mapping torus of an order-four
+automorphism. Its H1 is Z⊕Z2. The global reference frame induces an actual
+tangent parallelization on N, whose stable framed parity is **one** by
+the spin-compatible Kaplan filling argument. The exact Thom relation
+d s=−2lP K_a0−kP K_a1 gives linking −kP/d and the literal critical link
+5kP, which is odd. Restoring the reference-parity term in the relative
+refined-class formula gives
+link(N,PD(P_ref))=−link(N,Ccrit)/2−1/2=0 modulo one. Since k is odd, N
+detects all two-primary torsion; the odd-primary part is already zero from
+2P_ref=lambda=0. Hence P_ref=0 for all d. This does not use Zhubr's
+unproved general frame-change conjecture.
+
+### The full fundamental-class invariant
+
+A single class u modulo d is constructed with the same toric restriction
+eta=−5H+6E1−E3 on every normalized component. Its degrees on the internal,
+diagonal and fixed curves are (−6,0,1), its ruling degree is one, and its
+square is −12. The boundary matching is integral first at weight one,
+where the boundary H1 is free, and is then pulled back along the actual
+core/cusp period covering. This retains the Z/d boundary torsion at
+weight d. At each actual finite cap the entire Gysin obstruction is
+tested on a, gamma, and the affine root loop g; its values are precisely
+the first row of the full Thom matrix, all multiples of d (including the
+root-loop value zero). Thus u extends through every finite cap.
+
+Put r=d−1, D2=d gcd(d,2), D3=d gcd(d,3). The complete target is
+
+H6(K(Z^r⊕Zd,2);Z)
+=Z^(binomial(r+2,3))⊕(Zd)^(binomial(r+1,2))⊕(Z/D2)^r⊕Z/D3.
+
+In the splitting fixed by u and the primitive component basis, the
+coordinates are: free cubic zero; the mixed u x_i x_j values are the
+cyclic Laplacian entries modulo d; the mixed Q2(u)x_i values are −12
+modulo D2; the pure Q3(u) value is zero modulo D3. Q2 is the full
+Pontryagin square when d is even, and Q3 is Thomas's full third power
+when three divides d. The extra order-two and order-three coordinates
+are evaluated, not inferred from their reductions modulo d.
+
+Fourfolds supplied and independently verified the pure-coordinate proof.
+The scalar action is semifree with d fixed rational curves. The
+equivariant character differences are ±6 between adjacent components,
+as read from the actual toric support. On a fixed curve an equivariant
+lift is x+lambda_j t and the normal Euler class is −t². Thomas's operation
+is the ordinary cube on this integral lift, so localization gives
+−3 sum(lambda_j²) modulo 3d. The exact arithmetic identity for
+lambda_j=lambda_0±6j makes this zero modulo 3d, including the subgroup
+invisible to the ordinary cube.
+
+The detector computation is also integral. Whitehead's exact sequence
+identifies H4(K(Zd,2)) with the universal quadratic group of order D2.
+Zhubr's coefficient epimorphism and free bordism generators show that the
+cyclic H6 group is generated by the reduced CP3 class. The relations d³
+and 3d, together with the ordinary/Thomas power evaluation on CP3, give
+its exact order D3. Kunneth then yields the complete target above with no
+missing Tor terms. Zhubr's primary Theorem1 now applies to the entire
+quadruple and proves the stated oriented diffeomorphism classification.
+
+### Verification and remaining scope
+
+Root independently read the entire refined-class, Gysin, power-operation
+and classification proof, reopened the primary Zhubr and Thomas sources,
+and reran both certificates. Fourfolds independently passed the same
+proof audit, reopened Whitehead and Zhubr, and replayed the maps program.
+The symbolic identities plus 264 finite-core residue checks, 50 component
+Laplacians and 4920 supplementary Thomas character checks all passed.
+Two local LuaLaTeX passes are clean. D.2.48 is registered in the maps-owned
+CSV and input after D.2.47; its source/audit details are in
+records/maps_D48_source_audit.md. The preceding refined-only proof is
+retained as a chronological snapshot.
+
+The broad D.2 problem still includes other weighted period lattices,
+additional regular logarithms and original/star additive choices. D.2.48
+does not identify those with the Engel family. The next concrete target
+is the OS45 initial data P=2G, Q=8G with weight two at I8, whose component
+rank and cubic are genuinely different.
+
+## D.2.53: the full primitive cubic and fundamental-class invariant for OS45
+
+The concrete OS45/default datum P=2G, Q=8G, weight two at I8, zero
+weights at the four I1 sites, all Mumford caps and ordinary clutch e=1
+now has its complete primitive lattice, cubic and finite-coefficient
+fundamental-class invariant. The refined class is still either zero or
+four in Z8, so this result is explicitly not a completed smooth
+classification.
+
+The actual cusp period lattice is generated by (8,-6) and (24,-16),
+equal to 8Z plus 2Z in the positive short coordinates. Its sixteen
+normalized components are indexed by (r,s) in Z8 times Z2. The exterior
+H1 is Z plus Z2, and the actual component meridian has torsion coordinate
+s. The relative Bockstein therefore gives the exact primitive extension
+2y=sum of the eight odd-row component classes. The component lattice
+has index two, and x0,...,x13,y is a primitive integral basis.
+Fourfolds computed every primitive cubic entry; the entries involving
+y are the signed horizontal A7 forms on the two rows, and y²xi=y³=0.
+The complete sparse primitive cubic is saved with all reconstruction
+checks, not inferred from a rational lattice.
+
+The global cyclic coordinate u modulo eight has regular fibre part
+omega12. Its actual core cochain is specified on all twenty-six
+degree-two cells, using the stored integral left inverse of the
+primitive graph-cycle inclusion. This step matters: the core H1 has
+two-torsion, so its Hom(H2,Z8) row alone would leave an Ext ambiguity.
+The actual cusp strip constants are (52,148)=(4,4) modulo eight.
+
+The support
+
+Psi(r,s)=4 floor(r/8)+3(r mod8) floor(s/2) modulo eight
+
+has the exact affine period differences -r+4 and4. On the universal
+cusp the relative component Thom cochains are all functions on Z²;
+the boundary H1 maps to the affine functions by evaluation on the
+literal component meridians theta+v. Thus the quotient functions
+modulo affine functions is the full ordinary H² of the universal cusp.
+The split boundary group Z³ semidirect Z² retains the full affine
+one-cocycle plus the long-torus H² parameter. Matching both gradients,
+both constants and the long-torus value proves equality on the entire
+boundary, including its Ext part. The four remaining primitive nodal
+boundaries and the ordinary boundary have free H1 and surjective
+degree-two specialization, so the specified class extends there too.
+
+As an independent marking check, the full two-variable annulus map
+and all inverse-Picard deck shifts evaluate on the support to
+[[9,24],[0,0]], reducing to the required short-long matrix
+[[1,0],[0,0]] modulo eight. The sixteen component restrictions give
+all mixed u xi xj entries. The primitive y terms are computed directly,
+without division in a finite coefficient ring.
+
+The complete target is
+
+H6(K(Z15 plus Z8,2);Z)
+=Z680 plus (Z8)^120 plus (Z16)^15 plus Z8.
+
+The free part is the primitive cubic. All fourteen chosen component
+Pontryagin-square entries are seven modulo sixteen, while the y
+entry is zero; the pure cyclic cube is zero modulo eight. Localization
+also gives u y²=0 modulo eight, which combines with the vanishing free
+pairings to prove integral y²=0. The localization calculation uses
+the sixteen actual semifree fixed curves, their normal bundles
+O(-1) plus O(-1), their support characters, and the full moduli.
+All global character choices are covered by exact polynomial
+divisibility identities.
+
+The literal total critical cycle transfers from the degree-sixteen
+local period cover and the four primitive nodal caps to the actual
+regular-fibre vector (-16,8,6,16,0,6). The displayed integer column
+combination in (D.OS8) bounds it in the full marked matrix. The
+corrected differential sequence therefore gives c2=lambda=0
+integrally; c1 is zero by the normalized component tangent
+calculation and rational injectivity. This does not determine the
+remaining refined class: the even coefficients of this bar nullchain
+do not control its separate local critical-specialization chains.
+
+Root independently passed the full mathematical proof of the
+primitive lattice, boundary comparison and power evaluations.
+Fourfolds independently audited and reran the full core cochain,
+affine boundary and full-modulus computation; its record is
+records/fourfolds_OS45_mu_peer_audit.md. Maps independently read
+and reran the primitive cubic and localization certificates.
+The combined proof is input after D.2.52 and registered as D.2.53
+in the maps-owned CSV. Its exact scripts and full JSON data are
+maps_weighted_os45.py and maps_weighted_os45_mu.py, alongside
+the three fourfolds OS45 certificates.
+
+The remaining concrete OS45 gap is the value zero versus four of
+the refined characteristic class. Root's independent bridge
+calculation now produces an odd middle-homology class from the
+angular Z2 cusp-boundary kernel; the embedded representative's
+reference frame and its intersection with the actual critical
+specialization chains are still being checked. Neither ordinary
+cohomology nor the now-complete fundamental-class invariant is
+used to guess that value.
