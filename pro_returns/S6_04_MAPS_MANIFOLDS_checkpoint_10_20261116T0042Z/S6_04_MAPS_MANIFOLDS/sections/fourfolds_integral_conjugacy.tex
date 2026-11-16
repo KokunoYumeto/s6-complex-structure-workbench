@@ -1,0 +1,152 @@
+\paragraph{Theorem F.2.36 (Proved: simultaneous integral conjugacy for every input).}
+There is an unconditional exact algorithm which decides simultaneous
+$\mathrm{GL}_6(\mathbb Z)$ conjugacy of any two marked matrix tuples of
+F.2 and returns a conjugating matrix when one exists. The algorithm
+does not impose a bound on their entries, on the affine multiplicities,
+or on the integral conjugator. More generally it applies to any integral
+tuple containing a matrix $1+N$ with $N^2=0$ and $\operatorname{rank}N=3$;
+the primitive-image assumption is unnecessary for this statement.
+
+\begin{proof}
+We use column vectors and seek $P$ satisfying $PX_i=Y_iP$ for every
+marked index, including the cusp index. Put
+\[
+\begin{aligned}
+ H&=\{P\in\operatorname{Mat}_6(\mathbb Z):PX_i=Y_iP\ (\forall i)\},\\
+ \mathcal O&=\{C\in\operatorname{Mat}_6(\mathbb Z):CX_i=X_iC\ (\forall i)\},
+ \qquad E=\mathbb Q\mathcal O.
+\end{aligned}                                                    \tag{F.IC1}
+\]
+Both lattices are saturated integer kernels of explicitly displayed
+linear equations in thirty-six unknowns. Thus Hermite or Smith
+reduction computes full bases, rather than sublattices of finite index.
+
+We first decide rational isomorphism. For a basis $h_1,\ldots,h_s$ of
+$H$, form the polynomial $f(c)=\det(\sum c_jh_j)$. If it is zero,
+there is no rational isomorphism. Otherwise successively substitute
+one of $0,1,\ldots,6$ for each variable while keeping the remaining
+polynomial nonzero. At each stage one of these seven values works,
+because the degree in that variable is at most six. The final matrix
+$D\in H$ is invertible over $\mathbb Q$. This is a terminating exact
+test, including the negative case, and not a search for a lucky
+invertible intertwiner.
+
+The full lattice $L=D^{-1}H\subset E$ is a right $\mathcal O$-module.
+Let $J$ be the Jacobson radical of $E$, let $B=E/J$, and use bars
+for images under the quotient map. We next verify the splitting
+hypothesis needed for the principal-ideal algorithm. In a rational
+$N$-adapted basis,
+\[
+ N=\begin{pmatrix}0&I_3\\0&0\end{pmatrix},\qquad
+ E\subseteq
+ \left\{\begin{pmatrix}A&T\\0&A\end{pmatrix}:A,T\in
+                                      \operatorname{Mat}_3(\mathbb Q)\right\}.
+                                                               \tag{F.IC2}
+\]
+Projection to $A$ has square-zero kernel and image an algebra
+$S\subseteq\operatorname{Mat}_3(\mathbb Q)$. A nilpotent ideal is
+contained in the radical, so $E/J\cong S/J(S)$.
+
+Choose a composition series of the faithful $S$-module $\mathbb Q^3$.
+The kernel of its action on the associated graded module lowers this
+filtration and is therefore nilpotent. Conversely the radical kills
+every simple factor. Thus this kernel is exactly $J(S)$ and every
+simple factor of $S/J(S)$ acts nontrivially on a composition factor.
+For a simple algebra $\operatorname{Mat}_n(D)$, where $D$ has centre
+$K$ and degree $d$ over that centre, every nonzero simple module has
+$\mathbb Q$-dimension $n d^2[K:\mathbb Q]$. If $D$ were
+noncommutative this would be at least four, which is impossible in
+$\mathbb Q^3$. Consequently
+\[
+ B\cong\prod_j\operatorname{Mat}_{n_j}(K_j),\qquad
+ n_j[K_j:\mathbb Q]\le3.                                    \tag{F.IC3}
+\]
+Every noncommutative factor is therefore
+$\operatorname{Mat}_2(\mathbb Q)$ or
+$\operatorname{Mat}_3(\mathbb Q)$; the remaining factors are number
+fields of degree at most three. This proves hypothesis (H) of
+\cite[Algorithm 8.3]{rootBHJ22} for every tuple under consideration.
+
+For clarity this decomposition is effective without a split-algebra
+oracle. Rational linear algebra computes $J$ as the radical of the
+regular trace pairing and computes the quotient multiplication table.
+Its simple factors are obtained from its centre. A commutative factor
+is a number field. In a noncommutative factor of dimension $n^2$, we
+enumerate integral combinations $e$ of a rational basis until the
+left ideal $Be$ has dimension $n$. Such an $e$ exists because the
+factor is $\operatorname{Mat}_n(\mathbb Q)$, so its rank-one matrices
+are rational points; clearing denominators expresses one among the
+enumerated combinations. Left multiplication on $Be$ then supplies
+an explicit isomorphism to $\operatorname{Mat}_n(\mathbb Q)$.
+The program verifies multiplication on every pair of basis elements.
+
+The images $\overline{\mathcal O}$ and $\overline L$ are a full order
+and a full right lattice in $B$. If the right order of
+$\overline L$ differs from $\overline{\mathcal O}$, this lattice
+cannot be principal over that order. Otherwise Algorithm 8.3 of
+\cite{rootBHJ22}, in its right-ideal form, decides principality and
+returns a generator $\overline\alpha$ when one exists. The cited
+algorithm passes through a maximal order and its central conductor,
+tests local freeness and principality over the maximal order, and
+solves the remaining reduced-norm congruence in a finite quotient.
+Its correctness proof uses its Theorem 4.5(b) and Theorem 7.9; its
+Theorem 8.4 specifies the number-field, finite-field and integer
+factorization subproblems. These have unconditional exact algorithms.
+In the recorded implementation the class and unit groups of every
+number-field component are certified with \texttt{GRH=false} before
+the principal-ideal decision is used. The negative decision thus
+does not presume the generalized Riemann hypothesis.
+
+If $\overline L$ is not principal, $L$ cannot be principal. If it is
+principal, solve the integer linear equations expressing
+$\overline\alpha$ as a combination of the images of the chosen basis
+of $L$. This produces a lift $\alpha\in L$ and an integral
+intertwiner $P=D\alpha\in H$. We claim that a simultaneous integral
+conjugacy exists if and only if $|\det P|=1$.
+
+The sufficient direction is immediate. For the necessary direction,
+suppose $P_0\in H$ is unimodular. Every $h\in H$ has
+$P_0^{-1}h\in\mathcal O$, so
+$L=\alpha_0\mathcal O$, where $\alpha_0=D^{-1}P_0$.
+Write $\alpha=\alpha_0u$ with $u\in\mathcal O$.
+Because both image elements generate $\overline L$,
+$\overline u$ is a unit of $\overline{\mathcal O}$.
+Lift its inverse to $v\in\mathcal O$. Then $uv=1+j$ with
+$j\in J\cap\mathcal O$, and the finite geometric series for
+$(1+j)^{-1}$ shows that $u^{-1}=v(1+j)^{-1}\in\mathcal O$.
+Thus $u$ is an integral unimodular matrix and
+$P=P_0u$ is unimodular. This also proves that any chosen lift of the
+image generator gives the same yes-or-no answer. It is the
+right-module form of \cite[Theorem 3.4 and Propositions 8.1--8.2]{rootBHJ22},
+with the needed determinant condition written out.
+
+Every branch either proves nonexistence or returns a matrix whose
+integrality, determinant and all intertwining equations are verified
+exactly. This completes the decision procedure.
+\end{proof}
+
+The implementation is
+\path{code/fourfolds_integral_conjugacy.jl}, with the pinned runtime
+setup and runner in the same directory. It is an application of the
+published lattice-isomorphism algorithm to the special centralizer
+forced by the cusp; we claim no priority for integral-conjugacy
+decidability. The accompanying source-reading record identifies the
+primary theorem statements and the precise implementation paths.
+This comparison algorithm is distinct from a completed tabulation
+of all nonsurviving tuples or from an arbitrary-height truncation
+of such a tabulation.
+
+
+The exact execution certificate has twelve comparisons. Six algebraic
+tests exercise the full $\operatorname{Mat}_3(\mathbb Q)$ quotient,
+$\operatorname{Mat}_2(\mathbb Q)\times\mathbb Q$, a rational
+multiplicity obstruction, a principal quotient whose lift has
+determinant four, a nonprincipal ideal over $\mathbb Q(\sqrt{-5})$
+with unconditionally certified class number two, and a cubic
+centre with a certified rank-one unit group. Six further comparisons
+use the actual admissible order-$(5,4)$ tuples with parameters
+$0,1,2$: each is recovered after an explicit large unimodular
+conjugation, and all three distinct pairs are rejected. Their word
+traces $\operatorname{tr}(M_1M_2^3)=2,1,-10$ independently certify
+the latter negative answers. All returned positive matrices satisfy
+every exact intertwining equation and have determinant one.
