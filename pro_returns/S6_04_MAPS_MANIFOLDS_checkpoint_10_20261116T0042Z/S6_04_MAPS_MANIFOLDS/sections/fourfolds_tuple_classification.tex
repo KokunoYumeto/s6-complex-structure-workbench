@@ -1,0 +1,145 @@
+\paragraph{Theorem F.2.37 (Proved: a complete canonical-representative algorithm).}
+Every marked linear tuple in F.2, for either $k=2$ or $k=3$,
+has a computable canonical integral representative and a
+returned simultaneous unimodular conjugator. Two inputs have
+the same representative if and only if they are simultaneously
+$\mathrm{GL}_6(\mathbb Z)$ conjugate. The algorithm uses a proved
+finite bound depending on the input. No fixed global entry bound
+can represent every class.
+
+This is an effective classification, not a claim that its
+infinite output has been printed in a finite table. The
+ordered involution sector has the separate complete finite
+normal form F.2.38, and all of its $56$ classes have been
+computed. The general bounded fallback is potentially very
+expensive; its finiteness is a theorem, not a runtime estimate.
+
+\begin{proof}
+We first remove the existential condition about affine lifts
+from the admissibility test for a linear tuple. A finite-order
+matrix $M$ admits a free finite affine lift on $T^6$ if and
+only if $\ker(M-1)\ne0$. If this kernel is zero, $1-M$ is a
+surjective endomorphism of the torus, so every affine map with
+linear part $M$ has a fixed point. Conversely let the order of
+$M$ be $d>1$ and choose a primitive $u\in\ker(M-1)\cap\mathbb Z^6$.
+The map $x\mapsto Mx+u/d^2$ has actual order $d^2$: its
+$d$th power is translation by $u/d$, of exact order $d$.
+For each prime $p\mid d$, the generator of its order-$p$
+subgroup is translation by $u/p$, which has no fixed point.
+Every nontrivial stabilizer contains a prime-order subgroup,
+so the whole cyclic action is free. If $M=1$, translation
+by a primitive half-vector is a free lift of order two.
+The invariant integral kernel is primitive, so such a
+primitive vector is obtained by Smith reduction.
+
+Finite order is also effectively bounded at this linear
+stage. Its minimal polynomial is a product of distinct
+cyclotomic polynomials, and eigenvalue one uses at least one
+of the six dimensions. Every other cyclotomic factor therefore
+has degree at most five and their total degree is at most
+five. For a cyclotomic index $d$, each prime divisor $p$ has
+$p-1\le5$, and its prime-power factors satisfy
+$p^{a-1}(p-1)\le5$. Enumerating these factors and the possible
+degree sums gives exactly
+\[
+                 d\in\{1,2,3,4,5,6,8,10,12\}.             \tag{F.CN1}
+\]
+Here $d$ is the order of the matrix, the least common multiple
+of its cyclotomic indices. Multiplicities of a factor can only
+increase the dimension and introduce no new orders. Each
+listed order occurs with a fixed vector after adding trivial
+summands. Thus taking the powers in (F.CN1), checking the
+fixed kernel, the product relation, and the cusp Smith
+factors gives an exact admissibility test. The unbounded
+actual affine multiplicities are not bounded by (F.CN1).
+
+For an admissible full tuple $T=(M_1,\ldots,M_k,M_0)$ let
+$H(T)$ be its maximum absolute entry. If a three-point linear
+tuple has an identity at a finite position, temporarily delete
+that identity, classify the remaining two-point tuple, and
+reinsert the identity at the same marked position. There can
+be only one such identity, since otherwise a finite matrix
+would equal the inverse of the nontrivial unipotent cusp.
+Deleting a fixed identity changes neither height nor the
+lexicographic comparison of tuples in that conjugacy-invariant
+sector. This is only a linear normalization: a nontrivial
+affine order at the identity-linear site is retained in the
+gluing datum. In the two-involution sector use the canonical
+representative defined in F.2.38. This sector is invariant under simultaneous
+conjugacy. In every other sector, order full integer tuples
+first by $H$, then lexicographically by their row-major
+entries in the displayed marked order. Define the canonical
+representative to be the first admissible tuple in the
+simultaneous conjugacy class.
+
+To compute it, enumerate heights $1,\ldots,H(T)$ and the
+integer entries at that height. There are at most
+\[
+                     (2H(T)+1)^{36(k+1)}                  \tag{F.CN2}
+\]
+tuples in this complete box. The product relation allows
+$M_0$ to be calculated from the first $k$ matrices, so the
+implementation enumerates fewer entries. It also rejects
+matrices with different characteristic polynomials or orders
+before calling the conjugacy decision F.2.36. These filters
+cannot reject an equivalent tuple. At least one comparison
+succeeds: the supplied tuple itself belongs to its own box.
+The first successful comparison returns the canonical
+representative and its exact conjugating matrix.
+
+Every simultaneous orbit has a least element in this order.
+Its height is at most the height of any supplied member,
+which proves that (F.CN2) loses no class representative for
+that input. If two inputs are equivalent they therefore
+return the same least element. Conversely the returned
+conjugators show that equal representatives imply equivalent
+inputs. The casewise involution normal form has the same
+property by F.2.38, and an involution tuple cannot be
+equivalent to a tuple in the other branch. This proves the
+classification assertion, including its finite stopping rule.
+
+Finally, F.2.16 already gives an unbounded admissible integral
+family. In its homology convention direct symbolic
+multiplication gives
+\[
+             \operatorname{tr}(M_1M_2^3)
+                       =-v^4+v^3-v^2+2.                 \tag{F.CN3}
+\]
+This is unbounded even on the previously constructed free
+affine subfamily $v\in20\mathbb Z$. It is invariant under
+simultaneous conjugacy. A fixed finite entry box contains
+only finitely many tuples and hence only finitely many such
+traces; it cannot contain a representative of every class.
+The input-dependent nature of (F.CN2) is therefore necessary
+for this particular exhaustive procedure.
+\end{proof}
+
+The public implementation is
+\path{code/fourfolds_tuple_classification.py}.
+Its finite involution branch has been run on all $56$
+representatives after nontrivial simultaneous integral
+conjugation, and returned every exact representative and
+conjugator. F.2.38 separately records $112$ normalization
+checks. The marked identity-insertion branch was also run
+on all $168$ conjugated inputs from the 56 classes and the
+three possible identity positions; every representative and
+conjugator passed. The general height-box fallback has not been
+exhaustively run on a noninvolution tuple; no such computation
+is claimed. Its underlying exact comparison procedure was
+run on the twelve instances listed in F.2.36, including
+three actual order-$(5,4)$ classes. The symbolic trace
+calculation is saved with its executable program and output.
+The all-twist group algorithm is F.2.31, and the full
+necessary-and-sufficient three-connected-survivor tests are
+F.2.30. These uses of the classifier do not presume that
+arbitrarily many classes can be tabulated in finite time.
+
+When transporting a specified glued manifold, the returned
+matrix $P$ also sends each affine numerator to $Pv_i$, the
+clutch vector to $P\kappa$, and the supplied integral cusp
+marking to $P P_{\mathrm{cusp}}$. The multiplicities are
+unchanged. These are the actual linear changes of fibre
+coordinates and therefore carry every boundary gluing map.
+The linear canonical representative does not authorize
+discarding the cusp marking and independently choosing a
+different Smith marking for the filled manifold.
