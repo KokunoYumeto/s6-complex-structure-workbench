@@ -1,0 +1,136 @@
+% Primary-operation input for maps-owned D.2.48; no separate theorem number.
+\subsubsection*{The full Pontryagin cube of the weighted Engel torsion class}
+We use the actual class $u\in H^2(X_d;\mathbb Z/d)$ whose
+restrictions to the normalized cusp components are specified
+in D.2.48. In particular its degree on every scalar-fixed
+rational curve $C_j$, $j\in\mathbb Z/d$, is one, and its
+component restriction is represented by the integral toric
+support
+\[
+                  \psi(r,s)=-\frac{r(r-1)}2+3s(s-1).
+                                                               \tag{D.TP1}
+\]
+The calculation below uses these actual restrictions. Merely
+choosing an arbitrary degree-two class that is a unit on
+torsion would not fix its pure coordinate in the presence
+of the free summand.
+
+The scalar circle action is semifree. On a finite cap of
+order $m_i$ its gamma translation has primitive numerator
+$n_i$, with $\gcd(m_i,n_i)=1$. A nontrivial root power cannot
+be compensated by the scalar direction, because that would
+require $j n_i/m_i$ integral. Thus these caps are scalar-free.
+The cusp has exactly the $d$ fixed curves $C_j$; their normal
+bundles are $\mathcal O(-1)\oplus\mathcal O(-1)$ with weights
+$(1,-1)$, and the other cusp orbits are free. These are the
+marked geometric inputs of the weighted family.
+
+Because $X_d$ is simply connected, $u$ has an equivariant
+lift $\widehat u\in H^2_{S^1}(X_d;\mathbb Z/d)$.
+In the Borel spectral sequence the only possible
+differentials out of ordinary degree two have targets
+involving $H^1(X_d;\mathbb Z/d)$ or $H^3(BS^1;\mathbb Z/d)$,
+and both vanish. Write
+\[
+         \widehat u|_{C_j}=x+\lambda_j t,
+         \qquad x=[C_j]^*,\quad t\in H^2(BS^1;\mathbb Z/d).
+                                                               \tag{D.TP2}
+\]
+The difference of any two equivariant lifts of a fixed
+ordinary class on the simply connected normalized
+$dP_6$ is a multiple of $t$. Hence the differences of
+the characters on its two scalar-fixed curves can be
+read from any toric equivariant lift of (D.TP1).
+The fixed edges are the translates of the edge from
+$(0,j)$ to $(0,j+1)$; the support slope in their scalar
+direction is
+\[
+               \psi(0,j+1)-\psi(0,j)=6j.
+                                                               \tag{D.TP3}
+\]
+The fibre character of the associated monomial
+trivialization is the negative of this slope, up to
+one global character convention. Equivalently the
+intervening weight-one orbit curve has degree $-6$.
+Thus, for one common sign $\epsilon=\pm1$,
+\[
+                    \lambda_j=\lambda_0+6\epsilon j
+                                 \quad\text{in }\mathbb Z/d.
+                                                               \tag{D.TP4}
+\]
+This equation is compatible with the period $j\mapsto j+d$.
+It does not assert that the integral support line itself
+descends with an integral global circle linearization:
+the needed character equality is modulo $d$ and follows
+from the existing global equivariant cohomology lift.
+
+Suppose now that $3\mid d$. Thomas's operation is defined
+with precisely the required full coefficients:
+\[
+ \mathcal P_3:H^2(-;\mathbb Z/d)
+                    \longrightarrow H^6(-;\mathbb Z/(3d)).
+                                                               \tag{D.TP5}
+\]
+This is \cite[equation (2.1), p.267]{ffThomas56} with
+$p=3$ and $m=d/3$. On the reduction of an integral
+class $z$, it equals the reduction of $z^3$ modulo
+$3d$. Indeed the correction term in Thomas's actual
+cochain formula (3.4) is zero for an integral cocycle,
+and its first term is the ordinary threefold diagonal
+product \cite[equations (3.4)--(3.6), p.268]{ffThomas56}.
+Each restriction (D.TP2) has such an integral lift.
+
+Apply equivariant localization with coefficients
+$\mathbb Z/(3d)$ to $\mathcal P_3(\widehat u)$.
+No field assumption is needed here: the complement
+is scalar-free, and each normal Euler class becomes
+a unit after inverting $t$. On a fixed curve it is
+\[
+                    (-x+t)(-x-t)=-t^2,
+\]
+because $x^2=0$. Integrating the term of ordinary
+curve degree two gives
+\[
+ \left\langle\mathcal P_3(u),[X_d]\right\rangle
+                      =-3\sum_{j=0}^{d-1}\lambda_j^2
+                                  \quad\text{in }\mathbb Z/(3d).
+                                                               \tag{D.TP6}
+\]
+The right side is independent of the integer
+representatives of the characters: $3\mid d$ makes
+the cube of an integral lift well defined modulo
+$3d$. The base cohomology polynomial ring injects
+into its localization at $t$, so the degree-zero
+identity is an identity in the original coefficient
+ring, not just a localized statement.
+
+For arbitrary integers $d>0,\lambda_0$ and either
+sign in (D.TP4), the exact identity is
+\[
+ \sum_{j=0}^{d-1}(\lambda_0+6\epsilon j)^2
+   =d\left(\lambda_0^2+6\epsilon\lambda_0(d-1)
+                         +6(d-1)(2d-1)\right).              \tag{D.TP7}
+\]
+Substitution into (D.TP6) proves
+\[
+                 \left\langle\mathcal P_3(u),[X_d]\right\rangle=0
+                                  \quad\text{in }\mathbb Z/(3d).
+                                                               \tag{D.TP8}
+\]
+Thus the complete pure cyclic fundamental-class coordinate
+is zero, including the order-three subgroup invisible to
+the ordinary mod-$d$ cube. For $3\nmid d$ the same
+localization calculation with the ordinary cube gives
+zero modulo $d$. Mixed coordinates are separate from
+this calculation; in particular it does not discard
+the order-$2d$ mixed Pontryagin-square terms when $d$
+is even.
+
+The universal integer identities, support slope,
+single-curve Euler/cube calculation and an explicitly
+bounded supplementary check are executed in
+\path{code/fourfolds_D48_thomas.py}.
+The supplementary range is $d=3,6,\ldots,120$,
+$\lambda_0=0,\ldots,d-1$ and both signs, giving
+$4920$ exact checks. The arbitrary-$d$ conclusion
+comes from (D.TP7), not that finite range.

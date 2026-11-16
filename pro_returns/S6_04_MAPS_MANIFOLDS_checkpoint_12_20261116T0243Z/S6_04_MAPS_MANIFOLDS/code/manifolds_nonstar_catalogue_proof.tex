@@ -1,0 +1,272 @@
+\paragraph{Theorem D.2.26 (Proved: complete natural sphere table without $I_n^*$).}
+For the sixteen profiles in D.2.22 containing no fibre $I_n^*$,
+the natural section-line construction has exactly $59$ marked
+initial/additive-filling patterns that can yield a sphere.
+They lie on $50$ distinct initial rows. The complete table,
+including the section pair, zero component, marked fibre positions,
+and every additive original/log choice, is
+\path{records/manifolds_nonstar_sphere_patterns.csv}.
+At the zero the index-one Mumford filling is required; at every
+other multiplicative fibre in these sphere patterns either the
+original filling or the primitive Mumford filling is permitted.
+The pattern counts are
+\[
+\begin{array}{c|r@{\qquad}c|r@{\qquad}c|r@{\qquad}c|r}
+43&3&43/II&1&45&4&45/II&4\\
+47&4&47/II&4&47/III&4&49&3\\
+49/II&1&49/III&2&55&4&55/II&4\\
+56&5&56/II&6&56/III&5&56/IV&5.
+\end{array}                                                 \tag{D.HY1}
+\]
+These are parameter families, not multiplicity samples. The exact
+unrestricted parameter conditions for every row follow below.
+
+More generally, take a natural initial row without $I_n^*$ and
+retain only original caps of zero line multidegree with one
+component orbit, using the primitive Mumford caps elsewhere.
+A finite good-reduction log cap can occur in a simply connected
+output only when its integral fixed lattice contains a vector
+$\ell_i$ with $\gamma^*(\ell_i)=1$. Write its power vector
+$v_i=n_i\ell_i+r_i\delta$. The following calculation applies
+whenever $\gcd(m_i,n_i)=1$, a necessary condition for simple
+connectivity. Set
+\[
+\begin{array}{c|ccccc}
+ \text{finite type}&II&III&IV&III^*&IV^*\\\hline
+ d_i\text{ (monodromy order)}&6&4&3&4&3\\
+ q_i\text{ (vertical index)}&1&2&3&2&3.
+\end{array}                                                 \tag{D.HY2}
+\]
+Allow every order $m_i=d_i k_i$, $k_i>0$, every such power vector,
+and every free affine lift with that power. Additional regular logs
+have the unrestricted data (D.SC1).
+
+Here is their full integral degree-two presentation. For each finite
+log retain a generator $d_i$; for each regular log retain its four
+sweeps $t_j(\Lambda)$; retain the fibre generator $s$. Impose
+\[
+\begin{aligned}
+ (m_i/q_i)d_i+(bn_i/q_i)s&=0 &&\text{(finite logs)},\\
+ m_jt_j(u)-\omega(u,v_j)s&=0,\quad t_j(v_j)=0
+                                      &&\text{(regular logs)},\\
+ \sum_i d_i+\sum_jt_j(\delta)+be\,s&=0. &
+\end{aligned}                                                 \tag{D.HY3}
+\]
+All entries are integers. With $T$ the torsion of this cokernel and
+$r,A_1$ obtained from the complete Seifert matrix, the full homology
+is exactly (D.SC3). Thus this is also an all-order integral algorithm
+for the nonsimply-connected members satisfying the stated finite
+coprimality condition. No conclusion for the omitted noncoprime
+finite twists is silently inferred.
+
+For a simply connected output put
+\[
+ Q_f=\prod_{i\text{ finite}}q_i,\quad c=b/Q_f,\quad
+ R=\prod_{j\text{ regular}}m_j,
+ \quad X_0=\sum_j(R/m_j)x_j,\quad Y_0=\sum_j(R/m_j)y_j.
+\]
+Empty products equal one. Then $c$ is a positive integer and
+\[
+ H_2(X)=H_3(X)=
+ \mathbb Z/g\oplus\mathbb Z/R\oplus\mathbb Z/(cR/g),
+ \qquad g=\gcd(c,R,X_0,Y_0).                                \tag{D.HY4}
+\]
+Consequently the complete sphere criterion is
+\[
+ \pi_1(X)=1\text{ by (D.FG3)},\qquad b=Q_f,
+ \qquad m_j=1\text{ at every regular log}.                  \tag{D.HY5}
+\]
+For one finite log this includes every multiple of its order; for
+two finite logs it requires their multiplicities to be coprime and
+the displayed Seifert determinant to be $\pm1$. The only two-finite
+sphere pattern is the original $IV^*,III,I_1$ pair. The finite
+numerators $r_i$ are unrestricted. All twelve profiles in (D.HY1)
+which contain additive fibres therefore admit infinitely many
+allowable sphere multiplicities; the four all-multiplicative
+profiles have the order-one conclusion of D.2.25.
+
+Whenever $c=1$ and the output is simply connected, its exact oriented
+smooth type is $\widetilde\Sigma_0N_R$. For $c>1$ the groups (D.HY4)
+are exact, but a general smooth identification of these remaining
+torsion types is not asserted by this theorem.
+
+\begin{proof}
+\emph{1. Necessary local choices and the integral graph lattice.}
+The sphere reduction D.2.22 already excludes every nonzero-degree
+original cap and every original cap with multiple component orbits.
+At a finite good-reduction point the image of $\gamma^*$ on the
+integral fixed lattice is the component order of $Q$, namely one,
+two or three in these profiles. If it is greater than one, that
+prime divides both $m_i$ and every power-vector coordinate $n_i$;
+D.2.23 then excludes simple connectivity. These are exact fixed-lattice
+calculations, included for all $172$ initial rows in
+\texttt{manifolds\_sphere\_normal\_lattices.py}.
+
+That program also computes the complete boundary fixed-sweep map
+\[
+ \bigoplus_i\operatorname{Fix}(A_i)
+       \longrightarrow H_1(B^\circ;H_1(T^4;\mathbb Z)).
+\]
+For every row it is onto with unit Smith factors. Its kernel has
+rank one and is precisely the primitive diagonal copy of $\delta$,
+by the peripheral Fox identity. Thus the graph part is the direct
+sum of these fixed lattices with the sole relation
+$\sum t_i(\delta)=0$. Adding regular sites has the same integral
+inductive comparison as D.2.25. The fibre coinvariants are
+$\mathbb Zs$, detected primitively by $\omega$.
+
+There is an integral check for the permitted original additive
+caps, beyond their rational invariant cycles. A zero-degree original
+cap is topologically $S^1_\delta$ times the mapping torus of the
+component translation of its Kodaira tree. Here zero multidegree
+trivializes the underlying line on the tree of rational curves.
+In such a trivialization the remaining equivariant multiplier is a
+unit. Its circle-valued part has a logarithm because the tree has
+$H^1=0$; interpolation of that logarithm gives an isotopy to the
+identity. The rigidification along the zero section fixes the
+constant phase. This isotopy extends over the normal collar, and
+its unit multiplier has zero meridian winding. Consequently it
+preserves the marked normal tori used below and proves the stated
+product description, rather than merely a rational homology
+comparison. Its homology is free;
+with one orbit, $H_2$ has rank two and the component intersection
+map to $H_2(U,\partial U)$ is zero. Poincare--Lefschetz duality
+therefore makes $H_2(\partial U)\to H_2(U)$ onto integrally.
+The $\delta$ normal torus bounds the section disc times $S^1_\delta$.
+For the other fixed loop, take the least power of $Q$ which is
+narrow and its local Neron logarithm. The resulting family of loops
+extends over the disc, so its normal torus also bounds. Local
+logarithms at additive reduction are described in
+\cite[Section 2.4, equation (2.2)]{manUU21}.
+The linearization is a unit and the line has zero component degrees,
+so the rigidified norm lift introduces no extra fibre term.
+These two tori project onto the entire integral fixed lattice.
+They are therefore the full free part of the kernel; any boundary
+torsion maps to zero in both free targets and changes nothing in
+MV. This proves that each unchanged minimal cap simply sets its
+fixed sweeps to zero, with the asserted markings.
+
+\emph{2. The actual finite log kernel.}
+Let $\Lambda_0=\ker\gamma^*$. At every finite slot with primitive
+$\gamma$, the exact vertical coinvariant calculation is
+\[
+ (\Lambda_0)_{A_i}=\mathbb Z\beta_i,
+ \qquad [\delta]=q_i[\beta_i],
+ \qquad \operatorname{Fix}(A_i)=\mathbb Z\delta\oplus\mathbb Z\ell_i.
+                                                               \tag{D.HY6}
+\]
+The table (D.HY2) follows either from the component group or the
+saved primitive Smith bases. The code verifies all $68$ such slots.
+For $m=m_i$, its norm satisfies
+$N_m\beta_i=(m/q_i)\delta$ and $N_m\ell_i=m\ell_i$.
+Invariance of $\omega$ then proves the exact, signed identity
+\[
+                     -\omega(\beta_i,\ell_i)=b/q_i.
+\]
+In particular $q_i\mid b$.
+
+An arbitrary affine good-reduction lift with the prescribed integral
+power is translation-conjugate, over the root disc, to the invariant
+representative. To see the integral issue, the usual sequence of
+period lattices and holomorphic vector sections identifies the
+translation-conjugacy obstruction with
+$\Lambda^{A_i}/N_m\Lambda$; it is exactly the power vector modulo
+norms. The vector-section cohomology vanishes by finite averaging.
+Thus equality of the power class gives an actual holomorphic
+translation conjugacy extending over the smooth central torus.
+This justifies the invariant representative for every affine lift
+under discussion, rather than restricting the theorem to a chosen
+constant lift.
+
+The reduced finite fibre has first homology generated by
+$\beta_i,\ell_i,c_i$ with
+$m c_i=n_i\ell_i+r_iq_i\beta_i$. Choose
+$\alpha m+\beta n_i=1$. Its first homology is free, with basis
+$\beta_i$ and $\alpha\ell_i+\beta c_i$. Its flat normal complex
+line has torsion Chern class, hence zero integral Chern class because
+$H^2$ of this fibre is free. Consequently the boundary map in degree
+two is onto and its kernel is exactly the two normal circle tori
+of this basis. The actual affine collar maps give their images in
+the exterior as
+\[
+\begin{split}
+ &\bigl(-\omega(\beta_i,v_i),\ t_i(N_m\beta_i)\bigr),\\
+ &\bigl(-\alpha\omega(\ell_i,v_i),\
+               t_i(\alpha N_m\ell_i+\beta v_i)\bigr).
+\end{split}                                                  \tag{D.HY7}
+\]
+This is the marked rectangle-sweep computation of D.2.12; the basis
+calculation here verifies that these are the full integral kernel,
+not a sublattice of finite index. Substituting (D.HY6) gives
+\[
+ (bn_i/q_i)s+(m_i/q_i)t_i(\delta),\qquad
+ -\alpha b r_i s+t_i(\ell_i)+\beta r_i t_i(\delta).
+\]
+The second relation eliminates $t_i(\ell_i)$ with coefficient one.
+The first is exactly the finite relation in (D.HY3). In particular
+all $r_i$ disappear from the degree-two group for an integral reason.
+The regular kernel was proved in D.2.25. Together with the one
+global $\delta$ relation this proves (D.HY3). All cap $H_1$ groups
+in this coprime range are free, so the remaining MV kernel is the
+split free group of rank $r$. Rational elimination and integral
+duality give the whole table (D.SC3).
+
+\emph{3. All-primary Smith calculation and sphere enumeration.}
+Suppose the Seifert group is trivial. Its nontrivial multiplicities
+are pairwise coprime, and all numerators are units modulo them.
+Thus the $q_i$ are pairwise coprime and $Q_f\mid b$.
+Write $M$ for the product of all multiplicities, including the
+finite ones, and $D=M(\sum n_i/m_i-e)=\pm1$.
+Eliminate the $\delta$ sweeps over $\mathbb Z_p$ exactly as in
+D.2.25. At a prime dividing a finite multiplicity $m_i$, its row
+has been divided by $q_i$, so the residual fibre relation is
+$(b/q_i)D/(M/m_i)$ times $s$. All other multiplicities are units
+at that prime. At a prime dividing a regular multiplicity, the
+residual relation is $b$ times a unit; the finite $q_i$ are units
+there. At a prime dividing no multiplicity, it is again $b$ times
+a unit. These are precisely the primary fibre orders of
+$c=b/Q_f$.
+
+The only extra generators at a prime dividing a regular multiplicity
+are its two elliptic sweeps. Their three-generator matrix is
+(D.SC8), with the fibre order replaced by $c$. Because
+$\gcd(a,c)=1$, its invariant factors are
+$g_i,m_i,cm_i/g_i$. Chinese remainders yield (D.HY4), with the
+stated $X_0,Y_0$. This proves (D.HY5) for all integers.
+
+The finite program now has no arbitrary search bound: list every
+natural row, every additive original/log choice satisfying the
+local conditions, and the vertical indices (D.HY2). There are
+$164$ minimal-cap patterns in this coprime finite range. Two have
+an unavoidable orbifold obstruction from noncoprime base orders;
+$162$ can satisfy simple connectivity. Exactly $59$ have $b=Q_f$.
+Their complete data are saved in the CSV and JSON tables. Each
+of them is realized: choose a numerator $\pm1$ for one finite
+site, Bezout numerators for the coprime $(3k,4l)$ pair, or total
+order-one regular numerator $\pm1$ if there is no finite site.
+The free affine quotient exists by its primitive $\gamma$ value.
+This also gives infinitely many orders for every listed pattern
+with at least one finite site. Conversely every sphere was forced
+into these choices by D.2.22 and D.2.23, proving completeness in
+all sixteen profiles.
+
+\emph{4. The exact smooth type for $c=1$.}
+The catalogue directly checks that at every zero-free multiplicative
+site of a $b=Q_f$ pattern, $P$ is narrow, $Q$ acts transitively on
+components, and adjoining $\delta$ to the actual vanishing vector
+has two unit Smith factors. Thus the scalar circle is free there.
+It is free on every permitted original additive cap by its trivial
+component Chern class, and on each finite log cap because
+$\gcd(m_i,n_i)=1$. At the zero its lattice is the full original
+short lattice, retaining $\delta$ as the second coordinate, so its
+single fixed sphere and normal weights are those of D.2.14.
+
+The square subsystem on $s$ and the $\delta$ sweeps in (D.HY3)
+has determinant $bD/Q_f=cD=\pm1$. Hence $s$ is zero integrally.
+The fixed sphere is nullhomotopic, and the equivariant surgery,
+projectable spin quotient, Smale--Barden classification, twisted
+suspension formula and full Zhubr cancellation from D.2.14 apply
+with $H_2=(\mathbb Z/R)^2$. They give precisely
+$X\cong\widetilde\Sigma_0N_R$. This supplies the asserted smooth
+identification and all its refined spin data.
+\end{proof}

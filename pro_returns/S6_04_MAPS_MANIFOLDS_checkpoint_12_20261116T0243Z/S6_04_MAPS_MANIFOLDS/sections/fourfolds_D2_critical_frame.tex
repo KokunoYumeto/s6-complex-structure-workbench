@@ -1,0 +1,412 @@
+% D.2.44: root independent proof and exact-code audits passed; registered.
+\paragraph{Theorem D.2.44 (Proved: the seven semistable residual-four and residual-eight smooth types).}
+Consider the default semistable rows OS55 with $(a,b)=(5,4)$ and zero
+index $2,3,4$, and OS45 with $(a,b)=(1,8)$ and zero index $1,2,3,4$.
+Use the primitive Mumford cap at every multiplicative site, no additional
+regular logarithmic transforms, and either simply connected ordinary
+clutch $e\gamma$, $e=\pm1$. Write $c=b$.
+The resulting oriented six-manifolds have
+\[
+ H_2(X;\mathbb Z)=H_3(X;\mathbb Z)=\mathbb Z/c,
+ \qquad \lambda(X)=0,\qquad \mu(X)=0,
+ \qquad
+ P(X)=\begin{cases}2,&\mathrm{OS55},\\0,&\mathrm{OS45}.
+ \end{cases}                                                   \tag{D44.1}
+\]
+Here $P$ is Zhubr's refined quarter-Pontryagin class, transported to
+$\mathbb Z/c$ by any generator; both displayed values are independent
+of that choice. In particular all three OS55 manifolds are oriented
+diffeomorphic to $Z_{4,1}$, and all four OS45 manifolds are oriented
+diffeomorphic to $Z_{8,0}$, with the following concrete surgery models.
+The manifold $Z_{c,0}$ is surgery on an embedded two-sphere representing
+$c$ times the generator of $H_2(S^2\times S^4)$.
+The manifold $Z_{c,1}$ is surgery in
+$M_{\rm conic}\#(S^2\times S^4)$ on an embedded two-sphere representing
+$(t,-c/2)\in\mathbb Z/2\oplus\mathbb Z$, where $t$ is the generator
+of the conic-surgery manifold of D.2.8. These are spin surgeries with
+their unique normal framings. This theorem makes no assertion about
+the remaining additive profiles or additional regular logarithms.
+
+\emph{Proof: previously established invariants and the last binary choice.}
+The marked homology calculation D.2.26 and its all-weight verification
+D.2.41 give the stated integral groups, with no other reduced homology
+except $H_6=\mathbb Z$. The full integral support-function and
+semicharacter certificate
+\path{code/fourfolds_D2_2power_AH.py}
+verifies the integral line-descent and actual-angle hypotheses
+used in D.2.35 for these rows. Here are the complete remaining
+localization steps. The subgroup $G=C_c$ of the scalar circle has
+fixed locus the rational curve $C$ and the one exceptional
+elliptic double curve $E$ at $I_c$; it acts freely off them.
+The actual normal characters are $(1,-1)$ on $C$ and $(w,-w)$
+on $E$, with $w^2=1$ in $\mathbb Z/c$. The two normal lines on
+$C$ have degree $-1$, and those on $E$ have degree zero.
+The symmetric auxiliary line of D.2.35 has character $c/2$ on
+$C$, zero on $E$, and degree coprime to $c$ on $C$.
+Its identification with the global mod-$c$ class is the same
+integral common-piece argument as there: the boundary-to-cap
+surjections and primitive degree-one map make $H_2(W)\to H_2(X)$
+onto; the line has zero swept values and kills the ordinary
+clutch relation modulo $c$. Moreover $\pi_1(W_G)$ has the
+unique torsion subgroup $G$. The difference between equivariant
+lifts therefore has the same point character on $C$ and $E$.
+After one base-character adjustment, the stated auxiliary
+characters are the characters of a global equivariant lift.
+
+Normalize its ordinary class $\alpha\in H^2(X;\mathbb Z/c)$
+to have degree one on $C$. Put $t\in H^2(BG;\mathbb Z/c)$,
+$x=[C]^*$ and $y=[E]^*$. Its restrictions have the form
+\[
+ \alpha|_C=x+(c/2)t,\qquad
+ \alpha|_E=A y+\eta\zeta,\qquad
+ e_G(N_C)=-t^2,\qquad e_G(N_E)=-w^2t^2,                       \tag{D44.0a}
+\]
+where $\eta$ has degree one on $BG$ and $\zeta$ lifts from
+integral degree-one cohomology of $E$. Localization over
+$\mathbb Z/c$ is legitimate: the complement is free, so its
+cohomology vanishes after inverting $t$. The degree-one
+localization identity gives $A=-w^2$. The elliptic restriction
+has cube zero, because $y\zeta=0$ and $\zeta^2=0$; the rational
+curve's contribution to the cube is $-3(c/2)^2=0\pmod c$.
+Thus $\langle\alpha^3,[X]\rangle=0$ in the full coefficient
+ring, not merely modulo two.
+The equivariant complex determinant is trivial: its ordinary
+class is zero and its total character on $C$ is zero.
+Hence $\lambda_G=-c_{2,G}$. On either fixed curve,
+$c_{2,G}(TX)=e_G(N)$, since the square of the tangent-line
+class vanishes. Therefore
+\[
+ \langle\alpha\lambda,[X]\rangle=-(1+A)=-(1-w^2)=0.           \tag{D44.0b}
+\]
+The normalized class detects the cyclic degree-four group, so
+$\lambda=0$. Zhubr's Sections 3.11--3.14 identify the complete
+group $H_6(K(\mathbb Z/c,2);\mathbb Z)=\mathbb Z/c$ by the cube,
+giving $\mu=0$ \cite[Sections 3.11--3.14]{manZhubr75}.
+The free-coefficient calculation
+and coefficient surjectivity in Zhubr's Sections 3.11--3.14 give
+$2P=\operatorname{PD}(\lambda)$
+\cite[Theorem 5 and Sections 3.11--3.14]{manZhubr75}.
+Thus the two remaining possibilities
+are exactly $P=0,c/2$. The calculation below distinguishes them by
+the actual tangent framing, without halving a congruence or using
+the conjectural change-of-three-frame formula of \cite{ffZhubr13}.
+
+\emph{A framing parity that depends only on the three-cycle.}
+We first record the precise primary construction used to compare a
+regular three-torus with a torsion three-sphere.
+Let a closed oriented six-manifold $Y$ have a stable tangent framing.
+For an embedded oriented three-manifold $N\subset Y$ with a chosen
+normal framing, denote by $[N]_{\rm fr}\in\Omega^{\rm fr}_3
+\cong\mathbb Z/24$ its induced stable framed-bordism class. Then
+\[
+ [N]_{\rm fr}\pmod2
+   =q_Y\bigl(\operatorname{PD}_{\mathbb F_2}[N]\bigr)             \tag{D44.2}
+\]
+for a function of the indicated mod-two cohomology class alone.
+This statement includes torsion classes in integral homology.
+Here is a derivation directly from Brown's construction
+\cite[pp.369--372]{ffBrown72}. Set $K_3=K(\mathbb F_2,3)$ and let
+$j:S^3\to K_3$ represent its fundamental class. Brown's $F(u,0)$
+is literally the stabilization of the map $u:Y\to K_3$.
+The framed Pontryagin--Thom collapse $Y\to S^3$, followed by $j$,
+therefore represents $F(\operatorname{PD}[N],0)$.
+Apply the framed duality map $W_*A_\alpha$ of his Theorem 1.7 and
+Corollary 1.11. Its value is the image of $[N]_{\rm fr}$ under
+\[
+ j_*:\pi_3^{\rm S}\longrightarrow\pi_6^{\rm S}K_3
+          \cong\mathbb Z/2.                                  \tag{D44.3}
+\]
+The target is Brown's Lemma 1.2. The remark immediately following
+his Corollary 1.13 identifies $j_*\nu$ with its nonzero generator:
+the coefficient is the mod-two Hopf invariant, and the quaternionic
+Hopf element $\nu$ has Hopf invariant one. Dividing Brown's
+$\mathbb Z/4$-valued function, whose values here are $0,2$, by two
+gives (D44.2). This is a Pontryagin--Thom argument about the specified
+normal framing; no compression of an arbitrary framed torus to a
+sphere is being assumed.
+
+For clarity we also fix the sphere convention. The homomorphism
+$\pi_3SO(3)\to\pi_3SO(6)$ has image $2\mathbb Z$.
+Consequently changing the normal framing of an embedded $S^3$
+does not change the parity of its induced stable framed class.
+For the standard sphere bounding a ball, the induced stable framed
+class is zero and its tangent three-frame represents the nonzero
+class in $\pi_3V_{6,3}=\mathbb Z/2$ relative to a constant ambient
+three-frame. Equivalently, the tangent Lie framing on $S^3$ has
+class $\nu$, and a change of ambient frame by degree $d$ changes
+that class by $d\nu$, while the relative three-frame class changes
+by $d\bmod2$. Thus Zhubr's required nontrivial relative
+three-frame is equivalent to \emph{even} induced stable framed
+class on the sphere. These conventions agree with the quaternionic
+calculation in \cite[Section 5]{ffZhubr13}.
+
+Since $\lambda(X)=0$, $TX$ is stably trivial: the only obstruction
+for a spin bundle on a six-dimensional complex is its class in
+$H^4(-;\pi_3\mathrm{Spin})$, namely $\lambda$.
+Moreover $TX$ is actually trivial on $X^\circ=X\setminus\{p\}$.
+For example its complex bundle has $c_1=c_2=0$ and its last
+obstruction lies in $H^6(X^\circ;\mathbb Z)=0$.
+Any framing there extends stably across $p$, since
+$\pi_5SO=0$. All such full framings have the same relative
+three-frame parity on an embedded torsion $S^3$: their difference
+lifts to $\mathrm{Spin}(6)$ and its degree-three class is a class
+of $H^3(X^\circ;\mathbb Z)$, which evaluates to zero on a torsion
+three-cycle.
+An embedded sphere in the integral class of the regular torus
+$T=\langle e_1,e_2,\gamma\rangle$ used below can also be
+constructed explicitly, so its existence is not an additional
+representability assumption. Apply Kaplan's construction to
+the spin structure induced on the normally framed $T$:
+it gives a four-dimensional filling with one zero-handle and
+only two-handles, preserving that almost framing
+\cite[Definition 1.7, Remark 1.8, Theorem 3.1]{mapsKaplan79}.
+Delete the zero-handle and reverse the cobordism. Realize the
+resulting two-handle attachments as ambient surgeries in
+$X^\circ$. Their attaching circles bound embedded disks
+with interiors disjoint from $T$ and from one another, since
+$\pi_1(X^\circ)=0$, $2+3<6$ and $2+2<6$.
+Prescribe a boundary collar along the first normal vector.
+The two tangent framing directions of each attachment and
+the other two normal directions give a four-frame around
+the boundary of its disk. Its extension obstruction in
+$\pi_1SO(4)=\mathbb Z/2$ is exactly the spin obstruction
+of that two-handle, and vanishes. Thickening these disks
+therefore performs the prescribed surgeries inside $X^\circ$.
+The resulting embedded $S^3$ has the same integral homology
+class as $T$. Brown's identity already supplies its parity;
+this construction additionally verifies its geometric
+realization without changing the prescribed spin structure.
+Zhubr's Theorem 1 now implies
+\[
+ P(X)=0\quad\Longleftrightarrow\quad
+ \text{a full ambient framing is admissible on the torsion }S^3.
+                                                               \tag{D44.4}
+\]
+Indeed the forward implication is not an assumption about arbitrary
+three-frames. Take the admissible three-frame supplied by that
+theorem. If $P=0$, its spin rank-three complement has vanishing
+primary obstruction $c_2$; the only possible further obstruction
+on the punctured six-manifold is in $H^5(X^\circ;\mathbb Z/2)=0$.
+The complement is therefore trivial, and the three-frame extends
+to a full framing. Conversely an admissible full framing has
+trivial complement and hence refined class zero. Independence
+of the full framing proves (D44.4) for the particular framing
+used below.
+
+\emph{The reference frame and the actual critical-cycle defect.}
+Write $f:X\to\mathbb P^1$ for the torus fibration and
+$\mathcal V=\ker(df)$ for its holomorphic differential kernel.
+This is a locally free rank-two sheaf, including at the critical
+curves. In the nodal chart $f=xy$ it has basis
+$x\partial_x-y\partial_y,\partial_z$; in the triangular cusp
+chart $f=xyz$ it has basis
+$x\partial_x-y\partial_y,y\partial_y-z\partial_z$.
+The scalar $\delta$-action defines a nowhere-zero section of this
+\emph{abstract} vector bundle, although its image as a vector
+field vanishes on the fixed curve. In a toric chart its two
+coefficients are those of the nonzero primitive scalar lattice
+vector, so they cannot both vanish. This description is unchanged
+by the translation clutch.
+As $H^2(X;\mathbb Z)=0$, the quotient line $\mathcal V/\mathcal O\delta$
+is topologically trivial; hence $\mathcal V$ has a global smooth
+frame whose first vector is $\delta$. The line
+$\mathcal L=f^*T\mathbb P^1$ is also topologically trivial.
+
+Let $Z$ denote the scheme defined by the coefficients of $df$.
+There is an exact sequence
+\[
+ 0\longrightarrow\mathcal V\longrightarrow TX
+  \xrightarrow{df}\mathcal L
+  \longrightarrow\mathcal L\otimes\mathcal O_Z
+  \longrightarrow0.                                         \tag{D44.5}
+\]
+Its codimension-two cycle is the literal sum $C_{\rm crit}$ of
+the complex double curves, each with coefficient one. This
+includes the three axes at a triple point: the ideal
+$(xy,xz,yz)$ has multiplicity one on each axis. Since
+$\mathcal V$ and $\mathcal L$ are topologically trivial,
+(D44.5) gives $c_2(TX)=[C_{\rm crit}]$. Thus this cycle is
+integrally nullhomologous.
+
+Off $Z$, splitting (D44.5) identifies $TX$ with the framed
+bundle $\mathcal V\oplus\mathcal L$. Its comparison with a
+global frame on $X^\circ$ has an integral degree-three class
+$a$ whose local residue on every smooth double curve is one,
+up to the same overall sign. In the model $xy$ this is the
+explicit Bott matrix
+\[
+ \frac1{\sqrt{|x|^2+|y|^2}}
+ \begin{pmatrix}x&\overline y\\-y&\overline x\end{pmatrix}
+       \in SU(2).                                            \tag{D44.6}
+\]
+It has degree one on the normal three-sphere; adding the
+tangent line to the critical curve sends this to the stable
+generator, not twice that generator. The latter factor two
+belongs to the different map $SO(3)\to SO$, as is also seen
+from $\lambda=-c_2$ for this complex rank-two normal calculation.
+Removing the finitely many triple points does not affect this
+degree-three residue calculation. The integral relative
+cohomology sequence, or equivalently the Thom intersection
+construction, therefore gives
+\[
+ \langle a,[T]\rangle
+      =\pm\operatorname{lk}(T,C_{\rm crit})                   \tag{D44.7}
+\]
+for any regular three-torus $T$ disjoint from the critical
+cycle. The ambiguity of adding a class from $H^3(X^\circ;\mathbb Z)$
+evaluates to zero on our torsion three-cycle. Thus the integer
+in (D44.7), not merely a residue modulo $c$, is well defined.
+
+Take specifically $T=\langle e_1,e_2,\gamma\rangle$ in a regular
+fibre inside the ordinary clutch disc. The reference frame
+$\mathcal V\oplus\mathcal L$ has zero degree-three difference
+from the flat translation frame there. Indeed the vertical
+frames have the same first vector $\delta$; their change lies
+in the stabilizer $\mathbb C\rtimes\mathbb C^*$, which retracts
+to a circle. The base line contributes another $\mathbb C^*$,
+and changing the horizontal splitting contributes a contractible
+space. None contributes a degree-three class. The induced flat
+framing of $T^3$ is its product Lie framing, with stable class
+$\eta^3=12\nu$, an even element of $\mathbb Z/24$.
+A possible determinant-circle transition cannot change this
+parity. A map $T^3\to S^1$ is homotopic to a character and,
+after an integral change of torus basis, depends on just one
+circle. Its real rotation can be placed stably in that circle
+and one normal direction. It changes just that circle's framed
+class, so the resulting product-framed torus has class either
+$0$ or $\eta^3$, both even. After splitting off the determinant,
+the remaining $SU(3)$ transition is a degree-$k$ map on a
+three-dimensional complex and changes the framed class by
+$\pm k\nu$. Thus its exact parity is the integer in (D44.7).
+Equations (D44.2) and (D44.7) consequently give
+\[
+ q_X(\operatorname{PD}[T])
+       =\operatorname{lk}(T,C_{\rm crit})\pmod2.              \tag{D44.8}
+\]
+The torus represents an odd generator of $H_3(X)=\mathbb Z/c$
+by the explicit linking calculation below. Its reduction is
+therefore the same as that of an embedded torsion generator
+$S^3$. Combine (D44.4) and (D44.8) to obtain the actual decision
+\[
+ P(X)=\frac c2
+       \bigl(\operatorname{lk}(T,C_{\rm crit})\bmod2\bigr).
+                                                               \tag{D44.9}
+\]
+
+\emph{The integral linking calculation.}
+All local preimages and bounding coefficients here are those
+of the actual marked caps, not an invariant-form calculation
+on an unmarked torus. At each site choose the recorded
+determinant-one elliptic basis $(u_1,u_2)$ and use the short
+and long planes $(u_1,\delta)$ and $(u_2,\gamma)$. The exact
+valuation matrix is
+\[
+ L=\begin{pmatrix}n&-bH\\aH&R\end{pmatrix}.                  \tag{D44.10}
+\]
+At a rank-one site write $L=\alpha r$ with $\alpha$ primitive.
+Choose a short complement $\sigma$ with
+$\det(\alpha,\sigma)=1$ and long vectors $(\beta,\ell)$ with
+$r\beta=\rho>0$, $r\ell=0$, and $\det(\beta,\ell)=1$.
+The literal transverse complex elliptic curve has regular-fibre
+preimage $\sigma\wedge\ell$. The product nodal chart supplies
+the specialization chain with degree one. These signs follow
+by orienting the vanishing elliptic factor as $(\alpha,\beta)$
+and the transverse factor as $(\sigma,\ell)$.
+
+At the unique rank-two cusp $\det L=1$. Put
+$(b_1,b_2)=(u_2,\gamma)L^{-1}$ and $(a_1,a_2)=(u_1,\delta)$,
+so $Nb_j=a_j$. The three integral support functions
+$r(r-1)/2,rs,s(s-1)/2$ have degree matrix
+\[
+ \begin{pmatrix}0&-1&0\\1&1&-1\\-1&0&0\end{pmatrix}          \tag{D44.11}
+\]
+on the three complex opposite-pair double curves in cyclic
+ray order $(1,0),(0,1),(-1,1)$. This unimodular matrix gives
+degree vector $(-1,1,-1)$ for their sum. The fibre vector
+\[
+ a_1\wedge b_1+b_1\wedge a_2+a_2\wedge b_2                  \tag{D44.12}
+\]
+has precisely those degrees and zero long--long component.
+The latter is the degree-two class of the dual torus, so these
+four coordinates identify its specialization with the actual
+sum of the three double curves integrally. In particular no
+undetected fourth homology component is being suppressed.
+
+Transport the five preimages to the common regular fibre along
+the fixed base paths. Their sum is a representative of
+$C_{\rm crit}$ in the exact marked presentation of D.2.41.
+All transport and cap relations can be realized by chains
+outside the ordinary disc. In that disc the four normal
+Thom chains are the products of a lattice loop with the
+disc, and the redundant fifth chain has loop vector
+$(0,0,0,-e)$. The intersection of a bounding relation with
+$T=e_1e_2\gamma$ is consequently its clutch $\delta$
+coefficient. Integral Smith solutions give
+\[
+ \begin{array}{c|c|c|c}
+  \mathrm{OS}&c&\text{zero indices}&
+       \operatorname{lk}(T,C_{\rm crit})\text{ for }e=1\\\hline
+  45&8&1,2,3,4&4,4,4,4\\
+  55&4&2,3,4&37,7,27.
+ \end{array}                                                  \tag{D44.13}
+\]
+For example, in OS55 at zero index $2$, the five cap vectors
+in ordered bivector coordinates
+$(e_1e_2,e_1\delta,e_1\gamma,e_2\delta,e_2\gamma,\delta\gamma)$
+are
+\[
+ \begin{gathered}
+ (0,0,0,-12,0,5),\quad(3,0,1,-12,0,4),\\
+ (-19,-23,-10,0,5,6),\quad(0,0,0,0,0,1),\quad(0,4,0,0,0,1).
+ \end{gathered}                                               \tag{D44.14}
+\]
+Their sum has an integral bounding relation with clutch loop
+$(0,0,37,0)$. The same Smith calculation for $c$ times a
+two-dimensional torsion generator gives a clutch coefficient
+coprime to $c$ in every row. Nondegeneracy of the torsion
+linking pairing proves that $T$ is an odd generator of
+$H_3(X)$. Every integral relation among presentation columns
+has zero clutch $\delta$ coefficient, so the displayed
+linking does not depend on a selected Smith solution.
+Changing the stated short complements or the cusp mixed
+preimage by an actual cap-kernel class also changes that
+coefficient by zero. For $e=-1$ the exact same calculation
+with its actual clutch vector reverses the displayed integer
+signs and retains the unit torsion-linking test.
+
+The executable
+\path{code/manifolds_even_critical_cycles.py}
+retains all fourteen rows, the full integral coefficient
+vectors, local bases, alternative preimages and both clutch
+signs in
+\path{records/manifolds_even_critical_cycles.json}.
+Its integral computation is independent of the differential
+and framing arguments above. Formula (D44.9) and table
+(D44.13) prove (D44.1).
+The separate executable
+\path{code/fourfolds_D2_frame_certificate.py}
+checks the local kernel and Bott-matrix identities, the
+unimodular cusp degree matrix and, for all fourteen marked
+rows, the independent degree identity
+$\Omega(C_{\rm crit})=-be\,\operatorname{lk}(T,C_{\rm crit})$
+for the actual pure fibre functional
+$\Omega=a e_1^*e_2^*+b\gamma^*\delta^*$.
+It retains its inputs' hash and every local degree in
+\path{records/fourfolds_D2_frame_certificate.json}.
+
+\emph{Recognition of the surgery models.}
+The normal rank-four bundle of any embedded sphere in these
+spin six-manifolds is trivial, and its framing is unique
+since $\pi_2SO(4)=0$. The stated surgeries have $H_2=H_3=\mathbb Z/c$
+and zero free third Betti number. The classifying map to
+$K(\mathbb Z/c,2)$ extends across each surgery trace.
+The model $Z_{c,0}$ has refined class and fundamental-class
+invariant both zero. For $Z_{c,1}$, the conic summand's refined
+class maps to $c/2$, and the complete cubic maps to zero for
+$c=4,8$, since $(c/2)^3=0\pmod c$. Thus their full Zhubr
+invariants are respectively $(P,\mu)=(0,0)$ and $(c/2,0)$,
+using naturality in \cite[Theorem 5]{manZhubr75} and the full
+conic invariant established in D.2.8.
+The classification theorem \cite[Theorem 3]{manZhubr75}, including
+its finite invariants, gives the asserted oriented diffeomorphisms. No conclusion
+here rests on ordinary homology alone.\hfill$\square$

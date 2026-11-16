@@ -1,0 +1,344 @@
+\paragraph{Theorem F.2.35 (Proved: complete integral homology of a marked gluing).}
+For every fully marked F.2 datum there is a terminating exact
+integer algorithm computing every integral homology group of
+the resulting eight-manifold, including every torsion invariant
+factor.  The input consists of the finite homology matrices
+$M_1,\ldots,M_k$, free affine numerators $v_i/m_i$ of their
+actual orders, the integral clutch vector $\kappa$, and the
+chosen primitive cusp marking
+\[
+ M_0=(M_1\cdots M_k)^{-1},\qquad
+ M_0P=P\begin{pmatrix}I_3&I_3\\0&I_3\end{pmatrix},
+ \qquad P\in\mathrm{GL}(6,\mathbb Z).                       \tag{F.GC1}
+\]
+Here $k=2$ or $3$ and the genuine orders are at least two;
+order-one sites are first eliminated as in F.2.31.
+If a marking is not supplied, the algorithm makes and records
+one by Smith reduction.  It does not identify that choice
+with an unspecified prescribed marking.
+The complete chain prefix through degree nine has at most
+4003 generators in any degree.  No spectral-sequence
+extension, saturation convention, orientation assumption or
+unbounded search enters the homology calculation.
+
+\emph{Proof.}
+We supply both global boundary maps which were left outstanding
+after F.2.34.  Let $F_k$ be the free group with ordered
+generators $s_1,\ldots,s_k$, and let $M(w)$ be the product
+specified by a reduced word $w$.  The torus-bundle complement
+over the punctured sphere retracts to the corresponding bundle
+over a graph.  Its fundamental group and multiplication are
+\[
+ \Gamma=\mathbb Z^6\rtimes F_k,
+ \qquad (x,w)(y,u)=(x+M(w)y,wu).                            \tag{F.GC2}
+\]
+The fibre and base are aspherical and the base has no
+two-cells.  Hence a chosen section identifies the complement
+up to homotopy with $B\Gamma$.  These section and peripheral
+choices are fixed by the input clutch convention below.
+
+\emph{A finite complement complex with its full bar projection.}
+Use reduced words for $F_k$.  The tree resolution of the free
+group has $K_0=\mathbb Z[F_k]$ and
+$K_1=\bigoplus_i\mathbb Z[F_k]e_i$, with
+$de_i=s_i-1$, and no higher terms.  Its explicit augmented
+contraction sends a word to its signed path in the Cayley
+tree: for each positive letter $s_i$ add its preceding prefix
+times $e_i$, and for a negative letter $s_i^{-1}$ subtract
+the prefix including that letter times $e_i$.
+This is the Fox derivative, and its boundary is $w-1$.
+Together with the bar insertion contraction it gives, by
+the recursion (F.CA3), a strong contraction of the free-group
+bar resolution to this tree resolution.  Every recursion
+decreases bar degree and every word is finite.
+
+For a bar simplex $[(x_1,w_1)|\cdots|(x_n,w_n)]$ of $\Gamma$,
+put $y_j=M(w_1\cdots w_{j-1})x_j$.
+The exact Alexander--Whitney chain map to the torus/free-group
+double bar complex is
+\[
+ \sum_{p+q=n}(-1)^{pq}
+ [w_1|\cdots|w_p]\otimes[y_{p+1}|\cdots|y_n].              \tag{F.GC3}
+\]
+Terms with an identity bar entry are zero.  The horizontal
+first face acts on torus vectors by
+$\rho(w)=M(w)^{-1}$, and the horizontal boundary has sign
+$(-1)^q$.  Notice that $\rho$ is a right action:
+$\rho(wu)=\rho(u)\rho(w)$.  This order is essential when
+the matrices do not commute.  Formula (F.GC3) follows from
+the diagonal bisimplicial bar construction; alternatively,
+its chain-map identity follows by pairing adjacent interior
+faces, with the first face using
+$M(w_1)^{-1}y_j=M(w_2\cdots w_{j-1})x_j$.
+The usual shuffle inverse is finite in each degree, so the
+map is a chain equivalence.
+
+Apply the torus contraction and (F.CA5), then the free-group
+tree contraction and the same finite perturbation formula.
+Higher terms decrease group bar degree at least two, whereas
+the tree complex only has degrees zero and one.  Thus the
+resulting complement complex is
+\[
+ C_n(E)=\bigwedge^n\mathbb Z^6\ \oplus\
+ \bigoplus_{i=1}^k\bigwedge^{n-1}\mathbb Z^6,
+ \qquad
+ d(e_i\otimes\xi)=(-1)^{n-1}
+   (\bigwedge^{n-1}M_i^{-1}-1)\xi.                         \tag{F.GC4}
+\]
+Its differential alone has this short form; its projection
+from group bars retains the finite higher perturbation terms.
+Those projection terms are used for every boundary map.
+
+\emph{Finite affine boundary maps.}
+For the $i$th finite cap use the orbit groupoid of F.2.33.
+Its one-edge homotopy colimit for the affine generator is
+the boundary mapping torus.  Vertically contracting it gives
+a bounded complex with
+$C_n(Y_i)=\bigwedge^n\mathbb Z^6\oplus
+\bigwedge^{n-1}\mathbb Z^6$ and differential
+$(-1)^{n-1}(\bigwedge^{n-1}M_i-1)$ on the second summand.
+Its inclusion into the cyclic bar construction, followed by
+the cap projection in (F.CA5), is the full map $Y_i\to B_i$.
+In particular this one-edge model avoids an unnecessary
+periodic resolution of the seven-dimensional boundary.
+
+Here is an explicit group-bar map for its other inclusion.
+Send a torus-groupoid arrow labelled $\lambda$ to the
+translation $x^\lambda\in\Gamma$.  With the integral offsets
+$z_1(a)$ in (F.CA4), put
+$\eta_a=s_i^{-1}x^{z_1(a)}$.
+For an arrow $f:a\to b$, the exact identity
+\[
+ \eta_a\,\psi(gf)=\psi(f)\,\eta_b                        \tag{F.GC5}
+\]
+is the natural-transformation identity: it is just
+$s_i^{-1}x^{M_i\lambda+z_1(b)}
+ =x^\lambda s_i^{-1}x^{z_1(b)}$.
+For a $q$-simplex, the edge map is $(-1)^q$ times the
+alternating prism which inserts $\eta$ at every position,
+uses the original arrows before the insertion and the
+transformed arrows afterwards.  Its boundary is precisely
+the signed difference of the two end maps, by (F.GC5).
+Compose this prism with the finite vertical lift of the
+one-edge complex, then with (F.GC3) and the complement
+projection.  This proves the full chain-map identity.
+The offsets record the actual integer affine lift: replacing
+$v_i$ by $v_i+m_i\lambda$ changes the offsets and the map,
+even if the affine map on the torus has not changed.
+An optional unimodular local basis simply applies its matrix
+to every translation in (F.GC5).
+
+We make the distinction between a bar cell and the geometric
+positive root explicit.  Put
+$a_i=z_1(0)=\lfloor v_i/m_i\rfloor$, coordinatewise, and
+let $\tau_i$ be the positive one-edge bar cell closed using
+the zero-labelled return arrow to object zero.  With the
+first-face convention above its geometric loop is
+\[
+ \tau_i=g_i^{-1}x^{a_i},\qquad
+ F_E(\tau_i)=-e_i+M_i^{-1}a_i\in C_1(E),\qquad
+ g_i=x^{a_i}\tau_i^{-1}.                                  \tag{F.GC5a}
+\]
+Thus the bar cell has the opposite peripheral orientation,
+with the displayed integer correction when the numerator
+has a nonzero integer part.  Formula (F.GC5) sends its
+group element to $s_i^{-1}x^{a_i}$; consequently the
+geometric positive root in the last expression of (F.GC5a)
+maps to $s_i$ exactly.  This is the stated conversion between
+the boundary and complement chain conventions.  In a local basis
+$Q$, replace $a_i$ in the group and complement formulas by
+$Q\lfloor Q^{-1}v_i/m_i\rfloor$.
+Writing $\mathcal N_i=\sum_{j=0}^{m_i-1}M_i^j$, the cyclic
+degree-two cell has boundary
+$m_i\tau_i+w_i-\mathcal N_i a_i$.
+Indeed $\tau_i^{m_i}=x^{\mathcal N_i a_i-w_i}$ follows
+directly from $g_i^{m_i}=x^{w_i}$.
+This independently checks the affine power relation and
+the degree-one prism sign, including negative numerators.
+
+There is an optional exact geometric shortcut.  If a verified
+local integral basis gives $M_i=\operatorname{diag}(1,D)$ and
+$v_i=\epsilon e_0$, $\epsilon\in\{1,-1\}$, eliminate the
+first fibre generator from the cap group using
+$g^{m_i}=u^\epsilon$.  The cap is the mapping torus with
+group $\mathbb Z^5\rtimes_D\mathbb Z$.
+The fibre vector $(u,a)$ maps to $x^a g^{\epsilon m_i u}$,
+and the root generator maps to $g$.  Substituting this
+homomorphism for $\psi$ in the same prism gives the boundary
+map to this bounded geometric cap model.  The shortcut is
+used only after checking the displayed integral normal form;
+the general periodic construction remains available for
+every other input.
+
+To check the peripheral convention directly, the universal
+cover of $Y_i$ has the root generator $g_i$ with linear part
+$M_i$ and affine displacement $v_i/m_i$.  Its integral
+translations and $g_i$ map to the same fibre translations
+and $s_i$ in (F.GC2).  The full base-circle translation obeys
+$g_i^{m_i}=x^{w_i}t$, where $w_i$ is the power vector of
+F.2.31.  Filling the disc kills $t$, giving exactly
+$s_i^{m_i}=x^{w_i}$.  The straight paths between the chosen
+orbit points give (F.GC5), so the prism is this marked map,
+including numerators with nonzero integer parts.
+
+\emph{The marked cusp boundary map.}
+Write $P=[A\ B]$ in (F.GC1), and set
+\[
+ w_0=(s_1\cdots s_k)^{-1},\qquad
+ c=w_0x^{-\kappa}\in\Gamma.
+                                                               \tag{F.GC6}
+\]
+Send the three angular generators to the columns of $A$,
+the three tropical generators to the columns of $B$, and
+the base-phase generator to $c$.  Relation (F.GC1) gives
+$c b_i c^{-1}=b_i+a_i$ and all the other nilpotent boundary
+relations.  Filling kills the angular generators and $c$,
+so (F.GC6) gives exactly
+$s_1\cdots s_kx^\kappa=1$, in agreement with F.2.31.
+
+This homomorphism has a direct chain implementation on the
+full Kuhn diagram.  For an incidence with translation label
+$w$, assign the group element $x^{Bw}$.  A vertical phase
+$(n,a)\in\mathbb Z\oplus\mathbb Z^3$ maps to $c^nx^{Aa}$.
+The incidence shear is $S_w(n,a)=(n,a+n w)$, and
+\[
+ (c^nx^{Aa})x^{Bw}=x^{Bw}(c^nx^{A(a+n w)}).                \tag{F.GC7}
+\]
+For a flag of $p$ incidence arrows and a vertical bar
+simplex of length $q$, sum over all $(p,q)$ shuffles.
+Each incidence step contributes its assigned group element;
+each vertical step contributes its phase transformed by
+all preceding incidence shears.  Give the shuffle the sign
+$(-1)^{\#\{\text{incidence steps before vertical steps}\}}$.
+Interior face cancellations use exactly (F.GC7), and adjacent
+incidence faces use addition of their translation labels.
+This is therefore a chain map from the double bar complex
+to $C_*(B\Gamma)$.  Precompose with the finite Kuhn lift of
+F.2.34 and postcompose with (F.GC3) and the complement
+projection.  The other cusp map is the full logarithmic
+collapse already computed in F.2.34.
+Both the cusp boundary and the complement are aspherical,
+so the displayed marked homomorphism also verifies the
+homotopy class of this geometric inclusion.
+
+\emph{The final finite integer calculation.}
+Take the mapping cone of the just constructed maps
+\[
+ \bigoplus_{i=0}^k C_*(Y_i)\longrightarrow
+ C_*(E)\oplus\bigoplus_{i=0}^k C_*(B_i),
+ \qquad y\longmapsto(f_E(y),-f_B(y)),                     \tag{F.GC8}
+\]
+where $B_0=W$ is the Kuhn cap.  Gluing collars makes this
+the homotopy pushout model of the actual closed manifold.
+Consequently its cone computes integral homology directly;
+there is no remaining filtration extension to choose.
+
+For clarity the exact finite size bound can be read off
+before running any matrix calculation.  Put
+$t_n=\sum_{q=0}^{\min(n,6)}\binom6q$, with binomial
+coefficients outside their range interpreted as zero.
+Let $w_n$ and $y_n$ be the raw cap and boundary ranks of
+F.2.34, zero outside their listed ranges.  Then the cone rank
+in degree $n$ is
+\[
+ \binom6n+k\binom6{n-1}+k t_n+w_n+
+ k\binom7{n-1}+y_{n-1}.                                 \tag{F.GC9}
+\]
+For $0\leq n\leq9$ its maximum is 3890 when $k=2$ and
+4003 when $k=3$.  Every bar comparison and perturbation
+series used to produce these matrices terminates by its
+degree filtration.  Word reductions and affine orbit
+enumerations are finite, with no imposed size cutoff.
+Computing integer kernels followed by Smith normal forms
+now gives $H_0,\ldots,H_8$; higher groups vanish by dimension.
+Unit cancellations are optional exact integral chain
+equivalences which substantially reduce the matrices before
+Smith reduction.  This proves the algorithm and the bound.
+\hfill$\square$
+
+\emph{Verification and implementation.}
+The implementation is in \path{code/fourfolds_global_chains.py}
+and \path{code/fourfolds_total_homology.py}.
+The generic JSON driver \path{code/fourfolds_marked_gluing.py}
+retains the complete supplied marking and affine data, computes
+the full group structure of F.2.31, and independently compares
+its abelianization with the chain calculation of $H_1$.
+The Fox contraction is checked on all 156 explicitly listed
+free-group bar simplices through degree three; the exact
+Alexander--Whitney and finite-projection identities are
+checked on 156 specified semidirect-product simplices with
+two noncommuting rank-two matrices.
+Four finite boundary comparisons using the independent
+seven-dimensional quotient model have acyclic integral
+comparison cones.  The more efficient one-edge model is
+checked in six stated low-rank cases, including negative,
+nonfixed, and nontrivial integer-part numerators; both its
+complement comparison and its full Thom cone pass.
+The program \path{code/fourfolds_peripheral_signs.py} also
+checks (F.GC5a) and the full cyclic degree-two relation in
+seven cases, including both actual rank-six caps.  It
+reconstructs the positive geometric root as a group element
+and checks that its complement bar projection is $+e_i$.
+For the Kuhn boundary, every one of its 10048 raw generators
+passes the chain-map identity in all degrees zero through
+seven.  Its comparison to the corresponding one-generator
+complement has an integrally acyclic cone, eliminated by
+5088 unit cancellations.  Thus the comparison also checks
+the nonzero boundary order-two torsion.
+The full eight-dimensional integration for the original
+order-$(5,4)$ survivor has passed.  Every marked boundary
+column and the complete Mayer--Vietoris differential are
+checked.  After 7372 integral unit cancellations, its Smith
+homology is $\mathbb Z$ in degrees zero and eight,
+$\mathbb Z^4$ in degree four, and zero otherwise, exactly
+as in the independent calculation F.2.6.
+The corresponding three-point run with logarithmic order
+$m=2$ also passes, after 7470 integral unit cancellations.
+It gives $H_1=H_6=\mathbb Z/18$,
+$H_2=H_5=(\mathbb Z/2)^5$, $H_3=(\mathbb Z/2)^{10}$,
+$H_4=\mathbb Z^4\oplus(\mathbb Z/2)^{10}$,
+$H_0=H_8=\mathbb Z$ and $H_7=0$, exactly as in the
+independent theorem F.2.32.  It reuses only the identical
+first-two finite boundary maps: their group bars involve only
+the fibre and their own peripheral generator, so adjoining
+a third generator changes neither their columns nor their
+target row indices.  The third cap, the new cusp word,
+the full cone and every Smith group are recomputed.
+
+A third full integration uses
+$A=I_3$, $B=\operatorname{diag}(0,1,0)$ in (F.IV2),
+actual affine orders $4,4$, numerators $a_1,a_2$, and zero
+clutching.  These two linear actions reverse orientation.
+Its 7345 integral unit cancellations give free ranks
+\[
+                  (1,0,4,11,10,1,6,3,0).
+\]
+The nonzero torsion groups are
+\[
+\begin{aligned}
+ \operatorname{Tor}H_1=\operatorname{Tor}H_5
+       &=(\mathbb Z/2)^3\oplus\mathbb Z/4,&
+ \operatorname{Tor}H_2&=(\mathbb Z/2)^2,\\
+ \operatorname{Tor}H_3=\operatorname{Tor}H_7
+       &=\mathbb Z/2,&
+ \operatorname{Tor}H_4&=(\mathbb Z/2)^4\oplus(\mathbb Z/4)^5.
+\end{aligned}
+\]
+The independent van Kampen $H_1$ agrees.  Its Euler number
+is six, its mod-two Betti vector is
+$(1,4,10,14,20,14,10,4,1)$, and its integral top groups
+have the required nonorientable form.  Thus this integration
+also tests the orientation-reversing part of the stated scope.
+
+The \texttt{--fresh} option bypasses all saved map checkpoints.
+The free-bar and semidirect tests, all four periodic-boundary
+comparisons, all six one-edge comparison/Thom tests, all seven
+peripheral-sign checks, the complete 10048-generator cusp
+comparison, and the cached generic survivor computation have
+also been independently rerun successfully.  The
+reduced-chain, van Kampen $H_1$, Euler and mod-two duality
+checks have additionally been independently replayed on
+all three complete integration outputs.  The general
+algorithm is proved by the explicit chain equivalences and
+finite operations above; these finite execution sets are
+reported with their exact scope.

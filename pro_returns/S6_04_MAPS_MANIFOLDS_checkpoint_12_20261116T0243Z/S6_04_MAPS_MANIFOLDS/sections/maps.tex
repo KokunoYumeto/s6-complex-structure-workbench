@@ -1,0 +1,3539 @@
+% A.1--A.2 and B.1--B.5.  Numbered statements are explicit for the result register.
+\subsection{A.1. The integral quotient and its three-dimensional target}
+
+We write $g,u,w,d$ for the ordered homology basis
+$(\widehat\gamma,\widehat u,\widehat w,\widehat\delta)$ in this
+section, and $\gamma$ for its first dual covector.  Thus $d$ is a
+vector, whereas $\gamma$ is a covector.  The cusp coordinate is
+$q=1/t$.  Positive target orientations are the complex orientation
+on the base followed by the positive $\gamma$-circle orientation.
+The complex orientation on $X$ fixes the source orientation.
+
+\paragraph{Proposition A.1.1 (Proved).}
+For the markings and the clockwise root generators in the prompt,
+the homological matrices and twisting vectors are
+\[
+ A_1=\begin{pmatrix}1&0&0&0\\6&0&1&0\\-6&-1&-1&0\\-2&1&0&1\end{pmatrix},
+ \qquad
+ A_2=\begin{pmatrix}1&0&0&0\\0&0&-1&0\\-6&1&0&0\\3&0&1&1\end{pmatrix},
+\]
+\[
+ M_0=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&1&1&0\\-1&0&0&1\end{pmatrix},
+ \qquad v_1=g+2u-4w,\qquad v_2=-g-3u+3w.
+\]
+The common invariant vectors and covectors are $\mathbb Zd$ and
+$\mathbb Z\gamma$, respectively.  The smallest invariant primitive
+sublattice containing the cusp vanishing lattice is
+$L=\mathbb Z\langle u,w,d\rangle=\ker\gamma$.
+The formula
+\[
+ [z,\Pi(z)x]\longmapsto([z],\gamma(x)\bmod\mathbb Z)
+ \tag{A.1.1}
+\]
+defines a real-analytic fibrewise group epimorphism
+$J\longrightarrow B^\circ\times S^1$ with connected kernel $T_L$.
+At the finite fillings it descends to a smooth proper $T^3$-bundle
+over a Seifert solid torus, of multiplicities $3$ and $4$ and
+translation residues $1$ and $-1$.
+
+\begin{proof}
+The first two displayed matrices are the inverse transposes of
+the matrices printed on page 2 of \cite{mapsAC26}; their product
+has inverse $M_0$.  Direct integral multiplication gives
+$A_1^3=A_2^4=A_1A_2M_0=I$ and $A_jv_j=v_j$.
+Solving the two fixed-vector equations gives $(0,0,0,d_0)$.
+For a row vector $(a,b,c,e)$, the first fixed-covector equation
+gives $b=2c,e=3c$ and the second gives $b=c,e=2c$;
+therefore $b=c=e=0$.  Also
+\[
+ (M_0-I)(a,b,c,e)=(0,0,b,-a),\qquad
+ A_1w=u-w.
+\]
+These identities prove the assertions about $L$ and the cusp
+lattice $K=\mathbb Z\langle w,d\rangle$.  Their primitivity follows
+from the displayed bases.  The flat real marking identifies the
+deck action on a fibre with $x\mapsto A_jx$.  Since
+$\gamma A_j=\gamma$, (A.1.1) descends.  Its kernel is connected
+because $\gamma$ is primitive.
+
+On a root disc the affine generator is
+\[
+ (s,x)\longmapsto
+ (e^{-2\pi i/m}s,A_jx+v_j/m),\qquad (m,\kappa)=(3,1),(4,-1).
+\]
+It induces $(s,\theta)\mapsto
+(e^{-2\pi i/m}s,\theta+\kappa/m)$ on the character quotient.
+This action is free since $\gcd(\kappa,m)=1$.  Writing
+$a=e^{2\pi i\theta}$ and choosing $r$ with $r\kappa\equiv1\pmod m$,
+the invariant coordinates $s a^r$ and $a^m$ identify its quotient
+with $D^2\times S^1$.  The base coordinate becomes
+$(s a^r)^m(a^m)^{-r}$, and hence has multiplicity $m$ at its
+central circle.  Before the finite quotient the map is a trivial
+$T_L$-bundle.  The free actions on source and target are
+equivariant for that map, so it descends locally to a smooth
+$T_L$-bundle.  Properness follows from compactness of $T_L$.
+The logarithmic translation used to glue the root chart to $J$
+changes the character by its $\gamma$-component.  Applying
+$\gamma$ to the actual gluing translation therefore gives the
+target gluing, proving agreement on every overlap.
+The exact checks, including the exhaustive mod-two fixed-vector
+calculation used below, are in \texttt{code/maps\_exact.py}.
+\end{proof}
+
+
+Engel's primitive invariant covector is named $\psi$ in his
+Lemma 3.8, labelled \texttt{covect} in the supplied source
+\cite{mapsEngel}.  It is not named $\varepsilon$ there.  In his
+common marking $\mathcal B_0$, the integral comparison is
+\[
+ P_E=\begin{pmatrix}0&-2&-1&-2\\2&-1&0&-1\\0&2&1&3\\-1&0&0&0\end{pmatrix},
+ \qquad \psi P_E=-\gamma.
+ \tag{A.1.2}
+\]
+Thus the quotient characters agree after reversing the target
+circle orientation.  With the inverse root generators the
+translation vectors are $a_{j-1}=-P_Ev_j/m_j$.
+This is the precise sign convention in the supplied family
+return, B.2.2; it explains why equality of the unnamed primitive
+covectors without a sign convention would be insufficient.
+
+\paragraph{Proposition A.1.2 (Refuted as stated; corrected).}
+The literal character has no continuous extension at either
+triple point or at generic points of two of the three double
+curves.  It has the constant limit $0$ on the smooth locus of
+$W$ and on the third double curve away from the triple points.
+In the chart $q=z_0z_1z_2$, $x_1=z_1$, $x_2=z_2$, the extendible
+double curve is $z_0=z_1=0$, $z_2\ne0$.  The fixed curve of the
+$\mathbb C^*$-action in direction $d=e_2$ is instead
+$z_0=z_2=0$, $z_1\ne0$, and is one of the nonextendible curves.
+Consequently the parenthesis in A.1 identifying the extendible
+curve with the fixed curve is false.
+
+\begin{proof}
+Put $q=e^{-2\pi T}$ on a positive radial ray and use the exact
+cusp periods
+\[
+ Z_T=iTB_0+C(q),\qquad
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+\]
+where $C$ is bounded and holomorphic at $0$.  For a fixed
+$a\in\mathbb R^2$ the representative
+$x_T(a)=\exp(2\pi iZ_Ta)$ has character $a_1\bmod\mathbb Z$ and
+logarithmic position
+\[
+ \frac{\log|x_T(a)|}{\log|q|}
+ =B_0a+T^{-1}\operatorname{Im}C(q)a.
+ \tag{A.1.3}
+\]
+The choices $a=(-1/4,1/4)$ and $a'=(-1/2,1/4)$ have logarithmic
+positions tending to $(1/4,1/4)$ and $(1/4,1/2)$.
+Both are interior to the triangle with vertices $0,e_1,e_2$,
+so all three chart coordinates tend to $0$.  Their character
+values are $3/4$ and $1/2$.  This proves nonextension at the
+first triple point.  The other triangle type has vertices
+$e_1,e_2,e_1+e_2$.  Its coordinates can be taken as
+$x_1x_2/q,q/x_2,q/x_1$.  Positions $(3/4,3/4)$ and
+$(3/4,1/2)$ lie in its interior, give distinct values of $-y_2$
+modulo one, and converge to its origin.  Translation by the
+lattice preserves triangle type; these are precisely the two
+triple points of $W$.
+
+For arbitrary convergent paths in the first chart, inversion
+of the exact logarithmic period matrix gives
+\[
+ \theta_\gamma=-\frac{\log|z_2|}{\log|q|}+o(1)\pmod{\mathbb Z}.
+ \tag{A.1.4}
+\]
+Here the error tends to zero whenever the logarithmic ratios
+stay bounded; they do stay bounded near a fixed point of a
+normal-crossing stratum because $q=z_0z_1z_2$ and the three
+coordinates are bounded.  If $z_0,z_1\to0$ and $z_2\to c\ne0$,
+the right side tends to zero.  If $z_0,z_2\to0$ and $z_1=c\ne0$,
+the paths $z_2=q^a,z_0=q^{1-a}/c$, $0<a<1$, have limits
+$-a\pmod1$ at the same double point.  The same construction
+with $z_0=c$ proves nonextension on $z_1=z_2=0$.
+At a smooth point of a component the ratio in (A.1.4) tends
+to $0$ or $1$, giving zero modulo one.  Integer translates
+of these charts give the stated assertion on all of $W$.
+
+The torus action in direction $e_2=d$ is
+\[
+ \lambda\cdot(z_0,z_1,z_2)
+       =(\lambda^{-1}z_0,z_1,\lambda z_2).
+\]
+Its fixed curve is $z_0=z_2=0$.  This directly locates the
+incorrect identification in the prompt.  Edge direction,
+torus stabilizer, and coordinate on the quotient polygon must
+not be interchanged.
+\end{proof}
+
+The nonextension above is local and pointwise.  It does not
+contradict extension of the cohomology class over a cusp
+neighbourhood.  The toric covering has rays $(v,1)$ for all
+$v\in\mathbb Z^2$.  Meridians about its toric divisors kill
+the whole cocharacter lattice: $(0,1)$ is a ray and
+$(e_i,1)-(0,1)=(e_i,0)$.  The toric cover is therefore simply
+connected.  Its free period deck group is $\overline\Lambda$
+and hence
+\[
+ \pi_1(N_0)=\overline\Lambda=\Lambda/K.
+ \tag{A.1.5}
+\]
+For the punctured cusp the map to this group kills $K$ and
+the base meridian.  The latter bounds the disc given by a
+point of the dense orbit on a central component.  Both
+long-period covectors extend in integral $H^1$, since they
+kill precisely these relations.  In contrast, an extension
+of $\theta_\gamma$ to all of $X\simeq S^6$ would induce a
+nonzero map $H_1(F)\to\mathbb Z$ factoring through
+$H_1(X)=0$, which is impossible.  This last argument is the
+global cohomological obstruction K5; it says nothing about
+pointwise cusp limits.
+
+\paragraph{Proposition A.1.3 (Proved).}
+For the original data the quotient over the complement of
+the cusp disc is the exterior of the $(3,4)$ torus knot,
+with the specified Seifert structure.  For general admissible
+$(l_0,l_1,l_2)$ the filled quotient is the lens space determined
+by the following meridian slopes in one oriented integral
+torus basis $(\rho_1,h)$:
+\[
+ \mu_1=(3,-l_1),\qquad
+ \mu_2=(-4,4l_0-l_2),\qquad
+ \det(\mu_1,\mu_2)=p=12l_0-4l_1-3l_2.
+ \tag{A.1.6}
+\]
+In the lens-space convention that the second meridian is
+$-q_0\mu_1+p\lambda_1$, where
+$\det(\mu_1,\lambda_1)=1$, the lens parameter satisfies
+$3q_0\equiv4\pmod p$.  In particular the target depends only
+on the signed integer $p$, and is a three-sphere exactly
+when $|p|=1$.
+
+\begin{proof}
+Let $P$ be the three-holed sphere, with oriented boundary
+meridians $\rho_0+\rho_1+\rho_2=0$ and positive fibre $h$.
+The two finite meridian relations are
+$3\rho_1-l_1h=0$ and $4\rho_2-l_2h=0$; the cusp solid-torus
+meridian is $\rho_0+l_0h$.  Eliminating $\rho_0$ gives
+$\rho_2=l_0h-\rho_1$ on the annulus joining the finite solid
+tori, which gives exactly (A.1.6).  Since both slopes are
+primitive, this is a genus-one Heegaard splitting.  Choose
+$a,b\in\mathbb Z$ with $al_1+3b=1$ and put
+$\lambda_1=(a,b)$.  Direct multiplication gives
+\[
+ \mu_2=-q_0\mu_1+p\lambda_1,
+ \quad q_0=a(4l_0-l_2)+4b,
+ \quad 3q_0-ap=4.
+ \tag{A.1.7}
+\]
+This proves the claimed lens parameter in a convention fixed
+by actual meridians, including orientations.  The fundamental
+group of this gluing is $\mathbb Z/|p|$.  Admissibility implies
+$\gcd(p,6)=1$, so the modular inverse of $3$ used above exists.
+
+For $(l_0,l_1,l_2)=(0,1,-1)$ the two exceptional-fibre data
+are $(3,1),(4,-1)$.  They are realized by the circle action
+\[
+ s\cdot(z_1,z_2)=(e^{4is}z_1,e^{3is}z_2)
+ \quad\text{on } S^3\subset\mathbb C^2.
+\]
+Its invariant map is $[z_1^3:z_2^4]$; the local circle
+translation residues are $4^{-1}=1\pmod3$ and
+$3^{-1}=-1\pmod4$.  Removing a regular orbit gives the
+same two Seifert solid tori and their product annulus as
+above.  A regular orbit is the $(3,4)$ torus knot, up to
+the harmless exchange of the two coordinates.  This
+identifies the manifold with its peripheral structure;
+the abstract presentation $\langle x,y\mid x^3=y^{-4}\rangle$
+alone would not have justified that identification.
+\end{proof}
+
+\subsection{A.2. The repaired map and the scope of its uniqueness}
+
+\paragraph{Theorem A.2.1 (Proved).}
+For every admissible member, there is a smooth map
+$e:X\to Q$ over $B$ whose restriction outside an arbitrarily
+small cusp neighbourhood is the literal circle quotient.
+For fixed quotient gluing, its homotopy class is independent
+of the cusp replacement, provided the replacement maps the
+cusp neighbourhood into its designated solid torus and is
+kept fixed on its outer collar.  In particular there is a
+well-defined class for the original member $X\simeq S^6$.
+
+\begin{proof}
+On the cusp boundary use the product coordinates
+$(q,\theta_\gamma)$ after the specified collar shear.
+By (A.1.5), the boundary circle class extends to $N_0$.
+Since $S^1=K(\mathbb Z,1)$, it has a continuous representative
+$\theta':N_0\to S^1$.  Its restriction to the boundary is
+homotopic to the given one: the two maps induce the same
+homomorphism on $\pi_1$ of the boundary mapping torus.
+The homotopy-extension property for a manifold with boundary
+changes $\theta'$ on a collar so that it agrees exactly with
+$\theta_\gamma$ there.  Relative smooth approximation gives
+a smooth representative, still equal on a smaller collar.
+Then $(f,\theta')$ is the required map into $D^2\times S^1$,
+and agrees with the finite-filling maps on the overlap.
+This proves smoothness even at the critical points of $f$:
+the product map is smooth without any submersion assertion.
+
+The inclusion $\partial N_0\to N_0$ surjects on $\pi_1$,
+as (A.1.5) explicitly shows.  It follows that
+$H^1(N_0;\mathbb Z)\to H^1(\partial N_0;\mathbb Z)$
+is injective.  Since both spaces are connected, the long
+exact sequence gives $H^1(N_0,\partial N_0;\mathbb Z)=0$.
+Two circle replacements agreeing on the boundary therefore
+have quotient whose relative $H^1$ class is zero, hence
+have a relative homotopy.  Keeping the base coordinate
+fixed gives the required homotopy of maps into the solid
+torus.  Different choices of the collar size are compared
+on a common smaller collar.  This proves the assertion.
+\end{proof}
+
+\paragraph{Proposition A.2.2 (Refuted as an unrestricted uniqueness assertion).}
+Agreement with the literal quotient outside a neighbourhood
+of $W$, without a condition on the image of that neighbourhood,
+does not determine a homotopy class $S^6\to S^3$.  All twelve
+classes occur among maps satisfying that bare agreement
+condition.
+
+\begin{proof}
+Take a closed embedded six-ball in the interior of the cusp
+neighbourhood.  Homotope a given extension on a smaller ball
+to be constant there, keeping its boundary and the complement
+fixed; a target coordinate ball around the image of its centre
+provides the contraction.  Pinch the smaller ball to
+$S^6\vee D^6$ relative to its boundary and insert any based
+map $\alpha:S^6\to S^3$ on the new sphere.  The resulting
+global map agrees with the original map off that ball, and
+represents $[e]+\alpha$ under $[S^6,S^3]=\pi_6(S^3)$.
+Distinct $\alpha$ give distinct classes.  Smooth relative
+approximation preserves this conclusion.  The insertion
+cannot be performed within the cusp solid torus, since that
+solid torus has $\pi_6=0$; this is exactly the distinction
+in Theorem A.2.1.
+\end{proof}
+
+The corrected content of \cite[Remark 8.3]{mapsEngel} is
+therefore a quotient over the regular part and the two finite
+fillings, followed by a replacement within its circle homotopy
+class over a cusp collar.  The literal character does not
+extend.  The replacement gives a canonical homotopy class
+when the solid-torus image condition is retained.
+
+\subsection{B.1. The framed three-torus and the class of $e$}
+
+We use $\pi_3^{\mathrm S}=\mathbb Z/24\langle\nu\rangle$, with
+$e_{\mathbb R}(\nu)=1/24$, and
+$\pi_6(S^3)=\mathbb Z/12\langle\nu'\rangle$, where the
+stabilization of $\nu'$ is $2\nu$.  We write
+$\eta_n:S^{n+1}\to S^n$ for the $(n-2)$-fold suspension of
+the complex Hopf map.  The order-two classes below are
+unaffected by reversal of either source or target orientation.
+An orientation-preserving diffeomorphism to the standard sphere
+transports its bounding stable framing to $TX\oplus\mathbb R$.
+Its homotopy class does not depend on that diffeomorphism:
+two oriented stable trivializations differ by a map
+$S^6\to\mathrm{SO}$, and $\pi_6(\mathrm{SO})=0$
+by \cite[Corollary to Theorem II and the table on p.~315]{mapsBott59}.
+We use outward stabilization and the convention that the normal
+frame precedes the tangential frame; a constant permutation is
+corrected once to preserve orientation.
+
+\paragraph{Lemma B.1.1 (Proved).}
+Let $F$ be a regular fibre of the original fibration.  Compare
+the ambient stable framing of the oriented sphere $X$ with
+the framing on $TX|_F$ consisting of four translation-invariant
+vertical vector fields and an oriented lifted base frame.
+The restriction of their stable difference to any coset of
+$T_L\subset F$ is null-homotopic.
+
+\begin{proof}
+After a constant orientation adjustment the comparison is
+a map $D:F\to\mathrm{SO}$, where stabilization is understood.
+Its homotopy class is invariant under both monodromies.
+Indeed, transport $F$ around a based loop in $B^\circ$ using
+the flat real marking.  The translated vertical frame varies
+continuously on $F\times[0,1]$; at the endpoint it changes by
+the constant real matrix of the affine monodromy.  An oriented
+base frame can be chosen periodic along the loop.  The space
+of lifts of that frame to $TX$ is affine, so changing the lift
+does not affect the comparison class.  The ambient stable
+framing is already defined along this entire cylinder.  Thus
+the comparison at its endpoints is $D$ and $D\circ A_j$
+times a constant positive matrix.  Every such constant
+matrix is path connected to the identity.  This proves
+$[D]=A_j^*[D]$.  An affine translational part is isotopic
+to the identity and has no effect.
+
+The map on fundamental groups defines
+$\sigma(D)\in H^1(F;\mathbb Z/2)$.  The exhaustive calculation
+in \texttt{maps\_exact.py} gives
+\[
+ H^1(F;\mathbb Z/2)^{\langle A_1,A_2\rangle}
+      =\{0,\gamma\bmod2\}.
+\]
+Both classes vanish on $L$, so $D|_{T_L}$ lifts to
+$\mathrm{Spin}$.  Up to dimension four the latter has
+$\pi_1=\pi_2=\pi_4=0$, $\pi_3=\mathbb Z$.
+Obstruction theory consequently identifies maps from a
+three- or four-dimensional torus to $\mathrm{Spin}$ with
+$H^3$ of that torus.  The two possible lifts differ by
+multiplication by the central element $-1$, which is
+homotopic to the identity, so this identification has no
+unrecorded lifting ambiguity.
+
+The doubled stable difference $2[D]$ has zero $\sigma$,
+and therefore corresponds to a monodromy-invariant class
+in $H^3(F;\mathbb Z)$.  Integral Poincare duality, natural
+for these determinant-one monodromies, identifies the
+invariants in $H^3(F;\mathbb Z)$ with the fixed vectors
+$\mathbb Zd\subset H_1(F;\mathbb Z)$.  Such a class
+evaluates to zero on $T_L$, since $d\in L$:
+its evaluation is the determinant with columns $d,u,w,d$.
+Hence $2[D|_{T_L}]=0$ in $[T_L,\mathrm{Spin}]=\mathbb Z$.
+This group has no torsion; thus $[D|_{T_L}]=0$.
+The same argument applies to a coset since translation is
+isotopic to the identity.
+\end{proof}
+
+\paragraph{Theorem B.1.2 (Proved).}
+For the repaired quotient of Theorem A.2.1 with $|p|=1$,
+\[
+ [e]=6\nu'=\eta_3\eta_4\eta_5\ne0
+       \quad\text{in }\pi_6(S^3)=\mathbb Z/12.
+ \tag{B.1.1}
+\]
+Its stable class is $12\nu$ and its real Adams invariant
+is $1/2\in\mathbb Q/\mathbb Z$.
+
+\begin{proof}
+Choose a point of $Q$ over a regular base value outside
+the modified cusp disc and outside the two finite root
+discs.  Its entire inverse image is one coset of $T_L$.
+Order a target frame as the positive real base frame followed
+by the positive $\gamma$-direction.  Lifting this frame
+under $de$ gives a normal three-framing.  Complete it by
+the constant Lie frame of $L$ with the unique constant
+orientation adjustment making the full frame positive.
+This is precisely the restriction of the product frame
+in Lemma B.1.1, up to a constant positive change of basis.
+That lemma proves that the stable tangential framing of
+the inverse image is the Lie framing of $T^3$.
+Pontryagin--Thom therefore gives
+\[
+ \operatorname{st}[e]=[T^3,\mathrm{Lie}]
+ = [S^1,\mathrm{Lie}]^3=\eta^3=12\nu.
+ \tag{B.1.2}
+\]
+The product equality follows by taking the product of the
+three framed circles and their tubular collapse maps.
+The Lie-framed circle is the nonbounding framed circle;
+its class is the stabilized Hopf element $\eta$.
+
+Here is an independent evaluation of the framed bordism
+class, which does not use the ring relation $\eta^3=12\nu$.
+Put the flat product metric on $\mathbb R^3/\mathbb Z^3$,
+with the spin structure determined by its Lie framing.
+Its spinors are periodic $\mathbb C^2$-valued functions.
+On the Fourier mode $e^{2\pi i k\cdot x}$, $k\in\mathbb Z^3$,
+the Dirac operator is the Hermitian matrix
+$2\pi\sum k_j\sigma_j$, with eigenvalues
+$\pm2\pi|k|$ for $k\ne0$ and a two-dimensional kernel
+for $k=0$.  Thus its eta function is identically zero in
+its convergent half-plane and hence at zero, while $h=2$.
+The Levi-Civita connection and the connection induced
+by the framing coincide, so their transgression term
+vanishes.  The real formula of
+\cite[Theorem (4.14), p.~423]{mapsAPS2}, with its factor
+$\epsilon(1)=1/2$, gives
+\[
+ e_{\mathbb R}(T^3,\mathrm{Lie})
+       =\frac12\frac{0+2}{2}=\frac12\pmod{\mathbb Z}.
+ \tag{B.1.3}
+\]
+This detects $12\nu$ in $\mathbb Z/24$.  The complex
+$e$-invariant would be zero here; omitting the real
+factor would therefore lose the desired detection.
+
+Finally stabilization is injective on $\pi_6(S^3)$.
+For the exact unstable input we use
+\cite[Theorem 4.1 and Corollaries 4.2--4.3]{mapsToda52}:
+the suspended generator is the torsion term in
+$[\iota_4,\iota_4]=2\nu_4-E\nu'$, and stabilization
+sends it to $2\nu$.  In the group of order twelve this
+is injective.  Therefore the class with stable image
+$12\nu$ is $6\nu'$.  The composite
+$\eta_3\eta_4\eta_5$ has the same stable image, so the
+same injection identifies it with $6\nu'$.
+\end{proof}
+
+\subsection{B.2. The holomorphic map to the base}
+
+\paragraph{Theorem B.2.1 (Proved).}
+The map $f:X\to\mathbb P^1$ of the original sphere
+construction is null-homotopic.  This conclusion does not
+require the choice of $e$.
+
+\begin{proof}
+The quotient projection $h:Q\to B$ is, after the
+orientation-preserving identifications fixed in A.1.3,
+the weighted Hopf map
+$[z_1^3:z_2^4]$, followed by a Mobius transformation
+moving its two exceptional values to $0,1$.
+It is the ordinary Hopf map after the self-map
+\[
+ P_{3,4}(z_1,z_2)=
+ \frac{(z_1^3,z_2^4)}{\sqrt{|z_1|^6+|z_2|^8}}
+ \quad\text{of }S^3.
+ \tag{B.2.1}
+\]
+At a value with both coordinates nonzero, its phase
+map has $3\cdot4=12$ preimages, all with positive local
+degree; its radial coordinate is strictly increasing.
+Consequently its degree is twelve.  A degree-$k$ map
+of $S^3$ is homotopic to the $k$th power map of the
+topological group $S^3$.  On $\pi_6(S^3)$ the latter
+is multiplication by $k$, since pointwise multiplication
+and the homotopy-group addition agree.  Thus
+$h_* = (\eta_2)_*\circ12=0$ on $\pi_6(S^3)$.
+The construction of $e$ is over $B$, so $f=h\circ e$
+as actual maps.  This proves $[f]=0$.
+
+For a second proof, let $S_1,S_2$ be the reduced multiple
+fibres.  The line bundles $\mathcal O_X(S_j)$ are
+topologically trivial because $H^2(X;\mathbb Z)=0$.
+The coordinate sections of $f^*\mathcal O(1)$ have
+divisors $3S_1$ and $4S_2$ after a Mobius change of
+base coordinate.  Choose a smooth frame of
+$f^*\mathcal O(1)$.  Since $H^1(X;\mathbb Z)=0$, every
+map $X\to\mathbb C^*$ admits a logarithm.  We can
+therefore choose frames of $\mathcal O_X(S_1)$ and
+$\mathcal O_X(S_2)$ whose third and fourth powers,
+under the given divisor isomorphisms, equal the chosen
+frame.  The canonical divisor sections then become
+smooth functions $a,b$ with no common zero and
+$f=[a^3:b^4]$.  Put
+$G=(a,b)/\sqrt{|a|^2+|b|^2}:X\to S^3$.
+Writing $r=\sqrt{|a|^2+|b|^2}>0$, the explicit homotopy
+$[a^3/r^{3s}:b^4/r^{4s}]$, $0\leq s\leq1$, gives
+$f\simeq\eta_2P_{3,4}G$.  It is defined everywhere because
+$a$ and $b$ have no common zero.  The latter map is zero
+by the same degree calculation and the exponent twelve
+of $\pi_6(S^3)$.  This proof uses neither the cusp
+replacement nor the computed class of $e$.
+\end{proof}
+
+\subsection{B.3. The four workbench maps}
+
+The exact maps, including their suspension conventions, are
+needed here.  Put $\overline T=(\overline\Lambda\otimes\mathbb R)
+/\overline\Lambda$ and let $\overline\pi:N_0\setminus W
+\to\overline T$ be the long-period quotient.  On the punctured
+cusp write $q=re^{i\phi}$.  The map $q_2$ takes $x$ to
+$[r,e^{i\phi},\overline\pi(x)]$ in the unreduced suspension
+of $S^1\times\overline T$, sends $W$ to its lower vertex,
+and sends the complement of the cusp neighbourhood to its
+upper vertex.  Collapsing the two-skeleton of
+$S^1\times\overline T=T^3$ and then taking the reduced
+suspension gives $H:X\to S^4$.  Collapsing the one-skeleton
+of $\overline T=T^2$ and forgetting $\phi$ gives
+$\widehat q_3:X\to S^3$.  Retaining only $\gamma$ and
+forgetting $\phi$ gives $\widehat q_\gamma:X\to S^2$.
+These are the maps in the supplied workbench, not choices
+of arbitrary sphere quotients of the same targets.
+
+\paragraph{Theorem B.3.1 (Proved).}
+For the exact retained-angle map just defined,
+\[
+ [H]=\eta_4\eta_5\ne0\in\pi_6(S^4)=\mathbb Z/2.
+ \tag{B.3.1}
+\]
+Its regular inverse image is the native vanishing
+two-torus with its Lie stable framing and Arf invariant one.
+
+\begin{proof}
+Take $u_0=(-1/4,1/4)$, $q_0=r_0e^{i\pi}$, and
+$p_0=B_0u_0=(1/4,1/4)$.  For $r_0$ sufficiently small
+the full inverse image of the corresponding open-cell
+value lies in the original chart of A.1.2.  To see this
+without losing components, a lift of any point of that
+inverse image has long coordinate $u_0+n$ for a unique
+$n\in\mathbb Z^2$; applying the actual period deck
+transformation $-n$ changes it to $u_0$.  Distinct lifts
+with this coordinate cannot be deck equivalent.
+Put $h_j(q)=\exp(-2\pi i(C(q)u_0)_j)$ and make the
+holomorphic coordinate change
+\[
+ (w_0,w_1,w_2)
+   =(z_0/(h_1h_2),h_1z_1,h_2z_2).
+\]
+It preserves the product $q$.  The full inverse image is
+\[
+ w(a,b)=
+ (r_0^{1/2}e^{i(\pi-a-b)},
+  r_0^{1/4}e^{ia},r_0^{1/4}e^{ib}),
+ \quad a,b\in\mathbb R/2\pi\mathbb Z.
+ \tag{B.3.2}
+\]
+All coordinates tend uniformly to zero as $r_0\to0$.
+The period quotient is injective on a neighbourhood of
+the chart origin, so this torus is contained in a
+contractible coordinate ball of $X$.
+The map $H$ is smooth on an open neighbourhood of this
+torus, although its suspension presentation is only
+continuous elsewhere.  Choose a smaller open-cell target
+ball whose full inverse image lies in that neighbourhood;
+compactness permits this because the displayed torus is
+the full inverse image of its centre.  Relative smooth
+approximation, uniformly small off that neighbourhood,
+then gives a smooth representative with exactly the same
+inverse image and differential there.  Pontryagin--Thom
+therefore applies to the framing computed below.
+
+We compute its framing before discarding the bounded
+period terms.  Write
+\[
+ \ell=\log|q|,\quad
+ R(q)=-2\pi\operatorname{Im}C(q),\quad
+ A(q)=\ell B_0+R(q),\quad
+ v=(\log|w_1|,\log|w_2|)^t.
+\]
+The exact coordinate identity is
+$v=\ell B_0u+R(q)(u-u_0)$, and on (B.3.2) it gives
+\[
+ du=A(q_0)^{-1}(dv-p_0\,d\ell).
+ \tag{B.3.3}
+\]
+Thus no derivative of a bounded correction has been
+ignored.  Let $L_j$ and $Q_j$ denote the real tangent
+vectors $w_j\partial_{w_j}$ and $iw_j\partial_{w_j}$
+in the real identification $T\mathbb C^3=\mathbb C^3$.
+With $A_0=A(q_0)$, dual lifts of the target coordinate
+order $(\ell,\phi,u_1,u_2)$ are
+\[
+ N_\ell=\tfrac12L_0+\tfrac14L_1+\tfrac14L_2,
+ \qquad N_\phi=Q_0,
+\]
+\[
+ N_i=-((A_0)_{1i}+(A_0)_{2i})L_0
+            +(A_0)_{1i}L_1+(A_0)_{2i}L_2,
+ \quad i=1,2.
+ \tag{B.3.4}
+\]
+The tangent vectors are $T_a=-Q_0+Q_1$ and
+$T_b=-Q_0+Q_2$.  Formula (B.3.3) checks that the
+four normal vectors map to the four standard coordinate
+vectors and both tangent vectors map to zero.
+The full determinant is
+$-\det(A_0)|q_0|^2<0$, so the positive tangent order is
+$(-T_a,T_b)$.  The inequality holds for small $r_0$
+because $A_0$ is joined to $\ell_0B_0$ through
+$\ell_0B_0+sR(q_0)$, all of which are invertible.
+
+Every displayed vector is a constant linear combination
+of $L_j,Q_j$.  Its dependence on $(a,b)$ is therefore
+exactly
+\[
+ D(a,b)=\operatorname{diag}(e^{-i(a+b)},e^{ia},e^{ib})
+            \in\mathrm{SU}(3).
+\]
+This map is null-homotopic.  An explicit periodic
+contraction uses
+\[
+ Q_s(\theta)=
+ \begin{pmatrix}
+ \sin(\pi s/2)e^{-i\theta}&-\cos(\pi s/2)\\
+ \cos(\pi s/2)&\sin(\pi s/2)e^{i\theta}
+ \end{pmatrix},
+ \qquad K_s(\theta)=Q_s(\theta)Q_s(0)^*.
+\]
+Each matrix lies in $\mathrm{SU}(2)$,
+$K_0=I$, and $K_1(\theta)=\operatorname{diag}
+(e^{-i\theta},e^{i\theta})$.  The product of its
+embeddings in coordinate planes $(0,1)$ and $(0,2)$,
+evaluated at $a$ and $b$, contracts $D$.
+Consequently the induced stable tangential frame of
+(B.3.2) is the constant Lie frame.  The ambient framing
+comparison on the containing ball is null-homotopic,
+so the same conclusion holds in the framed sphere.
+
+For the induced spin structure the two coordinate
+circles are nonbounding.  Its quadratic form on
+$H_1(T^2;\mathbb F_2)$ is
+$q(xa+yb)=x+xy+y$, and its Arf invariant is
+$q(a)q(b)=1$.  Hence its framed class is
+$\eta^2\in\pi_2^{\mathrm S}$.  Freudenthal suspension
+is an isomorphism for $\pi_6(S^4)$, so the unstable
+class is exactly (B.3.1).
+\end{proof}
+
+\paragraph{Theorem B.3.2 (Proved).}
+The angle-forgetting workbench maps satisfy
+$[\widehat q_3]=0$ and $[\widehat q_\gamma]=0$.
+
+\begin{proof}
+Both components of $\overline\pi$ extend as integral
+$H^1$ classes over $N_0$, by (A.1.5).  Choose a map
+$\pi':N_0\to T^2$ representing them and equal to
+$\overline\pi$ on an outer collar; the construction
+and relative uniqueness are as in A.2.1.  On the
+punctured cusp the quotient $\overline\pi-\pi'$ has
+a lift to $\mathbb R^2$ that is zero on the collar.
+Indeed the punctured cusp retracts onto its boundary
+mapping torus, and the difference is zero in relative
+$H^1$.  Multiplying that lift by a homotopy parameter
+gives a homotopy from $\overline\pi$ to $\pi'$.
+After passage to either suspension target this
+homotopy is continuous at $W$, uniformly in the
+homotopy parameter: the whole compact torus of
+angles is collapsed as $r\to0$.  It is also constant
+on the outer boundary and extends by the basepoint
+outside $N_0$.
+
+After this homotopy the three-sphere map factors as
+\[
+ X\longrightarrow
+ \frac{[0,\epsilon]\times T^2}{\{\epsilon\}\times T^2}
+ \longrightarrow\Sigma(T^2/T^{2,(1)}),
+ \qquad x\longmapsto[r(x),\pi'(x)]
+\]
+on $N_0$, with the complement mapping to the vertex.
+The middle space is a cone and is contractible.
+For the two-sphere map use the first component
+$\theta':N_0\to S^1$ and the cone on $S^1$.
+These give actual null-homotopies of the two maps.
+This argument cannot discard the retained base
+angle in $H$, whose intermediate space is instead
+$(D^2\times T^2)/(\partial D^2\times T^2)$.
+\end{proof}
+
+\paragraph{Theorem B.3.3 (Proved).}
+Let $C=M\cup\operatorname{Cone}(\partial M)$ and let
+$q_1:X\to C$ be the workbench map retaining the
+Seifert quotient away from the cusp and collapsing
+$W$ to the cone point.  Under the cofiber splitting
+$C\simeq S^3\vee S^2$ determined by the cusp core,
+\[
+ [q_1]=(j_3)_*(6\nu'),
+ \tag{B.3.5}
+\]
+with no $S^2$ or mixed Whitehead component.
+
+\begin{proof}
+Write $Q=M\cup(D^2\times S^1)$ and let $K$ be the
+core $\{0\}\times S^1$ of its cusp solid torus.
+Collapsing this core turns the solid torus into
+the cone on its boundary, by its radial coordinate.
+Thus $C=Q/K$ as a quotient space.  The same
+homotopy used in B.3.2, now retaining the base angle,
+shows $q_1\simeq\kappa e$, where $\kappa:Q\to Q/K$
+is the quotient map.  The inclusion $K=S^1\to S^3$
+is null-homotopic, and its cofiber is
+$S^3\vee\Sigma S^1$.  We choose this equivalence
+to restrict on $Q$ to $j_3$.  A null-homotopy of
+the circle exists since $\pi_1(S^3)=0$; its
+ambiguity is $\pi_2(S^3)=0$.  Hence the indicated
+splitting is fixed in the only respect used here,
+and B.1.2 proves (B.3.5).
+\end{proof}
+
+\subsection{B.4. The other named sphere fibrations}
+
+\paragraph{Theorem B.4.1 (Proved).}
+For the sphere members of Viaclovsky's two-parameter family,
+the Liu--Rollenske family, and every $X_{3k,4l}$ with
+$\gcd(3k,4l)=1$, the primitive invariant-circle quotient
+admits a canonical replacement over the degeneration
+neighbourhoods as in A.2.1.  Its target is $S^3$ and
+its class is $6\nu'$.  In each case the map to
+$\mathbb P^1$ is null-homotopic.  The retained-angle
+map at the primitive rank-two cusp is $\eta_4\eta_5$,
+and the two corresponding angle-forgetting maps are
+null-homotopic.  Thus the quotient class $[e]$ does
+not distinguish these fibrations.
+
+\begin{proof}
+We supply the integral lattices, the local extension
+comparisons, and the target calculation; a list of
+Betti numbers would not imply this statement.
+
+For $X_{3k,4l}$ the regular homological representation
+is still $(A_1,A_2,M_0)$ of A.1.1.  We use K1 with
+its original finite-root convention.  In Viaclovsky's
+marking $(\delta,a,b,d)$ the comparison is
+\[
+ P_V=\begin{pmatrix}-2&1&0&1\\-6&0&-1&0\\0&-1&0&0\\-1&0&0&0\end{pmatrix}.
+\]
+Substitution in the matrices of
+\cite[Lemma 2.1 and equations (2.11)--(2.12)]{mapsViaLog}
+gives $V_iP_V=P_VA_{i+1}$, $\det P_V=-1$,
+$P_Vd=\delta$, $P_Vv_1=-u_0$, and
+$P_V(-v_2)=\delta-u_1$.  This checks the step of
+K1 that we use, without redoing its analytic
+classification.  With $m=3k,n=4l$, the actual
+finite translations are the vectors in K1 and
+the circle transgression is
+$b=nN_0+mN_1=\pm1$ for a sphere member.
+The two target fillings have multiplicities $m,n$;
+their genus-one meridian determinant is $b$.
+Thus their target is $S^3$.  Its map to the base
+is a weighted Hopf map of degree product $mn=12kl$.
+The common lattices and their mod-two counterparts
+are those in B.1.1, and all the arguments of
+A.2.1 and B.1.2 apply without change.
+
+For the two-parameter family use the homology basis
+$(\widehat\psi,\widehat u,\widehat w,\widehat\delta)$
+of K11.  Its actual four matrices are
+\[
+ H_* =\begin{pmatrix}1&0&0&0\\-2&0&-1&0\\0&1&0&0\\1&1&0&1\end{pmatrix},
+ \qquad
+ H_1 =\begin{pmatrix}1&0&0&0\\0&1&0&0\\-2&-1&1&0\\-2&-1&0&1\end{pmatrix},
+\]
+\[
+ H_2 =\begin{pmatrix}1&0&0&0\\0&1&1&0\\0&0&1&0\\0&0&0&1\end{pmatrix},
+ \qquad
+ H_3 =\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&-1&1&0\\1&0&0&1\end{pmatrix}.
+\]
+They are inverse transposes of the matrices in
+\cite[Proposition 4.2]{mapsVia2}.  The direct
+calculation gives
+\[
+ \Lambda^\Gamma=\mathbb Z\widehat\delta,
+ \quad (\Lambda^*)^\Gamma=\mathbb Z\psi,
+ \quad (\Lambda^*\otimes\mathbb F_2)^\Gamma
+          =\mathbb F_2\psi,
+ \quad L=\ker\psi.
+ \tag{B.4.1}
+\]
+The finite root action has order four and translation
+$\ell/4$, where $\ell=(1,-1,-1,0)^t$; hence
+$\psi(\ell)=1$.  The three primitive vanishing
+lattices are
+\[
+ K_1=\mathbb Z(\widehat w+\widehat\delta),\qquad
+ K_2=\mathbb Z\widehat u,\qquad
+ K_3=\mathbb Z\langle\widehat w,\widehat\delta\rangle.
+ \tag{B.4.2}
+\]
+They all lie in $L$.  To check that the needed
+class really extends, the two rank-one local
+models in the source are the quotient of an
+infinite chain of ruled elliptic surfaces, with
+the adjacent sections identified by a translation.
+Their nearby fundamental group surjects to the
+central one with precisely $K_i$ killed; the
+base meridian bounds the extending section.
+This follows directly by filling the one
+vanishing circle with its nodal thimble, and
+retaining the other three circle generators.
+It is also the degree-one part of the source's
+local-specialization proposition, labelled
+\texttt{mum}.  At the rank-two cusp the same
+assertion is (A.1.5).  Thus $\psi$ extends
+over every reduced filling, and its boundary
+restriction is injective on $H^1$.  A.2.1
+constructs and compares the replacements.
+
+There is a single multiple target circle of
+multiplicity four.  The other three circle
+fillings are ordinary solid tori, with no
+meridian shift because the chosen section
+extends there.  The finite logarithmic
+shift has primitive circle component $1/4$.
+Equivalently its integral transgression is
+$d_2(4\psi)=1$, as computed directly in
+\cite[Proposition 5.4]{mapsVia2}.
+Hence the genus-one target has meridian
+determinant one and is $S^3$.
+
+For Liu--Rollenske use their common homology
+basis $(e_1,e_2,e_3,e_4)$.  The two finite
+monodromies are
+\[
+ R_0=\begin{pmatrix}-1&-1&-1&0\\2&1&1&0\\0&0&1&0\\0&0&0&1\end{pmatrix},
+ \qquad
+ R_1=\begin{pmatrix}1&1&0&1\\-2&0&-1&-1\\0&-1&1&-1\\0&0&0&1\end{pmatrix}.
+\]
+Their source uses $R_\infty=(R_1R_0)^{-1}$.
+They have respective orders four and six,
+but the fibre over $1$ is reduced: finite
+monodromy does not mean it is a smooth
+multiple fibre.  The common invariants are
+\[
+ \Lambda^\Gamma=\mathbb Z(-e_1+2e_3),
+ \quad(\Lambda^*)^\Gamma=\mathbb Z e_4^*,
+ \quad(\Lambda^*\otimes\mathbb F_2)^\Gamma
+            =\mathbb F_2 e_4^*.
+ \tag{B.4.3}
+\]
+Here $\delta=-e_1+2e_3$ and $\xi=e_4^*$,
+so again the fixed vector belongs to
+$L=\ker\xi$.
+The local product identification of
+\cite[Lemma 3.10 and Proposition 3.11]{mapsLR},
+$Y_{\Delta_1}\cong S_{\Delta_1}\times T^2$,
+preserves the two circle classes $f_3,f_4$,
+with $\xi=f_4^*$.  Consequently $\xi$
+extends over this reduced type-II fibre
+and is surjected onto by the nearby
+fundamental group.  At infinity the
+primitive vanishing lattice is
+$\mathbb Z\langle h_1,h_3\rangle$ and
+$\xi=h_4^*$, so (A.1.5) gives its
+extension there.  The only logarithmic
+shift is $a=e_4/4$ over $0$.
+Its primitive transgression is
+$d_2(4\xi)=1$ by \cite[Proposition 4.8]{mapsLR}.
+Thus the same one-exceptional-circle
+target is $S^3$.  These are applications
+of the exact local product and integral
+monodromy statements in
+\cite[Propositions 3.12--3.13 and Corollary 3.16]{mapsLR},
+with the comparison of classes written
+explicitly; rational invariant cycles
+alone would not suffice.
+
+For both one-multiple-fibre families,
+Lemma B.1.1 applies verbatim with
+$(\gamma,d)$ replaced by $(\psi,\widehat\delta)$
+or $(\xi,\delta)$.  Equations (B.4.1)
+and (B.4.3) are all of its hypotheses.
+The chosen regular inverse image of
+the quotient map is a single $T_L$,
+because every replacement is over its
+own degeneration disc.  Therefore
+Theorem B.1.2 gives $[e]=6\nu'$ in
+each family.  The target projection
+is the weighted Hopf map of weights
+$(4,1)$, whose power-map factor has
+degree four; it sends $6\nu'$ to zero.
+For $X_{3k,4l}$ the degree is $12kl$,
+which also sends it to zero.
+
+Finally each named family has a
+primitive hexagonal rank-two cusp.
+The proof of B.3.1 is local in its
+normal-crossing chart, independent
+of the other fibres and of the
+bounded period matrix.  It gives
+$H=\eta_4\eta_5$ with the same target
+coordinate convention.  The two
+long-period classes extend over
+that cusp, so B.3.2 proves the
+two angle-forgetting assertions.
+All kernel and mod-two calculations
+above are executed in
+\texttt{code/maps\_exact.py}.
+\end{proof}
+
+\subsection{B.5. A cell presentation from the three fillings}
+
+We give a topological cell construction, retaining the actual
+boundary maps before making cellular approximations.  The
+smaller cellular complex used for the integer calculation is
+homotopy equivalent to this construction; its cell counts are
+not asserted to be the counts of a smooth handle decomposition.
+Throughout this subsection $p=-1$, so the finite twists are
+$v_1=g+2u-4w$ and $v_2=-g-3u+3w$ and the cusp gluing has
+zero translation drift.
+
+For a matrix $A$ on $F=\mathbb R^4/\Lambda$, our mapping-torus
+convention is
+\[
+ M_A=(F\times[0,1])/((x,1)\sim(A^{-1}x,0)).
+ \tag{B.5.1}
+\]
+The positive interval loop $\rho$ satisfies
+$\rho t_\lambda\rho^{-1}=t_{A\lambda}$.  This fixes the
+inverse in (B.5.1) and agrees with the clockwise meridians
+used in A.1.
+
+\paragraph{Theorem B.5.1 (Proved).}
+The underlying topological manifold of $X$ is obtained from
+the flat $T^4$-bundle over a ribbon bouquet of two circles,
+with monodromies $A_1,A_2$, and the three spaces $S_1,S_2,W$
+by the three double mapping cylinders specified below.
+Their maps admit finite polyhedral cell structures.  They
+therefore give a CW structure adapted to the pair of pants
+and the three special fibres, with all attaching maps
+specified by integral affine formulae and primitive circle
+quotients.  Replacing the maps by cellular maps on the smaller
+torus cell structures gives a finite CW homotopy model with
+cell counts
+\[
+ (c_0,c_1,c_2,c_3,c_4,c_5,c_6)
+       =(5,20,45,56,42,17,3).
+ \tag{B.5.2}
+\]
+
+\begin{proof}
+Give a bouquet with oriented loops $\rho_1,\rho_2$ the ribbon
+order in which the two ends of each loop are consecutive.
+Its oriented thickening is a pair of pants.  Collapse the
+widths of its two bands to the edges and the remaining
+vertex disc to the vertex.  The induced boundary maps are
+piecewise linear paths with words
+$\rho_1,\rho_2,(\rho_1\rho_2)^{-1}$; intervals between
+successive letters are mapped to the vertex.  The thickening
+is the mapping cylinder of this boundary map.  This assertion
+can be checked on each band, where the cylinder consists of
+the two half-bands, and on the vertex disc, where the cones
+on the intervening boundary intervals are its sectors.
+Lift this construction to the flat $F$-bundle.  Write $U_*$
+for the resulting bundle over the bouquet.  Its boundary
+spaces are $M_{A_1},M_{A_2},M_{M_0}$.  Their maps
+$b_j:M_{A_j}\to U_*$ and $b_0:M_{M_0}\to U_*$ are the
+lifted ribbon boundary maps.  They are the identity on a
+marked fibre and send their interval loops respectively to
+$\rho_1,\rho_2,\rho_2^{-1}\rho_1^{-1}$.
+The equality $M_0=(A_1A_2)^{-1}$ verifies the last map
+including its fibre monodromy.
+
+At a finite fibre put
+\[
+ h_j(x)=A_jx+v_j/m_j,\qquad S_j=F/\langle h_j\rangle,
+ \qquad
+ r_j([x,\theta])=[x+\theta v_j/m_j].
+ \tag{B.5.3}
+\]
+The last formula is a well-defined map $M_{A_j}\to S_j$:
+at $\theta=1$ its value agrees with $[A_j^{-1}x]$, because
+$h_j(A_j^{-1}x)=x+v_j/m_j$.  The finite neighbourhood is
+the associated disc bundle
+$(F\times D^2)/\langle(x,s)\mapsto(h_jx,e^{-2\pi i/m_j}s)\rangle$.
+Its boundary point corresponding to $[x,\theta]$ is
+\[
+ [x+\theta v_j/m_j,\ e^{-2\pi i\theta/m_j}].
+\]
+Radial collapse is exactly (B.5.3); its mapping cylinder is
+the disc bundle.  In particular this is a statement about
+the underlying smooth neighbourhood and does not replace
+the scheme-theoretic fibre $m_jS_j$ by a reduced fibre in
+the holomorphic map.  The logarithmic gluing translation is
+$\log(s)\Pi v_j/(2\pi i)$.  Its clockwise drift is precisely
+$v_j/m_j$.  Subtracting that displayed drift leaves a
+periodic translation with a lift to $\mathbb R^4$; linear
+interpolation of this lift straightens it on a collar.
+Thus the actual gluing is identified with (B.5.3), without
+discarding a loop of translations of nonzero lattice drift.
+This also corrects the first paragraph on page 42 of
+\cite{mapsAC26}: multiplicity does not prevent this
+neighbourhood from being a smooth normal disc bundle.
+We make no assertion of a holomorphic tubular projection.
+The meridian relation proved in that paragraph remains
+valid; its meridian is the normal circle winding $m_j$
+times around the base, rather than a once-around base
+loop.
+
+Here is the complete cusp boundary map.  Put
+$a=(a_1,a_2)\in\mathbb R^2/\mathbb Z^2$ for the $(g,u)$
+coordinates and $b\in T_f=\mathbb R^2/\mathbb Z^2$ for
+the $(w,d)$ coordinates.  Let $\mathcal H$ be the hexagonal
+honeycomb dual to the $A_2$ triangulation.  For $B_0a$ in
+the interior of the hexagon centred at $v\in\mathbb Z^2$,
+write $v(a)=v$.  The central fibre has the explicit quotient
+description
+\[
+ W_{\mathcal H}=(T_B\times T_f)/\sim,
+ \qquad T_B=\mathbb R^2/\mathbb Z^2,
+ \tag{B.5.4}
+\]
+where over a honeycomb edge separating centres $v,v'$ one
+collapses the primitive circle on $v'-v$, and over each
+honeycomb vertex one collapses all of $T_f$.  No circle is
+collapsed over a hexagon interior.  The three oriented edge
+directions can be chosen as
+\[
+ n_1=w,\qquad n_2=d-w,\qquad n_3=-d.
+ \tag{B.5.5}
+\]
+The quotient is homeomorphic to the actual $W$: the positive
+part of each toric component is its hexagon, the phase
+stabilizers are exactly these primitive circles, and the
+period action identifies hexagons by $B_0\mathbb Z^2$.
+The constant phase cocycle is removed by the linear phase
+gauge coming from $\operatorname{Re}C(0)a$.
+
+With the interval convention (B.5.1), the cusp attachment is
+\[
+ r_0([a,b,\theta])
+   =[a,b-\theta(B_0a-v(a))]\ \in W_{\mathcal H}.
+ \tag{B.5.6}
+\]
+This formula includes its seam data.  On crossing an edge
+the two expressions differ by $\theta(v-v')$, which lies
+in the circle collapsed on that edge.  At a vertex every
+phase is collapsed.  Replacing $a$ by $a+\lambda$ changes
+$v(a)$ by $B_0\lambda$, so the expression is periodic.
+At $\theta=1$, the integer vector $v(a)$ disappears modulo
+$\mathbb Z^2$, leaving $[a,b-B_0a]$; this is the endpoint
+identification by $M_0^{-1}$.  Hence (B.5.6) is continuous
+on the entire mapping torus, not only on its open strata.
+
+We justify that the cusp neighbourhood is its actual
+mapping cylinder.  Straighten $C(q)$ to $C_0=C(0)$ by
+the map on logarithmic coordinates
+\[
+ \xi\longmapsto
+ \xi-(C(q)-C_0)(\operatorname{Im}Z_q)^{-1}
+                       \operatorname{Im}\xi.
+ \tag{B.5.7}
+\]
+Writing $\xi=Z_qa+b$ proves that this sends $Z_qa+b$ to
+$Z_q^0a+b$, fixes the real lattice, and conjugates the
+period actions.  In a bounded-position toric chart the
+correction multiplying $x$ tends to one as $q\to0$;
+the same holds for its inverse.  Thus it extends by the
+identity on $W$ to a homeomorphism of the closed cusp tube.
+
+Let $A$ be the nonnegative real part of the frozen toric
+cover over $|q|\leq\eta$, and $A_0$ its central part.
+The local orthant descriptions make $A$ a three-manifold
+with boundary; the corners may be rounded.  Its interior
+has coordinates $(y,\rho)\in\mathbb R^2\times(0,\eta)$,
+$y=\log|x|/\log\rho$.  The positive period action is
+$y\mapsto y+B_\rho^+\lambda$, where
+$B_\rho^+=B_0-2\pi\operatorname{Im}C_0/\log\rho$.
+For small $\eta$ these matrices are invertible.  Thus the
+interior of the positive quotient $Q^+$ is explicitly
+$T^2\times(0,\eta)$, using $a=(B_\rho^+)^{-1}y$.
+The bounded fundamental parallelogram meets only finitely
+many of the toric bounded-position charts, including at
+$\rho=0$, so $Q^+$ is compact.  Its two boundary components
+are tori.  The inner one is the honeycomb quotient, and
+the outer one is the positive regular-fibre torus.
+
+Both boundary inclusions induce the identity on the period
+deck group $\mathbb Z^2$.  Indeed $A_0$ is the honeycomb
+plane and hence contractible; $A$ is contractible because
+its interior is contractible and pushing a boundary collar
+inward gives a homotopy equivalence with that interior.
+The quotient is irreducible.  An embedded locally flat
+two-sphere lies in its interior $T^2\times(0,\eta)$.
+Lift it to $\mathbb R^2\times\mathbb R$.  Its bounded
+ball is disjoint from all its nonzero lattice translates:
+disjoint boundary spheres would otherwise give nested
+balls, impossible for translates of equal finite volume.
+The ball therefore descends.  This also proves
+irreducibility of the product target $T^2\times I$.
+The boundary tori are incompressible because their
+fundamental groups inject.
+
+There is a map of pairs $Q^+\to T^2\times I$ inducing
+the identity on $\pi_1$ and restricting to the prescribed
+homeomorphisms on the two boundaries.  For its first
+coordinate, extend the classifying map to $T^2=K(\mathbb
+Z^2,1)$ and use the homotopy extension property on the
+boundary; use a collar height for the second coordinate.
+Apply \cite[Theorem 6.1, p.~77]{mapsWaldhausen68} to this
+map.  The source is sufficiently large, since a boundary
+torus pushed into its interior is incompressible.  The
+product target has the same property, and all the other
+hypotheses were just verified.  The homotopy is fixed on
+the boundary.  Its alternative of mapping the connected
+source into the boundary is impossible, since the two
+source boundaries map to distinct target components.
+It therefore ends at a covering map.  The induced
+fundamental-group isomorphism makes that covering
+one-sheeted.  We obtain a product homeomorphism relative
+to both prescribed boundary markings.
+
+Lift this product to $A$ and spread it by compact phases.
+The full period action on a phase $(\phi,\vartheta)$ is
+$(\phi,\vartheta)\mapsto
+(u_\lambda\phi\vartheta^{B_0\lambda},\vartheta)$;
+it does not depend on the positive radial point.  The
+lifted product is therefore equivariant for the full
+action.  Phase stabilizers occur only on $A_0$ and are
+exactly those of (B.5.4).  Consequently the resulting
+quotient is the mapping cylinder of the boundary phase
+map.  On the component with centre $v$, the $q$-phase
+acts on $T_f$ by $-v$ times that phase, since $(v,1)$ is
+the stabilizer ray.  Substituting the clockwise interval
+phase and the marked period $-\theta B_0a$ gives precisely
+(B.5.6).
+
+Gluing the three mapping cylinders of $r_j$ to the
+mapping cylinder of the ribbon boundary maps gives
+\[
+ U_*\ \cup\ \coprod_{j=0}^2(M_j\times[0,1])
+       \ \cup\ (W\sqcup S_1\sqcup S_2),
+ \tag{B.5.8}
+\]
+with $(x,0)\sim b_j(x)$ and $(x,1)\sim r_j(x)$.
+The preceding constructions identify (B.5.8)
+homeomorphically with $X$.  The comparison need not
+preserve the radial value of $f$ inside the cusp, but
+it preserves the special strata and all three outer
+collars; this is the sense of adaptation used here.
+
+For a finite cell construction use rational hexagons,
+unit cubes for tori, and the affine quotient (B.5.3).
+For (B.5.6) use toric phase coordinates
+$b'=b-\theta B_0a$.  In these coordinates its expression
+on a hexagon is $[a,b'+\theta v]$, and its face
+identifications are affine:
+$a\mapsto a+\lambda$ changes $b'$ by
+$-\theta B_0\lambda$.  There are finitely many faces
+in the fundamental polyhedra.  Cut their images at the
+integer phase hyperplanes and subdivide; this makes
+every face map a finite piecewise affine map.  Primitive
+edge-circle quotients are the integral linear maps
+$b\mapsto\det(n_k,b)\bmod\mathbb Z$.
+Triangulate each occurrence of a torus separately and
+interpolate through a common subdivision along each
+mapping cylinder.  This does not require a finite
+triangulation invariant under the infinite monodromy
+group.  Products of simplices with intervals are
+triangulated by their ordered vertex prisms.  These
+rules supply finite characteristic maps for (B.5.8),
+and pulling the cells back gives the asserted CW
+structure of $X$.
+
+For the smaller homotopy model put the usual product
+cell structure on each torus and apply cellular
+approximation to the displayed maps.  This changes
+the double mapping cylinder by homotopy equivalence;
+equivalently use \cite[Propositions 4G.1--4G.2]{mapsHatcher02}.
+The two finite surfaces are mapping tori of $T_L$,
+because $m_j\gamma$ is a primitive circle coordinate
+on $S_j$; their linear monodromies are
+$B_j=A_j|_L$ (an inverse convention gives the same
+counts).  Their cell counts are $(1,4,6,4,1)$.
+The counts for $U_*$ are $(1,6,14,16,9,2)$, and
+each $M_j$ has counts $(1,5,10,10,5,1)$.
+In (B.5.4) the quotient honeycomb has two vertices,
+three edges, and one hexagon.  The surviving phase
+spaces are respectively a point, a circle, and a
+two-torus, giving counts $(2,3,4,2,1)$ for $W$.
+Adding these cells and one prism cell for each
+boundary cell gives (B.5.2).
+\end{proof}
+
+\paragraph{Theorem B.5.2 (Proved).}
+The attaching data of Theorem B.5.1 give
+$\pi_1(X)=1$ and integral homology
+$H_k(X;\mathbb Z)=\mathbb Z$ for $k=0,6$ and zero
+otherwise.  They give an explicit recognition of $X$
+as a homotopy sphere, and exhibit the normally framed
+three-torus used in B.1.
+
+\begin{proof}
+The graph piece has presentation
+\[
+ \pi_1(U_*)=
+ \langle\Lambda,\rho_1,\rho_2\mid
+ [\Lambda,\Lambda]=1,\quad
+ \rho_jt_\lambda\rho_j^{-1}=t_{A_j\lambda}\rangle.
+\]
+Formula (B.5.3) imposes $\rho_j^{m_j}=t_{v_j}$.
+Formula (B.5.6) kills $w,d$ and the cusp meridian
+$a_0=\rho_2^{-1}\rho_1^{-1}$.  Since $A_1w=u-w$,
+the normal closure also kills $u$.  Writing $c$ for
+the image of $g$, the remaining presentation is
+\[
+ \langle c,x,y\mid c\text{ central},\quad
+ xy=1,\quad x^3=c,\quad y^4=c^{-1}\rangle.
+ \tag{B.5.9}
+\]
+Substituting $y=x^{-1}$ gives $x^3=x^4$, so $x=c=y=1$.
+This calculates the nonabelian fundamental group,
+not only its abelianization.
+
+We record the integral homology maps in primitive
+bases.  Write $\gamma,u^*,w^*,d^*$ for the cohomology
+basis dual to $g,u,w,d$, and put
+\[
+ \eta_1=2u^*+w^*+3d^*,\quad
+ \eta_2=u^*+w^*+2d^*,\quad
+ q_2=u^*w^*+6\gamma d^*.
+ \tag{B.5.10}
+\]
+Products here are exterior products.  First attach
+the two finite pieces over a disc containing $0,1$;
+call the result $X^\circ$.  Its homotopy type is the
+double mapping cylinder $S_1\leftarrow F\to S_2$.
+The degree-one
+map $(\pi_{1*},-\pi_{2*})$ is
+\[
+ \alpha_1=
+ \begin{pmatrix}
+ 3&0&0&0\\0&2&1&3\\4&0&0&0\\0&-1&-1&-2
+ \end{pmatrix}.
+ \tag{B.5.11}
+\]
+To verify its primitive target bases, abelianize
+$\pi_1(S_j)=\langle\Lambda,\rho_j\mid
+\rho_j\lambda\rho_j^{-1}=A_j\lambda,
+\rho_j^{m_j}=t_{v_j}\rangle$.
+For $S_1$ the images are
+$g=3\rho_1,u=2w,d=3w$; for $S_2$ they are
+$g=-4\rho_2,u=w,d=2w$.  Thus
+$(\rho_1,w)$ and $(\rho_2,w)$ are free integral bases.
+This proves (B.5.11) without a rational invariant-lattice
+identification.  Its Smith form is $(1,1,1,0)$,
+its kernel is generated by
+$\nu_0=-u-w+d$, and its primitive left kernel is
+$(4,0,-3,0)$.  Consequently
+$H_1(X^\circ)=\mathbb Z\zeta$, normalized by
+\[
+ g\mapsto12\zeta,\quad
+ \rho_1\mapsto4\zeta,\quad
+ \rho_2\mapsto-3\zeta,\quad
+ a_0\mapsto-\zeta.
+ \tag{B.5.12}
+\]
+
+For completeness we derive the finite degree-two
+pullback lattices.  The mapping-torus matrices on
+$L$ are
+\[
+ B_1=\begin{pmatrix}0&1&0\\-1&-1&0\\1&0&1\end{pmatrix},
+ \qquad
+ B_2=\begin{pmatrix}0&-1&0\\1&0&0\\0&1&1\end{pmatrix}.
+\]
+The exterior-power mapping-cone complexes show that
+$H_*(S_j)$ is free, with ranks $(1,2,2,2,1)$:
+the nonzero Smith entries of
+$\bigwedge^r B_j-I$ are all one.  In particular the
+intersection lattice in degree two is unimodular.
+Direct exterior multiplication gives the primitive
+invariant lattices
+$I_1=\langle\gamma\eta_1,q_2\rangle$ and
+$I_2=\langle\gamma\eta_2,q_2\rangle$.
+Their intersection determinants have absolute values
+$9$ and $4$.  The pullback under a covering of degree
+$m_j$ multiplies the intersection pairing by $m_j$.
+Its image therefore has determinant $m_j^2$ and index
+one in $I_1$, respectively index two in $I_2$.
+The embedded torus generated by $v_2,d$ is invariant
+under $h_2$ and covers its quotient with degree four.
+The class $a\gamma\eta_2+bq_2$ evaluates on it as
+$-2a-6b$.  A pullback class must therefore satisfy
+$a+b\equiv0\pmod2$.  This is already an index-two
+condition and hence determines the image exactly.
+Thus
+\[
+ \pi_1^*H^2(S_1)=\langle\gamma\eta_1,q_2\rangle,
+ \qquad
+ \pi_2^*H^2(S_2)=\langle2\gamma\eta_2,
+                                  \gamma\eta_2+q_2\rangle.
+ \tag{B.5.13}
+\]
+
+Use bases with pullbacks
+$(\gamma\eta_1,q_2-2\gamma\eta_1)$ and
+$(2\gamma\eta_2,q_2-3\gamma\eta_2)$, and their
+Kronecker-dual homology bases.  Evaluating on
+$(gu,gw,gd,uw,ud,wd)$ gives
+\[
+ \alpha_2=
+ \begin{pmatrix}
+ 2&1&3&0&0&0\\-4&-2&0&1&0&0\\
+ -2&-2&-4&0&0&0\\3&3&0&-1&0&0
+ \end{pmatrix}.
+ \tag{B.5.14}
+\]
+Its Smith form is again $(1,1,1,0)$ and its primitive
+left kernel is $\Phi=(4,2,3,2)$.  Thus its cokernel is
+$\mathbb Z e$, where the cohomology class $\mathcal A$
+given by $\Phi$ satisfies
+$\langle\mathcal A,e\rangle=1$ and restricts on $F$
+to $2q_2$.  The exact sequence of this double mapping
+cylinder gives
+\[
+ 0\longrightarrow\mathbb Z e\longrightarrow
+ H_2(X^\circ)\longrightarrow\mathbb Z\nu_0
+ \longrightarrow0.
+ \tag{B.5.15}
+\]
+
+The central quotient (B.5.4) has cellular boundary
+$\partial_1(e_k)=Q-P$ and all higher cellular
+boundaries zero.  Indeed the hexagon attaching word
+can be chosen as
+$e_1e_2^{-1}e_3e_1^{-1}e_2e_3^{-1}$; every edge occurs
+with both signs.  Crossing with a surviving phase
+circle preserves this cancellation, and the torus
+cell boundary is the commutator.  Hence
+\[
+ H_*(W)=(\mathbb Z,\mathbb Z^2,\mathbb Z^4,
+                       \mathbb Z^2,\mathbb Z).
+\]
+At $\theta=0$ the cusp map is the quotient
+$c(a,b)=[a,b]$.  On $H_1$ it is projection to
+$\langle g,u\rangle$.  With degree-two target basis
+$(T_B,\overline C_1,\overline C_2,\overline C_3)$,
+its matrix is
+\[
+ c_2=\begin{pmatrix}
+ 1&0&0&0&0&0\\0&0&-1&0&0&0\\
+ 0&-1&-1&1&1&0\\0&0&0&1&0&0
+ \end{pmatrix}.
+ \tag{B.5.16}
+\]
+For a mixed torus $\beta v$ this follows from the
+degree formula
+$\sum_k\det(n_k,B_0\beta)\det(n_k,v)[\overline C_k]$.
+The first factor is its oriented honeycomb edge
+coefficient, and the second is the degree of the
+primitive circle quotient.  The map sends $gu$ to
+$T_B$ and $wd$ to zero.  In degree three it sends
+$guw,gud$ to a basis and kills $gwd,uwd$; in degree
+four it has degree one on the open hexagon times
+$T_f$.  All these maps are integrally surjective.
+Their kernels are exactly
+$\operatorname{im}(\bigwedge^r M_0-I)$: inclusion
+follows by transport around the boundary, and the
+displayed kernels and monodromy images have the
+same primitive bases, as checked in
+\texttt{code/maps\_cw.py}.
+
+Let $K_i$ be the kernel of $H_i(M_0)\to H_i(W)$.
+The mapping-torus sequence and the preceding
+surjections give
+\[
+ K_1=\mathbb Z a_0,\qquad
+ K_2=\mathbb Z\xi_w\oplus\mathbb Z\xi_d,
+ \qquad \xi_v=[S^1_v\times S^1_{a_0}].
+ \tag{B.5.17}
+\]
+These are literal tori because $M_0$ fixes $w,d$.
+Under the mapping-torus projection they go to $w,d$,
+so their span is primitive.  In (B.5.6), over a
+hexagon centre the $a_0$ coordinate is collapsed;
+thus their images in $H_2(W)$ vanish.  The ranks
+from the mapping-torus sequence show that this is
+the whole kernel.
+
+Orient the connecting map in (B.5.15) so that
+\[
+ \partial j_*\xi_v=(I-A_2)v
+                   =(I-A_1^{-1})v\quad(v\in\langle w,d\rangle).
+\]
+One verifies this on the two rectangles obtained
+by cutting the swept torus along the finite band:
+their unmatched boundary circles are $v$ and
+$-A_2v$.  Since $(I-A_2)w=-\nu_0$ and
+$(I-A_2)d=0$, the class $z=j_*\xi_w$ together with
+$e$ is a basis of $H_2(X^\circ)$.
+To determine $j_*\xi_d$, use the circle translation
+in direction $d$ on $X^\circ$.  For this action the
+integral sweep operator on cohomology restricts on
+$F$ to contraction by $d$.  The class
+$\mathcal A|_F=2q_2$ satisfies
+\[
+ \iota_d(2q_2)=-12\gamma.
+\]
+Restriction $H^1(X^\circ)\to H^1(F)$ is injective
+by (B.5.12), with image $\mathbb Z\,12\gamma$.
+Thus $\iota_d\mathcal A=-\Theta$, where
+$\Theta(\zeta)=1$.  Evaluating the swept torus and
+using $\Theta(a_0)=-1=p$ gives
+\[
+ j_*\xi_d=-p e=e,
+ \qquad
+ [j_*|_{K_2}]_{(\xi_d,\xi_w)}^{(e,z)}
+       =\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+ \tag{B.5.18}
+\]
+This computes the attaching coefficient that cannot
+be recovered from ranks alone.
+
+In degree one the full cusp attachment map in bases
+$(g,u,a_0)$ and $(\bar g,\bar u,\zeta)$ is
+\[
+ D_1=\begin{pmatrix}1&0&0\\0&1&0\\-12&0&1\end{pmatrix}.
+\]
+In degree two, split the surjection onto $H_2(W)$;
+the remaining block is exactly (B.5.18).  Thus the
+full map is integrally equivalent to $I_4\oplus I_2$.
+Both are unimodular.  Mayer--Vietoris proves
+$H_1(X)=H_2(X)=0$, with no torsion.  The cell count
+(B.5.2) gives $\chi(X)=2$.  Since $X$ is a closed
+oriented six-manifold, duality and universal
+coefficients give $H_4=H_5=0$ and make $H_3$ free:
+$\operatorname{Ext}(H_3,\mathbb Z)$ injects into
+$H^4(X)=H_2(X)=0$.  The Euler characteristic then
+gives $\operatorname{rank}H_3=0$.  This proves all
+the asserted integral groups.  The program checks
+every matrix, Smith form, primitive coefficient
+and cell count just used, using exact arithmetic.
+
+Starting from (B.5.9), successive applications of
+the Hurewicz theorem make $\pi_i(X)=0$ for
+$1\leq i\leq5$.  The same theorem produces a map
+$S^6\to X$ carrying the fundamental class to the
+chosen generator.  The mapping-cylinder pair of
+this map is simply connected and has zero relative
+homology.  If it had a first nonzero relative
+homotopy group, the relative Hurewicz theorem
+would make its relative homology nonzero.  All
+relative homotopy groups therefore vanish, and
+the CW Whitehead theorem makes the map a homotopy
+equivalence.  These
+are \cite[Theorems 4.32 and 4.5]{mapsHatcher02}
+applied to the explicitly computed complex.
+
+Finally keep a small regular disc in the pair of
+pants uncollapsed while forming its ribbon spine.
+The same construction relative to that disc retains
+the block $F\times D^2$ with its flat vertical
+frame and base frame.  The three-torus
+$\{\gamma=\theta_0\}\subset F$ has normal frame
+given by the two base directions and the
+$\gamma$ direction.  This is exactly the regular
+fibre and normal framing of B.1.  The CW
+presentation therefore retains the geometric
+framed fibre; no smooth framing of hypothetical
+cancelled handles has been inferred from the
+homology calculation.
+\end{proof}
+
+\subsection{B.6. Smooth monodromy: every requested class is zero}
+
+This subsection settles B.6 for the original family and every
+sphere-producing higher-multiplicity family of K1. We use the complex
+orientation of $X$, the positive loop in the $w$-plane, and the generator
+of $\Theta_7$ with Eells--Kuiper invariant $1/28$, as in the conventions
+and the supplied result K3. Write $a=[\Phi]\in\Z/28$. The mapping torus
+has the oriented diffeomorphism type $(S^1\times S^6)\#\Sigma_\Phi$.
+The reduction from this mapping torus to the glued sphere, and the
+independence of its Eells--Kuiper invariant from the two spin structures,
+are those of K3; no different convention is introduced here.
+
+\paragraph{Proposition B.6.1 (Proved; precise scope of K7).}
+If the monodromy of the sixfold parameter pullback has computed class
+$b=6a\in\Z/28$, then $b$ is even and, writing $b=2r$, the original
+class satisfies
+\[
+ a\equiv5r\pmod {14}.
+\]
+There are exactly two residues modulo $28$ satisfying this condition,
+and they differ by $14$. Without a value of $b$, this assertion excludes
+none of the $28$ possibilities for $a$.
+\begin{proof}
+Pulling a mapping torus back by a degree-six map of its oriented base
+circle replaces its monodromy by $\Phi^6$. Thus its class is $6a$.
+The kernel of multiplication by six on $\Z/28$ is $\{0,14\}$ and
+its image consists of the even residues. Dividing $6a=2r$ by two gives
+$3a=r$ modulo $14$; multiplication by five inverts three modulo $14$.
+Every $a$ has an image under this multiplication, so the conditional
+statement does not itself restrict $a$. This is the exact arithmetic
+content of K7, not a computation of the sixfold monodromy.
+\end{proof}
+
+\paragraph{Theorem B.6.2 (Proved: complete answer to B.6).}
+The original class is $a=0$, and the corresponding class for
+every sphere-producing family $X_{3k,4l}$ is also zero for
+the positive loop with period $2kl$.  The original computation
+is B.6.21; the actual higher-family replacement and cup
+calculation are B.6.22--B.6.23, and the complete spin-trace
+comparison proving the assertion is B.6.24.  Corollary B.6.25
+then gives an explicit spin filling of every resulting
+mapping torus, with one zero-handle and one one-handle.
+Propositions B.6.3--B.6.6 give a separate analytic conifold
+reduction for every pair; they do not by themselves evaluate
+or compare the numerical classes.  The following records retain
+the earlier unsuccessful parameter-filling approaches, followed
+by the completed smooth calculation for all requested pairs.
+
+The strongest explicit closing datum available is K8. With
+$\ell=(2\pi i)^{-1}\log(F/G)$, $F^3=t$, $G^4=t-1$, its coherent
+even-shift comparison has translation
+\[
+ b_{h,c}=-\frac h{12}\Pi_c\widehat\gamma+
+          \left(h\ell-\frac{h^2}{24}\right)\widehat\delta,
+ \qquad h\in2\Z.
+\]
+For the sixfold closing map, $h=12$, subtracting the integral period
+$-\Pi_c\widehat\gamma$ produces the scalar $t^4/(t-1)^3$ on the
+ordinary locus. At the cusp the same comparison is a holomorphic
+toric unit. These representatives differ by one
+$\widehat\gamma$ deck transformation. This proves equality of the
+endpoint maps, but scaling the logarithms separately does not give
+an isotopy on the overlap: an intermediate comparison would require
+a nonintegral multiple of that deck transformation. Such a multiple
+is not an identification in the lattice quotient. We have therefore
+not replaced this mismatch by a purported global scalar gauge.
+
+The CW model of B.5 gives the actual underlying topological attachment
+and the integral maps needed for the homotopy-sphere calculation. Its
+use of the positive toric quotient and a relative product
+homeomorphism does not supply the missing smooth framing of the
+parameter-dependent attachment. Carrying its cellular boundary
+matrices around the parameter circle would give homology information,
+but would not distinguish the $28$ smooth mapping classes.
+
+We also checked the real representatives and their cap transport in
+A.3. For the positive-imaginary parameter, the actual order-three
+transport is $C=(A_2^{-1}A_1^{-1}A_2)^2$: the two reflection matrices
+have product $B_1=A_2^{-1}A_1^{-1}A_2$, and conjugating one reflection
+to the other requires $2k=1$ modulo three. Thus $k=2$ is forced.
+All four reflection lifts at the multiplicity-four fibre were checked
+independently in \texttt{maps\_real\_audit.py}. These verifications
+fix the real attachment markings but do not determine the components
+of the resulting orientation-reversing diffeomorphisms in the full
+diffeomorphism group. In particular, their fixed-set topology alone
+does not evaluate their product in $\Theta_7$.
+The precise comparison theorem is
+\cite[Theorem 1.3]{mapsOlbermann10}: a fixed three-sphere has even
+Haefliger knot class, and each even knot supports four involutions up
+to equivariant diffeomorphism relative to that sphere. Thus even the
+ambient knot class, if computed, would leave additional involution data.
+
+A further possible comparison is the explicit smooth plumbing
+relation of Krylov \cite[Theorem 3]{mapsKrylov03}, used in
+\cite[Theorem 4.1]{mapsRandalWilliams25}. On $S^3\times S^3$, the
+quaternionic maps $Y(u,v)=(u,uv)$ and $U(u,v)=(v^{-1}u,v)$ satisfy
+$(YUY)^4=\Sigma_{\rm Milnor}^{-1}$. Their relation detects a smooth
+sphere class that their homology matrices do not detect. To apply
+this relation here requires an actual relative smooth identification
+of our parameter transport with a word in such plumbing maps; no such
+identification has been proved. We also read the finite semistable
+models in the supplied checkpoint, B.1--B.3 of
+\texttt{S6\_02\_PUSH\_AB\_push.tex}. Their component monodromy
+obstruction prevents gluing them to the plain cusp models and hence
+prevents using those particular models as a bounding manifold.
+These explain why those earlier approaches did not evaluate $a$.
+The completed fixed-circle calculation below does not require those
+unproved identifications.
+
+\paragraph{Proposition B.6.3 (Proved; the smoothing monodromy is Torelli).}
+Fix the sphere twist data and a sufficiently small nonzero smoothing
+parameter $s$ in D.3. The even-shift comparisons extend to the joint
+moving-zero family. Its monodromy $\Psi_s$ around the positive $w$
+loop acts as the identity on $H_3(Y_{u,s};\Z)\simeq\Z^2$.
+Thus the conifold route places this monodromy in the Torelli subgroup
+of the mapping class group of $S^3\times S^3$; its homology action
+does not determine its remaining smooth class.
+\begin{proof}
+The moving section multiplies the linearization by $1-st$. On an
+additive period cover set
+\[
+ L_s=(2\pi i)^{-1}\log(1-st),\qquad
+ \beta_{c,s}=\beta_c-L_s,\qquad
+ \ell_s=\ell-L_s/12.
+\]
+The sign follows directly from the multiplicative period
+$\exp(-2\pi i\beta_c)$ of the $\widehat\gamma$ generator.
+The same formula for the even-shift comparison is
+\[
+ b_{h,c,s}=-\frac h{12}\Pi_{c,s}\widehat\gamma+
+             \left(h\ell_s-\frac{h^2}{24}\right)\widehat\delta.
+\]
+The two added $L_s$ terms cancel, so this additive vector equals
+$b_{h,c}$ on the common cover. Near the finite fibres $1-st$ is a
+holomorphic unit and the checked finite collar proof is unchanged.
+At the new zero $t=1/s$, the logarithmic long period cancels the
+logarithm in $\ell_s$, giving an additive translation holomorphic
+on the transverse elliptic factor and a holomorphic unit in the
+vanishing toric coordinate. At infinity the removed logarithm in
+$\beta_{c,s}$ is matched by the removed logarithm in $\ell_s$;
+the same assertion holds for the other rank-one degeneration.
+These are translations preserving the primitive rank-one fans, so
+the maps and their inverses extend on their toric charts. The finite
+affine defects and the composition law are the same as before because
+the additive vector is unchanged. This constructs the even-shift
+comparisons on the moving-zero family, not just on its ordinary locus.
+For $h=12$ the scalar representative is now
+\[
+ \frac{t^4}{(t-1)^3(1-st)},
+ \qquad \operatorname{div}=4[0]-3[1]-[1/s].
+ \tag{B.6.1}
+\]
+In particular its pole has moved from infinity to the new zero.
+
+Write $E=d\otimes\gamma$. The four fibre monodromies, in order
+with product one, are
+\[
+ A_1,\quad A_2,\quad C_w=I+w\otimes u^*,\quad C_d=I-E.
+ \tag{B.6.2}
+\]
+Indeed the cusp period formerly containing $-\log q/(2\pi i)$
+now contains $-\log(q-s)/(2\pi i)$, whereas the other nodal period
+still contains $\log q/(2\pi i)$. Thus the two primitive rank-one
+monodromies are separated, and $C_wC_d=M_0$. The parameter return
+has linear part $S=I-2E$; its affine translation acts trivially on
+fibre cohomology. All four matrices commute with $S$.
+
+Let $j$ include the complement of these four values in $B$, and let
+$V$ be the rational degree-one cohomology local system. For each
+$q=0,\ldots,4$ we have
+\[
+ R^q g_*\Q=j_*\bigwedge^qV.
+ \tag{B.6.3}
+\]
+At a finite fibre this follows by transfer from its finite free torus
+cover: the central and nearby invariant groups agree. At a primitive
+rank-one fibre, its normalization is a ruled surface over an elliptic
+curve, with degree-zero normal line bundle and two sections glued by
+a translation. Both the line bundle and that translation are
+topologically trivial after choosing a trivialization and a translation
+isotopy. Its specialization is therefore the product calculation for
+a nodal two-torus and a smooth two-torus. In the nodal factor the
+groups in degrees zero, one and two map isomorphically to the
+monodromy-invariant groups; the product calculation proves (B.6.3)
+in all degrees. This argument only asserts the rational comparison
+needed below, and includes both separated rank-one fibres.
+
+Here is an explicit calculation of the middle sheaf cohomology. Put
+$G_i=\bigwedge^2(A_i^{-t})$ at the two finite values, and use
+$\bigwedge^2(C_w^{-t}),\bigwedge^2(C_d^{-t})$ at the other two.
+Parabolic cocycles are tuples $(z_i)$ with
+$z_i\in\operatorname{im}(G_i-I)$ and
+\[
+ z_1+G_1z_2+G_1G_2z_3+G_1G_2G_3z_4=0,
+\]
+modulo tuples $((G_i-I)v)_i$. This computes
+$H^1(B,j_*\bigwedge^2V)$: the local condition is exactly zero
+restriction to each punctured-disc cohomology group.
+In the exterior basis of covectors
+$(\gamma u^*,\gamma w^*,\gamma d^*,u^*w^*,u^*d^*,w^*d^*)$,
+where juxtaposition denotes exterior product, two representatives
+are the columns of the following four matrices:
+\[
+ P_1=\begin{pmatrix}1&-8\\2&-7\\0&-6\\0&1\\-2&1\\-1&-1\end{pmatrix},
+ \quad
+ P_2=\begin{pmatrix}6&-3\\3&0\\6&0\\-1&0\\-1&-1\\1&-1\end{pmatrix},
+ \quad
+ P_3=\begin{pmatrix}0&0\\0&0\\0&0\\0&0\\0&-1\\0&0\end{pmatrix},
+ \quad P_4=0.
+ \tag{B.6.4}
+\]
+The four local image ranks are $4,4,2,2$. The relation matrix
+has rank five, and the coboundary matrix has rank five; the two
+displayed cocycles are independent modulo its image. Hence the
+parabolic group has dimension two and these form a basis. Direct
+multiplication gives, for its two basis cocycles $p_1,p_2$,
+\[
+ (\bigwedge^2S^{-t}-I)p_1=d(-2\gamma u^*),\qquad
+ (\bigwedge^2S^{-t}-I)p_2=d(-2\gamma w^*).
+ \tag{B.6.5}
+\]
+Its induced parameter action is therefore the identity. All the
+matrices and rank assertions, in all exterior degrees, are checked
+exactly in \texttt{maps\_smoothing\_monodromy.py}.
+
+The middle parabolic term is $E_2^{1,2}$ in the Leray spectral
+sequence and survives to $E_\infty$: the base has real cohomological
+dimension two. It already has dimension two, which is the full
+$b_3(Y)$ proved in D.3.2. Consequently the other filtration quotients
+of $H^3(Y;\Q)$ vanish and the natural filtration identifies this
+group with $E_\infty^{1,2}$. Naturality identifies its parameter
+action with (B.6.5). Since $H^3(Y;\Z)$ is torsion free, identity
+over $\Q$ implies identity over $\Z$, and duality gives the claim
+for homology.
+\end{proof}
+
+\paragraph{Proposition B.6.4 (Proved; the normal-framing obstruction vanishes).}
+For the monodromy $\Psi_s$ in B.6.3, let $M_s$ be its oriented mapping
+torus. Then $p_1(M_s)=0$ in $H^4(M_s;\Z)$. Its Torelli
+normal-framing invariant is zero. Consequently $[\Psi_s]$ belongs
+to the injected subgroup $\Theta_7$ of
+$\pi_0\operatorname{Diff}^+(S^3\times S^3)$.
+This statement does not evaluate that central class or identify it
+with $[\Phi]$ through the conifold surgery without further relative
+framing information.
+\begin{proof}
+We first compute the two swept critical-curve classes. Use $k$ for
+the parameter generator and $a_j$ for the finite base generators in
+the boundary markings of B.5. Their conjugation defects are
+\[
+ k a_j k^{-1}=t_{d_j}a_j,\qquad
+ d_1=(0,1,-1,-1)^t,\quad d_2=(0,0,-1,1)^t.
+ \tag{B.6.6}
+\]
+Indeed the finite return is $x\mapsto Sx+\beta_j$, where the
+noninvariant part of $\beta_j$ is $-g/6$. The remaining part is
+fixed by $A_j$: it is the real inverse image of a complex multiple
+of the invariant vector $d$. Conjugating the affine finite generator
+$x\mapsto A_jx+v_j/m_j$ therefore gives
+\[
+ d_j=(S-I)v_j/m_j-(I-A_j)g/6.
+\]
+Substitution gives (B.6.6) and $d_1+A_1d_2=0$. At the two
+rank-one values the holomorphic unit representatives have
+single-valued additive lifts in the toric and transverse coordinates;
+the compatible zero-section boundary marking gives zero $k$-defect.
+
+The regular five-dimensional fibre $N$ of $M_s\to B$ has fundamental
+group $\Lambda\rtimes_S\Z$. It is the product of a three-dimensional
+nilmanifold and the $(u,w)$ two-torus. Its invariant one-forms can be
+written
+\[
+ \gamma,\upsilon,\omega,\vartheta,\kappa,
+ \qquad d\vartheta=2\kappa\wedge\gamma,
+ \qquad d\gamma=d\upsilon=d\omega=d\kappa=0.
+ \tag{B.6.7}
+\]
+The first three closed forms are dual to $g,u,w$, and $\kappa$ is
+the parameter class. These formulas follow either from
+$[k,g]=-2d$ or from the connection form of the central circle bundle.
+The finite base actions on its Lie lattice are
+\[
+ \widetilde A_j=
+ \begin{pmatrix}A_j&-d_j\\0&1\end{pmatrix};
+\]
+the two other actions are the corresponding block lifts of $C_w,C_d$.
+For the indicated cohomology classes this gives
+\[
+ (C_w^*-I)[\gamma\omega]=-[\gamma\upsilon],\qquad
+ (\widetilde A_2^*-I)[\gamma\upsilon]
+       =[\gamma\omega]-[\gamma\upsilon].
+ \tag{B.6.8}
+\]
+Here the star denotes cohomological transport, namely inverse
+transpose on the one-forms in the chosen homology marking.
+In the second identity the additional form $-\gamma\kappa$ is
+exact by (B.6.7). Thus both $[\gamma\upsilon]$ and
+$[\gamma\omega]$ vanish in the global coinvariants of $H^2(N;\Q)$.
+The full rational cohomology and these exact actions are computed in
+\texttt{maps\_mapping\_torus\_cohom.py}; only the two identities
+(B.6.8) are needed for the argument.
+
+Let $p_s=1/s$. The central surface of the rank-one filling there is
+the degree-zero ruled surface over the $(u,w)$ elliptic curve with
+its sections identified by translation. The parameter return acts
+on its normalization by a translation and a constant fibre scaling.
+Both admit paths of such maps commuting with the conductor
+identification. Its local mapping torus consequently has the
+cohomology of this central surface times a circle. In degree three
+it contains two independent classes
+\[
+ z_u=\kappa\gamma\upsilon,\qquad
+ z_w=\kappa\gamma\omega.
+ \tag{B.6.9}
+\]
+Here $\gamma$ is the nodal graph-circle class. A toroidal
+neighbourhood retracts to the central surface, by radial collapse
+in its node and core charts; choosing the collapse continuously
+around the parameter circle identifies these with classes of the
+whole local mapping torus. Their restrictions to a regular $N$
+are zero by (B.6.7). They therefore define independent skyscraper
+kernel sections in the third direct image sheaf for $M_s\to B$,
+supported at $p_s$.
+
+We compute their Leray differential, including its boundary term.
+On the boundary of this filling, add the closed base-meridian form
+$\alpha$. The two commuting monodromies $C_d$ and $S=C_d^2$ give
+\[
+ d\vartheta=(\alpha+2\kappa)\wedge\gamma.
+\]
+Consequently the restrictions of (B.6.9), in the Wang summand for
+the base boundary circle, are respectively
+\[
+ -\tfrac12[\gamma\upsilon],\qquad
+ -\tfrac12[\gamma\omega].
+ \tag{B.6.10}
+\]
+For example
+$\kappa\gamma\upsilon=-\alpha\gamma\upsilon/2+
+d(\vartheta\upsilon)/2$ on that boundary. All statements here are
+over $\Q$, so the division by two is legitimate.
+
+For clarity, the comparison of this Wang term with the global
+$d_2$ is the following cochain construction. Cover $B$ by a small
+disc at $p_s$ and its complement, and then refine the complement
+by the other three discs and a graph. A local degree-three class
+with zero regular-fibre restriction restricts on the annulus to
+its degree-two Wang class. The connecting homomorphism of the
+base cover sends this to $H^2(B,R^2)$, which is exactly its Leray
+$d_2$. The natural generization $R^2\to j_*H^2(N;\Q)$ has kernel
+and cokernel supported at finitely many points. Their positive
+cohomology vanishes, so
+\[
+ H^2(B,R^2)=H^2(B,j_*H^2(N;\Q))
+          =H^2(N;\Q)_{\pi_1(B^*)}.
+\]
+In the graph-and-discs cochain model the connecting map is the
+natural map from the local coinvariants to these global
+coinvariants, with the sign fixed by the chosen boundary
+orientation. Equations (B.6.8)--(B.6.10) prove $d_2z_u=d_2z_w=0$.
+There is no later differential because the base has cohomological
+dimension two.
+
+By B.6.3 and the Wang sequence, $b_3(M_s)=2$. The two surviving
+classes just constructed therefore exhaust its rational third
+cohomology. Their local restrictions are zero at infinity. At
+$p_s$ they are (B.6.9), whose restrictions to the swept critical
+elliptic curve vanish: the graph-circle class is zero on each
+elliptic fibre, so its restriction on the swept three-manifold is
+a multiple of $\kappa$, and wedging with $\kappa$ kills it.
+Thus both swept critical three-manifolds pair to zero with all of
+$H^3(M_s;\Q)$. Their classes in $H_3(M_s;\Q)$ are zero.
+
+It remains to relate these classes to $p_1$. Let $\mathcal E$ be
+the complex rank-three tangent bundle along the fibres of the
+parameter family, restricted to $M_s$. Factor the differential
+of the map to $B$ by its divisorial zeros at the two multiple
+fibres; its target is then a line bundle $\mathcal L$. The
+saturated vertical tangent sheaf $\mathcal V$ is a rank-two
+bundle. At either rank-one critical curve the local equation is
+$xy=q$ times an elliptic coordinate, and its kernel is freely
+generated by
+$x\partial_x-y\partial_y$ and the elliptic tangent direction.
+The invariant vector field $d$ is nowhere zero as a section of
+$\mathcal V$: it is the first generator at $p_s$ and the second
+at infinity. Hence $\mathcal V$ is an extension of a line bundle
+by the trivial line, and $c_2(\mathcal V)=0$.
+
+Write $\mathcal C$ for the disjoint union of the two swept critical
+curves. The local ideal of each is $(x,y)$, giving the global
+exact sequence, or equivalently its restricted topological $K$-class,
+\[
+ 0\longrightarrow\mathcal V\longrightarrow\mathcal E
+ \longrightarrow\mathcal L\otimes I_{\mathcal C}\longrightarrow0,
+ \qquad
+ [\mathcal E]=[\mathcal V]+[\mathcal L]-[\mathcal L|_{\mathcal C}].
+\]
+The Wang sequence and D.3.2 give $H^2(M_s;\Z)=0$. All the line
+first Chern classes in this identity vanish. The degree-four
+Chern-character term of the final sheaf is the oriented dual of
+$\mathcal C$, as follows from its codimension-two Koszul resolution.
+It follows that
+\[
+ c_2(\mathcal E)=\operatorname{PD}[\mathcal C],\qquad
+ p_1(M_s)=-2\operatorname{PD}[\mathcal C]=0
+       \quad\hbox{in }H^4(M_s;\Q).
+\]
+Again by the Wang sequence $H^4(M_s;\Z)\simeq\Z^2$, so this
+vanishing is integral.
+
+Finally apply the Torelli exact sequence quoted from Kreck in
+\cite[Section 2.1, equation (2)]{mapsKrylov03}. For $S^3\times S^3$
+its left term is the injected $\Theta_7$, because this manifold
+bounds the framed manifold $S^3\times D^4$. The right term is
+the homomorphism from $H_3$ to the image of
+$\pi_3SO(3)\to\pi_3SO(4)$. Its mapping-torus characteristic class
+is detected by $p_1$: the stable clutching bundle of a generator
+of $\pi_3SO(3)$ has first Pontryagin number of absolute value four,
+as computed in \cite[proof of Theorem 2]{mapsKrylov03}. Thus the
+zero $p_1$ class forces the entire integral normal-framing
+homomorphism to vanish. Exactness gives the assertion.
+\end{proof}
+
+\paragraph{Proposition B.6.5 (Proved; the conifold comparison preserves the sphere class).}
+Let $a\in\Theta_7$ be the original six-sphere monodromy class,
+and let $b\in\Theta_7$ be the central class of the smoothing
+monodromy supplied by B.6.4. With the same positive parameter
+loop and the complex orientations, $a=b$. Equivalently, if
+$M_\Phi$ and $M_s$ are their seven-dimensional mapping tori, then
+\[
+ \mu(M_\Phi)=\mu(M_s)=\frac{a}{28}\quad\hbox{in }\Q/\Z.
+ \tag{B.6.11}
+\]
+Thus no additional unknown framing correction is introduced by
+the reverse conifold surgery. This identifies the remaining
+invariant; it does not evaluate it.
+
+\begin{proof}
+We first construct the surgery trace around the whole parameter
+circle, including its gluing. The even-shift comparisons in B.6.3
+preserve the actual smoothing parameter $s$, not merely its zero
+set. In the node chart, the single-valued substitution $x'=x/u$
+for $u\ne0$ makes the equation
+\[
+ x'y-zv=-s.
+\]
+The relative holomorphic Morse coordinates consequently have
+transition germs preserving this fixed quadratic function.
+There is no conformal scalar multiplying the quadratic form.
+Such a germ $F$ retracts to its derivative by
+$F_r(z)=r^{-1}F(rz)$, $0<r\leq1$, with $F_0=dF_0$;
+each germ in this deformation still preserves the quadratic
+function. The chosen small resolution is part of the family,
+so these derivatives preserve its ruling. They therefore belong
+to $SO(4,\mathbb C)$ rather than the component which exchanges
+the two rulings. Reduce this group to its maximal compact
+$SO(4)$ and choose small invariant collars. The deformation of
+germs gives the same boundary bundles up to isotopy, and collar
+isotopies extend to their adjacent pieces.
+
+Here is an explicit equivariant handle trace for this reduction.
+Write $D^3\subset\operatorname{Im}\mathbb H$ and
+$D^4\subset\mathbb H$. The action
+\[
+ (g,h)(v,q)=(gvg^{-1},gqh^{-1}),\qquad
+ (g,h)\in SU(2)\times SU(2),
+ \tag{B.6.12}
+\]
+on $D^3\times D^4$ factors through $SO(4)$, since $(-1,-1)$
+acts trivially. Its boundary faces are the two local surgery
+models. On $S^2\times D^4$, choose the identification of the
+twistor two-sphere with the exceptional $\mathbb{CP}^1$ for
+which its stabilizer line is the tautological line of degree
+minus one. With this convention the fibrewise complex structure
+$J_v(q)=vq$ identifies the real normal bundle with
+$\mathcal O(-1)\oplus\mathcal O(-1)$ over $\mathbb{CP}^1$:
+at $v=i$ the stabilizer $U(1)$ acts by scalar multiplication
+on the complex two-dimensional fibre, and its associated
+tautological line has degree minus one. On $D^3\times S^3$,
+the map $(v,q)\mapsto vq\in T_qS^3$ identifies the same action
+with that on the cotangent-disc model of the Milnor fibre.
+Their common face is $S^2\times S^3$, with the common action
+induced on the quadric link. Identify both faces with the
+given complex-oriented local models along that link; reversing
+the twistor convention would require reversing its sphere
+identification too. The outward normal conventions
+are those of replacing $S^2\times D^4$ by $D^3\times S^3$.
+Thus (B.6.12), together with the unchanged complement, builds
+a bundle of oriented seven-dimensional surgery traces over
+the parameter circle. Denote its total space by $Z$. Its
+boundary is $M_s\sqcup(-M_\Phi)$.
+
+For one trace $W$, the handle relative to $S^6\times I$ has
+index three. Its cellular description gives
+\[
+ H^3(W;\Z)=\Z,\qquad H^4(W;\Z)=0,
+ \qquad H^6(W;\Z)=\Z.
+\]
+The restriction $H^3(W;\Z)\to H^3(S^3\times S^3;\Z)$
+is a primitive injection. Indeed the reverse trace has one
+index-four handle, so its homology sequence gives a surjection
+$H_3(S^3\times S^3)\to H_3(W)=\Z$ with primitive rank-one
+kernel; dualize this sequence. B.6.3 then implies that trace
+monodromy acts as the identity on $H^3(W;\Z)$. The Wang
+sequence, naturally with respect to its smoothing boundary,
+now gives a commutative square
+\[
+ \begin{array}{ccc}
+ H^4(Z;\Z)&\longrightarrow&H^4(M_s;\Z)\\
+ \big\downarrow\scriptstyle\simeq&&
+       \big\downarrow\scriptstyle\simeq\\
+ H^3(W;\Z)&\longrightarrow&H^3(S^3\times S^3;\Z).
+ \end{array}
+ \tag{B.6.13}
+\]
+The top restriction is therefore an injection of a rank-one
+free group. Its value on $p_1(Z)$ is $p_1(M_s)=0$, by B.6.4,
+so $p_1(Z)=0$. Moreover the exact cohomology sequence of
+$(Z,\partial Z)$ shows that
+$H^4(Z,\partial Z;\Q)\to H^4(Z;\Q)$ has zero image, since
+restriction even to the single component $M_s$ is injective.
+The intersection form defining the signature has consequently
+zero rank, and $\sigma(Z)=0$.
+
+The trace $W$ is simply connected and spin: the index-three
+attachment extends the unique spin structure, as its attaching
+two-sphere has no first cohomology. Trace monodromy preserves
+this unique structure. Either of its lifts makes $Z$ spin,
+with compatible induced boundary spin structures. For a spin
+seven-manifold with rationally zero first Pontryagin class,
+the Eells--Kuiper invariant is
+\[
+ \mu(M)=\frac{p_1(V)^2-4\sigma(V)}{896}\pmod{\Z},
+ \tag{B.6.14}
+\]
+using a spin coboundary $V$ and a rational relative lift of
+$p_1(V)$. The square is independent of the lift. This definition
+does not require $H^4(M;\Q)=0$; see
+\cite[Section 1.4, equations (2)--(3)]{mapsCrowleyNordstrom19},
+whose normalization is $28$ times (B.6.14). Applying its gluing
+formula to $Z$, with the zero lift of $p_1(Z)$, proves
+$\mu(M_s)-\mu(M_\Phi)=0$.
+
+Finally, an oriented diffeomorphism supported in a six-disc
+changes its mapping torus from the product by connected sum
+with its corresponding homotopy seven-sphere. This follows
+directly by cutting out that disc times a small parameter
+interval and regluing its two faces. Every class of
+$\pi_0\operatorname{Diff}^+(S^6)$ has such a representative,
+and B.6.4 provides such a representative for $\Psi_s$ as well.
+The product mapping tori have zero $\mu$: they bound respectively
+$D^7\times S^1$ and $S^3\times D^4\times S^1$, with zero
+Pontryagin square and signature. These bounds work for either
+circle spin structure. Additivity of (B.6.14), and its
+identification $\Theta_7\simeq\frac1{28}\Z/\Z$, prove
+(B.6.11) and $a=b$.
+\end{proof}
+
+\paragraph{Proposition B.6.6 (Proved; the reduction for all coprime multiplicities).}
+For every sphere member $X_{3k,4l}$ of K1, the monodromy associated
+to the positive generator $2kl$ has the same class in $\Theta_7$
+as a central monodromy on its conifold smoothing $S^3\times S^3$.
+The smoothing monodromy acts trivially on integral $H_3$, and
+its seven-dimensional mapping torus has $p_1=0$. The numerical
+values of these central classes, and any relation between
+different pairs $(k,l)$, remain undetermined here.
+
+\begin{proof}
+Put $h=2kl$. The D.3 construction applies with the finite
+replacements of orders $3k,4l$: their affine actions are still
+free, and multiplying the linearization by $1-st$ is a unit
+change on each of their fixed root discs. The node and its
+small resolution are unchanged. The one-surgery proof of D.3.2
+therefore identifies the smoothing with $S^3\times S^3$.
+
+We spell out why the comparison from K1 survives the separated
+cusps. Use the fixed-data case of its proof, so the first
+coordinates of its rational finite translation vectors $b_j$,
+integral defects $\ell_j$, and connector vectors $d_j$ are all
+zero. Changing $\beta$ to $\beta-L_s$ changes only the
+$\widehat\gamma$ column of the period matrix. It consequently
+leaves these finite translation formulas unchanged. In K1 the
+remaining cusp defect has already been adjusted to belong to
+$\mathbb Z w\oplus\mathbb Z d$; write it as $aw+bd$.
+Assign $aw$ to the old elliptic node and $bd$ to the new
+$\delta$ node. Their product is the old defect, since
+$C_wd=d$. Each is an allowed integral winding in its primitive
+rank-one toric direction. Realize it locally by the appropriate
+integer power of the base coordinate, times a holomorphic unit;
+the transverse elliptic translation is holomorphic. These
+are precisely the extending rank-one translations and they
+agree with the unsplit two-direction prescription when the
+two zeros coincide.
+
+The differences of these local prescriptions have the same
+coarse vertical-vector sheaf as in K1:
+\[
+ 0\longrightarrow\mathcal O_B\longrightarrow\mathcal V_B
+ \longrightarrow\mathcal O_B(-p_0)\longrightarrow0.
+\]
+To check this assertion locally, quotient by the invariant
+$\delta$ vector. The quotient is the Lie line of the unchanged
+elliptic surface; its finite-root exponents and its simple
+pole at the old elliptic node are unchanged. The new
+$\delta$-direction node has a nonvanishing logarithmic
+$\delta$ generator in the abstract vertical bundle and a
+regular transverse elliptic generator, so it adds no zero
+or pole to that quotient. The extra subgroups in the enlarged
+finite roots act trivially on vector coefficients, just as
+in K1. Both end terms have zero $H^1$, hence the Cech
+correction glues the new local prescriptions. On a small
+parameter disc $\Delta_s$, including the coalescence, this is
+the relative exact sequence
+\[
+ 0\longrightarrow\operatorname{pr}_B^*\mathcal O_B
+ \longrightarrow\mathcal V_{B\times\Delta_s}
+ \longrightarrow\operatorname{pr}_B^*\mathcal O_B(-p_0)
+ \longrightarrow0.
+\]
+The local logarithmic generators described above also define
+this sequence at $s=0$. The two-chart Cech complex for either
+end term has zero first cohomology, so
+$R^1\operatorname{pr}_{\Delta_s*}\mathcal V_{B\times\Delta_s}=0$.
+The same holds after adjoining a small Stein $c$-disc. Solving
+that relative complex supplies a correction holomorphic in
+$c,s$, through the coalescence. The integral windings are constant
+and the local units vary holomorphically; at the coalescence
+their two toric directions are the original ones. The
+comparison thus covers the identity on $s$ and on $B$, with
+the chosen small resolution. Different corrections differ
+by the connected vertical translation group, so they have
+the same smooth monodromy class.
+
+The four homological matrices are still (B.6.2). Finite transfer
+still gives (B.6.3), since the root actions are free even when
+their multiplicity exceeds the linear order. Replacing
+$S=I-2E$ by $I-hE$ multiplies the two coboundaries in (B.6.5)
+by $h/2$. Thus the same rank-two parabolic group proves the
+integral Torelli assertion.
+
+For the characteristic-class calculation the regular nilpotent
+fibre now has
+\[
+ d\vartheta=h\kappa\gamma.
+\]
+Changing the finite twist data changes the affine parameter
+defects but not their first coordinate, which remains zero.
+The base actions therefore still fix $\gamma$; on wedging
+their action on $\upsilon,\omega$ with $\gamma$, the extra
+terms are multiples of $\gamma\kappa$, which are exact.
+The two coinvariant vanishings in (B.6.8) follow unchanged.
+Choose the local parameter lift at the new rank-one point
+by subtracting its integral toric winding, so its long
+$\gamma$ translation has zero representative. Its boundary
+equation is then
+$d\vartheta=(\alpha+h\kappa)\gamma$.
+The two local skyscraper classes $\kappa\gamma\upsilon$ and
+$\kappa\gamma\omega$ consequently have Wang components
+$-[\gamma\upsilon]/h$ and $-[\gamma\omega]/h$.
+They survive and exhaust the mapping-torus $H^3$ exactly as
+in B.6.4. Their restrictions to both swept critical curves
+are zero. The same saturated-vertical tangent sequence proves
+$p_1=0$ integrally, and the Kreck sequence places the smoothing
+class in the central $\Theta_7$. Finally the fixed-$s$ trace
+argument of B.6.5 applies unchanged and identifies this class
+with that of the original sphere family.
+\end{proof}
+
+\paragraph{Proposition B.6.7 (Refuted; the scalar-shear claim already fails on the ordinary locus).}
+The first isotopy assertion of Lead 8 is false for the marked
+return of the original family. On $X^\circ=f^{-1}(B^\circ)$,
+that return is not homotopic over $B^\circ$ to
+\[
+ x\longmapsto\rho(-2\theta(x))x
+\]
+for a globally defined monodromy-invariant $\gamma$ coordinate
+$\theta:X^\circ\to\mathbb R/\mathbb Z$.
+In fact, after allowing arbitrary additional circle-valued
+scalar gauges on the base, a quotient of the affine defect
+has exact order six. Its vanishing under the sixth iterate
+does not compute the sixth iterate in $\Theta_7$.
+
+\begin{proof}
+Take a compact pair-of-pants core $P\subset B^\circ$ and the
+marked zero section on its ordinary torus bundle. A connection
+for the compact family may be chosen to equal the flat real
+period connection over this core and then extended over the
+three collars. Consequently its induced return on the core
+fundamental group is the one calculated from the closing map
+in K8. With base generators $a_1,a_2$ and fibre translations
+$t_\lambda$, that group and its return are
+\[
+ \pi_1(f^{-1}(P))=\Lambda\rtimes F(a_1,a_2),\qquad
+ \Phi_*t_\lambda=t_{S\lambda},\qquad
+ \Phi_*a_j=t_{d_j}a_j,
+\]
+where $S=I-2E$ and $d_1,d_2$ are exactly (B.6.6).
+Different choices of the path from a basepoint to its image
+conjugate this homomorphism by an integral fibre translation.
+
+The pure scalar shear has the same linear part $S$.
+For the zero-section coordinate its two affine defects are
+zero. Changing the coordinate by a map $P\to S^1$ adds
+defects in $\mathbb Z d$; allowing arbitrary such defects
+only weakens the proposed comparison. A homotopy over $P$
+tracks the basepoint inside its fibre. It would therefore
+require, after quotienting by the invariant $\mathbb Z d$,
+an integral vector $\bar\lambda\in\bar\Lambda:=\Lambda/\mathbb Z d$
+with
+\[
+ (\bar A_j-I)\bar\lambda=\bar d_j,\qquad j=1,2.
+ \tag{B.6.15}
+\]
+The possible sign from the direction of basepoint conjugation
+has been absorbed into $\bar\lambda$.
+Writing $\bar\lambda=(x,y,z)$ in the $(g,u,w)$ basis,
+the nonzero equations are
+\[
+ 6x-y+z=1,\qquad -6x-y-2z=-1,\qquad
+ -y-z=0,\qquad -6x+y-z=-1.
+\]
+Their unique rational solution is
+\[
+ (x,y,z)=(1/6,0,0).
+ \tag{B.6.16}
+\]
+It is not integral, proving the stated obstruction.
+
+This is independent of the auxiliary ordinary marking.
+Changing the basepoint path changes $(\bar d_j)$ by one
+simultaneous coboundary. Replacing the lifted base generators
+by $t_{r_j}a_j$ changes $d_j$ by $(S-I)r_j$, which lies in
+$\mathbb Z d$ and disappears in the quotient. An integral
+linear change of marking transports both the local system
+and the displayed class. Thus none of these changes removes
+the nonzero class in $H^1(P,\bar\Lambda)$.
+
+Moreover $6\bar d_j=(\bar A_j-I)g$, and (B.6.16) shows
+that no smaller positive multiple is a coboundary. Its
+order is exactly six; the three nonzero Smith factors of
+the stacked quotient coboundary matrix are $1,1,6$.
+Since $Sd_j=d_j$, the defect of the $r$th iterate is $rd_j$,
+so the sixth iterate is the first one for which this
+particular obstruction vanishes. In the full lattice,
+subtracting that integral coboundary gives
+\[
+ 6d_1-(A_1-I)g=-4d,\qquad
+ 6d_2-(A_2-I)g=3d.
+ \tag{B.6.17}
+\]
+These are the two scalar windings seen in K8, with the
+inverse sign if one reverses its comparison direction.
+They still have to be matched to the finite and cusp collars
+to compute a diffeomorphism class of the compact sphere.
+
+The arithmetic also explains a distinction in terminology.
+For a shift $h=2r$, a literal shear $-h\theta$ with a global
+$\gamma$ coordinate would require the base windings of
+$\theta$ to be $1/3,-1/4$, after solving the quotient
+equations. Those are not integers. A scalar gauge whose
+$h$th root is not globally defined is a different map; the
+sixfold scalar representative in K8 is of that latter kind.
+On a simply connected ordinary base chart the translation
+has an additive lift and can be interpolated, which proves
+the local shear statement there. It does not give the
+asserted isotopy over all of $B^\circ$.
+Every rank, Smith factor and rational solution used here
+is checked in \texttt{maps\_ordinary\_shear\_obstruction.py}.
+\end{proof}
+
+\paragraph{Corollary B.6.8 (Proved; every sphere pair has the same order-six affine obstruction).}
+For the positive-generator return of every $X_{3k,4l}$, the
+quotient affine class in $H^1(P,\Lambda/\mathbb Z d)$ has exact
+order six. It obstructs an ordinary-locus isotopy to a pure
+scalar shear, even after arbitrary base circle gauges.
+This assertion does not identify the different pairs'
+classes in $\Theta_7$ with one another.
+
+\begin{proof}
+Use the K1 coordinates with $b=4lN_0+3kN_1=\pm1$ and
+$h=2kl$. The fixed-data repeated-norm solutions in its
+comparison proof are
+\[
+ \ell_1=(0,0,-2lN_0,0)^t,\qquad
+ \ell_2=(0,-kN_1,0,0)^t.
+\]
+Their norms are respectively $-hN_0d$ and $-hN_1d$, as
+required by the shift of the affine vectors. The remaining
+cusp defect is
+\[
+ -M_0(\ell_1+A_1\ell_2)
+       =(0,0,2lN_0-kN_1,kN_1)^t,
+\]
+which is already in $\mathbb Zw\oplus\mathbb Zd$; no
+additional adjustment of its long coordinates is needed.
+Thus these are the integral defects of the allowed fixed-data
+closing comparison. Its quotient cocycle has the unique
+rational coboundary
+\[
+ \bar\lambda=
+ \left(\frac{4lN_0-3kN_1}{6},\,
+       2lN_0-kN_1,\,2kN_1-2lN_0\right)^t.
+\]
+The last two coordinates are integral and the first is
+$b/6-kN_1$. Since $b=\pm1$, the least positive integer
+making all three coordinates integral is exactly six.
+The same basepoint and marking argument as in B.6.7 proves
+both the order assertion and the obstruction to a scalar
+shear. For $(k,l,N_0,N_1)=(1,1,1,-1)$ the quotient defects
+here and those of (B.6.6) differ by the integral coboundary
+of $(-1,-3,4)^t$, checking their comparison convention.
+The symbolic identities are verified in the same exact
+program as B.6.7.
+\end{proof}
+
+\paragraph{Proposition B.6.9 (Known formula; a complex filling is sufficient).}
+Let $M_r$ be the oriented mapping torus for $r$ positive parameter
+loops, either before or after the conifold surgery, and suppose
+that a compact almost complex eight-manifold $V$ has boundary
+identified orientation-preservingly with $M_r$. Then
+\[
+ r a=\frac{-c_1(V)^4+4c_1(V)^2c_2(V)+3c_2(V)^2
+                    -3\operatorname{sign}(V)}{24}
+       \quad\hbox{in }\mathbb Z/28.
+ \tag{B.6.18}
+\]
+All characteristic products are evaluated using relative lifts;
+their boundary restrictions vanish. A spin condition on $V$ is
+unnecessary. The formula is conditional on the actual boundary
+identification and on the indicated characteristic numbers;
+no such filling or numerical value is inferred from it.
+
+\begin{proof}
+By B.6.4--B.6.6, either mapping torus has $H^2(M_r;\mathbb Z)=0$,
+torsion-free $H^4(M_r;\mathbb Z)$ and $p_1(M_r)=0$. The original
+mapping torus has these properties directly, and the smoothing
+mapping torus is $(S^1\times S^3\times S^3)\#\Sigma_{ra}$.
+Its two spin structures have the same Eells--Kuiper invariant:
+each product spin structure bounds $S^1\times S^3\times D^4$,
+with zero invariant, and connected sum adds $ra/28$.
+The identical assertion for the original mapping torus is K3.
+
+Spin$^c$ structures form a torsor for $H^2(M_r;\mathbb Z)$,
+so the boundary Spin$^c$ structure is unique. Both spin structures
+induce it: their difference in $H^1(M_r;\mathbb Z/2)$ is the
+reduction of an integral degree-one class. Consequently the
+Spin$^c$ structure of an almost complex $V$ has the required
+boundary compatibility without an additional parity hypothesis.
+Put $z=c_1(V)$ and $p=p_1(V)$. The Spin$^c$ formula in
+\cite[Section 2.2, equation (2.1)]{mapsCrowleyNordstrom21},
+with $\widehat p=(p+z^2)/2$ and $d=0$, gives in our normalization
+\[
+ \mu(M_r)=\frac{p^2-4\operatorname{sign}(V)}{896}
+             -\frac{p z^2}{192}+\frac{z^4}{384}
+             \quad\hbox{in }\mathbb Q/\mathbb Z.
+\]
+Indeed its right side before division by $28$ is
+$(\widehat p^2-\operatorname{sign}(V))/8
+-5z^2\widehat p/12+z^4/4$.
+Substituting $p=c_1^2-2c_2$ and multiplying by $28$ gives
+(B.6.18). The restrictions of $c_1$ and $p_1$ are zero;
+torsion-freeness makes the restriction of $c_2$ zero as well.
+Thus the relative products required by this formula exist.
+The standard relative-pairing definition makes their stated
+combination independent of the lifts, as in the cited formula.
+\end{proof}
+
+\input{sections/fourfolds_b6_auxiliary}
+
+\paragraph{Proposition B.6.12 (Proved; a generic cyclic-norm obstruction).}
+Use the sectioned elliptic surface $S_p\to C_p$ and deck action
+$\eta$ of B.6.10. Outside a countable subset of
+$\mathbb P^1\setminus\{0,1,\infty\}$, its Mordell--Weil group
+$L_p$ satisfies
+\[
+ L_p^\eta=\mathbb ZP,\qquad
+ (1+\eta+\cdots+\eta^{11})L_p=12\mathbb ZP.
+ \tag{B.6.19}
+\]
+In particular $6P$ represents a nonzero class of order two
+in the invariant group modulo the cyclic norm image.
+There is no elliptic-surface automorphism covering $\eta$
+whose twelfth power is translation by $6P$ or by $-6P$.
+This obstructs a conductor-step construction on this
+\emph{sectioned Jacobian pullback}. It does not exclude a
+normalization which is an elliptic torsor without a section,
+an additional division cover, or a different semistable model.
+It does not compute an element of $\Theta_7$.
+
+\begin{proof}
+We first determine the two Hodge summands relevant to the norm.
+Let $\Phi_d$ denote the $d$th cyclotomic polynomial. In the
+notation of B.6.10, the rational $\Phi_2$ summand of $H^2$ has
+rank three and signature $(2,1)$; the rational $\Phi_4$ summand
+has rank four and signature $(2,2)$. On either of the complex
+$\eta$-eigenspaces of order four the Hermitian form has
+signature $(1,1)$. We will prove that each associated
+one-dimensional period map is nonconstant.
+
+Here is an exact calculation of their monodromy as $p$ moves.
+The homological matrices of the original elliptic surface are
+\[
+ R_1=\begin{pmatrix}0&1\\-1&-1\end{pmatrix},\qquad
+ R_2=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+ R_0=\begin{pmatrix}1&0\\1&1\end{pmatrix},\qquad
+ R_1R_2R_0=I.
+\]
+For the character $k=3$ of the twelve-fold cover, use the
+cohomological local system with four matrices
+\[
+ (G_1,G_2,G_3,G_4)
+       =(R_1^{-t},\,iR_2^{-t},\,R_0^{-t},\,-iI).
+ \tag{B.6.20}
+\]
+For $k=6$ replace the character factors $(i,-i)$ by $(-1,-1)$,
+giving
+$(R_1^{-t},-R_2^{-t},R_0^{-t},-I)$.
+Changing the deck-character convention conjugates the
+order-four computation and does not change its conclusion.
+
+These systems compute the nontrivial-character pieces of
+$H^2(S_p)$ by parabolic cohomology. To check this identification,
+push the elliptic fibration through the finite map $C_p\to\mathbb
+P^1$. The $R^0$ and $R^2$ terms are the permutation system of
+the cover; their global contributions have trivial character.
+For $R^1$, good reduction at the ramification points identifies
+the stalk with the invariant subspace of the displayed local
+matrix. At an $I_1$ point the nodal specialization gives the
+same invariant subspace. Thus its character summand is exactly
+the middle extension $j_*G$, and its $H^1$ is the stated
+parabolic group. The possible Leray differentials have trivial
+character targets or sources, so none changes these summands.
+
+Explicitly, a parabolic cocycle is a tuple
+$z_j\in\operatorname{im}(G_j-I)$ satisfying
+\[
+ z_1+G_1z_2+G_1G_2z_3+G_1G_2G_3z_4=0,
+\]
+modulo the tuples $((G_j-I)v)_j$.
+The four local image ranks are $(2,1,1,2)$ for $k=3$ and
+$(2,2,1,2)$ for $k=6$. In each case the relation has rank two
+and the coboundary space has rank two. The quotient dimensions
+are therefore two and three. Representatives for bases are
+the columns of the following matrices, grouped in two-row
+blocks for $j=1,2,3,4$:
+\[
+ P_3=\begin{pmatrix}
+ -1-i&i\\-1&0\\-1&0\\i&0\\0&-1\\0&0\\0&0\\0&0
+ \end{pmatrix},\qquad
+ P_6=\begin{pmatrix}
+ 0&2&-1\\-1&1&0\\-1&1&0\\-1&-1&0\\
+ 0&0&-1\\0&0&0\\0&0&0\\0&0&0
+ \end{pmatrix}.
+\]
+They satisfy the image and relation conditions, and are
+independent modulo the displayed coboundaries.
+
+Let the Artin generator $\sigma_j$ send
+$a_j\mapsto a_ja_{j+1}a_j^{-1}$ and
+$a_{j+1}\mapsto a_j$. Moving the fourth puncture around the
+first two gives the pure braids
+\[
+ \sigma_3\sigma_2\sigma_1^2\sigma_2^{-1}\sigma_3^{-1},
+ \qquad \sigma_3\sigma_2^2\sigma_3^{-1}.
+\]
+The fourth matrix is scalar, so these braids preserve the
+local representation. Evaluate them on the above cocycles
+using $z(ab)=z(a)+G(a)z(b)$ and
+$z(a^{-1})=-G(a)^{-1}z(a)$, then reduce by coboundaries.
+For $k=3$ the resulting two matrices are
+\[
+ T_1=\begin{pmatrix}-1+i&1\\i&1\end{pmatrix},\qquad
+ T_2=\begin{pmatrix}2i&1-2i\\i&1-i\end{pmatrix};
+\]
+their commutator has characteristic polynomial
+$x^2-5x+1$. For $k=6$ they are
+\[
+ T_1=\begin{pmatrix}1&-2&1\\1&0&0\\1&-1&1\end{pmatrix},
+ \qquad
+ T_2=\begin{pmatrix}-1&-2&2\\1&0&-1\\-1&-1&2\end{pmatrix},
+\]
+whose commutator has polynomial $(x-1)(x^2-7x+1)$.
+Both have an eigenvalue of absolute value greater than one.
+All cocycle, quotient and word identities are checked exactly
+in \texttt{maps\_component\_periods.py}; the displayed matrices
+also give direct small certificates of noncompact monodromy.
+A possible scalar deck factor in identifying a moving-root
+basepoint cancels in the commutator.
+
+The minimal elliptic pullbacks form a smooth projective family
+as $p$ varies away from $0,1,\infty$: the two good-reduction
+coordinate changes in B.6.10 work relatively, and the twelve
+nodal fibres remain disjoint. Their period maps are holomorphic
+by \cite[Theorem (1.1)]{mapsGriffiths68II}.
+If the period in the order-four summand were constant,
+monodromy would preserve its positive line and its negative
+orthogonal line, hence lie in a compact unitary subgroup.
+If the order-two period were constant, monodromy would
+preserve the positive two-plane and negative line, again a
+compact subgroup. The computed hyperbolic commutators exclude
+both possibilities. Each period domain has complex dimension
+one. For any fixed nonzero rational vector, being of type
+$(1,1)$ is a proper period hyperplane condition, so its
+preimage in this nonconstant one-dimensional family is
+discrete. On the universal cover take the countable union
+over rational vectors and a countable set of marking charts.
+Its projection to the parameter curve is countable.
+Outside that set, neither rational $\Phi_2$ nor rational
+$\Phi_4$ contains a nonzero $(1,1)$ class.
+
+Now let $p$ be outside this countable set.
+The Mordell--Weil lattice embeds equivariantly into rational
+$(1,1)$ cohomology by the orthogonal projection away from the
+fibre and zero-section classes; see
+\cite[Lemmas 8.1--8.3 and Theorem 8.9]{mapsShioda90}.
+All fibres are irreducible, so its height lattice is integral,
+even and torsion-free, with every nonzero vector having norm
+at least two, by \cite[Theorems 8.6--8.7]{mapsShioda90}.
+Since $P$ has norm two, it is primitive. The invariant
+second cohomology has rank three by B.6.10; the fibre and
+zero section account for two dimensions and $P$ for the
+third. Hence $L_p^\eta=\mathbb ZP$.
+
+The only eigenvalues of an operator of order twelve whose
+fourth power is one have orders $1,2,4$. The last two are
+absent from $L_p\otimes\mathbb Q$, by the period argument.
+Consequently $L_p^{\eta^4}=\mathbb ZP$ as well. For any
+$Q\in L_p$, write
+\[
+ (1+\eta^4+\eta^8)Q=mP.
+\]
+Pairing with $P$ gives $3\langle P,Q\rangle=2m$.
+The integral height pairing forces $m=3r$ for an integer
+$r$. Applying $1+\eta+\eta^2+\eta^3$ now gives
+$NQ=12rP$. Conversely $N(P)=12P$, proving (B.6.19).
+In particular $6P$ is not a norm but twice it is.
+
+Finally any elliptic-surface automorphism covering the base
+deck generator is $t_Q\eta$ or $t_Q[-1]\eta$: its value on
+the zero section gives $Q$, and the remaining automorphism
+fixes zero and is $\pm1$ because the elliptic $j$-function
+is nonconstant. The twelfth power in the first case is
+$t_{NQ}$, which cannot be $t_{\pm6P}$. In the second case
+the alternating norm has image in the $\eta=-1$ eigenspace
+of $L_p\otimes\mathbb Q$, which is zero. Torsion-freeness
+makes that norm zero integrally. This proves the assertion
+about the sectioned conductor step. Replacing the elliptic
+surface by a torsor removes the zero-section argument.
+B.6.13 constructs such torsor data, while B.6.14 isolates
+a further obstruction to using them as the requested filling.
+\end{proof}
+
+\paragraph{Proposition B.6.13 (Proved; torsor and conductor-line data exist).}
+For every $p\notin\{0,1,\infty\}$ there is a compact smooth
+holomorphic genus-one fibration $\pi:T_p\to C_p$, locally
+isomorphic over $C_p$ to $S_p$, and an automorphism $F$ covering
+$\eta$, with
+\[
+ F^{12}=t_{6P}.
+ \tag{B.6.21}
+\]
+Its torsor class can be chosen to be annihilated by four.
+For $p$ outside the countable exceptional set in B.6.12 it
+has no global section. There is also a holomorphic line bundle
+$M$ of relative Picard class $P$ such that, for the unique
+point $c_p\in C_p$ over $p$,
+\[
+ M\otimes F^*M^{-1}\simeq\pi^*\mathcal O_{C_p}(c_p).
+ \tag{B.6.22}
+\]
+Thus a linearization with a simple zero at that fibre exists.
+These are conductor data, not an identification of a parameter
+filling with the prescribed mapping torus. The obstruction in
+B.6.14 still applies to the direct one-component plumbing.
+
+\begin{proof}
+Let $G=\langle\eta\rangle\simeq\mathbb Z/12$, and let
+$\mathcal E$ be the abelian sheaf of holomorphic sections of
+the identity Neron group of $S_p\to C_p$ in the analytic
+topology. Since all singular fibres are $I_1$, this is the
+smooth locus of the elliptic fibration. The analytic
+exponential sequence is
+\[
+ 0\longrightarrow\mathcal A\longrightarrow\mathcal V
+   \longrightarrow\mathcal E\longrightarrow0,
+ \tag{B.6.23}
+\]
+where $\mathcal V$ is the coherent Lie line and
+$\mathcal A=j_*\Lambda$ is the constructible period lattice.
+This assertion also holds at an $I_1$ fibre. In the Tate chart
+the exponential is $z\mapsto e^{2\pi iz}$; at the central
+$\mathbb C^*$ fibre its kernel is the invariant rank-one
+lattice. A local nonvanishing section has a holomorphic
+logarithm near each value, proving local surjectivity.
+
+We first compute the obstruction group on the quotient
+orbifold $\mathcal B=[C_p/G]$, whose coarse curve is
+$B=\mathbb P^1$. Write $q:\mathcal B\to B$.
+The higher direct images $R^jq_*\mathcal E$, $j>0$, are
+skyscraper sheaves at the three branch values and are the
+cohomology of the corresponding stabilizers on section germs.
+At such a point, choose a small invariant root disc. The
+formal subgroup at zero is uniquely divisible and its
+logarithm is a complex vector space, so its higher finite
+group cohomology vanishes by averaging. Only the action on
+the central elliptic curve contributes.
+
+Here are the local calculations, with actual sections.
+Engel's generator can be taken as
+$P=(0,\sqrt{2}\,t^2(t-1))$. At zero the root chart
+$t=z^3,x=z^4X,y=z^6Y$ has limiting curve
+$Y^2=X^3+2$, section $(0,-\sqrt2)$, and stabilizer action
+$(X,Y)\mapsto(\zeta_3^2X,Y)$. Its fixed group consists of
+$O,(0,\sqrt2),(0,-\sqrt2)$ and has order three.
+At one, use $t=1+z^4,x=z^2X,y=z^3Y$. The limit is
+$Y^2=X^3-3X$, with section $(0,0)$ and action
+$(X,Y)\mapsto(-X,iY)$. Its fixed group is
+$\{O,(0,0)\}$ of order two. The norms on either of these
+nontrivial complex-multiplication elliptic curves are zero;
+hence their cyclic $H^2$ groups are respectively
+$\mathbb Z/3$ and $\mathbb Z/2$, generated by the
+specialization of $P$. At $c_p$, the stabilizer has order
+twelve but acts trivially on the elliptic fibre, and
+multiplication by twelve is onto, so its $H^2$ is zero.
+The nodal fibres are unramified and have trivial stabilizers.
+
+The restrictions of $6P$ vanish in all these local groups.
+For an explicit order-three witness use $2P$.
+At the order-four point $6P$ specializes to zero; the unique
+local inverse of multiplication by four in the formal group
+is invariant, so its norm is $6P$. At $c_p$ choose a local
+holomorphic half of $P$ on the ordinary downstairs disc;
+its pullback has norm $6P$. The root equations, actions and
+local witnesses are checked in
+\texttt{fourfolds\_B6\_torsor\_local.py}.
+
+There is no additional degree-two obstruction on the coarse
+curve. To see this without omitting a component sheaf, take
+invariants in (B.6.23). The Lie invariants are coherent and
+higher finite-group cohomology of them is zero. The resulting
+sequence is
+\[
+ 0\longrightarrow q_*\mathcal A\longrightarrow q_*\mathcal V
+  \longrightarrow q_*\mathcal E
+  \longrightarrow R^1q_*\mathcal A\longrightarrow0.
+\]
+The last sheaf is a finite skyscraper sheaf, and the first is
+constructible on a real two-dimensional curve. Splitting this
+sequence at its middle image, coherent acyclicity in degrees
+at least two and $H^j(B,q_*\mathcal A)=0$ for $j>2$ give
+\[
+ H^2(B,q_*\mathcal E)=H^3(B,q_*\mathcal E)=0.
+\]
+Skyscraper sheaves have no higher cohomology. The coarse-map
+spectral sequence therefore identifies restriction to the
+stabilizers with an isomorphism
+\[
+ H^2(\mathcal B,\mathcal E)\simeq
+       \mathbb Z/3\oplus\mathbb Z/2.
+ \tag{B.6.24}
+\]
+In particular the inflation of the cyclic class $[6P]$
+vanishes in this group.
+
+The group--Cech double complex for $G$ acting on
+$\mathcal E$ gives the five-term exact sequence, whose
+relevant part is
+\[
+ H^1(C_p,\mathcal E)^G\longrightarrow
+ H^2(G,H^0(C_p,\mathcal E))\longrightarrow
+ H^2(\mathcal B,\mathcal E).
+ \tag{B.6.25}
+\]
+Here $H^0(C_p,\mathcal E)=L_p$, and cyclic group cohomology
+identifies the middle group with $L_p^\eta/NL_p$.
+Thus $[6P]$ is the transgression of an invariant analytic
+torsor class $\alpha$. In Cech terms, invariance supplies
+an isomorphism $F$ of the torsor covering $\eta$; its
+twelfth power is translation by an invariant section $R$,
+and the transgression is $[R]$ modulo norms. Its sign is
+immaterial here because $[6P]$ has order at most two.
+Replacing $F$ by $t_QF$ adds $NQ$ to $R$ and therefore
+arranges (B.6.21) exactly.
+
+We justify the finite-order choice of $\alpha$.
+The elliptic monodromy on $C_p$ minus its twelve nodal
+points contains both $R_1$ and $R_2$: in the four-punctured
+downstairs group, multiply either old loop by a power of
+the new-point loop to kill its covering character. The
+latter has identity elliptic monodromy and covering
+character generating $\mathbb Z/12$. Filling the ramified
+points kills only loops with identity elliptic monodromy.
+The columns $(1,-2)^t$ of $R_1-I$ and $(-1,1)^t$ of
+$R_2-I$ form a unimodular pair. Thus the global elliptic
+lattice coinvariant group is zero. The exact sequence
+$j_!\Lambda\to j_*\Lambda$ has skyscraper cokernel,
+so compact-support duality on the punctured curve gives
+\[
+ H^2(C_p,\mathcal A)=H^2_c(C_p^\circ,\Lambda)=0.
+\]
+Consequently $H^1(C_p,\mathcal V)\to H^1(C_p,\mathcal E)$
+is onto. By relative Serre duality and B.6.10 the characters
+of $H^1(C_p,\mathcal V)$ are $6,3,2$ modulo twelve.
+There is no invariant vector, so the group norm on this
+space, and hence on $H^1(C_p,\mathcal E)$, is zero.
+Every invariant class is therefore annihilated by twelve.
+Replace $\alpha$ by $9\alpha$: its transgression is still
+$[6P]$, while $4(9\alpha)=0$.
+
+Represent this class by holomorphic section-valued Cech
+translations. Gluing the corresponding copies of $S_p$
+gives a compact smooth genus-one surface locally isomorphic
+to $S_p$, with no multiple fibres. Such translations extend
+over $I_1$ because they act by multiplication on the nodal
+curve's normalization. Invariance and the preceding norm
+adjustment give the required holomorphic $F$. If this torsor
+had a section at a generic $p$, it would be the sectioned
+model excluded by B.6.12, proving its nontriviality.
+
+It remains to construct and normalize $M$. On a local
+trivialization of the torsor use the line bundle
+$\mathcal O(P-O)$. On overlaps these lines have the same
+relative degree-zero Picard class; their difference is a
+line from the base. The scalar obstruction on triple
+overlaps lies in $H^2(C_p,\mathcal O^*)=0$, by the ordinary
+exponential sequence and the real dimension of the curve.
+Thus they glue to a line bundle $M$ of relative class $P$.
+Since $F$ fixes this relative class, there is a line $J$ on
+$C_p$ with
+\[
+ M\otimes F^*M^{-1}=\pi^*J,\qquad
+ \bigotimes_{i=0}^{11}\eta^{i*}J
+       \simeq M\otimes t_{6P}^*M^{-1}
+       \quad\hbox{after pullback to }T_p.
+\]
+We verify the degree on the right for this torsor, rather
+than assuming the sectioned height formula applies to it.
+A torsor annihilated by four has a finite splitting cover:
+lift its class through the local multiplication-by-four
+sequence and trivialize the resulting finite torsion torsor
+on the ordinary curve. At an $I_1$ point the added division
+branches have Tate coordinates equal to a unit times
+$q^{j/4}$; they extend after finite base change and minimal
+resolution. Thus compactification gives a finite curve
+$D\to C_p$, of degree $d$, on whose regular pullback model
+the torsor has a section.
+
+On that model, the pulled-back $M$ has degree zero on every
+fibre component and differs from $\mathcal O(P_D-O_D)$ by
+a base line. All pulled-back sections $P_D,6P_D$ are narrow:
+the original $I_1$ sections lie in its smooth group, and
+their pullbacks meet the identity components of the
+resolved $I_n$ fibres. Restriction to $O_D$ therefore gives
+the degree
+\[
+ \chi+(P_D\cdot O_D)+(6P_D\cdot O_D)-(P_D\cdot6P_D)
+       =\langle P_D,6P_D\rangle=12d.
+\]
+The first equality is the narrow height formula and the
+second is base-change functoriality
+\cite[Theorem 8.6 and Proposition 8.12]{mapsShioda90}.
+Dividing by $d$ shows that the line on the right has degree
+twelve. Hence $\deg J=1$.
+
+Finally the deck characters on $H^1(C_p;\mathbb C)$ are
+$1,2,5,7,10,11$, each once. They follow either from the
+base fixed-point traces in B.6.10 or from the three
+holomorphic forms of characters $7,10,11$.
+The characteristic polynomial is $\Phi_6\Phi_{12}$, so
+\[
+ \det(1-\eta^*\mid H^1(C_p;\mathbb Z))
+      =\Phi_6(1)\Phi_{12}(1)=1.
+\]
+Thus $1-\eta^*$ is an automorphism of $\operatorname{Pic}^0(C_p)$.
+There is a unique degree-zero line $D_0$ with
+\[
+ D_0\otimes\eta^*D_0^{-1}
+       =\mathcal O(c_p)\otimes J^{-1}.
+\]
+Replace $M$ by $M\otimes\pi^*D_0$ to obtain (B.6.22).
+The canonical section of $\mathcal O(c_p)$ supplies the
+claimed simple zero. The lattice coinvariants, base
+characters and norm arithmetic are also recorded in
+\texttt{maps\_component\_periods.py}.
+\end{proof}
+
+\input{sections/fourfolds_b6_torsor_obstruction}
+
+\paragraph{Proposition B.6.15 (Proved: the free-circle filling formula).}
+Let $Q$ be the oriented mapping torus of a diffeomorphism of
+$S^2\times S^3$ preserving orientation and the positive generator
+of $H^2$.  Choose generators $x\in H^2(Q;\mathbb Z)$ and
+$y\in H^4(Q;\mathbb Z)$ so that $\langle xy,[Q]\rangle=1$, and write
+\[
+ x^2=ky,\qquad p_1(Q)=\ell y.
+\]
+Let $M\to Q$ be the principal circle bundle of Euler class $x$,
+oriented as the boundary of the associated complex disc bundle
+$W=D(L_x)$.  For $k\ne0$ its rational first Pontryagin class vanishes
+and its normalized Eells--Kuiper invariant is
+\[
+ \mu(M)=\frac{3\ell^2/k-8\ell-4k-12\operatorname{sign}(k)}{2688}
+       \pmod {\mathbb Z}.
+ \tag{B.6.26}
+\]
+Moreover $\ell=4k+24r$ for an integer $r$, and equivalently
+\[
+ \mu(M)=\frac{k-\operatorname{sign}(k)+32r+144r^2/k}{224}
+       \pmod {\mathbb Z}.
+\]
+For $k=0$, the condition $p_1(M)=0$ is equivalent to $\ell=0$,
+and under this condition $\mu(M)=0$.
+These formulas do not specify the integers for the surgery on the
+fixed curve of the given family, nor the characteristic correction
+of that surgery trace.
+\begin{proof}
+The fibre diffeomorphism acts trivially on integral cohomology, so
+its Wang sequence gives the stated infinite cyclic groups in
+degrees two and four.  Their product pairing is unimodular:
+$y$ is the degree-three fibre generator swept around the mapping
+circle.  The fibre has a unique spin structure, hence its mapping
+torus is spin.  The index of its spin Dirac operator twisted by
+$L_x$ is the degree-six characteristic number
+\[
+ \left\langle \widehat A(Q)e^x,[Q]\right\rangle
+    =\frac{k}{6}-\frac{\ell}{24}\in\mathbb Z.
+\]
+Thus $\ell\equiv4k\pmod {24}$.
+
+The tangent bundle of the disc bundle is stably the pullback of
+$TQ\oplus L_x$, so $W$ has a spin-c structure of determinant
+$L_x$ and
+\[
+ z=x,\qquad p_1(W)=(\ell+k)y.
+\]
+On its boundary $L_x$ is canonically trivialized by the unit vector,
+so this structure induces a spin structure on $M$.  The Gysin
+sequence gives, when $k\ne0$,
+\[
+ H^4(M;\mathbb Z)\cong\mathbb Z\oplus\mathbb Z/|k|,
+ \qquad p_1(M)=\ell\,\pi^*y
+\]
+with $\pi^*y$ generating the displayed torsion subgroup.  Hence
+$p_1(M)$ vanishes rationally.  When $k=0$, the pullback of $y$
+is injective and primitive, which proves the asserted equivalence.
+
+Let $U$ be the integral Thom class of the oriented complex line
+bundle.  The map $H^4(W,M)\to H^4(W)$ sends $Ux$ to $x^2=ky$.
+Its intersection form therefore has matrix $(k)$ and signature
+$\operatorname{sign}(k)$ when $k\ne0$.  The rational relative lift
+of $p_1(W)$ is $(\ell+k)Ux/k$.  Thom integration gives
+\[
+ \langle p_1(W)^2,[W,M]\rangle=\frac{(\ell+k)^2}{k},\qquad
+ \langle p_1(W)z^2,[W,M]\rangle=\ell+k,\qquad
+ \langle z^4,[W,M]\rangle=k.
+\]
+For the last two products one may use the relative lift $U$ of
+$z$, so their definitions do not require $z^2$ to be nonzero.
+Insert these values into the spin-c formula in B.6.9 to obtain
+(B.6.26); substitution of $\ell=4k+24r$ gives its second form.
+If $k=\ell=0$, the middle intersection map is zero, $p_1(W)=0$,
+and all the displayed relative products vanish, giving $\mu(M)=0$.
+The coefficient identities are checked exactly in
+\texttt{code/maps\_free\_circle.py}.
+
+For the proposed fixed-curve surgery, the disc bundle has the actual
+free-circle mapping torus as boundary once its quotient bundle is
+identified.  Comparison with the original sphere mapping torus
+still requires its own parametrized spin surgery trace.  The
+analytic conifold surgery of B.6.5 is along a different curve and
+supplies no such comparison for this model.  In particular neither
+vanishing of the ordinary affine obstruction after six loops nor
+homotopy of the quotient return fixes the integer $\ell$.
+\end{proof}
+
+\paragraph{Proposition B.6.16 (Proved: a smooth fixed-circle replacement).}
+The actual family and its even-shift closing maps admit a smooth
+equivariant conifold replacement along the fixed curve of the
+$\delta$ circle action.  Its fibres are $S^3\times S^3$, the circle
+action on them is free, and the finite logarithmic fillings are
+unchanged.  In the original ordered lattice $(g,u,w,d)$ the four
+local monodromies of the resulting map to $B$ are
+\[
+ A_1,\quad A_2,\quad
+ C_1=I+w\otimes(u^*-g^*),\quad
+ C_2=I+(w-d)\otimes g^*.
+ \tag{B.6.27}
+\]
+Their product is one.  The marked parameter return has linear part
+$S=I-2d\otimes g^*$ and the same finite affine defects as in
+B.6.4; the two new cusp defects are zero.  On rational $H^3$ it
+preserves a two-step filtration with one-dimensional quotients,
+acting as the identity on each quotient.  The resulting integral
+unipotent shear is not evaluated by these assertions.
+\begin{proof}
+Use the following short and long bases at the cusp:
+\[
+ a_1=w,\qquad a_2=w-d,\qquad
+ b_1=u,\qquad b_2=g+u.
+\]
+They form an integral basis of the fibre lattice, and the cusp
+nilpotent sends $b_i$ to $a_i$ and kills both $a_i$.  In these
+coordinates the normalized period matrix is
+\[
+ \Omega_{c,0}(q)=\frac{\log q}{2\pi i}I+C_c(q),
+ \tag{B.6.28}
+\]
+where $C_c$ is holomorphic at zero.  The original fan has edge
+directions $a_1,a_2,a_1-a_2$; thus it is the square grid with
+each square subdivided along the $d=a_1-a_2$ diagonal.
+This is precisely the small resolution of the product of two
+infinite nodal-chain models with the same degeneration parameter.
+There is one orbit of the resolved diagonal curves under the two
+long-period translations.  Its quotient is the actual fixed curve
+of D.2.14, not the different diagonal curve used in B.6.3.
+
+Here is an explicit construction including its boundary matching.
+Fix a small cusp disc and restrict $c$ to a compact interval
+representing the parameter loop.  On a smaller disc replace
+(B.6.28) by
+\[
+ \Omega_{c,s}(q)=
+  \frac1{2\pi i}
+   \begin{pmatrix}\log q&0\\0&\log(q-s)\end{pmatrix}
+      +C_c(q),\qquad 0<|s|\ll1.
+ \tag{B.6.29}
+\]
+For clarity this inner filling can be constructed before taking
+any lattice quotient.  Take the product of the two infinite
+nodal-chain families, with parameters $q$ and $q-s$.  Its node
+charts are
+\[
+ xy=q,\qquad zv=q-s,
+ \quad\hbox{or equivalently}\quad xy-zv=s.
+ \tag{B.6.30}
+\]
+The two long generators shift the respective chain indices by one
+and multiply the two torus coordinates by the columns of
+$\exp(2\pi iC_c(q))$.  These multiplications extend on all the
+chain charts, since their factors are nonvanishing.  They commute.
+The usual bounded-unit lattice estimate proves that the action is
+free and properly discontinuous and that its quotient is proper
+over the disc: the two diagonal logarithmic lengths tend to
+infinity at their respective nodes, their minimum is uniformly
+large for small $q,s$, and the off-diagonal logarithms remain
+bounded.  A bounded rectangle in the two chain indices is a
+compact fundamental set.  This is the same estimate as the
+square-grid special case of the supplied manuscript's
+Theorem 4.5, Steps 1--4, with the two diagonal lengths allowed
+to differ.  In particular no positivity or symmetry of $C_c$
+is required.  At $s=0$ the square-grid quotient has ordinary
+double points, and its indicated small resolution recovers the
+given cusp, including its unit factors.
+
+On an annulus separated from both $0$ and $s$ the difference
+between (B.6.29) and (B.6.28) is the single-valued, small matrix
+\[
+ \frac{\log(1-s/q)}{2\pi i}E_{22}.
+\]
+Multiply it by a smooth radial cutoff equal to one on the inner
+boundary and zero near the outer boundary.  Real nonsingularity
+of the period matrix is open; after reducing $|s|$ this interpolation
+therefore defines a smooth marked torus bundle on the annulus.
+It agrees exactly with the inner chain quotient and with the
+original cusp on their respective collars.  Glue the original
+exterior, and retain both finite logarithmic fillings verbatim.
+This constructs a smooth global replacement.  Holomorphicity of
+the cutoff, or a global holomorphic smoothing, is not asserted.
+All changes occur inside the cusp disc, and the outer peripheral
+identification is the original marked one.
+
+The construction also retains the actual parameter return.  The
+period perturbation just made is independent of $c$.  The change
+$c\mapsto c+h$ changes the long periods only by the integral
+short vector $h d\otimes g^*$; its exponentiated lattice
+multipliers are consequently unchanged, for integral $h$.
+Use the existing cusp representative of the closing map, namely
+the holomorphic torus unit obtained by exponentiating
+\[
+ \overline b_{h,c}(q)=
+ \left(-\frac h2\mu(q),
+ -\frac h{12}C_{c,21}(q)+h\kappa_0(q)-\frac{h^2}{24}\right)
+ \tag{B.6.31}
+\]
+in the original short coordinates $(w,d)$.  Formula (B.6.31) is
+the checked cusp formula in K8, displayed immediately after
+$\ell=-s_0/12+\kappa_0(q)$ in
+\texttt{S6\_02\_PUSH\_C\_closing\_cocycle.tex}; here $s_0$
+denotes the additive logarithm and is distinct from the new
+smoothing parameter.  Change short coordinates integrally to
+$(a_1,a_2)$ and use this same unit throughout the new filling.
+On (B.6.30) a torus unit acts by
+\[
+ (x,y,z,v)\longmapsto
+   (\lambda_1x,\lambda_1^{-1}y,
+    \lambda_2z,\lambda_2^{-1}v).
+\]
+It preserves $q$ and the actual parameter $s$, extends over both
+nodes and commutes with the two chain shifts.  It also defines the
+same affine translation on the interpolated annulus.  Near its
+outer boundary it is the original closing map, so the original
+finite comparisons and their composition law remain unchanged.
+In particular the map has not been replaced by a fractional
+long-period translation.  Its additive cusp lift is single-valued
+on both new punctures, giving zero new affine defects.
+
+This replacement is the usual local small-resolution-to-smoothing
+surgery at the one orbit of nodes.  It is therefore surgery on
+the actual null-homotopic fixed $S^2$, with its unique real
+framing; D.2.14 identifies its underlying smooth fibre with
+$S^3\times S^3$.  In (B.6.30) the $d=a_1-a_2$ circle has weights
+$(1,-1,-1,1)$ on $(x,y,z,v)$.  Its only possible fixed point is
+the origin, which is absent when $s\ne0$.  At either rank-one
+central fibre it has a primitive component in the surviving
+elliptic factor, so it is free there as well.  Together with the
+unchanged exterior and finite fillings, where it was free, this
+proves global freeness.
+
+The primitive monodromy at $q=0$ sends $b_1$ to $b_1+a_1$;
+at $q=s$ it sends $b_2$ to $b_2+a_2$.  Expressing these two maps
+in the original basis gives (B.6.27), and direct multiplication
+gives $C_1C_2=M_0$.  They commute with $S$.  The finite affine
+defects remain $(0,1,-1,-1)$ and $(0,0,-1,1)$, as already
+computed in B.6.4.
+
+Finally the invariant-specialization calculation of B.6.3 applies
+to each of these two primitive rank-one fibres and to the unchanged
+finite fibres.  For $j$ the inclusion of the four-value complement
+and $V=R^1g_*\mathbb Q$ there is again
+$R^qg_*\mathbb Q=j_*\bigwedge^qV$.  The parabolic cocycle
+calculation with the new matrices gives, in degrees $q=0,\ldots,4$,
+\[
+ \dim H^0(B,j_*\bigwedge^qV)=(1,1,0,1,1),\qquad
+ \dim H^1(B,j_*\bigwedge^qV)=(0,0,0,0,0).
+\]
+The degree-one global coinvariant space is one-dimensional, so
+$\dim H^2(B,j_*V)=1$.  The exact matrix calculation is recorded
+in \texttt{maps\_fixed\_curve\_monodromy.py}.  Thus the only
+possible Leray pieces of degree three are the one-dimensional
+groups $E_2^{0,3}$ and $E_2^{2,1}$.  Since the total space is
+$S^3\times S^3$, both survive and exhaust $H^3$.  The return acts
+as the identity on each: on the first by direct invariant-form
+calculation, and on the second because $S-I$ has image in the
+vanishing coboundaries.  Saturating the rank-one integral
+filtration gives an integral upper triangular return with
+diagonal entries one.  The off-diagonal integer is an extension
+in this filtration.  The earlier analytic smoothing had all its
+$H^3$ in $E_2^{1,2}$, so its Torelli conclusion cannot be
+transferred to this different surgery.
+\end{proof}
+
+\input{sections/maps_fixed_quotient_tangent}
+
+\paragraph{Proposition B.6.18 (Proved: the full quotient class has one integer left).}
+Let $\overline\Psi$ be the quotient return on $S^2\times S^3$
+in B.6.16--B.6.17.  Let $a$ be the Dehn twist about the primitive
+$S^2$, using the generator of $\pi_3SO(3)$ whose associated
+three-plane bundle over $S^4$ has Pontryagin number $4$.
+Let $b$ be the same twist about an embedded sphere representing
+twice that primitive class.  Then there is a unique integer $B_0$
+such that
+\[
+ [\overline\Psi]=a^{-1-2B_0}b^{B_0},\qquad
+ k=-1+6B_0,\qquad B_0=\frac{k+1}{6}.
+ \tag{B.6.32}
+\]
+This is an equality of smooth isotopy classes.  In particular,
+there is no additional torsion ambiguity in the quotient return.
+The integer $B_0$ has not yet been evaluated for the given family,
+and this statement does not identify its reverse-surgery image
+in $\Theta_7$.
+\begin{proof}
+The quotient return preserves its primitive circle Euler class
+and its orientation, so it acts trivially on the integral
+homology of $S^2\times S^3$.  Jin's mapping-torus construction
+identifies this Torelli group with
+$\Omega^{\operatorname{Spin}}_6(\mathbb CP^\infty)$;
+his Proposition 3.1 and Theorem 4.9 identify the latter group
+with $\mathbb Z^2$ by the characteristic numbers
+\[
+ \left(\frac{4k-\ell}{24},\ k\right).
+\]
+The injectivity is explicitly proved in his Lemma 2.1 using
+modified surgery and the pseudo-isotopy theorem, so this is
+an isotopy classification, not just a detection of rational
+invariants.  His Lemmas 4.4 and 4.8, and the table on
+pp.~23--24 of version 2, give
+\[
+ (k(a),\ell(a))=(1,4),\qquad
+ (k(b),\ell(b))=(8,8).
+\]
+These two twists freely generate the Torelli group
+\cite[Corollary 1.3 and Theorem 4.9]{mapsJin26}.
+The framing is unique because $\pi_2SO(3)=0$; the indicated
+sphere embeddings are determined by their homotopy classes,
+as stated immediately before his Theorem 1.2.
+
+Write the unique quotient class as $a^A b^{B_0}$.  Additivity
+of the mapping-torus bordism invariant gives
+\[
+                  k=A+8B_0,\qquad \ell=4A+8B_0.
+\]
+The actual value $\ell=-4$ from B.6.17 therefore gives
+$A+2B_0=-1$, which is exactly (B.6.32).  Conversely these
+equations recover $A,B_0$ from the two characteristic numbers,
+so no further smooth quotient class has the same pair.
+This last arithmetic is checked in
+\texttt{maps\_quotient\_classification.py}.
+\end{proof}
+
+\paragraph{Proposition B.6.19 (Proved: the fixed-curve trace correction).}
+For the actual equivariant surgery in B.6.16, let $Z$ be the
+eight-dimensional parametrized surgery trace, with oriented
+boundary $M_s\sqcup(-M_\Phi)$.  It is spin.  If $k\ne0$,
+its middle relative intersection form has rank one and absolute
+determinant $|k|$.  There is a primitive generator
+$\alpha\in H^4(Z;\mathbb Z)$ with
+\[
+                 p_1(Z)=(\ell-2k)\alpha.
+ \tag{B.6.33}
+\]
+In particular, if the actual integer $k$ is $-1$, then
+\[
+ \langle p_1(Z)^2,[Z,\partial Z]\rangle
+                  -4\operatorname{sign}(Z)=0,
+ \qquad [\Phi]=0\in\Theta_7.
+ \tag{B.6.34}
+\]
+The last conclusion is conditional here on that still required
+integer calculation; it does not follow from $\ell=-4$ alone.
+\begin{proof}
+First the trace exists with the actual parameter closing.
+The local equation (B.6.30) is a fixed quadratic smoothing,
+and the closing maps preserve both $q$ and $s$.  Their torus
+unit actions preserve its small-resolution ruling.  Retraction
+of this ruling-preserving quadratic group to its compact form
+gives the usual equivariant $D^3\times D^4$ surgery handle,
+as in the explicit $SO(4)$ trace in B.6.5.  In the present
+case the $\delta$ circle fixes the $D^3$ factor and acts
+freely by Hopf rotations on the punctured $D^4$ factor.
+The fixed set of the parametrized trace is therefore a
+$D^3$ bundle over the parameter circle.  In particular it
+has the homotopy type of $S^1$.  The attaching $S^2$ has
+its unique spin structure and its unique stable framing
+class; the spin surgery extends the unique spin structure
+of each $S^6$.  Since the seven-dimensional trace fibre
+is simply connected, its spin structure is unique and
+is preserved by the closing map.  It gives a spin
+structure on $Z$.  Either resulting spin choice on
+$M_\Phi$ has the same invariant by K3.
+
+Let $W$ be the seven-dimensional trace fibre.  It is obtained
+by adding one index-three handle to $S^6\times I$ along
+a null-homotopic $S^2$.  Its nonzero reduced integral
+homology groups are $H_3(W)=\mathbb Z$ and
+$H_6(W)=\mathbb Z$.  The parameter return preserves
+their generators: the handle orientation is preserved
+by the fixed quadratic model.  The Wang sequence gives
+\[
+ H^1(Z)=\mathbb Z\kappa,\quad H^2(Z)=0,\quad
+ H^3(Z)=\mathbb Z\beta,\quad
+ H^4(Z)=\mathbb Z\alpha,\qquad \alpha=\kappa\beta.
+ \tag{B.6.35}
+\]
+All groups here have integral coefficients.  The product
+assertion follows as well from the two columns of the
+spectral sequence of $W\to Z\to S^1$.
+
+We use integral Borel equivariant cohomology for the
+$\delta$ action.  Put $u=c_1(\mathbb C_1)$ in
+$H^2(BS^1;\mathbb Z)$, with its sign chosen so that
+its restriction on the free boundary is the Euler
+class $x$ of B.6.17.  The fixed set provides a section
+over $BS^1$ and over $BS^1\times S^1$ after choosing
+a section of its contractible disc bundle.  Thus
+$u^2$ and $u^2\kappa$ inject into equivariant cohomology.
+In the Borel spectral sequence the only possible
+differential from $\beta$ is $d_4\beta$ to the cyclic
+group generated by $u^2$; the preceding injection forces
+it to vanish.  The $d_2$ target vanishes because $H^2(Z)=0$.
+Choose an equivariant lift of $\beta$ and multiply it by
+$\kappa$ to lift $\alpha$.  On the fixed set the lift
+of $\beta$ can only restrict to a multiple of $u\kappa$,
+so this lift of $\alpha$ restricts to zero.  It follows that
+\[
+ H^4_{S^1}(Z;\mathbb Z)=\mathbb Zu^2\oplus\mathbb Z\alpha,
+ \qquad \alpha|_{Z^{S^1}}=0.
+ \tag{B.6.36}
+\]
+Here and below the same letter denotes the lift of the
+ordinary primitive class.  No torsion extension is
+possible between the two free displayed summands.
+
+At a fixed point the normal real four-plane has the two
+unit circle weights, so its equivariant first Pontryagin
+class is $2u^2$.  The fixed set has no ordinary positive
+even cohomology, hence supplies no additional normal
+or tangent characteristic term.  Consequently
+\[
+                   p_1^{S^1}(Z)=2u^2+c\alpha
+ \tag{B.6.37}
+\]
+for an integer $c$.  Forgetting the group action gives
+$p_1(Z)=c\alpha$.
+
+The relative equivariant handle calculation makes the
+outgoing restriction integral and primitive.  Excision
+and the equivariant Thom isomorphism for its normal
+$D^4$ give
+\[
+ H^4_{S^1}(Z,M_s)=\mathbb ZU,\qquad
+ H^5_{S^1}(Z,M_s)=\mathbb ZU\kappa.
+\]
+The fixed restriction of the Thom class is its normal
+Euler class, namely $\varepsilon u^2$, where
+$\varepsilon=\pm1$ allows the chosen real normal
+orientation.  Thus $U\kappa$ maps to a class whose
+fixed restriction is $\varepsilon u^2\kappa\ne0$.
+The map from relative to absolute degree-five
+cohomology is injective.  The exact sequence of the
+pair therefore gives a surjection
+\[
+ H^4_{S^1}(Z)\longrightarrow H^4_{S^1}(M_s)
+                                  =H^4(Q)=\mathbb Z.
+\]
+Its kernel is generated by $U$, whose $u^2$ coefficient
+is $\varepsilon$.  Hence the restriction of $\alpha$
+is primitive.  Choose its sign so that
+$\alpha|_Q=y$.  Restricting (B.6.37) then gives
+\[
+                    \ell y=2x^2+cy=(2k+c)y,
+\]
+which proves (B.6.33).
+
+Write the image of the relative Thom class in (B.6.36)
+as $\varepsilon u^2+m\alpha$.  Its restriction to $Q$
+is zero, so $m=-\varepsilon k$.  Forgetting equivariance
+shows that the ordinary relative intersection map sends
+the primitive Thom generator to $m\alpha$.  Passing
+from the pair $(Z,M_s)$ to $(Z,\partial Z)$ changes
+neither group in degree four, since
+$H^3(M_\Phi)=H^4(M_\Phi)=0$.  Integral
+Poincare--Lefschetz duality identifies the pairing of
+the two primitive generators with a unit.  Thus the
+middle form is a rank-one form of absolute determinant
+$|m|=|k|$.  In particular, when $k=-1$ its matrix is
+$(\epsilon)$ for some $\epsilon=\pm1$.
+
+In this case B.6.17 gives $\ell=-4$ and hence $c=-2$.
+The rational relative lift of $p_1(Z)$ has square
+$\epsilon c^2=4\epsilon$, while the signature is
+$\epsilon$.  Their difference is zero for either
+choice of the common orientation sign.  The spin
+cobordism formula therefore gives
+$\mu(M_\Phi)=\mu(M_s)$.  Substitution of
+$k=-1,\ell=-4$ into B.6.15 gives $\mu(M_s)=0$.
+Finally K3 identifies $28\mu(M_\Phi)$ with the
+specified class $[\Phi]\in\mathbb Z/28$, proving
+the conditional conclusion (B.6.34).
+\end{proof}
+
+\input{sections/maps_fixed_cube}
+
+\paragraph{Theorem B.6.21 (Proved: the original smooth monodromy is zero).}
+For the original $(3,4)$ family, with its complex orientation,
+the positive $w$ loop and the generator of $\Theta_7$ fixed by
+$\mu=1/28$, the monodromy satisfies
+\[
+                         [\Phi]=0\in\mathbb Z/28.
+ \tag{B.6.38}
+\]
+It is therefore smoothly isotopic to the identity.  Its sixfold
+class is zero, and among the two resulting K7 residues $0,14$
+the original class is $0$.  This statement does not yet assert
+the same value for the other multiplicity pairs.
+\begin{proof}
+B.6.16 constructs the free-circle replacement with the original
+peripheral identifications and closing map.  B.6.20 gives
+$|k|=1$ by an integral-normalized multiplicative calculation on
+those actual finite and nodal caps.  Independently B.6.17 gives
+$\ell=-4$.  The spin congruence $\ell\equiv4k\pmod {24}$
+in B.6.15 then forces $k=-1$.
+
+The circle disc bundle consequently has invariant zero by
+B.6.15.  The actual parametrized spin surgery trace has
+$p_1$ coefficient $-4-2(-1)=-2$, and its rank-one middle form
+is unimodular by B.6.19.  Thus its relative Pontryagin square
+is four times its signature, and its normalized spin
+cobordism correction is zero.  It follows that
+\[
+ \mu(M_\Phi)=\mu(M_s)=0.
+\]
+K3 compares the oriented mapping torus with the glued
+homotopy sphere and identifies this invariant with
+$[\Phi]/28$; this proves (B.6.38).  No framed local bubble,
+choice of a scalar interpolation, or unknown reverse-surgery
+correction is used in this conclusion.  The integral sign
+of the intermediate cup calculation is fixed by the
+independent spin congruence, so its preliminary collar
+orientation convention cannot change the answer.
+\end{proof}
+
+\paragraph{Proposition B.6.22 (Proved: the actual higher-multiplicity replacement).}
+Let $m=3k,n=4l$, with $k,l>0$ and $\gcd(m,n)=1$, and use
+any of the admissible fixed-data sphere families of K1.  Its
+positive-generator return, with period $h=2kl$, has an actual
+smooth fixed-circle replacement as in B.6.16.  With
+\[
+ A=lN_0,\qquad B=kN_1,\qquad P=4A+3B=\pm1,
+\]
+its four marked affine defects can be taken to be
+\[
+ e_1=(0,0,-2A,0),\quad e_2=(0,-B,0,0),\quad
+ t_1=2A a_1,\quad t_2=-B a_2,
+ \qquad a_1=w,\ a_2=w-d.
+ \tag{B.6.39}
+\]
+Its linear return is $S_h=I-hd\otimes g^*$.  The free-circle
+quotient mapping torus has the oriented invariant
+\[
+                           \ell=-2h=-4kl.
+ \tag{B.6.40}
+\]
+The spin trace and its equivariant characteristic calculation
+in B.6.19 apply to this return as well.
+\begin{proof}
+The invariant power vectors in the question's marking are,
+by the checked dictionary K1,
+\[
+ v_1=N_0\epsilon-\rho_0d,\qquad
+ v_2=N_1\epsilon'-(\rho_1+N_1)d,
+\quad \epsilon=g+2u-4w,\quad\epsilon'=g+3u-3w.
+\]
+The sphere condition is $4lN_0+3kN_1=\pm1$.  In particular
+$N_0$ is coprime to $3k$ and $N_1$ is coprime to $4l$.
+Applying the invariant covector $g^*$ to a possible finite
+stabilizer equation therefore proves that the $d$ circle
+is free in both logarithmic caps.  Its only fixed locus
+is the same cusp $S^2$, with normal bundle and weights
+$\mathcal O(-1)_{+1}\oplus\mathcal O(-1)_{-1}$.
+
+For the fixed-data shift $h=2kl$, the explicit repeated-norm
+solutions in K1, E.1.2, give the two defects $e_1,e_2$
+in (B.6.39), as already checked in B.6.8.  Their combined
+cusp defect is
+\[
+ e_0=-M_0(e_1+A_1e_2)=(2A-B)w+Bd.
+\]
+Make the following integral change of lifted parameter
+generator, leaving the underlying parameter circle fixed:
+\[
+ \varkappa' =\varkappa+r,
+ \qquad r=(-B,\ 2A-B,\ 2B-2A,\ 0).
+ \tag{B.6.41}
+\]
+Since $(M_0-I)r=e_0$, the new cusp defect is zero.
+This is a change of lift by an actual integral fibre
+period, not a fractional-period interpolation.  In the
+toric cusp cover the K1 map is a holomorphic torus unit
+times an integral toric power.  Composing its lift with
+this integral long-period deck transformation removes
+that power.  Hence the same original quotient closing
+map now has a holomorphic unit representative on the
+entire cusp.  Both its nonzero limit and its parameter
+dependence are retained.
+
+Use this representative in exactly the product nodal-chain
+construction (B.6.29)--(B.6.30), with the same period
+matrix perturbation independent of $c$.  The unit extends
+on the two node charts and preserves the actual smoothing
+parameter.  The cutoff on the outer regular annulus
+matches it to the unchanged original closing map.
+The finite maps of K1 are also unchanged: their new
+defects merely record the same change of lifted
+parameter generator.  Explicitly they are
+\[
+ d_1=e_1+(I-A_1)r=(0,P,-P,-2A-B),\qquad
+ d_2=e_2+(I-A_2)r=(0,0,-P,2A+B),
+ \tag{B.6.42}
+\]
+and the two nodal defects are zero in this marking.
+Returning to the old lift changes these last two
+defects to
+\[
+ (C_1-I)r=2Aa_1,\qquad (C_2-I)r=-Ba_2,
+\]
+which proves (B.6.39) with the actual marked caps.
+This also checks the peripheral product relation,
+because $C_1$ fixes $a_2$ and $t_1+C_1t_2=e_0$.
+
+Each original fibre is $S^6$ by the stipulated sphere
+theorem.  The same nullsphere surgery and spin-lift
+argument as in D.2.14 gives a free circle action on
+$S^3\times S^3$ with quotient $S^2\times S^3$.
+Thus the geometric generator and torsion-free groups
+used in B.6.17 are unchanged.  Its determinant proof
+uses the same invariant residue form on the new Hopf
+sphere.  Every reduced multiple-fibre divisor still
+has zero class, since its positive multiple is the
+pullback of a base point and $H^2$ of the quotient
+is torsion free.  Consequently its descended Koszul
+calculation gives the identical formula
+$p_1(Q)=-2\operatorname{PD}(Z_1+Z_2)$.
+
+At the first node the surviving elliptic return is now
+$b_2\mapsto b_2+h a_2$ modulo the vanishing $a_1$.
+At the second it is the identity on $(a_1,b_1)$.
+The preceding integral changes of lift only change
+affine translations on these tori; they do not change
+these linear returns.  The oriented unit-line clutch
+calculation of B.6.17 therefore gives Euler pairings
+$h,0$, proving (B.6.40).
+
+Finally the replacement uses the same fixed quadratic
+germ and ruling-preserving closing maps, so its
+parametrized spin handle is the one in B.6.19.
+Its ordinary cohomology and its fixed-set Borel Thom
+calculation depend only on that handle, not on the
+finite multiplicities.  Thus the trace coefficient
+is again $\ell-2k_{\rm cup}$ and its middle form has
+absolute determinant $|k_{\rm cup}|$.
+\end{proof}
+
+\input{sections/maps_fixed_general_cube}
+
+\paragraph{Theorem B.6.24 (Proved: all requested monodromy classes vanish).}
+For every admissible coprime sphere pair $(3k,4l)$ and every
+fixed twist datum of K1, the monodromy for the positive
+generator $2kl$ of its parameter-period lattice satisfies
+\[
+                    [\Phi_{3k,4l}]=0\in\Theta_7.
+ \tag{B.6.43}
+\]
+The identifications and orientation are those specified in
+the question.  In particular this completes the numerical
+part of B.6 for both the original and higher families.
+\begin{proof}
+Write $d=kl>0$.  B.6.22--B.6.23 compute the actual
+free-circle quotient invariants as
+\[
+              k_{\rm cup}=-d,\qquad \ell=-4d=4k_{\rm cup}.
+\]
+The trace has $p_1$ coefficient $2k_{\rm cup}$, by
+B.6.19 and its extension in B.6.22.  We determine the
+sign of its rank-one intersection form where that sign
+could affect the answer.
+The two choices of spin structure on the trace restrict
+to the two choices on $M_s$: restriction on $H^1(-;\mathbb Z/2)$
+is an isomorphism, generated by the parameter circle.
+Choose the one agreeing with the spin structure induced
+by the disc-bundle spin-c filling.  The induced choice
+on $M_\Phi$ does not change its invariant, by K3.
+
+Put $k_0=k_{\rm cup}$ temporarily.  The disc bundle
+$D(L_x)$ has intersection form $(k_0)$ and boundary
+$M_s$, by B.6.15.  Its primitive absolute degree-four
+generator $y$ restricts to the torsion class $\pi^*y$
+of order $|k_0|$ on $M_s$.  The trace has form $(j)$
+with $j=\pm k_0$, and its primitive absolute generator
+$\alpha$ restricts to the \emph{same} $\pi^*y$,
+by the Borel restriction proof in B.6.19.  Its other
+boundary component $M_\Phi$ has no degree-four
+cohomology and contributes no torsion linking term.
+
+The boundary torsion linking pairing evaluated on this
+fixed generator is the signed reciprocal of the
+rank-one intersection coefficient, with one common
+boundary-orientation sign for the two fillings.
+One can see this directly by lifting the generator
+rationally through the relative intersection map:
+the relative generator divided by its intersection
+coefficient is that lift, and evaluation modulo
+$\mathbb Z$ gives the reciprocal.  The outgoing
+orientation of $M_s$ is the same for the disc bundle
+and the trace.  Hence $j=-k_0$ would imply
+\[
+                         \frac{2}{k_0}=0\quad\hbox{in }\mathbb Q/\mathbb Z.
+\]
+For $|k_0|>2$ this is impossible, so $j=k_0$.
+
+In that case the normalized spin trace correction is
+\[
+ \mu(M_s)-\mu(M_\Phi)
+ =\frac{(2k_0)^2/k_0-4\operatorname{sign}(k_0)}{896}
+ =\frac{k_0-\operatorname{sign}(k_0)}{224}.
+ \tag{B.6.44}
+\]
+The free-circle formula B.6.15, with $\ell=4k_0$, gives
+exactly the same value for $\mu(M_s)$.  Their difference
+is therefore $\mu(M_\Phi)=0$.
+
+For $|k_0|=1$ both the free invariant and the trace
+correction vanish for either possible sign, as already
+proved in B.6.19.  For $|k_0|=2$, suppose instead that
+$j=-k_0$.  The trace correction would be the negative
+of (B.6.44), and subtraction from the free invariant
+would give
+\[
+ \mu(M_\Phi)=\frac{k_0-\operatorname{sign}(k_0)}{112}
+                         =\pm\frac1{112}\pmod{\mathbb Z}.
+\]
+K3 requires $\mu(M_\Phi)$ to lie in
+$(1/28)\mathbb Z/\mathbb Z$, so this is impossible.
+The trace sign is thus $j=k_0$ also in this case,
+and the same cancellation proves zero.
+
+All positive integers $d$ have now been covered.  K3
+identifies the last invariant with the specified smooth
+homotopy-sphere class divided by $28$, proving
+(B.6.43).  The proof used the actual lifted parameter
+generator and all four cap maps, and does not equate
+the different multiplicity families before computing
+their invariants.  The symbolic characteristic identities
+and the exceptional $|k_0|=2$ denominator check are
+recorded in \texttt{maps\_trace\_linking.py}.
+\end{proof}
+
+\paragraph{Corollary B.6.25 (Proved: an explicit spin filling after the computation).}
+Every mapping torus in B.6.24 has a spin eight-manifold
+filling diffeomorphic to $D^7\times S^1$, with one
+zero-handle and one one-handle, and with
+$p_1^2=\operatorname{sign}=0$.
+\begin{proof}
+The computed zero mapping class supplies a smooth
+isotopy $h_t$ from the identity to $\Phi$, chosen
+constant near its endpoints.  For the convention
+$(z,1)\sim(\Phi z,0)$, the map
+\[
+ [z,t]\longmapsto(h_t(z),e^{2\pi it})
+\]
+is a well-defined oriented diffeomorphism from
+$M_\Phi$ to $S^6\times S^1$.  Give $D^7\times S^1$
+its product orientation; its boundary orientation is
+the stipulated positive-parameter orientation of
+$S^6\times S^1$.  This product is parallelizable and
+has zero middle cohomology, proving the two
+characteristic-number assertions.  The usual product
+handle presentation has one handle in each of
+indices zero and one.  Either spin structure on its
+boundary extends across the product.  This filling
+is a consequence of the preceding actual cap and
+trace computation; its existence was not assumed
+to establish the zero monodromy class.
+\end{proof}
