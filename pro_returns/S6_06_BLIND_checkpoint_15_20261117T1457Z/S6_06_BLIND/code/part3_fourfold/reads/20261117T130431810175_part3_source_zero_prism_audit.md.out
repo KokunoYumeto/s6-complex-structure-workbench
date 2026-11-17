@@ -1,0 +1,330 @@
+1: # Independent audit of the default negative-fan source-zero prisms
+2: 
+3: This is a separate working audit of the explicit local cone collections
+4: in `notes/part3_source_zero_prism_working.md`. It does not promote a
+5: global K39 filling or assign a source-loop return. The calculation uses
+6: only the current explicit matrices, rays, and staircase tetrahedra.
+7: 
+8: The default I-boundary marking is the negative diagonal, with
+9: \(u=e_1,v=-e_2\) in the I and E sectors. The earlier positive-diagonal
+10: variant is a valid separate fan construction and is preserved completely
+11: in `notes/part3_source_zero_prism_positive_audit.md` and the matching
+12: `source_zero_prism_positive_audit` certificate files. The change here
+13: retains the actual default boundary marking, not a silent identification
+14: of the two fans.
+15: 
+16: The degree/support argument passes. In addition, the noncollapsed
+17: cones, together with all their faces, already form a fan in each of
+18: the three sectors. The collapsed cones in either rank-one sector are
+19: existing faces of the noncollapsed cones. A periodic common refinement
+20: of the three H-boundary fans, with compatible rational integral-sector
+21: refinements, is constructed below. The unit action, quotient properness,
+22: and analytic cap attachment remain separate steps.
+23: 
+24: ## PF.1. Exact domain, slice map, and the degree argument
+25: 
+26: Keep the actual integer pairs \((a,b)=(1,2),(2,1)\), the integer
+27: \(N>1\), and
+28: \[
+29:  I=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad
+30:  W=\begin{pmatrix}1&b\\-a&-2\end{pmatrix},\quad
+31:  E=\begin{pmatrix}0&0\\0&N\end{pmatrix},\quad
+32:  H=\begin{pmatrix}2&b\\-a&N-1\end{pmatrix}.
+33: \]
+34: For each pair \((P_0,H)\), the original rays and action are
+35: \[
+36:  R_0(n)=(P_0n,1,0),\quad R_1(n)=(Hn,0,1),\quad
+37:  T_m(x,r,s)=(x+rP_0m+sHm,r,s).                         \tag{PF.1}
+38: \]
+39: All geometric inspection changes below leave these integral vectors
+40: unchanged; they are explicitly rational linear maps used to inspect
+41: their cones.
+42: 
+43: Use \(u=e_1,v=-e_2\) in the I and E sectors, and
+44: \(u=e_1,v=e_2-be_1\) in W. Start with the same staircase cones
+45: for \(P_0=P_1=I\). On
+46: \(r+s=1\) they are exactly the standard triangulation of
+47: \(\mathbb R^2\times[0,1]\). The two unit-square triangles
+48: have ordered vertices \((0,u,u+v)\), \((0,v,u+v)\), and
+49: the three tetrahedra on each are those in the root note. The common
+50: diagonal of every vertical rectangle agrees on adjacent prisms, so
+51: this is a face-to-face domain triangulation.
+52: 
+53: Linearly map its vertices to (PF.1). At height \(s=t\), the
+54: map is \(F_t\), with literal periodicity
+55: \[
+56:  F_t(x+m)=F_t(x)+P(t)m,\qquad P(t)=(1-t)P_0+tH.          \tag{PF.2}
+57: \]
+58: Its difference from \(P(t)x\) is periodic and bounded. The
+59: three determinants, at arbitrary positive \(r,s\), are
+60: \[
+61:  \begin{array}{ll}
+62:  P_0=I:&r^2+(N+1)rs+2Ns^2,\\
+63:  P_0=W:&(N-1)rs+2Ns^2,\\
+64:  P_0=E:&2Nrs+2Ns^2.
+65:  \end{array}                                             \tag{PF.3}
+66: \]
+67: They are positive. Hence (PF.2) descends to the stated two-torus
+68: map and the straight-line periodic homotopy gives degree one.
+69: On every noncollapsed slice piece its Jacobian is the signed
+70: four-dimensional determinant ratio. These are exactly
+71: \[
+72:  \begin{array}{c|cc}
+73:   & (0,u,u+v)&(0,v,u+v)\\ \hline
+74:  (I,H)&(1,N-1,2N)&(1,2,2N)\\
+75:  (W,H)&(0,N-1,2N)&(0,0,2N)\\
+76:  (E,H)&(0,0,2N)&(0,2N,2N).
+77:  \end{array}                                             \tag{PF.4}
+78: \]
+79: Here each determinant is divided by the determinant of the same
+80: domain cone, so its orientation sign is fixed rather than inferred
+81: from an absolute determinant.
+82: 
+83: Outside the finite polygonal images of lower-dimensional and collapsed
+84: pieces on the quotient torus, every preimage lies in a noncollapsed
+85: piece and has positive local degree. Degree one therefore gives one
+86: preimage. It follows that distinct noncollapsed image interiors do
+87: not overlap. Their closures cover each slice: their finite union on
+88: the quotient is closed and contains the dense set of these regular
+89: values. Lifting and using the bounded periodic difference proves full
+90: support in the whole plane. This verifies exactly the root note's
+91: degree/support statement. It does not claim raw injectivity in a
+92: rank-one sector.
+93: 
+94: ## PF.2. The I,H sector has exact common faces
+95: 
+96: Every entry in its determinant row is strictly positive. Triangulate
+97: the slice parallelograms by a diagonal, without changing their affine
+98: maps. In the resulting planar triangulation, an edge cannot fold:
+99: the two positively oriented adjacent triangles map to opposite sides
+100: of its image. At a vertex, the images of successive positively
+101: oriented sectors turn through strictly positive angles less than
+102: \(\pi\). Their closed link has positive integral winding, so
+103: the local degree is a positive integer. The same is true in an edge
+104: or face interior.
+105: 
+106: The global degree is one. The sum of these positive local degrees
+107: over any fibre is consequently one, including values on the images
+108: of edges and vertices. Equivalently one can take a small regular
+109: value in the link disc. Thus every point has exactly one preimage
+110: and local degree one. Properness follows from (PF.2); the slice map
+111: is a homeomorphism. The endpoint slice maps are the invertible
+112: linear maps \(I\) and \(H\), and the same conclusion holds
+113: there.
+114: 
+115: The full map preserves the two heights and is homogeneous. It is
+116: therefore injective on the union of the original cones. For two
+117: domain cones \(C,D\),
+118: \[
+119:                     F(C)\cap F(D)=F(C\cap D).            \tag{PF.5}
+120: \]
+121: Their original intersection is a common face, and each cone map is
+122: linear and invertible. Thus (PF.5) is a common face of the two image
+123: cones. This proves the fan property for the I,H sector without an
+124: additional refinement.
+125: 
+126: ## PF.3. A literal strip model for both rank-one sectors
+127: 
+128: For W use the prescribed basis
+129: \(u=e_1,v=e_2-be_1\). Then \(P_0v=0\). For E exchange the
+130: two prescribed basis vectors, so \(u=-e_2,v=e_1\), and again \(P_0v=0\).
+131: Exchanging these vectors only exchanges the two triangles in the
+132: given collection; it does not change its cones. Put
+133: \[
+134:                    p=P_0u,\qquad A=Hu,\qquad B=Hv.
+135: \]
+136: Apply the rational inspection map with basis \((A,B)\) in the
+137: two fibre coordinates. It sends \(A\) to \((1,0)\),
+138: \(B\) to \((0,1)\), and \(p\) to \((c,d)\), where
+139: \[
+140:  \begin{array}{c|cc}
+141:        &c&d\\ \hline
+142:  W&(N-1)/(2N)&-a/(2N)\\
+143:  E&1&+b/2.
+144:  \end{array}                                             \tag{PF.6}
+145: \]
+146: In each case \(c>0\). This map is not declared unimodular;
+147: all actual rays remain (PF.1) in their original lattice.
+148: 
+149: At fixed \(r,s>0\), the two top-triangle cones give precisely
+150: the square
+151: \[
+152:                 Q=[0,s](1,0)+[0,s](0,1),
+153: \]
+154: split along its diagonal from \((0,0)\) to \((s,s)\).
+155: The one noncollapsed mixed cone gives the parallelogram
+156: \[
+157:            J=(s,0)+[0,r](c,d)+[0,s](0,1).                \tag{PF.7}
+158: \]
+159: These are the three noncollapsed maximal slice cells of the original
+160: prism collection, not a replacement collection. Their union is
+161: exactly
+162: \[
+163:  \begin{split}
+164:  0\le x\le L:=s+rc,&\qquad f(x)\le y\le f(x)+s,\\
+165:  f(x)&=\begin{cases}
+166:        0,&0\le x\le s,\\
+167:        (d/c)(x-s),&s\le x\le s+rc.
+168:        \end{cases}
+169:  \end{split}                                             \tag{PF.8}
+170: \]
+171: The actual periods in these coordinates are
+172: \[
+173:                  rP_0u+sHu=(L,rd),\qquad
+174:                  rP_0v+sHv=(0,s).                        \tag{PF.9}
+175: \]
+176: They are exactly the translations used to tile by (PF.8).
+177: 
+178: Here is an explicit inverse cell assignment. For a point off the
+179: displayed boundaries, choose the unique integer \(i\) with
+180: \(0<x-iL<L\), then the unique integer \(j\) with
+181: \[
+182:   f(x-iL)<y-i rd-js<f(x-iL)+s.
+183: \]
+184: The point belongs to the cell labelled \(iu+jv\). Within that
+185: cell, \(x-iL<s\) places it in Q, where the single diagonal
+186: chooses one of the two triangles. For \(x-iL>s\), its actual
+187: parallelogram coordinates are
+188: \[
+189:  \alpha=\frac{x-iL-s}{rc},\qquad
+190:  \beta=\frac{y-i rd-js-(d/c)(x-iL-s)}s,
+191:                  \qquad 0<\alpha,\beta<1.                \tag{PF.10}
+192: \]
+193: This proves both uniqueness and coverage with the exact period maps.
+194: 
+195: All boundary identifications in this tiling are whole faces. The
+196: square and J share their full vertical edge. The right edge of J
+197: is the left edge of the next square, under \((L,rd)\).
+198: The top piecewise-linear boundary is the bottom boundary translated
+199: by \((0,s)\), and the break at \(x=s\) occurs at exactly the
+200: same place on both sides. The square's diagonal meets these edges
+201: only at its two endpoints. Thus no T-junction or partial-edge
+202: intersection remains. This explicitly proves common faces for all
+203: positive height ratios, not merely disjoint interiors.
+204: 
+205: The ray identifications are independent of \(r,s\). Writing
+206: the cell label as zero, the two collapsed bottom tetrahedra both
+207: have the image face
+208: \[
+209:        \operatorname{cone}(R_0(0),R_0(u),R_1(u+v)),        \tag{PF.11}
+210: \]
+211: because \(R_0(v)=R_0(0)\) and
+212: \(R_0(u+v)=R_0(u)\). This is the upper face of J and the
+213: lower face of its v-translate. The other collapsed mixed tetrahedron
+214: has the image face
+215: \[
+216:        \operatorname{cone}(R_0(0),R_1(v),R_1(u+v)),        \tag{PF.12}
+217: \]
+218: the top edge of Q and the bottom edge of its v-translate. Equations
+219: (PF.11)--(PF.12) show that omitting the collapsed maximal cones and
+220: then adjoining the ordinary faces loses no ray or required face.
+221: 
+222: The remaining face incidences are also literal common-ray subsets:
+223: the diagonal of Q uses \(R_0(0),R_1(0),R_1(u+v)\);
+224: the Q/J edge uses \(R_0(0),R_1(u),R_1(u+v)\);
+225: the J/next-Q edge uses \(R_0(u),R_1(u),R_1(u+v)\).
+226: Together with their period translates they give every interior
+227: facet. The rank-one base face has just the rays \(R_0(iu)\)
+228: and intervals between consecutive such rays; the other base face
+229: has the ordinary H-triangle fan. These are faces of the same cones.
+230: This completes the common-face proof, including the height boundary.
+231: 
+232: ## PF.4. A compatible periodic refinement on the common H boundary
+233: 
+234: Apply \(H^{-1}\) on the H-height-one slice, solely to describe
+235: its geometry. The I and E sectors give the negative-diagonal unit-square
+236: triangulation \(\mathcal T_-\), with basis \(e_1,-e_2\); W gives
+237: \(\mathcal T_b\), with basis \(e_1,e_2-be_1\). The latter
+238: is the shear of the positive-diagonal square triangulation, not the
+239: shear of \(\mathcal T_-\). For \(b=1\) it already equals
+240: \(\mathcal T_-\). Both are
+241: \(\mathbb Z^2\)-periodic, locally finite, rational triangulations.
+242: Take their literal overlay
+243: \[
+244:        \mathcal P=\{\sigma\cap\tau:
+245:                    \sigma\in\mathcal T_-,\ 
+246:                    \tau\in\mathcal T_b\},              \tag{PF.13}
+247: \]
+248: including all its faces and omitting empty intersections. This is
+249: an exact common polyhedral refinement. Indeed a face of a member
+250: is obtained by an active supporting inequality from one of its
+251: two factors; intersecting two members activates the corresponding
+252: common faces in the two original complexes. Their intersection is
+253: therefore a common face. Local finiteness follows because a compact
+254: set meets finitely many triangles in each factor. The periodic
+255: quotient has finitely many cells, and every vertex is rational.
+256: 
+257: The certificate computes this overlay with rational arithmetic for
+258: both actual b values, on a fundamental square and its neighbouring
+259: period translates. It checks area one and every common-face
+260: intersection. It retains the rational vertices; they are not silently
+261: replaced by lattice vertices.
+262: 
+263: Coning the cells of \(H\mathcal P\) in the H boundary gives
+264: the common rational boundary fan. Replace each rational ray by its
+265: primitive integral generator in the original four-dimensional
+266: lattice. This is an exact equality of the ray, not a change of the
+267: lattice. If a simplicial refinement is wanted, use the barycentre
+268: of each polygonal cell and the induced boundary subdivisions,
+269: periodically.
+270: 
+271: For the E sector the other base boundary must also retain the actual
+272: source chain. Its raw rays are \((0,Nj,1,0)\). Subdivide them by
+273: all the primitive rays
+274: \[
+275:                          (0,j,1,0),\qquad j\in\mathbb Z.
+276:                                                                \tag{PF.14}
+277: \]
+278: The scalar period sends \(j\) to \(j+N\), exactly as in the
+279: actual E-boundary chain; the other kernel period and its unit are
+280: retained. If \(\xi_E\) is this primitive base height character
+281: and \(V\) the vertical torus character, the adjacent charts are
+282: literally
+283: \[
+284:  X_j=V\xi_E^{-j},\qquad Y_j=\xi_E^{j+1}/V,
+285:                          \qquad X_jY_j=\xi_E.             \tag{PF.15}
+286: \]
+287: The period \(V\mapsto c\xi_E^N V\), with its actual nonzero
+288: unit c retained, carries these to the j+N chart by
+289: \(X_{j+N}'=cX_j\), \(Y_{j+N}'=c^{-1}Y_j\). Thus this is
+290: exactly the stated \(X_jY_j=v\) chain in its primitive base
+291: coordinate, rather than only a refinement of an abstract line.
+292: There are N ray orbits under that scalar period. All heights in
+293: (PF.14) are one; no extra height is inserted on this E boundary.
+294: 
+295: There is an explicit compatible extension to each sector fan.
+296: Prescribe the common subdivision on its H subfan and (PF.14) on
+297: its E subfan; keep the I and W base subfans as prescribed. The H
+298: and E subfans meet only at the zero cone, so these prescriptions
+299: agree on their intersection. Process the remaining original faces
+300: in increasing dimension. Once the boundary of a face F is subdivided, choose the
+301: interior ray equal to the sum of F's primitive ray generators and
+302: cone its subdivided boundary from that ray. On the slice \(r+s=1\)
+303: this is the usual radial decomposition of a convex polytope from
+304: an interior point: each ray from that point meets the boundary
+305: once, so it covers and has common faces. Shared faces were processed
+306: first and hence receive the same subdivision from both sides.
+307: 
+308: Every period map in (PF.1) is unimodular and carries primitive ray
+309: generators to primitive ray generators. Thus the chosen sums and
+310: the entire inductive construction are period-equivariant. There
+311: are finitely many face orbits, so the construction has finitely
+312: many subdivision types. This proves compatibility on H and on the actual E chain while
+313: retaining the integral period actions and every specified boundary unit. It does not assert
+314: that the resulting cones are unimodular; a separate lattice
+315: resolution may be applied to them with its own proof.
+316: 
+317: ## PF.5. Exact audit boundary
+318: 
+319: The local fan, common-H-refinement, and prescribed E-chain claims above
+320: pass the independent geometric audit. Root independently passed PF.1--4
+321: and requested the explicit E-boundary refinement (PF.14)--(PF.15), which
+322: is retained in the same relative coning construction. The raw rank-one prism map still collapses whole
+323: tetrahedra; no injectivity statement about that map is restored.
+324: The fans are locally finite over compact subsets of the strictly
+325: positive height sector and near the full-rank H face. On a rank-one
+326: base face the kernel-period unit and the properness of its analytic
+327: quotient remain exactly the separate issue identified in the root
+328: note. This audit supplies no omitted filling point, global proper
+329: family, link multiplicity, characteristic number, or return class.
+330: 

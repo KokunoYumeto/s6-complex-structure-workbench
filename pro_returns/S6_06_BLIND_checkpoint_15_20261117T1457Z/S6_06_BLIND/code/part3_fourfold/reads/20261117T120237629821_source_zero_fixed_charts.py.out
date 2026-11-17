@@ -1,0 +1,142 @@
+1: #!/usr/bin/env python3
+2: """Exact physical-delta charts of the exported regular K39 fans.
+3: 
+4: Every entry comes from the literal determinant-one cone matrix.  This
+5: does not replace analytic base-unit transitions by monomials, compute
+6: normal Chern classes, or assign a completed-family return.
+7: """
+8: from pathlib import Path
+9: from datetime import datetime, timezone
+10: from collections import Counter,defaultdict
+11: import argparse,json,gc
+12: 
+13: ROOT=Path(__file__).resolve().parents[2]
+14: def det3(m):
+15:  return (m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])
+16:          -m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])
+17:          +m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]))
+18: def inverse_det1(C):
+19:  A=[[0]*4 for _ in range(4)]
+20:  for i in range(4):
+21:   for j in range(4):
+22:    A[i][j]=(-1)**(i+j)*det3(
+23:        [[C[r][c] for c in range(4) if c!=i]
+24:                     for r in range(4) if r!=j])
+25:  assert all(sum(C[i][k]*A[k][j] for k in range(4))==int(i==j)
+26:             for i in range(4) for j in range(4))
+27:  return A
+28: def do_case(a,b,N):
+29:  src=ROOT/'code/part3'/f'source_zero_regular_fan_{a}_{b}_{N}.json'
+30:  with (ROOT/'records/literature_fourfold.md').open('a') as f:
+31:   f.write('\n- '+datetime.now(timezone.utc).isoformat()+' — Opened '
+32:           +str(src.relative_to(ROOT))+'. Reason: exact fixed-chart and '
+33:           'normal-weight calculation from actual regular cone data. Material: '
+34:           'primitive vectors, ordered cone matrices, canonical face periods '
+35:           'and vertex permutations; no characteristic value inferred.\n')
+36:  d=json.loads(src.read_text())
+37:  assert d['physical_delta']==[0,1,0,0]
+38:  ray={z['id']:z for sec in d['literal_rays'].values() for z in sec}
+39:  face={z['id']:z for z in d['face_orbits']}
+40:  lookup={}
+41:  for f in d['face_orbits']:
+42:   for occ in f['occurrences']:
+43:    key=(occ['cone'],tuple(occ['local_columns']))
+44:    assert key not in lookup
+45:    lookup[key]=(f['id'],occ['vertex_permutation_to_canonical'],
+46:                 occ['period_from_canonical'])
+47:  components={}
+48:  charts=[]
+49:  checks=0
+50:  weight_types=Counter()
+51:  dimension_charts=Counter()
+52:  for c in d['maximal_cones']:
+53:   vec=[ray[k]['vector'] for k in c['ordered_rays']]
+54:   C=[[vec[j][i] for j in range(4)] for i in range(4)]
+55:   A=inverse_det1(C); checks+=16
+56:   weights=[A[i][1] for i in range(4)]
+57:   assert [sum(C[i][j]*weights[j] for j in range(4))
+58:           for i in range(4)]==[0,1,0,0]; checks+=4
+59:   nonzero=tuple(i for i,w in enumerate(weights) if w)
+60:   zeros=tuple(i for i,w in enumerate(weights) if not w)
+61:   rank=len(nonzero)
+62:   assert 2<=rank<=4
+63:   if rank<4:
+64:    fid,perm,period=lookup[(c['id'],nonzero)]
+65:    f=face[fid]
+66:    assert f['dimension']==rank
+67:    nw=[0]*rank
+68:    for j,idx in enumerate(nonzero): nw[perm[j]]=weights[idx]
+69:    fv=f['canonical_vectors']
+70:    assert [sum(fv[j][i]*nw[j] for j in range(rank))
+71:            for i in range(4)]==[0,1,0,0]; checks+=4
+72:    tag=f['boundary_tag']; stab=f['period_stabilizer_basis']
+73:    sector=f['orbit_sector']
+74:    face_period={'period_from_canonical':period,
+75:                 'vertex_permutation_to_canonical':perm}
+76:   else:
+77:    fid='point_'+c['id']; nw=weights[:]; tag=None;stab=[];sector=c['sector']
+78:    fv=vec;face_period={'period_from_canonical':[0,0],
+79:                       'vertex_permutation_to_canonical':list(range(4))}
+80:   if fid not in components:
+81:    components[fid]={
+82:       'id':fid,'complex_dimension':4-rank,
+83:       'minimal_face_dimension':rank,
+84:       'normal_weights_canonical_order':nw,
+85:       'boundary_tag':tag,'orbit_sector':sector,
+86:       'canonical_vectors':fv,'period_stabilizer_basis':stab,
+87:       'charts':[]}
+88:   else:
+89:    assert components[fid]['normal_weights_canonical_order']==nw
+90:    assert components[fid]['complex_dimension']==4-rank
+91:    checks+=2
+92:   components[fid]['charts'].append(c['id'])
+93:   dimension_charts[4-rank]+=1
+94:   weight_types[tuple(sorted(weights))]+=1
+95:   charts.append({
+96:      'id':c['id'],'sector':c['sector'],'component':fid,
+97:      'ordered_rays':c['ordered_rays'],'matrix':C,
+98:      'dual_character_rows':A,'physical_weights':weights,
+99:      'zero_weight_columns':zeros,'normal_columns':nonzero,
+100:      'source_parameter_orders':[ray[k]['source_parameter_order']
+101:                                 for k in c['ordered_rays']],
+102:      **face_period})
+103:  compdim=Counter(c['complex_dimension'] for c in components.values())
+104:  tags=Counter((c['complex_dimension'],str(c['boundary_tag']))
+105:               for c in components.values())
+106:  normal_types=Counter((c['complex_dimension'],
+107:                        tuple(sorted(c['normal_weights_canonical_order'])))
+108:                       for c in components.values())
+109:  summary={
+110:    'utc':datetime.now(timezone.utc).isoformat(),
+111:    'status':'PASS: exact fixed-chart weights and minimal-face orbit identifications',
+112:    'parameters':d['parameters'],'source':str(src.relative_to(ROOT)),
+113:    'checks':checks,'chart_count':len(charts),
+114:    'component_count_in_local_fan_quotient':len(components),
+115:    'complex_dimension_component_counts':dict(sorted(compdim.items())),
+116:    'complex_dimension_chart_counts':dict(sorted(dimension_charts.items())),
+117:    'boundary_tag_component_counts':[
+118:        {'complex_dimension':dim,'tag':tag,'count':n}
+119:        for (dim,tag),n in sorted(tags.items())],
+120:    'normal_weight_types':[
+121:        {'complex_dimension':dim,'weights':w,'count':n}
+122:        for (dim,w),n in sorted(normal_types.items())],
+123:    'scope':'Local regular-fan fixed components with exact period identifications. '
+124:            'Ordinary-source/cap continuation and full analytic base-unit normal '
+125:            'transitions remain to be glued before normal Chern classes or return.'
+126:  }
+127:  stem=ROOT/'code/part3_fourfold'/f'source_zero_fixed_charts_{a}_{b}_{N}'
+128:  Path(str(stem)+'.json').write_text(json.dumps(
+129:     {'summary':summary,'components':list(components.values()),'charts':charts},
+130:     separators=(',',':'))+'\n')
+131:  Path(str(stem)+'_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+132:  print(json.dumps({k:v for k,v in summary.items()
+133:                    if k!='normal_weight_types'},indent=2),flush=True)
+134:  del d,ray,face,lookup,components,charts
+135:  gc.collect()
+136:  return summary
+137: if __name__=='__main__':
+138:  p=argparse.ArgumentParser()
+139:  p.add_argument('--case',choices=['2,1,6','1,2,8','all'],default='all')
+140:  args=p.parse_args()
+141:  cases=[(2,1,6),(1,2,8)] if args.case=='all' else [tuple(map(int,args.case.split(',')))]
+142:  for case in cases: do_case(*case)
