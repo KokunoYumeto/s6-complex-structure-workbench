@@ -1,0 +1,242 @@
+1: #!/usr/bin/env python3
+2: """Actual H-unit normal degrees and compact H fixed-component residues.
+3: 
+4: Uses w=q2/q1 on the exceptional base P1, with marked points 0,1,infinity.
+5: The exact q1-period units are w^(n1+b*n2) on Z and
+6: w^(-a*n1-2*n2)(1-w)^(N*n2) on V.  All original-polydisc units
+7: restrict to nonzero constants.  This retains the cap-independent H
+8: transition data, rather than replacing three base charts by a toric P1.
+9: """
+10: from pathlib import Path
+11: from datetime import datetime,timezone
+12: from fractions import Fraction as Q
+13: from collections import defaultdict,Counter
+14: import argparse,json,gc
+15: from source_zero_interior_residues import residue_at_chart,as_json
+16: 
+17: ROOT=Path(__file__).resolve().parents[2]
+18: 
+19: def det3(m):
+20:     return (m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])
+21:            -m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])
+22:            +m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]))
+23: 
+24: def inverse3(B):
+25:     D=det3(B)
+26:     assert abs(D)==1
+27:     A=[]
+28:     for i in range(3):
+29:         row=[]
+30:         for j in range(3):
+31:             m=[[B[r][c] for c in range(3) if c!=i]
+32:                            for r in range(3) if r!=j]
+33:             row.append(((-1)**(i+j)*(m[0][0]*m[1][1]-m[0][1]*m[1][0]))//D)
+34:         A.append(row)
+35:     assert all(sum(B[i][k]*A[k][j] for k in range(3))==int(i==j)
+36:                for i in range(3) for j in range(3))
+37:     return A
+38: 
+39: def log_open(path,material):
+40:     with (ROOT/'records/literature_fourfold.md').open('a') as f:
+41:         f.write('\n- '+datetime.now(timezone.utc).isoformat()+' — Opened '
+42:                 +str(path.relative_to(ROOT))+'. Reason: actual H-base normal '
+43:                 'transition and characteristic calculation. Material: '
+44:                 +material+'; no global source return assigned.\n')
+45: 
+46: def surface_poly(w,x,p1):
+47:     u,v=map(Q,w);x,y=map(Q,x)
+48:     c=4-u*u-v*v
+49:     A=x/u+y/v
+50:     B=x*x/(u*u)+x*y/(u*v)+y*y/(v*v)
+51:     return (c*B+2*(u*x+v*y)*A-(p1+x*x+y*y))/(24*u*v)
+52: 
+53: def surface_curve_term(w,beta,degrees,eta,dt):
+54:     # A quadratic polynomial's exact first-order coefficient on h^2=0.
+55:     R0=surface_poly(w,beta,Q(eta*eta))
+56:     plus=surface_poly(w,[beta[i]+degrees[i] for i in range(2)],
+57:                       Q(eta*eta+2*eta*dt))
+58:     minus=surface_poly(w,[beta[i]-degrees[i] for i in range(2)],
+59:                        Q(eta*eta-2*eta*dt))
+60:     Rh=(plus-minus)/2
+61:     return Rh/eta-R0*dt/(eta*eta)
+62: 
+63: def do_case(a,b,N):
+64:     fanpath=ROOT/'code/part3'/f'source_zero_regular_fan_{a}_{b}_{N}.json'
+65:     log_open(fanpath,'common-H rank-three faces, actual periods and permutations')
+66:     fan=json.loads(fanpath.read_text())
+67:     hfaces=[f for f in fan['face_orbits']
+68:              if f['dimension']==3 and f['boundary_tag']=='H']
+69:     del fan
+70:     gc.collect()
+71:     chartpath=ROOT/'code/part3_fourfold'/f'source_zero_fixed_charts_{a}_{b}_{N}.json'
+72:     log_open(chartpath,'ordered dual characters and physical fixed-component IDs')
+73:     d=json.loads(chartpath.read_text())
+74:     charts={c['id']:c for c in d['charts']}
+75:     components={c['id']:c for c in d['components']}
+76:     hcomp={k:c for k,c in components.items() if c['boundary_tag']=='H'}
+77:     hrows=[]
+78:     checks=0
+79:     for f in hfaces:
+80:         vec=f['canonical_vectors']
+81:         assert all(v[2]==0 for v in vec)
+82:         B=[[vec[j][i] for j in range(3)] for i in (0,1,3)]
+83:         A=inverse3(B)
+84:         degrees=[0]*3
+85:         contributions=[]
+86:         sectors=[]
+87:         cid=None
+88:         for occ in f['occurrences']:
+89:             c=charts[occ['cone']]
+90:             sectors.append(c['sector'])
+91:             if cid is None: cid=c['component']
+92:             assert cid==c['component']
+93:             assert cid in hcomp
+94:             n1,n2=occ['period_from_canonical']
+95:             hn=[2*n1+b*n2,-a*n1+(N-1)*n2]
+96:             ds=[None]*3
+97:             for k,i in enumerate(occ['local_columns']):
+98:                 j=occ['vertex_permutation_to_canonical'][k]
+99:                 p,q,r,s=c['dual_character_rows'][i]
+100:                 assert [p,q]==A[j][:2]
+101:                 assert s+p*hn[0]+q*hn[1]==A[j][2]
+102:                 aw=p*(n1+b*n2)+q*(-a*n1-2*n2)
+103:                 ao=N*n2*q
+104:                 if c['sector']=='W':
+105:                     degree=aw+r
+106:                 elif c['sector']=='E':
+107:                     degree=ao+r
+108:                 else:
+109:                     assert c['sector']=='I'
+110:                     degree=-aw+r-s-ao
+111:                 degrees[j]+=degree
+112:                 ds[j]=degree
+113:                 checks+=3
+114:             contributions.append({'sector':c['sector'],'cone':c['id'],
+115:                                   'period':[n1,n2],
+116:                                   'orders_at_marked_point':ds})
+117:         assert sorted(sectors)==['E','I','W'],(f['id'],sectors)
+118:         hrows.append({'id':f['id'],'component':cid,'normal_dual_rows':A,
+119:                       'normal_degrees':degrees,
+120:                       'physical_weights':[row[1] for row in A],
+121:                       'marked_point_orders':contributions})
+122:         checks+=4
+123:     bycomp=defaultdict(list)
+124:     for row in hrows: bycomp[row['component']].append(row)
+125:     aux=[]
+126:     K=2
+127:     while len(aux)<2:
+128:         good=True
+129:         for cid,c in hcomp.items():
+130:             if c['complex_dimension']==1: continue
+131:             for h in bycomp[cid]:
+132:                 w=h['physical_weights']
+133:                 zero=[i for i,v in enumerate(w) if not v]
+134:                 assert len(zero)==1
+135:                 i=zero[0]
+136:                 p,q,_=h['normal_dual_rows'][i]
+137:                 if p+K*q==0: good=False
+138:             for name in c['charts']:
+139:                 ch=charts[name]
+140:                 bt=[ch['dual_character_rows'][i][0]+K*ch['dual_character_rows'][i][1]
+141:                     for i in ch['zero_weight_columns']]
+142:                 # Two zero tangent weights would make the auxiliary circle trivial
+143:                 # on the surface; one is precisely a common-H fixed-curve chart.
+144:                 if all(x==0 for x in bt): good=False
+145:         if good: aux.append(K)
+146:         K+=1
+147:         assert K<1000
+148:     vals=[]
+149:     topologies=[]
+150:     for K in aux:
+151:         sums={}
+152:         topo={}
+153:         for cid,c in hcomp.items():
+154:             value=Q(0)
+155:             if c['complex_dimension']==1:
+156:                 assert len(bycomp[cid])==1
+157:                 h=bycomp[cid][0]
+158:                 w=list(map(Q,h['physical_weights']))
+159:                 deg=h['normal_degrees']
+160:                 assert all(w)
+161:                 c0=4-sum(z*z for z in w)
+162:                 from math import prod
+163:                 value=-sum((c0/z+2*z)*r for z,r in zip(w,deg))/(24*prod(w))
+164:             else:
+165:                 assert c['complex_dimension']==2
+166:                 euler=0
+167:                 c1square=Q(0)
+168:                 fixed_point_count=0
+169:                 for name in c['charts']:
+170:                     ch=charts[name]
+171:                     beta=[r[0]+K*r[1] for r in ch['dual_character_rows']]
+172:                     bt=[beta[i] for i in ch['zero_weight_columns']]
+173:                     if all(bt):
+174:                         value+=residue_at_chart(ch['physical_weights'],beta)
+175:                         euler+=1
+176:                         fixed_point_count+=1
+177:                         c1square+=Q(sum(bt)**2,bt[0]*bt[1])
+178:                     else:
+179:                         assert bt.count(0)==1
+180:                 for h in bycomp[cid]:
+181:                     w=h['physical_weights']
+182:                     beta=[r[0]+K*r[1] for r in h['normal_dual_rows']]
+183:                     deg=h['normal_degrees']
+184:                     nz=[i for i,v in enumerate(w) if v]
+185:                     iz=[i for i,v in enumerate(w) if not v]
+186:                     assert len(nz)==2 and len(iz)==1
+187:                     j=iz[0]
+188:                     value+=surface_curve_term([w[i] for i in nz],
+189:                        [beta[i] for i in nz],[deg[i] for i in nz],
+190:                        beta[j],deg[j])
+191:                     euler+=2
+192:                     c1square+=deg[j]+4
+193:                 p1=c1square-2*euler
+194:                 assert p1.denominator==1 and p1.numerator%3==0
+195:                 assert (c1square+euler).denominator==1
+196:                 assert (c1square+euler).numerator%12==0
+197:                 topo[cid]={'euler':euler,'c1_square':as_json(c1square),
+198:                            'p1':as_json(p1),'signature':int(p1/3),
+199:                            'holomorphic_euler':int((c1square+euler)/12),
+200:                            'aux_fixed_points':fixed_point_count,
+201:                            'aux_fixed_curves':len(bycomp[cid])}
+202:             sums[cid]=value
+203:         vals.append(sums);topologies.append(topo)
+204:     rows=[]
+205:     total=Q(0)
+206:     dims=defaultdict(Q)
+207:     for cid,c in hcomp.items():
+208:         assert vals[0][cid]==vals[1][cid],(cid,vals[0][cid],vals[1][cid])
+209:         assert topologies[0].get(cid)==topologies[1].get(cid)
+210:         value=vals[0][cid]
+211:         total+=value;dims[c['complex_dimension']]+=value
+212:         rows.append({'id':cid,'complex_dimension':c['complex_dimension'],
+213:                      'residue':as_json(value),
+214:                      'topology':topologies[0].get(cid)})
+215:         checks+=2
+216:     summary={
+217:        'utc':datetime.now(timezone.utc).isoformat(),
+218:        'parameters':{'a':a,'b':b,'N':N},
+219:        'status':'PASS: exact three-point H-unit degrees and two-circle localization',
+220:        'checks':checks,'H_component_count':len(rows),
+221:        'H_full_fibre_torus_fixed_curves':len(hrows),
+222:        'auxiliary_fibre_cocharacters':[[1,K,0,0] for K in aux],
+223:        'H_normal_link_residue':as_json(total),
+224:        'dimension_totals':{str(k):as_json(v) for k,v in sorted(dims.items())},
+225:        'scope':'Compact H fixed components with the actual w,1-w transition '
+226:                'units, complex normal orientations and physical delta. '
+227:                'I/E continuation and global return remain separate.'}
+228:     stem=ROOT/'code/part3_fourfold'/f'source_zero_h_residues_{a}_{b}_{N}'
+229:     Path(str(stem)+'.json').write_text(json.dumps(
+230:         {'summary':summary,'H_fixed_curves':hrows,'components':rows},
+231:         separators=(',',':'))+'\n')
+232:     Path(str(stem)+'_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+233:     print(json.dumps(summary,indent=2),flush=True)
+234:     del d,charts,components,hcomp,hrows
+235:     gc.collect()
+236: 
+237: if __name__=='__main__':
+238:     p=argparse.ArgumentParser()
+239:     p.add_argument('--case',choices=['2,1,6','1,2,8','all'],default='all')
+240:     args=p.parse_args()
+241:     cases=[(2,1,6),(1,2,8)] if args.case=='all' else [tuple(map(int,args.case.split(',')))]
+242:     for case in cases: do_case(*case)

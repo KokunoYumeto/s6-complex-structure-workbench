@@ -1,0 +1,13 @@
+1: #!/bin/bash
+2: set -eu
+3: root_dir="$(cd "$(dirname "$0")/.." && pwd)"
+4: runtime_dir="$(dirname "$root_dir")/tex_runtime"
+5: export TEXMF='{/usr/share/texlive/texmf-dist,/usr/share/texmf}'
+6: export TEXFORMATS="$runtime_dir"
+7: export TEXINPUTS="$runtime_dir/packages//:"
+8: export LUAINPUTS="$runtime_dir/packages//:"
+9: cd "$root_dir"
+10: lualatex -interaction=nonstopmode -halt-on-error S6_06_BLIND_paper.tex
+11: bibtex S6_06_BLIND_paper
+12: lualatex -interaction=nonstopmode -halt-on-error S6_06_BLIND_paper.tex
+13: lualatex -interaction=nonstopmode -halt-on-error S6_06_BLIND_paper.tex

@@ -1,0 +1,12 @@
+import fs from "node:fs/promises";
+import { Workbook } from "@oai/artifact-tool";
+const input="/workspace/scratch/e7a4d66da343/background/data/stated_values.csv";
+const output="/workspace/scratch/e7a4d66da343/S6_06_BLIND/code/part3/stated_values_readonly.json";
+const wb=await Workbook.fromCSV(await fs.readFile(input,"utf8"),{sheetName:"Statements"});
+const sh=wb.worksheets.getItemAt(0);
+const values=sh.getUsedRange().values;
+const [header,...body]=values;
+const rows=body.filter(r=>r.some(x=>x!==null&&x!==""&&x!==undefined)).map(r=>Object.fromEntries(header.map((h,i)=>[h,r[i]])));
+await fs.writeFile(output,JSON.stringify({source:input,read_only:true,rows},null,2)+"\n");
+const selected=rows.filter(r=>/monodromy|Theta|Θ|Haefliger|mapping torus|D\.2\.(5|6|7|8|9|10|11|12)|B\.6\./i.test(r.statement+" "+r.id));
+console.log(JSON.stringify({rows:rows.length,selected},null,2));

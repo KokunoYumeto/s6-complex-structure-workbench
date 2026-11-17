@@ -1,0 +1,42 @@
+1: #!/usr/bin/env python3
+2: """Export the complete two-fan OS49 correction without altering the master."""
+3: from pathlib import Path
+4: from datetime import datetime,timezone
+5: import hashlib,json,re
+6: ROOT=Path(__file__).resolve().parents[2]
+7: source=ROOT/'notes/part3_os49_corrected_returns_working.md'
+8: now=datetime.now(timezone.utc).isoformat()
+9: with (ROOT/'records/literature_fourfold.md').open('a') as log:
+10:  log.write('\n- '+now+' — Opened '+str(source.relative_to(ROOT))+' and own results_mapping.json. Reason: separate K65 complete manuscript export. Material: actual two-fan source/cap/seam maps, independent positive page, full native trace, signed flop and shorter cyclic endpoint; no arbitrary-fan or negative integer claim.\n')
+11: raw=source.read_text()
+12: status='Proved' if '\n**Proved.**' in raw else 'Audit draft'
+13: statement=raw.split('## Statement\n',1)[1].split('## OR65.1.',1)[0]
+14: body='## OR65.1.'+raw.split('## OR65.1.',1)[1]
+15: def tex(s):
+16:  s=s.replace(r'\tag{OR65.',r'\tag{P3K.65.OR.').replace('(OR65.','(P3K.65.OR.')
+17:  s=s.replace(')--(P3K.65.',')--\\allowbreak (P3K.65.')
+18:  s=re.sub(r'^## (.+)$',lambda m:r'\par\medskip\noindent\textbf{'+m.group(1)+r'.}\par\nopagebreak[4]',s,flags=re.M)
+19:  s=re.sub(r'`([^`]+)`',lambda m:r'\path{'+m.group(1)+'}',s)
+20:  return s.strip()+'\n'
+21: out='\\begin{statement}{P3K.65}{'+status+'}\n'+tex(statement)+r'\end{statement}'+'\n'+r'\begin{proof}'+'\n'+tex(body)+r'\end{proof}'+'\n'
+22: assert not re.search(r'(?<!\\)#',out)
+23: (ROOT/'notes/part3_os49_corrected_returns.tex').write_text(out)
+24: (ROOT/'notes/part3_os49_corrected_returns.md').write_text('# P3K.65. The two actual OS49 fan returns\n\n'+statement+'\n\n**Proof.**\n\n'+body+'\n\n**End of proof.**\n')
+25: mapping_path=ROOT/'code/part3_fourfold/results_mapping.json'
+26: mapping=json.loads(mapping_path.read_text())
+27: mapping['results']=[x for x in mapping['results'] if x.get('id')!='P3K.65']
+28: mapping['results'].append(dict(id='P3K.65',status=status,item_of_prompt='3.4',
+29:  statement='The actual positive OS49 r-loop has negative/positive fan classes (-3k,0); the constructed shorter w-loop has (-k,0), for m=3k, both norm signs and every fixed delta character.',
+30:  proof_file='notes/part3_os49_corrected_returns.md',latex_file='notes/part3_os49_corrected_returns.tex',
+31:  working_proof=str(source.relative_to(ROOT)),source_sha256=hashlib.sha256(raw.encode()).hexdigest(),
+32:  positive_fan_Jin_integer=0,negative_r_class='-3*k mod28',negative_w_class='-k mod28',
+33:  norm_signs=[-1,1],delta_character='every fixed integer d',
+34:  native_r_free_pair=['-3*k','3*k'],native_w_free_pair=['-k','k'],
+35:  scalar_witness={'k':1,'parameter':'lambda=w','negative_fan_class':27},
+36:  realized_shorter_negative_residues=list(range(28)),
+37:  exact_certificate='code/part3_fourfold/os49_corrected_returns.json',
+38:  correction_scope='Replaces the K17 outer-line equality by the actual native C2 flop, retaining the missing determinant winding -2m.',
+39:  remaining_scope='No arbitrary-fan formula or negative-fan integer lift is assigned.'))
+40: mapping_path.write_text(json.dumps(mapping,indent=2)+'\n')
+41: print(json.dumps(dict(id='P3K.65',status=status,source_sha256=hashlib.sha256(raw.encode()).hexdigest(),
+42:  tex_file='notes/part3_os49_corrected_returns.tex'),indent=2))

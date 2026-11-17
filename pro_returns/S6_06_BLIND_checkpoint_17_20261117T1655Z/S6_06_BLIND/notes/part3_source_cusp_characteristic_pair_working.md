@@ -1,0 +1,509 @@
+# The actual characteristic pair of the selected-cusp source loop
+
+Proved as P3K.42 after the full root audit and the independent
+SP.2--4 frame/sign audit. We retain the exact positive rho
+loop, initial physical-delta-edge fan, source, line and cap maps of
+P3F.54, P3F.56 and P3K.40. The scalar is fixed and the coalescing finite
+pair carries no logarithmic modification. The computation below uses
+the actual normal framings on both caps of the F56 bordism. It does not
+assign a value to another fan.
+
+Corrected by the fully audited physical-line and cap morphisms of
+P3K.68. Write U for the outward-meridian-one Thom line and M for the
+actual nonzero-vector physical line. They are dual. The physical
+characteristic numbers in Jin's convention are
+\[
+                         (k_M,\ell_M)=(-6,0),\qquad(k_U,\ell_U)=(6,0).                 \tag{SP.1}
+\]
+Thus its first-resolution relative coordinates are
+\((m,n,s)=(0,-6,-1)\). The former source-class assertion used the
+Thom index as the physical index; its exact correction is retained below.
+No value for a different fan is assigned here.
+
+## SP.1. The framed local surgery and its actual four-cycle
+
+Let \(e:S^3\hookrightarrow S^6\) be the actual lifted link of P3F.55.
+Its projection is the immersion of complex Smale length two, and its
+third normal field is the actual increasing height direction. Fix the
+first normal field in the oriented complex normal plane of the
+projection, and complete the frame \((\nu _1,\nu _2,\nu _3)\) with
+that height field. Normalizing and applying Gram--Schmidt uses a
+positive triangular homotopy. It therefore retains the actual
+projection-normal plus height framing, rather than adding an element
+of \(\pi _3(SO(3))\).
+
+Takase, Corollary 2.15, supplies a Seifert embedding
+\(V\hookrightarrow S^6\) whose outward boundary normal is this
+specified \(\nu _1\). The proof of his Theorem 3.2 gives, for this
+projection and this boundary normal,
+\[
+              2\omega=3\sigma(V)+e(\nu V)^2.             \tag{SP.2}
+\]
+The invariant and generator comparison in P3F.55, equations
+(CL.16)--(CL.19), fixes the convention in (SP.2): the punctured
+Kummer test has signature \(-16\) and Smale invariant \(-24\)
+in both conventions. Hence the actual local projection has
+\(\omega=-2\). The same comparison gives
+\[
+             8H(e)=e(\nu V)^2-\sigma(V),\qquad H(e)=1.
+                                                               \tag{SP.3}
+\]
+Solving these two displayed equalities gives
+\[
+                    e(\nu V)^2=5,\qquad \sigma(V)=-3.    \tag{SP.4}
+\]
+
+We now identify these numbers with the characteristic numbers of the
+*framed* surgery manifold, including its meridian line. Let
+\[
+ N_e=(S^6\setminus\operatorname{int}(S^3\times D^3))
+                  \cup(D^4\times S^2)
+\]
+use precisely the preceding normal frame. Along the Seifert collar,
+the vector from its boundary into \(V\) is \(-\nu _1\).
+Consequently the truncated Seifert surface has boundary
+\(S^3\times\{-\nu _1\}\), and caps by the literal constant section
+\(D^4\times\{-\nu _1\}\). Denote this closed four-manifold by
+\(\widehat V\).
+
+Here are the orientations of this cap. Write the ambient orientation
+near the knot as
+\(\Omega_{S^3}\wedge dn_1\wedge dn_2\wedge dn_3\).
+The Seifert orientation is
+\(dn_1\wedge\Omega_{S^3}\), so its oriented normal two-plane is
+\(-dn_2\wedge dn_3\). At \(-\nu _1\), the outward-first
+orientation of the normal meridian sphere is also
+\(-dn_2\wedge dn_3\). The boundary of the knot complement is
+\(+\Omega_{S^3}\wedge\Omega_{S^2}\); the surgery cap therefore
+has orientation \(-\Omega_{D^4}\wedge\Omega_{S^2}\).
+The cap of \(\widehat V\) has orientation \(-\Omega_{D^4}\).
+Thus its oriented normal plane is exactly the positive meridian
+plane, with no sign change in its Euler class.
+
+Let \(x=x_U\) be the meridian class with integral one on this sphere.
+It is the Thom-line convention; the physical nonzero-vector line is its
+dual, as proved explicitly in SP.2 and SP.5 below.
+The Mayer--Vietoris map in degree two identifies the boundary
+\(H_2(S^3\times S^2)=\mathbb Z\) with the meridian summands in
+both pieces; it gives \(H^2(N_e)=\mathbb Zx\). In degree four,
+the connecting map identifies \([\widehat V]\) with the oriented
+boundary \([S^3]\). The normal-plane calculation above therefore
+gives the actual duality identity
+\[
+       \operatorname{PD}_{N_e}(x)=[\widehat V],\qquad
+       x|_{\widehat V}=e(\nu\widehat V).                 \tag{SP.5}
+\]
+The cap frame is constant. Its Euler square is the relative square
+in (SP.4), and capping by a four-ball leaves the signature unchanged.
+Restriction of the ambient tangent bundle to this embedded cycle is
+\(T\widehat V\oplus\nu\widehat V\). It follows directly that
+\[
+ \begin{aligned}
+ k(N_e)&=\int_{N_e}x^3=\int_{\widehat V}e(\nu\widehat V)^2=5,\\
+ \ell(N_e)&=\int_{N_e}p_1(TN_e)x
+       =3\sigma(\widehat V)+e(\nu\widehat V)^2=-4.
+ \end{aligned}                                             \tag{SP.6}
+\]
+This constructs the four-cycle and its Euler-line restriction; it
+does not recover the pair from the Haefliger number alone.
+
+## SP.2. The actual Cartier-to-Cox coordinate map
+
+Use the normalization and branch notation of F56:
+\[
+ N=\mathbf P^1_s\times D_\rho,\quad
+ x=s-\rho,\quad y=s+\rho,\quad Z=x/y,\quad
+ D_+=(x=0),\quad D_-=(y=0).
+\]
+Remove the inner four-ball to obtain \(W\). The actual determinant
+normal isomorphism of F56 is
+\[
+ L=\mathcal O(-D_+-D_-),\qquad
+ E=\mathcal O(D_+)\oplus\mathcal O(-D_-),\qquad
+ \operatorname{ad}E=\mathbb R_\gamma\oplus L_{\mathbb R}.
+                                                               \tag{SP.7}
+\]
+The determinant trivialization is multiplication by \(x/y\).
+In the finite \((s,\rho)\) ball, the Cartier frames of \(E\) are
+\((1/x,y)\); their determinant is \(y/x\), so the stated
+trivialization sends their wedge to one. These are nonvanishing
+frames of the indicated line bundles even on the corresponding
+divisors.
+
+The morphism \(r=[x:y]:W\to\mathbf P^1\) identifies \(E\)
+with \(r^*(\mathcal O(1)\oplus\mathcal O(-1))\). On the chart
+\(y\ne0\), the coefficient arrow from the Cartier frames to the
+standard dual-tautological and tautological frames is exactly
+\[
+                         \operatorname{diag}(1/y,y).      \tag{SP.8}
+\]
+Indeed the first pulled-back divisor frame is \(y/x\), and the
+second divisor is absent from this chart. Equation (SP.8) follows by
+expressing \(1/x\) and \(y\) in those frames. The corresponding
+equation on \(x\ne0\) agrees on the overlap.
+
+The actual positive-weight spinor coefficients are
+\((\overline{c_0},c_1)\), while the right-complex Cox coefficients are
+\((c_0,\overline{c_1})\). Put \(Y=y/|y|\). The full coefficient map
+from (SP.8) is therefore
+\[
+ (\overline{c_0},c_1)=\operatorname{diag}(\overline Y,Y)(a,b),
+ \qquad (c_0,\overline{c_1})
+      =\operatorname{diag}(Y,\overline Y)(\overline a,\overline b).
+\]
+Multiplication by the normalized quaternion \(1+jZ\) gives the actual
+anti-linear arrow
+\[
+ (a,b)\longmapsto g(x,y)\overline{(a,b)},\qquad
+ g(x,y)=\frac1{\sqrt{|x|^2+|y|^2}}
+ \begin{pmatrix}y&-\overline x\\x&\overline y\end{pmatrix}.
+                                                        \tag{SP.9}
+\]
+It intertwines the positive scalar action on the spinor with the
+physical negative right scalar on the Cox quaternion. The previous
+linear summand swap omitted this conjugation.
+
+For \(J=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)\)
+and every SU(2) transition, \(\overline g=JgJ^{-1}\). Thus the
+global anti-linear map \(Q=J^{-1}C\),
+\[
+ Q(a,b)=(\overline b,-\overline a),\qquad
+ Q(e^{i\theta}v)=e^{-i\theta}Q(v),                       \tag{SP.10}
+\]
+commutes with all clutches. It has real four-dimensional determinant
+one, while its adjoint is the antipodal map of the real normal
+three-plane, of determinant minus one. It extends over both cap
+normal discs by minus the identity. The Hermitian dual associated-line
+map is retained on both cap collars; every extending scalar gauge is
+inverted pointwise. The conjugated complex clutch has the same second
+Chern number, since conjugation by J is an actual constant bundle map.
+
+The physical meridian sign follows in the literal F9 chart
+\((x,v,z)\), with \(y=vz\), weights \((0,-1,+1)\), and
+\(b=(|z|^2-|v|^2)/2\). Its positive spinor is
+\((\overline v,z)\). At \(v=1,z=0\), the projective coordinate
+\(z/\overline v\) has the complex orientation of \(y\), while
+the outward raw normal sphere at \(b<0\) has its negative. The
+physical circle-first normal orientation is the negative raw
+orientation. Thus the physical spinor projective sphere has that
+physical normal orientation. Its physical nonzero-vector line is
+tautological, with Chern number minus one. The meridian-one Thom
+line U is its Hermitian dual; on the source page it is M inverse.
+This is a coefficient and circle map, not merely a degree comparison.
+
+The inner projection-normal frame is the Cartier frame used here,
+up to an extending gauge. To verify that assertion rather than
+postulate it, use F56's explicit nonzero normal covector
+\[
+       (3s^2-\rho^2)\,dX-2s\,dy
+                          +2\rho(s^2-\rho^2)\,d\rho .     \tag{SP.11}
+\]
+The determinant exact sequence identifies its normal quotient with
+the canonical line of the normalization. The ratio of this line
+identification and the Cartier identification is a holomorphic unit
+on the punctured finite ball. Hartogs extension extends it to the
+ball, and a holomorphic function in two variables cannot have its
+only zero at the origin. Its extension is therefore a unit. The
+resulting real two-plane frame comparison extends over the inner
+four-ball. Adding the height line and the explicit triangular
+graph-normal shear gives the actual frame of SP.1, with no free
+\(SO(3)\) clutch.
+
+The normal-coordinate unit can also be checked directly in both
+actual fixed-edge charts. We use the physical source coordinate
+\(q\) of F56, not its Tate multiple. With \(X=xy\), restriction
+of the differential of that displayed source equation to the
+normalization gives
+\[
+ dq=-\frac{xy}{xy+u(\rho)}\,n,
+ \qquad n\text{ is the covector in (SP.11)}.              \tag{SP.11a}
+\]
+The first Cox chart has \(q=Zc_0c_1\), and the second has
+\(q=Z^{-1}c'_0c'_1\), with \(c'_i=Zc_i\). Their quotient
+complex normal coordinates consequently satisfy, on the fixed curve,
+\[
+ \begin{aligned}
+ d(c_0c_1)&=-\frac{y^2}{xy+u(\rho)}\,n,\\
+ d(c'_0c'_1)&=-\frac{x^2}{xy+u(\rho)}\,n.
+ \end{aligned}                                             \tag{SP.11b}
+\]
+These are exactly the two Hom arrows of (SP.8), multiplied by the
+same explicit unit \(-1/(xy+u(\rho))\). Since \(u(0)=u_*\ne0\),
+it has an analytic logarithm and square root on the finite inner
+ball. Its spinor adjustment therefore extends over that ball. This
+verifies the actual normal-unit comparison, as well as its line
+transition. It supplies no additional relative Chern number.
+
+There is also an exact check on the separate normal factors. Once
+their product has been matched by (SP.11b), any remaining
+weight-preserving linear normal gauge has the form
+\((c_0,c_1)\mapsto(g c_0,g^{-1}c_1)\). Remove its positive
+modulus by the actual equivariant positive rescaling. For its unitary
+phase, both right-complex spinor coordinates are multiplied by
+\(g/|g|\); hence
+\[
+                  q_H\longmapsto q_H\,g/|g|.             \tag{SP.11c}
+\]
+This is the physical circle action, and its adjoint Hopf normal
+coordinate is exactly unchanged. It contributes no additional
+\(SO(3)\) clutch. A possible parameter winding of this circle-line
+gauge is retained and extends over \(D^3\times S^1\), whose
+restriction map on \(H^1\) is an isomorphism. We therefore do not
+assume that each separate normal gauge has a logarithm across the
+parameter origin.
+
+## SP.3. The outer cap: the actual product arrow
+
+The outer coordinate change is the literal map of F56
+\[
+ A_\rho=\begin{pmatrix}1&-\rho\\1&\rho\end{pmatrix},
+ \qquad
+ \mathcal B_\rho(P)=
+       \frac{A_\rho P A_\rho^*}{\operatorname{tr}(A_\rho P A_\rho^*)}.
+                                                               \tag{SP.12}
+\]
+Here the closed three-ball is the positive semidefinite Hermitian
+matrices of trace one. Its boundary consists of rank-one matrices.
+This is a periodic diffeomorphism of the ball, including its centre,
+and its boundary map is exactly \(r\). We use its actual product
+extension on the surgery collar, rather than replacing the normal
+frame by its derivative.
+
+The collar in P3K.40 and F56 is the literal first-resolution product
+\((h,q_H)\), where \(h\) is the base sphere coordinate and
+\(q_H=(1+jZ)(c_0+j\overline{c_1})\) is the normalized actual
+Cox quaternion. The physical circle acts by
+\(q_H\mapsto q_H e^{-i\theta}\). Thus on the normal sphere
+cover the exact outer cap map is
+\[
+ (P,q_H,\rho)\longmapsto
+                  (\mathcal B_\rho(P),q_H,\rho)
+ \quad\text{on }D^3\times S^3\times S^1.                 \tag{SP.13}
+\]
+It is a periodic diffeomorphism, is equivariant for that same circle,
+and restricts to the actual base-coordinate change on the boundary.
+Its quotient is
+\((\mathcal B_\rho,\operatorname{Id}_{S^2})\). It therefore
+extends both the actual Cox normal frame and the meridian circle
+line over the product cap. This is precisely the product surgery
+collar used in F56: its second factor is the actual Hopf normal
+sphere, and (SP.13) holds that factor, with its orientation, fixed.
+
+In particular (SP.13) keeps the full determinant winding. For
+clarity the exact determinant discrepancy can be written down.
+The Hom arrow induced by (SP.8) takes the Cartier frame \(xy\)
+of \(L\) to \(y^2\) times the standard \(\mathcal O(-2)\)
+frame. Under the standard canonical identification this is
+\[
+                  y^2\,dZ=2\rho\,ds.                    \tag{SP.14}
+\]
+Thus the actual Cox arrow has the factor
+\(\det A_\rho=2\rho\) relative to the cotangent inverse.
+Its winding is one. We neither remove it nor identify (SP.13) with
+the tangent derivative of \(\mathcal B_\rho\). It remains in
+the Cartier-to-Cox coordinate matrix (SP.9) and hence in the clutch
+computed below. The earlier attempted derivative comparison that
+omitted this factor is preserved as a superseded unpromoted attempt.
+
+All coordinates in (SP.13) are the actual coordinates already
+matched in F56 and P3K.40. In particular we make no additional
+replacement of \(q_H\) by a Tate-scaled quaternion. The winding
+\(-6\) of \(q_T/q\) is retained by those matched charts.
+Equations (SP.11a)--(SP.11b) use the physical \(q\) in those
+charts; the nonzero factor \(q_T/q\) remains in the period
+identification of the adjacent cell. Replacing that period by one
+with factor one would change the marking and is not done here.
+The original source and line unit gauges used in F56 extend over
+the full source disc. Their displayed logarithms give extending
+isotopies on the same normal collar. The induced isotopies of its
+boundary extend over the product cap by extending their invariant
+vector fields with a collar cutoff; averaging preserves the
+physical circle action. This carries these actual gauges in
+(SP.13), rather than changing the cap framing.
+
+## SP.4. The relative second Chern number and the normal sphere bundle
+
+Cap \(W\) by the inner four-ball in its projection-normal frame
+and the outer \(D^3\times S^1\) in its actual Cox frame. The
+resulting base and spinor bundle will be denoted by
+\(\overline W\) and \(\overline E\). The base orientation is
+\[
+ \overline W=(S^2\times D^2)\cup(D^3\times S^1)
+                      =\partial(D^3\times D^2).
+                                                               \tag{SP.15}
+\]
+The first piece has its complex orientation, and the second has
+minus its displayed product orientation. Thus the boundary of the
+outer cap is the negative of
+\(K=\mathbf P^1\times S^1\), with \(K\) oriented as the
+boundary of \(N\).
+
+Use the conjugate spinor on the inner ball, with its conjugate Cartier
+frame, and the actual right-complex Cox frame on the outer cap.
+The coefficient map between these is exactly the complex-linear matrix
+g in (SP.9), after retaining the global anti-linear map (SP.10).
+Its Chern number equals that of E by the explicit J conjugacy.
+The resulting bundle extends across the inner ball and is a trivial
+\(SU(2)\) bundle over \(N\simeq S^2\). Choose a global frame
+agreeing there with the Cartier frame. Such agreement can be made
+on the ball because the difference of two extending frames is
+itself an extending gauge. Compare this frame with the Cox frame on
+\(W\). On the inner boundary its complex-linear coordinate matrix after
+that conjugation is exactly g in (SP.9).
+Since this comparison extends over \(W\), its degree on the outer
+boundary \(K\) is the same as its degree on the inner sphere in
+its positive complex-domain orientation.
+
+We calculate that degree with its precise trace convention. The
+first column of (SP.9) is \((y,x)\); the map
+\((s,\rho)\mapsto(y,x)\) is complex linear with nonzero
+determinant \(-2\). Hence its normalized boundary map has degree
+one for the complex first-column orientation. At the identity the
+positive tangent matrices in that orientation are
+\[
+ I=\begin{pmatrix}i&0\\0&-i\end{pmatrix},\quad
+ J=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\quad
+ K_0=\begin{pmatrix}0&i\\i&0\end{pmatrix}.
+                                                               \tag{SP.16}
+\]
+They satisfy \(IJ=-K_0\) and \(\operatorname{tr}(IJK_0)=2\).
+Consequently the right Maurer--Cartan form has
+\[
+           \int_K\operatorname{tr}(dg\,g^{-1})^3=24\pi^2.
+                                                               \tag{SP.17}
+\]
+This explicitly fixes the sign; the quaternion convention with the
+opposite group orientation cannot be substituted in (SP.17).
+
+Equation (SP.9) is a coordinate arrow from the frame on \(N\) to
+the cap frame. A connection that is zero in the first frame is
+therefore \(-dg\,g^{-1}\) in the latter frame near their boundary.
+Writing \(\omega=dg\,g^{-1}\), we have
+\(d\omega=\omega^2\) and
+\[
+ \operatorname{tr}\bigl((-\omega)d(-\omega)
+                    +\tfrac23(-\omega)^3\bigr)
+                    =\tfrac13\operatorname{tr}(\omega^3).
+\]
+Extend this connection into the cap with a collar cutoff. Stokes'
+formula and its negative boundary orientation give the actual
+clutch number
+\[
+ \begin{aligned}
+ c_2(\overline E)[\overline W]
+    &=\frac1{8\pi^2}\int_{\text{cap}}\operatorname{tr}(F^2)\\
+    &=-\frac1{24\pi^2}
+                       \int_K\operatorname{tr}(dg\,g^{-1})^3=-1.
+ \end{aligned}                                             \tag{SP.18}
+\]
+For the actual adjoint bundle,
+\(p_1(\operatorname{ad}\overline E)=-4c_2(\overline E)\).
+This identity follows directly on the diagonal circle: the spinor
+has Chern roots \(a,-a\), and the nontrivial real adjoint plane has
+Euler class \(2a\). Therefore
+\[
+             p_1(\operatorname{ad}\overline E)[S^4]=4.    \tag{SP.19}
+\]
+
+Let \(B=S(\operatorname{ad}\overline E)\to S^4\), with the
+actual positive Hopf meridian class \(x\) from F56. Its determinant
+class is zero, so the oriented vertical tangent Euler class is
+\(e_v=2x\). The exact splitting
+\(T_vB\oplus\mathbb R\cong\pi^*(\operatorname{ad}\overline E)\)
+gives \(4x^2=\pi^*p_1(\operatorname{ad}\overline E)\).
+Since \(\pi_*x=1\) and \(p_1(TS^4)=0\), we obtain
+\[
+                         (k(B),\ell(B))=(1,4).             \tag{SP.20}
+\]
+Its index is zero, as already used in F56. The present calculation
+retains the individual numbers of this actual normal bundle.
+
+## SP.5. Both line conventions and the actual physical return
+
+The base orientation is the complex orientation on W. In the actual
+F9 normal coordinates the ambient orbit orientation is
+\(-\Omega_{\rm source}\wedge d\gamma\), and the physical normal
+orientation is \(-d\gamma\wedge\Omega_L\). The anti-linear map
+(SP.10) supplies the actual normal reflection between the coefficient
+frames. Its extensions over the inner D4 and outer D3 times S1 caps
+carry the dual circle character and every retained boundary gauge.
+In particular the meridian-one line U extends through both product
+surgery collars with exactly the line used in (SP.5) and (SP.20).
+
+The outward boundary of the seven-dimensional quotient bordism is
+\(-P_f\sqcup-N_e\sqcup-B\): the first sign is the five-dimensional
+orbit followed by the outward parameter radial coordinate, and each
+inner sign is the outward boundary of a removed normal disc. Thus
+Stokes for U gives
+\[
+ (k_U,\ell_U)(P_f)=-(5,-4)-(1,4).
+\]
+The physical family is Jin's mapping torus for the inverse return;
+reversing that parameter gives
+\[
+                (k_U,\ell_U)_{\rm Jin}=(6,0).
+                                                        \tag{SP.21}
+\]
+The raw local complex-plus-height six-dimensional orientation and the
+physical orbit orientation are opposite. The outward-meridian-one
+Thom line changes sign with that normal orientation; hence the raw
+Seifert values (SP.6) enter the U calculation with the signs displayed.
+The physical nonzero-vector line M instead satisfies M=U inverse,
+so in the same oriented Jin manifold
+\[
+           (k_M,\ell_M)=-(k_U,\ell_U)=(-6,0),
+           \qquad A_M=-1.                              \tag{SP.22}
+\]
+
+For completeness the Hopf transfer uses this physical line. The
+actual complex exterior is D3_y times S3_q, and the sphere is
+minus the boundary of D3_y times D4_q. Physical M is positive on
+the oppositely oriented Hopf base; reverse the y factor at the same
+time, so the quotient orientation is unchanged. The F22 positive
+Hopf factor is then u=+q and y'=-y. If L=D4_y times S3_q and
+R=S3_y times D4_q, its first and second pieces are -R and -L.
+The first-to-second clutch r maps to F(r); rewriting with L first
+sets x=F(r), so the second point is F inverse of x. Consequently
+lambda_M(F) is minus Sigma_(F inverse). The removed ball is
+D4_u times D3_y', whose boundary is the original complex sphere;
+the F8 cut-and-reglue maps coincide on its actual free face and are
+the identity on its fixed-tube face. This proves that lambda_M is
+the physical clutched sphere. For U the pieces are +R,+L and the
+same clutch gives lambda_U(F)=Sigma_(F inverse), its orientation
+reverse. All circle gauges are carried by the Hermitian dual map.
+These exact arrows are written in mathematical notation in P3K.68.
+
+Therefore the physical source class is -1 modulo 28. The exact
+relative-coordinate identities in the physical convention are
+\(m=k_M-6A_M\), \(n=6A_M\), giving
+\[
+                    (m,n,s)=(0,-6,-1).                  \tag{SP.23}
+\]
+The native central generator still has sign plus one: exchanging
+the two Hopf pieces inverts the clutch, and the outer orientation
+reversal cancels that inverse on a disc-supported central class.
+No value on another fan is assigned here.
+
+## Audit and computation status
+
+The local Seifert formula is read directly from Takase's Corollary
+2.15 and the proof of Theorem3.2. The convention is fixed by the
+nonzero Kummer comparison in F55. The earlier derivative matrix was
+independently multiplied by root, but its proposed identification
+with the actual Cox arrow omitted the determinant factor (SP.14)
+and has been withdrawn. The actual product-collar map (SP.13)
+retains that factor. Root passed the complete revised proof,
+including the Seifert cap cycle and full oriented boundary sum.
+The independent SP.2--4 audit passed the actual physical-q normal
+units, residual physical-circle gauge, product collar, Cartier-to-Cox
+arrow and relative Chern sign.
+
+The certificate is code/part3/source_cusp_characteristic_pair.py.
+It records the derivative matrix only as a diagnostic, and checks
+the actual Cartier/Cox product, determinant factor,
+the fixed real-line sign, the Maurer--Cartan trace, the two Seifert
+equations, and the sphere-bundle and bordism arithmetic. It does not
+substitute arithmetic for the bundle and cobordism proofs above.
+
+
+Physical-line correction, 2026-11-17T15:34:51.130110+00:00: original SP.9/10 proof and certificate preserved at records/k42_pre_antilinear_arrow/. The complete cap and inverse-clutch correction is P3K.68.

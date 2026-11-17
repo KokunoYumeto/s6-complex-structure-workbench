@@ -1,0 +1,173 @@
+859: ## 16. The exact two-step normal-cone reset
+860: 
+861: The full source reset is already nontrivial on the normal cone of
+862: \(C_1\). Retain the marked resolution coordinates
+863: \((z,B,D)\), and scale \(B,D\) by a common positive parameter
+864: \(\epsilon\). The first translation has limit
+865: \[
+866:               U:C_1\longrightarrow C_0,\qquad s=-1/z.
+867: \]
+868: The exact addition formulas, applied twice before taking the limit,
+869: give the target curve coordinate
+870: \[
+871:  z_{\rm out}=
+872:  -\frac{(z^2+1)B-2zD}{(z^2+1)D-2zB}.                       \tag{SZ.32}
+873: \]
+874: In particular it is not the bare normal ruling \(B/D\).
+875: Let
+876: \[
+877:              w=\frac{z-1}{z+1},\qquad
+878:              \eta=\frac{B+D}{B-D}.
+879: \]
+880: Then (SZ.32) says \(w_{\rm out}=w^2\eta\).
+881: The first-order base functions are
+882: \[
+883:                       2v=B-Dz,\qquad T=D-Bz .
+884: \]
+885: They are preserved by the translation. Solving for the target
+886: normal coordinates gives
+887: \[
+888:  B_{\rm out}=\frac{2v+Tz_{\rm out}}{1-z_{\rm out}^2},
+889:  \qquad
+890:  D_{\rm out}=\frac{T+2vz_{\rm out}}{1-z_{\rm out}^2}.
+891: \]
+892: Substitution yields the exact second coordinate
+893: \(\eta_{\rm out}=w^{-1}\). Thus the normal-cone torus map is
+894: \[
+895:                (w,\eta)\longmapsto(w^2\eta,w^{-1}),\qquad
+896:                \begin{pmatrix}2&1\\-1&0\end{pmatrix}.       \tag{SZ.33}
+897: \]
+898: The matrix is integral unimodular and its difference from the
+899: identity has square zero. The product \(w\eta\), which is the
+900: retained projective base direction up to its fixed sign, is
+901: invariant.
+902: 
+903: The compactification data at both nodes are visible in this map.
+904: The projective matrix in (SZ.32) has determinant
+905: \(-(z^2-1)^2\). At \(z=1,B=D\), and at \(z=-1,B=-D\), its base
+906: ideal is analytically \((h,u^2)\): write \(u=z-1,h=B-D\) in
+907: the first chart, and use the corresponding signed variables in
+908: the second. Each is a length-two ideal, retaining the two
+909: successive elementary modifications. They cannot be suppressed
+910: when comparing the actual boundary \(K\) with a product marking.
+911: 
+912: The exact two-step rational map and this normal-cone calculation
+913: are saved in code/part3_fourfold/source_zero_translation_normal.py
+914: and its JSON/output. The initial proposed bare-ruling formula
+915: failed the symbolic check; its code and output are retained in
+916: attempts/source_zero_normal_simple_guess. The successful
+917: certificate keeps both coordinates in (SZ.33). It still leaves
+918: the periodic real-normal clutch, the actual line multiplier and
+919: the selected Tate-boundary attachment to be composed.
+920: 
+921: ## 17. The line multiplier in the normal-cone reset
+922: 
+923: The projective reset of Section 16 also has an exact retained line
+924: coefficient. In the \((a,b)=(1,2)\) sector use
+925: \(B=-2\lambda q\,U_1^2\), and let \(V_{\rm reg}\) be the regular
+926: \(O(1)\) fibre coordinate on the \(z\)-chart of \(C_1\). Its relation
+927: to the canonical meromorphic line coefficient is
+928: \(V_{\rm reg}=z\,w_{\rm Cartier}\). Define
+929: \[
+930:  \widehat V=(1-w)V_{\rm reg},\qquad
+931:  p=w\eta,\qquad r=\frac{B-D}{1-w}.
+932: \]
+933: Here \(w=(z-1)/(z+1)\) is the curve coordinate from Section 16;
+934: it is not the meromorphic line coefficient.
+935: The exact translation multiplier is \(-2\lambda q/(X_1X_2)\).
+936: Taking its normal-cone limit only after multiplying the target
+937: and source regular-frame factors gives
+938: \[
+939:  (w,p,r,\widehat V)\longmapsto
+940:                   (pw,p,r,-2\lambda p\,\widehat V).         \tag{SZ.34}
+941: \]
+942: The base functions are retained:
+943: \[
+944:                        2v=r(1-p),\qquad T=-r(1+p).         \tag{SZ.35}
+945: \]
+946: The certificate verifies (SZ.34) from the full rational translation,
+947: not from the projective map alone.
+948: 
+949: The node-divisor frame change in \(\widehat V\) is explicit. On the
+950: nonzero \(O(1)\) line, use the two vector coordinates
+951: \[
+952:                        A=1/\widehat V,\qquad C=w/\widehat V .
+953: \]
+954: The reset is literally
+955: \[
+956:        (A,C)\longmapsto
+957:        \bigl((-2\lambda p)^{-1}A,\;(-2\lambda)^{-1}C\bigr). \tag{SZ.36}
+958: \]
+959: Thus on a compact annulus of \(p\)-values the inverse period is a
+960: diagonal Hopf contraction for sufficiently small \(\lambda\).
+961: This names the actual normal-cone end, including its two
+962: multipliers. The nodes \(p=0,\infty\) and the global periodic
+963: attachment are still the charts from Sections 14--16; they have
+964: not been deleted by this diagonal description.
+965: 
+966: ## 18. Rescaling the scalar with the source parameter
+967: 
+968: A direct fixed-\(\lambda\) central quotient retains the
+969: zero-displacement period of Section 11. An alternative relative
+970: comparison is to use the actual rescaling
+971: \[
+972:                           \lambda=v^N\lambda_0.
+973: \]
+974: On the two-node valuation ray, the source and suspension columns
+975: then are
+976: \[
+977:                 h=(2,-a)^t,\qquad g=(b,N-1)^t,\qquad ab=2.
+978:                                                                \tag{SZ.37}
+979: \]
+980: The source Tate parameter has order two, the source-line multiplier
+981: has order \(-a\), the translated point has order \(b\), and the
+982: selected Hom coefficient has order \(-1\) before this scalar
+983: rescaling. These are exactly the valuations retained in
+984: Sections 3, 6 and 10. The determinant is \(2N\).
+985: 
+986: For \(a=1,b=2\), use
+987: \[
+988:  U_N=\begin{pmatrix}1&0\\-2&1\end{pmatrix}
+989:      \begin{pmatrix}-1&0\\0&1\end{pmatrix}
+990:      \begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad
+991:  V_N=\begin{pmatrix}1&N-1\\0&1\end{pmatrix}.
+992: \]
+993: For \(a=2,b=1\), use
+994: \[
+995:  U_N=\begin{pmatrix}1&0\\0&-1\end{pmatrix}
+996:      \begin{pmatrix}1&0\\-(N-1)&1\end{pmatrix},\qquad
+997:  V_N=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+998:      \begin{pmatrix}1&-2\\0&1\end{pmatrix}.
+999: \]
+1000: All these matrices are unimodular and give
+1001: \[
+1002:  U_N\begin{pmatrix}2&b\\-a&N-1\end{pmatrix}V_N
+1003:                          =\operatorname{diag}(1,2N).       \tag{SZ.38}
+1004: \]
+1005: Consequently the lattice quotient for \(N>0\) is
+1006: \(\mathbb Z/(2N)\); for \(N=0\) it has the residual free
+1007: \(\mathbb Z\). These are lattice statements. The finite quotient
+1008: has not yet been identified with a collection of origin-link
+1009: boundary components.
+1010: 
+1011: For the currently marked varying-source family, use the stronger
+1012: choice \(N=M\), or a positive multiple of \(M\), and take the
+1013: literal one-gamma parameter \(r=v^{N/M}r_0\). All finite-cap powers
+1014: are then integral in \(v\). The rescaled loop contains \(N/M\)
+1015: full one-gamma scalar turns in addition to the source turn. At
+1016: the fixed comparison source these are \(bN/M\) of the proved
+1017: shorter loops of P3K.35. No class in \(\Theta_7\) is divided.
+1018: 
+1019: Divisibility by \(M/b\) is the arithmetic lower requirement at a
+1020: fixed source. It is not used here as a global varying-source
+1021: endpoint theorem: the rational \(b\)-th root \(g_0(t,v)\) in
+1022: P3K.35 must still be tracked around the source puncture before
+1023: that smaller rescaling can be asserted. The actual finite-cap
+1024: root maps and their source-parameter units remain part of the
+1025: relative comparison.
+1026: 
+1027: The symbolic Smith identities and512 positive-\(N\) evaluations
+1028: are saved in code/part3_fourfold/source_zero_rescaled_periods.py
+1029: and its JSON/output. The remaining work is the compact relative
+1030: periodic chart construction and its oriented boundary map.
+1031: 

@@ -1,0 +1,103 @@
+1: #!/usr/bin/env python3
+2: """Integral complements of the reduced III/IV source fibres in K22.
+3: 
+4: The basis is an exact integral kernel, obtained from the inverse unimodular
+5: NS Gram matrix.  Cap maps and return indices are not inferred here.
+6: """
+7: from pathlib import Path
+8: from functools import reduce
+9: from math import gcd
+10: from datetime import datetime, timezone
+11: import json
+12: import sympy as s
+13: from sympy.matrices.normalforms import smith_normal_form
+14: from sympy.polys.domains import ZZ
+15: 
+16: ROOT=Path(__file__).resolve().parents[2]
+17: source=ROOT/'code/part3_fourfold/primitive_source_translation.json'
+18: with (ROOT/'records/literature_fourfold.md').open('a') as f:
+19:     f.write('\n- '+datetime.now(timezone.utc).isoformat()+
+20:             ' — Opened current-team code/part3_fourfold/primitive_source_translation.json; reason: exact reduced-additive source-complement restriction; material: full integral NS, actual negative-translation and section matrices.\n')
+21: data=json.loads(source.read_text())
+22: cases={a['row']:a for a in data['cases']}
+23: def ints(A):
+24:     assert all(s.denom(a)==1 for a in A)
+25:     return [[int(a) for a in row] for row in A.tolist()]
+26: def primitive(v):
+27:     den=s.ilcm(*[s.denom(a) for a in v])
+28:     v=v*den
+29:     g=reduce(gcd,[abs(int(a)) for a in v])
+30:     v=v/g
+31:     for a in v:
+32:         if a:
+33:             if a<0: v=-v
+34:             break
+35:     return v
+36: outputs=[]
+37: for row,p,block,kind in [(47,2,1,'III'),(56,2,2,'III'),(56,3,1,'IV')]:
+38:     a=cases[row]
+39:     G=s.Matrix(a['gram'])
+40:     T=s.Matrix(a['actual_suspension_translation'])
+41:     eye=s.eye(10)
+42:     F,O=eye[:,1],eye[:,0]
+43:     roots=[i for i,name in enumerate(a['basis']) if name.startswith(f'I{p}_{block}_C')]
+44:     assert len(roots)==p-1
+45:     deleted=[1]+roots
+46:     retained=[i for i in range(10) if i not in deleted]
+47:     K=G.inv()[:,retained]
+48:     P=G[retained,:]
+49:     constraint=G[deleted,:]
+50:     assert P*K==s.eye(10-p)
+51:     assert constraint*K==s.zeros(p,10-p)
+52:     # Columns of G^-1 form an integral unimodular full basis; therefore K
+53:     # is the whole integral kernel, not a finite-index sublattice.
+54:     assert abs(G.det())==1
+55:     Tv=P*T*K
+56:     assert K*Tv==T*K
+57:     D=Tv-s.eye(10-p)
+58:     S=smith_normal_form(D,domain=ZZ)
+59:     smith=[abs(int(S[i,i])) for i in range(10-p)]
+60:     ker=primitive(D.nullspace()[0])
+61:     coker=primitive(D.T.nullspace()[0])
+62:     Fc=P*F
+63:     assert D*Fc==s.zeros(10-p,1)
+64:     assert ker==Fc or ker==-Fc
+65:     # The p-fold punctured section cycle, corrected integrally in only
+66:     # the removed additive root lattice.
+67:     Z0=p*(T*O-O)
+68:     rootgram=G[roots,roots]
+69:     desired=-(G[roots,:]*Z0)
+70:     correction=rootgram.inv()*desired
+71:     Z=Z0+eye[:,roots]*correction
+72:     assert all(s.denom(x)==1 for x in correction)
+73:     assert constraint*Z==s.zeros(p,1)
+74:     Zc=P*Z
+75:     z_value=(coker.T*Zc)[0]
+76:     M=s.Matrix(a['line_divisor_class'])
+77:     assert constraint*M==s.zeros(p,1)
+78:     Mc=P*M
+79:     assert D*Mc==-Fc
+80:     m_value=(coker.T*Mc)[0]
+81:     # Source boundary meridian has normal-function order p.  The exact
+82:     # cone cycle (-C,pq) has the above integral image Z.
+83:     outputs.append({
+84:         'row':row,'removed_fibre':kind,'component_count':p,
+85:         'NS_basis':a['basis'],'constraint_rows':ints(constraint),
+86:         'integral_kernel_basis':ints(K),'kernel_left_inverse':ints(P),
+87:         'translation_restriction':ints(Tv),'wang_matrix':ints(D),
+88:         'smith':smith,'intersection_matrix':ints(K.T*G*K),
+89:         'kernel_F_coordinates':ints(Fc),
+90:         'primitive_cokernel_functional':ints(coker),
+91:         'line_M_coordinates':ints(Mc),'line_M_cokernel_value':int(m_value),
+92:         'relative_Wang_source_cycle':ints(Z),
+93:         'relative_Wang_removed_root_correction':ints(correction),
+94:         'relative_Wang_kernel_coordinates':ints(Zc),
+95:         'relative_Wang_cokernel_value':int(z_value),
+96:         'pairing_F_Z':int((F.T*G*Z)[0]),
+97:         'actual_translation':'T_-G',
+98:         'scope':'exact source complement and integral relative-Wang column; cap gluing and global topology require their actual maps',
+99:     })
+100:     print(f'OS{row} minus {kind}: Smith={smith}; boundary pq column={z_value}; M column={m_value}')
+101: out=Path(__file__).with_suffix('.json')
+102: out.write_text(json.dumps({'cases':outputs},indent=2)+'\n')
+103: print('PASS: exact integral kernels, actual translations and corrected section columns.')

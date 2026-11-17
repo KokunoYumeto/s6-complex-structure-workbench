@@ -1,0 +1,78 @@
+1: #!/usr/bin/env python3
+2: """Isolated compile, all-page render and boundary audit for the complete P3K.61."""
+3: from pathlib import Path
+4: from datetime import datetime,timezone
+5: import json,os,re,subprocess
+6: import fitz
+7: from PIL import Image,ImageDraw
+8: 
+9: ROOT=Path(__file__).resolve().parents[2]
+10: if (ROOT/'code/part3_fourfold/k61_standalone.pdf').exists():
+11:     archive=ROOT/'code/part3_fourfold/attempts'/('k61_'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S'))
+12:     archive.mkdir(parents=True,exist_ok=True)
+13:     for pattern in ('k61_standalone.*','k61_compile_*.out','k61_compile_*.err'):
+14:         for old in (ROOT/'code/part3_fourfold').glob(pattern):
+15:             (archive/old.name).write_bytes(old.read_bytes())
+16:     oldqa=ROOT/'records/qa_k61.json'
+17:     if oldqa.exists(): (archive/oldqa.name).write_bytes(oldqa.read_bytes())
+18: with (ROOT/'records/literature_fourfold.md').open('a') as log:
+19:     log.write('\n- '+datetime.now(timezone.utc).isoformat()+
+20:       ' — Opened own code/part3/f48_standalone.tex and notes/part3_scalar_outer_clutch_obstruction.tex. '
+21:       'Reason: isolated complete K61 compile, all-page boundary audit and rendering. '
+22:       'Material: audited source, fan, cap, excision and return proof; no shared PDF writes.\n')
+23: preamble=(ROOT/'code/part3/f48_standalone.tex').read_text().split(r'\begin{document}',1)[0]
+24: src=ROOT/'code/part3_fourfold/k61_standalone.tex'
+25: bib=r'''\begin{thebibliography}{1}
+26: \bibitem{AtiyahBott1984} M. F. Atiyah and R. Bott,
+27: The moment map and equivariant cohomology,
+28: \emph{Topology} \textbf{23} (1984), no. 1, 1--28.
+29: \end{thebibliography}
+30: '''
+31: src.write_text(preamble+r'\begin{document}'+'\n'+
+32:   r'\input{notes/part3_scalar_outer_clutch_obstruction.tex}'+'\n'+r'\end{document}'+'\n')
+33: runtime=ROOT.parent/'tex_runtime'
+34: env=dict(os.environ,TEXMF='{/usr/share/texlive/texmf-dist,/usr/share/texmf}',
+35:  TEXFORMATS=str(runtime),TEXINPUTS=str(runtime/'packages')+'//:',
+36:  LUAINPUTS=str(runtime/'packages')+'//:')
+37: outs=[];errs=[]
+38: for run in range(2):
+39:     p=subprocess.run(['lualatex','-interaction=nonstopmode','-halt-on-error',
+40:        '-output-directory=code/part3_fourfold',str(src.relative_to(ROOT))],
+41:        cwd=ROOT,env=env,text=True,capture_output=True)
+42:     outs.append(p.stdout);errs.append(p.stderr)
+43:     (ROOT/f'code/part3_fourfold/k61_compile_{run+1}.out').write_text(p.stdout)
+44:     (ROOT/f'code/part3_fourfold/k61_compile_{run+1}.err').write_text(p.stderr)
+45:     if p.returncode:
+46:         print(p.stdout[-8000:]);raise SystemExit(p.returncode)
+47: logtext=(ROOT/'code/part3_fourfold/k61_standalone.log').read_text()
+48: over=[float(x) for x in re.findall(r'Overfull \\hbox \(([0-9.]+)pt too wide\)',logtext)]
+49: pdf=fitz.open(ROOT/'code/part3_fourfold/k61_standalone.pdf')
+50: out=ROOT/'records/render_k61';out.mkdir(exist_ok=True)
+51: paths=[];bounds=[]
+52: for i,page in enumerate(pdf):
+53:     path=out/f'page_{i+1:02}.png'
+54:     page.get_pixmap(matrix=fitz.Matrix(1.5,1.5),alpha=False).save(path)
+55:     paths.append(str(path.relative_to(ROOT)))
+56:     for block in page.get_text('blocks'):
+57:         if len(block)>6 and block[6]!=0: continue
+58:         x0,y0,x1,y1=block[:4]
+59:         if x0<15 or y0<15 or x1>page.rect.width-15 or y1>page.rect.height-15:
+60:             bounds.append({'page':i+1,'bbox':[x0,y0,x1,y1],'text':block[4][:120]})
+61: contacts=[]
+62: for start in range(0,len(paths),4):
+63:     contact=Image.new('RGB',(1700,2440),'#dddddd')
+64:     for j,rel in enumerate(paths[start:start+4]):
+65:         im=Image.open(ROOT/rel).convert('RGB');im.thumbnail((820,1180))
+66:         tile=Image.new('RGB',(850,1220),'white')
+67:         tile.paste(im,((850-im.width)//2,25))
+68:         ImageDraw.Draw(tile).text((18,1200),f'K61 page {start+j+1}',fill='black')
+69:         contact.paste(tile,((j%2)*850,(j//2)*1220))
+70:     dst=out/f'contact_{start//4+1}.png';contact.save(dst)
+71:     contacts.append(str(dst.relative_to(ROOT)))
+72: report=dict(utc=datetime.now(timezone.utc).isoformat(),compile='PASS',pages=len(pdf),
+73:  overflows_pt=over,overflows_gt_2pt=[x for x in over if x>2],
+74:  missing_character=bool(re.search(r'Missing character:',logtext)),
+75:  undefined_reference=bool(re.search(r'There were undefined references|Citation .* undefined',logtext)),
+76:  boundary_issues=bounds,page_images=paths,contact_sheets=contacts,visual_review='pending')
+77: (ROOT/'records/qa_k61.json').write_text(json.dumps(report,indent=2)+'\n')
+78: print(json.dumps(report,indent=2))

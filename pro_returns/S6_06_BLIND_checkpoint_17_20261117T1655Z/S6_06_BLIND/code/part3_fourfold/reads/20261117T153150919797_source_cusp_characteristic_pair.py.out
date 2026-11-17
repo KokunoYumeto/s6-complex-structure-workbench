@@ -1,0 +1,155 @@
+1: #!/usr/bin/env python3
+2: """Exact algebra for the actual selected-cusp normal-frame comparison.
+3: 
+4: The geometric interpretation and orientations are proved in
+5: notes/part3_source_cusp_characteristic_pair_working.md. No fan other
+6: than its specified initial physical fixed-edge fan is evaluated.
+7: """
+8: from pathlib import Path
+9: import datetime
+10: import json
+11: import sympy as S
+12: 
+13: ROOT = Path(__file__).resolve().parents[2]
+14: checks = []
+15: 
+16: def zero(name, expression):
+17:     reduced = S.simplify(S.expand(expression))
+18:     assert reduced == 0, (name, reduced)
+19:     checks.append({"name": name, "difference": str(reduced), "pass": True})
+20: 
+21: def matzero(name, matrix):
+22:     for i in range(matrix.rows):
+23:         for j in range(matrix.cols):
+24:             zero(f"{name}[{i},{j}]", matrix[i,j])
+25: 
+26: r = S.symbols('r', positive=True, real=True)
+27: zr, zi, dr, di, ss, wr, wi, eps = S.symbols(
+28:     'zr zi dr di s wr wi eps', real=True)
+29: z, d, w = zr + S.I*zi, dr + S.I*di, wr + S.I*wi
+30: C = S.Matrix([[r,z],[0,d/r]])
+31: P = S.diag(1,0)
+32: K = S.Matrix([[ss,S.conjugate(w)],[w,-ss]])
+33: numerator = C*(P+eps*K)*C.conjugate().T
+34: trace = S.trace(numerator)
+35: derivative = (numerator.diff(eps)*trace - numerator*trace.diff(eps))/trace**2
+36: derivative = derivative.subs(eps,0)
+37: sp = (dr**2+di**2)*ss/r**4
+38: wp = d*w/r**2 - d*S.conjugate(z)*ss/r**3
+39: expected = S.Matrix([[sp,S.conjugate(wp)],[wp,-sp]])
+40: # These derivative identities are diagnostics only. The actual cap arrow
+41: # holds the Cox quaternion fixed and is not the derivative of this base map.
+42: matzero('diagnostic_full_ball_derivative', derivative-expected)
+43: zero('diagnostic_ball_derivative_trace', S.trace(derivative))
+44: zero('diagnostic_cotangent_vs_tangent_positive_ratio',
+45:      (r**2/S.conjugate(d))/(d/r**2)-r**4/(dr**2+di**2))
+46: 
+47: x, y, xb, yb = S.symbols('x y xbar ybar', nonzero=True)
+48: U = S.Matrix([[1,-xb/yb],[x/y,1]])
+49: raw_g = S.Matrix([[y,-xb],[x,yb]])
+50: matzero('actual_Cartier_Cox_product', U*S.diag(y,yb)-raw_g)
+51: swap = S.Matrix([[0,1],[1,0]])
+52: matzero('fixed_ordering_arrow',
+53:         U*swap*S.diag(yb,y)-raw_g*swap)
+54: zero('spinor_determinant', raw_g.det()-(x*xb+y*yb))
+55: matzero('spinor_norm',
+56:         S.Matrix([[yb,xb],[-x,y]])*raw_g-(x*xb+y*yb)*S.eye(2))
+57: normal = S.Matrix([[ss,S.conjugate(w)],[w,-ss]])
+58: swapped = S.Matrix([[-ss,w],[S.conjugate(w),ss]])
+59: matzero('fixed_real_swap', swap*normal*swap-swapped)
+60: real_swap = S.diag(-1,1,-1)  # gamma, Re ell, Im ell
+61: zero('fixed_real_swap_oriented', real_swap.det()-1)
+62: 
+63: I = S.diag(S.I,-S.I)
+64: J = S.Matrix([[0,-1],[1,0]])
+65: K0 = S.Matrix([[0,S.I],[S.I,0]])
+66: matzero('right_complex_IJ', I*J+K0)
+67: zero('positive_complex_trace', S.trace(I*J*K0)-2)
+68: import itertools
+69: trace_cube = 0
+70: for perm in itertools.permutations(range(3)):
+71:     inversions = sum(perm[a] > perm[b] for a in range(3) for b in range(a+1,3))
+72:     matrices = (I,J,K0)
+73:     trace_cube += (-1)**inversions*S.trace(
+74:         matrices[perm[0]]*matrices[perm[1]]*matrices[perm[2]])
+75: zero('trace_cube_positive_volume', trace_cube-12)
+76: zero('Chern_Simons_coefficient', 1-S.Rational(2,3)-S.Rational(1,3))
+77: c2 = -S.Rational(1,24)/S.pi**2*(24*S.pi**2)
+78: zero('relative_second_Chern', c2+1)
+79: p1 = -4*c2
+80: zero('adjoint_Pontryagin', p1-4)
+81: 
+82: s, rho = S.symbols('source_s rho')
+83: Z = (s-rho)/(s+rho)
+84: zero('retained_Cartier_canonical_determinant',
+85:      (s+rho)**2*S.diff(Z,s)-2*rho)
+86: zero('literal_outer_GL_determinant',
+87:      S.Matrix([[1,-rho],[1,rho]]).det()-2*rho)
+88: q0, q1, circle = S.symbols('q0 q1 circle', nonzero=True)
+89: # The literal product cap leaves q_H fixed; applying its physical right
+90: # circle before or after the base map gives identical normal coordinates.
+91: matzero('product_cap_circle_equivariance',
+92:         S.Matrix([q0*circle,q1*circle])-S.Matrix([q0,q1])*circle)
+93: F = S.Matrix([s**2-rho**2, s*(s**2-rho**2), rho])
+94: cross = F.diff(s).cross(F.diff(rho))
+95: covector = S.Matrix([3*s**2-rho**2, -2*s, 2*rho*(s**2-rho**2)])
+96: matzero('actual_normal_covector', cross-covector)
+97: XX, YY, uu, uprime = S.symbols('X Y u uprime')
+98: numerator_q = YY**2-XX**2*(XX+rho**2)
+99: physical_q = numerator_q/(XX+uu)
+100: gradient_q = S.Matrix([S.diff(physical_q,XX),S.diff(physical_q,YY),
+101:                       S.diff(physical_q,rho)+S.diff(physical_q,uu)*uprime])
+102: gradient_q = gradient_q.subs({XX:s**2-rho**2,YY:s*(s**2-rho**2)})
+103: factor_q = -(s**2-rho**2)/(s**2-rho**2+uu)
+104: matzero('physical_q_normal_arrow', gradient_q-factor_q*covector)
+105: zero('first_Cox_normal_unit', factor_q/Z+(s+rho)**2/(s**2-rho**2+uu))
+106: zero('second_Cox_normal_unit', factor_q*Z+(s-rho)**2/(s**2-rho**2+uu))
+107: phase = S.symbols('unit_phase',nonzero=True)
+108: cc0, cc1, cbar1 = S.symbols('c0 c1 cbar1')
+109: zero('residual_inverse_gauge_product', (phase*cc0)*(cc1/phase)-cc0*cc1)
+110: # On the unit circle conjugate(phase^-1)=phase. Both right-complex
+111: # spinor coordinates therefore acquire the same physical scalar phase.
+112: matzero('residual_gauge_physical_circle',
+113:         S.Matrix([phase*cc0,phase*cbar1])-S.Matrix([cc0,cbar1])*phase)
+114: zero('complex_linear_Hopf_degree_matrix', S.Matrix([[1,1],[1,-1]]).det()+2)
+115: 
+116: e2, signature = S.symbols('Euler_square signature')
+117: solution = S.solve([e2-signature-8, e2+3*signature+4], (e2,signature))
+118: zero('local_Euler_square', solution[e2]-5)
+119: zero('local_signature', solution[signature]+3)
+120: local_pair = (solution[e2], 3*solution[signature]+solution[e2])
+121: zero('local_index', (4*local_pair[0]-local_pair[1])/24-1)
+122: sphere_pair = (p1/4,p1)
+123: zero('normal_sphere_index', (4*sphere_pair[0]-sphere_pair[1])/24)
+124: pair = tuple(a+b for a,b in zip(local_pair,sphere_pair))
+125: zero('source_k', pair[0]-6)
+126: zero('source_ell', pair[1])
+127: A = (4*pair[0]-pair[1])/24
+128: zero('source_A', A-1)
+129: relative = (6*A-pair[0], -6*A)
+130: zero('actual_relative_left', relative[0])
+131: zero('actual_relative_right', relative[1]+6)
+132: zero('first_fixed_edge_class', A+relative[1]+5)
+133: 
+134: report = {
+135:     'utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+136:     'status': 'PASS',
+137:     'scope': 'Actual F54/F56 positive rho source loop, initial physical fixed-edge fan only.',
+138:     'checks_count': len(checks),
+139:     'checks': checks,
+140:     'local_surgery_pair': list(map(int,local_pair)),
+141:     'relative_c2': int(c2),
+142:     'normal_Pontryagin': int(p1),
+143:     'normal_sphere_pair': list(map(int,sphere_pair)),
+144:     'source_pair': list(map(int,pair)),
+145:     'relative_pair': list(map(int,relative)),
+146:     'uncomputed': ['other cusp-edge normal products', 'all-fan variation and derivative matrices'],
+147:     'proof': 'notes/part3_source_cusp_characteristic_pair_working.md'
+148: }
+149: report['superseded_attempt'] = 'code/part3/attempts/source_cusp_pair_cotangent_factor_omission/'
+150: report['outer_cap_arrow'] = '(P,q_H,rho) -> (B_rho(P),q_H,rho), with actual q_H retained'
+151: report['diagnostic_warning'] = 'The derivative matrix is algebraically correct but does not supply the actual Cox normal comparison; det(A_rho)=2rho is retained explicitly.'
+152: out = ROOT/'code/part3/source_cusp_characteristic_pair.json'
+153: out.write_text(json.dumps(report,indent=2)+'\n')
+154: print(f'PASS: {len(checks)} exact identities; local pair={local_pair}, '
+155:       f'normal c2={c2}, sphere pair={sphere_pair}, source pair={pair}, relative={relative}.')

@@ -1,0 +1,135 @@
+1: #!/usr/bin/env python3
+2: """Universal, cusp-zero integral descent for both K11 sphere signs.
+3: 
+4: This certificate gives the actual one-period cochain, its comparison with
+5: the sixfold logarithmic primitives, and the simultaneous closed Cox origin.
+6: It does not divide a homotopy-sphere class.
+7: """
+8: from pathlib import Path
+9: from datetime import datetime, timezone
+10: from math import gcd
+11: import json
+12: import sympy as S
+13: 
+14: ROOT = Path(__file__).resolve().parents[2]
+15: I = S.eye(4)
+16: zero = S.zeros(4, 1)
+17: T1 = S.Matrix([[1,0,-6,2],[0,-1,1,1],[0,-1,0,1],[0,0,0,1]])
+18: T2 = S.Matrix([[1,6,0,-3],[0,0,-1,1],[0,1,0,0],[0,0,0,1]])
+19: A1, A2 = T1.inv().T, T2.inv().T
+20: A0 = (A1*A2).inv()
+21: N1, N2 = I+A1+A1**2, I+A2+A2**2+A2**3
+22: J = S.Matrix([[0,0],[0,0],[1,0],[0,1]])
+23: e1,e2,e3,delta = [I[:,i] for i in range(4)]
+24: K,L,P,Q,eps = S.symbols('K L P Q eps', integer=True)
+25: d, b = 12*K*L, 2*K*L
+26: 
+27: def stack(parts):
+28:     return S.Matrix.vstack(*parts)
+29: 
+30: def serial(M):
+31:     return [[str(S.simplify(x)) for x in M.row(i)] for i in range(M.rows)]
+32: 
+33: def ints(M):
+34:     return [int(x) for x in M]
+35: 
+36: d0 = S.zeros(28,14)
+37: d0[0:4,0:4], d0[4:8,0:4] = A1-I, A2-I
+38: d0[8:12,4:8], d0[12:16,8:12] = A1-I, A2-I
+39: for i in range(3):
+40:     d0[16+4*i:20+4*i,0:4] = I
+41: d0[16:20,4:8] = -I
+42: d0[20:24,8:12] = -I
+43: d0[24:28,12:14] = -J
+44: d1 = S.zeros(20,28)
+45: d1[0:4,8:12], d1[4:8,12:16] = K*N1, L*N2
+46: d1[8:12,0:4], d1[8:12,8:12] = I, -I
+47: d1[12:16,4:8], d1[12:16,12:16] = I, -I
+48: d1[16:20,0:4], d1[16:20,4:8] = -A0, -A0*A1
+49: for i,A in enumerate((A1,A2,A0)):
+50:     d1[8+4*i:12+4*i,16+4*i:20+4*i] = -(A-I)
+51: assert d1*d0 == S.zeros(20,14)
+52: 
+53: p = (P*delta-eps*(A1-I)*e1)/6
+54: q = (Q*delta-eps*(A2-I)*e1)/6
+55: x = stack([p,q,p,q,zero,zero,zero])
+56: cover = stack([P*delta,Q*delta,P*delta,Q*delta,zero,zero,eps*e1])
+57: y = stack([eps*e1,eps*e1,eps*e1,S.zeros(2,1)])
+58: assert cover-6*x == d0*y
+59: assert S.simplify((p+A1*q).subs(Q,eps-P)) == zero
+60: target = stack([K*P*delta/2,2*L*Q*delta/3,zero,zero,zero])
+61: assert S.simplify((d1*x-target).subs(Q,eps-P)) == S.zeros(20,1)
+62: assert S.simplify((d1*cover-6*target).subs(Q,eps-P)) == S.zeros(20,1)
+63: shear = I.copy()
+64: shear[3,0] = b
+65: for block in range(7):
+66:     assert shear*x[4*block:4*block+4,:] == x[4*block:4*block+4,:]
+67: assert (A0-I)*e1 == -delta
+68: assert (A1*A2-I)*e1 == delta
+69: 
+70: v,C,U,Gamma = S.symbols('v C U Gamma')
+71: tau = S.Matrix([eps*Gamma/6,(eps*C+U-eps*d*v)/6])
+72: sigma = S.Matrix([eps*Gamma*v,v*(eps*C+U)-eps*d*v**2/2+eps*d*v/2])
+73: sigma_desc = sigma + S.Matrix([0,eps*K*L*v])
+74: step = S.Rational(1,6)
+75: norm = sum((tau.subs(v,v+j*step) for j in range(6)),S.zeros(2,1))
+76: assert S.simplify(norm-6*tau) == S.Matrix([0,-5*eps*K*L])
+77: assert S.simplify(sigma.subs(v,v+step)-sigma-tau) == S.Matrix([0,5*eps*K*L/6])
+78: assert S.simplify(sigma_desc.subs(v,v+step)-sigma_desc-tau) == S.Matrix([0,eps*K*L])
+79: assert S.simplify(sigma_desc.subs(v,v+1)-sigma_desc-
+80:                   (sigma.subs(v,v+1)-sigma)) == S.Matrix([0,eps*K*L])
+81: 
+82: samples = []
+83: for kval,lval in [(1,1),(1,2),(1,5),(3,1),(5,1),(5,2),(7,5),(13,7)]:
+84:     assert gcd(3*kval,4*lval)==1
+85:     n0 = pow(4*lval,-1,3*kval)
+86:     n1 = (1-4*lval*n0)//(3*kval)
+87:     for epsval in (1,-1):
+88:         n0signed,n1signed = epsval*n0,epsval*n1
+89:         pval,qval = 4*lval*n0signed,3*kval*n1signed
+90:         subs = {K:kval,L:lval,P:pval,Q:qval,eps:epsval}
+91:         xi = x.subs(subs)
+92:         assert all(z.is_Integer for z in xi)
+93:         assert (pval+2*epsval)%6==0 and (qval-3*epsval)%6==0
+94:         ti = stack([2*kval*lval*n0signed*delta,2*kval*lval*n1signed*delta,zero,zero,zero])
+95:         assert d1.subs(subs)*xi==ti
+96:         samples.append(dict(K=kval,L=lval,eps=epsval,n0=n0signed,n1=n1signed,P=pval,Q=qval,
+97:                             primitive=ints(xi),target=ints(ti)))
+98: 
+99: Sval = S.symbols('S', integer=True)
+100: kval,ellval = -K*L,-4*K*L
+101: class_value = S.factor(ellval*(Sval-1)/8-kval*(Sval**2-1)/8)
+102: assert class_value == K*L*(Sval-3)*(Sval-1)/8
+103: residue_range = sorted({int(((s-1)*(s-3)//8)%28) for s in range(1,113,2)})
+104: checks = ['d1 d0=0','universal cusp-zero integral primitive',
+105:           'p+A1 q=0 under P+Q=eps','exact finite cyclic norms',
+106:           'S_b x=x','cover-6x=d0(eps e1,eps e1,eps e1,0)',
+107:           'sixfold norm differs by the integer period -5 eps KL delta',
+108:           'sigma_desc step differs from actual translation by eps KL delta',
+109:           'cover framing adjustment is the global eps KL delta loop',
+110:           'all sixteen signed marked integral sample tuples pass']
+111: data = dict(status='PASS: exact integral and cusp-origin identities; geometric comparison recorded separately',
+112:             utc=datetime.now(timezone.utc).isoformat(),
+113:             scope='eps=4Ln0+3Kn1=+1 or -1; gcd(3K,4L)=1',
+114:             T1=serial(T1),T2=serial(T2),A1=serial(A1),A2=serial(A2),A0=serial(A0),
+115:             d0=serial(d0),d1=serial(d1),
+116:             one_step_blocks={name:serial(x[4*i:4*i+4,:]) for i,name in
+117:                              enumerate(['p','q','r','s','u','v','w'])},
+118:             sixfold_blocks={name:serial(cover[4*i:4*i+4,:]) for i,name in
+119:                             enumerate(['p','q','r','s','u','v','w'])},
+120:             comparison_gauge=serial(y),cusp_tau=serial(tau),sigma=serial(sigma),
+121:             closed_original_sigma=serial(sigma_desc),samples=samples,
+122:             original_fan_formula=str(class_value),original_KL1_range=residue_range,
+123:             checks=checks)
+124: (ROOT/'code/part3_fourfold/original_cox_descent_universal.json').write_text(json.dumps(data,indent=2)+'\n')
+125: with (ROOT/'records/literature_fourfold.md').open('a') as log:
+126:     log.write('\n- '+data['utc']+' — Executed own code/part3_fourfold/original_cox_descent_universal.py. '
+127:               'Reason: actual one-period simultaneous Cox descent. Material: full symbolic integer complex, '
+128:               'universal cusp-zero primitive, exact sixfold coboundary, literal bounded cusp translation '
+129:               'and closed original-loop origin; no homotopy-sphere class is divided.\n')
+130: print('p =',p.T,'; q =',q.T)
+131: print('tau =',tau.T)
+132: print('sigma_desc =',sigma_desc.T)
+133: print('Original positive-sphere fan expression:',class_value)
+134: print('KL=1 exact fan residues:',residue_range)
+135: print('PASS:', '; '.join(checks))

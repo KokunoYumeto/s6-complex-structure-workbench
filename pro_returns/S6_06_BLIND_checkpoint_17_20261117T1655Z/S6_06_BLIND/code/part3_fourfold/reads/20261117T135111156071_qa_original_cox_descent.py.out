@@ -1,0 +1,51 @@
+1: #!/usr/bin/env python3
+2: """Standalone compile/render of audited P3K.33 without shared PDF writes."""
+3: from pathlib import Path
+4: from datetime import datetime, timezone
+5: import json, os, re, subprocess
+6: import fitz
+7: from PIL import Image, ImageDraw
+8: 
+9: ROOT=Path(__file__).resolve().parents[2]
+10: with (ROOT/'records/literature_fourfold.md').open('a') as log:
+11:     log.write('\n- '+datetime.now(timezone.utc).isoformat()+
+12:               ' — Opened own code/part3/f48_standalone.tex and notes/part3_original_cox_descent.tex. '
+13:               'Reason: isolated P3K.33 compile and render. Material: entire audited proof and exact equations.\n')
+14: preamble=(ROOT/'code/part3/f48_standalone.tex').read_text().split(r'\begin{document}',1)[0]
+15: src=ROOT/'code/part3_fourfold/k33_standalone.tex'
+16: src.write_text(preamble+r'\begin{document}'+'\n'+r'\input{notes/part3_original_cox_descent.tex}'+'\n'+r'\end{document}'+'\n')
+17: runtime=ROOT.parent/'tex_runtime'
+18: env=dict(os.environ,TEXMF='{/usr/share/texlive/texmf-dist,/usr/share/texmf}',
+19:          TEXFORMATS=str(runtime),TEXINPUTS=str(runtime/'packages')+'//:',
+20:          LUAINPUTS=str(runtime/'packages')+'//:')
+21: p=subprocess.run(['lualatex','-interaction=nonstopmode','-halt-on-error',
+22:                   '-output-directory=code/part3_fourfold',str(src.relative_to(ROOT))],
+23:                  cwd=ROOT,env=env,text=True,capture_output=True)
+24: (ROOT/'code/part3_fourfold/k33_compile.out').write_text(p.stdout)
+25: (ROOT/'code/part3_fourfold/k33_standalone.err').write_text(p.stderr)
+26: if p.returncode:
+27:     print(p.stdout[-7000:]);raise SystemExit(p.returncode)
+28: logtext=(ROOT/'code/part3_fourfold/k33_standalone.log').read_text()
+29: over=[float(x) for x in re.findall(r'Overfull \\hbox \(([0-9.]+)pt too wide\)',logtext)]
+30: pdf=fitz.open(ROOT/'code/part3_fourfold/k33_standalone.pdf')
+31: out=ROOT/'records/render_k33';out.mkdir(exist_ok=True)
+32: paths=[]
+33: for i,page in enumerate(pdf):
+34:     path=out/f'page_{i+1:02}.png'
+35:     page.get_pixmap(matrix=fitz.Matrix(1.65,1.65),alpha=False).save(path)
+36:     paths.append(str(path.relative_to(ROOT)))
+37: for start in range(0,len(paths),4):
+38:     contact=Image.new('RGB',(1700,2440),'#dddddd')
+39:     for j,rel in enumerate(paths[start:start+4]):
+40:         im=Image.open(ROOT/rel).convert('RGB');im.thumbnail((820,1180))
+41:         tile=Image.new('RGB',(850,1220),'white')
+42:         tile.paste(im,((850-im.width)//2,25))
+43:         ImageDraw.Draw(tile).text((18,1200),Path(rel).name,fill='black')
+44:         contact.paste(tile,((j%2)*850,(j//2)*1220))
+45:     contact.save(out/f'contact_{start//4+1}.png')
+46: report=dict(utc=datetime.now(timezone.utc).isoformat(),compile='PASS',pages=len(pdf),
+47:             overflows_pt=over,overflows_gt_2pt=[x for x in over if x>2],
+48:             missing_character=bool(re.search(r'Missing character:',logtext)),
+49:             page_images=paths,visual_review='pending')
+50: (ROOT/'records/qa_k33.json').write_text(json.dumps(report,indent=2)+'\n')
+51: print(json.dumps(report,indent=2))

@@ -1,0 +1,30 @@
+1: #!/usr/bin/env python3
+2: """Exact marked infinity source/line/root calculations. No return is assigned."""
+3: from pathlib import Path
+4: from datetime import datetime, timezone
+5: import json
+6: import sympy as S
+7: 
+8: OUT = Path(__file__).resolve().parent
+9: e, x, y, t, s, z, v, X, Y, T = S.symbols("e x y t s z v X Y T")
+10: A = 1-e**2
+11: g = e*A
+12: a2 = -2+3*e**2
+13: tstar = A*(1-3*e**2)
+14: f = x**3+a2*x**2+t*x+g**2
+15: checks = []
+16: def check(name, expression):
+17:     value = S.factor(expression)
+18:     assert value == 0, (name, value)
+19:     checks.append(name)
+20: 
+21: old = Y**2-X**3-(1-2*v)*X**2-T*X-v**2
+22: pulled = old.subs({X:e**-2*x, Y:e**-3*y, T:e**-4*t, v:e**-2-1})
+23: check("source scaling", e**6*pulled-(y**2-f))
+24: check("marked section", f.subs(x,0)-g**2)
+25: check("selected factor", f.subs(t,tstar)-(x-A)**2*(x+e**2))
+26: check("selected normalization", (s*(s**2-1))**2-f.subs({x:s**2-e**2,t:tstar}))
+27: check("section branch", (s*(s**2-1)).subs(s,-e)-g)
+28: check("selected node plus", (s**2-e**2).subs(s,1)-A)
+29: check("selected node minus", (s**2-e**2).subs(s,-1)-A)
+30: 

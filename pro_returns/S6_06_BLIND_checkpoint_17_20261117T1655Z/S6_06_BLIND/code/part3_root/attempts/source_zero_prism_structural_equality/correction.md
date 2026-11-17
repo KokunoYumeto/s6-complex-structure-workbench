@@ -1,0 +1,1 @@
+The initial period-ray check used structural equality of SymPy expressions. The entries differ only by unexpanded distributive products. The corrected check subtracts the two actual lattice maps and expands every entry before comparison with the zero matrix. The original source and output remain here.

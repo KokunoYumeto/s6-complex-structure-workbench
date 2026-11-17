@@ -1,0 +1,249 @@
+1740: there is no stabilizer. This proves the toric normal-bundle
+1741: description used below for interior components.
+1742: 
+1743: ## 25. Compact interior normal-link characteristic residues
+1744: 
+1745: This section computes a precisely oriented local quantity.
+1746: Let \(F\) be one compact fixed component in the smooth
+1747: complex fourfold atlas, with its complex orientation.
+1748: Let its complex normal roots be \(x_i\), and retain the
+1749: nonzero physical circle weights \(w_i\). Orient its normal
+1750: sphere boundary by the original complex normal orientation,
+1751: then use the positive physical orbit to orient the quotient.
+1752: With \(u\) the corresponding degree-two circle variable,
+1753: the rational characteristic residue of that normal link is
+1754: \[
+1755:  {\cal R}(F)=
+1756:  [u^{-1}]\int_F
+1757:  \frac{4u^3-u\{p_1(TF)+\sum_i(x_i+w_i u)^2\}}
+1758:       {24\prod_i(x_i+w_i u)}.                              \tag{SZ.57}
+1759:  \]
+1760: The coefficient is taken in the Laurent expansion at infinity.
+1761: This formula retains finite circle stabilizers: its integral
+1762: is the rational orbifold pushforward, rather than an
+1763: unjustified smooth replacement of a weighted projective link.
+1764: 
+1765: Here is the actual bundle calculation. On the sphere bundle,
+1766: the tangent bundle together with the radial real line is
+1767: the pullback of \(TF\) and its complex normal bundle.
+1768: Quotienting the orbit removes the physical orbit line,
+1769: so the quotient tangent bundle has the same stable
+1770: Pontryagin class as the equivariant restriction of
+1771: \(TF\oplus\nu_F\). The equivariant Thom class restricts to
+1772: \(\prod_i(x_i+w_i u)\). Integrating on the normal sphere
+1773: quotient is therefore the coefficient of \(u^{-1}\) after
+1774: division by this Euler class. This can also be obtained by
+1775: applying the localized pushforward identity to the normal
+1776: disc and its sphere boundary. The exact primary integration
+1777: identity is Atiyah--Bott, *The moment map and equivariant
+1778: cohomology*, Topology 23 (1984), printed page 9, formula
+1779: (3.8), with normal Euler formula (3.7) and localization
+1780: Theorem (3.5).
+1781: 
+1782: The residue normalization has a direct fibre check. Conjugate
+1783: each negative-weight normal line, keeping the physical
+1784: circle orientation. For positive weights the fibre is the
+1785: weighted projective quotient and the circle class \(u\)
+1786: is the positive hyperplane class. Its projective-bundle
+1787: relation is \(\prod_i(x_i+w_i u)=0\), and its fibre
+1788: integral of \(u^{r-1}\) is \(1/\prod_iw_i\). The latter
+1789: follows from the actual power map
+1790: \([z_i]\mapsto[z_i^{w_i}]\), whose generic degree is
+1791: \(\prod_iw_i\) and whose pullback of \(u\) is the
+1792: ordinary hyperplane class. The relation then determines
+1793: all higher pushforwards recursively, exactly as the
+1794: coefficient of \(u^{-1}\) in the reciprocal Euler
+1795: polynomial. A conjugated negative line changes
+1796: \((x_i,w_i)\) to \((-x_i,-w_i)\) and reverses the
+1797: original normal orientation. Its denominator sign in
+1798: (SZ.57) is precisely that reversal. This proves both
+1799: the normalization and the signed-weight formula.
+1800: 
+1801: For a point (SZ.57) is
+1802: \[
+1803:        \frac{4-\sum_i w_i^2}{24\prod_i w_i}.
+1804:  \]
+1805: For a curve it is
+1806: \[
+1807:  -\frac1{24\prod_iw_i}
+1808:   \int_F\sum_i\left\{\frac{4-\sum_jw_j^2}{w_i}
+1809:                                  +2w_i\right\}x_i.        \tag{SZ.58}
+1810:  \]
+1811: For a surface put
+1812: \[
+1813:  P=w_1w_2,\quad c=4-w_1^2-w_2^2,\quad
+1814:  A=\frac{x_1}{w_1}+\frac{x_2}{w_2},\quad
+1815:  B=\frac{x_1^2}{w_1^2}
+1816:        +\frac{x_1x_2}{w_1w_2}+\frac{x_2^2}{w_2^2}.
+1817:  \]
+1818: Then it is
+1819: \[
+1820:  \int_F\frac{cB+2(w_1x_1+w_2x_2)A
+1821:                     -p_1(TF)-x_1^2-x_2^2}{24P}.           \tag{SZ.59}
+1822:  \]
+1823: For example weights \((1,-1)\) give
+1824: \((p_1(TF)-3(x_1-x_2)^2)/24\). Conjugating the
+1825: negative-weight normal line reverses the normal orientation
+1826: and changes this to the positive-Hopf expression. That
+1827: orientation reversal is retained; neither expression has
+1828: yet been identified with the completed family's Jin
+1829: boundary convention.
+1830: 
+1831: For an interior component choose an auxiliary cocharacter
+1832: \(\epsilon\) in its canonical unwrapped lattice. If a chart
+1833: occurs at period \(n\), its auxiliary tangent and normal
+1834: weights are exactly
+1835: \[
+1836:                   C^{-1}T_n\epsilon.                       \tag{SZ.60}
+1837:  \]
+1838: This is the dual of the literal map
+1839: \(C_{\rm unwrapped}=T_{-n}C\). The compact-component
+1840: pushforward (3.8) divides (SZ.58) or (SZ.59) at each
+1841: auxiliary fixed point by the product of its tangent
+1842: weights. All coefficients are rational numbers computed
+1843: from integer matrices.
+1844: 
+1845: The certificate
+1846: \(\texttt{source\_zero\_interior\_residues.py}\) uses two
+1847: independent generic auxiliary circles for every component.
+1848: It verifies equality component by component, and exports
+1849: every value, rather than using only agreement of totals.
+1850: The sums over the compact interior components are
+1851: \[
+1852:  \begin{array}{c|r|r}
+1853:  (a,b,N)&\text{components}&\sum{\cal R}(F)\\ \hline
+1854:  (2,1,6)&4420&1299\\
+1855:  (1,2,8)&21776&4893/8.
+1856:  \end{array}                                                \tag{SZ.61}
+1857:  \]
+1858: These sums do not include the components tagged H, E or I.
+1859: 
+1860: ## 26. Exact H-base normal degrees, including all three marked points
+1861: 
+1862: Put \(w=q_2/q_1\) on the exceptional base curve H.
+1863: Its marked points are \(w=0,1,\infty\), belonging to W,
+1864: E and I respectively. Use \(q_1\) as a generic normal
+1865: coordinate to H. The exact periods (SZ.44) have normal
+1866: orders given by H, and their remaining nonconstant
+1867: factors on this base curve are
+1868: \[
+1869:  \begin{split}
+1870:  h:\ &(Z,V)\longmapsto
+1871:            (wZ,\ w^{-a}V),\\
+1872:  g:\ &(Z,V)\longmapsto
+1873:            (w^b Z,\ w^{-2}(1-w)^N V),
+1874:  \end{split}                                                \tag{SZ.62}
+1875:  \]
+1876: after the powers of \(q_1\) have been written separately.
+1877: All omitted factors here are the explicitly retained
+1878: nonzero constants \(u_Q(0),u_P(0),u_X(0),u_v(0)\),
+1879: and \(2(-1)^{b+1}\lambda_0\). In particular the
+1880: \((1-w)^N\) term is not removed.
+1881: 
+1882: Consider any regular rank-three face on H. Its three
+1883: primitive vectors, after dropping the zero first base
+1884: coordinate, form a unimodular \(3\)-by-\(3\) matrix
+1885: \(B_H\). Its orbit closure is a curve with the actual
+1886: base parameter \(w\), and hence is \(\mathbb P^1\).
+1887: For its \(j\)-th normal line use the generic meromorphic
+1888: coordinate
+1889: \[
+1890:               \eta_j=Z^{p_j}V^{q_j}q_1^{s_j},
+1891:        \qquad (p_j,q_j,s_j)=\text{row}_j(B_H^{-1}).          \tag{SZ.63}
+1892:  \]
+1893: The actual occurrence of this face in a sector chart has
+1894: a recorded period \(n=(n_1,n_2)\). Let
+1895: \((p,q,r,s)\) be the dual row of that chart belonging,
+1896: under the recorded permutation, to this normal ray.
+1897: The exact lattice checks are
+1898: \[
+1899:  (p,q)=(p_j,q_j),\qquad
+1900:        s+(p,q)Hn=s_j.                                      \tag{SZ.64}
+1901:  \]
+1902: Consequently its coordinate pulls back to \(\eta_j\)
+1903: times a rational unit on the base. Write
+1904: \[
+1905:  e_w=p(n_1+bn_2)+q(-an_1-2n_2),\qquad e_1=Nn_2q.
+1906:  \]
+1907: The additional base factors of the three sector charts
+1908: are literal:
+1909: \[
+1910:  \begin{array}{c|cc|c}
+1911:  \text{sector}&x&y&
+1912:        \text{order of the coefficient at its marked point}\\ \hline
+1913:  W&w&q_1&e_w+r\\
+1914:  E&(1-w)/u_v&q_1&e_1+r\\
+1915:  I&w^{-1}&wq_1&-e_w+r-s-e_1 .
+1916:  \end{array}                                                \tag{SZ.65}
+1917:  \]
+1918: The last row uses the order at infinity. For each normal
+1919: line, the sum of these three orders is its degree.
+1920: Indeed the generic normal vector with \(\eta_j\)
+1921: coefficient one has exactly these coefficients in the
+1922: three holomorphic normal frames, so their zero and pole
+1923: orders give its divisor. This fixes the line-bundle
+1924: sign without selecting a different normal convention.
+1925: 
+1926: The fibre circle with cocharacter \((1,K,0,0)\) commutes
+1927: with every exact period and all the units in (SZ.62).
+1928: It therefore acts on every compact H fixed component
+1929: and on its actual normal bundle. On an H fixed surface
+1930: its fixed set consists of the rank-three H curves just
+1931: described, together with isolated points in the
+1932: intervening regular charts. There are no omitted fixed
+1933: curves in a sector interior: a three-dimensional face
+1934: whose base image has rank two has only a one-dimensional
+1935: fibre kernel, already spanned by the physical delta;
+1936: the chosen independent fibre circle is not in that span.
+1937: 
+1938: For an auxiliary fixed curve in such a surface, let
+1939: \(\eta\) be its auxiliary normal weight, \(d_t\) the
+1940: degree of that normal line, \(\beta_i,d_i\) the
+1941: auxiliary weights and degrees of the two ambient
+1942: normal lines. Let \(R\) denote the polynomial in
+1943: (SZ.59). Substitute
+1944: \[
+1945:  x_i=\beta_i u+d_i h,\quad
+1946:  p_1(TF)=\eta^2u^2+2\eta d_t hu,\quad h^2=0.
+1947:  \]
+1948: Writing the result as \(R_0u^2+R_hhu\), the exact
+1949: curve contribution is
+1950: \[
+1951:                          R_h/\eta-R_0d_t/\eta^2.            \tag{SZ.66}
+1952:  \]
+1953: This is division by the actual auxiliary Euler class
+1954: \(\eta u+d_t h\). The tangent Pontryagin class of
+1955: the base \(\mathbb P^1\) is zero. Isolated points
+1956: use the two nonzero tangent weights in (3.8).
+1957: 
+1958: As independent arithmetic checks, this same localization
+1959: computes \(c_1(TF)^2,c_2(TF)\) for every H surface.
+1960: Each auxiliary point contributes
+1961: \((\beta_1+\beta_2)^2/(\beta_1\beta_2)\) and \(1\);
+1962: each auxiliary fixed curve contributes \(d_t+4\)
+1963: and \(2\). The resulting signature
+1964: \((c_1^2-2c_2)/3\) and holomorphic Euler number
+1965: \((c_1^2+c_2)/12\) are integral. Two independent
+1966: fibre circles give the same value for every surface
+1967: and for every normal-link residue.
+1968: 
+1969: The executed certificate
+1970: \(\texttt{code/part3\_fourfold/source\_zero\_h\_residues.py}\)
+1971: retains all three point orders, periods, permutations,
+1972: normal degrees, auxiliary weights and characteristic
+1973: values. Its exact totals are
+1974: \[
+1975:  \begin{array}{c|r|r|r}
+1976:  (a,b,N)&\text{H components}&\text{full-fibre fixed curves}
+1977:                 &\sum_H{\cal R}(F)\\ \hline
+1978:  (2,1,6)&28&52&-5171/4\\
+1979:  (1,2,8)&383&516&-4873/8.
+1980:  \end{array}                                                \tag{SZ.67}
+1981:  \]
+1982: Thus the combined compact interior and H contributions
+1983: are \(25/4\) and \(5/2\), respectively. They are local
+1984: normal-link characteristic sums. The I and E continuations,
+1985: their cap chain-index identifications, the global oriented
+1986: boundary map, and the source-family return are not
+1987: assigned by this calculation.
+1988: 
