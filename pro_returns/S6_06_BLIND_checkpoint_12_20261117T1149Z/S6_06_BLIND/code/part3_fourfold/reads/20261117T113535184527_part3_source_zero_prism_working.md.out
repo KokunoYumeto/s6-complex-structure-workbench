@@ -1,0 +1,144 @@
+1: # Actual prism cones for the rescaled source-zero period sectors
+2: 
+3: This is an unpromoted working construction for P3K.39. We retain the
+4: actual pairs \((a,b)=(1,2),(2,1)\), and use the literal scalar
+5: rescaling \(\lambda=v^M\lambda_0\), hence \(N=M>1\). The
+6: one-gamma root parameter is \(r=v r_0\). Divisibility by the shorter
+7: fixed-source scalar period alone has not supplied a mixed source/cap
+8: family, so we do not replace this marked parameter by a shorter root.
+9: 
+10: The period matrices on the three strict-transform sectors and the
+11: exceptional direction are
+12: \[
+13:  I=\begin{pmatrix}1&0\\0&1\end{pmatrix},\quad
+14:  W=\begin{pmatrix}1&b\\-a&-2\end{pmatrix},\quad
+15:  E=\begin{pmatrix}0&0\\0&N\end{pmatrix},\quad
+16:  H=I+W+E=\begin{pmatrix}2&b\\-a&N-1\end{pmatrix}.
+17: \]
+18: We use the actual blown-up base sectors \((I,H),(W,H),(E,H)\).
+19: Their base lattice coordinates below are their own two primitive rays.
+20: Their transition to the original base is still carried by the actual
+21: blowup charts in the source-zero working note.
+22: 
+23: ## 1. The exact cones and period maps
+24: 
+25: For each pair \((P_0,P_1)\) above and \(n\in\mathbb Z^2\), set
+26: \[
+27:  R_0(n)=(P_0n,1,0),\qquad R_1(n)=(P_1n,0,1)
+28:               \quad\hbox{in }\mathbb Z^2\oplus\mathbb Z^2.
+29: \]
+30: The actual integral period action associated with \(m\in\mathbb Z^2\)
+31: is the linear lattice automorphism
+32: \[
+33:  T_m(x,r,s)=(x+rP_0m+sP_1m,r,s).
+34: \]
+35: It has determinant one and sends \(R_i(n)\) to \(R_i(n+m)\).
+36: These are the exponent maps of the actual torus deck transformations;
+37: their remaining holomorphic units act through the same torus and must
+38: still be retained in the analytic quotient.
+39: 
+40: For \((I,H)\) and \((E,H)\), take \(u=e_1,v=e_2\). For
+41: \((W,H)\), take \(u=e_1,v=e_2-be_1\). This last change has
+42: determinant one and satisfies \(Wv=0\). Triangulate every lattice
+43: square by the triangles
+44: \((n,n+u,n+u+v)\) and \((n,n+v,n+u+v)\). If its ordered
+45: vertices are \(n_0,n_1,n_2\), the three staircase prism cones are
+46: generated respectively by
+47: \[
+48: \begin{split}
+49:  &(R_0(n_0),R_0(n_1),R_0(n_2),R_1(n_2)),\\
+50:  &(R_0(n_0),R_0(n_1),R_1(n_1),R_1(n_2)),\\
+51:  &(R_0(n_0),R_1(n_0),R_1(n_1),R_1(n_2)).
+52: \end{split}
+53: \]
+54: The middle determinant has the opposite column-order sign. After
+55: orienting each triangle by \((u,v)\), their signed determinant rows are
+56: 
+57: | Sector | First triangle | Second triangle |
+58: | --- | --- | --- |
+59: | \((I,H)\) | \(1,N-1,2N\) | \(1,2,2N\) |
+60: | \((W,H)\) | \(0,N-1,2N\) | \(0,0,2N\) |
+61: | \((E,H)\) | \(0,0,2N\) | \(0,2N,2N\) |
+62: 
+63: All nonzero entries are positive for the actual integer \(N>1\).
+64: The independent exact certificate is
+65: `code/part3_root/source_zero_prism_fan.py`, with its JSON and standard
+66: output. It checks both actual \((a,b)\) pairs symbolically in \(N\),
+67: every displayed determinant, and every period arrow on the prism rays.
+68: 
+69: ## 2. What the degree calculation establishes
+70: 
+71: On the slice \(r+s=1\), linearly extend the vertex map from the
+72: staircase triangulation of \(\mathbb R^2\times[0,1]\). Write it
+73: \((x,t)\mapsto(F_t(x),t)\). Its exact periodicity is
+74: \[
+75:  F_t(x+m)=F_t(x)+P(t)m,
+76:  \qquad P(t)=(1-t)P_0+tP_1.
+77: \]
+78: For \(0<t<1\), the matrix \(P(t)\) is invertible: its determinant
+79: is the corresponding positive polynomial
+80: \[
+81:  r^2+(N+1)rs+2Ns^2,\quad
+82:  (N-1)rs+2Ns^2,\quad
+83:  2Nrs+2Ns^2.
+84: \]
+85: Thus \(F_t\) descends to a continuous map from
+86: \(\mathbb R^2/\mathbb Z^2\) to
+87: \(\mathbb R^2/P(t)\mathbb Z^2\). The straight homotopy
+88: between \(F_t(x)\) and \(P(t)x\) is periodic, so this map has
+89: degree one with the displayed orientations. At a value outside the
+90: finite polygonal images of all lower-dimensional pieces, the signed
+91: preimage count equals one. Every nondegenerate piece has positive
+92: Jacobian by the determinant table. It follows that its regular value
+93: has exactly one preimage. Consequently the interiors of the
+94: nondegenerate image cones are disjoint, and their closures cover the
+95: whole fibre plane over every strictly positive base ratio.
+96: 
+97: This argument does not establish that every intersection is a common
+98: face. It also does not establish injectivity of the raw piecewise
+99: linear map in the rank-one sectors. A zero-determinant tetrahedron
+100: collapses even on an interior slice. The earlier suggestion of raw
+101: injectivity was withdrawn immediately, and this is the corrected
+102: claim. The common-face calculation, or a compatible refinement, is
+103: the next exact step.
+104: 
+105: ## 3. The rank-one sector in explicit coordinates
+106: 
+107: For the \((W,H)\) sector, the codomain map
+108: \(S=\left(\begin{smallmatrix}1&0\\a&1\end{smallmatrix}\right)\)
+109: and the domain basis \((u,v)\) give
+110: \[
+111:  SW(u,v)=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+112:  SH(u,v)=\begin{pmatrix}2&-b\\a&N-1\end{pmatrix}.
+113: \]
+114: The additional rational codomain shear
+115: \(\left(\begin{smallmatrix}1&b/(N-1)\\0&1\end{smallmatrix}\right)\)
+116: carries the latter to
+117: \(\left(\begin{smallmatrix}2N/(N-1)&0\\a&N-1\end{smallmatrix}\right)\)
+118: and leaves the first matrix fixed. This rational map is used only to
+119: inspect cone geometry; the actual toric lattice and its primitive
+120: rays remain the integral ones above.
+121: 
+122: The image on the rank-one base face is the image line of \(P_0\).
+123: The transverse torus coordinate survives. The kernel period must
+124: therefore be quotiented using its actual nonzero contraction unit,
+125: as computed from the source translation and line reset. We have not
+126: replaced this action by a trivial lattice stabilizer or filled its
+127: omitted origin.
+128: 
+129: ## 4. Outstanding analytic and gluing steps
+130: 
+131: The \(H\) boundary has different chosen square triangulations in
+132: the \(W\) sector and the other two sectors. A common periodic
+133: refinement must be constructed and checked; determinant positivity
+134: alone does not provide it. The unit parts of the actual period maps,
+135: properness of their quotient, and the finite root-cap attachment are
+136: being checked separately. No global filling, link multiplicity,
+137: characteristic number, or source return is assigned by this note.
+138: 
+139: For comparison, one common symmetric form for all of \(I,W,E\)
+140: would satisfy \(Q_{12}=0\) and
+141: \(Q_{22}=-(b/a)Q_{11}\). Every nonzero such form is indefinite.
+142: This exact linear calculation rules out that proposed common-positive-
+143: form construction. It does not rule out the explicit sector fans
+144: being constructed here.

@@ -1,0 +1,54 @@
+1: #!/usr/bin/env python3
+2: """Exact Cox weights, gauge lift, and charged-cap maps for the real flop."""
+3: from pathlib import Path
+4: from datetime import datetime,timezone
+5: import json
+6: import sympy as s
+7: root=Path(__file__).resolve().parents[2]
+8: p=root/'notes/part3_flop_cobordism.md'
+9: with (root/'records/literature_fourfold.md').open('a') as f:
+10:  f.write('\n-'+datetime.now(timezone.utc).isoformat()+' — Opened own `notes/part3_flop_cobordism.md`; reason: record and check the exact real Cox comparison and charged cap maps; material: fan rays, period lift, oriented-boundary accounting.\n')
+11: t=p.read_text().replace(chr(11)+'mathrm',r'\mathrm')
+12: t=t.replace('V\\longmapsto q\\,r^{2mn}b(q)V,','V\\longmapsto q^n r^{2mn}b(q)V,')
+13: t=t.replace('the displayed \\(q\\).','the displayed \\(q^n\\), using the signed integer vertical translation \\(n\\).')
+14: p.write_text(t)
+15: u0=s.Matrix([0,0,1]);u4=s.Matrix([1,1,1]);u1=s.Matrix([1,0,1]);u2=s.Matrix([0,1,1])
+16: U=s.Matrix.hstack(u0,u4,u1,u2)
+17: aux=s.Matrix([1,1,-1,-1]);delta=s.Matrix([-1,0,0,1]);eta=s.Matrix([-1,0,1,0])
+18: assert U*aux==s.zeros(3,1)
+19: assert U*delta==s.Matrix([0,1,0])
+20: assert U*eta==s.Matrix([1,0,0])
+21: weight_rows=s.Matrix.vstack(aux.T,delta.T)
+22: minors={(i,j):int(weight_rows[:,[i,j]].det()) for i in range(4) for j in range(i+1,4)}
+23: assert all(abs(v)<=1 for v in minors.values())
+24: A,B,R=s.symbols('A B R')
+25: gauge=s.Matrix([-A-B-R,0,A,B+R])
+26: assert U*gauge==s.Matrix([A,B+R,0])
+27: assert sum(gauge)==0
+28: e=s.Matrix([1,-1])
+29: # Columns are the pullbacks of h_A and h_B in the ordered p,q basis.
+30: end1=s.Matrix([[1,0],[0,-1]])
+31: end2=s.Matrix([[0,-1],[1,0]])
+32: assert end1*e==end2*e==s.Matrix([1,1])
+33: swap=s.Matrix([[0,-1],[-1,0]])
+34: assert swap*e==e
+35: assert swap**2==s.eye(2)
+36: pair=s.Matrix([[0,1],[1,0]])
+37: assert swap.T*pair*swap==pair
+38: out=dict(status='PASS',proof='P3K.17',
+39:  ray_matrix=[list(U.row(i)) for i in range(3)],
+40:  auxiliary_weights=list(aux),physical_delta_weights=list(delta),
+41:  two_torus_minors={str(k):v for k,v in minors.items()},
+42:  positive_auxiliary_coordinates_delta_weights=[-1,0,0,-1],
+43:  exact_gauge_lift=[str(x) for x in gauge],
+44:  gauge_torus_vector=[str(x) for x in U*gauge],
+45:  inner_face='CP3 with physical delta weights (-1,0,0,-1)',
+46:  inner_orbit='CP1 * CP1 = S5',
+47:  actual_line='O(1)_A tensor O(-1)_B',
+48:  cap_end_pullbacks=[list(end1*e),list(end2*e)],
+49:  closed_correction_monodromy=[list(swap.row(i)) for i in range(2)],
+50:  retained_obstruction='Neither separate D3 times S2 cap carries h_A-h_B.',
+51:  retained_extra_boundary='Normal S2 bundle over the closed fixed base; its characteristic correction is evaluated separately.',
+52:  scope='Code certifies exact local matrices and cap maps. P3K.17 proves the oriented family/collar comparison; no spin assumption is imposed on that comparison bordism.')
+53: (root/'code/part3_fourfold/cox_flop.json').write_text(json.dumps(out,indent=2,default=str)+'\n')
+54: print('PASS: Cox relation, physical delta lift, q preservation, both charged cap maps, and conjugate-swap line/intersection preservation.')

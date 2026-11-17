@@ -1,0 +1,271 @@
+\subsection{Local intersection forms and the quartic tangent obstruction}
+
+\begin{statement}{P4.51}{Proved}
+Let $S$ be an irreducible reduced support in the torus
+fibration of Part~4.2 with $b_1(S)>0$. Every local
+Milnor fibre of a reduced local equation of $S$ has
+identically zero rational intersection form. This applies
+in particular to the remaining positive ruled support,
+whose fundamental group is $\mathbb Z$.
+\end{statement}
+\begin{proof}
+Let $U$ be a sufficiently small full tube and $F_t$ a
+nearby compact smooth torus fibre. P4R.4 identifies the
+homomorphism
+\[
+ \pi_1(F_t)=\mathbb Z^4\longrightarrow
+ \pi_1(U)=\pi_1(S)
+\]
+and gives a finite cyclic cokernel, of order equal to
+the fibre multiplicity. Its map on rational first
+homology is therefore onto. Write
+\[
+ W=\ker\bigl(H_1(F_t;\mathbb Q)\longrightarrow
+                  H_1(S;\mathbb Q)\bigr).
+\]
+Then $\dim W=4-b_1(S)\le3$.
+
+Choose a coordinate ball about the point, with its
+closed ball contained in $U$. The local full fibre
+equation is $u g^m$, with $g$ reduced and $u$ a
+holomorphic unit. We take a holomorphic $m$-th root of
+$u$ on the ball and absorb it into $g$. The actual
+nearby fibre in the ball is consequently the disjoint
+union of the local Milnor fibres
+$g=\zeta t^{1/m}$. Each such fibre $M$ is an oriented
+codimension-zero submanifold with boundary of $F_t$.
+Its inclusion into $U$ factors through the contractible
+ball. Thus every loop of $M$ maps to zero in
+$H_1(U;\mathbb Q)$, and the image subgroup
+\[
+ H=\operatorname{im}\bigl(\pi_1(M)\longrightarrow
+                                 \mathbb Z^4\bigr)
+\]
+satisfies $H\otimes\mathbb Q\subset W$.
+
+The covering criterion lifts $M\to F_t$ to the
+connected cover $F_H\to F_t$ corresponding to $H$.
+This cover is a $K(H,1)$, with $H$ free abelian. The
+map on second rational homology is therefore exactly
+\[
+ \bigwedge^2(H\otimes\mathbb Q)\longrightarrow
+              \bigwedge^2 H_1(F_t;\mathbb Q).
+\]
+Every class from $H_2(M;\mathbb Q)$ consequently maps
+into $\bigwedge^2W$. The torus intersection pairing is
+exterior multiplication followed by the orientation
+isomorphism $\bigwedge^4H_1(F_t;\mathbb Q)=\mathbb Q$.
+It vanishes on $\bigwedge^2W$ because $\dim W\le3$.
+
+This ambient pairing is the local intersection
+pairing on $M$. We represent finitely many cycles
+inside its interior and make them transverse there;
+the orientation-preserving inclusion into $F_t$
+retains all intersection points and signs. Thus the
+local pairing is zero. The symbolic exterior-square
+matrix and its zero Gram matrix are recorded in
+\texttt{code/part4/local\_intersection.py} and its
+executed output.
+\end{proof}
+
+\begin{statement}{P4.52}{Proved}
+In the remaining positive ruled support of Part~4.2,
+the image of a contracted horizontal pole section has
+ambient multiplicity exactly three. This restriction
+imposes no generic-transverse-type hypothesis on
+any component of the critical curve.
+\end{statement}
+\begin{proof}
+We first give the comparison with a leading
+homogeneous polynomial. Write the reduced equation
+as $g=g_d+g_{d+1}+\cdots$, and suppose that $g_d$ is
+reduced. Every finite collection of cycles in
+$M_d=\{g_d=1\}$, together with its intersections,
+transports into a local Milnor fibre of $g$.
+Indeed, choose a compact neighbourhood of the cycle
+representatives. Euler's identity shows that
+$dg_d\ne0$ on $M_d$. The functions
+\[
+ G_\epsilon(x)=\epsilon^{-d}g(\epsilon x)
+\]
+converge with their derivatives to $g_d$ on that
+neighbourhood. We solve
+\[
+ dG_\epsilon(V_\epsilon)
+                     =-\partial_\epsilon G_\epsilon
+\]
+using the Hermitian gradient divided by its squared
+norm. A cutoff supported in a slightly larger
+compact neighbourhood, equal to one along the
+trajectories under consideration, gives a flow for
+small positive real $\epsilon$. It transports those
+cycles to $G_\epsilon=1$. Holomorphic scaling by
+$\epsilon$ then embeds them in $g=\epsilon^d$ inside
+the fixed original ball, preserving orientations
+and intersections. This compares smooth nonzero
+level sets on compact neighbourhoods; no assertion
+about equisingularity of the zero set is needed.
+By P4.51 the pairing on $M_d$ is consequently zero.
+
+For a reduced homogeneous polynomial its global
+fibre and a sufficiently large compact Milnor fibre
+have the same homology and scalar monodromy. One
+can see this directly from the squared radius on
+the affine fibre. This is a proper semialgebraic
+function with finitely many critical values; above
+the largest, its gradient supplies a product end.
+A large invariant ball therefore gives a compact
+core. Rescaling identifies that core with a small
+local Milnor fibre. The Milnor-fibre CW dimension
+bound gives zero homology above degree two, and
+reducedness gives connectedness.
+
+We need one exact variation identity. For such a
+homogeneous polynomial, let $\mu_i$ be the
+transverse plane-curve Milnor numbers at the
+singular points of its reduced projective curve,
+and put $M=\sum_i\mu_i$. Write $F$ for its compact
+Milnor fibre and $\partial_2F$ for the boundary
+part over the singular-link circles. Let
+\[
+ \begin{split}
+ j&:H_2(F;\mathbb Q)\longrightarrow
+                         H_2(F,\partial F;\mathbb Q),\\
+ j_2&:H_2(F;\mathbb Q)\longrightarrow
+                         H_2(F,\partial_2F;\mathbb Q).
+ \end{split}
+\]
+Siersma's chain-level variation identity
+\cite[\S3.6, pp.~451--452; \S7.1, p.~462]
+{Siersma1991Variation} is
+\[
+                 j_2(T-I)=\operatorname{VAR}^{II}j.
+                                                            \tag{4.52a}
+\]
+Here $T$ is the Milnor monodromy on $H_2(F;\mathbb Q)$.
+The identity does not require the variation map to
+be an isomorphism in dimension two. The dimension-two
+Wang sequence is explicitly treated in that source,
+\S6.3. Poincar\'e--Lefschetz duality identifies $j$
+with the intersection form. Its vanishing makes
+$\operatorname{im}(T-I)$ lie in $\ker j_2$.
+The exact sequence of $(F,\partial_2F)$ identifies
+that kernel with the image of $H_2(\partial_2F)$.
+Each boundary piece is the mapping torus of a
+transverse Milnor fibre. Its Wang sequence gives
+\[
+ H_2(\partial_2F;\mathbb Q)
+       =\bigoplus_i\ker(A_i-I)\subset
+                        \bigoplus_iH_1(F_i;\mathbb Q),
+\]
+where $A_i$ is the vertical monodromy. Thus zero
+intersection form implies
+\[
+                 \operatorname{rank}(T-I)\le M.             \tag{4.52b}
+\]
+An empty $\partial_2F$ gives the same assertion with
+$M=0$.
+
+Suppose now that the reduced projective quartic
+$D=\{g_4=0\}$ has a normalization component of
+positive genus. By degree, either $D$ is an
+irreducible quartic with normalization genus
+$g\ge1$, or it is a smooth elliptic cubic and a
+line. In the first case
+$\sum\delta_i=3-g\le2$, so
+$M=\sum(2\delta_i-r_i+1)\le4$.
+In the second case B\'ezout gives total intersection
+length three and at least one intersection point.
+Hence $\sum\delta_i=3$ and
+$\sum(r_i-1)\ge1$, giving $M\le5$.
+
+The map $\{g_4=1\}\to\mathbb P^2\setminus D$ is
+an unramified fourfold cover. The normalization
+sequence and plane-curve genus formula give
+\[
+              \chi(F)=4\chi(\mathbb P^2\setminus D)
+                      =4(7-M).
+\]
+The three nonidentity scalar monodromies act freely
+on the compact invariant core, so their Lefschetz
+numbers are zero. It follows by the character
+formula for the cyclic group of order four that
+\[
+ H_0(F;\mathbb C)-H_1(F;\mathbb C)+H_2(F;\mathbb C)
+       =(7-M)\,\mathbb C[\mathbb Z/4]
+\]
+as virtual representations. Every nontrivial
+character therefore has multiplicity at least
+$7-M$ in $H_2$. The finite-order monodromy is
+semisimple, and hence
+\[
+             \operatorname{rank}(T-I)
+                   \ge3(7-M)\ge6>M.                       \tag{4.52c}
+\]
+This contradicts (4.52b).
+
+We apply this obstruction through the actual pole
+comparison. Blow up the ambient origin, normalize
+the strict transform, and take its minimal
+resolution $T_1$. As in P4.39, this resolution maps
+to the original normalization and dominates its
+minimal resolution by point blowups. The strict
+transform of the positive-genus horizontal section
+$H$ retains pole coefficient two. If $E$ is the
+ambient exceptional divisor, put
+$n=\operatorname{ord}_H(E)>0$, and let $a\ge0$
+be the coefficient of $H$ in the total conductor
+divisor relative to the strict-transform dualizing
+sheaf. Adjunction gives exactly
+\[
+                          2=(d-2)n+a.                     \tag{4.52d}
+\]
+Effectiveness follows from the exceptional
+intersection matrix argument of P4R.6. An
+exceptional positive-genus curve over the new
+normalization has strictly positive coefficient,
+by its adjunction equation. Thus $d\ge5$ is
+impossible. If $d=4$, then $n=1,a=0$; the curve
+$H$ is neither exceptional over the new
+normalization nor over its conductor. The
+normalization is an isomorphism at its generic
+point. Its image is a multiplicity-one component
+of the quartic exceptional curve, birational to
+$H$. It has positive genus. Such a component has
+degree three or four, leaving at most one linear
+factor; the entire quartic polynomial is reduced.
+The preceding contradiction excludes this case.
+
+For clarity, an isolated critical point cannot
+hide a contracted $H$. A generic small linear
+perturbation of an isolated hypersurface critical
+point has a positive finite number of Morse
+critical points, the local degree of its gradient.
+A small constant shift makes a chosen critical
+value nonzero. On a fixed sufficiently small ball
+the original zero-level boundary is smooth and
+transverse; compactness retains the boundary
+submersion over a uniform punctured value disc.
+The finite-critical-value and path-transport
+argument of P4.20 then carries the Morse
+vanishing sphere, of square $-2$, into the
+original local Milnor fibre. P4.51 excludes it.
+This argument does not assume smoothness of the
+normalization.
+
+At a nonisolated point with $d=2$, the Hessian is
+nonzero. P4R.15 gives the exact product equation
+$X^2+Y^m$. For even $m$ its two analytic branches
+are smooth. For odd $m$ its normalization is the
+explicit smooth parametrization
+$(Y,X,Z)=(u^2,\mathrm i u^m,Z)$.
+Neither case has an exceptional curve in its
+minimal normalization resolution. A point with
+$d=1$ is smooth as well. Therefore the image of
+$H$ has multiplicity exactly three.
+
+The cyclic character calculation and all integer
+bounds are independently recomputed in
+\texttt{code/part4/quartic\_tangent.py}; no numerical
+approximation enters the argument.
+\end{proof}
