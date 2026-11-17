@@ -1,0 +1,43 @@
+import sympy as s
+from sympy.polys.matrices import DomainMatrix
+from sympy.polys.matrices.normalforms import smith_normal_decomp
+from sympy.matrices.normalforms import smith_normal_form
+T1=s.Matrix([[1,0,-6,2],[0,-1,1,1],[0,-1,0,1],[0,0,0,1]])
+T2=s.Matrix([[1,6,0,-3],[0,0,-1,1],[0,1,0,0],[0,0,0,1]])
+A1=T1.inv().T; A2=T2.inv().T; A0=(A1*A2).inv(); I=s.eye(4)
+N1=I+A1+A1**2; N2=I+A2+A2**2+A2**3
+# C0 = P0(4), D1^0(4), D2^0(4), Dc^0(2).
+# C1 = P1(8), D1^1(4), D2^1(4), annuli^0(12).
+# C2 = D1^2(4), D2^2(4), annuli^1(12).
+# C3 = D1^3(4), D2^3(4).
+K0=s.Matrix([[0,0],[0,0],[1,0],[0,1]])
+d0=s.zeros(28,14)
+d0[0:4,0:4]=A1-I; d0[4:8,0:4]=A2-I
+d0[8:12,4:8]=A1-I; d0[12:16,8:12]=A2-I
+for i in range(3):d0[16+4*i:20+4*i,0:4]=I
+d0[16:20,4:8]=-I; d0[20:24,8:12]=-I; d0[24:28,12:14]=-K0
+d1=s.zeros(20,28)
+d1[0:4,8:12]=N1; d1[4:8,12:16]=N2
+d1[8:12,0:4]=I; d1[8:12,8:12]=-I
+d1[12:16,4:8]=I; d1[12:16,12:16]=-I
+d1[16:20,0:4]=-A0; d1[16:20,4:8]=-A0*A1
+for i,A in enumerate([A1,A2,A0]):d1[8+4*i:12+4*i,16+4*i:20+4*i]=-(A-I)
+d2=s.zeros(8,20); d2[0:4,0:4]=A1-I; d2[4:8,4:8]=A2-I
+assert d1*d0==s.zeros(20,14); assert d2*d1==s.zeros(8,28)
+def hgroup(prev,nxt):
+ D,U,V=[a.to_Matrix() for a in smith_normal_decomp(DomainMatrix.from_Matrix(nxt).convert_to(s.ZZ))]
+ r=nxt.rank(); C=(V.inv()*prev)[r:,:]
+ assert (V.inv()*prev)[:r,:]==s.zeros(r,prev.cols)
+ S=smith_normal_form(C,domain=s.ZZ)
+ tors=[abs(S[i,i]) for i in range(min(S.shape)) if abs(S[i,i])>1]
+ return nxt.cols-r-C.rank(),tors
+print('d0 rows=',d0.tolist()); print('d1 rows=',d1.tolist()); print('d2 rows=',d2.tolist())
+print('d1*d0=0; d2*d1=0')
+print('H0 free rank=',14-d0.rank())
+print('H1 (free rank,torsion)=',hgroup(d0,d1))
+print('H2 (free rank,torsion)=',hgroup(d1,d2))
+# Reduced H2 presentation columns: δ1, ε1, δ2, ε2, hc.
+# Relations are the rows printed here.
+relations=s.Matrix([[1,0,0,0,0],[0,0,2,0,0],[0,3,0,0,-1],[0,0,0,4,-1]])
+print('H2 reduced presentation relations=',relations)
+print('Smith reduced=',smith_normal_form(relations,domain=s.ZZ))

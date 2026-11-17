@@ -1,0 +1,40 @@
+350:         for sector in SECTORS:
+351:             rec=[]
+352:             for v,i in literal[sector].items():
+353:                 oi,w,n=oid(sector,v)
+354:                 self.ck(self.T(sector,w,n)==v,'literal ray reconstructed from orbit and period')
+355:                 rec.append({'id':i,'vector':v,'orbit':oi,'period_from_orbit':n,
+356:                             'boundary_tag':'H' if v[2]==0 else sector if v[3]==0 else None,
+357:                             'source_parameter_order':v[3] if sector!='E' else v[2]+v[3]})
+358:             rayrecords[sector]=rec
+359:             orbitrecords[sector]=[{'id':i,'primitive_vector':v,'period_stabilizer_basis':
+360:                                   ([[-self.b,1]] if sector=='W' else [[1,0]]) if v[3]==0 and sector!='I' else []}
+361:                                  for v,i in rayorbits[sector].items()]
+362:         return {'status':'PASS','utc':datetime.now(timezone.utc).isoformat(),'parameters':{'a':self.a,'b':self.b,'N':self.N},
+363:                 'lattice_order':['Z','V','base0','base1'],'physical_delta':[0,1,0,0],
+364:                 'period_matrices':{'I':self.P['I'],'W':self.P['W'],'E':self.P['E'],'H':self.H},
+365:                 'period_formula':'T_n(x,r,s)=(x+(r P0+s H)n,r,s)',
+366:                 'canonical_period_direction':'literal representative = T_recorded_period(canonical representative)',
+367:                 'source_parameter_orders':{'I':'s','W':'s','E':'r+s'},
+368:                 'initial_counts':self.initial_counts,'checks':self.checks,'star_steps':len(self.trace),
+369:                 'maximal_cone_counts':{s:sum(c['sector']==s for c in cones) for s in SECTORS},
+370:                 'ray_orbit_counts':{s:len(rayorbits[s]) for s in SECTORS},
+371:                 'literal_rays':rayrecords,'ray_orbits':orbitrecords,'maximal_cones':cones,'face_orbits':faces,
+372:                 'protected_boundary':{s:sorted(self.protected[s]) for s in SECTORS},
+373:                 'resolution_trace':self.trace,
+374:                 'proof':'notes/part3_source_zero_equivariant_resolution_audit.md',
+375:                 'scope':'Exact finite regular fan and period-face maps only. No analytic filling or numerical return assigned.'}
+376: 
+377: 
+378: def main():
+379:     p=argparse.ArgumentParser();p.add_argument('--case',choices=['1,2,8','2,1,6','all'],default='all');p.add_argument('--progress',type=int,default=100)
+380:     args=p.parse_args()
+381:     cases=[(1,2,8),(2,1,6)] if args.case=='all' else [tuple(map(int,args.case.split(',')))]
+382:     for a,b,N in cases:
+383:         fan=PeriodicFan(a,b,N);fan.initial();fan.resolve(args.progress);out=fan.export()
+384:         dest=ROOT/'code/part3'/f'source_zero_regular_fan_{a}_{b}_{N}.json'
+385:         dest.write_text(json.dumps(out,separators=(',',':'))+'\n')
+386:         print(f'PASS {a},{b},{N}: {out["checks"]} exact checks, {out["star_steps"]} stars, cone counts {out["maximal_cone_counts"]}, ray orbit counts {out["ray_orbit_counts"]}; {dest.stat().st_size} bytes',flush=True)
+387: 
+388: 
+389: if __name__=='__main__':main()

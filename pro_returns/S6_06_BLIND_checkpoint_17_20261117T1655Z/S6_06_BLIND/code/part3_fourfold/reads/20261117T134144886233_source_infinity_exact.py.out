@@ -1,0 +1,42 @@
+116:         # Half turn followed by actual y inversion; compare D^-2.
+117:         assert (m-6*p)%m == (-6*p)%m
+118:         for nn in (-1,1):
+119:             for kk in (2,3,4):
+120:                 N=kk*m
+121:                 PA=S.Matrix([[1,0],[0,0]])
+122:                 PB=S.Matrix([[1,bb],[-aa,-2]])
+123:                 E=S.Matrix([[0,0],[0,N]])
+124:                 H=PA+PB+E
+125:                 check(f"H determinant {aa} {m} {nn} {N}", H.det()-(2*N-2))
+126:                 rows.append({"a":aa,"b":bb,"m":m,"n":nn,"N":N,
+127:                              "P_A":list(PA),"P_B":list(PB),"E":list(E),
+128:                              "H":list(H),"det_H":int(H.det()),
+129:                              "minimal_X_exponent":str(xexp),
+130:                              "minimal_Y_exponent":str(yexp)})
+131: 
+132: result = {
+133:   "created_utc":datetime.now(timezone.utc).isoformat(),
+134:   "status":"PASS","check_count":len(checks),"checks":checks,
+135:   "source_polynomial":str(f),"discriminant":str(disc),
+136:   "unselected_factor":str(unselected),"unselected_branches":branch_data,
+137:   "selected_value":str(tstar),"selected_Tate_coefficient":str(tate_selected),
+138:   "selected_P_G":str(P),"F21_node":str(node21),"F12_node":str(node12),
+139:   "selected_Hom_coefficients":[str(S.factor(1/(g*node21))),str(S.factor(1/(g*node12)))],
+140:   "unit_root_factor":str(S.factor(cubic)),
+141:   "scalar_comparison":"lambda_new=lambda_old; exponent 2ab-4=0",
+142:   "collision_half_loop":half_loop_rows,
+143:   "cap_rows":rows,
+144:   "scope":{"exact_source_line_and_root_checks":True,
+145:            "periodic_collision_filling":False,
+146:            "global_bordism":False,"source_return_assigned":False}
+147: }
+148: def enc(o):
+149:     if isinstance(o,S.Integer): return int(o)
+150:     return str(o)
+151: (OUT/"source_infinity_exact.json").write_text(json.dumps(result,indent=2,default=enc)+"\n")
+152: print(f"PASS {len(checks)} exact checks; {len(rows)} marked cap rows")
+153: print("discriminant =",disc)
+154: print("unselected factor =",unselected)
+155: for row in branch_data: print("branch:",row)
+156: print("selected Tate =",tate_selected)
+157: print("No compact filling or source-return value is assigned.")

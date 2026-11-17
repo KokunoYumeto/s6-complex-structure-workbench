@@ -1,0 +1,5 @@
+# Interval minimum verification diagnostics
+
+The first direct rectangular complex Horner cover failed at a regular point of root radius approximately 0.98, despite a tiny box. The cause is interval wrapping: rectangular error radii can grow by |Re z|+|Im z| at each Horner step. This does not give a false certificate because interval inversion fails; it merely makes the enclosure useless. The replacement evaluates midpoint coefficients at a point with 800 decimal digit arithmetic, separately bounds coefficient uncertainty by its absolute coefficient polynomial, and encloses the input box by the absolute derivative polynomial. The Cauchy tail remains unchanged and is retained.
+
+An earlier Hessian sign check also failed harmlessly because python-flint 0.9.0 evaluates a ball straddling zero raised with `**2` through its generic real-power operation, returning NaN. Explicit multiplication gives a valid enclosure of the square. The reproducer is `arb_integer_power_check.py/.out`; the actual determinant check now uses multiplication.

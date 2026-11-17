@@ -1,0 +1,142 @@
+248:     def resolve(self,progress=100):
+249:         steps=0
+250:         while self.heap:
+251:             negD,cid=heapq.heappop(self.heap)
+252:             if cid not in self.cells:continue
+253:             if negD==-1:break
+254:             z=self.cells[cid];sector,C,D=z['sector'],z['C'],z['D']
+255:             p,nums,den,j=self.point(C)
+256:             inds=tuple(i for i,n in enumerate(nums) if n)
+257:             F=tuple(C[i] for i in inds);Fc,n0=self.canonical(sector,F)
+258:             fk,_=self.face_key(sector,F)
+259:             pc=self.T(sector,p,(-n0[0],-n0[1]))
+260:             coeff={self.T(sector,C[i],(-n0[0],-n0[1])):nums[i] for i in inds}
+261:             self.ck(len(inds)>=2 and pc[3]>0,'centre is a nonprotected higher-dimensional face')
+262:             affected=list(self.face_index[fk])
+263:             self.ck(len({e[0] for e in affected})==len(affected),'at most one translated centre in each cone')
+264:             replacements=[];old=[]
+265:             for aid,ais,an in affected:
+266:                 az=self.cells[aid];asec,AC,AD=az['sector'],az['C'],az['D']
+267:                 pp=self.T(asec,pc,an)
+268:                 children=[]
+269:                 for ai in ais:
+270:                     cr=self.T(asec,AC[ai],(-an[0],-an[1]))
+271:                     num=coeff[cr]
+272:                     CC=list(AC);CC[ai]=pp;CC=self.canonical(asec,CC)[0]
+273:                     DD=abs(det4(CC))
+274:                     self.ck(0<DD<AD and DD*den==num*AD,'every incident determinant strictly drops')
+275:                     children.append(DD);replacements.append((asec,CC))
+276:                 old.append({'cell':aid,'sector':asec,'determinant':AD,'period':an,'new_determinants':children})
+277:             for aid,_,_ in affected:self.remove(aid)
+278:             newids=[self.add(asec,CC) for asec,CC in replacements]
+279:             self.trace.append({'step':steps,'selected_cell':cid,'selected_determinant':D,'face_sector':fk[0],
+280:                                'face_rays':Fc,'ray':pc,'coefficient_denominator':den,
+281:                                'coefficient_numerators':[coeff[v] for v in Fc],'inverse_column':j,
+282:                                'affected':old,'new_cells':newids})
+283:             steps+=1
+284:             if progress and steps%progress==0:
+285:                 print(f'{self.a},{self.b},{self.N}: {steps} stars; {len(self.cells)} cone orbits; max selected determinant {D}; {time.monotonic()-self.started:.1f}s',flush=True)
+286:         self.ck(all(z['D']==1 for z in self.cells.values()),'every final maximal cone is regular')
+287:         fans={s:{C for ss,C in self.by_key if ss==s} for s in SECTORS}
+288:         self.check_H(fans)
+289:         for sector in SECTORS:
+290:             self.ck(self.protected_faces(sector,fans[sector])==self.protected[sector], 'resolution preserves exact '+sector+' boundary')
+291: 
+292:     def export(self):
+293:         # A ray occurrence has a literal vector as well as its canonical orbit
+294:         # vector and recovered integral period.  No column is replaced by its
+295:         # orbit representative inside a cone.
+296:         ordered=sorted(self.cells.values(),key=lambda z:(z['sector'],z['C']))
+297:         literal={s:{} for s in SECTORS};rayorbits={s:{} for s in SECTORS}
+298:         def rid(sector,v):
+299:             if v not in literal[sector]:literal[sector][v]=f'{sector}r{len(literal[sector])+1}'
+300:             return literal[sector][v]
+301:         def oid(sector,v):
+302:             vc,n=self.canonical(sector,(v,));w=vc[0]
+303:             if w not in rayorbits[sector]:rayorbits[sector][w]=f'{sector}o{len(rayorbits[sector])+1}'
+304:             return rayorbits[sector][w],w,n
+305:         cones=[];faceocc=defaultdict(list)
+306:         for k,z in enumerate(ordered,1):
+307:             sector=z['sector'];C=list(z['C'])
+308:             if det4(tuple(C))<0:C[0],C[1]=C[1],C[0]
+309:             self.ck(det4(tuple(C))==1,'exported ordered maximal cone determinant is +1')
+310:             cid=f'{sector}c{k}'
+311:             rays=[rid(sector,v) for v in C]
+312:             cones.append({'id':cid,'sector':sector,'ordered_rays':rays,'determinant':1,
+313:                           'orbit_representative':'floor of (R P0+S H)^(-1) times summed fibre coordinates',
+314:                           'historical_cell_id':self.by_key[(sector,z['C'])]})
+315:             for d in range(1,4):
+316:                 for inds in combinations(range(4),d):
+317:                     F=tuple(C[i] for i in inds);fk,n=self.face_key(sector,F);Fc=fk[2]
+318:                     perm=[Fc.index(self.T(sector,C[i],(-n[0],-n[1]))) for i in inds]
+319:                     self.ck(sorted(perm)==list(range(d)),'face occurrence vertex permutation')
+320:                     faceocc[fk].append({'cone':cid,'sector':sector,'local_columns':list(inds),
+321:                                         'literal_rays':[rays[i] for i in inds],'period_from_canonical':list(n),
+322:                                         'vertex_permutation_to_canonical':perm})
+323:         faces=[]
+324:         for k,(fk,occ) in enumerate(sorted(faceocc.items()),1):
+325:             tag,d,Fc=fk;sector=occ[0]['sector']
+326:             boundary='H' if all(v[2]==0 for v in Fc) else sector if all(v[3]==0 for v in Fc) else None
+327:             stabilizer=[]
+328:             if boundary=='W':stabilizer=[[-self.b,1]]
+329:             elif boundary=='E':stabilizer=[[1,0]]
+330:             canonids=[rid(sector,v) for v in Fc]
+331:             anchor=occ[0]
+332:             gluings=[]
+333:             for q in occ[1:]:
+334:                 delta=[q['period_from_canonical'][i]-anchor['period_from_canonical'][i] for i in (0,1)]
+335:                 ap=anchor['vertex_permutation_to_canonical'];bp=q['vertex_permutation_to_canonical']
+336:                 perm=[bp.index(x) for x in ap]
+337:                 gluings.append({'from_occurrence':0,'to_occurrence':len(gluings)+1,
+338:                                 'period_vector':delta,'vertex_permutation':perm})
+339:                 # Actual vectors can be recovered from the canonical vectors;
+340:                 # this checks the period action even across the common H face.
+341:                 for j,jj in enumerate(perm):
+342:                     va=self.T(anchor['sector'],Fc[ap[j]],tuple(anchor['period_from_canonical']))
+343:                     vb=self.T(q['sector'],Fc[bp[jj]],tuple(q['period_from_canonical']))
+344:                     self.ck(self.T(anchor['sector'],va,tuple(delta))==vb,'literal face period/gluing map')
+345:             faces.append({'id':f'f{k}','dimension':d,'orbit_sector':tag,'boundary_tag':boundary,
+346:                           'canonical_rays':canonids,'canonical_vectors':Fc,
+347:                           'period_stabilizer_basis':stabilizer,'occurrences':occ,'anchor_gluings':gluings})
+348:         rayrecords={}
+349:         orbitrecords={}
+350:         for sector in SECTORS:
+351:             rec=[]
+352:             for v,i in literal[sector].items():
+353:                 oi,w,n=oid(sector,v)
+354:                 self.ck(self.T(sector,w,n)==v,'literal ray reconstructed from orbit and period')
+355:                 rec.append({'id':i,'vector':v,'orbit':oi,'period_from_orbit':n,
+356:                             'boundary_tag':'H' if v[2]==0 else sector if v[3]==0 else None,
+357:                             'source_parameter_order':v[3] if sector!='E' else v[2]+v[3]})
+358:             rayrecords[sector]=rec
+359:             orbitrecords[sector]=[{'id':i,'primitive_vector':v,'period_stabilizer_basis':
+360:                                   ([[-self.b,1]] if sector=='W' else [[1,0]]) if v[3]==0 and sector!='I' else []}
+361:                                  for v,i in rayorbits[sector].items()]
+362:         return {'status':'PASS','utc':datetime.now(timezone.utc).isoformat(),'parameters':{'a':self.a,'b':self.b,'N':self.N},
+363:                 'lattice_order':['Z','V','base0','base1'],'physical_delta':[0,1,0,0],
+364:                 'period_matrices':{'I':self.P['I'],'W':self.P['W'],'E':self.P['E'],'H':self.H},
+365:                 'period_formula':'T_n(x,r,s)=(x+(r P0+s H)n,r,s)',
+366:                 'canonical_period_direction':'literal representative = T_recorded_period(canonical representative)',
+367:                 'source_parameter_orders':{'I':'s','W':'s','E':'r+s'},
+368:                 'initial_counts':self.initial_counts,'checks':self.checks,'star_steps':len(self.trace),
+369:                 'maximal_cone_counts':{s:sum(c['sector']==s for c in cones) for s in SECTORS},
+370:                 'ray_orbit_counts':{s:len(rayorbits[s]) for s in SECTORS},
+371:                 'literal_rays':rayrecords,'ray_orbits':orbitrecords,'maximal_cones':cones,'face_orbits':faces,
+372:                 'protected_boundary':{s:sorted(self.protected[s]) for s in SECTORS},
+373:                 'resolution_trace':self.trace,
+374:                 'proof':'notes/part3_source_zero_equivariant_resolution_audit.md',
+375:                 'scope':'Exact finite regular fan and period-face maps only. No analytic filling or numerical return assigned.'}
+376: 
+377: 
+378: def main():
+379:     p=argparse.ArgumentParser();p.add_argument('--case',choices=['1,2,8','2,1,6','all'],default='all');p.add_argument('--progress',type=int,default=100)
+380:     args=p.parse_args()
+381:     cases=[(1,2,8),(2,1,6)] if args.case=='all' else [tuple(map(int,args.case.split(',')))]
+382:     for a,b,N in cases:
+383:         fan=PeriodicFan(a,b,N);fan.initial();fan.resolve(args.progress);out=fan.export()
+384:         dest=ROOT/'code/part3'/f'source_zero_regular_fan_{a}_{b}_{N}.json'
+385:         dest.write_text(json.dumps(out,separators=(',',':'))+'\n')
+386:         print(f'PASS {a},{b},{N}: {out["checks"]} exact checks, {out["star_steps"]} stars, cone counts {out["maximal_cone_counts"]}, ray orbit counts {out["ray_orbit_counts"]}; {dest.stat().st_size} bytes',flush=True)
+387: 
+388: 
+389: if __name__=='__main__':main()

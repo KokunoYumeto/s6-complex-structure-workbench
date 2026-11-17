@@ -1,0 +1,250 @@
+# Selected-cusp source loop: the actual first fixed-edge flop
+
+Proved as P3K.40 after complete root audit and an independent
+SF.1--2 audit. The source loop is exactly
+the positive rho loop of P3F.54 and P3F.56: the scalar is fixed, the only
+logarithmic cap is at III-star, the coalescing finite pair is unmodified,
+and the initial fan has its physical delta edge. The loop is the actual
+twofold marked closure of the selected-cusp source parameter. This note
+does not assign the separate Jin integers or a general other-fan formula.
+
+## SF.1. The closed product is supplied by the actual source coordinates
+
+Write the trace of the fixed curve, over a small punctured rho-disc, as
+\(F=\mathbf P^1_s\times D_\rho^*\). Its two distinguished sections are
+\(D_+=\{s=\rho\}\) and \(D_-=\{s=-\rho\}\). The literal ordered
+coordinate and inverse are
+\[
+ Z=\frac{s-\rho}{s+\rho},\qquad
+ s=\rho\frac{1+Z}{1-Z}.                                      \tag{SF.1}
+\]
+This is an actual biholomorphism from \(F\) to
+\(\mathbf P^1_Z\times D_\rho^*\). Its determinant is \(2\rho\), so
+it has no zero on this base. In particular it is single-valued after
+one rho turn, and retains the two ordered endpoint sections.
+
+The relative small-resolution charts used in P3F.56 have normal
+coordinates \(c_0,c_1\), with the actual overlap
+\[
+             c_i'=Zc_i,\qquad i=0,1,                       \tag{SF.2}
+\]
+and physical delta weights \((-1,+1)\). Thus their normal bundle is the
+two copies of \(\mathcal O_{\mathbf P^1}(-1)\) in precisely the
+coordinate (SF.1). This is also the Cartier identification used in
+P3F.56: after conjugating the negative-weight normal coordinate its
+spinor is
+\(\mathcal O(D_+)\oplus\mathcal O(-D_-)\), and the determinant
+trivialization is the ratio \(Z\). We use that same identification.
+
+Here is why no source-scaling loop is discarded in using (SF.2).
+The source chart and its actual Tate parameter satisfy
+\[
+ \xi\eta=q,\qquad
+ \frac{q_T}{q}=-\frac{u(\rho)}{64\rho^6}+O(q).               \tag{SF.3}
+\]
+The coefficient in (SF.3) has winding \(-6\) on the rho-circle.
+Choose the source collar uniformly smaller than its distance from the
+second moving critical value; then this coefficient is an actual
+nonzero holomorphic function on the whole parameter annulus and
+normal coordinate polydisc. Every remaining nonzero toric chart unit
+\(U\) on such a representative has an exact factorization
+\[
+                    U=\rho^{e}\exp H,\qquad e\in\mathbb Z. \tag{SF.4}
+\]
+Indeed \(e\) is its integral winding on the rho generator; subtracting
+\(e\,d\rho/\rho\) from \(dU/U\) kills its only possible period,
+and integration gives the single-valued holomorphic \(H\). This
+argument is on the annulus, not across its missing centre. The integer
+\(-6\) in (SF.3) is retained as one of these exponents.
+
+The source and line units in P3F.56 extend on the original source
+polydisc. Their changes to the Tate cell use (SF.3), so the preceding
+factorization is applied only after that exact coordinate change.
+The period action has trivial stabilizer on an individual conifold
+cell. We choose one representative of the cell containing the fixed
+edge and transport its charts to all translates. Thus (SF.4) and its
+chosen logarithm give the same maps on both resolution charts and
+on their actual ordinary annulus. Contracting \(H\) and the positive
+modulus transports their common truncation collar by the resulting
+isotopy; it leaves the integral angular powers in place. The source
+coordinate (SF.1) is carried along, rather than identified with the
+old source coordinate by an unmarked homotopy.
+
+Equivalently, for the linear normal maps this assertion can be checked
+over the whole compact fixed curve. Delta-equivariance preserves its
+two distinct weight lines. After (SF.1)--(SF.2), an automorphism of
+either line is multiplication by a holomorphic function on
+\(\mathbf P^1\), hence by a function of rho alone. Its integer winding
+is still retained by (SF.4). Higher normal terms are removed by the
+literal equivariant normal rescaling and isotopy extension on the
+same collar. The linearization homotopy has invertible diagonal
+blocks throughout and starts with the actual map. No change of an
+outer gluing or of an initial normal frame is made.
+
+## SF.2. The two relative family products have the same boundary arrow
+
+The common conifold link is
+\[
+ (S^3_a\times S^3_c)/S^1,\qquad
+ (a,c)\sim(e^{i\phi}a,e^{-i\phi}c).
+\]
+Put, in the quaternion convention of P3K.23,
+\[
+ u=a_0+ja_1,\qquad v=c_0+j\overline{c_1},\qquad
+ q_H=uv,\quad h=uiu^{-1},\quad k=v^{-1}iv.                 \tag{SF.5}
+\]
+The map to the first product is \([a,c]\mapsto(h,q_H)\), and that to
+the second product is \([a,c]\mapsto(k,q_H)\). Their inverses choose
+one Hopf representative and use respectively \(v=u^{-1}q_H\) or
+\(u=q_Hv^{-1}\); changing the representative is exactly the displayed
+auxiliary circle. These are the actual normal-sphere products of the
+two small resolutions.
+
+On the first source chart (SF.5) is precisely P3F.56's retained map
+\[
+              q_H=(1+jZ)(c_0+j\overline{c_1}),             \tag{SF.6}
+\]
+after the common positive normalization of its norm. The positive
+normalizing factor extends across both charts and is carried along
+in both resolutions. Thus the local identification in this proof is
+the one in the proved trace comparison, including its normal frame.
+
+The exact common boundary map, computed from the same two factors,
+is
+\[
+               \tau(h,q_H)=(q_H^{-1}hq_H,q_H).             \tag{SF.7}
+\]
+It has no rho dependence. To verify this for all retained integer
+chart powers, give the four Cox coordinates \((a_0,a_1,c_0,c_1)\)
+their actual integer weights \((A_0,A_1,C_0,C_1)\). Such integer
+lifts exist because the auxiliary-circle vector \((1,1,-1,-1)\)
+is primitive; the quotient cocharacter lattice is free. We impose
+no condition on their sum. Put
+\[
+ \begin{aligned}
+ a_\theta&=e^{i(A_0-A_1)\theta/2},&
+ d_\theta&=e^{i(A_0+A_1)\theta/2},\\
+ e_\theta&=e^{i(C_0+C_1)\theta/2},&
+ b_\theta&=e^{i(C_0-C_1)\theta/2},\\
+ S&=A_0+A_1+C_0+C_1.
+ \end{aligned}
+\]
+The literal quaternion changes are
+\(u'=a_\theta u d_\theta\) and
+\(v'=e_\theta v b_\theta\). Therefore
+\[
+ \begin{split}
+ h'&=a_\theta h a_\theta^{-1},\qquad
+ k'=b_\theta^{-1}k b_\theta,\\
+ q_H'&=a_\theta u e^{iS\theta/2}v b_\theta\\
+     &=a_\theta e^{hS\theta/2}q_H b_\theta
+       =a_\theta q_H e^{kS\theta/2}b_\theta .
+ \end{split}                                             \tag{SF.8}
+\]
+Here \(h=u i u^{-1}\), \(k=v^{-1}iv\), and both displayed
+exponential identities follow by conjugating the same middle
+complex scalar. Substitution into (SF.7) gives
+\[
+ (q_H')^{-1}h'q_H'
+ =b_\theta^{-1}e^{-kS\theta/2}
+              (q_H^{-1}h q_H)e^{kS\theta/2}b_\theta
+ =b_\theta^{-1}k b_\theta=k'.
+\]
+This proves equivariance even when \(S\ne0\). At \(\theta=2\pi\)
+the factors \(a_\theta,d_\theta\) are central signs whose product
+is \((-1)^{2A_0}=1\), and the product of the two signs
+\(e_\theta,b_\theta\) is \((-1)^{2C_0}=1\). Thus both actual Cox
+factors, and consequently both product actions, close. The possible
+nonzero middle exponential has been retained.
+
+Formula (SF.8) consequently retains all integer windings from
+(SF.3)--(SF.4), including the actual sixth source scaling. It does not
+require evaluating or discarding any of them. The same comparison
+holds during the common unit isotopy in SF.1, so its initial and
+final ordinary-annulus maps are the original ones. The earlier
+working passage with \(S=0\) is preserved as superseded in
+code/part3/attempts/source_cusp_fixed_edge_sum_zero_restriction/;
+that restricted passage was not promoted as a theorem.
+
+Choose the closed product connection just described on the fixed
+curve tube and equivariant connections on its complement; an
+invariant partition of unity patches them while retaining the fixed
+collar. The resulting physical return is the identity near that
+curve. The same choice in the flopped family gives the identical
+common-exterior return, conjugated only by the extension of (SF.7),
+\[
+ T(y,q_H)=(q_H^{-1}yq_H,q_H),\qquad
+ T^{-1}(y,q_H)=(q_Hyq_H^{-1},q_H).                         \tag{SF.9}
+\]
+It is smooth at \(y=0\). The first and second normal conventions,
+their complex orientations and their physical Hopf circle are exactly
+those in P3K.23. This verifies the family/framing hypothesis required
+for that statement, for the source loop itself.
+
+## SF.3. The actual relative integer and the flopped class
+
+Write the actual first relative return in the proved relative group
+as \(L^mR^n\mathcal C^s\), using P3K.23's maps
+\[
+ L(y,q_H)=(y,\zeta(y)q_H),\qquad
+ R(y,q_H)=(y,q_H\zeta(y)),
+\]
+and its positively oriented central generator \(\mathcal C\).
+We retain the actual, presently unevaluated integer \(m\).
+The central coordinate is the oriented closed six-sphere return,
+so P3F.56 gives \(s=1\pmod {28}\).
+
+The coefficient \(n\) is fixed without a separate normal
+Pontryagin calculation. We spell out the comparison being used.
+The first quaternion normal product has physical circle
+\(q_H\mapsto q_He^{-i\theta}\), so the exact Hopf quotient has
+orientation \(S^2_z\times S^3_y\). Its relative variation is
+\(-k_{\rm Jin}\). The actual generator \(L\) has quotient
+characteristic pair \((-1,-4)\), computed from its adjoint clutch
+with \(p_1=-4\). Removing its variation therefore changes the
+characteristic pair to \((0,\ell-4k)\). The remaining free relative
+map is \((LR^{-1})^b\). On its fixed three-sphere its normal clutch
+is \(\operatorname{Ad}_{\zeta^b}\), hence its Pontryagin evaluation
+is \(-4b\). The integral Gysin pullback is injective on the relevant
+fourth cohomology and the actual marked cycle evaluates to one.
+Consequently, in these same products,
+\[
+           \ell-4k=-4b,
+           b=6\frac{4k-\ell}{24},\qquad
+           n=-b=-6A.                                    \tag{SF.10}
+\]
+Every arrow and orientation in this argument is the one verified in
+P3K.23, now applicable by SF.1--SF.2; it does not import the scalar-loop
+value of either \(k\) or \(\ell\). Since the actual source loop has
+\(A=1\) by P3F.56, it gives \(n=-6\).
+
+The literal conjugation in (SF.9) is
+\[
+ T(L^mR^n\mathcal C^s)T^{-1}
+       =L^{-n}R^{m+2n}\mathcal C^{s+n}.                   \tag{SF.11}
+\]
+It follows that the actual positive source-loop return after its
+first fixed-edge flop has class
+\[
+                          1-6=-5=23\pmod {28}.           \tag{SF.12}
+\]
+This computation retains the actual source parameter, fixed scalar,
+cap norm, physical delta character, and ordinary annular maps. It
+does not replace the source loop by a scalar loop.
+
+The transported complex first-resolution reset of P3K.31 changes the
+relative pair to \((m-12,6)\), while retaining the same central class
+\(-5\). To compute a later flop at another edge one still needs the
+source loop's full common-exterior variation and derivative. Neither
+\(m\), the separate Jin pair, nor an arbitrary-fan formula is assigned
+by the present proof.
+
+## Audit and computation status
+
+Root has independently passed the full SF.1--3 proof and the exact
+K23 Hopf/relative-group comparison. The independent SF.1--2 audit also
+passes the actual source-coordinate, normal-line and unrestricted
+four-weight quaternion maps. The exact
+source-coordinate, quaternion equivariance and relative-group checks
+are executed by code/part3/source_cusp_fixed_edge.py, with the matching
+JSON and captured output. No result from an earlier run is used.
