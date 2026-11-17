@@ -1,0 +1,117 @@
+\subsection{The tacnode and transverse-line critical curve}
+
+\begin{statement}{P4R.16}{Proved}
+In the remaining positive ruled case with uniform transverse
+type $A_3$, the three-branch point of the critical curve cannot
+be the union of a plane tacnode and an independent transverse
+line. Its local conductor defect is at least eleven, whereas
+the total defect in the contracted-section case is nine.
+\end{statement}
+\begin{proof}
+The analytic ring calculation in P4.40 supplies actual ambient
+coordinates for this curve. Its reduced ideal is
+\[
+ P=(xz,yz,h),\qquad h=y^2-x^4.
+\]
+Its three parametrizations are $(t,t^2,0)$, $(t,-t^2,0)$,
+and $(0,0,t)$. The two tangent branches have intersection
+multiplicity two, and their union meets the independent line
+with intersection length one. The normalization sequence
+therefore gives $\delta=3$. Every branch is immersive, so
+its ramification divisor has coefficient zero.
+
+We first determine the symbolic square and the actual
+equation. The plane-tacnode ideal $(z,h)$ is a reduced
+complete intersection. Its square is unmixed and agrees
+with the square of each prime at its generic point; hence
+its symbolic square is its ordinary square. Intersecting
+with the square of the line ideal gives
+\[
+ P^{(2)}=(z,h)^2\cap(x,y)^2=P^2+(zh).
+\]
+Indeed an element of $(z,h)^2$ is $Az^2+Bzh+Ch^2$.
+Its last two terms belong to $(x,y)^2$. The first belongs
+to that ideal precisely when $A$ does, because $z$ is a
+nonzerodivisor modulo $(x,y)^2$. The resulting three
+generators $x^2z^2,xyz^2,y^2z^2$ are already in $P^2$.
+Furthermore
+\[
+ xzh=(xz)h,\qquad yzh=(yz)h,\qquad
+ z^2h=(yz)^2-x^2(xz)^2.
+\]
+The class of $zh$ modulo $P^2$ is therefore annihilated
+by the ambient maximal ideal. It is nonzero, since it has
+a nonzero cubic term and $P^2$ has order at least four.
+Thus $P^{(2)}/P^2$ is exactly one copy of the residue field.
+
+Let $f$ be the reduced defining function of the support.
+Its generic transverse multiplicity is two, so
+$f\in P^{(2)}$ and
+\[
+                       f=\kappa zh+f_0,\quad f_0\in P^2,
+                       \quad\kappa\in\mathbb C.
+\]
+At $(t,t^2,0)$ with $t\ne0$, use $z,h$ as transverse
+coordinates. The quadratic transverse part of $f$ has the
+form
+\[
+ t^2a(t)z^2+(\kappa+t b(t))zh+c(t)h^2,
+\]
+where $a,b,c$ are holomorphic at $t=0$. The transverse
+Hessian has rank one, so its determinant vanishes for
+all sufficiently small nonzero $t$. Its constant term at
+zero is $-\kappa^2$ (up to the harmless common convention
+for the quadratic-form matrix). Hence $\kappa=0$, and
+we have proved the exact inclusion $f\in P^2$.
+
+Let $K_i$ be the saturated rank-two kernel of the derivative
+of the $i$th parametrization, and let $E_i\subset K_i$ be
+the span of the differentiated generators of $P$. On the
+two tangent branches choose the bases
+\[
+                dz,\quad dy\mp2t\,dx.
+\]
+The generator matrices have columns
+\[
+ \begin{pmatrix}t&\pm t^2&0\\0&0&\pm2t^2\end{pmatrix}.
+\]
+Their elementary-divisor orders are $(1,2)$. On the
+independent line use $dx,dy$; the matrix is
+\[
+                   \begin{pmatrix}t&0&0\\0&t&0\end{pmatrix},
+\]
+with orders $(1,1)$.
+
+For completeness, the rank-one quadratic estimate of
+P4.42 applies to these exact lattices as follows. Write
+$E=t^a\mathbb C\{t\}e_1\oplus
+t^b\mathbb C\{t\}e_2$, and write the saturated Hessian
+line as $\ell=u e_1+v e_2$, with $(u,v)$ primitive.
+Since $f\in P^2$, the tensor $t^d\ell^2$ belongs to
+$\operatorname{Sym}^2E$. Therefore
+\[
+ \frac d2\ge\max(a-\operatorname{ord}u,
+                         b-\operatorname{ord}v).
+\]
+Projection of $E$ to $K/\ell$ has colength
+$b_{\rm proj}=\min(a+\operatorname{ord}v,
+b+\operatorname{ord}u)$. Adding these two expressions
+gives $d/2+b_{\rm proj}\ge a+b$; the identity follows
+by subtracting the same two candidate quantities, with
+the zero-component cases read directly. The local defect
+formula of P4.42 consequently gives
+\[
+ \delta+\sum_i(d_i/2+b_i-r_i)+q
+       \ge3+(1+2)+(1+2)+(1+1)=11.
+\]
+Here $q\ge0$ is the further descent colength, retained
+rather than discarded from the definition. P4.44 contracts
+the horizontal section, and P4.33 and (4.42a) give total
+defect nine. The displayed lower bound contradicts that
+total. This excludes the stated analytic curve germ.
+\end{proof}
+
+The symbolic-square identities, all three normalized
+conormal matrices, and the rank-one determinant obstruction
+are checked exactly in
+\texttt{code/part4/a3\_tacnode\_line.py}.

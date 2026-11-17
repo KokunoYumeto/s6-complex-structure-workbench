@@ -1,0 +1,1 @@
+Preserved first exact order-two calculation and its earlier localized general proof. The later rank-one specialization argument retains this proof and removes its additional localization assumptions. No numerical return was assigned.

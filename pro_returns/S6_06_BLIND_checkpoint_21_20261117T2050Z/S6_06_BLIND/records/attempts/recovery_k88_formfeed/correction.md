@@ -1,0 +1,1 @@
+Recovery transcription introduced one form-feed byte in a TeX fraction. The failed build and source are retained here. The mathematical formula was unchanged; the source byte is repaired and the full section is recompiled.

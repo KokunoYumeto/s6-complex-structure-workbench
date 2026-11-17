@@ -1,0 +1,523 @@
+# The full Euler cube for the actual source shear
+
+Proved as P3K.66 after full root and independent blind_control
+audits, 17 November 2026. The exact coefficient and sign checks
+are also executed in the saved certificate.
+We retain the selected-cusp positive rho loop, its actual source and
+finite caps, the physical delta action, and the fans
+\(T_n=T(e_1+ne_2,e_2)\), for every integer \(n\). All quotient-piece,
+source, normal and cap maps used below are the literal maps of
+P3K.63. We do not replace any of these maps by a comparison of their
+homology groups.
+
+## EC.1. The real connection, the actual complex line, and orientation
+
+We first fix the signs of a real circle connection explicitly. Let
+\(\mathcal L_\delta\) be the complex line whose nonzero vectors are the
+actual physical principal circle bundle. Its local fibre coefficient
+is \(V=|V|\exp(2\pi i d)\); the physical delta action increases \(d\).
+A real principal connection \(A\), normalized by
+\(A(\partial_d)=1\), gives the unitary line connection \(2\pi i A\)
+in local unit frames. Consequently
+\[
+ c_1(\mathcal L_\delta)
+       =\frac{i}{2\pi}F_{\nabla_\delta}=-dA.
+                                                        \tag{EC.1}
+\]
+For example, in the actual Cox coordinate
+\(q_H=(1+jZ)(c_0+j\overline{c_1})\), the physical action is
+\(q_H\mapsto q_H e^{-2\pi i t}\). Its real connection is minus the
+usual contact connection in that right-complex spinor. Formula
+(EC.1) gives the positive meridian class retained in F56 and K42.
+It is the same complex line as the source line on a regular source
+slice: K6's literal page restriction is
+\(x|_{\mathrm{page}}=c_1(M)\). We retain this arrow, rather than change
+the associated representation of the circle.
+
+It is convenient to perform the connection calculation on the inverse
+line
+\[
+ \mathcal U=\mathcal L_\delta^{-1},\qquad
+ \widehat x=c_1(\mathcal U)=-x=dA.
+                                                        \tag{EC.2}
+\]
+Thus the real forms in SQ.12--15 represent \(\widehat x\) when the
+principal coordinate is the increasing physical delta coefficient
+\(d\). This makes the associated-line sign explicit. The vanishing
+Pontryagin pairing of K63 is unaffected by replacing \(x\) by \(-x\);
+its statement and relative-coordinate conclusions are unchanged.
+
+We also keep the contracting suspension coefficient
+\(\gamma=\gamma_B\). In physical coordinates
+\(V=r\exp(2\pi i d)\), the complex threefold has orientation
+\(\Omega_S\wedge dr\wedge dd\). Taking the physical delta circle
+first gives orbit orientation
+\(-\Omega_S\wedge d\log r\). The contracting coefficient increases
+as \(\log r\) decreases. Hence its orbit orientation is
+\(\Omega_S\wedge d\gamma_B\), as calculated in GO.1. The physical
+positive-parameter completion therefore uses
+\(\Omega_S\wedge d\gamma_B\wedge d\theta\). K42's actual parameter
+reversal to the Jin completion reverses this orientation and carries
+the same line \(\mathcal L_\delta\).
+
+Write \(r_q\) for an increasing radial coordinate in the q disc and
+\(\alpha=\arg(q)/(2\pi)\). The positive source orientation near its
+regular boundary is
+\[
+ dr_q\wedge d\alpha\wedge du\wedge dv .
+                                                        \tag{EC.3}
+\]
+Indeed the source fibre is \(u+\tau v\), with
+\(\operatorname{Im}\tau>0\). The two reversals, of the Jin
+orientation and of the odd cube \(x^3=(-\widehat x)^3\), cancel.
+We can therefore compute the actual Jin integer \(k\) by integrating
+the cube of the curvature of \(\mathcal U\) in the auxiliary
+orientation
+\[
+ \Omega_+=dr_q\wedge d\alpha\wedge du\wedge dv
+                         \wedge d\gamma_B\wedge d\theta .
+                                                        \tag{EC.4}
+\]
+This is an equality of the specified oriented integrals. No integer
+lift of a residue is used to choose its sign.
+
+## EC.2. Full periods and exact boundary line coordinates
+
+Retain SQ.1--2 in full:
+\[
+ h:(Z,V)\mapsto(\kappa qZ,\alpha_L V),\qquad
+ B:(Z,V)\mapsto(gZ,\eta qV),
+\]
+\[
+ Z_n=Z,\quad V_n=Z^{-n}V,\quad h_n=hB^n,\quad B_n=B,
+\]
+\[
+ Q_n=\kappa qg^n,\quad
+ \alpha_{L,n}=\alpha_L\eta^n\kappa^{-n}g^{-n^2},
+ \qquad\eta_n=\eta g^{-n}.
+                                                        \tag{EC.5}
+\]
+The symbol \(\alpha_L\) here denotes the line multiplier; it is
+not the angle \(\alpha\). The rho windings of
+\((\kappa,\alpha_L,g,\eta)\) are \((-6,0,0,0)\).
+The actual periodic logarithms of every zero-winding factor are
+retained.
+
+Here is a precise connection choice that retains them. On the regular
+boundary, use the actual real period coefficients
+\[
+ (z,\ell)=u(1,0)+v(\tau,\mu)+d(0,1)+\gamma(G,\beta),
+ \qquad z=\frac{\log Z}{2\pi i},\quad
+        \ell=\frac{\log V}{2\pi i},
+                                                        \tag{EC.6}
+\]
+where
+\(\tau=\log(\kappa q)/(2\pi i)\),
+\(\mu=\log\alpha_L/(2\pi i)\),
+\(G=\log g/(2\pi i)\) and
+\(\beta=\log(\eta q)/(2\pi i)\).
+The imaginary parts give exactly the invertible matrix in SQ.4a;
+the real parts then determine \(u,d\). In particular
+\[
+ d=\operatorname{Re}\ell-\operatorname{Re}\mu\,v
+                           -\operatorname{Re}\beta\,\gamma.
+                                                        \tag{EC.7}
+\]
+Differentiating (EC.7) retains the differentials and values of both
+unit logarithms. Thus using \(d\) as a coefficient coordinate does
+not set their phases or their derivatives to zero.
+
+The q and rho coordinate changes are respectively
+\[
+ (u,d)\mapsto(u-v,d-\gamma),\qquad
+ (u,d)\mapsto(u+6v,d).
+                                                        \tag{EC.8}
+\]
+The complete zero-winding logarithms are single-valued and introduce
+no further integer change. Consequently
+\[
+ A_0=dd+\alpha\,d\gamma
+                                                        \tag{EC.9}
+\]
+is an actual global real principal connection on this boundary.
+In physical \(V\) coordinates it contains all terms obtained by
+differentiating (EC.7). It is a permissible connection choice on the
+actual bundle, not an omission of its units.
+
+Substitution in (EC.6), including both complex coordinates, gives
+exactly
+\[
+ u_n=u,\quad v_n=v,\quad\gamma_n=\gamma-nv,\quad d_n=d-nu.
+                                                        \tag{EC.10}
+\]
+In the new coordinates the corresponding real connection is
+\[
+ A_n=dd_n+\alpha\,d\gamma_n+6n\theta\,dv.
+                                                        \tag{EC.11}
+\]
+Its rho change is \(d_n\mapsto d_n-6nv\), and its q change is
+\(d_n\mapsto d_n-\gamma_n\), so (EC.11) is invariant under the
+literal two deck arrows. Equations (EC.9)--(EC.11) give the exact
+global difference
+\[
+ \beta_n=-n\{du+(\alpha-6\theta)dv\}.
+                                                        \tag{EC.12}
+\]
+It is invariant under both changes (EC.8). If one uses the source
+coframe \(du+(\alpha-6\theta+\phi_\kappa)dv\), then the additional
+one-form \(n\phi_\kappa dv\) is present in (EC.12). It has not been
+deleted. Formula (EC.7) explains the same fact for every other unit.
+
+## EC.3. The relative Cech line isomorphism
+
+Let \(\mathcal C\) be the six-dimensional family of completed cusp
+quotient pieces for \(T_0\), over the positive theta circle. Use
+SQ.1--2 to identify each actual \(\mathcal C_n\) with this fixed
+smooth piece. Those arrows are periodic, preserve the outer real
+period marking, and retain the typed Cartier spinor map and the
+physical Hopf cap. Its boundary is denoted \(\mathcal B\).
+
+Choose the graph map \(b:\mathcal C\to\mathbb R/\mathbb Z\) of
+SQ.3, with boundary value \(v\). The same proof modifies it by a
+supported real function to be constant near the fixed tube and
+extends it over the cap. It is periodic in theta. Define an actual
+complex line \(\mathcal T\) on \(\mathcal C\) by cutting theta
+and gluing its coefficient by
+\[
+ (\theta,p,w)\longmapsto
+       (\theta+1,p,e^{2\pi i b(p)}w).
+                                                        \tag{EC.13}
+\]
+In these cut unit frames its connection is
+\(\nabla_{\mathcal T}=d-2\pi i\theta\,db\). The frame change at
+theta one is the inverse of the displayed coefficient change, so
+this connection descends exactly. Its Chern curvature is
+\[
+                         \Xi=d\theta\wedge db,\qquad \Xi^2=0.
+                                                        \tag{EC.14}
+\]
+
+The actual normalization constant factor
+\(\alpha_{L,n}/\alpha_L\) has rho winding \(6n\). In the inverse
+line \(\mathcal U\), its Chern class is consequently
+\(+6n[d\theta]\smile b\). The other classes of the line difference
+are zero: the typed SQ.8 Hopf arrow preserves the meridian value;
+the regular \(b\times\gamma\) torus has the integral period section
+from SQ.3; and the gamma times theta value is zero because
+\(\eta_n/\eta=g^{-n}\) has its periodic logarithm. The integral
+Thom, Mayer--Vietoris and Wang calculation SQ.16 has no torsion
+and shows that these are all the evaluations. Thus
+\[
+ c_1(\mathcal U_n)-c_1(\mathcal U_0)
+                   =6n\,c_1(\mathcal T)
+             \quad\hbox{on }\mathcal C.               \tag{EC.15}
+\]
+This is also the direct theta-cut/graph-cut clutch square: the
+physical delta coefficient changes by \(-6n b\), so its dual
+coefficient changes by \(+6n b\), exactly (EC.13).
+The zero-winding logarithms left in (EC.5) are
+\[
+ nf_\eta-nf_\kappa-n^2f_g,\qquad -nf_g,
+                                                        \tag{EC.16}
+\]
+together with the actual source-flow pullbacks of their extending
+units. They are retained in the bundle whose class is (EC.15).
+
+We next prove the stronger relative assertion with its prescribed
+outer line arrow:
+\[
+ J_n:\mathcal U_n\longrightarrow
+                    \mathcal U_0\otimes\mathcal T^{6n}.
+                                                        \tag{EC.17}
+\]
+On \(\mathcal B\), this arrow is specified in the doubly cut real
+period frames by (EC.10)--(EC.11) and the clutch (EC.13).
+Their deck changes agree exactly, so it is a genuine boundary
+bundle isomorphism. The assertion is that this particular boundary
+arrow extends, including its integral gauge; an absolute equality
+of Chern classes alone would not prove that assertion.
+
+Here are the exact groups and the only possible relative obstruction.
+On \(\mathcal B\), the q monodromy has commutator \(u\) with the
+source graph loop \(v\); its coefficient is one. The rho monodromy
+has commutator \(6u\), and all other retained circle generators
+commute after abelianization. Hence
+\[
+ H_1(\mathcal B;\mathbb Z)
+       =\mathbb Z\langle\alpha,\theta,v,\gamma\rangle.
+                                                        \tag{EC.18}
+\]
+The \(u\) generator has been killed primitively, so no finite
+summand has been suppressed. SQ.16 and its periodic graph and
+gamma maps give
+\[
+ H^1(\mathcal C;\mathbb Z)
+       =\mathbb Z\langle d\theta,db,d\gamma\rangle,
+\quad
+ \operatorname{im}H^1(\mathcal C)
+       =\mathbb Z\langle d\theta,dv,d\gamma\rangle
+                   \subset H^1(\mathcal B).           \tag{EC.19}
+\]
+The gamma map extends through the cap by its real lift near the
+fixed sphere, exactly as for \(b\). A section of the theta
+family outside the fixed tube splits the Wang sequence, so there
+is no extra generator or torsion in (EC.19). Therefore the only
+boundary winding that does not extend is the q-angle winding.
+
+We test it using an actual disc, rather than a rational cohomology
+argument. Choose a constant Tate section \(Z=Z_*\), with
+\(|Z_*|=1\), at a smooth normalization point avoiding the
+marked zero section, the retained Picard-section divisors and
+the two nodal branches. This can be done uniformly: the explicit
+Tate points of F54 remain near \(1\) for the chosen small rho
+circle, whereas a point near \(-1\) stays disjoint from them;
+shrink the common q disc once more if necessary. Take the marked gamma
+value zero. The fixed graph's short arc in SQ.4c is centred at
+one half, so this value lies outside it. The section in the
+source neighbourhood extends across q zero through a smooth
+point of the nodal fibre. Together with this gamma value it is
+a disc in the orbit piece, disjoint from the fixed tube and its
+surgery; it therefore lies in the completed piece as well.
+The SQ.2 source horizontal field can be taken to preserve this
+section. On the outside collar its real marked-period field is
+already zero on \(v=0\); near the node the section is disjoint.
+Adding this prescribed zero field to the stated partition of
+unity leaves all the node, boundary and cap arrows unchanged.
+
+More generally, at a fixed gamma value in this free interval the
+suspension-untwisted coordinates give the physical source point
+\[
+             Z_{\rm phys}=Z_*\exp(\gamma\log g).
+                                                        \tag{EC.20}
+\]
+This is a nonzero extending function on the q disc; its logarithm
+uses the actual periodic \(\log g\). The line character arrow
+on it is literally multiplication by \(Z_{\rm phys}^{-n}\).
+The new untwisting factor
+\(\eta_n^\gamma=\eta^\gamma\exp(-n\gamma\log g)\)
+cancels the displayed \(g\) factor on passing to the common
+untwisted line frame. Its remaining factor is \(Z_*^{-n}\).
+Equivalently one can retain both factors in (EC.20); both extend
+and are nowhere zero. No fractional power of \(q\) is used in
+this ratio: the common \(q^\gamma\) factors cancel before the
+ratio is formed. The disc lies in one free suspension interval,
+so no B reindex is introduced. The tensor line \(\mathcal T\)
+is trivial on this disc at fixed theta and \(b=v=0\).
+For the chosen value gamma zero, the untwisting is literally the
+identity: the disc is the ordinary source section with \(V\) in
+one fixed nonzero line chart. We can take \(V=1\). In the two
+actual first vertex charts this disc and its image have coordinates
+\[
+ (q/Z_*,Z_*,1)\longmapsto
+                 (qZ_*^{\,n-1},Z_*,Z_*^{-n}).
+                                                        \tag{EC.20a}
+\]
+Both charts have physical height equal to the product of their
+three coordinates. Their second and third coordinates are nonzero
+at q zero, so this is the free locus and no fixed-tube or cap
+coordinate is involved. The inverse is given by the opposite
+nonzero powers of \(Z_*\). The dual line arrow is multiplication
+by \(Z_*^{-n}\). This gives an extending isomorphism
+with the unchanged physical delta frame. The prescribed boundary
+arrow in (EC.17) thus extends over this disc by this explicit line
+map. Its q-angle winding is zero.
+
+For completeness, an explicit Cech construction turns these facts
+into the full isomorphism. On a good cover of \(\mathcal C\), use
+the actual unitary transition functions of
+\(\mathcal R_n=\mathcal U_n\otimes\mathcal U_0^{-1}
+\otimes\mathcal T^{-6n}\), formed from all the retained maps.
+Choose real logarithms on the overlaps. Their Cech coboundary
+is an integral two-cocycle. Equation (EC.15) says that cocycle
+is the coboundary of an integral one-cochain; subtract that
+one-cochain from the chosen logarithms. Our local frame convention
+is \(e_j=\exp(2\pi i r_{ij})e_i\). The resulting real
+one-cocycle \(r_{ij}\) is solved by
+\[
+                  a_i=\sum_k\rho_k r_{ki},\qquad
+                  a_j-a_i=r_{ij},                    \tag{EC.21}
+\]
+for a partition of unity subordinate to the cover. Multiplying
+the local unit frames by \(\exp(-2\pi i a_i)\) gives a global
+unit frame. Since
+\(\mathcal R_n=\operatorname{Hom}
+(\mathcal U_0\otimes\mathcal T^{6n},\mathcal U_n)\),
+this frame is a nowhere-zero map in that direction. Its inverse
+is the absolute isomorphism \(J_n\) in (EC.17).
+Thus the direction of the required map is fixed by the actual
+transitions, including (EC.16).
+
+Compare its boundary value with the prescribed boundary arrow.
+Their ratio is a circle-valued function. By the section-disc
+calculation its alpha coefficient is zero. By (EC.18)--(EC.19)
+its other three winding coefficients are integral multiples
+of the restrictions of theta, \(b\), and gamma. Multiply the
+absolute isomorphism by the corresponding extending functions
+\(\exp(2\pi i(a\theta+cb+d\gamma))\) to remove these coefficients.
+The remaining boundary ratio has a single real logarithm.
+Extend that logarithm to the collar, multiply it by a cutoff,
+and set it to zero in the remaining interior. Multiplication
+by its exponential makes the boundary map exactly the
+prescribed one. This proves (EC.17) as a relative bundle map.
+It retains every possible boundary integer rather than declaring
+the zero-winding unit terms harmless without an extending arrow.
+
+The cap is included in this construction. Its actual line is
+the one carried by the SQ.8 Cartier/Hopf map. The supported
+change \(b-b'\) is implemented on the theta cut by its explicit
+exponential in SQ.3. A residual circle gauge on the inner cap
+boundary has only its theta winding, and this extends over
+\(D^3\times S^2\times S^1_\theta\). Thus no additional cap
+line class or unspecified framing is inserted in (EC.17).
+
+## EC.4. The affine curvature family and the oriented collar integral
+
+Choose a connection on \(\mathcal U_0\) whose boundary value is
+the one just fixed, and write its real Chern curvature as \(F_0\).
+On the fixed completed piece use the relative isomorphism
+(EC.17) and the tensor connection of (EC.13). Their curvature is
+exactly
+\[
+                         F_n=F_0+6n\Xi .
+                                                        \tag{EC.22}
+\]
+All connections here are on the actual lines. They need not be
+Chern connections of the original complex structure; Chern--Weil
+evaluation is independent of that choice. The relative map
+(EC.17) ensures their specified boundary values agree with
+the actual outer gluing. In particular no omitted Mayer--Vietoris
+gauge can add a further quadratic or other term.
+
+Keep the original connection on the common exterior, where the
+fan change is absent. In piece coordinates its pullback on
+\(\mathcal B\) is displayed below. From this point onward, after
+pullback by the actual piece map, we write \(\gamma=\gamma_n\)
+for the common piece coefficient. The exterior coefficient is
+\(\gamma_{\rm ext}=\gamma+nv\), and its delta coefficient is
+\(d_{\rm ext}=d_n+nu\). Thus the \(\gamma\) in the curvature
+formula is the new piece coefficient, not the exterior coefficient.
+With this dictionary the literal pullback is
+\[
+ A_{\mathrm{ext},n}
+   =dd_n+\alpha\,d\gamma_n+n(du+\alpha\,dv),
+\quad
+ F_{\mathrm{ext},n}
+   =d\alpha\wedge d\gamma+n\,d\alpha\wedge dv.
+                                                        \tag{EC.23}
+\]
+The difference between the piece and exterior connections is
+the global form (EC.12). It has derivative
+\[
+ d\beta_n=-n\,d\alpha\wedge dv+6n\,d\theta\wedge dv .
+                                                        \tag{EC.24}
+\]
+Directly,
+\[
+ F_{\mathrm{ext},n}^2=0,\quad (d\beta_n)^2=0,
+\quad F_{\mathrm{ext},n}+d\beta_n
+            =d\alpha\wedge d\gamma+6n\,d\theta\wedge dv .
+                                                        \tag{EC.25}
+\]
+
+Orient \(\mathcal B\) as the outward boundary of the piece in
+(EC.4):
+\[
+ \Omega_{\mathcal B}
+       =d\alpha\wedge du\wedge dv\wedge d\gamma\wedge d\theta .
+                                                        \tag{EC.26}
+\]
+Each marked angular coordinate has period one. Its integral
+over the actual boundary is one: the q/rho monodromies shear
+\(u\) by integral multiples of \(v\), and hence preserve this
+volume form and its unit fundamental cell. The full unit
+periods have already entered the coordinate construction
+(EC.6); they do not alter this cell or its primitive lattice.
+
+Let \(t\) increase across a gluing collar from the piece toward
+the exterior. Its orientation is \(dt\wedge\Omega_{\mathcal B}\).
+Interpolate by
+\[
+ A(t)=A_{\mathrm{ext},n}+\chi(t)\beta_n,\qquad
+                  \chi(0)=1,\quad\chi(1)=0.
+                                                        \tag{EC.27}
+\]
+It is constant near each endpoint. The curvature and its cube
+are
+\[
+ F=F_{\mathrm{ext},n}+\chi d\beta_n
+                           +\chi' dt\wedge\beta_n,
+\]
+\[
+ F^3=3\chi'\,dt\wedge
+          \beta_n\wedge(F_{\mathrm{ext},n}+\chi d\beta_n)^2 .
+                                                        \tag{EC.28}
+\]
+The term without \(dt\) vanishes on the five-dimensional boundary.
+The exact exterior-algebra identity is
+\[
+ 3\int_0^1
+   \beta_n\wedge(F_{\mathrm{ext},n}+s\,d\beta_n)^2\,ds
+                    =18n^2\,\Omega_{\mathcal B}.        \tag{EC.29}
+\]
+The actual interpolation in (EC.27) runs from \(s=1\) to \(s=0\).
+Its contribution is therefore \(-18n^2\), with the sign fixed
+by (EC.26)--(EC.28).
+
+The interior contribution is linear because \(\Xi^2=0\):
+\[
+ F_n^3-F_0^3=18n\,F_0^2\wedge\Xi .
+                                                        \tag{EC.30}
+\]
+The common exterior contributes no change. Its boundary map
+has already been accounted for by (EC.23)--(EC.29).
+There is consequently one real constant \(L\), independent
+of \(n\), such that the actual integer Euler cubes satisfy
+\[
+                         k_n=k_0+Ln-18n^2 .
+                                                        \tag{EC.31}
+\]
+This conclusion follows from the global relative line map
+and the actual oriented gluing. It is not a polynomial assigned
+from the local fifth form alone.
+
+## EC.5. Evaluation of the linear term and exact consequences
+
+K42 proves \(k_0=6\). The fan \(T_1\) is literally the reflected
+fan of K46: its first triangle is
+\((0,e_1+e_2,e_2)\), and translating its second triangle by
+\(-e_2\) gives \((0,e_1,e_1+e_2)\). The translation is the
+actual B period, including its full unit map, as retained in
+K56. K46 constructs the oriented cap and line isomorphism for
+that reflected family and proves \(k_1=6\). Thus (EC.31) at
+one gives \(L=18\), without any use of a residue.
+
+The exact integer result is
+\[
+              k_n=6-18n(n-1),\qquad \ell_n=0,\qquad
+              A_n=1-3n(n-1).
+                                                        \tag{EC.32}
+\]
+Here \(\ell_n=0\) is the already proved K63 pairing, and
+\(24A_n=4k_n-\ell_n\) is the fixed Jin normalization. The
+K63 native and ordinary identities now give exact integers:
+\[
+ (m_0^{\rm native},n_0^{\rm native})
+                  =(0,-6+18n(n-1)),
+\]
+\[
+                 V_{00}=-18n(n-1),\qquad
+                 \delta_0=-12+18n(n-1).
+                                                        \tag{EC.33}
+\]
+Their reductions agree with K56 and K63. That agreement is a
+check on the completed calculation, not its proof of an integer lift.
+
+The exterior-form diagnostic remains preserved unchanged.
+The new certificate, \path{code/part3/source_shear_euler_cube.py},
+passes 41 exact checks of the actual
+period-coordinate arrow, all integral H1 quotients, the line
+connection deck invariance, the cubic collar identity with its
+endpoint direction, the reflected triangle relabelling, and the
+resulting exact polynomial. The geometric Cech, source-disc,
+normal and cap arguments above are separate from that algebraic
+certificate.
