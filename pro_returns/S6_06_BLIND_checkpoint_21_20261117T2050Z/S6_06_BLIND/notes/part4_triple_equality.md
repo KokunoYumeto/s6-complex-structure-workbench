@@ -1,0 +1,228 @@
+# P4.30–P4.31: conormal inequality and ordinary-triple equality
+
+Status: Proved; independent root audit accepted 2026-11-17T03:09:04.583275+00:00. Complete proof source is included below and in part4.tex.
+
+```tex
+\subsection{The conormal calculation and ordinary-triple equality}
+
+\begin{statement}{P4.30}{Proved}
+Let $C$ be a compact irreducible reduced curve in the smooth
+threefold $Y$ of Part~4.2. Suppose its normalization is an elliptic
+curve $E$, and every point of $C$ is unibranch. Write $P$ for its
+ideal in $Y$ and $P^{(2)}$ for the ideal of functions vanishing to
+order at least two at the generic point of $C$. Then
+\[
+ \chi(\mathcal O_Y/P^{(2)})\le0.
+\]
+Equality forces $C$ to be smooth. The assertion uses
+$c_1(TY)\cdot C=0$, which follows from $b_2(Y)=0$.
+\end{statement}
+\begin{proof}
+Let $j:E\to Y$ be the normalization map followed by inclusion.
+The derivative map
+\[
+ j^*\Omega_Y\longrightarrow\Omega_E
+\]
+has image $\Omega_E(-R)$ for an effective divisor $R$.
+Its kernel $K$ is locally free of rank two: dividing the derivative
+row by its common zero gives a surjection onto a line bundle.
+Since $\deg j^*\Omega_Y=0$ and $\deg\Omega_E=0$, we have
+$\deg K=\deg R$.
+
+Differentiation induces an injection
+\[
+ Q:=P/P^{(2)}\longrightarrow j_*K.
+\]
+Indeed its kernel consists precisely of functions with zero first
+normal derivative at a generic smooth point of $C$, which is the
+defining order-two condition for $P^{(2)}$. Both sides agree at the
+generic point. Their quotient has finite length, denoted by $\tau$.
+Riemann--Roch on the smooth elliptic curve gives
+\[
+ \chi(Q)=\deg R-\tau.
+\]
+We prove $\tau\ge\deg R$ by local equations, including at a
+singular point of $C$.
+
+Parametrize its sole branch by $t$. Choose ambient coordinates
+vanishing at the point, and let
+$m=\min_i\operatorname{ord}_t x_i(t)$ be the multiplicity.
+The common order of the three derivative entries is $m-1$,
+so the coefficient of $R$ is $m-1$. The saturated kernel $K$
+is a direct summand of the free rank-three module over
+$\mathbb C\{t\}$. Consequently a generator of $\bigwedge^2K$
+has at least one unit Pl\"ucker coordinate. If $L$ is the
+$\mathbb C\{t\}$-span of the differentiated defining equations,
+then the colength of $L$ in $K$ is the minimum order of their
+two-by-two minors. This is the diagonal elementary-divisor
+calculation for a rank-two submodule over a discrete valuation
+ring. The local length of $j_*K/Q$ is at least this colength,
+since $Q\subset L\subset K$.
+
+At a smooth point $m=1$ and there is nothing to prove.
+At a singular point of embedding dimension three, every defining
+equation belongs to the square of the ambient maximal ideal.
+Every entry of its gradient therefore has order at least $m$
+on the parametrization, and every two-by-two minor has order
+at least $2m$. Hence the local quotient length is at least
+$2m\ge m-1$.
+
+At a singular point of embedding dimension two, an invertible
+ambient coordinate change writes the ideal as $(z,h(x,y))$,
+where $h$ is a reduced irreducible plane equation without a
+linear term. The conormal image has a free $dz$ summand.
+Its other generator is $dh$; both its plane coefficients have
+order at least $m$. The primitive rank-one kernel of the plane
+derivative row has a unit coefficient, so $dh$ is its generator
+multiplied by a function of order at least $m$. The quotient
+length is therefore at least $m\ge m-1$. Embedding dimension
+one is the smooth case. These cases prove the local bound and
+therefore $\chi(Q)\le0$.
+
+The normalization exact sequence gives
+$\chi(\mathcal O_C)=-\sum_p\delta(C,p)$.
+Finally the exact sequence
+\[
+ 0\longrightarrow P/P^{(2)}\longrightarrow
+ \mathcal O_Y/P^{(2)}\longrightarrow\mathcal O_C
+ \longrightarrow0
+\]
+gives
+\[
+ \chi(\mathcal O_Y/P^{(2)})
+ =-\sum_p\delta(C,p)+\deg R-\tau\le0.
+\]
+Equality forces all delta invariants to vanish, so the
+normalization is an isomorphism and $C$ is smooth.
+\end{proof}
+
+\begin{statement}{P4.31}{Proved}
+Let $S$ be an irreducible singular support in Part~4.2 whose
+normalization has ruled resolution, and suppose $e(S)=0$.
+In the double-horizontal-divisor case, when the generic
+transverse type is the ordinary triple point $xy(x-y)=0$,
+the normalization is a smooth minimal elliptic ruled surface.
+Its conductor image is a smooth elliptic curve, and its
+reduced conductor is an unramified cover of that curve of
+degree three. Every germ along the image is analytically
+the product of an ordinary plane triple point with a disc.
+\end{statement}
+\begin{proof}
+Use the minimal resolution $T\to N\to S$ and the section $H$
+of P4R.7 and P4R.9. Put $g=g(H)$ and
+$C=\operatorname{Sing}(S)_{\rm red}$.
+The same fundamental-group and Euler argument as in P4.29
+shows that $C$ is connected, has just one normalized
+component, that this normalization $E$ has genus one, and
+that its point-identification graph has no cycles. Thus
+every point of $C$ is unibranch. All rational components
+of the resolved pole support are contracted, and the
+only strict conductor component is $H$. Its finite map
+to $C$ has degree three, since an ordinary transverse
+triple point has three normalization branches.
+In particular $g\ge1$ by Riemann--Hurwitz for $H\to E$.
+
+All exceptional curves of $T\to N$ are rational and
+vertical for the ruling. Exactly the normalized-graph
+descent and Leray calculation of P4.29 give a morphism
+$N\to H$ and
+\[
+ R^1\rho_{N*}\mathcal O_T=0,\qquad
+ \chi(\mathcal O_N)=\chi(\mathcal O_T)=1-g.
+\]
+Thus the normalization singularities are rational; no
+smoothness assertion is used here.
+
+Let $I$ be the conductor ideal, and let $C_{\rm sch}$
+and $D_{\rm sch}$ be its zero schemes in $S$ and $N$.
+Finite duality and the depth argument of P4.29 show that
+$\mathcal O_{C_{\rm sch}}$ is Cohen--Macaulay of pure
+dimension one. If $P\subset\mathcal O_Y$ is the reduced
+ideal of $C$, the inverse image $J$ of $I$ in
+$\mathcal O_Y$ therefore has no embedded associated
+prime. Its only associated prime locally is $P$.
+The generic ordinary triple point has conductor equal
+to the square of its maximal ideal in the transverse
+plane. To check this directly, normalize its three
+lines. Constant functions on them have a common value;
+their linear terms are the evaluations of one linear
+form on three distinct directions, a two-dimensional
+space. Quadratic forms evaluate surjectively on those
+three directions. All terms of degree at least two
+can therefore be chosen independently on the three
+branches, and a nonzero constant or linear term cannot
+belong to the conductor. This proves the stated square
+ideal, including its scheme structure.
+
+Consequently $J_P=P_P^2$, and in fact
+\[
+ J=P^{(2)}.
+\]
+For completeness, if $a\in P^{(2)}$, some $s\notin P$
+satisfies $sa\in J$. Multiplication by $s$ is injective
+on $\mathcal O_Y/J$, because its only associated prime
+is $P$, so $a\in J$. The reverse inclusion follows by
+localizing at $P$. Thus the conductor image is the
+actual symbolic double curve to which P4.30 applies.
+
+Put $L=\nu^*\omega_S$, which is torsion. Finite duality
+gives $I=\omega_N\otimes L^{-1}$. Serre duality, the
+rational-singularity comparison and Riemann--Roch on
+$T$ give
+\[
+ \chi(I)=\chi(L)=\chi(\rho_N^*L)
+   =\chi(\mathcal O_T)=1-g.
+\]
+Hence $\chi(\mathcal O_{D_{\rm sch}})=0$.
+Taking Euler characteristics in the exact conductor
+square, and using $\chi(\mathcal O_S)=0$, yields
+\[
+ \chi(\mathcal O_{C_{\rm sch}})=g-1.
+\]
+P4.30 now gives $g-1\le0$. Since $g\ge1$, equality
+holds, $g=1$, and $C$ is smooth. Riemann--Hurwitz then
+makes the degree-three map $H\to C$ unramified.
+
+We finish by proving normalization smoothness from
+the actual local morphisms. Over a point of $C$ the
+three distinct points of $H$ remain distinct in $N$:
+every exceptional block is vertical for the ruling
+$T\to H$ and therefore cannot join different points
+of $H$. The finite normalization consequently gives
+three local irreducible branches of $S$. Each branch
+is a hypersurface in $Y$ and is smooth at the generic
+point of $C$. Its singularities are isolated, so the
+hypersurface Cohen--Macaulay property and regularity
+in codimension one make it normal. The corresponding
+component of $N$ is that branch itself.
+
+Write its three local equations as $f_1,f_2,f_3$.
+The intersection of any two branches is supported on
+$C$ and has generic multiplicity one, because the
+generic transverse triple point is ordinary. On a
+normal branch the other equation is a nonzero divisor.
+Its quotient is a one-dimensional Cohen--Macaulay
+ring, generically reduced with support $C$, so it is
+reduced and is exactly $\mathcal O_C$. Thus $C$ is a
+smooth Cartier curve in each branch. A local ring of
+dimension two with a nonzero divisor whose quotient
+is a regular one-dimensional local ring has embedding
+dimension at most two: lift its one maximal-ideal
+generator and add the nonzero divisor. It is regular.
+All three branches are therefore smooth.
+
+Any two branches meet transversely along $C$.
+Choose their equations as coordinates $x,y$, with
+$z$ a coordinate on $C$. The third equation is
+$a(x,y,z)x+b(x,y,z)y$, where both $a$ and $b$ are
+units by the pairwise transversality just proved.
+The invertible coordinate change $X=ax$, $Y=-by$
+writes the reduced union exactly as
+$XY(X-Y)=0$. This is the asserted product triple
+point, and its normalization is smooth. Away from
+the conductor, normalization singularities were
+already excluded by P4R.6. Finally P4.22 applies to
+this smooth elliptic ruled normalization and proves
+its minimality.
+\end{proof}
+```

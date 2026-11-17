@@ -1,0 +1,332 @@
+## P3K.23. Proved: the signed change under the actual fixed-edge flop
+
+Consider one of the actual sphere families constructed above with a
+semifree fixed curve \(F\simeq\mathbb P^1\), whose complex normal bundle
+is \(\mathcal O(-1)\oplus\mathcal O(-1)\). Perform the toric flop of
+this fixed edge in the periodic cusp model, retaining the actual
+parameter clutch and all exterior gluings. Write the original positive
+return's Jin index as
+\[
+             A=\frac{4k-\ell}{24},
+\]
+The positive return of the flopped family has oriented class
+\[
+                         -5A\pmod {28}                 \tag{K23.1}
+\]
+in the run's normalization of \(\Theta _7\). The flopped curve has two
+isolated circle fixed points. Formula (K23.1) specifies its homotopy
+sphere class; it does not assign a new Jin integer to that circle
+action.
+
+In particular, the four groups of primitive-source examples in
+P3K.22 give the following flopped classes:
+
+| \(d=1/h(G)\) | Original index \(A\) | Flopped class in \(\mathbb Z/28\) |
+|---|---|---|
+| \(8\) | \(-3\) | \(15\) |
+| \(14\) | \(-6\) | \(2\) |
+| \(20\) | \(-9\) | \(17\) |
+| \(30\) | \(-14\) | \(14\) |
+
+The earlier degree-four OS47 example of index \(-4\) gives class
+\(20\). Every original zero-index example remains class zero after
+this fixed-edge flop. No formula for a flop at another toric edge is
+asserted here.
+
+**Proof: the actual two local products and the parameter clutch.**
+Write the conifold link as
+\[
+ K=(S^3_a\times S^3_c)/S^1,\qquad
+ (a,c)\sim(e^{i\phi}a,e^{-i\phi}c).
+\]
+With \(\mathbb H\) oriented by \((1,i,j,k)\), put
+\[
+ u=a_0+j a_1,\quad v=c_0+j\overline{c_1},\quad
+ q=uv,\quad h=u i u^{-1},\quad k=v^{-1} i v.
+                                                        \tag{K23.2}
+\]
+The first resolution has the actual product coordinates \((h,q)\)
+on its real normal sphere bundle; the second has \((k,q)\).
+To invert the first map, choose a unit representative \(u\) of \(h\)
+and put \(v=u^{-1}q\). Changing the representative changes only the
+displayed auxiliary-circle orbit. For the second choose \(v\) and
+put \(u=qv^{-1}\). These inverse formulas are smooth in the standard
+quotient charts. The common boundary map is consequently
+\[
+             \tau(h,q)=(q^{-1}h q,q).                  \tag{K23.3}
+\]
+The fixed sphere is unknotted in the smooth six-sphere:
+Haefliger's Theorem 1.2 and Corollary 6.6, with \(n=2,q=4\),
+give the trivial embedding class \cite{Haefliger1966}.
+Its exterior is therefore the actual product
+\(E=D^3_y\times S^3_q\), with its given boundary marking extended
+by the normal framing. The map (K23.3) extends over this exterior:
+\[
+ T(y,q)=(q^{-1}yq,q),\qquad
+ T^{-1}(y,q)=(q yq^{-1},q).                           \tag{K23.4}
+\]
+These are smooth also at \(y=0\). Thus replacing the local resolution
+conjugates the exterior return by \(T\).
+
+This last sentence includes the actual parameter family. For a
+local Cox angular action of weights
+\((-r-s,0,r,s)\), write
+\[
+ a_\theta=e^{-i(r+s)\theta/2},\qquad
+ b_\theta=e^{i(r-s)\theta/2}.
+\]
+The first product action and second product action are respectively
+\[
+ (h,q)\longmapsto
+ (a_\theta h a_\theta^{-1},a_\theta q b_\theta),\qquad
+ (k,q)\longmapsto
+ (b_\theta^{-1}k b_\theta,a_\theta q b_\theta).
+\]
+Substitution in (K23.3) proves exact equivariance for every \(\theta\).
+At \(2\pi\), both scalar endpoints have the same central sign;
+the displayed product actions close even when \(r+s\) is odd.
+Therefore the comparison of the two local family products is the
+same map \(\tau\), independent of the parameter angle. The period
+reindexing acts on the periodic collection of common conifold cells.
+That collection has trivial cell stabilizer; choose one quotient
+representative and extend every chart change equivariantly to its
+translates. Extracting the integer winding from each bounded
+nonzero toric unit leaves a logarithm on this representative. Contract
+its positive modulus and its remaining logarithm in both resolution
+charts at once, transporting the truncation collars by the resulting
+common conifold isotopy. The integer winding is exactly the Cox
+action just displayed. This retains the actual exterior
+identifications, including their bounded units. No null-homotopy of
+an odd Cox loop, or additional disc-supported correction, is inserted.
+
+**Proof: exact relative generators and conjugation.**
+Choose a smooth degree-one map
+\(\zeta:(D^3,S^2)\to(S^3,1)\), constant on a boundary collar,
+which is equivariant for quaternionic conjugation and commutes
+with \(y\). Explicitly one can use
+\[
+ \zeta(y)=\cos\phi(|y|)-\sin\phi(|y|)\frac{y}{|y|},
+\]
+where \(\phi\) decreases from \(\pi\) to zero, has the smooth odd
+radial expansion at zero, and is flat near the boundary. Define
+\[
+ L(y,q)=(y,\zeta(y)q),\qquad R(y,q)=(y,q\zeta(y)).
+                                                        \tag{K23.5}
+\]
+They commute and extend over \(D^3\times D^4\) by the same quaternion
+multiplications. Their induced six-sphere classes are therefore zero.
+They represent the left and right generators of
+\(\pi_3SO(4)=\mathbb Z^2\). Extension by the identity to the double
+injects the relative pseudo-isotopy group into the doubled group;
+Krylov's Proposition 1 and Lemma 3 give, in this dimension, the
+relative group \(\Theta _7\oplus\mathbb Z^2\)
+\cite{Krylov2004}. Pseudo-isotopy is sufficient here, since extending
+the resulting collar gives the same oriented sphere gluing.
+
+On the double write
+\[
+ {\cal A}(s,t)=(tst^{-1},t),\quad
+ {\cal B}(s,t)=(s,sts^{-1}),\quad
+ {\cal C}=[{\cal A},{\cal B}].
+\]
+Krylov's Theorems 2--3 establish centrality and order \(28\) of
+\({\cal C}\), and the relation
+\({\cal A}Y=Y{\cal A}{\cal B}\), where \(Y(s,t)=(s,st)\)
+\cite{Krylov2001}. In the marked relative products
+\[
+       T={\cal A}^{-1},\qquad L=Y,\qquad
+       R=Y{\cal B}^{-1}.
+\]
+The first identity below also follows by literal substitution in
+(K23.4)--(K23.5); the second then follows from the displayed central
+relation:
+\[
+ TLT^{-1}=R,\qquad
+ TRT^{-1}=L^{-1}R^2{\cal C}.
+\]
+Consequently
+\[
+ T(L^mR^n{\cal C}^s)T^{-1}
+       =L^{-n}R^{m+2n}{\cal C}^{s+n}.                \tag{K23.6}
+\]
+All maps on the left are relative to the boundary. The injection
+just cited retains this equality in the relative group. Transport
+of a supporting oriented disc shows that \(T\) fixes the central
+disc-supported subgroup.
+
+**Proof: the actual integer coefficient from the Hopf quotient.**
+The orientations in (K23.2) are essential. At \(a_1=x+iy=0\),
+the derivatives of \(h\) are \((-2k,-2j)\), so \(h\) reverses the
+complex curve orientation. At \(u=1\),
+\[
+ q=\Re c_0+i\Im c_0+j\Re c_1+k\Im c_1
+\]
+preserves the complex normal orientation. Thus the complex
+orientation of the exterior is \(D^3_y\times S^3_q\).
+For the second resolution the derivatives of \(k\) are \((2k,-2j)\);
+its base preserves and its normal coordinate reverses the respective
+complex orientations. Its exterior has the same product orientation.
+
+The physical delta action is \(q\mapsto q e^{-i\theta}\), with
+Hopf quotient \(z=q i q^{-1}\). At \(q=1\), its circle vector is
+\(-i\), and the quotient derivatives in the \(j,k\) directions are
+\(-2k,2j\). Hence
+\[
+ [S^3_q]=-[S^1_\delta][S^2_z],\qquad
+ [E]=[S^1_\delta][D^3_y][S^2_z].                    \tag{K23.7}
+\]
+The closed conifold quotient therefore has orientation
+\(S^3_y\times S^2_z\), equivalently \(S^2_z\times S^3_y\).
+
+Let \(t\) be the relative variation of the actual exterior return in
+this product. The integral circle Gysin argument can be made
+explicit. Put \(P=Y\setminus\operatorname{int}\nu F\), the orbit
+complement before its conifold cap. On its physical mapping torus,
+whose fourth cohomology vanishes, let \(\eta\)
+be a circle connection with \(d\eta=x\), and take
+\(d\beta=x^2\). The integral degree-three generator of the circle
+total space is represented by
+\(-\eta x+\pi^*\beta\); fibre integration and the meridian-one
+condition fix its sign. Its boundary restriction in the complex
+curve orientation is \(s+k_{\rm Jin}h_F\theta\):
+Stokes gives \(k_{\rm phys}=-\int_{F\times S^1}\beta\), and the
+physical mapping torus is the inverse of Jin's convention.
+Since \(h=-h_F\), its restriction in (K23.2) is
+\[
+                         t=-k_{\rm Jin}.             \tag{K23.8}
+\]
+Equivalently, the boundary of a relative \(D^3\times[0,1]\) is
+\(S^2\times[0,1]-D^3\times\{1\}+D^3\times\{0\}\), giving precisely
+this variation coefficient. The integral Gysin sequence supplies
+the integral class; choosing differential representatives does not
+replace the integral assertion.
+
+The generator \(L\) has variation \(+1\) and quotient
+\((y,z)\mapsto(y,\operatorname{Ad}_{\zeta(y)}z)\). In Jin's
+identification \((v,0)\sim(g(y)v,1)\), a connection is
+\(A_\theta=-\theta\,dg\,g^{-1}\). With \(\omega=dg\,g^{-1}\),
+\[
+ F=-d\theta\,\omega+(\theta^2-\theta)\omega^2,\qquad
+ \int_{S^3}\operatorname{tr}(\omega^3)
+                      =-24\pi^2\deg g.
+\]
+The orientation is \(S^3\times S^1\), so direct integration gives
+\(c_2=\deg g\) and \(p_1(\operatorname{ad}g)=-4\deg g\).
+The vertical Euler class of this sphere bundle is \(2x\), and
+the base \(S^3\times S^1\) has \(H^2=0\). Therefore
+\[
+                       (k_L,\ell_L)=(-1,-4).
+\]
+Composing the actual equivariant return with \(L^{-t}\) kills its
+variation and gives
+\[
+                      k_0=0,\qquad \ell_0=\ell-4k.    \tag{K23.9}
+\]
+Additivity follows from the mapping-torus pair-of-pants bordism
+carrying the actual Euler line.
+
+Put \({\cal B}=LR^{-1}\). The relative class after (K23.9) is
+\({\cal B}^b{\cal C}^s\). Its double is the actual principal circle
+bundle over the closed conifold mapping torus. Its tangent bundle
+is the pullback of the quotient tangent bundle plus a trivial
+line. Since \(H^2=\mathbb Zx\), \(H^4=\mathbb Z[y\theta]\), and
+\(x^2=0\), the integral Gysin sequence makes the pullback on \(H^4\)
+injective.
+
+Represent \({\cal C}^s\) on a disc disjoint from
+\(S^3_y\times\{q=1\}\). The representative
+\({\cal B}^b{\cal C}^s\) fixes that sphere pointwise and has
+normal clutch \(\operatorname{Ad}_{\zeta(y)^b}\) on
+\(S^3_y\times S^1\). Its Pontryagin number is \(-4b\), by the
+preceding connection calculation. The pullback of \([y\theta]\)
+evaluates \(1\) on this cycle. This retains the actual marking:
+an isotopy of representatives is the identity on an initial fibre,
+and the possible \(x\theta\) ambiguity in a quotient degree-three
+lift pulls back to zero. Thus
+\[
+ \ell-4k=-4b,\qquad b=6A,\qquad n=-6A.              \tag{K23.10}
+\]
+Here \(n\) is the \(R\)-exponent after rewriting the original
+relative class in \(L,R\). This calculation uses the actual Hopf
+quotient before the flop; it makes no corresponding quotient claim
+after the fixed curve has become two isolated points.
+
+**Proof: the sign of the central sphere by an oriented plumbing.**
+Let \(\Sigma_f\) denote \(D^4_s\times S^3_t\) glued to
+\(S^3_s\times D^4_t\), right coordinate equal to \(f\) of the left
+coordinate, with the orientations from
+\(\partial(D^4_s\times D^4_t)\). Take three products
+\(D_i=D^4_s\times D^4_t\), with orientations \(+,-,+\).
+Glue their faces by
+\[
+ (s_1,t_1)\longmapsto(s_2,t_2)
+       =(s_1,s_1t_1s_1^{-1}),\qquad
+ (s_2,t_2)\longmapsto(s_3,t_3)
+       =(t_2^{-1}s_2t_2,t_2).
+\]
+The first is on the \(S^3_s\times D^4_t\) faces, the second on the
+\(D^4_s\times S^3_t\) faces. Their coordinate orientations agree,
+while the adjacent eight-ball signs differ, as required for oriented
+gluing. After rounding, the two remaining faces have boundary word
+\({\cal A}^{-1}{\cal B}\). The map \({\cal A}\) extends the left
+face and \({\cal B}^{-1}\) the right face, so the oriented boundary is
+\[
+ \Sigma_{{\cal B}^{-1}{\cal A}^{-1}{\cal B}{\cal A}}
+                       =\Sigma_{{\cal C}^{-1}}.
+\]
+
+Orient the first zero-section sphere by \(ds\) in \(D_1\) and
+\(-ds\) in \(D_2\), and the second by \(dt\) in \(D_2\) and
+\(-dt\) in \(D_3\). At their unique intersection in \(D_2\) their
+concatenated orientation is \(-ds\,dt\), the ambient orientation.
+Each normal clutch fixes a real line. Thus
+\[
+ Q=\begin{pmatrix}0&1\\1&0\end{pmatrix},\qquad \sigma(W)=0.
+\]
+The normal clutches are \(\operatorname{Ad}_s\) and
+\(\operatorname{Ad}_{t^{-1}}\). Their normal orientations on their
+two hemispheres are respectively \(dt\) and \(-ds\).
+Quaternionic conjugation reverses the four-plane orientation and
+commutes with every adjoint action, so this second normal-frame
+orientation introduces no extra Pontryagin sign. The two
+Pontryagin evaluations are \((p,-p)\), with \(|p|=4\).
+The eight-manifold has only two four-handles besides its zero-handle;
+in particular it is spin. Its unimodular intersection form gives
+\[
+ p_1^2=(p,-p)Q^{-1}(p,-p)^{\mathsf T}=-32.
+\]
+The spin Eells--Kuiper formula consequently gives
+\[
+ \mu(\Sigma_{{\cal C}^{-1}})=-\frac1{28},\qquad
+ \mu(\Sigma_{\cal C})=+\frac1{28}.                   \tag{K23.11}
+\]
+
+There are two explicit reversals in comparing this plumbing with
+P3F.22. Its positive Hopf sphere \(u\) has orientation \(-q\),
+by (K23.7), and its ordered factors are \((u,y)\), whereas the
+plumbing factors are \((y,q)\). Thus its pieces identify as
+\[
+ D^4_u\times S^3_y=-(S^3_y\times D^4_q),\qquad
+ S^3_u\times D^4_y=-(D^4_y\times S^3_q).
+\]
+The pieces exchange and the ambient orientation reverses. The
+literal gluing map is inverted, giving
+\(\lambda(F)=-\Sigma_{F^{-1}}\). For a disc-supported class,
+putting its supporting disc in the common boundary and cancelling
+the opposite product collars gives
+\(\Sigma_{F^{-1}}=-\Sigma_F\). Therefore
+\(\lambda({\cal C})=\Sigma_{\cal C}\), with the positive sign
+in (K23.11) in the run's convention.
+
+Finally \(L\) and \(R\) extend the seven-disc, so the central exponent
+of the original relative class is its actual class \(A\bmod28\).
+Equation (K23.6) adds \(n\) to that exponent, and (K23.10) gives
+\(n=-6A\). This proves (K23.1) and the displayed examples.
+
+All local orientation matrices and the Chern--Weil integral are
+checked exactly in \path{code/part3_fourfold/fixed_edge_signs.py}. The
+central word, hyperbolic pairing and rational Eells--Kuiper
+arithmetic are checked in \path{code/part3_fourfold/commutator_orientation.py}.
+These programs certify those algebraic steps; the actual family,
+circle, collar and oriented gluing maps are the constructions in
+this proof. **End of proof.**

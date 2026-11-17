@@ -1,0 +1,1 @@
+First run: assertion at 65-digit agreement failed. Located error: cosine moment recurrence began with Python integer 1, so its first division created a binary floating-point value. Replaced initial value by mpmath mpf(1); all subsequent recurrence arithmetic is now 90-digit. No first-run number was used.
