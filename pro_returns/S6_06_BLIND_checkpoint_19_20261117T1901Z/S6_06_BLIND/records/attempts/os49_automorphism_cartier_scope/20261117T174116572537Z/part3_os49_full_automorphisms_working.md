@@ -1,0 +1,224 @@
+# Full holomorphic endpoint automorphisms of the fixed OS49 sphere models
+
+Working proof for independent audit, 17 November 2026. This uses the actual
+OS49 source, line and finite cap of K76--78. The source is fixed, the scalar
+is fixed, the finite cap and all smooth order-one clutches are the specified
+ones, and the periodic fan is any lattice-basis fan P. The actual sphere
+condition is D=n+m sum psi(ell_i)=+1 or -1. No source-zero attachment or
+source-moduli comparison is used here.
+
+The calculation below gives Aut_hol(X)=C*, acting by the actual physical
+line scalar. In particular every such automorphism is connected to the
+identity by that action. The argument first recovers the base from the
+meromorphic function field, then determines every possible integral linear
+part, and finally excludes the negative linear part by a literal affine
+square in the complete root groupoid. Thus it does not assume that an
+endpoint descends to the source elliptic surface or is a translation.
+
+## FA.1. Recovering the base and fixing its three marked values
+
+Let pi:X->P1 be the actual torus fibration. Its generic fibre T is a
+compact complex two-torus, hence has a flat Kähler form omega. Since the
+actual X is diffeomorphic to S6, H^2(X;Z)=0. If an effective divisor E
+had a horizontal component, its restriction to a generic smooth fibre
+would be a nonzero effective divisor E_T. The line O_X(E) has zero first
+Chern class, so its restriction has zero first Chern class, whereas
+\[
+ \int_T c_1\bigl(\mathcal O_T(E_T)\bigr)\wedge\omega
+                =\int_{E_T}\omega>0.                    \tag{FA.1}
+\]
+The equality is the divisor fundamental-class pairing; its last term is
+strictly positive on each nonzero effective complex curve with its
+multiplicity. This contradiction excludes every horizontal divisor.
+
+The polar divisor of a meromorphic function on X is therefore vertical.
+Its restriction to a generic compact connected T has no polar divisor;
+removable singularities across the remaining codimension-two set make it
+holomorphic, and hence constant. The local product over a regular base disc gives its meromorphic
+descent; the same rational function extends on P1. Conversely every
+rational function of pi pulls back. Thus C(X)=C(t), with this equality
+implemented by pi*. A biholomorphism F of X induces a Möbius transformation
+h of P1 and the exact equation pi F=h pi. It holds first on regular fibres
+and then everywhere by continuation.
+
+The three nontrivial linear local monodromies are precisely A,B,C in
+(OCS.3). Their characteristic polynomials are
+\[
+ \begin{aligned}
+ \det(xI-A)&=(x-1)^2(x^2+x+1),\\
+ \det(xI-B)&=(x-1)^2(x^2-x+1),\\
+ \det(xI-C)&=(x-1)^4,\qquad C\ne I .
+ \end{aligned}                                           \tag{FA.2}
+\]
+The actual finite root has its original effective order-three linear
+monodromy A even when m=3k; its ineffective subgroup is still retained in
+the affine groupoid. Each added smooth order-one clutch has identity
+linear monodromy. A holomorphic base map carries a positive local loop to
+a positive local loop, so these conjugacy invariants make h fix 0,1 and
+infinity separately. Hence h is the identity. This proves base preservation
+for every biholomorphism without a prior source-preservation assumption.
+
+## FA.2. The complete integral linear centralizer
+
+A holomorphic map between compact complex tori lifts to their universal
+covers. Its derivative is periodic and therefore constant, because its
+entries descend to holomorphic functions on a compact torus. Every fibre
+map is consequently affine. Its induced integral homology matrix is
+locally constant over the regular base. Since F preserves the base, the
+matrix X commutes with the actual three monodromies A,B,C.
+
+Commutation with B first gives the full block form
+\[
+ X=\begin{pmatrix}
+ a&0&0&b\\0&p&q&0\\0&-q&p+q&0\\c&0&0&d
+ \end{pmatrix}.
+\]
+Substitution in XA=AX gives b=q=0 and a=p=d. Consequently the complete
+rational, and hence integral, centralizer is
+\[
+                  X=aI+c\,\delta\psi,
+       \qquad \delta\psi=E_{41},\qquad \det X=a^4.       \tag{FA.3}
+\]
+An integral automorphism has a=epsilon in {+1,-1} and c in Z. On a fixed
+smooth torus its real linear map is complex linear. Subtracting
+ epsilon I still gives a complex-linear map. If c were nonzero, the
+result would have real rank one by (FA.3), whereas a nonzero complex-linear
+map has even positive real rank. Thus c=0. Every holomorphic automorphism
+has linear part exactly +I or -I. This computation uses the entire
+monodromy module; it leaves no exceptional complex-multiplication case.
+
+## FA.3. Actual local inversion and the affine root/cusp square
+
+We use the same local origins and rigidified line coordinates as the
+OCS groupoid. On every regular source chart, the degree-zero line has
+constant factors of automorphy. In the corresponding additive-source,
+multiplicative-line cover its group inverse is (z,V)->(-z,V^{-1}).
+A source-translation line lift has the form (z,V)->(z+s,cV): its ratio
+with this flat lift is a holomorphic function on the compact elliptic
+curve and hence is constant. These are actual translations of the same
+commutative extension. Inversion conjugates the complete suspension B,
+including its scalar, to B^{-1}. This gives inversion of the local compact
+torus quotient with its chosen origin.
+
+Its extension at the retained II fibre has a direct Cartier formula.
+Write i(x,y,t)=(x,-y,t), and let e be the canonical meromorphic frame of
+M=O(G-O), whose divisor is G-O. On the complement of the selected cusp,
+\[
+ f=x-t^2,\qquad \operatorname{div}(f)=G+(-G)-2O,
+ \qquad M\otimes i^*M\longrightarrow\mathcal O,
+                 \quad e\otimes i^*e\longmapsto f.       \tag{FA.4}
+\]
+The nonzero-vector inverse is therefore literally
+\[
+                (p,V e(p))\longmapsto
+                    \left(i(p),\frac{i^*e(p)}{f(p)V}\right).
+                                                               \tag{FA.5}
+\]
+It is a map of the actual line bundles: the divisors in (FA.4) cancel the
+apparent frame poles and zeros. Its square is the identity since f i=f.
+At t=1 the cusp has x=y=0 and f=-1, so the same map and its inverse extend
+there. Rigidification at O identifies this map with the group inverse
+above; any constant chosen with that rigidification is retained in the
+local origin.
+
+On the good root t=z^{3k}, x=z^{4k}X, y=z^{6k}Y, the actual corrected
+root line is O(G'-O'), with G'=(z^{2k},1). The divisor pairing in (FA.4)
+is, after removal of the displayed fibre power z^{4k}, exactly
+\[
+                            f_{\rm root}=X-z^{2k}.        \tag{FA.6}
+\]
+This defines the same inverse on the smooth root family. All original
+finite line characters remain in the affine deck action. In particular
+we do not claim that inversion commutes with an affine cap action: its
+failure to do so is precisely the finite-group equation below. The
+base-root lift of an actual base-preserving F is obtained by the literal
+fibre product with z^m=t and its normalization; it fixes z. Its affine
+linear part on the root torus is the same epsilon I.
+
+At the selected cusp use the complete periods (OC.5), including every
+coefficient function, and define on the toric covering
+\[
+                   I_c(Z,V,q)=(Z^{-1},V^{-1},q).           \tag{FA.7}
+\]
+It conjugates each full h and B period to its inverse. On the fan lattice
+its map is (v,h)->(-v,h). For the basis fan with triangles
+{0,u,v} and {u,v,u+v}, the negative of the first triangle, translated by
+u+v, is the second, and the negative of the second, translated by u+v,
+is the first. Thus this is an exact automorphism of the same infinite
+periodic fan, compatible with every period and its full unit factors.
+It extends on every toric chart, including non-semifree fans. This is an
+actual local inverse map; no reflection to a different fan is substituted.
+At every additional smooth clutch disc the ordinary local inverse above
+is used, with the given local origin.
+
+Suppose now the actual F had linear part -I. Composing its local lifts
+with these inversions gives identity-linear maps of the local models.
+Their values at the chosen origin give extending translations s_i. At
+II and on the good root their line maps extend by (FA.4)--(FA.6) and the
+actual Hom evaluation argument of OC.1. At the cusp, the origin lies in
+the open central torus. Its image is reindexed by the literal h,B periods
+using (OC.8); evaluation of the map and its inverse then gives the full
+bounded units of (OC.7). Those units extend on every cone. These s_i are
+therefore sections of the actual sheaf A in OCS, including the line and
+all normal collars.
+
+Write an ordinary overlap in precisely the OCS convention as
+\[
+                g_{ij}(x)=L_{ij}x+\theta_{ij},
+                         \qquad F_i(x)=-x+s_i.
+\]
+The literal equation F_i g_ij=g_ij F_j is
+\[
+                       s_i-L_{ij}s_j=2\theta_{ij}.        \tag{FA.8}
+\]
+There is also the full finite-deck square. If the actual root arrow is
+A_z(x)=L_D(z)x+a_D(z), from z to Dz, its square with F is
+\[
+                  s_{Dz}-L_D(z)s_z=2a_D(z).              \tag{FA.9}
+\]
+This retains the complete cyclic group of order m and every central line
+character, including the ineffective subgroup. Taking all iterates of
+(FA.9) retains the original m-th norm; it does not replace m by 3.
+Equations (FA.8)--(FA.9) say exactly that twice the actual total translation
+cocycle is the coboundary of these extending sections. Passing through
+the same atlas exponential sequence (OCS.4), with its full integral
+finite-group cochain, therefore gives
+\[
+                2(D,d\bmod k)=0
+                  \quad\hbox{in }\mathbb Z\oplus\mathbb Z/k.     \tag{FA.10}
+\]
+But D=+1 or -1 in every sphere datum under discussion. Its free component
+2D is nonzero. Thus a linear -I automorphism cannot exist.
+
+## FA.4. The remaining group and endpoint consequence
+
+Every automorphism is now base preserving and identity linear, so OC.2--3
+apply with their actual source/line and toric lifts. K78's explicit
+clutch comparison transports that same group for the additional smooth
+sites. The full calculation gives a rational lift f(t)U^j, forces j=3a,
+and identifies it literally with c B_0^{-a}; on the compact quotient it
+is the physical scalar c lambda^a. Conversely every physical nonzero
+scalar extends through every root and every toric chart, and acts
+faithfully. Consequently
+\[
+                      \operatorname{Aut}_{\rm hol}(X)
+                                =\mathbb C^*_{\rm physical}.     \tag{FA.11}
+\]
+A path from 1 to any c in this actual group is an isotopy of the full
+complex model, its finite caps and its normal collars.
+
+For a fixed closed family with two specified holomorphic endpoint maps,
+the ratio of those endpoint maps is an automorphism of the same fixed
+sphere member X. Equation (FA.11) supplies a literal isotopy between
+them by physical scalar multiplication. Their inverse-endpoint physical
+returns are therefore conjugate up to this isotopy and have the same
+oriented clutched-sphere class. This conclusion concerns endpoints of the
+same fixed data; it does not identify two different norm signs, different
+source-moduli paths, or an arbitrary smooth endpoint with a holomorphic
+one. No existence of an unspecified short endpoint is inferred.
+
+The independent centralizer, characteristic-polynomial, Cartier, root,
+fan and finite-cochain identities are recorded in
+`code/part3/os49_full_automorphisms.py` and its captured output. The
+present note is working pending independent review of the actual local
+inverse and full root-groupoid argument.
