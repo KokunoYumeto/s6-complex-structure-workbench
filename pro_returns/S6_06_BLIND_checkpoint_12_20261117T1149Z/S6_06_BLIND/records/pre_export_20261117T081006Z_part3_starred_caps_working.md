@@ -1,0 +1,377 @@
+# Exact complementary III* and IV* cap constructions
+
+Status: Proved as P3F.41. The source, exact line diagrams, affine norms
+and complete integral gluing maps passed the independent root audit.
+The local toric correspondence also passed the independent checks audit.
+The signed actual returns of both norm signs are proved in P3K.26.
+P3F.37 and P3K.24 retain the earlier reduced-III construction and proof.
+
+## SC.1. Explicit sources and the parameter domains
+
+The following source models retain their actual marked section:
+
+| Source | Equation and G | Fibres |
+|---|---|---|
+| E7-A | y²=x³+tx+1, G=(0,1) | III* at infinity, three I1 |
+| E7-B | y²=x³+tx−t, G=(1,1) | III* at infinity, II at0, I1 at−27/4 |
+| E6-A | y²=x³−3x+t²+2, G=(1,t) | IV* at infinity, I2 at0, I1 at±2i |
+| E6-B | y²=x³+tx+t², G=(0,t) | IV* at infinity, III at0, I1 at−4/27 |
+
+The first two are verified in P3F.37/P3K.24. For E6-A the discriminant
+is 27t²(t²+4). The factorization
+(y−t)(y+t)=(x−1)²(x+2) gives a rational chart
+u=(y−t)/(x−1), v=(y+t)/(x−1), with inverse
+x=uv−2, t=(x−1)(v−u)/2, y=(x−1)(u+v)/2.
+For E6-B its discriminant is t³(4+27t). Put
+u=(y−t)/x, v=(y+t)/x; the inverse is
+x=uv−(v−u)/2, t=x(v−u)/2, y=x(u+v)/2.
+Thus these are rational elliptic surfaces, with the stated minimal
+coefficient orders. At infinity their cubic good roots send G to a
+nonzero fixed three-torsion point. At the I2 in E6-A, the two local
+branch orders of G are one and one; at the III in E6-B the fourth
+good root sends G to the nonzero fixed two-torsion point. Thus G has
+nonidentity components in E6 and A1, height 1/6, and G.O=0.
+The root discriminant and height identity show that G is primitive
+and the Mordell--Weil group is torsion free.
+
+Set M=O(aG−O), Q=bG. Use the following actual data, with a single
+cap at infinity, no other logarithmic sites, and one chosen I1 as
+the simple whole-fibre zero:
+
+| Sources | (a,b) | Root order m | Root type |
+|---|---|---|---|
+| E7-A,B | (2,1) | m=4l+3, l≥0 | III |
+| E7-A,B | (1,2) | m=4l, l≥1 | smooth |
+| E6-A,B | (6,1) | m=3l+2, l≥0 | IV |
+| E6-A,B | (2,3) | m=3l, l≥1 | smooth |
+
+For each entry choose an integer n with gcd(m,n)=1. The actual cap
+norm will be A_r^m=B_lambda^n, lambda=r^m, with marked meridian
+m q+n gamma_out. In these domains n is nonzero. Every retained
+reducible fibre has translation transitive on its components:
+at the retained A1 it is odd b, while a is even. The source Hom
+line has whole-fibre degree ab/d=1 (d=2 or6). Its degree follows
+also directly from the section intersections: for E7 it is1;
+for E6 (6,1), (6G).O=(5G).O=2 and G.O=0; for (2,3),
+(2G).O=(-G).O=(-3G).O=0. At each component either M has zero
+multidegree or Q fixes the component, so the vertical Hom divisor
+is a whole fibre. The selected section of that base line supplies
+the prescribed one simple I1 zero.
+
+## SC.2. Root equations and exact affine source norms
+
+For E7 reduced roots use (F37.1) and the equation in K24 for E7-B.
+For E6-A at infinity,
+\[
+ y_0^2=x_0^3-3q^4x_0+q^4+2q^6,\qquad G=(q^2,q^2).
+\]
+For E6-B,
+\[
+ y_0^2=x_0^3+q^3x_0+q^4,\qquad G=(0,q^2).
+\]
+For m=3l+2, k=2l+1, substitute q=z^m,
+x0=z^{2k}X, y0=z^{3k}Y. The respective equations are
+\[
+\begin{array}{ll}
+Y^2=X^3-3z^{4l+4}X+z^2+2z^{6l+6},&
+G'=(z^{2l+2},z),\\
+Y^2=X^3+z^{l+2}X+z^2,&G'=(0,z).
+\end{array}
+\]
+They have the reduced IV minimal regular fibre. In the chart
+X=zX1,Y=zY1 its two nonidentity component labels are distinguished
+by Y1=±1. The actual deck
+\[
+ D(X,Y,z)=(\zeta_m^{-2k}X,\zeta_m^{-3k}Y,\zeta_mz)
+\]
+has character zeta_m^{-(3k+1)}=zeta_m^{-2m}=1 on Y1.
+It fixes the three component labels. G' is nonidentity and 6G'
+has identity component. Resolving the displayed A2 surface point
+retains these labels and the source translation.
+
+For good roots, take q=z^m with k=3m/4 for E7 and k=2m/3 for E6.
+The central smooth curve and its deck have order four or three
+respectively. In a coordinate w at any marked fixed section,
+the minimal good-root chart has weights (r−1,1), r=4 or3.
+The good-root limit of Q is O, since b is the component-group
+order (two or three). The limit of aG is a nonzero fixed point
+of that order. These are the exact marked limits from the source
+coordinates, not unmarked smooth elliptic replacements.
+
+There is a unique analytic m-division R of Q' with the selected
+central point. At a reduced root multiplication by m is invertible
+on its additive identity group and on its component group, since
+m is prime to two or three. At a good root use the local inverse
+of multiplication by m at O. Deck invariance follows from
+uniqueness. The actual source map
+\[
+                         a_0=t_{-nR}D
+\]
+satisfies a0^m=t_{-nQ'}. Translation extends to the actual minimal
+regular source by the graph/minimality argument used in F37.
+
+## SC.3. The good-root line map as a toric correspondence
+
+Let r=3 or4 be the minimal good root. Near a marked root section
+choose its holomorphic coordinate w=0. Centering at the actual
+equivariant section preserves the diagonal weights (r−1,1).
+The quotient lattice is
+\[
+ N'=\mathbb Z^2+\mathbb Z(r-1,1)/r.
+\]
+The minimal quotient resolution has rays
+\[
+ v_j=((r-j)/r,j/r),\qquad 0\le j\le r.
+\]
+Consecutive cones have determinant 1/r in the ordinary lattice,
+hence are regular in N'. The following actual common refinements
+are regular in the original root lattice:
+\[
+\begin{array}{ll}
+r=3:&(1,0),(2,1),(1,1),(1,2),(0,1),\\
+r=4:&(1,0),(3,1),(2,1),(1,1),(1,2),(1,3),(0,1).
+\end{array}
+\]
+Every adjacent determinant is one. Let beta be the resulting root
+blowup and pi its toric map to the quotient minimal resolution.
+The underlying lattice inclusion gives every chart map by its
+dual monomials. Thus pi is an actual proper generically finite
+map; no finiteness of its exceptional fibres is assumed.
+
+The resolved strict section is the divisor of the w-axis ray.
+Its integral Cartier support function is
+\[
+ h_w(v)=\max(v_w-(r-1)v_z,0).
+\]
+Indeed it is w−(r−1)z on the first minimal cone and zero on the
+remaining cones. The character w−(r−1)z belongs to the quotient
+dual lattice. Pulling that Cartier function to the common
+refinement, while beta pulls the original section with valuation
+v_w, gives the exact exceptional correction
+\[
+ \beta^*(\hbox{root section})-\pi^*(\hbox{resolved section})
+ =\sum_{\text{exceptional }v}\min(v_w,(r-1)v_z)E_v.       \tag{SC.1}
+\]
+For r=3 the coefficients along the listed exceptional rays are
+(2,1,1); for r=4 they are (3,2,1,1,1). Subtract the identical
+O-chart contribution from the aG-chart contribution. This gives
+an exact isomorphism
+\[
+ \beta^*N=\pi^*M+D_{aG}-D_O,\qquad N=O(aG'-O),           \tag{SC.2}
+\]
+including each exceptional coefficient.
+
+At r=3 these are the three A2 quotient points of the IV* model.
+At r=4 the two marked fixed points have A3 quotients; the other
+two points form an order-two orbit and give the remaining A1
+arm. No section divisor in (SC.2) passes through that latter
+orbit. The minimal resolved quotients are the original IV* and
+III* source models: the invariant Weierstrass substitutions give
+their birational maps, and their crepant resolution graphs are
+the stated affine E6 and E7 fibres, with no vertical (-1)-curve.
+The relative minimal-model graph comparison gives the isomorphism.
+
+The correction is equivariant for the actual suspension. At a
+fixed root point, Q'_0=O and deck equivariance give
+\[
+ w\longmapsto w\,u(w,z)+z^{r-1}h(z^r),\qquad z\longmapsto z,
+ \qquad u(0,0)=1.
+\]
+This preserves each ideal (w,z^j) and (z,w^j), 1≤j≤r−1.
+The normalized blowup of their invariant product gives exactly
+the displayed simultaneous fan refinement. Therefore the actual
+source translation lifts, preserves every exceptional correction
+in (SC.2), and gives an extending line map on N commuting with D.
+For m=r l, pull this whole correspondence through the additional
+base change and resolve the fibre product. The same invariant
+ideals, now (w,z^{jl}), retain the lifted source map and the
+pullback divisor identity. This supplies the actual line and B0,
+not only their generic-fibre Picard classes.
+
+The natural deck weights of N at the marked nonzero point and O
+are respectively zeta_r^{r−1} and zeta_r^{-(r−1)}, up to a common
+character. They are the weights of (SC.1) at the section. The
+central Picard class is nonzero of order p=3 for E6 and p=2 for
+E7. The exact connecting map
+\[
+ (\mathbb C/\Lambda)^D\longrightarrow\Lambda/(D-1)\Lambda,
+ \qquad[v]\longmapsto[(D-1)v]
+\]
+identifies it with the primitive p-torsion class of the cap circle
+line. A common deck character tensors by a flat line from the
+free suspension circle and does not remove this torsion.
+
+At a reduced root the source line is already zero on all original
+components. Pullback to the resolved fibre product therefore has
+degree zero on every contracted curve and descends through the
+actual contractions. Its comparison with N has a whole-fibre
+divisor, exactly as in F37, using the reduced III or IV
+intersection matrix. This is the complementary actual line map.
+
+## SC.4. Commuting line norms, freeness and holomorphic parameter closing
+
+The full lift argument is the one verified in IV.3. Lift t_{−R}
+first by F, correcting its meromorphic chord section's vertical
+divisor by a whole-fibre power. Average by the finite deck character
+to arrange DFD^{-1}=chi F, chi^m=1. Since mR=Q', write the actual
+descended map as B0=beta(z)F^m. It commutes with D by (SC.2);
+therefore beta is a nonzero function of q. In particular F and D
+both commute with B0. The map F^nD has norm ratio
+\[
+ (F^nD)^m/B_0^n=\chi^{nm(m-1)/2}\beta(q)^{-n}.
+\]
+An invariant analytic m-th root of this unit gives A0 with
+A0^m=B0^n and [A0,B0]=1. The character factor is retained also
+for the even good-root orders.
+
+Put A_r=r^nA0, B_lambda=r^mB0. Choose u,v with nu+mv=1.
+Then
+\[
+ H=A_r^uB_\lambda^v=rH_0,\qquad H^m=B_\lambda,\quad H^n=A_r.
+\]
+On a smaller compact source tube H0 has bounded norm ratios, so
+H is strictly contracting for small |r|. The cap is exactly
+N^times/<H>. Its norm shell proves smoothness and properness,
+and its strict contraction proves freeness of the delta circle.
+For outward h=H^{-1}, the single-A cut gives
+\[
+                         q\mapsto-nh,\qquad\gamma\mapsto mh,
+\]
+hence precisely m q+n gamma. All source translations and line
+characters are retained in this cap and its annular comparison.
+
+The holomorphic ordinary-to-cap translation cochain is solved
+once at c0 and then changed by n(c−c0)s_infty delta/m.
+Its positive cut is the actual A_r. At c->c+m its change is
+n s_infty delta, so the inverse closing is multiplication by
+(t−tc)^{-n}. The positive deck is its inverse. Near the selected
+cusp this multiplier and its inverse are B_lambda iterates
+composed with bounded source translations and invertible units.
+They extend through its specified Mumford charts. At the other
+fillings they are units. This constructs the proper holomorphic
+family over the punctured r-disc, with lambda=r^m, including
+negative n. No source root alone is used to choose a parameter
+return class.
+
+## SC.5. Integral source and boundary maps
+
+All maps below are executed with full Smith transformations in
+code/part3/iii_star_good_complement.py and
+code/part3/iv_star_complement.py. Their helpers are retained in
+integer_chain.py. The E7 integral basis is O,F,E7,G as in F37.
+For E6 use O,F,C0,...,C5,A1,G. The E6 graph has edges
+(0,1),(1,2),(2,3),(3,4),(2,5), highest-root marks
+(1,2,3,2,1,2), and G meets C0 and the A1 component.
+The full Gram determinant is -1. Translation by G cyclically
+permutes the three affine E6 arms and swaps the two A1 components.
+Its section columns come from the exact height and component
+formula. The resulting matrix is checked to preserve the Gram
+form, and the actual contracting source map is its negative b-th
+power. No separate unmarked lattice is substituted.
+
+Let V be the source minus its starred fibre tube. That tube has
+k=8 or7 component classes and no odd homology. Its inclusion
+matrix L is the affine component matrix, retaining the multiplicity
+vector. The exact complement chain model has
+\[
+ C_4=\mathbb Z,\ C_3=\mathbb Z,\ C_2=\mathbb Z^{10},\
+ C_1=\mathbb Z^k,\ C_0=\mathbb Z,\qquad
+ d_4=1,\ d_2=L^tB.
+\]
+The source and relative complexes before taking this cone are
+free and even, so their degree-one homotopy group is zero.
+The displayed translation and component permutation therefore
+give the actual functorial mapping-torus cone. The source boundary
+has C3=Z,C2=Z^k,C1=Z^k,C0=Z,d2=L^tBL; its maps to the complement
+are 1,L,1 in the corresponding degrees. These are the chain maps
+used in the exported calculation, so all boundary inclusions are
+retained.
+
+The source complement is simply connected. In E7-A this is the
+three-cycle trace argument of F37, and E7-B has the two vanishing
+cycles of II meeting once. E6-A has I2+I1+I1. If its primitive
+vanishing cycles spanned an index d sublattice, the trace of their
+product would be 2 modulo d² (expand the product of rank-one
+transvections, including the repeated I2 cycle). The inverse IV*
+monodromy has trace−1, so d² divides3, forcing d=1; rank one is
+excluded by the same trace. E6-B has a III fibre whose vanishing
+cycles already meet once. The source section then kills all base
+meridians. Thus the exterior orbit W_V has pi1=Z gamma.
+
+For the reduced partners, H2(W_V)=Z, H3(W_V)=ZF and H4=0.
+The boundary H1 and H2 are Z², with F=p z1, p=2 or3.
+Its H2 inclusion is (0,−1) in a primitive basis. The second
+column is the actual relative-Wang cycle
+p(P_{−G}−O) plus its integral removed-root correction, and is
+a unit. The original line need not be that primitive generator:
+for E6 its free coefficient is −2. The cap has H2=ZC, with
+F specializing to pC, so z1 maps to a unit C. The other column
+is an arbitrary retained integer kappa C. The full degree-two
+map is unimodular for every kappa.
+
+For the good partners, use the exported boundary basis
+(eta,r,s), with orders (p,0,0), and exterior basis (tau,z), with
+orders (p,0). The exact H2 inclusions and fibre classes are:
+\[
+\begin{array}{c|c|c|c}
+ & H_2(E)\longrightarrow H_2(W_V)&F\text{ in }H_2(E)&F\text{ in }H_2(W_V)\\
+E7,\ b=2&
+\begin{pmatrix}-7&-1&3\\0&0&1\end{pmatrix}&(0,-1,0)^t&(1,0)^t\\
+E6,\ b=3&
+\begin{pmatrix}-2&2&-2\\0&0&-1\end{pmatrix}&(0,1,0)^t&(2,0)^t .
+\end{array}                                                     \tag{SC.3}
+\]
+The torsion coefficient in each first column is a unit modulo p.
+The cap has H2=ZC; F maps with degree one to C by actual parallel
+transport through the smooth good-root source. Thus its H2 row
+is (0,−1,kappa) for E7 and (0,1,kappa) for E6. The free two-by-two
+Mayer--Vietoris block is unimodular, and the torsion block is an
+isomorphism Z/p->Z/p. This proves the complete H2 isomorphism
+without choosing or deleting kappa.
+
+In degree one the good boundary torsion maps primitively to the
+cap torsion. The generic elliptic lattice transports identically
+to the central good fibre. The two quotient lattices are
+Lambda/(D−1)Lambda and Lambda/(D^u−1)Lambda, with u inverse
+to n modulo m. Their sublattices agree integrally: for order3
+use D+I=−D², and for order4 an odd power is D or D^{-1}.
+The multiplying matrices are unimodular. Eliminate these actual
+torsion isomorphisms; the remaining free degree-one matrix is
+\[
+                         D_1=\begin{pmatrix}0&1\\ n&-m\end{pmatrix}.
+\]
+The reduced partners have that same free matrix without torsion.
+
+In degree three the primitive boundary basis is the oriented
+source boundary followed by F gamma. The exterior row is (0,1).
+The norm-circle projection has degrees −n and m on those two
+classes. Their transverse source cycle specializes to the primitive
+invariant full central fibre, both for the smooth root and for
+the cyclically permuted reduced components. Hence the cap row
+is (−n,m), and D3=D1. There is no extra source H3 class. Degree
+four is Z->0; degree zero is the incidence column (1,−1)^t.
+These specify every gluing degree.
+
+Van Kampen kills the cap elliptic lattice by its actual incoming
+generic elliptic loops, since the exterior source complement is
+simply connected. In the reduced cases there is no cap elliptic
+fundamental group. The remaining relations identify gamma=m h
+and impose n h=0. Thus pi1(Y)=Z/|n|. The displayed integral
+Mayer--Vietoris maps give
+\[
+ H_0(Y)=H_5(Y)=\mathbb Z,\quad
+ H_1(Y)=H_3(Y)=\mathbb Z/|n|,\quad H_2(Y)=H_4(Y)=0.       \tag{SC.4}
+\]
+For n=±1 the orbit is the standard S5. The sole fixed sphere has
+the primitive O(-1)^2 Hopf model, and all other delta actions are
+free by the actual norm inequality. The Gysin and fixed-tube maps
+of K22 give the standard S6 total space. For nonunit n the
+same primitive local Hopf meridian kills the principal-circle
+kernel and gives pi1(X)=pi1(Y), so these actual total spaces
+have nontrivial fundamental group.
+
+This proves the one-cap sphere sectors of the table with their
+full local line maps and all integral orbit gluing degrees.
+The complete source, line and integral-map proof has passed the
+independent audits recorded above. P3K.26 proves the actual return
+through its separate signed page and line comparison.

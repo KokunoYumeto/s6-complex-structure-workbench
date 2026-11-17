@@ -1,0 +1,55 @@
+1: #!/usr/bin/env python3
+2: """Standalone compile and render of the complete audited K31 proof."""
+3: from pathlib import Path
+4: from datetime import datetime, timezone
+5: import json, os, re, subprocess
+6: import fitz
+7: from PIL import Image, ImageDraw
+8: ROOT=Path(__file__).resolve().parents[2]
+9: with (ROOT/"records/literature_fourfold.md").open("a") as log:
+10:     log.write("\n- "+datetime.now(timezone.utc).isoformat()
+11:               +" — Opened own code/part3/f48_standalone.tex and notes/part3_common_exterior_frame_recurrence.tex; "
+12:               "reason: isolated promoted K31 proof QA; material: complete frame maps, recurrence, and fan theorem.\n")
+13: preamble=(ROOT/"code/part3/f48_standalone.tex").read_text().split(r"\begin{document}",1)[0]
+14: src=ROOT/"code/part3_fourfold/k31_standalone.tex"
+15: src.write_text(preamble+r"\begin{document}"+"\n"
+16:                +r"\input{notes/part3_common_exterior_frame_recurrence.tex}"+"\n"
+17:                +r"\end{document}"+"\n")
+18: runtime=ROOT.parent/"tex_runtime"
+19: env=dict(os.environ,TEXMF="{/usr/share/texlive/texmf-dist,/usr/share/texmf}",
+20:          TEXFORMATS=str(runtime),TEXINPUTS=str(runtime/"packages")+"//:",
+21:          LUAINPUTS=str(runtime/"packages")+"//:")
+22: hyperref_out=ROOT/"code/part3_fourfold/k31_standalone.out"
+23: if hyperref_out.exists() and "Lua" in hyperref_out.read_text(errors="replace")[:300]:
+24:     hyperref_out.rename(ROOT/"code/part3_fourfold/k31_previous_capture.out")
+25: p=subprocess.run(["lualatex","-interaction=nonstopmode","-halt-on-error",
+26:                   "-output-directory=code/part3_fourfold",str(src.relative_to(ROOT))],
+27:                  cwd=ROOT,env=env,text=True,capture_output=True)
+28: (ROOT/"code/part3_fourfold/k31_compile.out").write_text(p.stdout)
+29: (ROOT/"code/part3_fourfold/k31_standalone.err").write_text(p.stderr)
+30: if p.returncode:
+31:     print(p.stdout[-6000:]); raise SystemExit(p.returncode)
+32: logtext=(ROOT/"code/part3_fourfold/k31_standalone.log").read_text()
+33: over=[float(x) for x in re.findall(r"Overfull \\hbox \(([0-9.]+)pt too wide\)",logtext)]
+34: pdf=fitz.open(ROOT/"code/part3_fourfold/k31_standalone.pdf")
+35: out=ROOT/"records/render_k31"; out.mkdir(exist_ok=True)
+36: paths=[]
+37: for i,page in enumerate(pdf):
+38:     path=out/f"page_{i+1:02}.png"
+39:     page.get_pixmap(matrix=fitz.Matrix(1.65,1.65),alpha=False).save(path)
+40:     paths.append(str(path.relative_to(ROOT)))
+41: for start in range(0,len(paths),4):
+42:     contact=Image.new("RGB",(1700,2440),"#dddddd")
+43:     for j,rel in enumerate(paths[start:start+4]):
+44:         im=Image.open(ROOT/rel).convert("RGB"); im.thumbnail((820,1180))
+45:         tile=Image.new("RGB",(850,1220),"white")
+46:         tile.paste(im,((850-im.width)//2,25))
+47:         ImageDraw.Draw(tile).text((18,1200),Path(rel).name,fill="black")
+48:         contact.paste(tile,((j%2)*850,(j//2)*1220))
+49:     contact.save(out/f"contact_{start//4+1}.png")
+50: report={"utc":datetime.now(timezone.utc).isoformat(),"compile":"PASS",
+51:         "pages":len(pdf),"overflows_pt":over,"overflows_gt_2pt":[x for x in over if x>2],
+52:         "missing_character":bool(re.search(r"Missing character:",logtext)),
+53:         "page_images":paths,"visual_review":"pending"}
+54: (ROOT/"records/qa_k31.json").write_text(json.dumps(report,indent=2)+"\n")
+55: print(json.dumps(report,indent=2))

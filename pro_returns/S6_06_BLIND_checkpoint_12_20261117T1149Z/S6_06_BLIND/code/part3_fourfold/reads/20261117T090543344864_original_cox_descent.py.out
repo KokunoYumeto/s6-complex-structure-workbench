@@ -1,0 +1,114 @@
+1: #!/usr/bin/env python3
+2: """Exact original c-period cochain and its sixfold cusp comparison.
+3: 
+4: This is the integral calculation for the pending original-loop Cox descent.
+5: It does not divide a homotopy-sphere class.
+6: """
+7: from pathlib import Path
+8: from datetime import datetime, timezone
+9: import json
+10: import sympy as S
+11: from sympy.polys.matrices import DomainMatrix
+12: from sympy.polys.matrices.normalforms import smith_normal_decomp
+13: 
+14: ROOT=Path(__file__).resolve().parents[2]
+15: I=S.eye(4); zero=S.zeros(4,1)
+16: T1=S.Matrix([[1,0,-6,2],[0,-1,1,1],[0,-1,0,1],[0,0,0,1]])
+17: T2=S.Matrix([[1,6,0,-3],[0,0,-1,1],[0,1,0,0],[0,0,0,1]])
+18: A1=T1.inv().T; A2=T2.inv().T; A0=(A1*A2).inv()
+19: N1=I+A1+A1**2; N2=I+A2+A2**2+A2**3
+20: J=S.Matrix([[0,0],[0,0],[1,0],[0,1]])
+21: e1,e2,e3,delta=[I[:,i] for i in range(4)]
+22: d0=S.zeros(28,14)
+23: d0[0:4,0:4]=A1-I; d0[4:8,0:4]=A2-I
+24: d0[8:12,4:8]=A1-I; d0[12:16,8:12]=A2-I
+25: for i in range(3): d0[16+4*i:20+4*i,0:4]=I
+26: d0[16:20,4:8]=-I; d0[20:24,8:12]=-I; d0[24:28,12:14]=-J
+27: d1=S.zeros(20,28)
+28: d1[0:4,8:12]=N1; d1[4:8,12:16]=N2
+29: d1[8:12,0:4]=I; d1[8:12,8:12]=-I
+30: d1[12:16,4:8]=I; d1[12:16,12:16]=-I
+31: d1[16:20,0:4]=-A0; d1[16:20,4:8]=-A0*A1
+32: for i,A in enumerate((A1,A2,A0)):
+33:     d1[8+4*i:12+4*i,16+4*i:20+4*i]=-(A-I)
+34: assert d1*d0==S.zeros(20,14)
+35: def stack(parts): return S.Matrix.vstack(*parts)
+36: def serial(M): return [[int(x) for x in M.row(i)] for i in range(M.rows)]
+37: def ints(M): return [int(x) for x in M]
+38: def preimage(A,b):
+39:     D,U,V=[x.to_Matrix() for x in smith_normal_decomp(
+40:         DomainMatrix.from_Matrix(A).convert_to(S.ZZ))]
+41:     ub=U*b; y=S.zeros(A.cols,1); rank=A.rank()
+42:     for i in range(rank):
+43:         assert ub[i]%D[i,i]==0
+44:         y[i]=ub[i]/D[i,i]
+45:     assert all(x==0 for x in ub[rank:,:])
+46:     x=V*y
+47:     assert A*x==b and all(z.is_integer for z in x)
+48:     return x
+49: 
+50: assert N1*e2==2*delta and N2*e2==2*delta
+51: target=stack([2*delta,-2*delta,zero,zero,zero])
+52: original=stack([A1*e2,-e2,e2,-e2,e2,zero,zero])
+53: assert d1*original==target
+54: assert original[24:28,:]==zero
+55: assert original[0:4,:]+A1*original[4:8,:]==zero
+56: 
+57: # General integer preimages may always be put in the cusp-annulus-zero gauge.
+58: def cusp_zero_preimage(b):
+59:     x=preimage(d1,b)
+60:     w=x[24:28,:]
+61:     gauge=S.zeros(14,1); gauge[:4,:]=-w
+62:     x=x+d0*gauge
+63:     assert d1*x==b and x[24:28,:]==zero
+64:     return x
+65: target1=stack([2*delta,zero,zero,zero,zero])
+66: target2=stack([zero,2*delta,zero,zero,zero])
+67: x1=cusp_zero_preimage(target1); x2=cusp_zero_preimage(target2)
+68: 
+69: # Actual sixfold cover uses the logarithmic coefficients (4,-3) in the
+70: # default positive-gamma sphere marking n0=1,n1=-1.
+71: assert (A0-I)*e1==-delta
+72: cover=stack([4*delta,-3*delta,4*delta,-3*delta,zero,zero,e1])
+73: assert d1*cover==6*target
+74: difference=cover-6*original
+75: gauge=preimage(d0,difference)
+76: assert d0*gauge==difference
+77: data={
+78:     "status":"Integral descent calculation; simultaneous smooth endpoint proof in progress",
+79:     "A1":serial(A1),"A2":serial(A2),"A0":serial(A0),
+80:     "cusp_nilpotent":serial(A0-I),
+81:     "basis":["e1 (gamma)","e2","e3","delta"],
+82:     "cochain_blocks":["p","q","r","s","u","v","w"],
+83:     "d0":serial(d0),"d1":serial(d1),
+84:     "default_positive_marking":{"n0":1,"n1":-1,"4n0+3n1":1},
+85:     "c_to_c_minus_2_target":ints(target),
+86:     "one_period_integer_primitive":{
+87:         name:ints(original[4*i:4*i+4,:])
+88:         for i,name in enumerate(("p","q","r","s","u","v","w"))},
+89:     "one_period_cusp_annulus":ints(original[24:28,:]),
+90:     "generic_two_delta1_primitive":ints(x1),
+91:     "generic_two_delta2_primitive":ints(x2),
+92:     "sixfold_logarithmic_primitive":{
+93:         name:ints(cover[4*i:4*i+4,:])
+94:         for i,name in enumerate(("p","q","r","s","u","v","w"))},
+95:     "cover_minus_six_original_gauge":{
+96:         "ordinary":ints(gauge[:4,:]),"finite0":ints(gauge[4:8,:]),
+97:         "finite1":ints(gauge[8:12,:]),"cusp_invariant_coordinates":ints(gauge[12:14,:])},
+98:     "checks":["d1d0=0","d1 original=target","cusp annulus zero",
+99:               "p+A1q=0","(A0-I)e1=-delta","d1 cover=6 target",
+100:               "cover-6 original=d0 gauge"]
+101: }
+102: (ROOT/"code/part3_fourfold/original_cox_descent.json").write_text(
+103:     json.dumps(data,indent=2)+"\n")
+104: with (ROOT/"records/literature_fourfold.md").open("a") as log:
+105:     log.write("\n- "+datetime.now(timezone.utc).isoformat()
+106:               +" — Executed own code/part3_fourfold/original_cox_descent.py; "
+107:               "reason: compare the actual c-period and sixfold logarithmic cusp cochains "
+108:               "without dividing a return class; material: full exact matrices, "
+109:               "cusp-zero integral primitive and explicit integral gauge comparison.\n")
+110: print("A0 =",A0)
+111: print("one-period primitive =",data["one_period_integer_primitive"])
+112: print("sixfold primitive =",data["sixfold_logarithmic_primitive"])
+113: print("cover minus six original gauge =",data["cover_minus_six_original_gauge"])
+114: print("PASS:",", ".join(data["checks"]))
