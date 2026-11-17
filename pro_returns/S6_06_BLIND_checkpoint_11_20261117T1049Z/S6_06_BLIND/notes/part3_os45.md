@@ -1,0 +1,613 @@
+# P3K.10. Proved: an ordinary-fibre logarithmic transform realizes a generator of the seven-sphere group
+
+Let \(S\) be the minimal regular elliptic surface with section \(O\)
+whose affine equation is
+
+\[
+ y^2=x^3-3f(t)x+2g(t),\qquad
+ f=(t^2+1)^2+t,\qquad
+ g=(t^2+1)^3+\frac32t(t^2+1)+\frac38.
+\]
+
+Put \(G=(t^2+1,\sqrt3/2)\), \(R=8G\),
+\(M=\mathcal O_S(R-O)\), and \(Q=G\).  Choose any one of the four
+nodal fibres as the simple zero of the linearization.  At the
+ordinary fibre \(t=0\), perform the multiplicity-one logarithmic
+gluing whose integral circle clutch is \(\widehat\gamma\).
+The resulting construction of Engel's Remark 8.5 gives a proper
+holomorphic family of compact complex manifolds diffeomorphic to
+the standard \(S^6\), over a punctured scalar disc
+\(0<|\lambda|<c\).
+
+For the positive \(\lambda\)-loop, with the complex orientation and
+the Eells--Kuiper convention of P3F.22, the return satisfies
+
+\[
+ A=-3,\qquad \mu(\Sigma_\Phi)=-\frac3{28},\qquad
+ [\Phi]=25\in\mathbf Z/28.
+\]
+
+In particular this is a generator.  The positive finite parameter
+pullbacks of this same family realize every oriented class in
+\(\Theta_7\).  For every nonzero such class the mapping torus is
+not diffeomorphic to \(S^1\times S^6\).
+
+**Proof: the source and its section.** More generally put
+\(R_0=t^2+a\),
+\(f=R_0^2+bt\), and
+\(g=R_0^3+\frac32btR_0+\frac38b^2\).  Exact expansion gives
+
+\[
+ g^2-f^3=
+ \frac34b^2a(t^2+a)^2+
+ \frac18b^3t^3+\frac98b^3at+\frac9{64}b^4.
+\]
+
+At \(a=b=1\), this is
+\((48t^4+8t^3+96t^2+72t+57)/64\).  Its four roots are simple
+and none is a root of \(f\).  At infinity the minimal coefficients
+are units and the discriminant has order eight.  Thus the fibres
+are exactly \(I_8+4I_1\).  The point \(G\) satisfies the equation
+by direct substitution.
+
+Rationality can be checked without identifying the surface by a
+table entry.  Set \(u=x-(t^2+a)\).  The equation becomes
+
+\[
+ y^2=3(ut-b/2)^2+u^2(u+3a).
+\]
+
+On \(u\ne0\), the two rational functions
+
+\[
+ A_0=\frac{y-\sqrt3(ut-b/2)}u,
+ \qquad B_0=\frac{y+\sqrt3(ut-b/2)}u
+\]
+
+satisfy \(A_0B_0=u+3a\).  Conversely,
+
+\[
+ u=A_0B_0-3a,\qquad
+ t=\frac{B_0-A_0}{2\sqrt3}+\frac b{2u},\qquad
+ y=\frac u2(A_0+B_0),\qquad x=t^2+a+u.
+\]
+
+These are inverse rational maps on nonempty open sets.  The smooth
+minimal model is therefore a rational elliptic surface.
+
+The section \(G\) is disjoint from \(O\).  At infinity, with
+\(z=1/t\), its minimal coordinates are
+\(X=1+az^2\), \(Y=(\sqrt3b/2)z^3\).
+The two local nodal branches have orders three and five when
+\(a=b=1\): expanding the square root of
+\((1+az^2)^2+bz^3\) cancels the order-three term on exactly
+one branch, whose next nonzero term has order five.  Their product
+has order eight.  Hence \(G\) meets component three of \(I_8\),
+up to reversing the cyclic numbering.  Its height is
+
+\[
+ h(G)=2-\frac{3(8-3)}8=\frac18.
+\]
+
+The root lattice has rank seven and determinant eight.  Shioda--Tate
+therefore gives Mordell--Weil rank one.  The unimodular surface
+lattice and the height discriminant formula give
+\(h(G)=m^2|T|^2/8\), where \(m\) is its index in the free
+Mordell--Weil group and \(T\) its torsion subgroup.  Thus
+\(m=|T|=1\).  This identifies the actual generator and the
+torsion-free \(I_8\) source, including the component marking.
+
+The section \(R=8G\) meets the identity component at \(I_8\).
+Its height is eight, so the same intersection formula gives
+\(R\cdot O=3\).  Exact doubling locates all three intersections:
+the reduced denominator of \(x(8G)\) is
+
+\[
+ (6t+1)^2(360t^2+282t+199)^2.
+\]
+
+The three roots are distinct and this denominator is coprime to
+the discriminant.  The numerator is coprime to it as well, as
+checked in the saved exact group-law calculation.  Consequently
+all three intersections are ordinary and simple.  In particular
+the Picard point of \(M\) is nonidentity at every \(I_1\) and
+at the smooth identity component of \(I_8\).
+
+**Proof: the actual marked local system.** We give a comparison
+with the displayed source, rather than merely exhibit matrices
+having the correct local spectra.  At \(a=0,b=1\) the source has
+\(I_9+3I_1\).  Its \(j\)-map has degree twelve and ramification
+profiles \(3^4\), \(2^6\), and \((9,1,1,1)\) over
+\(0,1728,\infty\).  Indeed \(f=t(t^3+1)\) has four simple
+roots, \(g=t^6+\frac32t^3+\frac38\) has six simple roots,
+and \(g^2-f^3=(8t^3+9)/64\); these polynomials are pairwise
+coprime.  Their indicated ramification already totals twenty-two,
+so Riemann--Hurwitz leaves no further branch points.
+
+The associated trivalent modular graph is unique.  It has four
+vertices and six edges, with three monogon faces.  Each monogon
+uses a loop at a vertex and consumes two of its three half-edges.
+The three loops therefore occupy three distinct vertices, whose
+remaining half-edges must join the fourth vertex.  This is the
+three-star with a loop on each leaf.  Its cyclic ordering is unique
+up to orientation-preserving graph isomorphism.  This proves
+uniqueness of the permutation cover with these profiles by the
+usual path-lifting classification of covers of the three-punctured
+sphere.
+
+For \(v=(p,q)^t\), write
+
+\[
+ D_v=\begin{pmatrix}1-pq&p^2\\-q^2&1+pq\end{pmatrix},
+ \qquad T=D_{(1,0)}.
+\]
+
+The subgroup generated by
+\(T^9,D_{(-3,1)},D_{(0,1)},D_{(3,1)}\) has the same cover:
+its twelve-coset permutation table, exported by the program, has
+exactly the three profiles above.  The products of the displayed
+matrices equal the identity.  Thus the modular covering comparison
+identifies this tuple with the actual \(I_9+3I_1\) source, up to
+the explicitly permitted choice of marked vanishing paths and a
+single integral symplectic basis.  The lift from projective
+monodromy is fixed by the trace-two local \(I_n\) matrices.
+
+Near infinity the deformation in \(a\) is analytically
+\(xy=z^8(z+c a+O(a^2,az))\), with \(c\ne0\), after absorbing
+units.  Hence it splits the \(I_9\) into an \(I_8\) and an
+\(I_1\) with the same vanishing cycle.  Transport to \(a=1\)
+along a path avoiding the finitely many other discriminant
+collisions gives the actual five-point tuple
+
+\[
+ E_0=T^8,\quad E_1=T,\quad E_2=D_{(-3,1)},\quad
+ E_3=D_{(0,1)},\quad E_4=D_{(3,1)}.
+\]
+
+Such transport is an isomorphism of the integral local systems
+over the punctured surfaces and carries the section \(G\).
+The path choice only changes the marking by the corresponding
+Hurwitz moves.  No assertion about the topology depends on choosing
+a particular branch of this transport: the program verifies all
+four choices of the nodal zero below.
+
+In the cohomology convention \((\psi,u,w,\delta)\) of P3F.21,
+the weighted Jacobi lift for \(M=8G-O,Q=G\) is
+
+\[
+ J(E,k,z)=
+ \begin{pmatrix}
+ 1&cj-ah&dj-bh&z\\
+ 0&a&b&8j\\
+ 0&c&d&8h\\
+ 0&0&0&1
+ \end{pmatrix},
+ \quad E=\begin{pmatrix}a&b\\c&d\end{pmatrix},
+ \quad k=\binom jh.
+\]
+
+The component of \(G\) fixes \(k_0=(3,0)^t\).  An integral
+change of Abel--Jacobi lift also sets \(k_4=0\).  Here is the
+simultaneous gauge explicitly.  Adding the common integral lift
+\((a,b)^t\) changes the first cocycle by
+\((E_0-I)(a,b)^t=8b(1,0)^t\), so \(b\) fixes its component-three
+representative.  The fourth coefficient changes by \(-a+3b\);
+varying \(a\) then sets it to zero without changing the first.
+The remaining
+cocycles have the forms
+\(k_1=r(1,0)^t\), \(k_2=j(-3,1)^t\),
+\(k_3=h(0,1)^t\).  The nonzero-linearization local fillings
+have rank-one nilpotent image; this forces their central entries
+to be \(9,8r^2,8j^2,8h^2\), respectively.  At the scalar-zero
+\(I_1\), the central entry is \(-1\).  The actual global product
+must be the identity.  Its source columns give
+\(j=2h\), \(r=-3h-3\), and its central entry gives
+
+\[
+ 16(h+1)(4h+5)=0.
+\]
+
+The unique integral solution is \(h=-1\).  This proves the
+actual section-lift identification; it is not a bounded search
+for a convenient tuple.  The resulting matrices are
+
+\[
+\begin{aligned}
+ T_0&=\begin{pmatrix}1&0&3&9\\0&1&8&24\\0&0&1&0\\0&0&0&1\end{pmatrix},
+ &T_1&=\begin{pmatrix}1&0&0&0\\0&1&1&0\\0&0&1&0\\0&0&0&1\end{pmatrix},\\
+ T_2&=\begin{pmatrix}1&2&6&32\\0&4&9&48\\0&-1&-2&-16\\0&0&0&1\end{pmatrix},
+ &T_3&=\begin{pmatrix}1&1&0&8\\0&1&0&0\\0&-1&1&-8\\0&0&0&1\end{pmatrix},\\
+ T_4&=\begin{pmatrix}1&0&0&-1\\0&-2&9&0\\0&-1&4&0\\0&0&0&1\end{pmatrix}.
+\end{aligned}
+\]
+
+Moving the linearization zero to any of the other three \(I_1\)
+fibres adds one to the central entry of \(T_4\) and subtracts
+one at the chosen fibre.  The central matrices commute, so the
+global product is still the identity.  Every integer calculation
+below has been executed for all four choices.
+
+**Proof: line, fillings, and the ordinary logarithmic gluing.**
+The line \(M\) has multidegree zero on every component of
+\(I_8\).  Translation by \(Q\) therefore preserves its
+multidegree.  The vertical line
+\(\operatorname{Hom}(t_Q^*M,M)\) has zero intersection with
+every fibre component and is a whole-fibre pullback.  Its degree,
+computed by restriction to \(O\), is
+
+\[
+ (8G)\cdot O+1-(7G)\cdot O+(-G)\cdot O
+ =3+1-3+0=1.
+\]
+
+Thus it is \(\mathcal O(F)\), and its section may have its
+sole simple zero at any chosen nodal fibre.  Scaling the induced
+lift by sufficiently small \(\lambda\) makes it uniformly
+contracting.  On the complement of that fibre its quotient is a
+smooth Hausdorff complex threefold, as follows directly from the
+norm contraction and a compact annular fundamental domain.
+
+At \(I_8\), the Tate and suspension periods, in a multidegree-zero
+line frame, have valuation vectors \((8,0)\) and \((-3,0)\).
+If they are denoted by \(h\) and \(g\), respectively, take
+
+\[
+ H=h^{-1}g^{-3},\qquad K=h^3g^8.
+\]
+
+The change has determinant one and their first valuations are
+\(1,0\).  The second multiplier of \(K\) is \(\lambda^8\)
+times a nonvanishing unit.  Thus the ray fan with consecutive
+vertices \((j,1)\) is the actual primitive rank-one filling.
+Equivalently it is the contracting quotient of the smooth source
+line complement; \(Q\) cyclically permutes all eight components.
+This equivalence retains the source elliptic map and its section
+line.  The same primitive rank-one model applies at the other
+three nonzero-linearization nodal fibres.  At the chosen zero
+the two valuations are \((1,0),(0,1)\).  The square triangulation
+has unimodular cones and gives the smooth rank-two cusp with
+charts \(q=z_0z_1z_2\), its toric period identifications, and
+proper reduced central fibre.  These are the specified local
+models, with all valuation changes integral.
+
+The base point \(p=0\) is ordinary.  On its smooth torus disc,
+and on the universal logarithm cover of the scalar parameter,
+let \(\gamma(z,v)\) be the holomorphic period of the primitive
+suspension cycle. Glue a second copy of this smooth torus disc
+by the following punctured-disc isomorphism, directed from the
+cap copy to the ordinary copy:
+
+\[
+ \Psi_v(\zeta,z)=
+ \left(\zeta+\frac{\log z}{2\pi i}\gamma(z,v),z\right),
+ \qquad \lambda=e^{2\pi i v}.
+\]
+
+A logarithm branch change adds an actual lattice period, so this
+is a single-valued holomorphic map on the torus family, with
+inverse given by subtraction.  The cap is smooth, its central
+fibre has multiplicity one, and its boundary clutch is exactly
+\(\widehat\gamma\). Indeed a cap meridian with fixed cap coordinate
+is carried to the ordinary base meridian plus \(\gamma\), the
+\(m=1,n=1\) marking used below. This verifies the allowed logarithmic
+transformation at an ordinary fibre even though its multiplicity
+is one.  All pieces are proper over their closed base discs and
+agree by the displayed holomorphic maps on collars; their finite
+gluing is a compact Hausdorff complex threefold.
+
+**Proof: integral topology.** Put \(H_i=T_i^{-t}\) on the
+homology lattice \(\Lambda\).  The images of \(H_i-I\) have
+Smith factors \((1),(1),(1),(1),(1,1)\).  The primitive toric
+collapses kill exactly these vanishing lattices.  We first fix
+an actual global origin for the auxiliary untwisted family, before
+the ordinary logarithmic transformation.  The restriction
+\(M|_O\) has degree \(R\cdot O-O^2=4\).  Choose its section
+with divisor \(4t_c\).  Its nonzero values over the other base
+points give an origin in the quotient.  Near \(t_c\), its line
+character is \(V=q^4\) times a holomorphic unit.  Subtracting
+four gamma periods changes this to the nonvanishing bounded
+character \(\lambda^{-4}e^{-8\pi iC}\) times a unit and changes
+the source coordinate by the bounded translation \(-4\Gamma\).
+It therefore extends in the dense torus of the cusp component.
+This proves that the origin is global, including all five singular
+fibres.  Every base meridian based at this origin contracts in
+its local filling.
+
+Van Kampen begins with the affine torus-bundle group over the
+punctured sphere.  After these base meridians are killed, all
+generators lie in the abelian fibre lattice, and the conjugation
+relations impose the images of \(H_i-I\).  Their stacked relation
+matrix has Smith factors \((1,1,1)\) and quotient \(\mathbf Z\)
+measured by \(\psi\).  The ordinary log cap adds a vector with
+\(\psi\)-value one.  The augmented Smith factors are
+\((1,1,1,1)\), proving \(\pi_1=1\), with every affine origin
+correction retained in the kernel already killed.  In the chosen
+global-origin marking the complete relations are the abelian
+fibre relations, \((H_i-I)\Lambda=0\) for \(0\leq i\leq4\),
+and \(\widehat\gamma=0\).  Changing an origin only adds a vector
+of \(\ker\psi\), which is precisely the primitive subgroup
+generated by those five image lattices.
+
+The complete cohomology calculation is integral.  For degree \(q\)
+let \(W_i=\bigwedge^qT_i\), let \(L_i\) be the integer column
+lattice of \(W_i-I\), and use its Hermite basis.  The marked
+parabolic complex is
+
+\[
+ \mathbf Z^{\binom4q}\xrightarrow{d^0}
+ \bigoplus_{i=0}^4 L_i\xrightarrow{d^1}
+ \mathbf Z^{\binom4q},
+\]
+
+where \(d^0(a)=((W_i-I)a)_i\) and
+\(d^1((b_i))=\sum_i(W_0\cdots W_{i-1})b_i\).
+This is obtained by cutting the marked punctured sphere and
+attaching each invariant stalk; the product relation gives
+\(d^1d^0=0\).  The code exports every matrix in every degree.
+For degrees one, two, and three, their ranks are respectively
+\((3,3),(5,5),(3,3)\), and every nonzero Smith factor of
+both differentials is one.  The middle groups vanish integrally;
+the end groups are free of rank one.
+
+There are no finite quotient caps in this example.  At each
+primitive rank-one filling the collapse is the cellular pinching
+of one circle in \(T^2\), crossed with the other elliptic factor;
+it identifies cohomology with the full invariant lattice.  At
+the rank-two filling the two valuation vectors and triangulation
+identify the model integrally with the cusp of Engel's Lemma 7.4.
+For an independent local chain verification, use the actual
+dual-moment-cell quotient and blowup-collapse comparison of P1.11
+in rank two, with \(G=3I_2-\mathbf1\mathbf1^t\).  Its translated
+simplex counts are \((1,3,2)\), with twelve codimension-one
+incidences.  For a simplex \(\sigma\), put
+\(Q_\sigma=\mathbf Z^2/L_\sigma\).  The differential from
+\(\bigoplus_{\dim\sigma=p}\bigwedge^q Q_\sigma\) is precisely
+the signed integral quotient matrix (1.11.1), now with
+\(0\leq p,q\leq2\).  The program
+`code/part3_fourfold/rank_two_cusp.py` exports all these matrices
+and all their Smith transformations.  Their total homology is
+free of ranks \((1,2,4,2,1)\).  The collapse is the block sum
+of \(\bigwedge^q(\mathbf Z^2\to Q_\sigma)\); its induced
+homology matrices are onto with only unit Smith factors.  The
+only nontrivial nonidentity block on the associated graded groups,
+in total degree two, is
+
+\[
+ \begin{pmatrix}0&0&-1&1\\1&0&0&0\\0&-1&0&1\end{pmatrix}.
+\]
+
+Support leaves no possible higher differential.  The finite
+filtration therefore makes the actual collapse onto and primitive
+in every degree.  Its dual image is monodromy invariant and
+primitive, with the same rank as the full invariant lattice, so
+the two lattices agree.  This separately verifies every local
+specialization assertion of the cited lemma needed here.
+These exact local comparisons
+give \(R^qf_*\mathbf Z=j_*\bigwedge^q\Lambda^*\) everywhere.
+
+The surviving invariant generators, in degrees zero through four,
+are
+
+\[
+ 1,\quad\psi,\quad\omega=8uw+\psi\delta,
+ \quad\eta_3=\psi uw,\quad\eta_4=\psi uw\delta.
+\]
+
+The corresponding coinvariant generators are
+\(1,[\delta],\eta_2,[uw\delta],[\eta_4]\), with
+\([\psi\delta]=8\eta_2\), \([uw]=\eta_2\), all other
+degree-two basis classes zero.  The only nonzero Leray columns
+are zero and two.  There is no unaccounted intrinsic cusp
+differential.  Inversion in the untwisted torus family about the
+global origin just constructed extends over every local filling:
+on primitive nodal charts
+\(X_i=Z/q^i\), \(Y_i=q^{i+1}/Z\), it is the actual holomorphic
+map \((X_i,Y_i)\mapsto(Y_i,X_i)\) in chart \(-i-1\).
+The other elliptic coordinate is inverted as well.  On the
+rank-two square fan the lattice map \((v,h)\mapsto(-v,h)\)
+sends each cone to its centrally inverted cone; its dual monomial
+maps are holomorphic chart isomorphisms and agree on overlaps.
+These are integral automorphisms of the specified fans.
+The bounded origin characters only add a toric unit translation,
+which extends too.  Thus this is an involution of the actual
+untwisted compact family.  It acts by \((-1)^q\) on \(R^q\).
+Naturality of Leray then makes every untwisted \(d_2\) satisfy
+\(d_2=-d_2\).  Its targets are the free groups just computed,
+so every one is zero integrally.
+
+Replacing the ordinary cap changes only its boundary translation.
+The cellular prism for this actual translation changes \(d_2\)
+by contraction with its integral clutch.  Consequently the
+translation prism of the ordinary
+logarithmic clutch gives
+\(d_2(a)=H[\iota_{\widehat\gamma}a]\), where \(H\) is the
+positive base class.  The four contractions are
+
+\[
+ [\iota_\gamma\psi]=1,\quad
+ [\iota_\gamma\omega]=[\delta],\quad
+ [\iota_\gamma\eta_3]=\eta_2,\quad
+ [\iota_\gamma\eta_4]=[uw\delta].
+\]
+
+For an arbitrary integral affine origin correction, the same
+calculation is exactly its \(\psi\)-coordinate; source and line
+circle coordinates contribute zero to all four projections.
+Thus every displayed differential is multiplication by one for
+the actual glued family.  There are no higher differentials,
+because the base has dimension two.  Only
+\(H^0=H^6=\mathbf Z\) remains, without torsion or extension
+ambiguity.  Together with simple connectivity this proves that
+the total manifold is a homotopy six-sphere, and \(\Theta_6=0\)
+identifies its smooth oriented type with the standard sphere.
+
+**Proof: the closed positive parameter loop.** Write \(t_c\) for
+the chosen nodal zero and put
+\(h(t)=(t-t_c)/t\).  Since
+\(\gamma(z,v+1)=\gamma(z,v)+\delta\), the smooth logarithmic
+gluing changes by \((\log t)/(2\pi i)\delta\) under the
+positive parameter deck.  The global ordinary deck is
+\(-\log h(t)\delta/(2\pi i)\): near \(t=0\) it has exactly
+that value up to a holomorphic unit logarithm, which extends on
+the cap. More explicitly, write
+\[
+ D_{\rm ord}=-\frac{\log h(t)}{2\pi i}\delta,\qquad
+ D_{\rm cap}=-\frac{\log(t-t_c)}{2\pi i}\delta.
+\]
+The second logarithm is holomorphic on the chosen smooth cap.
+The directed gluing satisfies the exact compatibility
+\[
+ D_{\rm ord}\circ\Psi_v=\Psi_{v+1}\circ D_{\rm cap},
+ \qquad
+ D_{\rm ord}=D_{\rm cap}+\frac{\log t}{2\pi i}\delta .
+\]
+Here the \(D\)'s denote the respective translations from \(v\)
+to \(v+1\). At the cusp use \(q=h(t)\), \(s=\log q/(2\pi i)\).
+Then the actual periods are
+
+\[
+ \gamma(s,v)=\binom{\Gamma(q)}{C(q)+s+v},\qquad
+ \delta=\binom01,
+\]
+
+with \(\Gamma,C\) holomorphic at zero, and the deck translates
+by \(-s\delta\).  Its line-character multiplier \(q^{-1}\)
+extends through the cusp: compose an inverse gamma lattice shift
+with the bounded source translation \(\Gamma\) and the
+nonvanishing multiplier \(\lambda e^{2\pi iC}\).  At every
+other original fibre \(h\) is a unit.  This proves that the
+glued family descends holomorphically over the punctured
+\(\lambda\)-disc, with the stated positive closing map.
+
+Here \(\gamma\) is the inward period of the actual contracting
+suspension. In the physical Abel and line coordinates it is
+\[
+ B(a,V)=
+ \bigl(a+\Gamma(q),\,e^{2\pi iC(q)}q\lambda V\bigr),
+ \qquad \Gamma(q)=\log_{\rm Tate}(-G).
+\]
+For small \(q,\lambda\), its positive real direction decreases
+\(\log|V|\). This fixes its orientation relative to the source
+page. With \(\delta\) the positive phase of \(V\), the complex
+orientation gives
+\[
+ \operatorname{or}(Y)
+   =-\operatorname{or}(S)\,d\log|V|
+   =\operatorname{or}(S)\,d\gamma .
+\]
+Thus the positive gamma in the Hopf page below is this inward
+period. The normalized smooth norm coordinate increases in
+this direction.
+
+For a completely marked angular comparison use the auxiliary
+logarithmic cover \(q=Q_0^2\), and the two origins
+
+\[
+ o=\binom{-\Gamma s}{-Cs-s^2/2-sv},\qquad
+ \sigma=\binom{\Gamma v}{Cv+(v^2-v)/2}.
+\]
+
+The first has parameter difference \(-s\delta\); the second
+has difference \(-s\delta+\gamma\).  Under \(s\mapsto s+2\),
+their differences are \(-2\gamma-2\delta\) and zero.  Thus
+they descend on this auxiliary cover.  In contrast, the ordinary
+origin has one-step difference \(-\gamma-\delta/2\); we do
+not impose a false one-step periodicity.  The cusp origin extends
+by its bounded unit characters.  Subtracting the ordinary origin
+removes the parameter deck and gives the one-node parameter chain
+\(X_i=V/\lambda^i\), \(Y_i=\lambda^{i+1}/V\),
+\(X_iY_i=\lambda\), over every nonzero \(q\).  Its origin
+extends.  These are the two extending collar origins.  No proper
+two-variable corner or descent of such a corner is used.
+
+Their exact difference is
+
+\[
+ F=\binom{\Gamma(s+v)}{C(s+v)+(s+v)^2/2-v/2},
+\]
+
+and hence
+
+\[
+ F(s,v+\theta)-F(s,v)
+ =\theta\gamma(s,v)+\frac{\theta(\theta-1)}2\delta.
+\]
+
+The additional line gauge is periodic, equals one at both
+endpoints, and vanishes in the circle quotient.  The double cusp
+deck changes this angular difference by \(2\theta\delta\),
+so the retained line gauge has winding two.  In particular the
+actual positive \(\lambda\)-loop makes one positive gamma turn,
+with no parameter cover.  Every identity is executed in
+`code/part3_fourfold/os45_origins.py`.
+
+More explicitly, the ordinary and cusp coordinates are
+\(\zeta-o\) and \(\zeta-\sigma\), so the cusp-to-ordinary
+transition is translation by \(F=\sigma-o\). Its angular
+increment is the positive translation displayed above. This
+identifies the moving fixed sphere in the constant orbit with
+the positive inward gamma motion used by the real trace.
+
+**Proof: the actual page and the return index.** The line circle is
+free away from the selected rank-two cusp.  Indeed its equality
+with an iterate of the contracting lift forces that iterate to
+be zero by the norm inequality, and then forces the circle
+element to be the identity.  This includes the whole \(I_8\)
+neighbourhood, where translation permutes the components.  The
+ordinary logarithmic cap is free as well.  At the single cusp
+the primitive fan gives the one fixed rational curve with normal
+weights \((-1,+1)\).  The orbit-pair argument P3F.7 therefore
+applies to this proved sphere: its quotient is the standard
+\((S^5,S^2)\), and its Euler line has positive meridian one.
+
+The gamma circle over the base has the one ordinary clutch of
+degree one, so its total space is the standard Hopf \(S^3\).
+For precision, in the two standard Hopf charts the normalized
+sections \((1,t)/\sqrt{1+|t|^2}\) and
+\((1/t,1)/\sqrt{1+|1/t|^2}\) have angular coordinates related
+by \(\theta_\infty=\theta_0+\arg t\), exactly the clutch
+above.  A regular Hopf binding has a complex-oriented disc page
+whose projection to \(\mathbf P^1\) has degree one.  Its inverse
+image in the actual orbit is the elliptic page \(V\), with
+boundary \(T^3\); its regular cap is the displayed rational
+elliptic surface \(S\).  The affine origin obstruction on the
+disc with marked singular values vanishes by the free-meridian
+cochain argument of P3F.10.  Thus this comparison is with the
+actual page, including the retained \(I_8\), rather than with
+an unrelated elliptic surface.
+
+The actual circle line restricts to \(M=8G-O\), up to a base
+pullback, by its fibrewise Picard point.  At \(I_8\) both lines
+have multidegree zero, so the same normalized fibrewise comparison
+extends across its cycle of components.  On the base with boundary
+the pullback is topologically trivial.  Therefore the actual
+relative page invariants are
+
+\[
+ s_\delta=M^2=-2-2(3)=-8,
+ \qquad p_{\rm rel}=3\sigma(S)=-24.
+\]
+
+Near the selected \(I_1\) the source translation is in the smooth
+identity component.  The product coordinate of P3F.9 and the real
+phase-preserving compression of P3K.6 consequently apply with
+page degree \(d=1\).  The page phase can be chosen to avoid the
+short gamma arc of that compression.  Its exact graph boundary,
+integral Euler-line restriction, and oriented complement bordism
+are therefore the ones proved in P3K.6–7.  The angular computation
+above identifies this bordism with the actual positive scalar
+return.  With the two orientation reversals of P3K.7 retained,
+
+\[
+ A=\frac{12s_\delta-p_{\rm rel}}{24}
+   =\frac{-96+24}{24}=-3.
+\]
+
+The typed Hopf transfer and Eells--Kuiper normalization P3F.22 give
+the asserted oriented class \(25\).  Pullback by
+\(\lambda=z^n\) is a proper holomorphic family on the punctured
+disc and its positive loop is exactly the \(n\)-fold iterate.
+The classes \(-3n\pmod{28}\), for positive \(n\), exhaust
+\(\mathbf Z/28\).  The mapping-torus obstruction P3F.24 applies
+to each nonzero class and to both spin structures.  This proves
+all the assertions of the statement.  **End of proof.**

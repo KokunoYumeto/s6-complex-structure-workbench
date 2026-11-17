@@ -1,0 +1,310 @@
+1: #!/usr/bin/env python3
+2: """Exact fixed-source canonical-scalar catalogue for proposed P3F.53.
+3: 
+4: The source-factor list is read from K21.  Root branches come from the
+5: proved local cap constructions, and the arithmetic is checked against
+6: the actual page/line/Thom results K26 and K28.  This program does not
+7: identify shorter scalar loops or loops varying the source.
+8: """
+9: from pathlib import Path
+10: from datetime import datetime, timezone
+11: from itertools import product
+12: from math import gcd
+13: import json
+14: import re
+15: import sympy as S
+16: 
+17: ROOT = Path(__file__).resolve().parents[2]
+18: INPUTS = {
+19:     'source_reduction':'code/part3_fourfold/source_reduction.json',
+20:     'one_cap':'code/part3/additive_returns.json',
+21:     'joint_caps':'code/part3/joint_additive_returns.json',
+22: }
+23: data = {key:json.loads((ROOT/path).read_text()) for key,path in INPUTS.items()}
+24: l,k = S.symbols('l k', integer=True, nonnegative=True)
+25: fanS = S.symbols('S', integer=True)
+26: LOC = {'l':l,'k':k,'S':fanS}
+27: expr = lambda value:S.sympify(value,locals=LOC)
+28: expanded = lambda value:S.expand(expr(value))
+29: checks=[]
+30: 
+31: def check(label, condition):
+32:     assert condition,label
+33:     checks.append(label)
+34: 
+35: def eq(label, left, right):
+36:     check(label,S.simplify(expr(left)-expr(right))==0)
+37: 
+38: def euler(fibre):
+39:     if fibre in {'II':2,'III':3,'IV':4,'III*':9,'IV*':8}:
+40:         return {'II':2,'III':3,'IV':4,'III*':9,'IV*':8}[fibre]
+41:     found=re.fullmatch(r'I(\d+)(\*)?',fibre)
+42:     if found:
+43:         return int(found.group(1))+(6 if found.group(2) else 0)
+44:     raise ValueError(fibre)
+45: 
+46: def parsed_profile(profile):
+47:     result=[]
+48:     for token in profile.split('+'):
+49:         found=re.fullmatch(r'(\d+)(I.*)',token)
+50:         count,fibre=(int(found.group(1)),found.group(2)) if found else (1,token)
+51:         result.extend([fibre]*count)
+52:     return result
+53: 
+54: def choice(fibre,kind,order,var=None,first=None,root_fibre=None,raw=None,extra=None):
+55:     order=expanded(order)
+56:     return dict(source_fibre=fibre,kind=kind,m=order,
+57:                 source_euler=0 if fibre is None else euler(fibre),
+58:                 root_fibre=root_fibre or 'I0',
+59:                 root_euler=0 if root_fibre in (None,'I0') else euler(root_fibre),
+60:                 bounds={} if var is None else {str(var):int(first)},
+61:                 local_progression=raw or str(order),
+62:                 extra_constraints=extra or [])
+63: 
+64: ABSENT=choice(None,'absent',1)
+65: 
+66: def root_choices(fibre,b,var,profile):
+67:     if fibre=='III*':
+68:         if b%2==0:
+69:             return [choice(fibre,'good',4*var,var,1)]
+70:         return [choice(fibre,'reduced III',4*var+3,var,0,'III')]
+71:     if fibre=='IV*':
+72:         if b%3==0:
+73:             return [choice(fibre,'good',3*var,var,1)]
+74:         return [choice(fibre,'reduced IV',3*var+2,var,0,'IV')]
+75:     if fibre=='I1*':
+76:         check(profile+' I1* actual translation residue',b%4==2)
+77:         return [choice(fibre,'semistable I2',2,root_fibre='I2')]
+78:     if fibre=='III':
+79:         if b%2==0:
+80:             return [choice(fibre,'good',4*var,var,1)]
+81:         return [choice(fibre,'reduced III',4*var+1,var,0,'III')]
+82:     if fibre=='IV':
+83:         if b%3==0:
+84:             constraints=['k odd'] if 'I1*' in profile else []
+85:             return [choice(fibre,'good',3*var,var,1,extra=constraints)]
+86:         if 'I1*' in profile:
+87:             # The actual local progression is 3*j+1; gcd(2,m)=1
+88:             # forces j even.  Keep both this arrow and its canonical form.
+89:             return [choice(fibre,'reduced IV',6*l+1,l,0,'IV',
+90:                            raw='3*j+1, j>=0',
+91:                            extra=['j=2*l follows from gcd(2,3*j+1)=1'])]
+92:         return [choice(fibre,'reduced IV',3*var+1,var,0,'IV')]
+93:     if fibre=='II':
+94:         return [choice(fibre,'reduced II',6*var+1,var,0,'II'),
+95:                 choice(fibre,'good',6*var,var,1)]
+96:     raise ValueError((fibre,b,profile))
+97: 
+98: def extended_gcd(a,b):
+99:     old_r,r=a,b
+100:     old_s,s=1,0
+101:     old_t,t=0,1
+102:     while r:
+103:         q=old_r//r
+104:         old_r,r=r,old_r-q*r
+105:         old_s,s=s,old_s-q*s
+106:         old_t,t=t,old_t-q*t
+107:     assert old_r==gcd(a,b)
+108:     return old_r,old_s,old_t
+109: 
+110: def find_witness(caps):
+111:     bounds={}
+112:     for c in caps:
+113:         bounds.update(c['bounds'])
+114:     names=sorted(bounds)
+115:     # This finite search only supplies a concrete witness.  The complete
+116:     # parameter domain is the exact symbolic gcd condition, not this box.
+117:     candidates=product(*(range(bounds[n],bounds[n]+25) for n in names))
+118:     for values in candidates:
+119:         sub={LOC[n]:v for n,v in zip(names,values)}
+120:         mi,m0=[int(c['m'].subs(sub)) for c in caps]
+121:         if mi<1 or m0<1 or gcd(mi,m0)!=1:
+122:             continue
+123:         if any('k odd' in c['extra_constraints'] for c in caps) and sub.get(k,1)%2!=1:
+124:             continue
+125:         number=sum(c['source_fibre'] is not None for c in caps)
+126:         if number==0:
+127:             ni=n0=0;NN=1
+128:         elif number==1:
+129:             ni=1;n0=0;NN=0
+130:         else:
+131:             dd,ni,n0=extended_gcd(m0,mi)
+132:             assert dd==1
+133:             NN=0
+134:         assert m0*ni+mi*n0+mi*m0*NN==1
+135:         assert gcd(mi,ni)==gcd(m0,n0)==1
+136:         return dict(parameters={n:v for n,v in zip(names,values)},
+137:                     m_infty=mi,m_0=m0,
+138:                     positive=dict(n_infty=ni,n_0=n0,N=NN,D=1),
+139:                     negative=dict(n_infty=-ni,n_0=-n0,N=-NN,D=-1),
+140:                     local_norms_primitive=True)
+141:     raise AssertionError(('No concrete coprime witness found',caps))
+142: 
+143: def serial_choice(c):
+144:     return {name:(str(value) if isinstance(value,S.Basic) else value)
+145:             for name,value in c.items()}
+146: 
+147: profiles=data['source_reduction']['source_profiles']
+148: check('eight OS entries',len({r['os'] for r in profiles})==8)
+149: check('twenty-one source configurations',len(profiles)==21)
+150: retained=[r for r in profiles if r['remaining_pairs']]
+151: check('sixteen retained profiles',len(retained)==16)
+152: check('twenty-six retained source pairs',
+153:       sum(len(r['remaining_pairs']) for r in retained)==26)
+154: 
+155: rows=[]
+156: for pidx,source in enumerate(profiles,1):
+157:     fibres=parsed_profile(source['profile'])
+158:     check(source['profile']+' Euler number 12',sum(map(euler,fibres))==12)
+159:     if not source['remaining_pairs']:
+160:         continue
+161:     sites=[f for f in fibres if f in {'III*','IV*','I1*','II','III','IV'}]
+162:     check(source['profile']+' at most two additive sites',len(sites)<=2)
+163:     sites.sort(key=lambda f:0 if '*' in f else 1)
+164:     for a,b in source['remaining_pairs']:
+165:         d=source['height_denominator']
+166:         check(source['profile']+str((a,b))+' ab=d',a*b==d)
+167:         opts=[root_choices(sites[0],b,l,source['profile'])] if sites else [[ABSENT]]
+168:         opts.append(root_choices(sites[1],b,k,source['profile']) if len(sites)==2 else [ABSENT])
+169:         for capi,cap0 in product(*opts):
+170:             caps=(capi,cap0);mi,m0=capi['m'],cap0['m']
+171:             M=S.expand(mi*m0)
+172:             ei,e0=capi['source_euler'],cap0['source_euler']
+173:             eri,er0=capi['root_euler'],cap0['root_euler']
+174:             chi=S.expand((M*(12-ei-e0)+m0*eri+mi*er0)/12)
+175:             H=S.expand(M*S.Rational(a*a,d))
+176:             AA=S.expand(chi-H/2)
+177:             AF=S.expand(chi*(4-3*fanS)+H*(3*fanS**2-7)/8)
+178:             label=f"OS{source['os']} {source['profile']} (a,b)=({a},{b}): {capi['kind']} / {cap0['kind']}"
+179:             excluded=(sites==['III*','II'] and capi['kind']=='good' and cap0['kind']=='good')
+180:             # Every polynomial below is derived from the displayed root
+181:             # Euler counts, rather than copied from a previous return row.
+182:             check(label+' chi integral polynomial',S.Poly(chi,l,k).domain.is_ZZ)
+183:             check(label+' H/2 integral polynomial',S.Poly(H/2,l,k).domain.is_ZZ)
+184:             check(label+' b divides M',S.Poly(S.expand(M/b),l,k).domain.is_ZZ)
+185:             eq(label+' initial fan equals A',AF.subs(fanS,1),AA)
+186:             eq(label+' Jin transfer identity',4*(-3*H)-(-24*chi),24*AA)
+187:             row=dict(id=f'CS{len(rows)+1:02}',os=source['os'],profile=source['profile'],
+188:                      d=d,a=a,b=b,cap_infty=serial_choice(capi),cap_0=serial_choice(cap0),
+189:                      m_infty=str(mi),m_0=str(m0),M=str(M),M_over_b=str(S.expand(M/b)),
+190:                      bounds={**capi['bounds'],**cap0['bounds']},
+191:                      source_euler=[ei,e0],root_euler=[eri,er0],
+192:                      domain_constraints=['gcd(m_infty,m_0)=1']+
+193:                          capi['extra_constraints']+cap0['extra_constraints'],
+194:                      sphere_equation='D=m_0*n_infty+m_infty*n_0+M*(sum_j n_j-b_0)=epsilon, epsilon=+1 or -1',
+195:                      additional_effective_orders='Every other logarithmic site has order one.',
+196:                      chi=str(chi),H=str(H),line_square=str(-H),A=str(AA),
+197:                      all_fan=str(AF),fan_coordinate='S=a_fan^2-a_fan*b_fan+b_fan^2, gcd(a_fan,b_fan)=1',
+198:                      jin_pair=dict(k=str(-3*H),ell=str(-24*chi)),
+199:                      relative_pair=[str(6*chi),str(S.expand(3*H-6*chi))],
+200:                      parameter='lambda=r^M; one positive r-loop',
+201:                      status='excluded_by_sphere_determinant' if excluded else 'proved_canonical_scalar_branch')
+202:             if excluded:
+203:                 eq(label+' exact factor two in D',
+204:                    6*k*S.Symbol('ni')+4*l*S.Symbol('n0')+24*k*l*S.Symbol('N'),
+205:                    2*(3*k*S.Symbol('ni')+2*l*S.Symbol('n0')+12*k*l*S.Symbol('N')))
+206:                 row.update(exclusion='Both orders are even, hence D is even for every integral norm and every order-one total. It cannot equal ±1.',
+207:                            common_divisor=2,
+208:                            characteristic_scope='Displayed chi/H/A are formal arithmetic only; no sphere or actual Theta7 return is assigned.',
+209:                            actual_return=None)
+210:             else:
+211:                 row['witness']=find_witness(caps)
+212:                 vv={LOC[n]:v for n,v in row['witness']['parameters'].items()}
+213:                 row['witness']['chi']=int(chi.subs(vv))
+214:                 row['witness']['H']=int(H.subs(vv))
+215:                 row['witness']['A']=int(AA.subs(vv))
+216:                 row['witness']['class_mod28']=int(AA.subs(vv))%28
+217:                 number=len(sites)
+218:                 if number==2:
+219:                     row['all_norm_solutions']='Choose u,v with m_0*u+m_infty*v=1. For every N=sum_j n_j-b_0 and j in Z, n_infty=epsilon*u+m_infty*j and n_0=epsilon*v-m_0*(j+N).'
+220:                 elif number==1:
+221:                     row['all_norm_solutions']='n_infty=epsilon-m_infty*(n_0+N), with arbitrary n_0,N in Z and N=sum_j n_j-b_0. The regular order-one slot retains its actual n_0.'
+222:                 else:
+223:                     row['all_norm_solutions']='n_infty=epsilon-n_0-N, with arbitrary n_0,N in Z and N=sum_j n_j-b_0. Equivalently n_infty+n_0+N=epsilon; both regular order-one norms are retained.'
+224:             rows.append(row)
+225: 
+226: check('thirty-one explicit root branches',len(rows)==31)
+227: accepted=[r for r in rows if r['status']=='proved_canonical_scalar_branch']
+228: rejected=[r for r in rows if r['status']=='excluded_by_sphere_determinant']
+229: check('thirty nonempty sphere root branches',len(accepted)==30)
+230: check('one entire gcd-rejected root branch',len(rejected)==1)
+231: check('all twenty-six pairs have an actual witness',
+232:       len({(r['profile'],r['a'],r['b']) for r in accepted})==26)
+233: 
+234: # Exact general Bezout parametrization, with no bounded search in the
+235: # completeness assertion.
+236: mi,m0,ni,n0,NN,jj,eps,uu,vv=S.symbols('mi m0 ni n0 N j epsilon u v')
+237: normD=m0*(eps*uu+mi*jj)+mi*(eps*vv-m0*(jj+NN))+mi*m0*NN
+238: eq('all integral two-cap norm solutions retain D',
+239:    normD,eps*(m0*uu+mi*vv))
+240: eq('full one-additive-site norm solution retains D',
+241:    (eps-mi*(n0+NN))+mi*n0+mi*NN,eps)
+242: eq('full zero-additive-site norm solution retains D',
+243:    (eps-n0-NN)+n0+NN,eps)
+244: check('every absent cap meridian has order one',
+245:       all(c['m']=='1' for r in rows for c in (r['cap_infty'],r['cap_0'])
+246:           if c['source_fibre'] is None))
+247: 
+248: # Independently match every proved one-cap polynomial to all compatible
+249: # profiles.  In a two-site source the other reduced root is literally
+250: # order one, achieved by setting its index to zero.
+251: one_checks=[]
+252: for old in data['one_cap']['cases']:
+253:     hits=[]
+254:     om=expr(old['m'])
+255:     for row in accepted:
+256:         if (row['d'],row['a'],row['b'])!=(old['d'],old['a'],old['b']):
+257:             continue
+258:         if row['cap_infty']['source_euler']!=old['source_euler']:
+259:             continue
+260:         if row['cap_infty']['root_euler']!=old['root_euler']:
+261:             continue
+262:         sub={}
+263:         if row['cap_0']['source_fibre'] is not None:
+264:             if row['cap_0']['kind'].startswith('reduced') and expr(row['m_0']).subs(k,0)==1:
+265:                 sub={k:0}
+266:             else:
+267:                 continue
+268:         if S.simplify(expr(row['m_infty']).subs(sub)-om)!=0:
+269:             continue
+270:         for key,oldkey in [('chi','chi'),('H','height'),('A','actual_positive_return')]:
+271:             eq(old['label']+' -> '+row['id']+' '+key,expr(row[key]).subs(sub),old[oldkey])
+272:         hits.append(dict(catalogue_id=row['id'],substitution={str(a):str(b) for a,b in sub.items()}))
+273:     check(old['label']+' has exact catalogue match',len(hits)>0)
+274:     one_checks.append(dict(prior_label=old['label'],matches=hits))
+275: 
+276: joint_checks=[]
+277: for old in data['joint_caps']['rows']:
+278:     hits=[r for r in accepted if
+279:           (r['d'],r['a'],r['b'])==(old['d'],old['a'],old['b'])
+280:           and S.simplify(expr(r['m_infty'])-expr(old['m_infty']))==0
+281:           and S.simplify(expr(r['m_0'])-expr(old['m_0']))==0
+282:           and r['root_euler']==[old['root_euler_infty'],old['root_euler_0']]]
+283:     check(old['label']+' unique exact branch match',len(hits)==1)
+284:     row=hits[0]
+285:     for key,oldkey in [('chi','chi'),('H','height'),('A','actual_A'),('M','page_degree')]:
+286:         eq(old['label']+' '+key,row[key],old[oldkey])
+287:     joint_checks.append(dict(prior_label=old['label'],catalogue_id=row['id']))
+288: 
+289: one_star=[]
+290: for profile in data['joint_caps']['one_star']['profiles']:
+291:     hits=[r for r in accepted if r['profile']==profile and (r['a'],r['b'])==(6,2)
+292:           and r['cap_infty']['source_fibre']=='I1*']
+293:     check(profile+' one-star branch exists',len(hits)==1)
+294:     row=hits[0]
+295:     sub={l:0} if row['cap_0']['source_fibre'] is not None else {}
+296:     for key,want in [('chi',1),('H',6),('A',-2),('M',2)]:
+297:         eq(profile+' one-star '+key,expr(row[key]).subs(sub),want)
+298:     one_star.append(dict(profile=profile,catalogue_id=row['id'],substitution={str(a):str(b) for a,b in sub.items()}))
+299: 
+300: primitive_checks=[]
+301: for source in retained:
+302:     if [source['height_denominator'],1] not in source['remaining_pairs']:
+303:         continue
+304:     if any('*' in f for f in parsed_profile(source['profile'])):
+305:         continue
+306:     hits=[r for r in accepted if r['profile']==source['profile'] and r['b']==1
+307:           and (r['cap_infty']['kind']=='absent' or r['cap_infty']['kind'].startswith('reduced'))]
+308:     check(source['profile']+' unique order-one representative',len(hits)==1)
+309:     row=hits[0];sub={l:0}
+310:     eq(source['profile']+' primitive chi',expr(row['chi']).subs(sub),1)

@@ -1,0 +1,52 @@
+310:     eq(source['profile']+' primitive chi',expr(row['chi']).subs(sub),1)
+311:     eq(source['profile']+' primitive height',expr(row['H']).subs(sub),source['height_denominator'])
+312:     eq(source['profile']+' primitive return',expr(row['A']).subs(sub),
+313:        1-S.Rational(source['height_denominator'],2))
+314:     primitive_checks.append(row['id'])
+315: check('ten K22 primitive profile crosschecks',len(primitive_checks)==10)
+316: 
+317: # H is even.  For primitive fan coefficients S is odd, and the exact
+318: # expression (3*S^2-7)/4 is integral.  Substitute S=2z+1 to certify it.
+319: zz=S.symbols('z',integer=True)
+320: check('all-fan integer factor for every odd S',
+321:       S.Poly(S.expand((3*(2*zz+1)**2-7)/4),zz).domain.is_ZZ)
+322: for row in accepted:
+323:     eq(row['id']+' all-fan symmetry at S=1 and S=3',
+324:        expr(row['all_fan']).subs(fanS,3),-5*expr(row['chi'])+S.Rational(5,2)*expr(row['H']))
+325: 
+326: out=dict(status='PASS',timestamp_utc=datetime.now(timezone.utc).isoformat(),
+327:          inputs=INPUTS,scope='All fixed-source canonical scalar loops lambda=r^M in the proved whole-zero-I1 MW=Z sector. No shorter-loop descent or source-moduli-loop identification.',
+328:          source_profile_count=21,os_entry_count=8,retained_profile_count=16,
+329:          retained_source_pair_count=26,root_branch_count=31,
+330:          nonempty_root_branch_count=30,entirely_rejected_branch_count=1,
+331:          generic_equations={
+332:              'M':'m_infty*m_0',
+333:              'N':'sum_j n_j-b_0',
+334:              'D':'m_0*n_infty+m_infty*n_0+M*N=epsilon, epsilon=+1 or -1',
+335:              'chi':'[M*(12-e_infty-e_0)+m_0*e_infty_root+m_infty*e_0_root]/12',
+336:              'H':'M*a^2/d','A':'chi-H/2',
+337:              'all_fan':'chi*(4-3*S)+H*(3*S^2-7)/8',
+338:              'fan_S':'a_fan^2-a_fan*b_fan+b_fan^2 for a primitive pair',
+339:              'actual_parameter':'one positive r-loop, lambda=r^M'},
+340:          absent_slot_convention='An absent additive site is a regular order-one slot, m_i=1 and source/root Euler zero. Its actual integral norm is retained in the all-solutions field; setting it to zero is used only for the displayed witness.',
+341:          local_root_exclusions={
+342:              'II':'Only residues 0,1 mod6 survive: intermediate IV root cannot be made transitive by the actual fixed identity limit; nonreduced roots are excluded by K19/F43.',
+343:              'III':'Reduced 1 mod4 requires b odd; good 0 mod4 requires b even. Other roots or complementary norms fail the actual component/norm tests.',
+344:              'IV':'Reduced 1 mod3 requires 3 not dividing b; good 0 mod3 requires 3 dividing b.',
+345:              'III*':'Reduced 3 mod4 requires b odd; good 0 mod4 requires b even.',
+346:              'IV*':'Reduced 2 mod3 requires 3 not dividing b; good 0 mod3 requires 3 dividing b.',
+347:              'I1*':'The primitive sphere cap is quadratic with I2 root, b=2 mod4 and odd norm.',
+348:              'smooth_and_multiplicative':'Every additional effective order is one by the actual integral H2 obstruction.'},
+349:          discarded_profiles=[r for r in profiles if not r['remaining_pairs']],
+350:          branches=rows,crosschecks=dict(K26=one_checks,K28=joint_checks,
+351:                                       F36_one_star=one_star,K22_primitive=primitive_checks),
+352:          checks=checks)
+353: Path(__file__).with_suffix('.json').write_text(json.dumps(out,indent=2)+'\n')
+354: for row in rows:
+355:     state='EXCLUDED' if row['status'].startswith('excluded') else 'PROVED'
+356:     print(row['id'],state,row['profile'],f"(a,b)=({row['a']},{row['b']})",
+357:           'm=',row['m_infty'],',',row['m_0'],
+358:           'chi=',row['chi'],'H=',row['H'],'A=',row['A'])
+359: print('PASS:',len(checks),'exact checks;',
+360:       '8 entries, 21 configurations, 16 retained profiles, 26 pairs,',
+361:       '31 root branches, 30 nonempty and one gcd-excluded.')

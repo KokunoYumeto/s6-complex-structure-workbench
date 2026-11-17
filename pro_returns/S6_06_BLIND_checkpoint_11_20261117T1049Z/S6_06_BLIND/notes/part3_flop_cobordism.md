@@ -1,0 +1,379 @@
+# P3K.17. Proved: the actual Cox flop comparison with its two charged caps
+
+The negative- and positive-diagonal OS49 families have equal
+actual return index for every cap order \(m=3k\),
+\(k>0\), every signed primitive twist \(n=\pm1\),
+and every additional integral delta twist \(d\delta\).
+Their index is zero, their oriented return class is zero, and
+their actual mapping tori are products as in P3F.24.
+The comparison is an oriented bordism carrying the actual
+Euler line; it imposes no spin hypothesis on the comparison
+bordism.  The endpoint index structures are the prescribed
+ones from the original families.
+
+**Proof: the real master space and its actual resolution maps.**
+
+Order the Cox coordinates as \((z_0,z_4,z_1,z_2)\), corresponding
+to rays \(u_0,u_4,u_1,u_2\).  Let an auxiliary circle act with
+weights \((1,1,-1,-1)\), and let the physical delta circle have
+weights \((-1,0,0,+1)\).  These actions commute.  Write
+\(a=(z_0,z_4)\), \(c=(z_1,z_2)\), and
+\[
+       \mu=\|a\|^2-\|c\|^2.
+\]
+The auxiliary circle is free on \(\mathbb C^4\setminus\{0\}\).
+Consequently its quotient is a smooth oriented real seven-manifold.
+The residual delta action is semifree.  Indeed every nonzero
+two-by-two minor of the matrix with rows
+\((1,1,-1,-1)\) and \((-1,0,0,1)\) is \(\pm1\).
+On a coordinate support of rank two this proves that the
+two-torus has trivial stabilizer.  A rank-one support lies in
+one of the two pairs \((z_4,z_1)\), \((z_0,z_2)\),
+and the residual circle fixes it pointwise.  Subtracting the
+auxiliary lift on these two supports gives normal weights
+\((-1,+1)\) in each case.  Thus the circle orbit has the
+ordinary rank-three Hopf normal model along its fixed locus,
+with no additional finite-quotient strata.
+Its positive moment levels are the negative-diagonal small resolution,
+and its negative moment levels are the positive-diagonal small
+resolution.  Here are the actual maps proving these identifications.
+On the positive level use the complex quotient
+\[
+   \{a\ne0\}\big/\bigl((a,c)\sim(ta,t^{-1}c)\bigr)
+       \longrightarrow
+   \{([a],ac^t):\operatorname{im}(ac^t)\subset\mathbb Ca\}.
+\]
+Its target is the total space of \(\mathcal O(-1)^{\oplus2}\)
+on \(\mathbb P^1_a\).  Every complex orbit meets a prescribed
+positive moment level in exactly one auxiliary-circle orbit:
+the required positive real factor solves
+\[
+ r^2\|a\|^2-r^{-2}\|c\|^2=\tau,
+ \qquad
+ r^2=\frac{\tau+\sqrt{\tau^2+4\|a\|^2\|c\|^2}}
+                 {2\|a\|^2}.
+\]
+This is smooth for \(a\ne0\) and \(\tau>0\), including
+\(c=0\).  The negative-level map is the same formula with
+the two pairs interchanged.  Both maps commute with delta.
+The positive stability condition excludes \(z_0=z_4=0\),
+so its two fan triangles have common edge \(u_1u_2\);
+the negative condition has common edge \(u_0u_4\).
+Thus these are the specified two fans with their original
+coordinate identifications on the common rank-one matrix locus.
+
+Restrict to \(|\mu|\le\epsilon\) and a large fixed radius,
+and remove a ball of radius \(\rho\) with \(\rho^2<\epsilon\).
+The two moment faces are the truncated small resolutions, the
+outer face is their common exterior times an interval, and the
+new inner face is
+\[
+             S^7/S^1_{\rm aux}=\mathbb {CP}^3.
+\]
+This is an actual real bordism relative to the common exterior.
+Conjugating the two auxiliary-negative coordinates makes the
+auxiliary action scalar-positive; two complex conjugations
+preserve the real orientation.  In the resulting homogeneous
+coordinates, put
+\[
+       A=(z_0,\overline z_2),\qquad
+       B=(z_4,\overline z_1).
+\]
+Delta acts by \((A,B)\mapsto(e^{-it}A,B)\).
+
+**Proof: the circle orbit, its line, and the explicit joint cap.**
+
+The orbit map on this inner face is
+\[
+ [A,B]\longmapsto
+ \left([A],[B],\frac{\|A\|^2}{\|A\|^2+\|B\|^2}\right),
+\]
+with the irrelevant factor collapsed at either endpoint.
+Thus the actual orbit is \(\mathbb {CP}^1*\mathbb {CP}^1\),
+identified with \(S^5\subset\mathbb R^3\oplus\mathbb R^3\)
+by \((p,q,\phi)\mapsto(\cos\phi\,p,\sin\phi\,q)\).
+The two fixed spheres are its two join ends.  On the free orbit
+\(S^2_A\times S^2_B\times(0,1)\), the circle line is exactly
+\[
+           L=\mathcal O(1)_A\boxtimes\mathcal O(-1)_B,
+           \qquad x=h_A-h_B.                         \tag{P3K.17.1}
+\]
+Indeed a nonzero pair determines the relative tensor of its
+two tautological lines; delta acts with negative weight on
+that tensor.  Taking the associated line with the physical
+positive delta character gives the displayed inverse tensor.
+This fixes the sign rather than choosing it from the two
+normal models independently.
+
+The two base charges are therefore \(+1,-1\).  In particular
+the line does not extend over either individual conifold cap:
+the restriction image of
+\(H^2(D^3_A\times S^2_B)\) in the first boundary has no
+\(h_A\) term, and the other cap has no \(h_B\) term.
+We retain this obstruction and instead join the fixed spheres.
+
+Take \(C=S^2_P\times I\), with meridian sphere \(S^2_Q\),
+and the line \(\mathcal O(1)_P\boxtimes\mathcal O(1)_Q\)
+on \(C\times S^2_Q\).  At its first end use
+\[
+              (A,B)=(P,\iota Q),
+\]
+and at its second end use
+\[
+              (A,B)=(Q,\iota P),                    \tag{P3K.17.2}
+\]
+where \(\iota\) is the antipodal map of \(\mathbb {CP}^1\).
+Both maps pull (P3K.17.1) to \(p+q\).  These are actual
+line isomorphisms: the orthogonal-complement map on lines in
+\(\mathbb C^2\), followed by its determinant pairing,
+identifies \(\iota^*\mathcal O(1)\) complex-linearly with
+\(\mathcal O(-1)\); the second end then uses the canonical
+interchange of the two tensor factors.  All maps preserve
+the physical principal-circle character.
+
+The resulting closed five-dimensional orbit correction is the
+mapping torus
+\[
+ Q_{\rm corr}=T_g(S^2\times S^2),\qquad
+           g(A,B)=(\iota B,\iota A).
+\]
+The map \(g\) preserves \(h_A-h_B\) and the product
+orientation.  Its line is glued by the specified tensor
+isomorphisms, so this statement retains the actual line,
+not merely an invariant cohomology class.
+
+**Proof: the actual parameter gauge on the master space.**
+
+For the closed OS49 parameter \(\lambda=r^m\), with
+\(m=3k\) and signed primitive twist \(n=\pm1\), the
+extra twist \(d\delta/m\) contributes only a parameter-independent
+scalar to the finite-cap line map.  Its source coordinate is unchanged;
+the same scalar extends in the Cox lift and across the joint cap.
+It therefore introduces no parameter-crossing line class.  The
+period-origin calculation in P3F.32 gives the primitive
+\(K\)-turn and the angular line winding \(2mn\).
+The \(K\)-period on the ordinary Tate coordinates is
+\[
+      Z\longmapsto a(q)Z,\qquad
+      V\longmapsto q^n r^{2mn}b(q)V,
+\]
+after incorporating the signed traversal (so the bounded units
+include the corresponding signed powers), where those units
+have parameter-independent logarithms.  Reindexing
+the common fan by its integral vertical period removes the
+displayed \(q^n\) by the signed integral vertical translation
+\(n\).  On the resulting common Cox charts the
+bounded map has the explicit lift
+\[
+ \begin{aligned}
+ z_0&\longmapsto\bigl(a(q)b(q)r^{2mn}\bigr)^{-1}z_0,
+       &z_1&\longmapsto a(q)z_1,\\
+ z_2&\longmapsto b(q)r^{2mn}z_2,
+       &z_4&\longmapsto z_4.
+ \end{aligned}                                      \tag{P3K.17.3}
+\]
+The product of its four multipliers is one, so it fixes the
+base monomial \(q=z_0z_1z_2z_4\).  Its torus vector is
+\(\log a\,(u_1-u_0)+\log(br^{2mn})\,(u_2-u_0)\),
+which is exactly the marked \((Z,V)\) action.  Thus its
+parameter-dependent factor is one global physical delta
+action; it is not two separately chosen gauges at the two
+ends of the exceptional geometry.
+
+For the exact quotient, label the unit-square flop cells by
+\(v\in\mathbb Z^2\).  Their period lattice is
+\(\Gamma=\langle(2,1),(-3,-1)\rangle=\mathbb Z^2\),
+and \(3(2,1)+2(-3,-1)=(0,1)=K_{\rm trop}\).
+It acts freely and transitively on these cells.  Their diagonal
+curves are disjoint, since each has the two maximal cones
+belonging to its own square.  Choose disjoint equivariant
+tubular neighbourhoods and insert one master chart in each.
+The quotient of their disjoint union by \(\Gamma\) is
+exactly one representative chart with trivial stabilizer.
+There is no residual \(K\)-circle on this correction.
+The signed parameter return shifts its cell label by
+\(n(0,1)=n(3h+2g)\).  Returning to the chosen representative
+by that unique period gives (P3K.17.3).  Reversing the
+representative convention inverts the one common gauge at
+both ends and leaves the comparison unchanged.
+
+Fixing \(|r|\), its angular part is
+\(e^{2mn i\theta}\) in that physical circle.  The remaining
+unit multipliers are independent of \(\theta\); their
+chosen logarithms give equivariant isotopies on the Cox
+charts.  The positive real rescalings in Section 1 transport
+these isotopies to the moment levels and to the inner face.
+Explicitly, follow a Cox map by its unique positive auxiliary
+rescaling back to the original value of \(\mu\).  Its
+implicit derivative is
+\(2r^2\|a\|^2+2r^{-2}\|c\|^2>0\) away from the
+removed origin, so this is smooth through the real bordism.
+The bounded units can be changed to their values at \(q=0\)
+using \(a(tq),b(tq)\), \(0\le t\le1\), with an
+exterior cutoff.  The maps stay invertible and commute with
+both circles; they are independent of the parameter angle.
+This change introduces no angular character on the inner face.
+These maps need not preserve a fixed Euclidean radius.
+Use transported truncations: under the moment-preserving
+equivariant isotopy \(G_t\), take the inner and outer
+faces to be \(G_t\) of the original faces.  They stay
+embedded and disjoint, while the moment faces stay at
+\(\mu=\pm\epsilon\).  Glue these transported charts
+and collars by their exact maps.  For the remaining
+constant-unit clutch \(G_0\), its chosen logarithms give
+\(G_0^t\), and
+\((x,t)\mapsto(G_0^t x,e^{2\pi it})\) trivializes
+the mapping torus.  The angular delta factor preserves
+the round face and is trivial on its circle orbit.
+Consequently the two maps (P3K.17.2) have the same angular
+gauge, which extends by that constant circle multiplication
+over all of \(C\times S^2_Q\).  No difference of two
+angular gauges is introduced on its ends.  The closed
+correction over the parameter circle therefore carries
+a line pulled back from \(Q_{\rm corr}\), after this
+explicit gauge identification.  Its first Pontryagin class
+is pulled back from the same five-dimensional factor.
+The potential mixed line class can also be checked directly.
+Cover the correction by its free-orbit cylinder and joint-cap
+cylinder; their overlap has two components.  The actual
+transition functions there are
+\(\varphi_1(\theta)=g(\theta)\varphi_{1,0}\) and
+\(\varphi_2(\theta)=g(\theta)\varphi_{2,0}\), with
+the same scalar from (P3K.17.3).  Change the cap frame by
+\(g(\theta)^{-1}\).  Both angular factors disappear
+simultaneously, leaving parameter-independent transitions.
+This explicitly excludes a line class on
+\(S^1_{\rm joint}\times S^1_{\rm parameter}\).
+Both six-dimensional characteristic numbers vanish:
+\[
+  \langle x^3,[Q_{\rm corr}\times S^1]\rangle=0,
+  \qquad
+  \langle p_1x,[Q_{\rm corr}\times S^1]\rangle=0.       \tag{P3K.17.4}
+\]
+
+**Proof: the additional normal-sphere boundary in the surgery bordism.**
+
+The fixed locus in the master bordism must also be retained.
+There are exactly two relevant auxiliary-quotient fixed charts:
+\((z_4,z_1)\) and \((z_0,z_2)\).  Each has auxiliary
+weights \((1,-1)\), and its quotient is \(\mathbb R^3\)
+by the explicit invariant map
+\[
+      (z_+,z_-)\longmapsto
+       \bigl(2\Re(z_+z_-),2\Im(z_+z_-),
+                         |z_+|^2-|z_-|^2\bigr).
+\]
+The inverse orbit is determined by
+\(|z_\pm|^2=(\sqrt{\mu^2+4|z_+z_-|^2}\pm\mu)/2\).
+The two moment faces in each chart are discs.  Removing the
+inner master-space ball removes an interior three-ball in
+each of these fixed charts.  Away from the flop curve the
+fixed sphere minus its two endpoint discs is unchanged.
+Gluing this annulus times the moment interval proves that
+the fixed three-dimensional cobordism is exactly
+\[
+                 W_F=(S^2\times I)\setminus
+                             (\mathring D^3\sqcup\mathring D^3).
+\]
+The Cox reindexing preserves the two charts; it does not
+permute or identify their boundary spheres.
+
+The oriented normal three-plane bundle is trivial over this
+three-dimensional cobordism, with its boundary product
+structures retained.  On the two Cox fixed charts its
+positive-weight complex normal bundle is respectively
+\(L^{\oplus2}\) and \((L^{-1})^{\oplus2}\), so the
+associated three-plane bundle has \(w_2=0\).  The other
+two boundary spheres have the original \(SU(2)\) normal
+model.  Restriction of \(H^2(W_F;\mathbb Z/2)\) to
+the four boundary spheres is injective, so \(w_2\) vanishes
+globally.  An oriented three-plane bundle on a three-dimensional
+complex with this class zero is trivial: the obstruction on
+two-cells is \(\pi_1(SO(3))=\mathbb Z/2\), and that
+on three-cells is \(\pi_2(SO(3))=0\).  Boundary
+trivializations differ by maps \(S^2\to SO(3)\), all
+null-homotopic.  Collar homotopies therefore match the chosen
+product trivializations at every boundary.  The actual circle
+line restricted to the constant normal section has boundary
+values \(0,0,+h_A,-h_B\).
+
+Cap the two original-family sphere boundaries by \(D^3\),
+as in their actual conifold construction, and join the two
+inner-face spheres by the charged cap \(C\) above.  This
+closes \(W_F\) to \(S^2\times S^1\).  Crossing with
+the parameter circle closes the fixed four-dimensional base
+to \(\bar X\).  The described local trivialization makes
+it the product with that parameter circle, retaining the
+possible parameter-independent clutch along the first
+\(S^1\).  In particular it is a mapping torus over the
+first circle of \(S^2\), crossed with the parameter circle.
+All gluings preserve the sphere orientation.  Its signature
+is zero, and its tangent first Pontryagin number is zero.
+For the exact orientation comparison, capping the first two
+boundaries leaves \(S^2\times I\).  Its line has degrees
+\(+1\) and \(-1\) in the two complex boundary markings.
+Its product transport consequently has degree \(-1\)
+between those markings.  The joint cap has exactly that
+antipodal base change at its second end.  The composite has
+degree \(+1\), giving the oriented sphere mapping torus
+above.  On the meridian sphere the first end map is also
+antipodal, so both meridian orientations give the same
+physical Euler value one.
+
+Apply the explicit collar construction of P3K.7 to the
+complement of this fixed locus in the master-space orbit
+family.  At the two original-family boundaries it gives
+their actual conifold mapping tori.  At the inner face it
+gives \(Q_{\rm corr}\times S^1\).  It has one further
+boundary, the normal sphere bundle \(B=S(\nu_{\bar X})\).
+The meridian-one line is glued by (P3K.17.2) and (P3K.17.3)
+through every collar, so it extends across this oriented
+bordism.  This accounts for the boundary which would be
+missed by capping the two inner fixed spheres separately.
+
+The actual parameter-dependent Cox action is delta, which
+acts trivially on the circle orbit and its normal rank-three
+bundle.  Thus on the closed fixed base both its normal data
+and the line data are pulled back from the three-dimensional
+\(S^2\)-mapping-torus factor.  With the notation of P3K.7,
+\(e_{\mathrm{vert}}=2x-\pi^*b\), it follows that
+\(b^2=0\).  The sphere-bundle calculation, valid as an
+oriented characteristic calculation, gives
+\[
+       \frac{4\langle x^3,[B]\rangle
+                  -\langle p_1(TB)x,[B]\rangle}{24}
+       =\frac{3\langle b^2,[\bar X]\rangle
+                    -\langle p_1(T\bar X),[\bar X]\rangle}{24}
+       =0.                                             \tag{P3K.17.5}
+\]
+No value of \(p_1(\nu_{\bar X})\) is assumed here.
+
+For a closed oriented six-manifold with a complex line,
+\(4x^3-p_1x\) is an oriented characteristic number and
+vanishes on oriented boundaries carrying that line.  Hence
+the two original-family return values are equal after
+(P3K.17.4) and (P3K.17.5).  The actual endpoint manifolds
+already have their prescribed spin structures, so their
+integer \(A\) is the same characteristic expression.
+The signs of the two additional boundary components do not
+affect their zero contributions; the two moment faces have
+opposite boundary orientations.  Together with P3F.32 this identifies the negative-diagonal
+return index with zero for all the stated orders and twists.
+The exact Hopf transfer P3F.22 gives its oriented zero class,
+and P3F.24 gives the product mapping torus.
+
+**End of proof.**
+
+## Audit record
+
+The initial draft and its explicit audit boundary are preserved in
+`code/part3_fourfold/history/part3_flop_cobordism_audit.md`.
+Independent blind-control audit checked the residual semifree weights,
+both associated-line signs, the common Cox delta gauge, and the extra
+normal-sphere term.  Root audit additionally required and then accepted
+the transported truncations and the free period-orbit quotient before
+the two-overlap Cech gauge cancellation.  The orientation transport
+between the two complex fixed-sphere markings was explicitly retained.
+The exact matrix and gauge certificate is `code/part3_fourfold/cox_flop.json`.
+This proof treats the two stated OS49 diagonal fans; it does not assign
+the same quotient model to every periodic unimodular fan.

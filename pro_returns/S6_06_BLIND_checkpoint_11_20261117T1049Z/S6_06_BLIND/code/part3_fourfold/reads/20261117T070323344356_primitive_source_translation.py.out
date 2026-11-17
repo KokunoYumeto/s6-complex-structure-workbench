@@ -1,0 +1,167 @@
+1: #!/usr/bin/env python3
+2: """Exact NS intersection/translation matrices for the four semistable rank-one sources.
+3: 
+4: Columns are pushforwards of oriented divisor classes.  No conclusion about
+5: the filled threefold homology is built into this source calculation.
+6: """
+7: from pathlib import Path
+8: from math import prod
+9: import json
+10: import sympy as sp
+11: from sympy.matrices.normalforms import smith_normal_form
+12: from sympy.polys.domains import ZZ
+13: 
+14: ROOT=Path(__file__).resolve().parent
+15: CASES=[
+16:     (45,8,[(8,3)],4),
+17:     (47,14,[(7,2),(2,1)],3),
+18:     (55,20,[(5,2),(4,1)],3),
+19:     (56,30,[(5,1),(3,1),(2,1)],2),
+20: ]
+21: PROFILES={
+22: 45:['I8+4I1','I8+II+2I1'],
+23: 47:['I7+I2+3I1','I7+I2+II+I1','I7+III+2I1'],
+24: 55:['I5+I4+3I1','I5+I4+II+I1'],
+25: 56:['I5+I3+I2+2I1','I5+I3+III+I1','I5+IV+I2+I1'],
+26: }
+27: 
+28: def integer_matrix(A):
+29:     assert all(v.q==1 for v in A)
+30:     return [[int(v) for v in row] for row in A.tolist()]
+31: 
+32: def cartan(n):
+33:     return sp.Matrix(n,n,lambda i,j:2 if i==j else -1 if abs(i-j)==1 else 0)
+34: 
+35: outputs=[]
+36: for row,d,components,nodal in CASES:
+37:     assert sum(N-1 for N,k in components)==7
+38:     assert prod(N for N,k in components)==d
+39:     names=['O','F']
+40:     blocks=[]
+41:     for number,(N,k) in enumerate(components):
+42:         start=len(names)
+43:         names += [f'I{N}_{number}_C{j}' for j in range(1,N)]
+44:         blocks.append((N,k,start))
+45:     names += ['G']
+46:     rank=len(names)
+47:     assert rank==10
+48:     eye=sp.eye(rank)
+49:     O,F,G=eye[:,0],eye[:,1],eye[:,-1]
+50:     gram=sp.zeros(rank)
+51:     gram[0,0]=gram[-1,-1]=-1
+52:     gram[0,1]=gram[1,0]=gram[-1,1]=gram[1,-1]=1
+53:     corrections={}
+54:     for N,k,start in blocks:
+55:         C=cartan(N-1)
+56:         gram[start:start+N-1,start:start+N-1]=-C
+57:         gram[-1,start+k-1]=gram[start+k-1,-1]=1
+58:         corrections[N,start]=C.inv()
+59:     assert gram.det()==-1
+60:     height=sp.Rational(1,d)
+61:     def correction(n):
+62:         ans=sp.zeros(rank,1)
+63:         local=sp.Rational(0)
+64:         for N,k,start in blocks:
+65:             j=n*k%N
+66:             if j:
+67:                 coeff=corrections[N,start][:,j-1]
+68:                 ans[start:start+N-1,0]=coeff
+69:                 local+=sp.Rational(j*(N-j),N)
+70:         return ans,local
+71:     corr1,loc1=correction(1)
+72:     assert loc1==2-height
+73:     phi=G-O-F+corr1
+74:     assert (phi.T*gram*phi)[0]==-height
+75:     def section(n):
+76:         corr,loc=correction(n)
+77:         intersection=(n*n*height-2+loc)/2
+78:         assert intersection.q==1 and intersection>=0
+79:         P=O+(intersection+1)*F+n*phi-corr
+80:         integer_matrix(P)
+81:         assert (P.T*gram*P)[0]==-1
+82:         assert (P.T*gram*O)[0]==intersection
+83:         return P,int(intersection)
+84:     P2,intersection2=section(2)
+85:     T=sp.zeros(rank)
+86:     T[:,0]=G
+87:     T[:,1]=F
+88:     T[:,-1]=P2
+89:     for N,k,start in blocks:
+90:         for j in range(1,N):
+91:             target=(j+k)%N
+92:             T[:,start+j-1]=(eye[:,start+target-1] if target else
+93:                             F-sum((eye[:,start+r-1] for r in range(1,N)),sp.zeros(rank,1)))
+94:     integer_matrix(T)
+95:     assert T.T*gram*T==gram
+96:     assert abs(T.det())==1
+97:     Pd,POd=section(d)
+98:     M=Pd-O
+99:     assert T*M-M==F
+100:     assert (M.T*gram*M)[0]==-d
+101:     assert POd==(d-2)//2
+102:     Ti=T.inv()
+103:     A=T-sp.eye(rank)
+104:     S=smith_normal_form(A,domain=ZZ)
+105:     smith=[abs(int(S[i,i])) for i in range(rank)]
+106:     assert smith==[1]*9+[0]
+107:     null=A.nullspace()
+108:     assert null==[F]
+109:     assert (F.T*gram*O)[0]==1
+110: 
+111:     # Fully reduced component/section presentation after G=O and all
+112:     # components in each translated cycle are identified.
+113:     relations=sp.zeros(len(blocks)+1)
+114:     for i,(N,k,start) in enumerate(blocks):
+115:         relations[i,0]=-1
+116:         relations[i,i+1]=N
+117:     relations[-1,0]=intersection2-1
+118:     corr2,_=correction(2)
+119:     for i,(N,k,start) in enumerate(blocks):
+120:         relations[-1,i+1]=sum((2*corr1-corr2)[start+j,0] for j in range(N-1))
+121:     integer_matrix(relations)
+122:     assert abs(relations.det())==1
+123:     schur=relations[-1,0]+sum(sp.Rational(relations[-1,i+1],N)
+124:                             for i,(N,k,start) in enumerate(blocks))
+125:     assert schur==height
+126:     # The exact root reflection in G-O turns the actual translation
+127:     # into an automorphism fixing O and F.  Export its E8 restriction;
+128:     # no realization by a chosen local Dehn twist is assumed here.
+129:     r=G-O
+130:     assert (r.T*gram*r)[0]==-2
+131:     reflection=sp.eye(rank)+r*(r.T*gram)
+132:     K=reflection*T
+133:     assert K*O==O and K*F==F
+134:     basis_change=sp.Matrix.hstack(O,F,*[eye[:,j] for j in range(2,9)],G-O-F)
+135:     reduced_K=basis_change.inv()*K*basis_change
+136:     KE8=reduced_K[2:,2:]
+137:     assert reduced_K[:2,2:]==sp.zeros(2,8)
+138:     charE8=sp.factor(KE8.charpoly().as_expr())
+139:     outputs.append(dict(row=row,height=str(height),denominator=d,
+140:                         source_fibres=[f'I{N}' for N,k in components]+['I1']*nodal,
+141:                         all_profiles=PROFILES[row],
+142:                         basis=names,gram=integer_matrix(gram),
+143:                         translation_pushforward=integer_matrix(T),
+144:                         translation_minus_identity=integer_matrix(A),
+145:                         actual_suspension_translation=integer_matrix(Ti),
+146:                         actual_wang_d3=integer_matrix(Ti-sp.eye(rank)),
+147:                         smith=smith,kernel_basis=integer_matrix(F),
+148:                         section_2G=integer_matrix(P2),intersection_2G_O=intersection2,
+149:                         line_section_dG=integer_matrix(Pd),line_divisor_class=integer_matrix(M),
+150:                         line_square=-d,line_section_intersection_O=POd,
+151:                         page_chi=1,page_signature=-8,Jin_integer=1-d//2,Theta7_class=(1-d//2)%28,
+152:                         reduced_relations=integer_matrix(relations),
+153:                         reduced_determinant=int(relations.det()),
+154:                         reduced_schur_complement=str(schur),
+155:                         reflection_G_minus_O=integer_matrix(reflection),
+156:                         reflection_times_translation_E8=integer_matrix(KE8),
+157:                         E8_characteristic_polynomial=str(charE8),
+158:                         E8_det_minus_identity=int((KE8-sp.eye(8)).det()),
+159:                         cokernel='Z generated by [O]',kernel='Z generated by F',
+160:                         assertions_passed=True))
+161: 
+162: result=dict(all_pass=True,cases=outputs,
+163:             scope='Exact integral source NS action. Filled orbit/threefold homology requires its actual gluing computation.')
+164: (ROOT/'primitive_source_translation.json').write_text(json.dumps(result,indent=2)+'\n')
+165: for r in outputs:
+166:     print(f"OS{r['row']}: det Gram=-1; Smith(T-I)={r['smith']}; det reduced={r['reduced_determinant']}; ker=ZF; coker=Z[O]")
+167: print('PASS: all four integral source translation actions and presentations.')
