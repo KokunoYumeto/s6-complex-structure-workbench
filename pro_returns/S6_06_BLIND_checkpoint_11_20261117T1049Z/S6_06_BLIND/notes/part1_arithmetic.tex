@@ -1,0 +1,84 @@
+\subsection{Two additional integral and spectral comparisons}
+
+\begin{statement}{P1B.1}{Proved}
+Let $N$ be an endomorphism of $\Z^6$ with $N^2=0$, rank three,
+and primitive image. There is a unimodular basis in which
+\[
+ I+N=\begin{pmatrix}I_3&I_3\\0&I_3\end{pmatrix}.
+\]
+Its centralizer in $\operatorname{GL}_6(\Z)$ consists exactly of
+$\left(\begin{smallmatrix}P&Q\\0&P\end{smallmatrix}\right)$,
+with $P\in\operatorname{GL}_3(\Z)$ and $Q\in\operatorname{Mat}_3(\Z)$.
+\end{statement}
+\begin{proof}
+The kernel of an integral homomorphism to a free group is
+primitive. Both $\ker N$ and $\operatorname{im}N$ have rank three,
+and the latter is contained in the former. Since the image is
+primitive in $\Z^6$, their finite quotient is zero. Choose a basis
+$e_1,e_2,e_3$ of this common group and choose $f_i$ with $Nf_i=e_i$.
+The induced map $\Z^6/\ker N\to\operatorname{im}N$ is an
+isomorphism, so the images of the $f_i$ form a quotient basis.
+Thus $(e_1,e_2,e_3,f_1,f_2,f_3)$ is a unimodular basis and gives
+the displayed matrix. This is also an algorithm: a Smith
+decomposition gives the primitive kernel and solves the three
+integral equations $Nf_i=e_i$.
+Writing a potential centralizer element as
+$\left(\begin{smallmatrix}P&Q\\R&S\end{smallmatrix}\right)$,
+the equality $CN=NC$ gives $R=0$ and $S=P$.
+Its determinant is $(\det P)^2$, so integral invertibility
+is equivalent to $P\in\operatorname{GL}_3(\Z)$.
+\end{proof}
+
+\begin{statement}{P1B.2}{Proved}
+A finite-order integral linear action on $\R^6$ admitting a
+free finite affine torus lift has characteristic polynomial
+among exactly thirty-eight cyclotomic products. Their linear
+orders are
+\[
+ 1,2,3,4,5,6,8,10,12.
+\]
+Exactly nineteen of these polynomials admit a commuting complex
+structure on $\R^6$. These are a preliminary spectral list;
+no assertion about global gluings is inferred from the list.
+\end{statement}
+\begin{proof}
+The linear action has eigenvalue one. Otherwise $I-A$ is
+invertible over $\R$, and the affine lift $x\mapsto Ax+b$
+has a fixed point, obtained by solving $(I-A)x=b$ in $\R^6$
+and projecting to the torus. A finite-order integral matrix is
+semisimple and its characteristic polynomial is a product of
+cyclotomic polynomials with nonnegative integer exponents.
+The one-eigenvalue leaves at most five dimensions for the other
+factors. A cyclotomic degree is even for every index greater
+than two. The possible degrees are therefore one, two and four,
+with indices respectively $1,2$; $3,4,6$; and $5,8,10,12$.
+To verify that no index has been omitted, the formula
+$\varphi(n)=\prod_{p^a\parallel n}p^{a-1}(p-1)$ with
+$\varphi(n)\le4$ restricts $p$ to $2,3,5$, the powers to
+$2^a$ with $a\le3$, $3^a$ with $a\le1$, and $5^a$ with
+$a\le1$, and gives exactly those indices after multiplication.
+
+The executed program \texttt{code/part1/spectral\_filter.py}
+enumerates every exponent vector satisfying total degree six
+and a positive exponent at $\Phi_1$, with bounds supplied by
+these degrees. It writes all thirty-eight exponent vectors,
+polynomials and least common multiples of their active indices.
+Companion matrices in block diagonal form realize every listed
+polynomial and order. A translation by a nonzero rational
+fraction in a trivial eigenline makes a finite affine action
+free: choose its denominator to be a multiple of the linear
+order, and every nonidentity power has nonintegral translation
+in that eigenline.
+
+A commuting real complex structure requires even multiplicity
+of each real eigenvalue $1$ and $-1$. Conversely, on these real
+eigenspaces pair basis vectors into oriented complex lines;
+on every conjugate nonreal eigenpair use its rotation complex
+structure. This constructs a commuting complex structure.
+The program checks these two parity conditions and obtains
+nineteen products. Since the remaining cyclotomic factors have
+even degrees and the total degree is six, the two real
+multiplicities have the same parity. Thus the nineteen
+complex-compatible products are exactly the orientation-preserving
+ones in this preliminary list.
+\end{proof}
