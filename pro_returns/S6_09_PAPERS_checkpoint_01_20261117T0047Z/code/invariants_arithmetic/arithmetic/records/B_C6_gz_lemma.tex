@@ -1,0 +1,173 @@
+% Preliminary arithmetic proof note; the complete integrated proof is now
+% sections/C_gz_factors.tex, Statement C.6.R5. Not included automatically.
+\section*{A denominator certificate for the six remaining C.6 factors}
+
+The primary source is Cai, Shu and Tian, \emph{Explicit Gross--Zagier and
+Waldspurger formulae}, Algebra \& Number Theory 8(10) (2014), 2523--2572,
+DOI 10.2140/ant.2014.8.2523. The complete publisher PDF was opened at
+\url{https://msp.org/ant/2014/8-10/ant-v8-n10-p05-p.pdf}.
+The exact hypotheses and formula used below are Theorem 1.1 on
+pp.~2524--2525; the diagonal height is the N\'eron--Tate pairing over
+$K$, as in the general formulation on p.~2531.
+
+\paragraph{Quadratic twisting of a known parametrization.}
+Let $E_0/\Q$ have conductor $N_0$, and let
+$\phi:X_0(N_0)\to E_0$ send $\infty$ to $O$ and satisfy
+$\phi^*\omega_0=c_0 f_0(q)dq/q$. Let $b$ be an odd fundamental
+discriminant coprime to $N_0$, put $m=|b|$, and assume that the minimal
+twist $E_0^b$ has conductor $N_0b^2$ and
+$c_4(E_0^b)=b^2c_4(E_0)$. The last equality says that the twist
+requires no scaling of the minimal differential. Then there is a
+parametrization $X_0(N_0b^2)\to E_0^b$ with Manin factor $c_0$.
+
+Indeed, using the group law on $E_0$, put
+\[
+ F(z)=\sum_{a\bmod m}\chi_b(a)\phi(z+a/m).
+\]
+For $\gamma=\left(\begin{smallmatrix}A&B\\C&D\end{smallmatrix}\right)
+\in\Gamma_0(N_0m^2)$, choose $a'\equiv aD^2\pmod m$. Direct
+matrix multiplication shows
+$T_{a/m}\gamma T_{a'/m}^{-1}\in\Gamma_0(N_0)$.
+Because $\chi_b(D^2)=1$, this proves $F(\gamma z)=F(z)$.
+The summands are algebraic maps on a common congruence cover, so their
+sum descends to an algebraic map on $X_0(N_0m^2)$ over
+$\Q(\zeta_m)$. Its expansion at the rational cusp $\infty$ shows
+$F^{\sigma_u}=\chi_b(u)F$, where
+$\sigma_u(\zeta_m)=\zeta_m^u$; hence quadratic descent gives a map
+to $E_0^b$ over $\Q$. It sends $\infty$ to $O$. Finally
+\[
+ F^*\omega_0=c_0\sum_a\chi_b(a)f_0(z+a/m)\,2\pi i\,dz
+ =c_0\tau(\chi_b)f_b(q)\frac{dq}{q}.
+\]
+Here $\tau(\chi_b)^2=b$. Under the twist isomorphism
+$\iota:E_0^b\to E_0$, the minimal differentials satisfy
+$\iota^*\omega_0=\sqrt b\,\omega_b$. Choosing the square root
+consistent with the Gauss sum proves the assertion. A sign has no
+effect on the positive Manin factor. This argument proves what is
+needed for the particular twists, without using a general Manin
+constant conjecture.
+
+If $c_0=1$ and $t_b=|E_0^b(\Q)_{\rm tors}|$, it follows that
+\[
+ t_b n_b\,\frac{L(E_0^b,1)}{\Omega_b}\in\Z,
+ \qquad n_b=\#\pi_0(E_0^b(\R))\in\{1,2\}.
+\]
+To see this, the cuspidal divisor $[0]-[\infty]$ maps to a rational
+torsion point, by Manin--Drinfeld. Its real elliptic logarithm is
+$\pm L(E_0^b,1)$. Multiplication by $t_b$ gives a real period, and
+$\Omega_b=n_b\Omega_b^+$.
+
+\paragraph{Genus characters at the small base level.}
+For each row use the following data. The base Manin factors are all one. For the first five bases this was
+independently returned by the unconditional PARI modular-symbol algorithm;
+for the last base it is also explicitly recorded in Belabas, Bernardi and
+Perrin-Riou (2019), the unnumbered 26569a1/26569a2 block in
+Appendix~B, p.~102, for 26569a1. That source was opened in full
+at \url{https://www.numdam.org/item/10.5802/pmb.37.pdf}; its Algorithm~1
+explains the computation. All equations, conductors,
+twist identities, differential scalings, torsion orders and splitting
+conditions are checked exactly in \path{code/B_C6_gz_exact_metadata.gp}.
+\[
+\begin{array}{c|c|r|r|r}
+ i&E_0&N_0&d&D=\operatorname{disc}(K)\\\hline
+ 2&576\mathrm e2&576&-11&-23\\
+ 4&3136\mathrm r2&3136&57&-31\\
+ 6&121\mathrm b1&121&21&-19\\
+ 9&1849\mathrm a1&1849&21&-19\\
+ 10&4489\mathrm a1&4489&217&-3\\
+ 11&26569\mathrm a1&26569&185801&-3
+\end{array}
+\]
+In every case $E_i=E_0^d$, $d,D,Dd$ are fundamental discriminants,
+$\gcd(dD,N_0)=\gcd(d,D)=1$, and every prime dividing $N_0$ splits
+in $K=\Q(\sqrt D)$. The genus character of
+$K(\sqrt d)/K$ is a primitive character of
+$\operatorname{Pic}(\mathcal O_{|d|})$, of conductor $|d|$.
+For example it is given on ideals prime to $d$ by
+$\chi(\mathfrak a)=\chi_d(N\mathfrak a)$; it is trivial on the
+units of the order because their norms are squares modulo $d$.
+At every prime dividing $d$ the local norm character is nontrivial,
+so the conductor is exactly $|d|$. All Heegner hypotheses of CST
+Theorem 1.1 hold. Its $\mu(N_0,D)$ is zero, and its
+$u=[\mathcal O_{|d|}^\times:\Z^\times]$ is one, including
+$D=-3$, since $|d|>1$.
+
+Let $Y=\sum_{[\mathfrak a]}\chi(\mathfrak a)\phi(P_{\mathfrak a})$.
+This is an actual point, since the coefficients are $\pm1$.
+It is fixed by $\ker\chi$ and is anti-invariant for the other
+automorphism of $K(\sqrt d)/K$, so twisting gives
+$Y_d\in E_i(K)$. Artin factorization gives
+\[
+ L(s,E_0,\chi)=L(E_i,s)L(E_i^D,s).
+\]
+The auxiliary central values below are nonzero. Consequently
+$E_i^D(\Q)$ has rank zero, and $E_i(K)$ has rank one. Since the
+specified $P_i$ generates $E_i(\Q)$ modulo torsion, trace gives
+\[
+ 2Y_d=aP_i\pmod{E_i(K)_{\rm tors}},\qquad a\in\Z.
+\]
+Indeed, $Y_d-\overline{Y_d}$ is torsion, while
+$Y_d+\overline{Y_d}$ is rational. Therefore
+$h_O(Y_d)=a^2h_O(P_i)/4$.
+
+\paragraph{Normalization of the Gross--Zagier formula.}
+Write $V_0=\operatorname{area}(\C/\Lambda_0)$ for the area determined
+by the minimal differential. Integration of $\phi^*\omega_0$ gives
+\[
+ 4\pi^2(f_0,f_0)_{\Gamma_0(N_0)}
+ =\frac{\deg\phi}{c_0^2}V_0.
+\]
+Theorem 1.1 consequently gives
+\[
+ L'(E_i,1)L(E_i^D,1)
+ =\frac{2V_0}{c_0^2|d|\sqrt{|D|}}\,\widehat h_K(Y).
+\]
+For clarity, this normalization follows from the Poincar\'e bundle,
+not from the choice of a numerical height routine. Let $L=\mathcal O(O)$
+and let $\lambda_L:E\to E^\vee$ be its principal polarization.
+The pullback of the normalized Poincar\'e bundle to $E\times E$
+is $m^*L\otimes p_1^*L^{-1}\otimes p_2^*L^{-1}$. Its restriction
+to the diagonal is $[2]^*L\otimes L^{-2}\simeq L^2$ for canonical
+heights. Hence the diagonal Poincar\'e height is $2h_O$. Relative
+heights over $K$ multiply the absolute height by $[K:\Q]$;
+therefore CST's diagonal N\'eron--Tate pairing is
+$2[K:\Q]h_O=4h_O$. Thus the last height is
+$4h_O(Y_d)=a^2h_O(P_i)$. The product of the two full real periods is
+\[
+ \Omega_i\Omega_{i,D}=
+ \begin{cases}
+ 2V_0/(|d|\sqrt{|D|}),&\Delta(E_0)<0,\\
+ 4V_0/(|d|\sqrt{|D|}),&\Delta(E_0)>0.
+ \end{cases}
+\]
+This follows directly from a real-adapted lattice basis; both
+minimal twist differential scalings are one. Put
+$r_i=L(E_i^D,1)/\Omega_{i,D}$ and
+$q_i=L'(E_i,1)/(\Omega_i h_O(P_i))$. Then
+\[
+ q_ir_i=\begin{cases}
+ a^2/c_0^2,&\Delta(E_0)<0,\\
+ a^2/(2c_0^2),&\Delta(E_0)>0.
+ \end{cases}
+\]
+In particular, if $c_0=1$ and $r_i=A_i/B_i$ is in lowest terms,
+the denominator of $q_i$ divides $2|A_i|$. For the numerical
+separation certificate we may safely use the weaker bound
+$4|A_i|$.
+
+\paragraph{Completed computational certificate.}
+The auxiliary ratios are $64,64,8,16,400,64$ in the displayed row
+order. The exact $q_i$ are $8,32,8,16,16,576$. The corresponding
+absolute integers $|a|$ are $32,64,8,16,80,192$, respectively.
+The complete certificate is \path{code/B_C6_exact_factors.py},
+with all input and output intervals in
+\path{records/B_C6_exact_factors.json}. Both $L$-sums use MPFR
+directed rounding, explicit Taylor remainder bounds and infinite
+tails; periods use Arb with an explicit Eisenstein-series tail;
+heights use the independent \path{records/C_cm_height_arb.json}.
+The primary YZZ manuscript, Section 7.1.1, printed pp.~218--219,
+Theorem 7.1.2, has now been read and explicitly confirms the
+relative-field and Poincar\'e conventions used above. The full
+computational proof, including global identification of the CM
+coefficient streams through the valence bound, is in
+\path{sections/C_gz_factors.tex}, Statement C.6.R5.
