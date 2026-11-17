@@ -1,0 +1,1242 @@
+\section{The fourfold: integral data, periods, and topology}
+\label{sec:fourfold}
+
+We use column vectors.  The matrices $A,B$ in the supplied data act on
+cohomology; $M_1=A^t$, $M_2=B^t$ act on
+$\Lambda=\mathbb Z^6=H_1(T^6;\mathbb Z)$, and
+$M_0=(M_1M_2)^{-1}$.  Positive based meridians satisfy
+$g_1g_2g_0=1$.  The exterior-square basis of $\bigwedge^2\mathbb Z^4$
+is $(01,02,03,12,13,23)$.  All assertions about an integral matrix below
+are checked over $\mathbb Z$ or $\mathbb Q$, without floating-point
+arithmetic.  The files in \texttt{code/part1/} contain the complete
+matrices, including the changes of basis in every Smith computation.
+
+\begin{statement}{P1.1}{Proved}
+The finite homology monodromies have orders $5,4$, respectively, and
+characteristic polynomials
+$(T-1)^2\Phi _5(T)$ and $(T-1)^2(T+1)^2(T^2+1)$.
+For $N=M_0-I$ we have $N^2=0$, $\operatorname{rank}N=3$, and
+nonzero Smith factors $1,1,1$.  Moreover
+\[
+ \Lambda^{\langle M_1,M_2\rangle}=0,\qquad
+ \Lambda_{\langle M_1,M_2\rangle}=\mathbb Z,
+\]
+where the quotient homomorphism is $\ell(x)=x_0$.
+On the cohomology lattice the corresponding groups are $\mathbb Ze_0$
+and $\mathbb Z/2$.  Every nonidentity power of each specified affine
+action $\tau_i$ is free.
+\end{statement}
+\begin{proof}
+Exact multiplication gives
+\[
+N=\begin{pmatrix}
+0&0&0&0&0&0\\0&0&0&1&0&-1\\0&0&0&0&1&1\\
+-1&0&0&0&0&0\\1&0&0&0&0&0\\-1&0&0&0&0&0
+\end{pmatrix},\qquad
+S=\begin{pmatrix}
+0&0&0&1&0&0\\0&1&0&0&0&0\\0&0&1&0&0&0\\
+-1&0&0&0&1&0\\1&0&0&0&0&1\\-1&0&0&0&0&0
+\end{pmatrix}.
+\]
+The matrix $S$ is unimodular and
+$S^{-1}M_0S=\left(\begin{smallmatrix}I_3&I_3\\0&I_3\end{smallmatrix}\right)$.
+The columns of $S$ are henceforth denoted
+$(a_1,a_2,a_3,b_1,b_2,b_3)$, so that $Nb_j=a_j$.
+This is also an integral certificate of the Smith assertion.
+The Hermite basis of
+$(M_1-I)\Lambda+(M_2-I)\Lambda$ is $(e_1,\ldots,e_5)$;
+the stacked matrix of the two fixed-vector equations has rank six.
+Transposing the matrices gives a fixed lattice $\mathbb Ze_0$ and
+coinvariant Smith factors $(1,1,1,1,1,2)$.  The pairing
+$\Lambda^\vee\times\Lambda\longrightarrow\mathbb Z$ identifies the
+fixed cohomology vector $e_0$ with the covector $\ell$.
+
+We have $M_iv_i=v_i$, $\ell(v_1)=1$, and $\ell(v_2)=-1$.
+Thus $\tau_i^k(x)=M_i^kx+kv_i/m_i$, and $\tau_i^{m_i}=1$ on the
+torus.  A fixed point of $\tau_i^k$ would give
+$k\ell(v_i)/m_i=0$ in $\mathbb R/\mathbb Z$.  For
+$0<k<m_i$ this is impossible.  The order and characteristic-polynomial
+computations, and the full fixed-lattice calculations, are reproduced by
+\texttt{tuple\_check.py}; its output records every power tested.
+\end{proof}
+
+\begin{statement}{P1.2}{Proved}
+The lower blocks of $A,B$ are precisely the quotient representations of
+$\bigwedge^2(C_f^{-1}),\bigwedge^2C_g$ in the supplied basis $Q$.
+The integral quotient is the dual of the primitive exterior-square
+lattice.  The natural map from the primitive lattice into that quotient
+has cokernel $\mathbb Z/2$; these two integral representations are not
+isomorphic.  Their rationalizations are isomorphic by that same map.
+\end{statement}
+\begin{proof}
+The two matrices obtained from their two-by-two minors are
+\[
+Q^{-1}\bigwedge^2(C_f^{-1})Q=
+\begin{pmatrix}
+1&-1&0&1&0&0\\0&1&-1&-1&1&0\\0&1&0&-1&0&0\\
+0&2&-1&-1&0&1\\0&2&0&-1&0&0\\0&1&1&-1&0&0
+\end{pmatrix},
+\]
+\[
+Q^{-1}\bigwedge^2C_gQ=
+\begin{pmatrix}
+1&0&1&0&0&0\\0&0&-1&0&1&0\\0&0&-1&0&0&1\\
+0&0&-1&0&0&0\\0&1&-1&0&0&0\\0&0&-1&1&0&0
+\end{pmatrix}.
+\]
+Their lower five-by-five blocks are the asserted blocks, entry by entry.
+Put $L=\bigwedge^2\mathbb Z^4$, let $(\ ,\ )$ be its unimodular wedge
+pairing, and set $\omega=(1,1,1,1,1,1)^t$.
+Then $(\omega,\omega)=2$ and the primitive sublattice
+$P_{\mathbb Z}=\omega^\perp$ is the kernel of
+$(1,-1,1,1,-1,1)$.  In the basis with columns
+\[
+\begin{pmatrix}
+1&-1&-1&1&-1\\1&0&0&0&0\\0&1&0&0&0\\
+0&0&1&0&0\\0&0&0&1&0\\0&0&0&0&1
+\end{pmatrix},
+\]
+the inclusion followed by projection
+$j:P_{\mathbb Z}\longrightarrow L/\mathbb Z\omega$ has matrix
+\[
+j=\begin{pmatrix}
+0&1&1&-1&1\\-1&2&1&-1&1\\-1&1&2&-1&1\\
+-1&1&1&0&1\\-1&1&1&-1&2
+\end{pmatrix},\qquad \det j=2.
+\]
+Its Smith factors are $(1,1,1,1,2)$.  The unimodular pairing on $L$
+identifies $L/\mathbb Z\omega$ with $P_{\mathbb Z}^\vee$;
+under this identification $j$ is the pairing map.
+
+To rule out a different integral intertwiner, we solve the two
+simultaneous bilinear-form invariance equations.  Each solution space
+over $\mathbb Q$ has dimension one.  The primitive integral forms have
+determinants $-2$ on $P_{\mathbb Z}$ and $-16$ on the quotient.
+A unimodular intertwiner would pull one primitive form to a rational
+multiple of the other.  Having coefficient content one on both sides
+forces that multiple to be $1$ or $-1$, which contradicts the different
+determinants.  All these linear equations and their solutions occur in
+\texttt{primitive\_lattice.py/.out}.  Thus the rational wording in the
+data is correct, whereas the stronger integral identification requested
+in item 1.4 has precisely the defect just exhibited.
+\end{proof}
+
+\begin{statement}{P1.3}{Proved}
+The two finite filling pieces have first integral homology
+$\mathbb Z^2$ and $\mathbb Z^2\oplus\mathbb Z/2$.
+\end{statement}
+\begin{proof}
+For $K_i=T^6/\langle\tau_i\rangle$, the universal covering deck group
+has commuting translations $x^u$, $u\in\Lambda$, and a generator $a_i$,
+with the complete relations
+\[
+a_ix^ua_i^{-1}=x^{M_iu},\qquad a_i^{m_i}=x^{v_i}.
+\]
+Indeed the affine lifts satisfy these relations, and they reduce every
+word uniquely to $x^ua_i^r$, $0\leq r<m_i$.
+The abelianization relation matrix has columns
+$((M_i-I)e_j,0)$ and $(-v_i,m_i)$.
+Smith reduction of these explicit seven-by-seven matrices gives the
+groups above.  The disk quotient
+$(T^6\times\Delta)/\langle(\tau_i,\zeta_{m_i})\rangle$
+retracts onto $K_i$ by equivariant radial contraction.  Freeness supplies
+ordinary smooth quotient charts by disjoint translates of small balls.
+\end{proof}
+
+\begin{statement}{P1.4}{Proved}
+The genus-two pencil has one nodal fibre away from $0,\infty$, at
+$\lambda_*=-256/3125$.  Good reduction at $0,\infty$ requires root
+orders $8,5$.  On this root orbifold its Hodge bundle is
+$\mathcal H=T^3\oplus T$, where
+\[
+T=\mathcal O\bigl((2/5)[\infty]-(3/8)[0]\bigr),\qquad
+\deg T=1/40,
+\]
+and $T^3$ is the line generated meromorphically by $dx/y$.
+\end{statement}
+\begin{proof}
+The discriminant of $x^5+\lambda^3x+\lambda^4$ is
+$\lambda^{15}(3125\lambda+256)$.
+At $\lambda_*$ the double root is $64/625$;
+the second $x$-derivative and first $\lambda$-derivative there are
+nonzero.  The remaining roots are simple.  The odd-degree
+hyperelliptic compactification is smooth at its branch point at
+infinity.  This gives one node, a smooth total surface at that node,
+and genus-one normalization.
+
+At zero set $\lambda=u^8$, $x=u^6X$, $y=u^{15}Y$; at infinity set
+$\lambda=u^{-5}$, $x=u^{-4}X$, $y=u^{-10}Y$.
+The resulting smooth equations and differentials are
+\[
+\begin{array}{c|c|c|c}
+ &\text{equation}&dx/y&x\,dx/y\\\hline
+0&Y^2=X^5+X+u^2&u^{-9}dX/Y&u^{-3}X\,dX/Y\\
+\infty&Y^2=X^5+uX+1&u^6dX/Y&u^2X\,dX/Y.
+\end{array}
+\]
+Their central polynomials are square-free.  The deck maps at zero and
+infinity are $(X,Y)\mapsto(iX,\zeta_8Y)$ and
+$(X,Y)\mapsto(\zeta_5^{-1}X,Y)$, respectively.
+The eigenvalues on $H^{1,0}$ are $(\zeta_8,\zeta_8^3)$ and
+$(\zeta_5^{-1},\zeta_5^{-2})$.  Including conjugates gives characteristic
+polynomials $T^4+1$ and $\Phi_5$, proving minimality of the root orders.
+The fourth power at zero is the hyperelliptic involution, acting as
+$-I$ on $H^1$ and as $I$ on its exterior square.
+
+The two meromorphic differential generators have orbifold divisors
+$(6/5)[\infty]-(9/8)[0]$ and
+$(2/5)[\infty]-(3/8)[0]$.
+At the node they are independent sections of the dualizing Hodge
+extension: one has opposite nonzero residues at the two points of the
+normalization, and the linear combination vanishing at the node is a
+regular nonzero elliptic differential.  Thus there is no additional
+divisor at $\lambda_*$.  These computations prove the asserted direct
+sum and its degrees.  The discriminant and all substitutions are
+checked in \texttt{pencil\_charts.py/.out}.
+\end{proof}
+
+\begin{statement}{P1.5}{Refuted}
+The formula in the prompt with $P$ the image of
+$\ell_0\wedge\mathcal H$, and $\mathcal H$ the rank-two Hodge bundle,
+cannot produce a rank-three subbundle.  The required rank-three image
+is instead the image of $\ell_0\wedge\mathcal H_{\mathrm{dR}}$, where
+$\mathcal H_{\mathrm{dR}}$ is the full rank-four de Rham bundle.
+\end{statement}
+\begin{proof}
+The kernel of $\ell_0\otimes\mathcal H\to\bigwedge^2\mathcal H$
+is $\ell_0\otimes\ell_0$, so its image has rank one.  Projection and
+addition of a map into the invariant line cannot increase its domain
+rank.  For the corrected domain there is an injective holomorphic map
+\[
+\ell_0\otimes(\mathcal H_{\mathrm{dR}}/\ell_0)
+ \longrightarrow\bigwedge^2\mathcal H_{\mathrm{dR}},\quad
+u\otimes[v]\longmapsto u\wedge v.
+\]
+Every nonzero image vector is decomposable and has wedge square zero;
+$\omega^2\ne0$.  Projection modulo $\mathcal O\omega$ is therefore
+injective on its rank-three image.  This specifies the comparison map
+and the corrected bundle used below.
+\end{proof}
+
+\begin{statement}{P1.6}{Known}
+There is an orientation-preserving diffeomorphism
+\[
+\bigl(3\mathbb HP^2\mathbin{\#}(-\mathbb HP^2)\bigr)\mathbin{\#}\Sigma^8
+ \cong 3\mathbb HP^2\mathbin{\#}(-\mathbb HP^2)
+\]
+for every homotopy eight-sphere $\Sigma^8$.
+\end{statement}
+\begin{proof}
+Kramer--Stolz, \emph{A diffeomorphism classification of manifolds which
+are like projective planes}, J. Differential Geometry 77 (2007),
+Theorem A, applies to a smooth simply connected $2m$-manifold,
+$2m\ne4$, with integral homology $\mathbb Z\oplus\mathbb Z\oplus\mathbb Z$.
+Its conclusion is absorption of every homotopy $2m$-sphere by connected
+sum.  The cell structure of $\mathbb HP^2$ in dimensions $0,4,8$
+verifies all hypotheses.  The resulting diffeomorphism
+$\mathbb HP^2\#\Sigma^8\to\mathbb HP^2$ preserves orientation, since
+both signatures are $+1$, whereas reversing orientation negates
+signature.  Taking its oriented connected sum with the identity on
+$2\mathbb HP^2\#(-\mathbb HP^2)$ proves the displayed diffeomorphism.
+We read the theorem in the publisher PDF at
+\url{https://archive.ymsc.tsinghua.edu.cn/pacm_download/21/694-JDG-77-2-A1-kramer.pdf}.
+\end{proof}
+
+\begin{statement}{P1.7}{Proved}
+The integral $H^1$ monodromy of the pencil has a companion marking with
+finite pair $(C_f^{-1},C_g)$, and cusp product $C_fC_g^{-1}$.
+Its exterior-square quotient is consequently the integral quotient
+representation appearing in P1.2.
+\end{statement}
+\begin{proof}
+Put $z=\lambda/\lambda_*$ and use the based-meridian convention
+$g_\infty g_1g_0=1$ at $z=1/2$ of Beukers--Heckman,
+Definition 3.1.  The two finite spectra are disjoint.  The nodal
+monodromy is a rank-one Picard--Lefschetz transformation with primitive
+vanishing cycle $\delta$ and coefficient $\pm1$.
+Here primitivity follows by taking a transverse integral curve to the
+nonseparating vanishing circle; coefficient one follows by turning the
+annulus $xy=z-1$ once positively.  The sign depends only on the order
+of the pairing and on homology versus cohomology.
+
+Beukers--Heckman, Invent. Math. 95 (1989), Theorem 3.5 (Levelt), gives
+the companion triple $(C_f,C_f^{-1}C_g,C_g^{-1})$.
+The proof is defined over $\mathbb Q$ in this case: the intersection of
+the three appropriate translates of the rational rank-three kernel
+contains a rational vector whose four successive translates form a
+basis.  The disjoint spectra imply irreducibility, since a common
+proper invariant subspace or its quotient on which the rank-one
+transformation is trivial would give a shared eigenvalue.  This
+verifies the field of the resulting intertwiner as well as the
+hypotheses of the theorem.
+
+The integral upgrade uses the exact matrices
+\[
+d=(1,1,1,0)^t,\qquad
+J=\begin{pmatrix}
+0&-1&1&-1\\1&0&-1&1\\-1&1&0&-1\\1&-1&1&0
+\end{pmatrix}.
+\]
+They satisfy $C_f^tJC_f=C_g^tJC_g=J$, $\det J=1$, and
+$C_f^{-1}C_g=I-d(d^tJ)$.
+The orbit $(d,C_fd,C_f^2d,C_f^3d)$ has alternating pairing
+\[
+\begin{pmatrix}0&-1&0&0\\1&0&-1&0\\0&1&0&-1\\0&0&1&0\end{pmatrix},
+\]
+of determinant one.  Under a rational intertwiner let $d$ map to
+$a\delta$, and let the pulled-back intersection form be $cJ$.
+The space of simultaneous invariant alternating forms has dimension
+one by the exact invariance equations.  Comparing the rank-one
+transvection formulas yields $c/a^2=\pm1$.
+It follows that the four integral cycles
+$\delta,H_\infty\delta,H_\infty^2\delta,H_\infty^3\delta$ have the
+displayed unimodular pairing, with an overall sign.  Their sublattice
+has index one in the unimodular integral $H^1$, since its determinant
+is the square of that index.  Rescaling the intertwiner by $a$ thus
+gives an integral marking.
+
+The antidiagonal reversal matrix $R$ satisfies
+$RC_fR^{-1}=C_f^{-1}$ and $RC_g^{-1}R^{-1}=C_g$.
+Consequently the cusp product is $(C_gC_f^{-1})^{-1}$, matching
+$(BA)^{-1}$ on the supplied cohomology system.  Its transpose is the
+specified $M_0$.  The matrices and pairing calculation are recorded in
+\texttt{companion\_markings.py/.out}.  The verified primary source is
+\url{https://math.uchicago.edu/~drinfeld/Hypergeometric_motives/Beukers-Heckman.pdf},
+pp.~331--332.
+\end{proof}
+
+\begin{statement}{P1.8}{Proved}
+With the corrected rank-three bundle $P$ of P1.5, the supplied rank-six
+system admits a holomorphic lifted family
+$F_c=(\sigma+ic\alpha e)(P)$ on the punctured base.
+For a specified splitting $\sigma$ there is a real analytic function
+$h$ with finite attained minimum $h_{\min}$, and the exact domain of
+real parameters giving $F_c\cap\overline{F_c}=0$ everywhere is
+$c>-h_{\min}$.
+At the cusp its periods have the form
+$Z(q)=(\log q/(2\pi i))I_3+C(q)$ with $C$ holomorphic and bounded.
+The construction extends to the two finite root charts and descends to
+orders $5,4$ on the rank-six system.
+\end{statement}
+\begin{proof}
+Work first on the root orbifold with orders $5,8$, leaving the nodal
+point as a logarithmic point.  The symplectic pairing and the Hodge
+subbundle give an exact sequence
+$0\to\mathcal H\to\mathcal H_{\mathrm{dR}}\to\mathcal H^\vee\to0$.
+This remains exact at the node by the residue pairing in its plumbing
+chart.  With $\ell_0=T^3$ the corrected bundle fits into
+\[
+0\longrightarrow T^4\longrightarrow P
+ \longrightarrow\mathcal O\oplus T^2\longrightarrow0.
+\]
+Contraction in $\ell_0\wedge\mathcal H_{\mathrm{dR}}$ defines
+$\alpha:P\to\mathcal O$, using the unique lift supplied by P1.5;
+it is surjective.  Thus it is not an asserted contraction on the whole
+quotient by $\omega$, where that formula would not be well defined.
+
+For $a=2,4,-2,-4$ the invariant coarse direct image of $T^a$ has degree
+$-1$, by taking the floors of the two coefficients of its rational
+divisor.  Finite-stabilizer invariants are exact in characteristic zero
+by averaging.  Consequently $H^0(T^a)=H^1(T^a)=0$ for these exponents.
+The two-chart Laurent-series computation for $\mathcal O(-1)$ proves
+this vanishing directly.  The extension therefore splits, and
+\[
+P\cong T^4\oplus T^2\oplus\mathcal O,\qquad
+H^1(P^\vee)=0,\quad H^0(P^\vee)=\mathbb C\alpha,
+\quad H^0(P)=\mathbb Cg,
+\]
+where $\alpha(g)=1$.
+
+Let $V$ be the logarithmic extension of the supplied rank-six flat
+bundle.  At the cusp use its nilpotent exponential frame, and on each
+finite root chart use the trivial flat extension with the deck action.
+These charts give the exact bundle sequence
+$0\to\mathcal Oe\to V\to W\to0$.
+Its pullback to $P$ splits because $H^1(P^\vee)=0$.
+All holomorphic splittings are $\sigma+z\alpha e$, $z\in\mathbb C$.
+To remove this scalar choice we require the $e$-coordinate of
+$\sigma(g)$ to be zero in the fixed flat frame at $z=1/2$.
+
+Choose a local generator $u$ of $\ell_0$ and put
+$r=i\pi(u\wedge\bar u)\in W_{\mathbb R}$, $A=\alpha(r)>0$;
+the sign is that of the polarization.  The symplectic orthogonal
+decomposition into $\langle u,\bar u\rangle$ and its two-dimensional
+complement proves $P\cap\bar P=\mathbb Cr$.
+Indeed $u\wedge v-\bar u\wedge w=t\omega$ has zero component in the
+exterior square of that complement on the left and a nonzero such
+component on the right unless $t=0$.  With $t=0$ its intersection is
+the line generated by $u\wedge\bar u$.
+Define $h$ by the exact equality
+\[
+\sigma(r)-\overline{\sigma(r)}=2iAh e.
+\]
+Both $r$ and $A$ scale by $|a|^2$ when $u$ scales by $a$, so this is
+well defined.  Comparing the unique lifts of a multiple of $r$ proves
+\[
+F_c\cap\overline{F_c}=0\quad\Longleftrightarrow\quad h+c\ne0.
+\]
+
+The sign and growth at the cusp follow from the actual extension
+matrices.  Put $D=C_fC_g^{-1}-I$ and $N_V=(BA)^{-1}-I$.
+Only the zeroth column of $D$ is nonzero, and it is $(0,1,1,1)^t$;
+the top row of $N_V$ is $(0,0,0,-1,1,-1)$.
+For arbitrary $a,b\in\mathbb C^4$, two-by-two minor expansion gives
+\[
+(N_V)_{0,*}(0,\pi(a\wedge Db))
+ =\operatorname{contr}(a\wedge Db)=a_0b_0,
+ \qquad N_W\pi(a\wedge Db)=0.
+\]
+These polynomial identities, with arbitrary symbols for the entries of
+$a,b$, are checked in \texttt{cusp\_lift\_asymptotic.py}.
+Write $u=\exp(sD)a(q)$, $s=\log q/(2\pi i)$ and $y=\operatorname{Im}s$.
+The vector $a$ is holomorphic, and $a_0(0)\ne0$ because $dx/y$ has
+nonzero nodal residue.  In the logarithmic frame we obtain
+\[
+\exp(-sN_W)r=i\pi(a\wedge\bar a)+2y\pi(a\wedge D\bar a),
+\quad
+A=i\operatorname{contr}(a\wedge\bar a)+2y|a_0|^2.
+\]
+The splitting is bounded in that frame.  On returning by
+$\exp(sN_V)$, the only quadratic contribution to the imaginary
+$e$-coordinate is $2|a_0|^2y^2$.  All other terms are $O(y)$,
+uniformly for $\operatorname{Re}s$ in a fixed unit interval.
+Dividing by $A=2|a_0|^2y+O(1)$ proves
+\[
+h(q)=y+O(1)=-\frac{\log|q|}{2\pi}+O(1).
+\]
+The function extends continuously over both finite root charts and
+tends to $+\infty$ at the cusp.  Compactness away from that cusp gives
+an attained minimum.  Connectedness and the intermediate value
+theorem give $h(U)=[h_{\min},\infty)$, with finite-root points included
+when testing the completed family.  Thus the domain is precisely the
+displayed half-line.  Replacing $\sigma$ by $\sigma+ib\alpha e$ replaces
+$h$ by $h+b$ and sends $F_c$ to $F_{c+b}$, proving the stated
+comparison between choices.
+
+At $q=0$ the map $N_V:F_{\log}\to\ker N_V$ is an isomorphism.
+On the quotient its rank is two and its kernel is generated by
+$\pi(a\wedge Da)$; the displayed scalar identity sends a lift of this
+generator to $a_0^2e\ne0$.  In the integral Jordan marking, the
+logarithmic three-plane is therefore a graph of a holomorphic matrix
+$C(q)$; applying $\exp(sN_V)$ adds $sI_3$.  Evaluation on the homology
+lattice gives the period matrix $(I_3,Z(q))$.
+The fourth power of the order-eight deck transformation acts trivially
+on $V$ and $P$, so the graph descends to the order-four chart.
+The other chart has order five.  The affine translations are
+holomorphic translations on the resulting tori, and their linear
+parts preserve this graph by construction.
+\end{proof}
+
+\paragraph{Scope of P1.8.}
+The definition of $h$ is exact and specifies its normalization, its
+range, and its cusp growth.  We have not evaluated $h_{\min}$ or
+supplied the two independent thirty-digit period calculations requested
+in item 1.4.  These numerical requirements remain separately recorded;
+they are not consequences of the existence proof.
+
+\begin{statement}{P1.9}{Proved}
+The periodic Kuhn fan, in the marking $S$, gives a smooth proper
+holomorphic filling of the periods $Z(q)=sI_3+C(q)$ for a sufficiently
+small disk.  Its central fibre is reduced with normal crossings.
+Modulo the index-one period lattice it has respectively $1,7,12,6$
+strata of dimensions $3,2,1,0$, each isomorphic to the corresponding
+complex torus $(\mathbb C^*)^d$, and Euler number $6$.
+An index-$d$ period sublattice gives $d$ times these stratum counts and
+Euler number $6d$.
+\end{statement}
+\begin{proof}
+Let $\Sigma$ consist of the cones over all simplices of the periodic
+Kuhn triangulation at height one, together with their faces.  For an
+ordered maximal simplex $v_0,\ldots,v_3$, the columns $(v_j,1)$ form a
+unimodular four-by-four matrix.  If $u_j$ are its dual integral basis,
+the corresponding chart has coordinates $x_j=\chi^{u_j}$ and is
+$\mathbb C^4$.  The base character is the sum of the four $u_j$, so
+\[
+q=x_0x_1x_2x_3.
+\]
+On a common face we invert the coordinates of omitted rays and change
+dual bases; these are mutually inverse integral monomial maps.  These
+explicit charts and overlaps construct a smooth toric space over the
+disk with a reduced normal-crossings zero fibre.
+
+The period group acts by
+\[
+(z,q)\longmapsto
+\bigl(q^\lambda\exp(2\pi iC(q)\lambda)z,q\bigr),
+\qquad \lambda\in\mathbb Z^3.
+\]
+The monomial part takes the cone over $\sigma$ to the cone over
+$\sigma+\lambda$; the unit part is torus multiplication holomorphic in
+$q$, which extends over each chart.  These maps compose according to
+addition in $\mathbb Z^3$.  On the zero fibre a fixed point would
+require a nonzero translation to stabilize a bounded simplex, which
+is impossible.  For small nonzero $q$, the imaginary part of the
+period matrix is $\operatorname{Im}(s)I_3+\operatorname{Im}C(q)$ and
+is invertible; hence the action is free there too.
+
+We give a compactness check for the infinite-chart construction.  Put
+$u=\log|z|/\log|q|$.  A period changes $u$ by
+$(I+E(q))\lambda$, where $E(q)=O(1/|\log|q||)$ uniformly.
+On a small disk $(I+E)^{-1}$ has norm at most two.  Reduction of
+$(I+E)^{-1}u$ modulo $\mathbb Z^3$ therefore gives a representative
+with $u$ in a fixed bounded region.  Only finitely many simplices
+meet that region.  In a simplex containing $u$, the numbers
+$\log|x_j|/\log|q|$ are its barycentric coordinates; thus
+$|x_j|\leq1$.  Finitely many closed polydisks in these charts give
+compact representatives above a smaller closed base disk.  Every
+central point is included in such representatives by translating its
+finite star into the same bounded region and then using its complete
+toric component.
+
+The action is proper.  For compact coordinate neighborhoods approaching
+the central fibre, only finitely many cones and their faces occur;
+their translates can meet only when the translation is bounded.
+Equivalently, the valuation estimate just given and the uniform bound
+on $(I+E)^{-1}$ bound the translations for a sequence with $q\to0$.
+On a closed annulus away from zero, properness is the usual
+properness of a full lattice action.  These two checks give finitely
+many intersecting translates of any pair of compact neighborhoods.
+The quotient is therefore Hausdorff, is smooth by freeness, and is
+proper over the disk by the compact representatives.  The map is flat
+because $q$ is a nonzero divisor in each smooth chart.  Exponentiation
+$z_j=\exp(2\pi i\zeta_j)$ identifies the nonzero fibres with
+$\mathbb C^3/(\mathbb Z^3+Z(q)\mathbb Z^3)$.
+
+A $p$-simplex supplies a stratum $(\mathbb C^*)^{3-p}$.
+Enumeration of all faces of the six Kuhn tetrahedra, retaining their
+translation identifications, gives $(1,7,12,6)$.
+Additivity of compactly supported Euler characteristic and
+$\chi_c(\mathbb C^*)=0$ leave six point contributions.
+Inclusion of an index-$d$ period sublattice induces a finite covering
+of these toric quotients.  Each simplex orbit has exactly $d$ lifts,
+which proves the stated index dependence by an actual comparison map.
+\end{proof}
+
+\begin{statement}{P1.10}{Proved}
+For every real parameter $c>-h_{\min}$ the corrected construction gives
+a compact smooth complex fourfold $M_c$ and a proper holomorphic map
+to $\mathbb P^1$ with the two specified multiple fibres and the
+index-one Kuhn cusp.  With its complex orientation,
+$\pi_1(M_c)=1$ and $\chi(M_c)=6$.
+\end{statement}
+\begin{proof}
+Evaluation of $\Lambda$ on $F_c$ maps $\Lambda_{\mathbb R}$
+isomorphically onto the underlying real bundle of $F_c^\vee$:
+the kernel is zero exactly by $F_c\cap\bar F_c=0$.
+The image is consequently a full discrete lattice.  Quotient by its
+holomorphic period sections gives a holomorphic torus bundle on the
+nonspecial base.
+
+On a finite root chart $u^{m_i}=t_i$, divide the pullback torus bundle by
+\[
+(x,u)\longmapsto(M_ix+v_i/m_i,\zeta_{m_i}u).
+\]
+Freeness proves smoothness, including the central fibre.  The special
+divisor is $m_i$ times the reduced free quotient.  On the punctured
+root disk translation by
+$-(\log u/(2\pi i))v_i$, interpreted by its period section, identifies
+this affine quotient with the original Jacobian bundle.  A change of
+logarithm gives an integral lattice period; replacing $u$ by
+$\zeta_{m_i}u$ cancels exactly the affine term $v_i/m_i$.
+This proves the holomorphic gluing and its sign.
+At the cusp use P1.9 and the exponential period map.  The zero section
+$\zeta=0$ extends to $z=1$ in the dense torus of the component marked
+by the vertex zero.  The resulting map is proper by a finite compact
+cover of the base by the three local pieces and a compact remainder
+with torus fibres.  All total-space charts and their overlaps have
+already been specified, so this produces a smooth compact complex
+fourfold, and in particular an almost complex structure.
+
+For completeness we record every van Kampen relation.  The main
+bundle has its zero section and fundamental group
+$\Lambda\rtimes\langle g_1,g_2\rangle$.
+The finite pieces impose
+$g_i^{m_i}=v_i$ and $g_ix^ug_i^{-1}=x^{M_iu}$; the logarithmic gluing
+above supplies these signs.  The cusp zero section kills
+$g_0=(g_1g_2)^{-1}$ and the cusp collapse kills $\operatorname{im}N$.
+The latter assertion follows directly from the toric moment model in
+P1.11: angular cycles $a_j$ collapse and the base cycles $b_j$ survive.
+Its fundamental group is $\mathbb Z^3$, since the simply connected
+complete toric components and their connected toric intersections have
+dual complex $\mathbb R^3/\mathbb Z^3$; alternatively, van Kampen on
+the moment cells kills the angular loops generated by the primitive
+facet normals and retains exactly the three base loops.
+Thus the full presentation is
+\[
+\left\langle \Lambda,g_1,g_2\ \middle|\
+ [\Lambda,\Lambda]=1,\quad
+ g_ix^ug_i^{-1}=x^{M_iu},\quad
+ g_1^5=v_1,\ g_2^4=v_2,\ g_1g_2=1,\ \operatorname{im}N=0
+\right\rangle.
+\]
+The last relation is redundant after the preceding ones but records
+the actual cusp map.  Since $g_2=g_1^{-1}$, the two induced actions are
+inverse; their orders divide both five and four and are therefore one.
+The remaining fibre group is $\mathbb Z$ through $\ell$.  With its
+generator $z$, the additive relations are
+$5g_1-z=0$, $4g_2+z=0$, $g_1+g_2=0$.
+Their matrix
+\[
+\begin{pmatrix}5&0&-1\\0&4&1\\1&1&0\end{pmatrix}
+\]
+has determinant $-1$, proving triviality.
+Euler additivity gives $\chi(M_c)=6$: smooth tori and finite free
+torus quotients have Euler number zero, and P1.9 gives the remaining
+contribution.
+\end{proof}
+
+\begin{statement}{P1.11}{Proved}
+The index-one central cusp fibre $C$ has torsion-free integral homology
+with ranks $(1,3,9,9,10,3,1)$.
+The collapse $\kappa:T^6\to C$ has primitive image in every degree;
+it is onto except in degree four, where its cokernel is $\mathbb Z$.
+Its image ranks are $(1,3,9,9,9,3,1)$.
+In every degree its kernel is the saturation of
+$(\bigwedge^kM_0-I)\bigwedge^k\Lambda$.
+\end{statement}
+\begin{proof}
+We first remove the unit matrix $C(q)$ topologically, by an explicit
+deformation, without changing the integral marking.  Replace it by
+$\theta C(q)$, $0\leq\theta\leq1$.  The action and properness estimates
+of P1.9 are uniform in $\theta$.  Local quotient charts form a smooth
+family of pairs, with the local equation $q=x_0x_1x_2x_3$ independent
+of $\theta$.  Local lifts of $\partial/\partial\theta$, tangent to every
+coordinate stratum and annihilating $q$, can be patched by a partition
+of unity.  Over a smaller compact disk their flow exists for the whole
+interval.  This gives a stratified diffeomorphism of the central
+fibres and a diffeomorphism of the nearby fibres, preserving the
+period marking.  The same construction on the real oriented blowup
+preserves the collapse map.  We may therefore calculate at $C(q)=0$.
+
+Here is a concrete topological model.  Put $G=4I_3-\mathbf1\mathbf1^t$.
+Its positive eigenvalues are $1,4,4$.  The Voronoi polytope in dual
+coordinates is cut out by
+\[
+|v^ty|\leq \tfrac12v^tGv
+ \quad (0\ne v\in\{0,1\}^3).
+\]
+The value on a binary vector with $k$ nonzero entries is $k(4-k)$.
+These fourteen primitive facet normals give the star of a vertex in
+the Kuhn triangulation.  One checks its Delaunay tetrahedra by the
+successive chains
+$0,e_i,e_i+e_j,e_1+e_2+e_3$ for the six permutations $(i,j,k)$;
+solving their three perpendicular-bisector equations and the fourteen
+inequalities verifies precisely their common faces.  The translates
+of this Voronoi polytope by $G\mathbb Z^3$ tile $\mathbb R^3$.
+
+For a simplex $\sigma$ let $D_\sigma$ be its dual cell in this tiling,
+and let
+$L_\sigma=\operatorname{span}_{\mathbb Z}\{v-v_0:v\in\sigma\}$.
+The compact toric component with this normal fan is the quotient of
+its moment polytope times the angular torus by the subtori generated
+by the facet normals that meet a given face.  This description follows
+on each affine chart by writing its coordinates in polar form;
+at a zero coordinate its circle argument is forgotten.  Gluing the
+faces and then taking the period quotient gives a continuous
+homeomorphism from the compact quotient
+\[
+\mathcal Q=
+\bigl((\mathbb R^3/G\mathbb Z^3)\times
+       (\mathbb R^3/\mathbb Z^3)\bigr)/\!\sim\ longrightarrow C,
+\]
+where over the relative interior of $D_\sigma$ the equivalence
+relation collapses the subtorus $L_\sigma\otimes\mathbb R/\mathbb Z$.
+The map is bijective by the polar-coordinate description on each
+toric stratum, so compactness and Hausdorffness make it a homeomorphism.
+Its angular identity defines a continuous section of the projection to
+the base three-torus.
+
+The actual nearby-fibre collapse is the quotient map in this model.
+To see the comparison, perform the real oriented blowup of the
+normal-crossings divisor in each chart.  Retain the arguments of all
+$x_j$, with their sum fixed by $\arg q$, and then forget the arguments
+of coordinates whose radii are zero.  At a face the forgotten
+subtorus is exactly $L_\sigma$.  The uncollapsed arguments and the
+dual moment coordinates give the product of the angular and base
+three-tori above.  In a chart the passage to a small smooth fibre is
+obtained by increasing the nonnegative radii continuously so their
+product is $|q|$, keeping the arguments and $\arg q$ fixed; this is
+invertible after fixing the transverse radial parameter.  On common
+faces the integral monomial transformations give exactly the same
+angular quotient.  Patching the radial parameters by positive
+partitions of unity gives the global identification, while forgetting
+the arguments is unchanged.  Thus this comparison fixes the map on
+the marked angular cycles $a_j$ and base cycles $b_j$, not merely
+the Betti numbers of a putative central fibre.
+
+Filter $\mathcal Q$ by the dimension $d$ of its dual base cells.
+Over the interior of the dual cell of a $p$-simplex, $d=3-p$ and the
+angular quotient has lattice
+$Q_\sigma=\mathbb Z^3/L_\sigma$ of rank $d$.
+Excision for the cell and its boundary gives the relative chain
+groups of the resulting homology spectral sequence:
+\[
+E^1_{d,q}=\bigoplus_{\dim\sigma=3-d}\bigwedge^qQ_\sigma.
+\]
+Orient dual cells by the orientation of the base and the ordered
+simplex.  The differential is the signed quotient map for each
+codimension-one coface.  More explicitly, with integral projection
+matrices $Q_\sigma$ and chosen right inverses $S_\sigma$,
+\[
+D_{p,q}[\tau,\sigma]=
+ \sum_{\sigma=\partial_j\tau\ {\rm mod}\ \mathbb Z^3}
+ (-1)^j\bigwedge^q(Q_\tau S_\sigma).
+\tag{1.11.1}
+\]
+All $L_\sigma$ are primitive because the tetrahedra are unimodular.
+Thus these projections and right inverses are integral.  Formula
+(1.11.1) specifies every integer entry, including multiple incidences
+under translation identifications.  The program
+\texttt{cusp\_complex.py} enumerates the $26$ simplex classes, all
+$74$ codimension-one incidences, and exports every matrix, basis, and
+Smith certificate to \texttt{cusp\_complex.json}.
+
+The nonzero $E^2_{d,q}$ ranks are
+\[
+\begin{array}{c|rrrr}
+q\backslash d&0&1&2&3\\\hline
+0&1&3&3&1\\
+1&0&6&8&3\\
+2&0&0&7&3\\
+3&0&0&0&1
+\end{array}
+\]
+and every group is free.  Support leaves only the possible higher
+differential $d_2:E^2_{3,0}\to E^2_{1,1}$.
+The angular identity section splits the base projection as a map of
+filtered spaces, so the base fundamental class survives.  This kills
+that differential.  All subsequent differentials have zero source or
+target.  The filtration extensions are extensions of free abelian
+groups and therefore split, proving the asserted integral homology.
+
+The product-to-quotient map induces on $E^1$ the exterior powers of
+the quotient projections.  The program \texttt{cusp\_collapse.py}
+computes the induced maps on the above Smith bases; all cokernels are
+free, zero except for one generator in total degree four.
+Surjectivity and primitivity transfer from the associated graded
+groups through the finite filtration: successively lift a class from
+each filtration quotient, and note that a filtration with free
+quotients has no torsion.  This proves the corresponding assertions
+for the actual collapse, including its integral index.
+
+For a fully marked certificate we represent a base cycle $b_J$ by
+Poincar\'e duality from the Alexander--Whitney cup cocycle on the
+complementary coordinates.  On an ordered $p$-simplex its coefficient
+is
+\[
+\operatorname{sgn}(J,J^c)
+ \prod_{r=1}^p(v_r-v_{r-1})_{(J^c)_r}.
+\]
+Tensoring with an angular exterior vector and applying (1.11.1)
+gives the matrices exported by \texttt{cusp\_marked\_collapse.py}.
+They annihilate $\bigwedge^kM_0-I$ exactly.  The actual collapse also
+annihilates that operator, since turning the smoothing parameter
+does not change its image in the central fibre.  The computed ranks
+equal the ranks of the monodromy coinvariants; primitivity therefore
+identifies both kernels with the saturation of its image.
+Consequently the exported matrices are matrices of the actual
+collapse in suitable integral target bases.  This last argument also
+eliminates any ambiguity from choosing splittings of the filtration.
+\end{proof}
+
+\begin{statement}{P1.12}{Proved}
+The fourfold $M_c$ has torsion-free integral homology
+\[
+H_k(M_c;\mathbb Z)=
+\begin{cases}
+\mathbb Z,&k=0,8,\\
+\mathbb Z^4,&k=4,\\
+0,&k=1,2,3,5,6,7.
+\end{cases}
+\]
+In particular it is three-connected.
+\end{statement}
+\begin{proof}
+We compute the complement $Y$ of the open cusp cap, then attach the
+cusp using only the degrees needed to prove three-connectivity.
+This avoids assigning a value to a boundary suspension that is not
+determined by the fibre specialization alone.
+
+Write $L_k=\bigwedge^k\Lambda$ and $W_{i,k}=\bigwedge^kM_i$.
+The cellular model of the main torus bundle over a graph with two
+oriented edges has
+\[
+G_k=L_k\oplus L_{k-1}\oplus L_{k-1},\qquad
+d_G(f,x_1,x_2)=((W_{1,k-1}-I)x_1+(W_{2,k-1}-I)x_2,0,0).
+\tag{1.12.1}
+\]
+The boundary mapping torus at $i$ has
+$B_{i,k}=L_k\oplus L_{k-1}$ and
+\[
+d_{B_i}(f,x)=((W_{i,k-1}-I)x,0).
+\tag{1.12.2}
+\]
+The finite boundary maps to $G$ by identity on $L_k$ and inclusion
+of the suspension into its respective edge.  The cusp boundary,
+corresponding to $(g_1g_2)^{-1}$, maps by
+\[
+j_{0,G}(f,x)=(f,-W_{2,k-1}W_{0,k-1}x,-W_{0,k-1}x).
+\tag{1.12.3}
+\]
+This follows by traversing the second edge backwards and then the
+first backwards, transporting the fibre chain to each initial end.
+Indeed its boundary is $W_{0,k-1}-I$ because
+\[
+-(W_1-I)W_2W_0-(W_2-I)W_0=W_0-I.
+\]
+
+Here are full models for the finite pieces and their attaching maps.
+Put $\varepsilon_i=\ell(v_i)$ and
+$P_i=(\varepsilon_iv_i,e_1,\ldots,e_5)$.
+This is unimodular.  It splits
+$\Lambda=\mathbb Z(\varepsilon_iv_i)\oplus K$, $K=\ker\ell$,
+and $P_i^{-1}M_iP_i=1\oplus R_i$.
+The cap retracts onto the mapping torus of $R_i$ on $T_K$.
+Its chains are
+\[
+E_{i,k}=\bigwedge^kK\oplus\bigwedge^{k-1}K,
+\qquad d_{E_i}(f,x)=((\bigwedge^{k-1}R_i-I)x,0).
+\tag{1.12.4}
+\]
+In these split coordinates, with $v=\varepsilon_iv_i$, the finite
+boundary-to-cap chain map is specified on all summands by
+\[
+\begin{array}{c|c}
+\text{boundary chain}&\text{cap chain}\\\hline
+x\in\bigwedge^kK&(x,0)\\
+v\wedge x&(0,\varepsilon_i\sum_{j=0}^{m_i-1}
+                  (\bigwedge^{k-1}R_i)^jx)\\
+g_i\wedge x&(0,x)\\
+g_i\wedge v\wedge x&0.
+\end{array}
+\tag{1.12.5}
+\]
+Changing back uses
+$\operatorname{diag}(\bigwedge^kP_i^{-1},
+\bigwedge^{k-1}P_i^{-1})$.
+Geometrically this map is
+$(t,y,\theta)\mapsto[y,\theta+\varepsilon_im_it]$ into the mapping
+torus.  The $t$-circle sweeps $m_i$ strips, giving the norm sum; the
+$g_i$-circle sweeps one strip; their product maps to a single
+base direction, giving zero on the last row.  This proves the map
+including its sign and the possible finite-cap torsion.
+
+We justify that these are integral cellular models, rather than a
+formal use of invariant rational forms.  In the bases with columns
+\[
+K_1=\begin{pmatrix}
+-1&-1&0&-1&0\\0&1&0&1&1\\0&1&0&0&0\\
+0&-1&-1&0&-1\\0&0&1&0&0
+\end{pmatrix},\qquad
+K_2=\begin{pmatrix}
+-1&0&-1&0&-1\\-1&1&0&1&-1\\0&1&-1&1&-1\\
+0&-1&0&-1&1\\1&-1&1&0&1
+\end{pmatrix},
+\]
+both unimodular, $R_1$ is the permutation of five coordinates in a
+cycle, and $R_2$ is a four-cycle together with multiplication by $-1$
+on the fifth coordinate.  The minimal product cell structure of
+circles is preserved by these signed permutations; its cellular
+boundary is zero and its action on cells is exactly the exterior
+power.  Formula (1.12.5) is obtained by subdividing its swept
+base interval into the indicated strips.  The common torus can be
+marked into these two structures by based cellular approximations.
+Their cellular maps are the exterior-power matrices because the
+cellular differentials vanish.  Based maps between these aspherical
+tori with a fixed map on $\pi_1$ have a contractible space of
+homotopies: lifting to the universal covers gives equivariant maps
+to a contractible vector space and linear interpolation relative to
+the base point.  Thus the choices introduce no extra attaching class
+on the graph.  Composing the two edge cylinders gives exactly
+(1.12.3).  The explicit conjugators were found in the bounded search
+$[-1,1]^5$ and then verified by exact multiplication in
+\texttt{finite\_permutation\_models.py}.
+
+Let $F_k:B_{1,k}\oplus B_{2,k}\to G_k\oplus E_{1,k}\oplus E_{2,k}$
+have the main boundary maps as its first row, and the negatives of
+(1.12.5) in the corresponding two cap rows.  The chain complex of
+$Y$ is the mapping cone
+\[
+C_k(Y)=G_k\oplus E_{1,k}\oplus E_{2,k}
+       \oplus B_{1,k-1}\oplus B_{2,k-1},\qquad
+d_Y=\begin{pmatrix}d_G\oplus d_{E_1}\oplus d_{E_2}&F_{k-1}\\
+0&-d_{B_1}\oplus-d_{B_2}\end{pmatrix}.
+\tag{1.12.6}
+\]
+Equations (1.12.1)--(1.12.6), minors for exterior powers, and the input
+matrices specify every entry of every differential.
+The full arrays are exported to \texttt{complement\_export.json}; its
+program verifies $d^2=0$ in all degrees and computes Smith
+decompositions.  Chain ranks in degrees zero through eight are
+$(3,22,71,132,155,118,57,16,2)$.
+The resulting homology of $Y$ is free, with ranks
+$(1,1,3,9,12,9,3,0,0)$.
+
+The boundary $B_0$ has
+\[
+H_1(B_0)=\mathbb Z^4,\qquad H_2(B_0)=\mathbb Z^{12},\qquad
+H_3(B_0)=\mathbb Z^{18}\oplus\mathbb Z/2.
+\]
+The homomorphism $j_Y:H_k(B_0)\to H_k(Y)$ from (1.12.3) is
+surjective for $k=1,2,3$.  In degrees two and three, the program
+\texttt{complement\_kernel\_check.py} supplies integral cycle bases
+of its kernel whose entire suspension block in (1.12.2) is zero.
+This is an exact zero matrix, not a vanishing after tensoring with
+$\mathbb Q$.  Therefore these kernels are represented by cycles of
+the nearby torus itself.  The restriction of the actual map to the
+cusp cap on these kernels is consequently the already proved
+collapse of P1.11, regardless of its value on other boundary
+suspension cycles.
+
+For transparency, in the Smith bases exported with these cycles the
+combined map in degree one is
+\[
+\begin{pmatrix}20&1&0&0\\1&0&-1&-1\\1&0&0&0\\0&0&2&1\end{pmatrix},
+\qquad\det=1.
+\tag{1.12.7}
+\]
+The cusp meridian maps to zero here because the zero section extends.
+In degree two $\ker j_Y=\mathbb Z^9$ and its map to $H_2(C)$ is
+\[
+\begin{pmatrix}
+0&0&1&-1&0&-1&0&0&0\\
+0&0&1&0&0&-1&0&1&0\\
+0&0&1&-1&0&-2&0&1&0\\
+0&0&0&0&-1&-1&0&0&-1\\
+1&1&-1&0&0&1&1&0&0\\
+1&2&0&0&1&0&0&0&0\\
+-1&-1&0&0&0&0&0&0&0\\
+0&0&0&0&1&0&0&0&0\\
+0&0&0&0&0&-1&0&0&0
+\end{pmatrix},\qquad\det=1.
+\tag{1.12.8}
+\]
+In degree three $\ker j_Y=\mathbb Z/2\oplus\mathbb Z^9$.
+Its collapse matrix, with the torsion generator first, is
+\[
+\begin{pmatrix}
+0&1&0&1&0&0&0&0&0&1\\
+0&1&-1&0&0&0&-1&0&-1&0\\
+0&0&0&0&0&0&1&0&1&0\\
+0&0&0&-1&1&-1&0&-1&0&0\\
+0&0&0&0&0&0&0&1&0&0\\
+0&0&0&0&0&0&1&0&0&0\\
+0&0&0&0&0&1&0&1&0&0\\
+0&0&1&0&1&-2&1&-1&2&0\\
+0&1&0&-1&1&-2&0&-1&0&0
+\end{pmatrix}.
+\tag{1.12.9}
+\]
+The determinant of its last nine columns is one.  In particular the
+torsion of the boundary and the second finite cap has been included
+throughout the calculation.
+
+We now apply Mayer--Vietoris to $M_c=Y\cup C_{\rm cap}$.
+Because $j_Y$ is onto, subtracting a preimage of the $Y$-coordinate
+identifies the cokernel of $(j_Y,j_C)$ with
+$H_k(C)/j_C(\ker j_Y)$; its kernel is
+$\ker j_Y\cap\ker j_C$.
+Equations (1.12.7)--(1.12.9) therefore say that the combined map is an
+isomorphism in degrees one and two and is onto in degree three.
+The exact sequence yields $H_2(M_c)=H_3(M_c)=0$.
+We already proved $\pi_1(M_c)=0$, and successive applications of
+Hurewicz now give $\pi_2(M_c)=\pi_3(M_c)=0$.
+
+Integral Poincar\'e duality and the universal coefficient theorem
+give $H_5=H_6=H_7=0$.  They also show that $H_4$ is free: its possible
+torsion would be $\operatorname{Ext}(H_4,\mathbb Z)$ in $H^5$, which
+vanishes by duality with $H_3=0$.
+Finally $\chi=6$ gives $\operatorname{rank}H_4=4$.
+This proves all claimed integral homology groups without setting the
+unknown higher-degree cusp suspension to zero.
+\end{proof}
+
+\paragraph{The retained diagnostic complex.}
+The earlier file \texttt{global\_candidate\_complex.py} sets the entire
+cusp suspension map to zero and has the same free Betti numbers.
+That file and its output are retained as a diagnostic record.  They
+are not used in P1.12 to identify the actual higher-degree gluing.
+The request in item 1.3 for a second, independent full global cell
+computation remains outstanding; the proof above is the completed
+integral Mayer--Vietoris computation in the degrees that determine
+the homology, followed by duality.
+
+\begin{statement}{P1.13}{Proved}
+With the complex orientation the fourfold has
+\[
+\sigma(M_c)=2,\qquad H^4(M_c;\mathbb Z)\cong I_{3,1},\qquad
+w_2(M_c)=0,
+\]
+and there is a diagonal integral basis in which
+$p_1/2=(1,1,1,1)$.
+Its Chern numbers are
+$c_4=6$, $c_2^2=2$, and
+$c_1^4=c_1^2c_2=c_1c_3=0$; its Pontryagin numbers are
+$p_1^2=8$, $p_2=14$.
+\end{statement}
+\begin{proof}
+P1.12 implies $c_1=c_3=0$ as integral cohomology classes;
+$c_4[M_c]=\chi(M_c)=6$.  The Chern-root identities give
+$p_1=-2c_2$, $p_2=c_2^2+2c_4$.
+Hirzebruch, \emph{Topological Methods in Algebraic Geometry},
+Theorem 24.5.4 and its corollary, give integrality of the Todd genus
+for this compact almost complex manifold.  Expanding
+$\prod x_j/(1-e^{-x_j})$ to degree four gives
+\[
+\frac{3c_2^2-6}{720}\in\mathbb Z,
+\quad\text{hence}\quad c_2^2=2+240k\quad(k\in\mathbb Z).
+\]
+The signature theorem in the same source, Theorem 8.2.2, applied to
+this closed oriented smooth eight-manifold gives
+\[
+\sigma=\frac{7p_2-p_1^2}{45}
+      =\frac{3c_2^2+84}{45}=2+16k.
+\]
+The rank-four middle form has $|\sigma|\leq4$, so $k=0$.
+This proves the displayed characteristic numbers.
+
+Duality makes the middle form unimodular.  Its signature is two and
+its positive and negative indices are three and one.  An even
+unimodular form has signature divisible by eight, by Wall,
+\emph{Classification of $(n-1)$-connected $2n$-manifolds},
+Proposition 3, p.~173.  Hence it is odd.  Proposition 4 on that page
+classifies indefinite unimodular forms by rank, signature, and
+parity, and gives $I_{3,1}$.
+Since $H^2(M_c;\mathbb Z/2)=0$, its $w_2$ is zero.
+For the complex tangent bundle,
+$w_4=c_2\bmod2=(p_1/2)\bmod2$.
+The Wu identity in degree four, with $w_1=w_2=0$, says that $w_4$ is
+characteristic for the middle pairing.  Thus the vector $p_1/2$ is
+characteristic and has square $2$.
+
+We give the required integral isometry of this pair explicitly as
+a terminating procedure.  In a diagonal basis a characteristic vector
+has four odd coordinates.  Change their signs to write it as
+$(a,b,c,d)$ with all positive and
+$a^2+b^2+c^2=d^2+2$.
+For $d>1$,
+\[
+d<a+b+c<3d.
+\]
+The first inequality follows by squaring and using the positive cross
+terms; the second follows from Cauchy--Schwarz and $d>1$.
+Reflection in the integral norm-two vector $(1,1,1,1)$ sends this
+vector to itself minus $(a+b+c-d)(1,1,1,1)$.
+Its fourth coordinate is $2d-a-b-c$, whose absolute value is strictly
+smaller than $d$.  The reflection preserves the integral lattice and
+characteristic parity.  Repeating, with sign changes at each step,
+terminates at $d=1$, when the norm equation forces $a=b=c=1$.
+This supplies an integral isometry taking $p_1/2$ to $(1,1,1,1)$,
+and proves the claimed pair, not just its square.
+\end{proof}
+
+\begin{statement}{P1.14}{Known}
+The constructed fourfold is orientation-preservingly diffeomorphic to
+$3\mathbb HP^2\#(-\mathbb HP^2)$.
+\end{statement}
+\begin{proof}
+We use Wall's almost-diffeomorphism classification in the numbered
+form of Conway--Crowley--Powell--Sixt,
+\emph{Simply connected manifolds with large homotopy stable classes},
+Theorem 3.7(1), with its Definition 3.6.  It identifies closed oriented
+$(4m-1)$-connected $8m$-manifolds up to an orientation-preserving
+diffeomorphism after connected sum with a homotopy sphere by their
+intersection form together with the stable normal homomorphism.
+We read the statement and its reduction to Wall's theorem at
+\url{https://www.maths.gla.ac.uk/~mpowell/large-homotopy-stable-class-v3.pdf},
+pp.~12--14, and read the original almost-closed classification on
+Wall's p.~170.
+
+Here $m=1$.  Both manifolds are closed, oriented, smooth and
+three-connected, the first by P1.12 and the second by its standard
+connected-sum cell structure.  A class in $H_4$ can be represented by
+an embedded four-sphere as in the theorem.  Its stable normal bundle
+is the restriction of the ambient tangent bundle, since the sphere
+is stably parallelizable.  The group of stable oriented bundles on
+$S^4$ is $\pi_3(SO)=\mathbb Z$, detected by $p_1/2$ after the same
+generator convention is chosen on both manifolds.  Thus the extended
+symmetric form in this dimension is exactly the pair computed in
+P1.13.
+
+For $\mathbb HP^2$, take the generator $\alpha$ with
+$p_1=2\alpha$.  Its square evaluates to one and $p_2=7\alpha^2$;
+these formulas follow by expanding
+$(1+\alpha)^6/(1+4\alpha)$ through degree eight, and are also verified
+in Mandal, arXiv:2609.27929, Lemma 2.1.
+The connected sum has form $I_{3,1}$ and
+$p_1/2=(1,1,1,1)$, since the Pontryagin class restricts to the given
+class on each punctured summand and the last summand carries the
+reversed fundamental orientation.  The theorem's two extended forms
+are therefore isomorphic.  We obtain an orientation-preserving
+diffeomorphism to the target connected-summed with a homotopy
+eight-sphere.  P1.6 absorbs that sphere by an actual oriented
+diffeomorphism.  This proves the asserted diffeomorphism type with
+no remaining ambiguity.
+\end{proof}
+
+\begin{statement}{P1.15}{Proved}
+The rank-six flat extension, as a complex flat bundle with its invariant
+line, has the following explicit algebraic connection model.  Set
+$\omega_k=x^kdx/y$, $0\leq k\leq3$, and use the quotient frame
+\[
+(w_2,w_1,w_0,w_{-1},w_{-2})
+ =(\omega_{01},\omega_{02},\omega_{03},\omega_{13},\omega_{23}),
+\qquad \omega_{12}=-3\omega_{03}.
+\]
+These are meromorphic frames of
+$(L^2,L,\mathcal O,L^{-1},L^{-2})$, where $L=T^2$ on the root
+orbifold of orders $5,4$.  If a frame is written as a row of vectors,
+its derivative is right multiplication by
+\[
+\Gamma_6=\begin{pmatrix}0&b\\0&\Gamma_W\end{pmatrix},\qquad
+b=\frac1{\lambda-\lambda_*}
+ \left(-\frac{25}{6\lambda^2},-\frac{125}{48\lambda},0,1,0\right),
+\tag{1.15.1}
+\]
+where
+\[
+\Gamma_W=\frac1{3125\lambda+256}
+\begin{pmatrix}
+-8(625\lambda+48)/\lambda&-8&10\lambda&75\lambda^2/2&0\\
+-125/(2\lambda)&-4(625\lambda+48)/\lambda&8&0&75\lambda^2/2\\
+300/\lambda^2&-375/\lambda&0&-48&60\lambda\\
+120/\lambda^3&0&125/(2\lambda)&4(625\lambda+48)/\lambda&-8\\
+0&120/\lambda^3&50/\lambda^2&-125/(2\lambda)&8(625\lambda+48)/\lambda
+\end{pmatrix}.
+\tag{1.15.2}
+\]
+This model specifies a canonical algebraic splitting, denoted
+$\sigma_b$.  The compatible contraction used for the real parameter is
+$\alpha=(625\pi i/128)\alpha_{\rm alg}$, where
+$\alpha_{\rm alg}(w_0)=4/3$ and it vanishes on $w_1,w_2$.
+\end{statement}
+\begin{proof}
+Reduction modulo exact differentials is completely explicit.  To
+differentiate $\omega_k$, solve the polynomial identity
+\[
+-\tfrac12x^k\partial_\lambda f
+ =f\sum_{j=0}^3G_{kj}x^j+R_k'f-\tfrac12R_kf',
+ \qquad\deg R_k\leq4,
+\]
+where $f=x^5+\lambda^3x+\lambda^4$.  The last two terms are the
+numerator of $d(R_k/y)$.  Matching the nine coefficients gives the
+four-by-four Gauss--Manin matrix exactly.
+At the branch point at infinity, a local coordinate $z=x^{-1/2}$
+gives $\omega_k=-2z^{2-2k}(1+O(z^8))\,dz$.
+Residues of a primitive times a differential give the alternating
+pairings $J_{03}=4/3$, $J_{12}=4$, with their negatives in reverse
+order and all other entries zero.  This form is nondegenerate.
+The invariant bivector is therefore $3\omega_{03}+\omega_{12}$.
+Taking the exterior-square connection and this quotient gives
+(1.15.2), as checked symbolically in \texttt{de\_rham\_connection.py}.
+
+The root-chart powers computed from $x^kdx/y$ are
+$u^{6k-9}$ at zero and $u^{6-4k}$ at infinity.
+Their nondegenerate pairing shows that the four resulting regular
+frames form the full de Rham bundle on those charts.  At the node
+the computed connection has a simple pole and square-zero residue;
+hence these are the nilpotent logarithmic extension frames there.
+Thus the four line bundles are
+$T^3,T,T^{-1},T^{-3}$, and their quotient exterior-square lines are
+the stated powers of $L$.
+
+All $H^1(L^j)$ for $j=0,\pm1,\pm2$ vanish by the coarse-degree
+calculation already used in P1.8.  Consequently every holomorphic
+extension of this $W$ by $\mathcal O$ splits as a bundle.
+In such a splitting its flat connection is an upper block extension
+by a row $b$.  Regularity at the finite root charts and a logarithmic
+pole at the cusp require, entry by entry,
+\[
+b=\frac1{\lambda-\lambda_*}
+ (a\lambda^{-2},b'\lambda^{-1},0,c,d\lambda).
+\]
+For example the $L^j$ entry, after $\lambda=u^4$, has exponent
+$3j+3+4p$ for a term $\lambda^p/ (\lambda-\lambda_*)$;
+the infinity chart requires $-4j-1-5p\geq0$.
+These two inequalities leave exactly the four displayed terms.
+The equation that the full cusp residue have square zero is
+$b_{\rm res}(\Gamma_W)_{\rm res}=0$.
+Its solution space has basis
+\[
+(-25/6,-125/48,1,0),\qquad(5/3,-25/3,0,1).
+\]
+The sole nonconstant holomorphic splitting change is the row selecting
+$w_0$, and its connection coboundary is the third row of $\Gamma_W$.
+In these two basis vectors that row is $(-48b_1+60b_2)/3125$.
+Thus there is one nontrivial flat extension direction modulo splitting
+changes and rescaling of the invariant line.  The first vector has
+rank-three square-zero cusp residue, so it represents that direction.
+The supplied extension is nontrivial, since its dual has no common
+invariant vector by P1.1.  It is therefore isomorphic to (1.15.1).
+This proves the connection identification without inferring it from
+the subsequent numerical matching.
+
+For the last normalization, the kernel of the quotient cusp residue
+on $(w_2,w_1,w_0)$ is generated by
+$v=(-4096/1171875,64/1875,1)^t$.
+It satisfies $b_{\rm res}(v)=625/192$ and
+$\alpha_{\rm alg}(v)=4/3$.
+The logarithmic monodromy is $2\pi i$ times this residue.
+The exact cusp identity of P1.8 characterizes the contraction on this
+line by $N_V(\widetilde v)=\alpha(v)e$.
+Since the space of global contraction forms is one-dimensional, the
+ratio $(625/192)/(4/3)=625/256$ fixes its scalar everywhere and gives
+the displayed $625\pi i/128$.
+\end{proof}
+
+\paragraph{An explicit formula for $h$ and the normalization comparison.}
+Let $Y'=Y\Gamma_6$.  Normalize $Y(1)=X$ by requiring that continuation
+around the specified meridians intertwine exactly with $A,B$, and that
+$Xe_0=e_0$.  Existence follows from P1.15; uniqueness follows from the
+scalar centralizer, whose exact linear equations are in
+\texttt{centralizer\_torsion.py}.
+At each nonspecial point there is a unique pair $v_2,v_1\in\mathbb C$
+such that the lower five coordinates of
+$Y(0,v_2,v_1,-i,0,0)^t$ are real.
+The intersection-line proof in P1.8 and the normalization of $\alpha$
+prove existence and uniqueness.  Therefore the following is a fully
+specified period formula for the real function associated with
+$\sigma_b$:
+\[
+h_b(\lambda)=\frac{96}{625\pi}
+ \operatorname{Im}\bigl(Y_{01}v_2+Y_{02}v_1-iY_{03}\bigr).
+\tag{1.15.3}
+\]
+Its periods for the real parameter $c$ are the three columns
+$Y_{*,1},Y_{*,2},Y_{*,3}-(625\pi/96)c\,e_0$.
+
+This is a different splitting normalization from the one chosen in
+P1.8.  To compare them exactly, parallel-transport the fixed marking
+from $\lambda=1$ to $\lambda=\lambda_*/2$ along a specified path in the
+upper half-plane, and put
+$a=(\sigma_b(g))_e$ at that point, where
+$g=(96/(625\pi i))w_0$ and $\alpha(g)=1$.
+Then the splitting of P1.8 is
+$\sigma=\sigma_b-a\alpha e$, so $h=h_b-\operatorname{Im}a$.
+For the full complex splitting parameter $\xi$, the comparison is
+$\xi_b=\xi-a$.  This gives the actual translation between the two
+families, including its possible real part; it does not silently
+identify their real parameter slices.
+
+\paragraph{Numerical record at the first checkpoint.}
+The code \texttt{pencil\_period\_numerics.py} independently evaluates
+the four branch-tree periods of $dx/y$ and $x\,dx/y$ at $\lambda=1,2$
+by endpoint-resolved tanh--sinh quadrature and by convergent binomial
+series with exact cosine moments, at ninety decimal digits.
+The lifted connection computation in
+\texttt{connection\_monodromy.py} gives finite-order residuals below
+$3\cdot10^{-96}$ and intertwiner residual below $8\cdot10^{-97}$.
+Its resulting lifted periods and determinants are exported in
+\texttt{lift\_period\_values.json}.  In the $\sigma_b$ normalization,
+\[
+\begin{split}
+h_b(1)&=-1.03427662241632179949424884537834605259\ldots,\\
+h_b(2)&=-1.04792484985922734646718835593486351800\ldots.
+\end{split}
+\]
+These are numerical evaluations, not certified bounds: the current
+Taylor continuation discards interval radii after each step and checks
+small residuals.  A certified continuation and an independent lifted
+period evaluation are being developed.  The two independent curve
+period methods are already complete; they do not replace those
+remaining requirements for the lifted rank-six periods.
