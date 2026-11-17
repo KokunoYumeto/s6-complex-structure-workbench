@@ -1,0 +1,416 @@
+# P3K.27. Proved: primitive scalar families and their actual rotating Cox normal framing
+
+For the ten primitive scalar families of K22, use the actual
+positive scalar loop, the standard vertical-edge cusp, and the
+normal product transported by the extending cusp origin. Its
+free normal-framing gauge agrees with the transported rotating
+framing of K9. A possible constant rotation loop extends over
+the fixed three-disc and changes neither integer. Thus the
+rotating characteristic pair and the corresponding relative
+coordinates may be taken to be
+\[
+       k=-3d,\qquad \ell=-24,\qquad
+       (m_{\rm rel},n_{\rm rel},s)
+             =(6,\ 3d-6,\ 1-d/2\bmod28).
+                                                        \tag{P3K.27.1}
+\]
+Here \(d=8,14,20,30\) is the height denominator in K22. The
+coordinate convention is exactly K23, including its complex
+orientation and the positively oriented Eells--Kuiper generator.
+This does not identify a further edge's relative four-cycle.
+
+## 1. The actual two products and their literal transition
+
+Write the actual periods as
+\[
+ h:(Z,V)\mapsto(qZ,\alpha(q)V),\qquad
+ \gamma:(Z,V)\mapsto(g(q)Z,q\lambda\beta(q)V).
+\]
+On the positive parameter circle, \(|\lambda|\) is fixed.
+After quotienting the physical delta circle, the parameter
+phase in this gamma period disappears: the orbit period is
+\((Z,|V|)\mapsto(g(q)Z,|q\lambda\beta(q)|\,|V|)\).
+The same assertion holds in each actual Cox chart: its
+parameter phase has the physical-delta weights, so it is the
+identity on that circle orbit. The chosen fan and its
+period-cell quotient therefore supply a fixed smooth orbit
+body along this parameter circle, before applying the
+closing translation.
+
+The actual ordinary closing translation is \(q^{-1}\) in the
+line character. Returning its period cell by gamma leaves
+the bounded unit map \((g,\lambda\beta)\). It is removed by
+the actual extending cusp origin
+\[
+ \sigma(v)=(\Gamma v,Cv+(v^2-v)/2),\qquad
+ \lambda=e^{2\pi iv},\quad
+ g=e^{2\pi i\Gamma},\quad\beta=e^{2\pi iC}.
+                                                        \tag{P3K.27.2}
+\]
+Indeed
+\[
+ \sigma(v+1)-\sigma(v)=\gamma-s\delta,\qquad
+             s=\frac{\log q}{2\pi i}.
+\]
+Thus the ordinary deck minus the cusp-origin difference is
+the actual negative gamma period. In the period quotient
+it is the identity. This proves the closed cusp product,
+including the representative-cell identification; it is
+not a choice of a new parameter loop.
+
+On the same universal parameter interval the bounded
+coordinate change is
+\[
+ C_\theta=
+ \left(g^\theta,\,
+       (\beta\lambda_0)^\theta
+                       e^{\pi i\theta(\theta-1)}\right).
+                                                        \tag{P3K.27.3}
+\]
+All powers use the given logarithms. These are literal
+bounded torus maps and extend through both adjacent
+unimodular charts. They also extend in the Cox master
+coordinates used in K23. At \(\theta=1\) they equal the
+bounded period-return map, as required. The last factor
+is physical delta and acts trivially on the orbit normal
+three-plane. Thus the product from (P3K.27.2) is precisely
+the normal product obtained by carrying the Cox charts
+through their actual bounded clutch.
+
+The ordinary extending origin is
+\[
+                  o=(-\Gamma s,-Cs-s^2/2-sv).
+\]
+The actual cusp-to-ordinary transition in the two product
+coordinates is \(\sigma-o\). Its angular change is
+\[
+        \theta\gamma+\frac{\theta(\theta-1)}2\delta.
+                                                        \tag{P3K.27.4}
+\]
+On the free orbit annulus, the second term is the identity
+and the first is the marked gamma translation. In the
+source-preserving Seifert product of P3F.9, that translation
+is exactly \(R_\theta\), rotation of its gamma circle.
+This retains the source-translation trivialization
+\(Z\mapsto\exp(t\log g(q))Z\) used there.
+
+## 2. The real extension at the node and its derivative
+
+The radial part of (P3K.27.4) contains \(|q|^\theta\).
+It is used as an annular expression only. The actual smooth
+extension in the orbit is the following fixed product map,
+which agrees with that annular expression.
+
+Use P3F.9's two exact small-resolution charts for
+\(xy=uv\):
+\[
+ (x,v,z),\ u=xz,\ y=vz;\qquad
+ (u,y,w),\ x=uw,\ v=yw.
+\]
+The physical circle has weights \((-1,+1)\) on \((v,z)\)
+in the first chart, and \((+1,-1)\) on \((u,w)\) in the
+second. Its actual normal Hopf coordinates are
+\[
+ (y,b),\quad b=(|z|^2-|v|^2)/2;
+ \qquad
+ (x,b'),\quad b'=(|u|^2-|w|^2)/2.
+                                                        \tag{P3K.27.5}
+\]
+The fixed curves in these charts are \(v=z=0\) and
+\(u=w=0\), respectively. On their overlap, with \(r=|z|^2\),
+\[
+ 2b=r-|y|^2/r,\qquad
+ 2b'=|x|^2r-r^{-1},\qquad
+ \frac{db'}{db}
+       =\frac{|x|^2+r^{-2}}{1+|y|^2r^{-2}}>0.
+                                                        \tag{P3K.27.6}
+\]
+Choose the relative, increasing proper fibre coordinate
+\(\chi(x,y,b)\) constructed in P3F.9, agreeing with the
+marked gamma coordinate on the outside collar. Its
+derivative \(\chi_b\) is strictly positive. It gives the
+fixed smooth map
+\[
+         \Phi:(x,y,b)\longmapsto(x,y,\chi(x,y,b))
+\]
+to the nodal source neighbourhood times the gamma circle,
+with the corresponding second-chart formula.
+The construction is independent of the parameter angle
+in the closed cusp product (P3K.27.2).
+
+The actual quotient family, in the two extending products,
+is glued on its outside annulus by (P3K.27.4). It therefore
+has the following explicit smooth description in the
+constant orbit:
+\[
+          J_\theta=R_\theta\circ\Phi
+             \quad\hbox{on its cusp piece},             \tag{P3K.27.7}
+\]
+with the fixed ordinary product on its other piece.
+Equation (P3K.27.4) proves that these maps agree on the
+actual annular identification. Equation (P3K.27.6) proves
+smoothness through the two node charts. Thus (P3K.27.7)
+is an actual comparison map of the orbit family, rather
+than a formal differentiation of a fractional monomial
+at \(q=0\).
+
+At the first fixed chart, quotient the derivative by the
+tangent to its fixed curve, including the derivative of
+its graph gamma coordinate. On the normal coordinates
+\((\Re y,\Im y,b)\), the resulting map is
+\[
+ Q_x=
+ \begin{pmatrix}
+ 1&0&0\\
+ 0&1&0\\
+ \chi_{\Re y}&\chi_{\Im y}&\chi_b
+ \end{pmatrix},\qquad \chi_b>0.                         \tag{P3K.27.8}
+\]
+There is the same matrix in the second chart with \(x,b'\)
+in place of \(y,b\). These are the actual normal derivatives
+at the node endpoints as well: (P3K.27.6) has no excluded
+nonzero-source-coordinate hypothesis in either smooth
+Hopf chart.
+
+The matrices (P3K.27.8) are independent of \(\theta\).
+Their off-diagonal entries contract linearly to zero,
+and their last diagonal entry contracts through positive
+numbers to one. The overlap derivative in (P3K.27.6) is
+positive, so these contractions are the coordinate
+expressions of the global normal-bundle comparison.
+Intrinsically, the free gamma vector gives its oriented
+normal line, and the quotient is the normal two-plane
+bundle of the immersed nodal normalization in the source.
+The derivative is the identity on that quotient and is
+positive on the gamma line. Choosing a splitting is
+contractible; the preceding contractions therefore glue
+globally even though the source normal two-plane bundle
+has nonzero Euler class.
+The source tangent shear, already removed in obtaining
+(P3K.27.8), also contracts through invertible triangular
+matrices. In particular the \(|q|^\theta\) annular factor
+introduces no omitted normal derivative: it has been
+extended by the explicitly smooth map (P3K.27.7).
+
+## 3. The fixed-frame comparison
+
+The initial Cox product is explicit on the whole fixed
+sphere. Write its two affine coordinates as
+\(\zeta,\zeta'=\zeta^{-1}\), and its two complex normal
+coordinates as \(c_0,c_1\), with
+\(c_i'=\zeta c_i\). In the quaternion convention of K23 put
+\[
+\begin{aligned}
+ q_{\rm H}
+   &=(1+j\zeta)(c_0+j\overline{c_1})\\
+   &=(\zeta^{-1}+j)(c_0'+j\overline{c_1'}).
+\end{aligned}                                          \tag{P3K.27.10}
+\]
+These are literally equal. To check the overlap, substitute
+\(c_i'=\zeta c_i\) and use
+\(zj=j\bar z\) for a complex number \(z\).
+The first product expands as
+\[
+       c_0+j\bar c_1+j\zeta c_0-\bar\zeta\bar c_1,
+\]
+and the second has exactly these four terms.
+The formula is real linear and invertible on every normal
+fibre, including either chart origin. It therefore gives
+the global real normal product, without an unnamed
+trivialization of \(\mathcal O(-1)^{\oplus2}\).
+
+The physical weights \((-1,+1)\) give
+\(q_{\rm H}\mapsto q_{\rm H}e^{-i\theta}\).
+Consequently its global Hopf normal coordinate is
+\(q_{\rm H}i\overline{q_{\rm H}}\).
+For \(y_{\rm H}=c_0c_1\) and
+\(b_{\rm H}=(|c_1|^2-|c_0|^2)/2\), the inner Hopf vector is
+\[
+ (c_0+j\bar c_1)i(\bar c_0-j\bar c_1)
+   =-2b_{\rm H}i+2\Im(y_{\rm H})j-2\Re(y_{\rm H})k.
+                                                        \tag{P3K.27.11}
+\]
+Conjugation by \(1+j\zeta\) gives the desired global
+three-plane frame. The same overlap identity proves that
+the second-chart expression agrees. The local ordered
+coordinates \((\Re y_{\rm H},\Im y_{\rm H},b_{\rm H})\)
+have the opposite orientation to the positive physical
+Hopf normal orientation, as retained in K23; the displayed
+matrix has negative determinant in those local coordinates
+and hence preserves the prescribed normal orientation.
+
+Choose the global positive-Hopf normal frame supplied by
+this actual Cox quaternion product at parameter zero.
+Push it to the constant orbit by \(\Phi\). K9 chooses
+exactly such a fixed initial frame and transports it by
+the actual \(R_\theta\) flow. By (P3K.27.7), the Cox
+frame in the closed cusp product is carried to that same
+frame:
+\[
+        dJ_\theta(\text{Cox frame})
+           =dR_\theta\,d\Phi(\text{initial Cox frame}).
+                                                        \tag{P3K.27.9}
+\]
+The derivative comparison in (P3K.27.8) is independent
+of the parameter and cannot contribute a three-dimensional
+normal-framing class on \(F\times S^1_\theta\).
+Changing the initial frame changes a map
+\(S^2\to SO(3)\), which is null-homotopic; it extends
+over the fixed three-disc and is transported by the same
+flow. This retains the actual initial Cox marking.
+
+For completeness, the bounded coordinate maps in
+(P3K.27.3) are applied to both products before this
+comparison. Their positive parts cancel as the same
+normal-bundle isomorphism. Their unitary part in the
+K23 quaternion coordinate \(q_{\rm H}\) is
+\[
+                   q_{\rm H}\longmapsto
+                         a_\theta q_{\rm H}b_\theta,
+\]
+with \(a_\theta,b_\theta\) independent of the fixed-curve
+point. Here is the literal bounded unitary identity fixing
+this assertion. Write the first Cox chart as
+\(q=\zeta c_0c_1\). A unitary torus map has the form
+\[
+  (\zeta,c_0,c_1)\longmapsto
+                  (a\zeta,p c_0,q_1c_1),\qquad apq_1=1.
+\]
+Choose its continuous square roots along the parameter interval,
+\(A^2=pq_1\), \(B^2=p/q_1\), with \(AB=p\) initially
+and hence throughout. Substitution in (P3K.27.10) gives
+\[
+                      q_{\rm H}\longmapsto A q_{\rm H}B.
+                                                        \tag{P3K.27.12}
+\]
+For example the two complex coefficients of \(q_{\rm H}\),
+in the form \(a_{\rm H}+jb_{\rm H}\), are
+\(c_0-\bar\zeta\bar c_1\) and
+\(\bar c_1+\zeta c_0\). They are multiplied by \(AB\)
+and \(B/A\), respectively, on both sides of
+(P3K.27.12). This proves the identity without an implicit
+normal-frame convention. The induced Hopf normal map is
+\(\eta\mapsto A\eta\bar A\), a constant
+three-dimensional rotation. Dependence of \(g,\beta\)
+on the base produces only the source tangent shears:
+in the fixed normal charts the base monomial is
+quadratic in the two complex normal variables, so its
+higher unit terms have zero normal linear part.
+Any residual constant rotation loop is the
+\(\mathbb Z/2\) summand of
+\(\pi_1{\rm Map}(S^2,SO(3))\); it extends over the fixed
+three-disc and contributes neither \(k\) nor \(\ell\).
+There is no free \(\pi_3(SO(3))\) discrepancy between
+the two actual framings.
+
+## 4. The integer coordinates
+
+We include the complete degree-one normal-clutch calculation in the actual matched framing.
+
+P3K.22 identifies the page as the original rational elliptic
+source minus a regular fibre, with its original line \(M\).
+The page boundary has binding degree one along the positive
+inward gamma circle. The actual K6 graph boundary is
+\(\gamma=\theta+g_\epsilon(p)\), where \(p\in T^2\) and
+\(\theta\) is the positive physical scalar-parameter direction.
+The cap-to-ordinary arrow and the two extending origins in K22.3
+give exactly this positive direction; no parameter cover is used.
+
+Use the graph normal consisting of its oriented normal in the
+orbit \(Y\) and the two Cartesian parameter directions.
+Use on the compression the actual rank-three normal frame
+transported by \(R_\theta\). The compression is the same solid
+torus minus a ball as in K6. Its normal bundle has \(w_2=0\):
+its tangent bundle is trivial, and \(TY\oplus\mathbb R\) is
+trivial for the actual orbit \(Y=S^5\). Obstruction theory on
+this three-dimensional compression gives a normal framing.
+Its restriction at the fixed-sphere end differs from the
+positive-Hopf frame by a map \(S^2\to SO(3)\), which extends
+over the fixed \(D^3\). Transport that extension by the same
+\(R_\theta\). This defines the rotating compression-cap
+framing, including its fixed-sphere attachment.
+
+Let \(\phi\) be the fixed outward page-collar phase in radians.
+The actual degree-one binding gives
+\[
+                  \alpha=\phi-\gamma
+                         =\phi-\theta-g_\epsilon(p).
+\]
+The four-dimensional quotient used to compare the graph and
+compression normals has the actual collar tangent
+\[
+             u=(\cos\alpha,\sin\alpha,\rho,0),
+             \qquad \rho>0.
+\]
+Its quotient map is
+\[
+ (v_q,v_r,v_\eta)\longmapsto
+       \bigl(v_q-\rho^{-1}v_r(\cos\alpha,\sin\alpha),v_\eta\bigr).
+\]
+It kills \(u\). Project the Cartesian parameter vectors
+with radial-angular coefficients
+\((\cos\theta,-\sin\theta)\), \((\sin\theta,\cos\theta)\),
+reverse both of these vectors, and apply the positive
+rescalings of K9. The resulting actual graph normal matrix is
+\[
+ G(\alpha,\theta)=
+ \begin{pmatrix}
+ -\sin\alpha&\cos\theta\cos\alpha&\sin\theta\cos\alpha\\
+ \cos\alpha&\cos\theta\sin\alpha&\sin\theta\sin\alpha\\
+ 0&\sin\theta&-\cos\theta
+ \end{pmatrix}\in SO(3).
+\]
+Source derivatives of \(g_\epsilon\) are removed by the
+explicit triangular shear before taking this quotient.
+The outward-page and inward-compression tangent remain
+in the same positive radial half-space during the actual
+rounding; that half-space is contractible.
+
+Write the compression frame in the same transported product
+coordinates as \(h(p)\). It is independent of \(\theta\).
+The full clutch is therefore homotopic, through these actual
+invertible quotient maps and collar homotopies, to
+\[
+\begin{aligned}
+ h(p)^{-1}G(\phi-\theta-g_\epsilon(p),\theta)
+   &=[h(p)^{-1}R_z(-g_\epsilon(p))]\\
+   &\quad\cdot[R_z(\phi-\theta)G(0,\theta)].
+\end{aligned}
+\]
+The first factor is pulled back from \(T^2\), and the second
+from \(S^1_\theta\). The cubic Maurer--Cartan form of their
+product differs from the sum of the two cubic forms by an
+exact form, by direct expansion of
+\((ab)^{-1}d(ab)=b^{-1}a^{-1}(da)b+b^{-1}db\).
+Both factor cubic forms vanish by dimension. Integrating
+the collar Chern--Weil transgression over the marked \(T^3\)
+therefore proves
+\[
+                     \int_{\bar X}p_1(\bar\nu)=0.
+\]
+This retains all one-dimensional frame classes and does not
+replace the actual normal bundle with a trivial bundle.
+
+The actual K22 page has
+\(b^2=-4d\) and \(p_1(T\bar X)=-24\), with positive
+meridian integral. Thus \(k=-3d\), \(\ell=-24\).
+The exact K23 dictionary now gives
+\[
+      m_{\rm rel}=-k+6A=-\ell/4=6,\qquad
+      n_{\rm rel}=-6A=3d-6.
+\]
+The central class is \(A=1-d/2\pmod{28}\) by its
+already proved Hopf transfer. This proves the
+tuple (P3K.27.1) in the explicitly compared products.
+
+The actual different-edge four-cycle is still to be
+transported through the common exterior in
+notes/part3_three_curve_exterior.md. No finite-isotropy
+fan value is inferred from this frame comparison.
+
+
+
+
+## Audit record
+
+Root independently checked the exact origins, representative-cell closing, annular transition, positive node product, quaternion overlap, physical Hopf orientation, and complete rotating clutch. Checks independently verified the same actual family comparison and the literal bounded unitary identity \(q_{\rm H}\mapsto A q_{\rm H}B\). The root audit passed before export. The exact symbolic certificate is code/part3_fourfold/primitive_cox_framing.py and its JSON output; the degree-one clutch is also independently executed in code/part3_fourfold/primitive_normal_clutch.py.

@@ -1,0 +1,1 @@
+The exact mathematical assertions completed. JSON serialization then failed because SymPy Integer entries in the intersection matrix were passed without conversion to Python int. The corrected certificate converts only those output entries; no mathematical assertion changes.

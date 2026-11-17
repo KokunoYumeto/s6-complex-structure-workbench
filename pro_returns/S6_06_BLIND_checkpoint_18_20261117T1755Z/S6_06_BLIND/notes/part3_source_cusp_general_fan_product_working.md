@@ -1,0 +1,363 @@
+# Actual ordinary products and circle traces on every lattice-basis fan
+
+This working proof retains the selected-cusp positive rho loop of F54/F56,
+its original physical height q, fixed scalar, both finite-cap profiles, and
+the full Tate/Cartier units. It constructs a product on each specified fan
+and computes its local trace maps. The resulting relations concern the
+actual variation and derivative on that fan. They do not substitute the
+initial-fan return for a return whose flop comparison is uncomputed.
+
+## GF.1. The actual character and period changes
+
+Let \(P\) be an integral two-by-two matrix with determinant \(+1\) or \(-1\), and
+write \(R=P^{-1}\). The fan here is the image under \(P\) of OE.1: its two
+triangles at each lattice point \(n\) have vertices
+
+\[
+ n,\ n+Pe_1,\ n+Pe_2,
+ \qquad n+Pe_1,\ n+Pe_2,\ n+P(e_1+e_2).
+\]
+
+These are the specified two triangles in each period parallelogram.
+The homogeneous lattice map is \((x,h)\) to \((Px,h)\); its determinant is
+\(\det P\), and its inverse is integral. On the dense torus use the literal
+holomorphic character change
+
+\[
+ Z'=Z^{R_{11}}V^{R_{12}},\qquad
+ V'=Z^{R_{21}}V^{R_{22}},\qquad q'=q.                 \tag{GF.1}
+\]
+
+Its inverse uses the rows of \(P\). Thus it extends to an isomorphism
+between the toric charts with the two matched fans; on each matched
+unimodular triangle it is the identity in the corresponding three
+character coordinates. This is a coordinate description of the actual
+chosen fan filling. The original source and line coordinates on its
+overlap with the fixed exterior are still obtained by the inverse of
+(GF.1), so the source and all finite caps are retained.
+
+The original commuting periods are exactly OE.2:
+
+\[
+ h:(Z,V,q)\longmapsto(\kappa qZ,\alpha V,q),\qquad
+ B:(Z,V,q)\longmapsto(gZ,\eta qV,q),\qquad\eta=\lambda\beta.
+\]
+
+Replace their basis by \(h'_j=h^{P_{1j}}B^{P_{2j}}\), for \(j=1,2\).
+This has the inverse integral period change \(R\) and therefore gives
+the same actual quotient. In the characters (GF.1) the two periods
+are
+
+\[
+ h'_1:(Z',V')\longmapsto(qA_{11}Z',A_{21}V'),\qquad
+ h'_2:(Z',V')\longmapsto(A_{12}Z',qA_{22}V'),           \tag{GF.2}
+\]
+
+where every complete multiplier is retained:
+
+\[
+ A_{ij}=(\kappa^{P_{1j}}g^{P_{2j}})^{R_{i1}}
+                (\alpha^{P_{1j}}\eta^{P_{2j}})^{R_{i2}}.
+                                                               \tag{GF.3}
+\]
+
+The power of \(q\) in the \(i\)-th character of \(h'_j\) is \((RP)_{ij}\).
+This proves the height factors in (GF.2), including their signs.
+The units are nonzero on the same protected collars as the original
+ones. At \(q=0\) their parameter winding matrix is exactly
+
+\[
+ B_P=(b_{ij})=-6P^{-1}e_1e_1^TP,
+                    \qquad\operatorname{tr}B_P=-6.   \tag{GF.4}
+\]
+
+There is no omitted unit homotopy in this identity. Write the based
+ratio of \(\kappa\) as \(\exp(-6i\theta)\) times \(\exp(f_\kappa)\), and write the
+based ratios of \(\alpha,g,\eta\) as \(\exp(f_\alpha)\), \(\exp(f_g)\), \(\exp(f_\eta)\).
+The four \(f\)'s are their actual based periodic logarithms from F56.
+The periodic logarithm of the ratio \(A_{ij}/A_{ij,*}\) after its displayed
+angular factor is
+
+\[
+ R_{i1}(P_{1j}f_\kappa+P_{2j}f_g)
+       +R_{i2}(P_{1j}f_\alpha+P_{2j}f_\eta).          \tag{GF.5}
+\]
+
+This formula supplies every subsequent unit homotopy.
+
+## GF.2. The two vertices and the three full normal loops
+
+In the new character coordinates put \((a,b,c)=T^+_0\) and
+\((u,v,w)=T^-_0\). Direct substitution in (GF.2) gives
+
+\[
+\begin{array}{c|ccc}
+ &u&v&w\\ \hline
+ C_0&A_{11}A_{21}bc&A_{21}^{-1}ab&A_{11}^{-1}b^{-1}\\
+ C_1&A_{12}A_{22}bc&A_{22}^{-1}c^{-1}&A_{12}^{-1}ac\\
+ C_2&a^{-1}&ab&ac.
+\end{array}                                                   \tag{GF.6}
+\]
+
+Each triple product is \(q\). Keep the first vertex coordinates and
+use \((u,A_{22}v,A_{11}w)\) at the second, with the corresponding
+initial constant units in the reference fibre. The tangent
+coordinates on each curve are then literal reciprocals. The
+ordered normal pairs are the same as OP.1, and their normal
+transition matrices are \(zD_i\) with
+
+\[
+ D_0=\operatorname{diag}(A_{22}/A_{21},A_{11}A_{21}),\quad
+ D_1=\operatorname{diag}(A_{11}/A_{12},A_{12}A_{22}),\quad
+ D_2=\operatorname{diag}(A_{22},A_{11}).                \tag{GF.7}
+\]
+
+For the based loops \(K_i=D_{i,*}^{-1}D_i\), the first diagonal
+exponents and the sum of the two exponents are therefore
+
+\[
+ l_0=b_{22}-b_{21},\qquad l_1=b_{11}-b_{12},\qquad
+ l_2=b_{22},\qquad l_i+\widetilde l_i=-6.              \tag{GF.8}
+\]
+
+Every determinant has the same even winding \(-6\), including matrices
+\(P\) whose entries have arbitrary signs. We now construct the actual
+normal contractions, rather than infer them from that parity.
+
+For an integer \(d\) define
+
+\[
+ H_d(s,\theta)=
+ (\sin\vartheta(s)e^{id\theta}+j\cos\vartheta(s))
+                    (\sin\vartheta(s)+j\cos\vartheta(s))^{-1},
+                                                               \tag{GF.9}
+\]
+
+where \(\vartheta\) is OP.6's fixed smooth radial function. These maps
+are smooth, based, and periodic, and satisfy \(H_d(0,\theta)=1\),
+\(H_d(1,\theta)=\exp(id\theta)\). Put
+
+\[
+ A=H_{-3},\qquad B_i=H_{l_i+3},\qquad
+                  T_i(Q)=A Q B_i,
+ \quad Q=n_0+j\overline{n_1}.                         \tag{GF.10}
+\]
+
+At \(s=1\) its two complex normal factors are \(\exp(il_i\theta)\)
+and \(\exp(i(-6-l_i)\theta)\), respectively: left and right quaternion
+phases with exponents \(x,y\) give complex exponents \(x+y,x-y\).
+Thus (GF.10) is the required contraction of each angular loop.
+Multiplying by the diagonal exponentials from (GF.5), with OP.9's
+radial cutoff, gives a contraction of the full \(K_i\). In particular
+the original units, norms, and reference values remain present.
+
+At \(P=I\) the right factor on \(C_0\) and \(C_2\) is \(H_3\), while OP.8 used
+\(H_{-3}^{-1}\). We retain their exact comparison. Set \(a=\sin\vartheta\),
+\(b=\cos\vartheta\) and \(n=ai-bk\), a unit imaginary quaternion. The
+expansion of (GF.9) is
+
+\[
+ H_d=b^2+a^2\cos(d\theta)
+       +ab(1-\cos(d\theta))j+a\sin(d\theta)n.
+\]
+
+Conjugation by \(n\) fixes \(n\) and sends \(j\) to \(-j\). Consequently
+\(nH_d^{-1}n^{-1}=H_{-d}\). The explicit path
+
+\[
+ C_t=\cos(\pi t/2)+n\sin(\pi t/2),\qquad
+ C_tH_{-3}^{-1}C_t^{-1},\qquad 0\leq t\leq1,
+                                                               \tag{GF.10a}
+\]
+
+joins OP's right factor to \(H_3\). It is fixed at \(s=0\), where \(H=1\),
+and at \(s=1\), where \(n=i\) commutes with the diagonal endpoint. It is
+also fixed at both parameter endpoints. Thus it glues with the
+protected vertex collars and the carried unit maps to an actual
+based homotopy of the two entire plumbing products. This verifies
+the comparison to the initial matrices of K51/K52.
+
+Send \((z,n)\) to \((z,K_i(s(|z|),\theta)n)\) on each tube. The exact
+collar identity \(zD_{i,*}K_i=zD_i\) glues this to the two vertex
+maps. The normal rescaling \(R_t(z,n)=(z,tn)\), followed by the
+cutoff flow of its velocity, carries the original higher normal
+terms and their protected vertex collars as in OP.3. The curves'
+interiors are disjoint, so these three flows have the stated
+disjoint supports. This constructs a periodic oriented ordinary
+product of the entire labelled plumbing on this actual fan.
+
+Each separate native star is also explicit. Its second coordinates
+are, respectively,
+
+\[
+\begin{array}{c|ccc}
+ C_0&z'=A_{11}w&n'_0=A_{21}v&n'_1=(A_{11}A_{21})^{-1}u\\
+ C_1&z'=A_{22}v&n'_0=A_{12}w&n'_1=(A_{12}A_{22})^{-1}u\\
+ C_2&z'=u&n'_0=v&n'_1=w.
+\end{array}                                                   \tag{GF.11}
+\]
+
+The first normal pairs are \((a,c),(a,b),(b,c)\). Each row gives
+exactly \(z'=z^{-1}\), \(n'=zn\). These are actual periodic holomorphic
+star products with the complete units shown. The ordinary product
+comparison on its normal Hopf boundary is
+
+\[
+              q_H\longmapsto (U(z)AU(z)^{-1})q_HB_i.
+                                                               \tag{GF.12}
+\]
+
+The left factor is precisely OP.20 and has degree \(-6\) on the
+Hopf-oriented base sphere times the parameter. The right factor
+has only radial and parameter variables and has degree zero.
+The explicit cylinder extension and orientation of OR.2 give
+the pure-left endpoint \(L^6\). Thus on every separate star the
+ordinary relative return is the native relative return composed
+with \(L^6\); its right integer is unchanged. This is an actual
+boundary-product comparison on the given fan.
+
+## GF.3. Physical weights and exact local orbit maps
+
+The physical delta character in the new coordinates has integral
+weights \((\xi,\upsilon)^T=Re_2\). At the first vertex its weights on
+\((a,b,c)\) are \((-\xi-\upsilon,\xi,\upsilon)\); at the second they are
+\((\xi+\upsilon,-\upsilon,-\xi)\). Define the tangent and normal-difference
+weights in the above ordered pairs by
+
+\[
+\begin{array}{c|rr}
+ &w_i&d_i\\ \hline
+ C_0&\xi&-\xi-2\upsilon\\
+ C_1&\upsilon&-2\xi-\upsilon\\
+ C_2&-\xi-\upsilon&\xi-\upsilon.
+\end{array}                                                   \tag{GF.13}
+\]
+
+The original physical normal action on \(Q\) is left multiplication
+by \(\exp(-iw_i\phi/2)\) and right multiplication by \(\exp(id_i\phi/2)\).
+In the ordinary product (GF.10) it becomes exactly
+
+\[
+ Q\longmapsto
+ (A e^{-iw_i\phi/2}A^{-1})Q
+                 (B_i^{-1}e^{id_i\phi/2}B_i).         \tag{GF.14}
+\]
+
+The full unit version is obtained by the actual conjugations in
+(GF.5), with the same based homotopy. Its source point moves by
+\(z\) to \(\exp(iw_i\phi)z\). On the positive radial path \(z=\tan\chi\),
+write \(U=\cos\chi+j\sin\chi\) and \(E_i=\exp(iw_i\phi/2)\). The moved
+Hopf representative is exactly \(E_i^{-1}UE_i\). At \(q_H=1\) the
+normal-sphere orbit trace is consequently
+
+\[
+ F_i=E_i^{-1}UE_i A E_i^{-1}A^{-1}U^{-1}
+                       B_i^{-1}e^{id_i\phi/2}B_i.     \tag{GF.15}
+\]
+
+This includes \(w_i=0\): its left \(A\) factors cancel and the result is
+the right-axis map in (GF.14). Every expression closes at \(\phi=2\pi\)
+because \(w_i\) and \(d_i\) have the same parity. It is periodic in \(\theta\),
+and its radial-end values are \(\theta\)-independent.
+
+For completeness the axis degree in (GF.9) is computed directly.
+For \(d=0\) the map is constant. For \(d\) nonzero, the inverse images
+of \(-i\) under \(H_diH_d^{-1}\) have \(\vartheta=\pi/4\) and \(\exp(id\theta)=-1\).
+There are \(|d|\) of them. At each, \(H_d=j\), and differentiation gives
+
+\[
+ \partial_s(H_diH_d^{-1})=4\vartheta'(s)k,\qquad
+ \partial_\theta(H_diH_d^{-1})=-d j.
+\]
+
+Since \((k,j)\) is the positive outward tangent basis at \(-i\), the
+degree is \(-d\). For \(H_d^{-1}iH_d\) the first derivative changes
+sign and the second remains \(-dj\), giving degree \(d\).
+Thus the axes \(AiA^{-1}\) and \(B_i^{-1}iB_i\) have degrees
+\(3\) and \(l_i+3\). Conjugating the first by \(U\) preserves its degree
+through \(U_t=\cos(t\chi)+j\sin(t\chi)\); both collapsed ends remain
+\(\theta\)-independent. The axis \(UiU^{-1}\) has degree zero.
+
+Factor (GF.15) into \(E_i^{-1}\), \(\exp(iw_i\phi\,\operatorname{Ad}_U(i)/2)\),\newline
+\(\exp(-iw_i\phi\,\operatorname{Ad}_{UA}(i)/2)\), and
+\(\exp(id_i\phi\,\operatorname{Ad}_{B_i^{-1}}(i)/2)\). Integration of the positive
+quaternion volume gives degree \(ad\) for an axis of degree \(d\) and
+angle \(a\phi/2\), for every integer \(a\). The Maurer product boundary
+forms vanish at the radial ends and at the constant central-sign
+angle ends; the parameter faces cancel. Therefore its exact local
+normal-meridian degree, in path--parameter--circle orientation, is
+
+\[
+                         I_i=-3w_i+d_i(l_i+3).         \tag{GF.16}
+\]
+
+For the full tangent derivative, use K52's covering group of
+\(GL^+\) and its normalized third form. The local normal block in
+(GF.14) has stable degree \(\deg(\mathrm{left})-\deg(\mathrm{right})\). The base rotation
+has only the \(\phi\) variable. At \(\phi=2\pi\) its Spin endpoint is
+\((-1)^{w_i}\), while the normal Spin endpoint has the same sign;
+their product is \(+1\). Thus the full tangent lift is closed even
+for odd weights. The same exact boundary-form calculation gives
+
+\[
+                         W_i=-3w_i-d_i(l_i+3).         \tag{GF.17}
+\]
+
+The ambient/local frame comparison extends through the annulus
+times \(D^4\) and has zero third pairing with each capped edge trace.
+The original nonzero unit factors and higher derivatives are
+carried by the actual homotopies above, so these are degrees of
+the full source family, with its original physical circle.
+
+## GF.4. The resulting actual integral relations
+
+Choose generic normal sections at the two ends of each edge and
+the fixed vertex-link paths of CT.3. Their three coordinate
+moduli are nonzero, and the interpolation of squared moduli
+preserves all axis-tube inequalities. The physical rotations,
+now with the integer weights in (GF.13), preserve these moduli.
+The vertex actions are \(\theta\)-independent, because the vertex
+unit maps commute with the diagonal physical circle.
+
+Cap each \(\theta\)-independent endpoint by \(D^2_\theta\) times \(S^1_\phi\),
+constant in its \(D^2\) variable. The capped edge trace has class
+\(I_im_i\) in the common exterior; the vertex trace has zero third
+class. For the graph loops \(\gamma_j=a_j-a_0\) and the relative
+two-chains \(x_j\) with those boundaries, the actual positive circle
+trace and the complex sphere orientation give
+
+\[
+ \Delta x_j=w_jD_j-w_0D_0,\qquad j=1,2.               \tag{GF.18}
+\]
+
+This follows on the regular-neighbourhood retract: circle--path
+orientation on a curve with weight \(w_i\) has degree \(-w_i\), and
+the boundary identity is \(\partial\Delta=-\Delta\partial\). The
+integral boundary map identifies the relative three-group with
+the complex curve sphere basis, exactly as in CT.3. No claim
+that the two vectors in (GF.18) form a primitive sublattice is
+needed here.
+
+Let \(V\) be the actual ordinary-product variation matrix on this
+fan and \(\delta\) its actual ambient stable-derivative vector. The
+two exact prism identities proved in CT.3 and ST.1 now give
+
+\[
+ V(w_je_j-w_0e_0)=I_je_j-I_0e_0,\qquad
+ w_j\delta_j-w_0\delta_0=W_j-W_0,\qquad j=1,2.        \tag{GF.19}
+\]
+
+The matrix \(V\) is symmetric by the integral doubled-exterior
+intersection proof of K29, since the boundary meridians generate
+\(H_3\) and the return fixes its boundary. Equations (GF.19) are
+complete integral identities for the actual constructed product.
+They leave the transverse variation/derivative entries to be
+computed by the remaining global or flop comparison. In particular
+this proof does not assign the missing central return or replace
+the needed product-reset map by a scalar-family recurrence.
+
+At \(P=I\), \((l_i)=(0,-6,0)\), \((w_i)=(0,1,-1)\),
+\((d_i)=(-2,-1,-1)\); the formulas give \(I=(-6,0,0)\) and \(W=(6,-6,6)\).
+Substitution of the completely audited initial matrices of K51/K52
+verifies both relations, with every sign retained. This equality
+is also executed in the accompanying exact certificate.
