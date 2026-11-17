@@ -1,0 +1,202 @@
+# The labelled equivariant plumbing has a nonzero determinant obstruction
+
+Proved as P3K.47 after full root audit. We retain the actual selected-cusp positive
+rho loop of P3F.54/P3F.56 and its initial fan. The claim here is precise:
+the neighbourhood of its three labelled complex curves, with their two
+labelled vertices and positive complex curve orientations, has no
+periodic smooth product which intertwines the physical delta action
+and carries all those labelled submanifolds to their constant copies.
+
+This is an obstruction to that particular simultaneous marked product.
+It does not obstruct the separate products of P3K.40 and OE.2, the
+actual cap map of P3K.46, or computation of any return by another
+explicit comparison. We do not assign the two nonfixed relative
+integers or an all-fan return formula.
+
+## PO.1. The actual family and the derivative marks
+
+Use the two actual vertex charts \((a,b,c)\) and \((u,v,w)\), with
+\(q=abc=uvw\). The fixed curve \(C_0\) has tangent coordinates
+\(b,w\), the other two labelled curves \(C_1,C_2\) have tangent
+coordinates \((c,v)\) and \((a,u)\), respectively. The actual
+transition arrows from OE.4 are
+\[
+ \begin{array}{c|ccc}
+ &u&v&w\\ \hline
+ C_0&\kappa\alpha bc&\alpha^{-1}ab&\kappa^{-1}b^{-1}\\
+ C_1&g\eta bc&\eta^{-1}c^{-1}&g^{-1}ac\\
+ C_2&a^{-1}&ab&ac.
+ \end{array}                                                   \tag{PO.1}
+\]
+Only their restrictions and normal derivatives along the curves are
+used below. Thus all units in the proof mean their restrictions at
+\(q=0\), as functions of rho. The exact F54/F56 units satisfy
+\[
+ \operatorname{wind}\kappa=-6,\qquad
+ \operatorname{wind}\alpha=\operatorname{wind}\eta=0. \tag{PO.2}
+\]
+The nonzero scalar is fixed, and \(\eta=\lambda\beta\). No physical
+height character is changed to \(q_T\).
+
+Suppose the stated periodic marked product existed. Read it as a map
+from the actual plumbing over rho to one fixed reference plumbing.
+At the two vertices its derivatives on the tangent lines of
+\(C_2,C_1\) have nonzero complex factors
+\[
+               A,C\quad\hbox{and}\quad U,V,
+                                                               \tag{PO.3}
+\]
+respectively. These factors are complex linear even though the product
+is only smooth. Indeed these real two-planes have physical circle
+weights \(-1,+1\) at the first vertex and \(+1,-1\) at the second;
+the map intertwines that circle, retains each labelled axis, and
+retains its complex orientation. The commutant on an individual such
+real rotation plane is the complex scalar group. Put
+\[
+ a_* =\operatorname{wind}A,\quad
+ c_* =\operatorname{wind}C,\quad
+ u_* =\operatorname{wind}U,\quad
+ v_* =\operatorname{wind}V.                            \tag{PO.4}
+\]
+All are integers because the product is periodic. We do not assume
+the derivative stays diagonal along the fixed curve away from the
+vertices.
+
+## PO.2. The two curve products force their endpoint winding equations
+
+Here is the elementary pointed-curve argument, with its actual unit
+retained. For a curve having tangent coordinates \(z_+,z_-\) at its
+two labelled vertices and transition
+\(z_-=\xi(\rho)^{-1}/z_+\), write the reference transition with the
+fixed nonzero constant \(\xi_*\). A marked equivariant product on
+the open orbit cylinder gives an orientation-preserving equivariant
+map \(F_\rho:\mathbb C^*\to\mathbb C^*\). The ratio
+\(F_\rho(z_+)/z_+\) is invariant under the rotation of \(z_+\), so
+its rho winding is independent of the radius and of the angle of
+\(z_+\). This remains true on a rho-dependent nonzero path by
+radially interpolating its modulus to a fixed modulus.
+
+Near the first endpoint that ratio tends to its nonzero derivative
+factor \(P(\rho)\). At the second endpoint the derivative factor
+\(Q(\rho)\), in the two displayed endpoint coordinates, gives
+\[
+ \frac{F_\rho(z_+)}{z_+}
+          \longrightarrow\frac{\xi(\rho)}{\xi_*Q(\rho)}.
+\]
+Taking winding numbers proves
+\[
+                   \operatorname{wind}P+
+                   \operatorname{wind}Q
+                         =\operatorname{wind}\xi.       \tag{PO.5}
+\]
+The assertion concerns the actual smooth map, not a replacement by
+a complex automorphism of the curve. Equivariance is enough for the
+ratio argument; the positive complex orientation fixes its degree
+on the open orbit cylinder.
+
+For \(C_2\) the unit \(\xi\) is one, while for \(C_1\) it is
+\(\eta\), by (PO.1). Consequently (PO.5) gives
+\[
+                 a_*+u_*=0,\qquad
+                 c_*+v_* =\operatorname{wind}\eta.     \tag{PO.6}
+\]
+
+## PO.3. The full U(2) determinant cannot match these endpoints
+
+On the normal real four-plane to \(C_0\), the infinitesimal physical
+delta action defines a canonical complex structure: conjugate its
+negative-weight complex line and keep its positive-weight line. At
+the first vertex use the ordered complex normal coordinates
+\((\overline a,c)\); at the second use
+\((\overline v,u)\). Along the fixed curve any smooth equivariant
+normal derivative is a complex-linear invertible two-by-two map in
+this structure. After a positive Hermitian homotopy it can be viewed
+as U(2), but the argument below uses its nonzero complex determinant
+directly, without assuming diagonality.
+
+The actual fixed-curve normal transition obtained from (PO.1) is
+\[
+ \begin{pmatrix}\overline v\\u\end{pmatrix}
+ =\begin{pmatrix}
+       \overline\alpha^{-1}\overline b&0\\
+       0&\kappa\alpha b
+   \end{pmatrix}
+   \begin{pmatrix}\overline a\\c\end{pmatrix}.
+                                                               \tag{PO.7}
+\]
+Its determinant is
+\[
+              \kappa\,\frac\alpha{\overline\alpha}\,|b|^2.
+                                                               \tag{PO.8}
+\]
+In the reference plumbing the corresponding determinant has constant
+phase: its units are their fixed initial values and the source-coordinate
+factor is the positive real norm square. In particular its phase has
+zero rho winding, regardless of the smooth source-coordinate map in
+the assumed product.
+
+Let \(G_+,G_-\) be the normal-derivative matrices of that product,
+expressed in the two actual normal charts and a nonzero global
+determinant frame on the reference normal bundle. Such a reference
+determinant frame exists explicitly: (PO.8) at the fixed reference
+parameter has constant phase and positive variable factor, so its
+two chart frames glue after positive rescaling and a constant phase.
+The winding of \(\det G_+\) on any overlap parameter loop equals
+its winding at the first vertex. This follows by contracting the
+point in the first source-coordinate disc to that vertex while
+keeping the determinant nonzero. The same argument in the second
+disc applies to \(G_-\), even when its overlap coordinate depends
+on rho. At the vertices (PO.3) gives, in the stated positive-weight
+complex structure,
+\[
+ \operatorname{wind}\det G_+=-a_*+c_*,\qquad
+ \operatorname{wind}\det G_-= -v_*+u_* .             \tag{PO.9}
+\]
+
+The derivative is one actual bundle map. Therefore its two matrices
+and (PO.7) must commute with the reference normal transition. Taking
+determinants and winding numbers in this exact square gives
+\[
+ (-v_*+u_*)+\operatorname{wind}\kappa
+             +2\operatorname{wind}\alpha
+                     -(-a_*+c_*)=0.                   \tag{PO.10}
+\]
+This equality holds for arbitrary invertible complex normal matrices
+between the vertices. Off-diagonal U(2) terms cannot change it.
+Substituting the two actual endpoint equations (PO.6) leaves
+\[
+ \operatorname{wind}\kappa+2\operatorname{wind}\alpha
+                     -\operatorname{wind}\eta=0.       \tag{PO.11}
+\]
+Its left-hand side is \(-6\) by (PO.2). This is the required
+contradiction. Thus the stated simultaneous marked equivariant
+product does not exist.
+
+## PO.4. Exact scope of the obstruction
+
+The obstruction is the relative determinant winding of the actual
+fixed-curve normal family, with its endpoint frames supplied by the
+two other labelled pointed curve products. It is already detected
+by the determinant; a contraction in SU(2) does not alter (PO.10).
+The earlier even-winding factorization in OE.4 transfers the seam
+between vertices and retains a physical-circle loop. It does not
+satisfy both endpoint equations together with the determinant square.
+
+In particular a periodic equivariant product connection on this
+actual labelled plumbing, with identity return on that entire
+marked neighbourhood, would give the forbidden product by its
+parallel transport. This identifies the precise missing hypothesis
+in an attempted direct application of the scalar-loop simultaneous
+product argument. It makes no assertion about another global
+representative whose isotopy moves these labelled curves, or about
+an all-fan computation retaining the nontrivial boundary clutch.
+
+The separate fixed-edge product and the nonfixed-star products
+remain valid. The actual half-source reflected-family and cap maps
+of P3K.45/P3K.46 remain valid as well: they transport one fixed-edge
+product and do not assert a simultaneous product of the three
+labelled curve stars.
+
+The exact determinant and integer-consistency certificate is
+code/part3/source_cusp_product_obstruction.py. No numerical
+nonfixed relative return is assigned by this proof.

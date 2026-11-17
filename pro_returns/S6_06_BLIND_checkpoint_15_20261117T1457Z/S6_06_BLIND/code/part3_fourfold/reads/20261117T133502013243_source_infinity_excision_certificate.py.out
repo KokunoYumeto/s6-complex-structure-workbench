@@ -1,0 +1,91 @@
+1: #!/usr/bin/env python3
+2: """Exact local lattice, frame and sign inputs to the infinity excision audit."""
+3: from pathlib import Path
+4: from datetime import datetime,timezone
+5: from fractions import Fraction as Q
+6: from math import gcd
+7: import json
+8: import sympy as S
+9: 
+10: root=Path(__file__).resolve().parents[2]
+11: folder=root/"code/part3_fourfold"
+12: checks=[]
+13: def ck(test,name):
+14:     assert test,name
+15:     checks.append(name)
+16: 
+17: # The actual I2 cycle and its primitive fibre/root basis.
+18: I=S.Matrix([[-2,2],[2,-2]])
+19: change=S.Matrix([[1,0],[1,1]]) # columns F=C0+C1, C1.
+20: ck(change.det()==1,"primitive F,C1 basis")
+21: ck(change.T*I*change==S.diag(0,-2),"actual I2 null fibre and root intersection")
+22: line_rows=[]
+23: for a in (1,2):
+24:     normal_relative=S.Matrix([0,-a]) # -a C1 in F,C1 basis.
+25:     pairing=S.diag(0,-2)
+26:     evaluations=pairing*normal_relative
+27:     ck(list(evaluations)==[0,2*a],f"positive-weight determinant degree a{a}")
+28:     sq=int((normal_relative.T*pairing*normal_relative)[0])
+29:     ck(sq==-2*a*a,f"reference determinant square a{a}")
+30:     ck((2*a)%2==0,f"boundary order-two component class killed a{a}")
+31:     line_rows.append({"a":a,"M_component_degrees":[-a,a],
+32:         "positive_normal":"M_a","negative_normal":"M_a^-1",
+33:         "positive_weight_spinor_determinant":"M_a tensor conjugate(M_a^-1)",
+34:         "determinant_c1":"2c1(M_a)","relative_vector_F_C1":[0,-a],
+35:         "reference_square":sq,"collision_square":0,
+36:         "closed_double_square":2*a*a,"double_p1":0,
+37:         "normal_link_residue_per_double":str(Q(-a*a,4))})
+38: 
+39: # Physical-line transition, keeping the negative-weight conjugation.
+40: r,phi=S.symbols("r phi",real=True,positive=True)
+41: g=r*S.exp(S.I*phi)
+42: spinor_det=S.simplify(g/S.conjugate(g))
+43: ck(S.simplify(spinor_det-S.exp(2*S.I*phi))==0,"actual positive-weight determinant phase twice M")
+44: ck(S.diag(1,1,1,-1).det()==-1,"negative normal conjugation reverses real normal orientation")
+45: 
+46: def parity(order):
+47:     return (-1)**sum(order[i]>order[j] for i in range(len(order)) for j in range(i+1,len(order)))
+48: # Z has ordered coordinates Y1..Y5,rho,theta; outward rho passes five.
+49: outer=parity([5,0,1,2,3,4,6])
+50: ck(outer==-1,"quotient outer boundary is minus Y wedge theta")
+51: # Removing a normal disc and quotienting its odd orbit each reverses sign.
+52: inner=(-1)*(-1)
+53: ck(inner==1,"inner fixed-normal boundary has positive normal-link orientation")
+54: jin=-1
+55: ck(jin*outer==1,"Jin reversal converts quotient outer sign to positive")
+56: 
+57: rows=[]
+58: for a,b,N in ((1,2,4),(1,2,8),(1,2,12),(2,1,3),(2,1,6),(2,1,9)):
+59:     paths=[
+60:        folder/f"source_infinity_interior_residues_{a}_{b}_{N}_summary.json",
+61:        folder/f"source_infinity_h_residues_{a}_{b}_{N}_summary.json",
+62:        folder/f"source_infinity_e_cycles_{a}_{b}_{N}.json"]
+63:     with (root/"records/literature_fourfold.md").open("a") as f:
+64:         f.write("\n- "+datetime.now(timezone.utc).isoformat()+
+65:           " — Opened "+", ".join(str(p.relative_to(root)) for p in paths)+
+66:           ". Reason: exact independent excision lattice/sign certificate. Material: "+
+67:           "local normal-link sums, actual E cycles and determinant orders; "+
+68:           "no global value promoted by this code.\n")
+69:     ii,hh,ee=[json.loads(p.read_text()) for p in paths]
+70:     ck(ee["summary"]["component_count"]==N,f"actual N E components {a},{N}")
+71:     for c in ee["components"]:
+72:         ck(c["intersection_matrix"]==[[-2,2],[2,-2]],f"E I2 intersection {a},{N},{c['id']}")
+73:         ck(c["fibre_multiplicities"]==[1,1],f"E primitive base {a},{N},{c['id']}")
+74:         ck(c["determinant_normal_divisor"]==[0,0],f"E actual determinant orders {a},{N},{c['id']}")
+75:     local=Q(ii["total_normal_link_residue"]["rational"])+Q(hh["H_normal_link_residue"]["rational"])
+76:     doubles=-Q(N*a*a,4)
+77:     total=local+doubles
+78:     ck(total==(0 if a==1 else -1),f"local relative sum {a},{N}")
+79:     rows.append({"a":a,"b":b,"N":N,"interior_and_H":str(local),
+80:       "E_doubles":str(doubles),"complex_normal_link_difference":str(total),
+81:       "Jin_sign_conversion":-1,"Jin_difference_after_map_audit":str(-total)})
+82: 
+83: out={"utc":datetime.now(timezone.utc).isoformat(),"status":"PASS",
+84:  "check_count":len(checks),"checks":checks,
+85:  "I2_intersection":[[-2,2],[2,-2]],"primitive_change":[[1,0],[1,1]],
+86:  "line_rows":line_rows,"orientation":{"outer_quotient":outer,
+87:  "inner_fixed_link":inner,"Jin_parameter":jin},
+88:  "rows":rows,"scope":"Exact inputs to IE.1--6. Geometric comparison and global parameter dictionary require their separate proof audits."}
+89: (folder/"source_infinity_excision_certificate.json").write_text(json.dumps(out,indent=2)+"\n")
+90: print("PASS",len(checks),"exact excision inputs")
+91: for row in rows: print(row)

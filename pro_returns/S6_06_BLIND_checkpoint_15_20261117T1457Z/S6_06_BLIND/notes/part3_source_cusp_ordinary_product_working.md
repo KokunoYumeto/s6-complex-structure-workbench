@@ -1,0 +1,353 @@
+# P3K.48. The ordinary marked plumbing product and its circle-axis defect
+
+Proved after complete root audit. In the actual selected-cusp family of
+P3F.54/P3F.56, the labelled three-curve plumbing does have a periodic
+orientation-preserving ordinary smooth product. We construct it below.
+It preserves the three labelled curves and both labelled vertices.
+It is based at the given initial fibre. It is not a delta-equivariant
+product: after the extending unit maps, its fixed-curve normal circle
+has the explicit varying axis below, of degree \(+3\) on the indicated
+collapsed cylinder. This gives the precise local circle defect, without
+assigning a common-exterior variation matrix, nonfixed relative integer,
+or other-fan return.
+
+## OP.1. One actual vertex product and all three normal transition loops
+
+Use PO.1 of P3K.47 and its ordered charts \((a,b,c)\), \((u,v,w)\).
+Keep the first vertex coordinates and use at the second vertex the
+actual unit map
+\[
+                  (u,v,w)\longmapsto(u,\eta v,\kappa w).
+                                                               \tag{OP.1}
+\]
+Here the units are first restricted to the curves, hence to \(q=0\).
+The higher terms of their original chart maps are restored below.
+The reference vertex at \(\rho_*\) uses the same map with its initial
+constant units. This makes (OP.1) an actual based vertex comparison,
+rather than a replacement of the initial coordinate system.
+
+The tangent coordinates on each pair of curve charts now have literal
+reciprocal transition. With the following ordered complex normal
+coordinates the three transitions are
+\[
+ \begin{array}{c|c|c|c}
+  &z&\text{first normal pair}&\text{second normal pair}\\ \hline
+ C_0&b&(a,c)&(\eta v,u)\\
+ C_1&c&(a,b)&(\kappa w,u)\\
+ C_2&a&(b,c)&(\eta v,\kappa w).
+ \end{array}
+\]
+Their normal transition matrices are \(zD_i(\rho)\), where
+\[
+ D_0=\operatorname{diag}(\eta/\alpha,\kappa\alpha),\quad
+ D_1=\operatorname{diag}(\kappa/g,g\eta),\quad
+ D_2=\operatorname{diag}(\eta,\kappa).                 \tag{OP.2}
+\]
+These are direct substitutions in the three rows of PO.1. Put
+\(K_i=D_i(\rho_*)^{-1}D_i(\rho)\). In particular
+\[
+ \begin{aligned}
+ K_0&=\operatorname{diag}
+   ((\eta/\eta_*)(\alpha_*/\alpha),
+             (\kappa/\kappa_*)(\alpha/\alpha_*)),\\
+ K_1&=\operatorname{diag}
+   ((\kappa/\kappa_*)(g_*/g),(g/g_*)(\eta/\eta_*)),\\
+ K_2&=\operatorname{diag}(\eta/\eta_*,\kappa/\kappa_*).
+ \end{aligned}                                               \tag{OP.3}
+\]
+Each determinant has winding \(-6\), and each \(K_i\) is the identity
+at the initial parameter. Thus their real oriented normal loops have
+even parity. We will not rely on parity alone: OP.2 gives their
+explicit contractions.
+
+Write the rho circle as \(\rho=\rho_*e^{i\theta}\). Each unit of
+winding zero in (OP.3) has its actual periodic logarithm, chosen zero
+at \(\theta=0\). For \(\kappa/\kappa_*\), retain the factor
+\(e^{-6i\theta}\), and take the periodic logarithm of the remaining
+unit. Multiplication by the exponentials of scalar multiples of these
+logarithms supplies exact based homotopies of the unit factors. After
+these carried unit maps, the remaining real normal loops are
+\[
+ K_0^{\rm ang}=K_2^{\rm ang}
+        =\operatorname{diag}(1,e^{-6i\theta}),\qquad
+ K_1^{\rm ang}=\operatorname{diag}(e^{-6i\theta},1).
+                                                               \tag{OP.4}
+\]
+The same logarithms can be inserted in the final maps, as explained
+in OP.3; the original units are not discarded.
+
+## OP.2. Explicit based quaternion contractions in the actual order
+
+For an ordered pair of complex normal coordinates \((n_0,n_1)\),
+we use exactly the K23 convention
+\[
+                         Q=n_0+j\overline{n_1}.       \tag{OP.5}
+\]
+This real coordinate has the original complex normal orientation.
+Choose a smooth function \(\vartheta:[0,1]\to[0,\pi/2]\), constant
+near both ends and strictly increasing between them, and put
+\[
+ \begin{aligned}
+ p(s,\theta)&=\sin\vartheta(s)\,e^{-3i\theta}
+                                      +j\cos\vartheta(s),\\
+ H(s,\theta)&=p(s,\theta)p(s,0)^{-1}.
+ \end{aligned}                                               \tag{OP.6}
+\]
+Both factors are unit quaternions. The maps are smooth and periodic,
+and satisfy
+\[
+ H(0,\theta)=1,\qquad H(1,\theta)=e^{-3i\theta},\qquad
+ H(s,0)=H(s,2\pi)=1.                                  \tag{OP.7}
+\]
+Define two actual oriented real normal maps
+\[
+    T_-(s,\theta)(Q)=H QH^{-1},\qquad
+    T_+(s,\theta)(Q)=H QH.                            \tag{OP.8}
+\]
+Their inverses are displayed by replacing the two factors with their
+inverses in reverse order. They are orthogonal and orientation
+preserving. At \(s=1\), the first sends the quaternion coefficients
+\((n_0,\overline{n_1})\) to
+\((n_0,e^{6i\theta}\overline{n_1})\). Thus in the original complex
+coordinates it is
+\((n_0,n_1)\mapsto(n_0,e^{-6i\theta}n_1)\).
+The second is \((n_0,n_1)\mapsto(e^{-6i\theta}n_0,n_1)\).
+These are precisely the two loops in (OP.4). In particular no
+unconjugated quaternion coordinate is substituted for (OP.5).
+
+We use \(T_-\) for \(C_0,C_2\) and \(T_+\) for \(C_1\).
+Multiplying these normal maps by the diagonal exponentials of the
+actual periodic unit logarithms, with a cutoff in \(s\), gives a
+contraction \(\mathcal K_i(s,\theta)\) of each full loop (OP.3).
+The cutoff is zero near \(s=0\) and one near \(s=1\), so
+\[
+ \mathcal K_i(0,\theta)=I,\quad
+ \mathcal K_i(1,\theta)=K_i(\theta),\quad
+ \mathcal K_i(s,0)=\mathcal K_i(s,2\pi)=I.             \tag{OP.9}
+\]
+Write these chosen contractions as
+\(\mathcal K_i=\mathcal D_iT_i\), where \(\mathcal D_i(s,\theta)\)
+is the actual diagonal exponential of the periodic unit logarithms,
+and \(T_i=T_-\) for \(i=0,2\), \(T_i=T_+\) for \(i=1\).
+All maps are invertible throughout. The diagonal unit homotopies
+commute with the physical circle; the explicitly displayed maps
+\(T_\pm\) need not do so.
+
+## OP.3. Gluing the actual ordinary plumbing product
+
+Form the marked regular neighbourhood from two small actual coordinate
+balls at the vertices and three disjoint normal tubes along the curve
+interiors. On each curve choose a radial coordinate \(s=s(|z|)\)
+which is zero near its first vertex and one near its second. In the
+first normal frame send
+\[
+                    (z,n)\longmapsto
+                       (z,\mathcal K_i(s(|z|),\theta)n).
+                                                               \tag{OP.10}
+\]
+It is the identity near the first vertex. Near the second it is
+\(K_i\), and the equality
+\[
+               zD_i(\rho_*)K_i=zD_i(\rho)            \tag{OP.11}
+\]
+shows that it is exactly the second vertex comparison (OP.1).
+Consequently these three maps and the two actual vertex maps agree
+on their common collars. There is no unresolved corner: the open
+curve tubes are disjoint away from the vertex balls, and (OP.11)
+holds in the ordered normal directions of each incident axis.
+
+The maps on the actual coordinate germs have the same first normal
+derivatives as these displayed bundle maps. The remaining higher
+terms are removed on smaller tube collars by normal rescaling.
+For a map \(F\) preserving the zero section, put
+\(R_t(z,n)=(z,tn)\) and use the literal conjugation
+\(R_t^{-1}FR_t\) for \(t>0\). Its limit consists of the given
+zero-section map and its invertible normal derivative. Only the
+normal vector is scaled in this construction. On the compact parameter circle
+one common sufficiently small tube makes this a smooth isotopy of
+invertible germs through \(t=0\). On each vertex collar the original
+unit maps have nonzero diagonal derivative and are treated by the
+same rescaling, with the vertex coordinate balls protected.
+
+For precision about gluing this isotopy, take its velocity
+\((\partial_tF_t)F_t^{-1}\), multiply it by a smooth collar cutoff,
+and integrate. This supplies the actual collar diffeomorphism
+between the original germ and the displayed normal map. The cutoffs
+are chosen on the three disjoint tube interiors and agree with the
+already fixed vertex maps on their protected collars. Thus they
+glue without changing any other incident axis. All isotopies are
+periodic and are the identity at the reference parameter.
+
+Finally transport the rounded boundary and use the resulting collar
+isotopy to fix one regular-neighbourhood radius. This constructs a
+periodic smooth product of the actual labelled plumbing with the
+reference plumbing. The vertex maps are complex-unit maps, the
+curve maps preserve their complex orientations, and the normal maps
+are in the positive real group. Hence the product preserves the
+six-manifold orientation. It is an ordinary smooth product of the
+labelled neighbourhood; no source-height-preserving or
+delta-equivariant product is asserted.
+
+## OP.4. The physical circle and the exact degree-three axis
+
+We now retain the physical circle in this product. After the actual
+extending unit maps of OP.1, on the fixed-curve normal quaternion
+(OP.5) it is \(Q\mapsto Qe^{-i\phi}\). Conjugating by the actual
+map \(T_-\) gives
+\[
+       Q\longmapsto Q\,H(s,\theta)e^{-i\phi}H(s,\theta)^{-1}.
+                                                               \tag{OP.12}
+\]
+The same right-hand axis occurs after multiplication by the fixed
+source Hopf representative used to form \(q_H\). Thus the circle
+axis in the ordinary product is
+\[
+                         \nu(s,\theta)=H iH^{-1}.     \tag{OP.13}
+\]
+It equals \(i\) on both ends of the cylinder, but it is not the
+constant axis on its interior. The zero-winding diagonal unit maps
+are the previously displayed transported maps; contracting their
+logarithms carries (OP.12) to the formula written here and leaves
+the following integer degree unchanged.
+
+Orient the cylinder by \(ds\wedge d\theta\), collapse each boundary
+circle to its endpoint, and orient the target sphere of imaginary
+unit quaternions by its outward normal. We compute the degree rather
+than infer it from parity. Put \(A=\sin\vartheta\),
+\(B=\cos\vartheta\), \(C=\cos3\theta\), \(S=\sin3\theta\).
+Then (OP.6) is literally
+\[
+ H=(B^2+A^2C)-A^2S\,i+AB(1-C)\,j+AB S\,k.            \tag{OP.14}
+\]
+The equation \(HiH^{-1}=-i\) is equivalent to zero real and
+\(i\)-coefficients of \(H\). Its only solutions are
+\[
+ \vartheta=\pi/4,\qquad
+ \theta=(\pi+2\pi j)/3,
+                   \quad j=0,1,2.                    \tag{OP.15}
+\]
+At each one \(H=j\), and direct differentiation gives
+\[
+                    \partial_s\nu=4\vartheta'(s)k,
+                    \partial_\theta\nu=3j.           \tag{OP.16}
+\]
+The ordered basis \((k,j)\) is positive at the target point \(-i\),
+since \((-i,k,j)\) has the ambient orientation \((i,j,k)\).
+Every preimage in (OP.15) is therefore regular and positive. Hence
+\[
+                              \deg\nu=+3.             \tag{OP.17}
+\]
+
+For completeness the two nonfixed normal actions are also explicit.
+In their ordered normal coordinates of OP.1, the initial actions are
+\[
+ R_1(\phi)Q=e^{-i\phi/2}Qe^{-i\phi/2},\qquad
+ R_2(\phi)Q=e^{i\phi/2}Qe^{-i\phi/2}.
+\]
+Their base coordinates have weights \(+1,-1\), respectively.
+The ordinary product carries their normal actions to
+\[
+ \begin{aligned}
+ C_1:\quad Q&\longmapsto
+ (He^{-i\phi/2}H^{-1})Q(H^{-1}e^{-i\phi/2}H),\\
+ C_2:\quad Q&\longmapsto
+ (He^{i\phi/2}H^{-1})Q(He^{-i\phi/2}H^{-1}).
+ \end{aligned}                                               \tag{OP.18}
+\]
+The paired central signs make both formulas close at \(\phi=2\pi\).
+For the full original units, the physical normal action on each tube is
+exactly
+\[
+ \mathcal D_i(s,\theta)
+      [T_i(s,\theta)R_i(\phi)T_i(s,\theta)^{-1}]
+                          \mathcal D_i(s,\theta)^{-1},
+                                                               \tag{OP.19}
+\]
+with \(R_0(\phi)Q=Qe^{-i\phi}\). Thus the written \(H\)-axis and
+(OP.18) are reached from the full-unit action by the displayed based
+logarithm contraction, with the real normal metric transported along
+that contraction. Together with their base rotations, (OP.19) gives
+the actual transported circle actions on all three tubes.
+They agree with the vertex action on the protected collars.
+
+The product in OP.3 thus provides a possible ordinary common boundary
+marking, with the nonconstant circle action (OP.12)--(OP.18). The
+circle-trace and stable-derivative arguments for a constant equivariant
+product require a further correction in this marking. That correction
+is not evaluated here. In particular neither a rank-one initial
+variation matrix nor vanishing nonfixed relative derivatives follows
+from (OP.17).
+
+## OP.5. The closed fixed-curve frame comparison
+
+We also compute the actual normal-frame comparison on the fixed
+curve. Write \(z=\tan\chi\,e^{i\psi}\), with
+\(0\leq\chi\leq\pi/2\), and put
+\[
+ U(z)=\frac{1+jz}{\sqrt{1+|z|^2}},\qquad q_H=U(z)Q.
+\]
+The ordinary product of OP.2 and the physical Cox product of P3K.42
+are therefore related by the literal arrow
+\[
+ q_H\longmapsto L(z,\theta)q_H R(z,\theta),\qquad
+ L=UHU^{-1},\quad R=H^{-1}.                         \tag{OP.20}
+\]
+Here the radial parameter in \(H\) is the previously chosen smooth
+function of \(|z|\). Both maps close on \(\mathbb P^1\times S^1\).
+At the first pole \(H=1\). Near the second pole \(H=e^{-3i\theta}\),
+so \(L=\cos3\theta-(UiU^{-1})\sin3\theta\) extends in the smooth
+Hopf axis; its limiting value is \(e^{3i\theta}\). The right factor
+extends independently of the source angle. The actual zero-winding
+diagonal unit maps in OP.19 are carried in this comparison and then
+contracted by their displayed based logarithms. This is a homotopy
+of the actual closed frame arrow, rather than a discarded unit.
+
+We orient the domain by its complex curve orientation followed by
+positive \(\theta\), hence by \(d\chi\wedge d\psi\wedge d\theta\)
+on the cylinder. In the quaternion orientation \((1,i,j,k)\), use
+the matrix trace with \(\operatorname{tr}(ijk)=-2\), and the positive
+normalized form
+\[
+ \omega(g)=-\frac{\operatorname{tr}(g^{-1}dg)^3}{24\pi^2}.
+\]
+The Maurer--Cartan equations give the exact product identity
+\[
+ \omega(gh)=\omega(g)+\omega(h)+
+ \frac{1}{8\pi^2}d\operatorname{tr}
+       (g^{-1}dg\wedge dh\,h^{-1}).                  \tag{OP.21}
+\]
+Applying it twice to \(UHU^{-1}\), the two \(U\) cubic terms cancel
+and the \(H\) term vanishes because \(H\) depends on only two
+variables. Thus its integral is the boundary integral of
+\[
+ \frac{1}{8\pi^2}\left\{
+ \operatorname{tr}(U^{-1}dU\wedge dH\,H^{-1})+
+ \operatorname{tr}((UH)^{-1}d(UH)\wedge dU^{-1}U)\right\}.
+                                                               \tag{OP.22}
+\]
+There is no first-pole contribution. At the second pole,
+\(U=je^{i\psi}\), \(H=e^{-3i\theta}\), and
+\[
+ U^{-1}dU=i\,d\psi,\qquad dH\,H^{-1}=-3i\,d\theta.
+\]
+Each trace in braces in (OP.22) is
+\(6\,d\psi\wedge d\theta\). The outward boundary orientation there
+is \(d\psi\wedge d\theta\), and consequently
+\[
+ \deg L=\frac{12(2\pi)^2}{8\pi^2}=6,\qquad
+ \deg R=0.                                            \tag{OP.23}
+\]
+The second equality follows directly from its two-variable
+factorization. The Hopf coordinate \(h=UiU^{-1}\) reverses the
+complex orientation of the source curve: near \(z=0\), its two
+derivatives in \((\Re z,\Im z)\) are \((-2k,-2j)\), negatively
+oriented at \(i\). Therefore the same closed comparison has
+factor degrees \((-6,0)\) in the \(h\)-sphere-times-parameter
+orientation of P3K.23, and \((6,0)\) in complex-curve orientation.
+We have computed these closed factor maps and their degrees. The
+connecting-homomorphism sign and the resulting relative-return
+correction remain unevaluated; no additional fan return follows
+without those arrows.
+
+The exact normal-matrix, quaternion and degree checks are in
+code/part3/source_cusp_ordinary_product.py.

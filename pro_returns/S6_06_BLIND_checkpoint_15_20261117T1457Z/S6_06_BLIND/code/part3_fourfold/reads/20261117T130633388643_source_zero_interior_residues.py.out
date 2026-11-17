@@ -1,0 +1,153 @@
+1: #!/usr/bin/env python3
+2: """Exact normal-link residues of compact interior fixed components.
+3: 
+4: The input is the executed regular-fan fixed-chart export.  Each interior
+5: minimal-face component is unwrapped using its recorded period.  Two
+6: independent auxiliary circle choices evaluate the same localized
+7: characteristic number.  No boundary component, global source-family
+8: return, or orientation comparison to the Jin manifold is inferred.
+9: """
+10: from pathlib import Path
+11: from datetime import datetime, timezone
+12: from fractions import Fraction as Q
+13: from collections import Counter,defaultdict
+14: from math import prod
+15: import argparse,json,gc
+16: 
+17: ROOT=Path(__file__).resolve().parents[2]
+18: 
+19: def matvec(A,v):
+20:     return [sum(x*y for x,y in zip(row,v)) for row in A]
+21: 
+22: def transported_aux(eps,n,sector,a,b,N):
+23:     H=((2,b),(-a,N-1))
+24:     P0={'I':((1,0),(0,1)),
+25:         'W':((1,b),(-a,-2)),
+26:         'E':((0,0),(0,N))}[sector]
+27:     r,s=eps[2:]
+28:     return [eps[i]+sum((r*P0[i][j]+s*H[i][j])*n[j]
+29:                        for j in range(2)) for i in range(2)]+eps[2:]
+30: 
+31: def residue_at_chart(w,beta):
+32:     inds=[i for i,x in enumerate(w) if x]
+33:     tangent=[i for i,x in enumerate(w) if not x]
+34:     weights=[Q(w[i]) for i in inds]
+35:     roots=[Q(beta[i]) for i in inds]
+36:     tang=[Q(beta[i]) for i in tangent]
+37:     assert all(tang)
+38:     P=prod(weights)
+39:     c=4-sum(x*x for x in weights)
+40:     if len(inds)==4:
+41:         numerator=c
+42:     elif len(inds)==3:
+43:         numerator=-sum((c/x+2*x)*z for x,z in zip(weights,roots))
+44:     elif len(inds)==2:
+45:         x,y=roots
+46:         u,v=weights
+47:         A=x/u+y/v
+48:         B=x*x/(u*u)+x*y/(u*v)+y*y/(v*v)
+49:         S=u*x+v*y
+50:         numerator=c*B+2*S*A-(sum(t*t for t in tang)+x*x+y*y)
+51:     else:
+52:         raise AssertionError("Unexpected fixed dimension")
+53:     return numerator/(24*P*prod(tang))
+54: 
+55: def as_json(q):
+56:     return {'numerator':q.numerator,'denominator':q.denominator,
+57:             'rational':str(q)}
+58: 
+59: def do_case(a,b,N):
+60:     src=ROOT/'code/part3_fourfold'/f'source_zero_fixed_charts_{a}_{b}_{N}.json'
+61:     with (ROOT/'records/literature_fourfold.md').open('a') as f:
+62:         f.write('\n- '+datetime.now(timezone.utc).isoformat()+' — Opened '
+63:                 +str(src.relative_to(ROOT))+'. Reason: exact compact-interior '
+64:                 'normal-link residues by the actual cone/period matrices. '
+65:                 'Material: dual characters, physical weights, minimal faces '
+66:                 'and recorded unwrapping periods; no global return assigned.\n')
+67:     d=json.loads(src.read_text())
+68:     components={c['id']:c for c in d['components']}
+69:     interior={k:c for k,c in components.items() if c['boundary_tag'] is None}
+70:     charts=[c for c in d['charts'] if c['component'] in interior]
+71:     tests=0
+72:     for c in charts:
+73:         assert sum(w*o for w,o in zip(c['physical_weights'],
+74:                                      c['source_parameter_orders']))==0
+75:         tests+=1
+76:     # A finite collection of hyperplanes is avoided by the integer moment curve.
+77:     aux=[]
+78:     trial=2
+79:     while len(aux)<2:
+80:         eps=[1,trial,trial**2,trial**3]
+81:         good=True
+82:         for c in charts:
+83:             e=transported_aux(eps,c['period_from_canonical'],c['sector'],a,b,N)
+84:             beta=matvec(c['dual_character_rows'],e)
+85:             if any(beta[j]==0 for j in c['zero_weight_columns']):
+86:                 good=False
+87:                 break
+88:         if good:
+89:             aux.append(eps)
+90:         trial+=1
+91:         assert trial<1000
+92:     values=[]
+93:     for eps in aux:
+94:         sums=defaultdict(Q)
+95:         for c in charts:
+96:             e=transported_aux(eps,c['period_from_canonical'],c['sector'],a,b,N)
+97:             beta=matvec(c['dual_character_rows'],e)
+98:             sums[c['component']]+=residue_at_chart(c['physical_weights'],beta)
+99:         values.append(sums)
+100:     rows=[]
+101:     total=Q(0)
+102:     dimtot=defaultdict(Q)
+103:     sector_tot=defaultdict(Q)
+104:     distributions=Counter()
+105:     for fid,c in interior.items():
+106:         x=values[0][fid]
+107:         assert x==values[1][fid],(fid,x,values[1][fid])
+108:         assert not c['period_stabilizer_basis']
+109:         if c['complex_dimension']==1:
+110:             assert len(c['charts'])==2
+111:         tests+=3
+112:         total+=x
+113:         dimtot[c['complex_dimension']]+=x
+114:         sector_tot[c['orbit_sector']]+=x
+115:         distributions[(c['complex_dimension'],str(x))]+=1
+116:         rows.append({'id':fid,'complex_dimension':c['complex_dimension'],
+117:                      'sector':c['orbit_sector'],
+118:                      'chart_count':len(c['charts']),
+119:                      'normal_weights':c['normal_weights_canonical_order'],
+120:                      'residue':as_json(x)})
+121:     summary={
+122:        'utc':datetime.now(timezone.utc).isoformat(),
+123:        'parameters':{'a':a,'b':b,'N':N},
+124:        'status':'PASS: compact interior normal-link residue and auxiliary-circle independence',
+125:        'source':str(src.relative_to(ROOT)),
+126:        'auxiliary_cocharacters':aux,
+127:        'checks':tests,'interior_component_count':len(rows),
+128:        'interior_chart_count':len(charts),
+129:        'total_normal_link_residue':as_json(total),
+130:        'dimension_totals':{str(k):as_json(v) for k,v in sorted(dimtot.items())},
+131:        'sector_totals':{str(k):as_json(v) for k,v in sorted(sector_tot.items())},
+132:        'residue_distribution':[{'complex_dimension':k[0],'residue':k[1],'count':v}
+133:                                 for k,v in sorted(distributions.items())],
+134:        'scope':'The displayed residue uses complex normal orientations and the '
+135:                'physical circle variable. Boundary-tag I,W,E,H components, '
+136:                'ordinary/cap continuation, all global orientation maps, and '
+137:                'the completed-family return remain separate.'}
+138:     stem=ROOT/'code/part3_fourfold'/f'source_zero_interior_residues_{a}_{b}_{N}'
+139:     Path(str(stem)+'.json').write_text(json.dumps(
+140:         {'summary':summary,'components':rows},separators=(',',':'))+'\n')
+141:     Path(str(stem)+'_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+142:     print(json.dumps({k:v for k,v in summary.items()
+143:                       if k!='residue_distribution'},indent=2),flush=True)
+144:     del d,components,interior,charts
+145:     gc.collect()
+146: 
+147: if __name__=='__main__':
+148:     p=argparse.ArgumentParser()
+149:     p.add_argument('--case',choices=['2,1,6','1,2,8','all'],default='all')
+150:     args=p.parse_args()
+151:     cases=[(2,1,6),(1,2,8)] if args.case=='all' else [tuple(map(int,args.case.split(',')))]
+152:     for case in cases:
+153:         do_case(*case)

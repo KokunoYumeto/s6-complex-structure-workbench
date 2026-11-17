@@ -1,0 +1,47 @@
+1: #!/usr/bin/env python3
+2: """Exact rescaled two-node period lattices; no origin-count or index inference."""
+3: from pathlib import Path
+4: from datetime import datetime, timezone
+5: import sympy as S
+6: import json
+7: ROOT=Path(__file__).resolve().parents[2]
+8: N=S.symbols('N',integer=True)
+9: swap=S.Matrix([[0,1],[1,0]])
+10: rows=[]
+11: for a,b in [(1,2),(2,1)]:
+12:     H=S.Matrix([[2,b],[-a,N-1]])
+13:     if a==1:
+14:         U=S.Matrix([[1,0],[-2,1]])*S.diag(-1,1)*swap
+15:         V=S.Matrix([[1,N-1],[0,1]])
+16:     else:
+17:         U=S.diag(1,-1)*S.Matrix([[1,0],[-(N-1),1]])
+18:         V=swap*S.Matrix([[1,-2],[0,1]])
+19:     assert U.det() in (-1,1)
+20:     assert V.det() in (-1,1)
+21:     assert U*H*V==S.diag(1,2*N)
+22:     for n in range(1,257):
+23:         assert U.subs(N,n)*H.subs(N,n)*V.subs(N,n)==S.diag(1,2*n)
+24:     rows.append({
+25:       'a':a,'b':b,
+26:       'period_columns':[[str(e) for e in H.row(i)] for i in range(2)],
+27:       'left_unimodular':[[str(e) for e in U.row(i)] for i in range(2)],
+28:       'right_unimodular':[[str(e) for e in V.row(i)] for i in range(2)],
+29:       'smith':'diag(1,2N)',
+30:       'N_positive_quotient':'Z/(2N)',
+31:       'N_zero_quotient':'Z',
+32:     })
+33: data={
+34:  'utc':datetime.now(timezone.utc).isoformat(),
+35:  'status':'PASS: symbolic unimodular certificates plus512 positive-N evaluations',
+36:  'rescaling':'lambda=v^N*lambda0',
+37:  'source_period':'h=(2,-a)',
+38:  'suspension_period':'g=(b,N-1)',
+39:  'sector_relation':'a*b=2',
+40:  'rows':rows,
+41:  'closed_parameter_requirement':'Use N divisible by M and the literal one-gamma parameter r=v^(N/M)r0; this adds N/M marked one-gamma scalar loops. The smaller M/b endpoint requires its rational root to be tracked around the varying-source puncture.',
+42:  'scope':'Exact period-lattice arithmetic. A fundamental lattice index is not yet identified with a count of quotient origin links, and no return index is assigned.'
+43: }
+44: (ROOT/'code/part3_fourfold/source_zero_rescaled_periods.json').write_text(json.dumps(data,indent=2)+'\n')
+45: with (ROOT/'records/literature_fourfold.md').open('a') as f:
+46:     f.write('\n- '+data['utc']+' — Executed own source_zero_rescaled_periods.py. Material: exact two-sector period matrices for lambda=v^N lambda0, unimodular Smith reductions and512 evaluations; no cell-count or return inference.\n')
+47: print(json.dumps(data,indent=2))

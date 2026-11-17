@@ -1,0 +1,89 @@
+1: #!/usr/bin/env python3
+2: """Exact boundary-frame identities for the real return trace, P3K.9."""
+3: from pathlib import Path
+4: import json
+5: import sympy as sp
+6: 
+7: out = Path(__file__).resolve().parent
+8: alpha, theta, beta, phi, d, g = sp.symbols(
+9:     'alpha theta beta phi d g', real=True)
+10: rho=sp.symbols('rho',positive=True)
+11: 
+12: def rz(a):
+13:     return sp.Matrix([[sp.cos(a), -sp.sin(a), 0],
+14:                       [sp.sin(a), sp.cos(a), 0], [0, 0, 1]])
+15: 
+16: def frame(a, t):
+17:     return sp.Matrix([
+18:         [-sp.sin(a), sp.cos(t)*sp.cos(a), sp.sin(t)*sp.cos(a)],
+19:         [ sp.cos(a), sp.cos(t)*sp.sin(a), sp.sin(t)*sp.sin(a)],
+20:         [0, sp.sin(t), -sp.cos(t)]])
+21: 
+22: def exact_zero(matrix):
+23:     return matrix.applyfunc(lambda entry: sp.trigsimp(sp.expand_trig(entry))) == sp.zeros(*matrix.shape)
+24: 
+25: G = frame(alpha, theta)
+26: assert exact_zero(G.T*G - sp.eye(3))
+27: assert sp.trigsimp(G.det()) == 1
+28: assert exact_zero(G-rz(alpha)*frame(0, theta))
+29: assert exact_zero(rz(alpha+beta)-rz(alpha)*rz(beta))
+30: full = frame(phi-d*(theta+g), theta)
+31: factored = rz(-d*g)*rz(phi-d*theta)*frame(0, theta)
+32: assert exact_zero(full-factored)
+33: 
+34: # Explicit quotient by the oriented outward-page/inward-compression
+35: # collar tangent u=(cos(alpha),sin(alpha),rho,0).
+36: projection=sp.Matrix([[1,0,-sp.cos(alpha)/rho,0],
+37:                       [0,1,-sp.sin(alpha)/rho,0],
+38:                       [0,0,0,1]])
+39: collar=sp.Matrix([sp.cos(alpha),sp.sin(alpha),rho,0])
+40: assert projection*collar==sp.zeros(3,1)
+41: normal=sp.Matrix([-sp.sin(alpha),sp.cos(alpha),0,0])
+42: param_x=sp.Matrix([0,0,sp.cos(theta),-sp.sin(theta)])
+43: param_y=sp.Matrix([0,0,sp.sin(theta),sp.cos(theta)])
+44: projected=sp.diag(rho,rho,1)*projection*sp.Matrix.hstack(normal,-param_x,-param_y)*sp.diag(1/rho,1,1)
+45: assert exact_zero(projected-G)
+46: 
+47: b_square = sp.Integer(-8)
+48: p1_base = sp.Integer(-24)
+49: p1_normal = sp.Integer(0)
+50: k_gamma = (p1_normal+3*b_square)/4
+51: ell_gamma = p1_base+p1_normal
+52: index_gamma = (4*k_gamma-ell_gamma)/24
+53: degree = 6
+54: assert (k_gamma, ell_gamma, index_gamma) == (-6, -24, 0)
+55: assert (k_gamma/degree, ell_gamma/degree) == (-1, -4)
+56: 
+57: data = {
+58:     'proof': 'notes/part3_fourfold.md P3K.9',
+59:     'method': 'Exact frame transition, cubic Pontryagin transgression, then integral framing descent.',
+60:     'coordinates': 'All angles in this computation are radians.',
+61:     'collar_phase': 'phi is the outward page phase, equal to the Milnor-page phase plus pi.',
+62:     'collar_vector': ['cos(alpha)','sin(alpha)','rho>0','0'],
+63:     'normal_quotient': [[str(entry) for entry in row] for row in projection.tolist()],
+64:     'quotient_kills_collar': True,
+65:     'quotient_recovers_G_after_oriented_contractible_frame_changes': True,
+66:     'G': [[str(entry) for entry in row] for row in G.tolist()],
+67:     'G_transpose_G': 'I_3',
+68:     'det_G': 1,
+69:     'rotation_factorization': 'G(alpha,theta)=R_z(alpha) G(0,theta)',
+70:     'actual_boundary_relation': 'gamma=theta+g_epsilon(p)',
+71:     'transition': 'h(p)^(-1) G(phi-d*(theta+g_epsilon(p)),theta)',
+72:     'factor_T2': 'h(p)^(-1) R_z(-d*g_epsilon(p))',
+73:     'factor_S1': 'R_z(phi-d*theta) G(0,theta)',
+74:     'pontryagin_transgression': 'The product cubic differs from the sum of the factor cubics by an exact form. Both factor cubics vanish by dimension.',
+75:     'p1_normal': int(p1_normal),
+76:     'b_square': int(b_square),
+77:     'p1_base': int(p1_base),
+78:     'one_gamma_turn': {'k_Jin': int(k_gamma), 'ell_Jin': int(ell_gamma), 'index': int(index_gamma)},
+79:     'physical_mapping_torus': 'Jin M_(f^(-1))',
+80:     'bordism_boundary': '-physical_mapping_torus disjoint_union -normal_sphere_bundle',
+81:     'orientation_consequence': 'Jin(f) has the same characteristic numbers as the positively oriented normal sphere bundle.',
+82:     'framing_gauge_pi1': 'Z/2 direct_sum Z',
+83:     'sixfold_pullback': '(epsilon,n) -> (0,6*n)',
+84:     'constant_axis_Z2_correction': 'Extends over D3; zero cubic transgression and no change in k or ell.',
+85:     'original_descended_rotating_framing': {'k_Jin': int(k_gamma/degree), 'ell_Jin': int(ell_gamma/degree), 'index': 0},
+86:     'other_framing_changes': '(k,ell) -> (k+n,ell+4*n); index unchanged'
+87: }
+88: (out/'normal_clutch.json').write_text(json.dumps(data, indent=2)+'\n')
+89: print(json.dumps(data, indent=2))

@@ -1,0 +1,260 @@
+1: #!/usr/bin/env python3
+2: """Execute the proved relative periodic fan resolution, retaining every lattice map.
+3: 
+4: The three sector lattices have order (Z,V,base0,base1).  This program
+5: does not assign an analytic quotient, a fixed-stratum topology, or a return.
+6: """
+7: from pathlib import Path
+8: from datetime import datetime, timezone
+9: from itertools import combinations
+10: from collections import defaultdict
+11: from functools import lru_cache, reduce
+12: from math import gcd
+13: import argparse
+14: import heapq
+15: import json
+16: import time
+17: 
+18: ROOT = Path(__file__).resolve().parents[2]
+19: I = ((1, 0), (0, 1))
+20: SECTORS = ("I", "W", "E")
+21: 
+22: 
+23: def primitive(v):
+24:     g = reduce(gcd, (abs(x) for x in v))
+25:     assert g > 0
+26:     return tuple(x // g for x in v)
+27: 
+28: 
+29: def det3(A):
+30:     (a,b,c),(d,e,f),(g,h,i) = A
+31:     return a*(e*i-f*h)-b*(d*i-f*g)+c*(d*h-e*g)
+32: 
+33: 
+34: @lru_cache(maxsize=200000)
+35: def det4(C):
+36:     A = tuple(zip(*C))
+37:     return sum((-1)**j*A[0][j]*det3(tuple(tuple(A[i][k] for k in range(4) if k != j) for i in range(1,4))) for j in range(4))
+38: 
+39: 
+40: def matvec(P, n):
+41:     return (P[0][0]*n[0]+P[0][1]*n[1], P[1][0]*n[0]+P[1][1]*n[1])
+42: 
+43: 
+44: class PeriodicFan:
+45:     def __init__(self, a, b, N):
+46:         self.a, self.b, self.N = a, b, N
+47:         self.P = {"I": I, "W": ((1,b),(-a,-2)), "E": ((0,0),(0,N))}
+48:         self.H = ((2,b),(-a,N-1))
+49:         self.checks = 0
+50:         self.cells = {}
+51:         self.by_key = {}
+52:         self.face_index = defaultdict(set)
+53:         self.heap = []
+54:         self.next_id = 0
+55:         self.trace = []
+56:         self.initial_counts = {}
+57:         self.protected = {}
+58:         self.started = time.monotonic()
+59: 
+60:     def ck(self, value, label):
+61:         assert value, label
+62:         self.checks += 1
+63: 
+64:     def T(self, sector, v, n):
+65:         x,y,r,s = v
+66:         P,H = self.P[sector], self.H
+67:         return (x+(r*P[0][0]+s*H[0][0])*n[0]+(r*P[0][1]+s*H[0][1])*n[1],
+68:                 y+(r*P[1][0]+s*H[1][0])*n[0]+(r*P[1][1]+s*H[1][1])*n[1],r,s)
+69: 
+70:     def canonical(self, sector, C):
+71:         X,Y,R,S = map(sum, zip(*C))
+72:         P,H = self.P[sector], self.H
+73:         if S or sector == "I":
+74:             aa,bb = R*P[0][0]+S*H[0][0], R*P[0][1]+S*H[0][1]
+75:             cc,dd = R*P[1][0]+S*H[1][0], R*P[1][1]+S*H[1][1]
+76:             determinant = aa*dd-bb*cc
+77:             assert determinant > 0
+78:             n = ((dd*X-bb*Y)//determinant, (aa*Y-cc*X)//determinant)
+79:         elif sector == "W":
+80:             assert R > 0 and Y == -self.a*X
+81:             n = (X//R, 0)
+82:         else:
+83:             assert R > 0 and X == 0
+84:             n = (0, Y//(R*self.N))
+85:         C0 = tuple(sorted(self.T(sector,v,(-n[0],-n[1])) for v in C))
+86:         return C0, n
+87: 
+88:     def face_key(self, sector, C):
+89:         C0,n = self.canonical(sector,C)
+90:         tag = "H" if all(v[2] == 0 for v in C) else sector
+91:         return (tag,len(C),C0),n
+92: 
+93:     def ray(self, P, n, height):
+94:         return (*matvec(P,n),1-height,height)
+95: 
+96:     def initial(self):
+97:         fans = {}
+98:         for sector in SECTORS:
+99:             u,v = ((1,0),(-self.b,1)) if sector == "W" else ((1,0),(0,-1))
+100:             uv = (u[0]+v[0],u[1]+v[1])
+101:             Cset = set()
+102:             for w in (u,v):
+103:                 ns = ((0,0),w,uv)
+104:                 lo = [self.ray(self.P[sector],n,0) for n in ns]
+105:                 hi = [self.ray(self.H,n,1) for n in ns]
+106:                 for C in ((lo[0],lo[1],lo[2],hi[2]),(lo[0],lo[1],hi[1],hi[2]),(lo[0],hi[0],hi[1],hi[2])):
+107:                     if det4(tuple(C)):
+108:                         Cset.add(self.canonical(sector,C)[0])
+109:             fans[sector] = Cset
+110:         self.initial_counts['raw'] = {s:len(fans[s]) for s in SECTORS}
+111: 
+112:         # The exact common-H overlay has a single new midpoint orbit for b=2.
+113:         # Its original integral primitive ray is (2,N-1,0,2), not a height-one
+114:         # rational point.  Each old triangle has at most one edge in this orbit.
+115:         if self.b == 2:
+116:             p = primitive((self.b,self.N-1,0,2))
+117:             for sector in SECTORS:
+118:                 ns = ((1,0),(-1,1)) if sector == "W" else ((0,0),(0,1))
+119:                 F = tuple(self.ray(self.H,n,1) for n in ns)
+120:                 Fc,n0 = self.canonical(sector,F)
+121:                 pc = self.T(sector,p,(-n0[0],-n0[1]))
+122:                 new = set()
+123:                 for C in fans[sector]:
+124:                     matches = []
+125:                     for inds in combinations(range(4),2):
+126:                         FF = tuple(C[i] for i in inds)
+127:                         if any(v[2] for v in FF):
+128:                             continue
+129:                         FFc,n = self.canonical(sector,FF)
+130:                         if FFc == Fc:
+131:                             matches.append((inds,n))
+132:                     self.ck(len(matches)<=1,'H edge orbit separation')
+133:                     if not matches:
+134:                         new.add(C)
+135:                     else:
+136:                         inds,n = matches[0]
+137:                         pp = self.T(sector,pc,n)
+138:                         self.ck(primitive(pp)==pp,'H overlay primitive ray')
+139:                         for i in inds:
+140:                             D = list(C);D[i] = pp
+141:                             self.ck(det4(tuple(D)) != 0,'H overlay nonzero star cone')
+142:                             new.add(self.canonical(sector,D)[0])
+143:                 fans[sector] = new
+144: 
+145:         # The actual E filling prescribes every primitive height-one chain ray.
+146:         # Subdivide its raw length-N bottom edge and join with the unchanged
+147:         # opposite face; this literal join leaves H and every period map fixed.
+148:         new = set()
+149:         for C in fans['E']:
+150:             bottom = [i for i,v in enumerate(C) if v[3] == 0]
+151:             if len(bottom) == 2:
+152:                 i,j = sorted(bottom,key=lambda k:C[k][1])
+153:                 lo,hi = C[i][1],C[j][1]
+154:                 self.ck(hi-lo == self.N,'raw E boundary interval length N')
+155:                 for k in range(lo,hi):
+156:                     D = list(C);D[i]=(0,k,1,0);D[j]=(0,k+1,1,0)
+157:                     self.ck(det4(tuple(D)) != 0,'E chain joined cone is nonzero')
+158:                     new.add(self.canonical('E',D)[0])
+159:             else:
+160:                 self.ck(len(bottom)==1,'E full cone has one or two bottom rays')
+161:                 new.add(C)
+162:         fans['E'] = new
+163:         self.initial_counts['prescribed_boundary_refinement'] = {s:len(fans[s]) for s in SECTORS}
+164:         self.check_H(fans)
+165:         for sector in SECTORS:
+166:             self.protected[sector] = self.protected_faces(sector,fans[sector])
+167: 
+168:         # Relative barycentric separator: a protected face is left literally
+169:         # unchanged.  Every other face uses the primitive sum of its own rays.
+170:         @lru_cache(maxsize=None)
+171:         def bary(F):
+172:             if all(v[3] == 0 for v in F) or len(F)==1:
+173:                 return (F,)
+174:             p = primitive(tuple(map(sum,zip(*F))))
+175:             out = set()
+176:             for i in range(len(F)):
+177:                 for Q in bary(F[:i]+F[i+1:]):
+178:                     out.add(tuple(sorted((*Q,p))))
+179:             return tuple(out)
+180: 
+181:         for sector in SECTORS:
+182:             Cs = {self.canonical(sector,D)[0] for C in fans[sector] for D in bary(C)}
+183:             self.initial_counts.setdefault('relative_separator',{})[sector]=len(Cs)
+184:             for C in sorted(Cs):
+185:                 self.add(sector,C)
+186:         self.check_H({s:{C for (ss,C) in self.by_key if ss==s} for s in SECTORS})
+187:         for sector in SECTORS:
+188:             self.ck(self.protected_faces(sector,[C for ss,C in self.by_key if ss==sector])==self.protected[sector], 'separator preserves '+sector+' boundary')
+189: 
+190:     def protected_faces(self,sector,cones):
+191:         d = 3 if sector == 'I' else 2
+192:         return {self.canonical(sector,tuple(C[i] for i in inds))[0]
+193:                 for C in cones for inds in combinations(range(4),d)
+194:                 if all(C[i][3] == 0 for i in inds)}
+195: 
+196:     def check_H(self,fans):
+197:         sets=[]
+198:         for sector in SECTORS:
+199:             sets.append({self.canonical(sector,tuple(C[i] for i in inds))[0]
+200:                          for C in fans[sector] for inds in combinations(range(4),3)
+201:                          if all(C[i][2] == 0 for i in inds)})
+202:         self.ck(sets[0]==sets[1]==sets[2],'all actual H boundary triangles agree')
+203: 
+204:     def separated(self,sector,C):
+205:         keys = [self.canonical(sector,(v,))[0] for v in C if v[3]>0]
+206:         self.ck(len(set(keys))==len(keys),'nonprotected ray orbit separation')
+207: 
+208:     def add(self,sector,C):
+209:         C = self.canonical(sector,C)[0]
+210:         key=(sector,C)
+211:         if key in self.by_key:
+212:             return self.by_key[key]
+213:         D=abs(det4(C));self.ck(D>0,'maximal cone has rank four')
+214:         self.separated(sector,C)
+215:         cid=self.next_id;self.next_id+=1
+216:         entries=[]
+217:         for d in range(1,5):
+218:             for inds in combinations(range(4),d):
+219:                 F=tuple(C[i] for i in inds);fk,n=self.face_key(sector,F)
+220:                 ent=(cid,inds,n)
+221:                 self.face_index[fk].add(ent);entries.append((fk,ent))
+222:         self.cells[cid]={'sector':sector,'C':C,'D':D,'entries':entries}
+223:         self.by_key[key]=cid;heapq.heappush(self.heap,(-D,cid))
+224:         return cid
+225: 
+226:     def remove(self,cid):
+227:         z=self.cells.pop(cid)
+228:         del self.by_key[(z['sector'],z['C'])]
+229:         for fk,ent in z['entries']:
+230:             self.face_index[fk].remove(ent)
+231:             if not self.face_index[fk]:del self.face_index[fk]
+232: 
+233:     def point(self,C):
+234:         A=tuple(zip(*C));signed=det4(C);D=abs(signed);sgn=1 if signed>0 else -1
+235:         for j in range(4):
+236:             nums=[]
+237:             for i in range(4):
+238:                 minor=tuple(tuple(A[r][k] for k in range(4) if k!=i) for r in range(4) if r!=j)
+239:                 nums.append((sgn*(-1)**(i+j)*det3(minor))%D)
+240:             if any(nums):
+241:                 p=tuple(sum(C[i][r]*nums[i] for i in range(4))//D for r in range(4))
+242:                 self.ck(all(sum(C[i][r]*nums[i] for i in range(4))==D*p[r] for r in range(4)),'half-open point is exactly integral')
+243:                 g=reduce(gcd,(abs(x) for x in p));pp=tuple(x//g for x in p)
+244:                 self.ck(primitive(pp)==pp,'resolution point primitive')
+245:                 return pp,nums,D*g,j
+246:         raise AssertionError('singular inverse has a nonintegral column')
+247: 
+248:     def resolve(self,progress=100):
+249:         steps=0
+250:         while self.heap:
+251:             negD,cid=heapq.heappop(self.heap)
+252:             if cid not in self.cells:continue
+253:             if negD==-1:break
+254:             z=self.cells[cid];sector,C,D=z['sector'],z['C'],z['D']
+255:             p,nums,den,j=self.point(C)
+256:             inds=tuple(i for i,n in enumerate(nums) if n)
+257:             F=tuple(C[i] for i in inds);Fc,n0=self.canonical(sector,F)
+258:             fk,_=self.face_key(sector,F)
+259:             pc=self.T(sector,p,(-n0[0],-n0[1]))
+260:             coeff={self.T(sector,C[i],(-n0[0],-n0[1])):nums[i] for i in inds}

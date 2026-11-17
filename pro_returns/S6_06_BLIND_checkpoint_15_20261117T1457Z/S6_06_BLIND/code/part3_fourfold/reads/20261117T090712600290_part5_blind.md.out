@@ -1,0 +1,105 @@
+130: ## P5.5. Proved: full automorphism group
+131: 
+132: For the sphere twist data, and in fact every admissible twist of the same (3,4) construction,
+133: 
+134:     Aut(X_c)=C*=C/Z.
+135: 
+136: The isomorphism sends a in C/Z to translation by a times the period vector delta-hat.
+137: 
+138: Proof: preservation of the fibration. Taking determinants in (5.1), whose quotient ideal I_D has codimension-two support, gives K_X^(-1)=L tensor F. Using the fibre-divisor relations,
+139: 
+140:     L tensor F = f*O(-1) O(3S1+2S2)=O(2S2).
+141: 
+142: Therefore K_X^(-2)=O(4S2)=f*O(1). Its complete two-dimensional space of sections is the pullback of H^0(P1,O(1)), so its complete linear system is exactly f. Every automorphism preserves this intrinsic linear system and induces an automorphism of B. The fibres of multiplicities 3 and 4 and the cusp fibre are individually distinguished by their scheme structures. The induced Möbius transformation fixes 0,1,infinity, hence is the identity.
+143: 
+144: Proof: linear parts. An automorphism of a complex torus is a translation followed by a group automorphism. To see the affine statement directly, lift its derivative to the universal vector cover; it is lattice-periodic and therefore descends to a holomorphic matrix-valued function on the compact torus, hence is constant. Integrating gives an affine lift. The integral linear action of a fibre-preserving automorphism is locally constant in the marked family and commutes with A1,A2.
+145: 
+146: In the ordered homology basis (gamma-hat,u-hat,w-hat,delta-hat), the matrices are
+147: 
+148:     A1=[[1,0,0,0],[6,0,1,0],[-6,-1,-1,0],[-2,1,0,1]],
+149:     A2=[[1,0,0,0],[0,0,-1,0],[-6,1,0,0],[3,0,1,1]].
+150: 
+151: Solving PAj=AjP over Q gives P=a I+b E41. This is independently recomputed by code/part5/centralizer.py. Integrality gives a,b in Z, and det P=a^4 forces a=+1 or -1. A holomorphic linear map H on the vector cover satisfies H Pi=Pi P; its last two columns give H=aI, while its first column then gives b=0. Thus the possible linear parts are +I and -I.
+152: 
+153: The latter cannot occur. Normalize the base change t=s^3 at the first multiple fibre. The automorphism lifts canonically to this normalization and fixes s. At s=0 it would be z->-z+b on the covering torus. Commutation with the affine deck action z->A1 z+v1/3 gives
+154: 
+155:     (I-A1)b = 2v1/3 modulo Lambda.
+156: 
+157: Apply the torus character gamma:Lambda_R/Lambda->R/Z. It annihilates I-A1, whereas the right hand side has character 2l1/3. Freeness gives 3 not dividing l1, so this class is nonzero. This excludes -I and accounts for every possible integral linear part.
+158: 
+159: Proof: translation components. We give the integral calculation, since a dimension count of the connected automorphism group does not account for discrete components. Let j denote the inclusion of the cusp-punctured orbifold into Bhat, and let H=j_*Lambda be the lattice sheaf. Its cusp stalk is ker(M0-I)=Z w-hat+Z delta-hat. Let A be the sheaf of fibrewise translations of the local compactification that extend holomorphically at the cusp. There is an exact sequence of sheaves of abelian groups on Bhat
+160: 
+161:     0 -> H -> V -> A -> 0,                         (5.7)
+162: 
+163: where the second arrow exponentiates the translation vector.
+164: 
+165: Here is the local verification at the only non-smooth place. The toroidal covering Y_epsilon->N0 has component lattice Gamma=Lambda/Lambda_tor. A fibrewise translation automorphism acts identically on the nearby torus lattice and hence on Gamma, so it lifts to the covering. On its punctured open torus the lift is multiplication x->a(q)x. It sends a central component E0 to a component Ev. The index-one condition makes B0:Gamma->Z^2 an isomorphism. Composing with the unique corresponding deck shear makes the lift preserve E0. It then preserves the intersections of E0 with the other central components, so it preserves the torus E0 minus its boundary. In the chart (C*)^2 x Delta_q, evaluating at x=(1,1) shows that each a_i(q) is a holomorphic unit at q=0. It has a logarithm on the disc. Conversely multiplication by two holomorphic units extends on every toric chart and commutes with the deck shears. The kernel of exponentiation consists of period vectors Pi(q)lambda with no logarithmic term, precisely lambda in ker(M0-I). This proves exactness at the cusp. The covering-lift assertion may be checked on the nearby fibre and its meridian: the nearby fibre surjects onto Gamma, and a meridian bounding a disc through a smooth point of W remains bounding after an automorphism; hence the induced homomorphism to Gamma is unchanged. At a finite root chart ordinary local logarithms on the simply connected root disc give exactness, with finite-group equivariance retained rather than suppressed.
+166: 
+167: We now compute H^1(Bhat,H). Put
+168: 
+169:     M0=(A1 A2)^(-1)
+170:       =[[1,0,0,0],[0,1,0,0],[0,1,1,0],[-1,0,0,1]].
+171: 
+172: A cocycle on the cusp-punctured orbifold is a pair (x1,x2) in Lambda^2 with N1 x1=0 and N2 x2=0, where
+173: 
+174:     N1=I+A1+A1^2
+175:       =[[3,0,0,0],[6,0,0,0],[-12,0,0,0],[0,2,1,3]],
+176:     N2=I+A2+A2^2+A2^3
+177:       =[[4,0,0,0],[12,0,0,0],[-12,0,0,0],[0,2,2,4]].
+178: 
+179: Extension over the cusp says that the cocycle on g0 is zero in coker(M0-I). Since im(M0-I)=Z w-hat+Z delta-hat, the first two coordinates of x1+A1x2 must vanish. The complete integral solution is
+180: 
+181:     x1=(0,-b,2b-3c,c),   x2=(0,-2a-b,b,a),     a,b,c in Z.
+182: 
+183: For a lattice element lambda=(g,u,w,d), its principal cocycle ((A1-I)lambda,(A2-I)lambda) has parameter vector
+184: 
+185:     (a,b,c)^t = [[3,0,1],[-6,1,-1],[-2,1,0]] (g,u,w)^t.
+186: 
+187: This 3 by 3 matrix has determinant -1. More explicitly,
+188: 
+189:     g=c-a-b,   u=3c-2a-2b,   w=4a+3b-3c
+190: 
+191: gives a primitive integral coboundary for every cocycle. Thus H^1(Bhat,H)=0, including torsion. The complete Smith decomposition is in code/part5/parabolic_cohomology.py. The independent cover-complex calculation in code/part5/orbifold_lattice_complex.py verifies the same vanishing, with every differential printed.
+192: 
+193: By (5.7), every global extending translation therefore has a global logarithm in H^0(Bhat,V)=C. The kernel is H^0(Bhat,H)=Lambda^{A1,A2}=Z delta-hat, also checked by the exact centralizer program. Thus all translations are C/Z. The flow extends in the finite charts by commutation with their affine actions and in the cusp charts by torus multiplication. This proves existence, faithfulness and completeness of the displayed automorphism group. ∎
+194: 
+195: ## P5.6. Proved: the integral c-period and isomorphism criterion
+196: 
+197: For fixed admissible twist data in the (3,4) construction, X_c and X_c' are biholomorphic exactly when c-c' belongs to 2Z. This statement fixes the period of the parameter; it does not fix an additive normalization of beta_part.
+198: 
+199: Proof. The argument recovering f from K_X^-2 applies to both manifolds. A biholomorphism fixes the base. Its integral linear map is P=aI+bE41 by the same centralizer computation, and H Pi_c=Pi_c' P gives a=+1 or -1 and b=a(c-c'). The multiple-fibre argument excludes a=-1. Hence c-c'=b is an integer.
+200: 
+201: We determine which shears S_b=I+bE41 preserve the compactified torsor class. For completeness we compute the relevant second sheaf cohomology integrally. Cover Bhat by a pair of pants P, the two root discs, and an ordinary cusp disc. The group cochains on P are Lambda in degree zero and Lambda^2 in degree one, with differential ((A1-I),(A2-I)). On the finite root discs they are the periodic cyclic resolution
+202: 
+203:     Lambda --(Aj-I)--> Lambda --Nj--> Lambda --(Aj-I)--> ... .
+204: 
+205: On the cusp disc only ker(M0-I) in degree zero occurs. The annuli have the two-term complexes Lambda --(Aj-I)--> Lambda. The restriction in degree one from P to its three annuli is
+206: 
+207:     (x1,x2) -> (x1,x2,-M0(x1+A1x2)).
+208: 
+209: The total Cech complex has ranks 14,28,20,8 in degrees 0 through 3. Its entire integer matrices d0,d1,d2 and their zero products are printed by code/part5/orbifold_lattice_complex.py. Smith decomposition gives H^0=Z, H^1=0 and H^2=Z+Z/2.
+210: 
+211: The degree-two presentation admits a short hand computation. After eliminating the annular coordinates, its generators are the invariant lattices Lambda^A1, Lambda^A2 and the global coinvariant Z detected by gamma. Put
+212: 
+213:     epsilon1=(1,2,-4,0),   epsilon2=(1,3,-3,0).
+214: 
+215: Each invariant lattice has basis (delta-hat,epsilon_j). Write the five generators as (delta1,epsilon1,delta2,epsilon2,hc). The norm and overlap relations reduce to
+216: 
+217:     delta1=0,   2delta2=0,   3epsilon1=hc=4epsilon2.       (5.8)
+218: 
+219: For the constant rank-one sheaf Z the identical calculation has generators z1,z2,hc and relations 3z1=hc=4z2; its primitive generator is z1-z2. The inclusion Z delta-hat->H sends z1 to delta1=0, z2 to delta2, and hc to zero. It therefore sends the primitive degree-two generator to the nonzero element delta2 of order two. The quotient gamma:H->Z sends epsilon1,epsilon2,hc to z1,z2,hc and kills delta1,delta2.
+220: 
+221: The compactified torsor of the construction is classified by H^1(Bhat,A). Sequence (5.7) identifies this with H^2(Bhat,H), because H^1(Bhat,V)=0 and H^2(Bhat,V)=0. The first vanishing follows from V=O+Lhat and its invariant image O+O(-1); the second follows from coherent cohomology on the coarse curve. This identification is constructive: take local logarithms of the holomorphic translation transitions, form their lattice-valued Cech coboundary, and reverse the process using the vanishing of H^1(V) and H^2(V).
+222: 
+223: We choose the orientations of the collar cocycle so that its character under gamma is
+224: 
+225:     (4l1+3l2-12l0)(z1-z2)=-p(z1-z2),
+226:     p=12l0-4l1-3l2.
+227: 
+228: This follows directly from the cyclic norm of v_j/m_j, which is v_j, and the oppositely oriented cusp collar: the two finite root contributions are l1 z1 and l2 z2, while the cusp is -l0 hc. Thus (5.8) keeps the collar contribution, including its factor 12.
+229: 
+230: The shear S_b-I is the rank-one map b delta-hat tensor gamma. It changes the characteristic class by -bp delta2. Freeness requires l2 odd, so p is odd. The class is fixed exactly when b is even. For the integral shear, the Jacobian models themselves are identified: Pi_c and Pi_c' differ by the integral basis change S_b; on the cusp the bounded period matrix C changes in the beta entry by the integer c-c', so exp(2pi i C lambda) is unchanged for every integral lambda. The toric fan, its lattice, and its gluing units are therefore literally the same. On each root disc the same lattice basis change identifies the smooth Jacobian family and its linear cyclic action. Equality of characteristic classes now gives a holomorphic isomorphism between torsors for this fixed sheaf A by the constructive description above. The local group sheaf A consists precisely of translations extending across the toroidal cusp. Thus the isomorphism extends on all three charts. Conversely a global isomorphism preserves the class, forcing b even. ∎
+231: 
+232: ## Checkpoint status and comparison restriction
+233: 
+234: Statements P5.1-P5.6 and all the cited exact computations have been written without opening the comparison paper. A scheduled hourly checkpoint containing this file is required before the first opening of arXiv:2610.00250. Part 5.3 (comparison with both versions) is still pending that checkpoint and subsequent source access. The invariant computations above have not yet been compared to that source.
