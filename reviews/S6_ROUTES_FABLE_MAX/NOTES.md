@@ -97,3 +97,57 @@ Notes closed 13 November 2026, 01:37 WEST.
 - Zip of S6_05 does not yet hold what the prompt now names: s6_routes_checks/ (r1, r2 with outputs) and the TeX sources
   of arXiv:1701.07947, 1909.01253, 2010.15170, 1805.10104 at the paths written in the prompt. S6_03 needs nothing new.
 - ROUTES.md itself must not go into a zip: it says which form of C.7 I expect to be reachable.
+
+## Third step, 16 November 2026, 13:16 UTC: read-in for the S6 wrap-up and position for the debate
+
+- Read: S6_FINAL_INTAKE_20261116/INTAKE_FINAL.md (full); PUSH B.4.24, B.4.26, B.4.30, B.4.33 (full); S6_03 A.5.1-A.5.4,
+  A.5.6, A.5.9, A.5.11-A.5.13 (full); NOTES_20261115 sections 33, 34, 38; A57 sense check, the draft note, Biro's
+  Conjecture 1 in TeX; result rows S6_05 C.6-C.8 and S6_03 E4-E19 (titles).
+- Written: S6_FINAL_INTAKE_20261116/EXPERT_POSITION.md. Position: (a) B.4.33 an announcement now, theorem after F and
+  the two origins are derived a second time; hunch: the winding is the twist integer p (fillable iff p = 0).
+  (b) paper outline accepted with five changes. (c) CDP note ready for normal-crossings and irreducible fibres;
+  general C4f waits for a reading of A.5.5, A.5.7, A.5.8, A.5.10, C2d, A.4.9. (d) one final blind Astra prompt:
+  fourfold, corner, Theta_7 for other families, CDP checks; a = 0 stays out. (e) A.5.7: agree (trivial roots +-1).
+- What became of my routes of 13 Nov: Route 1.1 is S6_03 E5-E7 (proved; E18 refutes the square identity for general
+  sections; E10: fails over a base of positive genus). Route 3.1 is S6_05 C.8.5; Route 3.3 is C.8.15. Route 2.2 is
+  C.6 (proved, with ranks and BSD quotients); C.7(b) proved conditionally; C.7(c) open.
+- Re-derived by hand in this step: the deck differences of F; the ghost argument; the saturation lemma of B.4.30;
+  H^1(S, A_S) = 0 in outline; the SL_2(Z)-orbit argument of B.4.31; the Salie main term (roots +-1; 8/pi^2).
+
+## Fourth step, 16 November 2026, 13:27 UTC: debate round (priority reading, CDP reading, response)
+
+- Read: MAIN_POSITION.md, RESPONSE_INTAKE.md; arXiv:2610.00250 v1 (abstract, introduction, the 17 statements of
+  Sections 6-7, Appendix C statements, chronology) and v2 (abstract, intro theorems, section files); S6_03 A.4.9,
+  A.5.7, A.5.8, A.5.10 (full), C2d (statement, cusp and tacnode), A.5.5 (statement).
+- Written: S6_FINAL_INTAKE_20261116/RESPONSE_EXPERT.md.
+- Priority: v1 (23 Sep 2026) has, for the standard data only: Thm 1.3 (KS iso, Kuranishi line, miniversal, Aut^0),
+  h^q(T) = (1,1,1,0), R^q f_* O, Thm 7.1 (K^-2 = f^*O(1), pencil recovers f), every map to P^1 factors, Thm 1.4
+  (2Z), Aut = C^*, orbit curve 0 < |w| < e^(-pi M_0) with M_0 not evaluated, the shift composition law. Nothing on
+  Engel, other twists, closed-form periods, Albanese, 216, real structures, Klingler, NS, ends. v2 (23 Oct): Oka
+  results only; section files 06, 08, 09 of v1 are gone.
+- CDP chain: no gap in what was read; unread still: A.5.5 proof, A.4.7-A.4.8, D.1.8-D.1.9, A.2.4, C2d triple case.
+- Accepted from the intake: CM table out of the paper; certificates as proof of record for the maximum; general
+  stability theorem to the CDP note; p = 0 is not a free twist (untwisted family is the control); its correction of
+  my mod-28 values ((mP).O = m^2 - 1 on the page; 6P gives 35 = 7 mod 28).
+- Helper: checks/list_statements.py (lists theorem-like statements of a TeX file between two lines).
+
+## Fifth step, 16 November 2026, 14:12 UTC: the two prompts of DECISION.md drafted (nothing sent)
+
+- Night prompt (blind research): s6_pro_prompts_20261112/06_S6_BLIND_NIGHT/PROMPT.md + S6_06_BLIND_background.zip
+  (26 members: AC26 PDF and transcription, Engel, Viaclovsky x3, Liu-Rollenske, Yang, Wang as LaTeX, data/fourfold_tuple.py,
+  data/stated_values.csv with 184 rows id/statement/status; no proofs, no 2610.00250). Five parts: fourfold, corner
+  for general twists (p = -5, untwisted control), Theta_7 for every sphere family, CDP checks (D.2.7, C.2.G.1),
+  blind control (h^q(T), Aut). Passes --lint-math. Work files: s6_pro_prompts_20261112_work/S6_BLIND_NIGHT/.
+- Writing prompt: s6_pro_prompts_20261112/07_S6_PAPER_WRITING/PROMPT.md + S6_07_PAPER_sources.zip (202 members: the
+  returns' TeX) + S6_07_PAPER_status_credit_format.zip (32 members: status files, workbench 2Z proof, AC26
+  transcription, Engel, 2610.00250 v1/v2, Viaclovsky x3, Liu-Rollenske, Duke-Imamoglu PDF, Hexagon format).
+  Fourteen binding conditions, the status table (sections 0-12, appendices A-C), section 5 = cohomology of X from
+  INTAKE_S6_01. Passes --lint. Work files: s6_pro_prompts_20261112_work/S6_PAPER_WRITING/.
+- Choices of mine: one paper with the cohomology section inside (long tables to Appendix C); Engel's Conjecture 8.2
+  under the format's "Counterexample" kind, Remark 8.1 and AC26 Remarks 1.3/9.21 under "Correction".
+- Owed before the paper is published: the reading of S6_01 A1.1-A1.2 (INTAKE_S6_01, last paragraph).
+
+## Sixth step, 16 November 2026, 14:22 UTC: reading of S6_01 A1.1-A1.2
+
+- Read part_A.tex l. 1-302 (A1.0-A1.3 with proofs). A1.1 and A1.2 hold as stated; degree and extension counts redone
+  by hand. File: S6_FINAL_INTAKE_20261116/READING_S6_01_A1.md. The writing prompt is unchanged.
