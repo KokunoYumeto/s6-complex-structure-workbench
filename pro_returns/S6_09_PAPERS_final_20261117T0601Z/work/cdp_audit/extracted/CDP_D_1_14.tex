@@ -1,0 +1,81 @@
+\begin{idstatement}{D.1.14}{Proved}\label{st:D.1.14}
+Put $e=\widehat\delta$,
+$J_2=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$,
+and let $P_e$ be the integral stabilizer of $e$ for the form
+\[
+\Omega=\begin{pmatrix}0&0&0&6\\0&0&1&0\\0&-1&0&0\\-6&0&0&0\end{pmatrix}.
+\]
+Every element of $P_e$ has a unique expression
+\[
+g(B,x,t)=\begin{pmatrix}1&0&0\\6x&B&0\\t&-x^tJ_2B&1\end{pmatrix},
+\quad B\in SL_2(\Z),\quad x\in\Z^2,\quad t\in\Z,
+\]
+in blocks of sizes $1,2,1$. Let
+$Q(x)=x_1+x_2+x_1x_2$, and let
+$\alpha:SL_2(\Z)\to\Z/12$ send
+$S=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$ to $9$
+and $T=\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ to $1$.
+Then
+\[
+\langle A_1,A_2\rangle
+=\{g(B,x,t):t+6Q(x)-\alpha(B)=0\pmod{12}\},
+\qquad [P_e:\langle A_1,A_2\rangle]=12.
+\]
+\end{idstatement}
+\begin{proof}
+Preservation of $e$ and $\Omega$ forces the first row to be
+$(1,0,0,0)$ and the last column to be $e$. The middle block has
+determinant one. If its first column below the top entry is $v$,
+the symplectic equations force the final middle row to be
+$-v^tJ_2B/6$. Integrality and unimodularity of $B$ imply
+$v\in6\Z^2$, proving the parametrization. Multiplication gives
+\[
+g(B,x,t)g(C,y,s)=g(BC,x+By,t+s-6x^tJ_2By).             \tag{D6}
+\]
+Set $a=\left(\begin{smallmatrix}0&1\\-1&-1\end{smallmatrix}\right)$.
+Then $A_1=g(a,(1,-1)^t,-2)$,
+$A_2=g(S,(0,-1)^t,3)$ and $Sa=T$.
+The presentation
+$SL_2(\Z)=\langle a,S:a^3=S^4=1,\ [a,S^2]=1\rangle$
+follows from the Euclidean algorithm and the real projective-line
+action. Modulo $\{\pm I\}$, $a$ has order three and $S$ order
+two; $a,a^2$ send positive numbers into the two negative intervals
+separated by $-1$, whereas $S$ sends negative numbers to positive
+ones. A reduced alternating word cannot act trivially. Lifting
+$S^2=-I$ gives the stated presentation. The values
+$\alpha(a)=4$, $\alpha(S)=9$ respect the relations and give
+$\alpha(T)=1$.
+
+Modulo two, $Q$ is zero only at the origin. Therefore
+$Q(Bx)=Q(x)$, and
+$Q(x+y)-Q(x)-Q(y)=x^tJ_2y$ modulo two.
+Equation (D6) makes
+$\chi(g)=t+6Q(x)-\alpha(B)\pmod{12}$ a homomorphism.
+It is onto because $\chi(g(I,0,1))=1$, and
+$\chi(A_1)=\chi(A_2)=0$ by substitution.
+
+For equality with its kernel, compute
+\[
+\begin{aligned}
+K&=[A_1,A_2^2]=g(I,(0,-1)^t,6),\\
+U&=A_2KA_2^{-1}=g(I,(1,0)^t,-6),\\
+V&=K^{-1}=g(I,(0,1)^t,-6),\qquad Z=I+12e\gamma.
+\end{aligned}
+\]
+One has $[U,V]=Z^{-1}$ and
+\[
+U^rV^sZ^n=g(I,(r,s)^t,-6(r+s+rs)+12n).
+\]
+Thus $U,V,Z$, all in the monodromy group, generate exactly the
+intersection of $\ker\chi$ with the kernel of $g\mapsto B$.
+The images $a,S$ generate $SL_2(\Z)$.
+For an element of $\ker\chi$ choose a monodromy element with the
+same middle block. Their quotient lies in that computed
+intersection and hence in the monodromy group. This proves equality
+and index twelve. The matrices and commutator are checked exactly
+by the attached program.
+\end{proof}
+
+
+% D.1.15 from part_D.tex
+

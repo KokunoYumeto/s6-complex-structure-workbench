@@ -1,0 +1,30 @@
+\begin{statement}[C.4.5; Proved: complete numerical verification through order eight]
+All $13$ smooth exact-order roots for $2\le n\le8$ were evaluated
+at $110$ decimal digits independently of the algebraic norm formula.
+The discrepancy in $N^{12}$ is below $10^{-90}$ at every root;
+the period coordinates also verify $nP=O$ to that tolerance.
+There are $0,0,1,2,2,4,4$ roots for $n=2,\ldots,8$.
+\end{statement}
+\begin{proof}
+The script \path{Cspecial_torsion_numerics.py} computes the
+roots of $F_n$ to $115$ digits and constructs periods of
+$y^2=x^3+Ax+B$ using its three roots $e_1,e_2,e_3$. If
+$k=(e_2-e_3)/(e_1-e_3)$ and $K$ denotes the complete elliptic
+integral with parameter $k$, it uses
+\[
+ \tau=iK(1-k)/K(k),\qquad
+ v=\frac{F\bigl(\arcsin\sqrt{(e_1-e_3)/(-e_3)},k\bigr)}{2K(k)}.
+\]
+The identity
+$\wp(u)=e_3+(e_1-e_3)/\operatorname{sn}^2
+(\sqrt{e_1-e_3}\,u,k)$ verifies that this is a zero of $\wp$.
+Permutations of the roots are tried until $\operatorname{Im}\tau>0$;
+modular reduction and lattice translations improve numerical
+conditioning and leave $N$ unchanged. The program then evaluates
+the theta quotient directly. It checks both the norm formula and
+that the coefficients of $nv$ in the basis $(\tau,1)$ are integral.
+The full output gives at least $70$ digits for every $t,\tau,v,N$
+and $N^{12}$, including both nonreal conjugates. The largest measured
+norm discrepancy is below $2\cdot10^{-108}$. These are numerical
+checks of the exact theorem, not numerical proofs of it.
+\end{proof}

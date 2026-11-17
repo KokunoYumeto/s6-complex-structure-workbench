@@ -1,0 +1,130 @@
+%%% POST-RECORD v1 BEGIN
+% format: hexagon-post-format/1
+% record_id: S6_09_PAPERS_II
+% version: 1
+% date: 2026-11-17
+% kind: theorems, computations, corrections, counterexamples, re-derivations
+% claim_status: checked results in body; precise open questions in separate final part
+% statement_plain: Cotangent torsion, corrected vanishing criteria, compact torus-fibred constructions and deformation stability.
+% main_statements: cdp:st:A.1.1, cdp:st:B1, cdp:st:C4a, cdp:st:E6, cdp:st:E15
+% known_before: AC26 CDP20 contradiction; Greuel-Schulze inverse-Jacobian criterion; Viaclovsky comb and two-parameter constructions; classical surface and deformation inputs at exact cited scope.
+% hard_step: exact torsion connecting maps, actual compact analytic occurrence, full-fibre restrictions, and Artin-to-analytic stability over nonreduced bases.
+% produced_by: GPT-6 Astra (OpenAI, ChatGPT Pro mode, effort Pro), 17 November 2026
+% research_runs: GPT-6 Astra (OpenAI, ChatGPT Pro mode), 12-16 November 2026
+% working_edition: GPT-5.6 Sol (OpenAI), Codex reasoning effort ultra, 24 August-9 September 2026; a few inputs by GPT-5.6 Sol (OpenAI), ChatGPT Pro mode, 24 August-9 September 2026
+% historical_checks: Claude Fable 5.2 (Anthropic), effort high and max, 12-16 November 2026; Claude Opus 5.5 (Anthropic), effort max, 12-16 November 2026
+% current_checks: complete proof readings, re-derivations, source-hypothesis checks, exact and interval reruns; exact scopes in concordance
+% human_understanding: none claimed; no human has checked the mathematics
+% text_origin: AI-produced
+% formalization: none
+% open_points: exact Km splitting of a specified smoothed comb section
+% literature_search: 17 November 2026; original attached literature and exact additional sources; individual locators in inventory
+% licence: CC0-1.0
+% provenance: companion result inventory, notation dictionary, verification report, scripts, certificates and outputs
+%%% POST-RECORD v1 END
+% S6_09_PAPERS. Complete proofs and precise open questions are indexed in the inventory.
+% AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode, effort Pro), 17 November 2026.
+% Text dedicated to the public domain under CC0 1.0.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=15pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,amsthm,amscd,mathtools,mathrsfs}
+\usepackage{microtype,booktabs,longtable,array,xcolor,graphicx,enumitem,needspace,fancyhdr}
+\usepackage[round,authoryear]{natbib}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!40!black,citecolor=blue!40!black,urlcolor=blue!40!black]{hyperref}
+\usepackage{xurl}
+\usepackage{aliascnt}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\allowdisplaybreaks[2]
+\setcounter{MaxMatrixCols}{32}
+\setlength{\emergencystretch}{3em}
+\setlength{\parskip}{2pt}
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\crefname{proposition}{proposition}{propositions}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\crefname{lemma}{lemma}{lemmas}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\crefname{corollary}{corollary}{corollarys}
+\newaliascnt{claim}{theorem}
+\newtheorem{claim}[claim]{Claim}
+\aliascntresetthe{claim}
+\crefname{claim}{claim}{claims}
+\newaliascnt{statement}{theorem}
+\newtheorem{statement}[statement]{Statement}
+\aliascntresetthe{statement}
+\crefname{statement}{statement}{statements}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\crefname{definition}{definition}{definitions}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\crefname{remark}{remark}{remarks}
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{Example}
+\aliascntresetthe{example}
+\crefname{example}{example}{examples}
+\newaliascnt{problem}{theorem}
+\newtheorem{problem}[problem]{Open problem}
+\aliascntresetthe{problem}
+\crefname{problem}{open problem}{open problems}
+\newaliascnt{question}{theorem}
+\newtheorem{question}[question]{Question}
+\aliascntresetthe{question}
+\crefname{question}{question}{questions}
+\newaliascnt{auditrecord}{theorem}
+\newtheorem{auditrecord}[auditrecord]{Verification record}
+\aliascntresetthe{auditrecord}
+\crefname{auditrecord}{verification record}{verification records}
+\newaliascnt{test}{theorem}
+\newtheorem{test}[test]{Verification}
+\aliascntresetthe{test}
+\crefname{test}{verification}{verifications}
+\newaliascnt{conjecture}{theorem}
+\newtheorem{conjecture}[conjecture]{Conjecture}
+\aliascntresetthe{conjecture}
+\crefname{conjecture}{conjecture}{conjectures}
+\newcommand{\C}{\mathbb C}\newcommand{\R}{\mathbb R}\newcommand{\Z}{\mathbb Z}\newcommand{\Q}{\mathbb Q}\newcommand{\N}{\mathbb N}\newcommand{\F}{\mathbb F}
+\newcommand{\CC}{\mathbb C}\newcommand{\RR}{\mathbb R}\newcommand{\ZZ}{\mathbb Z}\newcommand{\QQ}{\mathbb Q}\newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}\newcommand{\Pp}{\mathbb P}\newcommand{\Pone}{\mathbb P^1}\newcommand{\HH}{\mathbb H}
+\newcommand{\RP}{\mathbb{RP}}\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\OO}{\mathcal O}\newcommand{\cO}{\mathcal O}\newcommand{\cM}{\mathcal M}\newcommand{\cF}{\mathcal F}
+\newcommand{\h}{\mathfrak h}\newcommand{\hz}{\mathfrak h_z}\newcommand{\Acon}{\mathfrak A}\newcommand{\wt}[1]{\widehat{#1}}
+\newcommand{\red}{\mathrm{red}}\newcommand{\tor}{\mathrm{tor}}\newcommand{\dP}{\mathrm{dP}}
+\newcommand{\gh}{\widehat\gamma}\newcommand{\uh}{\widehat u}\newcommand{\wh}{\widehat w}\newcommand{\dhat}{\widehat\delta}\renewcommand{\dh}{\widehat\delta}
+\newcommand{\dd}{\mathrm d}\newcommand{\ii}{\mathrm i}\newcommand{\eps}{\varepsilon}\newcommand{\partt}{\mathrm{part}}\newcommand{\Bcirc}{B^\circ}\newcommand{\ddbar}{\partial\bar\partial}
+\DeclareMathOperator{\Pic}{Pic}\DeclareMathOperator{\Alb}{Alb}\DeclareMathOperator{\Aut}{Aut}\DeclareMathOperator{\NS}{NS}
+\DeclareMathOperator{\Hom}{Hom}\DeclareMathOperator{\End}{End}\DeclareMathOperator{\Ext}{Ext}\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Spec}{Spec}\DeclareMathOperator{\Proj}{Proj}\DeclareMathOperator{\Sym}{Sym}\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\GL}{GL}\DeclareMathOperator{\SL}{SL}\DeclareMathOperator{\PSL}{PSL}\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\im}{im}\DeclareMathOperator{\coker}{coker}\DeclareMathOperator{\rank}{rank}\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ord}{ord}\DeclareMathOperator{\vol}{vol}\DeclareMathOperator{\pr}{pr}\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\divisor}{div}\DeclareMathOperator{\Tr}{Tr}\DeclareMathOperator{\Nm}{Nm}\DeclareMathOperator{\Sha}{Sha}
+\DeclareMathOperator{\Imn}{Im}\DeclareMathOperator{\Ren}{Re}\DeclareMathOperator{\trdeg}{tr.deg}
+\newcommand{\Uses}[1]{\par\smallskip\noindent\textit{Uses:} #1.\par\smallskip}
+\newcommand{\Verified}{}\newcommand{\AuthorSelfCheck}{}\newcommand{\NeedsCheck}{}\newcommand{\Open}{\textbf{Open.}\ }
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Torus-fibred compact complex threefolds}\fancyhead[R]{\small Paper II}\fancyfoot[C]{\thepage}
+\hypersetup{pdftitle={Torus-fibred compact complex threefolds: cotangent torsion, vanishing criteria and deformation stability},pdfauthor={AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode, effort Pro), 17 November 2026}}
+
+
+\providecommand{\cT}{\mathcal T}\providecommand{\cK}{\mathcal K}
+\providecommand{\cN}{\mathcal N}\providecommand{\cI}{\mathcal I}
+\providecommand{\cX}{\mathcal X}\providecommand{\cS}{\mathcal S}\providecommand{\cD}{\mathcal D}
+\providecommand{\rk}{\operatorname{rank}}\providecommand{\Ann}{\operatorname{Ann}}
+\providecommand{\Supp}{\operatorname{Supp}}\providecommand{\Sing}{\operatorname{Sing}}
+\renewcommand{\Uses}[1]{\par\smallskip\begingroup\raggedright\noindent\textit{Uses:} #1.\par\endgroup\smallskip}
+
+\input{canonical_labels.tex}
+\begin{document}
+\input{../../../editorial/II_working_supplement.tex}
+\end{document}

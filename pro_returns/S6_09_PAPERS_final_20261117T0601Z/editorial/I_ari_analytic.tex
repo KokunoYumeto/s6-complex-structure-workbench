@@ -1,0 +1,443 @@
+\section{C.8. An analytic proof of the elliptic maximum}
+
+Throughout this section $q=e^{2\pi i\tau}$, $T=\Im\tau$,
+$\Delta_0=q\prod_{n\ge1}(1-q^n)^{24}$, and
+$t=E_4^3/(1728\Delta_0)$. Thus $t-1=E_6^2/(1728\Delta_0)$.
+The discriminant $\Delta_0$ is the modular discriminant and must not
+be confused with the discriminant $27t^8(t-1)^3$ of the rational
+Weierstrass equation. We use the division identity
+\eqref{ari:eq:cs-division}, already proved above, and the modular
+invariance of $N$. No interval cover or numerical root computation
+enters the following proof.
+
+\begin{proposition}[ARI C.8.1; Proved: three uniform bounds on the elliptic norm]\label{ari:C.8.1}
+For every $z\in\C$ and every $\tau$ in the standard modular
+fundamental region, we have
+\[
+ \begin{array}{c|ccc}
+ \text{restriction}&T\le2&T\le7/5&T\le11/10\\ \hline
+ N(z,\tau)&<17/10&<3/2&<143/100.
+ \end{array}
+\]
+If $\wp_\tau(z)=0$ and $T\ge2$, then $N(z,\tau)<541/500$.
+\end{proposition}
+\begin{proof}
+Taking absolute values in the theta series and completing the square
+gives
+\[
+ e^{-\pi(\Im z)^2/T}|\vartheta_1(z,\tau)|
+ \le\sum_{n\in\Z}
+ e^{-\pi T(n+1/2+\Im z/T)^2}
+ \le\sum_{n\in\Z}e^{-\pi Tn^2}.
+\]
+The last inequality follows from Poisson summation: the Fourier
+coefficients of the periodized Gaussian are positive, so its maximum
+is at an integer. The eta product and $n^2\ge1+3(n-1)$ for $n\ge1$
+therefore imply, on $a\le T\le b$,
+\begin{equation}\label{ari:eq:ca-sup}
+ N(z,\tau)\le
+ \exp\!\left(\frac{r_a}{(1-r_a)^2}\right)
+ \max\{F(a),F(b)\},\qquad
+ F(T)=e^{\pi T/12}
+ \left(1+\frac{2e^{-\pi T}}{1-e^{-3\pi T}}\right),
+\end{equation}
+where $r_a=e^{-2\pi a}$. Indeed,
+$-\sum\log(1-r^n)\le r/(1-r)^2$. The function $F$ is convex,
+as follows by expanding its denominator as a geometric series;
+each summand is an exponential of a real linear function of $T$.
+We use $6/7<\sqrt3/2$ and the following rational bounds:
+\[
+\begin{array}{c|@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c}
+T&6/7&1&11/10&7/5&2\\ \hline
+F(T)&<14211/10000&<14116/10000&<14180/10000&<14782/10000&<16944/10000.
+\end{array}
+\]
+The eta factors in \eqref{ari:eq:ca-sup} are less than $10047/10000$
+for $a=6/7$ and less than $10019/10000$ for $a=1$.
+Multiplying these fractions proves the asserted bounds, using
+$[6/7,1]$ and $[1,2]$ separately for the first one.
+
+We specify elementary arithmetic for all the scalar estimates in
+this proof. One may use $314159/100000<\pi<355/113$ and, for
+$0\le x\le20$, the Taylor bounds
+\begin{equation}\label{ari:eq:ca-exp}
+ S_{80}(x)\le e^x\le
+ S_{80}(x)+\frac{x^{81}}{81!}\frac1{1-x/82},
+ \qquad S_{80}(x)=\sum_{j=0}^{80}\frac{x^j}{j!}.
+\end{equation}
+Taking reciprocals bounds negative exponentials. The remainder
+bound follows by comparison of consecutive terms, not by numerical
+sampling. These inequalities verify each displayed rational bound;
+much shorter Taylor sums also suffice. Thus the decimal diagnostics
+in the accompanying programs are dispensable.
+
+For the cusp we check directly the analytic step of supplied K6.
+Choose $|\Im z|\le T/2$ by translation, put $b_0=43/100$ and
+$r_0=e^{-4\pi}$. The Fourier series
+\[
+ \frac{\wp_\tau(z)}{\pi^2}
+ =\csc^2(\pi z)-\frac13
+   +8\sum_{n\ge1}\frac{nq^n}{1-q^n}
+          \bigl(1-\cos(2\pi nz)\bigr)
+\]
+shows, if $|\Im z|\ge b_0$, that
+\begin{align*}
+ \left|\frac{\wp_\tau(z)}{\pi^2}+\frac13\right|
+ &\le \frac1{\sinh^2(\pi b_0)}
+ +8\left\{\frac{r_0}{(1-r_0)^3}
+ +\frac1{2(1-r_0)}
+ \left(\frac{e^{-2\pi}}{(1-e^{-2\pi})^2}
+       +\frac{e^{-6\pi}}{(1-e^{-6\pi})^2}\right)\right\}
+ <\frac13.
+\end{align*}
+The two terms in the last parentheses bound respectively
+$r^n e^{2\pi n|\Im z|}$ and $r^n e^{-2\pi n|\Im z|}$.
+This inequality excludes a zero. Hence a zero has
+$|\Im z|<b_0$. The Jacobi product, $\log(1+x)\le x$, and
+the monotonicity of $\cosh(\pi y)e^{-\pi y^2/T}$ on
+$0\le y\le b_0$ give
+\[
+ N(z,\tau)\le
+ 2\cosh(\pi b_0)e^{-\pi/3-\pi b_0^2/2}
+ \exp\!\left(
+ \frac{2\cosh(2\pi b_0)r_0}{1-r_0}
+ +\frac{r_0^2}{1-r_0^2}\right)<\frac{541}{500}.
+\]
+For the stated monotonicity, the concave function
+$\tanh(\pi y)-y$ is zero at zero and positive at $b_0$.
+For $T\ge2$ the right side before substituting $T=2$ decreases:
+the derivative of $-\pi T/6-\pi b_0^2/T$ is negative and
+both product errors decrease. The two strict scalar inequalities
+follow from \eqref{ari:eq:ca-exp}. This proves the cusp assertion
+without using any certificate from K6.
+\end{proof}
+
+\begin{proposition}[ARI C.8.2; Proved: an explicit local maximum on a larger disc]\label{ari:C.8.2}
+If $|\tau-i|\le1/50$ and $\wp_\tau(z)=0$, then
+$N(z,\tau)\le\sqrt2$, with equality exactly when $\tau=i$.
+\end{proposition}
+\begin{proof}
+Write $\delta=\tau-i$, $h=z-(1-\tau)/2$ and
+\[
+ G(h,\tau)=\wp_\tau((1-\tau)/2+h),\qquad
+ H(h,\tau)=\log\frac{\vartheta_3(h,\tau)}{\eta(\tau)}.
+\]
+We choose the holomorphic logarithm whose value at $(0,i)$ is
+$\log\sqrt2$. The half-period theta identity gives
+\begin{equation}\label{ari:eq:ca-H}
+ \log N(z,\tau)=\Re H(h,\tau)-\frac{\pi(\Im h)^2}{T}.
+\end{equation}
+Both $G$ and $H$ are even in $h$. On the polydisc
+$|h|\le1/4$, $|\delta|\le1/10$, they satisfy
+\begin{equation}\label{ari:eq:ca-GHbounds}
+ |G|<30,\qquad |H|<2/3.
+\end{equation}
+Here are sufficient series estimates, including their margins.
+Put
+\[
+ A_k=\sum_{n\ge1}n^k e^{-9\pi n^2/10}\cosh(\pi n/2),
+ \quad a_0=2A_0,\quad a_1=4\pi A_1,\quad a_2=8\pi^2A_2.
+\]
+Then $a_0<3/10$, $a_1<19/10$, $a_2<12$.
+The first two summands suffice to verify these inequalities: for
+$n\ge3$, each of the two exponentials in the hyperbolic cosine
+has successive-term ratio at most $e^{-29\pi/5}$, and the
+factor $n^k$ increases this ratio by at most $(4/3)^2$.
+We use \eqref{ari:eq:ca-exp} for the first terms and this geometric
+bound for the tail. With $r=e^{-9\pi/5}$, the identities
+\[
+ G=-\partial_h^2\log\vartheta_3-\frac{\pi^2}{3}E_2,
+ \qquad
+ |E_2|\le1+\frac{24r}{(1-r)^3}
+\]
+give
+\[
+ |G|\le\frac{a_2}{1-a_0}+\frac{a_1^2}{(1-a_0)^2}
+       +\frac{\pi^2}{3}\left(1+\frac{24r}{(1-r)^3}\right)<30.
+\]
+Also
+\[
+ |H|\le-\log(1-a_0)+\frac{11\pi}{120}
+                    +\frac{r}{(1-r)^2}<\frac23.
+\]
+The logarithm is well defined since $|\vartheta_3-1|<3/10$;
+the displayed eta product fixes its branch. A geometric bound
+for $-\log(1-x)=\sum_{n\ge1}x^n/n$ verifies the last estimate.
+
+Let
+\[
+ e(\tau)=\frac{\pi^2}{3}(\vartheta_2(0,\tau)^4-
+                              \vartheta_4(0,\tau)^4),\qquad
+ E(\tau)=\frac{\pi^2}{3}E_2(\tau),\qquad
+ g=\frac{g_2(i)}4.
+\]
+On $|\delta|\le1/50$ the following loose bounds hold:
+\begin{equation}\label{ari:eq:ca-derivatives}
+ |e'|<14,\quad |e''|<60,\quad |g_2'|<500,
+ \quad |E'|<2,\quad |E_6''|<100,
+ \qquad 47<g<95/2.
+\end{equation}
+For completeness these are scalar Fourier-series bounds, not
+interval computations. At $T\ge49/50$, upper bounds for
+$|\vartheta_j|,|\vartheta_j'|,|\vartheta_j''|$ are
+\[
+\begin{array}{c|ccc}
+j&0\text{ derivatives}&1\text{ derivative}&2\text{ derivatives}\\ \hline
+2&929/1000&742/1000&670/1000\\
+4&1093/1000&290/1000&911/1000.
+\end{array}
+\]
+They follow by differentiating the absolutely convergent theta
+series, taking absolute values, retaining two terms, and using
+the same successive-term bound. Differentiating the fourth
+powers proves the first two bounds in \eqref{ari:eq:ca-derivatives}.
+For $r\le1/470$, the remaining derivative majorants are
+\begin{align*}
+ |g_2'|&\le640\pi^5\frac{r(1+11r+11r^2+r^3)}{(1-r)^7}<500,\\
+ |E'|&\le16\pi^3\frac{r(1+r)}{(1-r)^5}<2,\\
+ |E_6''|&\le2016\pi^2
+ \frac{r(1+r)(1+120r+1191r^2+2416r^3+1191r^4+120r^5+r^6)}
+ {(1-r)^{11}}<100.
+\end{align*}
+These follow by summing $\sum n^k r^n$ and bounding
+$(1-r^n)^{-1}$ by $(1-r)^{-1}$. Substitution of $r=1/470$
+and $\pi<355/113$ verifies the rational inequalities.
+Finally $g=\pi^4E_4(i)/3$ and
+$E_4=1+240\sum n^3q^n/(1-q^n)$ give $47<g<95/2$.
+The identity of K3, checked by differentiating $e$ and using
+the theta heat equation, reads
+\[
+ e(i)=0,\qquad e'(i)=id,\qquad d=\frac{2g}{3\pi}>99/10.
+\]
+
+The differential equation $\wp''=6\wp^2-g_2/2$ determines the
+first coefficients in the even expansion:
+\[
+ G(h,\tau)=e+a h^2+ea h^4+\mathcal R_G,
+ \qquad a=3e^2-g_2/4.
+\]
+Consequently, on $|\delta|\le1/50$,
+\[
+ |e|\le7/25,\quad |a+g|\le\frac52+3(7/25)^2=\frac{3419}{1250},
+ \quad |a|\le\frac{62794}{1250}.
+\]
+Cauchy's estimate from \eqref{ari:eq:ca-GHbounds} yields
+\[
+ |\mathcal R_G|\le
+ \frac{30(4|h|)^6}{1-16|h|^2}.
+\]
+On $|h|=1/10$ the term $ah^2$ has modulus at least
+$55331/125000>0.4426$, whereas the sum of the other terms is at most
+\[
+ \frac7{25}+\frac7{25}\frac{62794}{1250}\frac1{10000}
+       +\frac{30(4/25)^3}{1-4/25}<0.4277.
+\]
+Rouch\'e's theorem puts two zeros, with multiplicity, in
+$|h|<1/10$. The disc injects into the torus and $\wp$ has exactly
+two zeros on the torus, so it contains both of them.
+
+Write $G=e+h^2Q$. The preceding estimates give, for $|h|\le1/10$,
+\[
+ |Q+g|\le
+ \frac{3419}{1250}+\frac7{25}\frac{62794}{1250}\frac1{100}
+       +\frac{30(4/25)^3}{(1-4/25)/100}<\frac{88}{5}.
+\]
+Taylor's formula and $|e''|<60$ give
+$|e|\ge(99/10-3/5)|\delta|=(93/10)|\delta|$.
+At either zero, therefore,
+\begin{equation}\label{ari:eq:ca-delta-h}
+ |\delta|<7|h|^2,
+\end{equation}
+because $(95/2+88/5)/(93/10)=7$.
+
+Expand
+$H=H_0(\tau)+H_2(\tau)h^2+H_4(\tau)h^4+\mathcal R_H$.
+The heat equation and the identity for $G$ give
+\[
+ H_0'=\frac{ie}{4\pi},\quad
+ H_2=-\frac{e+E}{2},\quad H_4=-\frac a{12}.
+\]
+Thus $H_0(i)=\log\sqrt2$, $H_0'(i)=0$,
+$|H_0''|<6/5$, $H_2(i)=-\pi/2$, $|H_2'|<8$, and
+$|H_4|<21/5$. Cauchy's estimate gives
+\[
+ |\mathcal R_H|\le
+ \frac{(2/3)(4|h|)^6}{1-16|h|^2}
+ \le\frac{2048}{63}|h|^4
+ \quad (|h|\le1/10).
+\]
+Combining \eqref{ari:eq:ca-H} and \eqref{ari:eq:ca-delta-h}, we obtain
+\begin{align*}
+ \log N-\log\sqrt2
+ &\le-\frac\pi2\Re(h^2)-\pi(\Im h)^2+C|h|^4\\
+ &=-\frac\pi2|h|^2+C|h|^4,\\
+ C&=\frac{147}{5}+56+\frac{21}{5}
+                 +\frac{2048}{63}+\frac{1100}{49}<150.
+\end{align*}
+The final term of $C$ bounds the change of $1/T$ from $1$:
+$7\pi/(1-1/50)<1100/49$. Since $150|h|^2<3/2<\pi/2$,
+the result is strict unless $h=0$. Equation
+\eqref{ari:eq:ca-delta-h} then gives $\delta=0$, where equality
+holds by the checked isogeny computation at $i$.
+\end{proof}
+
+\begin{proposition}[ARI C.8.3; Proved: the comparison of the two local discs]\label{ari:C.8.3}
+Every complex number $t_0$ with $|t_0-1|\le1/500$ has a
+representative $\tau$ with $|\tau-i|<1/50$ and $j(\tau)=1728t_0$.
+Consequently every zero of $\wp$ for that modulus satisfies
+$N\le\sqrt2$, with equality only for $t_0=1$.
+\end{proposition}
+\begin{proof}
+At $i$, $E_6=0$ and the Ramanujan differential identity gives
+$|E_6'(i)|=\pi E_4(i)^2>13/2$, since $E_4(i)>29/20$.
+On $|\delta|=1/50$, \eqref{ari:eq:ca-derivatives} gives
+\[
+ |E_6(\tau)|>\frac{13}{100}-\frac1{50}=\frac{11}{100}.
+\]
+On the whole disc, $|q|<1/470$ and
+$|\Delta_0|\le |q|\exp(24|q|/(1-|q|))<1/400$.
+It follows on the boundary that
+\[
+ |t-1|=\frac{|E_6|^2}{1728|\Delta_0|}
+ >\frac{121}{43200}>\frac1{500}.
+\]
+Rouch\'e applied to $E_6'(i)\delta$ shows that $E_6$ has
+exactly one zero in the disc. Hence $t-1$ has two zeros there,
+with multiplicity, and another application of Rouch\'e shows
+that $t-t_0$ has two for each $|t_0-1|\le1/500$.
+This argument proves coverage of the $t$-disc, rather than
+inferring coverage merely from a boundary bound. Elliptic
+curves over $\C$ with the same $j$ are isomorphic. In terms of
+lattices the isomorphism is a homothety; it carries the two
+zeros of $\wp$ to the two zeros of the scaled $\wp$ and
+preserves $N$. Statement C.8.2 applies to either zero.
+\end{proof}
+
+\begin{proposition}[ARI C.8.4; Proved: the first three normalized duplication steps]\label{ari:C.8.4}
+Put $u=t-1$. For $n=2^k$, $k=1,2,3$, and $nP\ne O$,
+\begin{equation}\label{ari:eq:ca-ladder}
+ \left(\frac{N(P)}{\sqrt2}\right)^{n^2}
+ =\frac{3^{3/4}}{2n}\,
+       \frac{N(nP)|u|^{-1/4}}{|A_k(u)|},
+\end{equation}
+where
+\begin{align*}
+ A_1(u)&=1,\qquad A_2(u)=1-5u/27,\\
+ A_3(u)&=1-\frac{217}{27}u-\frac{20486}{729}u^2
+       +\frac{10910}{19683}u^3
+       +\frac{161383}{177147}u^4
+       -\frac{245}{14348907}u^5.
+\end{align*}
+On $|u|\le1/28$ we have $|A_3(u)|\ge1-10|u|$.
+For every $k\ge1$, not just these first three steps, define
+\[
+ E_k(t)=\frac{|\Delta_E|^{(4^k-1)/12}|t-1|^{1/4}}
+ {2^{4^k/2}|\psi_{2^k}(P)|}.
+\]
+Then $(N(P)/\sqrt2)^{4^k}=E_k(t)N(2^kP)|t-1|^{-1/4}$,
+and the removable limiting value is
+\[
+ \lim_{t\to1}E_k(t)=\frac{3^{3/4}}{2^{k+1}}
+                 =2^{1-k}\frac{3^{3/4}}4.
+\]
+\end{proposition}
+\begin{proof}
+Substitute the exact division polynomials from Statement C.4.2
+in \eqref{ari:eq:cs-division}. Equivalently, remove
+$t^{2(n^2-1)/3}(t-1)^{n^2/4}$ from $\psi_n(P)$ and divide
+the resulting polynomial by its value at $t=1$. For $n=2,4,8$
+this gives the displayed polynomials and the constant
+$3^{3/4}/(2n)$. All operations are rational polynomial operations;
+\path{code/C_ladder_algebra.py} reproduces them and records
+the next two steps as well. The general identity is C.4.2.
+For its limit write $\mu=(1-\tau)/2+h$ as in C.3.1. Since
+$n=2^k$ is even, $n\mu$ is congruent to $nh$ modulo the
+period lattice. Hence
+\[
+ N(nP)=2\pi|\eta(i)|^2 n|h|(1+o(1)),\qquad
+ t-1=\tfrac94\pi^4E_4(i)h^4(1+o(1)).
+\]
+The identity $E_4(i)^3=1728\eta(i)^{24}$ then gives
+$N(nP)|t-1|^{-1/4}\to2n/3^{3/4}$.
+Since the left side of the general ladder tends to one,
+this proves the stated limit for every $k$.
+The triangle inequality gives
+$|A_3(u)|\ge1-|u|M$, where
+\[
+ M\le\frac{81}{10}+\frac{29}{28}
+                +\frac1{28^2}+\frac1{28^3}+\frac1{28^4}<10.
+\]
+Here we bounded respectively the five absolute coefficients by
+$81/10,29,1,1,1$. This is a rational inequality on one disc,
+not a subdivision or a root search.
+\end{proof}
+
+\begin{proof}[Division-ladder proof of Theorem~\ref{fam:st:C.2.3} (source ARI C.8.5)]
+Reduce to the standard modular region. The portion $T\ge2$
+is covered by Statement C.8.1. Suppose $T\le2$ and put
+$r=|t-1|$. For $r\ge9/10$, the step $n=2$ in
+\eqref{ari:eq:ca-ladder} and $N(2P)<17/10$ give strict inequality,
+because
+\[
+ \frac{27(17/10)^4}{256}<\frac9{10}.
+\]
+There is no $2$-torsion point of the section on the smooth base.
+
+If $r\le9/10$, then $T<7/5$. Indeed, $T\ge7/5$ would give
+$|q|<1/6500$ and
+\[
+ |E_4|>24/25,\qquad |\Delta_0|<1/6400,
+ \qquad |t|>\frac{6400(24/25)^3}{1728}>19/10,
+\]
+contrary to $|t|\le19/10$. The estimates follow from
+\[
+ \sum_{n\ge1}\sigma_3(n)r^n
+ \le\frac{r(1+4r+r^2)}{(1-r)^5},\qquad
+ |\Delta_0|\le r\exp\frac{24r}{1-r}.
+\]
+For $1/28\le r\le9/10$, the $n=4$ step and
+$N(4P)<3/2$ now apply. The function
+$(1-5r/27)r^{1/4}$ is increasing up to $r=27/25$.
+At its left endpoint its fourth power is
+\[
+ \frac1{28}\left(\frac{751}{756}\right)^4
+ >\frac{2187}{65536}
+ =\left(\frac{3^{3/4}}8\frac32\right)^4.
+\]
+This proves strict inequality on the whole annulus. The lower
+bound for $A_2$ is positive there, so no division by a zero has
+occurred.
+
+If $r\le1/28$, then $T<11/10$. For otherwise $|q|<1/1000$,
+and the Lambert series with
+\[
+ \sum_{n\ge1}\sigma_5(n)r^n
+ \le\frac{r(1+26r+66r^2+26r^3+r^4)}{(1-r)^7}
+\]
+gives $|E_6|>9/20$, $|\Delta_0|<1/900$, and hence
+$|t-1|>900(9/20)^2/1728>1/28$.
+On $1/500\le r\le1/28$, the $n=8$ step,
+$N(8P)<143/100$, and $|A_3|\ge1-10r$ prove the claim.
+Indeed $(1-10r)r^{1/4}$ has a single critical point in this
+interval, a maximum at $r=1/50$, so its minimum is at an endpoint.
+At both endpoints its fourth power exceeds $9/5000$, whereas
+\[
+ \left(\frac{3^{3/4}}{16}\frac{143}{100}\right)^4
+ <\frac7{4000}<\frac9{5000}.
+\]
+Again the displayed positive bound excludes a division-polynomial
+zero. The remaining disc $r\le1/500$ is covered by Statement
+C.8.3. The smooth limiting fibre at $t=0$ has
+$N=3^{1/4}<\sqrt2$; the formula also extends there by
+continuity, so the singular rational model causes no omitted
+modulus. The only equality occurs at $t=1$.
+\end{proof}
+
+The supplied R4 and K6 already establish this inequality by
+computer-assisted proofs. Statements C.8.1--C.8.5 give another
+proof with a three-step division ladder and the explicit radius
+$1/50$ in the $\tau$-plane. The programs
+\path{code/C_ladder_estimates.py} and
+\path{code/C_local_analytic_bounds.py} record numerical diagnostics
+of the constants; the proof uses the displayed rational estimates
+and their series remainder bounds alone.

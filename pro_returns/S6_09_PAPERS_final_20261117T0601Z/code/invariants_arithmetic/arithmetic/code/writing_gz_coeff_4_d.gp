@@ -1,0 +1,2 @@
+default(parisizemax,1000000000);
+t=16581375/1728; E=ellminimalmodel(ellinit([0,0,0,-3/4*t^3*(t-1),1/4*t^4*(t-1)^2])); N=ellglobalred(E)[1]; M=ceil(60*sqrt(N)/(2*Pi)); A=ellan(E,M); write("/workspace/scratch/037cd144174c/deliverables/code/invariants_arithmetic/arithmetic/records/writing_gz_4_derivative.dat",N," 1 ",M); for(n=1,M,write("/workspace/scratch/037cd144174c/deliverables/code/invariants_arithmetic/arithmetic/records/writing_gz_4_derivative.dat",A[n])); print(N," ",M); quit;

@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "gate_passed": true,
+  "reader": "GPT-6 Astra (OpenAI, ChatGPT Pro mode)",
+  "effort": "Pro",
+  "date_utc": "2026-11-17",
+  "reviewed_files": [
+    {
+      "file": "code/editorial/plan_visual_asset_deduplication.py",
+      "sha256": "f1852466f16ed4a636869bd63adf5cfe51b5df519839eede2aed008933576daa",
+      "read_scope": "Entire file, lines1–26",
+      "checks": [
+        "Full 26-line program read. Groups only existing .png files by full SHA256, then checks complete byte equality for every duplicate against its selected canonical payload.",
+        "Only the manifest is written. Every original source asset remains in place. Canonical preference changes only which identical payload path is stored.",
+        "The actual manifest is a disjoint partition of all 1732 existing PNG paths into717 distinct payloads and1015 aliases; every alias refers directly to one retained payload with matching length and digest."
+      ],
+      "result": "passed",
+      "exact_reviewed_copy": "reviewed_code/plan_visual_asset_deduplication.py"
+    },
+    {
+      "file": "code/editorial/restore_duplicate_visual_assets.py",
+      "sha256": "cdb8a730e6b1ad8b23a412926a35500d0f2a7540eab428d261d48b27a17de665",
+      "read_scope": "Entire file, lines1–35",
+      "checks": [
+        "Full 35-line program read. Rejects absolute paths, parent traversal and resolved targets outside the extracted archive root.",
+        "Verifies all717 retained payload sizes and complete SHA256 values before handling aliases. No raster decode, image transformation or recompression is performed.",
+        "An existing alias must already have the expected bytes; a differing file raises an assertion before any write. A missing alias is opened with exclusive creation (xb), then copied byte for byte and rehashed.",
+        "Executed unchanged five times in an isolated tree with hardlinked retained payloads. All1015 aliases were restored, every1732 logical payload matched, a repeat restored zero, a deliberate differing existing alias was refused unchanged, and removing that test file permitted exactly one restoration."
+      ],
+      "result": "passed",
+      "exact_reviewed_copy": "reviewed_code/restore_duplicate_visual_assets.py"
+    },
+    {
+      "file": "code/editorial/repack_checkpoint_losslessly.py",
+      "sha256": "16b15d72f558a96065adfac10caeb34e4494ac01ff56f0eb1e0aa38c73c7bfad",
+      "read_scope": "Entire file, lines1–48",
+      "checks": [
+        "Full 48-line program read. Opens the original checkpoint for reading and asserts its pinned full SHA256 both before and after repacking; the target ZIP is created exclusively.",
+        "Every original member is read completely and receives a logical original-path/stored-path/byte-count/SHA256 record. Only the explicit PNG aliases are skipped physically; every other member keeps its original path and complete payload.",
+        "All retained ZIP payloads are subsequently decompressed and compared against every original member record, including each alias. Complete ZIP CRC and the actual536870912-byte limit are checked.",
+        "The restoration manifest/helper and transport explanation are additions; ZIP framing/compression may differ, while every original member payload remains exact. The original checkpoint was not repacked or edited by this independent validation."
+      ],
+      "result": "passed",
+      "exact_reviewed_copy": "reviewed_code/repack_checkpoint_losslessly.py"
+    },
+    {
+      "file": "code/editorial/package_final.py",
+      "sha256": "c57175159dcff6ecb6a1242824b0d7b81afb2f7326d941ff3fd1e79fe7d988e9",
+      "read_scope": "Entire file, lines1–47",
+      "checks": [
+        "Full 47-line program read. Requires the passed final gate and COMPLETE report, and refuses an existing final ZIP.",
+        "Enumerates every file under deliverables except the two separately appended manifest/receipt files. Only paths present in the tested PNG alias map use a different stored path; all papers, code and nonimage payloads retain ordinary flat paths.",
+        "Computes the complete logical payload manifest before writing; decompressed archive bytes and full SHA256 values are checked against every logical entry. The manifest and appended receipt are themselves byte-compared; final member count and complete CRC are checked.",
+        "The final actual file size is required to be at most536870912 bytes. No archive was produced or changed by this independent restoration test."
+      ],
+      "result": "passed",
+      "exact_reviewed_copy": "reviewed_code/package_final.py"
+    }
+  ],
+  "restoration_execution": "validation_report.json",
+  "complete_commands_and_outputs": "execution_manifest.json",
+  "canonical_files_changed": false,
+  "original_checkpoint_changed": false,
+  "conclusion": "Exact duplicate PNG payload sharing preserves all logical member bytes at the original paths after the verified restoration command. No concrete code-path defect was found in the reviewed scope."
+}

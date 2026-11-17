@@ -1,0 +1,816 @@
+\section{The Adams tower and exact inverse limits}\label{courseIII:the-adams-tower-and-exact-inverse-limits:section}
+
+The following complete arguments are retained as re-derivations of their classical prerequisites. Source-specific calculations and their hypotheses are stated explicitly.
+
+This source proves the complete finite-tower convergence argument and the all-length degree-five cobar vanishing used by the receiving calculation. The required mod-two cooperation comparison is proved in the \cref{courseIII:the-actual-mod-two-cooperation-comparison-through-degree-eight:actual-eight-bijectivity}, and the \cref{courseIII:the-original-odd-prime-cooperations-and-degree-six-adams-calculation:odd-actual-adams} proves the odd-prime completed degree-six groups vanish. The arithmetic comparison is proved in its linked companion below. No value of the original framed manifold is asserted here.
+
+Sections 8--11, added 11 October 2026, construct the ordinary-cohomology spectrum and prove that the actual sphere tower satisfies the finiteness used in Section 4. They retain the original cochains, all face maps and the actual suspension maps. The resulting convergence is to the displayed homotopy limit; its arithmetic comparison is not implicit in that result.
+
+\subsection{Every map in the original tower}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-original-tower}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-1}\label{courseIII:adams-tower:1}
+
+Fix a prime \(p\). Write \(H=H\mathbb F_p\) for the spectrum representing ordinary mod-\(p\) cohomology, \(\mathbb S\) for the sphere spectrum, and \(\eta:\mathbb S\to H\) for its unit. In this section, fibres and cofibres mean homotopy fibres and homotopy cofibres. Fix the fibre sequence
+
+\begin{equation}
+B\xrightarrow{\alpha}\mathbb S\xrightarrow{\eta}H
+     \xrightarrow{\partial}\Sigma B.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.1}
+\end{equation}
+
+Define \(F_0=\mathbb S\) and \(F_s=B^{\wedge s}\) for \(s\geq1\), with the factors in this order. The transition \(a_s:F_{s+1}\to F_s\) applies \(\alpha\) to the first factor and the identity to the remaining \(s\) factors. Put
+
+\begin{equation}
+q_s=\alpha^{\wedge s}:F_s\longrightarrow\mathbb S,
+ \qquad q_0=1_{\mathbb S},\qquad q_{s+1}=q_s a_s,
+ \qquad W_s=H\wedge F_s.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.2}
+\end{equation}
+
+Smashing \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.1} on the right by \(F_s\) gives the exact fibre/cofibre sequence
+
+\begin{equation}
+F_{s+1}\xrightarrow{a_s}F_s
+ \xrightarrow{\eta\wedge1}W_s
+ \xrightarrow{\partial\wedge1}\Sigma F_{s+1}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.3}
+\end{equation}
+
+All maps retain the chosen factor order. No unmentioned exchange of suspension factors is used.
+
+Set
+
+\begin{equation}
+C_s=\operatorname{cofib}(q_{s+1}:F_{s+1}\to\mathbb S)
+       \quad(s\geq0),\qquad C_{-1}=0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.4}
+\end{equation}
+
+The commuting square with vertical maps \(a_s\) and \(1_{\mathbb S}\) induces \(r_s:C_s\to C_{s-1}\). Thus \(C_0=H\), with its unit map from the original sphere. The resulting exact sequence is
+
+\begin{equation}
+W_s\xrightarrow{i_s}C_s\xrightarrow{r_s}C_{s-1}
+             \xrightarrow{\delta_s}\Sigma W_s.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5}
+\end{equation}
+
+Here is the cofibre calculation fixing the index and suspension. Apply the cofibre construction to the composable maps
+\(F_{s+1}\xrightarrow{a_s}F_s\xrightarrow{q_s}\mathbb S\).
+The three cofibres are respectively \(W_s,C_s,C_{s-1}\). The cofibre sequence of these three maps is \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5}. Concretely, replace both maps by mapping-cylinder inclusions. The quotient of the cylinder of the composite first by the cylinder of the first map and then by the cylinder of the second gives the same quotient as taking their union first. This identifies the last cofibre with \(\Sigma W_s\), including the original connecting map. In a stable category this cofibre sequence is also a fibre sequence. In particular the fibre of \(C_s\to C_{s-1}\) is \(W_s\); its cofibre is \(\Sigma W_s\).
+
+Define \(\widehat{\mathbb S}_H=\operatorname{holim}_{s\geq0}C_s\), with the map from \(\mathbb S\) induced by its compatible maps to every \(C_s\). This is a definition of this particular completion. Identifying it with an arithmetic completion of the original stable homotopy groups requires its own comparison; the notation does not assert that comparison.
+
+Illustration description: The original fibre and cofibre sequences, with their exact indices and the induced homotopy-group sequence.
+
+The upper sequence smashes the original unit fibre sequence by the retained ordered factors. The lower sequence is \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5}, with the displayed connecting degree. The reproducible source is \texttt{draw\_adams\_tower.py}; the rendered labels and arrows have been inspected.
+
+\subsection{The inverse limit of finite groups and the full difference map}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-2}
+
+\label{courseIII:adams-tower:2}
+
+Let \(A_0\xleftarrow{q_0}A_1\xleftarrow{q_1}\cdots\) be a sequence of finite abelian groups. Retain every transition, including transitions that are not surjective. Define
+
+\begin{equation}
+D:\prod_{s\geq0}A_s\longrightarrow\prod_{s\geq0}A_s,
+ \qquad D((a_s)_{s\geq0})=(a_s-q_s(a_{s+1}))_{s\geq0}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.1}
+\end{equation}
+
+Its kernel is exactly the group of compatible sequences \(\lim_s A_s\). Its cokernel is zero, as follows by an explicit construction.
+
+Fix \(b=(b_s)\) in the target. For every \(N\geq0\), let \(T_N\) be the finite set of tuples \((a_0,\ldots,a_N)\) satisfying
+\(a_s-q_s(a_{s+1})=b_s\) for \(0\leq s<N\).
+It is nonempty: choose \(a_N=0\) and, moving backward, set \(a_s=b_s+q_s(a_{s+1})\). Truncation makes these finite sets a rooted tree of partial solutions. Each vertex has finitely many immediate extensions. A vertex is called indefinitely extendible when it has extensions at arbitrarily large levels. The root has this property because every level is nonempty. An indefinitely extendible vertex has an indefinitely extendible immediate child: otherwise finitely many upper bounds on the lengths of its children's extensions would give an upper bound for the parent. Choose such a child successively. The resulting infinite branch gives a sequence solving every equation \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.1}. Thus
+
+\begin{equation}
+0\longrightarrow\lim_s A_s\longrightarrow\prod_s A_s
+   \xrightarrow{D}\prod_s A_s\longrightarrow0
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.2}
+\end{equation}
+
+is exact. In particular the derived-limit group, defined for this countable tower by \(\lim^1 A_s=\operatorname{coker}D\), vanishes. No surjectivity of the individual \(q_s\) was assumed.
+
+There is a second exact description needed below. Put
+
+\begin{equation}
+I_s=\bigcap_{k\geq s}\operatorname{im}(A_k\longrightarrow A_s).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.3}
+\end{equation}
+
+Then the image of \(\lim_kA_k\to A_s\) is exactly \(I_s\). One inclusion follows from compatibility. For the other, fix \(a\in I_s\). For every \(N\geq s\), choose an element of \(A_N\) mapping to \(a\), and use its images to obtain a compatible finite tuple down to level zero. The finite tree of all such tuples is nonempty at every level. The same indefinitely-extendible-vertex argument supplies a compatible infinite tuple whose \(s\)-th component is the original \(a\). This proves the other inclusion, without choosing incompatible lifts independently.
+
+\subsection{Every page of the tower spectral sequence}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-3}
+
+\label{courseIII:adams-tower:3}
+
+We first work with an arbitrary tower \(C_s\), indexed as in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5}, with \(C_j=0\) for \(j<0\) and specified fibre sequences
+\(W_s\xrightarrow{i_s}C_s\xrightarrow{r_s}C_{s-1}\to\Sigma W_s\).
+Let \(p_{v,u}:C_v\to C_u\) denote the full composite of the original transition maps for \(v\geq u\). All groups in this section are stable homotopy groups, hence abelian, and no finiteness assertion is needed for the page formulas.
+
+For \(s\geq0\), \(n\in\mathbb Z\), and \(r\geq1\), define actual subgroups of \(\pi_nW_s\) by
+
+\begin{equation}
+\begin{aligned}
+ Z_r^{s,n}
+ &=\{x\in\pi_nW_s:(i_s)_*x\in
+       \operatorname{im}((p_{s+r-1,s})_*:\pi_nC_{s+r-1}\to\pi_nC_s)\},\\
+ B_r^{s,n}
+ &=(\partial_s)_*\ker\bigl((p_{s-1,s-r})_*:
+             \pi_{n+1}C_{s-1}\to\pi_{n+1}C_{s-r}\bigr),
+ \end{aligned}
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1}
+\end{equation}
+
+where \((\partial_s)_*:\pi_{n+1}C_{s-1}\to\pi_nW_s\) is the connecting homomorphism of the specified sequence. For a negative target index the target group is zero. Exactness gives \(i_s\partial_s=0\), so \(B_r^{s,n}\subset Z_r^{s,n}\). Also \(Z_1^{s,n}=\pi_nW_s\) and \(B_1^{s,n}=0\).
+
+The page is
+
+\begin{equation}
+E_r^{s,t}=Z_r^{s,t-s}/B_r^{s,t-s}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.2}
+\end{equation}
+
+For a representative \(x\in Z_r^{s,n}\), choose an actual lift
+\(a\in\pi_n C_{s+r-1}\) of \((i_s)_*x\), and set
+
+\begin{equation}
+d_r[x]=[(\partial_{s+r})_*a]
+      \in E_r^{s+r,t+r-1},\qquad t=n+s.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3}
+\end{equation}
+
+The target has homotopy degree \(n-1\), exactly as its two indices require. Its representative belongs to every \(Z_k\), because its image under \(i_{s+r}\) is zero and can therefore be lifted by zero to every later stage.
+
+We prove well-definedness and the page transition, retaining the choices. Two lifts differ by an element of the kernel of
+\(\pi_nC_{s+r-1}\to\pi_nC_s\).
+Its boundary is exactly in \(B_r^{s+r,n-1}\) by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1}. Adding a representative from \(B_r^{s,n}\) to \(x\) leaves \((i_s)_*x\) unchanged, so the same lift may be used. This proves that \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3} is well-defined. Since the target representative has image zero, zero is a lift for computing its next differential; hence \(d_r^2=0\).
+
+Suppose \(d_r[x]=0\). Then there is
+\(b\in\ker(\pi_nC_{s+r-1}\to\pi_nC_s)\)
+with \(\partial_{s+r}a=\partial_{s+r}b\). Exactness in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5} lifts \(a-b\) to \(\pi_nC_{s+r}\); it still maps to \((i_s)_*x\). Thus \(x\in Z_{r+1}^{s,n}\). Conversely any such lift makes \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3} zero. This proves
+
+\begin{equation}
+\ker d_r=Z_{r+1}^{s,n}/B_r^{s,n}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.4}
+\end{equation}
+
+The incoming image is exactly \(B_{r+1}^{s,n}/B_r^{s,n}\). To check the nontrivial inclusion, take
+\(b\in\pi_{n+1}C_{s-1}\) mapping to zero in \(\pi_{n+1}C_{s-r-1}\).
+When \(s-r\geq0\), its image in \(\pi_{n+1}C_{s-r}\) lifts, by exactness, to some
+\(y\in\pi_{n+1}W_{s-r}\). The original \(b\) proves \(y\in Z_r^{s-r,n+1}\), and \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3} sends its class to \(\partial_s b\). Conversely every incoming representative obtained from \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3} has precisely this property. If \(s-r<0\), both \(B_r\) and \(B_{r+1}\) are already the full image of \(\partial_s\), so their quotient is zero and there is no incoming source. This proves the image assertion in all indices. Combining it with \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.4} gives
+
+\begin{equation}
+H(E_r,d_r)^{s,t}=Z_{r+1}^{s,t-s}/B_{r+1}^{s,t-s}=E_{r+1}^{s,t}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.5}
+\end{equation}
+
+This constructs the spectral sequence and proves its exact differential bidegree without appealing to an unspecified exact-couple convention.
+
+\subsection{Convergence for finite homotopy groups at every stage}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-finite-convergence}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-4}\label{courseIII:adams-tower:4}
+
+We now prove the complete convergence statement for towers in which every \(\pi_nC_s\) is finite. The homotopy groups of \(W_s\) are then finite as well: their exact sequence gives
+
+\begin{equation}
+0\longrightarrow\operatorname{coker}(\pi_{n+1}C_s\to\pi_{n+1}C_{s-1})
+ \longrightarrow\pi_nW_s
+ \longrightarrow\ker(\pi_nC_s\to\pi_nC_{s-1})\longrightarrow0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.0}
+\end{equation}
+
+Both outside groups are finite, and therefore so is the middle group.
+
+First identify the homotopy limit. Let \(P=\prod_{s\geq0}C_s\), and let \(T:P\to P\) have \(s\)-th component \(r_{s+1}\) applied to the \((s+1)\)-st projection. The homotopy limit is the fibre of \(1-T\). Indeed its mapping-space description consists of a map into each \(C_s\) and a specified homotopy between its \(s\)-th component and the image of its next component; composing these adjacent homotopies provides the data for all composites in the indexing sequence. This is precisely the homotopy equalizer of the identity and \(T\), and in spectra it is the fibre of their difference. On homotopy groups, the difference retains the sign in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.1}.
+
+The fibre long exact sequence, together with \(\pi_nP=\prod_s\pi_nC_s\), yields
+
+\begin{equation}
+0\longrightarrow\operatorname{coker}D_{n+1}
+ \longrightarrow\pi_n\operatorname{holim}_s C_s
+ \xrightarrow{\rho}\ker D_n\longrightarrow0,
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.1}
+\end{equation}
+
+where \(D_n\) is \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.1} for the actual groups \(\pi_nC_s\) and their transition homomorphisms. Equation \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.2} makes the left group zero. Therefore the original projection maps give an isomorphism
+
+\begin{equation}
+\rho:\pi_n\operatorname{holim}_s C_s
+             \xrightarrow{\cong}\lim_s\pi_nC_s.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.2}
+\end{equation}
+
+This is the exact map, including the derived-limit term before its vanishing.
+
+Let \(A=\lim_s\pi_nC_s\), and give it the decreasing filtration
+
+\begin{equation}
+F^sA=\ker(A\longrightarrow\pi_nC_{s-1}),\qquad F^0A=A.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.3}
+\end{equation}
+
+The intersection of all \(F^sA\) is zero, because a compatible tuple with every coordinate zero is zero. This filtration is complete. An element of
+\(\lim_s A/F^sA\) determines compatible coordinates in the respective images of \(A\to\pi_nC_{s-1}\), hence a unique compatible tuple in \(A\); the converse sends a tuple to all its cosets. These are inverse maps.
+
+For fixed \(s,n\), \(Z_r^{s,n}\) is a decreasing sequence of subgroups of the finite group \(\pi_nW_s\), so it eventually stabilizes. The groups \(B_r^{s,n}\) stabilize by \(r=s+1\), when their target in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1} is zero. Thus every page position stabilizes after finitely many steps. Write the stable groups as \(Z_\infty\) and \(B_\infty\). Exactness gives
+
+\begin{equation}
+B_\infty^{s,n}=\operatorname{im}\partial_s=\ker(i_s)_*,
+ \qquad
+ (i_s)_*Z_\infty^{s,n}
+    =I_s\cap\ker((r_s)_*:\pi_nC_s\to\pi_nC_{s-1}),
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.4}
+\end{equation}
+
+where \(I_s\) is the intersection \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.3} for these homotopy groups. The second equality follows in both directions from \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1}: \(Z_\infty\) consists exactly of fibre classes whose images lift to every later stage, while every element of the displayed kernel has a fibre preimage by exactness.
+
+By the second conclusion of \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-2}, \(I_s\) is the image of the actual inverse limit. Its intersection with the displayed kernel is consequently the image of \(F^sA\to\pi_nC_s\). The kernel of this last projection is \(F^{s+1}A\). Taking the quotient in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.4} proves the exact receiving map
+
+\begin{equation}
+E_\infty^{s,n+s}
+ \xrightarrow{\cong}F^sA/F^{s+1}A,
+ \qquad [x]\longmapsto [a],
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.5}
+\end{equation}
+
+where \(a\) is a compatible tuple whose \(s\)-th coordinate is \((i_s)_*x\). Such a tuple exists by Section 2. Two choices differ by \(F^{s+1}A\); changing \(x\) by \(B_\infty\) changes no coordinate at level \(s\). This verifies well-definedness as well as both inverse constructions. Equations \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.2}, \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.3}, and \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.5} prove convergence with a complete separated filtration. Finiteness was used exactly in constructing compatible lifts and in stabilizing the actual groups; no omitted inverse-limit interchange is needed.
+
+\subsection{The complete degree-five cobar calculation}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-degree-five-cobar}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-5}\label{courseIII:adams-tower:5}
+
+Use the original Hopf algebra, full coproduct and word differential of the included \href{https://github.com/KokunoYumeto/open-math-courses/blob/98715557b25d715076184ec098089ebae34ea9f6/docs/courses/CG-S6/src/the-degree-six-milnor-cobar-calculation.md}{degree-six cobar proof}. Its Sections 2--5 prove the finite filtration in each internal degree and the full calculation over \(R=\mathbb F_2[x]\). We retain its dictionary
+
+\begin{equation}
+(x,y,a,z,b,c,w)=(h_{10},h_{11},h_{20},h_{12},h_{21},h_{30},h_{13}),
+ \qquad B=a^2,
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.1}
+\end{equation}
+
+with all original \((s,t,W)\) degrees as in its \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1}. In this section \(d_r^{\mathrm M}\) denotes the differential of that weight filtration. This superscript keeps it distinct from the tower differential \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3}.
+
+The existing proof gives
+
+\begin{equation}
+(E_2^{\mathrm M})_{t-s=5}=(R/(x))\{y^5,yB\},
+ \qquad (E_2^{\mathrm M})_{t-s=6}
+       =(R/(x))\{y^6,y^2B\}\oplus R\{z^2\}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.2}
+\end{equation}
+
+We supply the adjacent calculation needed to determine the outgoing differential of \(yB\). The complete \(R\)-basis at difference four is
+\(y^4,y^2a,a^2,yz\).
+This follows by solving the same nonnegative exponent equation used in the cited proof: \(e_y+2e_a+3e_z=4\), with every higher generator too large and every power of \(x\) retained in \(R\). Its only nonzero differential is
+\(d_1^{\mathrm M}(y^2a)=xy^3\).
+The complete difference-five basis in the cited \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.4} has images generating
+\(R\{xy^4,yz\}\).
+Comparison of coefficients in the polynomial ring therefore gives
+
+\begin{equation}
+\ker(d_1^{\mathrm M}|_4)=R\{y^4,B,yz\},\qquad
+ \operatorname{im}(d_1^{\mathrm M}|_5)=R\{xy^4,yz\},\qquad
+ (E_2^{\mathrm M})_{t-s=4}=(R/(x))\{y^4\}\oplus R\{B\}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.3}
+\end{equation}
+
+In particular \(y^4\) is nonzero. There is no \(d_2^{\mathrm M}\) by the proved parity relation \(W\equiv s\pmod2\).
+
+The complete seven-term original cochain \(\mathcal B\) of the cited \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.3} has the full differential
+
+\begin{equation}
+d\mathcal B=[\zeta_1^2|\zeta_1^2|\zeta_1^2]
+                   +[\zeta_1|\zeta_1|\zeta_1^4],
+ \qquad d_3^{\mathrm M}B=y^3+x^2z.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.4}
+\end{equation}
+
+Both terms, including the second contribution, are retained. Since \(y,z\) are represented by actual primitive cocycles and \(yz=0\) on \(E_2^{\mathrm M}\), the Leibniz rule gives
+
+\begin{equation}
+d_3^{\mathrm M}(yB)=y^4+x^2yz=y^4\ne0,
+ \qquad d_3^{\mathrm M}(y^2B)=y^5+x^2y^2z=y^5.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.5}
+\end{equation}
+
+The first differential removes \(yB\); the second makes \(y^5\) a boundary. These are every generator in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.2}, and each is already killed by \(x\). Thus the entire difference-five part of \(E_4^{\mathrm M}\) is zero. Later pages are subquotients in each position, so they remain zero. The complete finite-filtration argument of the cited \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-2} now proves
+
+\begin{equation}
+H^{s,s+5}(C^\bullet(H_{\mathrm{cl}}))=0
+                 \quad\text{for every }s\geq0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.6}
+\end{equation}
+
+This is an all-length theorem over the original algebra, not a finite sampling of the cobar complex.
+
+The use of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.6} in the topological calculation is exact. The degree-six class has \((s,t)=(2,8)\). A tower differential leaving it has target
+\((s,t)=(2+r,7+r)\), whose difference is five. A differential entering it has source \((2-r,9-r)\); for \(r>2\) the filtration is negative, and for \(r=2\) it is \((0,7)\), where the length-zero cobar group is zero. These index calculations identify every possible differential. Applying them to the actual tower awaits its proved cobar identification; no algebra-to-topology substitution is implicit in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:5.6}.
+
+\subsection{Exact source corrections used in the receiving proof}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-source-corrections}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-6}\label{courseIII:adams-tower:6}
+
+The original TeX of Dugger--Isaksen, \href{https://arxiv.org/abs/0901.1632v1}{arXiv:0901.1632v1}, lines 2218--2452, constructs the smash-fibre tower and compares its resolutions. Its general-\(X\) lemma at lines 2362--2374 writes an Ext target with \(\mathbb M_2\) twice, while the displayed resolution begins with \(H_{**}(X)\). Applying the stated comodule Hom functor to that resolution gives \(\operatorname{Ext}_{H_{**}H}(\mathbb M_2,H_{**}(X))\). This retains the actual resolved comodule. For the sphere the latter is \(\mathbb M_2\), so that specialization is unchanged.
+
+The original TeX of Goerss, \href{https://arxiv.org/abs/0802.1006v1}{arXiv:0802.1006v1}, \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-1}, gives the cohomological tower. Its initial map at lines 98--102 has the correct variance. The display at lines 133--139 reverses the two cohomology modules. For a map \(f:X\to Y\), the actual map is
+
+\begin{equation}
+f^*:H^*(Y;\mathbb F_2)\longrightarrow H^*(X;\mathbb F_2),
+ \qquad [u:Y\to\Sigma^qH]\longmapsto[u\circ f].
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:6.1}
+\end{equation}
+
+For a stable operation represented by \(\theta:H\to\Sigma^aH\), its value on \([u]\) is \([(\Sigma^q\theta)\circ u]\). Associativity of composition proves
+\(f^*\theta[u]=\theta f^*[u]\), including the displayed suspension. Therefore \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:6.1} is the required module homomorphism; its direction cannot be reversed by renaming its source and target.
+
+The vanishing-line display in that same source, lines 469--490, also cannot be imported as written. It asserts vanishing when \(0<t-s<2s+\epsilon\), with \(\epsilon=1\) for \(s=1\). At \((s,t)=(1,2)\), it would assert zero. The source's own lines 440--459 instead assert a nonzero group there. In the original cobar algebra this nonzero class has a direct proof: \([\zeta_1^2]\) is a cocycle because \(\zeta_1^2\) is primitive, and no positive-internal-degree length-zero cochain exists to have it as a boundary. Thus the displayed vanishing inequality fails at this precise bidegree. We do not assume a repaired general inequality. Sections 2--4 give the complete finite-tower convergence argument, and \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-5} supplies the specific adjacent vanishing calculation needed for the degree-six class.
+
+The source files and versions are retained in the private reading ledger. Actual reading for Goerss is stras1.tex lines 1--601, macros.tex in full and bibliostras.tex in full. No claim of reading its later sections is made. The source's omitted comparison and finiteness arguments have not been promoted to proved facts about the original sphere.
+
+\subsection{Two worked exercises}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-worked-exercises}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-7}
+
+\subsubsection{Exercise 7.1 A tower with no surjective transition}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:exercise-7.1}
+
+\label{courseIII:adams-tower:7.1}
+
+Take \(A_s=\mathbb Z/4\mathbb Z\) at every level, with every transition multiplication by the original integer two. Find the kernel and inverse of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:2.1}, keeping all factors.
+
+\textbf{Solution.} For \(b=(b_s)\), set
+
+\begin{equation}
+a_s=b_s+2b_{s+1}\pmod4.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.1}
+\end{equation}
+
+Then
+
+\begin{equation}
+a_s-2a_{s+1}
+ =b_s+2b_{s+1}-2(b_{s+1}+2b_{s+2})
+ =b_s-4b_{s+2}=b_s\pmod4.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.2}
+\end{equation}
+
+Thus \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.1} is a right inverse. A compatible sequence satisfies
+\(a_s=2a_{s+1}=4a_{s+2}=0\) for every \(s\), so the kernel is zero. This also makes \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.1} a left inverse: for any original sequence \(a\), substitution of \(b_s=a_s-2a_{s+1}\) gives
+\(b_s+2b_{s+1}=a_s-4a_{s+2}=a_s\).
+Every individual transition has image \(\{0,2\}\), but the full difference map is an isomorphism. Both \(\lim A_s\) and \(\lim^1 A_s\) are zero.
+
+\subsubsection{Exercise 7.2 A genuine second differential with its original coefficient}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:exercise-7.2}
+
+\label{courseIII:adams-tower:7.2}
+
+Work over \(\mathbb F_3\). Let the chain complex \(K\) have two original basis vectors, \(e\) in degree \(n\) and \(f\) in degree \(n-1\), with differential
+
+\begin{equation}
+\partial e=2f,\qquad \partial f=0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.3}
+\end{equation}
+
+Give it the decreasing filtration
+
+\begin{equation}
+F^0K=K,\qquad F^1K=F^2K=\mathbb F_3\{f\},
+ \qquad F^3K=0,
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.4}
+\end{equation}
+
+and put \(C_s=K/F^{s+1}K\) for \(s\geq0\). Compute the pages and compare with the inverse limit, using the coefficient two in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.3} throughout.
+
+\textbf{Solution.} Both \(C_0\) and \(C_1\) are the one-term complex \(\mathbb F_3\{e\}\) in degree \(n\), and their transition is the identity. Every \(C_s\) for \(s\geq2\) is the original two-term complex \(K\), with identity transitions for \(s\geq3\). The map \(C_2\to C_1\) sends \(e\) to \(e\) and \(f\) to zero. Its kernel is \(\mathbb F_3\{f\}\), not a renamed generator divided by two. The fibre complexes are
+
+\begin{equation}
+W_0=\mathbb F_3\{e\},\qquad W_1=0,
+ \qquad W_2=\mathbb F_3\{f\},\qquad W_s=0\ (s\geq3).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.5}
+\end{equation}
+
+The short exact sequences of chain complexes give exactly the long exact sequences used in Section 3. Fix the connecting homomorphism by lifting a quotient cycle, applying its differential and reading the result in the kernel complex. This specifies its sign.
+
+The first page has only \([e]\) at \((s,t)=(0,n)\) and \([f]\) at \((2,n+1)\). There is no possible first differential between these positions. The representative \(e\) lifts from \(C_0\) to the same \(e\) in \(C_1\), but its lift in \(C_2\) has the actual differential \(2f\). Hence \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.3} gives
+
+\begin{equation}
+d_2[e]=2[f],
+ \qquad (0,n)\longmapsto(2,n+1).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.6}
+\end{equation}
+
+The coefficient two is nonzero and invertible in \(\mathbb F_3\), so the third page is zero in both positions.
+
+The subgroup formulas verify the page indices directly. At filtration zero, \(Z_2^{0,n}=\mathbb F_3\{[e]\}\), whereas \(Z_3^{0,n}=0\) because \(H_nC_2=0\). At filtration two, all \(Z_r^{2,n-1}=\mathbb F_3\{[f]\}\), since \([f]\) maps to zero in \(H_{n-1}C_2\). But
+
+\begin{equation}
+B_2^{2,n-1}=0,\qquad
+ B_3^{2,n-1}=\partial_2 H_n(C_1)
+            =\mathbb F_3\{2[f]\}=\mathbb F_3\{[f]\}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:7.7}
+\end{equation}
+
+For the first equality the transition \(H_nC_1\to H_nC_0\) is the identity; for the second the target is \(C_{-1}=0\). Finally the tower is constant at the acyclic complex \(K\) from level two onward. Its inverse limit is \(K\), so its homology is zero, exactly as the page calculation proves. This example tests both the delayed differential and the lower endpoint in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:3.1}.
+
+\subsection{The finite cocycles and the full cochain spaces}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-original-cocycles}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-8}\label{courseIII:adams-tower:8}
+
+We construct the coefficient object needed by the original tower. Write \(k=\mathbb F_p\), and let \([q]=\{0,\ldots,q\}\) with its indicated order. Let \(U^n_q\) be the vector space of functions on the strictly increasing \((n+1)\)-tuples of vertices of \([q]\). Its elements are the original simplicial \(n\)-cochains of the ordered simplex. Define their value on a tuple with a repeated vertex to be zero. For every order-preserving map \(\theta:[r]\to[q]\), define the pullback by evaluating on the complete tuple \((\theta(i_0),\ldots,\theta(i_n))\), including this zero rule. Put
+
+\begin{equation}
+(\delta u)(i_0,\ldots,i_{n+1})
+   =\sum_{a=0}^{n+1}(-1)^a
+          u(i_0,\ldots,\widehat{i_a},\ldots,i_{n+1}),
+ \qquad K^n_q=\ker(\delta:U^n_q\to U^{n+1}_q).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.1}
+\end{equation}
+
+Both \(U^n\) and \(K^n\) are simplicial abelian groups: their faces omit a vertex and their degeneracies repeat a vertex. Pullbacks compose exactly. The zero rule is compatible with \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.1}: if a tuple has exactly one repeated neighbouring pair, the two terms omitting one member of that pair have opposite signs and all other terms have a repetition; if it has more repetitions all remaining contributions vanish in pairs or individually. Thus \(\delta\theta^*=\theta^*\delta\). In \(\delta^2\), each twice-omitted tuple has opposite signs in its two occurrences. This proves every asserted compatibility.
+
+Keep also the full ordered chain differential \(\partial\), with the same alternating signs. On a basis chain define the cone to vertex zero by
+
+\begin{equation}
+\kappa[i_0,\ldots,i_a]=
+ \begin{cases}[0,i_0,\ldots,i_a],&i_0>0,\\0,&i_0=0.
+ \end{cases}
+ \qquad
+ \partial\kappa+\kappa\partial=1-\iota_0\epsilon.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.2}
+\end{equation}
+
+Here \(\epsilon\) is augmentation in degree zero, zero in other degrees, and \(\iota_0(1)=[0]\). The face omitting the newly inserted zero gives the identity term; every other face cancels its counterpart in \(\kappa\partial\). For a vertex the remaining term is \(-[0]\), which is precisely the displayed augmentation term. This proves \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.2} in every degree.
+
+For \(u\in K^{n+1}_q\), define \(v=u\kappa\in U^n_q\). Equation \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.2}, evaluated in positive degree, gives
+
+\begin{equation}
+(\delta v)(c)=u(\kappa\partial c)
+  =u(c)-u(\partial\kappa c)=u(c).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.3}
+\end{equation}
+
+The last equality uses the actual cocycle equation, rather than dropping the second term without justification. We obtain a degreewise surjective map and an exact sequence of simplicial abelian groups
+
+\begin{equation}
+0\longrightarrow K^n\xrightarrow{j_n}U^n
+      \xrightarrow{\delta}K^{n+1}\longrightarrow0
+       \qquad(n\geq0).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4}
+\end{equation}
+
+The right inverse \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.3} uses the specified vertex zero and need not commute with all simplicial maps. We do not treat it as a simplicial splitting of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4}.
+
+For \(n\geq1\), a cocycle is determined by its values on the faces containing vertex zero. Indeed, for \(0<i_0<\cdots<i_n\leq q\), its full equation is
+
+\begin{equation}
+u(i_0,\ldots,i_n)
+   =\sum_{a=0}^{n}(-1)^a
+       u(0,i_0,\ldots,\widehat{i_a},\ldots,i_n).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.5}
+\end{equation}
+
+Conversely choose arbitrary values on those faces, and let \(v\in U^{n-1}_q\) have the selected value on \((i_1,\ldots,i_n)\) when all vertices are positive, and value zero when one is zero. Then \(\delta v\) has exactly the selected values and satisfies \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.5}. Thus
+
+\begin{equation}
+\dim_k U^n_q=\binom{q+1}{n+1},\qquad
+ \dim_k K^n_q=\binom qn\ (n\geq1),\qquad
+ K^0_q=k
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.6}
+\end{equation}
+
+with every pullback on \(K^0\) the identity. In particular every level is a finite set. The dimension calculation keeps all of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.1}; \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.5} describes its solutions, not a replacement differential.
+
+There is an explicit extra degeneracy of the full cochain space. Define
+
+\begin{equation}
+(e_q u)(i_0,\ldots,i_n)=
+ \begin{cases}
+ 0,&i_0=0,\\
+ u(i_0-1,\ldots,i_n-1),&i_0>0.
+ \end{cases}
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.7}
+\end{equation}
+
+It is a map \(U^n_q\to U^n_{q+1}\); it is not asserted to preserve cocycles. Direct evaluation on every tuple gives
+
+\begin{equation}
+d_0e_q=1,\quad d_i e_q=e_{q-1}d_{i-1}\ (i\geq1),\quad
+ s_i e_q=e_{q+1}s_{i-1}\ (i\geq1),\quad
+ s_0e_q=e_{q+1}e_q.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.8}
+\end{equation}
+
+In degree zero the missing map to the augmentation point has value zero. Consequently the realization \(E_n=|U^n|\) has the following actual contraction to its zero point:
+
+\begin{equation}
+\Gamma_n([u;(t_0,\ldots,t_q)],a)
+  =[e_qu;(a,(1-a)t_0,\ldots,(1-a)t_q)],
+       \qquad 0\leq a\leq1.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.9}
+\end{equation}
+
+The identities \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.8} make this formula agree on every face and degeneracy identification. At \(a=0\) it is the original point by \(d_0e=1\); at \(a=1\) it is the zero vertex. The zero point stays fixed throughout. All spaces and all cochains in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4} remain part of the construction.
+
+\subsection{Realization, the actual fibre bundles and the suspension maps}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-original-spectrum}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-9}\label{courseIII:adams-tower:9}
+
+We provide the topological comparison for \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4}. For a simplicial set \(V\), its realization is the quotient of the disjoint union of \(V_q\times\Delta^q\), by the face and degeneracy identifications. A degeneracy collapses the corresponding adjacent barycentric coordinates by adding them. Repeatedly removing a degeneracy terminates, since the dimension decreases. The resulting nondegenerate simplex is unique: apply face right inverses to two proposed degeneracy expressions and move faces past degeneracies by the simplicial identities. If either expression had a remaining degeneracy, the proposed nondegenerate simplex would be degenerate; otherwise each simplex is a face of the other and they are equal. The same argument with the ordered lists of repeated indices shows that the two collapse maps agree. Hence the interiors of the nondegenerate simplices are disjoint cells, with their indicated characteristic maps. Their boundaries lie in the previous skeleton, and the quotient topology is exactly the weak topology for these characteristic maps. This proves the CW description. For \(L_n=|K^n|\), \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.6} gives finitely many cells in each dimension; when \(n\geq1\) there is one vertex and no nondegenerate cell of dimension between zero and \(n-1\).
+
+Human-source context for this realization is Greg Friedman, \href{https://arxiv.org/abs/0809.4221v8}{arXiv:0809.4221v8}, original TeX 756--898. Its later discussion explicitly refers elsewhere for the general comparison between simplicial and topological homotopy. The following proof uses the actual abelian-group quotient bundles in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4}, and supplies their local sections and lifting maps here. It does not import that general comparison as an unwritten prerequisite.
+
+We use two concrete facts about this realization. First it preserves finite products, with the compactly generated product topology. To construct the inverse to the evident product map, represent two points by their barycentric coordinates, take the union of the two lists of cumulative partial sums in \([0,1]\), and use the lengths of the resulting common subdivision as the new barycentric coordinates. Repeat each simplex vertex across the subintervals into which its old interval was divided. These are exactly degeneracy maps, so the resulting pair is a simplex of the product and maps to the original two points. The construction is independent of a further common subdivision. On each region specifying the order of the partial sums it is affine in the coordinates; the formulas agree on its boundary. Thus it is continuous on each product of characteristic simplices, and therefore in the compactly generated topology. This proves both inverse maps, including points with zero barycentric coordinates. Addition and inverse in a simplicial abelian group consequently realize to continuous group operations.
+
+Second, let
+
+\begin{equation}
+0\longrightarrow A\longrightarrow V\xrightarrow{q}Q\longrightarrow0
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.1}
+\end{equation}
+
+be degreewise exact simplicial abelian groups. Then \(|q|\) is a principal \(|A|\)-bundle. We prove the local assertion needed here. Its kernel is exactly \(|A|\): if an interior representative \([v;t]\) maps to zero, its image simplex is a degeneracy of the zero vertex, and hence is the zero group element in its degree. Thus \(v\in A\). The inclusion is an embedding because it is the inclusion of a CW subcomplex. Surjectivity follows by lifting a simplex of \(Q\) in its own degree.
+
+Choose, for each nondegenerate simplex \(b\in Q_q\), any lift \(\ell_b\in V_q\). Over its entire characteristic simplex the pullback bundle has inverse trivializations
+
+\begin{equation}
+(a,t)\longmapsto(a+[\ell_b;t],t),\qquad
+ (v,t)\longmapsto(v-[\ell_b;t],t).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.2}
+\end{equation}
+
+The second difference lies in the actual embedded kernel just identified. On a face the change of trivialization is translation by the difference of the two chosen lifts at the same point. On intersections of faces these differences telescope, so the full cocycle identity holds, including degenerate faces. These trivializations give the topology of \(|V|\). In fact every characteristic simplex of \(|V|\) has image in one characteristic simplex of \(|Q|\), possibly through a degeneracy; subtracting the chosen lift factors that characteristic map continuously through \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.2}. The converse maps in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.2} are already continuous by the group operations. Thus the two descriptions have the same final topology.
+
+For completeness, these cell trivializations give open local trivializations, not merely set-theoretic fibres. Suppose a section is defined on an open part \(O\) of a skeleton. In an attached disk use radial coordinates \((u,r)\) near its boundary, with \(u\) on the boundary and \(r=1\) there. Where the attaching map \(f(u)\) lies in \(O\), extend the section into a collar by
+
+\begin{equation}
+s'(u,r)=[\ell_b;(u,r)]
+          +s(f(u))-[\ell_b;(u,1)].
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.3}
+\end{equation}
+
+The difference of the last two terms is in \(|A|\). At \(r=1\) the formula is the old section. Choose the collar width to be a positive continuous function on the open set \(f^{-1}(O)\), tending to zero at its boundary, and bounded above by \(1/2\). Such a function is, for example, the minimum of \(1/2\) and the distance to the complement, using a metric on the boundary sphere. Its collar union with \(O\) is open in the new skeleton. Extend across all attached cells in this fashion. New sections on cell interiors start from \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.2}. Induction over the skeleta produces an open cover of the whole base and continuous sections; continuity follows on each characteristic disk and hence from the weak topology. Translation by a section and subtraction of it now give open bundle charts. This proves the assertion about \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.1}.
+
+Such a bundle has the disk homotopy-lifting property used by the included \href{https://github.com/KokunoYumeto/open-math-courses/blob/98715557b25d715076184ec098089ebae34ea9f6/docs/courses/CG-S6/src/path-fibres-and-integral-homotopy-equivalences.md}{path-fibration proof}, Section 1. Here is the needed construction. For a map from a compact disk times an interval, pull back the open bundle charts and choose a finite triangulation of the disk and a subdivision of the interval so small that each closed simplex prism lies in one chart. Within each time slab process the simplices in increasing dimension. The fibre coordinate is already specified on the bottom and on all sides; extend it by composing with a retraction of the prism onto that bottom-and-sides union. This is the disk-cylinder retraction proved in the cited (1.13), with the time coordinate reversed when required. Multiplying back by the chart section gives the lift. The extensions agree on common faces, so they join continuously. Process successive slabs. The same construction fixes prescribed lifts on a boundary subcomplex. This proves the required relative lifting property and hence the exact homotopy sequence by the cited disk proof.
+
+Apply this result to \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.4}. We have an actual fibre bundle
+
+\begin{equation}
+L_n\xrightarrow{|j_n|}E_n\xrightarrow{p_n=|\delta|}L_{n+1},
+ \qquad E_n\text{ contractible by }\Gamma_n.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.4}
+\end{equation}
+
+Since \(L_0=k\) is discrete, its exact homotopy sequence proves inductively
+
+\begin{equation}
+\pi_j(L_n,0)=
+ \begin{cases}k,&j=n,\\0,&j\ne n,
+ \end{cases}
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.5}
+\end{equation}
+
+where for \(n=0\) the statement about \(\pi_0\) means its discrete group of components. Each \(L_n\) for \(n\geq1\) is connected: it has just its zero vertex. For \(n=0\), the connecting map sends a lifted based loop to its endpoint in the discrete fibre, and is a group isomorphism \(\pi_1(L_1)\to k\). This includes the bottom endpoint of the induction. All higher steps use the actual group homomorphisms of the same fibre sequence.
+
+The original contraction fixes the suspension maps and their signs. Put
+
+\begin{equation}
+\lambda_n(z)(t)=p_n\Gamma_n(j_nz,1-t),\qquad
+ \sigma_n:S^1\wedge L_n\longrightarrow L_{n+1},
+ \quad \sigma_n([t,z])=\lambda_n(z)(t).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.6}
+\end{equation}
+
+Both endpoints map to zero, and the zero point of \(L_n\) gives the constant loop. The displayed loop lifts to the path \(\Gamma_n(j_nz,1-t)\), which starts at zero and ends at \(j_nz\). Therefore the connecting map sends \((\lambda_n)_*\) to the identity, with sign plus. Equation \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.5} now proves that \(\lambda_n:L_n\to\Omega L_{n+1}\) is a weak equivalence. The spaces \(L_n\) and the actual maps \(\sigma_n\) define the spectrum \(H\). They give
+
+\begin{equation}
+\pi_a H=\underset{n}{\operatorname{colim}}\,
+          \pi_{a+n}L_n
+  =\begin{cases}k,&a=0,\\0,&a\ne0.\end{cases}
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.7}
+\end{equation}
+
+Start with the based map \(S^0\to L_0\) taking its nonbase point to \(1\in k\), and successively suspend and apply \(\sigma_n\). This constructs the unit map \(\eta:\mathbb S\to H\) used in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.1}; its degree-zero map is the original quotient \(\mathbb Z\to\mathbb F_p\).
+
+This is the ordinary-cohomology spectrum specified in Section 1. To check the assertion directly, use the CW models and cellular extension procedure proved in the included \href{https://github.com/KokunoYumeto/open-math-courses/blob/98715557b25d715076184ec098089ebae34ea9f6/docs/courses/CG-S6/src/cw-models-and-the-first-hurewicz-map.md}{CW companion}. For maps into \(L_n\), first make the \((n-1)\)-skeleton constant, using \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.5}. The choices on the oriented \(n\)-cells are their actual elements of \(k\). Extension over an \((n+1)\)-cell is equivalent to the vanishing of the full cellular coboundary: its attaching sphere has the signed incidence degrees on those \(n\)-cells, and composition gives exactly their signed sum in \(\pi_nL_n=k\). All later extension groups vanish by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.5}. Applying the same procedure to the relative cylinder says that two choices are homotopic precisely when their difference is a cellular coboundary in degree \(n\). This also constructs the homotopy, cell by cell; the weak topology makes the construction continuous for infinite CW complexes. Thus the actual assignment is
+
+\begin{equation}
+[X,L_n]_*\longrightarrow\widetilde H^n(X;k),
+ \qquad [f]\longmapsto
+ [\text{the signed cell values of }f],
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.8}
+\end{equation}
+
+and the extension construction is its inverse. The argument for \(n=1\) uses the abelian group \(\pi_1L_1=k\), so conjugations in an attaching word have no effect; for \(n=0\) it is the equality between maps to the discrete group and locally constant functions. The sign-plus connecting map in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.6} gives the usual suspension of these cell values. Hence \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.8} identifies the spectrum with ordinary reduced cohomology, not only with a list of coefficient groups.
+
+\subsection{Finiteness of the original stable homology of \(H\)}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-stable-homology}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-10}\label{courseIII:adams-tower:10}
+
+Every \(H_j(L_n;k)\) is finite-dimensional: there are finitely many cells in each dimension by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.6}, and the cellular complex therefore has finite-dimensional terms. We also need that its stable homology is finite-dimensional; a colimit of finite-dimensional spaces alone would not prove that. We prove eventual stabilization of the actual maps \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.6}.
+
+For \(n\geq1\), \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.5} and the included first-Hurewicz proof give
+
+\begin{equation}
+\widetilde H_v(L_n;k)=0\quad(v<n),\qquad
+ \widetilde H_u(L_{n+1};k)=0\quad(u<n+1).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.1}
+\end{equation}
+
+Apply the full fibration filtration of the path-fibre companion, \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-3}, to \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.4}. The base is simply connected, the fibre is connected, and the total space is contractible. Its terms and differential are
+
+\begin{equation}
+E^2_{u,v}=H_u(L_{n+1};H_v(L_n;k)),
+ \qquad d_r:E^r_{u,v}\to E^r_{u-r,v+r-1}.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.2}
+\end{equation}
+
+The coefficient system is constant. Since \(k\) is a field, a basis of \(H_v(L_n;k)\) identifies the coefficient complex with a direct sum of copies of the base complex. Thus its homology is the same direct sum. In particular a mixed term with \(u,v>0\) can be nonzero only when \(u\geq n+1\) and \(v\geq n\), so its total degree is at least \(2n+1\).
+
+Fix \(n\leq q<2n\). The only possible differential into \((0,q)\) is from \((q+1,0)\): any mixed source would have total degree \(q+1\geq2n+1\), contrary to the strict bound. The only possible differential from \((q+1,0)\) is to \((0,q)\), since a mixed target would have total degree \(q\geq2n+1\). No differential leaves column zero or enters row zero. The total-space groups in these positive degrees are zero. The complete convergence proof in that companion consequently gives an isomorphism
+
+\begin{equation}
+d_{q+1}:H_{q+1}(L_{n+1};k)
+          \xrightarrow{\cong}H_q(L_n;k),
+             \qquad n\leq q<2n.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.3}
+\end{equation}
+
+We identify its inverse with the actual suspension in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.6}, including its orientation. Let \(z\) be an original reduced singular \(q\)-cycle in \(L_n\). Apply the signed prism from the \href{https://github.com/KokunoYumeto/open-math-courses/blob/98715557b25d715076184ec098089ebae34ea9f6/docs/courses/CG-S6/src/thom-euler-for-lesson11.md}{Thom/Euler companion}, \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-1}, to the homotopy \(\Gamma_n(j_n(-),1-t)\). Its sum has the terms
+
+\begin{equation}
+Pz=\sum_{i=0}^{q}(-1)^i
+  \Gamma_{n*}\bigl[
+    (v_0,0),\ldots,(v_i,0),(v_i,1),\ldots,(v_q,1)
+   \bigr](z),
+ \qquad
+ \partial Pz=j_{n*}z-c_*z-P\partial z.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.4}
+\end{equation}
+
+In the first formula \(\Gamma_{n*}\) denotes composition with the reversed contraction just specified and the original simplex of \(z\); \(c\) is the constant zero map. All three terms in the boundary formula are retained. Since \(\partial z=0\), the side term is zero; the constant term is zero in the reduced complex. The projected chain \(p_{n*}Pz\) is the suspension cycle from \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.6}. The prism order and signs in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.4} define the orientation on \(S^1\wedge L_n\), with the interval as the first suspension factor.
+
+Here is why the transgression of this cycle is exactly \([z]\). Use the relative filtered complex for \((E_n,L_n)\) over the same one-vertex CW base. It is the filtration of the cited proof with its column-zero fibre divided out. In total degree \(q+1<2n+1\), all mixed terms vanish by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.1}, and its sole possible quotient is the bottom-row group \(H_{q+1}(L_{n+1};k)\). The original projection therefore gives an isomorphism from \(H_{q+1}(E_n,L_n;k)\) to that group. The pair boundary is an isomorphism to \(H_q(L_n;k)\), because \(E_n\) is contractible. Its value on the actual relative class \([Pz]\) is \([z]\) by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.4}. The filtered-chain definition of \(d_{q+1}\) is precisely this projected relative lift followed by its boundary. Hence
+
+\begin{equation}
+d_{q+1}(\sigma_n)_*(\operatorname{susp}[z])=[z].
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.5}
+\end{equation}
+
+This proves the exact comparison and the sign, rather than assigning an unspecified transgression isomorphism to the structure map.
+
+For a fixed integer \(a\geq0\), take \(n>a\) and set \(q=n+a\). Then \(n\leq q<2n\), so every subsequent structure map is an isomorphism on the groups in
+
+\begin{equation}
+H_a(H;k)=\underset{n}{\operatorname{colim}}
+          \widetilde H_{n+a}(L_n;k).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.6}
+\end{equation}
+
+This is a colimit of an eventually constant sequence of finite-dimensional vector spaces, hence is finite-dimensional. For \(a<0\), \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.1} makes the colimit zero. In degree zero the cell generator and the sign-plus suspension identify it with \(k\). We have proved all these assertions for the actual spectrum and maps constructed above; no formula for its cooperation algebra has been assumed.
+
+There is a useful extension of the same argument. Replace the coefficient group inside every original simplex cochain by any finite abelian group \(A\), retaining the integer signs in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.1}--\eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:8.9}. The cocycle values on the faces containing zero still give an exact bijection with \(A^{\binom qn}\), and all quotient-bundle and contraction proofs in \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-9} apply. They construct \(HA\) with its original group \(A\) in degree zero. For any finite field \(k\), the fibration argument \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.1}--\eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.5} is unchanged, with homology coefficients \(k\), and the same finite cell count proves
+
+\begin{equation}
+\dim_k H_a(HA;k)<\infty\quad\text{for every integer }a,
+       \qquad H_a(HA;k)=0\quad(a<0).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.7}
+\end{equation}
+
+This extension uses only the finiteness of the original abelian coefficient group. It makes no assumption that \(A\) is a field or that its order is a power of the characteristic of \(k\).
+
+Illustration description: The original cocycle bundle and its exact transgression range. For the displayed example n equals three; the arrows are d4, d5 and d6, and every mixed position has total degree at least seven.
+
+The shaded positions are allowed support, without asserting that every group there is nonzero. The general range and its actual suspension inverse are \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.3}--\eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.5}. The reproducible source is \texttt{draw\_finite\_cocycle\_tower.py}; both the arrows and the original endpoint sign have been inspected after rendering.
+
+\subsection{Finiteness and convergence of the actual sphere tower}
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:adams-actual-convergence}
+
+\label{courseIII:the-adams-tower-and-exact-inverse-limits:section-11}\label{courseIII:adams-tower:11}
+
+We make explicit two ordinary-homology comparisons used at this step. For a connective CW spectrum \(X\), the filtration by its cells gives
+
+\begin{equation}
+\pi_a(H\wedge X)=H_a(X;k).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.1}
+\end{equation}
+
+Indeed the relative term for an oriented \(j\)-cell is \(\pi_a(\Sigma^j H)\), which by \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.7} is \(k\) when \(a=j\) and zero otherwise. The first differential is the original signed attaching degree reduced modulo \(p\): smash the attaching map with the unit and use its degree-zero quotient \(\mathbb Z\to k\). Thus the sole row is the complete cellular chain complex over \(k\), with its original incidence coefficients. The filtration has just this one row, so the all-page argument of the path-fibre companion, \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-2}, identifies its only surviving quotient in degree \(a\) with the group in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.1}. On an infinite complex, each representative sphere and each nullhomotopy has compact image in a finite cell stage; filtered unions therefore commute with these groups. The identification is natural on cellular maps, and cellular approximation extends it to all maps.
+
+The same cellular calculation identifies the right side of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.1} with the level-space colimit used in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.6}. One can calculate the latter by the shifted reduced singular complexes and their suspension chain maps \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:10.4}. The pair exact sequence, the prism identity and finite support show that this construction preserves cofibre sequences and increasing cell unions. On a sphere cell it gives \(k\) in its cell degree with the same positive generator. Its cell filtration consequently has exactly the same original cellular differential as \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.1}, and a single surviving quotient in each total degree. This proves the comparison, including the actual unit and all attaching maps. A connective spectrum can be given a connective CW replacement by adding spheres representing the missing homotopy classes, then cells killing the kernels, successively in each nonnegative degree. The relative disk extension argument is the stable version of the included CW construction; compactness of each representing sphere verifies the increasing-union step. Thus \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.1} applies to all the connective spectra in the tower, independently of the number of cells used in a replacement.
+
+The other comparison is the original field cross product
+
+\begin{equation}
+\bigoplus_{i+j=a} H_i(X;k)\otimes_k H_j(Y;k)
+   \xrightarrow{\cong}H_a(X\wedge Y;k).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2}
+\end{equation}
+
+Its chain maps, including all shuffle terms and signs, are the product maps and homotopies proved in the Thom/Euler companion, \cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-4}, passed to reduced relative complexes and then to the level-space colimits. Those homotopies preserve the basepoint subspaces, so they descend to the smash product. The tensor differential remains
+\(\partial(c_i\otimes d_j)=\partial c_i\otimes d_j+(-1)^i c_i\otimes\partial d_j\).
+Here is the shift convention in this comparison. On \(\Sigma^{-m}C\) the differential is \((-1)^m\partial_C\). For original chains \(c,d\), the tensor comparison of two shifted complexes is
+
+\begin{equation}
+(s^{-m}c)\otimes(s^{-n}d)
+  \longmapsto(-1)^{n|c|}\,
+     s^{-(m+n)}(c\times d).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2a}
+\end{equation}
+
+The exponent records moving the second desuspension past the original chain \(c\). On the first boundary term the exponent changes by \(n\) when \(|c|\) decreases by one; on the second term the original tensor sign \((-1)^{|c|}\) combines with the shifts to give \((-1)^{|c|-m}\) in the source. These are exactly the two chain-map identities. Use this rule for each suspension or desuspension in the level-space system, and use the same ordered suspension coordinates on the smash product. The shuffle maps commute with those coordinate maps; moving an interval coordinate through a chain is precisely the sign already displayed in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2a}. Thus the level comparisons induce the stated stable cross product with their suspension signs retained.
+The purely algebraic last step can be proved without discarding an acyclic contribution. In a complex \(C\) over \(k\), choose in each degree a complement \(T_i\) to the boundaries inside the cycles, and a complement \(V_i\) to the cycles inside \(C_i\). Its original differential restricts to an isomorphism \(V_i\to\operatorname{im}\partial_i\). The identity decomposes as the projection onto \(T\) plus the two-term pieces \(V_i\xrightarrow{\partial_i}\operatorname{im}\partial_i\). Retain their actual inverse maps to define a homotopy \(h\); it satisfies
+\(\partial h+h\partial=1-\iota\rho\).
+Tensor two such identities using
+\(h\otimes1+\iota\rho\otimes h'\), with the sign \((-1)^i\) in the second action on a first factor of degree \(i\). The two mixed terms cancel with opposite signs and give
+
+\begin{equation}
+\partial\bigl(h\otimes1+\iota\rho\otimes h'\bigr)
+ +\bigl(h\otimes1+\iota\rho\otimes h'\bigr)\partial
+   =1-(\iota\rho)\otimes(\iota'\rho').
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.3}
+\end{equation}
+
+Hence tensor homology is exactly the direct sum on the left of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2}. Although the complements used to prove invertibility are choices, the map \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2} itself is the original cross product and is natural. No original differential has been replaced without its maps and homotopy.
+
+Return now to \(B\xrightarrow\alpha\mathbb S\xrightarrow\eta H\) in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.1}. Its homotopy exact sequence and the surjection \(\pi_0\eta:\mathbb Z\to k\) show that \(B\) is connective. Applying the ordinary homology theory, every term in
+
+\begin{equation}
+H_{a+1}(\mathbb S;k)\xrightarrow{\eta_*}H_{a+1}(H;k)
+ \longrightarrow H_a(B;k)
+ \xrightarrow{\alpha_*}H_a(\mathbb S;k)
+ \xrightarrow{\eta_*}H_a(H;k)
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.4}
+\end{equation}
+
+except possibly the middle term has already been proved finite-dimensional. Exactness places that term in the full short exact sequence
+
+\begin{equation}
+0\longrightarrow
+ \operatorname{coker}\bigl(H_{a+1}(\mathbb S;k)\to H_{a+1}(H;k)\bigr)
+ \longrightarrow H_a(B;k)
+ \longrightarrow
+ \ker\bigl(H_a(\mathbb S;k)\to H_a(H;k)\bigr)
+ \longrightarrow0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.5}
+\end{equation}
+
+It is therefore finite-dimensional in every degree and zero in negative degrees. This proof retains the endpoint terms, including degree zero; no unstated splitting of \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.4} is used.
+
+Iterating the actual cross product \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.2} in the original factor order of \(F_s=B^{\wedge s}\) gives
+
+\begin{equation}
+\pi_aW_s=H_a(F_s;k)
+   \cong
+ \bigoplus_{a_1+\cdots+a_s=a}
+       H_{a_1}(B;k)\otimes_k\cdots\otimes_k H_{a_s}(B;k).
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.6}
+\end{equation}
+
+For \(s=0\) the right side means \(k\) at \(a=0\) and zero elsewhere. For \(s\geq1\), only nonnegative \(a_i\) contribute. There are finitely many such ordered tuples for fixed \(s,a\), and every tensor factor is finite-dimensional. Thus every \(\pi_aW_s\) is a finite group. Finally \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:1.5} gives
+
+\begin{equation}
+0\longrightarrow
+ \operatorname{coker}\bigl(\pi_{a+1}C_{s-1}\to\pi_aW_s\bigr)
+ \longrightarrow\pi_aC_s
+ \longrightarrow
+ \ker\bigl(\pi_aC_{s-1}\to\pi_{a-1}W_s\bigr)
+ \longrightarrow0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.7}
+\end{equation}
+
+Start with \(C_{-1}=0\). Induction on \(s\) proves that every \(\pi_aC_s\) is finite, for every integer \(a\) and every \(s\geq0\). This is the finiteness assertion for the actual original tower, rather than a new assumption about it.
+
+The same exact sequence proves the sharper bound
+
+\begin{equation}
+p^{s+1}\pi_aC_s=0.
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.7a}
+\end{equation}
+
+In fact the left group in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.7} is a quotient of a \(k\)-vector space, so multiplication by \(p\) kills it. By induction multiplication by \(p^s\) kills the right group, which is a subgroup of \(\pi_aC_{s-1}\). Multiplying an original middle-group element first by \(p^s\) places it in the left group, and multiplying once more by \(p\) makes it zero. At \(s=0\) this is \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:9.7}. Thus every stage group is a finite \(p\)-group with the stated exponent bound; no splitting of its extension is asserted.
+
+\cref{courseIII:the-adams-tower-and-exact-inverse-limits:section-4} now applies without an unproved vanishing-line input. Its actual conclusions for this tower are
+
+\begin{equation}
+\pi_a\widehat{\mathbb S}_H
+  \xrightarrow{\cong}\lim_s\pi_aC_s,\qquad
+ F^s=\ker\bigl(\pi_a\widehat{\mathbb S}_H\to\pi_aC_{s-1}\bigr),
+ \qquad
+ E_\infty^{s,a+s}\xrightarrow{\cong}F^s/F^{s+1},
+ \label{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.8}
+\end{equation}
+
+where \(F^0=\pi_a\widehat{\mathbb S}_H\), the intersection is zero and the filtration is complete. The maps are the ones already constructed in \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.2}--\eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:4.5}. The actual mod-two differential-complex comparison is now proved in the cooperation companion linked below; the required comparison through degree eight is proved in the \cref{courseIII:the-actual-mod-two-cooperation-comparison-through-degree-eight:actual-eight-bijectivity}. The \cref{courseIII:the-original-adams-tower-and-arithmetic-completion:arithmetic-adams-equivalence}, (5.7)--(5.8), now constructs the actual unit-preserving equivalence with the original Moore-tower limit. Its (6.8)--(7.9) retain both derived homotopy-group terms and the original unit sign. Its (7.10)--(7.13) strengthen \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.7a} to the exact sharp exponent and full degree-zero extension. Equation \eqref{courseIII:the-adams-tower-and-exact-inverse-limits:eq:11.8} is transported through that proved map.
+
+The included tower and cobar checker (\path{code/maps_audit/course/stable/verify_adams_tower.py}) and finite cocycle checker (\path{code/maps_audit/course/stable/verify_finite_cocycle_model.py}) supplement the full written proofs. They cover the original signed cochain maps, finite matrix ranks, suspension indices, both exercises and selected cobar groups. The arguments for every degree and every tower stage are in the text. Review is by the author; no independent certification or novelty is claimed.
+
+The \cref{courseIII:the-actual-mod-two-adams-resolution-and-cooperation-maps:cooperation-chain-comparison} now constructs both cross-product coordinate maps, the actual cofree Adams resolution and both chain maps and inverse homotopies comparing it with the actual cooperation cobar complex. Its \cref{courseIII:the-actual-mod-two-adams-resolution-and-cooperation-maps:cooperation-original-diagonal} identifies the generator tied to the original integer two, proves every degree-two reduced coproduct zero, and shows that the degree-six calculation at every word length uses cooperation degrees through eight. The \cref{courseIII:the-actual-mod-two-cooperation-comparison-through-degree-eight:actual-eight-receiving-cobar} supplies the required original algebra comparison and completed degree-six group. The \cref{courseIII:the-original-odd-prime-cooperations-and-degree-six-adams-calculation:odd-actual-adams} now proves the full signed bar and original suspension calculation, the actual cooperation degrees needed by stem six, and the signed comparison with the original Adams tower. It proves \(\pi_6(\mathbb S^{\wedge}_p)=0\) for every odd prime. The \cref{courseIII:the-original-integral-stable-group-and-its-completion-maps:integral-degree-six-answer} now proves finite generation of the original sphere groups, the exact suspension range and the full unit comparison with all prime completions. It proves \(\pi_6(\mathbb S)=\mathbb Z/2\mathbb Z\) and that the original 2-completion unit is an isomorphism in degree six. The \cref{courseIII:the-original-six-dimensional-framing-invariant:framed-six-original-nullbordism} constructs the full quadratic invariant, proves framed bordism invariance and gives value zero for the original framed homotopy six-sphere, with an actual framed nullbordism. The \cref{courseIII:sphere-twists-and-the-original-smooth-six-sphere-comparison:twist-original-smooth-map} now constructs the new interior gluing with its full frame defect, cancels every actual handle and gives the orientation-preserving diffeomorphism to the original six-sphere, homotopic to its original degree-one map.

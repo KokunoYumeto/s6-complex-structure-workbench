@@ -1,0 +1,36 @@
+"""Persist the original passages actually opened in the receiving reading.
+
+This records a human-readable source check; running the script is not a
+mathematical verification of the external theorem.
+"""
+from pathlib import Path
+import json,hashlib
+ROOT=Path(__file__).resolve().parents[3];D=ROOT/'deliverables'
+reader='GPT-6 Astra (OpenAI, ChatGPT Pro mode, effort Pro)'
+specs=[
+ (['Cerf1970'],'sources/external/maps_audit/cerf1970.pdf',
+  'Introduction, Theorem 0 and Corollaries 1–2, printed p.8 (PDF page5); definitions on p.7.',
+  'The original scan was read and p.8 rendered and visually inspected. V is closed smooth, simply connected, and has dimension at least five. S^6 satisfies all hypotheses. Corollary2 with n=7 compares sphere gluing modulo disc extension with isotopy. The receiving use concerns the high-dimensional pseudo-isotopy theorem, not Gamma_4=0. The FAMILY citation to the separate 1971 exposition is replaced by this actually opened original.'),
+ (['Poenaru1971'],'sources/external/maps_audit/poenaru1971.pdf',
+  'Theorem1, Corollary1 and the sphere-gluing explanation, printed p.156 (PDF page3).',
+  'Original text and page image opened. For an oriented closed simply connected n-manifold, n>=5, pseudo-isotopy implies isotopy; for S^n the component group is Theta_(n+1). The preceding paragraph identifies pseudo-isotopy with extension over a disc and equivalence of two-disc gluings. The receiving sphere is dimension six.'),
+ (['DuranRigas2007'],'sources/external/maps_audit/duran_rigas.pdf',
+  'Theorem2.1 with full proof, p.2; explicit Blakers–Massey map and equivariance, §3.1 pp.3–4; §3.2 and diagonal SO(3) action, p.5.',
+  'The original TeX-extracted text was read and pp.2,5 visually inspected. A smooth conjugation-equivariant map alpha gives the diffeomorphism J_alpha with inverse J_(alpha^-1) and multiplicative power law. Section3.2 identifies the SO(3)-equivariant generator and all28 sphere mapping classes. Restricting to the effective conjugation circle gives the receiving fixed S^2 and two weight-one normal planes. The explicit diagonal action B(x)x is used; the printed two-component display repeats p in its second component, and that display is not imported as a formula.'),
+ (['EellsKuiper1962','EK62'],'sources/external/maps_audit/eells_kuiper.pdf',
+  '§3, Conditions(mu), invariance proof and connected-sum/orientation properties, pp.95–99; §6, equations(11)–(13), p.101; h=2 and classification theorem, pp.102–103.',
+  'Original operative text read in full; printed pp.96,99,101,103 rendered and visually inspected. The relative rational lifts and spin coboundary conditions hold for homotopy7-spheres. Equation(11) is (p1^2-4 sigma)/(2^7*7). For the S^3-bundle h=2,j=-1, e=1, p1=6, sigma=1, hence mu=1/28. The connected-sum formula is on p.99 and classification on p.103. FAMILY Section7 is a wrong locator; corrected to Section6. The two bibliography keys denote the same DOI10.1007/BF02412768, not different editions.'),
+ (['E26'],'sources/papers/arXiv_2609.38442_Engel_src/S6.tex',
+  'Remark8.3, original source lines1684–1723; surrounding Remark8.1 and period discussion lines1660–1738.',
+  'The literal rank-three translational quotient and the claimed continuous extension to a circle-valued cusp quotient were opened in the supplied original. PUSH C3.12 tests precisely this equivalence relation, retaining every nearby translate of ker(gamma). Its dense-limit saturation argument contradicts that literal extension; it does not refute the separate smooth scalar-circle quotient or a construction with another nearby equivalence relation. This exact source key is identified with the same arXiv2609.38442 original already checked under Engel2026.'),
+ (['DGKXv1push'],'sources/papers/arXiv_2610.00250v1_Du_Guo_Kusakabe_Xie_src/v5oka_maps_modifications_deformations.tex',
+  'p2:lem:core-shift-descent and finite/cusp formulas, lines10445–10680; p2:prop:global-even-shift with full proof, lines10682–10728; raw-shift-defect, quadratic-strictification and strict-even-shift-action with proofs, lines11860–11949.',
+  'The exact v1 original was opened. Even k makes both finite defect vectors integral; invariant root-unit logarithms remove the finite logarithms, and the cusp unit extends across q=0 and commutes with the fixed lattice quotient. The roots, finite uniformizers, cusp splitting and fan marking are fixed. The raw composition defect is -kl/12 times the vertical period and the -k^2/24 correction gives a strict action. These statements support the receiving coherent closing cocycle; they alone give no mapping-class torsion bound. No claim that v2 contains these statements is made.')]
+rows=[]
+for keys,path,locator,verification in specs:
+ rows.append(dict(keys=keys,source=path,local_opened_source=path,
+  source_sha256=hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),
+  locator=locator,verification=verification,reader=reader,date='2026-11-17',
+  status='verified in the specified scope'))
+(D/'work/root/classical_references_verified.json').write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
+print('Recorded',len(rows),'actually opened source groups; no unopened edition alias.')

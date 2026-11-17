@@ -1,0 +1,73 @@
+\begin{statement}[C.6.R4; Known with derivation: three exact leading factors]
+For $i=3,5,7$, namely $j=287496,-3375,-884736$, one has
+\[
+ \operatorname{Sha}(E_i/\Q)=0,\qquad
+ \frac{L'(E_i,1)}{\Omega_i}=4\widehat h_O(P_i).
+\]
+Thus the factors $q_3=q_5=q_7=4$ are exact, not numerical
+rational reconstructions. For the smallest of these examples,
+$E:y^2+y=x^3-38x+90$ and $P=(0,9)$, this gives the exact
+reduction
+\[
+ N(P)=\exp\left(-\frac{L'(E,1)}{4\Omega_E}\right).
+\]
+\end{statement}
+\begin{proof}
+We use \citet[Theorem 1.2 and Table 9]{miller2011}. In the
+notation of its Definition 1.1, the theorem proves
+$\mathrm{BSD}(E/\Q,p)$ for every prime $p$ when the curve has
+analytic rank at most one, conductor less than $5000$, and
+its isogeny class is outside the eleven exceptions in Table 9.
+The exception conductors are
+\[
+546,570,858,870,1050,1230,1938,1950,2370,2550,3270.
+\]
+The three conductors here are $3136,3136,361$, and their
+analytic ranks are one by C.6.R2. Hence every hypothesis is
+verified. The theorem is stated for all curves in the isogeny
+class, using isogeny invariance, so no optimal-curve assumption
+is being silently imposed on our minimal equations.
+
+In all three rows
+$2\prod_pc_p/\#E(\Q)_{\rm tors}^2=4$, and primitivity is
+proved in C.6.R1. Therefore the quotient
+$L'(E_i,1)/(4\Omega_i\widehat h_O(P_i))$ is the positive
+integer $\#\operatorname{Sha}(E_i/\Q)$. To isolate this integer
+without relying on an unbounded decimal approximation to a
+canonical height, we give an elementary coarse height certificate.
+
+After completing the square, write the duplication map on the
+$x$-line as $[F(X,Z):G(X,Z)]$, with relatively prime integral
+quartics. The program
+\path{code/C_height_coarse_certificate.py} supplies integer
+homogeneous cubics $A_0,B_0,A_1,B_1$ and $D\ne0$ with
+\[
+ A_0F+B_0G=DZ^7,\qquad A_1F+B_1G=DX^7.
+\]
+Let $C$ be the larger of the coefficient one-norms of $F,G$
+and of the two pairs $(A_j,B_j)$. For coprime integers $a,b$,
+the common divisor of $F(a,b),G(a,b)$ divides $D$, by these
+identities. Taking the identity corresponding to the larger
+of $|a|,|b|$ proves, together with the elementary upper bound,
+\[
+ |h(x(2Q))-4h(x(Q))|\leq\log C.
+\]
+Telescoping consequently gives
+\[
+ \left|\widehat h_O(P)-\frac{h(x(2^6P))}{2\cdot4^6}\right|
+ \leq\frac{\log C}{6\cdot4^6}.
+\]
+The exact constants in row order $3,5,7$ are
+\[
+ C=26610617537591808,\quad188716953600,\quad285931133.
+\]
+Six rational doublings, the displayed identities, and directed
+Arb logarithms give the quotient enclosures
+$1\pm0.003$, $1\pm0.003$, and $1\pm0.009$, respectively,
+after including the central-derivative error bound from C.6.R2.
+Each interval contains only the integer one. All quartics,
+Bezout coefficients, rational iterates and enclosures are
+retained in the program's output and its JSON certificate.
+Finally C.6.3 gives $A=1$ in row seven, proving the exponential
+formula. Its algebraicity remains the separate question C.7(c).
+\end{proof}

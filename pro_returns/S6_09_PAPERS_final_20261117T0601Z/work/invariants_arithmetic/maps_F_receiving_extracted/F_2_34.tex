@@ -1,0 +1,143 @@
+\paragraph{Theorem F.2.34 (Proved: the marked Kuhn cusp pair).}
+The fixed primitive rank-three Kuhn cusp admits an explicit
+finite integer chain complex for its cap $W$, its boundary
+$Y$, and the inclusion $Y\to W$.  It is obtained from a
+category with 26 objects, 170 nonidentity morphisms, and
+respectively $26,170,288,144$ strict flags of lengths
+$0,1,2,3$.  The construction records the full integral
+collapse map.  In particular it gives
+\[
+\begin{array}{c|rrrrrrrrr}
+j&0&1&2&3&4&5&6&7&8\\\hline
+\operatorname{rank}H_j(W)&1&3&9&9&10&3&1&0&0\\
+\operatorname{rank}H_j(Y)&1&4&12&18&18&12&4&1&0\\
+\operatorname{rank}H_j(W,Y)&0&0&1&3&10&9&9&3&1
+\end{array}                                                \tag{F.CK1}
+\]
+The only torsion in these three rows is
+$\operatorname{Tor}H_3(Y)=\mathbb Z/2$.
+
+\emph{Proof and exact algorithm.}
+Let $\mathcal K$ be the periodic Kuhn triangulation of
+$\mathbb R^3$.  Normalize every simplex by translating its
+lexicographically first vertex to zero.  The objects are its
+simplex orbits; a morphism $\tau\to\sigma$ is every strict
+translated face inclusion $\tau+w\subset\sigma$.
+Keep distinct translated inclusions as distinct morphisms.
+Composition adds the translation vectors.  Enumerating all
+nonempty faces of the six chains in the unit cube gives
+$(1,7,12,6)$ simplex orbits in dimensions zero through three,
+and the displayed morphism and flag counts.  The category
+nerve is the barycentric cell model of the dual decomposition
+of $\mathbb R^3/\mathbb Z^3$; the direction of the face order
+is reversed when interpreted as dual cells.
+
+For an object $\tau$ let $L_\tau\subset\mathbb Z^3$ be the
+primitive span of its vertex differences.  Its primitivity
+follows from unimodularity of every Kuhn simplex.  Choose by
+Smith reduction a quotient map
+$Q_\tau:\mathbb Z^3\to\mathbb Z^{3-\dim\tau}$ with kernel
+$L_\tau$, and an integral section $R_\tau$.
+Define two strict diagrams of tori on this category:
+\[
+\begin{array}{c|c|c}
+ &\text{object at }\tau&\text{map for }\tau+w\subset\sigma\\\hline
+\mathcal W&T^{3-\dim\tau}&Q_\sigma R_\tau\\
+\mathcal Y&T^4&S_w=\begin{pmatrix}1&0\\ w&I_3\end{pmatrix}.
+\end{array}                                                \tag{F.CK2}
+\]
+The first maps compose because $Q_\sigma$ vanishes on
+$L_\tau$, and the second compose because translations add.
+The maps $[\,0\ Q_\tau\,]$ form a natural transformation
+$\mathcal Y\to\mathcal W$: the only additional term is
+$Q_\sigma w=0$, since $w$ is a vertex of $\sigma$.
+
+Here these diagrams describe the actual local topology.
+The toric moment quotient on the dual cell to $\tau$ has
+angular torus $T^3/(L_\tau\otimes\mathbb R/L_\tau)$;
+passing to a face collapses exactly the next angular
+subtorus.  Barycentrically subdividing the dual cells gives
+the homotopy colimit of $\mathcal W$ for the central fibre.
+For its real oriented logarithmic boundary, retain the
+argument $\theta_0$ of the base parameter and the three
+angular coordinates $\theta$ of the toric chart.  Translating
+the chart by $w$ changes them to
+$(\theta_0,\theta+w\theta_0)$, which is precisely $S_w$.
+Thus the logarithmic boundary is the homotopy colimit of
+$\mathcal Y$, and forgetting the logarithmic phases on each
+stratum is exactly the natural transformation just given.
+This can also be read directly in the unimodular charts
+$x_0\cdots x_k=t$: the moment coordinates form the dual
+simplex, the four logarithmic phases remain, and the ordinary
+stratum retains their quotient by the vertex differences.
+The finite face identifications give (F.CK2), so there are
+no further gluing constants in this fixed marked cap.
+
+The Kuhn map with its divisor log structures is proper,
+log smooth and vertical after restricting to a small disc.
+Achinger--Ogus, Theorem~4.1.1, identifies its topological germ
+with the mapping cylinder of this logarithmic collapse
+\cite{ffAchingerOgus20}.  Consequently the preceding
+homotopy-colimit diagrams and natural transformation model
+the pair $(W,Y)$ itself.  Fix the marking by letting $b_i$
+be the category loop with translation label $e_i$.  A
+homotopy-colimit edge with map $S_{e_i}$ has the relation
+$b_i^{-1}\theta_0b_i=\theta_0+a_i$; equivalently
+$\theta_0b_i\theta_0^{-1}=b_i+a_i$.  This specifies the
+required primitive cusp
+$U=\begin{pmatrix}I_3&I_3\\0&I_3\end{pmatrix}$.
+
+We specify finite integer chains, rather than only the
+homology spectral sequence of these diagrams.  Replace every
+torus by its ordinary normalized bar complex.  The affine
+simplex map from the bar construction to the torus is natural
+for all the integer homomorphisms in (F.CK2), so this replacement
+does not change either homotopy colimit or its collapse map.
+Take the simplicial replacement over all strict flags of the
+finite category.  Its vertical differential is the torus bar
+boundary; its horizontal differential composes adjacent
+arrows, with the first face applying the diagram map, and
+has the sign $(-1)^q$ in vertical degree $q$.
+Apply the first contraction and the finite series (F.CA5)
+object by object.  There are no flags longer than three,
+so every series has at most four terms.  The resulting
+finite basis consists of a strict flag beginning at $\tau$
+and an exterior basis vector of its torus.  Transfer the
+natural transformation by $P_{\mathcal W}FI_{\mathcal Y}$.
+This proves both the chain-map identity and completeness of
+the collapse map, including all integral coherence corrections.
+
+The raw cap chain ranks in degrees zero through six are
+\[
+ (26,199,688,1231,1226,648,144),
+\]
+and the raw boundary ranks in degrees zero through seven are
+\[
+ (26,274,1124,2420,3010,2186,864,144).
+\]
+The program enumerates every object, every translated
+incidence and every flag, verifies composition, checks
+$d^2=0$ on every generator, and checks the collapse-chain
+identity on every generator.  Integral cancellation of a
+unit pivot is a chain homotopy equivalence: clear its row by
+integer column operations, then remove the resulting
+contractible two-generator summand.  The adjacent differential
+updates are forced by $d^2=0$.  After respectively 2063,
+4988 and 7087 such cancellations for the cap, boundary and
+collapse cone, Smith reduction gives (F.CK1).  All matrices
+and the remaining differentials are saved by
+\texttt{fourfolds\_kuhn\_cap\_chains.py}; the reduced cap and
+relative differentials vanish, and the boundary has one
+nonzero Smith factor, equal to two in degree four to three.
+This computes the integral groups without a filtration
+extension problem.\hfill$\square$
+
+\emph{Scope of the chain result.}
+The local finite pairs and the full cusp pair now have
+effective marked chain models.  To turn them into a universal
+integral homology calculation for arbitrary nonsurviving F.2
+data, one must also implement the maps from these boundary
+models to the common torus-bundle complement, with its
+specified peripheral word and clutching translation.  The
+local results alone do not assert that this remaining global
+comparison has been completed.

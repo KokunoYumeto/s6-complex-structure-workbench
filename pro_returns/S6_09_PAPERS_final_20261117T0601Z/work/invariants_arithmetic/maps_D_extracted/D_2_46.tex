@@ -1,0 +1,458 @@
+% Source: sources/returns/S6_04_MAPS_MANIFOLDS/code/manifolds_general_initial_proof.tex:1–457
+\paragraph{Theorem D.2.46 (Proved: arbitrary whole-fibre initial pairs and weights).}
+Fix any of the $21$ marked rational elliptic profiles with
+$\operatorname{MW}=\mathbb ZG$ in D.2.19, and write
+$\langle G,G\rangle=1/d_0$. Let
+\[
+ P=aG,\quad Q=bG,\quad a,b>0,
+ \qquad \overline P_i=0\ \hbox{or}\ \overline Q_i=0
+                         \quad\hbox{at every fibre}.       \tag{D.GI1}
+\]
+Choose any nonnegative integral whole-fibre linearization
+weights $w_i$, of total $ab/d_0$, supported on multiplicative
+or regular fibres. Distinct regular support points are allowed.
+At a positive weight use the marked periodic Mumford filling.
+At a zero-free multiplicative fibre choose either its original
+cap or its marked Mumford cap. At a finite good-reduction
+additive fibre choose either its original cap or any free affine
+logarithmic cap. Retain the original cap at $I_n^*$.
+Arbitrary regular logarithms and an arbitrary ordinary clutching
+integer are allowed.
+
+There is a finite exact integral algorithm for the fundamental
+group and every integral homology group of every such threefold.
+It includes pairs not obtained by iterating any of the $172$
+initial rows, several zero fibres, noncyclic toric period
+lattices, and all their boundary torsion. Its implementation is
+\path{code/manifolds_general_initial.py}; no bound on
+$a,b,w_i$, logarithmic orders or affine numerators occurs in the
+algorithm or proof.
+
+Here are the complete data of the algorithm. Use the lattice
+$\Lambda=\mathbb Z\langle e_1,e_2,\delta,\gamma\rangle$.
+The recorded elliptic monodromies are $B_i$, and the section
+$G$ has integral cocycle $g_i$. Put $p_i=ag_i$, $q_i=bg_i$,
+choose any rational $z_i$ with $(B_i-I)z_i=q_i$, and set
+\[
+ r_i=((p_i)_2,-(p_i)_1)B_i,\qquad
+ A_i=\begin{pmatrix}
+ B_i&0&q_i\\ r_i&1&r_i z_i+w_i\\0&0&1
+ \end{pmatrix}.                                           \tag{D.GI2}
+\]
+The block sizes are $2,1,1$. At a regular zero use
+$A_i=I+w_i\delta\gamma^*$. At an ordinary or regular
+logarithm the boundary matrix is $I$. These are integral
+matrices, their ordered product is $I$, and they are the
+actual marked monodromies.
+
+Apply the integral bar comparison (D.BC1)--(D.BC14) to these
+matrices. Thus the regular-piece degree-two group is
+$C\oplus K$, with its full unsaturated fibre presentation
+and its transported last-boundary marking. At each finite or
+regular logarithm use all five columns (D.BC4), with its
+actual order $m$ and fixed power $v$, and the exact freeness
+test of D.2.29--30. At every other cap use the full fixed-normal
+columns (D.BC5) and the following fibre kernel $F_i$ in
+$\Lambda^2\Lambda$. Here $R_i=\Lambda^2A_i-I$ and
+$\operatorname{sat}$ denotes saturation only where it is
+explicitly written.
+\[
+\begin{array}{c|c|c}
+\hbox{cap}&F_i& h_i=\operatorname{rank}H^4(U_i)\\ \hline
+w_i>0\hbox{ at }I_n, n>0&
+ \operatorname{im}R_i+\Lambda^2\operatorname{Fix}A_i&nw_i\\
+\hbox{rank-one Mumford}&\operatorname{sat}(\operatorname{im}R_i)&\rho_i\\
+\hbox{original, }\overline P_i=0&
+ \operatorname{sat}(\operatorname{im}R_i)&\rho_i\\
+\hbox{original additive, }\overline P_i\ne0&\ker\omega_i&s_i\\
+\hbox{original }I_n,\ \overline P_i\ne0&
+ \langle u_1\delta,u_1\ell_i,\delta\ell_i\rangle&n .
+\end{array}                                                \tag{D.GI3}
+\]
+Products in the last row are exterior products.
+For a rank-one Mumford cap, $\rho_i$ is the unique nonzero
+Smith factor of $A_i-I$. For a zero-Chern original cap it is
+the number of orbits of translation by $Q$ on the Kodaira
+components. The actual marked permutations were given in
+D.2.22. In the last two rows, $Q$ is narrow, so $z_i$ may
+and must be integral, and
+\[
+ \ell_i=(-z_i,0,1),\qquad
+ \omega_i=(1,0,(z_i)_2,0,-(z_i)_1,0).
+                                                               \tag{D.GI4}
+\]
+Here $u_1$ is the primitive elliptic vanishing circle and
+$s_i$ is the number of Kodaira components. At a positive
+regular zero the second row applies, with $\rho_i=w_i$.
+
+Let $\mathcal B$ be the resulting full integral degree-two
+matrix, in $\Lambda^2\Lambda\oplus K$, and write
+$\operatorname{coker}\mathcal B=\mathbb Z^g\oplus T$.
+Let $E$ be the regular piece with all finite and regular
+logarithmic caps already filled. Compute $H_1(E)$ from its
+literal graph-bundle presentation and the relations
+$\tau_i^{m_i}=v_i$. Compute $H_1(X)=\mathbb Z^r\oplus A_1$
+by additionally imposing, at each other cap, $\tau_i=1$
+and the following fibre relations:
+\[
+\begin{array}{c|c}
+\hbox{cap}&\hbox{killed subgroup of }\Lambda\\\hline
+\hbox{positive rank-two Mumford}&\operatorname{Fix}A_i\\
+\hbox{rank-one Mumford or zero-Chern original}&
+                  \operatorname{sat}(\operatorname{im}(A_i-I))\\
+\hbox{nonzero-Chern additive original}&
+                  \mathbb Z\langle e_1,e_2,\delta\rangle\\
+\hbox{nonzero-Chern multiplicative original}&
+                  \mathbb Z\langle u_1,\delta\rangle .
+\end{array}                                                \tag{D.GI5}
+\]
+Set
+\[
+ q=\sum_{\text{nonlog caps}}h_i-b_1(E)+r,\qquad
+ b_2=g+q,\qquad
+ \chi=2\sum_{I_n,\ n>0}nw_i,\qquad
+ b_3=2+2b_2-2r-\chi .                                    \tag{D.GI6}
+\]
+Then $q\ge0$ and the complete answer is
+\[
+\begin{array}{c|c}
+j&H_j(X;\mathbb Z)\\\hline
+0,6&\mathbb Z\\
+1&\mathbb Z^r\oplus A_1\\
+2&\mathbb Z^{b_2}\oplus T\\
+3&\mathbb Z^{b_3}\oplus T\\
+4&\mathbb Z^{b_2}\oplus A_1\\
+5&\mathbb Z^r .
+\end{array}                                                \tag{D.GI7}
+\]
+For the nonabelian fundamental group, retain four commuting
+fibre generators, all peripheral generators $\tau_i$, the
+relations $\tau_i x\tau_i^{-1}=A_i x$ and
+$\prod_i\tau_i=1$, all finite-power relations, and
+(D.GI5). This is a complete finite presentation, not just
+its abelianization.
+
+Except in the case described next, the entire vertical
+subgroup $\langle e_1,e_2,\delta\rangle$ is killed and this
+presentation reduces to the Seifert group of D.2.23, with
+the actual gamma numerators. The exceptional possibility is
+\[
+\begin{gathered}
+ \mathrm{OS49/II}=(II,IV^*,I_2),\quad a\text{ odd},\quad
+ b\text{ even},\quad\text{both additive caps logarithmic},\\
+ w_{I_2}=0,\quad I_2\text{ filled by Mumford},\quad
+ \text{all positive weights at regular fibres}.
+\end{gathered}                                             \tag{D.GI8}
+\]
+The compatibility condition (D.GI1) remains required; it
+can impose an additional factor $3$ on $a$ or $b$.
+Before the logarithmic power relations the remaining
+vertical group in (D.GI8) is $(\mathbb Z/2)^2$. The two
+additive monodromies act by inverse order-three
+automorphisms. With no additional regular logarithms,
+the group is the split semidirect product of this Klein
+four group by the two-fibre Seifert group. With arbitrary
+regular logarithms use the full presentation above.
+Every group in (D.GI8) surjects onto $\mathbb Z/3$, so none
+is simply connected.
+
+\begin{proof}
+\emph{The initial data are actual section-line data.}
+Let $M=\mathcal O(P-O)$ and
+$J=M\otimes(T_Q^*M)^{-1}$. On a smooth elliptic fibre,
+translation acts trivially on $\operatorname{Pic}^0$, so
+$J$ is a vertical line bundle. At a singular fibre its
+component multidegree is the difference of that of $M$
+and its $Q$-translate. It is zero if $P$ is narrow, and
+also if $Q$ is narrow. Thus (D.GI1) makes every local
+multidegree zero. The intersection matrix of each
+Kodaira fibre has kernel generated by its full
+multiplicity vector; hence $J$ is pulled back from the
+base. The height calculation in D.2.19, equivalently
+the height pairing with all local mixed corrections
+zero \cite[Section 11.8]{manSS10}, gives
+\[
+                         J\simeq f^*\mathcal O(ab/d_0).
+\]
+This proves integrality of $ab/d_0$ in the compatible
+sector. A base section with precisely the chosen
+nonnegative divisor gives the required linearization.
+This does not introduce a component-supported vertical
+correction to $M$.
+
+For completeness, the monodromy formula is also an
+integral geometric formula. The rigidified Poincare
+bundle has elliptic section cocycles $p_i,q_i$; its
+commutator pairing gives the row
+$r_i=((p_i)_2,-(p_i)_1)B_i$. A local logarithm of $Q$
+gives the central entry $r_i z_i$, and a zero of the
+linearization adds $w_i\delta\gamma^*$. This is the
+same marked local calculation used in D.2.19 and
+D.2.37, now before restricting either section coefficient.
+Changing $z_i$ by a fixed vector changes no entry:
+$r_i$ annihilates $\ker(B_i-I)$.
+
+If $Q$ is narrow, $z_i$ is integral. If instead $P$
+is narrow, write $p_i=(B_i-I)y_i$ with $y_i$ integral.
+For $J_2=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$,
+symplectic invariance gives
+\[
+ r_i z_i=-y_i^t(B_i-I)^tJ_2B_i z_i
+                         =y_i^tJ_2q_i\in\mathbb Z.
+\]
+Thus (D.GI2) is integral in both cases. At zero weights
+its ordered product is the central matrix with entry
+$-ab/d_0$; the local Poincare commutators are bilinear
+in $a,b$. This identity is checked already for the
+single generator pair on each of the $21$ recorded
+elliptic tuples and follows for all coefficients by
+bilinearity. Adding the weights changes that entry by
+$\sum w_i=ab/d_0$, proving the product relation.
+The implementation reconstructs (D.GI2) directly from
+the saved cocycles and verifies integrality and product,
+rather than treating a numerical monodromy output as
+a topology theorem.
+
+\emph{All local kernels, with their integral markings.}
+At a positive $I_n$ weight, use a primitive elliptic
+vanishing/long basis, followed by $\delta,\gamma$.
+The nilpotent part has image in the primitive short
+plane $\langle u_1,\delta\rangle$, squares to zero,
+and has determinant $nw_i$ on long-to-short lattices.
+Its Smith factors $s\mid t$ satisfy $st=nw_i$.
+The actual linearization changes only the corresponding
+integral long period; the same triangular periodic fan
+is preserved by this period sublattice. The unit factors
+are removed by the root-and-unit comparison of D.2.22.
+Consequently this is exactly the cap of D.2.43, with
+\[
+ H_2(U_i)=\mathbb Z^{nw_i+3}\oplus\mathbb Z/s,
+ \qquad H_3(U_i)=\mathbb Z^2,\qquad
+ H_4(U_i)=\mathbb Z^{nw_i}.
+\]
+Its full fibre kernel is the first row of (D.GI3),
+\emph{without saturation}. The two primitive short
+normal tori bound their actual orbit discs. In
+particular its angular-area torsion relation, and
+the other boundary torsion class which maps onto
+$\operatorname{Tor}H_2(U_i)$, remain distinguished.
+The component meridians are the literal rays $(v,1)$
+of D.2.43; thus no change from the original period
+marking to a saturated lattice has occurred.
+
+At rank one write $A-I=\rho\alpha\beta^*$ with
+$\alpha$ and $\beta^*$ primitive. The local toric
+model is the $\rho$-component nodal-cycle model
+times the transverse torus, with the same unit
+comparison and primitive vanishing disc as in
+D.2.37. Its homology is free, its fourth rank is
+$\rho$, and its full fibre kernel is precisely
+the saturation of $\operatorname{im}R_i$.
+The full fixed lattice supplies the normal tori.
+This argument includes a regular zero, for which
+$\alpha=\delta$, $\beta^*=\gamma^*$ and $\rho=w_i$.
+
+For an original zero-Chern cap, the line bundle is
+trivial on the Kodaira normalization and the prescribed
+unit lift has no residual meridian winding. Its
+retraction is $S^1_\delta$ times the mapping torus
+of the actual component permutation by $Q$.
+For an additive fibre the curve configuration is
+a tree; for $I_n$ its dual graph is a circle.
+The latter has no extra line-bundle winding: the
+component degrees are all zero, the translation
+lift on the compact connected cycle differs from
+the rigidified lift by a constant unit, and the
+nonvanishing base linearization has a logarithm.
+The component permutation therefore contributes
+one free fourth class per orbit. The explicit
+normalization or tree-chain complex has free
+homology and gives exactly the third row of
+(D.GI3), with all fixed normal tori. This is the
+permutation calculation of D.2.31; it uses the
+actual residues of $bG$, not primitivity of $b$.
+
+Suppose next that the original cap has
+$\overline P_i\ne0$. Then $Q$ is narrow, and the
+Chern vector of $M$ on the components is
+\[
+                         c=e_{\overline P_i}-e_0.
+\]
+It is primitive even if the component of $P$
+is not a generator of the component group.
+Its pairing with the Kodaira multiplicity vector
+is zero. The integral logarithm of $Q$ and the
+rigidified unit comparison contract the translation
+while retaining this Chern class. On a tree the
+unit comparison has a logarithm because $H^1=0$.
+On a nodal cycle its final clutch exponent is
+$\sum c_i=0$, so the same comparison has no
+dual-circle winding. Thus the actual retract is
+the principal two-torus bundle with Chern pair
+$(c,0)$, or $Y_c\times S^1_\gamma$ in the cycle
+case, precisely as in D.2.32--33.
+
+The primitivity of $c$, not the stronger and
+unneeded assumption that $\overline P_i$ generates
+the component group, makes all these local homology
+groups free. In the tree case the regular elliptic
+fibre maps to the primitive multiplicity vector in
+$\ker c$. Its exact area functional is $\omega_i$,
+giving the fourth row of (D.GI3). In the cycle case,
+the three regular fibre images
+\[
+                       u_1u_2,\quad u_2\delta,\quad u_2\ell_i
+\]
+remain primitive: respectively they project to the
+primitive all-one component vector, the fibre-circle
+times the dual-circle generator, and the dual circle
+times the second principal circle. This proves the
+last row of (D.GI3) even when $A_i-I$ has nonunit
+Smith factors. Its fixed lattice is exactly
+$\langle u_1,\delta,\ell_i\rangle$.
+
+The $\delta$ and $\ell_i$ normal tori bound with
+zero fibre correction. The $u_1$ normal torus in
+the cycle case can differ from a bounding normal
+torus by an integral multiple of $u_2\delta$.
+As in D.2.40, this correction is zero in the
+\emph{full} global fibre coinvariant, including its
+torsion. Indeed the relations on $\delta\wedge\Lambda$
+are the actual elliptic columns $(B_i-I)\mathbb Z^2$,
+and their common Smith factors are $(1,1)$ for
+each of the $21$ profiles. This assertion is
+independent of $a,b,w_i$ and is retained as an
+explicit constant certificate. Hence all the normal
+columns in the theorem have their actual global
+marking; no rational replacement is involved.
+
+The same local retractions give the fundamental
+group kernels (D.GI5). All meridians of these
+nonlogarithmic caps bound their normal discs.
+At a finite logarithm the principal meridian is
+$\tau_i^m v^{-1}$, with its full integral normal
+line torsion and the five Thom columns already
+proved in D.2.29--30. These local statements prove
+the claimed van Kampen presentation.
+
+\emph{The normal closure and the exceptional profile.}
+There is at least one positive weight. Its primitive
+vanishing lattice contains $\delta$, so $\delta=1$
+in the global fundamental group. Modulo $\delta$,
+a zero-free rank-one $I_n$ Mumford cap kills
+\[
+                   \frac{n}{\gcd(n,a)}\,u_i,              \tag{D.GI9}
+\]
+where $u_i$ is its primitive elliptic vanishing vector.
+To see the coefficient, in its Tate basis the
+vanishing vector before primitivization is
+$nu_i+aH_i\delta$, with
+$\gcd(H_i,n)=1$. The generator component of $G$
+has that unit residue on every recorded $I_n$.
+If $P$ is narrow the projection in (D.GI9) is
+already primitive. If $P$ is non-narrow, the
+compatibility condition makes $Q$ narrow; changing
+its integral logarithm changes the long coordinate
+but not this projected vanishing line.
+
+The elliptic normal closure of these lines under
+the finitely many $B_i$ depends only on
+$a\bmod d_0$. The original star caps additionally
+kill the full elliptic lattice after $\delta$ is
+killed: a nonzero Chern vector kills it directly,
+while a narrow $P$ supplies its integral graph
+trivialization. Thus there are precisely $284$
+constant residue cases to check. Their recorded
+Hermite matrices are full $\mathbb Z^2$ in every
+case except OS49/II with $a$ odd, where the matrix
+is $2I_2$. The certificate also computes every
+one of the $912$ actual local projected vanishing
+lines and verifies (D.GI9) directly; this is an
+exhaustive residue calculation, not a bounded
+search over unbounded section pairs.
+
+In that sole residual case, a positive $I_2$
+weight adds its primitive short circle, and an
+original $I_2$ cap adds the primitive elliptic
+vanishing circle because its Chern vector is
+nonzero. Either one and its $B_i$ translates
+generate $\mathbb Z^2$. An original additive
+cap does the same. Hence only (D.GI8) remains.
+The two additive matrices modulo $2$ have order
+three, are inverse, and $B_i-I$ is invertible
+modulo $2$. Since $b$ is even, their gamma
+columns vanish modulo $2$. Their fixed integral
+power vectors consequently have even elliptic
+coordinates. With no extra regular logarithms,
+all power and base-product relations thus lie
+in the Seifert factor, proving the asserted
+split semidirect product. Additional regular
+affine powers can have nonzero Klein-four
+coordinates, which is why the full presentation
+is retained in that case. In all cases set
+the entire fibre group and additional regular
+peripherals to $1$, and send the two additive
+peripherals to opposite generators of $\mathbb Z/3$.
+Their orders are multiples of $6$ and $3$.
+This is a well-defined surjection and proves
+the non-simply-connected assertion.
+
+\emph{Integral relative gluing, including cap torsion.}
+The bar comparison of D.2.41 applies to any integral
+tuple (D.GI2); its proof made no scalar-iterate
+assumption. It gives $H_2$ of the regular piece
+with all fibre torsion and every fixed, norm and
+last-peripheral correction. Filling the finite
+caps quotients by precisely their five columns,
+so it gives the stated $H_2(E)$ presentation.
+
+Every remaining cap retracts to a complex of
+dimension at most four and has free $H^4$ of
+rank $h_i$. For the general cusp this follows
+from D.2.43, which gives free $H_3$ as well as
+free $H_4$; for the other caps it follows from
+the explicit free groups above. Excision and
+Poincare--Lefschetz duality give
+\[
+ H_2(X,E)=\bigoplus_iH^4(U_i)=\mathbb Z^{\sum h_i},
+                    \qquad H_1(X,E)=0 .                  \tag{D.GI10}
+\]
+The group $H_3(U_i,\partial U_i)=H^3(U_i)$ need
+\emph{not} be free: it contains the torsion dual
+to $H_2(U_i)$ at a general cusp. Its boundary
+image is nevertheless exactly
+$\ker[H_2(\partial U_i)\to H_2(U_i)]$.
+D.2.43 identifies that image with the two literal
+normal sweeps and the nonsaturated first fibre
+kernel in (D.GI3). In particular the angular-area
+$\mathbb Z/s$ is included, while the other
+$\mathbb Z/s$ maps isomorphically to cap torsion.
+This accounts for the torsion relative boundary
+classes with their actual marking; freeness of
+cap $H_2$ is not assumed.
+
+It follows that the image of $H_3(X,E)$ in
+$H_2(E)$ is exactly the remaining columns of
+$\mathcal B$. The pair sequence therefore has
+the exact form
+\[
+ 0\longrightarrow\operatorname{coker}\mathcal B
+ \longrightarrow H_2(X)
+ \longrightarrow\ker[\mathbb Z^{\sum h_i}\to H_1(E)]
+ \longrightarrow0.                                      \tag{D.GI11}
+\]
+The final term is a free subgroup of a free
+group; its rank is $q$ because
+$H_1(E)\to H_1(X)$ is surjective. The sequence
+splits as abelian groups, proving the degree-two
+formula with precisely the torsion $T$.
+All caps except positive rank-two cusps have
+Euler number zero; a cusp of period index $nw_i$
+has Euler number $2nw_i$. Hence (D.GI6) gives
+the Euler number and the middle Betti number.
+Integral duality and the universal coefficient
+theorem give every remaining group in (D.GI7).
+This includes zero rational Euler number and
+arbitrary first Betti number, without a Seifert
+rank assumption in the exceptional sector.
+\end{proof}

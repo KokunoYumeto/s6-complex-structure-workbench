@@ -1,0 +1,90 @@
+\begin{claim}{C2.1}{Proved}{Bott--Chern and Aeppli tables as functions of $h$}
+With
+\[
+H^{p,q}_{BC}=
+\frac{\ker\partial\cap\ker\bar\partial\subset A^{p,q}}
+{\im\partial\bar\partial},\qquad
+H^{p,q}_{A}=
+\frac{\ker\partial\bar\partial\subset A^{p,q}}
+{\im\partial+\im\bar\partial},
+\]
+the complete tables are
+\begin{equation}\label{eq:C-BC-A}
+\begin{array}{c|rrrr}
+q\backslash p&0&1&2&3\\\hline
+3&0&0&1&1\\
+2&0&h&2h&1\\
+1&0&2&h&0\\
+0&1&0&0&0
+\end{array}_{BC}
+\qquad
+\begin{array}{c|rrrr}
+q\backslash p&0&1&2&3\\\hline
+3&0&0&0&1\\
+2&0&h&2&0\\
+1&1&2h&h&0\\
+0&1&1&0&0.
+\end{array}_{A}
+\end{equation}
+In particular, substitution of the value $h=1$ proved in A3.1 gives
+the workbench's numerical tables.  The totals are
+$(1,0,2,2,2,2,1)$ and $(1,2,2,2,2,0,1)$, respectively.
+\end{claim}
+\begin{proof}
+We apply the structure theorem for bounded double complexes over a
+field, \citet[Theorem 3]{Stelzig2021}, to the actual algebraic double
+complex $(A^{\bullet,\bullet}(X),\partial,\bar\partial)$.
+The word bounded refers to the bidegrees, not to the dimensions of the
+spaces of smooth forms, so that theorem applies here.  It gives a
+direct-sum decomposition by isomorphisms of double complexes into
+squares and zigzags.  An odd zigzag has one-dimensional total
+cohomology.  All odd zigzags in intermediate total degree are therefore
+excluded by $b_1=\cdots=b_5=0$.  An odd zigzag of length greater than
+one would have at least two vertices of its cohomological total degree.
+The extreme diagonals $p+q=0$ and $p+q=6$ contain just one bidegree
+each, so the remaining odd zigzags are exactly one dot at $(0,0)$ and
+one at $(3,3)$.
+
+An even zigzag of length $2r$ contributes a nonzero $d_r$ to one of
+the two Fr\"olicher spectral sequences.  C1.1 and complex conjugation
+exclude $r\ge2$ in both sequences.  Thus the remaining summands are
+arrows.  The horizontal arrows, with their multiplicities, are
+\begin{equation}\label{eq:C-arrows}
+\begin{array}{c|c|r}
+\text{source}&\text{target}&\text{multiplicity}\\\hline
+(0,1)&(1,1)&1\\
+(1,1)&(2,1)&h\\
+(1,2)&(2,2)&h\\
+(2,2)&(3,2)&1.
+\end{array}
+\end{equation}
+The vertical arrows are their reflections in $p=q$, with the same
+multiplicities.  The correspondence with spectral-sequence ranks is
+\citet[Proposition 6(1)]{Stelzig2021}; alternatively one computes
+column cohomology on each horizontal arrow directly.
+
+We now evaluate the displayed definitions, rather than use a formula
+for the dimensions.  On an arrow, the source is killed by neither
+the outgoing differential nor its total differential, whereas its
+target is closed under both.  There is no composite
+$\partial\bar\partial$.  Hence the target contributes one dimension
+to Bott--Chern cohomology, and the source contributes one dimension
+to Aeppli cohomology.  On a square, only the top right corner is closed
+under both operators, and it is the image of
+$\partial\bar\partial$ from the bottom left corner.  The other
+three corners of the square are images of $\partial$ or
+$\bar\partial$, while the bottom left corner is not in
+$\ker\partial\bar\partial$.  Thus a square contributes to neither
+cohomology.  A dot contributes once to each.  These computations
+commute with direct sums, including the possibly infinite sum of
+squares.  Counting the sources and targets in \eqref{eq:C-arrows}
+and its reflection gives \eqref{eq:C-BC-A}.
+
+The program \texttt{code/c\_double\_complex.py} performs a separate
+kernel-and-image computation over $\Q$ and a source-and-target
+count.  It includes an acyclic square with its signs, checks
+$\partial\bar\partial+\bar\partial\partial=0$, and verifies the
+two answers for $h=0,1,2,3,4,5$.  Its output is
+\texttt{outputs/c\_double\_complex.txt}.  This is exact linear
+algebra, not a floating-point check and not a determination of $h$.
+\end{proof}

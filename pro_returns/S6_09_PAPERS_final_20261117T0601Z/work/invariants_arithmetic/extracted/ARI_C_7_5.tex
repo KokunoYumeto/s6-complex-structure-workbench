@@ -1,0 +1,32 @@
+\begin{statement}[C.7.5; Proved computationally: the specified integer-relation tests]
+At all eleven rational CM parameters, an independent theta
+calculation and the global height calculation agree to more
+than $245$ decimal places. At $200$ decimal digits, PSLQ
+with tolerance $10^{-185}$, maximum coefficient $10^8$ and
+$10000$ steps returns no relation in each prescribed list
+consisting of $\log N$, logarithms of the bad primes together
+with $\log2,\log3$, $\pi$, and independent real period
+components. At $j=287496$ the known identity
+$\omega_1=2|\Im\omega_2|$ is removed first; repeated prime
+logarithms and zero period components are likewise omitted.
+An additional direct algebraicity search tests both $N$ and $N^{12}$
+at all eleven points, using the vectors $(1,x,\ldots,x^d)$ for
+$d=4,8,12$, working precision $235$ decimal digits, tolerance
+$10^{-210}$, maximum coefficient $10^{12}$ and $20000$ steps.
+All $66$ calls return no relation.
+\end{statement}
+\begin{proof}[Computational verification]
+The complete inputs, $255$-digit values, comparison errors,
+PSLQ labels and returns are in
+\path{code/C_cm_250.gp}, \path{code/C_cm_250.out},
+\path{code/C_cm_theta_pslq.py}, and its output. The theta
+calculation uses the exact CM period ratios and solves the
+Fourier equation for $\wp(1/2-iy)=0$ independently of PARI's
+height implementation. It verifies the singular modulus
+as well. The additional polynomial search is reproduced by
+\path{code/C7_norm_polynomial_search.py}; its output and JSON
+record include every parameter, source hash and returned vector.
+These tests prove no transcendence assertion. A null PSLQ return
+is not an exhaustive certificate excluding all polynomials within
+the stated coefficient and degree limits.
+\end{proof}

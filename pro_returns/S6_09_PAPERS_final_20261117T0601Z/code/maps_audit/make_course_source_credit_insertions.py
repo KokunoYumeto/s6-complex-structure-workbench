@@ -1,0 +1,24 @@
+from pathlib import Path
+import json
+R=Path(__file__).resolve().parents[3];W=R/'deliverables/work/maps_audit'
+anchor='The following complete arguments are retained as re-derivations of their classical prerequisites. Source-specific calculations and their hypotheses are stated explicitly.'
+T={
+'almost-complex-structures-and-integrability':r'The precise algebra convention is compared with Baez, Section 2.2 \cite{mapsBaez2002v4}; the coordinate factorization is compared with Hill--Taylor, Sections 2--4, in the author version of 8 November 2007 \cite{mapsHillTaylor2007v2}. Smooth integrability is the classical theorem of Newlander and Nirenberg; the statement is cited here in Onishchik\textquotesingle s Russian translation, Theorem 1.1, p.~133 \cite{mapsNewlanderNirenberg1959Translation}. The full analytic argument and its sign correction are supplied below.',
+'sphere-twists-and-the-original-smooth-six-sphere-comparison':r'The exact local twist formula is compared with Seidel\textquotesingle s author version of 20 July 2002, local-model lemma and explicit twist formula \cite{mapsSeidel2002v2}. The variable interchange, cutoff primitive and distinction between a smooth tubular extension and a symplectic Lagrangian extension are retained below.',
+'integral-handle-chains-and-signed-incidences':r'The signed handle boundary, its square, the adjacent slide comparisons and cancellation are compared with the complete original argument of Durst--Geiges--Kegel, Sections 2--5 \cite{mapsDurstGeigesKegel2018}. The additional original chart signs remain explicit.',
+'higher-index-framed-slides-and-chain-maps':r'The underlying signed handle-slide chain comparison is classical and is credited to Durst--Geiges--Kegel, Section 4 \cite{mapsDurstGeigesKegel2018}; the complete actual frame transport and both adjacent chain maps are proved below.',
+'framed-handle-slides-and-index-one-removal':r'The handle-slide and cancellation chain comparisons are credited to Durst--Geiges--Kegel, Sections 3--4 \cite{mapsDurstGeigesKegel2018}. The actual geometric moves, support and retained frames are constructed in this argument.',
+'realizing-framed-handles-and-middle-cancellation':r'The classical signed-chain and cancellation antecedents are Durst--Geiges--Kegel, Sections 3--4 \cite{mapsDurstGeigesKegel2018}, and Benedetti\textquotesingle s stronger cancellation and Whitney-disc discussion \cite{mapsBenedetti2019v1}. The required dimensional, complement and complete-frame hypotheses are verified in the retained proofs.',
+'whitney-moves-in-the-receiving-dimensions':r'The classical cancellation, complement and adapted Whitney-disc requirements are compared with Benedetti\textquotesingle s original author text, lines 15077--15409 \cite{mapsBenedetti2019v1}. The coordinate, mixed-normal and full-frame arguments for the dimensions used here are supplied below.',
+'belt-sphere-complements-and-the-whitney-disk':r'The complement and Whitney-disc requirements are compared with Benedetti\textquotesingle s original author text, lines 15077--15409 \cite{mapsBenedetti2019v1}; the actual complement, relative embedded disc and adapted frame are proved here.',
+'whitney-move-with-controlled-support':r'The standard full Whitney-disc requirement is credited to Benedetti\textquotesingle s original author text, lines 15152--15327 \cite{mapsBenedetti2019v1}. This proof retains the actual supported flow and the entire normal-frame comparison.',
+'the-original-six-dimensional-framing-invariant':r'The invariant and framed-surgery context are classical: Michel--Weber, original author text, lines 620--779 \cite{mapsMichelWeber2014v1}, and Snaith, lines 1218--1281 and 1440--1488 \cite{mapsSnaith2010v1}. These comparison passages do not replace the complete geometric quadratic-law, bordism and handle arguments printed below.',
+'spin-six-and-the-framing-comparison':r'The classical framing and surgery context is credited to Michel--Weber, Sections 2--3 \cite{mapsMichelWeber2014v1}; the actual compact-group maps, Euler calculation and unstable frame comparison are proved here.'}
+rows=[]
+for stem,text in T.items():
+ p=R/'deliverables/editorial/III_course'/ (stem+'.tex');s=p.read_text();assert s.count(anchor)==1,(stem,s.count(anchor))
+ # Plain apostrophes avoid an unnecessary textcomp dependency.
+ text=text.replace(r'\textquotesingle s',"'s")
+ rows.append(dict(source_tex=str(p.relative_to(R)),insert_after=anchor,insert_text='\n\n'+text+'\n',idempotence_marker=text,reason='Exact primary-version credit at the receiving chapter; no mathematical source text removed',reader='GPT-6 Astra (OpenAI, ChatGPT Pro mode)',effort='Pro',date='2026-11-17'))
+(W/'III_course_source_credit_insertions.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n')
+print('Prepared',len(rows),'exact receiving-credit insertions; not applied to the root-owned converter.')

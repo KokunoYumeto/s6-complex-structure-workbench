@@ -1,0 +1,160 @@
+\paragraph{Theorem F.2.33 (Proved: arbitrary finite affine caps).}
+Let $g(x)=Mx+v/m$ be a free cyclic affine action of actual order
+$m\geq2$ on $T^r$, with $M\in\mathrm{GL}(r,\mathbb Z)$ and
+$v\in\mathbb Z^r$.  For every specified degree bound $d$, there is
+an explicit terminating integer algorithm producing chains and
+boundary maps through degree $d+1$ for the pair
+\[
+ B=(D^2\times T^r)/\langle(s,x)\mapsto
+ (e^{2\pi i/m}s,g(x))\rangle,
+ \qquad Y=\partial B.                                      \tag{F.CA1}
+\]
+The cap complex has at most $2^r$ generators in each degree and
+the boundary complex at most $2^{r+1}$.  These are complexes of
+finite rank in each degree; only their indicated finite prefixes
+are required to compute $H_j(B)$, $H_j(Y)$ and $H_j(B,Y)$ for
+$j\leq d$.  Their maps retain the affine translations and all
+integral higher coherence terms.  In particular, the construction
+does not replace an equivariant torus chain complex by its
+homology without recording the correction terms.
+
+\emph{Proof.}
+We give the complete recursive algorithm.  All chains below are
+finite integer dictionaries, so the displayed operations are
+effective over $\mathbb Z$.
+
+First consider the normalized bar resolution of $\mathbb Z^r$
+over $R=\mathbb Z[t_1^{\pm1},\ldots,t_r^{\pm1}]$ and its Koszul
+resolution $K=R\otimes\bigwedge^*\mathbb Z^r$.
+The latter differential is contraction with $(t_i-1)_i$.
+Write $t^a=t_1^{a_1}\cdots t_r^{a_r}$ and put
+$S_n(t)=(t^n-1)/(t-1)$, interpreted as its finite integral
+Laurent sum for positive, zero or negative $n$.
+The following $\mathbb Z$-linear contraction of the augmented
+Koszul complex fixes a completely explicit choice:
+\[
+ s_K(t^a e_I)=
+ \sum_{j<\min I}
+ t_{j+1}^{a_{j+1}}\cdots t_r^{a_r}S_{a_j}(t_j)
+ e_j\wedge e_I,                                           \tag{F.CA2}
+\]
+where $\min\varnothing=r+1$ and indices in $I$ are increasing.
+The bar contraction is
+$s_B(t^a[g_1|\cdots|g_q])=[a|g_1|\cdots|g_q]$; terms with a
+zero bar entry are zero.  Set $p_0=1$ and define the
+$R$-linear projection and homotopy on coefficient-one bar
+generators recursively by
+\[
+ p_q=s_Kp_{q-1}d_B,
+ \qquad
+ h_q=s_B(1-ip_q-h_{q-1}d_B).                               \tag{F.CA3}
+\]
+Here $i(e_I)$ is the alternating sum of the bars of the ordered
+unit vectors in $I$.  The recursion decreases degree.  The
+identities for the two contractions give, by induction,
+$pi=1$, $dh+hd=1-ip$, $ph=hi=h^2=0$.
+For example $s_K^2=s_B^2=0$, $ps_B=s_Kp$, and the alternating
+unit-vector formula gives $pi=1$; substituting these into
+(F.CA3) proves the three side identities in the same induction.
+Augmenting $R\to\mathbb Z$ gives a strong chain contraction
+of the ordinary torus bar complex to $\bigwedge^*\mathbb Z^r$.
+
+Translations must enter before this contraction.  Let
+$b_j=\sum_{a=0}^{j-1}M^av/m$ and let $p_j$ be its coordinatewise
+fractional part.  The $m$ points $p_j$ are distinct because the
+action is free.  Use the full fundamental groupoid of $T^r$
+on these points: an arrow from object $a$ to object $b$ is an
+integer vector $\lambda$, represented by the affine path from
+$p_a$ to $p_b+\lambda$.  Composition adds the integer vectors.
+The generator acts strictly by shifting objects and, for its
+$s$th power, by
+\[
+ \lambda\longmapsto M^s\lambda+z_s(b)-z_s(a),
+ \qquad z_s(a)=M^sp_a+b_s-p_{a+s}\in\mathbb Z^r.             \tag{F.CA4}
+\]
+The subscripts on objects are taken modulo $m$.
+The nerve of this groupoid is equivariantly homotopy equivalent
+to the torus: the simplex with successive arrow labels
+$\lambda_i$ maps affinely to the torus with lifted vertices
+$p_{a_j}+\sum_{i\leq j}\lambda_i$.
+Forgetting the objects contracts its chains to the ordinary
+torus bar complex.  An explicit homotopy is the negative
+alternating prism which, at each possible position, inserts
+the zero-labelled arrow to object zero and replaces all
+subsequent objects by zero.  Combining this with (F.CA3)
+gives a contraction $(i,p,h)$ of the groupoid chains to
+$\bigwedge^*\mathbb Z^r$ with the same side identities.
+
+Use the normalized cyclic bar construction on this strict
+groupoid action.  Its differential is $d_v+\delta$, where
+$\delta$ is the ordinary group-bar boundary, multiplied by
+$(-1)^q$ on vertical degree $q$; its first face applies (F.CA4).
+The vertical contraction transfers this to cyclic bar chains
+with exterior coefficients by the finite formulas
+\[
+ I=(1+h\delta)^{-1}i,\qquad
+ P=p(1+\delta h)^{-1},\qquad D=p\delta I.                  \tag{F.CA5}
+\]
+Inverses mean their alternating geometric series.  On a chain
+of cyclic bar degree $p$ each series has at most $p+1$ terms,
+since $\delta$ lowers that degree.  Multiplication and the
+contraction identities directly give $(d_v+\delta)I=ID$ and
+$P(d_v+\delta)=DP$,
+and a chain homotopy inverse.  Equivalently these are the
+finite homological perturbation identities, here derived by
+expanding the finite series.  The first term of $D$ is the
+cyclic bar differential for the exterior action of $M$.
+Every remaining term lowers cyclic bar degree by at least two.
+
+For completeness, the second contraction used in the algorithm
+is also explicit.  The cyclic periodic resolution has one
+$\mathbb Z[C_m]$ generator in each degree, with differential
+$g-1$ in odd degree and $1+g+\cdots+g^{m-1}$ in even degree.
+On $g^a$, $0\leq a<m$, its augmented contraction is
+$\sum_{j=0}^{a-1}g^j$ in even degree and is $1$ precisely when
+$a=m-1$ in odd degree, zero otherwise.
+Apply (F.CA3) with this contraction to compare it with the
+cyclic bar resolution.  Tensor its coefficients with the
+exterior action of $M$.  Transferring the higher terms of $D$
+once more by (F.CA5) terminates: each higher term followed by
+the horizontal homotopy decreases cyclic degree by at least
+one.  The resulting basis in total degree $n$ is
+$\{(p,I):p+|I|=n,\ I\subseteq\{1,\ldots,r\}\}$.
+This proves the claimed $2^r$ bound and termination in every
+specified degree.
+
+The free action makes the Borel construction equivalent to
+$T^r/C_m$, and radial contraction identifies this with $B$.
+For $Y$ use exactly the same algorithm on $T^{r+1}$ with
+matrix $\operatorname{diag}(1,M)$ and numerator $(1,v)$.
+The projection forgetting its first circle is equivariant and
+represents $Y\to B$ under the radial contraction.
+More generally an equivariant integral matrix $L$ acts on
+groupoid arrows as
+$\lambda\mapsto L\lambda+k_b-k_a$, where
+$k_a=Lp_a-p'_a\in\mathbb Z^{r'}$.
+Transferring this strict bar map by $P'LI$ gives the required
+integer chain map.  Its mapping cone computes the pair.
+Every series is finite with the proved degree bound, and
+integer kernels and Smith normal forms finish the calculation.
+\hfill$\square$
+
+\emph{Executed certificates.}
+The programs \path{code/fourfolds_bar_koszul.py} and
+\path{code/fourfolds_affine_cap_chains.py} implement these
+formulas, including the prime-subgroup freeness check of F.2.31.
+The first checks all 281 abelian and 498 cyclic bar simplices
+in its explicitly stated alphabets and degree ranges.
+The second checks translated circles of orders two and three,
+two affine presentations of the Klein bottle (one with a
+nonfixed numerator), and the three-dimensional half-turn
+manifold.  The separate rank-six program checks every degree
+zero through seven for the order-five and order-four caps,
+against the independent integral Wang sequence of their
+five-torus mapping-torus descriptions.
+The boundary-map program checks both translated circles and
+the Klein bottle, including the full chain-map identities and
+the integral Thom-shift homology of each cone.  These are
+finite verification sets, not an asserted exhaustive test over
+all input matrices; the terminating formulas prove generality.
+

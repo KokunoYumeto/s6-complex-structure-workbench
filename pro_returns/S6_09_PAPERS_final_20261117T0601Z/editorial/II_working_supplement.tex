@@ -1,0 +1,3595 @@
+% Complete working-edition supplement. All source files remain unchanged.
+% Reader and writer: GPT-6 Astra (OpenAI, ChatGPT Pro mode), effort Pro,
+% 17 November 2026 UTC. Full source and label mapping accompanies this file.
+\section{Additional local proofs, analytic duality and Picard restrictions}
+\label{wbII:sec:working-supplement}
+
+The conormal and conductor arguments below are written out for the local
+models used by the standard family. The conductor-supported differential
+for its hexagonal fibre is due to \citet[Section~10.2, Lemma~10.3]{AC2026}.
+These local proofs are re-derivations of that mechanism and of the named
+parts of \cref{cdp:st:A.1.1,cdp:st:A.2.2,cdp:st:A.5.1}; the explicit
+nodal calculation has the scope of \cref{cdp:st:B1}. The duality statements,
+the three global restriction arguments and the local nonzero Picard
+example keep their separate hypotheses throughout.
+
+\subsection{The exact p.~692 inference}
+
+Let $S$ be the reduction of a fibre in a smooth threefold $\mathcal X$,
+and let $A$ denote the line-bundle twist after duality.  The two relevant
+sequences are
+\[
+0\longrightarrow N^*_{S/\mathcal X}\otimes A
+\longrightarrow\Omega^1_{\mathcal X}|_S\otimes A
+\xrightarrow{\rho}\Omega^1_S\otimes A\longrightarrow0
+\tag{W.1}\label{wbII:eq:W:5.1}
+\]
+and
+\[
+0\longrightarrow\mathcal T(\Omega^1_S)\otimes A
+\longrightarrow\Omega^1_S\otimes A
+\longrightarrow\widetilde\Omega^1_S\otimes A\longrightarrow0,
+\tag{W.2}\label{wbII:eq:W:5.2}
+\]
+where $\mathcal T$ denotes sections supported on a nowhere dense analytic
+set.  The opening reduction of \cite[\S7, p.~692]{CDP20} treats the
+vanishing of the global sections of the left end of \eqref{wbII:eq:W:5.1} and the right end
+of \eqref{wbII:eq:W:5.2} as sufficient for the vanishing of the middle term of \eqref{wbII:eq:W:5.1}.
+That inference leaves untreated a section whose image under $\rho$ is a
+nonzero torsion section.  The omitted sheaf can be identified exactly.  Put
+\[
+ \mathscr T_S:=\ker\bigl(\Omega_S^1\to
+ j_*\Omega^1_{S_{\rm reg}}\bigr),
+ \qquad \widetilde\Omega_S^1=\Omega_S^1/\mathscr T_S,
+\]
+and
+\[
+ \mathscr K_S:=
+ \ker\bigl(\Omega_X^1|_S\longrightarrow\widetilde\Omega_S^1\bigr).
+\]
+
+\begin{lemma}[identification of the torsion subsheaf]
+\label{wbII:lem:torsion-identification}
+If $S$ is a reduced effective Cartier divisor in a smooth complex manifold,
+then
+\[
+\ker\bigl(\Omega^1_S\longrightarrow j_*\Omega^1_{S_{\rm reg}}\bigr)
+  =\operatorname{Tor}(\Omega^1_S).
+\]
+\end{lemma}
+
+\begin{proof}
+Every irreducible component of a reduced hypersurface is generically smooth,
+so $S_{\rm reg}$ is dense and its complement is a proper analytic subset.
+If a local section of $\Omega^1_S$ vanishes on $S_{\rm reg}$, its support avoids
+all minimal primes of the reduced local ring.  Prime avoidance therefore gives
+an element of its annihilator outside every minimal prime; that element is a
+nonzerodivisor, so the section is torsion.  Conversely,
+$\Omega^1_S|_{S_{\rm reg}}$ is locally free, hence has no torsion, and every
+torsion section restricts to zero there.
+\end{proof}
+
+\subsubsection*{Local proof of the conormal filtration}
+
+
+Let $S$ be a reduced effective Cartier divisor in a smooth complex
+threefold $X$.  There are natural short exact sequences
+\[
+0\longrightarrow N^*_{S/X}\longrightarrow\mathscr K_S
+\longrightarrow\mathscr T_S\longrightarrow0,
+\]
+\[
+0\longrightarrow\mathscr K_S\longrightarrow\Omega_X^1|_S
+\longrightarrow\widetilde\Omega_S^1\longrightarrow0.
+\]
+
+
+
+\begin{proof}
+The conormal sequence is right exact.  It is also left exact here.  Locally
+write $S=(g=0)$ with $g$ reduced.  If $h\,dg|_S=0$, then $h$ vanishes at the
+generic smooth point of every irreducible component, because $dg$ is nonzero
+there.  The ring $\mathcal O_S$ is reduced, so the intersection of its
+minimal primes is zero; hence $h=0$.  Thus
+\[
+0\to N^*_{S/X}\to\Omega_X^1|_S\to\Omega_S^1\to0
+\]
+is exact.  By definition, $\mathscr K_S$ is the inverse image of
+$\mathscr T_S$ under the last surjection.  Restriction to that inverse image
+is onto $\mathscr T_S$ and has kernel $N^*_{S/X}$, proving the first
+sequence.  Composing with the quotient by $\mathscr T_S$ proves the second.
+\end{proof}
+
+\begin{proof}[The minimal-prime formulation of conormal injectivity]
+Right exactness is the conormal sequence for a closed immersion.  We check
+the left end.  Work at a point of $S$ and let $R$ be the regular local ring
+of $X$, with reduced local equation $g$ for $S$.  The map at the left is
+\[
+ R/(g)\longrightarrow (\Omega^1_R/g\Omega^1_R),
+ \qquad \bar h\longmapsto h\,dg.
+ \tag{W.145}\label{wbII:eq:CN:2.2}
+\]
+Let $\mathfrak p$ be a minimal prime of $(g)$.  Since $R$ is regular and
+has characteristic zero, the height-one local ring $R_{\mathfrak p}$ is a
+discrete valuation ring.  Reducedness of $(g)$ gives
+$\operatorname{ord}_{\mathfrak p}(g)=1$, so $g$ is a unit times a
+uniformizer there; in characteristic zero the differential of that
+uniformizer is nonzero modulo $\mathfrak p$.  Hence $dg$ is nonzero in
+$\Omega^1_{R_{\mathfrak p}}\otimes k(\mathfrak p)$, so \eqref{wbII:eq:CN:2.2} sends $\bar h$
+to zero only if $h\in\mathfrak p$.  This holds for every minimal prime.
+Because $R/(g)$ is reduced, the intersection of its minimal primes is zero;
+therefore $\bar h=0$.  Thus the conormal sequence in \cref{cdp:st:A.1.1} is exact.
+\end{proof}
+
+\subsubsection*{Cohomology proof of the exact section criterion}
+
+
+Let $A$ be a line bundle on $S$.  If
+\[
+H^0(S,\widetilde\Omega_S^1\otimes A)=0,
+\]
+then
+\[
+H^0(S,\Omega_X^1|_S\otimes A)
+=H^0(S,\mathscr K_S\otimes A).
+\]
+If also $H^0(S,N^*_{S/X}\otimes A)=0$, then this group is canonically
+\[
+\ker\!\left[
+H^0(S,\mathscr T_S\otimes A)
+\xrightarrow{\delta_A}H^1(S,N^*_{S/X}\otimes A)
+\right].
+\]
+Hence the two vanishings printed in the p.~692 reduction imply the desired
+ambient vanishing if and only if $\delta_A$ is injective.
+
+
+
+\begin{proof}
+Tensoring the second sequence of
+\cref{cdp:st:A.1.1} by the locally free sheaf $A$
+preserves exactness; its global-section sequence gives the first equality.
+Tensor the first sequence and take global sections.  If the conormal
+$H^0$ vanishes, exactness identifies the middle group with the displayed
+kernel.  No condition on the torsion-free quotient controls that kernel.
+\end{proof}
+
+\subsection{Local algebra of a reduced normal-crossings fibre}
+
+Let $g:\mathcal X\to\Delta$ be a holomorphic map from a smooth complex
+threefold to a disc, and put $S=g^{-1}(0)$, assumed nonempty.  Assume $S$ is reduced and has
+normal crossings: at every point there are coordinates $(x,y,z)$ in which
+\[
+g=ux,\qquad g=uxy,\qquad\text{or}\qquad g=uxyz
+\tag{W.3}\label{wbII:eq:W:5.3}
+\]
+for a unit $u$.  Let $\eta:\widetilde S\to S$ be the normalization,
+$D=S_{\mathrm{sing,red}}$, and $\widetilde D=\eta^{-1}(D)_{\mathrm{red}}$.
+
+\subsubsection*{Coordinate proof for normal-crossing fibres}
+
+\ In the setting above, $N^*_{S/\mathcal X}\simeq\mathcal O_S$,
+and its generator maps to $dg|_S$.  Multiplication by $dg|_S$ is injective,
+so
+\[
+0\longrightarrow\mathcal O_S
+\xrightarrow{\,h\mapsto h\,dg\,}
+\Omega^1_{\mathcal X}|_S\longrightarrow\Omega^1_S\longrightarrow0
+\tag{W.4}\label{wbII:eq:W:5.4}
+\]
+is exact.
+
+
+
+\begin{proof}
+The fibre ideal is the principal ideal $(g)$ and is reduced, so
+$(g)/(g^2)\simeq\mathcal O_S$.  Multiplication by a unit does not affect
+injectivity, and the term $f\,du$ vanishes after restriction to $f=0$.
+It therefore suffices to use $f=x,xy,xyz$.
+
+For $f=xy$, if a lift $\widetilde h$ satisfies
+$\widetilde h(y\,dx+x\,dy)=0$ modulo $(xy)$, then
+$\widetilde h y,\widetilde h x\in(xy)$.  Hence
+$\widetilde h\in(x)\cap(y)=(xy)$ in the regular local ring, so $h=0$ on
+$S$.  For $f=xyz$, the three coefficient conditions say
+$\widetilde h yz,\widetilde h xz,\widetilde h xy\in(xyz)$; hence
+$\widetilde h\in(x)\cap(y)\cap(z)=(xyz)$.  The case $f=x$ is immediate.
+Thus the conormal map is injective in every local model, proving \eqref{wbII:eq:W:5.4}.
+\end{proof}
+
+\subsubsection*{Coordinate proof of the normalization--conductor square}
+
+
+\ The sequence
+\[
+0\longrightarrow\mathcal O_S
+\xrightarrow{\alpha}
+\eta_*\mathcal O_{\widetilde S}\oplus\mathcal O_D
+\xrightarrow{\beta}
+\eta_*\mathcal O_{\widetilde D}
+\longrightarrow0,
+\tag{W.5}\label{wbII:eq:W:5.5}
+\]
+\[
+\alpha(h)=(\eta^*h,h|_D),\qquad
+\beta(\widetilde h,k)=
+\widetilde h|_{\widetilde D}-\eta^*k,
+\]
+is exact.
+
+
+
+\begin{proof}
+The assertion is local.  Away from $D$, $\eta$ is an isomorphism.
+At a double point $S=\{xy=0\}$, a member of $\ker\beta$ is
+\[
+\bigl((h_1(y,z),h_2(x,z)),k(z)\bigr),
+\qquad
+h_1(0,z)=h_2(0,z)=k(z).
+\]
+The function
+\[
+h=h_1(y,z)+h_2(x,z)-h_1(0,z)
+\]
+on $\{xy=0\}$ restricts to $h_1,h_2$ on the two branches and to $k$ on
+their intersection.  This proves middle exactness in the double model.
+
+At a triple point $S=\{xyz=0\}$, write the branch functions as
+$h_1(y,z)$, $h_2(x,z)$, $h_3(x,y)$.  Membership in $\ker\beta$ is exactly
+\[
+h_1(0,z)=h_2(0,z),\quad
+h_1(y,0)=h_3(0,y),\quad
+h_2(x,0)=h_3(x,0).
+\]
+Then
+\[
+\begin{split}
+h={}&h_1(y,z)+h_2(x,z)+h_3(x,y)\\
+&-h_1(0,z)-h_1(y,0)-h_2(x,0)+h_1(0,0)
+\end{split}
+\]
+restricts to the prescribed function on every branch.  Injectivity of
+$\alpha$ follows because $S$ is reduced and $\eta$ is an isomorphism over a
+dense open set.  Surjectivity of $\beta$ follows locally by lifting a
+function on the branch conductor to the smooth branch and taking $k=0$.
+This proves exactness in every local model.
+\end{proof}
+
+\begin{theorem}[conductor-supported ambient differential]
+\label{wbII:prop:conductor}\label{wbII:prop:conductor-differential}
+\ In the setting \eqref{wbII:eq:W:5.3}, let $A$ be a line bundle on $S$ with
+$\eta^*A\simeq\mathcal O_{\widetilde S}$, and choose a nowhere-vanishing
+section $e$ of $\eta^*A$.  There is a unique nonzero
+\[
+s\in H^0(S,\Omega^1_{\mathcal X}|_S\otimes A)
+\tag{W.6}\label{wbII:eq:W:5.6}
+\]
+such that
+\[
+\eta^*s=\eta^*(dg|_S)\otimes e,\qquad s|_D=0.
+\tag{W.7}\label{wbII:eq:W:5.7}
+\]
+Its image $\rho(s)$ in $\Omega^1_S\otimes A$ is supported on $D$ and
+therefore torsion; its image in
+$\widetilde\Omega^1_S\otimes A$ is zero.  Moreover:
+\begin{enumerate}[label=(\alph*)]
+\item $\rho(s)=0$ if and only if $e=\eta^*\sigma$ for a nowhere-vanishing
+$\sigma\in H^0(S,A)$;
+\item if $S$ is compact and connected and $A\not\simeq\mathcal O_S$, then
+$H^0(S,A)=0$ and $s$ does not come from the conormal term in \eqref{wbII:eq:W:5.1}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+In the double model, $d(xy)=y\,dx+x\,dy$ has coefficients in the reduced
+ideal $(x,y)$ of $D$.  In the triple model,
+\[
+d(xyz)=yz\,dx+xz\,dy+xy\,dz
+\]
+has coefficients in $(xy,xz,yz)$, the reduced ideal of the union of the
+three double curves.  Unit factors in \eqref{wbII:eq:W:5.3} do not change this after
+restriction to $S$.  Hence $\eta^*(dg|_S)$ restricts to zero on
+$\widetilde D$.  Tensor \eqref{wbII:eq:W:5.5} by the locally free sheaf
+$E=\Omega^1_{\mathcal X}|_S\otimes A$.  The compatible pair
+\[
+\bigl(\eta^*(dg|_S)\otimes e,0\bigr)
+\]
+therefore descends uniquely to $s$.  On the smooth locus of $S$, $dg|_S$
+is a nonzero conormal vector and $e$ is nowhere zero, so $s\ne0$.
+
+On $S\setminus D$, the normalization is an isomorphism and
+$s=dg|_S\otimes e$.  By \eqref{wbII:eq:W:5.4} its intrinsic image vanishes there.  Thus
+$\rho(s)$ is supported on $D$ and lies in the torsion subsheaf; its image
+modulo torsion is zero.
+
+If $\rho(s)=0$, exactness of \eqref{wbII:eq:W:5.4} after tensoring by $A$ gives
+$s=dg|_S\otimes\sigma$ for a section $\sigma$ of $A$.  Pulling back and
+comparing with \eqref{wbII:eq:W:5.7} on the dense open set where $dg\ne0$ gives
+$\eta^*\sigma=e$ there, hence everywhere by holomorphic continuation.
+Since $e$ never vanishes and $\eta$ is surjective, $\sigma$ never vanishes
+and trivializes $A$.  The converse is immediate.
+
+Finally suppose $S$ is compact and connected and $\sigma\in H^0(S,A)$.  On each compact
+connected component of $\widetilde S$, write
+$\eta^*\sigma=c_i e$; the holomorphic function $c_i$ is constant.  If one
+$c_i$ is zero and another is nonzero, connectedness of the finite union of
+irreducible components of $S$ provides two such components meeting at a
+point.  The value of $\sigma$ at that point would be both zero and nonzero,
+a contradiction.  Hence either every $c_i=0$, so $\sigma=0$, or every
+$c_i\ne0$, so $\sigma$ is nowhere zero and $A$ is trivial.  When $A$ is
+nontrivial only the first case occurs.  Since
+$N^*_{S/\mathcal X}\simeq\mathcal O_S$, the conormal global-section space is
+$H^0(S,A)=0$, while $s\ne0$.
+\end{proof}
+
+\begin{corollary}
+\label{wbII:cor:normal-crossing-kernel}
+If, in addition, $H^0(S,N^*_{S/X}\otimes A)=0$ and
+$H^0(S,\widetilde\Omega^1_S\otimes A)=0$, then the section in
+Proposition~\ref{wbII:prop:conductor} proves that $\delta_A$ in
+the section-kernel isomorphism of \cref{cdp:st:A.1.1} is not injective.
+\end{corollary}
+
+\begin{proof}
+The section is nonzero and maps to zero in the quotient
+$\widetilde\Omega^1_S=\Omega^1_S/\mathscr T_S$, so it
+lies in the left-hand side of the section-kernel isomorphism of \cref{cdp:st:A.1.1}.  Proposition~\ref{cdp:st:A.1.1}
+identifies that group with $\ker\delta_A$, which is therefore nonzero.
+\end{proof}
+
+\subsection{A proper counterexample to the printed inference}
+
+\subsubsection*{Conductor proof of the nodal endpoint counterexample}
+
+\ The p.~692 implication described after \eqref{wbII:eq:W:5.2} is false as a formal
+sheaf-theoretic statement, even for a proper family with smooth total space
+and an irreducible reduced normal-crossings central fibre.
+
+
+
+\begin{proof}
+Let $\Delta$ be a sufficiently small disc with coordinate $t$ and put
+\[
+\mathcal C=
+\{([x:y:z],t)\in\mathbb P^2\times\Delta:
+y^2z=x^2(x+z)+tz^3\}.
+\tag{W.8}\label{wbII:eq:W:5.8}
+\]
+This is proper over $\Delta$.  Its total space is smooth.  On $z\ne0$, the
+partial derivative of the defining equation with respect to $t$ is
+$-z^3\ne0$.  On $z=0$, the equation forces $x=0$; then $y\ne0$ and the
+$z$-derivative is $y^2\ne0$.  The central fibre $C_0$ is the irreducible
+nodal cubic $y^2z=x^2(x+z)$, with node $[0:0:1]$.
+
+Set
+\[
+\mathcal X=\mathcal C\times\mathbb P^1,\qquad
+S=C_0\times\mathbb P^1,
+\]
+and let $g:\mathcal X\to\Delta$ be projection.  Then $\mathcal X$ is a
+smooth threefold, $g$ is proper, and $S$ is an irreducible reduced
+normal-crossings surface.  Its normalization is
+$\widetilde S\simeq\mathbb P^1\times\mathbb P^1$.
+
+Let $p,q$ be the two inverse images of the node in the normalization of
+$C_0$.  Fix $\lambda\in\mathbb C^*$ which is not a root of unity (for
+example, $\lambda=2$).  Glue the fibres of
+the trivial line bundle on the normalization at $p$ and $q$ by the scalar
+$\lambda$.  This defines a line bundle
+$A_\lambda\in\operatorname{Pic}^0(C_0)$ whose pullback is trivial.  It has
+infinite order: its $n$th tensor power has gluing scalar $\lambda^n$, which
+is never one.  It is not trivial: a global section pulls back to a constant
+$c$ satisfying
+$c=\lambda c$, so
+\[
+H^0(C_0,A_\lambda)=0.
+\tag{W.9}\label{wbII:eq:W:5.9}
+\]
+Put $A=\operatorname{pr}_1^*A_\lambda$ on $S$.  Then
+$\eta^*A\simeq\mathcal O_{\widetilde S}$ and $H^0(S,A)=0$.
+Because $S$ is the full fibre,
+$N^*_{S/\mathcal X}\simeq\mathcal O_S$, so the conormal-twist global
+sections vanish.
+
+The natural map
+$\widetilde\Omega^1_S\to\eta_*\Omega^1_{\widetilde S}$ is injective:
+its kernel is supported where normalization is not an isomorphism, while
+the source is torsion-free by definition.  Projection formula and
+$\eta^*A\simeq\mathcal O_{\widetilde S}$ therefore give
+\[
+H^0(S,\widetilde\Omega^1_S\otimes A)
+\hookrightarrow
+H^0(\widetilde S,\Omega^1_{\widetilde S})=0,
+\tag{W.10}\label{wbII:eq:W:5.10}
+\]
+the last equality following from
+$\widetilde S=\mathbb P^1\times\mathbb P^1$.
+Nevertheless \cref{wbII:prop:conductor} produces
+\[
+0\ne s\in H^0(S,\Omega^1_{\mathcal X}|_S\otimes A).
+\]
+Thus both vanishings invoked in the printed reduction hold while the desired
+ambient vanishing fails.  This calculation chooses $A$ directly on $S$ and disproves the
+claimed \emph{formal implication between the three sheaf-cohomology groups}
+for a non-torsion line bundle. The explicit extending choice of $A$ is
+constructed in the next subsection, which also treats the total-space
+line-bundle condition on p.~692.  The family \eqref{wbII:eq:W:5.8} also does not satisfy all hypotheses of CDP
+Theorem~2.2, so this is not a counterexample to that theorem.
+\end{proof}
+
+\subsection{The explicit extending choice in the nodal family}
+Continue with
+\[
+\mathcal C=\{y^2z=x^2(x+z)+tz^3\}\subset\PP^2\times\Delta,
+\qquad \mathcal X=\mathcal C\times\PP^1,
+\qquad S=C_0\times\PP^1.
+\]
+Write $n=[0:0:1]$, let $D=\{n\}\times\PP^1$, and let
+$\nu:\PP^1\to C_0$ denote the normalization described next.
+\subsubsection*{Explicit normalization and crossing coordinates}
+
+The projection $g$ is proper, $\mathcal X$ is a smooth complex threefold,
+  and $S$ is a reduced irreducible normal-crossing (self-crossing) surface whose normalization
+is $\PP^1\times\PP^1$.  Its singular locus is
+\(D=\{[0:0:1]\}\times\PP^1\), and locally along $D$ the pair $(\mathcal X,S)$
+has the model $t=uv$; away from $D$ the fibre is smooth and has the usual
+local model $(\C^3,\{u=0\})$.
+
+
+\begin{proof}
+Properness follows because $\mathcal C$ is closed in the projective
+projection $\PP^2\times\Delta\to\Delta$.  Write the defining equation as
+\[
+ F=y^2z-x^2(x+z)-tz^3.
+\]
+On the chart $z\ne0$, $\partial F/\partial t=-z^3\ne0$, so $\mathcal C$
+is smooth there.  On $z=0$, the equation forces $x=0$ and $y\ne0$; at such
+points $\partial F/\partial z=y^2\ne0$.  Hence $\mathcal C$, and therefore
+$\mathcal X$, is smooth.  The only finite discriminant values of the fibres
+are $t=0$ and $t=-4/27$; after shrinking $\Delta$ to $|t|<4/27$, every
+noncentral fibre is smooth.
+
+The central curve is
+\(C_0:\ y^2z=x^2(x+z)\).  Its only singular point is
+\(n=[0:0:1]\): on $z=1$ the equations $F=F_x=F_y=0$ give $(x,y)=(0,0)$,
+and the point at infinity $[0:1:0]$ is smooth because $F_z=1$ there
+(Euler's identity also gives the remaining projective singularity equation).
+The parametrization
+\[
+ \nu:\PP^1\longrightarrow C_0,\qquad
+ [u:v]\longmapsto
+ [(u^2-v^2)v:\,u(u^2-v^2):\,v^3]
+ \tag{W.160}\label{wbII:eq:CN:4.3}
+\]
+maps the two points $p=[1:1]$, $q=[-1:1]$ to $n$.  On the chart $v\ne0$, set
+$r=u/v$; after scaling, its image is
+$[r^2-1:r(r^2-1):1]$.  Conversely, for an affine point of $C_0$ with
+$x\ne0$, the equation gives $r=y/x$ and $x=r^2-1$, so it is hit by
+$[r:1]$.  The only affine point with $x=0$ is the node $(0,0)$, hit by
+$[1:1]$ and $[-1:1]$, and the point at infinity $[0:1:0]$ is hit by
+$[1:0]$.  Thus $\nu(\PP^1)=C_0$; as a nonconstant morphism to a projective
+curve it is finite and generically one-to-one, hence the normalization.  In
+particular $C_0$ is irreducible and rational.  The product normalization
+is $\eta=\nu\times\id_{\PP^1}:\PP^1\times\PP^1\to S$.
+
+At $n$ the affine equation is
+\(t=y^2-x^2-x^3\).  On a sufficiently small neighbourhood choose the
+holomorphic square root $h(x)=\sqrt{1+x}$ and set
+\(u=y-xh(x)\), \(v=y+xh(x)\).  Then $uv=t$, and the map
+$(x,y)\mapsto(u,v)$ has invertible $2\times2$ Jacobian at $(0,0)$, so $u,v$
+are local coordinates on the surface $\mathcal C$.  If $s$ is a local
+coordinate on $\PP^1$, then $(u,v,s)$ are coordinates on $\mathcal X$ and
+$t=uv$.  Hence the pair has the asserted normal-crossing (self-crossing)
+local model, with singular locus $D$ as stated.
+\end{proof}
+
+\begin{lemma}[the non-torsion gluing bundle]
+\label{wbII:lem:gluing-bundle}
+Fix $\lambda\in\C^*$ that is not a root of unity.  Gluing the trivial line
+bundle on $\PP^1$ at $p$ and $q$ by the scalar $\lambda$ defines a line bundle
+\(A_\lambda\in\Pic(C_0)\) with
+\[
+ \nu^*A_\lambda\simeq\cO_{\PP^1},\qquad
+ H^0(C_0,A_\lambda)=0,\qquad
+ A_\lambda^{\otimes m}\not\simeq\cO_{C_0}\quad(m\ge1).
+ \tag{W.161}\label{wbII:eq:CN:4.4}
+\]
+\end{lemma}
+
+\begin{proof}
+For a nodal curve, a line bundle with trivial pullback to the normalization
+is obtained by identifying the two fibres over the branches of the node.
+Use the identification whose scalar is $\lambda$.  A global section pulls
+back to a constant $c$ on the projective line and must satisfy
+$c=\lambda c$; since $\lambda\ne1$, $c=0$.  The $m$th tensor power has
+gluing scalar $\lambda^m$, which is never $1$ because $\lambda$ is not a
+root of unity.  This proves \eqref{wbII:eq:CN:4.4}.
+\end{proof}
+
+\begin{lemma}[an extending choice of gluing bundle]
+\label{wbII:lem:extending-gluing}
+After shrinking $\Delta$, the sections
+\[
+ O(t)=[0:1:0],\qquad
+ P(t)=[3:\sqrt{36+t}:1]
+\tag{W.162}\label{wbII:eq:CN:4.5a}
+\]
+of $\mathcal C\to\Delta$ are disjoint and holomorphic.  If
+$B=\cO_{\mathcal C}(P-O)$, then the line bundle
+$\widetilde A=\operatorname{pr}_1^*B$ on $\mathcal X=\mathcal C\times\PP^1$
+restricts to $\operatorname{pr}_1^*A_{\lambda}$ on $S$ for
+$\lambda=1/3$ (or its inverse, according to the gluing convention).  In
+particular, the non-torsion bundle used in Theorem~\ref{cdp:st:B1} can
+be chosen to extend to the displayed smooth total space.
+\end{lemma}
+
+\begin{proof}
+The equation of $\mathcal C$ is satisfied by both sections; the square root
+is holomorphic for $|t|$ small, and the two sections are disjoint because
+$O$ has $z=0$ whereas $P$ has $z=1$.  On the normalization of $C_0$, write
+$r=u/v$.  Then $O(0)$ corresponds to $r=\infty$, $P(0)$ to $r=2$, and the
+two branches over the node correspond to $r=1$ and $r=-1$.  Hence
+\[
+ \nu^*(B|_{C_0})\simeq\cO_{\PP^1}([2]-[\infty]).
+\]
+The rational function $f(r)=r-2$ has precisely this divisor and trivializes
+the pullback.  Its values at the two branches are $f(1)=-1$ and
+$f(-1)=-3$, so the induced gluing multiplier is $f(1)/f(-1)=1/3$,
+up to inversion.  This is not a root of unity, and the lemma follows from
+the gluing description in Lemma~\ref{wbII:lem:gluing-bundle}.
+\end{proof}
+
+\subsubsection*{The local torsion calculation in the nodal example}
+
+Let $A=\operatorname{pr}_1^*A_\lambda$ on
+$S=C_0\times\PP^1$, with $\lambda$ as in Lemma~\ref{wbII:lem:gluing-bundle}.
+Then
+\[
+ H^0(S,N^*_{S/\mathcal X}\otimes A)=0,
+ \qquad
+ H^0(S,\widetilde\Omega^1_S\otimes A)=0,
+ \tag{W.163}\label{wbII:eq:CN:4.5}
+\]
+but
+\[
+ H^0(S,\Omega^1_{\mathcal X}|_S\otimes A)\ne0.
+ \tag{W.164}\label{wbII:eq:CN:4.6}
+\]
+In particular, the two endpoint vanishings in \eqref{wbII:eq:CN:4.5} do not imply the
+vanishing of \eqref{wbII:eq:CN:4.6}, even for a proper morphism over a disc with smooth total
+space and an irreducible reduced normal-crossing (self-crossing) central
+fibre.
+
+
+\begin{proof}
+Because $S$ is the principal fibre $(t=0)$, its conormal line is trivial:
+\(N^*_{S/\mathcal X}\simeq\cO_S\).  The projection
+\(\operatorname{pr}_1:S\to C_0\) has
+\(\operatorname{pr}_{1*}\cO_S\simeq\cO_{C_0}\), so \eqref{wbII:eq:CN:4.4} gives
+\[
+ H^0(S,A)\simeq H^0(C_0,A_\lambda)=0.
+ \tag{W.165}\label{wbII:eq:CN:4.7}
+\]
+This proves the first vanishing in \eqref{wbII:eq:CN:4.5}.
+
+We next check the second.  At a normal-crossing (self-crossing) point with local equation
+\(uv=0\), the pullback map
+\(\Omega^1_S\to\eta_*\Omega^1_{\widetilde S}\) has kernel exactly
+\(\mathscr T_S\).  Indeed, in
+\(R=\C\{u,v,w\}/(uv)\) the relation is
+\(v\,du+u\,dv=0\).  If
+\(a\,du+b\,dv+c\,dw\) restricts to zero on both branches, then
+\(a\in(v)\), \(b\in(u)\), and
+\(c\in(u)\cap(v)=(uv)=0\).  Modulo the relation the class is therefore a
+multiple of $\tau=v\,du=-u\,dv$.  This class is nonzero: if
+\(v\,du=h(v\,du+u\,dv)\), then coefficient comparison gives
+  \((1-h)v=0\) and $hu=0$.  Since
+\(\operatorname{Ann}_R(v)=(u)\) and \(\operatorname{Ann}_R(u)=(v)\),
+\(1-h\in(u)\) and \(h\in(v)\), which would imply
+\(1=(1-h)+h\in(u)+(v)\), impossible because $(u)+(v)$ is proper.
+Moreover $(u+v)\tau=0$.  Since $u+v$ is a non-zero-divisor in
+$R$ (the associated primes are $(u)$ and $(v)$), $\tau$ is genuine
+torsion.
+Conversely, each summand of the normalization module is a module over one of
+the domains $R/(u)$ and $R/(v)$.  A non-zero-divisor of the reduced ring $R$
+avoids both minimal primes and therefore acts injectively on both summands;
+the target is torsion-free.  Thus the kernel of the normalization map is
+exactly the torsion subsheaf, and there is an injection
+\[
+ \widetilde\Omega^1_S\hookrightarrow\eta_*\Omega^1_{\PP^1\times\PP^1}.
+ \tag{W.166}\label{wbII:eq:CN:4.8}
+\]
+Since $\eta^*A\simeq\cO_{\PP^1\times\PP^1}$, the projection formula and \eqref{wbII:eq:CN:4.8}
+give
+\[
+ H^0(S,\widetilde\Omega^1_S\otimes A)
+ \hookrightarrow
+ H^0(\PP^1\times\PP^1,\Omega^1_{\PP^1\times\PP^1})=0.
+ \tag{W.167}\label{wbII:eq:CN:4.9}
+\]
+The last equality follows from
+\(\Omega^1_{\PP^1\times\PP^1}\simeq
+\operatorname{pr}_1^*\Omega^1_{\PP^1}\oplus
+\operatorname{pr}_2^*\Omega^1_{\PP^1}\) and
+\(H^0(\PP^1,\Omega^1_{\PP^1})=0\).
+
+Finally, along the conductor $D$ the pullback of $dg|_S$ is zero.  Locally
+$g=h\,uv$ with $h$ a unit, so after restriction to $S$ one has
+$i^*(dg)=h(v\,du+u\,dv)$; both coefficients vanish on the preimage of $D$.
+Proposition~\ref{wbII:prop:conductor}
+therefore gives a nonzero section in \eqref{wbII:eq:CN:4.6}.  This proves the theorem.
+\end{proof}
+
+\begin{remark}[what the theorem does and does not refute]
+\label{wbII:rem:scope}
+The bundle $A$ is non-torsion on $S$: restriction to
+\(C_0\times\{r\}\) would otherwise make $A_\lambda$ torsion.  Thus the
+example meets the non-torsion condition attached to the p.~692 reduction.
+In fact Lemma~\ref{wbII:lem:extending-gluing} gives an extending choice of $A$ on
+the displayed smooth total space.  If $\widetilde L:=\omega_{\mathcal X}\otimes
+\widetilde A^{-1}$, then
+$(\widetilde L^\vee\otimes\omega_{\mathcal X})|_S\simeq A$, so the example
+also has the Serre-dual twist appearing in the CDP argument.  This family
+nevertheless does not have
+the global topological and algebraic-dimension hypotheses of CDP20
+Theorem~2.2.  The conclusion is exactly the formal one stated in
+Theorem~\ref{cdp:st:B1}: the two displayed endpoint vanishings do not
+control the torsion-supported lifting obstruction $\delta_A$.
+\end{remark}
+
+\subsection{Cartier-divisor duality without a normality hypothesis}
+
+\begin{theorem}[complete Cartier-fibre duality]
+\label{wbII:thm:cartier-duality}
+\ Let $X$ be a compact smooth complex threefold,
+$i:W\hookrightarrow X$ an effective Cartier divisor, and $E$ a holomorphic
+vector bundle.  Put $F=E|_W$ and
+\[
+\omega_W=(\omega_X\otimes\mathcal O_X(W))|_W.
+\]
+For $q=0,1,2$ there are natural perfect pairings
+\[
+H^q(W,F)^\vee
+\simeq H^{2-q}(W,F^\vee\otimes\omega_W).
+\tag{W.11}\label{wbII:eq:W:5.11}
+\]
+Moreover $H^q(W,F)=0$ for $q>2$.  No normality or reducedness hypothesis on
+$W$ is used.
+\end{theorem}
+
+\begin{proof}
+Let \(i:W\hookrightarrow X\) be the given Cartier inclusion.  The
+length-one locally free resolution
+\[
+ 0\longrightarrow\mathcal O_X(-W)
+ \xrightarrow{\;\cdot g\;}\mathcal O_X
+ \longrightarrow i_*\mathcal O_W\longrightarrow0
+\]
+is locally defined by a nonzerodivisor \(g\); changing \(g\) by a unit
+gives the usual transition functions for \(\mathcal O_X(W)\).
+Applying sheaf Hom into \(\omega_X\), the degree-zero map is
+injective and its cokernel is
+\[
+ \mathcal E xt^1_X(i_*\mathcal O_W,\omega_X)
+ =i_*\bigl((\omega_X\otimes\mathcal O_X(W))|_W\bigr)
+ =i_*\omega_W.
+\]
+The other sheaf Ext groups vanish.  Equivalently, \(W\) is a
+two-dimensional Cohen--Macaulay Gorenstein complex space and its
+analytic dualizing complex is
+\[
+ K_W^\bullet\simeq\omega_W[2].
+\]
+This is the hypersurface calculation in
+\cite[Proposition~2 and pp.~90--91]{RR70push}; no normality or
+reducedness of the Cartier divisor is used.
+
+For the locally free sheaf \(F=E|_W\), the analytic duality trace of
+\cite[Theorem~2, pp.~82--83]{RR70push} supplies the actual
+functorial pairing, and identifies the dual of \(H_c^q(W,F)\) with
+\[
+ \operatorname{Ext}^{-q}_W(F,K_W^\bullet)
+ =\operatorname{Ext}^{2-q}_W(F,\omega_W)
+ =H^{2-q}(W,F^\vee\otimes\omega_W).
+\]
+The last equality follows because the positive sheaf Ext groups
+of a locally free first argument vanish.  Since \(W\) is compact,
+\(H_c^q(W,F)=H^q(W,F)\); coherent cohomology is finite-dimensional,
+so this pairing is perfect in the ordinary algebraic sense.
+It is this trace pairing, rather than an unspecified arrow between
+two matching five-term sequences, that constructs the isomorphism
+\eqref{wbII:eq:W:5.11}.  Its contravariance in \(F\) is precomposition in the Ext
+argument.
+
+For \(q>2\), the displayed Ext degree \(2-q\) is negative.  The
+derived Hom of the locally free sheaf \(F\), concentrated in degree
+zero, into the sheaf \(\omega_W\), concentrated in degree zero, has
+no negative cohomology.  Hence the duality theorem gives
+\(H^q(W,F)=0\).  This also follows directly from coherent
+cohomological dimension on the compact surface \(W\).
+\end{proof}
+
+\begin{proposition}[absolute duality on a compact Cartier fibre]
+\label{wbII:prop:cartier-duality-absolute}
+\ Let $X$ be a smooth complex threefold, not necessarily compact,
+and let $i:W\hookrightarrow X$ be a compact effective Cartier divisor that
+is the full scheme-theoretic fibre of a holomorphic map $f:X\to B$ to a
+smooth curve.  For every vector bundle $E$ on $X$ there is a functorial
+perfect pairing
+\[
+ H^2(W,E|_W)\times
+ H^0(W,E^\vee|_W\otimes\omega_X|_W)\longrightarrow\mathbb C.
+\]
+Equivalently,
+\[
+ H^2(W,E|_W)^\vee\simeq
+ H^0(W,E^\vee|_W\otimes\omega_X|_W).
+\tag{W.12}\label{wbII:eq:W:5.15a}
+\]
+Neither normality of $W$ nor compactness of the ambient threefold is
+required.
+\end{proposition}
+
+\begin{proof}
+An effective Cartier divisor in a smooth threefold is locally a
+two-dimensional hypersurface quotient of a regular local ring.  Hence $W$
+is Cohen--Macaulay and Gorenstein.  If $K_W^\bullet$ denotes its analytic
+dualizing complex, the complete-intersection calculation of Ramis--Ruget
+gives
+\[
+ K_W^\bullet\simeq\omega_W[2]
+\]
+with $\omega_W$ invertible
+\cite[Proposition~2 and the complete-intersection calculation,
+pp.~90--91]{RR70push}.  Cartier adjunction gives
+\[
+ \omega_W\simeq
+ (\omega_X\otimes\mathcal O_X(W))|_W.
+\]
+Because $W$ is the full fibre over $b\in B$, one has
+$\mathcal O_X(W)\simeq f^*\mathcal O_B(b)$ locally along $W$; its
+restriction to $W$ is the pullback of a one-dimensional vector space.
+Choosing a nonzero vector identifies
+$\mathcal O_X(W)|_W\simeq\mathcal O_W$ and
+$\omega_W\simeq\omega_X|_W$.  A different choice rescales the final trace
+pairing by a nonzero scalar.
+
+Ramis--Ruget duality pairs $H_c^p(W,\mathcal G)$ with
+$\operatorname{Ext}^{-p}_W(\mathcal G,K_W^\bullet)$
+\cite[Theorem~2, pp.~82--83]{RR70push}.  Since $W$ is compact,
+$H_c^p=H^p$.  Taking $p=2$ and $\mathcal G=E|_W$, the shift and local
+freeness give
+\[
+ \operatorname{Ext}^{-2}_W(\mathcal G,K_W^\bullet)
+ \simeq\operatorname{Hom}_W(\mathcal G,\omega_W)
+ =H^0(W,E^\vee|_W\otimes\omega_W).
+\]
+Grauert finiteness makes both coherent cohomology spaces finite-dimensional
+\cite{Grauert1960D}; the strong analytic duality is therefore the ordinary
+algebraic perfect pairing \eqref{wbII:eq:W:5.15a}.  Its variance is contravariant in $E|_W$
+by precomposition on the Hom term.  This proves the assertion.
+\end{proof}
+
+\subsection{Flatness and top-degree analytic base change}
+
+\begin{lemma}[automatic properness, flatness, and Cartier fibres]
+\label{wbII:lem:curve-flatness}
+\ Let $f:X\to B$ be a nonconstant holomorphic map from a connected
+complex manifold to a Riemann surface.  Then $f$ is flat, every holomorphic
+vector bundle on $X$ is $f$-flat, and every full scheme-theoretic fibre is an
+effective Cartier divisor of pure codimension one.  If $X$ is compact, then
+$f$ is proper.
+\end{lemma}
+
+\begin{proof}
+Fix $x\in X$, $c=f(x)$, and put
+$R=\mathcal O_{B,c}$, $S=\mathcal O_{X,x}$.  The ring $R$ is a discrete
+valuation ring and $S$ is a regular local domain.  The homomorphism
+$R\to S$ is injective.  Indeed, if a nonzero germ $h\in R$ mapped to zero,
+$h\circ f$ would vanish on a neighbourhood of $x$.  The zero set of a
+nonzero one-variable holomorphic germ is isolated, so $f$ would be constant
+on that neighbourhood and therefore, by the identity theorem on connected
+$X$, constant everywhere.
+
+Thus every nonzero element of $R$ acts on the domain $S$ as a nonzero
+element and hence as a nonzerodivisor.  Therefore $S$ is torsion-free as an
+$R$-module.  A module over a discrete valuation ring is flat if and only if
+it is torsion-free \cite[Tag~0AUW]{StacksProject}; hence $S$ is $R$-flat.
+This holds at every point, so $f$ is flat.  A vector bundle is locally a
+finite free $\mathcal O_X$-module, and a finite direct sum of $R$-flat
+modules is flat; hence it is $f$-flat.  If $t$ is a local parameter at
+$c$, then $f^*t$ is a nonzero element of the domain $S$ and thus a
+nonzerodivisor.  The full scheme-theoretic fibre is therefore locally cut
+out by one nonzerodivisor, so it is an effective Cartier divisor of pure
+codimension one.  Finally, when $X$ is compact, the underlying continuous
+map to the Hausdorff surface $B$ is proper.
+\end{proof}
+
+\begin{proposition}[the exact analytic base-change input]
+\label{wbII:prop:analytic-base-change}
+\ Let $f:X\to B$ be proper between complex spaces, let
+$\mathcal F$ be coherent and $f$-flat, and fix $c\in B$.  If
+\[
+H^3(X_c,\mathcal F|_{X_c})=0,
+\tag{W.13}\label{wbII:eq:W:5.16}
+\]
+then the canonical fibre map
+\[
+\beta_c^2:
+(R^2f_*\mathcal F)_c\otimes_{\mathcal O_{B,c}}\mathbb C(c)
+\longrightarrow H^2(X_c,\mathcal F|_{X_c})
+\tag{W.14}\label{wbII:eq:W:5.17}
+\]
+is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+Apply B\u{a}nic\u{a}--St\u{a}n\u{a}\c{s}il\u{a},
+Chapter~III, \S3, Corollary~3.5, with $q=3$
+\cite[pp.~120--121]{BS76push}.  Its hypotheses are precisely
+properness, coherence, and flatness.  Condition \eqref{wbII:eq:W:5.16} first forces the
+degree-three direct image to vanish near $c$.  The corollary then applies the
+equivalent base-change conditions of its preceding Theorem~3.4 in degree
+$q-1=2$ and states that the canonical map \eqref{wbII:eq:W:5.17} is bijective.  This is the
+top-degree argument used in \cite[Lemma~1.5]{CDP98}; it does not require
+the stronger, false assertion that all direct images are locally free.
+\end{proof}
+
+\begin{corollary}[uniform top-degree base change for surface fibres]
+\label{wbII:cor:surface-top-base-change}
+\ Let $f:X\to B$ be a proper flat holomorphic map to a Riemann
+surface whose full scheme-theoretic fibres have pure complex dimension two,
+and let $E$ be a holomorphic vector bundle on $X$.  Then
+\[
+ R^qf_*E=0\quad(q>2)
+ \tag{W.15}\label{wbII:eq:W:5.17-V}
+\]
+and, for every $b\in B$, including a point with nonreduced fibre, the
+canonical map
+\[
+ (R^2f_*E)_b\otimes_{\mathcal O_{B,b}}\mathbb C(b)
+ \xrightarrow{\ \sim\ }H^2(X_b,E|_{X_b})
+ \tag{W.16}\label{wbII:eq:W:5.17-T}
+\]
+is an isomorphism.  No constancy of $h^2$, local freeness of $R^2f_*E$, or
+reducedness of $X_b$ is required.
+\end{corollary}
+
+\begin{proof}
+On a sufficiently small neighbourhood $U$ of $b$, the finite-complex theorem
+used in analytic cohomology and base change represents $Rf_*E|_U$ by a
+bounded complex $K^\bullet$ of finite free $\mathcal O_U$-modules
+\cite[Chapter~III, \S3, Theorem~3.4]{BS76push}.  Flatness of
+$E$ over $B$ identifies its derived fibre with the ordinary restriction to
+the full scheme-theoretic fibre.  Over the discrete valuation ring
+$A=\mathcal O_{B,b}$, the universal-coefficient sequence is
+\[
+0\longrightarrow H^q(K^\bullet)_b\otimes_A\mathbb C(b)
+ \longrightarrow H^q(K^\bullet\otimes_A\mathbb C(b))
+ \longrightarrow
+ \operatorname{Tor}_1^A(H^{q+1}(K^\bullet)_b,\mathbb C(b))
+ \longrightarrow0.
+\tag{W.17}\label{wbII:eq:W:5.17-U}
+\]
+If some $R^qf_*E$ with $q>2$ were nonzero, choose the largest such $q$ and a
+point of its support.  Nakayama's lemma makes the left term of \eqref{wbII:eq:W:5.17-U}
+nonzero there, while maximality kills the Tor term.  This would give nonzero
+coherent cohomology in degree $q>2$ on a compact two-dimensional complex
+space, a contradiction.  Thus \eqref{wbII:eq:W:5.17-V} holds.  For $q=2$, the only
+obstruction in \eqref{wbII:eq:W:5.17-U} is
+$\operatorname{Tor}_1^A((R^3f_*E)_b,\mathbb C(b))$, which is zero by
+\eqref{wbII:eq:W:5.17-V}, proving \eqref{wbII:eq:W:5.17-T}.  This is the explicit obstruction calculation
+behind \cref{wbII:prop:analytic-base-change}..
+\end{proof}
+
+\subsection{Marked data used in the restriction arguments}
+Here $f:X\to B=\mathbb P^1$ is the standard family of Paper I,
+$B^\circ=B\setminus\{p_0,p_1,p_2\}$, and $F$ is a smooth fibre.
+The cusp is $W=f^{-1}(p_0)$ and $i:W\hookrightarrow X$ is its inclusion.
+Its normalization is $\eta:\widetilde W\simeq\mathrm{dP}_6\to W$.
+Use the ordered dual lattices
+\[
+ V=H^1(F;\mathbb Z)=\mathbb Z\langle\gamma,u,w,\delta\rangle,
+ \qquad
+ \Lambda=H_1(F;\mathbb Z)
+ =\mathbb Z\langle\widehat\gamma,\widehat u,\widehat w,\widehat\delta\rangle.
+\]
+Vectors are columns. The cohomology monodromies and their dual homology
+actions are
+\[
+T_1=\begin{pmatrix}1&0&-6&2\\0&-1&1&1\\0&-1&0&1\\0&0&0&1\end{pmatrix},
+\quad
+T_2=\begin{pmatrix}1&6&0&-3\\0&0&-1&1\\0&1&0&0\\0&0&0&1\end{pmatrix},
+\quad A_j=(T_j^{-1})^{\mathsf t}.
+\]
+Put $T_0=(T_1T_2)^{-1}$ and let $G$ denote the generated monodromy group.
+The finite-filling orders, translations and invariant forms are
+\[
+\begin{gathered}
+(m_1,m_2)=(3,4),\qquad
+v_1=(1,2,-4,0)^{\mathsf t},\quad v_2=(-1,-3,3,0)^{\mathsf t},\\
+\eta_1=2u+w+3\delta,\quad \eta_2=u+w+2\delta,
+\qquad q=u\wedge w+6\gamma\wedge\delta.
+\end{gathered}
+\]
+The actual period functions of Paper I define
+\[
+\Pi(z)=\begin{pmatrix}6\mu(z)&\tau(z)&1&0\\
+\beta(z)&\mu(z)&0&1\end{pmatrix},
+\quad
+\operatorname{Im}\beta-
+\frac{6(\operatorname{Im}\mu)^2}{\operatorname{Im}\tau}<0,
+\]
+so $\Pi(z):\Lambda_{\mathbb R}\to\mathbb C^2$ is a real isomorphism.
+The marking is $\Xi(z,x+\Lambda)=[z,\Pi(z)x]$.
+The finite overlap on the $s_j$-cover is translation by
+$(\log s_j)/(2\pi i)\,\Pi(s_j)v_j$.
+At the cusp use the unchanged zero-section gluing, with no additional
+vertical translation. These are the data constructed and proved in
+Paper I, Proposition~B.2, Theorem~B.6 and Proposition~B.9. The arguments
+below do not replace these data by a topologically equivalent model.
+
+\subsection{A topology-independent \texorpdfstring{$\operatorname{Pic}^0$}{Pic0} route and three all-Pic routes}
+
+Let $i:W\hookrightarrow X$ denote the cusp-fibre inclusion and
+$\eta:\widetilde W\simeq\mathrm{dP}_6\to W$ its normalization.
+
+\begin{proposition}[topologically trivial twists pull back trivially]
+\label{wbII:prop:pic0-pullback}
+\ Assume that $\omega_X$ is trivial on a neighbourhood of $W$.
+For every $L\in\operatorname{Pic}^0(X)$, put
+\[
+ A_L=(L^\vee\otimes\omega_X)|_W.
+\]
+Then
+\[
+ \eta^*A_L\simeq\mathcal O_{\mathrm{dP}_6}.
+\tag{W.18}\label{wbII:eq:W:5.17a}
+\]
+No assertion about $H^2(X;\mathbb Z)$ is used.
+\end{proposition}
+
+\begin{proof}
+Every line bundle in $\operatorname{Pic}^0(X)$ has $c_1(L)=0$.  Naturality
+therefore gives $c_1(\eta^*i^*L)=0$.  The degree-six del Pezzo surface is the
+blow-up of $\mathbb P^2$ in three noncollinear points, so
+$H^1(\mathrm{dP}_6,\mathcal O)=0$.  The exponential sequence consequently
+makes
+\[
+ c_1:\operatorname{Pic}(\mathrm{dP}_6)\longrightarrow
+ H^2(\mathrm{dP}_6;\mathbb Z)
+\]
+injective.  Hence $\eta^*i^*L$ is trivial.  The assumed neighbourhood
+trivialization of $\omega_X$ also pulls back trivially, which proves
+\eqref{wbII:eq:W:5.17a}.
+\end{proof}
+
+\begin{proposition}[the exact all-line-bundle restriction obstruction]
+\label{wbII:prop:all-pic-restriction}
+\ Define
+\[
+ r=\eta^*i^*:\operatorname{Pic}(X)\longrightarrow
+ \operatorname{Pic}(\mathrm{dP}_6).
+\]
+Under the same local canonical trivialization,
+\[
+ \eta^*A_L\simeq r(L)^\vee
+ \qquad(L\in\operatorname{Pic}(X)).
+\tag{W.19}\label{wbII:eq:W:5.17b}
+\]
+Thus the trivial-pullback hypothesis used by
+\cref{wbII:prop:conductor} holds simultaneously for every line bundle exactly
+when $r=0$.  It always holds on $\operatorname{Pic}^0(X)$.
+\end{proposition}
+
+\begin{proof}
+Pullback commutes with tensor product and duals, while the local
+trivialization gives $\eta^*i^*\omega_X\simeq\mathcal O$.  This is \eqref{wbII:eq:W:5.17b},
+and its uniform equivalence with $r=0$ is immediate.  The final assertion is
+\cref{wbII:prop:pic0-pullback}.
+\end{proof}
+
+\begin{proposition}[Leray-edge vanishing of normalized cusp restrictions]
+\label{wbII:prop:leray-edge-restriction}
+\ For the constructed map $f:X\to B$ and every
+$L\in\operatorname{Pic}(X)$, the degree-two Leray edge section satisfies
+\[
+ e(c_1(L))=0\in H^0(B,R^2f_*\mathbb Z),
+ \qquad
+ \eta^*i^*L\simeq\mathcal O_{\mathrm{dP}_6}.
+\tag{W.20}\label{wbII:eq:W:5.17c}
+\]
+This proof does not invoke the packaged conclusion
+$H^2(X;\mathbb Z)=0$.
+\end{proposition}
+
+\begin{proof}
+First record explicitly the compatibility used here.  For every $b\in B$,
+proper base change and functoriality of the filtered-complex spectral
+sequence give a commutative square
+\[
+\begin{CD}
+ H^2(X;\mathbb Z) @>{e}>> H^0(B,R^2f_*\mathbb Z)\\
+ @V{i_b^*}VV @VV{\operatorname{ev}_b}V\\
+ H^2(X_b;\mathbb Z) @= H^2(X_b;\mathbb Z).
+\end{CD}
+\tag{W.21}\label{wbII:eq:W:5.17d}
+\]
+Indeed, pull the Leray filtered complex back along $\{b\}\to B$; the
+spectral sequence over a point has only column zero, so its edge is the
+identity, while the right vertical map is the proper-base-change
+identification.  This uses the functoriality and convergence statements in
+\cite[Tags~012O, 012U and~012W]{StacksProject} and analytic proper base
+change \cite[Theorem~2.3.26]{Dimca2004}.  The connecting homomorphism in the
+exponential sequence is natural under $i_b^*$, so \eqref{wbII:eq:W:5.17d} sends
+$c_1(L)$ to $c_1(L|_{X_b})$.
+
+Put $s_L=e(c_1(L))$.  The image of an edge morphism consists of permanent
+cycles, hence
+\[
+ s_L\in E_\infty^{0,2}\subseteq\ker
+ \bigl(d_2^{0,2}:E_2^{0,2}\to E_2^{2,1}\bigr);
+\tag{W.22}\label{wbII:eq:W:5.17e}
+\]
+see \cite[Tags~011N, 011O and~012U]{StacksProject}.  For the constructed
+candidate, Paper~I, Proposition~D.2; Paper~I, Lemma~D.4 give
+\[
+ E_2^{0,2}=\mathbb Z(2q),\qquad
+ E_2^{2,1}=\mathbb Z\,\omega[\delta],\qquad
+ d_2^{0,2}(2q)=\omega[\delta].
+\]
+Thus $d_2^{0,2}$ is an isomorphism and \eqref{wbII:eq:W:5.17e} forces $s_L=0$.
+Taking $b=p_0$ in \eqref{wbII:eq:W:5.17d} gives $c_1(i^*L)=0$, and hence
+$c_1(\eta^*i^*L)=0$.  Finally, the injectivity of
+$c_1:\operatorname{Pic}(\mathrm{dP}_6)\to H^2(\mathrm{dP}_6;\mathbb Z)$
+proved in \cref{wbII:prop:pic0-pullback} makes $\eta^*i^*L$ trivial.
+\end{proof}
+
+\begin{lemma}[the pair-of-pants defect class]
+\label{wbII:lem:picard-crossed-defect}
+\ Choose the compact pair-of-pants core $P\subset B^\circ$ and
+the zero-section whiskers used in Paper~I, Proposition~D.6, and put
+$J_P=f^{-1}(P)$.  Orient its boundary meridians clockwise.  Write
+$\rho_0$ for the projection of the zero-section cusp meridian
+$\widetilde a_0$.  The standard family uses the tautological cusp
+gluing, whose affine regluing class is $\mu=0$ (equivalently
+$\ell_0=\gamma(\mu)=0$); hence the flat-marked cusp lift has no vertical
+translation.  The base loops and their chosen lifts therefore satisfy
+\[
+ \rho_1\rho_2\rho_0=1,
+ \qquad
+ \widehat\rho_1\widehat\rho_2\widetilde a_0=1.
+\tag{W.23}\label{wbII:eq:W:5.17g}
+\]
+For $L\in\operatorname{Pic}(X)$, write
+$E=c_1(L|_F)\in\bigwedge^2V$.  Then $E\in(\bigwedge^2V)^G$, and there is a
+crossed homomorphism
+\[
+ z:\pi_1(P)\longrightarrow V_{\mathbb R},\qquad
+ z(gh)=z(g)+T_gz(h),
+\tag{W.24}\label{wbII:eq:W:5.17h}
+\]
+whose class records
+$c_1(L|_{J_P})-[\Omega_E]$.  Here $\Omega_E$ is the closed, translation-
+invariant vertical two-form induced by $E$ in the flat marking.  If
+$d_i=z(\rho_i)$ and a bar denotes the image in
+$V_G\otimes\mathbb R$, then
+\[
+ \bar d_1+\bar d_2+\bar d_0=0.
+\tag{W.25}\label{wbII:eq:W:5.17i}
+\]
+The three barred classes, and the number
+$\langle d_0,\widehat\delta\rangle$, do not depend on the chosen crossed-
+homomorphism representative.  More precisely, use the base-first convention
+for the edge injection in \eqref{wbII:eq:W:5.17j}.  For any oriented loop $\rho\subset P$
+and any $A_\rho$-invariant $\nu\in\Lambda$, its flat-marked sweep satisfies
+\[
+ \bigl\langle z(\rho),\nu\bigr\rangle
+ =-\bigl\langle c_1(L|_{J_P})-[\Omega_E],
+ a_*([S^1_\nu]\times[\widetilde\rho])\bigr\rangle.
+\tag{W.26}\label{wbII:eq:W:5.17j'}
+\]
+Here $a$ is the fibrewise translation action and $\widetilde\rho$ is the
+flat-marked lift of $\rho$.
+\end{lemma}
+
+\begin{proof}
+The flat marking identifies the pullback of $J_P$ to the universal cover of
+$P$ with
+$\widetilde P\times(\Lambda_{\mathbb R}/\Lambda)$.  Since $E$ is the
+restriction of a class on the total space, it is fixed by every monodromy
+$T_g$.  The constant vertical form representing $E$ is therefore invariant
+under the deck action and descends to the asserted form $\Omega_E$ on
+$J_P$.
+
+The pair of pants retracts onto a graph.  Hence the Serre spectral sequence
+of the marked real torus bundle has only columns zero and one and gives the
+short exact edge sequence
+\[
+0\longrightarrow H^1(P;V_{\mathbb R})
+ \longrightarrow H^2(J_P;\mathbb R)
+ \longrightarrow H^0(P;\textstyle\bigwedge^2V_{\mathbb R})
+ \longrightarrow0.
+\tag{W.27}\label{wbII:eq:W:5.17j}
+\]
+Both $c_1(L|_{J_P})$ and $[\Omega_E]$ map to $E$, so their difference is
+the image of a unique class in $H^1(P;V_{\mathbb R})$.  The standard group-
+cohomology model for a graph identifies this group with crossed
+homomorphisms modulo principal crossed homomorphisms
+\cite[Chapter~I, \S5]{Brown1982}; this gives \eqref{wbII:eq:W:5.17h}.
+
+For completeness, the slant convention in \eqref{wbII:eq:W:5.17j'} is part of this
+identification, not an additional geometric assertion.  Give an oriented
+edge of a graph spine of $P$ a coordinate $s$ increasing with its based
+loop and represent the corresponding $V_{\mathbb R}$-valued cellular
+one-cochain by a base-first form $ds\wedge\beta_s$.  On the sweep of an
+$A_\rho$-invariant fibre circle $S^1_\nu$, Fubini's formula gives
+\[
+\int_{S^1_s\times S^1_\nu}ds\wedge\beta_s
+ =\int_{S^1_s}\langle\beta_s,\nu\rangle,ds
+ =\langle z(\rho),\nu\rangle.
+\]
+The sweep in \eqref{wbII:eq:W:5.17j'} is written in the fibre-first order
+$[S^1_\nu]\times[\widetilde\rho]$, which differs from this base-first
+cross-product orientation by $(-1)^{1\cdot1}=-1$; this is the displayed
+minus sign.
+Changing the cellular representative by a principal cochain changes both
+sides by the same boundary term, which vanishes because $A_\rho\nu=\nu$.
+This proves \eqref{wbII:eq:W:5.17j'}.
+
+Applying $z$ to \eqref{wbII:eq:W:5.17g} gives
+\[
+ d_1+T_1d_2+T_1T_2d_0=0.
+\]
+All $T_g$ act trivially on the global coinvariants, proving \eqref{wbII:eq:W:5.17i}.  A
+change of representative has the form
+$z(g)\mapsto z(g)+(T_g-I)a$.  Its image in $V_G\otimes\mathbb R$ is zero.
+Moreover the displayed matrices in
+Paper~I, Proposition~C.1 fix $\widehat\delta$ under every dual
+action $A_g$.  Therefore
+\[
+ \langle(T_g-I)a,\widehat\delta\rangle
+ =\langle a,(A_g^{-1}-I)\widehat\delta\rangle=0,
+\]
+which proves the final assertion.
+\end{proof}
+
+\begin{lemma}[the finite-cover norm identity]
+\label{wbII:lem:picard-finite-norm}
+\ Retain the notation of
+\cref{wbII:lem:picard-crossed-defect}; Paper~I, Proposition~B.9.  For
+$j=1,2$, let
+\[
+ N_{T_j}=I+T_j+\cdots+T_j^{m_j-1}.
+\]
+With the clockwise conventions of \eqref{wbII:eq:W:5.17g}, the pullback to the
+$m_j$-fold $s_j$-cover gives
+\[
+ N_{T_j}d_j=\iota_{v_j}E
+ \quad\text{in }V_{\mathbb R},
+\qquad
+ m_j\bar d_j=[\iota_{v_j}E]
+ \quad\text{in }V_G\otimes\mathbb R.
+\tag{W.28}\label{wbII:eq:W:5.17k}
+\]
+\end{lemma}
+
+\begin{proof}
+Restriction of the crossed homomorphism to the subgroup generated by
+$\rho_j^{m_j}$ has value
+\[
+ z(\rho_j^{m_j})
+ =\sum_{r=0}^{m_j-1}T_j^rz(\rho_j)=N_{T_j}d_j.
+\tag{W.29}\label{wbII:eq:W:5.17l}
+\]
+This is the cohomological pullback of the annular defect to the
+$s_j$-cover; the norm, rather than unqualified multiplication by $m_j$, is
+essential before passage to global coinvariants.  A principal change
+$d_j\mapsto d_j+(T_j-I)a$ does not alter this value, since
+$N_{T_j}(T_j-I)a=(T_j^{m_j}-I)a=0$.
+
+Let $Q_j:J'_j\to N_j$ be the finite quotient map.  The global flat marking
+$\Xi$ over the full disc $\Delta_j$ makes the constant vertical form
+$\Omega_E$ well defined on $J'_j$.  Radial retraction onto the central
+torus makes
+\[
+ H^2(J'_j;\mathbb R)\longrightarrow H^2(A_0^{(j)};\mathbb R)
+\]
+an isomorphism.  On the central fibre the quotient is exactly $\pi_j$, and
+naturality gives
+\[
+ (Q_j|_{A_0^{(j)}})^*c_1(L|_{S_j})
+ =\pi_j^*c_1(L|_{S_j})=E.
+\tag{W.30}\label{wbII:eq:W:5.17l'}
+\]
+The second equality is the actual radial/stalk identification in
+Paper~I, Lemma~B.10; on a nearby fibre the gluing map $h_j$
+is a translation and therefore acts trivially on $H^2$ of that fibre.
+Consequently the two classes
+$c_1(Q_j^*(L|_{N_j}))$ and $[\Omega_E]$ have the same central restriction,
+and the retraction isomorphism proves
+\[
+ c_1(Q_j^*(L|_{N_j}))-[\Omega_E]=0
+ \quad\text{in }H^2(J'_j;\mathbb R).
+\tag{W.31}\label{wbII:eq:W:5.17l''}
+\]
+
+On $\Delta_j^*$, the source identity
+$h_j\widetilde g_j^{\log}h_j^{-1}=\widetilde g_j^0$ shows that $h_j$
+descends from the logarithmic quotient $N_j^*$ to the linear/global
+quotient $J^*$.  Thus
+\[
+ Q_j^*(L|_{N_j})|_{\Delta_j^*}
+ \simeq h_j^*(L|_{J^*}).
+\tag{W.32}\label{wbII:eq:W:5.17l'''}
+\]
+The logarithmic overlap is the holomorphic translation
+\[
+ h_j[s,\zeta]=[s,\zeta+\alpha(s)\Pi(s)v_j],
+ \qquad \alpha(s)=\frac{\log s_j}{2\pi i}.
+\]
+To compute its effect on a real cohomology class, retain the exact
+real marking
+\[
+ \Xi(s,x+\Lambda)=[s,\Pi(s)x],\qquad
+ J_s=\Pi(s)^{-1}\circ i\circ\Pi(s)
+ \quad\text{on }\Lambda_{\mathbb R}.
+\]
+The period matrix \(\Pi(s)\) is a real isomorphism by the displayed period inequality;
+thus \(J_s\) is a well-defined smooth family of real complex
+structures.  On a branch of the logarithm the actual real
+translation vector is
+\[
+ a_j(s)=\operatorname{Re}\alpha(s)\,v_j+
+        \operatorname{Im}\alpha(s)\,J_s v_j.
+ \tag{W.33}\label{wbII:eq:W:5.17m}
+\]
+Indeed, applying \(\Pi(s)\) gives precisely
+\(\alpha(s)\Pi(s)v_j\).  A different logarithm branch changes
+\(a_j\) by an integral multiple of \(v_j\), so its torus translation
+is branch-independent.  Complex multiplication by \(\alpha\) is
+not multiplication by a real scalar in this marking.
+
+Write \(E=\frac12\sum_{a,b}E_{ab}\,dx^a\wedge dx^b\) in the
+ordered real coordinates dual to the marked lattice; the matrix
+\((E_{ab})\) is alternating and is constant over the covering
+disc.  Direct substitution in the real map
+\(h_j(s,x)=(s,x+a_j(s))\) gives
+\[
+ \begin{split}
+ h_j^*\Omega_E-\Omega_E
+  ={}&\sum_{a,b}E_{ab}\,d a_j^a\wedge dx^b\\
+    &+\frac12\sum_{a,b}E_{ab}\,d a_j^a\wedge d a_j^b.
+ \end{split}
+ \tag{W.34}\label{wbII:eq:W:5.17m'}
+\]
+The last term has both arguments in the base directions.
+In particular, it restricts to zero when the base is an oriented
+circle.
+
+Take one full clockwise circle in the \(s_j\)-cover,
+\[
+ s_j(\theta)=r e^{-2\pi i\theta},\qquad 0\le\theta\le1.
+\]
+Choose the logarithm continuously along that circle, so
+\(\alpha(1)=\alpha(0)-1\).  The endpoints represent the same
+point of the covering disc.  The marking is defined on the full
+disc, and therefore \(J_{s_j(1)}=J_{s_j(0)}\).  Consequently
+\[
+ a_j(1)-a_j(0)=-v_j.
+ \tag{W.35}\label{wbII:eq:W:5.17m''}
+\]
+For any \(\lambda\in\Lambda\), restrict \eqref{wbII:eq:W:5.17m'} to the sweep of
+the marked circle \(x(u)=u\lambda\), using the base-first
+orientation \(d\theta\wedge du\).  Its integral is exactly
+\[
+ \int_0^1 E\!\left(\frac{d a_j}{d\theta},\lambda\right)d\theta
+ =E(a_j(1)-a_j(0),\lambda)
+ =-E(v_j,\lambda).
+\]
+The horizontal term contributes zero.  Since marked lattice
+circles span \(H_1(F;\mathbb R)\), these integrals determine the
+mixed component in
+\[
+ H^1(S^1;\mathbb R)\otimes H^1(F;\mathbb R).
+\]
+Thus the mixed component of \(h_j^*\Omega_E-\Omega_E\) is
+\(-\iota_{v_j}E\), with \((\iota_{v_j}E)(\lambda)=E(v_j,\lambda)\).
+
+The pullback of the defect
+\(c_1(L|_{J^*})-[\Omega_E]\) has zero fibre component and mixed
+component \(N_{T_j}d_j\) by \eqref{wbII:eq:W:5.17l}.  Translation by \(h_j\) does
+not change this mixed component: on the covering circle such
+a fibre-zero class is represented by
+\(d\theta\wedge\beta\), with \(\beta\) a constant fibre one-form,
+and substituting \(dx\mapsto dx+d a_j\) adds only a base two-form,
+which vanishes on the circle.  Equations \eqref{wbII:eq:W:5.17l''} and
+\eqref{wbII:eq:W:5.17l'''} state that the total pulled-back class extends over
+the covering disc and has zero mixed component.  It follows that
+\[
+ N_{T_j}d_j-\iota_{v_j}E=0.
+\]
+In the global coinvariants every \(T_j\) acts as the identity,
+so \(m_j\bar d_j=[\iota_{v_j}E]\).  This proves \eqref{wbII:eq:W:5.17k}, with the
+original clockwise convention and no change to either translation
+vector.
+\end{proof}
+
+\begin{lemma}[the cusp boundary defect and Chern-class specialization]
+\label{wbII:lem:picard-cusp-defect}
+\ In the notation of
+\cref{wbII:lem:picard-crossed-defect}, one has
+\[
+ \bar d_0=0\quad\text{in }V_G\otimes\mathbb R.
+\tag{W.36}\label{wbII:eq:W:5.17n}
+\]
+Moreover, for every line bundle $L$ on the cusp neighbourhood $N_0$,
+nearby-cycle specialization is compatible with first Chern classes:
+\[
+ \operatorname{sp}^2\bigl(c_1(L|_W)\bigr)=c_1(L|_F).
+\tag{W.37}\label{wbII:eq:W:5.17o}
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\widetilde a_0$ be the flat-marked clockwise zero-section meridian in
+the lifted relation of \eqref{wbII:eq:W:5.17g}, and let
+\[
+ \xi_{\widehat\delta}
+ =a_*([S^1_{\widehat\delta}]\times[\widetilde a_0])
+\]
+be its sweep under fibrewise translation by $\widehat\delta$.  The boundary
+$\rho_0$ of $P$ was chosen to be its projection.  This is the zero-section
+sweep: there is no hidden vertical drift in $\widetilde a_0$, by the
+explicit overlap calculation in Paper~I, Proposition~D.6.  Hence the
+vertical form $\Omega_E$ vanishes on the swept torus, and the slant identity
+\eqref{wbII:eq:W:5.17j'} gives
+\[
+ \langle d_0,\widehat\delta\rangle
+ =-\langle c_1(L|_{J_P})-[\Omega_E],
+          \xi_{\widehat\delta}\rangle
+ =-\langle c_1(L|_{J_P}),\xi_{\widehat\delta}\rangle.
+\tag{W.38}\label{wbII:eq:W:5.17p}
+\]
+Combine the exponential overlap coordinates $(x_1,x_2,t)$ given by $x_k=e^{2\pi i\zeta_k}$ and $t=e^{2\pi is}$ with
+the unimodular cusp chart
+\[
+ (u,x_1,x_2)=\left(\frac{t}{x_1x_2},x_1,x_2\right).
+\]
+The literal solid torus
+\[
+ \mathbb S_{\widehat\delta}
+ =\{|u|=\rho,\ x_1=1,\ |x_2|\le1\}
+\]
+has boundary parametrization
+\[
+ (\theta,\phi)\longmapsto
+ \bigl(\rho e^{i(\theta-\phi)},1,e^{i\phi}\bigr)
+\tag{W.39}\label{wbII:eq:W:5.17p0}
+\]
+and hence $t=\rho e^{i\theta}$; its $\phi$-circle is translation by
+$\widehat\delta$.  Direct evaluation in the proved cusp marking therefore
+identifies $\partial\mathbb S_{\widehat\delta}$ with
+$\xi_{\widehat\delta}$.  Reversing $\theta$ supplies the fixed clockwise
+convention and only changes the common orientation sign.  No reduced
+Mayer--Vietoris block or Leray comparison is used here.
+Since $L$ extends across $N_0$, its Chern class evaluates to zero on that
+boundary.  Thus the left side of \eqref{wbII:eq:W:5.17p} is zero.  By
+Paper~I, Theorem~C.3, $V_G=\mathbb Z[\delta]$, and evaluation on the
+globally invariant dual vector $\widehat\delta$ identifies
+$V_G\otimes\mathbb R$ with $\mathbb R$.  This proves \eqref{wbII:eq:W:5.17n}.
+
+For \eqref{wbII:eq:W:5.17o}, let $\ell=c_1(L|_{N_0})$, let
+$\iota_0:W\hookrightarrow N_0$, and let
+$\iota_t:F_t\hookrightarrow N_0$ be a sufficiently near smooth cusp fibre.
+The neighbourhood realization of the nearby-cycle unit
+$\mathbb Z_W\to\psi_{f_0}\mathbb Z$ recalled in the proof of
+Paper~I, Theorem~D.1 gives the commutative square
+\[
+\begin{CD}
+ H^2(N_0;\mathbb Z) @>{\iota_0^*}>> H^2(W;\mathbb Z)\\
+ @V{\iota_t^*}VV @VV{\operatorname{sp}^2}V\\
+ H^2(F_t;\mathbb Z) @= H^2(F_t;\mathbb Z).
+\end{CD}
+\tag{W.40}\label{wbII:eq:W:5.17p'}
+\]
+Applying this square to $\ell$ gives
+$\operatorname{sp}^2(c_1(L|_W))=c_1(L|_{F_t})$.  Flat parallel transport
+in the marked smooth family identifies the latter with $c_1(L|_F)=E$.
+Equivalently, $c_1$ is the connecting morphism in the exponential sequence,
+and restriction to the shrinking neighbourhoods and to $F_t$ commutes with
+that morphism before passage to the direct limit.  This proves the claimed
+naturality without using any global Leray differential.
+\end{proof}
+
+\begin{proposition}[direct boundary-Picard vanishing]
+\label{wbII:prop:direct-boundary-picard}
+\ For the standard threefold and every analytic line bundle
+$L\in\operatorname{Pic}(X)$,
+\[
+ c_1(L|_F)=0,
+ \qquad
+ \eta^*i^*L\simeq\mathcal O_{\mathrm{dP}_6}.
+\tag{W.41}\label{wbII:eq:W:5.17q}
+\]
+This proof is independent of the global Leray transgressions
+$d_2^{0,q}$ and of the packaged conclusion $H^2(X;\mathbb Z)=0$; it uses
+only the actual finite-filling lattices, their logarithmic overlap maps, the
+based boundary relation, the local cusp solid torus, and the local integral
+specialization theorem.
+\end{proposition}
+
+\begin{proof}
+The common invariant calculation in Paper~I, Theorem~C.3 first gives
+\[
+ E=c_1(L|_F)=kq.
+\]
+Because $L$ extends across the order-four filling, its fibre class belongs
+to the actual specialization lattice
+\[
+ \pi_2^*H^2(S_2;\mathbb Z)
+ =\{a\gamma\eta_2+bq:a\equiv b\pmod2\}
+\]
+of Paper~I, Proposition~C.4; Paper~I, Lemma~B.10.  Taking
+coefficient independence in the displayed invariant basis forces
+$a=0$ and $b=k$; hence $k$ is even.  Write $E=2nq$.
+
+Contraction with the two affine translation vectors is an exact integral
+calculation:
+\[
+ \iota_{v_1}(2q)=4\eta_1,
+ \qquad
+ \iota_{v_2}(2q)=-6\eta_2.
+\tag{W.42}\label{wbII:eq:W:5.17r}
+\]
+Indeed $v_1=(1,2,-4,0)^t$, $v_2=(-1,-3,3,0)^t$ in the basis dual to
+$(\gamma,u,w,\delta)$, while
+$q=uw+6\gamma\delta$.  In the global coinvariants,
+\[
+ [\eta_1]=3[\delta],\qquad [\eta_2]=2[\delta].
+\]
+Applying \cref{wbII:lem:picard-finite-norm} with $m_1=3$, $m_2=4$ therefore
+gives
+\[
+ \bar d_1=4n[\delta],\qquad
+ \bar d_2=-3n[\delta].
+\tag{W.43}\label{wbII:eq:W:5.17s}
+\]
+Now combine the balance relation \eqref{wbII:eq:W:5.17i} with the cusp vanishing \eqref{wbII:eq:W:5.17n}:
+\[
+ 0=\bar d_1+\bar d_2+\bar d_0=n[\delta].
+\]
+The coinvariant group is torsion-free, so $n=0$ and hence $E=0$.
+
+Finally \eqref{wbII:eq:W:5.17o} and the injectivity of the local integral specialization in
+Paper~I, Theorem~D.1 imply
+$c_1(L|_W)=0$.  Pulling back to the normalization gives
+$c_1(\eta^*i^*L)=0$.  The injectivity of
+$c_1:\operatorname{Pic}(\mathrm{dP}_6)\to
+H^2(\mathrm{dP}_6;\mathbb Z)$ proved in
+\cref{wbII:prop:pic0-pullback} yields the second assertion of \eqref{wbII:eq:W:5.17q}.
+\end{proof}
+
+\subsection{A local analytic obstruction to a cusp-only Picard argument}
+\label{wbII:subsec:local-cusp-picard-obstruction}
+
+The relative Picard space of the cusp family cannot by itself force the
+normalised central restriction to vanish.  The obstruction is visible
+directly in the toric model of Paper~I, Theorem~B.6.  We give
+the complete factor-of-automorphy calculation, including the descent
+cocycle and the sign of the generic Chern class.
+
+Retain the cusp notation of
+Paper~I, Proposition~B.2; Paper~I, Theorem~B.6:
+\[
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \qquad
+ Z(s)=sB_0+C(t),
+ \qquad
+ C(t)=\begin{pmatrix}6\mu(t)&h(t)\\ b(t)-h(t)&\mu(t)\end{pmatrix},
+ \qquad t=e^{2\pi i s},
+\tag{W.61}\label{wbII:eq:W:5.17t}
+\]
+\[
+ c_{\lambda}(t)=\exp(2\pi iC(t)\lambda),
+ \qquad
+ \exp(2\pi iZ(s)\lambda)=t^{B_0\lambda}c_\lambda(t)
+ \quad(\lambda\in\bar\Lambda\simeq\mathbb Z^2),
+\tag{W.62}\label{wbII:eq:W:5.17u}
+\]
+and
+\[
+ \Phi_\lambda(x,t)=(t^{B_0\lambda}x,t),
+ \qquad
+ \Psi_\lambda(p)=(c_\lambda(t(p)),1)\cdot\Phi_\lambda(p),
+ \qquad
+ \Psi_\lambda\Psi_\mu=\Psi_{\lambda+\mu}.
+\tag{W.63}\label{wbII:eq:W:5.17v}
+\]
+Write \(E_v\), \(v\in\mathbb Z^2\), for the toric prime divisors of
+\(Y_\epsilon\), so that \(E_0\simeq\mathrm{dP}_6\), and let
+\[
+ \pi:Y_\epsilon\longrightarrow N_0=Y_\epsilon/\bar\Lambda,
+ \qquad
+ \nu=\pi|_{E_0}:E_0\longrightarrow W
+\]
+be the quotient and the normalization of the central fibre.
+Put
+\[
+ N'=\mathbb Z^2\oplus\mathbb Z,
+ \qquad
+ M'=\operatorname{Hom}(N',\mathbb Z).
+\]
+For \(m=(\ell,k)\in M'=\mathbb Z^2\oplus\mathbb Z\), fix the character
+convention
+\[
+ \chi^m(x,t)=x^\ell t^k,
+ \qquad
+ \operatorname{div}(\chi^m)=
+ \sum_{v\in\mathbb Z^2}\langle m,(v,1)\rangle E_v.
+\tag{W.64}\label{wbII:eq:W:5.17w}
+\]
+
+\begin{proposition}[an explicit nonzero local cusp restriction]
+\label{wbII:prop:local-cusp-picard-obstruction}
+\ Let
+\[
+ H=\begin{pmatrix}1&0\\0&-6\end{pmatrix},
+ \qquad
+ P=B_0^{\mathsf t}H=\begin{pmatrix}0&6\\1&0\end{pmatrix},
+ \qquad
+ Q(v)=v^{\mathsf t}Hv=v_1^2-6v_2^2.
+\tag{W.65}\label{wbII:eq:W:5.17x}
+\]
+Then
+\[
+ \mathcal D_Q=\sum_{v\in\mathbb Z^2}Q(v)E_v
+\tag{W.66}\label{wbII:eq:W:5.17y}
+\]
+is a locally finite Cartier divisor on \(Y_\epsilon\).
+The line bundle \(\mathcal O_{Y_\epsilon}(\mathcal D_Q)\) has an explicit
+\((\bar\Lambda,\Psi)\)-equivariant structure and descends to a holomorphic
+line bundle \(\mathcal L_Q\) on \(N_0\).  If
+\[
+ (a_1,a_2,a_3,a_4,a_5,a_6)
+ =(e_1,e_2,e_2-e_1,-e_1,-e_2,e_1-e_2),
+ \qquad C_i=E_0\cap E_{a_i},
+\]
+then
+\[
+ \nu^*(\mathcal L_Q|_W)
+ \simeq
+ \mathcal O_{E_0}\!\left(\sum_{i=1}^6Q(a_i)C_i\right),
+\qquad
+ \left(\deg_{C_i}\nu^*(\mathcal L_Q|_W)\right)_{i=1}^6
+ =(-12,2,0,-12,2,0).
+\tag{W.67}\label{wbII:eq:W:5.17z}
+\]
+In particular \(\nu^*(\mathcal L_Q|_W)\) is nontrivial.
+
+On every nonzero fibre
+\[
+ F_t=\mathbb C^2/(Z(s)\mathbb Z^2+\mathbb Z^2),
+\]
+the first Chern class of \(\mathcal L_Q|_{F_t}\), in the ordered lattice
+basis
+\((\widehat\gamma,\widehat u,\widehat w,\widehat\delta)\) indexing the
+columns of \([Z\mid I_2]\), is exactly
+\[
+ c_1(\mathcal L_Q|_{F_t})=-2q,
+ \qquad
+ q=u\wedge w+6\gamma\wedge\delta.
+\tag{W.68}\label{wbII:eq:W:5.17aa}
+\]
+\end{proposition}
+
+\begin{proof}
+\emph{Local finiteness and Cartier status.}
+The fan of \(Y\) consists of the cones over the cells of the locally finite
+\(A_2\)-triangulation at height one.  If
+\(U_\sigma\simeq\mathbb C^3\) is the affine chart belonging to a triangle
+\(\sigma=\{v_0,v_1,v_2\}\), then \(U_\sigma\) meets precisely
+\(E_{v_0},E_{v_1},E_{v_2}\).  Indeed, by the orbit--cone
+correspondence, \(U_\sigma\cap E_v\ne\varnothing\) exactly when
+\(\mathbb R_{\geq0}(v,1)\) is a face of the cone over \(\sigma\).
+Thus \(\{E_v\}_{v\in\mathbb Z^2}\) is locally finite and
+\(\mathcal D_Q\) is a well-defined locally finite Weil divisor.
+
+Every triangle of the fan is unimodular, as proved in
+Paper~I, Theorem~B.6.  If \(z_0,z_1,z_2\) are the
+characters dual to
+\((v_0,1),(v_1,1),(v_2,1)\), then
+\[
+ \mathcal D_Q|_{U_\sigma}
+ =\operatorname{div}\!
+   \left(z_0^{Q(v_0)}z_1^{Q(v_1)}z_2^{Q(v_2)}\right).
+\tag{W.69}\label{wbII:eq:W:5.17ab}
+\]
+Negative exponents merely make the displayed monomial meromorphic, as
+permitted for a local equation of a Cartier divisor.  Hence
+\(\mathcal D_Q\) is Cartier on every chart and therefore on
+\(Y_\epsilon\).
+
+\emph{The signed divisor pullback identity.}
+For \(\lambda\in\bar\Lambda=\mathbb Z^2\), set
+\[
+ b_\lambda=B_0\lambda,
+ \qquad
+ \ell_\lambda=2Hb_\lambda,
+ \qquad
+ k_\lambda=Q(b_\lambda),
+ \qquad
+ m_\lambda=(\ell_\lambda,k_\lambda)\in M'.
+\tag{W.70}\label{wbII:eq:W:5.17ac}
+\]
+The fan automorphism sends \(E_v\) to \(E_{v+b_\lambda}\).
+Consequently \(\Phi_\lambda^*E_w=E_{w-b_\lambda}\), and
+\begin{align*}
+ \Phi_\lambda^*\mathcal D_Q-\mathcal D_Q
+ &=\sum_{v\in\mathbb Z^2}
+   \bigl(Q(v+b_\lambda)-Q(v)\bigr)E_v\\
+ &=\sum_{v\in\mathbb Z^2}
+   \bigl(2v^{\mathsf t}Hb_\lambda+
+         b_\lambda^{\mathsf t}Hb_\lambda\bigr)E_v
+ =\operatorname{div}(\chi^{m_\lambda}).
+\end{align*}
+The \(t\)-dependent horizontal torus translation
+\(p\mapsto(c_\lambda(t(p)),1)\cdot p\) preserves every
+torus-invariant prime divisor \(E_v\).  Hence
+\[
+ \boxed{\ 
+ \Psi_\lambda^*\mathcal D_Q
+ =\mathcal D_Q+\operatorname{div}(\chi^{m_\lambda})\ }.
+\tag{W.71}\label{wbII:eq:W:5.17ad}
+\]
+
+\emph{The complete \(\Psi\)-cocycle.}
+The matrices in \eqref{wbII:eq:W:5.17t} and \eqref{wbII:eq:W:5.17x} give
+\[
+ PC(t)=
+ \begin{pmatrix}
+ 6(b(t)-h(t))&6\mu(t)\\
+ 6\mu(t)&h(t)
+ \end{pmatrix},
+\tag{W.72}\label{wbII:eq:W:5.17ae}
+\]
+which is symmetric.  Thus
+\[
+ A(t):=2PC(t)
+\tag{W.73}\label{wbII:eq:W:5.17af}
+\]
+is a symmetric holomorphic matrix on the full cusp disc.  Define the
+holomorphic units \(h_\lambda\) and meromorphic functions \(f_\lambda\) by
+\[
+ h_\lambda(t)=
+ \exp\!\left(\pi i\lambda^{\mathsf t}A(t)\lambda\right),
+ \qquad
+ f_\lambda=h_\lambda(t)\chi^{m_\lambda}.
+\tag{W.74}\label{wbII:eq:W:5.17ag}
+\]
+Equation \eqref{wbII:eq:W:5.17ad} gives
+\[
+ \operatorname{div}(f_\lambda)
+ =\Psi_\lambda^*\mathcal D_Q-\mathcal D_Q.
+\tag{W.75}\label{wbII:eq:W:5.17ah}
+\]
+
+The cocharacter map underlying \(\Phi_\mu\) is
+\[
+ \varphi_\mu(y,y_3)=(y+y_3b_\mu,y_3),
+\]
+so its pullback on characters is
+\[
+ \varphi_\mu^*(\ell,k)
+ =(\ell,k+\ell^{\mathsf t}b_\mu).
+\tag{W.76}\label{wbII:eq:W:5.17ai}
+\]
+The quadratic identity for \(Q\) gives
+\[
+ m_{\lambda+\mu}=m_\mu+\varphi_\mu^*m_\lambda.
+\tag{W.77}\label{wbII:eq:W:5.17aj}
+\]
+Indeed, the first coordinates add, while the last coordinate on the
+right is
+\[
+ Q(b_\mu)+Q(b_\lambda)+2b_\lambda^{\mathsf t}Hb_\mu
+ =Q(b_\lambda+b_\mu).
+\]
+Using \eqref{wbII:eq:W:5.17u}, \eqref{wbII:eq:W:5.17v}, and \eqref{wbII:eq:W:5.17ai}, one obtains
+\begin{align*}
+ \Psi_\mu^*\chi^{m_\lambda}
+ &=\chi^{m_\lambda}(c_\mu(t),1)
+   \chi^{\varphi_\mu^*m_\lambda}\\
+ &=\exp\!\left(2\pi i\ell_\lambda^{\mathsf t}C(t)\mu\right)
+   \chi^{\varphi_\mu^*m_\lambda}\\
+ &=\exp\!\left(2\pi i\lambda^{\mathsf t}A(t)\mu\right)
+   \chi^{\varphi_\mu^*m_\lambda}.
+\tag{W.78}\label{wbII:eq:W:5.17ak}
+\end{align*}
+The last equality is exact because
+\[
+ \ell_\lambda^{\mathsf t}C\mu
+ =(2HB_0\lambda)^{\mathsf t}C\mu
+ =2\lambda^{\mathsf t}B_0^{\mathsf t}HC\mu
+ =2\lambda^{\mathsf t}PC\mu
+ =\lambda^{\mathsf t}A\mu.
+\]
+Since \(A=A^{\mathsf t}\), \eqref{wbII:eq:W:5.17ag}, \eqref{wbII:eq:W:5.17aj}, and \eqref{wbII:eq:W:5.17ak} imply
+\begin{align*}
+ f_\mu\,\Psi_\mu^*f_\lambda
+ &=h_\mu h_\lambda
+   \exp(2\pi i\lambda^{\mathsf t}A\mu)
+   \chi^{m_\mu+\varphi_\mu^*m_\lambda}\\
+ &=\exp\!\left(
+   \pi i(\lambda+\mu)^{\mathsf t}A(\lambda+\mu)\right)
+   \chi^{m_{\lambda+\mu}}
+ =f_{\lambda+\mu}.
+\tag{W.79}\label{wbII:eq:W:5.17al}
+\end{align*}
+
+Use the divisor-sheaf convention
+\[
+ \mathcal O(D)(U)=
+ \{g\in\mathcal M_Y(U):
+   \operatorname{div}(g)+D|_U\geq0\}.
+\]
+If \(D'=D+\operatorname{div}(f)\), multiplication by \(f\) maps
+\(\mathcal O(D')\) isomorphically to \(\mathcal O(D)\).  Thus
+\eqref{wbII:eq:W:5.17ad} and \eqref{wbII:eq:W:5.17ag} define
+\[
+ \theta_\lambda:
+ \Psi_\lambda^*\mathcal O(\mathcal D_Q)
+ \xrightarrow{\ \times f_\lambda\ }
+ \mathcal O(\mathcal D_Q).
+\tag{W.80}\label{wbII:eq:W:5.17am}
+\]
+Because
+\((\Psi_\lambda\Psi_\mu)^*=\Psi_\mu^*\Psi_\lambda^*\),
+equation \eqref{wbII:eq:W:5.17al} is exactly
+\[
+ \theta_{\lambda+\mu}
+ =\theta_\mu\circ\Psi_\mu^*\theta_\lambda.
+\tag{W.81}\label{wbII:eq:W:5.17an}
+\]
+This proves a complete equivariance datum, not merely invariance of the
+divisor class.
+
+\emph{Analytic descent.}
+By Paper~I, Theorem~B.6, the action on \(Y_\epsilon\) is
+free and properly discontinuous.  Every point therefore has an open
+neighbourhood \(U\) whose distinct translates are disjoint and on which
+\(\pi|_U\) is a biholomorphism onto \(\pi(U)\).  Transport
+\(\mathcal O(\mathcal D_Q)|_U\) to \(\pi(U)\), and on overlaps arising
+from translates glue by \eqref{wbII:eq:W:5.17am}.  Equation \eqref{wbII:eq:W:5.17an} is precisely the
+triple-overlap condition.  The resulting holomorphic line bundle
+\(\mathcal L_Q\) on \(N_0\) satisfies
+\[
+ \pi^*\mathcal L_Q
+ \simeq\mathcal O_{Y_\epsilon}(\mathcal D_Q).
+\tag{W.82}\label{wbII:eq:W:5.17ao}
+\]
+
+\emph{The normalized central restriction.}
+Let \(j_0:E_0\hookrightarrow Y_\epsilon\).  Since
+\(\nu=\pi\circ j_0\), \eqref{wbII:eq:W:5.17ao} gives
+\[
+ \nu^*(\mathcal L_Q|_W)
+ =j_0^*\pi^*\mathcal L_Q
+ \simeq\mathcal O_{E_0}(\mathcal D_Q|_{E_0}).
+\tag{W.83}\label{wbII:eq:W:5.17ap}
+\]
+The only \(E_v\), \(v\ne0\), meeting \(E_0\) are those indexed by the
+six \(a_i\) in the statement, and the intersections are the six toric
+\((-1)\)-curves \(C_i\).  Since \(Q(0)=0\), there is no
+\(E_0|_{E_0}\) term, so
+\[
+ \mathcal D_Q|_{E_0}
+ =\sum_{i=1}^6Q(a_i)C_i,
+ \qquad
+ (Q(a_1),\ldots,Q(a_6))=(1,-6,-5,1,-6,-5).
+\tag{W.84}\label{wbII:eq:W:5.17aq}
+\]
+The hexagonal intersection table is
+\[
+ C_i^2=-1,
+ \qquad
+ C_i\cdot C_{i\pm1}=1,
+ \qquad
+ C_i\cdot C_j=0
+ \quad(j\notin\{i,i\pm1\}),
+\tag{W.85}\label{wbII:eq:W:5.17ar}
+\]
+with indices modulo six.  Therefore
+\[
+ \deg_{C_i}\mathcal O_{E_0}
+ \!\left(\sum_jQ(a_j)C_j\right)
+ =-Q(a_i)+Q(a_{i-1})+Q(a_{i+1}),
+\]
+and direct substitution gives
+\[
+ \begin{array}{c|rrrrrr}
+ i&1&2&3&4&5&6\\ \hline
+ -Q(a_i)+Q(a_{i-1})+Q(a_{i+1})
+ &-12&2&0&-12&2&0.
+ \end{array}
+\tag{W.86}\label{wbII:eq:W:5.17as}
+\]
+The degree on \(C_1=C_{e_1}\) is \(-12\), proving nontriviality.
+
+\emph{The generic-fibre factor and its exact Chern class.}
+Fix \(t\ne0\), choose \(s\) with \(t=e^{2\pi i s}\), and write
+\(x=e^{2\pi i\zeta}\), \(\zeta\in\mathbb C^2\).
+Equation \eqref{wbII:eq:W:5.17u} identifies the deck transformation indexed by
+\(\lambda\in\mathbb Z^2\) with
+\[
+ \zeta\longmapsto\zeta+Z(s)\lambda
+\]
+modulo the horizontal translations
+\(\zeta\mapsto\zeta+n\), \(n\in\mathbb Z^2\).  The matrix identities
+\[
+ HB_0=P^{\mathsf t},
+ \qquad
+ B_0^{\mathsf t}HB_0=PB_0
+\tag{W.87}\label{wbII:eq:W:5.17at}
+\]
+give
+\[
+ \chi^{m_\lambda}(x,t)
+ =x^{2P^{\mathsf t}\lambda}
+  t^{\lambda^{\mathsf t}PB_0\lambda},
+\qquad
+ h_\lambda(t)
+ =\exp(2\pi i\lambda^{\mathsf t}PC(t)\lambda).
+\]
+Since \(Z=sB_0+C\), it follows that
+\[
+ f_\lambda(\zeta)
+ =\exp\!\left(
+ 2\pi i\lambda^{\mathsf t}PZ\lambda+
+ 4\pi i\lambda^{\mathsf t}P\zeta\right).
+\tag{W.88}\label{wbII:eq:W:5.17au}
+\]
+The matrix \(PZ=sPB_0+PC\) is symmetric:
+\[
+ PB_0=\operatorname{diag}(-6,1),
+\]
+and \(PC\) is symmetric by \eqref{wbII:eq:W:5.17ae}.
+
+Under the descent convention \eqref{wbII:eq:W:5.17am}, a pulled-back local section
+written as \(\varphi(\zeta)\) in the canonical frame satisfies
+\[
+ \varphi(\zeta+Z\lambda)
+ =f_\lambda(\zeta)^{-1}\varphi(\zeta).
+\]
+Thus the factor of automorphy for the lattice translation
+\(\zeta\mapsto\zeta+Z\lambda+n\) is
+\[
+ a_{(\lambda,n)}(\zeta)
+ =\exp(2\pi i g_{(\lambda,n)}(\zeta)),
+\qquad
+ g_{(\lambda,n)}(\zeta)
+ =-\lambda^{\mathsf t}PZ\lambda
+  -2\lambda^{\mathsf t}P\zeta.
+\tag{W.89}\label{wbII:eq:W:5.17av}
+\]
+This is independent of \(n\) as a factor of automorphy: replacing
+\(\zeta\) by \(\zeta+n\) changes \(g\) by the integer
+\(-2\lambda^{\mathsf t}Pn\).
+
+For \(l=(\lambda,n)\), \(l'=(\mu,m)\), the exponential connecting
+cocycle is
+\begin{align*}
+ c(l,l')
+ &=g_l(\zeta+Z\mu+m)+g_{l'}(\zeta)-g_{l+l'}(\zeta)\\
+ &=-2\lambda^{\mathsf t}Pm\in\mathbb Z,
+\tag{W.90}\label{wbII:eq:W:5.17aw}
+\end{align*}
+where the symmetry of \(PZ\) cancels the two mixed \(Z\)-terms.
+The corresponding alternating integral form is
+\[
+ E(l,l')=c(l,l')-c(l',l)
+ =-2\lambda^{\mathsf t}Pm+2\mu^{\mathsf t}Pn.
+\tag{W.91}\label{wbII:eq:W:5.17ax}
+\]
+This is \(c_1(\mathcal L_Q|_{F_t})\).  In the ordered column basis of
+\([Z\mid I_2]\), the cross-block of the class
+\(q=u\wedge w+6\gamma\wedge\delta\) from
+\((\widehat\gamma,\widehat u)\) to
+\((\widehat w,\widehat\delta)\) is
+\[
+ \begin{pmatrix}
+ q(\widehat\gamma,\widehat w)&
+ q(\widehat\gamma,\widehat\delta)\\
+ q(\widehat u,\widehat w)&
+ q(\widehat u,\widehat\delta)
+ \end{pmatrix}
+ =\begin{pmatrix}0&6\\1&0\end{pmatrix}=P.
+\tag{W.92}\label{wbII:eq:W:5.17ay}
+\]
+Hence \eqref{wbII:eq:W:5.17ax} is exactly \(-2q\), as asserted.
+\end{proof}
+
+\begin{remark}[the exact obstruction to the purely analytic route]
+\label{wbII:rem:local-cusp-picard-obstruction}
+The proposition proves that the local homomorphism
+\[
+ \operatorname{Pic}(N_0)\longrightarrow\operatorname{Pic}(E_0),
+ \qquad
+ \mathcal L\longmapsto\nu^*(\mathcal L|_W),
+\]
+is not zero.  Thus the toric cusp geometry, conductor descent on \(W\),
+or local relative-Picard representability cannot alone prove the desired
+global vanishing
+\[
+ \nu^*i^*:\operatorname{Pic}(X)\longrightarrow
+ \operatorname{Pic}(E_0).
+\]
+There is no contradiction with
+\cref{wbII:prop:leray-edge-restriction,wbII:prop:direct-boundary-picard}: the local
+bundle above has nonzero generic class \(-2q\), whereas the two global
+proofs use the order-three and order-four fillings and their common
+boundary relation to exclude every nonzero multiple of \(q\).
+
+More generally, Bingener proves that if a holomorphic map is proper,
+flat, and cohomologically flat in dimension zero, then its relative
+Picard functor is represented by a \emph{not necessarily separated}
+complex space
+\cite[Introduction, p.~318; Satz~6.2, pp.~336--337]{Bingener1980}.
+The same introduction explains that the exponential-sequence quotient
+works directly under topological local triviality and cohomological
+flatness in dimension one, but that passage to the quotient fails in
+general.  The cusp map of Paper~I, Theorem~B.6 is not
+topologically locally trivial across \(0\).  Bingener's theorem therefore
+supplies representability but neither separatedness nor the
+component-specialization assertion needed here.
+
+Consequently a purely analytic completion must add global compatibility
+with both finite fillings and must control the boundary support function;
+neither relative-Picard representability nor conductor descent supplies
+those statements.  The later calculation in
+\cref{wbII:prop:analytic-ah-boundary,wbII:lem:analytic-support-specialization,wbII:thm:analytic-all-picard} now supplies them: it first forces the generic
+Appell--Humbert form to vanish using the two finite fillings, and then
+proves that its mixed block is the polarization of the three normalized
+central degrees.  Thus this proposition remains the sharp cusp-local
+obstruction, while the global purely analytic route is complete.
+\end{remark}
+
+
+\subsection{An analytic completion of the all-Picard certificate}
+\label{wbII:subsec:analytic-all-picard}
+
+The local example in \cref{wbII:prop:local-cusp-picard-obstruction} shows that
+the cusp neighbourhood alone cannot annihilate normalized central
+restrictions.  We now close the stronger analytic route by retaining the
+order-three and order-four fillings.  The proof has two independent parts.
+First, logarithms of the actual \(\mathcal O^*\)-factors give the boundary
+cocycle and its two finite-filling norm identities.  Second, a
+standard-family support-function calculation reads every possible
+central restriction directly from the mixed Appell--Humbert block on a
+nearby torus.  No global Leray differential, nearby-cycle specialization,
+or Chern-class evaluation on a cusp bounding chain occurs.
+
+\begin{proposition}[analytic Appell--Humbert boundary cocycle]
+\label{wbII:prop:analytic-ah-boundary}
+\ Let \(P\subset B^\circ\) be the compact pair-of-pants core,
+orient its boundary meridians clockwise, and retain the zero-section lifts
+of Paper~I, Proposition~D.6.  Thus
+\[
+ \rho_1\rho_2\rho_0=1,
+ \qquad
+ \widehat\rho_1\widehat\rho_2\widetilde a_0=1,
+\tag{W.93}\label{wbII:eq:W:5.17-A1}
+\]
+and the second relation has no terminal vertical translation.  For
+\(L\in\operatorname{Pic}(X)\), let
+\[
+ E=c_1(L|_F)\in\operatorname{Alt}^2(\Lambda,\mathbb Z)
+   =\bigwedge^2V
+\]
+be its fibrewise Appell--Humbert form.  Put
+\(V_{\mathbb R}=\operatorname{Hom}(\Lambda,\mathbb R)\), and use
+\[
+ A_g=(T_g^{-1})^{\mathsf t},
+ \qquad
+ \langle T_g\alpha,\lambda\rangle
+ =\langle\alpha,A_g^{-1}\lambda\rangle.
+\tag{W.94}\label{wbII:eq:W:5.17-A2}
+\]
+There is a crossed homomorphism, unique up to a principal crossed
+homomorphism,
+\[
+ d:\pi_1(P)\longrightarrow V_{\mathbb R},
+ \qquad
+ d(gh)=d(g)+T_gd(h),
+ \qquad
+ d(g)\sim d(g)+(T_g-I)a.
+\tag{W.95}\label{wbII:eq:W:5.17-A3}
+\]
+If \(d_i=d(\rho_i)\), then
+\[
+ d_1+T_1d_2+T_1T_2d_0=0,
+ \qquad
+ \bar d_1+\bar d_2+\bar d_0=0
+ \quad\text{in }V_G\otimes\mathbb R.
+\tag{W.96}\label{wbII:eq:W:5.17-A4}
+\]
+For the finite filling of order \(m_j\), \(j=1,2\),
+\[
+ N_{T_j}d_j=\iota_{v_j}E,
+ \qquad
+ m_j\bar d_j=[\iota_{v_j}E],
+ \qquad
+ N_{T_j}=I+T_j+\cdots+T_j^{m_j-1},
+\tag{W.97}\label{wbII:eq:W:5.17-A5}
+\]
+where \((\iota_vE)(\lambda)=E(v,\lambda)\).  At the cusp,
+\[
+ \langle d_0,\widehat\delta\rangle=0,
+ \qquad
+ \bar d_0=0\quad\text{in }V_G\otimes\mathbb R.
+\tag{W.98}\label{wbII:eq:W:5.17-A6}
+\]
+These identities are obtained from holomorphic transition factors and the
+argument principle.
+\end{proposition}
+
+\begin{proof}
+Choose an open Riemann-surface neighbourhood \(P^{\rm an}\Subset B^\circ\)
+which deformation retracts onto \(P\), and pull the period family to its
+universal cover.  Before quotienting by the fibre lattice, the resulting
+space is
+\[
+ \widetilde{\mathcal J}
+ =\widetilde P^{\rm an}\times\mathbb C^2.
+\]
+It is Stein and contractible, so the pullback of \(L\) is holomorphically
+trivial.  In a nowhere-zero frame, write the factor belonging to a deck
+transformation \(\alpha\) as
+\[
+ a_\alpha\in\mathcal O^*(\widetilde{\mathcal J}),
+ \qquad
+ a_{\alpha\beta}(x)=a_\alpha(\beta x)a_\beta(x).
+\tag{W.99}\label{wbII:eq:W:5.17-A7}
+\]
+The space is simply connected, hence \(a_\alpha=e^{2\pi i h_\alpha}\) for
+a holomorphic logarithm.  Therefore
+\[
+ c(\alpha,\beta)
+ =h_\alpha(\beta x)+h_\beta(x)-h_{\alpha\beta}(x)\in\mathbb Z
+\tag{W.100}\label{wbII:eq:W:5.17-A8}
+\]
+is independent of \(x\), and associativity makes \(c\) an integral group
+two-cocycle.
+
+Let \(\tau_\lambda\) denote fibre translation by
+\(\Pi(z)\lambda\), \(\lambda\in\Lambda\), and let \(\widehat g\) be the
+zero-section lift of a base deck transformation.  Period equivariance gives
+\[
+ \widehat g\,\tau_\lambda\,\widehat g^{-1}
+ =\tau_{A_g\lambda}.
+\tag{W.101}\label{wbII:eq:W:5.17-A9}
+\]
+On fibre translations, the commutator of \eqref{wbII:eq:W:5.17-A8} is
+\[
+ E(\lambda,\mu)
+ =c(\tau_\lambda,\tau_\mu)-c(\tau_\mu,\tau_\lambda).
+\tag{W.102}\label{wbII:eq:W:5.17-A10}
+\]
+The four oriented sides of the \((\lambda,\mu)\)-parallelogram identify
+this integer with the exponential connecting class of \(L|_F\); this is
+the Appell--Humbert convention used in
+\eqref{wbII:eq:W:5.17av}--\eqref{wbII:eq:W:5.17ax}, and agrees with the standard factor-of-automorphy
+calculation \cite[Chapter~1, \S2, pp.~5--8, especially
+Theorem~2.1, p.~7]{BirkenhakeLange1999}%
+\cite[equations~(3.3)--(3.10), pp.~3--7]{SchnellLecture3}.
+Conjugating the commutator by \(\widehat g\) yields
+\[
+ E(A_g\lambda,A_g\mu)=E(\lambda,\mu).
+\tag{W.103}\label{wbII:eq:W:5.17-A11}
+\]
+
+Push the logarithmic central extension defined by \(c\) out along
+\(\mathbb Z\hookrightarrow\mathbb R\), and denote its central element of
+weight \(r\) by \(\mathbf c(r)\).  Choose lifts \(U_\lambda\) of the fibre
+translations satisfying the real Appell--Humbert normalization
+\[
+ U_\lambda U_\mu
+ =\mathbf c\!\left(\frac12E(\lambda,\mu)\right)U_{\lambda+\mu}.
+\tag{W.104}\label{wbII:eq:W:5.17-A12}
+\]
+To see that this normalization exists, start with arbitrary lifts.  The
+difference between their real cocycle and \(E/2\) has zero commutator, so
+it defines an abelian extension of the free abelian group \(\Lambda\) by
+\(\mathbb R\).  Choose lifts of an integral basis and extend
+multiplicatively; this splits that abelian extension and gives \eqref{wbII:eq:W:5.17-A12}.
+If \(U'_\lambda\) is a second normalized system, then
+\(U'_\lambda U_\lambda^{-1}\) is central, say
+\(\mathbf c(\langle a,\lambda\rangle)\).  Comparing the two copies of
+\eqref{wbII:eq:W:5.17-A12} proves additivity in \(\lambda\), so
+\(a\in V_{\mathbb R}\).  Thus every two normalized systems differ by exactly
+the character change used below.
+
+For \(g\in\pi_1(P)\), choose a lift \(G_g\) of \(\widehat g\) and define
+\(d(g)\in V_{\mathbb R}\) by
+\[
+ G_gU_{A_g^{-1}\lambda}G_g^{-1}
+ =\mathbf c\bigl(\langle d(g),\lambda\rangle\bigr)U_\lambda.
+\tag{W.105}\label{wbII:eq:W:5.17-A13}
+\]
+The exponent is additive in \(\lambda\): conjugate \eqref{wbII:eq:W:5.17-A12} and use
+\eqref{wbII:eq:W:5.17-A11}.  The lifts of \(gh\) and \(G_gG_h\) differ centrally, so
+\[
+\begin{aligned}
+ \langle d(gh),\lambda\rangle
+ &=\langle d(g),\lambda\rangle
+   +\langle d(h),A_g^{-1}\lambda\rangle\\
+ &=\langle d(g)+T_gd(h),\lambda\rangle.
+\end{aligned}
+\]
+This proves the crossed-homomorphism law.  Replacing
+\(U_\lambda\) by
+\(\mathbf c(\langle a,\lambda\rangle)U_\lambda\) changes \eqref{wbII:eq:W:5.17-A13} by
+\((T_g-I)a\).  Replacing \(G_g\) by a central multiple does not change
+\eqref{wbII:eq:W:5.17-A13}, so this proves the stated independence and uniqueness.  Applying
+the crossed law to
+\eqref{wbII:eq:W:5.17-A1} proves the first identity in \eqref{wbII:eq:W:5.17-A4}; passage to coinvariants
+proves the second.
+
+For the order-\(m_j\) filling, distinguish every covering level.  Put
+\[
+ \widetilde J_j=\Delta_j\times\mathbb C^2,\qquad
+ r_j:\widetilde J_j\longrightarrow J'_j
+\]
+for the lattice quotient, whose deck translations are \(\tau_\lambda\).
+On the vector cover define
+\[
+ Q_{j,\log}:=\widetilde g_j^{\,v_j/m_j},\qquad
+ Q_{j,\mathrm{lin}}:=\widetilde g_j^{\,0}.
+\]
+They satisfy
+\[
+\begin{aligned}
+ Q_{j,\log}\tau_\lambda Q_{j,\log}^{-1}
+  &=\tau_{A_j\lambda},&
+ (Q_{j,\log})^{m_j}&=\tau_{v_j},\\
+ Q_{j,\mathrm{lin}}\tau_\lambda Q_{j,\mathrm{lin}}^{-1}
+  &=\tau_{A_j\lambda},&
+ (Q_{j,\mathrm{lin}})^{m_j}&=1.
+\end{aligned}
+\tag{W.106}\label{wbII:eq:W:5.17-A14}
+\]
+The positive sign is fixed by
+\(s_j\circ g_j=e^{-2\pi i/m_j}s_j\) and (2.8f): after exactly
+\(m_j\) clockwise iterations, the logarithmic vector-cover lift translates
+by \(+v_j\).
+
+Let \(q_{j,\log},q_{j,\mathrm{lin}}\) be the descended automorphisms of \(J'_j\),
+and put \(J_j^{\prime *}=J'_j|_{\Delta_j^*}\).  Both descended automorphisms have
+order dividing \(m_j\), because \(\tau_{v_j}\) is trivial after the lattice
+quotient; each covers \(g_j\), whose order is exactly \(m_j\), so each
+descended order is exactly \(m_j\).
+The branch-independent torus translation
+\[
+ h_j:J_j^{\prime *}\longrightarrow J_j^{\prime *}
+\]
+constructed in (2.9d) satisfies, on this quotient level,
+\[
+ h_jq_{j,\log}h_j^{-1}=q_{j,\mathrm{lin}}.
+\]
+Define
+\[
+\begin{aligned}
+ p_{j,\log}:J_j^{\prime *}&\longrightarrow
+  N_j^*:=J_j^{\prime *}/\langle q_{j,\log}\rangle,\\
+ p_{j,\mathrm{lin}}:J_j^{\prime *}&\longrightarrow
+ J_j^*:=J_j^{\prime *}/\langle q_{j,\mathrm{lin}}\rangle .
+\end{aligned}
+\]
+The conjugacy induces a biholomorphism
+\[
+ \bar h_j:N_j^*\longrightarrow J_j^*,\qquad
+ p_{j,\mathrm{lin}}\circ h_j=\bar h_j\circ p_{j,\log}.
+\]
+The gluing of \(X\) identifies
+\(L|_{N_j^*}\simeq\bar h_j^*(L|_{J_j^*})\); hence the exactly typed
+line-bundle square gives
+\[
+ p_{j,\log}^*(L|_{N_j^*})
+ \simeq h_j^*p_{j,\mathrm{lin}}^*(L|_{J_j^*}).
+\tag{W.107}\label{wbII:eq:W:5.17-A14a}
+\]
+
+For the factor extension return to the filled vector cover.  Let
+\[
+ P_{j,\log}:J'_j\longrightarrow N_j,\qquad
+ \pi_j^{\mathrm{vec}}:=P_{j,\log}\circ r_j:
+ \widetilde J_j\longrightarrow N_j .
+\]
+Here \(P_{j,\log}\) is the full quotient and
+\(P_{j,\log}|_{J_j^{\prime *}}=p_{j,\log}\).
+The deck group is
+\[
+ \Gamma_j^{\log}
+ =\langle\tau_\lambda,Q_{j,\log}:\lambda\in\Lambda\rangle.
+\]
+The pullback \((\pi_j^{\mathrm{vec}})^*(L|_{N_j})\) is trivial on the
+contractible Stein manifold \(\widetilde J_j\); its factors define an
+integral central extension, which we push out along
+\(\mathbb Z\hookrightarrow\mathbb R\).  Over \(\Delta_j^*\), the
+line-bundle square \eqref{wbII:eq:W:5.17-A14a} identifies each fibre with the global factor
+extension by a translation, so its commutator form is \(E\).  That form is
+integer-valued and locally constant on the connected disc \(\Delta_j\);
+therefore it is \(E\) on the filled cover as well.  Choose vertical lifts
+\(U_\lambda^{(j)}\) normalized by
+\[
+ U_\lambda^{(j)}U_\mu^{(j)}
+ =\mathbf c\!\left(\frac12E(\lambda,\mu)\right)
+  U_{\lambda+\mu}^{(j)}.
+\]
+For \(\alpha\in\Gamma_j^{\log}\), define \(A_\alpha,T_\alpha\) by
+\[
+ \alpha\tau_\lambda\alpha^{-1}=\tau_{A_\alpha\lambda},\qquad
+ T_\alpha=(A_\alpha^{-1})^{\mathsf t}.
+\]
+For a lift \(\widetilde G_\alpha\), define
+\(\widetilde d_j(\alpha)\in V_{\mathbb R}\) through
+\[
+ \widetilde G_\alpha U_{A_\alpha^{-1}\lambda}^{(j)}
+ \widetilde G_\alpha^{-1}
+ =\mathbf c\!\left(\langle\widetilde d_j(\alpha),\lambda\rangle\right)
+  U_\lambda^{(j)}.
+\tag{W.108}\label{wbII:eq:W:5.17-A14c}
+\]
+Indeed, before naming \(\widetilde d_j(\alpha)\), the quotient of the two
+sides of \eqref{wbII:eq:W:5.17-A14c} is central because both cover the same translation.
+Conjugating the normalized product and using
+\[
+ E(A_\alpha\lambda,A_\alpha\mu)=E(\lambda,\mu)
+\]
+shows that its exponent \(r_\alpha(\lambda)\) satisfies
+\[
+ r_\alpha(\lambda+\mu)=r_\alpha(\lambda)+r_\alpha(\mu).
+\]
+Thus it is the pairing with a unique element of \(V_{\mathbb R}\), as
+asserted.  Since \(A_{\alpha\beta}=A_\alpha A_\beta\), choose the lift of
+\(\alpha\beta\) to be \(\widetilde G_\alpha\widetilde G_\beta\); any other
+choice differs centrally.  Then
+\[
+\begin{aligned}
+ &\widetilde G_\alpha\widetilde G_\beta
+ U_{A_\beta^{-1}A_\alpha^{-1}\lambda}^{(j)}
+ \widetilde G_\beta^{-1}\widetilde G_\alpha^{-1}\\
+ &\quad=
+ \mathbf c\!\left(
+  \langle\widetilde d_j(\beta),A_\alpha^{-1}\lambda\rangle
+  +\langle\widetilde d_j(\alpha),\lambda\rangle\right)
+ U_\lambda^{(j)}.
+\end{aligned}
+\]
+The defining dual action
+\(\langle T_\alpha v,\lambda\rangle
+=\langle v,A_\alpha^{-1}\lambda\rangle\) therefore proves the crossed law
+\[
+ \widetilde d_j(\alpha\beta)
+ =\widetilde d_j(\alpha)+T_\alpha\widetilde d_j(\beta).
+\tag{W.109}\label{wbII:eq:W:5.17-A14d}
+\]
+
+Put
+\[
+ \widetilde J_j^*:=\Delta_j^*\times\mathbb C^2,
+ \qquad
+ r_j^*:=r_j|_{\widetilde J_j^*}:
+ \widetilde J_j^*\longrightarrow J_j^{\prime *}
+\]
+and define
+\[
+\begin{aligned}
+ \Phi_{j,\log}
+  &:=p_{j,\log}\circ r_j^*,\\
+ \Phi_{j,\mathrm{glob}}
+  &:=p_{j,\mathrm{lin}}\circ h_j\circ r_j^*
+   =\bar h_j\circ\Phi_{j,\log}.
+\end{aligned}
+\]
+Both maps are invariant under \(\Gamma_j^{\log}\).  This is immediate for
+every \(\tau_\lambda\), while
+\[
+\begin{aligned}
+ \Phi_{j,\log}Q_{j,\log}
+ &=p_{j,\log}q_{j,\log}r_j^*
+  =\Phi_{j,\log},\\
+ \Phi_{j,\mathrm{glob}}Q_{j,\log}
+ &=p_{j,\mathrm{lin}}h_jq_{j,\log}r_j^*
+  =p_{j,\mathrm{lin}}q_{j,\mathrm{lin}}h_jr_j^*
+  =\Phi_{j,\mathrm{glob}}.
+\end{aligned}
+\]
+Thus \(\widetilde J_j^*\) is the same \(\Gamma_j^{\log}\)-cover of the two
+biholomorphic quotients.  Pulling the gluing isomorphism to this cover gives
+\[
+ \Theta_j:
+ \Phi_{j,\log}^*(L|_{N_j^*})
+ \xrightarrow{\ \sim\ }
+ \Phi_{j,\mathrm{glob}}^*(L|_{J_j^*}).
+\]
+The filled factor extension restricts to this cover, and the global factor
+extension pulls back to it through the fixed boundary whisker.  Because
+\(\Theta_j\) intertwines descent, it induces an isomorphism of the resulting
+pushed-out \(\Gamma_j^{\log}\)-factor extensions which sends
+\(\mathbf c(r)\) to \(\mathbf c(r)\) for every \(r\in\mathbb R\).
+
+Let \(\gamma_j^J:[0,1]\to J_j^*\) be the zero-section image of the
+unwhiskered clockwise boundary meridian, and let \(\omega_j\) be the fixed
+zero-section whisker from the global basepoint to \(\gamma_j^J(0)\).  Thus
+the based total-space loop retained in \eqref{wbII:eq:W:5.17-A1} is
+\[
+ \widehat\rho_j=\omega_j*\gamma_j^J*\omega_j^{-1}.
+\]
+Choose \(x_j\in J_j^{\prime *}\) such that
+\(p_{j,\mathrm{lin}}(h_j(x_j))=\gamma_j^J(0)\), put
+\(x_{j,\mathrm{lin}}=h_j(x_j)\), and let
+\(\widetilde\gamma_{j,\mathrm{lin}}\) be the
+\(p_{j,\mathrm{lin}}\)-lift of \(\gamma_j^J\) beginning at
+\(x_{j,\mathrm{lin}}\).  For the chosen clockwise generator,
+\[
+ \widetilde\gamma_{j,\mathrm{lin}}(1)
+ =q_{j,\mathrm{lin}}(x_{j,\mathrm{lin}}).
+\]
+Set
+\[
+ \gamma_j^N:=\bar h_j^{-1}\circ\gamma_j^J,
+ \qquad
+ \widetilde\gamma_{j,\log}
+ :=h_j^{-1}\circ\widetilde\gamma_{j,\mathrm{lin}}.
+\]
+Then the quotient square gives the point-valued identities
+\[
+\begin{aligned}
+ p_{j,\log}\circ\widetilde\gamma_{j,\log}
+  &=\gamma_j^N,\\
+ \widetilde\gamma_{j,\log}(0)&=x_j,\\
+ \widetilde\gamma_{j,\log}(1)&=q_{j,\log}(x_j).
+\end{aligned}
+\]
+Choose \(\widetilde x_j\in\widetilde J_j^*\) with
+\(r_j^*(\widetilde x_j)=x_j\), and let
+\(\widetilde\gamma_{j,\mathrm{vec}}\) be the \(r_j^*\)-lift of
+\(\widetilde\gamma_{j,\log}\) beginning at \(\widetilde x_j\).  On
+adjacent sheets choose compatible logarithm branches \(\ell,\ell'\) with
+\[
+ \ell'(w)=\ell(g_j^{-1}w)-\frac{2\pi i}{m_j}.
+\]
+The calculation in (2.9e) gives the point-valued endpoint formula
+\[
+ \widetilde\gamma_{j,\mathrm{vec}}(1)
+ =Q_{j,\log}(\widetilde x_j),
+\]
+excluding both \(Q_{j,\log}^{-1}(\widetilde x_j)\) and every
+\(\tau_\lambda Q_{j,\log}(\widetilde x_j)\) with \(\lambda\ne0\).
+Fibre loops remain \(\tau_\lambda\), since \(h_j\) is a fibre translation.
+
+The factor of \(L\) along the fixed lift of \(\omega_j\) identifies the
+target factor over the local boundary segment with the globally based
+factor.  Let \(G_{\rho_j}^{(j)}\) be the target lift of the local boundary
+deck element whose whiskered image is the chosen global lift
+\(G_{\rho_j}\).  Thus it covers \(\widehat\rho_j\) after whiskering and,
+by \eqref{wbII:eq:W:5.17-A13}, satisfies
+\[
+ G_{\rho_j}^{(j)}U_{A_j^{-1}\lambda}(G_{\rho_j}^{(j)})^{-1}
+ =\mathbf c(\langle d_j,\lambda\rangle)U_\lambda,
+ \qquad d_j=d(\rho_j).
+\]
+Consequently, for some
+\(a_j\in V_{\mathbb R}\) and \(b_j\in\mathbb R\),
+\[
+ \Theta_{j,*}(U_\lambda^{(j)})
+ =\mathbf c(\langle a_j,\lambda\rangle)U_\lambda,
+ \qquad
+ \Theta_{j,*}(\widetilde G_{Q_{j,\log}})
+ =\mathbf c(b_j)G_{\rho_j}^{(j)}.
+\]
+Here \(U_\lambda\) is the normalized global system in \eqref{wbII:eq:W:5.17-A12}, and
+\(\mathbf c(b_j)\) disappears under conjugation.
+Therefore
+\[
+\begin{aligned}
+ \langle\widetilde d_j(Q_{j,\log}),\lambda\rangle
+ +\langle a_j,\lambda\rangle
+ &=\langle d_j,\lambda\rangle
+   +\langle a_j,A_j^{-1}\lambda\rangle\\
+ &=\langle d_j+T_ja_j,\lambda\rangle,
+\end{aligned}
+\]
+so
+\[
+ \widetilde d_j(Q_{j,\log})=d_j+(T_j-I)a_j.
+\tag{W.110}\label{wbII:eq:W:5.17-A14e}
+\]
+
+For a translation choose
+\(\widetilde G_{\tau_v}=U_v^{(j)}\).  The filled normalization above gives
+\[
+ U_v^{(j)}U_\lambda^{(j)}(U_v^{(j)})^{-1}
+ =\mathbf c(E(v,\lambda))U_\lambda^{(j)},
+\]
+and hence
+\[
+ \widetilde d_j(\tau_v)=\iota_vE,\qquad
+ (\iota_vE)(\lambda)=E(v,\lambda).
+\tag{W.111}\label{wbII:eq:W:5.17-A14f}
+\]
+Here
+\[
+ A_{Q_{j,\log}}=A_j,\qquad T_{Q_{j,\log}}=T_j.
+\]
+Since \(N_{T_j}(T_j-I)=T_j^{m_j}-I=0\), equations
+\eqref{wbII:eq:W:5.17-A14}, \eqref{wbII:eq:W:5.17-A14d}, and \eqref{wbII:eq:W:5.17-A14e} give
+\[
+\begin{aligned}
+ N_{T_j}d_j
+ &=N_{T_j}\widetilde d_j(Q_{j,\log})\\
+ &=\widetilde d_j((Q_{j,\log})^{m_j})\\
+ &=\widetilde d_j(\tau_{v_j})\\
+ &=\iota_{v_j}E.
+\end{aligned}
+\tag{W.112}\label{wbII:eq:W:5.17-A15}
+\]
+Changing a line-bundle frame gives an isomorphic factor extension; changing
+\(\widetilde G_\alpha\) by a central factor does not change conjugation; and
+every second normalized vertical system differs by a character, changing
+\(\widetilde d_j(\alpha)\) by \((T_\alpha-I)a\).  Finally,
+\(\ell\mapsto\ell+2\pi in\) changes a vector-cover lift of \(h_j\) by
+\[
+ H_j\longmapsto H'_j=\tau_{nv_j}H_j.
+\]
+At the factor-extension level this means
+\[
+ \Theta'_{j,*}
+ =\operatorname{Ad}(U_{nv_j})\circ\Theta_{j,*}.
+\]
+Consequently the comparison character changes by
+\(n\iota_{v_j}E\), because
+\[
+ U_{nv_j}
+ \bigl(\mathbf c(\langle a_j,\lambda\rangle)U_\lambda\bigr)
+ U_{nv_j}^{-1}
+ =
+ \mathbf c(\langle a_j+n\iota_{v_j}E,\lambda\rangle)U_\lambda.
+\]
+Since \(A_jv_j=v_j\) and \(E\) is \(A_j\)-invariant,
+\[
+ \langle T_j(\iota_{v_j}E),\lambda\rangle
+ =E(v_j,A_j^{-1}\lambda)
+ =E(A_jv_j,\lambda)
+ =E(v_j,\lambda),
+\]
+so this branch change leaves both \eqref{wbII:eq:W:5.17-A14e} and \eqref{wbII:eq:W:5.17-A15} unchanged.
+The translation \(\tau_{nv_j}\) also commutes with
+\(Q_{j,\mathrm{lin}}\) on the vector cover because \(A_jv_j=v_j\); on the
+lattice quotient it is already the identity.  Hence it changes only the
+central lift choice there.
+The descended \(h_j,\bar h_j\), and the quotient square are branch
+independent.  Thus \eqref{wbII:eq:W:5.17-A15} is choice-independent and proves \eqref{wbII:eq:W:5.17-A5},
+including its sign.
+
+It remains to obtain \eqref{wbII:eq:W:5.17-A6} analytically.  Since
+\(A_0\widehat\delta=\widehat\delta\), equation \eqref{wbII:eq:W:5.17-A13} says that
+\[
+ [G_0,U_{\widehat\delta}]
+ =\mathbf c\bigl(\langle d_0,\widehat\delta\rangle\bigr).
+\tag{W.113}\label{wbII:eq:W:5.17-A16}
+\]
+This logarithmic commutator is the clutching winding with the base loop
+first.  Thus, if \(b\) and \(f\) denote the oriented base and fibre loops,
+respectively,
+\[
+ \operatorname{wind}_{b\wedge f}(L)
+  =\langle d_0,\widehat\delta\rangle,
+ \qquad
+ \operatorname{wind}_{\xi_{\widehat\delta}}(L)
+ =-\langle d_0,\widehat\delta\rangle.
+\tag{W.114}\label{wbII:eq:W:5.17-A17}
+\]
+The second equality uses the fibre-first convention
+\(\xi_{\widehat\delta}=[S^1_{\widehat\delta}]\times[\rho_0]\), hence the
+single sign change.
+Use the actual unimodular cusp chart
+\[
+ (u,x_1,x_2)=\left(\frac{t}{x_1x_2},x_1,x_2\right),
+ \qquad t=ux_1x_2.
+\tag{W.115}\label{wbII:eq:W:5.17-A18}
+\]
+For \(0<\rho\ll1\), the boundary parametrization
+\[
+ (\theta,\phi)\longmapsto
+ \bigl(\rho e^{i(\theta-\phi)},1,e^{i\phi}\bigr),
+ \qquad t=\rho e^{i\theta},
+\tag{W.116}\label{wbII:eq:W:5.17-A19}
+\]
+has base coordinate \(\theta\) and fibre translation
+\(\widehat\delta\) in the \(\phi\)-direction.  The latter fixed-base loop
+does \emph{not} itself bound the \(x_2\)-disc.  To identify the correct
+meridian, put \(\alpha=\theta-\phi\), let \(a_u\) be the positively
+oriented \(u\)-longitude, and let \(m_{x_2}\) be the positively oriented
+\(x_2\)-meridian at fixed \(u\).  In the basis
+\((a_u,m_{x_2})\), the base and fibre loops are
+\[
+ b=a_u,
+ \qquad
+ f=m_{x_2}-a_u,
+ \qquad
+ b\wedge f=a_u\wedge m_{x_2}.
+\tag{W.117}\label{wbII:eq:W:5.17-A19a}
+\]
+The change-of-basis determinant is \(+1\), so this preserves the
+base-first orientation in \eqref{wbII:eq:W:5.17-A17}.  Now \(m_{x_2}\) does bound the
+analytic disc
+\[
+ z\longmapsto(\rho e^{i\alpha_0},1,z),
+ \qquad |z|\le1.
+\tag{W.118}\label{wbII:eq:W:5.17-A19b}
+\]
+
+Choose a thin annulus \(A_u\) about \(|u|=\rho\), a disc \(D_{x_1}\)
+about \(1\), and a disc \(D_{x_2}\) containing \(\{|x_2|\le1\}\), small
+enough that
+\[
+ A_u\times D_{x_1}\times D_{x_2}
+ \subset\{|ux_1x_2|<\epsilon\}.
+\tag{W.119}\label{wbII:eq:W:5.17-A19c}
+\]
+Write \(U=A_u\times D_{x_1}\times D_{x_2}\) for this neighbourhood.
+It is Stein and retracts onto \(S^1\), so \(H^2(U,\mathbb Z)=0\).
+For completeness, the exponential sequence is
+\[
+0\longrightarrow\mathbb Z\longrightarrow\mathcal O_U
+ \xrightarrow{\,h\mapsto e^{2\pi i h}\,}\mathcal O_U^*
+ \longrightarrow1.
+\]
+Its exactness follows from the existence of a holomorphic logarithm locally
+for every nonvanishing holomorphic function, and from the integral kernel
+of the exponential. Cartan's theorem~B gives
+\(H^1(U,\mathcal O_U)=H^2(U,\mathcal O_U)=0\)
+\cite[\S2, fundamental theorem~B, p.~80]{Cartan1957}.
+The long cohomology sequence therefore identifies
+\(\operatorname{Pic}(U)=H^1(U,\mathcal O_U^*)\) with
+\(H^2(U,\mathbb Z)=0\). Pull \(L|_{N_0}\) back to
+the cusp cover and choose one holomorphic frame on this entire
+neighbourhood.  Compute the clutching cocycle with this extending frame on
+both sides of a cut in the \(u\)-longitude.  Its transition unit on
+\(D_{x_2}\) is then identically \(F=1\), so by \eqref{wbII:eq:W:5.17-A19a} its
+base--fibre commutator winding is
+\[
+ \frac1{2\pi i}\int_{|x_2|=1}\frac{dF}{F}=0.
+\tag{W.120}\label{wbII:eq:W:5.17-A20}
+\]
+This computes the same alternating logarithmic cocycle as \eqref{wbII:eq:W:5.17-A16}.
+Indeed, changing from the global Appell--Humbert frame to the extending
+chart frame changes \(c\) by a group coboundary.  Put
+\[
+ g=\widehat g_0,
+ \qquad
+ h=\tau_{\widehat\delta}
+\]
+in the underlying deck group.  Equation \eqref{wbII:eq:W:5.17-A9} and
+\(A_0\widehat\delta=\widehat\delta\) give \(gh=hg\).  If
+\(c'=c+\delta\beta\) is the cocycle after a frame change, then
+\[
+ \bigl[c'(g,h)-c'(h,g)\bigr]
+ -\bigl[c(g,h)-c(h,g)\bigr]
+ =\beta(hg)-\beta(gh)=0.
+\]
+Thus the alternating cocycle is frame-invariant without assuming that its
+central-extension lifts commute.  Equations \eqref{wbII:eq:W:5.17-A17}, \eqref{wbII:eq:W:5.17-A19a}, and
+\eqref{wbII:eq:W:5.17-A20} therefore give
+\(\langle d_0,\widehat\delta\rangle=0\).  This is a calculation in
+\(\mathcal O^*\), not an evaluation of a Chern class on a bounding chain.
+Finally, the matrices \(A_1,A_2\) fix
+\(\widehat\delta\), so the evaluation is unchanged by every principal
+change in \eqref{wbII:eq:W:5.17-A3}.  Since
+\(V_G=\mathbb Z[\delta]\) and
+\(\delta(\widehat\delta)=1\), its vanishing is equivalent to
+\(\bar d_0=0\).  This proves \eqref{wbII:eq:W:5.17-A6}.
+\end{proof}
+
+\begin{lemma}[the toric support function detects central restriction]
+\label{wbII:lem:analytic-support-specialization}
+\ Let \(M\in\operatorname{Pic}(N_0)\), let
+\(\pi:Y_\epsilon\to N_0\) be the cusp covering, and let
+\(\nu:E_0\to W\) be the normalization.  If the Appell--Humbert form of
+\(M|_{F_t}\), \(t\ne0\), is \(E_M\), then the three independent degrees
+of \(\nu^*(M|_W)\) determine an integral symmetric form
+\(B:\mathbb Z^2\times\mathbb Z^2\to\mathbb Z\) satisfying
+\[
+ E_M\bigl((\lambda,0),(0,m)\bigr)
+ =-B(B_0\lambda,m)
+ \qquad(\lambda,m\in\mathbb Z^2).
+\tag{W.121}\label{wbII:eq:W:5.17-A21}
+\]
+Consequently
+\[
+ E_M=0
+ \quad\Longrightarrow\quad
+ \nu^*(M|_W)\simeq\mathcal O_{E_0}.
+\tag{W.122}\label{wbII:eq:W:5.17-A22}
+\]
+\end{lemma}
+
+\begin{proof}
+Put \(\mathcal M=\pi^*M\).  The identity
+\(\pi\circ\Psi_\lambda=\pi\) gives \(\mathcal M\) its genuine
+\(\Psi\)-equivariant descent structure.  In the notation of
+\cref{wbII:prop:local-cusp-picard-obstruction}, order the six rays in the star
+of the origin as
+\[
+ (r_1,r_2,r_3,r_4,r_5,r_6)
+ =(e_1,e_2,e_2-e_1,-e_1,-e_2,e_1-e_2),
+ \qquad C_i=E_0\cap E_{r_i}.
+\tag{W.123}\label{wbII:eq:W:5.17-A23}
+\]
+The quotient identifies opposite conductor branches.  Therefore, for
+\(A=\mathcal M|_{E_0}=\nu^*(M|_W)\),
+\[
+ d_i=\deg_{C_i}A,
+ \qquad
+ (\deg_{C_1}A,\ldots,\deg_{C_6}A)
+ =(d_1,d_2,d_3,d_1,d_2,d_3).
+\tag{W.124}\label{wbII:eq:W:5.17-A24}
+\]
+
+Define the integer-valued quadratic function
+\[
+ a(x,y)
+ =(d_2+d_3)\binom{x}{2}+d_3xy+(d_1+d_3)\binom{y}{2}.
+\tag{W.125}\label{wbII:eq:W:5.17-A25}
+\]
+Its polarization is
+\[
+ B(v,w)=a(v+w)-a(v)-a(w),
+ \qquad
+ [B]=
+ \begin{pmatrix}
+  d_2+d_3&d_3\\ d_3&d_1+d_3
+ \end{pmatrix}.
+\tag{W.126}\label{wbII:eq:W:5.17-A26}
+\]
+The locally finite divisor
+\[
+ D_a=\sum_{v\in\mathbb Z^2}a(v)E_v
+\tag{W.127}\label{wbII:eq:W:5.17-A27}
+\]
+is Cartier: on every maximal chart, the three height-one ray generators
+form an integral basis, so the three assigned coefficients are the values
+of one integral character.  In the standard toric convention the associated
+support function has ray values \(-a(v)\); the divisor coefficients here are
+the values \(a(v)\), consistent with
+\(\operatorname{div}(\chi^m)=\sum_\rho\langle m,u_\rho\rangle D_\rho\)
+\cite[Propositions~4.1.1--4.1.2, p.~171; Theorems~4.2.8,
+p.~181 and~4.2.12, p.~184]{CoxLittleSchenck2011}.
+This is the same chartwise Cartier argument as
+in \eqref{wbII:eq:W:5.17ab}, and it applies to an arbitrary integer-valued \(a\).
+
+Direct substitution gives
+\[
+ (a(r_1),\ldots,a(r_6))
+ =(0,0,d_2,d_2+d_3,d_1+d_3,d_1).
+\tag{W.128}\label{wbII:eq:W:5.17-A28}
+\]
+Using \(C_i^2=-1\) and \(C_iC_{i\pm1}=1\), the degree vector of
+\(\mathcal O(D_a)|_{E_0}\) is exactly the vector in \eqref{wbII:eq:W:5.17-A24}.  More
+generally, restrict the principal identity
+\(\operatorname{div}(t)=\sum_wE_w\) to \(E_v\).  Since \(E_v\) meets
+precisely \(E_{v+r_i}\), it gives
+\[
+ \mathcal O(D_a)|_{E_v}
+ \simeq
+ \mathcal O_{E_v}\!\left(
+   \sum_{i=1}^6(a(v+r_i)-a(v))C_{v,i}
+ \right).
+\tag{W.129}\label{wbII:eq:W:5.17-A29}
+\]
+The coefficient difference is
+\[
+ a(v+r_i)-a(v)=a(r_i)+B(v,r_i).
+\tag{W.130}\label{wbII:eq:W:5.17-A30}
+\]
+The second summand in \eqref{wbII:eq:W:5.17-A30} is the divisor of the toric character
+with exponent \(B(v,-)\).  Thus every restriction in \eqref{wbII:eq:W:5.17-A29} has the
+same six degrees as \(\mathcal O(D_a)|_{E_0}\).
+
+Because \(B_0\bar\Lambda=\mathbb Z^2\), the deck action is transitive on
+the components \(E_v\).  The genuine descent structure on \(\mathcal M\)
+therefore transports \eqref{wbII:eq:W:5.17-A24}, with its ordered six boundary directions,
+to every \(E_v\).  It follows that
+\[
+ \mathcal R:=\mathcal M\otimes\mathcal O(-D_a)
+ \quad\text{satisfies}\quad
+ \mathcal R|_{E_v}\simeq\mathcal O_{E_v}
+ \quad(v\in\mathbb Z^2).
+\tag{W.131}\label{wbII:eq:W:5.17-A31}
+\]
+Indeed, the six toric curves detect \(\operatorname{Pic}(\mathrm{dP}_6)\):
+in the blow-up basis \(H,E_1,E_2,E_3\), vanishing of the degrees on the
+three exceptional curves kills the three \(E_i\)-coefficients, and
+vanishing on any strict transform \(H-E_i-E_j\) kills the remaining
+\(H\)-coefficient.  Since
+\(H^1(\mathrm{dP}_6,\mathcal O)=0\), equality of those degrees implies
+isomorphism, not merely numerical equivalence.
+
+For \(b_\lambda=B_0\lambda\), the torus-translation part of
+\(\Psi_\lambda\) preserves each toric prime divisor, while its fan part
+translates the index by \(b_\lambda\).  Hence
+\[
+ \Psi_\lambda^*D_a-D_a
+ =\sum_v(a(v+b_\lambda)-a(v))E_v
+ =\operatorname{div}(\chi^{m_\lambda}),
+\tag{W.132}\label{wbII:eq:W:5.17-A32}
+\]
+where
+\[
+ m_\lambda=(\ell_\lambda,k_\lambda),
+ \qquad
+ \ell_\lambda=B(b_\lambda,-),
+ \qquad
+ k_\lambda=a(b_\lambda).
+\tag{W.133}\label{wbII:eq:W:5.17-A33}
+\]
+Thus multiplication by \(\chi^{m_\lambda}\) gives an individual
+isomorphism
+\(\Psi_\lambda^*\mathcal O(D_a)\simeq\mathcal O(D_a)\).
+No cocycle assertion for these individual isomorphisms is needed: we use
+them only to separate the horizontal winding of the genuine descent factor
+of \(\mathcal M\).
+
+For a ray \(\mathbb R_{\ge0}(v,1)\), its toric open set in
+\(Y_\epsilon\) is
+\[
+ U_v\simeq\Delta_\epsilon\times(\mathbb C^*)^2,
+ \qquad E_v^\circ=\{0\}\times(\mathbb C^*)^2.
+\tag{W.134}\label{wbII:eq:W:5.17-A34}
+\]
+Indeed \((e_1,0),(e_2,0),(v,1)\) is an integral basis and \(t\) is the
+character dual to the last vector; compare the author preprint
+\cite[Example~1.2.21, p.~31]{CoxLittleSchenck2011}.
+The set \(U_v\) is Stein and retracts
+onto \(E_v^\circ\).  By \eqref{wbII:eq:W:5.17-A31},
+\(c_1(\mathcal R|_{U_v})=0\); the exponential sequence and Cartan's
+theorem~B therefore trivialize \(\mathcal R|_{U_v}\).  Choose a global
+nowhere-zero frame \(s_v\) of \(\mathcal R|_{E_v}\).  A frame on \(U_v\) can be
+multiplied by a unit pulled back from \((\mathbb C^*)^2\) so that its
+restriction to \(E_v^\circ\) agrees with \(s_v|_{E_v^\circ}\); denote the
+resulting frame by \(e_v\).
+
+We also need to compare these frames on the generic torus.  The direction
+of the toric affine-open inclusions is essential here.  If \(v,w\) are
+adjacent vertices, choose a triangle \(\sigma=\{v,w,u\}\) containing them,
+write \(z_v,z_w,z_u\) for the coordinates dual to its three height-one ray
+generators, and put
+\[
+ S_\sigma:=U_\sigma\cap Y_\epsilon
+ =\{(z_v,z_w,z_u)\in\mathbb C^3:
+       |z_vz_wz_u|<\epsilon\}.
+\tag{W.135}\label{wbII:eq:W:5.17-A34a}
+\]
+Because \(\rho_v<\sigma\), localization of the maximal affine chart gives
+\begin{equation}
+ U_{\rho_v}=D(z_wz_u)\subset U_\sigma,\qquad
+ U_{\rho_w}=D(z_vz_u)\subset U_\sigma,\qquad
+ U_{\rho_v}\cap U_{\rho_w}=D(z_vz_wz_u)=U_0.
+\label{wbII:eq:analytic-toric-open-directions}
+\end{equation}
+Thus \(U_\sigma\) is not contained in \(U_{\rho_v}\cap U_{\rho_w}\), and
+the coordinate discs in \(S_\sigma\) cannot be applied directly to the
+ratio \(e_w/e_v\).
+
+The space \(S_\sigma\) is nevertheless the required comparison chart.  It
+is the closed graph
+\[
+ \{(z_v,z_w,z_u,t)\in\mathbb C^3\times\Delta_\epsilon:
+   t=z_vz_wz_u\}
+\]
+in the Stein space \(\mathbb C^3\times\Delta_\epsilon\), and hence is
+Stein.  Radial scaling of the three \(z\)-coordinates contracts it to the
+origin.  The exponential sequence and Cartan's theorem~B therefore give
+\(\operatorname{Pic}(S_\sigma)=0\).  Choose a frame \(e_\sigma\) of
+\(\mathcal R|_{S_\sigma}\).
+
+Let \(s_v\) be the global frame of
+\(\mathcal R|_{E_v}\simeq\mathcal O_{E_v}\) used to normalize \(e_v\).
+On \(U_{\rho_v}\cap Y_\epsilon\) put
+\[
+ A_{\sigma,v}=e_v/e_\sigma.
+\]
+At \(t=0\), this is the restriction to \((\mathbb C^*)^2\) of the
+holomorphic unit
+\[
+ G_{\sigma,v}
+ =\frac{s_v}{e_\sigma|_{E_v\cap S_\sigma}}
+ \in\mathcal O^*(E_v\cap S_\sigma),
+ \qquad E_v\cap S_\sigma=\{z_v=0\}\simeq\mathbb C^2.
+\]
+Consequently its winding on every horizontal cocharacter is zero at
+\(t=0\).  Under
+\(U_{\rho_v}\cap Y_\epsilon\simeq
+\Delta_\epsilon\times(\mathbb C^*)^2\), that winding is an integer locally
+constant in \(t\), and is therefore zero on every nearby nonzero fibre.
+The same argument applies to \(A_{\sigma,w}\).  On their actual common
+domain \(U_0\cap Y_\epsilon\),
+\[
+ e_w/e_v=A_{\sigma,w}/A_{\sigma,v},
+\]
+so this ratio has zero horizontal winding.  The one-skeleton of the
+\(A_2\)-triangulation is connected, and multiplication along an edge path
+now gives
+\[
+ \operatorname{wind}_m(e_w/e_v)=0
+ \qquad(v,w,m\in\mathbb Z^2)
+\tag{W.136}\label{wbII:eq:W:5.17-A34b}
+\]
+on every nonzero fibre.
+
+Let
+\(\theta^{\mathcal M}_\lambda:\Psi_\lambda^*\mathcal M\to\mathcal M\)
+be the genuine descent isomorphism, let
+\(\mu^+_\lambda:\Psi_\lambda^*\mathcal O(D_a)\to\mathcal O(D_a)\)
+be multiplication by \(\chi^{m_\lambda}\) from \eqref{wbII:eq:W:5.17-A32}, and define the
+inverse-dual isomorphism
+\[
+ \mu^-_\lambda:=((\mu^+_\lambda)^{-1})^\vee:
+ \Psi_\lambda^*\mathcal O(-D_a)\longrightarrow\mathcal O(-D_a),
+ \qquad s\longmapsto\chi^{-m_\lambda}s.
+\]
+The ordinary dual of \(\mu^+_\lambda\) has the opposite arrow; the
+inverse-dual above is the map required by the pullback tensor product.  Then
+\[
+ \theta^{\mathcal R}_\lambda
+ :=\theta^{\mathcal M}_\lambda\otimes\mu^-_\lambda:
+ \Psi_\lambda^*\mathcal R\longrightarrow\mathcal R.
+\]
+Since \(\Psi_\lambda(U_v)=U_{v+b_\lambda}\), define
+\(r_{\lambda,v}\in\mathcal O^*(U_v)\) by the typed identity
+\begin{equation}
+ \theta^{\mathcal R}_\lambda
+   (\Psi_\lambda^*e_{v+b_\lambda})
+ =r_{\lambda,v}e_v.
+\label{wbII:eq:analytic-residual-descent-factor}
+\end{equation}
+At \(t=0\) it extends to an isomorphism between two trivial line bundles
+on the compact surface \(E_v\).  Its factor in the chosen global frames is
+therefore a nonzero constant.  The winding of
+\(r_{\lambda,v}(t,-)\) around every horizontal one-parameter subgroup is
+an integer locally constant in \(t\); at \(t=0\) it is zero, hence it is
+zero for every nearby \(t\ne0\).
+
+To express this isomorphism in one frame on the generic torus, put
+\(q_{\lambda,v}=e_{v+b_\lambda}/e_v\).  Equation \eqref{wbII:eq:W:5.17-A34b} gives zero
+horizontal winding for \(q_{\lambda,v}\); because
+\(\Psi_\lambda|_{Y_t}\) is multiplication by a fixed torus point, it
+induces the identity on horizontal \(H_1\), and
+\(\Psi_\lambda^*q_{\lambda,v}\) also has zero winding.  Relative to the
+single frame \(e_v\), the residual multiplier is therefore
+\[
+ h_{\lambda,v}
+ =\frac{r_{\lambda,v}}{\Psi_\lambda^*q_{\lambda,v}},
+ \qquad
+ \operatorname{wind}_m(h_{\lambda,v})=0.
+\tag{W.137}\label{wbII:eq:W:5.17-A34c}
+\]
+
+On \(U_0\) let \(\mathbf1_a\) be the canonical toric frame of
+\(\mathcal O(D_a)\), and put \(F_v=e_v\otimes\mathbf1_a\).  Equations
+\cref{wbII:eq:analytic-residual-descent-factor} and \eqref{wbII:eq:W:5.17-A32} give
+\[
+ \theta^{\mathcal M}_\lambda(\Psi_\lambda^*F_v)
+ =h_{\lambda,v}\chi^{m_\lambda}F_v.
+\]
+On a nonzero fibre, \(\chi^{m_\lambda}=x^{\ell_\lambda}t^{k_\lambda}\).
+With the section-descent convention \eqref{wbII:eq:W:5.17am}, the factor of automorphy is
+therefore
+\[
+ \alpha_\lambda=(h_{\lambda,v}\chi^{m_\lambda})^{-1}.
+\]
+The residual factor has zero horizontal winding by \eqref{wbII:eq:W:5.17-A34c}, and hence
+\begin{equation}
+ \operatorname{wind}_m(\alpha_\lambda)
+ =-\ell_\lambda(m)=-B(B_0\lambda,m).
+\label{wbII:eq:analytic-factor-horizontal-winding}
+\end{equation}
+
+This winding is exactly the mixed Chern-class entry.  Pull \(F_v\) back to
+the universal cover
+\[
+ p_t:\mathbb C^2\longrightarrow Y_t,
+ \qquad \zeta\longmapsto(e^{2\pi i\zeta},t).
+\]
+The period indexed by \((\lambda,n)\in\mathbb Z^2\oplus\mathbb Z^2\)
+acts by \(\zeta\mapsto\zeta+Z(s)\lambda+n\).  The horizontal factor is one,
+because \(F_v\) is already defined on \(Y_t\).  Choose a logarithm
+\(g_\lambda\in\mathcal O(\mathbb C^2)\) with
+\[
+ p_t^*\alpha_\lambda=e^{2\pi i g_\lambda}.
+\]
+For every horizontal period \(n\),
+\[
+ g_\lambda(\zeta+n)-g_\lambda(\zeta)
+ =\operatorname{wind}_n(\alpha_\lambda).
+\]
+In the exponential connecting cocycle
+\[
+ c(l,l')=g_l(\zeta+l')+g_{l'}(\zeta)-g_{l+l'}(\zeta),
+\]
+take the horizontal logarithm to be zero and the logarithm for the combined
+period \((\lambda,n)\) to be \(g_\lambda\).  Then
+\[
+ c((\lambda,0),(0,n))
+ =\operatorname{wind}_n(\alpha_\lambda),
+ \qquad
+ c((0,n),(\lambda,0))=0.
+\]
+Therefore the alternating exponential connecting integer between
+the vertical deck
+translation indexed by \(\lambda\) and the horizontal loop indexed by
+\(m\) is
+\[
+ E_M\bigl((\lambda,0),(0,m)\bigr)
+ =-\ell_\lambda(m)
+ =-B(B_0\lambda,m),
+\]
+which proves \eqref{wbII:eq:W:5.17-A21}.  This sign also recovers the explicit check in
+\cref{wbII:prop:local-cusp-picard-obstruction}: for
+\(a(v)=v^{\mathsf t}Hv\), one has \(B=2H\), so \eqref{wbII:eq:W:5.17-A21} is the
+cross-block \(-2B_0^{\mathsf t}H=-2P\), namely \(-2q\).
+
+If \(E_M=0\), equation \eqref{wbII:eq:W:5.17-A21} and the unimodularity of \(B_0\) force
+\(B=0\).  The matrix in \eqref{wbII:eq:W:5.17-A26} then gives
+\(d_3=0\), \(d_2=0\), and \(d_1=0\).  Thus all six degrees of \(A\)
+vanish, and the Picard detection argument following \eqref{wbII:eq:W:5.17-A31} gives
+\(A\simeq\mathcal O_{E_0}\).  This is \eqref{wbII:eq:W:5.17-A22}.
+\end{proof}
+
+\begin{theorem}[purely analytic vanishing of the global restriction]
+\label{wbII:thm:analytic-all-picard}
+\ For the standard threefold,
+\[
+ r=\eta^*i^*:\operatorname{Pic}(X)\longrightarrow
+ \operatorname{Pic}(\mathrm{dP}_6)
+\]
+is the zero homomorphism.  This proof uses only holomorphic
+\(\mathcal O^*\)-factors, the two finite logarithmic fillings, the cusp
+argument principle, and the \(\Psi\)-equivariant toric support function.
+It uses neither a global integral Leray transgression nor local integral
+nearby-cycle specialization.
+\end{theorem}
+
+\begin{proof}
+Let \(L\in\operatorname{Pic}(X)\).  By
+Paper~I, Theorem~C.3, its invariant fibre class is
+\[
+ E=c_1(L|_F)=kq,
+ \qquad k\in\mathbb Z,
+ \qquad q=uw+6\gamma\delta.
+\tag{W.138}\label{wbII:eq:W:5.17-A35}
+\]
+The exact contractions, now used without an integral specialization
+lattice, are
+\[
+ \iota_{v_1}q=2\eta_1,
+ \qquad
+ \iota_{v_2}q=-3\eta_2,
+ \qquad
+ [\eta_1]=3[\delta],
+ \qquad
+ [\eta_2]=2[\delta].
+\tag{W.139}\label{wbII:eq:W:5.17-A36}
+\]
+Apply \eqref{wbII:eq:W:5.17-A5} with \((m_1,m_2)=(3,4)\).  In the real global
+coinvariants,
+\[
+ \bar d_1=2k[\delta],
+ \qquad
+ \bar d_2=-\frac32k[\delta].
+\tag{W.140}\label{wbII:eq:W:5.17-A37}
+\]
+Equations \eqref{wbII:eq:W:5.17-A4} and \eqref{wbII:eq:W:5.17-A6} therefore give
+\[
+ 0=\bar d_1+\bar d_2+\bar d_0
+   =\frac{k}{2}[\delta].
+\tag{W.141}\label{wbII:eq:W:5.17-A38}
+\]
+Since \(V_G\otimes\mathbb R=\mathbb R[\delta]\), one has \(k=0\), so
+\(E=0\).  Apply \cref{wbII:lem:analytic-support-specialization} to
+\(M=L|_{N_0}\).  It gives
+\[
+ \eta^*i^*L=\nu^*(L|_W)\simeq\mathcal O_{E_0}.
+\]
+This holds for every \(L\), proving \(r=0\).
+\end{proof}
+
+
+\begin{corollary}[standard-family nonvanishing for \texorpdfstring{$\operatorname{Pic}^0$}{Pic0} without topology]
+\label{wbII:cor:candidate-pic0-route}
+\ For the standard threefold and every
+$L\in\operatorname{Pic}^0(X)$,
+\[
+ H^0(W,\Omega_X^1|_W\otimes A_L)\ne0,
+ \qquad
+ H^2(W,(T_X\otimes L)|_W)\ne0,
+\]
+and
+\[
+ R^2f_*(T_X\otimes L)\ne0.
+\tag{W.44}\label{wbII:eq:W:5.17f}
+\]
+This proof uses the analytic construction of the cusp fibre but no global
+homology, Mayer--Vietoris, or Leray calculation.
+\end{corollary}
+
+\begin{proof}
+The cusp theorem Paper~I, Theorem~B.6 supplies the full compact
+reduced normal-crossings fibre, its $\mathrm{dP}_6$ normalization, and the
+trivialization of $\omega_X$ near $W$.  By
+\cref{wbII:prop:pic0-pullback}, $\eta^*A_L$ is trivial, so
+\cref{wbII:prop:conductor} gives the first nonvanishing.  Apply
+\cref{wbII:prop:cartier-duality-absolute} to $E=T_X\otimes L$; its dual space is
+exactly the preceding nonzero section space, giving the fibrewise $H^2$
+nonvanishing.  The fibre has complex dimension two, so its coherent
+$H^3$ vanishes.  The global construction makes $X$ compact and $f$
+nonconstant; \cref{wbII:lem:curve-flatness} therefore gives properness and
+$f$-flatness of $T_X\otimes L$.  The base-change isomorphism of
+\cref{wbII:prop:analytic-base-change} now identifies the fibre of the $R^2$
+stalk with the nonzero $H^2$ group.  Hence the stalk, and therefore the
+direct-image sheaf, is nonzero.
+\end{proof}
+
+\begin{remark}[reconciliation of the three restriction routes]
+The Pic$^0$ argument proves \eqref{wbII:eq:W:5.17f} without global homology,
+Mayer--Vietoris, or Leray.  The all-Pic statement
+\cref{wbII:prop:leray-edge-restriction} avoids citing the packaged theorem
+$H^2(X;\mathbb Z)=0$, but it reuses the same verified global integral
+Leray and specialization machinery from which that theorem is deduced.
+By contrast, \cref{wbII:prop:direct-boundary-picard} supplies a second all-Pic
+proof without any global Leray differential: it recovers the primitive
+$4-3=1$ obstruction directly from the finite logarithmic gluing and the
+cusp boundary.  It still uses the local integral cusp-specialization
+theorem.  The third proof in \cref{wbII:thm:analytic-all-picard} replaces both
+that specialization and the cusp Chern-class bounding-chain evaluation by
+logarithmic $\mathcal O^*$ factors, the argument principle, and the exact
+$\Psi$-equivariant support function.  Thus the purely analytic
+strengthening is now complete; the three proofs have different
+dependency sets.
+\end{remark}
+
+\subsection{Abstract conductor theorem for the standard fibre}
+
+\begin{theorem}[the conductor mechanism for the standard family]
+\label{wbII:thm:candidate-conductor}
+\ Assume:
+\begin{enumerate}[label=(H\arabic*)]
+\item $X$ is a connected compact smooth complex threefold and
+$f:X\to B$ is a nonconstant holomorphic map to a smooth compact curve;
+\item $W=f^{-1}(p_0)$ is the full scheme-theoretic fibre, is reduced, and
+has the normal-crossings local models \eqref{wbII:eq:W:5.3};
+\item the normalization $\eta:\widetilde W\to W$ is the degree-six del
+Pezzo surface $\mathrm{dP}_6$;
+\item $H^2(X;\mathbb Z)=0$.
+\end{enumerate}
+Then, for every $L\in\operatorname{Pic}(X)$,
+\[
+H^2(W,(T_X\otimes L)|_W)\ne0
+\quad\text{and}\quad
+R^2f_*(T_X\otimes L)\ne0.
+\tag{W.45}\label{wbII:eq:W:5.18}
+\]
+\end{theorem}
+
+\begin{proof}
+Fix $L$ and put
+\[
+\mathcal F_L=T_X\otimes L,\qquad
+A_L=(L^\vee\otimes\omega_X)|_W.
+\]
+Hypothesis (H4) gives $c_1(L^\vee\otimes\omega_X)=0$.  Pullback therefore
+gives $c_1(\eta^*A_L)=0$. The surface $\mathrm{dP}_6$ is the blow-up of
+$\mathbb P^2$ at three noncollinear points. A projective change of coordinates
+moves these points to the three coordinate points, so this is the smooth
+complete toric surface obtained by subdividing the three two-dimensional
+cones of the fan of $\mathbb P^2$. Its fan has support $\mathbb R^2$,
+and the zero Cartier divisor is nef. Demazure vanishing therefore gives
+$H^1(\mathrm{dP}_6,\mathcal O)=0$ in algebraic cohomology
+\cite[Theorem~9.2.3, author preprint p.~410]{CoxLittleSchenck2011}.
+Since this surface is projective and $\mathcal O$ is coherent,
+Serre's comparison theorem identifies that group with analytic cohomology
+\cite[\S12, Theorem~1, p.~19]{Serre1956GAGA}.
+In the exponential sequence, the kernel
+of
+\[
+c_1:\operatorname{Pic}(\mathrm{dP}_6)\longrightarrow
+H^2(\mathrm{dP}_6;\mathbb Z)
+\]
+is the image of $H^1(\mathrm{dP}_6,\mathcal O)$ and is therefore zero.
+Consequently
+\[
+\eta^*A_L\simeq\mathcal O_{\widetilde W}.
+\tag{W.46}\label{wbII:eq:W:5.19}
+\]
+\Cref{wbII:prop:conductor} now gives
+\[
+H^0(W,\Omega^1_X|_W\otimes A_L)\ne0.
+\tag{W.47}\label{wbII:eq:W:5.20}
+\]
+
+Because $W=f^*(p_0)$, one has
+$\mathcal O_X(W)=f^*\mathcal O_B(p_0)$, whose restriction to the fibre is
+trivial.  Adjunction therefore gives $\omega_W\simeq\omega_X|_W$.
+Apply \cref{wbII:thm:cartier-duality} to $E=\mathcal F_L$:
+\[
+\begin{split}
+H^2(W,\mathcal F_L|_W)^\vee
+&\simeq H^0(W,(\mathcal F_L|_W)^\vee\otimes\omega_W)\\
+&=H^0(W,\Omega^1_X|_W\otimes A_L).
+\end{split}
+\]
+The right side is nonzero by \eqref{wbII:eq:W:5.20}, proving the first assertion of \eqref{wbII:eq:W:5.18}.
+The same duality theorem gives
+$H^3(W,\mathcal F_L|_W)=0$.
+
+Since $X$ is compact, $f$ is proper.  By
+\cref{wbII:lem:curve-flatness}, $f$ is flat and the vector bundle
+$\mathcal F_L$ is $f$-flat.  Thus every hypothesis of
+\cref{wbII:prop:analytic-base-change} is satisfied at $p_0$, and
+\[
+(R^2f_*\mathcal F_L)_{p_0}\otimes\mathbb C(p_0)
+\simeq H^2(W,\mathcal F_L|_W)\ne0.
+\]
+The stalk, and hence the coherent direct-image sheaf, is nonzero.  This is
+the second assertion of \eqref{wbII:eq:W:5.18}.
+\end{proof}
+
+\begin{corollary}[application to the standard threefold]
+\label{wbII:cor:candidate-conductor-actual}
+\ For the global construction of
+Paper~I, Theorem~B.11 and every
+$L\in\operatorname{Pic}(X)$,
+\[
+H^2(W,(T_X\otimes L)|_W)\ne0,
+\qquad R^2f_*(T_X\otimes L)\ne0.
+\]
+\end{corollary}
+
+\begin{proof}
+The cusp construction gives the compact full Cartier fibre, its
+$\mathrm{dP}_6$ normalization, and the local trivialization of $\omega_X$.
+By the local canonical trivialization and
+\cref{wbII:prop:direct-boundary-picard}, $\eta^*A_L$ is trivial for every $L$.
+The conductor proposition then gives
+$H^0(W,\Omega_X^1|_W\otimes A_L)\ne0$; absolute Cartier-fibre duality turns
+this into the displayed $H^2$ nonvanishing, and the uniform top-degree
+base-change isomorphism turns it into a nonzero $R^2$ stalk.  This is exactly
+the chain proved in \cref{wbII:cor:candidate-pic0-route}, now with the all-Pic
+restriction supplied directly by \cref{wbII:prop:direct-boundary-picard}.  The
+global Leray-edge proof in \cref{wbII:prop:leray-edge-restriction} is an
+independent certificate of the same restriction statement.
+\end{proof}
+
+\subsection{The corrected theorem that survives both defects}
+
+The original hypotheses do not force the CDP conclusion: the constructed
+threefold above is a counterexample.  There is nevertheless a sharp useful
+replacement.  It isolates the exact extra global vanishing needed by the
+intact part of the argument, and the following fibrewise criterion replaces
+the invalid p.~692 reduction.
+
+\begin{lemma}[generic endpoint vanishing]
+\label{wbII:lem:generic-endpoints}
+Let $Y$ be a connected compact complex manifold of dimension $n$, let $D$ be
+a nonzero effective Cartier divisor with $\cO_Y(D)\in\Pic^0(Y)$, and let
+$B$ be a holomorphic vector bundle.  Let $\mathcal P\subset\Pic^0(Y)$ be a
+connected irreducible reduced complex analytic parameter space carrying a
+Poincar\'e line bundle on $Y\times\mathcal P$.  Assume that dualization
+preserves $\mathcal P$, and suppose it
+  contains points $P_0=\cO_Y(-mD)$ and $Q_0=\cO_Y(-\ell D)$ for some
+  $m,\ell\ge1$ with
+  $H^0(Y,B\otimes P_0)=0$ and
+  $H^0(Y,B^\vee\otimes\omega_Y\otimes Q_0)=0$ (the stabilization argument
+  supplies such exponents whenever the corresponding twists lie in
+  $\mathcal P$).  Then there is a dense open subset
+$U\subset\mathcal P$ such that, for every $P'\in U$,
+\[
+ H^0(Y,B\otimes P')=H^n(Y,B\otimes P')=0.
+ \tag{W.169}\label{wbII:eq:CN:5.2}
+\]
+\end{lemma}
+
+\begin{proof}
+Put
+  \(V_k=H^0(Y,B\otimes\cO_Y(-kD))\), viewed inside $H^0(Y,B)$, and note
+  that $V_{k+1}\subseteq V_k$.  The descending chain stabilizes.  If $s$ is
+  in its stable value, then at a point of $D$ choose a local defining
+  nonzerodivisor $g_D$ for the Cartier divisor and a local frame of $B$.
+  Every coefficient of the germ of $s$ is divisible by $g_D^k$ for every
+  $k$.  The Krull-intersection theorem in the regular local ring
+  $\cO_{Y,y}$ gives $\bigcap_{k\ge1}g_D^k\cO_{Y,y}=0$, so the germ is zero at
+  every point of $D$.  Hence $s$ vanishes on a nonempty open set and, by
+  connectedness, on $Y$.  Thus $V_k=0$ for all sufficiently large $k$.
+
+  The chosen point $P_0$ satisfies
+  $H^0(Y,B\otimes P_0)=0$.  The Poincar\'e bundle gives, locally on
+$\mathcal P$, a family to which Grauert's theorem applies; the local jump
+  loci $\{P':h^0(Y,B\otimes P')\ge1\}$ glue to a closed analytic subset of
+  $\mathcal P$ (Grauert's theorem; see \cite{Grauert1960D,BS76push}).  It is proper because it misses $P_0$, and irreducibility of
+$\mathcal P$ makes its complement dense open.  Applying the same stabilization
+argument to $B^\vee\otimes\omega_Y$ and using the chosen point $Q_0$ gives
+$H^0(Y,B^\vee\otimes\omega_Y\otimes Q_0)=0$; dualization stability puts
+$Q_0^\vee$ in $\mathcal P$.  Serre duality then gives
+$H^n(Y,B\otimes Q_0^\vee)=0$.  The corresponding top-degree jump locus is
+therefore also proper with dense open complement.  Intersecting the two
+dense open complements proves the claim.
+\end{proof}
+
+\begin{lemma}[generic endpoint vanishing]\label{wbII:lem:cdp-generic-endpoints}
+\ Let \(Y\) be a connected compact complex manifold, let \(D\) be
+a nonzero effective Cartier divisor, and suppose
+\(\mathcal O_Y(D)\in\operatorname{Pic}^0(Y)\).  For every holomorphic vector
+bundle \(B\), a general \(P\in\operatorname{Pic}^0(Y)\) satisfies
+\[
+ H^0(Y,B\otimes P)=0,\qquad
+ H^{\dim Y}(Y,B\otimes P)=0.
+\tag{W.50}\label{wbII:eq:W:5.23}
+\]
+\end{lemma}
+
+\begin{proof}
+The inclusions \(\mathcal O_Y(-(k+1)D)\hookrightarrow
+\mathcal O_Y(-kD)\) give a descending chain
+\[
+ V_k=H^0(Y,B\otimes\mathcal O_Y(-kD))
+ \subseteq H^0(Y,B).
+\]
+It stabilizes because the last vector space is finite-dimensional.  A
+section in the stable value belongs to every \(V_k\).  In a local equation
+\(z=0\) for \(D\), every coefficient of that section is divisible by
+\(z^k\) for all \(k\), and hence is zero.  The section vanishes on a
+neighbourhood of \(D\), and therefore on connected \(Y\) by analytic
+continuation.  Thus \(V_k=0\) for some \(k\).  Since
+\(\mathcal O_Y(-kD)\in\operatorname{Pic}^0(Y)\), upper semicontinuity in a
+local universal family of topologically trivial line bundles shows that
+\[
+ \{P:h^0(Y,B\otimes P)>0\}
+\]
+is a proper analytic subset of \(\operatorname{Pic}^0(Y)\).  This proves
+the first vanishing for general \(P\).  Serre duality identifies the dual
+of the second group in \eqref{wbII:eq:W:5.23} with
+\[
+ H^0(Y,B^\vee\otimes\omega_Y\otimes P^\vee).
+\]
+Apply the first part to \(B^\vee\otimes\omega_Y\) and use that inversion is
+an automorphism of \(\operatorname{Pic}^0(Y)\).
+\end{proof}
+
+\begin{theorem}[corrected CDP global-vanishing criterion]
+\label{wbII:thm:corrected-cdp-global}\label{wbII:thm:corrected-global}
+\ Let \(X\) be a compact connected complex threefold such that
+\[
+ H^1(X;\mathbb Z)=H^2(X;\mathbb Z)=0,\qquad a(X)=1,
+\]
+and suppose its algebraic reduction is a holomorphic map
+\(f:X\to C\).  If there exists \(L_0\in\operatorname{Pic}(X)\) with
+\[
+ H^2(X,T_X\otimes L_0)=0,
+\tag{W.51}\label{wbII:eq:W:5.24}
+\]
+then, for \(M\) in a dense open subset of \(\operatorname{Pic}(X)\),
+\[
+ H^i(X,T_X\otimes M)=0\quad(i\ne1),
+\tag{W.52}\label{wbII:eq:W:5.25}
+\]
+\[
+ \chi(X,T_X\otimes M)\le0,\qquad
+ \left\langle c_3(T_X),[X]\right\rangle\le0.
+\tag{W.53}\label{wbII:eq:W:5.26}
+\]
+\end{theorem}
+
+\begin{proof}
+The exponential sequence and the two integral vanishings give
+\[
+ \operatorname{Pic}(X)=\operatorname{Pic}^0(X)
+ \simeq H^1(X,\mathcal O_X).
+\tag{W.54}\label{wbII:eq:W:5.27}
+\]
+Thus this Picard group is a connected irreducible complex vector group.
+Choose additive Cech cocycles $a^{(r)}_{ij}$ representing a basis of
+$H^1(X,\mathcal O_X)$. For coordinates $\lambda_r$ on that vector space,
+\[
+ g_{ij}(\lambda)=\exp\!\left(\sum_r\lambda_r a^{(r)}_{ij}\right)
+\]
+satisfy the multiplicative cocycle condition and define a holomorphic
+line bundle on $X\times H^1(X,\mathcal O_X)$. Its restriction at every
+parameter represents the corresponding line bundle, so proper
+semicontinuity below applies to an actual holomorphic family.  Any fibre divisor \(D\) of
+\(f\) is nonzero and effective, and its line bundle lies in
+\(\operatorname{Pic}^0(X)\) by \(H^2(X;\mathbb Z)=0\).  Applying
+\cref{wbII:lem:cdp-generic-endpoints} to \(B=T_X\) shows that the degree-zero and
+degree-three groups in \eqref{wbII:eq:W:5.25} vanish away from two proper analytic subsets
+of \(\operatorname{Pic}(X)\).
+
+The cohomology-jump locus
+\[
+ \{M\in\operatorname{Pic}(X):h^2(X,T_X\otimes M)\ge1\}
+\]
+is analytic by upper semicontinuity.  It is proper because \eqref{wbII:eq:W:5.24} gives a
+point outside it.  Its complement therefore meets the two endpoint
+vanishing loci in a dense open set.  This proves \eqref{wbII:eq:W:5.25}, and on that set
+\[
+ \chi(X,T_X\otimes M)=-h^1(X,T_X\otimes M)\le0.
+\tag{W.55}\label{wbII:eq:W:5.28}
+\]
+
+Every \(M\in\operatorname{Pic}(X)\) has rationally trivial first Chern
+class.  The hypotheses also give \(c_1(T_X)=0\) in rational cohomology and,
+by Poincar\'e duality, \(H^4(X;\mathbb Q)=0\), so
+\(c_2(T_X)=0\) rationally.  The degree-six term of
+\(\operatorname{ch}(T_X\otimes M)\operatorname{td}(X)\) is consequently
+\(\tfrac12c_3(T_X)\).  Hirzebruch--Riemann--Roch turns \eqref{wbII:eq:W:5.28} into
+\[
+ \chi(X,T_X\otimes M)
+ =\frac12\left\langle c_3(T_X),[X]\right\rangle\le0,
+\]
+which proves \eqref{wbII:eq:W:5.26}.
+\end{proof}
+
+\begin{corollary}[intact relative criterion]\label{wbII:cor:corrected-cdp-relative}\label{wbII:cor:relative}
+\ In the setting of
+\cref{wbII:thm:corrected-cdp-global}, it is enough that one line bundle
+\(L\in\operatorname{Pic}(X)\) satisfy
+\[
+ R^2f_*(T_X\otimes L)=0.
+\tag{W.56}\label{wbII:eq:W:5.29}
+\]
+This is the valid content of the sufficient criterion printed as
+\cite[Proposition~2.4, p.~680]{CDP20}.
+\end{corollary}
+
+\begin{proof}
+Let \(A\) be a positive-degree line bundle on the compact Riemann surface
+\(C\), and put \(E=T_X\otimes L\).  Projection formula gives
+\[
+ R^2f_*(E\otimes f^*A^m)=R^2f_*E\otimes A^m=0.
+\]
+For \(m\gg0\), Serre vanishing on \(C\) gives
+\[
+ H^1(C,R^1f_*E\otimes A^m)=0.
+\]
+The Leray spectral sequence has only columns zero and one, so its
+total-degree-two terms yield
+\[
+ H^2(X,E\otimes f^*A^m)=0.
+\]
+Thus \(L_0=L\otimes f^*A^m\) satisfies \eqref{wbII:eq:W:5.24}, and
+\cref{wbII:thm:corrected-cdp-global} applies.
+\end{proof}
+
+\begin{theorem}[exact reduced-fibre repair of the p.~692 step]
+\label{wbII:thm:corrected-cdp-fibrewise}
+\ Retain the setting of
+\cref{wbII:thm:corrected-cdp-global}, assume every full scheme-theoretic fibre
+\(W_c=f^{-1}(c)\) is reduced, and fix \(L\in\operatorname{Pic}(X)\).  Put
+\[
+ A_c=(\omega_X\otimes L^\vee)|_{W_c},\qquad
+ \mathscr T_c=\ker\!\left(
+ \Omega^1_{W_c}\longrightarrow
+ j_*\Omega^1_{(W_c)_{\rm reg}}\right).
+\]
+For each \(c\), let
+\[
+ \delta_c:
+ H^0(W_c,\mathscr T_c\otimes A_c)
+ \longrightarrow
+ H^1(W_c,N^*_{W_c/X}\otimes A_c)
+\tag{W.57}\label{wbII:eq:W:5.30}
+\]
+be the connecting map from the missing cotangent filtration.  If, for every
+\(c\),
+\[
+ H^0(W_c,\widetilde\Omega^1_{W_c}\otimes A_c)=0,\qquad
+ H^0(W_c,N^*_{W_c/X}\otimes A_c)=0,\qquad
+ \delta_c\ \text{is injective},
+\tag{W.58}\label{wbII:eq:W:5.31}
+\]
+then \eqref{wbII:eq:W:5.29}, \eqref{wbII:eq:W:5.25}, and \eqref{wbII:eq:W:5.26} hold.
+\end{theorem}
+
+\begin{proof}
+Apply \cref{cdp:st:A.1.1} to the whole reduced
+Cartier fibre \(W_c\), not separately to its components.  Conditions \eqref{wbII:eq:W:5.31}
+give
+\[
+ H^0(W_c,\Omega_X^1|_{W_c}\otimes A_c)
+ =\ker\delta_c=0.
+\tag{W.59}\label{wbII:eq:W:5.32}
+\]
+The map \(f\) is flat: a local parameter at \(c\) pulls back to a
+non-zero-divisor in every regular local ring of the connected manifold \(X\),
+and torsion-freeness over the base DVR is flatness.  Moreover, the normal
+line of the full fibre is the pullback of the one-dimensional vector space
+\(T_cC\), hence is trivial.  Adjunction therefore identifies
+\(\omega_{W_c}\simeq\omega_X|_{W_c}\).  With \(E=T_X\otimes L\), absolute
+Cartier-fibre duality now gives
+\[
+ H^2(W_c,E|_{W_c})^\vee
+ \simeq H^0(W_c,\Omega_X^1|_{W_c}\otimes A_c)=0.
+\]
+The uniform top-degree base-change isomorphism of
+\cref{wbII:cor:surface-top-base-change} therefore gives
+\[
+ (R^2f_*E)_c\otimes_{\mathcal O_{C,c}}\mathbb C(c)=0
+\]
+for every \(c\).  Nakayama's lemma kills every stalk of the coherent sheaf
+\(R^2f_*E\), proving \eqref{wbII:eq:W:5.29}.  The remaining conclusions follow from
+\cref{wbII:cor:corrected-cdp-relative}.
+\end{proof}
+
+\begin{remark}[scope and sharpness of the repair]
+Under the two endpoint vanishings in \eqref{wbII:eq:W:5.31}, injectivity of \(\delta_c\) is
+equivalent to the desired ambient vanishing \eqref{wbII:eq:W:5.32}; it is the exact lifting condition.  For a reducible reduced fibre the
+map must be computed on the whole Cartier fibre.  A nonreduced fibre requires
+additional nilpotent-thickening layers and is not covered by
+\cref{wbII:thm:corrected-cdp-fibrewise}.  The global criterion
+\cref{wbII:thm:corrected-cdp-global} and the relative criterion
+\cref{wbII:cor:corrected-cdp-relative} do allow nonreduced fibres.
+
+The restandard family violates both added conditions rather than being
+silently excluded by terminology.  Since \(c_3(X)=2\), the contrapositive of
+\cref{wbII:thm:corrected-cdp-global} proves
+\[
+ H^2(X,T_X\otimes L_0)\ne0
+ \quad\text{for every }L_0\in\operatorname{Pic}(X).
+\]
+Independently, \cref{wbII:cor:candidate-conductor-actual} proves
+\[
+ R^2f_*(T_X\otimes L)\ne0
+ \quad\text{for every }L\in\operatorname{Pic}(X),
+\]
+and its cusp conductor supplies a nonzero element of the relevant
+\(\ker\delta_c\).  The first conclusion rules out the global hypothesis; the
+second independently rules out the stronger relative sufficient condition.
+Thus the corrected theorem is compatible with, and
+precisely separates, the verified counterexample to CDP20
+Theorem~2.2 as stated.
+\end{remark}
+
+\paragraph{The exact monodromy repair.}
+The split-extension argument can reach only the invariant integral lattice
+\(H^1(F;\mathbb Z)^{\pi_1(C^\circ)}\).  Its final complex-linear inference is
+valid precisely when
+\[
+ \operatorname{Span}_{\mathbb C}\operatorname{im}\!\left(
+ H^1(F;\mathbb Z)^{\pi_1(C^\circ)}
+ \longrightarrow H^1(F,\mathcal O_F)\right)
+ =H^1(F,\mathcal O_F).
+\tag{W.60}\label{wbII:eq:W:5.33}
+\]
+Trivial monodromy on \(H_1(F;\mathbb Z)\) is a stronger sufficient
+hypothesis.  Neither \eqref{wbII:eq:W:5.33} nor trivial monodromy follows from the hypotheses
+of CDP20 Theorem~2.2.  The corrected theorem above bypasses this rank route
+entirely; it does not relabel the false direct-sum formula as proved.
+
+\begin{corollary}[Positive Euler number obstructs the added vanishings]
+\label{wbII:test:cdp-comparison}
+For the standard compact threefold $X$, every $L\in\operatorname{Pic}(X)$
+satisfies
+\[
+ H^2(X,T_X\otimes L)\ne0,
+ \qquad R^2f_*(T_X\otimes L)\ne0.
+\]
+The second conclusion also follows directly from the cusp conductor.
+\end{corollary}
+\begin{proof}
+Paper I proves that the standard compact threefold has
+$H^1(X;\mathbb Z)=H^2(X;\mathbb Z)=0$, holomorphic algebraic reduction
+to $\mathbb P^1$, and $\langle c_3(T_X),[X]\rangle=2$.
+If the displayed degree-two cohomology vanished for one line bundle,
+\cref{wbII:thm:corrected-cdp-global} would give $c_3(X)\le0$, a contradiction.
+If the second direct image vanished for one twist,
+\cref{wbII:cor:corrected-cdp-relative} would give such a global twist after
+tensoring by the pullback of a sufficiently positive base line bundle,
+again a contradiction. Independently,
+\cref{wbII:cor:candidate-conductor-actual} constructs a nonzero cusp-fibre
+cohomology class and identifies it with the fibre of the second direct
+image by top-degree base change. The contradiction with the printed
+CDP conclusion is credited to \citet[Section~10.2, Theorem~10.5]{AC2026}.
+\end{proof}
+\subsection{Ordinary relative one-forms on the actual local models}
+The following computation concerns the relative cotangent module on the
+smooth total space, before restriction to a fibre. All base maps and local
+rings are specified in the statement.
+\begin{proposition}[crossing and multiple-fibre modules]
+\label{wbII:prop:relative-local}
+The symbols $R_2$ and $R_3$ denote copies of the same regular local ring,
+with different maps from the one-dimensional base:
+let $R_2=\C\{x,y,z\}$ with base coordinate $t=xy$, and let
+$R_3=\C\{x,y,z\}$ with base coordinate $t=xyz$.  Then
+\[
+\begin{aligned}
+ M_2&:=\Omega^1_{R_2/\C\{t\}}
+ =\frac{R_2\,dx\oplus R_2\,dy\oplus R_2\,dz}
+        {R_2\,(y\,dx+x\,dy)},\\[2pt]
+ M_3&:=\Omega^1_{R_3/\C\{t\}}
+ =\frac{R_3\,dx\oplus R_3\,dy\oplus R_3\,dz}
+        {R_3\,(yz\,dx+xz\,dy+xy\,dz)}.
+\end{aligned}
+\tag{W.176}\label{wbII:eq:CN:6.1}
+\]
+Both modules are torsion-free, but neither is locally free at the origin.
+They embed in free modules by
+\[
+\begin{aligned}
+ M_2&\hookrightarrow R_2e\oplus R_2dz,
+ &dx&\longmapsto xe,&dy&\longmapsto-ye,&dz&\longmapsto dz,\\
+ M_3&\hookrightarrow R_3e_1\oplus R_3e_2,
+ &dx&\longmapsto xe_1,&dy&\longmapsto ye_2,&dz&\longmapsto-z(e_1+e_2),
+\end{aligned}
+\tag{W.177}\label{wbII:eq:CN:6.2}
+\]
+with images
+\[
+ R_2dz\oplus (x,y)e,
+ \qquad
+ R_3xe_1+R_3ye_2+R_3z(e_1+e_2).
+\tag{W.178}\label{wbII:eq:CN:6.3}
+\]
+If $R_m=\C\{s,y_1,y_2\}$ and the base coordinate is $t=s^m$ with
+$m\ge2$, then
+\[
+\Omega^1_{R_m/\C\{t\}}
+\simeq R_m\,dy_1\oplus R_m\,dy_2
+       \oplus R_m/(s^{m-1})\,ds,
+\tag{W.179}\label{wbII:eq:CN:6.4}
+\]
+and the final summand is exactly its torsion submodule.
+\end{proposition}
+
+\begin{proof}
+Differentiating the three equations gives the presentations in \eqref{wbII:eq:CN:6.1}.  For
+$M_2$, the first map in \eqref{wbII:eq:CN:6.2} sends $(a,b,c)$ to $(ax-by,c)$.  If this is
+zero, then $c=0$ and $ax=by$.  Since $x$ and $y$ are relatively prime in the
+UFD $R_2$, there is an $h$ with $b=xh$ and $a=yh$; hence its kernel is exactly
+the displayed relation.  For $M_3$, the second map sends $(a,b,c)$ to
+$(ax-cz,by-cz)$.  If it is zero, relative primeness first gives $x\mid c$,
+then $y\mid(c/x)$; writing $c=xyh$ gives
+$(a,b,c)=h(yz,xz,xy)$, again exactly the defining relation.  Thus both maps
+are injective, proving torsion-freeness and \eqref{wbII:eq:CN:6.3}.
+
+At the maximal ideal $(x,y,z)$ each defining relation has all coefficients in
+that maximal ideal.  Consequently the quotient of either module by the
+maximal ideal has dimension $3$ over $\C$, while its generic rank is $2$;
+a locally free module of rank $2$ would need only $2$ generators.  This proves
+non-local-freeness at the origin.  Finally, for $t=s^m$ one has
+$dt=m s^{m-1}ds=0$ relatively.  The integer $m$ is a unit in $\C$, so the
+decomposition \eqref{wbII:eq:CN:6.4} follows.  Its last summand is annihilated by
+$s^{m-1}$, while the other two summands are free; after inverting $s$ it
+vanishes.  It is therefore exactly the torsion submodule.
+\end{proof}
+
+\begin{remark}[scope of the local correction]
+\label{wbII:rem:relative-local-scope}
+The modules in \eqref{wbII:eq:CN:6.1} are modules on the smooth total-space chart, and their
+torsion-freeness is asserted before restricting to a fibre.  They must be
+distinguished both from the intrinsic sheaf $\Omega^1_S$ of the singular
+fibre and from the restricted relative module
+$M_i\otimes_{R_i}R_i/(t)$ ($i=2,3$): tensoring with the fibre ring can create
+conductor-supported torsion, as the $\tau$ calculation in the proof of
+Theorem~\ref{cdp:st:B1} shows.  If a local quotient is finite
+surjective \'{e}tale over a chart in \eqref{wbII:eq:CN:6.4}, relative differentials commute with
+this base change and faithful flatness then reflects torsion of the pulled-back
+module; a ramified quotient
+requires a separate invariant-module calculation.  Thus the bare $t=xyz$
+chart has a torsion-free but non-locally-free total-space relative module for
+$p=1$; this fact alone does not decide torsion after fibre restriction or
+quotient.  The multiple-fibre charts do have the total-space torsion in
+\eqref{wbII:eq:CN:6.4}.  No claim about torsion in $\bigwedge^2\Omega^1$ or
+$\bigwedge^3\Omega^1$, and no global direct-image or Hodge conclusion, is
+made here.
+\end{remark}
+

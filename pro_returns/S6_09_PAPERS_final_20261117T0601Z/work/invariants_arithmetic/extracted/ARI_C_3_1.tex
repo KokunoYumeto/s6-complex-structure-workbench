@@ -1,0 +1,86 @@
+\begin{statement}[C.3.1; Proved: fourth order at the maximum]
+On either root branch at $\tau=i$, let
+$h=\mu-(1-\tau)/2$ and $\delta=\tau-i$. Then
+\begin{align*}
+ \tau&=i-\frac{3\pi i}{2}h^2-\frac{9\pi^2i}{8}h^4+O(h^6),\\
+ h^2&=\frac{2i}{3\pi}\delta+\frac1{3\pi}\delta^2+O(\delta^3),\\
+ \mu&=\frac{1-\tau}{2}
+  \mathbin{\pm}\left(\frac{2i\delta}{3\pi}\right)^{1/2}
+          \left(1-\frac{i}{4}\delta+O(\delta^2)\right).
+\end{align*}
+The square root is taken holomorphically on the chosen root chart.
+Furthermore
+\begin{align}\label{eq:cs-Li}
+ \log N={}&\tfrac12\log2-\frac\pi2|h|^2
+   +\frac{3\pi^2}{8}|h|^4
+   -\frac{3\pi^2}{4}|h|^2\operatorname{Re}(h^2)
+   -\frac{5G}{192}\operatorname{Re}(h^4)+O(|h|^6),\\
+ D_{\rm part}={}&D_* -\frac2\pi|\delta|
+  +\frac1\pi\bigl(|\delta|^2+|\delta|\operatorname{Im}\delta\bigr)
+  +\frac{5G}{72\pi^3}\operatorname{Re}(\delta^2)
+  +O(|\delta|^3).\nonumber
+\end{align}
+In particular the leading terms of K3 and Lead 9 are correct.
+\end{statement}
+\begin{proof}
+Write $e(\tau)=\wp_\tau((1-\tau)/2)$ and
+$E=\pi^2E_2/3$. The half-period Taylor series is
+\[
+ \wp_\tau((1-\tau)/2+h)
+ =e+(3e^2-g_2/4)h^2+(3e^3-g_2e/4)h^4+O(h^6).
+\]
+The exact coefficients checked in K3 are
+$e(i)=0$, $e'(i)=iG/(6\pi)$. This proves the claimed identity
+$3e'(i)=(2i/\pi)G/4$. For clarity its closed form follows from
+$e=\pi^2(\vartheta_2^4-\vartheta_4^4)/3$ and the heat equation:
+if $A=\vartheta_2(i)^4=\vartheta_4(i)^4$, then
+$G=4\pi^4A^2$ and $e'(i)=2\pi^3iA^2/3$.
+The classical beta integral
+$K(1/2)=\Gamma(1/4)^2/(4\sqrt\pi)$ and
+$\vartheta_3(i)^2=2K(1/2)/\pi$ give
+$G=16K(1/2)^4=\Gamma(1/4)^8/(16\pi^2)$.
+The beta evaluation follows by changing variable in
+$\int_0^\infty(1+x^4)^{-1/2}\,dx
+=\tfrac14 B(1/4,1/4)$; it is the lemniscatic complete period.
+
+Ramanujan's identities give $g_2'(i)=2iG$. Differentiating
+$e(-1/\tau)=\tau^2 e(\tau)$ twice at $i$ gives
+$e''(i)=3i e'(i)=-G/(2\pi)$. Inserting
+$\delta=A_2h^2+A_4h^4+O(h^6)$ into the displayed half-period series
+therefore gives
+\[
+ A_2=-3\pi i/2,\qquad
+ A_4=\frac{g_2'A_2/4-e''A_2^2/2}{e'}=-9\pi^2i/8.
+\]
+The implicit-function theorem applies because $e'(i)\ne0$;
+evenness in $h$ gives the stated remainder. Series inversion gives
+the formulas for $h^2$ and $\mu$.
+
+Let $H(h,\tau)=\log(\vartheta_3(h,\tau)/\eta(\tau))$. The exact
+identity from the half-period translation is
+$\log N=\operatorname{Re}H-\pi(\operatorname{Im}h)^2/
+\operatorname{Im}\tau$. At $(0,i)$ its relevant Taylor data are
+\[
+ \begin{gathered}
+ H_0=\tfrac12\log2,\quad H_\tau=0,\quad
+ [h^2]H=-\pi/2,\quad [h^4]H=G/48,\\
+ \partial_\tau[h^2]H=-\pi i/4-iG/(16\pi),\qquad
+ H_{\tau\tau}=-G/(24\pi^2).
+ \end{gathered}
+\]
+Indeed $\partial_h^2\log\vartheta_3=-\wp(h+(1-\tau)/2)-E$;
+the heat equation at $h=0$ gives $H_\tau=ie/(4\pi)$, and
+$E'(i)=\pi i/2-iG/(24\pi)$. These identities prove every entry.
+After substitution $\tau=\tau(h)$, the pure $h^4$ coefficient of
+$H$ is $-3\pi^2/8-5G/192$. Expanding
+$\operatorname{Im}\tau=1-(3\pi/2)\operatorname{Re}(h^2)+O(|h|^4)$
+in the Gaussian gives \eqref{eq:cs-Li}. Finally
+\[
+ |h|^2=\frac{2}{3\pi}|\delta|
+          \left(1+\tfrac12\operatorname{Im}\delta+O(|\delta|^2)\right)
+\]
+and substitution into the quartic expression, followed by
+multiplication by $6/\pi$, gives the formula for $D_{\rm part}$.
+The script \path{Cspecial_expansion_checks.py} independently checks
+these coefficients against theta evaluations; its output is retained.
+\end{proof}

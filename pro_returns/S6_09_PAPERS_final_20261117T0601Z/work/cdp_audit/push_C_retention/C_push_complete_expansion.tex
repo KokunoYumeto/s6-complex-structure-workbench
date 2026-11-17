@@ -1,0 +1,3786 @@
+\section{C. Smooth monodromy and the seven-dimensional invariant}
+
+The actual positive-loop smooth monodromy is zero. C.3.24 proves
+this through an equivariant orbit-knot integer; C.3.25--C.3.27
+give a second determination through an explicit spin$^c$
+eight-dimensional coboundary and direct index additivity. Their
+boundary-invariant and one-loop arguments are independent; their
+actual annular representative and characteristic inputs are shared
+and identified below. B.4.33 excludes the specific analytic
+filling of Part B, so C.5.1 records that its requested Chern
+data are undefined. In this section $M_\Phi$ is a closed seven-manifold,
+whereas $W_8$ denotes a
+compact oriented eight-manifold with boundary. The circle parameter
+has positive orientation. On $M_\Phi$ we use the orientation
+$d\theta\wedge o_{X_c}$; this is the boundary orientation of a
+holomorphic family over a positively oriented disc. The statements
+below do not assign a characteristic number to any unconstructed
+filling in Part B.
+
+\subsection{C.1. Clutching conventions and the mapping torus}
+
+\begin{proposition}[C.1.1 (Known, with derivation): the mapping-torus comparison]
+For an orientation-preserving smooth diffeomorphism
+$\phi:S^6\to S^6$, put
+\[
+ M_\phi=(S^6\times[0,1])/((x,1)\sim(\phi(x),0)),\qquad
+ \Sigma_\phi=D^7_+\cup_\phi(-D^7_-).
+\]
+The boundary identification uses the usual oriented parametrizations
+of the two underlying copies of $S^6$; the minus sign reverses the
+orientation of the second disc. Then
+\[
+ M_\phi\cong (S^1\times S^6)\mathbin\#\Sigma_\phi
+\]
+as oriented smooth manifolds. With the corresponding sphere-gluing
+identification, $[\phi]\mapsto[\Sigma_\phi]$ identifies
+$\pi_0\Diff^+(S^6)$ with $\Theta_7$. For either spin structure on
+$M_\phi$,
+\[
+ \mu(M_\phi)=\mu(\Sigma_\phi).
+\]
+For the family in the prompt the gluing map is
+$\Phi=F_{2,c_0-2}\circ H$, with $c(r)=c_0-2r$.
+\end{proposition}
+
+\begin{proof}
+An ambient isotopy first arranges that $\phi$ is the identity on a
+small closed disc: move the image of its centre back, correct the
+oriented derivative through $\GL^+(6,\R)$, and use isotopy extension
+on a smaller coordinate disc. Consequently its support lies in the
+complementary disc $D^6$. Cut the mapping torus at its seam and take
+the block $D^6\times[-\epsilon,\epsilon]$. The lower half of this
+block has the old coordinates; on the upper half replace the
+coordinates by $\phi^{-1}$. This identifies the reglued block with a
+standard seven-disc. Its attaching map is $\phi$ on its upper
+hemisphere and the identity on the lower hemisphere and side collar.
+The upper hemisphere has boundary orientation $o_{D^6}$ for the
+orientation $dt\wedge o_{D^6}$ on the block. Thus the replacement
+has exactly the sign in $D^7_+\cup_\phi(-D^7_-)$.
+Removing a small ball from the second disc in that sphere leaves the
+same attaching construction; this proves the connected-sum formula.
+
+Sphere gluing identifies pseudo-isotopy classes with homotopy spheres;
+Cerf's pseudo-isotopy theorem changes pseudo-isotopy to isotopy for
+the simply connected six-sphere. The exact primary statements are
+Theorem 0 and Corollaries 1--2 of \citet[p.~8]{Cerf1970};
+the sphere case is also explained in Theorem 1 and Corollary 1 of
+\citet[p.~156]{Poenaru1971}. These statements compare the
+sphere gluing and extension-over-a-disc constructions. This is the
+high-dimensional theorem, not the separate statement $\Gamma_4=0$.
+The oriented connected-sum group is Theorem 1.1 and Lemma 2.1 of
+\citet[pp.~504--505]{KervaireMilnor1963}; their dimension table on
+p.~504 gives order 28 in dimension seven.
+
+The sphere summand is spin. The product $S^1\times S^6$ is spin and
+has two spin structures; both bound $S^1\times D^7$ with the
+corresponding choice on $S^1$. That coboundary has zero fourth
+cohomology and zero signature, hence zero Eells--Kuiper invariant.
+Boundary connected sum of this coboundary with a spin coboundary of
+$\Sigma_\phi$ proves additivity directly: the fourth intersection
+forms are an orthogonal sum and the Pontryagin evaluations add.
+Thus the two boundary spin structures give the same value. This is
+also the connected-sum property in \citet[Section 3]{EellsKuiper1962}.
+
+Finally $e^{-\pi i(c_0-2r)}=e^{-\pi ic_0}e^{2\pi ir}$.
+Parallel transport therefore reaches $X_{c_0-2}$ along the positive
+$w$-circle; its endpoint is identified by $F_{2,c_0-2}$.
+This confirms the sign and endpoint in R12. Two smooth connections
+can be joined by a smooth path of horizontal distributions, producing
+an isotopy of the resulting monodromies. Holomorphic automorphisms in
+the connected group $\C^*$ also change the result only by isotopy.
+\end{proof}
+
+\begin{proposition}[C.1.2 (Known, with derivation): the positive generator]
+The generator $1\in\Z/28$ is represented by the oriented sphere
+bundle of a rank-four oriented real vector bundle on $S^4$ with
+$e=1$ and $p_1=6$, oriented as the boundary of its disc bundle.
+Its Eells--Kuiper invariant is $1/28$.
+\end{proposition}
+\begin{proof}
+The clutching parameters $(h,j)=(2,-1)$ in the oriented
+$S^3$-bundle construction give $e=h+j=1$ and $p_1=2(h-j)=6$;
+we orient the base and fibre to give these signs. These are the
+bundle conventions and computations of \citet[Section 6,
+equations (12)--(13)]{EellsKuiper1962}. The Gysin sequence gives
+the integral homology of $S^7$, and the homotopy sequence gives
+simple connectivity. Thus the total space is a homotopy sphere.
+Its disc bundle has intersection form $(1)$ on the zero section,
+is spin because its second cohomology with $\Z/2$ coefficients
+vanishes, and has $p_1^2=36$ and signature 1. Hence
+\[
+ \mu=\frac{36-4}{896}=\frac1{28}.
+\]
+The order-28 classification identifies this with the requested
+positive generator. The integer and rational arithmetic is checked
+in \path{code/c_exact.py}.
+\end{proof}
+
+\subsection{C.2. The corrected hypotheses for the characteristic formula}
+
+\begin{theorem}[C.2.1 (Known, with derivation): Lead 6's formula]
+Let $M=M_\phi$ have the orientation above. Let $W_8$ be a smooth
+compact oriented spin$^c$ eight-manifold with $\partial W_8=M$.
+Let $c\in H^2(W_8;\Z)$ be the first Chern class of its determinant
+line, and choose a trivialization on the boundary which induces the
+spin structure used on $M$. Write $p=p_1(TW_8)$, choose a relative
+lift $\bar c$, and let $\bar p$ be the unique rational relative lift
+of $p$. Then, with all products evaluated on $[W_8,M]$,
+\begin{equation}\label{eq:c-spin-c}
+ \mu(M)\equiv
+ \frac{\bar p^{,2}-4\sigma(W_8)}{896}
+ -\frac{\bar p\bar c^{,2}}{192}
+ +\frac{\bar c^{,4}}{384}\pmod{\Z}.
+\end{equation}
+The value is independent of the lift $\bar c$. If $W_8$ is almost
+complex, use its canonical spin$^c$ structure, for which
+$c=c_1(TW_8)$ and $p=c_1^2-2c_2$. If $W_8$ is spin and its
+determinant line is trivial, this reduces to
+\[
+ 28\mu(M)=\frac{p_1^2-4\sigma(W_8)}{32}\pmod{28}.
+\]
+All the boundary cohomology and spin-structure conditions in this
+statement hold for the mapping torus; the existence of the particular
+geometric $W_8$ proposed in Part B is a separate assertion.
+\end{theorem}
+
+\begin{proof}
+The mapping-torus exact sequence, or Proposition C.1.1, gives
+$H^k(M;\Z)=0$ for $2\leq k\leq5$ and $H^1(M;\Z)=\Z$.
+The same vanishing in degree two holds with $\Z/2$ coefficients,
+so $M$ is spin. Its spin structures form a torsor for
+$H^1(M;\Z/2)=\Z/2$. The exact sequence of the pair gives an
+isomorphism
+$H^4(W_8,M;\Q)\to H^4(W_8;\Q)$ and a surjection
+$H^2(W_8,M;\Z)\to H^2(W_8;\Z)$, proving the assertions
+about lifts and determinant trivializations.
+
+If two lifts of $c$ differ by $\delta\alpha$ with
+$\alpha\in H^1(M;\Z)$, the relative cup-product identity gives
+$\delta\alpha\smile b=\delta(\alpha\smile i^*b)$.
+The restrictions of $c$ and $p$ vanish on $M$. Every term in the
+change of $\bar p\bar c^2$ or $\bar c^4$ is therefore zero;
+in particular $(\delta\alpha)^2=0$. This proves lift independence.
+There is no assertion here that the relative class $\bar c$ itself
+is unique.
+
+For a closed spin$^c$ eight-manifold the degree-eight part of the
+Dirac index density is
+\[
+ [e^{c/2}\widehat A]_8
+ =\frac{7p_1^2-4p_2}{5760}
+       -\frac{p_1c^2}{192}+\frac{c^4}{384}.
+\]
+Eliminate $p_2$ using $\sigma=(7p_2-p_1^2)/45$.
+The result is exactly the right side of
+\eqref{eq:c-spin-c}. To justify its use on a boundary, glue $W_8$
+to the negative of a spin coboundary inducing the same boundary spin
+structure; extend the determinant line by its chosen trivialization.
+The glued manifold is spin$^c$, so its Dirac index is an integer.
+Novikov additivity and the relative-product comparison identify that
+integer with the difference between \eqref{eq:c-spin-c} and the
+spin formula for $M$. The spin formula is
+\citet[Section 6, equation (11)]{EellsKuiper1962}.
+The spin$^c$ version is also explicitly recorded, with normalization
+$28\mu$ and characteristic class
+$\widehat p=(p_1+c^2)/2$, by
+\citet[Section 2.2, equation (2.1)]{CrowleyNordstrom2020}.
+Substituting this $\widehat p$ gives the same coefficients; both
+polynomial identities are verified exactly in \path{code/c_exact.py}.
+
+A spin coboundary can be supplied using the connected-sum description:
+bound the product by $S^1\times D^7$ and bound the sphere summand
+by its spin coboundary. Thus no inference from simple connectivity of
+$M$ is made; indeed $\pi_1(M)=\Z$. The original Eells--Kuiper
+paper's unstructured formulation has an extra condition on
+$H^1(W;\Z/2)\to H^1(M;\Z/2)$ to ensure spin structures glue.
+Our explicit requirement that the boundary spin structures match
+supplies precisely that gluing datum. By Proposition C.1.1 the two
+possible spin structures on this particular $M$ have equal invariant.
+Finally the splitting principle gives
+$p_1(TW_8)=c_1^2-2c_2$ for an almost complex tangent bundle.
+\end{proof}
+
+\subsection{C.2 supplement. A computed coboundary with a different boundary}
+
+\begin{proposition}[C.2.2 (Proved): the untwisted intersection form]
+Let $W_A$ be a sufficiently small compact tubular representative of the
+smooth total space $\mathcal X^+$ of A.2.2 over a closed $u$-disc.
+Its boundary is the mapping torus of Engel's \emph{untwisted} family
+$X(u)$. It is not the six-sphere mapping torus $M_\Phi$.
+Write $\mathcal L=H^2(S;\Z)$, $F=c_1\mathcal O_S(S_\infty)$,
+$m=c_1(L)$, and $v=6P-O-3F$ in the conventions of A.4.1.
+Let $H$ be the infinity-section class on $R$ and $A$ the exceptional
+Cartier divisor pulled back to $R^+$. Then
+\[
+ H_4(W_A;\Z)=
+ \frac{\mathcal L\oplus\Z H\oplus\Z A}{\Z(m-A)}.
+\]
+For $\alpha=(a,h,b)\in H^2(R^+;\Z)$ set
+\[
+ d(\alpha)=(I-T^*)a+h(m-F)+bF.
+\]
+The middle intersection form of $W_A$ is
+\[
+ B(\alpha,\beta)=-d(\alpha)\cdot d(\beta).
+\]
+Its rank is two, its signature is $+2$, and its two nonzero Smith
+factors are $1,11$. On the image modulo its radical it is represented,
+in the ordered basis $(v,m)$, by
+\[
+ \begin{pmatrix}6&1\\1&2\end{pmatrix}.
+\]
+\end{proposition}
+\begin{proof}
+The local semistable charts $xy=u$ give a tubular representative which
+retracts to $Q^+$; its boundary is the nearby-fibre mapping torus. One
+may equivalently choose a regular neighbourhood of $Q^+$ in the smooth
+total space and round its boundary. The fibrewise plumbing identifies
+that boundary with the inverse image of a small positive $u$-circle.
+The normalization mapping cylinder and $H_3(S)=0$ identify its fourth
+homology with the cokernel of
+$H_4(S)\to H_4(R^+)$. In the divisor coordinates of A.4.2 the two
+sections are $D'_0=H+m-A$ and $D_\infty=H$. Their difference is
+$m-A$, proving the group presentation.
+
+The normalization is an immersed complex hypersurface in $W_A$.
+Its normal line has class $-D'_0-D_\infty$, because the whole central
+divisor is the divisor of the base coordinate $u$. Put
+$r_0\alpha=a+bF$ and $r_\infty\alpha=a-hm$; these are the
+restrictions to the two sections. The self-intersection of two
+four-cycles pushed forward from the normalization contains the normal
+Euler term and the intersections between distinct local branches.
+All transverse complex branch intersections have positive sign.
+Consequently it is
+\begin{align*}
+ &-r_0\alpha\cdot r_0\beta-r_\infty\alpha\cdot r_\infty\beta\\
+ &\quad+r_0\alpha\cdot T^*r_\infty\beta
+       +T^*r_\infty\alpha\cdot r_0\beta\\
+ &=-\bigl(r_0\alpha-T^*r_\infty\alpha\bigr)
+       \cdot\bigl(r_0\beta-T^*r_\infty\beta\bigr).
+\end{align*}
+This is an intersection-of-cycles calculation in the actual smooth
+fourfold, rather than an assignment of a form to an unconstructed
+central fibre. The isometry property of $T$ and $T^*m=m-F$ give
+the stated expression for $d$. Also $d(m-A)=0$, so it descends.
+
+The translation formula in A.4.1 shows that the image of $d$ is
+$\langle F,v,m\rangle$. The surjectivity of the three intersection
+coordinates proved there shows equality integrally. Its radical is
+$\Z F$, since $F^2=Fv=Fm=0$ and
+$v^2=-6$, $m^2=-2$, $vm=-1$. The remaining form is the displayed
+positive matrix, of determinant eleven and with an entry equal to
+one. Integral row and column reduction gives Smith factors $1,11$.
+These computations, including the full eleven-by-eleven form, are
+independently checked in \path{code/e_push_C_attempts.py}.
+\end{proof}
+
+\begin{proposition}[C.2.3 (Proved): a relative Pontryagin number for $W_A$]
+In the coordinates of C.2.2, $p=p_1(TW_A)$ evaluates as
+\[
+ p(a,h,b)=-4(aF)-28h.
+\]
+It vanishes on the radical of the middle form and therefore has a
+rational relative lift. The square of any such lift is
+\[
+ \bar p^{\,2}=\frac{4512}{11}.
+\]
+These numbers do not compute $\mu(M_\Phi)$. In particular the
+canonical determinant class of $W_A$ restricts nontrivially to its
+own boundary, so C.2.1 cannot be applied with that determinant.
+\end{proposition}
+\begin{proof}
+Let $h:R^+\to R$ be the modification, $C$ its nodal elliptic-fibre
+centre, and $c=c_1(R)=F+2H+m$. The centre is a regular embedding of
+codimension two, also at its node: its ideal there is $(X,zv)$.
+Its normal bundle has degree zero, and $c\cdot C=0$. The blow-up
+and small resolution give
+\[
+ c_1(R^+)=h^*c-A,\qquad
+ A\,h^*D\,h^*E=0,\quad
+ A^2h^*D=-C\cdot D,\quad A^3=0.
+\]
+These are the regular-embedding blow-up identities. The subsequent
+small resolution is crepant, and $A$ is the pullback of a Cartier
+divisor, so they remain valid on $R^+$. The normal line to the
+immersed normalization has class
+$h^*N_0+A$, where $N_0=-(2H+m)$.
+
+For completeness, the required second Chern pairings do not assume
+that $R^+$ is K\"ahler. Analytic Hirzebruch--Riemann--Roch applies to
+a compact complex manifold; see \citet[Theorem~4.3, pp.~564--565]{AtiyahSinger1968IIIE}.
+The modification has $Rh_*\mathcal O_{R^+}=\mathcal O_R$.
+For the blow-up this follows locally from its hypersurface description
+in the projective line bundle and the vanishing of the direct images
+of $\mathcal O_{\mathbb P^1}(-1)$; for the small resolution it follows
+from the formal neighbourhood of its $(-1,-1)$ rational curve.
+Thus $\chi(h^*D)=\chi(D)$ for every line bundle $D$ on $R$.
+The linear coefficient in the Riemann--Roch polynomial for $kD$
+and the preceding intersection identities give
+\[
+ c_2(R^+)h^*D=c_2(R)D+C\cdot D.
+\]
+Moreover $\chi(\mathcal O(A))=\chi(\mathcal O)=1$: on the
+exceptional projective line bundle over $C$, the restriction is its
+relative $\mathcal O(-1)$, which has zero derived direct image.
+Pulling through the small resolution does not change this Euler
+characteristic. Applying Riemann--Roch to $A$ yields $c_2(R^+)A=0$,
+because $A^3$, $c_1(R^+)A^2$, and $c_1(R^+)^2A$ all vanish.
+
+The real tangent bundle of $W_A$ restricted to the normalization is
+the sum of its real tangent bundle and this normal line. Therefore
+\[
+ h^*p_1(R)+h^*N_0^2-4[C]
+\]
+has the same pairings on pulled-back divisors as $p_1(TW_A)$, and
+the pairing with $A$ is zero. Here $[C]$ denotes its degree-four
+cohomology class on $R$. Since $H^2=-mH$, we have
+$(2H+m)^2=m^2=-2[\mathrm{pt}]$. The surface $S$ has
+$p_1(S)=-24[\mathrm{pt}]$. The ruled-bundle tangent sequence thus
+gives
+\[
+ p_1(R)+N_0^2=p_1(S)+2(2H+m)^2=-28[\mathrm{pt}],
+\]
+and $C\cdot(a+hH)=aF$. This proves the covector formula.
+
+Modulo $\Z F$ the coordinate of $d(a,h,b)$ along $v$ is $aF$
+and the coordinate along $m$ is $h$. Thus the covector on the
+nondegenerate quotient is $(-4,-28)$. It annihilates the radical,
+which is precisely the condition for a rational relative lift.
+Its square is
+\[
+ (-4,-28)\frac1{11}
+ \begin{pmatrix}2&-1\\-1&6\end{pmatrix}
+ \binom{-4}{-28}=\frac{4512}{11}.
+\]
+Different relative lifts differ by a class pairing trivially with
+absolute classes, so this value does not depend on the choice.
+
+Finally the canonical first Chern class on the nearby untwisted
+fibre is $f^*c_1\mathcal O_B(1)$. It is nonzero: the surjectivity of
+$a\mapsto(aF,av,am)$ in A.4.1 supplies an integral two-cycle with
+evaluation one, and the Mayer--Vietoris relations in A.4.2 do not
+alter that evaluation. Hence no boundary trivialization of this
+determinant exists. Even the formal expression
+$(\bar p^{\,2}-4\sigma(W_A))/896=79/176$ is only an arithmetic
+combination for this different boundary, not the invariant requested
+in Part C. A cobordism implementing the finite logarithmic transforms
+and the cusp closing map would be required to transport the result.
+\end{proof}
+
+\subsection{C.3. What an equivariant twist does and does not determine}
+
+\begin{proposition}[C.3.1 (Proved): the circle action and local shear]
+The effective circle subgroup $\rho=\R/\Z\subset\C/\Z$ of R6
+acts freely outside its fixed double curve. That curve is a sphere,
+and its two complex normal weights are $1,-1$. A monodromy
+representative may be chosen $\rho$-equivariant. In marked real
+coordinates on a regular torus fibre, its linear part is
+$I-2\widehat\delta\otimes\gamma$; its affine correction is the
+translation supplied by R2 and depends on the trivialization.
+\end{proposition}
+
+\begin{proof}
+On a regular torus the circle acts by translation in the primitive
+lattice direction $\widehat\delta$, and is therefore free.
+At a multiple fibre, apply the invariant covector $\gamma$ to the
+equation that a circle translation agrees with the $j$-th affine
+deck generator to the power $a$. Since the deck translation has
+$\gamma$-component $\pm1/m_j$, equality forces
+$a\equiv0\pmod{m_j}$. Primitivity of $\widehat\delta$ then
+forces the circle element to be the identity. This checks freeness
+on the quotient using the actual twist vectors, including the root
+centre; the argument is not just a statement about the product cover.
+
+In a cusp toric chart, the relevant primitive edge directions are
+$e_1,e_2,e_1-e_2$, with $e_2=\widehat\delta$.
+Their nonzero determinants with $e_2$ have absolute value one.
+Thus stabilizers off the edge in direction $e_2$ are trivial. Along
+that edge the circle is fixed; the two normal characters in the
+adjacent unimodular cones are $1$ and $-1$ because the base monomial
+is invariant. The opposite-edge identification gives the double
+curve with its two distinct triple-point endpoints, namely a
+$\PP^1$. This verifies the toric step of R6 used here.
+
+The circle acts on the entire family and commutes with the endpoint
+isomorphism $F_2$. Averaging a Riemannian metric over this compact
+circle makes the orthogonal horizontal distribution invariant.
+Its parallel transport and hence the monodromy commute with $\rho$.
+On a local marked torus chart,
+$\Pi_{c-2}=\Pi_c(I-2\widehat\delta\otimes\gamma)$.
+Inserting the identity complex-linear part and translation of R2
+gives the asserted affine formula. A locally chosen lift of its
+translation must not be multiplied by a real interpolation parameter
+without checking its period cocycle; that operation need not descend
+to the torus bundle.
+\end{proof}
+
+\begin{proposition}[C.3.2 (Proved): a global scalar gauge would be trivial]
+Let a smooth circle act on a simply connected smooth manifold $Z$.
+If $g:Z\to S^1$ is smooth and invariant under the circle, then
+$z\mapsto g(z)\cdot z$ is smoothly isotopic to the identity.
+The primitive coordinate $\theta$ detecting $\gamma$ on a regular
+fibre of $X_c$ has no continuous extension to $X_c$.
+\end{proposition}
+
+\begin{proof}
+Since $Z$ is simply connected, $g$ lifts to a smooth real function
+$a$ with $g=e^{2\pi ia}$. Invariance implies
+$a(\lambda z)-a(z)\in\Z$. This difference is continuous in the
+connected circle and is zero at its identity, so it is zero
+everywhere. The maps $z\mapsto e^{2\pi ita(z)}\cdot z$ are
+diffeomorphisms with inverses obtained by replacing $t$ by $-t$.
+They give the isotopy. In the present application a loop representing
+$\widehat\gamma$ in a regular torus fibre has degree one under
+$\theta$. If $\theta$ extended to the simply connected $S^6$,
+that degree would be zero. The contradiction shows why the local
+twist in Lead 7 is not a global scalar-gauge calculation.
+\end{proof}
+
+\begin{proposition}[C.3.3 (Known, with derivation): equivariance alone is insufficient]
+All 28 oriented mapping classes of $S^6$ admit representatives
+equivariant for one fixed semifree circle action with fixed set $S^2$.
+Consequently the circle action, its fixed set, and its normal weights
+do not determine $[\Phi]$.
+\end{proposition}
+
+\begin{proof}
+Use $S^6\subset\operatorname{Im}\mathbb H\oplus\mathbb H$.
+The equivariant Blakers--Massey construction gives a generator
+$\sigma$ of $\pi_0\Diff^+(S^6)$ equivariant for simultaneous
+quaternionic conjugation. The smooth reentrance statement is
+\citet[Theorem 2.1]{DuranRigas2007}; Section 3.2 identifies this
+representative and its powers with all 28 classes. Restrict
+conjugation to $q=e^{i\theta/2}$, regarding $q$ and $-q$ as the
+same effective circle element. Its fixed vector space consists of
+$p\in\R i$ and $w\in\R+\R i$, a real three-space, so the
+fixed set on the sphere is $S^2$. Outside it, at least one of the
+two $(j,k)$-planes is nonzero, and an effective rotation fixing it
+is the identity. Thus the action is semifree. All powers of
+$\sigma$ commute with it. Conjugating the complex coordinate on
+one of the two real normal planes writes the characters as
+$1,-1$; this representation calculation is checked exactly in
+\path{code/c_exact.py}. These are statements about smooth circle
+actions and normal representations, not a comparison of their
+complex structures with $X_c$.
+\end{proof}
+
+\begin{proposition}[C.3.4 (Proved): information lost under the proposed base change]
+Under $w=r^6$ the smooth monodromy class becomes $6[\Phi]$.
+Its value alone leaves two possibilities for $[\Phi]$ in $\Z/28$,
+differing by 14. In particular a vanishing value after that base
+change would not prove that $[\Phi]=0$.
+\end{proposition}
+\begin{proof}
+The induced homomorphism on fundamental groups sends a positive
+$r$-circle to six positive $w$-circles, so its transport is
+$\Phi^6$ up to isotopy. The kernel of multiplication by six on
+$\Z/28$ is $\{0,14\}$. The explicit preimages of all elements
+of its image are checked in \path{code/c_exact.py}.
+\end{proof}
+
+\begin{proposition}[C.3.5 (Known formula, with proved comparison): the closing translation]
+Fix the standard twists and all root and cusp markings of R2.
+There is a coherent choice of the even-shift maps
+\(\widetilde F_{h,c}:X_c\to X_{c+h}\), \(h\in2\mathbb Z\),
+with the following explicit ordinary-chart translation. Choose global
+roots \(F^3=t\), \(G^4=t-1\) on the uniformizing cover and put
+\(\ell=(2\pi i)^{-1}\log(F/G)\pmod{\mathbb Z}\), \(e=(0,1)^t\).
+Then the translation is
+\begin{equation}\label{eq:C-explicit-closing}
+ b_{h,c}=-\frac h{12}\Pi_c\widehat\gamma
+              +\left(h\ell-\frac{h^2}{24}\right)e.
+\end{equation}
+For \(h=12\), it is the scalar multiplication
+\begin{equation}\label{eq:C-twelve-scalar}
+ K(t)=\frac{t^4}{(t-1)^3}
+\end{equation}
+on the ordinary \(\mathbb C^*\)-coordinate, after removing an integral
+period. On the finite root charts its scalar representatives are
+\(K(t)s_1^{-12}\) and \(K(t)s_2^{12}\), respectively, both units.
+In a cusp coordinate \(q=t_c\), the scalar representative is
+\(q^{-1}H(q)\), with \(H\) a holomorphic nonvanishing function.
+The same map has a holomorphic \((\mathbb C^*)^2\)-unit representative
+on the entire cusp filling. These two representatives differ by
+exactly the \(\widehat\gamma\) cusp deck transformation.
+
+For six positive \(w\)-loops the closing map is
+\(\widetilde F_{12,c_0-12}\); thus the stated cusp exponent is \(-1\)
+with the orientation convention of C.1.1. This computes the closing
+cocycle, not the mapping class of its composition with parallel
+transport. In particular it does not imply \(6[\Phi]=0\).
+\end{proposition}
+\begin{proof}
+The raw formula without \(-h^2e/24\), its three extension checks,
+and the coherent correction occur in
+\cite[\texttt{p2:prop:global-even-shift} and the subsequent
+orbit-groupoid calculations]{DGKXv1push}. We verify their exact use
+here; the source is version~1, and version~2 omits these statements.
+The global roots exist because the zero orders of \(t\) and \(t-1\)
+on the simply connected uniformizing surface are divisible by three
+and four. The local characters and their coprime orders give
+\[
+ \ell(g_1z)-\ell(z)=-\frac13,\qquad
+ \ell(g_2z)-\ell(z)=\frac14,\qquad
+ \ell(g_0z)-\ell(z)=\frac1{12}\pmod{\mathbb Z}.
+\]
+A change of logarithm adds an integral \(h\widehat\delta\) period,
+so \eqref{eq:C-explicit-closing} is a well-defined torus translation.
+Since \(\Pi_{c+h}=\Pi_c(I+hE)\), the two ordinary lattices agree;
+the source-to-target lattice map of the identity linear part is
+\(I-hE\).
+
+For compatible logarithm lifts, covariance gives the affine defects
+\[
+ b_{h,c}(g_jz)-R_j(z)b_{h,c}(z)
+       =\Pi_c(g_jz)\eta_j,\qquad
+ \eta_1=\frac h2(\widehat u-\widehat w-\widehat\delta),\quad
+ \eta_2=\frac h2(-\widehat w+\widehat\delta).
+\]
+Their \(\gamma\)-coordinates vanish, so the same right sides use
+\(\Pi_{c+h}\). The vectors are integral for even \(h\). At the
+cusp the defect is zero: \((A_0-I)\widehat\gamma=-\widehat\delta\)
+cancels the increment of \(\ell\). These equations prove ordinary
+and cusp descent with the stated orientation of the peripheral
+loops.
+
+For the finite comparison put \(w_j=(2\pi i)^{-1}\log s_j\).
+The functions \(F/(s_1G)\) and \(Fs_2/G\) are invariant
+holomorphic units on the respective full root discs. Choose
+holomorphic logarithms \(\kappa_j\) of them. Then
+\[
+ \ell=\epsilon_jw_j+\kappa_j\pmod{\mathbb Z},\qquad
+ \epsilon_1=1,\quad\epsilon_2=-1.
+\]
+The exact finite-to-ordinary comparison satisfies
+\(\sigma_{j,c+h}-\sigma_{j,c}=h\epsilon_jw_je\).
+Consequently the required finite-chart translation is
+\[
+ b^{(j)}_{h,c}
+ =-\frac h{12}\Pi_c\widehat\gamma
+       +\left(h\kappa_j-\frac{h^2}{24}\right)e.
+\]
+It is holomorphic on the full root disc and satisfies
+\[
+ b^{(j)}_{h,c}(g_jz)-R_j(z)b^{(j)}_{h,c}(z)
+       -\frac{h\epsilon_j}{m_j}e
+ =\Pi_c(g_jz)\eta_j.
+\]
+This is precisely equivariance for the source and target affine
+finite actions, including the changed period column. The exact
+identity
+\(\sigma_{j,c+h}+b^{(j)}_{h,c}
+=\sigma_{j,c}+b_{h,c}\) proves overlap agreement. Thus no real
+interpolation of a multivalued period has been used.
+
+At the cusp let \(q=e^{2\pi i s}\) and
+\(C_{c,21}=\beta^{\rm part}+c+s\), which is holomorphic at
+\(q=0\). The function
+\[
+ \widehat H=e^{2\pi i s/12}F/G
+ \quad\hbox{satisfies}\quad
+ \widehat H^{12}=q\frac{t^4}{(t-1)^3}.
+\]
+The right side is a unit because \(t\) has a simple pole at the
+cusp. The character formula makes \(\widehat H\) single-valued;
+it therefore extends as a nonvanishing holomorphic function. Write
+\(\ell=-s/12+\kappa_0(q)\), with \(\kappa_0\) holomorphic.
+Since
+\(\Pi_c\widehat\gamma=(6\mu,-s+C_{c,21})^t\),
+the logarithmic terms cancel in \eqref{eq:C-explicit-closing}:
+\[
+ \bar b_{h,c}(q)=
+ \left(-\frac h2\mu(q),\,
+ -\frac h{12}C_{c,21}(q)+h\kappa_0(q)-\frac{h^2}{24}\right)^t.
+\]
+Exponentiating gives a holomorphic unit in \((\mathbb C^*)^2\).
+On every toric chart its action multiplies a character coordinate
+by an integral character of this unit, so it and its inverse
+extend across every double curve and both triple points. The
+source and target cusp lattice multipliers differ by
+\((1,e^{2\pi i h\lambda_1})=(1,1)\), for
+\(\lambda\in\mathbb Z^2\). They are therefore identical. The
+unit multiplication commutes with their toric shears and descends.
+Exponentiation of the displayed formula gives exactly the ordinary
+translation on the punctured cusp. We have now verified all
+three comparisons and their inverses.
+
+The uncorrected translations have composition defect
+\(-hk e/12\). The constants in
+\eqref{eq:C-explicit-closing} cancel it, since
+\((h+k)^2-h^2-k^2=2hk\). Hence
+\[
+ \widetilde F_{k,c+h}\widetilde F_{h,c}
+       =\widetilde F_{h+k,c},\qquad
+ \widetilde F_{0,c}=\mathrm{id}.
+\]
+Any difference from the fixed R2 choice is a scalar automorphism,
+which lies in its connected \(\mathbb C^*\). The choice therefore
+has the same smooth monodromy class.
+
+For \(h=12\), remove the actual period
+\(-\Pi_c\widehat\gamma\) from \eqref{eq:C-explicit-closing}.
+The remaining translation is \((12\ell-6)e\). Its exponential
+is \((F/G)^{12}=K(t)\), proving
+\eqref{eq:C-twelve-scalar}. The finite corrections divide it by
+\(s_1^{12}\) and multiply it by \(s_2^{12}\). The original
+uniformizers are retained: these are units because
+\(t/s_1^3\) and \((t-1)/s_2^4\) are units. They need not be
+replaced by one.
+
+Put \(H(q)=qK(t(q))=e^{24\pi i\kappa_0(q)}\). The cusp unit
+for \(h=12\) is exactly
+\[
+ U_{12,c}(q)=
+ \left(e^{-12\pi i\mu(q)},\,
+       e^{-2\pi i C_{c,21}(q)}H(q)\right).
+\]
+The \(\widehat\gamma\) deck transformation has multiplier
+\[
+ \left(e^{12\pi i\mu(q)},\,
+       e^{2\pi i C_{c,21}(q)}q^{-1}\right),
+\]
+because \(B_0(1,0)^t=(0,-1)^t\). Multiplying these two
+expressions gives \((1,q^{-1}H)=(1,K)\). This proves the
+claimed comparison, including its sign, on the entire cusp
+quotient. In particular the scalar representative's pole is not
+an obstruction to the holomorphic map itself: its unit
+representative already extends.
+
+Finally \(w=e^{-\pi i c}\) makes six positive loops the path
+\(c(r)=c_0-12r\); its endpoint is closed by the positive shift
+\(h=12\). A quotient isotopy proving an order bound would still
+have to patch the ordinary scalar description with the two-coordinate
+cusp unit description. Scaling their additive logarithms separately
+produces on their overlap a fractional
+\(\widehat\gamma\)-period, which is not an integral period during
+the interpolation. This patching has not been established. The
+exact substitutions, coherent correction, finite defects, and
+cusp comparison are checked in
+\path{code/d_push_monodromy.py} and
+\path{code/d_push_closing.py}; these are symbolic checks of the
+identities proved above.
+\end{proof}
+\begin{proposition}[C.3.6 (Proved): independence of the equivariant lift]
+Let \(X=X_c\) carry the effective semifree circle action of C.3.1,
+with fixed surface \(F\cong S^2\). If two smooth equivariant
+diffeomorphisms of \(X\) induce the same map of its orbit space,
+they are smoothly isotopic. More generally, a smooth isotopy of
+orbit maps which is supported in a compact subset of the free
+orbit stratum lifts to an equivariant isotopy. Thus, whenever the
+annular orbit twist has been constructed with a smooth equivariant
+lift, its class in \(\Theta_7\) is independent of that lift.
+This assertion does not construct an isotopy of the annular twist.
+\end{proposition}
+\begin{proof}
+Their quotient is an equivariant orbit-preserving diffeomorphism
+\(h\). On \(X\setminus F\) it has a unique expression
+\(h(x)=g(x)\cdot x\), with \(g\) a smooth invariant circle-valued
+function. We check its extension across \(F\) directly. Choose an
+equivariant tubular slice and trivialize its normal bundle locally
+over \(F\). Conjugating the negative-weight complex coordinate
+identifies the normal action with scalar multiplication on
+\(\mathbb C^2\). Since \(h\) preserves each orbit, it fixes the
+base variable \(y\) and has normal part
+\[
+ (f_1(y,z),f_2(y,z))=g(y,z)(z_1,z_2),\qquad z\ne0.
+\]
+In particular \(z_2f_1=z_1f_2\), an identity of smooth functions
+also at zero. In the homogeneous Taylor expansion in the four real
+normal variables, each pair \((p_1,p_2)\) therefore satisfies
+\(z_2p_1=z_1p_2\). In the complexified polynomial ring with
+variables \(z_1,z_2,\bar z_1,\bar z_2\), this implies
+\(p_1=z_1q\) and \(p_2=z_2q\): first set \(z_1=0\) and divide
+by \(z_1\), then cancel \(z_1\). This coefficient argument works
+with coefficients depending smoothly on \(y\). It produces a
+common formal Taylor series for \(g\).
+
+The formal series can be realized by a smooth complex function
+\(G(y,z)\). Here is the parametric Borel construction needed for
+this assertion. On a relatively compact base slice, write its
+homogeneous terms as \(q_n(y,z)\), choose a smooth cutoff equal to
+one near zero, and replace each term by
+\(\chi(z/\epsilon_n)q_n(y,z)\). Choose
+\(\epsilon_n\downarrow0\) so rapidly that the term and all
+mixed base/normal derivatives of total order at most \(n/2\)
+are bounded by \(2^{-n}\), away from the finitely many lower
+degrees. This is possible because each such derivative retains a
+positive power of \(\epsilon_n\). The resulting series converges
+in every smooth seminorm, and its Taylor series is the prescribed
+one: the cutoff is constant near zero and higher homogeneous
+terms have zero lower jets. This proves the required local
+parametric extension. The remainders
+\(f_j-Gz_j\) are flat in the normal variables, locally uniformly
+with all derivatives in \(y\). For \(z\ne0\),
+\[
+ g-G=\frac{\bar z_1(f_1-Gz_1)+\bar z_2(f_2-Gz_2)}{|z|^2}.
+\]
+A smooth function flat along \(z=0\), divided by \(|z|^2\),
+extends smoothly and flatly by zero: the usual quotient derivative
+formula and Taylor bounds of arbitrarily high order prove this for
+every derivative. Thus \(g\) extends smoothly across the slice.
+Its absolute value is one by continuity. Equivariance implies
+invariance on the free part, hence on the slice by continuity.
+The local extensions agree because they agree on the dense free
+stratum. We obtain a global smooth invariant \(g:X\to S^1\).
+
+Since \(X\) is simply connected, the covering
+\(\mathbb R\to S^1\), \(a\mapsto e^{2\pi ia}\), gives a smooth
+lift \(a\). The integer-valued difference
+\(a(\lambda x)-a(x)\) is zero at \(\lambda=1\) and continuous
+in the connected circle, so \(a\) is invariant. The maps
+\(x\mapsto e^{2\pi isa(x)}\cdot x\), \(0\leq s\leq1\),
+are diffeomorphisms with the explicit inverse obtained by changing
+\(s\) to \(-s\). They give the required isotopy.
+
+For the second assertion the free quotient is a principal circle
+bundle. A connection lifts the compactly supported time-dependent
+vector field of the orbit isotopy to an invariant vector field.
+Its flow exists for the full finite time interval, is equivariant,
+and extends by the identity near \(F\). The endpoint differs from
+any other smooth equivariant lift of the same orbit map by the
+orbit-preserving diffeomorphism just treated.
+
+The general orbit-preserving statement is Haefliger and Salem
+(1991, Theorem~3.1). We used the direct slice argument because the
+non-equivariant Lemma~3.2 in that paper, as originally printed,
+requires correction: complex conjugation on \(\mathbb C\)
+preserves scalar-circle orbits but its quotient
+\(\bar z/z\) has no continuous extension to zero. The theorem
+with equivariance is unaffected; the corrected argument is also
+explained in Karshon's research slides, which reproduce the original
+statement. No conclusion about smooth maps of the topological orbit
+space near \(F\) is assumed here.
+\nocite{HaefligerSalem1991D,KarshonOrbitSlidesD}
+\end{proof}
+\begin{proposition}[C.3.7 (Proved): the central cusp orbit fibre]
+Let \(H=W/\rho\), and let \(F\cong S^2\) be the fixed double
+curve. Then
+\[
+ \pi_1(H)=\mathbb Z^2,\qquad
+ H_i(H;\mathbb Z)=
+ \begin{cases}
+ \mathbb Z&i=0,3,\\
+ \mathbb Z^2&i=1,2,\\
+ 0&i>3.
+ \end{cases}
+\]
+The class of \(F\) is nonzero and primitive in \(H_2(H;\mathbb Z)\).
+In particular \(F\) does not bound a three-chain in the central
+orbit fibre. This statement does not assert a deformation retraction
+of the entire cusp neighbourhood onto \(H\), or compute the class
+of the annular orbit twist.
+\end{proposition}
+\begin{proof}
+Number the six toric boundary curves of the normalization
+\(\widetilde W=\mathrm{dP}_6\) cyclically as
+\(D_1,\ldots,D_6\), with \(D_3,D_6\) the fixed pair, and put
+\(p_i=D_i\cap D_{i+1}\), with indices modulo six. Opposite sides
+are identified by the maps already checked in R6 and C.3.1.
+Their endpoint rule is
+\[
+ p_{i-1}\longmapsto p_{i+3},\qquad
+ p_i\longmapsto p_{i+2}\quad(D_i\longrightarrow D_{i+3}).
+\]
+It follows either from the two triangle classes of the periodic
+fan or directly from these six endpoint equations that the vertex
+classes are
+\(A=\{p_2,p_4,p_6\}\) and \(B=\{p_1,p_3,p_5\}\).
+The multiplicative units in the side maps preserve this endpoint
+rule. The fixed curve is their resulting sphere, with endpoints
+\(A,B\).
+
+Put \(Y=\widetilde W/\rho\). This is an oriented compact
+three-manifold whose boundary consists of the two fixed spheres.
+Here are the local checks, including the two remaining vertices.
+At a free orbit the quotient is an oriented three-dimensional
+slice. At a fixed divisor the local model is
+\(\mathbb C\times\mathbb C\), with the circle rotating only
+the first factor, and its quotient is a half-space. The two toric
+vertices not on \(D_3\cup D_6\) are isolated fixed points with
+weights \((1,-1)\). Conjugating one coordinate gives the scalar
+Hopf action on \(\mathbb C^2\), whose quotient is the cone on
+\(\mathbb CP^1=S^2\), namely \(\mathbb R^3\). Thus they are
+interior points, not additional boundary components.
+All other stabilizers are trivial: the determinants of the circle
+cocharacter with the four nonfixed edge rays are \(\pm1\).
+
+The quotient is simply connected. Indeed local slices give path
+lifts of orbit-space paths, and lifts on successive subintervals
+can be joined by paths in their connected circle orbits. A lifted
+loop closes after adding a path in its final orbit; its projection
+is the original loop with a constant segment. Since
+\(\widetilde W\) is simply connected, the resulting loop is
+null-homotopic, and projecting the null-homotopy proves the claim.
+Poincar\'e--Lefschetz duality and the boundary sequence now give
+\[
+ H_1(Y)=H_3(Y)=0,\qquad H_2(Y)=\mathbb Z.
+\]
+More explicitly, \(H_3(Y,\partial Y)=\mathbb Z\) maps to
+\(H_2(\partial Y)=\mathbb Z^2\) by the sum of the two boundary
+fundamental classes, and \(H_2(Y,\partial Y)=H^1(Y)=0\).
+No classification theorem for simply connected three-manifolds
+is needed for these conclusions.
+
+Let \(\widetilde D\subset Y\) be the quotient of the six
+boundary curves, and let \(D\subset H\) be its image. The space
+\(\widetilde D\) is two spheres joined by two paths, each
+subdivided into two edges. Hence
+\[
+ H_0(\widetilde D)=\mathbb Z,\quad
+ H_1(\widetilde D)=\mathbb Z,\quad
+ H_2(\widetilde D)=\mathbb Z^2.
+\]
+The image \(D\) is the sphere \(F\) together with two arcs
+\(E_1,E_2\), each joining \(A\) to \(B\). Consequently
+\[
+ H_0(D)=\mathbb Z,\quad H_1(D)=\mathbb Z^2,\quad
+ H_2(D)=\mathbb Z.
+\]
+Choose a path \(c\subset F\) from \(A\) to \(B\). The
+endpoint rule gives the image of the generator of
+\(\pi_1(\widetilde D)\) as
+\[
+ E_1E_2^{-1}cE_1^{-1}E_2c^{-1}.
+\]
+Writing \(a=E_1c^{-1}\), \(b=E_2c^{-1}\), this is
+\(ab^{-1}a^{-1}b\). In particular the induced map on first
+homology is zero.
+
+We also fix the second-homology sign. Near a fixed divisor use a
+complex normal coordinate \(re^{i\theta}\) and a complex tangent
+coordinate. Orient the quotient by putting the positive circle
+direction first in the orientation of the surface. At circle
+weight \(+1\) the quotient boundary orientation is the complex
+curve orientation; at weight \(-1\) it is its negative. The
+two normal weights are opposite. Thus, although their boundary
+orientations sum to zero in \(H_2(Y)\), the two fixed curves
+with their complex orientations represent the same generator
+of \(H_2(Y)\). Their maps to \(F\) are holomorphic of degree
+one. Therefore the Mayer--Vietoris map
+\[
+ H_2(\widetilde D)\longrightarrow H_2(Y)\oplus H_2(D)
+\]
+has matrix
+\[
+ \begin{pmatrix}1&1\\-1&-1\end{pmatrix}.
+\]
+It has a primitive rank-one image, rank-one kernel and torsion-free
+rank-one cokernel.
+
+The normalization conductor is a topological pushout, and taking
+a compact group quotient commutes with that pushout. The inclusion
+\(\widetilde D\hookrightarrow Y\) is a cofibration: the finite
+toric orbit-stratum decomposition can be triangulated with its
+boundary spheres and edge arcs as a subcomplex. Thus this pushout
+is a homotopy pushout and its Mayer--Vietoris and van Kampen
+sequences apply. Van Kampen gives
+\[
+ \pi_1(H)=\langle a,b\mid ab^{-1}a^{-1}b=1\rangle
+            =\mathbb Z^2.
+\]
+The preceding homology maps give
+\[
+ H_3(H)=\mathbb Z,\qquad
+ 0\longrightarrow\mathbb Z\longrightarrow H_2(H)
+      \longrightarrow\mathbb Z\longrightarrow0,
+ \qquad H_1(H)=\mathbb Z^2.
+\]
+The middle sequence splits as a sequence of abelian groups. Its
+left generator is the image of \((0,[F])\) in the displayed
+second-homology cokernel. It is therefore a primitive nonzero
+class in \(H_2(H)\). There are no cells above dimension three.
+This proves all assertions, including the nonbounding claim.
+The endpoint equivalence classes, incidence ranks, commutator
+abelianization, and primitive matrix are checked in
+\path{code/d_push_cusp_orbit_cells.py}; the orientation argument
+and comparison with the geometric pushout are supplied above.
+\end{proof}
+\begin{lemma}[C.3.8 (Proved): equivariant retraction of the cusp body]
+For a sufficiently small closed cusp disc \(\overline\Delta\),
+the compact manifold with boundary
+\(V=f^{-1}(\overline\Delta)\) has a \(\rho\)-equivariant strong
+deformation retraction onto \(W=f^{-1}(0)\). Consequently
+\(V/\rho\) strongly deformation retracts onto \(H=W/\rho\),
+and the fixed sphere \(F\) is primitive and nonzero in
+\(H_2(V/\rho;\mathbb Z)\). It cannot bound a three-chain,
+and hence cannot bound a three-ball, inside this cusp orbit body.
+\end{lemma}
+\begin{proof}
+Write \(q\) for the cusp coordinate and set \(g=|q\circ f|^2\).
+Choose a smooth invariant Hermitian metric by averaging any smooth
+Hermitian metric over the compact circle. The negative gradient
+flow of \(g\) is equivariant, fixes \(W\) pointwise, and points
+strictly inward on \(\partial V\). Its flow \(\varphi_t\) exists
+for every \(t\geq0\), since \(V\) is compact.
+
+We prove the uniform convergence to \(W\) that is needed for a
+strong deformation retraction. At every point of \(W\), the
+actual semistable cusp charts give holomorphic coordinates with
+\(q\circ f=z_1\cdots z_k\), where \(1\leq k\leq3\).
+An initial holomorphic unit can be absorbed in one coordinate.
+For a point off \(W\), some \(i\) satisfies
+\( |z_i|\leq|q\circ f|^{1/k}\), and therefore
+\[
+ \left|\frac{\partial(q\circ f)}{\partial z_i}\right|
+       \geq |q\circ f|^{1-1/k}.
+\]
+Uniform comparison with the chosen metric on a finite cover of
+the compact fibre, and \(g\leq1\) after shrinking, give a
+constant \(c>0\) such that
+\[
+ |\nabla g|\geq c g^{5/6}
+\]
+near \(W\). On the compact complement of a smaller such
+neighbourhood, \(g>0\) and \(\nabla g\ne0\), because
+\(f\) is a submersion off its central fibre. Decreasing \(c\)
+extends this inequality to all of \(V\setminus W\).
+
+Along a trajectory put \(h(t)=g(\varphi_t(x))\). Then
+\(h'=-|\nabla g|^2\leq-c^2h^{5/3}\). If
+\(G=\max_V g>0\), integration gives the uniform bound
+\[
+ h(t)\leq\bigl(G^{-2/3}+(2c^2/3)t\bigr)^{-3/2}.
+\]
+The remaining length of the trajectory starting at time \(t\)
+is bounded by
+\[
+ \int_t^\infty|\nabla g(\varphi_s(x))|\,ds
+ =\int_0^{h(t)}\frac{dv}{|\nabla g|}
+ \leq\frac6c h(t)^{1/6}.
+\]
+One may first integrate to a finite time; the displayed uniform
+bound and monotone convergence justify the endpoint expression.
+Thus every trajectory has a limit in \(W\), and the tail-length
+bound tends uniformly to zero. The maps \(\varphi_t\) converge
+uniformly to a continuous equivariant retraction \(r:V\to W\).
+The homotopy given by \(\varphi_{s/(1-s)}\) for \(s<1\)
+and by \(r\) at \(s=1\) is continuous, equivariant, and fixes
+\(W\) throughout. This is the required strong deformation
+retraction. It descends to the orbit quotient, so the homology
+and primitivity statement transfers from C.3.7. The same argument
+does not supply a global Seifert surface in the full orbit sphere.
+\end{proof}
+\begin{lemma}[C.3.9 (Proved): the primitive circle marking]
+Use the conductor generators \(a,b\) of C.3.7, with
+\(E_1\) represented by the edge of direction \(e_1-e_2\),
+\(E_2\) by the edge of direction \(e_1\), and the closing path
+\(c\) on the fixed edge of direction \(e_2\). Under the
+natural period marking of the cusp orbit fibre,
+\[
+ a\longmapsto\widehat u,\qquad
+ b\longmapsto\widehat\gamma+\widehat u.
+\]
+In particular the circle obtained by gluing the two fixed boundary
+spheres of the normalization has oriented generator
+\(ab^{-1}=-\widehat\gamma\). It is primitive and has no
+additional \(\widehat u\) component.
+\end{lemma}
+\begin{proof}
+The cusp period action has fan translation
+\(\lambda\mapsto B_0\lambda\), with
+\[
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \quad \lambda=(\gamma,u)^t.
+\]
+This is the actual period matrix
+\(Z=sB_0+C(q)\) of the cusp construction, not an unmarked
+torus identification. The unit factors \(\exp(2\pi i C(q)\lambda)\)
+fix the toric strata and hence do not change their triangle labels.
+Take the cyclic fan directions
+\[
+ (D_1,\ldots,D_6)=
+ (e_1-e_2,e_1,e_2,e_2-e_1,-e_1,-e_2).
+\]
+For \(L_v=(v,v+e_1,v+e_2)\) and
+\(U_v=(v+e_1,v+e_2,v+e_1+e_2)\), the vertices of the
+normalizing component have the following actual lifts:
+\[
+ \begin{array}{c|cccccc}
+ &p_1&p_2&p_3&p_4&p_5&p_6\\\hline
+ \text{triangle}&U_{-e_2}&L_0&U_{-e_1}&L_{-e_1}
+                 &U_{-e_1-e_2}&L_{-e_2}.
+ \end{array}
+\]
+For example \(p_1\) is the triangle
+\(\{0,e_1-e_2,e_1\}=U_{-e_2}\); the other entries follow
+by the same explicit substitution.
+
+Choose \(A=L_0\) and the lift of \(c\) from
+\(p_2=L_0\) to \(p_3=U_{-e_1}\).
+The edge \(D_1\), oriented from \(A\) to \(B\), goes
+from \(L_{-e_2}\) to \(U_{-e_2}\). Translate it by
+\(+e_2\) to start at the selected lift \(L_0\).
+It ends at \(U_0\), which is the chosen \(B\)-lift
+translated by \(+e_1\). Thus \(a=E_1c^{-1}\) has
+fan displacement \(+e_1=B_0\widehat u\).
+The edge \(D_2\) oriented from \(A\) to \(B\)
+starts already at \(L_0\) and ends at \(U_{-e_2}\).
+Its displacement relative to the chosen \(B\)-lift is
+\(e_1-e_2=B_0(\widehat\gamma+\widehat u)\).
+This proves the two labels.
+
+The real normalization circle is the path along \(D_1\)
+and back along \(D_2\), closed by the gluing of the fixed
+boundary spheres. Its image is \(E_1E_2^{-1}=ab^{-1}\),
+so its label is \(-\widehat\gamma\). Equivalently, the
+fixed-edge gluing has fan translation
+\(B_0(1,0)^t=-e_2\), corresponding to the period
+\(\widehat\gamma\); traversing its fundamental
+domain in the stated direction has the opposite sign.
+The two computed labels have determinant \(-1\), and hence
+give the entire period lattice. A loop lift is legitimate even
+at a vertex: a nonzero fan translation cannot preserve the finite
+set of component labels incident to that vertex, so the period
+action on the toric cover, also after the circle quotient, is free.
+The finite triangle and displacement calculation is checked in
+\path{code/d_push_cusp_marking.py}.
+\end{proof}
+
+\begin{proposition}[C.3.10 (Proved): reduction to a specified annular orbit map]
+Let $\mathcal Q=X_{c_0}/\rho$ be the orbit space for the circle of
+C.3.1. Choose a small cusp disc with coordinate $q$, and a smooth
+radial function $\chi$ supported in that disc, equal to one on a
+smaller disc. On its punctured annulus, let
+$v_\gamma=\operatorname{pr}_{\delta}\Pi_{c_0}\widehat\gamma$
+be the projected real period. Define an orbit map $\psi$ by
+\[
+ \psi([z])=[z+\chi(q)v_\gamma(q)]
+\]
+on the cusp annulus and by the identity elsewhere. This is a
+well-defined diffeomorphism, equal to the identity near the fixed
+set. It has a smooth equivariant lift to $X_{c_0}$. Every such lift
+has mapping class $6[\Phi]$, for the positive $w$-loop convention
+of C.1.1 and the closing map of C.3.5.
+
+The assertion concerns the support of the \emph{orbit map}.
+It does not assert an identity-ended lift supported in the annulus.
+In particular it does not evaluate $6[\Phi]$.
+\end{proposition}
+\begin{proof}
+We first specify the quotient transport used in the comparison.
+Take $c(r)=c_0-12r$, $0\leq r\leq1$. On an ordinary fibre,
+the quotient by $\rho$ is obtained by projecting the additive
+period coordinates to $\mathbb C\times\mathbb R$, discarding
+$\operatorname{Re}\zeta_2$. The period change
+$(c(r)-c_0)e\otimes\gamma$ has real coefficient, so its
+projected lattice is unchanged. This gives constant quotient
+charts over the ordinary base.
+
+The finite root quotient charts are also constant: the change of
+their period columns and affine deck translations is in the real
+$e$-direction and disappears under this projection. Their overlap
+with the ordinary chart changes, however. With the notation and
+signs of C.3.5,
+\[
+ \sigma_{j,c(r)}-\sigma_{j,c_0}
+       =-12r\,\epsilon_j w_j e,
+ \qquad w_j=(2\pi i)^{-1}\log s_j,
+ \quad (\epsilon_1,\epsilon_2)=(1,-1).
+\]
+Let $R_a$ denote the positive real subgroup of the global
+$\mathbb C^*$-action, with multiplier $e^a$. The transport in
+the root chart which agrees with the ordinary identity is thus
+$R_{12r\epsilon_j\log|s_j|}$ on the overlap. Choose a smooth
+rotation-invariant real function $f_j(s_j)$ which vanishes near
+zero and equals $\log|s_j|$ on that overlap. Replacing this by
+$R_{12r\epsilon_j f_j(s_j)}$ extends the transport over the
+root centre and commutes with its finite deck group. These
+functions are smooth on the free root-cover quotient; no assertion
+that $|t|^{1/m_j}$ is a smooth coordinate on the coarse base is
+used. At the cusp, the varying multiplicative period unit is a
+$\delta$-phase, so the toric quotient charts and their overlaps
+are constant. We take the identity transport there.
+
+This quotient transport is induced by a smooth equivariant
+transport on the actual family. Here is the lifting justification.
+On an ordinary or finite root chart the affine family and its
+smooth lattice coordinates give local smooth horizontal lifts of
+the prescribed quotient vector field. At the cusp use its smooth
+toric charts, with the finite base parameter interval retained;
+the dependence just removed is a circle phase, so these charts
+give local equivariant lifts too, including at fixed points.
+Two such lifts have the same quotient field and differ by a
+vertical circle field on the free stratum. The difference vanishes
+at a fixed point. An invariant smooth partition of unity on the
+actual total space patches these local fields. Their parameter
+component remains one and their quotient is the specified field.
+Properness gives a flow for the whole compact interval. Denote
+its endpoint by $H$. This argument uses smooth local lifts in the
+given slices, rather than assuming an arbitrary orbit-space
+isotopy lifts across the fixed set.
+
+Put $G=\widetilde F_{12,c_0-12}\circ H$. By C.1.1 this smooth
+equivariant diffeomorphism represents $6[\Phi]$. On ordinary
+quotient charts, C.3.5 gives the positive real flow
+$R_{a(t)}$, where
+\[
+ a(t)=\log|K(t)|,\qquad K(t)=t^4/(t-1)^3.
+\]
+On the finite root chart the same map is the flow with time
+\[
+ a_j(s_j)=\log|K(t)s_j^{-12\epsilon_j}|
+                       +12\epsilon_j f_j(s_j).
+\]
+The first term is the logarithm of a nonvanishing unit and the
+second is smooth; hence this time is smooth through the root
+centre. On its outer overlap it equals $a(t)$. At the cusp the
+quotient map is the bounded toric unit $U=U_{12,c_0-12}$ of
+C.3.5. Write $u(q)$ for its additive projected logarithm.
+That logarithm is single-valued on the full disc. The exact
+period identity of C.3.5 is
+\[
+ u(q)+v_\gamma(q)=R_{a(q)}
+\]
+in the additive universal covering vector space; on the right
+we mean the additive displacement of that real flow.
+
+Multiplication by $U^{-s\chi(q)}$, $0\leq s\leq1$, defines a
+smooth equivariant isotopy supported in the cusp. To see this
+through every toric stratum, choose the explicit holomorphic
+additive logarithm of the two nonzero unit coordinates of $U$.
+Exponentiating $-s\chi$ times that logarithm gives a torus
+element depending smoothly on $q$; multiplication acts smoothly
+in every toric chart and commutes with the period identifications.
+It is the identity near the outer edge of the disc.
+
+There is a second global equivariant isotopy, the real
+$\mathbb C^*$-flow with time $-s(1-\chi)a$, using $a_j$ in
+the finite charts. The times agree on overlaps, are smooth on
+the actual root quotients, and vanish on an inner cusp disc.
+They are constant along the $\mathbb C^*$-orbits, so the inverse
+flow is obtained by negating the time. Consequently this is an
+isotopy of diffeomorphisms, not just a pointwise multiplication.
+
+Compose $G$ with the endpoints of these two isotopies. Away
+from the cusp its orbit map becomes the identity. In the cusp
+annulus its projected displacement is exactly
+\[
+ a-\chi u-(1-\chi)a=\chi(a-u)=\chi v_\gamma.
+\]
+Where $\chi=1$, this is a whole projected lattice period and
+the orbit map is again the identity; on the central fibre the
+cusp-unit description gives the same identity directly. Thus the
+result is an actual smooth equivariant lift of the stated $\psi$,
+and has the same mapping class as $G$.
+
+Finally $A_0\widehat\gamma=\widehat\gamma-\widehat\delta$
+makes $v_\gamma$ single-valued on the punctured cusp after the
+$\delta$-quotient. Translation by $\chi v_\gamma$ and its
+negative are smooth mutually inverse maps on that free orbit
+annulus, and they are the identity on collars of its ends.
+This proves the direct well-definedness and smoothness assertion.
+C.3.6 shows that every other existing smooth equivariant lift has
+the same mapping class. This construction supplies no assertion
+that the full lift is supported in the annulus: its residual
+circle gauge outside that annulus has not been discarded.
+\end{proof}
+\begin{proposition}[C.3.11 (Proved): a nonzero normal Euler number]
+Glue the two fixed boundary spheres of \(Y=\mathrm{dP}_6/\rho\)
+using their actual conductor identification, and call the resulting
+closed oriented three-manifold \(N\). Its natural map to the
+smooth cusp orbit five-manifold is an immersion. Its sole
+self-intersection circle has two disjoint preimage circles, the
+two pairs of nonfixed edge intervals of C.3.7.
+Along the fixed sphere \(F\subset N\), the oriented normal
+two-plane bundle of this immersion has Euler number of absolute
+value two. If its complex orientation is that of the Hopf invariant
+\(a=xz\), where \(x,z\) have circle weights \(+1,-1\), the
+Euler number is \(-2\).
+\end{proposition}
+\begin{proof}
+Away from the conductor the normalization quotient is embedded.
+At an ordinary nonfixed double point the circle acts freely along
+the double curve, and the two smooth three-dimensional branches
+intersect transversely along its one-dimensional orbit quotient.
+At a fixed double point the two normal coordinates have weights
+\(+1,-1\). The Hopf quotient coordinates are
+\[
+ a=xz\in\mathbb C,\qquad
+ b=(|x|^2-|z|^2)/2\in\mathbb R,
+\]
+together with the coordinate along the fixed curve. The two
+halves of \(Y\) glue as the two signs of \(b\), so their
+union is smooth. At a triple point the full base equation is
+\(q=xyz\), with \(y\) tangent to \(F\) and invariant.
+In the quotient it becomes \(q=ay\). Hence the central orbit
+fibre is the union of the two smooth three-planes
+\(\{a=0\}\) and \(\{y=0\}\), intersecting transversely
+along the \(b\)-axis. This verifies immersion and transversality
+at both previously distinguished vertices. The endpoint
+identifications of C.3.7 join the two nonfixed double arcs into
+one circle; its preimages in \(N\) are disjoint circles.
+
+The two complex weight lines in \(N_{F/X}\) are each
+\(\mathcal O_{\mathbb P^1}(-1)\). To see this with the actual
+normalization, each is the normal line of one fixed edge in its
+\(\mathrm{dP}_6\) branch, and each edge has self-intersection
+\(-1\). This remains true at the two vertices because those
+branches and their edge normals are smooth there. The circle
+characters distinguish the lines globally, so no choice of a
+splitting of an extension is required.
+
+The Hopf invariant \(a=xz\) is valued in the tensor product
+of these two weight lines. It therefore gives the complex normal
+line of the branch \(\{a=0\}\) along \(F\) as
+\[
+ \mathcal O(-1)\otimes\mathcal O(-1)=\mathcal O(-2).
+\]
+At a triple point \(q=ay\), the coordinate \(a\) still is
+a normal coordinate of that branch. The zero of \(y\) does
+not alter its normal bundle; using \(q\) instead would lose
+precisely this distinction. The stated Euler number is consequently
+\(-2\) for the \(a\)-complex orientation and \(+2\) if that
+normal orientation is reversed.
+
+In particular this immersion cannot simply be compressed along
+\(F\) to an immersed three-sphere while retaining its normal
+two-plane bundle: extension over a bounding three-disc would force
+its Euler pairing on the boundary sphere to vanish. This identifies
+a required framing correction; it does not compute that correction
+or a Haefliger invariant for the annular twist.
+\end{proof}
+\begin{proposition}[C.3.12 (Proved): obstruction to the literal translational Seifert quotient]
+Fix an admissible parameter and a small closed cusp body $V$, with
+central fibre $W$. On every regular fibre let $K_q$ be the real
+three-dimensional subtorus marked by $\ker\gamma$, namely by
+$\widehat u,\widehat w,\widehat\delta$.
+If $Z$ is Hausdorff and a continuous map $h:V\to Z$ is constant
+on every translate of $K_q$ for $q\ne0$, then $h|_W$ is constant.
+
+Consequently there is no continuous extension of this literal
+regular-fibre translational quotient whose central fibre is a
+circle. In particular, the translational quotient in the first
+paragraph of \citet[Remark 8.3]{E26} cannot be identified with the
+circle-valued cusp moment quotient described there while retaining
+those equivalence classes on every regular fibre. A construction
+which changes the regular-fibre equivalence relation is not excluded.
+This correction concerns the rank-three quotient; it does not affect
+the smooth $\widehat\delta$-circle quotient in C.3.10.
+\end{proposition}
+The nonextension of the raw invariant-circle coordinate was already
+recorded in the supplied \path{background/notes/A1_notes.md},
+Section~2, item A1--1, and
+\path{background/S6_SURVEY_20261112.md}, item F9.
+The assertion proved here has the stronger quantified scope of every
+Hausdorff-valued continuous map with the stated regular translational
+leaves. No claim of priority is made.
+\begin{proof}
+We use the actual cusp toric coordinates and periods. Write
+\[
+ q=e^{2\pi i s},\qquad
+ Z=sB_0+C(q),\qquad
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \qquad C_{22}(q)=\mu(q).
+\]
+The columns correspond to $(\widehat\gamma,\widehat u)$;
+the unitary torus directions are $(\widehat w,\widehat\delta)$.
+On the dense torus, with multiplicative coordinates $(z_1,z_2)$,
+translation by the real multiple $r\widehat u$ is exactly
+\begin{equation}\label{eq:C12-u-flow}
+ (z_1,z_2)\longmapsto
+ \bigl(q^r e^{2\pi i r C_{12}(q)}z_1,
+             e^{2\pi i r\mu(q)}z_2\bigr).
+\end{equation}
+Here a branch is chosen on the positive real $q$-ray. This is a
+translation in $K_q$ for every real $r$, not merely for integral $r$.
+The two remaining circle directions rotate $z_1$ and $z_2$
+independently.
+
+The limiting constant $\mu_0=\mu(0)$ has nonzero imaginary part.
+For the branch used in D.4.7 it is
+\[
+ \mu_0=\frac12-\frac{i}{2\pi}\log(5+2\sqrt6),\qquad
+ |e^{2\pi i\mu_0}|=5+2\sqrt6>1.
+\]
+Only the nonvanishing of its imaginary part is needed. It can
+also be checked directly without that branch choice: the cusp
+limit of $\wp(\mu;\tau)=0$ is
+$\pi^2\csc^2(\pi\mu_0)-\pi^2/3=0$, so
+$\sin^2(\pi\mu_0)=3$, which is impossible for real $\mu_0$.
+The Fourier limit and holomorphic finite cusp branch are the
+ones checked in D.4.7.
+
+Consider the edge between the lattice vertices $0$ and $e_1$
+of the Mumford fan. On the open part of its two adjacent
+components the toric chart is
+\[
+ x=z_1,\qquad y=q/z_1,\qquad z=z_2\in\C^*,
+ \qquad xy=q.
+\]
+This chart follows directly from the two primitive height-one
+rays $(0,0,1)$ and $(1,0,1)$; its additional invertible character
+is $z_2$. It is also the ordinary double-curve chart of the
+fixed bottom triangulation. Let $P(x,z)$, for $x,z\in\C^*$,
+denote its central point $(x,0,z)$, and let $Q(z)$ denote
+$(0,0,z)$ on the double curve. We apply these notations also
+to their images in the period quotient. The set of all $P(x,z)$
+is the dense torus of the normalizing $\mathrm{dP}_6$ component,
+whose image is dense in the irreducible central fibre $W$.
+
+First $h(P(x,z))$ is independent of $x$. To check positive
+radial changes, fix $\lambda\in\R$, put $q_n=e^{-n}$, and
+translate $(x,q_n/x,z)$ by
+$r_n\widehat u$, where $r_n=-\lambda/n$. Since $C_{12}$ and
+$\mu$ are bounded, the two multiplicative factors in
+\eqref{eq:C12-u-flow} tend respectively to $e^\lambda$ and
+$1$. The translated sequence therefore tends to $P(e^\lambda x,z)$,
+whereas the original sequence tends to $P(x,z)$. Their $h$-images
+agree term by term. Continuity and the Hausdorff property give
+equality of the two limiting images. Rotation by
+$\widehat w$ treats the argument of $x$ in the same way.
+Thus we may write $H(z)=h(P(1,z))$.
+
+Next fix $0<r<1$ in \eqref{eq:C12-u-flow} and let $q\downarrow0$
+on the positive real ray. Starting at $(x,q/x,z)$, the translated
+coordinates satisfy
+\[
+ x_r=q^r e^{2\pi i r C_{12}(q)}x\longrightarrow0,\qquad
+ y_r=q^{1-r} e^{-2\pi i r C_{12}(q)}/x\longrightarrow0,
+\]
+and $z_r\longrightarrow e^{2\pi i r\mu_0}z$. Hence the same
+continuity argument gives the exact equality
+\begin{equation}\label{eq:C12-limiting-identification}
+ H(z)=h\bigl(Q(e^{2\pi i r\mu_0}z)\bigr)
+ \qquad(0<r<1).
+\end{equation}
+For $r_1,r_2\in(0,1)$ apply this equality first to $z$ and
+then to $z'=e^{2\pi i(r_1-r_2)\mu_0}z$. Their double-curve
+limits are the same point, so
+\[
+ H(z)=H(e^{2\pi i a\mu_0}z)\qquad(-1<a<1).
+\]
+Iteration gives the equality for every real $a$. Rotation by
+$\widehat\delta$ also gives $H(z)=H(e^{i\vartheta}z)$ for every
+$\vartheta$. Since $\operatorname{Im}\mu_0\ne0$, the moduli
+$|e^{2\pi i a\mu_0}|$ range over all positive real numbers.
+Combining these two invariances proves that $H$ is constant on
+$\C^*$. Therefore $h$ is constant on the dense torus in $W$.
+The inverse image of a point of the Hausdorff space $Z$ is
+closed; density proves constancy on all of $W$.
+
+For comparison, the raw real period coordinate already fails
+continuity in an elementary fixed-edge chart. Take
+$q=e^{-2\pi T}$, $z_1=1$, $z_2=q^r$, with $0<r<1$ and
+$T\to+\infty$. In the chart
+$(z_2,q/z_2,z_1)$ all these paths tend to the same point
+$(0,0,1)$. Their logarithmic modulus vectors are $(0,rT)$.
+Since $\operatorname{Im}Z=TB_0+O(1)$, their real period
+vectors are
+\[
+ (\operatorname{Im}Z)^{-1}(0,rT)^t
+                  =(-r,0)^t+O(T^{-1}).
+\]
+Thus their raw $\gamma$ circle coordinates tend to $-r$ modulo
+$\Z$, with different limits at that one central point. The
+stronger argument \eqref{eq:C12-limiting-identification} shows
+why an arbitrary base-dependent reparametrization of those
+circle coordinates cannot repair the asserted central circle
+while keeping the same regular-fibre translational leaves.
+The exact limiting multiplier and the inverse-matrix calculation
+are independently checked in
+\path{code/d_push_cusp_quotient_obstruction.py}; the continuity
+and closure argument above, rather than that finite check,
+proves the universal assertion.
+\end{proof}
+\begin{proposition}[C.3.13 (Proved): a corrected marked Seifert comparison]
+There is a smooth map $\mathcal G:X_c\to S^3$, invariant under
+the $\widehat\delta$ circle, with the following properties.
+It covers the given base coordinate through the explicit weighted
+Seifert map
+\[
+ p:S^3\longrightarrow\PP^1,\qquad
+ p(z_1,z_2)=\frac{z_2^3}{z_2^3-z_1^4},\qquad
+ \lambda\cdot(z_1,z_2)=(\lambda^3z_1,\lambda^4z_2).
+\]
+Outside a chosen small cusp body it is the actual quotient by
+the regular $\ker\gamma$ subtori, followed by a specified
+base-dependent circle gauge and the explicit identification below.
+It includes the actual finite root quotients with rotation data
+$+1/3$ and $-1/4$. Inside the cusp body the map is modified;
+it does not preserve the original translational leaves.
+
+On the outer cusp collar a positively marked $\widehat\gamma$
+circle maps orientation-preservingly onto a regular weighted
+Seifert fibre. The central fibre of the target is the positive
+$(3,4)$ torus knot, and a nearby regular fibre has linking number
+$12$ with it, in the standard orientation of $S^3\subset\C^2$.
+This is framing data in the constructed three-dimensional target.
+No identification of its normal framing with the six-dimensional
+orbit-knot framing, and no value of $6[\Phi]$, follows from this
+statement.
+\end{proposition}
+\begin{proof}
+We first fix the real character and all of its overlap corrections.
+On an ordinary fibre, let
+$\gamma_z:\C^2\to\R$ be the real-linear functional determined by
+\[
+ \gamma_z(\Pi_c(z)v)=\gamma(v)\qquad(v\in\R^4).
+\]
+The real period matrix is invertible in the admissible range.
+The resulting circle coordinate
+$\theta=\gamma_z(\zeta)\pmod\Z$ is invariant under ordinary
+monodromy because $\gamma A_j=\gamma$. It is the literal
+regular-fibre quotient character, not a new choice of marking.
+
+On the $j$th finite root chart write $\theta_j$ for this
+character before the affine finite quotient. The exact map from
+that chart to the ordinary chart is translation by
+$\sigma_{j,c}=w_j\Pi_cv_j$, where
+$w_j=(2\pi i)^{-1}\log s_j$ and
+$\epsilon_j=\gamma(v_j)$ is $1,-1$, respectively.
+Consequently its real circle overlap is exactly
+\begin{equation}\label{eq:C13-real-overlap}
+ \theta=\theta_j+\epsilon_j\operatorname{Re}w_j+a_j^{\mathrm{rad}}(t),
+ \qquad
+ a_j^{\mathrm{rad}}(t)=\operatorname{Im}w_j\,
+                  \gamma_z(i\Pi_cv_j).
+\end{equation}
+The last expression is real and single-valued on the punctured
+base disc. Indeed $\operatorname{Im}w_j$ is single-valued,
+$v_j$ is fixed by the local integral monodromy, and its
+complex-linear covariance preserves $\gamma_z$.
+No logarithmic radial term has been dropped.
+
+Choose disjoint finite discs and smooth radial cutoffs equal to
+one on smaller discs and zero outside the larger ones. They define
+a real smooth function $d(t)$ on $B^\circ$ which is $-a_j^{\mathrm{rad}}(t)$
+on the smaller punctured discs and is zero on a cusp collar.
+Choose the roots $F^3=t$, $G^4=t-1$ on the uniformizing cover and
+the logarithm $\ell=(2\pi i)^{-1}\log(F/G)$ used in C.3.5.
+Put
+\[
+ \Theta=\theta-\operatorname{Re}\ell+d(t).
+\]
+Let $R_t>0$ be the unique solution of
+\[
+ R_t^6|G|^2+R_t^8|F|^2=1.
+\]
+Existence and uniqueness follow from strict increase from zero
+to infinity; the derivative in $R_t$ is positive, so the
+implicit-function theorem gives the required smooth dependence.
+The proposed map on the ordinary region is
+\begin{equation}\label{eq:C13-weighted-map}
+ (z_1,z_2)=
+ \bigl(R_t^3G e^{6\pi i\Theta},\,
+                R_t^4F e^{8\pi i\Theta}\bigr).
+\end{equation}
+Its norm is one and direct substitution gives $p(z_1,z_2)=t$.
+Increasing $\theta$ by $a$ is exactly the weighted action of
+$e^{2\pi ia}$, so the positive $\gamma$ orientation is retained.
+
+We check descent and the finite centres explicitly. For the
+clockwise first root generator $F$ changes by $e^{-2\pi i/3}$,
+$G$ is unchanged, and $\ell$ changes by $-1/3$.
+Thus $\Theta$ changes by $+1/3$, and both coordinates in
+\eqref{eq:C13-weighted-map} remain unchanged. For the second
+generator $G$ changes by $e^{-2\pi i/4}$, $F$ is unchanged,
+and $\Theta$ changes by $-1/4$. Again both coordinates are
+unchanged: their total exponents are respectively $-1$ and
+$-1$. These generators and changes of logarithm prove descent
+on the entire ordinary base.
+
+On a full finite root disc the exact identity from C.3.5 is
+$\ell=\epsilon_jw_j+\kappa_j$, where $\kappa_j$ is a
+holomorphic logarithm of an invariant nonvanishing unit.
+Equations \eqref{eq:C13-real-overlap} and $d=-a_j^{\mathrm{rad}}$ therefore give
+\[
+ \Theta=\theta_j-\operatorname{Re}\kappa_j.
+\]
+This expression is smooth through the root centre. The vanishing
+factor $F$ at the first centre, or $G$ at the second, is the
+root coordinate times a holomorphic unit. The other factor is
+nonzero. Thus \eqref{eq:C13-weighted-map} extends smoothly to
+the full root chart. Its transverse derivative is nonzero and
+the circle factor has degree one; it identifies the actual
+finite quotient solid torus with the corresponding weighted
+solid torus. The deck actions on $(s_j,\theta_j)$ are precisely
+\[
+ (s_1,\theta_1)\mapsto(e^{-2\pi i/3}s_1,\theta_1+1/3),
+ \qquad
+ (s_2,\theta_2)\mapsto(e^{-2\pi i/4}s_2,\theta_2-1/4).
+\]
+This verifies the overlap maps, not merely the exceptional
+multiplicities of an abstract Seifert space.
+
+We next verify the cusp meridian and construct the replacement
+map upstairs, without assuming a smooth quotient structure at
+the fixed set. Let $V$ be a small smooth compact cusp body and
+$\overline V=V/\rho$. C.3.7--C.3.9 identify
+$H_1(\overline V;\Z)=\Z\widehat\gamma\oplus\Z\widehat u$.
+The outer orbit link is the mapping torus of the action
+$u\mapsto u+w$ on the $(u,w)$ torus, times the $\gamma$ circle.
+Its first homology is therefore freely generated by
+$\widehat\gamma,\widehat u$ and a transverse cusp meridian;
+$\widehat w$ is a commutator. The two first generators have
+the stated images in $H_1(\overline V)$ by the actual fan marking
+in C.3.9.
+
+The transverse meridian has zero $\gamma$ value and bounds
+an actual disc in $V$. To see this without choosing a meridian
+up to an unknown fibre twist, take the toric section
+$z_1=z_2=1$. In the chart of C.3.12 it is
+$(x,y,z)=(1,q,1)$, so it extends across $q=0$.
+Its additive logarithms are zero and hence $\theta=0$
+identically on its boundary. Thus the integral class on
+$\overline V$ with values $1,0$ on
+$(\widehat\gamma,\widehat u)$ restricts to exactly the raw
+character $[d\theta]$ on the orbit link, including the transverse
+meridian value. Pull it back to $V$.
+
+Represent the pulled-back integral class by a smooth closed real
+one-form $\alpha$ with integral periods. Average it over the
+$\delta$ circle. Each group element is isotopic to the identity,
+so the cohomology class and its integral periods are unchanged.
+The averaged form is invariant. If $K$ denotes the circle
+generator, Cartan's formula gives $d(\alpha(K))=0$.
+The body is connected and has fixed points, where $K=0$;
+therefore $\alpha(K)=0$ everywhere.
+On an outer collar $\alpha-d\theta$ is exact, since the two
+forms have the same periods. Choose its real primitive,
+average the primitive over the circle, and extend it to $V$
+using an invariant collar cutoff. Subtracting its differential
+from $\alpha$ makes the resulting invariant integral closed
+form equal to $d\theta$ on a smaller outer collar. Integrating
+it modulo $\Z$, with the constant chosen at one collar point,
+gives a smooth map
+\[
+ g:V\longrightarrow\R/\Z
+\]
+which equals $\theta$ on that collar. Its contraction with $K$
+is zero, so $g$ is invariant. This construction is entirely on
+the smooth manifold $V$ and yields a continuous factor on
+$\overline V$.
+
+For completeness, the prescribed orbit boundary map has a
+unique relative homotopy class of extensions to $\overline V$.
+The restriction of $H^1(\overline V;\Z)$ to the link is
+injective by the two period generators just checked, and both
+spaces are connected. The relative cohomology exact sequence
+therefore gives $H^1(\overline V,\partial\overline V;\Z)=0$.
+Maps to $\R/\Z$ with fixed boundary values are classified by
+this relative group: a map represents its integral period class,
+and a map with zero class has a real lift which supplies the
+relative homotopy. This assertion does not classify normal
+framings of any embedded trace.
+
+Use now the holomorphic cusp coordinate $q=1/t$; changing from
+the original Mumford coordinate multiplies it by a unit and
+does not change the meridian just verified. Write
+$q=e^{2\pi i s}$. Compatible roots satisfy
+\[
+ F=q^{-1/3},\qquad G=q^{-1/4}(1-q)^{1/4},\qquad
+ \ell=-s/12+\kappa_0(q),\qquad
+ \kappa_0(q)=-\frac{\log(1-q)}{8\pi i}.
+\]
+A different compatible root choice only changes the displayed
+unit gauge. The smooth fibre coordinate in the weighted model
+near its regular cusp knot is
+\begin{equation}\label{eq:C13-cusp-gauge}
+ \vartheta=\Theta-\operatorname{Re}s/12
+           =\theta-\operatorname{Re}\kappa_0(q),
+\end{equation}
+because $d=0$ there. In particular no additional integer
+meridian winding is present. This is the required boundary
+framing comparison; the finite labels alone would not give it.
+
+Let $S(q)>0$ solve
+$S(q)^6|1-q|^{1/2}+S(q)^8=1$. The explicit smooth solid-torus
+chart of the target is
+\[
+ \Phi_0(q,\vartheta)=
+ \bigl(S(q)^3(1-q)^{1/4}e^{6\pi i\vartheta},
+                         S(q)^4e^{8\pi i\vartheta}\bigr).
+\]
+It is a diffeomorphism onto a neighbourhood of the regular
+cusp knot. Indeed its inverse has
+$q=1-z_1^4/z_2^3$ and
+$e^{2\pi i\vartheta}=z_2(1-q)^{1/4}/(S(q)z_1)$;
+all factors are nonzero there. Define the replacement on $V$
+by
+\[
+ \mathcal G(x)=
+ \Phi_0\bigl(q(x),g(x)-\operatorname{Re}\kappa_0(q(x))\bigr).
+\]
+It agrees exactly with \eqref{eq:C13-weighted-map} on the outer
+collar by \eqref{eq:C13-cusp-gauge}, and hence glues with the
+ordinary and finite maps already constructed. Smoothness and
+$\delta$ invariance hold upstairs on every piece. The first
+coordinate of the solid-torus chart proves that it still covers
+$f$. By C.3.12 its new cusp leaves cannot be the original
+translational leaves on every punctured fibre; that change is
+an explicit part of the construction.
+
+Finally the knot $q=0$ in the target is
+$z_2^3=z_1^4$, parametrized with positive orientation by the
+weighted circle $(e^{3i\phi},e^{4i\phi})$ with the fixed positive
+radii prescribed by $S(0)$. It is the positive $(3,4)$ torus
+knot. For a small fixed $q\ne0$, along the nearby fibre
+\[
+ (z_2^3-z_1^4)\circ\Phi_0(q,\vartheta)
+                  =q S(q)^{12}e^{24\pi i\vartheta}.
+\]
+The argument therefore has degree $12$. The function
+$z_2^3-z_1^4$ has a simple complex-normal zero along the
+knot in $S^3$, so its argument represents the positive
+meridian class in the knot complement. This degree is its
+linking number with the knot. The orientation is the one
+already matched to positive $\gamma$ in
+\eqref{eq:C13-weighted-map}. The computation establishes the
+three-dimensional push-off datum only. The actual normal-line
+comparison and its contribution are established separately in
+C.3.20--C.3.22; they are not inferred from this linking number.
+The finite phases, radial cancellation, link abelianization and
+polynomial identities are checked exactly in
+\path{code/d_push_corrected_seifert.py}.
+\end{proof}
+\begin{proposition}[C.3.14 (Proved): an actual characteristic-number target]
+The smooth orbit pair for the circle of C.3.1 is diffeomorphic to
+the standard pair $(S^5,S^2)$. Its free complement, after deleting
+a small fixed tubular neighbourhood, is therefore
+$P\simeq S^2\times D^3$. The circle action on $X_c$ is smoothly
+equivariantly equivalent, with its circle direction fixed, to the
+linear Hopf action on
+$\partial(D^4_{\mathbb H}\times D^3)$.
+
+Choose such an identification and regard the actual annular map
+$\psi$ of C.3.10 as a diffeomorphism of $P$ equal to the identity
+near its boundary. Let $\widetilde\psi$ be its extension by the
+identity to the double $DP\simeq S^2\times S^3$. Form
+\[
+ M_\psi=(S^2\times D^4)\cup_{\widetilde\psi}
+                  -(S^2\times D^4).
+\]
+This is a closed simply connected spin six-manifold with
+$H^2(M_\psi;\Z)=H^4(M_\psi;\Z)=\Z$ and $H^3(M_\psi;\Z)=0$.
+Let $x$ be the generator restricting to the oriented meridian
+generator on each $S^2\times D^4$, and put
+\[
+ k_\psi=\langle x^3,[M_\psi]\rangle,\qquad
+ J_\psi=\frac{\langle p_1(M_\psi)x-4x^3,[M_\psi]\rangle}{24}.
+\]
+Both are integers. The unframed knot coordinate of the orbit
+knot of the clutching sphere for $6\Phi$ is $-J_\psi$ in
+Wall's surgery convention. Consequently, with one fixed sign
+depending on comparison of that convention with the generator
+of C.1.1,
+\[
+ \mu(\Sigma_{6\Phi})=\pm\frac{J_\psi}{28}\pmod\Z.
+\]
+The pure framing subgroup has zero image in $\Theta_7$.
+No value of $J_\psi$ or $k_\psi$ is asserted here.
+\end{proposition}
+\begin{proof}
+The dimension hypothesis in
+\citet[Section 1, Propositions 1.3--1.4]{FintushelPao1983D}
+is $n>5$. Applied to this semifree action on $S^6$, it gives a
+smooth orbit homotopy five-sphere and a smooth embedded fixed
+two-sphere. Since $\Theta_5=0$ \citep{KervaireMilnor1963}, the
+orbit is the standard $S^5$. The unknotting range
+$C_n^q=0$ for $n<2q-3$
+\citep[Corollary 6.6]{Haefliger1966D} applies at $(n,q)=(2,3)$.
+Thus the fixed embedding is standard and its exterior is
+$S^2\times D^3$.
+
+Here the orbit identification can be lifted to the claimed
+equivariant identification. In the normal bundle of the fixed
+curve, conjugating the negative weight line converts the circle
+representation to two scalar weight-one complex lines. By
+C.3.11 their Chern classes are $-1$ and $+1$. The resulting
+rank-two complex bundle over $S^2$ has first Chern class zero,
+and is trivial, since clutching rank-two complex bundles over
+$S^2$ is classified by $\pi_1(U(2))$ and its determinant.
+Thus its equivariant tubular neighbourhood is the linear model.
+The oriented normal three-plane bundle of the orbit sphere is
+also trivial. The ambient pair diffeomorphism can be adjusted
+on a tubular neighbourhood to this prescribed normal model:
+the relevant change of oriented framing is a map
+$S^2\to SO(3)$, and $\pi_2(SO(3))=0$.
+
+On the complement, the principal circle bundle has Euler class
+equal to a primitive generator of $H^2(P;\Z)$, as is seen on
+each normal Hopf sphere. Choose the orbit identification to
+match this signed generator with the linear model. Principal
+circle bundles are classified by that class, so their complements
+are equivariantly isomorphic. On the common boundary the
+difference from the prescribed tubular isomorphism is a gauge
+$S^2\times S^2\to S^1$. It has a real logarithm because
+$H^1(S^2\times S^2;\Z)=0$. Extending that logarithm over a
+collar and using a cutoff corrects the bundle isomorphism there.
+The two isomorphisms now glue smoothly. This proof uses the
+linear tubular model at the fixed set; it does not assume that
+an arbitrary quotient diffeomorphism lifts smoothly there.
+
+The support of $\psi$ misses the fixed neighbourhood by C.3.10.
+Any boundary-fixed diffeomorphism of $P$ preserves the meridian
+Euler class, since restriction $H^2(P)\to H^2(\partial P)$ is
+injective. It therefore has a circle-bundle lift, which can be
+made the identity on a boundary collar by the same logarithmic
+gauge correction. Extend that lift by the identity on the fixed
+neighbourhood. C.3.6 compares it with the lift actually constructed
+in C.3.10, so its mapping class is $6[\Phi]$.
+
+Clutch two linear seven-discs along this lift. Their fixed discs
+clutch by the identity to a fixed $S^3$. Their orbit six-discs
+clutch along $\psi$ on $S^5$, giving an orbit homotopy six-sphere,
+which is standard because $\Theta_6=0$. Denote the resulting
+orbit knot by $K_\psi\subset S^6$. This is the orbit knot of
+the actual clutching sphere for $6\Phi$.
+
+We spell out its framed surgery, so that the cap is specified.
+In each orbit six-disc, the complement of a standard fixed
+three-disc neighbourhood is $N=S^2\times D^4$. Its boundary
+is divided into an outer and an inner copy of $P=S^2\times D^3$.
+The two outer copies glue by $\psi$ to form the knot exterior.
+The inner copies give its boundary $S^2\times S^3$ with the
+framing inherited from the fixed-disc normal products. Framed
+surgery fills that boundary by a third copy of $N$.
+Combine this third copy with one of the first two along its
+inner $P$. Two four-discs glued along a boundary three-disc
+form a four-disc. The combined piece is therefore again $N$,
+and the remaining gluing map is $\psi$ on the outer half and
+the identity on the inner half. This is exactly the displayed
+$M_\psi$, with the boundary orientation convention used there.
+
+Van Kampen gives $\pi_1(M_\psi)=0$. Mayer--Vietoris for its
+two copies of $S^2\times D^4$, with intersection $S^2\times S^3$,
+gives the asserted cohomology groups and no torsion. The
+restriction map in degree two is injective, and $w_2$ restricts
+to zero on both pieces; thus $w_2(M_\psi)=0$. The spin
+structure is unique. If $L_x$ is the line bundle with Chern
+class $x$, the twisted spin index formula used in C.2.1 gives
+\[
+ \operatorname{ind}(D\otimes L_x)
+ =\left\langle\frac{x^3}{6}-\frac{p_1x}{24},[M_\psi]\right\rangle
+ =-J_\psi\in\Z.
+\]
+This also verifies the required integrality independently of the
+classification of six-manifolds. The identical characteristic
+integer is recorded in \citet[Section 3, page 1911]{Olbermann2010D}.
+
+For a single framed three-knot, Wall's direct surgery calculation
+gives
+\[
+ k=6\varphi+\beta',\qquad \langle p_1x,[M]\rangle=4\beta',
+\]
+where $\varphi$ is its unframed knot integer and $\beta'$ its
+framing integer
+\citep[Theorem 4, pages 360--361]{Wall1966VE}.
+Hence $J=-\varphi$. The original pages were inspected directly;
+the published corrigendum changes Theorem 14, not this formula
+\citep{Wall1967CorrE}. Finally the orbit-knot classification and
+\citet[Example 7.14 and Proposition 7.15]{Davis1982D} send a
+knot generator to the Milnor sphere $M^7_3=S_{2,-1}(\mathbb H)$.
+The associated oriented rank-four bundle over $S^4$ has Euler
+evaluation one and first Pontryagin evaluation six. Thus C.2.1
+gives $(6^2-4)/896=1/28$ with the corresponding
+orientation. Comparing the two choices of knot generator gives
+the fixed sign in the statement.
+
+The framing kernel has a useful direct verification. Represent
+its generator on $P$ by
+$(a,y)\mapsto(r(y)a,y)$, with
+$r:(D^3,\partial D^3)\to(SO(3),1)$. Lift $r$ to
+$R:D^3\to SU(2)$, equal to one near the boundary. In the
+quaternionic linear model its equivariant lift is
+$(v,y)\mapsto(R(y)v,y)$ on
+$\partial(D^4_{\mathbb H}\times D^3)$; the circle acts by
+right complex multiplication. This formula extends over the
+seven-disc. Its clutching sphere is therefore standard.
+The framing direction cannot change the $\Theta_7$ class,
+in agreement with the formula $J=-\varphi$.
+\end{proof}
+
+\begin{corollary}[C.3.15 (Proved): the specified cap integer vanishes]
+The characteristic integer of this actual annular cap is
+$J_\psi=0$ in $\Z$.
+\end{corollary}
+\begin{proof}
+The complete evaluation is given below in C.3.18--C.3.22.
+The actual affine-frame defect is $p_{\mathrm{rel}}=-24$,
+the actual delta-line relative square is $s_\delta=-2$, and
+the common signed cap formula is
+\[
+ J_\psi=\epsilon_{\rm cap}
+              (p_{\mathrm{rel}}-12s_\delta)/24=0.
+\]
+This uses the global frame and Picard-line comparisons, not
+only the local unipotent derivative or a target linking number.
+The fixed sign comparing Wall's nonzero generator with the
+positive Eells--Kuiper generator is immaterial for this zero.
+C.3.23--C.3.24 give the integer-level argument for the original
+one-loop monodromy.
+\end{proof}
+\begin{proposition}[C.3.16 (Proved): the actual cusp-link inclusion]
+Orient the central orbit cycle $H=W/S^1_\delta\subset Q=X_c/S^1_\delta$
+by the complex $q$-normal orientation, where $q=1/t$ near the cusp.
+Use the marked positive period $\gamma$ and the actual transverse
+$q$-meridian of C.3.13. Then
+\[
+ H_1(Q\setminus H;\Z)=\Z,
+ \qquad \operatorname{lk}(\gamma,H)=12.
+\]
+More precisely, write the cusp orbit link as
+$L=S^1_\gamma\times\operatorname{Nil}^3(u,w,q)$, with the integral
+basis $(\gamma,u,q)$ of $H_1(L;\Z)$ fixed in C.3.13. The inclusion
+homomorphism is
+\[
+ H_1(L;\Z)\longrightarrow H_1(Q\setminus H;\Z),
+ \qquad (a,b,c)\longmapsto 12a+c,
+\]
+where the target generator is the positive meridian of $H$.
+This is a statement about the actual cusp inclusion, not only the
+weighted target three-sphere.
+\end{proposition}
+\begin{proof}
+By C.3.14, $Q$ is the standard smooth five-sphere. The finite
+normalization pushout in C.3.7 makes $H$ a compact, locally
+contractible space, and gives $H^3(H;\Z)=\Z$. Its oriented
+normalization has degree one at a generic smooth point; identification
+along the conductor, of dimension at most two, does not change the
+top-dimensional fundamental cycle. Thus $H$ has the multiplicity-one
+oriented fundamental cycle specified in the statement. Integral
+Alexander duality gives
+\[
+ \widetilde H_1(Q\setminus H;\Z)
+ \simeq \widetilde H^3(H;\Z)=\Z.
+\]
+The local positive meridian at any generic smooth point pairs to one
+with that fundamental cycle and therefore represents the indicated
+primitive generator.
+
+Let $\overline G:Q\to S^3$ be the continuous descent of the smooth
+$S^1_\delta$-invariant map constructed in C.3.13, and write its two
+complex coordinate functions as $G_1,G_2$. Define the globally
+single-valued continuous complex function
+\[
+ h=G_2^3-G_1^4.
+\]
+Since the weighted target map is
+$p(z_1,z_2)=z_2^3/(z_2^3-z_1^4)$ and
+$p\circ\overline G=\overline f$, the zero set of $h$ is exactly $H$.
+In the cusp solid-torus formula of C.3.13, it is explicitly
+\[
+ h=q\,S(q)^{12}\exp(24\pi i\vartheta),\qquad
+ \vartheta=g-\operatorname{Re}\kappa_0(q),
+\]
+where $S(q)>0$, $g$ is circle-valued, and $\kappa_0$ is a
+single-valued holomorphic function on the cusp disc. The factor
+multiplying $q$ is a continuous nowhere-zero function. Hence on a
+small positive normal circle at a generic smooth point of $H$, the
+map $h/|h|$ has degree $+1$. It follows that
+\[
+ [h/|h|]\in H^1(Q\setminus H;\Z)
+\]
+is exactly the integral meridian, or linking, class. This argument
+requires only continuity of the descended map at fixed points; it
+does not assert that an arbitrary invariant smooth map descends
+smoothly in every orbit-space coordinate system.
+
+On the outer cusp collar the extension $g$ equals the raw marked
+character $\theta$. Traversing the positive $\gamma$ period changes
+$\theta$ by one, while $q$ and the other torus coordinates stay fixed.
+The displayed formula for $h$ consequently has argument degree
+$12$ on that loop. A traversal of $u$ changes neither $q$ nor
+$\theta$, and has degree zero. Finally, the actual positive
+transverse meridian is the section $z_1=z_2=1$ of C.3.13. On it
+$\theta=0$ identically, so
+\[
+ \frac{h}{|h|}
+ =\frac{q}{|q|}\exp\bigl(-24\pi i\operatorname{Re}\kappa_0(q)\bigr).
+\]
+The second factor extends over the whole disc and has degree zero.
+The meridian therefore has degree one. These three evaluations give
+the asserted inclusion homomorphism. The commutator direction $w$
+is already zero in $H_1(L;\Z)$.
+\end{proof}
+
+\begin{remark}[Scope]
+The numerical value $12$ is now an actual linking invariant in the
+orbit five-sphere. The function $q$ alone cannot provide it: globally
+$q$ is a meromorphic base coordinate with poles, so its argument
+compares the zero and pole fibres. The globally defined function $h$
+removes that ambiguity. The present result specifies one part of the
+global attaching data for the cap of C.3.14; it does not evaluate its
+Pontryagin framing term or its characteristic integer $J_\psi$.
+\end{remark}
+\begin{proposition}[C.3.17 (Proved): a marked circle extension over the cusp]
+Let $V$ be a sufficiently small closed cusp body and
+$\overline V=V/S^1_\delta$. Its smooth orbit structure can be
+chosen compatibly with C.3.14 so that there is a diffeomorphism
+\[
+ \overline V\simeq E_{I_1}\times S^1,
+\]
+where $E_{I_1}$ is a closed neighbourhood of one nodal fibre in
+an elliptic surface. More precisely, the actual positive
+$\gamma$-translation circle action on the outer cusp collar
+extends to a smooth circle action $\rho$ on $\overline V$.
+The extension is free. It is not asserted to preserve the
+fixed sphere $F\subset\overline V$ or the original interior
+map to the $q$-disc.
+
+Consequently the actual annular map $\psi$ of C.3.10 is the
+endpoint of an ambient isotopy of $Q$ whose restriction to $F$
+is the loop of embedded spheres $t\mapsto\rho_t(F)$.
+After the marked deformation used in the proof, its trace is
+the normalization immersion of a nodal elliptic curve times a
+circle: it has one transverse double circle and two distinct
+preimage circles. The regular cusp three-torus with period
+basis $(\gamma,u,w)$ represents a primitive generator of
+$H_3(\overline V;\Z)$; in particular it does not bound a
+four-chain inside the cusp body.
+\end{proposition}
+\begin{proof}
+We first remove the bounded period units by a marked smooth
+deformation. On the cusp write, as in C.3.5,
+\[
+ Z(q)=sB_0+C(q),\qquad
+ B_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ q=e^{2\pi i s}.
+\]
+For $0\leq a\leq1$ replace $C(q)$ by $(1-a)C(q)$, keeping
+the same $A_2$ triangulation and the real periods $w,\delta$.
+This is a deformation of the actual toric period quotient,
+not a replacement inferred from its homology. The two period
+automorphisms still have the same integral translations of the
+fan and commute; only their nowhere-zero holomorphic unit
+multipliers change. They depend smoothly on $a$, and even
+holomorphically on a small complex neighbourhood of this
+interval. On a sufficiently small punctured $q$-disc the
+imaginary period matrices are invertible uniformly in $a$:
+their leading part is $(\operatorname{Im}s)B_0$, while the
+remaining matrices are uniformly bounded.
+
+The fixed toric charts, with this extra parameter, therefore
+give a smooth family of the same Mumford cusp quotients.
+There is no new stabilizer at the central fibre: a nonzero
+period translates every height-one ray by a nonzero lattice
+vector, and cannot preserve any finite cone of the fan.
+The usual finite fundamental collection of toric charts gives
+proper discontinuity, uniformly for the compact parameter
+interval. The central family has the constant compact
+normalization $dP_6$ with its smoothly varying opposite-side
+identifications. Thus it has a proper representative over a
+uniform smaller $q$-disc. One may see the uniformity directly
+by taking a relatively compact neighbourhood of this compact
+central family: its boundary is disjoint from $q=0$, and after
+shrinking $|q|$ no fibre meets that boundary. The nonzero
+fibres are connected compact tori, so the selected representative
+contains the whole nearby fibre. Denote these compact smooth
+cusp bodies by $V_a$.
+
+Their $S^1_\delta$ actions form a smooth semifree family, with
+a smooth family of fixed two-spheres. Choose an equivariant
+Ehresmann transport with the following two prescribed local
+forms. On the outer collar keep $q$ and all real coefficients
+in the marked period basis fixed. This is a smooth transport
+there and carries the actual $\gamma$-translation action to
+the corresponding action for every $a$. Near the fixed spheres,
+choose family equivariant normal tubular coordinates. After
+conjugating the negative-weight line the normal representation
+is scalar multiplication on $\mathbb C^2$. Choose Hermitian
+metrics and a unitary connection, and make the transport
+linear and unitary in these normal coordinates. The collar
+and fixed tubes are disjoint. A circle-invariant partition of
+unity extends and patches the prescribed horizontal fields;
+each has derivative one on $a$, so their patched field does
+also. Compactness gives its flow for the entire interval.
+
+This particular transport induces a smooth transport of orbit
+spaces. On the free locus this follows from the principal-bundle
+quotient. In the fixed tubes, unitary normal transport induces
+the usual smooth linear rotation in the Hopf $\mathbb R^3$
+coordinates. Thus it is smooth there as well. This explicit
+choice avoids any assertion that every equivariant smooth map
+has a smooth map in an arbitrarily preassigned quotient atlas.
+The Hopf smooth structures and tubular choices are legitimate
+ones for the orbit construction in C.3.14; the annular map is
+supported in the free collar, where these structures coincide.
+We obtain a marked orbit diffeomorphism
+\[
+ (\overline V,\text{boundary }\gamma\text{-action})
+ \simeq(\overline V_1,\text{boundary }\gamma\text{-action}).
+\]
+The transport is not required to preserve $q$ in the interior.
+
+At $a=1$ the period matrix is $sB_0$. The complex torus is
+the product of two Tate elliptic curves, and the square toric
+model is the fibre product of their nodal families. The chosen
+$A_2$ triangulation is its chosen small resolution. Project
+this resolution to the first Tate family $E_{I_1}$, and let
+$S^1_\delta$ act on the second factor. The projection descends
+to a proper smooth submersion
+\[
+ p:\overline V_1\longrightarrow E_{I_1}
+\]
+with oriented circle fibres. Here is the local check at the
+only place where this assertion is not immediate. Write the
+fibre product as $xy=uv$, with $q=xy=uv$, and take the small
+resolution chart
+\[
+ u=xA,\qquad y=Av,
+\]
+whose coordinates are $(x,A,v)$. The weights of $(A,v)$ are
+$(+1,-1)$ and $x$ has weight zero. Its Hopf quotient coordinates
+are
+\[
+ \bigl(x,y=Av,d=(|A|^2-|v|^2)/2\bigr),
+\]
+and the descended projection is simply $(x,y,d)\mapsto(x,y)$.
+The second chart, $x=uB$, $v=By$, gives the identical check
+with $d'=(|u|^2-|B|^2)/2$. The local orbit fibre at $x=y=0$
+consists of the two orbit rays joined by the quotient interval
+of the exceptional projective line, and is a smooth real line.
+Globally it closes to the second Tate orbit circle. At fixed
+points away from this chart the model is likewise
+$(p,A,v)\mapsto(p,Av)$, whose quotient is the same smooth
+projection. We make the compatibility of these quotient charts
+explicit. On overlaps near the same fixed branch the two weight
+coordinates have the form
+\[
+ A_j=a_{ij}(p,z)A_i,\qquad v_j=b_{ij}(p,z)v_i,
+ \qquad z=A_iv_i,
+\]
+where the units and the change of the tangential coordinate
+$p$ are pulled back from the projection base. The two fixed
+lifts over the node have disjoint fixed tubular neighbourhoods;
+they require no overlap identification at the node itself.
+Choose Hermitian metrics for the two weight line bundles on
+these base charts, retaining the separated lifts of the fixed
+normalization. If their positive local coefficients are
+$h_{A,i},h_{v,i}$, their transition rules are
+\[
+ h_{A,j}|a_{ij}|^2=h_{A,i},\qquad
+ h_{v,j}|b_{ij}|^2=h_{v,i}.
+\]
+The weighted Hopf coordinate
+\[
+ d_i=\tfrac12\bigl(h_{A,i}|A_i|^2-h_{v,i}|v_i|^2\bigr)
+\]
+therefore agrees with $d_j$ on overlaps. These are legitimate
+Hopf coordinates: rescale the two normal variables by
+$\sqrt{h_{A,i}}$ and $\sqrt{h_{v,i}}$. Their product is
+$\sqrt{h_{A,i}h_{v,i}}\,z$, a smooth local change of the
+complex coordinate $z$ with invertible derivative at $z=0$.
+Thus $(p,z,d_i)$ are smooth quotient coordinates, their
+overlap maps are smooth, and the projection remains
+$(p,z,d_i)\mapsto(p,z)$. This specifies the Hopf smoothing
+used for the transport above, without a general smoothness
+claim for arbitrary equivariant quotient maps.
+
+The section of the second Tate family represented by $z_2=1$
+avoids its node. It therefore gives a section of the fibre
+product which lifts through the small resolution, and then
+gives a section of $p$. Hence this oriented circle bundle is
+trivial. This proves the asserted product diffeomorphism by
+an actual projection and section.
+
+We can match the boundary action exactly, not just its homology
+class. On the boundary of this circle bundle the positive
+$\gamma$ action is the circle translation in the second Tate
+orbit fibre. Its invariant vertical length form has fibre
+integral one. Extend that length form to any smooth positive
+vertical length form on the entire oriented circle bundle,
+using a collar cutoff. Divide on each fibre by its integral;
+this is a smooth positive function of the base because $p$
+is a proper submersion. The dual vertical vector field now has
+period exactly one, and agrees with the specified vector field
+on the boundary collar. Its flow defines the desired free
+circle action. Transport it back to $\overline V$ by the marked
+orbit diffeomorphism.
+
+Choose an invariant function $\chi$ equal to one in the inner
+body and zero outside the outer collar, with the same collar
+profile as in C.3.10. Such a function can be chosen because
+the action agrees with the actual $q$-fibre translations there;
+extend it constantly by one on the remaining interior. The
+maps
+\[
+ H_t(z)=\rho_{t\chi(z)}(z),\qquad 0\leq t\leq1,
+\]
+are diffeomorphisms, since $\chi$ is invariant. They extend
+by the identity to $Q$. Their endpoint is the actual annular
+map: on the inner body it is $\rho_1=\id$, and on the collar
+it is translation by $\chi\gamma$. On the fixed sphere
+$\chi=1$, so this isotopy traces precisely $\rho_t(F)$.
+It is not an isotopy relative to the fixed sphere.
+
+In the zero-unit model the fixed sphere projects to the
+normalization of the first nodal elliptic curve. Over a smooth
+point of that curve it meets the orbit circle once, while the
+two preimages of its node give two distinct points of the
+orbit circle over the node. Its circle sweep is therefore the
+normalization immersion of the nodal curve times the circle.
+The local form $(x,y,d)$ with $q=xy$ gives its two transverse
+branches at the double circle. Finally $E_{I_1}$ retracts onto
+its nodal elliptic curve, whose fundamental two-cycle is the
+degree-one specialization of a regular elliptic fibre. The
+K\"unneth theorem now gives
+\[
+ H_3(E_{I_1}\times S^1;\Z)
+ =H_2(E_{I_1};\Z)\otimes H_1(S^1;\Z)=\Z,
+\]
+generated by that regular fibre times the marked circle.
+Boundary marking transports this three-torus to the actual
+$(\gamma,u,w)$ torus, proving the last assertion.
+\end{proof}
+
+\begin{remark}[Scope]
+The raw fractional period translations need not extend across
+the central fibre. The action above modifies their interior
+orbits. Its loop moves the fixed sphere, which is exactly the
+feature retained by the annular relative mapping class. Thus
+the construction does not trivialize that class or evaluate
+$J_\psi$. In particular the nonbounding three-torus prevents
+discarding its stable framing contribution by a chain lying
+entirely in the cusp body.
+\end{remark}
+\begin{proposition}[C.3.18 (Proved): an actual bounding four-manifold and its frame defect]
+There is a smooth genus-one Lefschetz fibration
+\[
+ \mathfrak g:Q\simeq S^5\longrightarrow S^3
+\]
+whose critical set is a circle mapping bijectively to the positive
+$(3,4)$ knot
+\[
+ K=\{z_2^3-z_1^4=0\}\subset S^3.
+\]
+It agrees on the exterior and the outer cusp collar with the
+actual torus quotient of C.3.13. In particular, the inverse image
+of a nearby positive weighted circle $K'$ is the actual marked
+three-torus with periods $(\gamma,u,w)$.
+
+This three-torus bounds an embedded compact four-manifold
+$M\subset Q$ carrying a positive genus-one Lefschetz fibration
+over a Seifert surface of $K'$, with exactly twelve nodal critical
+points. Its Euler number is $12$. Give $M$ its Lefschetz complex
+orientation and its boundary the induced orientation, which in
+the marked period convention is $(\gamma,w,u)$. Let
+$\mathfrak f_{\mathrm{aff}}$ be the stable boundary frame consisting
+of the three period directions and the two real $q$-normal
+directions, with a fixed ordering consistent with the ambient
+orientation. Relative to this actual affine frame,
+\[
+ \left\langle p_1(TM\oplus\R,\mathfrak f_{\mathrm{aff}}),
+                   [M,\partial M]\right\rangle=-24.
+\]
+Equivalently, its transgression is $+24$ when the boundary
+three-torus is oriented by the ordered basis $(\gamma,u,w)$.
+No value of $\langle p_1(M_\psi)x,[M_\psi]\rangle$ or of
+$J_\psi$ is inferred without the cap transgression calculation.
+\end{proposition}
+\begin{proof}
+On the complement of the cusp body, the descended map of C.3.13
+is a smooth two-torus bundle: on an ordinary chart it is the
+quotient by the two residual real period directions $u,w$,
+and the finite root charts give the same submersion after their
+free finite quotients. The explicit finite gauges in C.3.13
+ensure that this includes the two exceptional weighted circles
+in the target.
+
+Use the marked product of C.3.17 on the cusp body. In its
+zero-unit model the projection is an elliptic $I_1$ neighbourhood
+times a circle. Choose the product circle coordinate by the
+second Tate identity section $z_2=1$ and the extending circle
+action. On the boundary this coordinate is exactly the marked
+character $\theta$: the section has value zero and the boundary
+action is the actual $\gamma$ translation. The prescribed period
+transport in C.3.17 preserves all these coordinates on the
+outer collar. Consequently the map
+\[
+ (x,\theta)\longmapsto
+ \Phi_0\bigl(q_E(x),\theta-\operatorname{Re}\kappa_0(q_E(x))\bigr)
+\]
+agrees there with the exterior map, where $q_E:E_{I_1}\to\Delta$
+is the nodal elliptic map and $\Phi_0,\kappa_0$ are the exact
+solid-torus coordinates of C.3.13. The two maps glue smoothly.
+Near the critical circle, after the indicated smooth target
+coordinate change, their local expression is
+\[
+ (x,y,\theta)\longmapsto(xy,\theta).
+\]
+Thus there is one positive nodal degeneration over each point
+of $K$, and no other critical point. This constructs the stated
+map from the actual marked collar. It need not equal the old
+map $\overline f$ in the interior of the cusp body.
+
+Choose $0<\epsilon\ll1$ and put
+\[
+ K'=\{(1-\epsilon)z_2^3-z_1^4=0\}\subset S^3,
+ \qquad F_\epsilon=(1-\epsilon)z_2^3-z_1^4.
+\]
+Then $K'$ is the positive weighted circle $q=\epsilon$ in
+the actual collar coordinates. The weighted circle field
+$(z_1,z_2)\mapsto(e^{6\pi it}z_1,e^{8\pi it}z_2)$ satisfies
+\[
+ F_\epsilon(t\cdot z)=e^{24\pi it}F_\epsilon(z).
+\]
+Hence $\arg F_\epsilon$ is a submersion off $K'$. The closure
+of one of its pages is a smooth compact oriented Seifert
+surface $\Sigma'$ with boundary $K'$: the polynomial has a
+simple complex normal zero along the link, which gives the
+usual smooth half-plane collar of a page. Its fibres are
+connected, since the normal meridian has argument degree one.
+On the critical knot $K$,
+\[
+ F_\epsilon=-\epsilon z_2^3.
+\]
+Its argument increases twelve times along the positive weighted
+parameter. Every page therefore meets $K$ transversely in
+exactly twelve points, all with positive local intersection.
+
+Set $M=\mathfrak g^{-1}(\Sigma')$. The displayed local nodal
+model and transversality of $\Sigma'$ to the critical circle
+show that $M$ is a smooth embedded compact four-manifold with
+boundary $\mathfrak g^{-1}(K')$. The restriction to $M$ is a
+positive genus-one Lefschetz fibration over $\Sigma'$ with
+twelve critical points. A smooth torus has Euler number zero,
+and an $I_1$ fibre has Euler number one. Stratification over
+these twelve values therefore gives $\chi(M)=12$.
+
+We next specify the boundary framing whose characteristic number
+is computed. Choose a fibrewise complex structure on the regular
+two-tori, compatible with their affine markings, and the usual
+complex structure in the nodal charts. Such choices glue: on
+the intervening collars the marked elliptic upper half-plane
+is contractible. Choose a complex structure on $\Sigma'$ and
+a compatible horizontal distribution. These give an almost
+complex structure on $M$, equal to the standard nodal structure
+near its critical points. Along $\partial M$, its vertical
+complex tangent is framed by the translation vector dual to
+the elliptic one-form with $w$-period one. Frame its horizontal
+complex line by a lift of the outward normal of $\Sigma'$;
+the associated real imaginary direction is the positive
+boundary tangent. Denote this complex frame by $\mathfrak f_C$.
+
+For completeness, the relative determinant class is pulled
+back from the base. On a regular fibre its nonzero holomorphic
+one-forms form a line $\lambda$, and evaluation identifies
+the relative canonical line with the pullback of $\lambda$.
+This remains true through each nodal chart: for $t=xy$ the
+relative form is $dx/x=-dy/y$, and wedging with $dt$ gives
+a nowhere-zero multiple of $dx\wedge dy$. Thus, as complex
+line bundles,
+\[
+ \det(TM,J)\simeq\pi^*(T\Sigma'\otimes\lambda^{-1}).
+\]
+The determinant trivialization supplied by $\mathfrak f_C$
+is the pullback of the corresponding base trivialization along
+$\partial\Sigma'$. Therefore for some
+$\beta\in H^2(\Sigma',\partial\Sigma';\Z)$,
+\[
+ c_1(TM,\mathfrak f_C)=\pi^*\beta,
+ \qquad c_1(TM,\mathfrak f_C)^2=0.
+\]
+This does not require assigning a degree to $\lambda$ or a
+holomorphic structure to the entire four-manifold. Its local
+evaluation argument concerns the fibrewise elliptic structures
+and the positive nodal charts.
+
+The horizontal vector in $\mathfrak f_C$ points outwards on
+the boundary. The relative top Chern class is therefore the
+relative Euler class for an outward-pointing vector, and
+Poincar\'e--Hopf gives
+\[
+ \langle c_2(TM,\mathfrak f_C),[M,\partial M]\rangle
+ =\chi(M)=12.
+\]
+The relative characteristic-class identity now gives
+\[
+ \langle p_1(TM,\mathfrak f_C),[M,\partial M]\rangle
+ =\langle c_1^2-2c_2,[M,\partial M]\rangle=-24.
+\]
+
+We finally compare this frame with the actual annular one.
+On the target collar the exact formulas of C.3.13 give
+\[
+ F_\epsilon=(q-\epsilon)S(q)^{12}
+              \exp(24\pi i\vartheta),
+ \qquad\vartheta=\theta-\operatorname{Re}\kappa_0(q).
+\]
+Along $q=\epsilon$, the inward normal ray of the chosen page
+therefore has $q$-angle equal to a constant minus $12\theta$.
+Its complementary normal line in $S^3$ rotates by the same
+angle. Add the pullback of that normal real line to $TM$,
+identifying $TM\oplus\R$ with $TQ|_M$ after a horizontal
+choice. On the boundary, the complex vertical translation
+frame and the positive $\gamma$ tangent are the actual marked
+period frame. The two remaining real vectors differ from
+the fixed real and imaginary $q$ directions by a rotation
+of winding $-12$ as $\gamma$ traverses the circle. Changes
+of horizontal lifts add only contractible shear matrices.
+Thus the stable frame comparison, up to fixed ordering, is
+\[
+ \operatorname{diag}\bigl(I_3,R_{-24\pi\theta}\bigr):
+ T^3\longrightarrow SO(5).
+\]
+It factors through the $\gamma$ circle and is nullhomotopic,
+since $\pi_1(SO(5))=\Z/2$ and twelve is even. Consequently
+the relative first Pontryagin number is unchanged when
+$\mathfrak f_C\oplus1$ is replaced by
+$\mathfrak f_{\mathrm{aff}}$.
+
+For the orientation convention, the elliptic complex orientation
+is $(w,u)$, because its marked periods are $1,\tau$ with
+$\operatorname{Im}\tau>0$. The outward-first boundary convention
+for the Lefschetz orientation therefore orients the boundary
+by $(\gamma,w,u)$. Reversing this to $(\gamma,u,w)$ reverses
+the transgression sign, giving the equivalent $+24$ convention
+stated above.
+\end{proof}
+
+\begin{remark}[Scope]
+The four-manifold leaves the cusp body; its existence is
+consistent with the local nonbounding assertion in C.3.17.
+The value computed here is a relative Pontryagin defect of
+the specified affine frame, not yet the Pontryagin pairing
+of the closed cap in C.3.14. That latter conversion must
+retain the actual gluing and its line-bundle transition.
+\end{remark}
+\begin{proposition}[C.3.19 (Proved): the cap Pontryagin pairing]
+For the actual cap $M_\psi$ and meridian class $x$ of C.3.14,
+\[
+ \bigl|\langle p_1(M_\psi)x,[M_\psi]\rangle\bigr|=24.
+\]
+Thus the framing coordinate $\beta'$ in Wall's convention has
+$|\beta'|=6$. The orientation sign and the cubic
+$k_\psi=\langle x^3,[M_\psi]\rangle$ are not determined by
+this proposition, and no numerical $J_\psi$ or monodromy class
+is asserted.
+\end{proposition}
+\begin{proof}
+We use the cohomology suspension of the actual universal class
+$p_1$, denoted $s(p_1)\in H^3(SO;\Z)$, with the clutching
+convention fixed once throughout. In particular we do not
+replace it by an unspecified primitive generator of
+$H^3(SO;\Z)$ or of $H^3(\operatorname{Spin};\Z)$.
+All computations below may first be made in real cohomology;
+they determine the integral characteristic number, and torsion
+cannot contribute to its pairing.
+
+Write $N=S^2\times D^4$ and $Y=\partial N=S^2\times S^3$,
+so that the cap is $N\cup_{\widetilde\psi}(-N)$. Choose a
+stable tangent frame on $N$. Its restriction supplies a stable
+frame on the outer copy $P=S^2\times D^3\subset Y$. The
+stable frame on $Q=S^5$, restricted to $P$, is homotopic to
+this one: the difference is a map $P\to SO$, and
+$P\simeq S^2$ while $\pi_2(SO)=0$. Thus the frame comparison
+period obtained in C.3.18 is also the one computed from the
+chosen frame on $N$.
+
+Let $\mathcal A=L\times I\subset P$ be the annular support,
+where
+\[
+ L=S^1_\gamma\times\operatorname{Nil}^3(u,w,q).
+\]
+Use a global affine nilmanifold frame on $\mathcal A$.
+The nontrivial $q$-monodromy in $u,w$ is accounted for by
+the invariant nilmanifold frame; on any fixed $q$-angle
+three-torus it differs from the marked period frame only
+by a constant triangular change. Translation in $\gamma$
+preserves this global frame. Let
+$A:\mathcal A\to SO$ be the stable change-of-frame map
+from this frame to the restricted global frame.
+
+In the affine frame, the derivative of the annular map
+$(r,p)\mapsto(r,\rho_{\chi(r)}p)$ is the identity plus
+the single shear $\chi'(r)\,dr\otimes\partial_\gamma$.
+Multiplying the shear by a parameter from one to zero
+contracts it to the identity through invertible matrices,
+fixed on both end collars. Therefore the actual derivative
+clutching map is homotopic, relative to the complement of
+$\mathcal A$, to
+\[
+ G(r,p)=A(r,\rho_{\chi(r)}p)^{-1}A(r,p).
+\]
+At both ends $G=1$, since the translation is respectively
+zero or a full period. Replacing $A(r,p)$ by its restriction
+to one middle slice gives a homotopy of $G$ relative to
+these ends. We may consequently write $A=A(p)$.
+
+The Mayer--Vietoris clutching formula gives
+\[
+ p_1(M_\psi)=\delta\bigl(G^*s(p_1)\bigr),
+\]
+where $G$ is extended by the identity on the rest of $Y$.
+With the boundary orientation associated to this connecting
+map, its cup-product pairing is exactly
+\[
+ \langle p_1(M_\psi)x,[M_\psi]\rangle
+ =\langle G^*s(p_1)\smile x|_Y,[Y]\rangle.
+\]
+Equivalently this is the relative pairing on
+$(\mathcal A,\partial\mathcal A)$. Changing a global
+clutching orientation reverses both associated signs;
+we will retain the absolute value in the numerical conclusion.
+
+We calculate this relative class explicitly. Define
+\[
+ \Gamma:S^1\times L\longrightarrow SO,
+ \qquad\Gamma(t,p)=A(\rho_t p)^{-1}A(p).
+\]
+It is the identity on $\{0\}\times L$. The suspension
+$s(p_1)$ is primitive under multiplication. Slanting its
+pullback by the oriented $t$-circle therefore gives
+\[
+ \int_{S^1}\Gamma^*s(p_1)
+ =-\int_{S^1}\rho^*\bigl(A^*s(p_1)\bigr)
+ \quad\hbox{in }H^2(L;\R).
+\]
+There is no additional relative lift ambiguity here:
+restriction $H^2(S^1\times L)\to H^2(\{0\}\times L)$
+is surjective. Thus $H^3(S^1\times L,\{0\}\times L)$
+is exactly the degree-two slant summand. Pulling back by
+$t=\chi(r)$ identifies the relative annular class with
+the suspension of the right-hand side. This is the
+relative trace calculation, including the full-period
+endpoint; an absolute equality on $\mathcal A$ alone
+would not suffice.
+
+Put $g=\theta_\gamma$ and $a=\arg q/(2\pi)$. The meridian
+Euler class has, up to the already fixed overall circle
+orientation, the representative
+\[
+ e=x|_L=dg\wedge da.
+\]
+Indeed the positive $q$ period has
+$A_0\gamma=\gamma-\delta$ and $A_0u=u+w$.
+Using coefficient coordinates on the covering mapping
+torus, its deck identification can be written
+\[
+ (g,u,w,d,a)\longmapsto(g,u,w-u,d+g,a+1),
+\]
+where $d$ is the $\delta$ coordinate. The normalized
+connection $\mathrm d d-a\,\mathrm d g$ is invariant and has curvature
+$dg\wedge da$. This also shows that no additional
+component of the Euler class has been suppressed.
+
+Decompose the real cohomology class
+$\alpha=A^*s(p_1)$ using $L=S^1_g\times\operatorname{Nil}^3$:
+\[
+ \alpha=dg\smile\beta+\alpha_0,
+ \qquad\beta\in H^2(\operatorname{Nil}^3;\R),\quad
+ \alpha_0\in H^3(\operatorname{Nil}^3;\R).
+\]
+Translation in $g$ has trace $\beta$. Therefore the preceding
+relative calculation and the cup pairing reduce, with a
+fixed orientation sign, to
+\[
+ \pm\int_L dg\wedge da\wedge\beta
+ =\pm\int_{T^2_{u,w}}\beta
+ =\pm\int_{T^3_{\gamma,u,w}}A^*s(p_1).
+\]
+The first equality on the right is integration over the
+mapping-torus base, with its fibre orientation. Components
+of $\beta$ containing $da$, and the component $\alpha_0$,
+give zero. This proves that there are no unaccounted
+cross terms in the cap pairing.
+
+Finally, the last integral is the relative stable-frame
+Pontryagin defect of C.3.18, with at most the inverse
+change-of-frame and orientation signs. Its absolute value
+is $24$. Hence the cap pairing has absolute value $24$.
+Wall's exact formula $\langle p_1x,[M_\psi]\rangle=4\beta'$
+from C.3.14 gives $|\beta'|=6$, as asserted.
+\end{proof}
+
+\begin{remark}[Scope]
+The argument uses both the global frame defect furnished by
+the bounding four-manifold and the actual Euler class of the
+$\delta$ bundle on the annulus. A local unipotent derivative
+alone would give neither. The cubic pairing and its orientation
+relative to this Pontryagin pairing remain necessary to
+evaluate Wall's unframed knot coordinate.
+\end{remark}
+\begin{proposition}[C.3.20 (Proved): the cubic term as an actual relative square]
+The four-manifold in C.3.18 can be chosen disjoint from the fixed
+sphere. Write it as $M\subset P$, retain its Lefschetz orientation,
+and let $\mathcal L$ be the actual principal $\delta$ circle bundle
+on $P$, regarded as a complex line bundle. Its restriction to
+$\partial M=T_{\gamma uw}$ is trivial. Put
+\[
+ s_\delta=\langle c_1(\mathcal L|_M,\mathrm{triv})^2,
+                         [M,\partial M]\rangle.
+\]
+This integer is independent of the choice of boundary trivialization.
+For the cap of C.3.14, there is one overall sign $\epsilon_{\rm cap}$,
+coming from its comparison with the oriented cut-and-reglue trace,
+such that
+\[
+ k_\psi=\epsilon_{\rm cap}\,3s_\delta.
+\]
+The same relative square, with the compatible Hopf-meridian
+orientation, is the linking coefficient of the marked
+$\delta=0$ lift of $T_{\gamma uw}$ in $X\setminus F\simeq S^3$.
+No numerical value of $s_\delta$ is assumed in this statement.
+\end{proposition}
+\begin{proof}
+First we arrange the claimed disjointness. In the marked product
+of C.3.17, the section of the second Tate family avoids $F$.
+Consequently the product circle coordinate of the compact sphere
+$F$ has image in a compact proper arc of $S^1\setminus\{0\}$.
+An orientation-preserving reparametrization of this circle can
+compress that arc to length less than $1/12$. Perform this
+reparametrization over a neighbourhood of the central first
+elliptic fibre, interpolate through circle diffeomorphisms to the
+identity, and leave the outer collar fixed. This changes only the
+interior circle coordinate and the extending action, not the
+actual annular endpoint $\psi$ or its boundary marking.
+
+Rebuild the map of C.3.18 with this coordinate. The twelve
+intersection parameters of one Milnor page with the critical
+knot are equally spaced in the product circle. Choose the phase
+of the page so that all twelve avoid the compressed arc.
+Since $F$ lies over the central elliptic fibre, the inverse image
+$M$ of this page is now disjoint from $F$. It has the same
+boundary, twelve positive nodes, orientation and affine frame
+as in C.3.18. Shrink the deleted fixed tube so that $M\subset P$.
+
+Let $g,u,w$ denote the marked circle coordinates on a positive
+real regular cusp fibre, let $a$ be the positive argument of
+$q$, and let $r=|q|$. Coefficient coordinates have deck rule
+\[
+ (g,u,w,d,a)\longmapsto(g,u,w-u,d+g,a+1).
+\]
+Thus the invariant normalized circle connection is
+$\alpha=dd-a\,dg$, with Euler curvature
+\[
+ E=dg\wedge da.
+\]
+Choose a global connection on $\mathcal L$ agreeing with this
+one on the annular collar. This is possible because the displayed
+connection is on the actual restricted bundle. Also choose its
+curvature near $\partial P$ to be the pullback of the Hopf
+curvature on the normal two-sphere. Then $E^2=0$ near that
+boundary. Since $H^4(P)=H^3(P)=0$, there is a three-form $B$
+with $dB=E^2$, unique up to an exact form. Because
+$H^3(\partial P)=0$, it can moreover be chosen zero on a
+boundary collar.
+
+The line bundle on the positive real torus is trivialized by
+the marked $d=0$ section. On that torus the displayed connection
+is zero in this section. Hence relative Chern--Weil theory and
+Stokes' theorem give, with $\partial M=-T_{\gamma uw}$,
+\[
+ s_\delta=\int_M E^2
+          =-\int_{T_{\gamma uw}}B.
+\]
+Changing the trivialization changes the relative Chern class by
+the connecting image of $H^1(\partial M;\Z)$. Such a class is
+in the radical of the relative intersection pairing: its
+pairing with a relative class is the boundary pairing with the
+restriction of that class's absolute image, which is zero here.
+Products of two connecting classes are zero as well. Thus the
+square is independent of the boundary gauge.
+
+We calculate the cut-and-reglue variation of $x^3$. Double $P$
+to $B_5=DP=\partial N$, where $N=S^2\times D^4$, and extend
+$\psi$ and all variations by the identity on the second half.
+Here is an explicit seven-dimensional bordism used for this
+comparison. Form the $B_5$-bundle over an annulus with monodromy
+$\widetilde\psi$. Divide its outer boundary circle into four
+successive arcs. Attach two copies of $N\times[0,1]$ along the
+$B_5\times[0,1]$ faces over opposite arcs, reversing the interval
+parametrization on the second attachment. Choose the
+trivializations over these two arcs so that transport over one
+remaining arc is the identity and transport over the other is
+$\widetilde\psi$. After rounding corners, those remaining arcs
+join the endpoint copies of $N$ into, respectively, the identity
+double and the $\widetilde\psi$-twisted double. The inner boundary
+is the mapping torus. Thus the three closed boundary components
+are the two actual caps and the mapping torus, with the two caps
+oppositely oriented. Their comparison has a single orientation
+sign fixed by these conventions, independent of the map.
+
+The meridian line extends over this actual bordism: use its
+specified lift of $\widetilde\psi$ on the annular bundle and
+the pullback of its line on $N$ on each attached $N\times[0,1]$.
+The attaching identifications are precisely the chosen line
+identifications, so there is no additional clutching datum.
+The tangent bundle is the tangent bundle of this smooth
+seven-manifold; on each boundary it restricts stably to that
+boundary's tangent bundle. Consequently the same bordism
+compares $x^3$ and $p_1x$, with the same orientation sign.
+The identity cap is $S^2\times S^4$, and the identity mapping
+torus has a line pulled back from $B_5$; both characteristic
+pairings vanish on both identity manifolds. Equivalently one
+may subtract the identity mapping torus, which bounds
+$B_5\times D^2$ with its pulled-back line. Thus the desired
+cubic is the mapping-torus variation, up to this one common
+boundary-orientation sign.
+
+On the annulus $\psi:g\mapsto g+\chi(r)$, where $\chi$ decreases
+from one to zero. Consequently
+\[
+ \Delta=\psi^*E-E=d\chi\wedge da.
+\]
+There is a global one-form $\eta$ with $d\eta=\Delta$ whose
+annular value is
+\[
+ \eta=-(1-\chi)\,da-12\,dg.
+\]
+Indeed the outer value $-(da+12\,dg)$ extends as a closed form
+over the exterior by C.3.16, while the inner value $-12\,dg$
+extends over the product cusp by C.3.17. Closed representatives
+can be made to agree exactly on collars by subtracting exact
+forms. An exact correction makes $\eta$ zero near $\partial P$,
+since this boundary has $H^1=0$. This correction does not affect
+any integral below, as $B$ vanishes there.
+
+We use the normalized characteristic-form transgression of
+\citet[Section 3, Propositions 3.2 and 3.8]{ChernSimons1974E}.
+The interpolating curvature on the mapping cylinder is
+$E+t\Delta+dt\wedge\eta$. Its endpoint connections can be
+matched to the chosen clutching lift by an exact gauge correction,
+because $H^1(B_5;\R)=0$. The transgression computation gives
+\[
+ \int(E+t\Delta+dt\wedge\eta)^3
+ =\int_P\eta\wedge(3E^2+3E\Delta+\Delta^2)
+ =3\int_P\eta\wedge E^2.
+\]
+Here $E\Delta=\Delta^2=0$ on the support of $\Delta$. Since
+$d(\eta\wedge B)=\Delta\wedge B-\eta\wedge E^2$,
+the last expression is $3\int_P\Delta\wedge B$.
+Use the orbit orientation
+$dg\wedge du\wedge dw\wedge dr\wedge da$, obtained by
+taking the positive $\delta$ direction first in the zero-unit
+complex model. Integration over the annulus, with $\chi$ going
+from one to zero, now gives
+\[
+ \int_P d\chi\wedge da\wedge B
+   =-\int_{T_{\gamma uw}}B=s_\delta.
+\]
+This proves the asserted factor of three and fixes it without
+using a primitive-generator normalization in $H^3(SO)$.
+
+Finally on the total circle bundle over $P$ the form
+\[
+ \Omega=\alpha\wedge\pi^*E-\pi^*B
+\]
+is closed. Its integral on the normal Hopf three-sphere is one:
+the first term is the normalized Hopf integral and the second
+vanishes in the chosen fixed collar. It therefore represents
+the integral generator of $H^3(X\setminus F;\Z)$. On the marked
+lift of the positive real $T_{\gamma uw}$, the connection and
+Euler curvature restrict to zero, and its integral is
+$-\int_T B=s_\delta$. This is precisely the claimed linking
+coefficient. In particular the square is an invariant of the
+actual inclusion, not merely of the abstract genus-one surface.
+\end{proof}
+
+\begin{remark}[Scope]
+To evaluate this number by a height calculation one must identify
+the actual line bundle $\mathcal L|_M$, including its mixed
+base--fibre class, with the Poincar\'e line attached to the
+original normal-function section. The numerical square of an
+auxiliary split or torsor surface does not make that
+identification. The signed cancellation with the Pontryagin
+term likewise uses the same cut-and-reglue orientation in both
+calculations.
+\end{remark}
+\begin{proposition}[C.3.21 (Proved): the actual delta-line square]
+For the actual four-manifold and line bundle in C.3.20,
+\[
+ s_\delta=-2.
+\]
+The comparison is with the actual relative Picard section of
+the circle bundle; it does not assume that the compact-core
+model of Part B fills the original six-sphere.
+\end{proposition}
+\begin{proof}
+We first identify the base precisely. On the Milnor page used in
+C.3.18, choose its phase so that
+$F_\epsilon=(1-\epsilon)z_2^3-z_1^4$ is positive real.
+Positive weighted rescaling identifies its interior with
+\[
+ C^\circ:\quad b^3=a^4+1,
+ \qquad
+ a=\frac{z_1}{F_\epsilon^{1/4}},\qquad
+ b=\frac{(1-\epsilon)^{1/3}z_2}{F_\epsilon^{1/3}}.
+\]
+Conversely, every point of this affine curve has a unique
+positive weighted rescaling to the unit three-sphere. A different
+page phase changes this by constant complex factors and gives
+the same marked cover. The compactification $C$ has genus three
+and one point at infinity. Its actual map to the original
+$t$-line is
+\[
+ t_\epsilon=\frac{a^4+1}{1+\epsilon a^4}.
+\]
+It is ramified with orders three and four over $0$ and $1$,
+and with order twelve at the added point over $t=1/\epsilon$.
+The twelve points over $t=\infty$ satisfy
+$a^4=-1/\epsilon$ and are unramified. Thus this is the
+actual page cover; the cover ramified twelvefold over the
+original cusp is its $\epsilon=0$ comparator, not the same
+marked map when $\epsilon>0$.
+
+Keep the product modification inside $|q|<r_0<\epsilon$.
+The page equation there has twelve disjoint graph discs
+$\theta=\theta_j(q)$, since its derivative in $\theta$ is
+twelve. Consequently $M$ consists of twelve nodal elliptic
+neighbourhoods attached to an entirely untouched raw torus
+quotient. Denote the latter part by $M^\circ$ and its base by
+$C_0$; it is the page with these twelve discs removed. It has
+nonempty boundary and retracts to a graph.
+
+We identify the actual circle bundle on this unmodified part.
+On an ordinary marked chart let $g$ be a real lift of its
+$\gamma$ coefficient and set
+\[
+ \xi=\zeta_1-6\mu g,\qquad
+ \eta=\zeta_2-\beta g.
+\]
+Then $\xi=\tau u+w$ and $\eta=\mu u+d$. Exponentiating
+$\eta$ gives the actual degree-zero line on the first elliptic
+torus with multipliers
+\[
+ (\xi,z)\sim(\xi+\tau,e^{2\pi i\mu}z),\qquad
+ (\xi,z)\sim(\xi+1,z).
+\]
+These are the Poincar\'e multipliers of the original normal
+function $P$, up to the single dualization convention for the
+associated circle line. The identification is an identification
+of the varying fibrewise Picard section, not just its fibre
+degree. Under a change of marked elliptic periods the maps are
+fibrewise affine holomorphic and the line maps are its
+semiabelian lifts. The translations may depend smoothly on
+$g$; no global holomorphic-torsor assertion is needed.
+
+Over the graph base $C_0$, the affine elliptic torsor has a
+smooth section. Indeed its obstruction lies in the twisted
+group $H^2(C_0,\Lambda)$, which is zero; equivalently use the
+sequence from the lattice local system to its real vector
+bundle and then to the torus bundle, whose vector-bundle
+section sheaf is fine. Identify the torsor with its Jacobian
+using such a section. Translation of a degree-zero Poincar\'e
+line changes it by a line pulled back from the base. Two
+fibrewise holomorphic lines with the same varying Picard
+section likewise differ by a base line: their quotient has a
+one-dimensional space of fibrewise holomorphic sections and
+evaluation trivializes it fibrewise. Since $H^2(C_0;\Z)=0$,
+this base line has zero topological Chern class. The actual
+class on $M^\circ$ is therefore the Poincar\'e class of
+$P\circ t_\epsilon$, up to sign, including its mixed
+base--fibre component.
+
+There is no hidden correction supported at the twelve modified
+nodes. By excision and Poincar\'e--Lefschetz duality, each
+local summand of
+\[
+ H^2(M,M^\circ;\Z)
+ \simeq\bigoplus_{j=1}^{12}H^2(E_{I_1},\partial E_{I_1};\Z)
+\]
+is $\Z$, generated by the Thom class of a regular elliptic
+fibre. The regular fibre is primitive in $H_2(E_{I_1};\Z)$,
+as its degree-one specialization generates the nodal fibre's
+two-cycle. Its image in $H^2(M;\Z)$ is the pullback of the
+point class of the base, and is zero because that base has
+boundary. The restriction $H^2(M;\Z)\to H^2(M^\circ;\Z)$
+is consequently injective. This addresses actual local
+clutching classes, rather than only their holonomy.
+
+Trim a smaller boundary collar, which does not change the
+relative square because its line is trivial, and identify the
+remaining annular end of the page with the punctured disc at
+the added point of $C$. Fill it by its regular marked
+$T^2\times D^2$. The boundary affine torus bundle is
+fibrewise complex-trivialized by a path of translations.
+After matching the Picard section $P$, a remaining line
+identification is a scalar base-line gauge. Thus one can choose
+the product-cap Poincar\'e extension whose section is
+$P\circ t_\epsilon$ near the added point; the displayed
+multipliers are regular there. The line is topologically
+trivial on the cap, and its square contribution is zero.
+Boundary gauge changes cannot change the relative square, by
+C.3.20. Call the resulting
+closed smooth genus-one Lefschetz surface $\widehat M$ and its
+line $\widehat{\mathcal L}$. Its square is the same relative
+square $s_\delta$; the cap contributes zero.
+
+We spell out why the square can now be compared with the
+Jacobian without a projectivity or multisection assumption on
+$\widehat M$. Let $j:C^*=C\setminus\{12\text{ nodal values}\}
+\hookrightarrow C$ and let $\Lambda=R^1\pi_*\Z|_{C^*}$.
+For a nodal elliptic fibre, degree-one specialization identifies
+$R^2\pi_*\Z$ with the constant sheaf $\Z$, while degree one
+is the invariant subgroup of the unipotent monodromy. Thus
+\[
+ R^1\pi_*\Z=j_*\Lambda,\qquad R^2\pi_*\Z=\Z.
+\]
+These sheaves and their fibre intersection pairing agree for
+the actual surface and its Jacobian. The degree-zero class
+$c_1(\widehat{\mathcal L})$ lies in the first Leray filtration
+step. Its component in
+$H^1(C,j_*\Lambda)$ is the connecting class of the varying
+Picard section $\pm P$. This holds on $C^*$ by the preceding
+actual multiplier calculation. It holds on all of $C$ because
+\[
+ H^1(C,j_*\Lambda)\longrightarrow H^1(C^*,\Lambda)
+\]
+is injective, by the first terms of the Leray sequence for $j$.
+Local nodal choices can therefore add only a base-filtration
+class; the excision argument gives the same conclusion directly.
+
+Multiplicativity of Leray now determines the square. In degree
+four its only nonzero graded piece is
+$H^2(C,R^2\pi_*\Z)=\Z$. The square of a class in filtration
+one is the cup square of its $H^1(C,j_*\Lambda)$ component,
+using the fibre intersection pairing. Adding filtration-two
+base classes contributes only filtration three or four, both
+zero on this base. Hence the actual square is exactly the
+square of the Poincar\'e class on the Jacobian; dualizing the
+line does not change it.
+
+Finally let $J_\epsilon\to C$ be the relatively minimal
+Jacobian obtained by pulling back the original elliptic surface
+along $t_\epsilon$. It has the explicit affine model
+\[
+ Y^2=X^3-3\lambda bX+2\lambda^2a^2,
+ \qquad P=(0,-\sqrt2\lambda a),\qquad
+ \lambda=1-\epsilon.
+\]
+Writing $h=1+\epsilon a^4$, the substitution from the original
+Weierstrass coordinates is
+$x=(ab^2/h)^2X$, $y=(ab^2/h)^3Y$.
+The discriminant is
+\[
+ \Delta=1728\lambda^3(1+\epsilon a^4).
+\]
+It has twelve simple zeroes on $C^\circ$, and $c_4$ is a unit
+at all of them. They are precisely the twelve $I_1$ fibres.
+At the unique point at infinity, $a,b$ have pole orders
+three and four. Scaling $X,Y$ by a local parameter to orders
+two and three gives a regular Weierstrass model whose
+discriminant is a unit when $\epsilon\ne0$; the point at
+infinity is therefore a good fibre. This also shows that the
+fundamental line has degree one, so
+$\chi(\mathcal O_{J_\epsilon})=1$.
+
+The displayed section $P$ is finite on every affine chart and
+also in this integral chart at infinity, hence it is disjoint
+from the zero section. At a simple discriminant zero it is a
+smooth point of the nodal fibre: a node has $Y=0$, whereas
+$a\ne0$ there and $Y(P)=-\sqrt2\lambda a\ne0$.
+All singular fibres are irreducible, so there is no component
+correction. These explicit identities are independently checked
+in \texttt{ab\_push\_actual\_line\_comparison.py}.
+
+The divisor $P-O$ has fibre degree zero and represents the
+required relative Picard section, up to a base twist. Both
+sections have square $-\chi=-1$ and $P\cdot O=0$. Therefore
+\[
+ (P-O)^2=-1-1-2(P\cdot O)=-2.
+\]
+Base twists do not change this square. The actual Leray
+comparison above proves $s_\delta=-2$, as asserted.
+\end{proof}
+\begin{lemma}[C.3.22 (Proved): one common signed cap convention]
+Retain the relative Pontryagin number
+$p_{\mathrm{rel}}=-24$ of C.3.18 and the actual relative
+Euler square $s_\delta$ of C.3.20. With the single
+cut-and-reglue orientation sign $\epsilon_{\rm cap}$ used
+in C.3.20, the two cap pairings satisfy
+\[
+ \langle p_1(M_\psi)x,[M_\psi]\rangle
+       =\epsilon_{\rm cap}\,p_{\mathrm{rel}},
+ \qquad
+ k_\psi=\epsilon_{\rm cap}\,3s_\delta.
+\]
+In particular
+\[
+ J_\psi=\epsilon_{\rm cap}
+              \frac{p_{\mathrm{rel}}-12s_\delta}{24}.
+\]
+This lemma does not assign a value to $s_\delta$.
+\end{lemma}
+\begin{proof}
+We fix the normalization by connections, so that a boundary
+frame and a coordinate clutch are not silently identified.
+For a real orthogonal connection with curvature $F$, use
+\[
+ p_1(F)=-\frac{\operatorname{tr}(F\wedge F)}{8\pi^2},
+ \qquad
+ \operatorname{CS}_{p_1}(\omega)
+ =-\frac{\operatorname{tr}(\omega\wedge d\omega
+                          +\tfrac23\omega^3)}{8\pi^2}.
+\]
+For $K$ a change of coordinates,
+\[
+ \operatorname{CS}_{p_1}(K^{-1}dK)
+ =\frac{\operatorname{tr}(K^{-1}dK)^3}{24\pi^2}
+ =:\tau_{p_1}(K).
+\]
+This is the suspension used for a mapping torus oriented
+with its interval parameter first. Indeed interpolating
+the connection from zero to $K^{-1}dK$ gives curvature
+$dt\wedge\omega+(t^2-t)\omega^2$, whose first Pontryagin
+form integrates in $t$ to the displayed three-form.
+
+In contrast, let a boundary frame be
+$\mathfrak f=\mathfrak t B$ relative to a global stable
+frame $\mathfrak t$. The connection for which
+$\mathfrak f$ is parallel has matrix $-dB B^{-1}$ in
+the $\mathfrak t$ coordinates. Therefore
+\[
+ p_1(E,\mathfrak f)[M,\partial M]
+ =-\int_{\partial M}\tau_{p_1}(B).
+\]
+Equivalently, capping the boundary frame by a standard
+frame uses the inverse coordinate clutch $B^{-1}$.
+This minus sign is forced by the connection computation;
+it is not an orientation chosen to obtain a cancellation.
+
+Now use exactly the change-of-frame convention of C.3.19:
+\[
+ \mathfrak t=\mathfrak f_{\mathrm{aff}} A,
+ \qquad
+ G=A(\psi p)^{-1}A(p)
+\]
+after contracting the affine derivative shear. Set
+\[
+ a_0=\int_{T_{\gamma,u,w}}\tau_{p_1}(A).
+\]
+Here $B=A^{-1}$ in the boundary-frame formula. Since
+the boundary orientation of $M$ is
+$\partial M=-T_{\gamma,u,w}$, that formula gives
+\[
+ p_{\mathrm{rel}}
+ =-\int_{\partial M}\tau_{p_1}(A^{-1})
+ =-a_0.
+\]
+
+For the actual annulus use the orbit orientation
+$dg\wedge du\wedge dw\wedge dr\wedge da$ and the
+Euler curvature $E=dg\wedge da$, with $\chi$ decreasing
+from one to zero as $r$ increases. The relative trace
+calculation of C.3.19 has representative
+\[
+ \tau_{p_1}(G)
+ =-d\chi\wedge\beta
+ \quad\hbox{in relative cohomology},
+ \qquad
+ \int_{T^2_{u,w}}\beta=a_0.
+\]
+Consequently
+\[
+ \int_P\tau_{p_1}(G)\wedge E=-a_0=p_{\mathrm{rel}}.
+\]
+For example, in the only contributing term the form is
+$-a_0\,d\chi\wedge du\wedge dw\wedge dg\wedge da$;
+relative to the displayed orbit orientation its coefficient
+is $a_0\chi'(r)$, and the integral of $\chi'$ is $-1$.
+
+This is also the Pontryagin--Euler pairing of the actual
+mapping torus in C.3.20. Its line curvature restricts to
+$E+t\Delta$ on the $t$-slices. The possible extra term
+has integral zero, because
+\[
+ \int_{DP}\tau_{p_1}(G)\wedge\Delta
+ =\int_{DP}\tau_{p_1}(G)\wedge d\eta=0.
+\]
+Thus no line-clutch correction changes the preceding
+pairing. The same cut-and-reglue bordism of C.3.20 is a
+smooth bordism of tangent bundles and of the specified
+line bundle. Both characteristic polynomials $p_1x$
+and $x^3$ therefore acquire the same boundary-orientation
+sign $\epsilon_{\rm cap}$. Their identity-cap and
+identity-mapping-torus values vanish. Combining the
+computed mapping-torus pairing with the cubic calculation
+of C.3.20 gives the two asserted signed equations and
+then their stated combination.
+\end{proof}
+\begin{proposition}[C.3.23 (Proved): an additive integer before reduction modulo 28]
+Fix the linear semifree circle action of C.3.14, with its
+circle direction fixed. On the group of orientation-preserving
+equivariant diffeomorphisms of $S^6$ there is an integer
+\[
+ \mathfrak q:\pi_0\operatorname{Diff}^+_{S^1}(S^6)
+                    \longrightarrow\Z
+\]
+defined by the unframed Haefliger coordinate of the orbit
+three-knot of equivariant clutching. It is a group homomorphism.
+For a representative normalized to be the identity on a fixed
+tubular neighbourhood, it is Wall's unframed knot coordinate,
+so $\mathfrak q=-J$ in the convention of C.3.14. Its image in
+the ordinary group $\Theta_7$ is the fixed signed reduction
+modulo $28$ described there. In particular, if an equivariant
+representative has a sixth power equivariantly isotopic to a
+representative with $J=0$ as an integer, its ordinary mapping
+class is zero.
+\end{proposition}
+\begin{proof}
+We first make the normalization and its independence explicit.
+The fixed set is $F=S^2$, and its equivariant normal bundle is
+the trivial scalar complex rank-two bundle after conjugating
+the negative weight, by C.3.14. An equivariant real derivative
+on that normal representation is complex linear and has
+positive real determinant. An orientation-preserving ambient
+diffeomorphism therefore restricts to an orientation-preserving
+diffeomorphism of $F$.
+
+By \citet[Theorem A, page 621]{Smale1959E}, this restriction is
+isotopic to the identity. Lift such an isotopy using the product
+normal bundle and an invariant tubular cutoff, extending its
+velocity field equivariantly. After this adjustment the map
+fixes $F$ pointwise. Its normal derivative is a map
+$F\to GL_2(\C)$. Polar decomposition and $\pi_2(U(2))=0$
+give a homotopy to the identity, again realized in the fixed
+tube by an equivariant isotopy. Finally the usual rescaling
+of a tubular germ to its derivative, followed by an invariant
+cutoff, makes the whole map the identity on a smaller fixed
+tube. Equivariance rules out a derivative from the nontrivial
+normal representation to the fixed tangent representation;
+the rescaled germ is smooth at the zero parameter. This
+normalization uses equivariant isotopies throughout.
+
+Clutch two standard linear equivariant seven-discs by this
+diffeomorphism. Their fixed three-discs clutch to $S^3$.
+Their orbit six-discs clutch to a homotopy six-sphere, which
+is standard because $\Theta_6=0$. The fixed image is thus a
+smooth oriented three-knot in $S^6$. Its Haefliger integer is
+the proposed $\mathfrak q$, using the connected-sum group of
+oriented three-knots in the six-sphere
+\citep[Sections 1 and 5.16]{Haefliger1966D}.
+
+This integer does not depend on the chosen normalization.
+An equivariant isotopy of boundary clutching maps extends
+over a collar to a diffeomorphism of the clutched equivariant
+pairs. The resulting orbit pairs are diffeomorphic. One can
+choose compatible unitary normal tubes along the entire
+isotopy, so that their Hopf orbit charts form a smooth family;
+this does not invoke functorial smoothness for arbitrary
+equivariant maps in a fixed raw quotient atlas.
+There is also no ambiguity from identifying the orbit homotopy
+sphere with $S^6$. An orientation-preserving diffeomorphism of
+$S^6$ is isotopic to one supported in a ball disjoint from a
+given compact three-knot: make its germ the identity near a
+point, use stereographic coordinates on the complement, and
+conjugate its compact support into a small ball by translations
+and positive dilations, all isotopic to the identity. Such a
+representative fixes that knot. Consequently the ambient
+identification cannot change its knot integer.
+
+We prove additivity geometrically. Normalize two equivariant
+diffeomorphisms to be the identity near $F$. In particular each
+is the identity near a chosen fixed point. Stereographic
+projection from that point identifies the complement with
+$\R^2\oplus\C^2$, with the circle acting scalarly on the
+second summand. The diffeomorphism has compact support there.
+Positive dilations and translations along the fixed $\R^2$
+commute with the circle and are equivariantly isotopic to the
+identity on the one-point compactification. By conjugation,
+place the two supports inside disjoint small invariant balls
+centered at distinct fixed points. The resulting maps remain
+in their original equivariant components.
+
+For disjoint supports, the composition clutch is the
+equivariant connected sum of the two separate clutches.
+This follows directly by cutting the equatorial sphere between
+the two invariant balls and inserting a product collar; the
+map on the separating collar is the identity. The fixed
+three-discs undergo the same boundary connected-sum operation.
+On the orbit pairs this is the ordinary connected sum of
+the two oriented three-knots. The defining group operation
+of their Haefliger integers is connected sum. Hence
+\[
+ \mathfrak q(\phi_1\phi_2)
+ =\mathfrak q(\phi_1)+\mathfrak q(\phi_2).
+\]
+This proves additivity without passing first to $\Theta_7$.
+
+For a fixed-tube-relative representative, the surgery cap and
+Wall calculation of C.3.14 apply verbatim: the inherited product
+normal framing gives $\mathfrak q=-J$. Altering this framing
+changes only Wall's framing coordinate, whose equivariant lift
+extends over the seven-disc by the explicit quaternionic
+formula in C.3.14. Finally the orbit-knot generator comparison
+of \citet[Example 7.14 and Proposition 7.15]{Davis1982D}
+identifies the underlying ordinary sphere class with the fixed
+signed reduction of $\mathfrak q$ modulo $28$.
+
+If $\phi^6$ is equivariantly isotopic to a representative with
+integer $J=0$, then $6\mathfrak q(\phi)=0$ in $\Z$.
+Thus $\mathfrak q(\phi)=0$, and its underlying ordinary
+mapping class is zero. This last implication uses a torsion-free
+integer before reduction; it is not inferred from the weaker
+equation $6[\phi]=0$ in $\Z/28$.
+\end{proof}
+\begin{theorem}[C.3.24 (Proved): the actual smooth monodromy is trivial]
+For the actual retained $S^6$ family and a positive generator
+of its punctured $w$-parameter disc, the oriented smooth
+monodromy satisfies
+\[
+ [\Phi]=0\quad\hbox{in }\pi_0\operatorname{Diff}^+(S^6)
+                       \simeq\Theta_7\simeq\Z/28.
+\]
+Its mapping torus is consequently oriented-diffeomorphic to
+$S^1\times S^6$. Every finite cyclic base change has trivial
+smooth monodromy as well. By C.4.1's marked family comparison,
+the same conclusion applies to the admissible sphere twist
+data covered by that comparison.
+\end{theorem}
+\begin{proof}
+Let $\widehat\psi$ be the actual smooth equivariant lift of
+the annular orbit map in C.3.10.
+The actual cap calculation is an integer calculation.
+C.3.18 gives $p_{\mathrm{rel}}=-24$ and C.3.21 gives
+$s_\delta=-2$. The common signed comparison in C.3.22 yields
+\[
+ J_\psi=\epsilon_{\rm cap}
+          \frac{-24-12(-2)}{24}=0\quad\hbox{in }\Z.
+\]
+By C.3.14 and C.3.23, the unframed orbit-knot integer of the
+actual annular lift is therefore zero. Neither the overall cap
+orientation sign nor the Wall--Davis generator sign can change
+this conclusion.
+
+We verify that this is the sixth power at the equivariant
+integer level. The family carries the fixed positive
+$\delta$ circle, and all its closing maps commute with that
+circle. Choose a circle-invariant Ehresmann connection along
+one positive $w$ loop. Concatenating it six times gives the
+sixth power of the same equivariant return diffeomorphism.
+Changing to the invariant transport used in C.3.10 changes
+this return by an equivariant isotopy: invariant horizontal
+connections form an affine space, and their interpolated
+flows give that isotopy.
+
+The closing cocycle itself introduces no hidden discrepancy.
+In the notation of C.3.5,
+\[
+ b_{h,c}=-\frac{h}{12}\Pi_c\widehat\gamma
+             +\left(h\ell-\frac{h^2}{24}\right)e,
+ \qquad \Pi_{c+h}\widehat\gamma
+                   =\Pi_c\widehat\gamma+h e.
+\]
+Direct substitution gives
+\[
+ b_{h,c}+b_{k,c+h}=b_{h+k,c}.
+\]
+Thus six $h=2$ closings are the $h=12$ closing used for the
+annular reduction. Returning from these coherent closings to
+any stipulated R2 choices changes them by a scalar in the
+connected group $\C^*$, which centralizes $S^1_\delta$;
+this is again an equivariant isotopy. Every subsequent unit isotopy, finite-chart
+transport and circle-gauge comparison in C.3.6 and C.3.10 is
+equivariant. Consequently the annular lift and $\Phi^6$ have
+the same integer $\mathfrak q$, not merely the same underlying
+ordinary mapping class.
+
+Additivity from C.3.23 now gives
+\[
+ 6\mathfrak q(\Phi)=\mathfrak q(\Phi^6)
+                   =\mathfrak q(\widehat\psi)=-J_\psi=0.
+\]
+Since this equality is in $\Z$, it implies
+$\mathfrak q(\Phi)=0$. Its signed reduction modulo $28$
+is the ordinary class $[\Phi]$, so that class is zero.
+This removes the possible order-two ambiguity by an integer
+argument; it does not divide the equation $6[\Phi]=0$ inside
+$\Z/28$.
+
+A smooth isotopy from the return map to the identity gives
+the usual oriented product identification of its mapping
+torus. A finite cyclic base change replaces the return map
+by a positive power, whose class is again zero. The final
+twist-data statement follows from the local family isomorphisms
+and connected automorphism transitions already proved in C.4.1.
+\end{proof}
+\begin{proposition}[C.3.25 (Proved): an explicit eight-dimensional coboundary]
+Let $\varphi$ be an orientation-preserving equivariant return map,
+normalized to be the identity on a fixed tubular neighbourhood.
+Let $V_\varphi$ be its actual framed-surgery six-manifold, constructed
+as in C.3.14. Choose the sign of $x$ so that the unit circle
+bundle of its complex line, with the boundary fibre orientation,
+is the actual oriented free circle bundle. Orient its meridian
+accordingly, so that $\langle x,S^2\rangle=1$. This fixes the
+possible associated-line versus dual-line convention. Write
+\[
+ p=\langle p_1(V_\varphi)x,[V_\varphi]\rangle,
+ \qquad k=\langle x^3,[V_\varphi]\rangle.
+\]
+There is a specified smooth spin$^c$ coboundary $Z_\varphi$ of
+the actual clutching sphere $\Sigma_\varphi$. Its fourth
+intersection form and characteristic covectors are
+\[
+ Q=\begin{pmatrix}k&1\\1&0\end{pmatrix},\qquad
+ p_1(Z_\varphi)=(p+k,3),\qquad c^2=(k,1),
+\]
+where $c$ is the determinant class and the covectors are evaluated
+on the ordered integral basis specified below. In particular
+\[
+ \sigma(Z_\varphi)=0,\qquad
+ p_1^2=6p-3k,\qquad p_1c^2=p+k,\qquad c^4=k.
+\]
+With the boundary-consistent orientations, its spin$^c$ index
+formula gives
+\[
+ \mu(\Sigma_\varphi)\equiv\frac{p-4k}{672}\pmod\Z.
+\]
+Boundary connected sum with $S^1\times D^7$ gives a specified
+smooth spin$^c$ coboundary of the actual mapping torus, with the
+same displayed characteristic numbers. This construction makes
+no use of Wall's knot coordinate or the Davis generator comparison.
+\end{proposition}
+\begin{proof}
+We first identify the boundary geometrically. Write $C$ for the
+exterior of the actual fixed three-knot in the orbit six-sphere.
+The framed-surgery construction is
+\[
+ V_\varphi=C\cup_{S^3\times S^2}(D^4\times S^2).
+\]
+This description, including its framing, is the direct cut-and-paste
+construction of C.3.14; its later use of knot classification is not
+needed here. It is spin and has $H^2=H^4=\Z$, $H^3=0$.
+Let $L_x\to V_\varphi$ be the complex line with first Chern class
+$x$, and put $Z_0=D(L_x)$, oriented by the base followed by its
+complex line fibre. Its boundary $T=S(L_x)$ is the corresponding
+principal circle bundle.
+
+On the surgery piece $N=S^2\times D^4$, the line is the product
+of the Euler-one line $\mathcal O(1)\to S^2$ and $D^4$.
+Thus $T$ contains the specified product $S^3_{\rm Hopf}\times D^4$.
+Attach one four-handle
+\[
+ D^4_{\rm Hopf}\times D^4
+ \quad\hbox{along}\quad S^3_{\rm Hopf}\times D^4
+\]
+using this product identification and framing. Denote the resulting
+eight-manifold by $Z_\varphi$. On the boundary this replaces
+$S^3_{\rm Hopf}\times D^4$ by $D^4_{\rm Hopf}\times S^3$.
+Over $C$, the remaining boundary is exactly the actual free circle
+bundle of the clutched sphere: principal circle bundles there are
+classified by their Euler class, which is the specified restriction
+of $x$. On their common boundary $S^3\times S^2$, a discrepancy
+between two such bundle identifications is a circle gauge with a
+real logarithm, because $H^1(S^3\times S^2;\Z)=0$.
+A collar cutoff corrects it to the prescribed identification.
+Alexander duality gives $H^2(C;\Z)=\Z$, generated by the
+meridian, so specifying this oriented Hopf restriction fixes the
+entire line class on $C$. There is no additional line-bundle
+parameter on the exterior. The replacement
+$D^4_{\rm Hopf}\times S^3$ is now exactly the
+actual fixed tubular neighbourhood with its Hopf normal action.
+Hence
+\[
+ \partial Z_\varphi=\Sigma_\varphi
+\]
+as an oriented smooth manifold, with the orientation fixed by
+agreement on the common free exterior. This is an identification
+with the actual boundary, not merely with a sphere having a
+conjectured invariant.
+
+Explicitly, the boundary orientation of $D(L_x)$ is the positive
+line-circle direction followed by the orientation of its
+six-dimensional base. This is the circle-first orientation of
+the actual free exterior by the defining choice of $x$.
+The surgery product framing then gives the boundary-consistent
+orientation on the new fixed tube. If a prior principal-connection
+convention uses the dual line, replace $x$ by $-x$ throughout;
+both $p$ and $k$ reverse, as does the corresponding integer
+conversion. The actual zero evaluation below is unchanged.
+
+The added four-cycle has a particularly concrete description.
+Inside the displayed product region, the attachment replaces
+\[
+ D(\mathcal O(1))\times D^4
+ \quad\hbox{by}\quad \mathbb{CP}^2\times D^4.
+\]
+Indeed a tubular neighbourhood of a projective line in
+$\mathbb{CP}^2$ is $D(\mathcal O(1))$, and its complement is a
+four-disc, with the same standard Hopf boundary identification.
+Let $b$ be this positively oriented $\mathbb{CP}^2\times\{0\}$.
+Its normal four-plane bundle is trivial, with the explicit
+$D^4$ product framing. In particular $b^2=0$; it is not a
+four-sphere with zero Pontryagin evaluation.
+
+Let $a$ be the image of the class $\operatorname{PD}_{V_\varphi}x$
+in the zero section of $D(L_x)$. A generic section of $L_x$
+represents it by a closed oriented four-submanifold. Its normal
+bundle in $Z_0$ is the sum of its normal line in the zero section
+and the vertical line, both isomorphic to $L_x$ on that
+submanifold. Therefore
+\[
+ a^2=\langle x^3,[V_\varphi]\rangle=k.
+\]
+Moreover $a\cdot b=1$: in the surgery product this intersection
+is the pairing of $x$ with the meridian $S^2$, which is one by
+the Euler-one convention. The four-handle exact sequence and
+$H_3(V_\varphi)=0$ give
+\[
+ 0\longrightarrow H_4(V_\varphi;\Z)
+ \longrightarrow H_4(Z_\varphi;\Z)
+ \longrightarrow\Z\longrightarrow0.
+\]
+The class $b$ uses the handle core once and maps to its generator.
+Thus $(a,b)$ is an integral basis, and its intersection matrix is
+the displayed $Q$. Its determinant is $-1$, so it has one
+positive and one negative eigenvalue and signature zero.
+
+The handle does not change second cohomology. Let $c$ be the
+unique extension of $\pi^*x$ from $Z_0$ to $Z_\varphi$.
+On $Z_0$ the tangent bundle restricts stably to
+$\pi^*(TV_\varphi\oplus L_x)$, so
+\[
+ w_2(TZ_0)=\pi^*x\pmod2.
+\]
+The same degree-two handle isomorphism with $\Z/2$ coefficients
+proves $w_2(TZ_\varphi)=c\pmod2$. Thus $c$ is a determinant
+class of a spin$^c$ structure. It is trivial on the boundary,
+which is a homotopy sphere and has its unique spin structure.
+Notice that this coboundary need not be spin: $c$ is primitive.
+
+On $a$ the stable tangent splitting gives
+\[
+ \langle p_1(TZ_\varphi),a\rangle=p+k,
+ \qquad \langle c^2,a\rangle=k.
+\]
+On $b$ the normal framing gives
+$TZ_\varphi|_b=T\mathbb{CP}^2\oplus\R^4$.
+The class $c|_b$ is the hyperplane class, since it evaluates as
+one on the original meridian projective line. Hence
+\[
+ \langle p_1(TZ_\varphi),b\rangle=3,
+ \qquad \langle c^2,b\rangle=1.
+\]
+Here $p_1(T\mathbb{CP}^2)=c_1^2-2c_2=3H^2$ follows directly
+from its Euler sequence. This proves the stated covectors.
+
+Because the boundary is a homotopy sphere, the relevant relative
+and absolute fourth cohomology groups agree. Their characteristic
+pairing is the inverse of the integral intersection matrix:
+\[
+ Q^{-1}=\begin{pmatrix}0&1\\1&-k\end{pmatrix}.
+\]
+Multiplying the two covectors by this inverse gives exactly
+\[
+ p_1^2=6p-3k,\qquad p_1c^2=p+k,\qquad c^4=k.
+\]
+
+For clarity, the conversion to the boundary invariant uses only
+the spin$^c$ index formula, not a knot-classification formula.
+The closed eight-dimensional index density is
+\[
+ [e^{c/2}\widehat A]_8
+ =\frac{7p_1^2-4p_2}{5760}
+       -\frac{p_1c^2}{192}+\frac{c^4}{384}.
+\]
+Eliminating $p_2$ by the signature formula and gluing to any spin
+filling of the boundary gives C.2.1's expression
+\[
+ \mu(\Sigma_\varphi)\equiv
+ \frac{p_1^2-4\sigma}{896}
+ -\frac{p_1c^2}{192}+\frac{c^4}{384}\pmod\Z.
+\]
+The primary normalization is
+\citet[Section 2.2, equation (2.1)]{CrowleyNordstrom2020},
+with its invariant divided by $28$; the spin normalization is
+\citet[Section 6, equation (11)]{EellsKuiper1962}.
+Substitution now gives, by exact rational arithmetic,
+\[
+ \frac{6p-3k}{896}-\frac{p+k}{192}+\frac{k}{384}
+       =\frac{p-4k}{672}.
+\]
+
+Finally C.1.1 identifies the mapping torus with
+$(S^1\times S^6)\#\Sigma_\varphi$. Boundary connected sum
+of $Z_\varphi$ with $S^1\times D^7$, using a trivial determinant
+line on the latter, realizes this actual boundary. Either spin
+structure on the product can be used. The added summand has no
+fourth cohomology and has zero signature; the displayed relative
+characteristic numbers do not change.
+\end{proof}
+
+\begin{remark}[Scope and actual six-loop evaluation]
+For the actual annular six-loop cap the independent geometric
+calculations C.3.18--C.3.22 give
+$p=-24\epsilon_{\rm cap}$ and $k=-6\epsilon_{\rm cap}$.
+Here the one common sign includes the possible simultaneous
+meridian-sign change just specified.
+The present coboundary therefore has
+\[
+ p_1^2=-126\epsilon_{\rm cap},\qquad
+ p_1c^2=-30\epsilon_{\rm cap},\qquad
+ c^4=-6\epsilon_{\rm cap},\qquad \sigma=0.
+\]
+Its spin$^c$ formula is zero directly:
+\[
+ \epsilon_{\rm cap}
+ \left(-\frac{126}{896}+\frac{30}{192}
+                         -\frac{6}{384}\right)=0.
+\]
+This does not use the assertion $J_\psi=0$ or the Wall--Davis
+conversion. By itself it evaluates the six-loop sphere. The
+independent integer additivity needed for the one-loop conclusion
+is supplied separately in C.3.26. The characteristic arithmetic
+is checked in \texttt{d\_push\_eight\_coboundary.py}.
+
+This is a smooth topological spin$^c$ coboundary. No complex
+structure on it is asserted, and it is not identified with the
+specific analytic filling requested in Part B.
+\end{remark}
+\begin{proposition}[C.3.26 (Proved): direct characteristic-index additivity]
+For a fixed-tube-relative orbit diffeomorphism $\varphi$ of the
+linear semifree sphere, form its actual surgery cap $M_\varphi$
+and meridian line $L_x$ as in the geometric construction of
+C.3.14. Define
+\[
+ \lambda(\varphi)=\frac{1}{24}
+      \langle p_1(M_\varphi)x-4x^3,[M_\varphi]\rangle.
+\]
+This integer is additive under composition. It is unchanged by
+the equivariant isotopies and fixed-tube normalizations of the
+upstairs diffeomorphism, and therefore defines an integer on its
+equivariant mapping class. These conclusions follow directly
+from spin index theory and characteristic bordisms; they do not
+use the classification or integer of three-knots, Wall's surgery
+formula, or the comparison of a knot generator with a Milnor sphere.
+\end{proposition}
+\begin{proof}
+The geometric cap is a simply connected spin six-manifold with
+$H^2=H^4=\Z$ and $H^3=0$. These facts follow from the explicit
+two-copy construction $N\cup_{\widetilde\varphi}(-N)$,
+$N=S^2\times D^4$, by van Kampen, Mayer--Vietoris and the
+unique boundary spin structure. They do not require a knot
+classification. The twisted spin Dirac formula gives
+\[
+ \operatorname{ind}(D\otimes L_x)
+ =\langle x^3/6-p_1x/24,[M_\varphi]\rangle
+ =-\lambda(\varphi),
+\]
+so the displayed quantity is an integer.
+
+We first prove additivity for maps fixed on the chosen tube.
+Put $Y=\partial N=DP=S^2\times S^3$ and extend each map by
+the identity on the second half. The meridian line on $Y$ has
+a lift of each extended map: the actual upstairs circle bundle
+provides it on $P$, and the identity provides it on the other
+half. Their boundary values agree. Choose the lift of a
+composition to be the composition of these lifts.
+
+An oriented pair of pants has free fundamental group on its
+two incoming boundary generators. The two diffeomorphisms
+therefore specify a smooth $Y$-bundle over that surface, with
+outgoing boundary monodromy their composition. The chosen line
+bundle lifts specify a line bundle on its total space. This
+total space is a compact oriented seven-manifold whose boundary
+is the outgoing mapping torus minus the two incoming mapping
+tori. Its stable tangent bundle restricts to their tangent
+bundles plus the outward normal line. Consequently both
+characteristic numbers $x^3$ and $p_1x$ are additive on these
+mapping tori, by bordism invariance.
+
+Use the explicit seven-manifold of C.3.20: a $Y$-bundle over
+an annulus with monodromy the doubled map, with two
+$N\times[0,1]$ pieces attached over opposite outer arcs.
+The remaining outer arcs produce the twisted and identity
+doubles, and the inner circle produces the mapping torus.
+The chosen line lift on the annular bundle and the pullback
+lines on the attached pieces agree on their attaching faces.
+Thus this is an actual bordism carrying both the meridian line
+and its tangent bundle, not merely a relation between abstract
+intersection matrices. Its boundary orientations compare a cap
+minus the identity cap with the mapping torus, with one sign
+that is independent of the map. The identity cap
+$S^2\times S^4$ and identity mapping torus have zero $x^3$
+and zero $p_1x$. Applying the same sign to all three boundary
+terms of the pair-of-pants bordism proves that $x^3$ and $p_1x$
+are individually additive for fixed-tube-relative maps. Their
+displayed integral combination is therefore additive as well.
+In particular the proof does not infer additivity from a
+three-knot group law. The line class is unambiguous here:
+$H^1(Y;\Z)=0$, so changing its specified lift by a gauge does
+not add a mixed mapping-torus Chern class.
+
+It remains to check normalization choices. An orientation-
+preserving equivariant sphere diffeomorphism can be made the
+identity on a fixed tube by equivariant isotopies: its fixed
+$S^2$ restriction is isotopic to the identity by
+\citet[Theorem A]{Smale1959E}; its complex normal derivative
+is homotopic to the identity since $\pi_2(U(2))=0$; and
+tubular rescaling removes the remaining higher-order germ.
+These are the local geometric steps, independent of any
+three-knot invariant.
+
+Two such normalizations give equivariantly diffeomorphic
+clutched sphere pairs. Extend their boundary isotopy over a
+collar to obtain the diffeomorphism. Compatible unitary normal
+tubes along the isotopy give compatible smooth orbit structures.
+Thus their orbit pairs are the same smooth pair up to
+diffeomorphism. The fixed image is a three-sphere and its
+oriented normal three-plane bundle is trivial. The two inherited
+normal framings differ by a map $r:S^3\to SO(3)$.
+
+We compute directly the change caused by this framing. If
+$E$ is the exterior of the embedded three-sphere, its two
+framed surgeries fill $E$ by $S^2\times D^4$ with boundary
+identifications differing by
+\[
+ (a,z)\longmapsto(r(z)a,z),\qquad(a,z)\in S^2\times S^3.
+\]
+Cutting off the common exterior gives a characteristic bordism
+between the difference of these two surgery caps and
+\[
+ Z_r=(S^2\times D^4)\cup_r-(S^2\times D^4),
+\]
+which is the oriented sphere bundle $S(\eta_r)\to S^4$ of
+the rank-three bundle clutched by $r$. The meridian lines
+extend over this bordism. They agree on the common boundary,
+and their possible gauge discrepancy has a real logarithm
+because $H^1(S^2\times S^3;\Z)=0$.
+
+Let $\pi:Z_r\to S^4$ and choose $x$ with positive fibre
+evaluation one. The oriented vertical tangent two-plane has
+Euler class $2x$, since $H^2(Z_r;\Z)=\Z$ and its Euler
+evaluation on the fibre is two. Its stable isomorphism
+$T_{\mathrm{vert}}Z_r\oplus\R\simeq\pi^*\eta_r$ gives
+\[
+ 4x^2=\pi^*p_1(\eta_r).
+\]
+Also $p_1(TS^4)=0$, so
+\[
+ p_1(TZ_r)=\pi^*p_1(\eta_r)=4x^2.
+\]
+Therefore $\langle p_1x-4x^3,[Z_r]\rangle=0$ directly.
+No generator normalization of $\pi_3(SO(3))$ is needed.
+The two framed-surgery indices are equal. This proves
+normalization independence, and completes the direct
+integer-additivity argument.
+\end{proof}
+\begin{corollary}[C.3.27 (Proved): a second determination by the spin$^c$ coboundary]
+The actual positive-loop smooth monodromy satisfies
+$[\Phi]=0\in\Theta_7$. This determination uses the explicit
+eight-dimensional coboundary of C.3.25 and the direct index
+additivity of C.3.26. It does not use the three-knot integer,
+Wall's formula for it, the Davis generator comparison, or the
+conclusion of C.3.24.
+\end{corollary}
+\begin{proof}
+Apply C.3.26 to equivariant representatives of the actual return
+maps. For the annular six-loop representative $\psi$, the two
+geometric characteristic calculations, with their common
+orientation sign, give
+\[
+ p_\psi=-24\epsilon_{\rm cap},\qquad
+ k_\psi=-6\epsilon_{\rm cap}.
+\]
+These are the actual Pontryagin and cubic pairings proved in
+C.3.18--C.3.22. Therefore the directly defined index is
+\[
+ \lambda(\psi)=\frac{p_\psi-4k_\psi}{24}=0
+ \quad\hbox{in }\Z.
+\]
+
+We check the relation to one positive loop before reducing
+modulo $28$. Choose an invariant connection on the descended
+$w$-family. Its return over six consecutive positive loops is
+the sixth power of its one-loop return. A positive loop changes
+$c$ by $-2$. The coherent closing translations of C.3.5 obey
+\[
+ b_{h,c}+b_{k,c+h}=b_{h+k,c};
+\]
+in particular the six successive positive-$2$ closings from
+$c_0-12$ to $c_0$ equal the positive-$12$ closing. Interpolating
+between invariant connections gives equivariant isotopies.
+The changes of transport in C.3.10, its unit and real-scalar
+isotopies, and the lift comparisons of C.3.6 are equivariant
+as well. Changing back to the stipulated closing choices
+adds only a connected $\C^*$ automorphism commuting with the
+circle action. Consequently the actual lift of $\psi$ and
+$\Phi^6$ define the same equivariant mapping class.
+
+If necessary, a lift of the orbit identity on the fixed tube
+is made the identity there by its smooth circle gauge; the
+gauge has a real logarithm and can be extended with a collar
+cutoff. This is an equivariant isotopy and does not change the
+orbit map. C.3.26 therefore applies with exactly the cap used
+in the calculation above, and its normalization independence
+gives
+\[
+ 6\lambda(\Phi)=\lambda(\Phi^6)=\lambda(\psi)=0.
+\]
+The group here is $\Z$, so $\lambda(\Phi)=0$.
+
+Now construct the actual eight-dimensional spin$^c$ coboundary
+$Z_\Phi$ of C.3.25 for a normalized one-loop representative.
+Its explicit intersection form and characteristic covectors
+give, by the spin$^c$ index formula alone,
+\[
+ \mu(\Sigma_\Phi)
+   \equiv\frac{p_\Phi-4k_\Phi}{672}
+   =\frac{\lambda(\Phi)}{28}=0\pmod\Z.
+\]
+The positive generator in C.1.2 has invariant $1/28$, and
+$\Theta_7$ has order $28$. Thus this invariant detects its
+elements and $[\Sigma_\Phi]=0$. The sphere-gluing comparison
+of C.1.1 gives $[\Phi]=0$. It also gives
+$M_\Phi\cong S^1\times S^6$ with either spin structure having
+zero invariant.
+\end{proof}
+
+\begin{remark}[Independence and shared geometric inputs]
+The first determination uses the integer of equivariant
+orbit knots and its Wall--Davis comparison. The present
+determination uses the explicit line-disc bundle and
+four-handle coboundary, the spin$^c$ index formula, and an
+independent integer-additivity argument from actual
+seven-dimensional characteristic bordisms. Neither conversion
+nor the integer-level passage from six loops to one in this
+second argument invokes the first determination. The two
+methods share the proved annular representative and the actual
+geometric values $p_\psi=-24\epsilon_{\rm cap}$ and
+$k_\psi=-6\epsilon_{\rm cap}$. Their independence is at the
+boundary-invariant and one-loop arguments; they are not
+calculations from disjoint geometric data. Independent
+referees and exact arithmetic checks are validation, not
+additional mathematical methods.
+
+The smooth spin$^c$ coboundary here is different from the
+specific analytic filling proposed in Part B. Its construction
+does not supply that filling or its almost-complex Chern data.
+\end{remark}
+\begin{remark}[Established surgery and index machinery]
+The Hopf-handle construction used in C.3.25 is established
+surgery machinery. In the proof of Lemma~3.5, Case~2,
+\citet{Jiang2014E} attaches the same
+$S^3_{\rm Hopf}\times D^4$ four-handle to a line-disc bundle,
+expresses the resulting piece as $\mathbb{CP}^2\times D^4$,
+and uses its trivial normal bundle to compute the spin$^c$
+invariant. For his $k=0$ case the resulting value is
+$p/(24\cdot28)$; Lemma~3.6 also exhibits the characteristic
+integer $(p-4k)/24$ in his oriented decomposition conventions.
+C.3.25 supplies the direct calculation with general cubic
+$k$ and verifies that its boundary is the actual clutched
+sphere of this family. No new general surgery construction
+or invariant formula is claimed.
+
+The relation between semifree actions, fixed three-sphere
+knots, and surgery to homotopy complex projective three-spaces
+is classical. The primary introduction of
+\citet[pp.~125--126]{MontgomeryYang1968E} describes these
+correspondences and the Pontryagin offset divisible by $24$.
+The second proof here derives its needed additivity and
+framing independence from the explicit bordisms and the
+vertical Euler identity; it does not import the knot
+classification as a premise. This identifies both the
+standard literature and the exact scope of the derivation.
+\end{remark}
+\paragraph{The projection formula and its missing inputs.}
+The current literature supplies another precise test for a proposed
+orbit-knot computation. Theorem 4.1 of
+\citet{GauniyalTurchin2026Root}, published online on
+25 September 2026, expresses the Haefliger integer using both
+double-point linking and invariants of the projected immersion.
+The latter include a rationally normalized Smale invariant.
+Consequently the double circle of C.3.17 alone is insufficient.
+An application here would require an actual compressed projection
+and its tangent-framing comparison. We opened the published
+formula and its definitions, rather than importing the linking
+term in isolation.
+
+Likewise, \citet[Theorem 2.5]{Sakai2015Root} computes the
+\emph{change} under a specified crossing change from oriented
+double-preimage linking. To obtain an absolute value by that
+route one must also identify the comparison embedding and its
+class. Neither formula identifies the present trace with a
+standard reference embedding. The characteristic-number cap
+retains those geometric comparisons as explicit requirements.
+Searches on 15 November 2026 for the six-sphere family,
+its degeneration monodromy, and these knot formulas did not
+locate a numerical determination for this particular family.
+This states the search outcome and claims no priority.
+
+\subsection{C.4. Change of twists and real structures}
+
+\begin{proposition}[C.4.1 (Proved): twist independence in the sphere cases]
+For the fixed multiplicities $(3,4)$ and all admissible data in R5
+with $|p|=1$, the monodromy class of the positive $w$-circle is the
+same class in $\Theta_7$, with the complex orientation on each fibre.
+\end{proposition}
+
+\begin{proof}
+The explicit sufficiency maps in E.1 depend holomorphically on a
+small $c$-disc: the lattice defects and toric integral exponents are
+constant, the periods and unit factors are holomorphic, and the
+translation correction is solved in the fixed sheaf $V$ with
+$H^1(B,V)=0$. This is the parameter-dependent assertion of E.1.3,
+not just the fibrewise classification. For the second twist
+coefficient $s_2$, the parameter identification is
+$W=e^{-\pi i(c+s_2)}=(-1)^{s_2}w$.
+The rotation of the punctured disc preserves its positive
+fundamental-group generator. Local family identifications differ
+by elements of $\Aut(X)=\C^*$, a connected group, so their
+transition changes are smoothly isotopic to the identity. Following
+these identifications around the circle conjugates the monodromy
+in the oriented mapping-class group. Since $\Theta_7$ is abelian,
+the resulting class is unchanged. If the lattice sign in R5 is
+$-1$, the comparison map is nevertheless holomorphic and preserves
+the complex orientation; no extra sign is introduced.
+The common class is zero by C.3.24. This last numerical consequence
+uses only the already proved equality of the classes, not an
+additional deformation or conjugation argument.
+\end{proof}
+
+\begin{proposition}[C.4.2 (Proved): conjugation gives no torsion constraint]
+The antiholomorphic identification in R6 covers
+$w\mapsto-\bar w$. At a fixed base point on the imaginary
+$w$-axis it identifies the positive-loop monodromy with the
+inverse-loop monodromy by an orientation-reversing fibre map.
+Its action on $\Theta_7$ is negation, so the resulting equation is
+the tautology $-[\Phi]=-[\Phi]$, not $2[\Phi]=0$.
+\end{proposition}
+
+\begin{proof}
+From $c'=1-\bar c$ we obtain
+$e^{-\pi ic'}=-\overline{e^{-\pi ic}}$.
+Complex conjugation reverses the parameter circle. An
+antiholomorphic map in complex dimension three reverses the real
+orientation because its determinant has sign $(-1)^3$.
+Conjugating a sphere clutching map by a reflection changes the
+orientation of its glued homotopy sphere, hence negates its
+$\Theta_7$ class. Equivalently the Eells--Kuiper invariant changes
+sign. Applying this to the inverse loop proves the assertion.
+This confirms the last sentence of Lead 7 without extracting a
+spurious order-two restriction.
+\end{proof}
+
+\begin{corollary}[C.5.1 (Refuted): the specified analytic filling premise]
+The analytic descended filling and its resolution $W_8$
+requested in Parts B.4 and C.2 do not exist. Consequently
+there are no values of $c_1,c_2,p_1,p_1^2,p_1c_1^2,c_1^4$,
+relative lifts, intersection form or signature for that
+specified analytic object. The actual positive-loop
+monodromy is nevertheless
+\[
+                    [\Phi]=0\in\Theta_7\simeq\Z/28.
+\]
+\end{corollary}
+\begin{proof}
+A descended analytic filling of the specified family
+would be a proper analytic filling before any resolution,
+and its finite pullback would remain proper. B.4.33
+excludes both possibilities. Characteristic numbers of
+an unrelated manifold cannot supply the requested values.
+
+C.3.24 determines the actual monodromy by the equivariant
+orbit-knot integer. C.3.25--C.3.27 construct an actual
+smooth spin$^c$ coboundary of the clutching sphere and
+mapping torus and give a second determination by the
+index formula. Both use the verified actual pairings
+$p_\psi=-24\epsilon_{\rm cap}$ and
+$k_\psi=-6\epsilon_{\rm cap}$ and pass from six loops
+to one in an integer group before reduction modulo $28$.
+Their distinct boundary-invariant arguments and shared
+geometric inputs are stated in C.3.27. C.4.1 gives the
+same zero for all the compared sphere twist data, and
+C.4.2 gives the antiholomorphic transformation law.
+
+The smooth coboundary of C.3.25 is fully specified and
+has the intersection and spin$^c$ characteristic data
+computed there. No complex structure on it is asserted,
+and its determinant class is not identified with the first
+Chern class of an almost-complex tangent bundle. This
+distinction is essential now that the prescribed analytic
+construction has been refuted.
+\end{proof}

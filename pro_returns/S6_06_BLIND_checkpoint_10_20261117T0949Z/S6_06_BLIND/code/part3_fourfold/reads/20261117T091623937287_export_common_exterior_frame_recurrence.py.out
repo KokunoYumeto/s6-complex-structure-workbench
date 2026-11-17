@@ -1,0 +1,151 @@
+1: #!/usr/bin/env python3
+2: """Export the fully audited actual-fan recurrence as separate P3K.31."""
+3: from pathlib import Path
+4: from datetime import datetime, timezone
+5: import json
+6: import re
+7: 
+8: ROOT=Path(__file__).resolve().parents[2]
+9: def read(rel,reason):
+10:     with (ROOT/"records/literature_fourfold.md").open("a") as log:
+11:         log.write("\n- "+datetime.now(timezone.utc).isoformat()
+12:                   +" — Opened own "+rel+"; reason: "+reason
+13:                   +"; material: fully audited actual stable-frame morphisms, "
+14:                   "complex-normal reset, integral recurrence and all-fan class formula.\n")
+15:     return (ROOT/rel).read_text()
+16: rel="notes/part3_common_exterior_frame_recurrence.md"
+17: source=read(rel,"promote the root/blind/checks independently passed recurrence as P3K.31")
+18: body="## 1. The three exact objects that must be transported"+source.split(
+19:     "## 1. The three exact objects that must be transported",1)[1]
+20: body=body.split("## Audit record",1)[0]
+21: body=body.replace(
+22:     "This is a derived consequence of (CF.18), still submitted\n"
+23:     "for audit with that recurrence.\n",
+24:     "We now derive the closed formula from the actual recurrence.\n")
+25: body=body.replace(
+26:     "No formula in this working note is\n"
+27:     "promoted before the literal frame comparisons above\n"
+28:     "have passed independent audit.",
+29:     "The actual frame and periodic flop morphisms above prove these values.")
+30: body=body.replace(
+31:     "These arithmetic outputs have the same working\n"
+32:     "geometric-audit status as (CF.18). Their executable\n",
+33:     "These are the exact arithmetic ranges of the proved\n"
+34:     "geometric formula. Their executable\n")
+35: body=body.replace("(CF.", "(P3K.31.").replace(r"\tag{CF.",r"\tag{P3K.31.")
+36: body=body.replace("in this note.", "in this statement.")
+37: statement=r"""
+38: For every actual family and positive parameter loop of P3K.27 or
+39: P3K.30, retain its physical delta cocharacter and all exterior
+40: gluings, and use any allowed index-one periodic unimodular cusp
+41: fan \(T(v,w)\). Write
+42: \[
+43:  \delta_{\rm circle}=r v+s w,\qquad
+44:  S=r^2-rs+s^2,\qquad \gcd(r,s)=1.
+45: \]
+46: Let \(k,\ell,A=(4k-\ell)/24\) be the initial vertical-edge
+47: integers in the actual Cox framing of those statements.
+48: The oriented return class for the specified fan is
+49: \[
+50:  [\Sigma_{\Phi,T}]
+51:     =A+\frac{\ell}{8}(S-1)-\frac{k}{8}(S^2-1)
+52:         \pmod{28}.                                      \tag{P3K.31.0}
+53: \]
+54: The expression is integral. It is computed by the actual common
+55: exterior, stable tangent-frame change, and complex normal reset
+56: through every periodic flop.
+57: 
+58: For K27 this becomes
+59: \[
+60:            4-3S+\frac d8(3S^2-7)\pmod{28},
+61:        \qquad d=8,14,20,30.
+62: \]
+63: For K30, with its proved \(H=Ma^2/d\) and page Euler characteristic
+64: \(\chi\), it becomes
+65: \[
+66:                  \chi(4-3S)+\frac H8(3S^2-7)\pmod{28}.
+67: \]
+68: The letter \(a\) in \(H\) retains K30's line-section coefficient;
+69: the displayed cocharacter coordinates are the coordinates of the
+70: chosen fan. The exact finite ranges for K27 are given in the proof.
+71: The original construction's single \(w\)-loop requires its
+72: simultaneous three-curve endpoint descent and is left outside this
+73: statement; no cover class is divided.
+74: """
+75: # Avoid reusing a for the source line and the fan coordinate in the formal theorem.
+76: statement=statement.replace(
+77:     r"\delta_{\rm circle}=a v+b w,"+"\n"+r" S=a^2-ab+b^2,\qquad \gcd(a,b)=1.",
+78:     r"\delta_{\rm circle}=r v+s w,"+"\n"+r" S=r^2-rs+s^2,\qquad \gcd(r,s)=1.")
+79: statement=statement.replace(
+80:     "The letter \\(a\\) in \\(H\\) retains K30's line-section coefficient;\n"
+81:     "the displayed cocharacter coordinates are the coordinates of the\n"
+82:     "chosen fan. ","")
+83: audit=(
+84:     "The root audit passed the full proof, including the +1 first normal "
+85:     "product, the reflected second normal product, the actual degree -2 "
+86:     "adjoint derivative, the matrix order giving ambient degree +2, the "
+87:     "anti-quaternion reset and its central orientation, the recurrence "
+88:     "and the finite primitive-residue range. Blind and checks each "
+89:     "independently passed Sections 2–4. The requested actual triangular "
+90:     "source-normal derivative and its homotopy were added before promotion. "
+91:     "The original single-w-loop descent remains explicitly separate."
+92: )
+93: (ROOT/rel).write_text(
+94:     "# P3K.31. Proved: the actual return class for every index-one cusp fan\n\n"
+95:     +statement.strip()+"\n\n"+body.strip()+"\n\n## Audit record\n\n"+audit+"\n")
+96: def tex(text):
+97:     lines=text.splitlines()
+98:     out=[]; i=0
+99:     while i<len(lines):
+100:         line=lines[i]
+101:         if line.startswith("|"):
+102:             rows=[]
+103:             while i<len(lines) and lines[i].startswith("|"):
+104:                 cells=[s.strip() for s in lines[i].strip("|").split("|")]
+105:                 if not all(re.fullmatch(r"[: -]+",s or "-") for s in cells):
+106:                     rows.append(cells)
+107:                 i+=1
+108:             out.append(r"\begin{center}\begin{tabular}{c p{0.78\linewidth}}\toprule")
+109:             for j,cells in enumerate(rows):
+110:                 out.append(" & ".join(cells)+r"\\")
+111:                 if j==0: out.append(r"\midrule")
+112:             out.append(r"\bottomrule\end{tabular}\end{center}")
+113:             continue
+114:         if line.startswith("## "):
+115:             out.append(r"\par\medskip\noindent\textbf{"+line[3:]+r".}\enspace")
+116:         else:
+117:             out.append(line)
+118:         i+=1
+119:     value="\n".join(out)
+120:     value=re.sub(r"(?<![A-Za-z{])(?:notes|code)/[A-Za-z0-9_./-]+",
+121:                  lambda m:r"\path{"+m.group(0).rstrip(".")+"}"
+122:                  +("." if m.group(0).endswith(".") else ""),value)
+123:     return value.strip()+"\n"
+124: output=(r"\begin{statement}{P3K.31}{Proved}"+"\n"+tex(statement)
+125:         +r"\end{statement}"+"\n"+r"\begin{proof}"+"\n"+tex(body)
+126:         +r"\end{proof}"+"\n")
+127: assert "#" not in output
+128: assert "submitted" not in output.lower() and "working" not in output.lower()
+129: (ROOT/"notes/part3_common_exterior_frame_recurrence.tex").write_text(output)
+130: mapping=json.loads(read("code/part3_fourfold/results_mapping.json",
+131:                         "append proved K31 without changing other statements"))
+132: mapping["results"]=[x for x in mapping["results"] if x.get("id")!="P3K.31"]
+133: mapping["results"].append({
+134:     "id":"P3K.31","status":"Proved","item_of_prompt":"3.4",
+135:     "statement":"For every index-one cusp fan of the actual K27/K30 loop, the oriented return class is A+ell*(S-1)/8-k*(S^2-1)/8 mod28, with S the primitive physical-cocharacter Eisenstein norm.",
+136:     "proof_file":rel,"latex_file":"notes/part3_common_exterior_frame_recurrence.tex",
+137:     "code":"code/part3_fourfold/common_exterior_frame_recurrence.py",
+138:     "output":"code/part3_fourfold/common_exterior_frame_recurrence.json",
+139:     "ambient_frame_change":"2 e_i",
+140:     "recurrence":["V'=M_i V M_i^T","delta'=M_i(delta-2V e_i)",
+141:                   "s'=s+(delta_i-V_ii)/2 mod28"],
+142:     "K27_class_ranges":{
+143:         "8":[1,3,5,11,15,17,19,25],
+144:         "14":list(range(0,28,2)),
+145:         "20":[3,5,7,11,17,19,21,25],
+146:         "30":[0,4,6,8,14,18,20,22]},
+147:     "retained_limit":"Original single-w-loop simultaneous Cox endpoint descent is not inferred by division of a cover.",
+148:     "audit":"Root, blind, and checks independently passed the exact frame maps and signs."
+149: })
+150: (ROOT/"code/part3_fourfold/results_mapping.json").write_text(json.dumps(mapping,indent=2)+"\n")
+151: print("Exported fully audited P3K.31 separately, retaining the exact original-loop descent scope.")
