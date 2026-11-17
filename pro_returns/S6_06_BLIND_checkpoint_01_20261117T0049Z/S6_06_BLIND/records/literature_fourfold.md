@@ -1,0 +1,41 @@
+# Part 1 source log
+
+| Time UTC | Source | Reason | Material used |
+|---|---|---|---|
+|2026-11-16T23:50:18.962371+00:00|Attached PROMPT(20261116-234907).md|Read task and blindness rules|Part 1 data, requirements, and claims; full prompt read.|
+|2026-11-16T23:50:18.962371+00:00|background/data/fourfold_tuple.py|Read exact matrix input|Matrices A, B, companions, Q, twists, lambda_star; all claims subjected to exact computation.|
+|2026-11-16T23:50:18.962371+00:00|background/data/stated_values.csv, S6_04 rows E.1.3 and F.* only|Identify stated values compared|Claim labels and statements only; no proofs supplied or consulted.|
+|2026-11-16T23:53:26.535954+00:00|Web search queries: 3HP2 connected sum -HP2 almost complex structure inertia group eight dimensional manifolds Mandal; Kuhn triangulation toric degeneration complex tori non polarized Mumford central fibre homology|Locate independently accessible classification and toroidal sources|Search results only; none used as theorem yet.|
+|2026-11-16T23:53:34.437886+00:00|https://www.dcrowley.net/Crowley-Nagy-3c8m-b.pdf|Open exact inertia classification|Inspect exact statement; see following notes for extraction.|
+|2026-11-16T23:53:34.437898+00:00|https://preprint.press.jhu.edu/ajm/sites/default/files/AJM-burklund-hahn-senger.pdf|Open inertia theorem with HP2 case|Inspect exact statement; see following notes for extraction.|
+|2026-11-16T23:53:34.437901+00:00|https://arxiv.org/html/2609.27929|Open Mandal almost complex criterion|Inspect exact statement; see following notes for extraction.|
+|2026-11-16T23:53:41.250224+00:00|Search: Kramer Stolz diffeomorphism classification manifolds like projective planes 2007 pdf; Mandal quaternionic connected sums 2609.27929|Locate primary complete statements|Crowley--Nagy is an announcement; seek primary proved HP2 inertia result and Mandal PDF.|
+|2026-11-16T23:53:47.680486+00:00|https://archive.ymsc.tsinghua.edu.cn/pacm_download/21/694-JDG-77-2-A1-kramer.pdf|Kramer--Stolz Theorem A primary paper|Inspect theorem statement and hypotheses; source status recorded in notes.|
+|2026-11-16T23:53:47.680499+00:00|https://arxiv.org/pdf/2609.27929|Mandal Corollary 1.4 primary paper|Inspect theorem statement and hypotheses; source status recorded in notes.|
+|2026-11-17T00:03:48.015410+00:00|Search: Beukers Heckman Theorem 3.5 Levelt companion matrices; genus two y2 x5 ax b hypergeometric monodromy|Verify global rational monodromy rather than infer it from spectra|Search results only until primary theorem is opened.|
+|2026-11-17T00:03:56.400812+00:00|https://math.uchicago.edu/~drinfeld/Hypergeometric_motives/Beukers-Heckman.pdf|Open Levelt uniqueness statement and proof|Theorem 3.5 and rank-one monodromy representation comparison; exact use recorded in notes.|
+|2026-11-17T00:21:37.224647+00:00|Search: Wall Classification (n−1)-connected 2n-manifolds 1962 pdf; 3-connected 8-manifold intersection form p1 almost diffeomorphism|Locate exact classification theorem for the computed characteristic pair|Search results only; no classification conclusion until primary statement checked.|
+|2026-11-17T00:21:44.419869+00:00|https://webhomes.maths.ed.ac.uk/~v1ranick/papers/n-1con2n.pdf|Open precise almost-diffeomorphism classification statement|Wall invariant and Conway--Crowley--Powell--Sixt Theorem 3.7, with definitions to be checked.|
+|2026-11-17T00:21:44.419884+00:00|https://pure.mpg.de/pubman/item/item_3490930_4/component/file_3559887/Conway-Crowley-Powell-Sixt_Simply-connected%2Bmanifolds%2Bwith%2Blarge%2Bhomotopy%2Bstable%2Bclasses_2023.pdf|Open precise almost-diffeomorphism classification statement|Wall invariant and Conway--Crowley--Powell--Sixt Theorem 3.7, with definitions to be checked.|
+|2026-11-17T00:21:49.847495+00:00|Wall 1962 PDF screenshots pp.167,169,170|Read scanned theorem and invariant definitions|Visual statement check; PDF lacks extractable text.|
+|2026-11-17T00:22:30.611493+00:00|Search: Hirzebruch Topological Methods Algebraic Geometry Todd signature formulas; almost complex eight manifold Chern congruences|Verify exact characteristic-number identities used after homology|Search results only.|
+|2026-11-17T00:22:37.107478+00:00|https://hirzebruch.mpim-bonn.mpg.de/id/eprint/114/6/Hirzebruch-TopologicalMethodsInAlgebraicGeometry.pdf|Open characteristic-number formula and numbered statement|Todd integrality and signature coefficients; see precise extracts.|
+|2026-11-17T00:22:37.107499+00:00|https://www.degruyterbrill.com/document/doi/10.1515/coma-2021-0133/html|Open characteristic-number formula and numbered statement|Todd integrality and signature coefficients; see precise extracts.|
+
+- 2026-11-17T00:25:07.433689+00:00 — Opened rendered p.170 of Wall, Classification of (n−1)-connected 2n-manifolds, https://webhomes.maths.ed.ac.uk/~v1ranick/papers/n-1con2n.pdf. Reason: verify oriented almost-diffeomorphism theorem. Took: uniqueness modulo Γ₂ₙ and the italicized unnumbered classification statement of almost closed handlebodies by n-spaces; Lemma 4 asserts boundary connected sum corresponds to direct sum. Need definitions and Lemma 8 before using p₁ specialization.
+
+- 2026-11-17T00:25:49.054031+00:00 — Read downloaded primary Hirzebruch, Topological Methods in Algebraic Geometry, §§8.2 and 24.5, URL https://hirzebruch.mpim-bonn.mpg.de/id/eprint/114/6/Hirzebruch-TopologicalMethodsInAlgebraicGeometry.pdf. Took Theorem 8.2.2 (signature is L-genus) and Theorem 24.5.4 and corollary (integrality of Todd genus for almost complex manifolds). Download successful; 21,202,009 bytes.
+
+- 2026-11-17T00:25:49.054046+00:00 — Read downloaded primary Mandal, arXiv:2609.27929, https://arxiv.org/pdf/2609.27929, Corollaries 1.2 and 1.4, Theorem 1.3, Lemma 2.1 and its proof. Took independent almost-complex criterion for oriented connected sums of HP² and its reverse: l=2m+1, m odd; tangent characteristic formulas p₁(HP²)=2α and p₂=7α². This is not used as a substitute for constructing the complex fourfold. Download 550,802 bytes.
+
+- 2026-11-17T00:29:07.214677+00:00 — Searched OCR of Wall PDF pp.167–169,171–175, reason: exact definition of n-spaces and specialization of smooth classification. Took section and lemma locations only; full scans retained outside deliverable.
+
+- 2026-11-17T00:29:25.631924+00:00 — Searched exact CCPS title with Theorem 3.7 and Wall Lemma 8. Found author and published open PDFs; primary search result states the numbered smooth extended symmetric form classification. Read Wall pp.168,174,175 OCR: n-space definition and stable normal class reduction; no final classification applied yet.
+
+- 2026-11-17T00:29:31.723761+00:00 — Opened author PDF https://www.maths.gla.ac.uk/~mpowell/large-homotopy-stable-class-v3.pdf and published article https://www.cambridge.org/core/journals/journal-of-the-australian-mathematical-society/article/simply-connected-manifolds-with-large-homotopy-stable-classes/8C98BF4A49F0C1558FFB0EAC550E6A31. Reason: verify numbered almost-diffeomorphism classification and stable normal invariant. Source IDs turn84view0, turn84view1; definitions 3.5–3.6 and Theorem 3.7 to be read in exact location next.
+
+- 2026-11-17T00:29:39.615475+00:00 — Read CCPS author PDF §3.3, Definition 3.6, Theorem 3.7(1) and proof. Took: closed oriented (4m−1)-connected 8m manifolds with isomorphic intersection form and stable normal homomorphism are orientation-preservingly almost diffeomorphic. The proof checks injectivity of Euler class plus stabilization. For m=1 the normal homomorphism is p₁/2 by stable classification of oriented real bundles over S⁴; applying the same generator convention to both sides suffices. Also read the characteristic congruence in §3.3.
+
+- 2026-11-17T00:32:32.697366+00:00 — Read Wall p.173 OCR, Propositions 3 and 4: unimodular indefinite integral forms are classified by rank, signature and parity, and even unimodular forms have signature divisible by eight. These numbered statements supply I₃,₁ after the characteristic-number computation. Read p.176 to locate subsequent theorem, taking no additional result.
+
+- 2026-11-17T00:45:26.155438+00:00 — Opened supplied background/data/stated_values.csv to map independently derived Part 1 statements to the permitted comparison rows; no earlier proof text opened.
