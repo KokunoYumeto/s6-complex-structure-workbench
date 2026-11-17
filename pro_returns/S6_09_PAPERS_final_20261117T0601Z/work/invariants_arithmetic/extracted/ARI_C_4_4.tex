@@ -1,0 +1,89 @@
+\begin{statement}[C.4.4; Proved: the five values and all orders through eight]
+The exact special values are
+\[
+ \begin{array}{c|c|c}
+ t&\operatorname{ord}(P)&N(P)^{12}\\ \hline
+ 0&3&27\\
+ 1&2&64\\
+ 32/5&4&10\\
+ 64(47-27\sqrt3)/11&6&17+10\sqrt3\\
+ 64(47+27\sqrt3)/11&6&10\sqrt3-17 .
+ \end{array}
+\]
+At $t=0,1$ the orders refer to the smooth models after the specified
+base changes. On the smooth base, $F_2=F_3=1$ and
+\[
+ \begin{aligned}
+ F_4&=5t-32,\\
+ F_5&=89t^2+4736t-4096,\\
+ F_6&=11t^2-6016t+8192,\\
+ F_7&=881t^4+4745344t^3-12079104t^2\\
+    &\hspace{13mm}+24641536t-16777216,\\
+ F_8&=49t^4-2614336t^3-7864320t^2\\
+    &\hspace{13mm}+19398656t-8388608.
+ \end{aligned}
+\]
+All these polynomials are squarefree. At each root of exact order
+$n=4,5,6,7,8$, the positive number $r=N^{12}$ is respectively
+determined by
+\[
+ \begin{array}{c|l}
+ n&\text{equation for }r\\ \hline
+ 4&r=64/|t|\\
+ 5&r^5=432^5/\bigl((1-t)(5t-32)^4\bigr)\\
+ 6&r^2=1728^2/F_5(t)\\
+ 7&r^{35}=2^{192}3^{81}/
+       \bigl(|t|^8|t-1|^3|F_6(t)|^{12}\bigr)\\
+ 8&r^4=1728^4/|F_7(t)|.
+ \end{array}
+\]
+The order-five roots are real and below one; the order-six roots
+are real and above one. The two complex order-seven roots are
+included in the formula.
+\end{statement}
+\begin{proof}
+The division-polynomial recurrence, evaluated at $x=0$,
+$y=t^2(t-1)/2$, gives
+\[
+ \begin{aligned}
+ \psi_4(P)&=-t^{10}(t-1)^4F_4/32,\\
+ \psi_5(P)&=t^{16}(t-1)^6F_5/4096,\\
+ \psi_6(P)&=9t^{24}(t-1)^9F_6/65536,\\
+ \psi_7(P)&=-t^{32}(t-1)^{12}F_7/16777216,\\
+ \psi_8(P)&=-t^{42}(t-1)^{16}F_4F_8/268435456.
+ \end{aligned}
+\]
+The recursion and all coefficients are checked over $\mathbb Q[t]$
+by \path{Cspecial_division.py}. The same program computes
+$\gcd(F_n,F_n')=1$ and excludes common factors for proper orders.
+Thus no point or multiplicity is omitted. Applying
+\eqref{eq:cs-torsionvalue} with $m=n-1$ gives every displayed
+formula. The signs for $F_5,F_6$ follow directly from their quadratic
+formula; in particular $F_5$ is positive at the two roots of $F_6$.
+At order six, substituting
+$t=64(47\mp27\sqrt3)/11$ gives the exact identities
+\[
+ F_5(t)(17\pm10\sqrt3)^2=1728^2.
+\]
+The positive roots are $17+10\sqrt3$ and $10\sqrt3-17$; their
+product is $11$. The substitution is checked in
+\path{Cspecial_relations.py}. The order-four value follows from
+$64/(32/5)=10$, and the two central values are C.1.2.
+
+For clarity, the recurrence used by the exact program is
+\[
+ \begin{aligned}
+ \psi_{2m+1}&=\psi_{m+2}\psi_m^3-\psi_{m-1}\psi_{m+1}^3,\\
+ \psi_{2m}&=\frac{\psi_m}{\psi_2}
+   (\psi_{m+2}\psi_{m-1}^2-\psi_{m-2}\psi_{m+1}^2).
+ \end{aligned}
+\]
+Its initial values at $P$ are $\psi_0=0,\psi_1=1,\psi_2=2y$,
+$\psi_3=-A^2$, $\psi_4=4y(-8B^2-A^3)$. No approximate algebra
+enters this calculation. The same code records $\psi_9$, and the
+separate file \texttt{Cspecial\_psi16.out} records the factored
+$\psi_{16}$ for the duplication ladder. A rational polynomial
+relation for the nonreal order-seven values is explicitly computed
+by \path{Cspecial_relations.py}, by the resultant prescription
+of C.4.3.
+\end{proof}

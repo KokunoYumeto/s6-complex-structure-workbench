@@ -1,0 +1,101 @@
+\begin{statement}[C.8.1; Proved: three uniform bounds on the elliptic norm]
+For every $z\in\C$ and every $\tau$ in the standard modular
+fundamental region, we have
+\[
+ \begin{array}{c|ccc}
+ \text{restriction}&T\le2&T\le7/5&T\le11/10\\ \hline
+ N(z,\tau)&<17/10&<3/2&<143/100.
+ \end{array}
+\]
+If $\wp_\tau(z)=0$ and $T\ge2$, then $N(z,\tau)<541/500$.
+\end{statement}
+\begin{proof}
+Taking absolute values in the theta series and completing the square
+gives
+\[
+ e^{-\pi(\Im z)^2/T}|\vartheta_1(z,\tau)|
+ \le\sum_{n\in\Z}
+ e^{-\pi T(n+1/2+\Im z/T)^2}
+ \le\sum_{n\in\Z}e^{-\pi Tn^2}.
+\]
+The last inequality follows from Poisson summation: the Fourier
+coefficients of the periodized Gaussian are positive, so its maximum
+is at an integer. The eta product and $n^2\ge1+3(n-1)$ for $n\ge1$
+therefore imply, on $a\le T\le b$,
+\begin{equation}\label{eq:ca-sup}
+ N(z,\tau)\le
+ \exp\!\left(\frac{r_a}{(1-r_a)^2}\right)
+ \max\{F(a),F(b)\},\qquad
+ F(T)=e^{\pi T/12}
+ \left(1+\frac{2e^{-\pi T}}{1-e^{-3\pi T}}\right),
+\end{equation}
+where $r_a=e^{-2\pi a}$. Indeed,
+$-\sum\log(1-r^n)\le r/(1-r)^2$. The function $F$ is convex,
+as follows by expanding its denominator as a geometric series;
+each summand is an exponential of a real linear function of $T$.
+We use $6/7<\sqrt3/2$ and the following rational bounds:
+\[
+\begin{array}{c|@{\,}c@{\,}c@{\,}c@{\,}c@{\,}c}
+T&6/7&1&11/10&7/5&2\\ \hline
+F(T)&<14211/10000&<14116/10000&<14180/10000&<14782/10000&<16944/10000.
+\end{array}
+\]
+The eta factors in \eqref{eq:ca-sup} are less than $10047/10000$
+for $a=6/7$ and less than $10019/10000$ for $a=1$.
+Multiplying these fractions proves the asserted bounds, using
+$[6/7,1]$ and $[1,2]$ separately for the first one.
+
+We specify elementary arithmetic for all the scalar estimates in
+this proof. One may use $314159/100000<\pi<355/113$ and, for
+$0\le x\le20$, the Taylor bounds
+\begin{equation}\label{eq:ca-exp}
+ S_{80}(x)\le e^x\le
+ S_{80}(x)+\frac{x^{81}}{81!}\frac1{1-x/82},
+ \qquad S_{80}(x)=\sum_{j=0}^{80}\frac{x^j}{j!}.
+\end{equation}
+Taking reciprocals bounds negative exponentials. The remainder
+bound follows by comparison of consecutive terms, not by numerical
+sampling. These inequalities verify each displayed rational bound;
+much shorter Taylor sums also suffice. Thus the decimal diagnostics
+in the accompanying programs are dispensable.
+
+For the cusp we check directly the analytic step of supplied K6.
+Choose $|\Im z|\le T/2$ by translation, put $b_0=43/100$ and
+$r_0=e^{-4\pi}$. The Fourier series
+\[
+ \frac{\wp_\tau(z)}{\pi^2}
+ =\csc^2(\pi z)-\frac13
+   +8\sum_{n\ge1}\frac{nq^n}{1-q^n}
+          \bigl(1-\cos(2\pi nz)\bigr)
+\]
+shows, if $|\Im z|\ge b_0$, that
+\begin{align*}
+ \left|\frac{\wp_\tau(z)}{\pi^2}+\frac13\right|
+ &\le \frac1{\sinh^2(\pi b_0)}
+ +8\left\{\frac{r_0}{(1-r_0)^3}
+ +\frac1{2(1-r_0)}
+ \left(\frac{e^{-2\pi}}{(1-e^{-2\pi})^2}
+       +\frac{e^{-6\pi}}{(1-e^{-6\pi})^2}\right)\right\}
+ <\frac13.
+\end{align*}
+The two terms in the last parentheses bound respectively
+$r^n e^{2\pi n|\Im z|}$ and $r^n e^{-2\pi n|\Im z|}$.
+This inequality excludes a zero. Hence a zero has
+$|\Im z|<b_0$. The Jacobi product, $\log(1+x)\le x$, and
+the monotonicity of $\cosh(\pi y)e^{-\pi y^2/T}$ on
+$0\le y\le b_0$ give
+\[
+ N(z,\tau)\le
+ 2\cosh(\pi b_0)e^{-\pi/3-\pi b_0^2/2}
+ \exp\!\left(
+ \frac{2\cosh(2\pi b_0)r_0}{1-r_0}
+ +\frac{r_0^2}{1-r_0^2}\right)<\frac{541}{500}.
+\]
+For the stated monotonicity, the concave function
+$\tanh(\pi y)-y$ is zero at zero and positive at $b_0$.
+For $T\ge2$ the right side before substituting $T=2$ decreases:
+the derivative of $-\pi T/6-\pi b_0^2/T$ is negative and
+both product errors decrease. The two strict scalar inequalities
+follow from \eqref{eq:ca-exp}. This proves the cusp assertion
+without using any certificate from K6.
+\end{proof}

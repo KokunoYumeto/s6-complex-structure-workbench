@@ -1,0 +1,240 @@
+1: # Part 3: rank-one sources, height arithmetic, and the mapping-class bridge
+2: 
+3: This file records independent derivations, begun after the blind Part 5 proof
+4: was written but before its scheduled hourly checkpoint. No source stating
+5: the tangent cohomology or full automorphism group of the AC26 threefold has
+6: been opened. The calculations below do not use any earlier-run proof.
+7: 
+8: ## P3F.1. The eight Mordell--Weil lattices and the 21 fibre configurations
+9: 
+10: **Proved.** The rank-one, torsion-free Mordell--Weil cases in the
+11: Oguiso--Shioda Main Theorem are precisely the following. Here (P) denotes
+12: a generator, (h(P)=\langle P,P\rangle), and (I_1^r) denotes (r)
+13: distinct nodal fibres. Every configuration in the last column occurs over
+14: the complex numbers with Mordell--Weil group isomorphic to \(\mathbb Z\).
+15: 
+16: | OS91 row | Root lattice | \(h(P)\) | Configurations |
+17: |---|---|---|---|
+18: |43|\(E_7\)|\(1/2\)|\(III^*+I_1^3\); \(III^*+II+I_1\)|
+19: |45|\(A_7\)|\(1/8\)|\(I_8+I_1^4\); \(I_8+II+I_1^2\)|
+20: |46|\(D_7\)|\(1/4\)|\(I_3^*+I_1^3\); \(I_3^*+II+I_1\)|
+21: |47|\(A_6+A_1\)|\(1/14\)|\(I_7+I_2+I_1^3\); \(I_7+I_2+II+I_1\); \(I_7+III+I_1^2\)|
+22: |49|\(E_6+A_1\)|\(1/6\)|\(IV^*+I_2+I_1^2\); \(IV^*+I_2+II\); \(IV^*+III+I_1\)|
+23: |50|\(D_5+A_2\)|\(1/12\)|\(I_1^*+I_3+I_1^2\); \(I_1^*+I_3+II\); \(I_1^*+IV+I_1\)|
+24: |55|\(A_4+A_3\)|\(1/20\)|\(I_5+I_4+I_1^3\); \(I_5+I_4+II+I_1\)|
+25: |56|\(A_4+A_2+A_1\)|\(1/30\)|\(I_5+I_3+I_2+I_1^2\); \(I_5+I_3+I_2+II\); \(I_5+I_3+III+I_1\); \(I_5+IV+I_2+I_1\)|
+26: 
+27: The primary table was read in the scanned original, printed pp.85--86.
+28: The program `code/part3/enumerate_mw_one.py` transcribes every rank-one row,
+29: 43--61, including all eleven rows with torsion. It then selects torsion
+30: order one. Thus the eight-entry count is obtained by a reproducible
+31: selection from the whole relevant table.
+32: 
+33: We now justify the refinement from root lattices to Kodaira fibres. The
+34: Kodaira/root correspondences are (A_1=I_2\) or (III), (A_2=I_3\) or
+35: (IV), (A_n=I_{n+1}\) for (n\geq3), (D_n=I^*_{n-4}),
+36: (E_6=IV^*), and (E_7=III^*). Any further fibre is irreducible, hence
+37: (I_1) or (II). Their Euler numbers must sum to 12. The program takes
+38: the Cartesian product of these choices, then enumerates every nonnegative
+39: solution (r+2s=12-\sum e(F_{\rm red})). It obtains 24 candidates.
+40: 
+41: For a candidate let (d=\deg j=\sum n(i_n+i_n^*)), and use (j/1728),
+42: so that the elliptic values are (0,1,\infty). Put
+43: 
+44: \[
+45:  a_0=ii+iv^*,\qquad b_0=iv,
+46:  \qquad a_1=iii+iii^*.
+47: \]
+48: 
+49: The minimal ramification profiles over 0 and 1 are respectively
+50: 
+51: \[
+52:  1^{a_0}2^{b_0}3^{(d-a_0-2b_0)/3},\qquad
+53:  1^{a_1}2^{(d-a_1)/2}.
+54: \]
+55: 
+56: Over infinity they are the multiplicative fibre indices, including the
+57: indices of (I_n^*). Hence the excess ramification
+58: 
+59: \[
+60:  x=2d-2-\sum_{u\in\{0,1,\infty\}}\sum_{e\in\rho_u}(e-1)
+61: \]
+62: 
+63: is nonnegative. This is Miranda90 (1.11), and follows directly from
+64: Riemann--Hurwitz: additional ramification can only increase the displayed
+65: sum. Precisely three of the 24 candidates have (x=-1):
+66: 
+67: \[
+68:  I_8+II+II,\qquad I_7+III+II,\qquad I_5+IV+III.
+69: \]
+70: 
+71: They cannot occur. The other 21 have (x=0) or 1. For each of them the
+72: program constructs four explicit permutations
+73: 
+74: \[
+75:  \sigma_0\sigma_1\sigma_*\sigma_\infty=1
+76: \]
+77: 
+78: on (d\) letters. The first, second, and fourth have the three profiles
+79: above. The third is the identity for (x=0), a transposition for (x=1).
+80: The generated group is transitive, and the program checks
+81: \(\sum_\nu(d-\#\mathrm{cycles}(\sigma_\nu))=2d-2\).
+82: The permutations are printed in full in `enumerate_mw_one.out` and stored
+83: in `mw_one_configurations.json`.
+84: 
+85: To explain exactly what these certificates establish, take positively
+86: oriented meridians about (0,1,z_*,\infty\) on the Riemann sphere, with
+87: their product relation in the displayed order. The permutations define a
+88: connected finite unramified cover of the complement. At a cycle of length
+89: (e), attach a disc by the chart (z\mapsto z^e). This gives a compact
+90: connected Riemann surface and a holomorphic branched map. The verified
+91: Euler equation gives genus zero, so the source is a Riemann sphere. This
+92: is a (j)-map with the specified profiles. Miranda90 Proposition3.4
+93: constructs the corresponding elliptic surface by pullback of its displayed
+94: universal (j=t\) surface, followed by the specified quadratic twists and
+95: minimalizations. Its Euler number is 12 and it has a section, and the
+96: proposition proves it is rational. Thus each certificate is an existence
+97: certificate, not merely a necessary numerical test.
+98: 
+99: The root system (A_7) requires an extra check: OS91 rows44 and45 have the
+100: same root system but different torsion. Here are explicit torsion-free
+101: models for both configurations. Write
+102: 
+103: \[
+104:  R=t^2+s,\qquad A=R^2+bt,\qquad
+105:  B=R^3+\frac32btR+\frac38b^2,
+106:  \qquad y^2=x^3-3Ax+2B.
+107: \]
+108: 
+109: For ((s,b)=(1,1)),
+110: 
+111: \[
+112:  4(-3A)^3+27(2B)^2
+113:  =\frac{27}{16}(48t^4+8t^3+96t^2+72t+57).
+114: \]
+115: 
+116: The program verifies that this quartic is square-free and coprime to
+117: (A,B), so there are four (I_1)'s. At infinity the minimal Weierstrass
+118: coefficients are units and the discriminant has order8, giving (I_8).
+119: For ((s,b)=(3,48)), the same discriminant expression is
+120: 
+121: \[
+122:  186624(t+3)^2(3t^2-10t+51).
+123: \]
+124: 
+125: Here (A,B) each have a simple zero at (-3); hence that fibre is (II).
+126: The quadratic factor is square-free, coprime to (t+3), and gives two
+127: (I_1)'s. Again the infinity fibre is (I_8).
+128: 
+129: Neither model has a 2-torsion point. After (x=X+R), its cubic is
+130: 
+131: \[
+132:  X^3+3(t^2+s)X^2-3btX+\frac34b^2.
+133: \]
+134: 
+135: A root in \(\mathbb C(t)\) would be a polynomial because the cubic is
+136: monic over the integrally closed ring \(\mathbb C[t]\). Its degree is at
+137: most two. For degree at most one, comparing the coefficient of (t^4)
+138: first eliminates the linear term, then the coefficient of (t^2)
+139: eliminates the constant term. The nonzero constant (3b^2/4) remains.
+140: For a quadratic root, its leading coefficient must be (-3); the next
+141: two coefficients force (X=-3(t^2+s)), which leaves
+142: (9bt(t^2+s)+3b^2/4\ne0). Thus no root exists. OS91's only two
+143: rank-one (A_7) cases have torsion 0 and \(\mathbb Z/2\); both displayed
+144: models therefore belong to row45. The remaining seven root systems each
+145: have a unique torsion-free rank-one row, so no such ambiguity occurs.
+146: 
+147: This proves the exact count (2+2+2+3+3+3+2+4=21).
+148: 
+149: ## P3F.2. Heights, component data, and the sign of the correction term
+150: 
+151: The primary source is Shioda90 Theorem8.6, equation(8.12), with local
+152: contributions in table(8.16), printed pp.228--229. Proposition8.12,
+153: equation(8.25), printed p.231, gives multiplication of heights by the
+154: degree of a field extension. The scanned statements and their proofs
+155: were read; OCR is retained only as a discovery aid.
+156: 
+157: For a section (R\ne O) of a relatively minimal elliptic surface with
+158: section,
+159: 
+160: \[
+161:  h(R)=2\chi(\mathcal O)+2(R\cdot O)
+162:        -\sum_v\operatorname{contr}_v(R).
+163: \]
+164: 
+165: Consequently the exact rearrangement is
+166: 
+167: \[
+168:  (R\cdot O)=\frac{h(R)-2\chi(\mathcal O)
+169:                     +\sum_v\operatorname{contr}_v(R)}2. \tag{P3F.2.1}
+170: \]
+171: 
+172: The local contributions in Shioda's convention are nonnegative. The
+173: general formula stated in the prompt with a minus sign before these
+174: contributions therefore has the wrong sign in this convention. This is
+175: an algebraic discrepancy independent of the unfinished identification of
+176: the expression with a monodromy invariant.
+177: 
+178: For a primitive generator of each of the eight rational-surface cases,
+179: the local contributions and component orders are as follows. Either
+180: choice of a pair of components exchanged by inversion is allowed.
+181: 
+182: |Root system|Component data for (P)|Sum of contributions|Orders|
+183: |---|---|---|---|
+184: |\(E_7\)|nonidentity component|\(3/2\)|2|
+185: |\(A_7\)|component3 or5 of (I_8\)|\(15/8\)|8|
+186: |\(D_7\)|a spinor component|\(7/4\)|4|
+187: |\(A_6+A_1\)|component2 or5 of (I_7\), nonidentity (A_1\)|\(10/7+1/2\)|7,2|
+188: |\(E_6+A_1\)|nonidentity in both|\(4/3+1/2\)|3,2|
+189: |\(D_5+A_2\)|spinor, nonidentity|\(5/4+2/3\)|4,3|
+190: |\(A_4+A_3\)|component2 or3 of (I_5\), component1 or3 of (I_4\)|\(6/5+3/4\)|5,4|
+191: |\(A_4+A_2+A_1\)|component1 or4 of (I_5\), nonidentity (A_2,A_1\)|\(4/5+2/3+1/2\)|5,3,2|
+192: 
+193: Here (A_1) and (A_2) have the same nonzero local contribution for
+194: either of their two Kodaira realizations. To derive, rather than assume,
+195: the table, use (h(P)) from P3F.1 and enumerate all multiplicity-one
+196: components in Shioda's local table. The sum of the largest permitted
+197: contributions is always smaller than (4-h(P)). Since (P\cdot O\geq0)
+198: is an integer, the height formula excludes (P\cdot O\geq1).
+199: It follows that (P\cdot O=0). The equation
+200: \(\sum\operatorname{contr}_v(P)=2-h(P)\) then gives exactly the
+201: component choices displayed. Thus for every one of the 21 configurations
+202: the primitive generator is disjoint from the zero section.
+203: 
+204: For the OS49 configuration (IV^*+II+I_2), place (IV^*) at0 and
+205: (I_2) at infinity, and pull back by the degree3 map (t=z^3).
+206: The relatively minimal pullback has three (II) fibres and one (I_6),
+207: so \(\chi=1\). The (IV^*) fibre has good reduction on the cubic root
+208: chart. The generator has height (3/6=1/2). Its component1 at (I_2)
+209: pulls back to component3 at (I_6), contributing (3\cdot3/6=3/2).
+210: Equation(P3F.2.1) gives (P'\cdot O'=0). Substituting the negative sign
+211: from the prompt instead would give (-3/2), not the intersection number.
+212: This calculation concerns the explicit compact elliptic pullback. It
+213: does not yet identify its boundary modification with the page of a
+214: threefold-family monodromy.
+215: 
+216: ## P3F.3. Jin's mapping-class theorem in the exact coordinates required
+217: 
+218: The primary source is Huize Jin, arXiv:2608.26698v2 (12September2026),
+219: Theorem1.2, Corollary1.3, Proposition3.1, Lemmas4.4 and4.8, and
+220: Theorem4.9. The downloaded PDF is retained in `records/primary_sources`.
+221: The ambient manifold is the oriented product (M=S^2\times S^3).
+222: Its orientation-preserving Torelli group is
+223: 
+224: \[
+225:  I(M)=\mathbb Za\oplus\mathbb Zb.
+226: \]
+227: 
+228: Here (a=t_{S_1,\alpha}) twists a standard (S^2\times D^3), and
+229: (b=t_{S_1\#S_1,\alpha}) twists the connected sum of two oriented
+230: copies of that core (S^2). The normalization of
+231: \(\alpha\in\pi_3SO(3)\) is that the rank3 bundle over (S^4) clutched
+232: by \(\alpha\) has first Pontryagin number4. The twist is explicitly
+233: 
+234: \[
+235:  (x,y)\longmapsto(\alpha(y)x,y),
+236: \]
+237: 
+238: where \(\alpha:D^3\to SO(3)\) equals the identity near its boundary.
+239: Extending by the identity gives the same formula with
+240: \(\alpha:S^3\to SO(3)\). In particular the core sphere has dimension2.

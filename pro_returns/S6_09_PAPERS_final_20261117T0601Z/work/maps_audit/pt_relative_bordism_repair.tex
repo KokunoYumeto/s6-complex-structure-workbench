@@ -1,0 +1,295 @@
+% New audit repair, 17 November 2026.
+% Reader/writer: GPT-6 Astra (OpenAI, ChatGPT Pro mode), effort Pro.
+% This block repairs the unprinted relative-embedding step invoked at
+% sphere-twists-and-the-original-smooth-six-sphere-comparison.md:707.
+% It is not a quotation or a claim of a human independent review.
+
+\subsection{The relative embedding needed for tangent-framed bordism}
+\label{courseIII:pt-relative-embedding-setup}
+
+The normal-framed Pontryagin--Thom construction is stated for embedded
+bordisms.  To apply it to the group defined using abstract stable tangent
+framings, the following relative construction is needed.  Every
+stabilization of an existing embedding uses identically zero appended
+coordinates.  The additional coordinates used in the relative extension
+vanish on the prescribed boundary collars, as specified below.  All
+changes of their order are specified.
+
+\begin{lemma}[Relative Euclidean embedding with specified product collars]
+\label{courseIII:pt-relative-embedding}
+Let $W$ be a compact smooth manifold whose boundary is the disjoint union
+$M_0\sqcup M_1$.  Fix disjoint collars and smooth embeddings
+$j_i:M_i\longrightarrow\mathbb R^D$.  After appending finitely many zero
+spatial coordinates, there is a smooth embedding
+\[
+ J:W\longrightarrow\mathbb R^N\times[0,1]
+\]
+whose restrictions in smaller collars are exactly
+$(m,t)\mapsto(j_0(m),0,t)$ and
+$(m,t)\mapsto(j_1(m),0,t)$, respectively.  Its interior is in
+$\mathbb R^N\times(0,1)$.  Here the coordinate in the upper collar is
+$t=1-r$, where $r$ is the prescribed inward collar coordinate.
+\end{lemma}
+
+\begin{proof}
+Choose a number $a>0$ so that the two collars are defined for $0\le r<4a$
+and $4a<1/2$.  Choose a smooth function $t:W\to[0,1]$ equal to $r$ in
+the lower collar for $r<3a$, equal to $1-r$ in the upper collar for
+$r<3a$, and taking values strictly between zero and one elsewhere.
+For example, interpolate by a smooth cutoff between each indicated
+collar formula and the constant $1/2$, completing the interpolation
+before the end of that collar.  Convex combinations remain in $(0,1)$
+at every interior point.
+
+The boundary maps have a smooth extension $f:W\to\mathbb R^D$ which is
+exactly $j_i(m)$ for $r<3a$: multiply each $j_i$ in its collar by a
+cutoff equal to one there and zero near the far end of the collar,
+extend by zero, and add the two terms.  Their supports are disjoint.
+
+There is a smooth embedding $e:W\to\mathbb R^K$ given by finite
+coordinate blocks $(\chi_\ell,\chi_\ell\psi_\ell)$, with each cutoff
+supported in a coordinate chart and identically one on a smaller cover.
+Boundary charts are charts in a half-space and their coordinate
+functions and cutoffs extend smoothly to open Euclidean charts.  A
+block with $\chi_\ell=1$ separates points by $\psi_\ell$ and has
+injective tangent derivative.  The resulting map is an injective
+immersion, and compactness makes it an embedding.  This is the same
+finite-chart proof as the closed-manifold construction, with the
+half-space charts retained.
+
+Choose a smooth function $g\geq0$ which is zero exactly on the two
+closed collar regions $r\leq a$ and positive elsewhere.  Such a
+function is obtained by a smooth flat step in each collar, equal to
+one before its far end, and by setting it equal to one off those
+collars.  Define
+\[
+ J(w)=\bigl(f(w),g(w),g(w)e(w),t(w)\bigr).
+ \tag{RB.1}
+\]
+At a point with $g>0$, the first scalar $g$ and the block $ge$ recover
+$e$ by division.  Equality of two images therefore implies equality
+of the two points.  Also $dJ(v)=0$ gives $dg(v)=0$, then $g\,de(v)=0$,
+so $v=0$.  Points with $g=0$ cannot have the same image as points with
+$g>0$.  On $g=0$, formula (RB.1) is the prescribed product embedding;
+its two collar components have disjoint height ranges.  Its derivative
+is injective there because $f=j_i$ and $t=r$ or $1-r$ on a larger
+collar.  These observations prove injectivity and immersion everywhere,
+including the flat joining locus $r=a$.  Compactness again gives an
+embedding.  The previously chosen height function proves the assertion
+about the interior.  One further zero spatial coordinate may be
+appended if an even value of $N$ is wanted.
+\end{proof}
+
+\begin{lemma}[Exact boundary normal frame of a tangent-framed bordism]
+\label{courseIII:pt-relative-normal-frame}
+Let $\dim W=7$.  Suppose the stable tangent framing of $W$ is a product
+in the specified collars and induces the prescribed stable frames
+\[
+ \tau_i:TM_i\oplus\mathbb R^k\longrightarrow\mathbb R^{6+k}.
+\]
+Append an identity line if necessary so that $k$ is even.  In a collar
+use the coordinate vector $\partial_t$ directed from the lower end
+towards the upper end, and write the product framing as
+\[
+ \tau_W(v+a\partial_t,b)=(\tau_i(v,b),a).
+ \tag{RB.2}
+\]
+The embedding in the preceding lemma, after a further specified zero
+stabilization, has a normal framing whose restriction is exactly the
+normal frame constructed from $j_i$ and $\tau_i$, followed by one
+identity normal vector.  Hence it is an embedded normal-framed bordism
+between those stabilized endpoint frames.
+\end{lemma}
+
+\begin{proof}
+Regard the derivative of $J$ as a map
+$K:TW\to\mathbb R^N\oplus\mathbb R_t$, put
+$Q_W=(K^{\mathsf T}K)^{-1}K^{\mathsf T}$ in any tangent chart, and put
+$P_W=I-KQ_W$.  The matrix $P_W$ is independent of the tangent chart
+and is the orthogonal projection onto the normal bundle $\nu_W$.
+The identities $Q_WK=I$, $Q_WP_W=0$, $P_W+KQ_W=I$ prove all of these
+assertions directly.
+
+Add $7+k$ zero ambient coordinates.  The normal bundle is then
+$\nu_W\oplus\mathbb R^{7+k}$.  Its following trivialization and
+inverse are actual bundle maps:
+\[
+ \begin{aligned}
+ A_W(y,u)&=(y+Kv,b), &&(v,b)=\tau_W^{-1}(u),\\
+ A_W^{-1}(z,b)&=(P_Wz,\tau_W(Q_Wz,b)).
+ \end{aligned}
+ \tag{RB.3}
+\]
+Substitution using the three projection identities proves both inverse
+identities.  This also proves that the formulas agree in overlapping
+tangent charts.  The images under $A_W^{-1}$ of a fixed ordered basis
+give a smooth full normal frame, with its actual Gram matrix; no
+orthonormal replacement is needed.
+
+Put the new ambient coordinates before the height coordinate, so the
+ambient cylinder has spatial order
+$\mathbb R^N,\mathbb R^{6+k},\mathbb R_a$ and last coordinate $t$.
+Order the normal parameters as $(z,b,a)$, with respective dimensions
+$N,k,1$.  This parameter order is the explicitly recorded permutation
+of the order $(z,a,b)$ in the right side of (RB.3).  In a product collar
+write $J_i=Dj_i$, $Q_i=(J_i^{\mathsf T}J_i)^{-1}J_i^{\mathsf T}$,
+and $P_i=I-J_iQ_i$.  The derivative and projection of the original
+bordism embedding are block diagonal there.  Applying (RB.2)--(RB.3)
+gives the full collar frame
+\[
+ (z,b,a)\longmapsto
+ \bigl(P_i z,\tau_i(Q_i z,b),a;0\bigr).
+ \tag{RB.4}
+\]
+The final semicolon separates the height coordinate.  The first two
+blocks in (RB.4) are precisely the endpoint frame in the original
+tangent-to-normal construction.  The third is its right-appended unit
+vector.  The last component is zero throughout the collar, so the
+embedding and the normal frame have the exact product germs required
+by the embedded Pontryagin--Thom construction.  Formula (RB.4), rather
+than an orientation-only argument, verifies the asserted matching.
+
+If the initial definition of tangent-framed bordism supplies a framing
+homotopy on the boundary instead of the exact product equality
+(RB.2), make that homotopy constant near both endpoints and install it
+on a smaller collar.  It is a homotopy through bundle isomorphisms,
+equals the old frame on a neighbourhood of the inner seam, and hence
+pastes to the old framing on the remaining manifold.  This gives
+(RB.2) exactly and does not change the specified boundary maps.
+\end{proof}
+
+\begin{lemma}[The inverse normal-frame comparison]
+\label{courseIII:pt-normal-inverse-comparison}
+Starting with a framed normal bundle, passing to its tangent-plus-normal
+stable tangent framing, and applying the preceding normal construction
+recovers the original normal framing up to stabilization and an explicit
+homotopy through full normal frames.
+\end{lemma}
+
+\begin{proof}
+Let $j:M^6\to\mathbb R^D$ have derivative $J$ and normal frame
+$E:\mathbb R^r\to\nu$, where $D=6+r$.  Suspend once if necessary
+so that $r$ and $D$ are even.  Put
+\[
+ Q=(J^{\mathsf T}J)^{-1}J^{\mathsf T},\qquad
+ P=I-JQ,
+ \qquad E^+=(E^{\mathsf T}E)^{-1}E^{\mathsf T}.
+\]
+Then $EE^+=P$, and the stable tangent frame is
+$\tau(v,b)=Jv+Eb$.  Applying its normal construction to $(j,0)$ gives
+\[
+ F(a,b)=(Pa,JQa+Eb)
+       \quad\hbox{in }\nu\oplus\mathbb R^D.
+ \tag{RB.5}
+\]
+The original stabilized normal frame is
+$E_{\rm st}(b,a)=(Eb,a)$.  Decompose $a=Jv+Ec$ using
+$v=Qa$, $c=E^+a$.  On the fixed even-dimensional parameter space
+$\mathbb R^r$ choose the constant operator $I_r$ with square $-I$,
+acting on successive coordinate pairs by $(x,y)\mapsto(-y,x)$.
+For $0\le s\le1$, set $\theta=\pi s/2$, $\varphi=\pi s$, and
+\[
+ \begin{aligned}
+ b_s&=\cos\theta\,b+\sin\theta\,c,\\
+ c_s&=(\cos\varphi\,I+\sin\varphi\,I_r)
+             (-\sin\theta\,b+\cos\theta\,c),\\
+ G_s(b,a)&=(Eb_s,Jv+Ec_s).
+ \end{aligned}
+ \tag{RB.6}
+\]
+Each factor in this formula is invertible: use the inverse plane
+rotation on $(b,c)$ and replace the sine by its negative in the factor
+involving $I_r$.  Thus $G_s$ is a full frame for every $s$.  At $s=0$
+it is $E_{\rm st}$; at $s=1$ it is $(Ec,Jv+Eb)=F(a,b)$.
+The domain order $(b,a)$ at this endpoint is the recorded block
+permutation of the order $(a,b)$ in (RB.5).  Its sign is
+$(-1)^{Dr}=+1$.  It has a path through constant orientation-preserving
+matrices to the identity: use plane rotations to reduce its orthogonal
+matrix to a diagonal matrix, then rotate each pair of remaining
+negative diagonal entries through angle $\pi$.  Reversing the finite
+list gives the required path.  This supplies the parameter-order
+homotopy as well as the bundle-dependent homotopy (RB.6).
+All occurrences of $J,E,Q,E^+$ remain the given point-dependent
+matrices.  Smoothness follows from their displayed formulas and matrix
+inversion on positive definite Gram matrices.
+\end{proof}
+
+\begin{proposition}[The abstract tangent-framed Pontryagin--Thom comparison]
+\label{courseIII:pt-abstract-framed-comparison}
+The embedded normal-framed Pontryagin--Thom bijection, together with the
+displayed stable tangent-to-normal construction, induces an isomorphism
+$\Omega^{\rm fr}_6\cong\pi_6(\mathbb S)$ for abstract stable
+tangent-framed bordism.  It is independent of the embedding and the
+specified zero stabilizations, and preserves disjoint-union addition.
+\end{proposition}
+
+\begin{proof}
+\paragraph{Choice of the original embedding.}
+First consider appending $d$ zero coordinates to an embedding
+$j:M\to\mathbb R^D$.  Its canonical frame, in the displayed orders,
+is
+\[
+ ((a,c),b)\longmapsto(Pa,c,\tau(Qa,b)).
+\]
+Move the middle ambient block $c$ after the $\tau$ block and move its
+parameter block after $b$.  The result is exactly the original frame
+followed by $d$ identity vectors.  The two permutation signs are
+$(-1)^{d(6+k)}$ and $(-1)^{dk}$; with the stipulated even $k$ they
+are both positive.  The constant rotation construction in the preceding
+proof supplies both homotopies.  Thus a zero-coordinate enlargement of
+the original embedding agrees with the specified stable transition map,
+with the complete block comparison retained.
+
+The same comparisons account for embedding choices.  For two embeddings
+$j_0,j_1$ of one compact manifold, first place them in a common Euclidean
+space by zero coordinates.  In its double use
+$j_s=(\cos\theta(s)\,j_0,\sin\theta(s)\,j_1)$, where $\theta$
+goes from zero to $\pi/2$ and is constant near the endpoints.  At
+every parameter at least one coefficient is nonzero, so injectivity
+and injectivity of the tangent derivative follow from that embedding.
+Apply the actual Gram-matrix normal construction, including its specified
+zero stabilization, to this family; write the resulting stabilized
+embedding again as $j_s$.  It gives a smooth family of full normal
+frames $E_s$.  A family $E_s$ orthogonal to $Dj_s$ yields the
+normal frame
+\[
+ E_s A\longmapsto
+       (E_s A,-\langle E_s A,\partial_sj_s\rangle)
+\]
+on the embedded cylinder $(m,s)\mapsto(j_s(m),s)$: its scalar product
+with every vector $(Dj_s v+a\partial_sj_s,a)$ is zero.  Its rank is
+unchanged because its spatial part is injective.  It is a product frame
+near the ends.  An ambient plane rotation carries the second coordinate
+block to the first, with its full normal derivative.  Naturality of the
+canonical frame under a constant orthogonal transformation $R$ reads
+\[
+ E_{Rj}(a,b)=(R\oplus I)E_j(R^{-1}a,b).
+\]
+This follows by substituting $J\mapsto RJ$, $P\mapsto RPR^{-1}$
+and $Q\mapsto QR^{-1}$ in its complete formula.  The plane rotation
+path consequently supplies the parameter comparison as well as the
+ambient one.  The positive block-order comparisons are the
+constant-matrix homotopies already recorded above.  This gives embedded framed bordisms for all
+embedding and ordering choices, after finite stabilization.
+
+The group operation is also preserved.  Place two disjoint compact
+embedded representatives in disjoint Euclidean balls by translations
+and positive dilations, retaining their full transported frames.  Their
+tubes can be chosen inside those balls.  The collapse of their disjoint
+union is the map supported on those two balls, constant elsewhere.
+The based pinch description of addition in the sphere homotopy group
+is exactly this map.  The translations and dilations give framed
+cylinders by the same family construction, so this comparison is
+independent of the placements.
+
+Consequently the two existing Pontryagin--Thom constructions descend to
+abstract tangent-framed bordism in dimension six.  The tangent composite
+is the explicit involution homotopy already proved in the sphere-twist
+chapter, equations (7.9)--(7.19).  The normal composite is
+(RB.5)--(RB.6).  Relative embedding and (RB.4) give bordism compatibility.
+Together with the already proved embedded normal-framed bijection, these
+prove the asserted isomorphism
+$\Omega^{\rm fr}_6\cong\pi_6(\mathbb S)$ at the precise point where
+the geometric framing chapter uses it.  This bridge does not compute
+the stable group and does not certify any still unread Adams prerequisite.
+\end{proof}

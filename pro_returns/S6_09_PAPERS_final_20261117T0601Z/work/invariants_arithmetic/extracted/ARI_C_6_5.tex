@@ -1,0 +1,91 @@
+\begin{statement}[C.6.5; Proved: rigorous high-precision height enclosures]
+For every one of the eleven rational CM parameters in C.6.3,
+the files \path{records/C_cm_height_arb.json} and
+\path{code/C_cm_height_arb.out} give certified enclosures of
+$\log N(P)$ and $\widehat h_O(P)$ of radius less than
+$10^{-236}$. These enclosures use no floating-point height
+value as a proof step.
+\end{statement}
+\begin{proof}
+The CM discriminants, in the order of C.6.3, are
+\[
+ -8,-12,-16,-28,-7,-11,-19,-27,-43,-67,-163.
+\]
+Enumeration of primitive reduced forms
+$(a,b,c)$, $|b|\le a\le c$, $b^2-4ac=D$, with the usual
+nonnegative boundary convention, gives exactly one form of
+each discriminant, always with $a=1$.
+The range is finite and proved by $a\le\sqrt{|D|/3}$.
+Thus the CM theorem used in C.5.1 makes the corresponding
+singular modulus an integer. The Fourier enclosures below
+place it within $1/4$ of the specified $j$, proving its
+identity, rather than only numerical closeness. Exact class
+polynomials were also computed independently in
+\path{code/C_cm_class_polynomials.gp} and its output.
+
+Write $\tau=iT$ for the first four entries and
+$\tau=1/2+iT$ for the other seven, with
+\[
+ (T_1,T_2,T_3,T_4)=(\sqrt2,\sqrt3,2,\sqrt7),\qquad
+ T_k=\sqrt{|D_k|}/2\quad(k\ge5).
+\]
+Put $Q=e^{-2\pi T}$, $q=Q$ or $-Q$ accordingly,
+$M=350$, and $Y=2/5$. On $0\le y\le Y$,
+\begin{equation}\label{eq:ch-wp-bracket}
+ \frac{\wp(1/2-iy)}{\pi^2}
+ =\frac1{\cosh^2\pi y}-\frac13+
+ 8\sum_{n\ge1}\frac{nq^n}{1-q^n}
+                 \{1-(-1)^n\cosh(2\pi ny)\}.
+\end{equation}
+For $a=Qe^{2\pi Y}$, the absolute tail after $M$ in
+$\wp$ is at most
+\[
+ \frac{16\pi^2}{1-Q}
+ \frac{a^{M+1}\{M+1-Ma\}}{(1-a)^2}<10^{-875}.
+\]
+The proof is $1+\cosh(2\pi ny)\le2e^{2\pi nY}$ and
+$\sum_{n>M}na^n=a^{M+1}(M+1-Ma)/(1-a)^2$.
+Each previously computed decimal supplies only a rational
+candidate centre $y_0$. At the two rational endpoints
+$y_0\pm10^{-240}$ the truncated expression plus this
+infinite tail is respectively strictly positive and strictly
+negative. The code records all twenty-two strict signs.
+Continuity produces a zero within each bracket. Every zero
+of $\wp$ is one of the pair $\pm P$, and $N$ agrees on
+that pair, so no unproved choice of root is needed.
+
+The product formula on this bracket has positive real factors:
+\begin{align*}
+ \log N={}&\log(2\cosh\pi y)-\frac{\pi T}{6}
+                      -\frac{\pi y^2}{T}\\
+ &+\sum_{n\ge1}\{\log(1+q^ne^{2\pi y})
+                         +\log(1+q^ne^{-2\pi y})\}.
+\end{align*}
+Since $|\log(1+x)|\le |x|/(1-|x|)$ for real $|x|<1$,
+the omitted tail is bounded by
+\[
+ \frac{2e^{2\pi Y}Q^{M+1}}
+ {(1-Q)(1-e^{2\pi Y}Q^{M+1})}<10^{-1260}.
+\]
+All calculations use Arb enclosures at $1152$ bits; the
+radius comparisons and endpoint signs are exact interval
+comparisons. The resulting radius is less than $10^{-236}$.
+Adding the exact finite local logarithms of C.6.3 and
+subtracting this enclosure gives the claimed height bound.
+
+For completeness, the singular-modulus certificate uses
+$E_4=1+240\sum n^3q^n/(1-q^n)$ and
+$\Delta_0=q\prod(1-q^n)^{24}$. Their respective error
+bounds, after truncation at $M$, are
+\[
+ \frac{240(M+1)^3Q^{M+1}(1+4Q+Q^2)}{(1-Q)^5},
+ \qquad
+ \frac{24Q^{M+1}}{(1-Q)(1-Q^{M+1})}
+\]
+for $E_4$ and for the logarithm of the product. The first
+uses $(M+1+k)^3\le(M+1)^3(k+1)^3$ and the differentiated
+geometric series; the second uses the same logarithm bound.
+Thus $E_4^3/\Delta_0$ is rigorously enclosed. The complete
+certificate is \path{code/C_cm_height_arb.py}, with its
+output and rational bracket centres retained.
+\end{proof}

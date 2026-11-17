@@ -1,0 +1,23 @@
+\begin{statement}[C.1.3; Proved: numerical cross-check]
+The independent analytic computation in
+\path{code/Cspecial_torsion_numerics.py} gives, to fifty decimals,
+\begin{align*}
+ N(z_1)&=1.31607401295249246081921890179699905516006859020582\ldots,\\
+ N(z_2)&=1.41421356237309504880168872420969807856967187537695\ldots,\\
+ \operatorname{Im}\beta^{\rm part}(z_1)
+  &=-1.27101206057537346286579673538412682778809507094949\ldots,\\
+ \operatorname{Im}\beta^{\rm part}(z_2)
+  &=-0.21100425815613411418178314271018934802718590587233\ldots.
+\end{align*}
+The theta/eta evaluations and exact expressions differ by less than
+$10^{-100}$ at working precision $110$ decimal digits.
+\end{statement}
+\begin{proof}
+The program directly evaluates the theta series and the eta product,
+then compares the displayed closed forms. The eta product has $160$
+factors. Since $|q|\le e^{-\pi\sqrt3}<1/200$, the omitted logarithm is
+at most $\sum_{m>160}|q|^m/(1-|q|^m)<10^{-368}$.
+The output records the measured floating-point discrepancies. The
+exact values are established by C.1.2; this computation is their
+independent numerical check, not an additional rounding certificate.
+\end{proof}

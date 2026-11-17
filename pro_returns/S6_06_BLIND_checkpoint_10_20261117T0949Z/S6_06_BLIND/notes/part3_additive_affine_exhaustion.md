@@ -1,0 +1,167 @@
+# Exhaustion of the actual affine and line lifts at additive caps
+
+Proved as P3F.44 after the independent root audit. The local source,
+resolved line and boundary marking are the actual ones constructed
+in SC, OA and II. This comparison transports their boundary maps;
+it does not identify different global annular gluings without
+transporting those maps.
+
+## AE.1. The section group and its exact cyclic action
+
+Let \(D\) be the canonical order-\(m\) root deck on the
+constructed minimal regular source \(S'\to\Delta_z\). Its
+action on an analytic section is
+\[
+ (D\cdot T)(z)=D\bigl(T(\zeta_m^{-1}z)\bigr).
+\]
+All sums below are sums in this actual section group. The marked
+section \(Q'\) is \(D\)-invariant. The constructed branch
+\(R\), with \(mR=Q'\), is also \(D\)-invariant. At a
+reduced II, III or IV root it is the unique division branch
+because the central identity group is additive and multiplication
+by \(m\) is invertible on the component group. At a good root
+it is the branch with central value \(O\).
+
+Every affine source map with the specified linear deck is
+\(a=t_S D\) for an actual analytic section \(S\). Its exact
+norm equation is
+\[
+ a^m=t_{-nQ'},\qquad
+ \sum_{j=0}^{m-1}D^jS=-nQ'.                         \tag{AE.1}
+\]
+Set \(Z=S+nR\). Then \(\sum D^jZ=0\). Conjugation of the
+constructed source map \(a_0=t_{-nR}D\) by translation is
+\[
+ t_T a_0t_T^{-1}=t_{T-DT-nR}D.                    \tag{AE.2}
+\]
+Thus the precise required equation is \((1-D)T=Z\).
+
+## AE.2. An explicit solution on every constructed root
+
+At a reduced root multiplication by \(m\) is a bijection on
+germs of analytic sections. On the additive central identity
+group its inverse is multiplication by \(1/m\), and on the
+finite component group it is a bijection because \(m\) is
+prime to its order. Each central inverse extends uniquely by
+the analytic inverse function theorem. An analytic section in
+its kernel has central value zero, so that same uniqueness
+shows that it is the zero section. Define
+\[
+ T=-[m]^{-1}\left(\sum_{j=0}^{m-1}jD^jZ\right).
+                                                               \tag{AE.3}
+\]
+Since \(D^m=1\), direct subtraction gives
+\[
+ (1-D)\sum_{j=0}^{m-1}jD^jZ
+   =\sum_{j=0}^{m-1}D^jZ-mZ=-mZ.
+\]
+Equation (AE.3) therefore solves (AE.2) exactly. The translation
+extends over the resolved minimal regular source by its actual
+source group law and graph comparison, already used to extend
+the norm map in SC/OA/II.
+
+At a good root the central linear automorphism \(D_0\) has
+order three, four or six and has no eigenvalue one. Hence
+\(1-D_0\) is a surjective elliptic isogeny. Choose a central
+point \(T_0\) with
+\((1-D_0)T_0=Z_0\), and lift it to an analytic section
+\(\widetilde T\) of the smooth elliptic family. Put
+\[
+ Z_1=Z-(1-D)\widetilde T.
+\]
+It has central value zero and still has zero cyclic norm.
+The subgroup of analytic sections with central value zero has
+unique \(m\)-division with central value zero, by the analytic
+inverse function theorem at \(O\). Apply (AE.3) to \(Z_1\)
+in this subgroup and call the result \(T_1\). Then
+\(T=\widetilde T+T_1\) solves \((1-D)T=Z\). Substitution
+in (AE.2) is the required actual source isomorphism. No choice
+of a rational homology marking was used to obtain it.
+
+This also verifies the good-root norm restriction without losing
+the central point. On the good central fibre
+\(1+D_0+\cdots+D_0^{m-1}=0\), so (AE.1) forces
+\(nQ'_0=0\). For III/IV, \(Q'_0\) has order two/three
+when its component is nonzero; coprimality with \(m\) excludes
+that case. For II its actual order-six fixed-point calculation
+gives \(Q'_0=O\), and the constructed norm is admissible.
+
+## AE.3. The actual translation lift on the specified line
+
+Let \(N\) be the resolved root line already constructed. On
+every reduced central component it has degree zero, and on a
+good central fibre it has degree zero. Translation by \(T\)
+preserves these degree vectors. On a smooth generic fibre,
+\(t_T^*N\otimes N^{-1}\) is trivial: in a degree-zero
+uniformization its factors of automorphy are constant in the
+elliptic variable, so a lift of the translation leaves them
+unchanged.
+
+There is an extending holomorphic line isomorphism on the whole
+source, not only a generic Picard-class equality. Apply proper
+direct-image coherence to
+\(L=t_T^*N\otimes N^{-1}\). Its direct image is torsion-free
+of generic rank one on the disc, hence free after shrinking.
+A nonzero generator evaluates to a section of \(L\) whose
+divisor is vertical: on each generic compact elliptic fibre it
+is a nonzero section of a trivial degree-zero line. Its degree
+on each central component is zero. The exact component
+intersection matrix consequently puts that divisor in its
+primitive whole-fibre kernel. At these reduced or good roots
+the fibre has multiplicity one, so dividing by its integral
+base monomial removes the divisor. The resulting section is
+nowhere zero and gives the required line map \(\widetilde t_T\).
+
+This lift commutes with the actual suspension \(B_0\). On a
+generic elliptic fibre write the degree-zero line as the quotient
+of \(\mathbb C\times\mathbb C^*\) by constant factors of
+automorphy. Source translations lift as
+\((z,v)\mapsto(z+t,cv)\); these maps commute. The commutator
+of the extending maps is a holomorphic unit on the root source.
+It is one on every generic fibre and hence one everywhere.
+Thus conjugating by \(\widetilde t_T\) transports the actual
+line root while preserving \(B_0\), not merely its source
+translation. The base monomial used above retains its deck
+character in this transported map.
+
+## AE.4. The remaining finite delta character and the boundary map
+
+After this source-and-line conjugation, compare the given line
+root \(A\) with the constructed \(A_0\), which have the same
+source map. Define the ratio by \(AA_0^{-1}=M_c\), where
+\(M_c\) multiplies the line at base coordinate \(z\) by
+\(c(z)\). This is a nowhere-zero holomorphic function
+on \(S'\), hence a base unit \(c(z)\), because the source
+fibres are compact and connected. The equality of their exact
+norms is
+\[
+ \prod_{j=0}^{m-1}c(\zeta_m^jz)=1.                \tag{AE.4}
+\]
+Its central value is \(c(0)=\zeta_m^d\) for a retained
+integer \(d\bmod m\). Divide this constant and take the
+analytic logarithm \(h(z)\) with \(h(0)=0\). Equation
+(AE.4) implies \(\sum D^jh=0\); the possible integral
+logarithm constant is zero at the centre. The additive formula
+\[
+ b(z)=-\frac1m\sum_{j=0}^{m-1}jD^jh(z)
+\]
+gives \((1-D)b=h\), with \((Db)(z)=b(\zeta_m^{-1}z)\).
+The complete conjugation identity, with its arrow fixed, is
+\[
+ A=M_{e^b}\,(\zeta_m^dA_0)\,M_{e^{-b}},
+\]
+because its scalar multiplier is
+\(\zeta_m^d\exp(b(z)-b(\zeta_m^{-1}z))=c(z)\).
+It leaves \(B_0\) unchanged
+because that map fixes the base.
+
+Consequently every actual affine line lift on each constructed
+root is carried to \(\zeta_m^dA_0\) by the displayed maps,
+with its finite delta character retained. Their restrictions to
+the outer annulus are the boundary comparison maps. They may
+contain a source translation and an integral line gauge; these
+are transported, not set to zero. The one-cap topology proofs
+allow the resulting integer collar coefficient in full, and
+their degree-two matrix remains unimodular for every value.
+Global parameter-return comparisons continue to use the actual
+closing map and these transported characters, as in K24.

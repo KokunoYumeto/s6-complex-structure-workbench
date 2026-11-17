@@ -1,0 +1,106 @@
+\begin{claim}{A2.2}{Proved}{The evaluated scalar and the two local leading terms}
+In the coordinate \eqref{eq:A-s-branch},
+\begin{equation}\label{eq:A-mu-value}
+\mu_s(0)=i\,C_4,
+\qquad
+C_4=\frac{\sqrt{2/3}}{\pi E_4(i)^{1/4}}
+=\frac{4\sqrt\pi}{3^{3/4}\Gamma(1/4)^2}>0.
+\end{equation}
+Numerically,
+\[
+C_4=0.2366093140807852246877051134504496062943051340858243372192243072\ldots.
+\]
+For $r^3=t$, with $r>0$ on the arc $0<t<1$ and $\tau$ travelling
+from $\rho$ to $i$ along the unit circle, set
+\[
+\lambda=\frac{3e^{5\pi i/6}}{2\pi E_6(\rho)^{1/3}}.
+\]
+Then $\tau=\rho+\lambda r+O(r^2)$ and
+\[
+K_r=-\frac{3i\lambda}{2\pi}r^2+O(r^3).
+\]
+The leading coefficient has real and imaginary parts
+\[
+\begin{aligned}
+\operatorname{Re}K_2&=0.08010221108753827140763650309934451243\ldots,\\
+\operatorname{Im}K_2&=0.13874109940222333968402480721280640441\ldots.
+\end{aligned}
+\]
+\end{claim}
+\begin{proof}
+Ramanujan's differential relations give
+$E_6'(i)=-\pi i E_4(i)^2$ and
+$E_4'(\rho)=-(2\pi i/3)E_6(\rho)$.
+Using $j=1728E_4^3/(E_4^3-E_6^2)$, we obtain
+\[
+j(\tau)-1728=-1728\pi^2E_4(i)(\tau-i)^2+O((\tau-i)^3).
+\]
+Since $j=1728(1+s^4)$, the chosen branch is precisely
+\eqref{eq:A-s-branch}.  Formula \eqref{eq:A-modular-K} now gives
+\[
+K_s(0)=-\frac4{\pi^2\sqrt{E_4(i)}}=6\mu_s(0)^2,
+\]
+because $\tau_s(0)=0$.  This proves nonvanishing and the first
+formula in \eqref{eq:A-mu-value}; the sign is fixed by the stated
+coordinate convention.  Similarly
+$j(\tau)=-512i\pi^3E_6(\rho)(\tau-\rho)^3+cdots$.
+This gives the stated $\lambda$, and substitution into
+\eqref{eq:A-modular-K} gives the coefficient $-3i\lambda/(2\pi)$.
+
+There is also a geometric nonvanishing proof independent of this
+modular determinant.  Using the section identification proved in
+A2.3, set $x=s^2X,y=s^3Y,t=1+s^4$.  The smooth family becomes
+\[
+Y^2=X^3-3(1+s^4)^3X+2(1+s^4)^4s^2,
+\qquad P=(0,-\sqrt2(1+s^4)^2s)
+\]
+on the chosen branch.  At $s=0$ its equation is
+$Y^2=X^3-3X$ and the point is $(0,0)$.  The first variation of the
+curve itself is zero.  In the local coordinate $Y$ at that point,
+$dX/(2Y)=dY/(3X^2-3)$, so the Abel integral of $P$ has derivative
+$\sqrt2/3$.  The marked period is $-i\Omega_R$, rather than the
+positive real period $\Omega_R$: the positive imaginary branch
+$\tau=iy$, $y>1$, has elliptic scale $F/s=i/\Omega_R$ at zero.
+Its period has zero first derivative.  Division gives
+$\mu_s(0)=i\sqrt2/(3\Omega_R)\ne0$.
+Using $g_2(\Z+i\Z)=(4\pi^4/3)E_4(i)$ and
+$g_2(\Omega_R(\Z+i\Z))=12$ gives
+$\Omega_R=\pi E_4(i)^{1/4}/\sqrt3$, which identifies this value
+with \eqref{eq:A-mu-value}.  This also explains why choosing the
+positive real period with a positive real $s$ instead would select
+the reciprocal branch $\operatorname{Im}\tau<1$.
+
+Here are the numerical methods actually run.  The first evaluates
+$E_4(i)=1+240\sum_{n=1}^{100}\sigma_3(n)e^{-2\pi n}$ at 100
+decimal working digits and inserts it in \eqref{eq:A-mu-value}.
+The second integrates
+\[
+\Omega_R=\frac{\sqrt2}{3^{1/4}}
+\int_0^{\pi/2}(1-\tfrac12\sin^2\theta)^{-1/2}\,d\theta,
+\qquad C_4=\frac{\sqrt2}{3\Omega_R}.
+\]
+This is the real period of $Y^2=X^3-3X$ for $dX/(2Y)$; substituting
+the three roots $\sqrt3,0,-\sqrt3$ in the elementary elliptic-integral
+change of variable proves the formula.  The beta-integral evaluation
+of the displayed complete elliptic integral gives the gamma
+expression in \eqref{eq:A-mu-value}.  The Fourier and quadrature
+answers agree with absolute discrepancy $1.79\cdot10^{-102}$.
+As a third check, Newton iteration on the Weierstrass Fourier series
+with $j(\tau)=1728(1+s^4)$, using the two roots adjacent to
+$(1-\tau)/2$, gives their symmetric derivative.  At $s=10^{-15}$ it
+is
+\[
+i\,0.23660931408078522468770511345048081721971218\ldots,
+\]
+with discrepancy $3.13\cdot10^{-32}$ and maximum residual below
+$2.9\cdot10^{-101}$.  The order-three coefficient was independently
+evaluated using the divisor-sum expansion of $E_6$ and its Jacobi
+theta-constant formula, with agreement to the working precision.
+The code, all output, and precision are supplied.  These are numerical
+corroborations, not interval certificates; nonvanishing and the exact
+orders were proved analytically above.  For example the elementary
+bound $\sigma_3(n)\le n^4$ and $e^{-2\pi}<1/500$ bounds the omitted
+Fourier tail after $N$ terms by
+$250(N+1)^4 500^{-(N+1)}$; roundoff is separately controlled by
+the working precision and the independent calculation.
+\end{proof}

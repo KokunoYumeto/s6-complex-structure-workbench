@@ -1,0 +1,187 @@
+\subsection{Radial period coordinates and the compact quotient}
+\label{mapsIII:carrier-radial-prerequisites}
+
+The carrier constructions use the following real quotient of the period
+family of \cref{wb:prop:period-input-audit}.  Fix the lattice basis
+\[
+ \Lambda=\mathbb Z\langle\widehat\gamma,\widehat u,
+                         \widehat w,\widehat\delta\rangle.
+\]
+The cusp coordinate and its holomorphic residual functions give
+\[
+ \Pi=[Z\mid I_2],\qquad
+ Z=s\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+       +\begin{pmatrix}6\mu(t)&h(t)\\b(t)-h(t)&\mu(t)\end{pmatrix},
+ \qquad t=e^{2\pi i s}.
+\]
+Here $\mu,b,h$ are holomorphic on a disc containing zero.  On the positive
+radial ray put $t=e^{-2\pi T}$ and $s=iT$.  Choose $T_0$ large enough that
+this ray lies in that disc for $T\geq T_0$, and set
+\begin{equation}
+ \begin{aligned}
+ \mu_T&=\alpha_T+im_T,& h_T&=\eta_T+iH_T,& b_T&=\xi_T+iB_T,\\
+ c_T&=\xi_T-\eta_T,& L_T&=T+H_T,& q_T&=L_T-B_T,\\
+ D_T&=L_Tq_T+6m_T^2.
+ \end{aligned}
+ \label{wb:cusp-spec-radial-notation}
+\end{equation}
+All these quantities are real.  Write
+$m=\operatorname{Im}\mu(0)$, $H=\operatorname{Im}h(0)$ and
+$B=\operatorname{Im}b(0)$.  Taylor expansion at zero yields
+\begin{equation}
+ m_T=m+O(e^{-2\pi T}),\qquad
+ H_T=H+O(e^{-2\pi T}),\qquad
+ B_T=B+O(e^{-2\pi T}),
+ \label{wb:cusp-spec-holomorphic-errors}
+\end{equation}
+and the analogous estimates for the real parts.  In particular
+$D_T=T^2+O(T)>0$ after increasing $T_0$.
+
+Identify $\mathbb C^2$ with $\mathbb R^4$ in the order
+$(x_1,y_1,x_2,y_2)$ and equip it with the Euclidean metric.  The induced
+flat metric on a quotient is the metric used below.  This metric is an
+explicit choice in these coordinates.
+
+\begin{proposition}[Real periods and their dual coordinates]
+\label{mapsIII:carrier-real-periods}
+The radial fibre and its real period matrix are
+\[
+ F_T=\mathbb R^4/P_T\mathbb Z^4,\qquad
+ P_T=\begin{pmatrix}
+ 6\alpha_T&\eta_T&1&0\\
+ 6m_T&L_T&0&0\\
+ c_T&\alpha_T&0&1\\
+ -q_T&m_T&0&0
+ \end{pmatrix}.
+\]
+Its determinant is $-D_T$.  Its complete inverse transpose is
+\begin{equation}
+ P_T^{-\mathsf T}=
+ \begin{pmatrix}
+ 0&0&1&0\\[2pt]
+ \dfrac{m_T}{D_T}&\dfrac{q_T}{D_T}&
+ \dfrac{-6m_T\alpha_T-q_T\eta_T}{D_T}&
+ \dfrac{-m_Tc_T-q_T\alpha_T}{D_T}\\[7pt]
+ 0&0&0&1\\[2pt]
+ -\dfrac{L_T}{D_T}&\dfrac{6m_T}{D_T}&
+ \dfrac{6(L_T\alpha_T-m_T\eta_T)}{D_T}&
+ \dfrac{L_Tc_T-6m_T\alpha_T}{D_T}
+ \end{pmatrix}.
+ \label{wb:cusp-spec-full-inverse-transpose}
+\end{equation}
+Thus $(P_T\mathbb Z^4)^*=P_T^{-\mathsf T}\mathbb Z^4$.
+\end{proposition}
+
+\begin{proof}
+At $s=iT$ the complex period matrix is
+\[
+ Z_T=\begin{pmatrix}6\mu_T&h_T+iT\\
+                          b_T-h_T-iT&\mu_T\end{pmatrix}.
+\]
+Taking real and imaginary parts of its columns and of the identity
+columns gives the displayed $P_T$.  Expansion along its last two
+columns gives $\det P_T=-L_Tq_T-6m_T^2=-D_T$.
+
+To solve $P_T^{\mathsf T}x=(r,s,n_1,n_2)^{\mathsf T}$, its last two
+equations first give $x_1=n_1$ and $x_3=n_2$.  Put
+\[
+ R=r-6\alpha_Tn_1-c_Tn_2,\qquad
+ S=s-\eta_Tn_1-\alpha_Tn_2.
+\]
+The remaining two equations and their solution are
+\[
+ \begin{pmatrix}6m_T&-q_T\\L_T&m_T\end{pmatrix}
+ \binom{x_2}{x_4}=\binom R S,
+ \qquad
+ \binom{x_2}{x_4}=
+ \frac1{D_T}\begin{pmatrix}m_T&q_T\\-L_T&6m_T\end{pmatrix}
+ \binom R S.
+\]
+Substituting $R,S$ proves every entry in
+\eqref{wb:cusp-spec-full-inverse-transpose}.  Finally a real covector
+$\ell$ is integral on $P_T\mathbb Z^4$ exactly when
+$P_T^{\mathsf T}\ell\in\mathbb Z^4$, proving the dual-lattice formula.
+\end{proof}
+
+Let $e_1,\ldots,e_4$ denote the coordinate unit vectors in this real
+order and let $v_{\gamma,T},v_{u,T}$ be the first two columns of $P_T$.
+Then
+\[
+ P_T\mathbb Z^4=
+ \mathbb Zv_{\gamma,T}\oplus\mathbb Zv_{u,T}
+                 \oplus\mathbb Ze_1\oplus\mathbb Ze_3.
+\]
+
+\begin{proposition}[Exact compact quotient of the native cusp fibre]
+\label{wb:cusp-spec-native-quotient}
+Define the orthogonal projection and its projected period matrix by
+\[
+ \rho(x_1,x_2,x_3,x_4)=(x_2,x_4),\qquad
+ Y_T=\begin{pmatrix}6m_T&L_T\\-q_T&m_T\end{pmatrix}.
+\]
+Then $\det Y_T=D_T>0$, so $Q_T=\mathbb R^2/Y_T\mathbb Z^2$ is a
+compact real torus, and projection induces an exact sequence of compact
+real Lie groups
+\[
+ 0\longrightarrow
+ \mathbb T^2_{\mathrm{re}}=
+ \frac{\mathbb Re_1\oplus\mathbb Re_3}
+      {\mathbb Ze_1\oplus\mathbb Ze_3}
+ \longrightarrow F_T\xrightarrow{\ \pi_T\ }Q_T
+ \longrightarrow0.
+\]
+This is a Riemannian quotient for the displayed flat metrics.  There is a
+constant $C$, independent of $T\geq T_0$, such that
+\[
+ \|Y_T(a,b)^{\mathsf T}\|\geq(T-C)\sqrt{a^2+b^2},\qquad
+ \operatorname{sys}(Q_T)\geq T-C.
+\]
+For every $R>0$, the radius-$R$ balls of $Q_T$ and $Q_T^2$ are exactly
+Euclidean once $T-C>4R$.  Consequently their pointed limits are
+$\mathbb R^2$ and $\mathbb R^4$, respectively, both locally isometrically
+and smoothly, and in pointed Gromov--Hausdorff topology.
+\end{proposition}
+
+\begin{proof}
+The determinant calculation gives
+$\det Y_T=6m_T^2+L_Tq_T=D_T$.  Projection kills the last two period
+columns and sends the first two to those of $Y_T$.  Therefore
+$\rho(P_T\mathbb Z^4)=Y_T\mathbb Z^2$, which proves that $\pi_T$ is
+well defined and surjective.
+
+If $\pi_T([x])=0$, choose $a,b\in\mathbb Z$ such that
+$\rho(x)=Y_T(a,b)^{\mathsf T}$.  The vector
+$x-av_{\gamma,T}-bv_{u,T}$ belongs to
+$\mathbb Re_1\oplus\mathbb Re_3$ and represents the same point of
+$F_T$.  Conversely every point in this real plane maps to zero.
+If a lattice vector lies in that plane, its first two lattice
+coefficients satisfy $Y_T(a,b)^{\mathsf T}=0$.  Invertibility forces
+$a=b=0$, so the intersection lattice is exactly
+$\mathbb Ze_1\oplus\mathbb Ze_3$.  This proves the asserted kernel and
+its injective inclusion.  Since $\rho$ is the orthogonal projection
+along that plane, its Euclidean quotient metric is the displayed one.
+
+Write
+\[
+ Y_T=T\begin{pmatrix}0&1\\-1&0\end{pmatrix}
+       +\begin{pmatrix}6m_T&H_T\\B_T-H_T&m_T\end{pmatrix}.
+\]
+The second matrix has uniformly bounded operator norm by holomorphy.
+Choose $C$ above this bound.  The first matrix is $T$ times an orthogonal
+matrix, and the reverse triangle inequality gives the stated estimate.
+A nonzero integer vector has norm at least one, which proves the
+systolic bound; it also proves the same bound for the product lattice.
+
+For $x,y$ in the Euclidean radius-$R$ ball and a nonzero lattice vector
+$\lambda$, the estimate
+\[
+ \|x-y+\lambda\|\geq\|\lambda\|-\|x-y\|
+ \geq(T-C)-2R>2R\geq\|x-y\|
+\]
+holds when $T-C>4R$.  Thus no lattice translation shortens a distance
+between points of this ball.  Every point of the quotient ball has a
+lift in the Euclidean ball, by choosing a shortest representative of
+its lattice coset.  The covering map therefore gives an isometry onto
+the entire quotient ball.  These are smooth local isometries, proving
+all the stated pointed convergences.
+\end{proof}

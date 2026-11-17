@@ -1,0 +1,138 @@
+% Source concordance: S6_03_CDP D.1.14; compare S6_02_FAMILY F1.1.
+% Full independent reading: GPT-6 Astra (OpenAI, ChatGPT Pro mode),
+% 17 November 2026 (Europe/Berlin). Exact matrix identities rerun in
+% deliverables/code/cdp_audit/D_exact_checks.py.
+% This is an alternative exposition of the same kernel argument as F1.1,
+% not a genuinely different mathematical proof and not a proof of F1.2.
+\begin{proposition}[The integral monodromy subgroup]\label{prop:cdp-index-twelve}
+On the lattice $\Lambda=\mathbb Z^4$, in the ordered basis
+$(\widehat\gamma,\widehat u,\widehat w,\widehat\delta)$, put
+\[
+ A_1=\begin{pmatrix}1&0&0&0\\6&0&1&0\\-6&-1&-1&0\\-2&1&0&1\end{pmatrix},
+ \qquad
+ A_2=\begin{pmatrix}1&0&0&0\\0&0&-1&0\\-6&1&0&0\\3&0&1&1\end{pmatrix},
+ \qquad
+ \Omega=\begin{pmatrix}0&0&0&6\\0&0&1&0\\0&-1&0&0\\-6&0&0&0\end{pmatrix}.
+\]
+Let $e=\widehat\delta=(0,0,0,1)^t$, let
+$\gamma=(1,0,0,0)$, and define
+\[
+ P_e=\{G\in\operatorname{GL}_4(\mathbb Z):G^t\Omega G=\Omega,\ Ge=e\}.
+\]
+Write $J=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$.
+Every element of $P_e$ has a unique expression, in blocks of sizes $1,2,1$,
+\[
+ g(B,x,t)=
+ \begin{pmatrix}1&0&0\\6x&B&0\\t&-x^tJB&1\end{pmatrix},
+ \qquad B\in\operatorname{SL}_2(\mathbb Z),\quad x\in\mathbb Z^2,\quad t\in\mathbb Z.
+\]
+Let $Q(x)=x_1+x_2+x_1x_2$. There is a unique homomorphism
+$\alpha:\operatorname{SL}_2(\mathbb Z)\to\mathbb Z/12$ satisfying
+\[
+ \alpha\!\begin{pmatrix}0&-1\\1&0\end{pmatrix}=9,
+ \qquad
+ \alpha\!\begin{pmatrix}1&1\\0&1\end{pmatrix}=1.
+\]
+Then
+\[
+ \langle A_1,A_2\rangle
+ =\{g(B,x,t):t+6Q(x)-\alpha(B)=0\pmod {12}\},
+ \qquad [P_e:\langle A_1,A_2\rangle]=12.
+\]
+\end{proposition}
+\begin{proof}
+\textit{Step 1: the integral stabilizer.}
+Since $Ge=e$ and $G$ preserves $\Omega$, the identity
+$\Omega(Gv,e)=\Omega(v,e)$ forces the first row of $G$ to be
+$(1,0,0,0)$. The last column is $e$, so write
+\[
+ G=\begin{pmatrix}1&0&0\\v&B&0\\t&w&1\end{pmatrix}.
+\]
+Preservation of $\Omega$ is equivalent to
+$B^tJB=J$ and $6w+v^tJB=0$. The first equality gives
+$B\in\operatorname{SL}_2(\mathbb Z)$. The second and integrality of $w$
+give $v^tJB\in6\mathbb Z^2$. Because $JB$ is unimodular,
+$v=6x$ for a unique integral vector $x$. This proves the asserted
+parametrization, including its converse. Block multiplication gives
+\begin{equation}\label{eq:cdp-parabolic-law}
+ g(B,x,t)g(C,y,s)=g(BC,x+By,t+s-6x^tJBy).
+\end{equation}
+
+\textit{Step 2: the cyclic character of the middle block.}
+Put
+\[
+ S=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+ a=\begin{pmatrix}0&1\\-1&-1\end{pmatrix},\qquad
+ T=Sa=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+\]
+The Euclidean algorithm on the first column of an integral
+unimodular matrix shows that $S,T$, hence $a,S$, generate
+$\operatorname{SL}_2(\mathbb Z)$. Their images in
+$\operatorname{PSL}_2(\mathbb Z)$ have orders three and two.
+For the fractional-linear action on $\mathbb R\cup\{\infty\}$,
+$a$ sends $(0,\infty)$ into $(-1,0)$, $a^2$ sends
+$(0,\infty)$ into $(-\infty,-1)$, and $S$ sends
+$(-\infty,0)$ into $(0,\infty)$. The reduced-word ping-pong argument
+therefore identifies the subgroup they generate in the projective
+group with the free product of their cyclic subgroups: a reduced
+alternating word, after conjugation to start and end in the
+order-three factor, sends the positive interval into the negative
+interval and cannot be the identity. Such a conjugation is possible
+for every nontrivial cyclically reduced alternating word because
+the order-three factor has two nonidentity elements; a word in one
+factor is already nonidentity. Lifting to the integral group gives
+\[
+ \operatorname{SL}_2(\mathbb Z)
+ =\langle a,S\mid a^3=S^4=1,\ [a,S^2]=1\rangle.
+\]
+Indeed, the presented group maps surjectively onto the integral
+group; quotienting its central element $S^2$ gives the just-proved
+free product, and $S^2$ maps to $-I$, so the map has trivial kernel.
+The assignments $\alpha(a)=4$ and $\alpha(S)=9$ respect these
+relations modulo $12$ and give $\alpha(T)=1$. They define the
+required homomorphism, which is unique because $S,T$ generate.
+
+\textit{Step 3: the character of the stabilizer.}
+Modulo two, $Q$ vanishes exactly at the origin of $(\mathbb Z/2)^2$.
+Consequently $Q(Bx)=Q(x)$ modulo two for every integral unimodular
+$B$. Also
+\[
+ Q(x+y)-Q(x)-Q(y)=x_1y_2+x_2y_1=x^tJy\pmod2.
+\]
+Together with \eqref{eq:cdp-parabolic-law} these identities show that
+\[
+ \chi(g(B,x,t))=t+6Q(x)-\alpha(B)\pmod {12}
+\]
+is a homomorphism. It is surjective because
+$\chi(g(I,0,1))=1$. Direct substitution gives
+\[
+ A_1=g(a,(1,-1)^t,-2),\qquad A_2=g(S,(0,-1)^t,3),
+ \qquad \chi(A_1)=\chi(A_2)=0.
+\]
+Thus $\langle A_1,A_2\rangle\subseteq\ker\chi$.
+
+\textit{Step 4: equality with the kernel.}
+With $[G,H]=GHG^{-1}H^{-1}$, multiplication in
+\eqref{eq:cdp-parabolic-law} gives
+\[
+ \begin{aligned}
+ K&=[A_1,A_2^2]=g(I,(0,-1)^t,6),\\
+ U&=A_2KA_2^{-1}=g(I,(1,0)^t,-6),\\
+ V&=K^{-1}=g(I,(0,1)^t,-6),\\
+ Z&=I+12e\gamma=g(I,0,12),\qquad [U,V]=Z^{-1}.
+ \end{aligned}
+\]
+In particular $U,V,Z$ belong to $\langle A_1,A_2\rangle$. For all
+integers $r,s,n$, the multiplication law gives
+\[
+ U^rV^sZ^n=g(I,(r,s)^t,-6(r+s+rs)+12n).
+\]
+These are precisely the elements of $\ker\chi$ whose middle block
+is $I$. The middle blocks $a,S$ of $A_1,A_2$ generate
+$\operatorname{SL}_2(\mathbb Z)$. Given any $G\in\ker\chi$, choose
+$H\in\langle A_1,A_2\rangle$ with the same middle block as $G$.
+Then $H^{-1}G$ belongs to the already computed kernel over $I$ and
+hence to $\langle A_1,A_2\rangle$. Therefore
+$\ker\chi=\langle A_1,A_2\rangle$, and surjectivity of $\chi$ proves
+the index formula.
+\end{proof}

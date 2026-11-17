@@ -1,0 +1,1967 @@
+{
+  "checker": "GPT-6 Astra (OpenAI, ChatGPT Pro mode)",
+  "effort": "Pro",
+  "date": "2026-11-17",
+  "archive_root": "The directory containing S6_09_PAPERS_I.tex and code/. All paths below are relative to that directory.",
+  "runtime_requirements": {
+    "python_flint": "0.9.0, installed cached wheel; execution may use the shared /workspace/scratch/037cd144174c/deps/python",
+    "pari": "2.15.2 with pari-elldata0.20210301; certified Simon number-field descent includes bnfcertify=1",
+    "eclib": "20221012 versus original run20250122; all index bounds and saturation conclusions reproduced",
+    "mpfr": "4.2 with GMP; Crank derivatives1024 bits, CM streams384/512 bits, directed Gross–Zagier intervals256 bits"
+  },
+  "additional_python_requirements": [
+    "sympy",
+    "mpmath",
+    "numpy if imported by a retained diagnostic"
+  ],
+  "commands_scope": "Recorded mathematical runs were completed. The archive commands use identical mathematical inputs with portable paths; standard system development libraries are required to rebuild C++ binaries.",
+  "build_commands": [
+    {
+      "target": "code/Crank_derivatives",
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "command": [
+        "g++",
+        "-O2",
+        "-std=c++17",
+        "code/Crank_derivatives.cpp",
+        "-o",
+        "code/Crank_derivatives",
+        "-lmpfr",
+        "-lgmp"
+      ]
+    },
+    {
+      "target": "code/Crank_cm_stream",
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "command": [
+        "g++",
+        "-O2",
+        "-std=c++17",
+        "code/Crank_cm_stream.cpp",
+        "-o",
+        "code/Crank_cm_stream",
+        "-lmpfr",
+        "-lgmp"
+      ]
+    },
+    {
+      "target": "code/B_C6_central_stream",
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "command": [
+        "g++",
+        "-O2",
+        "-std=c++17",
+        "code/B_C6_central_stream.cpp",
+        "-o",
+        "code/B_C6_central_stream",
+        "-lmpfr",
+        "-lgmp"
+      ]
+    },
+    {
+      "target": "code/Crank_cm_stream_512",
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "command": [
+        "g++",
+        "-O2",
+        "-std=c++17",
+        "-DWORK_PREC=512",
+        "-DWORK_RAD=96",
+        "code/Crank_cm_stream.cpp",
+        "-o",
+        "code/Crank_cm_stream_512",
+        "-lmpfr",
+        "-lgmp"
+      ]
+    },
+    {
+      "target": "code/Crank_saturation",
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "command": [
+        "g++",
+        "-O2",
+        "-std=c++17",
+        "code/Crank_saturation.cpp",
+        "-o",
+        "code/Crank_saturation",
+        "-lec",
+        "-lntl",
+        "-lpari",
+        "-lmpfr",
+        "-lgmp"
+      ]
+    }
+  ],
+  "portable_gp_inputs": [
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/B_C6_gz_exact_metadata.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/B_C6_gz_exact_metadata.gp",
+      "source_sha256": "36670d7d475875a3584f4db472b534b8c18ef6c3e042c02747c1e02005986da6",
+      "portable_sha256": "d5142e4d5268a6f3a1582ee392b736414b7d500489b67aa2ad54d1accd38ea8a",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/B_C6_gz_setup.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/B_C6_gz_setup.gp",
+      "source_sha256": "20fee2bc73a40d4819578ee306e304677a1bd4d90ed1eb7b065b230f8ba0edb0",
+      "portable_sha256": "5c7910f9e07828eed4b3d7d0a10737b663751f86a03d07c8118dfd85e7556b38",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C7_cm_explicit.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C7_cm_explicit.gp",
+      "source_sha256": "d4105cc66cccfaf3158494bf740d3136b93c5c61c41886cd8d252245852d978d",
+      "portable_sha256": "d4105cc66cccfaf3158494bf740d3136b93c5c61c41886cd8d252245852d978d",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C_cm_250.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C_cm_250.gp",
+      "source_sha256": "d44323feee38f2dc667b18f367db38b149f41c01adc01a17c80dfbcbef376e03",
+      "portable_sha256": "d44323feee38f2dc667b18f367db38b149f41c01adc01a17c80dfbcbef376e03",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C_cm_class_polynomials.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C_cm_class_polynomials.gp",
+      "source_sha256": "9640025ca8f6e65649cda799d47812706dffb47de7b338ef4a3cdbdbed06a435",
+      "portable_sha256": "9640025ca8f6e65649cda799d47812706dffb47de7b338ef4a3cdbdbed06a435",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C_cm_local_heights.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C_cm_local_heights.gp",
+      "source_sha256": "8b02334ab77d8e601e2c18e85be07c89275d204df2a71a054614c76466c30069",
+      "portable_sha256": "b6f40569fe7100787e79fd9c137d4b18c278bcf8f08ef30fcfe8d78d9badb4d4",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C_cm_models.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C_cm_models.gp",
+      "source_sha256": "d07c59767cb26ab9ef886c1805bdefc33ae46273dfc254f7536f14bf68bb8f0f",
+      "portable_sha256": "a5e50e56635f4805d98cd826a48008b922a302950351ca807488604b962d0f14",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/C_cm_rank_lvalues.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/C_cm_rank_lvalues.gp",
+      "source_sha256": "abe9049d97e2d216951675c0a099c4a627ec969c2fd81e725efe250119c0c20e",
+      "portable_sha256": "e535c883a93ed4e4ce372fe6f47512226e335762e2ee4fd75abfaf974c8f4e91",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/Crank_cm_theta_test.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/Crank_cm_theta_test.gp",
+      "source_sha256": "fca2ca802eafa1344efa515adf7a81039687c41e3e3f197d8270a8b993372d1a",
+      "portable_sha256": "fca2ca802eafa1344efa515adf7a81039687c41e3e3f197d8270a8b993372d1a",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/Crank_coefficients.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/Crank_coefficients.gp",
+      "source_sha256": "d18917efa9d2cda1abbc8959d24644695962841ea343d0c6f711087074db6c03",
+      "portable_sha256": "97c90ca6875f1abca1d62cae3d053d15496b9ed393703e92d89b849a8edfd755",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_descent.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/Crank_torsion_descent.gp",
+      "source_sha256": "a74bf7523710beca838b9c993f0456d40ba4ce2ae8a3e0399553fbb6d77f460a",
+      "portable_sha256": "16856904968f91c905903cbe16ea8e3e01fee70e255a69fe8b0bc5e01600f508",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_final.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/Crank_torsion_final.gp",
+      "source_sha256": "b522b812e58a862c055f857953d43c5ed48116d05f091bc8383a984acfc0fe69",
+      "portable_sha256": "b522b812e58a862c055f857953d43c5ed48116d05f091bc8383a984acfc0fe69",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    },
+    {
+      "source": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_local.gp",
+      "portable_input": "code/invariants_arithmetic/arithmetic/portable_gp/Crank_torsion_local.gp",
+      "source_sha256": "0b0a89ab1be7f17e52799cc04312f973102cdf20d70c3246f545b993288a19b8",
+      "portable_sha256": "0b0a89ab1be7f17e52799cc04312f973102cdf20d70c3246f545b993288a19b8",
+      "changes": "Only remove machine-specific PARI datadir and normalize project/output paths; mathematical instructions retained."
+    }
+  ],
+  "runs": [
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Cspecial_division.py",
+      "program_sha256": "1822f53df5a51b7cada27210e52ce6c3c3629cd7f799fd48e2cf003c59bf88d5",
+      "command": [
+        "python",
+        "code/Cspecial_division.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_division.py.txt",
+      "output_sha256": "33a74617bb4d7f52965adaa95a0b301470923b55f68bdb2778085396f77047fd",
+      "statement_labels": [
+        "ari:C.4.3",
+        "ari:C.5.1"
+      ],
+      "statement_role": "Exact division-polynomial values, resultants, torsion exclusions and special arguments.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Cspecial_division.py > outputs/writing_rerun_Cspecial_division.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Cspecial_relations.py",
+      "program_sha256": "ce0e8643286f42427145c6abef042b2eb463396772ac66afde01698d74f1570f",
+      "command": [
+        "python",
+        "code/Cspecial_relations.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_relations.py.txt",
+      "output_sha256": "a584843db66db3cdd950871f15e972c9ab88880df625832091c6f786ca8d7877",
+      "statement_labels": [
+        "ari:C.5.1"
+      ],
+      "statement_role": "Exact algebraic elimination for the special torsion norm values.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Cspecial_relations.py > outputs/writing_rerun_Cspecial_relations.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Cspecial_reflection.py",
+      "program_sha256": "90652bcc99938fa9b07a9ca0b015d3984c250c418b739ee0ed952d1164ec0943",
+      "command": [
+        "python",
+        "code/Cspecial_reflection.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_reflection.py.txt",
+      "output_sha256": "cc5d3e18f227f3ca4697f62cd6cc729dee04f096fbe04864061b34ed794f13db",
+      "statement_labels": [
+        "ari:C.2.2"
+      ],
+      "statement_role": "Exact real-structure matrix identities and affine defect checks.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Cspecial_reflection.py > outputs/writing_rerun_Cspecial_reflection.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Cspecial_torsion_numerics.py",
+      "program_sha256": "82cf5568d4f8469756067e1a214d5befcdc45f2112bd9231c427797b1247861d",
+      "command": [
+        "python",
+        "code/Cspecial_torsion_numerics.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_torsion_numerics.py.txt",
+      "output_sha256": "0ac13e18d877b96d0bb99dbf6385654ba1753926b782eda262b80764d9f0e0e8",
+      "statement_labels": [
+        "ari:C.1.3",
+        "ari:C.5.1"
+      ],
+      "statement_role": "Independent numerical theta/product checks; exact identities have separate proofs.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Cspecial_torsion_numerics.py > outputs/writing_rerun_Cspecial_torsion_numerics.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Cspecial_expansion_checks.py",
+      "program_sha256": "846ec4e92d417062679d2b7b33cdb14bf7d74dcbbef8474747c3579f9668b079",
+      "command": [
+        "python",
+        "code/Cspecial_expansion_checks.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_expansion_checks.py.txt",
+      "output_sha256": "e48661b2da2569fcb6ea9372435878c41b3ba6705804ede50503aa4baad27ee6",
+      "statement_labels": [
+        "ari:C.3.1",
+        "ari:C.3.2"
+      ],
+      "statement_role": "Heat-equation and Ramanujan expansion coefficients at the order-four and order-three fibres.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Cspecial_expansion_checks.py > outputs/writing_rerun_Cspecial_expansion_checks.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_ladder_algebra.py",
+      "program_sha256": "2b6153525e82f0a7947263b5f16a47190bf9e7d76c81b267023f4df9118e984b",
+      "command": [
+        "python",
+        "code/C_ladder_algebra.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_ladder_algebra.py.txt",
+      "output_sha256": "7a90cb2af81313bb9e33eeaa2502e9001fc7f50322ec34ed99a845d88e05aff5",
+      "statement_labels": [
+        "fam:src:C.2.3",
+        "ari:C.8.4"
+      ],
+      "statement_role": "Exact duplication/division ladder polynomials and nonzero denominators.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_ladder_algebra.py > outputs/writing_rerun_C_ladder_algebra.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_ladder_estimates.py",
+      "program_sha256": "158a6a16689653d1f29d083e6ca25bcd60f6f173a8b303191dce2c213723369f",
+      "command": [
+        "python",
+        "code/C_ladder_estimates.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_ladder_estimates.py.txt",
+      "output_sha256": "58a087fae9c53d4b07ea09bcab9a9f2f806eeb064d4d63d176c8bc085762ef42",
+      "statement_labels": [
+        "fam:src:C.2.3"
+      ],
+      "statement_role": "Numerical diagnostics for analytically proved scalar inequalities; dispensable for proof.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_ladder_estimates.py > outputs/writing_rerun_C_ladder_estimates.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_local_analytic_bounds.py",
+      "program_sha256": "787f47134bfaaddd85ae5636290aef35b17d0cda761acb2fe04b873e0b1bf3ae",
+      "command": [
+        "python",
+        "code/C_local_analytic_bounds.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_local_analytic_bounds.py.txt",
+      "output_sha256": "3c4be8b9a015dbc87e8891bfed244bcf16fe366ba10e84df8394d3eb67806482",
+      "statement_labels": [
+        "ari:C.8.1",
+        "ari:C.8.2"
+      ],
+      "statement_role": "Numerical diagnostics for the rational local estimates; printed Taylor remainders prove them.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_local_analytic_bounds.py > outputs/writing_rerun_C_local_analytic_bounds.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_padic_example.py",
+      "program_sha256": "8ef76a4aaa91509231593cdaad098667feb0d0f3ef976273972edd61f694a885",
+      "command": [
+        "python",
+        "code/C_padic_example.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_padic_example.py.txt",
+      "output_sha256": "debb5f595e1577eae5681a6ff8c49de1f2e456c361608ad8f85665d8ee741578",
+      "statement_labels": [
+        "ari:C.7.8"
+      ],
+      "statement_role": "Exact valuation/unit example for the proposed p-adic norm method.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_padic_example.py > outputs/writing_rerun_C_padic_example.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C7_cm_enlargement_check.py",
+      "program_sha256": "8e6c52163c174ecfc074e32f2b18659361b39e951793044fb857f46808cd9ff2",
+      "command": [
+        "python",
+        "code/C7_cm_enlargement_check.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C7_cm_enlargement_check.py.txt",
+      "output_sha256": "3971f7476109f1569f26ae000ccedc37e6c505036d04b2f8010ddabdfa1ac753",
+      "statement_labels": [
+        "ari:C.7.10"
+      ],
+      "statement_role": "Exact linear-algebra obstruction to the proposed CM enlargement.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C7_cm_enlargement_check.py > outputs/writing_rerun_C7_cm_enlargement_check.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C7_complexified_check.py",
+      "program_sha256": "de2c6606ba2f1ecd7005792e51eb373ca57bd86fc7d2f1791ad37d59ccad45aa",
+      "command": [
+        "python",
+        "code/C7_complexified_check.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C7_complexified_check.py.txt",
+      "output_sha256": "7d65c978fc59ec8ad7671949db2409a3794d2a8d1c01388828cbb130121c7bb6",
+      "statement_labels": [
+        "ari:C.7.11"
+      ],
+      "statement_role": "Exact complexified compact-subgroup obstruction.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C7_complexified_check.py > outputs/writing_rerun_C7_complexified_check.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Ccritical_rational_certificate.py",
+      "program_sha256": "ea976aa73f9dd8736ddbf737c6efec603d6e4cf866758dea791921cccc49ae01",
+      "command": [
+        "python",
+        "code/Ccritical_rational_certificate.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Ccritical_rational_certificate.py.txt",
+      "output_sha256": "7f24c9018df77d744ac756a0cb41ba269492463300c8a75503b049e26aa5996e",
+      "statement_labels": [
+        "ari:C.8.14",
+        "ari:C.8.15"
+      ],
+      "statement_role": "Exact flint rational recurrence, Cauchy majorants, and positive Bernstein coefficients.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Ccritical_rational_certificate.py > outputs/writing_rerun_Ccritical_rational_certificate.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_height_arb.py",
+      "program_sha256": "b1056578cac8b894ada4689f032204fc089fb1158541b006653e38c0ddb905ca",
+      "command": [
+        "python",
+        "code/C_cm_height_arb.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_cm_height_arb.py.txt",
+      "output_sha256": "b14825384e7af718dbbe05e930512c1e6e4fca2e35439600dc13619ddfec0d51",
+      "statement_labels": [
+        "ari:C.6.5"
+      ],
+      "statement_role": "1152-bit Arb enclosures for all eleven heights and normalized theta norms.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_cm_height_arb.py > outputs/writing_rerun_C_cm_height_arb.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_height_coarse_certificate.py",
+      "program_sha256": "04cb7ea6e8ef66083b3f75e6dba93144b40448a1187f35b7d919fdbc6c1495e9",
+      "command": [
+        "python",
+        "code/C_height_coarse_certificate.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_height_coarse_certificate.py.txt",
+      "output_sha256": "b6d74bd28e4c1b1d945f56ccdc14a96ad712ec2ec97add66d4fa3c59ce292014",
+      "statement_labels": [
+        "ari:C.6.R4"
+      ],
+      "statement_role": "Exact integer coarse height bounds used to isolate the three BSD-proved leading factors.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_reruns.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_height_coarse_certificate.py > outputs/writing_rerun_C_height_coarse_certificate.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Ccritical_scalar.py",
+      "program_sha256": "03bc019059a5dbb27a07edd80c81022028be5a538edc6b4752f6f0b53dd8844c",
+      "command": [
+        "python",
+        "code/Ccritical_scalar.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Ccritical_scalar.py.txt",
+      "output_sha256": "30db9db4c69a01187cd3cf291aceeb03dcb429f1717808ea94f671217f341a6e",
+      "statement_labels": [
+        "ari:C.8.13",
+        "ari:C.8.14"
+      ],
+      "statement_role": "Scalar bound checks for cusp and compact Cayley-disc arguments.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Ccritical_scalar.py > outputs/writing_rerun_Ccritical_scalar.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Ccritical_identity_check.py",
+      "program_sha256": "ddbe6a24d338e3055575ff2f9b2ae9d2f4734e270f0c3b5ac4f106c99dadd7b4",
+      "command": [
+        "python",
+        "code/Ccritical_identity_check.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Ccritical_identity_check.py.txt",
+      "output_sha256": "ee668d52705f1ac8b85adcca7f48e5d38556c5569ff7f68e9a8e9aa67128a260",
+      "statement_labels": [
+        "ari:C.8.12",
+        "ari:C.8.14"
+      ],
+      "statement_role": "Independent differential-identity and modular-ODE consistency check.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Ccritical_identity_check.py > outputs/writing_rerun_Ccritical_identity_check.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_class_polynomials.gp",
+      "program_sha256": "9640025ca8f6e65649cda799d47812706dffb47de7b338ef4a3cdbdbed06a435",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C_cm_class_polynomials.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_class_polynomials.gp.txt",
+      "output_sha256": "836736237764686394f93bb704ecffe5d8d62c72a78e786f09b9a2f84201a14c",
+      "statement_labels": [
+        "ari:C.6.3"
+      ],
+      "statement_role": "Exact rational CM j-values from class polynomials.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C_cm_class_polynomials.gp > outputs/writing_C_cm_class_polynomials.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_models.gp",
+      "program_sha256": "d07c59767cb26ab9ef886c1805bdefc33ae46273dfc254f7536f14bf68bb8f0f",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C_cm_models.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_models.gp.txt",
+      "output_sha256": "78c3536b196f520616f4aa3d02f889fb59ebba19cd6d754be44aee6013e306fd",
+      "statement_labels": [
+        "ari:C.6.2",
+        "ari:C.6.3"
+      ],
+      "statement_role": "Minimal equations, transformed section points, conductors and exact local model data.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C_cm_models.gp > outputs/writing_C_cm_models.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_local_heights.gp",
+      "program_sha256": "8b02334ab77d8e601e2c18e85be07c89275d204df2a71a054614c76466c30069",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C_cm_local_heights.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_local_heights.gp.txt",
+      "output_sha256": "e4c19ac5aab37b2276b902f88e53b8010d4c2fed66f8a50ce4e34d763395657a",
+      "statement_labels": [
+        "ari:C.6.2",
+        "ari:C.6.3"
+      ],
+      "statement_role": "Exact finite valuations and local-height constants in the (O) normalization.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C_cm_local_heights.gp > outputs/writing_C_cm_local_heights.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_local.gp",
+      "program_sha256": "0b0a89ab1be7f17e52799cc04312f973102cdf20d70c3246f545b993288a19b8",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/Crank_torsion_local.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_torsion_local.gp.txt",
+      "output_sha256": "57f24487559c4a92eff3cb472a7966a532b64bd0284629a0eb07781f3060b3b8",
+      "statement_labels": [
+        "ari:C.6.T1"
+      ],
+      "statement_role": "Finite-reduction torsion constraints over the indicated number fields.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/Crank_torsion_local.gp > outputs/writing_Crank_torsion_local.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_final.gp",
+      "program_sha256": "b522b812e58a862c055f857953d43c5ed48116d05f091bc8383a984acfc0fe69",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/Crank_torsion_final.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_torsion_final.gp.txt",
+      "output_sha256": "c0be24225e945863956c8251cf6b52a012987e512073aea2ee1e3126c62c3898",
+      "statement_labels": [
+        "ari:C.6.T1",
+        "ari:C.6.T2"
+      ],
+      "statement_role": "Exact torsion and quadratic-field height/point comparisons.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/Crank_torsion_final.gp > outputs/writing_Crank_torsion_final.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C7_cm_explicit.gp",
+      "program_sha256": "d4105cc66cccfaf3158494bf740d3136b93c5c61c41886cd8d252245852d978d",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C7_cm_explicit.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C7_cm_explicit.gp.txt",
+      "output_sha256": "46009793e864045b037744026e02abfc7936a7ab7a1797a0c2a6fc6c8771947f",
+      "statement_labels": [
+        "ari:C.7.10"
+      ],
+      "statement_role": "Exact CM enlargement endomorphism and period-determinant test.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C7_cm_explicit.gp > outputs/writing_C7_cm_explicit.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_cm_theta_test.gp",
+      "program_sha256": "fca2ca802eafa1344efa515adf7a81039687c41e3e3f197d8270a8b993372d1a",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/Crank_cm_theta_test.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_cm_theta_test.gp.txt",
+      "output_sha256": "90404a5a67d292ca4addc1b16502183e92ac9fe8999d402533a4323ace97188e",
+      "statement_labels": [
+        "ari:C.6.R2",
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Exact initial CM theta coefficients, with the printed modular-form valence argument providing global identification.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/Crank_cm_theta_test.gp > outputs/writing_Crank_cm_theta_test.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_gz_exact_metadata.gp",
+      "program_sha256": "36670d7d475875a3584f4db472b534b8c18ef6c3e042c02747c1e02005986da6",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/B_C6_gz_exact_metadata.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_gz_exact_metadata.gp.txt",
+      "output_sha256": "043fcb9763be68f2095eaf215fe1f1239fe9571496a2e964b77289457e2b5334",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twist identities, minimal differential scaling, Heegner splitting, root numbers, torsion and coefficient tests.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/B_C6_gz_exact_metadata.gp > outputs/writing_B_C6_gz_exact_metadata.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_descent.gp",
+      "program_sha256": "a74bf7523710beca838b9c993f0456d40ba4ce2ae8a3e0399553fbb6d77f460a",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/Crank_torsion_descent.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing2_Crank_torsion_descent.gp.txt",
+      "output_sha256": "c596580a9f9a9c32149f54dd564e077ade7cdd65bfef5034efde10c230ba401d",
+      "statement_labels": [
+        "ari:C.6.T1"
+      ],
+      "statement_role": "Simon descent over number fields with bnfcertify=1 and retained Sage helper sources.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns_second.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/Crank_torsion_descent.gp > outputs/writing2_Crank_torsion_descent.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_rank_lvalues.gp",
+      "program_sha256": "abe9049d97e2d216951675c0a099c4a627ec969c2fd81e725efe250119c0c20e",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C_cm_rank_lvalues.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing2_C_cm_rank_lvalues.gp.txt",
+      "output_sha256": "4e8d3884a9aa29a9c5a480704ba61b63be7af6bb6c9415f388d0344b7a920a88",
+      "statement_labels": [
+        "ari:C.6.R1",
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Certified equal lower/upper algebraic rank bounds on eleven curves; numerical L-values are independently certified below.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gp_reruns_second.json",
+      "notes": [
+        "Uses installed PARI datadir; pari-elldata is required where ellidentify or ellmaninconstant is used."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C_cm_rank_lvalues.gp > outputs/writing2_C_cm_rank_lvalues.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_1.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_1.txt",
+      "output_sha256": "9baa61f6554897f62d1554bfa99aad1dbabac9d05b000d5f0b6e6f173f481320",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_1.dat > outputs/writing_Crank_derivatives_1.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_2.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_2.txt",
+      "output_sha256": "7a9a45a81f793c2d4c7399273aed747ab066220876327d458b10dc1784604c18",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_2.dat > outputs/writing_Crank_derivatives_2.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_3.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_3.txt",
+      "output_sha256": "ca20eff90faad484defd011ccc25cd93f7fe10cc3c84e0cbed455db620fb9fe0",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_3.dat > outputs/writing_Crank_derivatives_3.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_4.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_4.txt",
+      "output_sha256": "86fddb05733b1be279a2e28782506eaf6ecf7524fab164e661310387cadb05a3",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_4.dat > outputs/writing_Crank_derivatives_4.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_5.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_5.txt",
+      "output_sha256": "fd56595ee329520851eb1cb95ef691768fcca0733770a8313e84d14c62c42525",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_5.dat > outputs/writing_Crank_derivatives_5.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_6.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_6.txt",
+      "output_sha256": "9aacaa406e5e4726301c5344d50ce6da546c5f17322c92c9dde19c112682f2ee",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_6.dat > outputs/writing_Crank_derivatives_6.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_7.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_7.txt",
+      "output_sha256": "9604423ee4540e6c921f79c23345b5817e6f93bfae72270cc9f1b7a348f62f99",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_7.dat > outputs/writing_Crank_derivatives_7.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_8.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_8.txt",
+      "output_sha256": "4b6d859dcdd81d6f601b6e9e4b88645dcaba47c846e4dd7be9f49fe5d745bfa7",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_8.dat > outputs/writing_Crank_derivatives_8.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_9.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_9.txt",
+      "output_sha256": "835e0c3df90b7c05d6f713698cc42ae705c7edf4a16bc5c2815a7257f663c40c",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_9.dat > outputs/writing_Crank_derivatives_9.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "program_sha256": "b33c041c0b3ddf34c82a9b17cb87d39d39859d18a922eda13ab2463102124f7f",
+      "command": [
+        "code/Crank_derivatives",
+        "records/Crank_coeff_10.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_10.txt",
+      "output_sha256": "84bc2e58304717a42c9e3202dc4f0cfe536dd876527cf08cc29fe8f4a2223c00",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "1024-bit derivative sums with explicit infinite and alternating-series tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_derivatives.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_derivatives records/Crank_coeff_10.dat > outputs/writing_Crank_derivatives_10.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_saturation.cpp",
+      "program_sha256": "f816f6bbf16bb08408458f6b1495d361d3a62700fbae1011b4b727d16854704a",
+      "command": [
+        "code/Crank_saturation"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_saturation.txt",
+      "output_sha256": "26b6bab24ca94b738c7589dd575e023d6cd8bac96ad29e00d65cec6624558a47",
+      "statement_labels": [
+        "ari:C.6.R1"
+      ],
+      "statement_role": "Full eclib saturation of all nine rank-one section points with height-based index bounds.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_saturation.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_saturation > outputs/writing_Crank_saturation.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--file",
+        "records/writing_gz_2_central.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_2.out",
+      "output_sha256": "3d133a3199663f6024dfa532b0f9bcdc64e38530079cda43bb428237b1cc992c",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --file records/writing_gz_2_central.dat > code/B_C6_central_file_2.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--dfile",
+        "records/writing_gz_2_derivative.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_2.out",
+      "output_sha256": "5e0280efd1fcd63e44b459ce4d46da6e33cd945cd1c1dfd20409127d86b891c7",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --dfile records/writing_gz_2_derivative.dat > code/B_C6_derivative_2.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--file",
+        "records/writing_gz_4_central.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_4.out",
+      "output_sha256": "e506d97e7a89ae52cec315f1d08fd30b0f30ce928cfa6ca88268ddbaaf278ce7",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --file records/writing_gz_4_central.dat > code/B_C6_central_file_4.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--dfile",
+        "records/writing_gz_4_derivative.dat"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_4.out",
+      "output_sha256": "ddfa923c7b1f175284ca8c1db2950e39061bac1b10a93115349a33283b188c30",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --dfile records/writing_gz_4_derivative.dat > code/B_C6_derivative_4.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "11",
+        "-399",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_6.out",
+      "output_sha256": "8fabbcdf32ba08b29ef7d7ae0783350f0879bbd91a457f3f640fde2eab38e6f0",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream 11 -399 60 > code/B_C6_central_file_6.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--derivative",
+        "11",
+        "21",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_6.out",
+      "output_sha256": "46f6f2797e0ffcaacf7774bd4605b5a655fddb35955690b058b3a548a4e856e3",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --derivative 11 21 60 > code/B_C6_derivative_6.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "43",
+        "-399",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_9.out",
+      "output_sha256": "f550a1c753f6c6eab08899dd5b9f06ba3609bee7feddacbfd9ab5e61190b485f",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream 43 -399 60 > code/B_C6_central_file_9.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--derivative",
+        "43",
+        "21",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_9.out",
+      "output_sha256": "260943e2eafe5c6037825b704dd8ab5f17cad4c96a4999d983e2cb456740f1f7",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --derivative 43 21 60 > code/B_C6_derivative_9.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "67",
+        "-651",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_10.out",
+      "output_sha256": "f7d5eddcae366ebe38a42eca9ab6087992f547a0b29564d9ef495ae088ecaeb5",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream 67 -651 60 > code/B_C6_central_file_10.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--derivative",
+        "67",
+        "217",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_10.out",
+      "output_sha256": "4911c74a0b89a0c34f77241bb40011864b13f8a0b9dd6256bc854de0d20a7c08",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --derivative 67 217 60 > code/B_C6_derivative_10.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "163",
+        "-557403",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_central_11.out",
+      "output_sha256": "e52127fb46f8a207b850f4039352bb1375d13c3793d48766521c21c3ecc7845c",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream 163 -557403 60 > code/B_C6_central_11.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "program_sha256": "655f43d661c3afcbf0c3083550ac3d92cf03092f80b7fc17d9ca6c628d0dffbf",
+      "command": [
+        "code/B_C6_central_stream",
+        "--derivative",
+        "163",
+        "185801",
+        "60"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_11.out",
+      "output_sha256": "eeefc16425591caba0e04619b54e6d2820aa3de956f9fa7a374a19c9fe61d4a8",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Twelve directed-rounding 256-bit MPFR central/derivative enclosures with exact coefficient moments and tails.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_gz_regeneration.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/B_C6_central_stream --derivative 163 185801 60 > code/B_C6_derivative_11.out"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_cm_stream.cpp",
+      "program_sha256": "9f909608e81ed0ab8374a14cff7ff4dcd167d7f01bebd5facd1793ba54747f3c",
+      "command": [
+        "code/Crank_cm_stream",
+        "163",
+        "185801",
+        "170"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_cm_stream_163_170.txt",
+      "output_sha256": "1f8b73e6ad2305e53f17528292ad4e30329471feea15d6090aba121fc379657d",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Exact CM coefficient/moment stream and bounded Taylor blocks for the largest conductor; repeated precisions and cutoffs.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_cm_stream 163 185801 170 > outputs/writing_Crank_cm_stream_163_170.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_cm_stream.cpp",
+      "program_sha256": "9f909608e81ed0ab8374a14cff7ff4dcd167d7f01bebd5facd1793ba54747f3c",
+      "command": [
+        "code/Crank_cm_stream",
+        "163",
+        "185801",
+        "190"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_cm_stream_163_190.txt",
+      "output_sha256": "6a730f71afd7fb7d5ed87c08b48ee762b1739fbc2fc8f4c6a00c769fbfce0609",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Exact CM coefficient/moment stream and bounded Taylor blocks for the largest conductor; repeated precisions and cutoffs.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_cm_stream 163 185801 190 > outputs/writing_Crank_cm_stream_163_190.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_cm_stream.cpp",
+      "program_sha256": "9f909608e81ed0ab8374a14cff7ff4dcd167d7f01bebd5facd1793ba54747f3c",
+      "command": [
+        "code/Crank_cm_stream_512",
+        "163",
+        "185801",
+        "190"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_cm_stream_163_512_190.txt",
+      "output_sha256": "133006a1523708269863479413523777d93f1c10808c5dbd46349f6940720853",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Exact CM coefficient/moment stream and bounded Taylor blocks for the largest conductor; repeated precisions and cutoffs.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_cm_stream_512 163 185801 190 > outputs/writing_Crank_cm_stream_163_512_190.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_cm_stream.cpp",
+      "program_sha256": "9f909608e81ed0ab8374a14cff7ff4dcd167d7f01bebd5facd1793ba54747f3c",
+      "command": [
+        "code/Crank_cm_stream",
+        "67",
+        "217",
+        "190"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_cm_stream_67_190.txt",
+      "output_sha256": "3b641a232803ffc9376107e7fe6e273f7c506b3fcfbe344e16b0381eb3b00013",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Exact CM coefficient/moment stream and bounded Taylor blocks for the largest conductor; repeated precisions and cutoffs.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "code/Crank_cm_stream 67 217 190 > outputs/writing_Crank_cm_stream_67_190.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_250.gp",
+      "program_sha256": "d44323feee38f2dc667b18f367db38b149f41c01adc01a17c80dfbcbef376e03",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/C_cm_250.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_250.gp.txt",
+      "output_sha256": "c15a5b45868e239a203a5134bf8028ccb17fb8ad23359350c287e9d907ba6740",
+      "statement_labels": [
+        "ari:C.6.3",
+        "ari:open:norm"
+      ],
+      "statement_role": "250-digit CM norm and height data used only for exploratory relation searches.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/C_cm_250.gp > outputs/writing_C_cm_250.gp.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C_cm_theta_pslq.py",
+      "program_sha256": "b4d72512ea7cd948e537d8479a8c00b4ed89e4728733b6e3dacf95ee8fef3768",
+      "command": [
+        "python",
+        "code/C_cm_theta_pslq.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_theta_pslq.txt",
+      "output_sha256": "43b009b03b5a34c67aa14136a455809b6a4fafb03aec3a508ee83d96e85ebf4e",
+      "statement_labels": [
+        "ari:open:norm"
+      ],
+      "statement_role": "Eleven numerical PSLQ searches; null returns do not prove algebraic independence or transcendence.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C_cm_theta_pslq.py > outputs/writing_C_cm_theta_pslq.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/C7_norm_polynomial_search.py",
+      "program_sha256": "8f2000e4d502449767e4c77ee6afec26dcbcf35ee54caaa45b95851ae791bcea",
+      "command": [
+        "python",
+        "code/C7_norm_polynomial_search.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_C7_norm_polynomial_search.txt",
+      "output_sha256": "7c80fcdbeaefb5cc899dc4ffc0a6433eb916906d2f8435c995ed03dca36c190f",
+      "statement_labels": [
+        "ari:open:norm"
+      ],
+      "statement_role": "Sixty-six bounded numerical polynomial searches; no exhaustive lower-bound certificate is claimed.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/C7_norm_polynomial_search.py > outputs/writing_C7_norm_polynomial_search.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/B_C6_exact_factors.py",
+      "program_sha256": "46e4acc0181b3995803d0267fe83a6ed18ba1647184cfc930f07dc4930caf6cc",
+      "command": [
+        "python",
+        "code/B_C6_exact_factors.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_exact_factors_regenerated.txt",
+      "output_sha256": "2c7563a27a269841cd45d72a28f9f099c4564a2c5641a6517cf4fcd58769037e",
+      "statement_labels": [
+        "ari:C.6.R5"
+      ],
+      "statement_role": "Original verifier for all six exact auxiliary ratios and rational leading factors, using the proved denominator bounds.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/B_C6_exact_factors.py > outputs/writing_B_C6_exact_factors_regenerated.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Ccritical_rational_certificate_fraction.py",
+      "program_sha256": "6147d69ea5112ec03d4ddad782a0a77300755097c3a74af86d89fadb8cbf0dd5",
+      "command": [
+        "python",
+        "code/Ccritical_rational_certificate_fraction.py"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Ccritical_rational_certificate_fraction.py.txt",
+      "output_sha256": "7f24c9018df77d744ac756a0cb41ba269492463300c8a75503b049e26aa5996e",
+      "statement_labels": [
+        "ari:C.8.14",
+        "ari:C.8.15"
+      ],
+      "statement_role": "Independent fractions.Fraction implementation of the exact rational certificate.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/Ccritical_rational_certificate_fraction.py > outputs/writing_rerun_Ccritical_rational_certificate_fraction.py.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/certify_period_derivative_table.py",
+      "program_sha256": "6d0d750abf6647d7aa54f893abc259eaef30b14ca4a9ffee3a047a1fde518575",
+      "command": [
+        "python",
+        "code/invariants_arithmetic/certify_period_derivative_table.py"
+      ],
+      "cwd": ".",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_period_derivative_certificate.txt",
+      "output_sha256": "cfa7c1cfaabcc0d3a50823380b3937b3c039072aa1367de4acb2d255082af6f6",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Independent 1152-bit Arb real-period and derivative/period enclosures, without BSD input.",
+      "record": "code/invariants_arithmetic/arithmetic/writing_complete_computations.json",
+      "notes": [],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "python code/invariants_arithmetic/certify_period_derivative_table.py > code/invariants_arithmetic/arithmetic/outputs/writing_period_derivative_certificate.txt"
+    },
+    {
+      "program": "code/invariants_arithmetic/arithmetic/code/Crank_coefficients.gp",
+      "program_sha256": "d18917efa9d2cda1abbc8959d24644695962841ea343d0c6f711087074db6c03",
+      "command": [
+        "gp",
+        "-fq",
+        "portable_gp/Crank_coefficients.gp"
+      ],
+      "cwd": "code/invariants_arithmetic/arithmetic",
+      "stdout_capture": "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_coefficients.txt",
+      "output_sha256": "8023529bb6d8f9c298650e0c18a937893ecd589b1712c62fb4f3aca09a804dd7",
+      "statement_labels": [
+        "ari:C.6.R2"
+      ],
+      "statement_role": "Exact Fourier coefficient files for the first ten derivative sums.",
+      "record": null,
+      "notes": [
+        "Retained certificate files are records/Crank_coeff_1.dat through Crank_coeff_10.dat. The portable generator writes fresh copies under records/reproduction; use those paths to recompute derivatives. Empty that reproduction directory before a repeated generation, because GP write appends."
+      ],
+      "run_status": "completed successfully; retained output checked",
+      "command_shell": "gp -fq portable_gp/Crank_coefficients.gp > outputs/writing_Crank_coefficients.txt"
+    }
+  ],
+  "cited_file_concordance": [
+    {
+      "printed_name": "code/C_ladder_algebra.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_ladder_algebra.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_ladder_algebra.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_analytic.tex",
+          "line": 352
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_ladder_estimates.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_ladder_estimates.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_ladder_estimates.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_analytic.tex",
+          "line": 441
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_local_analytic_bounds.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_local_analytic_bounds.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_local_analytic_bounds.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_analytic.tex",
+          "line": 442
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_250.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_250.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_250.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_periods.tex",
+          "line": 380
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_250.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_250.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_250.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_periods.tex",
+          "line": 380
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_theta_pslq.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_theta_pslq.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_theta_pslq.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_periods.tex",
+          "line": 381
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C7_norm_polynomial_search.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C7_norm_polynomial_search.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C7_norm_polynomial_search.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_periods.tex",
+          "line": 386
+        }
+      ]
+    },
+    {
+      "printed_name": "code/B_C6_gz_setup.out",
+      "archive_path": null,
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_gz_exact_metadata.gp.txt",
+        "code/invariants_arithmetic/arithmetic/records/B_C6_exact_factors.json"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_gz_factors.tex",
+          "line": 123
+        }
+      ]
+    },
+    {
+      "printed_name": "code/B_C6_gz_exact_metadata.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/B_C6_gz_exact_metadata.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_gz_exact_metadata.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_gz_factors.tex",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "printed_name": "code/B_C6_central_stream.cpp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/B_C6_central_stream.cpp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_2.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_2.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_4.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_4.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_6.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_6.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_9.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_9.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_file_10.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_10.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_central_11.out",
+        "code/invariants_arithmetic/arithmetic/code/B_C6_derivative_11.out"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_gz_factors.tex",
+          "line": 301
+        }
+      ]
+    },
+    {
+      "printed_name": "records/C_cm_height_arb.json",
+      "archive_path": "code/invariants_arithmetic/arithmetic/records/C_cm_height_arb.json",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_cm_height_arb.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_gz_factors.tex",
+          "line": 398
+        },
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 331
+        }
+      ]
+    },
+    {
+      "printed_name": "code/B_C6_exact_factors.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/B_C6_exact_factors.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_exact_factors_regenerated.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_gz_factors.tex",
+          "line": 401
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Cspecial_torsion_numerics.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_torsion_numerics.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_torsion_numerics.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 129
+        }
+      ]
+    },
+    {
+      "printed_name": "Cspecial_reflection.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_reflection.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_reflection.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 238
+        }
+      ]
+    },
+    {
+      "printed_name": "Cspecial_expansion_checks.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_expansion_checks.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_expansion_checks.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 366
+        }
+      ]
+    },
+    {
+      "printed_name": "Cspecial_division.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_division.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_division.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 702
+        }
+      ]
+    },
+    {
+      "printed_name": "Cspecial_relations.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_relations.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_relations.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 715
+        },
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 732
+        }
+      ]
+    },
+    {
+      "printed_name": "Cspecial_torsion_numerics.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Cspecial_torsion_numerics.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_Cspecial_torsion_numerics.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_special.tex",
+          "line": 744
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_models.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_models.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_models.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_local_heights.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_local_heights.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_local_heights.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 125
+        }
+      ]
+    },
+    {
+      "printed_name": "records/C_cm_theta_pslq.json",
+      "archive_path": "code/invariants_arithmetic/arithmetic/records/C_cm_theta_pslq.json",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_theta_pslq.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 160
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_height_arb.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_height_arb.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_cm_height_arb.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 332
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_class_polynomials.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_class_polynomials.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C_cm_class_polynomials.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 352
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_height_arb.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_height_arb.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_cm_height_arb.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_heights.tex",
+          "line": 417
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_torsion_local.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_local.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_torsion_local.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_torsion_heights.tex",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_torsion_final.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_final.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_torsion_final.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_torsion_heights.tex",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_torsion_descent_sage.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_descent_sage.out",
+      "fresh_evidence": [],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_torsion_heights.tex",
+          "line": 152
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_torsion_final.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_torsion_final.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_torsion_final.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_torsion_heights.tex",
+          "line": 182
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C7_cm_explicit.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C7_cm_explicit.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_C7_cm_explicit.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_cm_enlargement.tex",
+          "line": 304
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_cm_rank_lvalues.out",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_cm_rank_lvalues.out",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing2_C_cm_rank_lvalues.gp.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_saturation.cpp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_saturation.cpp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_saturation.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "printed_name": "results_Crank.csv",
+      "archive_path": "code/invariants_arithmetic/arithmetic/results_Crank.csv",
+      "fresh_evidence": [],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 79
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_coefficients.gp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_coefficients.gp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_coefficients.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 153
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_derivatives.cpp",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/Crank_derivatives.cpp",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_1.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_2.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_3.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_4.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_5.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_6.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_7.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_8.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_9.txt",
+        "code/invariants_arithmetic/arithmetic/outputs/writing_Crank_derivatives_10.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 154
+        }
+      ]
+    },
+    {
+      "printed_name": "code/Crank_cm_stream*",
+      "archive_path": null,
+      "fresh_evidence": [],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 220
+        }
+      ]
+    },
+    {
+      "printed_name": "code/C_height_coarse_certificate.py",
+      "archive_path": "code/invariants_arithmetic/arithmetic/code/C_height_coarse_certificate.py",
+      "fresh_evidence": [
+        "code/invariants_arithmetic/arithmetic/outputs/writing_rerun_C_height_coarse_certificate.py.txt"
+      ],
+      "contexts": [
+        {
+          "file": "work/invariants_arithmetic/sections/ari_rank.tex",
+          "line": 342
+        }
+      ]
+    }
+  ],
+  "superseded_setup_failures": [
+    {
+      "item": "initial Ccritical rational run",
+      "failure": "python-flint unavailable on initial import",
+      "resolution": "original unmodified program rerun successfully after dependency installation; independent Fraction implementation also passed"
+    },
+    {
+      "item": "initial B_C6_exact_factors.py",
+      "failure": "twelve central/derivative interval files absent from original bundle",
+      "resolution": "all inputs regenerated with the original generator and verifier rerun successfully"
+    },
+    {
+      "item": "initial Crank_torsion_descent.gp",
+      "failure": "Simon helper paths missing in initial runtime",
+      "resolution": "retained helper sources installed outside original source tree; deterministic certified number-field descent rerun successfully"
+    }
+  ],
+  "historical_output_alias": {
+    "code/B_C6_gz_setup.out": "No file of this name is in the supplied bundle. Replace the printed pointer by the fresh exact metadata transcript and the six factor certificates indexed here."
+  },
+  "exact_conclusions": {
+    "rank": [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "rank_one_point_indices": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "rank_one_rational_leading_factors": [
+      8,
+      4,
+      32,
+      4,
+      8,
+      4,
+      16,
+      16,
+      576
+    ],
+    "sha_triviality_proved_only_indices": [
+      3,
+      5,
+      7
+    ],
+    "pslq_polynomial_null_calls": 66,
+    "pslq_scope": "Exact algorithmic returns only; no exhaustive coefficient-bound certificate or transcendence inference."
+  }
+}

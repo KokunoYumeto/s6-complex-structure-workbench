@@ -1,0 +1,13 @@
+"""Persist the independently rederived comb partial analysis and its precise gap."""
+from pathlib import Path
+import hashlib,json
+D=Path(__file__).resolve().parents[2];p=D/'editorial/II_comb_remaining_analysis.tex'
+record=[{'source_run':'S6_01_INVARIANTS','source_id':'E2.3','paper':'II','own_check':'GPT-6 Astra (OpenAI, ChatGPT Pro mode, effort Pro), 17 November2026: root independently re-derived the entire added partial proof in editorial/II_comb_remaining_analysis.tex. Exact coarse splittings have total degree2m-1; the injective coarse Hom comparison, local eigenspace condition and line-bundle section count give h0(Km)<=2m+2. Substituting into the checked Hodge formulas gives the stated two intervals. The two homogeneous-coordinate surjections are everywhere onto and their kernel splittings and h0 values0,2 follow directly. Neither map is claimed to arise from an actual comb. The unchanged d_comb.py was read in full and rerun for12,13,20,100; all exact symbolic checks passed. The Kuranishi clause is resolved by the independent CDP E15 proof, not by the script.',
+'check_outcome':'Checked complete partial proof and exact numerical rerun; the actual comb kernel splitting remains open because the admissible period section, transition functions and derivative are not determined by the numerical data. Smooth reduced Kuranishi germ established at CDP E15; no claim of geometric nonuniqueness from abstract bundle maps.',
+'printed_proof_file':str(p.relative_to(D)),'proof_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+'change_notes':'Replaced stale Kuranishi-open wording with E15 and added the complete checked Km bounds and explicit algebraic examples. Distinguish V tensor G from V-dual tensor G; invariant classes alone do not identify the Hom bundle. Exact remaining gap and attempted approaches are in work/cdp_audit/comb_Km_attempts.md.',
+'audit_notes':'The root independent reading extends the earlier open-status comparison; it does not erase that historical check. Program output with stale bracket status is retained as source provenance and is corrected by the paper.'}]
+(D/'work/root/II_comb_full_check.json').write_text(json.dumps(record,indent=2)+'\n')
+p=D/'code/editorial/merge_audit_inventory.py';s=p.read_text();s=s.replace("('root/cdp_reserved_full_checks.json','S6_03_CDP')]","('root/cdp_reserved_full_checks.json','S6_03_CDP'),\n ('root/II_comb_full_check.json','S6_01_INVARIANTS')]");p.write_text(s)
+with (D/'work/root/proof_audit.md').open('a') as f:f.write('\n## Paper II comb partial analysis\n\n'+record[0]['own_check']+'\n\n'+record[0]['check_outcome']+'\n\n'+record[0]['change_notes']+'\n')
+print('Stored root full comb partial-proof check and exact remaining gap')

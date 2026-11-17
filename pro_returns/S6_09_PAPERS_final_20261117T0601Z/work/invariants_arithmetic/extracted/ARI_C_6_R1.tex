@@ -1,0 +1,59 @@
+\begin{statement}[C.6.R1; Proved by descent and full saturation]
+The algebraic and analytic ranks agree for the eleven curves. They are
+two for $j=8000$ and $j=-12288000$, and one for all nine other values.
+For every rank-one curve the section $P$ is a primitive generator of
+$E(\Q)/E(\Q)_{\rm tors}$. Its index is therefore one. For the two
+rank-two curves the index of $\Z P$ in this free quotient is infinite.
+\[
+\begin{array}{r|r|r|r}
+i&j&\operatorname{rank}E(\Q)&[E(\Q)/E(\Q)_{\rm tors}:\Z P]\\\hline
+1&8000&2&\infty\\
+2&54000&1&1\\
+3&287496&1&1\\
+4&16581375&1&1\\
+5&-3375&1&1\\
+6&-32768&1&1\\
+7&-884736&1&1\\
+8&-12288000&2&\infty\\
+9&-884736000&1&1\\
+10&-147197952000&1&1\\
+11&-262537412640768000&1&1
+\end{array}
+\]
+\end{statement}
+\begin{proof}[Arithmetic verification]
+Exact $2$-descent in PARI/GP returns equal lower and upper rank bounds
+for all eleven curves; its entire output, including independent points,
+is in \path{code/C_cm_rank_lvalues.out}. Independent eclib descent
+and saturation were completed for the first nine curves. The separate
+full-saturation calculation \path{code/Crank_saturation.cpp} treats
+all nine rank-one points, using eclib's automatic height-based index
+bound and checking every prime up to that bound. All nine returned
+index one and an empty list of unsaturated primes.
+
+For clarity, the rounded-down bounds for the indices in the subgroup
+of points having good reduction everywhere are respectively
+\[
+ 1,1,1,2,2,2,3,5,5
+\]
+in the rank-one order $i=2,3,4,5,6,7,9,10,11$; the algorithm also
+checks the primes dividing component-group orders. The underlying
+height lower bound is the one in
+\citet[Theorem 1]{CrCremonaSiksek2006}, applied to a minimal
+Weierstrass equation and the subgroup
+$E(\Q)\cap E^0(\R)\cap\bigcap_pE^0(\Q_p)$.
+For the largest curve the lower bound on the nonzero height in this
+subgroup is $0.651940632595967949\ldots$, its regulator is
+$17.323913974368488616\ldots$, and the resulting index bound is
+$5.154885040175890631\ldots$. The finite-field saturation maps for
+$2,3,5$ already have full rank at residue primes $17,17,59$.
+These data certify primitivity; merely finding $P$ in the output of
+\texttt{ellrank} would not do so. The complete height-bound and
+saturation transcripts are retained, including the independent
+descent run that was stopped after its ninth completed curve.
+
+The analytic ranks follow from the explicit derivative sums and bounds
+proved below. The two rank-two bases furnished by descent are
+$(-7,441),(105,833)$ for $i=1$, and
+$(0,32004),(22218,3305456)$ for $i=8$.
+\end{proof}

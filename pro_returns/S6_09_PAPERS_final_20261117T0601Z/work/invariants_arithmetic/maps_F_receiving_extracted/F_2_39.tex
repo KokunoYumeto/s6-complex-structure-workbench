@@ -1,0 +1,133 @@
+\paragraph{Theorem F.2.39 (Proved: the full effective classification and all marked gluings).}
+The linear classification and all-twist topological computation
+asked for in F.2 have the following complete effective answer.
+For $k=2$ and $k=3$, every admissible ordered integral tuple
+has the canonical representative of F.2.37, with an explicit
+simultaneous unimodular conjugator.  Equality of these
+representatives is necessary and sufficient for simultaneous
+integral conjugacy.  There is no fixed global height cutoff;
+the finite stopping bound for an input of height $H$ is
+$(2H+1)^{36(k+1)}$ candidates before the proved rejection
+filters.  The separate involution normal form has exactly
+56 classes and is computed completely in F.2.38.
+
+For every choice of actual free affine orders and integer
+numerators, integral clutch vector, and specified primitive
+Kuhn cusp marking, F.2.31 and F.2.35 compute the full
+fundamental group and every integral homology group of the
+gluing.  This is the fully marked correction to F.2.3;
+peripheral matrices are not substituted for a choice of
+filling.  The algorithms have no cutoff on affine orders,
+twist entries or lattice indices.  The complete list of data
+with $\pi_1=1$ and $H_2=H_3=0$ is the constructive
+parametrization of F.2.30, with its exact lattice enumeration
+and necessary-and-sufficient finite tests.  Each retained
+filling has the homology and oriented smooth type stated
+there.
+
+\begin{proof}
+The input is finite, so the prime-subgroup test in F.2.31
+decides whether every claimed affine cyclic action is free
+and has the stated actual order.  The integral cusp test and
+its adapted basis are F.2.1.  The complete linear admissibility
+filter and the canonical representative, including the proved
+finite stopping bound, are F.2.2 and F.2.36--38.  The
+characteristic-polynomial filters used by that algorithm are
+conjugacy invariants, so none can remove a possible
+representative.  The unbounded trace family (F.CN3) proves
+that no fixed finite box could replace the input-dependent
+bound.
+
+We spell out how the linear classification is used with a
+specified gluing.  If $R$ is its returned conjugator and
+$P$ is the supplied cusp marking, change the data by
+\[
+ M_i'=RM_iR^{-1},\qquad v_i'=Rv_i,\qquad
+ \kappa'=R\kappa,\qquad P'=RP.                           \tag{F.SY1}
+\]
+The actual orders are unchanged.  The coordinate map
+$x\mapsto Rx$ on the torus intertwines the finite quotient
+charts, since it sends $M_ix+v_i/m_i$ to
+$M_i'x'+v_i'/m_i$.  At the cusp, its coordinates in the
+marked Kuhn model are unchanged:
+$(P')^{-1}x'=P^{-1}x$.  Hence it intertwines every toric
+chart, translated face identification and collapse map of
+that fixed filling.  It also carries the clutch path to
+the path with vector $\kappa'$.  These maps agree on the
+collars and give a diffeomorphism of the two fully marked
+gluings.  Thus homology can be computed in the original
+coordinates, while the canonical data and their group
+presentation are also returned.  Independently replacing
+$P'$ by another Smith marking is not this comparison.
+
+An actual order-one site is ordinary, even if its integer
+numerator has been recorded.  Delete it by the explicit
+comparison of F.2.31: if it is the $i$th site, replace
+$\kappa$ by
+$\kappa+(M_{i+1}\cdots M_k)^{-1}v_i$ before deletion.
+The cusp matrix and its supplied marking are unchanged.
+There cannot be an order-one site in an admissible two-point
+tuple: its other finite matrix would be the inverse of a
+nontrivial unipotent matrix.  Nor can a three-point tuple
+have two such sites.  Thus this reduction leaves precisely
+the genuine two- or three-point inputs of F.2.35 and loses
+no case from the prompt.
+
+For each remaining input, the exact unsaturated normal
+closure, cyclic or triangle-group extension and exceptional
+spherical Euler relation of F.2.31 give the full fundamental
+group.  The finite cap, complement and marked Kuhn chain
+maps of F.2.33--35 give a finite integer Mayer--Vietoris cone
+through degree nine.  Integer kernels and Smith reduction
+therefore give all $H_0,\ldots,H_8$ with their complete
+torsion factors.  This is a calculation for arbitrary
+supplied twists, rather than a restriction to the affine
+orders of one displayed example.  Its independent
+abelianization check compares the resulting $H_1$ with the
+van Kampen answer.
+
+Finally F.2.7--30 prove both directions of the survivor
+classification.  Genuine three-point orbifold quotients
+exclude simple connectivity.  The two-point filters reduce
+every survivor to the minimal order-$(5,4)$ spectrum; the
+rational normal form, finite stable-lattice and extension
+algorithms include every integral representation above it.
+The universal affine normalization includes every twist,
+and the six exact integral tests decide retention.
+Conversely every retained datum satisfies all three
+topological conditions by those tests.  F.2.30 computes
+its common integral homology and applies the almost-complex
+and smooth-classification arguments to identify its oriented
+type.  There is no residual untested rational-height bound
+in this parametrization.  The canonical-representative
+algorithm can remove duplicates from it if desired, but
+no finite global enumeration is asserted or needed for
+these complete per-input decisions.
+\end{proof}
+
+The unified entry point is
+\path{code/fourfolds_classify_gluing.py}.
+It records the original and transported markings, the exact
+linear normalizer, both group presentations and the complete
+integer homology calculation.  Its general noninvolution
+canonical branch has the proved finite stopping rule of
+F.2.37 and the same stated practical limitation: that
+astronomically large fallback is not claimed exhaustively
+executed.  The executed finite catalogue, conjugacy tests,
+full marked homology examples and their exact bounds are
+those recorded in F.2.33--38.
+The identity-insertion branch has additionally been run on
+all 168 inputs obtained by placing an identity in each of
+the three marked positions of each of the 56 involution
+classes, after a nontrivial simultaneous conjugation.
+Every exact representative and unimodular conjugator passes.
+The full unified driver has been run on the orientation-reversing
+involution gluing of F.2.35 and on the same gluing presented
+with an additional actual order-one site.  In the latter
+test its numerator is $(0,1,0,1,0,0)^T$ and the original
+clutch is $(1,-1,0,1,0,0)^T$; the suffix comparison reduces
+the clutch to zero.  Both executions return the complete
+canonical data, transported cusp marking, exact group and
+the full integral homology of that example, with the
+independent abelianization check.  Their outputs and full
+JSON certificates are retained.

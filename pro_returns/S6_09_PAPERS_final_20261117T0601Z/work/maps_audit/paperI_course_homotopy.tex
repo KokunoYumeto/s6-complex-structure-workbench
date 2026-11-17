@@ -1,0 +1,147 @@
+\section{The orientation generator and the path-fibration proof}
+\label{mapsI:course:homotopy-section}
+
+The homotopy-sphere conclusion is classical; the following argument retains
+our original map and gives the distinct path-fibration proof of the course.
+The complete elementary constructions used below are printed in
+\cref{mapsI:cw:section,mapsI:pf:section}.  The first Hurewicz theorem and
+homological Whitehead theorem are also stated in
+\cite[Theorem~4.32 and Corollary~4.33]{Hatcher2002}; we use their integral,
+simply connected forms.
+
+\begin{theorem}[the original degree-one homotopy equivalence]
+\label{mapsI:course:CG-S6-07-HOMOTOPY}
+For the constructed threefold, with its complex orientation, there is a
+map \(g:S^6\to X\) satisfying \(g_*[S^6]=[X]\), and this particular map
+is a homotopy equivalence.
+\end{theorem}
+
+\begin{proof}
+The fundamental-group calculation in
+\cref{mapsI:top:prop:geometric-pi1} gives \(\pi_1(X)=0\), and
+\cref{mapsI:top:thm:h2-vanishing,mapsI:top:lem:cohomological-closure}
+give the complete integral homology of the sphere.  For \(2\le n\le5\),
+assume inductively that \(\pi_i(X)=0\) for \(1\le i<n\).  The integral
+Hurewicz map
+\[
+ h_n:\pi_n(X)\longrightarrow H_n(X;\mathbb Z),
+ \qquad [a]\longmapsto a_*[S^n],
+\]
+is then an isomorphism, by \cref{mapsI:cw:hurewicz-theorem-result}.
+The target vanishes, so the induction gives \(\pi_i(X)=0\) for
+\(1\le i\le5\).  In degree six choose \([g]\) mapping to the positive
+orientation generator \([X]\).  Thus
+\begin{equation}
+ g_*[S^6]=[X].
+ \label{mapsI:course:degree-one}
+\end{equation}
+This map induces an integral homology isomorphism in every degree:
+in degrees zero and six it preserves the generators, and all remaining
+groups on both sides vanish.
+
+Replace \(g\) by its actual path fibration
+\[
+ E_g=\{(s,\lambda):s\in S^6,\ \lambda(0)=g(s)\},
+ \qquad p(s,\lambda)=\lambda(1).
+\]
+The path space has the compact-open topology.  The homotopy
+\((s,\lambda)\mapsto(s,u\mapsto\lambda((1-t)u))\) strongly retracts
+\(E_g\) onto the constant paths, identified with \(S^6\).
+Under this retraction \(p\) represents \(g\).
+For clarity, the lifting formula used in \cref{mapsI:pf:path-lifting}
+is the following.  Given \(H:Z\times I\to X\) and an initial lift
+\((s(z),\lambda_z)\), the path at time \(t\) is
+\[
+ \eta_{z,t}(u)=
+ \begin{cases}
+ \lambda_z((1+t)u),&0\le u\le (1+t)^{-1},\\
+ H(z,(1+t)u-1),&(1+t)^{-1}\le u\le1.
+ \end{cases}
+\]
+The pieces agree at the join, their two closed domains cover the parameter
+space, and compact-open adjunction proves continuity.  The last endpoint
+is \(H(z,t)\), while the time-zero path is exactly \(\lambda_z\).
+This proves the homotopy lifting property.  Relative cell lifting gives
+the exact homotopy sequence, as proved in
+\cref{mapsI:pf:path-lifting}.
+
+For the cellular filtration use the actual comparison constructed in
+\cref{mapsI:cw:cw-manifolds}:
+\[
+ \alpha:T_X\longrightarrow X,\qquad
+ \beta:X\longrightarrow T_X,\qquad
+ \alpha\beta=1_X,\qquad \beta\alpha\simeq1_{T_X}.
+\]
+Put \(\bar g=\beta g\), let \(\bar E=E_{\bar g}\), and write
+\(\bar p(s,\lambda)=\lambda(1)\).  There is an explicit comparison
+\[
+ J:\bar E\longrightarrow E_g,\qquad
+ J(s,\lambda)=(s,\alpha\circ\lambda),
+ \qquad pJ=\alpha\bar p.
+\]
+Its starting point is correct because
+\(\alpha\beta g(s)=g(s)\), exactly.  Both total spaces retract onto the
+same \(S^6\), and \(J\) commutes with these retractions.  The base
+\(T_X\) is an actual simply connected CW complex with \(\pi_2(T_X)=0\).
+The map \(\bar p\) is an integral homology isomorphism in every degree,
+since \(\bar g=\beta g\) is one.  Let \(K\) be its fibre over a vertex.
+It is path connected: a path between two fibre points in the connected
+total space projects to a null-homotopic loop, and lifting its contraction
+relative to the two endpoints changes that path to one in the fibre.
+The exact sequence, together with \(\pi_2(T_X)=0\) and
+\(\pi_1(\bar E)=\pi_1(S^6)=0\), then gives \(\pi_1(K)=0\).
+
+Suppose a positive homotopy group of \(K\) is nonzero and choose the least
+such degree \(n\ge2\).  Hurewicz gives
+\[
+ H_i(K;\mathbb Z)=0\quad(0<i<n),\qquad
+ H_n(K;\mathbb Z)\cong\pi_n(K)\ne0.
+\]
+The integral homology spectral sequence for \(\bar p\), constructed
+with its actual edge maps in \cref{mapsI:pf:filtered-chains,mapsI:pf:serre-homology},
+has constant coefficient systems because the base is simply connected.
+In total degree \(n\), the only possibly nonzero terms are
+\[
+ E_2^{0,n}=H_n(K),\qquad E_2^{n,0}=H_n(T_X).
+\]
+No differential leaves column zero.  A differential entering \((0,n)\)
+has source \((r,n-r+1)\).  The sources for \(2\le r\le n\) vanish by
+the displayed fibre-homology vanishings, and for \(r>n+1\) they have
+negative second degree.  The sole possible incoming map is therefore
+\[
+ d_{n+1}:E_{n+1}^{n+1,0}\longrightarrow E_{n+1}^{0,n}.
+\]
+The source is still \(H_{n+1}(T_X)\): there are no incoming maps to
+the bottom row, and all earlier outgoing targets have fibre degree
+between one and \(n-1\).  The actual edge image
+\(\operatorname{im}(\bar p_*:H_{n+1}(\bar E)\to H_{n+1}(T_X))\)
+is \(E_\infty^{n+1,0}=\ker d_{n+1}\).  Surjectivity of \(\bar p_*\)
+makes this kernel the whole source, so \(d_{n+1}=0\).
+Consequently
+\[
+ H_n(K)=E_\infty^{0,n}=F_0H_n(\bar E).
+\]
+The other actual edge map \(\bar p_*:H_n(\bar E)\to H_n(T_X)\)
+kills this first filtration subgroup: its kernel is
+\(F_{n-1}H_n(\bar E)\), which contains \(F_0\) since \(n\ge2\).
+Injectivity of this edge map therefore forces \(H_n(K)=0\), a
+contradiction.  All homotopy groups of \(K\) vanish.
+
+The exact homotopy sequence makes \(\bar g\), and hence the original
+\(g\), an isomorphism on every homotopy group.  The complete CW-domain
+compression argument in \cref{mapsI:pf:cw-inverses} supplies an actual
+inverse \(\bar h:T_X\to S^6\) to \(\bar g\), with both inverse
+homotopies.  Set
+\[
+ h_X=\bar h\beta:X\longrightarrow S^6.
+\]
+Then \(h_Xg=\bar h\bar g\simeq1_{S^6}\).  For the other composition,
+use \(g=\alpha\bar g\), then \(\bar g\bar h\simeq1_{T_X}\), then
+the exact equality \(\alpha\beta=1_X\), to obtain
+\[
+ gh_X=\alpha\bar g\bar h\beta\simeq\alpha\beta=1_X.
+\]
+Both homotopies concern the original spaces and the original degree-one
+map.  The orientation generator in \eqref{mapsI:course:degree-one}
+has not been rescaled.
+\end{proof}

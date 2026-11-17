@@ -1,0 +1,456 @@
+\section{Singular duality, the diagonal and the Euler class}\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section}
+The following complete arguments are retained as re-derivations of their classical prerequisites. Source-specific calculations and their hypotheses are stated explicitly.
+
+
+
+
+A manifold's tangent characteristic classes can be recovered from its cohomology and its cohomology operations. The bridge is the diagonal: its normal bundle is the tangent bundle, while its cohomology class is determined by the cup-product pairing. We prove the bridge, including the compact-support duality and tubular-neighbourhood foundations, and then derive the Euler characteristic and Wu formula.
+
+Manifolds here are smooth, Hausdorff and second countable, without boundary unless stated. Dimension-zero orientation statements use the canonical point orientation and the established rank-zero Thom convention. The \cref{courseIII:thom-euler-for-lesson11:section} proves singular excision, Mayer–Vietoris, products, coefficient theorems and the Thom isomorphism. The \cref{courseIII:projective-splitting-for-lesson11:section} and \cref{courseIII:integral-chern-classes-for-lesson11:section} prove the mod-two and signed compact-set fundamental classes. These are the precise prerequisites used below.
+
+\subsection{Compact supports and the duality map}
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section-1}
+
+Fix a commutative coefficient ring \(R\). Use an orientation of \(M^d\) when \(R\ne\mathbb F _2\); for \(R=\mathbb F _2\) no orientation is required. The fundamental-class results just cited give a compatible class
+
+
+```{=latex}
+\[
+\mu_K\in H_d(M,M\setminus K;R)
+\]
+```
+
+
+for every compact \(K\subset M\): it has the prescribed local orientation at every point of \(K\), and is uniquely determined by these local restrictions. With an orientation, this class is the coefficient image of the integer class. With mod-two coefficients it is the corresponding unsigned class. The compact-set construction works over \(R\) by the same proof: coordinate relative homology is \(R\) in top degree and zero above it; its Mayer–Vietoris gluing and local detection use only addition and subtraction. Thus uniqueness is being proved over the chosen ring, rather than inferred from an unsupported coefficient-change injection.
+
+Define
+
+
+```{=latex}
+\begin{equation}
+C_c^r(M;R)=\bigcup_{K\text{ compact}} C^r(M,M\setminus K;R),
+\qquad H_c^r(M;R)=H^r(C_c^*(M;R)).
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.1}
+\end{equation}
+```
+
+
+The condition on a cochain is that it vanish on every simplex contained in the complement of some compact set. It need not vanish on all large simplices. Coboundary preserves this condition. A cocycle and a cochain witnessing its being a coboundary each belong to one compact-support stage. Taking their union shows directly that
+
+
+```{=latex}
+\begin{equation}
+H_c^r(M;R)=\underset{K}{\operatorname{colim}}H^r(M,M\setminus K;R).
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.2}
+\end{equation}
+```
+
+
+These are filtered direct limits, not inverse limits. Excision identifies each stage with the corresponding stage in any open neighbourhood of \(K\). Thus an open inclusion \(U\subset M\) induces extension of supports \(H_c^r(U)\to H_c^r(M)\). If \(M\) is compact, its maximal support is \(M\), so \(H_c^r(M)=H^r(M)\).
+
+Use the manuscript's right cap convention
+
+
+```{=latex}
+\[
+R_a\sigma=a(\sigma[d-r,\ldots,d])\sigma[0,\ldots,d-r]
+\]
+```
+
+
+on a \(d\)-simplex. For a degree-\(r\) cochain on an \(m\)-simplex, boundary expansion gives the more general identity
+
+
+```{=latex}
+\begin{equation}
+\partial R_a c=R_a\partial c+(-1)^{m-r}R_{\delta a}c.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.3}
+\end{equation}
+```
+
+
+The terms with a deleted vertex before the cut give the first summand, those after the cut give the coboundary summand, and their shared cut terms cancel. When \(a\) is a cocycle supported on \(K\) and \(c\) represents \(\mu_K\), the first summand vanishes because \(\partial c\) is outside \(K\). Hence \(R_a c\) is an absolute cycle. Changing \(c\) by a relative boundary or by an outside chain changes it by an absolute boundary or zero. If \(a\) changes by \(\delta b\), \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.3} gives a boundary, since \(R_b\partial c=0\). Compatibility of \(\mu_K\) makes the result independent of enlarging \(K\). We have a well-defined natural homomorphism
+
+
+```{=latex}
+\begin{equation}
+D_M^r:H_c^r(M;R)\longrightarrow H_{d-r}(M;R),
+\qquad [a]\longmapsto R_a\mu_K.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.4}
+\end{equation}
+```
+
+
+Naturality here is for open inclusions, extension of supports and ordinary homological inclusion. The cap evaluation identity is
+
+
+```{=latex}
+\begin{equation}
+\langle b,D_M^r(a)\rangle=\langle b\smile a,[M]\rangle
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.5}
+\end{equation}
+```
+
+
+when \(M\) is closed and \(|b|=d-r\). Its order follows from the actual front/back face formula.
+
+\subsection{The full Poincaré duality proof}
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section-2}
+
+\label{courseIII:duality:2.1}
+\begin{lemma}[The compact-support gluing square]
+If \(M=U\cup V\) is an open cover, cap maps identify the compact-support cohomology Mayer–Vietoris sequence with the ordinary homology Mayer–Vietoris sequence, reversing degrees. Give its middle vertical map the signs \((D_U,-D_V)\), matching the cohomological difference map with the homological sum map. Squares for the inclusion maps then commute; the square of connecting maps in cohomological degree \(r\) commutes up to the sign \((-1)^{d-r}\).
+\end{lemma}
+\begin{proof}
+For compact \(K\subset U,L\subset V\), put \(A=M\setminus K\), \(B=M\setminus L\). On singular cochains the sequence
+
+
+```{=latex}
+\begin{equation}
+0\to C^*(M,C_*(A)+C_*(B))\to C^*(M,A)\oplus C^*(M,B)
+\xrightarrow{(a,b)\mapsto a-b} C^*(M,A\cap B)\to0
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:2.1}
+\end{equation}
+```
+
+
+is degreewise split exact. In its first term the notation means cochains vanishing on both indicated chain groups. To split the last arrow, assign each simplex's value to the first cochain if that simplex is not contained in \(A\), and otherwise to the negative second cochain; a simplex in both \(A,B\) has value zero. Since \(A,B\) are open, small-chain excision identifies the first term's cohomology with that of the pair \((M,A\cup B)\). Thus \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:2.1} gives the sequence for supports \(K\cap L,K,L,K\cup L\). Excision places these terms respectively in \(U\cap V,U,V,M\).
+
+The connecting square requires a chain check. Represent \(\mu_{K\cup L}\), after subdivision, as
+
+
+```{=latex}
+\[
+\alpha=x+y+z
+\]
+```
+
+
+with \(x\) in \(U\setminus L\), \(y\) in \(U\cap V\), and \(z\) in \(V\setminus K\); these open sets cover \(M\). Then \(x+y\) represents \(\mu_K\), since its boundary is outside \(K\), and \(y\) represents \(\mu_{K\cap L}\). Their local values are the required ones, so uniqueness of compact-set fundamental classes proves these assertions.
+
+Let a cocycle \(\phi\) with support \(K\cup L\) be written \(\phi=\phi_A-\phi_B\) by \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:2.1}. Its connecting cocycle is \(\delta\phi_A=\delta\phi_B\), supported on \(K\cap L\) in the small-chain model. The homological Mayer–Vietoris boundary of \(R_\phi\alpha\) is represented by \(\partial R_\phi x\): take its \(U\) part to be \(R_\phi x\) and its \(V\) part to be \(R_\phi(y+z)\). Since \(\phi_B\) vanishes on \(x\), this boundary equals \(R_{\phi_A}\partial x\). Also \(R_{\phi_A}\partial(x+y)=0\), because that boundary is outside \(K\). It is therefore \(-R_{\phi_A}\partial y\). By \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.3}, modulo boundaries in \(U\cap V\),
+
+
+```{=latex}
+\[
+R_{\delta\phi_A}y=(-1)^{d-r+1}R_{\phi_A}\partial y.
+\]
+```
+
+
+The two connecting routes differ by exactly \((-1)^{d-r}\), as asserted. All calculations can be made after the same sufficiently fine subdivision; the proved small-chain homotopies identify them with the original classes.
+
+Pass to the filtered limit over \(K,L\). Each compact subset of \(U\cap V\) lies in such an intersection, and each compact subset of \(M\) lies in such a union: use a finite subcover and compact shrinkings inside \(U,V\). Filtered limits preserve exactness, since an element in a kernel has its zero image at a later stage and then lifts there by stagewise exactness. This gives the stated diagram. The other squares follow directly from local fundamental-class compatibility.
+\end{proof}
+
+\label{courseIII:duality:2.2}
+\begin{theorem}[Poincaré duality]
+The map \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.4} is an isomorphism for every \(r\).
+\end{theorem}
+\begin{proof}
+On \(\mathbb R^d\), closed balls are cofinal compact supports. The relative cohomology of a ball and its exterior is \(R\) in degree \(d\) and zero otherwise, by the sphere calculation and excision. Cap with a positively oriented \(d\)-simplex sends its degree-\(d\) evaluation cocycle to the first vertex, with coefficient one. Thus \(D\) is an isomorphism on \(\mathbb R^d\) and on any open ball or nonempty convex open subset homeomorphic to it.
+
+If duality holds on \(U,V,U\cap V\), Lemma 2.1 and the five lemma prove it on their union; signs can be inserted in the vertical maps and do not change invertibility. If \(U_1\subset U_2\subset\cdots\) are open and cover \(M\), compact supports lie in some \(U_i\), and every finite singular cycle or bounding chain also lies in some \(U_i\). Hence both sides of \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.4} are their filtered direct limits and duality passes to the union.
+
+An open subset of \(\mathbb R^d\) is a countable union of open balls with closures inside it. Every nonempty finite intersection is homeomorphic to \(\mathbb R^d\). To verify this detail, choose a point \(c\) in the intersection. The distance \(R_i(\theta)\) from \(c\) to the \(i\)-th ball's boundary in unit direction \(\theta\) is the positive root of \(\|c+t\theta-c_i\|^2=r_i^2\); its explicit quadratic formula is continuous and positive. The minimum \(R(\theta)\) of these finitely many roots is likewise continuous and positive. In polar coordinates the map \(c+t\theta\mapsto t\theta/(R(\theta)-t)\) is a homeomorphism onto \(\mathbb R^d\), with continuous inverse and the centre mapped to zero. Induction over finite unions, followed by the preceding limit argument, proves duality for every open subset of \(\mathbb R^d\). Finally cover \(M\) by countably many coordinate neighbourhoods. Intersections of any already formed union with a new chart are open subsets of that chart, so their duality is established. Finite-union induction and the countable-union argument now prove the theorem on \(M\). The empty space and \(d=0\) follow from the same definitions: a compact subset of a discrete manifold is finite and the cap map is the identity on its point coefficients.
+\end{proof}
+
+\label{courseIII:duality:2.3}
+\begin{corollary}[Finite generation and perfect pairings]
+A closed oriented manifold has finitely generated integer homology, zero above its dimension. Over a field \(F\), with the stated orientation or \(F=\mathbb F _2\), the pairing
+
+
+```{=latex}
+\begin{equation}
+H^r(M;F)\times H^{d-r}(M;F)\to F,
+\qquad (a,b)\mapsto\langle a\smile b,[M]\rangle
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:2.2}
+\end{equation}
+```
+
+
+is perfect.
+\end{corollary}
+\begin{proof}
+Write the ordinary fundamental class as a finite singular cycle \(c\). For each \(r\), every cap \(R_a c\) lies in the finite free subgroup of chains generated by the front ((d-r))-faces of the finitely many simplices of \(c\). Its subgroup of cycles is finitely generated over \(\mathbb Z\): a subgroup of a finite-rank free abelian group is free of rank at most that rank, as proved in the coefficient chapter. Duality says these caps represent every homology class. Thus homology is a quotient of this finitely generated cycle subgroup. Over a field the same argument gives finite dimension. Duality in negative cohomological degrees gives the vanishing above \(d\).
+
+Field cohomology is the linear dual of homology by the proved coefficient theorem. Apply this and \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:1.5} to the duality isomorphism. It makes \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:2.2} nondegenerate, and finite dimension makes the induced maps to dual spaces isomorphisms. Graded commutativity accounts for changing the order of its two factors.
+\end{proof}
+
+Define \(\chi(M)=\sum_r(-1)^r\operatorname{rank}H_r(M;\mathbb Z)\) when these groups are finitely generated and vanish in sufficiently large degrees. It equals the alternating sum of dimensions over every coefficient field. Indeed split the finitely generated integer groups into free and finite cyclic summands. Coefficient change gives each free generator once; a torsion summand visible in the chosen characteristic contributes in two consecutive homological degrees through tensor and Tor, so cancels in the alternating sum. In characteristic zero no torsion contributes. The tensor/Tor coefficient sequence follows from the same split cycle-boundary free presentation used for the already proved cohomology coefficient theorem: tensor its two-term free resolution. The elementary two-term resolution of \(\mathbb Z/q\) is multiplication by \(q\), yielding the claimed two adjacent contributions. For nonorientable closed manifolds the finite-generation premise is proved in \cref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section-3} below.
+
+\subsection{Tubular neighbourhoods, with the analytic prerequisites}
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section-3}
+
+We need a tubular neighbourhood in a smooth ambient manifold \(A\), not an unexplained appeal to a geodesic construction. The following elementary analytic facts supply one.
+
+\label{courseIII:duality:3.1}
+\begin{lemma}[Local inverse and local flows]
+A smooth map between open Euclidean sets with invertible derivative at a point has a smooth inverse on neighbourhoods of that point. A smooth finite-dimensional vector field has a unique local flow, smooth in time and its initial point.
+\end{lemma}
+\begin{proof}
+For the inverse assertion translate the point to zero and let its derivative be the invertible matrix \(B\). On a sufficiently small closed ball, continuity of the derivative gives \(\|I-B^{-1}DF\|\leq1/2\). Solving \(F(x)=y\) is the fixed-point problem \(x=x+B^{-1}(y-F(x))\). For \(y\) sufficiently close to \(F(0)\), this map preserves the ball and contracts distances by \(1/2\). Its iterates converge uniformly, since successive distances form a geometric series; completeness gives a unique solution. The same estimate bounds inverse differences by \(2\|B^{-1}\|\|y-y'\|\), so the inverse is continuous. Inserting this bound into the differentiability remainder for \(F\) proves its derivative is \(DF(x)^{-1}\). This derivative is continuous. Repeated differentiation of the inverse identity proves smoothness, inductively using smoothness of matrix inversion where its determinant is nonzero. Shrinking the open ball and its image provides the stated neighbourhoods.
+
+For a smooth field \(G\), restrict to a coordinate ball where \(\|G\|\leq C\) and \(\|DG\|\leq L\). Choose (T>0) with \(TC\) smaller than the available margin and (TL<1/2). On continuous paths staying in that ball, the map
+
+
+```{=latex}
+\[
+x(t)\longmapsto x_0+\int_0^tG(x(s))\,ds
+\]
+```
+
+
+preserves the closed path ball and is a contraction in the supremum norm. Its iterates converge and give the unique solution. They also prove continuity in \(x_0\) by the same geometric estimate. The derivative in \(x_0\) solves the linear integral equation
+
+
+```{=latex}
+\[
+J(t)=I+\int_0^t DG(x(s))J(s)\,ds.
+\]
+```
+
+
+Its integral operator has norm at most (TL<1/2), so the Neumann series gives a unique continuous solution. Subtracting the equations for neighbouring initial points, dividing by their difference, and using the uniform differentiability remainder of \(G\) proves convergence of difference quotients to this solution. The same argument with parameters proves continuous derivatives. Each higher derivative satisfies this same linear equation with an inhomogeneous term formed from already obtained lower derivatives and derivatives of \(G\); induction gives all derivatives. Time differentiability follows from the differential equation itself. Uniqueness lets these coordinate solutions agree on overlaps and continue along any already existing compact time interval. This proves the smooth local-flow assertion.
+\end{proof}
+
+Choose a smooth partition of unity \(\theta_i\) subordinate to coordinate charts of \(A\), using the smooth bump construction in the bundle chapter. On \(TA\) above one chart let \(S_i\) be the vector field whose coordinate equations are \(\dot x=v,\dot v=0\). Set \(S=\sum_i\theta_i(x)S_i\). This locally finite sum is a globally smooth field on \(TA\). Its projection to \(A\) is \(v\). In any chart its acceleration is quadratic in \(v\): under a coordinate change \(h\), a straight path has acceleration \(D^2h(v,v)\). In particular \(S(x,0)=0\), and its linearization there is \(\dot a=b,\dot b=0\).
+
+Lemma 3.1 gives its flow to time one on a neighbourhood of every ((x,0)): the zero trajectory exists for the whole compact interval, and finitely many local existence intervals extend nearby trajectories along it. Let \(L(x,v)\) be the base point at time one. Then
+
+
+```{=latex}
+\begin{equation}
+L(x,0)=x,\qquad DL_{(x,0)}(a,b)=a+b.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:3.1}
+\end{equation}
+```
+
+
+This is a smooth local addition, constructed without any connection or geodesic theorem.
+
+\label{courseIII:duality:3.2}
+\begin{theorem}[Tubular neighbourhood]
+If \(M\subset A\) is a smooth embedded submanifold, its normal quotient bundle \(\nu=TA|_M/TM\) has a neighbourhood of its zero section diffeomorphic to an open neighbourhood of \(M\) in \(A\), fixing \(M\). The whole bundle is diffeomorphic to such a neighbourhood by a radial fibre change. If \(M\) is closed as a subset of \(A\), excision also identifies the pairs' cohomology
+
+
+```{=latex}
+\begin{equation}
+H^*(A,A\setminus M;R)\cong H^*(\nu,\nu\setminus M;R).
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:3.2}
+\end{equation}
+```
+
+
+\end{theorem}
+\begin{proof}
+First reduce the tubular assertion to a closed embedding. Local submanifold charts make \(M\) locally closed: near each of its points, it is the zero set of the normal coordinates. Hence every point of \(M\) has a neighbourhood disjoint from \(C=\overline M\setminus M\). Points outside \(\overline M\) do also. Thus \(C\) is closed in \(A\), and \(A'=A\setminus C\) is open with \(M\) closed in it. The normal quotient in \(A'\) is the same as in \(A\), and an open tube in \(A'\) is open in \(A\). We can therefore assume \(M\) closed for the construction. The relative-cohomology assertion \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:3.2} is asserted for the original ambient space only when its embedding is closed.
+
+A smooth metric identifies \(\nu\) with the orthogonal complement of \(TM\), by the proved complement theorem. Restrict \(L\) to this complement. At a zero vector its derivative sends \((a,b)\in T_xM\oplus\nu_x\) to \(a+b\in T_xA\), an isomorphism. Lemma 3.1 makes it a local diffeomorphism near each zero vector.
+
+Here is the global injectivity detail, including a noncompact base. A second-countable manifold has a compact exhaustion: take a countable relatively compact chart cover and successively enlarge finite unions of their closures to lie inside the interiors of the next such unions. Smooth bumps equal to one on each compact stage and supported in the next produce a nonnegative proper smooth function \(h\): if \(\psi_j=1\) on stage \(j\) and is supported in stage \(j+1\), the locally finite sum \(\sum_j(1-\psi_j)\) is bounded on compact stages and tends to infinity off them. Its sublevel sets are compact. Put \(K_j=M\cap\{h\leq j\}\), compact because \(M\) is closed.
+
+For each \(K_j\) there is a radius \(\epsilon_j>0\) such that \(L\) is defined and locally invertible on all normal vectors over \(K_j\) of smaller norm, satisfies \(|h(L(x,v))-h(x)|<1/2\), and is injective between any two such vectors. For the last claim, if no radius worked, two distinct vectors of norms tending to zero would have equal images and bases in \(K_j\). Pass to convergent base subsequences. Their images tend to the bases, so both limiting bases agree. The local inverse at that common zero vector contradicts the equality for sufficiently late terms. The other claims follow from compactness and continuity. Take these radii positive and decreasing in \(j\).
+
+Choose a continuous positive function \(g(t)\), \(t\geq0\), by interpolating between \(\epsilon_{j+4}/2\) at successive integers, and choose a smooth positive \(\rho(x)<g(h(x))\) on \(M\). Such a minorant follows by a smooth locally finite chart partition and constants smaller than the positive lower bound of \(g\circ h\) on each chart closure. The normal disk domain \(\|v\|<\rho(x)\) is contained in the local-diffeomorphism domain. If two of its points have the same image, their base heights differ by less than one. With \(j\) the ceiling of the larger height, both bases lie in \(K_j\), and both norms are smaller than \(\epsilon_j\) by the decreasing-radius choice and the four-stage margin. The compact-stage injectivity then makes them equal. Thus \(L\) is an injective local diffeomorphism on this domain and has a smooth inverse on its open image.
+
+The fibre map \(v\mapsto\rho(x)v/\sqrt{1+\|v\|^2}\) is a diffeomorphism from the whole normal bundle onto that domain, with inverse \(w\mapsto w/\sqrt{\rho(x)^2-\|w\|^2}\). It fixes the zero section. The resulting open neighbourhood and \(A\setminus M\) cover \(A\); excision for this cover proves \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:3.2}. In codimension zero \(M\) is open and closed, and the statement reduces to its identity neighbourhood.
+\end{proof}
+
+The orientation of \(TM\) agrees with the local-homology orientation used above. In an oriented coordinate chart this is the positive coordinate generator. If a transition has derivative \(B\) at a point, the rescaled maps \(h_t(v)=(h(tv)-h(0))/t\) extend at \(t=0\) to \(Bv\), uniformly on a small sphere; invertibility makes them avoid zero there. Hence their local degree is \(\operatorname{sign}\det B\), by the linear determinant calculation in the Thom chapter. This proves compatibility, including its change on opposite orientations.
+
+\label{courseIII:duality:3.3}
+\begin{lemma}[Compact Euclidean embedding and finite domination]
+Every compact smooth manifold embeds smoothly in some finite Euclidean space and is a retract of a neighbourhood there. Its integer homology is finitely generated and vanishes in sufficiently large degrees, whether or not it is oriented.
+\end{lemma}
+\begin{proof}
+Take finitely many coordinate maps \(f_i:U_i\to\mathbb R^d\) and smooth functions \(\phi_i\geq0\) supported inside \(U_i\), positive on sets covering \(M\). Define the Euclidean map with blocks \((\phi_i,\phi_i f_i)\), extending the second component by zero. These extensions are smooth because their supports are inside the charts. If two points have the same image, a block positive at the first is positive at the second, and division by its common first coordinate gives identical chart coordinates; the points agree. If its derivative vanishes on a tangent vector, a positive block gives first \(d\phi_i=0\), then \(\phi_i df_i=0\), so the vector is zero. Thus it is an injective immersion; compactness makes it a homeomorphism onto its image. The local inverse lemma, applied to any full-rank coordinate projection of its derivative, shows its image is an embedded submanifold.
+
+In Euclidean space the normal map is simply \((x,v)\mapsto x+v\). Its derivative at zero is the tangent/normal direct-sum isomorphism. The compact version of the injectivity argument in Theorem 3.2 gives a tubular neighbourhood \(N\), and projection along its normal fibres is a retraction \(r:N\to M\). Choose a sufficiently fine finite grid of closed Euclidean cubes meeting \(M\). Their union \(P\) lies inside \(N\), since the distance from compact \(M\) to the closed complement of \(N\) is positive. Include all faces, so \(P\) is a finite cubical CW complex. Inclusion and retraction give \(M\to P\to M\) with composite identity. Thus homology of \(M\) is a direct summand of homology of \(P\). The finite cellular complex, proved from relative cells in the Schubert chapter, has finitely generated integer groups in finitely many degrees. Its homology and their summands have the same finiteness properties. This proves the claim.
+\end{proof}
+
+Together with the coefficient calculation following Corollary 2.3, this proves coefficient independence of \(\chi\) for every closed manifold. No triangulation of \(M\) was assumed.
+
+\subsection{A submanifold's dual class and the diagonal}
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:section-4}
+
+For a closed embedded codimension-\(k\) submanifold \(j:M\hookrightarrow A\), the Thom class of its normal bundle transfers by \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:3.2} to
+
+
+```{=latex}
+\[
+u_M\in H^k(A,A\setminus M;R).
+\]
+```
+
+
+Use mod-two coefficients without an orientation, or an orientation of the normal bundle with any \(R\). Its image in \(H^k(A;R)\) is the **dual cohomology class** \(U_M\). Restriction back to \(M\) is the Euler class of the normal bundle, or its top Stiefel–Whitney class modulo two: restriction corresponds under the tube to zero-section pullback of the Thom class. This proves the self-intersection formula directly from the Euler definition.
+
+If \(A^D,M^{D-k}\) are closed and oriented, orient the normal bundle by the convention that a positive tangent basis of \(M\), followed by a positive normal basis, is positive in \(A\). In codimension zero take \(j\) to preserve the given orientations, consistently with the rank-zero convention. Then for \(z\in H^{D-k}(A;R)\),
+
+
+```{=latex}
+\begin{equation}
+\langle z\smile U_M,[A]\rangle=\langle j^*z,[M]\rangle.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.1}
+\end{equation}
+```
+
+
+The same formula holds without signs over \(\mathbb F _2\).
+
+**Proof of \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.1}.** Subdivide a fundamental cycle of \(A\) for the tube/complement cover. Cap with a relative cocycle representing \(u_M\) kills the complement pieces and gives a cycle in the tube. Project it to \(M\). In a local tangent/normal coordinate product, the ambient local generator is the product of the positive tangent generator and positive normal generator, in that order. The Thom cap calculation of the Thom chapter sends this product to the tangent generator: its normal-factor evaluation is one. Thus the projected cycle has the required local value at every point of \(M\). Local fundamental-class detection makes its class \([M]\). The cap evaluation identity says its evaluation by \(j^*z\) is the left side of \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.1}, because the tube retracts onto \(M\). ∎
+
+For example, a positive-codimension submanifold embedded as a closed subset of Euclidean space has zero dual class in that ambient space. Therefore its normal top Stiefel–Whitney class, and oriented normal Euler class if defined, vanish. Closedness and embeddedness are part of this assertion; an immersion supplies no such ambient relative Thom class.
+
+Now take a closed \(d\)-manifold \(M\) and its diagonal \(\Delta:M\hookrightarrow M\times M\). With a product metric its tangent space is \(\{(v,v)\}\) and its normal space is \(\{(-v,v)\}\). Hence
+
+
+```{=latex}
+\begin{equation}
+TM\cong\nu_\Delta,\qquad v\longmapsto(-v,v).
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.2}
+\end{equation}
+```
+
+
+
+Illustration description: The circle diagonal in a unit fundamental square of the product torus; opposite sides are identified, the tangent direction is (1,1), and the positively oriented normal direction is (-1,1).
+
+*Figure 1. This is the diagonal of \(S^1\) in \(S^1\times S^1\), represented in unit period coordinates. The two arrows are scaled by \(1/5\); their unscaled ordered determinant is \(2>0\). All four square vertices are the same diagonal point in the quotient. The positive dual class is \(a_2-a_1\), and its diagonal pullback is zero, as proved in Theorem 4.1 and Exercise 6.4. The diagram represents this one-dimensional example; it is not a picture of a higher-dimensional diagonal. Independently drawn from the coordinate formulas, with editable code, SVG and exact data retained. Scholarly coverage: Milnor and Stasheff, Section 11; no source figure copied.*
+
+For an oriented \(M\), give this normal bundle the tangent orientation via \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.2}. The tangent-first/normal-second matrix is
+\(\begin{pmatrix}I&-I\\I&I\end{pmatrix}\), with determinant (2^d>0), so it agrees with the orientation convention in \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.1}. Let \(u\) be its relative Thom class and \(U\) its absolute image, the **diagonal class**. We have
+
+
+```{=latex}
+\begin{equation}
+\Delta^*U=e(TM),\qquad
+\langle z\smile U,[M\times M]\rangle=\langle\Delta^*z,[M]\rangle.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.3}
+\end{equation}
+```
+
+
+Modulo two the first equality is \(\Delta^*U=w_d(TM)\).
+
+These signs can also be checked on a transverse fibre. The diagonal tube may be built using the local addition on \(M\) as
+\((x,v)\mapsto(L(x,-v),L(x,v))\). Its derivative has exactly the tangent/normal blocks above; the compact injectivity argument makes it a tube after shrinking the radius. For fixed \(x\), the maps
+
+
+```{=latex}
+\[
+v\longmapsto(L(x,-tv),L(x,v)),\quad 0\leq t\leq1,
+\]
+```
+
+
+stay off the diagonal when \(v\ne0\) is sufficiently small. Indeed the fibre map \(L(x,-)\) is locally injective, and \(-tv\ne v\). At \(t=0\) this is the slice \(y\mapsto(x,y)\). Thus its Thom pullback is the positive local cohomology generator of \(M\) at \(x\), with no hidden sign.
+
+The projections \(p_1,p_2\) are homotopic on the tube since they agree on its deformation retract, the diagonal. Relative multiplication and excision therefore give
+
+
+```{=latex}
+\begin{equation}
+(a\times1)\smile U=(1\times a)\smile U
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.4}
+\end{equation}
+```
+
+
+for every \(a\in H^*(M;R)\).
+
+\label{courseIII:duality:4.1}
+\begin{theorem}[The signed diagonal formula]
+Work over a field \(F\), with \(M\) oriented or with \(F=\mathbb F _2\). Choose a homogeneous basis \(b_i\) of \(H^*(M;F)\), and its cup-dual basis \(b_i^\vee\) satisfying
+
+
+```{=latex}
+\[
+\langle b_i\smile b_j^\vee,[M]\rangle=\delta_{ij}.
+\]
+```
+
+
+Then
+
+
+```{=latex}
+\begin{equation}
+U=\sum_i(-1)^{|b_i|}\,b_i\times b_i^\vee.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.5}
+\end{equation}
+```
+
+
+\end{theorem}
+\begin{proof}
+Corollary 2.3 gives the finite dual basis. The singular-chain product equivalence already proved in the Thom chapter, together with vector-space splittings into homology and contractible boundary pairs, gives
+\(H^*(M\times M;F)=H^*(M;F)\otimes H^*(M;F)\).
+Finite dimension permits dualizing these tensor products in each degree. Its external-product multiplication is
+
+
+```{=latex}
+\[
+(a\times b)\smile(c\times e)=(-1)^{|b||c|}(a\smile c)\times(b\smile e),
+\]
+```
+
+
+by the proved graded commutativity. The product fundamental class is \([M]\times[M]\): its local coordinate product values agree with the orientation of \(M\times M\), hence local detection identifies the classes.
+
+Test the right side of \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.5} against \(a\times b\) of total degree \(d\). A term contributes only when \(|b_i|=|b|\). Its multiplication sign is then \((-1)^{|b|^2}=(-1)^{|b_i|}\), cancelling the coefficient in \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.5}. The result is
+
+
+```{=latex}
+\[
+\sum_i\langle a\smile b_i,[M]\rangle\langle b\smile b_i^\vee,[M]\rangle
+=\langle a\smile b,[M]\rangle,
+\]
+```
+
+
+since the second evaluations are precisely the coefficients of \(b\) in its basis. By \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.3} this is also the test against \(U\). External products span \(H^d(M\times M;F)\), and its pairing with itself is perfect by duality on the product. The two degree-\(d\) classes must therefore agree.
+\end{proof}
+
+Define slant with the second fundamental class by
+
+
+```{=latex}
+\begin{equation}
+(a\times b)/[M]=a\langle b,[M]\rangle,
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.6}
+\end{equation}
+```
+
+
+with evaluation zero unless \(|b|=d\). The product decomposition makes this a well-defined operation. It is left linear over first-factor cohomology. Formula \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.5}, or the positive slice computation, gives \(U/[M]=1\). For disconnected \(M\), each degree-zero component idempotent has its corresponding component top class as dual; their sum is the unit. Thus the statement includes disconnected manifolds.
+
+\label{courseIII:duality:4.2}
+\begin{corollary}[Euler number and Euler characteristic]
+For a closed oriented manifold,
+
+
+```{=latex}
+\begin{equation}
+\langle e(TM),[M]\rangle=\chi(M).
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.7}
+\end{equation}
+```
+
+
+For every closed manifold,
+
+
+```{=latex}
+\begin{equation}
+\langle w_d(TM),[M]_2\rangle\equiv\chi(M)\pmod2.
+\label{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.8}
+\end{equation}
+```
+
+
+\end{corollary}
+\begin{proof}
+Apply \(\Delta^*\) to \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.5}, then evaluate. Each dual-basis pair evaluates to one, so the result is \(\sum_i(-1)^{|b_i|}\), the alternating sum of Betti numbers. Over \(\mathbb Q\), this is \(\chi(M)\) by its established coefficient independence. The integer Euler evaluation has that same value upon passing to \(\mathbb Q\), proving \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.7}. Over \(\mathbb F _2\) all signs disappear and coefficient independence gives \eqref{courseIII:manifold-duality-the-diagonal-and-wu-classes.source:eq:4.8}. In dimension zero the rank-zero Euler class is one and the fundamental class has the orientation signs of the points; the Euler evaluation counts each point positively because its tangent zero-plane has its canonical orientation. We take this canonical orientation for the tangent Euler class and its associated fundamental class.
+\end{proof}
