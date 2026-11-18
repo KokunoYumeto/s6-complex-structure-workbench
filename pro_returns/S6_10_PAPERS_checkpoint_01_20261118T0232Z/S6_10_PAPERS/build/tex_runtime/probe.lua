@@ -1,0 +1,1 @@
+kpse.set_program_name('luatex'); require('lualibs'); local p=kpse.expand_var('$TEXMFCACHE'); print('cache='..p); print('dir',lfs.isdir(p),'read',file.is_readable(p),'write',file.is_writable(p)); local f,e=io.open(p..'/probe.txt','w');print('open',f,e);if f then f:close() end
