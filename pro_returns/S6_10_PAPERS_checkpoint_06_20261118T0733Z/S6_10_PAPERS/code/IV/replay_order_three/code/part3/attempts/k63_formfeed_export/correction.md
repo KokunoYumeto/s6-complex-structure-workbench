@@ -1,0 +1,1 @@
+The initial SQ.3 second fraction contained one form-feed from an escaped string. The literal TeX \frac is restored. A control-character scan found no other occurrence. This was an export encoding failure, with no change to the mathematical formula.

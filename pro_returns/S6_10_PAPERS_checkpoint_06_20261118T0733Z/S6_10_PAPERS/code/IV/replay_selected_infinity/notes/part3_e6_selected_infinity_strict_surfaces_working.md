@@ -1,0 +1,316 @@
+# The four closed strict-source surfaces in the selected-infinity comparison
+
+This calculation uses the actual source and normal maps of EI, IA,
+FO and FL.8. It computes the four strict-source surface terms and
+their prescribed finite-quotient corrections. The exceptional and
+refinement surfaces and the moving selected reference cap remain
+in the full ledger. No total source return is assigned here.
+
+## SS.1. The actual orbifold source and its section lines
+
+On the complementary central source the equation is
+\[
+ \bar Y^2=\bar X^3-2\chi^2\bar X^2+\bar X,
+ \qquad
+ \gamma(\chi,\bar X,\bar Y)=(i\chi,-\bar X,-i\bar Y).
+ \tag{SS.1}
+\]
+Its overlap with the native finite source is the literal map
+\[
+ t_e=\chi^{-4},\qquad x_e=\chi^{-2}\bar X,
+ \qquad y_e=\chi^{-3}\bar Y.
+ \tag{SS.2}
+\]
+The native source is \(y_e^2=x_e^3-2x_e^2+t_ex_e\),
+with its actual I2 resolution at zero. At O use
+\(\eta_e=-x_e/y_e\), \(\eta=-\bar X/\bar Y\).
+At T use the resolved coordinate \(b_0=y_e/t_e\)
+and \(\bar Y\). The two complete source-normal arrows are
+\[
+ \eta_e=\chi\eta,
+ \qquad b_0=\chi\bar Y.
+ \tag{SS.3}
+\]
+They extend through the native I2 chart by IA.5--10.
+In both cases the source coordinate is a regular local
+coordinate along the whole section. The two sections are
+disjoint: they are O and the distinct two-torsion point T
+on each smooth fibre, distinct smooth points on the native
+I2 resolution, and distinct points on the good fibre at
+\(\chi=0\). These same charts give their actual source
+normal bundles.
+
+Let \(\bar S\) denote this proper source with the actual
+fourth-root finite charts at infinity. Let L be the pullback
+of the base line with frame transition
+\[
+ e_\infty=\chi^{-1}e_{\rm fin}.
+ \tag{SS.4}
+\]
+This is the genuine fourth-root line: its fourth power has
+transition \(q_\infty^{-1}\), where
+\(q_\infty=\chi^4\). Thus \(L^4=\mathcal O(F)\)
+for a full source fibre F, by this explicit frame map.
+On a section its degree is one quarter, including the
+order-four finite chart factor. Two different fibres are
+disjoint, so \(L^2=0\).
+
+SS.3 makes the coefficient of the source normal line
+transform by \(\chi^{-1}\) from the finite to the root
+chart. Its frame therefore transforms by \(\chi\).
+The normal degree of either section is minus one quarter.
+The specified source and base maps consequently give
+\[
+ O^2=T^2=-\frac14,\qquad O\cdot T=0,
+ \qquad L\cdot O=L\cdot T=\frac14,\qquad L^2=0.
+ \tag{SS.5}
+\]
+The point-line frame used throughout is the actual
+\(\sigma_a/r_a\). At \(\sigma=0\), both admitted even
+a satisfy \(aG=O\), and the point-line trivialization is
+literal: in its O chart \(r_a=(\tau-\tau(aG))/\tau\),
+and away from those two sections it is the canonical point
+section. On the selected Tate disc the chosen representative
+has \(P_G^2=Q^h\); its unit valuation forces h zero and
+its prescribed limit gives \(P_G=-1\). Thus the full
+point/theta comparison restricts to one, without a source
+period reindex. These are the precise line maps on the
+selected and finite-native overlaps of SS.2.
+
+## SS.2. The common-refinement normal bundle
+
+The physical weights are positive on the line-chain X
+coordinate and negative on Y. In an ordinary chain
+\(X_jY_j=\sigma\), the strict source graph has
+\[
+ X_j=\eta s,\quad Y_j=t,\quad v=st,
+ \quad\sigma=\eta st.
+\]
+The native chain has \(A_jB_j=\epsilon\),
+\(A_j=\eta_e s_e\), \(B_j=t_e\). Here the symbols
+t and \(t_e\) denote normal coefficients in these
+two displays. The source-base coordinate is unchanged.
+The full chain arrow is
+\[
+ X_j=\chi^jA_j,\quad Y_j=\chi^{-j-1}B_j,
+ \qquad s=\chi^{j+1}s_e,\quad t=\chi^{-j-1}t_e.
+ \tag{SS.6}
+\]
+
+The actual common38 fan further refines this raw parent.
+For the strict face \(C_j,C_{j+1}\), its third rays are
+\((1,3,4),(1,2,6),(1,1,6),(1,0,4)\) for j zero
+through three. If this ray is \((1,k,l)\), the
+complete coordinate map is
+\[
+ \eta=a,\quad v=a^k n_-n_+,
+ \quad V=a^l n_-^j n_+^{j+1}.
+\]
+Substituting into the actual alternating parent gives
+\[
+ s_{\rm old}=\frac{V}{\eta^{j+1}v^j}
+             =a^{3-j}n_+,
+ \qquad t_{\rm old}=n_-.
+ \tag{SS.7}
+\]
+This proves the additional section-ideal power at both O
+and T. Away from those sections the factor is invertible
+and is the same full parent map. Combining SS.3, SS.6
+and SS.7 gives the actual orbifold normal extensions
+\[
+ N_{+,j}=\mathcal I_{O+T}^{\,4-j}\otimes L^j,
+ \qquad N_{-,j}=L^{-j-1}.
+ \tag{SS.8}
+\]
+Their coefficients in the refined O/T root chart have
+characters \(\chi^4\) and \(\chi^{-j-1}\).
+The section ideal itself supplies \(4-j\) of the
+positive powers, and L supplies the remaining j.
+This specifies both the line morphism and its finite
+character. The full point-line factors have the same
+central trivialization described after SS.5; their
+off-component units remain in the normal chart maps.
+
+On the selected source chart \(xy=q\), the j-th
+sigma-factor chart has coordinates
+\[
+ \sigma=st,\qquad U=\sigma^j s,
+ \qquad V=t\sigma^{3-j}xy,
+ \quad0\le j\le3.
+ \tag{SS.9}
+\]
+Its strict fixed surface is s=t zero, with the literal
+source coordinates x,y. In the actual period block
+the selected/ordinary comparison has index zero and
+therefore no additional q power on these four sigma
+charts. Its complete point factor is the same \(\psi\)
+whose restriction was proved one. The source period has
+line multiplier \(P_G^a=1\) on the central source.
+Hence SS.8 closes across the entire selected source
+disc in the specified reference, with no extra fibre
+divisor or annular integer.
+
+The original finite cap lies on the large-sigma domain.
+It has no point on these sigma-zero strict surfaces.
+Its retained \(AB^{j_\gamma}\) square is unchanged in
+the surrounding comparison family. No cap character
+has been used to alter SS.8.
+
+## SS.3. The exact strict surface resolution
+
+For each strict face, the four actual 238-chart tangent
+cones project to the source rays
+\((0,1),(1,1),(2,1),(3,1),(4,1)\) in
+\((\operatorname{ord}\chi^4,\operatorname{ord}\chi\eta)\).
+They give the same source morphism
+\[
+ x=a^{k+1}b^k,\quad y=a^{3-k}b^{4-k},\quad z=ab,
+ \qquad xy=z^4,\quad0\le k\le3
+ \tag{SS.10}
+\]
+at each O/T quotient point. Thus these strict-source
+stars are the actual minimal A3 source resolution, by
+their invariant maps and all four inverse charts.
+The other two-torsion pair gives the actual A1 source
+resolution \((\rho,z)\mapsto(\rho,\rho z,\rho z^2)\).
+Away from those quotient points the fixed source maps
+are SS.2, the identity source charts SS.9 and the native
+I2 graph charts. They have inverse source coordinates
+on each indicated open. They glue by the same source
+functions. Therefore the completed strict source
+surface in every index is the actual minimal native
+surface \(S_0\), through this chartwise isomorphism.
+
+The independent source comparison proves
+\(p_1(\bar S)=-6\). The exact two A3 comparisons each
+change p1 by \(-15/2\), and the actual A1 comparison
+changes it by \(-3\). Thus the tangent number on each
+completed strict surface is
+\[
+ \int_{S_0}p_1=-24.
+ \tag{SS.11}
+\]
+The proof, with its invariant volume and common radial
+boundary field, is
+`part3_e6_selected_infinity_a3_source_working.md`;
+its independent peer checks are retained in
+`fourfold_audit_e6_selected_infinity_a3_source.json`.
+
+## SS.4. Integral normal intersections and their boundary characters
+
+Write \(D_j=c_1(N_{+,j})-c_1(N_{-,j})\). Formula SS.8
+and the literal section intersections SS.5 give
+\[
+ D_j=-(4-j)(O+T)+(2j+1)L,
+\]
+\[
+ D_j^2=-\frac{(4-j)^2}{2}-(4-j)(2j+1).
+ \tag{SS.12}
+\]
+The four orbifold squares are
+\(-12,-27/2,-12,-15/2\).
+
+The normal degrees in the three A3 exceptional curves,
+in negative/positive physical order, are precisely
+\[
+\begin{array}{c|ccc}
+ j&C_1&C_2&C_3\\\hline
+ 0&(1,0)&(0,0)&(0,0)\\
+ 1&(1,0)&(-1,0)&(1,0)\\
+ 2&(0,0)&(0,0)&(1,0)\\
+ 3&(0,0)&(0,0)&(0,0).
+\end{array}
+ \tag{SS.13}
+\]
+These are the normal monomial clutches of the actual
+four-cones. The certificate recomputes each degree
+using two independent auxiliary circles and retains
+every matrix and unit exponent. Use the integral
+intersection matrix
+\[
+ I=\begin{pmatrix}-2&1&0\\1&-2&1\\0&1&-2\end{pmatrix}.
+\]
+For each row let d be the positive-minus-negative
+degree vector. The relative lift is the exact rational
+solution \(Iq=d\), and the relative square is
+\(d^tI^{-1}d\). This gives
+\(-3/4,-1,-3/4,0\) at each O/T point. The boundary
+class is retained: in the ordered source chain its
+restriction is \(d_1+2d_2+3d_3\bmod4=-(j+1)\).
+This is the actual line clutch carried by the
+quotient coefficient character in SS.8. Thus the
+comparison uses its specified flat boundary holonomy.
+
+The sign of this boundary class is fixed by a literal
+section map. The coefficient-character-one line has
+the equivariant section \(\chi\). Its strict divisor
+is the source ray \((4,1)\), meeting the third
+exceptional curve once. Its boundary Chern class is
+therefore \(e_3\) in \(\operatorname{coker}I\).
+The three displayed integral relations give
+\(e_3=3e_1=-e_1\bmod4\). Consequently fibre
+coefficient character h maps to boundary Chern
+class \(-h\) in this ordered chain convention.
+SS.8 has D coefficient character \(j+1\), agreeing
+exactly with the class \(-(j+1)\) computed from
+SS.13. This also specifies the generator used in
+the rational relative comparison.
+
+More explicitly, the boundary is the actual lens space
+given by the quotient of the source sphere. Its cellular
+complex has differential \(d_2=[4]\) and other positive
+differentials zero, so its first and second rational
+cohomology vanish. The long exact sequence of the pair
+therefore identifies the relative and absolute second
+rational cohomology of this resolution neighbourhood.
+The integral intersection map in their zero-section and
+fibre-disc bases is I. The actual integral normal line
+has degree vector d; its unique rational relative lift
+has coefficient vector \(I^{-1}d\). Its pairing with
+the same absolute class is precisely
+\(d^tI^{-1}d\). The full normal monomials identify its
+boundary line with the stated flat orbifold character,
+so matching the two connections uses that exact relative
+class. This explains both the rational coefficients and
+the retained integral boundary torsion in the comparison.
+
+At the A1 source patch the complete line morphism is
+\(\ell=\chi a\), with its actual order-two character.
+The integral matrix \([-2]\) and degree \(\pm1\)
+give the relative D square \(-1/2\), as already
+proved with the exact boundary map in the mu2 note.
+Combining these specific relative extensions with
+SS.12 yields the resolved squares
+\[
+ (D_0^2,D_1^2,D_2^2,D_3^2)=(-14,-16,-14,-8).
+ \tag{SS.14}
+\]
+
+## SS.5. The resulting strict-surface part of the boundary ledger
+
+For these actual normal weights \((+1,-1)\), the
+positive-hyperplane residue is
+\((p_1-3D^2)/24\). Equations SS.11 and SS.14 give
+\[
+ (R_u(S_0),R_u(S_1),R_u(S_2),R_u(S_3))
+       =\left(\frac34,1,\frac34,0\right).
+ \tag{SS.15}
+\]
+Their sum is \(5/2\). The four isolated points of the
+same actual mu2 resolution add \(1/4\), giving
+\(11/4\) for this strict-source-plus-mu2 part of the
+positive-hyperplane ledger. Equivalently, retaining
+the A1 orbifold source patches and using the proved
+zero total mu2 correction gives the same \(11/4\).
+This equality follows through the literal common
+boundaries and their line characters.
+
+The physical line is \(M=U^{-1}\). Its cubic and
+Pontryagin-linear integrals both change sign, so the
+same strict-source-plus-mu2 part has physical value
+\(-11/4\). The O/T interior points and curves,
+the exceptional-source surfaces, the refinement
+surfaces and the moving selected reference cap
+are separate entries in the existing boundary
+equation. They have not been omitted or replaced
+by the number in SS.15. No total return is assigned.

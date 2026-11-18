@@ -1,0 +1,33 @@
+"""Record the fifteenth required progress decision."""
+from datetime import datetime,timezone
+from pathlib import Path
+import json
+root=Path(__file__).resolve().parents[1]
+record={
+ 'checked_utc':datetime.now(timezone.utc).isoformat(),
+ 'started_utc':'2026-11-16T23:49:44+00:00','decision':'continue',
+ 'reason':'The main monodromy question advances through the complete infinity comparison, exact source-zero native return and reduced two-element ambiguity, two new infinite fan families, and a located false premise in the earlier scalar-fan recurrence. The affected claims have been explicitly reopened and a narrow actual C2 comparison repairs the dependencies needed by the new source-zero result.',
+ 'main_question_progress':[
+  'K57 supplies the actual source-infinity construction, relative excision, signed residue computation and fixed-scalar classes0 and1. The nodal norm loss is corrected to N-5/N-6; executed safe orders8 and6 remain valid.',
+  'K58 constructs the full global loop groupoid, source/Cartier/root dictionary and paired source-zero sums, now using the independently audited K62 initial/reflected C2 scalar comparison.',
+  'K59 derives the literal native Cox mutations and the all-j staircase and adjacent fan families, with complete variation and derivative. The active finite search uses only the proved initial seed and checks210 bases and128 fans.',
+  'K60 constructs the single native source-zero product and its exact pulled-back square. Its native pair(1-a,a) gives fan difference a. The ordered pair is(-a+k A_scalar+14e,k A_scalar+14e), e in{0,1}; no individual value is selected.',
+  'K61 proves the earlier scalar simultaneous equivariant product impossible for nonzero winding M and locates the omitted outer normal determinant of winding-2M. Fourteen compound assertions have explicit Unresolved labels and granular preservation notices; their independent topology, fixed-star maps and reference results remain separately retained.',
+  'K62 computes the actual scalar C1/C2 native arrows and relative squares. The C2 outer and inner maps give the narrow integer equality needed by K57/K58, without using the withdrawn universal scalar-fan assertion.',
+  'The source-cusp shear proof now carries the actual source quotient, typed Cartier map, retained Euler-line crossing and exact nilpotent boundary derivative. Its remaining oriented endpoint dictionary is being checked before any promotion.'
+ ],
+ 'other_open_item_progress':[
+  'The established explicit scopes in Parts1,2,4,5 and both original blind Part5 hashes remain retained. Broader supplied numerical and non-normal-crossing assertions are still individually marked undecided.'
+ ],
+ 'next_main_steps':[
+  'Replace the withdrawn scalar-fan initial data by the actual ordinary-product and native-star calculations, starting with the literal C1 shear sequence.',
+  'Resolve the remaining common order-two source-zero ambiguity through an actual global or relative geometric comparison.',
+  'Complete the oriented shear quotient and characteristic calculation, retaining the source and Euler-line cochains.',
+  'Continue the remaining source-moduli, ordinary OS49 clutch and unmarked endpoint sectors.'
+ ],
+ 'next_progress_check_due_utc':'2026-11-17T15:49:44+00:00'
+}
+p=root/'records/progress_check_15_hours.json'
+assert not p.exists()
+p.write_text(json.dumps(record,indent=2)+'\n')
+print('Progress check15: continue; next check15:49:44 UTC.')
