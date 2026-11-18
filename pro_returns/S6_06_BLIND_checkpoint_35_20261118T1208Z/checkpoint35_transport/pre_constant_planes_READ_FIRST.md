@@ -1,0 +1,9 @@
+# Complete immutable checkpoint35
+
+Extract this ZIP and run `python3 restore_checkpoint.py`. The current paper and registers are directly readable. The delivered standard-library restorer checks all 15,682 research files against their exact original sizes and SHA-256 hashes. Every compressed shard and decoder is included; no previous checkpoint download is needed.
+
+All verified predecessor content is retained. Selected earlier tar streams may use a smaller compressed representation after exact uncompressed size and SHA-256 comparison; the full original project bytes are unchanged. Its complete file and content manifest is also preserved in the research records. Historical PDF copy/add records and lossless PNG reconstruction preserve the original bytes, not only appearances. Every prior member codec and its shared dictionary is retained; all decoder modules are included and hash-checked. The maximum LZMA dictionary is64MiB.
+
+The new closed TAR streams may likewise use verified stronger compression. Their original receipts, full-stream size/SHA comparisons, repaired builder and recompression program are retained under checkpoint35_transport. The frozen project file list, original sizes, hashes and capture time are the same completed checkpoint35 freeze. Four JSON metadata entries use standard ZIP LZMA compression; Python's standard-library zipfile extractor supports this method. Their extracted bytes are unchanged, and the standalone restore verification checks the full snapshot after extraction.
+
+Frozen at 2026-11-18T10:51:43.546512+00:00. The report remains INCOMPLETE. The complete proofs, working notes, programs, certificates, logs, rendered pages and preserved attempts are included. The supplied and external source-payload exclusions are documented in the report. The resumable freeze and shard receipts are included under checkpoint35_transport.

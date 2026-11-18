@@ -1,0 +1,38 @@
+{
+  "status": "PASS_FULL_FORMAT_AND_INVERSE_READING_PENDING_COMPLETE_CANDIDATE",
+  "utc": "2026-11-18T11:41:53.916738+00:00",
+  "reviewer": "root",
+  "read_in_full": [
+    "code/checkpoint_rgb_constant_planes_codec.py",
+    "code/checkpoint35_constant_planes_complete.py",
+    "notes/checkpoint35_constant_planes_format.md",
+    "code/checkpoint_png_rgb_dictionary.py"
+  ],
+  "exact_morphism": "For every actual row, n=s+3k is retained. The first s bytes and each nonconstant k-byte plane are literal. Each constant plane is represented by its one original byte and a three-bit flag. The inverse regenerates exactly k copies of that byte; concatenation in the preserved plane and row order gives the full original RGB stream. The inherited inverse then reconstructs each original interleaved byte by its displayed addition modulo256. Both whole-stream inverse equalities therefore follow from their literal per-row equations.",
+  "stream_invariant": "RGBReader retains exactly the unreturned suffix of already decoded full rows and returns the requested prefix. It decodes additional complete rows only until that prefix is available, preserves an empty read, and empties the remaining buffer before end-of-file.",
+  "candidate_gates_read": "The driver rehashes the original closed bundle, scans all3601 members, checks the full RGB stream and1901249rows, computes the entire encoded length, writes only a provisional new bundle, closes it and independently reopens it. It then checks all unchanged members, the entire intermediate RGB length/hash, the composed original dictionary length/hash and row count, and the unchanged source bundle hash. No live manifest is mutated.",
+  "remaining": "Actual complete candidate compressed size, completed closed-stream inverse results and standalone whole-checkpoint restore remain required before selecting or delivering this representation.",
+  "selected": false,
+  "source_locks": [
+    {
+      "path": "code/checkpoint_rgb_constant_planes_codec.py",
+      "sha256": "b41b914947bac33931600943459d4b1e2dc2dded5918c6741ee7f9d67c729aee",
+      "bytes": 1893
+    },
+    {
+      "path": "code/checkpoint35_constant_planes_complete.py",
+      "sha256": "01c62287955b92c1ce2bff47eefc1f3c28cc2141acadf19a65b8aef9c163b67c",
+      "bytes": 6522
+    },
+    {
+      "path": "notes/checkpoint35_constant_planes_format.md",
+      "sha256": "b45bf23467f1ecda5f47790ee8502620936683b90155ca738eab5ec2b395353b",
+      "bytes": 5122
+    },
+    {
+      "path": "code/checkpoint_png_rgb_dictionary.py",
+      "sha256": "ba28661c83534d4954ca0ddc2751d018a932b32760bfb862a079d8762f2f3327",
+      "bytes": 1188
+    }
+  ]
+}
