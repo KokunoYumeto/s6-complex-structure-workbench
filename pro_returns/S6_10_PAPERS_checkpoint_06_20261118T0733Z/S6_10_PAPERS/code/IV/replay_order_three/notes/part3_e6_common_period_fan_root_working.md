@@ -1,0 +1,163 @@
+# Exact common periodic fan on the generic exceptional overlap
+
+Working proof for the open E6 order-three return calculation. This file proves the specified generic toric comparison. It does not assign a return, a global fixed-component count, or an extension of the original Spin structure over a resolved fourfold. The four-dimensional corner/source/Cartier graphs remain part of the active attachment calculation.
+
+## Domain, characters, and the complete period arrows
+
+We use the actual functions of E81 and E85. Thus \(R=pP\), \(p\ne0,1,\infty\), \(b=(p-1)^{-4}c^{-1}\), and \(c=\lambda _0qK u_s^{-4}\). On a relatively compact open set of this exceptional parameter curve, \(p\), \(b\), and their inverses are holomorphic and bounded after the transverse \(P\)-disc has been made small. We retain these functions; no replacement by their values at \(P=0\) occurs.
+
+The zero-end characters are \((X_C,Y_C)\), the one-end characters are \((Z,W_C)\), and the infinity-end characters are \((V_{\rm reg},Z)\). Their actual arrows on the common torus are
+\[
+ Z=X_CY_C,\qquad W_C=X_C^{-3}Y_C^{-2},\qquad
+ V_{\rm reg}=p^{-6}X_C^{-4}Y_C^{-3}
+             =p^{-6}W_C/Z.                                      \tag{CFa}
+\]
+The character matrices from the zero and one charts to the common infinity characters are respectively
+\[
+ A_{\infty0}=\begin{pmatrix}-4&-3\\1&1\end{pmatrix},\qquad
+ A_{\infty1}=\begin{pmatrix}-1&1\\1&0\end{pmatrix}.
+\]
+Both have determinant \(-1\); their inverse integral matrices give the inverse torus morphisms. The complete factor \(p^{-6}\) in CFa is part of each morphism.
+
+In the zero-end period basis \((H_1,K_0)=(B^{-1},hB^{-6})\), the actual maps are
+\[
+ H_1(X_C,Y_C)=(Pb^{-1}X_C,bY_C),\qquad
+ K_0(X_C,Y_C)=(b^{-6}X_C,P^9p\,b^6Y_C).
+\]
+Consequently \(K=hB^2=H_1^{-8}K_0\) and
+\(J=hB=H_1^{-7}K_0\) have the following common-character maps:
+\[
+ K(V_{\rm reg},Z)=(P^5p^{-3}b^{-2}V_{\rm reg},PpZ),\qquad
+ J(V_{\rm reg},Z)=(Pp^{-3}b^{-1}V_{\rm reg},P^2pZ).               \tag{CFb}
+\]
+The one-end maps are \(h:(Z,W_C)\mapsto(P^3pZ,p^{-2}W_C)\) and
+\(B:(Z,W_C)\mapsto(P^{-1}Z,P^3b^{-1}W_C)\). Substitution in CFa gives exactly CFb. The integer period matrices are
+\[
+ C_{\infty0}=\begin{pmatrix}-8&-7\\1&1\end{pmatrix},\quad
+ C_{\infty1}=\begin{pmatrix}1&1\\2&1\end{pmatrix},\quad
+ M_0=\begin{pmatrix}1&0\\0&9\end{pmatrix},\quad
+ M_1=\begin{pmatrix}3&-1\\0&3\end{pmatrix}.
+\]
+Direct multiplication gives
+\[
+ A_{\infty0}M_0C_{\infty0}
+ =A_{\infty1}M_1C_{\infty1}
+ =M=\begin{pmatrix}5&1\\1&2\end{pmatrix},\qquad \det M=9.          \tag{CFc}
+\]
+This equality is the comparison of the period lattices, with the units supplied by CFb.
+
+The infinity-end model was originally written with height character \(R\).
+Its actual height arrow here is \(R=pP\). We explicitly keep this factor in every infinity-parent chart below. Omitting that factor gives the same valuation matrix but does not give the required chart morphism.
+
+## The three parent fans and their finite overlay
+
+The chosen zero-end fan is the 19-cone model of E98 and
+code/part3/e6_p_zero_semifree_fan.json. On the generic exceptional overlap its upper triangles, before applying \(A_{\infty0}\), are
+\[
+ ((-1,k),(0,k),(-1,k+1)),\quad
+ ((0,k),(-1,k+1),(0,k+1)),\qquad -9\le k\le-1.
+\]
+The full four-dimensional model maps to the original binomial cell by
+\[
+ x=PX_C,\quad y=X_C^{-1},\quad U=P^9pY_C,\quad V=Y_C^{-1},
+ \qquad xy=P,\quad UV=P^9p.
+\]
+The upper triangles here specify its generic face. The preceding ordered-factor resolution and its separate nonsemifree chart weights remain in the records. We use the displayed torus map and the fan maps, and do not identify the two resolutions.
+
+For the one-end fan there are three source cells \(i=0,1,2\). In each, the six triangles in the \((Z,W_C)\) valuation plane are
+\[
+ ((i+1,k+1),(i+1,k),(i,0)),\quad
+ ((i+1,3),(i,k+1),(i,k)),\qquad k=0,1,2.
+\]
+We apply \(A_{\infty1}\) to these vertices. The full parent torus height remains \(P\). In particular, the separate Cartier identity \(P^3W_C=pU_6f_{p^{-2}}v_M\) is retained in E96; it does not change the chosen character \(W_C\).
+
+The infinity parent is the 18-triangle upper face of E95. Its fundamental hexagon, in the common valuation plane at height one, is
+\[
+ H=\operatorname{conv}\{(0,0),(-4,0),(-5,-1),(-5,-2),
+                         (-1,-2),(0,-1)\}.                       \tag{CFd}
+\]
+Its area is nine. Opposite faces are paired by \(K\), \(J\), and \(KJ^{-1}\), with translations \((5,1)\), \((1,2)\), and \((4,-1)\). Every parent triangle is translated by the lattice \(M\mathbb Z^2\). The zero-end parallelogram and the one-end parallelogram have area nine and are fundamental domains for that same lattice by CFc.
+
+The program code/part3_root/e6_common_period_fan.py constructs their exact overlay inside \(H\). Every coordinate and intersection operation uses rational arithmetic. It first intersects all relevant zero-parent translates with the infinity triangles, obtaining 144 polygons, then intersects those polygons with every relevant one-parent translate, obtaining 186 polygons. The sum of the polygon areas is nine. Boundary vertices are closed under every period identification before triangulation. The explicit permutation used to orient each infinity triangle is saved; reversing an ordered triangle here is only the recorded permutation of its three ray columns.
+
+Triangulation gives 294 primitive three-cones, with maximal determinant nine. Their determinants are computed in the common lattice
+\(\mathbb Z^3=\mathbb Z\langle V_{\rm reg},Z,P\rangle^\vee\).
+A rational vertex \((a,b)\) determines the primitive positive-height vector on \((a,b,1)\); its height is retained.
+
+For a cone of determinant \(d>1\), the program enumerates the finite group
+\(M_C^{-1}\mathbb Z^3/\mathbb Z^3\). Its generators are the three columns of
+\(M_C^{-1}\), reduced in the half-open unit cube, and the enumeration has exactly \(d\) elements. Each nonzero residue gives an integral point
+\(v=\sum q_i v_i\), \(0\le q_i<1\), which is divided by its positive common integer divisor to give a primitive ray. Among this finite list the program chooses the lexicographically least tuple consisting of the maximum coefficient, the sum of coefficients, the ray height, and the ray. It inserts every periodic image of that ray and subdivides every containing cone.
+
+In every changed cone the new ray has coefficients in \([0,1)\), and every nonzero coefficient produces a new cone whose determinant is that coefficient times the old determinant. The code verifies all these integral inequalities at every insertion. Thus each changed determinant is strictly smaller. The multiset of positive determinants decreases in the well-founded multiset order. For the present input the complete recorded calculation uses 108 insertions and terminates with 510 cones, all of determinant one.
+
+There are exactly 745 interior two-faces, each incident to two cones, and 40 boundary two-faces, each incident to one cone. All three periodic boundary face sets match after their indicated integer shear. The sum of the final rational triangle areas remains nine. The independent peer program additionally checks every potentially overlapping pair of triangles and finds disjoint interiors. These checks, together with the explicit intersection construction, prove that the saved cones give a periodic common regular fan, with exactly the claimed support.
+
+## Holomorphic chart maps with all units
+
+Let \(N\) be the matrix whose columns are the three primitive rays of a common cone, ordered with determinant \(+1\). Its chart is \(\mathbb C^3\) with coordinates \(\theta=(\theta_1,\theta_2,\theta_3)\), over the retained \(p\)-domain, and its torus character map is
+\[
+ (V_{\rm reg},Z,P)=\theta^N.
+\]
+Here a row of a matrix is the exponent vector of the corresponding character. The map to the transverse parameter is \(P=\prod\theta_i^{h_i}\), where \(h_i>0\) are the actual ray heights.
+
+Let \(N_0\) be the columns of the translated zero parent containing this cone, and let \((i,j)\) be that parent's \(K^iJ^j\) translate. In the common character order, the parent's complete unit exponents are
+\[
+ d_p=(-6-3i-3j,\ i+j,\ 0)^t,\qquad
+ d_b=(-2i-j,\ 0,\ 0)^t.                                        \tag{CFe}
+\]
+Its chart map is
+\[
+ \theta_0
+ =p^{-N_0^{-1}d_p}b^{-N_0^{-1}d_b}
+       \theta^{\,N_0^{-1}N}.                                   \tag{CFf}
+\]
+Every entry of \(N_0^{-1}N\) is a nonnegative integer; the program saves all nine entries and all six unit exponents for every common chart. The same formula, using its recorded source cell and parent matrix \(N_1\), gives the one-parent chart map. Their determinants have absolute value one, and multiplication by the parent character matrices recovers CFa and CFb exactly. The coefficients are the actual holomorphic units \(p,b\), evaluated at the common monomial \(P\).
+
+For the infinity parent let \(N_\infty\) denote its ordered upper-triangle matrix. Its native character tuple is \((V_{\rm reg},Z,R)\). Therefore its full map is
+\[
+ \theta_\infty
+ =p^{\,N_\infty^{-1}(0,0,1)^t}
+       \theta^{\,N_\infty^{-1}N}.                              \tag{CFg}
+\]
+The saved infinity unit vector in CFg is essential: substitution yields the third native character \(R=pP\). Each monomial exponent in CFg is also a nonnegative integer.
+
+These are holomorphic morphisms of the chart spaces over the actual parameter arrows. They agree on chart intersections because their character expressions agree on the dense torus and are holomorphic. The inverse torus maps are given by the integral inverse character matrices and the inverse units. The common fan refines every parent cone, so the morphisms to each parent toric model are proper: the inverse image of an affine parent cone is the finite subfan whose union is that cone, and a valuation vector in it lies in at least one of these charts; the dense-torus map and separated chart gluing give uniqueness. This argument also applies after base extension by the retained \(p\)-domain, since the coefficients in CFf and CFg are invertible there.
+
+The period lifts are obtained by inserting the full coefficient vectors in CFb in the same inverse-matrix formula. They preserve \(P,p\), are holomorphic isomorphisms between the translated charts, and satisfy the commuting \(K,J\) relations literally. The matching face sets therefore provide the actual generic periodic chart identifications, including their units.
+
+## Source arrow, multiplicities, physical weights, and canonical divisor
+
+On \(H\) one has \(-2h\le y\le0\), where \(y\) is the exponent of \(Z\). Hence the actual source chart
+\[
+ Z_1=QZ=pP^3Z,\qquad W_1=Z^{-1},\qquad Z_1W_1=Q=pP^3             \tag{CFh}
+\]
+is holomorphic on every common cone. Its exponent rows are
+\((0,1,3)N\) and \((0,-1,0)N\), both nonnegative, and the first coordinate has the full coefficient \(p\). These two rows and the coefficient are saved for every cone. They satisfy the product equation exactly. Period face maps on this source chart are the restrictions of the actual translations CFb.
+
+For the point \(6G\), the representative \(Z=p^{-2}\) gives
+\[
+ (Z_1,W_1)=(P^3/p,p^2).
+\]
+The adjacent representative \(Z=R^{-3}\) gives
+\((Z_1,W_1)=(p^{-2},R^3)\). Their representatives differ by the literal \(h\)-period \(Q\); their point-line transition remains the theta/Cartier transition of E91. Near \(W_1=1\) the first representative gives the point/O coincidence ideal
+\((W_1-1,p^2-1)\), with the exact units from inversion \(Z=W_1^{-1}\).
+The second representative lies in the adjacent source chart. These two coordinate lifts are not combined into one chart without that period map.
+
+The physical circle scales \(V_{\rm reg}\) with weight \(+1\) and fixes \(Z,P,p\). Its weights in a common chart are exactly
+\(N^{-1}(1,0,0)^t\), saved as three integers. Several charts have weights with absolute value greater than one; the largest absolute value in this list is five. The common model therefore requires the finite-isotropy normal contributions in any later characteristic calculation.
+
+The primitive heights range from one through seven. The parameter equation is the displayed monomial \(P=\theta^h\); no ramified base change or reduction of multiplicities has been performed.
+
+Finally, E94 gives the original canonical form in the actual source/Cartier frame as a nowhere-zero unit times
+\[
+ P\,dP\wedge dp\wedge d\log Z\wedge d\log V_{\rm reg}.
+\]
+Using \(dP=P\,d\log P\) and \(\det N=1\), its coefficient in a common coordinate volume form is a nowhere-zero unit times
+\(\prod\theta_i^{2h_i-1}\), with the fixed ordering sign. Thus every saved original-canonical order is \(2h_i-1\). Formula CFg preserves the same form through \(R=pP\). These divisor orders are retained for the later determinant-line calculation; they do not assert a Spin extension over these exceptional divisors.
+
+## Exact current boundary of the calculation
+
+The certificate and this proof establish the generic common toric, period, and source comparison on \(p\ne0,1,\infty\). The full \(p=0,1,\infty\) four-dimensional source-height cuts, the point/O Cartier graphs at their special strata, the normal and determinant-line maps, and their compact boundary attachment remain the next operations in the order-three calculation. The earlier local charged-face number has not been promoted to a return.
+
+The first clipped-polygon attempt failed because some parent triangle columns were clockwise; its source and failure output are preserved. The next ordered-factor overlay was interrupted after thousands of subdivisions; it remains a documented incomplete attempt. The present calculation uses the explicit alternative zero-end fan and the finite residue search above. A peer audit identified the missing native height unit \(R=pP\) in the preliminary output; that preliminary output is preserved, and CFg is in the current certificate.

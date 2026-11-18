@@ -1,0 +1,31 @@
+"""Fourteenth-hour progress decision: the main source/fan questions advance."""
+from datetime import datetime, timezone
+from pathlib import Path
+import json
+
+root=Path(__file__).resolve().parents[1]
+record={
+ 'checked_utc':datetime.now(timezone.utc).isoformat(),
+ 'started_utc':'2026-11-16T23:49:44+00:00','decision':'continue',
+ 'reason':'Seven complete newly audited proofs settle the actual ordinary variation and derivative, the unselected collision, the first flops, all lattice-basis fan trace relations and the entire physical-vertical-edge fan return sequence. The main source-infinity and source-zero questions also advance through explicit partial attachments, relative excision and the full global loop groupoid.',
+ 'main_question_progress':[
+  'P3K.50–52 give the actual ordinary fixed-C0 return, the full symmetric variation and the full ambient stable derivative, with all native-to-ordinary maps, vertex caps, chain prisms and covering-group derivatives retained.',
+  'P3K.53 supplies the actual proper smooth disc extension through the unselected v=1/8 source collision and proves its return is zero.',
+  'P3K.54 gives the three first periodic flop classes23,23,1 through their actual native Cox maps.',
+  'P3K.55 constructs every lattice-basis ordinary plumbing product and its complete unit, circle-trace and derivative maps. Its exact integral relations retain the unresolved transverse entries.',
+  'P3K.56 proves s(n)=1-3n(n-1) modulo28 for every vertical-edge shear fan, with its exact period and range.',
+  'The actual source-infinity partial filling now glues the collision and finite-cap charts away from the selected cusp. The relative excision draft retains the physical Euler line, finite stabilizers, fixed-surface Cartier pairings and both boundary orientations; its audit continues without promoting a numerical return.',
+  'The global rho-family relation is constructed with the two separate source-zero fan objects, full source-zero closing multipliers, scalar-root windings and the complete source/Cartier/root arrow at infinity.'
+ ],
+ 'other_open_item_progress':[
+  'The established scopes in Parts1,2,4,5 and the original blind Part5 hashes remain retained. Broader supplied non-normal-crossing assertions remain explicitly undecided.'
+ ],
+ 'next_main_steps':[
+  'Complete the relative infinity excision audit and its actual Jin-to-sphere boundary transfer, then combine it with the fully marked global source-loop relation.',
+  'Compute the remaining fixed-curve characteristic pairs and the transverse general-fan invariants from actual divisor, height and flop maps.',
+  'Continue the individual source-zero returns and the remaining source-moduli, ordinary OS49 clutch and unmarked endpoint sectors.'
+ ],
+ 'next_progress_check_due_utc':'2026-11-17T14:49:44+00:00'
+}
+(root/'records/progress_check_14_hours.json').write_text(json.dumps(record,indent=2)+'\n')
+print(json.dumps({'decision':record['decision'],'next_progress_check_due_utc':record['next_progress_check_due_utc'],'new_master_statements':[f'P3K.{i}' for i in range(50,57)]},indent=2))
