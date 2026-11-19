@@ -1,0 +1,138 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{booktabs,tabularx,longtable,array,calc}
+\usepackage{enumitem,xcolor,needspace}
+\usepackage{titling}
+\setlength{\droptitle}{-1.5\baselineskip}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks]{hyperref}
+\emergencystretch=2em
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\theoremstyle{plain}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand{\themaintheorem}{\Alph{maintheorem}}
+\theoremstyle{definition}
+\newtheorem{cited}{Cited result}
+\newenvironment{numbered}[3]{\par\addvspace{\medskipamount}\Needspace{3\baselineskip}\noindent
+  \textbf{#1 #2}\if\relax\detokenize{#3}\relax\else\ (#3)\fi\textbf{.}\ \itshape\ignorespaces}
+  {\par\addvspace{\smallskipamount}}
+\newenvironment{numberedup}[3]{\par\addvspace{\medskipamount}\Needspace{3\baselineskip}\noindent
+  \textbf{#1 #2}\if\relax\detokenize{#3}\relax\else\ (#3)\fi\textbf{.}\ \ignorespaces}
+  {\par\addvspace{\smallskipamount}}
+\newcommand{\uses}[1]{\par\nopagebreak[4]\noindent{\small\textsf{Uses:} #1}\par\smallskip}
+\newcommand{\step}[2]{\par\smallskip\noindent\textbf{Step #1} (#2).\ \ignorespaces}
+\newcommand{\by}[1]{{\small[#1]}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\fixedhead}[1]{\section*{#1}}
+\title{Polynomial-time unit-job scheduling\\for every fixed number of machines $m\geq3$}
+\author{Human contributor: entered at deposit}
+\date{15 November 2026 \quad Version 1 \quad CC0 1.0}
+\begin{document}
+\maketitle
+\vspace{-1.5\baselineskip}
+
+\begin{abstract}
+For every fixed $m\geq3$, unit-job scheduling with explicitly listed precedence constraints on $m$ identical machines admits exact deadline decision and optimal-schedule construction in $O_m((L+2)^{60m^2+129m+2})$ deterministic multitape steps; a parsed, padded deadline of size $N=mT$ costs $O_m(N^{60m^2+129m+1})$.
+OpenAI proved the three-machine result (2026); drbh supplied four-machine Lean code (2026); Jansen states the fixed-machine result in arXiv:2611.09392 (2026).
+This generalization gives a self-contained proof with leaf budget $12m+25$ and an itemized tape-cost derivation, without a priority claim.
+A finite dynamic program uses Boolean descriptions; an injection into one boundary slot bounds the lists, and local restriction identities control direction changes.
+GPT-6 Astra, ChatGPT Pro mode, produced the proof and the current step-by-step, computational and source audit. Three earlier reports are by Claude Opus 5.5, effort max, Message Batches API. Human understanding: none.
+Source-access and archival qualifications are recorded in Limits and open points.
+\end{abstract}
+
+\section{Result}
+\subsection{Statement}
+
+The input explicitly lists a DAG $G=(V,E)$, $n=|V|\geq1$ jobs, and binary integers $m\geq3,T$.
+A schedule is a map $\tau:V\to\{1,\ldots,T\}$ with at most $m$ jobs per slot and $\tau(u)<\tau(v)$ on every arc.
+The makespan is $\max\tau$. The canonical encoding and its bit length $L$ are specified in Section~9.
+
+\begin{cited}[OpenAI, {\cite[Theorem~1.1]{P}}]\label{cit:base}
+For $m=3$, deadline decision and witness construction for $1\leq T\leq n$, and optimum-schedule construction, take polynomial deterministic multitape time in the explicit input length.
+\end{cited}
+\uses{Source statement opened and compared in source check S-P; the proof below is self-contained.}
+
+\noindent\begin{tabularx}{\linewidth}{@{}lYll@{}}
+\toprule
+ID & Result & Status & Proof\\
+\midrule
+A & Exact algorithm for every fixed $m\geq3$ & proved & 9.1--9.3\\
+B & Hierarchy with $12m+25$ global leaves & proved & 8.5\\
+\bottomrule
+\end{tabularx}
+
+\enlargethispage{\baselineskip}
+\begin{maintheorem}[Theorem 1.1 of the checked return]\label{thm:A}
+One deterministic algorithm, given the input above, decides deadline feasibility, constructs a feasible schedule on acceptance, and constructs an optimal schedule. For each fixed $m$ all these tasks use
+\[
+ O_m\bigl((L+2)^{60m^2+129m+2}\bigr)\tag{1.1}
+\]
+steps on a deterministic Turing machine with a fixed number of tapes.
+For $1\leq T<n$ and $n\leq mT$, its deadline computation on the parsed, canonically numbered padded DAG with $N=mT$ jobs, including its witness, uses
+\[
+ O_m\bigl(N^{60m^2+129m+1}\bigr).\tag{1.2}
+\]
+Proposition 9.2 and Corollary 9.3 give explicit effective coefficient bounds $A(m,12m+25)$ and $G(m)$, respectively.
+\end{maintheorem}
+\uses{Theorem 9.1; Proposition 9.2; Corollary 9.3.}
+\pagebreak
+
+\begin{maintheorem}[Theorem 8.5 of the checked return]\label{thm:B}
+For $m\geq3$, every full schedule of the padded job set $J$, $|J|=mT$, admits a description hierarchy as in Definition 2.9. The root has its one-leaf description $J$, every other node has a global description of at most $12m+25$ leaves, and every marked original-time prefix has a relative description of at most $6m+16$ leaves, independently of depth.
+\end{maintheorem}
+\uses{Definition 2.9; Proposition 7.3; Lemmas 8.2--8.4.}
+
+\noindent\textbf{Instance.} For $m=4$, $K_4=73$, (1.2) has exponent $1477$, and (1.1) has exponent $1478$.
+\textbf{Not claimed:} a bound polynomial in $m$; a practical algorithm; extensions to release dates, individual deadlines, unequal machine speeds or unequal job lengths; formalization of this proof.
+
+\subsection{Status}
+\noindent\begin{tabularx}{\linewidth}{@{}L{3.0cm}Y@{}}
+\toprule
+Kind & generalization\\
+Claim & proved\\
+Checks & Current text: F, D, C, S by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; verdict: proved as stated. Supplied return: three earlier reads by Claude Opus 5.5, effort max, Message Batches API.\\
+Human understanding & none\\
+Formalization & none for this proof\\
+Open points & No mathematical gap found in Sections 2--9; source-access and archival qualifications are listed below.\\
+\bottomrule
+\end{tabularx}
+
+\subsection{Known and new}
+%%KNOWN_TABLE%%
+
+\subsection{Proof map}
+
+\noindent\textbf{Idea.} Pad to full $m$-job slots and enumerate bounded Boolean descriptions of job sets. A state path joins smaller accepted sets through single slots. Separators split a feasible schedule into a hierarchy. The map of Lemma 5.5 sends surviving injection entries injectively into one boundary slot; the restricted equalities of Lemma 6.1 keep their descriptions bounded through direction changes.
+
+\begin{enumerate}[nosep]
+\item Foundations, finite search and its certificate: Lemmas 2.1--2.7, Proposition 2.8, Definition 2.9 and Lemma 2.10.
+\item Exchanges, separators and walks: Lemmas 3.1--3.6 and Corollary 3.7.
+\item Centers, sides and child labels: Lemmas 4.1--4.5.
+\item Carried lists and the capacity injection: Lemmas 5.1--5.5.
+\item Direction changes and formula counts: Lemmas 6.1--6.5.
+\item Exterior invariants and induction: Lemmas 7.1--7.2 and Proposition 7.3.
+\item Global child identities, prefixes and the budget: Lemmas 8.1--8.4 and Theorem 8.5.
+\item Correctness and itemized multitape costs: Theorem 9.1, Proposition 9.2 and Corollary 9.3; compact decision input: Proposition 9.4.
+\end{enumerate}
+
+\noindent\textbf{Hard steps.} Lemma 5.5 proves the $m$-entry injection bound; Lemmas 6.2 and 6.5 prevent leaf counts from growing with depth; Lemma 7.1 propagates exterior qualifiers through the first advance using (I3). Their independent derivations are in the current audit. The constants are
+\[
+ A_m=3m+(3m+7)+2=6m+9,\qquad
+ K_m=(A_m+2)+(A_m+5)=12m+25.
+\]
+
+\noindent\textbf{Reading routes.} The result and model are in Section 1.1 and Section 9. Readers comparing with the three-machine proof can follow 3.3, 5.5, 6.2, 6.5, 7.1, 8.4 and 9.2. The full proof runs through Sections 2--9 in order; Proposition 7.3 checks the construction's induction order.
+
+\noindent\textbf{External results used.} None load-bearing. Source checks compare the construction with OpenAI's preprint and the course; every needed mathematical step is proved here. The external results in the preceding table provide historical and algorithmic context.
+
+\noindent\textbf{Dependencies.} The following table covers all 44 numbered statements of Sections 2--9, including Definition 2.9. The source column is checked against the pinned public source of [P]. Its entries identify the three-machine counterparts; the last column records the change proved here. Definitions and displayed constructions supplement the numbered dependencies where the Uses line says so.
+
+%%DEPENDENCY_TABLE%%
+
+%%NOTATION_TABLE%%
+
+\setcounter{section}{1}

@@ -1,0 +1,2105 @@
+                      Polynomial-time unit-job scheduling
+                   for every fixed number of machines m ≥ 3
+                             Human contributor: entered at deposit
+
+                            15 November 2026         Version 1       CC0 1.0
+
+                                                    Abstract
+          For every fixed m ≥ 3, unit-job scheduling with explicitly listed precedence constraints
+      on m identical machines admits exact deadline decision and optimal-schedule construction
+                           2
+      in Om ((L + 2)60m +129m+2 ) deterministic multitape steps; a parsed, padded deadline of
+                                        2
+      size N = mT costs Om (N 60m +129m+1 ). OpenAI proved the three-machine result (2026);
+      drbh supplied four-machine Lean code (2026); Jansen states the fixed-machine result in
+      arXiv:2611.09392 (2026). This generalization gives a self-contained proof with leaf budget
+      12m + 25 and an itemized tape-cost derivation, without a priority claim. A finite dynamic
+      program uses Boolean descriptions; an injection into one boundary slot bounds the lists, and
+      local restriction identities control direction changes. The proof was produced by GPT-6 Astra,
+      ChatGPT Pro mode; the supplied return had three reads by Claude Opus 5.5, effort max,
+      Message Batches API; this text has a step-by-step re-derivation, source comparison and finite
+      checks by GPT-6 Astra, ChatGPT Pro mode. Human understanding: none. Source-access
+      and archival qualifications are recorded in Limits and open points.
+
+
+1     Result
+1.1    Statement
+The input explicitly lists a DAG G = (V, E), n = |V | ≥ 1 jobs, and binary integers m ≥ 3, T . A
+schedule is a map τ : V → {1, . . . , T } with at most m jobs per slot and τ (u) < τ (v) on every arc.
+The makespan is max τ . The canonical encoding and its bit length L are specified in Section 9.
+Cited result 1 (OpenAI, [P, Theorem 1.1]). For m = 3, deadline decision, feasible-schedule
+construction and optimization take polynomial deterministic multitape time in the explicit input
+length.
+Uses: Source statement opened and compared in source check S-P; the proof below is self-contained.
+ID    Result                                                                            Status    Proof
+A     Exact algorithm for every fixed m ≥ 3                                             proved    9.1–9.3
+B     Hierarchy with 12m + 25 global leaves                                             proved    8.5
+Theorem A (Theorem 1.1 of the checked return). One deterministic algorithm, given the input
+above, decides deadline feasibility, constructs a feasible schedule on acceptance, and constructs an
+optimal schedule. For each fixed m all these tasks use
+                                                        2
+                                       Om (L + 2)60m +129m+2                                           (1.1)
+                                                                 
+
+steps on a deterministic Turing machine with a fixed number of tapes. For 1 ≤ T < n and n ≤ mT ,
+its deadline computation on the parsed, canonically numbered padded DAG with N = mT jobs,
+including its witness, uses
+                                                 2
+                                      Om N 60m +129m+1 .                                   (1.2)
+                                                         
+
+Proposition 9.2 and Corollary 9.3 give explicit effective coefficient bounds A(m, 12m + 25) and
+G(m), respectively.
+
+                                                    1
+Uses: Theorem 9.1; Proposition 9.2; Corollary 9.3.
+
+Theorem B (Theorem 8.5 of the checked return). For m ≥ 3, every full schedule of the padded
+job set J, |J| = mT , admits a description hierarchy as in Definition 2.9. The root has its one-leaf
+description J, every other node has a global description of at most 12m + 25 leaves, and every
+marked original-time prefix has a relative description of at most 6m + 16 leaves, independently of
+depth.
+
+Uses: Definition 2.9; Proposition 7.3; Lemmas 8.2–8.4.
+Instance. For m = 4, K4 = 73, (1.2) has exponent 1477, and (1.1) has exponent 1478. Not
+claimed: a bound polynomial in m; a practical algorithm; extensions to release dates, individual
+deadlines, unequal machine speeds or unequal job lengths; formalization of this proof.
+
+1.2   Status
+Kind                  generalization
+Claim                 proved
+Checks                Current text: F, D, C, S by GPT-6 Astra, ChatGPT Pro mode, 15
+                      November 2026; verdict: proved as stated. Supplied return: three earlier
+                      reads by Claude Opus 5.5, effort max, Message Batches API.
+Human                 none
+understanding
+Formalization         none for this proof
+Open points           No mathematical gap found in Sections 2–9; source-access and archival
+                      qualifications are listed below.
+
+1.3   Known and new
+Statement                   Opened source and scope
+Two machines                Coffman–Graham [CG, Theorem 1, p. 203]; Fujii–Kasami–Ninomiya
+                            [FKN, abstract] with the correction [FKN-e, p. 141].
+Machine count in the        Ullman’s unit-time NP-completeness result [U, Theorem 1, p. 389]; the
+input                       fixed-count question is discussed on p. 392.
+Three machines              OpenAI [P, Theorem 1.1]. The earlier question is OPEN8 [GJ,
+                            Appendix A13, p. 287]. Giraudin’s subsequent statement has input
+                            exponent 276 [G, Theorem 1].
+Four machines               drbh’s commit bbd3013, [D, Model.lean, ReleaseTheorem;
+                            Main.lean, main_theorem], contains the capacity-four solver and
+                            theorem code.
+Every fixed m ≥ 3           Jansen [J, Theorem 1.1] states exact decision and optimization; [J,
+                            Lemma 7.15] gives node/cut leaf budgets 4m + 5 and m + 3.       √
+Exact subexponential        Nederlof–Swennenhuis–Węgrzycki [N, Theorem 1.1]: (1 + n/m)O( nm) .
+bound
+Approximation scheme        Das–Wiese [A, Theorem 1]: (1 + ε) approximation with the
+                            parameter-dependent quasipolynomial bound stated there.
+This post                   Theorems A and B are proved here with 12m + 25 leaves and the
+                            derived exponent in (1.1). No novelty or priority is claimed.
+Relation of the guarantees. Lemma 2.2 gives integer makespans, and a topological schedule
+gives OPT ≤ n. Using ε = 1/(n + 1) in the guarantee of [A, Theorem 1] yields a feasible integer
+makespan strictly below OPT + 1, hence exactly OPT. The source’s time bound depends on this
+varying ε; (1.1) is derived directly from the finite search in this post. For fixed m, the displayed
+
+
+
+                                                     2
+                                                √
+bound of [N, Theorem 1.1] has the form exp(Om ( n log(n + 1))), by taking its logarithm. This is
+the stated upper bound, with no claim of a corresponding lower bound on that algorithm.
+Credit and search. The construction follows OpenAI [P, Sections 2–9] and the course [L, lessons
+1–8]. The exact scope of drbh’s four-machine code is credited in the source record; its Lean build
+was not replayed in this audit. The search of 15 November 2026 covered arXiv, STOC, FOCS,
+SODA, ICALP, IPCO, ESA, APPROX, authors’ pages, GitHub, the general web and Hexagon,
+including citations and title searches for [P]. It found [D], [J] and [G]; no fixed-m ≥ 4 hardness
+result was located. Every query and outcome is in Q03_DEPOSIT_literature.md.
+
+1.4   Proof map
+Idea. Pad to full m-job slots and enumerate bounded Boolean descriptions of job sets. A state
+path joins smaller accepted sets through single slots. Separators split a feasible schedule into a
+hierarchy. The map of Lemma 5.5 sends surviving injection entries injectively into one boundary
+slot; the restricted equalities of Lemma 6.1 keep their descriptions bounded through direction
+changes.
+   1. Foundations, finite search and its certificate: Lemmas 2.1–2.7, Proposition 2.8, Definition
+       2.9 and Lemma 2.10.
+   2. Exchanges, separators and walks: Lemmas 3.1–3.6 and Corollary 3.7.
+   3. Centers, sides and child labels: Lemmas 4.1–4.5.
+   4. Carried lists and the capacity injection: Lemmas 5.1–5.5.
+   5. Direction changes and formula counts: Lemmas 6.1–6.5.
+   6. Exterior invariants and induction: Lemmas 7.1–7.2 and Proposition 7.3.
+   7. Global child identities, prefixes and the budget: Lemmas 8.1–8.4 and Theorem 8.5.
+   8. Correctness and itemized multitape costs: Theorem 9.1, Proposition 9.2 and Corollary 9.3;
+       compact decision input: Proposition 9.4.
+Hard steps. Lemma 5.5 proves the m-entry injection bound; Lemmas 6.2 and 6.5 prevent
+leaf counts from growing with depth; Lemma 7.1 propagates exterior qualifiers through the first
+advance using (I3). Their independent derivations are in the current audit. The constants are
+
+       Am = 3m + (3m + 7) + 2 = 6m + 9,                Km = (Am + 2) + (Am + 5) = 12m + 25.
+
+Reading routes. The result and model are in Section 1.1 and Section 9. Readers comparing
+with the three-machine proof can follow 3.3, 5.5, 6.2, 6.5, 7.1, 8.4 and 9.2. The full proof runs
+through Sections 2–9 in order; Proposition 7.3 checks the construction’s induction order.
+External results used. None load-bearing. Source checks compare the construction with
+OpenAI’s preprint and the course; every needed mathematical step is proved here. The external
+results in the preceding table provide historical and algorithmic context.
+Dependencies. The following table covers all 44 numbered statements of Sections 2–9, including
+Definition 2.9. The source column is checked against the pinned public source of [P]. Its entries
+identify the three-machine counterparts; the last column records the change proved here. Definitions
+and displayed constructions supplement the numbered dependencies where the Uses line says so.
+                   Table 1: All numbered proof statements, source counterparts and direct
+                   dependencies.
+
+Statement          Source counterpart [P],   Uses                          Capacity transfer
+                   S-P
+Lemma 2.1          Section 2.2 (prose)       definitions only.             Unchanged argument: Transitivity
+                                                                           and strict inequalities only. Finite
+                                                                           acyclicity only.
+Lemma 2.2          Section 1 (prose)         Lemma 2.1; definitions of a   Changed: Machine assignment has
+                                             unit-job schedule and         target [m]; augmented arcs give
+                                             machine assignment.           integer starts.
+
+
+
+                                                      3
+Statement         Source counterpart [P],   Uses                             Capacity transfer
+                  S-P
+Lemma 2.3         Lemma 2.1; lem:           definitions only.                Changed: Exactly mT − n isolated
+                  padding                                                    jobs and N ≤ mn.
+Lemma 2.4         Lemma 2.2; lem:           definitions only.                Unchanged argument: Equal interval
+                  reorder                                                    length |W |/m; exterior relations
+                                                                             unchanged.
+Lemma 2.5         Section 2.2 (prose)       definitions only.                Unchanged argument: Antichain
+                                                                             property, not the number of
+                                                                             companions.
+Lemma 2.6         Section 2.3 (prose)       definitions only.                Unchanged argument: De Morgan
+                                                                             transformation preserves leaves. 
+                                                                                         N
+Lemma 2.7         Lemma 2.3; lem:family     Lemma 2.1; definitions of        Changed: m     ≤ N m replaces N3 .
+                                            the atomic alphabet and
+                                            formula evaluation.
+Proposition 2.8   Proposition 3.1; prop:    definitions of the state         Changed: One nonempty m-slot per
+                  algorithm                 graph, compatibility, and        state; compatibility checks all
+                                            acceptance in Section 2.2;       relations.
+                                            induction on set cardinality.
+Definition 2.9    Definition 3.2; def:      definitions of full schedules,   Changed: Slot size 3 becomes m; the
+                  hierarchy                 open intervals, and global       hierarchy clauses are retained.
+                                            and relative descriptions.
+Lemma 2.10        Lemma 3.3; lem:           Definition 2.9; state and        Unchanged argument: Actual
+                  hierarchy-dp              acceptance definitions in        marked slots form an accepting state
+                                            Section 2.2.                     path.
+Lemma 3.1         Lemma 4.2; lem:           Lemma 2.5; separator             Unchanged argument: The two
+                  separator-description     definition and (3.1).            separator conditions and weak-cone
+                                                                             exclusion.
+Lemma 3.2         Lemma 4.2; lem:           definitions of frame reversal,   Unchanged argument: Complement
+                  separator-description     cutoff, and separator.           cutoff, reversed time and precedence.
+Lemma 3.3         Lemma 4.3; lem:lex-       the definition of a              Changed: Every sorted order
+                  prefix                    normalized schedule              statistic weakly decreases; one
+                                            (Section 3.1).                   decreases strictly.
+Lemma 3.4         Lemma 4.4; lem:shared     Lemma 3.3; definitions of        Unchanged argument: Swapping two
+                                            domain, priority prefix,         jobs and tracing increasing successor
+                                            exception, and separator.        times.
+Lemma 3.5         Lemma 4.4; lem:shared     Lemma 3.4.                       Unchanged argument: Strictly
+                                                                             increasing finite sequence of
+                                                                             positions.
+Lemma 3.6         Lemma 4.4; lem:shared     Lemmas 3.4 and 3.5.              Unchanged argument: Only the
+                                                                             promoted job changes status;
+                                                                             subsequent exceptions are old low
+                                                                             jobs.
+Corollary 3.7     Corollary 4.5; cor:any-   Lemma 3.6; definitions of        Unchanged argument: Priority-prefix
+                  ideal                     cutoff and normalization.        promotions from a normalized
+                                                                             schedule.
+Lemma 4.1         Section 5.1 (prose)       definitions only.                Unchanged argument: Global upsets
+                                                                             and increasing rank.
+Lemma 4.2         Section 5.2 (prose)       invariant (I1); frame and        Unchanged argument: (I1),
+                                            cone definitions.                complements and reversal.
+Lemma 4.3         Section 5.2 (prose)       Lemmas 4.1 and 4.2;              Unchanged argument: Downset
+                                            invariant (I1).                  blocks and key order.
+Lemma 4.4         Lemma 5.1; lem:edge-      Lemmas 3.6 and 4.3; the          Unchanged argument: Shared walk
+                  labels                    center and side-walk             plus center separator.
+                                            construction.
+Lemma 4.5         Lemma 5.1; lem:edge-      Lemmas 4.3 and 4.4;              Unchanged argument: Genuine right
+                  labels                    Definition 2.9 and the child     boundary, low/high cone inclusions,
+                                            construction.                    strict shrinking.
+Lemma 5.1         Lemma 6.1; lem:carry      definitions only.                Unchanged argument: Three cases
+                                                                             for the largest qualifying index,
+                                                                             unrelated to capacity.
+
+
+
+
+                                                     4
+Statement         Source counterpart [P],   Uses                              Capacity transfer
+                  S-P
+Lemma 5.2         Lemma 6.2; lem:prune      definitions only.                 Unchanged argument: The
+                                                                              smaller-key job must belong to the
+                                                                              pruning domain.
+Lemma 5.3         Lemma 6.3; lem:           Lemmas 4.2, 4.3, 4.5, and         Unchanged argument: Last injection
+                  update-labels             5.1; invariant (I1); the          index and ordered switch pair.
+                                            stipulated switch-upset
+                                            property (5.3).
+Lemma 5.4         Section 6.3 (prose)       definitions of carry, pruning,    Unchanged argument: Suffix
+                                            and a run.                        thresholds combine by their
+                                                                              maximum.
+Lemma 5.5         Lemma 6.4; lem:list-      Lemmas 4.5, 5.1, 5.3, and         Changed: Explicit injective function
+                  length                    5.4; invariant (I1); injection    into a boundary with m jobs.
+                                            definition (5.2).
+Lemma 6.1         Lemma 6.5; lem:flatten    Lemmas 5.1 and 5.4; the           Unchanged argument: While the
+                                            pruning and run definitions;      first entry survives, the second is
+                                            switch pair (5.4).                untrimmed or locally absent.
+Lemma 6.2         Lemma 6.6; lem:old-       Lemmas 2.6, 5.3, 5.4, 5.5,        Changed: 3m + 3 leaves; only
+                  low                       and 6.1; the edge-cutoff          equality on the earlier node is
+                                            construction.                     needed.
+Lemma 6.3         Section 6.5 (prose)       Lemma 4.5; the                    Unchanged argument: Reverse the
+                                            frame-reversal map.               old side inequalities.
+Lemma 6.4         Lemma 6.7; lem:G          Lemmas 2.5, 4.3, 4.4, 4.5,        Unchanged argument: Four upset
+                                            6.2, and 6.3; definition (6.8).   factors; localize to the old node
+                                                                              before using H ∗ .
+Lemma 6.5         Lemma 6.8; lem:entry-     Lemmas 2.6, 5.4, 5.5, and         Changed: At most 3m + 7 leaves per
+                  size                      6.2; definitions (5.2), (5.4),    entry; aggregate 6m + 9.
+                                            and (6.8).
+Lemma 7.1         Lemma 7.1; lem:past       Lemmas 2.5, 3.4, 3.6, 4.3,        Unchanged argument: First advance
+                                            4.4, 5.1, 5.3, and 6.4;           uses parent (I3); later advances use
+                                            invariants (I1), (I2), and        Lemma 3.4.
+                                            (I3).
+Lemma 7.2         Lemma 7.2; lem:swap       Lemmas 2.4, 2.5, 3.3, 5.1,        Unchanged argument: A child
+                                            5.2, 5.3, and 6.4; invariants     reordering changes only a suffix of
+                                            (I1) and (I3).                    normalized E.
+Proposition 7.3   Proposition 7.3; prop:    Lemma 2.4; Corollary 3.7;         Unchanged argument: Induction
+                  construction-valid        Lemmas 4.3–4.5, 5.3, 5.5,         uses only node/ancestor data; no
+                                            6.1–6.5, 7.1, and 7.2; the        descendant assumption.
+                                            root invariants.
+Lemma 8.1         Section 8.1 (prose)       Lemmas 2.6, 4.3, 5.1, and         Unchanged argument: —
+                                            6.5; definitions (8.1) and
+                                            (8.2).
+Lemma 8.2         Lemma 8.1; lem:global-    Lemmas 2.5, 4.3, 4.4, 4.5,        Unchanged argument: Exact global
+                  child                     5.3, 7.1, and 8.1; the            equalities (8.4)–(8.5), with no parent
+                                            center-separator property.        formula.
+Lemma 8.3         Lemma 8.2; lem:           Lemmas 2.6, 3.1, 4.4, and         Unchanged argument: Relative
+                  relative-splits           8.1; the center-cutoff            separator descriptions and
+                                            definition.                       subtraction of the reversed slot.
+Lemma 8.4         Lemma 8.3; lem:final-     Lemmas 2.6, 6.5, 8.1, 8.2,        Changed: Linear aggregate
+                  count                     and 8.3; the atomic formula       accounting: 12m + 25 and 6m + 16.
+                                            alphabet.
+Theorem 8.5       Theorem 3.4; thm:         Definition 2.9; Proposition       Changed: Global budget
+                  structure                 7.3; Lemmas 8.2, 8.3, and         Km = 12m + 25.
+                                            8.4.
+Theorem 9.1       Theorem 1.1; thm:main     Lemmas 2.1, 2.2, 2.3 and          Changed: Proved for every fixed
+                                            2.10; Proposition 2.8;            m ≥ 3, with an explicit exponent.
+                                            Theorem 8.5.
+Proposition 9.2   Section 9 (prose)         Lemmas 2.1 and 2.7;               Changed: B = K512K N mK ;
+                                            Proposition 2.8; the state        S = BN m ; every tape subroutine is
+                                            and transition definitions in     counted.
+                                            Section 2.
+
+
+
+
+                                                     5
+Statement               Source counterpart [P],    Uses                             Capacity transfer
+                        S-P
+Corollary 9.3           Section 9 (prose)          Lemma 2.3; Lemma 8.4 and         Changed: N ≤ mL and at most L
+                                                   Theorem 8.5; Theorem 9.1;        trials give exponent
+                                                   Proposition 9.2.                 60m2 + 129m + 2.
+Proposition 9.4         Remark 9.1; rem:           Lemmas 2.1 and 2.3;              Changed: Explicit compact
+                        compact                    Theorem 9.1; Proposition         expansion n ≤ N < 2m|E|; decision
+                                                   9.2.                             output is bounded.
+
+
+Notation
+
+  Symbol or term                     Meaning                                                         Defined in
+  m; G = (V, E), n, T , L            number of machines, fixed, m ≥ 3; the instance, its             Section 1.1
+                                     number of jobs, the deadline, the binary input length
+  x≺y                                there is a directed path of positive length from x to y         Lemma 2.1
+  J, N = mT                          the padded job set and its size                                 Lemma 2.3
+  λ : J → [N ]                       rank: the position in the deterministic total order             after Lemma 2.1
+                                     extending ≺
+  full schedule of W                 a sequence of m-element antichains partitioning W and           Lemma 2.3
+                                     respecting ≺
+  frame (forward, reverse)           the direction in which precedence, time and rank are read       Section 2.1
+  Pa , Da , Pba , D
+                  ba                 strict predecessor and successor cones of an m-element set      Section 2.1
+                                     a; with a hat, united with a
+  upset, downset                     subsets closed under successors, under predecessors             Section 2.1
+  formula, leaf, [F ], FK            a Boolean tree over the atomic tests; its evaluated set; the    Section 2.1
+                                     sets with a formula of at most K leaves
+  global, relative description       W ∈ FK ; L = W ∩ [F ]                                           Section 2.1
+  state (L, Z, R); A                 a state of the dynamic program; its acceptance function         Section 2.2
+  hierarchy, node, mark              the certificate of completeness                                 Definition 2.9
+  domain U ; cutoff S; low,          job set of an open interval; a relative downset of U ; in S,    Section 3
+  high                               outside S
+  separator at S; (a), (b)           a slot z with every earlier high job in Pz and every later      Section 3
+                                     low job in Dz
+  Bz (H)                             Pz ∪ (H \ D bz )                                                (3.1)
+  priority order π; normalized       a total order extending ≺; lexicographically minimal            Section 3.1
+                                     encoded schedule
+  exception for L at s               a job of L after s outside Ds                                   Lemma 3.4
+  W ; a, b; tag                      a node; its boundaries; its frame                               Section 4
+  K = (K1 , . . . , Kℓ ), Q(K), O,   the list of upsets of a node, its qualifier set, the old high   Section 4, (4.1)
+  keyK                               set W ∩ Q(K), the key
+  (I1), (I2), (I3)                   the three invariants of a node                                  Section 4.1
+  X, Y                               W \ D a , W \ Pb                                                Lemma 4.2
+  center v; same, switched           the marked separator of a node; its two sides; the frame of     Section 4.2
+  side; working frame; E             a side; the open part between a and v
+  S∗ ; S0 ⊆ · · · ⊆ Sq               the cutoff separated by the center; the cutoffs of a side       (4.3), Lemma 4.3
+  s0 ≤ · · · ≤ sq < v                the positions of the side walk                                  (4.4)
+  W ′ ; a′ , b′ , S                  a child; its edge data                                          (4.5)
+  carry, injection I, pruning,       the operations that make the list of a child                    Section 5, (5.1)
+  switch pair, G, h                                                                                  to (5.4), (6.8)
+  run; initial entries               a chain of same-side updates; the entries it starts with        Section 5.2
+  Φ, Φ′ ; H, H ∗                     a carry union and its substitute on U ; the low cutoff of an    Lemma 6.2
+                                     earlier edge and its extension to J
+  a− , b− , v−                       boundaries and center of the parent, in the switched frame      Lemma 6.3
+  Am , Km                            6m + 9, 12m + 25                                                (6.9), (8.11)
+  S
+  ei                                                       ei ∩ W = Si
+                                     the cutoff predicate, S                                         (8.1), (8.2)
+  B, S (Section 9 only)              the bound on the number of formulas; the number of              (2.1), (9.2)
+                                     candidate states
+
+
+The numeric state bound is written S in Section 9; it is the quantity denoted S there in the
+
+
+                                                             6
+supplied return. Cutoffs retain S. The set variables L, Z, R in state triples are local to those
+definitions; L in complexity bounds is the encoded input length. The leaf budget K and the
+indexed list entries Kj are distinguished by their definitions.
+
+
+2     Foundations, descriptions, and the finite search
+Conventions. All job sets are finite. Maps between job sets, integer intervals, keys, bit vectors
+and formulas below are ordinary functions of sets; order-preservation is asserted and proved when
+needed. All restrictions of precedence use the transitive order on the full job set, not merely the
+arcs induced by a smaller set.
+Lemma 2.1 (reachability and a rank order).
+    Let G = (V, E) be a finite directed acyclic graph. Define x ≺ y if there is a directed path of
+positive length from x to y.
+
+    1. The relation ≺ is irreflexive and transitive.
+    2. For a function τ : V → Z, respecting every arc strictly is equivalent to respecting every pair
+       x ≺ y strictly.
+    3. Repeatedly removing a vertex with no remaining predecessor produces a total order extending
+       ≺. With the smallest identifier as a tie-breaker this order is deterministic.
+
+Uses: definitions only.
+
+Proof. Step 1 (reachability is a strict order). Transitivity follows by concatenating paths; a
+positive-length path from a vertex to itself would be a directed cycle. [acyclicity and the path
+definition]
+Step 2 (arc and reachability inequalities agree). Strict inequalities along a path imply the inequality
+between its endpoints, and every arc is a path. [the path definition; transitivity of strict integer
+inequalities]
+Step 3 (a deterministic extending order exists). For the last claim, if a finite nonempty remaining
+set had no minimal element, following predecessors within it would eventually repeat a vertex and
+give a cycle. Thus a minimal element always exists. If x ≺ y, vertex y cannot be removed while x
+remains. The removal order therefore extends ≺. [finite acyclicity; the least-identifier rule]
+
+    The reachability relation can be computed by a search from each vertex. For a padded set J
+of N jobs, write
+                                   λ : J −→ [N ] = {1, . . . , N }
+for the bijection sending a job to its position in this deterministic total order. It is strictly
+order-preserving: x ≺ y implies λ(x) < λ(y).
+Lemma 2.2 (integer start times).
+    Suppose a finite collection of unit jobs has nonnegative real start times and a machine-
+assignment function µ : V → [m], with no overlap on a machine and with every precedence
+completed before its successor starts. There is a feasible integer-slot schedule whose makespan is
+no larger.
+Uses: Lemma 2.1; definitions of a unit-job schedule and machine assignment.
+
+Proof. Step 1 (the augmented graph is acyclic). On each machine, order the jobs by their original
+start times and add an arc from each job to the next. Each original or added arc increases
+the original start time by at least one, so the augmented graph is acyclic. [unit processing times;
+feasibility of the original schedule]
+
+
+
+                                                  7
+Step 2 (the recurrence gives integer starts no later than the old starts). In a topological order of
+it, define
+
+         s′ (v) = max {0} ∪ {s′ (u) + 1 : u is an augmented immediate predecessor of v} .
+                                                                                           
+
+
+This defines a function s′ : V → Z≥0 . For the induction on position in the topological order,
+a vertex with no incoming arc has s′ = 0 ≤ s; assume s′ (u) ≤ s(u) for earlier vertices. The
+recurrence then gives s′ (v) ≤ s(v), since every term in the maximum is at most the original s(v).
+[Lemma 2.1; induction in the augmented topological order]
+Step 3 (the new schedule is feasible). Added machine-order arcs prevent overlap; original arcs
+enforce precedence. Setting τ (v) = s′ (v) + 1 gives the required slot schedule, with completion time
+at most the original completion time for each job. Nothing depends on m = 3. [the augmented arcs
+and the recurrence]
+
+Lemma 2.3 (padding).
+    For a deadline 1 ≤ T ≤ n, reject if n > mT . Otherwise add mT − n distinct isolated jobs. Let
+J be the resulting set and N = mT ≤ mn. A full schedule of W ⊆ J is a finite sequence of
+m-element antichains partitioning W , with x ≺ y implying that the slot of x occurs strictly earlier
+than that of y. The empty sequence is a full schedule of the empty set. The original deadline is
+feasible if and only if J has a full schedule.
+Uses: definitions only.
+
+Proof. Step 1 (padding gives a full schedule). A deadline-feasible original schedule leaves exactly
+mT − n positions among the m machines and T slots. Fill those positions with the distinct isolated
+jobs. [the deadline schedule and isolated-job definition]
+Step 2 (restriction gives the original deadline schedule). Conversely, deleting isolated padding
+jobs from a full schedule leaves at most m original jobs in each slot and preserves all original
+inequalities. Since N ≤ mn, for fixed m the padded instance has polynomial size. [full-schedule
+definition; T ≤ n]
+
+Lemma 2.4 (open-interval replacement).
+   In a full schedule of J, let W consist of all jobs in the slots strictly between two boundary
+positions a < b, where a boundary can be the virtual position before the schedule or after it.
+Replacing these slots by any full schedule of W preserves a full schedule of J.
+Uses: definitions only.
+
+Proof. Step 1 (the replacement occupies the same interval). Every full schedule of W has exactly
+|W |/m slots, so it fits the same positions. [the definition of a full schedule]
+Step 2 (every precedence pair is respected). Relations with both endpoints in W are respected by
+the replacement, and those with neither endpoint in W are unchanged. An exterior job has a slot
+before the entire interval or after the entire interval. Its temporal relation with every interior job
+therefore remains the same. This verifies every relation with precisely one endpoint in W . [the
+original schedule; the open-interval definition]
+
+   The replacement ranges over full schedules of the interval job set, each respecting its restricted
+transitive precedence order.
+
+
+
+
+                                                   8
+2.1    Frames, cones, and atomic formulas
+There are two frames. The forward frame uses the given precedence, time and rank. The reverse
+frame uses
+                      x ≺− y ⇐⇒ y ≺ x,         λ− (x) = N + 1 − λ(x).
+For a schedule of T slots its time-reversal map is the bijection [T ] → [T ], t 7→ T + 1 − t. This
+reverses the sequence of slots and changes a full schedule for ≺ into one for ≺− . Applying it twice
+is the identity. All terms such as “before”, “upset”, “rank” and “predecessor” in an argument refer
+to its stated frame.
+    For any m-element subset a ⊆ J, define
+
+                 Pa = {x ∈ J : (∃y ∈ a) x ≺ y},       Da = {x ∈ J : (∃y ∈ a) y ≺ x},
+
+and Pba = Pa ∪ a, D b a = Da ∪ a. These are defined for every m-element subset, although the
+construction uses them at antichain slots. A subset K ⊆ J is an upset if x ∈ K and x ≺ y imply
+y ∈ K; a downset satisfies the reversed implication. By transitivity, Da , D
+                                                                           b a are upsets and Pa , Pba
+are downsets. Complements interchange upsets and downsets; unions and intersections preserve
+either class. Rank suffixes are upsets and rank prefixes are downsets. Reversal exchanges P with
+D, including weak cones.
+    For the virtual boundary before the schedule set
+
+                                   D=D
+                                     b = J,           P = Pb = ∅;
+
+for the virtual boundary after it set
+
+                                   D=D
+                                     b = ∅,           P = Pb = J.
+
+The virtual boundaries contain no jobs.
+Lemma 2.5 (cones and time).
+    At a genuine slot a of a full schedule, jobs of Pa occur strictly before a, jobs of Da strictly
+after a, and no job of a belongs to either strict cone. In particular, no job at or after a belongs to
+Pa , and no job at or before a belongs to Da .
+Uses: definitions only.
+
+Proof. A witness x ≺ y with y ∈ a forces the slot of x to precede a. The successor statement is
+identical with directions reversed. Members of a are pairwise incomparable, and no job precedes
+itself. The virtual-boundary conventions satisfy the analogous temporal implications.
+
+   A formula is a finite full binary tree whose internal vertices are labelled intersection or union,
+and whose leaves are one of the following subsets or the complement of one of them:
+
+   • J and ∅;
+   • a rank threshold {λ ≤ k} or {λ ≥ k}, with 0 ≤ k ≤ N + 1, in either frame;
+   • a, Pa , Da , Pba , D
+                        b a for an m-element subset a, in either frame.
+
+   Its size is its number of leaves. Evaluation is the function from the set of such formula trees to
+2J obtained by interpreting the leaves and internal operations. Write [F ] for the evaluated set.
+For K ≥ 1 let
+                               FK = {[F ] : F has at most K leaves}.
+A global description of W means W ∈ FK . A relative description of L ⊆ W means L = W ∩ [F ]
+for some such F ; it does not require the intersection with W to have a short global description.
+Lemma 2.6 (complements).
+  Every formula has a complement formula of exactly the same size.
+Uses: definitions only.
+
+
+                                                  9
+Proof. Step 1 (define the transformation and verify its leaf base case). Complement each leaf and
+interchange union with intersection at every internal vertex. Induct on the number of vertices of
+the formula tree. At a leaf, the allowed complement flag gives exactly the complementary set, and
+both formulas have one leaf. [the permitted complement flags]
+Step 2 (the induction step preserves complements and leaf counts). At an internal vertex, assume
+that the transformed child formulas give the complements of their old evaluations and preserve
+their leaf counts. The corresponding De Morgan identity then gives the complementary evaluation
+at this vertex. Both trees have the sum of their child leaf counts. Thus the new evaluation is
+J \ [F ], with no leaf created or deleted. [the induction hypothesis; the two De Morgan identities]
+
+    Thus set differences used below are formulas, with leaf counts equal to the sum of the counts
+of the two operands.
+Lemma 2.7 (finite formula enumeration).
+  For fixed m ≥ 3 and K, the number of formulas with at most K leaves is at most
+
+                                          B = Cm,K N mK .                                       (2.1)
+
+Their evaluated sets can be enumerated and deduplicated as bit vectors by a deterministic algorithm
+polynomial in N .
+Uses: Lemma 2.1; definitions of the atomic alphabet and formula evaluation.
+
+Proof. Step 1 (bound the atomic alphabet). There are          N
+                                                              m ≤N
+                                                                   m slot subsets. Counting both
+
+frames and complements, the leaf alphabet has at most
+                                                         !
+                                                    N
+                                  4 + 8(N + 2) + 20          ≤ 64N m
+                                                    m
+
+elements for N ≥ m ≥ 3: the constants contribute   four choices, the thresholds contribute 8(N + 2),
+and the five subset/cone types contribute 20 N   . The inequality follows from 8N + 20 ≤ 16N ≤
+                                               
+                                             m
+    m       N
+16N and m ≤ N . [the permitted atoms; N ≥ m ≥ 3]
+                    m
+
+Step 2 (count the formula trees). For ℓ leaves there are at most 4ℓ full binary tree shapes, at
+most 2ℓ−1 internal labellings, and at most (64N m )ℓ leaf labellings. Summing gives, for example,
+Cm,K = K 512K . [the binary-tree shape and label counts]
+Step 3 (enumerate and retain every evaluated set). Enumerate these finite choices, evaluate each
+using the reachability table, and compare evaluated N -bit vectors in pairs to remove duplicates.
+For fixed m, K, every loop has polynomially many iterations. [Lemma 2.1; finite formula evaluation;
+bit-vector equality]
+
+2.2    The dynamic program
+Process the sets of FK in increasing cardinality. A boolean function
+
+                                       A : 2J −→ {false, true}
+
+is initialized as false outside FK , and A(∅) = true. A set whose size is not divisible by m is false.
+     For nonempty W ∈ FK with m | |W |, a state is a disjoint decomposition
+
+                                           W = L ∪˙ Z ∪˙ R
+
+such that Z is an m-element antichain, L has a relative description in W , and the following
+compatibility tests hold:
+
+   • no job in Z ∪ R precedes a job in L;
+
+                                                  10
+   • no job in R precedes a job in Z.
+
+    The state is initial when A(L) is true and final when A(R) is true. There is a directed transition
+to (L′ , Z ′ , R′ ) exactly when
+
+                                 L ∪ Z ⊆ L′ ,       A L′ \ (L ∪ Z) = true.                                 (2.2)
+                                                                     
+
+
+Declare W accepted when an initial state reaches a final state, allowing a path with one state.
+Every acceptance lookup in this computation concerns a smaller set: L and R omit Z, while a
+transition gap omits at least the nonempty Z. Thus the procedure is well-defined.
+Proposition 2.8 (soundness and witnesses).
+    For any m ≥ 1 and any description family used in this procedure, an accepted set W has a full
+schedule. Such a schedule can be reconstructed from the accepted states.
+Uses: definitions of the state graph, compatibility, and acceptance in Section 2.2; induction on set cardinality.
+
+Proof. Step 1 (form the ordered partition from an accepting path). Induct on |W |. The base
+W = ∅ has the empty schedule. Assume that every accepted smaller set has a full schedule. The
+empty case is immediate. For a path of states (Li , Zi , Ri ), 1 ≤ i ≤ k, from initial to final, put
+
+                      A0 = L1 ,     Ai = Li+1 \ (Li ∪ Zi ) (1 ≤ i < k),        Ak = Rk .
+
+The inclusion in (2.2), together with disjointness of each state, gives the ordered disjoint partition
+
+                                   W = A0 ∪˙ Z1 ∪˙ A1 ∪˙ · · · ∪˙ Zk ∪˙ Ak .                               (2.3)
+
+For completeness of this set identity, induction on i gives Li+1 = A0 ∪Z   ˙ 1 ∪A
+                                                                               ˙ 1 ∪˙ · · · ∪Z
+                                                                                            ˙ i ∪A
+                                                                                                ˙ i ; adding
+the last state’s Zk , Rk proves (2.3). [the induction hypothesis; transition inclusion (2.2)]
+Step 2 (concatenation respects every precedence). Each Ai is accepted and smaller than W , so it
+has a full schedule by induction. Concatenate these schedules and the individual slots Zi in the
+displayed order. A backward precedence from Zj into an earlier piece would run from Zj into Lj ,
+violating its state’s compatibility. A backward precedence from Aj , j ≥ 1, into an earlier piece
+would run from Rj into Lj ∪ Zj , again violating compatibility. These cover every relation between
+different pieces. Relations inside pieces are respected by their schedules. The concatenation is full.
+[the induction hypothesis; state compatibility]
+Step 3 (decode a witness from the stored path). Store the predecessor of each reached state and
+the schedule of each accepted smaller set. Backtracking from a reached final state yields the path
+and hence the displayed schedule. This uses only one m-element slot in each state. [the partition
+(2.3) and the accepted smaller witnesses]
+
+Definition 2.9 (description hierarchy).
+   A hierarchy consists of nonempty job sets organized in a rooted tree, together with full-schedule
+witnesses, as follows.
+
+   • The root is J between the two virtual boundaries.
+   • A node W is the job set of an open interval in its witness schedule of J. Its interval may be
+     rescheduled, and then at least one slot is marked.
+   • Its children are exactly the nonempty gaps between consecutive marks or between a boundary
+     and its nearest mark. Each child receives a copy of the parent’s current witness schedule.
+   • Every node has a global description using at most K leaves. For each mark z, the set of
+     jobs of W before z in original time has a relative description using at most K leaves.
+
+
+
+
+                                                      11
+   Copies separate the witnesses for distinct branches; they are not algorithmic state variables.
+Every child omits at least one marked slot, so the tree has finite depth.
+Uses: definitions of full schedules, open intervals, and global and relative descriptions.
+
+Lemma 2.10 (hierarchy implies acceptance).
+  If J has such a hierarchy, the dynamic program accepts J.
+Uses: Definition 2.9; state and acceptance definitions in Section 2.2.
+
+Proof. Step 1 (each mark gives a candidate state). Induct on the number of slots |W |/m of a
+node. For one slot, that slot is marked and all gaps are empty, so it is an initial and final state.
+For a larger node assume the claim for its smaller children. List its marked slots in original time
+as z1 , . . . , zk . Let Li and Ri be its jobs before and after zi . Each (Li , zi , Ri ) is a state: the relative
+description is part of the hierarchy, and compatibility follows from the witness schedule. [Definition
+2.9; the state definition]
+Step 2 (the state path accepts the node). The first L1 , the last Rk , and each gap Li+1 \ (Li ∪ zi )
+are empty or are smaller children. They are accepted by induction. Hence the first state is initial,
+the last final, and successive states are connected by (2.2). The node is accepted. Apply this at
+the root. [the size-induction hypothesis; transition definition (2.2)]
+
+    The rest of the structural proof constructs a hierarchy with K = Km = 12m + 25.
+
+
+3     Separators and the shared-cutoff walk
+Fix one frame. A domain U is the job set of an open interval of a full schedule of J. A cutoff
+S ⊆ U is a downset relative to U : if x ∈ S, y ∈ U and y ≺ x, then y ∈ S. Jobs in S are called low
+and those in U \ S high.
+   A slot z in the domain is a separator at S when
+
+  (a) every high job before z belongs to Pz ; and
+
+ (b) every low job after z belongs to Dz .
+
+   Nothing is required of the jobs at z itself. The boundary a immediately before the domain is a
+separator if all low jobs of U belong to Da ; its condition (a) is empty. Put
+
+                                    Bz (H) = Pz ∪ (H \ D
+                                                       bz)        (H ⊆ J).                                  (3.1)
+
+Lemma 3.1 (separator descriptions).
+    If z is a slot of U separating S, and H ⊆ J satisfies H ∩ U = S, then Bz (H) ∩ U is exactly
+the set of jobs of U before z.
+Uses: Lemma 2.5; separator definition and (3.1).
+
+Proof. Step 1 (every prefix job satisfies the formula). A high job before z belongs to Pz by (a). A
+low job before z belongs to H and, by Lemma 2.5, not to D   b z . This proves inclusion of the prefix.
+[separator clauses; Lemma 2.5]
+Step 2 (every selected job belongs to the prefix). Conversely, a job of Pz is before z. A job of
+U ∩H \D b z is low, is not in slot z, and cannot be after z, because condition (b) would put it in
+Dz . Thus it too is before z. [Lemma 2.5; separator clause (b)]
+
+Lemma 3.2 (reversal of a separator).
+  A slot z of U separates S in one frame if and only if it separates U \ S in the reverse frame.
+Uses: definitions of frame reversal, cutoff, and separator.
+
+
+                                                       12
+Proof. Step 1 (reversal sends the cutoff to its complement). The complement of a relative downset
+is a relative upset, hence a cutoff in the reversed order. [the definitions of a cutoff and the reversed
+order]
+Step 2 (the separator clauses are exchanged). In the reverse frame, high jobs are the original low
+jobs, “before” means original “after”, and Pz is original Dz . Thus the reversed condition (a) is
+exactly original (b). Similarly reversed (b) is original (a). Reversing again proves both directions.
+[the time and cone reversal maps]
+
+3.1      Normalization
+A priority order on U is a total order extending its precedence restriction. Let π : U → [|U |]
+be the bijection giving its positions, smaller meaning better priority. Encode a full schedule of
+U by sorting each slot increasingly by π and concatenating the resulting m-tuples in time order.
+A normalized full schedule minimizes this finite integer sequence lexicographically among all
+full schedules of U . Such a schedule exists whenever U is schedulable. Normalized schedules are
+existence witnesses, not schedules that the finite search must compute.
+Lemma 3.3 (no improving exchange, including suffix rearrangements).
+    Let a normalized schedule of U and one of its slots r be fixed. Replace the slots strictly after r
+by any full schedule of the same suffix job set, keeping a full schedule of U . A job y at r cannot
+then be exchanged with a later job x satisfying π(x) < π(y) so that a full schedule of U results.
+Uses: the definition of a normalized schedule (Section 3.1).
+
+Proof. Suppose such an exchange of y with x gives a full schedule Σ′ of U . Write Σ for the
+normalized schedule.
+Step 1 (Σ′ and Σ agree before r). The replacement changes only slots strictly after r, and the
+exchange changes only the slot r and one later slot. [hypotheses of the lemma]
+Step 2 (the sorted m-tuple of slot r decreases lexicographically). At r the set of priority values
+changes by replacing π(y) with the smaller value π(x), which is distinct from all values at r. For
+every threshold q the number of values at most q does not decrease, so every order statistic of the
+m values weakly decreases. The sum of the m values decreases strictly, so some order statistic
+decreases strictly. Hence the first coordinate in which the two sorted m-tuples differ is smaller in
+Σ′ . [π is a bijection; π(x) < π(y)]
+Step 3 (contradiction). By Steps 1 and 2 the encoded sequence of Σ′ is lexicographically smaller
+than that of Σ, against the minimality that defines a normalized schedule. [definition of normalized,
+Section 3.1]
+Where m enters: nowhere beyond the size of a slot. The argument holds for every m ≥ 1 and uses
+no exchange involving the other m − 1 jobs of the slot.
+
+   An exchange in all following proofs swaps two jobs between their slots. It preserves the size of
+both slots. Feasibility will always be checked through predecessors and successors of those two
+jobs; all other pairs retain their order.
+Lemma 3.4 (one advance).
+    Let U have a normalized full schedule for a priority order, and let M ⊆ L be two prefixes of
+this order. A position is either a slot of U or the boundary a before U . Suppose position s satisfies
+separator condition (a) for M .
+    An exception for L at s is a job x ∈ L after s with x ∈    / Ds . Suppose exceptions exist, let t
+be their earliest slot, and choose an exception x at t. If x ∈ M , then:
+
+   1. every predecessor of x belonging to U is strictly before s;
+   2. for every y ∈ U \ M at a slot r of U with s ≤ r < t, some job of U \ M at t is a strict
+      successor of y;
+
+                                                    13
+   3. t satisfies condition (a) for M .
+
+Uses: Lemma 3.3; definitions of domain, priority prefix, exception, and separator.
+
+Proof. Step 1 (every predecessor of the exception is before the old position). A predecessor w ∈ U
+of x belongs to L because L is a prefix of an order extending precedence. It is before t. If it were
+in s, then x ∈ Ds . If it were strictly between s and t, the minimality of t would give w ∈ Ds and
+hence x ∈ Ds by transitivity. Both are contradictions. This proves (1), including the case when s
+is exterior and contains no job of U . [priority-prefix closure; earliest-exception choice; transitivity]
+Step 2 (a forbidden exchange forces a successor). For (2), suppose y has no successor in U at
+or before t. Exchange x and y. All predecessors of x in U are before s ≤ r by (1), and all its
+successors were after t. Thus moving x to r violates no relation involving x. The predecessors of
+y were before r and its successors in U are after t by the supposition, so moving y to t violates
+none involving y. In particular, there is no forbidden relation with another job occupying either
+new slot. Exterior predecessors of an interior job are before the whole interval, and exterior
+successors are after it, by the original full schedule. Thus the exchange is feasible in U and also in
+its full-schedule witness.
+     But x ∈ M and y ∈  / M , so x has better priority. Lemma 3.3 forbids the exchange. Therefore y
+has a successor y1 ∈ U at some time r < r1 ≤ t. [Step 1; Lemma 3.3]
+Step 3 (successor propagation reaches the target slot). This successor is outside M , since M
+is a cutoff. If r1 < t, apply the same argument to y1 . The times strictly increase in a finite
+interval. The process reaches a successor at t, still outside M . This proves (2). [prefix closure;
+strictly increasing successor times; Step 2]
+Step 4 (the target satisfies the high-job separator clause). For (3), let y ∈ U \ M be before t. If
+its slot is at or after s, use (2). Otherwise s must be a slot of U , and condition (a) at s gives a job
+w in s with y ≺ w. This w is outside M , so (2) gives w ≺ w′ for a job w′ at t. Hence y ≺ w′ and
+y ∈ Pt . [Step 3; the old separator clause (a); transitivity]
+
+Lemma 3.5 (fixed-cutoff walk).
+    Let L be a priority prefix and suppose s satisfies (a) for L. Repeatedly move from the current
+position to the earliest slot with an exception for L, stopping when none exists. The process
+terminates at a separator for L, never moves backward, and does not move from a position already
+separating L.
+Uses: Lemma 3.4.
+
+Proof. Lemma 3.4 with M = L preserves (a) at each target. Every move strictly increases the
+position. There are only finitely many positions. At termination the absence of exceptions is
+exactly (b). If the starting position already separates L, there is no first exception.
+
+Lemma 3.6 (shared-cutoff walk).
+    Let S and S + = S ∪ {p} be consecutive priority prefixes. From a separator s for S, run the
+fixed-cutoff walk for L = S + . Its final position t ≥ s separates both S and S + .
+Uses: Lemmas 3.4 and 3.5.
+
+Proof. Step 1 (the no-advance case already separates both cutoffs). Condition (a) for S + already
+holds at s, because the high set shrinks. If there is no exception for S + , then s separates both
+and there is no move. [the old separator and S ⊆ S + ]
+Step 2 (the first target separates the high jobs of both cutoffs). Otherwise every old low job after
+s belongs to Ds , so the only possible first exception is p. The first target t1 is the slot of p. By
+Lemma 3.4 with M = L = S + , it satisfies (a) for S + . It also satisfies (a) for S: the only difference
+between the two high sets is p, which is at t1 , not before it. [Lemma 3.4; the single promoted job]
+
+
+                                                   14
+Step 3 (later advances preserve both clauses and terminate). At each subsequent move, the
+exception is after t1 , and hence is a job of S + other than p, that is, a job of S. Apply Lemma 3.4
+once with M = S and once with M = S + to preserve (a) for both cutoffs. At the final position,
+no exception for S + remains. This proves (b) for S + and for its subset S. [Lemmas 3.4 and 3.5;
+S ⊆ S+]
+
+   The same result applies if the priority order and prefixes are on a larger set W ⊇ U , with
+normalization on the restriction to U . The intersection of a priority prefix with U is a prefix of
+the restricted order. Promoting a job outside U leaves that intersection unchanged, so the walk
+does not move.
+Corollary 3.7 (a separator can be created).
+    Let nonempty U be a domain with a full schedule, and let S be any cutoff in it. Some full
+schedule of U has a slot separating S.
+Uses: Lemma 3.6; definitions of cutoff and normalization.
+
+Proof. Step 1 (the chosen priority order respects precedence). Order S first, then U \ S, each by
+rank. A relation from the second group into the first would contradict that S is a cutoff, so this is
+a priority order. [the cutoff property and rank order]
+Step 2 (the promotions produce a separator slot). Normalize a full schedule for it. The first slot
+separates the empty cutoff. Promote the members of S in that order, applying Lemma 3.6 each
+time. The final position is a slot and separates S. [normalization; Lemma 3.6]
+
+
+4    Centers, sides, and the hierarchy data
+Every node W has a full-schedule witness, a tag consisting of one frame, and boundaries a, b in
+that frame. It carries an ordered list
+
+                                          K = (K1 , . . . , Kℓ )
+
+of upsets of the whole set J in its tag frame. Its qualifier set is
+                                                      ℓ
+                                           Q(K) =
+                                                      [
+                                                           Kj ,
+                                                     j=1
+
+and its old high set is O = W ∩ Q(K). On Q(K) define the function
+
+                   keyK : Q(K) −→ [ℓ] × [N ],        x 7−→ max{j : x ∈ Kj }, λ(x) ,             (4.1)
+                                                                                 
+
+
+with lexicographic order in the target. For an empty list there are no qualifiers and no keys. Keys
+of distinct qualifiers are distinct, because λ is injective.
+    Each Kj is a fixed subset given by a formula in fixed job subsets and rank thresholds. Changing
+a witness schedule later does not change that subset.
+Lemma 4.1 (keys respect precedence).
+  If x qualifies and x ≺ y, then y qualifies and keyK (x) < keyK (y).
+Uses: definitions only.
+
+Proof. Every upset entry containing x contains y. The largest entry index of y is therefore at least
+that of x. If it is larger, the first coordinate proves the claim; if equal, λ(x) < λ(y) proves it.
+
+
+
+
+                                                   15
+4.1    The three invariants
+Every node is required to satisfy the following statements in its tag frame.
+   (I1) O ⊆ Pb and W \ O ⊆ Da .
+   (I2) Every qualifier scheduled at or before a belongs to Pba .
+   (I3) After replacing the interval of W by any full schedule of W , no exchange of a job
+x ∈ W \ Da with a qualifier y in slot a, satisfying keyK (x) < keyK (y), gives a full schedule of J.
+   The key of x in (I3) is defined: (I1) implies W \ Da ⊆ O. When a is virtual, (I2) and (I3) are
+empty assertions.
+   At the root, use the forward frame, virtual boundaries, and K = (J). Then O = J, (I1) holds
+by the virtual conventions, and the other two invariants are vacuous.
+Lemma 4.2 (cover and two cutoffs).
+  In either frame, writing a, b for the node’s boundaries in that frame and
+
+                                    X = W \ Da ,         Y = W \ Pb ,
+
+one has
+                               W ⊆ Da ∪ Pb ,        X ⊆ Pb ,     Y ⊆ Da .                      (4.2)
+Both X and W ∩ Pb are cutoffs in W .
+Uses: invariant (I1); frame and cone definitions.
+
+Proof. Step 1 (the cover and inclusions hold in the tag frame). In the tag frame, (I1) puts the
+two parts O, W \ O in Pb , Da respectively. Thus a job outside Da is in O ⊆ Pb , and a job outside
+Pb is in W \ O ⊆ Da . [invariant (I1)]
+Step 2 (the same assertions hold in the reversed frame). Reversal interchanges the boundary
+names and the predecessor/successor cones; it exchanges the roles of X, Y and leaves the assertions
+equivalent. [the explicit time, boundary, and cone reversal maps]
+Step 3 (the two sets are relative downsets). Finally J \ Da and Pb are downsets, and their
+intersections with W are relative downsets. [global cone closure and taking intersections with W ]
+
+4.2    Choosing the center and treating the two sides
+In the tag frame, use Corollary 3.7 to reschedule W so that a slot v separates W ∩ Pb on the whole
+domain W . Mark this center. At the root use its last slot as the center: with cutoff J, (a) has no
+high job and (b) has no later job.
+    Treat each side of v as the part before v in a working frame. The side before v in the tag
+frame is the same side; the side after it uses the reversed frame and is the switched side. On
+either side let a, b be the node boundaries in that working frame and let E be the open part
+between a and v.
+    The center separates, on W , the cutoff
+
+                                                      same side,
+                                        (
+                                         W ∩ Pb ,
+                                 S∗ =                                                          (4.3)
+                                         X = W \ Da , switched side.
+
+The second assertion follows from Lemma 3.2: the new cutoff is the complement of the old one in
+W , with old Pb becoming new Da .
+    On a same side set S0 = (W \ O) ∩ Pb , order S0 by rank, then O by key, then Y by rank;
+promote all jobs of O in key order. On a switched side start with S0 = ∅, order X by rank and
+then W ∩ Da by rank; promote all jobs of X in rank order. These orders are on all of W .
+Lemma 4.3 (priority orders and cutoff containment).
+
+
+
+                                                    16
+   Both orders extend precedence. The successive low sets are prefixes
+
+                                      S0 ⊆ S1 ⊆ · · · ⊆ Sq = S∗ ,
+
+each addition being one promoted job. Every Si is contained in Pb , and S0 ⊆ Da .
+Uses: Lemmas 4.1 and 4.2; invariant (I1).
+
+Proof. Step 1 (the same-side order and its prefixes have the required properties). The two working
+sides, same and switched, exhaust the construction. On the same side, S0 , O, Y partition W
+because O ⊆ Pb . If w ≺ x in W with x ∈ S0 , down-closure gives w ∈ Pb . Also w ∈/ O: qualification
+of w would force qualification of x. Thus S0 is a cutoff. No job of Y = W \ Pb precedes a job of
+S0 ∪ O = W ∩ Pb . Keys extend precedence in O by Lemma 4.1; ranks do so in the other groups.
+This proves the priority property and the stated prefixes. Their final union is W ∩ Pb . Invariant
+(I1) gives S0 ⊆ Da . [Lemmas 4.1 and 4.2; invariant (I1)]
+Step 2 (the switched-side order and its prefixes have the required properties). On the switched
+side, X is a cutoff by Lemma 4.2. Ordering it before its complement and using ranks within both
+groups therefore extends precedence. Its rank prefixes end at X, which lies in Pb by (4.2), and its
+initial cutoff is empty. [Lemma 4.2; rank order]
+
+    Normalize the open part E for the restricted priority order, independently on both sides.
+Lemma 2.4 preserves the full schedule. The center remains a separator, since the sets of jobs on
+its two sides do not change.
+
+4.3   Side walks and children
+The boundary a separates S0 on E, since S0 ⊆ Da . Set s0 = a. For each promotion Si−1 → Si ,
+apply Lemma 3.6 on E and let si be the walk’s final position. Intermediate positions during a
+promotion are not necessarily marked. Set sq+1 = v. Then
+
+                                 a = s0 ≤ s1 ≤ · · · ≤ sq < sq+1 = v.                          (4.4)
+
+Lemma 4.4 (common cutoffs of adjacent positions).
+    For 0 ≤ i < q, both si and si+1 separate Si on E. The position sq separates Sq there, and
+every high job of E for Sq belongs to Pv .
+Uses: Lemmas 3.6 and 4.3; the center and side-walk construction.
+
+Proof. Step 1 (successive walk positions share the old cutoff). The initial position separates S0 .
+For every promotion, Lemma 3.6 says its final position separates both the previous and the new
+cutoff. This proves all the paired assertions. [Lemmas 4.3 and 3.6]
+Step 2 (the center has the final high-job property). For the final endpoint v, use that it separates
+Sq = S∗ on the larger domain W ; its condition (a) covers all high jobs of E. [the center-separator
+property]
+
+   Mark the distinct si that are slots of E, together with v. For each strict step si < si+1 , the
+nonempty gap between them becomes a child W ′ with working-frame tag and edge data
+
+                                 a′ = si ,    b′ = si+1 ,    S = Si .                          (4.5)
+
+Repeated positions do not create a gap. Consecutive distinct positions are separated by exactly
+one strict step in the nondecreasing sequence (4.4), so these children are exactly the nonempty
+gaps required by Definition 2.9.
+Lemma 4.5 (edge labels and shrinking).
+
+
+                                                  17
+    For each such child, b′ is a slot of W , and a′ is the boundary a or a slot of E. Moreover
+
+                                 W ′ ∩ S ⊆ Da′ ∩ Pb ,     W ′ \ S ⊆ Pb′ .                            (4.6)
+
+The child has fewer jobs than W , and the root has no switched-side child.
+Uses: Lemmas 4.3 and 4.4; Definition 2.9 and the child construction.
+
+Proof. Step 1 (the endpoints and cone inclusions hold). The position claims follow from (4.4). A
+low job of the gap is after a′ , so it lies in Da′ by the separator property at a′ . It lies in Pb because
+S ⊆ Pb . A high job is before b′ and belongs to Pb′ by Lemma 4.4, including the case b′ = v. [the
+side-walk positions; Lemmas 4.3 and 4.4]
+Step 2 (the child shrinks and the root has no switched child). The gap omits v, giving strict
+shrinkage. At the root v is the last slot, so the switched side is empty. [the child and root-center
+definitions]
+
+   The remaining task is to give each child a short list and to preserve (I1)–(I3). The induction
+order will be checked explicitly in Section 7.
+
+
+5     Carried and pruned lists
+Lemma 5.1 (suffix carry).
+  For a nonempty list K = (K1 , . . . , Kℓ ), an index 1 ≤ d ≤ ℓ, and 0 ≤ r ≤ N + 1, define
+
+                             carryd,r (K) = Kd ∩ {λ ≥ r}, Kd+1 , . . . , Kℓ .                        (5.1)
+                                                                            
+
+
+This is a function, for each permitted d, r, from lists of length at least d of upsets of J to lists of
+upsets of J. Its qualifiers are exactly those old qualifiers whose old key is at least (d, r). On those
+qualifiers its new key order agrees with the old one.
+Uses: definitions only.
+
+Proof. Step 1 (qualification is exactly the old key suffix). Let j be a qualifier’s largest old entry
+index. Exactly one of j > d, j = d, and j < d holds. If j > d, that entry survives unchanged, so
+the job qualifies. If j = d, it qualifies precisely when its rank is at least r. If j < d, no kept entry
+contains it. These three cases give exactly the threshold on the old key. [the three exhaustive cases
+j > d, j = d, and j < d]
+Step 2 (the key-order map preserves comparisons and entries remain upsets). For every surviving
+qualifier, its largest qualifying index is decreased by the same amount d − 1, and its rank is
+unchanged. Hence every pairwise comparison is preserved. The first entry remains an upset
+because it is an intersection of two upsets; the other entries already are upsets. [the index translation
+j 7→ j − d + 1; upset closure]
+
+    Pruning on W ′ means deleting every entry disjoint from W ′ and retaining the order of the
+others. It is a function from finite lists of subsets of J to such lists. It preserves the union’s
+intersection with W ′ .
+Lemma 5.2 (comparison after pruning).
+    Suppose a list is pruned on W ′ . Let x ∈ W ′ and y ∈ J both qualify after pruning. If the pruned
+key of x is smaller than the pruned key of y, then their old keys have the same strict inequality.
+Uses: definitions only.
+
+
+
+
+                                                   18
+Proof. Step 1 (the smaller-key job keeps its largest old qualifying index). Before renumbering
+the retained entries, let M (z) be the largest old index containing z and R(z) the largest retained
+old index containing z. Every entry containing x meets W ′ , so R(x) = M (x); for y one has
+R(y) ≤ M (y). Renumbering the retained indices preserves their order. The strict comparison has
+two cases: R(x) < R(y), or R(x) = R(y) and λ(x) < λ(y). [pruning; x ∈ W ′ ]
+Step 2 (both possible strict key comparisons transfer to the old list). If R(x) < R(y), then
+M (x) < M (y). If R(x) = R(y) and λ(x) < λ(y), either M (x) < M (y) or M (x) = M (y), in which
+case the rank inequality decides. Both cases prove the assertion. The condition x ∈ W ′ is essential
+to the equality R(x) = M (x); we do not assert order preservation for arbitrary exterior pairs. [the
+index inequalities from Step 1; rank comparison]
+
+5.1    The two child updates
+For an edge W → W ′ on a same side, with cutoff S, let the carry be empty if O \ S = ∅.
+Otherwise let (d, r) be the least old key of a job of O \ S, and use (5.1). Append the injection
+
+                                                 I = Da \ Pb                                       (5.2)
+
+as the last entry, then prune on W ′ . The injection is an upset: it is the intersection of Da and the
+complement of the downset Pb .
+    On a switched side, discard the old list. Section 6 will construct an upset G in the working
+frame satisfying
+
+                X = W \ Da ⊆ G,              G ∩ {x : x is scheduled at or before a} = ∅.          (5.3)
+
+The cutoff S is a rank prefix of X. Choose h so that X \ S = X ∩ {λ ≥ h}, taking h = N + 1 if
+X ⊆ S. Use the switch pair
+                                                                                        (5.4)
+                                                       
+                                       G ∩ {λ ≥ h}, Da
+and prune it on W ′ .
+Lemma 5.3 (qualifiers and child (I1)).
+    For either update, the union before pruning intersects W in exactly W \ S, and its key order
+on that set agrees with the side’s priority order. After pruning, its qualifiers in W ′ are exactly
+W ′ \ S. With this list, W ′ satisfies (I1) in its tag frame.
+Uses: Lemmas 4.2, 4.3, 4.5, and 5.1; invariant (I1); the stipulated switch-upset property (5.3).
+
+Proof. Step 1 (the same update has the stated qualifiers and order). The two working sides, same
+and switched, exhaust the construction. On a same side, O is promoted in key order. By Lemma
+5.1, the carry selects exactly O \ S within W and preserves its old key order. By Lemma 4.2,
+
+                                     W ∩ I = (W ∩ Da ) \ Pb = Y.
+
+The sets Y and O are disjoint, since O ⊆ Pb . Also W = S0 ∪O ˙ ∪Y
+                                                                ˙ , and S is S0 together with the
+                                                               ˙
+promoted part of O. Thus the new qualifiers in W are (O \ S)∪Y = W \ S. Placing the injection
+last puts Y after the carry qualifiers, with rank order inside Y , exactly as in the priority order.
+[Lemmas 4.2, 4.3, and 5.1; invariant (I1)]
+Step 2 (the switched update has the stated qualifiers and order). On a switched side, G ⊇ X
+implies that the first entry selects exactly X \S within X. The second entry selects W ∩Da = W \X.
+Its larger index puts every job of this second group after those of X \ S, regardless of any overlap
+with the first entry. Keys use rank within each group, agreeing with the priority order. The union
+in W is again W \ S. [property (5.3); switch-pair definition (5.4)]
+Step 3 (pruning preserves the child qualifiers and proves (I1)). Pruning changes no qualification
+within W ′ . Therefore the child’s old high set is O′ = W ′ \ S. Equation (4.6) gives O′ ⊆ Pb′ and
+W ′ \ O′ = W ′ ∩ S ⊆ Da′ , exactly child (I1). [Lemma 4.5; the pruning definition]
+
+                                                      19
+5.2    Runs and a capacity witness
+A run is a chain along a branch with a fixed tag, starting at the root or at a child created by a
+switched update, and proceeding only through same-side updates. Its initial entries are the root
+entry or the two entries of its initial switch pair. Every other entry is descended from an injection
+appended during the run.
+Lemma 5.4 (entry shape).
+    Each entry is an initial entry of its run or an injection appended in that run, intersected with
+at most one rank suffix in the run’s frame.
+Uses: definitions of carry, pruning, and a run.
+
+Proof. Step 1 (the initial entries satisfy the shape invariant). Induct on the number of same-side
+updates since an entry was created in its run. At creation the entry is its initial or injection set,
+with no additional suffix. Assume that every current entry has the stated form. [the initial-entry
+and injection definitions]
+Step 2 (each update preserves a single effective suffix). Subsequent operations keep or delete an
+entry, or intersect it with a rank suffix. Intersecting two suffixes gives the suffix at the maximum
+of their thresholds:
+                               {λ ≥ r} ∩ {λ ≥ r′ } = {λ ≥ max(r, r′ )}.
+All thresholds in one run use the same rank. Thus at most one suffix is needed in the resulting
+expression. A switched update starts a new run and deletes the earlier list. [the induction hypothesis;
+the maximum-threshold identity]
+
+Lemma 5.5 (at most m injections and m + 2 entries).
+  Every pruned list contains at most m injections and at most m + 2 entries.
+Uses: Lemmas 4.5, 5.1, 5.3, and 5.4; invariant (I1); injection definition (5.2).
+
+Proof. A switched update starts a new run with a list of at most two entries and no injection
+(Section 5.1). So consider a same-side update W → W ′ with edge data a′ , b′ , S as in (4.5), and let
+I be the finite set of injection entries that survive in the pruned list of W ′ , distinguished by their
+times of creation.
+Step 1 (two entries of I are disjoint on W ). Let K, K ′ ∈ I with K created before K ′ , and let
+U → U ′ be the edge of the run at which K ′ was appended, so W ⊆ U . At that time K belonged
+to the carry of U . The qualifiers of the carry inside U are old qualifiers of U , hence lie in PbU . The
+injection appended at that edge is DaU \ PbU , which meets U only outside PbU . So K ∩ K ′ ∩ U = ∅
+at that time. Later operations only delete entries or intersect them with rank suffixes, and W ⊆ U .
+Hence K ∩ K ′ ∩ W = ∅. [Lemma 5.1; invariant (I1) at U ; (5.2); Lemma 5.4]
+Step 2 (every K ∈ I contains a job of the slot b′ ). K survived pruning on W ′ , so K ∩ W ′ ̸= ∅;
+let xK be the least-rank job of K ∩ W ′ . It is a qualifier in W ′ , hence a high job of the child,
+so xK ∈ Pb′ : some job of the slot b′ is a strict successor of xK . K is an upset of all of J, so it
+contains that successor. Let f (K) be the job of least rank in b′ that is a successor of xK . Then
+f (K) ∈ K ∩ b′ . [Lemma 5.3; (4.6); every entry is an upset of J]
+Step 3 (f : I → b′ is injective). The slot b′ is a slot of W . If f (K) = f (K ′ ) for K =
+                                                                                         ̸ K ′ , this job
+lies in K ∩ K ′ ∩ W , against Step 1. [Lemma 4.5; Step 1]
+Step 4 (the count). By Step 3, |I | ≤ |b′ | = m. Every entry is an initial entry of its run or
+descends from an injection appended in the run, and a run has at most two initial entries. So a
+pruned list has at most m + 2 entries. [Step 3; Lemma 5.4; definition of a run, Section 5.2]
+Where m enters: in Step 4, as the size |b′ | = m of one slot. The witness f (K) lies outside W ′ ,
+which is why the entries must be upsets of all of J (Step 2). No statement about formula size or
+deeper nodes is used.
+
+
+                                                     20
+    Before pruning, a newly appended list may have m + 3 entries. Every carry used in the
+estimates below comes from a pruned list and contains at most m injections and at most two
+initial entries.
+
+
+6    Direction changes and bounded formulas
+Lemma 6.1 (local flattening of the initial pair).
+  Suppose a run starts on a switched side of a node Q0 . In the run’s frame its initial pair is
+
+                                        G0 ∩ {λ ≥ h0 },       Da0 ,
+
+where G0 is an upset containing Q0 \ Da0 . Let U ⊆ Q0 be a node in this run. Suppose a same-side
+carry out of U still retains the first initial entry, now in the form G0 ∩ {λ ≥ k}. On U , the union
+of the carried descendants of the initial pair agrees with
+
+                                             Da0 ∪ {λ ≥ k}.                                     (6.1)
+
+Uses: Lemmas 5.1 and 5.4; the pruning and run definitions; switch pair (5.4).
+
+Proof. Step 1 (a surviving first identity leaves the second untrimmed or absent on the node). A
+carry retains a suffix and trims only its first entry. If it ever starts at the second initial entry
+or later, the first initial entry is permanently deleted. Therefore, as long as the first survives,
+the second has never been trimmed. The second either remains exactly Da0 or was deleted by
+pruning on an earlier node containing U , in which case it is disjoint from U . [Lemma 5.1; pruning;
+the nesting of nodes in a run]
+Step 2 (the two formulas agree on the whole node). The disjoint sets U ∩ Da0 and U \ Da0
+partition U . Within U ∩ Da0 , the second entry, when relevant, selects every job. Within U \ Da0 ,
+all jobs belong to G0 because U ⊆ Q0 ; there the first entry selects exactly the rank suffix. This
+proves equality on U . Both terms in (6.1) are upsets. No equality outside U is claimed or used.
+[the two parts U ∩ Da0 and U \ Da0 ; U ⊆ Q0 ]
+
+Lemma 6.2 (short extension of an earlier low set).
+   For an edge U → W with low cutoff H ⊆ U in its working frame, there exists a downset
+ ∗
+H ⊆ J in that frame such that
+                                       H ∗ ∩ U = H,                                (6.2)
+and H ∗ has a formula of at most 3m + 3 leaves.
+Uses: Lemmas 2.6, 5.3, 5.4, 5.5, and 6.1; the edge-cutoff construction.
+
+Proof. Step 1 (the switched-edge extension uses two leaves). An edge is either switched or same;
+these two cases exhaust the edge construction. Use aU , bU for the boundaries of U in this edge’s
+working frame.
+    If the edge is on a switched side, H is a rank prefix of U \ DaU . Let r be its largest rank, or 0
+for an empty prefix. Then
+                                     H ∗ = (J \ DaU ) ∩ {λ ≤ r}                                  (6.3)
+is a downset described with two leaves and has the required intersection. [the switched cutoff
+definition; cone and rank closure]
+Step 2 (express the same-edge low set by its carry). For a same-side edge, let Φ be the carry
+union before the injection. By Lemma 5.3, or directly by its same-side calculation,
+
+                                          H = (U ∩ PbU ) \ Φ.                                   (6.4)
+
+
+
+                                                    21
+The carry contains at most m injection descendants. Each has at most three leaves: D, the
+complement of P , and at most one rank suffix. [Lemma 5.3; Lemmas 5.4 and 5.5]
+Step 3 (replace the initial contribution by at most two leaves on the node). For the initial
+contribution, the cases are a root run, a switched run retaining its first initial entry, a switched
+run retaining only its second, or no retained initial entry. Its initial contribution can be replaced
+on U by an upset using at most two leaves, as follows. In a root run, the root entry with a suffix
+simplifies to a rank suffix (or a constant). In a switched run, if the first initial descendant survives,
+replace it and the second if present by (6.1). If the first does not survive, the only possible initial
+contribution is the second entry with at most one suffix, using two leaves. If no initial entry
+remains, omit that contribution. These cases exhaust the run’s initial entries. [Lemma 6.1; Lemma
+5.4; the run definitions]
+Step 4 (construct the downset extension and count all leaves). Thus there is an upset Φ′ agreeing
+with Φ on U , with at most
+                                           3m + 2                                            (6.5)
+leaves. If the carry is empty, the constant false is an allowed one-leaf substitute and also satisfies
+this bound. Set
+                                        H ∗ = PbU ∩ (J \ Φ′ ).                                  (6.6)
+The complement of an upset is a downset, so this is a downset. Equations (6.4) and the agreement
+on U prove (6.2). Its leaf count is at most 1 + (3m + 2) = 3m + 3. The displayed extension uses
+the replacement initial contribution from (6.1), with the stated leaf count independent of earlier
+depth. [Steps 2–3; Lemma 2.6; (6.4)]
+
+Lemma 6.3 (arrangement at a switch).
+    Suppose a switched side of W produces a nonempty child. Then W is not the root. Let U be
+its parent. In the current, switched frame write a− , b− for the boundaries of U , v− for its center,
+and a, b for the boundaries of W . Then a is a genuine slot and
+
+                                          a− < v− ≤ a < b ≤ b− .                                   (6.7)
+
+Uses: Lemma 4.5; the frame-reversal map.
+
+Proof. Step 1 (the node has a parent and the old edge lies before its center). The root has no
+switched-side child by Lemma 4.5. The edge U → W was taken in the tag frame of W , opposite
+to the current frame. In that old frame, W is a gap before U ’s center. Its old right boundary is a
+slot and is at or before that center; its old left boundary is at or after U ’s left boundary. [Lemma
+4.5; the child construction]
+Step 2 (reversal gives the displayed order of boundaries and center). Reversal sends its old right
+boundary to a, its old left boundary to b, the old right boundary of U to a− , and the old left
+boundary to b− . These inequalities give (6.7). [the decreasing bijection t 7→ T + 1 − t]
+
+   Let H be the old cutoff of edge U → W and let H ∗ be its extension from Lemma 6.2. It is a
+downset in that old frame, hence an upset in the current one. Define
+
+                                 G = Da− ∩ (J \ Pba ) ∩ (J \ Pbv− ) ∩ H ∗ .                        (6.8)
+
+Lemma 6.4 (the switch upset).
+    The set (6.8) is an upset in the current frame, contains all of X = W \ Da , and contains no
+job scheduled at or before a.
+Uses: Lemmas 2.5, 4.3, 4.4, 4.5, 6.2, and 6.3; definition (6.8).
+
+
+
+
+                                                      22
+Proof. Step 1 (the switch set is a global upset). Each factor of (6.8) is an upset: a successor cone,
+two complements of downsets, and H ∗ . [Lemma 6.2; cone closure; frame reversal]
+Step 2 (every job of X satisfies all four factors). Let x ∈ X. If x had been high at the edge
+U → W , (4.6) would put it in the old predecessor cone of that edge’s right boundary. That
+boundary is current a, and its old predecessor cone is current Da , contradicting x ∈ X. Thus
+x ∈ H. Every old edge cutoff lies in the old P -cone of U ’s old right boundary, by Lemma 4.3.
+This cone is current Da− , so x ∈ Da− . It is after a and hence after v− ; Lemma 2.5 excludes it
+from both weak predecessor cones in (6.8). Finally x ∈ U and (6.2) give x ∈ H ∗ . This verifies
+every factor, proving X ⊆ G. [Lemmas 4.3, 4.5, 2.5, and 6.2]
+Step 3 (a putative early qualifier is localized to the old node). Now suppose z ∈ G is at or before
+a. Its membership in Da− puts it strictly after a− . From (6.7) it is also before b− . Therefore
+z ∈ U , and only after this localization may we use (6.2), obtaining z ∈ H. The two possible time
+ranges are at or before v− , and strictly after v− through a. [Lemmas 6.3 and 6.2]
+Step 4 (the interval through the old center contains no such qualifier). If z is at or before v− in
+the current frame, it is at or after the center in the old frame. At the center it belongs to Pbv− .
+Otherwise it is a low job after the old center: H is contained in that side’s center cutoff, and the
+center separates that cutoff on U . Thus it lies in old Dv− , which is current Pv− . Either possibility
+contradicts its exclusion from Pbv− . [the old center-separator property; Step 3]
+Step 5 (the interval from the old center to the current boundary contains no such qualifier). If z
+is strictly after v− and at or before a, in the old frame it is on the side before the center, at or
+after the old edge’s right boundary a. At that boundary it belongs to its weak cone; after that
+boundary it is low for H and belongs to old Da by Lemma 4.4. Hence in either event it is in
+current Pba , another contradiction. [Lemma 4.4; the weak-cone definition; Step 3]
+Step 6 (the needed exterior separator facts persist in the current witness). These separator
+statements were established in the witness of U . Subsequent changes on this branch before
+constructing (6.8) occurred only inside W , strictly between a, b. Jobs at or before a, the boundary
+slots and center used here, and the fixed sets H, H ∗ have not changed. Thus the separator
+information used for z remains valid in the current witness. This proves all three assertions. [the
+nesting of replacements strictly inside W ]
+
+    This supplies exactly (5.3), for the whole parent’s X, not merely its intersection with a chosen
+child. It also proves that the switch pair has no qualifier at or before a: the first entry is contained
+in G, and the second in Da .
+Lemma 6.5 (individual and aggregate leaf bounds).
+  Every list entry is described by at most 3m + 7 leaves. More particularly:
+
+   • an injection descendant has at most three leaves;
+   • the root’s initial descendant has at most two leaves, and the second initial descendant of a
+     switched run at most two;
+   • only the first initial descendant of a switched run may need 3m + 7 leaves.
+
+    Every pruned-list union and every carry union has a description with at most
+
+                                               Am = 6m + 9                                         (6.9)
+
+leaves.
+Uses: Lemmas 2.6, 5.4, 5.5, and 6.2; definitions (5.2), (5.4), and (6.8).
+
+Proof. Step 1 (every entry has its stated leaf budget). The first two bounds follow from Lemma
+5.4 and their displayed definitions. Formula (6.8) has three cone factors in addition to H ∗ , so
+it has at most 3 + (3m + 3) = 3m + 6 leaves. A first switch entry adds one rank suffix, giving
+
+
+                                                     23
+3m + 7. Further suffix intersections combine with that same suffix; they do not add indefinitely.
+A new run discards the old list. [Lemmas 5.4 and 6.2; definitions (5.2), (5.4), and (6.8)]
+Step 2 (every list and carry union uses at most 6m + 9 leaves). For an aggregate union in a
+switched run, bound its at most m injections by 3m, its possible first initial entry by 3m + 7, and
+its possible second by 2. Their sum is 6m + 9. If some entries are absent, omitting them only
+reduces the bound. For a root run, the bound is smaller. An empty union is the constant false
+and costs one leaf. The same reasoning applies to a carry from a pruned list, because it cannot
+increase the number of entries and only combines a suffix into its first entry. [Lemma 5.5; Step 1;
+the one-leaf empty set]
+
+   This aggregate count is why the final leaf budget is linear in m. Multiplying the uniform
+per-entry bound by m + 2 would give a valid but unnecessarily quadratic estimate.
+
+
+7    Preserving the exterior boundary invariants
+The preparatory rescheduling of a node preserves its existing invariants. In (I1) its job set and all
+cone/list sets are fixed. In (I2) jobs at or before its left boundary and the boundary slot do not
+move. In (I3) the quantifier already includes every full replacement schedule of its interval. Thus
+choosing a center and normalizing the two sides does not invalidate the induction hypotheses.
+    Fix an edge W → W ′ with working-frame boundaries a, b, normalized side E, and data a′ = si ,
+b′ = si+1 , S = Si . The child’s tag is this working frame.
+Lemma 7.1 (child (I2)).
+  Every qualifier of the child’s pruned list scheduled at or before a′ belongs to Pba′ .
+Uses: Lemmas 2.5, 3.4, 3.6, 4.3, 4.4, 5.1, 5.3, and 6.4; invariants (I1), (I2), and (I3).
+
+Proof. Step 1 (reduce to the pre-pruning qualifiers and split their possible times). Pruning can
+only remove qualifiers, so take a qualifier z of the list before pruning at or before a′ . Its time is
+either after a or at or before a; these cases are exhaustive. [the pruning definition]
+Step 2 (a qualifier after the old boundary satisfies child (I2)). First suppose that z is after a. The
+interval between a and a′ lies in E, since a′ is before the center. Thus z ∈ E ⊆ W and it is high
+for Si by Lemma 5.3. If it occupies a′ , it belongs to Pba′ . Otherwise it is a high job before the
+separator a′ and therefore belongs to Pa′ . [Lemma 5.3; Lemma 4.4]
+Step 3 (an earlier qualifier is carried from the parent boundary). Now suppose that z is at
+or before a. No injection qualifier can be here, since the injection is contained in Da . Neither
+switch-pair entry can have a qualifier here, by Lemma 6.4 and the last paragraph following its
+proof. Therefore this is a same update, and z qualifies through its carry. Lemma 5.1 implies that
+it was an old qualifier. Parent (I2) gives a job y in slot a with z = y or z ≺ y. The carry union is
+an upset, so y also qualifies through the carry. In particular a is genuine. [Lemmas 2.5, 6.4, and 5.1;
+parent (I2)]
+Step 4 (the unchanged boundary is settled; later positions retain a high carry). If a′ = a, the old
+(I2) assertion is already the desired one. Suppose a′ > a. Follow every actual advance of the walk
+between a and si = a′ , including positions within a promotion that were not marked. Such an
+advance uses a cutoff Sj ⊆ Si . By Lemma 5.3, the carry at the final edge selects in W exactly
+O \ Si , so every carry qualifier in E is high for every cutoff encountered in this part of the walk.
+[Lemma 5.3; the nested side cutoffs]
+Step 5 (fix the first actual boundary advance). Let the first advance leave a for the slot t of an
+exception x, during promotion j ≤ i. We verify the required boundary exchange carefully. [the
+side-walk construction]
+Step 6 (the exception has every predecessor before the old boundary). Every predecessor of x in
+J is strictly before a. Every predecessor is before t by feasibility. A predecessor in slot a would
+
+                                                      24
+imply x ∈ Da . A predecessor strictly between a and t would be a job of E in Sj (because Sj is a
+priority prefix and x ∈ Sj ). Since t is the earliest exception slot, that predecessor would lie in Da ,
+again implying x ∈ Da . Both contradict that x is an exception. This checks the assertion globally,
+including exterior jobs. [priority-prefix closure; earliest-exception choice; transitivity]
+Step 7 (the exception has smaller old key than the boundary qualifier). The old key of x is smaller
+than that of y. Since x ∈  / Da , (I1) gives x ∈ O. It does not belong to S0 ⊆ Da , so its presence
+in Sj ⊆ Si means it was promoted from O. The carry is nonempty in this case; let (d, r) be its
+threshold, the least key in O \ Si . The promotion order gives key(x) < (d, r), while Lemma 5.1
+gives key(y) ≥ (d, r). [invariant (I1); Lemmas 4.3 and 5.1]
+Step 8 (parent (I3) forbids their exchange). The exchange of x with y is forbidden by parent (I3).
+The current schedule in W is a full replacement of its old witness, x ∈ W \ Da , and y is an old
+qualifier at a with the requisite key inequality. [parent (I3); Step 7]
+Step 9 (a successor of the boundary qualifier must occur by the target). Consequently y has a
+successor at or before t. If it did not, swapping x, y would be feasible: the global predecessors
+of x are before a by Step 6, and its successors are after t; the predecessors of y are before a by
+the old schedule, and its successors would be after t by the supposition. These facts also exclude
+comparabilities between a moved job and any companion in either destination slot. All other
+relations are unchanged. This would contradict Step 8. [Steps 6 and 8; the full-schedule precedence
+conditions]
+Step 10 (the carry has a successor at the first target). Such a successor y1 of y is after a and
+at or before t, hence in E, and qualifies through the upset carry. If it is at t, the first advance
+has propagated a carry qualifier from a to t. If it is strictly before t, apply Lemma 3.4(2) with
+M = L = Sj ∩ E, starting at boundary a; the order and cutoff restrictions are as in the paragraph
+after Lemma 3.6. Its hypotheses hold: condition (a) at the exterior boundary is empty, x is the
+earliest exception and is low, and y1 is high. The lemma gives a successor of y1 at t. The upset
+carry contains it. Thus in all cases y has a carry-qualifying successor at the first target. This
+target job cannot be x, which is low. [upset closure; Lemma 3.4(2) on the restricted domain]
+Step 11 (propagation through every later advance proves child (I2)). For a later advance from
+a genuine slot s to t′ , its cutoff is some Sj ⊆ Si . A carry qualifier at s is high for that cutoff.
+Lemma 3.4(2), with M = L = Sj ∩ E, gives a strict successor at t′ ; it still qualifies through the
+carry because the union is an upset. Following all actual advances gives a job in a′ strictly above
+y. Since z = y or z ≺ y, it follows that z ∈ Pa′ .
+    This proves (I2) in both cases. The sole use of the external exchange invariant was at the
+first advance; all later exchanges are internal to normalized E. [Lemma 3.4(2); upset closure;
+transitivity]
+
+Lemma 7.2 (child (I3)).
+    Replace the interval of W ′ by any full schedule of W ′ . Let x ∈ W ′ \ Da′ and let y be a qualifier
+of its pruned list in slot a′ , with child’s key of x smaller than that of y. Exchanging x, y cannot
+give a full schedule of J.
+Uses: Lemmas 2.4, 2.5, 3.3, 5.1, 5.2, 5.3, and 6.4; invariants (I1) and (I3).
+
+Proof. Step 1 (the child key comparison holds before pruning). Child (I1), already proved in
+Lemma 5.3, makes x a qualifier. Lemma 5.2 shows that the inequality between its key and that
+of y holds already before pruning. The construction gives a′ ≥ a; the two cases are a′ > a and
+a′ = a. [Lemmas 5.3 and 5.2]
+Step 2 (an interior left boundary uses normalized-side minimality). If a′ > a, the slot a′ belongs
+to E, so both x and y belong to W . By Lemma 5.3 they are high for Si , and their pre-pruning
+key order agrees with the side’s priority order. Thus x has better priority than y. The arbitrary
+replacement of W ′ changes only slots of E strictly after a′ and, by Lemma 2.4, gives a full schedule
+
+
+                                                     25
+of E. If the exchange were feasible in J, its restriction would be a full schedule of E violating
+Lemma 3.3 at r = a′ . This is impossible. [Lemmas 5.3, 2.4, and 3.3]
+Step 3 (an inherited left boundary uses the parent exchange invariant). If a′ = a, a switched
+update has no qualifier at a, so that case has no y. In a same update, x ∈  / Da by hypothesis and
+y∈ / Da by Lemma 2.5. Neither can qualify through the injection. They both qualify through the
+carry, and Lemma 5.1 transfers the strict key inequality to the old list. Also x ∈ W \ Da , while y
+is an old qualifier in a. The preparatory changes in W followed by the chosen schedule of W ′ form
+a full schedule of W in its interval. Parent (I3) therefore forbids exactly this exchange. [Lemmas
+6.4, 2.5, and 5.1; parent (I3)]
+
+Proposition 7.3 (valid construction, with no circular induction).
+    Starting from any full schedule of J, every node and update described in Sections 4–7 is
+well-defined. Each pruned list has at most m + 2 entries with the bounds of Lemma 6.5, each node
+satisfies (I1)–(I3), and every branch terminates.
+Uses: Lemma 2.4; Corollary 3.7; Lemmas 4.3–4.5, 5.3, 5.5, 6.1–6.5, 7.1, and 7.2; the root invariants.
+
+Proof. Step 1 (construct the center, walks, and edge data by depth induction). Induct from the
+root on node depth. Its data and invariants were verified in Section 4. Assume the data of a node
+and all its ancestors have been constructed and validated. Corollary 3.7 and Lemma 2.4 supply
+its center and normalized sides. Lemmas 4.3–4.5 give the walks, marks and child edge data. [the
+root invariants; Corollary 3.7; Lemmas 2.4 and 4.3–4.5]
+Step 2 (all list data used to form a child already exist). A same update uses only this node’s
+existing list. A switched update uses the earlier edge from its parent: its cutoff and, for a same
+edge, its already formed carry. Lemma 6.1 uses that earlier run’s initial entries, which likewise
+already exist. Lemma 6.2 gives the earlier low-set extension, and Lemmas 6.3–6.4 give the current
+G. None asks for a descendant’s invariant or formula. [Lemmas 6.1–6.4; the ancestor induction
+hypothesis]
+Step 3 (the child satisfies all list and boundary assertions). The new list is an upset list; Lemma
+5.3 proves its qualifier identity and (I1). Lemma 5.5 proves its length using only that identity,
+global upsets, and existing edge labels. The leaf estimate of Lemma 6.5 uses the length bound
+and flattening, not an unproved boundary invariant. Finally Lemmas 7.1–7.2 establish (I2) and
+(I3) from the parent’s corresponding hypotheses. This closes the induction. [Lemmas 5.3, 5.5, 6.5,
+7.1, and 7.2; parent invariants]
+Step 4 (the hierarchy construction terminates). Every child omits the center of its parent and
+has a full schedule; its number of slots is strictly smaller. Thus no branch can have more than
+N/m nonempty nodes. Each node has finitely many children, so the resulting tree is finite. [strict
+decrease of the integer slot count; finite branching]
+
+
+8    Global descriptions and the structure theorem
+Fix a node W and a side, with working-frame boundaries a, b, center v, open part E and cutoffs
+Si .
+     For a same side, let Φi be the carry union determined by O \ Si , before adding an injection,
+and put
+                                           Sei = Pb \ Φi .                                   (8.1)
+For a switched side, let ri be the last promoted rank in X, or 0 before any promotion, and put
+
+                                        Sei = (J \ Da ) ∩ {λ ≤ ri }.                                    (8.2)
+
+These predicates are defined for all cutoffs, including those associated with empty gaps.
+Lemma 8.1 (cutoff predicates).
+
+                                                        26
+      For every side and every i,
+                                               Sei ∩ W = Si .                                        (8.3)
+The predicate has at most Am + 1 leaves, where Am = 6m + 9.
+Uses: Lemmas 2.6, 4.3, 5.1, and 6.5; definitions (8.1) and (8.2).
+
+Proof. Step 1 (the same-side predicate agrees with its cutoff and meets the budget). The two
+working sides, same and switched, exhaust the construction. On a same side, the carry selects
+O \ Si in W by Lemma 5.1. Since W ∩ Pb = S0 ∪O     ˙ and Si consists of S0 and the promoted part
+of O, subtracting that carry gives exactly Si . Its union has at most Am leaves by Lemma 6.5, so
+adding the Pb factor gives Am + 1. [Lemmas 4.3, 5.1, 6.5, and 2.6]
+Step 2 (the switched-side predicate agrees with its cutoff and uses two leaves). On a switched
+side (8.2) is exactly the promoted rank prefix of X within W , and uses two leaves. This is below
+Am + 1. [the rank-prefix definition; (8.2)]
+
+   The equalities (8.3) specify these predicates on W ; subsequent uses first restrict membership
+to W .
+Lemma 8.2 (global description of a child).
+    For a child W ′ with edge data a′ , b′ , S = Si and pruned list K′ , one has the following equalities
+of subsets of all J:
+                                 W ′ \ S = Q(K′ ) ∩ Pb′ ∩ (J \ Pba′ ),                             (8.4)
+and
+                             W ′ ∩ S = Da′ ∩ Pb ∩ (J \ D
+                                                       b ′ ) ∩ (J \ D
+                                                         b
+                                                                    b v ) ∩ Sei .                    (8.5)
+Uses: Lemmas 2.5, 4.3, 4.4, 4.5, 5.3, 7.1, and 8.1; the center-separator property.
+
+Proof. Step 1 (the high-part identity holds globally). For (8.4), a high job of W ′ qualifies by
+Lemma 5.3, belongs to Pb′ by (4.6), and is after a′ , excluding membership in Pba′ . Conversely, let
+a job satisfy the right-hand side. Its Pb′ membership puts it before b′ . If it were at or before a′ ,
+child (I2) would put it in Pba′ , contrary to the last factor. Hence it is strictly between a′ , b′ , so in
+W ′ . The qualifier identity then makes it high. [Lemmas 5.3, 4.5, 2.5, and 7.1]
+Step 2 (every selected low-part job lies in the child). For (8.5), first let z satisfy the right-hand
+side. Membership in Da′ puts it after a′ ≥ a, and membership in Pb puts it before b. Thus z ∈ W .
+Now, and only now, (8.3) shows z ∈ Si . Since Si ⊆ S∗ , a job in the center would belong to D   b v and
+a job after the center would belong to Dv by the center’s separator condition. Both are excluded.
+Therefore z belongs to the side E. If it were in b′ or after it on that side, it would belong to D   b ′
+                                                                                                       b
+by its being low and by Lemma 4.4. For b′ = v, the preceding center exclusion already handles
+this case. Thus z lies strictly between a′ , b′ , and belongs to W ′ ∩ S. [Lemmas 8.1, 4.3, and 4.4; the
+center-separator property]
+Step 3 (every low child job satisfies the low-part formula). Conversely, a low job of W ′ is in
+Da′ ∩ Pb by (4.6), is in Sei by (8.3), and occurs before b′ and v. Lemma 2.5 excludes it from both
+indicated weak successor cones. It satisfies every factor of the right-hand side. [Lemmas 4.5, 8.1,
+and 2.5]
+
+   The proof of (8.5) first derives membership in the parent from its cone factors, which permits
+the use of (8.3). Its formula therefore uses exactly the five displayed factors.
+Lemma 8.3 (relative descriptions at every mark).
+  For each mark z of W , its original-time prefix inside W has a relative description.
+Uses: Lemmas 2.6, 3.1, 4.4, and 8.1; the center-cutoff definition.
+
+
+
+
+                                                     27
+Proof. Step 1 (the center formula selects its open side). In the working frame of a side containing
+z, or either side for the center, put
+
+                                                    same side,
+                                          (
+                                           Pb ,
+                                   H∗ =
+                                           J \ Da , switched side.
+
+Then H∗ ∩ W = S∗ . By Lemma 3.1 the formula
+
+                                              Fv = Bv (H∗ )                                      (8.6)
+
+selects inside W exactly the open side E before the center. [the center-cutoff definition; Lemma 3.1]
+Step 2 (the side-mark formula selects its working-frame prefix). For a side mark z = si with i ≥ 1,
+Lemma 4.4 says z separates Si on E. Set
+
+                                        Fz = Bv (H∗ ) ∩ Bz (Sei ).                               (8.7)
+
+Within W the first factor selects E. Within E, (8.3) and Lemma 3.1 show that the second selects
+its jobs before z. These are all the jobs of W before z in the working frame. [Lemmas 4.4, 8.1, and
+3.1; Step 1]
+Step 3 (the stated formula gives the original-time prefix in either frame). The working frame is
+either the forward frame or the reverse frame. If that is the forward frame, use Fz . If it is the
+reverse frame, the original-time prefix is described relatively by
+
+                                              (J \ Fz ) \ z.                                     (8.8)
+
+Indeed the jobs of W partition into its working-frame prefix, the slot z, and its working-frame suffix;
+the latter is the original-time prefix. Lemma 2.6 permits complementation without increasing the
+leaf count, and membership in z is one atom. The same conversion works for the center formula
+(8.6). [the prefix/slot/suffix partition; Lemma 2.6; time reversal]
+
+Lemma 8.4 (uniform leaf counts).
+    Every child has a global description with at most 12m + 25 leaves. Every marked prefix has a
+relative description with at most 6m + 16 leaves.
+Uses: Lemmas 2.6, 6.5, 8.1, 8.2, and 8.3; the atomic formula alphabet.
+
+Proof. Step 1 (the global child description uses at most 12m + 25 leaves). Use Am = 6m + 9.
+The qualifier union in (8.4) has at most Am leaves, so that equation’s right-hand side has at most
+Am + 2. The right-hand side of (8.5) adds four one-leaf cone tests to a cutoff predicate of at most
+Am + 1 leaves, giving at most Am + 5. Their union describes W ′ globally and costs at most
+
+                           (Am + 2) + (Am + 5) = 2Am + 7 = 12m + 25.                             (8.9)
+
+[Lemmas 6.5, 8.1, and 8.2; Lemma 2.6]
+Step 2 (the relative prefix uses at most 6m + 16 leaves in the permitted alphabet). The center
+formula Bv (H∗ ) uses three leaves. The second factor in (8.7) uses at most 1+(Am +1)+1 = Am +3.
+Thus (8.7) uses at most Am + 6, and reversal (8.8) adds one leaf. This gives
+
+                                          Am + 7 = 6m + 16.                                     (8.10)
+
+Every cone used is attached to a genuine m-element slot or is a constant for a virtual boundary.
+Every threshold is in one of the two permitted frames. These are formulas in exactly the alphabet
+of Section 2, rather than a more expressive language. [Lemmas 8.1 and 8.3; Lemma 2.6; the Section 2
+atom definitions]
+
+
+                                                   28
+Theorem 8.5 (the m-machine structure theorem).
+  Every full schedule of J on m machines admits a hierarchy in the sense of Definition 2.9 with
+
+                                            Km = 12m + 25.                                         (8.11)
+
+Its root has the one-leaf description J, every other node has a global description of at most Km
+leaves, and every marked original-time prefix has a relative description of at most 6m + 16 ≤ Km
+leaves. These bounds are independent of the depth.
+Uses: Definition 2.9; Proposition 7.3; Lemmas 8.2, 8.3, and 8.4.
+
+Proof. Step 1 (the construction gives the required node and gap structure). Apply the construction
+validated in Proposition 7.3. It marks at least the center of every nonempty node, and its children
+are exactly the nonempty gaps. [Proposition 7.3; Definition 2.9]
+Step 2 (the descriptions and finiteness verify every hierarchy clause). Lemma 8.2 supplies their
+global descriptions without intersecting with any parent’s description. Lemma 8.3 supplies all
+marked relative prefixes. Lemma 8.4 gives the bounds and Proposition 7.3 gives finiteness. These
+verify every item of Definition 2.9. [Lemmas 8.2–8.4; Proposition 7.3; Definition 2.9]
+
+
+9    Correctness and running time
+Theorem 9.1 (correctness of the actual finite algorithm). Run the dynamic program of Section 2
+with m-element slots and K = Km . It accepts the padded set J exactly when J has a full schedule,
+and returns a full schedule whenever it accepts. Consequently it decides the original deadline and
+constructs an optimum by testing deadlines.
+Uses: Lemmas 2.1, 2.2, 2.3 and 2.10; Proposition 2.8; Theorem 8.5.
+
+Proof. Step 1 (the finite search decides the padded instance [Proposition 2.8; Lemmas 2.3 and
+2.10; Theorem 8.5]). Proposition 2.8 turns every accepting state path into a full schedule. Theorem
+8.5 supplies a hierarchy for every full-schedulable J, and Lemma 2.10 maps its marks and child
+gaps to an accepting state path of the same finite search. Lemma 2.3 proves both directions of
+padding and its removal.
+Step 2 (elementary deadlines are decided without large padding [Lemmas 2.1 and 2.3]). For a
+nonempty instance reject T < 1. For T ≥ n, the topological order of Lemma 2.1 schedules one
+job per slot and avoids padding to a possibly large mT . In the remaining branch reject n > mT ;
+otherwise run the padded algorithm.
+Step 3 (the deadline trials return an optimum [Steps 1–2; Lemma 2.2]). Test T = 1, . . . , n in
+increasing order to optimize. Deadline n is feasible, and the first accepted deadline is the minimum.
+Lemma 2.2 also covers the original convention allowing real start times. Assign the at most m
+original jobs in a slot to distinct machines in increasing identifier order.
+
+   The normalized schedules in the structural proof certify completeness; they need not be
+computed by the finite algorithm.
+
+Encoding and the start of the padded bound. An explicit input uses canonical self-
+delimiting binary integers for m, n, a signed integer T , an explicit list of vertices 1, . . . , n, and a
+list of distinct arcs with endpoints in that list. Its bit length L includes delimiters and length
+fields, so n ≤ L. The graph is a DAG; malformed inputs can also be rejected by the preprocessing
+below. Arbitrary finite binary vertex names can first be renamed by repeated input scans. Input
+reading and that renaming are charged in L. The bound in N begins with the parsed, canonically
+numbered padded DAG on J = [N ], where N = mT ≥ m.
+
+
+
+                                                    29
+Proposition 9.2 (explicit multitape time bound). For m ≥ 3 and K ≥ 1, the padded dynamic
+program, including its witness on every accepted instance, runs on one deterministic multitape
+Turing machine in
+                                     A(m, K)N 5mK+4m+1                                    (9.1)
+steps, where one effective coefficient bound is
+
+                             A(m, K) = 240 (m + 1)4 (K + 1)4 (K512K )5 .
+
+The machine has a fixed finite number of tapes, independent of m and K.
+Uses: Lemmas 2.1 and 2.7; Proposition 2.8; the state and transition definitions in Section 2.
+
+Proof. Step 1 (at most B formulas and S states suffice [Lemma 2.7; state definitions]). Put
+
+  C = K512K ,      B = CN mK ,      S = BN m ,     h = ⌈log2 (N + 1)⌉,    q = 64(m + 1)(K + 1). (9.2)
+
+These are bounds; loops visit only actual records. Lemma2.7 bounds the formula count by B.
+Explicitly, the leaf alphabet has at most 4 + 8(N + 2) + 20 N
+                                                            m ≤ 64N
+                                                                      m symbols. For ℓ leaves there
+
+are at most 4 tree shapes and 2
+               ℓ                    ℓ−1 internal Boolean labellings. Summing their product with
+(64N m )ℓ over 1 ≤ ℓ ≤ K gives B. For fixed W , a described set F and an m-subset     Z determine
+                                                                                N
+L = W ∩ F and R = W \ (L ∪ Z). Reject invalid candidates. Thus at most B m ≤ S candidate
+states remain, including duplicates.
+Step 2 (all records have explicit scan bounds [encoding; elementary tape operations]). Use a
+fixed collection of tapes (32 suffice) for the input, matrices, rank map, formula stack, files, copied
+records, counters and output. All variable-length stacks are delimited records on these tapes. Store
+the reachability matrix in row-major order. A unary distance scratch word permits a complete
+seek to a matrix location in O(N 2 ) steps, with the scratch and matrix heads advancing together;
+no binary counter is incremented for each matrix bit.
+    Store formula and described-set records in files with record length at most qN . A set record
+contains its N bits, cardinality, ordinal and acceptance bit. A current-state record contains its
+three N -bit parts, ordinal, reached/initial/final flags and predecessor ordinal, also in at most qN
+bits. Indeed,
+                      ⌈log2 (S + 1)⌉ ≤ 2 + 10K + (mK + m)h ≤ qh/8 ≤ qN/8.
+Formula codes use O(K(m + 1)h) bits, within the same record envelope. Fetch or update an
+indexed state by scanning its file and comparing ordinal fields. This costs O(qSN ) including
+rewinds and all index bits. Acceptance queries compare their N -bit query against the set file.
+Keep saved schedules in a separate file, with at most N identifiers per schedule and at most qN 2
+bits per record. A combined acceptance/witness lookup costs O(qBN 2 ).
+    For explicit slack let D = 220 q 2 . In the scan implementation just described, each row below
+costs at most D times its displayed expression. Scan, copy, compare and rewind use a bounded
+number of tape moves per symbol; the records include their counters. At most 64 primitive passes
+per operation, including the postorder stack scans, fit this coefficient. No record access has unit
+cost.
+
+Subroutine, over the whole padded call                  Step bound divided by D
+Adjacency, reachability and rank                        N5
+Generate and evaluate formulas                          BN 3
+Pairwise deduplication                                  B3N
+Cardinalities and their ordering                        B3N 2
+Enumerate and initialize states                         BS(BN 2 + N 4 )
+State-graph propagation                                 3BS 4 N
+Reconstruct all saved witnesses                         BSN 2 + B 2 N 3
+Write the selected witness                              N3
+
+
+                                                   30
+Step 3 (graph preprocessing costs at most DN 5 [Lemma 2.1; Step 2]). At most N 2 arc insertions
+cost O(N 4 ) by full matrix seeks. Floyd–Warshall uses N 3 triples, each with a bounded number
+of O(N 2 ) seeks, hence O(N 5 ) steps. Its invariant is reachability through the already processed
+internal vertices. Repeated scans select the least active vertex without an active predecessor,
+append it to the rank order and remove it; all removals fit O(N 5 ) as well. Lemma 2.1 justifies
+that rank order.
+Step 4 (formula generation and evaluation cost at most DBN 3 [Lemma 2.7; Steps 1–2]). Generate
+valid Dyck words of length 2(ℓ − 1) by depth-first extension through valid prefixes; they encode
+the ordered full binary trees with ℓ leaves. There are O(K) prefix edges per output and O(K)
+steps per update, giving O(K 2 ) delay. Enumerate their Boolean labellings and leaf parameters by
+finite counters. A cone leaf needs at most mN reachability queries, each with an O(N 2 ) seek. At
+most K leaves therefore cost O(mKN 3 ) per formula. Threshold, slot and complement leaves cost
+less. Postorder evaluation combines N -bit vectors; even scanning the entire O(KN )-bit stack at
+each node costs O(K 2 N ). These parameter factors fit D, giving DBN 3 .
+Step 5 (deduplication and ordering fit their table bounds [Step 2]). For each of at most B 2
+record pairs, full file seeks fetch and compare the vectors and mark the later duplicate. Each
+pair costs O(qBN ), giving DB 3 N ; compact the retained records afterwards. Count each vector’s
+one-bits and store its cardinality. Repeated selection scans, even with full record retrieval for
+every compared pair, cost at most DB 3 N 2 . Break equal-cardinality ties by ordinal.
+Step 6 (state enumeration costs at most DBS(BN 2 + N 4 ) [state definitions; Steps 1–2]). For
+each of B sets and at most S candidates, fetch W, F , construct L, Z, R, and test containment,
+disjointness, the antichain condition and compatibility. Considering each ordered job pair and
+seeking to its relation separately costs O(N 4 ). The set fetches and initial/final acceptance queries
+cost at most DBN 2 . This gives the fifth row.
+Step 7 (propagation costs at most 3DBS 4 N [transition definition; Steps 1–2 and 6]). Initially
+mark the initial states reached. Make at most S complete passes over at most S 2 ordered state
+pairs. On the first successful transition to an unreached state, record its reached flag and its
+predecessor; leave predecessors unchanged subsequently. Fetching or updating state records costs
+at most DSN . An acceptance query costs at most DBN 2 , and even rechecking compatibility
+costs at most DN 4 . For m ≥ 3,
+
+                              BN 2 ≤ SN = BN m+1 ,          N 4 ≤ SN.
+
+A pair test therefore costs at most 3DSN . Every reachable vertex has a simple path of fewer than
+S edges. Induction on path length proves that S full passes find every reachable vertex. Over all
+W the cost is
+                          B · S · S 2 · 3DSN = 3DBS 4 N = 3DB 5 N 4m+1 .                     (9.3)
+
+Step 8 (stored witnesses fit the last two rows [Proposition 2.8; Steps 2 and 7]). Every transition
+increases |L| by at least m, so a predecessor path contains at most N/m states. Backtrack, reverse
+the path records, and retrieve the already stored schedules for its first left part, transition gaps
+and final right part. State retrieval costs at most DSN 2 per W ; the at most N/m + 1 schedule
+lookups cost at most DBN 3 . Proposition 2.8 proves that these pieces and marked slots partition
+W , so the concatenated schedule contains exactly |W | identifiers. Store it once, retaining the
+just-constructed schedule on a work tape, with no recursive recomputation of smaller witnesses.
+Over B sets this gives the seventh row. The full set J is the unique set of cardinality N , so its
+final witness is available on that tape. Translation through the rank map and output fit the final
+DN 3 row.
+Step 9 (the sum has exponent 5mK + 4m + 1 [Steps 1–8]). The state-enumeration row expands
+to B 3 N m+2 + B 2 N m+4 , and the witness row to B 2 N m+2 + B 2 N 3 . Each has B-exponent at
+most five and N -exponent at most 4m + 1, since m ≥ 3. The other rows satisfy the same
+inequalities; in particular 5 ≤ 4m + 1. Thus their sum is at most 16DB 5 N 4m+1 . Substituting B
+
+                                                 31
+gives 16DC 5 N 5mK+4m+1 , and 16DC 5 ≤ A(m, K) by the definitions of q, D, A. This proves the
+complete bound.
+
+Corollary 9.3 (the bounds of Theorem 1.1). For Km = 12m + 25, the padded exponent is
+em = 60m2 + 129m + 1. Deadline decision, its witness, and optimization on the explicit encoding
+above take
+                                                 2
+                                Om (L + 2)60m +129m+2
+                                                          
+
+steps. One bound for the implicit coefficient is
+                                                        2
+                      G(m) = A(m, 12m + 25)m60m +129m+1 + 231 (m + 1)4 .
+
+Uses: Lemma 2.3; Lemma 8.4 and Theorem 8.5; Theorem 9.1; Proposition 9.2.
+
+Proof. Step 1 (the padded exponent is em = 60m2 + 129m + 1 [Lemma 8.4; Theorem 8.5;
+Proposition 9.2]). Substitution gives
+
+            5m(12m + 25) + 4m + 1 = 60m2 + 125m + 4m + 1 = 60m2 + 129m + 1.
+
+Step 2 (parsing and elementary deadlines cost Pm (L + 2)4 [encoding; Lemma 2.1]). Parse the
+input once. Repeated scans, endpoint comparisons, duplicate checks, binary comparisons and
+canonical renaming fit Pm (L + 2)4 steps with Pm = 230 (m + 1)4 . For T ≥ n, produce a topological
+order directly from the original arc list: at most n removal stages and n candidate vertices per
+stage, with at most O(L2 ) steps to scan the arcs and active-vertex vector for a candidate. This is
+O(n2 L2 ) ⊆ O(L4 ). The branch T < 1 costs less. Both include their output cost.
+Step 3 (all deadline trials add one power of L [Lemma 2.3; Theorem 9.1; Proposition 9.2]). In
+every padded branch, N = mT ≤ mn ≤ mL by Lemma 2.3. Theorem 9.1 tests at most n ≤ L
+deadlines. Proposition 9.2 bounds their total padded work by
+
+                        A(m, Km )n(mn)em ≤ A(m, Km )mem (L + 2)em +1 .
+
+Step 4 (output and preprocessing fit the same bound [Steps 1–3; encoding]). Writing the selected
+original schedule uses at most O(n(log(n+1)+log(m+1))) bits and fits the preprocessing envelope.
+Since em + 1 ≥ 929 > 4, adding these costs gives G(m) and the stated exponent. The extra power
+beyond em counts the deadline trials. The padded bound begins after parsing, so a long original
+input is never silently charged to N .
+
+           m    union leaves   global leaves   relative leaves   N exponent   L + 2 exponent
+            3            27              61                 34          928             929
+            4            33              73                 40         1477            1478
+            5            39              85                 46         2146            2147
+            6            45              97                 52         2935            2936
+
+Proposition 9.4 (the compact-isolated-jobs remark). For fixed m, deadline decision is polynomial
+when the input specifies n in binary and lists only the arcs, allowing many isolated jobs. An
+explicit schedule can require a number of output symbols exponential in that compact input length.
+Uses: Lemmas 2.1 and 2.3; Theorem 9.1; Proposition 9.2.
+
+Proof. Step 1 (the capacity test and endpoint count are valid [schedule and arc-list definitions]).
+For a nonempty instance reject T < 1 or n > mT . Let d be the number of distinct arc endpoints,
+found and renamed by input scans; then d ≤ 2|E|.
+Step 2 (deadlines T ≥ d are feasible after the capacity test [Lemma 2.1; Step 1]). For T ≥ d,
+Lemma 2.1 schedules the d incident vertices one per slot. There are mT − d ≥ n − d vacant
+
+                                                   32
+positions, so all isolated jobs can be placed injectively in them. This proves feasibility without
+explicitly listing those jobs.
+Step 3 (deadlines T < d permit polynomial expansion [Step 1; Lemma 2.3; Theorem 9.1;
+Proposition 9.2]). For T < d, the capacity check and the endpoint bound give
+                                  n ≤ N = mT < md ≤ 2m|E|.
+The entire vertex set and its padding can therefore be expanded in polynomial time in the compact
+input length for fixed m. Lemmas 2.3 and Theorem 9.1 identify the answer of the expanded decision
+computation with the original deadline answer, and Proposition 9.2 bounds that computation.
+All endpoint-label comparisons are charged to the compact input length.
+Step 4 (an explicit output can be exponentially long [compact and explicit encodings]). For fixed
+m take n = 2k isolated jobs, E = ∅, and T = n. The compact encoding has O(k) bits, while every
+literal schedule lists all 2k jobs and therefore has at least 2k output symbols. The assertion here
+concerns decision. The empty instance is handled directly under the convention that its makespan
+is zero.
+
+
+Limits and open points
+1. Cost questions resolved. Proposition 9.2 itemizes every padded subroutine and bounds its
+   coefficient. Corollary 9.3 derives the exponent 60m2 + 129m + 2 in the explicit input length.
+   The padded exponent 60m2 + 129m + 1 starts after parsing; the L bound includes the original
+   input and output. These are upper bounds for the specified implementation; no optimality of
+   the exponents is claimed.
+2. Proof check resolved. The current F/D check found no mathematical gap in Sections 2–9.
+   The choice in Lemma 5.5 is explicitly from K ∩ W ′ , and the Uses lines and source-counterpart
+   table have been corrected. The finite checks below are recorded separately from the general
+   arguments.
+3. Unverified source text. For [FKN], publisher metadata and the abstract were opened, and
+   the 1971 erratum [FKN-e] was read in full. Access to the original 1969 article’s full text was
+   unavailable through the attempted publisher routes. Its internal proof was not checked. The
+   full Coffman–Graham source [CG, Theorem 1] was opened for the two-machine background
+   statement.
+4. Unverified course archive. All eleven chapters of [L] were opened; the first eight match the
+   attachments byte for byte. The advertised provenance.json endpoint returned HTTP 404.
+   The dates on lessons 9–11 are source bylines; their first public appearance is not established by
+   that endpoint. They were publicly accessible at this audit date.
+5. Archival qualification. The supplied prompt in anc/ai-provenance/Q03_PROMPT.txt is
+   preserved verbatim: 9,551 bytes. The historical artifact manifest lists a 9,383-byte inputs/
+   PROMPT.txt with a different SHA-256; that file was not supplied. The tested newline and
+   BOM transformations do not reproduce its recorded hash. The precise hashes and attempted
+   maps are in the report. Historical run dates, API mode and independent-run descriptions are
+   retained as supplied-record metadata; raw API logs were not provided.
+6. Scope of source checks. The source statements and code scope of [F, D] were inspected;
+   their Lean builds and repository axiom reports were not independently replayed. The theorem
+   statements of [J, G] were compared for scope, without a full independent proof check. None is
+   a premise of the proof here.
+7. Not claimed. No bound polynomial in m, practical implementation, result for release dates,
+   individual deadlines, unequal machine speeds or unequal job lengths, or formalization of this
+   proof. Human understanding remains recorded as none.
+
+                                                33
+Verification record
+Types: F, proof followed step by step; D, steps re-derived; C, finite computation or artifact check;
+S, source opened and compared. All current checks below are by GPT-6 Astra (OpenAI), effort
+ChatGPT Pro mode, on 15 November 2026. The current check had the post, return, source
+archive and earlier reports available; it derived the proofs from the definitions, without using an
+earlier verdict as a premise. Parallel subreviews used the same model and mode. The supplied
+historical records describe three separate runs, each given the same answer and none given another
+run’s report.
+
+Check   By and date           Type   Scope and evidence            Verdict, findings and report
+H1      Claude Opus 5.5,      F,D    Supplied return, including    Proved with fixable gaps. Input exponent
+        effort max, Message          Sections 2–9                  and source claims flagged. The present cost
+        Batches API; 23                                            proof and source record address them.
+        Oct 2026 (supplied                                         Report:
+        metadata)                                                  anc/ai-provenance/Q03-check.md.
+H2      Claude Opus 5.5,      D      Supplied return               Proved as stated. Notes requested itemized
+        effort max, Message                                        multitape accounting and source matching.
+        Batches API; 23                                            Report:
+        Oct 2026 (supplied                                         anc/ai-provenance/Q03-b-check-b.md.
+        metadata)
+H3      Claude Opus 5.5,      F      Supplied return               Proved as stated. Structural steps checked;
+        effort max, Message                                        source attributions not opened. Report:
+        Batches API; 23                                            anc/ai-provenance/Q03-c-check-c.md.
+        Oct 2026 (supplied
+        metadata)
+FD1     GPT-6 Astra,          F,D    Current text, all 44          Proved as stated. Input exponent
+        ChatGPT Pro                  numbered statements in        60m2 + 129m + 2 derived; source and Uses
+        mode; 15 Nov 2026            Sections 2–9, both main       corrections incorporated. No mathematical
+                                     theorems, every proof step,   gap found. Full arguments:
+                                     rewritten 3.3/5.5             Q03_DEPOSIT_report.md, Parts A and B.
+C1      GPT-6 Astra,          C      Re-execution of the           All assertions passed: 65,610 cases,
+        ChatGPT Pro                  original                      2,503,064 shared-cutoff premises and
+        mode; 15 Nov 2026            code/check_walk.py            133,963 exchange candidates; zero violations.
+                                                                   Output: code/check_walk_output.json.
+C2      GPT-6 Astra,          C      Independent complete          All assertions passed: 754 nodes, 132
+        ChatGPT Pro                  hierarchy construction on     switched children, 499 global formulas and
+        mode; 15 Nov 2026            255 feasible DAGs for         capacity checks, 7,069 cutoff identities, 978
+                                     m = 3, 4, 5                   relative formulas; zero violations. Output:
+                                                                   code/B_hierarchy_check_output.json.
+S-P     GPT-6 Astra,          S      Preprint [P], thirteen        Proved as stated for the source attributions.
+        ChatGPT Pro                  pinned files, all             Files are byte-identical; exact locators are in
+        mode; 15 Nov 2026            counterparts and constants    the source report. Report:
+                                                                   Q03_DEPOSIT_sources.md, S-P.
+S-F     GPT-6 Astra,          S      Scope file [F] and            Proved as stated for the declared scope.
+        ChatGPT Pro                  three-machine target          Comparator target is an admitted challenge
+        mode; 15 Nov 2026            declaration                   statement; no completed-proof or
+                                                                   Lean-build verification is inferred. Report:
+                                                                   Q03_DEPOSIT_sources.md, S-F.
+S-D     GPT-6 Astra,          S      drbh [D], exact commit,       Proved as stated for source scope: complete
+        ChatGPT Pro                  capacity, theorem and         four-machine release-theorem code. No
+        mode; 15 Nov 2026            source diff                   Lean rebuild; no arbitrary-machine theorem
+                                                                   in this commit. Report:
+                                                                   Q03_DEPOSIT_sources.md, S-D.
+S-N     GPT-6 Astra,          S      [N], Theorem 1.1 and          Proved as stated for the attributed upper
+        ChatGPT Pro                  SODA bibliography             bound and bibliographic details. Report:
+        mode; 15 Nov 2026                                          Q03_DEPOSIT_sources.md, S-N.
+
+
+
+
+                                                       34
+Check   By and date         Type   Scope and evidence          Verdict, findings and report
+S-A     GPT-6 Astra,        S      [A], Theorem 1 and ESA      Proved as stated for approximation
+        ChatGPT Pro                bibliography                guarantee and parameter-dependent time
+        mode; 15 Nov 2026                                      bound. The integer-makespan connection is
+                                                               displayed in Section 1.3. Report:
+                                                               Q03_DEPOSIT_sources.md, S-A.
+S-      GPT-6 Astra,        S      [FKN], publisher            Incomplete for the original 1969 full proof;
+FKN     ChatGPT Pro                metadata/abstract;          the stated metadata, abstract scope and
+/ S-    mode; 15 Nov 2026          [FKN-e], full erratum       1971 erratum were compared. Report:
+FKN-                                                           Q03_DEPOSIT_sources.md, S-FKN.
+e
+S-CG    GPT-6 Astra,        S      [CG], original scan,        Proved as stated for two-machine theorem
+        ChatGPT Pro                Theorem 1, p.203 and        scope and bibliographic details. Report:
+        mode; 15 Nov 2026          p.202                       Q03_DEPOSIT_sources.md, S-CG.
+S-U     GPT-6 Astra,        S      [U], original article,      Proved as stated for the variable-machine
+        ChatGPT Pro                Theorem 1, p.389;           unit-job attribution and bibliography.
+        mode; 15 Nov 2026          discussion p.392            Report: Q03_DEPOSIT_sources.md, S-U.
+S-GJ    GPT-6 Astra,        S      [GJ], actual OPEN8 p.287    Proved as stated for the historical entries
+        ChatGPT Pro                and SS9 p.239               and bibliographic details; relevant scan
+        mode; 15 Nov 2026                                      pages visually inspected. Report:
+                                                               Q03_DEPOSIT_sources.md, S-GJ.
+S-L     GPT-6 Astra,        S      [L], metadata and eleven    Proved as stated for bylines, content and
+        ChatGPT Pro                chapter sources             first-eight byte equality; advertised archive
+        mode; 15 Nov 2026                                      endpoint unavailable. Report:
+                                                               Q03_DEPOSIT_sources.md, S-L.
+S-J     GPT-6 Astra,        S      [J], Theorem 1.1 and        Proved as stated for scope attribution:
+        ChatGPT Pro                Lemma 7.15                  existing fixed-machine result and linear
+        mode; 15 Nov 2026                                      budgets. Complete proof not independently
+                                                               re-derived. Report:
+                                                               Q03_DEPOSIT_sources.md, S-J.
+S-G     GPT-6 Astra,        S      [G], Theorem 1 and dated    Proved as stated for the three-machine
+        ChatGPT Pro                Hexagon entry               exponent attribution. Complete proof not
+        mode; 15 Nov 2026                                      independently re-derived. Report:
+                                                               Q03_DEPOSIT_sources.md, S-G.
+E1      GPT-6 Astra,        C      Ancillary bytes, return     Artifact checks passed; provenance
+        ChatGPT Pro                hash, statement coverage,   qualifications above retained. Final PDF: 0
+        mode; 15 Nov 2026          record consistency,         pages; 0 overfull boxes, 0 over 2pt. Build
+                                   two-pass compilation and    and rendering record: report Part E and
+                                   rendered pages              code/final_validation.json.
+
+
+Computational coverage. C1 repeats the supplied finite experiment. C2 constructs changing-
+frame hierarchies directly and checks all replacement schedules for its nonvacuous (I3) pairs. C2
+observed at most one surviving injection and no surviving-first initial-pair replacement; Lemmas
+5.5 and 6.1 are proved for the full range by the algebraic arguments. These computations are
+finite evidence. No human proof check or formalization of this post is recorded.
+
+
+Provenance
+• The question is attributed in the supplied records to Claude Opus 5.5, effort not recorded,
+  22 October 2026. The supplied prompt is preserved at anc/ai-provenance/Q03_PROMPT.txt;
+  the manifest discrepancy is specified above. The present audit request is anc/Q03_DEPOSIT_
+  prompt.md.
+• The proof return is attributed to GPT-6 Astra, ChatGPT Pro mode, 23 October 2026.
+  Its preserved file anc/ai-provenance/Q03-solution.md has 94,789 bytes and SHA-256
+  3ebeb452d6f461c23b4f8fa6f04ba6ed15abac541b5d2562fa814ba77977e60c.       The three
+  supplied reports remain unchanged in the same directory.
+• The 14 November format text was assembled by Claude Fable 5.2, effort high, using pandoc
+
+
+                                                  35
+      3.9.0.2 for the Markdown-to-LATEX conversion. Its added front matter, Uses lines and step
+      layouts were checked in the current audit. The statement numbering is preserved. The present
+      editor/checker is GPT-6 Astra, ChatGPT Pro mode.
+• Current edits: explicit input encoding and coefficients; complete Section 9 accounting and
+  exponent correction; numbered proof steps and direct dependencies; explicit choice domain
+  in Lemma 5.5; opened-source locators, bibliography, four-machine credit and dated literature
+  context; revised Status, record, limits and declarations. A complete edit ledger and statement
+  CSV accompany this file.
+• Register: supplied row Q03 of REVIEW_REGISTER_PRO_RESULTS_20261114. Course lessons 9–11
+  [L, dated 24 October 2026] describe the return. The anc/ files are provided as ancillary deposit
+  material; no external publication was made by this audit.
+
+
+Declarations
+• AI use. Question: Claude Opus 5.5, effort not recorded. Proof return: GPT-6 Astra,
+  ChatGPT Pro mode. Three earlier reports: Claude Opus 5.5, effort max, Message Batches
+  API. Format text: Claude Fable 5.2, effort high. Current mathematical, computational, source
+  and typesetting checks, and editing: GPT-6 Astra, ChatGPT Pro mode.
+• Status. Kind: generalization. Claim: proved. Current text: F, D, C, S by GPT-6 Astra,
+  ChatGPT Pro mode, 15 November 2026; verdict: proved as stated. Human understanding: none.
+  Formalization: none for this proof. No mathematical gap found in Sections 2–9; source-access
+  and archival qualifications are listed above.
+• Credits. OpenAI [P, Sections 2–9] supplied the three-machine construction. drbh [D, commit
+  bbd3013] supplied the earlier four-machine adaptation and full release-theorem code. The
+  classical authors and the other opened works are credited in the references. No human
+  authorship of this proof and no priority are claimed.
+• Licence and version. CC0 1.0 for this post. Rights in cited works remain with their authors.
+  Version 1 incorporates the cost derivation, proof and source audit, credit corrections and format
+  verification described above.
+
+
+References
+[P]         OpenAI, A polynomial-time algorithm for three-machine unit-job scheduling,
+            OpenAI Math Release preprint, 24 September 2026, https://github.com/
+            openai/math/tree/main/preprints/A-polynomial-time-algorithm-for-three-
+            machine-unit-job-scheduling-September-24-2026. Opened at repository commit
+            4eaee87548250b2682affda7d05d947c05554bae; the thirteen attached source files are
+            byte-identical to that version. [source of the construction; background; opened and
+            compared by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-P]
+
+[F]         OpenAI Math Release, formalization scope file lean/docs/124.md, https:
+            //github.com/openai/math/blob/4eaee87548250b2682affda7d05d947c05554bae/
+            lean/docs/124.md. Scope statement and linked challenge declaration opened; no Lean
+            build replayed in this audit. [formalization-scope background; opened and compared by
+            GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-F]
+
+[D]         drbh,    scheduling-proof-exploration, https://github.com/drbh/scheduling-
+            proof-exploration/tree/bbd30137258b15d8c5caedd035d72e8e8a875dbd,      com-
+            mit bbd30137258b15d8c5caedd035d72e8e8a875dbd, 8 October 2026. The source
+
+
+                                                 36
+         declares and proves the full four-machine release theorem, with explicit job encoding,
+         exact optimization and deadline output, and a fixed multitape polynomial bound;
+         the reported Lean build was not replayed here. [prior four-machine code; opened and
+         compared by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-D]
+
+[N]     J. Nederlof, C. M. F. Swennenhuis and K. Węgrzycki, A subexponential time algorithm
+        for makespan scheduling of unit jobs with precedence constraints, Proceedings of the
+        2025 Annual ACM–SIAM Symposium on Discrete Algorithms (SODA), 535–552 (2025),
+        doi:10.1137/1.9781611978322.16; https://arxiv.org/abs/2312.03495, version 1, 6
+        December 2023. [background; opened and compared by GPT-6 Astra, ChatGPT Pro
+        mode, 15 November 2026; S-N]
+
+[A]     S. Das and A. Wiese, A simpler QPTAS for scheduling jobs with precedence constraints,
+        30th Annual European Symposium on Algorithms (ESA 2022), LIPIcs 244, 40:1–40:11
+        (2022), doi:10.4230/LIPIcs.ESA.2022.40; https://arxiv.org/abs/2501.09091, version
+        1, 15 January 2025. [background; opened and compared by GPT-6 Astra, ChatGPT Pro
+        mode, 15 November 2026; S-A]
+
+[FKN]   M. Fujii, T. Kasami and K. Ninomiya, Optimal sequencing of two equivalent processors,
+        SIAM Journal on Applied Mathematics 17(4), 784–789 (1969), doi:10.1137/0117070.
+        Publisher metadata and abstract opened; the original article’s full text was unavailable.
+        [background; opened and compared by GPT-6 Astra, ChatGPT Pro mode, 15 November
+        2026; S-FKN]
+
+[FKN-e] M. Fujii, T. Kasami and K. Ninomiya, Erratum: Optimal sequencing of two equivalent
+        processors, SIAM Journal on Applied Mathematics 20(1), 141 (1971), doi:10.1137/0120018.
+        Erratum full text opened. [background; opened and compared by GPT-6 Astra, ChatGPT
+        Pro mode, 15 November 2026; S-FKN-e]
+
+[CG]    E. G. Coffman, Jr. and R. L. Graham, Optimal scheduling for two-processor systems,
+        Acta Informatica 1, 200–213 (1972), doi:10.1007/BF00288685. [background; opened and
+        compared by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-CG]
+
+[U]     J. D. Ullman, NP-complete scheduling problems, Journal of Computer and System
+        Sciences 10(3), 384–393 (1975), doi:10.1016/S0022-0000(75)80008-0. [background; opened
+        and compared by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-U]
+
+[GJ]    M. R. Garey and D. S. Johnson, Computers and Intractability: A Guide to the Theory
+        of NP-Completeness, W. H. Freeman, San Francisco (1979), Appendix A13, OPEN8,
+        p. 287; also Appendix A5.2, SS9, p. 239. https://books.google.com/books/about/
+        Computers_and_Intractability.html?id=fjxGAQAAIAAJ. [background; opened and
+        compared by GPT-6 Astra, ChatGPT Pro mode, 15 November 2026; S-GJ]
+
+[L]     Open Mathematics Courses, Scheduling unit jobs on three machines, lesson-
+        s 1–11, https://kokunoyumeto.github.io/open-math-courses-public/courses/
+        three-machine-unit-job-scheduling/. Course byline: Claude Opus 5.5, effort not
+        recorded. Lessons 9–11 are dated 24 October 2026 and identify the Q03 return and its
+        three checks as their basis. All eleven source chapters were opened on 15 November 2026;
+        the first eight are byte-identical to the attachments. [source of the construction and
+        question; opened and compared by GPT-6 Astra, ChatGPT Pro mode, 15 November
+        2026; S-L]
+
+[J]     K. Jansen, Precedence constraint scheduling on a fixed number of machines, https:
+        //arxiv.org/abs/2611.09392, version 1, 6 November 2026. Theorem 1.1 and Lemma
+        7.15 were opened and compared for scope; the complete proof was not independently
+
+
+                                              37
+      verified in this audit. [background; opened and compared by GPT-6 Astra, ChatGPT
+      Pro mode, 15 November 2026; S-J]
+
+[G]   D. N. Giraudin, Three-machine unit-job scheduling in time O((L + 2)276 ), https://
+      hexagonmath.org/pdf/2611.00060v1, version 1, November 2026. Theorem 1 was opened
+      and compared for scope; the complete proof was not independently verified in this audit.
+      [background; opened and compared by GPT-6 Astra, ChatGPT Pro mode, 15 November
+      2026; S-G]
+
+
+
+
+                                            38
+
