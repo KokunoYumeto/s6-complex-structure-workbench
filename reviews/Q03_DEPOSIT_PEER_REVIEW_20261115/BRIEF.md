@@ -15,7 +15,7 @@ is solvable in polynomial time for every fixed m >= 3, by a description-hierarch
 OpenAI three-machine preprint (24 Sep 2026). The return of 15 Nov 2026 00:22 UTC (GPT-6 Astra, ChatGPT Pro mode; prompt
 `anc/Q03_DEPOSIT_prompt.md`) is in
 
-`C:\Users\user\Documents\s6_pro_prompts_20261112_work\returns\Q03_DEPOSIT_20261115T0022Z_unzipped\`
+`<local>/Documents\s6_pro_prompts_20261112_work\returns\Q03_DEPOSIT_20261115T0022Z_unzipped\`
 
 - `Q03_DEPOSIT_post.tex` / `.pdf`: the post (the object of the review);
 - `Q03_DEPOSIT_report.md` (148 KB): the run's audit; `Q03_DEPOSIT_results.csv` (47 rows: 45 proved as stated);
