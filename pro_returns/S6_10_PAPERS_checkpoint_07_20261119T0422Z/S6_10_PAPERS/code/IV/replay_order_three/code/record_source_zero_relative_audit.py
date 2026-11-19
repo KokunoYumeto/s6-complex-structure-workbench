@@ -1,0 +1,26 @@
+"""Record the root proof audit of the completed punctured-family comparison."""
+from datetime import datetime,timezone
+from pathlib import Path
+import json
+
+root=Path(__file__).resolve().parents[1]
+record={
+ 'utc':datetime.now(timezone.utc).isoformat(),'reviewer':'root','statement':'P3K.49 (reserved)',
+ 'proof':'notes/part3_source_zero_relative_comparison_working.md',
+ 'status':'PASS for the punctured family comparison with the explicitly completed F0 marking',
+ 'checks':[
+  'The literal source coordinate arrow and Cartier map give the exact u^(2a) lift factor and u^(-4) base factor; ab=2 cancels them in the actual suspension.',
+  'The good and reduced root maps retain the D^(-4) endpoint. The central Cartier and finite-character calculation supplies the extending fourth translation, while the doubled reduced annular period is retained.',
+  'The actual relative Lie bundle and its Cauchy splitting solve the coherent base cocycle only after the full root-groupoid integral two-cocycle has been matched.',
+  'The RCZ5 free-sheet quotient produces actual local Hom maps across the whole cap annulus times the v-disc. Corrections at v* lift in the actual Lie frames.',
+  'Overlap logarithms vanishing at v* have zero integral discrepancies throughout the v-disc. Cauchy splitting preserves the prescribed reference map, d-delta clutch, root character and doubled period.',
+  'The local line lift commutes with B0 and with its central scalar multiple v^N B0. Its chain coordinates retain the actual root and signed index translations.',
+  'Under I_u the full discrete base-direction comparison remains zero by local constancy, including its parameter-chart integral cochains.',
+  'Ratios of the resulting local comparisons are the actual physical O* group. The two-overlap Cauchy-Green factorization gives the literal global annular morphism.',
+  'The quadratic scalar cochain has one-step ratio u^(12kn) and retains the exact rescaled forward endpoint square.'
+ ],
+ 'scope_limits':'The punctured old-u/new-v family arrow with F0 selected by the entire old reference map. The central collision-to-cap attachment, compact global filling and numerical return remain unproved.',
+ 'certificates':['code/part3/source_zero_relative_comparison.json','code/part3/source_zero_origin_shear.json']
+}
+(root/'records/root_audit_P3K_49.json').write_text(json.dumps(record,indent=2)+'\n')
+print('Recorded root RCZ1-7 audit with the central-attachment limitation.')

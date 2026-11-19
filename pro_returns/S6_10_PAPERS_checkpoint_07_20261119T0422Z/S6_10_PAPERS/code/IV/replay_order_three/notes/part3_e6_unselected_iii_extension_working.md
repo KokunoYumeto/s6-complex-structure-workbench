@@ -1,0 +1,550 @@
+# E6 unselected-III disc attachments for both full cap progressions
+
+Full working proof submitted for independent audit. K94 remains
+the completed M6 quadratic-root theorem. This separate extension
+constructs the M2, Q=3G good roots and all M6 reduced roots, with
+their actual Cartier, norm, character and annular maps. The initial
+local stage and the failed symbolic-power certificate attempt are
+preserved in the named attempt directory; no numbered promotion
+is made by this working file.
+
+## EX.1. Full point-line multiplier and its finite vertical divisor
+
+Use the same actual source
+\[
+ y^2=x^3+r x^2+t x+t^2,\quad G=(0,t),\quad
+ s=\tfrac14-r,\quad U=y-t-x/2,\quad
+ f_2=\frac U{x-s},\quad T(p)=p-G.
+\]
+The typed point-to-tensor arrow is
+\(r_2=f_2^{-1}:M_2\longrightarrow M_1^{\otimes2}\).
+It gives the literal single-step lift
+\[
+ B_{2,1}(p)=f_2(p)^2\frac{f_2(Tp)}{f_2(p)}
+          =f_2(p)f_2(Tp).
+\]
+Composing the three actual source/line arrows, without cancelling
+their source or target Cartier factors separately, gives
+\[
+ B_{2,3}(p)=f_2(p)f_2(T^3p)f_2(Tp)^2f_2(T^2p)^2.
+ \tag{EX.1}
+\]
+Its source map is exactly \(T^3=p-3G\).
+
+At a generic I2 identity component \(C_0\), the functions \(U\)
+and \(x-s\) are generic units, so \(\operatorname{ord}_{C_0}f_2=0\).
+At the other component use the actual chart \(x=t\alpha,y=t\beta\):
+\[
+ f_2=t\frac{\beta-1-\alpha/2}{-s+t\alpha}.
+\]
+The displayed numerator and denominator are generic units and
+\(s\ne0\), hence \(\operatorname{ord}_{C_1}f_2=1\).
+The exact inverse translation of K94 EU.0 exchanges the two
+components. Therefore the two valuations of \(B_{2,1}\) are
+both one, and those of EX.1 are both three. The whole finite
+vertical divisor at zero is exactly \(3F_0\).
+
+At any other finite irreducible fibre, neither \(U\) nor \(x-s\)
+contains that fibre: substituting \(U=0\) in the source gives
+\(x^2(x-s)=0\), and the fibre is not one of these point divisors.
+Every power of \(T\) preserves the generic component DVR and its
+base uniformizer. Thus each factor in EX.1 is a DVR unit there.
+At infinity \(3G\) fixes each component, so the Hom multidegrees
+vanish. The primitive affine component kernel gives a whole fibre
+there; its total Hom degree is \(2\cdot3\cdot(1/6)=1\).
+Consequently its remaining vertical divisor is \(-2F_\infty\).
+The exact selected-zero map is therefore
+\[
+ B^{(2,3)}_{\rm sel}=\frac{t-t_c(r)}{t^3}B_{2,3}.
+ \tag{EX.2}
+\]
+The actual simultaneous A1 source, the maps \(T,T^{-1}\), and
+the section \(2G=(s,-t-s/2)\) extend on the r-disc of K94.
+EX.2 and its inverse have zero order at the parameter divisor,
+as seen on an ordinary source section avoiding the horizontal
+divisors. The only remaining locus is the codimension-two central
+curve. The same height-one-prime argument as K94 extends this
+actual Hom map and its inverse across it, with its prescribed
+selected zero retained. No parameter scalar is changed.
+
+## EX.2. The literal good root and its central multiplier
+
+For \(m=3l\), \(l\ge1\), the actual good root is
+\[
+ q_\infty=z^{3l},\quad x_0=z^{4l}X,\quad y_0=z^{6l}Y,
+ \qquad Y^2=X^3+r z^{2l}X^2+z^lX+1.
+ \tag{EX.3}
+\]
+It has \(G'=(0,1)\) and
+\[
+ 2G'=(s z^{2l},-1-(s/2)z^{3l}).
+\]
+The deck acts by \((z,X,Y)\mapsto
+(\zeta_m z,\zeta_m^{-4l}X,Y)\), retaining the two marked
+three-torsion limits and the actual line \(M_2\).
+The original coordinates are \(x=z^{-2l}X,y=z^{-3l}Y,t=z^{-3l}\).
+Hence each tangent-over-vertical factor has exact weight
+\(f_{2,\rm old}=z^{-l}f'_2\). All six factors in EX.1 give
+\[
+ B_{2,3,\rm old}=z^{-6l}B'_{2,3},\qquad
+ B^{(2,3)}_{\rm sel}=h B'_{2,3},\qquad
+ h=1-t_c(r)z^{3l}.
+ \tag{EX.4}
+\]
+This is the full coefficient scaling in the actual rational
+source and target Cartier frames.
+
+On the central good elliptic curve \(Y^2=X^3+1\), put
+\(f=(Y-1)/X\), \(T'=p-G'\). Since \(G'\) has order three,
+\(T'^3=1\), and the product of the three translated divisors
+of \(f\) is zero. Its norm is therefore a nonzero constant.
+The actual orbit of \((2,3)\) is
+\((2,3),(2,-3),(-1,0)\); the three values of \(f\) are
+\(1,-2,1\). Thus its norm is exactly \(-2\), and
+\[
+ B'_{2,3}|_{z=0}
+   =[f(p)f(T'p)f(T'^2p)]^2=4.
+ \tag{EX.5}
+\]
+The central selected coefficient in EX.4 is consequently \(4h\),
+with its full value retained.
+The same constant follows from the entire actual central map:
+\[
+ T'(X,Y)=\left(\frac{2X}{Y-1},-\frac{Y+3}{Y-1}\right),\qquad
+ T'^2(X,Y)=\left(-\frac{2X}{Y+1},\frac{Y-3}{Y+1}\right).
+\]
+These formulae have \(T'^3=1\), and the three factor values as
+rational functions are \((Y-1)/X,-(Y+1)/X,2/X\). Their product
+is \(-2\) by the exact curve equation \(Y^2-1=X^3\).
+
+The section \(Q'=3G'\) is in the identity formal group, with
+\(\tau(Q')=-s z^{2l}/2+O(z^{5l})\). Its small analytic
+\(m\)-division exists and is deck invariant by uniqueness.
+The full good-root point-line correspondence, its invariant toric
+correction and norm lift are constructed in EX.5. EX.6 carries
+the prescribed finite character and entire annular reference
+through the actual disc attachment.
+
+## EX.3. Marked-cover coefficient check
+
+Under the source map \(X=D^2x,Y=D^3y,T=D^3t\), every factor
+\(f_2\) has weight \(D^{-1}\), so EX.1 has weight \(D^{-6}\).
+The selected-height factor has weight \(D^6\), exactly as in
+K94 EU.14. Therefore EX.2 is carried with scalar unchanged.
+This actual Miller/Cartier coefficient equality carries the
+constructed disc family to the marked w-cover without changing
+its scalar or selected toroidal fan.
+
+## EX.4. Every reduced root: actual middle charts and full line graph
+
+The preceding three sections are the retained initial local stage,
+also saved in \path{records/attempts/e6_unselected_iii_extension/initial_local.md}.
+We now give the remaining maps for both admitted cap progressions.
+Keep the same source-parameter disc, selected whole zero, fixed
+small scalar and full reference annular map as in K94. The two
+named data are
+\[
+ (a,b;m)=(6,1;3l+2),\quad l\ge0,
+ \qquad (a,b;m)=(2,3;3l),\quad l\ge1,
+\]
+with either signed sphere norm \(n=\pm1\) and the retained finite
+character \(\zeta_m^d\). There are no logarithmic discs at the
+colliding fibres. The proofs below construct the full marked disc
+family; their final return conclusion has not yet been promoted.
+
+For the reduced branch put \(m=3l+2,k=2l+1\). The literal root is
+\[
+ q_\infty=z^m,\quad x_0=z^{2k}X,\quad y_0=z^{3k}Y,
+\]
+\[
+ Y^2=X^3+r z^{2l+2}X^2+z^{l+2}X+z^2,\qquad G'=(0,z).
+ \tag{EX.6}
+\]
+Write \(b_0=z^l,c_0=r z^{2l}\) and
+\(c=\sqrt{1+b_0X+c_0X^2}\). The exact coordinates
+\(U=Y-zc,V=Y+zc\) satisfy \(UV=X^3\). The equation
+\(2zc=V-U\) has a unique analytic inverse for \(z\) near the
+origin, since its derivative there is two. Thus the same three
+minimal A2 resolution charts give a smooth family over the entire
+source disc, retaining the actual function \(q_\infty=z^m\).
+
+In the middle chart \(X=ab,U=a^2b,V=ab^2\), set
+\[
+\begin{aligned}
+ K&=1+\frac{b(b-a)(b_0+c_0ab)}{2c(c+1)},\\
+ F&=1-\frac{ab(b_0+c_0ab)(K+1)}{2c(c+1)}
+           -\frac{c_0ab^2(a-b)}{4c^2},\\
+ X'&=a(a-b)F,\qquad c'=\sqrt{1+b_0X'+c_0X'^2},\\
+ H&=K+\frac{b(a-b)(b_0+c_0X')}{2c(1+c')}.
+\end{aligned}
+\]
+The actual \(+G'\) chord has \(\kappa=(Y-z)/X=aK\),
+\(X'=\kappa^2-c_0z^2-X\), \(Y'=-z-\kappa X'\).
+Its complete toric chart arrow is
+\[
+                  a'=(b-a)F/H,\qquad b'=-aH.
+ \tag{EX.7}
+\]
+As in K94, \(V'=Y'+zc'=-aX'H\) proves the formula, and the
+analytic inverse of \(2zc=V-U\) proves that it retains exactly
+the same \(z\). All displayed denominators are units and
+\(K=F=H=1\) at the triple point. The inverse is obtained from
+the actual \(-G'\) chord, equivalently by \(Y\mapsto-Y\).
+The smooth group charts at the other central points complete
+this actual automorphism.
+
+The full deck is
+\[
+ D(z,X,Y)=(\zeta_mz,\zeta_m^{-2k}X,\zeta_m^{-3k}Y).
+\]
+Since \(l-2k=-m\), \(c\) is deck invariant; \(U,V\) have
+weight \(\zeta_m\). In the middle chart both \(a,b\) have
+weight \(\zeta_m^{l+1}\). The identities
+\(3(l+1)=m+1\) and \(\gcd(l+1,m)=1\) verify the actual
+order and inverse-base relation. Every term of \(K,F,H\) has
+weight zero. Formula EX.7 therefore commutes with this whole
+deck, including its parameter coordinate.
+
+The invariant vertical field has an explicit regular lift there.
+Put \(J_0=b_0+2c_0ab\). The usual Weierstrass vector field gives
+\[
+ W=a\left(2b-a-\frac{zJ_0}{c}\right)\partial_a
+   +b\left(2a-b+\frac{zJ_0}{c}\right)\partial_b.
+ \tag{EX.8}
+\]
+This follows from
+\(W(U)=3X^2-zJ_0U/c\), \(W(V)=3X^2+zJ_0V/c\).
+It is holomorphic and vanishes at the triple point. Its flow
+agrees with the identity-component group flow on the smooth
+locus. Thus the exact division section
+\[
+ R=2G'-[m]^{-1}((2m-1)G'),\qquad mR=G'
+ \tag{EX.9}
+\]
+extends as an actual source translation on the full resolved
+root. Here \(2m-1=3(2l+1)\), so the argument of the inverse is
+in the small identity formal group; the inverse has derivative
+\(1/m\). The central component of \(R\) is two. Both EX.9
+and the resulting translation commute with \(D\), by uniqueness
+of that formal inverse and the displayed deck arrows.
+
+For the line, retain the exact source coordinate
+\(\tau_0=-x_0/y_0\) and root coordinate \(\tau'=-X/Y\).
+Their relation and the full section equation are
+\[
+ \tau'=z^k\tau_0,\qquad
+ \tau'(6G')=z^k L(s,z^m),\qquad L(s,0)=-s\ne0.
+ \tag{EX.10}
+\]
+Use the normalized closure of the graph of the displayed generic
+map to the actual minimal regular source. Its two projections
+are the morphisms denoted \(\beta\) to the root and \(\pi\)
+to the source. Near the marked sections this is the graph of
+\(u=\tau'/z^k\), constructed by the actual ideal
+\((\tau',z^k)\). The root section equations are
+\(\tau'\) and \(\tau'-z^kL(s,z^m)\). The normalized graph adds the ray \((k,1)\). Its cone with
+\((1,0)\) is regular. Subdivide the other cone by the literal
+rays \((j,1)\), \(1\le j\le k\), followed by \((0,1)\).
+Adjacent ordered determinants are
+\(j\cdot1-(j-1)\cdot1=1\); these are exactly the exceptional
+rays of this chosen regular graph. On the ray \((j,1)\),
+\(\operatorname{ord}(\tau')=j\) and
+\(\operatorname{ord}(\tau'-z^kL)=\min(j,k)=j\).
+At the equality ray \(j=k\),
+the graph coordinate \(u\) retains their distinct directions
+\(0\) and \(L(s,q_\infty)\); its two strict section equations
+are carried separately. The literal coefficient identity is
+\[
+ \frac{\tau'}{\tau'-z^kL(s,z^m)}
+       =\frac{u}{u-L(s,q_\infty)}.
+ \tag{EX.11}
+\]
+On the other graph chart, \(\tau'v=z^k\), the same actual
+coefficient is \(1/(1-vL(s,z^m))\). It is a unit at \(v=0\).
+The two equations agree by \(uv=1\); the remaining cyclic
+singularity of \(\tau'v=z^k\) is resolved by its ordinary
+monomial subdivision, and both coefficient arrows pull back
+unchanged to every resulting chart. This explicitly retains
+the direction at equal valuation as well as both outer charts.
+Both marked divisors are absent from the other source/root
+quotient centres. Resolving those remaining cyclic charts by
+their invariant monomial ideals does not add a coefficient to
+either divisor. Thus on the full common graph, and on each of
+its such refinements,
+\[
+                \beta^*N_6=\pi^*M_6.
+ \tag{EX.12}
+\]
+This equality is an equality of Cartier line maps, not only of
+generic fibre classes. The source and root translations preserve the graph by the
+following actual square. Since the root translation commutes with
+\(D\), it and its inverse descend to the finite quotient. An automorphism
+of this quotient lifts to its minimal resolution: the local cyclic
+resolution is given by the invariant monomial ideals already
+specified, and their exceptional valuations are preserved. The
+subsequent contraction to the unique minimal regular source is
+also preserved, since the product carries each contractible
+vertical curve and its intersection data to that of its image.
+Consequently there are actual mutually inverse source maps over
+\(q_\infty\), extending the descended translation. The product of the
+source and root maps carries the generic graph to itself, as does
+its inverse. Taking its closure and normalization therefore gives
+both inverse graph maps. The marked-section graph ideals and the
+displayed cyclic subdivisions carry these maps, retaining the
+actual Cartier coefficient square on every chart.
+
+The exact root multiplier is also uniform in \(l\). The original
+coordinates satisfy \(x=z^{-2(l+1)}X,y=z^{-3(l+1)}Y,t=z^{-m}\).
+The Miller weights therefore give
+\[
+ B_{\rm sel}'=h z^{-2}B'_6,\qquad h=1-t_c(r)z^m.
+ \tag{EX.13}
+\]
+For a generic root identity-component point \(X=w^2,Y=w^3+O(z^2)\),
+the full three-point factor is
+\[
+ f'_3=\frac{s z^k X(Y-z-z^{l+1}X/2)}
+              {s z^k(Y+z+z^{l+1}X/2)-(s z^m+2)X}.
+\]
+The actual inverse chord gives
+\[
+ f'_2\to w,\quad f'_3(p)/z^k\to-s w^3/2,\quad
+ f'_3(Tp)/z^{k+1}\to s,
+\]
+\[
+ z^k f'_{2,3G'}(p),\ z^k f'_{2,3G'}(Tp)\to-4/s.
+\]
+Consequently \(B'_6/z^2\to4\). The full divisor calculation
+and EX.12 give order two on every reduced central component;
+normality then extends EX.13 and its inverse as actual units.
+Their central coefficient is \(4h\), with no omitted base
+factor. The case \(l=0\) is the actual quadratic map of K94.
+
+## EX.5. The full good-root Cartier correction and actual translation lift
+
+For the good branch EX.3 write \(u=z^l\). Its quotient to the
+source factors through the actual minimal cubic root
+\[
+ Y^2=X^3+r u^2X^2+uX+1,\qquad q_\infty=u^3.
+\]
+The \(\mu_l\) kernel acts only on \(z\), and the remaining
+\(\mu_3\) action has weights \((2,1)\) at each of its three
+fixed sections. At \(2G'\) one can use
+\(w=X-su^2\); at \(O\) use \(w=-X/Y\). They have exactly
+weight two, with \(u\) of weight one. Their quotient lattice is
+\(\mathbb Z^2+\mathbb Z(2,1)/3\), with the two primitive
+resolution rays \((2/3,1/3),(1/3,2/3)\).
+
+Here is the actual strict-section Cartier calculation. On that
+resolved quotient its support function is
+\(h(v_w,v_u)=\max(v_w-2v_u,0)\): it is \(v_w-2v_u\)
+on the cone adjacent to the section axis and zero on the other
+cones. Pulling the section to the common root fan has coefficient
+\(v_w\). Their difference is therefore
+\(\min(v_w,2v_u)\). In the full \(z\)-root it is
+\(\min(v_w,2l v_z)\). If \(E_P\) and \(E_O\) denote
+these explicit sums at the two marked sections, the full equality is
+\[
+          \beta^*N_2=\pi^*M_2+E_P-E_O.
+ \tag{EX.14}
+\]
+The coefficient arrow is the quotient of the actual monomial
+Cartier generators on each cone, so it includes their units.
+The same projective charts and monomials work holomorphically
+over the whole \(r\)-disc; their marked centres are the actual
+sections just displayed.
+
+The section \(Q'=3G'\) has
+\(\tau(Q')=-s u^2/2+O(u^5)\). Its selected small
+\(m\)-division \(R=[m]^{-1}Q'\) has
+\(\tau(R)=-s u^2/(2m)+O(u^5)\), and is deck invariant.
+At each marked fixed point its translation has the exact form
+\(w\mapsto w\varepsilon(w,u,r)+u^2 a(w,u,r)\), with
+\(\varepsilon\) an analytic unit. It preserves the actual
+ideals \((w,u^j)\) and \((u,w^j)\) for \(j=1,2\), as
+does its inverse. Their invariant product and normalized blowup
+give the common toric refinement above. Thus translation by
+\(R\), as well as by \(Q'\), lifts to that graph and preserves
+both corrections in EX.14. This proves the full equivariance of
+the point-line correspondence. It retains the translated
+correction through its actual canonical divisor section.
+
+Both branches admit a particularly explicit starting line lift.
+For \(N=\mathcal O(P-O)\), define the actual chord-over-vertical
+function
+\[
+ g_{P,R}(p)=\frac{\ell_{P,R}(p)}{x(p)-x(P+R)}.
+ \tag{EX.15}
+\]
+Its divisor is \((P)+(R)-(P+R)-(O)=D_P-t_{-R}^*D_P\),
+so it is the coefficient of a typed line map covering
+\(p\mapsto p-R\). The points used here are distinct on a
+sufficiently small punctured root disc. The line functions are
+the literal chord functions; no leading coefficient is removed.
+On good roots take \(P=2G'\) and
+\(F=\tau(R)g_{P,R}\). On reduced roots take \(P=6G'\) and
+\(F=\tau(P)g_{P,R}\). The formal coordinate factors have
+orders \(2l\) and \(k\), respectively, with nonzero leading
+coefficients \(-s/(2m)\) and \(-s\).
+
+To check the full central normalization, a point tending to
+\(O\) has \(x=\tau^{-2}+O(1)\),
+\(y=-\tau^{-3}+O(\tau^{-1})\). The actual chord slope is
+\(-\tau^{-1}+O(1)\). At a generic test point, multiplying
+the chord by \(\tau\) tends to its vertical denominator.
+Thus the displayed \(F\) has central coefficient exactly one.
+In the reduced case the Hom multidegrees are zero, so the
+primitive central component kernel makes the chord's vertical
+order a whole-fibre order; the single generic-component limit
+fixes it on every component. In the good case there is one
+smooth component. Horizontal divisors are exactly those in
+EX.15. The height-one-prime argument therefore extends \(F\)
+and its inverse through the whole root family, retaining its
+full normalizing factor.
+
+This particular lift commutes with the deck literally. The
+root Weierstrass coordinate weights are \((-2k,-3k)\), with
+\(k=2l\) in the good case and \(k=2l+1\) in the reduced case.
+Consequently the actual chord-over-vertical function has weight
+\(\zeta_m^{-k}\), whereas each of \(\tau(P),\tau(R)\)
+has weight \(\zeta_m^k\). Their displayed product has weight
+one. These are identities of rational coefficient maps, so
+their extending maps commute on every root chart.
+
+The ratio \(\beta=B'_{{\rm sel}}/F^m\) covers the identity
+on the same compact connected source fibre. It is therefore
+an invertible base function, with central value four. It is
+deck invariant by the preceding exact arrows. Its analytic
+\(m\)-th root, fixed by the complete reference lift, is deck
+invariant as well: the ratio of its transform to itself is a
+constant \(m\)-th root of unity, equal to one on the central
+disc. Define
+\[
+ \widetilde F=\beta^{1/m}F,\qquad
+ A_0=\zeta_m^d\widetilde F^{\,n}D.
+\]
+Then, as literal source/Cartier maps,
+\[
+ \widetilde F^m=B'_{{\rm sel}},\qquad
+ A_0^m=(B'_{{\rm sel}})^n,\qquad
+ [A_0,B'_{{\rm sel}}]=1.
+ \tag{EX.16}
+\]
+The reference finite character is still \(\zeta_m^d\).
+The normalized source/tensor factors in EX.1 and the full
+correction EX.14 are carried through this equality. No generic
+Picard-class comparison replaces their coefficient maps.
+
+## EX.6. General-order annular square, actual disc closing and return
+
+Fix \(R_\lambda\ne0\) with \(R_\lambda^m=\lambda\),
+independent of the source parameter. Put
+\[
+ B_\lambda=\lambda B'_{{\rm sel}},\qquad
+ A_\lambda=R_\lambda^n A_0.
+\]
+On the two fixed annulus sectors use
+\[
+ s_\alpha=\frac{\log_\alpha q_\infty}{2\pi i},\quad
+ z_\alpha=\exp(2\pi i s_\alpha/m),\quad
+ c_\lambda=\frac{n\log R_\lambda}{2\pi i}+\frac dm.
+\]
+The actual map in the source/line Lie cover is
+\[
+ \Phi_\alpha=\operatorname{Exp}
+       (n s_\alpha f_\alpha+s_\alpha c_\lambda\delta
+                   +h_\alpha)I_{z_\alpha},
+ \qquad f_\alpha=\operatorname{Log}_\alpha\widetilde F.
+ \tag{EX.17}
+\]
+The source displacement is the signed \(-n s_\alpha\) Abel
+integral of the actual \(R\). The scalar is
+\(R_\lambda^{n s_\alpha}\exp(2\pi i d s_\alpha/m)\),
+and the root change is the actual \(D\). Thus both the full
+norm and every finite character appear in this formula.
+
+On an overlap, with \(s_\beta=s_\alpha+k\) and
+\(f_\beta=D_*^k f_\alpha+\Pi_{\alpha\beta}\), prescribe
+\[
+ h_\beta-D_*^k h_\alpha
+   =-n s_\alpha\Pi_{\alpha\beta}
+       +j_{\alpha\beta}b_\beta+\Lambda_{\alpha\beta},
+ \qquad b_\beta=\operatorname{Log}_\beta B_\lambda.
+ \tag{EX.18}
+\]
+All period columns, suspension decks and integral coefficients
+are those of the full reference map. Their functions are
+transported holomorphically over the source disc. Here is the reference-zero construction in the same fixed
+ordinary Lie frame. Extend the prescribed reference cochains
+\(h_\alpha^*\) to \(h_\alpha^0\), retaining the full
+transported period functions. Let \(E_{\alpha\beta}\) be
+the residual of EX.18; it vanishes at the reference parameter.
+For the fixed annulus partition put
+\[
+ k_\alpha=-\sum_\beta\chi_\beta E_{\alpha\beta},
+ \qquad \omega=\bar\partial k_\alpha,
+ \qquad v(q,r)=\frac1\pi\int
+                \frac{\omega(w,r)}{q-w}\,dA(w).
+\]
+The compactly supported residual and fixed contours are exactly
+those of K94 EU.11e. The common \(\omega\) and its Cauchy
+transform depend holomorphically on the source parameter and
+vanish at the reference. Then
+\(h_\alpha=h_\alpha^0+k_\alpha-v\) solves EX.18,
+retains every integral period and suspension column, and equals
+the whole prescribed reference cochain. Subtracting the target-sheet logarithm
+\(kn f_\beta+kc_\lambda\delta\) from the two sides of
+EX.17 leaves exactly the prescribed period and suspension deck.
+Hence the actual squares are
+\[
+ \Phi_\beta=A_\lambda^k B_\lambda^{j_{\alpha\beta}}
+                  \Phi_\alpha,\qquad
+ \Phi_\alpha B_\lambda=B_\lambda\Phi_\alpha,
+ \qquad A_\lambda^m=B_\lambda^n.
+ \tag{EX.19}
+\]
+They define the ordinary/cap gluing with its actual inverse
+and its full reference value. The finite cap itself extends
+by EX.3, EX.6--16, without extending an annular logarithm
+across its centre.
+
+All these maps are single valued on the whole source disc.
+Their positive boundary therefore has identity source, line,
+root and annular closing; the scalar is fixed. The selected
+cusp remains disjoint from the collision, and its full Tate,
+Cartier and cone-character maps extend exactly as in K94 EU.5
+on every prescribed lattice-basis fan. On the finite charts
+their actual line multipliers have compact uniform bounds.
+Choosing the original fixed scalar sufficiently small gives
+strict contraction. For both norm signs \(H=A_\lambda^n\)
+has \(H^m=B_\lambda\) and scalar factor \(R_\lambda\).
+Its compact norm shell and the protected toric fundamental
+regions give the same uniform properness, freeness and smooth
+disc submersion as the explicit quotient proof of K94.
+
+At the central source the two data are exactly the E6-B
+entries of F41/F46, with the retained ordinary III cap of
+order one and norm zero. Their determinant is \(n=\pm1\),
+so the full integral maps give a sphere on the reference fan.
+The actual finite fan word, common blowups, two ruling maps
+and primitive Gysin/van Kampen maps of F35 carry that sphere
+to each prescribed fan. Radial transport in the resulting
+proper disc family gives a product with its actual identity
+closing. Thus the positive unselected-III boundary return is
+zero for both entire cap progressions just constructed.
+This conclusion is submitted for full independent audit;
+no numbered promotion is made in this working extension.
+
+## Executed certificate and retained attempts
+
+The exact program \path{code/part3/e6_unselected_iii_extension.py}
+checks the full central translation orbit, generic three-step
+Cartier multiplier, symbolic root exponents, universal A2 chart
+identities, regular graph rays and section coefficients, deck and
+line weights, both signed norms and the target-sheet overlap
+polynomial. Its current output records 5,241 exact identities
+and finite character instances; the geometric proof is given
+above and is subject to the separate named audits.
+The initial local stage and the symbolic-power simplification
+failure are preserved under
+\path{records/attempts/e6_unselected_iii_extension/}.

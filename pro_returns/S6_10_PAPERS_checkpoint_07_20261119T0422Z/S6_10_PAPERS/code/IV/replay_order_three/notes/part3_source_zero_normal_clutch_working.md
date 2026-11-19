@@ -1,0 +1,340 @@
+# P3K.86. Proved: the actual source-zero normal cap clutch
+
+Recovery provenance: this complete mathematical proof is reconstructed from the retained root/checks audits, exact pre-outage formulas, and restored RT.16–17 actual collar maps. It is not a byte-identical restoration of the lost file. The original theorem and full proof received root and checks PASS; its original nine-page standalone QA also passed. The new transcription is recorded separately.
+
+## Statement
+
+Retain the actual fixed-scalar source-zero families of P3K.80 and P3K.83,
+\[
+ Y^2=X^3+(1-2v)X^2+TX+v^2,\quad G=(0,v),\quad
+ q=T-(v^2-2v).
+\]
+The good branch has \((a,b,m)=(1,2,4p)\); the reduced branch has
+\((a,b,m)=(2,1,4p-1)\). Retain either norm sign, the actual Cartier line, every admitted finite character, and the complete integral ordinary-to-cap cochain.
+
+For the initial negative-square fan \(T_0\), the actual total normal clutch is
+\[
+ \Gamma=(w_--w_+)+c_2(E_{S^4})=0.
+\]
+The physical characteristic pairs are
+\[
+ (k_M,\ell_M)=(1,4)\quad(a=1),\qquad
+ (k_M,\ell_M)=(0,0)\quad(a=2).
+\]
+The actual native free pairs are respectively \((1,0)\) and \((0,0)\). The physical Jin integer is zero in both cases. The proof determines the full clutch carried by the source, Cartier and Hopf cap maps.
+
+## NC.1. The fixed trace and its two actual caps
+
+The fixed trace is
+\[
+ F=\operatorname{Bl}_{(s=-1,v=0)}(\mathbb P^1_s\times D_v).
+\]
+Put \(c=\sqrt{1+v}\), using the branch equal to one at zero, and
+\(x=s-c,\ y=s+c\). The two branch divisors are \(D_+=\{x=0\}\) and
+\(D_-=\{y=0\}\); the exceptional divisor is \(E\). The full source normalization is
+\[
+ X=s^2-1,\qquad Y=s(s^2-1-v).
+\]
+The actual positive-weight normal spinor is
+\[
+ E_{\rm spin}=
+ [M\otimes O(D_+)]\oplus[M\otimes O(-D_-)],
+ \qquad M|_F=O(-aE).
+\]
+This last identification is the actual Cartier map retained in P3K.80/83, including the degree-two source and target \(r\)-arrows for \(a=2\).
+
+Let \(Y_F=\partial F\). The actual outside cap is \(C_0=D^3\times S^1\), with the Cox normal product described below. The second comparison cap is \(C=\mathbb P^1\times D^2\), oriented so that \(\partial C=Y_F\); equivalently, \(-C\) has the complex orientation of the second parameter chart. Thus \(F-C\) is the complex blowup of \(\mathbb P^1\times\mathbb P^1\). Write \(H,B,E\) for its two factor classes and exceptional class:
+\[
+ H^2=B^2=0,\quad HB=1,\quad E^2=-1,\quad HE=BE=0.
+\]
+
+Use the actual reference divisor frames on \(C\). If
+\(e_{\rm cap}=g_\pm e_F\), define \(w_\pm\) by the winding of \(g_\pm\) on the parameter circle. The full source/Cartier/root maps make these ratios global nonzero functions on \(S^2\times S^1\): at either divisor point one uses the alternate Cartier frame, and the identical point transition cancels. The capped spinor has the actual line classes
+\[
+ H-aE+w_+B,\qquad -H+(1-a)E+w_-B.
+\]
+Consequently
+\[
+ c_1=(1-2a)E+(w_++w_-)B,\quad
+ c_1^2=-(1-2a)^2,\quad
+ c_2=-a(a-1)+(w_--w_+).
+\]
+The two caps have closed difference
+\(S^4=C-C_0\). Its actual normal bundle is glued by their full coefficient maps, rather than by a choice of its Chern classes.
+
+## NC.2. The typed normal coefficient and residue arrow
+
+Choose a local nonzero Cartier frame \(e_M\). The positive spinor frames are
+\[
+ e_+=x^{-1}e_M,\qquad e_-=y e_M.
+\]
+The negative physical normal is conjugated. In the associated node chart its actual coefficients are
+\[
+ U=-x\overline{\alpha},\qquad \xi=y\beta,\qquad
+ U\xi=q.
+\]
+All full normal units of the source and Cartier maps remain in these coefficient arrows. In particular, if the associated resolution writes
+\(\xi=S z\), then \(z=(y/S)\beta\); this formula is used with its actual overlap, not with a replacement of \(y/S\) by its divisor.
+
+The following bundle map fixes the type of the product. There is an exact morphism
+\[
+ J=O(-D_+-D_-)\longrightarrow K_F,\qquad
+ f\longmapsto f\,\frac{ds\wedge dv}{xy}.
+\]
+Its meromorphic factor has exactly the displayed polar divisor. In the infinity chart \(z_0=1/s\) it is
+\[
+ -\frac{dz_0\wedge dv}{1-(1+v)z_0^2}.
+\]
+In the blowup chart \(s=x_0-1,\ v=x_0r\), it is
+\[
+ \frac{dx_0\wedge dr}{x_0-2-r}.
+\]
+The exceptional factor cancels literally. Hence the local frame \(xy\) maps to \(ds\wedge dv\).
+
+The reciprocal Hermitian map from the conjugate of \(E_+\) to \(E_+^*\) sends the conjugate of \(x^{-1}e_M\) to \(x e_M^{-1}\), up to its explicit positive norm. Tensoring with \(y e_M\) gives the frame \(xy\), with coefficient \(\overline{\alpha}\beta\). The retained minus in \(U\) therefore gives the actual negative product coefficient. This establishes the normal-to-residue arrow without losing an \(xy\), \(S\), or parameter phase.
+
+## NC.3. The exact marked-point calculation and the global winding
+
+At the regular point \(s=0\), away from the exceptional divisor and both branch divisors,
+\[
+ (X,Y)=(-1,0),\qquad Z=\frac{s-c}{s+c}=-1.
+\]
+The section \(G\) has \(s=-1\), so its literal Tate point is
+\[
+ P=\frac{-1-c}{-1+c}=-\frac{(1+c)^2}{v}.
+\]
+At \(q=Q=0\), the rigidified theta ratio is
+\[
+ f_P(-1)=\frac{P+1}{2P}.
+\]
+The full TL Cartier coefficient is
+\[
+ \xi=\left(\frac{1-S}{2}\right)^a\frac{V}{f_P^a},
+ \qquad S=P/Z.
+\]
+Since \(S=-P\) at this point, this is exactly \(V=P^{-a}\xi\), with every unit of \(P\) retained.
+
+In the native fixed-star chart \(q=ZAB\), the actual coefficient map is
+\[
+ A=-P^aU,\qquad B=P^{-a}\xi.
+\]
+Here \(U=c\overline{\alpha}\), \(\xi=c\beta\). The positive-weight coefficients \((\bar A,B)\) are consequently
+\[
+ \begin{pmatrix}
+ -\bar P^{\,a}\bar c&0\\0&cP^{-a}
+ \end{pmatrix}
+ \binom{\alpha}{\beta}.
+\]
+The ratio of its two diagonal entries is
+\[
+ -|P|^{2a}\frac{\bar c}{c}.
+\]
+The first factor is positive up to the retained constant minus sign, while \(c\) has its extending disc logarithm. Thus the two coefficient phase windings are equal. Each is \(+a\) in this displayed normalization because \(P\) has winding \(-1\). With the frame convention in NC.1 the coefficient arrow is inverted; both frame windings are correspondingly equal as well. In particular,
+\[
+ w_--w_+=0.
+\]
+This equality holds for the actual global ratios: their winding is independent of the regular sphere point, since they are global nonzero functions on the connected product. Any further retained common physical scalar multiplies both coefficient phases by the same factor and is carried in the next cap map.
+
+## NC.4. The actual Cox/Hopf product on \(C_0\)
+
+On the two-cone fixed star use homogeneous unit Cox factors
+\[
+ u=a_0+ja_1,\qquad v_N=A+j\bar B,\qquad q_H=u v_N,
+ \qquad h=u i u^{-1}.
+\]
+The auxiliary circle cancels. Choosing a Hopf representative of \(h\) gives the inverse \(v_N=u^{-1}q_H\). In the finite \(Z\)-chart the coefficient matrix is
+\[
+ \mathcal H_Z=\frac1{\sqrt{1+|Z|^2}}
+ \begin{pmatrix}1&-\bar Z\\ Z&1\end{pmatrix},
+ \qquad q_H=\mathcal H_Z(A,\bar B)^t .
+\]
+The physical action is the negative right phase
+\(q_H\mapsto q_H e^{-i\phi}\). Therefore the positive cap spinor has coefficients \(\overline{q_H}\), and its actual coefficient arrow is
+\(\overline{\mathcal H_Z}(\bar A,B)^t\). This is the full anti-linear physical-normal comparison of P3K.68, followed by the displayed complex-linear map to the positive cap spinor.
+
+The sphere coordinate change is the literal map
+\[
+ \mathcal B_c(P_0)=
+ \frac{A_cP_0A_c^*}{\operatorname{tr}(A_cP_0A_c^*)},
+ \qquad A_c=\begin{pmatrix}1&-c\\1&c\end{pmatrix},
+\]
+on trace-one positive Hermitian matrices. Its inverse uses \(A_c^{-1}\); its boundary is \(Z=(s-c)/(s+c)\). Holding the actual \(q_H\) coordinate fixed gives the cap map
+\((P_0,q_H,v)\mapsto(\mathcal B_c(P_0),q_H,v)\).
+The tangent derivative of the sphere map is not substituted for this normal product.
+
+Remove the common phase found in NC.3 by the corresponding simultaneous rotation of both positive coefficient planes on \(C_0=D^3\times S^1\). It extends because it depends on the retained parameter circle. For an integer winding \(d\), its total Spin lift is the product of the two plane lifts; their endpoints are both \((-1)^d\), so the total endpoint is \(+1\). This is a periodic Spin lift of the actual common rotation. The physical circle and its line commute with this coefficient map.
+
+The two remaining coefficient ratios have zero winding. They therefore have global smooth logarithms on \(S^2\times S^1\). Retain their exact boundary values, extend those logarithms over the comparison cap using a collar cutoff, and use the exponential frame changes. This carries all original normal units and finite characters instead of replacing them by their winding numbers.
+
+## NC.5. Extension on \(C\) and the \(S^4\) clutch
+
+After those extending scalar maps, the remaining matrix is precisely the conjugate Hopf product from the two branch coordinates. In homogeneous point frames it can be written
+\[
+ \mathcal G(x,y)=
+ \frac1{\sqrt{|x|^2+|y|^2}}
+ \begin{pmatrix}-\bar y&-x\\-\bar x&y\end{pmatrix}.
+\]
+Its determinant is \(-1\). The two columns have the opposite point-frame transitions of \(O(H)\) and \(O(-H)\); thus this formula is a bundle map in both sphere charts. The nonzero positive metric factors in the actual Cox coefficients are retained by their positive normal rescaling. At \(s=0\) it gives exactly the matrix of NC.3 after the two displayed Cartier factors. This is the coefficient computation established in NC.2, not an identification inferred from equal Chern classes.
+
+On the second cap use its actual boundary parameter, rescaled so that its boundary is the original parameter circle. In that parameter \(w\), the smooth extension is
+\[
+ c_C(w)=\sqrt{1+\bar w}
+\]
+with the same small-disc branch. Its boundary value is the original \(c(v)\) under the specified reversed cap parameter. Put \(x_C=s-c_C(w)\), \(y_C=s+c_C(w)\) in the displayed matrix and in \(\mathcal B_c\). The determinant \(2c_C(w)\) of \(A_{c_C}\) never vanishes; \(x_C,y_C\) never vanish together. Hence both sphere charts and the entire three-ball product extend, with the actual \(q_H\) held fixed. The original radius is retained by the corresponding constant rescaling of \(w\).
+
+Combine this extension with the zero-period logarithm extensions of NC.4 and its common physical phase on \(C_0\). On their common boundary the resulting maps are the original full source/Cartier/Hopf maps, including all point transitions. They provide a global complex frame on the normal bundle over \(C-C_0\). Its actual physical associated line is the tautological \(O(-1)\), carried by the same positive spinor coefficients. Consequently
+\[
+ c_2(E_{S^4})=0.
+\]
+Together with NC.3 this proves \(\Gamma=0\).
+
+## NC.6. The two complete characteristic pairs and the actual return
+
+For the projectivized normal sphere bundle over \(F-C\), put \(h=c_1(O(1))\). The physical line is \(x=-h\), with
+\[
+ h^2+c_1h+c_2=0,\quad \pi_*h=1,\quad
+ \pi_*h^2=-c_1,\quad \pi_*h^3=c_1^2-c_2 .
+\]
+The exact tangent splitting gives
+\[
+ k_B=c_2-c_1^2,\qquad
+ \ell_B=-p_1(F-C)-c_1^2+4c_2.
+\]
+Since \(p_1(F-C)=-3\), these are
+\[
+ k_B=3a^2-3a+1+(w_--w_+),\qquad
+ \ell_B=4+4(w_--w_+).
+\]
+The \(S^4\) correction contributes
+\((c_2(E_{S^4}),4c_2(E_{S^4}))\).
+
+The complete reduced finite attachment of P3K.80 has one charge-two boundary and one isolated charge-one boundary, with its proved orientations. The physical projective pair is
+\((-r^3,-4r)\) for charge \(r\). Its actual boundary identity therefore gives
+\[
+ (k_M,\ell_M)=(-\Gamma,-4\Gamma)\qquad(a=2).
+\]
+The complete good two-step attachment of P3K.83 has two distinct charge-one primitive faces, the whole fixed surface only once, and the free upper trace with its trivial physical line. Its actual boundary identity gives
+\[
+ (k_M,\ell_M)=(1-\Gamma,4-4\Gamma)\qquad(a=1).
+\]
+No local fixed-\(S^3\) handle is inserted a second time. Applying \(\Gamma=0\) proves the statement.
+
+Choose the delta-averaged connection product on the selected tube in the actual coordinates of NC.4. The induced return on the conifold quotient preserves the physical Euler generator and the orientation, hence both integral homology generators. Its Hopf lift on the complement and its identity extension on the selected tube are exactly those used in P3K.68. The actual directed transfer is
+\(\lambda_M(f)=-\Sigma(f^{-1})=\Sigma(f)\).
+Thus the above physical pair belongs to the specified source loop and its native free pair is \((k_M,0)\). The integer \((4k_M-\ell_M)/24\) vanishes.
+
+## MD.1. The full initial three-curve data
+
+For completeness the two subsequent native fan paths are calculated from the actual doubled source products. Let
+\[
+ Q_0=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\qquad
+ Q_1=\begin{pmatrix}1&0\\-1&1\end{pmatrix},\qquad
+ W=\begin{pmatrix}1&b\\-a&-2\end{pmatrix}.
+\]
+The four actual period units have winding matrix \(W\), and their common product trace is \(t=-1\). For a basis \(P\), retain every coefficient through the integral map
+\[
+ U'_{is}=\prod_{h,j}U_{hj}^{(P^{-1})_{ih}P_{js}}.
+\]
+It follows directly that their doubled winding matrix is \(B=2P^{-1}WP\). The point angles and their physical orientations give
+\[
+ l=(B_{22}-B_{21},B_{11}-B_{12},B_{22}),\quad
+ (x,y)=P^{-1}e_2,\quad w=(x,y,-x-y),
+\]
+\[
+ d=(-x-2y,-2x-y,x-y),\quad
+ I_i=-w_i+d_i(l_i+1),\quad J_i=-w_i-d_i(l_i+1).
+\]
+These are the actual circle and stable-derivative trace equations. For the symmetric variation \(V\) and derivative \(\delta\), the full integral prisms are
+\[
+ V(w_i e_i-w_0e_0)=I_i e_i-I_0e_0,\qquad
+ w_i\delta_i-w_0\delta_0=J_i-J_0,\quad i=1,2.
+\]
+The initial native fixed pair is \((\mu,0)\). Its actual inverse cylinder contributes left degree \(-2t=2\); hence its doubled ordinary data have \(V_{00}=\delta_0=-2-2\mu\). Solving the full prism gives
+\[
+ V=\begin{pmatrix}
+ -2-2\mu&4a-6&6-4a\\
+ 4a-6&2-2a&0\\6-4a&0&-4
+ \end{pmatrix},\qquad
+ \delta=(-2-2\mu,\,2-2a,\,4a-4).
+\]
+
+## MD.2. The actual native map and its selected reset
+
+The dense \(Q_0\) character map is \((Z,V)\mapsto(ZV,V)\), with periods \((H,H^{-1}B)\); the \(Q_1\) map is \((Z,V)\mapsto(Z,ZV)\), with periods \((HB^{-1},B)\). The full coefficient formula above supplies their unit maps and inverse maps, preserving every \(q\)-term and endpoint seam.
+
+In a selected native chart \((z,n_0,n_1)\), the two resolutions have overlap
+\(z'=z^{-1}\), \(n'=zn\), with common rank-one matrix
+\[
+ \begin{pmatrix}n_0&n_1\\zn_0&zn_1\end{pmatrix},
+ \qquad q=zn_0n_1.
+\]
+The actual bounded torus lift is
+\[
+ (a_0,a_1,c_0,c_1)\mapsto
+ (a_0,Aa_1,(AD)^{-1}c_0,Dc_1).
+\]
+It acts on both rulings and on their full normal germs. The \(C_1\) ordering interchange is the unitary path
+\[
+ \frac12
+ \begin{pmatrix}1+e^{\pi is}&1-e^{\pi is}\\
+                 1-e^{\pi is}&1+e^{\pi is}\end{pmatrix},
+ \quad 0\le s\le1 ,
+\]
+which commutes with the scalar overlap \(zI\). Transporting the link metric and its positive radial normalization keeps the full normal endpoint maps.
+
+The common link and oriented exterior maps are
+\[
+ (h,q_H)\mapsto(q_H^{-1}hq_H,q_H),\qquad
+ (y,q_H)\mapsto(q_H^{-1}yq_H,q_H).
+\]
+The actual complex-meridian reset gives
+\[
+ (\mu_i,\nu_i,s)\mapsto(\mu_i+2\nu_i,-\nu_i,s+\nu_i).
+\]
+In doubled ordinary coordinates \(c=V_{ii}\), \(e=\delta_i\), this sends the selected new \(C_2\) data to
+\[
+ V'_{22}=c,\qquad \delta'_2=2c-e,\qquad
+ s'=s+\frac{e-c}{4}.
+\]
+The quarter factor is derived from the actual doubled native products and their full source seam, not from division of a sphere class.
+
+The common exterior inverse character map is the identity in the original source and Cartier coordinates; it retains the finite-root maps. The two projective ruling charts replace exactly the selected tube. The actual common blowup and its integral Gysin maps retain sphere cohomology, while the same primitive period relations retain the fundamental group. Thus both finite paths below are families of the actual completed spheres.
+
+## MD.3. Fresh complete target systems
+
+The first \(Q_0\) step has \(c=e=-2-2\mu\), and hence central increment zero. Its target weights are \((1,1,-2)\). All six symmetric variation and three derivative unknowns are fixed by the full prism and the two selected equations.
+
+For the good branch \(a=1\), the target data are
+\[
+ V'=\begin{pmatrix}
+ -8\mu-8&-8\mu-4&4\mu+2\\
+ -8\mu-4&-8\mu-8&4\mu+2\\
+ 4\mu+2&4\mu+2&-2\mu-2
+ \end{pmatrix},\quad
+ \delta'=(4\mu+4,4\mu+4,-2\mu-2).
+\]
+For the reduced branch \(a=2\), they are
+\[
+ V'=\begin{pmatrix}
+ -8\mu-20&-8\mu-4&4\mu+2\\
+ -8\mu-4&-8\mu-2&4\mu+2\\
+ 4\mu+2&4\mu+2&-2\mu-2
+ \end{pmatrix},\quad
+ \delta'=(4\mu+16,4\mu-2,-2\mu-2).
+\]
+Direct substitution verifies every full prism and both selected equations. The second \(Q_0\) and \(Q_1\) increments are therefore respectively
+\[
+ (3\mu+3,3\mu+3)\quad(a=1),\qquad
+ (3\mu+9,3\mu)\quad(a=2).
+\]
+
+## MD.4. The two actual nonvertical returns
+
+NC.6 gives \(\mu=1\) in the good branch and \(\mu=0\) in the reduced branch. Both paths start at central class zero. Thus
+\[
+ \bigl([\Sigma_{Q_0^2}],[\Sigma_{Q_0Q_1}]\bigr)
+ =(6,6)\quad(a=1),\qquad (9,0)\quad(a=2)
+ \quad\text{in }\Theta_7.
+\]
+Every matrix here comes from the actual unit, normal, cap and selected-reset arrows above. This conclusion treats these two finite words and the initial fixed-scalar seed.
+
