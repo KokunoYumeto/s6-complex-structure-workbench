@@ -1,0 +1,37 @@
+# Primary-source and search record for the Paper I audit
+
+Date: 19 November 2026. Checker: GPT-6 Astra (OpenAI), ChatGPT Pro mode, inherited effort. All local paths in this record lie in the supplied source bundle unless explicitly identified as new audit work. No Library, prior conversation or Space search was performed.
+
+## Sources opened and used
+
+1. **AC26 authoritative original PDF**, `S6_GRIND_6_literature/original/AC26_original_manuscript.pdf`: Remark 3.12, p. 19. The page was rendered and visually inspected; the cubic has constant term `-D`, and its selected point is `(0,i t²(t−1))`. The exact transports are in `AUDIT_PAPER_I.md` and the proposed TeX addition. Temporary extraction and render are inspection files only.
+2. **Engel**, attached `arXiv_2609.38442_Engel_src/S6.tex`; public primary PDF <https://arxiv.org/pdf/2609.38442>. Opened the defining cubic and Definition 2.3, the quotient convention, Remark 8.1, Conjecture 8.2 and its following logarithmic-transform paragraph (p. 22), and Remark 8.4 (pp. 23–24). The original claims around parameter-zero filling are expressly conjectural; our comparison preserves that status. Public retrieval refs: `turn675803543view0`, `turn354592533view3`, `turn354592533view4`; abstract `turn913267788view2`.
+3. **Du–Guo–Kusakabe–Xie v1 and v2**, both attached TeX sources. The v1 exact-period, tangent-cohomology and Kuranishi statements were opened. The detailed credited insertion is supplied separately by the corrections agent; its parameter transport was checked by this agent. Public abstract <https://arxiv.org/abs/2610.00250> was opened (`turn354592533view0`), with version dates 23 September and 23 October 2026. Attempts at version-specific abstract/PDF/HTML URLs returned DisabledError in this run. Those failed retrievals do not count as reopened public PDFs. The attached v1/v2 remain the primary text used.
+4. **Viaclovsky**, attached `arXiv_2610.39102_Viaclovsky_log_transformations_src/Logarithmic_S6_October_28_2026_Final.tex`; public PDF <https://arxiv.org/pdf/2610.39102>. Theorem 1.1, p. 1, and Proposition 2.3 with the root-quotient construction, pp. 5–6, opened. Public refs `turn675803543view3`, `turn354592533view6`. Original family construction and affine finite actions compared; no historical discovery claim for that construction.
+5. **Bierstone–Milman**, <https://arxiv.org/pdf/alg-geom/9508005>. Analytic category (0.2), preprint p. 3; Theorem 1.6 and following analytic-neighborhood paragraph, p. 5; Remarks 1.7, p. 6; Theorem 1.10, p. 7. Read the exact theorem hypotheses used for resolution and principalization and the original-smooth-locus preservation furnished by the allowed centers. Public refs `turn593021827view0`, `turn450070821view0`, `turn450070821view1`, `turn409815898view3`. The retrieved PDF has 30 pages; references there to later sections are not recorded as fully read proofs.
+6. **Grauert**, *Ein Theorem der analytischen Garbentheorie und die Modulräume komplexer Strukturen*, <https://www.numdam.org/article/PMIHES_1960__5__5_0.pdf>. Proper coherence, Hauptsatz I, printed p. 59; proper-image theorem, §7 Satz 1, p. 60; constant-cohomology base change, §7 Satz 5, pp. 63–64. The relevant theorem statements and local hypotheses were reopened. Public refs `turn593021827view1`, `turn409815898view1`, `turn450070821view3`. This is applicability checking, not an independent proof of Grauert's theorem.
+7. **Movasati**, *Complex Geometry*, <https://w3.impa.br/~hossein/myarticles/ComplexGeometry.pdf>, Theorem 8.5 and proof, printed pp. 80–81. The proper holomorphic factorization, finite factor, direct-image equality, connected fibres and uniqueness were read. Public refs `turn593021827view2`, `turn450070821view4`. The map in Paper I meets the explicit analytic hypotheses.
+8. **Bertolin–Philippon–Saha–Saha**, attached `arXiv_2010.15170_Bertolin_Philippon_Saha_Saha_src/SemiAbelianTowers-final.tex`: Construction 3.4, Lemma 3.5, Conjecture 4.7, Proposition 4.12, Remark 4.13; the corresponding source labels are `B-Z`, `eq:DimUR`, `WSA-V2`, `lem:equivWSA-V2-GPC`. The exact relative base field, bracket-center contribution and diagonal isogeny comparison were read. An attempted public PDF request <https://arxiv.org/pdf/2010.15170v2> returned DisabledError; the attached primary text was used. Journal record already in the supplied bibliography: *Journal of Algebra* 596 (2022), 250–288. The relative lower bound is a conjecture in that source.
+9. **Jones–Schmidt**, *A Manin–Mumford theorem for the maximal compact subgroup of a universal vectorial extension of a product of elliptic curves*, DOI <https://doi.org/10.1093/imrn/rnz207>, author-deposited PDF <https://pure.manchester.ac.uk/ws/portalfiles/portal/125978993/Maximal_compact_subgroup_IMRN_revision_4.pdf>. Theorem 1.1, printed p. 2, and §2 on vectorial extensions, printed pp. 5–6, were opened. Public ref `turn373224350view0`. The theorem's proof was not re-proved here. The exact attempted additive-to-multiplicative pushout is analyzed in the audit; its only algebraic homomorphism is trivial, so it does not produce the nonzero extension class needed here.
+10. **Yang**, supplied `arXiv_2609.29666_Yang_src/Compact_Complex_Threefolds_REPAIRED_v4_5.tex`: matching monodromy/saturation passages checked for overlap in the bounded literature comparison. No whole-paper proof check is asserted and no new theorem is credited to the present audit on this basis.
+
+## Searches run
+
+Searches were explicit primary-source discovery and credit checks. Search engines returned some unrelated or secondary pages; only the primary sources listed above support the audit's mathematical comparisons.
+
+| Engine | Queries | Outcome retained |
+|---|---|---|
+| system2 | `"complex six-spheres" "Hausdorff" filling`; `"Alpöge" "Engel" complex six sphere degeneration`; `"Du" "Guo" "Kusakabe" "Xie" "2610.00250"` | E26 and DGKX source/version records; attached originals then read. |
+| system1, arXiv / recent filter | `"complex six-spheres" "filling" "proper"`; `"semi-abelian" "local norm" "transcendence" sigma` | No further exact proper-filling/local-norm theorem located in this search. |
+| system2 | `"algebraic points" "maximal compact subgroup" "Bertrand"`; `"sigma" "elliptic logarithm" transcendence "CM" norm`; `"semi-abelian" "compact" "diagonal" transcendence` | Jones–Schmidt primary text found and opened; exact transfer route checked. |
+| system1, arXiv / recent filter | `complex six sphere degeneration parameter proper filling`; `complex six spheres monodromy kernel index twelve`; `complex six spheres boundary 216 theta norm` | Higher-family original and relevant nearby source records; no exact additional matching result found. |
+
+The negative results in this table are bounded search outcomes. They do not prove that no mathematical relation or prior theorem exists. No global priority claim follows from them.
+
+## Access and event discipline
+
+- A source statement check is recorded separately from a full proof check.
+- An abstract or search snippet is not credited as the reading of a paper's proof.
+- The new exact program is a new computation event, not a replay event.
+- The pre-proof derivations certify the actual statements they derive; the geometric proof obligations written before reading `night:P2.7` are not mislabelled as a blind re-proof.
+- The two open rows retain their status. Their normalization/reduction subarguments were checked without asserting the requested open conclusions.
