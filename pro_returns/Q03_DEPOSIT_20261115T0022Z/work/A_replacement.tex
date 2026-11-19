@@ -1,0 +1,308 @@
+\section{Correctness and running time}
+
+\begin{numbered}{Theorem}{9.1}{correctness of the actual finite algorithm}
+Run the dynamic program of Section 2 with $m$-element slots and $K=K_m$.
+It accepts the padded set $J$ exactly when $J$ has a full schedule, and
+returns a full schedule whenever it accepts. Consequently it decides the
+original deadline and constructs an optimum by testing deadlines.
+\end{numbered}
+\uses{Lemmas 2.1, 2.2, 2.3 and 2.10; Proposition 2.8; Theorem 8.5.}
+\begin{proof}
+\step{1}{the finite search decides the padded instance [Proposition 2.8; Lemmas 2.3 and 2.10; Theorem 8.5]}
+Proposition 2.8 turns every accepting state path into a full schedule.
+Theorem 8.5 supplies a hierarchy for every full-schedulable $J$, and
+Lemma 2.10 maps its marks and child gaps to an accepting state path of the
+same finite search. Lemma 2.3 proves both directions of padding and its
+removal.
+
+\step{2}{elementary deadlines are decided without large padding [Lemmas 2.1 and 2.3]}
+For a nonempty instance reject $T<1$. For $T\geq n$, the topological
+order of Lemma 2.1 schedules one job per slot and avoids padding to a
+possibly large $mT$. In the remaining branch reject $n>mT$; otherwise
+run the padded algorithm.
+
+\step{3}{the deadline trials return an optimum [Steps 1--2; Lemma 2.2]}
+Test $T=1,\ldots,n$ in increasing order to optimize. Deadline $n$ is feasible, and the first accepted deadline is the
+minimum. Lemma 2.2 also covers the original convention allowing real
+start times. Assign the at most $m$ original jobs in a slot to distinct
+machines in increasing identifier order.
+\end{proof}
+
+The normalized schedules in the structural proof certify completeness;
+they need not be computed by the finite algorithm.
+
+\paragraph{Encoding and the start of the padded bound.}
+An explicit input uses canonical self-delimiting binary integers for
+$m,n$, a signed integer $T$, an explicit list of vertices $1,\ldots,n$,
+and a list of distinct arcs with endpoints in that list. Its bit length
+$L$ includes delimiters and length fields, so $n\leq L$.
+The graph is a DAG; malformed inputs can also be rejected by the
+preprocessing below. Arbitrary finite binary vertex names can first be
+renamed by repeated input scans. Input reading and that renaming are
+charged in $L$. The bound in $N$ begins with the parsed, canonically
+numbered padded DAG on $J=[N]$, where $N=mT\geq m$.
+
+\begin{numbered}{Proposition}{9.2}{explicit multitape time bound}
+For $m\geq3$ and $K\geq1$, the padded dynamic program, including its
+witness on every accepted instance, runs on one deterministic multitape
+Turing machine in
+\[
+ A(m,K)N^{5mK+4m+1}\tag{9.1}
+\]
+steps, where one effective coefficient bound is
+\[
+ A(m,K)=2^{40}(m+1)^4(K+1)^4(K512^K)^5.
+\]
+The machine has a fixed finite number of tapes, independent of $m$ and
+$K$.
+\end{numbered}
+\uses{Lemmas 2.1 and 2.7; Proposition 2.8; the state and transition definitions in Section 2.}
+\begin{proof}
+\step{1}{at most $B$ formulas and $S$ states suffice [Lemma 2.7; state definitions]}
+Put
+\[
+ C=K512^K,\quad B=CN^{mK},\quad S=BN^m,
+ \quad h=\lceil\log_2(N+1)\rceil,\quad q=64(m+1)(K+1).
+ \tag{9.2}
+\]
+These are bounds; loops visit only actual records. Lemma 2.7 bounds the
+formula count by $B$. Explicitly, the leaf alphabet has at most
+$4+8(N+2)+20\binom Nm\leq64N^m$ symbols. For $\ell$ leaves there
+are at most $4^\ell$ tree shapes and $2^{\ell-1}$ internal Boolean
+labellings. Summing their product with $(64N^m)^\ell$ over
+$1\leq\ell\leq K$ gives $B$.
+For fixed $W$, a described set $F$ and an $m$-subset $Z$ determine
+$L=W\cap F$ and $R=W\setminus(L\cup Z)$. Reject invalid candidates.
+Thus at most $B\binom Nm\leq S$ candidate states remain, including
+duplicates.
+
+\step{2}{all records have explicit scan bounds [encoding; elementary tape operations]}
+Use a fixed collection of tapes (32 suffice) for the input, matrices,
+rank map, formula stack, files, copied records, counters and output.
+All variable-length stacks are delimited records on these tapes.
+Store the reachability matrix in row-major order. A unary distance
+scratch word permits a complete seek to a matrix location in $O(N^2)$
+steps, with the scratch and matrix heads advancing together; no binary
+counter is incremented for each matrix bit.
+
+Store formula and described-set records in files with record length at
+most $qN$. A set record contains its $N$ bits, cardinality, ordinal and
+acceptance bit. A current-state record contains its three $N$-bit parts,
+ordinal, reached/initial/final flags and predecessor ordinal, also in
+at most $qN$ bits. Indeed,
+\[
+ \lceil\log_2(S+1)\rceil
+ \leq 2+10K+(mK+m)h\leq qh/8\leq qN/8.
+\]
+Formula codes use $O(K(m+1)h)$ bits, within the same record envelope.
+Fetch or update an indexed state by scanning its file and comparing
+ordinal fields. This costs $O(qSN)$ including rewinds and all index
+bits. Acceptance queries compare their $N$-bit query against the set
+file. Keep saved schedules in a \emph{separate} file, with at most $N$
+identifiers per schedule and at most $qN^2$ bits per record. A combined
+acceptance/witness lookup costs $O(qBN^2)$.
+
+For explicit slack let $D=2^{20}q^2$. In the scan implementation just
+described, each row below costs at most $D$ times its displayed
+expression. Scan, copy, compare and rewind use a bounded number of tape
+moves per symbol; the records include their counters. At most 64
+primitive passes per operation, including the postorder stack scans,
+fit this coefficient. No record access has unit cost.
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{@{}p{0.50\linewidth}X@{}}
+\toprule
+Subroutine, over the whole padded call & Step bound divided by $D$\\
+\midrule
+Adjacency, reachability and rank & $N^5$\\
+Generate and evaluate formulas & $BN^3$\\
+Pairwise deduplication & $B^3N$\\
+Cardinalities and their ordering & $B^3N^2$\\
+Enumerate and initialize states & $BS(BN^2+N^4)$\\
+State-graph propagation & $3BS^4N$\\
+Reconstruct all saved witnesses & $BSN^2+B^2N^3$\\
+Write the selected witness & $N^3$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\step{3}{graph preprocessing costs at most $DN^5$ [Lemma 2.1; Step 2]}
+At most $N^2$ arc insertions cost $O(N^4)$ by full matrix seeks.
+Floyd--Warshall uses $N^3$ triples, each with a bounded number of
+$O(N^2)$ seeks, hence $O(N^5)$ steps. Its invariant is reachability
+through the already processed internal vertices. Repeated scans select
+the least active vertex without an active predecessor, append it to the
+rank order and remove it; all removals fit $O(N^5)$ as well. Lemma 2.1
+justifies that rank order.
+
+\step{4}{formula generation and evaluation cost at most $DBN^3$ [Lemma 2.7; Steps 1--2]}
+Generate valid Dyck words of length $2(\ell-1)$ by depth-first
+extension through valid prefixes; they encode the ordered full binary
+trees with $\ell$ leaves. There are $O(K)$ prefix edges per output and
+$O(K)$ steps per update, giving $O(K^2)$ delay. Enumerate their Boolean
+labellings and leaf parameters by finite counters. A cone leaf needs at most $mN$
+reachability queries, each with an $O(N^2)$ seek. At most $K$ leaves
+therefore cost $O(mKN^3)$ per formula. Threshold, slot and complement
+leaves cost less. Postorder evaluation combines $N$-bit vectors; even
+scanning the entire $O(KN)$-bit stack at each node costs $O(K^2N)$.
+These parameter factors fit $D$, giving $DBN^3$.
+
+\step{5}{deduplication and ordering fit their table bounds [Step 2]}
+For each of at most $B^2$ record pairs, full file seeks fetch and compare
+the vectors and mark the later duplicate. Each pair costs $O(qBN)$,
+giving $DB^3N$; compact the retained records afterwards. Count each
+vector's one-bits and store its cardinality. Repeated selection scans,
+even with full record retrieval for every compared pair, cost at most
+$DB^3N^2$. Break equal-cardinality ties by ordinal.
+
+\step{6}{state enumeration costs at most $DBS(BN^2+N^4)$ [state definitions; Steps 1--2]}
+For each of $B$ sets and at most $S$ candidates, fetch $W,F$, construct
+$L,Z,R$, and test containment, disjointness, the antichain condition and
+compatibility. Considering each ordered job pair and seeking to its
+relation separately costs $O(N^4)$. The set fetches and initial/final
+acceptance queries cost at most $DBN^2$. This gives the fifth row.
+
+\step{7}{propagation costs at most $3DBS^4N$ [transition definition; Steps 1--2 and 6]}
+Initially mark the initial states reached. Make at most $S$ complete
+passes over at most $S^2$ ordered state pairs. On the first successful
+transition to an unreached state, record its reached flag and its
+predecessor; leave predecessors unchanged subsequently. Fetching or
+updating state records costs at most $DSN$. An acceptance query costs
+at most $DBN^2$, and even rechecking compatibility costs at most $DN^4$.
+For $m\geq3$,
+\[
+ BN^2\leq SN=BN^{m+1},\qquad N^4\leq SN.
+\]
+A pair test therefore costs at most $3DSN$. Every reachable vertex has
+a simple path of fewer than $S$ edges. Induction on path length proves
+that $S$ full passes find every reachable vertex. Over all $W$ the cost
+is
+\[
+ B\cdot S\cdot S^2\cdot3DSN
+   =3DBS^4N=3DB^5N^{4m+1}.\tag{9.3}
+\]
+
+\step{8}{stored witnesses fit the last two rows [Proposition 2.8; Steps 2 and 7]}
+Every transition increases $|L|$ by at least $m$, so a predecessor path
+contains at most $N/m$ states. Backtrack, reverse the path records, and
+retrieve the already stored schedules for its first left part,
+transition gaps and final right part. State retrieval costs at most
+$DSN^2$ per $W$; the at most $N/m+1$ schedule lookups cost at most
+$DBN^3$. Proposition 2.8 proves that these pieces and marked slots
+partition $W$, so the concatenated schedule contains exactly $|W|$
+identifiers. Store it once, retaining the just-constructed schedule on a work tape,
+with no recursive recomputation of smaller witnesses. Over $B$ sets this
+gives the seventh row. The full set $J$ is the unique set of cardinality
+$N$, so its final witness is available on that tape. Translation through
+the rank map and output fit the final $DN^3$ row.
+
+\step{9}{the sum has exponent $5mK+4m+1$ [Steps 1--8]}
+The state-enumeration row expands to
+$B^3N^{m+2}+B^2N^{m+4}$, and the witness row to
+$B^2N^{m+2}+B^2N^3$. Each has $B$-exponent at most five and
+$N$-exponent at most $4m+1$, since $m\geq3$. The other rows satisfy
+the same inequalities; in particular $5\leq4m+1$.
+Thus their sum is at most $16DB^5N^{4m+1}$. Substituting $B$ gives
+$16DC^5N^{5mK+4m+1}$, and
+$16DC^5\leq A(m,K)$ by the definitions of $q,D,A$.
+This proves the complete bound.
+\end{proof}
+
+\begin{numbered}{Corollary}{9.3}{the bounds of Theorem 1.1}
+For $K_m=12m+25$, the padded exponent is
+$e_m=60m^2+129m+1$. Deadline decision, its witness, and optimization
+on the explicit encoding above take
+\[
+ O_m\bigl((L+2)^{60m^2+129m+2}\bigr)
+\]
+steps. One bound for the implicit coefficient is
+\[
+ G(m)=A(m,12m+25)m^{60m^2+129m+1}+2^{31}(m+1)^4.
+\]
+\end{numbered}
+\uses{Lemma 2.3; Lemma 8.4 and Theorem 8.5; Theorem 9.1; Proposition 9.2.}
+\begin{proof}
+\step{1}{the padded exponent is $e_m=60m^2+129m+1$ [Lemma 8.4; Theorem 8.5; Proposition 9.2]}
+Substitution gives
+\[
+ 5m(12m+25)+4m+1=60m^2+125m+4m+1
+ =60m^2+129m+1.
+\]
+\step{2}{parsing and elementary deadlines cost $P_m(L+2)^4$ [encoding; Lemma 2.1]}
+Parse the input once. Repeated scans, endpoint comparisons, duplicate
+checks, binary comparisons and canonical renaming fit
+$P_m(L+2)^4$ steps with $P_m=2^{30}(m+1)^4$.
+For $T\geq n$, produce a topological order directly from the original
+arc list: at most $n$ removal stages and $n$ candidate vertices per
+stage, with at most $O(L^2)$ steps to scan the arcs and active-vertex
+vector for a candidate. This is $O(n^2L^2)\subseteq O(L^4)$.
+The branch $T<1$ costs less. Both include their output cost.
+
+\step{3}{all deadline trials add one power of $L$ [Lemma 2.3; Theorem 9.1; Proposition 9.2]}
+In every padded branch, $N=mT\leq mn\leq mL$ by Lemma 2.3.
+Theorem 9.1 tests at most $n\leq L$ deadlines. Proposition 9.2
+bounds their total padded work by
+\[
+ A(m,K_m)n(mn)^{e_m}
+ \leq A(m,K_m)m^{e_m}(L+2)^{e_m+1}.
+\]
+\step{4}{output and preprocessing fit the same bound [Steps 1--3; encoding]}
+Writing the selected original schedule uses at most
+$O(n(\log(n+1)+\log(m+1)))$ bits and fits the preprocessing envelope.
+Since $e_m+1\geq929>4$, adding these costs gives $G(m)$ and the
+stated exponent. The extra power beyond $e_m$ counts the deadline
+trials. The padded bound begins after parsing, so a long original input
+is never silently charged to $N$.
+\end{proof}
+
+\begin{center}\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$m$ & union leaves & global leaves & relative leaves & $N$ exponent & $L+2$ exponent\\
+\midrule
+3&27&61&34&928&929\\
+4&33&73&40&1477&1478\\
+5&39&85&46&2146&2147\\
+6&45&97&52&2935&2936\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{numbered}{Proposition}{9.4}{the compact-isolated-jobs remark}
+For fixed $m$, deadline decision is polynomial when the input specifies
+$n$ in binary and lists only the arcs, allowing many isolated jobs.
+An explicit schedule can require a number of output symbols
+exponential in that compact input length.
+\end{numbered}
+\uses{Lemmas 2.1 and 2.3; Theorem 9.1; Proposition 9.2.}
+\begin{proof}
+\step{1}{the capacity test and endpoint count are valid [schedule and arc-list definitions]}
+For a nonempty instance reject $T<1$ or $n>mT$. Let $d$ be the number
+of distinct arc endpoints, found and renamed by input scans; then
+$d\leq2|E|$.
+
+\step{2}{deadlines $T\geq d$ are feasible after the capacity test [Lemma 2.1; Step 1]}
+For $T\geq d$, Lemma 2.1 schedules the $d$ incident
+vertices one per slot. There are $mT-d\geq n-d$ vacant positions, so
+all isolated jobs can be placed injectively in them. This proves
+feasibility without explicitly listing those jobs.
+
+\step{3}{deadlines $T<d$ permit polynomial expansion [Step 1; Lemma 2.3; Theorem 9.1; Proposition 9.2]}
+For $T<d$, the capacity check and the endpoint bound give
+\[
+ n\leq N=mT<md\leq2m|E|.
+\]
+The entire vertex set and its padding can therefore be expanded in
+polynomial time in the compact input length for fixed $m$.
+Lemmas 2.3 and Theorem 9.1 identify the answer of the expanded decision
+computation with the original deadline answer, and Proposition 9.2
+bounds that computation. All endpoint-label comparisons are charged
+to the compact input length.
+
+\step{4}{an explicit output can be exponentially long [compact and explicit encodings]}
+For fixed $m$ take $n=2^k$ isolated jobs, $E=\varnothing$, and $T=n$.
+The compact encoding has $O(k)$ bits, while every literal schedule lists
+all $2^k$ jobs and therefore has at least $2^k$ output symbols. The
+assertion here concerns decision. The empty instance is handled directly
+under the convention that its makespan is zero.
+\end{proof}

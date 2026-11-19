@@ -1,0 +1,27 @@
+\noindent\begin{tabularx}{\linewidth}{@{}L{4.0cm}Y@{}}
+\toprule
+Statement & Opened source and scope\\
+\midrule
+Two machines & Coffman--Graham \cite[Theorem~1, p.~203]{CG}; Fujii--Kasami--Ninomiya \cite[abstract]{FKN} with the correction \cite[p.~141]{FKNe}.\\[2pt]
+Machine count in the input & Ullman's unit-time NP-completeness result \cite[Theorem~1, p.~389]{U}; the fixed-count question is discussed on p.~392.\\[2pt]
+Three machines & OpenAI \cite[Theorem~1.1]{P}. The earlier question is OPEN8 \cite[Appendix A13, p.~287]{GJ}. Giraudin's subsequent statement has input exponent $276$ \cite[Theorem~1]{G}.\\[2pt]
+Four machines & drbh's commit \texttt{bbd3013}, \cite[\texttt{Model.lean}, \texttt{ReleaseTheorem}; \texttt{Main.lean}, \texttt{main\_theorem}]{D}, contains the capacity-four solver and theorem code.\\[2pt]
+Every fixed $m\geq3$ & Jansen \cite[Theorem~1.1]{J} states exact decision and optimization; \cite[Lemma~7.15]{J} gives node/cut leaf budgets $4m+5$ and $m+3$.\\[2pt]
+Exact subexponential bound & Nederlof--Swennenhuis--W\k{e}grzycki \cite[Theorem~1.1]{N}: $(1+n/m)^{O(\sqrt{nm})}$.\\[2pt]
+Approximation scheme & Das--Wiese \cite[Theorem~1]{A}: $(1+\varepsilon)$ approximation with the parameter-dependent quasipolynomial bound stated there.\\[2pt]
+This post & Theorems A and B are proved here with $12m+25$ leaves and the derived exponent in (1.1). No novelty or priority is claimed.\\
+\bottomrule
+\end{tabularx}
+
+\smallskip
+\noindent\textbf{Relation of the guarantees.}
+Lemma 2.2 gives integer makespans, and a topological schedule gives $\mathrm{OPT}\leq n$.
+Using $\varepsilon=1/(n+1)$ in the guarantee of \cite[Theorem~1]{A} yields a feasible integer makespan strictly below $\mathrm{OPT}+1$, hence exactly $\mathrm{OPT}$.
+The source's time bound depends on this varying $\varepsilon$; (1.1) is derived directly from the finite search in this post.
+For fixed $m$, the displayed bound of \cite[Theorem~1.1]{N} has the form $\exp(O_m(\sqrt n\log(n+1)))$, by taking its logarithm. This is the stated upper bound, with no claim of a corresponding lower bound on that algorithm.
+
+\smallskip
+\noindent\textbf{Credit and search.}
+The construction follows OpenAI \cite[Sections 2--9]{P} and the course \cite[lessons 1--8]{L}.
+The exact scope of drbh's four-machine code is credited in the source record; its Lean build was not replayed in this audit.
+The search of 15 November 2026 covered arXiv, STOC, FOCS, SODA, ICALP, IPCO, ESA, APPROX, authors' pages, GitHub, the general web and Hexagon, including citations and title searches for [P]. It found [D], [J] and [G]; no fixed-$m\geq4$ hardness result was located. Every query and outcome is in \texttt{Q03\_DEPOSIT\_literature.md}.

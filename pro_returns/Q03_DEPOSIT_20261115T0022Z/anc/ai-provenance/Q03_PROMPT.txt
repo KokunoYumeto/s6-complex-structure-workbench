@@ -1,0 +1,61 @@
+Mathematical task Q03: unit-time jobs with precedence constraints on m identical machines, for every fixed m
+(22 October 2026)
+
+Attached: SOURCES.zip. Its contents are listed in SOURCES.txt (a copy of SOURCES.txt is inside the zip).
+
+
+0. THE TASK
+
+Prove that for every fixed m >= 3 the problem Pm | prec, p_j = 1 | C_max is solvable in polynomial time by extending the 2026 algorithm for m = 3, with every lemma restated and proved for m machines and the running time given as a function of m; if a step does not extend, prove that it fails with an explicit family of instances for m = 4, and determine with proof whether the algorithm itself, not only that lemma, fails.
+
+
+1. THE PROBLEM
+
+Input: a finite directed acyclic graph G = (V, E) on n unit jobs (explicitly listed) and a fixed number m of identical machines. A schedule with deadline T is a map tau: V -> {1, ..., T} taking each value at most m times, with tau(u) < tau(v) for every arc (u, v). Minimize the makespan max tau. This is Pm | prec, p_j = 1 | C_max. For m = 2 it is polynomial (Fujii-Kasami-Ninomiya 1969, Coffman-Graham 1972); when m is part of the input it is NP-hard (Ullman 1975); Garey and Johnson (1979) listed the case m = 3 among the open problems of their book, and the complexity for every fixed m >= 3 was open before 2026. Known partial results: Garey-Johnson-Tarjan-Yannakakis (opposing forests), Dolev-Warmuth (bounded height), Nederlof-Swennenhuis-Wegrzycki (subexponential exact algorithms, arXiv:2312.03495), approximation schemes of Levey-Rothvoss (arXiv:1509.07808), Garg (arXiv:1708.04369), Li (arXiv:2004.01231), Das-Wiese (arXiv:2501.09091).
+
+
+2. WHAT IS PROVED FOR m = 3
+
+OpenAI's preprint "A polynomial-time algorithm for three-machine unit-job scheduling" (24 September 2026; public at https://github.com/openai/math/tree/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026 ) proves that P3 | prec, p_j = 1 | C_max is solvable in polynomial time. The attached course "Scheduling unit jobs on three machines" (eight lessons, CC0) re-proves every step. Structure:
+
+- Padding: add isolated jobs so that N = 3T; a "full schedule" of a set W is a sequence of disjoint 3-element antichains ("triples") with union W respecting precedence. Reordering the slots of an open interval of a full schedule gives a full schedule (lesson 1).
+- A dynamic program over all job sets described by Boolean formulas of bounded size (at most K leaves), built from atomic tests: rank of a job at most k; membership in a fixed triple; membership in the predecessor or successor cones P_a, D_a (and their closures) of a fixed triple a. There are polynomially many described sets; the program decides for each, in order of size, whether it has a full schedule; it is sound, and it is complete provided a structure theorem holds (lesson 2).
+- Structure theorem: every full schedule can be cut recursively at chosen slots into intervals whose job sets all have descriptions with fewer than 500 leaves, at every depth of the recursion. The cuts are centers and separators found by a walk through a priority order (lessons 3-4); descriptions are kept short by carried and pruned lists of upsets (lessons 5-6) and by two boundary invariants (lesson 7); the final leaf count is in lesson 8.
+- Lesson 8, Section 6 ("Where three is used") records: the number of machines appears in the definitions (slots of three jobs, padding to 3T, triples in the atomic tests and in the states of the dynamic program) and in Lemma 3.2 of lesson 5, where at most three injections survive in a pruned list because each of them contains a different job of the three-job boundary slot; the bound of five entries per list, and every leaf count, comes from that estimate.
+
+Numerical evidence (not a proof): an implementation of the construction with four machines, run on 1,500 small random instances (558,756 checks of the invariants), found no violation.
+
+
+3. THE QUESTION TO RESOLVE (every item is part of the task)
+
+(Q1) Is Pm | prec, p_j = 1 | C_max polynomial-time solvable for every fixed m? In particular: does the proof for m = 3 go through verbatim with "triple" replaced by "m-element antichain", the padding by N = mT, and the bound "at most three injections" replaced by "at most m injections" (so at most m + 2 entries per list and leaf counts linear in m)?
+(Q2) Check every lemma of the eight lessons (and of the preprint) for hidden uses of m = 3 beyond those listed in Section 2, for example:
+   - the lexicographically least ("normalized") schedules and the exchange argument of lesson 3, Lemma 2.1, which compares the sorted triples of a slot (for m-element sets: lowering one element lowers each order statistic weakly and the sum strictly, so the sorted m-tuple decreases lexicographically);
+   - the walk, separators and the shared-cutoff walk (lesson 3);
+   - centers, sides and edge cutoffs (lesson 4);
+   - the switch pair and the upset G when the direction changes (lesson 6);
+   - the boundary invariants and the exchange arguments in lesson 7;
+   - the states of the dynamic program, which contain one triple Z (lesson 2).
+(Q3) If the extension works, give the resulting running time as a function of m (the exponent will grow with m), and state the theorem precisely. If it fails, identify the exact step and give an example (a family of instances) showing that the step's conclusion fails for m = 4.
+
+
+4. REQUIREMENTS
+
+This is a complete mathematical task: do the mathematics and present the resolution of the question above, by any means necessary, with complete proofs. Orienting yourself in the literature is the normal first step of that work, not its outcome.
+
+(1) Resolve every item. For every claim in the task, prove it in the stated generality (or in a stronger form that contains it), or disprove it by an explicit counterexample whose every hypothesis you verify. Where the task asks you to determine or compute a value, a sign or a relation, determine it and prove it. If a full statement cannot be established, prove the strongest statement you can, show precisely why the remaining step does not follow, and resolve all the other items.
+
+(2) Step 1, the literature. Start from what is known and use it: Search arXiv, the OpenAI Math Release repository (including any remarks in the preprint itself about more machines), conference proceedings (STOC, FOCS, SODA, ICALP, IPCO), authors' pages and blogs for: an extension of the 2026 result to m >= 4 machines; a reduction from m machines to a structure theorem; a lower bound or hardness result for fixed m >= 4. Suggested queries: "Pm|prec,pj=1|Cmax polynomial", "fixed number of machines precedence constrained unit jobs polynomial", "three-machine unit-job scheduling OpenAI", "Garey Johnson open problem scheduling three processors resolved".
+A published theorem may be cited instead of reproved, with its exact statement, authors, title, year, theorem number and a link (say whether that version is freely accessible), after you have checked that its hypotheses hold here. A citation never replaces an argument that the cited work does not contain, and claims of preprints that the resolution depends on must be checked, not assumed. If the answer is in the literature, the solution still derives the answer to every item from the cited results, step by step.
+
+(3) Finish the task in this one response. There will be no follow-up message. Do not stop after a partial result or after the literature step, do not ask whether to continue, do not ask for more time, and do not end with an offer of further work.
+
+(4) Standards of proof. Define every object. Give every map its source, target and category. Construct a comparison map before calling it an isomorphism, natural or canonical, and prove what you claim about it. Pin every sign; never write "up to sign". A gap in a proof is not a refutation, and a counterexample counts only when every hypothesis has been verified for it. Computer calculations are welcome, as evidence or as exhaustive certificates: give the code, say exactly what it enumerates or checks, and report its output.
+For this task in particular:
+  - for every lemma you transfer to m machines, state the m-version precisely and check its proof line by line.
+
+(5) Deliverables, as files to download:
+  (a) the solution as one machine-readable file: Markdown with LaTeX mathematics ($...$ and $$...$$) named Q03-solution.md, or a LaTeX document Q03-solution.tex that compiles with standard packages, or JSON (Q03-solution.json) whose fields hold the statements and proofs in LaTeX. It is complete and self-contained and is written as a mathematical paper: the results stated as theorems, counterexamples stated as propositions, complete proofs, references with exact locators and links, and at the end a short section "Further consequences" with ideas, labelled as such (for example for the variant with release dates or deadlines, for Q | prec, p_j = 1 | C_max, or for the approximation schemes);
+  (b) if useful, a PDF of the solution and figures or diagrams that make the proofs clearer;
+  (c) one ZIP file, Q03-artifacts.zip, containing every file you created: the solution file of (a), the PDF and figures of (b) if made, all code used for computations or checks together with its output, and any data. This ZIP is the one file I download: it must hold the complete answer, so that nothing else needs to be downloaded. Offer it as a download link of its own.
+In the chat reply give only the files and a two-sentence summary of the result.
