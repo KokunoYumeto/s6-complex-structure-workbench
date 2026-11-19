@@ -1,0 +1,304 @@
+# E6 selected-infinity: directed assembly ledger
+
+Working ledger owned by blind_control, saved before checkpoint24.
+The full finite quotient resolution is owned by root. Fourfold owns
+the source/Miller/point-line atlas EI.1--12. The detailed root and
+annular maps are EIR.1--11; the independently checked local toric
+maps are SIT.1--5. No numerical return is assigned here.
+
+## ASI.1. The actual domains and overlap arrows
+
+Use the original source parameter and selected branch
+\[
+ r=e^2(3e^2-2)/(1-3e^2)^2,\qquad
+ t_{c,o}=e^4(1-e^2)/(1-3e^2)^3 .
+\]
+The original finite cap is kept on its actual fixed infinity disc
+\(|q_{\infty,o}|<\delta\), with the complete K96 \(A,B\), character
+and reference cochain. The ordinary source/Cartier family outside
+the collision extends on compact subsets of the original minimal
+source: its selected height is a nonzero analytic function there.
+Its entire value stays in the lift \(B_{\rm sel}\).
+
+The finite-native source and the complementary ordinary chart have
+the exact overlap
+\[
+ (x_e,y_e,t_e)=(\chi^{-2}\bar X,\chi^{-3}\bar Y,\chi^{-4}),
+ \quad e=\chi\sigma,\quad q_e=\chi^{-4}H.
+\]
+The point frames agree, and their actual line chains satisfy
+\[
+ X_j=\chi^j A_j,\quad Y_j=\chi^{-j-1}B_j,\qquad
+ \lambda e^4\widehat B_e
+       =\lambda\sigma^4H\,\mathcal B_{a,b}.
+\]
+These equalities are EI.74--76 and EIR.54--56, with all original
+Miller factors and the genuine point Hom frame included. They join
+the finite-native \(I_2\) source resolution to the complementary
+ordinary chart. No division section is used at \(\sigma=0\).
+
+On the selected \(H\)-disc, the six-factor chart has its actual
+negative \(T_0\) boundary. Its overlap with the genuine ordinary
+point-line chain is
+\[
+ k=4j+r-1,\qquad
+ X_k=\psi^{-1}q^j s_r,\quad Y_k=\psi q^{-j}t_r,
+ \qquad \psi=f_{P^a}/r_a .
+\]
+The full \(\psi\), the integer \(q^j\), the source-chain overlap,
+the physical \(B\) reset and the remaining fourth-root action
+are retained in SIT.11--17. The source section graph is carried
+by the nine-factor \((\eta^4,v^4,q)\) atlas with its exact
+\((\eta,v)\mapsto(\eta c_b,v/c_b)\) source reset.
+
+The complementary chart reaches the original finite cap only on
+its large-\(\sigma\) overlap:
+\[
+ q_{\infty,o}=d^3/\sigma^4,\qquad
+ |\sigma|>|d|^{3/4}\delta^{-1/4}.
+\]
+There the map is the complete original ordinary-to-cap map, pulled
+through the displayed source and point-line graph. Its sector
+square is EIR.58--60:
+\[
+ \Phi_\beta=A^kB^{j_{\alpha\beta}}\Phi_\alpha,\qquad A^m=B^n.
+\]
+Thus the graph generator \(\sigma\mapsto-i\sigma\), taken along
+the stated negative quarter turn, acts on root representatives
+by \(AB^{j_\gamma}\). Every finite character, period column and
+reference suspension integer stays in this map. The fourth
+iterate is \(A^4B^{\sum j_\gamma}\); it is the identity deck
+word on the completed cap quotient. This is the exact finite
+groupoid descent on the overlap.
+
+## ASI.2. The punctured family identification
+
+For \(e\ne0\), the base graph is an isomorphism: its new charts
+have the written inverse source rescalings, and its exceptional
+base locus is in \(e=0\). The O/T blowup centres have
+\(\sigma=0\), hence lie in \(e=0\). In the selected factor
+atlas, the four \(\sigma\) factors are units when \(e\ne0\);
+deleting them gives exactly the two original \(T_0\) ruling
+charts, with the full unit maps of SIT.11. In the nine-factor
+section atlas, \(\eta v=\sigma\ne0\), so its eight unit factors
+delete by the same literal chart maps. Thus these modifications
+retain the original punctured family.
+
+The actual family map on the ordinary charts is the original
+source rescaling, carrying its canonical point section. On the
+original finite cap it is the identity in the retained original
+cap coordinates. The overlap equality is the preceding
+\(\Phi_\beta\) square, including its \(B\)-powers. On the selected
+Tate chart the invariant coordinates \(Q,Z,V_{\rm pt}\) agree;
+the tensor coordinates carry
+\[
+ V_{{\rm tensor},o}=(e/d)^{1-a}V_{{\rm tensor},e}.
+\]
+Every Cox character consequently carries the exact factor
+\[
+ e^{4h+(1-a)j}d^{-3h+(a-1)j}
+\]
+from EIR.7. This factor is an invertible analytic function on
+the punctured parameter domain, with its written integer
+winding retained. No contraction of that winding is used.
+
+In a continued native root coordinate the same map has
+\(J_{u+1}=D_o^{-4}J_u\). The complete cap representative is
+the compensating \(A^{-4}D^4\), and in the reduced row the
+retained \(B^{-n}\) reindex and the full period column of
+EIR.28 are included. Alternatively, the preceding construction
+uses the fixed original cap coordinates throughout. The
+EIR.58--60 square proves that these two descriptions give the
+same quotient map, with the actual inverse and all overlap
+cochains.
+
+Consequently the punctured atlas carries the original oriented
+family and its positive \(e\)-loop through explicit source,
+line, cap and selected-ruling maps. This identifies its mapping
+torus with the original marked-loop mapping torus. It does not
+turn the unresolved central compact assembly into an evaluated
+characteristic number.
+
+## ASI.3. Remaining finite normal and compact assembly data
+
+The ordinary O/T section corners retain the two-cone
+\(\mu_4\) actions of SIT.25. Root is resolving these in their
+actual quotient lattice. The entire chain admits the common
+physical-lattice dictionary
+\[
+ V_{\rm phys}=(\eta v)^jX_j,\qquad
+ (x_\chi,x_\eta,x_v,x_X)\longmapsto
+ (x_\chi,x_\eta,x_v,x_X+j(x_\eta+x_v)).
+\]
+It sends
+\[
+ \mathbb Z^4+\mathbb Z(1,-1,0,j)/4
+ \quad\hbox{onto}\quad
+ \mathbb Z^4+\mathbb Z(1,-1,0,0)/4
+\]
+by the displayed integral coordinate change. The physical
+circle is the last primitive coordinate. In this common
+lattice the two cones at index \(j\) are
+\[
+ (e_\chi,R^v_j,R^\eta_{j+1},R^\eta_j),\qquad
+ (e_\chi,R^\eta_{j+1},R^v_{j+1},R^v_j),
+\quad
+ R^\eta_j=(0,1,0,j),\ R^v_j=(0,0,1,j).
+\]
+The actual \(B\) reset is \(j\mapsto j+4\), or
+\(x_V\mapsto x_V+4(x_\eta+x_v)\), together with its full
+source and Hom units. This gives the required period arrows
+for compatible finite-quotient resolutions.
+
+Still to be assembled are their compact fundamental domains,
+the complete boundary list, and the normal and physical
+circle-line characteristic comparison after all those pieces
+are glued. The local source graph contains its actual A1
+normalization and the contracted intermediate curve; neither
+is removed from that remaining boundary calculation.
+
+
+## ASI.4. Completed local interfaces after checkpoint24
+
+The factor-order comparison is now the actual common
+modification FO.1–6 in
+notes/part3_e6_selected_infinity_factor_overlay_working.md.
+It retains the alternating ordinary order \((\eta,v)^4\)
+and the selected grouped order \((\eta^4,v^4,q)\).
+Their exact overlap has 38 regular three-cones.
+The ordinary quotient extension has 238 regular
+four-cones in the original invariant lattice; the
+full selected extension has 39 regular cones through
+\(q=0\). Both parent morphisms, all period faces
+and every unit exponent are saved.
+
+In particular, the common dense frame square is
+\[
+ V_\theta=\psi V,\qquad
+ \beta=\mathcal B\,\frac{\psi(T_bp)}{\psi(p)},\qquad
+ q=\kappa H .
+ \tag{ASI.1}
+\]
+The ordinary period is
+\(V\mapsto\lambda H\mathcal B\,\sigma^4V\).
+The selected period is
+\(V_\theta\mapsto(\lambda\beta/\kappa)\sigma^4qV_\theta\).
+Their equality follows by substitution in ASI.1,
+with all arguments retained. Its period-index arrow
+is \(q^j\psi^{-1}\) on the \(q\)-unit overlap.
+Through \(q=0\), that same \(q^j\) is part of the
+literal selected monomial period
+\((\eta,v,q,V)\mapsto(\eta,v,q,V+4\eta+4v+q)\).
+
+The 238-cone common quotient has the actual
+\(B\)-matrix
+\[
+ \begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\-1&4&4&1\end{pmatrix}
+\]
+in \((\chi^4,\chi\eta,v,V)\)-valuation coordinates.
+It replaces the ordinary-only 52-cone template
+when the common selected interface is required.
+The earlier template, all its data and its audit
+remain preserved. There are two analytic source
+copies, O and T; their period faces glue crosswise
+under the full \(B\) map, with \(c_b\) and
+\(u_O/u_T\). The cone number is a local chart count.
+
+The native finite I2 graph now includes its entire
+\(t=0\) fibre through IA.3–13. Its source ideal
+is exactly \((b_0,\epsilon)^2\), and its O
+ideal is \((\eta_e,\epsilon)\). On \(\chi\ne0\),
+\[
+ (b_0)_e=\chi\bar Y,\qquad
+ \eta_e=\chi\bar\eta,\qquad\epsilon=\chi\sigma.
+\]
+The two graph ideals differ from the complementary
+ones by the same source unit \(\chi\).
+Their projective coordinates, actual point
+Cartier ratios and original-source resolutions
+therefore agree. The line-chain arrow is the
+complete \(X_k=\chi^kA_k,\ 
+Y_k=\chi^{-k-1}B_k\).
+
+## ASI.5. The remaining finite source copies
+
+The other two central two-torsion points are
+\((\bar X,\bar Y)=(i,0),(-i,0)\).
+The fourth-root generator exchanges their
+neighbourhoods; its square fixes each.
+Their four free coordinates are
+\((\chi,\zeta=\bar Y,X_j,Y_j)\), with full
+fourth-root weights \((1,-1,j,-j-1)\).
+For even \(j\) the actual fixed ideal is
+\((\chi,\zeta,Y_j)\); for odd \(j\) it is
+\((\chi,\zeta,X_j)\).
+
+The complete source map is
+\[
+ \bar X'=\frac d{\bar X}
+           +\frac{2\sigma(\zeta+\sigma)}{\bar X^2},\quad
+ \zeta'=-\frac{\bar X'}{\bar X}\zeta
+            +\left(1-\frac{\bar X'}{\bar X}\right)\sigma .
+ \tag{ASI.2}
+\]
+Since \(\sigma=X_jY_j\), this preserves the
+actual fixed ideal by the invertible triangular
+matrix with its full source-mixing term.
+Its inverse preserves the same ideal.
+Blowing up this ideal and then taking its
+involution quotient gives the three smooth
+charts
+\((\rho=t^2,z_b,z_c,u)\), where \(u\) is
+the neutral coordinate and \(w_i=tz_i\)
+are the odd coordinates. Every coarse
+quadratic has the literal map
+\(w_iw_k=\rho z_i z_k\).
+For a full ideal matrix \(M\), put
+\(L=Mz\); its target-pivot chart is
+\[
+ \rho'=\rho L_\beta^2,\qquad
+ z_\gamma'=L_\gamma/L_\beta ,
+ \tag{ASI.3}
+\]
+with the entire neutral-line multiplier.
+Thus the nonmonomial source mixing extends
+through the actual quotient resolution.
+
+The full \(B\) exchanges the two source
+points and shifts \(j\) by four. When one
+point is chosen to represent the exchanged
+pair, its period closing is
+\(\gamma^{-1}B\), including the exact
+fourth-root phases and physical normal
+weights. The adjacent chain-index
+identifications retain the nonzero
+coordinate squared in the odd-line
+ideal. These maps are the inputs to
+the global fixed-face ledger.
+
+The marked original volume uses
+\[
+ -8(X_jY_j)^3d^{-2}u\,
+        d\chi\wedge d\zeta\wedge dX_j\wedge dY_j,
+ \qquad u=(3\bar X^2+2a_2\bar X+d)^{-1}.
+ \tag{ASI.4}
+\]
+Its central value is \(u=-1/2\) at both
+points. The quotient chart's oriented
+full unit is \(-4d^{-2}u\), and its
+logarithmic character is \((1,1,4,4)\)
+in the four cover coordinates.
+The exact source-differential identity
+transports this full unit, not just
+its central value.
+
+The independent μ4 and μ2 audits are
+records/blind_audit_e6_selected_infinity_mu4_quotient.json
+and records/blind_audit_e6_selected_infinity_mu2_pair.json.
+The common factor fan supplies an additional actual
+modification with both parent arrows. These local
+calculations do not assign the compact normal
+double, determinant-line extension or final return;
+those require the complete attached fixed-face
+and cap ledger.
+

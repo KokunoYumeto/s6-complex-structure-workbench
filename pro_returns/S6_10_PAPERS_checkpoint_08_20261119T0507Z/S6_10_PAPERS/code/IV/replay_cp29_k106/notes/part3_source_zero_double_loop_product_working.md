@@ -1,0 +1,513 @@
+# The actual source-zero native return and its first diagonal flop
+
+Proved as P3K.60 after complete root and independent checks audits,
+17 November 2026. This note retains the complete family
+of RG.1--7, including its ordinary and cap closing arrows. The earlier
+algebra-only attempt remains in
+\path{notes/part3_source_zero_double_loop_diagnostic.md}. The new
+geometric step is DZ.1: an actual collar coordinate arrow closes the
+native single-star product, and its literal pullback closes the
+doubled three-curve plumbing. DZ.4 identifies the actual square in
+the relative diffeomorphism group. No individual source-zero class
+is assigned.
+
+The source, scalar and cap data are
+\[
+ Y^2=X^3+(1-2v)X^2+TX+v^2,\quad G=(0,v),\quad
+ q=T-(v^2-2v),\quad \lambda=v^N\lambda_0,
+\]
+\[
+ (a,b,m)=(1,2,4p)\ \text{or}\ (2,1,4p-1),\quad
+ N=km,\quad p,k\ge1,\quad n=\pm1 .
+\]
+The fan is initially the fan of the two triangles in RG.2a. The
+physical circle is the original positive phase of \(V\). The opposite
+diagonal fan is its reflection \(J\mathcal T\). Every source, root,
+Cartier line, finite character, full \(F_0\), and integer annular
+cochain is the one in RG/K49. There is no additional logarithmic disc
+at either colliding finite site.
+
+## DZ.1. The literal parameter seam on all three edges
+
+Take a small positive \(v_*\), and first parameterize one positive
+turn by \(v=v_*e^{2\pi i\tau}\), \(0\leq\tau\leq1\). Choose one
+\(q\)-disc which excludes the other moving nodal value for this
+compact parameter circle. Its full period maps are
+\[
+ h:(Z,V,q)\longmapsto(\kappa qZ,\alpha V,q),\qquad
+ B:(Z,V,q)\longmapsto(gZ,\eta qV,q),                 \tag{DZ.1}
+\]
+where all four coefficients are the actual nowhere-zero holomorphic
+functions of \(q\) and the cut parameter. Their windings on the
+double loop, later parameterized by \(v=v_*e^{2i\theta}\), are
+\[
+ \begin{pmatrix}\operatorname{wind}\kappa&
+                 \operatorname{wind}g\\
+                 \operatorname{wind}\alpha&
+                 \operatorname{wind}\eta\end{pmatrix}
+       =2\begin{pmatrix}1&b\\-a&N-2\end{pmatrix}.    \tag{DZ.2}
+\]
+The functions themselves, rather than only these integers, are kept
+below.
+
+Put \(L_0=nk\). The actual forward parameter arrow for one turn is
+\[
+ R_{\rm ord}^{(1)}:(Z,V,q)\longmapsto(Z,q^{L_0}V,q). \tag{DZ.3}
+\]
+It translates the fan indices by \((0,L_0)\). Applying the actual
+period \(B^{-L_0}\) returns each chosen cone representative to its
+original index and leaves the bounded map
+\[
+ E_v:(Z,V,q)\longmapsto(g(q,v)^{-L_0}Z,
+                         \eta(q,v)^{-L_0}V,q).     \tag{DZ.4}
+\]
+This is an equality of quotient arrows, not a substitution of a
+bounded multiplier for the original period.
+
+There are holomorphic-in-\(q\), smooth-in-\(\tau\) logarithms
+\(G=\log g\), \(H=\log\eta\) on the cut disc times interval. Choose a
+smooth real function \(\chi\), zero on an initial parameter collar and
+one on a terminal parameter collar. Define the actual local maps
+\[
+ C^{(1)}_\tau:(Z,V,q)\longmapsto
+       (A_\tau Z,D_\tau V,q),\qquad
+ A_\tau=e^{L_0\chi G},\quad D_\tau=e^{L_0\chi H}.    \tag{DZ.5}
+\]
+They have explicit inverses obtained by negating the exponents.
+On the terminal collar they are exactly
+\((Z,V)\mapsto(g^{L_0}Z,\eta^{L_0}V)\), independently of the chosen logarithm
+branches. Thus, on the two parameter collars identified by the
+original forward arrow,
+\[
+                     C_{\rm end}E_v=C_{\rm start}=1. \tag{DZ.6}
+\]
+This equality holds as a map in \(q\) and the collar parameter, so
+all parameter and spatial derivatives match at the seam. Using only
+the reference values \(g_*,\eta_*\) would not supply this collar
+identity; (DZ.5) uses the varying functions.
+
+Every multiplier in (DZ.1) and (DZ.5) depends only on the unchanged
+coordinates \(q,v\). Consequently \(C^{(1)}_\tau\) commutes literally
+with \(h,B\), and with the physical circle. It therefore descends
+to the actual quotient neighbourhood. On the two triangle charts its
+maps are
+\[
+ \begin{split}
+ T^+:(x_0,x_1,x_2)&\longmapsto
+       ((AD)^{-1}x_0,Ax_1,Dx_2),\\
+ T^-:(y_0,y_1,y_2)&\longmapsto
+       (ADy_0,D^{-1}y_1,A^{-1}y_2).
+ \end{split}                                          \tag{DZ.7}
+\]
+Their three-coordinate products remain \(q\), so the maps extend
+through both vertices and every toric boundary. In the six named
+charts \((a_0,b_0,c_0)\), \((u_0,v_0,w_0)\), the three transitions are
+\[
+ \begin{array}{c|ccc}
+ &u_0&v_0&w_0\\ \hline
+ C_0&\kappa\alpha b_0c_0&\alpha^{-1}a_0b_0&
+                                      \kappa^{-1}b_0^{-1}\\
+ C_1&g\eta b_0c_0&\eta^{-1}c_0^{-1}&g^{-1}a_0c_0\\
+ C_2&a_0^{-1}&a_0b_0&a_0c_0 .
+ \end{array}                                          \tag{DZ.8}
+\]
+Substitution of (DZ.7) on either side gives the same factors
+\((AD,D^{-1},A^{-1})\) in all three rows. This verifies the common
+edge and corner maps, retaining all four complete units. In
+particular (DZ.5) changes none of the coefficients in (DZ.8).
+The vertex charts defined by (DZ.5) are now periodic by (DZ.6).
+In particular the diagonal native star is already a literal product
+for this single turn: its two charts satisfy
+\(z'=z^{-1},c'_i=zc_i\), the \(C_2\) row of (DZ.8), with no
+parameter-dependent transition. This assertion uses no
+contraction of the other two curve tubes.
+
+We now specify, rather than independently choose, the doubled
+seam. On \(0\leq u\leq2\), write \(u=j+\tau\), \(j=0,1\), and put
+\[
+              C^{(2)}_{j+\tau}
+                    =C^{(1)}_\tau E_{v(\tau)}^{-j}. \tag{DZ.8a}
+\]
+Near the intermediate seam the two formulas both equal \(E_v^{-1}\);
+they agree on collars with every derivative by (DZ.6). At the last
+seam the product is \(E_v^{-2}\), which cancels the doubled
+forward arrow after the literal period \(B^{-2L_0}\).
+Every factor in (DZ.8a) commutes with the full periods, the physical
+circle, and all rows of (DZ.8). Thus these closed doubled charts
+retain exactly (DZ.2). The double native-star product so obtained
+is precisely the pullback of the single product under
+\(u\bmod2\mapsto u\bmod1\): the factor \(E_v^{-j}\) is the
+transition from the \(j\)-th raw sheet to its first-sheet
+representative. There is no independently selected second-loop
+normal framing.
+
+Put \(L=2L_0=2nk\). The double cap retains the actual forward map
+\(h_\infty^L\) of RG.2,
+where \(h_\infty=1-T_0(v)q_\infty\), and the full root/norm
+cochain. Its overlap square remains
+\[
+                   F_{\rm end}R_{\rm ord}
+                         =R_{\rm cap}F_{\rm start}.  \tag{DZ.9}
+\]
+The local arrows (DZ.5) and (DZ.8a) are coordinate maps on the cusp
+neighbourhood, not replacement global source or cap maps. To choose
+parallel transport compatible with their boundary product, extend
+its time-dependent velocity from a collar using a cutoff in a
+slightly larger cusp neighbourhood. This is a smooth vector field
+on the already constructed compact family and has a complete flow
+for the compact parameter interval. Outside that neighbourhood use
+the original family connection and its literal cap arrow.
+The two vector fields are joined in their affine space. This
+constructs actual global transport with the prescribed cusp
+boundary; its endpoint is the physical return formed with the
+inverse of the unchanged global closing arrow.
+
+## DZ.2. A closed ordinary plumbing product
+
+Work in the doubled closed charts of DZ.1, and suppress their
+tildes only after the explicit pullback map (DZ.8a). At the second vertex use
+\((u_0,\eta v_0,\kappa w_0)\), with the same initial constant
+transformation at the reference fibre. The ordered normal matrices
+are literally
+\[
+ D_0=\operatorname{diag}(\eta/\alpha,\kappa\alpha),\quad
+ D_1=\operatorname{diag}(\kappa/g,g\eta),\quad
+ D_2=\operatorname{diag}(\eta,\kappa).                \tag{DZ.10}
+\]
+Their common determinant winding is \(2t\), \(t=N-1\), and their
+first diagonal windings are
+\[
+ l_0=2(N+a-2),\qquad l_1=2(1-b),\qquad
+ l_2=2(N-2).                                        \tag{DZ.11}
+\]
+The based ratio of each diagonal entry is its displayed angular
+factor times the exponential of its actual based periodic
+logarithm. This follows by subtracting its winding from the full
+nonzero loop, on the same \(q\)-disc.
+
+For every integer \(d\) use the actual based quaternion contraction
+\[
+ H_d(s,\theta)=
+  (\sin\vartheta(s)e^{id\theta}+j\cos\vartheta(s))
+  (\sin\vartheta(s)+j\cos\vartheta(s))^{-1},          \tag{DZ.12}
+\]
+where \(\vartheta\) is smooth, constant at \(0,\pi/2\) near the two
+ends. Thus \(H_d(0,\theta)=1\), \(H_d(1,\theta)=e^{id\theta}\), and
+both parameter endpoints are one. For
+\(Q=n_0+j\overline{n_1}\), set
+\[
+              T_i(Q)=H_t Q H_{l_i-t}.               \tag{DZ.13}
+\]
+At its second radial end this has the two complex factors
+\((e^{il_i\theta},e^{i(2t-l_i)\theta})\), exactly the angular part
+of \(D_{i,*}^{-1}D_i\). Multiply by the diagonal exponentials of
+the retained periodic unit logarithms, with a radial cutoff zero
+at the first end and one at the second. The resulting
+\(\mathcal K_i\) is based and periodic and satisfies
+\[
+ \mathcal K_i(0,\theta)=1,\quad
+ \mathcal K_i(1,\theta)=D_{i,*}^{-1}D_i,\quad
+                   zD_{i,*}\mathcal K_i(1,\theta)=zD_i. \tag{DZ.14}
+\]
+On the tube of the \(i\)-th curve use
+\((z,n)\mapsto(z,\mathcal K_i(s(|z|),\theta)n)\).
+The last equality is its exact second-vertex collar equality;
+near the first vertex it is the identity. The three curve interiors
+are disjoint, so the three maps glue to the two vertex maps.
+
+For the original, nonlinear germs retain the full normal rescaling
+\(R_\tau(z,n)=(z,\tau n)\). The conjugation
+\(R_\tau^{-1}FR_\tau\) extends smoothly to \(\tau=0\) with the
+zero-section map and its invertible normal derivative. A common
+small tube works on the compact parameter interval. Integrating
+the cutoff velocity of this isotopy restores the actual higher
+normal terms, with the vertex collars protected. These isotopies
+are periodic in the closed charts, and the maps (DZ.8a) carry them
+back to the original family with its seam (DZ.6).
+Finally carry the rounded boundary by the same collar isotopy.
+This is an actual based oriented ordinary product of the full
+three-curve plumbing, not merely of its normal bundles.
+
+## DZ.3. Actual circle traces, derivative and the diagonal right integer
+
+The maps (DZ.8a) commute with the physical circle. Therefore that
+circle has precisely the original vertex weights
+\((-1,0,1)\), \((1,-1,0)\) in the closed charts. In the ordered
+curve normal coordinates its tangent weights and normal differences
+are
+\[
+                  w=(0,1,-1),\qquad d=(-2,-1,-1).
+\]
+The ordinary product (DZ.13) carries its normal action to
+\[
+ Q\longmapsto
+ (H_t e^{-iw_i\phi/2}H_t^{-1})Q
+ (H_{l_i-t}^{-1}e^{id_i\phi/2}H_{l_i-t}).            \tag{DZ.15}
+\]
+The retained diagonal unit exponentials conjugate this literal
+formula and give a based homotopy back to it, with the normal metric
+transported. Normal rescaling carries the higher derivatives as in
+DZ.2. Both parameter ends and every radial-end physical orbit are
+closed; the vertex orbit maps are independent of the parameter.
+
+Here is the actual degree calculation with its arrows. On the
+positive source path put \(U=\cos\chi+j\sin\chi\) and
+\(E_i=e^{iw_i\phi/2}\). The moved source Hopf representative is
+\(E_i^{-1}UE_i\). At the normal section \(q_H=1\), the trace is
+\[
+ E_i^{-1}UE_i H_t E_i^{-1}H_t^{-1}U^{-1}
+              H_{l_i-t}^{-1}e^{id_i\phi/2}H_{l_i-t}. \tag{DZ.16}
+\]
+For (DZ.12), direct differentiation at the inverse images of
+\(-i\) gives
+\(\deg(H_diH_d^{-1})=-d\) and
+\(\deg(H_d^{-1}iH_d)=d\), in the path--parameter orientation.
+The factor \(UiU^{-1}\) has degree zero. The positive quaternion
+volume gives degree \(c e\) for an axis of degree \(e\) and angle
+\(c\phi/2\). The exact Maurer product boundary terms vanish on
+the radial ends and the constant central-sign angle ends; the
+parameter faces cancel. Thus (DZ.16) has normal-meridian degree
+\[
+                    I_i=t w_i+d_i(l_i-t).            \tag{DZ.17}
+\]
+For the derivative use the universal covering group of stable
+\(GL^+\), with its integral third class identified by the lifted
+polar deformation. The chain-rule identity is retained in that
+group. A left quaternion factor contributes its degree and a right
+factor its negative. The base rotation has only the \(\phi\)
+variable. At \(2\pi\) the base and normal Spin endpoints are both
+\((-1)^{w_i}\), so their product is one. The resulting full
+closed stable derivative has degree
+\[
+                    W_i=t w_i-d_i(l_i-t).            \tag{DZ.18}
+\]
+These computations use the same actual endpoint caps as CT.3:
+take generic normal sections with all vertex coordinates nonzero,
+connect them by paths interpolating squared moduli and phases in
+the vertex links, and cap each parameter-independent end by
+\(D^2_\theta\times S^1_\phi\), constant in its disc variable.
+The circle changes only phases and preserves the axis-tube
+inequalities. The vertex traces factor through dimension two.
+Thus no extra vertex meridian or third derivative class occurs.
+The change from the coordinate tangent frame to the ambient
+stable frame extends through each annulus times its normal
+four-disc, whose third cohomology is zero; its pairing on each
+such capped trace is zero. This is the same exact frame arrow
+used in ST.2, now on the closed charts constructed in DZ.1.
+
+Let \(V\) be the actual ordinary-product variation, \(\delta\)
+the actual ambient stable derivative, and \(D_i,m_i\) the
+oriented relative cycles and normal meridians. For
+\(\gamma_j=a_j-a_0=\partial x_j\), the positive-circle boundary
+identity \(\partial\Delta=-\Delta\partial\) gives
+\[
+             \Delta x_j=w_jD_j-w_0D_0 .
+\]
+The literal action prism and the chain-rule/Stokes prism then give
+\[
+ V(w_je_j-w_0e_0)=I_je_j-I_0e_0,\qquad
+ w_j\delta_j-w_0\delta_0=W_j-W_0.                    \tag{DZ.19}
+\]
+The return fixes the common boundary by the actual product in
+DZ.2; its integral meridians generate \(H_3\), and \(H_2\) of the
+common exterior is zero. These are exactly the groups in the
+three-curve complement of K29, since the curves and their
+neighbourhood have been carried by the explicit ordinary product.
+They justify both prism identities as identities of the actual
+return.
+
+Substituting (DZ.11) gives
+\[
+ \begin{split}
+ I&=(-2(N+2a-3),\,2N+2b-4,\,-2N+4),\\
+ W&=(2(N+2a-3),\,2-2b,\,-2).
+ \end{split}                                          \tag{DZ.20}
+\]
+In particular \(w_0=0,w_2=-1\) yield
+\[
+                  V_{22}=2N-4,\qquad
+                  \delta_2=2N+4a-4.                 \tag{DZ.21}
+\]
+K31's actual ambient-to-single-star product frame map has third
+class \(e_2\). Carrying that map by the based product above retains
+its derivative correction \(-V_{22}\); it is not an identification
+of two unmarked frames. Hence the actual ordinary relative
+integers satisfy
+\[
+ 2n_2=\delta_2-V_{22},\qquad m_2=-V_{22}-n_2,
+ \quad\text{so}\quad
+           (m_2,n_2)=(-2N+4-2a,\,2a).               \tag{DZ.22}
+\]
+
+## DZ.4. The native Cox product and the actual flop
+
+The diagonal native star in the closed charts is literally
+\[
+ (z,c_0,c_1)=(a_0,b_0,c_0),\qquad
+ (z',c'_0,c'_1)=(u_0,v_0,w_0),\qquad
+                  z'=z^{-1},\quad c'_i=zc_i.
+\]
+Its Hopf coordinate is
+\(q_H=U(z)(c_0+j\overline{c_1})\).
+The native-to-ordinary boundary arrow is, with the full unit
+homotopy retained,
+\[
+ q_H\longmapsto
+       (U H_t U^{-1})q_H H_{l_2-t}.                 \tag{DZ.23}
+\]
+Its left factor has degree \(2t\) on the Hopf-oriented sphere
+times the parameter, by the exact Maurer boundary integral of
+OP.21--23 with exponent \(t\). Its right factor depends on only
+the radial coordinate and parameter and has third degree zero.
+Extending the inverse factors over \(D^3\times I\) by the
+literal cylinder retraction of OR.2 gives endpoint degrees
+\((-2t,0)\). Consequently the ordinary relative return is the
+native return followed by the actual pure-left map \(L^{-2t}\).
+There is no disc-supported factor: these coefficient maps extend
+over \(D^3\times D^4\). In particular the native right integer is
+unchanged, and the complete native pair is
+\[
+                        (m_2^{\rm nat},n_2^{\rm nat})
+                                      =(2-2a,\,2a). \tag{DZ.24}
+\]
+
+The single and doubled seam maps themselves also extend through
+the flop. In Cox
+coordinates with auxiliary weights \((1,1,-1,-1)\), take the
+chart \(z=a_1/a_0,c_i^{\rm chart}=a_0c_i\).
+For the multipliers \(A,D\) in (DZ.5) or (DZ.8a), the literal Cox lift is
+\[
+ (a_0,a_1,c_0,c_1)\longmapsto
+       (a_0,(AD)^{-1}a_1,Ac_0,Dc_1).               \tag{DZ.25}
+\]
+Here the actual height is \(q=a_0a_1c_0c_1\), which this map
+preserves. Thus even for the full \(q\)-dependent multipliers its
+inverse is obtained by replacing \(A,D\) by \(A^{-1},D^{-1}\)
+at the same \(q\); no implicit inverse or constant-unit
+replacement is needed.
+It commutes with the auxiliary action, the physical circle and
+all period translates. It gives (DZ.7) on the original star and
+extends to the other small resolution by its other quotient
+chart. Transport the Hermitian metric by this map, then use its
+positive radial normalization on the common link. Thus the
+two native product links and their parameter seams are carried
+by the same actual Cox map, with all its nonunit moduli retained.
+On each free period representative this is a literal map;
+equivariance extends it to the whole periodic orbit of curves.
+
+The common-link arrow and its oriented exterior extension are
+therefore the same explicit maps
+\[
+ \tau(h,q_H)=(q_H^{-1}hq_H,q_H),\qquad
+ T(y,q_H)=(q_H^{-1}yq_H,q_H) .
+\]
+The unrestricted four-weight identity of FF.1/SF.8 intertwines
+them with (DZ.25), and normal rescaling carries the full
+\(q\)-dependent unit germs on both small resolutions. The
+physical cap and exterior family are unchanged outside these
+matched cusp charts. The diagonal flip gives exactly
+\(J\mathcal T\) from \(\mathcal T\), including the integral
+period indexing.
+
+We first identify the actual relative square, before applying the
+flop formula. Let \(f\) be the positive one-turn return on the
+exterior of the single native star, using precisely the single
+product following (DZ.8). Choose a global family connection
+compatible with this product on its boundary. Its literal pullback
+to the degree-two parameter cover has relative return \(f^2\):
+the first sheet has endpoint \(f\), and the second uses the same
+connection and boundary product under the transition \(E_v^{-1}\)
+in (DZ.8a). The full forward arrows compose as
+\((R_{\rm ord}^{(1)})^2=R_{\rm ord}^{(2)}\) and likewise on the
+cap, by RG.3. Thus the closed parameter and cap square is exact.
+
+The ordinary-product calculation (DZ.22), followed by the inverse
+of the actual boundary change (DZ.23), computes this same
+pulled-back native return. Indeed both resulting connections use
+the literal native boundary product (DZ.8a); their interpolation
+with that boundary fixed supplies a relative isotopy of endpoints.
+Hence the native pair (DZ.24) is the free pair of \(f^2\).
+K23's relative generators \(L,R\) commute literally, and its
+disc-supported central factor is central. The free-coordinate
+homomorphism to \(\mathbb Z^2\) consequently sends
+\(f^2\) to twice the free coordinates of \(f\).
+Multiplication by two is injective on each of these two integral
+coordinates. We therefore obtain the actual single native pair
+\[
+                         (m(f),n(f))=(1-a,a).       \tag{DZ.26}
+\]
+This argument takes an actual square in the relative group and
+uses its torsion-free coordinates. It does not divide a class in
+\(\Theta_7\).
+
+K23's already proved actual relative conjugation for the same
+single-loop Cox map is
+\[
+ T(L^mR^n\mathcal C^s)T^{-1}
+          =L^{-n}R^{m+2n}\mathcal C^{s+n}.
+\]
+Here the native central coordinate is the actual single return
+\(s=[Z_{\mathcal T}]\), and the single Cox family arrow is the
+one carried by (DZ.5) and (DZ.25). Applying the identity to
+(DZ.26) proves
+\[
+                 [Z_{J\mathcal T}]-[Z_{\mathcal T}]
+                         =a\quad\text{in }\mathbb Z/28. \tag{DZ.27}
+\]
+Every source/cap/scalar datum is the same one as RG.25. This
+relation is derived from the actual single-loop relative
+conjugation. Combining it with the already proved paired sum
+still leaves a two-torsion ambiguity for either individual
+source-zero class; neither is selected here.
+
+## DZ.5. The paired returns with their exact remaining ambiguity
+
+Keep the actual paired sum of P3K.58, with its P3K.57 infinity
+comparison. Write
+\[
+ A_{\rm scalar}=0\quad(a,b,m)=(1,2,4p),\qquad
+ A_{\rm scalar}=1-3p\quad(a,b,m)=(2,1,4p-1).
+\]
+In both rows P3K.58 is exactly
+\[
+       [Z_{\mathcal T}]+[Z_{J\mathcal T}]
+                          =-a+2kA_{\rm scalar}.
+\]
+Together with (DZ.27) it implies
+\[
+             2\bigl([Z_{J\mathcal T}]-kA_{\rm scalar}\bigr)=0
+                              \quad\text{in }\mathbb Z/28.
+\]
+The kernel of multiplication by two in this specified group is
+exactly \(\{0,14\}\): for an integer representative \(r\),
+\(2r\equiv0\pmod{28}\) is equivalent to \(r\equiv0\pmod{14}\).
+Consequently the actual pair has precisely the form
+\[
+ \boxed{\;
+ ([Z_{\mathcal T}],[Z_{J\mathcal T}])
+   =(-a+kA_{\rm scalar}+14e,\ kA_{\rm scalar}+14e),
+       \qquad e\in\{0,1\}.\;}                       \tag{DZ.28}
+\]
+This is a determination of the two-element set allowed by the
+proved sum and the actual single-loop flop morphism. No value of
+\(e\) is selected. The common \(e\) belongs to the particular
+retained family data; this proof makes no assertion that it is
+constant across distinct norm or source data.
+
+## DZ.6. Scope and exact verification
+
+DZ.27 concerns only the two stated initial/reflected fan objects,
+the one III-star cap and the literal scalar \(v^{km}\lambda_0\).
+The single endpoint \(q^{nk}\), its literal pullback
+\(q^{2nk}\), their period reindexings, the bounded seam
+multipliers, and the cap square have all been carried.
+The earlier diagnostic's algebra is recovered, but its formerly
+missing plumbing/seam map is now (DZ.5)--(DZ.14), with the actual
+single-to-double square in DZ.4.
+All symbolic chart, seam, quaternion-exponent, trace and pair
+identities are checked in
+\path{code/part3/source_zero_double_loop_product.py}.
+The complete geometric proof has passed the independent checks and
+root audits, including the literal pullback and actual relative square.
+The scalar \(C_1\) consistency diagnostic
+is separate and is not used to extend this exact \(C_2\) comparison.
