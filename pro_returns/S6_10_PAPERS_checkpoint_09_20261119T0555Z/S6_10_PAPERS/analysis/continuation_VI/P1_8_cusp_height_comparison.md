@@ -1,0 +1,9 @@
+# P1.8 cusp-height comparison
+
+The isolated height derivation and its exact symbolic certificate were frozen before the target was opened; the timestamp and hashes are in `P1_8_cusp_height_before_read_receipt.json`. Only then was `analysis/continuation_V/P1_8_printed_cusp_height_step.tex` read.
+
+Every printed step of the isolated cusp asymptotic matches that derivation. The actual D has the stated sole nonzero column. Since D b=b0 d, the printed arbitrary-a,b contraction and top-row identities follow from the preread equalities c(a wedge d)=a0 and n pi(a wedge d)=a0. The printed vanishing N_W pi(a wedge D b)=0 follows from pi E=N_W pi and E(a wedge d)=D a wedge d+a wedge D d=0. These are identities on the actual quotient coordinates, not an unspecified primitive identification.
+
+The printed canonical-frame expansion is exactly r_can=r0+2y conjugate(alpha)pi(a wedge d), and its expression for A is the same A0+2y|alpha| squared. Restoration by I+s N_V gives the same unique quadratic term 2|alpha| squared y squared. The preread remainder formula keeps an arbitrary bounded canonical splitting and proves the stated uniform O(1) conclusion after division. All relevant matrix and symbolic coefficient identities passed the independently authored program.
+
+The rest of the supplied excerpt draws the attained-minimum, range and parameter-relabeling consequences using finite-chart regularity and the preceding definition of the parameter family. Those consequences are outside this isolated prereading request and are covered by the Paper V owner. This receipt does not independently claim those adjoining statements. No fault was found in the isolated cusp-height step. Scope: a complete independent re-proof of the cusp-height asymptotic within P1.8 item5 and a fresh symbolic computation of its matrix, quotient, contraction and leading-coefficient identities.
