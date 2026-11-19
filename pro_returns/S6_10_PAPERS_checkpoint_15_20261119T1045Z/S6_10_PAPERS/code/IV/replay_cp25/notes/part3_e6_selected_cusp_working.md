@@ -1,0 +1,922 @@
+# E6 selected cusp: the actual source, line, cap and trace comparison
+
+Proved P3K.95, with complete root and independent peer audits. This note retains the smallest
+E6 whole-fibre datum: the actual point line \(M_6=\mathcal O(6G-O)\),
+source suspension translation \(p\mapsto p-G\), and the quadratic
+reduced-IV cap, with either primitive norm sign \(n=\pm1\), its fixed
+finite character, and the complete reference annular cochain. The scalar
+is fixed and sufficiently small. The source parameter is the ordered
+node coordinate \(w\), with positive boundary orientation.
+
+## Statement
+
+For the actual source family
+\[
+ Y^2=X^3+(3-2w^2)X^2+(w^2-3)TX+T^2,\qquad
+ G=(0,T),\qquad q=T-(w^2-1),
+\]
+retain \(M_6=\mathcal O(6G-O)\), source suspension by \(-G\),
+the complete selected-zero Hom section, and the quadratic reduced-IV
+cap with either primitive norm sign \(n=\pm1\), its prescribed
+finite character and full integral annular reference cochain.
+Fix the sufficiently small nonzero scalar, including its chosen
+root and phase. The actual positive \(w\)-loop about zero has,
+on every selected lattice-basis fan, the same oriented sphere return
+as the complete K71 selected-cusp algorithm. This equality is
+induced by the full source, Cartier, finite-root, exterior, normal
+and Cox maps below.
+
+On the standard vertical fan \(T_j\), \(j\in\mathbb Z\), its
+physical characteristic pair and oriented class are
+\[
+ (k_M,\ell_M)=(-6-18j(j-1),0),\qquad
+ [\Sigma_j]=-1-3j(j-1)\pmod {28}.
+\]
+The corresponding native free pair is
+\((0,-6-18j(j-1))\). At \(j=0\) the complete native triple is
+\((0,-6,-1)\). For every other selected lattice-basis fan the
+actual unit matrices and native trace maps in EC.6 give the same
+K71 calculation. The marked parameter comparison to the original
+source is
+\[
+ r(w)=\frac{3-2w^2}{(w^2-3)^2},\qquad
+ r(w)-\frac13=-\frac{w^4}{3(w^2-3)^2};
+\]
+the \(w\)-loop therefore has actual local degree four over the
+\(r-\tfrac13\) parameter. All conclusions refer to this specified
+ordered loop and the retained \(M_6,\ b=1,\ m=2\) completion.
+
+## EC.1. The full physical-height equation and the ordered normalization
+
+Set
+\[
+ \begin{gathered}
+ v=w^2-1,\quad D=w^2-3,\quad G=(0,T),\quad q=T-v,\\
+ E_w:\ Y^2=X^3+(3-2w^2)X^2+DTX+T^2 .
+ \end{gathered}
+ \tag{EC.1}
+\]
+The marked-node coordinate and source/Cartier rescaling are EN.1--3 of
+`part3_e6_marked_node_cover_working.md`. At the selected cusp put
+\(\xi=X-v\). The exact equation, including its full height, is
+\[
+ K=Y^2-\xi^2(\xi+w^2)
+       =q\{q+v^2+D\xi\}.
+ \tag{EC.2}
+\]
+Write \(a=v^2+D\xi\). On a sufficiently small common polydisc the
+square root equal to \(a\) at \(K=0\) gives the literal inverse
+\[
+ q=\frac{2K}{a+\sqrt{a^2+4K}},\qquad
+ T=v+q,\quad X=v+\xi.
+ \tag{EC.3}
+\]
+Its denominator has value two at the origin. Thus \((\xi,Y,w)\)
+are smooth coordinates on the actual source threefold; (EC.3) retains
+the original elliptic-base function. In these coordinates the entire
+selected rational fibre has normalization
+\[
+ f(S,w)=\bigl(S^2-w^2,S(S^2-w^2),w\bigr),\quad
+ D_+=\{S=w\},\quad D_-=\{S=-w\},\quad
+ Z=\frac{S-w}{S+w}.
+ \tag{EC.4}
+\]
+The point at infinity is \(O\), and \(G\) has \(S=-1\). This is
+the literal ordered germ used in F56, with \(w\) in place of its
+ordered parameter. It is an immersion off \((S,w)=(0,0)\); its three
+derivative minors generate \((S,w^2)\), and its only distinct double
+pairs there are \((w,w),(-w,w)\). These statements follow directly
+from (EC.4), with no base reparametrization.
+
+The second selected critical value is
+\[
+ q_-=-4w^6/27.
+ \tag{EC.5}
+\]
+Indeed the full discriminant is
+\(-432T^2(T-v)(T-T_-)\), with \(v-T_-=4w^6/27\).
+The unselected \(I_2\) remains at \(T=0\), outside a common small
+disc about \(T=-1\). Hence the positive \(w\)-loop has exactly the
+ordered two-node braid of F56, including its twelve positive half
+twists and the actual boundary twist of its lifted once-punctured
+torus. The orientation of that loop is preserved by the identity
+\(w=\rho_{\rm F56}\), not inferred from the even original \(r(w)\).
+In the original source parameter the exact identity is
+\(r(w)-1/3=-w^4/(3D^2)\). Thus the present positive ordered loop
+has local degree four over \(r-1/3\). Its actual source, line and
+cap closing is the full periodic \(w\)-atlas below; no shorter
+endpoint is assigned by this calculation.
+
+For the full normal arrow put \(x=S-w,y=S+w\), so \(\xi=xy\), and
+retain the nonzero covector
+\[
+ n_f=(3S^2-w^2)d\xi-2S\,dY+2w(S^2-w^2)dw.
+\]
+Restriction of the differential of (EC.2) to the normalization gives
+\[
+ dq=-\frac{xy}{v^2+Dxy}\,n_f.
+ \tag{EC.6}
+\]
+In the two native fixed-edge charts \(q=Zc_0c_1\) and
+\(q=Z^{-1}c'_0c'_1\), \(c'_i=Zc_i\), this is exactly
+\[
+ d(c_0c_1)=-\frac{y^2}{v^2+Dxy}n_f,
+ \qquad d(c'_0c'_1)=-\frac{x^2}{v^2+Dxy}n_f.
+ \tag{EC.7}
+\]
+The common factor has an analytic logarithm and square root on the
+finite inner ball. These are the actual two Hom arrows of K42 SP.8,
+with their full extending source unit. They also show explicitly why
+the physical height cannot be replaced by its leading Tate term.
+
+## EC.2. The actual Cartier lift and all selected period units
+
+Put \(s_0=v(w^2+3)/4\) and
+\(U=Y-T-DX/2,\ V_s=Y+T+DX/2\). Then
+\(UV_s=X^2(X-s_0)\). With the actual Miller factors of EN.3 define
+\[
+ f_2=\frac{U}{X-s_0},\qquad
+ f_3=\frac{s_0 XU}{s_0V_s-(Ds_0+2T)X},\qquad
+ f_6=f_3^2f_{2,3G},
+\]
+\[
+ B_6(p)=f_2(p)^6\frac{f_6(p-G)}{f_6(p)},\qquad
+ B_{\rm sel}=\frac q{T^3}B_6.
+ \tag{EC.8}
+\]
+These are coefficient arrows on the actual point line \(M_6\).
+The point-line/tensor-line comparison is multiplication by
+\(r_6=f_6^{-1}\); both its source and target factors occur in
+(EC.8). At \(w=0,q=0,\xi=Y=0\), direct substitution gives
+\[
+ f_2=2,\quad f_3=3,\quad f_6=6,\quad
+ B_6=64,\quad B_{\rm sel}/q=-64.
+ \tag{EC.9}
+\]
+For the tangent factor at \(3G\), its cusp coordinates are
+\((X,Y)=(-8/9,-1/27)\); its value at the cusp is \(2/3\),
+which supplies the displayed value of \(f_6\). All horizontal
+divisors of these factors avoid this cusp point. Thus these are
+values of extending units, rather than cancellations of leading
+terms at an indeterminate point.
+
+There is a full selected-normalization check of its actual theta
+frame. Put \(P=(1+w)/(1-w)\) and
+\[
+ S_6=w\frac{1+P^6}{1-P^6},\qquad
+ c_6=w-S_6=\frac{(1+w)^6}{6+20w^2+6w^4}.
+ \tag{EC.9a}
+\]
+The point \(6G\) is \(S=S_6\), with \(S_6(0)=-1/6\).
+The exact divisor equations obey
+\[
+ S-S_6=c_6\,\frac{1-Z/P^6}{1-Z},\qquad
+ f_6\big|_{q=0}=\frac{(S+1)^6}{S-S_6}.
+ \tag{EC.9b}
+\]
+For the second identity both sides have the prescribed divisor
+and the same leading coefficient \(S^5\) at \(O\); their ratio
+is therefore the constant one on the normalization. Both branches
+of the node have the same value
+\[
+ f_6\big|_{\rm node}=6+20w^2+6w^4,\qquad
+ f_2\big|_{\rm node}=2,\qquad
+ (B_{\rm sel}/q)\big|_{\rm node}=64/v^3.
+ \tag{EC.9c}
+\]
+The reciprocal of the unit \(c_6\) is the coefficient arrow between
+the displayed point-divisor and theta frames. It extends on the
+entire parameter disc. This fixes the point-line theta gauge with
+its full normalization constant, and shows explicitly that it
+contributes no parameter winding.
+
+Translation and inverse translation are also explicit here. For
+\(+G\) use \(k=(Y-T)/X\), and for \(-G\) use \(k=(Y+T)/X\).
+The respective target formulae are
+\[
+ X'=k^2-(3-2w^2)-X,\quad
+ Y'=-T-kX'\quad\hbox{or}\quad Y'=T-kX'.
+ \tag{EC.10}
+\]
+Since \(X=-1\) at the cusp, both are analytic there, and the two
+maps are inverse by the actual chord law on their dense smooth
+fibres. Their common fixed cusp therefore has the full line unit
+(EC.9), including its constant sign. The scalar is
+\(B_\lambda=\lambda B_{\rm sel}\), with the originally fixed
+\(\lambda\); the factor \(-64\) is not absorbed into it.
+
+On the selected normalization the marked source multiplier is
+\[
+ P_G=\frac{1+w}{1-w},\qquad g=P_G^{-1}.
+ \tag{EC.11}
+\]
+The period and line charts give the exact commuting periods
+\[
+ H:(Z,V,q)\mapsto(\kappa qZ,\alpha V,q),\qquad
+ B:(Z,V,q)\mapsto(gZ,\eta qV,q),\quad\eta=\lambda\beta.
+ \tag{EC.12}
+\]
+Here \(\alpha\) and \(\beta\) are the coefficients of the actual
+theta/Cartier trivialization of (EC.8), not new independently chosen
+units. Its source point is \(6G\), so the marked theta-period
+coefficient is \(P_G^6\); the actual rational function \(f_6\)
+is elliptic and hence preserves that period on both copies. At the
+node the invertible Hom coefficient is the one in (EC.9).
+
+There is a joint domain for all the required logarithms. Substitute
+\(\xi=w^2\widetilde X,Y=w^3\widetilde Y,q=w^6Q_c\) into (EC.2):
+\[
+ \widetilde Y^2=\widetilde X^2(\widetilde X+1)
+       +Q_c(v^2+Dw^2\widetilde X)+w^6Q_c^2.
+ \tag{EC.13}
+\]
+At \(w=0\) this is the marked compact pencil
+\(\widetilde Y^2=\widetilde X^2(\widetilde X+1)+Q_c\).
+Choose a sufficiently small fixed \(Q_c\)-disc containing just its
+selected node. The inverse-j series, with its actual marked fourth
+root, gives
+\[
+ \kappa=w^{-6}\widehat\kappa(Q_c,w),\qquad
+ \widehat\kappa(0,w)=-v^2/64.
+ \tag{EC.14}
+\]
+The factor \(\widehat\kappa\) and its inverse extend on this disc
+times the full \(w\)-disc. The original section, viewed in the
+weighted source chart at its section at infinity, has a formal
+parameter
+\[
+ -\widetilde X(G)/\widetilde Y(G)
+       =\frac{wv}{v+w^6Q_c},
+ \tag{EC.14a}
+\]
+divisible by \(w\). Its denominator is a unit on the full
+weighted bidisc. The marked Abel/theta point
+therefore has an analytic formal-group logarithm tending to zero.
+This proves the extension of \(P_G\), \(g\), and \(\alpha\) as
+units in that same domain. Finally (EC.8)--(EC.9) supplies the
+extending source and target Cartier units for \(\beta\); its
+central value is \(-64\). Thus the based periodic logarithms of
+all four units are literal, after retaining the sole angular factor
+\(w^{-6}\) in \(\kappa\). Their winding matrix is
+\(\operatorname{diag}(-6,0)\).
+
+## EC.3. The unselected exterior and the actual finite cap
+
+The original E6 source coordinate is
+\[
+ r=(3-2w^2)/D^2,\quad (x,y,t)=(D^{-2}X,D^{-3}Y,D^{-3}T).
+ \tag{EC.15}
+\]
+On a small \(w\)-disc, \(D\) is a unit with a fixed analytic
+logarithm, \(r\) lies in a disc about \(1/3\), and
+\(s=1/4-r\) is a unit with value \(-1/12\). At the unselected
+\(I_2\), the original coordinates satisfy
+\[
+ (y-t-x/2)(y+t+x/2)=x^2(x-s).
+\]
+The analytic map \(\widehat x=x\sqrt{x-s}\) identifies this with
+\(UV=\widehat x^2\), retaining
+\(t=(V-U-x)/2\). The two source resolution charts are
+\(\widehat x=Uz,V=Uz^2\) and
+\(\widehat x=V\zeta,U=V\zeta^2\), with \(z\zeta=1\).
+Translation is the actual addition map of EU.1, including its
+\(x\)-chart, the \(t\)-charts at \(\pm G\), and the zero-section
+chart. The only denominator singled out in the exceptional
+\(k=1/2\) chart is \(x=s\), which is a unit on this disc.
+Consequently those maps and their inverses extend jointly here.
+
+The divisor computation E68--69 gives the complete vertical divisor
+\(\operatorname{div}_{\rm vert}B_6=3F_0-2F_\infty\).
+The factor \(q/T^3\) in (EC.8) cancels it except at the selected
+whole zero. At the parameter divisor \(w=0\), its value on any
+ordinary reference section avoiding the stated horizontal divisors
+is a unit. The resolved total source is smooth. The rational Hom
+map and its inverse therefore extend at the remaining
+codimension-two loci by their zero valuations at every height-one
+prime. This carries the actual Hom coefficient on the entire
+ordinary exterior; no parameter scalar is inserted.
+
+At infinity put \(q_\infty=z^2\). The original quadratic root is
+\[
+ Y'^2=X'^3+z^2(rX'^2+X'+1),\quad G'=(0,z),
+ \quad\mathfrak D(z,X',Y')=(-z,X',-Y').
+ \tag{EC.16}
+\]
+With \(c=\sqrt{1+X'+rX'^2}\), the coordinates
+\(U'=Y'-zc,V'=Y'+zc\) obey \(U'V'=X'^3\) and
+\(z=(V'-U')/(2c)\). Use the three exact A2 charts of E70.
+In the middle chart they are
+\[
+ X'=ab,\quad U'=a^2b,\quad V'=ab^2,\quad
+ z=ab(b-a)/(2c),\quad Y'=ab(a+b)/2.
+ \tag{EC.17}
+\]
+The full translation formula EU.5--6 is
+\(a'=(b-a)F/H,b'=-aH\), with its actual analytic units
+\(F,H\) and value-one denominators. These formulae, their inverse,
+and the smooth group charts are uniform on this \(r\)-disc; none
+requires \(r=0\). The half-division is the actual section
+\(R=2G'-[2]^{-1}(3G')\); the inverse is the convergent formal-group
+inverse at the identity. Hence \(2R=G'\) and \(\mathfrak D R=R\),
+with its nonidentity central component retained.
+
+Blow up the four literal deck-fixed points of E70. On that common
+graph the two section equations at the zero-section blowup are
+\(\tau'=zv_0\) and \(\tau'-\tau'(6G')=z(v_0-L_6(s,q_\infty))\),
+where \(L_6(s,0)=-s\). The actual point-line arrow is
+\[
+ \frac{\tau'}{\tau'-\tau'(6G')}=
+          \frac{v_0}{v_0-L_6(s,q_\infty)}.
+ \tag{EC.18}
+\]
+It proves \(\beta^*\mathcal O(6G'-O)=\pi^*M_6\), including every
+exceptional coefficient. On the root the full selected coefficient
+is \(B_0=h_\infty z^{-2}B'_6\),
+\(h_\infty=1-t_c(r)z^2\). This is invertible on every reduced-IV
+component by E71's actual divisor computation.
+
+For clarity retain the norm normalization. If a lift \(F\) of
+\(t_{-R}\) has \(\mathfrak D F\mathfrak D^{-1}=c_FF\), then
+\(c_F(-z)c_F(z)=1\), \(c_F(0)=1\). With its odd logarithm put
+\(F_1=e^{(\log c_F)/2}F\). It commutes with \(\mathfrak D\).
+The invariant unit \(\beta_0=B_0/F_1^2\) has its analytic square
+root fixed at the full reference map. Then
+\[
+ F_2=\beta_0^{1/2}F_1,\quad
+ A_0=(-1)^dF_2^n\mathfrak D,\quad A_0^2=B_0^n,
+ \qquad B=R_\lambda^2 B_0,\quad A=R_\lambda^n A_0.
+ \tag{EC.19}
+\]
+Here \(R_\lambda^2=\lambda\) is fixed, including its complex
+phase. All source, line, character and norm arrows are equalities.
+
+Under (EC.15), the root coordinates have the literal comparison
+\[
+ z_{\rm old}=D^{3/2}z_{\rm new},\quad
+ X'_{\rm old}=D X'_{\rm new},\quad
+ Y'_{\rm old}=D^{3/2}Y'_{\rm new}.
+ \tag{EC.20}
+\]
+The square root uses the fixed logarithm of the unit \(D\).
+The transformed root is exactly the equation in EN.3. The full
+Miller weights are \(D^{-1},D^{-2},D^{-5}\), and
+\(B_{6,\rm old}=D^{-6}B_{6,\rm new}\). Since
+\((t-t_c)/t^3=D^6 q/T^3\), the complete suspension coefficient
+is unchanged. The Cartier ratio (EC.18) carries both numerator
+and denominator: explicitly
+\(\tau'_{\rm old}=D^{-1/2}\tau'_{\rm new}\) and
+\(\tau_{0,\rm old}=D^{-2}\tau_{0,\rm new}\), consistently with
+\(\tau'=z\tau_0\). Also
+\(1-t_{c,\rm old}z_{\rm old}^2=1-vz_{\rm new}^2\).
+Thus (EC.20) closes literally over the \(w\)-disc;
+no finite root rotation or scalar winding is concealed by the
+source rescaling.
+
+Here is the literal application of EU.11a--12 to this family. Work in
+the current height \(T\), put \(q_\infty=T^{-1}\), and retain
+\(t_c(w)=v=w^2-1\) and \(h_\infty=1-t_c(w)z^2\). On a fixed
+smooth cap annulus choose the same two angular sectors and reference
+ordinary-to-cap map as in that construction. Its actual
+\(I_z\) is the source/root and Cartier map (EC.18) followed by
+(EC.20); in particular \(I_{-z}=\mathfrak D I_z\). In the
+rigidified extension-group Lie cover set
+\[
+ \begin{gathered}
+ s_\alpha=\frac{\log_\alpha q_\infty}{2\pi i},\qquad
+ z_\alpha=e^{\pi i s_\alpha},\qquad
+ c_\lambda=\frac{n\log R_\lambda}{2\pi i}+\frac d2,\\
+ f_\alpha=\operatorname{Log}_\alpha F_2
+       =(-a_\alpha(R),\ell_\alpha),\qquad
+ b_\alpha=\operatorname{Log}_\alpha B .
+ \end{gathered}
+ \tag{EC.21a}
+\]
+The source Abel integral \(a_\alpha(R)\) and the line logarithm
+\(\ell_\alpha\) belong to the same extension group. The latter
+retains the two \(r_6\) factors, \(h_\infty\), and the selected
+square root of \(\beta_0\) in (EC.19). Thus exponentiation is
+the full source/line arrow. It is not a choice of independent
+scalar factors in unrelated Cartier charts.
+
+Write \(s_\beta=s_\alpha+k_{\alpha\beta}\) and
+\[
+ f_\beta=\mathfrak D_*^{k_{\alpha\beta}}f_\alpha+
+                         \Pi_{\alpha\beta}.
+\]
+Here \(\Pi_{\alpha\beta}\) is the actual transported source/line
+period, with the integer coefficients fixed at the given reference
+parameter \(w_*\). Retain also its reference suspension integers
+\(j_{\alpha\beta}\) and full integral period vectors
+\(\Lambda_{\alpha\beta}\). The coefficients are fixed while the
+period functions themselves vary holomorphically with \(w\).
+The ordinary-to-cap map is
+\[
+ \begin{split}
+ \Phi_\alpha
+   &=\operatorname{Exp}\bigl(
+       n s_\alpha f_\alpha+s_\alpha c_\lambda\delta+
+                         h_\alpha\bigr)I_{z_\alpha},\\
+ h_\beta-\mathfrak D_*^{k_{\alpha\beta}}h_\alpha
+   &=-n s_\alpha\Pi_{\alpha\beta}
+          +j_{\alpha\beta}b_\beta+\Lambda_{\alpha\beta}.
+ \end{split}
+ \tag{EC.21b}
+\]
+This is EU.11c--d with \(r\) replaced by \(w\), with every displayed
+root, Cartier, period and character map replaced by (EC.18)--(EC.20).
+In particular its source displacement is
+\(-n s_\alpha a_\alpha(R)\), and its scalar includes
+\(R_\lambda^{n s_\alpha}\exp(\pi i d s_\alpha)\).
+
+For completeness the correction in (EC.21b) is an actual
+parameter-dependent map. Use \(I_z\) to put its Lie vectors into
+the ordinary Lie bundle on the fixed annulus and its invariant
+differential/rigidified-line frame. Extend the entire reference
+\(h_\alpha(w_*)\) to \(h_\alpha^0\) in that frame. Subtract its
+difference from the right side of (EC.21b), obtaining the additive
+overlap vector \(E_{\alpha\beta}\), zero at \(w_*\).
+For a fixed sector partition of unity put
+\(k_\alpha=-\sum_\beta\chi_\beta E_{\alpha\beta}\).
+Then \(k_\beta-k_\alpha=E_{\alpha\beta}\), and
+\(\bar\partial k_\alpha\) is a single vector-valued form \(\omega\).
+With a fixed cutoff on a slightly larger annulus use
+\[
+ v_{\rm CG}(q_\infty,w)=\frac1\pi\int
+      \frac{\omega(\zeta,w)}{q_\infty-\zeta}\,dA(\zeta),
+ \qquad h_\alpha=h_\alpha^0+k_\alpha-v_{\rm CG}.
+ \tag{EC.21c}
+\]
+On the protected annulus \(\bar\partial v_{\rm CG}=\omega\).
+This is holomorphic in \(w\), zero at \(w_*\), and solves the
+specified overlap equation. Finite averaging is applied only to
+these vector cochains; it preserves the fixed lattice cocycle,
+character and complete reference map. Substitution in (EC.21b)
+leaves, after subtracting the \(k_{\alpha\beta}\)-fold actual cap
+action, exactly \(j_{\alpha\beta}b_\beta+\Lambda_{\alpha\beta}\).
+Hence the full quotient arrows satisfy
+\[
+ \Phi_\beta=A^{k_{\alpha\beta}}B^{j_{\alpha\beta}}\Phi_\alpha,
+ \qquad \Phi_\alpha B=B\Phi_\alpha .
+ \tag{EC.21}
+\]
+Their inverse is \(I_z^{-1}\) followed by the negative Lie
+argument. Both norm signs retain the fixed factor \(R_\lambda^n\)
+and their actual finite character. All these maps are single valued
+over the \(w\)-disc, so their continuation has identity closing.
+This specifies the complete \(F_0\), rather than only its norm.
+For the reflection used in EC.6, perform this exterior/root and
+annular construction first on the disc \(\zeta=w^2\), with
+reference \(\zeta_*=w_*^2\), and then pull it back by that exact
+map. The source equation, \(G\), \(t_c=v\), \(D\), \(I_z\), and
+all root/Cartier units above are holomorphic in \(\zeta\).
+Choose the reference extensions \(h_\alpha^0\), period sections,
+and Cauchy operator on that disc. The resulting complete
+ordinary-to-cap arrow is literally even in \(w\) in these
+original source coordinates. Its expression in the two ordered
+selected Tate markings is then related by the exact reflection
+arrow of EC.6; no additional \(w\)-dependent cochain is chosen.
+
+The ordinary and cap quotients are proper uniformly on the closed
+parameter disc. On their finite source charts away from the selected
+zero the actual line maps and their inverses are bounded in fixed
+Hermitian metrics. Choose the original fixed \(|R_\lambda|\) below
+their common strict-contraction threshold. In the cap the literal
+generator \(H=A^n\) satisfies \(H^2=B\), \(H^n=A\), and has scalar
+factor \(R_\lambda\). Its norm shell is compact and has the
+specified character; this proves freeness and properness for both
+norm signs. The selected toric family on the compact punctured
+w-circle has its finite union of protected period fundamental
+regions. On the exterior of the selected disc the smooth charts,
+the root resolution and these compact shells give a proper smooth
+family over the entire w-disc, with the actual source/line boundary
+marking (EC.21).
+
+## EC.4. The real orbit product and the full fixed trace
+
+On the small source region containing the selected pair the source
+is the smooth threefold (EC.3). The section of its group defining
+translation is in the smooth locus at the central cusp. Divide it
+there by a sufficiently large integer, extend that division section
+by the inverse function theorem, take its small-group logarithm,
+and multiply the logarithm by that integer. Its exponential is the
+actual section by uniqueness and the chord law. The invariant
+vertical field, in the original source coordinates,
+\[
+ 2Y\partial_X+\{3X^2+2(3-2w^2)X+DT\}\partial_Y
+\]
+extends across the cusp and vanishes there. Its indicated time maps
+give the actual source translation isotopy. The nonzero line lift
+\(B_{\rm sel}/q\) has the same extension-group construction; its
+central scalar is the retained \(-64\). Its logarithm is chosen
+at that value, not at one. This untwists the actual suspension on
+the source product, with its outside collar fixed.
+
+At the node use the exact increasing orbit coordinates of F9,
+\(2b=r-|y_0|^2/r\), \(2b'=|x_0|^2r-r^{-1}\), \(db'/db>0\).
+They give the real gamma lift on the common short arc; the branch
+\(S=-w\) is lower and \(S=w\) upper in the marked coordinate
+\(Z\). Their full-period closing is the identity on this ordered
+\(w\)-cover. A nonzero gamma deck would change the norm of the
+strictly contracting line and is absent from that identity.
+All source-line logarithms on the outside and the cap extend on
+the disc by EC.3. A horizontal field chosen there and on their
+common boundary therefore yields the actual ambient orbit-body
+product \(Y\times D_w\). Its fibre is the known orbit body of the
+constructed E6 sphere. The F9 source-product arrow supplies this
+extension also at the cusp, without extending the complex selected
+toric quotient there.
+
+Fractional source translations act on the normalization by the exact
+formula
+\[
+ S\longmapsto
+ \frac{(1+g_t)S+(1-g_t)w}
+ {((1-g_t)/w)S+(1+g_t)},\qquad
+ g_t=\exp(t\log g),
+ \tag{EC.22}
+\]
+where \(g(0)=1\). If \(g_t=1+wh_t\), its difference from \(S\)
+is \(h_t(S^2-w^2)/(2+h_t(w-S))\). The full derivative is
+\(I+O(|S|+|w|)\) uniformly on a common sufficiently small ball.
+Thus the written branch-fixing isotopy removes this actual source
+shear. In the universal real gamma cover interpolate the actual
+heights, within the common short arc, to
+\(\operatorname{Re}(S\overline w)/\sqrt{|S|^2+|w|^2}\).
+The two double points remain strictly ordered, so this is an
+isotopy through embeddings. Its outer collar is unchanged.
+
+Remove the star-shaped four-ball
+\(f^{-1}(B^6_\epsilon)\) from \(\mathbf P^1\times D_w\).
+The graph is the same actual embedded cobordism as F56 on the
+normalization (EC.4). In the rounded ambient product ball
+\(B^6_\epsilon\times[-2\eta\epsilon,2\eta\epsilon]\), its inner
+link is literally \((f,\eta H)\), since \(|H|\le |w|\).
+This is the F55 lifted-link map, with the same complex domain
+orientation and branch-height order. Its outside maps have been
+specified in EC.3 and (EC.22), rather than inferred from the cubic
+germ alone.
+
+## EC.5. The actual circle line, both caps and the reference pair
+
+The pullback of the actual \(M_6\) to
+\(\mathbf P^1\times D_w\) has degree zero on every normalization
+fibre. Evaluation in its zero-section Cartier frame gives the
+relative nonzero section and hence its literal product line.
+Its value at the reference parameter fixes the remaining disc
+unit; the full Hom isotopy of EC.4 is retained in that frame.
+The normal determinant has the same covector and actual divisor
+isomorphism as (EC.6):
+\[
+ L=\mathcal O(-D_+-D_-),\qquad
+ E=\mathcal O(D_+)\oplus\mathcal O(-D_-),\qquad
+ \det E\xrightarrow{\ (S-w)/(S+w)\ }\mathcal O.
+ \tag{EC.23}
+\]
+In the positive spinor the physical nonzero-vector line is the
+tautological line \(M\); its meridian-one Hermitian dual is \(U\).
+The actual coefficient arrow of K42 is
+\[
+ (a,b)\longmapsto
+ \frac1{\sqrt{|x|^2+|y|^2}}
+ \begin{pmatrix}y&-\overline x\\x&\overline y\end{pmatrix}
+ \overline{(a,b)}.
+ \tag{EC.24}
+\]
+Its source-unit multiplier from (EC.7) has an extending logarithm
+and square root. After matching the product of the two normal
+coordinates, a residual gauge is \((c_0,c_1)\mapsto(gc_0,g^{-1}c_1)\).
+Its unitary part gives the literal Hopf arrow
+\(q_H\mapsto q_H g/|g|\), a physical-circle map. Its possible
+parameter winding extends over \(D^3\times S^1\). This retains
+all separate factors of the actual line/normal frame.
+
+The outer cap map uses
+\[
+ A_w=\begin{pmatrix}1&-w\\1&w\end{pmatrix},\qquad
+ (P,q_H,w)\mapsto
+ \left(\frac{A_wPA_w^*}{\operatorname{tr}(A_wPA_w^*)},q_H,w\right).
+ \tag{EC.25}
+\]
+Its inverse is the displayed formula with \(A_w^{-1}\). It holds
+the actual Cox quaternion fixed, not its tangent derivative, and
+is periodic on the full parameter circle. The determinant factor
+\(2w\) is retained in (EC.24). The inner cap is the identical
+projection-normal four-ball, with the extending unit in (EC.7).
+The anti-linear dual map of K68 commutes with the SU(2) clutches
+and extends over both normal discs; it carries \(M=U^{-1}\).
+
+We next verify the global orbit hypotheses used by the Thom step.
+The reference completed E6 member is the F41 sphere with datum
+\((a,b,m,n)=(6,1,2,n)\), \(n=\pm1\), and the actual selected-zero
+Hom section of EC.2. Its application to the present source is
+literal: join the present marked value
+\(\rho=w^2/(w^2-3)\) to \(\rho=-1\) by an arc whose interior
+avoids \(0,1,-1,\tfrac12,-\tfrac12\). Choose a contractible
+tubular neighbourhood and its ordered-node square root. The
+Miller/Cartier formulas, (EC.18)--(EC.21), and their inverses give
+the completed family on that tube. At the endpoint \(\rho=-1\),
+\(r=0\), the K94 unselected-III extension is the actual E6-B
+source of F41. The fixed sufficiently small scalar makes this a
+proper compact family along the arc, carrying the reference
+cochain and character. Its Ehresmann transport identifies the
+present reference member \(X\) with that sphere. No loop or
+additional parameter return is inserted by this interval map.
+
+The physical circle is free on the ordinary part. In the quadratic
+cap the actual generator \(H=A^n\) satisfies \(H^2=B\) and
+\(H^n=A\), and its strictly contracting norm prevents a nonzero
+\(H\)-power from agreeing with a unit physical-circle rotation.
+The standard cusp fan has edge directions
+\(\pm e_1,\pm e_2,\pm(e_1-e_2)\). The determinant with the
+physical cocharacter \(e_2\) is \(\pm1\) off the vertical
+edges, whose period quotient is one fixed curve \(F=\mathbf P^1\).
+The two charts
+\[
+ c_0'=Zc_0,\quad c_1'=Zc_1,\quad Z'=Z^{-1},
+ \qquad q=Zc_0c_1=Z'c_0'c_1'
+ \tag{EC.25a}
+\]
+have weights \((-1,+1,0)\). Thus the fixed normal bundle and
+semifree action are precisely the displayed local input of
+F7--8, including the physical circle generator.
+
+Put \(E=X\setminus\operatorname{int}(F\times D^4)\) and
+\(P=E/S^1\). Since \(X\cong S^6\), Alexander duality gives the
+integral homology of \(S^3\) for \(E\), and codimension four
+general position gives \(\pi_1(E)=0\). Conjugating the negative
+normal line in (EC.25a) gives
+\(\mathcal O(1)\oplus\mathcal O(-1)\). Its clutch
+\(\operatorname{diag}(Z,Z^{-1})\) bounds the SU(2) disc with
+coordinates \((r e^{i\theta},\sqrt{1-r^2})\); adjoining a path
+from its centre to the identity gives the actual unitary
+trivialization. In that trivialization the boundary quotient is
+the product Hopf map
+\[
+ \partial E=S^2_F\times S^3
+       \longrightarrow S^2_F\times S^2_{\rm mer}.
+ \tag{EC.25b}
+\]
+Mayer--Vietoris for \(X=E\cup(F\times D^4)\) identifies
+\(H_3(\partial E)\to H_3(E)\) as an isomorphism. Its restriction
+to a normal \(S^3\) is the Hopf bundle, whose fibre integration
+is the primitive meridian Euler generator. Naturality in the
+integral Gysin sequence consequently makes
+\(H^3(E)\to H^2(P)=\mathbb Z e\) an isomorphism. The same
+sequence gives \(H^3(P)=H^4(P)=0\); the homotopy sequence gives
+\(\pi_1(P)=0\). The Euler class restricts to the meridian
+generator and has zero \(S^2_F\) coefficient, by (EC.25b).
+
+For \(Y=P\cup(F\times D^3)\), the integral Mayer--Vietoris
+map in degree two, with boundary basis \((F,\mathrm{meridian})\)
+and target \((P,\mathrm{tube})\), is
+\[
+ \begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+ \tag{EC.25c}
+\]
+Its determinant is one. The boundary \(H_4=\mathbb Z\) maps to
+zero and supplies \(H_5(Y)=\mathbb Z\); the other intermediate
+groups vanish. Van Kampen gives \(\pi_1(Y)=0\).
+The verified \(\Theta_5=0\) and Haefliger applications in F7--8
+therefore identify the orbit pair as \((S^5,\text{unknotted }S^2)\).
+On its free complement the actual Hopf bundle has Euler
+generator. Its comparison with the fixed normal product differs
+on \(S^2\times S^2\) by a circle gauge; that gauge has a global
+logarithm because \(H^1(S^2\times S^2;\mathbb Z)=0\), and the
+logarithm extends over the collar. These are the actual
+equivariant reference maps used in (EC.24)--(EC.25).
+
+The ambient meridian line extends on the excision complement by
+the same integral Thom map as F56: the product orbit body has
+\(H^2=H^3=0\), and the properly embedded connected normalization
+has meridian evaluation \(H^2\cong\mathbb Z\). The actual outer
+line has the specified value, and its ratio gauge extends over
+the written outer cap. Thus the extra normal-sphere boundary is
+the actual bundle over
+\((S^2\times D^2)\cup(D^3\times S^1)=S^4\), with both caps and
+their normal clutch fixed by (EC.24)--(EC.25).
+
+Consequently every step of the F56/K42 excision uses the same
+oriented link, coefficient matrix and cap morphisms. The relative
+second Chern number is \(-1\), computed from (EC.24) with cap
+boundary orientation negative to \(\mathbf P^1\times S^1\).
+The normal-sphere pair is \((1,4)\) for \(U\); the inner lifted
+link pair is \((5,-4)\) in its retained convention. Their actual
+boundary signs and the Jin parameter reversal give the reference
+\(U\)-pair \((6,0)\). The Hermitian dual map gives the physical
+pair \((-6,0)\). The K68 first-to-second piece clutch is
+\(\lambda_M(F)=-\Sigma_{F^{-1}}=\Sigma_F\); the return is the
+one obtained from the delta-averaged product connection, identical
+on the selected tube, so this is the actual clutched sphere. Its
+reference class and native coordinates are therefore the K71 seed
+\(-1\) and \((0,-6,-1)\), respectively. These conclusions use the
+complete exterior and cap extension above.
+
+## EC.6. The actual vertical seeds and complete fanwise trace comparison
+
+First retain the complete vertical seed; the initial seed alone does
+not specify a different vertical star. On \(T_j\) the literal
+characters and periods give
+\[
+ V_j=Z^{-j}V,\quad H_j=HB^j,\quad B_j=B,\quad
+ Q_j=\kappa qg^j,
+\]
+\[
+ \alpha_j=\alpha\eta^j\kappa^{-j}g^{-j^2},
+ \qquad\eta_j=\eta g^{-j}.
+ \tag{EC.26a}
+\]
+For each fixed integer \(j\), the exact source interpolation is
+\(Q_t=Q\exp(tj\log g)\). Near its node \(xy=Q_t\), the vector
+field \(\partial_t+j\log g\,y\partial_y\) is tangent and keeps
+\(q,w\) fixed. On the outside torus use the marked-period field
+\(u+\tau_t b\mapsto u+\tau_0b\). Their difference on the
+overlap is vertical. A partition of unity in this affine space
+of horizontal fields, fixed on the two protected collars, supplies
+the actual periodic flow. It transports the embedded normalization
+graph by the ordered real-height isotopy of EC.4. The spinor arrow
+is multiplication by \(Z^j\):
+\[
+ E\otimes\mathcal O(j(D_+-D_-))\longrightarrow E.
+\]
+Its two Cartier generators \(x^{-j-1}y^j,x^{-j}y^{j+1}\) go
+exactly to \(1/x,y\). Its adjoint and the product cap (EC.25)
+therefore carry the full normal frame, including (EC.7).
+
+In the full real period coefficients \((u,b,d,\gamma)\), the
+actual outer arrow is
+\(u_j=u,b_j=b,\gamma_j=\gamma-jb,d_j=d-ju\).
+The q-deck is \((u,d)\mapsto(u-b,d-\gamma)\), and the positive
+w-deck is \((u,d)\mapsto(u+6b,d)\). These follow from (EC.12)
+with every actual unit logarithm retained. In those coefficient
+frames the connections are
+\[
+ A_0=dd+\alpha_q d\gamma,\qquad
+ A_j=dd_j+\alpha_q d\gamma_j+6j\theta\,db,
+\]
+\[
+ A_j-A_0=-j\{du+(\alpha_q-6\theta)db\}.
+ \tag{EC.26b}
+\]
+The differentials of the zero-winding logarithms occur in the
+definition of \(d\); using these coefficients retains them.
+The only new integral theta-clutch is the dual-line factor
+\(\mathcal T^{6j}\), where the coefficient of \(\mathcal T\)
+changes by \(e^{2\pi i b}\). Its curvature is
+\(\Xi=d\theta\wedge db\), with \(\Xi^2=0\).
+
+Here the exact relative extension test of K66 applies to the
+present source, with the following concrete maps. The graph map
+\(b\) is constant on the attaching vanishing circle and extends
+over its two-handle; it is made constant near the fixed graph by
+a supported real lift and then extends over the product cap.
+The integral boundary has
+\(H_1=\mathbb Z\langle\alpha_q,\theta,b,\gamma\rangle\);
+the q commutator kills \(u\) primitively. The restrictions from
+the completed piece contain precisely \(\theta,b,\gamma\).
+The remaining q-angle obstruction vanishes on the literal disc
+\[
+ (q/Z_*,Z_*,1)\mapsto(qZ_*^{j-1},Z_*,Z_*^{-j}),
+ \qquad |Z_*|=1,\quad Z_*\text{ near }-1,\quad\gamma=0.
+ \tag{EC.26c}
+\]
+For small \(w\), the marked Cartier sections have Tate points
+near one, so this disc avoids them and the fixed tube. Its actual
+line arrow extends with no zero. Subtract the integral one-cochain
+from the logarithms of the ratio line, solve its real Cech
+one-cocycle by a partition of unity, and correct its boundary value
+by the extending \(\theta,b,\gamma\) characters and the remaining
+real logarithm. This gives the prescribed relative isomorphism
+\(U_j\to U_0\otimes\mathcal T^{6j}\), not just its Chern class.
+
+The full tangent comparison is the source flow just written and
+its actual positive triangular graph shear. The source-frame
+matrix is upper triangular after ordering its coframe as in
+K63 SQ.4; its strictly triangular curvature has zero trace-square.
+The base connection and its interpolation depend on only the
+two boundary angles and one collar variable, so its curvature
+square vanishes as well. The relative \(p_1\)-pairing against
+\(\Xi\) is zero: a regular b-level outside the surgery is the
+actual source three-level times the gamma circle, with the source
+four-form restricting to zero and the just specified boundary
+transgression zero. This retains the full E6 source connection.
+
+The relative Euler cube has an affine interior term because
+\(\Xi^2=0\). On the outward collar the exact difference (EC.26b)
+has the same fifth-form coefficient \(18j^2\) as K66 EC.29;
+the actual piece-to-exterior interpolation runs from one to zero,
+so its physical contribution is \(-18j^2\). Thus the physical
+cube has the form \(-6+Lj-18j^2\), and its Pontryagin pairing
+stays zero. The two literal endpoint evaluations fix \(L\).
+The E6 equation, the section, and all Miller factors depend only
+on \(w^2\). The full reflection line arrow can be read directly
+from the retained theta frame. One has
+\[
+ S_6(-w)=S_6(w),\qquad c_6(-w)=P^{-6}c_6(w),\qquad
+ f_\theta(Z^{-1},P^{-6})=P^6f_\theta(Z,P^6).
+\]
+The last identity holds for the full theta product at the same
+period \(Q\): use
+\(\Theta(Z^{-1})=-Z^{-1}\Theta(Z)\) in its numerator and
+denominator. In the first two identities \(P=P_G(0,w)\).
+In the full theta identity and the following period arrows,
+\(P=P_G(q,w)\) is the actual extending marked lift. The source
+identity reverses the marked invariant differential and fixes
+\(O\), so it sends this lift to \(P^{-1}\); the integral
+Tate reindex is zero on the formal neighbourhood of \(O\)
+specified by (EC.14a). Therefore the source/Cartier identity first has
+the literal ordered-coordinate arrow
+\[
+ I:(Z,V)\mapsto(Z^{-1},P^6V).
+\]
+The actual target source period has coefficient
+\(\alpha_{\rm target}=P^{-6}\). Composing that period with \(I\)
+gives exactly
+\[
+ H_{\rm target} I:(Z,V)\mapsto(Q/Z,V).
+\]
+This retains the full height-one source-period reindex and all
+theta factors. This composed half-turn arrow commutes with the
+exterior and the finite cap (EC.19)--(EC.21), whose coefficients
+are pulled back from the same source disc. This arrow sends
+\(T_0\) to its literal reflected \(T_1\). It carries (EC.24)--(EC.25)
+and the physical line, so both reference cubes are \(-6\), with
+Pontryagin pairing zero. Hence \(L=18\), and on every \(T_j\)
+the actual physical pair, class and native pair are
+\[
+ (k_M,\ell_M)=(-6-18j(j-1),0),\quad
+ A_M=-1-3j(j-1),\quad(m_{\rm native},n_{\rm native})
+       =(0,-6-18j(j-1)).
+ \tag{EC.26d}
+\]
+All scalar/root and higher-unit terms in these maps are the ones
+of EC.2--3. This establishes the complete K71 seed by the actual
+E6 line and collar maps.
+
+For a chosen lattice-basis fan \(P\), put \(R=P^{-1}\) and use
+the literal characters \(Z'=Z^{R_{11}}V^{R_{12}}\),
+\(V'=Z^{R_{21}}V^{R_{22}}\), with \(q\) unchanged. The new period
+basis is \(H'_j=H^{P_{1j}}B^{P_{2j}}\). Its full coefficients are
+\[
+ A_{ij}=(\kappa^{P_{1j}}g^{P_{2j}})^{R_{i1}}
+              (\alpha^{P_{1j}}\eta^{P_{2j}})^{R_{i2}},
+ \qquad B_P=-6P^{-1}e_1e_1^tP.
+ \tag{EC.26}
+\]
+The q-exponents are \(RP=I\). Every cone map and its inverse is
+the corresponding integral semigroup map, carrying all full unit
+powers. The outside arrow is its inverse character map in the
+original source and Cartier coordinates, so the cap squares of
+EC.3 are unchanged.
+
+The three exact edge transitions, in the two vertex charts, are
+\[
+ (u,v_2,w_2)=
+ (A_{11}A_{21}bc,A_{21}^{-1}ab,A_{11}^{-1}b^{-1}),
+\]
+\[
+ (A_{12}A_{22}bc,A_{22}^{-1}c^{-1},A_{12}^{-1}ac),
+ \qquad(a^{-1},ab,ac).
+ \tag{EC.27}
+\]
+Their full normal matrices are
+\(\operatorname{diag}(A_{22}/A_{21},A_{11}A_{21})\),
+\(\operatorname{diag}(A_{11}/A_{12},A_{12}A_{22})\), and
+\(\operatorname{diag}(A_{22},A_{11})\). Their determinant winding
+is \(-6\). Retain their first winding numbers
+\(l=(B_{22}-B_{21},B_{11}-B_{12},B_{22})\).
+The complete unit contractions are the GF.9 maps
+\(H_d=(\sin\vartheta e^{id\theta}+j\cos\vartheta)
+(\sin\vartheta+j\cos\vartheta)^{-1}\), with left \(H_{-3}\)
+and right \(H_{l_i+3}\), multiplied by the based logarithms
+specified in EC.2 and their actual radial cutoffs. The exact tube
+identity \(zD_{i,*}K_i=zD_i\) matches both vertex collars. Normal
+rescaling and the cutoff flow of its velocity carry the full
+higher normal jets and preserve their overlap maps.
+
+Thus the actual ordinary/native boundary comparison is precisely
+GF.12, with left degree \(-6\), right degree zero, and inverse
+cylinder correction \(L^6\). Physical weights, odd Spin endpoints,
+the capped edge traces and all nine prism equations are the same
+integer equations of K71, derived from these actual matrices.
+The local Cox ruling change is the same map on its rank-one matrix,
+with common link \((h,q_H)\mapsto(q_H^{-1}hq_H,q_H)\); it is
+independent of the source parameter and intertwines every full
+coefficient and closing map in (EC.26). Its final native reset
+retains the physical circle and central generator orientation.
+Hence finite Euclidean words construct the same complete K71
+algorithm on the present E6 family, starting from the actual seed
+of EC.5. This proves equality with the K71 actual return on each
+specified fan by these source/exterior/cap/Cox arrows. It assigns
+no return to any other E6 puncture.
+
+## EC.7. Audit scope and exact certificate
+
+The certificate `code/part3_fourfold/e6_selected_cusp.py` checks
+the full source-height equation and inverse polynomial relation,
+normalization and normal covector, critical separation, actual
+Miller values, source translation at the cusp, original/root
+coordinate scaling, the full selected scalar cancellation, and
+the exact period-conjugation and representative Cox identities.
+The exterior, integral cochain, both normal-cap and physical-clutch
+arguments are written above for geometric audit. The source
+equation alone is not used to replace those arrows.

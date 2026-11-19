@@ -1,0 +1,226 @@
+\subsection{An independent interval certificate}\label{push:section:E.4}
+\label{sec:e4}
+
+We write $\eta_D$ for the Dedekind eta function and set
+\[
+ h=z-(1-\tau)/2,\qquad
+ \mathcal N^2(z,\tau)=
+ \left|\frac{\vartheta_3(h,\tau)}{\eta_D(\tau)}\right|^2
+ \exp\left(-\frac{2\pi(\Im h)^2}{\Im\tau}\right).
+\]
+The half-period theta identity identifies this with the norm used in
+\cref{fam:src:C.1.1,fam:src:C.2.3}. The coefficient of $\Im c$ in $D_c$ is one. Consequently the
+identity from the period calculation above which we use is
+\[
+ D_{\rm part}=\frac6\pi
+ \log\left(\frac{\mathcal N}{2\sqrt3}\right).
+\]
+It follows directly by taking the imaginary part of the theta formula
+for $\beta^{\rm part}$; its Gaussian factor removes
+$6(\Im\mu)^2/\Im\tau$. Thus no numerical normalization is inferred
+from the new computation. The analytic formula and the first
+certificate are recorded in the period calculation above, \cref{fam:src:C.1.1,fam:src:C.2.3}. The result below supplies independent
+arithmetic evidence for that same conclusion, with the independent certificate below.
+
+\begin{theorem}[independent certification of every box]\label{push:src:E.4.1}
+\StatementRecord{push:src:E.4.1}{proved}{Historical events: Claude Fable 5.2 (Anthropic), effort high, 16 November 2026: carried as background without fault found; used and rechecked in this run. Claude Fable 5.2 (Anthropic), effort high, 17 November 2026: carried as background without fault found. GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_09\_PAPERS, 17 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: computation or formal certificate; targeted proof check; used and rechecked in this run. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} The earlier attribution of code/I/replay\_interval\_leaves.output.json and replay\_family/f\_interval\_verify.stdout to this independent Arb theorem is withdrawn. Those executions used the earlier mpmath implementation and remain recorded under fam:src:C.2.3. The fresh unchanged Arb execution is separately recorded below. Read Johansson2016 Section2 pp2–4 and complete Section3 pp4–6, and official python-flint0.9.0 constructor/lower/upper/man\_exp/str semantics. These source-reading scopes are retained. The earlier reference to an already replayed Arb certificate was premature: that earlier execution used mpmath. The actual Arb implementation match and execution are recorded in the subsequent events. Read and rederived the full six-step proof and both complete original programs. Checked rational-to-Arb enclosures, exact dyadic Newton choices, the complex sup-norm contraction, finite pole-free Fourier enclosures, both moment tails, theta and logarithmic eta tails, upper-endpoint acceptance and the exact rational sweep. Wrote the explicit half-period theta identity and period/evenness transformations proving that the one-root norm enclosure controls both zeros. The successful contraction forces the selected preconditioner to be nonzero. The proof review is separate from the executable certificates. PASS: executed the original unchanged e4\_arb\_certificate.py with python-flint0.9.0,192bits,all19701boxes,four workers. All19701 strict root contractions and norm bounds succeeded,0failures. The largest upper endpoint is enclosed by1.999877571767410524070536478244687423578792301873142913 plus or minus9.26e-56,below1.999877571767410525; worst index17866. The input SHA256 is87b7c2dc672e98cab926c092ebdc757373a6817bb651c3472235a42956b5c9ab. Only rational endpoints from the earlier certificate are imported. Full outputs and identical source hashes are in code/I/replay\_arb and analysis/I\_arb\_replay\_manifest.json. PASS: executed the original unchanged e4\_cover\_and\_local.py. The exact Fraction sweep checks19911leaves,438vertical edges,area23/40,disjoint interiors and complete coverage;36local rectangles lie in the prescribed disc and174excluded rectangles lie below the unit circle. The separately implemented256bit Arb local-constant inequalities also all passed. Execution of those constants grants no additional whole-proof review of the older local argument.}{the hypotheses, notation and definitions stated here; \citet[Sections 2--3]{Johansson2016}; \citet{PythonFlint2026}}
+
+
+
+For all 19701 rational rectangles in the supplied certificate, and for
+each $\tau$ in the rectangle, both zeros of $\wp_\tau$ satisfy
+$\mathcal N^2<2$. The new largest certified upper bound is less than
+\[
+ 1.999877571767410525.
+\]
+The 19701 rectangles, 36 local rectangles and 174 excluded rectangles
+have disjoint interiors and cover exactly
+$[0,1/2]\times[17/20,2]$. Every local rectangle is contained in
+$|\tau-i|<3/20000$, and every excluded rectangle satisfies
+$|\tau|<1$ throughout.
+\end{theorem}
+
+
+
+\begin{proof}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item The programs \path{code/I/replay_arb/S6_02_PUSH/code/e4_arb_certificate.py} and
+\path{code/I/replay_arb/S6_02_PUSH/code/e4_cover_and_local.py} use respectively 192-bit and 256-bit
+Arb arithmetic through python-flint 0.9.0. The arithmetic implementation
+is independent of mpmath. We import neither mpmath nor any routine
+from the previous certificate. The only numerical data taken from that
+certificate are its rational rectangle endpoints. We recompute roots,
+preconditioners, radii, contraction bounds, function values and tails.
+Arb's midpoint-radius representation and its outward error bounds are
+described by \citet[Section~2, pp.~2--4, and Section~3, pp.~4--6]{Johansson2016}; the precise
+constructor and endpoint semantics used here are documented in
+\citet{PythonFlint2026}. The final comparison is made with an upper
+endpoint, before conversion to a decimal string.
+
+\item For a rectangle $Q$, let $z_0$ and $A\ne0$ be the exact dyadic complex
+numbers selected by the midpoint Newton iteration. That iteration is
+only a choice of constants. For $Z=z_0+[-r,r]+i[-r,r]$ we independently
+enclose $\wp_\tau(z_0)$ and $\wp'_\tau(Z)$ for $\tau\in Q$.
+We accept only if
+\[
+ \begin{split}
+ &\left|-A\wp_\tau(z_0)
+ +(1-A\wp'_\tau(Z))(Z-z_0)\right|_\infty<r,\\
+ &|\Re(1-A\wp'_\tau(Z))|
+       +|\Im(1-A\wp'_\tau(Z))|<1.
+ \end{split}
+\]
+Here absolute values on enclosures mean their outward upper bounds.
+The derivative enclosure and integration along a line segment show
+that $z\mapsto z-A\wp_\tau(z)$ is a strict contraction of $Z$ into
+itself, uniformly for $\tau\in Q$. Thus it has a genuine zero in $Z$.
+The finite Fourier enclosures exclude the poles on $Z$, and the strict
+Lipschitz inequality forces $A\ne0$. The two zeros of $\wp$ are
+negatives modulo the period lattice, counted with multiplicity. The
+exact half-period transformation, obtained by replacing the summation
+index in the theta series, is
+\[
+ \vartheta_3\bigl(z-(1-\tau)/2,\tau\bigr)
+   =i e^{-\pi i\tau/4-\pi i z}\vartheta_1(z,\tau).
+\]
+Writing $v=\Im z$ and $y=\Im\tau$, its modulus and Gaussian factor
+cancel to give
+\[
+ \mathcal N(z,\tau)=
+ \left|\frac{\vartheta_1(z,\tau)}{\eta_D(\tau)}\right|
+ e^{-\pi v^2/y}.
+\]
+Now $\vartheta_1(-z)=-\vartheta_1(z)$,
+$\vartheta_1(z+1)=-\vartheta_1(z)$ and
+$\vartheta_1(z+\tau)=-e^{-\pi i\tau-2\pi i z}\vartheta_1(z)$.
+In the last transformation the modulus contributes
+$e^{\pi y+2\pi v}$, while the Gaussian contributes its reciprocal.
+Thus the displayed norm is even and lattice-periodic, proving directly
+that the one-root enclosure controls both zeros. No continuity or
+success of Newton iteration is used in that conclusion.
+
+\item We use the normally convergent cosine expansion
+\[
+ \wp_\tau(z)=\frac{\pi^2}{\sin^2\pi z}-\frac{\pi^2}{3}
+ +8\pi^2\sum_{n\geq1}\frac{nq^n}{1-q^n}
+                      (1-\cos 2\pi nz),\qquad q=e^{2\pi i\tau},
+\]
+and differentiate it in $z$ for $\wp'$. This identity follows by twice
+differentiating the normally convergent Jacobi product and inserting
+$E_2=1-24\sum_{n\geq1}nq^n/(1-q^n)$; this also verifies the
+Fourier formula used in the period calculation above. The new program sums
+32 terms directly in cosine form. Put $r_q\geq|q|$,
+$H_z\geq|\Im z|$, and $R_q=r_q e^{2\pi H_z}<1$.
+For $j=1,2$, the inequality $(N+k)^j\leq(N+1)^jk^j$ gives
+\[
+ \begin{aligned}
+ U_1(a)&=\frac{(N+1)a^{N+1}}{(1-a)^2},\\
+ U_2(a)&=\frac{(N+1)^2a^{N+1}(1+a)}{(1-a)^3},
+ \qquad
+ \sum_{n>N}n^j a^n\leq U_j(a).
+ \end{aligned}
+\]
+We therefore add complex rectangles enclosing discs of radii
+\[
+ \frac{8\pi^2}{1-r_q}\bigl(U_1(r_q)+U_1(R_q)\bigr),
+ \qquad \frac{16\pi^3}{1-r_q}U_2(R_q)
+\]
+to the two partial sums. These estimates follow from
+$|\cos z|,|\sin z|\leq e^{|\Im z|}$ and
+$|1-q^n|\geq1-r_q$. They differ from the moment formulas used in
+the old implementation.
+
+\item For $\vartheta_3$ we sum
+$1+2\sum_{n=1}^{12}e^{\pi i n^2\tau}\cos(2\pi nh)$.
+With $T_*\leq\Im\tau$ and $H_*\geq|\Im h|$, the remaining
+absolute value is at most
+\[
+ \frac{2e^{-169\pi T_*+26\pi H_*}}
+ {1-e^{-27\pi T_*+2\pi H_*}}.
+\]
+The ratio in this expression is tested to be less than one. For eta
+we independently sum its logarithm,
+\[
+ \log\eta_D(\tau)=\frac{\pi i\tau}{12}
+          +\sum_{n=1}^{24}\log(1-q^n)+\mathcal E,
+ \qquad
+ |\mathcal E|\leq
+ \frac{r_q^{25}}{(1-r_q)(1-r_q^{25})}.
+\]
+The logarithms are holomorphic on $|q^n|<1$. The tail follows by
+summing $|\log(1-z)|\leq|z|/(1-|z|)$.
+We enclose $\mathcal N^2$ as
+\[
+ ((\Re\vartheta_3)^2+(\Im\vartheta_3)^2)
+ \exp\left(-2\Re\log\eta_D-
+                   \frac{2\pi(\Im h)^2}{\Im\tau}\right),
+\]
+and test its upper endpoint against the exact integer 2.
+
+\item All 19701 tests succeeded. The full output records each new enclosure;
+the largest is enclosed by
+\[
+ 1.999877571767410524070536478244687423578792301873142913
+       \ \pm 9.26\cdot10^{-56}.
+\]
+This is the enclosure of a certified upper bound, not an estimate of
+the actual maximum. Its box has input index 17866, with zero-based
+indexing. The file digest of the input is recorded in the output.
+
+\item The cover check is exact rational arithmetic. At all 438 distinct
+vertical edges we maintain the active closed vertical intervals. In
+every open vertical slab they form an ordered partition of
+$[17/20,2]$, each with multiplicity one. The last active set is empty;
+all leaves lie in the root rectangle, and the sum of their exact areas
+is $23/40$. The closed rectangles also cover their common edges.
+The omitted and excluded conditions are checked separately using
+rational endpoint comparisons. Finally,
+$2(1/10000)^2<(3/20000)^2$ puts the entire omitted square inside the
+analytic disc used below. This verifies both the inequalities and
+the coverage, rather than just replaying the old list of successful
+flags.
+\end{enumerate}
+
+\end{proof}
+
+\begin{theorem}[quantitative local maximum]\label{push:src:E.4.2}
+\StatementRecord{push:src:E.4.2}{proved}{Historical events: Claude Fable 5.2 (Anthropic), effort high, 16 November 2026: carried as background without fault found. GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_09\_PAPERS, 17 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Independently re-proved the quantitative local maximum through the explicit sigma-to-Jacobi norm identity and the checked global maximum; the small root-disc contains only the i representative. Earlier constants and interval proof remain in the compendium as a second proof.}{\cref{ari:C.1.1,ari:C.8.15}}
+
+If $|\tau-i|\leq3/20000$ and $\wp_\tau(z)=0$, then
+$\mathcal N(z,\tau)\leq\sqrt2$, with equality precisely at
+$\tau=i$. The explicit numerical second proof is retained in the compendium;
+the global norm theorem gives the following short proof.
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item For $\Lambda=\Z+\Z\tau$, the normalization identities are
+\[
+ \Delta_\Lambda=(2\pi)^{12}\eta_D(\tau)^{24},\qquad
+ \sigma_\Lambda(z)=
+ \frac{\vartheta_1(z,\tau)}{2\pi\eta_D(\tau)^3}
+                 e^{\eta_1z^2/2}.
+\]
+The real-linear quasiperiod formula in \ref{ari:C.1.1} then gives
+\[
+ |\Delta_\Lambda|^{1/12}|\sigma_\Lambda(z)|
+ e^{-\Re(z\eta(z))/2}
+ =\left|\frac{\vartheta_1(z,\tau)}{\eta_D(\tau)}\right|
+            e^{-\pi(\Im z)^2/\Im\tau}
+ =\mathcal N(z,\tau).
+\]
+For $\wp_\tau(z)=0$, Theorem~\ref{ari:C.8.15} gives the
+global maximum $\log\sqrt2$ of its logarithm, exactly on the
+orbit of $i$. In the disc $|\tau-i|\le3/20000$ the only such
+representative is $i$: a modular image with $c^2+d^2\ge2$
+has imaginary part at most $1/2$, and the remaining images
+are integral translates of $i$. Exponentiating proves the
+stated inequality and its equality locus.
+\end{enumerate}
+\end{proof}
+
+
+
+
+\clearpage\appendix

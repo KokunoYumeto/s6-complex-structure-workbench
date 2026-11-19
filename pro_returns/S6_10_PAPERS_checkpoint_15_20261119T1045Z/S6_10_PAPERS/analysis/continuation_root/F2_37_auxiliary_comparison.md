@@ -1,0 +1,5 @@
+# F2.37 auxiliary receiving comparison
+
+Frozen root derivation: 09:58:47 UTC. The isolated old items1and3 were opened at10:00:15. The old prime-subgroup stabilizer route and its Smith-specific primitive-vector route were outside the frozen derivation. They have been preserved in full and replaced only in the current proof by the independently written all-power averaging and rational-kernel/gcd maps. The current actual fixed-point equation, two divisibility deductions, exact order, necessity, identity half-vector lift, identity deletion/reinsertion, conjugacy map, height and lex comparison, and retained marked affine data match the frozen derivation clause by clause. The special two-involution convention is retained literally.
+
+The 1,348 newly authored symbolic/integer checks predate the first isolated target reading. No original producer was read or imported. These events cover only the two auxiliary items, and combine with the V reviewer only after that reviewer compares the complete installed proof.

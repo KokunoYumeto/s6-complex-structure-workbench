@@ -1,0 +1,7 @@
+# P1.18 — exact isolated polynomial-majorant comparison
+
+The finite-index derivation was frozen at 2026-11-19T10:12:29.753276+00:00 before target/producer reading. Only the isolated receiving excerpt was opened for this comparison at 2026-11-19T10:17:18.085257+00:00. Its SHA256 is d4c70749b70fd3bb3098262f267e86ec107103ae930393ba710ee8919e9076fc.
+
+PASS for the precise numerator comparison: substitute z_0 -> z_c, R -> R_loc, and Bt_l -> tilde B_l. The frozen coefficient translation is the target's displayed shifted-coefficient map. The frozen finite bijection (j,l,k) -> (k,j,l) retains j and is exactly the target's (l,k) -> (k,l) on the triangular set 0<=l<=k<=4. The same nonnegative binomial sum gives (|z_c|+R_loc)^k. The maximum is taken after bounding each fixed row by the sum of the individual weighted matrix norms. Hence the exact target inequality B_max <= hat B_max is established with its unchanged actual weights and coefficients.
+
+Scope is only this polynomial numerator estimate and its finite-index proof. The final excerpt also displays division by D_lower and the phrase Radial Gronwall and Cauchy. Those are incidental exposure; this receipt does not verify the denominator's positivity or lower bound, the radial estimate, the Cauchy estimate, the complete-domain code, or the entire P1.18 proof. VI/root retain their separately frozen scopes. No producing code or broader P1.18 target was opened here.

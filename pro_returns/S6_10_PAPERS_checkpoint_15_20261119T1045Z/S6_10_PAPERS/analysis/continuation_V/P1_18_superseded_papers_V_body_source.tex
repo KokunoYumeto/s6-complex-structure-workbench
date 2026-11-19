@@ -1,0 +1,244 @@
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item We give the error bounds and the complete covering argument behind
+the interval computation.  This is a finite proof of the minimum,
+not an inference from the preliminary grid search.  All coefficients,
+accepted rectangles and local continuation bounds are retained in the
+four \texttt{certified\_minimum\_*} programs and their JSON outputs.
+The file \texttt{minimum\_certificate\_summary.json} records their
+SHA-256 digests as well as sharp interval endpoints.
+
+\item Put $a=|\lambda_*|$.  The normalized root coordinates are
+\[
+ z_\infty=(a/\lambda)^{1/5},\qquad
+ z_0=(\lambda/a)^{1/4}.
+\]
+In the regular root frames of P1.16 their connections have the form
+\[
+ G(z)=\frac{\sum_{j=0}^{m-1}B_jz^j}{1+z^m},\qquad m=5,4.
+\tag{1.18.2}
+\]
+The entries of $B_j$ are the exact algebraic numbers obtained by
+substituting the positive real number $a^{\pm1/m}$ in the rational
+connection.  The generator of the finite deck group acts on these
+frames by their stated eigencharacters.  Since its flat matrix is
+real and fixes $e$, it leaves $h_b$ invariant.  It therefore suffices
+to cover the sector $0\leq\arg z\leq2\pi/m$ in each root disc.
+
+\item Use the positive diagonal weights
+\[
+ (1,1/128,1/128,1/32,1/64,1/32)
+\]
+and the corresponding weighted maximum row norm.  Exact ball
+arithmetic gives
+\[
+ \left\|\sum_j |B_j|\right\|<1.447\quad(m=5),\qquad
+ \left\|\sum_j |B_j|\right\|<1.135\quad(m=4).
+\]
+Here the absolute values are entrywise, before taking the row norm.
+Let $B$ denote the actual enclosed bound.  The scalar inequality
+\[
+ \frac1{1-t^m}\leq\frac1{m(1-t)}+\frac{m-1}{m},\qquad0\leq t<1,
+\]
+follows on multiplying by $m(1-t)(1+\cdots+t^{m-1})$;
+the remaining assertion is
+$\sum_{j=1}^{m-1}t^j\geq(m-1)t^m$.
+Gronwall's inequality consequently bounds the fundamental solution
+$U(0)=I$ on $|z|\leq R<1$ by
+\[
+ K_R=\exp\!\left[B\left(-\frac{\log(1-R)}m
+                    +\frac{m-1}{m}R\right)\right].
+\]
+Cauchy's estimate bounds the tail after degree $n$ on $|z|\leq r<R$
+by
+\[
+ K_R\frac{(r/R)^{n+1}}{1-r/R}.
+\tag{1.18.3}
+\]
+The code uses $R=0.999$.  The coefficients are computed directly
+from (1.18.2):
+\[
+ nU_n=-(n-m)U_{n-m}
+       +\sum_{j=0}^{\min(m-1,n-1)}U_{n-1-j}B_j,
+\]
+with the first term omitted when $n<m$.
+There is no derivative approximation in this recursion.
+The regular limit frame is determined by certified continuation
+from $\lambda=1$ to a positive root-chart point and inversion of
+this convergent series.  At the infinity center it yields
+\[
+ h_b(\infty)\in
+ [-1.094540250311402780116268263054945704
+       \ \mathbin{\pm}\ 3\cdot10^{-37}].
+\tag{1.18.4}
+\]
+The corresponding enclosure at zero has center
+\[
+-0.9317933763565235054307951057960111149908282005165194125
+\]
+and radius $7.91\cdot10^{-56}$.
+
+\item We explain two numerical details which are needed to make these
+bounds rigorous and efficient.  At a root center, let $H$ denote
+the actual limiting period frame, and form the real matrix whose
+five columns are
+\[
+ \operatorname{Im}H_{\mathrm{low},1},\quad
+ \operatorname{Re}H_{\mathrm{low},1},\quad
+ \operatorname{Im}H_{\mathrm{low},2},\quad
+ \operatorname{Re}H_{\mathrm{low},2},\quad
+ \operatorname{Im}H_{\mathrm{low},3}.
+\]
+Its certified inverse gives a constant real change of the lower five
+flat coordinates.  Subtracting the corresponding real linear
+combination of those coordinates from the top coordinate also
+makes the first two top entries zero at the center.  This is an
+explicit real invertible change fixing $e$.  It does not change
+$h_b$: on the real intersection vector the extra top term is real,
+so its imaginary part is zero.  This change greatly improves the
+four real equations used to evaluate (1.15.3).
+
+\item For a polynomial $p(z)=\sum c_jz^j$ with ball coefficients, evaluation
+on a rectangle centered at $z_c$, of enclosing radius $\rho$, uses
+its midpoint-coefficient polynomial at the point $z_c$.  Coefficient
+uncertainty is bounded by
+$\sum_j\operatorname{rad}(c_j)|z_c|^j$, and variation over the
+rectangle by
+$\rho\sum_j j|c_j|r^{j-1}$, where $r$ bounds the modulus on it.
+The tail (1.18.3) is then added.  The point evaluation uses 800-digit
+ball arithmetic; its rounding radius is retained.  These explicit
+bounds avoid the excessive interval enlargement of long rectangular
+Horner recursions.  No error radius is discarded.
+
+\item On the square $|\operatorname{Re}z_\infty|,
+|\operatorname{Im}z_\infty|\leq0.1$, differentiating the exact linear
+system for the real intersection vector gives the following
+certified bounds for the real Hessian of $h_b$:
+\[
+\begin{split}
+ 0.2898644&<h_{xx},h_{yy}<0.3946911,\\
+ |h_{xy}|&<0.0524256,\qquad
+ \det\operatorname{Hess}(h_b)>0.0757786.
+\end{split}
+\tag{1.18.5}
+\]
+The derivatives of the period frame are evaluated by
+$Y'=YG$ and $Y''=Y(G^2+G')$; the derivatives of the intersection
+vector follow by differentiating its invertible four-by-four real
+system.  Finite rotation invariance forces $dh_b(0)=0$ in this
+root chart.  Positive definiteness on the convex square therefore
+proves a strict minimum at its center.
+
+\item Outside that square, a recursive dyadic rectangle cover proves
+$h_b>h_b(\infty)$ throughout $|z_\infty|\leq0.98$ in its sector.
+It has 900 accepted rectangles, maximum subdivision depth eight.
+The zero-root disc $|z_0|\leq0.98$ is certified by 463 rectangles,
+also of maximum depth eight.  A rectangle is discarded only when
+its entire intersection with the required sector and disc is empty,
+or when it lies in the already proved local square.  Every remaining
+rectangle is either certified by the strict interval inequality or
+subdivided.  The complete records show that the subdivision terminates;
+there is no unresolved rectangle.
+
+\item It remains to cover a cusp neighborhood and the collar between these
+two root discs.  Write
+\[
+ q=(\lambda-\lambda_*)/\lambda_*.
+\]
+In this coordinate the connection is $R/q+A(q)$, with $R^2=0$
+and $A$ analytic on $|q|<1$.  A regular-singular factorization is
+\[
+ Y(q)=H\exp((\log q)R)P(q),\qquad P(0)=I.
+\]
+The recursion for its analytic factor is
+\[
+ (n-\operatorname{ad}_R)P_n
+   =\sum_{j=0}^{n-1}P_{n-1-j}A_j,
+ \qquad \operatorname{ad}_R(Q)=QR-RQ.
+\]
+Because $R^2=0$, the cube of this adjoint operator vanishes and its
+inverse is the finite expression
+$1/n+\operatorname{ad}_R/n^2+\operatorname{ad}_R^2/n^3$.
+In an exact dyadic diagonal norm the code proves
+$\|R\|<0.841$ and uses the sharper recorded bound
+\[
+ C=1+2\|R\|+4\|R\|^2<5.508.
+\]
+On the circle of radius $0.4$, the absolute-coefficient majorant of
+$A$ is less than $4.895$.  The coefficient recursion is dominated
+by the scalar equation $p'=Ca_{\rm abs}p$; hence
+$\|P\|\leq\exp(C\cdot4.895\cdot0.4)$ there.  Cauchy's estimate
+now gives the same explicit geometric tail bound as (1.18.3), with
+this exponential in place of $K_R$ and $R=0.4$.
+
+\item The constant $H$ is obtained by certified continuation to $q=0.01$
+along a specified polygon in the upper half-plane.  The matrix
+$2\pi iHRH^{-1}$ is integral, since it is the logarithm of the
+corresponding marked local monodromy.  Its ball enclosure contains
+exactly one integer matrix; that matrix and an integral Jordan
+marking $J$ are exported.  They satisfy
+\[
+ J^{-1}(2\pi iHRH^{-1})J=\begin{pmatrix}0&I_3\\0&0\end{pmatrix}.
+\]
+At the fixed parameter $c_*=-h_b(\infty)$, the last three columns of
+$J^{-1}HP(q)$ specifying $F_{c_*}$ have blocks $T(q),D(q)$.
+The lower block is certified invertible on the stated cusp disc.
+The period matrix is therefore
+\[
+ Z(q)=\frac{\log q}{2\pi i}I_3+C(q),\qquad C(q)=T(q)D(q)^{-1}.
+\]
+Put $B(q)=\operatorname{Im}C(q)$ and $y=-\log|q|/(2\pi)$.
+Then
+\[
+ \det\operatorname{Im}Z
+ =y^3+\operatorname{tr}(B)y^2
+   +\Bigl(\sum_{i<j}(B_{ii}B_{jj}-B_{ij}B_{ji})\Bigr)y+\det B.
+\tag{1.18.6}
+\]
+On the whole disc $|q|\leq0.01$, interval substitution in (1.18.6),
+followed by $y=-\log(0.01)/(2\pi)+v$, gives four strictly positive
+coefficients in $v$; their certified lower bounds, in increasing
+order, are $0.8111$, $3.6097$, $3.5346$, and $1$.
+The sharp endpoints are in \texttt{cusp\_cubic\_bounds.json}.
+Since $v\geq0$, the determinant is positive
+throughout the punctured disc.  Near the cusp $h_b+c_*>0$ by P1.8;
+continuity and transversality then give this same strict inequality
+throughout that disc.  A separate finite cover of
+$0.01\leq|q|\leq0.25$, using the same analytic factor and (1.18.6),
+contains 7033 certified rectangles, of maximum depth seven.  It
+extends the inequality to the whole punctured disc $|q|\leq0.25$.
+
+\item The only remaining region, expressed in the infinity-root chart, is
+\[
+ 0.98\leq |z_\infty|\leq0.98^{-4/5},\qquad
+ 0\leq\arg z_\infty\leq2\pi/5,
+ \qquad |q|\geq0.25,
+\]
+where $q=-z_\infty^{-5}-1$.
+Each rectangle in this collar is reached from radius $0.95$ by
+Taylor continuation of (1.18.2).  The local analytic radius is
+$0.449$ times the distance to the nearest root of $1+z^5$.
+The numerator is bounded in the same diagonal norm and the
+denominator by the product of the five distances to those roots.
+Gronwall and Cauchy give an explicit tail for every step, exactly
+as in P1.16.  There are 427 steps and 117 accepted rectangles,
+of maximum depth eight; each proves $h_b>h_b(\infty)$.
+
+\item These regions cover every point of the completed base except the
+cusp itself, where $h_b$ tends to positive infinity.  Every inequality
+away from the infinity center is strict.  This proves both the
+global minimum and its uniqueness, and P1.8 gives the exact parameter
+domain.
+
+\item Finally, \texttt{normalization\_shift.py} evaluates
+$a_{\rm split}=96Y_{03}(\lambda_*/2)/(625\pi i)$ by the same
+certified continuation, with the polygon stated above.
+The real and imaginary radii are respectively less than
+$4.31\cdot10^{-56}$ and $3.15\cdot10^{-56}$.
+Subtracting its imaginary part from (1.18.4) gives the stated
+point-normalized minimum and interval.  This is the explicit
+splitting morphism already established in P1.15, now numerically
+certified.
+
+\end{enumerate}
+\end{proof}
