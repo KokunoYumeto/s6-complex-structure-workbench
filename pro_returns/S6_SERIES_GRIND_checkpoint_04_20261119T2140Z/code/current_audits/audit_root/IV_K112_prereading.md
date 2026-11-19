@@ -1,0 +1,9 @@
+# K112 derivation before reading the complete supporting arguments
+
+19 November 2026. GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro. Exact input scope: the full K112 statement and its introductory VM2.1–VM2.4 displays have been read. No claim is made that those introductory formulas were independently discovered. The remaining VM2, IVM2, IGC and AFM2 arguments have not yet been opened by this reviewer.
+
+From the statement alone the native map k=mu+nu, ell=4mu sends (−1,72) to (71,−4); (4k−ell)/24=12. For the vertical polynomial S(j)=2−j^3+4j^2−5j, subtraction gives S(j+1)−S(j)=−3j^2+5j−2=−(3j−2)(j−1), and S(j−1)−S(j)=3j^2−11j+10=(3j−5)(j−2). The initial j=−1 value is12 and j=0 value is2. The physical polynomial satisfies k(j)=6S(j)−1 and ell(j)=−4, hence the same integer conversion at every j. These are exact integer identities, with no reduction modulo28 until after the conversion.
+
+An integer polynomial has period28 modulo28 by expanding each (j+28)^a−j^a. Exhausting j modulo28 will therefore establish the stated vertical image. It will not establish the full GL2(Z) fan image, whose supplied 28 paths must be reconstructed through the actual fan coefficient maps and exact prism equations. The initial T−1 toT0 arrow and its orientation require the K111 source/cap construction; arithmetic alone supplies no absolute seed.
+
+For cap invariance the proposed proof route is to construct a proper product of each original good cap with its cubic reference, matching the complete source, point line, finite character, norm sign and annular reference on the common boundary. An actual bundle bordism with these maps carries cubic and Pontryagin-linear numbers separately. A line-coefficient order alone does not construct that bordism. The complete printed maps and every parameter unit are the comparison targets.
