@@ -1,0 +1,113 @@
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item We remove the existential free-lift condition by an explicit
+construction. Let $d>1$ be the order of $M$ and choose a primitive
+$u\in\ker(M-I)\cap\mathbb Z^6$. Such a vector is obtained from a
+nonzero rational kernel vector by clearing denominators and dividing
+by the greatest common divisor of its integer coordinates; both
+operations retain the equation $(M-I)u=0$. Put
+$g(x)=Mx+u/d^2$ and $S_d=\sum_{a=0}^{d-1}M^a$.
+Then $g^j(x)=M^jx+ju/d^2$, $S_dM^j=S_d$ and $S_du=du$.
+A fixed point of $g^j$ gives
+$(M^j-I)x+ju/d^2=\lambda\in\mathbb Z^6$.
+Applying $S_d$ gives $ju/d=S_d\lambda\in\mathbb Z^6$.
+A Bezout row pairing to one with $u$ therefore gives $d\mid j$.
+Writing $j=dr$, the original equation becomes $ru/d=\lambda$,
+so the same row gives $d\mid r$. Thus only multiples of $d^2$
+can have fixed points. Since $g^{d^2}$ is translation by the
+integer vector $u$, its torus action is the identity. This proves
+both its actual order $d^2$ and freeness of every nonidentity power.
+For $M=I$, translation by $u/2$ for primitive $u$ has actual order
+two and is free. Conversely, when $I-M$ is invertible over
+$\mathbb R$, every affine map $Mx+a$ fixes the torus class of
+$(I-M)^{-1}a$. The free-lift test is consequently exactly
+$\ker(M-I)\ne0$.
+
+\item Finite order is also effectively bounded at this linear
+stage. Its minimal polynomial is a product of distinct
+cyclotomic polynomials, and eigenvalue one uses at least one
+of the six dimensions. Every other cyclotomic factor therefore
+has degree at most five and their total degree is at most
+five. For a cyclotomic index $d$, each prime divisor $p$ has
+$p-1\le5$, and its prime-power factors satisfy
+$p^{a-1}(p-1)\le5$. Enumerating these factors and the possible
+degree sums gives exactly
+\[
+                 d\in\{1,2,3,4,5,6,8,10,12\}.             \tag{F.CN1}\label{maps:eq:F.CN1}
+\]
+Here $d$ is the order of the matrix, the least common multiple
+of its cyclotomic indices. Multiplicities of a factor can only
+increase the dimension and introduce no new orders. Each
+listed order occurs with a fixed vector after adding trivial
+summands. Thus taking the powers in \eqref{maps:eq:F.CN1}, checking the
+fixed kernel, the product relation, and the cusp Smith
+factors gives an exact admissibility test. The unbounded
+actual affine multiplicities are not bounded by \eqref{maps:eq:F.CN1}.
+
+\item For an admissible full tuple $T=(M_1,\ldots,M_k,M_0)$ let
+$H(T)$ be its maximum absolute entry. There is at most one identity
+finite slot in a three-point tuple: two such identities would make
+$M_0$ finite order, whereas $M_0=I+N$, $N^2=0$ and
+$\operatorname{rank}N=3$ give $(I+N)^d=I+dN\ne I$ for every
+positive integer $d$. At a fixed identity slot, delete that matrix
+and reinsert $I$ at the same slot after classifying the remaining
+ordered tuple. These two maps are inverse, and both commute with
+$T\mapsto (QM_1Q^{-1},\ldots,QM_0Q^{-1})$ for the same
+$Q\in\mathrm{GL}(6,\mathbb Z)$. They therefore retain the actual
+returned simultaneous conjugator. The remaining invertible integral
+matrices have height at least one, so inserting $I$ leaves height
+unchanged. Every entry in the inserted block is constant; the first
+unequal row-major entry of two tuples is therefore the same before
+and after insertion. This proves preservation of the specified
+lexicographic comparison as well. The actual affine order and
+numerator at that slot are retained as gluing data and are transported
+by this same $Q$. In the two-involution sector use the canonical
+representative of \ref{maps:src:F.2.38}, with its own specified
+convention. In all remaining sectors, order full integer tuples
+first by $H$, then lexicographically by their row-major entries in
+the displayed marked order, and take the first admissible member
+of the simultaneous conjugacy class.
+
+\item To compute it, enumerate heights $1,\ldots,H(T)$ and the
+integer entries at that height. There are at most
+\[
+                     (2H(T)+1)^{36(k+1)}                  \tag{F.CN2}\label{maps:eq:F.CN2}
+\]
+tuples in this complete box. The product relation allows
+$M_0$ to be calculated from the first $k$ matrices, so the
+implementation enumerates fewer entries. It also rejects
+matrices with different characteristic polynomials or orders
+before calling the conjugacy decision \ref{maps:src:F.2.36}. These filters
+cannot reject an equivalent tuple. At least one comparison
+succeeds: the supplied tuple itself belongs to its own box.
+The first successful comparison returns the canonical
+representative and its exact conjugating matrix.
+
+\item Every simultaneous orbit has a least element in this order.
+Its height is at most the height of any supplied member,
+which proves that \eqref{maps:eq:F.CN2} loses no class representative for
+that input. If two inputs are equivalent they therefore
+return the same least element. Conversely the returned
+conjugators show that equal representatives imply equivalent
+inputs. The casewise involution normal form has the same
+property by \ref{maps:src:F.2.38}, and an involution tuple cannot be
+equivalent to a tuple in the other branch. This proves the
+classification assertion, including its finite stopping rule.
+
+\item Finally, \ref{maps:src:F.2.16} already gives an unbounded admissible integral
+family. In its homology convention direct symbolic
+multiplication gives
+\[
+             \operatorname{tr}(M_1M_2^3)
+                       =-v^4+v^3-v^2+2.                 \tag{F.CN3}\label{maps:eq:F.CN3}
+\]
+This is unbounded even on the previously constructed free
+affine subfamily $v\in20\mathbb Z$. It is invariant under
+simultaneous conjugacy. A fixed finite entry box contains
+only finitely many tuples and hence only finitely many such
+traces; it cannot contain a representative of every class.
+The input-dependent nature of \eqref{maps:eq:F.CN2} is therefore necessary
+for this particular exhaustive procedure.
+
+\end{enumerate}
+\end{proof}

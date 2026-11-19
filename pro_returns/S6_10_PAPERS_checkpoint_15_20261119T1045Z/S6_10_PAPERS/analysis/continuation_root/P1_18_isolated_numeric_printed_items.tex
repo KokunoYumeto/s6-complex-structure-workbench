@@ -1,0 +1,159 @@
+% Original numbered item 2
+\item Put $a=|\lambda_*|$.  The normalized root coordinates are
+\[
+ z_\infty=(a/\lambda)^{1/5},\qquad
+ z_0=(\lambda/a)^{1/4}.
+\]
+In the regular root frames of P1.16 their connections have the form
+\[
+ G(z)=\frac{\sum_{j=0}^{m-1}B_jz^j}{1+z^m},\qquad m=5,4.
+\tag{1.18.2}
+\]
+The entries of $B_j$ are the exact algebraic numbers obtained by
+substituting the positive real number $a^{\pm1/m}$ in the rational
+connection.  The generator of the finite deck group acts on these
+frames by their stated eigencharacters.  Since its flat matrix is
+real and fixes $e$, it leaves $h_b$ invariant.  It therefore suffices
+to cover the sector $0\leq\arg z\leq2\pi/m$ in each root disc.
+
+
+% Original numbered item 3
+\item Use the positive diagonal weights
+\[
+ (1,1/128,1/128,1/32,1/64,1/32)
+\]
+and the corresponding weighted maximum row norm.  Exact ball
+arithmetic gives
+\[
+ \left\|\sum_j |B_j|\right\|<1.447\quad(m=5),\qquad
+ \left\|\sum_j |B_j|\right\|<1.135\quad(m=4).
+\]
+Here the absolute values are entrywise, before taking the row norm.
+Let $B$ denote the actual enclosed bound.  The scalar inequality
+\[
+ \frac1{1-t^m}\leq\frac1{m(1-t)}+\frac{m-1}{m},\qquad0\leq t<1,
+\]
+follows on multiplying by $m(1-t)(1+\cdots+t^{m-1})$;
+the remaining assertion is
+$\sum_{j=1}^{m-1}t^j\geq(m-1)t^m$.
+Gronwall's inequality consequently bounds the fundamental solution
+$U(0)=I$ on $|z|\leq R<1$ by
+\[
+ K_R=\exp\!\left[B\left(-\frac{\log(1-R)}m
+                    +\frac{m-1}{m}R\right)\right].
+\]
+Cauchy's estimate bounds the tail after degree $n$ on $|z|\leq r<R$
+by
+\[
+ K_R\frac{(r/R)^{n+1}}{1-r/R}.
+\tag{1.18.3}
+\]
+The code uses $R=0.999$.  The coefficients are computed directly
+from (1.18.2):
+\[
+ nU_n=-(n-m)U_{n-m}
+       +\sum_{j=0}^{\min(m-1,n-1)}U_{n-1-j}B_j,
+\]
+with the first term omitted when $n<m$.
+There is no derivative approximation in this recursion.
+The regular limit frame is determined by certified continuation
+from $\lambda=1$ to a positive root-chart point and inversion of
+this convergent series.  At the infinity center it yields
+\[
+ h_b(\infty)\in
+ [-1.094540250311402780116268263054945704
+       \ \mathbin{\pm}\ 3\cdot10^{-37}].
+\tag{1.18.4}
+\]
+The corresponding enclosure at zero has center
+\[
+-0.9317933763565235054307951057960111149908282005165194125
+\]
+and radius $7.91\cdot10^{-56}$.
+
+
+% Original numbered item 5
+\item For a polynomial $p(z)=\sum c_jz^j$ with ball coefficients, evaluation
+on a rectangle centered at $z_c$, of enclosing radius $\rho$, uses
+its midpoint-coefficient polynomial at the point $z_c$.  Coefficient
+uncertainty is bounded by
+$\sum_j\operatorname{rad}(c_j)|z_c|^j$, and variation over the
+rectangle by
+$\rho\sum_j j|c_j|r^{j-1}$, where $r$ bounds the modulus on it.
+The tail (1.18.3) is then added.  The point evaluation uses 800-digit
+ball arithmetic; its rounding radius is retained.  These explicit
+bounds avoid the excessive interval enlargement of long rectangular
+Horner recursions.  No error radius is discarded.
+
+
+% Original numbered item 6
+\item On the square $|\operatorname{Re}z_\infty|,
+|\operatorname{Im}z_\infty|\leq0.1$, differentiating the exact linear
+system for the real intersection vector gives the following
+certified bounds for the real Hessian of $h_b$:
+\[
+\begin{split}
+ 0.2898644&<h_{xx},h_{yy}<0.3946911,\\
+ |h_{xy}|&<0.0524256,\qquad
+ \det\operatorname{Hess}(h_b)>0.0757786.
+\end{split}
+\tag{1.18.5}
+\]
+The derivatives of the period frame are evaluated by
+$Y'=YG$ and $Y''=Y(G^2+G')$; the derivatives of the intersection
+vector follow by differentiating its invertible four-by-four real
+system.  Finite rotation invariance forces $dh_b(0)=0$ in this
+root chart.  Positive definiteness on the convex square therefore
+proves a strict minimum at its center.
+
+
+% Original numbered item 8
+\item It remains to cover a cusp neighborhood and the collar between these
+two root discs.  Write
+\[
+ q=(\lambda-\lambda_*)/\lambda_*.
+\]
+In this coordinate the connection is $R/q+A(q)$, with $R^2=0$
+and $A$ analytic on $|q|<1$.  A regular-singular factorization is
+\[
+ Y(q)=H\exp((\log q)R)P(q),\qquad P(0)=I.
+\]
+The recursion for its analytic factor is
+\[
+ (n-\operatorname{ad}_R)P_n
+   =\sum_{j=0}^{n-1}P_{n-1-j}A_j,
+ \qquad \operatorname{ad}_R(Q)=QR-RQ.
+\]
+Because $R^2=0$, the cube of this adjoint operator vanishes and its
+inverse is the finite expression
+$1/n+\operatorname{ad}_R/n^2+\operatorname{ad}_R^2/n^3$.
+In an exact dyadic diagonal norm the code proves
+$\|R\|<0.841$ and uses the sharper recorded bound
+\[
+ C=1+2\|R\|+4\|R\|^2<5.508.
+\]
+On the circle of radius $0.4$, the absolute-coefficient majorant of
+$A$ is less than $4.895$.  The coefficient recursion is dominated
+by the scalar equation $p'=Ca_{\rm abs}p$; hence
+$\|P\|\leq\exp(C\cdot4.895\cdot0.4)$ there.  Cauchy's estimate
+now gives the same explicit geometric tail bound as (1.18.3), with
+this exponential in place of $K_R$ and $R=0.4$.
+
+
+% Original numbered item 10
+\item The only remaining region, expressed in the infinity-root chart, is
+\[
+ 0.98\leq |z_\infty|\leq0.98^{-4/5},\qquad
+ 0\leq\arg z_\infty\leq2\pi/5,
+ \qquad |q|\geq0.25,
+\]
+where $q=-z_\infty^{-5}-1$.
+Each rectangle in this collar is reached from radius $0.95$ by
+Taylor continuation of (1.18.2).  The local analytic radius is
+$0.449$ times the distance to the nearest root of $1+z^5$.
+The numerator is bounded in the same diagonal norm and the
+denominator by the product of the five distances to those roots.
+Gronwall and Cauchy give an explicit tail for every step, exactly
+as in P1.16.  There are 427 steps and 117 accepted rectangles,
+of maximum depth eight; each proves $h_b>h_b(\infty)$.
+

@@ -1,0 +1,2 @@
+UTC 2026-11-17T12:55:16.524433+00:00
+Root identified before promotion that arbitrary derivative matrices lie in GL+, and polar retraction is not multiplicative. The old ST2 typing as a literal Spin identity is withdrawn. The corrected proof uses the universal covering GROUP of stable GL+ for exact chain rule; its lifted polar deformation identifies the integral third class with Spin. Orthogonal local blocks are then computed in Spin. No theorem or result mapping used the mistyped proof.

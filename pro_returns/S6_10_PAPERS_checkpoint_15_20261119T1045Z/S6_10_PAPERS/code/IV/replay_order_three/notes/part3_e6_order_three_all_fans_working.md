@@ -1,0 +1,538 @@
+# The order-three source loop on every selected lattice-basis fan
+
+This is the fixed-scalar source loop of E87 and E109. Its source is
+\(y^2=x^3+rx^2+tx+t^2\), with \(G=(0,t)\),
+\(s=1/4-r\), the selected node of E64, point line
+\(M_6=\mathcal O(6G-O)\), suspension by \(-G\), and the
+quadratic reduced-IV cap with primitive norm n=1, its retained character,
+root scalar and complete reference map. We use one positive s-loop,
+the fixed scalar specified by E87, and the actual physical line and
+orientation of K68. The full initial-fan relative filling is E61--109.
+The following proof uses its physical Jin pair \((-27,-12)\).
+It does not change that filling or choose a free integer from its
+class in the group of homotopy spheres.
+
+## OF.1. The selected parameter disc and every full character map
+
+Take a small closed s-disc on which the selected node remains simple.
+Use the literal height \(q=t-t_{\rm selected}(s)\). E64's marked
+normalization coordinate and E69's full selected Hom section give
+the actual periods on its punctured source collar,
+\[
+ h:(Z,V,q)\longmapsto(\kappa qZ,\alpha V,q),\qquad
+ B:(Z,V,q)\longmapsto(gZ,q\eta V,q),
+ \qquad \eta=\lambda\beta.                         \tag{OF.1}
+\]
+Here \(\kappa=Q/q\), the marked translation is
+\(g=P_{\rm sel}^{-1}\), and in the point-theta frame
+\(\alpha=P_{\rm sel}^{6}\). The coefficient \(\beta\) is the
+full point-line coefficient of the selected Hom section, after its
+displayed q factor. All four coefficients and their inverses extend
+holomorphically on the selected q-disc times this s-disc. In
+particular E64 gives a primitive cube root for \(P_{\rm sel}(0,0)\),
+and E109 carries the point/O coincidence by its Cartier module
+generator. The central value of the normalized Hom coefficient is
+\(4/t_{\rm selected}\ne0\). The scalar \(\lambda\) is fixed.
+Thus no coefficient in (OF.1) acquires a parameter zero on this
+disc. The original q, theta, point-line and cap frames remain the
+ones of E64, E69, E87 and E109.
+
+For each full coefficient U in (OF.1), choose its holomorphic
+logarithm on this simply connected bidisc and put
+\[
+ f_U(s,q)=\log U(s,q)-\log U(s_*,q),
+ \qquad U(s,q)/U(s_*,q)=\exp f_U(s,q).              \tag{OF.2}
+\]
+The equality fixes the based logarithm without changing U. It is
+zero at the initial parameter \(s_*\), is single-valued on the
+whole disc, and contains the full q dependence. Its restriction to
+the positive s-circle is therefore a based periodic logarithm.
+
+Let P be any integral unimodular two-by-two matrix and R its
+integral inverse. The selected fan consists of the triangles
+\(\{n,n+Pe_1,n+Pe_2\}\) and
+\(\{n+Pe_1,n+Pe_2,n+P(e_1+e_2)\}\), for \(n\in\mathbb Z^2\).
+Its actual dense characters and period generators are
+\[
+ Z'=Z^{R_{11}}V^{R_{12}},\qquad
+ V'=Z^{R_{21}}V^{R_{22}},\qquad q'=q,
+ \qquad h'_j=h^{P_{1j}}B^{P_{2j}}.                \tag{OF.3}
+\]
+The inverse character map uses P. Substitution in (OF.1) gives
+\[
+ h'_1:(Z',V')\mapsto(qA_{11}Z',A_{21}V'),\quad
+ h'_2:(Z',V')\mapsto(A_{12}Z',qA_{22}V'),
+\]
+\[
+ A_{ij}=(\kappa^{P_{1j}}g^{P_{2j}})^{R_{i1}}
+        (\alpha^{P_{1j}}\eta^{P_{2j}})^{R_{i2}}.  \tag{OF.4}
+\]
+These are full holomorphic maps and their inverse period basis
+changes; their q exponents are \((RP)_{ij}\). The based logarithm
+of each coefficient is exactly
+\[
+ R_{i1}(P_{1j}f_\kappa+P_{2j}f_g)
+ +R_{i2}(P_{1j}f_\alpha+P_{2j}f_\eta).           \tag{OF.5}
+\]
+Consequently its actual parameter winding is zero. This conclusion
+uses (OF.2) on the full selected disc, including the original
+point-line coefficient; it is not an inference from the torsion
+order of the central point.
+
+All these toric selected pieces extend over this s-disc. Their
+unimodular charts have the same height monomial and the coefficients
+(OF.4), which are units there. Their finite period-cell closure,
+the index translations on its faces and the contracting ordinary
+annulus are those of the original selected construction. These
+give a proper smooth selected piece with its outer q-collar.
+The identical original torus at \(q\ne0\) identifies that collar
+on every fan. This is the only full-disc extension used here; the
+unselected order-three collision is still treated by E61--109.
+
+## OF.2. Actual plumbing products with zero local circle traces
+
+In the two selected vertex charts write \((a,b,c)\) and
+\((u,v,w)\). Their complete three curve overlaps are
+\[
+\begin{array}{c|ccc}
+ &u&v&w\\\hline
+ C_0&A_{11}A_{21}bc&A_{21}^{-1}ab&A_{11}^{-1}b^{-1}\\
+ C_1&A_{12}A_{22}bc&A_{22}^{-1}c^{-1}&A_{12}^{-1}ac\\
+ C_2&a^{-1}&ab&ac.
+\end{array}                                               \tag{OF.6}
+\]
+Each triple product is the original q. Keep the first vertex and
+use \((u,A_{22}(s,q)v,A_{11}(s,q)w)\) at the second, with the
+same initial constant units in the reference. This full coordinate
+arrow carries the original height: the new coordinate product is
+\(h_s(q)=qA_{11}(s,q)A_{22}(s,q)\). Its inverse first recovers
+\(q=h_s^{-1}(u v' w')\), then divides the two coordinates by
+\(A_{22}(s,q)\) and \(A_{11}(s,q)\). The derivative of h_s
+at q zero is the nonzero product of the two actual units. On a
+smaller uniform collar it therefore has this inverse. In the
+ordered normal pairs
+\((a,c),(a,b),(b,c)\), their transitions are z times
+\[
+ D_0=\operatorname{diag}(A_{22}/A_{21},A_{11}A_{21}),\quad
+ D_1=\operatorname{diag}(A_{11}/A_{12},A_{12}A_{22}),\quad
+ D_2=\operatorname{diag}(A_{22},A_{11}).              \tag{OF.7}
+\]
+For \(K_i=D_{i,*}^{-1}D_i\), the two diagonal logarithms are
+the corresponding sums of (OF.5). Write them \(k_{i0},k_{i1}\).
+With a fixed smooth radial cutoff \(\rho(|z|)\), zero at the
+first vertex collar and one at the second, use the literal map
+\[
+ (z,n_0,n_1)\longmapsto
+ (z,e^{\rho k_{i0}}n_0,e^{\rho k_{i1}}n_1).        \tag{OF.8}
+\]
+The original height is retained in the target of this smooth
+coordinate arrow. More explicitly, put
+\[
+ H_{s,z}(q)=q\exp\{\rho(|z|)(k_{i0}+k_{i1})(s,q)\}.
+\]
+For the new coordinates \((z,n'_0,n'_1)\), recover
+\(q=H_{s,z}^{-1}(z n'_0n'_1)\), and then use the exact inverse
+\(n_j=\exp\{-\rho k_{ij}(s,q)\}n'_j\). The derivative of
+H at zero is a unit. After dividing by that derivative, its
+q derivative differs from one by less than one half on a
+uniform small disc, because the parameter and radial collars
+are compact. Integration along a straight segment proves
+injectivity there, and the inverse function theorem gives
+the displayed inverse with smooth dependence on the radial
+variables. This also specifies the transported target height;
+no new normal-coordinate product is substituted for the old q.
+The arrow satisfies
+\(zD_{i,*}K_i=zD_i\) at the second collar and is the identity
+at the first. Both exponentials and every vertex map extend
+over the whole s-disc. They commute with the physical diagonal
+circle; the cutoff depends only on \(|z|\).
+
+The higher normal terms in (OF.6) are retained by the explicit
+normal rescaling \((z,n)\mapsto(z,\tau n)\) and the cutoff
+flow of its velocity, as in GF.2. The normal linear blocks remain
+invertible. The flows are supported in the disjoint curve
+interiors, fix the protected vertex collars, and are averaged
+over the physical circle. Hence they extend the displayed maps
+to a based smooth ordinary product of the complete plumbing,
+over the s-disc, with its actual units and physical action.
+
+The native star products are also literal. Their second charts
+are
+\[
+\begin{array}{c|ccc}
+ C_0&z'=A_{11}w&n'_0=A_{21}v&n'_1=(A_{11}A_{21})^{-1}u\\
+ C_1&z'=A_{22}v&n'_0=A_{12}w&n'_1=(A_{12}A_{22})^{-1}u\\
+ C_2&z'=u&n'_0=v&n'_1=w.
+\end{array}                                               \tag{OF.9}
+\]
+They satisfy \(z'=z^{-1}\), \(n'=zn\) exactly. Their Hopf
+normal coordinate is
+\(q_H=U(z)(n_0+j\overline{n_1})\),
+\(U(z)=(1+jz)/\sqrt{1+|z|^2}\). The native-to-ordinary
+arrow is the one induced by (OF.7)--(OF.8) in this coordinate,
+with the positive norm carried on both sides. It extends over
+\(S^2\times D_s\), is based at \(s_*\), and its based
+contraction is obtained by substituting
+\(s_\tau=s_*+(1-\tau)(s-s_*)\) in those same formulas.
+This is a contraction of the full normal arrow, including its
+inverse and higher terms. The explicit cylinder extension of
+OR.2 therefore has endpoint isotopic to the identity relative
+to the boundary. There is no added left, right or central
+relative class in this product comparison.
+
+Put \((x,y)^t=P^{-1}e_2\). The physical tangent weights of
+\(C_0,C_1,C_2\) are
+\[
+ (w_0,w_1,w_2)=(x,y,-x-y).                            \tag{OF.10}
+\]
+The constructed ordinary product makes the physical action
+independent of the parameter. The local normal orbit map and
+its full stable derivative thus have no parameter dependence.
+On a radial-path--parameter--physical-circle three-chain their
+degree-three forms have zero pullback. The endpoint caps are
+constant in the parameter-disc variable. Consequently the
+actual local trace degrees in the GF.18--19 prisms are
+\[
+                       I_i=W_i=0.                    \tag{OF.11}
+\]
+The complete unit maps in (OF.8) give the based equivariant
+homotopy to that product, so these are the degrees of the
+original family. The full tangent Spin loop also closes:
+the base rotation endpoint \((-1)^{w_i}\) is cancelled by
+the same normal endpoint, exactly as in GF.3.
+
+Let V be the integral variation matrix and \(\delta\) the
+stable-derivative vector in the positive complex meridian and
+ambient-relative-dual bases of K29/K31. The actual graph
+circle chains still have boundary
+\(w_jD_j-w_0D_0\); the arrows (OF.6) do not change that
+integral chain calculation. The complete prism equations are
+therefore
+\[
+ V(w_je_j-w_0e_0)=0,\qquad
+ w_j\delta_j-w_0\delta_0=0,\qquad j=1,2.             \tag{OF.12}
+\]
+V is symmetric by the same doubled-exterior intersection map.
+No formula from the withdrawn universal scalar-fan assertion
+is used to determine its remaining entries.
+
+## OF.3. The actual initial native integers and all vertical fans
+
+On the initial fixed curve use the literal Cox charts
+\[
+ q=Zc_0c_1,\qquad Z'=Z^{-1},\qquad c'_i=Zc_i.
+\]
+The ordered physical weights of \((c_0,c_1,Z)\) are
+\((-1,+1,0)\). Its two equal real normal products are
+\[
+ q_H=(1+jZ)(c_0+j\overline{c_1})
+     =(Z^{-1}+j)(c'_0+j\overline{c'_1}).             \tag{OF.13}
+\]
+E109 carries this same product on the outer family by its
+actual selected Möbius arrow and its nonzero point-line
+coefficient. The positive-Hermitian map
+\(P_H\mapsto AP_HA^*/\operatorname{tr}(AP_HA^*)\)
+extends its base map to the normal three-ball; the transported
+quaternion is held fixed and the stated physical Hopf phase
+acts on its line. Its inverse uses \(A^{-1}\) and the inverse
+phase. All these source-dependent maps extend on the s-disc.
+Equation (OF.13) and this ball map are thus the same native
+boundary product used in the E109 Jin completion, with its
+original physical line and K68 inverse-clutch direction.
+
+We give the integral comparison in this product. For the K23
+relative generators
+\[
+ L(y,q_H)=(y,\zeta(y)q_H),\qquad
+ R(y,q_H)=(y,q_H\zeta(y)),
+\]
+the positive-meridian Hopf map, its physical dual arrow and
+the adjoint clutch are precisely K68 PL.1--6. The first gives
+variation \(m+n=k_M\). The adjoint normal clutch on the
+marked four-cycle gives \(\ell_M=4m\): its dual-line
+description has pair \((-1,-4)\) for L, and the literal
+Hermitian line map reverses both odd characteristic numbers.
+Removing that variation leaves the \(LR^{-1}\) clutch;
+the actual adjoint Pontryagin number in SF.10 is \(-4\)
+per positive degree, giving the same equation and
+\(n=k_M-\ell_M/4\). The Gysin pullback on this marked
+fourth cohomology is injective and its cycle evaluation is
+one, as in that explicit clutch computation. Thus these
+are equalities of the free integral coordinates in (OF.13),
+not choices of lifts of a finite-group class.
+
+Substituting the E109 pair yields
+\[
+                 (m,n,A)=(-3,-24,-4).                \tag{OF.14}
+\]
+The normal-frame derivative is also retained. The inverse
+product map is \(c=u^{-1}q_H\), with shear
+\(dc=-u^{-1}(du)u^{-1}q_H\). The triangular homotopy
+of K31.3--5 removes that shear through invertible matrices
+and has normal-meridian third class \(+1\). With
+\(D_0=-[D^3_y]\), its exact derivative equation is
+\(2n=\delta_0-V_{00}\), while
+\(V_{00}=-(m+n)\). Hence
+\[
+ V=\operatorname{diag}(27,0,0),\qquad
+ \delta=(-21,0,0),\qquad A=-4.                      \tag{OF.15}
+\]
+The zero entries follow from (OF.12) at weights \((0,1,-1)\).
+By OF.2 the ordinary product adds no pure-left endpoint to
+this native product.
+
+The same seed holds on every vertical fan
+\(T_j=\left(\begin{smallmatrix}1&0\\j&1\end{smallmatrix}\right)\).
+Here is the full comparison that proves this assertion.
+Its character arrow is \((Z,V)\mapsto(Z,Z^{-j}V)\),
+with inverse \((Z,V')\mapsto(Z,Z^jV')\), and its full
+period coefficients are (OF.4). The underlying physical
+weights on its two vertices are \((0,1,-1)\), so it has
+the one compact fixed \(\mathbb P^1\) and a free action
+on its complement. Its selected piece, signed normal lines,
+Hopf line and the ball cap of (OF.13) extend over the s-disc.
+
+Cut the original threefold family on the same outer
+\(|q|=\eta\) collar. Its exterior and all root/cap/closing
+arrows there are the identical original family on every
+fan, by the inverse character map just displayed. On the
+selected pieces choose a horizontal lift of the s-disc
+coordinate agreeing with one fixed lift on that common
+collar and with (OF.13) on the fixed tube. In a source
+chart this is a lift of the parameter derivative with
+the displayed chain coordinates fixed; on an overlap
+apply the derivative of the full unit maps. A partition
+and physical-circle average preserve the prescribed
+collars. Compactness makes its flow complete. This gives
+disc products of the selected pieces and their physical
+lines with the same outer boundary product.
+
+After the K68 fixed-tube surgery, the local orbit body
+is still a five-manifold with that outer boundary: the
+replacement is the product \(D^3\times S^2\), with its
+actual Hopf line. The above ball map makes its family
+over the s-disc a product as well. On the Jin parameter
+circle each such local body is therefore a product
+with \(S^1\), and both its tangent and line connections
+can be chosen to be pullbacks from the five-dimensional
+body, with the common prescribed boundary connection.
+Their six-forms \(x^3\) and \(p_1x\) vanish there.
+The remaining six-dimensional mapping-torus piece and
+all its connections are identical on the two fans.
+Adding their integrals proves equality of the full
+integer Jin pairs, including their boundary connection
+transgressions, on \(T_j\) and \(T_0\).
+
+This argument carries the original finite cap on the
+common exterior; it does not change its character or
+discard a scalar closing. Therefore every vertical fan
+has physical pair \((-27,-12)\), the same native product
+integers (OF.14), and the same ordinary data (OF.15).
+
+## OF.4. Exact fan changes and the terminating calculation
+
+Identical-fan arrows use the identity on the absolute
+characters. Write
+\[
+ R_0=\begin{pmatrix}-1&-1\\1&0\end{pmatrix}.
+\]
+The fans of P, \(PR_0\), \(PR_0^2\), and their negatives
+are identical by the literal triangle translations of
+AF.1; swapping the columns also leaves the two triangles
+unchanged. Their affine semigroups and complete period
+maps are identical, so these are holomorphic family
+isomorphisms with their inverse integral period maps.
+They are the identity on the original exterior and
+carry its physical line, finite cap and full closing.
+
+After that exact identification there is a unique
+representative \(T_j\), or
+\(C=\left(\begin{smallmatrix}p&-r\\q&s\end{smallmatrix}\right)\)
+with \(p,r>0\) and determinant one. The primitive physical
+vector is either a fan ray or lies in its unique oriented
+interior cone. This gives precisely those two possibilities
+and the indicated representative. Put
+\[
+ Q_0=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\qquad
+ Q_1=\begin{pmatrix}1&0\\-1&1\end{pmatrix}.
+\]
+For \(r\ge p\), multiply C by \(Q_0^{-1}\); for \(p>r\),
+multiply by \(Q_1^{-1}\). Before reaching a vertical
+representative the positive pair becomes \((p,r-p)\)
+or \((p-r,r)\). Its sum strictly decreases. The determinant
+gives \(\gcd(p,r)=1\), so equality is \(p=r=1\) and
+the next step is vertical. Reversing this finite list
+factors the chosen fan from its vertical seed using
+only the two indicated forward changes.
+
+Their actual local maps are the two rulings of
+\(\left(\begin{smallmatrix}n_0&n_1\\zn_0&zn_1\end{smallmatrix}\right)\):
+\[
+ (z,n_0,n_1)\longmapsto
+ (n_0/n_1,zn_1,n_1),
+ \quad(n_1/n_0,zn_0,n_0).                           \tag{OF.16}
+\]
+Their common source height is \(q=zn_0n_1\).
+For \(Q_0\) the character map is \((ZV,V)\); for
+\(Q_1\) it is \((Z,ZV)\). The latter interchanges
+the two ordered normal coordinates by the explicit
+unitary path
+\[
+ S_t=\frac12\begin{pmatrix}
+ 1+e^{\pi it}&1-e^{\pi it}\\
+ 1-e^{\pi it}&1+e^{\pi it}
+ \end{pmatrix},\qquad 0\le t\le1.
+\]
+It commutes with their scalar z transition and preserves
+the real normal orientation. The full transformed units
+are \(A'_{ik}=\prod_{h,j}A_{hj}^{(Q^{-1})_{ih}Q_{jk}}\),
+so (OF.2)--(OF.9) carry both actual ruling families and
+their exterior identifications. Their local threefolds
+are smooth. On the common link the integral maps on
+\(H_2,H_3\) are the signed primitive maps of K23; the
+Mayer--Vietoris and van Kampen diagrams therefore carry
+the initial homotopy six-sphere to a homotopy six-sphere
+at each replacement. The oriented smooth six-sphere
+identification used throughout the earlier fan construction
+applies to these same two pieces and the same link.
+
+For completeness their full relative normal arrow is
+\[
+ T(y,q_H)=(q_H^{-1}yq_H,q_H),\qquad
+ T^{-1}(y,q_H)=(q_Hyq_H^{-1},q_H).
+\]
+The original normal quaternion is retained. The reset
+to the target complex first-resolution convention is
+\(U(y,q_H)=(J(y),J(q_H))\),
+\(J(q_H)=k\overline{q_H}k^{-1}\). Its two real
+reflection determinants are both negative, so their
+product preserves the exterior and filling orientations.
+It exchanges the literal L and R maps and fixes the
+oriented disc-supported central generator. Thus the
+actual relative triple changes by
+\[
+ (m,n,A)\longmapsto(m+2n,-n,A+n).                  \tag{OF.17}
+\]
+This is the K23/K31 common-link computation with the
+full units (OF.4), not an equality of fan labels alone.
+
+At a selected old curve \(i=0\) or 1 write
+\(a=V_{ii}\), \(b=\delta_i\). The literal normal
+frame calculation used in OF.3 gives
+\(n=(b-a)/2\). In the target product, the selected
+curve has index 2 and
+\[
+ V'_{22}=a,\qquad\delta'_2=2a-b,
+ \qquad A'=A+(b-a)/2.                              \tag{OF.18}
+\]
+Every intermediate nonvertical representative has
+weights \((r,p,-r-p)\), all nonzero. Its own full
+disc products give (OF.12). The unique symmetric
+solution with the two selected values is
+\[
+ V'_{jk}=\frac{c}{w_jw_k},\qquad
+ \delta'_j=\frac{e}{w_j},\qquad
+ c=w_2^2a,\quad e=w_2(2a-b).                       \tag{OF.19}
+\]
+Indeed the two prism vectors span the kernel of the
+functional with coefficients \((1/w_0,1/w_1,1/w_2)\).
+A symmetric matrix annihilating that plane is exactly
+c times its outer square, and the derivative has the
+one analogous scalar. The specified entries determine
+both scalars. Existence is the actual target return
+just constructed. Its invariants are integral and
+equal this unique rational solution. The direct
+calculation below also verifies that integrality.
+
+## OF.5. Closed form and its complete image
+
+For a nonvertical representative put
+\(S=p^2+pr+r^2\) and \(B=pr(p+r)\). Equations
+(OF.15), (OF.18) and (OF.19) give, inductively,
+\[
+ c=27B^2,\qquad e=B(6-27S).                        \tag{OF.20}
+\]
+At the first step \(p=r=1\) their values are 108 and
+\(-150\), directly from \(a=27,b=-21,w_2=-2\).
+For the \(Q_0\) step the pair is \((p,r+p)\).
+The selected old weight is r, so the integer increment
+is
+\[
+ n_0=3p(r+p)-\frac{27}{2}p(r+p)
+                         \big((r+p)^2+p^2\big).
+\]
+Here
+\(S'-S=2p(r+p)\) and
+\(S'+S=2((r+p)^2+p^2)\). Hence
+\[
+ n_0=\frac32(S'-S)-\frac{27}{8}(S'^2-S^2).          \tag{OF.21}
+\]
+The \(Q_1\) step exchanges p and r in the displayed
+calculation, giving the same identity. Substitution
+in (OF.19) gives (OF.20) at the target as well.
+Starting at the vertical value \(S=1,A=-4\), the
+exact increments telescope to
+\[
+ A(P)=-4+\frac32(S-1)-\frac{27}{8}(S^2-1),\qquad
+ S=x^2+xy+y^2,\quad (x,y)^t=P^{-1}e_2.             \tag{OF.22}
+\]
+The identical-fan maps send \((x,y)\) to
+\((y,-x-y)\), its negative, or its coordinate swap.
+These literal substitutions preserve S, so (OF.22)
+is a value on the original requested fan. Since
+\(\gcd(x,y)=1\), S is odd; both displayed fractions
+are integers. The physical class is \(A(P)\bmod28\)
+in the K68 presentation. This integer records the
+chosen actual directed factorization; its residue
+is the oriented sphere class.
+
+The executable certificate checks (OF.18)--(OF.22)
+for all 2,920 unimodular matrices with entries at most
+12 in absolute value, representing 366 fans. It
+checks the decreasing factorization, every integral
+prism equation, the selected inverse data, all free
+integer coordinates and the closed expression. Its
+233,305 exact checks use rational arithmetic only.
+
+The residue in (OF.22) depends only on S modulo112:
+\[
+ A(S+112)-A(S)=-756S-42168\in28\mathbb Z.
+\]
+Enumerating \((x,y)\bmod112\) with
+\(\gcd(x,y,112)=1\) therefore bounds the image for
+every primitive integral pair. For each resulting
+residue the certificate also supplies an actual
+primitive integral pair and Bezout integers u,v,
+\(ux+vy=1\), and the literal matrix
+\[
+ P=\begin{pmatrix}y&-x\\u&v\end{pmatrix},\qquad
+ \det P=1,\quad P^{-1}e_2=(x,y)^t.
+\]
+Those witnesses attain the entire bound. Thus the
+complete image is
+\[
+ \{0,3,4,5,7,10,11,12,14,17,18,19,21,24,25,26\}.
+\]
+The matrices, full integer values and source code
+are retained in `code/part3_root/e6_order_three_fan_algebra.*`.
+The first fixed-edge flop has increment \(-24\)
+and class zero; the original vertical fan has class
+24. Both values follow through (OF.13)--(OF.18).
+
+## OF.6. Retained attempted reduction
+
+Before the relative product was computed, the extending
+selected coefficients suggested comparing all fans by
+their local disc families alone. That comparison does
+prove the vertical integer pair through the actual
+five-dimensional product bodies in OF.3. For a
+nonvertical ruling change its complete common boundary
+map is instead the displayed T and U, whose conjugation
+on the global exterior return is (OF.17). The actual
+right coordinate is \(-24\) at the first fixed edge,
+and that map changes the central class by \(-24\).
+This exact morphism records the missing step in the
+earlier attempted all-fan constancy reduction. The
+present proof carries that boundary map and each
+subsequent integral normal reset before evaluating
+any target class.

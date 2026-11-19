@@ -1,0 +1,11 @@
+# F3.11 isolated period-coordinate and projection comparison
+
+The derivation and 12 exact checks were frozen at 10:24:55.748026 UTC on 19 November 2026, before the two receiving clauses were extracted at 10:25:13 and before either was read. Only `analysis/continuation_root/F3_11_local_charts_isolated.tex` was opened for this comparison. Its SHA256 is bbf9d058b97e3b4e093729f31c5d78d2167fe220f4cc1931d913195d698fb39f. The full F3.11 proof remains outside this review's exposure and scope.
+
+The printed assertion that the restricted Grassmann projection is a holomorphic submersion matches the actual chart `(t,C) -> t` and the differential/right inverse in the frozen note. The neighbouring fibre-identification clause about the fibre at p0 is incidental exposure here: its identification is not claimed as newly proved by this isolated review and remains in the parent's separate full-proof scope.
+
+The printed local period normalization matches the frozen actual integral permutation P, invertible period block B, and quotient map B^(-1) pi P=[I,Z]. The omitted coordinate operations are written explicitly in the frozen note. Its exact kernel is P graph(-Z;I). In real coordinates the quotient has block matrix [[I,Re Z],[0,Im Z]], proving precisely the printed nonzero-determinant test and giving the inverse. The same projected lattice triple persists on a neighbourhood because det B and det Im Z remain nonzero. No global Schubert chart is assumed. The period variable Z and the parent's graph variable C are related by the explicit equality C=-Z, with the actual combined graph determinant 8i det Im Z in the period convention. This agrees with (2i)^3 det Im C after substitution C=-Z.
+
+Every mathematical claim in the two assigned clauses is therefore covered, except that the adjacent special-fibre identification is deliberately reserved to the parent's already frozen proof. No correction to either assigned clause is needed. This is a targeted proof check and an independent computation of the specified maps, not a whole-theorem re-proof or a source/credit check.
+
+Raw events remain staged during the checkpoint15 freeze. The immutable before-read receipt and exact new program/output retain their original hashes.

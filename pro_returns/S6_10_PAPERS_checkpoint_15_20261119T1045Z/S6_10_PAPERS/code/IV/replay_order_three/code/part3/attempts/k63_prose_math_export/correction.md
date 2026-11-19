@@ -1,0 +1,1 @@
+Preserved the first successful PDF and its source before repairing prose expressions parsed as Markdown superscripts. Full generators, q-height products, chart labels, Maurer matrix and elementary sphere/disc powers now carry explicit math delimiters. No mathematical statement changes.

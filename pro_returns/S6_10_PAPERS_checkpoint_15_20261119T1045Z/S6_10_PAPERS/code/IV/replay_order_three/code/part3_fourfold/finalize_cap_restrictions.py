@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Export root-audited K18--19 with their exact orbit-map scope."""
+from pathlib import Path
+from datetime import datetime,timezone
+import json
+root=Path(__file__).resolve().parents[2]
+with (root/'records/literature_fourfold.md').open('a') as f:
+ for name in ['notes/part3_cap_restrictions.md','code/part3_fourfold/export_trace_tex.py','code/part3_fourfold/results_mapping.json']:
+  f.write('\n- '+datetime.now(timezone.utc).isoformat()+' — Opened current-team `'+name+'`; reason: export root-audited K18–19; material: linking-class obstruction, exact root/line quotient and Tate component restrictions.\n')
+p=root/'code/part3_fourfold/export_trace_tex.py';s=p.read_text()
+s=s.replace("source+='\\n'+(root/'notes/part3_flop_cobordism.md').read_text().replace('# P3K.17.','## P3K.17.',1)\n",
+            "source+='\\n'+(root/'notes/part3_flop_cobordism.md').read_text().replace('# P3K.17.','## P3K.17.',1)\ncaps=(root/'notes/part3_cap_restrictions.md').read_text()\nsource+='\\n'+caps[caps.index('## P3K.18.'): ]\n")
+s=s.replace('[1-9]|1[0-7]','[1-9]|1[0-9]').replace('assert len(parts)==52','assert len(parts)==58')
+s=s.replace("    else:\n        statement,proof=body.split('**Proof.**',1)",
+            "    elif ident=='P3K.19':\n        marker='**Proof: the actual component maps and their multiplicities.**'\n        statement,proof=body.split(marker,1)\n        proof,after=proof.split('**End of proof.**',1)\n        proof=marker+proof\n    else:\n        statement,proof=body.split('**Proof.**',1)")
+s=s.replace('Exported P3K.1--17','Exported P3K.1--19')
+p.write_text(s)
+p=root/'code/part3_fourfold/results_mapping.json';data=json.loads(p.read_text())
+data['results']=[r for r in data['results'] if r['id'] not in {'P3K.18','P3K.19'}]
+data['results'] += [dict(id='P3K.18',status='Proved',item_of_prompt='3.4',
+ proof_file='notes/part3_cap_restrictions.md',latex_file='notes/part3_fourfold.tex',
+ statement='The actual K16 orbit map of a sphere member has no multiple elliptic fibre over a logarithmic cap-core knot.',
+ own_value='gcd of the actual quotient-source component multiplicities is 1 at every cap.',
+ exact_map='Pull back the single-knot linking class modulo nu; local transverse exponent nu*a_j kills divisorial meridians, while connected regular fibres make the extended class nonzero.',
+ scope='The explicitly constructed K15--16 fixed-sphere orbit projection.'),
+ dict(id='P3K.19',status='Proved',item_of_prompt='3.4',
+ proof_file='notes/part3_cap_restrictions.md',latex_file='notes/part3_fourfold.tex',
+ statement='Every sphere cap in the K15--16 scope has a reduced root fibre. Its finite zero-gamma kernel is trivial at a singular root fibre and cancels by an exact invariant-coordinate/root-line map at a smooth root fibre.',
+ own_value='At an original I_N fibre, gcd(N,b[G])=1 and a[G]=0 mod N; for the actual source generator labels, gcd(N,b)=1 and N divides a.',
+ exact_maps=['C/H component-orbit quotient','generic ramification g/h','invariant coordinates (e,z^g) and invariant line frames','Tate-root component norm alpha=n*c mod N','integral component-Laplacian line equation'],
+ code='code/part3_fourfold/cap_restrictions.py',certificate='code/part3_fourfold/cap_restrictions.json',
+ scope='Actual affine root-line caps with the K16 global orbit map; arbitrary cusp fans require their separate comparison.')]
+p.write_text(json.dumps(data,indent=2)+'\n')
+print('Exported and mapped root-audited K18--19.')

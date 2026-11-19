@@ -1,0 +1,268 @@
+\item \textbf{Rigorous analytic enclosures.}
+The following formulas specify the complete-domain computation.
+All matrix coefficients come from the displayed rational
+connection and the specified gauges of
+\cref{night:P1.15,night:P1.16}. A regular root frame is the
+pullback followed by its stated diagonal gauge $D$; its right
+connection is exactly
+$D^{-1}\lambda'\Gamma_6D+D^{-1}D'$.
+At a positive anchor the constant limiting frame is obtained by
+the actual map $H_c=Y_{\rm root}(z_c)U(z_c)^{-1}$, using the
+normalized continuation and a certified matrix inverse.
+
+\paragraph{The analytic enclosures and their actual matrix maps.}
+For positive weights $w_i$ let $W=\operatorname{diag}(w_i)$. The
+specified norm is the maximum absolute row-sum norm of the actual
+conjugate $W^{-1}MW$:
+\[
+ \|M\|_w=\max_i\sum_j|M_{ij}|\frac{w_j}{w_i}.
+\]
+The equality $W^{-1}MNW=(W^{-1}MW)(W^{-1}NW)$ and the rowwise
+triangle inequality prove
+$\|MN\|_w\le\|M\|_w\|N\|_w$ and
+$|M_{ij}|\le\|M\|_w w_i/w_j$. For matrices with centres $C,D$
+and entrywise error bounds $E,F$, multiplication has entrywise
+error at most
+\[
+ |C|F+E|D|+EF,
+\]
+with the computed rounding error also retained. In particular, a
+left factor $H_c$ acts on an entrywise error matrix by the actual
+sum $|H_c|_+E$, where $|H_c|_+$ bounds its entries including their
+ball radii.
+
+\paragraph{Root series.}
+The listed regular-root connection matrices already include the
+specified diagonal gauges. Their frame map is
+$E_{\rm root}=E_{\rm original}D_{\rm root}$, and the numerical
+coordinate change is exactly
+$G_z(z)=\alpha G_{\rm root}(\alpha z)$, where
+$\alpha^4=256/3125$ at zero and $\alpha^5=3125/256$ at infinity.
+Multiplying $G_{\rm root}(t)$ by $1+t^m/\alpha^m$ gives the exact
+rational polynomial $\sum_{j=0}^{m-1}C_jt^j$, so
+$B_j=\alpha^{j+1}C_j$. Thus
+\[
+ U'=U\frac{\sum_{j=0}^{m-1}B_jz^j}{1+z^m},\qquad U(0)=I.\tag{1.18.2}
+\]
+Coefficient comparison in $(1+z^m)U'=UB$ gives
+\[
+ (n+1)U_{n+1}
+ =\sum_{j=0}^{\min(m-1,n)}U_{n-j}B_j
+   -(n-m+1)U_{n-m+1},
+\]
+where the last term is absent for $n<m$. The order of every
+matrix product is as displayed. Picard iteration on any smaller
+disc converges by the bound $(Lr)^k/k!$ on its $k$-fold integral,
+so these are the coefficients of the actual normalized solution.
+
+Use $w=(1,1/128,1/128,1/32,1/64,1/32)$ and
+\[
+ \mathfrak b=\max_i\sum_{j,k}|(B_k)_{ij}|\frac{w_j}{w_i}.
+\]
+On a ray of radius $t<1$ the connection norm is at most
+$\mathfrak b/(1-t^m)$. The scalar Gronwall inequality
+\cite[Lemma~2.7, pp.~42--43]{TeschlODE2012} applies to the actual
+matrix integral equation. The elementary estimate
+\[
+ \frac1{1-t^m}\le\frac1{m(1-t)}+\frac{m-1}{m}
+\]
+holds because its numerator difference is
+$\bigl(\sum_{j=1}^{m-1}t^j-(m-1)t^m\bigr)/m\ge0$.
+Consequently
+\[
+ \|U(z)\|_w\le K(R):=
+ \exp\!\left\{\mathfrak b\left[-\frac{\log(1-R)}m
+                 +\frac{m-1}{m}R\right]\right\}
+ \quad (|z|\le R<1).
+\]
+Cauchy's coefficient integral, with the positively oriented circle
+of radius $R$ \cite[\S1.9(iii), (1.9.30)--(1.9.31)]{DLMFCauchy2026},
+gives $\|U_n\|_w\le K(R)R^{-n}$. Hence the error after degree $N$
+on the whole disc $|z|\le r<R$ is
+\[
+ \tau_N(r;R)=K(R)\frac{(r/R)^{N+1}}{1-r/R}.\tag{1.18.3}
+\]
+Its $ij$ entry is bounded by $\tau_Nw_i/w_j$; after left
+multiplication by $H_c$ the bound is
+$\tau_N\sum_l|(H_c)_{il}|_+w_l/w_j$.
+The current root computations use $N=3000$, $R=0.999$ and each
+rectangle's actual maximum radius. Every coefficient and point
+rounding radius remains in the corresponding ball calculation.
+
+\paragraph{Enclosing an entire rectangle.}
+Let $z_c$ be its centre, $\rho$ its Euclidean half-diagonal, and
+$\mathcal A$ a nonnegative entrywise bound for $|G(z)|$ on the
+whole rectangle. For any point $z$ the segment
+$z_c+t(z-z_c)$ remains in it. Iteration of the integral equation
+on that segment bounds the $k$-th ordered integral by
+$|Y(z_c)|_+|z-z_c|^k\mathcal A^k/k!$. Subtracting its zeroth term
+and summing proves the entrywise simultaneous enclosure
+\[
+ |Y(z)-Y(z_c)|
+ \le |Y(z_c)|_+\bigl(\exp(\rho\mathcal A)-I\bigr).
+\]
+The centre enclosure and matrix-exponential rounding radii are
+retained, so this bounds every point of the rectangle.
+
+The midpoint-polynomial bound has the same explicit domain
+control. For $p(z)=\sum_{j=0}^Nc_jz^j$, coefficient discs with
+midpoints $\widehat c_j$ and radii $\epsilon_j$, and midpoint
+evaluation rounding radius $\eta$, the centre error is
+$\eta+\sum_j\epsilon_j|z_c|^j$. Integrating $p'$ on each segment
+bounds the remaining variation by
+\[
+ \rho\sum_{j=1}^N j\bigl(|\widehat c_j|+\epsilon_j\bigr)r^{j-1},
+\]
+where $r$ is the rectangle's maximum modulus. Add the analytic
+tail at that same $r$. This formula includes coefficient
+uncertainty in the derivative bound as well as at the centre.
+
+\paragraph{The cusp holomorphic factor.}
+The exact connection here is
+$R/q+A_0/(1+q)$, with $R^2=0$. In
+$Y=H(I+R\log q)P(q)$, $P(0)=I$, the inverse of the logarithmic
+factor is $I-R\log q$. Multiplication by that inverse gives
+\[
+ P'=\frac{\operatorname{ad}(P)}q+\frac{PA_0}{1+q},
+ \qquad\operatorname{ad}(Q)=QR-RQ.
+\]
+Thus
+\[
+ (nI-\operatorname{ad})P_n
+  =\sum_{j=0}^{n-1}(-1)^{n-1-j}P_jA_0.
+\]
+Equivalently its right side is
+$\operatorname{ad}(P_{n-1})+P_{n-1}A_0-(n-1)P_{n-1}$.
+Direct expansion gives
+$\operatorname{ad}^2(Q)=-2RQR$ and
+$\operatorname{ad}^3(Q)=0$, so the actual inverse is
+\[
+ (nI-\operatorname{ad})^{-1}
+  =\frac1n\left(I+\frac{\operatorname{ad}}n
+                   +\frac{\operatorname{ad}^2}{n^2}\right).
+\]
+This fixes both the commutator sign and the side of the $A_0$
+multiplication.
+
+Use the actual cusp weights $(100,1,1,1,1,1)$ and put
+$r_0=\|R\|_w$, $a_0=\|A_0\|_w$,
+$C_0=1+2r_0+4r_0^2$, $\gamma=C_0a_0$. For the supplied exact
+matrices,
+\[
+ r_0=\frac{5103}{8000},\quad a_0=\frac{367}{512},\quad
+ C_0=\frac{62452609}{16000000},\quad
+ \gamma=\frac{22920107503}{8192000000}.
+\]
+The norm of the inverse operator is at most $C_0/n$. Therefore
+$\|P_n\|_w\le(\gamma/n)\sum_{j<n}\|P_j\|_w$.
+The nonnegative scalar majorant $c_0=1$,
+$c_n=(\gamma/n)\sum_{j<n}c_j$ satisfies
+$c_n=(\gamma+n-1)c_{n-1}/n$ and has generating function
+$(1-s)^{-\gamma}$. Its radius is at least one by the coefficient
+ratio. Thus the actual matrix series converges normally on
+$|q|<1$, solves the equation term by term, and obeys
+\[
+ \|P(q)\|_w\le K_0(s):=(1-s)^{-\gamma}\quad(|q|\le s<1).
+\]
+The coefficient integral and geometric sum give its degree-$N$
+tail on $|q|\le r<s$ as
+\[
+ K_0(s)\frac{(r/s)^{N+1}}{1-r/s},
+\]
+with the exact entry factor $w_i/w_j$. The current cusp series
+uses $N=600$ and $s=0.4$ for $r\le0.25$. On the inner disc
+$r=0.01$ the enclosure retains all actual coefficient absolute
+sums through degree600 and this tail. It bounds $P$ itself;
+the subsequent logarithmic factor retains its specified branch
+and its own actual matrix entries.
+
+\paragraph{Collar continuation.}
+At a centre $z_c$ put $t=z-z_c$ and expand
+\[
+ 1+(z_c+t)^5=\sum_{j=0}^5q_jt^j,
+ \quad q_j=\binom5jz_c^{5-j}+\delta_{j0},
+ \qquad
+ \widetilde B_j=\sum_{k=j}^4\binom kjB_kz_c^{k-j}.
+\]
+For $T(0)=I$ the exact transition coefficients satisfy
+\[
+ T_{n+1}=
+ \frac{\displaystyle
+   \sum_{j=0}^{\min(4,n)}T_{n-j}\widetilde B_j
+  -\sum_{j=1}^{\min(5,n)}q_j(n-j+1)T_{n-j+1}}
+ {(n+1)q_0}.
+\]
+Let $\zeta_j=e^{(2j+1)\pi i/5}$ and
+$R_{\rm loc}=\tfrac12\min_j|z_c-\zeta_j|$. On the closed disc
+of this radius,
+\[
+ |1+(z_c+t)^5|\ge D_{\rm lower}
+   :=\prod_j\bigl(|z_c-\zeta_j|-R_{\rm loc}\bigr)>0.
+\]
+The numerator norm is at most
+\[
+ B_{\max}=\max_i\sum_{j,k}|(\widetilde B_k)_{ij}|
+                  \frac{w_j}{w_i}R_{\rm loc}^k.
+\]
+The actual complete-domain code uses the further upper bound
+\[
+ \widehat B_{\max}=\sum_{k=0}^4\|B_k\|_w
+                           (|z_c|+R_{\rm loc})^k.
+\]
+To see the exact comparison, substitute the displayed formula for
+$\widetilde B_l$ in each row sum and use the triangle inequality.
+Reindex the finite set $0\le l\le k\le4$ by $(l,k)\mapsto(k,l)$.
+The sum in $l$ is
+$\sum_{l=0}^k\binom kl|z_c|^{k-l}R_{\rm loc}^l
+=(|z_c|+R_{\rm loc})^k$.
+Each remaining row sum is at most $\|B_k\|_w$; taking the row
+maximum afterward proves $B_{\max}\le\widehat B_{\max}$.
+Thus the bound actually used below is
+$M=\widehat B_{\max}/D_{\rm lower}$. Radial Gronwall and Cauchy
+give the exact degree-$N$ transition tail
+\[
+ e^{MR_{\rm loc}}
+ \frac{(|\delta|/R_{\rm loc})^{N+1}}
+      {1-|\delta|/R_{\rm loc}}.
+\]
+The current steps use $N=160$ and
+$|\delta|/R_{\rm loc}<0.3$. The actual continuation order is
+$Y(z_c+\delta)=Y(z_c)T_{z_c}(\delta)$, as follows by checking
+the right ODE and its initial value. Every transition tail is
+added entrywise before multiplying on the right, and the
+entrywise product rule propagates all earlier errors.
+
+\paragraph{The real implicit system and Hessian.}
+Use the specified fixed four rows on the central square and
+write the actual system as $Mv=b$, with
+\[
+ M_{i,*}=(\operatorname{Im}Y_{i1},\operatorname{Re}Y_{i1},
+          \operatorname{Im}Y_{i2},\operatorname{Re}Y_{i2}),
+ \qquad b_i=\operatorname{Re}Y_{i3}.
+\]
+For the top row define $c$ by the same four coordinate projections,
+$d=\operatorname{Re}Y_{03}$ and $h=c_0(cv-d)$,
+$c_0=96/(625\pi)$. The certified determinant enclosure excludes
+zero on the entire central square and on its sixteen subsquares;
+the matrix inverse is therefore the actual one there.
+For $a,b\in\{x,y\}$, direct differentiation gives
+\[
+ \begin{split}
+ v_a&=M^{-1}(b_a-M_av),\\
+ v_{ab}&=M^{-1}(b_{ab}-M_{ab}v-M_av_b-M_bv_a),\\
+ h_a&=c_0(c_av+cv_a-d_a),\\
+ h_{ab}&=c_0(c_{ab}v+c_av_b+c_bv_a+cv_{ab}-d_{ab}).
+ \end{split}
+\]
+The repeated-index cases retain both cross terms. The actual
+complex derivatives supplying these real projections are
+\[
+ Y_x=YG,\quad Y_y=iYG,\quad
+ Y_{xx}=Y(G^2+G'),\quad Y_{xy}=iY(G^2+G'),\quad
+ Y_{yy}=-Y(G^2+G').
+\]
+Taking the stated real and imaginary parts and carrying out these
+products with rigorous full-square balls consequently encloses
+all Hessian entries throughout the domain. Approximate row
+selection merely chooses a minor; it supplies neither its inverse
+nor its error bound.

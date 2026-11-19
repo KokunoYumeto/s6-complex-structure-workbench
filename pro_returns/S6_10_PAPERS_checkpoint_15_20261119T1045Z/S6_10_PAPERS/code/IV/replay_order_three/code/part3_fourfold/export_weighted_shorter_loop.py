@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""Export fully audited weighted endpoint descent as separate P3K.35."""
+from pathlib import Path
+from datetime import datetime, timezone
+import json,re
+
+ROOT=Path(__file__).resolve().parents[2]
+rel='notes/part3_weighted_shorter_loop.md'
+with (ROOT/'records/literature_fourfold.md').open('a') as log:
+    log.write('\n- '+datetime.now(timezone.utc).isoformat()+' — Opened own '+rel+
+              ', results_mapping.json and qa_original_cox_descent.py. Reason: export fully audited P3K.35 and its standalone QA. '
+              'Material: root/checks full-proof PASS, blind root-character PASS, exact global rational lift and all thirty integer polynomial checks.\n')
+source=(ROOT/rel).read_text()
+statement=source.split('## 1. Scope and the actual map',1)[1].split('## 2.',1)[0]
+body='## 2.'+source.split('## 2.',1)[1]
+
+def tex(value):
+    value=value.replace(r'\tag{WS.',r'\tag{P3K.35.').replace('(WS.','(P3K.35.')
+    value=re.sub(r'^### (.+)$',lambda m:r'\par\smallskip\noindent\textit{'+m.group(1)+r'.}\enspace',value,flags=re.M)
+    value=re.sub(r'^## (.+)$',lambda m:r'\par\medskip\noindent\textbf{'+m.group(1)+r'.}\enspace',value,flags=re.M)
+    value=re.sub(r'`([^`]+)`',lambda m:r'\path{'+m.group(1)+'}',value)
+    lines=value.splitlines();out=[];i=0
+    while i<len(lines):
+        if lines[i].startswith('|'):
+            rows=[]
+            while i<len(lines) and lines[i].startswith('|'):
+                cells=[x.strip() for x in lines[i].strip('|').split('|')]
+                if not all(re.fullmatch(r'[: -]+',x or '-') for x in cells):
+                    cells=[x.replace('z_i',r'\(z_i\)') for x in cells]
+                    rows.append(cells)
+                i+=1
+            out.append(r'\begin{center}\small\begin{tabular}{p{0.32\linewidth}p{0.04\linewidth}p{0.22\linewidth}p{0.27\linewidth}}\toprule')
+            for j,cells in enumerate(rows):
+                out.append(' & '.join(cells)+r'\\')
+                if j==0:out.append(r'\midrule')
+            out.append(r'\bottomrule\end{tabular}\end{center}')
+            continue
+        out.append(lines[i]);i+=1
+    value='\n'.join(out)
+    pattern=r'\\\[\n( T\(E,k,z\)=\\begin\{pmatrix\}[\s\S]*?\\end\{pmatrix\}\.)\n\\\]'
+    value=re.sub(pattern,lambda m:'\\[\n\\resizebox{\\linewidth}{!}{$\\displaystyle\n'+m.group(1)+'\n$}\n\\]',value,count=1)
+    return value.strip()+'\n'
+
+out=(r'\begin{statement}{P3K.35}{Proved}'+'\n'+tex(statement)+r'\end{statement}'+'\n'+
+     r'\begin{proof}'+'\n'+tex(body)+r'\end{proof}'+'\n')
+assert '#' not in out and '`' not in out
+(ROOT/'notes/part3_weighted_shorter_loop.tex').write_text(out)
+mapping=json.loads((ROOT/'code/part3_fourfold/results_mapping.json').read_text())
+mapping['results']=[r for r in mapping['results'] if r.get('id')!='P3K.35']
+mapping['results'].append(dict(id='P3K.35',status='Proved',item_of_prompt='3.4',
+    statement='All thirty fixed-source whole-I1 branches descend by an actual cyclic endpoint to w=r^b, lambda=w^(M/b), with simultaneous Cox product and integer pair (-3H/b,-24chi/b).',
+    proof_file=rel,latex_file='notes/part3_weighted_shorter_loop.tex',
+    code='code/part3_fourfold/weighted_shorter_loop.py',output='code/part3_fourfold/weighted_shorter_loop.json',
+    parameter='w=r^b; lambda=w^(M/b)',k='-3H/b',ell='-24chi/b',A='(chi-H/2)/b',
+    all_fan='A_w+ell_w*(S-1)/8-k_w*(S^2-1)/8 modulo28',
+    branch_count=30,sphere_signs=[-1,1],order_one_data='Every fixed order-one norm and the actual framing-chart norm -b0 are retained.',
+    audit='Root and checks full-proof PASS; blind independent actual root-character PASS.',
+    remaining_scope='Component-supported OS49 and source-moduli loops are separate.'))
+(ROOT/'code/part3_fourfold/results_mapping.json').write_text(json.dumps(mapping,indent=2)+'\n')
+qa=(ROOT/'code/part3_fourfold/qa_original_cox_descent.py').read_text()
+qa=qa.replace('P3K.33','P3K.35').replace('k33','k35').replace('part3_original_cox_descent','part3_weighted_shorter_loop')
+(ROOT/'code/part3_fourfold/qa_weighted_shorter_loop.py').write_text(qa)
+print('Exported audited P3K.35, all thirty branches, both signs, complete global maps and exact endpoint normalization.')
+
+
+# BEGIN POST-CHECKPOINT15 SCALAR-SCOPE RESTORATION
+import importlib.util as _scalar_scope_importlib
+from pathlib import Path as _ScalarScopePath
+_scalar_scope_root = _ScalarScopePath(__file__).resolve().parents[2]
+_scalar_scope_spec = _scalar_scope_importlib.spec_from_file_location(
+    "_scalar_dependency_scope",
+    _scalar_scope_root / "code/part3/scalar_dependency_scope.py")
+_scalar_scope_module = _scalar_scope_importlib.module_from_spec(_scalar_scope_spec)
+_scalar_scope_spec.loader.exec_module(_scalar_scope_module)
+_scalar_scope_module.postprocess_generated(
+    ['code/part3_fourfold/results_mapping.json'], ['notes/part3_weighted_shorter_loop.tex'], origin='code/part3_fourfold/export_weighted_shorter_loop.py')
+# END POST-CHECKPOINT15 SCALAR-SCOPE RESTORATION

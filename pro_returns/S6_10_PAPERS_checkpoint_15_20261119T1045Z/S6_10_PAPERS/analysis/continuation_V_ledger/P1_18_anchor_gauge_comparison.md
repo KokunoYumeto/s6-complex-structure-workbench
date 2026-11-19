@@ -1,0 +1,7 @@
+# P1.18 — isolated anchor/gauge comparison
+
+The derivation froze at 2026-11-19T10:19:33.781869+00:00 before the isolated opening was supplied. Only analysis/continuation_root/P1_18_anchor_gauge_isolated.tex, SHA256 0253d5ded1992c2d6ccb462ca6d06e614e01e5d049c7bf78baa6af953389a195, was read at this comparison. No broader P1.18 proof or producer was opened.
+
+PASS for both exact displayed maps. Substitute the target Gamma_6 for Gamma in the frozen coordinate/gauge calculation. Differentiating E_root=E_original(lambda(z))D(z) and substituting E_original=E_root D^(-1) gives exactly D^(-1)lambda' Gamma_6 D+D^(-1)D', with every matrix factor in the target's order. The independently frozen right-ODE calculation gives (Y_root U^(-1))'=0 and hence Y_root(z)=H_c U(z) with the exact target anchor H_c=Y_root(z_c)U(z_c)^(-1). Since U(0)=I, H_c is the regular limiting frame at zero in that normalization.
+
+The note also proves existence/invertibility of U on the actual regular continuation chart and gives the exact ordered Neumann inverse certificate and its truncation tail. This checks the mathematical use of a certified inverse. It does not assert that any particular numerical inverse enclosure was run or passed; those actual computation receipts belong to VI/V. The source matrices and gauges of P1.15/P1.16 are named given inputs, not freshly rederived in this narrow comparison. No whole-row proof claim is made.
