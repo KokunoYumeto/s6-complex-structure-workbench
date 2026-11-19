@@ -1,0 +1,422 @@
+maps:src:F.3.5
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item The discriminant of the degree-five polynomial in \eqref{maps:eq:F.7} is exactly
+$\lambda^{15}(3125\lambda+256)$.  At $\lambda_*$ its unique double
+root is $r=64/625$ and the coefficient of $(x-r)^2$ is
+$10r^3\ne0$.  Its other roots are simple.  Thus the fibre has one
+ordinary node and irreducible genus-one normalization.  The local
+model is a smoothing of a nonseparating node; the vanishing circle
+is a primitive nonseparating homology class.  Cutting and regluing
+an annular neighborhood proves that its monodromy is a single
+Dehn twist, and hence a primitive rank-one transvection on $H^1$.
+In particular its logarithm $N_H$ has square zero and rank one.
+
+\item At zero, the substitutions $\lambda=s^8$, $x=s^6X$, $y=s^{15}Y$
+give
+\[
+ Y^2=X^5+X+s^2.
+\]
+This is smooth at $s=0$.  The generator $s\mapsto\zeta_8s$ at
+fixed $(x,y)$ acts by $(X,Y)\mapsto(iX,\zeta_8Y)$, so its
+eigenvalues on the two holomorphic differentials are
+$\zeta_8,\zeta_8^3$.  The full rational characteristic polynomial
+is $g(T)=T^4+1$.
+At infinity put $\lambda=s^{-5}$, $x=s^{-4}X$, $y=s^{-10}Y$.
+The resulting smooth family is
+\[
+ Y^2=X^5+sX+1.
+\]
+The deck generator acts by $(X,Y)\mapsto(\zeta_5^4X,Y)$,
+with holomorphic eigenvalues $\zeta_5^4,\zeta_5^3$.  Its full
+characteristic polynomial is $f(T)=T^4+T^3+T^2+T+1$.
+Inverses have the same two rational characteristic polynomials.
+
+\item We identify the representation, rather than merely its spectra.
+Choose positive peripheral generators $T_1,T_2$ at infinity and
+zero, in that order, with $T_1T_2$ inverse to nodal monodromy.
+Set $R=T_1^{-1}$ and $S=T_2$.  Then $R-S$ has rank one and their
+characteristic polynomials are $f,g$.  The following elementary
+rank-one lemma fixes their simultaneous rational conjugacy class.
+If $u$ spans $\operatorname{im}(R-S)$, it is cyclic for $R$:
+the span of its iterates is stable under both $R$ and $S$, and
+the irreducibility of $f$ makes that span all of $\mathbb Q^4$.
+In the rational basis $u,Ru,R^2u,R^3u$, the matrix of $R$ is
+the companion matrix of $f$, and $S=R-u\varphi$ for a covector
+$\varphi$.  The determinant identity
+\[
+ g(T)=f(T)+\varphi\operatorname{adj}(TI-R)u
+ \tag{F.9}\label{maps:eq:F.9}
+\]
+determines $\varphi$ uniquely: the four coordinates of
+$\operatorname{adj}(TI-R)u$ are a basis of the polynomials of
+degree at most three, as is seen from their successively distinct
+leading degrees in the cyclic basis.  It follows that any two
+such pairs are simultaneously rationally conjugate.  Apply the
+lemma to the explicit companion pair
+\[
+ C_f=\begin{pmatrix}
+ 0&0&0&-1\\1&0&0&-1\\0&1&0&-1\\0&0&1&-1
+ \end{pmatrix},\qquad
+ C_g=\begin{pmatrix}
+ 0&0&0&-1\\1&0&0&0\\0&1&0&0\\0&0&1&0
+ \end{pmatrix}.
+ \tag{F.10}\label{maps:eq:F.10}
+\]
+Their difference has rank one and their characteristic polynomials
+are $f,g$.  Thus $(T_1,T_2)$ is rationally conjugate to
+$(C_f^{-1},C_g)$, with the chosen peripheral conventions.
+
+\item Use the lexicographic basis in $\bigwedge^2\mathbb Q^4$.
+Its common invariant vector is $(1,1,1,1,1,1)^t$.
+Let $Q$ be the identity matrix of size six with first column
+replaced by this vector.  It is unimodular.  Direct multiplication
+gives the exact identities
+\[
+ \left(Q^{-1}\bigwedge^2(C_f^{-1})Q\right)_{2:6,2:6}
+   =A_{2:6,2:6},\qquad
+ \left(Q^{-1}\bigwedge^2(C_g)Q\right)_{2:6,2:6}
+   =B_{2:6,2:6}.
+ \tag{F.11}\label{maps:eq:F.11}
+\]
+They are checked over $\mathbb Z$ in
+\texttt{fourfolds\_periods.py}, not inferred from eigenvalues.
+The invariant line is the inverse of the polarization, up to a
+nonzero rational scalar.  Projection along that line identifies
+the quotient with the primitive exterior square $\mathcal W$.
+
+\item The differentials $\omega_1=dx/y$ and $\omega_2=x\,dx/y$ span
+the extended Hodge bundle everywhere.  At the node they are
+independent dualizing differentials: $\omega_1$ has nonzero
+opposite residues on the normalization and
+$(x-r)\omega_1$ is a nonzero holomorphic differential there.
+Here the extension assertion can be checked on the nodal
+annulus, without invoking an additional extension theorem.
+In coordinates $uv=t$ a relative dualizing differential has
+a convergent Laurent expansion
+$\sum_n a_n(t)u^n\,du/u$.  Integration on the vanishing circle
+is $2\pi i a_0(t)$.  Integration across the annulus has the
+single logarithmic term $a_0(t)\log t$; integration of every
+nonconstant Laurent monomial and of the complementary fixed
+arcs gives a holomorphic remainder.  Thus the period vector
+has the form $\exp(sN_H)$ times a holomorphic vector,
+$s=\log t/(2\pi i)$.  Untwisting by $\exp(-sN_H)$ is exactly
+the nilpotent canonical extension used here.  The two independent
+dualizing limits remain a basis of its Hodge subbundle.
+Their isotropic pairing, zero away from zero, remains zero
+at the limit by holomorphic continuation, so that limit is
+Lagrangian.
+At zero their expressions in the root coordinates are
+$s^{-9}dX/Y$ and $s^{-3}X\,dX/Y$; at infinity they are
+$s^6dX/Y$ and $s^2X\,dX/Y$.
+Thus their divisor lines are
+$\mathcal O(6D_\infty-9D_0)$ and
+$\mathcal O(2D_\infty-3D_0)$, proving \eqref{maps:eq:F.8}.
+The nonzero residue of $\omega_1$ also shows
+\[
+ N_H\ell_\infty\ne0,
+ \qquad \ell=\mathcal T^3\subset\mathcal E,
+ \tag{F.12}\label{maps:eq:F.12}
+\]
+where $\ell_\infty$ denotes its limit at the nodal cusp.
+Indeed integration on the vanishing circle tends to
+$2\pi i$ times that residue; the transvection sends the cohomology
+class of a differential to that period times its vanishing
+cohomology vector.
+
+\end{enumerate}
+\end{proof}
+
+maps:src:F.3.6
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item Write the exact sequence supplied by \eqref{maps:eq:F.11} as
+\[
+ 0\longrightarrow\mathbb Q e\longrightarrow\mathcal V
+   \longrightarrow\mathcal W\longrightarrow0.
+ \tag{F.14}\label{maps:eq:F.14}
+\]
+Here $e$ is the first coordinate vector.  The nilpotent canonical
+extension at the cusp and the ordinary extensions on finite root
+charts preserve this sequence.  This follows directly by using
+the frames $\exp(-sN)$: each residue has only eigenvalue zero,
+and the same exponential construction respects the inclusion and
+the quotient.  At finite roots the statement is ordinary exactness
+of bundles with trivialized local monodromy.  Denote these extended
+bundles by $\mathcal H_D,\mathcal V_D,\mathcal W_D$.
+
+\item Let $\omega\in\bigwedge^2\mathcal H_D$ be the real, flat
+nondegenerate bivector inverse to the polarization, and let
+$p:\bigwedge^2\mathcal H_D\to\mathcal W_D$ be primitive projection.
+Define the holomorphic rank-three bundle
+\[
+ \mathcal P=p(\ell\wedge\mathcal H_D).
+ \tag{F.15}\label{maps:eq:F.15}
+\]
+Projection is injective on $\ell\wedge\mathcal H_D$: every
+nonzero bivector there is decomposable whereas $\omega$ is not.
+This argument applies also at the cusp.  The polarization gives
+$\mathcal H_D/\mathcal E\simeq\mathcal E^*$, including there,
+since $\mathcal E$ is Lagrangian.  Hence
+\[
+ 0\longrightarrow\mathcal T^4\longrightarrow\mathcal P
+ \longrightarrow\mathcal O\oplus\mathcal T^2\longrightarrow0.
+ \tag{F.16}\label{maps:eq:F.16}
+\]
+After dualizing, the end terms are
+$\mathcal O\oplus\mathcal T^{-2}$ and $\mathcal T^{-4}$.
+
+\item We compute the obstruction to lifting $\mathcal P$ in \eqref{maps:eq:F.14}.
+For the coarse projection $\rho:\mathcal B'\to\mathbb P^1$,
+the elementary root-chart calculation of invariant sections gives
+\[
+ \rho_*\mathcal T^k=
+ \mathcal O_{\mathbb P^1}
+ \left(\left\lfloor\frac{2k}{5}\right\rfloor+
+       \left\lfloor\frac{-3k}{8}\right\rfloor\right).
+ \tag{F.17}\label{maps:eq:F.17}
+\]
+Higher direct images vanish, because taking invariants under a
+finite group in characteristic zero is exact.  For $k=0,-2,-4$
+the displayed degrees are respectively $0,-1,-1$.  Their first
+cohomology vanishes.  The dual of \eqref{maps:eq:F.16} therefore gives
+$H^1(\mathcal B',\mathcal P^*)=0$.
+The pullback of \eqref{maps:eq:F.14} to $\mathcal P$ consequently splits as
+holomorphic bundles: choose a holomorphic lift
+$\sigma:\mathcal P\to\mathcal V_D$ of its inclusion in
+$\mathcal W_D$.  This is an actual extension-class calculation
+on a compact orbifold, not an approximation or an Oka principle.
+To specify the choice concretely, take a finite root-coordinate
+cover with local bundle lifts $\sigma_i$ and write their
+differences as $\xi_{ij}e$, where
+$\xi_{ij}$ is a Cech cocycle in $\mathcal P^*$.
+Choose any solution $b_i-b_j=\xi_{ij}$ of this explicitly
+vanishing cohomology class and glue the maps
+$\sigma_i-b_ie$.  Every such solution is allowed in the
+construction that follows.
+
+\item There is also a canonical holomorphic functional
+$\alpha:\mathcal P\to\mathcal O$.
+For $v\in\mathcal P$, its unique preimage in
+$\ell\wedge\mathcal H_D$ is
+\[
+ j(v)=v+\alpha(v)\omega
+ \tag{F.18}\label{maps:eq:F.18}
+\]
+under the primitive decomposition.
+At a smooth point, the positive Hodge metric implies that
+$\ell$ and $\bar\ell$ form a nondegenerate symplectic pair.
+Their common wedge line is $\ell\wedge\bar\ell$.
+The bivector $\omega$ does not belong to
+$\ell\wedge\mathcal H+\bar\ell\wedge\mathcal H$, since its
+component on the two-dimensional symplectic orthogonal complement
+is nonzero.  Projection $p$ therefore preserves the intersection,
+and
+\[
+ \mathcal P\cap\bar{\mathcal P}
+      =p(\ell\wedge\bar\ell).
+ \tag{F.19}\label{maps:eq:F.19}
+\]
+This is the complexification of a real line.  If $u$ spans
+$\ell$, then $i u\wedge\bar u$ is real and its coefficient on
+$\omega$ is nonzero, by positivity.  Thus $\alpha$ is real and
+nonzero on that real intersection line.  There is a unique smooth
+real section $n$ of it such that $\alpha(n)=1$.
+
+\item Since the quotient of $\sigma(n)$ is real, there is a unique
+real smooth function $h$ on $U$ such that
+\[
+ \sigma(n)-\overline{\sigma(n)}=2ih e.
+ \tag{F.20}\label{maps:eq:F.20}
+\]
+For $c\in\mathbb R$ set
+\[
+ \mathcal F_c=(\sigma+ic\alpha e)(\mathcal P).
+ \tag{F.21}\label{maps:eq:F.21}
+\]
+This is a holomorphic rank-three subbundle projecting
+isomorphically to $\mathcal P$.  An intersection with its complex
+conjugate must project to \eqref{maps:eq:F.19}.  On its real generator the two
+lifts differ by $2i(h+c)e$.  It follows, including arbitrary
+complex multiples of that generator, that
+\[
+ \mathcal F_c\cap\overline{\mathcal F_c}=0
+       \quad\Longleftrightarrow\quad h+c\ne0.
+ \tag{F.22}\label{maps:eq:F.22}
+\]
+
+\item We verify the required cusp property before choosing $c$.
+In a complex symplectic basis $a,b,d_1,d_2$ of the limiting
+$\mathcal H_D$, relation \eqref{maps:eq:F.12} permits us to arrange
+$N_Hb=a$, $N_Ha=N_Hd_1=N_Hd_2=0$ and $\ell_\infty=\mathbb Cb$.
+Then
+\[
+ \mathcal P_\infty=
+ \langle k=p(b\wedge a),\ b\wedge d_1,\ b\wedge d_2\rangle,
+ \quad
+ N_W(b\wedge d_i)=a\wedge d_i,
+ \quad N_Wk=0.
+ \tag{F.23}\label{maps:eq:F.23}
+\]
+The line generated by $k$ is
+$\ker N_W/\operatorname{im}N_W$; all other kernel directions
+come from the displayed image.  The exact matrices give
+$N_V^2=0$, $\operatorname{rank}N_V=3$ and
+$\operatorname{rank}N_W=2$.
+Every lift of an image vector $a\wedge d_i$ is killed by $N_V$,
+because that vector has a lift in $\operatorname{im}N_V$ and
+$N_Ve=0$.  Rank three now forces $N_V$ to take any lift of $k$
+to a nonzero multiple of $e$.  Therefore
+$N_V:\mathcal F_{c,\infty}\to\operatorname{im}N_V$ is an
+isomorphism for every $c$.  In particular its domain is a
+complement to $\ker N_V$.
+
+\item The primitive index-one cusp has a real integral basis
+$a_i,b_i$ with $N_Vb_i=a_i$, by Proposition \ref{maps:src:F.2.1}, also for the
+dual or inverse convention.  In this basis the untwisted
+subbundle near zero is the graph $b+C_c(t)a$, with $C_c$
+holomorphic and bounded.  Restoring the flat frame by
+$\exp(sN_V)$, $s=\log t/(2\pi i)$, gives \eqref{maps:eq:F.13}.
+Thus $\operatorname{Im}Z=\operatorname{Im}s\,I_3+
+\operatorname{Im}C_c$ is nonsingular on a sufficiently small
+punctured disc.  Apply this first with $c=0$.
+Equation \eqref{maps:eq:F.22} shows that $h$ is nonzero and has constant sign
+on that connected punctured disc.
+
+\item At the two finite root points, all ingredients in \eqref{maps:eq:F.19}--\eqref{maps:eq:F.20}
+are smooth and $\alpha(n)=1$ remains valid, so $h$ extends and
+is bounded.  On the compact complement of the cusp disc it has
+a finite bound $K$.  Choose $c$ with the same sign as $h$ near
+the cusp by the exact rule
+$c=\operatorname{sign}(h(t_0))(K+2)$, where $t_0$ is any point
+of that punctured disc and $K$ is the supremum of $|h|$ on
+the compact complement.  Then $h+c$ is nonzero both on that
+disc and on its complement.  Equations \eqref{maps:eq:F.21}--\eqref{maps:eq:F.22} prove
+global real transversality, and the preceding cusp calculation
+proves the bounded correction for this same $c$.
+
+\item Finally, the fourth power of the order-eight action on
+$\mathcal H$ is $-I$.  It acts trivially on
+$\mathcal W,\mathcal P,\alpha$ and $\mathcal V$.
+Hence these bundles, the lift and the constructed periods descend
+from $\mathcal B'$ to the orbifold $\mathcal B$ with orders five
+and four.  Indeed any equivariant bundle map between bundles with
+trivial action of the extra order-two stabilizer descends on its
+root chart.  This gives exactly the finite orders required for
+the rank-six datum.
+
+\end{enumerate}
+\end{proof}
+
+night:P1.8
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item Work first on the root orbifold with orders $5,8$, leaving the nodal
+point as a logarithmic point.  The symplectic pairing and the Hodge
+subbundle give an exact sequence
+$0\to\mathcal H\to\mathcal H_{\mathrm{dR}}\to\mathcal H^\vee\to0$.
+This remains exact at the node by the residue pairing in its plumbing
+chart.  With $\ell_0=T^3$ the corrected bundle fits into
+\[
+0\longrightarrow T^4\longrightarrow P
+ \longrightarrow\mathcal O\oplus T^2\longrightarrow0.
+\]
+Contraction in $\ell_0\wedge\mathcal H_{\mathrm{dR}}$ defines
+$\alpha:P\to\mathcal O$, using the unique lift supplied by P1.5;
+it is surjective.  Thus it is not an asserted contraction on the whole
+quotient by $\omega$, where that formula would not be well defined.
+
+\item For $a=2,4,-2,-4$ the invariant coarse direct image of $T^a$ has degree
+$-1$, by taking the floors of the two coefficients of its rational
+divisor.  Finite-stabilizer invariants are exact in characteristic zero
+by averaging.  Consequently $H^0(T^a)=H^1(T^a)=0$ for these exponents.
+The two-chart Laurent-series computation for $\mathcal O(-1)$ proves
+this vanishing directly.  The extension therefore splits, and
+\[
+P\cong T^4\oplus T^2\oplus\mathcal O,\qquad
+H^1(P^\vee)=0,\quad H^0(P^\vee)=\mathbb C\alpha,
+\quad H^0(P)=\mathbb Cg,
+\]
+where $\alpha(g)=1$.
+
+\item Let $V$ be the logarithmic extension of the supplied rank-six flat
+bundle.  At the cusp use its nilpotent exponential frame, and on each
+finite root chart use the trivial flat extension with the deck action.
+These charts give the exact bundle sequence
+$0\to\mathcal Oe\to V\to W\to0$.
+Its pullback to $P$ splits because $H^1(P^\vee)=0$.
+All holomorphic splittings are $\sigma+z\alpha e$, $z\in\mathbb C$.
+To remove this scalar choice we require the $e$-coordinate of
+$\sigma(g)$ to be zero in the fixed flat frame at $z=1/2$.
+
+\item Choose a local generator $u$ of $\ell_0$ and put
+$r=i\pi(u\wedge\bar u)\in W_{\mathbb R}$, $A=\alpha(r)>0$;
+the sign is that of the polarization.  The symplectic orthogonal
+decomposition into $\langle u,\bar u\rangle$ and its two-dimensional
+complement proves $P\cap\bar P=\mathbb Cr$.
+Indeed $u\wedge v-\bar u\wedge w=t\omega$ has zero component in the
+exterior square of that complement on the left and a nonzero such
+component on the right unless $t=0$.  With $t=0$ its intersection is
+the line generated by $u\wedge\bar u$.
+Define $h$ by the exact equality
+\[
+\sigma(r)-\overline{\sigma(r)}=2iAh e.
+\]
+Both $r$ and $A$ scale by $|a|^2$ when $u$ scales by $a$, so this is
+well defined.  Comparing the unique lifts of a multiple of $r$ proves
+\[
+F_c\cap\overline{F_c}=0\quad\Longleftrightarrow\quad h+c\ne0.
+\]
+
+\item The sign and growth at the cusp follow from the actual extension
+matrices.  Put $D=C_fC_g^{-1}-I$ and $N_V=(BA)^{-1}-I$.
+Only the zeroth column of $D$ is nonzero, and it is $(0,1,1,1)^t$;
+the top row of $N_V$ is $(0,0,0,-1,1,-1)$.
+For arbitrary $a,b\in\mathbb C^4$, two-by-two minor expansion gives
+\[
+(N_V)_{0,*}(0,\pi(a\wedge Db))
+ =\operatorname{contr}(a\wedge Db)=a_0b_0,
+ \qquad N_W\pi(a\wedge Db)=0.
+\]
+These polynomial identities, with arbitrary symbols for the entries of
+$a,b$, are checked in \texttt{cusp\_lift\_asymptotic.py}.
+Write $u=\exp(sD)a(q)$, $s=\log q/(2\pi i)$ and $y=\operatorname{Im}s$.
+The vector $a$ is holomorphic, and $a_0(0)\ne0$ because $dx/y$ has
+nonzero nodal residue.  In the logarithmic frame we obtain
+\[
+\exp(-sN_W)r=i\pi(a\wedge\bar a)+2y\pi(a\wedge D\bar a),
+\quad
+A=i\operatorname{contr}(a\wedge\bar a)+2y|a_0|^2.
+\]
+The splitting is bounded in that frame.  On returning by
+$\exp(sN_V)$, the only quadratic contribution to the imaginary
+$e$-coordinate is $2|a_0|^2y^2$.  All other terms are $O(y)$,
+uniformly for $\operatorname{Re}s$ in a fixed unit interval.
+Dividing by $A=2|a_0|^2y+O(1)$ proves
+\[
+h(q)=y+O(1)=-\frac{\log|q|}{2\pi}+O(1).
+\]
+The function extends continuously over both finite root charts and
+tends to $+\infty$ at the cusp.  Compactness away from that cusp gives
+an attained minimum.  Connectedness and the intermediate value
+theorem give $h(U)=[h_{\min},\infty)$, with finite-root points included
+when testing the completed family.  Thus the domain is precisely the
+displayed half-line.  Replacing $\sigma$ by $\sigma+ib\alpha e$ replaces
+$h$ by $h+b$ and sends $F_c$ to $F_{c+b}$, proving the stated
+comparison between choices.
+
+\item At $q=0$ the map $N_V:F_{\log}\to\ker N_V$ is an isomorphism.
+On the quotient its rank is two and its kernel is generated by
+$\pi(a\wedge Da)$; the displayed scalar identity sends a lift of this
+generator to $a_0^2e\ne0$.  In the integral Jordan marking, the
+logarithmic three-plane is therefore a graph of a holomorphic matrix
+$C(q)$; applying $\exp(sN_V)$ adds $sI_3$.  Evaluation on the homology
+lattice gives the period matrix $(I_3,Z(q))$.
+The fourth power of the order-eight deck transformation acts trivially
+on $V$ and $P$, so the graph descends to the order-four chart.
+The other chart has order five.  The affine translations are
+holomorphic translations on the resulting tori, and their linear
+parts preserve this graph by construction.
+
+\end{enumerate}
+\end{proof}

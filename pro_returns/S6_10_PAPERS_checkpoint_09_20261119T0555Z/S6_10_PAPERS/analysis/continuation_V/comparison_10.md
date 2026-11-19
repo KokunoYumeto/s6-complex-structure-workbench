@@ -1,0 +1,21 @@
+# F3.5, F3.6 and P1.8: exact aggregate comparison
+
+The owner's prederivations10 and period_bundle_fresh.py were written before the three full target proofs were read. The limited earlier F3.5 companion-symbol preview is recorded in its receipt. Root's separate companion and node review was entirely unexposed to the target and covers those printed steps independently. VI's separate cusp-height review was likewise written and computed before the isolated target excerpt was opened. No single reviewer is credited with every step.
+
+## F3.5
+
+Printed items1 and3 are exactly root's F35_companion_node_before_read.md and its comparison: the normalization/primitive vanishing circle/Dehn twist and the rational cyclic-vector companion conjugacy, including its actual rational conjugating map. Items2,4,5 are the owner's prior root-coordinate differential calculations and prederivations10: the two finite root eigencharacters and characteristic polynomials, explicit natural primitive-to-quotient morphism followed by the actual unimodular Q map, and the nodal differential/annulus frame with the exact divisor transitions. The primitive projection is w-(w wedge q)/(q wedge q)q; no integral isomorphism is inferred from its rational invertibility. Root's new code, own primitive_quotient.py, basic_algebra.py and period_bundle_fresh.py rerun every displayed quantity. The expanded period_bundle output also records the two finite eigencharacter pairs and all positive/negative line weights. Their expansion was after target comparison and is recorded only as a new computation, not as newly preread analysis.
+
+## F3.6
+
+The owner's prederivations10 covers its exact canonical extension, corrected rank3 image, root-line splitting obstruction, common real wedge line, scalar height criterion, residue-rank argument, integral nilpotent graph and finite descent. Its basis w2,w1,w0 supplies the map in the printed sequence: w2 is ell0 wedge the second Hodge line and maps to the kernel L^2; w1,w0 project to L and O through H/E=E^dual. Thus the stated direct-sum model has the same exact inclusion/quotient as the printed filtration. The H1 vanishing is applied to the actual pullback extension, not to the flat representation.
+
+For the global choice, the owner's prederivation used the stronger positive height growth to select c above its minimum; the printed proof needs only a constant cusp sign and a compact-complement bound. The stronger growth is independently fully established in VI's unexposed P1_8_cusp_height_before_read.md. This shows in particular the printed constant-sign and compactness choice works. The exact graph is obtained from(I+sN)(A,B) by right multiplication by B^-1, giving(sI+AB^-1,I). This is the same map as the printed integral Jordan graph, with transposition explicitly accounted for when evaluating on the dual lattice.
+
+## P1.8
+
+The owner's SectionsB,C,E cover the bundle filtration/splitting, affine space of lifts, height definition, finite-root extension, exact real-transversality criterion, attained minimum and interval range, and descent. Fixing the e-coordinate at the named regular point chooses the unique scalar in the already derived affine space of splittings; it is an affine normalization using alpha(g)=1. Changing sigma by ib alpha e sends the defining equation h to h+b and F_c to F_(c+b), directly by that same graph map.
+
+The full additional symbolic cusp-growth calculation in printed item5 is covered by VI's P1_8_cusp_height_before_read.md and comparison, with all matrix identities recomputed in its fresh program. This includes the precise quotient map pi, the contraction of the unique decomposable lift, the canonical untwisting and restoring maps, the quadratic term and the uniform remainder for arbitrary bounded splitting. The owner's explicit residue kernel and its nonzero e image give the item6 rank-three complement and logarithmic graph; VI's polynomial identities give the same rank argument in the companion coordinates.
+
+These unions close the current complete proof gates. Their exact computation outputs and chronology remain separately named. Neither the post-comparison character-table expansion nor the aggregate receipt is described as an independent prereading proof by itself.

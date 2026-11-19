@@ -1,0 +1,15 @@
+# VI VII.1 comparison after fresh derivation
+
+The target proof was first opened only after the full alternative argument and independent graph certificate had been written and run. The exact chronology, hashes and source locators are in VI_VII1_before_read_receipt.json and VI_VII1_comparison_receipt.json.
+
+Printed Step1 agrees with the independently written minimal-support argument: a torsion twist is flat, the exact anticanonical theorem supplies the known GSS configurations, and the support is a union of full connected components by the actual intersection identity D.C=-K.C. The prereading derivation explicitly computes arithmetic genus and Euler number from the normalization sequence, including self-nodes and elliptic normalization components. It does not infer arithmetic genus solely from a topological graph without checking its curve singularities.
+
+Printed Step2 has a further conclusion, the parabolic coefficient k=1. That stronger intermediate conclusion was not derived in the prereading document. The alternative proof did not need it: every selected connected component is already genus one with Euler number equal to its rational-component count. No mathematical fault is asserted in the printed coefficient argument. Its strongest prereading gate is reserved for a separate fresh reviewer; this comparison cannot retroactively supply it.
+
+Printed Step3 agrees with the direct Hopf-cover argument written before opening it. The alternative derivation handles arbitrary Hopf algebraic dimension through the contracting universal cover and the finite unramified quotient, rather than applying a result restricted to general fibres of another fibration. The curve-free Inoue property was checked in the original Inoue paper as well as the classification references recalled in DOT.
+
+Printed Step4 agrees with the independently derived divisor equality D_new=pi*D_old-E. The derivation obtains the exceptional coefficient from intersection with E, while the printed proof obtains the same equality by canonical sections. Their exact comparison is the canonical pullback identity and the intersection equation -1+m-k=0. The prereading document explicitly treats a centre at a smooth component, at an intersection of two components and at a self-node, as well as the multiplicity-one case where E is absent from the support. The leaf/edge-subdivision maps preserve the normalization genus formula and change e and r together. Both arguments establish that every other rational curve is a strict transform, so r and b2 increase by one under each point blow-up.
+
+The newly authored code VI_VII1_graph_fresh.py passes exact symbolic identities and43 base configurations,1152 smooth-centre transformations and4480 node transformations. This finite enumeration is a supplementary certificate for the universal formula already proved, not a classification argument. No earlier producing program was read or imported.
+
+Thus this receipt covers a complete alternative proof of the target assertion and the current printed steps1,3,4. It deliberately leaves printed Step2 to the separately requested reviewer.

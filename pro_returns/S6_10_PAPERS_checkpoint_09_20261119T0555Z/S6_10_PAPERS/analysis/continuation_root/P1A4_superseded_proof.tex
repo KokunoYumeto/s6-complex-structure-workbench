@@ -1,0 +1,109 @@
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item An effective divisor dominating the base would restrict to
+a nonempty effective divisor on a general complex torus.
+Pairing its Chern class with the square of a Kähler form
+on that torus is strictly positive. This contradicts
+$H^2(M;\mathbb Z)=0$. Thus every divisor is vertical.
+The pole divisor of a meromorphic function is vertical;
+its restriction to a general compact fibre is holomorphic
+and therefore constant. The graph and properness of $f$
+descend it to a meromorphic function on $\mathbb P^1$.
+Conversely pullbacks from the base occur. Hence the
+meromorphic function field is $\mathbb C(t)$ and $a(M)=1$.
+Every automorphism consequently induces a Möbius map on
+the base. The two distinct multiplicities and the cusp
+identify all three values separately, so this map is the
+identity.
+
+\item On smooth fibres an automorphism is affine. Its integral
+linear part is locally constant and commutes with $M_1,M_2$.
+Solving the two exact matrix equations in
+\path{code/part1/analytic_automorphisms.py} gives the rational
+centralizer $\mathbb Q I$; its integral invertible elements
+are $\pm I$. At the order-five filling an affine lift with
+linear part $\epsilon I$ would have to conjugate the same
+finite affine generator. For its translation $b$ this
+requires
+\[
+(I-M_1)b=(1-\epsilon)v_1/5\pmod\Lambda.
+\]
+Applying the invariant integral covector $\ell$ makes the
+left side zero. For $\epsilon=-1$ the right side is
+$2/5\pmod\mathbb Z$, which is nonzero. Thus every
+automorphism is a translation.
+
+\item Let $\mathcal A$ be the sheaf of translations extending to
+the specified cusp model and finite root charts. There is
+an exact analytic sheaf sequence
+\[
+0\to j_*\Lambda\to E_0\to\mathcal A\to0
+\]
+on the root orbifold. Here $j$ omits the cusp and the stalk
+of $j_*\Lambda$ there is $\ker N$.
+To check the last surjectivity at the cusp, lift a translation
+to the toroidal cover. It preserves the fan precisely when
+its valuation is an integral translation of the periodic
+fan. Subtract the corresponding period; the remaining
+characters are nonvanishing holomorphic functions on a
+disc and possess logarithms. These give a local section
+of $E_0$. The kernel consists exactly of the invariant
+integral periods. This also proves that the sequence
+accounts for all extendable translations, including
+possible component permutations.
+
+\item The cohomology of $j_*\Lambda$ in degree one is calculated
+from three positive meridians. For the finite points use
+the integer kernels of $I+M_i+\cdots+M_i^{m_i-1}$;
+for the cusp use the primitive image of $N$.
+Writing these column bases as $L_1,L_2,L_0$, the cocycle
+and coboundary matrices are
+\[
+D_1=(L_1\ M_1L_2\ M_1M_2L_0),\qquad
+D_0=\begin{pmatrix}L_1^{-1}(M_1-I)\\
+L_2^{-1}(M_2-I)\\L_0^{-1}(M_0-I)\end{pmatrix}.
+\]
+Each inverse here denotes the unique coordinates in the
+displayed integral column basis, not a square matrix
+inverse. The exact $6$-by-$11$ and $11$-by-$6$ integer
+matrices, their bases and Smith operations are exported
+in \path{code/part1/analytic_automorphisms.json} and the
+underlying parabolic program. They satisfy $D_1D_0=0$ and
+give $\ker D_1/\im D_0=\mathbb Z/2$. The cocycle relations
+are the finite-order relations and the product of the
+three meridians; the cusp condition is precisely the
+vanishing of its restriction modulo $(M_0-I)\Lambda$.
+Thus this complex computes the required orbifold sheaf
+cohomology, with its finite stabilizer torsion retained.
+
+\item Now $H^0(j_*\Lambda)=0$ by P1.1,
+$H^0(E_0)=\mathbb C$, and $H^1(E_0)=0$ by the floor
+calculation. The exact sequence gives
+\[
+0\to\mathbb C\to H^0(\mathcal A)\to\mathbb Z/2\to0.
+\]
+The half-period
+$\tau=(0,1,1,1,1,1)^t/2$ is fixed modulo $\Lambda$
+by every monodromy matrix. It extends over the finite
+quotients because the translations commute there.
+At the cusp $N\tau$ is integral; primitiveness of $N$
+provides $\lambda\in\Lambda$ with $N\lambda=N\tau$.
+The representative $\tau-\lambda\in\ker N$ is a bounded
+angular half-period and extends on every toric chart.
+It is a nonzero order-two global section. Since the
+additive group $\mathbb C$ has no nonzero torsion, it
+splits the displayed exact sequence. Translations
+commute, giving the asserted full group.
+
+\item For an isomorphism between two members, the same intrinsic
+base argument applies. Its integral linear part still
+lies in the common centralizer. Either scalar $\pm I$
+preserves a complex period plane exactly by equality
+of the two planes. The graphs
+$(\sigma+\xi\alpha e)(P)$ are equal precisely when their
+parameters $\xi$ agree, since $e\notin F$ and $\alpha$
+is nonzero. Translation does not change this condition.
+This proves the parameter assertion.
+
+\end{enumerate}
+\end{proof}

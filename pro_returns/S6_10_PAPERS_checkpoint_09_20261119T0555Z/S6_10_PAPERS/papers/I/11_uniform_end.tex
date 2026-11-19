@@ -1,0 +1,355 @@
+\section{The uniform corner obstruction}
+
+\subsection{Period transport and the actual parameter descent}
+
+\begin{theorem}\label{night:P2.1}\label{stmt:P2.1}
+\StatementRecord{night:P2.1}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{the definitions and exact calculations in this statement}
+
+For the prescribed $(3,4)$ construction with integral twists $(l_0,l_1,l_2)$, put
+\[
+ b=4l_1+3l_2,\qquad p=12l_0-4l_1-3l_2,\qquad a=b-12l_0=-p.
+\]
+On the logarithmic cover of the cusp bidisc the period columns are
+\[
+ \gamma=\binom{6\mu}{C-s-12v},\quad
+ u=\binom{s+h}{\mu},\quad w=\binom10,\quad\delta=\binom01,
+\]
+where $h,\mu,C$ are holomorphic at $q=0$. Their positive-loop column comparisons are
+\[
+ K_q=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&1&1&0\\-1&0&0&1\end{pmatrix},\qquad
+ K_r=\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\-12&0&0&1\end{pmatrix}.
+\]
+The parameter descent on the ordinary Jacobian chart is
+\begin{equation}\label{eq:P2H}
+ R:(t,v,\zeta)\longmapsto(t,v+1,\zeta+H(t)\delta),\qquad
+ H(t)=-\frac{4l_1\log t+3l_2\log(t-1)}{2\pi i}.
+\end{equation}
+In the cusp collar it extends across $q=0$ and has coefficient $a$ on $s\delta$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item We substitute $c=-12v$ in the supplied period matrix and use its cusp expansions $\tau=s+h$, $\beta^{\rm part}=C-s$. Direct subtraction gives the two displayed matrices. On fixed vector coordinates the lattice conjugation matrices are $K_q^{-1}$ and $K_r^{-1}$. In the characters $Z,W$, addition of $u$ and $\gamma$ gives respectively
+\[
+ (Z,W)\mapsto(qe^{2\pi ih}Z,e^{-2\pi i\mu}W),\qquad
+ (Z,W)\mapsto(e^{12\pi i\mu}Z,qr^{12}e^{-2\pi iC}W).
+\]
+These are holomorphic character identities, including the signs of both meridians.
+
+\item The collar section carrying the primitive $\widehat\gamma$ class has lift
+\begin{equation}\label{eq:P2zg}
+ z_\gamma(s,v)=\binom{6s\mu}{-s(s+1)/2+s(C-12v)}.
+\end{equation}
+It satisfies $z_\gamma(s+1,v)-z_\gamma(s,v)=\gamma(s+1,v)$ and $z_\gamma(s,v+1)-z_\gamma(s,v)=-12s\delta$. We therefore use the cusp coordinate $\eta=\zeta+l_0z_\gamma$, retaining the actual collar integer.
+
+\item At finite point $j$, the logarithmic gluing is translation by $(\log z_j)/(2\pi i)\Pi v_j$, with $t_j=z_j^{m_j}$ and $\widehat\gamma$ coefficient of $v_j$ equal to $l_j$. Changing $v$ by one changes this gluing by $-12l_j\log z_j/(2\pi i)\delta$. This is $-4l_1\log t/(2\pi i)\delta$ at $0$ and $-3l_2\log(t-1)/(2\pi i)\delta$ at $1$. The complementary summand of $H$ is holomorphic on each disc, so its translation extends. The finite affine action changes by $-12l_j/m_j$ times the integral period $\delta$, and is unchanged on the torus. Thus \eqref{eq:P2H} is the actual descent compatible with both finite caps. Branch changes of $H$ are integral $\delta$ periods.
+
+\item At infinity,
+\[
+ H=bs+U(q),\qquad U(q)=-\frac{3l_2\log(1-q)}{2\pi i}.
+\]
+In $\eta$ the descent is translation by $(as+U)\delta$. Adding the lattice period $a\gamma$ rewrites this vector as $(6a\mu,U+aC-12av)$. It is holomorphic at $q=0$ for each $v$; its exponentials act by units on every toric chart. This proves the extension and its collar coefficient. The identities are recomputed by \texttt{code/part2\_corner.py} and \texttt{code/part2\_origins\_and\_group.py}.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{night:P2.2}\label{stmt:P2.2}
+\StatementRecord{night:P2.2}{proved}{Historical events: Claude Opus 5.5 (Anthropic), effort max, sweep 1, scope s6, 18 November 2026: used and rechecked in this run. GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.3}
+
+On $q=Q^{12}$, actual extending origins have lifts
+\begin{align*}
+ o&=\binom{-b\mu s/2}{bs^2/24-bCs/12+l_0s/2+v(bs+U)},\\
+ \sigma&=-l_0z_\gamma+\binom{6a\mu v}{vU+aCv-6av^2+6av}.
+\end{align*}
+The section $\sigma$ extends across the cusp for $r\ne0$, and $o$ extends across the parameter central fibre of the partial filling. Their difference is
+\begin{equation}\label{eq:P2F}
+ F=\sigma-o=a\binom{\mu(s+12v)/2}{C(s+12v)/12-(s+12v)^2/24+6v}.
+\end{equation}
+On $q=Q^{12m}$, $r=R^n$, with $m,n$ positive integers,
+\begin{align}
+ \Delta_QF&=am\gamma-6am^2\delta,\label{eq:P2FQ}\\
+ \Delta_RF&=an\gamma-6an(n-1)\delta.\label{eq:P2FR}
+\end{align}
+The radial class modulo $\Z\widehat\delta$ is $-pn\widehat\gamma$. The proposed $+pn\widehat\gamma$ has the opposite sign in the fixed conventions.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item The lift descent identities are
+\begin{align*}
+ \Delta_{s,12}o&=-b\gamma+6(b+l_0)\delta,&\Delta_{v,1}o&=H\delta,\\
+ \Delta_{s,12}\sigma&=-12l_0\gamma+78l_0\delta,&\Delta_{v,1}\sigma&=H\delta+a\gamma.
+\end{align*}
+Every additional term is a lattice period. Both lifts therefore define holomorphic sections of the descended torus torsor. In the cusp chart $\sigma+l_0z_\gamma$ is holomorphic and bounded in $q$ and lies in the smooth toric open orbit at $q=0$. It extends there. Subtracting $o$ makes the vector coordinate invariant under the parameter deck. The zero coordinate extends in the rank-one charts of P2.3 below. This constructs the required second origin.
+
+\item Subtracting gives \eqref{eq:P2F}. Integral shifts of $s$ leave $\mu,C,U$ unchanged; expansion of the square gives \eqref{eq:P2FQ}--\eqref{eq:P2FR}. The symbolic program verifies each coefficient. For $(l_0,l_1,l_2)=(0,1,-1)$, $p=-1$, $a=1$, and \eqref{eq:P2F} is the function printed in the prompt. Its radial class is $+n\widehat\gamma$. For every admissible twist $p\ne0$, and the difference between the two proposed classes is $2pn\widehat\gamma\ne0$ in the free quotient lattice.
+\end{enumerate}
+\end{proof}
+
+\subsection{The partial parameter filling}
+\begin{theorem}\label{night:P2.3}\label{stmt:P2.3}
+\StatementRecord{night:P2.3}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.2}
+
+There is a proper holomorphic partial filling over $(\Pp^1\times\Delta_r)\setminus\{(\infty,0)\}$ with smooth total space and reduced normal-crossing parameter central divisor. Over a regular finite base point its central fibre is a cycle of twelve ruled surfaces. Its component rotations at $0,1,\infty$ are $4l_1,3l_2,-b$ modulo $12$, with component cover
+\[
+ y^{12}=t^{4l_1}(t-1)^{3l_2}.
+\]
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item On a simply connected finite-base chart subtract a local origin with $v$-difference $H\delta$, quotient by $\delta$, and put $W=e^{-2\pi i\eta_2}$, $z=\eta_1$. The remaining lattice transformations are
+\begin{align*}
+ (z,W)&\mapsto(z+1,W),\\
+ (z,W)&\mapsto(z+\tau,e^{-2\pi i\mu}W),\\
+ (z,W)&\mapsto(z+6\mu,d(t)r^{12}W),
+\end{align*}
+with $d$ a nonzero holomorphic unit. The first two give the complement of the zero section of a degree-zero line bundle over $\C/(\Z+\tau\Z)$. Use the infinite chain of node charts
+\begin{equation}\label{eq:P2chain}
+ X_i=W/r^i,\quad Y_i=r^{i+1}/W,\quad X_iY_i=r\qquad(i\in\Z).
+\end{equation}
+Adjacent charts are identified on $Y_i\ne0$ by $X_{i+1}=Y_i^{-1}$, $Y_{i+1}=rY_i$. The charts and their inverse overlaps give an infinite projective-line chain at $r=0$. Unit multiplication on $W$ multiplies $X_i,Y_i$ inversely, so all elliptic line-bundle transitions extend. The third period shifts the index by twelve, translates the elliptic coordinate by $6\mu$, and multiplies by $d$. Its quotient has the stated twelve-cycle.
+
+\item The total node chart is smooth by eliminating $r=X_iY_i$, and its central divisor is reduced NC. On a compact smaller finite-base chart the elliptic lattices have uniformly bounded compact fundamental parallelograms. Choose middle annuli and node discs using upper and lower bounds for $d$ and the finitely many transition units. Twelve consecutive indices give a compact fundamental cover over a closed smaller parameter disc. The overlap formulas have closed graphs on that cover, and the positive index translation separates nonadjacent charts. Thus the quotient is Hausdorff and proper. At $r\ne0$ it is exactly the original torus quotient.
+
+\item At root point $j$, addition of $v_j/m_j$ multiplies $W$ by a factor containing $r^{12l_j/m_j}$ and rotates the cycle by $12l_j/m_j$. Every nonidentity power moves the cycle, because $3\nmid l_1$ and $l_2$ is odd. The full finite action is free on the central divisor, including its intersection strata. Its quotient is smooth and preserves the reduced NC parameter divisor. Logarithmic gluing translations differ on overlaps by holomorphic units and integral chain shifts, which extend by the same formulas. The rotations give the cyclic cover; the third is their negative sum and equals $p$ modulo $12$.
+
+\item We glue this finite-base filling to the prescribed cusp filling over $r\ne0$ by the actual translation $\sigma-o$. P2.2 identifies the overlap with the original family. Properness and the Hausdorff property are local on the displayed target, so the glued map has both. The local equations prove flatness over the parameter disc.
+\end{enumerate}
+\end{proof}
+
+\subsection{Extending the marked base map}
+\begin{theorem}\label{night:P2.4}\label{stmt:P2.4}
+\StatementRecord{night:P2.4}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{the definitions and exact calculations in this statement}
+
+For every admissible $(3,4)$ twist, the marked map $f:X_c\to\Pp^1$ extends meromorphically over every hypothetical proper Hausdorff analytic filling of a finite parameter cover. A proper modification carries a holomorphic marked map to $\Pp^1$, and hence a proper map to $\Pp^1\times\Delta$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Take the reduced irreducible component containing the punctured family. It is closed and proper; discarding other central components preserves that family. Resolve it isomorphically over the smooth punctured family. We use analytic resolution \cite[Theorem 1.6 and the following analytic-neighborhood paragraph, preprint p.~5]{BM97}: reduced complex analytic spaces admit proper modifications by locally finite sequences of smooth-centre blowups with smooth result. It can be chosen unchanged over the nonsingular locus. Properness makes the neighborhoods of the central fibre relatively compact, so the stated analytic hypotheses hold. Write $p:Z\to\Delta$ for the smooth result.
+
+\item The determinant calculation in Part~5 gives $K_{X_c}^{-2}=f^*\OO(1)$. Connected compact fibres give $f_*\OO_X=\OO_{\Pp^1}$, so $h^0(K_{X_c}^{-2})=2$. Let $L=\omega_{Z/\Delta}^{-2}$. Grauert's coherence theorem \cite[Hauptsatz I]{Grauert60} makes $p_*L$ coherent. Multiplication by the parameter is injective on $L$ and on $p_*L$. A finitely generated torsion-free module over $\C\{r\}$ is free, so this direct image has rank two. On the punctured disc, $p$ is a submersion, $L$ is flat and $h^0=2$ is constant. Grauert's base-change theorem \cite[\S7, Satz 5]{Grauert60} identifies its frame with the complete fibrewise linear system. Evaluation gives a meromorphic map $f':Z\dashrightarrow\Pp^1$ whose restriction is $f$ followed by a projective linear transformation on each noncentral fibre.
+
+\item Blowing up the base ideal and resolving its graph gives a proper holomorphic map $(f',p)$ to $\Pp^1\times\Delta$. The rank-drop locus is analytic. Its image is analytic by the proper-image theorem \cite[\S7, Satz 1]{Grauert60}. Away from the central parameter the critical image has exactly three points, labelled by the multiplicity-three fibre, multiplicity-four fibre and cusp. Each traces a nonvertical analytic curve of degree one over the punctured disc. The normalization of its closure gives a meromorphic section of $\Pp^1$ over the disc. The limits may coincide, but the three meromorphic sections remain distinct.
+
+\item The unique cross-ratio transformation taking these sections to $0,1,\infty$ has meromorphic coefficients. Composing with $f'$ gives the meromorphic marked map. Its coefficients have finite-order poles. Resolving its graph gives the asserted holomorphic map; the modifications are proper and preserve the punctured family. This proves the needed extension without making a graph-closure assertion for an arbitrary map from a punctured disc.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{night:P2.5}\label{stmt:P2.5}
+\StatementRecord{night:P2.5}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{the definitions and exact calculations in this statement}
+
+The global monodromy on $\Lambda_\Q/\Q\widehat\delta$ has no nonzero vector with finite orbit.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item In coordinates $(g,u,w)$, a cusp unipotent has nilpotent part $N=E_{32}$. The two finite homology generators are
+\[
+ A_1=\begin{pmatrix}1&0&0&0\\6&0&1&0\\-6&-1&-1&0\\-2&1&0&1\end{pmatrix},\qquad
+ A_2=\begin{pmatrix}1&0&0&0\\0&0&-1&0\\-6&1&0&0\\3&0&1&1\end{pmatrix}.
+\]
+A vector with finite orbit is fixed by a positive power of every conjugate of that unipotent. Since $(I+N)^j=I+jN$ in characteristic zero, it belongs to $\ker N$, $\ker(NA_1)$ and $\ker(NA_2)$. The equations are $u=0$, $6g+w=0$, $-w=0$, forcing zero. The exact kernel calculation is in \texttt{part2\_origins\_and\_group.py}.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{night:P2.6}\label{stmt:P2.6}
+\StatementRecord{night:P2.6}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.5}
+
+In a smooth resolved proper filling carrying the marked base map, every parameter-central component dominating $\Pp^1$ has zero normal-meridian lattice class modulo $\Z\widehat\delta$, relative to the ordinary parameter origin.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Put $B^\circ=\Pp^1\setminus\{0,1,\infty\}$. After $r=R^n$, the quotient fundamental group of the punctured family over $B^\circ$ by the normal subgroup generated by $\widehat\delta$ is
+\begin{equation}\label{eq:P2split}
+ \bigl((\Lambda/\Z\widehat\delta)\rtimes\pi_1(B^\circ)\bigr)\times\Z_R.
+\end{equation}
+The finite Jacobian linear changes are independent of $c$ and fix $\widehat\delta$. The $R$ descent is the $\delta$ translation $H$, all its branch changes are integral $\delta$ periods, and its lattice conjugation differs from the identity by a $\delta$ multiple. The finite gluing changes under $c\mapsto c-12n$ also lie in $\Z\delta$. Thus every cross-cocycle disappears in exactly the quotient \eqref{eq:P2split}; this proves the presentation from the actual chart action.
+
+\item Let $D$ dominate $B$. Its positive normal circle has parameter degree $e=\ord_D(R)>0$, and in \eqref{eq:P2split} is $(\lambda,e)$ with trivial base-loop coordinate. Changing a basing path by a fibre loop changes $\lambda$ by $(I-T_R^e)$ of that loop, which vanishes modulo $\delta$. Transport along $D$ therefore acts on $\lambda$ only by base monodromy.
+
+\item The proper map $D\to B$ has Stein factorization, in the precise analytic form of \cite[Theorem 8.5]{Movasati24}: a proper holomorphic map factors into a map with connected fibres and a finite map. Here $D$ is compact smooth and $B$ a smooth curve, so the hypotheses hold. Remove finitely many branch and critical values. The first map is then a proper submersion with connected fibres; path lifting and a path in a fibre show surjectivity on fundamental groups. The finite curve map has finite-index image in the punctured base group. Removing the other divisors from $D$ preserves this image, since loops in a smooth complex manifold can be moved away from a proper complex analytic subset of real codimension at least two. Hence a finite-index subgroup is represented by paths that transport the normal meridian.
+
+\item The orbit of $\lambda$ is finite. P2.5 kills it rationally, and the quotient lattice is free, so it vanishes integrally. This includes every multiplicity $e$. After a local finite root in the base, each horizontal component inherits this zero class from its global preimage; we do not assume that the local component itself is global.
+\end{enumerate}
+\end{proof}
+
+\subsection{The commuting-meridian obstruction}
+\begin{theorem}\label{night:P2.7}\label{stmt:P2.7}
+\StatementRecord{night:P2.7}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.2; P2.4; P2.6}
+
+For every admissible $(3,4)$ twist, the punctured family has no proper Hausdorff complex-analytic filling at $w=0$ after any finite parameter cover. This includes every sphere member and permits arbitrary singularities, multiplicities and extra central components.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item A proposed filling pulls back properly to a further cover $w=R^{6n}$. By P2.4 we resolve its dominating component and marked-map graph. Near infinity take the finite base change $q=Q^{12m}$, normalize the dominating component, and resolve it. Principalize the inverse image of the two axes using \cite[Theorem 1.10, preprint p.~7, with the analytic category in (0.2), p.~3]{BM97}. That theorem turns a coherent ideal on a smooth analytic space into a locally monomial ideal after proper smooth-centre blowups. The axis ideal is coherent and the relevant inverse image is compact over a smaller closed bidisc, so its hypotheses hold. The smooth torus family over $Q^*\times R^*$ is unchanged.
+
+\item The proper map to the bidisc has connected fibres. Its Stein finite factor is generically one sheet because its general fibre is a connected torus. A finite birational map to the normal bidisc is an isomorphism: its finite local algebra is integral over, and contained in the fraction field of, the integrally closed local ring of that bidisc. In particular the corner fibre is connected.
+
+\item In the axis complement, the original logarithmic deck lifts have
+\begin{align*}
+ A_Q&=I-12mE_{32}+12mE_{41},&
+ A_R&=I+12nE_{41},&
+ [Q,R]&=-12mnb\widehat\delta.
+\end{align*}
+The affine relation is the difference $H(s+12m)-H(s)=12mb$ through $n$ parameter turns. The lifts
+\[
+ Q_o=T_{-mb\widehat\gamma}Q,\qquad R_o=R
+\]
+commute. They give a specific semidirect product $\Lambda\rtimes\Z^2$; central $\delta$ corrections do not affect the following coefficients.
+
+\item For every irreducible axis component $D_i$, put
+\[
+ \alpha_i=\ord_{D_i}(Q),\quad\beta_i=\ord_{D_i}(R),\quad
+ \kappa_i=\text{the }\widehat\gamma\text{ coefficient of its lattice meridian}.
+\]
+Its positive meridian is $(\lambda_i,\alpha_i,\beta_i)$, with nonnegative orders and positive sum. Conjugation changes its lattice vector by a vector killed by the first-coordinate covector; thus $\kappa_i$ is independent of its basing path in the complement. Meeting components have commuting meridians, represented by coordinate circles in a smooth NC chart. The $\widehat\delta$ coordinate of their commutator gives
+\begin{equation}\label{eq:P2ratio}
+ (m\alpha_i+n\beta_i)\kappa_j=(m\alpha_j+n\beta_j)\kappa_i.
+\end{equation}
+Both nilpotents have square zero and their products vanish, so there are no higher terms. The $E_{32}$ contribution lies in the $\widehat w$ coordinate; $E_{41}$ gives exactly \eqref{eq:P2ratio}. The ratio $\kappa_i/(m\alpha_i+n\beta_i)$ is therefore constant along every intersection edge. Its denominator is positive for every axis component, including vertical exceptional components.
+
+\item A parameter-central component dominating the original base exists, since the proper map onto $\Pp^1\times\Delta$ is surjective and finitely many vertical components cannot cover its central base. Its strict transform meets the corner by properness. Its ratio is zero by P2.6.
+
+\item The strict cusp component met by $\sigma$ also meets the corner. Its meridian in the smooth open orbit is the loop traced by the extending section. P2.2 gives $\widehat\gamma$ coefficient $-12ml_0$ in the original coordinates. Relative to $Q_o$ this becomes $-12ml_0+mb=ma$. Its orders are $(1,0)$, so its ratio is $a$. Further ramification multiplies the order and coefficient by the same positive factor, and proper transforms preserve a smooth open part of the branch.
+
+\item The compact connected corner fibre is covered by its intersections with finitely many axis components. The incidence graph of this closed cover is connected: a partition with no edge would partition the fibre into disjoint nonempty closed subsets, both also open. A chain therefore joins the horizontal central component to the strict cusp component. Equation \eqref{eq:P2ratio} forces $a=0$.
+
+\item Admissibility gives $3\nmid l_1$ and $l_2$ odd, whence $p$ is coprime to $12$ and nonzero. Since $a=-p$, this is a contradiction. Each comparison was proper and preserved the punctured family, so it applies to the original filling and every finite parameter cover.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{night:P2.8}\label{stmt:P2.8}
+\StatementRecord{night:P2.8}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.1; P2.3; P2.7}
+
+For $(l_0,l_1,l_2)=(0,2,-1)$ we have $p=-5$, $a=b=5$, component cover $y^{12}=t^8/(t-1)^3$, and rotations $8,-3,-5$ modulo $12$. The descent and origins are
+\begin{align*}
+ H&=5s+U,& U&=\frac{3\log(1-q)}{2\pi i},\\
+ o&=\binom{-5\mu s/2}{5s^2/24-5Cs/12+v(5s+U)},\\
+ \sigma&=\binom{30\mu v}{vU+5Cv-30v^2+30v},& F&=5F_0,
+\end{align*}
+where $F_0$ is the vector in \eqref{eq:P2F} without $a$. Its two differences are $5m\gamma-30m^2\delta$ and $5n\gamma-30n(n-1)\delta$. No finite parameter cover admits a proper filling.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Substitution in P2.1--P2.3 gives every displayed formula. The lattice and character laws remain those of P2.1 and the charts those of \eqref{eq:P2chain}. The corner has $[Q,R]=-60mn\widehat\delta$ and $Q_o=T_{-5m\widehat\gamma}Q$. Its horizontal ratio is zero and strict cusp ratio five. Thus P2.7 gives the contradiction for this member itself. The symbolic program checks the substitutions and differences.
+\end{enumerate}
+\end{proof}
+
+\subsection{Higher coprime multiplicities}
+\begin{theorem}\label{night:P2.9}\label{stmt:P2.9}
+\StatementRecord{night:P2.9}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.4; P2.6}
+
+Every admissible logarithmic datum in the coprime $(3k,4l)$ family of the supplied Viaclovsky construction has no proper Hausdorff analytic filling at parameter zero after any finite cover.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Put $m_1=3k$, $m_2=4l$, $N=m_1m_2=12kl$, with $\gcd(m_1,m_2)=1$. Let $l_j$ be the $\widehat\gamma$ coefficient of the invariant finite twist. Admissibility is $\gcd(l_j,m_j)=1$. Retain $l_0$ and define $b=m_2l_1+m_1l_2$, $a=b-Nl_0$. On $w=r^{N/2}$, $c=-Nv$, and the gamma period is $(6\mu,C-s-Nv)$. The descent is
+\[
+ H=-\frac{m_2l_1\log t+m_1l_2\log(t-1)}{2\pi i}=bs+U,
+ \qquad U=-\frac{m_1l_2\log(1-q)}{2\pi i}.
+\]
+The finite actions are unchanged by $c\mapsto c-N$, since $N/m_j$ is integral. The collar coefficient is $a$; adding $a\gamma$ gives a unit action on cusp charts. The rank-one filling has $N$ components with rotations $m_2l_1,m_1l_2,-b$. Admissibility makes the finite actions free on the cycle.
+
+\item On $q=Q^N$ the origins are
+\begin{align*}
+ o&=\binom{-6b\mu s/N}{bs^2/(2N)-bCs/N+l_0s/2+v(bs+U)},\\
+ \sigma&=-l_0z_\gamma+\binom{6a\mu v}{vU+aCv-Nav^2/2+Nav/2},
+\end{align*}
+with $z_\gamma=(6s\mu,-s(s+1)/2+s(C-Nv))$. Their difference is
+\[
+ aF_N=a\binom{6\mu(s+Nv)/N}{C(s+Nv)/N-(s+Nv)^2/(2N)+Nv/2}.
+\]
+On $q=Q^{Nm}$, $r=R^n$,
+\begin{align*}
+ \Delta_Q(aF_N)&=am\gamma-\tfrac N2am^2\delta,\\
+ \Delta_R(aF_N)&=an\gamma-\tfrac N2an(n-1)\delta.
+\end{align*}
+All coefficients are integral because $12\mid N$. The exact symbolic program \texttt{part2\_general.py} verifies them.
+
+\item We also prove extension of the intrinsic base map. Pulling the order-three and order-four tangent root charts through $k$ and $l$ powers changes their vertical determinant orders from $2,1$ to $2k,l$. The vertical determinant is therefore $f^*\OO(-1)\otimes\OO(2kS_1+lS_2)$. The determinant of the image of $df$ is $f^*\OO(2)\otimes\OO(-(3k-1)S_1-(4l-1)S_2)$; the cusp singular ideal has codimension two. Hence
+\begin{align*}
+ K_X^{-1}&=f^*\OO(1)\otimes\OO((1-k)S_1+(1-3l)S_2),\\
+ K_X^{-N}&=f^*\OO(d),& d&=4l+3k-kl.
+\end{align*}
+The integer $d$ is nonzero. Otherwise $k\mid4l$, while $\gcd(k,4l)=1$, so $k=1$, giving $d=3l+3>0$.
+
+\item Choose $K^{-N}$ when $d>0$ and $K^N$ when $d<0$; its restriction is $f^*\OO(|d|)$. On a resolved hypothetical filling the corresponding relative direct image is coherent torsion free of rank $|d|+1$. Evaluation and graph resolution give a proper pluricanonical image. Over the field $K$ of meromorphic parameter germs, its image is a smooth rational normal curve. More explicitly, the kernels of multiplication on the direct-image modules, tensored with $K$, give its quadratic equations; on the punctured disc these are the Veronese equations and generate its ideal. The three labelled critical-value curves give distinct $K$-rational points. The coprime multiplicities are unequal, and the third point is the cusp.
+
+\item Over an algebraic closure of $K$ there is a unique rational parameter taking those points to $0,1,\infty$. Uniqueness makes it invariant under every field automorphism over $K$, so its coefficients belong to $K$. They are meromorphic germs with finite principal parts. Composing and resolving the graph yields the marked base map required in P2.4. This explicitly recovers a degree-one base parameter.
+
+\item Modulo $\delta$, the global lattice and finite-orbit calculation are unchanged. The cross-cocycles still lie in $\Z\delta$, so P2.6 applies. At the corner,
+\[
+ A_Q=I-NmE_{32}+NmE_{41},\quad A_R=I+NnE_{41},\quad [Q,R]=-Nmnb\widehat\delta.
+\]
+The commuting lifts $Q_o=T_{-mb\widehat\gamma}Q$, $R_o=R$ give \eqref{eq:P2ratio}. Connectedness forces equality of the horizontal ratio zero and cusp ratio $a$. But $a\equiv m_2l_1\pmod{m_1}$ and $a\equiv m_1l_2\pmod{m_2}$, so $\gcd(a,N)=1$. This contradiction proves nonexistence. Proper pullback to the further cover preserves the punctured family and gives the implication back to every proposed cover.
+\end{enumerate}
+\end{proof}
+
+\subsection{The untwisted control}
+\begin{theorem}\label{night:P2.10}\label{stmt:P2.10}
+\StatementRecord{night:P2.10}{proved}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{the definitions and exact calculations in this statement}
+
+The untwisted family $X(u)$ has a proper flat Hausdorff analytic filling at $u=0$. Its corner winding is zero. The filling is obtained from two projective-line bundles by explicit plumbing, a proper modification and a finite quotient.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Let $S$ be the supplied rational elliptic surface, $M=\OO_S(P-O)$, $h=t_{6P}$, and $L=\Hom(h^*M,M)=\OO_S(F_\infty)$, with section $\phi$ vanishing on $F_\infty$. The absence of logarithmic twists gives $b=a=0$ in the corner character calculation. Thus the origins agree and their winding is zero. We now construct the filling with the actual untwisted finite fibres.
+
+\item Take two copies $Y_0,Y_1$ of $\Pp_S(\OO\oplus M)$. The finite coordinate $z_i$ lies in $M$, its inverse $w_i$ in $M^{-1}$. The first neck, over $p\in S$, joins zero in $Y_0$ to infinity in $Y_1$ over $h(p)$ by $z_0w_1=r\phi_p$. The second joins zero in $Y_1$ to infinity in $Y_0$ over the same point by $z_1w_0=r$. These equations are typed in $M\otimes h^*M^{-1}=L$ and $M\otimes M^{-1}=\OO$.
+
+\item Choose a Hermitian metric and $0<\epsilon<1/4$. Use middle annuli $\epsilon/2<|z_i|<2/\epsilon$ in $Y_i$, times the parameter disc, and neck hypersurfaces with $|z|,|w|<\epsilon$. Glue their ends on $\epsilon/2<|z|<\epsilon$ or $\epsilon/2<|w|<\epsilon$ by coordinate projection, using $h$ at the first infinity end. In holomorphic frames these are holomorphic maps, and they commute with bundle transitions because the product lines are exactly the ones displayed above. Choose $\rho$ so that $\rho\max(1,\|\phi\|)<\epsilon^2/16$. The product equation makes the two ends of a neck disjoint; the two ends in each middle chart are disjoint as well.
+
+\item For $|r|\le\rho'<\rho$, a compact fundamental cover consists of closed middle annuli $3\epsilon/4\le|z_i|\le4/(3\epsilon)$ and closed neck pieces $|z|,|w|\le3\epsilon/4$. Every omitted neck end is represented in a middle annulus. The gluing relation on this finite union of compact bundles is the union of diagonals and closed graphs of the coordinate identifications. No additional graph accumulates, because the two neck ends are disjoint. The relation is closed, so its quotient is compact and Hausdorff. The open charts give the analytic structure. This proves properness over the smaller disc and the global Hausdorff property.
+
+\item Over $S\setminus F_\infty$, traversing the two necks gives
+\[
+ (p,z_0)\longmapsto\left(h(p),\frac{z_0}{r^2\phi_p}\right).
+\]
+The inverse covers $h^{-1}$ and is multiplied by $u\phi$, with $u=r^2$. It is the precise generator of Engel's quotient on that open set.
+
+\item At a smooth point of $F_\infty$ the first neck is $zw=rq$; at its node it is $zw=rxy$, with $q=xy$. The ideal of one globally distinguished central component is locally $(z,r)$. Because the two global components are distinct, this is a global coherent ideal. Blow it up. At the node its two charts are
+\begin{align*}
+ r=za,\quad w=axy;&\qquad (z,a,x,y)\text{ are smooth coordinates},\\
+ z=rb,\quad bw=xy;&\qquad (r,b,w,x,y)\text{ with the displayed relation}.
+\end{align*}
+The remaining singularity is an ordinary threefold node times the parameter disc. Its singular section does not meet the first chart. Resolve $(b,x)$ in the second chart. The two charts are
+\begin{align*}
+ b=xk,\quad y=kw;&\qquad (r,x,k,w),\\
+ x=bk,\quad w=ky;&\qquad (r,b,k,y).
+\end{align*}
+They are smooth, with overlap $k\mapsto k^{-1}$. Off the singular section the ideal is invertible, so the proper small resolution glues to the identity. The analogous blowup charts at smooth points of $F_\infty$ are already smooth. The resulting total space is smooth, and its parameter central divisor is reduced NC: in the first chart $r=za$, in the small-resolution charts $r$ is a coordinate. Parameter torsion freeness proves flatness. The substitutions are checked exactly in \texttt{part2\_plumbing\_charts.py}.
+
+\item We identify the compactified generic fibre, including the cusp. For fixed $r\ne0$ the first blowup is an isomorphism. After multiplying by a unit the first neck is $zw=u xy$. On its dense torus use $(x,z,q)$, with $y=q/x$, $w=uq/z$. The four affine monomials have exponents
+\[
+ (1,0,0),\quad(-1,0,1),\quad(0,1,0),\quad(0,-1,1).
+\]
+The dual cone is $0\le a,b\le c$, the cone over the unit square at height one. The resolution of $(z,x)$, equal to that of $(b,x)$ when $r$ is a unit, divides it along $a=b$. The two cones over the main-diagonal triangles are unimodular. In both resolved charts $q$ is the product of three coordinates. The Tate and linearization periods shift the two lattice directions by one, while their unit factors act holomorphically on the charts. Thus this is exactly the periodic triangular Mumford filling in Engel's Proposition 2.8. Choosing $x$ in the Tate direction fixes the diagonal and the comparison. Together with the quotient comparison this identifies the entire compact generic fibre with $X(u)$.
+
+\item The involution $r\mapsto-r$ fixes the $Y_0$ fibre coordinate and negates the $Y_1$ coordinate. It preserves both equations and the global component ideal. In the nodal blowup chart it acts as $(b,w,x,y,r)\mapsto(-b,-w,x,y,-r)$, preserving $(b,x)$ and lifting holomorphically to the small resolution. Its finite quotient is proper and Hausdorff over $u=r^2$. Its invariant local rings are torsion free over the discrete valuation ring $\C\{u\}$ and hence flat. Away from zero it exchanges the two roots of $u$; the comparison on $Y_0$ is the identity, so the quotient fibre is exactly one copy of $X(u)$. This is a filling in the original parameter.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{night:P2.11}\label{stmt:P2.11}
+\StatementRecord{night:P2.11}{false as stated}{Historical events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_06\_BLIND, 16--18 November 2026: targeted proof check. Also checked in this writing. Pre-continuation writing events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS, 18 November 2026: targeted proof check. Continuation metadata events: GPT-6 Astra (OpenAI), ChatGPT Pro mode, effort Pro, S6\_10\_PAPERS continuation, 19 November 2026: used and rechecked in this run; status-vocabulary reconciliation; metadata reconciliation only; no new mathematical check. \emph{Pre-continuation recorded proof scope.} Read complete cp25 proofs, re-derived actual origin/deck differences, quotient fundamental-group presentation, finite-orbit vanishing, connected-corner commuting ratio, higher-multiplicity determinant and rational-base recovery, and untwisted plumbing/virtual Euler comparison. Arithmetic chart replay and exact external locators remain separately recorded gates.}{P2.10}
+
+The one-component central space specified in Engel's Conjecture 8.2 cannot be the central fibre of a proper flat smoothing with smooth fibres $X(u)$. Its intrinsic virtual Euler number is zero, whereas $e(X(u))=2$.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Let $Q$ denote that proposed space. Its normalization is $Y=\Pp_S(\OO\oplus M)$ and the two sections are identified by $h$. Locally $Q$ is the lci hypersurface $xy=0$. The double locus is $S$ and its first-order smoothing line is $L=M\otimes h^*M^{-1}=\OO(F_\infty)$.
+
+\item We compute its virtual tangent Chern number on the normalization. Along one labelled branch let $a$ be the normal Chern class of the double surface in that branch, and $b$ that of the other branch. A local smooth hypersurface presentation gives
+\[
+ c(T_Q^{\vir})|_Y=c(T_Y)\frac{1+B}{1+B+D},\qquad B|_D=b,\quad D|_D=a.
+\]
+The degree-three correction, localized to $D=S$, is
+\[
+ -c_2(S)+c_1(S)b-ab-b^2.
+\]
+Indeed expanding the fraction gives the terms $-Dc_2(Y)+D(B+D)c_1(Y)-D(B+D)^2$, and $c(T_Y)|_D=c(T_S)(1+a)$ yields the expression. Adding the other branch gives $-2c_2(S)+c_1(S)(a+b)-(a+b)^2$. It is symmetric and $a+b=c_1(L)$, so it descends through the actual normalization gluing. Consequently
+\[
+ e_{\vir}(Q)=e(Y)-2e(S)+\int_S\bigl(c_1(S)c_1(L)-c_1(L)^2\bigr).
+\]
+Since $e(S)=12$, $e(Y)=24$, $c_1(S)=F_\infty$ and $F_\infty^2=0$, this is zero.
+
+\item We verify that this intrinsic value applies to an arbitrary flat smoothing. Embed a local total-space germ in a smooth polydisc over the parameter disc, with ideal $I$ and quotient $A$. Flatness gives $\operatorname{Tor}_1^{\C\{r\}}(A,\C)=0$, identifying $I/rI$ with the central ideal. Lift a regular sequence generating that central ideal. Nakayama's lemma gives generators of $I$; the sequence consisting of $r$ and these lifts is regular in the ambient regular local ring, so the lifted equations define a relative lci morphism. Its perfect relative cotangent complex restricts to the intrinsic complex of $Q$. The virtual tangent Chern class therefore specializes to that of $Q$. Compact flat fibre cycles have the same oriented local regular-sequence specialization class: their difference bounds the oriented chain over a parameter interval, constructed in the local presentations and glued by their complex orientations. The degree-three virtual pairing is constant. On a smooth fibre it equals the ordinary tangent Euler number. Thus every smooth fibre of such a smoothing would have Euler number zero.
+
+\item For the actual $X(u)$, the $M^\times$ scaling circle is free over all finite base strata, whose Euler contributions vanish. The index-one triangular cusp has two zero-dimensional torus strata; all positive-dimensional torus strata have Euler number zero. Euler additivity gives $e(X(u))=2$. This contradiction excludes the proposed central space. The explicit proper flat filling in P2.10 has a different central space.
+\end{enumerate}
+\end{proof}

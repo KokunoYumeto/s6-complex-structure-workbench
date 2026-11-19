@@ -1,0 +1,11 @@
+# CR4/UN9 isolated-step comparison
+
+The full isolated derivations were written and hashed at05:46:19UTC before opening analysis/continuation_root/CR4_UN9_transport_only.tex. Only that excerpt has now been opened; no complete CR4/UN9 target proof or earlier review was read.
+
+CR4 Step2's assertion about the reduced support of y^3u is exactly the factorization argument already written: u is a nonunit, is not divisible by y, and its distinct irreducible factors give a reduced v with v(0)=0 and gcd(y,v)=1. The actual reduced equation is yv, whose two first derivatives vanish at0. The excerpt's preceding parameter Morse lemma and following suspension/cube-root arguments are outside this isolated receipt and belong to root's other derivation.
+
+CR4 Step6 and UN9 Step5 use the same two legs derived in the prereading receipt. For fixed perturbation, the finite critical-value set can be avoided along a path in the common target disk. Uniform convergence of functions and first derivatives on the closed ball proves that every critical value on every point of the segment to parameter0 lies within |t1|/2 after the perturbation is sufficiently small. The compact pullback of the t1 level over that segment is a proper submersion on the interior and on the boundary under the separately supplied uniform transversality assumption. The explicit boundary-tangent vector-field construction gives the asserted Ehresmann diffeomorphisms.
+
+The two-leg maps are exactly Phi followed by Psi in the prereading document. They carry the inclusion of the local spherical representative to the original full level. The intersection-square calculation, its nonzero local-to-global image, and the aspherical-torus contradiction are not supplied by this isolated compactness check; root's separately written compactly supported duality maps cover those steps. The compared transport introduces no additional gap in those inputs. The transports are the smooth fibre identifications used there, with the continuously varying complex orientation.
+
+No finite table, interval computation or new numerical constant occurs in these isolated compactness/factorization steps. The proof uses exact derivatives and the stated analytic/compactness hypotheses. No mathematical fault was found in the compared scope.

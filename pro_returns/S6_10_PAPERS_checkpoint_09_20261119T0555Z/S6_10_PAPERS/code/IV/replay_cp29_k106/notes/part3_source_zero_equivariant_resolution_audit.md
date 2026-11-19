@@ -1,0 +1,192 @@
+# A period-equivariant lattice resolution relative to the actual boundaries
+
+Working audit of the next local fan step for K39. Start with the three
+actual sector fans and their common H refinement constructed in
+`notes/part3_source_zero_prism_audit.md`, in its default negative-fan
+marking. The actual E chain is prescribed. This argument constructs a
+period-equivariant unimodular subdivision while retaining that chain
+and the I boundary. It does not assert properness of the analytic
+unit quotient or a completed-family return.
+
+## ER.1. Protect the actual regular boundary subfan
+
+Protect the prescribed I boundary and the complete E chain, and also
+protect the already regular W boundary. This extra protection changes
+none of the requested data. The I cones are the unimodular
+negative-diagonal lattice triangles at height one. Adjacent E rays
+are \((0,j,1,0),(0,j+1,1,0)\), whose nonzero two-dimensional
+minor is one in absolute value. Adjacent W rays have the form
+\((i,-ai,1,0),(i+1,-a(i+1),1,0)\), with the same unit minor.
+Their span lattices are saturated: in W the relation is
+\(y=-ax\), and in E it is \(x=0\). Thus every cone in this
+protected subfan is regular in its actual saturated lattice.
+
+In each sector the protected subfan is precisely the chosen
+subdivision on the base face of height \(s=0\). Every cone
+outside it contains a ray with positive H height. On such a ray
+\(p=(x,r,s)\), the equality \(T_m p=p\) implies
+\[
+                         (rP_0+sH)m=0.
+\]
+The explicit determinant polynomials PF.3 are positive for
+\(r\ge0,s>0\). Hence this period stabilizer is trivial.
+On either rank-one base face, its kernel stabilizer fixes that
+entire face pointwise; no chosen resolution centre will lie there.
+This accounts for those stabilizers without replacing their analytic
+unit action by the identity.
+
+## ER.2. An exact separation subdivision
+
+Take a relative barycentric subdivision outside the protected
+subfan. Concretely process old faces in increasing dimension. On a
+face outside the protected subfan insert the interior ray that is
+the sum of its primitive ray generators, reduced to its primitive
+integral vector, and cone its already subdivided boundary from that
+ray. Leave protected faces unchanged. The convex height-one
+cross-section gives the elementary radial proof of coverage and
+common faces, just as in PF.4. The choices on the common H subfan
+are the same in every sector, since its actual primitive generators
+are already identified.
+
+The resulting cones consist of a face of the protected subfan
+together with a strictly increasing chain of nonprotected old
+faces, represented by their inserted rays. The period maps are
+unimodular and preserve face dimension and the protected subfan;
+they carry each sum to the corresponding sum. The subdivision is
+therefore exactly equivariant.
+
+It has the following useful property:
+
+**Each cone contains at most one ray from each nonprotected period
+orbit.** Indeed two such rays in one orbit come from old faces of
+the same dimension. A strictly increasing face chain contains only
+one face of that dimension. The inserted ray is in the relative
+interior of its named old face, so equal rays name equal faces.
+Protected rays may repeat their orbit in a cone; this does not
+affect the assertion.
+
+Every singular face contains a nonprotected ray. A face generated
+only by protected rays is contained in the protected base face of
+its sector cone, and is a face of that regular simplicial boundary
+cone. It is therefore regular. Each nonprotected ray has positive
+H height and hence has trivial period stabilizer by ER.1.
+
+Consequently two distinct translates of one singular face cannot
+be faces of a single cone. Choose a nonprotected ray of that face;
+the two translates would put two rays from its orbit in the same
+cone. The separation property makes them equal, and triviality of
+their stabilizer makes the translating element the identity. This
+is the exact orbit separation needed for simultaneous star
+subdivision; it does not rely on an unspecified sufficiently fine
+metric subdivision.
+
+## ER.3. The integral lattice point and its literal star
+
+Let C be a singular maximal cone, with primitive columns
+\(r_1,\ldots,r_4\), matrix B, and determinant absolute value
+\(D>1\). There is a nonzero integral point in its half-open
+fundamental parallelepiped. Here is an explicit construction.
+Some column \(B^{-1}e_j\) is nonintegral; otherwise \(B^{-1}\)
+would be integral and its determinant would force \(D=1\).
+Take its coordinatewise fractional part \(\alpha\), and put
+\[
+ p=B\alpha=e_j-B\lfloor B^{-1}e_j\rfloor,
+              \qquad 0\le\alpha_i<1.                    \tag{ER.1}
+\]
+The vector p is integral and nonzero. Divide it by the greatest
+common divisor of its coordinates to obtain its primitive generator;
+divide all \(\alpha_i\) by that same positive integer. The
+strict inequalities remain true. We use these primitive versions
+in the sequel.
+
+Let F be the face generated by those \(r_i\) with
+\(\alpha_i>0\). The point p is in its relative interior.
+The face F is singular: a regular face's primitive generators are
+part of an integral basis of the saturated span, so an integral
+combination with all coefficients in \([0,1)\) is zero.
+That contradicts p. In particular F lies outside the protected
+regular subfan and has a trivial period stabilizer.
+
+Insert p on F, and insert \(T_m p\) on each translate
+\(T_m F\). This is well defined. ER.2 proves that no old cone
+contains two distinct such faces, so these simultaneous stars
+cannot give competing subdivisions of one cone. On a cone C'
+containing F, the new cones replace one \(r_i\) of F by p,
+for each \(\alpha_i>0\). The coefficients on F are the same
+ones as in (ER.1), because F has the same primitive generators
+in every containing cone.
+
+Coverage and common faces of this star are elementary. Write a
+point as \(x=\sum t_i r_i\), \(t_i\ge0\). Subtract
+\(\tau p\), where
+\(\tau=\min_{\alpha_i>0}t_i/\alpha_i\). The remaining
+coefficients are nonnegative and at least one is zero, placing x
+in the corresponding new cone. Ties give exactly their common
+faces. The same formula on shared old faces proves compatibility.
+
+For every affected maximal cone C', determinant multilinearity gives
+\[
+             D(C'_i)=\alpha_i D(C'),\qquad
+                    0<\alpha_i<1.                       \tag{ER.2}
+\]
+These are positive integers, since all new columns are integral.
+Thus every affected determinant strictly decreases, including
+maximal cones other than the initially selected one. No protected
+boundary cone is subdivided: a singular F cannot be a face of a
+regular protected cone, and the inserted point has positive H height.
+
+## ER.4. Separation survives and the algorithm terminates
+
+The ray-orbit separation property survives each simultaneous star.
+Every new cone is contained in an old cone. Old nonprotected ray
+orbits retain the property. An old cone receives at most one new
+ray from the newly chosen orbit, by ER.2. That orbit was not an
+old ray orbit: its point lies in the relative interior of a face
+of dimension at least two, so the old fan could not already
+contain that ray. Every new nonprotected ray still has positive
+H height and trivial stabilizer. Hence the same orbit-wise star
+construction is available at the next stage, without another
+separation subdivision.
+
+The sector collection has finitely many cone orbits initially, and
+the relative barycentric subdivision has finitely many face-chain
+types. Each simultaneous star introduces finitely many new cone
+orbits: each old cone receives at most one centre and at most four
+replacement cones. Choose at every stage a maximal cone orbit
+of largest determinant \(D_{\max}>1\). Its star removes at
+least that orbit. Equation (ER.2) creates no orbit of determinant
+\(D_{\max}\), and decreases every affected determinant.
+Thus the ordered pair
+\[
+  (D_{\max},\ \text{number of maximal orbits with determinant}
+                      \ D_{\max})                         \tag{ER.3}
+\]
+strictly decreases lexicographically. Both entries are finite
+positive integers. There are finitely many stages at a given first
+entry, and finitely many decreases of that entry. The construction
+terminates with determinant one on every maximal cone; all its
+faces are then regular as well.
+
+Whenever the chosen F lies in the common H subfan, its ray and star
+are applied in every incident sector. Their face generators agree,
+so (ER.2) decreases each incident determinant and the subdivisions
+agree on H. Count all three sectors in (ER.3). This proves one
+compatible period-equivariant unimodular subdivision relative to
+the exact I boundary, W boundary, and E chain.
+
+The construction retains the original lattice throughout. It does
+not declare a rational inspection coordinate to be integral, and
+does not introduce an analytic filling on a rank-one base face.
+All bounded period units, their contraction, and the source/cap
+gluing remain the separate analytic obligations of K39.
+
+## Exact certificate
+
+`code/part3/source_zero_equivariant_resolution.py` executes the
+half-open-point construction, primitive division, minimal-face
+singularity test, and every new determinant for the actual signed
+prism cones at the first reduced and good root orders. It also
+checks the protected boundary unit minors and the exact period
+transport of a selected star. These computations accompany the
+general finite-orbit and termination proof above; they are not
+used as a bounded substitute for it.
