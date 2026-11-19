@@ -29,11 +29,13 @@ checks are named with their model and effort.
 
 **Corrected the same day, about 18:30 UTC.** The corrections are in `S6_PAPER_V_DEPOSIT_PREP_20261119.md`, section 1,
 beside this file. That file also holds the series-consistency verdict and the plan in the user's format.
-- **There is no renewed-checks bar.** The three checks per proof were item 10 of the S6_10 prompt, not a publication
-  rule. What holds is AGENTS.md: every printed proof checked by a qualifying check and recorded, the writing run
-  included.
-  - So the renewed-check counts and hours below are not blockers.
-  - Nor are the 39 rows whose only check is the writing run's.
+- **Checks: the goal is confidence, not a count.** Revised again at about 19:30 UTC, on the user's word. Humans will
+  have less time to referee AI-produced mathematics, so the checking falls to us. Every printed result is checked until
+  we are confident it is right.
+  - The number of renewed same-family checks is not the measure.
+  - The confidence programme is in `S6_SERIES_DESIGN_20261119.md`, section 4: a global check by another model family,
+    independent computation, literature status, and targeted checks of the error-prone points, before each deposit.
+  - The 39 rows checked only by the writing run are among those error-prone points.
 - **One proof per statement was not a problem:** Paper V prints one proof per statement.
 - **No separate Hexagon note:** the deposit is the paper.
 - **The run ended at cp15.**
@@ -584,7 +586,9 @@ cites them.
 This section was corrected at about 18:30 UTC.
 
 **All papers**
-- S6_10 ended at cp15. Its renewed checks set no publication bar.
+- Each deposit waits for its paper's confidence pass (`S6_SERIES_DESIGN_20261119.md`, section 4). About 125 of the 167
+  main rows still need a global check by another model family; the other parts of the pass are listed there.
+- S6_10 ended at cp15. The count of its renewed same-family checks is not the measure.
 - The printed check records carry workflow text and link no public record. In the user's format they leave the body;
   the methodology section links the check records on GitHub instead.
 - Every check file the records rest on is now public (commit 4e8b5478 and the housekeeper's map), except S6_06_BLIND
