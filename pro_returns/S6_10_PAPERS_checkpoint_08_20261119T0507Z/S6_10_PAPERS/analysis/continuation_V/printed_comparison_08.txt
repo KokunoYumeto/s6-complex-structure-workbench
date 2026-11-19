@@ -1,0 +1,115 @@
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item We first recover the base intrinsically.  An effective divisor on
+$M_c$ cannot be horizontal: its first Chern class vanishes by
+$H^2(M_c;\mathbb Z)=0$, whereas its nonzero effective restriction to a
+general torus fibre would have positive pairing with the square of a
+flat K\"ahler class.  The pole divisor of any meromorphic function is
+therefore vertical.  On every regular fibre outside that divisor the
+function is holomorphic and hence constant.  It factors through a
+meromorphic function on the base, which is rational on
+$\mathbb P^1$.  Thus the function field is exactly $\mathbb C(\lambda)$.
+An anti-biholomorphism consequently induces an anti-M\"obius map of
+the base.  The two distinct multiplicities $5,4$ and the singular cusp
+support distinguish the three special values, so this base map fixes
+$\infty,0,\lambda_*$.  As those points are real, the map is precisely
+$\lambda\mapsto\bar\lambda$.
+
+\item A holomorphic map between compact complex tori is affine: after
+lifting to their vector spaces, its derivative is periodic and
+therefore constant, since it descends to holomorphic functions on a
+compact torus.  Applying this to an anti-holomorphic map after
+conjugating its source gives the same assertion for its anti-linear
+lift.  Its induced integral map on $H_1$ is constant along the
+regular base.  Complex conjugation reverses the two finite meridians,
+so this matrix must simultaneously conjugate $M_i$ to $M_i^{-1}$.
+Solving these exact integral linear equations gives only $R$ and
+$-R$ among unimodular matrices, where
+\[
+R=\begin{pmatrix}
+1&0&0&0&0&0\\
+2&0&0&0&-1&0\\
+-1&0&-1&0&0&0\\
+-1&0&0&-1&0&0\\
+2&-1&0&0&0&0\\
+-1&1&1&1&1&1
+\end{pmatrix},\qquad R^2=I.
+\]
+Indeed the simultaneous intertwiner space over $\mathbb Q$ has
+dimension one and this primitive matrix is unimodular; determinant
+one in absolute value permits only the scalar factors $\pm1$.
+The equations and this certificate are in
+\texttt{centralizer\_torsion.py} and
+\texttt{real\_structure\_check.py}.
+
+\item The finite affine cap excludes $G=R$.  Normalize the pullback by
+$t=u^{m_i}$; any base-preserving isomorphism lifts to this canonical
+root cover and conjugates its deck generator to the inverse.
+At its central torus the translation part $t_i$ would satisfy
+\[
+(I-M_i^{-1})t_i=-(v_i+Gv_i)/m_i\pmod\Lambda.
+\]
+Applying $\ell$, and using $\ell R=\ell$, gives
+$0=-2\ell(v_i)/m_i$ in $\mathbb R/\mathbb Z$, impossible already
+for $m_i=5$.  Hence $G=-R$ is necessary.
+
+\item We now use the cusp marking, retaining the conjugation of based
+meridians.  Conjugation sends
+$g_0=(g_1g_2)^{-1}$ to $g_2g_1=g_2g_0^{-1}g_2^{-1}$.
+Thus the matrix in a fixed local cusp frame is
+$H=M_2^{-1}G$, and it anti-conjugates $M_0$.
+Exact multiplication in the marking $S$ gives
+\[
+S^{-1}HS=
+\begin{pmatrix}
+1&0&0&-1&-1&0\\
+0&1&0&-2&0&0\\
+1&-1&-1&1&-1&-1\\
+0&0&0&-1&0&0\\
+0&0&0&0&-1&0\\
+0&0&0&-1&1&1
+\end{pmatrix}
+=\begin{pmatrix}P&Q\\0&-P\end{pmatrix},\quad
+P=\begin{pmatrix}1&0&0\\0&1&0\\1&-1&-1\end{pmatrix}.
+\tag{1.17.1}
+\]
+Changing the based cusp path by a cusp loop multiplies by a power of
+$M_0$ and does not change $P$.
+
+\item We explain why an arbitrary translation cannot remove the obstruction
+in (1.17.1).  In the additive torus coordinates whose first periods
+are the $a_j$, the anti-linear map must have the form
+$\zeta' =P\bar\zeta+t(q)$, because its values on these three real
+periods already determine its linear part.  In multiplicative
+coordinates it is
+$z'=u(q)\bar z^{-P}$.
+The source zero section limits to a smooth point of the central fibre.
+An isomorphism takes it to another smooth point.  The central fibre
+is irreducible, and its smooth locus is exactly the dense torus of
+its toric normalization: every toric boundary divisor is a
+normal-crossings self-identification.  In a chart about this image,
+the translation therefore has the form $q^v$ times nonvanishing
+holomorphic units, with $v\in\mathbb Z^3$.  Translating by the period
+$v$ changes the selected component chart; the units act by torus
+translation.  Neither changes the linear action $-P$ on the fan.
+
+\item The primitive rays of the normal fan of that component are
+\[
+\{\pm v:0\ne v\in\{0,1\}^3\}.
+\]
+An extending torus monomial isomorphism must permute these rays.
+This can be seen directly on a one-parameter arc $z=t^v$ meeting the
+generic point of its boundary divisor: if the image vector lies in
+the interior of a cone of dimension at least two, that divisor is
+contracted, which is impossible for an isomorphism.  Complex
+conjugation itself preserves the toric charts, so the same criterion
+applies to the anti-monomial map above.
+But $-Pe_2=(0,-1,1)^t$ is not one of the displayed rays.
+This is a contradiction.  We have exhausted both possible integral
+linear parts, so no anti-biholomorphism exists.
+The assertion is explicitly about the chosen $S$ and its fan; it does
+not identify different toroidal compactifications without a map
+between them.
+
+\end{enumerate}
+\end{proof}

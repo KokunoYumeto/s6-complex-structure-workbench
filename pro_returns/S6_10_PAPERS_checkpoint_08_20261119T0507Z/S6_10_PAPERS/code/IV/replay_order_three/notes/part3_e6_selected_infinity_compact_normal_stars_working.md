@@ -1,0 +1,544 @@
+# The compact exceptional and refinement normal stars at selected infinity
+
+This proof completes the fourteen exceptional/refinement surface stars and
+the twelve remaining source-graph curves in each of the two O/T copies.
+It uses the genuine point-line coordinates of EI and IA and the common
+factor refinement FO. The four strict source surfaces were computed in
+SS. The moving selected/reference surface is retained separately.
+The characteristic numbers below are the specified fixed-inner
+contributions; this note assigns no total parameter return.
+
+## CS.1. The other source graph chart and its genuine line
+
+Use the quotient torus characters
+\[
+ (T_0,T_1,T_2,T_3)=(\chi^4,\chi\eta,v,V),
+ \qquad \sigma=\eta v.
+ \tag{CS.1}
+\]
+At O, \(\eta=-\bar X/\bar Y\) is the actual formal source
+coordinate. At T, \(\eta=\bar Y\), and the source equation
+solves for \(\bar X\) because its \(\bar X\)-derivative is a unit.
+These are precisely the two source graphs already used in EI.
+The complementary blowup chart is
+\[
+ \eta=\sigma p,\qquad
+ p=v^{-1},\qquad
+ \chi\sigma=T_1T_2.
+ \tag{CS.2}
+\]
+Its inverse on the overlap is \(v=p^{-1}\), \(\eta=\sigma p\).
+The source functions are the original functions composed with
+these two displayed graph maps. In particular this chart includes
+\(p=0\) as a source-graph point.
+
+For every ordinary line-chain label \(j\), take the chart
+\[
+ X_jY_j=\sigma,\qquad V=\sigma^jX_j,
+ \qquad (\chi,p,X_j,Y_j).
+ \tag{CS.3}
+\]
+The residual source quotient and physical circle are literally
+\[
+ \gamma(\chi,p,X_j,Y_j)
+   =(i\chi,p,i^jX_j,i^{-j-1}Y_j),\qquad
+ \delta_\theta(X_j,Y_j)
+   =(e^{i\theta}X_j,e^{-i\theta}Y_j).
+ \tag{CS.4}
+\]
+Thus CS.2 preserves both actions, including every \(j\bmod4\)
+character.
+
+Here \(V\) is the coefficient in the full genuine point-line frame.
+To spell this out at O, write
+\[
+ c_a(\chi,\sigma)=\frac{\bar\tau(aG)}{\sigma},
+ \qquad
+ r_a=\frac{p-c_a}{p},\qquad
+ e_a=\frac{\sigma_a}{r_a}.
+ \tag{CS.5}
+\]
+The two section ideals are \(p\) and \(p-c_a\). The numerator
+\(\sigma_a\) is the actual point-line section with exactly their
+zero and pole, as in EI's horizontal Cartier calculation. Their
+quotient in CS.5 is therefore a nonzero local line frame through
+both section charts. This is a module map on those two Cartier
+generators. It remains valid at their coincidence, with the full
+source graph retained. In the \(v\)-chart the same function is
+\(r_a=1-c_av\); the two formulas are equal on the overlap.
+At T the canonical point section gives the same line frame,
+since \(aG\) lies in the O chart. Consequently the coefficient
+\(V\) is unchanged in CS.2. The \(\mu_4\) action fixes the point
+coefficient: \(\bar\tau\) and \(\bar\tau(aG)\) have the same
+character, so their ratio in CS.5 is invariant.
+
+The full source reset is the actual odd-\(b\) translation graph.
+On the central graph it sends O:\(p\) to T:\(p-b\), and T:\(p\)
+to O:\(p-b\), with the full analytic source formula off the
+central graph. Its normal line map is the retained Hom unit,
+and its line-chain label changes by four. The inverse is the
+inverse source graph and reciprocal line unit. The changes of
+the source coordinate may contain normal products; their
+linearization on a fixed component is the displayed source
+map, and differentiation of a nonzero line unit multiplies a
+vanishing normal coefficient. Thus the normal map on the
+component is precisely the full coefficient map used below.
+The period arrows preserve the graph centres and lift to the
+same common refinements by their recorded monomial maps.
+
+## CS.2. The finite source-base arrow and the selected value
+
+The native finite source is carried by the literal equations
+\[
+ t_e=\chi^{-4},\qquad
+ x_e=\chi^{-2}\bar X,\qquad
+ y_e=\chi^{-3}\bar Y.
+ \tag{CS.6}
+\]
+At the O and T sections the regular source coordinate obeys
+\(\eta_e=\chi\eta\). Since \(\epsilon=\chi\sigma\), the
+source-graph coordinate \(p=\eta/\sigma=\eta_e/\epsilon\)
+is unchanged. The native chain coefficients have the full
+arrow
+\[
+ X_j=\chi^jA_j,\qquad
+ Y_j=\chi^{-j-1}B_j,\qquad
+ A_jB_j=\epsilon.
+ \tag{CS.7}
+\]
+Both genuine point frames coincide: the numerator and
+denominator of \(r_a\) are multiplied by the same \(\chi\)
+in CS.6. Thus \(V\) is the same genuine coefficient on the
+two sides. The native torus characters are exactly
+\[
+ (t_e,\eta_e,v,V)=(T_0^{-1},T_1,T_2,T_3).
+ \tag{CS.8}
+\]
+IA supplies their two source charts through the native I2
+fibre. The full source equations and the retained point-line
+Cartier map extend there, so CS.8 extends over that finite
+base value with those actual charts.
+
+At the selected value, use the 39-chart extension of FO.
+Its source equation is \(xy=q\), and its line equation is
+\[
+ UV=\sigma^4q.
+ \tag{CS.9}
+\]
+The ordinary/selected line arrow is
+\[
+ X_k=\psi^{-1}q^{j_{\mathrm{per}}}s_r,\qquad
+ Y_k=\psi q^{-j_{\mathrm{per}}}t_r,\qquad
+ k=4j_{\mathrm{per}}+r-1.
+ \tag{CS.10}
+\]
+Here \(j_{\mathrm{per}}\) is the actual period-block label.
+It is distinct from the four internal chain-node residues
+\(j=0,1,2,3\) in the surface lists. Every component used in
+this note is represented in block \(j_{\mathrm{per}}=0\).
+This is the block of the actual Q0 extension in FO, rather
+than a suppression of an annular integer.
+
+On the central source the chosen Tate representative of
+the two-torsion section is the holomorphic unit branch
+with limit \(-1\). Its square is \(Q^h\); its valuation at
+the selected node is zero, so \(h=0\) and \(P_G=-1\)
+on the whole selected disc. For both admitted even values
+of \(a\), \(P_G^a=1\) in this representative. The point
+generator of CS.5 and its theta generator consequently
+have ratio \(\psi=1\) on every component in this note.
+This statement includes their section charts by the
+Cartier module maps, with no source-period reindex.
+For the exceptional p-chart, this restriction can
+also be checked in the full coefficients without
+evaluating a meromorphic quotient at a zero. Put
+\(b=P_G^a\), \(\tau=\sigma p\),
+\(\tau_a=\sigma c_a\), and write
+\[
+ Z(\tau)-1=\tau u(\tau),\qquad
+ b-1=\tau_a u(\tau_a).
+\]
+With \(E\) the full remaining theta-product unit,
+the actual quotient is
+\[
+ \frac{f_b(Z)}{r_a}
+ =\frac{Z(\tau)-Z(\tau_a)}{\tau-\tau_a}
+   \frac{\tau}{Z(\tau)-1}\frac{E}{b}.
+ \tag{CS.10a}
+\]
+The first factor is the holomorphic divided
+difference. At \(\sigma=0\), it cancels the
+second factor, and \(E/b=1\). This proves
+\(\psi=1\) through \(p=0\) and \(p=c_a\) in
+the same nonzero Cartier frame, with its inverse.
+Therefore CS.10 has zero extra q exponent and unit one
+on these components. The Q0 tangent arrow in the complete
+39-chart fan supplies the actual extension at \(q=0\).
+It identifies the finite-base normal bundle used below;
+there is no unrecorded selected-fibre divisor.
+
+The original finite \(m\)-cap lies on its actual large-\(\sigma\)
+domain. These compact components lie in \(\sigma=0\), so
+they do not meet that cap. On the surrounding overlap the
+ordinary/root square is still
+\(\Phi_\beta=A^kB^{j_{\alpha\beta}}\Phi_\alpha\).
+In particular the quarter-turn is \(AB^{j_\gamma}\) and
+the fourfold word is \(A^4B^{\sum j_\gamma}\), with
+\(A^m=B^n\). None of these integers or finite characters
+is changed by CS.2, CS.8 or CS.10.
+
+## CS.3. The complete chart stars
+
+All rays below are expressed in the quotient lattice dual
+to CS.1. The two added actual boundary rays are
+\[
+ R_p=(0,1,-1,0),\qquad F_-=(-1,0,0,0).
+ \tag{CS.11}
+\]
+Indeed \(p=T_2^{-1}\) has value one on \(R_p\), while
+\(\chi^4,\chi\sigma,V\) have value zero. The finite
+coordinate \(t_e=T_0^{-1}\) has value one on \(F_-\),
+while \(\eta_e,v,V\) have value zero. These are the
+coordinate morphisms CS.2 and CS.8, with their stated
+inverses.
+
+The 238-cone ordinary quotient refinement has sixteen
+three-faces on which the \(v\)-coordinate is a unit.
+Cone each of those faces with \(R_p\). This gives the
+sixteen actual p-graph charts. Cone each of the 38
+common three-cones with \(F_-\), and add the four
+charts
+\[
+ \langle F_-,R_p,A_j,A_{j+1}\rangle,\qquad
+ A_j=(0,1,0,j),\quad 0\le j\le3.
+ \tag{CS.12}
+\]
+The resulting list has \(238+16+38+4=296\) charts.
+Every matrix has determinant of absolute value one in
+the quotient lattice. The new charts carry CS.4 and
+the full source and Hom units of their parent cones.
+On overlaps the full coordinate map is exactly
+\[
+ z_{\rm target}
+   =z_{\rm source}^{\,N_{\rm target}^{-1}N_{\rm source}}
+       \cdot g_{\rm target,source},
+ \tag{CS.13}
+\]
+where the exponent matrix and every parent source/Hom
+unit exponent are stored. The inverse matrix gives
+the inverse map on the stated localized overlap.
+The coefficients \(g\) are the same actual analytic
+units from EI, IA and FO; CS.5 and CS.10 identify
+their restrictions on the compact components.
+
+Here is a direct completeness check for each surface
+star, rather than a claim about the support of an
+unrelated global four-fan. For a fixed face \(F\) of
+rank two, choose one incident regular chart. Let
+\(Q\) be the two tangent rows of its inverse matrix,
+and \(R\) the two tangent columns of its matrix.
+Then \(QR=I_2\) and \(Q\) kills both rays of \(F\).
+For every incident chart, project its other two rays
+by \(Q\). The exact output consists of a cyclic
+list \(r_0,\ldots,r_{s-1}\) satisfying
+\[
+ \det(r_i,r_{i+1})=1,
+ \qquad
+ \{\text{incident cones}\}
+    =\{\langle r_i,r_{i+1}\rangle: i\bmod s\}.
+ \tag{CS.14}
+\]
+Their angular order is checked using integral cross
+products and the two half-planes. There are no repeated
+cones, and this order goes once around the whole plane.
+Thus these actual source charts cover a compact
+surface, with exactly the displayed common edges.
+The morphisms CS.13 are its full normal overlaps.
+
+For each of the twelve remaining v-unit curves, there
+are exactly two incident fixed-curve charts: one old
+v-chart and one added p-chart. Their tangent
+coordinates are exactly \(v,p\) with \(p=1/v\).
+Their full normal rows in CS.13 identify the three
+normal lines. This proves that each curve closes to
+one \(\mathbb P^1\), with no additional fixed branch.
+All fourteen surfaces and all twelve curves are
+extracted by their minimal fixed faces, so a shared
+chart does not duplicate a component.
+
+## CS.4. Period orbits and the two source copies
+
+The chronological period acts on the labelled source
+copies by
+\[
+ B:(C,j)\longmapsto(\bar C,j+4),\qquad
+ C\in\{O,T\},\qquad \bar O=T,\quad\bar T=O.
+ \tag{CS.15}
+\]
+The root action \(\gamma\) fixes O and T; it has
+already been taken in the quotient lattice used in
+CS.11. For each residue \(j\bmod4\), the orbit of
+\((O,j)\) contains \((T,j+4)\) and \((O,j+8)\),
+while the orbit of \((T,j)\) contains \((O,j+4)\)
+and \((T,j+8)\). These are two distinct orbits.
+A power of B which preserves the chain label is zero;
+the remaining finite root action does not exchange
+the two sections. The source reset \(p\mapsto p-b\)
+is the actual map within the image graph and does
+not remove the retained chain index.
+
+Hence every local exceptional/refinement type and
+every compact p-curve below appears in two source
+copies. The four strict source surfaces of SS each
+contain both an O and a T section; that geometric
+incidence does not identify the two separate
+exceptional stars. The actual maps CS.15 determine
+their multiplicity.
+
+## CS.5. Normal intersections from the full coefficient maps
+
+On any fixed surface the physical normal weights are
+\((-1,+1)\). Let \(m_-\) and \(m_+\) be the corresponding
+rows of \(N^{-1}\). The normal character difference is
+\(m_D=m_+-m_-\). Subtract the same reference character
+\(m_0\) on every chart. Its difference annihilates the
+fixed face, so it descends to the tangent quotient:
+\[
+ \ell_N=(m_D-m_0)R.
+ \tag{CS.16}
+\]
+For a tangent ray \(r\), the Cartier coefficient is
+\(\ell_N(r)\). Indeed a coefficient arrow
+\(n_{\rm target}=g\,n_{\rm ref}\) gives the vector-frame
+identity \(e_{\rm ref}=g\,e_{\rm target}\). The
+meromorphic reference vector frame has local
+coefficient \(g\), with the positive order of that
+function. Applying this to the quotient of the
+positive and negative frames gives exactly
+\(\ell_N(r)\) for \(D=N_+\otimes N_-^*\).
+The two adjacent charts give the same coefficient
+by the two normal rows of CS.13; this equality is
+checked for every ray in the certificate.
+Adding the reference character back is a single
+global meromorphic frame; it changes the displayed
+divisor by a principal divisor and leaves its square
+unchanged.
+
+The integral tangent intersection matrix has entries
+\[
+ I_{i,i+1}=1,\qquad
+ I_{ii}=-\det(r_{i-1},r_{i+1}),\qquad
+ I_{ik}=0\quad(k\ne i,i\pm1).
+ \tag{CS.17}
+\]
+The wall relation gives CS.17 directly: the normal
+coordinate transverse to the i-th invariant curve
+has transition of degree
+\(-\det(r_{i-1},r_{i+1})\), and adjacent coordinate
+divisors meet once. If \(d\) is the integral
+coefficient vector from CS.16, then
+\[
+ D^2=d^tId,\qquad
+ c_1(TF)^2=\mathbf1^tI\mathbf1,\qquad
+ \int_Fp_1=\mathbf1^tI\mathbf1-2s.
+ \tag{CS.18}
+\]
+For the tangent formula, the logarithmic coordinate
+vector fields give the usual divisor exact sequence
+on these explicitly glued toric charts. The top
+Euler number is the number \(s\) of their zero-dimensional
+orbits, equivalently the zero count of a generic
+torus vector field. This proves the last equality
+using the same tangent atlas.
+
+As an independent verification, the two actual
+auxiliary cocharacters \((2,7,11,23)\) and
+\((3,11,17,41)\) give at each chart its tangent weights
+\(t_1,t_2\) and normal weights \(n_-,n_+\).
+The sums
+\[
+ \sum\frac{t_1^2+t_2^2}{t_1t_2},
+ \qquad
+ \sum\frac{(n_+-n_-)^2}{t_1t_2}
+ \tag{CS.19}
+\]
+agree with CS.18 for both choices. Thus the numerical
+calculation has a full integral intersection proof
+and two separate weight checks. The physical normal
+weights themselves remain \((-1,+1)\).
+
+The four exceptional-source surfaces have the
+complete tangent rays
+\[
+ (1,0),(0,1),(-1,0),(0,-1).
+ \tag{CS.20}
+\]
+Their source charts are therefore the explicit four
+product charts in coordinates \((q_\infty,v)\),
+\((q_\infty,p)\), \((t_e,v)\), \((t_e,p)\), with
+\(t_e=q_\infty^{-1}\) and \(p=v^{-1}\).
+In negative/positive normal order their nontrivial
+coefficient arrows are
+\[
+ n_{-,{\rm finite}}=q_\infty n_{-,\infty},
+ \qquad
+ n_{-,p}=v^{j+1}n_{-,v},\qquad
+ n_{+,{\rm target}}=n_{+,{\rm source}}.
+ \tag{CS.21}
+\]
+These follow from the full four-by-four matrices,
+including FL.8's refinement factor \(v^j\). In the
+stated coefficient convention CS.21 identifies
+\[
+ N_-=\mathcal O(-1,-j-1),\qquad N_+=\mathcal O
+ \quad\text{on }\mathbb P^1\times\mathbb P^1.
+ \tag{CS.22}
+\]
+Both product coordinates and both line clutches are
+specified by CS.20--21. Therefore
+\(\int p_1=0\) and \(D^2=2(j+1)\).
+
+For a fixed surface with weights \((-1,+1)\), the
+weighted normal-link formula in the positive-hyperplane
+convention is
+\[
+ {\cal R}_U(F)=\frac{\int_Fp_1-3D^2}{24}.
+ \tag{CS.23}
+\]
+The actual physical line is \(M=U^*\), by K68's
+nonzero-vector line arrow; its characteristic pair
+and its displayed expression both change sign.
+The four exceptional-source values are consequently
+\[
+ {\cal R}_U=-\frac14,-\frac12,-\frac34,-1,
+ \qquad \sum {\cal R}_U=-\frac52
+ \tag{CS.24}
+\]
+per O or T copy.
+
+The ten refinement surfaces have the following exact
+complete-star values. The IDs are the minimal-face
+IDs of the retained fixed-component extraction.
+
+| ID | Number of tangent charts | \(\int p_1\) | \(D^2\) | \({\cal R}_U\) |
+|---:|---:|---:|---:|---:|
+| 86 | 8 | -12 | 0 | \(-1/2\) |
+| 94 | 8 | -12 | 1 | \(-5/8\) |
+| 106 | 8 | -12 | -5 | \(1/8\) |
+| 118 | 8 | -12 | -3 | \(-1/8\) |
+| 131 | 6 | -6 | 0 | \(-1/4\) |
+| 138 | 6 | -6 | -4 | \(1/4\) |
+| 139 | 6 | -6 | 2 | \(-1/2\) |
+| 142 | 8 | -12 | -4 | \(0\) |
+| 146 | 8 | -12 | 0 | \(-1/2\) |
+| 151 | 8 | -12 | -3 | \(-1/8\) |
+
+Their sum is \(-9/4\) per copy. Every row retains its
+complete primitive tangent rays, integral intersection
+matrix, normal divisor coefficients, all chart
+matrices and all adjacent normal rows in the JSON.
+For example ID 86 has tangent rays
+\[
+ (1,0),(0,1),(-1,1),(0,-1),(1,-1),
+ (4,-3),(3,-2),(2,-1)
+\]
+and normal divisor vector \((0,0,1,0,0,0,0,0)\).
+These give \(\int p_1=-12,D^2=0\) by CS.17--18.
+The other nine rows use the same displayed method
+on their explicitly stored different divisor rows.
+
+## CS.6. The twelve compact p-curves
+
+Let \(M=N_p^{-1}N_v\) be the full character matrix
+between the two charts of a curve. In the source
+chart, \(v\) is the tangent coordinate. The matched
+normal ray has coefficient one in its own normal
+column and zero in the other two normal columns.
+If its tangent entry is \(e_i\), the actual arrow is
+\(n_{i,p}=v^{e_i}g_i n_{i,v}\), with the full point
+unit retained by CS.5. Its vector frame therefore
+has degree \(-e_i\). This derives the sign from the
+specified coefficient map.
+
+The resulting weights and degrees, in the same
+normal-ray order, are:
+
+| ID | Physical weights | Normal degrees | \({\cal R}_U\) |
+|---:|---|---|---:|
+| 46 | \((1,-2,1)\) | \((0,-2,1)\) | \(1/8\) |
+| 47 | \((-3,4,-1)\) | \((-2,0,0)\) | \(1/108\) |
+| 49 | \((1,-3,2)\) | \((0,-3,2)\) | \(1/24\) |
+| 51 | \((1,-4,3)\) | \((0,-4,3)\) | \(1/48\) |
+| 58 | \((1,-2,1)\) | \((0,-4,2)\) | \(1/4\) |
+| 59 | \((-1,2,-1)\) | \((-3,0,0)\) | \(0\) |
+| 74 | \((3,-4,1)\) | \((6,-12,3)\) | \(-19/144\) |
+| 75 | \((-1,2,-1)\) | \((-4,0,0)\) | \(0\) |
+| 79 | \((-1,3,-2)\) | \((-4,0,0)\) | \(2/9\) |
+| 83 | \((-1,4,-3)\) | \((-4,0,0)\) | \(5/18\) |
+| 162 | \((-2,3,-1)\) | \((-4,2,0)\) | \(-1/108\) |
+| 163 | \((2,-3,1)\) | \((0,-6,3)\) | \(-1/18\) |
+
+For weights \(w_i\) and degrees \(d_i\), the precise
+weighted curve expression used here is
+\[
+ {\cal R}_U
+ =-\frac{\sum_i
+       \{(4-\sum_h w_h^2)/w_i+2w_i\}d_i}
+          {24\prod_iw_i}.
+ \tag{CS.25}
+\]
+It is the expansion of the already proved
+normal-link formula, retaining the finite weight
+denominators. The sum of the twelve rows is
+\(3/4\) per copy, or \(-3/4\) for the actual
+physical line. Two independent auxiliary
+cocharacters give the same normal degrees from
+the two fixed endpoints, with exactly opposite
+nonzero tangent weights.
+
+## CS.7. Certificate and scope of the completed contribution
+
+The reproducible program is
+code/part3_fourfold/e6_selected_infinity_compact_surface_stars.py.
+Its JSON retains all 296 charts, fourteen complete
+surface stars, twelve complete curve stars, every
+normal overlap, two auxiliary weight calculations,
+the actual parent source/Hom unit exponents and
+both input hashes. It passes 1,637 exact checks.
+The earlier stored negative divisor vector represented
+the dual difference line. That complete source, program
+and output are preserved under
+records/attempts/e6_selected_infinity_compact_normal_stars/dual_D_divisor_label.
+The present positive vector represents \(D=N_+\otimes N_-^*\)
+by the explicit coefficient-to-frame equation in CS.5.
+All intersection squares and displayed contributions
+are unchanged by that corrected line label.
+The two inputs are:
+
+| Input | SHA256 |
+|---|---|
+| code/part3/e6_selected_infinity_factor_overlay.json | af3ef63eed9f324f4aebd9332378961d011944de7f256c98de41a74cf87e8861 |
+| code/part3_fourfold/e6_fixed_face_orbits.json | 8917efd4732b3b161eba8b825354a3a46cc9e71193bb7787f44d9ee65d1a4eb4 |
+
+For one O/T copy the newly completed values are
+\[
+ \sum_{\rm exceptional}{\cal R}_U=-\frac52,\qquad
+ \sum_{\rm refinement}{\cal R}_U=-\frac94,\qquad
+ \sum_{p\text{-curves}}{\cal R}_U=\frac34.
+ \tag{CS.26}
+\]
+The source-period orbit argument CS.15 gives two
+copies. The previously proved ten finite-base
+interface curves have sum zero in each copy.
+The existing interior-point/curve block and these
+new closed stars have disjoint minimal-face IDs;
+the four strict source surfaces remain those of
+SS and are counted once globally.
+
+These statements identify the compact component
+domains, source maps, normal clutches and their
+fixed-inner values. The moving selected/reference
+surface and the final outer-family/physical-line
+orientation map remain separate entries of the
+assembly. No total return or free integer is
+deduced from CS.26 alone.
