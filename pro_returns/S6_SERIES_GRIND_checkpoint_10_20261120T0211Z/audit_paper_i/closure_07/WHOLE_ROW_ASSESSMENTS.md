@@ -1,0 +1,55 @@
+# Whole-row disposition of K116, K117, K119, P1.16 and P1.18
+
+19 November 2026. GPT-6 Astra (OpenAI), ChatGPT Pro mode, inherited effort; same model family.
+
+## Outcome
+
+The mathematical receiving gates of all five rows are closed at their exact printed scopes. The complete current numerical-executable gate of P1.16 is now closed by the new 192-step propagation and independent 980-check saved-data validator. Its old missing-executable assertions are replaced by the proposed complete proof. This file does not itself mark a pending integration or an unviewed new PDF complete.
+
+| Row | Mathematical confidence | Whole-row disposition at this receipt |
+|---|---|---|
+| K116 | High, for the defined fixed-C_* continuation, original cap and all prescribed fans | Eligible after its three bounded prose replacements and changed-page inspection. Retained scoped prereading checks cover the construction; the previously stated K10/fan input gate has received a full current proof and fresh algebra/topology check. |
+| K117 | High, for the positive ordered loop of degree four, fixed-C_* continuation, full reference, every prescribed fan and admitted fixed scalar | Mathematical status remains proved. Complete geometric derivation before receiving proof is not established by this branch's record. Its prereading source/prism algebra, complete receiving proof and new exact computation retain their actual scopes. Three bounded prose replacements and changed-page inspection remain publication gates. |
+| K119 | High, for all 24 original-cap meridians and their inverses with the full fixed reference | Mathematical status remains proved. Corrections audit owns a new isolated statement-only global-reference derivation, after recording its previous exposure. One bounded prose replacement and changed-page inspection remain publication gates. |
+| P1.16 | High, for the exact normalized height bounds, excluded parameter and two period matrices | The fresh full computational gate is closed. Root receiving review, integration of the current five-step proof and actual inspection of its new complete pages remain. |
+| P1.18 | High, complete global-minimum certificate and exact splitting transport | The new complete certificate and independent finite verifier remain closed. Retained full union of scoped prereading derivations counts. Two residual historical-prose replacements and actual inspection of the complete current proof pages remain. |
+
+## K116: retained derivations and the completed input chain
+
+The original retained event ce:bacd0998782b0458896d records the source cover, rational parametrization, simultaneous infinity resolution, actual Hom degree, complete-unit fan/cap method and disc/annulus return argument written before the three printed supporting proofs. Its explicitly remaining coefficient scopes were subsequently covered before their isolated target openings by ce:60f7fbc9da61c6b1bbc6, with ce:146df4a3eec9d0e6334f's 81 fresh residual checks. The statement/source geometry checks ce:19125673b741c4472ddf remain additional evidence.
+
+The recorded remaining antecedents were K10's actual sphere construction and the unrestricted prescribed-fan transport. This run read the full K10 topology passage, the entire rank-two specialization construction and the full F35 argument at their used scopes. The source equation and every relevant line/cap choice agree literally under a=b=1; the proof uses those maps. The fresh 249-check program reconstructs the actual modular quotient and all four selected-zero HNF/Smith complexes, in addition to the original source, point-line, Hom and cap maps. Complete details, exact source ranges and output are in `../iv_os45/K116_REVIEW.md` and its named code/output. The defined continuation keeps C_* fixed; a separately prescribed coefficient c(a) has the exact scalar transport lambda_eff=lambda*c(a)/C_*.
+
+The union supports the K116 whole-step construction requirement without claiming a single fresh unexposed whole-proof derivation. Known topological inputs remain cited inputs, with their existing individual check records. Source-credit comparisons are bounded by the opened actual constructions and the retained 49-text source search; no general priority claim is inferred.
+
+## K117 and K119: precise independence boundaries
+
+For K117, both the retained ce:303ce92f4a4ff12480b1 event and this run's frozen derivation concern source/critical-parameter algebra, exact normal coefficients and prism uniqueness. They do not attest a before-reading derivation of the entire compact trace, both normal caps, the physical inverse clutch and every fan map. All five supporting arguments were subsequently checked in full, including the three corrected smooth SU(2) disc representatives and the fixed-C_* scope. The fresh 288 named checks, 217 independently solved prism systems and 868 coefficient round trips support the numerical/formula steps. The six primary source reopenings in `../iv_os45/K117_REVIEW.md` fix the relevant classical signs and hypotheses. These facts warrant the proved/high-confidence mathematical conclusion; they do not manufacture the different exposure chronology required by section 5.1.
+
+For K119, the retained ce:d042c8fa09a711b2fd69 event and the current frozen source derivation cover the exact 24-point locus, both strata, inverse height and node coefficients. The complete original-reference comparison was read before the new 175-check program. That program verifies the full integral coordinate maps, cone contraction, Laurent solution and noncommutative endpoint word; the receiving proof checks the entire source/line/cap extension, proper family and physical isotopy. The isolated packet `../iv_os45/K119_statement_only_07.tex`, SHA ffe30a241c6de33526897cdac6b9abfd187f7afdf1e1ea0059eb4e6493cab9b5, contains the complete statement without its proof. Corrections audit has it with K116/K78 input locators. Its derivation and subsequent receiving comparison will have their own record.
+
+## P1.16: new complete computation and retained proof routes
+
+`period_loop_comparison.py` derives the exact Fuchsian gauge from the printed rational Gamma6 and integrates newly specified rational polygons. Its complete outward-rounded certificate has 120 zero-loop steps, 66 infinity-loop steps and six positive open-path steps; maximal Taylor degree 192; every local tail below 10^-100. The rational radius and segment rules cover every path edge exactly. The two scalar pole residues and their norms are exact.
+
+The normalized intertwiner is certified through an invertible thirty-equation subsystem. Exact simultaneous existence and uniqueness come from the explicit full flat-extension map of P1.15; both the corrections and sign agents have newly reconstructed that algebra. Full residual containment is recorded as a check, with its logical scope stated. The actual real-intersection characterization is P1.8 and its full current receiving comparison. The height ball has radius below 4e-91 and proves the two strict theorem endpoints.
+
+The separate current regular-root method supplies the independently normalized root frame. A new degree-880 infinity-root evaluation at lambda=2 uses the exact regular connection, denominator bound 2343.75 and connection norm 65.6375 on radius 5/4. The resulting complete matrices agree within 1.37e-73 at lambda=1 and 4.71e-74 at lambda=2. The actual period matrix includes the shift -(625*pi/96)c*e0. Both printed c=10 determinants are reproduced; conjugating their six-column determinant swaps two odd-size blocks, giving its exact purely imaginary character.
+
+The new separate `validate_saved_period_comparison.py` passes 980 checks, reconstructing every rational step and published bound from saved data. It does not repeat Taylor propagation. Both iteration failures/repairs are preserved. No unavailable historical program is called or represented as executed.
+
+The retained numerical-analysis and map derivations in the P1.18 union apply to the same exact right-ODE, gauge, Cauchy/Gronwall and normalized-intertwiner steps; the new polygon method and closed-loop/root comparison supply current executable evidence. The retained P1.16 ce:c919849677c4d9c5f085 and ce:3829786e4cc387881b09 events also record independent Fuchsian and root methods with exact normalization, without claiming their unavailable files have been rerun. P1.15 supplies the full geometric Gauss--Manin identification as a separately checked input. The known analytic estimates are credited to the opened Teschl Lemma 2.7, pp.42–43, and DLMF §1.9(iii), equations (1.9.30)–(1.9.31).
+
+## P1.18: retained full union and present finite certificate
+
+The retained ce:0ef5376f3c74e5cdd401 explicitly records a complete union of scoped before-target derivations: geometric/global/splitting, analytic certificate core, polynomial majorant and exact right-ODE anchor/gauge maps. The individual bounded events include ce:04a16b403063b2f5bbff, ce:257bfb1fdf4dcf6e44ac, ce:4749f2aa1092c7901646 and ce:90f8df8fdd783e30b7cb. They retain their stated scopes and count as existing evidence.
+
+The current independent package supplies actual complete new execution: 1,600 rational leaves (1,088 strict, 512 geometrically excluded or already covered), four central Hessian squares, 412 complex Taylor transitions, an exact cusp gauge/marking and positive inner-disc determinant coefficient bounds. The separately authored saved-data verifier checks complete quadtree coverage, every recorded inequality and the matrix/coordinate maps. The root receiving review checked the whole seven-step replacement proof. The full complex splitting transport and the real-line image retain both real and imaginary components.
+
+The actual P1.15 existence map and P1.8 intersection characterization were explicit dependencies throughout; the fresh full checks now available close those receiving inputs. The bounded primary-source comparison is in `audit_corrections/V_literature_comparison.tsv` and `V_literature_searches.tsv`; its exact Frobenius threshold was not located in the searched passages. Known period-family, local filling and analytic-estimate inputs remain credited. No worldwide absence claim is made.
+
+## Layout and final integration
+
+`IV_visual_QA.json` records all 13 actually viewed sheets, 25 selected pages, their exact hashes and the source PDF hash. It covers all statements, supporting-proof starts, decisive geometric/algebraic passages and endings for K116/K117/K119. The seven source prose residues have exact one-match guards in `IV_workflow_residue_patches.json`. The mathematical symbols and limits are preserved.
+
+`V_period_certificate_patches.json` supplies the complete P1.16 proof replacement and two P1.18 prose replacements. Every displayed weaker numerical bound has been independently checked by the saved-data validator. Root owns application and compilation. The new P1.16 pages and the complete P1.18 proof continuation must actually be viewed after that integration before this agent records layout or completion. Present compile logs and earlier partial V samples do not replace that viewing.

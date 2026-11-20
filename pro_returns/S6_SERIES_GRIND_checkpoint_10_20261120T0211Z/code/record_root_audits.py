@@ -1,0 +1,19 @@
+"""Record the precise scope of root mathematical checks, without inferred independence."""
+from pathlib import Path
+import csv,json
+R=Path(__file__).resolve().parents[1];out=R/'audit_root/CHECK_EVENTS.tsv'
+rows=[
+('root-III-OS45-localization','maps:src:D.2.53','computation or formal certificate','Fresh code/III_weighted_OS45_checks.py independently recomputes 16 support-wall vectors, global integer quasiperiod formulas, all exact localization sums and parameter-polynomial congruences; 142 assertions PASS. It also verifies the root divisor and fourfold characteristic compatibility arithmetic. No earlier program is an input. The refined-class choice 0 versus 4 in Z/8 remains open.'),
+('root-III-OS45-preread','maps:src:D.2.53','targeted proof check','Frozen audit_root/III_preproof_attempt.md precedes reading this proof: derivation from the stated H2/H3 and characteristic data gives only ker(2:Z/8 to Z/8)={0,4}. Compared the printed tangent, support-descent, full boundary-cochain and localization arguments. The literal framed torsion-cycle link remains the unresolved step; no claim to have independently derived the entire proof.'),
+('root-III-P3F34-scope','night:P3F.34','targeted proof check','Read the receiving statement, initial full integral Gysin formula and the source-scope report. Applied the exact gcd(n,3k)=1 qualification: full D2.11 theorem and attached CSV hypothesis agree at g=1, while the free (9,3,1) example disproves only an unrestricted cyclic reading. Complete agent arithmetic retained separately; no additional root computation claimed.'),
+('root-V-root-transport','series:V:E','targeted proof check','Checked the common (15,4) root-curve diagram and divisor identities: q3*L3=5D1-D2, T^5=20D1-5D2, div(t/(t-1))=15D1-4D2. Multiplication by (t-1)/t maps q3*L3 to T^5; q5*L5=T^3. Repaired the displayed isomorphism direction. Explicit morphisms and chart powers are retained in V_literature_comparison.tex.'),
+('root-V-realification','series:V:D','targeted proof check','Opened Huijun Yang arXiv:1110.1798, Theorems1–2 pp2–3 and realification p1. Checked exact transport of the constructed integrable tangent structure through the oriented diffeomorphism: c2=-sum xi, c4=6u, p2=14u, p1^2=8u. Yang n=4 gives 4p2-p1^2=48=8(4+2), and Mandal normalization gives 14=2 mod4, 14-2=2*6. These checks establish compatibility with the cited almost-complex results, not an additional integrable construction.'),
+('root-V-P118-review','night:P1.18','targeted proof check','Read the entire new seven-step proof, DERIVATION.md, exported README and saved validation JSON. Checked the height-preserving real maps, exact gauge chain rule, both Taylor recurrences, Hessian differentiation, coverage maps/rational overlap, A-conjugate cusp marking, determinant and splitting path. Integrated the fresh certificate with explicit dλ/dq=λ*. No new full execution or prereading derivation by root is claimed; the agent execution and independent finite verifier are distinct recorded events.'),
+('root-II-UN50-sign','cdp:st:C.2.UN.50','targeted proof check','For the displayed map (u,X) -> (X^r u^-l,X^-n u^k), computed exponent matrix [(-l,r),(k,-n)] and determinant nl-rk=-1 from rk-nl=1. Applied that exact correction; inverse and later three-dimensional orientation calculation are retained.'),
+]
+old=list(csv.DictReader(out.open(),delimiter='\t')) if out.exists() else []
+byid={x['event_id']:x for x in old}
+for eid,sid,kind,result in rows:byid[eid]=dict(event_id=eid,statement_id=sid,date='2026-11-19',who='GPT-6 Astra (OpenAI), ChatGPT Pro mode; inherited effort; S6_SERIES_GRIND root',type=kind,outcome=result,phase='S6_SERIES_GRIND')
+with out.open('w',newline='') as f:
+ w=csv.DictWriter(f,fieldnames=['statement_id','date','who','type','outcome','event_id','phase'],delimiter='\t');w.writeheader();w.writerows(byid.values())
+print(json.dumps({'root_events':len(byid)}))
