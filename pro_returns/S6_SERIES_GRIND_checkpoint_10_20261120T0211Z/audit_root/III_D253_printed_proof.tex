@@ -1,0 +1,788 @@
+\begin{proof}
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item \textbf{The primitive component lattice and cubic in the sixteen-component OS45 example}
+We first record a saturation calculation which uses the actual component
+meridians. Let $X$ be simply connected, let $N$ be a single rank-two
+Mumford cusp with $D$ components, and put $E=X\setminus\operatorname{int}N$.
+Assume $b_2(X)=D-1$, $H_3(N;\mathbb Z)$ is free, and
+\[
+ H_1(E;\mathbb Z)=\mathbb Z\oplus A,\qquad
+                       \mu_i=(1,a_i),                      \tag{D.PC1}\label{maps:eq:D.PC1}
+\]
+where $A$ is finite and $\mu_i$ is the positively oriented meridian of
+component $i$. The component classes $x_i$ then generate a sublattice
+\[
+ L=\mathbb Z^D/\mathbb Z(1,\ldots,1)
+                       \subset H^2(X;\mathbb Z)
+\]
+whose full primitive extension, inside $L\otimes\mathbb Q$, is
+\[
+ H^2(X;\mathbb Z)
+   =L+\left\{\sum_i\widetilde{\chi(a_i)}x_i:
+                         \chi\in\operatorname{Hom}(A,\mathbb Q/\mathbb Z)
+        \right\}.                                        \tag{D.PC2}\label{maps:eq:D.PC2}
+\]
+A tilde means any rational lift of a value in $\mathbb Q/\mathbb Z$;
+changing it adds an element of $L$. In particular the component
+lattice has index $|A|$.
+
+\item Poincare--Lefschetz duality identifies
+$H^2(X,E;\mathbb Z)=H_4(N;\mathbb Z)=\mathbb Z^D$,
+with its positive component Thom basis, and
+$H^3(X,E;\mathbb Z)=H_3(N;\mathbb Z)$ is free. The connecting
+map from $H^1(E;\mathbb Z)$ evaluates on the meridians \eqref{maps:eq:D.PC1},
+so its image is precisely $\mathbb Z(1,\ldots,1)$.
+The relative exact sequence therefore injects $L$ into $H^2(X)$.
+Since $X$ is simply connected, the latter group is free; its rank is
+$D-1$ by hypothesis. Its quotient by $L$ is finite and embeds in
+$H^2(E)$, whose torsion is
+$\operatorname{Ext}(H_1(E),\mathbb Z)=\operatorname{Hom}(A,\mathbb Q/\mathbb Z)$.
+All this torsion lifts to $H^2(X)$ because the next relative group is
+free. Thus the quotient has exactly that order.
+
+\item Here is also its precise embedding, rather than only its index.
+For a character $\chi$ of order $m$, extend it by zero on the free
+summand of $H_1(E)$. Regard it as a class in
+$H^1(E;\mathbb Z/m)$ by multiplying its values by $m$.
+Its relative coboundary has component coordinates
+$m\widetilde{\chi(a_i)}\pmod m$. Choose the displayed integers
+as an integral relative lift. Its image in $H^2(X;\mathbb Z/m)$
+is zero by exactness. Hence its integral image is divisible by $m$
+in $H^2(X;\mathbb Z)$, giving the class in \eqref{maps:eq:D.PC2}.
+The coefficient exact sequences identify its exterior restriction
+with the corresponding torsion Bockstein, up to the harmless common
+connecting-map sign. Since these characters give the full torsion
+of $H^2(E)$, they give the full primitive extension. This proves
+\eqref{maps:eq:D.PC2}, including every finite denominator.
+
+\item Now take the exact marked data
+\[
+ \mathrm{OS45/default},\quad P=2G,\quad Q=8G,\quad
+ (w_0,w_1,w_2,w_3,w_4)=(2,0,0,0,0),\quad e=1,              \tag{D.PC3}\label{maps:eq:D.PC3}
+\]
+with all multiplicative fibres filled by their marked Mumford caps.
+\ref{maps:src:D.2.46} gives
+\[
+ H_2(X)=\mathbb Z^{15}\oplus\mathbb Z/8,\qquad
+ H_3(X)=\mathbb Z/8,\qquad \pi_1(X)=1.
+                                                               \tag{D.PC4}\label{maps:eq:D.PC4}
+\]
+The elliptic monodromy at $I_8$ is
+$\left(\begin{smallmatrix}1&8\\0&1\end{smallmatrix}\right)$
+and its section cocycle is $(3,0)$. Formula \eqref{maps:eq:D.GI2} therefore gives
+\[
+ A_0=\begin{pmatrix}
+ 1&8&0&24\\0&1&0&0\\0&-6&1&-16\\0&0&0&1
+ \end{pmatrix},\qquad
+ L_{\rm per}=\left\langle(8,-6),(24,-16)\right\rangle
+                 =8\mathbb Z\oplus2\mathbb Z.             \tag{D.PC5}\label{maps:eq:D.PC5}
+\]
+The short basis is $(e_1,\delta)$ and the long basis is $(e_2,\gamma)$.
+This is an equality of sublattices, not merely a comparison of
+indices. The determinant is sixteen and the Smith factors are two
+and eight. Label the normalized components by
+\[
+             (r,s)\in\mathbb Z/8\times\mathbb Z/2,
+             \qquad i=2r+s.                              \tag{D.PC6}\label{maps:eq:D.PC6}
+\]
+
+\item The actual cusp complement satisfies
+\[
+ H_1(E)=\mathbb Z\oplus\mathbb Z/2,
+                      \qquad \mu_{r,s}=(1,s\bmod2).      \tag{D.PC7}\label{maps:eq:D.PC7}
+\]
+To verify the marking, retain all peripheral generators and the
+ordinary clutch in the exact degree-one presentation. Its Smith
+form has seven unit factors, one factor two, and one free generator.
+The torsion character in the original nine coordinates is
+\[
+                  (0,-2,1,2,0,0,2,-2,2)\pmod2,
+                                                               \tag{D.PC8}\label{maps:eq:D.PC8}
+\]
+which is precisely $\delta^*$ modulo two. The free character
+evaluates to one on the cusp meridian. A height-one ray at
+$(r,s)$ has literal meridian $\theta+r e_1+s\delta$; it
+therefore gives exactly \eqref{maps:eq:D.PC7}. The full original presentation,
+Smith change of basis and all sixteen meridian images are saved
+in the executable below.
+
+\item Applying \eqref{maps:eq:D.PC2}, there is a unique integral class $y$ with
+\[
+                    2y=\sum_{r=0}^{7}x_{r,1}.             \tag{D.PC9}\label{maps:eq:D.PC9}
+\]
+The component lattice has exact index two. In particular it would
+be incorrect to declare any fifteen of the component classes a
+primitive basis. A convenient actual basis is
+\[
+ x_0,x_1,\ldots,x_{13},y,\qquad
+ x_{14}=-2y-\sum_{\substack{i<14\\i\ \mathrm{even}}}x_i,
+ \qquad
+ x_{15}=2y-\sum_{\substack{i<14\\i\ \mathrm{odd}}}x_i.
+                                                               \tag{D.PC10}\label{maps:eq:D.PC10}
+\]
+The integral matrix of the sixteen component classes in this basis
+has Smith factors $1^{14},2$ and kernel generated by the all-one
+vector. These are the asserted primitive markings.
+
+\item Here is the complete cubic on that basis. For component classes,
+\ref{maps:src:D.2.47} specializes to the following symmetric integral trilinear
+form. With distinct vertices as appropriate,
+\[
+ \begin{aligned}
+ T(x_i,x_i,x_i)&=6,\\
+ T(x_i,x_i,x_j)&=
+ \begin{cases}
+ -2,&i=(r,s),\ j=(r,1-s),\\
+ -1,&i=(r,s),\ j=(r\pm1,t),\quad t=0,1,\\
+ 0,&\text{otherwise},
+ \end{cases}\\
+ T(x_i,x_j,x_k)&=
+ \begin{cases}
+ 1,&\{i,j,k\}\text{ is three of the four vertices in}\\[-2pt]
+   &\hspace{12pt}\{(r,0),(r,1),(r+1,0),(r+1,1)\}
+                   \text{ for some }r,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+ \end{aligned}                                             \tag{D.PC11}\label{maps:eq:D.PC11}
+\]
+All horizontal indices are cyclic modulo eight. Repeated geometric
+edges and triangle cells are retained in this formula.
+The remaining primitive entries are
+\[
+ \begin{aligned}
+ T(y,x_{r,s},x_{r',s'})
+ &=(-1)^s\left(
+       \mathbf1_{s'=s,\ r'=r+1}
+      +\mathbf1_{s'=s,\ r'=r-1}
+      -2\mathbf1_{(r',s')=(r,s)}\right),\\
+ T(y,y,x_i)&=0,\qquad T(y,y,y)=0.
+ \end{aligned}                                             \tag{D.PC12}\label{maps:eq:D.PC12}
+\]
+These formulas determine every entry on the primitive basis
+\eqref{maps:eq:D.PC10}, and every resulting entry is integral.
+
+For a geometric verification of the half-class entries, on a
+normalized $dP_6$ take the cyclic boundary classes
+\[
+ E_1,\ H-E_1-E_2,\ E_2,\ H-E_2-E_3,\ E_3,\ H-E_1-E_3
+                                                               \tag{D.PC13}\label{maps:eq:D.PC13}
+\]
+in the ray order of \ref{maps:src:D.2.47}. The four nonhorizontal boundary classes
+sum to $2f$, where $f=H-E_1$ and $f^2=0$. Restricting \eqref{maps:eq:D.PC9}
+therefore gives
+\[
+                         y|_{P_{r,s}}=(-1)^s f.            \tag{D.PC14}\label{maps:eq:D.PC14}
+\]
+This division is valid in the torsion-free group $H^2(dP_6;\mathbb Z)$.
+The fibre $f$ has degree one on each horizontal boundary curve
+and zero on the other four. The Cartier restriction formula in
+\ref{maps:src:D.2.47} now gives the first line of \eqref{maps:eq:D.PC12}. Squaring \eqref{maps:eq:D.PC14}
+gives $y^2x_i=0$; multiplying \eqref{maps:eq:D.PC9} by $y^2$ gives $y^3=0$.
+Thus no rational cubic has been silently substituted for the
+integral form.
+
+Finally $c_1(X)=0$ and both $c_2$ and $p_1$ pair to zero with
+every class in the primitive free basis. For $c_1$, the normalized
+component tangent calculation is zero and the component restriction
+is rationally injective by the connected toric graph Laplacian;
+$H^2(X)$ is torsion-free, so this proves integral vanishing.
+For $c_2,p_1$, \ref{maps:src:D.2.47} gives zero on every component. The component
+classes have finite index, and the evaluations are integers, so they
+also vanish on $y$. These statements concern the free characteristic
+pairings; they do not determine the torsion class of $c_2$, the
+refined class, or the full finite-coefficient fundamental-class
+invariant.
+
+\path{code/III/fourfolds_OS45_primitive_cubic.py}
+reconstructs the actual complement before using its torsion
+character, checks all sixteen meridians, computes the exact
+index-two primitive lattice, and verifies all $15^3=3375$ primitive
+triples and all $16^3=4096$ recovered component triples. The
+normalization restriction \eqref{maps:eq:D.PC14}, the actual period basis, and
+all sparse integral entries are retained in its JSON output.
+The preliminary component-only calculation is retained separately
+in \path{code/III/fourfolds_OS45_component_ring.py}.
+
+\paragraph{Integral vanishing of the critical class.}
+The primitive-lattice argument above gives the literal relation
+\(\sum x_{r,s}=0\). Therefore the target line of \(df\) is
+topologically trivial. All fibres in this example are reduced
+semistable fibres. The exact complex of \ref{maps:src:D.2.44} consequently
+applies without any additive correction: its abstract kernel
+has the nowhere-zero scalar section, and its quotient line is
+topologically trivial because \(c_1(X)=0\). The local unit Bott
+clutch gives
+\[
+                     c_2(X)=\operatorname{PD}(C_{\rm crit}).
+                                                               \tag{D.OS5}\label{maps:eq:D.OS5}
+\]
+Here every actual complex double curve occurs once.
+
+We retain the actual integral specialization of this complete cycle.
+In the ordered bivector basis
+\((e_1e_2,e_1\delta,e_1\gamma,e_2\delta,e_2\gamma,\delta\gamma)\),
+the five fibre preimages, in their actual site order, are
+\[
+ \begin{array}{c|rrrrrr}
+ I_8\text{ weighted cusp}&-16&0&6&8&0&2\\
+ I_1&0&0&0&0&0&1\\
+ I_1&0&8&0&0&0&1\\
+ I_1&0&0&0&8&0&1\\
+ I_1&0&0&0&0&0&1
+ \end{array}.                                             \tag{D.OS6}\label{maps:eq:D.OS6}
+\]
+For the first row, the actual local period cover has matrix
+\(L=\left(\begin{smallmatrix}8&24\\-6&-16\end{smallmatrix}\right)\)
+and degree sixteen. Transfer the minimal cusp's literal
+three-curve preimage
+\(a_1b_1+b_1a_2+a_2b_2\), expressing \(b_1,b_2\) by \(L^{-1}\)
+in the actual long basis, and multiply by sixteen. This gives
+the first integral row of \eqref{maps:eq:D.OS6}, without division in homology
+or an assumed covering of the global filled manifolds.
+Each other row is the determinant-one transverse torus of the
+corresponding primitive node, as in \ref{maps:src:D.2.44}.
+Their sum is
+\[
+                        z=(-16,8,6,16,0,6).              \tag{D.OS7}\label{maps:eq:D.OS7}
+\]
+In the actual twenty-three-row relation matrix \(M\) of
+\ref{maps:src:D.2.46}, augment this vector by seventeen zeros. With columns
+numbered from zero, a literal integer preimage is the column
+combination with nonzero coefficients
+\[
+ \begin{array}{c|rrrrrrrr}
+ j&6&8&10&15&16&18&19&20\\\hline
+ c_j&-6&2&2&-28&2&-2&-52&-8\\
+ \end{array}
+ \qquad
+ \begin{array}{c|rrrrrrr}
+ j&26&38&41&51&56&61&66\\\hline
+ c_j&2&10&10&10&10&10&10 .
+ \end{array}                                             \tag{D.OS8}\label{maps:eq:D.OS8}
+\]
+Direct multiplication gives \(Mc=(z,0)\).
+All columns of \(M\) are the actual core prism and cap Thom
+relations, so this proves that the literal critical cycle is
+integrally nullhomologous. Equations \eqref{maps:eq:D.OS5}--\eqref{maps:eq:D.OS8} prove
+the absolute Chern and spin-characteristic vanishing in
+\eqref{maps:eq:D.OS1}. They do not by themselves compute linking with an
+odd middle-dimensional generator: local specialization chains
+must be retained for that separate refined calculation.
+
+\textbf{The actual torsion coordinate and complete fundamental-class
+invariant of the sixteen-component OS45 manifold}
+We use exactly the datum \eqref{maps:eq:D.PC3}, its period marking \eqref{maps:eq:D.PC5}, and the
+primitive free basis \eqref{maps:eq:D.PC10}. Put \(k=\mathbb Z/8\).
+There is a primitive torsion coordinate
+\(u\in H^2(X;k)\) whose complete cusp support is
+\[
+ \Psi(r,s)=4\left\lfloor r/8\right\rfloor
+       +3(r\bmod8)\left\lfloor s/2\right\rfloor
+                                      \quad\hbox{in }k.       \tag{D.OF1}\label{maps:eq:D.OF1}
+\]
+Here and below \(r\bmod8\) means the representative between zero and
+seven. The assertion includes the entire boundary cohomology class,
+including its coefficient-extension part. We prove this before using
+any support-function evaluations.
+
+\paragraph{The specified core cochain.}
+Use the actual degree-two core model of \ref{maps:src:D.2.46}. Its fibre cells are
+ordered
+\[
+ e_1e_2,\ e_1\delta,\ e_1\gamma,\ e_2\delta,\
+                                      e_2\gamma,\ \delta\gamma.
+\]
+For the six boundary monodromies, including the ordinary identity cap,
+let
+\[
+ D=(A_0-I,\ldots,A_4-I),\qquad K=\ker_{\mathbb Z}D.
+\]
+Choose the integral cycle basis and the integral left inverse \(K^+\)
+retained by the exact program. The ordinary degree-two cycles are the
+six fibre cells followed by this graph-cycle basis. The actual
+relation matrix \(M\) has twenty-three rows. If
+\(UMV\) is its stored Smith form, the unique nonunit factor is eight.
+Let \(\varphi\) be the negative of the corresponding row of \(U\).
+Then
+\[
+ \varphi M=0\pmod8,\qquad
+ \varphi|_{\Lambda^2\Lambda}=(1,0,0,0,0,0).                \tag{D.OF2}\label{maps:eq:D.OF2}
+\]
+Its value on the stored Smith torsion generator is \(-1\).
+This is already a primitive functional on the order-eight image of
+the core in \(H_2(X)\).
+
+We specify the cochain, rather than merely its homology functional.
+The inclusion \(K\subset\mathbb Z^{20}\) is primitive because it is
+the kernel of an integral map. Extend the graph row by
+\(\varphi_{\rm graph}K^+\), and use the fibre row in \eqref{maps:eq:D.OF2}.
+This gives a literal degree-two cochain on the core mapping-cylinder
+model. The degree-three boundary columns are the actual exterior
+monodromy relations, so \eqref{maps:eq:D.OF2} says that it is closed modulo eight.
+The fixed bar-prism comparisons in \ref{maps:src:D.2.46} identify this cochain with
+one on the actual torus bundle. In particular its restriction is not
+left unspecified by the possible \(2\)-torsion in \(H_1\) of the core.
+
+At the rank-two cusp the actual peripheral inclusion has graph
+matrix \(J=K^+J_{\rm raw}\). The retained cochain gives
+\[
+ \varphi_{\rm graph}J=(0,52,0,148)
+       \quad\hbox{on }(e_1,e_2,\delta,\gamma).             \tag{D.OF3}\label{maps:eq:D.OF3}
+\]
+The quadratic correction on each of these four basis loops is zero
+at this cusp. Thus the two long-strip constants are
+\[
+                      (c_1,c_2)=(4,4)\quad\hbox{in }k.   \tag{D.OF4}\label{maps:eq:D.OF4}
+\]
+The full Smith row, the chosen left inverse, and the actual
+peripheral matrices are reproducible by
+\path{code/III/maps_weighted_os45.py}. In particular \eqref{maps:eq:D.OF3} is not
+obtained by restricting only the regular-fibre alternating form.
+
+\paragraph{A full boundary comparison for finite-coefficient supports.}
+We give the comparison explicitly, since this cusp has torsion in
+its boundary \(H_1\). Let \(\widetilde N\) be the common universal
+cover of the triangular Mumford cusp and let
+\(\widetilde M\) be its boundary. Its normalized components are
+indexed by \(v\in\mathbb Z^2\). The boundary cover retracts to the
+three-torus generated by the two short angular loops and the positive
+\(q\)-meridian \(\theta\). \ref{maps:src:D.2.43} gives
+\[
+ H_1(\widetilde N;\mathbb Z)=0,\quad
+ H_2(\widetilde N;\mathbb Z)=I^2,\quad
+ \operatorname{im}\{H_2(\widetilde M;\mathbb Z)\to
+                         H_2(\widetilde N;\mathbb Z)\}=0. \tag{D.OF5}\label{maps:eq:D.OF5}
+\]
+Indeed the three boundary generators are the
+angular area and the two angular-normal tori, all with the actual
+bounding sweeps described there.
+
+The relative component Thom cochains identify
+\[
+ H^2(\widetilde N,\widetilde M;k)
+                  =\operatorname{Map}(\mathbb Z^2,k).
+\]
+One can obtain this directly from locally finite
+component chains: a degree-four locally finite cycle is an arbitrary
+family of fundamental cycles of the normalized components, and
+degree-four intersection strata do not occur. Equivalently,
+Poincare--Lefschetz duality uses Borel--Moore degree-four homology.
+No compact-support convention replaces the displayed product of
+coefficient groups by a direct sum.
+
+The positive meridian of component \(v\) is
+\(\theta+v_1e_1+v_2\delta\). Therefore the relative connecting map
+from \(H^1(\widetilde M;k)\) sends a covector \((c,m_1,m_2)\) to
+the affine function \(c+m_1v_1+m_2v_2\). By \eqref{maps:eq:D.OF5}, the relative
+sequence is exactly
+\[
+ 0\longrightarrow\operatorname{Aff}(\mathbb Z^2,k)
+ \longrightarrow\operatorname{Map}(\mathbb Z^2,k)
+ \longrightarrow H^2(\widetilde N;k)\longrightarrow0.     \tag{D.OF6}\label{maps:eq:D.OF6}
+\]
+Here \(\operatorname{Aff}\) consists of these three-parameter
+affine functions. This also identifies the quotient with
+\(\operatorname{Hom}(I^2,k)\), consistently with the actual
+normalization computation of \ref{maps:src:D.2.43}.
+
+Let the actual period lattice \(L\) act by translation on the
+argument \(v\). If a function \(\Psi\) satisfies
+\[
+                  \Psi(v+l)-\Psi(v)=a_l(v)
+                       \in\operatorname{Aff},           \tag{D.OF7}\label{maps:eq:D.OF7}
+\]
+its absolute class on \(\widetilde N\) is \(L\)-invariant.
+It descends to \(N_L\): in total degree two the covering
+cochain double complex has \(H^1(\widetilde N;k)=0\), and
+the only possible obstruction lies in \(H^3(L;k)=0\).
+The choices of descent form a torsor for \(H^2(L;k)=k\).
+
+There is a useful precise version of the boundary part of this
+argument. The boundary group is the split extension
+\[
+       \pi_1(M_L)=\mathbb Z^3\rtimes L,                    \tag{D.OF8}\label{maps:eq:D.OF8}
+\]
+where the normal \(\mathbb Z^3\) is generated by the two shorts
+and \(\theta\), and the two long loops give the specified splitting.
+Its dual module \(H^1(\widetilde M;k)\) is exactly
+\(\operatorname{Aff}\): evaluating a covector on
+\(\theta+v\) produces its affine function, and translating \(v\)
+gives the deck action.
+For boundary classes with zero restriction to \(\widetilde M\),
+the degree-two filtration is the short exact sequence
+\[
+ 0\longrightarrow H^2(L;k)\longrightarrow
+ \ker\{H^2(M_L;k)\to H^2(\widetilde M;k)\}
+ \longrightarrow H^1(L;\operatorname{Aff})\longrightarrow0.
+                                                               \tag{D.OF9}\label{maps:eq:D.OF9}
+\]
+The splitting of \eqref{maps:eq:D.OF8} kills the degree-two transgression;
+there is no degree-three group cohomology of \(L\).
+These two observations also prove \eqref{maps:eq:D.OF9} directly from the
+two-dimensional free resolution of \(L=\mathbb Z^2\).
+Restriction to the actual long two-torus splits its leftmost term.
+
+The image in the rightmost group of the boundary value of a
+descended support is represented by the full affine cocycle
+\(l\mapsto a_l\) in \eqref{maps:eq:D.OF7}. This follows either by chasing
+\eqref{maps:eq:D.OF6} in that resolution, or by choosing the relative Thom
+cochain \(\Psi\): its deck difference is the boundary one-cocycle
+whose value on \(\theta+v\) is precisely \(a_l(v)\).
+Thus the gradients, constants, and one long-torus value determine
+the entire boundary class. This statement retains every
+\(\operatorname{Ext}(H_1(M_L),k)\) ambiguity.
+
+In our positive fan convention a core cochain with short-long
+matrix \(E\), zero angular area and zero short-normal strip values
+has affine cocycle
+\[
+ a_{l_j}(v)=-E(v,b_j)+c_j,\qquad j=1,2,                  \tag{D.OF10}\label{maps:eq:D.OF10}
+\]
+where \(b_1=e_2,b_2=\gamma\) and \(l_j=(A-I)b_j\).
+For a direct verification, translate the marked \(\theta,b_j\)
+strip from component zero to component \(v\). Its change is the
+oriented short-long torus with value \(-E(v,b_j)\).
+The initial strip contributes \(c_j\). There is no additional
+angular-area term, since that coefficient is zero. The literal
+basis-loop prism correction is the one already included in
+\eqref{maps:eq:D.OF3}. This gives \eqref{maps:eq:D.OF10} at the cochain level, including
+its constant term.
+
+For \eqref{maps:eq:D.OF2}--\eqref{maps:eq:D.OF4}, \(E=\left(\begin{smallmatrix}1&0\\0&0
+\end{smallmatrix}\right)\). The required affine functions are
+therefore
+\[
+             a_{(8,-6)}=-r+4,\qquad a_{(24,-16)}=4.
+                                                               \tag{D.OF11}\label{maps:eq:D.OF11}
+\]
+The support \eqref{maps:eq:D.OF1} has exactly these differences.
+This is an identity for all integers, not a bounded numerical
+test: write \(r=8a+r_0,s=2b+s_0\) with \(0\le r_0<8\) and
+\(0\le s_0<2\), and substitute. The two differences are
+\(4-9r_0\) and \(12-24r_0\), respectively, which reduce to
+\eqref{maps:eq:D.OF11}.
+Choose the remaining descent parameter so its value on the
+actual long torus \(\langle e_2,\gamma\rangle\) is zero,
+as it is for \eqref{maps:eq:D.OF2}.
+Equations \eqref{maps:eq:D.OF9}--\eqref{maps:eq:D.OF11} now prove equality on the full
+cusp boundary, including both its finite-coefficient and
+integral-torsion contributions.
+
+For an independent check of the short-long marking, retain the
+actual annulus map from \ref{maps:src:D.2.43}, not only its augmentation.
+If \(x^py^q-1=(x-1)S_x+(y-1)S_y\), the angular vector \((a,b)\)
+closes to the \(I^2\)-class with coefficients
+\[
+             (aS_x,\ bS_x+aS_y,\ bS_y)                   \tag{D.OF12}\label{maps:eq:D.OF12}
+\]
+on \(((x-1)^2,(x-1)(y-1),(y-1)^2)\).
+Its literal Picard columns are
+\[
+ x^{-1}y^{-2}E_2+y^{-1}E_3,\quad
+       -x^{-1}y^{-1}E_2,\quad
+       x^{-1}E_1+x^{-2}y^{-1}E_2.                        \tag{D.OF13}\label{maps:eq:D.OF13}
+\]
+In the present positive component labels \(x\) translates by
+\((-1,0)\), and \(y\) by \((0,1)\); the path and angular exponents
+are changed simultaneously. Substituting \eqref{maps:eq:D.OF1} into all the
+shifted columns gives the integer values
+\[
+                         \begin{pmatrix}9&24\\0&0\end{pmatrix}
+                  \equiv E\pmod8.                       \tag{D.OF14}\label{maps:eq:D.OF14}
+\]
+The path dependence in \(S_x,S_y\) is exactly an
+Hilbert--Burch relation, so this checks the actual annulus
+marking rather than a rational replacement.
+
+\paragraph{Extension through the other caps.}
+Each of the four other multiplicative fibres has primitive
+rank-one monodromy. Its boundary \(H_1\) is free; so is the
+ordinary cap boundary \(H_1\).
+The regular-fibre specialization is onto the degree-two group
+of each such cap: in a primitive nodal marking this is the
+specialization from \(T^2\times T^2\) to
+\((S^2\vee S^1)\times T^2\); for the ordinary cap it is the
+identity on the central \(T^4\).
+Their actual degree-two boundary kernels
+are precisely the columns used in \(M\), including the
+ordinary cap's affine-meridian column.
+Equation \eqref{maps:eq:D.OF2} therefore makes the specified core cochain
+extend across each such cap. The free boundary \(H_1\)
+ensures that agreement of the resulting integral-cycle
+functional is agreement of the full finite-coefficient
+cohomology class. These choices and the cusp comparison
+glue to the asserted \(u\in H^2(X;k)\).
+Its torsion value is the unit \(-1\), unchanged from \eqref{maps:eq:D.OF2};
+we choose the opposite torsion generator to normalize it to one.
+Choose free lifts of the homology basis dual to \eqref{maps:eq:D.PC10}
+which are annihilated by \(u\). This fixes the splitting
+\[
+                         H_2(X)=\mathbb Z^{15}\oplus\mathbb Z/8
+                                                               \tag{D.OF15}\label{maps:eq:D.OF15}
+\]
+used for the fundamental-class coordinates.
+
+\paragraph{The complete coordinate values.}
+Let \(R_0,\ldots,R_5\) be the six positive fan rays in cyclic
+order and define the actual wall values
+\[
+ d_j(v)=\Psi(v)+\Psi(v+R_j)
+                    -\Psi(v+R_{j-1})-\Psi(v+R_{j+1}).
+\]
+An integral representative for \(u|_{P_v}\) is
+\[
+ \eta_v=(d_0+d_1+d_2)H-d_0E_1-d_2E_2-d_4E_3.             \tag{D.OF16}\label{maps:eq:D.OF16}
+\]
+Opposite wall restrictions agree modulo eight. Changes of integral
+representative by eight times a class preserve its square modulo
+sixteen. The full exact component table is retained in
+\path{records/maps_weighted_os45_mu.json}.
+
+For component labels \(i,j\), all mixed ordinary coordinates are
+specified without a long matrix display by
+\[
+ \begin{aligned}
+ \langle ux_i^2,[X]\rangle
+                    &=-\sum_{a=0}^{5}d_a(v_i)\pmod8,\\
+ \langle ux_ix_j,[X]\rangle
+                    &=\sum_{\{a:\ v_i+R_a=v_j\ {\rm mod}\ L\}}
+                                       d_a(v_i)\pmod8\quad(i\ne j),\\
+ \langle ux_i y,[X]\rangle
+                    &=(-1)^{s_i}\eta_i\cdot(H-E_1)\pmod8.
+ \end{aligned}                                             \tag{D.OF17}\label{maps:eq:D.OF17}
+\]
+The last value is four for component labels \(0,1,14,15\)
+and zero for the other twelve. These formulas use actual
+Cartier restrictions and retain the repeated vertical edges.
+On the primitive free basis \(x_0,\ldots,x_{13},y\), the remaining
+power coordinates are
+\[
+ \begin{split}
+ \langle\mathcal P_2(u)x_i,[X]\rangle&=7\pmod{16}
+                                             \quad(0\le i<14),\\
+ \langle\mathcal P_2(u)y,[X]\rangle&=0\pmod{16},\\
+ \langle u^3,[X]\rangle&=0\pmod8,\qquad
+ \langle uy^2,[X]\rangle=0\pmod8.
+ \end{split}                                               \tag{D.OF18}\label{maps:eq:D.OF18}
+\]
+The first line is \(\eta_i^2\) on the normalized component.
+The two omitted component labels have square fifteen modulo
+sixteen, consistently with their primitive-basis relations.
+The remaining three evaluations, including the full
+order-sixteen value which cannot be obtained by division,
+are proved in the following localization input.
+\textbf{The remaining finite-coefficient evaluations for OS45}
+Let $u\in H^2(X;\mathbb Z/8)$ be the actual primitive torsion
+coordinate constructed by the complete boundary comparison, with
+cusp support
+\[
+ \Psi(r,s)=4\left\lfloor\frac r8\right\rfloor
+       +3(r\bmod8)\left\lfloor\frac s2\right\rfloor
+                           \quad\pmod8.                  \tag{D.OL1}\label{maps:eq:D.OL1}
+\]
+Here $r\bmod8$ is the representative from zero to seven. This
+subsection uses that comparison on the whole cusp boundary;
+matching only the regular-fibre bilinear form would not suffice.
+The actual affine changes are
+\[
+ \Delta_{(8,-6)}\Psi=-r+4,\qquad
+ \Delta_{(24,-16)}\Psi=4\quad\pmod8.                     \tag{D.OL2}\label{maps:eq:D.OL2}
+\]
+In particular both have zero slope in the scalar $s$ direction.
+Let $y$ be the primitive class in \eqref{maps:eq:D.PC9}.
+We prove the three full evaluations
+\[
+ \langle u^3,[X]\rangle=0\pmod8,\qquad
+ \langle\mathcal P_2(u)y,[X]\rangle=0\pmod{16},\qquad
+ \langle uy^2,[X]\rangle=0\pmod8.                         \tag{D.OL3}\label{maps:eq:D.OL3}
+\]
+The second formula includes the order-two part which cannot be
+recovered by halving the sum of the component evaluations.
+
+The scalar circle action is semifree. Its fixed locus consists of
+the sixteen vertical toric curves $C_{r,s}$ joining vertices
+$(r,s)$ and $(r,s+1)$, with $(r,s)$ indexed as in \eqref{maps:eq:D.PC6}.
+Each has normal bundle $\mathcal O(-1)\oplus\mathcal O(-1)$
+with weights $1,-1$. In every other triangular toric chart the
+nonzero weights are also primitive. At each of the four zero-free
+$I_1$ caps the primitive angular collapsing vector has first
+coordinate one in its elliptic/scalar plane; the scalar circle
+therefore projects primitively to the transverse torus and is
+free. The ordinary torus cap is free as well. Thus there are no
+unrecorded finite-stabilizer strata in this localization.
+
+Since $X$ is simply connected, both $u$ and $y$ have circle-equivariant
+lifts. Indeed the only outgoing differentials from ordinary degree
+two in the Borel spectral sequence have targets involving
+$H^1(X)$ or $H^3(BS^1)$, both zero. Let $x$ be the positive
+generator of $H^2(C_{r,s};\mathbb Z)$ and let $t$ be the generator
+of $H^2(BS^1;\mathbb Z)$. Write
+\[
+ \widehat u|_{C_{r,s}}=d_{r,s}x+\lambda_{r,s}t,
+ \qquad
+ \widehat y|_{C_{r,s}}=\mu_{r,s}t.                         \tag{D.OL4}\label{maps:eq:D.OL4}
+\]
+There is no $x$ term in the second expression: \eqref{maps:eq:D.PC14} and
+$f\cdot C_{r,s}=0$ give $y(C_{r,s})=0$.
+
+For clarity the ordinary degrees and the fibre characters are
+computed separately. The degree of the support on a vertical wall is
+\[
+ d_{r,s}=\Psi(r,s)+\Psi(r,s+1)
+              -\Psi(r+1,s)-\Psi(r-1,s+1)\pmod8 .         \tag{D.OL5}\label{maps:eq:D.OL5}
+\]
+Choosing representatives from zero to seven gives
+\[
+\begin{array}{c|cc}
+ r&d_{r,0}&d_{r,1}\\\hline
+ 0,7&4&7\\
+ 1,\ldots,6&0&3.
+\end{array}                                                \tag{D.OL6}\label{maps:eq:D.OL6}
+\]
+The scalar fibre character supplied by the support is its vertical
+slope, up to a single common sign. Thus one may take
+\[
+                 \lambda_{r,0}=0,\qquad
+                 \lambda_{r,1}=3r .                      \tag{D.OL7}\label{maps:eq:D.OL7}
+\]
+This is periodic under the actual period lattice because of
+\eqref{maps:eq:D.OL2}. To justify the common character, rather than making a
+separate choice on each normalized component, compare along the
+actual toric orbit curves. Their degrees determine the differences
+of the characters at their fixed endpoints. Horizontal and diagonal
+orbit curves connect the sixteen fixed curves in a connected graph:
+they join $(r,s)$ to $(r+1,s-1)$ and to $(r-1,s)$ respectively.
+The support realizes all these differences. Consequently any global
+equivariant lift has the characters in \eqref{maps:eq:D.OL7}, with a common sign
+convention and one common additive character $L\in\mathbb Z/8$.
+No global integral line lifting $u$ is assumed.
+
+The integral component divisors have their canonical equivariant
+linearizations. Along $C_{r,s}$ the two adjacent component normal
+weights are $-1,+1$ in the lower/upper vertex order. Thus the weight
+of the odd-component sum in \eqref{maps:eq:D.PC9} is $+1$ for $s=0$ and $-1$
+for $s=1$. The difference
+$2\widehat y-\sum_r\widehat x_{r,1}$ is a global multiple $ct$.
+The existence of integral fixed-point weights forces $c$ odd;
+changing the lift of $y$ changes $c$ by an even integer. Normalize
+$c=-1$. Then
+\[
+                       \mu_{r,0}=0,\qquad
+                       \mu_{r,1}=-1.                     \tag{D.OL8}\label{maps:eq:D.OL8}
+\]
+Every other lift adds one common integer $V$.
+
+Each restriction of $\widehat u$ in \eqref{maps:eq:D.OL4} lifts integrally on
+$C_{r,s}\times BS^1$. Thomas's cochain formula therefore gives
+$\mathcal P_2(\widehat u)=(d x+\lambda t)^2$ with the full
+modulus sixteen \cite[equations (2.1), (3.4), pp.267--268]{ffThomas56}.
+The ordinary cube uses modulus eight. The equivariant normal Euler
+class is
+\[
+                           (-x+t)(-x-t)=-t^2.
+\]
+Localization is valid over these coefficient rings because the
+complement of the fixed locus is free and all normal weights are
+units. Taking the coefficient of $x$ after division by $-t^2$ gives
+\[
+ \begin{aligned}
+ \langle u^3,[X]\rangle&=-3\sum_{r,s}d_{r,s}\lambda_{r,s}^2
+                                                        &&\pmod8,\\
+ \langle\mathcal P_2(u)y,[X]\rangle
+       &=-2\sum_{r,s}d_{r,s}\lambda_{r,s}\mu_{r,s}
+                                                        &&\pmod{16},\\
+ \langle uy^2,[X]\rangle&=-\sum_{r,s}d_{r,s}\mu_{r,s}^2
+                                                        &&\pmod8.
+ \end{aligned}                                             \tag{D.OL9}\label{maps:eq:D.OL9}
+\]
+The degree-zero base ring injects into its localization, so these
+are identities before inverting $t$ as well.
+
+The representatives \eqref{maps:eq:D.OL6}--\eqref{maps:eq:D.OL8} satisfy the exact integer sums
+\[
+ \sum d_{r,s}=40,\qquad \sum d_{r,s}\lambda_{r,s}=336,
+ \qquad \sum d_{r,s}\lambda_{r,s}^2=5544,
+ \qquad \sum_r d_{r,1}=32.                               \tag{D.OL10}\label{maps:eq:D.OL10}
+\]
+The three values in \eqref{maps:eq:D.OL9} are consequently $-16632$, $672$,
+and $-32$, proving \eqref{maps:eq:D.OL3} with their full moduli.
+For completeness, under the replacements
+$\lambda\mapsto L+\epsilon\lambda$ and $\mu\mapsto V+\mu$,
+where $\epsilon=\pm1$, the exact values are
+\[
+ \begin{aligned}
+ -120L^2-2016\epsilon L-16632,\\
+ -80LV+64L-672\epsilon V+672\epsilon,\\
+ -40V^2+64V-32.
+ \end{aligned}                                             \tag{D.OL11}\label{maps:eq:D.OL11}
+\]
+Every coefficient is divisible by eight, sixteen, and eight,
+respectively. Thus the results are independent of all global
+linearization choices, not only of the displayed normalization.
+
+The same support gives all component mixed evaluations. For a
+vertex $v$, let $R_j$ be the six cyclic rays of \ref{maps:src:D.2.47} and put
+\[
+ d_j(v)=\Psi(v)+\Psi(v+R_j)
+                  -\Psi(v+R_{j-1})-\Psi(v+R_{j+1}).
+\]
+An integral representative of its component restriction is
+\[
+ \eta_v=(d_0+d_1+d_2)H-d_0E_1-d_2E_2-d_4E_3.
+                                                               \tag{D.OL12}\label{maps:eq:D.OL12}
+\]
+Changing the representative by eight times an integral class
+changes neither its square modulo sixteen nor any of its needed
+pairings modulo eight. In the primitive basis of \eqref{maps:eq:D.PC10},
+\[
+ \langle\mathcal P_2(u)x_i,[X]\rangle=7\pmod{16}
+                     \quad(0\le i<14),
+\]
+while the two omitted components $i=14,15$ have value fifteen.
+Also $\langle ux_i y,[X]\rangle$ equals four for $i=0,1,14,15$
+and zero for all the other component labels. The remaining
+$\langle ux_i x_j,[X]\rangle$ are exactly
+$\eta_i\cdot\nu_i^*D_j\pmod8$, with the explicit Cartier
+restriction in \ref{maps:src:D.2.47}. Together with \eqref{maps:eq:D.OL3} these determine the
+finite-coordinate evaluations once the support comparison is
+established.
+
+The exact program
+\path{code/III/fourfolds_OS45_localization.py}
+retains every wall value and every $\eta_v$, verifies the actual
+quasiperiods on all sixteen residues, and proves the six
+all-character polynomial divisibility identities \eqref{maps:eq:D.OL11}.
+It explicitly records the required geometric support comparison
+as a separate hypothesis.
+
+In particular \(y^2=0\) integrally. Its free part is zero by
+\eqref{maps:eq:D.PC12}, and its torsion part is detected injectively by the
+primitive \(u\); the last equality of \eqref{maps:eq:D.OF18} kills that part.
+
+Finally \ref{maps:src:D.2.48}'s primary coefficient-group calculation and
+the integral Kunneth decomposition give
+\[
+ H_6(K(\mathbb Z^{15}\oplus\mathbb Z/8,2);\mathbb Z)
+       =\mathbb Z^{680}\oplus(\mathbb Z/8)^{120}
+                         \oplus(\mathbb Z/16)^{15}
+                         \oplus\mathbb Z/8.              \tag{D.OF19}\label{maps:eq:D.OF19}
+\]
+The free coordinates are exactly the primitive integral cubic
+\eqref{maps:eq:D.PC11}--\eqref{maps:eq:D.PC12}. Equations \eqref{maps:eq:D.OF17}--\eqref{maps:eq:D.OF18} give all
+remaining coordinates: the first mixed group is detected by
+\(ux_ix_j\), the second by the full Pontryagin square, and the
+last by \(u^3\). Hence this determines the complete
+fundamental-class invariant \(\mu\), not merely its image
+under ordinary triple cup products.
+The refined class remains a separate \(0\) versus \(4\)
+calculation until the actual odd middle-dimensional generator
+and its reference framing have been evaluated.
+
+\path{code/III/maps_weighted_os45_mu.py} checks the exact Smith
+cochain, both full affine strip constants, all sixteen wall
+restrictions, the full shifted annulus map, every primitive
+mixed entry and the complete moduli in \eqref{maps:eq:D.OF18}.
+The independent fourfolds programs check all primitive cubic
+entries and all-character localization identities.
+\end{enumerate}
+\end{proof}

@@ -1,0 +1,297 @@
+\begin{theorem}\label{night:P1.19}
+\StatementRecord{night:P1.19}{proved}{}{\cref{night:P1.11}, \cref{night:P1.12}, \cref{night:P1.9}; \cite[Theorem~3.43, p.~254]{Hatcher2002}}
+There is an independent computation from the full global cellular
+complex.  Its chain ranks in degrees zero through eight are
+\[
+ (4,26,87,162,200,156,79,23,3),
+\]
+and its differentials, after the explicit integral chain equivalences
+below, are the matrices in
+\path{code/current_audits/audit_corrections/code/reconstruct_V_global_06.json}.
+The accompanying program reconstructs them from the displayed marked
+maps; the separate saved-output verifier supplies their integral
+cycle and incoming-map checks and the basis comparisons below.
+Their integral Smith calculation gives
+\[
+ H_k(M;\mathbb Z)=
+ \begin{cases}
+ \mathbb Z,&k=0,8,\\
+ \mathbb Z^4,&k=4,\\
+ 0,&\text{otherwise}.
+ \end{cases}
+\]
+This calculation uses local Poincar\'e--Lefschetz duality of the
+smooth cusp cap to determine its secondary attaching class.  It does
+not use global Poincar\'e duality or the homology conclusion of P1.12.
+In particular, the map obtained by setting the whole cusp suspension
+chain term to zero is not the actual relative cusp model; its precise
+missing term is accounted for here.
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label=\arabic*.]
+\item We retain the actual complement complex and finite-cap maps of P1.12.
+The issue left by that argument was the full cusp boundary map.
+We first determine its homology maps, then its secondary chain term,
+and finally give the explicit integral reduction used by the program.
+
+\item Write the cusp lattice as $A\oplus B$, with ordered generators
+$a_1,a_2,a_3,b_1,b_2,b_3$ and $Nb_i=a_i$.
+The boundary is the mapping torus of
+\[
+ (b,a)\longmapsto(b,a+b)
+\]
+on $T_B^3\times T_A^3$.
+For the pure toric model, its retraction to the central moment model
+has the following explicit description.  On the dual cell of a Kuhn
+simplex $\sigma$, choose any vertex $v$ of $\sigma$ and put
+\[
+ (b,a,\theta)\longmapsto
+   [b,a+\theta(b-v)],\qquad0\leq\theta\leq1.
+\tag{1.19.1}
+\]
+The brackets denote the angular quotient by $L_\sigma$.
+Changing $v$ changes the displayed angular coordinate by a real
+multiple of a vector in $L_\sigma$, so the map is unchanged.
+Replacing $b$ by $b+n$ also replaces $v$ by $v+n$; hence the formula
+is periodic.  At $\theta=1$ the integer translation $v$ disappears
+on the angular torus, and the map agrees with the cusp monodromy
+identification.  These observations prove that (1.19.1) is well-defined
+on the boundary mapping torus.  In a monomial chart of P1.9 it is
+exactly the operation of forgetting the arguments of the vanishing
+coordinates, with the argument of $q$ recorded by $\theta$.
+Thus it is the actual boundary retraction.  The deformation removing
+the bounded period units in P1.11 transports this map by a homotopy
+and preserves its homology class.
+
+\item We prove that the suspension classes have zero image in cusp homology.
+Let $D$ be the derivation of $\bigwedge^\bullet(A\oplus B)$ extending
+$Nb_i=a_i$, $Na_i=0$.  Then $\bigwedge M_0=\exp D$ and
+$\ker(\bigwedge M_0-I)=\ker D$ over $\mathbb Q$.
+An integral vector in this kernel has the same property.
+The summand with $p$ base generators and $q$ angular generators is
+sent by $D$ to the summand with $(p-1,q+1)$; consequently each
+homogeneous summand of an invariant vector is separately killed.
+Let $E$ replace $a_i$ by $b_i$. In the orthonormal exterior basis
+$E=D^t$ and $[D,E]=(q-p)I$ on that summand.  For $Dv=0$,
+\[
+ (q-p)\|v\|^2
+ =\langle[D,E]v,v\rangle=\|Ev\|^2\geq0.
+\]
+Thus an invariant $k$-cycle has base degree at most $\lfloor k/2\rfloor$.
+
+\item This assertion about cycles can be realized geometrically, rather
+than only in a rational associated graded group.  Give $T_B^3$ its
+minimal product CW structure and put
+$F_p=T_A^3\times(T_B^3)^{(p)}$.
+Its cellular differential is zero, so
+$H_*(F_p;\mathbb Z)\to H_*(T^6;\mathbb Z)$ is injective.
+The shear preserves $F_p$ and admits cellular approximation through
+maps preserving this filtration.  The corresponding mapping-cylinder
+cells give the integral complex
+$\operatorname{Cone}(\bigwedge M_0-I)$.
+An invariant cellular vector of base degree at most $p$ therefore
+has a suspension lift whose entire projection to $T_B^3$ has dimension
+at most $p$.  Equivalently, its closing boundary already bounds in
+$F_p$, by the just-proved injectivity.  This construction fixes the
+suspension representatives used in the Wang complex and is compatible
+with the based product-cell comparison in P1.12.
+
+\item Formula (1.19.1) preserves $b$, so the image of such a lift also has
+base projection of dimension at most $p$.  It represents filtration
+at most $p$ in the dual-cell filtration of P1.11.  Here is a direct
+cellular justification of this last step.  In every dual cell of
+dimension greater than $p$, choose an interior point outside that
+projection.  Radial retraction from this point pushes the projected
+cycle to the cell boundary.  On the central moment model it lifts
+by keeping the angular coordinate fixed; on the boundary the angular
+quotient is the canonical further quotient.  The lift is continuous
+and fixes the boundary.  Performing these retractions in descending
+cell dimension gives a homologous cycle on the dual $p$-skeleton.
+There are finitely many cells modulo periods, so this operation
+terminates.
+
+\item The integral $E_2=E_\infty$ table of P1.11 has nonzero entries only
+at angular degree $q\leq d$, where $d$ is the base-cell degree.
+For a suspension of a $k$-cycle, the total degree is $k+1$, whereas
+$d\leq p\leq\lfloor k/2\rfloor$. Its angular degree would therefore
+be $k+1-d>d$, where that table is zero.  The suspension image
+vanishes.  On the fibre summand the map is precisely the marked
+collapse $\kappa_k$ reconstructed in
+\path{code/current_audits/audit_corrections/code/reconstruct_V_cusp_06.json}.
+Its source basis is $(a_1,a_2,a_3,b_1,b_2,b_3)$; the actual matrix $S$
+from P1.7 changes it to the original lattice by
+$\kappa_k^{\rm orig}=\kappa_k\bigwedge^kS^{-1}$.
+These transported matrices are included in the global reconstruction.  Thus the homology maps agree
+with those of the chain map $f_0=(\kappa,0)$, in every degree.
+
+\item Agreement on homology does not identify these two chain maps.
+We now determine the remaining difference.  Integral Smith reduction
+splits a finite free complex into free homology generators, contractible
+unit pairs, and two-term pairs with differential equal to a torsion
+invariant factor.  The cusp homology is free.  The boundary homology
+has just one torsion group, $\mathbb Z/2$ in degree three.
+Consequently, after maps on homology have been fixed, the difference
+of two maps from the boundary complex to the cusp complex is
+represented by one vector
+\[
+ \varepsilon\in H_4(C;\mathbb Z)/2H_4(C;\mathbb Z)
+                 \cong(\mathbb Z/2)^{10}.
+\tag{1.19.2}
+\]
+This follows directly by applying a map to the upper generator of
+the two-term pair $\mathbb Z\xrightarrow{2}\mathbb Z$; changing a
+chain homotopy changes its image by twice an integral vector.
+There are no other secondary terms.  Thus no rational formality or
+unproved equivariant formality is used at this point.
+
+\item In the marked cusp degree-four basis, the primitive functional
+\[
+ \psi=(1,-1,1,1,-1,-1,1,0,0,0)
+\tag{1.19.3}
+\]
+annihilates $\kappa_4$ and identifies its cokernel with $\mathbb Z$.
+The exact multiplication $\psi\kappa_4=0$ and the primitive Smith
+factors are checked in the global reconstruction.  Setting
+$\varepsilon=0$ gives relative cusp homology
+$H_4(C,\partial)=\mathbb Z^{10}\oplus\mathbb Z/2$.
+The two-term Smith-pair splitting in the preceding item gives this
+split extension directly.  The saved-output verifier also constructs
+the relative cone and checks its degree-four integral homology.
+More intrinsically, the relative exact sequence in this degree is
+an extension of $\mathbb Z^9\oplus\mathbb Z/2$ by the cokernel
+$\mathbb Z$ detected by $\psi$.  Its torsion extension class is
+exactly $\psi\varepsilon$ modulo two.
+
+\item The actual cusp neighborhood is a compact oriented smooth
+8-manifold with boundary: take the inverse image of a sufficiently
+small closed disc, whose boundary circle avoids the critical value.
+Let $\rho$ be its retraction onto $C$.  Pullback by $\rho$, followed
+by cap product with the relative fundamental class of this actual
+oriented cusp cap, is the isomorphism of
+\cite[Theorem~3.43, p.~254]{Hatcher2002}, with $n=8$, $k=4$,
+$R=\mathbb Z$, $A=\varnothing$ and $B=\partial$.
+The already computed free cusp homology therefore gives
+\[
+ H_4(\text{cusp cap},\partial;\mathbb Z)
+       \cong H^4(C;\mathbb Z)=\mathbb Z^{10}.
+\]
+The preceding extension must therefore be nonsplit on its torsion
+summand.  This determines the required secondary class for the global
+calculation:
+\[
+                 \psi\varepsilon=1\pmod2.
+\tag{1.19.4}
+\]
+This also proves the stated failure of the wholly zero suspension
+chain map as a relative cusp model.
+
+\item We next give the integral equivalence which reduces every class
+satisfying (1.19.4) to one displayed matrix.  Write the degree-four
+homology gluing map in the plus-sign convention as
+\[
+ j_4:H_4(\partial)\longrightarrow H_4(Y)\oplus H_4(C).
+\]
+Multiplication by $-1$ on the cusp chain summand is the chain
+isomorphism from the minus-sign convention in the exported whole
+diagram to this convention.  The matrix $j_4$ is $22$ by $18$,
+has rank eighteen, and all its nonzero Smith factors are one.
+Its cokernel is free of rank four.  The saved-output verifier exports
+the actual boundary cycle basis and complement homology projection
+used to form $j_4$.  Write $U_4j_4V_4$ for its exported Smith reduction;
+take the last four rows of $U_4$ and interchange their first and
+fourth rows.  This is the explicitly verified unimodular cokernel
+adapter.  In the resulting cokernel basis the map from $H_4(C)$ is
+\[
+ \begin{pmatrix}0\\0\\0\\\psi\end{pmatrix}.
+\tag{1.19.5}
+\]
+This is a direct integer matrix calculation, independent of the
+homology of $M$.
+
+\item Let $e_4$ denote the fourth coordinate vector of $\mathbb Z^{10}$,
+so $\psi e_4=1$.  The nine columns
+$e_i-\psi_i e_4$, $i\ne4$, form an integral basis $K$ of $\ker\psi$;
+$[e_4,K]$ is unimodular.  The saved-output verifier gives the exact
+unimodular change from the Smith kernel basis to these nine columns,
+and exports the resulting integral lifts $W$ satisfying
+\[
+ j_4W=\begin{pmatrix}0\\K\end{pmatrix}.
+\]
+It also gives actual boundary cycles $X$ representing these lifts,
+and integral complement chains $T$ with
+\[
+ d_YT=j_YX,\qquad f_0X=K.
+\tag{1.19.6}
+\]
+Every entry is checked by multiplication in the program.
+
+\item For clarity, the chain automorphisms implementing the reduction
+are equally explicit.  Let $r$ be the exported integral degree-four
+cocycle representing the torsion generator in $H^4(\partial;\mathbb Z)$.
+In the ordered boundary group
+$B_{0,4}=\bigwedge^4\Lambda\oplus\bigwedge^3\Lambda$, with each
+exterior basis lexicographically ordered in the original lattice,
+it is
+\[
+r=e_{29}^{t}+e_{30}^{t}+e_{31}^{t}
+  -e_{32}^{t}-e_{33}^{t}-e_{34}^{t}+e_{35}^{t}.
+\]
+The verifier checks that it is not an integral coboundary by the
+augmented rank obstruction modulo two.  It satisfies
+\[
+ r d_{\partial,5}=0,\qquad rX=0,
+ \qquad 2r=t\,d_{\partial,4},
+\tag{1.19.7}
+\]
+where the integral row $t$ is exported as well.
+For a column $v\in\mathbb Z^9$, the endomorphism
+$\eta=(Xv)r$ of degree-four boundary chains, zero in all other
+degrees, is a chain map and has $\eta^2=0$.
+Thus $I+\eta$ is an integral chain automorphism with inverse
+$I-\eta$. Precomposing the attaching map by it changes the
+secondary vector by $Kv$, up to the explicitly given homotopy
+$(Tv)r$ in the complement, by (1.19.6).
+The last equation in (1.19.7) removes an even multiple of $e_4$
+by the homotopy $e_4t$.  Decomposing $\varepsilon$ in the
+unimodular basis $[e_4,K]$, equation (1.19.4) therefore reduces
+the actual global attaching map to the canonical correction
+\[
+ f_4=f_{0,4}+e_4r,
+ \qquad f_k=f_{0,k}\quad(k\ne4).
+\tag{1.19.8}
+\]
+These formulas prove the chain equivalence; they do not merely
+compare the ranks of the two complexes.
+
+\item The reconstruction program inserts (1.19.8) into the complete
+main-piece/three-cap mapping cone, retaining every finite-cap
+differential and every boundary map of P1.12.  It checks $d^2=0$
+over $\mathbb Z$ and exports every differential.  The corrected case
+is the actual global model by the preceding explicit chain
+equivalence.
+
+The separate saved-output verifier checks the integral inverse
+matrices and cycle bases, the incoming matrices in those bases, and
+their Smith left and right matrices.  It verifies the outgoing ranks
+by their displayed integral kernels and exact rank witnesses modulo
+$1009$.  It also exports the actual $W,X,T$ maps in the literal $K$
+basis, checks every identity in (1.19.6)--(1.19.7), and verifies both
+relative cusp degree-four groups.  The even case is recomputed as
+an unused diagnostic and gives the same global homology; its local
+relative torsion retains the distinction needed in item~9.
+The differential ranks in degrees one through eight are
+\[
+                 (3,23,64,98,98,58,21,2).
+\]
+All nonzero incoming Smith factors in the cycle lattices are one.
+Subtracting incoming and outgoing ranks from the displayed chain
+ranks gives $(1,0,0,0,4,0,0,0,1)$, with no torsion.
+The exact saved files are
+\path{code/current_audits/audit_corrections/code/reconstruct_V_global_06.py},
+\path{code/current_audits/audit_corrections/code/reconstruct_V_global_06.json},
+\path{code/current_audits/audit_corrections/code/verify_V_global_saved_07.py}
+and its JSON output.  This completes the full cellular comparison
+without using the global duality conclusion of P1.12.
+
+\end{enumerate}
+\end{proof}

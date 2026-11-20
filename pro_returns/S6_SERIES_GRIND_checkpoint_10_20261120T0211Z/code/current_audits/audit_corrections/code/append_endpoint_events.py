@@ -1,0 +1,24 @@
+from pathlib import Path
+import csv,hashlib
+root=Path(__file__).resolve().parents[1]
+p=root/'CHECK_EVENTS.tsv'
+with p.open(newline='') as f:
+ reader=csv.DictReader(f,delimiter='\t'); fields=reader.fieldnames; rows=list(reader)
+who='GPT-6 Astra (OpenAI), ChatGPT Pro mode, reasoning effort inherited from root (not separately exposed), S6_SERIES_GRIND/corrections_audit'
+def add(label,kind,outcome):
+ d={'statement_id':label,'date':'2026-11-19','who':who,'type':kind,'outcome':outcome,'phase':'S6_SERIES_GRIND'}
+ d['event_id']='s6sg:'+hashlib.sha256((label+'|'+kind+'|'+outcome).encode()).hexdigest()[:20]
+ if not any(q['event_id']==d['event_id'] for q in rows): rows.append(d)
+scopes={
+ 'night:P3K.109':'Read the complete EF.1–8 proof at cp15 IV89945–90844: actual meromorphic base, point-theta/full cochain, nonzero Abel class, primitive lattice, centralizer, completed negative fixed curve, actual source/cover lifts, integral section lattice, full s=1 M6 specialization, both cap and annular arrows. No unresolved mathematical gap identified within the exact U locus and retained K96/F35/F46 inputs; mathematical continuation gate closed. Duplicate historical audit files are retained inputs, not newly executed certificates.',
+ 'night:P3K.110':'Read the complete SEF.1–6 and NE.1–4 proof at cp15 IV90908–91563. Verified the entire finite-source coefficient and target source arguments, good-root Cartier comparison, finite character square, three chronological scalar phases, full reference restoration, winding necessity, genuine single-valued lifts and arbitrary n+m*nu obstruction including m=2. Mathematical continuation gate closed at the exact fixed-source/cap scope.',
+ 'night:P3K.113':'Read all EB, EBR and EBP supporting proofs at cp15 IV102486–103539. Verified the complete integral primitive kernel, cyclic-cover/physical-line transport and explicit affine inverse before using j. The actual marked-node parameter transport and full source/root/character/reference continuation cover precisely r outside{0,1/4,1/3}. Mathematical continuation gate closed; no new numerical return claimed.',
+ 'night:P3K.114':'Read the complete primary R0E.1–11 proof at cp15 IV103597–105001, including both original III components, tangency and point/O graphs, full M6 line coefficient, source lattice, degree-one elliptic quotient, both infinity-root families and all signed endpoints. Traced the reference-zero Cauchy solve to K96 EX.18 at43190–43235: the residual vanishes at the reference parameter as a whole cochain. Mathematical continuation gate closed at the inherited order-one norm-zero III filling; retained complete peer audits remain credited, without claiming a fresh read of each duplicate printed peer proof.'}
+for lab,text in scopes.items(): add(lab,'targeted proof check',text)
+for lab in scopes:
+ add(lab,'computation or formal certificate','Fresh code/audit_corrections code file independent_IV_endpoint_checks.py, importing no supplied verification code, passed25,796 exact assertions shared across K109/110/113/114. Output independent_IV_endpoint_checks.json retains every assertion and the script hash. It rederives discriminant, j and centroid polynomials, marked-source inverse, 2G/3G chords and Lie coefficient, the full pre-specialized s=1 M6 coefficient, ten-class Gram determinant, arbitrary-central-cochain multiplication/centralizer identities, full unit inversion charts, and signed endpoint/annular exponents. It does not replace analytic extension or covering proofs. The slow first symbolic-substitution attempt was interrupted and its exact code/status preserved in code/attempts_endpoint_checks; the simplified second route completed in5.003 seconds.')
+add('night:P3K.109','independent re-proof','Scoped independent block derivation only: after reading the actual EF.18 input matrix and before reading the printed full centralizer solution, IV_K109_centralizer_prereading.md derived X=eI+c*delta*psi from the primitive invariant flags, elliptic centralizer and nonzero Abel class, including the dual equation and integral scalar restriction. It also proved the preserved primitive-kernel/physical-line transport. This is not a claimed new independent proof of all EF sections.')
+add('night:P3K.113','independent re-proof','Scoped before-reading derivation in IV_open_prereading.md: independently computed j_r(t), the three distinguished orders and their noncancellation, proving the three-fixed-point base rigidity once the actual primitive elliptic-quotient bridge is supplied; the initially unresolved bridge was explicitly recorded, then verified against the complete EB/EBR/EBP affine and integral lattice maps. No inference from matching rational invariants alone is made.')
+with p.open('w',newline='') as f:
+ w=csv.DictWriter(f,fieldnames=fields,delimiter='\t');w.writeheader();w.writerows(rows)
+print(len(rows),'typed events retained')
