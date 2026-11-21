@@ -1,0 +1,72 @@
+# Independent derivation: 02WO / night:P4.17
+
+The target proof and prior programs are unopened. Inputs are the exact statement and the P4.16 statement supplied with it. I derive the full affine fundamental group and integral intersection lattice, then the local exclusion, rather than assuming the calculation from that cited special case.
+
+## 1. An explicit affine open cover and integral homology
+
+Fix a≥2,n≥1 and let `M={x^a-z y^n=1}`. It is smooth: when y≠0 its z derivative is nonzero, and when y=0 the equation gives x^a=1 and its x derivative is nonzero. Let ζ_1,...,ζ_a be the distinct roots of 1, in circular order. The fibre y=0 consists of the disjoint affine lines L_i={x=ζ_i,y=0}. Let U_i be M with the other a-1 lines removed.
+
+Each U_i is biholomorphic to C² with coordinates (y,u_i), by
+
+    x=ζ_i+y^n u_i,
+    z=sum from k=1 to a of binom(a,k) ζ_i^(a-k) y^(n(k-1)) u_i^k.
+
+The inverse is `u_i=(x-ζ_i)/y^n` where y≠0. Near L_i it is the holomorphic function `z/P_i(x)`, where `P_i(x)=(x^a-1)/(x-ζ_i)` is a unit near x=ζ_i. These formulas agree by the defining equation, so this is a global inverse on U_i. Any two or more U_i intersect in the same open set V={y≠0}, which is C*×C in coordinates (y,x). The transition is `u_j=u_i+(ζ_i-ζ_j)y^-n`.
+
+Starting with U_1 and adding U_2,...,U_a, each union is an open union along the connected V. Van Kampen makes every such union simply connected, since each U_i is simply connected and the map from π1(V) into either simply connected piece is zero. Thus π1(M)=0.
+
+For homology, H1(V)=Z and all Hq(V) for q≥2 vanish. The Mayer–Vietoris sequence at the k-th addition gives
+
+    0→H2(U_1∪...∪U_(k-1))→H2(U_1∪...∪U_k)→Z→0.
+
+The first union has H2=0, so H2(M) is free of rank a-1. The same sequences give Hq(M)=0 for q≥3. The explicit spheres below map to the successive positive or negative generators of these Z quotients, fixing an integral basis rather than merely a full-rank sublattice.
+
+## 2. Matching spheres in the degree-one surface
+
+Write Q={x^a-vz=1}, and put P(x)=x^a-1. Choose the consecutive polygonal edges γ_i from ζ_i to ζ_(i+1), for 1≤i<a. Their interiors are disjoint and avoid all roots. Above each edge take
+
+    x∈γ_i,   |v|=|z|=sqrt(|P(x)|),   v z=P(x).
+
+This is a circle over the interior of the interval, collapsing at each endpoint, hence a sphere K_i. At an endpoint, in the surface coordinates (v,z), it is a smooth graph `z=c conjugate(v)+higher terms` with nonzero c, so the sphere is smoothly embedded. The parameterization `v=r(s)e^(iθ)`, `z=r(s)e^(i(arg P(γ_i(s))-θ))` shows directly that the two fibre terms of the standard Kähler form cancel; the base coordinate depends only on s. Thus K_i is Lagrangian. The complex structure identifies its normal bundle with its tangent bundle with the opposite Euler orientation, so K_i²=-2.
+
+Nonconsecutive edges give disjoint spheres. Consecutive spheres meet only at their common root. Their graph tangent planes have distinct phase coefficients and intersect transversely. Choose the orientation of K_1, then orient each consecutive sphere so that the local intersection is +1. Thus the intersection matrix of `(K_1,...,K_(a-1))` has diagonal -2, adjacent entries +1 and other entries0. This is the negative of the A_(a-1) Cartan form, with this explicit basis and orientation convention.
+
+## 3. Pullback by the exact finite map and the lattice basis
+
+There is a finite proper holomorphic map
+
+    p_n:M→Q,        (x,y,z)↦(x,v=y^n,z),
+
+of degree n, branched along the disjoint lines {v=0,x=ζ_i}. The inverse image Σ_i of K_i is a smooth sphere. Over the open edge the phase of y gives one circle, and at either endpoint the local equation is a graph `z=c conjugate(y)^n+higher terms`; the graph is smooth with real parameter y. The map Σ_i→K_i is a cyclic degree-n cover branched at its two endpoints. Its normal map is an isomorphism onto the pullback normal bundle: at a branch endpoint the z direction gives an isomorphism on the normal quotients; elsewhere p_n is a local diffeomorphism. Thus the preimage sphere represents the pullback of the compactly supported Poincaré dual of K_i.
+
+More explicitly, let α_i∈H_c²(Q;Z) be the dual of K_i. The dual of Σ_i is p_n*α_i. For all i,j the proper-degree integration formula gives
+
+    Σ_i·Σ_j = integral_M p_n*(α_i cup α_j)
+             = n integral_Q α_i cup α_j
+             = n(K_i·K_j).
+
+This computes the same actual compact cycles, including the adjacent intersections at branch points. Their Gram form is therefore `A_(a-1)(-n)`, with diagonal -2n and adjacent entries n.
+
+To prove these classes are an integral basis, use the open cover from §1. The sphere Σ_i lies in U_i∪U_(i+1). Cutting it along an interior matching circle gives its Mayer–Vietoris boundary in H1(V). The coordinate y traverses that circle once, so this boundary is a generator of H1(V)=Z. At the successive union of U_1,...,U_k, the class Σ_(k-1) therefore maps to a generator of the new Z quotient. Induction proves that all Σ_i form an integral basis of H2(M). This rules out a hidden finite index in the asserted lattice.
+
+The determinant of the negative Cartan form is `(-1)^(a-1) a`. Indeed the determinant of its positive form in rank r obeys D_r=2D_(r-1)-D_(r-2), D_0=1,D_1=2, hence D_r=r+1. Scaling by n gives `(-1)^(a-1) a n^(a-1)`, which is nonzero. Each basis sphere already has the nonzero square -2n.
+
+## 4. Exclusion in every common multiplicity
+
+The polynomial `g=x^a-zy^n` has positive weights `(n+1,a,a)` and degree D=a(n+1). A local fibre equation with common multiplicity m is `F=u g^m`. A holomorphic root `lambda=u^(1/(mD))` gives the local biholomorphism `phi(x_j)=lambda(x)^(w_j)x_j`; its derivative is invertible and `(g∘phi)^m=F`. Thus the unit is absorbed by this exact coordinate map.
+
+Weighted scaling by a small positive ε sends g=1 to g=ε^D and shrinks every chosen compact sphere and normal neighbourhood into the coordinate ball. Composition with phi^-1 puts that sphere in the actual nearby torus fibre F=ε^(mD), preserving its square -2n. The universal cover C² of a complex two-torus makes its π2 zero. The embedded spherical class becomes zero in global H2, whereas extension of its compactly supported dual preserves the nonzero intersection number. This contradiction excludes the germ for every a,n,m. This argument is the same actual map used for the a=2 special case, now with the complete integral lattice proved.
+
+## 5. The named cyclic and singular-normalization cases
+
+For a=n=3 the central germ is `x³-zy³=0`. Its normalization is the explicit finite birational map `(y,t)↦(yt,y,t³)`: t is integral because t³=z and belongs to the original meromorphic field as x/y. The conductor curve y=0 maps by t↦t³, realizing the stated order-three cyclic ramification.
+
+The assertion includes genuinely singular normalizations. For example a=4,n=2 gives `x⁴-zy²=0`. Adjoin u=x²/y, which satisfies u²=z. The normalization is the finite birational map
+
+    {v²=u w}→{x⁴=zy²},       (u,v,w)↦(x=v,y=w,z=u²).
+
+Its source is normal by the S2 property of a hypersurface and regularity in codimension1; its only singular point is the origin. It is therefore the normalization and is singular there. This proves the stated coverage through an explicit finite morphism.
+
+## Fresh arithmetic
+
+The prerelease program `S6_SERIES_PUBLISH_II_A_group05_local_certificate.py` independently checks the affine chart identities in the residue ring Z[ζ,y,u]/(ζ^a-1), constructs the intersection matrices from edge vectors e_i-e_(i+1), and evaluates their determinants by fraction-free elimination. Its finite tested range is a=2,...,9 and n=1,...,5; the proofs above establish the all-parameter formulas. The program and output are hash-bound in the group05 computation receipt. No old proof or old routine has been read.

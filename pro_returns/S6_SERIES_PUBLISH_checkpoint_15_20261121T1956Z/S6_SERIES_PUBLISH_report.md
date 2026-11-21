@@ -532,3 +532,11 @@ Exhaustive snapshot: `records/S6_SERIES_PUBLISH_progress_review_08.json`.
 | III | 25 | 1 | 128 | 1 |
 | IV | 25 | 1 | 66 | 1 |
 | V | 0 | 0 | 0 | 0 |
+
+## Execution workspace recovery — 2026-11-21, 19:52 UTC
+
+The execution workspace reset between the last verified edits and 19:51 UTC. The previously used runtime directory disappeared; no deletion was requested or performed. Checkpoint 14 was retrieved by its already recorded delivery identity and its complete SHA-256 matched `5bd2e46d17af86c0561754d0ffe832444a98ce8f32f9676e0104f3180b19bae4`. All 9,013 archive entries were restored and byte-verified. Twelve files written after the reset survived separately and were preserved before extraction. The original attached base archive was re-materialized by its known identity and all base-manifest rows reverified.
+
+The current durable canonical state is the delivered checkpoint 14 state: Paper I complete; Paper II has 19 of 197 required checks admitted, 126 logged source edits, and 7,987 total check-event rows. The later historical state reached 36 admitted II checks and 325 source-edit rows, but those later local bytes are missing. Reconstructed records will identify their new timestamps and will not be represented as byte-identical historical receipts. Missing post-checkpoint source changes and checks will be restored only after explicit validation against retained evidence. No new mathematical-check, page-reading or progress-row credit is created by recovery. The five-paper task remains INCOMPLETE.
+
+Checkpoint 14 remains the successfully delivered archive of 215,002,463 bytes, with durable identity `libfile_98f0097832b48191a1f572ff59988b3c`. Its delivery happened after archive creation and therefore its delivery receipt was not in the archive itself. This paragraph records the retained delivery evidence without recreating an old receipt.
