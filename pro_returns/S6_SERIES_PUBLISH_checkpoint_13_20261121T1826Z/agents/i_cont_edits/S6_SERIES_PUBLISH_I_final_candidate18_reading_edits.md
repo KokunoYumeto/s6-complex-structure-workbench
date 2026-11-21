@@ -1,0 +1,208 @@
+# Paper I candidate18 actual page reading — edits reader
+
+Source SHA-256: `3542f2632cad8f1eb78f0f30f8a64ca91998f3bd1d97010ca76d89297c4bffe7`
+PDF SHA-256: `702aaa0abd1a4d8376e213ecaf03a0296592e22063f26db324d805502987e66e`
+Reading JSON SHA-256: `55a02a28222b270d0b06d2ebf377adb4ab10e22cf697b0053411aa3d483244e3`
+
+All 33 complete rendered page images, pages 213–245, were actually viewed and read. Source edits and independent mathematical check events: zero. The reading JSON is immutable; later guard decisions are separate addenda.
+
+Pending contextual findings are recorded on pages 214, 221, 238 and 239. Page 239 is a held recap review, not a confirmed defect. All such dispositions require full owning-source comparisons.
+
+## Page 213
+
+Image SHA-256: `bef4172ff60b42f67c1999d48ab7c42389497a130e8c2ad8745bf1d7c6f0fb4c`
+
+Actually viewed and read the complete page: the three normal-product/evaluation identities and the retained third-space surjection/noncompactness conclusion, the affine-quadric topology calculation, Remark22.30 with the applied scope recap removed, and the complete marked-period-lift obstruction statement. The exact normal-product witnesses remain visible; the Euler remark now ends at its normalization/flatness derivation. Formulas, numbered references and page layout are legible. No new defect confirmed on this page; no mathematical-event credit.
+
+## Page 214
+
+Image SHA-256: `7916392461162d108acd53192d9c8243d09b4bd6695568f6805cccbe4a445422`
+
+Actually viewed and read the complete page, containing proof steps1–5 of the marked-period-lift obstruction: finite exceptional image, invariance on the elliptic curve, finite-cycle comparison, normal-line pullback and degree, and the cusp-period calculation. The final sentence of step2 redundantly says that no choice of multiplicities or infinitely near centres changes the obstruction after the complete finite-support contradiction; this is a pending D02 editorial finding for full-source guard review. The finite-support and torsion argument itself, all normal-line maps, period equations and finite-base-change discussion remain mathematical content. No source edit or independent mathematical-event credit.
+
+## Page 215
+
+Image SHA-256: `89a35060de90b4be8739197579871da6ba32207ba91fa9b2ea411f882cc99760`
+
+Actually viewed and read the complete page: the closing cusp comparison, Lemma22.32 and its full indexed-core quotient proof, and the tangent-representation/associated-bundle proposition with the start of its toric fixed-locus proof. The quotient map and inverse are explicitly printed, and the compact-image closure argument supports its stated last assertion. The indexed-core maps, cohomology groups, twist and fixed-locus calculations are legible. No additional confirmed defect on this page; proof-operation and scope language was assessed in context rather than removed by word matching. No mathematical-event credit.
+
+## Page 216
+
+Image SHA-256: `aa371aa8c7519524dc39d2d9772947fb33a61fc1abb5055c1cb6445c31a08c19`
+
+Actually viewed and read the complete page: the Kato-germ global-vector-field calculation, the equivariant Lefschetz contributions of the elliptic curve and eight cycle nodes, and the Leray comparison. The positive compact-complex-manifold citation, exact power-series identities, weight calculation and eight-dimensional kernel argument remain clearly stated. References and displayed fractions fit. No additional confirmed register defect; no independent mathematical-event credit.
+
+## Page 217
+
+Image SHA-256: `c1b96558631b0cd64d87985ee8512279c4f8c4804aba444ef385ee46534db82f`
+
+Actually viewed and read the complete page: the associated-bundle gluing/direct-image conclusion, Section22.6 heading, the complete local vertical-Hopf-insertion statement and its first two proof steps. Properness over the bidisc, flatness over the degeneration parameter, component dimensions and preserved punctured family are specified in context. The period subsystem, semiabelian extension and action map22.3 are legible. No additional confirmed defect; constructive and parameter-scope language is retained as mathematical content.
+
+## Page 218
+
+Image SHA-256: `5abcc205c3c8c5d334fb1f1fe2277a2b2f36ff762131b4574e0825122f5b36f2`
+
+Actually viewed and read the complete page: the explicit translation action22.4, punctured affine-torsor comparison, base blow-up, invariant ideals, strict-transform charts22.5 and component maps. The compatibility, cohomological inputs, six-even-node choices and each chart equation remain connected to their roles. The page has no clipping or malformed display; no additional confirmed editorial defect and no mathematical-event credit.
+
+## Page 219
+
+Image SHA-256: `f8e7eed29dcd8e76ff19e73897e0bb88246782e3c7a36eef9640d18893ee3f89`
+
+Actually viewed and read the complete page: Cartier-logarithm gluing and properness, the overlap and flatness argument, scalar-Hopf identification22.6, compact vertical components, fundamental groups and label rotations. The distinction between properness over the bidisc and over the parameter disc is supported by the stated base and component geometry. The normalizations, bundle maps and displayed quotient remain legible. No additional confirmed defect; substantive morphism and dimension scope retained.
+
+## Page 220
+
+Image SHA-256: `8dc29fd7c066a3f917146ee72a190c30aeaf7ee5db562cbf097adf2a57a180da`
+
+Actually viewed and read the complete page: Remark22.35 identifies the two compared pullback/composite maps, and Proposition22.36 states and proves the local insertion's dual-complex collapse through steps1–4. The triangle strata22.7,36 elementary collapses, mapping-cylinder attachment, ordered branch treatment and connected-group action are explicit. Negative conclusions about the prescribed operations are mathematical consequences of those maps, not draft commentary. No additional confirmed register defect.
+
+## Page 221
+
+Image SHA-256: `d7f05ea23e37863fa080083badac9f92ba2c8657da45d48cd15e8573b15df05e`
+
+Actually viewed and read the complete page: the dual-complex-to-cohomology injection22.8, alternating branch resolution, finite incidence calculation and Proposition22.37's compact counterexample statement and construction. In proofstep5 of22.36, the clause 'an ordinary constant sheaf there would be incorrect if the branches permute' is a pending D02 editorial finding: the preceding positive alternating-summand/orientation-local-system construction already states the required coefficients. The complete owning proposition/proof on220–221 was read. The explicit counterexample about trivial monodromy is retained as a mathematical construction. No source edit or mathematical-event credit.
+
+## Page 222
+
+Image SHA-256: `61ea2267cbab36c19c038e203a6c34f75917d858e20d306e079c1fde4eed9417`
+
+Actually viewed and read the complete page: the compact degeneration's quotient maps on fundamental groups, unimodular Mayer–Vietoris matrix, homology and first-Betti computation, the precisely cited invariant-cycle comparison, and the statement of the partial cusp filling. The counterexample and distinction from the six-sphere are supported by the explicit maps and second-Betti calculation; they are retained as mathematical claims. The cited version, equation, pages and two-component qualification remain explicit. No additional confirmed register defect or mathematical-event credit.
+
+## Page 223
+
+Image SHA-256: `8e6ee1bda18b9b63683f9e3f567386b3e0ec3a6f02c7538b32017f0d8e4650f2`
+
+Actually viewed and read the complete page: the partial cusp filling's fractional deck, two exact sum/difference identities, explicit holomorphic trivialization and rotating root-cover compactification. Equations22.9–22.13, the affine marking, inverse translations and twelvefold shear computation are legible and connected to the construction. The statement about the twelfth iterate follows from the displayed factors. No additional confirmed editorial defect; no independent mathematical-event credit.
+
+## Page 224
+
+Image SHA-256: `e6715abaffe2557d66b21098a7c18ccb7d04dd5f5c9267eeea03fd9cffe2d14e`
+
+Actually viewed and read the complete page: the invariant cusp triangulation, free fractional-deck quotient, sign convention, axial multiplicity, two-open gluing, Hausdorff/properness argument and exact overlap remark. The order-twelve and order-one valuations in Remark22.40 are compared through the specified common modification and cited obstruction; the page's negative mathematical conclusions have these explicit witnesses. Equations, signs and labels are legible. No new confirmed defect; the final generic proof-closing sentence will be checked contextually with the register if required.
+
+## Page 225
+
+Image SHA-256: `266a8a61c14ee2b14895fdb3242bfd4c3278e23e89952a0778a9a092c1a5105e`
+
+Actually viewed and read the complete page: the complete global partial-filling statement, ordinary base/logarithmic coordinates, coherent closing, scalar gauge, affine charts and first overlap formula. The component cover, exact representative in22.14, coordinate change22.15 and multiplicative transition22.16 remain explicit. The missing-point and noncompletion assertions are linked to numbered propositions. No additional confirmed register defect; no mathematical-event credit.
+
+## Page 226
+
+Image SHA-256: `206bc18aa56d70d49c983859fb5c3dc1e58eb29999e6202907b222d9521069d6`
+
+Actually viewed and read the complete page: extension of the multiplicative transition to plumbing charts, exact cocycle, finite-place gauge cancellations, logarithm-change descent, component cover and cusp-overlap formula22.18. The period-frame invariance, displayed collar identity22.17 and deck shifts4,-3,-1 remain explicit. No clipped formula or new confirmed register defect; all concrete gauge and comparison operations are retained.
+
+## Page 227
+
+Image SHA-256: `1106c57679bcec05363b6a5470ea0912a96a2f697ef2df056e34d61b28a0508b`
+
+Actually viewed and read the complete page: cusp-overlap descent, gluing and properness of the global partial filling, followed by the complete other-Kato-axis statement and initial local defining map. The component multiplicities, stated base opens, normal-line Tate multiplier, equivariant scaling, and s=uv chart are legible. The proof points to its compact-core and quotient witnesses for properness. No additional confirmed defect or mathematical-event credit.
+
+## Page 228
+
+Image SHA-256: `a3dd1f40f17d8c248d513a5698682aaa40ccb1c01641b41c8727b52535c5a3e7`
+
+Actually viewed and read the complete page: the other Kato axis's proper Cartier divisor, contracting germ, reduced central cycle, smooth node charts, degree-zero normal line, scaling action and exact cusp Tate/normal multipliers. The inverse normal-line convention is accompanied by its divisor and theta-ratio factor. Every displayed map and citation is legible. No additional confirmed register defect; no mathematical-event credit.
+
+## Page 229
+
+Image SHA-256: `0a7e6731c16e4e85ca170b0d2fea882dc62aadd00d09cca93044042685259a6a`
+
+Actually viewed and read the complete page: the explicit maps s=uv-h and r=fh, their differential comparison, the fixed-base plumbing obstruction, and the degree-one Kato-model statement with its transverse coordinate22.22 and beginning blow-up proof. The negative claims about a relative tubular identification and rational curves are supported by the printed critical-locus and lifting arguments. Coordinate distinctions are mathematical definitions. No additional confirmed editorial defect.
+
+## Page 230
+
+Image SHA-256: `46acff4d1e884fc4c99ac826c632a1fe62b008bb7b1942c24eb048280265858f`
+
+Actually viewed and read the complete page: six point blow-ups with exact local charts22.24–22.25, the twelve-component Cartier fibre22.26, normal-line coefficients22.27 and the start of the72 curve blow-ups. The exponent sequence explains the six choices, and the b_i=12-z_i formula explains the next multiplicities. Iterative words describe the construction itself. No additional confirmed defect or mathematical-event credit.
+
+## Page 231
+
+Image SHA-256: `1c880f205f4b195e87a378ea009084b51b8d4dc3e63af6ce7be4b1e45fea8e71`
+
+Actually viewed and read the complete page: the final normal-line isomorphism22.28, exact node chart22.29, repeated curve-blow-up calculation22.30 and relative product charts. The72 count, factor s^-12, global ideal and order comparisons are explicitly derived. Displays, subscripts and line breaks remain legible. No additional confirmed register defect; concrete negative vanishing/pole assertions retain their displayed product witness.
+
+## Page 232
+
+Image SHA-256: `69ac9107ac51b1757256879eaeac9fbc385c9842efdda7133cdc0d8795d82317`
+
+Actually viewed and read the complete page: holomorphic toric product charts22.31, regularized Kato closing22.32, convergent product22.33, diagonalized closing22.34, and properness/flatness of all modifications. The convergence estimate, common shrinking and inverse-map identities provide the stated collar comparison. The zero/pole conditions and unchanged-axis conclusion are mathematical consequences in the proof. No additional confirmed defect.
+
+## Page 233
+
+Image SHA-256: `4035d36060fa93a0acf0316c59020da89c0a0d0988dd99baaa3b43133703cbf4`
+
+Actually viewed and read the complete page: the complete local-plumbing proposition, its three explicit blow-up charts, cyclic pullback and toric subdivision, chart gluing and transverse divisors. The earlier deleted negative total-transform clause is absent while the positive chart definitions and dense-torus closure remain. The table, equations and section/title numbering fit. No additional confirmed register defect or mathematical-event credit.
+
+## Page 234
+
+Image SHA-256: `e3ee3927d6a8118f828e6a87256caaf1459dbcd114c011041ee0c48d623b32ff`
+
+Actually viewed and read the complete page: completion of the local-plumbing resolution,144 unimodular charts and its collar-coordinate comparison, then the exceptional-curve nonclosure/deformation-obstruction statement and initial marked intersection computation. Each asserted obstruction has a stated geometric hypothesis and an ensuing proof. The explicit rational conjugacy formula and preserved cusp factor are legible. No additional confirmed register defect.
+
+## Page 235
+
+Image SHA-256: `4323f74165c766445f898488bc2b35a1399ccde9d6134717194939f79bd2d877`
+
+Actually viewed and read the complete page: the marked elliptic intersection22.35, logarithmic winding obstruction, analytic-divisor/graph argument, precise published nonproperness citation and normal exact sequence22.36–22.37. The finite-base-change winding and graph normalization explain the negative conclusions. The deformation argument states the actual submersion and normal-bundle input. No additional confirmed defect or mathematical-event credit.
+
+## Page 236
+
+Image SHA-256: `826b0069f0dd11720d418bd7e22750184946a415a8a13c91251cd459d347b58e`
+
+Actually viewed and read the complete page: the embedded-deformation argument with exact Kodaira/Merkulov and Dloussky–Teleman locators, the conductor-disjointness calculation, and the logarithmic-torsor proposition with its pairing22.38. The prior redundant nonproperness disclaimer is absent; the positive submersion and compact exceptional-divisor hypotheses remain. The failure at a conductor intersection is shown by its normal degree and differential. No additional confirmed defect.
+
+## Page 237
+
+Image SHA-256: `d3be48eb877b8c227991a45101f2fd3c211ee3ae33d59c5cc063b5d98194982f`
+
+Actually viewed and read the complete page: admissibility and residual-unit conditions of the logarithmic pairing, the two extending origins, affine section22.39 and exact overlap22.40–22.41. The proof supplies each face calculation and uses precisely located definitions, followed by explicit coordinate translations and period differences. Numerical constants are tied to these formulas. No additional confirmed register defect or mathematical-event credit.
+
+## Page 238
+
+Image SHA-256: `a07574e434b7a6835b08b31baa20ae7b8ce0fb18e16485b8862dce57047e4a3e`
+
+Actually viewed and read the complete page: the logarithmic quotient exact sequence22.42, valuation map22.43, connecting-class obstruction, finite-root-cover argument and ordinary gauge22.44. A further pending D02 finding is the tail 'and must not be included in Y' after the positive explanation that the Z w and Z delta terms disappear on exponentiation; Y is already explicitly defined by its surviving period basis. The complete owning printed proposition/proof on236–238 was read, and the exact source comparison will retain all maps and the positive exponentiation fact. No source edit or mathematical-event credit.
+
+## Page 239
+
+Image SHA-256: `cd6ba11dc126f70f86cfa9dc3af0a41a30b9ee36535f641edf565d6cb2f7451f`
+
+Actually viewed and read the complete page: the one-eigenvalue Hopf-boundary proposition, anticanonical equivariance22.46, coefficient condition22.47, section dimensions22.49 and accumulating-resonance estimates. The negative completion result is a mathematical statement with its explicit contraction/section argument. The final sentence of proofstep1, 'The computation uses the displayed bivector automorphy,' is held for complete-block D08 review as a possible redundant recap of the already defined bivector action. No source edit or independent mathematical-event credit.
+
+## Page 240
+
+Image SHA-256: `5a32483f9e13867dac807580a62540b08cf17516ce41f83e306d86275dd5f888`
+
+Actually viewed and read the complete page: nonresonant points, coherent direct images, exact sequence22.50, reduction/resolution of arbitrary analytic completions, finite-base-change preservation, and the opening toric-ray comparison. The local-constancy conclusion and the obstruction are supported by the displayed exact sequence and located primary theorem. Together with239 this completes the owning Hopf-boundary proof for the held recap review. No further confirmed defect or mathematical-event credit.
+
+## Page 241
+
+Image SHA-256: `bf2f9c028bdea400cfe1aa1141166d3a84e725c2eccbcb1c1582312e3e8c0e57`
+
+Actually viewed and read the complete page: the exact toric-ray and anticanonical blow-up comparisons, then the origin-component dimension proposition and its first four proof steps. The orders(1,1) and(m,0), pullback map on anticanonical sections, trace through finite covers and local ramification chart22.51 are explicit. The negative completion claims are mathematically scoped to the printed maps. No additional confirmed register defect.
+
+## Page 242
+
+Image SHA-256: `ba861cfbd97bd072afbeffa260d8fa4fd73e472fc8752cffa0b20c9aaec71c25`
+
+Actually viewed and read the complete page: bounded-character lifts, explicit multiplicative norm22.52, overlap agreement and trace equation22.53, the finite-projection argument and start of the component-dimension conclusion. The ordinary/axial trace maps, signs, multiplicities and primary finite-projection locator are present. The resulting nonexistence assertion follows the printed connecting-class witness. No additional confirmed defect.
+
+## Page 243
+
+Image SHA-256: `036cedfe680367b40609c1c0e2893aa77a8f67ef4aab4d91f1183e2c0fe76c38`
+
+Actually viewed and read the complete page: completion of the origin-component dimension proof and the logarithmic-torsor-under-blow-ups proposition through the bounded-character sheaf and first cohomology calculation. Equations22.54–22.56, boundary divisors, positive orders and exact cited base-change lemma are legible. The parameter exponents and character conditions are explained where used. No additional confirmed register defect or mathematical-event credit.
+
+## Page 244
+
+Image SHA-256: `272b40e70a8b90c5de938b71c0c2211cc153aa4504812c0b9f5d44bb45e7554d`
+
+Actually viewed and read the complete page: cohomology of the blown-up bidisc22.57–22.59, the divisor-order exact sequence22.60, its cohomological identification22.61 and period sequence/matrix22.62–22.63. The exceptional intersection basis, positive diagonal entries and N=0 case are explicitly connected to the torsor conclusion. Accented Čech and the displayed maps are legible. No additional confirmed defect or mathematical-event credit.
+
+## Page 245
+
+Image SHA-256: `fdb23a24f5213c36586349cf7d39dc3d163746318ccd3f1b96dc8f7326305d5f`
+
+Actually viewed and read the complete page: the maximal-monodromy proposition, its central dualizing-section convention, adjunction22.65, Euler contributions and rational/ruled/class-VII cases through proofstep6. Every assumption belongs to the printed statement and the cited surface-classification facts have locators. The charge identity22.66 and nonnegative contributions are legible. No new confirmed register defect; this page reading adds no independent mathematical-event credit.
+
