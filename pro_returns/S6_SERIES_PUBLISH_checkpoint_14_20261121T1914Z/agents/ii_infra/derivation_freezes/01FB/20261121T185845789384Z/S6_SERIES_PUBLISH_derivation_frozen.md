@@ -1,0 +1,9 @@
+# Frozen-before-target derivation: 01FB / cdp:st:C.3.5
+
+I read the exact target and the cited C.3.1 statement, with its other statement-only dependencies. The target proof remains unread. The intended smooth ambient scope is inherited from the C.3.1 characteristic-class statement and must be made explicit there.
+
+Let U=C minus Delta. The smooth proper restriction f^{-1}(U)→U is a differentiable locally trivial fibre bundle by the proper-submersion theorem. Its smooth fibre F has Euler number zero by the characteristic-class conclusion in C.3.1, independently of which of the preliminary surface types occurs. Euler characteristic with compact supports is multiplicative for this bundle, hence e_c(f^{-1}(U))=e_c(U)e(F)=0. The required finiteness follows from the compact analytic total space and the finite removed set, using a finite compatible triangulation of the analytic strata.
+
+The decomposition of the underlying topological space of Y into f^{-1}(U) and the finite union of compact special-fibre supports is disjoint. Additivity of compactly supported Euler characteristic gives e(Y)=e_c(f^{-1}(U))+sum_{c in Delta}e((Y_c)_red). The open term is zero. Nilpotent structure and fibre multiplicities do not alter the underlying support, so the reduction appearing in this sum is exactly the topological fibre used in the decomposition. No comparison between distinct schemes is asserted beyond their identical underlying topological space for this invariant.
+
+Finally the complex Gauss–Bonnet identity for the smooth compact threefold gives integral_Y c3(T_Y)=e(Y). This establishes the displayed equality. None of these equalities imposes an inequality on an individual fibre Euler number; the last source sentence merely records that limited information. There is no independent numerical enumeration to perform in this argument; its zero factor is the explicitly supplied e(F)=0. No target proof was read and no event is added.

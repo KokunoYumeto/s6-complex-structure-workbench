@@ -1,0 +1,11 @@
+# Frozen-before-target derivation: 01GB / cdp:st:D.2.4
+
+I read the target and all cited statement-only inputs, especially C.2.NC.5 and D.2.3, before opening the target proof. The standing D.2 setting is the smooth compact connected threefold with b1=b2=0, proper connected-fibre map, general complex two-torus and trivial rational monodromy, as specified in D.2.1/D.2.5. The target's printed “in D.2” locator needs an explicit standalone statement reference or hypotheses. The smoothness used in the cited inputs must remain explicit.
+
+The global normal-crossings input C.2.NC.5 gives c3(Y)=e(Y)=sum tau(S_c)=2r≥0, where r counts the fibre supports with rational normalization. It explicitly covers all normal-crossings fibre reductions, including smooth reductions, and the multiplicities are not replaced by one. The accompanying local input D.2.3 allows arbitrary positive component multiplicities as well.
+
+A positive value of c3 would give at least one support S whose normalization is rational; the global input says this support is irreducible and nonnormal, with two triple points. Its normalization has geometric genus zero. Restrict f to a small disc around this critical value. This gives exactly the smooth-total-space normal-crossings degeneration required by D.2.3, with its actual scheme-theoretic multiplicity retained. That proposition forces nontrivial monodromy on H2 of the two-torus, and in particular on H1 over Q. The local loop is a loop in the global smooth base, where the given rational monodromy is the identity. This contradiction excludes every positive r. Since r is a nonnegative count, r=0 and c3(Y)=0.
+
+Poincare duality on the smooth compact real six-manifold with b1=b2=0 gives e(Y)=2-b3(Y). Hence b3(Y)=2. All conclusions retain arbitrary fibre multiplicities because both the global input and the local obstruction have that scope. The final nonexistence sentence for positive Euler number is already a direct consequence of the displayed equality. D.2.7 is an occurrence input showing this class is nonempty; it is unnecessary for deriving the equality itself.
+
+The zero/count substitutions and the six-dimensional Betti identity are included in a fresh exact arithmetic check. The target proof remains unread, and no event is created by this derivation.
