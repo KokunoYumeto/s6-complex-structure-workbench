@@ -1,0 +1,8 @@
+{
+  "opened_utc": "2026-11-21T03:44:54.788952+00:00",
+  "path": "code/S6_SERIES_PUBLISH_I_conventions.py",
+  "full_file_sha256": "775e509a8da9d7f68e39020ae9289b183c05fed0a5f15cba351825b1f56c7f6b",
+  "scope": "Lines 1\u201319 only: imports, exact marking matrices and direct-product checks. Later TeX replacement bodies were not read.",
+  "excerpt": "from pathlib import Path\nimport re,json,hashlib,sympy as S\nfrom S6_SERIES_PUBLISH_editing import Editor,block\nr=Path(__file__).resolve().parents[1]\ned=Editor('I')\nA1=S.Matrix([[1,0,0,0],[6,0,1,0],[-6,-1,-1,0],[-2,1,0,1]])\nA2=S.Matrix([[1,0,0,0],[0,0,-1,0],[-6,1,0,0],[3,0,1,1]])\nP=S.Matrix([[0,-2,-1,-2],[2,-1,0,-1],[0,2,1,3],[-1,0,0,0]])\nT0=S.Matrix([[0,-1,-1,0],[1,-1,0,0],[0,0,1,0],[0,0,0,1]])\nT1=S.Matrix([[-1,1,-1,2],[-1,0,-1,1],[1,1,2,-1],[0,0,0,1]])\nH=S.Matrix([[-1,0,0,0],[-6,0,-1,0],[6,-1,0,0],[2,1,1,1]])\nQ=P*H\nassert P.det()==-1 and H.det()==1\nassert T0*P==P*A1 and T1*P==P*A2\nassert T0*Q==Q*A1.inv() and T1*Q==Q*A2.inv()\n(r/'records/S6_SERIES_PUBLISH_I_marking_matrices.json').write_text(json.dumps({\n 'method':'Exact integer matrix multiplication against the primary common-basis matrices in Engel Theorem5.1 p13 and equation(6.1) p16.',\n 'det_P':int(P.det()),'det_S':int(H.det()),'Q':str(Q),'identities':['T0 P=P A1','T1 P=P A2','T0 Q=Q A1^-1','T1 Q=Q A2^-1'],\n 'primary_evidence':'agents/i_provenance/literature/S6_SERIES_PUBLISH_I_Engel_v1_p013.png and p016.png, actually read by provenance agent.'},indent=2)+'\\n')\n",
+  "excerpt_sha256": "fb043997e70d643769862340a9de0c1a2050f9d1fc3ac4aa718facabbc0d49ec"
+}
