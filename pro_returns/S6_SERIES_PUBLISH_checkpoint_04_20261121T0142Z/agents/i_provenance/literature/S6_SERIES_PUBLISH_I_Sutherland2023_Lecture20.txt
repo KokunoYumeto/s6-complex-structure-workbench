@@ -1,0 +1,409 @@
+18.783 Elliptic Curves                                                                          Fall 2023
+Lecture #20                                                                                   11/21/2023
+
+20      The Hilbert class polynomial
+In the previous lecture we proved that the field of modular functions for Γ0 (N ) is generated
+by the functions j(τ ) and jN (τ ) := j(N τ ), that is, C(Γ0 (N )) = C(j, jN ), and we showed
+that C(j, jN ) is a finite extension of C(j) of degree [Γ(1) : Γ0 (N )]. We then defined the
+modular polynomial ΦN (Y ) as the minimal polynomial of jN over C(j) and proved that its
+coefficients lie in Z[j] ⊆ C(j). Replacing j with a formal variable X, we obtain a polynomial
+ΦN ∈ Z[X, Y ] that gives a canonical defining equation for the modular curve X0 (N ).1
+    In this lecture we will use ΦN to prove that the Hilbert class polynomial 2
+                                                    Y              
+                           HD (X) := HO (X) :=            X − j(E)
+                                                      j(E)∈EllO (C)
+
+also has integer coefficients; here EllO (C) := {j(E) : End(E) ≃ O} is the set of j-invariants
+of elliptic curves E/C with complex multiplication (CM) by the imaginary quadratic order O
+with discriminant D = disc(O). Recall that D uniquely determines O (and vice versa),
+by Theorem 17.18, so the notation HD is unambiguous (both HD and HO appear in the
+literature, we will use the former).
+    The fact that HD ∈ Z[x] implies that the j-invariant of any elliptic curve E/C with
+complex multiplication must be an algebraic integer, meaning that E can actually be defined
+over a number field (a finite extension of Q). This is a remarkable result. It implies that of
+the uncountably many isomorphism classes of elliptic curves over C, only countable many
+have complex multiplication. In order to prove this we will exploit the interpretation of
+X0 (N ) as the “moduli space” of cyclic N -isogenies of elliptic curves; our first task is to
+explain what this means.
+
+20.1     Isogenies
+Recall from §17.5 in Lecture 17 that if L1 ⊆ L2 are lattices in C, and E1 and E2 are the
+elliptic curves corresponding to the complex tori C/L1 and C/L2 , then the inclusion L1 ⊆ L2
+induces an isogeny φ : E1 → E2 whose kernel is isomorphic to the finite abelian group L2 /L1 .
+Indeed, we have the commutative diagram
+
+                                           C/L1        ι     C/L2
+
+                                             ≃                 ≃
+
+
+                                          E1 (C)      φ     E2 (C)
+
+where the top map ι is induced by the inclusion L1 ⊆ L2 (lift from C/L1 to C then project
+to C/L2 ). If we replace L2 by the homothetic lattice N L2 , where N = [L2 : L1 ] = deg φ, the
+inclusion N L2 ⊆ L1 induces an isogeny in the reverse direction which, after composing with
+the isomorphism corresponding to the homethety L2 ∼ N L2 , is the dual isogeny φ̂ : E2 → E1 .
+The composition φ ◦ φ̂ is the multiplication-by-N map on E2 , corresponding to the lattice
+inclusion N L2 ⊆ L2 , with kernel isomorphic to L2 /N L2 ≃ Z/N Z × Z/N Z.
+   1
+      The curve ΦN (X, Y ) = 0 is a singular affine curve with the same function field as X0 (N ); the desingu-
+larization of its projective closure is a smooth projective curve isomorphic to X0 (N ).
+    2
+      Some authors use the term Hilbert class polynomial only when O is a maximal order (they then use the
+term ring class polynomial for the general case); we won’t make this distinction.
+
+
+                                                                               Lecture by Andrew Sutherland
+Definition 20.1. If L1 is a sublattice of L2 for which the group L2 /L1 is cyclic, then we
+say that L1 is a cyclic sublattice of L2 . Similarly, an isogeny φ : E1 → E2 is said to be cyclic
+if its kernel is a cyclic group. If φ is induced by the lattice inclusion L1 ⊆ L2 then φ is cyclic
+if and only if L1 is a cyclic sublattice of L2 .
+    As we proved in Corollary 5.12, up to isomorphism, every isogeny is a composition
+of isogenies of prime degree, which are necessarily cyclic. So we may as well restrict our
+attention to cyclic isogenies φ, which we will show correspond to points on the modular
+curve X0 (N ), with N = deg φ.
+    In our proofs we will often restrict to the case where N is prime. We can always decom-
+pose φ into a composition of isogenies of prime degree, and in fact the prime degree case
+will suffice for everything we want to prove. It is thus enough for us to understand cyclic
+sublattices of prime index.
+Lemma 20.2. Let L = [1, τ ] be a lattice with τ ∈ H and let N be prime. The cyclic
+sublattices of L of index N are the lattice [1, N τ ] and the lattices [N, τ + k], for 0 ≤ k < N .
+Proof. The lattices [1, N τ ] and [N, τ +k] are clearly index N sublattices of L, and they must
+be cyclic sublattices, since N is prime. Conversely, any sublattice L0 ⊆ L can be written as
+[d, aτ + k], where d is the least positive integer in L0 and the index of L0 in L is ad = N .
+Since N is prime, either d = 1 and a = N , in which case L0 = [1, N τ ], or d = N and a = 1,
+in which case L0 = [N, τ + k], and we may assume 0 ≤ k < N .
+
+           2τ
+
+
+                                         τ                                   τ +1
+
+
+
+            1                                     2                                 2
+
+
+
+                   Figure 1: The three cyclic sublattices of [1, τ ] of index 2.
+
+
+Theorem 20.3. For all j1 , j2 ∈ C, we have ΦN (j1 , j2 ) = 0 if and only if j1 and j2 are the
+j-invariants of elliptic curves over C over that are related by a cyclic isogeny of degree N .
+                                                                                      
+Proof for N prime. We will prove the equivalent statement that ΦN j(L1 ), j(L2 ) = 0 if
+and only if L1 is homothetic to a cyclic sublattice of L2 of index N , equivalently, L2 is
+homothetic to a cyclic sublattice of L1 . We may assume without loss of generality that
+L1 = [1, τ1 ] and L2 = [1, τ2 ], where τ1 , τ2 ∈ H. As in the proof of Theorem 19.17 we have
+                                                         −1
+                                                      NY                  
+                       ΦN j(τ ), Y = Y − j(N τ )              Y − j(N γk τ ) ,                    (1)
+                                                        k=0
+
+where γk := ST k , and
+                                                                 τ + k
+         j N γk τ = j N0 10 ST k τ = j S
+                                                 1 k
+                                                  0N     τ = j 10 Nk τ = j         .
+                                                                              N
+Thus                                                                             
+                ΦN j(L1 ), j(L2 ) = ΦN j([1, τ1 ]), j([1, τ2 ]) = ΦN j(τ1 ), j(τ2 )
+is zero if and only if τ2 is SL2 (Z)-equivalent to N τ1 or (τ1 + k)/N , with 0 ≤ k < N , hence
+if and only if L2 is homothetic to a cyclic sublattice of L1 of index N , by Lemma 20.2.
+
+                                                                 18.783 Fall 2023, Lecture #20, Page 2
+    Theorem 20.3 applies more generally to any field that can be embedded in C, including
+all number fields. It can be extended via the Lefschetz principle [6, Thm. VI.6.1] to any field
+of characteristic zero, and as shown by Igusa [4], to fields of positive characteristic p - N .
+We state the more general version of Theorem 20.3 for future reference.
+
+Theorem 20.4. Let N > 1 be an integer and let k be a field of characteristic not dividing N .
+For all j1 , j2 ∈ k we have ΦN (j1 , j2 ) = 0 if and only if j1 and j2 are the j-invariants of
+elliptic curves over k that are related by a cyclic isogeny of degree N defined over k.
+
+Remark 20.5. In Theorem 20.3 we could have written ΦN (j(E1 ), j(E2 )) = 0 if and only
+if E1 and E2 are related by a cyclic isogeny of degree N , because over C the j, invariant
+characterizes elliptic curves up to isomorphism; but this is not true in the more general
+context of Theorem 20.4. Over fields k that are not algebraically closed it is not necessarily
+true that ΦN (j(E1 ), j(E2 )) = 0 implies the existence of a cyclic N -isogeny E1 → E2 ;
+one might need to replace E1 or E2 by a twist (a curve with the same j-invariant that is
+isomorphic over an extension of k but not necessarily over k).
+
+Remark 20.6. We should note that if φ : E1 → E2 is a cyclic N -isogeny, the pair of j-
+invariants (j(E1 ), j(E2 )) does not uniquely determine φ, not even up to isomorphism. For
+example, suppose End(E1 ) ≃ O and p 6= p is a proper O-ideal of prime norm p such that
+[p] has order 2 in the class group cl(O). Then pE1 ≃ p̄E1 , and the isogenies φp : E1 → pE1
+and φp̄ : E1 → p̄E1 have distinct kernels but isomorphic images. These isogenies are not
+isomorphic (there is no automorphism we can compose with one to get the other, their
+kernels are distinct). In this situation Φp (j(E1 ), Y ) will have j(E2 ) as a double root.
+
+    The existence of the dual isogeny implies that ΦN (j1 , j2 ) = 0 if and only if ΦN (j2 , j1 ) = 0.
+In fact ΦN (X, Y ) = ΦN (Y, X) is symmetric in the variables X and Y .
+
+Theorem 20.7. ΦN (X, Y ) = ΦN (Y, X) for all N > 1.
+
+Proof. As in the proof of Theorem 20.3, the function j(N γ0 τ ) = j(τ /N ) is a root of
+ΦN (j, Y ) ∈ C(j)[Y ] (this is true whether or not N is prime). We also have the identity
+ΦN (j(τ ), j(N τ )) = 0, which implies ΦN (j(τ /N ), j(τ )) = 0, so j(τ /N ) is also a root of
+ΦN (Y, j) ∈ C(j)[Y ]. But ΦN (j, Y ) is irreducible in C(j)[Y ], since it is the minimal polyno-
+mial of jN over C(j), so ΦN (j, Y ) must divide ΦN (Y, j) in C(j)[Y ] (otherwise their GCD
+would properly divide ΦN (j, Y )). It follows from Theorem 20.3 that ΦN (j, Y ) and ΦN (Y, j)
+have the same degree, since in both cases, for any lattice L ⊆ C, the number of roots of
+ΦN (j(L), Y ) and ΦN (Y, j(L)) when counted with multiplicity is the number of cyclic sub-
+lattices of index N in L ≃ Z × Z, which is the same for every lattice L.3 It follows that
+ΦN (Y, j) = f (j)ΦN (j, Y ) for some f ∈ C(j), and plugging in Y = j shows that f (j) = 1
+(ΦN (j, j) 6= 0 since j(τ ) is not a root of the minimal polynomial of j(N τ ) for N > 1).
+
+       It follows that for prime N the polynomial ΦN (X, Y ) has degree N + 1 in X and Y .
+
+Example 20.8. For N = 2 we have
+
+        Φ2 (X, Y ) = X 3 + Y 3 − X 2 Y 2 + 1488(X 2 Y + XY 2 ) − 162000(X 2 + Y 2 )
+                               + 40773375XY + 8748000000(X + Y ) − 157464000000000.
+   3
+    Note that, per Remark 20.6, we cannot assume the j-invariants are distinct, but the cyclic sublattices
+are distinct; some may have the same j-invariant because distinct sublattices may be homothetic.
+
+
+
+                                                                   18.783 Fall 2023, Lecture #20, Page 3
+    As can be seen in this example, the integer coefficients of ΦN are already large when
+N = 2, and they grow rapidly as N increases. For N prime it is known that the logarithm
+of the absolute value of the largest coefficient of ΦN is on the order of 6N log N + O(N ),
+see [2], and it has O(N 2 ) coefficients. Thus the total number of bits required to write down
+ΦN is quasi-cubic in N ; in practical terms, Φ1009 is about 4 GB, and Φ10007 is about 5 TB.
+This makes it quite challenging to compute these polynomials; you will explore an efficient
+method for doing so on Problem Set 12.
+
+20.2    Modular curves as moduli spaces
+In the same way that the j-function defines a bijection from Y (1) = H/Γ(1) to C (which we
+may regard as an affine curve in C2 ), the functions j(τ ) and jN (τ ) define a bijection from
+Y0 (N ) = H/Γ0 (N ) to the affine curve ΦN (X, Y ) = 0 via the map
+                                                         
+                                      τ 7→ j(τ ), jN (τ ) .
+
+If {γk } is a set of right coset representatives for Γ0 (N ) then for each γk we have
+                                                                          
+                           γk τ 7→ j(γk τ ), jN (γk τ ) = j(τ ), jN (γk τ ) ,
+
+and as in the proof of Theorem 20.3, each of these points corresponds to a cyclic N -isogeny
+E → E 0 with j(E) = j(τ ) and j(E 0 ) = jN (γk τ )). We can thus view the modular curve
+Y0 (N ), equivalently, the non-cuspidal points on X0 (N ), as parameterizing cyclic N -isogenies.
+    As noted above such an isogeny is not always uniquely determined by a pair of j-
+invariants (these correspond to singular points on the curve ΦN (X, Y ) = 0), but a cyclic
+N -isogeny φ : E → E 0 is uniquely determined by the pair (E, hP i), where P is any gen-
+erator for ker φ (so P is a point of order N ). Recall from Theorem 5.11 that every finite
+subgroup of points on an elliptic curve determines a separable isogeny that is unique up
+to isomorphism. Every pair (E, hP i) thus corresponds to a non-cuspidal point of X0 (N );
+two pairs (E, hP i) and (E 0 , hP 0 i) correspond to the same point if and only if there exists an
+                       ∼
+isomorphism ϕ : E → E 0 such that ϕ(hP i) = hP 0 i.
+    With this interpretation the modular curve X0 (N ) can be viewed as the “moduli space” of
+cyclic N -isogenies of elliptic curves, each identified by a pair (E, hP i), up to the isomorphism
+defined above. We won’t formally define the notion of a moduli space in this course, but
+this can be done, and it provides an alternative definition of X0 (N ). The key point from
+our perspective is that this moduli interpretation is valid over any field, not just C. The
+modular curves X0 (N ) play a key role in many algorithms that work with elliptic curves
+over finite fields, including the Schoof-Elkies-Atkin (SEA) point-counting algorithm (a faster
+version of Schoof’s algorithm), and fast algorithms to compute Hilbert class polynomials,
+which are the key to the CM method that we will discuss in the next lecture.
+    Other modular curves also have characterizations as moduli spaces. We have already
+seen that the modular curve X(1) is the moduli space of isomorphism classes of elliptic
+curves, and for N > 1 the modular curve X(N ) is the moduli space of triples (E, P1 , P2 ),
+where {P1 , P2 } is a basis for the N -torsion subgroup of E, and the modular curve X1 (N )
+is the moduli space of pairs (E, P ), where P is a point of order N on E. Note that in each
+case one considers triples or pairs only up to a suitable isomorphism, as with X0 (N ) above.
+
+
+
+
+                                                              18.783 Fall 2023, Lecture #20, Page 4
+20.3    The Hilbert class polynomial
+We now turn our attention to the Hilbert class polynomial. Recall that for each imaginary
+quadratic order O, we have the set
+
+                            EllO (C) := {j(E) ∈ C : End(E) ≃ O}
+
+of isomorphism classes of elliptic curves with complex multiplication (CM) by O, and the
+ideal class group cl(O) acts on EllO (C) via isogenies, as we now recall. Every elliptic curve
+E/C with CM by O is of the form Eb corresponding to the torus C/b, where b is a proper
+O-ideal for which j(b) = j(E) (note that j(b) = j(E) depends only on the class [b] in cl(O)).
+If [a] is an element of cl(O), then a acts on Eb by the isogeny
+
+                                          φa : Eb → Ea−1 b
+
+of degree Na induced by the lattice inclusion b ⊆ a−1 b. As with Eb , the isomorphism class
+of Ea−1 b depends only on the class [a−1 b] in cl(O), and we proved that this action is free
+and transitive, meaning that EllO (C) is a cl(O)-torsor. This implies that the set EllO (C) is
+finite, with cardinality equal to the class number h(O) := # cl(O).
+    We may uniquely identify O by its discriminant D (by Theorem 17.18), and the Hilbert
+class polynomial                              Y               
+                               HD (X) =              X − j(E)
+                                           j(E)∈EllO (C)
+
+is the monic polynomial whose roots are the distinct j-invariants of all elliptic curves with
+CM by O. We now want to use the fact that ΦN ∈ Z[X, Y ] to prove that HD ∈ Z[X]. To
+do this we need the following lemma.
+
+Lemma 20.9. If N is prime then the leading term of ΦN (X, X) ∈ Z[X] is −X 2N .
+
+Proof. Replacing Y with j(τ ) in equation (1) for ΦN (Y ) yields
+
+                                                    −1
+                                                   NY              τ + k 
+                                
+                 ΦN j(τ ), j(τ ) = j(τ ) − j(N τ )       j(τ ) − j            .
+                                                                       N
+                                                           k=0
+
+Recall from the proof of Theorem 19.17 that we have the q-expansions
+                                                1
+                                         j(N τ ) = + ··· ,
+                                               qN
+                                                 −k
+                                      τ + k   ζN
+                                    j         = 1/N + ··· ,
+                                         N     q
+
+where q := e2πiτ , ζN := e2πi/N , and ellipses denotes terms involving larger powers of q. Thus
+                                                       1    1
+                                 j(τ ) − j(N τ ) = − N + + · · · ,
+                                                      q     q
+                                                          −k
+                                        τ + k 1        ζN
+                             j(τ ) − j           = − 1/N      + ··· ,
+                                           N        q q
+                                                                          1
+                                                                
+which implies that the q-expansion of f (τ ) = ΦN j(τ ), j(τ ) begins − q2N + · · · . Since f (τ )
+                           1
+is a polynomial in j(τ ) = q + · · · , the leading term of ΦN (X, X) must be −X 2N .
+
+                                                                 18.783 Fall 2023, Lecture #20, Page 5
+Remark 20.10. Lemma 20.9 does not hold in general; in particular, when N is square
+ΦN (X, X) is not even primitive (its coefficients have a non-trivial common divisor).
+
+    Before proving HD ∈ Z[X], we record the following classical result, which was proved
+for maximal orders by Dirichlet and later generalized by Weber; see [3, p. 190]. Today this
+is typically cited as a consequence of the Chebotarev4 density theorem, but since the proof
+of the Chebotarev density theorem actually uses class field theory, a small part of which we
+are about to prove, we should note that the result we need was proved earlier.
+
+Theorem 20.11. Let O be an imaginary quadratic order. Every ideal class in cl(O) contains
+infinitely many ideals of prime norm.
+
+Proof. This follows from Theorems 7.7 and 9.12 in [3].
+
+Theorem 20.12. The coefficients of the Hilbert class polynomial HD (X) are integers.
+
+Proof. Let O be the imaginary quadratic order of discriminant D, let E/C be an elliptic
+curve with CM by O, and let p be a principal O-ideal of prime norm p (by Theorem 20.11
+there are infinitely many choices for p). Then [p] is the identity element of cl(O), so p acts
+trivially on EllO (C). Thus pE ≃ E, which implies that, after composing with an isomor-
+phism if necessary, we have a p-isogeny from E to itself, equivalently, an endomorphism of
+degree p. Such an isogeny is necessarily cyclic, since it has prime degree, so we must have
+Φp j(E), j(E) = 0. Thus j(E) is the root of the polynomial −Φp (X, X), which is monic,
+by Lemma 20.9, and has integer coefficients, by Theorem 19.17. The j-invariant j(E) is
+thus an algebraic integer, and the elliptic curve E can be defined by a Weierstrass equation
+y 2 = x3 + Ax + B whose coefficients lie in the number field Q(j(E)), by Theorem 13.12.
+     The absolute Galois group Gal(Q/Q) acts on the set of elliptic curves defined over number
+fields via its action on the Weierstrass coefficients A and B: for each field automorphism
+σ ∈ Gal(Q/Q) the curve E σ is defined by the equation y 2 = x3 + σ(A)x + σ(B). Similarly,
+σ acts on isogenies via its action on the coefficients of the rational map defining the isogeny.
+If φ : E → E is an endomorphism, then so is φσ : E σ → E σ , and for any φ, ψ ∈ End(E) we
+have (φ + ψ)σ = φσ + ψ σ and (φ ◦ ψ)σ = φσ ◦ ψ σ . Thus each σ ∈ Gal(Q/Q) induces a ring
+homomorphism
+                                               σ
+                                    End(E) −→ End(E σ ).
+Applying σ −1 to E σ induces an inverse homomorphism, we thus have a ring isomorphism
+End(E) ≃ End(E σ ), which implies that E σ also has CM by O.
+   The j-invariant of E is a rational function 1728 · 4A3 /(4A3 + 27B 2 ) of A and B, so
+j(E σ ) = j(E)σ , and we have shown that j(E σ ) ∈ EllO (C). It follows that Gal(Q/Q) acts on
+the set EllO (C), which are the roots of HD (X). The coefficients of HD (X) are symmetric
+polynomials in its roots, hence they are fixed by Gal(Q/Q) and lie in the fixed field Q;
+moreover, they are algebraic integers (since the roots are), so they lie in Z ∩ Q = Z.
+
+Corollary 20.13. Let E/C be an elliptic curve with complex multiplication. Then j(E) is
+an algebraic integer.
+
+   From the proof of Theorem 20.12, we now have two groups acting on the roots of HD (X):
+the class group cl(O) and the Galois group Gal(Q/Q). In the latter case there is no need
+   4
+    Many different transliterations of Chebotarev’s Russian name appear in the literature, including Chebo-
+taryov, Čebotarev, Chebotarëv, Čhebotarëv, Tchebotarev, and Tschebotaröw; none is universally accepted.
+
+
+
+                                                                    18.783 Fall 2023, Lecture #20, Page 6
+to consider the entire Galois group Gal(Q/Q), we can always restrict our attention to any
+Galois subfield L ⊆ Q that contains the splitting field L of HD (X), since the action of any
+σ ∈ Gal(Q/Q) on the roots of HD (X) is determined by its restriction to Gal(L/Q). We
+then have two finite group actions, and it is reasonable to ask whether they are in some
+sense compatible.
+    In order to obtain compatible actions we do not want to work with the splitting field L
+of HD (X) over Q, since Gal(L/Q), may contain automorphisms that√don’t fix the order O.
+but if we instead let L be the splitting field of HD (X) over K := Q( D), the Galois group
+Gal(L/K) fixes O, and we will show that its action on EllO (C) is compatible with that of
+the class group cl(O). In fact, Gal(L/K) ≃ cl(O). This isomorphism is part of the First
+Main Theorem of Complex Multiplication, and our next goal is to prove it.
+    So let O be the imaginary quadratic order of discriminant D, and let us fix an elliptic
+curve E1 with CM by O. Each σ ∈ Gal(L/K) can be viewed as the restriction to L of an
+element of Gal(Q/Q) that fixes K, thus as in the proof of Theorem 20.12, the elliptic curve
+E1σ also has CM by O. Therefore E1σ ≃ aE1 for some proper O-ideal a, since cl(O) acts
+transitively on EllO (C). If E2 ≃ bE1 is any other elliptic curve with CM by O, we then have
+
+                   E2σ ≃ (bE1 )σ = bσ E1σ = bE1σ ≃ baE1 = abE1 ≃ aE2 .                        (2)
+
+The innocent looking identity (bE1 )σ = bσ E1σ used in (2) is not immediate, it requires a
+somewhat lengthy argument involving a diagram chase that we omit; see [7, Prop. II.2.5]
+for a proof. The second identity is immediate, because b ⊂ K and σ ∈ Gal(L/K) fixes K;
+but note that this would not be true if we had instead used σ ∈ Gal(L/Q).
+    Since our choice of E2 was arbitrary, it follows from (2) that the action of σ on EllO (C)
+is the same as the action of a on EllO (C). Because EllO (C) is a cl(O)-torsor, the map that
+sends each σ ∈ Gal(K/K) to the unique class [a] ∈ cl(O) for which E1σ = aE1 defines a
+group homomorphism
+                                  Ψ : Gal(L/K) → cl(O).
+This homomorphism is injective because, by definition of the splitting field, the only element
+of Gal(L/K) that acts trivially on the roots of HD (X) is the identity element, and the same
+is true of cl(O). We summarize this discussion with the following theorem.
+
+Theorem 20.14. Let O be an imaginary quadratic
+                                           √        order of discriminant D and let L be
+the splitting field of HD (X) over K := Q( D). The map Ψ : Gal(L/K) → cl(O) that
+sends each σ ∈ Gal(L/K) to the unique ασ ∈ cl(O) for which j(E)σ = ασ j(E) for all
+j(E) ∈ EllO (E) is an injective group homomorphism.
+
+    We thus have an embedding of Gal(L/K) in cl(O) that is compatible with the actions of
+both groups on EllO (C). It remains only to prove that Ψ is surjective, which is equivalent
+to proving that HD (X) is irreducible over K.
+
+
+References
+[1] Michael Artin, Algebra, second edition, Pearson, 2011.
+
+[2] Paula Cohen, On the coefficients of the transformation polynomials for the elliptic mod-
+    ular function, Mathematical Proceedings of the Cambridge Philosophical Society 95
+    (1984), 389–402.
+
+
+                                                             18.783 Fall 2023, Lecture #20, Page 7
+[3] David A. Cox, Primes of the form x2 + ny 2 : Fermat, class field theory, and complex
+    multiplication, second edition, Wiley, 2013.
+
+[4] Jun-Ichi Igusa, Kroneckerian Model of Fields of Elliptic Modular Functions, American
+    Journal of Mathematics 81 (1959), 561–577.
+
+[5] J. S. Milne, Elliptic curves, BookSurge Publishers, 2006.
+
+[6] Joseph H. Silverman, The arithmetic of elliptic curves, second edition, Springer, 2009.
+
+[7] Joseph H. Silverman, Advanced topics in the arithmetic of elliptic curves, Springer, 1994.
+
+[8] Lawrence C. Washington, Elliptic curves: number theory and cryptography, second edi-
+    tion, Chapman & Hall/CRC, 2008.
+
+
+
+
+                                                           18.783 Fall 2023, Lecture #20, Page 8
+
