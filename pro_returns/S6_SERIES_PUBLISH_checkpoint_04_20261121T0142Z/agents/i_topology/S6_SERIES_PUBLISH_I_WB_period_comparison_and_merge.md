@@ -1,0 +1,36 @@
+# Exact period deformation — comparison and duplicate map
+
+## Honest check scope
+
+The target wb:thm:retained-period-deformation [03DP] was opened only after `S6_SERIES_PUBLISH_I_WB_period_preread_derivation.md` was saved. However a parallel fam proof's real-linear/Beltrami formulas had been incidentally exposed earlier, as recorded in `access_scope.json`. Therefore the real-linear formula work receives fresh-computation credit, not strict statement-only preread credit. The proper-family and global canonical-pencil arguments were written before the WB target proof was read. Exact first-open target and fam:A.4.2 text are in the adjacent JSON.
+
+## Every printed step compared
+
+1–3. The bounded real inverse on compact base-parameter sets proves the ordinary lattice action proper and the compact parallelotope proves properness. The original finite-root action has invariant γ-translation k/3 or−k/4, so every nonidentity power is free uniformly in c. The actual logarithmic connector changes by an integral period and is jointly holomorphic as a torus section. The two period-covariance conventions are related by M_g=A_g^(-1): Π(gz)=R_gΠ(z)M_g is exactly R_gΠ(z)=Π(gz)A_g. A merged proof should use this explicit relation or one displayed convention throughout.
+
+4–6. The source supplies quantitative details beyond my preread summary. With Euclidean operator norm, B0 is orthogonal and ||B−B0||<1/2 gives σ_min(B)>1/2 and ||B||<3/2. Reducing B^(-1)y modulo Z² into the half-unit square gives representative norm≤3/(2sqrt2)<sqrt2. The fresh program checks B0^tB0=I and the exact squared inequality9/8<2. The finite collection of toric unit polydiscs then gives compact surjective representatives uniformly over compact parameter sets, including the full unit multiplier at the boundary. The action's chart-pair bound gives proper discontinuity; quotient charts retain c as a smooth coordinate. The overlap identities glue Hausdorff local pieces and their proper maps to B×Q, and compactness of B proves properness to Q. These arguments agree with the preread local-family construction. No new numerical claim about Yang/AC properness is made.
+
+7–10. Solving the two imaginary-part equations gives the actual real period-coordinate u1, and hence the map Π(c)Π(c*)^(-1), with determinant (D+Imδ)/D. Idempotence of P gives the inverse and the exact graph coefficient. The forbidden denominator point lies on the opposite D-sign side. Haar averaging proves the constant tensor's Dolbeault class nonzero. The printed explicit lift h=∂c+u1∂w2 gives dbar u1=−(dbarζ2−a dbarζ1)/(2iD), establishing the minus sign between the tangent-extension KS convention and plus-graph derivative. The fresh Q(i) computation compares direct4-by4 marked real inversion against an independently assembled real block of Aζ+Bbarζ in72 exact rational cases, verifies Aν+B=0 and the inverse, and records the sign. The general algebra is proved in the preread note; the finite cases are a separate computation.
+
+11–12. The relative canonical line is obtained by the same actual transition functions as the fixed-fibre canonical-ring theorem. Additional dc terms vanish in relative forms, while the determinant characters and correcting modular functions are c-independent. The full dual-number degree-two system is then proved using the two lifted sections and the exact sequence0→L*→L_A→L*→0. Reduction and the injective epsilon arrow prove both spanning and independence. This supplies the exact relative and infinitesimal base-change morphism needed by the global argument; it is stronger than a claim of equal fibre dimensions.
+
+13–15. A hypothetical first-order trivialization induces a PGL2(A) change of this complete pencil. The finite critical ideals (s^(m−1)) and triple critical ideal (z0z1,z0z2,z1z2) contain the base coordinate and retain an injective copy of A. Thus their three value sections cannot move infinitesimally. This is the precise scheme argument behind the preread fixed-special-values step. The resulting three linear equations on b0,b1,b2 have rank3, so the base automorphism is identity, forcing a trivial ordinary torus deformation and contradicting its nonzero class.
+
+16. A zero KS cocycle is a holomorphic Čech coboundary; subtracting its local vector fields times epsilon constructs a first-order trivialization. The source therefore proves the needed implication directly. McMullen, *Complex manifolds*, §67, printed/PDF p15, was opened as primary web text and states the H1(X,Theta) interpretation. The direct local download was403 and the screenshot tool returned a text placeholder; no PDF hash or image-read claim is made for this source.
+
+**Outcome:** no fault found in the WB statement or proof. Its maps, parameter domain, convention conversion and global first-order conclusion agree with the actual family. The strict preread limitation for previously exposed formulas remains explicit.
+
+## Precise merge map for the root editor
+
+| WB content / anchors to preserve | Existing receiving proof | Retention needed |
+|---|---|---|
+| Section label wb:sec:retained-period-deformation [03CV], theorem wb:thm:retained-period-deformation [03DP], (PD1)–(PD2): local Q-family, map F, submersion, fixed0/1/infinity | fam:A.3.1 final step | Add the full local-family statement to the global descended-family result; its present statement does not explicitly state F or submersion. Retain the WB label/tag at that combined assertion. |
+| (PD6) ordinary period matrix; (PD7) full finite affine map; (PD8) logarithmic connector | fam:A.3.1 final step plus its earlier overlaps | These formulas already occur mathematically, but retain each anchor at the corresponding unique displayed formula. Explicit uniform parameter scope is essential. |
+| (PD9)–(PD12), K_Q/common cusp radius, B_t,c estimates, compact representative radius3/(2sqrt2), full central unit | fam:A.3.1 final step | The source's A.3.1 has the same argument but fewer constants. Import these exact formula anchors and quantitative bounds into the one retained family construction. Keep the full nonconstant unit at the central deck translation. |
+| (PD3)–(PD5), (PD13)–(PD15): notation, exact real map, inverse, graph coefficient, KS sign | fam:A.4.2 steps1–2 | The A.4.2 proof already contains all assertions, including exact finite δ and determinant. Retain anchors at the corresponding displays; no second variation proof is needed. |
+| (PD16) relative canonical line, (PD17) dual-number sequence, (PD18) complete A-basis | fam:A.4.2 step3 | Keep the explicit relative transition argument and the three displays. The A.4.2 prose already proves them; these formulas make the actual maps visible. |
+| WB steps13–16: critical-scheme fixed sections, infinitesimal PGL equations, Čech trivialization | fam:A.4.2 step4 | Mathematically duplicated. Keep one proof with the critical ideals and injective A copies; WB's double-chart sentence may be retained in that local check. |
+
+No new mathematical result is lost by this merger once the local F/submersion statement and all18 PD anchors are retained. The credited DGKX classification/deformation appendices are a separate author/source proof role and must remain under the prompt's explicit exception. Their existence does not require retaining this duplicate WB argument as well.
+
+Saved UTC: 2026-11-21T01:33:27.749481+00:00

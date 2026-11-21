@@ -1,0 +1,19 @@
+{
+  "source": "/workspace/scratch/653608133b22/work/agents/provenance/code/S6_SERIES_PUBLISH_recompute_records.py",
+  "source_sha256": "d98e7c331f957880ca1b81123372f25f9a76102328992c0eb4ae4b41294d8678",
+  "scope": "Two metadata extraction corrections needed by unrevised Paper I: associate immediate proofs separated by attribution prose; omit uses/used-by production headers. No aggregate recomputation or mathematical event.",
+  "changes": [
+    {
+      "id": "I-parser-hidden-uses-metadata",
+      "old": "def without_hidden_record(region):\n    \"\"\"Remove the four arguments of nonprinting historical statement metadata.\"\"\"\n    while True:\n        m = re.search(r'\\\\StatementRecord\\{', region)\n        if m is None:\n            return region\n        j = m.end() - 1\n        for _ in range(4):\n            while region[j].isspace():\n                j += 1\n            if region[j] != '{':\n                raise ValueError('Malformed StatementRecord argument')\n            level = 1\n            j += 1\n            while level:\n                if region[j] == '{' and region[j-1] != '\\\\':\n                    level += 1\n                elif region[j] == '}' and region[j-1] != '\\\\':\n                    level -= 1\n                j += 1\n        region = region[:m.start()] + region[j:]\n",
+      "new": "def without_hidden_record(region):\n    \"\"\"Remove historical statement and uses/used-by metadata arguments.\"\"\"\n    arities = {'StatementRecord': 4, 'Uses': 1, 'UsedBy': 1}\n    while True:\n        m = re.search(r'\\\\(StatementRecord|Uses|UsedBy)\\s*\\{', region)\n        if m is None:\n            return region\n        j = m.end() - 1\n        for _ in range(arities[m.group(1)]):\n            while region[j].isspace():\n                j += 1\n            if region[j] != '{':\n                raise ValueError('Malformed metadata argument: ' + m.group(1))\n            level = 1\n            j += 1\n            while level:\n                if region[j] == '{' and region[j-1] != '\\\\':\n                    level += 1\n                elif region[j] == '}' and region[j-1] != '\\\\':\n                    level -= 1\n                j += 1\n        region = region[:m.start()] + region[j:]\n",
+      "reason": "Uses and UsedBy lines are production metadata and must not manufacture mathematical premise edges."
+    },
+    {
+      "id": "I-parser-proof-after-source-attribution",
+      "old": "        if precise:\n            stop = e\n            proof = re.match(r'\\s*\\\\begin\\{proof\\}', body[e:])\n            if proof:\n                stop = body.index('\\\\end{proof}', e) + len('\\\\end{proof}')\n",
+      "new": "        if precise:\n            # A source-credit paragraph may lie between a statement and its\n            # immediate proof. Search only up to the next statement/section.\n            gap = body[e:stop]\n            heading = re.search(r'\\\\(?:section|subsection|subsubsection|part)\\*?\\{', gap)\n            if heading:\n                gap = gap[:heading.start()]\n            proof = re.search(r'\\\\begin\\{proof\\}', gap)\n            stop = e\n            if proof:\n                proof_start = e + proof.start()\n                depth = 0\n                for token in re.finditer(r'\\\\(begin|end)\\{proof\\}', body[proof_start:]):\n                    depth += 1 if token.group(1) == 'begin' else -1\n                    if depth == 0:\n                        stop = proof_start + token.end()\n                        break\n                else:\n                    raise ValueError('Unclosed immediate proof for ' + sid)\n",
+      "reason": "The immediate proofs of inv:A3.1, inv:D1.1 and inv:D1.2 follow short source-credit paragraphs. Their proofs are still attached to those statements, without absorbing later sections or Further results."
+    }
+  ]
+}
