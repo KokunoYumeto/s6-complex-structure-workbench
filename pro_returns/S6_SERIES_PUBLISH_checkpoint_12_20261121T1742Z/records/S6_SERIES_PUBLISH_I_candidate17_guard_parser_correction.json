@@ -1,0 +1,38 @@
+{
+  "recorded_utc": "2026-11-21T17:25:47.026179+00:00",
+  "source_sha256": "5b74359a048b1eab3e478a65eab35f35b45474c4c65aadaedd639315c19a9379",
+  "finding": "The first global inline-math regex mistook the second backslash of a TeX row-break followed by a parenthesis for an inline-math opener. Its false match spanned prose and correctly stopped the proposed-body comparison; no source/log mutation occurred.",
+  "repair": "The scanner now consumes complete TeX control symbols/words, comments, verbatim delimiters and mathematical delimiters. A row-break plus parenthesis remains ordinary matrix content. It separately records complete display spans.",
+  "concrete_regression_examples": [
+    {
+      "source": "\\[\\begin{pmatrix}1&0\\\\(1-\\mu)/\\tau&1\\end{pmatrix}\\] \\(c=c_*\\)",
+      "expected_inline": [
+        "\\(c=c_*\\)"
+      ],
+      "expected_display": [
+        "\\[\\begin{pmatrix}1&0\\\\(1-\\mu)/\\tau&1\\end{pmatrix}\\]"
+      ]
+    },
+    {
+      "source": "The escaped dollar \\$5 precedes $k>1$.",
+      "expected_inline": [
+        "$k>1$"
+      ],
+      "expected_display": []
+    },
+    {
+      "source": "\\verb*|$unparsed$| and \\(x\\).",
+      "expected_inline": [
+        "\\(x\\)"
+      ],
+      "expected_display": []
+    }
+  ],
+  "all_examples_passed": true,
+  "current_inline_segments": 12525,
+  "current_display_segments": 1428,
+  "body_review_receipt": "records/S6_SERIES_PUBLISH_I_candidate17_body_guard_review.json",
+  "body_review_receipt_sha256": "a4b3b3c29b33bfa5c7741af18366bc28e144afc5a1d072ce864a05073a266d4f",
+  "mathematical_events_added": 0,
+  "canonical_source_modified": false
+}

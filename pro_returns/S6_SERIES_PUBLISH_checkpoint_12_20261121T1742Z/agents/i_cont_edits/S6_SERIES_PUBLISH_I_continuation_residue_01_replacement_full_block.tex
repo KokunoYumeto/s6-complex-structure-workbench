@@ -1,0 +1,195 @@
+\begin{proposition}[Central derivatives with explicit tails]\hypertarget{tag-0011}{}\label{ari:C.6.R2}
+\StatementRecord{ari:C.6.R2}{proved}{0011}{\SeriesRef{ari:eq:Cr-tails}; \citet[\S3, pp.~4--5]{CrDarmon2009}; \citet[Theorem~10.1, p.~47]{CrRubin1999}}
+
+The first derivative ratios are enclosed by the following values
+with absolute error less than $10^{-8}$. The zeros in rows one
+and eight are exact.
+\[
+\begin{array}{r|r}
+i&L'(E_i,1)/\Omega_i\\\hline
+1&0\\
+2&5.13439843\\
+3&2.13412085\\
+4&31.81013979\\
+5&1.86946271\\
+6&3.42887338\\
+7&0.36258335\\
+8&0\\
+9&9.62927392\\
+10&16.04238858\\
+11&1247.32180615\\
+\end{array}
+\]
+For the same full real periods,
+\[
+ L''(E_1,1)/\Omega_1=28.71408723\ldots,\qquad
+ L''(E_8,1)/\Omega_8=78.03222042\ldots,
+\]
+again with absolute error less than $10^{-8}$.
+The leading Taylor coefficients in these two rows are half
+the second derivatives. The proof's error bounds also determine
+the finer intervals recorded with the verification data.
+\end{proposition}
+
+
+\begin{proof}[Derivative formulas and error control]
+
+\begin{enumerate}[label=\arabic*.,leftmargin=*]
+\item Let $N$ be the conductor, $c=2\pi/\sqrt N$, and
+$L(E,s)=\sum_{n\geq1}a_nn^{-s}$. Put
+\[
+ E_1(x)=\int_x^\infty\frac{e^{-u}}u\,du,
+ \qquad G(x)=\int_x^\infty e^{-u}\frac{\log(u/x)}u\,du.
+\]
+Splitting the Mellin integral at $1/\sqrt N$ and using the functional
+equation gives, for root number $-1$,
+\begin{equation}\hypertarget{tag-0020}{}\label{ari:eq:Cr-first}
+ L'(E,1)=2\sum_{n\geq1}\frac{a_n}{n}E_1(cn).
+\end{equation}
+For root number $+1$ and $L(E,1)=0$, it gives
+\begin{equation}\hypertarget{tag-0022}{}\label{ari:eq:Cr-second}
+ L''(E,1)=4\sum_{n\geq1}\frac{a_n}{n}G(cn).
+\end{equation}
+One can verify the factors directly by writing the completed Mellin
+integral as an integral over $[1,\infty)$ of
+$(u^{s-1}+wu^{1-s})f(iu/\sqrt N)$: its first derivative has
+the factor $2\log u$ when $w=-1$, and its second derivative
+the factor $2\log^2u$ when $w=1$. Integration by parts gives
+the two formulas above. The vanishing of the lower derivatives
+removes all derivatives of the gamma and conductor factors.
+
+\item Hasse's bound and multiplicativity imply
+$|a_n|\leq d(n)\sqrt n\leq2n$. Also
+$E_1(x)\leq e^{-x}/x$ and $G(x)\leq e^{-x}/x^2$.
+The latter follows on writing $u=x+v$ and using
+$\log(1+v/x)\leq v/x$. Consequently the absolute tails after
+$n=M$ are at most
+\begin{equation}\hypertarget{tag-0023}{}\label{ari:eq:Cr-tails}
+ \frac{4e^{-c(M+1)}}{c(M+1)(1-e^{-c})},\qquad
+ \frac{8e^{-c(M+1)}}{c^2(M+1)^2(1-e^{-c})},
+\end{equation}
+respectively. For the first ten curves take
+$M=\lceil180/c\rceil$ and compute the coefficients exactly.
+For the second-derivative kernel use the convergent series
+\[
+ G(x)=\frac12(\log x+\gamma)^2+\frac{\pi^2}{12}
+       +\sum_{k\geq1}\frac{(-x)^k}{k^2k!}.
+\]
+After $k>x$ its terms decrease in absolute value. The alternating
+remainder was cut below $10^{-140}$. At most 740 terms were needed;
+the largest intermediate term was less than $1.4\cdot10^{72}$.
+Evaluating these finite sums with the rounding allowance below
+controls this cancellation. The largest infinite-tail bound in
+\eqref{ari:eq:Cr-tails} is $3.46\cdot10^{-77}$.
+
+\item For $i=11$, generate the coefficients by the CM theta series.
+The curve is the quadratic twist, by
+$d=185801=7\cdot11\cdot19\cdot127$, of the conductor-$163^2$
+curve
+\[
+ y^2+y=x^3-2174420x+1234136692.
+\]
+Write $D=163$, $\chi_D(a)=(a/D)$, and $\chi_d(n)=(d/n)$.
+The exact coefficient $a_n$ is the sum of
+\[
+ \chi_d(n)\chi_D(a)a \quad(n=a^2,\ a>0)
+\]
+and
+\[
+ \chi_d(n)\chi_D((D+1)u/2)u
+ \quad\left(n=\frac{u^2+Dv^2}{4},\ u,v>0,
+                           \ u\equiv v\pmod2\right).
+\]
+This is the Hecke-character theta series for
+$\mathcal O_{\Q(\sqrt{-D})}$, grouping conjugate algebraic integers
+and then applying the quadratic twist; see
+\citet[\S3, pp.~4--5]{CrDarmon2009}. The finite modular-form comparison in \cref{I:CM-coefficient-series}
+proves the global identification of this coefficient formula.
+
+\item To accelerate the sum, in a block $n=n_0+r$, $|r|\leq R$, form the
+exact integer moments $M_k=\sum a_nr^k$. For $x=cn_0$ write
+\[
+ e_k=e^{-x}(-x)^k/k!,\quad g_0=e^{-x},\quad
+ g_k=e_k-g_{k-1},\quad
+ \phi_0=E_1(x),\quad\phi_k=-\phi_{k-1}-g_{k-1}/k.
+\]
+Then the block contribution to $L'/2$ is
+$\sum_k\phi_k M_k/n_0^{k+1}$. This follows by Taylor expansion
+of $E_1(x(1+s))/(1+s)$. On $|s|=1/2$ its modulus is at most
+$2E_1(x/2)$, which is less than $14$ throughout the block range.
+We take enough terms that $(2R/n_0)^{k+1}<10^{-85}$.
+The Cauchy remainder, summed using the bound
+$\sum|a_n|<2\cdot10^{12}$ and $n_0>7700$, is less than
+$10^{-75}$. The values of $E_1$ at consecutive block centres
+are continued by the analogous Taylor expansion; after at most
+1024 such continuations, enclose $E_1$ directly again.
+The continuation bound is $10^{-110}$ per normalized expansion.
+All moments are exact integers.
+
+\item Taking $R=96$ and cutoff $cM\geq190$ uses
+$915818441$ coefficients and gives an infinite tail less than
+$3.10\cdot10^{-78}$. In the recurrences,
+$|e_k|\leq1$, $|g_k|\leq1$, and $|\phi_k|<20$.
+There are fewer than $5\cdot10^6$ blocks and at most 1024
+consecutive continuations. Bounding each normalized moment by
+$\sum|a_n|(R/n_0)^k$ controls accumulated rounding. The elementary evaluations are carried
+out to make that contribution less than $10^{-90}$; adding the
+Taylor remainder gives the derivative allowance used below.
+
+\item Enclose the real periods from the exact minimal invariants.  For rows $1,2,3,4$
+put respectively $T=\sqrt2,\sqrt3,2,\sqrt7$ and $\tau=iT$;
+for rows $5,\ldots,11$ put
+$T=\sqrt{7}/2,\sqrt{11}/2,\sqrt{19}/2,\sqrt{27}/2,
+\sqrt{43}/2,\sqrt{67}/2,\sqrt{163}/2$ and $\tau=1/2+iT$.
+Let $r=e^{-2\pi T}$ and $q=e^{2\pi i\tau}$.  The identity
+$E_4=1+240\sum_{n\geq1}\sigma_3(n)q^n$ and
+$\sigma_3(n)<2n^3$ give, after $M=100$ terms, the tail bound
+\[
+480r^{A}\left\{
+\frac{A^3}{1-r}+\frac{3A^2r}{(1-r)^2}
++\frac{3Ar(1+r)}{(1-r)^3}
++\frac{r(1+4r+r^2)}{(1-r)^4}\right\},\qquad A=101.
+\]
+This follows by expanding $(A+j)^3$ and summing each geometric
+moment.  All eleven parameters satisfy
+$1-1008r/(1-32r)>0$; the bound
+$\sigma_5(n)<2n^5$ and $n^5\leq32^{n-1}$ therefore proves
+$E_6(\tau)>0$.  The exact Weierstrass invariant relations yield
+$\kappa=2\pi(E_4/c_4)^{1/4}$.  For $c_6>0$ the real lattice
+generator has length $\kappa$.  For $c_6<0$ the lattice is rotated
+by $i$: its real generator has length $T\kappa$ in the rectangular
+case and $2T\kappa$ in the other case.  Indeed the real vectors in
+$i(\Z+iT\Z)$ are $T\Z$, while those in
+$i(\Z+(1/2+iT)\Z)$ are $2T\Z$.  Multiplication by the number
+$n_{\R}=2$ for $\Delta>0$ and $n_{\R}=1$ for $\Delta<0$
+gives the full real period used in the statement.
+
+Evaluate these operations with outward intervals.
+For the first ten derivatives enlarge the explicit tail by one
+percent and add
+$10^{-100}$ for arithmetic and kernel-series errors.  This last
+bound is conservative: fewer than $5\cdot10^5$ coefficients and
+740 series terms occur, the intermediate terms are below
+$1.4\cdot10^{72}$, and elementary precision chosen to bound accumulated rounding,
+together with the $10^{-140}$ kernel remainders, stays below
+this allowance.
+For the last derivative add $1.1\cdot10^{-75}$, covering the
+block Taylor and rounding bounds above. Division by the strictly
+positive period intervals gives the stated enclosures.
+
+\item The exact root numbers are $+1$ for $i=1,8$ and $-1$ otherwise.
+All points are nontorsion by \cref{ari:C.5.1}. For a CM curve,
+the Coates--Wiles theorem, in the form
+\citet[Theorem~10.1, p.~47]{CrRubin1999}, says that a nonzero central
+Hecke $L$-value forces the Mordell--Weil group over the CM field
+to be finite. \citet[Proposition~5.3, p.~15]{CrRubin1999} supplies, for a nonmaximal CM order, an isogenous
+curve with maximal order: the quotient is by the Galois-stable subgroup attached to the conductor ideal. The isogeny induces an isomorphism on Mordell--Weil groups tensored with $\Q$ and on their rational Tate modules, preserving ranks and local $L$-factors.
+Since $L(E/K,s)=L(E/\Q,s)^2$ for the CM field $K$, nontorsion
+therefore forces $L(E,1)=0$. This proves the needed central
+vanishing also in the two sign-$+1$ cases. The functional equation
+then forces $L'(E,1)=0$ for those two curves. The positive first
+or second derivatives just evaluated prove exactly the asserted
+analytic ranks.
+\end{enumerate}
+
+\end{proof}
