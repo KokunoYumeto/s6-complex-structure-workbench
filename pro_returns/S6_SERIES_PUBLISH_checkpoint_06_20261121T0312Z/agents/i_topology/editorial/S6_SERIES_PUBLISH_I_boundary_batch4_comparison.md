@@ -1,0 +1,29 @@
+# Boundary publication batch 4: exact scope maps and boundary wording
+
+The 75 guards preserve every label and stable tag. PT07 records the already proved zero-loop translation example; PT08 numbers the existing boundary conventions. This batch does not overlap provenance's common-family/B1/A1/B2/B3 work and does not renumber equations. Titles and relocation of program reports receive no independent mathematical credit.
+
+## Associated log-torus sheaves
+
+The complete current B4.24 and B4.27 proofs were read again before these changes. The new statement wording specifies the actual origin identifications with A, their overlap section F, and the restriction isomorphism β:U_S→B minus the origin. This preserves exactly the usual-analytic-topology, locally trivial torsor extension problem. The identity on character and period lattices induces the associated quotient-sheaf map under fan refinement; no assertion about an unspecified proper model being a group or torsor is added.
+
+The final B4.24 gauge identity and all raw equations remain. Its previously stated nonextension of kvδ is now demonstrated through the actual multiplicative character. With k=−s+12κ0, q=Q12 and v=log(r)/(2πi), exponentiation gives exp(−2πikv)=Q^(12v)exp(−24πiκ0v). The second factor is a holomorphic unit for a fixed local log(r), and period multiplication changes Q-order by an integer (indeed the second period has Q-order12). The variable exponent12v therefore cannot be the integral order of a bounded log character along the full Q-axis. Local lifts exist by the quotient-sheaf exact sequence used earlier in the same proof. The permitted origin changes are exactly the image of (h_q,h_r)↦h_r−h_q from H0(B_q,A)⊕H0(B_r,A), whose failure to contain F is the existing ghost computation. This proves the precise negative assertion by its character map.
+
+B4.27 retains every divisor-order sheaf, bounded-character condition, Čech/Leray/Picard calculation, integer valuation block, and torsor restriction. Its final words now say the integral map is injective. B4.30 still quantifies all proper Hausdorff analytic completions after every coordinate root, with arbitrary extra threefold components. B4.31 retains the same global filling and resolution hypotheses and every angular-meridian conclusion. Removing their repeated disclaimers does not narrow their hypotheses.
+
+PT07 uses the concrete B4.29 translation h(t)=1/t. This additive lift is single-valued and fixed by the short-cycle monodromy, so its radial endpoint difference is zero. B4.29 already proves the two distinct central limits and the absence of a meromorphic extension. The remark cites that proof and gives the exact endpoint-period map relating the two assertions. I reread all ten B4.29 proof steps for this comparison; no new independent experiment is claimed.
+
+## Natural boundary and intrinsic divisor
+
+I reread the complete famC3.4 and pushD1.1 proofs. They prove the same natural boundary for the identical Albanese lattice. The retained D1.1 first step still computes the lattice, half-period, and q=iw/216 normalization. Its second step now uses the exact locally invertible parameter map w=exp(−πic); at |w|=216 its local logarithmic inverse has Im(c)=log216/π=H*. A meromorphic extension pulls back to one prohibited by famC3.4. The original duplicate modular-growth proof is archived.
+
+All four D1.2 proof steps were read. The nonsmooth-locus proper-image argument now cites the actual coherent-support construction already proved in P2.4, with O_C as its coherent input. The torsion exact sequence, all subsequent discrete deletions, the equality div(σ)=2D, and the relative period construction are unchanged. Grauert's proper direct-image theorem is cited at §6, HauptsatzI, p59. Its 1963 published correction is retained neutrally: item2, p36 explicitly says the nonbijective locus in §7 Satz2 need not be closed. I actually viewed the primary p36 image in this run before inserting that exact locator. The current curve calculation isolates the obstruction as R1π*L torsion, precisely as before.
+
+## Boundary quotient maps and unchanged calculations
+
+All three D2.4 proof steps were reread. The new final sentence gives the exact natural map from the fixed central quotient to the family reflection: [(η,ξ)]↦Re(ξ) mod G_a for rational a and the constant map for irrational a. It is well defined because every central period has real second coordinate in G_a, as computed in D2.1/D2.3. No unsupported categorical separation is used.
+
+The complete quadratic, dual-lattice, derivative and equianharmonic formulas remain in D2.1, D2.2, D3.1, D4.4 and D4.5. Their program-only sentences are transferred to the end table; the exact algebraic derivations and n²O(n⁻⁴) error estimate remain. D4.5 keeps all four analytic proof steps, including the exact degree-three isogeny, normalized Green norm, and coarse derivative7/(64π). The D4.7/D4.8 history/process sentences are removed without changing any nonvanishing domain or level-set conclusion. This batch adds no fresh computation for those already checked identities.
+
+## Applied-text binding
+
+All 75 guards were compared with the applied source on 2026-11-21T03:02:26.481895+00:00. Every nonempty replacement, with the later title guards in the same batch applied, is present verbatim. All deletion-only guards have no remaining old occurrence. The parent reported application snapshot `e9131699d36e91d52baf8330a16afcd1998eee6a6b30f96be792a86e3de77888`; the source actually compared has SHA-256 `5ee2fa9803327b8b38065184b85530da9730148ff6391c695c9537004c5ee494`. The parent title change from “The repaired local plumbing model” to “The local plumbing model” was included. This binds the six existing reread groups to the applied text and adds no check event. The per-guard receipt is `S6_SERIES_PUBLISH_I_boundary_batch4_applied_binding.json`.
