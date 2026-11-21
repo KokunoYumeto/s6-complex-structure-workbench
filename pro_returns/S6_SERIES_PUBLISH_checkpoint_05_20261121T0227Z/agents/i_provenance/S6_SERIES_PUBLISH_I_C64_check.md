@@ -1,0 +1,9 @@
+# ari:C.6.4 — independent preread check and comparison
+
+**PASS for the entire statement.** The derivation was frozen at 2026-11-21T02:18:46.983101+00:00 with SHA256 `509852b9fc84b69e6c3723a1ace7601d2d6a958086486642ef1b27cde9be323c` before the printed proof was opened.
+
+The target proof was then read in full. Its embedding argument matches the preread proof, including strictness because the equality parameter is t=1. Its local corrections at0 and1 match the independently computed sixth-division-polynomial valuations; the latter derive local contributions0,0,1/12 directly and also verify the exact minimal coordinate scaling at infinity. The printed infinity point is nonsingular, and the displayed minimal equation/discriminant agree. Its variation step uses exactly the primary DeMarco–Mavraki theorem opened before the target: a fixed adelic height yields a uniform bounded error on algebraic points. The final Call–Silverman comparison is auxiliary; no current-run opening of its pp183–184 is claimed in this check.
+
+Two event associations share one evidence group: one full targeted preread proof check, plus one fresh exact computation of the three function-field local contributions from the already displayed polynomial inputs. This is not an independent reproof of the analytic maximum or global height formula, and not a new verification of the input x(6P)/psi6 formulas themselves. No mathematical correction is needed.
+
+The primary source text read was arXiv1701.07947v2 pp1–2 and5–6. Actual rendered-page locator verification will be logged separately, with no extra mathematical event. The printed target proof SHA256 is `9117ebc939b4719b2b353377651741a13ca8f502b9fb34dcef4897145993a597`; comparison source SHA256 is `27ac405fe3b34b511d6a96e775e41321629b7843455b1e8fbe32d68338a5945f`.
