@@ -1,0 +1,5 @@
+This batch adds one independent dependency check of GA / cdp:st:D.2.3 and one complete comparative rereading. GA is outside the immutable 197-row required index. The dedicated admission checks the separate freeze/release chain and preserves both that index and the required-completion manifest byte for byte. The required total remains 86 resolved rows.
+
+The entire original and final 12-item proof, frozen derivation, comparison and all 18 literal changes were read by root. Root also actually viewed all six original Steenbrink page scans: 231, 233, 234, 237, 238 and 239. These are primary-source readings, with zero Paper II page-image credit.
+
+D25 wording corrections identify the top exterior power and the induced differential on the coefficient subquotient. Their exact defining sequence and ideal-preservation maps retain every displayed formula and the theorem's full analytic/multiplicity scope. The sole literal D.18/D.19 pair outside GA belongs to GD and is deferred to that separately frozen proof comparison; its labels and all other label references are preserved.

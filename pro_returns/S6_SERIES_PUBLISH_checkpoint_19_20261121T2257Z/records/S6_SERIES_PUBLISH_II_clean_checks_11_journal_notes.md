@@ -1,0 +1,5 @@
+The centralizer proof's D25 repair replaces inverse transpose on a vector space containing singular matrices by the explicit linear transpose bijection. The statement matrices, centralizer generators and integral lattice conclusions are unchanged. Exact Gram traces and Newton identities independently give commutator rank 14; the explicit integral coordinate maps check the fixed, norm and primitive vanishing lattices.
+
+The 033C independent deduction is complete at its declared input scope. Its overlap with E.2.23/E.2.24 still requires structural owner consolidation; this admission closes no D12 row. The old roadmap exposed a 0339 method to restore_build, so no independent 0339 credit is granted to that checker. The recorded 033P exposure likewise grants no credit. Both require an unexposed checker.
+
+All three whole original/proposed pairs, all frozen derivations, the final comparisons, all seventeen literal edits, the complete Programs-table and bibliography pairs, and the arithmetic sources and outputs were actually read by root. Primary page readings remain credited to the checker only. No Paper II page-image credit is claimed.

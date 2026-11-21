@@ -1,0 +1,23 @@
+# 02WM / P4.15: preproof working derivation and open scope gate
+
+The target proof and target programs remain closed. This is a working record, not a completed derivation or a freeze. The root-bound preceding paragraph adds the standing smooth compact threefold with b1=b2=0 and proper connected-fibre torus map; it adds no scope clause to the statement's final conductor sentence.
+
+Let E=ν*T_X and F=T_T. The differential is generically injective and has no divisorial rank drop. It is injective as a sheaf map, since its locally free source has no torsion. Its rank-one cokernel is torsion-free: away from the finite degeneracy set it is a line bundle; at that set its length-one locally free resolution has depth at least one, excluding a finite-length torsion submodule. It has the form I_Z tensor L, with L=det(E) tensor det(F)^(-1). The maximal-minor ideal is precisely I_Z, and its colength is ℓ. This identification follows from the wedge map E→det(E) tensor det(F)^(-1); its local coefficients are the signed two-by-two minors, and the height-two Hilbert–Burch complex gives the cokernel map.
+
+The Betti hypotheses give c1(E)=0 and c2(E)=0 rationally: H2(X;Q)=0 and, by Poincaré duality on the compact six-manifold, H4(X;Q)=0. Hence c1(L)=K_T. From
+
+c(E)=c(T_T)c(I_Z tensor L)
+
+the degree-four term is 0=e(T)−K_T²+ℓ. Thus e(T)=K_T²−ℓ. This is the exact tangent-bundle/cokernel morphism and the sign of the finite degeneracy contribution.
+
+Noether's formula then gives 2e(T)=12χ(O_T)−ℓ. The minimal resolved model has κ=−∞ by P4.12, so the surface alternatives are rational, geometrically ruled over a curve, or class VII. Their primary classification must be bound before freezing.
+
+For a rational surface χ=1, so e(T)=6−ℓ/2. Since e(T)≥3 and ℓ≥0, 0≤ℓ≤6. For a surface obtained by r blowups of a ruled surface of base genus g, e(T)=4(1−g)+r and χ=1−g. Substitution gives r=2(1−g)−ℓ/2. Thus g≥2 is impossible, and g=1 forces r=ℓ=0. For a class-VII minimal model with b2=k and r blowups, e(T)=k+r and χ=0, so k=r=ℓ=0. The nonempty conductor supplies a curve; the b2=0 classification and the no-curves property of Inoue surfaces then give a Hopf minimal model. Those exact primary maps were opened earlier and must be rebound to this use.
+
+In the elliptic-ruled and Hopf cases ℓ=0 makes ν immersive everywhere. For a minimal Hopf T, H2(T;Q)=0 makes the intersection number of every pair of curves and K_T with every curve zero. Adjunction gives arithmetic genus one for each irreducible curve. A rational normalization would lift its map from P1 to the universal cover C2 minus {0}, hence have constant coordinate functions, which is impossible for a curve. Thus all curves are smooth elliptic and disjoint.
+
+For a minimal elliptic ruled T→E, the conductor D satisfies K_T+D numerically zero and D·F=2 for a ruling fibre F. Its horizontal part is either two sections, one double section, or one degree-two multisection. A horizontal curve has normalization genus at least one by its finite map to E. For two sections, adjunction and intersection with K_T+D show that they are disjoint and no vertical components occur. For a single degree-two component of multiplicity one, adjunction gives p_a(H)=1−V·H/2, forcing V=0 and H smooth elliptic. For a double section H, write D=2H+V; H is smooth elliptic, and the reduced support has Euler number equal to the number of distinct vertical fibres. Since e(T)=0 and P4.13 gives e(T minus D_red)≥0, that number is zero. Thus D_red is a disjoint union of smooth elliptic curves in every elliptic-ruled case.
+
+For these two minimal alternatives, immersion and the disjoint smooth conductor curves force the image C to be smooth. At a local image point, each normalization branch is an embedded smooth surface, and every pair of branch surfaces meets in a curve. On each sheet the reduced conductor has only one smooth germ, so all pairwise intersections have that same image-curve germ. Its map from each conductor branch has injective derivative. Hence C is a disjoint union of smooth elliptic curves and all component maps are finite unramified covers. Euler additivity gives e(S)=e(T)−e(D_red)+e(C)=0.
+
+The statement's final conductor sentence is grammatically detached from the preceding phrase 'in either of the last two alternatives'. The derivation above establishes that conductor conclusion exactly for the elliptic-ruled and Hopf alternatives. A universal reading that includes the rational alternative is still an open scope gate; it has not been silently assumed, disproved by an unrealized example, or used as a completed result. Root has been informed. No target-proof release or check event is authorized by this working file.

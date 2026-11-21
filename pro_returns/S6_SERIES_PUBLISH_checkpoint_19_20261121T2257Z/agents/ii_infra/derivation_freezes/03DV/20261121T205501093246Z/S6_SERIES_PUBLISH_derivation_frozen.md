@@ -1,0 +1,15 @@
+# Prerelease derivation: 03DV / wbII:cor:surface-top-base-change
+
+Checker: i_provenance_recovery. The exact safe target statement, its cited 03II statement and its supplement were read. Neither the 03DV target proof nor the 03II target proof, another checker's reconstruction, or the old check outcomes have been opened. I have separately written the 03II local cancellation derivation before either release. The general analytic source inputs are Douady §§6–8, printed pp.59–62, and the coherent cohomological-dimension consequence in Ramis–Ruget, printed p.89.
+
+The proper full fibre X_b is a compact complex space of dimension two, including its given nonreduced structure. Every coherent sheaf on it has H^q=0 for q>2. One exact analytic input for this dimension bound is Ramis–Ruget's construction on p.89: the dualizing complex has no terms below minus the dimension, and their trace duality gives vanishing of coherent cohomology in higher degree. It applies to the analytic space, not just its reduction. Alternatively one obtains the same conclusion by the usual coherent cohomological-dimension theorem. Here the bundle restriction E_b is coherent, so H^q(X_b,E_b)=0 for every q>2.
+
+The map f is flat and E is locally a finite direct sum of O_X. Therefore E is f-flat. Fix b. Douady's right-bounded finite-free complex K on a neighbourhood of b has H^q(K)=R^q f_*E and H^q(K tensor k(b))=H^q(X_b,E_b). The independent cancellation argument already written for 03II removes degree3 from this complex using H^3(X_b,E_b)=0 and explicit contractible pairs in degrees2/3 or3/4. It makes H^2 a cokernel, with the canonical tensor-quotient map. Thus it proves the required top-degree beta_b^2 isomorphism at every b.
+
+For completeness, here is the same argument in the other degrees needed for direct-image vanishing, rather than an unsupported inference from fibre vanishing. Fix q>2. The fibre groups H^{q+1}(X_b,E_b) and H^q(X_b,E_b) are both zero. Cancel units in d^q or d^{q+1}, using their explicit two-by-two block basis maps and homotopy, until the finite free term K^{q+1} vanishes. This is possible because exactness of the fibre at degree q+1 forces a unit in one of those adjacent maps whenever that term is nonzero. The resulting H^q is coker d^{q-1}, and hence
+
+    (R^q f_*E)_b tensor k(b) = H^q(X_b,E_b) = 0.
+
+Grauert coherence makes (R^q f_*E)_b a finite A-module. Nakayama's lemma gives this stalk equal to zero. Since b was arbitrary, R^q f_*E=0 for each q>2. This proves every displayed degree and the fibre map. The proof assumes neither constancy of h^2 nor local freeness of R^2; the latter remains a general coherent cokernel in the argument.
+
+Exact primary PDFs: records/S6_SERIES_PUBLISH_II_analytic_primary_inputs_01/Douady1974.pdf, SHA256 4fd29bf08b01c94d22c7fb4bcac67d3dd31b0754ea20d210e8c897dc3bb7cbbd; agents/ii_checks_provenance/recovery_20261121T2000Z/primary_inputs/Ramis_Ruget_1970.pdf, SHA256 283dbde1ce597b2cdd7ae4110e3f0f991aeee23a6086568cc10e6e5e720c674b. Douady was read as a primary model-construction input; Grothendieck's direct base-change corollary remains closed before this freeze.

@@ -1,0 +1,11 @@
+# Prerelease derivation: 03I8 / wbII:lem:curve-flatness
+
+Checker: i_provenance_recovery. I read the exact safe statement and its empty supplement. The target proof, any other checker's version and historical check outcomes have not been opened. Prior Paper I and already released II mathematics are disclosed; none supplies this target proof.
+
+Fix x in X and b=f(x). Choose a local base coordinate t vanishing at b. The local ring A=O_{B,b} is a convergent one-variable discrete valuation ring. The regular local ring R=O_{X,x} is an integral domain. The germ f^*t is nonzero: a zero germ would make f identically b on an open subset, hence on the connected complex manifold by the identity theorem, contradicting nonconstancy. Every nonzero a in A has a unique form t^k u with u a unit. Its image (f^*t)^k f^*u is nonzero in R; multiplication by it is injective. Thus R is torsion-free over A.
+
+A torsion-free module over a principal ideal domain is flat. Here is the applicable local criterion: for each finitely generated ideal (a) of A, the map (a) tensor_A R -> R identifies with multiplication by a after the isomorphism A -> (a); it is injective by the preceding calculation. The ideal criterion for flatness therefore applies. This proves flatness of f stalk by stalk. A holomorphic vector bundle E is locally R^r, so its stalk is a finite direct sum of flat A-modules, proving f-flatness of E by the same injectivity criterion.
+
+The full fibre at b has local ideal (f^*t). The nonzero element is a nonzerodivisor in the regular local ring R, so this is precisely an effective Cartier divisor. The quotient by a regular element is Cohen–Macaulay of dimension dim R-1. Every associated prime has that dimension, proving purity and excluding embedded lower-dimensional components even when the defining element is a power. Changing t to u(t)t changes its pullback by a unit, so these local ideals glue to the full scheme-theoretic fibre and not merely its reduction. Empty fibres have the unit ideal and present no additional local case.
+
+If X is compact, every inverse image of a compact subset of B is closed in X because B is Hausdorff, and is compact. This is properness. This argument retains the full nonreduced fibre throughout. It proves all claims without opening the target proof.
