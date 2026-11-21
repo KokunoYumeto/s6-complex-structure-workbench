@@ -1,0 +1,74 @@
+[
+  {
+    "name": "R1_descent_implementation",
+    "reason": "Implementation and independent-run narration.",
+    "original": "\\item Exact $2$-descent in PARI/GP returns equal lower and upper rank bounds\nfor all eleven curves; its entire output, including independent points,\nis in \\path{code/C_cm_rank_lvalues.out}. Independent eclib descent\nand saturation were completed for the first nine curves. The separate\nfull-saturation calculation \\path{code/Crank_saturation.cpp} treats\nall nine rank-one points, using eclib's automatic height-based index\nbound and checking every prime up to that bound. All nine returned\nindex one and an empty list of unsaturated primes.\n\n",
+    "sha256": "35fa5521709816e1b253bf194760006ae1b2559a2c6b740d70a68c1f929a8dd0"
+  },
+  {
+    "name": "R2_full_precision_statement",
+    "reason": "All original numerical digits retained here.",
+    "original": "The following are the values of $L'(E_i,1)/\\Omega_i$; zeros in rows\none and eight are exact. More digits, the periods, derivatives and\ntail bounds are in \\path{results_Crank.csv}.\n\\begin{center}\\small\n\\begin{tabular}{r|l}\n$i$&$L'(E_i,1)/\\Omega_i$\\\\\\hline\n1&$0$\\\\\n2&$5.134398425737889664345619204085016979705061236171249722654226\\ldots$\\\\\n3&$2.134120849044754020051650801945664635106456422166881627967598\\ldots$\\\\\n4&$31.81013979419927776012209427941545866492237285892013668350005\\ldots$\\\\\n5&$1.869462708725885120030080805051387134542481374813232701178304\\ldots$\\\\\n6&$3.428873379050567976208155749688133688667614469824389504923957\\ldots$\\\\\n7&$0.362583348071598548315763082767526599722077924892872839203426\\ldots$\\\\\n8&$0$\\\\\n9&$9.629273918234131678053742152263035417231796757756973886621556\\ldots$\\\\\n10&$16.04238857830583792513538634637663343755958963581574670348088\\ldots$\\\\\n11&$1247.321806154531180413038860827393095408344267114181914400926\\ldots$\n\\end{tabular}\n\\end{center}\nThe two second derivatives, divided by the same real periods, are\n\\begin{align*}\n L''(E_1,1)/\\Omega_1\n &=28.71408722758099118128474692322079946598060512912402172882525\\ldots,\\\\\n L''(E_8,1)/\\Omega_8\n &=78.03222041637032223732443782051140882655135939512581188900823\\ldots.\n\\end{align*}\nIn particular the leading Taylor coefficients for these two curves\nare half the displayed second derivatives.\n",
+    "sha256": "34f0ba17250b818cf0d5151bc5342f4491170f9226cf568485122cc0c1193f4b"
+  },
+  {
+    "name": "R2_coefficient_crosscheck",
+    "reason": "Independent coefficient and derivative comparison.",
+    "original": "The first 10000 coefficients agree\nexactly with PARI for both the untwisted and twisted curve. The same\ncode at $D=67,d=217$ reproduces the independent PARI derivative.",
+    "sha256": "a4d09bd3209971ef9f8f6200b3ba6f03e4f5d0a06c13caf14ee646027fab30ac"
+  },
+  {
+    "name": "R2_parallel_runs",
+    "reason": "Two independent implementations and full decimal output.",
+    "original": "\\item The 384-bit run used $R=128$ and cutoff $170$; a separate 512-bit\nrun used $R=96$ and cutoff $190$. Their values agree beyond 75\ndecimal places. The latter used $915818441$ coefficients in\nsegments, with an omitted tail less than $3.10\\cdot10^{-78}$,\nand gave\n\\[\n L'(E_{11},1)=\n 2.296582198163380608965915774436446055185027904705664673866754\\ldots.\n\\]\nThe elementary operation-rounding bounds at these precisions are\nsmaller than $10^{-90}$: in the recurrences above\n$|e_k|\\leq1$, $|g_k|\\leq1$, and $|\\phi_k|<20$;\nthere are fewer than $5\\cdot10^6$ blocks and the recurrences are\nrefreshed before 1024 consecutive continuations. Bounding each\nnormalized moment by $\\sum|a_n|(R/n_0)^k$ gives this estimate\nwithout assuming cancellation in the total sum. The arithmetic\nand truncation margins are amply sufficient for every displayed\n50-digit value. Both executable builds and both transcripts are\nretained as \\path{code/Crank_cm_stream*}.\n\n",
+    "sha256": "1baae6781ac2c9cd926aa759e181d77ccde2d896fea9a00c138aca77ca17c92e"
+  },
+  {
+    "name": "BSD_numerical_comparison",
+    "reason": "Initial numerical prediction superseded by exact factor theorems.",
+    "original": "\\paragraph{What the numerical BSD comparison does and does not determine.}\nFor a primitive rank-one point, the BSD prediction in these conventions is\n\\[\n \\frac{L'(E,1)}{\\Omega_E}\n =\\frac{2\\#\\operatorname{Sha}(E/\\Q)\\prod_pc_p}\n        {\\#E(\\Q)_{\\rm tors}^{\\,2}}\\,\\widehat h(P).\n\\]\nThe independently evaluated quotient after dividing by\n$2\\widehat h(P)\\prod_pc_p/\\#E(\\Q)_{\\rm tors}^2$ is one, to\nmore than 69 digits, for $i=2,3,4,5,6,7,9,10$, and nine for\n$i=11$. Thus the numerically predicted rational factors $q_i$ are\n\\[\n 8,4,32,4,8,4,16,16,576,\n\\]\nin that order. This initial numerical comparison alone proves neither\nthese exact factors nor the orders $1$ or $9$ of $\\operatorname{Sha}$.\nThe exact factors are subsequently proved in \\ref{ari:C.6.R4} and \\ref{ari:C.6.R5}:\nthe latter supplies an independent Gross--Zagier denominator bound\nand rigorous intervals for all remaining ratios. This determines\nthe analytic BSD quotients exactly, while the orders of\n$\\operatorname{Sha}$ are proved here only in the three cases of\n\\ref{ari:C.6.R4}. In particular primitivity alone does not determine\n$\\#\\operatorname{Sha}$ for the last curve.\n\n",
+    "sha256": "894d8fc515c9fe178ec260ce48709244cc332968a6bcb3402e3e0d87a46273e5"
+  },
+  {
+    "name": "R5_metadata_implementation",
+    "reason": "Program locations and implementation comparison.",
+    "original": "The first five completed computations are in\n\\path{code/invariants_arithmetic/arithmetic/outputs/writing_B_C6_gz_exact_metadata.gp.txt}. The separate exact audit\n\\path{code/B_C6_gz_exact_metadata.gp} checks the minimal equations,\nboth $c_4,c_6$ scaling identities for $b=d,dD$, both conductor\nidentities, all torsion orders, and all splitting conditions. It\ndoes not recognize any of these identities from floating-point\nscaling factors.\n\n",
+    "sha256": "b531b432ab22fd738286d6b290f87c3e485b65687342aacd35daf50fe0ce37a6"
+  },
+  {
+    "name": "R5_duplicate_period_enclosure",
+    "reason": "Same E4 tail and real-period transport already proved in R2.",
+    "original": "\\item \\textbf{6. Periods, heights, and exact rational separation.}\nThe periods are enclosed independently with 512-bit Arb. Let\n$\\tau=i\\sqrt s$ for $i=2,4$ and\n$\\tau=(1+i\\sqrt s)/2$ for $i=6,9,10,11$; here\n$s=3,7,11,43,67,163$, respectively. The exact CM identification\nand reduced-form class-number check are part of \\ref{ari:C.6.5}. Put\n$T=\\Im\\tau$, $q_\\tau=e^{2\\pi i\\tau}$, and\n$r=|q_\\tau|<10^{-4}$. We enclose\n\\[\n E_4(\\tau)=1+240\\sum_{n=1}^{100}\\sigma_3(n)q_\\tau^n\n                   +\\text{tail}.\n\\]\nSince $\\sigma_3(n)<2n^3$, with $A=101$ the absolute tail is at most\n\\[\n 480r^A\\left\\{\n \\frac{A^3}{1-r}+\\frac{3A^2r}{(1-r)^2}\n +\\frac{3Ar(1+r)}{(1-r)^3}\n +\\frac{r(1+4r+r^2)}{(1-r)^4}\\right\\}.\n\\]\nThe exact invariants $c_4,c_6$ of each minimal equation give\n$\\kappa=2\\pi(E_4(\\tau)/c_4)^{1/4}$. The sign of $E_6(\\tau)$\nis positive: $\\sigma_5(n)<2n^5$ and\n$n^5\\leq32^{n-1}$ give\n$|E_6(\\tau)-1|\\leq1008r/(1-32r)<1$.\nThus the full real period is\n\\[\n \\Omega=n_{\\R}\\kappa\\begin{cases}\n 1,&c_6>0,\\\\\n T,&c_6<0,\\ \\Delta>0,\\\\\n 2T,&c_6<0,\\ \\Delta<0,\n \\end{cases}\n \\qquad n_{\\R}=\\begin{cases}2,&\\Delta>0,\\\\1,&\\Delta<0.\\end{cases}\n\\]\nThese formulas apply separately to the target and auxiliary curve.\nEvery operation, the Fourier tail, and the fourth root is enclosed\nby Arb. The height intervals are the independent certificates\n\\path{records/C_cm_height_arb.json} of \\ref{ari:C.6.5}.\n\n",
+    "sha256": "174096c7de45e97f507f6dc8cebcf778ab8cd8cd1c7e65144647ccc21998f400"
+  },
+  {
+    "name": "T1_decimal_values",
+    "reason": "The exact norm and derivative formulas remain in the statement.",
+    "original": "Numerically the two sides of the global height identity equal\n\\[\n 0.191882091082837140334832621223697017300091790719064414669444\\ldots.\n\\]\nWith the full real period $\\Omega=5.9376498936895458116293755517\\ldots$,\nthe central derivative is\n\\[\n \\frac{L'(E,1)}\\Omega=\n 0.071331625531738774092617964261659879861112925567606085287841\\ldots.\n\\]\nThe analytic rank is zero; a vanishing first derivative is therefore\nnot expected even though the point $P$ is torsion.\n",
+    "sha256": "11ca154a5c22d70b42b34420ebfaf8a16c44f0b0ad7a9b36a8b5673b45f65b03"
+  },
+  {
+    "name": "T1_computation_narration",
+    "reason": "Exact results retained; output strings and independent comparison archived.",
+    "original": "The exact descent output is $[0,0,0,[]]$, and the torsion\ncalculation gives $\\Z/4\\Z$. These computations, the direct\nglobal equality and the analytic derivative are in\n\\path{code/Crank_torsion_local.gp} and\n\\path{code/Crank_torsion_final.gp}, with their outputs.\nAs a further check, the exact plus modular symbol from $0$ to\n$\\infty$ is $-1/4$ in the real-period lattice normalization;\nthe numerical ratio $L(E,1)/\\Omega$ is $1/8$. The completed\nfunctional equation then gives the checked expression\n$(\\gamma+\\log(2\\pi/\\sqrt{40}))/8$ for the displayed derivative\nratio. The local-height proof does not use this $L$-value check.\n",
+    "sha256": "811c107a9ee824bb625a4b243e470c6c34704f63edd2a0e837a78c0572a19199"
+  },
+  {
+    "name": "T2_decimal_height",
+    "reason": "Exact logarithm already displayed.",
+    "original": "The common value in the last line is\n\\[\n 0.199824606066530878671828631497094108318475571161451431268214\\ldots.\n\\]\n",
+    "sha256": "a01a99b7cfd8226e4b081f07da8a43085a4946154457b11ec32e1d29a3ae97cc"
+  },
+  {
+    "name": "T2_descent_execution",
+    "reason": "Package settings and compatibility history.",
+    "original": "The field arithmetic was certified by \\texttt{bnfcertify};\nSimon descent was run with \\texttt{LIMBIGPRIME=0}, so all local\ntests were deterministic. The complete transcript is\n\\path{code/Crank_torsion_descent_sage.out}. The unmodified\nSimon scripts maintained in Sage are retained with their source\nURLs; the older upstream scripts and their unsuccessful\ncompatibility attempts are also retained. ",
+    "sha256": "016c006d01fa8a3f1cef30d5100985e61a090494069e30f0c82f32c7a7546927"
+  },
+  {
+    "name": "T2_number_field_L_numerics",
+    "reason": "Uncertified decimal derivative comparison retained as check data.",
+    "original": "\\paragraph{The corresponding number-field $L$-derivative.}\nFor completeness, the natural replacement for the nonexistent\nrational-curve quantity at $t_\\pm$ can also be computed. Put\n\\[\n \\Omega_K=\\frac1{\\sqrt{12}}\n  \\prod_{\\sigma:K\\hookrightarrow\\R}\n       \\int_{E_\\sigma(\\R)}|\\omega_\\sigma|.\n\\]\nThe Hasse--Weil $L$-function over $K$ has analytic conductor\n$12^2\\cdot396=57024$, gamma parameters $(0,0,1,1)$, and sign\n$-1$. Direct 100-digit evaluation gives\n\\begin{align*}\n L'(E/K,1)&=2.046708855992864213402012895411307398829979893338038716037006\\ldots,\\\\\n L'(E/K,1)/\\Omega_K\n &=0.260797680551692455136263550519918387218960539765929916318910\\ldots.\n\\end{align*}\nThis is a value for the curve over $K$, common to the two\nconjugates. If the period is instead defined as the product of\nthe two full real periods, omitting the discriminant factor,\nthe ratio is\n$0.075285805535274833467509818428226475613981023404668273560620\\ldots$.\nBoth conventions and all input periods are explicitly recorded\nin \\path{code/Crank_torsion_final.out}; neither value enters\nthe exact torsion height proof.\n\n\n\n",
+    "sha256": "cd01e8f64bd10d305a3a1d64d44d9f9759c4a5578469a3ceda499f0b94e88fee"
+  }
+]

@@ -1,0 +1,26 @@
+# Preread derivations for the two filling statements
+
+Saved 2026-11-21 before opening night:P2.3 or night:P2.11 printed proofs. Source SHA d2e6c3bec1500144bfc0ef85e636ded534f2abc998cf58fdaf521b1e8a183169. Inputs read: target statements; all-proof-masked definitions and fam:E.1.1–E.1.4, push:A.1.2/A.2.2/A.3.1; night:P2.1 statement and its dependency proof (explicitly read for the actual character/sign conventions); Engel Conjecture8.2 primary page22 actually viewed. No target proof was opened.
+
+## night:P2.3 (02RD)
+
+On a finite base chart the periods w,u determine an elliptic curve E and a flat line bundle over E. Use characters Z=exp(2pi i zeta1), W=exp(-2pi i zeta2). The gamma period acts on W by r^12 times a holomorphic unit and translates the elliptic base by the holomorphic section 6mu. Replace the W-coordinate over r=0 by the usual infinite chain: adjacent charts have local equation x_j y_j=r, and their nonzero-r overlap is the annulus coordinate W times r-powers. The gamma action shifts the chain index by twelve and acts on E by that translation, with the inherited unit. Its quotient has twelve P1-bundles over E in a cycle. Each local equation xy=r makes the total space smooth and the central divisor reduced normal crossing. A finite chain of annuli plus compact elliptic base gives compact inverse images over a smaller parameter disc; this is the local properness statement, and properness is local on the base.
+
+The exact finite affine translation has gamma coefficient l_j/m_j. Since the gamma column's second entry contains -12v and W=exp(-2pi i zeta2), it multiplies W by r^(12l_j/m_j) times an extending unit. Thus on component labels it rotates by 4l1 at m1=3 and 3l2 at m2=4. Every nonidentity power has nonzero rotation modulo12 because 3 does not divide l1 and l2 is odd; it acts freely on all central components and nodes. Combined with the known free punctured action, the finite quotient has smooth total space and reduced normal crossings. The action at infinity is the inverse product, hence rotation -b where b=4l1+3l2. The cyclic component local system with these monodromies is the Kummer cover y^12=t^(4l1)(t-1)^(3l2): continuation around a positive loop multiplies a chosen twelfth root by exp(2pi i times the respective exponent/12). The reciprocal product gives the infinity exponent exactly. This fixes the component-label convention and supplies an explicit map between the label systems.
+
+Over r nonzero the original cusp filling remains available. Its overlap with the partial finite-base construction is the same original torus family with the actual parameter descent of P2.1. Glue over the open base cover (finite base times Delta_r) union (cusp disc times Delta_r*). These base-local proper models agree on the stated overlap and give the claimed proper partial filling on the complement of (infinity,0). This argument makes no assertion at that deleted corner.
+
+## night:P2.11 (02RB)
+
+Engel's actually read Conjecture8.2 on p22 specifies R=P_S(O+M) with its zero/infinity sections glued by t_(6P). The earlier datum fam:E.1.1 identifies the resulting reduced lci Q, normalization nu:R->Q, and its local smoothing line T1=pi_S*O_B(1) on the double locus S. Put F=pi_S*[point], pulled back also to R. S is the rational elliptic surface: c1(TS)=F, F²=0, integral c2(TS)=12. Let D0,Dinfinity be the two disjoint sections of R, and D=D0+Dinfinity. Their normals are L and L^-1, so c1(T_R/S)=D.
+
+Derive the virtual tangent class from the actual local normalization map, not from an assumed smoothing. At xy=0 with branch R={x=0}, the pulled-back cotangent complex has differential y dx, with kernel contribution represented by [normal_x^* tensor O(-D)] -> [normal_x^*]. Dualizing in K theory gives the correction -i_*T1 on that branch: normal_x times normal_y is precisely T1. This is invariant under change of normal coordinates, hence the two branches give
+  [nu* T_Q^vir]=[TR]-[i0_* T1]-[iinfinity_* T1].
+T1 is the restriction of O_R(F) at both sections (the gluing translation preserves the elliptic fibration). Resolve each supported line by
+  [i_*T1]=[O_R(F)]-[O_R(F-D_i)].
+Consequently
+  c(nu*T_Q^vir)=c(TR)(1+F-D0)(1+F-Dinfinity)/(1+F)^2
+               =c(TR)(1-D+FD),
+using D0 Dinfinity=0 and F²=0. Its degree-three part is c3(TR)-D c2(TR)+FD c1(TR). Since c(TR)=pi_R*c(TS)(1+D), we have c3(TR)=D c2(TS), c2(TR)=c2(TS)+F D, c1(TR)=F+D. The degree-three expression cancels identically: D c2S-D(c2S+FD)+FD(F+D)=F²D=0. Equivalently, its integral is 24-24+0. The finite normalization has degree one on the fundamental cycle, so evir(Q)=0.
+
+By the cited analytic lci specialization lemma push:A.3.1, any proper flat smoothing of this Q has smooth-fibre Euler number zero. The established untwisted family has Euler number2: the two-branch semistable filling in push:A.2.2 has normalization Euler26 and double surface Euler12, giving 26-2*12=2 (or the already stated untwisted Betti table gives the same alternating sum). Therefore the exact proposed central Q does not occur in such a smoothing. This preread computation uses the specialization lemma as a proved input; it does not newly certify that lemma's analytic proof. It makes no assertion ruling out the explicitly modified central models.
