@@ -1,0 +1,286 @@
+# Paper I closure validation
+
+Status: **OPEN**.
+
+Source: `26a6f5f8b1e911de363bed7346e970bc8fb77b21cf04fe9a2ce4d1f90d95b49e`.
+PDF: `519355e39d7d821a10d728d5c8dbf69a50826ee215ab98619803d44e1cae2a2b`.
+Ledger: `e45bf7b52aff58c0d9fb4a474cd97e9dd7615c761c4a1a79983e268bd27fe714`.
+
+No shared files were changed; no mathematical event was added.
+
+## Remaining gates
+
+- **file**: /workspace/scratch/653608133b22/work/records/S6_SERIES_PUBLISH_I_final_pdf_receipt.json
+- **source-binding**: final PDF receipt: current source hash
+- **pdf-binding**: final PDF receipt
+- **manifest-binding**: final PDF receipt
+- **page-certification**: final PDF receipt
+- **page-coverage**: final PDF receipt
+- **page-certification**: page coverage
+- **page-coverage**: page coverage
+- **page-coverage**: Final receipt names the checked coverage record
+- **file**: /workspace/scratch/653608133b22/work/S6_SERIES_PUBLISH_I.pdf
+- **reading-pages**: One coverage row for every final page
+- **current-metadata**: Metadata certified against the final PDF
+- **source-binding**: methodology counts: current source hash
+- **source-binding**: defect map: current source hash
+- **defect-map**: Certified current source/PDF page map
+- **defect-map-rows**: Every edit mapped exactly once
+- **bound-file**: Original PDF page-locus receipt: exact file hash
+- **unmapped-edit**: I-00012
+- **edit-page-disposition**: I-00012 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00013
+- **edit-page-disposition**: I-00013 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00014
+- **edit-page-disposition**: I-00014 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00015
+- **edit-page-disposition**: I-00015 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00016
+- **edit-page-disposition**: I-00016 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00017
+- **edit-page-disposition**: I-00017 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00018
+- **edit-page-disposition**: I-00018 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00023
+- **edit-page-disposition**: I-00023 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00032
+- **edit-page-disposition**: I-00032 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00034
+- **edit-page-disposition**: I-00034 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00038
+- **edit-page-disposition**: I-00038 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00048
+- **edit-page-disposition**: I-00048 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00049
+- **edit-page-disposition**: I-00049 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00081
+- **edit-page-disposition**: I-00081 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00096
+- **edit-page-disposition**: I-00096 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00102
+- **edit-page-disposition**: I-00102 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00141
+- **edit-page-disposition**: I-00141 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00156
+- **edit-page-disposition**: I-00156 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00162
+- **edit-page-disposition**: I-00162 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00166
+- **edit-page-disposition**: I-00166 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00194
+- **edit-page-disposition**: I-00194 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00206
+- **edit-page-disposition**: I-00206 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00212
+- **edit-page-disposition**: I-00212 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00214
+- **edit-page-disposition**: I-00214 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00217
+- **edit-page-disposition**: I-00217 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00221
+- **edit-page-disposition**: I-00221 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00225
+- **edit-page-disposition**: I-00225 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00228
+- **edit-page-disposition**: I-00228 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00265
+- **edit-page-disposition**: I-00265 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00268
+- **edit-page-disposition**: I-00268 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00279
+- **edit-page-disposition**: I-00279 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00286
+- **edit-page-disposition**: I-00286 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00288
+- **edit-page-disposition**: I-00288 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00301
+- **edit-page-disposition**: I-00301 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00308
+- **edit-page-disposition**: I-00308 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00331
+- **edit-page-disposition**: I-00331 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00344
+- **edit-page-disposition**: I-00344 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00369
+- **edit-page-disposition**: I-00369 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00370
+- **edit-page-disposition**: I-00370 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00371
+- **edit-page-disposition**: I-00371 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00372
+- **edit-page-disposition**: I-00372 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00373
+- **edit-page-disposition**: I-00373 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00374
+- **edit-page-disposition**: I-00374 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00375
+- **edit-page-disposition**: I-00375 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00376
+- **edit-page-disposition**: I-00376 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00377
+- **edit-page-disposition**: I-00377 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00378
+- **edit-page-disposition**: I-00378 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00400
+- **edit-page-disposition**: I-00400 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00404
+- **edit-page-disposition**: I-00404 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00438
+- **edit-page-disposition**: I-00438 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00447
+- **edit-page-disposition**: I-00447 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00480
+- **edit-page-disposition**: I-00480 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00491
+- **edit-page-disposition**: I-00491 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00492
+- **edit-page-disposition**: I-00492 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00493
+- **edit-page-disposition**: I-00493 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00494
+- **edit-page-disposition**: I-00494 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00496
+- **edit-page-disposition**: I-00496 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00500
+- **edit-page-disposition**: I-00500 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00569
+- **edit-page-disposition**: I-00569 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00572
+- **edit-page-disposition**: I-00572 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00573
+- **edit-page-disposition**: I-00573 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00585
+- **edit-page-disposition**: I-00585 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00587
+- **edit-page-disposition**: I-00587 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00595
+- **edit-page-disposition**: I-00595 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00621
+- **edit-page-disposition**: I-00621 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00627
+- **edit-page-disposition**: I-00627 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00628
+- **edit-page-disposition**: I-00628 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00629
+- **edit-page-disposition**: I-00629 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00635
+- **edit-page-disposition**: I-00635 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00640
+- **edit-page-disposition**: I-00640 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00723
+- **edit-page-disposition**: I-00723 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00837
+- **edit-page-disposition**: I-00837 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00893
+- **edit-page-disposition**: I-00893 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00903
+- **edit-page-disposition**: I-00903 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00904
+- **edit-page-disposition**: I-00904 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00905
+- **edit-page-disposition**: I-00905 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00906
+- **edit-page-disposition**: I-00906 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00994
+- **edit-page-disposition**: I-00994 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00995
+- **edit-page-disposition**: I-00995 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00997
+- **edit-page-disposition**: I-00997 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00998
+- **edit-page-disposition**: I-00998 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-00999
+- **edit-page-disposition**: I-00999 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-01000
+- **edit-page-disposition**: I-01000 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-01001
+- **edit-page-disposition**: I-01001 new: explicit nonprinting/removed/intermediate disposition
+- **unmapped-edit**: I-01002
+- **edit-page-disposition**: I-01002 new: explicit nonprinting/removed/intermediate disposition
+- **defect-types-certified**: All-type closure is certified against final PDF
+- **defect-type-status**: D01
+- **defect-type-status**: D02
+- **defect-type-status**: D03
+- **defect-type-status**: D04
+- **defect-type-status**: D05
+- **defect-type-status**: D06
+- **defect-type-status**: D07
+- **defect-type-status**: D08
+- **defect-type-status**: D09
+- **defect-type-status**: D10
+- **defect-type-status**: D11
+- **defect-type-status**: D12
+- **defect-type-status**: D13
+- **defect-type-status**: D14
+- **defect-type-status**: D15
+- **defect-type-status**: D16
+- **defect-type-status**: D17
+- **defect-type-status**: D18
+- **defect-type-status**: D19
+- **defect-type-status**: D20
+- **defect-type-status**: D21
+- **defect-type-status**: D22
+- **defect-type-status**: D23
+- **defect-type-status**: D24
+- **defect-type-status**: D25
+- **file**: /workspace/scratch/653608133b22/work/records/S6_SERIES_PUBLISH_I_main_dependency_dispositions.json
+- **source-binding**: current dependency closure: current source hash
+- **dependency-current**: Current-source/ledger dependency recomputation certified
+- **dependency-pending**: No pending current I required checks
+- **bound-file**: Dependency completion_manifest: path/SHA binding missing
+- **bound-file**: Dependency candidate_table: path/SHA binding missing
+- **bound-file**: Dependency current_statements: path/SHA binding missing
+- **dependency-scope**: Current main-theorem closure size explicitly recorded
+- **source-binding**: 42-claim table: current source hash
+- **bound-file**: Provenance source: exact file hash
+- **bound-file**: Provenance final_coverage: path/SHA binding missing
+- **provenance-hashes**: Final source and ledger
+- **provenance-pdf**: Final PDF bound
+- **provenance-certified**: 42 claims with certified PDF binding
+- **claim-table-pdf**: Final PDF bound inside the42-claim table
+- **provenance-final-coverage**: provenance binder
+- **provenance-final-coverage**: 42-claim table
+- **provenance-disposition**: I-P01
+- **provenance-disposition**: I-P02
+- **provenance-disposition**: I-P03
+- **provenance-disposition**: I-P04
+- **provenance-disposition**: I-P05
+- **provenance-disposition**: I-P06
+- **provenance-disposition**: I-P07
+- **provenance-disposition**: I-P08
+- **provenance-disposition**: I-P09
+- **provenance-disposition**: I-P10
+- **provenance-disposition**: I-P11
+- **provenance-disposition**: I-P12
+- **provenance-disposition**: I-P13
+- **provenance-disposition**: I-P14
+- **provenance-disposition**: I-P15
+- **provenance-disposition**: I-P16
+- **provenance-disposition**: I-P17
+- **provenance-disposition**: I-P18
+- **provenance-disposition**: I-P19
+- **provenance-disposition**: I-P20
+- **provenance-disposition**: I-P21
+- **provenance-disposition**: I-P22
+- **provenance-disposition**: I-P23
+- **provenance-disposition**: I-P24
+- **provenance-disposition**: I-P25
+- **provenance-disposition**: I-P26
+- **provenance-disposition**: I-P27
+- **provenance-disposition**: I-P28
+- **provenance-disposition**: I-P29
+- **provenance-disposition**: I-P30
+- **provenance-disposition**: I-P31
+- **provenance-disposition**: I-P32
+- **provenance-disposition**: I-P33
+- **provenance-disposition**: I-P34
+- **provenance-disposition**: I-P35
+- **provenance-disposition**: I-P36
+- **provenance-disposition**: I-P37
+- **provenance-disposition**: I-P38
+- **provenance-disposition**: I-P39
+- **provenance-disposition**: I-P40
+- **provenance-disposition**: I-P41
+- **provenance-disposition**: I-P42
+- **root-42-review-hash**: Root review bound to final claim table
+- **root-42-review**: Root42 review completed with no outstanding rebinding

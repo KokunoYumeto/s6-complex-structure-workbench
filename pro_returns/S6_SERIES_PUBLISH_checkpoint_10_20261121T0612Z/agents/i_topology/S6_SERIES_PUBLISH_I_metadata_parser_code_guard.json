@@ -1,0 +1,14 @@
+{
+  "target": "/workspace/scratch/653608133b22/work/code/S6_SERIES_PUBLISH_current_metadata.py",
+  "target_sha256": "76ef16c490df27cd6452362b748b1b3b6a70bfc3c06ef2cba7e7db46f51cc1cd",
+  "reference_parser": "/workspace/scratch/653608133b22/work/agents/provenance/code/S6_SERIES_PUBLISH_recompute_records.py",
+  "reference_parser_sha256": "43a628b37883435e01e52fadbfe8a892c39b686bc019026268e5621033752484",
+  "guards": [
+    {
+      "old": "for m in ENV.finditer(s,docstart):\n    end=s.index('\\\\end{'+m[1]+'}',m.end())+len('\\\\end{'+m[1]+'}')\n    after=re.match(r'\\s*\\\\begin\\{proof\\}',s[end:])\n    if after:end=s.index('\\\\end{proof}',end)+len('\\\\end{proof}')",
+      "new": "matches=list(ENV.finditer(s,docstart))\nprogram_table_start=s.find(r'\\section*{Programs}',docstart)\nfor i,m in enumerate(matches):\n    end=s.index('\\\\end{'+m[1]+'}',m.end())+len('\\\\end{'+m[1]+'}')\n    stop=matches[i+1].start() if i+1<len(matches) else s.find(r'\\begin{thebibliography}',end)\n    if stop<0:stop=len(s)\n    if program_table_start>=end:stop=min(stop,program_table_start)\n    # Include a source-credit paragraph before the immediate proof, but never\n    # attach a proof beyond the next numbered environment or section heading.\n    gap=s[end:stop]\n    heading=re.search(r'\\\\(?:section|subsection|subsubsection|part)\\*?\\{',gap)\n    if heading:gap=gap[:heading.start()]\n    proof=re.search(r'\\\\begin\\{proof\\}',gap)\n    if proof:\n        depth=0\n        for token in re.finditer(r'\\\\(begin|end)\\{proof\\}',gap[proof.start():]):\n            depth+=1 if token.group(1)=='begin' else -1\n            if depth==0:\n                end+=proof.start()+token.end()\n                break\n        else:\n            raise ValueError('Unclosed immediate proof after statement at line '+str(s.count('\\n',0,m.start())+1))",
+      "reason": "Include the immediately following proof through a source-credit paragraph or retained marker gap, bounded by the next numbered environment/section; match the authoritative recompute parser and balance nested proof environments."
+    }
+  ],
+  "scope": "Metadata extraction only. No shared writes, mathematical events, check-row changes, or new mathematical credit."
+}
