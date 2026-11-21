@@ -1,0 +1,206 @@
+\begin{theorem}[Certified values of $h_b$]\hypertarget{tag-02QP}{}\label{night:P1.16}
+\StatementRecord{night:P1.16}{proved}{02QP}{\SeriesRef{night:P1.15}, \SeriesRef{night:P1.18}, \SeriesRef{night:P1.8}}
+In the canonical splitting $\sigma_b$ of \cref{night:P1.15},
+\[
+\begin{aligned}
+-1.0342766224163217994942488453783461&<h_b(1),\\
+h_b(1)&<-1.0342766224163217994942488453783460.
+\end{aligned}
+\]
+In particular $h_b(1)<-1$.  The parameter $c=5/(3\pi)$, the exceptional value of \cref{night:P1A.2}, lies outside the global transversality domain.  
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[label={$\langle1\rangle$\arabic*.}]
+\item \textbf{The rational connection and the marked paths.}
+Put $a=256/3125=-\lambda_*$ and
+\[
+ D(\lambda)=\operatorname{diag}(1,\lambda^2,\lambda,1,
+                              \lambda^{-1},\lambda^{-2}).
+\]
+For the row-frame equation $Y'=Y\Gamma_6$ of \cref{night:P1.15}, the exact
+change $\widetilde Y=YD$ gives
+\[
+ \widetilde\Gamma
+ =D^{-1}\Gamma_6D+D^{-1}D'
+ =\frac{R_0}{\lambda}+\frac{R_*}{\lambda+a},\qquad
+ R_0=\lim_{\lambda\to0}\lambda\widetilde\Gamma,
+ \quad R_*=\lim_{\lambda\to-a}(\lambda+a)\widetilde\Gamma.
+\]
+These formulas specify both rational residue matrices entry by entry
+from (1.15.1)--(1.15.2).  Direct rational multiplication verifies the
+identity.  Their maximum absolute row-sum norms are
+\[
+ \|R_0\|_\infty=\frac{3125}{256},\qquad
+ \|R_*\|_\infty=\frac{14575}{768}.
+\]
+Let $r=1/32$.  The zero meridian is the polygon with successive
+vertices
+\[
+ 1,\ r,\ r+ir,\ -r+ir,\ -r-ir,\ r-ir,\ r,\ 1.
+\]
+The infinity meridian has successive vertices
+\[
+ 1,\ 1-i,\ -1-i,\ -1+i,\ 1+i,\ 1.
+\]
+The first runs counterclockwise about $0$ and excludes $-a$; the
+second runs clockwise about both finite poles, hence positively
+about infinity.  The zero square has radial distance between $r$
+and $\sqrt2r<a$, and the infinity square between $1$ and $\sqrt2$,
+with $1>a$.  Linear interpolation of these positive radial distances
+to $r$ and $1$, respectively, gives based homotopies through the
+corresponding punctured regions to their circular meridians; the
+zero stem remains the positive segment.  Thus these are the based meridians of \cref{night:P1.15}, with matrices $B$ and $A$, respectively.
+Since $D(1)=I$, the gauge
+keeps their based matrices unchanged.  The open comparison path
+from $1$ to $2$ is the positive real segment.
+
+\item \textbf{The Taylor recurrence and its complete error bound.}
+Write $M_1=R_0+R_*$ and $M_0=aR_0$.  At a rational complex center
+$z$, set
+\[
+ Q_0=z(z+a),\quad Q_1=2z+a,\quad P_0=zM_1+M_0.
+\]
+For the fundamental solution $T(t)=\sum_{n\ge0}T_nt^n$ normalized
+by $T_0=I$, multiplication of
+$T'=T(M_1(z+t)+M_0)/((z+t)(z+a+t))$ gives, with $T_{-1}=0$,
+\[
+ (n+1)Q_0T_{n+1}
+ =T_nP_0+T_{n-1}M_1-nQ_1T_n-(n-1)T_{n-1}.
+\]
+This recurrence uses only rational connection coefficients and
+outward-rounded complex balls.
+
+For each step put
+\[
+ d_0=\max(|\operatorname{Re}z|,|\operatorname{Im}z|),\quad
+ d_*=\max(|\operatorname{Re}(z+a)|,|\operatorname{Im}z|),
+ \quad R=\tfrac12\min(d_0,d_*).
+\]
+The segment is subdivided with rational increments $h$ satisfying
+$|h|_1=|\operatorname{Re}h|+|\operatorname{Im}h|\le R/4$.
+The whole complex disc $|t|\le R$ avoids both poles, and on it
+\[
+ \|\widetilde\Gamma(z+t)\|_\infty\le
+ M=\frac{\|R_0\|_\infty}{d_0-R}
+   +\frac{\|R_*\|_\infty}{d_*-R}.
+\]
+The integral equation and Gronwall's estimate
+\cite[Lemma~2.7, pp.~42--43]{TeschlODE2012}, followed by Cauchy's
+coefficient formula
+\cite[\S1.9(iii), (1.9.30)--(1.9.31)]{DLMFCauchy2026}, give the
+entrywise degree-$N$ tail bound
+\[
+ E_N=\exp(MR)\frac{(|h|_1/R)^{N+1}}{1-|h|_1/R}.
+ \tag{1.16.1}
+\]
+Adding the real and imaginary error balls of radius $E_N$ to each
+entry therefore encloses the exact transition.  All subsequent
+matrix products and inverses retain those radii.  The order starts
+at $32$ and is increased by $16$ until $E_N<10^{-100}$.
+There are $120$ steps for the zero meridian, $66$ for the infinity
+meridian and $6$ for the open path, hence $192$ in total; the
+largest order is $192$.  
+
+\item \textbf{The normalized intertwiner and the height.}
+Let $H_0,H_\infty$ denote the two computed based transition matrices.
+The exact equations are
+\[
+ XH_0=BX,\qquad XH_\infty=AX,\qquad Xe_0=e_0.
+\]
+\Cref{night:P1.15} proves their simultaneous existence and uniqueness.  The
+fixed first column leaves thirty unknowns.  We select thirty of
+the sixty scalar equations in the other five columns and certify
+their coefficient matrix inverse in complex-ball arithmetic.
+The exact common solution therefore belongs to the resulting
+matrix ball; the remaining equations are also checked to contain
+zero.  Their consistency is given by \cref{night:P1.15}.
+
+Likewise, the real intersection in (1.15.3) is computed from an
+invertible four-equation subsystem in
+$(\operatorname{Re}v_2,\operatorname{Im}v_2,
+  \operatorname{Re}v_1,\operatorname{Im}v_1)$.
+\Cref{night:P1.8} proves the existence and uniqueness of the full intersection;
+the unused equation is checked with its interval radius retained.
+At $\lambda=1$ the resulting height ball has radius less than
+$4\cdot10^{-91}$.  It is contained in the following wider displayed
+interval:
+\[
+\begin{aligned}
+ h_b(1)\in\bigl[&
+ -1.03427662241632179949424884537834605259496477790218821132\\
+ &\qquad\mathbin{\pm}8.11\cdot10^{-57}\bigr].
+\end{aligned}
+\]
+It lies strictly between the two decimal endpoints in the statement.
+Since $5/(3\pi)<1$, we have $h_b(1)+5/(3\pi)<0$.
+The cusp asymptotic in \cref{night:P1.8} gives $h_b+c\to+\infty$ along a path
+to the cusp.  Continuity on a path from $1$ to that region therefore
+supplies a zero for $c=5/(3\pi)$, proving its inadmissibility.
+
+\item \textbf{The regular-root evaluation and the exact comparison.}
+The second method uses the regular frames with powers
+$(0,6,3,0,-3,-6)$ for $\lambda=u^4$ at zero and
+$(0,-8,-4,0,4,8)$ for $\lambda=u^{-5}$ at infinity.
+Their transformed connections have denominators
+$3125u^4+256$ and $3125+256u^5$.  The regular-root recurrences,
+finite deck characters and normalized intertwiner construction
+are displayed in the proof of \cref{night:P1.18}.  They specify $X_{\rm root}$
+and the constant infinity frame $F_\infty$ without integrating a
+closed loop.
+
+Let $T_{12}$ be the Fuchsian transition on the positive segment.
+The first method gives
+\[
+ Y_2=XT_{12}D(2)^{-1}.
+\]
+For the second method put $u=2^{-1/5}$ and
+$D_\infty(u)=\operatorname{diag}(1,u^{-8},u^{-4},1,u^4,u^8)$.
+Let $U_\infty$ solve $U_\infty'=U_\infty\Gamma_\infty$ with $U_\infty(0)=I$.  The second evaluation is
+\[
+ Y_{2,\rm root}=F_\infty U_\infty(2^{-1/5})
+                         D_\infty(2^{-1/5})^{-1}.
+\]
+The explicit polynomial numerator of $\Gamma_\infty$ is obtained
+by the stated gauge and chain rule from $\Gamma_6$; its coefficient
+matrices are saved.  On $|u|\le5/4$, its denominator has modulus
+at least $2343.75$, and the row-sum connection bound is $65.6375$.
+The degree-$880$ Taylor polynomial and (1.16.1) consequently give
+an error less than $5.39\cdot10^{-103}$ at $2^{-1/5}$.
+The complete ball comparisons give
+\[
+ \max_{i,j}|(X-X_{\rm root})_{ij}|<1.37\cdot10^{-73},\qquad
+ \max_{i,j}|(Y_2-Y_{2,\rm root})_{ij}|<4.71\cdot10^{-74}.
+\]
+Thus both period matrices agree to more than thirty decimal digits
+under the explicit frame maps above.
+
+\item \textbf{The period planes.}
+For the real parameter $c$ the period matrix is
+\[
+ W_c=(Y_{*,1},\,Y_{*,2},\,Y_{*,3}-(625\pi/96)c\,e_0).
+\]
+Conjugation of $\det(W_c,\overline{W_c})$ interchanges two blocks
+of three columns, so it multiplies the determinant by $(-1)^9=-1$.
+Thus the determinant is purely imaginary.  At the two points above
+and $c=10$, its positive imaginary parts are
+\[
+\begin{gathered}
+ 88279007523.2167451846066607088299709479845\ldots,\\
+ 3178499608.3637608517583236010752861132441\ldots .
+\end{gathered}
+\]
+The complete stored balls have radii less than $4\cdot10^{-79}$
+and $2\cdot10^{-80}$, respectively.  These are evaluations at the
+two specified points.  The global admissibility of $c=10$ follows
+from the complete minimum argument in \cref{night:P1.18}.  The regular-root
+calculation there also gives
+\[
+\begin{split}
+ h_b(\infty)&=-1.094540250311402780116268263054945703725533\ldots,\\
+ h_b(0)&=-0.931793376356523505430795105796011114990828\ldots .
+\end{split}
+\]
+
+The computation is done by the program \texttt{period\_loop\_comparison.py} in interval arithmetic (python-flint, Arb) with 140 decimal digits; a second program, \texttt{validate\_saved\_period\_comparison.py}, rechecks the saved enclosures and every displayed bound.
+\end{enumerate}
+\end{proof}
