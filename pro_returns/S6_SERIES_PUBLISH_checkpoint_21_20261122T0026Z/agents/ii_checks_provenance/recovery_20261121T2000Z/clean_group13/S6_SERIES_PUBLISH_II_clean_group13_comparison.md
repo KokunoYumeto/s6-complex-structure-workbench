@@ -1,0 +1,52 @@
+# CB/CC: frozen derivations and complete printed-proof comparison
+
+Both fresh derivations were written and frozen before either target proof was released: 01CB at 2026-11-21 23:51:22 UTC and 01CC at 23:51:25 UTC. The checker subsequently read both complete original statement/proof blocks, both complete v1 proposed blocks and both complete final v2 blocks, including every displayed and inline formula. The original files are exact current-source occurrences at preparation. The final pair-reading record binds the exact files; the preparation lists every literal change. This record proposes two targeted proof checks and two actual comparative rereadings. It adds no event to the canonical ledger.
+
+## 01CB: reducible supports and the rational exception
+
+| Printed proof step | Fresh derivation and exact comparison | Outcome |
+|---|---|---|
+| Kähler normalization, pluricanonical section, effective divisor and ruling | The fresh adjunction map is given by the branch residue of the ambient meromorphic three-form. It proves c₁(K_T)+[D]=0. The printed effective divisor E+nD has zero rational class and strictly positive Kähler integral, as stated. The opened Peters classification table gives the rational/ruled alternatives. For a general ruling fibre, K·F=−2 gives D·F=2; a conductor component dominating the base has genus at most one by C.NC.2, and Riemann–Hurwitz gives base genus at most one. | All original alternatives, inequalities and values hold. Peters p.843 is now cited at this first use. |
+| Non-Kähler normalization and Euler invariants | The fresh proof uses the independent O–V–V minimal-model classification and explicit free cyclic elliptic charts. Its class-VII Hodge calculation and elliptic tangent/Chern pullback give χ(O)=0. The printed route instead uses Peters Theorem2.2 Chern-number table and BMS Theorem3.2. Both cited pages were opened and actually read: the Peters table gives classVII c₁²=−b₂,c₂=b₂ and Kodaira zero Chern numbers; BMS p.16 gives e=0 for minimal elliptic surfaces with odd b₁. Blow-up adds one to e and leaves χ(O) fixed. | Printed χ=0 and e≥0 are verified in their full non-Kähler domain. No claim that Peters alone gives the elliptic e=0 was made. |
+| Rational component cannot meet another global component | The printed pullback is ν_i^*O_Y(S_j), j≠i, with its pulled-back canonical section. The Chern class vanishes rationally; Picard injectivity and free H² on a rational surface make the line trivial, forcing its nonzero section to have no zero. The fresh proof establishes the stronger component fact needed here by the same actual ambient pullback: every reducible normalization is non-Kähler because the nonempty pulled-back divisor has zero class, contradicting a Kähler integral. | No distinction between local branches and global components is assumed without this map. The printed argument remains intact; its j≠i condition is preserved. The deleted defensive sentence adds no missing restriction. |
+| τ=0, elliptic conductor, e(T_i)=0 and e(S)=0 | Fresh derivation first gives every χ(O_Ti)=0 and hence τ=0. It then computes D_i² through the exact normal-line products along double curves: external component divisors give individual degree zero, while a self-double curve gives p*O_Y(S_i)=N⊗ι*N, including a connected sheet-exchanging cover. Thus K²=D²=0, and Noether gives individual e(T_i)=0. The printed proof obtains the same values from nonnegativity and the weighted nearby-Euler equation. | Both methods give every individual Euler value. The final proof makes the weighted equation explicit: a smooth branch contributes its multiplicity, while x^m y^n has annular nearby fibres of Euler number zero. With τ=0 and e(D_i)=0, Euler integration yields the unchanged displayed equation. Self-double branches have equal exponents; distinct global components retain arbitrary positive unequal multiplicities. |
+| Irreducible singular support | The fresh proof uses τ/2=χ(O_T)>0 to force Kählerness, then negative canonical degree against a Kähler form to get p_g=P₂=0, q=0 and τ=2. It explicitly obtains projectivity from a rational Kähler class, transports q and P₂ to a smooth projective minimal model, and applies the opened Hassett Theorem2.26 on p.178. The printed proof instead applies its already checked classification cases directly: χ is zero except for rational normalization, where it is one. | The same original τ∈{0,2} alternatives and rational-normalization conclusion follow. The final mathematical conclusion is retained as a deduction; only its proof-status wrapper is removed. |
+
+The target's assumptions are already explicitly smooth. There is no new smooth-domain restriction and no assertion about singular ambient threefolds. No mathematical counterexample or false original statement was found. The two full proofs keep their original statements' mathematical contents and all original display blocks, labels and tags.
+
+## 01CC: global Euler identity and every line-bundle twist
+
+The fresh derivation applies C.NC.3 to each irreducible support, including a smooth multiple fibre, and the separately frozen CB derivation to every reducible support. Every positive summand is an irreducible support with rational normalization and τ=2. Conversely a rational normalization has χ(O)=1, so C.NC.2 forces τ=2; a smooth rational support would contradict the same coherent identity. This justifies precisely the count r in the original statement.
+
+The complete original proof's finite critical-value argument, Euler additivity, underlying-space identification for nilpotents, Gauss–Bonnet and six-dimensional Poincaré duality agree with the fresh derivation. The literal `(C.NC.1)` is not an available exact current label in the bounded lookup. Its smooth-support deduction has a direct already-cited input: the connected smooth support is irreducible, its scheme fibre is mS, and C.NC.3 gives e(S)=τ(S)=0. The final proof states this actual application. It leaves every numerical conclusion unchanged. The proof's final Betti deduction is now explicitly b₃=2−2r≥0 under the additional b₁=0 hypothesis.
+
+For the normalization obstruction the actual line-bundle map is
+
+    Pic(Y) → Pic(T) → H²(T,Z),
+    A ↦ (i∘η)*A ↦ (i∘η)*c₁(A).
+
+H²(Y,Q)=0 makes the last class rationally zero. On the smooth rational T, H¹(O)=H²(O)=0 and H²(T,Z) is free; the exponential sequence identifies Pic(T) with H²(T,Z). Thus every ambient line bundle pulls back holomorphically trivially. Serre duality gives the first one-dimensional group for every L. No claim of a simultaneously canonical trivialization is needed.
+
+For the ambient group put A=(K_Y⊗L⁻¹)|S, N*=O_Y(−S)|S, V=Ω_Y¹|S and Q=Ω_S¹/Tor. The exact maps are
+
+    0 → K → V → Q → 0,
+    K ≅ η_*η*N*,
+    Q ↪ η_*Ω_T¹.
+
+The second map is the supplied normal-crossings map `(a_i) ↦ Σ a_i∏_{j≠i}x_j dx_i` with `[F]` trivializing N*. The last map is differential pullback, whose kernel before quotienting is exactly torsion: generically it is injective, and non-zero-divisors remain non-zero-divisors on all normalization branches. After twisting and the finite-map projection formula, H⁰(Q⊗A)=0 because η*A is trivial and H⁰(Ω_T¹)=0. The exact sequence gives H⁰(V⊗A)=H⁰(K⊗A)=H⁰(O_T)=C. The final block now displays these actual kernel/differential maps rather than just naming the normalization comparison.
+
+These calculations use the reduced Cartier divisor S. They hold when the full fibre is mS; no step sets m=1. The positive multiplicity sentence remains in the statement, and mS remains in the proof. The removed final sentences were a recap, language about a requested target, and an announcement of separate work; they contained no additional hypothesis or mathematical deduction beyond the retained equations and scope.
+
+The CDP application uses the currently corrected smooth C.3.1 domain. The old safe packet's broader wording is retained as historical input bytes; the check does not certify that broader singular reading or re-edit C.3.1. C.3.5 supplies the exact Euler-number input for all the stated smooth-fibre types.
+
+## Primary sources, bounded computation scope, and timing
+
+The prereading primary receipt binds the O–V–V v3 PDF, its theorem/local-model locators and actual reading; it also binds Hassett's exact printed theorem page. The postrelease primary receipt binds Peters's journal PDF and BMS's 27 October2011 author edition, including the actual full-page views at journal843 and preprint16. Those latter two readings compare the printed proof's cited route and did not precede the frozen independent derivations. Their precise page locators are the only new bibliographic mathematics in the paper. The Peters entry's internal `Verified` word is removed; its primary metadata and URL are unchanged, and no assertion about the absence of a DOI is made.
+
+The checker actually read all eight exact historical CB/CC event rows in root's bounded program-scope receipt and all21 rows of its bound current Programs table. Neither names or associates an inherited routine with either exact owner. Both full target proofs were also read and name no program. These exact bounded scopes identify no target computation routine; this is not a repository-wide absence claim. No unknown routine was guessed, opened or rerun. The Euler/cohomological deductions above are explicit mathematical calculations, and no new program execution or separate computation event is claimed. The alternative normal-line, minimal-model and exact-kernel methods belong to the two frozen mathematical checks.
+
+The full final rereading found two places worth making more explicit after v1: the equal-exponent self-double specialization and the final nonnegative Betti bound. These were saved as additional guards and v2 files, with the v1 files preserved. Both complete v2 proofs and their full original/final differences were actually read. The guard replay and display/tag comparisons merely verify bytes and contribute no independent mathematical credit.
+
+## Proposed integration
+
+The final JSON contains two owners,21 owner guards and one bibliography guard (25 total literal occurrences), two targeted proof-check proposals and two used-and-rechecked proposals. All canonical application and event append remain with root. A root exact-application receipt must bind each final full block before the proposals become current completion evidence. The page images read here are primary-literature pages, not rendered PaperII pages.

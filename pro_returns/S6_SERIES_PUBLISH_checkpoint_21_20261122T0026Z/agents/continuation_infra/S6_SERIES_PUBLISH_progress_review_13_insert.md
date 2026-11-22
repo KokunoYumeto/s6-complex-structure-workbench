@@ -1,0 +1,14 @@
+
+## Progress review 13 — 2026-11-22T00:11:27.177158+00:00
+
+12 open rows reached their done state. Consecutive reviews without movement: 0. The page rows use complete rendered-image hashes; changed images reopen until actually read. Defect rows reflect their individual recorded dispositions.
+
+Exhaustive snapshot: `records/S6_SERIES_PUBLISH_progress_review_13.json`.
+
+| Paper | Open defect types | Unread current pages | Required candidates | Open provenance rows |
+|---|---:|---:|---:|---:|
+| I | 0 | 0 | 0 | 0 |
+| II | 25 | 1 | 73 | 1 |
+| III | 25 | 1 | 128 | 1 |
+| IV | 25 | 1 | 66 | 1 |
+| V | 0 | 0 | 0 | 0 |
