@@ -22,7 +22,6 @@ six-spheres*. Its sections keep their addresses (`#paper-i` to `#paper-v`).
 
 - Commit of the records: `a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7`, printed in the submitted text. Its links lead to this section.
 - Records: [publication run, checkpoint 21](https://github.com/KokunoYumeto/s6-complex-structure-workbench/tree/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z). In it: [checks](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_checks_I.md) · [page-by-page reading](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_reading_I.md) · [edit log](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_defects_I.tsv) · [check ledger](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/CHECK_EVENTS.tsv) · [report](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_report.md).
-- The whole repository [at that commit](https://github.com/KokunoYumeto/s6-complex-structure-workbench/tree/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7).
 - Checksums of the cited files: [`records/paper-i.sha256`](records/paper-i.sha256).
 
 <details>
@@ -158,6 +157,29 @@ Version 3, submitted on 22 November 2026, changes only the references to the rep
 | [1](https://hexagonmath.org/2611.00742v1) | 20 November 2026 | [consolidation run, checkpoint 10](https://github.com/KokunoYumeto/s6-complex-structure-workbench/tree/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z) |
 
 <details>
+<summary>The 13 cross-references of Paper V to Papers I, III and IV</summary>
+
+The numbers and pages are those of the editions of 20 November.
+
+| Reference | Page | Statement |
+|---|---|---|
+| I.2 | 21 | [tag 01O1](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_I.pdf#nameddest=tag-01O1) |
+| I.22.1 | 295 | [tag 02PA](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_I.pdf#nameddest=tag-02PA) |
+| I.22.3 | 297 | [tag 02PC](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_I.pdf#nameddest=tag-02PC) |
+| I.22.4 | 298 | [tag 02PD](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_I.pdf#nameddest=tag-02PD) |
+| III.3.3 | 14 | [tag 02J5](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02J5) |
+| III.3.4 | 15 | [tag 02J6](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02J6) |
+| III.3.9 | 20 | [tag 02JB](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02JB) |
+| III.3.10 | 23 | [tag 02JC](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02JC) |
+| III.5.2 | 32 | [tag 02KB](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02KB) |
+| III.5.4 | 34 | [tag 02KD](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02KD) |
+| III.5.9 | 39 | [tag 02KI](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02KI) |
+| III.9.3 | 317 | [tag 02MK](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf#nameddest=tag-02MK) |
+| IV.2.54 | 102 | [tag 02JT](https://github.com/KokunoYumeto/s6-complex-structure-workbench/blob/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_IV.pdf#nameddest=tag-02JT) |
+
+</details>
+
+<details>
 <summary>The 52 files that versions 1 and 2 link, with all the programs of version 3</summary>
 
 - [`S6_10_PAPERS_checkpoint_15_20261119T1045Z/S6_10_PAPERS/code/III`](https://github.com/KokunoYumeto/s6-complex-structure-workbench/tree/a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7/pro_returns/S6_10_PAPERS_checkpoint_15_20261119T1045Z/S6_10_PAPERS/code/III)
@@ -225,7 +247,8 @@ Version 3, submitted on 22 November 2026, changes only the references to the rep
 - 22 November 2026: page created, with the commit for Paper I and for versions 1 and 2 of Paper V.
 - 22 November 2026: commit identifiers updated for Papers I and V.
 - 22 November 2026: entries for Paper I's resubmission and for version 3 of Paper V.
-- 22 November 2026: checksum lists for Papers I and V, and the folder of version 2's revision, added.
+- 22 November 2026: checksum lists for Papers I and V, the folder of version 2's revision, and Paper V's
+  cross-references added.
 
 ---
 
