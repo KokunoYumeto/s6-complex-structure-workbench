@@ -15,4 +15,4 @@ results table; the paper itself is for the intake (Claude Fable 5.2 at effort hi
   a proved reduction since the last review.
 - Delivery: the final paper and report sit inside three TAR containers (cp38 on); our filer left them out as history
   duplicates. Extracted and pushed by hand (grothendieck-longue-marche deaac82e6). The paper's log has no overfull box.
-- The user, on its retirement: "It worked 40 hours ... we did our best. What a trooper."
+- The user, on its retirement: [the user's words, omitted]

@@ -15,7 +15,10 @@ State of this page: 22 November 2026.
 | II. Torus-fibred threefolds and the sign theorem | All 198 required further checks done; editing and the page-by-page reading are under way | [TeX](pro_returns/S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/S6_SERIES_PUBLISH_II.tex) (the [PDF of 20 November](pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_II.pdf) is older) |
 | III. Maps and the resulting manifolds | Consolidated draft of 20 November; publication revision not begun | [TeX](pro_returns/S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/S6_SERIES_PUBLISH_III.tex), [PDF](pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_III.pdf) |
 | IV. Smooth monodromy in the group of homotopy seven-spheres | Consolidated draft of 20 November; publication revision not begun | [TeX](pro_returns/S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/S6_SERIES_PUBLISH_IV.tex), [PDF](pro_returns/S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/S6_SERIES_GRIND_IV.pdf) |
-| V. Complex fourfolds from the family | Published: [hexagon:2611.00742, version 2](https://hexagonmath.org/2611.00742) | [TeX](pro_returns/S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/S6_SERIES_PUBLISH_V.tex), [PDF](pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_V.pdf) |
+| V. Complex fourfolds from the family | Published: [hexagon:2611.00742](https://hexagonmath.org/2611.00742); version 3 submitted | [TeX](pro_returns/S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/S6_SERIES_PUBLISH_V.tex), [PDF](pro_returns/S6_SERIES_PUBLISH_checkpoint_21_20261122T0026Z/S6_SERIES_PUBLISH_V.pdf) |
+
+[`RECORDS.md`](RECORDS.md) gives, for each paper and version, the commit, the records, the programs and their
+checksums. It is the address the papers cite.
 
 [`pro_returns/LATEST.md`](pro_returns/LATEST.md) marks the newest return of every run. Use it: older folders keep older
 versions of the statements.
@@ -104,6 +107,7 @@ The notes written when the first two runs returned, with their results and revie
 
 | Folder | Contents |
 |---|---|
+| [`RECORDS.md`](RECORDS.md) | The standing records page of the five papers |
 | [`pro_returns/`](pro_returns/) | The returns, one folder per prompt or checkpoint. From 22 November a new folder holds the deliverables: papers, reports, registers and programs |
 | [`reviews/`](reviews/) | Claude's intakes, reviews and recomputations, with the series design and the route notes |
 | [`prompts/`](prompts/), [`raw/`](raw/) | Research prompts with their history; further intakes and prompts |
@@ -112,10 +116,14 @@ The notes written when the first two runs returned, with their results and revie
 | [`survey_20261112/`](survey_20261112/) | The survey of 12 November and its readers' notes |
 | [`codex_workspace/`](codex_workspace/) | The workbench, course, consolidation of 30 September, ledgers, correction note and custody records |
 | [`yang_mills_repository_s6/`](yang_mills_repository_s6/) | The `s6/` folder of [yang-mills-interacting-workbench](https://github.com/KokunoYumeto/yang-mills-interacting-workbench) at `dff1de9b`, from which this repository was split |
+| [`records/`](records/) | SHA-256 lists of the files the papers cite and of the large certificates |
 | [`LEFT_OUT.tsv`](LEFT_OUT.tsv) | What the first publication of 12 November left out, file by file, with the reason |
 
 Links inside copied folders keep their original form. A `../` link that points above `yang_mills_repository_s6/`
 refers to the Yang-Mills repository; absolute local paths refer to the machine where the work was done.
+Working records keep the commit identifiers they were written with; for the papers, use those in
+[`RECORDS.md`](RECORDS.md). Certificates over 45 MB are stored as `.json.gz`, with the checksums of the unpacked
+files in [`records/large_certificates.sha256`](records/large_certificates.sha256).
 
 ## Who produced what
 
@@ -147,17 +155,19 @@ All dates are 2026. Models and efforts are those of the records named.
 ## What is not here
 
 - Other authors' papers. They are cited and linked; records quote short passages where a check needs exact wording.
-- Raw Codex thread records. The sanitized public records prepared for publication are included
-  (`codex_workspace/canonical_S6_snapshot/supporting_materials/publication/`).
+- Raw Codex thread records and private working records. A curated chronology of the mathematics is included
+  ([`public_mathematical_provenance_v1.md`](codex_workspace/canonical_S6_snapshot/supporting_materials/publication/public_mathematical_provenance_v1.md)).
+  Manifests and notes inside copied folders are kept as written, so some of them list files that are not here.
 - The source archives' blob stores, private catalogues and private working copies, and the five related source tasks
   on other topics (Yang–Mills, Navier–Stokes, Riemann hypothesis, Geometric Unity).
 - The background archives attached to the prompts, and the working files of returns filed from 22 November.
 
 ## Changes made for publication
 
-The user's first name was replaced by "user", including in local paths and in compressed files. Files changed in
-this way no longer match the SHA-256 values recorded for them in the copied folders' manifests and receipts. No
-other content of the copied files was changed.
+The user's first name was replaced by "user", including in local paths and in compressed files. In a few files,
+passages that quote or describe private records were left out. Files changed in these ways no longer match the
+SHA-256 values recorded for them in the copied folders' manifests and receipts. No other content of the copied
+files was changed.
 
 ## Rights and credits
 

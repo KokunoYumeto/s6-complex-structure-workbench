@@ -1,7 +1,6 @@
 # Finish prompts (18 Nov 2026), written by the main session (Claude Opus 5.5 Max)
 
-The user, 18 Nov 2026 (P6849): "SGA Spanish intake may not be done. If it's not done, repackage into a finish the shit
-prompt. Papers, S6 intake. If it's not done, throw together in a prompt."
+The user, 18 Nov 2026 (P6849): [the user's words, omitted]
 
 - `SGA_ES_READERS_FINISH/` (GPT-6 Astra, ChatGPT Pro mode; any account): continues the Spanish SGA readers from the
   earlier run's checkpoint 06 (18 Nov 08:00 UTC, "incomplete": 66,980 of 110,808 French decisions pending; no cumulative

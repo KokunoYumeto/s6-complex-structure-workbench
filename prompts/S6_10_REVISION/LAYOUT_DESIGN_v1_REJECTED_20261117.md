@@ -1,23 +1,14 @@
 # How the S6 papers are laid out: a reference that a reader with little time can use (design, 17 Nov 2026)
 
 Draft by the main session (Claude Opus 5.5 at effort max), 17 Nov 2026 ~11:3x UTC, from the user's words of the same
-morning (quoted in section 1). It is the layout part of the next S6 revision run (S6_10), which also folds in the
+morning (omitted from section 1). It is the layout part of the next S6 revision run (S6_10), which also folds in the
 results of S6_06_BLIND once its final is in. It is a long-paper variant of the Hexagon post format
 (`recent_results_20261114/HEXAGON_POST_FORMAT_20261114.md`), whose binding rule (every finding with its full proof,
 every proof checked, checked and unchecked apart) stays as it is.
 
 ## 1. What the user asked for
 
-- "there shouldn't be any proofs that aren't in the papers. But that doesn't mean the paper has to be just a ream of
-  like consecutive dense proofs."
-- "It should be organized in a way where somebody looking for a particular result can just like very easily find
-  that. Somebody needs to be very much aware of what the paper in total shows. It should just be very clearly
-  internally linked."
-- "It should read as sort of like a reference where the paper part is probably the first few dozen ... pages ... And
-  then that sort of links forward to like all the dense proofs ... almost like a gazette to the paper before the paper.
-  But like thinking about humans who have limited time trying to get the results they care about or the gist of the
-  global shape of the results."
-- "maybe there's a way to visualize things that is actually helpful. If there is, that's worth considering."
+[the user's words, omitted]
 
 ## 2. How the three papers are laid out now (S6_09_PAPERS final, 17 Nov 06:01 UTC)
 

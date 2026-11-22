@@ -9,10 +9,8 @@
 - `manuscript_sources/` — reconstruction sources, modular parts, provenance records, and archival standalone variants.
 - `reproducibility/` — exact-algebra scripts and results, source checks, build scripts, and QA tools.
 - `reference_pdfs/` — compiled monograph, annotated, clean, workbench, and mathematical-overview reference PDFs.
-- `publication/` — the publication-monograph wrapper, curated mathematical
-  chronology, the independently replayed complete sanitized conversation
-  edition, and the optional full typed-record provenance annex with their
-  hash-anchored summaries and validation receipts.
+- `publication/` — the publication-monograph wrapper and the curated mathematical
+  chronology.
 - `workbench_history/` — curated source checkpoints from the former
   Overleaf/workbench trees, together with a merge map explaining what was
   integrated, retained, or omitted as generated bulk. Complete checkpoint
