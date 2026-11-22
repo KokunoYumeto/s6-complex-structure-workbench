@@ -46,7 +46,7 @@ times. The survey of 12 November (`survey_20261112/FINDINGS.md`) gives the statu
 | `codex_workspace/custody/`, `CUSTODY_INDEX.md`, `RELATED_SOURCE_DISPOSITIONS.md` | Records of how the source archives were verified and routed into the workspace | Local Codex workspace |
 | `yang_mills_repository_s6/` | The `s6/` folder of yang-mills-interacting-workbench at commit `dff1de9b`, including the status note of 5 October 2026 (`STATUS_2026-10-05.md`) and the public form of the 30 September consolidation | GitHub |
 | `survey_20261112/` | The survey: `FINDINGS.md`, `READING_NOTES.md`, the fifteen readers' notes and their scratch scripts | Survey of 12 November 2026 |
-| `pro_returns/` | The prompts sent to GPT-6 Astra in ChatGPT Pro mode and what came back, one folder per prompt: `PROMPT.md`, `RETURN_NOTES.md` and the unchanged return in `return/` | Returns of 12 November 2026 onwards |
+| `pro_returns/` | The prompts sent to GPT-6 Astra in ChatGPT Pro mode and what came back, one folder per prompt or checkpoint; [`LATEST.md`](pro_returns/LATEST.md) marks the most recent of each run. Folders added from 22 November 2026 hold the deliverables (papers, reports, registers, programs), not the working files | Returns of 12 November 2026 onwards |
 | `LEFT_OUT.tsv` | Every file of the sources that is not in this repository, with its size, SHA-256 and the reason | This publication |
 
 Links inside the copied folders keep their original form. Links in `yang_mills_repository_s6/` that point above the
