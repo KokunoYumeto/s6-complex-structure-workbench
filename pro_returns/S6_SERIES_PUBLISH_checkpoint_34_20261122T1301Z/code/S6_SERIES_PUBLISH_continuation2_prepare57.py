@@ -1,0 +1,48 @@
+from pathlib import Path
+import csv,datetime as dt,hashlib,json,re
+R=Path(__file__).resolve().parents[1]
+def bind(p):return dict(path=p,sha256=hashlib.sha256((R/p).read_bytes()).hexdigest())
+def read(p):return json.loads((R/p).read_text())
+def verify(o):
+ if isinstance(o,dict):
+  if 'path' in o and 'sha256' in o:assert bind(o['path'])['sha256']==o['sha256'],o['path']
+  for v in o.values():verify(v)
+ elif isinstance(o,list):
+  for v in o:verify(v)
+
+ap='agents/continuation2_A/S6_SERIES_PUBLISH_II_A2_WZ_v1_20261122/S6_SERIES_PUBLISH_II_A2_WZ_admission_recommendation.json'
+assert bind(ap)['sha256']=='fc62a8b92ce3f2184efe24223794ec022ea8faf4ce82e0a92e3bfee51ad3a16c'
+a=read(ap);verify(a);at=a['targets'][0];p=read(a['proposal']['path'])
+guards=[dict(old=g['literal_old'],new=g['literal_new'],type=','.join(g['defect_types']),reason=g['reason']) for g in p['guards']]
+old=(R/at['full_original_block']['path']).read_text();new=(R/at['proposed_full_block']['path']).read_text();w=old
+for g in guards:
+ assert w.count(g['old'])==1;w=w.replace(g['old'],g['new'],1)
+assert w==new and old.count('\\item')==new.count('\\item')==13
+assert re.findall(r'\\\[(.*?)\\\]',old,re.S)==re.findall(r'\\\[(.*?)\\\]',new,re.S)
+for pat in [r'\\label\{([^}]+)\}',r'\\hypertarget\{([^}]+)\}']:assert re.findall(pat,old)==re.findall(pat,new)
+now=dt.datetime.now(dt.timezone.utc).isoformat()
+review='records/S6_SERIES_PUBLISH_II_root_continuation2_batch57_review.json';assert not (R/review).exists()
+rd=dict(created_utc=now,checker='GPT-6 Astra (OpenAI), ChatGPT Pro mode, root, second continuation; reasoning effort not separately exposed',
+ actual_reading='Complete six-section frozen derivation read before the full original target. All thirteen original proof items and all thirteen final proof items, all eight displays, the entire item-by-item comparison, both complete program sources and their complete outputs, every guard, both event proposals, both chronology receipts and the source/program-scope receipts actually read. Supporting primary openings remain credited to the checker and earlier accepted receipts; no new root opening of those primary documents is claimed.',
+ mathematical_review=[
+ 'The exact domain is the irreducible singular reduced support of the standing proper torus fibration. The finite normalization nu and minimal resolution rho_N compose to rho. The pole support and every exceptional configuration meeting strict conductor identify the entire singular curve, including every exceptional image point. Effective pole blowdowns give coefficient mu-1 and the disjoint elliptic-root forest; rational components are distinct point-blowup exceptional curves, so v<=k and Euler additivity is e(S)=k-v+e(C).',
+ 'For the normalization incidence graph, e(C)=c+s-2g-b and full root-attachment graph rank is b+r-s. The homeomorphism from the compact conductor pushout and compatible cofibration mapping cylinder specify the van Kampen maps. Killing vertex groups gives the free quotient; virtual abelianness bounds its rank by one. With e(C)=0, nonnegative c-g and r-g leave exactly the three integer cases checked by the new program. All target normalizations in the case c=g are elliptic; every rational pole contracts and a contracted root would create a whole exceptional block missing strict conductor. Thus no root contracts.',
+ 'The equality k=v gives exactly the same exceptional curves for pi:T->T0 and rho_N:T->N. Stein factorization and normal targets give connected fibres; each nontrivial fibre is a connected exceptional component, so the fibre partitions coincide. The reduced analytic image of (pi,rho_N), followed by its finite normalization G, has proper birational projections with finite fibres to both normal targets. Local integral closedness makes both projections isomorphisms. Their composites give the specified biholomorphism N≅T0. The alternative last-blowup minimality route is retained only in the check derivation.',
+ 'The remaining c=g+1,r=g case assigns the distinct roots bijectively to elliptic target normalizations, with finite unramified maps. Choosing the image origins makes these same maps isogenies. The blowdown-induced pi1 isomorphism gives a primitive character h:Gamma->Z with finite kernel: its intersection with a finite-index cyclic subgroup is trivial, bounding its cardinality by the index. A root with finite image would lift, after a finite elliptic cover, to C2 minus0 through the nonconstant root-to-Hopf blowdown composite; constant coordinate functions contradict this. Hence h a_i is nonzero.',
+ 'Writing h a_i=d(a,b), the source kernel is Z(-b,a). For the full-rank target matrix P and v=P(-b,a), the saturated image is Z(v/e), e=gcd(v1,v2); the target primitive quotient row is (-v2/e,v1/e). Its composition with P is (-det(P)/e)(a,b), with integral nonzero multiplier proved by a Bezout section. Both induced cyclic edge maps are injective. The explicit quotient on vertices and stable letters is surjective. The root star lies in a spanning tree; the sole cycle contains a trivial edge. Removing that edge gives a tree amalgam embedding Z, and restoring it gives G0*Z with an embedded F2. This contradicts virtual abelianness of the quotient. The frozen character satisfies ell=(d/m)lambda_prime and therefore factors through this exact cyclic quotient; no abstract equality of the two intermediate groups is asserted.',
+ 'The already admitted P4.24 applies through the actual finite normalization and proves the converse and complete finite-unramified conductor description. All original mathematical steps and displayed equalities are retained. The new rho_N definition, origin choices and blowdown-induced maps name existing data. Program scopes are limited to the exhaustive integer equality split, rational pivot identities and universal saturated quotient identity with six integral examples; geometry and group normal forms are proved in the written arguments.'
+ ],chronology='The complete target derivation was frozen at 06:45:31.070037 UTC and released at 06:45:33.816118 UTC. Prior WW/YK supporting-proof exposure is explicit. The normalized-graph and integral quotient comparisons and second program were completed after release. Exactly one targeted check and one comparative reread share one evidence group; root review adds no event.',
+ original_proof_items_preserved=13,original_displays_preserved=8,original_inline_expressions_preserved=84,mathematical_errors_found=[],publication_page_reading_credit=0,
+ pending_global_typesetting='The global header pass must print the permanent small tag after the statement number while clearing production headers. This admission preserves the hypertarget and labels but does not close the global header defect row.',
+ evidence=[bind(ap),a['comparison'],a['program_scope'],a['display_preservation'],a['input_and_primary_receipt'],a['postrelease_comparison_receipt']])
+(R/review).write_text(json.dumps(rd,indent=2)+'\n')
+with (R.parent/'S6_SERIES_GRIND_tags.tsv').open() as f:pages={x['tag']:x['page'] for x in csv.DictReader(f,delimiter='\t')}
+target=dict(owner=at['statement_owner'],tag=at['tag'],old_page=pages[at['tag']],original=at['full_original_block'],proposed=at['proposed_full_block'],freeze=at['freeze_receipt'],release=at['release_receipt'],events=a['event_proposals'],guards=guards,who=rd['checker'],scope='Exact equivalence between zero Euler number and smooth minimal Hopf normalization, including the entire conductor and its finite unramified component maps.',event_note='Root full frozen/original/final review at '+now+'. The original normalized graph and cyclic quotient argument is retained; the frozen alternative has its precise quotient/character morphism recorded. No extra independent credit for root review.')
+s=(R/'S6_SERIES_PUBLISH_II.tex').read_text();start=s.index('\\section*{Programs}');end=s.index('\\end{longtable}',start);last=s[s.rfind('\n',start,end-1)+1:end];assert last.strip()
+rows=(R/a['program_rows']['path']).read_text()
+extra=[dict(old=last,new=last+rows,type='D09,D18',owner='Programs',location='Programs',reason='Cite each bounded new computation once for the equality count and cyclic quotient maps verified in this proof.')]
+scope=read(a['program_scope']['path']);copies=[dict(**{'from':x['output']},to='code/'+Path(x['output']['path']).name) for x in scope['new_computations']]
+cfg=dict(batch=57,root_review_complete=True,source_before_sha256=bind('S6_SERIES_PUBLISH_II.tex')['sha256'],ledger_before_sha256=bind('CHECK_EVENTS.tsv')['sha256'],review_evidence=[bind(review),bind(ap),a['comparison'],a['proposal'],a['program_scope'],a['display_preservation'],a['input_and_primary_receipt'],a['postrelease_comparison_receipt'],a['derivation']],targets=[target],additional_source_edits=extra,code_copies=copies,mathematical_repairs=[],scope='02WZ admitted after its complete prerelease derivation and full original/final comparison. All thirteen original proof items, eight displays and 84 original inline expressions remain. Sixteen reversible target guards and two program references; one independent evidence group with two events. The exact normalized graph, saturated cyclic edge quotient, nonzero multipliers and free subgroup contradiction are verified. No global defect-class or page-reading closure.')
+assert cfg['source_before_sha256']=='e26f1fc039908ba5e01829e11a6c3fff09b71d1fce307897f12f0964d3db57ef'
+assert cfg['ledger_before_sha256']=='dc881568be02170a563ce43c1510fd248b48d137a59b1042d7814c3b1f036265'
+out='records/S6_SERIES_PUBLISH_II_continuation2_batch57_config.json';assert not (R/out).exists();(R/out).write_text(json.dumps(cfg,indent=2)+'\n');print(json.dumps(bind(out)))

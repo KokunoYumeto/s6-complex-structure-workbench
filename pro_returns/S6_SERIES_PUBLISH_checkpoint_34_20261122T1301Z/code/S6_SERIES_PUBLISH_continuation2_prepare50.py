@@ -1,0 +1,79 @@
+from pathlib import Path
+import csv, datetime as dt, hashlib, json
+
+R = Path(__file__).resolve().parents[1]
+def bind(p): return {'path': p, 'sha256': hashlib.sha256((R/p).read_bytes()).hexdigest()}
+def read(p): return json.loads((R/p).read_text())
+def verify(o):
+    if isinstance(o, dict):
+        if 'path' in o and 'sha256' in o:
+            assert bind(o['path'])['sha256'] == o['sha256'], o['path']
+        for v in o.values(): verify(v)
+    elif isinstance(o, list):
+        for v in o: verify(v)
+
+p = 'agents/continuation2_C/S6_SERIES_PUBLISH_II_C2_0334_final_v1'
+a = 'agents/continuation2_C/S6_SERIES_PUBLISH_II_C2_0334_postrelease_uniform_frame_addendum_v1'
+assert bind(p+'_index.json')['sha256'] == '2746f709aa462f501592cdd64f0bb799628de6bc4abfd81fbc34d5f25bc6aa23'
+assert bind(a+'_index.json')['sha256'] == '963b4e83f7339c99e649b792950849b4b1081d988d614bf23fe827c244d073c2'
+ix = read(p+'_index.json'); ax = read(a+'_index.json')
+verify(ix); verify(ax)
+pr = read(p+'_proposals.json'); verify(pr)
+t = pr['blocks'][0]
+ep = read(p+'_event_proposals.json')
+change = read(a+'_event_outcome_proposal.json'); verify(change)
+hit = [e for e in ep['events'] if e['event_id'] == change['event_id']]
+assert len(hit) == 1 and hit[0]['outcome'] == change['old_outcome']
+hit[0]['outcome'] = change['new_outcome']
+hit[0]['source_file'] = a+'.md'
+hit[0]['date_utc'] = change['created_utc']
+for e in ep['events']:
+    e['where'] = '0334 / push:src:E.2.19; complete statement and all five named proof steps'
+ep['root_prepared_utc'] = dt.datetime.now(dt.timezone.utc).isoformat()
+ep['immutable_prior_event_proposals'] = bind(p+'_event_proposals.json')
+ep['postrelease_completion'] = bind(a+'_event_outcome_proposal.json')
+events = 'records/S6_SERIES_PUBLISH_II_0334_batch50_event_proposals.json'
+assert not (R/events).exists()
+(R/events).write_text(json.dumps(ep, indent=2)+'\n')
+
+review = 'records/S6_SERIES_PUBLISH_II_root_continuation2_batch50_review.json'
+assert not (R/review).exists()
+rd = dict(created_utc=dt.datetime.now(dt.timezone.utc).isoformat(),
+ checker='GPT-6 Astra (OpenAI), ChatGPT Pro mode, root, second continuation; reasoning effort not separately exposed',
+ actual_reading='Entire frozen derivation, complete original five-named-step proof in its one outer item, complete final five-item proof, full comparison, all13 target guards, Programs guard, complete fresh and historical program sources and outputs, source/replay chronology and primary receipts read. Root then read the complete separately versioned postrelease addendum and exact event correction. Original AC26 PDF pages23,24,30 were actually rendered and read, including the complete Proposition3.21 and Proposition4.7 proofs and section4.1 P1-P3. Primary literature readings supply no final-publication-page credit.',
+ mathematical_review=[
+  'The kernel of dlog(q) in the relative logarithmic tangent bundle is locally free of rank2. For q=x,xy,xyz its explicit frames give the normalization identification with the logarithmic tangent bundle of the normalized pair. At xyz the coefficient map and inverse are (a,b,c) with a+b+c=0 and (b,c) mapped to(-b-c,b,c). These are genuine bundle maps in the original family parameter.',
+  'The normalized global frame restricts to proper rational conductor curves. Each gluing matrix is holomorphic and constant along its curve. The full two-dimensional space descends for noncentral constructed members; consequently each gluing matrix is the identity there and hence everywhere by holomorphy. At a triple point the restriction equalizer has explicit inverse f1+f2+f3-g12-g13-g23+h. Injectivity is (x) intersect(y) intersect(z)=(xyz). Tensoring with the free bundle gives exactly the section descent. Properness, flatness over the reduced base and constant h0=2 give the rank-two direct image and fibrewise evaluation isomorphism by the opened Grauert theorem.',
+  'The two fields commute on the dense ordinary-torus locus, hence everywhere. They preserve compact fibres, so their holomorphic flows are complete and yield the C2 action. In the printed route, choose a point of the central open orbit and its full toric period basis. For a local section through that point, the return equation Act(v,p)=p has invertible derivative in v. The implicit-function theorem extends both periods on one neighborhood; their determinant remains nonzero after shrinking. A torus translation fixing the selected point is the identity, and the flow identity extends to the whole neighborhood.',
+  'A rational nonintegral combination of these two periods that were an ordinary-torus period would, after clearing its denominator, define a finite-order translation section. Its vanishing persists under the flat marking and extends to the central orbit. This contradicts the full central toric period lattice. Thus the extended rank-two lattice is primitive in the ordinary full integral lattice. The exact operator is N(a,b,c,d)=(0,0,b,-a), so its kernel is generated by w,delta, with splitting projection to the last two coordinates. The primitive lattice has the same rank as that kernel and is equal to it. The integral marking change is the displayed GL2(Z) monomial map, with inverse exponents U inverse.',
+  'Tangent characters are constant through the family: compact-torus Fourier projections are holomorphic and their ranks are integer-valued and continuous. The two displayed dense-torus coordinate maps are (q/(zw),z,w) and(q/w,q/z,zw/q); their exact inverses are(X1,X2,X0X1X2) and(X0X2,X1X2,X0X1X2). Pairing exponent rows with the ray columns gives the identity; the first two exponents yield the listed triples and their vertical sums are zero. Both chart products are q.',
+  'The initially frozen Hartogs route omitted the uniform independence argument on all q nonzero. Root recorded this issue before admission; no claim of a complete pristine prerelease proof is retained. The postrelease completion constructs the actual holomorphic period kernel in the Grassmannian without assuming independence of w,delta. On patches of the smooth-torus locus the marked comparison for s nonzero identifies it with ker[Z|I], where the opened primary matrix has Z=(log q)/(2pi i) B0+C(q,c(s)). Both kernels are holomorphic and hence agree also at s=0. The induced common-quotient Lie-bundle isomorphism carries actual w,delta to e1,e2, proving their independence uniformly. The noncentral cusp comparisons then give a frame on the entire punctured bidisc; coefficients and reciprocal determinant extend by the explicit Hartogs integral and keep determinant times reciprocal equal to1. This completes the frozen route after release, while the fully checked printed implicit-function route is unchanged.',
+  'The fresh exact certificate supplies integral maps J,L,K,S satisfying LJ=KS=I, KJ=LS=0, JL+SK=I and N=JK, and both monomial-map compositions. The historical routine was retrieved at its exact pinned URL, fully read and replayed by the checker. Root read its source and output and their comparison; root does not claim another independent replay or evidence group. The original rational-nullspace/matrix-inversion calculation and new direct integral splitting have the recorded identical outputs.'
+ ],
+ primary_readings=[
+  dict(source=bind('../S6_GRIND_6_literature/papers/arXiv_2609.38442_Engel_src/S6.tex'),edition='arXiv2609.38442v1',root_locus='Complete source476-565: Mumford period-unit construction, its proof, fan construction and proof.'),
+  dict(source=bind('../S6_GRIND_6_literature/papers/arXiv_2610.39102_Viaclovsky_log_transformations_src/Logarithmic_S6_October_28_2026_Final.tex'),edition='arXiv2610.39102v1',root_locus='Complete source285-384: integral monodromy conventions, basis transformation, fixed cusp lattice and descended rotations.'),
+  dict(source=bind('../S6_GRIND_6_literature/original/AC26_original_manuscript.pdf'),edition='Attached AC26 original authority PDF',root_locus='Actual original PDF images23,24,30 read, including complete Proposition3.21, P1-P3 and Proposition4.7 with proof; this supports the disclosed postrelease completion.',images=[bind('/workspace/scratch/e3bb51a74e2f/S6_SERIES_PUBLISH_C_primary_temp/S6_SERIES_PUBLISH_II_root_AC26_p'+str(i)+'.png') for i in (23,24,30)]),
+  dict(source_locus='Grauert1960 section7, pp63-64, Satz5 p64; full1963 corrigendum pp35-36',reading='Previously completed actual root primary reading, retained; no new whole-work or page credit.')],
+ chronology='Original freeze and final-v1 files remain byte-identical. The separate addendum completes the omitted uniform-frame justification after proof release. The pending targeted outcome is replaced with its exact disclosed wording before admission. Same three events and one evidence group; no additional blind, independent-reproof or publication-page credit.',
+ evidence=[bind(p+'_index.json'),bind(a+'_index.json'),bind('records/S6_SERIES_PUBLISH_II_root_0334_pending_review_20261122.json'),bind(events)],
+ statement_conclusions_and_domains_preserved=True,publication_page_reading_credit=0,
+ proposed_events=3,independent_required_owners=1,independent_evidence_groups=1)
+(R/review).write_text(json.dumps(rd,indent=2)+'\n')
+with (R.parent/'S6_SERIES_GRIND_tags.tsv').open() as f:
+    pages={x['tag']:x['page'] for x in csv.DictReader(f,delimiter='\t')}
+target=dict(owner=t['statement_owner'],tag='0334',old_page=pages['0334'],original=t['original_full_block'],proposed=t['proposed_full_block'],freeze=ix['freeze_receipt'],release=ix['release_receipt'],events=bind(events),who='GPT-6 Astra (OpenAI), ChatGPT Pro mode, continuation2_C; reasoning effort not separately exposed',guards=[dict(old=g['old'],new=g['new'],type=g['defect_type'],reason=g['reason'],occurrences=g['expected_occurrences_in_owning_block']) for g in t['guards']],scope='Complete extension of the marked cusp torus action, integral period primitivity and triple-point characters.',event_note='Full frozen/original/final root review. The omitted uniform-frame argument was completed after release by an exact marked Grassmannian-kernel comparison; this chronology remains explicit. Three events share one group. No extra independent-reproof or final-page credit.')
+pp=read(p+'_programs_table_proposal.json'); verify(pp)
+extras=[dict(old=g['old'],new=g['new'],type=g['defect_type'],reason=g['reason'],location='Programs') for g in pp['guards']]
+copies=[]
+for x in pp['program_copy_proposals']:
+    copies.append({'from':dict(path=x['from'],sha256=x['sha256']),'to':x['to']})
+    copies.append({'from':dict(path=x['output_from'],sha256=x['output_sha256']),'to':x['output_to']})
+evidence=[bind(review),bind(p+'_index.json'),bind(a+'_index.json'),bind(events),bind(p+'_proposals.json'),bind(p+'_comparison.md'),bind(p+'_primary_readings.json'),bind(p+'_historical_locator_audit.json'),bind(p+'_historical_read_replay_receipt.json'),bind(p+'_programs_table_proposal.json'),bind(a+'.md'),bind(a+'_event_outcome_proposal.json'),bind(a+'_primary_receipt.json')]
+cfg=dict(batch=50,root_review_complete=True,source_before_sha256=bind('S6_SERIES_PUBLISH_II.tex')['sha256'],ledger_before_sha256=bind('CHECK_EVENTS.tsv')['sha256'],review_evidence=evidence,targets=[target],additional_source_edits=extras,code_copies=copies,mathematical_repairs=[],scope='0334 admitted after complete original/final comparison and resolution of the separately recorded omitted justification in its frozen alternate route. The exact postrelease period-kernel comparison and corrected targeted outcome preserve the chronology. The printed action proof retains its implicit-function/primitivity construction; it now gives explicit conductor equalizers, integral splitting and both inverse monomial charts, with the opened proper base-change authority. One required owner receives three events in one group. Two program rows and two code/output pairs are included. All hypotheses, conclusions, labels and tags remain. No extra blind proof, final-PDF reading or global defect-class closure is credited.')
+assert cfg['source_before_sha256']=='9d4d0b3383acfbfdf3300c7c6a8a772aa2211b0f8ed2da8c9a8a82b57d7c8fbe'
+assert cfg['ledger_before_sha256']=='910eab63576db9bd1fa8f286a2f3cb83d64019aa10ef53225c6c9d8673b78beb'
+out='records/S6_SERIES_PUBLISH_II_continuation2_batch50_config.json'
+assert not (R/out).exists()
+(R/out).write_text(json.dumps(cfg,indent=2)+'\n')
+print(json.dumps(bind(out),indent=2))
