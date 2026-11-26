@@ -1,0 +1,57 @@
+from pathlib import Path
+import csv,datetime as dt,hashlib,json,re,sys
+R=Path(__file__).resolve().parents[1]
+def bind(p):return dict(path=p,sha256=hashlib.sha256((R/p).read_bytes()).hexdigest())
+def read(p):return json.loads((R/p).read_text())
+def verify(o):
+ if isinstance(o,dict):
+  if 'path' in o and 'sha256' in o:assert bind(o['path'])['sha256']==o['sha256'],o['path']
+  for v in o.values():verify(v)
+ elif isinstance(o,list):
+  for v in o:verify(v)
+pre='agents/continuation2_C/S6_SERIES_PUBLISH_II_C2_02XS_'
+ip=pre+'final_v1_index.json';idx=read(ip)
+assert bind(ip)['sha256']=='01172ae6ef43eb10a4a27d57e3469f8cbff3c59b6fe9f8945c8d9e5207bd4419';verify(idx)
+pp=pre+'final_v1_proposals.json';p=read(pp);verify(p);t=p['blocks'][0]
+guards=[dict(old=g['old'],new=g['new'],type=g['defect_type'],reason=g['reason']) for g in t['guards']]
+guards.append(dict(old='In the remaining positive ruled support, blow up the',new='In the remaining positive ruled support of \\cref{sec:II:night-sign},\nblow up the',type='D04,D22',reason='Resolve the standing positive ruled-support setup by the same section used in the preceding proposition.'))
+old=(R/t['original_full_block']['path']).read_text();new=old
+for g in guards:assert new.count(g['old'])==1;new=new.replace(g['old'],g['new'],1)
+assert old.count('\\item')==new.count('\\item')==14
+assert re.findall(r'\\\[(.*?)\\\]',old,re.S)==re.findall(r'\\\[(.*?)\\\]',new,re.S)
+assert len(re.findall(r'\\\[(.*?)\\\]',old,re.S))==11
+for pat in [r'\\label\{([^}]+)\}',r'\\hypertarget\{([^}]+)\}']:assert re.findall(pat,old)==re.findall(pat,new)
+np='agents/continuation2_root/S6_SERIES_PUBLISH_II_root_XS_v2_proposed.tex'
+if (R/np).exists():assert (R/np).read_text()==new
+else:(R/np).write_text(new)
+if '--reviewed' not in sys.argv:
+ print(json.dumps(dict(proposed=bind(np),full_final_reading_pending=True)));sys.exit(0)
+now=dt.datetime.now(dt.timezone.utc).isoformat();review='records/S6_SERIES_PUBLISH_II_root_continuation2_batch62_review.json';assert not (R/review).exists()
+eb=read(pre+'final_v1_evidence_bindings.json');verify(eb)
+rd=dict(created_utc=now,checker='GPT-6 Astra (OpenAI), ChatGPT Pro mode, root, second continuation; reasoning effort not separately exposed',
+ actual_reading='Complete frozen derivation read before root opened the original target. All14 original and14 agent-final items, the whole comparison, both full programs and their full outputs, all11 agent guards plus root scope guard, events, primary-reading and historical-locator receipts were read. Root finalv2 was then read completely. Exact source openings remain credited to the agent primary receipt; no new root source-page opening or final-PDF reading is claimed.',
+ mathematical_review=[
+ 'The actual positive ruled support and coefficient2 pole section use the same maps as admittedXR. The new normalization resolution maps through the old minimal resolution. Ordinary blowup has residue Jacobian r2/denominatorr3, so2=n+a; effectiveness gives pairs(2,0),(1,1). The finite normalization pushforward of the divisor ofr gives sum valuation times residue-field-degree equal to tangent-component multiplicity. A positive-genus reduced cubic component is a smooth elliptic cubic of multiplicity1, givingn1a0 and contradiction. Every rational component forces covering degree>=2, excludingn2. Conductor exponent1 has exact formula2delta_i+sumintersection and forces two smooth transverse branches, both fromH. Thus the tangent cone is a double line plus a distinct line.',
+ 'The generic blowup chart shows f4 vanishes on the double line. Its weighted degree5 part is a quadratic in the weight2 coordinate, and the residues of v/r solve that quadratic. The discriminant is a nonsquare sextic giving exactly C(H). The explicit invertible coordinate map(X,Y,Z)=(y,u(x,z),ell(x,z)), for independent(u,ell), carries printed weights(1,2,1) to frozen(2,1,1), preserving the weighted action, projective curve and affine fibre. The common factor divides the linear leading coefficient, so the only alternatives are an irreducible weighted quintic or a line times an irreducible monic weighted quartic.',
+ 'The frozen construction identifies the irreducible projective curve with the complete sextic double cover, including the weighted vertex. ForA=G3 atell0 nonzero, the finite root hasW=A and the vertex chart givesZ=-A*v+O(v2),W=-A+O(v); both are unramified local isomorphisms. ForA0,B=G5 nonzero the vertex givesZ=-B*v2+O(v3),W=-2B*v+O(v2), the unique smooth ramified point. Thus the finite cover has pa2 and normalizationH, so totaldelta<=1 and M<=2. The original discriminant-partition proof gives the same bound and is retained. In the reducible case the quartic double cover has pa1 and positive-genus normalization, hence is smooth elliptic and avoids the quotient vertex. Its two total intersections with the line giveM2or3, exhausting critical rays.',
+ 'The weighted-plane strata givee3 and the branch curves giveeD=M-2, hence complement Euler5-M>=2. The only point with isotropy lies onD, so G=1 maps to its complement as an unramified degree5 cover. A proper semialgebraic weighted norm has finitely many critical values; gradient flow on proper slabs gives a compact invariant core. Weighted scaling takes critical values to |t|^(4/5) times these values, giving the local Milnor core. The exact weighted-level perturbation and gradient right inverse on compact cycle neighborhoods put its intersections into the original local fibre. XQ therefore gives zero pairing. Nonidentity C5 powers are free; the virtual representation is(5-M) regular copies. Consequently rank(T-I)>=4(5-M)>=8.',
+ 'For a one-dimensional critical locus the exact Siersma j2(T-I)=VARII*j and boundary Wang sequence give rank<=M<=3 from zeroj. The isolatedM0 endpoint uses kerj=ker(T-I), Proposition3.4,p451, givingT=I. This exact source page was already read byC before the XS freeze through XR; the separate case citation is expressly postrelease explanation, not backdated or given another event. Both routes contradict the retained lower bound. The frozen file stays unchanged and its chronology qualification is preserved in the admitted event text.',
+ 'AfterH is proved exceptional, positivity givesn=a1. Adjunction0=2gH-2+(D1-H).H givesg1 and no positive pole component meetingH. The zero-coefficient exceptional intersection equation excludes a zero component meeting it; connectedness of the fibre leaves onlyH. No conductor divisor passes through its normalization pointq. For the actual two-dimensional local hypersurfaceA and finite semilocal normalizationB, finite duality identifies Hom_A(B,A) with the canonical B-module and conductor. The identification is multiplication byc=phi(1) in the total quotient ring, withcB contained inA. NormalB is Cohen-Macaulay; its rank1 canonical module is reflexive, hence equalsB_q when every height1 conductor localization does. An elementc of the conductor outsideq lies outside q intersectA=mA, so is a unit ofA. ThenB=A. This proves whole-germ normality, including uniqueness of the normalization point, rather than just a branch. The single smooth elliptic minimal exceptional curve gives the isolated simple elliptic singularity.',
+ 'The prerelease program uses finite double-cover arithmetic genera, exact C5 permutation matrices/rational projectors and normalization Euler identities; the postrelease program additionally enumerates every sextic/quartic multiplicity partition and the four rank gaps20,15,10,5. All complete outputs were read. The old cubic_weighted.py was unavailable in the three attached manifests, attached tree and pinned404 path. Its bytes were never inspected or replayed, and no comparison with an unknown algorithm is claimed. The printed program sentence is replaced by its actual finite calculation and one new Programs citation.'
+ ],chronology='Freeze07:01:23.586555 precedes release07:01:27.627827. All supporting XQ/XR exposure is explicit. The isolated-case primary-locus separation was written after release and remains so. One required checking group and three events; root scope-reference addition adds no event.',
+ editorial_disposition='Retain all14 original items and11 displays. Rootv2 adds only the resolving standing-section reference to immutable agentv1. Original discriminant-partition and character proof retained; independent full weighted-vertex isomorphisms stay in check evidence. Whole-local-ring conductor argument supplies the missing explicit maps. Global equation-number, small-tag and residual style passes remain open.',
+ mathematical_errors_found_in_original=[],original_proof_items_preserved=14,original_displays_preserved=11,new_required_owners=1,independent_groups=1,events_proposed=3,publication_page_reading_credit=0,
+ evidence=[bind(ip),idx['frozen_derivation'],idx['comparison'],bind(np),*eb['evidence'],bind(pre+'final_v1_postrelease_reading_and_computation.json')])
+(R/review).write_text(json.dumps(rd,indent=2)+'\n')
+with (R.parent/'S6_SERIES_GRIND_tags.tsv').open() as f:pages={x['tag']:x['page'] for x in csv.DictReader(f,delimiter='\t')}
+target=dict(owner='night:P4.53',tag='02XS',old_page=pages['02XS'],original=t['original_full_block'],proposed=bind(np),freeze=idx['freeze_receipt'],release=idx['release_receipt'],events=bind(pre+'final_v1_event_proposals.json'),guards=guards,who=rd['checker'],scope='The entire strict-transform germ over the contracted positive-genus horizontal pole section is normal with an isolated simple elliptic singularity after the multiplicity3 blowup.',event_note='Root full finalv2 reading recorded at '+now+' in '+review+'. The isolatedM0 primary citation is a postrelease explication of the already-read supporting page, with unchanged freeze and no extra group. The complete original route and11 displays remain.')
+pr=read(pre+'final_v1_programs_table_proposal.json')
+extra=[dict(old=g['old'],new=g['new'],type=g['defect_type'],owner='Programs',location='Programs',reason=g['reason']) for g in pr['guards']]
+copies=[]
+for cp in pr['program_copy_proposals']:
+ copies.extend([dict(**{'from':dict(path=cp['from'],sha256=cp['sha256'])},to=cp['to']),dict(**{'from':dict(path=cp['output_from'],sha256=cp['output_sha256'])},to=cp['output_to'])])
+for cp in pr['additional_delivered_check_evidence']:copies.append(dict(**{'from':cp},to='code/'+Path(cp['path']).name))
+cfg=dict(batch=62,root_review_complete=True,source_before_sha256=bind('S6_SERIES_PUBLISH_II.tex')['sha256'],ledger_before_sha256=bind('CHECK_EVENTS.tsv')['sha256'],review_evidence=[bind(review),bind(ip),bind(pp),idx['comparison'],idx['frozen_derivation'],*eb['evidence']],targets=[target],additional_source_edits=extra,code_copies=copies,mathematical_repairs=[],scope='02XS admitted after complete frozen derivation and full14-item comparison. All11 original displays remain. Weighted compact-core, whole-local-ring conductor and exact primary-variation explanations make the original maps explicit; the postrelease isolated-case citation timing remains recorded.12 target guards and one program reference;3 events in one group. No global defect or page-reading closure.')
+assert cfg['source_before_sha256']=='c12f0f0393dac71857829858ec93d7f91ef05e4c8ce92bfa814023ce3d2f1017'
+assert cfg['ledger_before_sha256']=='4d9d1c00c3a004e864368f64f4fe76b97555d2c7a6f027c11af15506bc3413b6'
+out='records/S6_SERIES_PUBLISH_II_continuation2_batch62_config.json';assert not (R/out).exists();(R/out).write_text(json.dumps(cfg,indent=2)+'\n');print(json.dumps(bind(out)))

@@ -1,0 +1,4 @@
+const names=["manifolds_star_log_caps.json","manifolds_sphere_monodromies.json","manifolds_rankone_families.py","manifolds_general_initial.py","manifolds_weighted_profiles.py"];
+const dir="pro_returns/S6_10_PAPERS_checkpoint_15_20261119T1045Z/S6_10_PAPERS/code/III/";
+const out=await Promise.allSettled(names.map(async name=>{const request={repository_full_name:"KokunoYumeto/s6-complex-structure-workbench",ref:"a02f2eacf5a8c3db7cf8cdfcdba50c0002ee91c7",encoding:"base64",path:dir+name};return {request,response:await tools.mcp__codex_apps__github_fetch_file(request)};}));
+store("lq_fetch_followups",out);out.forEach((r,i)=>text({name:names[i],status:r.status,isError:r.status==="fulfilled"?r.value.response.isError:null,keys:r.status==="fulfilled"?Object.keys(r.value.response.structuredContent??{}):String(r.reason),encodedLength:r.status==="fulfilled"?r.value.response.structuredContent?.content?.length:null}));

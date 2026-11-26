@@ -1,0 +1,330 @@
+#!/usr/bin/env python3
+"""Close the reviewed Paper I snapshot after all independently scoped gates.
+
+This aggregates existing evidence and verifies the separate root-reviewed
+used-and-rechecked ledger append. The completion operation performs no new
+mathematical check and adds no event or reading credit. The --apply flag records
+the root's review decision; source and ledger remain byte-identical during it.
+"""
+from pathlib import Path
+import argparse
+import collections
+import csv
+import datetime as dt
+import hashlib
+import io
+import json
+import re
+from S6_SERIES_PUBLISH_I_verify_reread_append import verify_append, REREAD_TYPE
+
+ROOT=Path(__file__).resolve().parents[1]
+BASE=ROOT.parent/'S6_SERIES_PUBLISH_work/S6_SERIES_PUBLISH_checkpoint_10'
+csv.field_size_limit(100_000_000)
+EVENT_TYPES=[
+    'targeted proof check', 'independent re-proof',
+    'computation or formal certificate', REREAD_TYPE,
+    'carried as background without fault found',
+    "refuted, with the refined statement's id",
+]
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def read(path):
+    return json.loads(path.read_text())
+
+
+def tab(path, delimiter='\t'):
+    with path.open(newline='') as stream:
+        reader=csv.DictReader(stream,delimiter=delimiter)
+        return reader.fieldnames,list(reader)
+
+
+def bound(path):
+    return {'path':str(path.relative_to(ROOT)), 'sha256':sha(path)}
+
+
+def verify_final_counts(provenance, source_sha, ledger_sha, events, metadata, append_scope):
+    """Recompute the final provenance selection from the current ledger rows."""
+    assert provenance['counts_recomputed'] is True
+    reference=provenance['recount']
+    recount_path=(ROOT/reference['path']).resolve()
+    assert recount_path.is_relative_to(ROOT) and sha(recount_path)==reference['sha256']
+    recount=read(recount_path)
+    assert (recount['source_sha256'],recount['ledger_sha256'])==(source_sha,ledger_sha)
+    assert recount['merged_ledger_rows']==len(events)==append_scope['after_rows']
+    counts=provenance['counts']
+    assert counts==recount['counts']
+    assert counts['paper']=='I' and counts['scope']=='current_printed_statements_and_definitions'
+    subjects={identity for row in recount['statements'] for identity in row['identities']}
+    assert len(recount['statements'])==counts['statements']==metadata['printed_environments']
+    assert len(subjects)==counts['subject_identifiers']==metadata['statement_identifiers']
+    selected=[row for row in events if row['statement_id'] in subjects]
+    selected_ids=[row['event_id'] for row in selected]
+    selected_positions=[index+2 for index,row in enumerate(events) if row['statement_id'] in subjects]
+    assert selected_ids==recount['selected_event_ids']
+    assert selected_positions==recount['selected_ledger_rows']
+    assert len(selected_ids)==len(set(selected_ids))==counts['event_associations']
+    groups=sorted({row['evidence_group'] or row['event_id'] for row in selected})
+    assert groups==sorted(recount['declared_evidence_groups'])
+    assert len(groups)==counts['declared_evidence_groups']
+    categories=collections.Counter(row['type'] for row in selected)
+    assert set(categories)<=set(EVENT_TYPES)
+    assert all(counts[k]==categories[k] for k in EVENT_TYPES)
+    assert sum(categories.values())==counts['event_associations']
+    assert set(append_scope['appended_event_ids'])<=set(selected_ids)
+    baseline=collections.Counter(row['type'] for row in events[:append_scope['before_rows']]
+                                 if row['statement_id'] in subjects)
+    for kind in EVENT_TYPES:
+        expected=append_scope['appended_events'] if kind==REREAD_TYPE else 0
+        assert categories[kind]-baseline[kind]==expected
+    return counts,recount_path
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--dossier',type=Path,required=True)
+    parser.add_argument('--ledger-append-receipt',type=Path,required=True)
+    parser.add_argument('--provenance',type=Path,required=True,help='Exact final immutable three-way provenance table.')
+    parser.add_argument('--apply',action='store_true')
+    args=parser.parse_args()
+    args.dossier=args.dossier.resolve()
+    args.ledger_append_receipt=args.ledger_append_receipt.resolve()
+    source=ROOT/'S6_SERIES_PUBLISH_I.tex'; pdf=ROOT/'S6_SERIES_PUBLISH_I.pdf'
+    ledger=ROOT/'CHECK_EVENTS.tsv'; defects=ROOT/'S6_SERIES_PUBLISH_defects_I.tsv'
+    source_sha, pdf_sha, ledger_sha=sha(source),sha(pdf),sha(ledger)
+    append_scope=verify_append(args.ledger_append_receipt,ledger)
+    assert append_scope['after_ledger_sha256']==ledger_sha
+    _,events=tab(ledger)
+    assert len(events)==append_scope['after_rows']
+    final_path=ROOT/'records/S6_SERIES_PUBLISH_I_final_pdf_receipt.json'
+    final=read(final_path)
+    cover_path=ROOT/'records/S6_SERIES_PUBLISH_I_page_coverage.json'; cover=read(cover_path)
+    page_total=cover['page_count']
+    for value in [final,cover]:
+        assert value['source_sha256']==source_sha and value['pdf_sha256']==pdf_sha
+        assert value['certified'] and value['all_pages_read'] and not value['missing_pages']
+        assert value['page_count']==value['covered_pages']==page_total
+    assert len(cover['pages'])==page_total and {x['page'] for x in cover['pages']}==set(range(1,page_total+1))
+    for row in cover['pages']:
+        assert sha(ROOT/row['reading_record'])==row['reading_record_sha256']
+    build_path=ROOT/final['build_summary']; build=read(build_path)
+    assert build['source_sha256']==source_sha and build['pdf_sha256']==pdf_sha
+    clean_keys=['overfull_above_2pt','undefined_references','undefined_citations','missing_characters',
+                'missing_fonts','multiply_defined','duplicate_destinations']
+    assert all(build.get(k,0)==0 for k in clean_keys)
+    # The historical summary has no underfull field. Check the final log itself
+    # so the two repaired paragraph layouts cannot pass on an omitted count.
+    log_path=build_path.parent/'S6_SERIES_PUBLISH_I.log'
+    log_text=log_path.read_text(errors='replace')
+    assert 'Output written on ' in log_text and 'PDF statistics:' in log_text
+    underfull=re.findall(r'(?m)^Underfull \\[hv]box[^\n]*',log_text)
+    assert not underfull
+    metadata_path=ROOT/'records/S6_SERIES_PUBLISH_I_current_metadata.json'; metadata=read(metadata_path)
+    assert metadata['certified_flag'] and metadata['source_sha256']==source_sha and metadata['pdf_sha256']==pdf_sha
+    assert metadata['printed_environments']==333 and metadata['statement_identifiers']==353
+    ag_path=ROOT/'records/S6_SERIES_PUBLISH_I_continuation_AG_binding.json'; ag=read(ag_path)
+    assert (ag['source_sha256'],ag['pdf_sha256'],ag['ledger_sha256'])==(source_sha,pdf_sha,ledger_sha)
+    assert ag['continuation_rereading_append']==append_scope
+    assert ag['ledger_rows']==append_scope['after_rows']
+    assert ag['source_exact_forward_and_inverse_maps_verified'] and ag['all_label_and_tag_sequences_preserved']
+    assert len(ag['headlines'])==7 and sum(x['outline_items'] for x in ag['headlines'].values())==40
+    assert len(ag['blocks'])==80
+    provenance_path=args.provenance.resolve()
+    provenance=read(provenance_path)
+    assert provenance['all_claims_closed'] and len(provenance['claims'])==42
+    assert (provenance['source_sha256'],provenance['ledger_sha256'])==(source_sha,ledger_sha)
+    assert provenance['final_pdf']['sha256']==pdf_sha
+    counts,recount_path=verify_final_counts(provenance,source_sha,ledger_sha,events,metadata,append_scope)
+    claim_total=len(provenance['claims'])
+    _, claims=tab(ROOT/'S6_SERIES_PUBLISH_provenance_checks.tsv')
+    i_claims=[x for x in claims if x['paper']=='I']
+    assert len(i_claims)==42 and all(not x['remaining_gate'] and not x['required_action'] for x in i_claims)
+    for row in i_claims:
+        evidence=json.loads(row['evidence'])
+        assert evidence['source_sha256']==source_sha and evidence['ledger_sha256']==ledger_sha
+        assert row['resolution_status']=='resolved at exact current source/count/PDF snapshot'
+    completion_path=ROOT/'records/S6_SERIES_PUBLISH_required_check_completion_manifest.json'
+    completion=read(completion_path)
+    required=[dict(id=k,**v) for k,v in completion['rows'].items() if v.get('paper')=='I']
+    assert required and all(x['status']=='done' for x in required)
+    _, inventory=tab(ROOT/'S6_SERIES_PUBLISH_inventory.csv',',')
+    inventory_i=[x for x in inventory if x['paper']=='I']
+    assert all(x['current_source_sha256']==source_sha and x['current_pdf_sha256']==pdf_sha for x in inventory_i)
+    assert sum('I-cont-search-' in x['literature_searches'] for x in inventory_i)==7
+    search_ids=[identifier for row in inventory_i
+                for identifier in re.findall(r'"search_id"\s*:\s*"(I-cont-search-[^"]+)"',row['literature_searches'])]
+    mapping_path=ROOT/'records/S6_SERIES_PUBLISH_I_defect_page_mapping.json'; mapping=read(mapping_path)
+    assert mapping['current_source_sha256']==source_sha and mapping['current_pdf_sha256']==pdf_sha
+    assert not mapping['unresolved_current_context_ids']
+    fields, edits=tab(defects)
+    edit_count=len(edits)
+    continuation_edits=len(ag['exact_edits'])
+    assert edit_count==mapping['rows']
+    assert sha(defects)==mapping['mapped_defects_sha256']
+    detail={x['change_id']:x for x in mapping['details']}
+    for edit in edits:
+        row=detail[edit['change_id']]
+        assert hashlib.sha256(edit['old_text'].encode()).hexdigest()==row['old_text_sha256']
+        assert hashlib.sha256(edit['new_text'].encode()).hexdigest()==row['new_text_sha256']
+        assert edit['old_page'] and edit['new_page'] and edit['mapped_old_location'] and edit['mapped_new_location']
+    dossier=read(args.dossier)
+    assert dossier['source_sha256']==source_sha and dossier['all_types_source_clear']
+    assert {x['type_id'] for x in dossier['rows']}=={f'D{i:02}' for i in range(1,26)}
+    original=(BASE/source.name).read_text(); current=source.read_text()
+    identities={}
+    for name,pattern in [('labels',r'\\label\{([^}]+)\}'),('permanent_tag_targets',r'\\hypertarget\{tag-([^}]+)\}')]:
+        before,after=re.findall(pattern,original),re.findall(pattern,current)
+        assert before==after
+        identities[name]={'checkpoint10':len(before),'current':len(after),'sequence_identical':True,'lost':[]}
+    headline_total=len(ag['headlines'])
+    outline_total=sum(x['outline_items'] for x in ag['headlines'].values())
+    block_total=len(ag['blocks'])
+    evidence_paths=[final_path,cover_path,build_path,log_path,metadata_path,ag_path,
+                    provenance_path,recount_path,completion_path,mapping_path,args.dossier,
+                    args.ledger_append_receipt,
+                    ROOT/'code/S6_SERIES_PUBLISH_I_verify_reread_append.py',Path(__file__).resolve()]
+    now=dt.datetime.now(dt.timezone.utc).isoformat()
+    record={'paper':'I','completed_utc':now,'source_sha256':source_sha,'pdf_sha256':pdf_sha,
+            'ledger_sha256':ledger_sha,'pages':page_total,'logged_edits':edit_count,
+            'exact_continuation_edits':continuation_edits,
+            'defect_types_closed':[f'D{i:02}' for i in range(1,26)],
+            'provenance_claims_closed':claim_total,'current_main_dependency_block_associations':block_total,
+            'main_theorems':headline_total,'outline_claims':outline_total,'pending_required_checks':[],
+            'required_completion_rows':len(required),'identities':identities,'counts':counts,
+            'ledger_rows':append_scope['after_rows'],
+            'actual_used_and_rechecked_append':append_scope,
+            'build_findings':dict({k:build.get(k,0) for k in clean_keys},underfull_total=len(underfull)),
+            'reading_methods':dict(collections.Counter(x['method'] for x in cover['pages'])),
+            'evidence':[bound(p) for p in evidence_paths],
+            'mathematical_events_added_by_completion':0,
+            'remaining_series_gate':'Regenerate cross-paper references, synchronize the series table and notation, and repeat the final first-part reading after Papers II–IV are complete. Paper V follows its published v2 source.',
+            'scope':'Individual publication gate for this exact source/PDF/ledger snapshot. The separately reviewed actual complete-proof rereadings have the verified used-and-rechecked append scope. Existing checks retain their recorded methods and independence scopes. This completion operation adds no mathematical event or human checking.'}
+    destination=ROOT/'records/S6_SERIES_PUBLISH_I_complete_gate.json'
+    if args.apply:
+        assert not destination.exists(),'Preserve any previous completed snapshot'
+        old_log_sha=sha(defects)
+        old_statuses=sorted({row['review_status'] for row in edits})
+        final_status='complete; exact edit and scoped before/current loci retained; final source/PDF gate certified'
+        for row in edits:
+            row['review_status']=final_status
+        with defects.open('w',newline='') as stream:
+            writer=csv.DictWriter(stream,fieldnames=fields,delimiter='\t')
+            writer.writeheader(); writer.writerows(edits)
+        mapping['certified']=True
+        mapping['final_defect_log_sha256']=sha(defects)
+        mapping['final_coverage']=bound(cover_path)
+        mapping_path.write_text(json.dumps(mapping,indent=2)+'\n')
+        status_receipt={'recorded_utc':now,'input_defect_log_sha256':old_log_sha,
+                        'output_defect_log_sha256':sha(defects),'rows':len(edits),
+                        'old_review_statuses':old_statuses,'new_review_status':final_status,
+                        'changed_fields':['review_status'],'mathematical_events_added':0}
+        (ROOT/'records/S6_SERIES_PUBLISH_I_final_defect_status_binding.json').write_text(json.dumps(status_receipt,indent=2)+'\n')
+        record['evidence']=[bound(p) for p in evidence_paths]
+        record['defect_log_sha256']=sha(defects)
+        destination.write_text(json.dumps(record,indent=2)+'\n')
+        type_record={'paper':'I','recorded_utc':now,'source_sha256':source_sha,'pdf_sha256':pdf_sha,
+                     'ledger_sha256':ledger_sha,'defect_log_sha256':sha(defects),
+                     'dossier':bound(args.dossier),'completion_gate':bound(destination),
+                     'rows':[dict(row,status='done',remaining_dependencies=[]) for row in dossier['rows']]}
+        (ROOT/'records/S6_SERIES_PUBLISH_I_defect_types_closed.json').write_text(json.dumps(type_record,indent=2)+'\n')
+        progress=ROOT/'PROGRESS_LEDGER.md'; text=progress.read_text()
+        text,n=re.subn(r'^(\| I \| D\d+: .*? \|) [^|]* \|$',r'\1 done; exact current source audit, logged edits and certified page evidence |',text,flags=re.M)
+        assert n==25
+        text=text.replace('| I | open |',f'| I | done; all {page_total} final page images have complete reading evidence |',1)
+        old='Five publication-ready papers. Current gate: Paper V is complete at its recorded source/PDF snapshot. Complete Paper I, then II, III and IV, followed by the series consistency review.'
+        assert old in text
+        text=text.replace(old,'Five publication-ready papers. Papers I and V have completed individual gates at their recorded snapshots. Complete Paper II, then III and IV, followed by the five-paper consistency review.',1)
+        entry=(f'\n## Paper I complete — {now}\n\n'
+               f'Paper I has a clean, completely read {page_total}-page final PDF. All 25 defect types, '
+               f'{edit_count} logged edits, all required scoped checks and all {claim_total} provenance claims '
+               f'are closed at source `{source_sha}`, PDF `{pdf_sha}` and mathematical ledger `{ledger_sha}`. '
+               f'The {continuation_edits} exact continuation edits have recorded forward/inverse text maps, '
+               f'explicit retained witnesses and unchanged full label/tag sequences; the {headline_total} main '
+               f'theorem statements and {outline_total} outline claims retain their verified comparison scopes.\n\n'
+               f'The separate root-reviewed append records {append_scope["appended_events"]} actual complete-proof '
+               f'rereadings as used-and-rechecked events, one per owning statement. It preserves the inherited '
+               f'{append_scope["before_rows"]}-row ledger byte for byte and brings the current total to '
+               f'{append_scope["after_rows"]} rows. It adds no independent re-proof, targeted-check or computation '
+               f'credit. Automated source application, citation-formatting, page-image reading and '
+               f'metadata operations add no event. This completion operation also adds 0 events. The exact append receipt is `{append_scope["receipt"]["path"]}`. '
+               f'Completion receipt: `records/S6_SERIES_PUBLISH_I_complete_gate.json`. The current gate is Paper II.\n\n'
+               '### Paper I final page rows\n\nThe source and PDF hashes above apply to every row. '
+               'The complete per-page image and reading-record hashes are in '
+               '`records/S6_SERIES_PUBLISH_I_page_coverage.json`.\n\n'
+               '| Paper | Page | Status | Evidence |\n|---|---:|---|---|\n')
+        for row in cover['pages']:
+            entry+=f"| I | {row['page']} | done | {row['method']} |\n"
+        progress.write_text(text+entry)
+        report_path=ROOT/'S6_SERIES_PUBLISH_report.md'; report=report_path.read_text()
+        gate=f'Paper I now has a clean, completely read {page_total}-page PDF with 25 closed defect types, {edit_count} logged edits, all required scoped checks and {claim_total} closed provenance claims. Paper V retains its earlier completed individual gate; its published v2 source governs the later series pass. Work proceeds to Paper II, then III and IV, followed by the five-paper review. The full task remains incomplete.'
+        report,n=re.subn(r'(## Current gate\n\n).*?(?=\n## )',lambda m:m[1]+gate+'\n',report,count=1,flags=re.S)
+        assert n==1 and report.startswith('INCOMPLETE\n')
+        count_table='| Recorded check scope | Current associations |\n|---|---:|\n'
+        for kind in EVENT_TYPES:
+            count_table+=f'| {kind} | {counts[kind]} |\n'
+        summary=(f'\n## Paper I completion — {now}\n\n{gate}\n\n'
+                 f'Source SHA-256: `{source_sha}`. PDF SHA-256: `{pdf_sha}`. Mathematical ledger '
+                 f'SHA-256: `{ledger_sha}`. Receipt: `records/S6_SERIES_PUBLISH_I_complete_gate.json`.\n\n'
+                 f'The continuation applied {continuation_edits} exact editorial changes, including '
+                 'wording, accented spellings, attribution and CC0 text, redundant clauses, precise '
+                 'source locators, publication metadata, cited-edition notes and paragraph layout. '
+                 'The complete forward and inverse source maps, explicit inline/reference exceptions '
+                 'with retained witnesses, and complete statement/proof comparisons are recorded. '
+                 'No new mathematical error was established in this continuation. The mathematical '
+                 'corrections found in the first run remain listed in the dated sections above: the '
+                 'lattice-pole description, logarithm transport, the missing E4 factor, the selected '
+                 'small-resolution charts and their propagation, the central-component/meridian '
+                 'argument, and the exact auxiliary-field/source-application scopes.\n\n'
+                 f'The final paper contains {metadata["printed_environments"]} printed environments '
+                 f'with {metadata["statement_identifiers"]} statement identifiers. Its '
+                 f'{counts["event_associations"]} check associations belong to '
+                 f'{counts["declared_evidence_groups"]} declared evidence groups. The final '
+                 f'provenance recount is bound to this source and the current '
+                 f'{append_scope["after_rows"]}-row ledger; its selected event IDs, ledger rows, '
+                 f'categories and evidence groups were checked directly against the ledger.\n\n'
+                 +count_table+'\n'
+                 f'The separate append records {append_scope["appended_events"]} actual complete-proof '
+                 f'rereadings under the used-and-rechecked category, with one event per owning '
+                 f'statement and the root-reviewed evidence manifest bound in '
+                 f'`{append_scope["receipt"]["path"]}`. The inherited '
+                 f'{append_scope["before_rows"]} rows remain an exact byte prefix. The append adds '
+                 'no independent re-proof, targeted-check or computation credit. Automated source application, '
+                 'citation-formatting, page-image reading and metadata operations add no event. '
+                 'This completion operation adds '
+                 f'0 events. All {headline_total} main theorem statements and {outline_total} outline '
+                 f'items are byte-identical to their checked candidate13 text, with {block_total} '
+                 'body-block associations transported through the exact edits.\n\n'
+                 'The final pdfLaTeX build passes the typesetting gates: zero underfull boxes, '
+                 'overflow above 2pt, undefined references or citations, missing fonts or characters, '
+                 'duplicate labels or duplicate destinations. The underfull count was checked '
+                 'directly in the final log; earlier candidate logs and summaries remain archived. '
+                 'Every final page has actual full-image reading evidence; earlier reading transfers '
+                 'only by byte equality of the whole rendered PNG. The read-again pages and their '
+                 'dispositions are in `S6_SERIES_PUBLISH_reading_I.md`. '
+                 f'The {edit_count} edit locations retain their explicitly identified before-PDF '
+                 'scopes and final current loci.\n\n'
+                 f'All {claim_total} provenance claims, deposit fields and metadata bind to this '
+                 f'exact source/PDF/ledger. The inventory retains {len(search_ids)} associations '
+                 f'from {len(set(search_ids))} bounded continuation literature searches, with their '
+                 'scope and primary-source receipts. The mandated publication-record pin was '
+                 'opened, its commit checked and its raw report matched to the attachment. '
+                 'No deposit or external publication was performed.\n')
+        report_path.write_text(report+summary)
+    else:
+        stamp=dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+        destination=ROOT/f'agents/continuation_infra/S6_SERIES_PUBLISH_I_complete_gate_v2_preview_{stamp}.json'
+        assert not destination.exists()
+        destination.write_text(json.dumps(record,indent=2)+'\n')
+    assert sha(source)==source_sha and sha(ledger)==ledger_sha
+    print(json.dumps({'applied':args.apply,'gate':str(destination),'source_sha256':source_sha,
+                      'pdf_sha256':pdf_sha,'pages':page_total,'defect_types':25,'provenance_claims':claim_total,
+                      'ledger_rows':append_scope['after_rows'],
+                      'actual_used_and_rechecked_events_appended':append_scope['appended_events'],
+                      'mathematical_events_added_by_completion':0},indent=2))
+
+
+if __name__=='__main__':
+    main()

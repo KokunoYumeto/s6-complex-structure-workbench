@@ -1,0 +1,80 @@
+START 2026-11-25T09:53:56.058722+00:00
+SOURCE agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_manifolds_general_initial.py SHA256 f581acf2eaef5e40001ad8b27d6f93be7b213e9b42831853213e6dc227c5d669
+DEFINITION manifolds_general_initial.py:25-25 satimage
+def satimage(M):return ikernel(ikernel(M.T).T)
+DEFINITION manifolds_general_initial.py:36-41 rational_solution
+def rational_solution(A,b):
+    D,U,V,rank=decomp(A);rhs=U*b;tmp=s.zeros(A.cols,1)
+    if any(rhs[j] for j in range(rank,A.rows)):raise ValueError('No rational local logarithm.')
+    for j in range(rank):tmp[j]=rhs[j]/D[j,j]
+    z=V*tmp;assert A*z==b
+    return z
+DEFINITION manifolds_general_initial.py:89-107 graph_data
+def graph_data(A):
+    product=s.eye(4)
+    for B in A:product*=B
+    assert product==s.eye(4)
+    count=len(A);D=s.Matrix.hstack(*[B-s.eye(4) for B in A[:-1]])
+    K=ikernel(D);Ki=W.integral_left_inverse(K)
+    Js=[];raw=[];suffix=[]
+    for i in range(count-1):
+        J=s.zeros(4*(count-1),4);J[4*i:4*i+4,:]=s.eye(4);raw.append(J)
+        Q=s.eye(4)
+        for C in A[i+1:-1]:Q*=C
+        suffix.append(Q)
+    raw.append(-s.Matrix.vstack(*suffix))
+    Js=[Ki*J for J in raw]
+    f=[QuadraticCorrection(B) for B in A[:-1]]
+    def correction(i,u):
+        if i<count-1:return f[i](u)
+        return -sum((f[j](suffix[j]*A[i]*u) for j in range(count-1)),s.zeros(6,1))
+    return K,Js,correction
+SOURCE agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_manifolds_rankone_families.py SHA256 f2c80dfca5aac28e17f090e9873bb9b1da52583584a086882a775081bd4458d0
+DEFINITION manifolds_rankone_families.py:35-40 decomp
+def decomp(A):
+    D,U,V=smith_normal_decomp(DomainMatrix.from_Matrix(A).convert_to(s.ZZ))
+    D,U,V=(x.to_Matrix() for x in (D,U,V))
+    assert U*A*V==D and abs(U.det())==abs(V.det())==1
+    rank=sum(D[i,i]!=0 for i in range(min(D.shape)))
+    return D,U,V,rank
+DEFINITION manifolds_rankone_families.py:42-44 ikernel
+def ikernel(A):
+    D,U,V,r=decomp(A)
+    return V[:,r:]
+DEFINITION manifolds_rankone_families.py:46-53 bezout
+def bezout(values):
+    coefficients=[];g=0
+    for value in values:
+        aa,bb,gg=map(int,s.gcdex(g,int(value)))
+        coefficients=[aa*x for x in coefficients]+[bb]
+        g=gg
+    assert sum(int(a)*b for a,b in zip(values,coefficients))==g
+    return s.Matrix(coefficients),g
+DEFINITION manifolds_rankone_families.py:55-56 wedge
+def wedge(A):
+    return s.Matrix([[A.extract(i,j).det() for j in PAIRS] for i in PAIRS])
+DEFINITION manifolds_rankone_families.py:58-59 biv
+def biv(x,y):
+    return s.Matrix([x[i]*y[j]-x[j]*y[i] for i,j in PAIRS])
+SOURCE agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_manifolds_all_weighted_profiles.py SHA256 0b7516c4ee2197fed32a18c7eb39fb4995da8d728da151395cc410d0322a3560
+DEFINITION manifolds_all_weighted_profiles.py:22-39 QuadraticCorrection
+class QuadraticCorrection:
+    def __init__(self,A):
+        self.A=s.Matrix(A);WA=wedge(self.A);self.WA=WA;E=s.eye(4)
+        self.D=[[p2(self.A*E[:,i],self.A*E[:,j])-WA*p2(E[:,i],E[:,j])
+                 for j in range(4)] for i in range(4)]
+        assert all(self.D[i][j]==self.D[j][i] for i in range(4) for j in range(4))
+    def __call__(self,u):
+        u=s.Matrix(u)
+        result=-sum((self.D[i][i]*(u[i]*(u[i]-1)/2) for i in range(4)),s.zeros(6,1))
+        result-=sum((self.D[i][j]*u[i]*u[j] for i in range(4) for j in range(i+1,4)),s.zeros(6,1))
+        assert all(x.q==1 for x in result)
+        return result
+    def coefficients(self):
+        return dict(diagonal=[self.D[i][i].T.tolist()[0] for i in range(4)],
+                    mixed=[self.D[i][j].T.tolist()[0] for i in range(4) for j in range(i+1,4)])
+    def check(self,u,v):
+        u=s.Matrix(u);v=s.Matrix(v)
+        assert self(u)+self(v)-self(u+v)==p2(self.A*u,self.A*v)-self.WA*p2(u,v)
+EXTRACT agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_III_02LS_historical_helper_bounded_v002.py SHA256 f46590845faca71ad94ee10ca2504f10d7aa453518db644ea6d291936e91818d
+COMPLETE 2026-11-25T09:53:56.085649+00:00

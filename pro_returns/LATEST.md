@@ -1,7 +1,6 @@
 # The most recent return of each run
 
-The table marks the most recent checkpoint or final of each run. Returns added from 22 November 2026 hold
-their deliverables only. Older checkpoints stay as they were pushed.
+The table marks the most recent checkpoint or final of each run. Older checkpoints stay as they were pushed.
 
 | Run | Most recent | Delivered (UTC) | Folders here |
 |---|---|---|---:|
@@ -15,6 +14,6 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | S6_09_PAPERS | **[final](S6_09_PAPERS_final_20261117T0601Z/)** | 2026-11-17 06:01 | 2 |
 | S6_10_PAPERS | **[checkpoint 15](S6_10_PAPERS_checkpoint_15_20261119T1045Z/)** | 2026-11-19 10:45 | 6 |
 | S6_SERIES_GRIND | **[checkpoint 10](S6_SERIES_GRIND_checkpoint_10_20261120T0211Z/)** | 2026-11-20 02:11 | 5 |
-| S6_SERIES_PUBLISH | **[checkpoint 34](S6_SERIES_PUBLISH_checkpoint_34_20261122T1301Z/)** | 2026-11-22 13:01 | 13 |
+| S6_SERIES_PUBLISH | **[checkpoint 115](S6_SERIES_PUBLISH_checkpoint_115_20261126T1146Z/)** | 2026-11-26 11:46 | 14 |
 
 6 other folders here have no checkpoint number and date in their names, so the table doesn't rank them.

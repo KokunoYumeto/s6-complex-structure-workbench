@@ -1,0 +1,33 @@
+START 2026-11-25T09:47:26.306027+00:00
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_fourfolds_corrected_Mumford_examples.json BYTES 546851 SHA256 e8e6dc85bb65f8c3d3b13e19ee4f2dfe3b0ec53e7dacef2fcc7031ff443c4af4
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_fourfolds_corrected_Mumford_examples.py BYTES 3055 SHA256 47c545dae8046314ab98ef8d319bae491e4c82f0394f37a1392e23c294fdb205
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_fourfolds_vertical_correction_audit.py BYTES 4713 SHA256 c6169b7ed538904a2e905ecdc8b10cfc4494a761e37c14556c6d2c7123d3b207
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_manifolds_general_initial.py BYTES 12028 SHA256 f581acf2eaef5e40001ad8b27d6f93be7b213e9b42831853213e6dc227c5d669
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_root_vertical_corrections.json BYTES 134080 SHA256 ae403a67929573c84040ab5c2c9402be11ad25c3a3d11003e789392db7cff7af
+RETAINED agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_root_vertical_corrections.py BYTES 7168 SHA256 db309494e50559a43d52fec581c425c8c237a46702b3b5d81c642d199cd645c2
+DEFINITION integer_solution LINES 27 34
+def integer_solution(A,b):
+    D,U,V,rank=decomp(A);rhs=U*b;tmp=s.zeros(A.cols,1)
+    for j in range(rank):
+        if rhs[j]%D[j,j]:raise ValueError('Nonintegral logarithm.')
+        tmp[j]=rhs[j]/D[j,j]
+    if any(rhs[j] for j in range(rank,A.rows)):raise ValueError('No logarithm.')
+    z=V*tmp;assert A*z==b
+    return z
+DEFINITION component_geometry LINES 71 82
+def component_geometry(kind):
+    # The same marked component permutations as D.2.22.
+    if kind in ['I1','II']:return [1],[0],[0]
+    if kind in ['III','IV'] or (kind.startswith('I') and kind[1:].isdigit()):
+        n={'III':2,'IV':3}.get(kind,int(kind[1:]) if kind[1:].isdigit() else 0)
+        return [1]*n,[(j+1)%n for j in range(n)],list(range(n))
+    if kind=='IV*':return [1,1,1,2,2,2,3],[1,2,0,4,5,3,6],[0,1,2]
+    if kind=='III*':return [1,1,2,2,3,3,4,2],[1,0,3,2,5,4,6,7],[0,1]
+    if kind.startswith('I') and kind.endswith('*'):
+        n=int(kind[1:-1]);assert n%2
+        return [1]*4+[2]*(n+1),[2,3,1,0]+[n+8-j for j in range(4,n+5)],[0,2,1,3]
+    raise ValueError(kind)
+BOUNDED_EXTRACT agents/continuation7_iii_vertical_correction_receiving/S6_SERIES_PUBLISH_III_02LS_historical_helper_bounded_v001.py SHA256 99a08667dd2df836261e84fae54840d52adfe9cab4e09a4db22b0e183cba918b
+JSON_SCHEMA root_vertical_corrections {'local_component_pair_cases': 227, 'global_profile_residue_cases': 21, 'integral_height_criterion_discrepancies': 0, 'example_I4_P2_Q2': 8, 'scope': 'str'}
+JSON_SCHEMA fourfolds_corrected_Mumford_examples ROWS 16 ROW_KEYS ['entry', 'profile', 'P', 'Q', 'weights', 'e', 'original_sites', 'local', 'euler', 'regular_coinvariant_H2', 'exterior_H1', 'relative_free_rank', 'H1_matrix', 'H2_matrix', 'homology', 'fundamental_group', 'chosen_I8_vertical_correction', 'boundary_marking']
+COMPLETE 2026-11-25T09:47:26.325431+00:00

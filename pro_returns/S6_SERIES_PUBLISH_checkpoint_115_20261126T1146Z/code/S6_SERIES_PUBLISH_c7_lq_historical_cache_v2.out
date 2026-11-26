@@ -1,0 +1,98 @@
+FETCH_FILE CONTENT ABSENT for nonempty blob e61b51ddf39a46115f29a4cb034771ed9870a671 retained as actual connector result
+RETAINED manifolds_sphere_monodromies.json bytes 682592 lines 41171 SHA256 710ba7759930573b0ad83075d50d81d7715feac4e86ff8d8decc9b127d889a75
+RETAINED manifolds_rankone_families.py bytes 6800 lines 159 SHA256 f2c80dfca5aac28e17f090e9873bb9b1da52583584a086882a775081bd4458d0
+IMPORT_METADATA from pathlib import Path
+from itertools import combinations
+from math import gcd
+import sys, json
+import sympy as s
+from sympy.polys.matrices import DomainMatrix
+from sympy.polys.matrices.normalforms import smith_normal_decomp
+from sympy.matrices.normalforms import smith_normal_form
+import os_monodromy as om
+EXACT_HELPER manifolds_rankone_families.py 35 40 decomp
+def decomp(A):
+    D,U,V=smith_normal_decomp(DomainMatrix.from_Matrix(A).convert_to(s.ZZ))
+    D,U,V=(x.to_Matrix() for x in (D,U,V))
+    assert U*A*V==D and abs(U.det())==abs(V.det())==1
+    rank=sum(D[i,i]!=0 for i in range(min(D.shape)))
+    return D,U,V,rank
+CALLED_NAMES ['abs', 'min', 'range', 'smith_normal_decomp', 'sum']
+EXACT_HELPER manifolds_rankone_families.py 42 44 ikernel
+def ikernel(A):
+    D,U,V,r=decomp(A)
+    return V[:,r:]
+CALLED_NAMES ['decomp']
+EXACT_HELPER manifolds_rankone_families.py 55 56 wedge
+def wedge(A):
+    return s.Matrix([[A.extract(i,j).det() for j in PAIRS] for i in PAIRS])
+CALLED_NAMES []
+EXACT_HELPER manifolds_rankone_families.py 58 59 biv
+def biv(x,y):
+    return s.Matrix([x[i]*y[j]-x[j]*y[i] for i,j in PAIRS])
+CALLED_NAMES []
+EXACT_HELPER manifolds_rankone_families.py 46 53 bezout
+def bezout(values):
+    coefficients=[];g=0
+    for value in values:
+        aa,bb,gg=map(int,s.gcdex(g,int(value)))
+        coefficients=[aa*x for x in coefficients]+[bb]
+        g=gg
+    assert sum(int(a)*b for a,b in zip(values,coefficients))==g
+    return s.Matrix(coefficients),g
+CALLED_NAMES ['int', 'map', 'sum', 'zip']
+RETAINED manifolds_general_initial.py bytes 12028 lines 247 SHA256 f581acf2eaef5e40001ad8b27d6f93be7b213e9b42831853213e6dc227c5d669
+IMPORT_METADATA from pathlib import Path
+from math import gcd
+import argparse, json, sys
+import sympy as s
+from sympy.matrices.normalforms import hermite_normal_form
+from manifolds_rankone_families import decomp, ikernel, wedge, biv, bezout
+import manifolds_weighted_profiles as W
+from manifolds_all_weighted_profiles import QuadraticCorrection
+import os_monodromy as om
+EXACT_HELPER manifolds_general_initial.py 27 34 integer_solution
+def integer_solution(A,b):
+    D,U,V,rank=decomp(A);rhs=U*b;tmp=s.zeros(A.cols,1)
+    for j in range(rank):
+        if rhs[j]%D[j,j]:raise ValueError('Nonintegral logarithm.')
+        tmp[j]=rhs[j]/D[j,j]
+    if any(rhs[j] for j in range(rank,A.rows)):raise ValueError('No logarithm.')
+    z=V*tmp;assert A*z==b
+    return z
+CALLED_NAMES ['ValueError', 'any', 'decomp', 'range']
+RETAINED manifolds_weighted_profiles.py bytes 10956 lines 232 SHA256 c61db918ba5e4552a9f81c7a4c14e980e5decc317f77496fbc17b214a77d781a
+IMPORT_METADATA from pathlib import Path
+from math import gcd
+from itertools import product
+import argparse
+import json
+import sympy as s
+from sympy.matrices.normalforms import smith_normal_form, hermite_normal_form
+from manifolds_rankone_families import decomp, ikernel, wedge, biv
+EXACT_HELPER manifolds_weighted_profiles.py 29 32 group
+def group(M):
+    D=smith_normal_form(M,domain=s.ZZ)
+    v=[abs(int(D[i,i])) for i in range(min(D.shape)) if D[i,i]]
+    return dict(free=M.rows-len(v),torsion=[z for z in v if z>1])
+CALLED_NAMES ['abs', 'dict', 'int', 'len', 'min', 'range', 'smith_normal_form']
+RETAINED_TARGET_OUTPUT 1829281 142125 be19f47a37e16d2742418cb294ba94af5d9fa2d226f0bf1b80b4d0f9ac58f85a
+AUXILIARY_INTERVAL 20694 20710 b5b8c09831e7c346d72a294cea9045cf74bf837acbea9586431a7be4f57d68bf
+The exact script \path{code/III/manifolds_star_log_caps.py}
+retains the twelve actual canonical bases,
+the full normalization matrices, the
+literal fibre and normal maps, and their
+complete integral kernels. It checks
+the conductor calculation independently
+against the mapping-torus sequence and
+compares the global Smith formula on
+unbounded symbolic lattices and a finite
+set of exact instances. The proof above,
+including the order-two marking, is
+independent of the finite parameter
+bounds used in those corroborating runs.
+Root actions with nonprimitive gamma
+power, other integral star blocks and
+positive-weight star degenerations are
+outside this theorem's stated scope.
+PASS 2026-11-25T09:01:26.673930+00:00

@@ -1,0 +1,47 @@
+RETAINED S6_SERIES_PUBLISH_III_02LK_historical_manifolds_general_cusp.py bytes 4219 lines 95
+GIT_BLOB d780bd120390bec10126118e74ae94b3268f4843 SHA256 06b8549b00c488f327db06fe7891e070e32256810d29ce60106cc067347978e0
+RETAINED S6_SERIES_PUBLISH_III_02LK_historical_manifolds_general_cusp.json bytes 156115 lines 11792
+GIT_BLOB aa129dab470645b6db09aba34f93b54feaf11dc2 SHA256 158174459afada4c5381235fc0bf64efa0a87e68267c360b9e3274fc2d5b84c6
+RETAINED S6_SERIES_PUBLISH_III_02LK_historical_manifolds_rankone_families.py bytes 6800 lines 159
+GIT_BLOB 6451040a591825647d0f6994b63b0588b9b02c11 SHA256 f2c80dfca5aac28e17f090e9873bb9b1da52583584a086882a775081bd4458d0
+HELPER manifolds_rankone_families.py wedge 55 56
+def wedge(A):
+    return s.Matrix([[A.extract(i,j).det() for j in PAIRS] for i in PAIRS])
+IMPORT_METADATA from pathlib import Path
+from itertools import combinations
+from math import gcd
+import sys, json
+import sympy as s
+from sympy.polys.matrices import DomainMatrix
+from sympy.polys.matrices.normalforms import smith_normal_decomp
+from sympy.matrices.normalforms import smith_normal_form
+import os_monodromy as om
+RETAINED S6_SERIES_PUBLISH_III_02LK_historical_manifolds_weighted_profiles.py bytes 10956 lines 232
+GIT_BLOB 4b3c99234261e975b4cb4141c22006796f9dc100 SHA256 c61db918ba5e4552a9f81c7a4c14e980e5decc317f77496fbc17b214a77d781a
+HELPER manifolds_weighted_profiles.py group 29 32
+def group(M):
+    D=smith_normal_form(M,domain=s.ZZ)
+    v=[abs(int(D[i,i])) for i in range(min(D.shape)) if D[i,i]]
+    return dict(free=M.rows-len(v),torsion=[z for z in v if z>1])
+IMPORT_METADATA from pathlib import Path
+from math import gcd
+from itertools import product
+import argparse
+import json
+import sympy as s
+from sympy.matrices.normalforms import smith_normal_form, hermite_normal_form
+from manifolds_rankone_families import decomp, ikernel, wedge, biv
+AUXILIARY_GUARD 17864 17873 c58b4ed4cd08126e89401cb3ea8b0279ead8c456cdfe810cbaee900fb6ce09d9
+The complete Laurent-unimodular operations,
+finite HNF-lattice normalization matrices,
+boundary exterior-square matrices and all
+component-meridian columns are implemented in
+\path{code/III/manifolds_general_cusp.py}.
+When $s=1$, the fibre kernel is saturated
+and the result recovers the local input used
+in \ref{maps:src:D.2.34}--\ref{maps:src:D.2.41}. When $s>1$, replacing \eqref{maps:eq:D.GC2}
+by its saturation would incorrectly erase
+the actual cap torsion $\mathbb Z/s$.
+PASS all four complete connector payloads decoded and Git-blob verified
+READ_SCOPE complete main source next; helper definitions printed; full helper bodies not printed
+COMPLETED_UTC 2026-11-25T07:43:05.159136+00:00
